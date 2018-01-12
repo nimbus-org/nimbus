@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+
+<server>
+    
+    <default-log>
+        <information output="false"/>
+    </default-log>
+    <manager>
+                <service name="HttpServletResponseDeflateInterceptor"
+                         code="jp.ossc.nimbus.service.aop.interceptor.servlet.HttpServletResponseDeflateInterceptorService"/>
+    </manager>
+    
+</server>

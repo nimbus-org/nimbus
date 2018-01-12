@@ -1,0 +1,25 @@
+コマンド使用方法：
+ java jp.ossc.nimbus.service.test.TestSwingRunner [options] [testRunner xml] [service paths]
+
+[options]
+
+ [-userId]
+  実行ユーザを指定する。
+
+ [-validate]
+  サービス定義をDTDで検証する。
+
+ [-verbose]
+  実行詳細を出力する。
+
+ [-help]
+  ヘルプを表示します。
+
+[testRunner xml]
+ テスト実行定義ファイルのパス
+
+[service paths]
+ ロードするサービス定義ファイルのパス
+
+使用例 : 
+    java -classpath nimbus.jar;commons-httpclient.jar;commons-codec.jar;commons-logging.jar;commons-lang.jar;commons-collections.jar;velocity.jar -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=1234 -Dcom.sun.management.jmxremote.ssl=false jp.ossc.nimbus.service.test.TestSwingRunner service-definition.xml

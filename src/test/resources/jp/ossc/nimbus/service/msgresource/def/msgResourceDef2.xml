@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding="Shift_JIS"?>
+<MessageResourceDefine>
+<Message name="" display="Objectメッセージ" selectKey="60">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test6.txt</inputfile>
+		<prop>
+		</prop>
+		<payload>
+			<className>jp.ossc.nimbus.service.msgresource.PayloadObjectForTest</className>
+			<attribute name="IntNumber" resourceType = "file">0</attribute>
+			<attribute name="ShortNumber" resourceType = "file">1</attribute>
+			<attribute name="LongNumber" resourceType = "file">2</attribute>
+			<attribute name="FloatNumber" resourceType = "file">3</attribute>
+			<attribute name="DoubleNumber" resourceType = "file">4</attribute>
+			<attribute name="Boolean" resourceType = "file">5</attribute>
+			<attribute name="ByteNumber" resourceType = "file">6</attribute>
+			<attribute name="Message" resourceType = "file">7</attribute>
+		</payload>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+</MessageResourceDefine>
+

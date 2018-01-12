@@ -1,0 +1,23 @@
+コマンド使用方法：
+ java jp.ossc.nimbus.service.beancontrol.Compiler [options] [beanflow files]
+
+[options]
+
+ [-v]
+  実行の詳細を表示します。
+
+ [-class]
+   jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerの実装クラス。
+
+ [-testInterpreterClass]
+   jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+
+ [-help]
+  ヘルプを表示します。
+
+[beanflow files]
+ コンパイルする業務フロー定義ファイル、またはディレクトリを指定します。
+ スペース区切りで複数指定可能です。
+
+使用例 : 
+   java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.service.beancontrol.Compiler beanflow-def.xml

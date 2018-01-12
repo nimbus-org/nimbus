@@ -1,0 +1,27 @@
+コマンド使用方法：
+ java jp.ossc.nimbus.service.aop.Compiler [options] [class files]
+
+[options]
+
+ [-servicepath paths]
+  コンパイルに必要なアスペクトを定義したサービス定義ファイルのパスを指定します。
+  この指定は必須です。
+  ;区切りで複数指定可能です。
+
+ [-d directory]
+  出力先のディレクトリを指定します。
+  このオプションの指定がない場合は、実行時のカレントに出力します。
+
+ [-v]
+  実行の詳細を表示します。
+
+ [-help]
+  ヘルプを表示します。
+
+[class names]
+ コンパイルするクラス名を指定します。
+ ここで指定するクラスは、クラスパスに存在しなければなりません。
+ スペース区切りで複数指定可能です。
+
+使用例 : 
+   java -classpath classes;lib/javassist-3.0.jar;lib/nimbus.jar jp.ossc.nimbus.service.aop.Compiler -servicepath aspect-service.xml sample.Sample1 sample.Sample2

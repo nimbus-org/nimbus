@@ -1,0 +1,76 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 Test Runner descriptor.
+The DOCTYPE is:
+  <!DOCTYPE testRunner PUBLIC
+      "-//Nimbus//DTD Nimbus Test Runner 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/testrunner_1_0.dtd">
+
+例:
+    <testRunner>
+        
+        <phase>local</phase>
+        
+        <include>
+            <scenarioGroup id="Group1"/>
+            <scenarioGroup id="Group2">
+                <scenario id="Scenario1"/>
+                <scenario id="Scenario2"/>
+            </scenarioGroup>
+        </include>
+        
+        <exclude>
+            <scenarioGroup id="Group1">
+                <scenario id="Scenario2"/>
+            </scenarioGroup>
+        </exclude>
+        
+    </testRunner>
+-->
+
+<!-- testRunner要素は、テスト内容を定義するルート要素です。
+-->
+<!ELEMENT testRunner (controller? | reporter* | phase? | include? | exclude?)*>
+
+<!-- test属性は、テストを実行するかどうかを定義する。
+デフォルトは、trueでテストの実行を行う。
+falseを指定すると、テストは実行せず、リソースのダウンロードのみを行う。
+-->
+<!ATTLIST testRunner test (true|false) "true">
+
+<!-- controller要素は、TestControllerのサービス名を定義します。
+デフォルトは、Nimbus#TestController
+-->
+<!ELEMENT controller (#PCDATA)>
+
+<!-- reporter要素は、TestReporterのサービス名を定義します。
+デフォルトは、Nimbus#TestReporter
+-->
+<!ELEMENT reporter (#PCDATA)>
+
+<!-- phase要素は、テストフェーズを定義します。
+-->
+<!ELEMENT phase (#PCDATA)>
+
+<!-- include要素は、実行するテストを指定する要素です。
+-->
+<!ELEMENT include (scenarioGroup+)>
+
+<!-- exclude要素は、実行しないテストを指定する要素です。
+-->
+<!ELEMENT exclude (scenarioGroup+)>
+
+<!-- scenarioGroup要素は、シナリオグループを指定する要素です。
+-->
+<!ELEMENT scenarioGroup (scenario*)>
+
+<!-- id属性は、シナリオグループのIDを定義します。
+-->
+<!ATTLIST scenarioGroup id CDATA #REQUIRED>
+
+<!-- scenario要素は、シナリオを指定する要素です。
+-->
+<!ELEMENT scenario EMPTY>
+
+<!-- id属性は、シナリオのIDを定義します。
+-->
+<!ATTLIST scenario id CDATA #REQUIRED>

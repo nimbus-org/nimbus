@@ -1,0 +1,19 @@
+コマンド使用方法：
+ java jp.ossc.nimbus.core.ServiceManagerFactory [options] [paths]
+
+[options]
+
+ [-validate]
+  サービス定義をDTDで検証する。
+
+ [-server]
+  メインスレッドを待機させて、サーバとして動かす。
+
+ [-help]
+  ヘルプを表示します。
+
+[paths]
+ ロードするサービス定義ファイルのパス
+
+使用例 : 
+   java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.core.ServiceManagerFactory service-definition.xml

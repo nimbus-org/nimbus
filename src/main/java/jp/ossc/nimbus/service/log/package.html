@@ -1,0 +1,39 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus ログ パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>ログサービス</b>を提供します。<p>
+ロギングと言えば、The Apache Jakarta ProjectのCommons LoggingやLog4Jなどが有名です。
+それらのロギングの概念は、クライアント側が出力するメッセージを決め、メッセージの出力レベルに合ったメソッドを呼び出すと言うものです。
+以下にその実装例を示します。<br>
+<pre>
+ Logger logger = Logger.getInstance(this.getClass());
+ logger.info("Information Level Message");
+ logger.error("Error Level Message");
+</pre>
+このロギングのインタフェースは、非常にシンプルで使いやすい事は分かります。
+しかし、実際のエンタープライズなアプリケーションにおいて、運用・保守まで考えてロギングを行う場合、このようなインタフェースでは、以下のような問題が生じます。<br>
+<ul>
+<li>コードにメッセージが埋め込まれるため、メッセージの変更が容易に行えない。 </li>
+<li>使用されているメッセージがコード中に分散し、管理しにくいため、重複したメッセージを使用したり、無駄なメッセージを出力していたりし易い。 </li>
+<li>メッセージと出力レベルがインタフェースレベルで決定するので、メッセージと出力レベルの関係が強く、変更しにくい。 </li>
+</ul>
+Nimbusのロギングの概念は、メッセージには、文言や出力レベル、出力先など様々な付加情報があり、それを意識するのは、ロギングを行うアプリケーションではないと言うものです。
+そのため、Nimbusのロギングのインタフェースでは、メッセージに一意に付与されるIDを渡して、出力を依頼するというだけです。
+そのインタフェースには、出力レベルどころか、メッセージすら現れません。<br>
+<pre>
+ Logger logger = (Logger)ServiceManagerFactory.getServiceObject("LogService");
+ logger.write("NIMBUS_0001");
+ logger.write("NIMBUS_0002");
+</pre>
+それらの付加情報は、別の場所で定義するのです。付加情報を外出しにする事で、メッセージの管理や、出力レベル・出力先の変更など、メッセージに付加される情報の変更が、アプリケーションに影響を及ぼさなくなります。<br>
+このように、<b>一意なメッセージIDのみでログの出力を依頼する</b>簡潔な機能を抽象化したインタフェースが、<a href="Logger.html">Logger</a>です。<br>
+<p>
+このパッケージでは、Loggerインタフェースを実装したサービスを提供します。<br>
+</body>
+</html>

@@ -1,0 +1,4 @@
+#ペイロード指定無し。
+prop4=Let,prop5=World:
+prop4=it,prop5=World:
+prop4=be,prop5=World:

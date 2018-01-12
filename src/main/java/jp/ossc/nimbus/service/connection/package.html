@@ -1,0 +1,27 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus JDBCコネクション パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>JDBCコネクション生成サービス</b>を提供します。<p>
+JDBCのコネクション取得方法は、JDBCの標準的手法として2種類あります。<br>
+java.sql.DriverManagerを使って取得する方法と、javax.sql.DataSourceを使って取得する方法です。<br>
+<p>
+前者は、JDBCドライバを直接使用する低レベルなAPIで、DBMSに接続するためのプロパティ等を引数で指定する必要があります。<br>
+そのため、ソース内にDBMSに接続するためのプロパティ等を直接コーディングするか、自前で外出しする仕組みを作る必要があります。<br>
+<p>
+後者は、アプリケーションサーバ等の中間層を挟んでJDBCドライバを使用するAPIで、DBMSに接続するためのプロパティは、アプリケーションサーバの設定ファイル等に記述します。<br>
+そのため、前者のような、DBMSに接続するためのプロパティ等を外出しする仕組みを自前で作る必要はありません。<br>
+しかし、分散環境対応などのために、DataSourceの取得は、JNDIを経由します。<br>
+JNDIの接続には、接続先のJNDIサーバ等の接続情報を引数で指定する必要があります。（jndi.propertiesで設定する方法もありますが、その場合接続先が１つに限られるので複数のJNDIサーバに接続する場合などに問題になります）<br>
+<p>
+このように、JDBCコネクションを取得するのは、複数の方法、複雑なパラメータの指定や設定が必要になり、簡単に取得できるとは言いがたいものがあります。<br>
+そこで、取得方法やパラメータの設定等を、サービスの実装や属性設定に置き換える事で、<B>コネクションを取得する</B>という概念だけを抽出した<A HREF="ConnectionFactory.html">ConnectionFactory</A>インタフェースを定義しました。<br>
+<p>
+このパッケージでは、そのConnectionFactoryインタフェースを実装したサービスを提供します。<br>
+</body>
+</html>

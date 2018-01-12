@@ -1,0 +1,666 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 deployment descriptor.
+The DOCTYPE is:
+  <!DOCTYPE server PUBLIC
+      "-//Nimbus//DTD Nimbus 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/nimbus-service_1_0.dtd">
+
+例:
+   <server>
+      
+      <ref-url>nimbus-service2.xml</ref-url>
+      
+      <manager-repository manager-name="Manager1">
+         Repository1
+      </manager-repository>
+      
+      <property-editors>
+         <property-editor type="java.util.Properties">jp.ossc.nimbus.beans.PropertiesEditor</property-editor>
+         <property-editor type="jp.ossc.nimbus.core.ServiceName">jp.ossc.nimbus.beans.ServiceNameEditor</property-editor>
+      </property-editors>
+      
+      <default-log>
+         <debug output="true"/>
+         <information output="true"/>
+         <warning output="false"/>
+         <error output="true"/>
+         <fatal output="true"/>
+      </default-log>
+     
+     <server-property name="REMOTE_HOST_NAME">fuga</server-property>
+      
+      <log>FileLogger</log>
+      
+      <message manager-name="Manager2">Message</message>
+      
+      <manager name="Manager1" shutdown-hook="true">
+         
+         <repository>Repository1</repository>
+         
+         <log manager-name="Manager2">FileLogger2</log>
+         
+         <message>Message2</message>
+         
+         <manager-property name="HOME_URL">http://hoge.org</manager-property>
+         
+         <service code="jp.ossc.nimbus.service.repository.MBeanServerRepositoryService"
+                  name="Repository1">
+         </service>
+         
+         <service code="hoge.MyService" name="MyService">
+            
+            <field name="longValue">100</field>
+            
+            <attribute name="intValue">100</attribute>
+            <attribute name="url">${HOME_URL}/index.html</attribute>
+            <attribute name="boolValue" type="Boolean">true</attribute>
+            <attribute name="MyService1ServiceName">#MyService1</attribute>
+            <attribute name="MyService2">
+                <service-ref>#MyService2</service-ref>
+            </attribute>
+            
+            <optional-config>
+               value1=a,value2=b,value3=c
+            </optional-config>
+            
+            <depends>
+               <service code="hoge.MyService2" name="MyService2"></service>
+            </depends>
+            <depends>MyService3</depends>
+         </service>
+         
+        <service name="StringBuffer"
+                 code="java.lang.StringBuffer">
+            <constructor>
+                <argument type="java.lang.String">hoge</argument>
+            </constructor>
+            <attribute name="CharAt[0]">f</attribute>
+            <invoke name="append">
+                <argument type="java.lang.Object">
+                    <object code="java.util.Date"/>
+                </argument>
+            </invoke>
+        </service>
+        
+        <service name="Map"
+                 code="java.util.HashMap">
+            <constructor>
+                <argument type="int">10</argument>
+            </constructor>
+            <attribute name="A">
+                <service-ref>#StringBuffer</service-ref>
+            </attribute>
+            <attribute name="B">
+                <object code="java.lang.String">
+                    <constructor>
+                        <argument type="[C">a,b,c</argument>
+                    </constructor>
+                </object>
+            </attribute>
+            <depends>#StringBuffer</depends>
+        </service>
+        
+      </manager>
+   </server>
+
+-->
+
+<!-- server要素は、ルート要素です。
+-->
+<!ELEMENT server (ref-url* | manager-repository? | property-editors? | default-log? | log? | message? | server-property* | manager* | ifdef*)*>
+
+<!-- ref-url要素は、このファイルが参照するservice.xmlのURLを指定する要素です。
+depends要素や、repository要素などで、参照するServiceの名前を指定する事が可能
+ですが、他service.xml内に定義されたServiceを参照する場合に、明示的に指定を行う
+事ができます。
+この要素を指定した場合には、このファイル内と参照するファイル内とで、サービスの
+依存関係のチェックを行い、相互に依存している場合や、依存するサービスが存在しな
+い場合などは、例外をthrowします。
+この要素を指定しない場合には、相互に依存するサービスは、起動が保証されません。
+また、依存するサービスが存在しない場合は、依存するサービスが起動されるまで、
+該当サービスが起動されません。
+この要素の内容に指定した文字列は、以下の順序で検索されます。
+ (1)絶対URL
+ (2)この要素が指定されているファイルからの相対パス
+ (3)ローカルファイルパス
+ (4)nimbus.jarをロードしたクラスローダのリソース
+-->
+<!ELEMENT ref-url (#PCDATA)>
+
+<!-- manager-repository要素は、server要素で構成されるServiceManagerFactoryに、
+manager要素で構成されるServiceManagerを格納するRepositoryを定義します。
+
+この要素の内容に、Repositoryの名前を指定します。
+指定しない場合には、デフォルトのRepositoryが使用されます。
+ServiceManagerFactoryに、Map実装のRepositoryが生成されます。このRepositoryは、
+staticな領域で保持されるので、VM内に１つしか設定できません。他service.xml内にも
+この要素を定義した場合には、どのRepositoryが適用されるかは保証されません。
+
+例:
+   <manager-repository manager-name="Manager1">
+      MBeanServerRepository
+   </manager-repository>
+-->
+<!ELEMENT manager-repository (#PCDATA)>
+
+<!-- manager-name属性は、manager-repository要素で定義されるRepositoryの登録先と
+なるServiceManagerの名前を定義します。
+このmanager-name属性を省略すると、name属性を省略したmanager要素のServiceManager
+に登録されたRepositoryとみなします。
+-->
+<!ATTLIST manager-repository manager-name CDATA #IMPLIED>
+
+<!-- property-editors要素は、service要素の子要素attribute要素の内容をサービスに設定するjava.beans.PropertyEditorを定義するproperty-editor要素の集合を定義します。
+-->
+<!ELEMENT property-editors (property-editor+ | ifdef*)*>
+
+<!-- property-editor要素は、service要素の子要素attribute要素の内容をサービスに設定するjava.beans.PropertyEditorを定義します。
+type属性で、attribute要素のtype属性に対応するクラス名を完全修飾クラス名で指定します。
+また、内容に、その型の値を編集するjava.beans.PropertyEditorの実装クラスを完全修飾クラス名で指定します。
+
+例:
+   <property-editors>
+      <property-editor type="java.util.Properties">jp.ossc.nimbus.beans.PropertiesEditor</property-editor>
+      <property-editor type="jp.ossc.nimbus.core.ServiceName">jp.ossc.nimbus.beans.ServiceNameEditor</property-editor>
+   </property-editors>
+-->
+<!ELEMENT property-editor (#PCDATA)>
+
+<!-- type属性は、property-editor要素で定義するjava.beans.PropertyEditorが編集するBean属性の型を指定します。
+-->
+<!ATTLIST property-editor type CDATA #REQUIRED>
+
+<!-- server-property要素は、service要素の子要素attributeの内容で${プロパティ名}で参照できる環境変数プロパティを定義します。
+
+例:
+   <server-property name="hoge">fuga</server-property>
+-->
+<!ELEMENT server-property (#PCDATA)>
+
+<!-- name属性は、service要素の子要素attributeの内容で${プロパティ名}で参照できる環境変数プロパティ名を定義します。
+-->
+<!ATTLIST server-property name CDATA #REQUIRED>
+
+<!-- manager要素は、ServerManagerを構成する要素です。
+-->
+<!ELEMENT manager (repository? | log? | message? | manager-property* | service* | ifdef*)*>
+
+<!-- name属性は、manager要素で構成されるServiceManagerの名前を定義します。
+ServiceManagerを複数生成する場合には、name属性で一意の名前を指定する必要があり
+ます。但し、同じファイルまたは、別のファイルに同じname属性を持ったmanager要素を
+指定する事もできます。その場合、１つのServiceManagerとみなされます。
+ServiceManagerを複数生成しない場合には、name要素は省略可能です。省略した場合、
+ServiceManagerの名前は"Nimbus"となりますが、名前指定なしで
+ServiceManagerFactory#findManager()で取得する事ができます。
+-->
+<!ATTLIST manager name ID #IMPLIED>
+
+<!-- shutdown-hook属性は、manager要素で構成されるServiceManagerに、ShutdownHook
+を設定するかどうかを定義します。
+trueを設定した場合は、JVMの終了と同時に、ServiceManager#destroy()が呼び出されて
+終了処理が行われます。
+shutdown-hook要素は省略可能で、省略した場合は、false。
+-->
+<!ATTLIST manager shutdown-hook (true|false) "false">
+
+<!-- repository要素は、service要素によって登録するServiceを格納するRepositoryを
+定義します。
+
+repository要素の内容に、Repositoryの名前を指定します。
+指定しない場合には、デフォルトのRepositoryが使用され、各ServiceManager単位に、
+Map実装のRepositoryが生成されます。
+
+例:
+   <repository manager-name="Manager1">MBeanServerRepository</repository>
+-->
+<!ELEMENT repository (#PCDATA)>
+
+<!-- manager-name属性は、repository要素で定義されるRepositoryの登録先となる
+ServiceManagerの名前を定義します。
+このmanager-name属性を省略すると、このrepository要素の親要素のmanager要素が表す
+ServiceManagerに登録されたRepositoryとみなします。
+-->
+<!ATTLIST repository manager-name CDATA #IMPLIED>
+
+<!-- log要素は、server要素で構成されるServiceManagerFactoryや、manager要素で
+構成されるServiceManagerで使用するLoggerを定義します。
+
+この要素の内容に、Loggerの名前を指定します。
+指定しない場合には、デフォルトのLoggerが使用されます。デフォルトのLoggerは、
+標準出力へのメッセージのみ出力できます。
+
+例:
+   <log manager-name="Manager1">
+      FileLogger
+   </log>
+-->
+<!ELEMENT log (#PCDATA)>
+
+<!-- manager-name属性は、log要素の内容で定義されるLoggerの登録先となる
+ServiceManagerの名前を定義します。
+このmanager-name属性を省略すると、name属性を省略したmanager要素のServiceManager
+に登録されたLoggerとみなします。
+-->
+<!ATTLIST log manager-name CDATA #IMPLIED>
+
+<!-- message要素は、server要素で構成されるServiceManagerFactoryや、manager要素で
+構成されるServiceManagerで使用するMessageRecordFactoryを定義します。
+
+この要素の内容に、MessageRecordFactoryの名前を指定します。
+指定しない場合には、デフォルトのMessageRecordFactoryが使用されます。
+デフォルトのMessageRecordFactoryは、システムメッセージのみ取得できます。
+
+例:
+   <message manager-name="Manager1">
+      Message
+   </message>
+-->
+<!ELEMENT message (#PCDATA)>
+
+<!-- manager-name属性は、message要素の内容で定義されるMessageRecordFactoryの
+登録先となるServiceManagerの名前を定義します。
+このmanager-name属性を省略すると、name属性を省略したmanager要素のServiceManager
+に登録されたMessageRecordFactoryとみなします。
+-->
+<!ATTLIST message manager-name CDATA #IMPLIED>
+
+<!-- manager-property要素は、service要素の子要素attributeの内容で${プロパティ名}で参照できる環境変数プロパティを定義します。
+
+例:
+   <manager-property name="hoge">fuga</manager-property>
+-->
+<!ELEMENT manager-property (#PCDATA)>
+
+<!-- name属性は、service要素の子要素attributeの内容で${プロパティ名}で参照できる環境変数プロパティ名を定義します。
+-->
+<!ATTLIST manager-property name CDATA #REQUIRED>
+
+<!-- default-log要素は、サービス基盤全体で使用するデフォルトのLoggerで
+出力されるシステムログをログレベル毎に出力の設定を定義します。
+この要素を指定しない場合は、Debugログ以外は出力される設定となります。
+
+例:
+   <default-log>
+      <debug output="true"/>
+      <information output="true"/>
+      <warning output="false"/>
+      <error output="true"/>
+      <fatal output="true"/>
+   </default-log>
+-->
+<!ELEMENT default-log (debug?, information?, warning?, error?, fatal?)>
+
+<!-- debug要素は、log要素で構成されるLoggerで出力されるDebugログの出力の設定を
+定義します。
+この要素を指定しない場合は、Debugログは出力されません。
+-->
+<!ELEMENT debug EMPTY>
+
+<!-- output属性は、log要素の子要素debug、informantion、warning、error、fatal要素
+で定義されるLoggerの出力設定で、ログ出力を行うかどうかを定義します。
+このoutput属性を省略すると、ログは出力されません。
+-->
+<!ATTLIST debug output (true|false) "false">
+<!ATTLIST information output (true|false) "true">
+<!ATTLIST warning output (true|false) "true">
+<!ATTLIST error output (true|false) "true">
+<!ATTLIST fatal output (true|false) "true">
+
+<!-- information要素は、log要素で構成されるLoggerで出力されるInformationログの出力
+の設定を定義します。
+この要素を指定しない場合は、Informationログは出力されます。
+-->
+<!ELEMENT information EMPTY>
+
+<!-- warning要素は、log要素で構成されるLoggerで出力されるWarningログの出力の設定を
+定義します。
+この要素を指定しない場合は、Warningログは出力されます。
+-->
+<!ELEMENT warning EMPTY>
+
+<!-- error要素は、log要素で構成されるLoggerで出力されるErrorログの出力の設定を定義
+します。
+この要素を指定しない場合は、Errorログは出力されます。
+-->
+<!ELEMENT error EMPTY>
+
+<!-- fatal要素は、log要素で構成されるLoggerで出力されるFatalログの出力の設定を定義
+します。
+この要素を指定しない場合は、Fatalログは出力されます。
+-->
+<!ELEMENT fatal EMPTY>
+
+<!-- service要素は、manager要素で構成されるServiceManagerに登録するServiceを
+定義します。
+-->
+<!ELEMENT service (constructor? | field* | attribute* | optional-config? | invoke* | depends* | ifdef*)*>
+
+<!-- code属性は、service要素で登録するServiceの実装クラス名を完全修飾名で定義し
+ます。
+ここに定義できるクラスは、基本的に制限はありませんが、クラスの実装によって、
+動作的な制限は発生します。以下に、推奨する実装方法の順で、説明します。
+(1)jp.ossc.nimbus.core.ServiceBaseのサブクラス
+  引数なしのコンストラクタで生成されます。
+  ロード時に、ServiceBaseSupport#createService()、startService()を呼び出します。
+  また、ServiceManager#create()、start()、stop()、destroy()を呼び出すと、
+  ServiceManagerに登録されているServiceの対応するメソッドを呼び出します。
+  ServiceBaseは、JMXに対応しておりjp.ossc.nimbus.core.ServiceBaseMBean
+  インタフェースをMBeanインタフェースとして持ってます。
+(2)jp.ossc.nimbus.core.FactoryServiceBaseのサブクラス
+  FactoryServiceBaseは、ServiceBaseのサブクラスであるため、(1)に準拠します。
+  但し、ServiceManager#getServiceObject(String)を呼び出された場合、このクラスの
+  インスタンスは返さずに、FactoryService#newInstance()で生成されるオブジェクト
+  を返します。
+(3)jp.ossc.nimbus.core.ServiceBaseSupportインタフェース実装クラス
+  引数なしのコンストラクタで生成されます。
+  ServiceBaseをこの実装クラスのプロキシとして生成して、ServiceManagerに登録され
+  ます。
+  ロード時に、Service#createService()、startService()を呼び出します。
+  また、ServiceManager#create()、start()、stop()、destroy()を呼び出すと、
+  ServiceManagerに登録されているServiceBaseプロキシを通して、
+  ServiceBaseSupport#createService()、startService()、stopService()、
+  destroyService()を呼び出します。
+  プロキシであるServiceBaseが、JMXに対応しているため、ServiceManagerに登録され
+  るオブジェクトは、jp.ossc.nimbus.core.ServiceBaseMBeanインタフェースを
+  MBeanインタフェースとして持ちます。
+  また、FactoryServiceインタフェースも実装すれば、(2)に準拠した動作をします。
+(4)jp.ossc.nimbus.core.Serviceインタフェース実装クラス
+  引数なしのコンストラクタで生成されます。
+  ロード時に、Service#setServiceName()、create()、start()を呼び出します。
+  また、ServiceManager#create()、start()、stop()、destroy()を呼び出すと、
+  Serviceの対応するメソッドを呼び出します。
+  Service#getState()に対する実装の責任を負う必要があります。
+  JMXには、対応していません。対応するためには、独自に実装する必要があります。
+(5)上記以外のクラス
+  引数なしのコンストラクタで生成されます。
+  Serviceインタフェースを実装していない場合は、Serviceのプロキシを生成して、
+  ServiceManagerに登録されます。
+  Service#create()、start()、stop()、destroy()と同じシグニチャのメソッドを持っ
+  ている場合は、(1)と同じ動作をします。
+  それ以外の場合は、ServiceManager#create()を呼び出すと、ServiceManagerへ自分自
+  身を登録する事と、ServiceManager#destroy()を呼び出すと、ServiceManagerから自
+  分自身を削除する。また、Service#getState()は、CREATED、DESTROYED以外の状態は
+  UNKNOWNとなります。
+-->
+<!ATTLIST service code CDATA #REQUIRED>
+
+<!-- name属性は、service要素で登録するServiceの名前を定義します。
+ここで指定した名前を、ServiceManager#getService(String)の引数に指定する事で、
+このServiceを取得できます。
+また、ServiceManager#getServiceObject(String)を呼ぶと、code属性で指定したクラス
+のインスタンスが取得できます。但し、登録するServiceがFactoryServiceインタフェー
+スを実装している場合は、FactoryService#newInstance()で生成されたインスタンスが
+取得されます。
+-->
+<!ATTLIST service name CDATA #REQUIRED>
+
+<!-- initState属性は、service要素で登録するServiceの初期状態を定義します。
+-->
+<!ATTLIST service initState (Created|Started) "Started">
+
+<!-- instance属性は、service要素で登録するServiceのインスタンス生成種別を
+定義します。
+デフォルト値は、singletonで、インスタンスは１つだけ生成され登録されます。
+factoryを設定すると、ServiceManager#getServiceObject(String)を呼び出す毎に
+新しいインスタンスを生成して返します。また、ServiceManager#getService(String)
+の戻り値は、FactoryServiceになります。
+threadlocalを設定すると、ServiceManager#getServiceObject(String)を呼び出す
+スレッド毎に、インスタンスを生成して返します。
+また、ServiceManager#getService(String)の戻り値は、FactoryServiceになります。
+templateを設定すると、サービス定義のテンプレート定義となり、この定義自体では、
+サービスは登録されず、templateName属性でこの定義をテンプレートとして取り込む事が
+できます。但し、テンプレートとして適用されるのは、この要素の属性以外です。
+-->
+<!ATTLIST service instance (singleton|factory|threadlocal|template) "singleton">
+
+<!-- management属性は、service要素のinstance属性にfactoryまたはthreadlocalを
+指定した場合に、生成されたインスタンスをServiceManagerに登録するかどうかを
+定義します。
+デフォルト値は、falseで、生成されたインスタンスはServiceManagerに登録されません。
+trueを設定すると、生成されたインスタンスはServiceManagerに登録されます。
+生成されたインスタンスのサービス名は、このservice要素のname属性の値に、通番を
+付けた名前になります。
+-->
+<!ATTLIST service management (true|false) "false">
+
+<!-- createTemplate属性は、service要素のinstance属性にfactoryまたはthreadlocalを
+指定した場合に、ファクトリの開始時にファクトリが生成するオブジェクトを生成して
+みるかどうかを定義します。
+デフォルト値は、trueで、ファクトリの開始時にファクトリが生成するオブジェクトの生成を試みます。
+-->
+<!ATTLIST service createTemplate (true|false) "true">
+
+<!-- template属性は、このservice要素でテンプレートとして参照するservice要素の
+サービス名を定義します。
+-->
+<!ATTLIST service template CDATA #IMPLIED>
+
+<!-- constructor要素は、service要素で登録するServiceやobject要素で生成する
+オブジェクトのコンストラクタ属性を定義します。
+constructor要素の子要素にargument要素を指定します。デフォルトコンストラクタ以外
+のコンストラクタを指定したい場合に指定します。
+Serviceには、該当するコンストラクタを実装しておく必要があります。
+-->
+<!ELEMENT constructor (argument+ | invoke |static-invoke | static-field-ref)*>
+
+<!-- argument要素は、constructor要素で指定するコンストラクタの引数を定義します。
+argument要素の内容に、引数の値を指定します。
+引数として、サービスを参照する時は、service-ref要素。任意のオブジェクトを参照
+する時は、object要素を指定できますが、サービスのコンストラクタの引数として定義
+する場合には、service-ref要素は指定できません。
+-->
+<!ELEMENT argument (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
+
+<!-- type属性は、argument要素で定義する引数の型を指定します。
+argument要素の子要素にservice-ref要素やobject要素を定義する場合で、引数の型が
+それらの要素が表すオブジェクトの型と等しい場合は、省略可能です。
+-->
+<!ATTLIST argument type CDATA #IMPLIED>
+
+<!-- valueType属性は、argument要素で定義する引数の実型を指定します。
+引数の型と設定したいオブジェクトの型が代入互換の関係にあり、等しい型ではない
+場合に指定します。
+-->
+<!ATTLIST argument valueType CDATA #IMPLIED>
+
+<!-- nullValue属性は、argument要素で定義する引数の値がnullである事を指定します。
+argument要素が表す値がnullである場合に、trueを指定します。
+-->
+<!ATTLIST argument nullValue (true|false) "false">
+
+<!-- field要素は、service要素で登録するServiceのフィールド属性を定義します。
+field要素の内容に、値を指定します。ここで指定された値は、
+java.beans.PropertyEditorによってServiceに設定されます。
+Serviceには、この要素のname属性で定義するフィールド属性名に該当するフィールド
+を実装しておく必要があります。
+-->
+<!ELEMENT field (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
+
+<!-- name属性は、field要素で定義するフィールド属性の属性名を指定します。
+service要素で登録するServiceには、この要素のname属性で定義するフィールド属性名
+に該当するフィールドを実装しておく必要があります。
+-->
+<!ATTLIST field name CDATA #REQUIRED>
+
+<!-- type属性は、field要素で定義するフィールド属性の型を指定します。
+service要素で登録するServiceに、name属性で定義した属性名に対するフィールドの型
+と内容の文字列を編集するPropertyEditorが登録されている型が同じ場合は、
+省略可能です。
+service要素で登録するServiceに、name属性で定義した属性名に対する
+フィールドの型と代入互換の関係にある別の型で設定したい場合は、この属性で必要な
+型を定義します。
+指定した型に該当するjava.beans.PropertyEditorが登録されていない場合は、
+値が設定されません。
+-->
+<!ATTLIST field type CDATA #IMPLIED>
+
+<!-- nullValue属性は、field要素で定義するフィールドの値がnullである事を指定します。
+field要素が表す値がnullである場合に、trueを指定します。
+-->
+<!ATTLIST field nullValue (true|false) "false">
+
+<!-- attribute要素は、service要素で登録するServiceのBean属性を定義します。
+attribute要素の内容に、値を指定します。ここで指定された値は、
+java.beans.PropertyEditorによってServiceに設定されます。
+Serviceには、この要素のname属性で定義する属性名に該当するsetterを実装しておくか
+、Mapインタフェースを実装しておく必要があります。
+-->
+<!ELEMENT attribute (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
+
+<!-- name属性は、attribute要素で定義するBean属性の属性名を指定します。
+service要素で登録するServiceには、ここで定義する属性名の属性に対するsetterを
+実装しておくか、Mapインタフェースを実装する必要があります。
+-->
+<!ATTLIST attribute name CDATA #REQUIRED>
+
+<!-- type属性は、attribute要素で定義するBean属性の型を指定します。
+service要素で登録するServiceに、name属性で定義した属性名に対するsetterが用意
+されている場合は、省略可能です。但し、DOMのElementをそのまま設定したい場合は、
+この属性に、"org.w3c.dom.Element"を指定する必要があります。
+service要素で登録するServiceに、name属性で定義した属性名に対するsetterが用意
+されていない場合で、Mapインタフェースを実装している場合に、String型以外の型で
+設定する必要がある場合は、この属性で型を定義します。
+また、service要素で登録するServiceに、name属性で定義した属性名に対するsetterが
+用意されている場合でも、そのsetterの引数の型と代入互換の関係にある別の型で設定
+したい場合などにも、この属性で必要な型を定義します。
+指定した型に該当するjava.beans.PropertyEditorが登録されていない場合は、
+値が設定されません。
+-->
+<!ATTLIST attribute type CDATA #IMPLIED>
+
+<!-- nullValue属性は、attribute要素で定義する属性の値がnullである事を指定します。
+attribute要素が表す値がnullである場合に、trueを指定します。
+-->
+<!ATTLIST attribute nullValue (true|false) "false">
+
+<!-- service-ref要素は、参照するServiceのサービス名を定義します。
+service-ref要素の内容に、サービス名を指定します。
+-->
+<!ELEMENT service-ref (#PCDATA)>
+
+<!-- manager-name属性は、service-ref要素で定義するサービスが登録されている
+manager要素のname属性を指定する。
+service-ref要素の親要素のmanagerの子要素に存在しないservice要素
+を参照する場合に、そのservice要素の親要素となっているmanager要素のname属性を指
+定する。同じmanager要素内のservice要素を参照する場合には、省略可能である。
+-->
+<!ATTLIST service-ref manager-name CDATA #IMPLIED>
+
+<!-- depends要素は、service要素で登録するServiceが、依存しているServiceを定義し
+ます。
+depends要素の内容に、Serviceの名前を指定します。
+また、service要素を記述する事もできるので、Serviceの定義を直接書く事もできます。
+この要素が指定されている場合は、依存するServiceの状態に追随して起動されます。
+他ServiceManagerのServiceに依存している場合には、そのServiceが起動されるまで、
+待機します。
+また、Serviceの停止及び破棄では、依存されているServiceの状態に追随しで、停止、
+及び破棄されます。他ServiceManagerのServiceに依存されている場合には、
+他ServiceManagerの状態に関わらず、そのServiceを停止、及び破棄します。
+
+例:
+   <service code="hoge.MyService" name="MyService">
+      <depends>MyService2</depends>
+   </service>
+   
+   <service code="hoge.MyService" name="MyService">
+      <depends>Manager2#MyService2</depends>
+   </service>
+
+   <service code="hoge.MyService" name="MyService">
+      <depends manager-name="Manager2">
+         <service code="hoge.MyService2" name="MyService2">
+         ...
+         </service>
+      </depends>
+   </service>
+-->
+<!ELEMENT depends (#PCDATA | service)*>
+
+<!-- manager-name属性は、depends要素で定義する依存サービスが登録されている
+manager要素のname属性を指定する。
+depends要素の親要素のservice要素の親要素managerの子要素に存在しないservice要素
+を参照する場合に、そのservice要素の親要素となっているmanager要素のname属性を指
+定する。同じmanager要素内のservice要素をdependsする場合には、省略可能である。
+-->
+<!ATTLIST depends manager-name CDATA #IMPLIED>
+
+<!-- optional-config要素は、ユーザが任意のフォーマットでServiceの構成情報を定義
+します。
+ここで、設定した情報は、ServiceManager#getServiceMetaData(String)で取得できる
+ServiceMetaDataのServiceMetaData#getOptionalConfig()でorg.w3c.dom.Elementが取得
+できます。
+-->
+<!ELEMENT optional-config ANY>
+
+<!-- invoke要素は、service要素で登録するServiceやobject要素で生成する
+オブジェクトのメソッド実行属性を定義します。
+invoke要素の子要素にargument要素を指定します。引数ありのメソッドを実行したい
+場合に指定します。
+この要素がconstructor要素またはtarget要素の子要素として現れる場合のみ、子要素にtarget要素を持つ事ができます。target要素では、呼び出し対象のオブジェクトを指定します。
+Serviceやオブジェクトには、該当するメソッドを実装しておく必要があります。
+-->
+<!ELEMENT invoke (target?, argument*)>
+
+<!-- name属性は、invoke要素で実行するメソッド名を定義します。
+-->
+<!ATTLIST invoke name CDATA #REQUIRED>
+
+<!-- callState属性は、invoke要素で実行するメソッドが実行されるタイミングを定義します。
+但し、この属性は、service要素の子要素として定義したinvoke要素でのみ有効です。
+-->
+<!ATTLIST invoke callState (Creating|Created|Starting|Started|Stopping|Stopped|Destorying|Destroyed) "Created">
+
+<!-- target要素は、invoke要素でメソッド呼び出しを行う対象のオブジェクトを定義します。
+-->
+<!ELEMENT target (object | service-ref | invoke | static-invoke | static-field-ref)*>
+
+<!-- static-invoke要素は、staticメソッドの呼び出しを定義します。
+static-invoke要素の子要素にargument要素を指定します。引数ありのメソッドを実行したい
+場合に指定します。
+-->
+<!ELEMENT static-invoke (argument*)>
+
+<!-- code属性は、static-invoke要素で実行するstaticメソッドが宣言されているクラス名を定義します。
+-->
+<!ATTLIST static-invoke code CDATA #REQUIRED>
+
+<!-- name属性は、static-invoke要素で実行するstaticメソッド名を定義します。
+-->
+<!ATTLIST static-invoke name CDATA #REQUIRED>
+
+<!-- static-field-ref要素は、staticフィールド参照を定義します。
+static-field-ref要素のcode属性でクラス名を、name属性でフィールド名を定義します。
+-->
+<!ELEMENT static-field-ref EMPTY>
+
+<!-- code属性は、static-field-ref要素で参照するstaticフィールドが宣言されているクラス名を指定します。
+-->
+<!ATTLIST static-field-ref code CDATA #REQUIRED>
+
+<!-- name属性は、static-field-ref要素で参照するstaticフィールド名を指定します。
+-->
+<!ATTLIST static-field-ref name CDATA #REQUIRED>
+
+<!-- object要素は、生成する任意のオブジェクトを定義します。
+この要素で定義されたオブジェクトは、ServiceManagerには登録されない点が、
+service要素とは異なる点です。
+-->
+<!ELEMENT object (constructor? | field* | attribute* | invoke* | ifdef*)*>
+
+<!-- code属性は、object要素で生成するオブジェクトの実装クラス名を完全修飾名で
+定義します。
+-->
+<!ATTLIST object code CDATA #REQUIRED>
+
+<!-- ifdef要素は、子要素を有効にする条件をを定義します。
+-->
+<!ELEMENT ifdef ANY>
+
+<!-- name属性は、条件となる環境変数名を定義します。
+ここで言う環境変数は、JVMのシステムプロパティ、server-property要素で指定した変数、manager-property要素で指定した変数を指します。
+-->
+<!ATTLIST ifdef name CDATA #REQUIRED>
+
+<!-- value属性は、条件となる環境変数値を定義します。
+-->
+<!ATTLIST ifdef value CDATA #REQUIRED>

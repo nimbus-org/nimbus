@@ -1,0 +1,69 @@
+IOC__00001,state infomation "@0".,0,FRAMEWORK
+IOC__00002,UnitOfWork called.,0,FRAMEWORK
+IOC__00003,Command called.,0,FRAMEWORK
+IOC__00004,Interceptor invoke Start ! key is "@0",0,FRAMEWORK
+IOC__00005,Facade TergetUnchecked exception (@0),0,FRAMEWORK
+IOC__00006,Command invokeCommand start!,0,FRAMEWORK
+IOC__00007,Command createInterceptorInvoker return null so directly invoke.,0,FRAMEWORK
+IOC__00008,Command invoke InterceptorChainInvoker's invokeChain method,0,FRAMEWORK
+IOC__00009,At InvokeCommand interceptor an Exception Occured,0,FRAMEWORK
+IOC__00010,At InvokeCommand Checked an Exception Occured,0,FRAMEWORK
+IOC__00011,At InvokeCommand Unchecked an Exception Occured,0,FRAMEWORK
+IOC__00012,Command invokeCommand end!,0,FRAMEWORK
+IOC__00013,In invokeBeanFlow  key is "@0".,0,FRAMEWORK
+IOC__00014,In invokeBeanFlow  Fail to get BeanFlow,0,FRAMEWORK
+IOC__00015,In invokeUnitOfWork  Child UnitOfWork Called.,0,FRAMEWORK
+IOC__00016,In Child UnCheckException Occure.,0,FRAMEWORK
+IOC__00017,In Child CheckException Occure.,0,FRAMEWORK
+IOC__00018,In Child CheckException Occure.,0,FRAMEWORK
+IOC__00019,In Child UnCheckException Occure.,0,FRAMEWORK
+IOC__00020,RollbackOnly.,0,FRAMEWORK
+IOC__00021,Skip Invoke Command because bodore Command Exception,0,FRAMEWORK
+AOP__00001,set CallBackClass name is @0 ,0,FRAMEWORK
+AOP__00002,set CallBack Method name is @0 ,0,FRAMEWORK
+AOP__00003,set Parameter Class name is @0 ,0,FRAMEWORK
+AOP__00004,Callback Class Setting Complete,0,FRAMEWORK
+AOP__00005,Interceptor Config file name is @0,0,FRAMEWORK
+AOP__00006,Interceptor Config Complete that file name is @0,0,FRAMEWORK
+AOP__00007,Interceptor Matting find key "@0" ServiceName is "@1" ,0,FRAMEWORK
+AOP__00008,invokeChain start.,0,FRAMEWORK
+AOP__00009,interceptor num is "@0",0,FRAMEWORK
+AOP__00010,invoke Interceptor."@0",0,FRAMEWORK
+AOP__00011,invoke Target's callback Method (@0).,0,FRAMEWORK
+AOP__00012,invoke Target's callback Method (@0). successfully ends,0,FRAMEWORK
+AOP__00013,InterceptorChainList is null,0,FRAMEWORK
+AOP__00014,callBackObject is null,0,FRAMEWORK
+AOP__00015,CallBackmethod is null,0,FRAMEWORK
+AOP__00016,InvocationTargetException,0,FRAMEWORK
+AOP__00017,InvocationTargetException,0,FRAMEWORK
+AOP__00018,InvocationTargetException,0,FRAMEWORK
+AOP__00019,root callback error,0,FRAMEWORK
+AOP__00020,root callback error,0,FRAMEWORK
+AOP__00021,root callback error,0,FRAMEWORK
+JDBCR00001,Getting Connection From DataSource. auto commit mode is @0 .,0,FRAMEWORK
+JDBCR00002,Set auto commit @0 to Connection.,0,FRAMEWORK
+JDBCR00003,setAutoCommit Failed.,0,FRAMEWORK
+BEANF00001,JobStep: getter name is "@0",0,FRAMEWORK
+BEANF00002,JobStep: getMethod successfully ends classname is "@0" and getter name is "@1",0,FRAMEWORK
+BEANF00003,JobStep: getMethod failed. Caught SecurityException. Classname is @0 and gettername is @1. ,0,FRAMEWORK
+BEANF00004,JobStep: getMethod failed. Caught NoSuchMethodException. Classname is @0 and gettername is @1.,0,FRAMEWORK
+SCH0000200202,Not Exsist doing Process wait,0,FRAMEWORK
+SCH0000200203,Exsist doing Process wait,0,FRAMEWORK
+SCH0000200301,Enter consume,0,FRAMEWORK
+SCH0000200302,Start Query TaskInfo,0,FRAMEWORK
+SCH0000200303,Exsist Task FlowName = "@0",0,FRAMEWORK
+SCH0000200304,Enter Unsync Facade ,0,FRAMEWORK
+SCH0000200305,Task Not Found ,0,FRAMEWORK
+SCH0000200306,Somthing error occure,0,FRAMEWORK
+WOUGN0600002002,SMTP Server [@0] is Stop State,20,FRAMEWORK
+WOUGN0600002003,SMTP Server [@0] is Wrong State statecode = [@1] ,20,FRAMEWORK
+WOUGN0600002004,SMTP Server [@0] is Normal State ,20,FRAMEWORK
+WOUGN0600002005,SMTP Server [@0] occure HelthCheck Timeout ,20,FRAMEWORK
+WOUGN0600002006,SMTP Server [@0] occure HelthCheck Socket Exception ,20,FRAMEWORK
+WOUGN0600002007,SMTP Server [@0] occure HelthCheck I/O Exception ,20,FRAMEWORK
+WOUGN0600002008,SMTP Server [@0] occure HelthCheck CLOSE ERROR ,20,FRAMEWORK
+MAIL000001,MAILHEADER Setting ERROR ,0,FRAMEWORK
+MAIL000002,SEND MAIL ERROR ,0,FRAMEWORK
+MAIL000003,Alive SmtpServer not Found ,0,FRAMEWORK
+MAIL000004,Mail Header set is normal end ,0,FRAMEWORK
+MAIL000005,Mail Send Normal end ,0,FRAMEWORK

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+
+<server>
+    
+    <manager>
+
+        
+        <service name="FilterInterceptorChainList"
+                 code="jp.ossc.nimbus.service.aop.DefaultInterceptorChainListService">
+            <attribute name="InterceptorServiceNames">
+                #HttpServletResponseDeflateInterceptor
+                #StreamExchangeInterceptor
+            </attribute>
+            <depends>
+                <service name="StreamExchangeInterceptor"
+                         code="jp.ossc.nimbus.service.aop.interceptor.servlet.StreamExchangeInterceptorService">
+                    <attribute name="ResponseContentType">text/xml; charset=UTF-8</attribute>
+                    <attribute name="RequestStreamConverterServiceName">#DataSetXMLConverter</attribute>
+                    <attribute name="ResponseStreamConverterServiceName">#DataSetXMLConverter</attribute>
+                    <depends>
+                        <service name="DataSetXMLConverter"
+                                 code="jp.ossc.nimbus.util.converter.DataSetXMLConverter">
+                            <attribute name="OutputSchema">false</attribute>
+                            <attribute name="DataSet(Login)">
+                                <object code="jp.ossc.nimbus.beans.dataset.DataSet">
+                                    <attribute name="HeaderSchema(UserInfo)">
+                                        :name,java.lang.String,,,
+                                        :password,java.lang.String,,,
+                                    </attribute>
+                                </object>
+                            </attribute>
+                        </service>
+                    </depends>
+                </service>
+            </depends>
+            <depends>
+                <service name="HttpServletResponseDeflateInterceptor"
+                         code="jp.ossc.nimbus.service.aop.interceptor.servlet.HttpServletResponseDeflateInterceptorService"/>
+            </depends>
+        </service>
+        
+    </manager>
+    
+</server>

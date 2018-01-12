@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager>
+        <service name="BeanFlowInvokerFactory"
+                 code="jp.ossc.nimbus.service.beancontrol.DefaultBeanFlowInvokerFactoryService">
+            <attribute name="DirPaths">beanflow</attribute>
+            <attribute name="ResourceManagerFactoryServiceName">#CommandResourceManager</attribute>
+            <depends>CommandResourceManager</depends>
+        </service>
+        <service name="BeanFlowInvokerFactory_DI"
+                 code="jp.ossc.nimbus.service.beancontrol.DefaultBeanFlowInvokerFactoryService">
+            <attribute name="DirPaths">beanflow</attribute>
+            <attribute name="ResourceManagerFactory">
+                <service-ref>#CommandResourceManager</service-ref>
+            </attribute>
+            <depends>CommandResourceManager</depends>
+        </service>
+        <service name="CommandResourceManager"
+                 code="jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactoryService">
+            <attribute name="ImplementsClassName">
+                jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerImpl
+            </attribute>
+        </service>
+    </manager>
+</server>

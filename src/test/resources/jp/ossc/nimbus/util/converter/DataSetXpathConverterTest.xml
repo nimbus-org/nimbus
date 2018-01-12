@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<root attribute="ATTR">
+    <children attribute="ATTR1">
+        <child attribute="ATTR1-1">テキスト1-1</child>
+        <child attribute="ATTR1-2">テキスト1-2</child>
+        <child attribute="ATTR1-3">テキスト1-3</child>
+    </children>
+    <children attribute="ATTR2">
+        <child attribute="ATTR2-1">テキスト2-1</child>
+        <child attribute="ATTR2-2">テキスト2-2</child>
+        <child attribute="ATTR2-3">テキスト2-3</child>
+    </children>
+    <children attribute="ATTR3">
+        <child attribute="ATTR3-1">テキスト3-1</child>
+        <child attribute="ATTR3-2">テキスト3-2</child>
+        <child attribute="ATTR3-3">テキスト3-3</child>
+    </children>
+</root>

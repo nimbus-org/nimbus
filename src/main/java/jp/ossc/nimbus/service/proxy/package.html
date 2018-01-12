@@ -1,0 +1,24 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus プロキシ パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>プロキシサービス</b>を提供します。<p>
+リモートサーバ上のサービスをあたかもローカルにあるサービスのように呼び出すプロキシ機能を提供します。<br>
+クライアント側のプロキシと、サーバ側のプロキシが存在し、各プロキシには、<b><a href="../aop/Interceptor.html">インターセプタ</a></b>を挟み込む機能を持ちます。<br>
+また、クライアントプロキシには、サーバプロキシを呼び出すための<b><a href="../aop/Invoker.html">Invoker</a></b>機能があり、自由に差し替える事ができます。<br>
+同様に、サーバプロキシにも、呼び出し対象のサービスを呼び出すための<b><a href="../aop/Invoker.html">Invoker</a></b>機能があり、自由に差し替える事ができます。<br>
+<p>
+クライアントプロキシとしては、<a href="RemoteClientService.html">RemoteClientService</a>を用意しています。<br>
+サーバプロキシとしては、以下のものを用意してます。<br>
+<ul>
+<li>RMIを使用する<a href="RemoteServiceServerService.html">RemoteServiceServerService</a></li>
+<li>EJBを使用する<a href="RemoteServiceServerSessionBean.html">RemoteServiceServerSessionBean</a></li>
+</ul>
+また、プロキシのInvokerについては、<a href="invoker/package-summary.html">プロキシサービス用のInvokerサービス</a>を参照して下さい。<br>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<flows>
+	<flow name="DefaultBeanFlowInvokerFactoryServiceTest1">
+		<step name="step1" 
+        		className="jp.ossc.nimbus.service.beancontrol.TestBeanFlow1"
+        		methodName="execute"
+        		type="new">
+		</step>
+		<step name="step2" 
+        		className="jp.ossc.nimbus.service.beancontrol.TestBeanFlow2"
+        		methodName="execute"
+                getterName="getValue"
+        		type="new">
+            <attribute name="Value" type="step" value="step1#getValue"></attribute>
+		</step>
+	</flow>
+</flows>

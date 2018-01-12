@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+<server>
+<!--
+    HTTPでリクエストを送って、HTMLをDOMとして取得するサンプル
+-->
+    <default-log>
+        <information output="false"/>
+    </default-log>
+    <manager>
+        <service name="HttpClientFactory"
+                 code="jp.ossc.nimbus.service.http.httpclient.HttpClientFactoryService">
+            <attribute name="ConnectionTimeout">500</attribute>
+            <attribute name="RequestContentType">application/x-www-form-urlencoded</attribute>
+            <attribute name="ResponseStreamConverterServiceName">#ResponseStreamConverter</attribute>
+            <attribute name="SequenceServiceName">#Sequence</attribute>
+            <attribute name="JournalServiceName">#Journal</attribute>
+            <attribute name="ThreadContextServiceName">#Context</attribute>
+            <attribute name="SemaphoreServiceName">#Semaphore</attribute>
+            <attribute name="Proxy">localhost:8280</attribute>
+            <attribute name="Request(help)">
+                <object code="jp.ossc.nimbus.service.http.httpclient.PostHttpRequestImpl">
+                    <attribute name="URL">http://10.250.1.12:8180/cds/user_contents/web/html/tilettl_help_actcusemldelaccept_desc.html</attribute>
+                    <attribute name="Parameter(param)">sysmgr</attribute>
+                    <attribute name="Parameter(param2)">あああ</attribute>
+                </object>
+            </attribute>
+<!--
+            <attribute name="Request(loginPage)">
+                <object code="jp.ossc.nimbus.service.http.httpclient.GetHttpRequestImpl">
+                    <attribute name="URL">http://10.250.1.12/bluetrade/loginInit.do</attribute>
+                    <attribute name="DoAuthentication">true</attribute>
+                </object>
+            </attribute>
+            <attribute name="Request(login)">
+                <object code="jp.ossc.nimbus.service.http.httpclient.PostHttpRequestImpl">
+                    <attribute name="URL">http://10.250.1.12/bluetrade/login.do</attribute>
+                    <attribute name="Parameter(sectionCode)">022</attribute>
+                    <attribute name="Parameter(account)">059641</attribute>
+                    <attribute name="Parameter(password)">059641</attribute>
+                </object>
+            </attribute>
+            <invoke name="setCredentials">
+                <argument>
+                    <object code="org.apache.commons.httpclient.auth.AuthScope">
+                        <constructor>
+                            <argument>10.250.1.12</argument>
+                            <argument type="int">80</argument>
+                        </constructor>
+                    </object>
+                </argument>
+                <argument type="org.apache.commons.httpclient.Credentials">
+                    <object code="org.apache.commons.httpclient.UsernamePasswordCredentials">
+                        <constructor>
+                            <argument>admin</argument>
+                            <argument>1472580</argument>
+                        </constructor>
+                    </object>
+                </argument>
+            </invoke>
+-->
+            <depends>
+                <service name="ResponseStreamConverter"
+                         code="jp.ossc.nimbus.util.converter.StringStreamConverter">
+                    <attribute name="CharacterEncodingToObject">Windows-31J</attribute>
+                </service>
+<!--
+                <service name="ResponseStreamConverter"
+                         code="jp.ossc.nimbus.util.converter.DOMHTMLConverter"/>
+-->
+            </depends>
+            <depends>
+                <service name="Sequence"
+                         code="jp.ossc.nimbus.service.sequence.StringSequenceService">
+                    <attribute name="format">%HOST_NAME%;_;0,0;0,9;0,9;0,9;0,9;0,9;0,9;0,9</attribute>
+                    <attribute name="ContextServiceName">#ServerInfo</attribute>
+                    <depends>
+                        <service name="ServerInfo"
+                                 code="jp.ossc.nimbus.service.context.ServerInfoService"/>
+                    </depends>
+                </service>
+            </depends>
+            <depends>
+         		<service name="Context"
+                  		code="jp.ossc.nimbus.service.context.ThreadContextService">
+             		<attribute name="HOME_PATH">/home</attribute>
+             		<attribute name="DOMAIN">nimbus.ossc.jp</attribute>
+         		</service>
+            </depends>
+            <depends>
+         		<service name="Semaphore"
+                  		code="jp.ossc.nimbus.service.semaphore.DefaultSemaphoreService">
+         		</service>
+            </depends>
+            <depends>Journal</depends>
+            <depends>TestProxyServer</depends>
+        </service>
+        
+        <service name="TestProxyServer"
+                 code="jp.ossc.nimbus.service.http.proxy.ProxyServerService">
+            <attribute name="Port">8280</attribute>
+<!--
+            <attribute name="SoTimeout">1000</attribute>
+-->
+            <attribute name="ProcessServiceName">#TestProcess</attribute>
+            <depends>TestProcess</depends>
+        </service>
+        
+        <service name="TestProcess"
+                 code="jp.ossc.nimbus.service.http.proxy.TestHttpProcessService">
+            <invoke name="setAction">
+                <argument>
+                    @Header.URL@ == "http://10.250.1.12:8180/cds/user_contents/web/html/tilettl_help_actcusemldelaccept_desc.html"
+                </argument>
+                <argument>
+                    <object code="jp.ossc.nimbus.service.http.proxy.TestHttpProcessService$Action">
+                        <attribute name="RequestOutputFile">/tmp/service-sample/httpclient/help_output.txt</attribute>
+                        
+                        <attribute name="Header(Content-Type)">text/html;charset=Shift_JIS</attribute>
+                        <attribute name="ResponseBodyInputFile">/tmp/service-sample/httpclient/help_response.txt</attribute>
+                    </object>
+                </argument>
+            </invoke>
+        </service>
+        
+        <service name="Journal"
+                 code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService">
+            <attribute name="EditorFinderName">#JournalEditorFinder</attribute>
+            <attribute name="WritableElementKey">HttpClient</attribute>
+            <attribute name="CategoryServiceNames">
+                #JournalCategory
+                #ErrorJournalCategory
+            </attribute>
+            <depends>JournalEditorFinder</depends>
+            <depends>JournalCategory</depends>
+            <depends>ErrorJournalCategory</depends>
+        </service>
+        
+        <service name="JournalCategory"
+                 code="jp.ossc.nimbus.service.writer.SimpleCategoryService">
+            <attribute name="MessageWriterServiceName">#JournalWriter</attribute>
+            <attribute name="WritableRecordFactoryServiceName">#JournalWritableRecordFactory</attribute>
+            <depends>JournalWriter</depends>
+            <depends>JournalWritableRecordFactory</depends>
+        </service>
+        
+        <service name="ErrorJournalCategory"
+                 code="jp.ossc.nimbus.service.writer.EvaluateCategoryService">
+            <attribute name="WritableConditions">
+                @HttpClient.JournalRecords.Exception[0]@ != null or @HttpClient.JournalRecords.Response[0].JournalRecords.Status[0]@ != 200
+            </attribute>
+            <attribute name="MessageWriterServiceName">#ErrorJournalWriter</attribute>
+            <attribute name="WritableRecordFactoryServiceName">#ErrorJournalWritableRecordFactory</attribute>
+            <depends>ErrorJournalWriter</depends>
+            <depends>ErrorJournalWritableRecordFactory</depends>
+        </service>
+        
+        <service name="JournalWritableRecordFactory"
+                 code="jp.ossc.nimbus.service.writer.PropertyWritableRecordFactoryService">
+            <attribute name="FormatKeyMapping">
+                DATE=HttpClient.StartTime
+                REQUEST_ID=HttpClient.RequestID
+                URL=HttpClient.JournalRecords.Request[0].JournalRecords.URI[0]
+                COOKIE=HttpClient.JournalRecords.Request[0].JournalRecords.Cookies[0]
+                HEADER=HttpClient.JournalRecords.Request[0].JournalRecords.Headers[0]
+                PARAM=HttpClient.JournalRecords.Request[0].JournalRecords.Parameters[0]
+                STATUS=HttpClient.JournalRecords.Response[0].JournalRecords.Status[0]
+                PERFORMANCE=HttpClient.Performance
+            </attribute>
+            <attribute name="Format">""%DATE%","%REQUEST_ID%","%URL%","%COOKIE%","%HEADER%","%PARAM%","%PERFORMANCE%""</attribute>
+            <attribute name="ImplementServiceNames">
+                DATE=#NormalDateElement
+            </attribute>
+            <depends>
+                <service name="NormalDateElement"
+                         code="jp.ossc.nimbus.service.writer.DateElement"
+                         instance="factory">
+                    <attribute name="Format">yyyy/MM/dd HH:mm:ss.SSS</attribute>
+                </service>
+            </depends>
+        </service>
+        
+        <service name="ErrorJournalWritableRecordFactory"
+                 code="jp.ossc.nimbus.service.writer.PropertyWritableRecordFactoryService">
+            <attribute name="FormatKeyMapping">
+                DATE=HttpClient.StartTime
+                REQUEST_ID=HttpClient.RequestID
+                URL=HttpClient.JournalRecords.Request[0].JournalRecords.URI[0]
+                COOKIE=HttpClient.JournalRecords.Request[0].JournalRecords.Cookies[0]
+                HEADER=HttpClient.JournalRecords.Request[0].JournalRecords.Headers[0]
+                PARAM=HttpClient.JournalRecords.Request[0].JournalRecords.Parameters[0]
+                STATUS=HttpClient.JournalRecords.Response[0].JournalRecords.Status[0]
+                BODY=HttpClient.JournalRecords.Response[0].JournalRecords.Body[0]
+                PERFORMANCE=HttpClient.Performance
+                EXCEPTION=HttpClient.JournalRecords.Exception[0]
+            </attribute>
+            <attribute name="Format">時刻=%DATE%${line.separator}リクエスト通番=%REQUEST_ID%${line.separator}リクエストURL=%URL%${line.separator}Cookie=%COOKIE%${line.separator}HTTPヘッダ=%HEADER%${line.separator}リクエストパラメータ=%PARAM%${line.separator}レスポンスステータス=%STATUS%${line.separator}レスポンス内容=${line.separator}%BODY%${line.separator}処理時間=%PERFORMANCE%${line.separator}発生例外=%EXCEPTION%</attribute>
+            <attribute name="ImplementServiceNames">
+                DATE=#ErrorDateElement
+            </attribute>
+            <depends>
+                <service name="ErrorDateElement"
+                         code="jp.ossc.nimbus.service.writer.DateElement"
+                         instance="factory">
+                    <attribute name="Format">yyyyMMddHHmmssSSS</attribute>
+                </service>
+            </depends>
+        </service>
+        
+        <service name="JournalWriter"
+                 code="jp.ossc.nimbus.service.writer.log4j.CustomizedRollingFileAppenderWriterService">
+            <attribute name="Append">true</attribute>
+            <attribute name="BufferedIO">false</attribute>
+            <attribute name="File">target/temp/journal%INDEX%.log</attribute>
+            <attribute name="ImmediateFlush">true</attribute>
+            <attribute name="Encoding">Windows-31J</attribute>
+            <attribute name="Header"></attribute>
+            <attribute name="MaximumFileSize">10485760</attribute>
+            <attribute name="MaxBackupIndex">100</attribute>
+        </service>
+        
+        <service name="ErrorJournalWriter"
+                 code="jp.ossc.nimbus.service.writer.OneWriteFileMessageWriterService">
+            <attribute name="Encoding">Windows-31J</attribute>
+            <attribute name="File">target/temp/error-journal/journal-error</attribute>
+            <attribute name="FilePostfix">_%DATE%_%REQUEST_ID%.log</attribute>
+        </service>
+        
+        <service name="JournalEditorFinder"
+                 code="jp.ossc.nimbus.service.journal.editorfinder.ObjectMappedEditorFinderService">
+            <attribute name="EditorProperties">
+                java.lang.Object=#ObjectJournalEditor
+                java.lang.String[]=#ObjectArrayJournalEditor
+                javax.servlet.http.Cookie[]=#CookieArrayJournalEditor
+                javax.servlet.http.Cookie=#BeanJournalEditor
+                java.util.Map,Headers=#MapJournalEditor
+                java.util.Map,Parameters=#MapJournalEditor
+                java.lang.Throwable=#ThrowableJournalEditor
+                jp.ossc.nimbus.service.journal.RequestJournal=#RequestJournalEditor
+            </attribute>
+            <depends>ObjectJournalEditor</depends>
+            <depends>ObjectArrayJournalEditor</depends>
+            <depends>CookieArrayJournalEditor</depends>
+            <depends>BeanJournalEditor</depends>
+            <depends>MapJournalEditor</depends>
+            <depends>ThrowableJournalEditor</depends>
+            <depends>RequestJournalEditor</depends>
+        </service>
+        
+        <service name="RequestJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.SimpleRequestMapJournalEditorService">
+            <attribute name="OutputRequestId">true</attribute>
+            <attribute name="OutputStartTime">true</attribute>
+            <attribute name="OutputRecords">true</attribute>
+            <attribute name="OutputEndTime">false</attribute>
+            <attribute name="OutputPerformance">true</attribute>
+        </service>
+        
+        <service name="ObjectJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.MutableObjectJournalEditorService"/>
+        
+        <service name="ObjectArrayJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.ObjectArrayJournalEditorService">
+            <attribute name="StartDelimiter">[</attribute>
+            <attribute name="EndDelimiter">]</attribute>
+            <attribute name="StartValueDelimiter">'</attribute>
+            <attribute name="EndValueDelimiter">'</attribute>
+        </service>
+        
+        <service name="CookieArrayJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.ObjectArrayJournalEditorService">
+            <attribute name="StartDelimiter">[</attribute>
+            <attribute name="EndDelimiter">]</attribute>
+            <attribute name="StartValueDelimiter"></attribute>
+            <attribute name="EndValueDelimiter"></attribute>
+        </service>
+        
+        <service name="BeanJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.BeanJournalEditorService">
+            <attribute name="OutputIndent">false</attribute>
+            <attribute name="OutputHeader">false</attribute>
+            <attribute name="OutputBlockLineSeparator">false</attribute>
+            <attribute name="OutputPropertyType">false</attribute>
+            <attribute name="StartBlockSeparator"></attribute>
+            <attribute name="EndBlockSeparator"></attribute>
+            <attribute name="StartValueDelimiter">'</attribute>
+            <attribute name="EndValueDelimiter">'</attribute>
+            <attribute name="PropertyDelimiter">,</attribute>
+            <attribute name="EnabledProperties">
+                Name,
+                Value
+            </attribute>
+        </service>
+        
+        <service name="MapJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.MapJournalEditorService">
+            <attribute name="SecretKeys">password</attribute>
+            <attribute name="StartValueDelimiter">'</attribute>
+            <attribute name="EndValueDelimiter">'</attribute>
+        </service>
+        
+        <service name="ThrowableJournalEditor"
+                 code="jp.ossc.nimbus.service.journal.editor.ThrowableJournalEditorService"/>
+        
+    </manager>
+</server>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="Shift_JIS" ?> 
+<server>
+    <manager name="TheManager">
+       
+       <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="MessageService">
+	       <attribute name="MessageDirPaths">jp/ossc/nimbus/service/log/def</attribute>
+       		<attribute name="ExtentionOfMessageFile">def</attribute>
+       		<attribute name="MessageRecordClassName">jp.ossc.nimbus.service.log.LogMessageRecordImpl</attribute>
+       		<attribute name="SecretMode">true</attribute>
+       </service>
+       
+       
+       <service code="jp.ossc.nimbus.service.queue.DefaultQueueService" name="BusinessJournalQueue">
+        </service>
+	    <service code="jp.ossc.nimbus.service.log.LogWritableRecordFactoryService" name ="LogWritableRecordFactory">
+		    <attribute name = "ImplementClasses">
+		    	MESSAGE=jp.ossc.nimbus.service.writer.SimpleElement
+		    	SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		    	DATE=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name="Format">%DATE%:Message:%MESSAGE% CODE:%CODE% PRIORITY:%PRIORITY% CATEGORY:%CATEGORY%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer1">
+            <attribute name="File">target/temp/LogServiceTest1.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">10240</attribute>
+            <attribute name="MaxBackupIndex">5</attribute>
+        </service>
+        
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer2">
+            <attribute name="File">target/temp/LogServiceTest2.log</attribute>
+            <attribute name="MaximumFileSize">2048</attribute>
+        </service>
+       
+      <!-- 新定義 -->
+      <service code="jp.ossc.nimbus.service.log.LogService" name="LogService">
+       		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       		<depends>ApplicationCategory</depends>
+       </service>
+       
+      <!-- 新定義 MessageRecordFactoryの指定なし-->
+      <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceNoMessageRecordService">
+       		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>ApplicationCategory</depends>
+       </service>
+       
+      <!-- 新定義(setDefaultMessageWriterServiceName()のテスト) -->
+      <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForSetDefaultMessageWriterServiceTest">
+       		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<attribute name="DefaultMessageWriterServiceName">#Writer3</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       		<depends>ApplicationCategory</depends>
+       		<depends>Writer3</depends>
+       </service>
+       
+      <!-- 新定義(様々なwrite()メソッドを試すテスト) -->
+      <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForWriteMethodsTst">
+       		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<attribute name="DefaultMessageWriterServiceName">#Writer4</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       		<depends>ApplicationCategory</depends>
+       		<depends>Writer4</depends>
+       </service>
+       
+       
+       LogServiceForWriteMethodsTst
+       
+      <!-- 新定義(setDefaultWritableRecordFactoryServiceName()のテスト) -->
+      <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForsetDefaultWritableRecordFactoryServiceName">
+       		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<attribute name="DefaultWritableRecordFactoryServiceName">#LogWritableRecordFactoryDefaultChTst</attribute>
+       		<attribute name="DefaultMessageWriterServiceName">#Writer3</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       		<depends>ApplicationCategory</depends>
+       		<depends>LogWritableRecordFactoryDefaultChTst</depends>
+       		<depends>Writer3</depends>
+       </service>
+       
+      <!-- 新定義(setContextServiceNameのテスト) -->
+      <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForsetContextServiceName">
+       		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<attribute name="DefaultWritableRecordFactoryServiceName">#LogWritableRecordFactoryDefaultChTst</attribute>
+       		<attribute name="DefaultMessageWriterServiceName">#Writer3</attribute>
+       		<!-- Contextサービスをセット -->
+       		<attribute name="ContextServiceName">#ThreadContextService</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       		<depends>ApplicationCategory</depends>
+       		<depends>LogWritableRecordFactoryDefaultChTst</depends>
+       		<depends>Writer3</depends>
+       		<depends>ThreadContextService</depends>
+       </service>
+  
+       <service code="jp.ossc.nimbus.service.context.ThreadContextService" name="ThreadContextService">
+       </service>     
+       
+       <service code="jp.ossc.nimbus.service.log.LogService" name="LogDebugService">
+       		<attribute name="SystemDebugEnabled">true</attribute>
+       </service>
+       
+       <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForSystemMethodTest">
+       </service>
+		
+	  <service code="jp.ossc.nimbus.service.log.LogService" name="LogService2">
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       </service>
+       
+       <service code="jp.ossc.nimbus.service.log.LogService" name="LogService3">
+       		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+       		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
+       		<depends>BusinessJournalQueue</depends>
+       		<depends>MessageService</depends>
+       </service>
+       
+       <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer3">
+            <attribute name="File">target/temp/LogServiceTest3.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">102400</attribute>
+            <attribute name="MaxBackupIndex">0</attribute>
+       </service>
+       <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer4">
+            <attribute name="File">target/temp/LogServiceTest4.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">102400</attribute>
+            <attribute name="MaxBackupIndex">0</attribute>
+       </service>
+        
+        
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="SystemDebugWriter">
+            <attribute name="File">target/temp/LogServiceSystemDebug.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">102400</attribute>
+            <attribute name="MaxBackupIndex">0</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="SystemInfoWriter">
+            <attribute name="File">target/temp/LogServiceSystemInfo.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">102400</attribute>
+            <attribute name="MaxBackupIndex">0</attribute>
+        </service>
+        
+       <service code="jp.ossc.nimbus.service.log.LogWritableRecordFactoryService" name ="LogWritableRecordFactorySystemWarn">
+		    <attribute name = "ImplementClasses">
+		    	DATE=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name = "DateFormat">yyyy.MM.dd</attribute>
+		    <attribute name="Format">Message:%MESSAGE%  Date:%DATE%</attribute>
+        </service>
+        
+       <service code="jp.ossc.nimbus.service.log.LogWritableRecordFactoryService" name ="LogWritableRecordFactoryDefaultChTst">
+		    <attribute name = "ImplementClasses">
+		    	DATE=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name = "DateFormat">yyyy.MM.dd</attribute>
+		    <attribute name="Format">LogWritableRecordFactoryDefaultChTst:%MESSAGE%  Date:%DATE%</attribute>
+        </service>
+        
+        <!-- Categoryサービス -->
+        <service code="jp.ossc.nimbus.service.log.SimpleCategoryService" name="ApplicationCategory">
+            <attribute name="CategoryName">CATEGORY1</attribute>
+            <attribute name="MessageWriterServiceName">#Writer1</attribute>
+            <attribute name="WritableRecordFactoryServiceName">#LogWritableRecordFactory</attribute>
+            <attribute name="PriorityRange">50:100</attribute>
+            <attribute name="Labels">
+            	50:59=APPLICATION_DEBUG
+            	60:69=APPLICATION_INFORMATION
+            	70:79=APPLICATION_WARNING
+            	80:89=APPLICATION_ERROR
+            	90:100=APPLICATION_FATAL
+			</attribute>
+            <depends>Writer1</depends>
+            <depends>LogWritableRecordFactory</depends>
+        </service>
+       <!-- 新メッセージレコードファクトリーサービス定義 -->
+       
+       
+       <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="ApplicationMessage">
+            <attribute name="MessageFiles">Message1</attribute>
+            <attribute name="MessageRecordClassName">jp.ossc.nimbus.service.log.LogMessageRecordImpl</attribute>
+        </service>
+       
+             
+    </manager>
+</server>

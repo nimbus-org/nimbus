@@ -1,0 +1,2201 @@
+<?xml version = "1.0" encoding="Shift_JIS"?>
+<MessageResourceDefine>
+<Message name="" display="Textメッセージのリクエストリプライ" selectKey="1">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Byte)" selectKey="2">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Byte">30</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Byte"></item>
+		</payload>
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Bytes)" selectKey="3">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Bytes">303132333435</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Bytes"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Boolean)" selectKey="4">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Boolean">false</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Boolean"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Char)" selectKey="5">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Char">特</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Char"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Int)" selectKey="6">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Int">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Short)" selectKey="7">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Short">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Short"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Long)" selectKey="8">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Long">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Long"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Float)" selectKey="9">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Float">1.2345F</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Float"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Double)" selectKey="10">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Double">2.3456</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Double"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(UTF)" selectKey="11">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="UTF">Hello World</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="UTF"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Byte)" selectKey="12">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+				write("NG this is not expected val " + buf[i]);
+				throw new Exception();
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Byte">30</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Byte"></item>
+		</payload>
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Bytes)" selectKey="13">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Bytes">303132333435</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Bytes"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Boolean)" selectKey="14">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Boolean">false</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Boolean"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Char)" selectKey="15">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Char">特</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Char"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Int)" selectKey="16">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Int">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Short)" selectKey="17">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Short">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Short"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Long)" selectKey="18">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Long">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Long"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Float)" selectKey="19">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Float">1.2345F</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Float"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Double)" selectKey="20">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Double">2.3456</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Double"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(String)" selectKey="21">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="String">Hello World</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="String"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Bytesメッセージ(Object)" selectKey="22">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Int">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Object)" selectKey="23">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Int" >777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Object" wrappedType="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<Message name="" display="Streamメッセージ(Int) Fileのデータを使う" selectKey="24">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Int" resourceType="file">0</item>
+			<item type="Int" resourceType="file">1</item>
+			<item type="Int" resourceType="file">2</item>
+		</payload>
+		<payload>
+			<!--無視される-->
+			<item type="Int">999</item>
+			<item type="Short">888</item>
+			<item type="Long">777</item>
+			<item type="String">Hello World</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Int"></item>
+			<item type="Int"></item>
+			<item type="Int"></item>
+		</payload>
+		<payload>
+			<!--無視される-->
+			<item type="Int"></item>
+			<item type="Short"></item>
+			<item type="Long"></item>
+			<item type="String"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+
+<!--不正定義 ペイロードのitemに、type属性無し-->
+<!--
+<Message name="" display="Streamメッセージ(Object)" selectKey="26">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Int" >777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item wrappedType="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+-->
+
+<!--不正定義RecvDataエレメントに、payloadエレメント無し-->
+<!--
+<Message name="" display="Streamメッセージ(Int) Fileのデータを使う" selectKey="25">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Int" resourceType="file">0</item>
+			<item type="Int" resourceType="file">1</item>
+			<item type="Int" resourceType="file">2</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Streamメッセージ(Object)" selectKey="27">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Int" >777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Object"></item>
+		</payload>
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Streamメッセージ(Object)" selectKey="28">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Int" >777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Object" wrappedType="HogeHoge"></item>
+		</payload>
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Streamメッセージ(Object)" selectKey="29">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Object" wrappedType="Int"></item>
+		</payload>
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Streamメッセージ(Object)" selectKey="30">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item wrappedType="Int" >777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Object" wrappedType="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Bytesメッセージ(Object)" selectKey="31">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Bytesメッセージ(Object)" selectKey="32">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="PagePage">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Bytesメッセージ(Object)" selectKey="33">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Int" resourceType="file">0</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Bytesメッセージ(Object)" selectKey="34">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Hoge?" resourceType="file">0</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Int"></item>
+		</payload>
+	
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Mapメッセージ" selectKey="24">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test3.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Int" resourceType="file"></item>
+			<item name="map_payload2" type="Short" resourceType="file"></item>
+			<item name="map_payload3" type="Long" resourceType="file"></item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Objectメッセージ" selectKey="25">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test4.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+			<className>jp.co.nri.simulator.SampleObject</className>
+			<attribute name="Number" resourceType="file">0</attribute>
+			<attribute name="String" resourceType="file">1</attribute>
+		</payload>
+	</SendData>
+	<RecvData type="Object">	
+	</RecvData>
+</Message>
+-->
+
+<!-- 不正定義
+<Message name="" display="Textメッセージのリクエストリプライ" selectKey="35">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<Message name="" display="Mapメッセージ(Byte)" selectKey="36">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Byte">33</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Bytes)" selectKey="37">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Bytes">303132333435</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Boolean)" selectKey="38">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Boolean">false</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Short)" selectKey="39">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Short">999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Char)" selectKey="40">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Char">特</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	map_payload1
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Int)" selectKey="41">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Int">99999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Long)" selectKey="42">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+		if(type.equals(TYPE_BYTES_STR)){
+			if(propertyMode){
+				//プロパティに"Bytes"はない。
+				return -1;
+			}
+			return TYPE_BYTES;
+		}
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Long">99999</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Float)" selectKey="43">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Float">5.4321F</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Double)" selectKey="44">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Double">6.5432</item>
+正常
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(String)" selectKey="45">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="String">Hello World</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ(Object)" selectKey="46">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object" wrappedType="Int">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+<!-- wrappedType属性なし
+<Message name="" display="Mapメッセージ(Object)" selectKey="47">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+-->
+<!-- 不正なwrappedType
+<Message name="" display="Mapメッセージ(Object)" selectKey="48">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object" wrappedType="Hoge">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">	
+	</RecvData>
+</Message>
+-->
+<!-- resourceTypeがfileなのに、データファイルの指定なし。
+<Message name="" display="Textメッセージのリクエストリプライ" selectKey="49">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<!-- 不正なtype指定
+<Message name="" display="Textメッセージのリクエストリプライ" selectKey="50">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<prop>
+			<item name="prop1" type="Hoge">property1</item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<Message name="" display="Mapメッセージ" selectKey="51">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="Byte">30</item>
+			<item name="prop2" type="Boolean">false</item>
+			<item name="prop3" type="Short">999</item>
+			<item name="prop4" type="Int">99999</item>
+			<item name="prop5" type="Long">9999999</item>
+			<item name="prop6" type="Float">1.2345F</item>
+			<item name="prop7" type="Double">2.3456</item>
+			<item name="prop8" type="String">Hello World</item>
+			<item name="prop9" type="Object" wrappedType="Int">99999</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object" wrappedType="Int">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">
+	</RecvData>
+</Message>
+
+<Message name="" display="Mapメッセージ" selectKey="52">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test3.txt</inputfile>
+		<prop>
+			<item name="prop1" type="Byte">30</item>
+			<item name="prop2" type="Boolean">false</item>
+			<item name="prop3" type="Short">999</item>
+			<!-- prop4,prop5はファイルから読み込む -->
+			<item name="prop4" type="String" resourceType="file"></item>
+			<item name="prop5" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object" wrappedType="Int">777</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ" selectKey="53">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test3.txt</inputfile>
+		<prop>
+			<item name="prop1" type="Byte">30</item>
+			<item name="prop2" type="Boolean">false</item>
+			<item name="prop3" type="Short">999</item>
+			<!-- prop4,prop5はファイルから読み込む -->
+			<item name="prop4" type="String" resourceType="file"></item>
+			<item name="prop5" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object" wrappedType="Int">777</item>
+			<item name="map_payload2" type="String">See you again.</item>
+			<item name="map_payload3" type="Int">555</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ" selectKey="54">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test3.txt</inputfile>
+		<prop>
+			<item name="prop1" type="Byte">30</item>
+			<item name="prop2" type="Boolean">false</item>
+			<item name="prop3" type="Short">999</item>
+			<!-- prop4,prop5はファイルから読み込む -->
+			<item name="prop4" type="String" resourceType="file"></item>
+			<item name="prop5" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Int" resourceType="file"></item>
+			<item name="map_payload2" type="Short" resourceType="file"></item>
+			<item name="map_payload3" type="Long" resourceType="file"></item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ" selectKey="55">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test5.txt</inputfile>
+		<prop>
+			<item name="prop1" type="Byte">30</item>
+			<item name="prop2" type="Boolean">false</item>
+			<item name="prop3" type="Short">999</item>
+			<!-- prop4,prop5はファイルから読み込む -->
+			<item name="prop4" type="String" resourceType="file"></item>
+			<item name="prop5" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Int">1</item>
+			<item name="map_payload2" type="Short">2</item>
+			<item name="map_payload3" type="Long">3</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">
+	</RecvData>
+</Message>
+<Message name="" display="Mapメッセージ" selectKey="56">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Map">
+		<prop>
+			<item name="prop1" type="Byte">30</item>
+			<item name="prop2" type="Boolean">false</item>
+			<item name="prop3" type="Short">999</item>
+		</prop>
+		<payload>
+			<item name="map_payload1" type="Object" wrappedType="Byte">30</item>
+			<item name="map_payload2" type="Object" wrappedType="Bytes">30313233</item>
+			<item name="map_payload3" type="Object" wrappedType="Boolean">false</item>
+			<item name="map_payload4" type="Object" wrappedType="Char">誠</item>
+			<item name="map_payload5" type="Object" wrappedType="Short">999</item>
+			<item name="map_payload6" type="Object" wrappedType="Int">99999</item>
+			<item name="map_payload7" type="Object" wrappedType="Long">9999999</item>
+			<item name="map_payload8" type="Object" wrappedType="Float">1.2345F</item>
+			<item name="map_payload9" type="Object" wrappedType="Double">2.3456</item>
+			<item name="map_payload10" type="Object" wrappedType="String">Hello</item>
+		</payload>
+	</SendData>
+	<RecvData type="Map">
+	</RecvData>
+</Message>
+<Message name="" display="Bytesメッセージ(Object)" selectKey="57">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Bytes">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test2.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Byte">30</item>
+			<item type="Object" wrappedType="Bytes">30313233</item>
+			<item type="Object" wrappedType="Boolean">false</item>
+			<item type="Object" wrappedType="Char">技</item>
+			<item type="Object" wrappedType="Short">555</item>
+			<item type="Object" wrappedType="Int">55555</item>
+			<item type="Object" wrappedType="Long">5555555</item>
+			<item type="Object" wrappedType="Float">1.2345F</item>
+			<item type="Object" wrappedType="Double">2.3456</item>
+			<item type="Object" wrappedType="UTF">Hello</item>
+		</payload>
+	</SendData>
+	<RecvData type="Bytes">
+		<payload>
+			<item type="Byte"></item>
+			<item type="Bytes"></item>
+			<item type="Boolean"></item>
+			<item type="Char"></item>
+			<item type="Short"></item>
+			<item type="Int"></item>
+			<item type="Long"></item>
+			<item type="Float"></item>
+			<item type="Double"></item>
+			<item type="UTF"></item>
+		</payload>
+	</RecvData>
+</Message>
+<Message name="" display="Streamメッセージ(Object)" selectKey="58">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Stream">
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+		</prop>
+		<payload>
+			<item type="Object" wrappedType="Byte">30</item>
+			<item type="Object" wrappedType="Bytes">30313233</item>
+			<item type="Object" wrappedType="Boolean">false</item>
+			<item type="Object" wrappedType="Char">技</item>
+			<item type="Object" wrappedType="Short">555</item>
+			<item type="Object" wrappedType="Int">55555</item>
+			<item type="Object" wrappedType="Long">5555555</item>
+			<item type="Object" wrappedType="Float">1.2345F</item>
+			<item type="Object" wrappedType="Double">2.3456</item>
+			<item type="Object" wrappedType="String">Hello</item>
+		</payload>
+	</SendData>
+	<RecvData type="Stream">
+		<payload>
+			<item type="Byte"></item>
+			<item type="Bytes"></item>
+			<item type="Boolean"></item>
+			<item type="Char"></item>
+			<item type="Short"></item>
+			<item type="Int"></item>
+			<item type="Long"></item>
+			<item type="Float"></item>
+			<item type="Double"></item>
+			<item type="String"></item>
+		</payload>
+	</RecvData>
+</Message>
+<Message name="" display="Objectメッセージ" selectKey="59">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<prop>
+		</prop>
+		<payload>
+			<className>jp.ossc.nimbus.service.msgresource.PayloadObjectForTest</className>
+			<attribute name="IntNumber">55555</attribute>
+			<attribute name="ShortNumber">333</attribute>
+			<attribute name="LongNumber">7777777</attribute>
+			<attribute name="FloatNumber">1.2345F</attribute>
+			<attribute name="DoubleNumber">2.3456</attribute>
+			<attribute name="Boolean">false</attribute>
+			<attribute name="ByteNumber">99</attribute>
+			<attribute name="Message">Hello</attribute>
+			<attribute name="AwtColor">0,0,0</attribute>
+			<!-- <attribute name="AwtFont">plain,1,12</attribute> -->
+		</payload>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+<Message name="" display="Objectメッセージ　不正定義 attributeに不正なカラム値" selectKey="61">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test6.txt</inputfile>
+		<prop>
+		</prop>
+		<payload>
+			<className>jp.ossc.nimbus.service.msgresource.PayloadObjectForTest</className>
+			<attribute name="IntNumber" resourceType = "file">8</attribute>
+		</payload>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+<Message name="" display="Objectメッセージ　不正定義 attributeに不正なカラム値" selectKey="62">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test6.txt</inputfile>
+		<prop>
+		</prop>
+		<payload>
+			<className>jp.ossc.nimbus.service.msgresource.PayloadObjectForTest</className>
+			<attribute name="IntNumber" resourceType = "file">HOGE?</attribute>
+		</payload>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+<!--
+<Message name="" display="Objectメッセージ　ペイロード定義なし" selectKey="62">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test6.txt</inputfile>
+		<prop>
+		</prop>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Objectメッセージ　不正定義 payload要素にクラス名指定なし" selectKey="63">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test6.txt</inputfile>
+		<prop>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Objectメッセージ 定義不正　attributeにname属性なし。" selectKey="64">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Object">
+		<prop>
+		</prop>
+		<payload>
+			<className>jp.ossc.nimbus.service.msgresource.PayloadObjectForTest</className>
+			<attribute resourceType = "file">Hello</attribute>
+		</payload>
+	</SendData>
+	<RecvData type="Object">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Textメッセージ　RecvDataタグが２個。定義不正" selectKey="65">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Textメッセージ　SendDataタグにtype属性なし。定義不正" selectKey="66">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData>
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Textメッセージ　BLFlowタグにpattern属性なし。定義不正" selectKey="67">
+	<BLFlow>
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData>
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Textメッセージ　BLFlowタグに値なし。定義不正" selectKey="68">
+	<BLFlow pattern="heat.reqrep">
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Textメッセージ　selectKeyなし。定義不正">
+	<BLFlow pattern="heat.reqrep">
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Text">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+<!--
+<Message name="" display="Textメッセージ" selectKey="69">
+	<BLFlow pattern="heat.reqrep">
+		heat.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="heat.req">
+		heat.r.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.reqrep">
+		trn.rr.pattern1
+	</BLFlow>
+	<BLFlow pattern="trn.req">
+		trn.r.pattern1
+	</BLFlow>
+	<SendData type="Hoge?">
+		<inputfile>jp/ossc/nimbus/service/msgresource/msgdata/test1.txt</inputfile>
+		<prop>
+			<item name="prop1" type="String">property1</item>
+			<item name="prop2" type="Boolean">true</item>
+			<item name="prop3" type="Byte">31</item>
+			<item name="prop4" type="String" resourceType="file"></item>
+		</prop>
+		<payload>
+		</payload>
+	</SendData>
+	<RecvData type="Text">
+	</RecvData>
+</Message>
+-->
+</MessageResourceDefine>
+

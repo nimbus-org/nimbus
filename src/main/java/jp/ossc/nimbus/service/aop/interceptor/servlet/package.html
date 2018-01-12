@@ -1,0 +1,19 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus AOP Servlet Interceptor パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusのアスペクト指向サービスにおける<b>サーブレットインターセプタサービス</b>を提供します。<p>
+Nimbusアスペクトの<a href="../../Interceptor.html">Interceptor</a>の中でも、サーブレット層に特化したInterceptorを提供します。<br>
+従来のJ2EEのサーブレットフィルタでは、web.xmlで初期化パラメータを渡す程度しかできず、フィルタに細かな設定を行う事が困難でした。<br>
+Nimbusでは、<a href="../../../../servlet/InterceptorChainCallFilter.html">InterceptorChainCallFilter</a>を使って、
+サーブレットフィルタの役割をNimbusアスペクトのInterceptorに委譲する事で、多機能なインジェクション、Nimbusサービスとの親和性を得る事ができます。<br>
+このパッケージのInterceptorは、InterceptorChainCallFilterを使って、サーブレットフィルタに挟み込まれる事を前提としており、抽象サービス<a href="ServletFilterInterceptorService.html">ServletFilterInterceptorService</a>を継承しています。<br>
+そのため、サーブレットフィルタと同様に、インターセプタ毎にリクエストパスに対してマッピングする事が可能です。
+更に、サーブレットフィルタのような中途半端な正規表現ではなく、java.util.regexを使った正規表現によるパスマッピングが可能です。<br>
+</body>
+</html>

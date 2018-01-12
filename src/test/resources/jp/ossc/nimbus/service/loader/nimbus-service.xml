@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="tstruts">
+        <service code="jp.ossc.nimbus.service.loader.ClassLoaderService" name="cl4">
+            <attribute name="ClassPath">
+                target/test-classes/jp/ossc/nimbus/service/loader/class-test/lib
+            </attribute>
+        </service>
+
+        <service code="jp.ossc.nimbus.service.loader.ClassLoaderService" name="cl1">
+            <attribute name="ClassPath">
+            	target/test-classes/jp/ossc/nimbus/service/loader/jar-test/before/Msg.jar
+            </attribute>
+            <attribute name="RefreshTime">
+            	2005.11.11 01:01:02
+            </attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.loader.ClassLoaderService" name="cl2">
+            <attribute name="ClassPath">
+            	target/test-classes/jp/ossc/nimbus/service/loader/jar-test/after/Msg.jar
+            </attribute>
+            <attribute name="RefreshTime">
+            	2005.11.11 01:01:02
+            </attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.loader.ClassLoaderService" name="cl3">
+            <attribute name="ClassPath">
+            	target/test-classes/jp/ossc/nimbus/service/loader/jar-test/lib/Msg.jar
+            </attribute>
+            <attribute name="RefreshTime">
+            	2005.11.11 01:01:02
+            </attribute>
+        </service>
+    </manager>
+</server>

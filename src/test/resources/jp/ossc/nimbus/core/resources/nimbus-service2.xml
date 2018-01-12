@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='Shift_JIS' ?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+<server>
+    <manager>
+        <service code="jp.ossc.nimbus.core.TestServiceBase" name="Service2">
+            <attribute name="string">AAA</attribute>
+            <attribute name="stringArray">AAA,BBB,CCC</attribute>
+            <attribute name="int">100</attribute>
+            <attribute name="URL">http://nimbus.org/index.html</attribute>
+            <attribute name="properties">
+                key1=1
+                key2=2
+                key3=3
+            </attribute>
+            <field name="longField">200</field>
+        </service>
+    </manager>
+</server>

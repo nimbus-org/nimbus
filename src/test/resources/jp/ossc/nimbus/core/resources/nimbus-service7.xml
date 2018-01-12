@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='Shift_JIS' ?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+<server>
+    <manager>
+        <service code="jp.ossc.nimbus.core.TestMapService" name="Service1">
+            <attribute name="string1">Nimbus1</attribute>
+            <attribute name="string2" type="java.lang.String">Nimbus2</attribute>
+            <attribute name="int" type="int">100</attribute>
+            <attribute name="URL" type="java.net.URL">http://nimbus.org/index.html</attribute>
+        </service>
+    </manager>
+</server>

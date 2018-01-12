@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+
+<server>
+    
+    <manager>
+        <service name="StreamExchangeInterceptor"
+                         code="jp.ossc.nimbus.service.aop.interceptor.servlet.StreamExchangeInterceptorService">
+                    <attribute name="ResponseContentType">text/xml; charset=UTF-8</attribute>
+                    <attribute name="RequestStreamConverterServiceName">#DataSetXMLConverter</attribute>
+                    <attribute name="ResponseStreamConverterServiceName">#DataSetXMLConverter</attribute>
+                    <attribute name="ThreadContextServiceName">#Context</attribute>
+                    <attribute name="JournalServiceName">#Journal</attribute>
+                    <attribute name="ExchangeEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="ExchangeRequestEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="ExchangeResponseEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="RequestBytesEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="RequestObjectEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="ResponseBytesEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="ResponseObjectEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <attribute name="ExceptionEditorFinderServiceName">#JournalEditorFinder</attribute>
+                    <depends>
+                        <service name="DataSetXMLConverter"
+                                 code="jp.ossc.nimbus.util.converter.DataSetXMLConverter">
+                            <attribute name="OutputSchema">false</attribute>
+                            <attribute name="DataSet(Login)">
+                                <object code="jp.ossc.nimbus.beans.dataset.DataSet">
+                                    <attribute name="HeaderSchema(UserInfo)">
+                                        :name,java.lang.String
+                                        :password,java.lang.String
+                                    </attribute>
+                                </object>
+                            </attribute>
+                        </service>
+                    </depends>
+                    <depends>
+                    <service name="Context"
+                    code="jp.ossc.nimbus.service.context.ThreadContextService">
+                        <attribute name="HOME_PATH">/home</attribute>
+                     <attribute name="DOMAIN">nimbus.ossc.jp</attribute>
+                    </service>
+                    </depends>
+                    <depends>Journal</depends>
+                    <depends>JournalEditorFinder</depends>
+        </service>
+        <service name="Journal"
+                 code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService">
+            <attribute name="EditorFinderName">#JournalEditorFinder</attribute>
+            <attribute name="WritableElementKey">HttpClient</attribute>
+            <attribute name="CategoryServiceNames">
+                #JournalCategory
+                #ErrorJournalCategory
+            </attribute>
+            <depends>JournalEditorFinder</depends>
+            <depends>JournalCategory</depends>
+            <depends>ErrorJournalCategory</depends>
+        </service>
+        <service name="JournalEditorFinder"
+                 code="jp.ossc.nimbus.service.journal.editorfinder.ObjectMappedEditorFinderService">
+            <attribute name="EditorProperties">
+                java.lang.Object=#ObjectJournalEditor
+                java.lang.String[]=#ObjectArrayJournalEditor
+                javax.servlet.http.Cookie[]=#CookieArrayJournalEditor
+                javax.servlet.http.Cookie=#BeanJournalEditor
+                java.util.Map,Headers=#MapJournalEditor
+                java.util.Map,Parameters=#MapJournalEditor
+                java.lang.Throwable=#ThrowableJournalEditor
+                jp.ossc.nimbus.service.journal.RequestJournal=#RequestJournalEditor
+            </attribute>
+            <depends>ObjectJournalEditor</depends>
+            <depends>ObjectArrayJournalEditor</depends>
+            <depends>CookieArrayJournalEditor</depends>
+            <depends>BeanJournalEditor</depends>
+            <depends>MapJournalEditor</depends>
+            <depends>ThrowableJournalEditor</depends>
+            <depends>RequestJournalEditor</depends>
+        </service>
+        
+        
+    </manager>
+    
+</server>

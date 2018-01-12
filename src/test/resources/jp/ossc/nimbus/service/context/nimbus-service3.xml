@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager>
+        <service name="GroupContext"
+                 code="jp.ossc.nimbus.service.context.GroupContextService">
+            <attribute name="ContextServiceNames">
+                #ChildContext1
+                #ChildContext2
+            </attribute>
+        </service>
+        <service name="ChildContext1"
+                 code="jp.ossc.nimbus.service.context.DefaultContextService">
+            <attribute name="key1">value1</attribute>
+            <attribute name="key2">value2</attribute>
+            <attribute name="key3">value3</attribute>
+        </service>
+        <service name="ChildContext2"
+                 code="jp.ossc.nimbus.service.context.ThreadContextService">
+            <attribute name="key4">value4</attribute>
+            <attribute name="key5">value5</attribute>
+            <attribute name="key6">value6</attribute>
+        </service>
+    </manager>
+</server>

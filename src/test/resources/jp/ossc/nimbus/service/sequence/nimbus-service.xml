@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="tstruts">
+<!--
+サービスをMBeanServerに登録したい場合に指定する。
+-->
+        <service code="jp.ossc.nimbus.service.sequence.StringSequenceService" name="seq">
+            <attribute name="format">
+                N,N;A,A;K,K;0,9;0,1
+            </attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.sequence.NumericSequenceService" name="seq1">
+            <attribute name="format">
+                0;105
+            </attribute>
+        </service>
+    </manager>
+</server>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="Shift_JIS" ?> 
+<server>
+
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+
+    <manager name="TheManager">
+  <!--
+サービスをMBeanServerに登録したい場合に指定する。
+-->
+       <repository>ServiceRepository</repository>
+       <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="MessageService1">
+       		<attribute name="MessageDirPaths">src/test/resources/jp/ossc/nimbus/service/message</attribute>
+       		<attribute name="ExtentionOfMessageFile">def</attribute>
+       		<attribute name="SecretMode">true</attribute>
+       </service>
+       <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="MessageService2">
+       		<attribute name="MessageDirPaths">src/test/resources/jp/ossc/nimbus/service/message</attribute>
+       		<attribute name="ExtentionOfMessageFile">def</attribute>
+       		<attribute name="SecretMode">false</attribute>
+       </service>
+     </manager>
+</server>

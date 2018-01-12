@@ -1,0 +1,23 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus JNDI パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>JNDIサービス</b>を提供します。<p>
+JNDI（Java Naming and Directory Interface）の接続には、接続先のJNDIサーバ等の接続情報を引数で指定する必要があります。
+（jndi.propertiesで設定する方法もありますが、その場合接続先が１つに限られるので複数のJNDIサーバに接続する場合などに問題になります）<br>
+また、接続したJNDIコンテキストからリモートオブジェクトを取得するのは、通常は通信コストがかかるため、処理性能に影響します。
+この問題を解決するために、JNDIコンテキストから取得したリモートオブジェクトを保持しておいて、毎回取得しないでも済むように対策したりします。
+<p>
+このように、JNDIからのリモートオブジェクトの取得は、複雑なパラメータの指定や、性能対策などが必要になり、簡単に取得できるとは言いがたいものがあります。<br>
+そこで、取得方法やパラメータの設定等を、サービスの実装や属性設定に置き換える事で、
+<B>JNDIからリモートオブジェクトを取得する</B>という簡潔な手段だけを抽象化したインタフェースが、
+<A HREF="JndiFinder.html">JndiFinder</A>です。<br>
+<p>
+このパッケージでは、そのJndiFinderインタフェースを実装したサービスを提供します。<br>
+</body>
+</html>

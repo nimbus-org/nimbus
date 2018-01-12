@@ -1,0 +1,289 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 Scenario Resource descriptor.
+The DOCTYPE is:
+  <!DOCTYPE scenario PUBLIC
+      "-//Nimbus//DTD Nimbus Scenario Resource 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/scenario_1_0.dtd">
+
+例:
+    <scenario creator="ユーザ１" expectedCost="60" scheduledCreateStartDate="2016/12/12 09:00" scheduledCreateEndDate="2016/12/12 10:00"
+                                 createStartDate="2016/12/12 10:00" createEndDate="2016/12/12 12:00"
+                                 scheduledExcutor="ユーザ２" scheduledExcuteDate="2016/12/19" progress="50" cost="60" defaultTestCaseErrorContinue="true">
+        <title>シナリオ１</title>
+        <description>シナリオ１の説明です。</description>
+        <phase>
+            <include>
+                phase1,phase2
+            </include>
+            <exclude>
+                phase3
+            </exclude>
+        </phase>
+        <action id="001" type="before" serviceName="Nimbus#TestAction1" expectedCost="30">
+            <title>シナリオ１のテストアクション１</title>
+            <description>シナリオ１のテストアクション１の説明です。</description>
+            <phase>
+                <include>
+                    phase1
+                </exclude>
+            </phase>
+            <resources>
+                <resource name="001.txt"/>
+            </resources>
+        </action>
+        <action id="002" type="after" serviceName="Nimbus#TestAction2" expectedCost="30">
+            <title>シナリオ１のテストアクション２</title>
+            <description>シナリオ１のテストアクション２の説明です。</description>
+            <phase>
+                <exclude>
+                    phase1
+                </exclude>
+            </phase>
+            <resources>
+                <resource name="002.txt"/>
+            </resources>
+        </action>
+        <testcase id="testcase1" scheduledCreateStartDate="2016/12/12 09:00" scheduledCreateEndDate="2016/12/12 10:00"
+                                 createStartDate="2016/12/12 10:00" createEndDate="2016/12/12 12:00"
+                                 expectedCost="60" cost="60" progress="50" errorContinue="true">
+            <title>テストケース１</title>
+            <description>テストケース１の説明です。</description>
+            <phase>
+                <include>
+                    phase1
+                </include>
+                <exclude>
+                    phase2,phase3
+                </exclude>
+            </phase>
+            <action id="001" type="before" serviceName="Nimbus#TestAction1" cost="10" expectedCost="10">
+                <title>テストケース１のテストアクション１</title>
+                <description>テストケース１のテストアクション１の説明です。</description>
+                <phase>
+                    <exclude>
+                        phase1
+                    </exclude>
+                </phase>
+                <resources>
+                    <resource name="001.txt"/>
+                </resources>
+            </action>
+            <action id="002" type="before" serviceName="Nimbus#TestAction2" retryInterval="1000" retryCount="3" cost="10" expectedCost="10">
+                <title>テストケース１のテストアクション２</title>
+                <description>テストケース１のテストアクション２の説明です。</description>
+                <resources>
+                    <resource name="002_1.txt"/>
+                    <resource name="002_2.txt"/>
+                </resources>
+            </action>
+            <action id="003" type="action" serviceName="Nimbus#TestAction3" cost="10" expectedCost="10">
+                <title>テストケース１のテストアクション３</title>
+                <description>テストケース１のテストアクション３の説明です。</description>
+                <resources>
+                    <resource name="003.txt"/>
+                </resources>
+            </action>
+            <action id="004" type="after" serviceName="Nimbus#TestAction4" cost="10" expectedCost="10">
+                <title>テストケース１のテストアクション４</title>
+                <description>テストケース１のテストアクション４の説明です。</description>
+                <resources>
+                    <resource name="004.txt"/>
+                </resources>
+            </action>
+        </testcase>
+        <testcase id="testcase2">
+            <action id="001" type="before" serviceName="Nimbus#TestAction1">
+                <resources>
+                    <resource name="001.txt"/>
+                </resources>
+            </action>
+            <action id="002" type="action" serviceName="Nimbus#TestAction2">
+                <resources>
+                    <resource name="002.txt"/>
+                </resources>
+            </action>
+            <action id="003" type="finally" serviceName="Nimbus#TestAction3">
+                <resources>
+                    <resource name="003.txt"/>
+                </resources>
+            </action>
+        </testcase>
+    </scenario>
+-->
+
+<!-- scenario要素は、シナリオとその配下のテストケースで使用するリソース群を定義するルート要素です。
+-->
+<!ELEMENT scenario (title?|description?|phase?|category*|action*|testcase*)*>
+
+<!-- title要素は、テストの内容に関するタイトルを定義します。
+-->
+<!ELEMENT title (#PCDATA)>
+
+<!-- description要素は、テストの内容に関する説明文を定義します。
+-->
+<!ELEMENT description (#PCDATA)>
+
+<!-- phase要素は、対象のフェーズを定義する要素です。
+-->
+<!ELEMENT phase (include?|exclude?)*>
+
+<!-- category要素は、対象が所属するカテゴリを定義する要素です。
+-->
+<!ELEMENT category EMPTY>
+
+<!-- name属性は、カテゴリの名前を定義します。
+-->
+<!ATTLIST category name CDATA #REQUIRED>
+
+<!-- value属性は、カテゴリの値を定義します。
+-->
+<!ATTLIST category value CDATA #REQUIRED>
+
+<!-- include要素は、実行するフェーズを指定する要素です。
+-->
+<!ELEMENT include (#PCDATA)>
+
+<!-- exclude要素は、実行しないフェーズを指定する要素です。
+-->
+<!ELEMENT exclude (#PCDATA)>
+
+<!-- creator属性は、scenarioのリソースの作成者を定義します。
+-->
+<!ATTLIST scenario creator CDATA #IMPLIED>
+
+<!-- scheduledCreateStartDate属性は、scenarioのリソースの作成開始予定日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenario scheduledCreateStartDate CDATA #IMPLIED>
+
+<!-- scheduledCreateEndDate属性は、scenarioのリソースの作成終了予定日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenario scheduledCreateEndDate CDATA #IMPLIED>
+
+<!-- createStartDate属性は、scenarioのリソースの作成開日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenario createStartDate CDATA #IMPLIED>
+
+<!-- createEndDate属性は、scenarioのリソースの作成終了日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenario createEndDate CDATA #IMPLIED>
+
+<!-- scheduledExcutor属性は、scenarioの実行予定者を定義します。
+-->
+<!ATTLIST scenario scheduledExcutor CDATA #IMPLIED>
+
+<!-- scheduledExcuteDate属性は、scenarioの実行予日(yyyy/MM/dd)を定義します。
+-->
+<!ATTLIST scenario scheduledExcuteDate CDATA #IMPLIED>
+
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
+-->
+<!ATTLIST scenario expectedCost CDATA #IMPLIED>
+
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
+-->
+<!ATTLIST scenario cost CDATA #IMPLIED>
+
+<!-- progress属性は、リソース定義の作成進捗率を定義します。
+-->
+<!ATTLIST scenario progress CDATA #IMPLIED>
+
+<!-- defaultTestCaseErrorContinue属性は、デフォルトのテストケースエラー発生時の継続有無を定義します。
+テストケースのerrorContinue属性が設定されている場合はそちらを優先します。
+-->
+<!ATTLIST scenario defaultTestCaseErrorContinue CDATA #IMPLIED>
+
+<!-- action要素は、テスト時に実行するActionに対する属性を定義します。
+-->
+<!ELEMENT action (title?|description?|phase?|resources)*>
+
+<!-- id属性は、リソースのIDを定義します。
+-->
+<!ATTLIST action id CDATA #REQUIRED>
+
+<!-- type属性は、リソースの実行タイプを定義します。
+before、actionは開始時に実行されます。afterは終了時に実行されます。
+finallyはエラー発生時でも最後に必ず実行されます。
+-->
+<!ATTLIST action type (before|action|after|finally) #REQUIRED>
+
+<!-- serviceName属性は、実行するアクションのサービス名を定義します。
+-->
+<!ATTLIST action serviceName CDATA #REQUIRED>
+
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
+-->
+<!ATTLIST action expectedCost CDATA #IMPLIED>
+
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
+-->
+<!ATTLIST action cost CDATA #IMPLIED>
+
+<!-- retryInterval属性は、アクションの実行結果が不正な場合にスリープするインターバル(ミリ秒)を定義します。
+-->
+<!ATTLIST action retryInterval CDATA #IMPLIED>
+
+<!-- retryCount属性は、アクションの実行結果が不正な場合にアクションに戻る回数を定義します。
+-->
+<!ATTLIST action retryCount CDATA #IMPLIED>
+
+<!-- resources要素は、アクションを実行する際に使用するリソースの集合を定義します。
+-->
+<!ELEMENT resources (resource+)>
+
+<!-- resource要素は、アクションを実行する際に使用するリソースを定義します。
+name属性を指定して、リソースファイルを指定するか、内容でリソース文字列を指定します。
+-->
+<!ELEMENT resource (#PCDATA)*>
+
+<!-- name属性は、リソースファイルのファイル名を定義します。
+-->
+<!ATTLIST resource name CDATA #IMPLIED>
+
+<!-- encoding属性は、リソースファイルの文字コードを定義します。
+-->
+<!ATTLIST resource encoding CDATA #IMPLIED>
+
+<!-- testcase要素は、テストケースで使用するテストリソース群を定義するルート要素です。
+-->
+<!ELEMENT testcase (title?|description?|phase?|category*|action*)*>
+
+<!-- id属性は、テストケースのIDを定義します。
+-->
+<!ATTLIST testcase id CDATA #REQUIRED>
+
+<!-- creator属性は、testcaseのリソースの作成者を定義します。
+-->
+<!ATTLIST testcase creator CDATA #IMPLIED>
+
+<!-- scheduledCreateStartDate属性は、testcaseのリソースの作成開始予定日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST testcase scheduledCreateStartDate CDATA #IMPLIED>
+
+<!-- scheduledCreateEndDate属性は、testcaseのリソースの作成終了予定日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST testcase scheduledCreateEndDate CDATA #IMPLIED>
+
+<!-- createStartDate属性は、testcaseのリソースの作成開日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST testcase createStartDate CDATA #IMPLIED>
+
+<!-- createEndDate属性は、testcaseのリソースの作成終了日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST testcase createEndDate CDATA #IMPLIED>
+
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
+-->
+<!ATTLIST testcase expectedCost CDATA #IMPLIED>
+
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
+-->
+<!ATTLIST testcase cost CDATA #IMPLIED>
+
+<!-- progress属性は、リソース定義の作成進捗率を定義します。
+-->
+<!ATTLIST testcase progress CDATA #IMPLIED>
+
+<!-- errorContinue属性は、エラー発生時の継続有無を定義します。未設定時はfalseで継続無しです。
+-->
+<!ATTLIST testcase errorContinue (true|false) "false">
+

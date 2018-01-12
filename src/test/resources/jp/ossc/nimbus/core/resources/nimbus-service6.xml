@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='Shift_JIS' ?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+<server>
+    <default-log>
+        <debug output="true"/>
+        <information output="true"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <log>ApplicationLog</log>
+    <message>ApplicationMessage</message>
+    <manager>
+        <service code="jp.ossc.nimbus.core.TestServiceBase" name="Service0">
+            <depends>ApplicationLog</depends>
+        </service>
+        <service code="jp.ossc.nimbus.service.log.LogService" name="ApplicationLog">
+            <attribute name="MessageRecordFactoryServiceName">ApplicationMessage</attribute>
+            <attribute name="CategoryServiceNames">ApplicationCategory</attribute>
+            <depends>FileWriter</depends>
+            <depends>ApplicationMessage</depends>
+            <depends>ApplicationCategory</depends>
+        </service>
+        <service code="jp.ossc.nimbus.service.log.SimpleCategoryService" name="ApplicationCategory">
+            <attribute name="CategoryName">APPLICATION</attribute>
+            <attribute name="MessageWriterServiceName">FileWriter</attribute>
+            <attribute name="PriorityRange">0:49</attribute>
+            <attribute name="Labels">
+                0:9=APPLICATION_DEBUG
+                10:19=APPLICATION_INFORMATION
+                20:29=APPLICATION_WARNING
+                30:39=APPLICATION_ERROR
+                40:49=APPLICATION_FATAL
+            </attribute>
+            <depends>FileWriter</depends>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="FileWriter">
+            <attribute name="File">target/temp/ServiceManaerFactoryTest1.log</attribute>
+            <attribute name="Append">false</attribute>
+            <attribute name="MaximumFileSize">1048576</attribute>
+            <attribute name="MaxBackupIndex">5</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="ApplicationMessage">
+            <attribute name="MessageFiles">Message1</attribute>
+            <attribute name="MessageRecordClassName">jp.ossc.nimbus.service.log.LogMessageRecordImpl</attribute>
+        </service>
+    </manager>
+</server>

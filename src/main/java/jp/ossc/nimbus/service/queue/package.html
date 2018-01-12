@@ -1,0 +1,21 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus キュー パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>キューサービス</b>を提供します。<p>
+<b>FIFOのキュー機能</b>を抽象化したインタフェースが<a href="Queue.html">Queue</a>です。<br>
+FIFOの概念はもちろん、マルチスレッドによる取得待ちに対して、取得待ち順序通りにキューデータを渡していきます。<br>
+<p>
+このパッケージでは、Queueインタフェースを実装したサービスを提供します。<br>
+<p>
+また、Queueは、通常非同期処理を行うために使用します。<br>
+その際に、Queueに詰められた事を検知して、非同期に任意の処理を行う機能が必要になります。<br>
+そのような<b>非同期処理コンテナ機能</b>を実装した<a href="QueueHandlerContainerService.html">QueueHandlerContainerService</a>を提供します。<br>
+また、非同期処理コンテナ上で<b>「任意の処理を行う」</b>機能を抽象化したインタフェースが、<a href="QueueHandler.html">QueueHandler</a>です。<br>
+</body>
+</html>

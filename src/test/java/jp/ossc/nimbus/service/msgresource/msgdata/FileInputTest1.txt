@@ -1,0 +1,6 @@
+#FileInputTest
+#行頭の"#"は、コメント行のテスト
+#prop1=hoge,prop2=page:HOGEHOGE
+prop1=property1,prop2=property2:Hello World
+#prop1=hoge2,prop2=page2:PAGEPAGE
+prop1=property3,prop2=property4:What's the matter?

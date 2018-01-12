@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="tstruts">
+        <service code="jp.ossc.nimbus.service.properties.ResourceBundlePropertiesFactoryService" name="prop">
+            <attribute name="ClassPath">
+                src/test/resources/jp/ossc/nimbus/service/properties/xerces.jar
+            </attribute>
+            <attribute name="Encode">
+                ISO-8859-1
+            </attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.properties.ResourceBundlePropertiesFactoryService" name="prop1">
+            <attribute name="ClassPath">
+                target/test-classes
+            </attribute>
+            <attribute name="Encode">
+                MS932
+            </attribute>
+        </service>
+    </manager>
+</server>

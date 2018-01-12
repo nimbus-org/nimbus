@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+
+<server>
+    
+    <manager>
+        <service name="StreamExchangeInterceptor"
+                         code="jp.ossc.nimbus.service.aop.interceptor.servlet.StreamExchangeInterceptorService">
+        </service>
+    </manager>
+    
+</server>

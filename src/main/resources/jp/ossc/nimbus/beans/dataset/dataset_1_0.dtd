@@ -1,0 +1,184 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 DataSet generation descriptor.
+The DOCTYPE is:
+  <!DOCTYPE dataSets PUBLIC
+      "-//Nimbus//DTD Nimbus DataSet generation 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/dataset_1_0.dtd">
+
+例:
+    <dataSets>
+        
+        <property name="PACKAGE">jp.co.nri.beans</property>
+        
+        <record code="${PACKAGE}.SampleRecord"
+                extends="jp.ossc.nimbus.service.context.SharedContextRecord">
+            <schema>
+                :a,java.lang.String
+                :b,int
+            </schema>
+        </record>
+        
+        <header code="${PACKAGE}.SampleHeader"
+                name="SampleHeader">
+            <schema>
+                :a,java.lang.String
+                :b,int
+            </schema>
+        </header>
+        
+        <recordList code="${PACKAGE}.SampleRecordList"
+                    recordCode="${PACKAGE}.SampleRecord"
+                    name="SampleRecordList"/>
+        
+        <dataSet code="${PACKAGE}.SampleDataSet"
+                 name="SampleDataSet">
+            <header name="SampleHeader" code="${PACKAGE}.SampleHeader"/>
+            <recordList name="SampleRecordList" code="${PACKAGE}.SampleRecordList"/>
+        </dataSet>
+        
+    </dataSets>
+-->
+
+<!-- dataSets要素は、データセット生成定義のルート要素です。
+-->
+<!ELEMENT dataSets (property* | record* | header* | recordList* | dataSet*)*>
+
+<!-- property要素は、${プロパティ名}で参照できる環境変数プロパティを定義します。
+-->
+<!ELEMENT property (#PCDATA)>
+
+<!-- name属性は、${プロパティ名}で参照できる環境変数プロパティ名を定義します。
+-->
+<!ATTLIST property name CDATA #REQUIRED>
+
+<!-- record要素は、レコードを定義する要素です。
+-->
+<!ELEMENT record (schema)>
+
+<!-- code属性は、レコードのクラス名を定義します。
+-->
+<!ATTLIST record code CDATA #REQUIRED>
+
+<!-- extends属性は、レコードの親クラス名を定義します。
+-->
+<!ATTLIST record extends CDATA #IMPLIED>
+
+<!-- abstract属性は、レコードを抽象クラスにするかどうかを定義します。
+-->
+<!ATTLIST record abstract (true|false) "false">
+
+<!-- header要素は、ヘッダを定義する要素です。
+-->
+<!ELEMENT header (schema?)>
+
+<!-- code属性は、ヘッダのクラス名を定義します。
+-->
+<!ATTLIST header code CDATA #REQUIRED>
+
+<!-- extends属性は、ヘッダの親クラス名を定義します。
+-->
+<!ATTLIST header extends CDATA #IMPLIED>
+
+<!-- abstract属性は、ヘッダを抽象クラスにするかどうかを定義します。
+-->
+<!ATTLIST header abstract (true|false) "false">
+
+<!-- name属性は、ヘッダの名前を定義します。
+-->
+<!ATTLIST header name CDATA #IMPLIED>
+
+<!-- recordList要素は、レコードリストを定義する要素です。
+-->
+<!ELEMENT recordList (index*)>
+
+<!-- code属性は、レコードリストのクラス名を定義します。
+-->
+<!ATTLIST recordList code CDATA #REQUIRED>
+
+<!-- extends属性は、レコードリストの親クラス名を定義します。
+-->
+<!ATTLIST recordList extends CDATA #IMPLIED>
+
+<!-- abstract属性は、レコードリストを抽象クラスにするかどうかを定義します。
+-->
+<!ATTLIST recordList abstract (true|false) "false">
+
+<!-- recordCode属性は、レコードのクラス名を定義します。
+-->
+<!ATTLIST recordList recordCode CDATA #IMPLIED>
+
+<!-- name属性は、レコードリストの名前を定義します。
+-->
+<!ATTLIST recordList name CDATA #IMPLIED>
+
+<!-- synchronized属性は、レコードリストの同期化を定義します。
+-->
+<!ATTLIST recordList synchronized (true|false) "true">
+
+<!-- index要素は、検索インデックスを定義する要素です。
+-->
+<!ELEMENT index (#PCDATA)>
+
+<!-- name属性は、検索インデックスの名前を定義します。
+-->
+<!ATTLIST index name CDATA #REQUIRED>
+
+<!-- nestedRecord要素は、ネストしたレコードを定義する要素です。
+-->
+<!ELEMENT nestedRecord EMPTY>
+
+<!-- code属性は、レコードのクラス名を定義します。
+-->
+<!ATTLIST nestedRecord code CDATA #REQUIRED>
+
+<!-- name属性は、レコードの名前を定義します。
+-->
+<!ATTLIST nestedRecord name CDATA #REQUIRED>
+
+<!-- nestedRecordList要素は、ネストしたレコードリストを定義する要素です。
+-->
+<!ELEMENT nestedRecordList EMPTY>
+
+<!-- code属性は、レコードリストのクラス名を定義します。
+-->
+<!ATTLIST nestedRecordList code CDATA #REQUIRED>
+
+<!-- name属性は、レコードリストの名前を定義します。
+-->
+<!ATTLIST nestedRecordList name CDATA #REQUIRED>
+
+<!-- dataSet要素は、データセットを定義する要素です。
+-->
+<!ELEMENT dataSet (header* | recordList* | nestedRecord* |nestedRecordList*)*>
+
+<!-- code属性は、データセットのクラス名を定義します。
+-->
+<!ATTLIST dataSet code CDATA #REQUIRED>
+
+<!-- extends属性は、データセットの親クラス名を定義します。
+-->
+<!ATTLIST dataSet extends CDATA #IMPLIED>
+
+<!-- abstract属性は、データセットを抽象クラスにするかどうかを定義します。
+-->
+<!ATTLIST dataSet abstract (true|false) "false">
+
+<!-- name属性は、データセットの名前を定義します。
+-->
+<!ATTLIST dataSet name CDATA #IMPLIED>
+
+<!-- synchronized属性は、データセットの同期化を定義します。
+-->
+<!ATTLIST dataSet synchronized (true|false) "true">
+
+<!-- schema要素は、レコードやレコードリストのスキーマを定義します。
+-->
+<!ELEMENT schema (#PCDATA)>
+
+<!-- type属性は、スキーマの定義方法を定義します。
+     単純に指定したスキーマにしたい場合は、set
+     親クラスのスキーマに付加したい場合は、append
+     親クラスのスキーマを置換したい場合は、replace
+     デフォルトは、set
+-->
+<!ATTLIST schema type (set|append|replace) "set">

@@ -1,0 +1,835 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 Bean Flow definition descriptor.
+The DOCTYPE is:
+  <!DOCTYPE flows PUBLIC
+      "-//Nimbus//DTD Nimbus Bean Flow 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/beanflow_1_0.dtd">
+-->
+
+<!-- flows要素は、業務フロー定義のルート要素です。
+-->
+<!ELEMENT flows (flow*)>
+
+<!-- flow要素は、業務フローを定義する要素です。
+-->
+<!ELEMENT flow (alias* | override* | resource* | step* | callflow* | reply* | switch* | if* | for* | while* | catch* | finally? | return?)*>
+
+<!-- name属性は、flow要素で定義する業務フローの一意な名前を定義します。
+-->
+<!ATTLIST flow name CDATA #REQUIRED>
+
+<!-- maxRunThreads属性は、flow要素で定義する業務フローの同時実行数を定義します。
+ この属性を定義しない場合は、同時実行数の制限はありません。
+-->
+<!ATTLIST flow maxRunThreads CDATA #IMPLIED>
+
+<!-- maxWaitThreads属性は、flow要素で定義する業務フローの同時実行待ち数を定義します。
+ 同時実行数が限界まで来ている時に、同時実行数に空きが出来るまで待機させられます。
+ その際に、待機している数が多い場合は、長い時間待たされる可能性があります。
+ そのため、その待機数が多い場合は、待たずに諦めたいことがあります。
+ この属性は、その待機数の最大値を定義します。
+ 待機せずに諦めた時は、UnavailableFlowExceptionをthrowします。
+ この属性を定義しない場合は、同時実行待ち数の制限はありません。
+ また、maxRunThreads属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST flow maxWaitThreads CDATA #IMPLIED>
+
+<!-- timeout属性は、flow要素で定義する業務フローの同時実行待ち時間を定義します。
+ 同時実行数が限界まで来ている時に、同時実行数に空きが出来るまで待機させられます。
+ その際に、諦めずに待機する時間を定義します。
+ 指定された時間だけ待機して諦めた時は、UnavailableFlowExceptionをthrowします。
+ この属性を定義しない場合は、無限に待ち続けます。
+ また、maxRunThreads属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST flow timeout CDATA #IMPLIED>
+
+<!-- forceFreeTimeout属性は、flow要素で定義する業務フローの同時実行数制御タイムアウトを定義します。
+ 同時実行数制御を行っている場合で、実行時間がこの時間を過ぎた場合には、そのスレッドが確保している同時実行数を開放するためのものです。
+ この属性を定義しない場合は、実行時間は無制限です。
+ また、maxRunThreads属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST flow forceFreeTimeout CDATA #IMPLIED>
+
+<!-- transaction属性は、flow要素で定義する業務フローのトランザクション属性を定義します。
+ "Supports"以外の値を指定した場合は、JTAを使用してトランザクション制御を行うため、JTA実装を持ったJ2EEコンテナ上で動作させる必要があります。
+-->
+<!ATTLIST flow transaction (Required|RequiresNew|Supports|Mandatory|Never|NotSupported) "Supports">
+
+<!-- trantimeout属性は、flow要素で定義する業務フローのトランザクションタイムアウト[s]を定義します。
+ transaction属性がRequiredまたはRequiresNewで、トランザクションがそこで開始される場合のみ有効です。
+-->
+<!ATTLIST flow trantimeout CDATA #IMPLIED>
+
+<!-- journal属性は、flow要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST flow journal (true | false) "true">
+
+<!-- alias要素は、業務フローの別名を定義する要素です。
+ 別名を付けない場合は、指定する必要はありません。
+ また、複数のalias要素を定義する事で複数の別名を持たせる事ができます。
+-->
+<!ELEMENT alias EMPTY>
+
+<!-- name属性は、業務フローの別名を定義する属性です。
+-->
+<!ATTLIST alias name CDATA #REQUIRED>
+
+<!-- resouce要素は、トランザクション制御を行うリソースを定義する要素です。
+ この要素のservice属性で、jp.ossc.nimbus.service.resource.ResourceFactoryインタフェースを実装したサービスのサービス名を指定します。
+ 業務フロー内で、この要素で宣言したリソースをresource-ref要素で参照した時に、
+ ResourceFactoryからjp.ossc.nimbus.service.resource.TransactionResourceを生成して、TransactionResourceから取り出したリソースオブジェクトを渡します。
+ 業務フローが正常終了すると、TransactionResource.commit()メソッドを使ってトランザクションをコミットします。
+ 業務フローが異常終了すると、TransactionResource.rollback()メソッドを使ってトランザクションをロールバックします。
+ 最後に、TransactionResource.close()メソッドを使ってリソースを開放します。
+-->
+<!ELEMENT resource EMPTY>
+
+<!-- name属性は、リソース名を定義する属性です。
+ resource-ref要素でリソースを参照する際に使用する名前です。
+-->
+<!ATTLIST resource name CDATA #REQUIRED>
+
+<!-- service属性は、リソースとして参照するサービスのサービス名を定義する属性です。
+ ここで参照するサービスは、jp.ossc.nimbus.service.resource.ResourceFactoryインタフェースを実装していなければなりません。
+-->
+<!ATTLIST resource service CDATA #REQUIRED>
+
+<!-- key属性は、リソースのキー名を定義する属性です。
+ jp.ossc.nimbus.service.resource.ResourceFactoryインタフェースを実装したサービスからResourceFactory.makeResource(String key)メソッドでTransactionResourceを取得する際に指定するキーを定義します。
+ この属性を指定しない場合は、nullを渡します。
+-->
+<!ATTLIST resource key CDATA #IMPLIED>
+
+<!-- trancontrol属性は、このリソースのトランザクション制御を行うかどうかを定義する属性です。
+ デフォルトは、falseで、トランザクション制御を行いません。
+ trueを指定した場合、業務フローが正常終了すると、TransactionResource.commit()メソッドを使ってトランザクションをコミットします。
+ また、業務フローが異常終了すると、TransactionResource.rollback()メソッドを使ってトランザクションをロールバックします。
+-->
+<!ATTLIST resource trancontrol (true|false) "false">
+
+<!-- tranclose属性は、このリソースのトランザクション終了処理を行うかどうかを定義する属性です。
+ デフォルトは、trueで、業務フローが終了すると、TransactionResource.close()メソッドを使ってトランザクションを終了します。
+-->
+<!ATTLIST resource tranclose (true|false) "true">
+
+<!-- step要素は、ひとかたまりの処理を定義する要素です。
+ 処理を行う対象とその対象に対するインジェクション、及び結果を伴う呼び出しを行います。
+ 但し、結果を伴う呼び出しは、必要なければ行う必要はありません。
+ 処理の対象には、以下のものが使用可能です。
+ ・フローへの入力オブジェクト
+ ・リソース
+ ・サービス
+ ・他ステップの対象及び結果
+ ・繰り返し変数
+ ・インジェクションにより生成された任意のオブジェクト
+ 
+ 対象に対するインジェクションは、以下のインジェクションが行えます。
+ ・フィールドインジェクション
+ ・プロパティインジェクション
+ ・メソッドインジェクション
+ 
+ 結果として以下の結果を返す事ができます。
+ ・処理対象のフィールド
+ ・処理対象のプロパティ
+ ・処理対象のメソッド呼び出し結果
+ ・処理対象自身
+ ・フローへの入力オブジェクト
+-->
+<!ELEMENT step (target?, (field* | attribute* | invoke* | static-invoke* | catch*)*, interpreter?, template?, result?, finally?)>
+
+<!-- name属性は、ステップの名前を定義します。
+ step-ref要素で他ステップから参照する場合に、ステップを一意に識別するために名前をつけます。
+ 同じ名前のステップがある場合は、後勝ちで上書かれていきます。
+ また、他ステップから参照しない場合は、名前を付ける必要はありません。
+-->
+<!ATTLIST step name CDATA #IMPLIED>
+
+<!-- maxRunThreads属性は、step要素で定義するステップの同時実行数を定義します。
+ この属性を定義しない場合は、同時実行数の制限はありません。
+-->
+<!ATTLIST step maxRunThreads CDATA #IMPLIED>
+
+<!-- maxWaitThreads属性は、step要素で定義するステップの同時実行待ち数を定義します。
+ 同時実行数が限界まで来ている時に、同時実行数に空きが出来るまで待機させられます。
+ その際に、待機している数が多い場合は、長い時間待たされる可能性があります。
+ そのため、その待機数が多い場合は、待たずに諦めたいことがあります。
+ この属性は、その待機数の最大値を定義します。
+ 待機せずに諦めた時は、UnavailableFlowExceptionをthrowします。
+ この属性を定義しない場合は、同時実行待ち数の制限はありません。
+ また、maxRunThreads属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST step maxWaitThreads CDATA #IMPLIED>
+
+<!-- timeout属性は、step要素で定義するステップの同時実行待ち時間を定義します。
+ 同時実行数が限界まで来ている時に、同時実行数に空きが出来るまで待機させられます。
+ その際に、諦めずに待機する時間を定義します。
+ 指定された時間だけ待機して諦めた時は、UnavailableFlowExceptionをthrowします。
+ この属性を定義しない場合は、無限に待ち続けます。
+ また、maxRunThreads属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST step timeout CDATA #IMPLIED>
+
+<!-- forceFreeTimeout属性は、step要素で定義するステップの同時実行数制御タイムアウトを定義します。
+ 同時実行数制御を行っている場合で、実行時間がこの時間を過ぎた場合には、そのスレッドが確保している同時実行数を開放するためのものです。
+ この属性を定義しない場合は、実行時間は無制限です。
+ また、maxRunThreads属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST step forceFreeTimeout CDATA #IMPLIED>
+
+<!-- journal属性は、step要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST step journal (true | false) "true">
+
+<!-- suspend属性は、このstep要素で実行の一時中断を許容するかどうかを定義します。
+-->
+<!ATTLIST step suspend (true | false) "true">
+
+<!-- stop属性は、このstep要素で実行の停止を許容するかどうかを定義します。
+-->
+<!ATTLIST step stop (true | false) "true">
+
+<!-- target要素は、処理の対象となるオブジェクトを定義する要素です。
+ step要素とfor要素の子要素として定義します。
+ step要素の子要素として定義する場合は、そのステップで各インジェクションを行う対象のオブジェクトを定義します。
+ for要素の子要素として定義する場合は、繰り返し対象のオブジェクトを定義します。
+ 繰り返し対象のオブジェクトには、以下のクラスのオブジェクトを指定できます。
+ ・任意のクラスの配列
+ ・java.util.Collectionインタフェースを実装したクラス
+ ・java.sql.ResultSetインタフェースを実装したクラス
+ ・jp.ossc.nimbus.recset.RecordSetクラス
+-->
+<!ELEMENT target (input | object | service-ref | resource-ref | step-ref | static-field-ref | static-invoke | var| expression)>
+
+<!-- journal属性は、target要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST target journal (true | false) "true">
+
+<!-- field要素は、フィールドインジェクション及びフィールド参照を定義する要素です。
+ object要素、step要素の子要素として定義する場合は、フィールドインジェクションを行います。
+ result要素の子要素として定義する場合は、フィールド参照を行います。
+-->
+<!ELEMENT field (#PCDATA | input | object | service-ref | resource-ref | step-ref | static-field-ref | static-invoke | var | this | expression)*>
+
+<!-- name属性は、field要素で定義するフィールドのフィールド名を定義します。
+ ここで指定する名前のフィールドは、publicなクラスのpublicなフィールドでなければなりません。また、フィールド名は大文字小文字を区別します。
+-->
+<!ATTLIST field name CDATA #REQUIRED>
+
+<!-- type属性は、field要素で定義するフィールドの型を定義します。
+ ここで指定する型は、完全修飾クラス名でなければなりません。
+ 但し、配列クラスは、完全修飾クラス名の後ろに[]を付与する事で表現できます。
+-->
+<!ATTLIST field type CDATA #IMPLIED>
+
+<!-- nullValue属性は、値がnullである事を定義します。
+ フィールドインジェクションの場合のみ有効です。
+-->
+<!ATTLIST field nullValue (true|false) "false">
+
+<!-- journal属性は、field要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST field journal (true | false) "true">
+
+<!-- attribute要素は、プロパティインジェクション及びプロパティ参照を定義する要素です。
+ object要素、step要素の子要素として定義する場合は、プロパティインジェクションを行います。
+ result要素の子要素として定義する場合は、プロパティ参照を行います。
+-->
+<!ELEMENT attribute (#PCDATA | input | object | service-ref | resource-ref | step-ref | static-field-ref | static-invoke | var | this | expression)*>
+
+<!-- name属性は、attribute要素で定義するプロパティのプロパティ名を定義します。
+ ここで指定する名前のプロパティは、publicなクラスのpublicなプロパティでなければなりません。また、プロパティ名は最初の1文字以外は大文字小文字を区別します。
+ プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+ Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+-->
+<!ATTLIST attribute name CDATA #REQUIRED>
+
+<!-- type属性は、attribute要素の内容で定義するプロパティ値の型を定義します。
+ ここで指定する型は、完全修飾クラス名でなければなりません。
+ 但し、配列クラスは、完全修飾クラス名の後ろに[]を付与する事で表現できます。
+-->
+<!ATTLIST attribute type CDATA #IMPLIED>
+
+<!-- nullValue属性は、値がnullである事を定義します。
+ プロパティインジェクションの場合のみ有効です。
+-->
+<!ATTLIST attribute nullValue (true|false) "false">
+
+<!-- journal属性は、attribute要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST attribute journal (true | false) "true">
+
+<!-- invoke要素は、メソッドインジェクション及びメソッド呼び出し結果参照を定義する要素です。
+ object要素、step要素の子要素として定義する場合は、メソッドインジェクションを行います。
+ result要素の子要素として定義する場合は、メソッド呼び出し結果参照を行います。
+ メソッドに引数がある場合は、子要素にargument要素を指定します。
+-->
+<!ELEMENT invoke (argument*)>
+
+<!-- name属性は、invoke要素で定義するメソッド呼び出しのメソッド名を定義します。
+ ここで指定する名前のメソッドは、publicなクラスのpublicなメソッドでなければなりません。また、メソッド名は大文字小文字を区別します。
+-->
+<!ATTLIST invoke name CDATA #REQUIRED>
+
+<!-- journal属性は、invoke要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST invoke journal (true | false) "true">
+
+<!-- result要素は、親要素のstep要素が表すステップの結果を定義します。
+ ステップに結果が必要な場合に定義します。
+ この要素によって定義されたステップ結果は、step-ref要素で参照する事ができます。
+ 但し、step要素にname属性を指定しなければなりません。
+-->
+<!ELEMENT result (#PCDATA | attribute | field | invoke | this | input | static-invoke | static-field-ref | object | expression | step-ref | var)*>
+
+<!-- journal属性は、result要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST result journal (true | false) "true">
+
+<!-- callflow要素は、子フロー呼び出しを定義します。
+ 子フローに引数を渡す場合は、子要素にargument要素を定義します。
+ また、子フローの呼び出し結果は、ステップ結果の参照と同様で、step-ref要素で行います。
+-->
+<!ELEMENT callflow (override*, argument*, catch*, finally?, callback?)>
+
+<!-- name属性は、callflow要素で定義する子フロー呼び出しの子フロー名を定義します。
+-->
+<!ATTLIST callflow name CDATA #REQUIRED>
+
+<!-- stepname属性は、callflow要素のステップ名を定義します。
+ 定義しない場合は、name属性で指定した子フロー名がそのままステップ名になります。
+-->
+<!ATTLIST callflow stepname CDATA #IMPLIED>
+
+<!-- transaction属性は、callflow要素で定義する業務フローのトランザクション属性を定義します。
+ "NotSupported"以外の値を指定した場合は、JTAを使用してトランザクション制御を行うため、JTA実装を持ったJ2EEコンテナ上で動作させる必要があります。
+ また、この属性が指定されていない場合は、呼び出し対象となるflow要素のtransaction属性に依存します。
+-->
+<!ATTLIST callflow transaction (Required|RequiresNew|Supports|Mandatory|Never|NotSupported) #IMPLIED>
+
+<!-- trantimeout属性は、callflow要素で定義する業務フローのトランザクションタイムアウト[s]を定義します。
+ また、transaction属性が指定されていない場合は、無効です。
+-->
+<!ATTLIST callflow trantimeout CDATA #IMPLIED>
+
+<!-- factory属性は、callflow要素で呼び出す業務フローのBeanFlowInvokerを生成するBeanFlowInvokerFactoryサービスのサービス名を定義します。
+ factory属性が指定されていない場合は、この業務フローのBeanFlowInvokerを生成したBeanFlowInvokerFactoryサービスを使用します。
+-->
+<!ATTLIST callflow factory CDATA #IMPLIED>
+
+<!-- override属性は、callflow要素で呼び出す業務フローで、呼び出された側でオーバーライドを考慮するかどうかを定義します。
+ 子要素にoverride要素がある場合は、暗黙的にfalseになります。
+-->
+<!ATTLIST callflow override (true|false) "true">
+
+<!-- asynch属性は、callflow要素で呼び出す業務フローを非同期で実行するかどうかを定義します。
+-->
+<!ATTLIST callflow asynch (true|false) "false">
+
+<!-- reply属性は、callflow要素で非同期呼び出しを行った場合の応答を必要とするかどうかを定義します。
+ asynch属性がfalseの場合は、無効です。
+-->
+<!ATTLIST callflow reply (true|false) "false">
+
+<!-- maxAsynchWait属性は、callflow要素で非同期呼び出しを行った場合の非同期実行待機数の最大値を定義します。
+ 非同期実行待機数が多い時は、非同期実行スレッドに空きが出来るまで待機させられます。
+ その際に、待機している数が多い場合は、長い時間待たされる可能性があります。
+ そのため、その待機数が多い場合は、待たずに諦めたいことがあります。
+ この属性は、その待機数の最大値を定義します。
+ 待機せずに諦めた時は、UnavailableFlowExceptionをthrowします。
+ この属性を定義しない場合は、非同期実行待機数の制限はありません。
+ また、asynch属性がfalseの場合は、無効です。
+-->
+<!ATTLIST callflow maxAsynchWait CDATA #IMPLIED>
+
+<!-- journal属性は、callflow要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST callflow journal (true | false) "true">
+
+<!-- callback要素は、非同期子フロー呼び出しのコールバックフローを定義します。
+ コールバックフローにパラメータを渡す場合は、子要素にattribute要素を定義します。
+-->
+<!ELEMENT callback (override*, attribute*)>
+
+<!-- name属性は、callback要素で定義するコールバックフロー呼び出しのコールバックフロー名を定義します。
+-->
+<!ATTLIST callback name CDATA #REQUIRED>
+
+<!-- reply要素は、非同期子フロー呼び出しの応答の取得を定義します。
+ 子フローに引数を渡す場合は、子要素にargument要素を定義します。
+ また、子フローの呼び出し結果は、ステップ結果の参照と同様で、step-ref要素で行います。
+-->
+<!ELEMENT reply (catch*, finally?)>
+
+<!-- name属性は、reply要素のステップ名を定義します。
+-->
+<!ATTLIST reply name CDATA #REQUIRED>
+
+<!-- stepname属性は、reply要素で取得する非同期子フロー呼び出しであるcallflow要素のステップ名を定義します。
+ 定義しない場合は、name属性で指定したステップ名がそのままcallflow要素のステップ名になります。
+-->
+<!ATTLIST reply stepname CDATA #IMPLIED>
+
+<!-- timeout属性は、reply要素で非同期子フロー呼び出しの応答待ちタイムアウト[ms]を定義します。
+ また、timeout属性が指定されていない場合は、無限待ちします。
+-->
+<!ATTLIST reply timeout CDATA #IMPLIED>
+
+<!-- cancel属性は、応答待ちでタイムアウトした場合に非同期呼び出しをキャンセルするかどうかを定義します。
+ timeout属性を指定していない場合は、無効です。
+-->
+<!ATTLIST reply cancel (true|false) "true">
+
+<!-- overwrid要素は、callflow要素で定義する子フロー呼び出しの上書き子フロー名を定義します。
+ 上書き子フロー名には、"${スレッドコンテキストプロパティ名}"を含む事が可能で、
+ 予めスレッドコンテキスト上に、上書き子フロー名の一部となる名前を設定しておけば、
+ 呼び出すフロー名を動的に変える事ができる。上書き子フロー名のフローが存在しない場合は、name属性で指定した子フロー名が適用される。
+-->
+<!ELEMENT override EMPTY>
+
+<!-- name属性は、上書き子フロー名を定義する属性です。
+-->
+<!ATTLIST override name CDATA #REQUIRED>
+
+<!-- switch要素は、フロー中で条件選択を定義します。
+各条件は、子要素のcase要素に指定し、その条件に該当する場合の処理は、case要素の子要素に定義します。
+また、全てのcase要素の条件に一致しない場合の処理を定義したい場合は、default要素を定義して、その子要素に定義します。
+-->
+<!ELEMENT switch (case+, default?)>
+
+<!-- journal属性は、switch要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST switch journal (true | false) "true">
+
+<!-- case要素は、switch要素による条件選択中の1条件を定義します。
+ この条件に一致する場合の処理を、子要素に定義します。
+-->
+<!ELEMENT case (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+
+<!-- test属性は、case要素が表す条件を定義します。
+ この属性の値には、@で囲んだキーとそのキー値に対する条件式を記述します。
+ キーでは、以下のものが参照できます。
+ (1)ステップ
+   ステップの参照では、ステップの対象と結果を参照する事ができます。
+   ・ステップの対象 : @ステップ名.target@
+   ・ステップの結果 : @ステップ名.result@ または @ステップ名@
+   ・この要素の親要素ステップの対象：@this@
+  また、ステップの対象及び結果のプロパティを参照する事もできます。
+  その場合は、上記の表現の後に、プロパティを表現する文字列を指定します。
+  ここで言う、プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+  Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+   例 : @ステップ名.hoge[0].fuga@
+   
+ (2)フローの入力
+   フローの入力を参照する場合には、@input@と指定します。
+   ステップの参照と同様にフローの入力のプロパティも指定できます。
+   
+ (3)繰り返し変数
+   繰り返し変数を参照する場合には、@var(変数名)@と指定します。
+   ステップの参照と同様に繰り返し変数のプロパティも指定できます。
+ 
+ 条件式は、The Apache Jakarta Projectの Commons Jexl(http://jakarta.apache.org/commons/jexl/)を使用します。
+ また、条件式の結果は必ずbooleanでなければなりません。
+   例 : test='@ステップ名.hoge[0].fuga@ == "HOGE"'
+-->
+<!ATTLIST case test CDATA #REQUIRED>
+
+<!-- nullCheck属性は、test属性で、プロパティ表現のキーを指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ trueを設定した場合は、ネストされたプロパティがnullの場合、jp.ossc.nimbus.beans.NoSuchPropertyExceptionが発生します。
+ デフォルトは、falseで、ネストされたプロパティがnullの場合、そのキーはnullとみなされます。
+-->
+<!ATTLIST case nullCheck (true | false) "false">
+
+
+<!-- default要素は、switch要素による条件選択中の条件外の条件を定義します。
+ 全てのcase要素の条件に該当しない場合の処理を、子要素に定義します。
+-->
+<!ELEMENT default (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+
+<!-- if要素は、一定条件下での処理を定義します。
+ この条件に一致する場合の処理を、子要素に定義します。
+-->
+<!ELEMENT if (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+
+<!-- test属性は、if要素が表す条件を定義します。
+ case要素のtest属性と同様の値を定義します。
+-->
+<!ATTLIST if test CDATA #REQUIRED>
+
+<!-- nullCheck属性は、test属性で、プロパティ表現のキーを指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ case要素のnullCheck属性と同様の値を定義します。
+-->
+<!ATTLIST if nullCheck (true | false) "false">
+
+<!-- journal属性は、if要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST if journal (true | false) "true">
+
+<!-- for要素は、繰り返し処理を定義します。
+ 繰り返し対象のオブジェクトを子要素のtarget要素で指定します。
+ 繰り返し対象のオブジェクトには、以下のクラスのオブジェクトを指定できます。
+ ・任意のクラスの配列
+ ・java.util.Collectionインタフェースを実装したクラス
+ ・java.util.Enumerationインタフェースを実装したクラス
+ ・java.sql.ResultSetインタフェースを実装したクラス
+ ・jp.ossc.nimbus.recset.RecordSetインタフェースを実装したクラス
+ 
+ 繰り返し変数名をvar属性で必ず指定します。
+ 繰り返し変数は、var要素で参照する事ができます。
+ 
+ 繰り返し対象のオブジェクトを指定しない場合は、end属性で指定した回数分、子要素のステップを実行します。
+-->
+<!ELEMENT for (target?, (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*)>
+
+<!-- var属性は、繰り返し変数の変数名を定義します。
+ ここで定義した変数名で、var要素を使って参照する事ができます。
+-->
+<!ATTLIST for var CDATA #IMPLIED>
+
+<!-- index属性は、現在の繰り返し回数の変数名を定義します。
+ ここで定義した変数名で、var要素を使って参照する事ができます。
+-->
+<!ATTLIST for index CDATA #IMPLIED>
+
+<!-- begin属性は、繰り返し開始番号を定義します。
+ この属性を指定しない場合は、0番目から繰り返します。
+ 数値を直接記述する以外にも、expression要素と同じ式表現で数値を表現する事もできます。
+-->
+<!ATTLIST for begin CDATA #IMPLIED>
+
+<!-- end属性は、繰り返し終了番号を定義します。
+ この属性を指定しない場合は、繰り返し対象の長さ分だけ繰り返します。
+ この属性を指定した場合で、繰り返し対象の長さよりも大きな数値を指定した場合には、繰り返し対象の長さ分だけ繰り返します。
+ 数値を直接記述する以外にも、expression要素と同じ式表現で数値を表現する事もできます。
+-->
+<!ATTLIST for end CDATA #IMPLIED>
+
+<!-- journal属性は、for要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST for journal (true | false) "true">
+
+<!-- journalOnlyLast属性は、for要素でジャーナルを出力する場合に、最後のループのみ出力するかどうかを定義します。
+-->
+<!ATTLIST for journalOnlyLast (true | false) "false">
+
+<!-- while要素は、一定条件下での処理を定義します。
+ この条件に一致する場合の処理を、子要素に定義します。
+-->
+<!ELEMENT while (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+
+<!-- test属性は、while要素が表す条件を定義します。
+ case要素のtest属性と同様の値を定義します。
+-->
+<!ATTLIST while test CDATA #REQUIRED>
+
+<!-- nullCheck属性は、test属性で、プロパティ表現のキーを指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ case要素のnullCheck属性と同様の値を定義します。
+-->
+<!ATTLIST while nullCheck (true | false) "false">
+
+<!-- do属性は、while要素で条件判定より先に子要素のステップを実行するかどうかを定義します。
+-->
+<!ATTLIST while do (true | false) "false">
+
+<!-- journal属性は、while要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST while journal (true | false) "true">
+
+<!-- journalOnlyLast属性は、while要素でジャーナルを出力する場合に、最後のループのみ出力するかどうかを定義します。
+-->
+<!ATTLIST while journalOnlyLast (true | false) "false">
+
+<!-- object要素は、オブジェクトの生成を定義する要素です。
+ 子要素で、以下のインジェクションを行う事ができます。
+ ・コンストラクタインジェクション
+ ・フィールドインジェクション
+ ・プロパティインジェクション
+ ・メソッドインジェクション
+-->
+<!ELEMENT object (constructor?, (field* | attribute* | invoke*)*)>
+
+<!-- code属性は、object要素で生成するオブジェクトのクラス名を定義します。
+ クラス名は、完全修飾クラス名で定義します。
+ また、配列クラスは、完全修飾クラス名の後ろに[]を付与する事で表現できます。
+-->
+<!ATTLIST object code CDATA #REQUIRED>
+
+<!-- journal属性は、object要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST object journal (true | false) "true">
+
+<!-- constructor要素は、コンストラクタインジェクションを定義します。
+ 引数ありのコンストラクタを使用してインスタンスを生成したい場合に、使用します。
+ この要素を指定しない場合には、デフォルトコンストラクタでインスタンス生成が行われます。
+-->
+<!ELEMENT constructor (argument+ | static-field-ref | static-invoke)*>
+
+<!-- argument要素は、コンストラクタインジェクションやメソッドメソッドインジェクション、子フロー呼び出しの引数を定義します。
+-->
+<!ELEMENT argument (#PCDATA | input | object | service-ref | resource-ref | step-ref | static-field-ref | static-invoke | var | this | expression)*>
+
+<!-- type属性は、argument要素の親要素が表すメソッドの引数の型を定義します。
+ argument要素の内容または子要素で定義する引数値の型が、メソッドの引数の型と異なる場合に、メソッドの引数の型を明示するために使用します。
+ argument要素の内容または子要素で定義する引数値の型が、メソッドの引数の型と等しい場合には、指定する必要はありません。
+ ここで指定する型は、完全修飾クラス名でなければなりません。
+ 但し、配列クラスは、完全修飾クラス名の後ろに[]を付与する事で表現できます。
+-->
+<!ATTLIST argument type CDATA #IMPLIED>
+
+<!-- valueType属性は、argument要素の内容で定義する値の型を定義します。
+ メソッドの引数の型と、argument要素の内容で定義する値の型が代入互換の関係にあるが異なる型である時に、argument要素の内容で定義する値の型を明示するために使用します。
+ メソッドの引数の型と、argument要素の内容で定義する値の型が等しい場合には、指定する必要はありません。
+ ここで指定する型は、完全修飾クラス名でなければなりません。
+ 但し、配列クラスは、完全修飾クラス名の後ろに[]を付与する事で表現できます。
+-->
+<!ATTLIST argument valueType CDATA #IMPLIED>
+
+<!-- nullValue属性は、引数がnullである事を定義します。
+-->
+<!ATTLIST argument nullValue (true|false) "false">
+
+<!-- narrowCast属性は、数値型のダウンキャストを許可するかどうかを定義します。
+-->
+<!ATTLIST argument narrowCast (true|false) "false">
+
+<!-- input要素は、フローの入力を参照する要素です。
+ フローの入力のプロパティを参照する場合は、内容にプロパティ名を指定します。
+ ここで言う、プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+ Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+-->
+<!ELEMENT input (#PCDATA)>
+
+<!-- nullCheck属性は、input要素の内容で、プロパティ表現を指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ trueを設定した場合は、ネストされたプロパティがnullの場合、jp.ossc.nimbus.beans.NoSuchPropertyExceptionが発生します。
+ デフォルトは、falseで、ネストされたプロパティがnullの場合、そのプロパティはnullとみなされます。
+-->
+<!ATTLIST input nullCheck (true | false) "false">
+
+<!-- service-ref要素は、サービスを参照する要素です。
+ 内容にサービス名を指定します。
+ サービス名は、マネージャ名#サービス名の形式で指定します。
+-->
+<!ELEMENT service-ref (#PCDATA | input | object | static-invoke | static-field-ref | step-ref | var | expression)*>
+
+<!-- resource-ref要素は、リソースを参照する要素です。
+ 参照したいリソースを定義したresource要素のname属性での値を、この要素の内容に指定します。
+-->
+<!ELEMENT resource-ref (#PCDATA)>
+
+<!-- raw属性は、resource-ref要素で参照するTransactionResourceをそのまま参照するかどうかを定義します。
+ trueを指定した場合は、TransactionResourceそのものを参照します。
+ デフォルトはfalseで、TransactionResource#getObject()で取得されるオブジェクトを参照します。
+-->
+<!ATTLIST resource-ref raw  (true | false) "false">
+
+<!-- step要素は、ステップを参照する要素です。
+ ステップの参照では、ステップの対象と結果を参照する事ができます。
+ ・ステップの対象 : ステップ名.target
+ ・ステップの結果 : ステップ名.result または ステップ名
+ また、ステップの対象及び結果のプロパティを参照する事もできます。
+ その場合は、上記の表現の後に、プロパティを表現する文字列を指定します。
+ ここで言う、プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+ Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+  例 : ステップ名.hoge[0].fuga
+-->
+<!ELEMENT step-ref (#PCDATA)>
+
+<!-- nullCheck属性は、step-ref要素の内容で、プロパティ表現を指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ trueを設定した場合は、ネストされたプロパティがnullの場合、jp.ossc.nimbus.beans.NoSuchPropertyExceptionが発生します。
+ デフォルトは、falseで、ネストされたプロパティがnullの場合、そのプロパティはnullとみなされます。
+-->
+<!ATTLIST step-ref nullCheck (true | false) "false">
+
+<!-- var要素は、繰り返し変数を参照する要素です。
+ この要素の内容に、繰り返し変数名を指定します。
+ また、繰り返し変数のプロパティを参照する事もできます。
+ その場合は、上記の表現の後に、プロパティを表現する文字列を指定します。
+ ここで言う、プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+ Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+  例 : 繰り返し変数名.hoge[0].fuga
+-->
+<!ELEMENT var (#PCDATA)>
+
+<!-- nullCheck属性は、var要素の内容で、プロパティ表現を指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ trueを設定した場合は、ネストされたプロパティがnullの場合、jp.ossc.nimbus.beans.NoSuchPropertyExceptionが発生します。
+ デフォルトは、falseで、ネストされたプロパティがnullの場合、そのプロパティはnullとみなされます。
+-->
+<!ATTLIST var nullCheck (true | false) "false">
+
+<!-- this要素は、現在のステップの対象を参照する要素です。
+ 現在のステップ対象のプロパティを参照する場合は、内容にプロパティ名を指定します。
+ ここで言う、プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+ Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+-->
+<!ELEMENT this (#PCDATA)>
+
+<!-- nullCheck属性は、this要素の内容で、プロパティ表現を指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ trueを設定した場合は、ネストされたプロパティがnullの場合、jp.ossc.nimbus.beans.NoSuchPropertyExceptionが発生します。
+ デフォルトは、falseで、ネストされたプロパティがnullの場合、そのプロパティはnullとみなされます。
+-->
+<!ATTLIST this nullCheck (true | false) "false">
+
+<!-- break要素は、繰り返しの中断を定義します。
+-->
+<!ELEMENT break EMPTY>
+
+<!-- continue要素は、繰り返しの継続を定義します。
+ この要素以降の処理を行わずに、次の繰り返し処理を行います。
+-->
+<!ELEMENT continue EMPTY>
+
+<!-- return要素は、処理の中断を定義します。
+ この要素以降の処理を行わずに、フローを終了します。
+ その際のフローの戻り値は、子要素に指定したものになります。子要素を指定しない場合は、最後に実行されたステップの結果になります。
+-->
+<!ELEMENT return (#PCDATA | input | object | service-ref | static-invoke | static-field-ref | resource-ref | step-ref | var | expression)*>
+
+<!-- nullValue属性は、戻り値がnullである事を定義します。
+-->
+<!ATTLIST return nullValue (true|false) "false">
+
+<!-- static-field-ref要素は、staticフィールド参照を定義します。
+static-field-ref要素のcode属性でクラス名を、name属性でフィールド名を定義します。
+-->
+<!ELEMENT static-field-ref EMPTY>
+
+<!-- code属性は、static-field-ref要素で参照するstaticフィールドが宣言されているクラス名を指定します。
+-->
+<!ATTLIST static-field-ref code CDATA #REQUIRED>
+
+<!-- name属性は、static-field-ref要素で参照するstaticフィールド名を指定します。
+-->
+<!ATTLIST static-field-ref name CDATA #REQUIRED>
+
+<!-- static-invoke要素は、staticメソッドの呼び出しを定義します。
+static-invoke要素の子要素にargument要素を指定します。引数ありのメソッドを実行したい
+場合に指定します。
+-->
+<!ELEMENT static-invoke (argument*)>
+
+<!-- code属性は、static-invoke要素で実行するstaticメソッドが宣言されているクラス名を定義します。
+-->
+<!ATTLIST static-invoke code CDATA #REQUIRED>
+
+<!-- name属性は、static-invoke要素で実行するstaticメソッド名を定義します。
+-->
+<!ATTLIST static-invoke name CDATA #REQUIRED>
+
+<!-- journal属性は、static-invoke要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST static-invoke journal (true | false) "true">
+
+<!-- catch要素は、例外処理を定義します。
+ 指定された例外が発生した場合の処理を、子要素に定義します。
+-->
+<!ELEMENT catch (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+
+<!-- var属性は、例外の変数名を定義します。
+ ここで定義した変数名で、var要素を使って参照する事ができます。
+-->
+<!ATTLIST catch var CDATA #IMPLIED>
+
+<!-- exception属性は、catch要素で捕捉する例外を定義します。
+ この属性には、例外クラス名を、完全修飾クラス名で定義します。
+-->
+<!ATTLIST catch exception CDATA #IMPLIED>
+
+<!-- journal属性は、catch要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST catch journal (true | false) "true">
+
+<!-- throw要素は、例外をthrowする事を定義します。
+-->
+<!ELEMENT throw (object? | var? | step-ref?)*>
+
+<!-- var属性は、throwする例外の変数名を定義します。
+-->
+<!ATTLIST throw var CDATA #IMPLIED>
+
+<!-- finally要素は、最終処理を定義します。
+ finally要素を内包する要素で行われた処理のあとに、どのような場合でも実行される処理を、子要素に定義します。
+-->
+<!ELEMENT finally (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+
+<!-- journal属性は、finally要素でジャーナルを出力するかどうかを定義します。
+ この要素の子要素全てに適用される。
+-->
+<!ATTLIST finally journal (true | false) "true">
+
+<!-- expression要素は、式を表す要素です。
+ この要素の内容には、式を記述する事ができ、式中の可変パラメータとして@で囲んだキーを指定する事ができます。
+ キーでは、以下のものが参照できます。
+ (1)ステップ
+   ステップの参照では、ステップの対象と結果を参照する事ができます。
+   ・ステップの対象 : @ステップ名.target@
+   ・ステップの結果 : @ステップ名.result@ または @ステップ名@
+   ・この要素の親要素ステップの対象：@this@
+  また、ステップの対象及び結果のプロパティを参照する事もできます。
+  その場合は、上記の表現の後に、プロパティを表現する文字列を指定します。
+  ここで言う、プロパティの概念は、Java Beansのプロパティの概念より広く、jp.ossc.nimbus.beans.PropertyFactoryの規約に従います。
+  Java Beansのような単純なプロパティに加え、java.util.Mapなどのマッププロパティやjava.util.List、配列などのインデックスプロパティ、またそれらがネストしたプロパティなどもサポートします。
+   例 : @ステップ名.hoge[0].fuga@
+   
+ (2)フローの入力
+   フローの入力を参照する場合には、@input@と指定します。
+   ステップの参照と同様にフローの入力のプロパティも指定できます。
+   
+ (3)繰り返し変数
+   繰り返し変数を参照する場合には、@var(変数名)@と指定します。
+   ステップの参照と同様に繰り返し変数のプロパティも指定できます。
+ 
+ 式は、The Apache Jakarta Projectの Commons Jexl(http://jakarta.apache.org/commons/jexl/)を使用します。
+   例 : @ステップ名.hoge[0].fuga@ * 100
+-->
+<!ELEMENT expression (#PCDATA)>
+
+<!-- nullCheck属性は、expression要素の内容で、プロパティ表現のキーを指定した場合に、ネストされたプロパティがnullかどうかをチェックするかどうかを設定します。
+ trueを設定した場合は、ネストされたプロパティがnullの場合、jp.ossc.nimbus.beans.NoSuchPropertyExceptionが発生します。
+ デフォルトは、falseで、ネストされたプロパティがnullの場合、そのキーはnullとみなされます。
+-->
+<!ATTLIST expression nullCheck (true | false) "false">
+
+<!-- interpreter要素はインタープリタを使って処理を表す要素です。
+ この要素の内容には、jp.ossc.nimbus.service.interpreter.Interpreterが解釈するソースコードを記述します。
+ ソースコード内では、以下の変数が暗黙的に使用可能です。
+ (1)ステップ
+   ステップ名で参照します。
+   ・ステップの対象 : ステップ名.target
+   ・ステップの結果 : ステップ名.result
+   ・この要素の親要素ステップの対象：target
+   但し、指定したステップを通っていない場合は、ステップ名で参照した値はnullになるので、注意が必要です。
+ (2)フローの入力
+   フローの入力を参照する場合には、inputと指定します。
+ (3)繰り返し変数
+   繰り返し変数を参照する場合には、var.get("変数名")と指定します。
+   但し、変数が宣言されていない場合は、varがnullになるので、注意が必要です。
+ (4)リソース
+   リソースを参照する場合には、resource.getResource("リソース名")と指定します。
+ 
+ ソースコード内で戻り値を返すと、このステップのresultになります。
+ 但し、result要素を記述した場合は、そちらが優先されます。
+ BeanFlowInvokerFactoryサービスに使用するjp.ossc.nimbus.service.interpreter.Interpreterを設定しておく必要があります。
+-->
+<!ELEMENT interpreter (#PCDATA)>
+
+<!-- template要素はテンプレートエンジンを使って文字列を作成する要素です。
+ この要素の内容には、jp.ossc.nimbus.service.template.TemplateEngineが解釈するテンプレートを記述します。
+-->
+<!ELEMENT template (#PCDATA)>
+
+<!-- encoding属性は、テンプレートの文字コードを指定します。 -->
+<!ATTLIST template encoding CDATA #IMPLIED>

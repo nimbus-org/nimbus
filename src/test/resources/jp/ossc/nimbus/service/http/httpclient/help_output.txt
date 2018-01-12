@@ -1,0 +1,9 @@
+POST http://10.250.1.12:8180/cds/user_contents/web/html/tilettl_help_actcusemldelaccept_desc.html HTTP/1.1
+Content-Type: application/xml;charset=Shift_JIS
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 10.250.1.12:8180
+Proxy-Connection: Keep-Alive
+Content-Length: 241
+
+<?xml version="1.0" encoding="Shift_JIS" standalone="no"?><dataSet name="Login"><schema><header name="UserInfo">:name,java.lang.String,,,
+:age,int,,,</header></schema><header name="UserInfo"><name>hoge</name><age>25</age></header></dataSet>

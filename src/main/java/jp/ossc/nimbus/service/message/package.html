@@ -1,0 +1,24 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus メッセージ パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>メッセージレコード生成サービス</b>を提供します。<p>
+アプリケーションで何らかのメッセージ出力を行う場合、必要となる要件を列挙します。<br>
+<ol>
+<li>メッセージを管理するためにメッセージには一意に識別するIDを付与する必要があります。</li>
+<li>IDを付与したメッセージの定義は、変更が容易にできるように外部リソースに外出しする必要があります。</li>
+<li>国際化対応するために、メッセージ定義リソースは、国や言語などのロケール毎に定義できる必要があります。</li>
+<li>メッセージを出力する際には、動的に変わる部分もあるので、埋め込みメッセージが可能である必要があります。<br>また、動的に変わる部分は、実運用上マスクする必要がある場合があります。</li>
+<li>メッセージ定義には、IDとメッセージ以外にも、任意の情報を持たせる事ができるように拡張が容易である必要があります。</li>
+</ol>
+1から4の要件を満たすべく抽象化されたインタフェースが、<a href="MessageRecordFactory.html">MessageRecordFactory</a>です。<br>
+また、5の要件を満たすべく抽象化されたインタフェースが、<a href="MessageRecord.html">MessageRecord</a>と<a href="MessageRecordOperator.html">MessageRecordOperator</a>です。<br>
+<p>
+このパッケージでは、これらのインタフェースを実装したサービスを提供します。<br>
+</body>
+</html>

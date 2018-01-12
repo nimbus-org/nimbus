@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSet>
+	<schema>
+		<header name="TestHeader">
+			:A,java.util.Date,"jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}","jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=1;Format="yyyy-MM-DD"}","@value@ != null"
+:B,java.lang.String,,,</header>
+	</schema>
+	<header name="TestHeader">
+		<A>2008-01-28</A>
+		<B>TestValue</B>
+	</header>
+</dataSet>

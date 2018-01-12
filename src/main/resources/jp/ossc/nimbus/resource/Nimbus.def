@@ -1,0 +1,463 @@
+NIMBUS000,NIMBUS TEST
+NIMBUS001,NIMBUS LOG DEBUG CODE001,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+NIMBUS002,NIMBUS LOG DEBUG CODE002,49,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+NIMBUS003,NIMBUS LOG INFO CODE003,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+NIMBUS004,NIMBUS LOG INFO CODE004,99,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+NIMBUS005,NIMBUS LOG WARN CODE005,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+NIMBUS006,NIMBUS LOG WARN CODE006,149,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+NIMBUS007,NIMBUS LOG ERROR CODE007,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+NIMBUS008,NIMBUS LOG ERROR CODE008,199,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+NIMBUS009,NIMBUS LOG FATAL CODE007,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+NIMBUS010,NIMBUS LOG FATAL CODE008,249,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+DEBUG,@0,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+INFO,@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+WARN,@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+ERROR,@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+FATAL,@0,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+SVCMF00001,[Method Call] loadManager( @0\\, @1 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCMF00002,An implementation class of @0 is not found : @1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00003,The class of an argument must implement ServiceLoader : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00004,System property 'jp.ossc.nimbus.core.loader' is illegal : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00005,An implementation class of ServiceLoader could not create : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCMF00006,The default constructor of an implementation class of ServiceLoader is illegal : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCMF00007,URL of a service definition is illegal : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCMF00008,Loading of a service definition was failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCMF00009,Loading of a service definition was completed. : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00010,[Method Call] ServiceManagerFactory#unloadManager( @0 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCMF00011,The service definition was not loaded : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00012,Unloading of a service definition was completed. : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00013,[Method Call] ServiceManagerFactory#checkLoadManagerComleted(),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCMF00014,Loading manager was not completed.@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCMF00015,[Method Call] ServiceManagerFactory#registerManager( "@0"\\, @1 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCMF00016,ServiceManager "@0" was registered into ServiceManagerFactory.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00017,ServiceManager "@0" could not register.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00018,[Method Call] ServiceManagerFactory#unregisterManager( "@0" ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCMF00019,ServiceManager "@0" was un-registered.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00020,ServiceManager "@0" could not un-register.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00021,[Method Call] ServiceManagerFactory#setManagerRepository( "@0" ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCMF00022,ServiceManager "@0" has not been registered into new Repository.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00023,Repository of ServiceManager could not interchange : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00024,Repository of ServiceManager was modified.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00025,An implementation class of ServiceLoader It changed into "@0".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00026,An implementation class of ServiceManager It changed into "@0".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00027,The class of an argument must implement ServiceManager : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCMF00028,Server Logger It changes into "@0#@1".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00029,Server MessageRecordFactory It changes into "@0#@1".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCMF00030,Path of a service definition is illegal : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCMF00031,System property 'jp.ossc.nimbus.core.manager' is illegal : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00001,create() processing of Service "@0#@1" is starting.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00002,create() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00003,Since Service "@0#@1" did not need create() processing\\, it was canceled : @2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00004,Since Anonymous Service "@0" did not need create() processing\\, it was canceled : @1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00005,preCreateService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00006,preCreateService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00007,preCreateService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00008,preCreateService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00009,createService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00010,createService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00011,createService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00012,createService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00013,postCreateService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00014,postCreateService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00015,postCreateService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00016,postCreateService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00017,Exception occurred in create() processing of Service "@0#@1.",150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00018,Exception occurred in create() processing of Anonymous Service "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00019,create() processing of Service "@0#@1" was completed.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00020,create() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00021,start() processing of Service "@0#@1" is starting.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00022,start() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00023,Since Service "@0#@1" did not need start() processing\\, it was canceled : @2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00024,Since Anonymous Service "@0" did not need start() processing\\, it was canceled : @1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00025,preStartService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00026,preStartService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00027,preStartService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00028,preStartService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00029,startService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00030,startService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00031,startService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00032,startService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00033,postStartService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00034,postStartService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00035,postStartService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00036,postStartService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00037,Exception occurred in start() processing of Service "@0#@1.",150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00038,Exception occurred in start() processing of Anonymous Service "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00039,start() processing of Service "@0#@1" was completed.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00040,start() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00041,Service state which it is going to change @0 and the present service state @1 is mismatching.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00042,stop() processing of Service "@0#@1" is starting.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00043,stop() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00044,Since Service "@0#@1" did not need stop() processing\\, it was canceled : @2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00045,Since Anonymous Service "@0" did not need stop() processing\\, it was canceled : @1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00046,preStopService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00047,preStopService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00048,preStopService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00049,preStopService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00050,stopService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00051,stopService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00052,stopService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00053,stopService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00054,postStopService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00055,postStopService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00056,postStopService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00057,postStopService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00058,Exception occurred in stop() processing of Service "@0#@1",150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00059,Exception occurred in stop() processing of Anonymous Service "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00060,Exception occurred under the notice of service state change of Service "@0#@1". : @2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00061,Exception occurred under the notice of service state change of Anonymous Service "@0". : @1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00062,stop() processing of Service "@0#@1" was completed.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00063,stop() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00064,destroy() processing of Service "@0#@1" is starting.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00065,destroy() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00066,Since Service "@0#@1" did not need destroy() processing\\, it was canceled : @2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00067,Since Anonymous Service "@0" did not need destroy() processing, it was canceled : @1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVC__00068,preDestroyService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00069,preDestroyService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00070,preDestroyService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00071,preDestroyService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00072,destroyService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00073,destroyService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00074,destroyService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00075,destroyService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00076,postDestroyService() processing of Service "@0#@1" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00077,postDestroyService() processing of Anonymous Service "@0" is starting.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00078,postDestroyService() processing of Service "@0#@1" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00079,postDestroyService() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00080,Exception occurred in destroy() processing of Service "@0#@1",150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00081,Exception occurred in destroy() processing of Anonymous Service "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVC__00082,destroy() processing of Service "@0#@1" was completed.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00083,destroy() processing of Anonymous Service "@0" was completed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00084,Logger of Service "@0#@1" It changes into "@2".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00085,Logger of Anonymous Service "@0" It changes into "@1".,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00086,MessageRecordFactory of Service "@0#@1" It changes into "@2".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVC__00087,MessageRecordFactory of Anonymous Service "@0" It changes into "@1".,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVC__00088,Since Service "@0#@1" is already registered\\, the existing service is destroyed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00001,An implementation class of @0 is not found : @1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00002,An implementation class of ServiceManager It changed into "@0".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00003,The class of an argument must implement ServiceManager : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00004,URL specified by ServiceURL could not connect : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00005,ServiceURL was set up : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00006,ServicePath was set up : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00007,Path specified by ServicePath could not connect : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00008,[Method Call] DefaultServiceLoaderService#loadServerMetaData(),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCL_00009,Since ServiceURL was not specified\\, default ServiceURL is used : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00010,Loading of a service definition failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00011,[Method Call] DefaultServiceLoaderService#deployServerMetaData( @0 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCL_00012,It was set up so that @0 log of Server Logger might be outputted.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00013,It was set up so that @0 log of Server Logger might not be outputted.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00014,[Method Call] DefaultServiceLoaderService#deployPropertyEditors(),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCL_00015,The class of "@0" specified with the type attribute of the <property-editor> element is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00016,The class of PropertyEditor "@0" specified with the content of the <property-editor> element is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00017,"@1" was set up as PropertyEditor of property type "@0",50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00018,[Method Call] DefaultServiceLoaderService#deployManagerMetaData( @0 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCL_00019,Instantiation of ServiceManager "@0" failed.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00020,ServiceManager "@0" was instantiated.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00021,[Method Call] DefaultServiceLoaderService#deployServiceMetaData( @0 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCL_00022,Instantiation of Service "@0#@1" failed.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00023,Service "@0#@1" was instantiated.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00024,Deployment of a service definition failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00025,Startup of ServiceManager "@0" failed,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00026,The shutdown hook of ServiceManager "@0" was set up.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCL_00027,Shut-down of Service "@0#@1" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00028,Loading PropertyEditor "@1" of property type "@0" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00029,ServiceManager"@0" is not loaded by this loader.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00030,Service definition XML warning : @0 : line=@1\, column=@2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00031,Service definition XML error : @0 : line=@1\, column=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00032,Service definition XML fatal : @0 : line=@1\, column=@2,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+SVCL_00033,Validation of Service definition XML failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00034,Since Service "@0#@1" is already installed\\, can not install.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00035,Service "@0#@1" is not installed.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00036,Service "@0#@1" which depends is not found.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00037,Service "@0#@1" and Service "@2#@3" are dependent on each other.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00038,Deployment of Service "@0#@1" failed.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00001,[Method Call] ServiceManager#registerService( "@0"\\, @1 ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00002,Service "@0#@1" was registered into ServiceManager "@0".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCM_00003,Service "@0#@1" could not register into ServiceManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00004,[Method Call] ServiceManager#unregisterService( "@0" ),0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00005,Service "@0#@1" was unregistered from ServiceManager "@0".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCM_00006,Service "@0#@1" could not unregister from ServiceManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00007,Service Repository could not change to @0.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00008,Service Repository changed to @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+SVCM_00009,State of ServiceManager "@0" is illegal : @1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00010, State change @2 of Service "@0#@1" and State @3 of ServiceManager is mismatching.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00011, State change @2 of Service "@0#@1" and State @3 of ServiceManager is mismatching.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00012, State change @2 of Service "@0#@1" is illegal.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00013,Since Service "@0#@1" is already registered\\, the existing service is destroyed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00014,Since ServiceManager "@0" is already registered\\, the existing ServiceManager is destroyed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00015,Result of invoke method "@0#@1" is null.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00016,Static field "@0#@1" is null.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00017,The call object of the method "@0" was null.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00018,Invoke method "@1" of Class "@0" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00019,Method "@1" of Class "@0" is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00020,Method "@2" of Service "@0#@1" is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00021,Method "@1" of Object "@0" is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00022,Invoke method "@2" of Service "@0#@1" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00023,Invoke method "@1" of Object "@0" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00024,Starting processing of Service "@0#@1" is stood by until all Services @2 are started.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00025,Creating processing of Service "@2#@3" is stood by until Service "@0#@1" is created.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00026,Starting processing of Service "@2#@3" is stood by until Service "@0#@1" is started.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00027,Stopping processing of Service "@2#@3" is stood by until Service "@0#@1" is stopped.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00028,Destroying processing of Service "@2#@3" is stood by until Service "@0#@1" is destroyed.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00029,Creating processing of Service "@2#@3" is stood by until Service "@0#@1" is registered into ServiceManager "@0".,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00030,Starting processing of Service "@2#@3" is stood by until Service "@0#@1" is registered into ServiceManager "@0".,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00031,Creating processing of Service "@1#@2" is stood by until ServiceManager "@0" is registered into ServiceManagerFactory.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00032,Starting processing of Service "@1#@2" is stood by until ServiceManager "@0" is registered into ServiceManagerFactory.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00033,Creating of Service "@0#@1" failed,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00034,Starting of Service "@0#@1" failed,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00035,Unexpected exception occurred.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCM_00036,Service "@0#@1" and Service "@2#@3" are dependent on each other.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00037,Setter which is defined by "@1" attribute of Object "@0" is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00038,Setter which is defined by "@2" attribute of Service "@0#@1" is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00039,Value "@2" could not be set as Setter "@1" which is defined Object "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00040,PropertyEditor which edits the attribute value of Class @0 is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00041,Value "@2" that set as Setter "@1" which is defined Object "@0" could not be appropriately edited.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00042,Value "@3" that set as Setter "@2" which is defined Service "@0#@1" could not be appropriately edited.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00043,Value "@3" could not be set as Setter "@2" which is defined Service "@0#@1".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00044,Value "@2" was set as Setter "@1" which is defined Object "@0".,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00045,Value "@3" was set as Setter "@2" which is defined Service "@0#@1".,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+SVCM_00046,Attribute "@2" which is defined Service "@0#@1" was illegal.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCM_00047,Attribute "@1" which is defined Service "@0" was illegal.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCGRY00001,Specification of the priority range must be the form of the "minimum:maximum".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCGRY00002,The maximum of the priority range must be a larger value than the minimum value.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCGRY00003,The priority range of a label must not overlap.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCGRY00004,You have to set up a "CategoryName" attribute.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DCLF_00001,Service is not started.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SSWRF00001,Specified Format is Invalid "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SSWRF00002,Specified Implement Class Name is Invalid "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+JMSDW00001,It faild to create JMS message.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+JMSDW00002,It faild to send JMS message.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+JMSDW00003,It faild to rollback JMS message.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+JMSDW00004,It faild to commit JMS message.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DBW__00001,It faild to write in database.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DBW__00002,It faild to create connection of database.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PWRF_00001,Exception occurred in accessor which acquires the property of key "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+FCM__00002,It faild to load cached file.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SROA_00001,It faild to set CachedReference to null.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SROA_00002,It faild to set CachedReference to value. : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCOA_00001,It faild to set CachedReference to null.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCOA_00002,It faild to set CachedReference to value. : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CJF__00001,JNDI server "@0" was disconnected.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CJF__00002,JNDI server "@0" was connected.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+DP___00001,It failed to accept sever socket.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DP___00002,Protocol was mismatch.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DP___00003,It failed to read sever socket.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+DP___00004,It failed to write sever socket.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+DP___00005,It failed to analyze protocol.,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+DP___00006,Unexpected error.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DP___00007,It failed to get object from ObjectMessage.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DP___00008,Message was not ObjectMessage.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DP___00009,Listen error.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DP___00010,It failed to initialize channel.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DP___00011,It failed to filter the message. message=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DP___00012,It failed to handle the message. message=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DPC__00001,It failed to send message.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DPC__00002,Servant was garbaged.id=@0.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+GFS__00001,Setter which is defined by "@1" attribute of Class "@0" is not found.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+GFS__00002,Value "@2" could not be set as Setter "@1" which is defined Class "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CMS__00001,CodeMaster "@0" is updated at "@1".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CMS__00002,CodeMaster "@0" update failed!,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CMS__00003,Message to update CodeMaster was not MapMessage! : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CMS__00004,It faild to get a message to update CodeMaster!,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CMS__00005,CodeMaster "@0" partupdate failed\\, because of current master is null.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CMS__00006,It faild to save CodeMaster "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+QHC__00001,Queue handling error! dequedObject=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+QHC__00002,The maximum retrying of the handling processing of Queue was exceeded. dequedObject=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFIF_00001,Bean flow definition XML warning : @0 : file=@1\\, line=@2\\, column=@3,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+BFIF_00002,Bean flow definition XML error : @0 : file=@1\\, line=@2\\, column=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFIF_00003,Bean flow definition XML fatal : @0 : file=@1\\, line=@2\\, column=@3,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+TS___00001,Error occurred while execute schedule task.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TS___00002,Timeout occurred while wait depends schedule task.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CC___00001,It failed in the encryption.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CC___00002,It failed in the decryption.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CC___00003,It failed in the hash.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+KACS_00001,KeepAliveChecker @0 was recovery.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+KACS_00002,KeepAliveChecker @0 was dead.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DBSM_00001,It faild to change state of "@0" to "@1".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DBSM_00002,It faild to get state of "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DBSM_00003,It faild to clear state.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SMTP_00001,SMTP server "@0" was disconnected. Reason "@1",150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SMTP_00002,SMTP server "@0" was connected.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PSS__00001,Unexpected error occurred\\, while waiting for the server socket. Waiting for the server socket is stopped.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+EHI__00001,Exception occurred while evaluating expression "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+AS___00001,It failed in the state change "@3" of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+AS___00002,It failed in execution of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+AS___00003,The schedule "@1:@2" of ScheduleManager "@0" was entry.input=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+AS___00004,Scheduler "@0" failed to pick out the schedule.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+AS___00005,Unexpected error occured on Scheduler "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+AS___00006,It failed in state transition @3->@4 of the schedule "@1:@2" of ScheduleManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+AS___00007,It failed to entry of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+AS___00008,ScheduleExecutor is not found : "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+ASE__00001,The schedule "@1:@2" of ScheduleManager "@0" was begun.input=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+ASE__00002,The schedule "@1:@2" of ScheduleManager "@0" was ended.output=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+ASE__00003,It failed in execution of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+ASE__00004,The schedule "@1:@2" of ScheduleManager "@0" was scheduled again at "@3".,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+ASE__00005,It failed in re-schedule of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+ASE__00006,The schedule "@1:@2" of ScheduleManager "@0" reached at end time "@3" of retrying.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+ASE__00007,The schedule "@1:@2" of ScheduleManager "@0" was aborted.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+ASE__00008,It failed in state change "@3" of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+ASE__00009,It failed in state transition @3->@4 of the schedule "@1:@2" of ScheduleManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+ASE__00010,The schedule "@1:@2" of ScheduleManager "@0" was disabled.output=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+BFSE_00001,The schedule "@1" of ScheduleManager "@0" was paused.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+BFSE_00002,The schedule "@1" of ScheduleManager "@0" was resumed.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+DSM__00001,ScheduleManager "@0" failed to check the control state.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DSM__00002,ScheduleManager "@0" failed to check the schedule timeover.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DSM__00003,The schedule "@1:@2" of ScheduleManager "@0" is time over. state=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CLST_00001,Cluster @0 changed into the active system.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00002,Cluster @0 changed into the standby system.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00003,Because cluster @0 cannot change into the active system\\, it separates.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CLST_00004,It failed in sending and receiving message between clusters @0.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CLST_00005,Cluster @0 add member @1.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00006,Cluster @0 remove member @1.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00007,Cluster @0 member changed. @1 -> @2,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00008,Cluster @0 add client @1.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00009,Cluster @0 remove client @1.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00010,Cluster @0 member marged. @1 -> @2,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00001,It failed in sending message. client=@0\\, message=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PCFT_00002,It failed in retrying to send message. client=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCFT_00003,It failed in receiving message. Try to reconnect.connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PCFT_00004,It failed in receiving message. The receiving stop. connection=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCFT_00005,It failed to response message. client=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCFT_00006,It failed to interpolate message. client=@0\\, id=@1-@2\\, count=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCFT_00007,It failed to interpolate message. client=@0\\, id=@1-@2\\, count=@3\\, mostOldId=@4\\, mostOldTime=@5,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCFT_00008,The server was terminated. The receiving stop. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PCFT_00009,The client was connected. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00010,The client was closed. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00011,Connection closed. connection=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCCF_00001,It failed in connecting to server. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PCCF_00002,It failed in sending message. connection=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCCF_00003,It reconnected with server. old=@0\\, new=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PCCF_00004,A connectable server does not exist. connection=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCCF_00005,It failed to get connection to server. uid=@0\\, connectionfactory=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PRCF_00001,It failed to response message. It will retry. client=@0\\, message=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PRCF_00002,It failed to response message. client=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PRCF_00003,It failed in reading message. service=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PMFS_00001,It failed in sending message. client=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PMFS_00002,It failed in forwarding the message. client=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+MBW__00001,It failed to get value by service "@0". target=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+MBW__00002,It failed to connect server by service "@0". url=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+MBW__00003,It failed to write value by service "@0". value=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+MBW__00004,The check error of target "@1" occured by service "@0". expression="@2"\\, value="@3"\\, count=@4,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+MBW__00005,The check error of target "@1" occured by service "@0". expression="@2"\\, value="@3"\\, count=@4,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+MBW__00006,The check error of target "@1" occured by service "@0". expression="@2"\\, value="@3"\\, count=@4,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+TLIS_00001,[Call] @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TLIS_00002,[Return] @0,99,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CBFI_00001,It failed to invoke asynchronously flow. flow=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCG_00001,DataSet code generation definition XML warning : @0 : file=@1\\, line=@2\\, column=@3,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DSCG_00002,DataSet code generation definition XML error : @0 : file=@1\\, line=@2\\, column=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCG_00003,DataSet code generation definition XML fatal : @0 : file=@1\\, line=@2\\, column=@3,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+DSCG_00004,Loading of a DataSet code generation definition XML was failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCG_00005,It was generated duplicate files : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCS__00001,It failed to load value of key "@0" : subject=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SCS__00002,It failed to create response message : subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SCS__00003,It failed to update from remote server. Cache is invalidated. : subject=@0\\, key=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCS__00004,It failed to update from remote server. It will be synchronized with the main system : subject=@0\\, key=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SCS__00005,It failed to update from remote server : subject=@0\\, key=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SCS__00006,It failed to response : subject=@0\\, response=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SCS__00007,It failed to release lock : subject=@0\\, key=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SCS__00008,It failed to analyze keyIndex : subject=@0\\, keyIndex=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SCS__00009,Update request for key "@0" is old\\, discarded. : subject=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DSCS_00001,It failed to create response message : subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCS_00002,It failed to response : subject=@0\\, response=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCS_00003,It failed to rehash : subject=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSS__00001,Select error. It will try to reconnect. : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+DSS__00002,It failed to reconnect : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CFTP_00001,It failed to connect to the FTP server. server=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CFTP_00002,I've skipped process "@1" to the FTP server "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CSCP_00001,It failed to connect to the SCP server. server=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CSCP_00002,I've skipped process "@1" to the SCP server "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CSFTP00001,It failed to connect to the SFTP server. server=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CSFTP00002,I've skipped process "@1" to the SFTP server "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CSOA_00001,It faild to save key "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+BFRS_00001,REST server definition XML warning : @0\\,file=@1\\,line=@2\\,column=@3,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+BFRS_00002,REST server definition XML error : @0\\,file=@1\\,line=@2\\,column=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00003,REST server definition XML fatal : @0\\,file=@1\\,line=@2\\,column=@3,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+BFRS_00004,Class of request-object not found. path=@0\\, className=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00005,Unsupported number type. path=@0\\, className=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00006,Failed to create request-object. path=@0\\, className=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00007,Illegal path-parameter. path=@0\\, parameterName=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00008,The type of path-parameter on request-object can not be identified. path=@0\\, parameterName=@1\\, className=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00009,Failed to set path-parameter to request-object. path=@0\\, parameterName=@1\\, className=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00010,Not found PropertyEditor for path-parameter edit. path=@0\\, parameterName=@1\\, propertyType=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00011,Class of response-object not found. path=@0\\, className=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00012,The type of request-parameter on request-object can not be identified. path=@0\\, parameterName=@1\\, className=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00013,Failed to set request-parameter to request-object. path=@0\\, parameterName=@1\\, className=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00014,Failed to get property of request-parameter from request-object. path=@0\\, parameterName=@1\\, className=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00015,Failed to create collection property, when set request-parameter to request-object. path=@0\\, parameterName=@1\\, className=@2\\, propertyType=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00016,The generics type of property on request-object can not be identified, when set request-parameter to request-object. path=@0\\, parameterName=@1\\, className=@2\\, propertyType=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00017,Not found PropertyEditor for request-parameter edit. path=@0\\, parameterName=@1\\, propertyType=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00018,Failed to convert request-body to request-object. path=@0\\, className=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+BFRS_00019,Failed to create bean flow for validate. path=@0\\, flowName=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00020,Failed to execute bean flow for validate. path=@0\\, flowName=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00021,Not found bean flow. path=@0\\, flowName=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00022,Failed to create bean flow. path=@0\\, flowName=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00023,Failed to execute bean flow. path=@0\\, flowName=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00024,Failed to convert response-object. path=@0\\, className=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00025,Failed to parse path-parameters. path=@0\\, pathParameters=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+BFRS_00026,Illegal path-parameter. path=@0\\, pathParameters=@1\\, value=@2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+BFRS_00027,Illegal request-parameter. path=@0\\, parameterName=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+BFRS_00028,Illegal Accept header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+BFRS_00029,Illegal Accept-Charset header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+BFRS_00030,Charset of Accept-Charset header is not supported. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+BFRS_00031,Unexpected exception occured. path=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+WS___00001,Unexpected exception occured. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WS___00002,Illegal Request. Id is null or Ticket is null. IP=@0,100,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+WS___00003,The number of clients has exceeded the maximum size. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WS___00004,Session is not normal close. SessionProperties=@0 CloseReason=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WS___00005,Failed to send WebSocket Ping. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WS___00006,Failed to send WebSocket Message. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WSSV_00001,Unexpected exception occured.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WSSV_00002,Illegal Accept header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WSSV_00003,Illegal Accept-Charset header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WSSV_00004,Charset of Accept-Charset header is not supported. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+HPS__00001,Received bad request,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+HPS__00002,Unexpected error occured.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+HPS__00003,Client abort.url=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
+RSS__00001,Unexpected error occured.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RSS__00002,It failed to call remote object.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+TR___00001,Test runner definition XML warning : @0 : line=@1\\, column=@2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+TR___00002,Test runner definition XML error : @0 : line=@1\\, column=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TR___00003,Test runner definition XML fatal : @0 : line=@1\\, column=@2,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+TR___00004,Loading of a Test runner definition XML was failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TR___00005,Test Phase : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00006,Failed to get Scenario groups.,100,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TR___00007,Scenario group start : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00008,\tScenario start : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00009,\t\tTestcase start : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00010,\t\tTestcase success : @0\\, status=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00011,\t\tTestcase fail    : @0\\, status=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+TR___00012,\t\tTestcase error   : @0\\, status=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TR___00013,\tScenario success : @0\\, status=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00014,\tScenario fail    : @0\\, status=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+TR___00015,\tScenario error   : @0\\, status=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TR___00016,Scenario group end : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TR___00017,Scenario group error : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+CTR__00001,It failed to get result of test.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00001,Test resource definition XML warning : @0 : file=@1\\, line=@2\\, column=@3,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+TC___00002,Test resource definition XML error : @0 : file=@1\\, line=@2\\, column=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00003,Test resource definition XML fatal : @0 : file=@1\\, line=@2\\, column=@3,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+TC___00004,Loading of a Test resource definition XML was failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00005,Scenario group start : ScenarioGroupId=@0\\, user=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00006,Scenario group start error : ScenarioGroupId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00007,Scenario group end : ScenarioGroupId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00008,Scenario group end error : ScenarioGroupId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00009,Scenario start : ScenarioGroupId=@0\\, ScenarioId=@1\\, user=@2,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00010,Scenario start error : ScenarioGroupId=@0\\, ScenarioId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00011,Scenario cancel : ScenarioGroupId=@0\\, ScenarioId=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00012,Scenario cancel error : ScenarioGroupId=@0\\, ScenarioId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00013,Scenario end : ScenarioGroupId=@0\\, ScenarioId=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00014,Scenario end error : ScenarioGroupId=@0\\, ScenarioId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00015,Testcase start : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2\\, user=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00016,Testcase start error : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2\\,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00017,Testcase cancel : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00018,Testcase cancel error : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2\\,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00019,Testcase end : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00020,Testcase end error : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2\\,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00021,Action excute : ActionId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TC___00022,Action excute error : ActionId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TC___00023,EvaluateAction result is false: ActionId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RPC__00001,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
+RPC__00002,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RPC__00003,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+RPC__00004,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RPC__00005,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY

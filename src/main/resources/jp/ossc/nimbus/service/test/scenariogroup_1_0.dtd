@@ -1,0 +1,158 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 ScenarioGroup Resource descriptor.
+The DOCTYPE is:
+  <!DOCTYPE scenarioGroup PUBLIC
+      "-//Nimbus//DTD Nimbus ScenarioGroup Resource 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/scenariogroup_1_0.dtd">
+
+例:
+    <scenarioGroup creator="ユーザ１" expectedCost="60" scheduledCreateStartDate="2016/12/12 09:00" scheduledCreateEndDate="2016/12/12 10:00"
+                                    createStartDate="2016/12/12 10:00" createEndDate="2016/12/12 12:00" progress="30" cost="60">
+        <title>シナリオグループ１</title>
+        <description>シナリオグループ１の説明です。</description>
+        <phase>
+            <include>
+                phase1,phase2
+            </include>
+            <exclude>
+                phase3
+            </exclude>
+        </phase>
+        <action id="001" type="before" serviceName="Nimbus#TestAction1" expectedCost="30" cost="30">
+            <title>シナリオグループ１のテストアクショ１</title>
+            <description>シナリオグループ１のテストアクショ１の説明です。</description>
+            <phase>
+                <include>
+                    phase1
+                </include>
+            </phase>
+            <resources>
+                <resource name="001.txt"/>
+            </resources>
+        </action>
+        <action id="002" type="before" serviceName="Nimbus#TestAction2" expectedCost="30" cost="20">
+            <title>シナリオグループ１のテストアクショ２</title>
+            <description>シナリオグループ１のテストアクショ２の説明です。</description>
+            <phase>
+                <exclude>
+                    phase1
+                </exclude>
+            </phase>
+            <resources>
+                <resource name="002_1.txt"/>
+                <resource name="002_2.txt"/>
+            </resources>
+        </action>
+    </scenarioGroup>
+-->
+
+<!-- scenarioGroup要素は、シナリオグループで使用するテストリソース群を定義するルート要素です。
+-->
+<!ELEMENT scenarioGroup (title?|description?|phase?|category*|action*)*>
+
+<!-- title要素は、テストの内容に関するタイトルを定義します。
+-->
+<!ELEMENT title (#PCDATA)>
+
+<!-- description要素は、テストの内容に関する説明文を定義します。
+-->
+<!ELEMENT description (#PCDATA)>
+
+<!-- phase要素は、対象のフェーズを定義するルート要素です。
+-->
+<!ELEMENT phase (include?|exclude?)*>
+
+<!-- category要素は、対象が所属するカテゴリを定義する要素です。
+-->
+<!ELEMENT category EMPTY>
+
+<!-- name属性は、カテゴリの名前を定義します。
+-->
+<!ATTLIST category name CDATA #REQUIRED>
+
+<!-- value属性は、カテゴリの値を定義します。
+-->
+<!ATTLIST category value CDATA #REQUIRED>
+
+<!-- include要素は、実行するフェーズを指定する要素です。
+-->
+<!ELEMENT include (#PCDATA)>
+
+<!-- exclude要素は、実行しないフェーズを指定する要素です。
+-->
+<!ELEMENT exclude (#PCDATA)>
+
+<!-- creator属性は、scenarioGroupのリソースの作成者を定義します。
+-->
+<!ATTLIST scenarioGroup creator CDATA #IMPLIED>
+
+<!-- scheduledCreateStartDate属性は、scenarioGroupのリソースの作成開始予定日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenarioGroup scheduledCreateStartDate CDATA #IMPLIED>
+
+<!-- scheduledCreateEndDate属性は、scenarioGroupのリソースの作成終了予定日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenarioGroup scheduledCreateEndDate CDATA #IMPLIED>
+
+<!-- createStartDate属性は、scenarioGroupのリソースの作成開日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenarioGroup createStartDate CDATA #IMPLIED>
+
+<!-- createEndDate属性は、scenarioGroupのリソースの作成終了日(yyyy/MM/dd HH:mm)を定義します。
+-->
+<!ATTLIST scenarioGroup createEndDate CDATA #IMPLIED>
+
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
+-->
+<!ATTLIST scenarioGroup expectedCost CDATA #IMPLIED>
+
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
+-->
+<!ATTLIST scenarioGroup cost CDATA #IMPLIED>
+
+<!-- progress属性は、リソース定義の作成進捗率を定義します。
+-->
+<!ATTLIST scenarioGroup progress CDATA #IMPLIED>
+
+<!-- action要素は、テストに使用するリソース属性を定義します。
+-->
+<!ELEMENT action (title?|description?|phase?|resources?)*>
+
+<!-- id属性は、リソースのIDを定義します。
+-->
+<!ATTLIST action id CDATA #REQUIRED>
+
+<!-- type属性は、リソースの実行タイプを定義します。
+beforeは開始時に実行されます。
+finallyはエラー発生時でも最後に必ず実行されます。
+-->
+<!ATTLIST action type (before|finally) #REQUIRED>
+
+<!-- serviceName属性は、実行するアクションのサービス名を定義します。
+-->
+<!ATTLIST action serviceName CDATA #REQUIRED>
+
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
+-->
+<!ATTLIST action expectedCost CDATA #IMPLIED>
+
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
+-->
+<!ATTLIST action cost CDATA #IMPLIED>
+
+<!-- resources要素は、アクションを実行する際に使用するリソースの集合を定義します。
+-->
+<!ELEMENT resources (resource+)>
+
+<!-- resource要素は、アクションを実行する際に使用するリソースを定義します。
+name属性を指定して、リソースファイルを指定するか、内容でリソース文字列を指定します。
+-->
+<!ELEMENT resource (#PCDATA)*>
+
+<!-- name属性は、リソースファイルのファイル名を定義します。
+-->
+<!ATTLIST resource name CDATA #IMPLIED>
+
+<!-- encoding属性は、リソースファイルの文字コードを定義します。
+-->
+<!ATTLIST resource encoding CDATA #IMPLIED>

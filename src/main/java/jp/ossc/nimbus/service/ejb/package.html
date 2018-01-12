@@ -1,0 +1,27 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus EJB パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>EJBサービス</b>を提供します。<p>
+EJB2.0までのEJBは、EJBの参照を取得するのに、以下のような複雑なAPIの呼び出し手続きが必要になる。<br>
+<ol>
+  <li>JNDI環境変数を指定して（またはjndi.propertiesをクラスパスに置いて）、JNDIコンテキストを生成する。</li>
+  <li>JNDIコンテキストからEJBホームオブジェクトをlookupする。</li>
+  <li>EJBホームオブジェクトを必要なインタフェースへnarrowする。</li>
+  <li>EJBホームオブジェクトからEJBリモートオブジェクトをcreateする。</li>
+  <li>EJBリモートオブジェクトのメソッドを呼び出す。</li>
+</ol>
+また、毎回JNDIコンテキストからEJBホームオブジェクトをlookupすると、
+そのたびにJNDIサーバとの通信が発生するため、通常はEJBホームオブジェクトをキャッシュする仕組み等を考える必要もある。<br>
+<p>
+このようなEJBの取得に際して発生し得る問題を隠蔽し、EJBの参照を取得するという簡潔な手段だけを抽象化したインタフェースが、
+<A HREF="EJBFactory.html">EJBFactory</A>です。<br>
+<p>
+このパッケージでは、そのEJBFactoryインタフェースを実装したサービスを提供します。<br>
+</body>
+</html>

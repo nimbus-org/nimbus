@@ -1,0 +1,132 @@
+<!--
+This is the XML DTD for the Nimbus 1.0 DataSet generation descriptor.
+The DOCTYPE is:
+  <!DOCTYPE restserver PUBLIC
+      "-//Nimbus//DTD Nimbus RestServer definition 1.0//JA"
+      "http://nimbus.sourceforge.jp/dtd/restserver_1_0.dtd">
+
+例:
+    <restserver>
+        
+        <resource name="/users">
+            <post>
+                <request code="sample.dto.User"/>
+                <response code="sample.dto.Response"/>
+            </post>
+            <get>
+                <request code="sample.dto.UserFilter"/>
+                <response code="sample.dto.UserList"/>
+            </get>
+            <head>
+                <request code="sample.dto.UserFilter"/>
+            </head>
+            <options/>
+        </resource>
+        
+        <resource name="/users/{id}">
+            <get>
+                <request code="java.lang.String"/>
+                <response code="sample.dto.User"/>
+            </get>
+            <head>
+                <request code="java.lang.String"/>
+            </head>
+            <put>
+                <request code="sample.dto.User"/>
+                <response code="sample.dto.Response"/>
+            </put>
+            <delete>
+                <request code="java.lang.String"/>
+                <response code="sample.dto.Response"/>
+            </delete>
+            <options/>
+        </resource>
+        
+        <resource name="/users/{id}/friends">
+            <get>
+                <request code="sample.dto.UserFilter"/>
+                <response code="sample.dto.UserList"/>
+            </get>
+            <head>
+                <request code="sample.dto.UserFilter"/>
+            </head>
+            <options/>
+        </resource>
+        
+        <resource name="/users/{id}/friends/{friend_id}">
+            <post>
+                <request code="java.util.HashMap"/>
+                <response code="sample.dto.Response"/>
+            </post>
+            <get>
+                <request code="java.util.HashMap"/>
+                <response code="sample.dto.User"/>
+            </get>
+            <head>
+                <request code="java.util.HashMap"/>
+            </head>
+            <delete>
+                <request code="java.util.HashMap"/>
+                <response code="sample.dto.Response"/>
+            </delete>
+            <options/>
+        </resource>
+        
+    </restserver>
+-->
+
+<!-- restserver要素は、RESTサーバ定義のルート要素です。
+-->
+<!ELEMENT restserver (resource+)>
+
+<!-- resource要素は、RESTサーバに存在するリソースを定義する要素です。
+-->
+<!ELEMENT resource (post? | get? | head? | put? | delete? | options?)*>
+
+<!-- name属性は、RESTサーバのリソースを示すURIを定義します。
+-->
+<!ATTLIST resource name CDATA #REQUIRED>
+
+<!-- post要素は、リソースのPOSTメソッドを定義する要素です。
+-->
+<!ELEMENT post (description? | request? | response?)*>
+
+<!-- get要素は、リソースのGETメソッドを定義する要素です。
+-->
+<!ELEMENT get (description? | request? | response)*>
+
+<!-- head要素は、リソースのHEADメソッドを定義する要素です。
+-->
+<!ELEMENT head (description? | request?)>
+
+<!-- put要素は、リソースのPUTメソッドを定義する要素です。
+-->
+<!ELEMENT put (description? | request? | response?)*>
+
+<!-- delete要素は、リソースのDELETEメソッドを定義する要素です。
+-->
+<!ELEMENT delete (description? | request? | response?)*>
+
+<!-- options要素は、リソースのDELETEメソッドを定義する要素です。
+-->
+<!ELEMENT options EMPTY>
+
+<!-- description要素は、メソッドの説明を定義します。
+-->
+<!ELEMENT description (#PCDATA)>
+
+<!-- request要素は、メソッドのリクエスト情報を定義する要素です。
+-->
+<!ELEMENT request EMPTY>
+
+<!-- code属性は、リクエスト情報を格納するBeanのクラス名を定義します。
+-->
+<!ATTLIST request code CDATA #REQUIRED>
+
+<!-- response要素は、メソッドのレスポンス情報を定義する要素です。
+-->
+<!ELEMENT response EMPTY>
+
+<!-- code属性は、レスポンス情報を格納するBeanのクラス名を定義します。
+-->
+<!ATTLIST response code CDATA #REQUIRED>

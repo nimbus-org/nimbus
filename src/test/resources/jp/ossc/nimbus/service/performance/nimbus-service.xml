@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="tstruts">
+        <service code="jp.ossc.nimbus.service.performance.CachedPerformanceStatisticsService" name="pf">
+            <attribute name="RecordClassName">
+                jp.ossc.nimbus.service.performance.PerformanceRecordImpl
+            </attribute>
+        </service>
+    </manager>
+</server>

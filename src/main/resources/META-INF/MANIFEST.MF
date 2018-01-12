@@ -1,0 +1,5 @@
+Extension-Name: nimbus
+Specification-Title: Nimbus - Application server indendent service ...
+Specification-Vendor: Nimbus Project
+Implementation-Title: jp.ossc.nimbus
+Implementation-Vendor: Nimbus Project

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="tstruts">
+        <service code="jp.ossc.nimbus.service.context.DefaultContextService" name="con">
+          <attribute name="nakano">hirotaka</attribute>
+        </service>
+    </manager>
+</server>

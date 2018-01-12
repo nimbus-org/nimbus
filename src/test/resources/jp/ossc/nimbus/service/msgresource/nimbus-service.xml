@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="Shift_JIS" ?> 
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="TheManager">
+      <!--メッセージリソース-->
+       <service code="jp.ossc.nimbus.service.msgresource.MessageResourceFactoryService" name="MessageResourceFactoryService">
+       		<attribute name="DefineFileExt">xml</attribute>
+       		<attribute name="DefineFileDir">jp/ossc/nimbus/service/msgresource/def</attribute>
+       		<attribute name="ByteConverterServiceName">#ByteConverter</attribute>
+       		<depends>ByteConverter</depends>
+       </service>
+       <!--バイトコンバータ-->
+       <service code="jp.ossc.nimbus.service.byteconvert.ByteConverterService" name="ByteConverter">
+       		<attribute name="DifferentEndianClassName">jp.ossc.nimbus.service.byteconvert.ByteConverterDifferentEndian</attribute>
+       		<attribute name="SameEndianClassName">jp.ossc.nimbus.service.byteconvert.ByteConverterSameEndian</attribute>
+       </service>
+        <!-- JmsQueueSessionサービス -->
+    	<service code="jp.ossc.nimbus.service.resource.jmsqueue.JmsQueueSessionService" name="JmsQueueSessionService">
+    	<attribute name="JndiFinderServiceName">#JndiFinderService</attribute>
+    	<depends>JndiFinderService</depends>
+    	</service>
+		<!--jndiファインダーサービス-->
+		<service code="jp.ossc.nimbus.service.jndi.CachedJndiFinderService" name="JndiFinderService">
+		<attribute name="CacheServiceName">#CacheService</attribute>
+		<depends>CacheService</depends>
+		</service>
+		<!--キャッシュサービス-->
+		<service code="jp.ossc.nimbus.service.cache.EternalCacheService" name="CacheService">
+		</service>       
+    </manager>
+</server>

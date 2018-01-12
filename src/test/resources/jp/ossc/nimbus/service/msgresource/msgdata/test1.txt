@@ -1,0 +1,4 @@
+prop4=Let,prop5=World:This is test.
+prop4=it,prop5=World:That's good.
+prop4=be,prop5=World:What's wrong?
+

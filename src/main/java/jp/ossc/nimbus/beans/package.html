@@ -1,0 +1,26 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus Beans パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>Java Beansライブラリ</b>を提供します。<p>
+
+Java Beans規約に則ったBeanのプロパティ編集、及びJava Beans規約を拡張したBeanのプロパティアクセスをサポートするライブラリを提供します。<p>
+
+Java Beans規約に則ったBeanのプロパティを編集する機能として、J2SEにはjava.beans.PropertyEditorインタフェースが定義されています。<br>
+しかしながら、その実装クラスは、公開されておらず、実装されているクラスもわずかです。そこで、Nimbusでは、java.beans.PropertyEditorインタフェースの実装クラスを<b><a href="NimbusPropertyEditorManager.html">拡充</a></b>して提供します。<br>
+また、それらの実装クラスは、Nimbusのサービス定義やBeanFlow定義のインジェクションで使用します。<p>
+
+Java Beans規約を拡張したBeanのプロパティに、汎用的にアクセスする機能が、The Apache Jakarta Projectの Commons BeanUtils(http://jakarta.apache.org/beanutils/)で提供されています。<br>
+BeanUtilsでは、プロパティにアクセスする際に、インタプリタ的にプロパティ文字列を解析して、リフレクションを利用してプロパティにアクセスします。<br>
+しかしながら、実際の用途としては、ある特定のプロパティに対して、プログラムが動作する度にアクセスするため、インタプリタ的に毎回プロパティ文字列の解析を行うのは無駄であるし、その後のリフレクションメソッドを毎回検索するのも無駄になってしまいます。<br>
+これは、staticに簡単に呼び出せる利便性を追求した一つの形ではありますが、エンタープライズシステムを構築するプログラマとしては、性能への悪影響を考えざる得ません。<br>
+そこで、Nimbusでは、プロパティ文字列の解析をプリコンパイル的に行い、更にリフレクションメソッドをキャッシュすることで、性能への影響を低減させた<b><a href="PropertyFactory.html">プロパティ汎用アクセス機能</a></b>を提供します。<br>
+また、Java Beans規約の拡張という意味でも、BeanUtilsよりも拡張したアクセス機能を持っています。<br>
+さらに、オーバーロードメソッドの呼び出しや、publicなインタフェースを実装したpublicでないクラスのプロパティへのアクセスなど、細かな点が考慮されています。<br>
+</body>
+</html>

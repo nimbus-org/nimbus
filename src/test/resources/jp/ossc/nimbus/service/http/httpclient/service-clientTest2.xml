@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE server PUBLIC
+  "-//Nimbus//DTD Nimbus 1.0//JA"
+  "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
+<server>
+<!--
+    HTTPでリクエストを送って、HTMLをDOMとして取得するサンプル
+-->
+    <default-log>
+        <information output="false"/>
+    </default-log>
+    <manager>
+        <service name="HttpClientFactory"
+                 code="jp.ossc.nimbus.service.http.httpclient.HttpClientFactoryService">
+            <attribute name="RequestContentType">application/xml</attribute>
+            <attribute name="RequestCharacterEncoding">Shift_JIS</attribute>
+            <attribute name="ResponseStreamConverterServiceName">#ResponseStreamConverter</attribute>
+            <attribute name="Proxy">localhost:8280</attribute>
+            <attribute name="Request(login)">
+                <object code="jp.ossc.nimbus.service.http.httpclient.PostHttpRequestImpl">
+                    <attribute name="URL">http://10.250.1.12:8180/cds/user_contents/web/html/tilettl_help_actcusemldelaccept_desc.html</attribute>
+                    <attribute name="Parameter(sectionCode)">022</attribute>
+                    <attribute name="Parameter(account)">059641</attribute>
+                    <attribute name="Parameter(password)">059641</attribute>
+                </object>
+            </attribute>
+
+            <depends>
+                <service name="ResponseStreamConverter"
+                         code="jp.ossc.nimbus.util.converter.StringStreamConverter">
+                    <attribute name="CharacterEncodingToObject">Windows-31J</attribute>
+                </service>
+            </depends>
+            <depends>TestProxyServer</depends>
+        </service>
+        
+        <service name="TestProxyServer"
+                 code="jp.ossc.nimbus.service.http.proxy.ProxyServerService">
+            <attribute name="Port">8280</attribute>
+<!--
+            <attribute name="SoTimeout">1000</attribute>
+-->
+            <attribute name="ProcessServiceName">#TestProcess</attribute>
+            <depends>TestProcess</depends>
+        </service>
+        
+        <service name="TestProcess"
+                 code="jp.ossc.nimbus.service.http.proxy.TestHttpProcessService">
+            <invoke name="setAction">
+                <argument>
+                    @Header.URL@ == "http://10.250.1.12:8180/cds/user_contents/web/html/tilettl_help_actcusemldelaccept_desc.html"
+                </argument>
+                <argument>
+                    <object code="jp.ossc.nimbus.service.http.proxy.TestHttpProcessService$Action">
+                        <attribute name="RequestOutputFile">target/temp/jp/ossc/nimbus/service/http/httpclient/help_output.txt</attribute>
+                        
+                        <attribute name="Header(Content-Type)">text/html;charset=Shift_JIS</attribute>
+                        <attribute name="ResponseBodyInputFile">src/test/resources/jp/ossc/nimbus/service/http/httpclient/help_response.txt</attribute>
+                    </object>
+                </argument>
+            </invoke>
+        </service>
+        
+    </manager>
+</server>

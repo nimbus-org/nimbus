@@ -1,0 +1,3 @@
+#ObjectMessage‚ÌƒeƒXƒg
+prop4=Let,prop5=World:12345,123,1234567,1.2345F,2.3456,false,99,Hello
+

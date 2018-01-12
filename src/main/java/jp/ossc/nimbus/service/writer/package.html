@@ -1,0 +1,27 @@
+<!-- 
+Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
+<title>Nimbus Writer パッケージコメントファイル</title>
+</head>
+<body>
+Nimbusの<b>出力サービス</b>を提供します。<p>
+出力するという概念を抽象化すると、「どこにどのように出力するか」でしょう。<br>
+<p>
+<b>「どのように出力するか」</b>という概念を抽象化すると、順序性とマッピングが考えられます。<br>
+こういう順番で、この項目とこの項目を出力したいといった感じです。<br>
+この概念を抽象化したインタフェースが<a href="WritableRecord.html">WritableRecord</a>です。<br>
+ここで、任意のオブジェクトを出力するためには、<b>任意のオブジェクトを入力として受け取って、
+特定のフォーマットに従ったWritableRecordに変換する</b>必要があります。<br>
+この概念を抽象化したインタフェースが<a href="WritableRecordFactory.html">WritableRecordFactory</a>です。<br>
+<p>
+次は、このようにしてフォーマットされたWritableRecordを<b>「どこに出力するか」</b>となります。<br>
+その概念を抽象化したインタフェースが<a href="MessageWriter.html">MessageWriter</a>です。<br>
+<p>
+さらに、これらの大きな２つの概念、<b>「どこにどのように出力するか」</b>をまとめて抽象化したインタフェースが<a href="Category.html">Category</a>です。<br>
+<p>
+このパッケージでは、これらの概念を具体化したサービスを提供します。<br>
+</body>
+</html>

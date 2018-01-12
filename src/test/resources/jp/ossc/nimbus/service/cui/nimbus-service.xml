@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+
+	<manager name="Nimbus">
+		<service code="jp.ossc.nimbus.service.cui.CuiFactoryService" name="COMMAND">
+			<attribute name = "DefFileDir">jp/ossc/nimbus/service/cui/def</attribute>
+			<attribute name = "DefFileExtention">xml</attribute>
+			<attribute name = "ImplementClassName">jp.ossc.nimbus.service.cui.CuiImpl</attribute>
+			<depends>MessageResourceFactoryService</depends>
+		</service>
+	
+		<service code="jp.ossc.nimbus.service.msgresource.MessageResourceFactoryService"
+			name="MessageResourceFactoryService">
+			<attribute name="DefineFileExt">xml</attribute>
+			<attribute name="DefineFileDir">jp/ossc/nimbus/service/cui/def</attribute>
+			<attribute name="ByteConverterServiceName">#ByteConverter</attribute>
+			<depends>ByteConverter</depends>
+		</service>
+
+		<!---->
+		<service code="jp.ossc.nimbus.service.byteconvert.ByteConverterService" name="ByteConverter">
+			<attribute name="DifferentEndianClassName">jp.ossc.nimbus.service.byteconvert.ByteConverterDifferentEndian</attribute>
+			<attribute name="SameEndianClassName">jp.ossc.nimbus.service.byteconvert.ByteConverterSameEndian</attribute>
+		</service>
+
+		<!-- JmsQueueSession -->
+		<!--
+		<service code="jp.ossc.nimbus.service.jmsresource.JmsQueueSessionService" name="JmsQueueSessionService">
+		<attribute name="JndiFinderServiceName">#JndiFinderService</attribute>
+		<depends>JndiFinderService</depends>
+		</service>
+		-->
+
+		<!--jndi-->
+		<!--
+		<service code="jp.ossc.nimbus.service.jndi.CashedJndiFinderService" name="JndiFinderService">
+		<attribute name="CacheServiceName">#CacheService</attribute>
+		<depends>CacheService</depends>
+		</service>
+		-->
+		<!---->
+
+		<!--
+		<service code="jp.ossc.nimbus.service.cache.EternalCache" name="CacheService">
+		</service>
+		-->
+
+		<!--
+		<service code="jp.ossc.nimbus.beans.PropertyEditorLoader" name="PropertyEditorLoader">
+		</service>		
+		-->
+
+	</manager>
+</server>

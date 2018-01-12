@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="Shift_JIS" ?> 
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+    <manager name="TheManager">
+	    <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		    	SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory2">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		DateMessage=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name ="Format">%SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory3">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">%SimpleMessage%です</attribute>
+        </service>
+        <!-- 最後に不要な%が有る場合 -->
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory33">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">%SimpleMessage%です%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory4">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		DateMessage=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name ="Format">This is Test SimpleMessage is %SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory5">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		DateMessage=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name ="Format">\%This is Test SimpleMessage is %SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory6">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		DateMessage=jp.ossc.nimbus.service.writer.DateElement
+		    </attribute>
+		    <attribute name ="Format">This \%is Test SimpleMessage is %SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory7">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">This is Test SimpleMessage is %SimpleMessage% SEQ is %SEQ%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory8">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">This is test %SimpleMessage%%SEQ%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory9">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		 		MSG2=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">%SimpleMessage%%SEQ%%MSG2%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory10">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		 		MSG2=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">This is test.</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory11">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		 		MSG2=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">This \%\%is test.%SEQ%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory12">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		 		MSG2=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format">This is test.%SEQ</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory13">
+		    <attribute name = "ImplementClasses">
+		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
+		 		MSG2=jp.ossc.nimbus.service.writer.SimpleElement
+		    </attribute>
+		    <attribute name ="Format"></attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory14">
+		    <attribute name = "ImplementClasses">
+		 		MSG=jp.ossc.nimbus.service.writer.HogeHogeElement
+		    </attribute>
+		    <attribute name ="Format">Message :: %MSG%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory15">
+		    <attribute name ="Format">Message :: %SOMEKEY%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory16">
+		    <attribute name = "ImplementClasses">
+		 		SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
+		 	</attribute>
+		    <attribute name ="Format">This is test %SimpleMessage% %SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory17">
+		    <attribute name = "ImplementClasses">
+		 		SimpleMessage=
+		 	</attribute>
+		    <attribute name ="Format">This is test %SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory18">
+		    <attribute name = "ImplementClasses">
+		 		HOGEHOGE
+		 	</attribute>
+		    <attribute name ="Format">This is test %SimpleMessage%</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory19">
+        </service>
+        
+        <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory20">
+		    <attribute name = "ImplementClasses">
+		 		D=jp.ossc.nimbus.service.writer.DateElement
+		 	</attribute>
+		    <attribute name ="Format">This is test %D%</attribute>
+        </service>
+        
+       <service code="jp.ossc.nimbus.service.log.LogWritableRecordFactoryService" name ="LogWritableRecFactory">
+		    <attribute name = "ImplementClasses">
+		 		D=jp.ossc.nimbus.service.writer.DateElement
+		 	</attribute>
+		 	<attribute name ="DateFormat">yyyy.MM.dd</attribute>
+		    <attribute name ="Format">This is test %D%</attribute>
+        </service>
+        
+        <service code="jp.ossc.nimbus.service.log.LogWritableRecordFactoryService" name ="LogWritableRecFactory2">
+		    <attribute name = "ImplementClasses">
+		 		D=jp.ossc.nimbus.service.writer.DateElement
+		 	</attribute>
+		 	<attribute name ="DateFormat">HOGEHOGE</attribute>
+		    <attribute name ="Format">This is test %D%</attribute>
+        </service>
+        
+        <service code="jp.ossc.nimbus.service.log.LogWritableRecordFactoryService" name ="LogWritableRecFactory3">
+		    <attribute name = "ImplementClasses">
+		 		D=jp.ossc.nimbus.service.writer.DateElement
+		 	</attribute>
+		 	<attribute name ="DateFormat"></attribute>
+		    <attribute name ="Format">This is test %D%</attribute>
+        </service>
+        
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer1">
+            <attribute name="File">target/temp/FileWriterTest1.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">1024</attribute>
+            <attribute name="MaxBackupIndex">5</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer2">
+            <attribute name="File">target/temp/FileWriterTest2.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">1024</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.DailyRollingFileAppenderWriterService" name ="Writer3">
+            <attribute name="File">target/temp/FileWriterTest3.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">1024</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer4">
+            <attribute name="File">target/temp/FileWriterTest4.log</attribute>
+            <attribute name="Append">true</attribute>
+            <attribute name="MaximumFileSize">1024</attribute>
+        </service>
+        <service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name ="Writer5">
+            <attribute name="File">target/temp/FileWriterTest5.log</attribute>
+            <attribute name="MaximumFileSize">1024</attribute>
+        </service>
+    </manager>
+</server>

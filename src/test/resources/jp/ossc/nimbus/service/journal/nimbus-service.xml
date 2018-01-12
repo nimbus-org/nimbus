@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<server>
+    <default-log>
+        <debug output="false"/>
+        <information output="false"/>
+        <warning output="true"/>
+        <error output="true"/>
+        <fatal output="true"/>
+    </default-log>
+
+	<manager name="tstruts">
+
+<!--
+RequestIDの通番を払い出すシーケンスサービス。
+-->
+		<service code="jp.ossc.nimbus.service.sequence.StringSequenceService" name="RequestIDSequence">
+			<attribute name="format">T,T;S,S;T,T;R,R;U,U;T,T;S,S;0,9;0,9;0,9;0,9</attribute>
+		</service>
+<!--
+業務のジャーナルを出力するジャーナルサービス。
+-->
+		<service code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService" name="BusinessJournal">
+			<attribute name="CategoryServiceNames">#BusinessJournalCategory1</attribute>
+			<attribute name="EditorFinderName">#BusinessJournalDefaultEditorFinder</attribute>
+			<attribute name="SequenceServiceName">#BusinessJournalIDSequence</attribute>
+			<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+			<attribute name="WritableElementKey">BusinessJournal</attribute>
+			<depends>BusinessJournalCategory1</depends>
+			<depends>BusinessJournalDefaultEditorFinder</depends>
+			<depends>BusinessJournalIDSequence</depends>
+			<depends>BusinessJournalQueue</depends>
+		</service>
+		
+<!-- ジャーナルの出力先を決めるカテゴリサービス -->
+		<service name="BusinessJournalCategory1"
+			code="jp.ossc.nimbus.service.writer.SimpleCategoryService">
+			<attribute name="MessageWriterServiceName">#BusinessJournalFileWriter</attribute>
+			<attribute name="WritableRecordFactoryServiceName">#BusinessJournalWriteableRecordFactory</attribute>
+			<depends>BusinessJournalFileWriter</depends>
+			<depends>BusinessJournalWriteableRecordFactory</depends>
+		</service>
+ <!--
+業務のジャーナルの出力レコードを生成するファクトリサービス。
+ジャーナル入れ子のテスト用
+-->	   
+		<service code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService" name="BusinessJournal2">
+			<attribute name="CategoryServiceNames">#BusinessJournalCategory2</attribute>
+			<attribute name="EditorFinderName">#BusinessJournalDefaultEditorFinder</attribute>
+			<attribute name="SequenceServiceName">#BusinessJournalIDSequence</attribute>
+			<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+			<attribute name="WritableElementKey">BusinessJournal</attribute>
+			<depends>BusinessJournalCategory2</depends>
+			<depends>BusinessJournalDefaultEditorFinder</depends>
+			<depends>BusinessJournalIDSequence</depends>
+			<depends>BusinessJournalQueue</depends>
+		</service>
+		
+<!-- ジャーナルの出力先を決めるカテゴリサービス -->
+		<service name="BusinessJournalCategory2"
+			code="jp.ossc.nimbus.service.writer.SimpleCategoryService">
+			<attribute name="MessageWriterServiceName">#BusinessJournalFileWriter2</attribute>
+			<attribute name="WritableRecordFactoryServiceName">#BusinessJournalWriteableRecordFactory</attribute>
+			<depends>BusinessJournalFileWriter2</depends>
+			<depends>BusinessJournalWriteableRecordFactory</depends>
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService" name="BusinessJournal3">
+			<attribute name="CategoryServiceNames">#BusinessJournalCategory3</attribute>
+			<attribute name="EditorFinderName">#BusinessJournalDefaultEditorFinder</attribute>
+			<attribute name="SequenceServiceName">#BusinessJournalIDSequence</attribute>
+			<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+			<attribute name="WritableElementKey">BusinessJournal</attribute>
+			<depends>BusinessJournalCategory3</depends>
+			<depends>BusinessJournalDefaultEditorFinder</depends>
+			<depends>BusinessJournalIDSequence</depends>
+			<depends>BusinessJournalQueue</depends>
+		</service>
+		
+<!-- ジャーナルの出力先を決めるカテゴリサービス -->
+		<service name="BusinessJournalCategory3"
+			code="jp.ossc.nimbus.service.writer.SimpleCategoryService">
+			<attribute name="MessageWriterServiceName">#BusinessJournalFileWriter3</attribute>
+			<attribute name="WritableRecordFactoryServiceName">#BusinessJournalWriteableRecordFactory</attribute>
+			<depends>BusinessJournalFileWriter3</depends>
+			<depends>BusinessJournalWriteableRecordFactory</depends>
+		</service>
+<!--
+シーケンスサービスの指定なし
+-->
+		<service code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService" name="BusinessJournal4">
+			<attribute name="CategoryServiceNames">#BusinessJournalCategory3</attribute>
+			<attribute name="EditorFinderName">#BusinessJournalDefaultEditorFinder</attribute>
+			<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
+			<attribute name="WritableElementKey">BusinessJournal</attribute>
+			<depends>BusinessJournalCategory3</depends>
+			<depends>BusinessJournalDefaultEditorFinder</depends>
+			<depends>BusinessJournalQueue</depends>
+		</service>
+		
+<!--
+業務のジャーナルの出力レコードを生成するファクトリサービス。
+-->
+		<service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name="BusinessJournalWriteableRecordFactory">
+			<attribute name="ImplementClasses">
+				BusinessJournal=jp.ossc.nimbus.service.writer.SimpleElement
+			</attribute>
+		</service>
+<!--
+業務のジャーナルをファイルに出力するライターサービス。
+-->
+		<service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name="BusinessJournalFileWriter">
+			<attribute name="File">target/temp/BusinessJournal.log</attribute>
+			<attribute name="Append">true</attribute>
+			<attribute name="MaximumFileSize">1024000</attribute>
+			<attribute name="MaxBackupIndex">2</attribute>
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name="BusinessJournalFileWriter2">
+			<attribute name="File">target/temp/BusinessJournal2.log</attribute>
+			<attribute name="Append">true</attribute>
+			<attribute name="MaximumFileSize">1024000</attribute>
+			<attribute name="MaxBackupIndex">2</attribute>
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.writer.log4j.RollingFileAppenderWriterService" name="BusinessJournalFileWriter3">
+			<attribute name="File">target/temp/BusinessJournal3.log</attribute>
+			<attribute name="Append">true</attribute>
+			<attribute name="MaximumFileSize">1024000</attribute>
+			<attribute name="MaxBackupIndex">2</attribute>
+		</service>
+<!--
+業務のジャーナルの通番を払い出すシーケンスサービス。
+-->
+		<service code="jp.ossc.nimbus.service.sequence.StringSequenceService" name="BusinessJournalIDSequence">
+			<attribute name="format">T,T;S,S;T,T;R,R;U,U;T,T;S,S;0,9;0,9;0,9;0,9</attribute>
+		</service>
+<!--
+業務のジャーナルをキューイングするキューを生成するキューファクトリサービス。
+-->
+		<service code="jp.ossc.nimbus.service.queue.DefaultQueueService" name="BusinessJournalQueue">
+		</service>
+<!--
+業務のジャーナルの編集を行うジャーナルエディタを検索するサービス。
+-->
+		<service code="jp.ossc.nimbus.service.journal.editorfinder.ObjectMappedEditorFinderService" name="BusinessJournalDefaultEditorFinder">
+			<attribute name="EditorProperties">
+				java.lang.Object=#ObjectJournalEditor
+				jp.ossc.nimbus.service.journal.RequestJournal=#RequestJournalEditor
+				jp.ossc.nimbus.service.journal.editor.MethodCallJournalData=#MethodCallJournalEditor
+				jp.ossc.nimbus.service.journal.editor.MethodReturnJournalData=#MethodReturnJournalEditor
+			</attribute>
+			<depends>ObjectJournalEditor</depends>
+			<depends>RequestJournalEditor</depends>
+			<depends>MethodCallJournalEditor</depends>
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.journal.editorfinder.ObjectMappedEditorFinderService" name="BusinessJournalDefaultEditorFinder2">
+			<attribute name="EditorProperties">
+				java.lang.Object=#ObjectJournalEditor
+				jp.ossc.nimbus.service.journal.RequestJournal=#RequestJournalEditor
+				jp.ossc.nimbus.service.journal.editor.MethodCallJournalData=#MethodCallJournalEditor
+				jp.ossc.nimbus.service.journal.editor.MethodReturnJournalData=#MethodReturnJournalEditor
+			</attribute>
+			<depends>ObjectJournalEditor</depends>
+			<depends>RequestJournalEditor</depends>
+			<depends>MethodCallJournalEditor</depends>
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.journal.editor.SimpleRequestJournalEditorService" name="RequestJournalEditor">
+<!--
+			<attribute name="OutputRecordKeys">MethodReturn,MethodCall</attribute>
+-->
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.journal.editor.ObjectJournalEditorService" name="ObjectJournalEditor">
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.journal.editor.MethodCallJournalEditorService" name="MethodCallJournalEditor">
+		</service>
+		
+		<service code="jp.ossc.nimbus.service.journal.editor.MethodReturnJournalEditorService" name="MethodReturnJournalEditor">
+		</service>
+		</manager>
+
+</server>
