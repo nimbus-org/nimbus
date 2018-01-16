@@ -6,6 +6,10 @@ Nimbus は、SIerによるSIerのためのSI部品ライブラリです。
 
 基盤としてDIコンテナを持ちます。 XMLの定義ファイルによって、ホスティングするサービスを定義し、サービス間の依存関係や、サービスへのインジェクションを行います。
 
+# 機能一覧
+
+[こちら](https://osdn.net/projects/nimbus/wiki/FunctionList "機能一覧")
+
 # インストール
 
 jarをクラスパス上に配置して利用します。
@@ -14,9 +18,13 @@ jarをクラスパス上に配置して利用します。
 
 サービス定義XMLファイルを記述して、Nimbusに読み込ませる事で、サービスをホスティングし、利用可能な状態にします。詳細は、Wikiを参照。
 
-# 機能一覧
+# ドキュメント
 
-[こちら](https://osdn.net/projects/nimbus/wiki/FunctionList "機能一覧")
+[こちら](https://nimbus-org.github.io/gh-pages/documents/index.html "ドキュメント")
+
+# サンプル
+
+[こちら](https://github.com/nimbus-org/nimbus-sample "Nimbusサンプル")
 
 # FAQ
 
