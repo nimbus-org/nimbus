@@ -84,8 +84,6 @@ public class DatabaseAuthenticateStoreService extends ServiceBase implements Aut
 
     private boolean isDeleteFindUser;
 
-    protected Object lock = "lock";
-
     public void setConnectionFactoryServiceName(ServiceName name) {
         connectionFactoryServiceName = name;
     }
@@ -282,10 +280,8 @@ public class DatabaseAuthenticateStoreService extends ServiceBase implements Aut
             if (isExists) {
                 if (isDeleteFindUser) {
                     if (deleteQueryOnCreate != null) {
-                        synchronized (lock) {
-                            persistentManager.persistQuery(con, deleteQueryOnCreate, input);
-                            persistentManager.persistQuery(con, insertQuery, input);
-                        }
+                        persistentManager.persistQuery(con, deleteQueryOnCreate, input);
+                        persistentManager.persistQuery(con, insertQuery, input);
                     }
                 } else {
                     if (updateQueryOnCreate != null) {
