@@ -67,6 +67,13 @@ public class JDBCKeepAliveCheckerService extends AbstractKeepAliveCheckerService
         return connectionFactoryServiceName;
     }
     
+    public void setHostResolverServiceName(ServiceName name){
+        hostResolverServiceName = name;
+    }
+    public ServiceName getHostResolverServiceName(){
+        return hostResolverServiceName;
+    }
+    
     public void setCheckQuery(String query){
         checkQuery = query;
     }

@@ -45,6 +45,9 @@ public interface JDBCKeepAliveCheckerServiceMBean extends AbstractKeepAliveCheck
     public void setConnectionFactoryServiceName(ServiceName name);
     public ServiceName getConnectionFactoryServiceName();
     
+    public void setHostResolverServiceName(ServiceName name);
+    public ServiceName getHostResolverServiceName();
+    
     public void setCheckQuery(String query);
     public String getCheckQuery();
 }
