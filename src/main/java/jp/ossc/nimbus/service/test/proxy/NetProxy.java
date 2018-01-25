@@ -31,20 +31,50 @@
  */
 package jp.ossc.nimbus.service.test.proxy;
 
+/**
+ * プロキシを操作・管理するためのインターフェイス。<p>
+ *
+ * @author M.Ishida
+ */
 public interface NetProxy {
 
+    /**
+     * プロキシのソケットをオープンする。<p>
+     */
     public void open();
 
+    /**
+     * プロキシのソケットをクローズする。<p>
+     */
     public void close();
 
+    /**
+     * プロキシのソケットがオープンしているかを確認する。<p>
+     *
+     * @return プロキシのソケットがオープンしている場合、true
+     */
     public boolean isOpen();
 
+    /**
+     * プロキシのソケットを再オープンする。<p>
+     */
     public void reopen();
 
+    /**
+     * プロキシのソケットを凍結する。<p>
+     */
     public void freeze();
 
+    /**
+     * プロキシのソケットの凍結を解除する。<p>
+     */
     public void unfreeze();
 
+    /**
+     * プロキシのソケットが凍結しているかを確認する。<p>
+     *
+     * @return プロキシのソケットが凍結している場合、true
+     */
     public boolean isFrozen();
 
 }

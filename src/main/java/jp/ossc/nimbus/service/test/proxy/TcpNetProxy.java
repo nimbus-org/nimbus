@@ -33,14 +33,33 @@ package jp.ossc.nimbus.service.test.proxy;
 
 import java.util.Set;
 
+/**
+ * Tcpプロキシを操作するためのインターフェイス。<p>
+ *
+ * @author M.Ishida
+ */
 public interface TcpNetProxy extends NetProxy {
 
+    /**
+     * TCPプロキシのすべてのソケットをクローズする。<p>
+     */
     public void closeAllPairs();
 
+    /**
+     * TCPプロキシのすべてのソケットを凍結する。<p>
+     */
     public void freezeAllPairs();
 
+    /**
+     * TCPプロキシのすべてのソケットを凍結を解除する。<p>
+     */
     public void unfreezeAllPairs();
 
+    /**
+     * プロキシに接続されているクライアントのアドレスの集合を返却する。<p>
+     *
+     * @return クライアントのアドレスの集合
+     */
     public Set getClientAddresses();
 
 }

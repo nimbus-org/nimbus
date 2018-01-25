@@ -43,6 +43,11 @@ import org.netcrusher.core.reactor.NioReactor;
 import org.netcrusher.tcp.TcpCrusher;
 import org.netcrusher.tcp.TcpCrusherBuilder;
 
+/**
+ * TcpCrusherを使用したTcpNetProxy{@link TcpNetProxy}の実装クラス。<p>
+ *
+ * @author M.Ishida
+ */
 public class TcpNetProxyService extends ServiceBase implements TcpNetProxyServiceMBean {
 
     private static final long serialVersionUID = -4869670081081516724L;

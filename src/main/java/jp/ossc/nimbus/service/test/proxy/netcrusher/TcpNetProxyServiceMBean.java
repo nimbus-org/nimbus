@@ -34,25 +34,80 @@ package jp.ossc.nimbus.service.test.proxy.netcrusher;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.service.test.proxy.TcpNetProxy;
 
+/**
+ * {@link TcpNetProxyService}のMBeanインタフェース。<p>
+ *
+ * @author M.Ishida
+ */
 public interface TcpNetProxyServiceMBean extends ServiceBaseMBean, TcpNetProxy {
 
+    /**
+     * TcpCrusherに設定するBindAddressを取得する。<p>
+     *
+     * @return TcpCrusherに設定するBindAddress
+     */
     public String getBindAddress();
 
+    /**
+     * TcpCrusherに設定するBindAddressを設定する。<p>
+     *
+     * @param address TcpCrusherに設定するBindAddress
+     */
     public void setBindAddress(String address);
 
+    /**
+     * TcpCrusherに設定するBindPortを取得する。<p>
+     *
+     * @return TcpCrusherに設定するBindPort
+     */
     public int getBindPort();
 
+    /**
+     * TcpCrusherに設定するBindPortを設定する。<p>
+     *
+     * @param port TcpCrusherに設定するBindPort
+     */
     public void setBindPort(int port);
 
+    /**
+     * プロキシの接続先アドレスを取得する。<p>
+     *
+     * @return プロキシの接続先アドレス
+     */
     public String getConnectAddress();
 
+    /**
+     * プロキシの接続先アドレスを設定する。<p>
+     *
+     * @param address プロキシの接続先アドレス
+     */
     public void setConnectAddress(String address);
 
+    /**
+     * プロキシの接続先Portを取得する。<p>
+     *
+     * @return プロキシの接続先Port
+     */
     public int getConnectPort();
 
+    /**
+     * プロキシの接続先Portを設定する。<p>
+     *
+     * @param port プロキシの接続先Port
+     */
     public void setConnectPort(int port);
 
+    /**
+     * サービス開始時にオープンするかを取得する。<p>
+     *
+     * @return サービス開始時にオープンする場合、true
+     */
     public boolean isOpenOnStart();
 
+    /**
+     * サービス開始時にオープンするかを設定する。<p>
+     *
+     * @param isOpenOnStart サービス開始時にオープンする場合、true
+     */
     public void setOpenOnStart(boolean isOpenOnStart);
 }
