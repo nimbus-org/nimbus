@@ -85,7 +85,7 @@ public class ServiceNameRef implements java.io.Serializable, Comparable{
      * @return [{@link Service}‚ÌQÆ–¼]=[Service‚Ì–¼‘O]
      */
     public String toString(){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if(refName != null){
             buf.append(refName);
         }

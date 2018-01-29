@@ -112,19 +112,19 @@ public class HttpServletRequestCSVJournalEditorService
         
         private static final long serialVersionUID = 5759323131949340410L;
         
-        protected StringBuffer toString(
+        protected StringBuilder toString(
             EditorFinder finder,
             Object key,
             ServletRequest request,
-            StringBuffer buf
+            StringBuilder buf
         ){
             return toString(finder, key, (HttpServletRequest)request, buf);
         }
-        protected abstract StringBuffer toString(
+        protected abstract StringBuilder toString(
             EditorFinder finder,
             Object key,
             HttpServletRequest request,
-            StringBuffer buf
+            StringBuilder buf
         );
     }
     
@@ -137,11 +137,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = -6536766399213326786L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeRequestURLFormat(finder, key, request, buf);
                 }
@@ -153,11 +153,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = -4642146569215547320L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeRequestURIFormat(finder, key, request, buf);
                 }
@@ -169,11 +169,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = -7279456477192935206L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeServletPathFormat(finder, key, request, buf);
                 }
@@ -185,11 +185,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 2446683138317280265L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeContextPathFormat(finder, key, request, buf);
                 }
@@ -201,11 +201,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 5440954222258830681L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makePathInfoFormat(finder, key, request, buf);
                 }
@@ -217,11 +217,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 6810641544908543983L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makePathTranslatedFormat(finder, key, request, buf);
                 }
@@ -233,11 +233,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 1292435712872200903L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeQueryStringFormat(finder, key, request, buf);
                 }
@@ -249,11 +249,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = -5376059553377821442L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeSessionIDFormat(finder, key, request, buf);
                 }
@@ -265,11 +265,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 7935056274175418729L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeMethodFormat(finder, key, request, buf);
                 }
@@ -281,11 +281,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = -199942098943357429L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeAuthTypeFormat(finder, key, request, buf);
                 }
@@ -297,11 +297,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 6797019377488851765L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeRemoteUserFormat(finder, key, request, buf);
                 }
@@ -313,11 +313,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = -2169863845539737781L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeUserPrincipalFormat(finder, key, request, buf);
                 }
@@ -329,11 +329,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 843548847714162564L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeHeadersFormat(finder, key, request, buf);
                 }
@@ -345,11 +345,11 @@ public class HttpServletRequestCSVJournalEditorService
                 
                 private static final long serialVersionUID = 508859072442366758L;
                 
-                public StringBuffer toString(
+                public StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpServletRequest request,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeCookiesFormat(finder, key, request, buf);
                 }
@@ -438,101 +438,101 @@ public class HttpServletRequestCSVJournalEditorService
         enabledCookieSet = null;
     }
     
-    protected StringBuffer makeAuthTypeFormat(
+    protected StringBuilder makeAuthTypeFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getAuthType());
     }
     
-    protected StringBuffer makeRemoteUserFormat(
+    protected StringBuilder makeRemoteUserFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getRemoteUser());
     }
     
-    protected StringBuffer makeUserPrincipalFormat(
+    protected StringBuilder makeUserPrincipalFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getUserPrincipal());
     }
     
-    protected StringBuffer makeRequestURLFormat(
+    protected StringBuilder makeRequestURLFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getRequestURL());
     }
     
-    protected StringBuffer makeRequestURIFormat(
+    protected StringBuilder makeRequestURIFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getRequestURI());
     }
     
-    protected StringBuffer makeServletPathFormat(
+    protected StringBuilder makeServletPathFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getServletPath());
     }
     
-    protected StringBuffer makeContextPathFormat(
+    protected StringBuilder makeContextPathFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getContextPath());
     }
     
-    protected StringBuffer makePathInfoFormat(
+    protected StringBuilder makePathInfoFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getPathInfo());
     }
     
-    protected StringBuffer makePathTranslatedFormat(
+    protected StringBuilder makePathTranslatedFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getPathTranslated());
     }
     
-    protected StringBuffer makeQueryStringFormat(
+    protected StringBuilder makeQueryStringFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getQueryString());
     }
     
-    protected StringBuffer makeSessionIDFormat(
+    protected StringBuilder makeSessionIDFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(request.getRequestedSessionId());
         if(request.isRequestedSessionIdFromCookie()){
@@ -543,20 +543,20 @@ public class HttpServletRequestCSVJournalEditorService
         return buf;
     }
     
-    protected StringBuffer makeMethodFormat(
+    protected StringBuilder makeMethodFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(request.getMethod());
     }
     
-    protected StringBuffer makeHeadersFormat(
+    protected StringBuilder makeHeadersFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final Enumeration headerNames = request.getHeaderNames();
         if(!headerNames.hasMoreElements()){
@@ -588,11 +588,11 @@ public class HttpServletRequestCSVJournalEditorService
         return buf;
     }
     
-    protected StringBuffer makeCookiesFormat(
+    protected StringBuilder makeCookiesFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final Cookie[] cookies = request.getCookies();
         if(cookies == null || cookies.length == 0){

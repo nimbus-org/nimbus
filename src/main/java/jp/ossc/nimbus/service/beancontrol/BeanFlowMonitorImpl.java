@@ -293,7 +293,7 @@ public class BeanFlowMonitorImpl implements BeanFlowMonitor, java.io.Serializabl
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.append('{');
         buf.append("flowName=").append(flowName).append(',');
         buf.append("currentFlowName=").append(currentFlowName).append(',');

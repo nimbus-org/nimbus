@@ -146,7 +146,7 @@ public class MapJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final Map map = (Map)value;
         buf.append(startDelimiter);

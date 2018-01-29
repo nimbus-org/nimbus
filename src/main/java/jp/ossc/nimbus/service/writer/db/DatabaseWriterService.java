@@ -735,7 +735,7 @@ public class DatabaseWriterService extends ServiceBase
                 keyList = new ArrayList();
             }
             boolean isEscape = false;
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             for(int i = 0, max = keys.length(); i < max; i++){
                 final char c = keys.charAt(i);
                 switch(c){
@@ -793,7 +793,7 @@ public class DatabaseWriterService extends ServiceBase
             return element;
         }
         public String toString(){
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             buf.append(statementString);
             return buf.toString();
         }

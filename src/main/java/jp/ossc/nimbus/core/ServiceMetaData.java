@@ -593,7 +593,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         }
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(SERVICE_TAG_NAME);
         if(name != null){
@@ -633,7 +633,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             if(constructor != null && constructor.getIfDefMetaData() == null){
                 buf.append(LINE_SEPARATOR);
                 buf.append(
-                    addIndent(constructor.toXML(new StringBuffer()))
+                    addIndent(constructor.toXML(new StringBuilder()))
                 );
             }
             if(fields.size() != 0){
@@ -645,7 +645,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuffer()))
+                        addIndent(data.toXML(new StringBuilder()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -661,7 +661,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuffer()))
+                        addIndent(data.toXML(new StringBuilder()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -677,7 +677,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuffer()))
+                        addIndent(data.toXML(new StringBuilder()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -693,7 +693,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuffer()))
+                        addIndent(data.toXML(new StringBuilder()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -705,7 +705,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                 for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
                     IfDefMetaData ifdefData = (IfDefMetaData)ifDefMetaDataList.get(i);
                     buf.append(
-                        addIndent(ifdefData.toXML(new StringBuffer()))
+                        addIndent(ifdefData.toXML(new StringBuilder()))
                     );
                     buf.append(LINE_SEPARATOR);
                 }
@@ -732,7 +732,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append(getClass().getName());
         buf.append('@');
         buf.append(hashCode());

@@ -1136,7 +1136,7 @@ public class LogService extends ServiceBase
         final Throwable throwable = dequeuedRecord.getThrowable();
         String message = messageRecord.makeMessage(locale, embeds);
         if(throwable != null && messageRecord.isPrintStackTrace()){
-            final StringBuffer buf = new StringBuffer(message);
+            final StringBuilder buf = new StringBuilder(message);
             buf.append(LINE_SEP);
             buf.append(getStackTraceString(throwable));
             message = buf.toString();
@@ -2189,7 +2189,7 @@ public class LogService extends ServiceBase
      * @return スタックトレース文字列
      */
     protected static String getStackTraceString(Throwable e){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append(e).append(LINE_SEP);
         final StackTraceElement[] elemss = e.getStackTrace();
         if(elemss != null){

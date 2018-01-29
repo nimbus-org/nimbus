@@ -62,7 +62,7 @@ public class DateJournalEditorService extends ImmutableJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final Date date = (Date)value;
         final SimpleDateFormat format = new SimpleDateFormat(formatString);

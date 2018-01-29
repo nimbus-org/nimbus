@@ -243,7 +243,7 @@ public class OperationSystemService extends ServiceBase
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append(super.toString());
             buf.append('{');
             buf.append("total=").append(total);
@@ -284,7 +284,7 @@ public class OperationSystemService extends ServiceBase
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append(super.toString());
             buf.append('{');
             buf.append("total=").append(total);
@@ -359,7 +359,7 @@ public class OperationSystemService extends ServiceBase
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append(super.toString());
             buf.append('{');
             buf.append("pid=").append(pid);

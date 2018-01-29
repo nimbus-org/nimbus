@@ -73,7 +73,7 @@ public class ActionRequest extends Request{
         }while(readLen > 0 && readLen != bytes.length);
         requestInputStream = new ByteArrayInputStream(baos.toByteArray());
         
-        StringBuffer actionBuf = new StringBuffer();
+        StringBuilder actionBuf = new StringBuilder();
         int c = 0;
         while((c = requestInputStream.read()) != -1 && c != '\n'){
             if(c == '\r'){
@@ -95,7 +95,7 @@ public class ActionRequest extends Request{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", action=").append(action);
         buf.append('}');

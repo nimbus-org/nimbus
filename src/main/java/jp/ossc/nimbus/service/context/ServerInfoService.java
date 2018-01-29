@@ -343,7 +343,7 @@ public class ServerInfoService extends DefaultContextService
      * @return ƒŠƒXƒg•¶Žš—ñ
      */
     public String list(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         synchronized(context){
             final Object[] staticKeys = context.keySet().toArray();
             final Object[] variableKeys = new Object[]{
@@ -464,7 +464,7 @@ public class ServerInfoService extends DefaultContextService
     public String listSystemProperties(){
         final Properties prop = System.getProperties();
         final String sep = System.getProperty("line.separator");
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         final Object[] keys = prop.keySet().toArray();
         for(int i = 0; i < keys.length; i++){
             buf.append(keys[i]).append('=').append(prop.get(keys[i]));

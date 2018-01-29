@@ -81,10 +81,10 @@ public class SimpleSafeJournalRequestJournalEditorServiceWithSQLSetting extends
         return bOutputSql;
     }
     
-    protected StringBuffer makeRecordsFormat(
+    protected StringBuilder makeRecordsFormat(
             EditorFinder finder,
             JournalRecord[] records,
-            StringBuffer buf
+            StringBuilder buf
         ){
             for(int i = 0, max = records.length; i < max; i++){
                  if( bOutputSql || !isSqlRecKey(records[i].getKey())) {

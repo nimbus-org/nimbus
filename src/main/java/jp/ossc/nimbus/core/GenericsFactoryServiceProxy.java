@@ -363,7 +363,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
                 if(attrData == null
                      && attribute.getName().length() > 1
                 ){
-                    StringBuffer tmpName = new StringBuffer();
+                    StringBuilder tmpName = new StringBuilder();
                     if(Character.isLowerCase(attribute.getName().charAt(0))){
                         tmpName.append(
                             Character.toUpperCase(attribute.getName().charAt(0))

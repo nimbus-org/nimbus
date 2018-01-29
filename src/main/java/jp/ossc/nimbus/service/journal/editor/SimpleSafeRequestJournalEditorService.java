@@ -50,11 +50,11 @@ public class SimpleSafeRequestJournalEditorService extends
     
     public final static String END_TIME_HEADER_EXP ="End Time : ( See exception time ) ";
 
-    protected StringBuffer makeEndTimeFormat(
+    protected StringBuilder makeEndTimeFormat(
             EditorFinder finder,
             Object key,
             RequestJournal request,
-            StringBuffer buf
+            StringBuilder buf
         ){
 	        if( request.getEndTime() != null ){
 	           return super.makeEndTimeFormat(finder,key,request,buf);
@@ -64,11 +64,11 @@ public class SimpleSafeRequestJournalEditorService extends
 	        }
         }
         
-        protected StringBuffer makePerformanceFormat(
+        protected StringBuilder makePerformanceFormat(
             EditorFinder finder,
             Object key,
             RequestJournal request,
-            StringBuffer buf
+            StringBuilder buf
         ){
         	if( request.getStartTime() != null && request.getEndTime() != null ){
 	        	return super.makePerformanceFormat(finder,key,request,buf);

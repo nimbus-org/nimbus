@@ -72,7 +72,7 @@ public abstract class ArrayEditor extends PropertyEditorSupport
         final BufferedReader br = new BufferedReader(sr, length);
         final List list = new ArrayList();
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             String line = null;
             while((line = br.readLine()) != null){
                 final String val = Utility.trim(line);
@@ -140,7 +140,7 @@ public abstract class ArrayEditor extends PropertyEditorSupport
         if(!array.getClass().isArray()){
             return array.toString();
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0, max = Array.getLength(array); i < max; i++){
             String element = getAsText(Array.get(array, i));
             buf.append(

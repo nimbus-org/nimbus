@@ -134,7 +134,7 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
     ) throws Throwable{
         if(getState() == STARTED){
             final HttpServletRequest request = (HttpServletRequest)context.getServletRequest();
-            final StringBuffer pathBuf = new StringBuffer();
+            final StringBuilder pathBuf = new StringBuilder();
             String path = request.getContextPath();
             if(path != null){
                 pathBuf.append(path);

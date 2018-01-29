@@ -213,7 +213,7 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
         }
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(tagName).append('>');
         if(managerName != null){

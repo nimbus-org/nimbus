@@ -97,7 +97,7 @@ public class RefURLMetaData extends MetaData
         url = getElementContent(element);
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(REF_URL_TAG_NAME).append(">");
         if(url != null){

@@ -123,7 +123,7 @@ public class StaticFieldRefMetaData extends MetaData
         name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(STATIC_FIELD_REF_TAG_NAME);
         buf.append(' ').append(CODE_ATTRIBUTE_NAME)

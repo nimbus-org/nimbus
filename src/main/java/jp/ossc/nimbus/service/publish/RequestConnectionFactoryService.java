@@ -947,7 +947,7 @@ public class RequestConnectionFactoryService extends ServiceBase
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(super.toString());
+            StringBuilder buf = new StringBuilder(super.toString());
             buf.append('{');
             buf.append("sourceId=").append(sourceId);
             buf.append(", sequence=").append(sequence);

@@ -187,7 +187,7 @@ public class ConsoleTestReporterService extends ServiceBase implements ConsoleTe
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("scenario group:").append(scenarioGroupResultMap.size());
             buf.append(", OK:").append(okList.size());
             buf.append(", NG:").append(ngList.size());
@@ -231,7 +231,7 @@ public class ConsoleTestReporterService extends ServiceBase implements ConsoleTe
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(scenarioGroupId);
+            StringBuilder buf = new StringBuilder(scenarioGroupId);
             if(title != null && title.length() != 0){
                 buf.append(':').append(title);
             }
@@ -253,7 +253,7 @@ public class ConsoleTestReporterService extends ServiceBase implements ConsoleTe
         }
         
         public String toSummuryString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("scenario:").append(scenarioResultMap.size());
             buf.append(", OK:").append(okList.size());
             buf.append(", NG:").append(ngList.size());
@@ -297,7 +297,7 @@ public class ConsoleTestReporterService extends ServiceBase implements ConsoleTe
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(scenarioId);
+            StringBuilder buf = new StringBuilder(scenarioId);
             if(title != null && title.length() != 0){
                 buf.append(':').append(title);
             }
@@ -321,7 +321,7 @@ public class ConsoleTestReporterService extends ServiceBase implements ConsoleTe
         }
         
         public String toSummuryString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("testcase:").append(testcaseResultMap.size());
             buf.append(", OK:").append(okList.size());
             buf.append(", NG:").append(ngList.size());
@@ -370,7 +370,7 @@ public class ConsoleTestReporterService extends ServiceBase implements ConsoleTe
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(testcaseId);
+            StringBuilder buf = new StringBuilder(testcaseId);
             if(title != null && title.length() != 0){
                 buf.append(':').append(title);
             }

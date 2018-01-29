@@ -520,7 +520,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
             }
         }
         if(contentType != null){
-            final StringBuffer buf = new StringBuffer(contentType);
+            final StringBuilder buf = new StringBuilder(contentType);
             if(characterEncoding != null){
                 buf.append(';')
                    .append(HEADER_CHARSET)

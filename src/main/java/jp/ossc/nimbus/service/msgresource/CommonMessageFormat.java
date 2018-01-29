@@ -597,7 +597,7 @@ public abstract class CommonMessageFormat
 	 * @return
 	 */
 	protected String dumpProperties(Message msg){
-		StringBuffer ret = new StringBuffer();
+		StringBuilder ret = new StringBuilder();
 		try{
 			Enumeration propertyNames = msg.getPropertyNames();
 			while(propertyNames.hasMoreElements()){

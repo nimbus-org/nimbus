@@ -98,7 +98,7 @@ public class MessageResourceFactoryService
 	 * @return
 	 */
 	public String display(){
-		StringBuffer ret = new StringBuffer();
+		StringBuilder ret = new StringBuilder();
 		//À‘•‚·‚éB
 		Iterator msgResObjects = mMsgResArrayList.iterator();
 		while(msgResObjects.hasNext()){

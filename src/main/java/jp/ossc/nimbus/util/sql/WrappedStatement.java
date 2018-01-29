@@ -59,7 +59,7 @@ public class WrappedStatement extends StatementWrapper{
     protected String journalKeySQL = DEFAULT_JOURNAL_SQL;
     protected EditorFinder editorFinderForExecute;
     protected String requestId;
-    protected StringBuffer batchSQL;
+    protected StringBuilder batchSQL;
     protected int batchSQLSize;
     protected int maxJournalBatchSize = -1;
     
@@ -523,7 +523,7 @@ public class WrappedStatement extends StatementWrapper{
     public void addBatch(String arg0) throws SQLException {
         super.addBatch(arg0);
         if(journal != null && batchSQL == null){
-            batchSQL = new StringBuffer();
+            batchSQL = new StringBuilder();
             batchSQLSize = 0;
         }
         if(batchSQL != null

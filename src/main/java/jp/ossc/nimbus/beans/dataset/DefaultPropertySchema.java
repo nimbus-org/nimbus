@@ -1000,7 +1000,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuffer buf = new StringBuffer(getClass().getName());
+        final StringBuilder buf = new StringBuilder(getClass().getName());
         buf.append('{');
         buf.append("name=").append(name);
         buf.append(",type=").append(type == null ? null : type.getName());
@@ -1078,7 +1078,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             boolean keyFlg = false;
             
             String beforeToken = null;
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

@@ -126,7 +126,7 @@ public class MulticastMessageImpl extends MessageImpl{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", toIdSet=").append(toIdSet);

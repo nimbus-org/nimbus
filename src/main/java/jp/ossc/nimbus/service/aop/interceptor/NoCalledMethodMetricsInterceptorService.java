@@ -384,7 +384,7 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
              = (Method[])methodSet.toArray(new Method[methodSet.size()]);
         final String[] methodStrs = new String[methods.length];
         final String separator = System.getProperty("line.separator");
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0; i < methods.length; i++){
             buf.setLength(0);
             final Class decClass = methods[i].getDeclaringClass();
@@ -614,7 +614,7 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
                     continue;
                 }
             }
-            final StringBuffer signatureBuf = new StringBuffer();
+            final StringBuilder signatureBuf = new StringBuilder();
             for(int i = 0; i < methods.length; i++){
                 final Method method = methods[i];
                 if(targetMethods.contains(method)){

@@ -2568,7 +2568,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append(value);
             if(parameters != null){
                 Iterator entries = parameters.entrySet().iterator();

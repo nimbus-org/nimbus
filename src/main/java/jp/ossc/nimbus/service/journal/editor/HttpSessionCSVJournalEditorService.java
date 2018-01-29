@@ -81,11 +81,11 @@ public class HttpSessionCSVJournalEditorService
                 
                 private static final long serialVersionUID = 9001837786273205836L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpSession session,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeIdFormat(finder, key, session, buf);
                 }
@@ -97,11 +97,11 @@ public class HttpSessionCSVJournalEditorService
                 
                 private static final long serialVersionUID = 671412588313496349L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpSession session,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeCreationTimeFormat(finder, key, session, buf);
                 }
@@ -113,11 +113,11 @@ public class HttpSessionCSVJournalEditorService
                 
                 private static final long serialVersionUID = -8771078115952112858L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpSession session,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeLastAccessedTimeFormat(finder, key, session, buf);
                 }
@@ -129,11 +129,11 @@ public class HttpSessionCSVJournalEditorService
                 
                 private static final long serialVersionUID = -7031670685353367251L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpSession session,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeMaxInactiveIntervalFormat(finder, key, session, buf);
                 }
@@ -145,11 +145,11 @@ public class HttpSessionCSVJournalEditorService
                 
                 private static final long serialVersionUID = -822308326118465960L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpSession session,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeIsNewFormat(finder, key, session, buf);
                 }
@@ -161,11 +161,11 @@ public class HttpSessionCSVJournalEditorService
                 
                 private static final long serialVersionUID = 5294667762611932210L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     HttpSession session,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeAttributesFormat(finder, key, session, buf);
                 }
@@ -180,15 +180,15 @@ public class HttpSessionCSVJournalEditorService
         private static final long serialVersionUID = 4112780370192221152L;
         
         public String toString(EditorFinder finder, Object key, Object value){
-            final StringBuffer buf
-                 = new StringBuffer(super.toString(finder, key, value));
+            final StringBuilder buf
+                 = new StringBuilder(super.toString(finder, key, value));
             return toString(finder, key, (HttpSession)value, buf).toString();
         }
-        protected abstract StringBuffer toString(
+        protected abstract StringBuilder toString(
             EditorFinder finder,
             Object key,
             HttpSession session,
-            StringBuffer buf
+            StringBuilder buf
         );
     }
     
@@ -283,20 +283,20 @@ public class HttpSessionCSVJournalEditorService
         }
     }
     
-    protected StringBuffer makeIdFormat(
+    protected StringBuilder makeIdFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(session.getId());
     }
     
-    protected StringBuffer makeCreationTimeFormat(
+    protected StringBuilder makeCreationTimeFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuffer buf
+        StringBuilder buf
     ){
         makeObjectFormat(
             finder,
@@ -307,11 +307,11 @@ public class HttpSessionCSVJournalEditorService
         return buf;
     }
     
-    protected StringBuffer makeLastAccessedTimeFormat(
+    protected StringBuilder makeLastAccessedTimeFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuffer buf
+        StringBuilder buf
     ){
         makeObjectFormat(
             finder,
@@ -322,29 +322,29 @@ public class HttpSessionCSVJournalEditorService
         return buf;
     }
     
-    protected StringBuffer makeMaxInactiveIntervalFormat(
+    protected StringBuilder makeMaxInactiveIntervalFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(session.getMaxInactiveInterval());
     }
     
-    protected StringBuffer makeIsNewFormat(
+    protected StringBuilder makeIsNewFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(session.isNew());
     }
     
-    protected StringBuffer makeAttributesFormat(
+    protected StringBuilder makeAttributesFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final Enumeration attrNames = session.getAttributeNames();
         if(!attrNames.hasMoreElements()){

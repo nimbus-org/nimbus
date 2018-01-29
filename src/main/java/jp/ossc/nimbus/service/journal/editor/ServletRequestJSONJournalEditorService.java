@@ -190,7 +190,7 @@ public class ServletRequestJSONJournalEditorService
         return name != null && secretParameterSet != null && secretParameterSet.contains(name);
     }
     
-    protected StringBuffer appendUnknownValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
         if(!(value instanceof ServletRequest)){
             return super.appendUnknownValue(buf, finder, type, value);
         }
@@ -202,7 +202,7 @@ public class ServletRequestJSONJournalEditorService
         return buf;
     }
     
-    protected boolean appendServletRequest(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendServletRequest(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         isAppended |= appendSentServer(buf, finder, request, isAppended);
         isAppended |= appendReceivedServer(buf, finder, request, isAppended);
         isAppended |= appendHost(buf, finder, request, isAppended);
@@ -217,7 +217,7 @@ public class ServletRequestJSONJournalEditorService
         return isAppended;
     }
     
-    protected boolean appendSentServer(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendSentServer(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_SENT_SERVER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -234,7 +234,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendReceivedServer(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendReceivedServer(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_RECEIVED_SERVER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -251,7 +251,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendHost(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendHost(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_HOST)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -268,7 +268,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendProtocol(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendProtocol(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_PROTOCOL)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -285,7 +285,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendScheme(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendScheme(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_SCHEME)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -302,7 +302,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendLocale(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendLocale(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_LOCALE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -316,7 +316,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendContentType(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendContentType(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_CONTENT_TYPE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -333,7 +333,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendContentLength(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_CONTENT_LENGTH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -350,7 +350,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendCharacterEncoding(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendCharacterEncoding(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_CHARACTER_ENCODING)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -367,7 +367,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendAttributes(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendAttributes(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_ATTRIBUTES)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -401,7 +401,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendParameters(StringBuffer buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendParameters(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
         if(isOutputProperty(PROPERTY_PARAMETERS)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);

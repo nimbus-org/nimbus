@@ -86,7 +86,7 @@ public class StringArrayEditor extends PropertyEditorSupport
         final BufferedReader br = new BufferedReader(sr, length);
         final List list = new ArrayList();
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             String line = null;
             while((line = br.readLine()) != null){
                 final String val = Utility.trim(line);
@@ -183,7 +183,7 @@ public class StringArrayEditor extends PropertyEditorSupport
         setValue(list.toArray(new String[list.size()]));
     }
     
-    private String trimDoubleQuote(StringBuffer buf){
+    private String trimDoubleQuote(StringBuilder buf){
         final int startIndex = buf.indexOf("\"");
         if(buf != null && buf.length() > 1 && startIndex != -1){
             final int endIndex = buf.lastIndexOf("\"");
@@ -225,7 +225,7 @@ public class StringArrayEditor extends PropertyEditorSupport
         if(strArray == null){
             return null;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0, max = strArray.length; i < max; i++){
             String str = strArray[i];
             str = str.replaceAll(",", "\\\\,");

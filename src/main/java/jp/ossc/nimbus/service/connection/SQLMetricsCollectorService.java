@@ -147,7 +147,7 @@ public class SQLMetricsCollectorService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");
@@ -272,7 +272,7 @@ public class SQLMetricsCollectorService extends ServiceBase
         if(length == 0){
             return str;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0; i < length; i++){
             final char c = str.charAt(i);
             switch(c){

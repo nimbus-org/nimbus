@@ -223,7 +223,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         if(prefix.length() > 2){
             return prefix;
         }else{
-            final StringBuffer buf = new StringBuffer(prefix);
+            final StringBuilder buf = new StringBuilder(prefix);
             for(int i = 0, max = 3 - prefix.length(); i < max; i++){
                 buf.append('_');
             }

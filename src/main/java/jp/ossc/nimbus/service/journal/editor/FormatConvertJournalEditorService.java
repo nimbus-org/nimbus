@@ -79,7 +79,7 @@ public class FormatConvertJournalEditorService extends ImmutableJournalEditorSer
         }
     }
 
-    protected String toString(EditorFinder finder, Object key, Object value, StringBuffer buf) {
+    protected String toString(EditorFinder finder, Object key, Object value, StringBuilder buf) {
         if (value == null) {
             return NULL_STRING;
         }

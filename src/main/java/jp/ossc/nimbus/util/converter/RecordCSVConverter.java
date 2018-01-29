@@ -580,7 +580,7 @@ public class RecordCSVConverter implements BindingStreamConverter, StreamStringC
                     if(csv == null){
                         return record;
                     }
-                    final StringBuffer schemaBuf = new StringBuffer();
+                    final StringBuilder schemaBuf = new StringBuilder();
                     for(int i = 0, imax = csv.size(); i < imax; i++){
                         schemaBuf.append(':');
                         if(isExistsHeader){

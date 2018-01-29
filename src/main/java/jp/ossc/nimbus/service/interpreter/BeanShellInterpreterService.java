@@ -413,7 +413,7 @@ public class BeanShellInterpreterService extends ServiceBase
         try{
             System.out.println(interpreter.evaluate(code.toString()));
         }catch(Throwable e){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             final String lineSeparator = System.getProperty("line.separator");
             buf.append("Exception occuers :").append(e.toString()).append(lineSeparator);
             final StackTraceElement[] elemss = e.getStackTrace();

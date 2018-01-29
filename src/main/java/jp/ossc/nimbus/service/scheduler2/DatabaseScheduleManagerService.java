@@ -1228,7 +1228,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         ResultSet rs = null;
         List result = new ArrayList();
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("select ")
                 .append("A.").append(scheduleMasterTableSchema.id).append(" as ").append(scheduleMasterTableSchema.id).append(',')
                 .append("A.").append(scheduleMasterTableSchema.taskName).append(" as ").append(scheduleMasterTableSchema.taskName).append(',')
@@ -1501,7 +1501,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(schedules.size() == 0){
             return schedules;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         Statement st = con.createStatement();
         ResultSet rs = null;
         try{
@@ -1640,7 +1640,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(schedules.size() == 0){
             return schedules;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         Statement st = con.createStatement();
         ResultSet rs = null;
         try{
@@ -1718,7 +1718,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(schedules.size() == 0){
             return schedules;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         Statement st = con.createStatement();
         ResultSet rs = null;
         try{
@@ -1939,7 +1939,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(schedules.size() == 0){
             return schedules;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         Statement st = con.createStatement();
         ResultSet rs = null;
         try{
@@ -2078,7 +2078,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(schedules.size() == 0){
             return schedules;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         Statement st = con.createStatement();
         ResultSet rs = null;
         Map scheduleMap = new HashMap();
@@ -2147,7 +2147,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(schedules.size() == 0){
             return schedules;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         Statement st = con.createStatement();
         ResultSet rs = null;
         try{
@@ -2298,7 +2298,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         PreparedStatement st = null;
         ResultSet rs = null;
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("select ")
                 .append("A.").append(scheduleTableSchema.id).append(" as ").append(scheduleTableSchema.id).append(',')
                 .append("A.").append(scheduleTableSchema.masterId).append(" as ").append(scheduleTableSchema.masterId).append(',')
@@ -2385,7 +2385,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 );
                 st.setString(1, masterId);
             }else{
-                StringBuffer buf = new StringBuffer();
+                StringBuilder buf = new StringBuilder();
                 buf.append("select ")
                     .append("A.").append(scheduleTableSchema.id).append(" as ").append(scheduleTableSchema.id).append(',')
                     .append("A.").append(scheduleTableSchema.masterId).append(" as ").append(scheduleTableSchema.masterId).append(',')
@@ -2493,7 +2493,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, false);
     }
     
-    protected StringBuffer concatQuery(StringBuffer buf, String s1, String s2){
+    protected StringBuilder concatQuery(StringBuilder buf, String s1, String s2){
         if(isUseConcatFunction){
             buf.append("concat(").append(s1).append(',').append(s2).append(')');
         }else{
@@ -2522,7 +2522,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         PreparedStatement st = null;
         ResultSet rs = null;
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("select ")
                 .append("A.").append(scheduleTableSchema.id).append(" as ").append(scheduleTableSchema.id).append(',')
                 .append("A.").append(scheduleTableSchema.masterId).append(" as ").append(scheduleTableSchema.masterId).append(',')
@@ -2753,7 +2753,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         Statement st3GroupOnGroup = null;
         ResultSet rs = null;
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             // 1スケジュール - 1スケジュール
             // 自分より前の時間で、自分が依存するスケジュールの数を問い合わせる
             buf.append("select count(1) from ").append(scheduleTableSchema.table).append(" A,")
@@ -3457,7 +3457,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         continue;
                     }
                     
-                    buf = new StringBuffer();
+                    buf = new StringBuilder();
                     isTopGroupMasterIDMap.keySet().retainAll(dependsGroupMap.keySet());
                     Iterator itrGroupMasterIdSet = isTopGroupMasterIDMap.keySet().iterator();
                     boolean isRemove = false;
@@ -3623,7 +3623,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         Statement st = null;
         ResultSet rs = null;
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("select * from ").append(scheduleTableSchema.table)
                 .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append('\'');
             st = con.createStatement();
@@ -4212,7 +4212,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         Statement st = null;
         ResultSet rs = null;
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("select *  from ").append(scheduleTableSchema.table)
                 .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append('\'')
                 .append(" and ").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
@@ -5037,7 +5037,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 );
                 st.setString(1, masterId);
             }else{
-                StringBuffer buf = new StringBuffer();
+                StringBuilder buf = new StringBuilder();
                 buf.append("delete from ").append(scheduleTableSchema.table)
                     .append(" where ").append(scheduleTableSchema.masterId).append(" in (")
                     .append("select ").append(scheduleGroupMasterTableSchema.id).append(" from ").append(scheduleGroupMasterTableSchema.table)
@@ -5108,7 +5108,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         PreparedStatement st = null;
         try{
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("delete from A.");
             buf.append(scheduleTableSchema.table);
             boolean isAppendWhere = false;
@@ -7631,7 +7631,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         + scheduleTableSchema.getStateString(Schedule.STATE_FAILED)
                         + "' and " + scheduleTableSchema.state + "<>'"
                         + scheduleTableSchema.getStateString(Schedule.STATE_ABORT)
-                        + "' and " + concatQuery(new StringBuffer(), scheduleTableSchema.date, scheduleTableSchema.time) + "<'"
+                        + "' and " + concatQuery(new StringBuilder(), scheduleTableSchema.date, scheduleTableSchema.time) + "<'"
                         + format.format(nowCal.getTime()) + '\''
                 );
                 final Calendar tmpCal = Calendar.getInstance();

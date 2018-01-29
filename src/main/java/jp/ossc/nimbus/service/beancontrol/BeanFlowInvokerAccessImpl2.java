@@ -2594,7 +2594,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 field = targetClazz.getField(name);
             }catch(NoSuchFieldException e){
                 if(name.length() != 0 && Character.isUpperCase(name.charAt(0))){
-                    StringBuffer tmpName = new StringBuffer();
+                    StringBuilder tmpName = new StringBuilder();
                     tmpName.append(Character.toLowerCase(name.charAt(0)));
                     if(name.length() > 1){
                         tmpName.append(name.substring(1));
@@ -2658,7 +2658,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 f = targetClazz.getField(name);
             }catch(NoSuchFieldException e){
                 if(name.length() != 0 && Character.isUpperCase(name.charAt(0))){
-                    StringBuffer tmpName = new StringBuffer();
+                    StringBuilder tmpName = new StringBuilder();
                     tmpName.append(Character.toLowerCase(name.charAt(0)));
                     if(name.length() > 1){
                         tmpName.append(name.substring(1));
@@ -3107,7 +3107,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         protected String getSignature(List params) throws Exception{
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             buf.append(getName());
             buf.append('(');
             if(arguments.size() != 0){
@@ -3257,7 +3257,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         protected String getSignature(List params) throws Exception{
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             buf.append(getCode());
             buf.append('#');
             buf.append(getName());
@@ -5841,7 +5841,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             boolean keyFlg = false;
 
             String beforeToken = null;
-            StringBuffer condBuf = new StringBuffer();
+            StringBuilder condBuf = new StringBuilder();
 
             while(token.hasMoreTokens()){
                 String str = token.nextToken();
@@ -6262,7 +6262,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             boolean keyFlg = false;
 
             String beforeToken = null;
-            StringBuffer condBuf = new StringBuffer();
+            StringBuilder condBuf = new StringBuilder();
 
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

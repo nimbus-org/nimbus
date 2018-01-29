@@ -76,7 +76,7 @@ public class AddMessage extends ClientMessage{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", subject=").append(subject);
         buf.append(", keys=");

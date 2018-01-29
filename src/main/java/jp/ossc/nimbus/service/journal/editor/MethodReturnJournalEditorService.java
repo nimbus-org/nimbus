@@ -68,7 +68,7 @@ public class MethodReturnJournalEditorService extends BlockJournalEditorServiceB
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final MethodReturnJournalData methodRetJournal
              = (MethodReturnJournalData)value;

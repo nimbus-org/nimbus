@@ -453,7 +453,7 @@ public class  CipherCryptService extends ServiceBase
      * @return 16i”•¶š—ñ
      */
     protected static String toHexString(byte[] bytes){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0, max = bytes.length; i < max; i++){
             int intValue = bytes[i];
             intValue &= 0x000000FF;

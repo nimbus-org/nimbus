@@ -69,7 +69,7 @@ public class MethodThrowJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final MethodThrowJournalData methodThrowJournal
              = (MethodThrowJournalData)value;

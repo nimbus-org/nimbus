@@ -150,7 +150,7 @@ public class MethodMetricsInterceptorService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");

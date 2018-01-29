@@ -132,7 +132,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");
@@ -506,7 +506,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
             performance.start();
         }else{
             performance.end();
-            StringBuffer keyBuf = new StringBuffer();
+            StringBuilder keyBuf = new StringBuilder();
             keyBuf.append(context.get(MessageContext.WSDL_SERVICE)).append('#')
                 .append(context.get(MessageContext.WSDL_PORT)).append('#')
                 .append(context.get(MessageContext.WSDL_OPERATION));
@@ -529,7 +529,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
     
     public boolean handleFault(SOAPMessageContext context) {
         performance.end();
-        StringBuffer keyBuf = new StringBuffer();
+        StringBuilder keyBuf = new StringBuilder();
         keyBuf.append(context.get(MessageContext.WSDL_SERVICE)).append('#')
             .append(context.get(MessageContext.WSDL_PORT)).append('#')
             .append(context.get(MessageContext.WSDL_OPERATION));

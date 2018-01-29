@@ -265,7 +265,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
         buf.append("messageType=").append(messageType);

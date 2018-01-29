@@ -81,7 +81,7 @@ public class ConcatenateIndexKeyFactory implements BeanTableIndexKeyFactory, Ext
     }
     
     public Object createIndexKey(Object element) throws IndexPropertyAccessException{
-        final StringBuffer indexKey = new StringBuffer();
+        final StringBuilder indexKey = new StringBuilder();
         String propertyName = null;
         try{
             for(int i = 0; i < properties.length; i++){
@@ -111,7 +111,7 @@ public class ConcatenateIndexKeyFactory implements BeanTableIndexKeyFactory, Ext
         if(keys.containsKey(aliasName)){
             return keys.get(aliasName);
         }else{
-            final StringBuffer indexKey = new StringBuffer();
+            final StringBuilder indexKey = new StringBuilder();
             for(int i = 0; i < properties.length; i++){
                 Property property = properties[i];
                 if(keys.containsKey(property.getPropertyName())){

@@ -87,7 +87,7 @@ public class WritableRecord implements java.io.Serializable{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuffer ret = new StringBuffer();
+        final StringBuilder ret = new StringBuilder();
         final Iterator elements = mElements.values().iterator();
         while(elements.hasNext()){
             ret.append(elements.next().toString());

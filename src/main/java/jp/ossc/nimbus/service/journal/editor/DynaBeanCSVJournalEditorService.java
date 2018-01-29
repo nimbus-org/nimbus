@@ -81,11 +81,11 @@ public class DynaBeanCSVJournalEditorService
                 
                 private static final long serialVersionUID = -8113402783790668238L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     DynaBean bean,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeDynaClassFormat(finder, key, bean, buf);
                 }
@@ -97,11 +97,11 @@ public class DynaBeanCSVJournalEditorService
                 
                 private static final long serialVersionUID = 4127468984641295749L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     DynaBean bean,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makePropertiesFormat(finder, key, bean, buf);
                 }
@@ -116,15 +116,15 @@ public class DynaBeanCSVJournalEditorService
         private static final long serialVersionUID = 3417940414712491051L;
         
         public String toString(EditorFinder finder, Object key, Object value){
-            final StringBuffer buf
-                 = new StringBuffer(super.toString(finder, key, value));
+            final StringBuilder buf
+                 = new StringBuilder(super.toString(finder, key, value));
             return toString(finder, key, (DynaBean)value, buf).toString();
         }
-        protected abstract StringBuffer toString(
+        protected abstract StringBuilder toString(
             EditorFinder finder,
             Object key,
             DynaBean bean,
-            StringBuffer buf
+            StringBuilder buf
         );
     }
     
@@ -219,21 +219,21 @@ public class DynaBeanCSVJournalEditorService
         }
     }
     
-    protected StringBuffer makeDynaClassFormat(
+    protected StringBuilder makeDynaClassFormat(
         EditorFinder finder,
         Object key,
         DynaBean bean,
-        StringBuffer buf
+        StringBuilder buf
     ){
         makeObjectFormat(finder, null, bean.getDynaClass(), buf);
         return buf;
     }
     
-    protected StringBuffer makePropertiesFormat(
+    protected StringBuilder makePropertiesFormat(
         EditorFinder finder,
         Object key,
         DynaBean bean,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final DynaClass dynaClass = bean.getDynaClass();
         final DynaProperty[] props = dynaClass.getDynaProperties();
