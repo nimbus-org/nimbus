@@ -953,7 +953,7 @@ public class SharedContextServlet extends HttpServlet{
                 for(int j = 0; j < propSchemata.length; j++){
                     buf.append("<td>").append(record.getProperty(j)).append("</td>");
                 }
-                buf.append("<td rowspan=\"2\">");
+                buf.append("<td>");
                 buf.append("<input type=\"button\" value=\"remove\" onclick=\"removeRecord(").append(i).append(");\">");
                 buf.append("</td>");
                 buf.append("</tr>");
