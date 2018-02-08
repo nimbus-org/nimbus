@@ -2,18 +2,18 @@
  * This software is distributed under following license based on modified BSD
  * style license.
  * ----------------------------------------------------------------------
- *
+ * 
  * Copyright 2003 The Nimbus Project. All rights reserved.
- *
+ * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- *
+ * 
  * 1. Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
+ *    this list of conditions and the following disclaimer. 
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- *
+ * 
  * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
@@ -24,7 +24,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * 
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
@@ -170,73 +170,73 @@ import jp.ossc.nimbus.util.converter.*;
  *     &lt;servlet-name&gt;SharedContextServlet&lt;/servlet-name&gt;
  *     &lt;servlet-class&gt;jp.ossc.nimbus.servlet.SharedContextServlet&lt;/servlet-class&gt;
  * &lt;/servlet&gt;
- *
+ * 
  * &lt;servlet-mapping&gt;
  *     &lt;servlet-name&gt;SharedContextServlet&lt;/servlet-name&gt;
  *     &lt;url-pattern&gt;/context-console&lt;/url-pattern&gt;
  * &lt;/servlet-mapping&gt;
  * </pre>
- *
+ * 
  * @author M.Takata
  */
 public class SharedContextServlet extends HttpServlet{
-
+    
     private static final long serialVersionUID = -6992362984683159336L;
 
     /**
      * 対象とする共有コンテキストのサービス名を指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_SERVICE_NAMES = "ServiceNames";
-
+    
     /**
      * インタプリタのサービス名を指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_INTERPRETER_SERVICE_NAME = "InterpreterServiceName";
-
+    
     /**
      * 追加を有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_PUT_ENABLED = "PutEnabled";
-
+    
     /**
      * 更新を有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_UPDATE_ENABLED = "UpdateEnabled";
-
+    
     /**
      * 削除を有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_REMOVE_ENABLED = "RemoveEnabled";
-
+    
     /**
      * 全削除を有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_CLEAR_ENABLED = "ClearEnabled";
-
+    
     /**
      * 読込みを有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_LOAD_ENABLED = "LoadEnabled";
-
+    
     /**
      * 書込みを有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_SAVE_ENABLED = "SaveEnabled";
-
+    
     /**
      * JSONコンバータのサービス名を指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_JSON_CONVERTER_SERVICE_NAME = "JSONConverterServiceName";
-
+    
     /**
      * JSON応答時に２バイト文字をユニコードエスケープするかどうかのフラグを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_UNICODE_ESCAPE = "UnicodeEscape";
-
+    
     private Interpreter interpreter;
     private BeanJSONConverter jsonConverter;
     private StringStreamConverter toStringConverter;
-
+    
     private ServiceName[] getServiceNames(){
         final ServletConfig config = getServletConfig();
         final String serviceNamesStr = config.getInitParameter(INIT_PARAM_NAME_SERVICE_NAMES);
@@ -247,7 +247,7 @@ public class SharedContextServlet extends HttpServlet{
         editor.setAsText(serviceNamesStr);
         return (ServiceName[])editor.getValue();
     }
-
+    
     private ServiceName getInterpreterServiceName(){
         final ServletConfig config = getServletConfig();
         final String serviceNameStr = config.getInitParameter(INIT_PARAM_NAME_INTERPRETER_SERVICE_NAME);
@@ -258,43 +258,43 @@ public class SharedContextServlet extends HttpServlet{
         editor.setAsText(serviceNameStr);
         return (ServiceName)editor.getValue();
     }
-
+    
     private boolean isPutEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_PUT_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
-
+    
     private boolean isUpdateEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_UPDATE_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
-
+    
     private boolean isRemoveEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_REMOVE_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
-
+    
     private boolean isClearEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_CLEAR_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
-
+    
     private boolean isLoadEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_LOAD_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
-
+    
     private boolean isSaveEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_SAVE_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
-
+    
     private ServiceName getJSONConverterServiceName(){
         final ServletConfig config = getServletConfig();
         final String serviceNameStr = config.getInitParameter(INIT_PARAM_NAME_JSON_CONVERTER_SERVICE_NAME);
@@ -305,13 +305,13 @@ public class SharedContextServlet extends HttpServlet{
         editor.setAsText(serviceNameStr);
         return (ServiceName)editor.getValue();
     }
-
+    
     private boolean isUnicodeEscape(){
         final ServletConfig config = getServletConfig();
         final String isEscape = config.getInitParameter(INIT_PARAM_NAME_UNICODE_ESCAPE);
         return isEscape == null ? true : Boolean.valueOf(isEscape).booleanValue();
     }
-
+    
     /**
      * サーブレットの初期化を行う。<p>
      * サービス定義のロード及びロード完了チェックを行う。
@@ -329,7 +329,7 @@ public class SharedContextServlet extends HttpServlet{
         jsonConverter.setUnicodeEscape(isUnicodeEscape());
         toStringConverter = new StringStreamConverter(StringStreamConverter.STREAM_TO_STRING);
         toStringConverter.setCharacterEncodingToObject("UTF-8");
-
+        
         ServiceName interpreterServiceName = getInterpreterServiceName();
         if(interpreterServiceName == null){
             BeanShellInterpreterService bshInterpreter = new BeanShellInterpreterService();
@@ -344,14 +344,14 @@ public class SharedContextServlet extends HttpServlet{
             interpreter = (Interpreter)ServiceManagerFactory.getServiceObject(interpreterServiceName);
         }
     }
-
+    
     /**
      * POSTリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void doPost(
         HttpServletRequest req,
@@ -359,14 +359,14 @@ public class SharedContextServlet extends HttpServlet{
     ) throws ServletException, IOException{
         process(req, resp);
     }
-
+    
     /**
      * GETリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void doGet(
         HttpServletRequest req,
@@ -374,22 +374,22 @@ public class SharedContextServlet extends HttpServlet{
     ) throws ServletException, IOException{
         process(req, resp);
     }
-
+    
     /**
      * リクエスト処理を行う。<p>
      * 管理コンソール処理を行う。
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void process(
         HttpServletRequest req,
         HttpServletResponse resp
     ) throws ServletException, IOException{
         req.setCharacterEncoding("UTF-8");
-
+        
         final String action = req.getParameter("action");
         final String responseType = req.getParameter("responseType");
         if(action == null){
@@ -450,26 +450,26 @@ public class SharedContextServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
-
+    
     private String getCurrentPath(HttpServletRequest req){
         return req.getContextPath() + req.getServletPath();
     }
-
+    
     /**
      * インデックス画面リクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processIndexResponse(
         HttpServletRequest req,
         HttpServletResponse resp,
         String responseType
     ) throws ServletException, IOException{
-
+        
         ServiceName[] contextServiceNames = getServiceNames();
         if(contextServiceNames == null){
             ServiceManager[] managers = ServiceManagerFactory.findManagers();
@@ -489,7 +489,7 @@ public class SharedContextServlet extends HttpServlet{
         if(contextServiceNames != null){
             Arrays.sort(contextServiceNames);
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -525,7 +525,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContexts</title></head>");
             buf.append("<body>");
-
+            
             buf.append("<b>Contexts</b><br>");
             buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
             buf.append("<tr bgcolor=\"#cccccc\"><th>name</th><th>replicated/distributed</th><th>client/server</th><th>node number</th><th>size</th></tr>");
@@ -560,21 +560,21 @@ public class SharedContextServlet extends HttpServlet{
                 }
             }
             buf.append("</table>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキスト画面リクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processContextResponse(
         HttpServletRequest req,
@@ -633,7 +633,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + "</title></head>");
             buf.append("<body>");
-
+            
             buf.append("<b>Context " + serviceName + "</b><br>");
             buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
             buf.append("<tr><th bgcolor=\"#cccccc\">replicated/distributed</th><td colspan=\"2\">").append(isDistributed ? "distributed" : "replicated").append("</td></tr>");
@@ -643,25 +643,25 @@ public class SharedContextServlet extends HttpServlet{
                 buf.append("<tr><th bgcolor=\"#cccccc\">distribute</th><td colspan=\"2\"><pre>").append(((DistributedSharedContextService)context).displayDistributeInfo()).append("</pre></td></tr>");
             }
             buf.append("<tr><th bgcolor=\"#cccccc\">size</th><td colspan=\"2\">").append(context.size() + (context.isClient() || isDistributed ? ("(" + context.sizeLocal() + ")") : "")).append("</td></tr>");
-
+            
             buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
             buf.append("<input type=\"hidden\" name=\"action\" value=\"get\"/>");
             buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
             buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"get\"/></th><td colspan=\"2\"><table><tr><td>key:</td><td><textarea name=\"key\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td></tr>");
             buf.append("</form>");
-
+            
             buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
             buf.append("<input type=\"hidden\" name=\"action\" value=\"containsKey\"/>");
             buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
             buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"containsKey\"/></th><td colspan=\"2\"><table><tr><td>key:</td><td><textarea name=\"key\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td></tr>");
             buf.append("</form>");
-
+            
             buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
             buf.append("<input type=\"hidden\" name=\"action\" value=\"keySet\"/>");
             buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
             buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"keySet\"/></th><td colspan=\"2\">&nbsp;</td></tr>");
             buf.append("</form>");
-
+            
             buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
             buf.append("<input type=\"hidden\" name=\"action\" value=\"query\"/>");
             buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
@@ -671,7 +671,7 @@ public class SharedContextServlet extends HttpServlet{
                 buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"query\"/></th><td><table><tr><td>query:</td><td><textarea name=\"query\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td><td><table><tr><td>timeout:</td><td><textarea name=\"timeout\"></textarea></td></tr></table></td></tr>");
             }
             buf.append("</form>");
-
+            
             if(isRemoveEnabled()){
                 buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
                 buf.append("<input type=\"hidden\" name=\"action\" value=\"remove\"/>");
@@ -727,21 +727,21 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("\">Contexts</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストの値を取得するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processGetResponse(
         HttpServletRequest req,
@@ -775,12 +775,12 @@ public class SharedContextServlet extends HttpServlet{
         ){
             key = keyStr.substring(1, keyStr.length() - 1);
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
-
+            
             try{
                 if(key == null){
                     if(keyStr.indexOf("\n") == -1
@@ -822,7 +822,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("}\n");
             buf.append("// -->\n</script></head>");
             buf.append("<body>");
-
+            
             try{
                 if(key == null){
                     if(keyStr.indexOf("\n") == -1
@@ -840,19 +840,19 @@ public class SharedContextServlet extends HttpServlet{
             }catch(Exception e){
                 writeThrowable(buf, e);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     private StringBuffer writeThrowable(StringBuffer buf, Throwable th){
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
@@ -861,7 +861,7 @@ public class SharedContextServlet extends HttpServlet{
         String stackTrace = sw.toString();
         return buf.append("<pre>").append(stackTrace).append("</pre>");
     }
-
+    
     private StringBuffer writeValue(
         HttpServletRequest req,
         HttpServletResponse resp,
@@ -988,15 +988,15 @@ public class SharedContextServlet extends HttpServlet{
         }
         return buf;
     }
-
+    
     /**
      * コンテキストのキーが存在するか確認するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processContainsKeyResponse(
         HttpServletRequest req,
@@ -1030,7 +1030,7 @@ public class SharedContextServlet extends HttpServlet{
         ){
             key = keyStr.substring(1, keyStr.length() - 1);
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1064,7 +1064,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " ContainsKey</title></head>");
             buf.append("<body>");
-
+            
             try{
                 if(key == null){
                     if(keyStr.indexOf("\n") == -1
@@ -1084,27 +1084,27 @@ public class SharedContextServlet extends HttpServlet{
             }catch(Exception e){
                 writeThrowable(buf, e);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストのキー集合を取得するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processKeySetResponse(
         HttpServletRequest req,
@@ -1152,7 +1152,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1185,7 +1185,7 @@ public class SharedContextServlet extends HttpServlet{
                 buf.append("<tr bgcolor=\"#cccccc\"><th>value</th><th>type</th></tr>");
                 for(int i = 0; i < keys.size(); i++){
                     Object key = keys.get(i);
-
+                    
                     buf.append("<tr><td>").append(key).append("</td>");
                     buf.append("<td>").append(key == null ? "&nbsp;" : key.getClass().getName()).append("</td>");
                     buf.append("<td>").append(context.containsKeyLocal(key) ? "local" : "remote").append("</td>");
@@ -1218,27 +1218,27 @@ public class SharedContextServlet extends HttpServlet{
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストにクエリを実行するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processQueryResponse(
         HttpServletRequest req,
@@ -1273,7 +1273,7 @@ public class SharedContextServlet extends HttpServlet{
                 timeoutStr = null;
             }
         }
-
+        
         Object ret = null;
         Exception exception = null;
         try{
@@ -1286,7 +1286,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1312,33 +1312,33 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Query</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 writeValue(req, resp, null, null, buf, ret, false);
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストの値を削除するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processRemoveResponse(
         HttpServletRequest req,
@@ -1387,7 +1387,7 @@ public class SharedContextServlet extends HttpServlet{
         if(clearStr != null && clearStr.length() != 0){
             isClear = Boolean.valueOf(clearStr).booleanValue();
         }
-
+        
         Object old = null;
         Exception exception = null;
         try{
@@ -1431,7 +1431,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1459,7 +1459,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Remove</title></head>");
             buf.append("<body>");
-
+            
             buf.append("key : ").append(key).append("<br>");
             if(index >= 0){
                 buf.append("index : ").append(index).append("<br>");
@@ -1473,27 +1473,27 @@ public class SharedContextServlet extends HttpServlet{
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストに値を追加するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processPutResponse(
         HttpServletRequest req,
@@ -1541,7 +1541,7 @@ public class SharedContextServlet extends HttpServlet{
         ){
             value = valueStr.substring(1, valueStr.length() - 1);
         }
-
+        
         Object old = null;
         Exception exception = null;
         try{
@@ -1559,7 +1559,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1583,33 +1583,33 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Put</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 buf.append("put key : ").append(key).append(" value : ").append(value);
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストの値を全削除するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processClearResponse(
         HttpServletRequest req,
@@ -1634,7 +1634,7 @@ public class SharedContextServlet extends HttpServlet{
         if(localStr != null && localStr.length() != 0){
             isLocal = Boolean.valueOf(localStr).booleanValue();
         }
-
+        
         Exception exception = null;
         try{
             if(isLocal){
@@ -1645,7 +1645,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1666,33 +1666,33 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Clear</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 buf.append("clear ").append(isLocal ? "local" : "all");
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストを読み込むリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processLoadResponse(
         HttpServletRequest req,
@@ -1722,7 +1722,7 @@ public class SharedContextServlet extends HttpServlet{
         ){
             key = keyStr.substring(1, keyStr.length() - 1);
         }
-
+        
         Exception exception = null;
         try{
             if(keyStr != null && keyStr.length() != 0){
@@ -1740,7 +1740,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1760,7 +1760,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Load</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 if(keyStr != null && keyStr.length() != 0){
                     buf.append("load ").append(key).append(" complete");
@@ -1770,27 +1770,27 @@ public class SharedContextServlet extends HttpServlet{
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストのキーを読み込むリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processLoadKeyResponse(
         HttpServletRequest req,
@@ -1810,14 +1810,14 @@ public class SharedContextServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-
+        
         Exception exception = null;
         try{
             context.loadKey();
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1837,33 +1837,33 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " LoadKey</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 buf.append("load key complete");
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストを書き込むリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processSaveResponse(
         HttpServletRequest req,
@@ -1883,7 +1883,7 @@ public class SharedContextServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-
+        
         String keyStr = req.getParameter("key");
         Object key = null;
         if(keyStr != null && keyStr.length() >= 2
@@ -1894,7 +1894,7 @@ public class SharedContextServlet extends HttpServlet{
         ){
             key = keyStr.substring(1, keyStr.length() - 1);
         }
-
+        
         Exception exception = null;
         try{
             if(keyStr != null && keyStr.length() != 0){
@@ -1912,7 +1912,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -1932,7 +1932,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Save</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 if(keyStr != null && keyStr.length() != 0){
                     buf.append("save ").append(key).append(" complete");
@@ -1942,27 +1942,27 @@ public class SharedContextServlet extends HttpServlet{
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("?action=context")
                 .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                 .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
     }
-
+    
     /**
      * コンテキストの値を更新するリクエスト処理を行う。<p>
      *
      * @param req HTTPリクエスト
      * @param resp HTTPレスポンス
      * @param responseType レスポンス種別
-     * @exception ServletException
-     * @exception IOException
+     * @exception ServletException 
+     * @exception IOException 
      */
     protected void processUpdateResponse(
         HttpServletRequest req,
@@ -1996,7 +1996,7 @@ public class SharedContextServlet extends HttpServlet{
         ){
             key = keyStr.substring(1, keyStr.length() - 1);
         }
-
+        
         Exception exception = null;
         SharedContextValueDifference diff = null;
         try{
@@ -2124,7 +2124,7 @@ public class SharedContextServlet extends HttpServlet{
         }catch(Exception e){
             exception = e;
         }
-
+        
         final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
@@ -2144,7 +2144,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<html>");
             buf.append("<head><title>Nimbus SharedContext " + serviceName + " Update</title></head>");
             buf.append("<body>");
-
+            
             if(exception == null){
                 if(diff != null){
                     buf.append("update " + key + " complete");
@@ -2154,13 +2154,13 @@ public class SharedContextServlet extends HttpServlet{
             }else{
                 writeThrowable(buf, exception);
             }
-
+            
             buf.append("<hr>");
             buf.append("<a href=\"").append(getCurrentPath(req))
                     .append("?action=context")
                     .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
                     .append("\">Context</a>");
-
+            
             buf.append("</body>");
             buf.append("</html>");
         }
