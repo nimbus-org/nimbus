@@ -145,18 +145,80 @@ public interface SerializableExternalizerServiceMBean extends ServiceBaseMBean{
     public int getCompressThreshold();
     
     /**
-     * 入出力のバッファサイズを設定する。<p>
+     * 圧縮/解凍時の入出力のバッファサイズを設定する。<p>
      * 
      * @param size バッファサイズ
      */
     public void setBufferSize(int size);
     
     /**
-     * 入出力のバッファサイズを取得する。<p>
+     * 圧縮/解凍時の入出力のバッファサイズを取得する。<p>
      * 
      * @return バッファサイズ
      */
     public int getBufferSize();
+    
+    /**
+     * 出力ストリームをバッファリングするかどうかを判定する。<p>
+     * 
+     * @return trueの場合、バッファリングする
+     */
+    public boolean isBufferedOutputStream();
+    
+    /**
+     * 出力ストリームをバッファリングするかどうかを設定する。<p>
+     * デフォルトは、falseでバッファリングしない。
+     * 
+     * @param isBuffered バッファリングする場合、true
+     */
+    public void setBufferedOutputStream(boolean isBuffered);
+    
+    /**
+     * 出力ストリームをバッファリングする場合の初期バッファサイズを設定する。<p>
+     * デフォルトは、1024。
+     * 
+     * @param size 初期バッファサイズ
+     */
+    public void setOutputStreamInitialBufferSize(int size);
+    
+    /**
+     * 出力ストリームをバッファリングする場合の初期バッファサイズを取得する。<p>
+     * 
+     * @return 初期バッファサイズ
+     */
+    public int getOutputStreamInitialBufferSize();
+    
+    /**
+     * 出力ストリームをバッファリングする場合のバッファサイズ拡張倍率を設定する。<p>
+     * バッファが枯渇して内部的にフラッシュする際に、この倍率でバッファサイズを拡張する。<br>
+     * デフォルトは、2。<br>
+     * 
+     * @param ratio 拡張倍率
+     */
+    public void setOutputStreamBufferExpandRatio(float ratio);
+    
+    /**
+     * 出力ストリームをバッファリングする場合のバッファサイズ拡張倍率を取得する。<p>
+     * 
+     * @return 拡張倍率
+     */
+    public float getOutputStreamBufferExpandRatio();
+    
+    /**
+     * 出力ストリームをバッファリングする場合の最大バッファサイズを設定する。<p>
+     * バッファが枯渇して内部的にフラッシュする際に、バッファサイズを拡張するが、最大でこのサイズまで拡張する。<br>
+     * デフォルトは、10240。<br>
+     * 
+     * @param size 最大バッファサイズ
+     */
+    public void setOutputStreamMaxBufferSize(int size);
+    
+    /**
+     * 出力ストリームをバッファリングする場合の最大バッファサイズを取得する。<p>
+     * 
+     * @return 最大バッファサイズ
+     */
+    public int getOutputStreamMaxBufferSize();
     
     /**
      * {@link Externalizer#writeExternal(Object, java.io.OutputStream)}が呼び出された際に、java.io.OutputStreamをラップするjava.io.ObjectOutputの実装クラスを設定する。<p>

@@ -91,19 +91,14 @@ public class NimbusExternalizerService extends SerializableExternalizerService
     public class NimbusObjectOutputStream extends ObjectOutputStream{
         
         private final char[] cbuf = new char[CHAR_BUF_SIZE];
-        private final BufferedOutputStream bos;
+        private final OutputStream os;
         private ReferenceTable classNameTable = new ReferenceTable();
         private ReferenceTable referenceTable = new ReferenceTable();
         private Stack currentObjectStack = new Stack();
         
         public NimbusObjectOutputStream(OutputStream os) throws IOException{
             super();
-            
-            if(os instanceof BufferedOutputStream){
-                bos = (BufferedOutputStream)os;
-            }else{
-                bos = new BufferedOutputStream(os, 1024);
-            }
+            this.os = os;
         }
         
         protected int registerClassName(String className){
@@ -132,72 +127,72 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         public void write(int b) throws IOException{
-            bos.write(b);
+            os.write(b);
         }
         public void write(byte[] b) throws IOException{
-            bos.write(b);
+            os.write(b);
         }
         public void write(byte[] b, int off, int len) throws IOException{
-            bos.write(b, off, len);
+            os.write(b, off, len);
         }
         public void writeBoolean(boolean v) throws IOException{
-            bos.write(v ? 1 : 0);
+            os.write(v ? 1 : 0);
         }
         public void writeByte(int v) throws IOException{
-            bos.write(v);
+            os.write(v);
         }
         public void writeShort(int v) throws IOException{
-            bos.write((byte)(v >>> 8));
-            bos.write((byte)v);
+            os.write((byte)(v >>> 8));
+            os.write((byte)v);
         }
         public void writeChar(int v) throws IOException{
-            bos.write((byte)(v >>> 8));
-            bos.write((byte)v);
+            os.write((byte)(v >>> 8));
+            os.write((byte)v);
         }
         public void writeInt(int v) throws IOException{
             if(v == Integer.MIN_VALUE){
-                bos.write((byte)0);
+                os.write((byte)0);
             }else if(v >= Byte.MIN_VALUE && v <= Byte.MAX_VALUE){
-                bos.write((byte)1);
-                bos.write((byte)v);
+                os.write((byte)1);
+                os.write((byte)v);
             }else if(v >= Short.MIN_VALUE && v <= Short.MAX_VALUE){
-                bos.write((byte)2);
-                bos.write((byte)(v >>> 8));
-                bos.write((byte)v);
+                os.write((byte)2);
+                os.write((byte)(v >>> 8));
+                os.write((byte)v);
             }else{
-                bos.write((byte)3);
-                bos.write((byte)(v >>> 24));
-                bos.write((byte)(v >>> 16));
-                bos.write((byte)(v >>> 8));
-                bos.write((byte)(v));
+                os.write((byte)3);
+                os.write((byte)(v >>> 24));
+                os.write((byte)(v >>> 16));
+                os.write((byte)(v >>> 8));
+                os.write((byte)(v));
             }
         }
         public void writeLong(long v) throws IOException{
             if(v == Long.MIN_VALUE){
-                bos.write((byte)0);
+                os.write((byte)0);
             }else if(v >= Byte.MIN_VALUE && v <= Byte.MAX_VALUE){
-                bos.write((byte)1);
-                bos.write((byte)v);
+                os.write((byte)1);
+                os.write((byte)v);
             }else if(v >= Short.MIN_VALUE && v <= Short.MAX_VALUE){
-                bos.write((byte)2);
-                bos.write((byte)(v >>> 8));
-                bos.write((byte)v);
+                os.write((byte)2);
+                os.write((byte)(v >>> 8));
+                os.write((byte)v);
             }else if(v >= Integer.MIN_VALUE && v <= Integer.MAX_VALUE){
-                bos.write((byte)3);
-                bos.write((byte)(v >>> 24));
-                bos.write((byte)(v >>> 16));
-                bos.write((byte)(v >>> 8));
-                bos.write((byte)(v));
+                os.write((byte)3);
+                os.write((byte)(v >>> 24));
+                os.write((byte)(v >>> 16));
+                os.write((byte)(v >>> 8));
+                os.write((byte)(v));
             }else{
-                bos.write((byte)4);
-                bos.write((byte)(v >>> 56));
-                bos.write((byte)(v >>> 48));
-                bos.write((byte)(v >>> 40));
-                bos.write((byte)(v >>> 32));
-                bos.write((byte)(v >>> 24));
-                bos.write((byte)(v >>> 16));
-                bos.write((byte)(v >>> 8));
-                bos.write((byte)v);
+                os.write((byte)4);
+                os.write((byte)(v >>> 56));
+                os.write((byte)(v >>> 48));
+                os.write((byte)(v >>> 40));
+                os.write((byte)(v >>> 32));
+                os.write((byte)(v >>> 24));
+                os.write((byte)(v >>> 16));
+                os.write((byte)(v >>> 8));
+                os.write((byte)v);
             }
         }
         public void writeFloat(float v) throws IOException{
@@ -249,14 +244,14 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 for(int cpos = 0; cpos < csize; cpos++){
                     char c = cbuf[cpos];
                     if(c <= 0x007F && c != 0){
-                        bos.write(c);
+                        os.write(c);
                     }else if(c > 0x07FF){
-                        bos.write(0xE0 | ((c >> 12) & 0x0F));
-                        bos.write(0x80 | ((c >> 6) & 0x3F));
-                        bos.write(0x80 | ((c >> 0) & 0x3F));
+                        os.write(0xE0 | ((c >> 12) & 0x0F));
+                        os.write(0x80 | ((c >> 6) & 0x3F));
+                        os.write(0x80 | ((c >> 0) & 0x3F));
                     }else{
-                        bos.write(0xC0 | ((c >> 6) & 0x1F));
-                        bos.write(0x80 | ((c >> 0) & 0x3F));
+                        os.write(0xC0 | ((c >> 6) & 0x1F));
+                        os.write(0x80 | ((c >> 0) & 0x3F));
                     }
                 }
                 off += csize;
@@ -265,10 +260,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void writeString(String s) throws IOException{
             final long utflen = getUTFLength(s);
             if(utflen <= 0xFFFF){
-                bos.write((byte)1);
+                os.write((byte)1);
                 writeUTF(s, utflen);
             }else{
-                bos.write((byte)2);
+                os.write((byte)2);
                 writeLongUTF(s, utflen);
             }
         }
@@ -295,12 +290,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         }
         
         public void flush() throws IOException{
-            bos.flush();
+            os.flush();
         }
         
         public void close() throws IOException{
-            bos.flush();
-            bos.close();
+            os.flush();
+            os.close();
         }
     }
     
