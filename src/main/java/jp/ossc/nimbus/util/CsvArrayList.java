@@ -103,20 +103,20 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	private int _splitString(String strInData )	 {
 		int lngFindNum ;
 		int lngMindNum ;
-		StringBuffer subStr1 ;
-		StringBuffer subStr2 ;
+		StringBuilder subStr1 ;
+		StringBuilder subStr2 ;
 		// 入力舗?炎
 		//== 出力配列初期化 ==
 		super.clear() ;
 		if (strInData != null && strInData.length()!=0){
 			//## 区切り文字検索 ##
 			lngMindNum = 0 ;
-			subStr1 = new StringBuffer(C_NONE) ;
-			subStr2 = new StringBuffer(StringOperator.replaceString(strInData,mEscapeString + mEscapeString,ESP_STR)) ;
+			subStr1 = new StringBuilder(C_NONE) ;
+			subStr2 = new StringBuilder(StringOperator.replaceString(strInData,mEscapeString + mEscapeString,ESP_STR)) ;
 			//== 最終デミリター文字削除 ==
 			if(mAddDemiliter){
 				if(subStr2.substring(subStr2.length()-mSeptData.length()).equals(mSeptData)){
-					subStr2 = new StringBuffer(subStr2.substring(0,subStr2.length()-mSeptData.length()));
+					subStr2 = new StringBuilder(subStr2.substring(0,subStr2.length()-mSeptData.length()));
 				}
 			}
 			while(true){
@@ -137,14 +137,14 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 					if(lngFindNum >= 0){
 						//## ESC文字対応 ##
 						if(lngFindNum > 0 && subStr2.substring(lngFindNum-1,lngFindNum).equals(mEscapeString)){
-							subStr1 = new StringBuffer(subStr1.append(subStr2.substring(0,lngFindNum-1).toString()).toString());
+							subStr1 = new StringBuilder(subStr1.append(subStr2.substring(0,lngFindNum-1).toString()).toString());
 							subStr1.append(mSeptData);
 							final String postStr = subStr2.substring(lngFindNum+mSeptData.length());
 							if(postStr.indexOf(mSeptData) != -1){
-								subStr2 = new StringBuffer(postStr);
+								subStr2 = new StringBuilder(postStr);
 							}else{
 								subStr1.append(postStr);
-								subStr2 = new StringBuffer(C_NONE);
+								subStr2 = new StringBuilder(C_NONE);
 							}
 							continue;
 						} else{
@@ -153,14 +153,14 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 
 					// 1文字目に発見した場合
 					} else {
-						subStr1 = new StringBuffer(C_NONE);
+						subStr1 = new StringBuilder(C_NONE);
 					}
 					// 次の検索位置までシークする。
 					String tmp = StringOperator.replaceString(subStr1.toString(),ESP_STR, mEscapeString) ;
 					super.add(tmp) ;
 					lngMindNum= 0 ;
-					subStr2 = new StringBuffer(subStr2.substring(lngFindNum+mSeptData.length()));
-					subStr1 = new StringBuffer(C_NONE) ;
+					subStr2 = new StringBuilder(subStr2.substring(lngFindNum+mSeptData.length()));
+					subStr1 = new StringBuilder(C_NONE) ;
 				}
 			}
 		}
@@ -287,7 +287,7 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	 *	@param		int			現在のindex
 	 */
 	private int _getQuotedData(String strInData, int index) {
-		StringBuffer buf = new StringBuffer();
+		StringBuilder buf = new StringBuilder();
 		while (true) {
 			int begin = index;
 			index = strInData.indexOf('\"', index);
@@ -324,7 +324,7 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	 *	@return		String		合成文字列
 	 */
 	private String _joinString() {
-		StringBuffer mngBuf = new StringBuffer() ;
+		StringBuilder mngBuf = new StringBuilder() ;
 		for( ListIterator iterator = super.listIterator(); iterator.hasNext();) {
 			String tmpBuf = (String)iterator.next() ;
 			tmpBuf = StringOperator.replaceString(tmpBuf,mEscapeString,mEscapeString+mEscapeString );
@@ -334,7 +334,7 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 		//最終デミリター削除
 		if(mAddDemiliter==false){
 			if( mngBuf.length() > mSeptData.length()){
-				mngBuf = new StringBuffer(mngBuf.toString().substring(0,mngBuf.length() - mSeptData.length())) ;
+				mngBuf = new StringBuilder(mngBuf.toString().substring(0,mngBuf.length() - mSeptData.length())) ;
 			}
 		}
 		return mngBuf.toString() ;

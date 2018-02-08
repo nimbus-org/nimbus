@@ -123,7 +123,7 @@ public abstract class PropertyMetaData extends MetaData
         }
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(getTagName())
            .append(" name=\"").append(name)

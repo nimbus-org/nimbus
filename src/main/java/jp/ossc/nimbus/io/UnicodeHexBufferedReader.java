@@ -142,7 +142,7 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
         String str = null;
         if(unicodeStr != null){
             final int len = unicodeStr.length();
-            final StringBuffer buf = new StringBuffer(len*6);
+            final StringBuilder buf = new StringBuilder(len*6);
             for(int i = 0;i<len;i++){
                 convertUnicode(unicodeStr.charAt(i), buf);
             }
@@ -158,7 +158,7 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
      * @return 16進表現ユニコード文字列
      */
     public static String convertUnicode(char unicodeChar){
-        return convertUnicode(unicodeChar, new StringBuffer(6)).toString();
+        return convertUnicode(unicodeChar, new StringBuilder(6)).toString();
     }
     
     /**
@@ -168,7 +168,7 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
      * @param buf 文字列バッファ
      * @return 16進表現ユニコード文字列
      */
-    public static StringBuffer convertUnicode(char unicodeChar, StringBuffer buf){
+    public static StringBuilder convertUnicode(char unicodeChar, StringBuilder buf){
         char c = unicodeChar;
         buf.append('\\');
         buf.append('u');
@@ -246,7 +246,7 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
         if(unicodeAry != null){
             char c;
             int len = unicodeAry.length();
-            StringBuffer buf = new StringBuffer(len);
+            StringBuilder buf = new StringBuilder(len);
             for(int i = 0;i<len;){
                 //文字列を切り取る
                 c = unicodeAry.charAt(i++);

@@ -820,7 +820,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     public void garbage(){}
     
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
         buf.append("id=").append(id);

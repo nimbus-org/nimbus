@@ -317,7 +317,7 @@ public class OneWriteFileMessageWriterService extends ServiceBase
             }
             boolean isEscape = false;
             boolean isKey = false;
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             for(int i = 0, max = val.length(); i < max; i++){
                 final char c = val.charAt(i);
                 switch(c){
@@ -372,7 +372,7 @@ public class OneWriteFileMessageWriterService extends ServiceBase
         }
 
         public String toString(WritableRecord rec){
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             final Iterator elements = fileNameElements.iterator();
             while(elements.hasNext()){
                 buf.append(((FileNameElement)elements.next()).toString(rec));

@@ -70,11 +70,11 @@ public class ServletResponseCSVJournalEditorService
                 
                 private static final long serialVersionUID = -7575191743363439054L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     ServletResponse response,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeBufferSizeFormat(finder, key, response, buf);
                 }
@@ -86,11 +86,11 @@ public class ServletResponseCSVJournalEditorService
                 
                 private static final long serialVersionUID = 6592097705683445383L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     ServletResponse response,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeCharacterEncodingFormat(
                         finder,
@@ -107,11 +107,11 @@ public class ServletResponseCSVJournalEditorService
                 
                 private static final long serialVersionUID = -603014377797799829L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     ServletResponse response,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeContentTypeFormat(finder, key, response, buf);
                 }
@@ -123,11 +123,11 @@ public class ServletResponseCSVJournalEditorService
                 
                 private static final long serialVersionUID = 8621678035553948526L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     ServletResponse response,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeLocaleFormat(finder, key, response, buf);
                 }
@@ -139,11 +139,11 @@ public class ServletResponseCSVJournalEditorService
                 
                 private static final long serialVersionUID = -3783827994145082331L;
                 
-                protected StringBuffer toString(
+                protected StringBuilder toString(
                     EditorFinder finder,
                     Object key,
                     ServletResponse response,
-                    StringBuffer buf
+                    StringBuilder buf
                 ){
                     return makeIsCommittedFormat(finder, key, response, buf);
                 }
@@ -159,8 +159,8 @@ public class ServletResponseCSVJournalEditorService
         private static final long serialVersionUID = -8948291176875732196L;
         
         public String toString(EditorFinder finder, Object key, Object value){
-            final StringBuffer buf
-                 = new StringBuffer(super.toString(finder, key, value));
+            final StringBuilder buf
+                 = new StringBuilder(super.toString(finder, key, value));
             return toString(
                 finder,
                 key,
@@ -168,11 +168,11 @@ public class ServletResponseCSVJournalEditorService
                 buf
             ).toString();
         }
-        protected abstract StringBuffer toString(
+        protected abstract StringBuilder toString(
             EditorFinder finder,
             Object key,
             ServletResponse response,
-            StringBuffer buf
+            StringBuilder buf
         );
     }
     
@@ -215,38 +215,38 @@ public class ServletResponseCSVJournalEditorService
         }
     }
     
-    protected StringBuffer makeBufferSizeFormat(
+    protected StringBuilder makeBufferSizeFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(response.getBufferSize());
     }
     
-    protected StringBuffer makeCharacterEncodingFormat(
+    protected StringBuilder makeCharacterEncodingFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(response.getCharacterEncoding());
     }
     
-    protected StringBuffer makeContentTypeFormat(
+    protected StringBuilder makeContentTypeFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(response.getContentType());
     }
     
-    protected StringBuffer makeLocaleFormat(
+    protected StringBuilder makeLocaleFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuffer buf
+        StringBuilder buf
     ){
         makeObjectFormat(
             finder,
@@ -257,11 +257,11 @@ public class ServletResponseCSVJournalEditorService
         return buf;
     }
     
-    protected StringBuffer makeIsCommittedFormat(
+    protected StringBuilder makeIsCommittedFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(response.isCommitted());
     }

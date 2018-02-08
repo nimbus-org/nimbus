@@ -2236,7 +2236,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(super.toString());
+            StringBuilder buf = new StringBuilder(super.toString());
             buf.append('{');
             buf.append("type=").append(type);
             buf.append(", value=").append(value);
@@ -2402,7 +2402,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             DistributeInfo[] infos = (DistributeInfo[])distributeInfos.values().toArray(new DistributeInfo[distributeInfos.size()]);
             for(int i = 0, imax = infos.length; i < imax; i++){
                 buf.append(infos[i].getId()).append(',');

@@ -350,7 +350,7 @@ public class MessageRecordFactoryService extends ServiceBase
     private void loadDirByLocale(Locale lo, String dirPath)
      throws IOException, MessageRecordParseException{
         //language1 + "_" + country1 + "_" + variant1 
-        StringBuffer propKey = new StringBuffer(dirPath);
+        StringBuilder propKey = new StringBuilder(dirPath);
         propKey.append(C_SLUSH).append(lo.getLanguage())
             .append(C_UNDER_SCORE).append(lo.getCountry())
             .append(C_UNDER_SCORE).append(lo.getVariant());
@@ -470,7 +470,7 @@ public class MessageRecordFactoryService extends ServiceBase
      */
     private void loadClassPathByLocale(Locale lo, String defFileName)
      throws IOException, MessageRecordParseException{
-        StringBuffer propKey = new StringBuffer();
+        StringBuilder propKey = new StringBuilder();
         //language1 + "_" + country1 + "_" + variant1 
         propKey.append(lo.getLanguage())
             .append(C_UNDER_SCORE).append(lo.getCountry())

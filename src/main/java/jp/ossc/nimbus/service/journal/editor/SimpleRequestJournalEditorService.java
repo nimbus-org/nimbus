@@ -142,11 +142,11 @@ public class SimpleRequestJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final RequestJournal request = (RequestJournal)value;
         if(isOutputSeparator() && request.isRoot()){
-            final StringBuffer subBuf = new StringBuffer();
+            final StringBuilder subBuf = new StringBuilder();
             makeSeparatorFormat(finder, key, request, subBuf);
             subBuf.append(getLineSeparator());
             buf.insert(0, subBuf.toString());
@@ -158,7 +158,7 @@ public class SimpleRequestJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final RequestJournal request = (RequestJournal)value;
         boolean isMake = false;
@@ -197,40 +197,40 @@ public class SimpleRequestJournalEditorService
         return isMake;
     }
     
-    protected StringBuffer makeSeparatorFormat(
+    protected StringBuilder makeSeparatorFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(separator);
     }
     
-    protected StringBuffer makeRequestIdFormat(
+    protected StringBuilder makeRequestIdFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(REQUEST_ID_HEADER)
             .append(request.getRequestId());
     }
     
-    protected StringBuffer makeStartTimeFormat(
+    protected StringBuilder makeStartTimeFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(START_TIME_HEADER);
         return makeObjectFormat(finder, null, request.getStartTime(), buf);
     }
     
-    protected StringBuffer makeRecordsFormat(
+    protected StringBuilder makeRecordsFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(RECORDS_HEADER);
         JournalRecord[] records = request.getParamAry();
@@ -240,7 +240,7 @@ public class SimpleRequestJournalEditorService
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuffer subBuf = new StringBuffer();
+        final StringBuilder subBuf = new StringBuilder();
         if(outputRecordKeys == null){
             makeRecordsFormat(finder, records, subBuf);
         }else{
@@ -258,10 +258,10 @@ public class SimpleRequestJournalEditorService
         return buf.append(subBuf);
     }
     
-    protected StringBuffer makeRecordsFormat(
+    protected StringBuilder makeRecordsFormat(
         EditorFinder finder,
         JournalRecord[] records,
-        StringBuffer buf
+        StringBuilder buf
     ){
         for(int i = 0, max = records.length; i < max; i++){
             buf.append(records[i].getKey());
@@ -274,21 +274,21 @@ public class SimpleRequestJournalEditorService
         return buf;
     }
     
-    protected StringBuffer makeEndTimeFormat(
+    protected StringBuilder makeEndTimeFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(END_TIME_HEADER);
         return makeObjectFormat(finder, null, request.getEndTime(), buf);
     }
     
-    protected StringBuffer makePerformanceFormat(
+    protected StringBuilder makePerformanceFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(PERFORMANCE_HEADER)
             .append(request.getPerformance()).append(PERFORMANCE_UNIT);

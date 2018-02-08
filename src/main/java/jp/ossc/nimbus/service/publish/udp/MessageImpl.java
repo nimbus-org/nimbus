@@ -283,7 +283,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", isFirst=").append(isFirst);

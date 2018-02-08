@@ -260,7 +260,7 @@ public class BeanFlowConverterService extends ServiceBase
             boolean keyFlg = false;
             
             String beforeToken = null;
-            StringBuffer condBuf = new StringBuffer();
+            StringBuilder condBuf = new StringBuilder();
             
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

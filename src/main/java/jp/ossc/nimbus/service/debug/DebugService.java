@@ -387,7 +387,7 @@ implements Debug , DebugServiceMBean
      * 
      */
 	private String getParameterStrings(Object[] params){
-		final StringBuffer buff = new StringBuffer();
+		final StringBuilder buff = new StringBuilder();
 		if( params == null ) {
 			buff.append(params);
 			return buff.toString();

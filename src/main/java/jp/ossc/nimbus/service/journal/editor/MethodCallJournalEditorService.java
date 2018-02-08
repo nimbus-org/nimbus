@@ -68,7 +68,7 @@ public class MethodCallJournalEditorService extends BlockJournalEditorServiceBas
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final MethodCallJournalData methodCallJournal
              = (MethodCallJournalData)value;

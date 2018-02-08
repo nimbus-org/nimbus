@@ -50,7 +50,7 @@ public class StringOperator {
 	 */
 	public static String makeSpace(int spaceNum)	{
 		//## 返り値初期化 ##
-		StringBuffer strRet = new StringBuffer() ;
+		StringBuilder strRet = new StringBuilder() ;
 		int rCnt;
 		//## 文字列作成 ##
 		for(rCnt=0; rCnt<spaceNum;rCnt++){
@@ -68,7 +68,7 @@ public class StringOperator {
 	 */
 	public static String makeString(String strElement,int strNum){
 		//## 返り値初期化 ##
-		StringBuffer strRet = new StringBuffer() ;
+		StringBuilder strRet = new StringBuilder() ;
 		int rCnt;
 		//## 文字列作成 ##
 		for(rCnt=0; rCnt<strNum;rCnt++){
@@ -80,7 +80,7 @@ public class StringOperator {
 	
 	public static String replaceString(String inDataBuff, String targetChr, Object replace){
 		//## ローカル宣言 ##
-		StringBuffer strRet = new StringBuffer();
+		StringBuilder strRet = new StringBuilder();
 		String inStr = new String(inDataBuff);
 		int lngFindNum ;
 		int lngStartCnt ;
@@ -275,7 +275,7 @@ public class StringOperator {
 	 *	@return		削除した文字列
 	 */
 	public static String trimSpace (String getData) {
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = getData.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
@@ -313,7 +313,7 @@ public class StringOperator {
 	 */
 	public static String trimSpace (String getData,int dummy) {
 		String removeStr = removeReturn(getData) ;
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
@@ -349,7 +349,7 @@ public class StringOperator {
 	 *	@return		削除した文字列
 	 */
 	public static String trimNeedlessChara (String getData) {
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = getData.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
@@ -400,7 +400,7 @@ public class StringOperator {
 	 */
 	public static String trimNeedlessChara (String getData,int dummy) {
 		String removeStr = removeReturn(getData) ;
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
@@ -452,7 +452,7 @@ public class StringOperator {
 	 */
 	public static String trimNeedlessChara2 (String getData) {
 		String removeStr = removeReturn(getData) ;
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
@@ -501,7 +501,7 @@ public class StringOperator {
 	 *	@return		削除した文字列
 	 */
 	public static String trimNeedless (String getData) {
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = getData.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
@@ -556,7 +556,7 @@ public class StringOperator {
 	 */
 	public static String removeNeedlessChara (String getData) {
 		String removeStr = removeReturn(getData) ;
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int i=0 ; i < cValtmp.length ; i++) {
 			if(cValtmp[i]!='　' 
@@ -597,7 +597,7 @@ public class StringOperator {
 	 */
 	public static String removeNeedlessChara (String getData,int dummy) {
 		String removeStr = removeReturn(getData) ;
-		StringBuffer retBuff = new StringBuffer() ;
+		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int i=0 ; i < cValtmp.length ; i++) {
 			if(cValtmp[i]!='　' 
@@ -665,7 +665,7 @@ public class StringOperator {
 			return argStr;
 		}
 		// 返却文字列
-		StringBuffer retStr = new StringBuffer();
+		StringBuilder retStr = new StringBuilder();
 		// 作業用文字列
 		String targetStr = argStr;
 		int begine = 0;

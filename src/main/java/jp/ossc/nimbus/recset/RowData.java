@@ -170,7 +170,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	    if(colIndexes == null || colIndexes.length == 0){
 	        return getKey();
 	    }
-		StringBuffer ret = new StringBuffer();
+		StringBuilder ret = new StringBuilder();
 		RowSchema rscm = this.getRowSchema() ;
 		for (int i = 0; i < colIndexes.length; i++) {
 			FieldSchema csm = rscm.get(colIndexes[i]) ;
@@ -299,7 +299,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	 * ユニークKEYを生成します。
 	 */
 	public void makeUniqueKey() {
-		StringBuffer ret = new StringBuffer();
+		StringBuilder ret = new StringBuilder();
 		RowSchema rscm = this.getRowSchema() ;
 		for (int rcnt = 0, max = rscm.getUniqueKeySize(); rcnt < max; rcnt++) {
 			FieldSchema csm = rscm.getUniqueFieldSchema(rcnt) ;
@@ -343,7 +343,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
         }
         FieldSchema field = mRowSchema.get(name);
         if(field == null){
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             for(int i = 0, imax = mRowSchema.size(); i < imax; i++){
                 buf.append(mRowSchema.get(i).getFieldName());
                 if(i != imax - 1){

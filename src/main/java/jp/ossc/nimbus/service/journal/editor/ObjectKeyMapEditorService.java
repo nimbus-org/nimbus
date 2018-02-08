@@ -62,7 +62,7 @@ implements ObjectKeyMapEditorServiceMBean, Serializable{
 		if(values == null){
 			return NULL_STRING;
 		}
-		final StringBuffer buf = new StringBuffer();
+		final StringBuilder buf = new StringBuilder();
         
 		buf.append(OPEN_BRACKET).append(key).append(ELEMENT_EQUALS);
 		for(int i = 0; i < values.length; i++){
@@ -86,7 +86,7 @@ implements ObjectKeyMapEditorServiceMBean, Serializable{
             final Object obj = editor.toObject(finder, key, value);
             return obj != null ? obj.toString() : null;
 		}else{
-			final StringBuffer buf = new StringBuffer();
+			final StringBuilder buf = new StringBuilder();
 			if(key!=null && !ELEMENT_NOP.equals(key)){
 				buf.append(key) ;
 			}

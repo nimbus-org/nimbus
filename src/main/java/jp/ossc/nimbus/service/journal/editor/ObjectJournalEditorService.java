@@ -60,7 +60,7 @@ public class ObjectJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         if(value == null){
             return NULL_STRING;
@@ -81,7 +81,7 @@ public class ObjectJournalEditorService
         EditorFinder finder,
         Object key,
         Object values,
-        StringBuffer buf
+        StringBuilder buf
     ){
         if(values == null){
             return NULL_STRING;

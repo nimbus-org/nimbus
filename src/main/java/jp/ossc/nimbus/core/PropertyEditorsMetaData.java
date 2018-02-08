@@ -208,12 +208,12 @@ public class PropertyEditorsMetaData extends MetaData
         }
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append(LINE_SEPARATOR);
         buf.append('<').append(PROPERTY_EDITORS_TAG_NAME).append('>');
         buf.append(LINE_SEPARATOR);
-        final StringBuffer subBuf = new StringBuffer();
+        final StringBuilder subBuf = new StringBuilder();
         final Iterator propDatas = propertyEditors.values().iterator();
         while(propDatas.hasNext()){
             final PropertyEditorMetaData propData = (PropertyEditorMetaData)propDatas.next();
@@ -227,7 +227,7 @@ public class PropertyEditorsMetaData extends MetaData
             for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
                 IfDefMetaData ifdefData = (IfDefMetaData)ifDefMetaDataList.get(i);
                 buf.append(
-                    addIndent(ifdefData.toXML(new StringBuffer()))
+                    addIndent(ifdefData.toXML(new StringBuilder()))
                 );
                 if(i != imax - 1){
                     buf.append(LINE_SEPARATOR);

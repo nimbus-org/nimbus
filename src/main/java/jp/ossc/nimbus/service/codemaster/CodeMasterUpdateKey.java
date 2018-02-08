@@ -381,7 +381,7 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuffer buf = new StringBuffer(super.toString());
+        final StringBuilder buf = new StringBuilder(super.toString());
         buf.append('{');
         buf.append("keyMap=").append(keyMap);
         buf.append(", updateType=");

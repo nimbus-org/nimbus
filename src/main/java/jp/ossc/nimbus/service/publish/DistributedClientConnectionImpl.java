@@ -509,7 +509,7 @@ public class DistributedClientConnectionImpl implements ClientConnection, Serial
     }
     
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
         buf.append("id=").append(id);

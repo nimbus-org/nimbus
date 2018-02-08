@@ -300,7 +300,7 @@ public class PaddingStringConverter
              || (str != null && countLength(str) >= paddingLength)){
             return str;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         if(str != null){
             buf.append(str);
         }
@@ -315,7 +315,7 @@ public class PaddingStringConverter
         }
     }
     
-    protected StringBuffer paddingCenter(StringBuffer buf)
+    protected StringBuilder paddingCenter(StringBuilder buf)
      throws ConvertException{
         int length = countLength(buf);
         int cnter = (paddingLength - length) / 2;
@@ -329,7 +329,7 @@ public class PaddingStringConverter
         return buf;
     }
     
-    protected StringBuffer paddingRight(StringBuffer buf)
+    protected StringBuilder paddingRight(StringBuilder buf)
      throws ConvertException{
         int length = countLength(buf);
         for(int i = paddingLength - length; --i >= 0;){
@@ -338,7 +338,7 @@ public class PaddingStringConverter
         return buf;
     }
     
-    protected StringBuffer paddingLeft(StringBuffer buf)
+    protected StringBuilder paddingLeft(StringBuilder buf)
      throws ConvertException{
         int length = countLength(buf);
         for(int i = paddingLength - length; --i >= 0;){
@@ -355,7 +355,7 @@ public class PaddingStringConverter
      * @exception ConvertException ÉpÅ[ÉXÇ…é∏îsÇµÇΩèÍçá
      */
     public String parse(String str) throws ConvertException{
-        final StringBuffer buf = new StringBuffer(str);
+        final StringBuilder buf = new StringBuilder(str);
         switch(paddingDirection){
         case DIRECTION_CENTER:
             return parseCenter(buf).toString();
@@ -367,7 +367,7 @@ public class PaddingStringConverter
         }
     }
     
-    protected StringBuffer parseCenter(StringBuffer buf)
+    protected StringBuilder parseCenter(StringBuilder buf)
      throws ConvertException{
         int startIndex = -1;
         int length = countLength(buf);
@@ -400,7 +400,7 @@ public class PaddingStringConverter
         return buf;
     }
     
-    protected StringBuffer parseRight(StringBuffer buf)
+    protected StringBuilder parseRight(StringBuilder buf)
      throws ConvertException{
         int startIndex = -1;
         int length = countLength(buf);
@@ -419,7 +419,7 @@ public class PaddingStringConverter
         return buf;
     }
     
-    protected StringBuffer parseLeft(StringBuffer buf)
+    protected StringBuilder parseLeft(StringBuilder buf)
      throws ConvertException{
         int endIndex = -1;
         int length = countLength(buf);

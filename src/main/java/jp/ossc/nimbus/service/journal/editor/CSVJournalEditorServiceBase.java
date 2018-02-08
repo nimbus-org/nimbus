@@ -114,7 +114,7 @@ public abstract class CSVJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final List oldElements = replaceNewCSVElements();
         processCSV(finder, key, value);
@@ -134,11 +134,11 @@ public abstract class CSVJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final List elements = (List)csvElements.get();
         if(elements != null){
-            final StringBuffer tmpBuf = new StringBuffer();
+            final StringBuilder tmpBuf = new StringBuilder();
             final Iterator values = elements.iterator();
             while(values.hasNext()){
                 final Object val = values.next();
@@ -156,7 +156,7 @@ public abstract class CSVJournalEditorServiceBase
         }
     }
     
-    protected StringBuffer enclose(JournalEditor editor, StringBuffer buf){
+    protected StringBuilder enclose(JournalEditor editor, StringBuilder buf){
         if(buf == null){
             return null;
         }
@@ -175,7 +175,7 @@ public abstract class CSVJournalEditorServiceBase
         return CSV_ENCLOSE_CHAR + str + CSV_ENCLOSE_CHAR;
     }
     
-    protected StringBuffer escape(JournalEditor editor, StringBuffer buf){
+    protected StringBuilder escape(JournalEditor editor, StringBuilder buf){
         if(buf == null){
             return null;
         }
@@ -201,7 +201,7 @@ public abstract class CSVJournalEditorServiceBase
         if(editor != null && editor instanceof CSVJournalEditorServiceBase){
             return str;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0; i < length; i++){
             final char c = str.charAt(i);
             switch(c){

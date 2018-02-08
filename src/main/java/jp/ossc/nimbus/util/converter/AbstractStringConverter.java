@@ -183,7 +183,7 @@ public abstract class AbstractStringConverter
         String result = str;
         final String[][] convertStrings = getConvertStrings();
         if(convertStrings != null){
-            final StringBuffer buf = new StringBuffer(result);
+            final StringBuilder buf = new StringBuilder(result);
             boolean isReplace = false;
             for(int i = 0; i < convertStrings.length; i++){
                 int length = convertStrings[i][from].length();

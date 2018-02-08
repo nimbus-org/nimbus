@@ -170,7 +170,7 @@ public class InterpolateResponseMessage extends ServerMessage{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.append('{');
         buf.append("windows=").append(windows);
         buf.append(", windowsByMessageId=").append(windowsByMessageId);

@@ -229,7 +229,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
      * @param filedSchemata フィールドスキーマ文字列の配列
      */
     public void initFieldSchemata(String[] filedSchemata){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for(int i = 0; i < filedSchemata.length; i++){
             buf.append(filedSchemata[i]);
             if(i != filedSchemata.length - 1){

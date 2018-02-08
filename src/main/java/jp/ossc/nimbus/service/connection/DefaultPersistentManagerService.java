@@ -153,22 +153,22 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     public Object loadQuery(Connection con, String query, Object input, Object output, Map statementProps, Map resultSetProps) throws PersistentException{
-        final StringBuffer buf = new StringBuffer(query);
+        final StringBuilder buf = new StringBuilder(query);
         final List inputProps = parseInput(buf);
         final List outputProps = parseOutput(buf);
         String sql = buf.toString();
         return load(con, sql, input, inputProps, output, outputProps, statementProps, resultSetProps);
     }
     
-    private List parseInput(StringBuffer query) throws PersistentException{
+    private List parseInput(StringBuilder query) throws PersistentException{
         return (List)parseQuery(query, "<-{", false);
     }
     
-    private List parseOutput(StringBuffer query) throws PersistentException{
+    private List parseOutput(StringBuilder query) throws PersistentException{
         return parseQuery(query, "->{", true);
     }
     
-    private List parseQuery(StringBuffer query, String prefix, boolean isSet) throws PersistentException{
+    private List parseQuery(StringBuilder query, String prefix, boolean isSet) throws PersistentException{
         Collection result = null;
         while(true){
             int startIndex = query.indexOf(prefix);
@@ -1126,7 +1126,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     
     private String createSchema(ResultSetMetaData metadata) throws SQLException{
         final int colCount = metadata.getColumnCount();
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 1; i <= colCount; i++){
             final Class type = (Class)resultSetJDBCTypeMap
                 .get(new Integer(metadata.getColumnType(i)));
@@ -1148,7 +1148,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     public Cursor createQueryCursor(Connection con, String query, Object input, Map statementProps, Map resultSetProps) throws PersistentException{
-        final StringBuffer buf = new StringBuffer(query);
+        final StringBuilder buf = new StringBuilder(query);
         final List inputProps = parseInput(buf);
         final List outputProps = parseOutput(buf);
         String sql = buf.toString();
@@ -1287,7 +1287,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     public int persistQuery(Connection con, String query, Object input, Map statementProps) throws PersistentException{
-        final StringBuffer buf = new StringBuffer(query);
+        final StringBuilder buf = new StringBuilder(query);
         final List inputProps = parseInput(buf);
         String sql = buf.toString();
         return persist(con, sql, input, inputProps, statementProps);
@@ -1701,7 +1701,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     public BatchExecutor createQueryBatchExecutor(Connection con, String query, Map statementProps) throws PersistentException{
-        final StringBuffer buf = new StringBuffer(query);
+        final StringBuilder buf = new StringBuilder(query);
         final List inputProps = parseInput(buf);
         String sql = buf.toString();
         return new BatchExecutorImpl(con, sql, inputProps, statementProps);

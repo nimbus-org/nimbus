@@ -50,7 +50,7 @@ public class RESTPutHttpRequestImpl extends PutHttpRequestImpl implements RESTHt
      * @param key リソースを特定するキー
      */
     public void addKey(String key){
-        StringBuffer buf = new StringBuffer(url);
+        StringBuilder buf = new StringBuilder(url);
         if(url.length() != 0 && url.charAt(url.length() - 1) != '/'){
             buf.append('/');
         }
@@ -61,7 +61,7 @@ public class RESTPutHttpRequestImpl extends PutHttpRequestImpl implements RESTHt
     public void setKey(String name, String value){
         Pattern p = Pattern.compile("\\{.+?\\}");
         Matcher m = p.matcher(url);
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         int offset = 0;
         while(m.find()){
             buf.append(url.substring(offset, m.start()));

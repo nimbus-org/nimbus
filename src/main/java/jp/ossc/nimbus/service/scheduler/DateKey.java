@@ -278,7 +278,7 @@ public class DateKey{
                     token = (String)tokens.next();
                     curCond = new DayCondition(token);
                 }else if(OPEN.equals(token)){
-                    final StringBuffer buf = new StringBuffer();
+                    final StringBuilder buf = new StringBuilder();
                     int tmpIndex = index;
                     while(!(token = (String)tokens.next()).equals(CLOSE)){
                         index += token.length();

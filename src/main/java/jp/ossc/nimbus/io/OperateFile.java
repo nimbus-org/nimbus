@@ -292,7 +292,7 @@ public class OperateFile extends File implements Serializable{
             while(!isEOF){
                 if(readedSize == -1){
                     //コピーファイル名作成
-                    final StringBuffer fileName = new StringBuffer(tmpPrefix);
+                    final StringBuilder fileName = new StringBuilder(tmpPrefix);
                     fileName.append(index);
                     if(tmpSuffix != null){
                         fileName.append(tmpSuffix);

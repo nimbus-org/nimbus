@@ -782,7 +782,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         TestScenarioGroup group = testController.getCurrentScenarioGroup();
         TestScenario scenario = testController.getCurrentScenario();
         TestCase testcase = testController.getCurrentTestCase();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
         if(group != null){
             sb.append("ScenarioGroup=" + group.getScenarioGroupId());

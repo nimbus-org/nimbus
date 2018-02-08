@@ -259,7 +259,7 @@ public class RecordListCodeMasterConverter implements CodeMasterConverter{
         public String[] orderBy;
         public boolean[] isAsc;
         public String toString(){
-            StringBuffer buf = new StringBuffer("DynamicConditionReal{");
+            StringBuilder buf = new StringBuilder("DynamicConditionReal{");
             buf.append("condition=").append(condition);
             buf.append(", valueMap=").append(valueMap);
             buf.append(", orderBy=");
@@ -300,7 +300,7 @@ public class RecordListCodeMasterConverter implements CodeMasterConverter{
         public String[] orderBy;
         public boolean[] isAsc;
         public String toString(){
-            StringBuffer buf = new StringBuffer("DynamicKey{");
+            StringBuilder buf = new StringBuilder("DynamicKey{");
             buf.append("conditionName=").append(conditionName);
             buf.append(", keyMap=").append(keyMap);
             buf.append(", keyRecord=");
@@ -353,7 +353,7 @@ public class RecordListCodeMasterConverter implements CodeMasterConverter{
         public Map keyMap;
         public Record keyRecord;
         public String toString(){
-            StringBuffer buf = new StringBuffer("Key{");
+            StringBuilder buf = new StringBuilder("Key{");
             buf.append("key=").append(key);
             buf.append(", keyMap=").append(keyMap);
             buf.append(", keyRecord=");

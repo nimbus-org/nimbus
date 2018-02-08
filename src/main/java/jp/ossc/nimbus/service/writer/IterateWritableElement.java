@@ -111,7 +111,7 @@ public class IterateWritableElement implements WritableElement, java.io.Serializ
         if(elements == null || elements.size() == 0){
             return null;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0, max = elements.size(); i < max; i++){
             buf.append(elements.get(i));
         }

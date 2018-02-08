@@ -318,7 +318,7 @@ public class DelayQueueService extends DefaultQueueService
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(super.toString());
+            StringBuilder buf = new StringBuilder(super.toString());
             buf.append('{');
             buf.append("raw=").append(rawElement);
             buf.append(",time=").append(pushTime);

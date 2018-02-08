@@ -101,7 +101,7 @@ public class DynaPropertyJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final DynaProperty prop = (DynaProperty)value;
         boolean isMake = false;
@@ -136,40 +136,40 @@ public class DynaPropertyJournalEditorService
         return isMake;
     }
     
-    protected StringBuffer makeNameFormat(
+    protected StringBuilder makeNameFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(NAME_HEADER).append(prop.getName());
     }
     
-    protected StringBuffer makeTypeFormat(
+    protected StringBuilder makeTypeFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(TYPE_HEADER);
         makeObjectFormat(finder, null, prop.getType(), buf);
         return buf;
     }
     
-    protected StringBuffer makeIsIndexedFormat(
+    protected StringBuilder makeIsIndexedFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(IS_INDEXED_HEADER).append(prop.isIndexed());
     }
     
-    protected StringBuffer makeIsMappedFormat(
+    protected StringBuilder makeIsMappedFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(IS_MAPPED_HEADER).append(prop.isMapped());
     }

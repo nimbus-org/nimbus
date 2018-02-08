@@ -32,6 +32,8 @@
 package jp.ossc.nimbus.service.context;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.InvocationTargetException;
 
 import jp.ossc.nimbus.beans.*;
@@ -158,9 +160,9 @@ public class SharedContextService extends DefaultContextService
     protected boolean isWaitConnectAllOnStart = false;
     protected long waitConnectTimeout = 60000l;
     
-    protected Map keyLockMap;
-    protected Map idLocksMap;
-    protected Map clientCacheLockMap;
+    protected ConcurrentMap keyLockMap;
+    protected ConcurrentMap idLocksMap;
+    protected ConcurrentMap clientCacheLockMap;
     protected Message targetMessage;
     protected Message allTargetMessage;
     protected List updateListeners;
@@ -469,9 +471,9 @@ public class SharedContextService extends DefaultContextService
      */
     public void createService() throws Exception{
         super.createService();
-        keyLockMap = Collections.synchronizedMap(new HashMap());
-        idLocksMap = Collections.synchronizedMap(new HashMap());
-        clientCacheLockMap = Collections.synchronizedMap(new HashMap());
+        keyLockMap = new ConcurrentHashMap();
+        idLocksMap = new ConcurrentHashMap();
+        clientCacheLockMap = new ConcurrentHashMap();
         indexManager = new SharedContextIndexManager();
     }
     
@@ -632,23 +634,6 @@ public class SharedContextService extends DefaultContextService
         executeQueueHandlerContainer = null;
         resetCacheHitRatio();
         super.stopService();
-    }
-    
-    /**
-     * サービスの破棄処理を行う。<p>
-     * インスタンス変数を破棄する。<br>
-     *
-     * @exception Exception サービスの破棄処理に失敗した場合
-     */
-    public void destroyService() throws Exception{
-        if(keyLockMap != null){
-            synchronized(keyLockMap){
-                keyLockMap = null;
-            }
-        }
-        idLocksMap = null;
-        clientCacheLockMap = null;
-        super.destroyService();
     }
     
     public synchronized void load() throws Exception{
@@ -1091,12 +1076,12 @@ public class SharedContextService extends DefaultContextService
     
     public boolean lock(Object key, boolean ifAcquireable, boolean ifExist,long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         final Object id = cluster.getUID();
-        Lock lock = null;
-        synchronized(keyLockMap){
-            lock = (Lock)keyLockMap.get(key);
-            if(lock == null){
-                lock = new Lock(key);
-                keyLockMap.put(key, lock);
+        Lock lock = (Lock)keyLockMap.get(key);
+        if(lock == null){
+            lock = new Lock(key);
+            Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
+            if(old != null){
+                lock = old;
             }
         }
         Object lockedOwner = lock.getOwner();
@@ -1263,10 +1248,7 @@ public class SharedContextService extends DefaultContextService
     }
     
     public boolean unlock(Object key, boolean force) throws SharedContextSendException{
-        Lock lock = null;
-        synchronized(keyLockMap){
-            lock = (Lock)keyLockMap.get(key);
-        }
+        Lock lock = (Lock)keyLockMap.get(key);
         Object id = cluster.getUID();
         if(force && lock != null && lock.getOwner() != null){
             id = lock.getOwner();
@@ -1289,47 +1271,37 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected void unlockAll(){
-        synchronized(keyLockMap){
-            Object myId = cluster.getUID();
-            final Iterator entries = keyLockMap.entrySet().iterator();
-            while(entries.hasNext()){
-                Map.Entry entry = (Map.Entry)entries.next();
-                Object key = entry.getKey();
-                Lock lock = (Lock)entry.getValue();
-                Object owner = lock.getOwner();
-                if(owner == null || !owner.equals(myId)){
-                    continue;
-                }
-                try{
-                    unlock(key, true);
-                }catch(SharedContextSendException e){
-                    lock.release(myId, true);
-                }
+        Object myId = cluster.getUID();
+        final Iterator entries = keyLockMap.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            Object key = entry.getKey();
+            Lock lock = (Lock)entry.getValue();
+            Object owner = lock.getOwner();
+            if(owner == null || !owner.equals(myId)){
+                continue;
+            }
+            try{
+                unlock(key, true);
+            }catch(SharedContextSendException e){
+                lock.release(myId, true);
             }
         }
-        synchronized(clientCacheLockMap){
-            final Iterator locks = clientCacheLockMap.values().iterator();
-            while(locks.hasNext()){
-                ClientCacheLock lock = (ClientCacheLock)locks.next();
-                lock.notifyAllLock();
-            }
+        final Iterator locks = clientCacheLockMap.values().iterator();
+        while(locks.hasNext()){
+            ClientCacheLock lock = (ClientCacheLock)locks.next();
+            lock.notifyAllLock();
         }
         lockTimeoutTimer.cancel();
     }
     
     public Object getLockOwner(Object key){
-        Lock lock = null;
-        synchronized(keyLockMap){
-            lock = (Lock)keyLockMap.get(key);
-        }
+        Lock lock = (Lock)keyLockMap.get(key);
         return lock == null ? null : lock.getOwner();
     }
     
     public int getLockWaitCount(Object key){
-        Lock lock = null;
-        synchronized(keyLockMap){
-            lock = (Lock)keyLockMap.get(key);
-        }
+        Lock lock = (Lock)keyLockMap.get(key);
         return lock == null ? 0 : lock.getWaitCount();
     }
     
@@ -2549,14 +2521,16 @@ public class SharedContextService extends DefaultContextService
                 }else{
                     ClientCacheLock lock = null;
                     ClientCacheLock newLock = null;
-                    synchronized(clientCacheLockMap){
-                        lock = (ClientCacheLock)clientCacheLockMap.get(key);
-                        if(lock == null){
-                            newLock = new ClientCacheLock(key);
-                            clientCacheLockMap.put(key, newLock);
-                        }else{
-                            lock.init();
+                    lock = (ClientCacheLock)clientCacheLockMap.get(key);
+                    if(lock == null){
+                        newLock = new ClientCacheLock(key);
+                        ClientCacheLock old = (ClientCacheLock)clientCacheLockMap.putIfAbsent(key, newLock);
+                        if(old != null){
+                            lock = old;
+                            newLock = null;
                         }
+                    }else{
+                        lock.init();
                     }
                     if(lock != null){
                         final long start = System.currentTimeMillis();
@@ -2600,10 +2574,8 @@ public class SharedContextService extends DefaultContextService
                         }catch(RequestTimeoutException e){
                             throw new SharedContextTimeoutException(e);
                         }finally{
-                            synchronized(clientCacheLockMap){
-                                clientCacheLockMap.remove(key);
-                                newLock.notifyAllLock();
-                            }
+                            clientCacheLockMap.remove(key);
+                            newLock.notifyAllLock();
                         }
                     }
                 }
@@ -3209,12 +3181,9 @@ public class SharedContextService extends DefaultContextService
                     Iterator ids = deadMembers.iterator();
                     while(ids.hasNext()){
                         Object id = ids.next();
-                        Set keySet = null;
-                        synchronized(idLocksMap){
-                            keySet = (Set)idLocksMap.get(id);
-                            if(keySet == null || keySet.size() == 0){
-                                continue;
-                            }
+                        Set keySet = (Set)idLocksMap.get(id);
+                        if(keySet == null || keySet.size() == 0){
+                            continue;
                         }
                         Object[] keys = null;
                         synchronized(keySet){
@@ -3437,10 +3406,7 @@ public class SharedContextService extends DefaultContextService
                 old = super.put(event.key, wrapCachedReference(event.key, event.value));
                 old = unwrapCachedReference(old, false, true);
             }else if(clientCacheLockMap.containsKey(event.key)){
-                ClientCacheLock lock = null;
-                synchronized(clientCacheLockMap){
-                    lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
-                }
+                ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
                 if(lock != null){
                     synchronized(lock){
                         if(super.containsKey(event.key)){
@@ -3506,10 +3472,7 @@ public class SharedContextService extends DefaultContextService
                         old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                         old = unwrapCachedReference(old, false, true);
                     }else if(clientCacheLockMap.containsKey(entry.getKey())){
-                        ClientCacheLock lock = null;
-                        synchronized(clientCacheLockMap){
-                            lock = (ClientCacheLock)clientCacheLockMap.get(entry.getKey());
-                        }
+                        ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(entry.getKey());
                         if(lock != null){
                             synchronized(lock){
                                 if(super.containsKey(entry.getKey())){
@@ -3554,10 +3517,7 @@ public class SharedContextService extends DefaultContextService
                 old = super.put(event.key, wrapCachedReference(event.key, event.value));
                 old = unwrapCachedReference(old, false, true);
             }else if(clientCacheLockMap.containsKey(event.key)){
-                ClientCacheLock lock = null;
-                synchronized(clientCacheLockMap){
-                    lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
-                }
+                ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
                 if(lock != null){
                     synchronized(lock){
                         if(super.containsKey(event.key)){
@@ -3692,10 +3652,7 @@ public class SharedContextService extends DefaultContextService
                 return sourceId == null ? null : createResponseMessage(responseSubject, responseKey, e);
             }
         }else if(isClient && clientCacheLockMap.containsKey(event.key)){
-            ClientCacheLock lock = null;
-            synchronized(clientCacheLockMap){
-                lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
-            }
+            ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
             if(lock != null){
                 synchronized(lock){
                     if(super.containsKey(event.key)){
@@ -3766,10 +3723,7 @@ public class SharedContextService extends DefaultContextService
             }
         }
         if(isClient && clientCacheLockMap.containsKey(event.key)){
-            ClientCacheLock lock = null;
-            synchronized(clientCacheLockMap){
-                lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
-            }
+            ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
             if(lock != null){
                 synchronized(lock){
                     lock.remove();
@@ -3812,10 +3766,7 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             if(isClient && clientCacheLockMap.containsKey(keys[i])){
-                ClientCacheLock lock = null;
-                synchronized(clientCacheLockMap){
-                    lock = (ClientCacheLock)clientCacheLockMap.get(keys[i]);
-                }
+                ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(keys[i]);
                 if(lock != null){
                     synchronized(lock){
                         lock.remove();
@@ -3949,12 +3900,12 @@ public class SharedContextService extends DefaultContextService
             if(ifExist && !super.containsKey(event.key)){
                 return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
             }
-            Lock lock = null;
-            synchronized(keyLockMap){
-                lock = (Lock)keyLockMap.get(event.key);
-                if(lock == null){
-                    lock = new Lock(event.key);
-                    keyLockMap.put(event.key, lock);
+            Lock lock = (Lock)keyLockMap.get(event.key);
+            if(lock == null){
+                lock = new Lock(event.key);
+                Lock old = (Lock)keyLockMap.putIfAbsent(event.key, lock);
+                if(old != null){
+                    lock = old;
                 }
             }
             final long start = System.currentTimeMillis();
@@ -4070,12 +4021,12 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected Message onGotLock(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
-        Lock lock = null;
-        synchronized(keyLockMap){
-            lock = (Lock)keyLockMap.get(event.key);
-            if(lock == null){
-                lock = new Lock(event.key);
-                keyLockMap.put(event.key, lock);
+        Lock lock = (Lock)keyLockMap.get(event.key);
+        if(lock == null){
+            lock = new Lock(event.key);
+            Lock old = (Lock)keyLockMap.putIfAbsent(event.key, lock);
+            if(old != null){
+                lock = old;
             }
         }
         final Object[] params = (Object[])event.value;
@@ -4098,10 +4049,7 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected void onReleaseLock(SharedContextEvent event){
-        Lock lock = null;
-        synchronized(keyLockMap){
-            lock = (Lock)keyLockMap.get(event.key);
-        }
+        Lock lock = (Lock)keyLockMap.get(event.key);
         if(lock != null){
             lock.release(event.value, true);
         }
@@ -4551,7 +4499,7 @@ public class SharedContextService extends DefaultContextService
         }
         
         public String toString(){
-            StringBuffer buf = new StringBuffer(super.toString());
+            StringBuilder buf = new StringBuilder(super.toString());
             buf.append('{');
             buf.append("type=").append(type);
             buf.append(", key=").append(key);
@@ -4598,15 +4546,16 @@ public class SharedContextService extends DefaultContextService
                         owner = id;
                         ownerThread = Thread.currentThread();
                         ownerThreadId = ownerThread.getId();
-                        synchronized(idLocksMap){
-                            Set keySet = (Set)idLocksMap.get(id);
-                            if(keySet == null){
-                                keySet = new HashSet();
-                                idLocksMap.put(id, keySet);
+                        Set keySet = (Set)idLocksMap.get(id);
+                        if(keySet == null){
+                            keySet = new HashSet();
+                            Set old = (Set)idLocksMap.putIfAbsent(id, keySet);
+                            if(old != null){
+                                keySet = old;
                             }
-                            synchronized(keySet){
-                                keySet.add(key);
-                            }
+                        }
+                        synchronized(keySet){
+                            keySet.add(key);
                         }
                         return true;
                     }else if(id.equals(owner) && Thread.currentThread().equals(ownerThread)){
@@ -4690,15 +4639,16 @@ public class SharedContextService extends DefaultContextService
                             ownerThread = null;
                             ownerThreadId = threadId;
                         }
-                        synchronized(idLocksMap){
-                            Set keySet = (Set)idLocksMap.get(id);
-                            if(keySet == null){
-                                keySet = new HashSet();
-                                idLocksMap.put(id, keySet);
+                        Set keySet = (Set)idLocksMap.get(id);
+                        if(keySet == null){
+                            keySet = new HashSet();
+                            Set old = (Set)idLocksMap.putIfAbsent(id, keySet);
+                            if(old != null){
+                                keySet = old;
                             }
-                            synchronized(keySet){
-                                keySet.add(key);
-                            }
+                        }
+                        synchronized(keySet){
+                            keySet.add(key);
                         }
                         return true;
                     }else if(id.equals(owner)
@@ -4759,12 +4709,10 @@ public class SharedContextService extends DefaultContextService
                     ownerThreadId = -1;
                     result = true;
                 }
-                synchronized(idLocksMap){
-                    Set keySet = (Set)idLocksMap.get(id);
-                    if(keySet != null){
-                        synchronized(keySet){
-                            keySet.remove(key);
-                        }
+                Set keySet = (Set)idLocksMap.get(id);
+                if(keySet != null){
+                    synchronized(keySet){
+                        keySet.remove(key);
                     }
                 }
                 synchronized(callbacks){

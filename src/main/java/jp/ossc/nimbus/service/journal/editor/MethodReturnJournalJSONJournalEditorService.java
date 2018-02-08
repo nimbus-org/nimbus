@@ -44,7 +44,7 @@ public class MethodReturnJournalJSONJournalEditorService
     
     private static final long serialVersionUID = 1441185283721611004L;
     
-    protected StringBuffer appendUnknownValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
         if(!(value instanceof MethodReturnJournalData)){
             return super.appendUnknownValue(buf, finder, type, value);
         }
@@ -56,7 +56,7 @@ public class MethodReturnJournalJSONJournalEditorService
         return buf;
     }
     
-    protected boolean appendMethodReturnJournalData(StringBuffer buf, EditorFinder finder, MethodReturnJournalData data, boolean isAppended){
+    protected boolean appendMethodReturnJournalData(StringBuilder buf, EditorFinder finder, MethodReturnJournalData data, boolean isAppended){
         isAppended |= appendTarget(buf, finder, data, isAppended);
         isAppended |= appendOwnerClass(buf, finder, data, isAppended);
         isAppended |= appendMethodName(buf, finder, data, isAppended);
@@ -66,7 +66,7 @@ public class MethodReturnJournalJSONJournalEditorService
         return isAppended;
     }
     
-    protected boolean appendReturn(StringBuffer buf, EditorFinder finder, MethodReturnJournalData data, boolean isAppended){
+    protected boolean appendReturn(StringBuilder buf, EditorFinder finder, MethodReturnJournalData data, boolean isAppended){
         if(isOutputProperty(PROPERTY_RETURN)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);

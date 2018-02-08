@@ -305,7 +305,7 @@ public class HttpServletRequestJournalEditorService extends ServletRequestJourna
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final ServletRequest request = (ServletRequest)value;
         boolean isMake = super.processBlock(finder, key, request, buf);
@@ -425,104 +425,104 @@ public class HttpServletRequestJournalEditorService extends ServletRequestJourna
         return isMake;
     }
     
-    protected StringBuffer makeAuthTypeFormat(
+    protected StringBuilder makeAuthTypeFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(AUTH_TYPE_HEADER)
             .append(request.getAuthType());
     }
     
-    protected StringBuffer makeRemoteUserFormat(
+    protected StringBuilder makeRemoteUserFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(REMOTE_USER_HEADER)
             .append(request.getRemoteUser());
     }
     
-    protected StringBuffer makeUserPrincipalFormat(
+    protected StringBuilder makeUserPrincipalFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(USER_PRINCIPAL_HEADER)
             .append(request.getUserPrincipal());
     }
     
-    protected StringBuffer makeRequestURLFormat(
+    protected StringBuilder makeRequestURLFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(REQUEST_URL_HEADER).append(request.getRequestURL());
     }
     
-    protected StringBuffer makeRequestURIFormat(
+    protected StringBuilder makeRequestURIFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(REQUEST_URI_HEADER).append(request.getRequestURI());
     }
     
-    protected StringBuffer makeServletPathFormat(
+    protected StringBuilder makeServletPathFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(SERVLET_PATH_HEADER).append(request.getServletPath());
     }
     
-    protected StringBuffer makeContextPathFormat(
+    protected StringBuilder makeContextPathFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(CONTEXT_PATH_HEADER).append(request.getContextPath());
     }
     
-    protected StringBuffer makePathInfoFormat(
+    protected StringBuilder makePathInfoFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(PATH_INFO_HEADER).append(request.getPathInfo());
     }
     
-    protected StringBuffer makePathTranslatedFormat(
+    protected StringBuilder makePathTranslatedFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(PATH_TRAN_HEADER).append(request.getPathTranslated());
     }
     
-    protected StringBuffer makeQueryStringFormat(
+    protected StringBuilder makeQueryStringFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(QUERY_STRING_HEADER).append(request.getQueryString());
     }
     
-    protected StringBuffer makeSessionIDFormat(
+    protected StringBuilder makeSessionIDFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(SESSION_ID_HEADER).append(request.getRequestedSessionId());
         if(request.isRequestedSessionIdFromCookie()){
@@ -533,20 +533,20 @@ public class HttpServletRequestJournalEditorService extends ServletRequestJourna
         return buf;
     }
     
-    protected StringBuffer makeMethodFormat(
+    protected StringBuilder makeMethodFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         return buf.append(HTTP_METHOD_HEADER).append(request.getMethod());
     }
     
-    protected StringBuffer makeHeadersFormat(
+    protected StringBuilder makeHeadersFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(HTTP_HEADER_HEADER);
         final Enumeration headerNames = request.getHeaderNames();
@@ -556,7 +556,7 @@ public class HttpServletRequestJournalEditorService extends ServletRequestJourna
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuffer subBuf = new StringBuffer();
+        final StringBuilder subBuf = new StringBuilder();
         while(headerNames.hasMoreElements()){
             final String name = (String)headerNames.nextElement();
             if(!enabledHeaderSet.isEmpty()
@@ -585,11 +585,11 @@ public class HttpServletRequestJournalEditorService extends ServletRequestJourna
         return buf.append(subBuf);
     }
     
-    protected StringBuffer makeCookiesFormat(
+    protected StringBuilder makeCookiesFormat(
         EditorFinder finder,
         Object key,
         HttpServletRequest request,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(COOKIE_HEADER);
         final Cookie[] cookies = request.getCookies();
@@ -599,7 +599,7 @@ public class HttpServletRequestJournalEditorService extends ServletRequestJourna
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuffer subBuf = new StringBuffer();
+        final StringBuilder subBuf = new StringBuilder();
         for(int i = 0; i < cookies.length; i++){
             if(!enabledCookieSet.isEmpty()
                  && !enabledCookieSet.contains(name)){

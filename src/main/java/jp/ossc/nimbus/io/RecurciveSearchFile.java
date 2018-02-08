@@ -557,7 +557,7 @@ public class RecurciveSearchFile extends File implements Serializable {
                         RecurciveSearchFile.SEARCH_TYPE_DIR
                     );
                     if (dirs != null) {
-                        final StringBuffer buf = new StringBuffer();
+                        final StringBuilder buf = new StringBuilder();
                         for (int j = i + 1; j < imax; j++) {
                             buf.append((String) pathList.get(j));
                             if (j != imax - 1) {
@@ -618,7 +618,7 @@ public class RecurciveSearchFile extends File implements Serializable {
                         )
                     );
                     if (dirs != null) {
-                        final StringBuffer buf = new StringBuffer();
+                        final StringBuilder buf = new StringBuilder();
                         for (int j = i + 1; j < imax; j++) {
                             buf.append((String) pathList.get(j));
                             if (j != imax - 1) {

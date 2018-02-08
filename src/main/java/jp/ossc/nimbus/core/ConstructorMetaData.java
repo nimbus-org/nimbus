@@ -237,14 +237,14 @@ public class ConstructorMetaData extends MetaData
         }
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(CONSTRUCTOR_TAG_NAME).append('>');
         if(arguments.size() != 0){
             buf.append(LINE_SEPARATOR);
             for(int i = 0, imax = arguments.size(); i < imax; i++){
                 buf.append(
-                    addIndent(((MetaData)arguments.get(i)).toXML(new StringBuffer()))
+                    addIndent(((MetaData)arguments.get(i)).toXML(new StringBuilder()))
                 );
                 buf.append(LINE_SEPARATOR);
             }
@@ -259,7 +259,7 @@ public class ConstructorMetaData extends MetaData
             if(data != null){
                 buf.append(LINE_SEPARATOR);
                 buf.append(
-                    addIndent(data.toXML(new StringBuffer()))
+                    addIndent(data.toXML(new StringBuilder()))
                 );
                 buf.append(LINE_SEPARATOR);
             }

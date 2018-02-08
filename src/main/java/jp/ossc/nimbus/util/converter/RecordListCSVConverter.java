@@ -608,7 +608,7 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
                     if(csv == null){
                         return recList;
                     }
-                    final StringBuffer schemaBuf = new StringBuffer();
+                    final StringBuilder schemaBuf = new StringBuilder();
                     for(int i = 0, imax = csv.size(); i < imax; i++){
                         schemaBuf.append(':');
                         if(isExistsHeader){
