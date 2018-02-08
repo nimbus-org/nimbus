@@ -85,7 +85,7 @@ import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
  * 
  * @author M.Takata
  */
-public class RecordList implements Externalizable, List, Cloneable, PartUpdate{
+public class RecordList implements Externalizable, List, Cloneable, PartUpdate, RandomAccess{
     
     private static final long serialVersionUID = 6399184480196775369L;
     
