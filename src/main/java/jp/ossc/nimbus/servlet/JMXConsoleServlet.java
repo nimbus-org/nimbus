@@ -372,7 +372,7 @@ public class JMXConsoleServlet extends HttpServlet{
         HttpServletResponse resp,
         String responseType
     ) throws ServletException, IOException{
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             final String[] serverNames = new String[mbeanServerConnectionFactories.size() + 1];
@@ -394,7 +394,7 @@ public class JMXConsoleServlet extends HttpServlet{
             
             buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
             buf.append("<tr bgcolor=\"#cccccc\"><th>group</th><th>server</th></tr>");
-            final StringBuilder url = new StringBuilder();
+            final StringBuffer url = new StringBuffer();
             buf.append("<tr>");
             buf.append("<td>localhost</td>");
             url.append(getCurrentPath(req))
@@ -468,7 +468,7 @@ public class JMXConsoleServlet extends HttpServlet{
         String responseType
     ) throws ServletException, IOException{
         String serverName = req.getParameter("name");
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             List domainNameList = new ArrayList();
@@ -556,7 +556,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     String[] domains = mbeanServer.getDomains();
                     if(domains != null && domains.length != 0){
                         Arrays.sort(domains);
-                        final StringBuilder url = new StringBuilder();
+                        final StringBuffer url = new StringBuffer();
                         for(int j = 0; j < domains.length; j++){
                             buf.append("<tr>");
                             if(j == 0){
@@ -614,7 +614,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     String[] domains = mbeanServer.getDomains();
                     if(domains != null && domains.length != 0){
                         Arrays.sort(domains);
-                        final StringBuilder url = new StringBuilder();
+                        final StringBuffer url = new StringBuffer();
                         for(int i = 0; i < domains.length; i++){
                             url.setLength(0);
                             url.append(getCurrentPath(req))
@@ -728,7 +728,7 @@ public class JMXConsoleServlet extends HttpServlet{
                 }
             }
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             buf.append(
@@ -753,7 +753,7 @@ public class JMXConsoleServlet extends HttpServlet{
             buf.append("<b>MBean List</b><br>");
             buf.append("<ul>");
             if(objectNameList.size() != 0){
-                final StringBuilder url = new StringBuilder();
+                final StringBuffer url = new StringBuffer();
                 for(int i = 0; i < objectNameList.size(); i++){
                     url.setLength(0);
                     url.append(getCurrentPath(req))
@@ -814,7 +814,7 @@ public class JMXConsoleServlet extends HttpServlet{
             throw new ServletException(e);
         }
         JMXConnector connector = null;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         try{
             MBeanServerConnection mbeanServer = null;
             if(serverName == null || "localhost".equals(serverName)){
@@ -990,7 +990,7 @@ public class JMXConsoleServlet extends HttpServlet{
                 buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
                 buf.append("<tr bgcolor=\"#cccccc\"><th rowspan=\"2\">method</th><th colspan=\"2\">arguments</th><th rowspan=\"2\">call</th></tr>");
                 buf.append("<tr bgcolor=\"#cccccc\"><th>value</th><th>type</th></tr>");
-                StringBuilder signature = new StringBuilder();
+                StringBuffer signature = new StringBuffer();
                 for(int i = 0; i < operations.length; i++){
                     MBeanOperationInfo operation = operations[i];
                     MBeanParameterInfo[] paramInfos = operation.getSignature();
@@ -1107,7 +1107,7 @@ public class JMXConsoleServlet extends HttpServlet{
     private Object formatValue(boolean isWritable, Class type, Object val, boolean isHtml){
         if(val == null){
             if(isHtml){
-                return new StringBuilder().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
+                return new StringBuffer().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
                     .append(!isWritable ? "readonly>" : ">")
                     .append(val).append("</textarea>").toString();
             }else{
@@ -1123,7 +1123,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     resultStr = resultStr.substring(0, maxLength);
                 }
                 val = resultStr;
-                return new StringBuilder().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
+                return new StringBuffer().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
                     .append(!isWritable ? "readonly>" : ">")
                     .append(val).append("</textarea>").toString();
             }else{
@@ -1135,7 +1135,7 @@ public class JMXConsoleServlet extends HttpServlet{
                 || TabularData.class.isAssignableFrom(componentType)
             ){
                 if(isHtml){
-                    StringBuilder buf = new StringBuilder();
+                    StringBuffer buf = new StringBuffer();
                     for(int i = 0, imax = Array.getLength(val); i < imax; i++){
                         Object element = Array.get(val, i);
                         buf.append(formatValue(isWritable, type.getComponentType(), element, isHtml));
@@ -1161,7 +1161,7 @@ public class JMXConsoleServlet extends HttpServlet{
                         }
                         val = resultStr;
                     }
-                    return new StringBuilder().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
+                    return new StringBuffer().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
                         .append(!isWritable ? "readonly>" : ">")
                         .append(val).append("</textarea>").toString();
                 }else{
@@ -1177,7 +1177,7 @@ public class JMXConsoleServlet extends HttpServlet{
             CompositeData compositeData = (CompositeData)val;
             CompositeType compositeType = compositeData.getCompositeType();
             if(isHtml){
-                StringBuilder buf = new StringBuilder();
+                StringBuffer buf = new StringBuffer();
                 buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
                 final Iterator keys = compositeType.keySet().iterator();
                 while(keys.hasNext()){
@@ -1204,7 +1204,7 @@ public class JMXConsoleServlet extends HttpServlet{
             TabularData tabularData = (TabularData)val;
             TabularType tabularType = tabularData.getTabularType();
             if(isHtml){
-                StringBuilder buf = new StringBuilder();
+                StringBuffer buf = new StringBuffer();
                 buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
                 buf.append("<tr>");
                 List colNames = tabularType.getIndexNames();
@@ -1256,7 +1256,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     resultStr = resultStr.substring(0, maxLength);
                 }
                 val = resultStr;
-                return new StringBuilder().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
+                return new StringBuffer().append("<textarea name=\"value\" cols=\"40\" rows=\"2\"")
                     .append(!isWritable ? "readonly>" : ">")
                     .append(val).append("</textarea>").toString();
             }else{
@@ -1313,7 +1313,7 @@ public class JMXConsoleServlet extends HttpServlet{
             return;
         }
         final String attributeValue = req.getParameter("value");
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         JMXConnector connector = null;
         try{
             MBeanServerConnection mbeanServer = null;
@@ -1494,7 +1494,7 @@ public class JMXConsoleServlet extends HttpServlet{
             }catch(ReflectionException e){
                 throw new ServletException(e);
             }
-            final StringBuilder buf = new StringBuilder();
+            final StringBuffer buf = new StringBuffer();
             if("json".equals(responseType)){
                 resp.setContentType("application/json;charset=UTF-8");
                 Map json = new HashMap();
@@ -1606,7 +1606,7 @@ public class JMXConsoleServlet extends HttpServlet{
             }
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         JMXConnector connector = null;
         try{
             MBeanServerConnection mbeanServer = null;

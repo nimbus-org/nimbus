@@ -183,7 +183,7 @@ public class HttpSessionJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final HttpSession session = (HttpSession)value;
         boolean isMake = false;
@@ -234,20 +234,20 @@ public class HttpSessionJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeIdFormat(
+    protected StringBuffer makeIdFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(ID_HEADER).append(session.getId());
     }
     
-    protected StringBuilder makeCreationTimeFormat(
+    protected StringBuffer makeCreationTimeFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(CREATION_TIME_HEADER);
         makeObjectFormat(
@@ -259,11 +259,11 @@ public class HttpSessionJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeLastAccessedTimeFormat(
+    protected StringBuffer makeLastAccessedTimeFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(LAST_ACCESSED_TIME_HEADER);
         makeObjectFormat(
@@ -275,31 +275,31 @@ public class HttpSessionJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeMaxInactiveIntervalFormat(
+    protected StringBuffer makeMaxInactiveIntervalFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(MAX_INACTIVE_INTERVAL_HEADER)
             .append(session.getMaxInactiveInterval());
     }
     
-    protected StringBuilder makeIsNewFormat(
+    protected StringBuffer makeIsNewFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(IS_NEW_HEADER)
             .append(session.isNew());
     }
     
-    protected StringBuilder makeAttributesFormat(
+    protected StringBuffer makeAttributesFormat(
         EditorFinder finder,
         Object key,
         HttpSession session,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(ATTRIBUTE_HEADER);
         final Enumeration attrNames = session.getAttributeNames();
@@ -309,7 +309,7 @@ public class HttpSessionJournalEditorService
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         while(attrNames.hasMoreElements()){
             final String name = (String)attrNames.nextElement();
             if(!enabledAttributeSet.isEmpty()

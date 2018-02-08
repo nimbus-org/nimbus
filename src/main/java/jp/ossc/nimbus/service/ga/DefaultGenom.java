@@ -353,7 +353,7 @@ public class DefaultGenom implements Genom, Cloneable, Externalizable{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append('{');
         if(geneMap != null){
             Iterator itr = geneMap.values().iterator();

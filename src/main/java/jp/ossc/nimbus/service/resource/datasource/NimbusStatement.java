@@ -121,7 +121,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	        //SQL’PˆÊ‚Ì’Ê”Ô‚ğæ“¾
 	        sqlID = getSequenceNo();
             //”­s‚·‚éSQL•¶‚ğ‰Á‚¦‚Ä‚¢‚­
-            final StringBuilder buff = new StringBuilder();
+            final StringBuffer buff = new StringBuffer();
 	        for( int i = 0 ; i < mBatchArray.size() ; i++ ){
 	            final String sql = (String) mBatchArray.get(i); 
 	            buff.append(sql);
@@ -149,7 +149,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	}
 	
 	protected String makeBatchAllSqlKey(ArrayList arr){
-	    final StringBuilder buff = new StringBuilder();
+	    final StringBuffer buff = new StringBuffer();
 	    for( int i= 0 ; i < arr.size() ; i++ ){
 	        buff.append(arr.get(i));
 	    }

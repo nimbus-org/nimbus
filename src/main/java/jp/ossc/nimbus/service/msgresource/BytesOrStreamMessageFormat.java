@@ -87,7 +87,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return null;
 		}
 		byte[] readBytesBuffer = new byte[BUFLEN];
-		StringBuilder retMsg = new StringBuilder();
+		StringBuffer retMsg = new StringBuffer();
 		//ラッパーJMSメッセージを設定
 		MessageWrapper msgWrapper = new MessageWrapper(msg);
 		try{

@@ -44,7 +44,7 @@ public class MethodJournalJSONJournalEditorService
     
     private static final long serialVersionUID = 1997221072061266863L;
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuffer appendUnknownValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
         if(!(value instanceof MethodJournalData)){
             return super.appendUnknownValue(buf, finder, type, value);
         }
@@ -56,7 +56,7 @@ public class MethodJournalJSONJournalEditorService
         return buf;
     }
     
-    protected boolean appendMethodJournalData(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendMethodJournalData(StringBuffer buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
         isAppended |= appendTarget(buf, finder, data, isAppended);
         isAppended |= appendOwnerClass(buf, finder, data, isAppended);
         isAppended |= appendMethodName(buf, finder, data, isAppended);
@@ -65,7 +65,7 @@ public class MethodJournalJSONJournalEditorService
         return isAppended;
     }
     
-    protected boolean appendTarget(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendTarget(StringBuffer buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
         if(isOutputProperty(PROPERTY_TARGET)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -77,7 +77,7 @@ public class MethodJournalJSONJournalEditorService
         }
     }
     
-    protected boolean appendOwnerClass(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendOwnerClass(StringBuffer buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
         if(isOutputProperty(PROPERTY_OWNER_CLASS)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -89,7 +89,7 @@ public class MethodJournalJSONJournalEditorService
         }
     }
     
-    protected boolean appendMethodName(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendMethodName(StringBuffer buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
         if(isOutputProperty(PROPERTY_NAME)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -101,7 +101,7 @@ public class MethodJournalJSONJournalEditorService
         }
     }
     
-    protected boolean appendParameterTypes(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendParameterTypes(StringBuffer buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
         if(isOutputProperty(PROPERTY_PARAM_TYPES)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -115,7 +115,7 @@ public class MethodJournalJSONJournalEditorService
         }
     }
     
-    protected boolean appendMessage(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendMessage(StringBuffer buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
         if(isOutputProperty(PROPERTY_MESSAGE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);

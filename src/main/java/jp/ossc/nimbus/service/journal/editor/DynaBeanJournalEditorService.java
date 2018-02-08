@@ -144,7 +144,7 @@ public class DynaBeanJournalEditorService extends BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final DynaBean bean = (DynaBean)value;
         boolean isMake = false;
@@ -163,22 +163,22 @@ public class DynaBeanJournalEditorService extends BlockJournalEditorServiceBase
         return isMake;
     }
     
-    protected StringBuilder makeDynaClassFormat(
+    protected StringBuffer makeDynaClassFormat(
         EditorFinder finder,
         Object key,
         DynaBean bean,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(DYNA_CLASS_HEADER);
         makeObjectFormat(finder, null, bean.getDynaClass(), buf);
         return buf;
     }
     
-    protected StringBuilder makePropertiesFormat(
+    protected StringBuffer makePropertiesFormat(
         EditorFinder finder,
         Object key,
         DynaBean bean,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(PROPERTIES_HEADER);
         final DynaClass dynaClass = bean.getDynaClass();
@@ -189,7 +189,7 @@ public class DynaBeanJournalEditorService extends BlockJournalEditorServiceBase
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0, max = props.length; i < max; i++){
             final String name = props[i].getName();
             if(!enabledPropertySet.isEmpty()

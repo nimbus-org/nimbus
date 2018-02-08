@@ -122,7 +122,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final DataSet dataSet = (DataSet)value;
         String dsName = dataSet.getName();
@@ -294,14 +294,14 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         return buf.toString();
     }
     
-    private StringBuilder appendName(StringBuilder buf, String name){
+    private StringBuffer appendName(StringBuffer buf, String name){
         buf.append(STRING_ENCLOSURE);
         buf.append(escape(name));
         buf.append(STRING_ENCLOSURE);
         return buf;
     }
     
-    private StringBuilder appendValue(StringBuilder buf, Class type, Object value){
+    private StringBuffer appendValue(StringBuffer buf, Class type, Object value){
         if(type == null && value != null){
             type = value.getClass();
         }
@@ -420,7 +420,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         return buf;
     }
     
-    private StringBuilder appendArray(StringBuilder buf, Object array){
+    private StringBuffer appendArray(StringBuffer buf, Object array){
         buf.append(ARRAY_ENCLOSURE_START);
         if(array.getClass().isArray()){
             for(int i = 0, imax = Array.getLength(array); i < imax; i++){
@@ -455,7 +455,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
             return str;
         }
         boolean isEscape = false;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, imax = str.length(); i < imax; i++){
             final char c = str.charAt(i);
             
@@ -508,7 +508,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         return isEscape ? buf.toString() : str;
     }
     
-    private StringBuilder toUnicode(char c, StringBuilder buf){
+    private StringBuffer toUnicode(char c, StringBuffer buf){
         buf.append(ESCAPE);
         buf.append('u');
         int mask = 0xf000;

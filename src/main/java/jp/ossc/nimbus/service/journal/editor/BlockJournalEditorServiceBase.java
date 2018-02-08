@@ -100,13 +100,13 @@ public abstract class BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         startBlock(finder, key, value, buf);
         if(isOutputBlockLineSeparator()){
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         if(processBlock(finder, key, value, subBuf)){
             addIndent(subBuf);
             buf.append(subBuf);
@@ -131,7 +131,7 @@ public abstract class BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         if(isOutputHeader()){
             buf.append(getHeader());
@@ -153,7 +153,7 @@ public abstract class BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return false;
     }
@@ -171,7 +171,7 @@ public abstract class BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(getEndBlockSeparator());
     }

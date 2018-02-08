@@ -423,7 +423,7 @@ public class GroupContextService extends ServiceBase
     
     // Context‚ÌJavaDoc
     public String list(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         synchronized(this){
             for(Iterator ite = keySet().iterator(); ite.hasNext();){
                 Object key = ite.next();

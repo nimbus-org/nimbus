@@ -98,7 +98,7 @@ public class InterpolateRequestMessage extends ClientMessage{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder(super.toString());
+        StringBuffer buf = new StringBuffer(super.toString());
         buf.append('{');
         buf.append("currentFirstMessageId=").append(currentFirstMessageId);
         buf.append(", latestMessageId=").append(latestMessageId);

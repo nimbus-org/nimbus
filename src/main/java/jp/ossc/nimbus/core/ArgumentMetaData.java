@@ -255,7 +255,7 @@ public class ArgumentMetaData extends MetaData
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         if(getType() != null){
@@ -269,7 +269,7 @@ public class ArgumentMetaData extends MetaData
         return buf.toString();
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(ARGUMENT_TAG_NAME);
         if(type != null){
@@ -290,7 +290,7 @@ public class ArgumentMetaData extends MetaData
                 if(value instanceof MetaData){
                     buf.append(LINE_SEPARATOR);
                     buf.append(
-                        addIndent(((MetaData)value).toXML(new StringBuilder()))
+                        addIndent(((MetaData)value).toXML(new StringBuffer()))
                     );
                     buf.append(LINE_SEPARATOR);
                 }else{

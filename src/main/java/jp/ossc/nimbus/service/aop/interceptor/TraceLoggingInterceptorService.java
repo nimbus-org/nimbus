@@ -257,20 +257,20 @@ public class TraceLoggingInterceptorService extends ServiceBase
             return chain.invokeNext(context);
         }
         final long start = System.currentTimeMillis();
-        StringBuilder buf = null;
-        StringBuilder targetBuf = null;
-        StringBuilder methodBuf = null;
-        StringBuilder parameterBuf = null;
+        StringBuffer buf = null;
+        StringBuffer targetBuf = null;
+        StringBuffer methodBuf = null;
+        StringBuffer parameterBuf = null;
         String sequenceId = null;
         if(sequence != null){
             sequenceId = sequence.increment();
             if(buf == null){
-                buf = new StringBuilder();
+                buf = new StringBuffer();
             }
             buf.append(sequenceId);
         }
         if(isOutputTarget || isOutputTargetOnResponse){
-            targetBuf = new StringBuilder();
+            targetBuf = new StringBuffer();
             Object target = context.getTargetObject();
             if(outputTargetProperties != null && outputTargetProperties.length != 0){
                 targetBuf.append('[');
@@ -293,7 +293,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
             }
             if(isOutputTarget){
                 if(buf == null){
-                    buf = new StringBuilder();
+                    buf = new StringBuffer();
                 }else{
                     buf.append(',');
                 }
@@ -303,7 +303,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
         if(context instanceof MethodInvocationContext){
             MethodInvocationContext methodContext = (MethodInvocationContext)context;
             if(isOutputMethod || isOutputMethodOnResponse){
-                methodBuf = new StringBuilder();
+                methodBuf = new StringBuffer();
                 Method method = methodContext.getTargetMethod();
                 if(method != null){
                     MethodEditor editor = new MethodEditor();
@@ -314,7 +314,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
                 }
                 if(isOutputMethod){
                     if(buf == null){
-                        buf = new StringBuilder();
+                        buf = new StringBuffer();
                     }else{
                         buf.append(',');
                     }
@@ -322,7 +322,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
                 }
             }
             if(isOutputParameter || isOutputParameterOnResponse){
-                parameterBuf = new StringBuilder();
+                parameterBuf = new StringBuffer();
                 Object[] params = methodContext.getParameters();
                 if(params != null){
                     parameterBuf.append('[');
@@ -349,7 +349,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
                 }
                 if(isOutputParameter){
                     if(buf == null){
-                        buf = new StringBuilder();
+                        buf = new StringBuffer();
                     }else{
                         buf.append(',');
                     }
@@ -379,7 +379,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
             final long end = System.currentTimeMillis();
             if(isOutputResponseLog && getLogger().isWrite(responseMessageId)){
                 if(buf == null){
-                    buf = new StringBuilder();
+                    buf = new StringBuffer();
                 }
                 if(sequenceId != null){
                     buf.append(sequenceId);
@@ -443,7 +443,7 @@ public class TraceLoggingInterceptorService extends ServiceBase
         }
     }
     
-    private StringBuilder printObject(StringBuilder buf, Object value){
+    private StringBuffer printObject(StringBuffer buf, Object value){
         if(value == null){
             buf.append(value);
         }else if(value.getClass().isArray()){

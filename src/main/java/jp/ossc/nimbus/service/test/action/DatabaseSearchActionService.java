@@ -164,7 +164,7 @@ public class DatabaseSearchActionService extends ServiceBase implements TestActi
             if(line == null){
                 throw new Exception("Unexpected EOF on searchQuery");
             }
-            final StringBuilder buf = new StringBuilder();
+            final StringBuffer buf = new StringBuffer();
             do{
                 line = line.trim();
                 if(line.length() != 0){

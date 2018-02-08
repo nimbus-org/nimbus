@@ -79,7 +79,7 @@ public class MethodArrayEditor extends ArrayEditor
             return null;
         }
         final Method method = (Method)element;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(method.getDeclaringClass().getName());
         buf.append('#');
         buf.append(method.getName());

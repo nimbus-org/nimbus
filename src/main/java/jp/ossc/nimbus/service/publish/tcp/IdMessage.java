@@ -68,7 +68,7 @@ public class IdMessage extends ClientMessage{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder(super.toString());
+        StringBuffer buf = new StringBuffer(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", id=").append(id);
         buf.append('}');

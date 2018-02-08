@@ -40,10 +40,6 @@ import java.util.Map;
  */
 public interface Interpreter{
     
-    public boolean isCompilable();
-    
-    public CompiledInterpreter compile(String code) throws EvaluateException;
-    
     public Object evaluate(String code) throws EvaluateException;
     
     public Object evaluate(String code, Map variables) throws EvaluateException;

@@ -139,7 +139,7 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     
     // ImmutableJournalEditorのJavaDoc
     public String toString(EditorFinder finder, Object key, Object value){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(isOutputKey()){
             makeKeyFormat(finder, key, value, buf);
         }
@@ -160,7 +160,7 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.toString();
     }
@@ -175,11 +175,11 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
      * @param buf ジャーナル文字列格納用の文字列バッファ
      * @return ジャーナル文字列
      */
-    protected StringBuilder makeKeyFormat(
+    protected StringBuffer makeKeyFormat(
         EditorFinder finder,
         Object key,
         Object obj,
-        StringBuilder buf
+        StringBuffer buf
     ){
         if(key == null){
             return buf;
@@ -197,11 +197,11 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
      * @param buf ジャーナル文字列格納用の文字列バッファ
      * @return ジャーナル文字列
      */
-    protected StringBuilder makeObjectFormat(
+    protected StringBuffer makeObjectFormat(
         EditorFinder finder,
         Object key,
         Object obj,
-        StringBuilder buf
+        StringBuffer buf
     ){
         Object value = null;
         if(obj != null){
@@ -221,7 +221,7 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
      * @param buf 文字列バッファ
      * @return 文字列バッファ
      */
-    protected StringBuilder addIndent(StringBuilder buf){
+    protected StringBuffer addIndent(StringBuffer buf){
         if(!isOutputIndent){
             return buf;
         }
@@ -248,7 +248,7 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
      * @param indent インデント数
      * @return 文字列バッファ
      */
-    protected StringBuilder setIndent(StringBuilder buf, int indent){
+    protected StringBuffer setIndent(StringBuffer buf, int indent){
         if(!isOutputIndent){
             return buf;
         }
@@ -275,7 +275,7 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
         if(length == 0){
             return str;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         String indentString = null;
         if(indent <= 0){
             indentString = getIndent();
@@ -312,7 +312,7 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
         if(index == -1){
             return str;
         }
-        final StringBuilder buf = new StringBuilder(str.substring(index));
+        final StringBuffer buf = new StringBuffer(str.substring(index));
         boolean isInEscape = false;
         for(int i = index; i < length; i++){
             char c = str.charAt(i);

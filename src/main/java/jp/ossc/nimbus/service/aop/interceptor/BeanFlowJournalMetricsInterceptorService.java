@@ -32,8 +32,6 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentHashMap;
 import java.text.SimpleDateFormat;
 
 import jp.ossc.nimbus.core.*;
@@ -78,7 +76,7 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
     private Journal journal;
     private ServiceName editorFinderServiceName;
     private EditorFinder editorFinder;
-    private ConcurrentMap metricsInfos;
+    private Map metricsInfos;
     private boolean isEnabled = true;
     private boolean isCalculateOnlyNormal;
     private String dateFormat = DEFAULT_DATE_FORMAT;
@@ -157,7 +155,7 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");
@@ -289,7 +287,9 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
         if(metricsInfos == null){
             return new HashMap();
         }
-        return new HashMap(metricsInfos);
+        synchronized(metricsInfos){
+            return new HashMap(metricsInfos);
+        }
     }
     
     // BeanFlowJournalMetricsInterceptorServiceMBeanÇÃJavaDoc
@@ -473,7 +473,7 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
      * @exception Exception ê∂ê¨èàóùÇ…é∏îsÇµÇΩèÍçá
      */
     public void createService() throws Exception{
-        metricsInfos = new ConcurrentHashMap();
+        metricsInfos = Collections.synchronizedMap(new HashMap());
         flowAndCategoryMap = new HashMap();
     }
     /**
@@ -584,18 +584,17 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
                     BeanFlowInvoker invoker = (BeanFlowInvoker)target;
                     String flow = invoker.getFlowName();
                     MetricsInfo metricsInfo = null;
-                    metricsInfo = (MetricsInfo)metricsInfos.get(flow);
-                    if(metricsInfo == null){
-                        metricsInfo = new MetricsInfo(
-                            flow,
-                            isCalculateOnlyNormal
-                        );
-                        MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(flow, metricsInfo);
-                        if(old != null){
-                            metricsInfo = old;
+                    synchronized(metricsInfos){
+                        metricsInfo = (MetricsInfo)metricsInfos.get(flow);
+                        if(metricsInfo == null){
+                            metricsInfo = new MetricsInfo(
+                                flow,
+                                isCalculateOnlyNormal
+                            );
+                            metricsInfos.put(flow, metricsInfo);
                         }
+                        metricsInfo.calculate(journalStr == null ? 0 : journalStr.length(), isException, isError);
                     }
-                    metricsInfo.calculate(journalStr == null ? 0 : journalStr.length(), isException, isError);
                 }
             }
         }

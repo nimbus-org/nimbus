@@ -183,14 +183,14 @@ public class JSONJournalEditorService extends ServiceBase
         }
     }
     
-    protected StringBuilder appendName(StringBuilder buf, String name){
+    protected StringBuffer appendName(StringBuffer buf, String name){
         buf.append(STRING_ENCLOSURE);
         buf.append(escape(name));
         buf.append(STRING_ENCLOSURE);
         return buf;
     }
     
-    protected StringBuilder appendValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuffer appendValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
         if(type == null && value != null){
             type = value.getClass();
         }
@@ -256,7 +256,7 @@ public class JSONJournalEditorService extends ServiceBase
         return buf;
     }
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuffer appendUnknownValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
         JournalEditor editor = finder.findEditor(value);
         if(editor != null && editor != this){
             value = editor.toObject(finder, null, value);
@@ -275,7 +275,7 @@ public class JSONJournalEditorService extends ServiceBase
         return buf;
     }
     
-    protected StringBuilder appendMap(StringBuilder buf, EditorFinder finder, Map map){
+    protected StringBuffer appendMap(StringBuffer buf, EditorFinder finder, Map map){
         buf.append(OBJECT_ENCLOSURE_START);
         Iterator itr = map.entrySet().iterator();
         boolean isOutput = false;
@@ -321,7 +321,7 @@ public class JSONJournalEditorService extends ServiceBase
         return name != null && secretPropertySet != null && secretPropertySet.contains(name);
     }
     
-    protected StringBuilder appendProperty(StringBuilder buf, EditorFinder finder, String name, Object value){
+    protected StringBuffer appendProperty(StringBuffer buf, EditorFinder finder, String name, Object value){
         appendName(buf, name);
         buf.append(PROPERTY_SEPARATOR);
         if(isSecretProperty(name)){
@@ -332,7 +332,7 @@ public class JSONJournalEditorService extends ServiceBase
         return buf;
     }
     
-    protected StringBuilder appendArray(StringBuilder buf, EditorFinder finder, Object array){
+    protected StringBuffer appendArray(StringBuffer buf, EditorFinder finder, Object array){
         buf.append(ARRAY_ENCLOSURE_START);
         if(array.getClass().isArray()){
             for(int i = 0, imax = Array.getLength(array); i < imax; i++){
@@ -395,7 +395,7 @@ public class JSONJournalEditorService extends ServiceBase
             return str;
         }
         boolean isEscape = false;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, imax = str.length(); i < imax; i++){
             final char c = str.charAt(i);
             
@@ -448,7 +448,7 @@ public class JSONJournalEditorService extends ServiceBase
         return isEscape ? buf.toString() : str;
     }
     
-    protected StringBuilder toUnicode(char c, StringBuilder buf){
+    protected StringBuffer toUnicode(char c, StringBuffer buf){
         buf.append(ESCAPE);
         buf.append('u');
         int mask = 0xf000;
@@ -512,10 +512,10 @@ public class JSONJournalEditorService extends ServiceBase
     }
     
     public Object toObject(EditorFinder finder, Object key, Object value){
-        return toString(new StringBuilder(), finder, key == null ? null : key.toString(), value).toString();
+        return toString(new StringBuffer(), finder, key == null ? null : key.toString(), value).toString();
     }
     
-    protected StringBuilder toString(StringBuilder buf, EditorFinder finder, String key, Object value){
+    protected StringBuffer toString(StringBuffer buf, EditorFinder finder, String key, Object value){
         if(key == null || !isOutputKey()){
             appendValue(buf, finder, null, value);
         }else{

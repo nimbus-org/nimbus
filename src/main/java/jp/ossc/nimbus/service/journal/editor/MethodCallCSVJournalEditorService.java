@@ -80,7 +80,7 @@ public class MethodCallCSVJournalEditorService extends CSVJournalEditorServiceBa
         Object key,
         Object value
     ){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         final MethodCallJournalData methodCallJournal
              = (MethodCallJournalData)value;
         if(isOutputMethod()){

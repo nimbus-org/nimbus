@@ -52,7 +52,7 @@ public class TimeSequenceVariable implements SequenceVariable, java.io.Serializa
     private long currentSequence;
     private String currentTime;
     
-    private StringBuilder buf = new StringBuilder();
+    private StringBuffer buf = new StringBuffer();
     private Date date;
     
     private String current;
@@ -78,7 +78,7 @@ public class TimeSequenceVariable implements SequenceVariable, java.io.Serializa
         if(digit <= 0 || digit > 18){
             throw new IllegalArgumentException("Illegal format : " + format);
         }
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         for(int i = 0; i < digit; i++){
             buf.append('0');
         }

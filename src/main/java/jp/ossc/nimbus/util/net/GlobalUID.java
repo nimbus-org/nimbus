@@ -94,7 +94,7 @@ public class GlobalUID implements Externalizable, Comparable, Cloneable{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(address).append(':');
         buf.append(uid.toString());
         return buf.toString();

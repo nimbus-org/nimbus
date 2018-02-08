@@ -261,7 +261,7 @@ public class GroupServerConnectionImpl implements ServerConnection{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("connctionMap=").append(connctionMap);
@@ -341,7 +341,7 @@ public class GroupServerConnectionImpl implements ServerConnection{
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder(super.toString());
+            final StringBuffer buf = new StringBuffer(super.toString());
             buf.append('{');
             buf.append("subject=").append(subject);
             buf.append(", key=").append(keyPattern == null ? null : keyPattern.pattern());

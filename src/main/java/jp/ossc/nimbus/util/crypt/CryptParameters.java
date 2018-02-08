@@ -1737,7 +1737,7 @@ public class CryptParameters{
     }
     
     private static String encodeParams(Map params){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         final Iterator keys = params.keySet().iterator();
         while(keys.hasNext()){
             final String k = keys.next().toString();
@@ -1762,7 +1762,7 @@ public class CryptParameters{
             && str.indexOf(',') == -1){
             return str;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, max = str.length(); i < max; i++){
             final char c = str.charAt(i);
             switch(c){
@@ -1784,7 +1784,7 @@ public class CryptParameters{
         if(str == null || str.length() == 0){
             return params;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         String key = null;
         boolean isEscape = false;
         for(int i = 0, max = str.length(); i < max; i++){
@@ -1833,7 +1833,7 @@ public class CryptParameters{
     }
     
     public static String toHexString(byte[] bytes){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, max = bytes.length; i < max; i++){
             int intValue = bytes[i];
             intValue &= 0x000000FF;

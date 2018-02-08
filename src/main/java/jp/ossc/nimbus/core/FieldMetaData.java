@@ -242,7 +242,7 @@ public class FieldMetaData extends MetaData
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(FIELD_TAG_NAME);
         if(name != null){
@@ -263,7 +263,7 @@ public class FieldMetaData extends MetaData
                 if(value instanceof MetaData){
                     buf.append(LINE_SEPARATOR);
                     buf.append(
-                        addIndent(((MetaData)value).toXML(new StringBuilder()))
+                        addIndent(((MetaData)value).toXML(new StringBuffer()))
                     );
                     buf.append(LINE_SEPARATOR);
                 }else{

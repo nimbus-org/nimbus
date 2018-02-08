@@ -658,7 +658,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         }
         byte[] result = null;
         try{
-            StringBuilder buf = new StringBuilder();
+            StringBuffer buf = new StringBuffer();
             String dsName = dataSet.getName();
             if(dsName == null){
                 dsName = "";
@@ -878,7 +878,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return result;
     }
     
-    private StringBuilder appendSchema(StringBuilder buf, RecordSchema schema){
+    private StringBuffer appendSchema(StringBuffer buf, RecordSchema schema){
         final PropertySchema[] props = schema.getPropertySchemata();
         buf.append(OBJECT_ENCLOSURE_START);
         for(int j = 0; j < props.length; j++){
@@ -918,14 +918,14 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return buf;
     }
     
-    private StringBuilder appendName(StringBuilder buf, String name){
+    private StringBuffer appendName(StringBuffer buf, String name){
         buf.append(STRING_ENCLOSURE);
         buf.append(escape(name));
         buf.append(STRING_ENCLOSURE);
         return buf;
     }
     
-    private StringBuilder appendValue(StringBuilder buf, Class type, Object value){
+    private StringBuffer appendValue(StringBuffer buf, Class type, Object value){
         if(type == null && value != null){
             type = value.getClass();
         }
@@ -1143,7 +1143,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return buf;
     }
     
-    private StringBuilder appendArray(StringBuilder buf, Object array){
+    private StringBuffer appendArray(StringBuffer buf, Object array){
         buf.append(ARRAY_ENCLOSURE_START);
         if(array.getClass().isArray()){
             for(int i = 0, imax = Array.getLength(array); i < imax; i++){
@@ -1178,7 +1178,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             return str;
         }
         boolean isEscape = false;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, imax = str.length(); i < imax; i++){
             final char c = str.charAt(i);
             
@@ -1232,7 +1232,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return isEscape ? buf.toString() : str;
     }
     
-    private StringBuilder toUnicode(char c, StringBuilder buf){
+    private StringBuffer toUnicode(char c, StringBuffer buf){
         buf.append(ESCAPE);
         buf.append('u');
         int mask = 0xf000;
@@ -1326,7 +1326,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             Map jsonObj = new HashMap();
             readJSONObject(
                 new StringReader(dataStr),
-                new StringBuilder(),
+                new StringBuffer(),
                 jsonObj,
                 false
             );
@@ -1672,7 +1672,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     
     private int readJSONObject(
         Reader reader,
-        StringBuilder buf,
+        StringBuffer buf,
         Map jsonObj,
         boolean isStart
     ) throws ConvertException, IOException{
@@ -1699,7 +1699,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     
     private int readJSONArray(
         Reader reader,
-        StringBuilder buf,
+        StringBuffer buf,
         List array,
         boolean isStart
     ) throws ConvertException, IOException{
@@ -1790,7 +1790,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return c;
     }
     
-    private int readJSONProperty(Reader reader, StringBuilder buf, Map jsonObj)
+    private int readJSONProperty(Reader reader, StringBuffer buf, Map jsonObj)
      throws ConvertException, IOException{
         buf.setLength(0);
         int c = skipWhitespace(reader);
@@ -1922,7 +1922,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         String str = null;
         if(unicodeStr != null){
             final int length = unicodeStr.length();
-            final StringBuilder buf = new StringBuilder(length);
+            final StringBuffer buf = new StringBuffer(length);
             for(int i = 0; i < length;){
                 //•¶Žš—ñ‚ðØ‚èŽæ‚é
                 char c = unicodeStr.charAt(i++);
@@ -1987,7 +1987,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     private String unescape(String str){
         if(str != null){
             final int length = str.length();
-            final StringBuilder buf = new StringBuilder(length);
+            final StringBuffer buf = new StringBuffer(length);
             boolean isUnescape = false;
             for(int i = 0; i < length;){
                 //•¶Žš—ñ‚ðØ‚èŽæ‚é

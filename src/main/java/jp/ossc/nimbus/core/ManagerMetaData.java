@@ -643,7 +643,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(MANAGER_TAG_NAME);
         if(name != null){
@@ -657,7 +657,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
         buf.append('>');
         if(properties.size() != 0){
             buf.append(LINE_SEPARATOR);
-            final StringBuilder subBuf = new StringBuilder();
+            final StringBuffer subBuf = new StringBuffer();
             final Iterator props = properties.values().iterator();
             while(props.hasNext()){
                 final ManagerPropertyMetaData propData
@@ -675,19 +675,19 @@ public class ManagerMetaData extends MetaData implements Serializable{
         if(repository != null && repository.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(repository.toXML(new StringBuilder()))
+                addIndent(repository.toXML(new StringBuffer()))
             );
         }
         if(log != null && log.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(log.toXML(new StringBuilder()))
+                addIndent(log.toXML(new StringBuffer()))
             );
         }
         if(message != null && message.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(message.toXML(new StringBuilder()))
+                addIndent(message.toXML(new StringBuffer()))
             );
         }
         if(services.size() != 0){
@@ -699,7 +699,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
                     continue;
                 }
                 buf.append(
-                    addIndent(data.toXML(new StringBuilder()))
+                    addIndent(data.toXML(new StringBuffer()))
                 );
                 if(datas.hasNext()){
                     buf.append(LINE_SEPARATOR);
@@ -711,7 +711,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
             for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
                 IfDefMetaData ifdefData = (IfDefMetaData)ifDefMetaDataList.get(i);
                 buf.append(
-                    addIndent(ifdefData.toXML(new StringBuilder()))
+                    addIndent(ifdefData.toXML(new StringBuffer()))
                 );
                 buf.append(LINE_SEPARATOR);
             }
@@ -726,7 +726,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         if(getName() != null){

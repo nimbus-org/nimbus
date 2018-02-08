@@ -144,7 +144,7 @@ public class LogMessageRecordImpl extends MessageRecordImpl
 	 *	LOGCODE;LOGSTR;COUNT;OCCUR TIME;PRIORITY;CATEGORY:CATEGORY
 	 */
 	public String toString(){
-		StringBuilder ret = new StringBuilder() ;
+		StringBuffer ret = new StringBuffer() ;
 		
 		ret.append(super.toString());
 		ret.append(";") ;

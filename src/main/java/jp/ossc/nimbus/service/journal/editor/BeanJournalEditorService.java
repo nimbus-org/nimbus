@@ -278,7 +278,7 @@ public class BeanJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         if(isOutputHeader() && value != null){
             buf.append('[').append(value.getClass().getName()).append(']');
@@ -290,7 +290,7 @@ public class BeanJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         if(value == null){
             return false;

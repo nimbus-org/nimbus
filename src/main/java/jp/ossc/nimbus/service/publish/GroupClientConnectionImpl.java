@@ -141,7 +141,7 @@ public class GroupClientConnectionImpl implements ClientConnection, Serializable
     }
     
     private String concatStringArray(String[] array){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(array == null){
             buf.append((String)null);
         }else{
@@ -334,7 +334,7 @@ public class GroupClientConnectionImpl implements ClientConnection, Serializable
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("id=").append(id);
@@ -477,7 +477,7 @@ public class GroupClientConnectionImpl implements ClientConnection, Serializable
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder(super.toString());
+            final StringBuffer buf = new StringBuffer(super.toString());
             buf.append('{');
             buf.append("subject=").append(subject);
             buf.append(", key=").append(keyPattern == null ? null : keyPattern.pattern());

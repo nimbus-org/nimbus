@@ -439,7 +439,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
         index = index == -1 ? index4
              : (index4 == -1 ? index : Math.min(index, index4));
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0; i < index; i++){
             char c = element.charAt(i);
             buf.append(c);
@@ -479,7 +479,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
              : (index2 == -1 ? index1 : Math.min(index1, index2));
         index = index == -1 ? index3
              : (index3 == -1 ? index : Math.min(index, index3));
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0; i < index; i++){
             char c = element.charAt(i);
             buf.append(c);
@@ -561,7 +561,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
         char escape,
         String nullValue
     ){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(elements != null){
             for(int i = 0; i < elements.length; i++){
                 buf.append(
@@ -592,7 +592,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
         String nullValue,
         boolean isEscapeLineSeparator
     ){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(elements != null){
             for(int i = 0; i < elements.length; i++){
                 buf.append(
@@ -621,7 +621,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
         char separatorEscape,
         String nullValue
     ){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(elements != null){
             for(int i = 0, imax = elements.size(); i < imax; i++){
                 buf.append(
@@ -657,7 +657,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
         String nullValue,
         boolean isEscapeLineSeparator
     ){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(elements != null){
             for(int i = 0, imax = elements.size(); i < imax; i++){
                 buf.append(

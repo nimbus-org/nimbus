@@ -99,17 +99,17 @@ public class MethodJournalEditorService extends ItemJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final MethodJournalData methodData = (MethodJournalData)value;
         makeMethodJournalFormat(finder, key, methodData, buf);
     }
     
-    protected StringBuilder makeMethodJournalFormat(
+    protected StringBuffer makeMethodJournalFormat(
         EditorFinder finder,
         Object key,
         MethodJournalData data,
-        StringBuilder buf
+        StringBuffer buf
     ){
         if(isOutputMessage()){
             final String message = data.getMessage();

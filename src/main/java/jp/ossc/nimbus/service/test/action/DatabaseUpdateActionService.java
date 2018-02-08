@@ -181,7 +181,7 @@ public class DatabaseUpdateActionService extends ServiceBase implements TestActi
                 throw new Exception("Unexpected EOF on updateQueries");
             }
             final List queries = new ArrayList();
-            final StringBuilder buf = new StringBuilder();
+            final StringBuffer buf = new StringBuffer();
             do{
                 if("/".equals(line)){
                     String query = buf.toString();

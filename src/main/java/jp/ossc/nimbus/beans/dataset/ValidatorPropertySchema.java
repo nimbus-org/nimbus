@@ -136,7 +136,7 @@ public class ValidatorPropertySchema extends DefaultPropertySchema{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder(getClass().getName());
+        final StringBuffer buf = new StringBuffer(getClass().getName());
         buf.append('{');
         buf.append("name=").append(name);
         buf.append(",type=").append(type == null ? null : type.getName());

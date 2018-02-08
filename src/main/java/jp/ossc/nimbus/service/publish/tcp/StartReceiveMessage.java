@@ -68,7 +68,7 @@ public class StartReceiveMessage extends ClientMessage{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder(super.toString());
+        StringBuffer buf = new StringBuffer(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", from=").append(from);
         buf.append('}');

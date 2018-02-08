@@ -916,7 +916,7 @@ if(transformed != null){
             }
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("private static ");
         buf.append("final ").append(INTERCEPTOR_CHAIN_CLASS_NAME).append(' ');
         final String fieldName = createInterceptorChainFieldName(
@@ -1052,12 +1052,12 @@ if(transformed != null){
         return clazz;
     }
     
-    private StringBuilder addCatch(StringBuilder buf, CtClass th, String logic){
+    private StringBuffer addCatch(StringBuffer buf, CtClass th, String logic){
         buf.append("catch(").append(th.getName());
         buf.append(" e").append(NOT_TRANSFORMABLE_SUFFIX1);
         String tmpLogic = logic;
         if(tmpLogic.indexOf("$e") != -1){
-            final StringBuilder tmpBuf = new StringBuilder(logic);
+            final StringBuffer tmpBuf = new StringBuffer(logic);
             int index = logic.length();
             while((index = tmpBuf.lastIndexOf("$e", index - 1)) != -1){
                 tmpBuf.replace(
@@ -1072,7 +1072,7 @@ if(transformed != null){
         return buf;
     }
     
-    private StringBuilder addMethodSigniture(StringBuilder buf, CtMethod method) throws NotFoundException{
+    private StringBuffer addMethodSigniture(StringBuffer buf, CtMethod method) throws NotFoundException{
         CtClass[] paramTypes = method.getParameterTypes();
         if(paramTypes == null || paramTypes.length == 0){
             buf.append("null");

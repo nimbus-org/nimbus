@@ -75,7 +75,7 @@ public class ArraySimpleElement extends SimpleElement {
             return super.toString();
         }
         final Object[] array = (Object[])mValue;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, max = array.length; i < max; i++){
             buf.append(array[i]);
             if(i != max - 1){

@@ -142,14 +142,6 @@ public class BeanShellInterpreterService extends ServiceBase
         variables = null;
     }
     
-    public boolean isCompilable(){
-        return false;
-    }
-    
-    public CompiledInterpreter compile(String code) throws EvaluateException{
-        throw new UnsupportedOperationException();
-    }
-    
     public Object evaluate(String code) throws EvaluateException{
         return evaluate(code, null);
     }
@@ -421,7 +413,7 @@ public class BeanShellInterpreterService extends ServiceBase
         try{
             System.out.println(interpreter.evaluate(code.toString()));
         }catch(Throwable e){
-            StringBuilder buf = new StringBuilder();
+            StringBuffer buf = new StringBuffer();
             final String lineSeparator = System.getProperty("line.separator");
             buf.append("Exception occuers :").append(e.toString()).append(lineSeparator);
             final StackTraceElement[] elemss = e.getStackTrace();

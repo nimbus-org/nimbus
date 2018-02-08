@@ -269,37 +269,37 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(DEFAULT_LOG_TAG_NAME).append('>');
         if(debug != null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(debug.toXML(new StringBuilder()))
+                addIndent(debug.toXML(new StringBuffer()))
             );
         }
         if(information != null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(information.toXML(new StringBuilder()))
+                addIndent(information.toXML(new StringBuffer()))
             );
         }
         if(warning != null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(warning.toXML(new StringBuilder()))
+                addIndent(warning.toXML(new StringBuffer()))
             );
         }
         if(error != null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(error.toXML(new StringBuilder()))
+                addIndent(error.toXML(new StringBuffer()))
             );
         }
         if(fatal != null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(fatal.toXML(new StringBuilder()))
+                addIndent(fatal.toXML(new StringBuffer()))
             );
         }
         buf.append(LINE_SEPARATOR);
@@ -438,7 +438,7 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
             }
         }
         
-        public StringBuilder toXML(StringBuilder buf){
+        public StringBuffer toXML(StringBuffer buf){
             appendComment(buf);
             buf.append('<').append(tagName);
             buf.append(' ').append(OUTPUT_ATTRIBUTE_NAME)

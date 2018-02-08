@@ -122,7 +122,7 @@ public class DataSetJournalEditorService extends BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final DataSet bean = (DataSet)value;
         boolean isMake = false;
@@ -143,21 +143,21 @@ public class DataSetJournalEditorService extends BlockJournalEditorServiceBase
         return true;
     }
     
-    protected StringBuilder makeDataSetNameFormat(
+    protected StringBuffer makeDataSetNameFormat(
         EditorFinder finder,
         Object key,
         DataSet dataSet,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(NAME_DATASET).append(dataSet.getName());
         return buf;
     }
     
-    protected StringBuilder makeHeadersFormat(
+    protected StringBuffer makeHeadersFormat(
         EditorFinder finder,
         Object key,
         DataSet dataSet,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(HEADERS_HEADER);
         final String[] names = dataSet.getHeaderNames();
@@ -167,7 +167,7 @@ public class DataSetJournalEditorService extends BlockJournalEditorServiceBase
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0; i < names.length; i++){
             Header header = dataSet.getHeader(names[i]);
             if(!enabledHeaderSet.isEmpty()
@@ -184,11 +184,11 @@ public class DataSetJournalEditorService extends BlockJournalEditorServiceBase
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeRecordListsFormat(
+    protected StringBuffer makeRecordListsFormat(
         EditorFinder finder,
         Object key,
         DataSet dataSet,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(RECORD_LISTS_HEADER);
         final String[] names = dataSet.getRecordListNames();
@@ -198,7 +198,7 @@ public class DataSetJournalEditorService extends BlockJournalEditorServiceBase
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0; i < names.length; i++){
             RecordList list = dataSet.getRecordList(names[i]);
             if(!enabledRecordListSet.isEmpty()

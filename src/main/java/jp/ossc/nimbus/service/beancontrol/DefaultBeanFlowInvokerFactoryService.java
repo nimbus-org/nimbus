@@ -480,7 +480,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("\"No.\"");
         if(isOutputJournalMetricsCount){
             buf.append(",\"Count\"");

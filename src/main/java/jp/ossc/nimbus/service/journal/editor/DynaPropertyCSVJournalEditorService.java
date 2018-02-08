@@ -71,11 +71,11 @@ public class DynaPropertyCSVJournalEditorService
                 
                 private static final long serialVersionUID = 8869756517291240592L;
                 
-                protected StringBuilder toString(
+                protected StringBuffer toString(
                     EditorFinder finder,
                     Object key,
                     DynaProperty prop,
-                    StringBuilder buf
+                    StringBuffer buf
                 ){
                     return makeNameFormat(finder, key, prop, buf);
                 }
@@ -87,11 +87,11 @@ public class DynaPropertyCSVJournalEditorService
                 
                 private static final long serialVersionUID = -5418879449848633884L;
                 
-                protected StringBuilder toString(
+                protected StringBuffer toString(
                     EditorFinder finder,
                     Object key,
                     DynaProperty prop,
-                    StringBuilder buf
+                    StringBuffer buf
                 ){
                     return makeTypeFormat(finder, key, prop, buf);
                 }
@@ -103,11 +103,11 @@ public class DynaPropertyCSVJournalEditorService
                 
                 private static final long serialVersionUID = -4868135956616505530L;
                 
-                protected StringBuilder toString(
+                protected StringBuffer toString(
                     EditorFinder finder,
                     Object key,
                     DynaProperty prop,
-                    StringBuilder buf
+                    StringBuffer buf
                 ){
                     return makeIsIndexedFormat(finder, key, prop, buf);
                 }
@@ -119,11 +119,11 @@ public class DynaPropertyCSVJournalEditorService
                 
                 private static final long serialVersionUID = 7193858190405094020L;
                 
-                protected StringBuilder toString(
+                protected StringBuffer toString(
                     EditorFinder finder,
                     Object key,
                     DynaProperty prop,
-                    StringBuilder buf
+                    StringBuffer buf
                 ){
                     return makeIsMappedFormat(finder, key, prop, buf);
                 }
@@ -138,15 +138,15 @@ public class DynaPropertyCSVJournalEditorService
         private static final long serialVersionUID = -3475821913458633134L;
         
         public String toString(EditorFinder finder, Object key, Object value){
-            final StringBuilder buf
-                 = new StringBuilder(super.toString(finder, key, value));
+            final StringBuffer buf
+                 = new StringBuffer(super.toString(finder, key, value));
             return toString(finder, key, (DynaProperty)value, buf).toString();
         }
-        protected abstract StringBuilder toString(
+        protected abstract StringBuffer toString(
             EditorFinder finder,
             Object key,
             DynaProperty prop,
-            StringBuilder buf
+            StringBuffer buf
         );
     }
     
@@ -189,20 +189,20 @@ public class DynaPropertyCSVJournalEditorService
         }
     }
     
-    protected StringBuilder makeNameFormat(
+    protected StringBuffer makeNameFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(prop.getName());
     }
     
-    protected StringBuilder makeTypeFormat(
+    protected StringBuffer makeTypeFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuilder buf
+        StringBuffer buf
     ){
         makeObjectFormat(
             finder,
@@ -213,20 +213,20 @@ public class DynaPropertyCSVJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeIsIndexedFormat(
+    protected StringBuffer makeIsIndexedFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(prop.isIndexed());
     }
     
-    protected StringBuilder makeIsMappedFormat(
+    protected StringBuffer makeIsMappedFormat(
         EditorFinder finder,
         Object key,
         DynaProperty prop,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(prop.isMapped());
     }

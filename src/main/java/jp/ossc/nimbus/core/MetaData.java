@@ -136,11 +136,11 @@ public abstract class MetaData implements Serializable, Cloneable{
      *
      * @return XML形式文字列
      */
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         return buf;
     }
     
-    protected StringBuilder appendComment(StringBuilder buf){
+    protected StringBuffer appendComment(StringBuffer buf){
         final String comment = getComment();
         if(comment != null){
             buf.append("<!--");
@@ -166,7 +166,7 @@ public abstract class MetaData implements Serializable, Cloneable{
      * @param buf 文字列バッファ
      * @return 文字列バッファ
      */
-    protected StringBuilder addIndent(StringBuilder buf){
+    protected StringBuffer addIndent(StringBuffer buf){
         return setIndent(buf, 1);
     }
     
@@ -187,7 +187,7 @@ public abstract class MetaData implements Serializable, Cloneable{
      * @param indent インデント数
      * @return 文字列バッファ
      */
-    protected StringBuilder setIndent(StringBuilder buf, int indent){
+    protected StringBuffer setIndent(StringBuffer buf, int indent){
         final String str = buf.toString();
         buf.setLength(0);
         return buf.append(setIndent(str, indent));
@@ -204,7 +204,7 @@ public abstract class MetaData implements Serializable, Cloneable{
         if(str == null){
             return null;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0; i < indent; i++){
             buf.append(INDENT_STRING);
         }
@@ -537,7 +537,7 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     public static String trim(String str){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         int line = 0;
         boolean isFirst = true;
         for(int i = 0, max = str.length(); i < max; i++){

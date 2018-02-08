@@ -59,7 +59,7 @@ public class HexByteOperator {
 	 */
 	public  static String bytesToHexString(byte[] compByte){
 		// バイトの配列を１６進数の整数で表したStringに変換
-		StringBuilder stringBuff = new StringBuilder("");
+		StringBuffer stringBuff = new StringBuffer("");
 		for (int i=0; i<compByte.length; i++) {
 			int ival = (compByte[i] < 0) ? (int)compByte[i] + 256 : (int)compByte[i] ;
 			String tmpStr = Integer.toHexString(ival);

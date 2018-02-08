@@ -59,7 +59,7 @@ public class ClassJournalEditorService extends ImmutableJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final Class clazz = (Class)value;
         String className = clazz.getName();

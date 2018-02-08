@@ -129,7 +129,7 @@ public class FacadeValueJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         boolean isMake = super.processBlock(
             finder,
@@ -149,11 +149,11 @@ public class FacadeValueJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeHeadersFormat(
+    protected StringBuffer makeHeadersFormat(
         EditorFinder finder,
         Object key,
         FacadeValue facadeVal,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(HEADERS_HEADER);
         final Iterator names = facadeVal.getHederKeys().iterator();
@@ -163,7 +163,7 @@ public class FacadeValueJournalEditorService
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         while(names.hasNext()){
             final String name = (String)names.next();
             if(!enabledHeaderSet.isEmpty()

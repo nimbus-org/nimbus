@@ -144,7 +144,7 @@ public class UnitOfWorkJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final UnitOfWork unitOfWork = (UnitOfWork)value;
         boolean isMake = false;
@@ -204,11 +204,11 @@ public class UnitOfWorkJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeStatusFormat(
+    protected StringBuffer makeStatusFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(STATUS_HEADER);
         switch(unitOfWork.getStatus()){
@@ -228,60 +228,60 @@ public class UnitOfWorkJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeUnitOfWorkSizeFormat(
+    protected StringBuffer makeUnitOfWorkSizeFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(UNIT_OF_WORK_SIZE_HEADER)
             .append(unitOfWork.unitOfWorkSize());
     }
     
-    protected StringBuilder makeUnitOfWorkExecuteSizeFormat(
+    protected StringBuffer makeUnitOfWorkExecuteSizeFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(UNIT_OF_WORK_EXECUTE_SIZE_HEADER)
             .append(unitOfWork.unitOfWorkExecuteSize());
     }
     
-    protected StringBuilder makeCommandSizeFormat(
+    protected StringBuffer makeCommandSizeFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(COMMAND_SIZE_HEADER).append(unitOfWork.commandSize());
     }
     
-    protected StringBuilder makeCommandExecuteSizeFormat(
+    protected StringBuffer makeCommandExecuteSizeFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(COMMAND_EXECUTE_SIZE_HEADER)
             .append(unitOfWork.commandExecuteSize());
     }
     
-    protected StringBuilder makeExceptionCountFormat(
+    protected StringBuffer makeExceptionCountFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(EXCEPTION_COUNT_HEADER)
             .append(unitOfWork.getExceptionCount());
     }
     
-    protected StringBuilder makeExceptionsFormat(
+    protected StringBuffer makeExceptionsFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(EXCEPTIONS_HEADER);
         final Throwable[] exceptions = unitOfWork.getExceptions();
@@ -291,7 +291,7 @@ public class UnitOfWorkJournalEditorService
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0; i < exceptions.length; i++){
             makeObjectFormat(finder, null, exceptions[i], subBuf);
             if(i != exceptions.length - 1){
@@ -302,11 +302,11 @@ public class UnitOfWorkJournalEditorService
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeCommandBasesFormat(
+    protected StringBuffer makeCommandBasesFormat(
         EditorFinder finder,
         Object key,
         UnitOfWork unitOfWork,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(COMMANDS_HEADER);
         if(unitOfWork.size() == 0){
@@ -315,7 +315,7 @@ public class UnitOfWorkJournalEditorService
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0, imax = unitOfWork.size(); i < imax; i++){
             makeObjectFormat(finder, null, unitOfWork.getCommand(i), subBuf);
             if(i != imax - 1){

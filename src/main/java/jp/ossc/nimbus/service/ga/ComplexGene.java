@@ -241,7 +241,7 @@ public class ComplexGene extends AbstractGene{
         if(params == null){
             return null;
         }else{
-            StringBuilder buf = new StringBuilder();
+            StringBuffer buf = new StringBuffer();
             buf.append('[');
             Iterator itr = params.values().iterator();
             while(itr.hasNext()){

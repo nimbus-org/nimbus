@@ -158,7 +158,7 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder(super.toString());
+        StringBuffer buf = new StringBuffer(super.toString());
         buf.append('{');
         buf.append("input=").append(input);
         buf.append(", output=").append(output);

@@ -207,7 +207,7 @@ public class ConcentrateResponse implements Serializable{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder(super.toString());
+        final StringBuffer buf = new StringBuffer(super.toString());
         buf.append("{group=").append(group);
         buf.append(",date=").append(date);
         buf.append(",key=").append(key);

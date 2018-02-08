@@ -87,7 +87,7 @@ public class ClientMessage implements Externalizable{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("messageType=").append(messageType);

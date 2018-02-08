@@ -71,7 +71,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	 * @returnÅ@åªç›ÇÃSQLï∂
 	 */
 	private String getCurrentSql(){
-	    final StringBuilder buff = new StringBuilder();
+	    final StringBuffer buff = new StringBuffer();
 	    for( int i = 0 ; i < originalSqlSeps.length ; i++ ){
 	        buff.append(originalSqlSeps[i]);
 	        if( bEndIsQuestion || i != ( originalSqlSeps.length -1) ){

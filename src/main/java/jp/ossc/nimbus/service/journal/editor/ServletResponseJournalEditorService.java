@@ -111,7 +111,7 @@ public class ServletResponseJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final ServletResponse response = (ServletResponse)value;
         boolean isMake = false;
@@ -154,31 +154,31 @@ public class ServletResponseJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeBufferSizeFormat(
+    protected StringBuffer makeBufferSizeFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(BUFFER_SIZE_HEADER)
             .append(response.getBufferSize());
     }
     
-    protected StringBuilder makeCharacterEncodingFormat(
+    protected StringBuffer makeCharacterEncodingFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CHARACTER_ENCODING_HEADER)
             .append(response.getCharacterEncoding());
     }
     
-    protected StringBuilder makeContentTypeFormat(
+    protected StringBuffer makeContentTypeFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         try{
             return buf.append(CONTENT_TYPE_HEADER)
@@ -188,11 +188,11 @@ public class ServletResponseJournalEditorService
         }
     }
     
-    protected StringBuilder makeLocaleFormat(
+    protected StringBuffer makeLocaleFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(LOCALE_HEADER);
         makeObjectFormat(
@@ -204,11 +204,11 @@ public class ServletResponseJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeIsCommittedFormat(
+    protected StringBuffer makeIsCommittedFormat(
         EditorFinder finder,
         Object key,
         ServletResponse response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(IS_COMMITTED_HEADER)
             .append(response.isCommitted());

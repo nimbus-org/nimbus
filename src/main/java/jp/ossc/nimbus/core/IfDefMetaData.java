@@ -197,7 +197,7 @@ public class IfDefMetaData extends MetaData
         this.element = element;
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(IFDEF_TAG_NAME);
         buf.append(' ').append(NAME_ATTRIBUTE_NAME)
@@ -210,7 +210,7 @@ public class IfDefMetaData extends MetaData
             final Iterator datas = childrenMetaData.iterator();
             while(datas.hasNext()){
                 buf.append(
-                    addIndent(((MetaData)datas.next()).toXML(new StringBuilder()))
+                    addIndent(((MetaData)datas.next()).toXML(new StringBuffer()))
                 );
                 if(datas.hasNext()){
                     buf.append(LINE_SEPARATOR);

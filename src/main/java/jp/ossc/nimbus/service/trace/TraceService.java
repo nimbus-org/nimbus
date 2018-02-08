@@ -356,7 +356,7 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
      * 
      */
 	private String getParameterStrings(Object[] params){
-		final StringBuilder buff = new StringBuilder();
+		final StringBuffer buff = new StringBuffer();
 		if( params == null ) {
 			buff.append(params);
 			return buff.toString();

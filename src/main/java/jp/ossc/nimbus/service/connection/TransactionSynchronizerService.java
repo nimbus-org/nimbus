@@ -187,7 +187,7 @@ public class TransactionSynchronizerService extends ServiceBase
     }
     
     public long countTransactionLog() throws Exception{
-        final StringBuilder sql = new StringBuilder();
+        final StringBuffer sql = new StringBuffer();
         sql.append("select count(1) from ").append(getTransactionTableName());
         Connection sourceConnection = sourceConnectionFactory.getConnection();
         long result = 0;
@@ -247,7 +247,7 @@ public class TransactionSynchronizerService extends ServiceBase
              transactionManager = transactionManagerFactory.getTransactionManager();
         }
         try{
-            final StringBuilder sql = new StringBuilder();
+            final StringBuffer sql = new StringBuffer();
             sql.append("select ");
             sql.append(TransactionLoggingConnection.TRANSACTION_TABLE_COLUMN_NAME_SEQNO).append(',');
             sql.append(TransactionLoggingConnection.TRANSACTION_TABLE_COLUMN_NAME_QUERY).append(',');

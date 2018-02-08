@@ -112,7 +112,7 @@ public class StaticInvokeMetaData extends InvokeMetaData
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(STATIC_INVOKE_TAG_NAME);
         if(code != null){
@@ -131,7 +131,7 @@ public class StaticInvokeMetaData extends InvokeMetaData
                 buf.append(LINE_SEPARATOR);
                 for(int i = 0, imax = arguments.size(); i < imax; i++){
                     buf.append(
-                        addIndent(((MetaData)arguments.get(i)).toXML(new StringBuilder()))
+                        addIndent(((MetaData)arguments.get(i)).toXML(new StringBuffer()))
                     );
                     if(i != imax - 1){
                         buf.append(LINE_SEPARATOR);
