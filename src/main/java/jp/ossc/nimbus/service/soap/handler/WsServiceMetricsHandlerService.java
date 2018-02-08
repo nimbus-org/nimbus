@@ -40,6 +40,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.text.SimpleDateFormat;
 
 import javax.xml.namespace.QName;
@@ -73,7 +75,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
     private static final Comparator COMP = new MetricsInfoComparator();
     private static final String LINE_SEP = System.getProperty("line.separator");
     
-    private Map metricsInfos;
+    private ConcurrentMap metricsInfos;
     private boolean isEnabled = true;
     private boolean isCalculateOnlyNormal;
     private String dateFormat = DEFAULT_DATE_FORMAT;
@@ -264,9 +266,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         if(metricsInfos == null){
             return new HashMap();
         }
-        synchronized(metricsInfos){
-            return new HashMap(metricsInfos);
-        }
+        return new HashMap(metricsInfos);
     }
     
     // WsServiceMetricsHandlerServiceMBeanÇÃJavaDoc
@@ -432,7 +432,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
      * @exception Exception ê∂ê¨èàóùÇ…é∏îsÇµÇΩèÍçá
      */
     public void createService() throws Exception{
-        metricsInfos = Collections.synchronizedMap(new HashMap());
+        metricsInfos = new ConcurrentHashMap();
         performance = new PerformanceThreadLocal();
         keyAndCategoryMap = new HashMap();
     }
@@ -511,15 +511,15 @@ public class WsServiceMetricsHandlerService extends ServiceBase
                 .append(context.get(MessageContext.WSDL_PORT)).append('#')
                 .append(context.get(MessageContext.WSDL_OPERATION));
             String key = keyBuf.toString();
-            MetricsInfo metricsInfo = null;
-            synchronized(metricsInfos){
-                metricsInfo = (MetricsInfo)metricsInfos.get(key);
-                if(metricsInfo == null){
-                    metricsInfo = new MetricsInfo(
-                        key,
-                        isCalculateOnlyNormal
-                    );
-                    metricsInfos.put(key, metricsInfo);
+            MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(key);
+            if(metricsInfo == null){
+                metricsInfo = new MetricsInfo(
+                    key,
+                    isCalculateOnlyNormal
+                );
+                MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(key, metricsInfo);
+                if(old != null){
+                    metricsInfo = old;
                 }
             }
             metricsInfo.calculate(performance.performance(), false, false);
@@ -534,15 +534,15 @@ public class WsServiceMetricsHandlerService extends ServiceBase
             .append(context.get(MessageContext.WSDL_PORT)).append('#')
             .append(context.get(MessageContext.WSDL_OPERATION));
         String key = keyBuf.toString();
-        MetricsInfo metricsInfo = null;
-        synchronized(metricsInfos){
-            metricsInfo = (MetricsInfo)metricsInfos.get(key);
-            if(metricsInfo == null){
-                metricsInfo = new MetricsInfo(
-                    key,
-                    isCalculateOnlyNormal
-                );
-                metricsInfos.put(key, metricsInfo);
+        MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(key);
+        if(metricsInfo == null){
+            metricsInfo = new MetricsInfo(
+                key,
+                isCalculateOnlyNormal
+            );
+            MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(key, metricsInfo);
+            if(old != null){
+                metricsInfo = old;
             }
         }
         metricsInfo.calculate(performance.performance(), true, false);

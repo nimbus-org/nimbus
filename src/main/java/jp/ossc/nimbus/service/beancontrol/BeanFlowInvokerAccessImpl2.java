@@ -33,6 +33,8 @@ package jp.ossc.nimbus.service.beancontrol;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.*;
 import java.beans.PropertyEditor;
 import java.sql.ResultSet;
@@ -2957,7 +2959,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
 
         private boolean isJournal = true;
 
-        private Map methodCache = Collections.synchronizedMap(new HashMap());
+        private ConcurrentMap methodCache = new ConcurrentHashMap();
         private BeanFlowCoverageImpl coverage;
 
         public InvokeMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
@@ -3045,9 +3047,6 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 paramTypes.add(typeClass);
             }
             Class targetClass = target.getClass();
-            if(methodCache == null){
-                methodCache = Collections.synchronizedMap(new HashMap());
-            }
             Method method = (Method)methodCache.get(targetClass);
             if(method == null){
                 final Class[] paramTypeArray = (Class[])paramTypes.toArray(new Class[paramTypes.size()]);
@@ -3079,7 +3078,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                         target.getClass().getName() + '#' + getSignature(params)
                     );
                 }
-                methodCache.put(targetClass, method);
+                methodCache.putIfAbsent(targetClass, method);
             }
 
             final Journal journal = getJournal(InvokeMetaData.this);

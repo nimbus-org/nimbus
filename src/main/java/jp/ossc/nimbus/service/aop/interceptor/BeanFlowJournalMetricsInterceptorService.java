@@ -32,6 +32,8 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.text.SimpleDateFormat;
 
 import jp.ossc.nimbus.core.*;
@@ -76,7 +78,7 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
     private Journal journal;
     private ServiceName editorFinderServiceName;
     private EditorFinder editorFinder;
-    private Map metricsInfos;
+    private ConcurrentMap metricsInfos;
     private boolean isEnabled = true;
     private boolean isCalculateOnlyNormal;
     private String dateFormat = DEFAULT_DATE_FORMAT;
@@ -287,9 +289,7 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
         if(metricsInfos == null){
             return new HashMap();
         }
-        synchronized(metricsInfos){
-            return new HashMap(metricsInfos);
-        }
+        return new HashMap(metricsInfos);
     }
     
     // BeanFlowJournalMetricsInterceptorServiceMBeanÇÃJavaDoc
@@ -473,7 +473,7 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
      * @exception Exception ê∂ê¨èàóùÇ…é∏îsÇµÇΩèÍçá
      */
     public void createService() throws Exception{
-        metricsInfos = Collections.synchronizedMap(new HashMap());
+        metricsInfos = new ConcurrentHashMap();
         flowAndCategoryMap = new HashMap();
     }
     /**
@@ -584,17 +584,18 @@ public class BeanFlowJournalMetricsInterceptorService extends ServiceBase
                     BeanFlowInvoker invoker = (BeanFlowInvoker)target;
                     String flow = invoker.getFlowName();
                     MetricsInfo metricsInfo = null;
-                    synchronized(metricsInfos){
-                        metricsInfo = (MetricsInfo)metricsInfos.get(flow);
-                        if(metricsInfo == null){
-                            metricsInfo = new MetricsInfo(
-                                flow,
-                                isCalculateOnlyNormal
-                            );
-                            metricsInfos.put(flow, metricsInfo);
+                    metricsInfo = (MetricsInfo)metricsInfos.get(flow);
+                    if(metricsInfo == null){
+                        metricsInfo = new MetricsInfo(
+                            flow,
+                            isCalculateOnlyNormal
+                        );
+                        MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(flow, metricsInfo);
+                        if(old != null){
+                            metricsInfo = old;
                         }
-                        metricsInfo.calculate(journalStr == null ? 0 : journalStr.length(), isException, isError);
                     }
+                    metricsInfo.calculate(journalStr == null ? 0 : journalStr.length(), isException, isError);
                 }
             }
         }

@@ -36,6 +36,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.math.*;
 import java.io.Serializable;
 
@@ -113,8 +115,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
      * オブジェクトの管理用マップ。<p>
      * キーはオブジェクト文字列、値はオブジェクト。<br>
      */
-    protected static final Map objectManager
-         = Collections.synchronizedMap(new HashMap());
+    protected static final ConcurrentMap objectManager = new ConcurrentHashMap();
     
     /**
      * スキーマ文字列。<p>
@@ -471,7 +472,10 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                 }
             }
         }
-        objectManager.put(val, object);
+        Object old = objectManager.putIfAbsent(val, object);
+        if(old != null){
+            object = old;
+        }
         return object;
     }
     

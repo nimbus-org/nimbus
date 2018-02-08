@@ -33,6 +33,7 @@ package jp.ossc.nimbus.service.aop;
 
 import java.io.*;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.interceptor.MetricsInfo;
@@ -77,7 +78,7 @@ public class DefaultInterceptorChain
     /**
      * キーが{@link Interceptor}または{@link Invoker}、値が{@link MetricsInfo}のマップ。<p>
      */
-    protected Map metricsInfos;
+    protected ConcurrentMap metricsInfos;
     
     /**
      * 正常応答を返した場合だけ処理時間等の計算を行うかどうかのフラグ。<p>
@@ -120,7 +121,7 @@ public class DefaultInterceptorChain
      *
      * @param infos 性能統計を格納するマップ。キーが{@link Interceptor}または{@link Invoker}、値が{@link MetricsInfo}
      */
-    public void setMetricsInfoMap(Map infos){
+    public void setMetricsInfoMap(ConcurrentMap infos){
         metricsInfos = infos;
     }
     
@@ -129,7 +130,7 @@ public class DefaultInterceptorChain
      *
      * @return 性能統計を格納するマップ。キーが{@link Interceptor}または{@link Invoker}、値が{@link MetricsInfo}
      */
-    public Map getMetricsInfoMap(){
+    public ConcurrentMap getMetricsInfoMap(){
         return metricsInfos;
     }
     
@@ -175,17 +176,18 @@ public class DefaultInterceptorChain
                 }finally{
                     if(metricsInfos != null){
                         long end = System.currentTimeMillis();
-                        synchronized(metricsInfos){
-                            MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(ivk);
-                            if(metricsInfo == null){
-                                metricsInfo = new MetricsInfo(
-                                    createKey(ivk),
-                                    isCalculateOnlyNormal
-                                );
-                                metricsInfos.put(ivk, metricsInfo);
+                        MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(ivk);
+                        if(metricsInfo == null){
+                            metricsInfo = new MetricsInfo(
+                                createKey(ivk),
+                                isCalculateOnlyNormal
+                            );
+                            MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(ivk, metricsInfo);
+                            if(old != null){
+                                metricsInfo = old;
                             }
-                            metricsInfo.calculate(end - start, isException, isError);
                         }
+                        metricsInfo.calculate(end - start, isException, isError);
                     }
                 }
             }else{
@@ -208,17 +210,18 @@ public class DefaultInterceptorChain
                 }finally{
                     if(metricsInfos != null){
                         long end = System.currentTimeMillis();
-                        synchronized(metricsInfos){
-                            MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(interceptor);
-                            if(metricsInfo == null){
-                                metricsInfo = new MetricsInfo(
-                                    createKey(interceptor),
-                                    isCalculateOnlyNormal
-                                );
-                                metricsInfos.put(interceptor, metricsInfo);
+                        MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(interceptor);
+                        if(metricsInfo == null){
+                            metricsInfo = new MetricsInfo(
+                                createKey(interceptor),
+                                isCalculateOnlyNormal
+                            );
+                            MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(interceptor, metricsInfo);
+                            if(old != null){
+                                metricsInfo = old;
                             }
-                            metricsInfo.calculate(end - start, isException, isError);
                         }
+                        metricsInfo.calculate(end - start, isException, isError);
                     }
                 }
             }else{
@@ -235,17 +238,18 @@ public class DefaultInterceptorChain
                     }finally{
                         if(metricsInfos != null){
                             long end = System.currentTimeMillis();
-                            synchronized(metricsInfos){
-                                MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(ivk);
-                                if(metricsInfo == null){
-                                    metricsInfo = new MetricsInfo(
-                                        createKey(ivk),
-                                        isCalculateOnlyNormal
-                                    );
-                                    metricsInfos.put(ivk, metricsInfo);
+                            MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(ivk);
+                            if(metricsInfo == null){
+                                metricsInfo = new MetricsInfo(
+                                    createKey(ivk),
+                                    isCalculateOnlyNormal
+                                );
+                                MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(ivk, metricsInfo);
+                                if(old != null){
+                                    metricsInfo = old;
                                 }
-                                metricsInfo.calculate(end - start, isException, isError);
                             }
+                            metricsInfo.calculate(end - start, isException, isError);
                         }
                     }
                 }else{
