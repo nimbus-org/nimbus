@@ -128,7 +128,7 @@ public class ThrowableSimpleElement extends SimpleElement {
             return super.toString();
         }
         Throwable e = (Throwable)mValue;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(MSG_TITLE).append(e).append(LINE_SEP);
         final StackTraceElement[] elemss = e.getStackTrace();
         if(elemss != null){

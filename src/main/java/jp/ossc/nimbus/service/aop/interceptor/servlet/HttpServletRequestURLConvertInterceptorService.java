@@ -159,7 +159,7 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
                     List paramIndexList = rp.getParameterPathIndex();
                     String servletPath = request.getServletPath();
                     if (servletPath != null && !"".equals(servletPath)) {
-                        StringBuilder sb = new StringBuilder();
+                        StringBuffer sb = new StringBuffer();
                         List list = ResourcePath.splitPath(servletPath);
                         for (int j = 0; j < list.size(); j++) {
                             boolean isAdd = true;
@@ -177,7 +177,7 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
                     }
                     String pathInfo = request.getPathInfo();
                     if (pathInfo != null && !"".equals(pathInfo)) {
-                        StringBuilder sb = new StringBuilder();
+                        StringBuffer sb = new StringBuffer();
                         List list = ResourcePath.splitPath(pathInfo);
                         for (int j = 0; j < list.size(); j++) {
                             boolean isAdd = true;
@@ -222,7 +222,7 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
         }
 
         public String getRequestURI() {
-            StringBuilder uri = new StringBuilder();
+            StringBuffer uri = new StringBuffer();
             uri.append(getContextPath());
             if(getServletPath() != null){
                 uri.append(getServletPath());
@@ -329,7 +329,7 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
                 String pe = (String) peo;
                 String p = (String) paths.get(i);
                 if (i == pathElements.size() - 1) {
-                    StringBuilder sb = new StringBuilder(p);
+                    StringBuffer sb = new StringBuffer(p);
                     for (int j = i; j < paths.size(); j++) {
                         sb.append(paths.get(j));
                     }
@@ -356,7 +356,7 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
                 ParameterPath pp = (ParameterPath) pathElements.get(index.intValue());
                 result = pp.parseParameter((String) paths.get(index.intValue()), result);
             }
-            StringBuilder sb = new StringBuilder();
+            StringBuffer sb = new StringBuffer();
             for (int i = 0; i < paths.size(); i++) {
                 String p = (String) paths.get(i);
                 boolean isAdd = true;

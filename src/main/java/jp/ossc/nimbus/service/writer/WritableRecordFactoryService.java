@@ -396,7 +396,7 @@ public class WritableRecordFactoryService extends ServiceBase
             return null;
         }
         List result = new ArrayList();
-        StringBuilder word = new StringBuilder("");
+        StringBuffer word = new StringBuffer("");
         boolean isStartKey = false;
         boolean isEscape = false;
         for(int i = 0, max = format.length(); i < max; i++){

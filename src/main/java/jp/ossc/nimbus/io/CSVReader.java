@@ -466,7 +466,7 @@ public class CSVReader extends LineNumberReader{
         if(line.length() == 0){
             return csv;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         boolean inEnclosure = false;
         boolean isEncElement = false;
         do{
@@ -593,7 +593,7 @@ public class CSVReader extends LineNumberReader{
      * @param buf •¶Žš—ñ
      * @return ƒgƒŠƒ€‚³‚ê‚½•¶Žš—ñ
      */
-    protected static StringBuilder trim(StringBuilder buf){
+    protected static StringBuffer trim(StringBuffer buf){
         int index = 0;
         for(int i = 0, max = buf.length(); i < max; i++){
             final char c = buf.charAt(i);

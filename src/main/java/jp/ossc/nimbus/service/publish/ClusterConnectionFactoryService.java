@@ -295,7 +295,7 @@ public class ClusterConnectionFactoryService extends ServiceBase
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder();
+            final StringBuffer buf = new StringBuffer();
             buf.append(super.toString());
             buf.append('{');
             buf.append("clusterClientConnectionFactory=").append(clusterClientConnectionFactory);

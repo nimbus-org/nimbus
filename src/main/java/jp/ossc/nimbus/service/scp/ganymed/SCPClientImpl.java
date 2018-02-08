@@ -348,7 +348,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
         if(b == -1){
             return b;
         }else if(b == 1 || b == 2){
-            StringBuilder sb = new StringBuilder();
+            StringBuffer sb = new StringBuffer();
             int c;
             do{
                 c = in.read();

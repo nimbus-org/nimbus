@@ -45,7 +45,7 @@ public class TextMessageFormat extends CommonMessageFormat
 			return null;
 		}
 		//プロパティ部
-		StringBuilder ret = new StringBuilder("[property]");
+		StringBuffer ret = new StringBuffer("[property]");
 		ret.append(dumpProperties(msg));
 		ret.append("[payload]");
 		TextMessage textMsg = (TextMessage)msg;

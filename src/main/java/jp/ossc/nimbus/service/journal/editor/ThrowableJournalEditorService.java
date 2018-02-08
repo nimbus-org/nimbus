@@ -74,7 +74,7 @@ public class ThrowableJournalEditorService extends
     }
 
     protected String toString(EditorFinder finder, Object key, Object value,
-            StringBuilder buf) {
+            StringBuffer buf) {
         Throwable e = (Throwable) value;
         if (e != null) {
             buf.append("Exception occuers :").append(e.toString()).append(LINE_SEP);

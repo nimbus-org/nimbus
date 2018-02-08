@@ -86,7 +86,7 @@ public class ByteArrayJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final byte[] bytes = (byte[])value;
         switch(convertModeValue){
@@ -109,11 +109,11 @@ public class ByteArrayJournalEditorService
         return buf.toString();
     }
     
-    protected StringBuilder makeHexStringFormat(
+    protected StringBuffer makeHexStringFormat(
         EditorFinder finder,
         Object key,
         byte[] bytes,
-        StringBuilder buf
+        StringBuffer buf
     ){
         for(int i = 0; i < bytes.length; i++){
             String hex = Integer.toHexString(((int)bytes[i]) & 0x000000FF).toUpperCase();
@@ -128,11 +128,11 @@ public class ByteArrayJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeDecimalStringFormat(
+    protected StringBuffer makeDecimalStringFormat(
         EditorFinder finder,
         Object key,
         byte[] bytes,
-        StringBuilder buf
+        StringBuffer buf
     ){
         for(int i = 0; i < bytes.length; i++){
             String decimal = Byte.toString(bytes[i]);
@@ -144,11 +144,11 @@ public class ByteArrayJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeOctalStringFormat(
+    protected StringBuffer makeOctalStringFormat(
         EditorFinder finder,
         Object key,
         byte[] bytes,
-        StringBuilder buf
+        StringBuffer buf
     ){
         for(int i = 0; i < bytes.length; i++){
             String octal = Integer.toOctalString(((int)bytes[i]) & 0x000000FF).toUpperCase();
@@ -165,11 +165,11 @@ public class ByteArrayJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeEncodeStringFormat(
+    protected StringBuffer makeEncodeStringFormat(
         EditorFinder finder,
         Object key,
         byte[] bytes,
-        StringBuilder buf
+        StringBuffer buf
     ){
         try{
             buf.append(new String(bytes, encode));
@@ -179,11 +179,11 @@ public class ByteArrayJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeLengthStringFormat(
+    protected StringBuffer makeLengthStringFormat(
         EditorFinder finder,
         Object key,
         byte[] bytes,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(Byte.TYPE.getName()).append('[').append(bytes.length).append(']');
     }

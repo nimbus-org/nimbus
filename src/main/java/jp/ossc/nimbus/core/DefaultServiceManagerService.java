@@ -2426,7 +2426,7 @@ public class DefaultServiceManagerService extends ServiceBase
             f = targetClazz.getField(name);
         }catch(NoSuchFieldException e){
             if(name.length() != 0 && Character.isUpperCase(name.charAt(0))){
-                StringBuilder tmpName = new StringBuilder();
+                StringBuffer tmpName = new StringBuffer();
                 tmpName.append(Character.toLowerCase(name.charAt(0)));
                 if(name.length() > 1){
                     tmpName.append(name.substring(1));

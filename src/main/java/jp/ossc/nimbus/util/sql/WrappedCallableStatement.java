@@ -126,8 +126,8 @@ public class WrappedCallableStatement extends WrappedPreparedStatement
             return preparedSql;
         }
         
-        final StringBuilder tmpSql = new StringBuilder(preparedSql);
-        final StringBuilder tmpVal = new StringBuilder();
+        final StringBuffer tmpSql = new StringBuffer(preparedSql);
+        final StringBuffer tmpVal = new StringBuffer();
         for(int i = 0, max = argList.size(); i < max; i++){
             final int index = tmpSql.indexOf(PREPARED_KEY);
             if(index == -1){

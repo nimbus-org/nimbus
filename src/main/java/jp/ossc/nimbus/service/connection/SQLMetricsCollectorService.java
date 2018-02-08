@@ -32,8 +32,6 @@
 package jp.ossc.nimbus.service.connection;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentHashMap;
 import java.text.SimpleDateFormat;
 
 import jp.ossc.nimbus.core.*;
@@ -92,7 +90,7 @@ public class SQLMetricsCollectorService extends ServiceBase
     private static final char CARRIAGE_RETURN  = '\r';
     private static final char LINE_FEED  = '\n';
     
-    private ConcurrentMap metricsInfos;
+    private Map metricsInfos;
     private boolean isEnabled = true;
     private boolean isCalculateOnlyNormal;
     private String dateFormat = DEFAULT_DATE_FORMAT;
@@ -149,7 +147,7 @@ public class SQLMetricsCollectorService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");
@@ -274,7 +272,7 @@ public class SQLMetricsCollectorService extends ServiceBase
         if(length == 0){
             return str;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0; i < length; i++){
             final char c = str.charAt(i);
             switch(c){
@@ -466,7 +464,7 @@ public class SQLMetricsCollectorService extends ServiceBase
      * @exception Exception 生成処理に失敗した場合
      */
     public void createService() throws Exception{
-        metricsInfos = new ConcurrentHashMap();
+        metricsInfos = Collections.synchronizedMap(new HashMap());
     }
     /**
      * サービスの開始処理を行う。<p>
@@ -523,21 +521,20 @@ public class SQLMetricsCollectorService extends ServiceBase
     }
     
     private void register(String sql, long performance, boolean isException, boolean isError){
-        MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(sql);
-        if(metricsInfo == null){
-            if(maxMetricsSize > 0 && metricsInfos.size() > maxMetricsSize){
-                return;
+        synchronized(metricsInfos){
+            MetricsInfo metricsInfo = (MetricsInfo)metricsInfos.get(sql);
+            if(metricsInfo == null){
+                if(maxMetricsSize > 0 && metricsInfos.size() > maxMetricsSize){
+                    return;
+                }
+                metricsInfo = new MetricsInfo(
+                    sql,
+                    isCalculateOnlyNormal
+                );
+                metricsInfos.put(sql, metricsInfo);
             }
-            metricsInfo = new MetricsInfo(
-                sql,
-                isCalculateOnlyNormal
-            );
-            MetricsInfo old = (MetricsInfo)metricsInfos.putIfAbsent(sql, metricsInfo);
-            if(old != null){
-                metricsInfo = old;
-            }
+            metricsInfo.calculate(performance, isException, isError);
         }
-        metricsInfo.calculate(performance, isException, isError);
     }
     
     /**

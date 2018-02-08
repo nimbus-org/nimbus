@@ -142,7 +142,7 @@ public class MessageId implements Comparable, Externalizable, Cloneable{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("sequence=").append(sequence);

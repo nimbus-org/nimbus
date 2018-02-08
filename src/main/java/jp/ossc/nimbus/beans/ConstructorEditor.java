@@ -123,7 +123,7 @@ public class ConstructorEditor extends PropertyEditorSupport
             return null;
         }
         final Class clazz = constructor.getDeclaringClass();
-        final StringBuilder buf = new StringBuilder(clazz.getName());
+        final StringBuffer buf = new StringBuffer(clazz.getName());
         buf.append('#');
         buf.append('(');
         final Class[] paramTypes = constructor.getParameterTypes();

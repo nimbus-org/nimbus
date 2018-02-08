@@ -35,8 +35,6 @@ import java.util.Iterator;
 import java.util.Collections;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.ServletRequest;
@@ -107,7 +105,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     /**
      * PropertyをキャッシュするMap。<p>
      */
-    protected ConcurrentMap propertyCache = new ConcurrentHashMap();
+    protected Map propertyCache = Collections.synchronizedMap(new HashMap());
     
     /**
      * データセット名を決定するパラメータ名。<p>
@@ -319,10 +317,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
                 }catch(IllegalArgumentException e){
                     throw new ConvertException("Parameter '" + key + "' is illegal.", e);
                 }
-                Property old = (Property)propertyCache.putIfAbsent(propStr, prop);
-                if(old != null){
-                    prop = old;
-                }
+                propertyCache.put(propStr, prop);
             }
             final String[] vals = (String[])entry.getValue();
             try{

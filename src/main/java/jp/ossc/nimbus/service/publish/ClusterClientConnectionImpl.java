@@ -793,7 +793,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     public void changeSub(){}
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("id=").append(id);

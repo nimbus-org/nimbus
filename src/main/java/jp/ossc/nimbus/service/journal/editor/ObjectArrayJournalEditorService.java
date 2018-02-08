@@ -99,7 +99,7 @@ public class ObjectArrayJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final Object[] objs = (Object[])value;
         if(objs.length > 1 || !isNoDelimiterWhenSizeZero){

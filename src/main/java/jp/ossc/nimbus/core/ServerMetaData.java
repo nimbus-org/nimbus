@@ -748,7 +748,7 @@ public class ServerMetaData extends MetaData implements Serializable{
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         buf.append("<?xml version=\"1.0\"");
         if(encoding != null){
             buf.append(" encoding=\"");
@@ -766,7 +766,7 @@ public class ServerMetaData extends MetaData implements Serializable{
         buf.append('<').append(SERVER_TAG_NAME).append('>');
         if(properties.size() != 0){
             buf.append(LINE_SEPARATOR);
-            final StringBuilder subBuf = new StringBuilder();
+            final StringBuffer subBuf = new StringBuffer();
             final Iterator props = properties.values().iterator();
             while(props.hasNext()){
                 final ServerPropertyMetaData propData
@@ -803,25 +803,25 @@ public class ServerMetaData extends MetaData implements Serializable{
         if(defaultLog != null && defaultLog.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(defaultLog.toXML(new StringBuilder()))
+                addIndent(defaultLog.toXML(new StringBuffer()))
             );
         }
         if(repository != null && repository.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(repository.toXML(new StringBuilder()))
+                addIndent(repository.toXML(new StringBuffer()))
             );
         }
         if(log != null && log.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(log.toXML(new StringBuilder()))
+                addIndent(log.toXML(new StringBuffer()))
             );
         }
         if(message != null && message.getIfDefMetaData() == null){
             buf.append(LINE_SEPARATOR);
             buf.append(
-                addIndent(message.toXML(new StringBuilder()))
+                addIndent(message.toXML(new StringBuffer()))
             );
         }
         if(managers.size() != 0){
@@ -833,7 +833,7 @@ public class ServerMetaData extends MetaData implements Serializable{
                     continue;
                 }
                 buf.append(
-                    addIndent(managerData.toXML(new StringBuilder()))
+                    addIndent(managerData.toXML(new StringBuffer()))
                 );
                 if(datas.hasNext()){
                     buf.append(LINE_SEPARATOR);
@@ -845,7 +845,7 @@ public class ServerMetaData extends MetaData implements Serializable{
             for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
                 IfDefMetaData ifdefData = (IfDefMetaData)ifDefMetaDataList.get(i);
                 buf.append(
-                    addIndent(ifdefData.toXML(new StringBuilder()))
+                    addIndent(ifdefData.toXML(new StringBuffer()))
                 );
                 buf.append(LINE_SEPARATOR);
             }

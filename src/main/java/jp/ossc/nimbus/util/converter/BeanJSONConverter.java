@@ -913,7 +913,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     protected byte[] toJSON(Object obj) throws ConvertException{
         byte[] result = null;
         try{
-            StringBuilder buf = new StringBuilder();
+            StringBuffer buf = new StringBuffer();
             appendValue(buf, null, obj, new HashSet(), 0);
             
             String str = buf.toString();
@@ -924,7 +924,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         return result;
     }
     
-    private StringBuilder appendIndent(StringBuilder buf, int indent){
+    private StringBuffer appendIndent(StringBuffer buf, int indent){
         if(indent <= 0){
             return buf;
         }
@@ -934,7 +934,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         return buf;
     }
     
-    private StringBuilder appendName(StringBuilder buf, String name, int indent){
+    private StringBuffer appendName(StringBuffer buf, String name, int indent){
         if(isFormat()){
             buf.append(getLineSeparator());
             appendIndent(buf, indent);
@@ -950,7 +950,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         return buf;
     }
     
-    private StringBuilder appendValue(StringBuilder buf, Class type, Object value, Set instanceSet, int indent){
+    private StringBuffer appendValue(StringBuffer buf, Class type, Object value, Set instanceSet, int indent){
         if(type == null && value != null){
             type = value.getClass();
         }
@@ -1275,7 +1275,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         return buf;
     }
     
-    private StringBuilder appendArray(StringBuilder buf, Object array, Set instanceSet, int indent){
+    private StringBuffer appendArray(StringBuffer buf, Object array, Set instanceSet, int indent){
         if(instanceSet.contains(array)){
             return buf;
         }
@@ -1355,7 +1355,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             return str;
         }
         boolean isEscape = false;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, imax = str.length(); i < imax; i++){
             final char c = str.charAt(i);
             
@@ -1409,7 +1409,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         return isEscape ? buf.toString() : str;
     }
     
-    private StringBuilder toUnicode(char c, StringBuilder buf){
+    private StringBuffer toUnicode(char c, StringBuffer buf){
         buf.append(ESCAPE);
         buf.append('u');
         int mask = 0xf000;
@@ -1556,7 +1556,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }
                 readJSONObject(
                     reader,
-                    new StringBuilder(),
+                    new StringBuffer(),
                     ((jsonObj instanceof DataSet) && isWrappedDataSet) ? ((DataSet)jsonObj).getHeader() : jsonObj,
                     null,
                     jsonObj instanceof DataSet ? (DataSet)jsonObj : null
@@ -1568,7 +1568,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }
                 readJSONArray(
                     reader,
-                    new StringBuilder(),
+                    new StringBuffer(),
                     componentType,
                     ((jsonObj instanceof DataSet) && isWrappedDataSet) ? ((DataSet)jsonObj).getRecordList() : (List)jsonObj,
                     jsonObj instanceof DataSet ? (DataSet)jsonObj : null
@@ -1590,7 +1590,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     
     private int readJSONObject(
         Reader reader,
-        StringBuilder buf,
+        StringBuffer buf,
         Object jsonObj,
         MappedProperty mappedProp,
         DataSet dataSet
@@ -1608,7 +1608,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     
     private int readJSONArray(
         Reader reader,
-        StringBuilder buf,
+        StringBuffer buf,
         Class componentType,
         List array,
         DataSet dataSet
@@ -1732,7 +1732,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         return c;
     }
     
-    private int readJSONProperty(Reader reader, StringBuilder buf, Object jsonObj, MappedProperty mappedProp, DataSet dataSet)
+    private int readJSONProperty(Reader reader, StringBuffer buf, Object jsonObj, MappedProperty mappedProp, DataSet dataSet)
      throws ConvertException, IOException{
         buf.setLength(0);
         int c = skipWhitespace(reader);
@@ -2220,7 +2220,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         String str = null;
         if(unicodeStr != null){
             final int length = unicodeStr.length();
-            final StringBuilder buf = new StringBuilder(length);
+            final StringBuffer buf = new StringBuffer(length);
             for(int i = 0; i < length;){
                 //•¶Žš—ñ‚ðØ‚èŽæ‚é
                 char c = unicodeStr.charAt(i++);
@@ -2285,7 +2285,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     private String unescape(String str){
         if(str != null){
             final int length = str.length();
-            final StringBuilder buf = new StringBuilder(length);
+            final StringBuffer buf = new StringBuffer(length);
             boolean isUnescape = false;
             for(int i = 0; i < length;){
                 //•¶Žš—ñ‚ðØ‚èŽæ‚é

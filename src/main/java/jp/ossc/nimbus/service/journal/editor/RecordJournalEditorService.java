@@ -153,7 +153,7 @@ public class RecordJournalEditorService extends BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final Record bean = (Record)value;
         boolean isMake = false;
@@ -172,22 +172,22 @@ public class RecordJournalEditorService extends BlockJournalEditorServiceBase
         return isMake;
     }
     
-    protected StringBuilder makeRecordSchemaFormat(
+    protected StringBuffer makeRecordSchemaFormat(
         EditorFinder finder,
         Object key,
         Record bean,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(RECORD_SCHEMA_HEADER);
         makeObjectFormat(finder, null, bean.getRecordSchema(), buf);
         return buf;
     }
     
-    protected StringBuilder makePropertiesFormat(
+    protected StringBuffer makePropertiesFormat(
         EditorFinder finder,
         Object key,
         Record bean,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(PROPERTIES_HEADER);
         final RecordSchema schema = bean.getRecordSchema();
@@ -198,7 +198,7 @@ public class RecordJournalEditorService extends BlockJournalEditorServiceBase
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         if(isOutputCSVProperties){
             for(int i = 0, max = props.length; i < max; i++){
                 final String name = props[i].getName();

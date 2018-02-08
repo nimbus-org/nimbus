@@ -51,7 +51,7 @@ public class RequestJournalJSONJournalEditorService extends JSONJournalEditorSer
     public static final String PROPERTY_END_TIME = "EndTime";
     public static final String PROPERTY_PERFORMANCE = "Performance";
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuffer appendUnknownValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
         if(!(value instanceof RequestJournal)){
             return super.appendUnknownValue(buf, finder, type, value);
         }

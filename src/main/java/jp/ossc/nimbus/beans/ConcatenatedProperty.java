@@ -271,7 +271,7 @@ public class ConcatenatedProperty implements Property, java.io.Serializable{
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         Object thisObj = null;
         if(thisProperty instanceof SimpleProperty){
             String propName = thisProperty.getPropertyName();

@@ -276,7 +276,7 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final ServletRequest request = (ServletRequest)value;
         boolean isMake = false;
@@ -367,11 +367,11 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         return isMake;
     }
     
-    protected StringBuilder makeAttributesFormat(
+    protected StringBuffer makeAttributesFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(ATTRIBUTE_HEADER);
         final Enumeration attrNames = request.getAttributeNames();
@@ -381,7 +381,7 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         while(attrNames.hasMoreElements()){
             final String name = (String)attrNames.nextElement();
             if(!enabledAttributeSet.isEmpty()
@@ -408,11 +408,11 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeParametersFormat(
+    protected StringBuffer makeParametersFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(PARAMETER_HEADER);
         final Enumeration paramNames = request.getParameterNames();
@@ -422,7 +422,7 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         while(paramNames.hasMoreElements()){
             final String name = (String)paramNames.nextElement();
             if(!enabledParameterSet.isEmpty()
@@ -449,41 +449,41 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeCharacterEncodingFormat(
+    protected StringBuffer makeCharacterEncodingFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CHARACTER_ENCODING_HEADER)
             .append(request.getCharacterEncoding());
     }
     
-    protected StringBuilder makeContentLengthFormat(
+    protected StringBuffer makeContentLengthFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CONTENT_LENGTH_HEADER)
             .append(request.getContentLength());
     }
     
-    protected StringBuilder makeContentTypeFormat(
+    protected StringBuffer makeContentTypeFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CONTENT_TYPE_HEADER)
             .append(request.getContentType());
     }
     
-    protected StringBuilder makeSentServerFormat(
+    protected StringBuffer makeSentServerFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(SENT_SERVER_HEADER);
         buf.append(request.getRemoteAddr());
@@ -502,11 +502,11 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
 	    return buf;
     }
     
-    protected StringBuilder makeReceivedServerFormat(
+    protected StringBuffer makeReceivedServerFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         try{
             final String localAddr = request.getLocalAddr();
@@ -525,11 +525,11 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         return buf;
     }
     
-    protected StringBuilder makeHostFormat(
+    protected StringBuffer makeHostFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(HOST_HEADER);
         buf.append(request.getServerName());
@@ -538,29 +538,29 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         return buf;
     }
     
-    protected StringBuilder makeProtocolFormat(
+    protected StringBuffer makeProtocolFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(PROTPCOL_HEADER).append(request.getProtocol());
     }
     
-    protected StringBuilder makeSchemeFormat(
+    protected StringBuffer makeSchemeFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(SCHEME_HEADER).append(request.getScheme());
     }
     
-    protected StringBuilder makeLocaleFormat(
+    protected StringBuffer makeLocaleFormat(
         EditorFinder finder,
         Object key,
         ServletRequest request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(LOCALE_HEADER);
         makeObjectFormat(

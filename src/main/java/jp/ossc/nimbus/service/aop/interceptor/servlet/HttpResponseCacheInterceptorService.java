@@ -44,8 +44,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Collections;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -73,7 +71,7 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
     private long waitTimeout = -1l;
     
     private CacheMap cacheMap;
-    private ConcurrentMap lockMap;
+    private Map lockMap;
     private int responseStatusForCache = 200;
     
     public void setCacheMapServiceName(ServiceName name){
@@ -109,7 +107,7 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
     }
     
     public void createService() throws Exception{
-        lockMap = new ConcurrentHashMap();
+        lockMap = Collections.synchronizedMap(new HashMap());
     }
     
     public void startService() throws Exception{
@@ -136,7 +134,7 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
     ) throws Throwable{
         if(getState() == STARTED){
             final HttpServletRequest request = (HttpServletRequest)context.getServletRequest();
-            final StringBuilder pathBuf = new StringBuilder();
+            final StringBuffer pathBuf = new StringBuffer();
             String path = request.getContextPath();
             if(path != null){
                 pathBuf.append(path);
@@ -165,7 +163,10 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
                 responseCache.applyResponse(context.getServletResponse());
                 return null;
             }
-            SynchronizeMonitor lockMonitor = (SynchronizeMonitor)lockMap.get(path);
+            SynchronizeMonitor lockMonitor = null;
+            synchronized(lockMap){
+                lockMonitor = (SynchronizeMonitor)lockMap.get(path);
+            }
             HttpResponseCacheHttpServletResponseWrapper responseWrapper = new HttpResponseCacheHttpServletResponseWrapper(
                 (HttpServletResponse)context.getServletResponse()
             );
@@ -200,7 +201,9 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
                 }
                 return ret;
             }finally{
-                lockMap.remove(path);
+                synchronized(lockMap){
+                    lockMap.remove(path);
+                }
                 if(lockMonitor != null){
                     lockMonitor.notifyAllMonitor();
                 }
@@ -216,19 +219,23 @@ public class HttpResponseCacheInterceptorService extends ServletFilterIntercepto
         if(responseCache != null){
             return responseCache;
         }
-        SynchronizeMonitor waitMonitor = (SynchronizeMonitor)lockMap.get(path);
-        if(waitMonitor == null){
-            responseCache = (HttpResponseCache)cacheMap.get(path);
-            if(responseCache == null){
-                waitMonitor = (SynchronizeMonitor)lockMap.putIfAbsent(path, new WaitSynchronizeMonitor());
+        SynchronizeMonitor waitMonitor = null;
+        synchronized(lockMap){
+            waitMonitor = (SynchronizeMonitor)lockMap.get(path);
+            if(waitMonitor == null){
+                responseCache = (HttpResponseCache)cacheMap.get(path);
+                if(responseCache == null){
+                    lockMap.put(path, new WaitSynchronizeMonitor());
+                }else{
+                    return responseCache;
+                }
             }else{
-                return responseCache;
+                waitMonitor.initMonitor();
             }
         }
         if(waitMonitor == null){
             return null;
         }
-        waitMonitor.initMonitor();
         if(waitTimeout > 0){
             if(waitMonitor.waitMonitor(waitTimeout)){
                 return getHttpResponseCache(path);

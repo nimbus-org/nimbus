@@ -1257,7 +1257,7 @@ public class DefaultScheduleManagerService extends ServiceBase
                 if(schedule.getInput() == null){
                     writer.writeElement("");
                 }else{
-                    final StringBuilder buf = new StringBuilder();
+                    final StringBuffer buf = new StringBuffer();
                     final PropertyEditor editor
                         = NimbusPropertyEditorManager.findEditor(
                             schedule.getInput().getClass()
@@ -1293,7 +1293,7 @@ public class DefaultScheduleManagerService extends ServiceBase
                 if(schedule.getOutput() == null){
                     writer.writeElement("");
                 }else{
-                    final StringBuilder buf = new StringBuilder();
+                    final StringBuffer buf = new StringBuffer();
                     final PropertyEditor editor
                         = NimbusPropertyEditorManager.findEditor(
                             schedule.getOutput().getClass()

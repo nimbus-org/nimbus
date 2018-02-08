@@ -298,7 +298,7 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
 
     protected ScmRepository getRepository(String scenarioGroupId, String scenarioId, String testcaseId) throws ScmRepositoryException,
             NoSuchScmProviderException {
-        StringBuilder scmUrlBuff = new StringBuilder();
+        StringBuffer scmUrlBuff = new StringBuffer();
         scmUrlBuff.append("scm:cvs:");
         if (METHOD_EXT.equals(method) || METHOD_LSERVER.equals(method)) {
             if (serverName == null) {

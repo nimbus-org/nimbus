@@ -69,18 +69,18 @@ public class ListJournalEditorService extends BlockJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final List list = (List)value;
         makeListFormat(finder, key, list, buf);
         return true;
     }
     
-    protected StringBuilder makeListFormat(
+    protected StringBuffer makeListFormat(
         EditorFinder finder,
         Object key,
         List list,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final int size = list.size();
         if(size == 0){
@@ -90,7 +90,7 @@ public class ListJournalEditorService extends BlockJournalEditorServiceBase
         }
         buf.append('[');
         buf.append(getLineSeparator());
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0, max = (maxSize > 0 && maxSize < size) ? maxSize : size; i <= max; i++){
             if(i != max){
                 Object element = list.get(i);

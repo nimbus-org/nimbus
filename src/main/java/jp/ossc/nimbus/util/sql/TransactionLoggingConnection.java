@@ -188,7 +188,7 @@ public class  TransactionLoggingConnection extends ConnectionWrapper {
         if(transactionInsertStatement != null && transactionParamInsertStatement != null){
             return;
         }
-        StringBuilder sql = new StringBuilder();
+        StringBuffer sql = new StringBuffer();
         if(transactionInsertStatement == null){
             sql.append("insert into ");
             sql.append(transactionTableName);

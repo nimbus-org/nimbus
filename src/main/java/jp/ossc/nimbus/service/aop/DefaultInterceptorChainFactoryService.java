@@ -33,8 +33,6 @@ package jp.ossc.nimbus.service.aop;
 
 import java.util.*;
 import java.util.regex.*;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentHashMap;
 import java.text.*;
 
 import jp.ossc.nimbus.beans.*;
@@ -94,7 +92,7 @@ public class DefaultInterceptorChainFactoryService extends ServiceBase
     private CacheMap chainCache;
     private boolean isUseThreadLocalInterceptorChain = true;
     private boolean isGetMetrics;
-    private ConcurrentMap metricsInfos;
+    private Map metricsInfos;
     private boolean isCalculateOnlyNormal;
     private String dateFormat = DEFAULT_DATE_FORMAT;
     private boolean isOutputTimestamp = false;
@@ -333,7 +331,7 @@ public class DefaultInterceptorChainFactoryService extends ServiceBase
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");
@@ -459,7 +457,7 @@ public class DefaultInterceptorChainFactoryService extends ServiceBase
         keyAndChainListMap = new LinkedHashMap();
         keyAndInterceptorMap = new LinkedHashMap();
         keyAndInvokerMap = new LinkedHashMap();
-        metricsInfos = new ConcurrentHashMap();
+        metricsInfos = Collections.synchronizedMap(new HashMap());
     }
     
     public void startService() throws Exception{

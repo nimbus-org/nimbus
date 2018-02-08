@@ -327,7 +327,7 @@ public class DefaultContextService extends ServiceBase
     
     // Context‚ÌJavaDoc
     public String list() {
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         if(context != null){
             synchronized (context) {
                 for (Iterator ite = context.keySet().iterator(); ite.hasNext();) {

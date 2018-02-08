@@ -219,7 +219,7 @@ public class GroupClientConnectionFactoryService extends ServiceBase
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder(super.toString());
+            final StringBuffer buf = new StringBuffer(super.toString());
             buf.append('{');
             buf.append("subject=").append(subject);
             buf.append(", key=").append(keyPattern == null ? null : keyPattern.pattern());

@@ -121,7 +121,7 @@ public class ServletFilterInvocationContext
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder(getClass().getName());
+        final StringBuffer buf = new StringBuffer(getClass().getName());
         buf.append('@').append(Integer.toHexString(hashCode()));
         buf.append('{');
         if(getServletRequest() != null){

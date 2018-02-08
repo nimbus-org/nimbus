@@ -1075,7 +1075,7 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("server=").append(serverSocket == null ? null : serverSocket.getLocalSocketAddress());
@@ -1699,7 +1699,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder();
+            final StringBuffer buf = new StringBuffer();
             buf.append(super.toString());
             buf.append('{');
             buf.append("client=").append(clientAddress).append(':').append(destPort);

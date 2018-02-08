@@ -79,7 +79,7 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
                         finder,
                         key,
                         request,
-                        new StringBuilder()
+                        new StringBuffer()
                     ).toString();
                 }
             }
@@ -96,7 +96,7 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
                         finder,
                         key,
                         request,
-                        new StringBuilder()
+                        new StringBuffer()
                     ).toString();
                 }
             }
@@ -125,7 +125,7 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
                         finder,
                         key,
                         request,
-                        new StringBuilder()
+                        new StringBuffer()
                     ).toString();
                 }
             }
@@ -142,7 +142,7 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
                         finder,
                         key,
                         request,
-                        new StringBuilder()
+                        new StringBuffer()
                     ).toString();
                 }
             }
@@ -216,11 +216,11 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final List elements = (List)csvElements.get();
         if(elements != null){
-            final StringBuilder tmpBuf = new StringBuilder();
+            final StringBuffer tmpBuf = new StringBuffer();
             List steps = null;
             if(!isStepJournalInLine()){
                 steps = new ArrayList();
@@ -273,20 +273,20 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
         }
     }
     
-    protected StringBuilder makeRequestIdFormat(
+    protected StringBuffer makeRequestIdFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(request.getRequestId());
     }
     
-    protected StringBuilder makeStartTimeFormat(
+    protected StringBuffer makeStartTimeFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return makeObjectFormat(finder, null, request.getStartTime(), buf);
     }
@@ -314,20 +314,20 @@ public class SimpleRequestCSVJournalEditorService extends CSVJournalEditorServic
         }
     }
     
-    protected StringBuilder makeEndTimeFormat(
+    protected StringBuffer makeEndTimeFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return makeObjectFormat(finder, null, request.getEndTime(), buf);
     }
     
-    protected StringBuilder makePerformanceFormat(
+    protected StringBuffer makePerformanceFormat(
         EditorFinder finder,
         Object key,
         RequestJournal request,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(request.getPerformance()).append(PERFORMANCE_UNIT);
     }

@@ -72,7 +72,7 @@ public class FixCryptService extends ServiceBase
             && (fixSuffix == null || fixSuffix.length() == 0)){
             return str;
         }
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         if(fixPrefix != null && fixPrefix.length() != 0){
             buf.append(fixPrefix);
         }

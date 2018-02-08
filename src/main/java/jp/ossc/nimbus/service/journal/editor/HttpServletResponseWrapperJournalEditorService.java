@@ -254,7 +254,7 @@ public class HttpServletResponseWrapperJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         boolean isMake = super.processBlock(finder, key, value, buf);
         final JournalHttpServletResponseWrapper response
@@ -326,21 +326,21 @@ public class HttpServletResponseWrapperJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeContentLengthFormat(
+    protected StringBuffer makeContentLengthFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CONTENT_LENGTH_HEADER)
             .append(response.getContentLength());
     }
     
-    protected StringBuilder makeContentFormat(
+    protected StringBuffer makeContentFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(CONTENT_HEADER);
         final String content = response.getContent();
@@ -350,16 +350,16 @@ public class HttpServletResponseWrapperJournalEditorService
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuilder subBuf = new StringBuilder(content);
+        final StringBuffer subBuf = new StringBuffer(content);
         addIndent(subBuf);
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeHeadersFormat(
+    protected StringBuffer makeHeadersFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(HTTP_HEADER_HEADER);
         final Iterator headerNames = response.getHeaderNames();
@@ -369,7 +369,7 @@ public class HttpServletResponseWrapperJournalEditorService
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         while(headerNames.hasNext()){
             final String name = (String)headerNames.next();
             if(!enabledHeaderSet.isEmpty()
@@ -397,11 +397,11 @@ public class HttpServletResponseWrapperJournalEditorService
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeCookiesFormat(
+    protected StringBuffer makeCookiesFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(COOKIE_HEADER);
         final Cookie[] cookies = response.getCookies();
@@ -411,7 +411,7 @@ public class HttpServletResponseWrapperJournalEditorService
             buf.append(NULL_STRING);
             return buf;
         }
-        final StringBuilder subBuf = new StringBuilder();
+        final StringBuffer subBuf = new StringBuffer();
         for(int i = 0; i < cookies.length; i++){
             if(!enabledCookieSet.isEmpty()
                  && !enabledCookieSet.contains(name)){
@@ -456,41 +456,41 @@ public class HttpServletResponseWrapperJournalEditorService
         return buf.append(subBuf);
     }
     
-    protected StringBuilder makeStatusFormat(
+    protected StringBuffer makeStatusFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(STATUS_HEADER)
             .append(response.getStatus());
     }
     
-    protected StringBuilder makeStatusMessageFormat(
+    protected StringBuffer makeStatusMessageFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(STATUS_MESSAGE_HEADER)
             .append(response.getStatusMessage());
     }
     
-    protected StringBuilder makeIsSentErrorFormat(
+    protected StringBuffer makeIsSentErrorFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(IS_SENT_ERROR_HEADER)
             .append(response.isSentError());
     }
     
-    protected StringBuilder makeRedirectLocationFormat(
+    protected StringBuffer makeRedirectLocationFormat(
         EditorFinder finder,
         Object key,
         JournalHttpServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(REDIRECT_LOCATION_HEADER)
             .append(response.getRedirectLocation());

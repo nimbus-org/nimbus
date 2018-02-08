@@ -72,11 +72,11 @@ public class DynaClassCSVJournalEditorService
                 
                 private static final long serialVersionUID = 3577715933329613886L;
                 
-                protected StringBuilder toString(
+                protected StringBuffer toString(
                     EditorFinder finder,
                     Object key,
                     DynaClass dynaClass,
-                    StringBuilder buf
+                    StringBuffer buf
                 ){
                     return makeNameFormat(finder, key, dynaClass, buf);
                 }
@@ -88,11 +88,11 @@ public class DynaClassCSVJournalEditorService
                 
                 private static final long serialVersionUID = -442417699766777261L;
                 
-                protected StringBuilder toString(
+                protected StringBuffer toString(
                     EditorFinder finder,
                     Object key,
                     DynaClass dynaClass,
-                    StringBuilder buf
+                    StringBuffer buf
                 ){
                     return makeDynaPropertiesFormat(
                         finder,
@@ -112,15 +112,15 @@ public class DynaClassCSVJournalEditorService
         private static final long serialVersionUID = 6462835584597212677L;
         
         public String toString(EditorFinder finder, Object key, Object value){
-            final StringBuilder buf
-                 = new StringBuilder(super.toString(finder, key, value));
+            final StringBuffer buf
+                 = new StringBuffer(super.toString(finder, key, value));
             return toString(finder, key, (DynaClass)value, buf).toString();
         }
-        protected abstract StringBuilder toString(
+        protected abstract StringBuffer toString(
             EditorFinder finder,
             Object key,
             DynaClass dynaClass,
-            StringBuilder buf
+            StringBuffer buf
         );
     }
     
@@ -163,20 +163,20 @@ public class DynaClassCSVJournalEditorService
         }
     }
     
-    protected StringBuilder makeNameFormat(
+    protected StringBuffer makeNameFormat(
         EditorFinder finder,
         Object key,
         DynaClass dynaClass,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(dynaClass.getName());
     }
     
-    protected StringBuilder makeDynaPropertiesFormat(
+    protected StringBuffer makeDynaPropertiesFormat(
         EditorFinder finder,
         Object key,
         DynaClass dynaClass,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final DynaProperty[] props = dynaClass.getDynaProperties();
         if(props == null || props.length == 0){

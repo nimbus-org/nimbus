@@ -180,7 +180,7 @@ public class ByteConverterDifferentEndian implements ByteConverter {
 	 */
 	public String byte2hex(byte[] inBytes){
 		char[] hexTable = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-		StringBuilder retStr = new StringBuilder();
+		StringBuffer retStr = new StringBuffer();
 		if (inBytes == null){
 			return null;
 		}

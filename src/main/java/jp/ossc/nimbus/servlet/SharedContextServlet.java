@@ -490,7 +490,7 @@ public class SharedContextServlet extends HttpServlet{
             Arrays.sort(contextServiceNames);
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             List jsonList = new ArrayList();
@@ -529,7 +529,7 @@ public class SharedContextServlet extends HttpServlet{
             buf.append("<b>Contexts</b><br>");
             buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
             buf.append("<tr bgcolor=\"#cccccc\"><th>name</th><th>replicated/distributed</th><th>client/server</th><th>node number</th><th>size</th></tr>");
-            final StringBuilder url = new StringBuilder();
+            final StringBuffer url = new StringBuffer();
             if(contextServiceNames != null){
                 for(int i = 0; i < contextServiceNames.length; i++){
                     final ServiceName serviceName = contextServiceNames[i];
@@ -591,7 +591,7 @@ public class SharedContextServlet extends HttpServlet{
             return;
         }
         boolean isDistributed = context instanceof DistributedSharedContext ? true : false;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -776,7 +776,7 @@ public class SharedContextServlet extends HttpServlet{
             key = keyStr.substring(1, keyStr.length() - 1);
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -853,7 +853,7 @@ public class SharedContextServlet extends HttpServlet{
         resp.getWriter().println(buf.toString());
     }
     
-    private StringBuilder writeThrowable(StringBuilder buf, Throwable th){
+    private StringBuffer writeThrowable(StringBuffer buf, Throwable th){
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         th.printStackTrace(pw);
@@ -862,12 +862,12 @@ public class SharedContextServlet extends HttpServlet{
         return buf.append("<pre>").append(stackTrace).append("</pre>");
     }
     
-    private StringBuilder writeValue(
+    private StringBuffer writeValue(
         HttpServletRequest req,
         HttpServletResponse resp,
         String contextName,
         String key,
-        StringBuilder buf,
+        StringBuffer buf,
         Object value,
         boolean isLink
     ) throws IOException{
@@ -1031,7 +1031,7 @@ public class SharedContextServlet extends HttpServlet{
             key = keyStr.substring(1, keyStr.length() - 1);
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1153,7 +1153,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1287,7 +1287,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1432,7 +1432,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1560,7 +1560,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1646,7 +1646,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1741,7 +1741,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1818,7 +1818,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1913,7 +1913,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2125,7 +2125,7 @@ public class SharedContextServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();

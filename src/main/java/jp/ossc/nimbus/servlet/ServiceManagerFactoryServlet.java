@@ -644,7 +644,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         HttpServletResponse resp,
         String responseType
     ) throws ServletException, IOException{
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             final ServiceManager[] managers = ServiceManagerFactory.findManagers();
@@ -694,7 +694,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 managerNames[i] = managers[i].getServiceName();
             }
             Arrays.sort(managerNames);
-            StringBuilder url = new StringBuilder();
+            StringBuffer url = new StringBuffer();
             for(int i = 0; i < managerNames.length; i++){
                 url.setLength(0);
                 url.append(getCurrentPath(req))
@@ -734,7 +734,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         String responseType
     ) throws ServletException, IOException{
         final String managerName = req.getParameter("name");
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             List serviceNameList = new ArrayList();
@@ -799,7 +799,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 serviceNames[count++] = new ServiceName(managerName, serviceNameStr);
             }
             Arrays.sort(serviceNames);
-            final StringBuilder url = new StringBuilder();
+            final StringBuffer url = new StringBuffer();
             for(int i = 0; i < serviceNames.length; i++){
                 final ServiceName serviceName = serviceNames[i];
                 url.setLength(0);
@@ -885,7 +885,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         final MethodSignature[] sigs = (MethodSignature[])methodMap.keySet()
             .toArray(new MethodSignature[methodMap.size()]);
         Arrays.sort(sigs);
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             
@@ -929,7 +929,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("\">ServiceManagerFactory</a>");
             buf.append("/");
-            final StringBuilder url = new StringBuilder();
+            final StringBuffer url = new StringBuffer();
             url.append(getCurrentPath(req))
                 .append("?action=manager&name=")
                 .append(serviceName.getServiceManagerName());
@@ -1099,7 +1099,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map json = new HashMap();
@@ -1170,7 +1170,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 attributeValueStr
             );
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map json = new HashMap();
@@ -1187,7 +1187,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("\">ServiceManagerFactory</a>");
             buf.append("/");
-            final StringBuilder url = new StringBuilder();
+            final StringBuffer url = new StringBuffer();
             url.append(getCurrentPath(req))
                 .append("?action=manager&name=")
                 .append(serviceName.getServiceManagerName());
@@ -1303,7 +1303,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map json = new LinkedHashMap();
@@ -1348,7 +1348,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             buf.append("<a href=\"").append(getCurrentPath(req))
                 .append("\">ServiceManagerFactory</a>");
             buf.append("/");
-            final StringBuilder url = new StringBuilder();
+            final StringBuffer url = new StringBuffer();
             url.append(getCurrentPath(req))
                 .append("?action=manager&name=")
                 .append(serviceName.getServiceManagerName());
@@ -1819,7 +1819,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder(methodName);
+            final StringBuffer buf = new StringBuffer(methodName);
             buf.append('(');
             if(paramTypes != null){
                 for(int i = 0, max = paramTypes.length; i < max; i++){

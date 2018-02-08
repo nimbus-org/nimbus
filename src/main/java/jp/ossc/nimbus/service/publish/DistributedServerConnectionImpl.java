@@ -153,7 +153,7 @@ public class DistributedServerConnectionImpl implements ServerConnection{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append("connectionList=").append(connectionList);
@@ -240,7 +240,7 @@ public class DistributedServerConnectionImpl implements ServerConnection{
         }
         
         public String toString(){
-            final StringBuilder buf = new StringBuilder(super.toString());
+            final StringBuffer buf = new StringBuffer(super.toString());
             buf.append('{');
             buf.append("connection=").append(connection);
             buf.append(", count=").append(count);

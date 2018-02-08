@@ -100,7 +100,7 @@ public class LineSimpleElement extends SimpleElement {
         ){
             return str;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         boolean isLineSeparator = false;
         for(int i = 0, max = str.length(); i < max; i++){
             char c = str.charAt(i);

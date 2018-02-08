@@ -1564,7 +1564,7 @@ public class DataSetCodeGenerator{
         }
         
         public static String createCreaterName(String property){
-            StringBuilder result = new StringBuilder(property);
+            StringBuffer result = new StringBuffer(property);
             final int len = result.length();
             if(len != 0 && !Character.isUpperCase(result.charAt(0))){
                 char capital = Character.toUpperCase(result.charAt(0));
@@ -1574,7 +1574,7 @@ public class DataSetCodeGenerator{
         }
         
         public static String createGetterName(String property, Class type){
-            StringBuilder result = new StringBuilder(property);
+            StringBuffer result = new StringBuffer(property);
             final int len = result.length();
             if(len != 0 && !Character.isUpperCase(result.charAt(0))){
                 char capital = Character.toUpperCase(result.charAt(0));
@@ -1584,7 +1584,7 @@ public class DataSetCodeGenerator{
         }
         
         public static String createSetterName(String property){
-            StringBuilder result = new StringBuilder(property);
+            StringBuffer result = new StringBuffer(property);
             final int len = result.length();
             if(len != 0 && !Character.isUpperCase(result.charAt(0))){
                 char capital = Character.toUpperCase(result.charAt(0));
@@ -1619,7 +1619,7 @@ public class DataSetCodeGenerator{
             .getResourceAsStream(name);
         
         // メッセージの読み込み
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
         try{
@@ -1648,7 +1648,7 @@ public class DataSetCodeGenerator{
     private static String unicodeConvert(String str){
         char c;
         int len = str.length();
-        StringBuilder buf = new StringBuilder(len);
+        StringBuffer buf = new StringBuffer(len);
         
         for(int i = 0; i < len; ){
             c = str.charAt(i++);

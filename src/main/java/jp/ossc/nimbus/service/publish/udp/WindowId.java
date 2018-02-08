@@ -109,7 +109,7 @@ public class WindowId extends MessageId{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", windowNo=").append(windowNo);

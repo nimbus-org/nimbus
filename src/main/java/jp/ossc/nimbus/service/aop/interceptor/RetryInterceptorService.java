@@ -376,7 +376,7 @@ public class RetryInterceptorService extends ServiceBase
             boolean keyFlg = false;
             
             String beforeToken = null;
-            StringBuilder condBuf = new StringBuilder();
+            StringBuffer condBuf = new StringBuffer();
             
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

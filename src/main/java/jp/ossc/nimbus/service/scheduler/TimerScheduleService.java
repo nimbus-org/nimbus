@@ -689,7 +689,7 @@ public class TimerScheduleService extends ServiceBase
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder(super.toString());
+        final StringBuffer buf = new StringBuffer(super.toString());
         buf.append('{');
         buf.append("name=").append(getName());
         buf.append(", startTime=").append(startTime);

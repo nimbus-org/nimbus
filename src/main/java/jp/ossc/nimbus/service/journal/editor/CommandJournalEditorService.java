@@ -115,7 +115,7 @@ public class CommandJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final Command command = (Command)value;
         boolean isMake = false;
@@ -154,43 +154,43 @@ public class CommandJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeFlowKeyFormat(
+    protected StringBuffer makeFlowKeyFormat(
         EditorFinder finder,
         Object key,
         Command command,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(FLOW_KEY_HEADER)
             .append(command.getFlowKey());
     }
     
-    protected StringBuilder makeInputFormat(
+    protected StringBuffer makeInputFormat(
         EditorFinder finder,
         Object key,
         Command command,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(INPUT_HEADER);
         makeObjectFormat(finder, null, command.getInputObject(), buf);
         return buf;
     }
     
-    protected StringBuilder makeOutputFormat(
+    protected StringBuffer makeOutputFormat(
         EditorFinder finder,
         Object key,
         Command command,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(OUTPUT_HEADER);
         makeObjectFormat(finder, null, command.getOutputObject(), buf);
         return buf;
     }
     
-    protected StringBuilder makeStatusFormat(
+    protected StringBuffer makeStatusFormat(
         EditorFinder finder,
         Object key,
         Command command,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(STATUS_HEADER);
         switch(command.getStatus()){
@@ -210,11 +210,11 @@ public class CommandJournalEditorService
         return buf;
     }
     
-    protected StringBuilder makeExceptionFormat(
+    protected StringBuffer makeExceptionFormat(
         EditorFinder finder,
         Object key,
         Command command,
-        StringBuilder buf
+        StringBuffer buf
     ){
         buf.append(EXCEPTION_HEADER);
         makeObjectFormat(finder, null, command.getException(), buf);

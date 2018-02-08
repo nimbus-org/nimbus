@@ -1137,7 +1137,7 @@ public class ScheduleManagerServlet extends HttpServlet{
         }catch(ScheduleManageException e){
             exception = e;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1238,7 +1238,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             }
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1298,7 +1298,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1357,7 +1357,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1431,7 +1431,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             }
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1530,7 +1530,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1616,7 +1616,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1694,7 +1694,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1798,7 +1798,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             }
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1855,7 +1855,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1920,7 +1920,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -1981,7 +1981,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2074,7 +2074,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2203,7 +2203,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2253,7 +2253,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2308,7 +2308,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
 
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2450,7 +2450,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             exception = e;
         }
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2517,7 +2517,7 @@ public class ScheduleManagerServlet extends HttpServlet{
     ) throws ServletException, IOException{
         Map typeMap = scheduler.getScheduleExecutors();
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2551,7 +2551,7 @@ public class ScheduleManagerServlet extends HttpServlet{
     ) throws ServletException, IOException{
         scheduler.stopEntry();
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2581,7 +2581,7 @@ public class ScheduleManagerServlet extends HttpServlet{
     ) throws ServletException, IOException{
         scheduler.startEntry();
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2611,7 +2611,7 @@ public class ScheduleManagerServlet extends HttpServlet{
     ) throws ServletException, IOException{
         boolean isStartEntry = scheduler.isStartEntry();
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
@@ -2633,7 +2633,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return HTML文字列
      */
     private String exception(Exception exception){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         exception.printStackTrace(pw);
@@ -2656,7 +2656,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュール管理画面HTMLのHeader要素HTML
      */
     private String header(int mode){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<head>");
         buf.append("<title>Nimbus Schedule</title>");
         buf.append("<style type=\"text/css\">");
@@ -2861,7 +2861,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュール管理画面HTMLのスケジュール検索条件部分HTML
      */
     private String scheduleSearchCondition(String action, String id, String groupId, String masterId, String masterGroupId, Date from, Date to, int[] states){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<form name=\"schedule\" id=\"scheduleSearch\" action=\"" + action + "\" method=\"post\">");
         buf.append("<table border=\"1\">");
         buf.append("<tr>");
@@ -3054,7 +3054,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      */
     private String schedules(String action, List schedules){
         
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<table border=\"1\"><tr>");
         buf.append(th("Legend"));
         buf.append("<td bgcolor=\"#ffadad\">FAILED</td>");
@@ -3143,7 +3143,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(td(formatDateTime(schedule.getRetryEndTime())));
                 buf.append(td(schedule.isRetry()));
                 buf.append(td(schedule.getMaxDelayTime()));
-                final StringBuilder tdBuf = new StringBuilder();
+                final StringBuffer tdBuf = new StringBuffer();
                 tdBuf.append(getScheduleStateString(state));
                 if(isChangeStateEnabled()){
                     name = "newState_" + count;
@@ -3257,7 +3257,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュール管理画面HTMLのスケジュールマスタ検索条件部分HTML
      */
     private String scheduleMasterSearchCondition(String action, String masterId, String masterGroupId){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<form name=\"scheduleMaster\" id=\"scheduleMaster\" action=\"" + action + "\" method=\"post\">");
         buf.append("<table border=\"1\">");
         buf.append("<tr>");
@@ -3365,7 +3365,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュール管理画面HTMLのスケジュールマスタデータ部分HTML
      */
     private String scheduleMasters(String action, List scheduleMasters){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<table border=\"1\">");
         buf.append("<tr bgcolor=\"#cccccc\">");
         buf.append(th("MasterId"));
@@ -3412,7 +3412,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(td(format(scheduleMaster.getExecutorType())));
                 buf.append(td(scheduleMaster.isTemplate()));
 
-                final StringBuilder tdBuf = new StringBuilder();
+                final StringBuffer tdBuf = new StringBuffer();
                 if(isAddEnabled()){
                     String dateName = "date_" + count;
                     tdBuf.append("Date[yyyyMMdd]:" + text(dateName, dateName, "", 10) + "&nbsp");
@@ -3445,7 +3445,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュール管理画面HTMLのスケジュールマスタ検索条件部分HTML
      */
     private String scheduleMasterIsMakeCondition(String action, String masterId, Date from, Date to){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<form name=\"isMakeSchedule\" id=\"isMakeSchedule\" action=\"" + action + "\" method=\"post\">");
         buf.append("<table border=\"1\">");
         buf.append("<tr>");
@@ -3477,7 +3477,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュール管理画面HTMLのスケジュールマスタデータ部分HTML
      */
     private String scheduleMasterIsMake(String action, Map masterIdDayMap){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<table border=\"1\">");
         buf.append("<tr bgcolor=\"#cccccc\">");
         buf.append(th("MasterId"));
@@ -3504,7 +3504,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 Iterator values = map.values().iterator();
                 while(values.hasNext()) {
                     Boolean isMake = (Boolean)values.next();
-                    final StringBuilder tdBuf = new StringBuilder();
+                    final StringBuffer tdBuf = new StringBuffer();
                     tdBuf.append(isMake);
                     buf.append(td(tdBuf.toString()));
                 }
@@ -3545,7 +3545,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return thタグのHTML文字列
      */
     private String th(String data, String align, int colspan){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<th");
         if(align != null && align.length() != 0){
             buf.append(" align=\"" + align + "\"");
@@ -3607,7 +3607,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return tdタグのHTML文字列
      */
     private String td(String data, String align, int colspan){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<td valign=\"middle\"");
         if(align != null && align.length() != 0){
             buf.append(" align=\"" + align + "\"");
@@ -3655,7 +3655,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return inputタグのHTML文字列
      */
     private String input(String type, String name, String id, String value, int size){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<input type=\"" + type + "\" name=\"" + name + "\" value=\"" + value + "\"");
         if(id != null){
             buf.append(" id=\"" + id + "\"");
@@ -3691,7 +3691,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return textareaタグのHTML文字列
      */
     private String textarea(String name, String id, String value, int cols, int rows, boolean readOnly){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<textarea ");
         if(readOnly){
             buf.append("readonly ");
@@ -3726,7 +3726,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュールの全てのステータスチェックボックスのHTML
      */
     private String stateCheckbox(int[] states){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(checkbox("state", Schedule.STATE_INITIAL, states) + "<label for=\"state" + Schedule.STATE_INITIAL + "\">" + getScheduleStateString(Schedule.STATE_INITIAL) + "</label>&nbsp");
         buf.append(checkbox("state", Schedule.STATE_ENTRY, states) + "<label for=\"state" + Schedule.STATE_ENTRY + "\">" + getScheduleStateString(Schedule.STATE_ENTRY) + "</label>&nbsp");
         buf.append(checkbox("state", Schedule.STATE_RUN, states) + "<label for=\"state" + Schedule.STATE_RUN + "\">" + getScheduleStateString(Schedule.STATE_RUN) + "</label>&nbsp");
@@ -3748,7 +3748,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return input(type=checkbox)タグのHTML文字列
      */
     private String checkbox(String name, int value, int[] states){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<input type=\"checkbox\" name=\"" + name + "\" value=\"" + value + "\" id=\"" + name + value + "\"");
         if(states != null){
             for(int i = 0; i < states.length; i++){
@@ -3770,7 +3770,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュールのステータスセレクトボックスのHTML
      */
     private String stateSelect(String name, String id, int state){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<select name=\"" + name + "\" id=\"" + id + "\" >");
         buf.append(option(Schedule.STATE_INITIAL, state, 0));
         buf.append(option(Schedule.STATE_END, state, 0));
@@ -3789,7 +3789,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スケジュールのコントロールステータスセレクトボックスのHTML
      */
     private String controlStateSelect(String name, String id, int state){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<select name=\"" + name + "\" id=\"" + id + "\" >");
         buf.append(option(Schedule.CONTROL_STATE_INITIAL, state, 1));
         buf.append(option(Schedule.CONTROL_STATE_PAUSE, state, 1));
@@ -3808,7 +3808,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return optionタグのHTML文字列
      */
     private String option(int value, int state, int mode){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("<option value=\"" + value + "\"");
         if(value == state){
             buf.append(" selected");
@@ -3983,7 +3983,7 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @return スペース埋め後の文字列
      */
     private String padding(String val,int length){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         if(val != null){
             buf.append(val);
         }

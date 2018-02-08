@@ -299,7 +299,7 @@ public class InvokeMetaData extends MetaData
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(INVOKE_TAG_NAME);
         if(name != null){
@@ -319,7 +319,7 @@ public class InvokeMetaData extends MetaData
                 buf.append('<').append(TARGET_TAG_NAME).append('>');
                 buf.append(LINE_SEPARATOR);
                 buf.append(
-                    addIndent(target.toXML(new StringBuilder()))
+                    addIndent(target.toXML(new StringBuffer()))
                 );
                 buf.append(LINE_SEPARATOR);
                 buf.append("</").append(TARGET_TAG_NAME).append('>');
@@ -328,7 +328,7 @@ public class InvokeMetaData extends MetaData
                 buf.append(LINE_SEPARATOR);
                 for(int i = 0, imax = arguments.size(); i < imax; i++){
                     buf.append(
-                        addIndent(((MetaData)arguments.get(i)).toXML(new StringBuilder()))
+                        addIndent(((MetaData)arguments.get(i)).toXML(new StringBuffer()))
                     );
                     if(i != imax - 1){
                         buf.append(LINE_SEPARATOR);
@@ -355,7 +355,7 @@ public class InvokeMetaData extends MetaData
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append(NAME_ATTRIBUTE_NAME);

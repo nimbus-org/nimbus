@@ -97,7 +97,7 @@ public class ServiceName implements java.io.Serializable, Comparable{
      * @return [{@link ServiceManager}‚Ì–¼‘O]#[{@link Service}‚Ì–¼‘O]
      */
     public String toString(){
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         if(managerName != null){
             buf.append(managerName);
         }

@@ -210,7 +210,7 @@ public class RecordPropertySchema implements PropertySchema, java.io.Serializabl
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder(getClass().getName());
+        final StringBuffer buf = new StringBuffer(getClass().getName());
         buf.append('{');
         buf.append("name=").append(name);
         buf.append(",recordName=").append(recordName);

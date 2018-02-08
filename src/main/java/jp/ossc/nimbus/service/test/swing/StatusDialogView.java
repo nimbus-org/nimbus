@@ -30,7 +30,7 @@ public class StatusDialogView extends JDialog {
         contentPane.add(scrollpane1, BorderLayout.CENTER);
         
         // Statusオブジェクトを表示
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuffer stringBuilder = new StringBuffer();
         
         String lineSp = System.getProperty("line.separator");
         
@@ -105,7 +105,7 @@ public class StatusDialogView extends JDialog {
         contentPane.add(scrollpane1, BorderLayout.CENTER);
         
         // Statusオブジェクトを表示
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuffer stringBuilder = new StringBuffer();
         
         String lineSp = System.getProperty("line.separator");
         

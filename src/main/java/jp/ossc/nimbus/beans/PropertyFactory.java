@@ -85,7 +85,7 @@ public class PropertyFactory implements java.io.Serializable{
     public static Property createProperty(String prop)
      throws IllegalArgumentException{
         Property property = null;
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         boolean isEscape = false;
         boolean isIndexedStart = false;
         boolean isMappedStart = false;
@@ -334,7 +334,7 @@ public class PropertyFactory implements java.io.Serializable{
                     boolean isMappedStart2 = false;
                     int groupStartCount = 0;
                     boolean isBreak = false;
-                    final StringBuilder groupBuf = new StringBuilder();
+                    final StringBuffer groupBuf = new StringBuffer();
                     for(; ++i < max;){
                         final char c2 = prop.charAt(i);
                         switch(c2){

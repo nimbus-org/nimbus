@@ -431,7 +431,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         }
     }
     
-    public StringBuilder toXML(StringBuilder buf){
+    public StringBuffer toXML(StringBuffer buf){
         appendComment(buf);
         buf.append('<').append(OBJECT_TAG_NAME);
         if(code != null){
@@ -447,7 +447,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
             if(constructor != null && constructor.getIfDefMetaData() == null){
                 buf.append(LINE_SEPARATOR);
                 buf.append(
-                    addIndent(constructor.toXML(new StringBuilder()))
+                    addIndent(constructor.toXML(new StringBuffer()))
                 );
             }
             if(fields.size() != 0){
@@ -459,7 +459,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuilder()))
+                        addIndent(data.toXML(new StringBuffer()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -475,7 +475,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuilder()))
+                        addIndent(data.toXML(new StringBuffer()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -491,7 +491,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
                         continue;
                     }
                     buf.append(
-                        addIndent(data.toXML(new StringBuilder()))
+                        addIndent(data.toXML(new StringBuffer()))
                     );
                     if(datas.hasNext()){
                         buf.append(LINE_SEPARATOR);
@@ -503,7 +503,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
                 for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
                     IfDefMetaData ifdefData = (IfDefMetaData)ifDefMetaDataList.get(i);
                     buf.append(
-                        addIndent(ifdefData.toXML(new StringBuilder()))
+                        addIndent(ifdefData.toXML(new StringBuffer()))
                     );
                     buf.append(LINE_SEPARATOR);
                 }
@@ -532,7 +532,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(super.toString());
         buf.append('{');
         buf.append(CODE_ATTRIBUTE_NAME);

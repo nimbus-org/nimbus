@@ -32,8 +32,6 @@
 package jp.ossc.nimbus.service.semaphore;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
@@ -62,10 +60,10 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
     protected transient SynchronizeMonitor getMonitor = new WaitSynchronizeMonitor();
     
     /** セマフォ獲得スレッド集合 */
-    protected transient ConcurrentMap usedThreads = new ConcurrentHashMap();
+    protected transient Set usedThreads = Collections.synchronizedSet(new HashSet());
     
     /** セマフォ獲得スレッド集合 */
-    protected transient ConcurrentMap threadTasks = new ConcurrentHashMap();
+    protected transient Map threadTasks = Collections.synchronizedMap(new HashMap());
     
     /** 無限獲得待ちスレッドSleep時間[ms] */
     protected long sleepTime = 10000;
@@ -154,7 +152,7 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
                             }
                             
                             // リソース使用中スレッドに登録する
-                            usedThreads.put(current, current);
+                            usedThreads.add(current);
                             
                             // タスク管理にタスクを登録する
                             if(threadTasks.containsKey(current)){
@@ -164,6 +162,7 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
                                     taskList = (List)tasks;
                                 }else{
                                     taskList = new ArrayList();
+                                    taskList.add(tasks);
                                     threadTasks.put(current, taskList);
                                 }
                                 taskList.add(task);
@@ -243,7 +242,7 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
         boolean isUsed = false;
         if(isThreadBinding){
             synchronized(usedThread){
-                if(usedThreads.containsKey(usedThread)){
+                if(usedThreads.contains(usedThread)){
                     isUsed = true;
                     final Object tasks = threadTasks.get(usedThread);
                     if(tasks instanceof List){
@@ -339,7 +338,7 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
             getMonitor.notifyMonitor();
         }
         while(usedThreads.size() != 0){
-            Object[] threads = usedThreads.keySet().toArray();
+            Object[] threads = usedThreads.toArray();
             for(int i = 0; i < threads.length; i++){
                 freeResource((Thread)threads[i]);
             }
@@ -389,8 +388,8 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
      throws java.io.IOException, ClassNotFoundException{
         in.defaultReadObject();
         getMonitor = new WaitSynchronizeMonitor();
-        usedThreads = new ConcurrentHashMap();
-        threadTasks = new ConcurrentHashMap();
+        usedThreads = Collections.synchronizedSet(new HashSet());
+        threadTasks = Collections.synchronizedMap(new HashMap());
         forceFreeTimer = new Timer(true);
     }
     

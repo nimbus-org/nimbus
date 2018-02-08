@@ -205,7 +205,7 @@ public class ResourceBundlePropertiesFactoryService
 				}
 			}
 			while(true){
-				StringBuilder propKey = new StringBuilder(propName) ;
+				StringBuffer propKey = new StringBuffer(propName) ;
 				// 1baseclass + "_" + language1 + "_" + country1 + "_" + variant1 + ".properties" 
 				propKey.append(C_UNDER_SCORE).append(lo.getLanguage()).append(C_UNDER_SCORE).append(lo.getCountry()).append(C_UNDER_SCORE).append(lo.getVariant()); 
 				retProp = (ArrayProperties)mPropHash.get(propKey.toString());
@@ -213,14 +213,14 @@ public class ResourceBundlePropertiesFactoryService
 					break ;
 				}
 				//baseclass + "_" + language1 + "_" + country1 + ".properties" 
-				propKey = new StringBuilder(propName) ;
+				propKey = new StringBuffer(propName) ;
 				propKey.append(C_UNDER_SCORE).append(lo.getLanguage()).append(C_UNDER_SCORE).append(lo.getCountry()); 
 				retProp = (ArrayProperties)mPropHash.get(propKey.toString());
 				if(retProp != null){
 					break ;
 				}
 				//baseclass + "_" + language1 + ".properties" 
-				propKey = new StringBuilder(propName) ;
+				propKey = new StringBuffer(propName) ;
 				propKey.append(C_UNDER_SCORE).append(lo.getLanguage()); 
 				retProp = (ArrayProperties)mPropHash.get(propKey.toString());
 				if(retProp != null){
@@ -228,7 +228,7 @@ public class ResourceBundlePropertiesFactoryService
 				}
 				if(!lo.equals(Locale.getDefault())){
 					lo = Locale.getDefault() ;
-					propKey = new StringBuilder(propName) ;
+					propKey = new StringBuffer(propName) ;
 					// 1baseclass + "_" + language1 + "_" + country1 + "_" + variant1 + ".properties" 
 					propKey.append(C_UNDER_SCORE).append(lo.getLanguage()).append(C_UNDER_SCORE).append(lo.getCountry()).append(C_UNDER_SCORE).append(lo.getVariant()); 
 					retProp = (ArrayProperties)mPropHash.get(propKey.toString());
@@ -236,14 +236,14 @@ public class ResourceBundlePropertiesFactoryService
 						break ;
 					}
 					//baseclass + "_" + language1 + "_" + country1 + ".properties" 
-					propKey = new StringBuilder(propName) ;
+					propKey = new StringBuffer(propName) ;
 					propKey.append(C_UNDER_SCORE).append(lo.getLanguage()).append(C_UNDER_SCORE).append(lo.getCountry()); 
 					retProp = (ArrayProperties)mPropHash.get(propKey.toString());
 					if(retProp != null){
 						break ;
 					}
 					//baseclass + "_" + language1 + ".properties" 
-					propKey = new StringBuilder(propName) ;
+					propKey = new StringBuffer(propName) ;
 					propKey.append(C_UNDER_SCORE).append(lo.getLanguage()); 
 					retProp = (ArrayProperties)mPropHash.get(propKey.toString());
 					if(retProp != null){

@@ -217,7 +217,7 @@ public class Request{
     }
     
     public String toString(){
-        StringBuilder buf = new StringBuilder(super.toString());
+        StringBuffer buf = new StringBuffer(super.toString());
         buf.append('{');
         buf.append("isAccept=").append(isAccept);
         buf.append(", isFirst=").append(isFirst);

@@ -231,7 +231,7 @@ public class ConcentrateRequest implements Serializable{
     }
     
     public String toString(){
-        final StringBuilder buf = new StringBuilder(super.toString());
+        final StringBuffer buf = new StringBuffer(super.toString());
         buf.append("{key=").append(key);
         buf.append(",source=").append(source);
         buf.append(",destination=").append(destination);

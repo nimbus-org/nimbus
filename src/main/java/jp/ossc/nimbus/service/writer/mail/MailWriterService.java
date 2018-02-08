@@ -1153,7 +1153,7 @@ public class MailWriterService extends ServiceBase
         if(bIndex >= 0){
             List elements = rec.getElements();
             if(elements.size() > bIndex){
-                final StringBuilder buf = new StringBuilder();
+                final StringBuffer buf = new StringBuffer();
                 for(int i = bIndex, imax = elements.size(); i < imax; i++){
                     WritableElement element = (WritableElement)elements.get(i);
                     if(element != null){
@@ -1437,7 +1437,7 @@ public class MailWriterService extends ServiceBase
             // I want to public the MimeUtility#doEncode()!!!
             String mimeString = MimeUtility.encodeWord(filename, charset, "B");
             // cut <CRLF>...
-            StringBuilder sb = new StringBuilder();
+            StringBuffer sb = new StringBuffer();
             int i;
             while((i = mimeString.indexOf('\r')) != -1){
                 sb.append(mimeString.substring(0, i));
@@ -1458,8 +1458,8 @@ public class MailWriterService extends ServiceBase
         String encoding,
         String lang
     ){
-        StringBuilder result = new StringBuilder();
-        StringBuilder encodedPart = new StringBuilder();
+        StringBuffer result = new StringBuffer();
+        StringBuffer encodedPart = new StringBuffer();
         
         boolean needWriteCES = !isAllAscii(value);
         boolean CESWasWritten = false;

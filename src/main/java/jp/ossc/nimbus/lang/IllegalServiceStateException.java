@@ -135,7 +135,7 @@ public class IllegalServiceStateException extends RuntimeException{
      * @return メッセージ
      */
     public String getMessage(){
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append(managerName).append('#').append(serviceName)
             .append(',').append(Service.STATES[serviceState]);
         return buf.toString();

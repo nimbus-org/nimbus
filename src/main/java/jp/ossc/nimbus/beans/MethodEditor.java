@@ -125,7 +125,7 @@ public class MethodEditor extends PropertyEditorSupport
             return null;
         }
         final Class clazz = method.getDeclaringClass();
-        final StringBuilder buf = new StringBuilder(clazz.getName());
+        final StringBuffer buf = new StringBuffer(clazz.getName());
         buf.append('#');
         buf.append(method.getName());
         buf.append('(');

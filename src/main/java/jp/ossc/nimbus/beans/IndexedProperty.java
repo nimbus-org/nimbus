@@ -515,7 +515,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             indexedReadMethodCache.put(clazz, null);
             return null;
         }
-        final StringBuilder methodName = new StringBuilder(GET_METHOD_NAME);
+        final StringBuffer methodName = new StringBuffer(GET_METHOD_NAME);
         if(property != null && property.length() != 0){
             char capital = property.charAt(0);
             if(Character.isUpperCase(capital)){
@@ -731,7 +731,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             }
             return null;
         }
-        final StringBuilder methodName = new StringBuilder(SET_METHOD_NAME);
+        final StringBuffer methodName = new StringBuffer(SET_METHOD_NAME);
         if(property != null && property.length() != 0){
             char capital = property.charAt(0);
             if(Character.isUpperCase(capital)){

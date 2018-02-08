@@ -151,7 +151,7 @@ public class HttpServletRequestMetricsInterceptorService extends ServletFilterIn
         Arrays.sort(infos, COMP);
         final SimpleDateFormat format
              = new SimpleDateFormat(dateFormat);
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         buf.append("\"No.\"");
         if(isOutputCount){
             buf.append(",\"Count\"");

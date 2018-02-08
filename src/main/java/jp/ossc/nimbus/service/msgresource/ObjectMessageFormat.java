@@ -81,7 +81,7 @@ public class ObjectMessageFormat
 			return null;
 		}
 		//プロパティ部
-		StringBuilder ret = new StringBuilder("[property] ");
+		StringBuffer ret = new StringBuffer("[property] ");
 		ret.append(dumpProperties(msg));
 		ret.append(" [payload] ");
 		// TODO 自動生成されたメソッド・スタブ

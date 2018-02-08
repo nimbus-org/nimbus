@@ -81,7 +81,7 @@ public class ClassArrayEditor extends ArrayEditor
         if(classArray == null){
             return null;
         }
-        final StringBuilder buf = new StringBuilder();
+        final StringBuffer buf = new StringBuffer();
         for(int i = 0, max = classArray.length; i < max; i++){
             buf.append(classArray[i].getName());
             if(i != max - 1){

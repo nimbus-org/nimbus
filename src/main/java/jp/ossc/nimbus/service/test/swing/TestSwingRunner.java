@@ -78,7 +78,7 @@ public class TestSwingRunner{
             .getResourceAsStream(name);
         
         // メッセージの読み込み
-        StringBuilder buf = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
         try{
@@ -101,7 +101,7 @@ public class TestSwingRunner{
     private static String unicodeConvert(String str){
         char c;
         int len = str.length();
-        StringBuilder buf = new StringBuilder(len);
+        StringBuffer buf = new StringBuffer(len);
         
         for(int i = 0; i < len; ){
             c = str.charAt(i++);

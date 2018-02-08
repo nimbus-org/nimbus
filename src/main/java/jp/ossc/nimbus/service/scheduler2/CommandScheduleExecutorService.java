@@ -358,7 +358,7 @@ public class CommandScheduleExecutorService
                         errReadThread.interrupt();
                     }
                 }
-                StringBuilder buf = new StringBuilder();
+                StringBuffer buf = new StringBuffer();
                 if(isTimeout){
                     schedule.setState(Schedule.STATE_FAILED);
                     buf.append("Waiting for a response of command, it is timeout. pid=" + (pid == -1 ? "unknown" : Integer.toString(pid)));

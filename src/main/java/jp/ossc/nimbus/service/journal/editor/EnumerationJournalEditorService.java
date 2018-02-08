@@ -76,7 +76,7 @@ public class EnumerationJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         final Enumeration enumeration = (Enumeration)value;
         buf.append(startDelimiter);

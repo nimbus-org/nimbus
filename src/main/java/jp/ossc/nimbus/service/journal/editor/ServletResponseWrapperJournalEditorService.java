@@ -80,7 +80,7 @@ public class ServletResponseWrapperJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuilder buf
+        StringBuffer buf
     ){
         boolean isMake = super.processBlock(finder, key, value, buf);
         final JournalServletResponseWrapper response
@@ -103,21 +103,21 @@ public class ServletResponseWrapperJournalEditorService
         return isMake;
     }
     
-    protected StringBuilder makeContentLengthFormat(
+    protected StringBuffer makeContentLengthFormat(
         EditorFinder finder,
         Object key,
         JournalServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CONTENT_LENGTH_HEADER)
             .append(response.getContentLength());
     }
     
-    protected StringBuilder makeContentFormat(
+    protected StringBuffer makeContentFormat(
         EditorFinder finder,
         Object key,
         JournalServletResponseWrapper response,
-        StringBuilder buf
+        StringBuffer buf
     ){
         return buf.append(CONTENT_HEADER)
             .append(response.getContent());
