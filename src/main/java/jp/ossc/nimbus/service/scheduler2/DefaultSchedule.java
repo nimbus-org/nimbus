@@ -632,7 +632,7 @@ public class DefaultSchedule
     public String toString(){
         final SimpleDateFormat format
             = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS");
-        final StringBuffer buf = new StringBuffer(super.toString());
+        final StringBuilder buf = new StringBuilder(super.toString());
         buf.append('{');
         buf.append("id=").append(id);
         buf.append(",masterId=").append(masterId);

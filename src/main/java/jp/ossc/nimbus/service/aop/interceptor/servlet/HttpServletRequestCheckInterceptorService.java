@@ -787,7 +787,7 @@ public class HttpServletRequestCheckInterceptorService
             }
         }
         public String toString(){
-            StringBuffer buf = new StringBuffer(mediaType);
+            StringBuilder buf = new StringBuilder(mediaType);
             if(parameters != null){
                 Iterator itr = parameters.entrySet().iterator();
                 while(itr.hasNext()){

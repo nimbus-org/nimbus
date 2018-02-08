@@ -93,7 +93,7 @@ public class RecordListJournalEditorService extends BlockJournalEditorServiceBas
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final RecordList bean = (RecordList)value;
         boolean isMake = false;
@@ -118,32 +118,32 @@ public class RecordListJournalEditorService extends BlockJournalEditorServiceBas
         return isMake;
     }
     
-    protected StringBuffer makeRecordListNameFormat(
+    protected StringBuilder makeRecordListNameFormat(
         EditorFinder finder,
         Object key,
         RecordList list,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(NAME_HEADER).append(list.getName());
         return buf;
     }
     
-    protected StringBuffer makeRecordSchemaFormat(
+    protected StringBuilder makeRecordSchemaFormat(
         EditorFinder finder,
         Object key,
         RecordList list,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(RECORD_SCHEMA_HEADER);
         makeObjectFormat(finder, null, list.getRecordSchema(), buf);
         return buf;
     }
     
-    protected StringBuffer makeRecordsFormat(
+    protected StringBuilder makeRecordsFormat(
         EditorFinder finder,
         Object key,
         RecordList list,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(RECORDS_HEADER);
         final int size = list.size();
@@ -153,7 +153,7 @@ public class RecordListJournalEditorService extends BlockJournalEditorServiceBas
         }else{
             buf.append(getLineSeparator());
         }
-        final StringBuffer subBuf = new StringBuffer();
+        final StringBuilder subBuf = new StringBuilder();
         for(int i = 0, max = (maxSize > 0 && maxSize < size) ? maxSize : size; i <= max; i++){
             if(i != max){
                 Record record = (Record)list.get(i);

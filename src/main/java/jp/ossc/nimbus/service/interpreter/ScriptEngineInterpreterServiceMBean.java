@@ -33,18 +33,37 @@ package jp.ossc.nimbus.service.interpreter;
 
 import java.util.Map;
 
+import jp.ossc.nimbus.core.*;
+
 /**
- * スクリプトを実行するインタープリタ。<p>
+ * {@link ScriptEngineInterpreterService}のMBeanインタフェース。<p>
  * 
  * @author M.Takata
  */
-public interface Interpreter{
+public interface ScriptEngineInterpreterServiceMBean extends ServiceBaseMBean{
     
-    public boolean isCompilable();
+    public void setExtension(String ext);
+    public String getExtension();
     
-    public CompiledInterpreter compile(String code) throws EvaluateException;
+    public void setMimeType(String type);
+    public String getMimeType();
+    
+    public void setEngineName(String name);
+    public String getEngineName();
+    
+    public void setGlobalBinding(String name, Object val);
+    public Object getGlobalBinding(String name);
+    public Map<String, Object> getGlobalBindings();
+    
+    public void setEngineBinding(String name, Object val);
+    public Object getEngineBinding(String name);
+    public Map<String, Object> getEngineBindings();
+    
+    public void setClassLoader(ClassLoader loader);
+    public ClassLoader getClassLoader();
+    
+    public void setNewScriptEngineByEvaluate(boolean isNew);
+    public boolean isNewScriptEngineByEvaluate();
     
     public Object evaluate(String code) throws EvaluateException;
-    
-    public Object evaluate(String code, Map variables) throws EvaluateException;
 }

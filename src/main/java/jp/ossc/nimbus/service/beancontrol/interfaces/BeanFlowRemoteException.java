@@ -91,7 +91,7 @@ public class BeanFlowRemoteException extends RuntimeException{
     }
     
     public String getMessage(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         if(super.getMessage() != null){
             buf.append(super.getMessage()).append(':');
         }

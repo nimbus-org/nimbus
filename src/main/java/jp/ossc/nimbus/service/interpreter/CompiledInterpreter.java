@@ -34,17 +34,13 @@ package jp.ossc.nimbus.service.interpreter;
 import java.util.Map;
 
 /**
- * スクリプトを実行するインタープリタ。<p>
+ * コンパイルされたインタープリタ。<p>
  * 
  * @author M.Takata
  */
-public interface Interpreter{
+public interface CompiledInterpreter{
     
-    public boolean isCompilable();
+    public Object evaluate() throws EvaluateException;
     
-    public CompiledInterpreter compile(String code) throws EvaluateException;
-    
-    public Object evaluate(String code) throws EvaluateException;
-    
-    public Object evaluate(String code, Map variables) throws EvaluateException;
+    public Object evaluate(Map variables) throws EvaluateException;
 }

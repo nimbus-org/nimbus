@@ -938,7 +938,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     }
     
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
         buf.append("id=").append(id);

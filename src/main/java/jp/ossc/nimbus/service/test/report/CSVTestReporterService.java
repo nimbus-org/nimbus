@@ -633,7 +633,7 @@ public class CSVTestReporterService extends ServiceBase implements CSVTestReport
         if(th == null){
             return null;
         }
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append(th).append(LINE_SEP);
         final StackTraceElement[] elements = th.getStackTrace();
         if(elements != null){

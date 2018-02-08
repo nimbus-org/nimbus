@@ -242,7 +242,7 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     private String createGetterName(){
-        StringBuffer result = new StringBuffer(property);
+        StringBuilder result = new StringBuilder(property);
         final int len = result.length();
         if(len != 0 && !Character.isUpperCase(result.charAt(0))){
             char capital = Character.toUpperCase(result.charAt(0));
@@ -252,7 +252,7 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     private String createSetterName(){
-        StringBuffer result = new StringBuffer(property);
+        StringBuilder result = new StringBuilder(property);
         final int len = result.length();
         if(len != 0 && !Character.isUpperCase(result.charAt(0))){
             char capital = Character.toUpperCase(result.charAt(0));
@@ -721,8 +721,8 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     if(property != null
                         && property.length() != 0
                         && Character.isUpperCase(property.charAt(0))){
-                        StringBuffer methodName
-                             = new StringBuffer(property);
+                        StringBuilder methodName
+                             = new StringBuilder(property);
                         char capital = Character.toLowerCase(methodName.charAt(0));
                         methodName.deleteCharAt(0).insert(0, capital);
                         try{
@@ -967,8 +967,8 @@ public class SimpleProperty implements Property, Serializable, Comparable{
         if(property != null
             && property.length() != 0
             && Character.isUpperCase(property.charAt(0))){
-            StringBuffer methodName
-                 = new StringBuffer(property);
+            StringBuilder methodName
+                 = new StringBuilder(property);
             char capital = Character.toLowerCase(methodName.charAt(0));
             methodName.deleteCharAt(0).insert(0, capital);
             lowerCaseProperty = methodName.toString();

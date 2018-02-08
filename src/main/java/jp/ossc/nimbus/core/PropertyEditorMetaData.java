@@ -123,7 +123,7 @@ public class PropertyEditorMetaData extends MetaData
         }
     }
     
-    public StringBuffer toXML(StringBuffer buf){
+    public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(PROPERTY_EDITOR_TAG_NAME)
            .append(" type=").append(type)

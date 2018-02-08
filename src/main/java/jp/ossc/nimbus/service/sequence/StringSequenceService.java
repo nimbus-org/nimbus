@@ -208,7 +208,7 @@ public class StringSequenceService extends ServiceBase
     
     // SequenceÇÃJavaDoc
     public String increment(){
-        StringBuffer retStr = new StringBuffer();
+        StringBuilder retStr = new StringBuilder();
         synchronized(this){
             // åÖêîÇÃê[Ç≥ÇéÊìæÇ∑ÇÈ
             int maxCnt = mSequenceNo.size();
@@ -248,7 +248,7 @@ public class StringSequenceService extends ServiceBase
         FileWriter fw = null;
         try{
             fw = new FileWriter(persistFile, false);
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             for(Iterator itr = mSequenceNo.iterator(); itr.hasNext();){
                 SequenceVariable item = (SequenceVariable)itr.next();
                 buf.append(item.getCurrent());
@@ -289,7 +289,7 @@ public class StringSequenceService extends ServiceBase
     
     // SequenceÇÃJavaDoc
     public String getCurrent(){
-        StringBuffer retStr = new StringBuffer();
+        StringBuilder retStr = new StringBuilder();
         synchronized(this){
             for(Iterator iterator = mSequenceNo.iterator(); iterator.hasNext();){
                 final SequenceVariable item = (SequenceVariable)iterator.next();

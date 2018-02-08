@@ -205,7 +205,7 @@ public class ClusterInvokerService extends ServiceBase
                 if(checkers == null || checkers.length == 0){
                     throw new RemoteServiceCallException("No selectable KeepAliveCheckInvoker.");
                 }
-                StringBuffer selectableCheckers = new StringBuffer();
+                StringBuilder selectableCheckers = new StringBuilder();
                 if(targetObj instanceof ServiceName){
                     ServiceName targetServiceName = (ServiceName)targetObj;
                     for(int i = 0; i < checkers.length; i++){
@@ -426,7 +426,7 @@ public class ClusterInvokerService extends ServiceBase
             boolean keyFlg = false;
             
             String beforeToken = null;
-            StringBuffer condBuf = new StringBuffer();
+            StringBuilder condBuf = new StringBuilder();
             
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

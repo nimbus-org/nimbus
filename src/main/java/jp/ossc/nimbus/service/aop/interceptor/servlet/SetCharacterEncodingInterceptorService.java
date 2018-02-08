@@ -130,7 +130,7 @@ public class SetCharacterEncodingInterceptorService
     
     protected static Map parseQueryString(String str){
         final Map params = new HashMap();
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         final StringTokenizer tokens = new StringTokenizer(str, QUERY_DELIM);
         while(tokens.hasMoreTokens()){
             final String pair = tokens.nextToken();
@@ -163,7 +163,7 @@ public class SetCharacterEncodingInterceptorService
         return params;
     }
     
-    protected static String parseName(String str, StringBuffer sb){
+    protected static String parseName(String str, StringBuilder sb){
         sb.setLength(0);
         for(int i = 0, max = str.length(); i < max; i++){
             final char c = str.charAt(i);

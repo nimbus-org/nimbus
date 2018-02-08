@@ -70,7 +70,7 @@ public class MapMessageFormat
 		if(!(msg instanceof MapMessage)){
 			return null;
 		}	
-		StringBuffer ret = new StringBuffer("[property]");
+		StringBuilder ret = new StringBuilder("[property]");
 		//プロパティ部をString化
 		ret.append(dumpProperties(msg));
 		//区切りを入れる

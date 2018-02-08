@@ -44,7 +44,7 @@ public class JournalServletResponseWrapperJSONJournalEditorService
     
     private static final long serialVersionUID = 3443962474343234566L;
     
-    protected StringBuffer appendUnknownValue(StringBuffer buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
         if(!(value instanceof JournalServletResponseWrapper)){
             return super.appendUnknownValue(buf, finder, type, value);
         }
@@ -57,13 +57,13 @@ public class JournalServletResponseWrapperJSONJournalEditorService
         return buf;
     }
     
-    protected boolean appendJournalServletResponseWrapper(StringBuffer buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
+    protected boolean appendJournalServletResponseWrapper(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
         isAppended |= appendContentLength(buf, finder, response, isAppended);
         isAppended |= appendContent(buf, finder, response, isAppended);
         return isAppended;
     }
     
-    protected boolean appendContentLength(StringBuffer buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
+    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
         if(isOutputProperty(PROPERTY_CONTENT_LENGTH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -80,7 +80,7 @@ public class JournalServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendContent(StringBuffer buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
+    protected boolean appendContent(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
         if(isOutputProperty(PROPERTY_CONTENT)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);

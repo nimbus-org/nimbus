@@ -70,7 +70,7 @@ public abstract class ItemJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         if(isOutputItemName){
             buf.append(getItemName());
@@ -92,7 +92,7 @@ public abstract class ItemJournalEditorServiceBase
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
     }
 }

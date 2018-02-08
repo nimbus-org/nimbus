@@ -167,7 +167,7 @@ public abstract class AbstractGene implements Gene, Cloneable, Externalizable{
     }
     
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append('{');
         buf.append("name=").append(name);
         buf.append(", value=").append(toValueString());

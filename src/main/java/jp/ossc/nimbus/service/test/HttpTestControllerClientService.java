@@ -556,7 +556,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
 
         public String toString() {
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append(value);
             if (parameters != null) {
                 Iterator entries = parameters.entrySet().iterator();

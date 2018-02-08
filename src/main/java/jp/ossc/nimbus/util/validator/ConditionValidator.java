@@ -116,7 +116,7 @@ public class ConditionValidator implements Validator, Serializable{
             boolean keyFlg = false;
             
             String beforeToken = null;
-            final StringBuffer condBuf = new StringBuffer();
+            final StringBuilder condBuf = new StringBuilder();
             
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

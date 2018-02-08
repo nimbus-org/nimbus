@@ -557,7 +557,7 @@ public class BeanExchangeConverter implements BindingConverter{
             }
         }
         if(isMakeSchema && (output instanceof Record) && ((Record)output).getRecordSchema() == null){
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             final Iterator entries = propMapping.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();

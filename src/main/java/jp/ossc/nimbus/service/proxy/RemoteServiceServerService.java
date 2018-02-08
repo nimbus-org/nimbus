@@ -494,7 +494,7 @@ public class RemoteServiceServerService extends ServiceBase
                     ((DefaultInterceptorChain)chain).setInvoker(defaultInvoker);
                 }
             }else{
-                StringBuffer key = new StringBuffer();
+                StringBuilder key = new StringBuilder();
                 Object target = context.getTargetObject();
                 if(target != null){
                     key.append(target);

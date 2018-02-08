@@ -129,7 +129,7 @@ public class BeanFlowAsynchContext extends AsynchContext{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", flowName=").append(getFlowName());
         buf.append('}');

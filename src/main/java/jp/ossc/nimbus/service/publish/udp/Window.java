@@ -351,7 +351,7 @@ public class Window extends WindowId{
     }
     
     public String toString(){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.deleteCharAt(buf.length() - 1);
         buf.append(", windowCount=").append(windowCount);

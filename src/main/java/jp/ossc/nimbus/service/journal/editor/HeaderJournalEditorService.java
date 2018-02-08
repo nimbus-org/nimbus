@@ -68,7 +68,7 @@ public class HeaderJournalEditorService extends RecordJournalEditorService
         EditorFinder finder,
         Object key,
         Object value,
-        StringBuffer buf
+        StringBuilder buf
     ){
         final Header bean = (Header)value;
         boolean isMake = false;
@@ -95,11 +95,11 @@ public class HeaderJournalEditorService extends RecordJournalEditorService
         return isMake;
     }
     
-    protected StringBuffer makeHeaderNameFormat(
+    protected StringBuilder makeHeaderNameFormat(
         EditorFinder finder,
         Object key,
         Header bean,
-        StringBuffer buf
+        StringBuilder buf
     ){
         buf.append(NAME_HEADER).append(bean.getName());
         return buf;

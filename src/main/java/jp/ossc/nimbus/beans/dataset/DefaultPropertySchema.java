@@ -36,6 +36,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.math.*;
 import java.io.Serializable;
 
@@ -113,8 +115,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
      * オブジェクトの管理用マップ。<p>
      * キーはオブジェクト文字列、値はオブジェクト。<br>
      */
-    protected static final Map objectManager
-         = Collections.synchronizedMap(new HashMap());
+    protected static final ConcurrentMap objectManager = new ConcurrentHashMap();
     
     /**
      * スキーマ文字列。<p>
@@ -471,7 +472,10 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                 }
             }
         }
-        objectManager.put(val, object);
+        Object old = objectManager.putIfAbsent(val, object);
+        if(old != null){
+            object = old;
+        }
         return object;
     }
     
@@ -1000,7 +1004,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
      * @return 文字列表現
      */
     public String toString(){
-        final StringBuffer buf = new StringBuffer(getClass().getName());
+        final StringBuilder buf = new StringBuilder(getClass().getName());
         buf.append('{');
         buf.append("name=").append(name);
         buf.append(",type=").append(type == null ? null : type.getName());
@@ -1078,7 +1082,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             boolean keyFlg = false;
             
             String beforeToken = null;
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

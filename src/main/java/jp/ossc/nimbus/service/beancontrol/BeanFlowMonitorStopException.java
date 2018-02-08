@@ -69,7 +69,7 @@ public class BeanFlowMonitorStopException extends RuntimeException{
     }
     
     public String getMessage(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         if(super.getMessage() != null){
             buf.append(':').append(super.getMessage());
         }

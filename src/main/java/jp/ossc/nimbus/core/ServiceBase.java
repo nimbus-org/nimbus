@@ -1442,7 +1442,7 @@ public abstract class ServiceBase
      * @return このインスタンスの文字列表現
      */
     public String toString(){
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if(support != null){
             buf.append(support.toString());
         }else{

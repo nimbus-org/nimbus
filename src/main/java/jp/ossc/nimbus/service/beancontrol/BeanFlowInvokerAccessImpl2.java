@@ -33,6 +33,8 @@ package jp.ossc.nimbus.service.beancontrol;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.*;
 import java.beans.PropertyEditor;
 import java.sql.ResultSet;
@@ -2594,7 +2596,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 field = targetClazz.getField(name);
             }catch(NoSuchFieldException e){
                 if(name.length() != 0 && Character.isUpperCase(name.charAt(0))){
-                    StringBuffer tmpName = new StringBuffer();
+                    StringBuilder tmpName = new StringBuilder();
                     tmpName.append(Character.toLowerCase(name.charAt(0)));
                     if(name.length() > 1){
                         tmpName.append(name.substring(1));
@@ -2658,7 +2660,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 f = targetClazz.getField(name);
             }catch(NoSuchFieldException e){
                 if(name.length() != 0 && Character.isUpperCase(name.charAt(0))){
-                    StringBuffer tmpName = new StringBuffer();
+                    StringBuilder tmpName = new StringBuilder();
                     tmpName.append(Character.toLowerCase(name.charAt(0)));
                     if(name.length() > 1){
                         tmpName.append(name.substring(1));
@@ -2957,7 +2959,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
 
         private boolean isJournal = true;
 
-        private Map methodCache = Collections.synchronizedMap(new HashMap());
+        private ConcurrentMap methodCache = new ConcurrentHashMap();
         private BeanFlowCoverageImpl coverage;
 
         public InvokeMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
@@ -3045,9 +3047,6 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 paramTypes.add(typeClass);
             }
             Class targetClass = target.getClass();
-            if(methodCache == null){
-                methodCache = Collections.synchronizedMap(new HashMap());
-            }
             Method method = (Method)methodCache.get(targetClass);
             if(method == null){
                 final Class[] paramTypeArray = (Class[])paramTypes.toArray(new Class[paramTypes.size()]);
@@ -3079,7 +3078,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                         target.getClass().getName() + '#' + getSignature(params)
                     );
                 }
-                methodCache.put(targetClass, method);
+                methodCache.putIfAbsent(targetClass, method);
             }
 
             final Journal journal = getJournal(InvokeMetaData.this);
@@ -3107,7 +3106,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         protected String getSignature(List params) throws Exception{
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             buf.append(getName());
             buf.append('(');
             if(arguments.size() != 0){
@@ -3257,7 +3256,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         protected String getSignature(List params) throws Exception{
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             buf.append(getCode());
             buf.append('#');
             buf.append(getName());
@@ -5848,7 +5847,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             boolean keyFlg = false;
 
             String beforeToken = null;
-            StringBuffer condBuf = new StringBuffer();
+            StringBuilder condBuf = new StringBuilder();
 
             while(token.hasMoreTokens()){
                 String str = token.nextToken();
@@ -6269,7 +6268,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             boolean keyFlg = false;
 
             String beforeToken = null;
-            StringBuffer condBuf = new StringBuffer();
+            StringBuilder condBuf = new StringBuilder();
 
             while(token.hasMoreTokens()){
                 String str = token.nextToken();

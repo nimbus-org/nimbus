@@ -32,6 +32,8 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.ossc.nimbus.core.*;
 
@@ -45,7 +47,7 @@ public class CheckPointTracerService extends ServiceBase
     
     private static final long serialVersionUID = -5613434425756392467L;
     private boolean isEnabled = true;
-    private Map checkPointTraceMap;
+    private ConcurrentMap checkPointTraceMap;
     
     // CheckPointTracerServiceMBean‚ÌJavaDoc
     public void setEnabled(boolean enabled){
@@ -58,7 +60,7 @@ public class CheckPointTracerService extends ServiceBase
     }
     
     public void createService() throws Exception{
-        checkPointTraceMap = Collections.synchronizedMap(new HashMap());
+        checkPointTraceMap = new ConcurrentHashMap();
     }
     public void stopService() throws Exception{
         clear();
@@ -108,7 +110,10 @@ public class CheckPointTracerService extends ServiceBase
         List checkPointTrace = (List)checkPointTraceMap.get(threadName);
         if(checkPointTrace == null){
             checkPointTrace = new ArrayList();
-            checkPointTraceMap.put(threadName, checkPointTrace);
+            List old = (List)checkPointTraceMap.putIfAbsent(threadName, checkPointTrace);
+            if(old != null){
+                checkPointTrace = old;
+            }
         }
         synchronized(checkPointTrace){
             checkPointTrace.add(point);

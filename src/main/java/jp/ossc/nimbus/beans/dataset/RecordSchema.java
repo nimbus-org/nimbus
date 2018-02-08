@@ -33,6 +33,8 @@ package jp.ossc.nimbus.beans.dataset;
 
 import java.util.*;
 import java.io.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.ossc.nimbus.core.*;
 
@@ -71,13 +73,10 @@ public class RecordSchema{
     
     private static final String PROP_SCHEMA_CLASS_DELIMETER = ":";
     
-    protected static final Map recordSchemaManager
-         = Collections.synchronizedMap(new HashMap());
+    protected static final ConcurrentMap recordSchemaManager = new ConcurrentHashMap();
     
-    protected static final Map propertySchemaManager
-         = Collections.synchronizedMap(new HashMap());
-    protected static final Map propertySchemaAliasMap
-         = Collections.synchronizedMap(new HashMap());
+    protected static final ConcurrentMap propertySchemaManager = new ConcurrentHashMap();
+    protected static final Map propertySchemaAliasMap = new HashMap();
     
     protected Map propertySchemaMap = new HashMap();
     protected Map propertyNameIndexMap = new HashMap();
@@ -123,7 +122,10 @@ public class RecordSchema{
         if(recordSchema == null){
             recordSchema = new RecordSchema();
             recordSchema.setSchema(schema);
-            recordSchemaManager.put(schema, recordSchema);
+            RecordSchema old = (RecordSchema)recordSchemaManager.putIfAbsent(schema, recordSchema);
+            if(old != null){
+                recordSchema = old;
+            }
         }
         return recordSchema;
     }
@@ -137,7 +139,7 @@ public class RecordSchema{
      */
     public static RecordSchema getInstance(PropertySchema[] schemata)
      throws PropertySchemaDefineException{
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         final String lineSep = System.getProperty("line.separator");
         for(int i = 0; i < schemata.length; i++){
             PropertySchema propertySchema = schemata[i];
@@ -152,7 +154,10 @@ public class RecordSchema{
         if(recordSchema == null){
             recordSchema = new RecordSchema();
             recordSchema.setPropertySchemata(schemata);
-            recordSchemaManager.put(schema, recordSchema);
+            RecordSchema old = (RecordSchema)recordSchemaManager.putIfAbsent(schema, recordSchema);
+            if(old != null){
+                recordSchema = old;
+            }
         }
         return recordSchema;
     }
@@ -166,7 +171,7 @@ public class RecordSchema{
      */
     public RecordSchema appendSchema(String schema)
      throws PropertySchemaDefineException{
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         if(this.schema != null){
             buf.append(this.schema);
             buf.append(System.getProperty("line.separator"));
@@ -177,7 +182,10 @@ public class RecordSchema{
         if(recordSchema == null){
             recordSchema = new RecordSchema();
             recordSchema.setSchema(newSchema);
-            recordSchemaManager.put(newSchema, recordSchema);
+            RecordSchema old = (RecordSchema)recordSchemaManager.putIfAbsent(newSchema, recordSchema);
+            if(old != null){
+                recordSchema = old;
+            }
         }
         return recordSchema;
     }
@@ -291,7 +299,10 @@ public class RecordSchema{
                 );
             }
             propertySchema.setSchema(schema);
-            propertySchemaManager.put(propertySchemaKey, propertySchema);
+            PropertySchema old = (PropertySchema)propertySchemaManager.putIfAbsent(propertySchemaKey, propertySchema);
+            if(old != null){
+                propertySchema = old;
+            }
         }
         return propertySchema;
     }
@@ -318,7 +329,7 @@ public class RecordSchema{
         }
         List propertySchemaList = new ArrayList();
         List primaryKeyProps = null;
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         final String lineSep = System.getProperty("line.separator");
         for(int i = 0; i < schemata.length; i++){
             PropertySchema propertySchema = schemata[i];
@@ -328,7 +339,10 @@ public class RecordSchema{
             }
             final String propertySchemaKey
                  = propertySchema.getClass().getName() + propertySchema.getSchema();
-            propertySchemaManager.put(propertySchemaKey, propertySchema);
+            PropertySchema old = (PropertySchema)propertySchemaManager.putIfAbsent(propertySchemaKey, propertySchema);
+            if(old != null){
+                propertySchema = old;
+            }
             
             propertySchemaList.add(propertySchema);
             propertySchemaMap.put(propertySchema.getName(), propertySchema);
@@ -431,7 +445,7 @@ public class RecordSchema{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append('{');
         if(propertySchemata != null){
             for(int i = 0, imax = propertySchemata.length; i < imax; i++){

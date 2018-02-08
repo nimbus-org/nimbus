@@ -582,7 +582,7 @@ public class ServiceManagerFactory implements Serializable{
         logger.write(SVCMF00013);
         final Set tmpNotStarted = new HashSet();
         final ServiceManager[] managers = findManagers();
-        final StringBuffer message = new StringBuffer();
+        final StringBuilder message = new StringBuilder();
         for(int i = 0, max = managers.length; i < max; i++){
             final ServiceManager manager = managers[i];
             final String managerName = manager.getServiceName();
@@ -682,7 +682,7 @@ public class ServiceManagerFactory implements Serializable{
         logger.write(SVCMF00013);
         final Set tmpNotStarted = new HashSet();
         final ServiceManager[] managers = findManagers();
-        final StringBuffer message = new StringBuffer();
+        final StringBuilder message = new StringBuilder();
         for(int i = 0, max = managers.length; i < max; i++){
             final ServiceManager manager = managers[i];
             final String managerName = manager.getServiceName();
@@ -788,7 +788,7 @@ public class ServiceManagerFactory implements Serializable{
         logger.write(SVCMF00013);
         final Set tmpNotStarted = new HashSet();
         final ServiceManager manager = findManager(managerName);
-        final StringBuffer message = new StringBuffer();
+        final StringBuilder message = new StringBuilder();
         if(manager.existFailedService()){
             final Iterator failedServices
                  = manager.getFailedServices().iterator();
@@ -1897,7 +1897,7 @@ public class ServiceManagerFactory implements Serializable{
             .getResourceAsStream(name);
         
         // メッセージの読み込み
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
         try{
@@ -1926,7 +1926,7 @@ public class ServiceManagerFactory implements Serializable{
     private static String unicodeConvert(String str){
         char c;
         int len = str.length();
-        StringBuffer buf = new StringBuffer(len);
+        StringBuilder buf = new StringBuilder(len);
         
         for(int i = 0; i < len; ){
             c = str.charAt(i++);

@@ -67,7 +67,7 @@ public class WriterAppenderWriterService extends ServiceBase
      * ファイル出力のレイアウトを決めるLayoutオブジェクト。<p>
      */
     protected Layout layout = new Layout(){
-        private final StringBuffer sbuf = new StringBuffer(128);
+        private final StringBuilder sbuf = new StringBuilder(128);
         public String format(LoggingEvent event){
             sbuf.setLength(0);
             sbuf.append(event.getRenderedMessage());

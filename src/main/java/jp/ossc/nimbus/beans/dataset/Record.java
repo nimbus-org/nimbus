@@ -1106,7 +1106,7 @@ public class Record implements Externalizable, Cloneable, Map{
      * @return •¶Žš—ñ•\Œ»
      */
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         buf.append('{');
         if(values != null){
             for(int i = 0; i < values.length; i++){

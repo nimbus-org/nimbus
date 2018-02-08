@@ -508,7 +508,7 @@ public class MessageRecordImpl
      * @return メッセージID;メッセージ;使用回数;最終使用日時
      */
     public String toString(){
-        StringBuffer ret = new StringBuffer() ;
+        StringBuilder ret = new StringBuilder() ;
         ret.append(mMessageCode).append(';');
         ret.append(mMessageHash.get(C_DFAUTL_LOCALE)).append(';');
         ret.append(mUsedCount).append(';');
@@ -570,7 +570,7 @@ public class MessageRecordImpl
         fac.findLocale(lo);
         String key = (String)mLocaleHash.get(lo);
         if(key == null){
-            StringBuffer propKey = new StringBuffer();
+            StringBuilder propKey = new StringBuilder();
             //language1 + "_" + country1 + "_" + variant1 
             propKey.append(lo.getLanguage())
                 .append(C_UNDER_SCORE).append(lo.getCountry())

@@ -107,7 +107,7 @@ public class PerformanceRecordImpl implements PerformanceRecord,
 	 * @return String パフォーマンス情報
 	 */
 	public String toString() {
-		StringBuffer retStr = new StringBuffer();
+		StringBuilder retStr = new StringBuilder();
 		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss:SS");
 		String LastProcTime = formatter.format(mLastProcTime);
 		String WorstTime = formatter.format(mWorstTime);

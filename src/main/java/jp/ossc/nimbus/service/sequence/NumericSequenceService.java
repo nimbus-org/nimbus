@@ -99,7 +99,7 @@ public class NumericSequenceService extends ServiceBase
                     "MAX is not numeric max = " + mMax
                 ); //$NON-NLS-1$ //$NON-NLS-2$
             }
-            StringBuffer tmpFormat = new StringBuffer() ;
+            StringBuilder tmpFormat = new StringBuilder() ;
             for(int cnt = 0; cnt < mMax.length(); cnt++){
                 tmpFormat.append(C_ZERO_WITH_COMMMA);
                 tmpFormat.append(C_NINE);
@@ -179,7 +179,7 @@ public class NumericSequenceService extends ServiceBase
     
     // SequenceのJavaDoc
     public String increment(){
-        StringBuffer retStr = new StringBuffer();
+        StringBuilder retStr = new StringBuilder();
         synchronized(this){
             // 桁数の深さを取得する
             int maxCnt = mSequenceNo.size();
@@ -208,12 +208,12 @@ public class NumericSequenceService extends ServiceBase
                 }
             }
             if(retStr.toString().compareTo(mMin) < 0){
-                retStr = new StringBuffer(increment());
+                retStr = new StringBuilder(increment());
             }
             if(retStr.toString().length() >= mMax.length()
                  && retStr.toString().compareTo(mMax) > 0){
                 reset();
-                retStr = new StringBuffer(increment());
+                retStr = new StringBuilder(increment());
             }
             // 開始フラグがtrueであれば、開始時番号として保存
             if(mInitialFlag){
@@ -245,7 +245,7 @@ public class NumericSequenceService extends ServiceBase
     
     // SequenceのJavaDoc
     public String getCurrent(){
-        StringBuffer retStr = new StringBuffer();
+        StringBuilder retStr = new StringBuilder();
         synchronized(this){
             // カレント文字を合成し発番文字を生成する
             boolean isFirst = false ;

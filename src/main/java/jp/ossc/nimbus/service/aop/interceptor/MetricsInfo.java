@@ -161,7 +161,7 @@ public class MetricsInfo implements java.io.Serializable{
     }
     
     public String toString(){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         final SimpleDateFormat format
              = new SimpleDateFormat("HH:mm:ss.SSS");
         buf.append('{');

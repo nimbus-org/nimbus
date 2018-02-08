@@ -100,7 +100,7 @@ public class WrappedPreparedStatement extends WrappedStatement
     
     protected void addSQL(){
         if(journal != null && batchSQL == null){
-            batchSQL = new StringBuffer();
+            batchSQL = new StringBuilder();
         }
         if(batchSQL == null
             || (maxJournalBatchSize >= 0 && batchSQLSize >= maxJournalBatchSize)){
@@ -120,8 +120,8 @@ public class WrappedPreparedStatement extends WrappedStatement
             return preparedSql;
         }
         
-        final StringBuffer tmpSql = new StringBuffer(preparedSql);
-        final StringBuffer tmpVal = new StringBuffer();
+        final StringBuilder tmpSql = new StringBuilder(preparedSql);
+        final StringBuilder tmpVal = new StringBuilder();
         int indexWk = 0;
         if(argList != null){
             for(int i = 0, max = argList.size(); i < max; i++){
@@ -169,7 +169,7 @@ public class WrappedPreparedStatement extends WrappedStatement
     }
     
     protected String toHexString(byte[] bytes){
-        final StringBuffer buf = new StringBuffer();
+        final StringBuilder buf = new StringBuilder();
         for(int i = 0, max = bytes.length; i < max; i++){
             int intValue = bytes[i];
             intValue &= 0x000000FF;
@@ -182,7 +182,7 @@ public class WrappedPreparedStatement extends WrappedStatement
         return buf.toString();
     }
     
-    protected String escapeSQLValue(Object obj, StringBuffer buf){
+    protected String escapeSQLValue(Object obj, StringBuilder buf){
         final String val = obj == null ? null : obj.toString();
         if(val == null
              || (val.indexOf(ESCAPE1) == -1 && val.indexOf(ESCAPE2) == -1)){

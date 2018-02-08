@@ -216,7 +216,7 @@ public class CustomizedRollingFileAppender extends RollingFileAppender {
             result = fileName + (backupIndex);
         }else{
             final int index = indexedFileName.indexOf(INDEX);
-            final StringBuffer buf = new StringBuffer();
+            final StringBuilder buf = new StringBuilder();
             buf.append(indexedFileName.substring(0, index));
             buf.append(backupIndex);
             if(index != indexedFileName.length() - INDEX.length()){

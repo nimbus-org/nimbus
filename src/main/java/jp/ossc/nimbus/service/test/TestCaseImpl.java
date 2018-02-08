@@ -263,7 +263,7 @@ public class TestCaseImpl implements TestCase, Serializable {
         
         public String toString() {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             buf.append("UserId=" + getUserId());
             if (getStartTime() != null) {
                 buf.append(", StartTime=" + sdf.format(getStartTime()));
