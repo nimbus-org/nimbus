@@ -63,6 +63,10 @@ public class SerializableExternalizerService extends ServiceBase
     protected transient Constructor objectOutputConstructor;
     protected Class objectInputClass;
     protected transient Constructor objectInputConstructor;
+    protected boolean isBufferedOutputStream = false;
+    protected int outputStreamInitialBufferSize = 1024;
+    protected float outputStreamBufferExpandRatio = 2.0f;
+    protected int outputStreamMaxBufferSize = 1024 * 10;
     
     public void setCompressMode(int mode){
         compressMode = mode;
@@ -97,6 +101,37 @@ public class SerializableExternalizerService extends ServiceBase
     }
     public int getBufferSize(){
         return bufferSize;
+    }
+    
+    public boolean isBufferedOutputStream(){
+        return isBufferedOutputStream;
+    }
+    public void setBufferedOutputStream(boolean isBuffered){
+        isBufferedOutputStream = isBuffered;
+    }
+    
+    public void setOutputStreamInitialBufferSize(int size){
+        outputStreamInitialBufferSize = size;
+        if(outputStreamMaxBufferSize < outputStreamInitialBufferSize){
+            outputStreamMaxBufferSize = outputStreamInitialBufferSize;
+        }
+    }
+    public int getOutputStreamInitialBufferSize(){
+        return outputStreamInitialBufferSize;
+    }
+    
+    public void setOutputStreamBufferExpandRatio(float ratio){
+        outputStreamBufferExpandRatio = ratio;
+    }
+    public float getOutputStreamBufferExpandRatio(){
+        return outputStreamBufferExpandRatio;
+    }
+    
+    public void setOutputStreamMaxBufferSize(int size){
+        outputStreamMaxBufferSize = size;
+    }
+    public int getOutputStreamMaxBufferSize(){
+        return outputStreamMaxBufferSize;
     }
     
     public void setObjectOutputClass(Class clazz){
@@ -152,6 +187,9 @@ public class SerializableExternalizerService extends ServiceBase
     }
     
     public void writeExternal(Object obj, OutputStream out) throws IOException{
+        if(isBufferedOutputStream && compressMode == COMPRESS_MODE_NONE){
+            out = new ExpandableBufferedOutputStream(out);
+        }
         ObjectOutput output = createObjectOutput(out);
         writeExternal(obj, output);
     }
@@ -184,7 +222,6 @@ public class SerializableExternalizerService extends ServiceBase
             DeflaterOutputStream dos = null;
             Deflater deflater = null;
             byte[] compressedBytes = null;
-
             switch(compressMode){
             case COMPRESS_MODE_SNAPPY:
                 SnappyOutputStream sos = new SnappyOutputStream(baos);
@@ -202,7 +239,6 @@ public class SerializableExternalizerService extends ServiceBase
                 compressedBytes = baos.toByteArray();
                 break;
             default:
-
                 switch(compressMode){
                 case COMPRESS_MODE_ZLIB:
                     deflater = new Deflater(compressLevel);
@@ -237,9 +273,8 @@ public class SerializableExternalizerService extends ServiceBase
                     baos.close();
                 }
                 compressedBytes = baos.toByteArray();
-
             }
-
+            
             if(noCompressedBytes.length <= compressedBytes.length){
                 out.writeBoolean(false);
                 out.writeInt(noCompressedBytes.length);
@@ -318,14 +353,12 @@ public class SerializableExternalizerService extends ServiceBase
             case COMPRESS_MODE_GZIP:
                 is = bufferSize > 0 ? new GZIPInputStream(bais, bufferSize) : new GZIPInputStream(bais);
                 break;
-
             case COMPRESS_MODE_SNAPPY:
                 is = new SnappyInputStream(bais);
                 break;
             case COMPRESS_MODE_LZ4:
                 is = new LZ4BlockInputStream(bais);
                 break;
-
             default:
                 throw new IOException("Unknown compress mode : " + compressMode);
             }
@@ -357,6 +390,54 @@ public class SerializableExternalizerService extends ServiceBase
         }
         if(objectInputClass != null){
             setObjectInputClass(objectInputClass);
+        }
+    }
+    
+    protected class ExpandableBufferedOutputStream extends FilterOutputStream{
+        protected byte buf[];
+        protected int count;
+        
+        public ExpandableBufferedOutputStream(OutputStream out){
+            super(out);
+            if(outputStreamInitialBufferSize <= 0){
+                throw new IllegalArgumentException("outputStreamInitialBufferSize size <= 0");
+            }
+            buf = new byte[outputStreamInitialBufferSize];
+        }
+        
+        protected void flushBuffer(boolean isInner) throws IOException{
+            if(count > 0){
+                out.write(buf, 0, count);
+                count = 0;
+            }
+            if(isInner && buf.length < outputStreamMaxBufferSize){
+                buf = new byte[Math.min((int)(buf.length * outputStreamBufferExpandRatio), outputStreamMaxBufferSize)];
+            }
+        }
+        
+        public synchronized void write(int b) throws IOException{
+            if(count >= buf.length){
+                flushBuffer(true);
+            }
+            buf[count++] = (byte)b;
+        }
+        
+        public synchronized void write(byte b[], int off, int len) throws IOException{
+            if(len >= buf.length){
+                flushBuffer(true);
+                out.write(b, off, len);
+                return;
+            }
+            if(len > buf.length - count){
+                flushBuffer(true);
+            }
+            System.arraycopy(b, off, buf, count, len);
+            count += len;
+        }
+        
+        public synchronized void flush() throws IOException{
+            flushBuffer(false);
+            out.flush();
         }
     }
 }
