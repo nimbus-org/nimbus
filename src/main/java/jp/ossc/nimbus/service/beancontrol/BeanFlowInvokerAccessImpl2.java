@@ -6508,10 +6508,6 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 beforeToken = str;
             }
 
-            if(keyList.size() == 0){
-                throw new IllegalArgumentException(cond);
-            }
-
             if(factoryCallBack.getTestInterpreter() == null){
                 expression = ExpressionFactory.createExpression(condBuf.toString());
             }else{
