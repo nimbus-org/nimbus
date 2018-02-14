@@ -221,6 +221,36 @@ public interface SerializableExternalizerServiceMBean extends ServiceBaseMBean{
     public int getOutputStreamMaxBufferSize();
     
     /**
+     * 入力ストリームをバッファリングするかどうかを判定する。<p>
+     * 
+     * @return trueの場合、バッファリングする
+     */
+    public boolean isBufferedInputStream();
+    
+    /**
+     * 入力ストリームをバッファリングするかどうかを設定する。<p>
+     * デフォルトは、falseでバッファリングしない。
+     * 
+     * @param isBuffered バッファリングする場合、true
+     */
+    public void setBufferedInputStream(boolean isBuffered);
+    
+    /**
+     * 入力ストリームをバッファリングする場合の初期バッファサイズを設定する。<p>
+     * デフォルトは、1024。
+     * 
+     * @param size 初期バッファサイズ
+     */
+    public void setInputStreamInitialBufferSize(int size);
+    
+    /**
+     * 出力ストリームをバッファリングする場合の初期バッファサイズを取得する。<p>
+     * 
+     * @return 初期バッファサイズ
+     */
+    public int getInputStreamInitialBufferSize();
+    
+    /**
      * {@link Externalizer#writeExternal(Object, java.io.OutputStream)}が呼び出された際に、java.io.OutputStreamをラップするjava.io.ObjectOutputの実装クラスを設定する。<p>
      * ここで、指定するjava.io.ObjectOutputの実装クラスは、引数にjava.io.OutputStreamを持つコンストラクタを持つ必要がある。<br>
      * デフォルトは、nullで、java.io.ObjectOutputStreamが使用される。<br>
