@@ -6203,8 +6203,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     "TemplateEngine is null."
                 );
             }
-            Map vars = new HashMap();
-            vars.putAll(context);
+            Map vars = context.getInterpreterContext();
             vars.put(INPUT, context.input);
             vars.put(TARGET, context.getThis());
             vars.put(VAR, context.vars);
