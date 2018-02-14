@@ -104,8 +104,11 @@ public interface BeanFlowInvokerFactoryCallBack {
     
     public Interpreter getInterpreter();
     public Interpreter getTestInterpreter();
+    public Interpreter getExpressionInterpreter();
+    
     public TransactionManagerFactory getTransactionManagerFactory();
     public TemplateEngine getTemplateEngine();
     
     public QueueHandlerContainer getAsynchInvokeQueueHandlerContainer();
+    public String replaceProperty(String textValue);
 }
