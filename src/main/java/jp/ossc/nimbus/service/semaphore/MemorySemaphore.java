@@ -156,19 +156,21 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
                             // リソース使用中スレッドに登録する
                             usedThreads.put(current, current);
                             
-                            // タスク管理にタスクを登録する
-                            if(threadTasks.containsKey(current)){
-                                final Object tasks = threadTasks.get(current);
-                                List taskList = null;
-                                if(tasks instanceof List){
-                                    taskList = (List)tasks;
+                            if(task != null){
+                                // タスク管理にタスクを登録する
+                                if(threadTasks.containsKey(current)){
+                                    final Object tasks = threadTasks.get(current);
+                                    List taskList = null;
+                                    if(tasks instanceof List){
+                                        taskList = (List)tasks;
+                                    }else{
+                                        taskList = new ArrayList();
+                                        threadTasks.put(current, taskList);
+                                    }
+                                    taskList.add(task);
                                 }else{
-                                    taskList = new ArrayList();
-                                    threadTasks.put(current, taskList);
+                                    threadTasks.put(current, task);
                                 }
-                                taskList.add(task);
-                            }else{
-                                threadTasks.put(current, task);
                             }
                         }
                         if(mResourceCnt > 0 && getMonitor.isWait()){

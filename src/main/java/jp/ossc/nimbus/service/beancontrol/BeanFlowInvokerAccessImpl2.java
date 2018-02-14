@@ -5003,7 +5003,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
 
         public StepContext invokeStep(FlowContext context) throws Exception{
             coverage.cover();
-            StepContext stepContext = new StepContext();
+            StepContext stepContext = null;
             Journal journal = getJournal(WhileMetaData.this);
             try{
                 if(journal != null){
@@ -5024,8 +5024,10 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                             if(stepContext == null){
                                 return null;
                             }else if(stepContext.isContinue){
+                                stepContext.isContinue = false;
                                 break;
                             }else if(stepContext.isBreak){
+                                stepContext.isBreak = false;
                                 return stepContext;
                             }
                         }
@@ -5054,8 +5056,10 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                             if(stepContext == null){
                                 return null;
                             }else if(stepContext.isContinue){
+                                stepContext.isContinue = false;
                                 break;
                             }else if(stepContext.isBreak){
+                                stepContext.isBreak = false;
                                 return stepContext;
                             }
                         }
@@ -5065,6 +5069,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 if(journal != null){
                     journal.addEndStep();
                 }
+            }
+            if(stepContext == null){
+                stepContext = new StepContext();
             }
             return stepContext;
         }
