@@ -6338,7 +6338,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
         
         public Object put(Object key, Object value){
-            interpreterContext.put(key, value);
+            interpreterContext.put(key, ((StepContext)value).result);
             return super.put(key, value);
         }
         
