@@ -12,7 +12,7 @@ The DOCTYPE is:
 
 <!-- flow—v‘f‚ÍA‹Æ–±ƒtƒ[‚ð’è‹`‚·‚é—v‘f‚Å‚·B
 -->
-<!ELEMENT flow (alias* | override* | resource* | step* | callflow* | reply* | switch* | if* | for* | while* | catch* | finally? | return?)*>
+<!ELEMENT flow (alias* | override* | input-def* | resource* | step* | callflow* | reply* | switch* | if* | for* | while* | catch* | finally? | return?)*>
 
 <!-- name‘®«‚ÍAflow—v‘f‚Å’è‹`‚·‚é‹Æ–±ƒtƒ[‚ÌˆêˆÓ‚È–¼‘O‚ð’è‹`‚µ‚Ü‚·B
 -->
@@ -285,7 +285,7 @@ The DOCTYPE is:
  ‚±‚Ì—v‘f‚É‚æ‚Á‚Ä’è‹`‚³‚ê‚½ƒXƒeƒbƒvŒ‹‰Ê‚ÍAstep-ref—v‘f‚ÅŽQÆ‚·‚éŽ–‚ª‚Å‚«‚Ü‚·B
  ’A‚µAstep—v‘f‚Éname‘®«‚ðŽw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
 -->
-<!ELEMENT result (#PCDATA | attribute | field | invoke | this | input | static-invoke | static-field-ref | object | expression | step-ref | var)*>
+<!ELEMENT result (#PCDATA | attribute | field | invoke | this | input | static-invoke | static-field-ref | object | expression | step-ref | var | service-ref)*>
 
 <!-- journal‘®«‚ÍAresult—v‘f‚ÅƒWƒƒ[ƒiƒ‹‚ðo—Í‚·‚é‚©‚Ç‚¤‚©‚ð’è‹`‚µ‚Ü‚·B
  ‚±‚Ì—v‘f‚ÌŽq—v‘f‘S‚Ä‚É“K—p‚³‚ê‚éB
@@ -412,7 +412,7 @@ The DOCTYPE is:
 <!-- case—v‘f‚ÍAswitch—v‘f‚É‚æ‚éðŒ‘I‘ð’†‚Ì1ðŒ‚ð’è‹`‚µ‚Ü‚·B
  ‚±‚ÌðŒ‚Éˆê’v‚·‚éê‡‚Ìˆ—‚ðAŽq—v‘f‚É’è‹`‚µ‚Ü‚·B
 -->
-<!ELEMENT case (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT case (test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
 
 <!-- test‘®«‚ÍAcase—v‘f‚ª•\‚·ðŒ‚ð’è‹`‚µ‚Ü‚·B
  ‚±‚Ì‘®«‚Ì’l‚É‚ÍA@‚ÅˆÍ‚ñ‚¾ƒL[‚Æ‚»‚ÌƒL[’l‚É‘Î‚·‚éðŒŽ®‚ð‹Lq‚µ‚Ü‚·B
@@ -422,6 +422,7 @@ The DOCTYPE is:
    EƒXƒeƒbƒv‚Ì‘ÎÛ : @ƒXƒeƒbƒv–¼.target@
    EƒXƒeƒbƒv‚ÌŒ‹‰Ê : @ƒXƒeƒbƒv–¼.result@ ‚Ü‚½‚Í @ƒXƒeƒbƒv–¼@
    E‚±‚Ì—v‘f‚Ìe—v‘fƒXƒeƒbƒv‚Ì‘ÎÛF@this@
+   EƒXƒeƒbƒvŽ©‘ÌFƒXƒeƒbƒv–¼
   ‚Ü‚½AƒXƒeƒbƒv‚Ì‘ÎÛ‹y‚ÑŒ‹‰Ê‚ÌƒvƒƒpƒeƒB‚ðŽQÆ‚·‚éŽ–‚à‚Å‚«‚Ü‚·B
   ‚»‚Ìê‡‚ÍAã‹L‚Ì•\Œ»‚ÌŒã‚ÉAƒvƒƒpƒeƒB‚ð•\Œ»‚·‚é•¶Žš—ñ‚ðŽw’è‚µ‚Ü‚·B
   ‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­Ajp.ossc.nimbus.beans.PropertyFactory‚Ì‹K–ñ‚É]‚¢‚Ü‚·B
@@ -433,14 +434,14 @@ The DOCTYPE is:
    ƒXƒeƒbƒv‚ÌŽQÆ‚Æ“¯—l‚Éƒtƒ[‚Ì“ü—Í‚ÌƒvƒƒpƒeƒB‚àŽw’è‚Å‚«‚Ü‚·B
    
  (3)ŒJ‚è•Ô‚µ•Ï”
-   ŒJ‚è•Ô‚µ•Ï”‚ðŽQÆ‚·‚éê‡‚É‚ÍA@var(•Ï”–¼)@‚ÆŽw’è‚µ‚Ü‚·B
+   ŒJ‚è•Ô‚µ•Ï”‚ðŽQÆ‚·‚éê‡‚É‚ÍA@var(•Ï”–¼)@‚ÆŽw’è‚µ‚Ü‚·B‚Ü‚½A•Ï”–¼‚Ì‚Ý‚Å‚àŽQÆ‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B
    ƒXƒeƒbƒv‚ÌŽQÆ‚Æ“¯—l‚ÉŒJ‚è•Ô‚µ•Ï”‚ÌƒvƒƒpƒeƒB‚àŽw’è‚Å‚«‚Ü‚·B
  
  ðŒŽ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ðŽg—p‚µ‚Ü‚·B
  ‚Ü‚½AðŒŽ®‚ÌŒ‹‰Ê‚Í•K‚¸boolean‚Å‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
    —á : test='@ƒXƒeƒbƒv–¼.hoge[0].fuga@ == "HOGE"'
 -->
-<!ATTLIST case test CDATA #REQUIRED>
+<!ATTLIST case test CDATA #IMPLIED>
 
 <!-- nullCheck‘®«‚ÍAtest‘®«‚ÅAƒvƒƒpƒeƒB•\Œ»‚ÌƒL[‚ðŽw’è‚µ‚½ê‡‚ÉAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚©‚Ç‚¤‚©‚ðƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ðÝ’è‚µ‚Ü‚·B
  true‚ðÝ’è‚µ‚½ê‡‚ÍAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚Ìê‡Ajp.ossc.nimbus.beans.NoSuchPropertyException‚ª”­¶‚µ‚Ü‚·B
@@ -457,12 +458,12 @@ The DOCTYPE is:
 <!-- if—v‘f‚ÍAˆê’èðŒ‰º‚Å‚Ìˆ—‚ð’è‹`‚µ‚Ü‚·B
  ‚±‚ÌðŒ‚Éˆê’v‚·‚éê‡‚Ìˆ—‚ðAŽq—v‘f‚É’è‹`‚µ‚Ü‚·B
 -->
-<!ELEMENT if (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT if (test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
 
 <!-- test‘®«‚ÍAif—v‘f‚ª•\‚·ðŒ‚ð’è‹`‚µ‚Ü‚·B
  case—v‘f‚Ìtest‘®«‚Æ“¯—l‚Ì’l‚ð’è‹`‚µ‚Ü‚·B
 -->
-<!ATTLIST if test CDATA #REQUIRED>
+<!ATTLIST if test CDATA #IMPLIED>
 
 <!-- nullCheck‘®«‚ÍAtest‘®«‚ÅAƒvƒƒpƒeƒB•\Œ»‚ÌƒL[‚ðŽw’è‚µ‚½ê‡‚ÉAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚©‚Ç‚¤‚©‚ðƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ðÝ’è‚µ‚Ü‚·B
  case—v‘f‚ÌnullCheck‘®«‚Æ“¯—l‚Ì’l‚ð’è‹`‚µ‚Ü‚·B
@@ -473,6 +474,12 @@ The DOCTYPE is:
  ‚±‚Ì—v‘f‚ÌŽq—v‘f‘S‚Ä‚É“K—p‚³‚ê‚éB
 -->
 <!ATTLIST if journal (true | false) "true">
+
+<!-- test—v‘f‚ÍAðŒ‚ð’è‹`‚µ‚Ü‚·B
+ case—v‘f‚Ìtest‘®«‚Æ“¯—l‚Ì’l‚ð’è‹`‚µ‚Ü‚·B
+ XMLƒGƒXƒP[ƒv‚ðˆÓŽ¯‚µ‚½‚­‚È‚¢ê‡‚ÍAŽq—v‘f‚ÌƒRƒƒ“ƒgƒAƒEƒg“à‚ÉðŒ‚ð‹Lq‚Å‚«‚Ü‚·B
+-->
+<!ELEMENT test (#PCDATA)>
 
 <!-- for—v‘f‚ÍAŒJ‚è•Ô‚µˆ—‚ð’è‹`‚µ‚Ü‚·B
  ŒJ‚è•Ô‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ðŽq—v‘f‚Ìtarget—v‘f‚ÅŽw’è‚µ‚Ü‚·B
@@ -525,12 +532,12 @@ The DOCTYPE is:
 <!-- while—v‘f‚ÍAˆê’èðŒ‰º‚Å‚Ìˆ—‚ð’è‹`‚µ‚Ü‚·B
  ‚±‚ÌðŒ‚Éˆê’v‚·‚éê‡‚Ìˆ—‚ðAŽq—v‘f‚É’è‹`‚µ‚Ü‚·B
 -->
-<!ELEMENT while (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT while (test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
 
 <!-- test‘®«‚ÍAwhile—v‘f‚ª•\‚·ðŒ‚ð’è‹`‚µ‚Ü‚·B
  case—v‘f‚Ìtest‘®«‚Æ“¯—l‚Ì’l‚ð’è‹`‚µ‚Ü‚·B
 -->
-<!ATTLIST while test CDATA #REQUIRED>
+<!ATTLIST while test CDATA #IMPLIED>
 
 <!-- nullCheck‘®«‚ÍAtest‘®«‚ÅAƒvƒƒpƒeƒB•\Œ»‚ÌƒL[‚ðŽw’è‚µ‚½ê‡‚ÉAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚©‚Ç‚¤‚©‚ðƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ðÝ’è‚µ‚Ü‚·B
  case—v‘f‚ÌnullCheck‘®«‚Æ“¯—l‚Ì’l‚ð’è‹`‚µ‚Ü‚·B
@@ -604,12 +611,35 @@ The DOCTYPE is:
 -->
 <!ATTLIST argument narrowCast (true|false) "false">
 
+<!-- input-def—v‘f‚ÍAƒtƒ[‚Ì“ü—Í‚ðŽQÆ‚µ‚Ä–¼‘O’è‹`‚·‚é—v‘f‚Å‚·B
+ ƒtƒ[‚Ì“ü—Í‚ÌƒvƒƒpƒeƒB‚ðA“à—e‚ÉƒvƒƒpƒeƒB–¼‚ðŽw’è‚µ‚ÄŽQÆ‚µ‚Ü‚·B
+ ‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­Ajp.ossc.nimbus.beans.PropertyFactory‚Ì‹K–ñ‚É]‚¢‚Ü‚·B
+ Java Beans‚Ì‚æ‚¤‚È’Pƒ‚ÈƒvƒƒpƒeƒB‚É‰Á‚¦Ajava.util.Map‚È‚Ç‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚âjava.util.ListA”z—ñ‚È‚Ç‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒBA‚Ü‚½‚»‚ê‚ç‚ªƒlƒXƒg‚µ‚½ƒvƒƒpƒeƒB‚È‚Ç‚àƒTƒ|[ƒg‚µ‚Ü‚·B
+-->
+<!ELEMENT input-def (#PCDATA)>
+
+<!-- name‘®«‚ÍAinput-def—v‘f‚ÅéŒ¾‚·‚é–¼‘O‚ðŽw’è‚µ‚Ü‚·B
+ ‚±‚±‚ÅéŒ¾‚µ‚½–¼‘O‚ÍAinput—v‘f‚Ìname‘®«‚ÅŽw’è‚µ‚ÄA’l‚ðŽQÆ‚Å‚«‚Ü‚·B
+-->
+<!ATTLIST input-def name CDATA #REQUIRED>
+
+<!-- nullCheck‘®«‚ÍAinput-def—v‘f‚Ì“à—e‚ÅAƒvƒƒpƒeƒB•\Œ»‚ðŽw’è‚µ‚½ê‡‚ÉAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚©‚Ç‚¤‚©‚ðƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ðÝ’è‚µ‚Ü‚·B
+ true‚ðÝ’è‚µ‚½ê‡‚ÍAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚Ìê‡Ajp.ossc.nimbus.beans.NoSuchPropertyException‚ª”­¶‚µ‚Ü‚·B
+ ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚Ìê‡A‚»‚ÌƒvƒƒpƒeƒB‚Ínull‚Æ‚Ý‚È‚³‚ê‚Ü‚·B
+-->
+<!ATTLIST input-def nullCheck (true | false) "false">
+
 <!-- input—v‘f‚ÍAƒtƒ[‚Ì“ü—Í‚ðŽQÆ‚·‚é—v‘f‚Å‚·B
  ƒtƒ[‚Ì“ü—Í‚ÌƒvƒƒpƒeƒB‚ðŽQÆ‚·‚éê‡‚ÍA“à—e‚ÉƒvƒƒpƒeƒB–¼‚ðŽw’è‚µ‚Ü‚·B
  ‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­Ajp.ossc.nimbus.beans.PropertyFactory‚Ì‹K–ñ‚É]‚¢‚Ü‚·B
  Java Beans‚Ì‚æ‚¤‚È’Pƒ‚ÈƒvƒƒpƒeƒB‚É‰Á‚¦Ajava.util.Map‚È‚Ç‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚âjava.util.ListA”z—ñ‚È‚Ç‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒBA‚Ü‚½‚»‚ê‚ç‚ªƒlƒXƒg‚µ‚½ƒvƒƒpƒeƒB‚È‚Ç‚àƒTƒ|[ƒg‚µ‚Ü‚·B
 -->
 <!ELEMENT input (#PCDATA)>
+
+<!-- name‘®«‚ÍAinput-def—v‘f‚ÅéŒ¾‚µ‚½–¼‘O‚ðŽw’è‚µ‚Ü‚·B
+ input-def—v‘f‚ÅéŒ¾‚µ‚½name‘®«‚Ì’l‚ðŽw’è‚·‚é‚±‚Æ‚ÅA‚»‚Ì’l‚ðŽQÆ‚Å‚«‚Ü‚·B
+-->
+<!ATTLIST input name CDATA #IMPLIED>
 
 <!-- nullCheck‘®«‚ÍAinput—v‘f‚Ì“à—e‚ÅAƒvƒƒpƒeƒB•\Œ»‚ðŽw’è‚µ‚½ê‡‚ÉAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚©‚Ç‚¤‚©‚ðƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ðÝ’è‚µ‚Ü‚·B
  true‚ðÝ’è‚µ‚½ê‡‚ÍAƒlƒXƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚ªnull‚Ìê‡Ajp.ossc.nimbus.beans.NoSuchPropertyException‚ª”­¶‚µ‚Ü‚·B
@@ -771,6 +801,7 @@ static-invoke—v‘f‚ÌŽq—v‘f‚Éargument—v‘f‚ðŽw’è‚µ‚Ü‚·Bˆø”‚ ‚è‚Ìƒƒ\ƒbƒh‚ðŽÀs‚µ‚
 <!ATTLIST finally journal (true | false) "true">
 
 <!-- expression—v‘f‚ÍAŽ®‚ð•\‚·—v‘f‚Å‚·B
+ XMLƒGƒXƒP[ƒv‚ðˆÓŽ¯‚µ‚½‚­‚È‚¢ê‡‚ÍAŽq—v‘f‚ÌƒRƒƒ“ƒgƒAƒEƒg“à‚ÉŽ®‚ð‹Lq‚Å‚«‚Ü‚·B
  ‚±‚Ì—v‘f‚Ì“à—e‚É‚ÍAŽ®‚ð‹Lq‚·‚éŽ–‚ª‚Å‚«AŽ®’†‚Ì‰Â•Ïƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Ä@‚ÅˆÍ‚ñ‚¾ƒL[‚ðŽw’è‚·‚éŽ–‚ª‚Å‚«‚Ü‚·B
  ƒL[‚Å‚ÍAˆÈ‰º‚Ì‚à‚Ì‚ªŽQÆ‚Å‚«‚Ü‚·B
  (1)ƒXƒeƒbƒv
@@ -778,6 +809,7 @@ static-invoke—v‘f‚ÌŽq—v‘f‚Éargument—v‘f‚ðŽw’è‚µ‚Ü‚·Bˆø”‚ ‚è‚Ìƒƒ\ƒbƒh‚ðŽÀs‚µ‚
    EƒXƒeƒbƒv‚Ì‘ÎÛ : @ƒXƒeƒbƒv–¼.target@
    EƒXƒeƒbƒv‚ÌŒ‹‰Ê : @ƒXƒeƒbƒv–¼.result@ ‚Ü‚½‚Í @ƒXƒeƒbƒv–¼@
    E‚±‚Ì—v‘f‚Ìe—v‘fƒXƒeƒbƒv‚Ì‘ÎÛF@this@
+   EƒXƒeƒbƒvŽ©‘ÌFƒXƒeƒbƒv–¼
   ‚Ü‚½AƒXƒeƒbƒv‚Ì‘ÎÛ‹y‚ÑŒ‹‰Ê‚ÌƒvƒƒpƒeƒB‚ðŽQÆ‚·‚éŽ–‚à‚Å‚«‚Ü‚·B
   ‚»‚Ìê‡‚ÍAã‹L‚Ì•\Œ»‚ÌŒã‚ÉAƒvƒƒpƒeƒB‚ð•\Œ»‚·‚é•¶Žš—ñ‚ðŽw’è‚µ‚Ü‚·B
   ‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­Ajp.ossc.nimbus.beans.PropertyFactory‚Ì‹K–ñ‚É]‚¢‚Ü‚·B
@@ -789,7 +821,7 @@ static-invoke—v‘f‚ÌŽq—v‘f‚Éargument—v‘f‚ðŽw’è‚µ‚Ü‚·Bˆø”‚ ‚è‚Ìƒƒ\ƒbƒh‚ðŽÀs‚µ‚
    ƒXƒeƒbƒv‚ÌŽQÆ‚Æ“¯—l‚Éƒtƒ[‚Ì“ü—Í‚ÌƒvƒƒpƒeƒB‚àŽw’è‚Å‚«‚Ü‚·B
    
  (3)ŒJ‚è•Ô‚µ•Ï”
-   ŒJ‚è•Ô‚µ•Ï”‚ðŽQÆ‚·‚éê‡‚É‚ÍA@var(•Ï”–¼)@‚ÆŽw’è‚µ‚Ü‚·B
+   ŒJ‚è•Ô‚µ•Ï”‚ðŽQÆ‚·‚éê‡‚É‚ÍA@var(•Ï”–¼)@‚ÆŽw’è‚µ‚Ü‚·B‚Ü‚½A•Ï”–¼‚Ì‚Ý‚Å‚àŽQÆ‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B
    ƒXƒeƒbƒv‚ÌŽQÆ‚Æ“¯—l‚ÉŒJ‚è•Ô‚µ•Ï”‚ÌƒvƒƒpƒeƒB‚àŽw’è‚Å‚«‚Ü‚·B
  
  Ž®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ðŽg—p‚µ‚Ü‚·B
@@ -805,6 +837,7 @@ static-invoke—v‘f‚ÌŽq—v‘f‚Éargument—v‘f‚ðŽw’è‚µ‚Ü‚·Bˆø”‚ ‚è‚Ìƒƒ\ƒbƒh‚ðŽÀs‚µ‚
 
 <!-- interpreter—v‘f‚ÍƒCƒ“ƒ^[ƒvƒŠƒ^‚ðŽg‚Á‚Äˆ—‚ð•\‚·—v‘f‚Å‚·B
  ‚±‚Ì—v‘f‚Ì“à—e‚É‚ÍAjp.ossc.nimbus.service.interpreter.Interpreter‚ª‰ðŽß‚·‚éƒ\[ƒXƒR[ƒh‚ð‹Lq‚µ‚Ü‚·B
+ XMLƒGƒXƒP[ƒv‚ðˆÓŽ¯‚µ‚½‚­‚È‚¢ê‡‚ÍAŽq—v‘f‚ÌƒRƒƒ“ƒgƒAƒEƒg“à‚Éƒ\[ƒXƒR[ƒh‚ð‹Lq‚Å‚«‚Ü‚·B
  ƒ\[ƒXƒR[ƒh“à‚Å‚ÍAˆÈ‰º‚Ì•Ï”‚ªˆÃ–Ù“I‚ÉŽg—p‰Â”\‚Å‚·B
  (1)ƒXƒeƒbƒv
    ƒXƒeƒbƒv–¼‚ÅŽQÆ‚µ‚Ü‚·B
@@ -815,11 +848,12 @@ static-invoke—v‘f‚ÌŽq—v‘f‚Éargument—v‘f‚ðŽw’è‚µ‚Ü‚·Bˆø”‚ ‚è‚Ìƒƒ\ƒbƒh‚ðŽÀs‚µ‚
  (2)ƒtƒ[‚Ì“ü—Í
    ƒtƒ[‚Ì“ü—Í‚ðŽQÆ‚·‚éê‡‚É‚ÍAinput‚ÆŽw’è‚µ‚Ü‚·B
  (3)ŒJ‚è•Ô‚µ•Ï”
-   ŒJ‚è•Ô‚µ•Ï”‚ðŽQÆ‚·‚éê‡‚É‚ÍAvar.get("•Ï”–¼")‚ÆŽw’è‚µ‚Ü‚·B
+   ŒJ‚è•Ô‚µ•Ï”‚ðŽQÆ‚·‚éê‡‚É‚ÍAvar.get("•Ï”–¼")‚ÆŽw’è‚µ‚Ü‚·B‚Ü‚½A•Ï”–¼‚Ì‚Ý‚Å‚àŽQÆ‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B
    ’A‚µA•Ï”‚ªéŒ¾‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAvar‚ªnull‚É‚È‚é‚Ì‚ÅA’ˆÓ‚ª•K—v‚Å‚·B
  (4)ƒŠƒ\[ƒX
    ƒŠƒ\[ƒX‚ðŽQÆ‚·‚éê‡‚É‚ÍAresource.getResource("ƒŠƒ\[ƒX–¼")‚ÆŽw’è‚µ‚Ü‚·B
- 
+ (5)ƒWƒƒ[ƒiƒ‹
+   ƒWƒƒ[ƒiƒ‹‚ðo—Í‚·‚éê‡‚É‚ÍAjournal‚ÅAJournalƒIƒuƒWƒFƒNƒg‚ðŽQÆ‚Å‚«‚Ü‚·B
  ƒ\[ƒXƒR[ƒh“à‚Å–ß‚è’l‚ð•Ô‚·‚ÆA‚±‚ÌƒXƒeƒbƒv‚Ìresult‚É‚È‚è‚Ü‚·B
  ’A‚µAresult—v‘f‚ð‹Lq‚µ‚½ê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚Ü‚·B
  BeanFlowInvokerFactoryƒT[ƒrƒX‚ÉŽg—p‚·‚éjp.ossc.nimbus.service.interpreter.Interpreter‚ðÝ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·B
