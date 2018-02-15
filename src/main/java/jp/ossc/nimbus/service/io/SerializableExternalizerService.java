@@ -67,6 +67,8 @@ public class SerializableExternalizerService extends ServiceBase
     protected int outputStreamInitialBufferSize = 1024;
     protected float outputStreamBufferExpandRatio = 2.0f;
     protected int outputStreamMaxBufferSize = 1024 * 10;
+    protected boolean isBufferedInputStream = false;
+    protected int inputStreamInitialBufferSize = 1024;
     
     public void setCompressMode(int mode){
         compressMode = mode;
@@ -132,6 +134,20 @@ public class SerializableExternalizerService extends ServiceBase
     }
     public int getOutputStreamMaxBufferSize(){
         return outputStreamMaxBufferSize;
+    }
+    
+    public boolean isBufferedInputStream(){
+        return isBufferedInputStream;
+    }
+    public void setBufferedInputStream(boolean isBuffered){
+        isBufferedInputStream = isBuffered;
+    }
+    
+    public void setInputStreamInitialBufferSize(int size){
+        inputStreamInitialBufferSize = size;
+    }
+    public int getInputStreamInitialBufferSize(){
+        return inputStreamInitialBufferSize;
     }
     
     public void setObjectOutputClass(Class clazz){
@@ -294,6 +310,9 @@ public class SerializableExternalizerService extends ServiceBase
     }
     
     public Object readExternal(InputStream in) throws IOException, ClassNotFoundException{
+        if(isBufferedInputStream){
+            in = new BufferedInputStream(in, inputStreamInitialBufferSize);
+        }
         ObjectInput input = createObjectInput(in);
         return readExternal(input);
     }
