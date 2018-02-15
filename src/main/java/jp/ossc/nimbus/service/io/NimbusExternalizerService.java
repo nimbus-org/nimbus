@@ -733,6 +733,26 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }else if(isExternalizable){
                         ((Externalizable)obj).writeExternal(oos);
                     }else{
+                        List classList = null;
+                        MetaClass metaClass = this;
+                        while(metaClass.superMetaClass != null){
+                            if(classList == null){
+                                classList = new ArrayList();
+                            }
+                            classList.add(metaClass.superMetaClass);
+                            metaClass = metaClass.superMetaClass;
+                        }
+                        if(classList != null){
+                            for(int i = classList.size(); --i >= 0;){
+                                metaClass = (MetaClass)classList.get(i);
+                                if(metaClass.writeObjectMethod != null){
+                                    metaClass.invokeWriteObject(obj, oos);
+                                }else{
+                                    metaClass.defaultWriteObject(obj, oos);
+                                }
+                            }
+                        }
+                        
                         if(writeObjectMethod != null){
                             invokeWriteObject(obj, oos);
                         }else{
@@ -749,9 +769,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void defaultWriteObject(Object obj, NimbusObjectOutputStream oos) throws IOException{
             if(fieldReflector == null){
                 return;
-            }
-            if(superMetaClass != null){
-                superMetaClass.defaultWriteObject(obj, oos);
             }
             fieldReflector.writeFields(obj, oos);
         }
@@ -798,9 +815,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void defaultReadObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
             if(fieldReflector == null){
                 return;
-            }
-            if(superMetaClass != null){
-                superMetaClass.defaultReadObject(obj, ois);
             }
             fieldReflector.readFields(obj, ois);
         }
@@ -862,6 +876,25 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 }else if(isExternalizable){
                     ((Externalizable)obj).readExternal(ois);
                 }else{
+                    List classList = null;
+                    MetaClass metaClass = this;
+                    while(metaClass.superMetaClass != null){
+                        if(classList == null){
+                            classList = new ArrayList();
+                        }
+                        classList.add(metaClass.superMetaClass);
+                        metaClass = metaClass.superMetaClass;
+                    }
+                    if(classList != null){
+                        for(int i = classList.size(); --i >= 0;){
+                            metaClass = (MetaClass)classList.get(i);
+                            if(metaClass.readObjectMethod != null){
+                                metaClass.invokeReadObject(obj, ois);
+                            }else{
+                                metaClass.defaultReadObject(obj, ois);
+                            }
+                        }
+                    }
                     if(readObjectMethod != null){
                         invokeReadObject(obj, ois);
                     }else{
