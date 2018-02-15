@@ -36,7 +36,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * €–Ú–¼‚ğ‚Á‚½ƒWƒƒ[ƒiƒ‹‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^ƒT[ƒrƒX‚ÌŠî’êƒNƒ‰ƒXB<p>
+ * é …ç›®åã‚’æŒã£ãŸã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -80,13 +80,13 @@ public abstract class ItemJournalEditorServiceBase
     }
     
     /**
-     * €–Ú‚Ì“à—e‚ğ•ÒW‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹óÀ‘•‚È‚Ì‚ÅAƒTƒuƒNƒ‰ƒX‚ÅƒI[ƒo[ƒ‰ƒCƒh‚µ‚Äˆ—‚ğ’Ç‰Á‚·‚é‚±‚ÆB<br>
+     * é …ç›®ã®å†…å®¹ã‚’ç·¨é›†ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºå®Ÿè£…ãªã®ã§ã€ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param value ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected void processItem(
         EditorFinder finder,

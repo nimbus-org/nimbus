@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml version="1.0" encoding="UTF-8" ?> 
 <server>
     <default-log>
         <debug output="false"/>
@@ -8,11 +8,11 @@
         <fatal output="true"/>
     </default-log>
     <manager name="TheManager">
-       <!--jndiファクトリサービス-->
+       <!--jndi繝輔ぃ繧ｯ繝医Μ繧ｵ繝ｼ繝薙せ-->
        <service code="jp.ossc.nimbus.service.jndi.CashedJndiFinderService" name="JndiFinderService">
        <attribute name="CacheMapServiceName">CacheService</attribute>
        </service>
-       <!--キャッシュサービス-->
+       <!--繧ｭ繝｣繝�繧ｷ繝･繧ｵ繝ｼ繝薙せ-->
        <service code="org.kurofune.keel.cache.MemoryCacheMapService" name="CacheService">
        </service>
     </manager>

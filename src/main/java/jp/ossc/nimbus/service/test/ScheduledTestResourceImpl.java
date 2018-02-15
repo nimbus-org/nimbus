@@ -37,7 +37,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹î•ñ‚ğ‚Á‚½ƒeƒXƒgƒŠƒ\[ƒXƒNƒ‰ƒXB<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æƒ…å ±ã‚’æŒã£ãŸãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -67,9 +67,9 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * ì¬Ò‚ğİ’è‚·‚éB<p>
+     * ä½œæˆè€…ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param creator ì¬Ò
+     * @param creator ä½œæˆè€…
      */
     public void setCreator(String creator) {
         this.creator = creator;
@@ -80,9 +80,9 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * ì¬ŠJn—\’è“ú‚ğİ’è‚·‚éB<p>
+     * ä½œæˆé–‹å§‹äºˆå®šæ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param date ì¬ŠJn—\’è“ú
+     * @param date ä½œæˆé–‹å§‹äºˆå®šæ—¥æ™‚
      */
     public void setScheduledCreateStartDate(Date date) {
         scheduledCreateStartDate = date;
@@ -93,28 +93,28 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * ì¬I—¹—\’è“ú‚ğİ’è‚·‚éB<p>
+     * ä½œæˆçµ‚äº†äºˆå®šæ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param date ì¬I—¹—\’è“ú
+     * @param date ä½œæˆçµ‚äº†äºˆå®šæ—¥æ™‚
      */
     public void setScheduledCreateEndDate(Date date) {
         scheduledCreateEndDate = date;
     }
     
     /**
-     * —\’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * äºˆå®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param cost —\’èƒRƒXƒg
+     * @param cost äºˆå®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost) {
         expectedCost = cost;
     }
     
     /**
-     * —\’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
-     * ƒAƒNƒVƒ‡ƒ“–ˆ‚Ì—\’èƒRƒXƒg‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAƒAƒNƒVƒ‡ƒ“‚Ì—\’èƒRƒXƒg‚Ì‘˜a‚ğ•Ô‚·B
+     * äºˆå®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³æ¯ã®äºˆå®šã‚³ã‚¹ãƒˆãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®äºˆå®šã‚³ã‚¹ãƒˆã®ç·å’Œã‚’è¿”ã™ã€‚
      *
-     * @return —\’èƒRƒXƒg
+     * @return äºˆå®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost() {
         if (actionExpectedCostMap.isEmpty()) {
@@ -136,9 +136,9 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * ì¬ŠJn“ú‚ğİ’è‚·‚éB<p>
+     * ä½œæˆé–‹å§‹æ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param date ì¬ŠJn“ú
+     * @param date ä½œæˆé–‹å§‹æ—¥æ™‚
      */
     public void setCreateStartDate(Date date) {
         createStartDate = date;
@@ -149,9 +149,9 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * ì¬I—¹“ú‚ğİ’è‚·‚éB<p>
+     * ä½œæˆçµ‚äº†æ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param date ì¬I—¹“ú
+     * @param date ä½œæˆçµ‚äº†æ—¥æ™‚
      */
     public void setCreateEndDate(Date date) {
         createEndDate = date;
@@ -162,28 +162,28 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * i’»—¦‚ğİ’è‚·‚éB<p>
+     * é€²æ—ç‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param progress i’»—¦
+     * @param progress é€²æ—ç‡
      */
     public void setProgress(double progress) {
         this.progress = progress;
     }
     
     /**
-     * ƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param cost ƒRƒXƒg
+     * @param cost ã‚³ã‚¹ãƒˆ
      */
     public void setCost(double cost) {
         this.cost = cost;
     }
     
     /**
-     * ƒRƒXƒg‚ğæ“¾‚·‚éB<p>
-     * ƒAƒNƒVƒ‡ƒ“–ˆ‚ÌƒRƒXƒg‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAƒAƒNƒVƒ‡ƒ“‚ÌƒRƒXƒg‚Ì‘˜a‚ğ•Ô‚·B
+     * ã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³æ¯ã®ã‚³ã‚¹ãƒˆãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚³ã‚¹ãƒˆã®ç·å’Œã‚’è¿”ã™ã€‚
      *
-     * @return ƒRƒXƒg
+     * @return ã‚³ã‚¹ãƒˆ
      */
     public double getCost() {
         if (actionCostMap.isEmpty()) {
@@ -205,19 +205,19 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * w’è‚³‚ê‚½ƒAƒNƒVƒ‡ƒ“‚Ì—\’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®äºˆå®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param cost —\’èƒRƒXƒg
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param cost äºˆå®šã‚³ã‚¹ãƒˆ
      */
     public void setActionExpectedCost(String actionId, double cost) {
         actionExpectedCostMap.put(actionId, new Double(cost));
     }
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚Ì—\’èƒRƒXƒgƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®äºˆå®šã‚³ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒNƒVƒ‡ƒ“IDA—\’èƒRƒXƒg‚Ìƒ}ƒbƒv
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã€äºˆå®šã‚³ã‚¹ãƒˆã®ãƒãƒƒãƒ—
      */
     public Map getActionExpectedCostMap() {
         return actionExpectedCostMap;
@@ -228,10 +228,10 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * w’è‚³‚ê‚½ƒAƒNƒVƒ‡ƒ“‚ÌƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param cost ƒRƒXƒg
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param cost ã‚³ã‚¹ãƒˆ
      */
     public void setActionCost(String actionId, double cost) {
         if(!Double.isNaN(cost)){
@@ -240,9 +240,9 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
     }
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ÌƒRƒXƒgƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚³ã‚¹ãƒˆãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒNƒVƒ‡ƒ“IDAƒRƒXƒg‚Ìƒ}ƒbƒv
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã€ã‚³ã‚¹ãƒˆã®ãƒãƒƒãƒ—
      */
     public Map getActionCostMap() {
         return actionCostMap;

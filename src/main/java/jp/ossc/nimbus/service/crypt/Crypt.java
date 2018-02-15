@@ -32,33 +32,33 @@
 package jp.ossc.nimbus.service.crypt;
 
 /**
- * ˆÃ†‰»B<p>
+ * æš—å·åŒ–ã€‚<p>
  *
  * @author A.Kokubu
  */
 public interface Crypt {
     
     /**
-     * •¶š—ñ‚ğˆÃ†‰»‚·‚éB<p>
+     * æ–‡å­—åˆ—ã‚’æš—å·åŒ–ã™ã‚‹ã€‚<p>
      * 
-     * @param str ˆÃ†‰»‘ÎÛ•¶š—ñ
-     * @return ˆÃ†‰»•¶š—ñ
+     * @param str æš—å·åŒ–å¯¾è±¡æ–‡å­—åˆ—
+     * @return æš—å·åŒ–æ–‡å­—åˆ—
      */
     public String doEncode(String str);
     
     /**
-     * •¶š—ñ‚ğ•¡‡‰»‚·‚éB<p>
+     * æ–‡å­—åˆ—ã‚’è¤‡åˆåŒ–ã™ã‚‹ã€‚<p>
      * 
-     * @param str •œ†‰»‘ÎÛ•¶š—ñ
-     * @return •œ†‰»•¶š—ñ
+     * @param str å¾©å·åŒ–å¯¾è±¡æ–‡å­—åˆ—
+     * @return å¾©å·åŒ–æ–‡å­—åˆ—
      */
     public String doDecode(String str);
     
     /**
-     * •¶š—ñ‚ğƒnƒbƒVƒ…‚·‚éB<p>
+     * æ–‡å­—åˆ—ã‚’ãƒãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚<p>
      * 
-     * @param str ƒnƒbƒVƒ…‘ÎÛ•¶š—ñ
-     * @return ƒnƒbƒVƒ…•¶š—ñ
+     * @param str ãƒãƒƒã‚·ãƒ¥å¯¾è±¡æ–‡å­—åˆ—
+     * @return ãƒãƒƒã‚·ãƒ¥æ–‡å­—åˆ—
      */
     public String doHash(String str);
 }

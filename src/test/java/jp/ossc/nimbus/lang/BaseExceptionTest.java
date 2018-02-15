@@ -37,7 +37,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/23 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/23 -ã€€H.Nakano
  */
 public class BaseExceptionTest extends TestCase {
 
@@ -72,33 +72,33 @@ public class BaseExceptionTest extends TestCase {
 		}catch(BaseException ee){
 			if(ee.getErrCode().equals("test")){
 			}else{
-				throw new Exception("ƒGƒ‰[ƒR[ƒhŠÔˆá‚¢");
+				throw new Exception("ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰é–“é•ã„");
 			}
 			if(ee.getMessage().equals("test1")){
 			}else{
-				throw new Exception("ƒGƒ‰[MSGŠÔˆá‚¢");
+				throw new Exception("ã‚¨ãƒ©ãƒ¼MSGé–“é•ã„");
 			}
 		}
 	}
 
 	public void testGetCause() throws Exception {
-		Exception rr = new Exception("—áŠO");
+		Exception rr = new Exception("ä¾‹å¤–");
 		BaseException e = new BaseException("test","test1",rr,true) ;		
 		try{
 			throw e ;
 		}catch(BaseException ee){
 			Exception pp= (Exception)e.getCause() ;
-			if(!pp.getMessage().equals("—áŠO")){
-				throw new Exception("—áŠOŒ´ˆöƒGƒ‰[");
+			if(!pp.getMessage().equals("ä¾‹å¤–")){
+				throw new Exception("ä¾‹å¤–åŸå› ã‚¨ãƒ©ãƒ¼");
 			}				
 		}
 	}
 
 	/*
-	 * void printStackTrace ‚ÌƒeƒXƒg(PrintStream)
+	 * void printStackTrace ã®ãƒ†ã‚¹ãƒˆ(PrintStream)
 	 */
 	public void testPrintStackTracePrintStream() throws Exception {
-		Exception rr = new Exception("—áŠO");
+		Exception rr = new Exception("ä¾‹å¤–");
 		BaseException e =null ;
 		try{
 			throw rr ;

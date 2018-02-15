@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author S.Teshima
- * @version 1.00 ì¬: 2008/01/17 - S.Teshima
+ * @version 1.00 ä½œæˆ: 2008/01/17 - S.Teshima
  */
 
 public class DataSetTest extends TestCase {
@@ -22,15 +22,15 @@ public class DataSetTest extends TestCase {
 	 junit.textui.TestRunner.run(DataSetTest.class); }
 	 
 	/**
-	 * ‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚é</li>
+	 * <li>ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒf[ƒ^ƒZƒbƒg‚Ì–¼‘O‚ªnull‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®åå‰ãŒnullã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testDataSet() {
@@ -39,15 +39,15 @@ public class DataSetTest extends TestCase {
 	}
 
 	/**
-	 * –¼‘O•t‚«‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * åå‰ä»˜ãã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet("TEST_DATASET")‚Å–¼‘O•t‚«‚ÌDataSet‚ğ¶¬‚·‚é</li>
+	 * <li>Dataset#DataSet("TEST_DATASET")ã§åå‰ä»˜ãã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getname()‚ª"TEST_DATASET"‚ğ•Ô‚·B</li>
+	 * <li>Dataset#getname()ãŒ"TEST_DATASET"ã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testDataSetString() {
@@ -56,17 +56,17 @@ public class DataSetTest extends TestCase {
 	}
 
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg–¼‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet("TESTDS")‚Å–¼‘O•t‚«‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>ƒf[ƒ^ƒZƒbƒg‚Ì–¼‘O‚ª"TEST"‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>Dataset#SetName("TEST_DATASET")‚Å–¼‘O‚ğİ’è‚·‚é</li>
+	 * <li>Dataset#DataSet("TESTDS")ã§åå‰ä»˜ãã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®åå‰ãŒ"TEST"ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>Dataset#SetName("TEST_DATASET")ã§åå‰ã‚’è¨­å®šã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getname()‚ª"TEST_DATASET"‚ğ•Ô‚·B</li>
+	 * <li>Dataset#getname()ãŒ"TEST_DATASET"ã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetName1() {
@@ -77,17 +77,17 @@ public class DataSetTest extends TestCase {
 	}
 
 	/**
-	 * ‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚É–¼‘O‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«åå‰ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>ƒf[ƒ^ƒZƒbƒg‚Ì–¼‘O‚ªnull‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>Dataset#SetName("TEST_DATASET")‚Å–¼‘O‚ğİ’è‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®åå‰ãŒnullã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>Dataset#SetName("TEST_DATASET")ã§åå‰ã‚’è¨­å®šã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getname()‚ª"TEST_DATASET"‚ğ•Ô‚·B</li>
+	 * <li>Dataset#getname()ãŒ"TEST_DATASET"ã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetName2() {
@@ -98,19 +98,19 @@ public class DataSetTest extends TestCase {
 	}
 
 	/**
-	 * –¼‘O‚ğ‚½‚È‚¢Header ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * åå‰ã‚’æŒãŸãªã„Header ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>Dataset#getHeader()‚Å–¼‘O‚È‚µ‚ÌHeader‚ğæ“¾‚Å‚«‚éB</li>
-	 * <li>æ“¾‚µ‚½Header‚ÌƒXƒL[ƒ}‚ªİ’è’l‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>Dataset#getHeader()ã§åå‰ãªã—ã®Headerã‚’å–å¾—ã§ãã‚‹ã€‚</li>
+	 * <li>å–å¾—ã—ãŸHeaderã®ã‚¹ã‚­ãƒ¼ãƒãŒè¨­å®šå€¤ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testSetHeaderSchemaString() {
@@ -122,22 +122,22 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, header.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * –¼‘O‚ğ‚½‚È‚¢Header ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * åå‰ã‚’æŒãŸãªã„Header ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>"A,java.lang.String,,," iƒNƒ‰ƒX‹æØ‚è‚Ì‚È‚¢•s³‚Èw’èj</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"A,java.lang.String,,," ï¼ˆã‚¯ãƒ©ã‚¹åŒºåˆ‡ã‚Šã®ãªã„ä¸æ­£ãªæŒ‡å®šï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetHeaderSchemaStringInvalid() {
@@ -145,24 +145,24 @@ public class DataSetTest extends TestCase {
 			DataSet dataset = new DataSet();
 			String schema = "A,java.lang.String,,,";
 			dataset.setHeaderSchema(schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌHeader ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®Header ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_header"</li>
 	 * <li>schema: ":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeader(String name)‚ÅHeader‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeader(String name)ã§Headerã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetHeaderSchemaStringString() {
@@ -175,23 +175,23 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, header.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌHeader ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®Header ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_header"</li>
-	 * <li>"A,java.lang.String,,," iƒNƒ‰ƒX‹æØ‚è‚Ì‚È‚¢•s³‚Èw’èj</li>
+	 * <li>"A,java.lang.String,,," ï¼ˆã‚¯ãƒ©ã‚¹åŒºåˆ‡ã‚Šã®ãªã„ä¸æ­£ãªæŒ‡å®šï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetHeaderSchemaStringStringInvalid() {
@@ -200,23 +200,23 @@ public class DataSetTest extends TestCase {
 			String hname = "test_header";
 			String schema = "A,java.lang.String,,,";
 			dataset.setHeaderSchema(hname, schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * –¼‘O‚ğ‚½‚È‚¢RecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * åå‰ã‚’æŒãŸãªã„RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getRecordList()‚Å–¼‘O‚È‚µ‚ÌRecordList‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getRecordList()ã§åå‰ãªã—ã®RecordListã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetRecordListSchemaString() {
@@ -228,22 +228,22 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, rlist.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * –¼‘O‚ğ‚½‚È‚¢RecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * åå‰ã‚’æŒãŸãªã„RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>"A,java.lang.String,,," iƒNƒ‰ƒX‹æØ‚è‚Ì‚È‚¢•s³‚Èw’èj</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"A,java.lang.String,,," ï¼ˆã‚¯ãƒ©ã‚¹åŒºåˆ‡ã‚Šã®ãªã„ä¸æ­£ãªæŒ‡å®šï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetRecordListSchemaStringInvalid() {
@@ -251,25 +251,25 @@ public class DataSetTest extends TestCase {
 			DataSet dataset = new DataSet();
 			String schema = "A,java.lang.String,,,";
 			dataset.setRecordListSchema(schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String name, String
-	 * schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String name, String
+	 * schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_rlist"</li>
 	 * <li>schema: ":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getRecordList(String name)‚ÅRecordList‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getRecordList(String name)ã§RecordListã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetRecordListSchemaStringString() {
@@ -282,24 +282,24 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, rlist.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String name, String
-	 * schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String name, String
+	 * schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_rlist"</li>
-	 * <li>"A,java.lang.String,,," iƒNƒ‰ƒX‹æØ‚è‚Ì‚È‚¢•s³‚Èw’èj</li>
+	 * <li>"A,java.lang.String,,," ï¼ˆã‚¯ãƒ©ã‚¹åŒºåˆ‡ã‚Šã®ãªã„ä¸æ­£ãªæŒ‡å®šï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetRecordListSchemaStringStringInvalid() {
@@ -308,26 +308,26 @@ public class DataSetTest extends TestCase {
 			String name = "test_rlist";
 			String schema = "A,java.lang.String,,,";
 			dataset.setRecordListSchema(name, schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 	
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒgRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆRecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setNestedRecordListSchema(String name, String
-	 * schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setNestedRecordListSchema(String name, String
+	 * schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_nestlist"</li>
 	 * <li>schema: ":A,java.lang.String\n:B,int"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getNestedRecordListSchema(name)‚Åw’è‚µ‚½–¼‘O‚ÌƒlƒXƒgRecordList‚ÌƒXƒL[ƒ}‚ğ‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>getNestedRecordListSchema(name)ã§æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆRecordListã®ã‚¹ã‚­ãƒ¼ãƒã‚’ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetGetNestedRecordListSchema() {
@@ -339,22 +339,22 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, dataset.getNestedRecordListSchema(name).getSchema());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒgRecordList ‚ÌƒXƒL[ƒ}‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆRecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>ƒlƒXƒgRecordList‚Íİ’è‚µ‚È‚¢</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ãƒã‚¹ãƒˆRecordListã¯è¨­å®šã—ãªã„</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getNestedRecordListSchema(name)‚Ånull‚ª•Ô‚³‚ê‚éB</li>
+	 * <li>getNestedRecordListSchema(name)ã§nullãŒè¿”ã•ã‚Œã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetNestedRecordListSchemaNull() {
@@ -363,28 +363,28 @@ public class DataSetTest extends TestCase {
 			assertNull(dataset.getNestedRecordListSchema("test"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setNestedRecordListSchema(String name, String
-	 * schema)‚ğ‚R‰ñÀs‚·‚é(xx‚Ì•”•ª‚Í3,1,6‚Ì‡‚Åw’è‚·‚é)</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setNestedRecordListSchema(String name, String
+	 * schema)ã‚’ï¼“å›å®Ÿè¡Œã™ã‚‹(xxã®éƒ¨åˆ†ã¯3,1,6ã®é †ã§æŒ‡å®šã™ã‚‹)</li>
 	 * <li>name : "test_nestlistxx"</li>
 	 * <li>schema: ":Axx,java.lang.String\n:Bxx,int"</li>
-	 * <li>getNestedRecordListSchemaNames()‚ğÀs‚·‚é</li>
-	 * <li>getNestedRecordListSchemaSize()‚ğÀs‚·‚é</li>
+	 * <li>getNestedRecordListSchemaNames()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>getNestedRecordListSchemaSize()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ‚ğæ“¾‚Å‚«‚éB</li>
-	 * <li>’è‹`‚³‚ê‚½ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg”‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
+	 * <li>å®šç¾©ã•ã‚ŒãŸãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆæ•°ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetNestedRecordListSchemaNames() {
@@ -409,22 +409,22 @@ public class DataSetTest extends TestCase {
 			assertEquals(names.length, dataset.getNestedRecordListSchemaSize());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¢w’è‚ÅgetNestedRecordListSchemaNames()‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆæœªæŒ‡å®šã§getNestedRecordListSchemaNames()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—v‘f”‚O‚Ì•¶šŒ^”z—ñ‚ª•Ô‚³‚ê‚é</li>
+	 * <li>è¦ç´ æ•°ï¼ã®æ–‡å­—å‹é…åˆ—ãŒè¿”ã•ã‚Œã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetNestedRecordListSchemaNamesNotExist() {
@@ -438,26 +438,26 @@ public class DataSetTest extends TestCase {
 			assertEquals(names.length, dataset.getNestedRecordListSchemaSize());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setNestedRecordListSchema(String name, String
-	 * schema)‚ğ‚R‰ñÀs‚·‚é(xx‚Ì•”•ª‚Í3,1,6‚Ì‡‚Åw’è‚·‚é)</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setNestedRecordListSchema(String name, String
+	 * schema)ã‚’ï¼“å›å®Ÿè¡Œã™ã‚‹(xxã®éƒ¨åˆ†ã¯3,1,6ã®é †ã§æŒ‡å®šã™ã‚‹)</li>
 	 * <li>name : "test_nestlistxx"</li>
 	 * <li>schema: ":Axx,java.lang.String\n:Bxx,int"</li>
-	 * <li>getNestedRecordListSchemaMap()‚ğÀs‚µ‚ÄAƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚é</li>
+	 * <li>getNestedRecordListSchemaMap()ã‚’å®Ÿè¡Œã—ã¦ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒ}ƒbƒv‚Ì“à—eiƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼A’l‚ÍƒŒƒR[ƒhƒXƒL[ƒ}j‚ª³‚µ‚¢‚©ŒŸØ‚·‚é</li>
+	 * <li>ãƒãƒƒãƒ—ã®å†…å®¹ï¼ˆã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€å€¤ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒï¼‰ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetNestedRecordListSchemaMap() {
@@ -476,7 +476,7 @@ public class DataSetTest extends TestCase {
 			schema = ":A6,java.lang.String\n:B6,int";
 			dataset.setNestedRecordListSchema(name, schema);
 			
-			//map‚ğæ“¾‚µ‚Ä“o˜^‚³‚ê‚Ä‚¢‚é“à—e‚ğŒŸØ‚·‚é
+			//mapã‚’å–å¾—ã—ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å†…å®¹ã‚’æ¤œè¨¼ã™ã‚‹
 			Map map = dataset.getNestedRecordListSchemaMap();
 			assertEquals(":A3,java.lang.String\n:B3,int",
 					map.get("test_nestlist3"));
@@ -486,52 +486,52 @@ public class DataSetTest extends TestCase {
 					map.get("test_nestlist6"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>getNestedRecordListSchemaMap()‚ğÀs‚µ‚ÄAƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>getNestedRecordListSchemaMap()ã‚’å®Ÿè¡Œã—ã¦ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>‹ó‚Ìƒ}ƒbƒv‚ª•Ô‚³‚ê‚é</li>
+	 * <li>ç©ºã®ãƒãƒƒãƒ—ãŒè¿”ã•ã‚Œã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetNestedRecordListSchemaMapEmpty() {
 		try {
 			DataSet dataset = new DataSet();
 			
-			//map‚ğæ“¾‚µ‚Ä“o˜^‚³‚ê‚Ä‚¢‚é“à—e‚ğŒŸØ‚·‚é
+			//mapã‚’å–å¾—ã—ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å†…å®¹ã‚’æ¤œè¨¼ã™ã‚‹
 			Map map = dataset.getNestedRecordListSchemaMap();
 			assertEquals(0,map.size());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	
 	/**
-	 * –¼‘O‚ğ‚½‚È‚¢Header‚ÆRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * åå‰ã‚’æŒãŸãªã„Headerã¨RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>headerSchema ":A,java.lang.String,,,"</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeader()‚Å–¼‘O‚È‚µ‚ÌHeader‚ğæ“¾‚Å‚«‚éB</li>
-	 * <li>Dataset#getRecordList()‚Å–¼‘O‚È‚µ‚ÌRecordList‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeader()ã§åå‰ãªã—ã®Headerã‚’å–å¾—ã§ãã‚‹ã€‚</li>
+	 * <li>Dataset#getRecordList()ã§åå‰ãªã—ã®RecordListã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetSchemaStringString() {
@@ -548,24 +548,24 @@ public class DataSetTest extends TestCase {
 			assertEquals(rschema, rlist.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * –¼‘O‚ğ‚½‚È‚¢Header‚ÆRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * åå‰ã‚’æŒãŸãªã„Headerã¨RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
-	 * <li>headerSchema ""A,java.lang.String,,," iƒNƒ‰ƒX‹æØ‚è‚Ì‚È‚¢•s³‚Èw’èj"</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>headerSchema ""A,java.lang.String,,," ï¼ˆã‚¯ãƒ©ã‚¹åŒºåˆ‡ã‚Šã®ãªã„ä¸æ­£ãªæŒ‡å®šï¼‰"</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetSchemaStringStringInvalid() {
@@ -574,27 +574,27 @@ public class DataSetTest extends TestCase {
 			String hschema = "A,java.lang.String,,,";
 			String rschema = ":B,java.lang.String,,,";
 			dataset.setSchema(hschema, rschema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌHeader‚ÆRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®Headerã¨RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
 	 * <li>headerSchema ":A,java.lang.String,,,"</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeader(String name)‚ÅHeader‚ğæ“¾‚Å‚«‚éB</li>
-	 * <li>Dataset#getRecordList(String name)‚ÅRecordList‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeader(String name)ã§Headerã‚’å–å¾—ã§ãã‚‹ã€‚</li>
+	 * <li>Dataset#getRecordList(String name)ã§RecordListã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testSetSchemaStringStringString() {
@@ -612,25 +612,25 @@ public class DataSetTest extends TestCase {
 			assertEquals(rschema, rlist.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌHeader‚ÆRecordList ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®Headerã¨RecordList ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
-	 * <li>headerSchema "A,java.lang.String,,," iƒNƒ‰ƒX‹æØ‚è‚Ì‚È‚¢•s³‚Èw’èj</li>
+	 * <li>headerSchema "A,java.lang.String,,," ï¼ˆã‚¯ãƒ©ã‚¹åŒºåˆ‡ã‚Šã®ãªã„ä¸æ­£ãªæŒ‡å®šï¼‰</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetSchemaStringStringStringInvalid() {
@@ -640,27 +640,27 @@ public class DataSetTest extends TestCase {
 			String hschema = "A,java.lang.String,,,";
 			String rschema = ":B,java.lang.String,,,";
 			dataset.setSchema(name, hschema, rschema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒwƒbƒ_[–¼”z—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒ˜ãƒƒãƒ€ãƒ¼åé…åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String
-	 * schema)‚ğ2‰ñÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String
+	 * schema)ã‚’2å›å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_header1"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * <li>name : "test_header2"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeaderNames()‚Å’è‹`‚³‚ê‚½‡‚Å–¼‘O‚Ì”z—ñ‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeaderNames()ã§å®šç¾©ã•ã‚ŒãŸé †ã§åå‰ã®é…åˆ—ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetHeaderNames() {
@@ -675,26 +675,26 @@ public class DataSetTest extends TestCase {
 			assertEquals("test_header2", dataset.getHeaderNames()[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒwƒbƒ_[‚Ì”‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã®æ•°ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String
-	 * schema)‚ğ2‰ñÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String
+	 * schema)ã‚’2å›å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_header1"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * <li>name : "test_header2"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeaderSize()‚Åƒwƒbƒ_”‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeaderSize()ã§ãƒ˜ãƒƒãƒ€æ•°ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetHeaderSize() {
@@ -708,26 +708,26 @@ public class DataSetTest extends TestCase {
 			assertEquals(2, dataset.getHeaderSize());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒwƒbƒ_[‚Ìmap‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã®mapã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String
-	 * schema)‚ğ2‰ñÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String
+	 * schema)ã‚’2å›å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_header1"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * <li>name : "test_header2"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeaderMap()‚Åƒwƒbƒ_[‚ÌmapiƒL[‚Íƒwƒbƒ_–¼j‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeaderMap()ã§ãƒ˜ãƒƒãƒ€ãƒ¼ã®mapï¼ˆã‚­ãƒ¼ã¯ãƒ˜ãƒƒãƒ€åï¼‰ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetHeaderMap() {
@@ -745,24 +745,24 @@ public class DataSetTest extends TestCase {
 					.getHeaderMap().get("test_header2"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒwƒbƒ_[‚ğ’Ç‰Á‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ìƒwƒbƒ_–¼‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄHeader(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ˜ãƒƒãƒ€åã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Header(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name: "test_header"</li>
 	 * <li>schema: ":A,java.lang.String,,,"</li>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#addHeader(Header header)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#addHeader(Header header)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getHeader(String name)‚ÅHeader‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getHeader(String name)ã§Headerã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testAddHeader() {
@@ -777,26 +777,26 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, header2.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String name, String
-	 * schema)‚ğ2‰ñÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String name, String
+	 * schema)ã‚’2å›å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_rlist1"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * <li>name : "test_rlist2"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getRecordListNames()‚Å’è‹`‚³‚ê‚½‡‚Å–¼‘O‚Ì”z—ñ‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getRecordListNames()ã§å®šç¾©ã•ã‚ŒãŸé †ã§åå‰ã®é…åˆ—ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetRecordListNames() {
@@ -811,26 +811,26 @@ public class DataSetTest extends TestCase {
 			assertEquals("test_rlist2", dataset.getRecordListNames()[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒhƒŠƒXƒg‚Ì”‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®æ•°ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String name, String
-	 * schema)‚ğ2‰ñÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String name, String
+	 * schema)ã‚’2å›å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_rlist1"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * <li>name : "test_rlist2"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getRecordListSize()‚ÅƒŒƒR[ƒhƒŠƒXƒg‚Ì”‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getRecordListSize()ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®æ•°ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetRecordListSize() {
@@ -844,26 +844,26 @@ public class DataSetTest extends TestCase {
 			assertEquals(2, dataset.getRecordListSize());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒhƒŠƒXƒg‚Ìmap‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®mapã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String name, String
-	 * schema)‚ğ2‰ñÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String name, String
+	 * schema)ã‚’2å›å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_rlist1"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * <li>name : "test_rlist2"</li>
 	 * <li>":A,java.lang.String,,," </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getRecordListMap()‚ÅƒŒƒR[ƒhƒŠƒXƒg‚ÌmapiƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼j‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getRecordListMap()ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®mapï¼ˆã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåï¼‰ã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testGetRecordListMap() {
@@ -881,24 +881,24 @@ public class DataSetTest extends TestCase {
 					.getRecordListMap().get("test_rlist2"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒhƒŠƒXƒg‚ğ’Ç‰Á‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¿½åŠ ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒŒƒR[ƒhƒŠƒXƒg–¼‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name: "test_rlist"</li>
 	 * <li>schema: ":A,java.lang.String,,,"</li>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#addRecordList(RecordList recList)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#addRecordList(RecordList recList)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#getRecordList(String name)‚ÅRecordList‚ğæ“¾‚Å‚«‚éB</li>
+	 * <li>Dataset#getRecordList(String name)ã§RecordListã‚’å–å¾—ã§ãã‚‹ã€‚</li>
 	 * </ul>
 	 */
 	public void testAddRecordList() {
@@ -913,26 +913,26 @@ public class DataSetTest extends TestCase {
 			assertEquals(schema, rlist2.schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setNestedRecordListSchema(String name, String
-	 * schema)‚ğ‚R‰ñÀs‚·‚é(xx‚Ì•”•ª‚Í3,1,6‚Ì‡‚Åw’è‚·‚é)</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setNestedRecordListSchema(String name, String
+	 * schema)ã‚’ï¼“å›å®Ÿè¡Œã™ã‚‹(xxã®éƒ¨åˆ†ã¯3,1,6ã®é †ã§æŒ‡å®šã™ã‚‹)</li>
 	 * <li>name : "test_nestlistxx"</li>
 	 * <li>schema: ":Axx,java.lang.String\n:Bxx,int"</li>
-	 * <li>createNestedRecordList(String name)‚ğÀs‚µ‚ÄAƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚·‚é</li>
+	 * <li>createNestedRecordList(String name)ã‚’å®Ÿè¡Œã—ã¦ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—ei–¼‘OAƒXƒL[ƒ}j‚ª³‚µ‚¢‚©ŒŸØ‚·‚é</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ï¼ˆåå‰ã€ã‚¹ã‚­ãƒ¼ãƒï¼‰ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testCreateNestedRecordList() {
@@ -951,32 +951,32 @@ public class DataSetTest extends TestCase {
 			schema = ":A6,java.lang.String\n:B6,int";
 			dataset.setNestedRecordListSchema(name, schema);
 			
-			//ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Äi–¼‘OAƒXƒL[ƒ}j‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+			//ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦ï¼ˆåå‰ã€ã‚¹ã‚­ãƒ¼ãƒï¼‰ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
 			RecordList rlist = dataset.createNestedRecordList("test_nestlist1");
 			assertEquals("test_nestlist1",rlist.getName());
 			assertEquals(":A1,java.lang.String\n:B1,int",rlist.getSchema());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setNestedRecordListSchema(String name, String
-	 * schema)‚ğ‚R‰ñÀs‚·‚é(xx‚Ì•”•ª‚Í3,1,6‚Ì‡‚Åw’è‚·‚é)</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setNestedRecordListSchema(String name, String
+	 * schema)ã‚’ï¼“å›å®Ÿè¡Œã™ã‚‹(xxã®éƒ¨åˆ†ã¯3,1,6ã®é †ã§æŒ‡å®šã™ã‚‹)</li>
 	 * <li>name : "test_nestlistxx"</li>
 	 * <li>schema: ":Axx,java.lang.String\n:Bxx,int"</li>
-	 * <li>İ’è‚µ‚½–¼‘O‚Å‚È‚¢’l‚ğw’è‚µ‚ÄcreateNestedRecordList(String name)‚ğÀs</li>
+	 * <li>è¨­å®šã—ãŸåå‰ã§ãªã„å€¤ã‚’æŒ‡å®šã—ã¦createNestedRecordList(String name)ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>null‚ª•Ô‚³‚ê‚é</li>
+	 * <li>nullãŒè¿”ã•ã‚Œã‚‹</li>
 	 * </ul>
 	 */
 	public void testCreateNestedRecordListNotExist() {
@@ -995,26 +995,26 @@ public class DataSetTest extends TestCase {
 			schema = ":A6,java.lang.String\n:B6,int";
 			dataset.setNestedRecordListSchema(name, schema);
 			
-			//‘¶İ‚µ‚È‚¢ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚·‚é
+			//å­˜åœ¨ã—ãªã„ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹
 			assertNull(dataset.createNestedRecordList("test_nestlist"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>createNestedRecordList(String name)‚ğÀs‚µ‚ÄAƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>createNestedRecordList(String name)ã‚’å®Ÿè¡Œã—ã¦ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒŒƒR[ƒhƒŠƒXƒg–¢“o˜^‚È‚Ì‚Ånull‚ª•Ô‚³‚ê‚é</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆæœªç™»éŒ²ãªã®ã§nullãŒè¿”ã•ã‚Œã‚‹</li>
 	 * </ul>
 	 */
 	public void testCreateNestedRecordListNotExist2() {
@@ -1022,40 +1022,40 @@ public class DataSetTest extends TestCase {
 			DataSet dataset = new DataSet();
 			
 			
-			//ƒŒƒR[ƒhƒŠƒXƒg–¢“o˜^‚Ìó‘Ô‚ÅƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚·‚é
+			//ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆæœªç™»éŒ²ã®çŠ¶æ…‹ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹
 			assertNull(dataset.createNestedRecordList("test_nestlist"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg‚Ìƒwƒbƒ_[‚Ìƒf[ƒ^‚ÆƒŒƒR[ƒhƒŠƒXƒg‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿ã¨ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
 	 * <li>headerSchema ":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
-	 * <li>ƒŒƒR[ƒh‚ğ’Ç‰Á‚µAŸ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã€æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"B"</li>
 	 * <li>Object:"b"</li>
 	 * 
-	 * <li>Dataset#clear()‚ğÀs‚·‚é</li>
+	 * <li>Dataset#clear()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒwƒbƒ_[‚Ì’l‚ª‘¶İ‚µ‚È‚¢(Header#getProperty("A"))null‚ğ•Ô‚·</li>
-	 * <li>ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒŒƒR[ƒh”(rRecordList#size())‚ª0‚ğ•Ô‚·</li>
+	 * <li>ãƒ˜ãƒƒãƒ€ãƒ¼ã®å€¤ãŒå­˜åœ¨ã—ãªã„(Header#getProperty("A"))nullã‚’è¿”ã™</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°(rRecordList#size())ãŒ0ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testClear() {
@@ -1078,35 +1078,35 @@ public class DataSetTest extends TestCase {
 			assertEquals(0, rlist.size());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
 	 * <li>headerSchema ":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
-	 * <li>ƒŒƒR[ƒh‚ğ’Ç‰Á‚µAŸ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã€æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"B"</li>
 	 * <li>Object:"b"</li>
 	 * 
-	 * <li>Dataset#cloneSchema()‚ğÀs</li>
+	 * <li>Dataset#cloneSchema()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•¡»‚Ìƒf[ƒ^ƒZƒbƒg‚É‘Î‚µ‚ÄAŸ‚ÌŠm”F‚ğs‚¤</li>
-	 * <li>HeaderArecordList‚ÌƒXƒL[ƒ}‚ª•¡»Œ³‚Æ“¯‚¶</li>
-	 * <li>HeaderArecordList‚Ìƒf[ƒ^‚Í‘¶İ‚µ‚È‚¢</li>
+	 * <li>è¤‡è£½ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å¯¾ã—ã¦ã€æ¬¡ã®ç¢ºèªã‚’è¡Œã†</li>
+	 * <li>Headerã€recordListã®ã‚¹ã‚­ãƒ¼ãƒãŒè¤‡è£½å…ƒã¨åŒã˜</li>
+	 * <li>Headerã€recordListã®ãƒ‡ãƒ¼ã‚¿ã¯å­˜åœ¨ã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testCloneSchema() {
@@ -1134,35 +1134,35 @@ public class DataSetTest extends TestCase {
 			assertEquals(0, rlist2.size());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
 	 * <li>headerSchema ":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
 	 * <li>recordListSchema ":B,java.lang.String,,,"</li>
-	 * <li>ƒŒƒR[ƒh‚ğ’Ç‰Á‚µAŸ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã€æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"B"</li>
 	 * <li>Object:"b"</li>
 	 * 
-	 * <li>Dataset#cloneDataSet()‚ğÀs</li>
+	 * <li>Dataset#cloneDataSet()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•¡»‚Ìƒf[ƒ^ƒZƒbƒg‚É‘Î‚µ‚ÄAŸ‚ÌŠm”F‚ğs‚¤</li>
-	 * <li>HeaderArecordList‚ÌƒXƒL[ƒ}‚ª•¡»Œ³‚Æ“¯‚¶</li>
-	 * <li>HeaderArecordList‚Ìƒf[ƒ^‚Í•¡»Œ³‚Æ“¯‚¶</li>
+	 * <li>è¤‡è£½ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å¯¾ã—ã¦ã€æ¬¡ã®ç¢ºèªã‚’è¡Œã†</li>
+	 * <li>Headerã€recordListã®ã‚¹ã‚­ãƒ¼ãƒãŒè¤‡è£½å…ƒã¨åŒã˜</li>
+	 * <li>Headerã€recordListã®ãƒ‡ãƒ¼ã‚¿ã¯è¤‡è£½å…ƒã¨åŒã˜</li>
 	 * </ul>
 	 */
 	public void testCloneDataSet() {
@@ -1193,37 +1193,37 @@ public class DataSetTest extends TestCase {
 
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚Şƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
 	 * <li>headerSchema "LIST:HrList,\"HrList\""</li>
 	 * <li>recordListSchema "LIST:RrList,\"RrList\"</li>
-	 * <li>ƒŒƒR[ƒhƒŠƒXƒg"HrList"A"RrList"‚É‚Â‚¢‚Ä‚Í–‘O‚ÉsetNestedRecordListSchema‚ÅƒXƒL[ƒ}‚ğ’è‹`‚·‚é•K—v‚ª‚ ‚é</li>
+	 * <li>ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ"HrList"ã€"RrList"ã«ã¤ã„ã¦ã¯äº‹å‰ã«setNestedRecordListSchemaã§ã‚¹ã‚­ãƒ¼ãƒã‚’å®šç¾©ã™ã‚‹å¿…è¦ãŒã‚ã‚‹</li>
 	 * 
-	 * <li>Dataset#cloneDataSet()‚ğÀs</li>
+	 * <li>Dataset#cloneDataSet()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•¡»‚Ìƒf[ƒ^ƒZƒbƒg‚É‘Î‚µ‚ÄAŸ‚ÌŠm”F‚ğs‚¤</li>
-	 * <li>HeaderArecordList‚ÌƒXƒL[ƒ}‚ª•¡»Œ³‚Æ“¯‚¶</li>
-	 * <li>HeaderArecordList‚Ìƒf[ƒ^‚Í•¡»Œ³‚Æ“¯‚¶</li>
+	 * <li>è¤‡è£½ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å¯¾ã—ã¦ã€æ¬¡ã®ç¢ºèªã‚’è¡Œã†</li>
+	 * <li>Headerã€recordListã®ã‚¹ã‚­ãƒ¼ãƒãŒè¤‡è£½å…ƒã¨åŒã˜</li>
+	 * <li>Headerã€recordListã®ãƒ‡ãƒ¼ã‚¿ã¯è¤‡è£½å…ƒã¨åŒã˜</li>
 	 * </ul>
 	 */
 	public void testCloneDataSetNestedRecordList() {
 		try {
 			DataSet dataset = new DataSet();
-			//ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+			//ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
 			dataset.setNestedRecordListSchema("HrList", ":A,java.lang.String\n:B,java.lang.String");
 			dataset.setNestedRecordListSchema("RrList", ":C,java.lang.String\n:D,int");
 			
@@ -1232,24 +1232,24 @@ public class DataSetTest extends TestCase {
 			String rschema = "LIST:RrList,RrList";
 			dataset.setSchema(name, hschema, rschema);
 
-			//Header‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+			//Headerã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
 			RecordList HrList = dataset.createNestedRecordList("HrList");
 			Record nrec1 = HrList.createRecord();
 			nrec1.setProperty("A", "a");
 			nrec1.setProperty("B", "b");
 			HrList.addRecord(nrec1);
-			//Header‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+			//Headerã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
 			Header header = dataset.getHeader(name);
 			header.setProperty("HrList", HrList);
 
 
-			//ƒŒƒR[ƒh‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+			//ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
 			RecordList RrList = dataset.createNestedRecordList("RrList");
 			Record nrec2 = RrList.createRecord();
 			nrec2.setProperty("C", "c");
 			nrec2.setProperty("D", 1);
 			RrList.addRecord(nrec2);
-			//RecordList‚ğæ“¾‚µ‚ÄƒŒƒR[ƒh‚ÉƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+			//RecordListã‚’å–å¾—ã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
 
 			RecordList rlist = dataset.getRecordList(name);
 			Record rec = rlist.createRecord();
@@ -1258,7 +1258,7 @@ public class DataSetTest extends TestCase {
 
 			DataSet dataset2 = dataset.cloneDataSet();
 
-			//ƒRƒs[æ‚ÌHeader‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é			
+			//ã‚³ãƒ”ãƒ¼å…ˆã®Headerã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹			
 			Header header2 = dataset2.getHeader(name);
 			assertEquals(header.schema, header2.schema);
 			Record copyr =  ((RecordList)header2.getProperty("HrList")).getRecord(0);
@@ -1266,7 +1266,7 @@ public class DataSetTest extends TestCase {
 			assertEquals("a", copyr.get("A"));
 			assertEquals("b", copyr.get("B"));
 
-			//ƒRƒs[æ‚ÌRecordList‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+			//ã‚³ãƒ”ãƒ¼å…ˆã®RecordListã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
 			RecordList rlist2 = dataset2.getRecordList(name);
 			assertEquals(rlist.schema, rlist2.schema);
 			Record rec2 = rlist2.getRecord(0);
@@ -1278,32 +1278,32 @@ public class DataSetTest extends TestCase {
 
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setSchema(String name,String headerSchema, String
-	 * recordListSchema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setSchema(String name,String headerSchema, String
+	 * recordListSchema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "test_name"</li>
 	 * <li>headerSchema ":A,java.lang.String,,,"</li>
 	 * <li>recordListSchema ":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄŠeHeaderARecord‚ÌsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦å„Headerã€Recordã®setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Dataset#clone()‚ğÀs</li>
+	 * <li>Dataset#clone()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•¡»‚Ìƒf[ƒ^ƒZƒbƒg‚É‘Î‚µ‚ÄAŸ‚ÌŠm”F‚ğs‚¤</li>
-	 * <li>HeaderArecordList‚ÌƒXƒL[ƒ}‚ª•¡»Œ³‚Æ“¯‚¶</li>
-	 * <li>HeaderArecordList‚Ìƒf[ƒ^‚Í‘¶İ‚µ‚È‚¢</li>
+	 * <li>è¤‡è£½ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å¯¾ã—ã¦ã€æ¬¡ã®ç¢ºèªã‚’è¡Œã†</li>
+	 * <li>Headerã€recordListã®ã‚¹ã‚­ãƒ¼ãƒãŒè¤‡è£½å…ƒã¨åŒã˜</li>
+	 * <li>Headerã€recordListã®ãƒ‡ãƒ¼ã‚¿ã¯å­˜åœ¨ã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testClone() {
@@ -1334,20 +1334,20 @@ public class DataSetTest extends TestCase {
 
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet("TEST_DATASET")‚Å–¼‘O•t‚«‚ÌDataSet‚ğ¶¬‚·‚é</li>
+	 * <li>Dataset#DataSet("TEST_DATASET")ã§åå‰ä»˜ãã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Dataset#toString()‚ª"{name=TEST_DATASET}"‚ÅI‚í‚éƒƒbƒZ[ƒW‚ğ•Ô‚·B</li>
+	 * <li>Dataset#toString()ãŒ"{name=TEST_DATASET}"ã§çµ‚ã‚ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testToString() {

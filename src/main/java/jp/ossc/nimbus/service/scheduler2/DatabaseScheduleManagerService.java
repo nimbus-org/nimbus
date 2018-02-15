@@ -49,18 +49,18 @@ import jp.ossc.nimbus.service.system.Time;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * ƒf[ƒ^ƒx[ƒXƒXƒPƒWƒ…[ƒ‹ŠÇ—B<p>
- * ƒXƒPƒWƒ…[ƒ‹‚ğƒf[ƒ^ƒx[ƒX‚Åì¬EŠÇ—‚µAÀs‚·‚×‚«ƒXƒPƒWƒ…[ƒ‹‚ğ’ñ‹Ÿ‚·‚éB<br>
- * ‚±‚ÌƒT[ƒrƒX‚ğg—p‚·‚é‚É‚ÍA—\‚ßƒf[ƒ^ƒx[ƒX‚ÉˆÈ‰º‚Ìƒe[ƒuƒ‹‚ª•K—v‚Å‚ ‚éB<br>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç®¡ç†ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã§ä½œæˆãƒ»ç®¡ç†ã—ã€å®Ÿè¡Œã™ã¹ãã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æä¾›ã™ã‚‹ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹ã«ã¯ã€äºˆã‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä»¥ä¸‹ã®ãƒ†ãƒ¼ãƒ–ãƒ«ãŒå¿…è¦ã§ã‚ã‚‹ã€‚<br>
  * <ul>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleMasterTableSchema ScheduleMasterTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^ƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleGroupMasterTableSchema ScheduleGroupMasterTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleDependsMasterTableSchema ScheduleDependsMasterTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleGroupDependsMasterTableSchema ScheduleGroupDependsMasterTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleTableSchema ScheduleTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleGroupTableSchema ScheduleGroupTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleDependsTableSchema ScheduleDependsTableSchema})</li>
- *   <li>ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒe[ƒuƒ‹({@link DatabaseScheduleManagerService.ScheduleGroupDependsTableSchema ScheduleGroupDependsTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleMasterTableSchema ScheduleMasterTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleGroupMasterTableSchema ScheduleGroupMasterTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleDependsMasterTableSchema ScheduleDependsMasterTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleGroupDependsMasterTableSchema ScheduleGroupDependsMasterTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleTableSchema ScheduleTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleGroupTableSchema ScheduleGroupTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleDependsTableSchema ScheduleDependsTableSchema})</li>
+ *   <li>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«({@link DatabaseScheduleManagerService.ScheduleGroupDependsTableSchema ScheduleGroupDependsTableSchema})</li>
  * </ul>
  *
  * @author M.Takata
@@ -120,265 +120,265 @@ public class DatabaseScheduleManagerService extends ServiceBase
     protected boolean isUseConcatFunction;
     protected boolean isJsonInput;
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setDefaultScheduleMakerServiceName(ServiceName name){
         defaultScheduleMakerServiceName = name;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getDefaultScheduleMakerServiceName(){
         return defaultScheduleMakerServiceName;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleMakerTypeMapping(Properties mapping){
         scheduleMakerTypeMapping = mapping;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public Properties getScheduleMakerTypeMapping(){
         return scheduleMakerTypeMapping;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleMakerTypeRegexEnabled(boolean isEnable){
         isScheduleMakerTypeRegexEnabled = isEnable;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isScheduleMakerTypeRegexEnabled(){
         return isScheduleMakerTypeRegexEnabled;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getConnectionFactoryServiceName(){
         return connectionFactoryServiceName;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setTimeServiceName(ServiceName name){
         timeServiceName = name;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getTimeServiceName(){
         return timeServiceName;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setDateFormat(String format){
         dateFormat = format;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public String getDateFormat(){
         return dateFormat;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setTimeFormat(String format){
         timeFormat = format;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public String getTimeFormat(){
         return timeFormat;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setUpdateUserId(String id){
         updateUserId = id;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public String getUpdateUserId(){
         return updateUserId;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleMasterTableSchema getScheduleMasterTableSchema(){
         return scheduleMasterTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleMasterTableSchema(ScheduleMasterTableSchema schema){
         scheduleMasterTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleGroupMasterTableSchema getScheduleGroupMasterTableSchema(){
         return scheduleGroupMasterTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleGroupMasterTableSchema(ScheduleGroupMasterTableSchema schema){
         scheduleGroupMasterTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleDependsMasterTableSchema getScheduleDependsMasterTableSchema(){
         return scheduleDependsMasterTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleDependsMasterTableSchema(ScheduleDependsMasterTableSchema schema){
         scheduleDependsMasterTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleGroupDependsMasterTableSchema getScheduleGroupDependsMasterTableSchema(){
         return scheduleGroupDependsMasterTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleGroupDependsMasterTableSchema(ScheduleGroupDependsMasterTableSchema schema){
         scheduleGroupDependsMasterTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleTableSchema getScheduleTableSchema(){
         return scheduleTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleTableSchema(ScheduleTableSchema schema){
         scheduleTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleGroupTableSchema getScheduleGroupTableSchema(){
         return scheduleGroupTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleGroupTableSchema(ScheduleGroupTableSchema schema){
         scheduleGroupTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleDependsTableSchema getScheduleDependsTableSchema(){
         return scheduleDependsTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleDependsTableSchema(ScheduleDependsTableSchema schema){
         scheduleDependsTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ScheduleGroupDependsTableSchema getScheduleGroupDependsTableSchema(){
         return scheduleGroupDependsTableSchema;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleGroupDependsTableSchema(ScheduleGroupDependsTableSchema schema){
         scheduleGroupDependsTableSchema = schema;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setNextScheduleIdSelectQuery(String query){
         nextScheduleIdSelectQuery = query;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public String getNextScheduleIdSelectQuery(){
         return nextScheduleIdSelectQuery;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setMakeScheduleOnStart(boolean isMake){
         isMakeScheduleOnStart = isMake;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isMakeScheduleOnStart(){
         return isMakeScheduleOnStart;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setControlStateCheckInterval(long interval){
         controlStateCheckInterval = interval;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public long getControlStateCheckInterval(){
         return controlStateCheckInterval;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setTimeoverCheckInterval(long interval){
         timeoverCheckInterval = interval;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public long getTimeoverCheckInterval(){
         return timeoverCheckInterval;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setLockForFindExecutable(boolean isLock){
         isLockForFindExecutable = isLock;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isLockForFindExecutable(){
         return isLockForFindExecutable;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setUseConcatFunction(boolean isUse){
         isUseConcatFunction = isUse;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isUseConcatFunction(){
         return isUseConcatFunction;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void setJSONInput(boolean isJson){
         isJsonInput = isJson;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isJSONInput(){
         return isJsonInput;
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void startControlStateCheck(){
         if(controlStateChecker != null){
             controlStateChecker.resume();
         }
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isStartControlStateCheck(){
         return controlStateChecker == null ? false : controlStateChecker.isRunning() && !controlStateChecker.isSusupend();
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void stopControlStateCheck(){
         if(controlStateChecker != null){
             controlStateChecker.suspend();
         }
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void startTimeoverCheck(){
         if(timeoverChecker != null){
             timeoverChecker.resume();
         }
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public boolean isStartTimeoverCheck(){
         return timeoverChecker == null ? false : timeoverChecker.isRunning() && !timeoverChecker.isSusupend();
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void stopTimeoverCheck(){
         if(timeoverChecker != null){
             timeoverChecker.suspend();
@@ -386,9 +386,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         scheduleMakerMap = new HashMap();
@@ -397,9 +397,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -501,9 +501,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
@@ -529,9 +529,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         scheduleMakerMap = null;
@@ -539,7 +539,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         scheduleControlListeners = null;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List makeSchedule(Date date) throws ScheduleMakeException{
         final List masters = new ArrayList();
         Connection con = null;
@@ -599,7 +599,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return makeSchedule(date, masters);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List makeSchedule(Date date, ScheduleMaster master) throws ScheduleMakeException{
         if(master == null){
             return new ArrayList();
@@ -609,7 +609,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return makeSchedule(date, masters);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List makeSchedule(Date date, List masters) throws ScheduleMakeException{
         if(masters.size() == 0){
             return new ArrayList();
@@ -774,17 +774,17 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param nextScheduleIdStatement ƒXƒPƒWƒ…[ƒ‹ID‚ğÌ”Ô‚·‚éStatement
-     * @param scheduleInsertStatement ƒXƒPƒWƒ…[ƒ‹‚ğINSERT‚·‚éStatement
-     * @param scheduleDependsInsertStatement ƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶ŠÖŒW‚ğINSERT‚·‚éStatement
-     * @param scheduleGroupDependsMasterSelectStatement ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^‚ğSELECT‚·‚éStatement
-     * @param scheduleGroupDependsInsertStatement ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒvˆË‘¶ŠÖŒW‚ğINSERT‚·‚éStatement
-     * @param scheduleGroupInsertStatement ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒv‚ğINSERT‚·‚éStatement
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @param groupMap ƒ}ƒXƒ^ƒOƒ‹[ƒvID‚É‘Î‚µ‚Ä”­s‚µ‚½ƒOƒ‹[ƒvID‚Ìƒ}ƒbƒv
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ì’Ç‰Á‚É¸”s‚µ‚½ê‡
+     * @param nextScheduleIdStatement ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’æ¡ç•ªã™ã‚‹Statement
+     * @param scheduleInsertStatement ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’INSERTã™ã‚‹Statement
+     * @param scheduleDependsInsertStatement ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜é–¢ä¿‚ã‚’INSERTã™ã‚‹Statement
+     * @param scheduleGroupDependsMasterSelectStatement ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ã‚’SELECTã™ã‚‹Statement
+     * @param scheduleGroupDependsInsertStatement ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ã‚’INSERTã™ã‚‹Statement
+     * @param scheduleGroupInsertStatement ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ã‚’INSERTã™ã‚‹Statement
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @param groupMap ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã«å¯¾ã—ã¦ç™ºè¡Œã—ãŸã‚°ãƒ«ãƒ¼ãƒ—IDã®ãƒãƒƒãƒ—
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®è¿½åŠ ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void addSchedule(
         Statement nextScheduleIdStatement,
@@ -1162,7 +1162,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setScheduleMaker(String scheduleType, ScheduleMaker maker)
      throws IllegalArgumentException{
         if(addedScheduleMakerMap == null){
@@ -1176,7 +1176,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         addedScheduleMakerMap.put(scheduleType, maker);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public ScheduleMaker getScheduleMaker(String scheduleType){
         ScheduleMaker maker = (ScheduleMaker)scheduleMakerMap.get(
             scheduleType
@@ -1201,22 +1201,22 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return maker;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public Map getScheduleMakerMap(){
         return scheduleMakerMap;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setDefaultScheduleMaker(ScheduleMaker maker){
         defaultScheduleMaker = maker;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public ScheduleMaker getDefaultScheduleMaker(){
         return defaultScheduleMaker;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findScheduleMasters(String groupId) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -1304,7 +1304,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findAllScheduleMasters() throws ScheduleManageException{
         Connection con = null;
         try{
@@ -1362,7 +1362,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public ScheduleMaster findScheduleMaster(String id) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -1418,14 +1418,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
 
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌŒŸõŒ‹‰Ê‚©‚çƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ¤œç´¢çµæœã‹ã‚‰ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param rs ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌŒŸõŒ‹‰Ê
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^
-     * @exception SQLException SQL—áŠO
-     * @exception ParseException “ú•t‚Æ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception IOException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param rs ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ¤œç´¢çµæœ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿
+     * @exception SQLException SQLä¾‹å¤–
+     * @exception ParseException æ—¥ä»˜ã¨æ™‚åˆ»ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected DefaultScheduleMaster createScheduleMaster(ResultSet rs)
      throws SQLException, ParseException, IOException, ClassNotFoundException{
@@ -1803,7 +1803,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return schedules;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findAllSchedules() throws ScheduleManageException{
         Connection con = null;
         try{
@@ -1855,15 +1855,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
 
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚ÌŒŸõŒ‹‰Ê‚©‚çƒXƒPƒWƒ…[ƒ‹‚ğ¶¬‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ¤œç´¢çµæœã‹ã‚‰ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param rs ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚ÌŒŸõŒ‹‰Ê
-     * @return ƒXƒPƒWƒ…[ƒ‹
-     * @exception SQLException SQL—áŠO
-     * @exception ParseException “ú•t‚Æ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception IOException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception ConvertException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì•ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param rs ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ¤œç´¢çµæœ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @exception SQLException SQLä¾‹å¤–
+     * @exception ParseException æ—¥ä»˜ã¨æ™‚åˆ»ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ConvertException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Schedule createSchedule(ResultSet rs)
      throws SQLException, ParseException, IOException, ClassNotFoundException{
@@ -2233,7 +2233,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return schedules;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public Schedule findSchedule(String id) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -2286,7 +2286,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(String groupId) throws ScheduleManageException{
         List result = new ArrayList();
         Connection con = null;
@@ -2366,7 +2366,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(String masterId, String masterGroupId) throws ScheduleManageException{
         List result = new ArrayList();
         Connection con = null;
@@ -2454,7 +2454,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date date) throws ScheduleManageException{
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -2471,24 +2471,24 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return findSchedules(from, to);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date from, Date to)
      throws ScheduleManageException{
         return findSchedules(from, to, null);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(int[] states) throws ScheduleManageException{
         return findSchedules(null, null, states);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date from, Date to, int[] states)
      throws ScheduleManageException{
         return findSchedules(from, to, states, null, null, null, null, null, false);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
         return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, false);
     }
@@ -2713,13 +2713,13 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findExecutableSchedules(Date date, String[] executorTypes)
      throws ScheduleManageException{
         return findExecutableSchedules(date, executorTypes, null);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey)
      throws ScheduleManageException{
         final List result = findSchedules(
@@ -2754,8 +2754,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
         ResultSet rs = null;
         try{
             StringBuilder buf = new StringBuilder();
-            // 1ƒXƒPƒWƒ…[ƒ‹ - 1ƒXƒPƒWƒ…[ƒ‹
-            // ©•ª‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+            // è‡ªåˆ†ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.append("select count(1) from ").append(scheduleTableSchema.table).append(" A,")
                 .append("(select ").append(scheduleDependsTableSchema.dependsId)
                 .append(',').append(scheduleDependsTableSchema.ignoreError).append(" from ").append(scheduleDependsTableSchema.table)
@@ -2777,8 +2777,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RUN).append('\'')
                 .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_PAUSE).append("'))");
             st1 = con.prepareStatement(buf.toString());
-            // ƒOƒ‹[ƒv“à 1ƒXƒPƒWƒ…[ƒ‹ - 1ƒXƒPƒWƒ…[ƒ‹
-            // ƒOƒ‹[ƒv“à‚ÅA©•ª‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // ã‚°ãƒ«ãƒ¼ãƒ—å†… 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+            // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select count(1) from ")
                 .append("(select ")
@@ -2816,8 +2816,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" or E.STATE='").append(scheduleTableSchema.stateString_RUN).append('\'')
                 .append(" or E.STATE='").append(scheduleTableSchema.stateString_PAUSE).append("'))");
             st1InGroup = con.prepareStatement(buf.toString());
-            // 1ƒXƒPƒWƒ…[ƒ‹ - ƒOƒ‹[ƒv
-            // ©•ª‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒOƒ‹[ƒvƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - ã‚°ãƒ«ãƒ¼ãƒ—
+            // è‡ªåˆ†ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select count(1) from ")
                 .append("(select distinct E.GROUP_ID from ")
@@ -2861,8 +2861,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" where E.GROUP_ID=F.GROUP_ID")
                 .append(" and E.MASTER_GROUP_ID=F.MASTER_GROUP_ID)");
             st1Group = con.prepareStatement(buf.toString());
-            // ƒOƒ‹[ƒv - ƒOƒ‹[ƒv
-            // ©•ª‚ªŠ‘®‚·‚éƒOƒ‹[ƒv‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒOƒ‹[ƒvƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // ã‚°ãƒ«ãƒ¼ãƒ— - ã‚°ãƒ«ãƒ¼ãƒ—
+            // è‡ªåˆ†ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select count(1) from ")
                 .append("(select GROUP_ID, IGNORE_ERROR from ")
@@ -2918,8 +2918,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and B.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and B.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))");
             st1GroupOnGroup = con.prepareStatement(buf.toString());
-            // 1ƒXƒPƒWƒ…[ƒ‹ - 1ƒXƒPƒWƒ…[ƒ‹
-            // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌID‚Æ©•ª‚ÌID‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+            // 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+            // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã¨è‡ªåˆ†ã®IDã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select ID from ((")
                 .append("select A.").append(scheduleTableSchema.id).append(" as ID from ").append(scheduleTableSchema.table).append(" A,")
@@ -2946,7 +2946,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" union (select ").append(scheduleTableSchema.id).append(" as ID from ").append(scheduleTableSchema.table)
                 .append(" where ").append(scheduleTableSchema.id).append("=?)) C order by ID");
             st2 = con.prepareStatement(buf.toString());
-            // ƒOƒ‹[ƒv“à‚ÅA©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌID‚Æ©•ª‚ÌID‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+            // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã¨è‡ªåˆ†ã®IDã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select ID from (")
                 .append("(select E.ID as ID from ")
@@ -2988,8 +2988,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" union (select ").append(scheduleTableSchema.id).append(" as ID from ").append(scheduleTableSchema.table)
                 .append(" where ").append(scheduleTableSchema.id).append("=?))").append(" order by ID");
             st2InGroup = con.prepareStatement(buf.toString());
-            // 1ƒXƒPƒWƒ…[ƒ‹ - ƒOƒ‹[ƒv
-            // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒOƒ‹[ƒvƒXƒPƒWƒ…[ƒ‹“à‚ÌID‚Æ©•ª‚ÌID‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+            // 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - ã‚°ãƒ«ãƒ¼ãƒ—
+            // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å†…ã®IDã¨è‡ªåˆ†ã®IDã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select ID from ")
                 .append("(select F.ID from ")
@@ -3035,8 +3035,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(scheduleTableSchema.id).append(" as ID from ").append(scheduleTableSchema.table)
                 .append(" where ").append(scheduleTableSchema.id).append("=?) order by ID");
             st2Group = con.prepareStatement(buf.toString());
-            // ƒOƒ‹[ƒv - ƒOƒ‹[ƒv
-            // ©•ª‚ªŠ‘®‚·‚éƒOƒ‹[ƒv‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒv‚ÌID‚Æ©•ª‚ÌID‚ğA©•ª‚ªŠ‘®‚·‚éƒOƒ‹[ƒv‚ÌID‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+            // ã‚°ãƒ«ãƒ¼ãƒ— - ã‚°ãƒ«ãƒ¼ãƒ—
+            // è‡ªåˆ†ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ã®IDã¨è‡ªåˆ†ã®IDã‚’ã€è‡ªåˆ†ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®IDã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select OWN_GROUP_ID,OWN_GROUP_MASTER_ID,DEPENDS_GROUP_ID ")
                 .append("from (")
@@ -3134,8 +3134,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(")")
                 .append("order by OWN_GROUP_ID, DEPENDS_GROUP_ID");
             st2GroupOnGroup = con.prepareStatement(buf.toString());
-            // 1ƒXƒPƒWƒ…[ƒ‹ - 1ƒXƒPƒWƒ…[ƒ‹
-            // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+            // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select count(1) from ")
                 .append("(select A.").append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table).append(" A,")
@@ -3163,7 +3163,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?) D")
                 .append(" where C.").append(scheduleTableSchema.id).append("=D.").append(scheduleDependsTableSchema.id);
             st3 = con.prepareStatement(buf.toString());
-            // ƒOƒ‹[ƒv“à‚ÅA©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select count(1) from ")
                 .append("(select E.ID as ID from ")
@@ -3207,8 +3207,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?) H")
                 .append(" where G.ID=H.").append(scheduleDependsTableSchema.id);
             st3InGroup = con.prepareStatement(buf.toString());
-            // 1ƒXƒPƒWƒ…[ƒ‹ - ƒOƒ‹[ƒv
-            // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒOƒ‹[ƒvƒXƒPƒWƒ…[ƒ‹‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+            // 1ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ« - ã‚°ãƒ«ãƒ¼ãƒ—
+            // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select count(1) from ")
                 .append("(select A.ID from ")
@@ -3469,7 +3469,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         String groupMasterId = (String)itrGroupMasterIdSet.next();
                         Map dependsGroupIdMap =((Map)dependsGroupMap.get(groupMasterId));
                         Iterator itrDependsGroupID = dependsGroupIdMap.keySet().iterator();
-                        // ©•ª‚ªŠ‘®‚·‚éƒOƒ‹[ƒv‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒv‚Ì”‚ğ–â‚¢‡‚í‚¹‚é
+                        // è‡ªåˆ†ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ã®æ•°ã‚’å•ã„åˆã‚ã›ã‚‹
                         buf.setLength(0);
                         buf.append("select ").append(scheduleGroupDependsTableSchema.groupId)
                             .append(" from ").append(scheduleGroupDependsTableSchema.table)
@@ -3612,7 +3612,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findDependsSchedules(String id) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -3649,7 +3649,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     ? schedule.getTime() : schedule.getInitialTime()
             );
             if(schedule.getDepends() != null){
-                // ©•ª‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğ–â‚¢‡‚í‚¹‚é
+                // è‡ªåˆ†ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select ")
                     .append("A.").append(scheduleTableSchema.id).append(" as ").append(scheduleTableSchema.id).append(',')
@@ -3699,7 +3699,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 rs.close();
                 rs = null;
                 
-                // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Æ©•ª‚ÌƒXƒPƒWƒ…[ƒ‹‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+                // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨è‡ªåˆ†ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select * from (")
                     .append("(select ")
@@ -3781,7 +3781,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 rs.close();
                 rs = null;
                 
-                // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğ–â‚¢‡‚í‚¹‚é
+                // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select C.").append(scheduleTableSchema.id).append(" from ")
                     .append("(select A.").append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table).append(" A,")
@@ -3820,7 +3820,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             }
             
             if(schedule.getDependsInGroupMap().size() != 0){
-                // ƒOƒ‹[ƒv“à‚ÅA©•ª‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğ–â‚¢‡‚í‚¹‚é
+                // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select ")
                     .append("E.ID as ").append(scheduleTableSchema.id).append(',')
@@ -3900,7 +3900,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 rs.close();
                 rs = null;
                 
-                // ƒOƒ‹[ƒv“à‚ÅA©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Æ©•ª‚ÌƒXƒPƒWƒ…[ƒ‹‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+                // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨è‡ªåˆ†ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select * from (")
                     .append("(select ")
@@ -4012,7 +4012,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 rs.close();
                 rs = null;
                 
-                // ƒOƒ‹[ƒv“à‚ÅA©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğ–â‚¢‡‚í‚¹‚é
+                // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select G.ID from ")
                     .append("(select E.ID as ID from ")
@@ -4067,7 +4067,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             }
             
             if(schedule.getDependsOnGroup() != null){
-                // ©•ª‚æ‚è‘O‚ÌŠÔ‚ÅA©•ª‚ªˆË‘¶‚·‚éƒOƒ‹[ƒvƒXƒPƒWƒ…[ƒ‹‚ğ–â‚¢‡‚í‚¹‚é
+                // è‡ªåˆ†ã‚ˆã‚Šå‰ã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select ")
                     .append("E.ID as ").append(scheduleTableSchema.id).append(',')
@@ -4201,7 +4201,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findDependedSchedules(String id) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -4234,7 +4234,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             rs.close();
             rs = null;
             
-            // ©•ª‚æ‚èŒã‚ÌŠÔ‚ÅA©•ª‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğ–â‚¢‡‚í‚¹‚é
+            // è‡ªåˆ†ã‚ˆã‚Šå¾Œã®æ™‚é–“ã§ã€è‡ªåˆ†ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select ")
                 .append("A.").append(scheduleTableSchema.id).append(" as ").append(scheduleTableSchema.id).append(',')
@@ -4278,7 +4278,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             rs.close();
             rs = null;
             
-            // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Æ©•ª‚ÌƒXƒPƒWƒ…[ƒ‹‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+            // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨è‡ªåˆ†ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select * from (")
                 .append("(select ")
@@ -4355,7 +4355,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             rs.close();
             rs = null;
             
-            // ©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğ–â‚¢‡‚í‚¹‚é
+            // è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’å•ã„åˆã‚ã›ã‚‹
             buf.setLength(0);
             buf.append("select C.").append(scheduleTableSchema.id).append(" from ")
                 .append("(select A.").append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table).append(" A,")
@@ -4389,7 +4389,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             }
             
             if(schedule.getGroupIdMap().size() != 0){
-                // ƒOƒ‹[ƒv“à‚ÅA©•ª‚æ‚èŒã‚ÌŠÔ‚ÅA©•ª‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğ–â‚¢‡‚í‚¹‚é
+                // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã‚ˆã‚Šå¾Œã®æ™‚é–“ã§ã€è‡ªåˆ†ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select ")
                     .append("E.ID as ").append(scheduleTableSchema.id).append(',')
@@ -4463,7 +4463,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 rs.close();
                 rs = null;
                 
-                // ƒOƒ‹[ƒv“à‚ÅA©•ª‚Æ“¯‚¶ŠÔ‚ÅA©•ª‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Æ©•ª‚ÌƒXƒPƒWƒ…[ƒ‹‚ğAID‚Ì¸‡‚Å–â‚¢‡‚í‚¹‚é
+                // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€è‡ªåˆ†ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨è‡ªåˆ†ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€IDã®æ˜‡é †ã§å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select * from (")
                     .append("(select ")
@@ -4570,7 +4570,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 rs.close();
                 rs = null;
                 
-                // ƒOƒ‹[ƒv“à‚ÅA©•ª‚Æ“¯‚¶ŠÔ‚ÅA‘ŠŒİ‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğ–â‚¢‡‚í‚¹‚é
+                // ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã€è‡ªåˆ†ã¨åŒã˜æ™‚é–“ã§ã€ç›¸äº’ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select G.ID from ")
                     .append("(select E.ID from ")
@@ -4633,7 +4633,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     result.addAll(doubtSchedules.values());
                 }
                 
-                // ©•ª‚ªŠ‘®‚·‚éƒOƒ‹[ƒv‚æ‚èŒã‚ÌŠÔ‚ÅA©•ª‚ªŠ‘®‚·‚éƒOƒ‹[ƒv‚ÉˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğ–â‚¢‡‚í‚¹‚é
+                // è‡ªåˆ†ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚ˆã‚Šå¾Œã®æ™‚é–“ã§ã€è‡ªåˆ†ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã«ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å•ã„åˆã‚ã›ã‚‹
                 buf.setLength(0);
                 buf.append("select ")
                     .append("A.").append(scheduleTableSchema.id).append(" as ").append(scheduleTableSchema.id).append(',')
@@ -4729,7 +4729,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void addSchedule(Schedule schedule) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -4870,7 +4870,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // DatabaseScheduleManagerServiceMBean‚ÌJavaDoc
+    // DatabaseScheduleManagerServiceMBeanã®JavaDoc
     public void addSchedule(
         String masterId,
         Date time,
@@ -4910,7 +4910,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         );
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean reschedule(String id, Date time, Object output)
      throws ScheduleManageException{
         Connection con = null;
@@ -4985,7 +4985,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeSchedule(String id) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -5019,7 +5019,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeScheduleByMasterId(String masterId, String masterGroupId)
      throws ScheduleManageException{
         Connection con = null;
@@ -5064,7 +5064,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeSchedule(Date date) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -5098,7 +5098,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeSchedule(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -5220,7 +5220,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setExecutorKey(String id, String key)
      throws ScheduleManageException{
         Connection con = null;
@@ -5370,7 +5370,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public int getState(String id) throws ScheduleStateControlException{
         Connection con = null;
         try{
@@ -5416,7 +5416,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public int getControlState(String id) throws ScheduleStateControlException{
         Connection con = null;
         try{
@@ -5462,7 +5462,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int state)
      throws ScheduleStateControlException{
         
@@ -5573,7 +5573,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int oldState, int newState)
      throws ScheduleStateControlException{
         
@@ -5686,7 +5686,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int oldState, int newState, Object output)
      throws ScheduleStateControlException{
         
@@ -5803,7 +5803,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int state, Object output)
      throws ScheduleStateControlException{
         
@@ -5918,7 +5918,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeControlState(String id, int state)
      throws ScheduleStateControlException{
         Connection con = null;
@@ -6037,7 +6037,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeControlState(String id, int oldState, int newState)
      throws ScheduleStateControlException{
         Connection con = null;
@@ -6158,7 +6158,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void addScheduleControlListener(ScheduleControlListener listener){
         if((scheduleControlListeners == null
               || scheduleControlListeners.size() == 0)
@@ -6173,7 +6173,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         scheduleControlListeners.add(listener);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void removeScheduleControlListener(ScheduleControlListener listener){
         scheduleControlListeners.remove(listener);
     }
@@ -6229,177 +6229,177 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
     public static class ScheduleMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE           = "SCHEDULE_MST";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ID              = "ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuƒ^ƒXƒN–¼v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¿ã‚¹ã‚¯åã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_TASK_NAME       = "TASK_NAME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒXƒPƒWƒ…[ƒ‹í•Êv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_SCHEDULE_TYPE   = "SCHEDULE_TYPE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìu“ü—Ív‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_INPUT           = "INPUT";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_START_TIME      = "START_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œçµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_END_TIME        = "END_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuŒJ‚è•Ô‚µŠÔŠuv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œç¹°ã‚Šè¿”ã—é–“éš”ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_REPEAT_INTERVAL = "REPEAT_INTERVAL";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŠƒgƒ‰ƒCŠÔŠuv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒªãƒˆãƒ©ã‚¤é–“éš”ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_RETRY_INTERVAL  = "RETRY_INTERVAL";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŠƒgƒ‰ƒCI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_RETRY_END_TIME  = "RETRY_END_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÅ‘å’x‰„ŠÔv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œæœ€å¤§é…å»¶æ™‚é–“ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_MAX_DELAY_TIME  = "MAX_DELAY_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìu—LŒøƒtƒ‰ƒOv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œæœ‰åŠ¹ãƒ•ãƒ©ã‚°ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ENABLE          = "ENABLE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÀsƒL[v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå®Ÿè¡Œã‚­ãƒ¼ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_EXECUTOR_KEY    = "EXECUTOR_KEY";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÀsí—Şv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå®Ÿè¡Œç¨®é¡ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_EXECUTOR_TYPE   = "EXECUTOR_TYPE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuƒeƒ“ƒvƒŒ[ƒgv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_TEMPLATE        = "TEMPLATE";
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         /**
-         * uƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String id = DEFAULT_ID;
         
         /**
-         * uƒ^ƒXƒN–¼v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¿ã‚¹ã‚¯åã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String taskName = DEFAULT_TASK_NAME;
         
         /**
-         * uƒXƒPƒWƒ…[ƒ‹í•Êv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String scheduleType = DEFAULT_SCHEDULE_TYPE;
         
         /**
-         * u“ü—Ív‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String input = DEFAULT_INPUT;
         
         /**
-         * uŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String startTime = DEFAULT_START_TIME;
         
         /**
-         * uI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œçµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String endTime = DEFAULT_END_TIME;
         
         /**
-         * uŒJ‚è•Ô‚µŠÔŠuv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œç¹°ã‚Šè¿”ã—é–“éš”ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String repeatInterval = DEFAULT_REPEAT_INTERVAL;
         
         /**
-         * uƒŠƒgƒ‰ƒCŠÔŠuv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒªãƒˆãƒ©ã‚¤é–“éš”ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String retryInterval = DEFAULT_RETRY_INTERVAL;
         
         /**
-         * uƒŠƒgƒ‰ƒCI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String retryEndTime = DEFAULT_RETRY_END_TIME;
         
         /**
-         * uÅ‘å’x‰„ŠÔv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œæœ€å¤§é…å»¶æ™‚é–“ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String maxDelayTime = DEFAULT_MAX_DELAY_TIME;
         
         /**
-         * u—LŒøƒtƒ‰ƒOv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œæœ‰åŠ¹ãƒ•ãƒ©ã‚°ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String enable = DEFAULT_ENABLE;
         
         /**
-         * uÀsƒL[v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå®Ÿè¡Œã‚­ãƒ¼ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String executorKey = DEFAULT_EXECUTOR_KEY;
         
         /**
-         * uÀsí—Şv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå®Ÿè¡Œç¨®é¡ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String executorType = DEFAULT_EXECUTOR_TYPE;
         
         /**
-         * uƒeƒ“ƒvƒŒ[ƒgv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String template = DEFAULT_TEMPLATE;
         
         /**
-         * u“ü—Ív‚ÌƒJƒ‰ƒ€‚ÌŒ^B<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAjava.sq.Types.VARCHARB<br>
+         * ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€java.sq.Types.VARCHARã€‚<br>
          */
         public int inputColumnType = Types.VARCHAR;
         
         /**
-         * ŒŸõŒ‹‰Ê‚©‚çu“ü—Ív‚ÌƒJƒ‰ƒ€‚Ì’l‚ğæ“¾‚·‚éB<p>
+         * æ¤œç´¢çµæœã‹ã‚‰ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param rs ŒŸõŒ‹‰Ê
-         * @return u“ü—Ív‚ÌƒJƒ‰ƒ€‚Ì’l
-         * @exception SQLException SQL—áŠO
-         * @exception IOException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-         * @exception ClassNotFoundException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @param rs æ¤œç´¢çµæœ
+         * @return ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤
+         * @exception SQLException SQLä¾‹å¤–
+         * @exception IOException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception ClassNotFoundException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object getInputObject(ResultSet rs) throws IOException, ClassNotFoundException, SQLException{
             return DatabaseScheduleManagerService.getInOutObject(inputColumnType, input, rs);
@@ -6407,667 +6407,667 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌˆË‘¶ŠÖŒW‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ä¾å­˜é–¢ä¿‚ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
     public static class ScheduleDependsMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE      = "SCHEDULE_DEPENDS_MST";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuˆË‘¶‚³‚ê‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œä¾å­˜ã•ã‚Œã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ID         = "ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_DEPENDS_ID = "DEPENDS_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_DEPENDS_GROUP_ID = "DEPENDS_GROUP_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒOƒ‹[ƒv“àˆË‘¶‚ğ¦‚·ê‡‚ÌƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚°ãƒ«ãƒ¼ãƒ—å†…ä¾å­˜ã‚’ç¤ºã™å ´åˆã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_GROUP_ID = "GROUP_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒGƒ‰[–³‹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¨ãƒ©ãƒ¼ç„¡è¦–ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_IGNORE_ERROR = "IGNORE_ERROR";
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         /**
-         * uˆË‘¶‚³‚ê‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œä¾å­˜ã•ã‚Œã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String id = DEFAULT_ID;
         
         /**
-         * uˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String dependsId = DEFAULT_DEPENDS_ID;
         
         /**
-         * uˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String dependsGroupId = DEFAULT_DEPENDS_GROUP_ID;
         
         /**
-         * uƒOƒ‹[ƒv“àˆË‘¶‚ğ¦‚·ê‡‚ÌƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚°ãƒ«ãƒ¼ãƒ—å†…ä¾å­˜ã‚’ç¤ºã™å ´åˆã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String groupId = DEFAULT_GROUP_ID;
         
         /**
-         * uƒGƒ‰[–³‹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¨ãƒ©ãƒ¼ç„¡è¦–ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String ignoreError = DEFAULT_IGNORE_ERROR;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^ƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒsƒ“ƒO‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
     public static class ScheduleGroupMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE      = "SCHEDULE_GROUP_MST";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ID         = "ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_GROUP_ID = "GROUP_ID";
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         /**
-         * uƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String id = DEFAULT_ID;
         
         /**
-         * uƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String groupId = DEFAULT_GROUP_ID;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^‚ÌˆË‘¶ŠÖŒW‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ã®ä¾å­˜é–¢ä¿‚ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
     public static class ScheduleGroupDependsMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE      = "SCHEDULE_GROUP_DEPENDS_MST";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuˆË‘¶‚³‚ê‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œä¾å­˜ã•ã‚Œã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_GROUP_ID         = "GROUP_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_DEPENDS_GROUP_ID = "DEPENDS_GROUP_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒGƒ‰[–³‹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¨ãƒ©ãƒ¼ç„¡è¦–ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_IGNORE_ERROR = "IGNORE_ERROR";
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         /**
-         * uˆË‘¶‚³‚ê‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œä¾å­˜ã•ã‚Œã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String groupId = DEFAULT_GROUP_ID;
         
         /**
-         * uˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String dependsGroupId = DEFAULT_DEPENDS_GROUP_ID;
         
         /**
-         * uƒGƒ‰[–³‹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¨ãƒ©ãƒ¼ç„¡è¦–ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String ignoreError = DEFAULT_IGNORE_ERROR;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
     public static class ScheduleTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE      = "SCHEDULE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒXƒPƒWƒ…[ƒ‹IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ID             = "ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_MASTER_ID      = "MASTER_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒXƒPƒWƒ…[ƒ‹“ú•tv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ—¥ä»˜ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_DATE           = "S_DATE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_TIME           = "S_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuƒ^ƒXƒN–¼v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œã‚¿ã‚¹ã‚¯åã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_TASK_NAME      = "TASK_NAME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìu“ü—Ív‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_INPUT          = "INPUT";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuo—Ív‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_OUTPUT         = "OUTPUT";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìu‰ŠúƒXƒPƒWƒ…[ƒ‹“ú•tv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€ŒåˆæœŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ—¥ä»˜ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_INITIAL_DATE   = "INITIAL_DATE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìu‰ŠúŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€ŒåˆæœŸé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_INITIAL_TIME   = "INITIAL_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŠƒgƒ‰ƒCŠÔŠuv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒªãƒˆãƒ©ã‚¤é–“éš”ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_RETRY_INTERVAL = "RETRY_INTERVAL";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŠƒgƒ‰ƒCI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_RETRY_END_TIME = "RETRY_END_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÅ‘å’x‰„ŠÔv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œæœ€å¤§é…å»¶æ™‚é–“ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_MAX_DELAY_TIME  = "MAX_DELAY_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuó‘Ôv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€ŒçŠ¶æ…‹ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_STATE          = "STATE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìu§Œäó‘Ôv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE  = "CONTROL_STATE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuƒ`ƒFƒbƒNó‘Ôv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_CHECK_STATE  = "CHECK_STATE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÀsƒL[v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå®Ÿè¡Œã‚­ãƒ¼ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_EXECUTOR_KEY   = "EXECUTOR_KEY";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÀsí—Şv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå®Ÿè¡Œç¨®é¡ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_EXECUTOR_TYPE   = "EXECUTOR_TYPE";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÀsŠJn“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå®Ÿè¡Œé–‹å§‹æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_EXECUTE_START_TIME     = "EXEC_S_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuÀsI—¹“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œå®Ÿè¡Œçµ‚äº†æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_EXECUTE_END_TIME     = "EXEC_E_TIME";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ROWVERSION     = "ROWVERSION";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATEUSERID   = "UPDATEUSERID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATETIME     = "UPDATETIME";
         
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF‰ŠúB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šåˆæœŸã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_INITIAL = "I";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF“Š“üB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šæŠ•å…¥ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_ENTRY   = "E";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lFÀs’†B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šå®Ÿè¡Œä¸­ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_RUN     = "R";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF³íI—¹B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šæ­£å¸¸çµ‚äº†ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_END     = "N";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lFˆÙíI—¹B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šç•°å¸¸çµ‚äº†ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_FAILED  = "F";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF’†’f’†B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šä¸­æ–­ä¸­ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_PAUSE   = "P";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF‹­§I—¹B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šå¼·åˆ¶çµ‚äº†ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_ABORT   = "A";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lFƒŠƒgƒ‰ƒC’†B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šãƒªãƒˆãƒ©ã‚¤ä¸­ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_RETRY   = "T";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF–³Œø‰»B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šç„¡åŠ¹åŒ–ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_DISABLE = "D";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uó‘Ôv‚Ì’lF•s–¾B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šä¸æ˜ã€‚<p>
          */
         public static final String DEFAULT_STATE_STRING_UNKNOWN = "U";
         
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF‰ŠúB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šåˆæœŸã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE_STRING_INITIAL = "I";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF’†’fB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šä¸­æ–­ã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE_STRING_PAUSE   = "P";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lFÄŠJB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šå†é–‹ã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE_STRING_RESUME  = "R";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF‹­§I—¹B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šå¼·åˆ¶çµ‚äº†ã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE_STRING_ABORT   = "A";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF§Œä¸”sB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šåˆ¶å¾¡å¤±æ•—ã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE_STRING_FAILED  = "F";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF•s–¾B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šä¸æ˜ã€‚<p>
          */
         public static final String DEFAULT_CONTROL_STATE_STRING_UNKNOWN = "U";
         
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uƒ`ƒFƒbƒNó‘Ôv‚Ì’lF‰ŠúB<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®å€¤ï¼šåˆæœŸã€‚<p>
          */
         public static final String DEFAULT_CHECK_STATE_STRING_INITIAL = "I";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uƒ`ƒFƒbƒNó‘Ôv‚Ì’lFƒ^ƒCƒ€ƒI[ƒo[B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®å€¤ï¼šã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ã€‚<p>
          */
         public static final String DEFAULT_CHECK_STATE_STRING_TIMEOVER   = "O";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒ‰ƒ€uƒ`ƒFƒbƒNó‘Ôv‚Ì’lF•s–¾B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ©ãƒ ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®å€¤ï¼šä¸æ˜ã€‚<p>
          */
         public static final String DEFAULT_CHECK_STATE_STRING_UNKNOWN = "U";
         
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         
         /**
-         * uƒXƒPƒWƒ…[ƒ‹IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String id = DEFAULT_ID;
         
         /**
-         * uƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^IDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String masterId = DEFAULT_MASTER_ID;
         
         /**
-         * uƒXƒPƒWƒ…[ƒ‹“ú•tv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ—¥ä»˜ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String date = DEFAULT_DATE;
         
         /**
-         * uŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String time = DEFAULT_TIME;
         
         /**
-         * uƒ^ƒXƒN–¼v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œã‚¿ã‚¹ã‚¯åã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String taskName = DEFAULT_TASK_NAME;
         
         /**
-         * u“ü—Ív‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String input = DEFAULT_INPUT;
         
         /**
-         * uo—Ív‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String output = DEFAULT_OUTPUT;
         
         /**
-         * u‰ŠúƒXƒPƒWƒ…[ƒ‹“ú•tv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€ŒåˆæœŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ—¥ä»˜ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String initialDate = DEFAULT_INITIAL_DATE;
         
         /**
-         * u‰ŠúŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€ŒåˆæœŸé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String initialTime = DEFAULT_INITIAL_TIME;
         
         /**
-         * uƒŠƒgƒ‰ƒCŠÔŠuv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒªãƒˆãƒ©ã‚¤é–“éš”ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String retryInterval = DEFAULT_RETRY_INTERVAL;
         
         /**
-         * uƒŠƒgƒ‰ƒCI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String retryEndTime = DEFAULT_RETRY_END_TIME;
         
         /**
-         * uÅ‘å’x‰„ŠÔv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œæœ€å¤§é…å»¶æ™‚é–“ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String maxDelayTime = DEFAULT_MAX_DELAY_TIME;
         
         /**
-         * uó‘Ôv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€ŒçŠ¶æ…‹ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String state = DEFAULT_STATE;
         
         /**
-         * u§Œäó‘Ôv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String controlState = DEFAULT_CONTROL_STATE;
         
         /**
-         * uƒ`ƒFƒbƒNó‘Ôv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String checkState = DEFAULT_CHECK_STATE;
         
         /**
-         * uÀsƒL[v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå®Ÿè¡Œã‚­ãƒ¼ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String executorKey = DEFAULT_EXECUTOR_KEY;
         
         /**
-         * uÀsí—Şv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå®Ÿè¡Œç¨®é¡ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String executorType = DEFAULT_EXECUTOR_TYPE;
         
         /**
-         * uÀsŠJnv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå®Ÿè¡Œé–‹å§‹æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String executeStartTime = DEFAULT_EXECUTE_START_TIME;
         
         /**
-         * uÀsI—¹v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œå®Ÿè¡Œçµ‚äº†æ™‚åˆ»ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String executeEndTime = DEFAULT_EXECUTE_END_TIME;
         
         /**
-         * uƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String rowVersion = DEFAULT_ROWVERSION;
         
         /**
-         * uƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateUserId = DEFAULT_UPDATEUSERID;
         
         /**
-         * uƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateTime = DEFAULT_UPDATETIME;
         
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF‰ŠúB<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šåˆæœŸã€‚<p>
          */
         public String stateString_INITIAL = DEFAULT_STATE_STRING_INITIAL;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF“Š“üB<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šæŠ•å…¥ã€‚<p>
          */
         public String stateString_ENTRY = DEFAULT_STATE_STRING_ENTRY;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lFÀs’†B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šå®Ÿè¡Œä¸­ã€‚<p>
          */
         public String stateString_RUN = DEFAULT_STATE_STRING_RUN;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF³íI—¹B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šæ­£å¸¸çµ‚äº†ã€‚<p>
          */
         public String stateString_END = DEFAULT_STATE_STRING_END;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lFˆÙíI—¹B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šç•°å¸¸çµ‚äº†ã€‚<p>
          */
         public String stateString_FAILED = DEFAULT_STATE_STRING_FAILED;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF’†’f’†B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šä¸­æ–­ä¸­ã€‚<p>
          */
         public String stateString_PAUSE = DEFAULT_STATE_STRING_PAUSE;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF‹­§I—¹B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šå¼·åˆ¶çµ‚äº†ã€‚<p>
          */
         public String stateString_ABORT = DEFAULT_STATE_STRING_ABORT;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lFƒŠƒgƒ‰ƒC’†B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šãƒªãƒˆãƒ©ã‚¤ä¸­ã€‚<p>
          */
         public String stateString_RETRY = DEFAULT_STATE_STRING_RETRY;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF–³Œø‰»B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šç„¡åŠ¹åŒ–ã€‚<p>
          */
         public String stateString_DISABLE = DEFAULT_STATE_STRING_DISABLE;
         
         /**
-         * ƒJƒ‰ƒ€uó‘Ôv‚Ì’lF•s–¾B<p>
+         * ã‚«ãƒ©ãƒ ã€ŒçŠ¶æ…‹ã€ã®å€¤ï¼šä¸æ˜ã€‚<p>
          */
         public String stateString_UNKNOWN = DEFAULT_STATE_STRING_UNKNOWN;
         
         
         /**
-         * ƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF‰ŠúB<p>
+         * ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šåˆæœŸã€‚<p>
          */
         public String controlStateString_INITIAL = DEFAULT_CONTROL_STATE_STRING_INITIAL;
         
         /**
-         * ƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF’†’fB<p>
+         * ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šä¸­æ–­ã€‚<p>
          */
         public String controlStateString_PAUSE = DEFAULT_CONTROL_STATE_STRING_PAUSE;
         
         /**
-         * ƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lFÄŠJB<p>
+         * ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šå†é–‹ã€‚<p>
          */
         public String controlStateString_RESUME = DEFAULT_CONTROL_STATE_STRING_RESUME;
         
         /**
-         * ƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF‹­§I—¹B<p>
+         * ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šå¼·åˆ¶çµ‚äº†ã€‚<p>
          */
         public String controlStateString_ABORT = DEFAULT_CONTROL_STATE_STRING_ABORT;
         
         /**
-         * ƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF§Œä¸”sB<p>
+         * ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šåˆ¶å¾¡å¤±æ•—ã€‚<p>
          */
         public String controlStateString_FAILED = DEFAULT_CONTROL_STATE_STRING_FAILED;
         
         /**
-         * ƒJƒ‰ƒ€u§Œäó‘Ôv‚Ì’lF•s–¾B<p>
+         * ã‚«ãƒ©ãƒ ã€Œåˆ¶å¾¡çŠ¶æ…‹ã€ã®å€¤ï¼šä¸æ˜ã€‚<p>
          */
         public String controlStateString_UNKNOWN = DEFAULT_CONTROL_STATE_STRING_UNKNOWN;
         
         
         /**
-         * ƒJƒ‰ƒ€uƒ`ƒFƒbƒNó‘Ôv‚Ì’lF‰ŠúB<p>
+         * ã‚«ãƒ©ãƒ ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®å€¤ï¼šåˆæœŸã€‚<p>
          */
         public String checkStateString_INITIAL = DEFAULT_CHECK_STATE_STRING_INITIAL;
         
         /**
-         * ƒJƒ‰ƒ€uƒ`ƒFƒbƒNó‘Ôv‚Ì’lFƒ^ƒCƒ€ƒI[ƒo[B<p>
+         * ã‚«ãƒ©ãƒ ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®å€¤ï¼šã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ã€‚<p>
          */
         public String checkStateString_TIMEOVER = DEFAULT_CHECK_STATE_STRING_TIMEOVER;
         
         /**
-         * ƒJƒ‰ƒ€uƒ`ƒFƒbƒNó‘Ôv‚Ì’lF•s–¾B<p>
+         * ã‚«ãƒ©ãƒ ã€Œãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã€ã®å€¤ï¼šä¸æ˜ã€‚<p>
          */
         public String checkStateString_UNKNOWN = DEFAULT_CHECK_STATE_STRING_UNKNOWN;
         
         /**
-         * u“ü—Ív‚ÌƒJƒ‰ƒ€‚ÌŒ^B<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAjava.sq.Types.VARCHARB<br>
+         * ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€java.sq.Types.VARCHARã€‚<br>
          */
         public int inputColumnType = Types.VARCHAR;
         
         /**
-         * uo—Ív‚ÌƒJƒ‰ƒ€‚ÌŒ^B<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAjava.sq.Types.VARCHARB<br>
+         * ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€java.sq.Types.VARCHARã€‚<br>
          */
         public int outputColumnType = Types.VARCHAR;
         
         /**
-         * ŒŸõŒ‹‰Ê‚©‚çu“ü—Ív‚ÌƒJƒ‰ƒ€‚Ì’l‚ğæ“¾‚·‚éB<p>
+         * æ¤œç´¢çµæœã‹ã‚‰ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param rs ŒŸõŒ‹‰Ê
-         * @return u“ü—Ív‚ÌƒJƒ‰ƒ€‚Ì’l
-         * @exception SQLException SQL—áŠO
-         * @exception IOException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-         * @exception ClassNotFoundException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @param rs æ¤œç´¢çµæœ
+         * @return ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤
+         * @exception SQLException SQLä¾‹å¤–
+         * @exception IOException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception ClassNotFoundException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object getInputObject(ResultSet rs) throws IOException, ClassNotFoundException, SQLException{
             return DatabaseScheduleManagerService.getInOutObject(inputColumnType, input, rs);
         }
         
         /**
-         * w’è‚³‚ê‚½PreparedStatement‚Éu“ü—Ív‚ÌƒJƒ‰ƒ€‚Ì’l‚ğİ’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸPreparedStatementã«ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
          * @param ps PreparedStatement
-         * @param value u“ü—Ív‚ÌƒJƒ‰ƒ€‚Ì’l
-         * @exception SQLException SQL—áŠO
-         * @exception IOException “ü—ÍƒIƒuƒWƒFƒNƒg‚Ì‘‚İ‚É¸”s‚µ‚½ê‡
+         * @param value ã€Œå…¥åŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤
+         * @exception SQLException SQLä¾‹å¤–
+         * @exception IOException å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ›¸è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected void setInputObject(int index, PreparedStatement ps, Object value) throws IOException, SQLException{
             DatabaseScheduleManagerService.setInOutObject(inputColumnType, index, ps, value);
         }
         
         /**
-         * ŒŸõŒ‹‰Ê‚©‚çuo—Ív‚ÌƒJƒ‰ƒ€‚Ì’l‚ğæ“¾‚·‚éB<p>
+         * æ¤œç´¢çµæœã‹ã‚‰ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param rs ŒŸõŒ‹‰Ê
-         * @return uo—Ív‚ÌƒJƒ‰ƒ€‚Ì’l
-         * @exception SQLException SQL—áŠO
-         * @exception IOException o—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-         * @exception ClassNotFoundException o—ÍƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @param rs æ¤œç´¢çµæœ
+         * @return ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤
+         * @exception SQLException SQLä¾‹å¤–
+         * @exception IOException å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception ClassNotFoundException å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object getOutputObject(ResultSet rs) throws IOException, ClassNotFoundException, SQLException{
             return DatabaseScheduleManagerService.getInOutObject(outputColumnType, output, rs);
         }
         
         /**
-         * w’è‚³‚ê‚½PreparedStatement‚Éuo—Ív‚ÌƒJƒ‰ƒ€‚Ì’l‚ğİ’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸPreparedStatementã«ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
          * @param ps PreparedStatement
-         * @param value uo—Ív‚ÌƒJƒ‰ƒ€‚Ì’l
-         * @exception SQLException SQL—áŠO
-         * @exception IOException o—ÍƒIƒuƒWƒFƒNƒg‚Ì‘‚İ‚É¸”s‚µ‚½ê‡
+         * @param value ã€Œå‡ºåŠ›ã€ã®ã‚«ãƒ©ãƒ ã®å€¤
+         * @exception SQLException SQLä¾‹å¤–
+         * @exception IOException å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ›¸è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected void setOutputObject(int index, PreparedStatement ps, Object value) throws IOException, SQLException{
             DatabaseScheduleManagerService.setInOutObject(outputColumnType, index, ps, value);
         }
         
         /**
-         * w’è‚³‚ê‚½ó‘Ô’l‚ÉŠY“–‚·‚éó‘Ô•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹å€¤ã«è©²å½“ã™ã‚‹çŠ¶æ…‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param state ó‘Ô’l
-         * @return ó‘Ô•¶š—ñ
+         * @param state çŠ¶æ…‹å€¤
+         * @return çŠ¶æ…‹æ–‡å­—åˆ—
          */
         public String getStateString(int state){
             switch(state){
@@ -7095,10 +7095,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½ó‘Ô•¶š—ñ‚ÉŠY“–‚·‚éó‘Ô’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹æ–‡å­—åˆ—ã«è©²å½“ã™ã‚‹çŠ¶æ…‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param state ó‘Ô•¶š—ñ
-         * @return ó‘Ô’l
+         * @param state çŠ¶æ…‹æ–‡å­—åˆ—
+         * @return çŠ¶æ…‹å€¤
          */
         public int getState(String state){
             if(stateString_INITIAL.equals(state)){
@@ -7133,10 +7133,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½§Œäó‘Ô’l‚ÉŠY“–‚·‚é§Œäó‘Ô•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸåˆ¶å¾¡çŠ¶æ…‹å€¤ã«è©²å½“ã™ã‚‹åˆ¶å¾¡çŠ¶æ…‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param state §Œäó‘Ô’l
-         * @return §Œäó‘Ô•¶š—ñ
+         * @param state åˆ¶å¾¡çŠ¶æ…‹å€¤
+         * @return åˆ¶å¾¡çŠ¶æ…‹æ–‡å­—åˆ—
          */
         public String getControlStateString(int state){
             switch(state){
@@ -7156,10 +7156,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½§Œäó‘Ô•¶š—ñ‚ÉŠY“–‚·‚é§Œäó‘Ô’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸåˆ¶å¾¡çŠ¶æ…‹æ–‡å­—åˆ—ã«è©²å½“ã™ã‚‹åˆ¶å¾¡çŠ¶æ…‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param state §Œäó‘Ô•¶š—ñ
-         * @return §Œäó‘Ô’l
+         * @param state åˆ¶å¾¡çŠ¶æ…‹æ–‡å­—åˆ—
+         * @return åˆ¶å¾¡çŠ¶æ…‹å€¤
          */
         public int getControlState(String state){
             if(controlStateString_INITIAL.equals(state)){
@@ -7182,10 +7182,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½ƒ`ƒFƒbƒNó‘Ô’l‚ÉŠY“–‚·‚éƒ`ƒFƒbƒNó‘Ô•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒã‚§ãƒƒã‚¯çŠ¶æ…‹å€¤ã«è©²å½“ã™ã‚‹ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param state ƒ`ƒFƒbƒNó‘Ô’l
-         * @return ƒ`ƒFƒbƒNó‘Ô•¶š—ñ
+         * @param state ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹å€¤
+         * @return ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹æ–‡å­—åˆ—
          */
         public String getCheckStateString(int state){
             switch(state){
@@ -7199,10 +7199,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½ƒ`ƒFƒbƒNó‘Ô•¶š—ñ‚ÉŠY“–‚·‚éƒ`ƒFƒbƒNó‘Ô’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒã‚§ãƒƒã‚¯çŠ¶æ…‹æ–‡å­—åˆ—ã«è©²å½“ã™ã‚‹ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param state ƒ`ƒFƒbƒNó‘Ô•¶š—ñ
-         * @return ƒ`ƒFƒbƒNó‘Ô’l
+         * @param state ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹æ–‡å­—åˆ—
+         * @return ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹å€¤
          */
         public int getCheckState(String state){
             if(checkStateString_INITIAL.equals(state)){
@@ -7217,68 +7217,68 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒsƒ“ƒO‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
     public static class ScheduleGroupTableSchema extends ScheduleGroupMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE      = "SCHEDULE_GROUP";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìuƒ}ƒXƒ^ƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_MASTER_GROUP_ID = "MASTER_GROUP_ID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ROWVERSION     = "ROWVERSION";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATEUSERID   = "UPDATEUSERID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATETIME     = "UPDATETIME";
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         /**
-         * uƒ}ƒXƒ^ƒOƒ‹[ƒvIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String masterGroupId = DEFAULT_MASTER_GROUP_ID;
         
         
         /**
-         * uƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String rowVersion = DEFAULT_ROWVERSION;
         
         /**
-         * uƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateUserId = DEFAULT_UPDATEUSERID;
         
         /**
-         * uƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateTime = DEFAULT_UPDATETIME;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶ŠÖŒW‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜é–¢ä¿‚ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -7286,51 +7286,51 @@ public class DatabaseScheduleManagerService extends ServiceBase
      extends ScheduleDependsMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE = "SCHEDULE_DEPENDS";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ROWVERSION     = "ROWVERSION";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATEUSERID   = "UPDATEUSERID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATETIME     = "UPDATETIME";
         
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         
         /**
-         * uƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String rowVersion = DEFAULT_ROWVERSION;
         
         /**
-         * uƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateUserId = DEFAULT_UPDATEUSERID;
         
         /**
-         * uƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateTime = DEFAULT_UPDATETIME;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒe[ƒuƒ‹ƒXƒL[ƒ}î•ñB<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒvˆË‘¶ŠÖŒW‚ğ“o˜^‚·‚éƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğ’è‹`‚·‚éƒNƒ‰ƒXB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ã‚’ç™»éŒ²ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å®šç¾©ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -7338,96 +7338,96 @@ public class DatabaseScheduleManagerService extends ServiceBase
      extends ScheduleGroupDependsMasterTableSchema{
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚Ìƒe[ƒuƒ‹–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public static final String DEFAULT_TABLE = "SCHEDULE_GROUP_DEPENDS";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_ROWVERSION     = "ROWVERSION";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATEUSERID   = "UPDATEUSERID";
         
         /**
-         * ƒfƒtƒHƒ‹ƒg‚ÌuƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public static final String DEFAULT_UPDATETIME     = "UPDATETIME";
         
         
         /**
-         * ƒe[ƒuƒ‹–¼B<p>
+         * ãƒ†ãƒ¼ãƒ–ãƒ«åã€‚<p>
          */
         public String table = DEFAULT_TABLE;
         
         
         /**
-         * uƒŒƒR[ƒhXVƒo[ƒWƒ‡ƒ“”Ô†v‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String rowVersion = DEFAULT_ROWVERSION;
         
         /**
-         * uƒŒƒR[ƒhXVƒ†[ƒUIDv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateUserId = DEFAULT_UPDATEUSERID;
         
         /**
-         * uƒŒƒR[ƒhXV“úv‚ÌƒJƒ‰ƒ€–¼B<p>
+         * ã€Œãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°æ—¥æ™‚ã€ã®ã‚«ãƒ©ãƒ åã€‚<p>
          */
         public String updateTime = DEFAULT_UPDATETIME;
     }
     
     /**
-     * §Œäó‘ÔŠÄ‹B<p>
+     * åˆ¶å¾¡çŠ¶æ…‹ç›£è¦–ã€‚<p>
      *
      * @author M.Takata
      */
     protected class ControlStateChecker implements DaemonRunnable{
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ˆê’èŠÔ‹ó‚¯‚éB<p>
+         * ä¸€å®šæ™‚é–“ç©ºã‘ã‚‹ã€‚<p>
          *
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
          */
         public Object provide(DaemonControl ctrl) throws Throwable{
             ctrl.sleep(getControlStateCheckInterval(), true);
@@ -7435,10 +7435,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * §Œäó‘Ô‚Ìƒ`ƒFƒbƒN‚ğ‚·‚éB<p>
+         * åˆ¶å¾¡çŠ¶æ…‹ã®ãƒã‚§ãƒƒã‚¯ã‚’ã™ã‚‹ã€‚<p>
          *
          * @param input null
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object input, DaemonControl ctrl)
          throws Throwable{
@@ -7526,60 +7526,60 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * ‰½‚à‚µ‚È‚¢B<p>
+         * ä½•ã‚‚ã—ãªã„ã€‚<p>
          */
         public void garbage(){
         }
     }
     
     /**
-     * ƒ^ƒCƒ€ƒI[ƒo[ŠÄ‹B<p>
+     * ã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ç›£è¦–ã€‚<p>
      *
      * @author M.Takata
      */
     protected class TimeoverChecker implements DaemonRunnable{
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ˆê’èŠÔ‹ó‚¯‚éB<p>
+         * ä¸€å®šæ™‚é–“ç©ºã‘ã‚‹ã€‚<p>
          *
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
          */
         public Object provide(DaemonControl ctrl) throws Throwable{
             ctrl.sleep(getTimeoverCheckInterval(), true);
@@ -7587,10 +7587,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * Å‘å’x‰„ŠÔ‚ğƒ`ƒFƒbƒN‚·‚éB<p>
+         * æœ€å¤§é…å»¶æ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
          *
          * @param dequeued null
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object dequeued, DaemonControl ctrl)
          throws Throwable{
@@ -7694,7 +7694,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
         
         /**
-         * ‰½‚à‚µ‚È‚¢B<p>
+         * ä½•ã‚‚ã—ãªã„ã€‚<p>
          */
         public void garbage(){
         }

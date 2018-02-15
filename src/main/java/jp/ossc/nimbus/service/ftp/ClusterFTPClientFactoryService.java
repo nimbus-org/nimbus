@@ -39,7 +39,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 
 /**
- * ƒNƒ‰ƒXƒ^FTPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
+ * ã‚¯ãƒ©ã‚¹ã‚¿FTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */

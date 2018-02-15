@@ -34,20 +34,20 @@ package jp.ossc.nimbus.service.test;
 import java.io.File;
 
 /**
- * ƒeƒ“ƒvƒŒ[ƒgƒGƒ“ƒWƒ“B<p>
+ * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚¨ãƒ³ã‚¸ãƒ³ã€‚<p>
  *
  * @author M.Takata
  */
 public interface TemplateEngine{
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Æƒf[ƒ^ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚ÅA•ÏŠ·‚ğs‚¢o—Íƒtƒ@ƒCƒ‹‚É‘‚«o‚·B<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã¨ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§ã€å¤‰æ›ã‚’è¡Œã„å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãå‡ºã™ã€‚<p>
      *
-     * @param tmplateFile ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹
-     * @param dataFile ƒf[ƒ^ƒtƒ@ƒCƒ‹
-     * @param outputFile o—Íƒtƒ@ƒCƒ‹
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOBƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹Aƒf[ƒ^ƒtƒ@ƒCƒ‹‚ÍA“¯‚¶•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Å‚ ‚é•K—v‚ª‚ ‚èAo—Íƒtƒ@ƒCƒ‹‚àA‚±‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Æ‚È‚éB
-     * @exception Exception •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param tmplateFile ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«
+     * @param dataFile ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param outputFile å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã€ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€åŒã˜æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã€å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚‚ã€ã“ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã¨ãªã‚‹ã€‚
+     * @exception Exception å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void transform(File tmplateFile, File dataFile, File outputFile, String encoding) throws Exception;
 }

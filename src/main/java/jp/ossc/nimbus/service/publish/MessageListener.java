@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.publish;
 
 /**
- * ƒƒbƒZ[ƒWƒŠƒXƒiƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚¹ãƒŠã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface MessageListener{
     
     /**
-     * ƒƒbƒZ[ƒW‚ğóM‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void onMessage(Message message);
 }

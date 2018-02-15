@@ -34,8 +34,8 @@ package jp.ossc.nimbus.io;
 import java.io.*;
 
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒtƒ@ƒCƒ‹B<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚â•ªŠ„‚ÆŒ¾‚Á‚½{@link File}‚É‚È‚¢ƒtƒ@ƒCƒ‹‘€ì‚ğs‚¤B<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œãƒ•ã‚¡ã‚¤ãƒ«ã€‚<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„åˆ†å‰²ã¨è¨€ã£ãŸ{@link File}ã«ãªã„ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚’è¡Œã†ã€‚<br>
  *
  * @author H.Nakano
  */
@@ -44,48 +44,48 @@ public class OperateFile extends File implements Serializable{
     private static final long serialVersionUID = -3537857563620684853L;
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹‚ğ‘€ì‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ“ä½œã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param file ƒtƒ@ƒCƒ‹
+     * @param file ãƒ•ã‚¡ã‚¤ãƒ«
      */
     public OperateFile(File file) {
         super(file.getPath());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹‚ğ‘€ì‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ“ä½œã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param pathname ƒpƒX
+     * @param pathname ãƒ‘ã‚¹
      */
     public OperateFile(String pathname){
         super(pathname);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹‚ğ‘€ì‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ“ä½œã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param parent eƒpƒX
-     * @param child qƒpƒX
+     * @param parent è¦ªãƒ‘ã‚¹
+     * @param child å­ãƒ‘ã‚¹
      */
     public OperateFile(String parent, String child){
         super(parent, child);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹‚ğ‘€ì‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ“ä½œã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param parent eƒpƒX
-     * @param child qƒpƒX
+     * @param parent è¦ªãƒ‘ã‚¹
+     * @param child å­ãƒ‘ã‚¹
      */
     public OperateFile(File parent, String child) {
         super(parent, child);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“à—e‚ğw’èƒtƒ@ƒCƒ‹‚Ö’Ç‰Á‘‚«‚İ‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã¸è¿½åŠ æ›¸ãè¾¼ã¿ã™ã‚‹ã€‚<p>
      * 
-     * @param filePath ’Ç‰Á‘‚«‚İæ‚Ìƒtƒ@ƒCƒ‹ƒpƒX
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Íw’èƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param filePath è¿½åŠ æ›¸ãè¾¼ã¿å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void appendTo(String filePath) throws IOException{
         final File toFile = new File(filePath);
@@ -99,10 +99,10 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“à—e‚ğw’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚<p>
      * 
-     * @param filePath ƒRƒs[æ‚Ìƒtƒ@ƒCƒ‹ƒpƒX
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Íw’èƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param filePath ã‚³ãƒ”ãƒ¼å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void copyTo(String filePath) throws IOException{
         File toFile = new File(filePath) ;
@@ -117,19 +117,19 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹ˆÈ‰º‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      */
     public boolean deleteAll(){
         return deleteAll(this);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹ˆÈ‰º‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param file íœ‚·‚éƒtƒ@ƒCƒ‹
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @param file å‰Šé™¤ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      */
     public static boolean deleteAll(File file){
         if(!file.exists()){
@@ -149,10 +149,10 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“à—e‚ğw’èƒtƒ@ƒCƒ‹‚É‘‚«‚ŞB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param toFile ‘‚«‚İæ‚Ìƒtƒ@ƒCƒ‹
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Íw’èƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param toFile æ›¸ãè¾¼ã¿å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     private void dataMove(File toFile, boolean append) throws IOException{
         InputStream is = null;
@@ -187,12 +187,12 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ğ•¡”ƒtƒ@ƒCƒ‹‚É•ªŠ„‚·‚éB<p>
-     * {@link #splitFile(String, String, String, int, int) splitFile(null, null, null, splitSize, startIndex)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡æ•°ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†å‰²ã™ã‚‹ã€‚<p>
+     * {@link #splitFile(String, String, String, int, int) splitFile(null, null, null, splitSize, startIndex)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚
      *
-     * @param splitSize •ªŠ„ƒTƒCƒY
-     * @param startIndex •ªŠ„ƒtƒ@ƒCƒ‹–¼‚ÌŠJn”Ô†
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Í•ªŠ„ƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param splitSize åˆ†å‰²ã‚µã‚¤ã‚º
+     * @param startIndex åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«åã®é–‹å§‹ç•ªå·
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void splitFile(
         int splitSize,
@@ -202,12 +202,12 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ğ•¡”ƒtƒ@ƒCƒ‹‚É•ªŠ„‚·‚éB<p>
-     * {@link #splitFile(String, String, String, int, int) splitFile(dir, null, null, splitSize, startIndex)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡æ•°ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†å‰²ã™ã‚‹ã€‚<p>
+     * {@link #splitFile(String, String, String, int, int) splitFile(dir, null, null, splitSize, startIndex)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚
      *
-     * @param dir •ªŠ„ƒtƒ@ƒCƒ‹‚ÌŠi”[æƒfƒBƒŒƒNƒgƒŠBnull‚Ìê‡‚ÍA‚±‚Ìƒtƒ@ƒCƒ‹‚Æ“¯‚¶êŠ‚ÉŠi”[‚³‚ê‚éB
-     * @param startIndex •ªŠ„ƒtƒ@ƒCƒ‹–¼‚ÌŠJn”Ô†
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Í•ªŠ„ƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param dir åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã®æ ¼ç´å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚nullã®å ´åˆã¯ã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜å ´æ‰€ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚
+     * @param startIndex åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«åã®é–‹å§‹ç•ªå·
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void splitFile(
         String dir,
@@ -218,13 +218,13 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ğ•¡”ƒtƒ@ƒCƒ‹‚É•ªŠ„‚·‚éB<p>
-     * {@link #splitFile(String, String, String, int, int) splitFile(null, prefix, suffix, splitSize, startIndex)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡æ•°ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†å‰²ã™ã‚‹ã€‚<p>
+     * {@link #splitFile(String, String, String, int, int) splitFile(null, prefix, suffix, splitSize, startIndex)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚
      *
-     * @param prefix •ªŠ„ƒtƒ@ƒCƒ‹–¼‚ÌƒvƒŒƒtƒBƒNƒXBnull‚Ìê‡‚ÍA‚±‚Ìƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğœ‚¢‚½ƒtƒ@ƒCƒ‹–¼‚ª“K—p‚³‚ê‚éB
-     * @param splitSize •ªŠ„ƒTƒCƒY
-     * @param startIndex •ªŠ„ƒtƒ@ƒCƒ‹–¼‚ÌŠJn”Ô†
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Í•ªŠ„ƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param prefix åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã€‚nullã®å ´åˆã¯ã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’é™¤ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«åãŒé©ç”¨ã•ã‚Œã‚‹ã€‚
+     * @param splitSize åˆ†å‰²ã‚µã‚¤ã‚º
+     * @param startIndex åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«åã®é–‹å§‹ç•ªå·
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void splitFile(
         String prefix,
@@ -236,13 +236,13 @@ public class OperateFile extends File implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ğ•¡”ƒtƒ@ƒCƒ‹‚É•ªŠ„‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡æ•°ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†å‰²ã™ã‚‹ã€‚<p>
      *
-     * @param dir •ªŠ„ƒtƒ@ƒCƒ‹‚ÌŠi”[æƒfƒBƒŒƒNƒgƒŠBnull‚Ìê‡‚ÍA‚±‚Ìƒtƒ@ƒCƒ‹‚Æ“¯‚¶êŠ‚ÉŠi”[‚³‚ê‚éB
-     * @param prefix •ªŠ„ƒtƒ@ƒCƒ‹–¼‚ÌƒvƒŒƒtƒBƒNƒXBnull‚Ìê‡‚ÍA‚±‚Ìƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğœ‚¢‚½ƒtƒ@ƒCƒ‹–¼‚ª“K—p‚³‚ê‚éB
-     * @param splitSize •ªŠ„ƒTƒCƒY
-     * @param startIndex •ªŠ„ƒtƒ@ƒCƒ‹–¼‚ÌŠJn”Ô†
-     * @exception IOException ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İA‚Ü‚½‚Í•ªŠ„ƒtƒ@ƒCƒ‹‚Ö‚Ì‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param dir åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã®æ ¼ç´å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚nullã®å ´åˆã¯ã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜å ´æ‰€ã«æ ¼ç´ã•ã‚Œã‚‹ã€‚
+     * @param prefix åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã€‚nullã®å ´åˆã¯ã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’é™¤ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«åãŒé©ç”¨ã•ã‚Œã‚‹ã€‚
+     * @param splitSize åˆ†å‰²ã‚µã‚¤ã‚º
+     * @param startIndex åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«åã®é–‹å§‹ç•ªå·
+     * @exception IOException ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã€ã¾ãŸã¯åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void splitFile(
         String dir,
@@ -291,7 +291,7 @@ public class OperateFile extends File implements Serializable{
             final byte[] bytes = new byte[1024];
             while(!isEOF){
                 if(readedSize == -1){
-                    //ƒRƒs[ƒtƒ@ƒCƒ‹–¼ì¬
+                    //ã‚³ãƒ”ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«åä½œæˆ
                     final StringBuilder fileName = new StringBuilder(tmpPrefix);
                     fileName.append(index);
                     if(tmpSuffix != null){
@@ -305,7 +305,7 @@ public class OperateFile extends File implements Serializable{
                     readedSize = 0;
                     fos = new FileOutputStream(toFile);
                 }
-                //“Ç‚İ‚İƒTƒCƒYŒvZ
+                //èª­ã¿è¾¼ã¿ã‚µã‚¤ã‚ºè¨ˆç®—
                 if(splitSize - readedSize < 1024){
                     readSize = splitSize - readedSize;
                 }else{

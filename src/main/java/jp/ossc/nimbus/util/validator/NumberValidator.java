@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.validator;
 import java.math.*;
 
 /**
- * ”’lƒoƒŠƒf[ƒ^B<p>
+ * æ•°å€¤ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -43,249 +43,249 @@ public class NumberValidator implements Validator, java.io.Serializable{
     private static final long serialVersionUID = -1507930380189770984L;
     
     /**
-     * null‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡A‹–—e‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * nullã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€è¨±å®¹ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isAllowNull = true;
     
     /**
-     * NaN‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡A‹–—e‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * NaNã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€è¨±å®¹ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isAllowNaN = true;
     
     /**
-     * –³ŒÀ‘å‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡A‹–—e‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ç„¡é™å¤§ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€è¨±å®¹ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isAllowInfinity = true;
     
     /**
-     * ”’l•¶š—ñ‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡A‹–—e‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * æ•°å€¤æ–‡å­—åˆ—ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€è¨±å®¹ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isAllowNumberString;
     
     /**
-     * ŒŸØ’l &gt; ’l‚ğŒŸØ‚·‚éè‡’lB<p>
+     * æ¤œè¨¼å€¤ &gt; å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã€‚<p>
      */
     protected BigDecimal moreThanValue;
     
     /**
-     * ŒŸØ’l &gt;= ’l‚ğŒŸØ‚·‚éè‡’lB<p>
+     * æ¤œè¨¼å€¤ &gt;= å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã€‚<p>
      */
     protected BigDecimal moreEqualValue;
     
     /**
-     * ŒŸØ’l &lt; ’l‚ğŒŸØ‚·‚éè‡’lB<p>
+     * æ¤œè¨¼å€¤ &lt; å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã€‚<p>
      */
     protected BigDecimal lessThanValue;
     
     /**
-     * ŒŸØ’l &lt;= ’l‚ğŒŸØ‚·‚éè‡’lB<p>
+     * æ¤œè¨¼å€¤ &lt;= å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã€‚<p>
      */
     protected BigDecimal lessEqualValue;
     
     /**
-     * ŒŸØ’l == ’l‚ğŒŸØ‚·‚éè‡’lB<p>
+     * æ¤œè¨¼å€¤ == å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã€‚<p>
      */
     protected BigDecimal equalValue;
     
     /**
-     * ŒŸØ’l != ’l‚ğŒŸØ‚·‚éè‡’lB<p>
+     * æ¤œè¨¼å€¤ != å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã€‚<p>
      */
     protected BigDecimal notEqualValue;
     
     /**
-     * null‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * nullã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      * 
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowNull(boolean isAllow){
         isAllowNull = isAllow;
     }
     
     /**
-     * null‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * nullã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowNull(){
         return isAllowNull;
     }
     
     /**
-     * NaN‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * NaNã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      * 
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowNaN(boolean isAllow){
         isAllowNaN = isAllow;
     }
     
     /**
-     * NaN‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * NaNã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowNaN(){
         return isAllowNaN;
     }
     
     /**
-     * –³ŒÀ‘å‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ç„¡é™å¤§ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      * 
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowInfinity(boolean isAllow){
         isAllowInfinity = isAllow;
     }
     
     /**
-     * –³ŒÀ‘å‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç„¡é™å¤§ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowInfinity(){
         return isAllowInfinity;
     }
     
     /**
-     * ”’l•¶š—ñ‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * æ•°å€¤æ–‡å­—åˆ—ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      * 
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowNumberString(boolean isAllow){
         isAllowNumberString = isAllow;
     }
     
     /**
-     * ”’l•¶š—ñ‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ•°å€¤æ–‡å­—åˆ—ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowNumberString(){
         return isAllowNumberString;
     }
     
     /**
-     * ŒŸØ’l &gt; ’l‚ğŒŸØ‚·‚éè‡’l‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &gt; å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param max è‡’l
+     * @param max é–¾å€¤
      */
     public void setMoreThanValue(BigDecimal max){
         moreThanValue = max;
     }
     
     /**
-     * ŒŸØ’l &gt; ’l‚ğŒŸØ‚·‚éè‡’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &gt; å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l
+     * @return é–¾å€¤
      */
     public BigDecimal getMoreThanValue(){
         return moreThanValue;
     }
     
     /**
-     * ŒŸØ’l &gt;= ’l‚ğŒŸØ‚·‚éè‡’l‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &gt;= å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param max è‡’l
+     * @param max é–¾å€¤
      */
     public void setMoreEqualValue(BigDecimal max){
         moreEqualValue = max;
     }
     
     /**
-     * ŒŸØ’l &gt;= ’l‚ğŒŸØ‚·‚éè‡’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &gt;= å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l
+     * @return é–¾å€¤
      */
     public BigDecimal getMoreEqualValue(){
         return moreEqualValue;
     }
     
     /**
-     * ŒŸØ’l &lt; ’l‚ğŒŸØ‚·‚éè‡’l‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &lt; å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param min è‡’l
+     * @param min é–¾å€¤
      */
     public void setLessThanValue(BigDecimal min){
         lessThanValue = min;
     }
     
     /**
-     * ŒŸØ’l &lt; ’l‚ğŒŸØ‚·‚éè‡’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &lt; å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l
+     * @return é–¾å€¤
      */
     public BigDecimal getLessThanValue(){
         return lessThanValue;
     }
     
     /**
-     * ŒŸØ’l &lt;= ’l‚ğŒŸØ‚·‚éè‡’l‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &lt;= å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param min è‡’l
+     * @param min é–¾å€¤
      */
     public void setLessEqualValue(BigDecimal min){
         lessEqualValue = min;
     }
     
     /**
-     * ŒŸØ’l &lt;= ’l‚ğŒŸØ‚·‚éè‡’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼å€¤ &lt;= å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l
+     * @return é–¾å€¤
      */
     public BigDecimal getLessEqualValue(){
         return lessEqualValue;
     }
     
     /**
-     * ŒŸØ’l == ’l‚ğŒŸØ‚·‚éè‡’l‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼å€¤ == å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param eq è‡’l
+     * @param eq é–¾å€¤
      */
     public void setEqualValue(BigDecimal eq){
         equalValue = eq;
     }
     
     /**
-     * ŒŸØ’l == ’l‚ğŒŸØ‚·‚éè‡’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼å€¤ == å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l
+     * @return é–¾å€¤
      */
     public BigDecimal getEqualValue(){
         return equalValue;
     }
     
     /**
-     * ŒŸØ’l != ’l‚ğŒŸØ‚·‚éè‡’l‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼å€¤ != å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param neq è‡’l
+     * @param neq é–¾å€¤
      */
     public void setNotEqualValue(BigDecimal neq){
         notEqualValue = neq;
     }
     
     /**
-     * ŒŸØ’l != ’l‚ğŒŸØ‚·‚éè‡’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼å€¤ != å€¤ã‚’æ¤œè¨¼ã™ã‚‹é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l
+     * @return é–¾å€¤
      */
     public BigDecimal getNotEqualValue(){
         return notEqualValue;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(Object obj) throws ValidateException{
         if(obj == null){
@@ -320,11 +320,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(byte val) throws ValidateException{
         if(moreThanValue != null){
@@ -361,11 +361,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(short val) throws ValidateException{
         if(moreThanValue != null){
@@ -402,11 +402,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(int val) throws ValidateException{
         if(moreThanValue != null){
@@ -443,11 +443,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(long val) throws ValidateException{
         if(moreThanValue != null){
@@ -484,11 +484,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(float val) throws ValidateException{
         if(Float.isNaN(val)){
@@ -531,11 +531,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(double val) throws ValidateException{
         if(Double.isNaN(val)){
@@ -578,11 +578,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean validateBigInteger(BigInteger val) throws ValidateException{
         if(val == null){
@@ -629,11 +629,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“KØ‚È”’l‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒé©åˆ‡ãªæ•°å€¤ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean validateBigDecimal(BigDecimal val) throws ValidateException{
         if(val == null){
@@ -680,11 +680,11 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ª“KØ‚È”’l•¶š—ñ‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãŒé©åˆ‡ãªæ•°å€¤æ–‡å­—åˆ—ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param val ŒŸØ‘ÎÛ‚Ì’l
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param val æ¤œè¨¼å¯¾è±¡ã®å€¤
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean validateString(String val) throws ValidateException{
         if(val == null){

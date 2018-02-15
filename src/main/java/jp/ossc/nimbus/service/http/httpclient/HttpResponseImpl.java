@@ -47,22 +47,22 @@ import net.jpountz.lz4.LZ4BlockInputStream;
 
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTPƒŒƒXƒ|ƒ“ƒXƒNƒ‰ƒXB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class HttpResponseImpl implements HttpResponse, Cloneable{
-    /** ƒwƒbƒ_[ : Content-Type */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Type */
     protected static final String HEADER_CONTENT_TYPE = "Content-Type";
-    /** ƒwƒbƒ_[ : charset */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : charset */
     protected static final String HEADER_CHARSET = "charset";
-    /** ƒwƒbƒ_[ : Content-Encoding */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Encoding */
     protected static final String HEADER_CONTENT_ENCODING = "Content-Encoding";
-    /** ƒwƒbƒ_[ : Connection */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Connection */
     protected static final String HEADER_CONNECTION = "Connection";
-    /** ƒwƒbƒ_[ : Content-Length */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Length */
     protected static final String HEADER_CONTENT_LENGTH = "Content-Length";
-    /** ƒwƒbƒ_[ : Transfer-Encoding */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Transfer-Encoding */
     protected static final String HEADER_TRANSFER_ENCODING = "Transfer-Encoding";
     /** Content-Encoding : deflate */
     protected static final String CONTENT_ENCODING_DEFLATE = "deflate";
@@ -78,7 +78,7 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     protected static final String CONNECTION_CLOSE = "close";
     /** Transfer-Encoding : chunked */
     protected static final String TRANSFER_ENCODING_CHUNKED = "chunked";
-    /** ƒfƒtƒHƒ‹ƒgƒŒƒXƒ|ƒ“ƒXcharset */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¬ã‚¹ãƒãƒ³ã‚¹charset */
     protected static final String DEFAULT_RESPONSE_CHARSET = "ISO8859_1";
     
     protected int statusCode;
@@ -92,40 +92,40 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     protected byte[] outputBytes;
     
     /**
-     * HTTPƒƒ\ƒbƒh‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @exception IOException ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception IOException ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setHttpMethod(HttpMethodBase method)throws IOException{
         this.method = method;
         statusMessage = method.getStatusText();
-        // ƒŒƒXƒ|ƒ“ƒX‚ªˆ³k‚³‚ê‚Ä‚¢‚ê‚Î‰ğœ
+        // ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãŒåœ§ç¸®ã•ã‚Œã¦ã„ã‚Œã°è§£é™¤
         inputStream = decompress(
             method.getResponseBodyAsStream()
         );
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setStreamConverterServiceName(ServiceName name){
         streamConverterServiceName = name;
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getStreamConverterServiceName(){
         return streamConverterServiceName;
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param converter StreamConverter
      */
@@ -134,7 +134,7 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return StreamConverter
      */
@@ -143,28 +143,28 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚Ìˆ³k‚ğ‰ğœ‚·‚éB<p>
-     * (Content-Encoding‚Éw’è‚³‚ê‚½‹t‡‚Å‰ğœ)
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®åœ§ç¸®ã‚’è§£é™¤ã™ã‚‹ã€‚<p>
+     * (Content-Encodingã«æŒ‡å®šã•ã‚ŒãŸé€†é †ã§è§£é™¤)
      * 
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @return ˆ³k‰ğœ‚³‚ê‚½“ü—ÍƒXƒgƒŠ[ƒ€
-     * @throws IOException ƒTƒ|[ƒg‚µ‚Ä‚¢‚È‚¢ˆ³kŒ`®(deflate, gzipˆÈŠO)‚ªw’è‚³‚ê‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return åœ§ç¸®è§£é™¤ã•ã‚ŒãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @throws IOException ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ãªã„åœ§ç¸®å½¢å¼(deflate, gzipä»¥å¤–)ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆ
      */
     protected InputStream decompress(InputStream is) throws IOException {
         if(is == null){
             return null;
         }
-        // ƒwƒbƒ_[[Content-Encoding]‚Ì’l‚ğæ“¾
+        // ãƒ˜ãƒƒãƒ€ãƒ¼[Content-Encoding]ã®å€¤ã‚’å–å¾—
         String encode = getHeader(HEADER_CONTENT_ENCODING);
         InputStream in = is;
         if(encode != null){
             
             if(encode.indexOf(CONTENT_ENCODING_DEFLATE) != -1){
-                // deflateˆ³k‰ğœ
+                // deflateåœ§ç¸®è§£é™¤
                 in = new InflaterInputStream(in);
             }else if(encode.indexOf(CONTENT_ENCODING_GZIP) != -1
                         || encode.indexOf(CONTENT_ENCODING_X_GZIP) != -1){
-                // gzipˆ³k‰ğœ
+                // gzipåœ§ç¸®è§£é™¤
                 in = new GZIPInputStream(in);
 
             }else if(encode.indexOf(CONTENT_ENCODING_SNAPPY) != -1){
@@ -196,12 +196,12 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
         }
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public Set getHeaderNameSet(){
         return getHeaderMap().keySet();
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public String getHeader(String name){
         if(headerMap != null){
             String[] vals = (String[])headerMap.get(name);
@@ -222,7 +222,7 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
         return header == null ? null : header.getValue();
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public String[] getHeaders(String name){
         if(headerMap != null){
             String[] vals = (String[])headerMap.get(name);
@@ -263,9 +263,9 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
-     * HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv
+     * @return HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—
      */
     public Map getHeaderMap(){
         if(headerMap == null){
@@ -292,9 +292,9 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
-     * HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param map HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv
+     * @param map HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—
      */
     public void setHeaderMap(Map map){
         headerMap = map;
@@ -316,26 +316,26 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
         }
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public InputStream getInputStream() throws IOException{
         return inputStream;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param in ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€
+     * @param in ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ 
      */
     public void setInputStream(InputStream in){
         inputStream = in;
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public Object getObject() throws ConvertException{
         return getObject(null);
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public Object getObject(Object bind) throws ConvertException{
         if(outputObject == null
              && (streamConverter != null || streamConverterServiceName != null)){
@@ -367,15 +367,15 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
-     * ‰“šƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param object ‰“šƒIƒuƒWƒFƒNƒg
+     * @param object å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setObject(Object object){
         outputObject = object;
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public String getCharacterEncoding(){
         final String contentType = getHeader(HEADER_CONTENT_TYPE);
         if(contentType == null){
@@ -392,48 +392,48 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
         }
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public int getStatusCode(){
         return statusCode;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒXƒe[ƒ^ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param code HTTPƒXƒe[ƒ^ƒX
+     * @param code HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public void setStatusCode(int code){
         statusCode = code;
     }
     
-    // HttpResponse‚ÌJavaDoc
+    // HttpResponseã®JavaDoc
     public String getStatusMessage(){
         return statusMessage;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param message HTTPƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW
+     * @param message HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void setStatusMessage(String message){
         statusMessage = message;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚µ‚½Û‚ÌƒoƒCƒg”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã—ãŸéš›ã®ãƒã‚¤ãƒˆé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚µ‚½Û‚ÌƒoƒCƒg”z—ñ
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã—ãŸéš›ã®ãƒã‚¤ãƒˆé…åˆ—
      */
     public byte[] getOutputBytes(){
         return outputBytes;
     }
     
     /**
-     * •¡»‚ğ¶¬‚·‚éB<p>
+     * è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return •¡»
-     * @exception CloneNotSupportedException •¡»‚É¸”s‚µ‚½ê‡
+     * @return è¤‡è£½
+     * @exception CloneNotSupportedException è¤‡è£½ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object clone() throws CloneNotSupportedException{
         return (HttpResponseImpl)super.clone();
@@ -446,9 +446,9 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
-     * Ú‘±‚ğØ‚Á‚Ä—Ç‚¢‚©”»’f‚·‚éB<p>
+     * æ¥ç¶šã‚’åˆ‡ã£ã¦è‰¯ã„ã‹åˆ¤æ–­ã™ã‚‹ã€‚<p>
      *
-     * @return Connectionƒwƒbƒ_‚ªclose‚à‚µ‚­‚Í‘¶İ‚µ‚È‚¢ê‡‚ÍAtrueB<p>
+     * @return Connectionãƒ˜ãƒƒãƒ€ãŒcloseã‚‚ã—ãã¯å­˜åœ¨ã—ãªã„å ´åˆã¯ã€trueã€‚<p>
      */
     public boolean isConnectionClose(){
         String connection = getHeader(HEADER_CONNECTION);

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.performance;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link CPUResourceUsageService}のMBeanインタフェース<p>
+ * {@link CPUResourceUsageService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see CPUResourceUsageService

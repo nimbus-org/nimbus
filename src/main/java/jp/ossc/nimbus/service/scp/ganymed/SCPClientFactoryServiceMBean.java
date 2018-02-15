@@ -36,7 +36,7 @@ import java.io.File;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link SCPClientFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SCPClientFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SCPClientFactoryService
@@ -44,147 +44,147 @@ import jp.ossc.nimbus.core.*;
 public interface SCPClientFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * TCP‚ÌÚ‘±ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚µ‚È‚¢B<br>
+     * TCPã®æ¥ç¶šã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setConnectionTimeout(int timeout);
     
     /**
-     * TCP‚ÌÚ‘±ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * TCPã®æ¥ç¶šã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getConnectionTimeout();
     
     /**
-     * SSHÚ‘±ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚µ‚È‚¢B<br>
+     * SSHæ¥ç¶šã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setKeyExchangeTimeout(int timeout);
     
     /**
-     * SSHÚ‘±ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * SSHæ¥ç¶šã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getKeyExchangeTimeout();
     
     /**
-     * TCP_NODELAY‚Ì—LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * TCP_NODELAYã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param noDelay —LŒø‚É‚·‚éê‡true
+     * @param noDelay æœ‰åŠ¹ã«ã™ã‚‹å ´åˆtrue
      */
     public void setTcpNoDelay(boolean noDelay);
     
     /**
-     * TCP_NODELAY‚Ì—LŒø/–³Œø‚ğ”»’è‚·‚éB<p>
+     * TCP_NODELAYã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isTcpNoDelay();
     
     /**
-     * Ú‘±æƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚µ‚½ê‡A{@link SCPClientFactoryService#createSCPClient()}‚Å¶¬‚µ‚½{@link jp.ossc.nimbus.service.scp.SCPClient SCPClient}‚ÍAÚ‘±Ï‚Æ‚È‚éB<br>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã—ãŸå ´åˆã€{@link SCPClientFactoryService#createSCPClient()}ã§ç”Ÿæˆã—ãŸ{@link jp.ossc.nimbus.service.scp.SCPClient SCPClient}ã¯ã€æ¥ç¶šæ¸ˆã¨ãªã‚‹ã€‚<br>
      *
-     * @param addr ƒzƒXƒg–¼
+     * @param addr ãƒ›ã‚¹ãƒˆå
      */
     public void setHostName(String addr);
     
     /**
-     * Ú‘±æƒT[ƒo‚ÌƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * Ú‘±æƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setPort(int port);
     
     /**
-     * Ú‘±æƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getPort();
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚µ‚½ê‡A{@link SCPClientFactoryService#createSCPClient()}‚Å¶¬‚µ‚½{@link jp.ossc.nimbus.service.scp.SCPClient SCPClient}‚ÍA”FØÏ‚Æ‚È‚éB<br>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã—ãŸå ´åˆã€{@link SCPClientFactoryService#createSCPClient()}ã§ç”Ÿæˆã—ãŸ{@link jp.ossc.nimbus.service.scp.SCPClient SCPClient}ã¯ã€èªè¨¼æ¸ˆã¨ãªã‚‹ã€‚<br>
      *
-     * @param name ƒ†[ƒU–¼
+     * @param name ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String name);
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ†[ƒU–¼
+     * @return ãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU‚ÌƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY‚ğİ’è‚·‚éB<p>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password ƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY
+     * @param password ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚º
      */
     public void setPassword(String password);
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU‚ÌƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY
+     * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚º
      */
     public String getPassword();
     
     /**
-     * ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setPemFile(File path);
     
     /**
-     * ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public File getPemFile();
     
     /**
-     * Œ®ŒğŠ·ƒAƒ‹ƒSƒŠƒYƒ€‚ğİ’è‚·‚éB<p>
+     * éµäº¤æ›ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param algos Œ®ŒğŠ·ƒAƒ‹ƒSƒŠƒYƒ€–¼”z—ñ
+     * @param algos éµäº¤æ›ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ åé…åˆ—
      */
     public void setServerHostKeyAlgorithms(String[] algos);
     
     /**
-     * Œ®ŒğŠ·ƒAƒ‹ƒSƒŠƒYƒ€‚ğæ“¾‚·‚éB<p>
+     * éµäº¤æ›ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®ŒğŠ·ƒAƒ‹ƒSƒŠƒYƒ€–¼”z—ñ
+     * @return éµäº¤æ›ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ åé…åˆ—
      */
     public String[] getServerHostKeyAlgorithms();
     
     /**
-     * ƒƒOƒCƒ“’¼Œã‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"user.home"‚Ì¦‚·ƒfƒBƒŒƒNƒgƒŠ‚Æ‚È‚éB<br>
+     * ãƒ­ã‚°ã‚¤ãƒ³ç›´å¾Œã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"user.home"ã®ç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¨ãªã‚‹ã€‚<br>
      * 
-     * @param dir ƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setHomeDirectory(File dir);
     
     /**
-     * ƒƒOƒCƒ“’¼Œã‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ç›´å¾Œã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getHomeDirectory();
 }

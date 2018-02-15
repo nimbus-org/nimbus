@@ -41,7 +41,7 @@ import java.lang.reflect.*;
 import java.security.AccessController;
 
 /**
- * Nimbus’¼—ñ‰»ƒT[ƒrƒXB<p>
+ * Nimbusç›´åˆ—åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

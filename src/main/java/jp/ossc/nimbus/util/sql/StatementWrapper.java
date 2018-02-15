@@ -39,7 +39,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * Statementƒ‰ƒbƒp[B<p>
+ * Statementãƒ©ãƒƒãƒ‘ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */
@@ -56,19 +56,19 @@ public class StatementWrapper implements Statement, Serializable {
     protected Map resultSetProperties;
     
     /**
-     * w’è‚µ‚½Statement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éStatement
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹Statement
      */
     public StatementWrapper(Statement st){
         this(null, st);
     }
     
     /**
-     * w’è‚µ‚½Statement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌStatement‚ğ¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éStatement
+     * @param con ã“ã®Statementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹Statement
      */
     public StatementWrapper(Connection con, Statement st){
         connection = con;
@@ -76,28 +76,28 @@ public class StatementWrapper implements Statement, Serializable {
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚éStatement‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹Statementã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éStatement
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹Statement
      */
     public void setStatement(Statement st){
         statement = st;
     }
     
     /**
-     * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éStatement‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹Statementã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚µ‚Ä‚¢‚éStatement
+     * @return ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹Statement
      */
     public Statement getStatement(){
         return statement;
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link ResultSetWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link ResultSetWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒ‰ƒbƒv‚·‚éResultSetWrapper‚ÌÀ‘•ƒNƒ‰ƒX
-     * @exception IllegalArgumentException w’è‚µ‚½ƒNƒ‰ƒX‚ªResultSetWrapper‚ÌƒTƒuƒNƒ‰ƒX‚Å‚È‚¢ê‡
+     * @param clazz ãƒ©ãƒƒãƒ—ã™ã‚‹ResultSetWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ãŒResultSetWrapperã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ãªã„å ´åˆ
      */
     public void setResultSetWrapperClass(Class clazz)
      throws IllegalArgumentException{
@@ -112,19 +112,19 @@ public class StatementWrapper implements Statement, Serializable {
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link ResultSetWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link ResultSetWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚·‚éResultSetWrapper‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return ãƒ©ãƒƒãƒ—ã™ã‚‹ResultSetWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getResultSetWrapperClass(){
         return resultSetWrapperClass;
     }
     
     /**
-     * {@link ResultSetWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link ResultSetWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setResultSetProperty(String name, Object value){
         if(resultSetProperties == null){
@@ -135,10 +135,10 @@ public class StatementWrapper implements Statement, Serializable {
     }
     
     /**
-     * {@link ResultSetWrapper}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link ResultSetWrapper}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getResultSetProperty(String name){
         if(resultSetProperties == null){

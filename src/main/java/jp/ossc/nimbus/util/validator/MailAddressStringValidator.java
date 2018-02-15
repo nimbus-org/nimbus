@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.validator;
 import java.util.regex.*;
 
 /**
- * ƒ[ƒ‹ƒAƒhƒŒƒX•¶š—ñƒoƒŠƒf[ƒ^B<p>
+ * ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹æ–‡å­—åˆ—ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -59,11 +59,11 @@ public class MailAddressStringValidator extends AbstractStringValidator
     protected static Pattern ATOM_PATTERN = Pattern.compile("(" + ATOM + ")");
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ªƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãŒãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param str ŒŸØ‘ÎÛ‚Ì•¶š—ñ
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param str æ¤œè¨¼å¯¾è±¡ã®æ–‡å­—åˆ—
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean validateString(String str) throws ValidateException{
         if(str.charAt(str.length() - 1) == '.') {

@@ -38,18 +38,18 @@ import jp.ossc.nimbus.service.resource.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/24| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class TopicTransanctionResource 
 	implements TransactionResource {
-	//ƒƒ“ƒo•Ï”
-	/** TopicƒZƒbƒVƒ‡ƒ“ */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** Topicã‚»ãƒƒã‚·ãƒ§ãƒ³ */
 	private TopicSession mSession = null;
 	private TopicConnection mConnection = null ;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */	
 	TopicTransanctionResource(TopicConnection conn ,TopicSession session){
 		mConnection = conn ;
@@ -57,7 +57,7 @@ public class TopicTransanctionResource
 	}
 
 	/**
-	 * ƒRƒ~ƒbƒgBJMSException‚ª”­¶‚µ‚½‚çAServiceException‚ğƒXƒ[‚·‚éB
+	 * ã‚³ãƒŸãƒƒãƒˆã€‚JMSExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã€ServiceExceptionã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹ã€‚
 	 */
 	public void commit() throws JMSException  {
 		if(mSession.getTransacted()){
@@ -66,7 +66,7 @@ public class TopicTransanctionResource
 	}
 
 	/**
-	 * ƒ[ƒ‹ƒoƒbƒNBJMSException‚ª”­¶‚µ‚½‚çAServiceException‚ğƒXƒ[‚·‚éB
+	 * ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€‚JMSExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã€ServiceExceptionã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹ã€‚
 	 */
 	public void rollback() throws JMSException {
 		if(mSession.getTransacted()){
@@ -75,7 +75,7 @@ public class TopicTransanctionResource
 	}
 
 	/**
-	 * ƒNƒ[ƒYBJMSException‚ª”­¶‚µ‚½‚çAServiceException‚ğƒXƒ[‚·‚éB
+	 * ã‚¯ãƒ­ãƒ¼ã‚ºã€‚JMSExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã€ServiceExceptionã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹ã€‚
 	 */
 	public void close() throws JMSException {
 		if(mSession != null){
@@ -84,7 +84,7 @@ public class TopicTransanctionResource
 	}
 
 	/**
-	 *@ƒ‰ƒbƒv‚³‚ê‚Ä‚¢‚éƒZƒbƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B
+	 *ã€€ãƒ©ãƒƒãƒ—ã•ã‚Œã¦ã„ã‚‹ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚
 	 */
 	public Object getObject() {
 		return mSession;

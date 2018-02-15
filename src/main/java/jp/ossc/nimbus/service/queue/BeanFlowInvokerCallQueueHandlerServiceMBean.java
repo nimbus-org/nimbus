@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowInvokerCallQueueHandlerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowInvokerCallQueueHandlerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see BeanFlowInvokerCallQueueHandlerService
@@ -44,169 +44,169 @@ import jp.ossc.nimbus.core.*;
 public interface BeanFlowInvokerCallQueueHandlerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * BeanFlowƒL[‚ğ“ü—ÍBean‚©‚çŒˆ’è‚·‚é‚ÌƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * “ü—ÍBean©g‚ÍA"input"‚Æ•\Œ»‚µA‚»‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
-     * “ü—ÍBean©g‚ªBeanFlowƒL[‚Å‚ ‚éê‡‚ÍA"input"‚Æ‚Ì‚İİ’è‚·‚éB<br>
+     * BeanFlowã‚­ãƒ¼ã‚’å…¥åŠ›Beanã‹ã‚‰æ±ºå®šã™ã‚‹æ™‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å…¥åŠ›Beanè‡ªèº«ã¯ã€"input"ã¨è¡¨ç¾ã—ã€ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
+     * å…¥åŠ›Beanè‡ªèº«ãŒBeanFlowã‚­ãƒ¼ã§ã‚ã‚‹å ´åˆã¯ã€"input"ã¨ã®ã¿è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param prop ƒvƒƒpƒeƒB–¼
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void setBeanFlowKeyByInput(String prop);
     
     /**
-     * BeanFlowƒL[‚ğ“ü—ÍBean‚©‚çŒˆ’è‚·‚é‚ÌƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * BeanFlowã‚­ãƒ¼ã‚’å…¥åŠ›Beanã‹ã‚‰æ±ºå®šã™ã‚‹æ™‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getBeanFlowKeyByInput();
     
     /**
-     * BeanFlow‚Ìˆø”‚ğ“ü—ÍBean‚©‚çŒˆ’è‚·‚é‚ÌƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * “ü—ÍBean©g‚ÍA"input"‚Æ•\Œ»‚µA‚»‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
-     * “ü—ÍBean©g‚ªBeanFlow‚Ìˆø”‚Å‚ ‚éê‡‚ÍA"input"‚Æ‚Ì‚İİ’è‚·‚éB<br>
+     * BeanFlowã®å¼•æ•°ã‚’å…¥åŠ›Beanã‹ã‚‰æ±ºå®šã™ã‚‹æ™‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å…¥åŠ›Beanè‡ªèº«ã¯ã€"input"ã¨è¡¨ç¾ã—ã€ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
+     * å…¥åŠ›Beanè‡ªèº«ãŒBeanFlowã®å¼•æ•°ã§ã‚ã‚‹å ´åˆã¯ã€"input"ã¨ã®ã¿è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param prop ƒvƒƒpƒeƒB–¼
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void setBeanFlowInputByInput(String prop);
     
     /**
-     * BeanFlow‚Ìˆø”‚ğ“ü—ÍBean‚©‚çŒˆ’è‚·‚é‚ÌƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * BeanFlowã®å¼•æ•°ã‚’å…¥åŠ›Beanã‹ã‚‰æ±ºå®šã™ã‚‹æ™‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getBeanFlowInputByInput();
     
     /**
-     * “ü—ÍBean‚ÌƒNƒ‰ƒX–¼‚É‘Î‚µ‚Äg—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹åã«å¯¾ã—ã¦ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping “ü—ÍBean‚ÌƒNƒ‰ƒX–¼=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éƒ}ƒbƒv
+     * @param mapping å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹å=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹ãƒãƒƒãƒ—
      */
     public void setClassMapping(Map mapping);
     
     /**
-     * “ü—ÍBean‚ÌƒNƒ‰ƒX–¼‚É‘Î‚µ‚Äg—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹åã«å¯¾ã—ã¦ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍBean‚ÌƒNƒ‰ƒX–¼=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éƒ}ƒbƒv
+     * @return å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹å=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹ãƒãƒƒãƒ—
      */
     public Map getClassMapping();
     
     /**
-     * “ü—ÍBean‚É‘Î‚·‚éğŒ–ˆ‚Ég—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * “ü—ÍBean©‘Ì‚ğQÆ‚·‚éê‡‚ÍA"value"‚Æ‚¢‚¤—\–ñŒê‚ğg—p‚·‚éB<br>
-     * “ü—ÍBean‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶æ¯ã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * å…¥åŠ›Beanè‡ªä½“ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€"value"ã¨ã„ã†äºˆç´„èªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * å…¥åŠ›Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param conditions “ü—ÍBean‚É‘Î‚·‚éğŒ®=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éğŒ”z—ñ
+     * @param conditions å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶å¼=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹æ¡ä»¶é…åˆ—
      */
     public void setConditions(String[] conditions);
     
     /**
-     * “ü—ÍBean‚É‘Î‚·‚éğŒ–ˆ‚Ég—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶æ¯ã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍBean‚É‘Î‚·‚éğŒ®=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éğŒ”z—ñ
+     * @return å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶å¼=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹æ¡ä»¶é…åˆ—
      */
     public String[] getConditions();
     
     /**
-     * ‚Ç‚ÌğŒ‚É‚à‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚éBeanFlow‚ÌƒL[‚ğİ’è‚·‚éB<p>
+     * ã©ã®æ¡ä»¶ã«ã‚‚åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param beanFlowKey BeanFlow‚ÌƒL[
+     * @param beanFlowKey BeanFlowã®ã‚­ãƒ¼
      */
     public void setDefaultBeanFlowKey(String beanFlowKey);
     
     /**
-     * ‚Ç‚ÌğŒ‚É‚à‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚éBeanFlow‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã©ã®æ¡ä»¶ã«ã‚‚åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlow‚ÌƒL[
+     * @return BeanFlowã®ã‚­ãƒ¼
      */
     public String getDefaultBeanFlowKey();
     
     /**
-     * Bean‚Ì•ÏŠ·‚ğs‚¤BeanFlow‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * Beanã®å¤‰æ›ã‚’è¡Œã†BeanFlowã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * Bean‚Ì•ÏŠ·‚ğs‚¤BeanFlow‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * Beanã®å¤‰æ›ã‚’è¡Œã†BeanFlowã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * ŒÄ‚Ño‚·BeanFlow‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA‹óU‚è‚·‚éB<br>
-     * true‚É‚·‚é‚ÆABeanFlowInvokerCallQueueHandlerService.BeanFlowNotFoundException‚ğthrow‚·‚éB<br>
+     * å‘¼ã³å‡ºã™BeanFlowãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ç©ºæŒ¯ã‚Šã™ã‚‹ã€‚<br>
+     * trueã«ã™ã‚‹ã¨ã€BeanFlowInvokerCallQueueHandlerService.BeanFlowNotFoundExceptionã‚’throwã™ã‚‹ã€‚<br>
      * 
-     * @param isThrow —áŠO‚ğthrow‚·‚éê‡Atrue
+     * @param isThrow ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆã€true
      */
     public void setThrowOnNotFoundBeanFlow(boolean isThrow);
     
     /**
-     * ŒÄ‚Ño‚·BeanFlow‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã™BeanFlowãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A—áŠO‚ğthrow‚·‚é
+     * @return trueã®å ´åˆã€ä¾‹å¤–ã‚’throwã™ã‚‹
      */
     public boolean isThrowOnNotFoundBeanFlow();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒO‚ğo—Í‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setErrorLogMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getErrorLogMessageId();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µA‹K’è‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒO‚ğo—Í‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€è¦å®šã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setRetryOverErrorLogMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µA‹K’è‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€è¦å®šã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getRetryOverErrorLogMessageId();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ªw’è‚µ‚Ä‚ ‚Á‚ÄAƒnƒ“ƒhƒŠƒ“ƒO‚Ìˆø”‚ª{@link AsynchContext}‚Ìê‡A{@link AsynchContext#applyThreadContext(jp.ossc.nimbus.service.context.Context) applyThreadContext(Context)}‚ğŒÄ‚Ño‚·B<br>
+     * {@link jp.ossc.nimbus.service.context.Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ãŒæŒ‡å®šã—ã¦ã‚ã£ã¦ã€ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®å¼•æ•°ãŒ{@link AsynchContext}ã®å ´åˆã€{@link AsynchContext#applyThreadContext(jp.ossc.nimbus.service.context.Context) applyThreadContext(Context)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚ğ‰Šú‰»‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’åˆæœŸåŒ–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚ğ‰Šú‰»‚·‚é
+     * @return trueã®å ´åˆã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’åˆæœŸåŒ–ã™ã‚‹
      */
     public boolean isClearThreadContext();
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚ğ‰Šú‰»‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å‰Šú‰»‚·‚éB<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’åˆæœŸåŒ–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§åˆæœŸåŒ–ã™ã‚‹ã€‚<br>
      *
-     * @param isClear ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚ğ‰Šú‰»‚·‚éê‡Atrue
+     * @param isClear ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’åˆæœŸåŒ–ã™ã‚‹å ´åˆã€true
      */
     public void setClearThreadContext(boolean isClear);
 }

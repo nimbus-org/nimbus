@@ -29,26 +29,26 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.aspect.interfaces;
 
 
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ƒ`ƒF[ƒ“ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
- * ãˆÊ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^[‚ğƒR[ƒ‹‚·‚éƒƒ\ƒbƒh‚ğ‚Â
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒã‚§ãƒ¼ãƒ³ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
+ * ä¸Šä½ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã‚’ã‚³ãƒ¼ãƒ«ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface InterceptorChain {
 	/**
-	 * ãˆÊƒ`ƒFƒCƒ“Àsƒƒ\ƒbƒh<br>
-	 * InterceptorInvoker‚¨‚æ‚ÑƒCƒ“ƒ^[ƒZƒvƒ^ƒCƒ“ƒ^[ƒtƒF[ƒXƒCƒ“ƒXƒ^ƒ“ƒX‚©‚çŒÄ‚Ño‚³‚ê‚éB<br>
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚©‚çƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‡Ÿæ“¾‚µAchainƒƒ\ƒbƒh‚ğÀs‚·‚éB<br>
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^‚ª‹ó‚É‚È‚Á‚½ê‡AƒR[ƒ‹ƒoƒbƒN‚ğs‚¤B<br>
-	 * @param inputObj			EJBFacadeˆø”
-	 * @return Object			EJBFacade•Ô‹p’l
+	 * ä¸Šä½ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 * InterceptorInvokerãŠã‚ˆã³ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã‹ã‚‰ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é †æ¬¡å–å¾—ã—ã€chainãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒç©ºã«ãªã£ãŸå ´åˆã€ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’è¡Œã†ã€‚<br>
+	 * @param inputObj			EJBFacadeå¼•æ•°
+	 * @return Object			EJBFacadeè¿”å´å€¤
 	 * @exception InterceptorException		
 	 * @exception TargetCheckedException		
 	 * @exception TargetUncheckedException

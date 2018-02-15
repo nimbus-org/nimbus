@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.publish.websocket;
 import javax.websocket.Session;
 
 /**
- * WebSocket‚ÌƒƒbƒZ[ƒW”zMƒnƒ“ƒhƒ‰[—pƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ * WebSocketã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ç”¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -42,17 +42,17 @@ import javax.websocket.Session;
 public interface MessageSender {
 
     /**
-     * ƒƒbƒZ[ƒW”zMˆ—B
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡å‡¦ç†ã€‚
      * <p>
      *
-     * @param msg ”zM‚·‚éƒƒbƒZ[ƒWƒIƒuƒWƒFƒNƒg
+     * @param msg é…ä¿¡ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void sendMessage(Object msg) throws Exception;
 
     /**
-     * WebSocket‚ÌSession‚ğæ“¾‚·‚éB
+     * WebSocketã®Sessionã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒZƒbƒVƒ‡ƒ“
+     * @return ã‚»ãƒƒã‚·ãƒ§ãƒ³
      */
     public Session getSession();
 }

@@ -36,9 +36,9 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.semaphore.*;
 
 /**
- * —¬—Ê§ŒäƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄAƒZƒ}ƒtƒHƒT[ƒrƒX‚ğg‚Á‚Ä—¬—Ê§Œä‚ğs‚¤ƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉA‚R‚Â‚Ü‚Å‚µ‚©“¯‚ÉƒAƒNƒZƒX‚Å‚«‚È‚¢‚æ‚¤‚É—¬—Ê§Œä‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * æµé‡åˆ¶å¾¡ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦æµé‡åˆ¶å¾¡ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ï¼“ã¤ã¾ã§ã—ã‹åŒæ™‚ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ããªã„ã‚ˆã†ã«æµé‡åˆ¶å¾¡ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -77,58 +77,58 @@ public class FlowControlInterceptorService extends ServiceBase
     private int maxWaitingCount = -1;
     private long forceFreeTimeout = -1L;
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public void setSemaphoreServiceName(ServiceName name){
         semaphoreServiceName = name;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public ServiceName getSemaphoreServiceName(){
         return semaphoreServiceName;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public void setTimeout(long timeout){
         this.timeout = timeout;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public long getTimeout(){
         return timeout;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public void setMaxWaitingCount(int count){
         maxWaitingCount = count;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public int getMaxWaitingCount(){
         return maxWaitingCount;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public void setForceFreeTimeout(long timeout){
         forceFreeTimeout = timeout;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public long getForceFreeTimeout(){
         return forceFreeTimeout;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public void setFailToObtainSemaphore(boolean isThrow){
         isFailToObtainSemaphore = isThrow;
     }
     
-    // FlowControlInterceptorServiceMBean‚ÌJavaDoc
+    // FlowControlInterceptorServiceMBeanã®JavaDoc
     public boolean isFailToObtainSemaphore(){
         return isFailToObtainSemaphore;
     }
     
     /**
-     * Semaphore‚ğİ’è‚·‚éB<p>
+     * Semaphoreã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param semaphore Semaphore
      */
@@ -137,9 +137,9 @@ public class FlowControlInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception {@link Semaphore}ƒT[ƒrƒX‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception Exception {@link Semaphore}ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(semaphore == null && semaphoreServiceName != null){
@@ -153,9 +153,9 @@ public class FlowControlInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(semaphore != null){
@@ -164,14 +164,14 @@ public class FlowControlInterceptorService extends ServiceBase
     }
     
     /**
-     * —¬—Ê§Œä‚ğ‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡A‹y‚Ñ{@link Semaphore}ƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA—¬—Ê§Œä‚ğs‚í‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * æµé‡åˆ¶å¾¡ã‚’ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã€åŠã³{@link Semaphore}ã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€æµé‡åˆ¶å¾¡ã‚’è¡Œã‚ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,

@@ -35,9 +35,9 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ŠÈˆÕƒJƒeƒSƒŠƒT[ƒrƒXB<p>
- * o—Íæ‚ğ•ª—Ş‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ÌŠÈˆÕÀ‘•ƒNƒ‰ƒXB<br>
- * w’è‚³‚ê‚½o—Í—v‘f‚ğAİ’è‚³‚ê‚½{@link WritableRecordFactory}‚Å{@link WritableRecord}‚É•ÏŠ·‚µ‚ÄAİ’è‚³‚ê‚½{@link MessageWriter}‚Éo—Í‚ğˆË—Š‚·‚éB<br>
+ * ç°¡æ˜“ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * å‡ºåŠ›å…ˆã‚’åˆ†é¡ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ç°¡æ˜“å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
+ * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã‚’ã€è¨­å®šã•ã‚ŒãŸ{@link WritableRecordFactory}ã§{@link WritableRecord}ã«å¤‰æ›ã—ã¦ã€è¨­å®šã•ã‚ŒãŸ{@link MessageWriter}ã«å‡ºåŠ›ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -47,91 +47,91 @@ public class SimpleCategoryService extends ServiceBase
     private static final long serialVersionUID = 1601430582489560068L;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * —LŒø‚Èê‡Atrue
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * æœ‰åŠ¹ãªå ´åˆã€true
      */
     protected boolean isEnabled = true;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—Íæ‚Æ‚È‚éMessageWriter‚ÌƒT[ƒrƒX–¼B<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›å…ˆã¨ãªã‚‹MessageWriterã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName writerName;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—Íæ‚Æ‚È‚éMessageWriterƒIƒuƒWƒFƒNƒgB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›å…ˆã¨ãªã‚‹MessageWriterã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected MessageWriter writer;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éWritableRecordFactory‚ÌƒT[ƒrƒX–¼B<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹WritableRecordFactoryã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName recordFactoryName;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éWritableRecordFactoryƒIƒuƒWƒFƒNƒgB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹WritableRecordFactoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected WritableRecordFactory recordFactory;
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public void setMessageWriterServiceName(ServiceName name){
         writerName = name;
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public ServiceName getMessageWriterServiceName(){
         return writerName;
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public void setWritableRecordFactoryServiceName(ServiceName name){
         recordFactoryName = name;
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public ServiceName getWritableRecordFactoryServiceName(){
         return recordFactoryName;
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—Í‚ğs‚¤MessageWriterƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ã‚’è¡Œã†MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param writer ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—Í‚ğs‚¤MessageWriterƒT[ƒrƒX
+     * @param writer ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ã‚’è¡Œã†MessageWriterã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setMessageWriterService(MessageWriter writer){
         this.writer = writer;
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—Í‚ğs‚¤MessageWriterƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ã‚’è¡Œã†MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—Í‚ğs‚¤MessageWriterƒT[ƒrƒX
+     * @return ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ã‚’è¡Œã†MessageWriterã‚µãƒ¼ãƒ“ã‚¹
      */
     public MessageWriter getMessageWriterService(){
         return this.writer;
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éWritableRecordFactoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param factory ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éWritableRecordFactoryƒT[ƒrƒX
+     * @param factory ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setWritableRecordFactoryService(WritableRecordFactory factory){
         recordFactory = factory;
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éWritableRecordFactoryƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒJƒeƒSƒŠ‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éWritableRecordFactoryƒT[ƒrƒX
+     * @return ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public WritableRecordFactory getWritableRecordFactoryService(){
         return recordFactory;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(writerName != null){
@@ -144,17 +144,17 @@ public class SimpleCategoryService extends ServiceBase
         }
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void write(Object elements) throws MessageWriteException{
         if(!isEnabled()){
             return;

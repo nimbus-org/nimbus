@@ -28,7 +28,7 @@ public class TestErrorStatusDispButton extends JButton implements ActionListener
     public TestErrorStatusDispButton(JFrame ownerFrame) {
         this.ownerFrame = ownerFrame;
         
-        Font font = new Font("ÇlÇr ÉSÉVÉbÉN", Font.BOLD, 16);
+        Font font = new Font("Ôº≠Ôº≥ „Ç¥„Ç∑„ÉÉ„ÇØ", Font.BOLD, 16);
         Dimension dim = new Dimension(50, 20);
         this.setEnabled(false);
 
@@ -67,7 +67,7 @@ public class TestErrorStatusDispButton extends JButton implements ActionListener
     }
 
     public void actionPerformed(ActionEvent e) {
-        JDialog dialog = new StatusDialogView(this.ownerFrame, "èÛë‘", this.status);
+        JDialog dialog = new StatusDialogView(this.ownerFrame, "Áä∂ÊÖã", this.status);
         dialog.setVisible(true);
     }
 

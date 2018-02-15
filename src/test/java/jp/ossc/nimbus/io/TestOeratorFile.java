@@ -41,8 +41,8 @@ import junit.framework.TestCase;
 /**
  * @author nakano
  *
- * ‚±‚Ì¶¬‚³‚ê‚½ƒRƒƒ“ƒg‚Ì‘}“ü‚³‚ê‚éƒeƒ“ƒvƒŒ[ƒg‚ğ•ÏX‚·‚é‚½‚ß
- * ƒEƒBƒ“ƒhƒE > İ’è > Java > ƒR[ƒh¶¬ > ƒR[ƒh‚ÆƒRƒƒ“ƒg
+ * ã“ã®ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¡ãƒ³ãƒˆã®æŒ¿å…¥ã•ã‚Œã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å¤‰æ›´ã™ã‚‹ãŸã‚
+ * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ > è¨­å®š > Java > ã‚³ãƒ¼ãƒ‰ç”Ÿæˆ > ã‚³ãƒ¼ãƒ‰ã¨ã‚³ãƒ¡ãƒ³ãƒˆ
  */
 public class TestOeratorFile extends TestCase {
 
@@ -63,7 +63,7 @@ public class TestOeratorFile extends TestCase {
 		junit.textui.TestRunner.run(TestOeratorFile.class);
 	}
 	/*
-	 * String[] listAllTree ‚ÌƒeƒXƒg()
+	 * String[] listAllTree ã®ãƒ†ã‚¹ãƒˆ()
 	 */
 	public void testCopy() throws IOException {
        
@@ -78,7 +78,7 @@ public class TestOeratorFile extends TestCase {
 	}
 
 	/*
-	 * String[] listAllTree ‚ÌƒeƒXƒg()
+	 * String[] listAllTree ã®ãƒ†ã‚¹ãƒˆ()
 	 */
 	public void testSplit() throws IOException {
 		OperateFile file = new OperateFile("target/temp/jp/ossc/nimbus/io/test.ini") ;

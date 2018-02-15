@@ -32,24 +32,24 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * XYƒvƒƒbƒgğŒB<p>
+ * XYãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface XYPlotCondition extends PlotCondition {
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ìc²‚Ì‰Â‹ó‘Ô‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ç¸¦è»¸ã®å¯è¦–çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index c²‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @param visible c²‚Ì‰Â‹ó‘Ô
+     * @param index ç¸¦è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param visible ç¸¦è»¸ã®å¯è¦–çŠ¶æ…‹
      */
     public void setRangeAxisVisible(int index, Boolean visible);
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ìc²‚Ì‰Â‹ó‘Ô‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ç¸¦è»¸ã®å¯è¦–çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index c²‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @return c²‚Ì‰Â‹ó‘Ô
+     * @param index ç¸¦è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ç¸¦è»¸ã®å¯è¦–çŠ¶æ…‹
      */
     public Boolean isRangeAxisVisible(int index);
 

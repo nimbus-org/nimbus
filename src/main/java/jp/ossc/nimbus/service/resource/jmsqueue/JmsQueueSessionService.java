@@ -47,10 +47,10 @@ import jp.ossc.nimbus.service.semaphore.*;
 
 
 /**
- *    JMSƒLƒ…[ƒZƒbƒVƒ‡ƒ“ƒT[ƒrƒX
+ *    JMSã‚­ãƒ¥ãƒ¼ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹
  *    @author    y-tokuda
- *    @version    1.00 ì¬F2003/10/24| y-tokuda<BR>
- *                XVF2006/03/31 M.Kameda
+ *    @version    1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *                æ›´æ–°ï¼š2006/03/31 M.Kameda
  */
 public class JmsQueueSessionService
     extends ServiceBase
@@ -58,56 +58,56 @@ public class JmsQueueSessionService
     
     private static final long serialVersionUID = 3277268519172853381L;
     
-    //ƒƒ“ƒo•Ï”
-    /** JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+    /** JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
     private JndiFinder mJndiFinderService = null;
-    /** JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼Ì */
+    /** JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åç§° */
     private ServiceName mJndiFinderServiceName = null;
     /** AcknowledgeMode */
     private int mAckMode = Session.AUTO_ACKNOWLEDGE;
-    /** ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh */
+    /** ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ */
     private boolean mTransanctionMode = false;
-    /** ƒLƒ…[ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ */
+    /** ã‚­ãƒ¥ãƒ¼ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒª */
     private QueueConnectionFactory mQueueConnectionFactory;
-    /** ƒZƒ}ƒtƒHƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒX–¼ */
+    /** ã‚»ãƒãƒ•ã‚©ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mSemaphoreFactoryServiceName;
-    /** ƒZƒ}ƒtƒHƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒX */
+    /** ã‚»ãƒãƒ•ã‚©ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
     private SemaphoreFactory mSemaphoreFactory;
-    /** ƒZƒ}ƒtƒH */
+    /** ã‚»ãƒãƒ•ã‚© */
     private Semaphore mSemaphore;
-    /** ƒRƒlƒNƒVƒ‡ƒ“ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ */
     private QueueConnection mConnection;
-    /** ƒZƒbƒVƒ‡ƒ“‚ÌƒLƒƒƒpƒVƒeƒB */
+    /** ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ã‚­ãƒ£ãƒ‘ã‚·ãƒ†ã‚£ */
     private int mSemaphoreCapacity;
     
     private String userName;
     private String password;
     
-    /** ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ[–¼ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼å */
     private String queueConnectionFactoryName;
-    /** ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“Ši”[ƒL[ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ ¼ç´ã‚­ãƒ¼ */
     private String connectionKey = DEFAULT_CONNECTION_CACHE_KEY;
-	/** ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX–¼ */
+	/** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName connectionCacheMapServiceName;
-	/** ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv */
+	/** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ— */
 	private CacheMap connectionCache;
     
     /**
-     * ƒZƒ}ƒtƒHƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚ÌƒZƒbƒ^[
+     * ã‚»ãƒãƒ•ã‚©ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®ã‚»ãƒƒã‚¿ãƒ¼
      */
     public void setSemaphoreFactoryServiceName(ServiceName name){
         mSemaphoreFactoryServiceName = name;
     }
     
     /**
-     * ƒLƒƒƒpƒVƒeƒB‚ÌƒZƒbƒ^[
+     * ã‚­ãƒ£ãƒ‘ã‚·ãƒ†ã‚£ã®ã‚»ãƒƒã‚¿ãƒ¼
      */
     public void setCapacity(int capa){
         mSemaphoreCapacity = capa;
     }
     
     /**
-     * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼Ì‚ÌƒZƒbƒ^[
+     * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åç§°ã®ã‚»ãƒƒã‚¿ãƒ¼
      * @param name
      */
     public void setJndiFinderServiceName(ServiceName name){
@@ -115,7 +115,7 @@ public class JmsQueueSessionService
     }
     
     /**
-     * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼Ì‚ÌƒQƒbƒ^[
+     * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åç§°ã®ã‚²ãƒƒã‚¿ãƒ¼
      * 
      */
     public ServiceName getJndiFinderServiceName(){
@@ -123,81 +123,81 @@ public class JmsQueueSessionService
     }
     
     /**
-     * Acknowledgeƒ‚[ƒh‚ÌƒQƒbƒ^[
+     * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
      */
     public int getAcknowledgeMode(){
         return mAckMode;
     }
     /**
-     * ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒZƒbƒ^[
+     * ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼
      */
     public void setTransanctionMode(boolean mode){
         mTransanctionMode = mode;
     }
     /**
-     * ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒQƒbƒ^[
+     * ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
      */
     public boolean getTransanctionMode(){
         return mTransanctionMode;
     }
     
-    // JmsQueueSessionServiceMBean‚ÌJavaDoc
+    // JmsQueueSessionServiceMBeanã®JavaDoc
     public void setUserName(String name){
         userName = name;
     }
     
-    // JmsQueueSessionServiceMBean‚ÌJavaDoc
+    // JmsQueueSessionServiceMBeanã®JavaDoc
     public String getUserName(){
         return userName;
     }
     
-    // JmsQueueSessionServiceMBean‚ÌJavaDoc
+    // JmsQueueSessionServiceMBeanã®JavaDoc
     public void setPassword(String password){
         this.password = password;
     }
     
-    // JmsQueueSessionServiceMBean‚ÌJavaDoc
+    // JmsQueueSessionServiceMBeanã®JavaDoc
     public String getPassword(){
         return password;
     }
     
-    // JmsQueueSessionServiceMBean‚ÌJavaDoc
+    // JmsQueueSessionServiceMBeanã®JavaDoc
     public void setConnectionFactoryName(String name){
         queueConnectionFactoryName = name;
     }
     
-    // JmsQueueSessionServiceMBean‚ÌJavaDoc
+    // JmsQueueSessionServiceMBeanã®JavaDoc
     public String getConnectionFactoryName(){
         return queueConnectionFactoryName;
     }
 
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“Ši”[ƒL[‚ğİ’è<p>
-     * ƒ}ƒbƒv‚ÉŠi”[‚·‚éˆ×‚Ìİ’èƒL[Bİ’è‚ª–³‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg(QueueConnection)‚ğÌ—pB
-     * @param key Ši”[ƒL[
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ ¼ç´ã‚­ãƒ¼ã‚’è¨­å®š<p>
+     * ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ç‚ºã®è¨­å®šã‚­ãƒ¼ã€‚è¨­å®šãŒç„¡ã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ(QueueConnection)ã‚’æ¡ç”¨ã€‚
+     * @param key æ ¼ç´ã‚­ãƒ¼
      */
     public void setConnectionCacheKey(String key){
 	    connectionKey = key;
 	}
 	/**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“Ši”[ƒL[‚ğæ“¾<p>
-     * ƒ}ƒbƒv‚ÉŠi”[‚·‚éˆ×‚Ìİ’èƒL[‚ğæ“¾B
-     * @return Ši”[ƒL[
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ ¼ç´ã‚­ãƒ¼ã‚’å–å¾—<p>
+     * ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ç‚ºã®è¨­å®šã‚­ãƒ¼ã‚’å–å¾—ã€‚
+     * @return æ ¼ç´ã‚­ãƒ¼
      */
 	public String getConnectionCacheKey(){
 	    return connectionKey;
 	}
 	
 	/**
-     * ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è<p>
-     * @param name ƒT[ƒrƒX–¼
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®š<p>
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionCacheMapServiceName(ServiceName name){
         connectionCacheMapServiceName = name;
     }
     /**
-     * ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾<p>
-     * @return ƒT[ƒrƒX–¼
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—<p>
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionCacheMapServiceName(){
         return connectionCacheMapServiceName;
@@ -216,7 +216,7 @@ public class JmsQueueSessionService
     }
 
     /**
-     * ŠJn
+     * é–‹å§‹
      */
     public void startService() throws Exception{
         if(mJndiFinderServiceName != null) {
@@ -229,7 +229,7 @@ public class JmsQueueSessionService
                 .getService(this.mSemaphoreFactoryServiceName);
         }
         try{
-			//ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ[‚Ìæ“¾
+			//ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã®å–å¾—
             if(queueConnectionFactoryName == null){
                 mQueueConnectionFactory
                      = (QueueConnectionFactory)mJndiFinderService.lookup();
@@ -240,7 +240,7 @@ public class JmsQueueSessionService
                     );
             }
         }catch(NamingException e){
-            //lookup‚É¸”s
+            //lookupã«å¤±æ•—
             throw new ServiceException(
                 "JMSQUEUESESSIONSERVICE013",
                 "Fail to lookup QueueConnectionFactory",
@@ -253,7 +253,7 @@ public class JmsQueueSessionService
                 e
             );
         }
-        //ƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾
+        //ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—
         try{
         	if(connectionCacheMapServiceName != null){
                 connectionCache = (CacheMap)ServiceManagerFactory.getServiceObject(connectionCacheMapServiceName);
@@ -264,7 +264,7 @@ public class JmsQueueSessionService
                     .addCacheRemoveListener(this);
             }
             else {
-				//ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚ğg—p‚µ‚È‚¢
+				//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚’ä½¿ç”¨ã—ãªã„
         		mConnection = createConnection();
         	}         
         }catch(Exception e){
@@ -275,36 +275,36 @@ public class JmsQueueSessionService
             );
         }
         if(mSemaphoreFactory != null){
-            //ƒZƒ}ƒtƒH‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾
+            //ã‚»ãƒãƒ•ã‚©ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—
             mSemaphore = mSemaphoreFactory.createSemaphore(mSemaphoreCapacity);
             mSemaphore.accept();
         }
     }
     /**
-     * ’â~
+     * åœæ­¢
      */
     public void stopService(){
-        //ƒRƒlƒNƒVƒ‡ƒ“•Â‚¶‚é
+        //ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³é–‰ã˜ã‚‹
         try{
         	if(mConnection != null){
         		mConnection.close();
         	}
         }catch(Exception e){
-            //ƒNƒ[ƒY‚É¸”s‚µ‚Ä‚à‚È‚É‚à‚µ‚È‚¢B
+            //ã‚¯ãƒ­ãƒ¼ã‚ºã«å¤±æ•—ã—ã¦ã‚‚ãªã«ã‚‚ã—ãªã„ã€‚
         }
-        //ƒZƒ}ƒtƒH‚Ì‰ğ•ú
+        //ã‚»ãƒãƒ•ã‚©ã®è§£æ”¾
         if(mSemaphore != null){
             mSemaphore.release();
         }
         mSemaphore = null;
-        //ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv“à‚ÌƒRƒlƒNƒVƒ‡ƒ“‰ğ•úAƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ì‰Šú‰»
+        //ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—å†…ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³è§£æ”¾ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®åˆæœŸåŒ–
         if(connectionCache != null){
 	        connectionCache.remove(connectionKey);
 	        connectionCache = null;
 	    }
     }
     /**
-     * ”jŠü
+     * ç ´æ£„
      *
      */
     public void destory(){
@@ -312,14 +312,14 @@ public class JmsQueueSessionService
     }
     
     /**
-     * Acknowledgeƒ‚[ƒh‚ÌƒZƒbƒ^[
+     * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼
      */
     public void setAcknowledgeMode(int mode){
         if ((mode != Session.AUTO_ACKNOWLEDGE) &&
             (mode != Session.CLIENT_ACKNOWLEDGE) &&
             (mode != Session.DUPS_OK_ACKNOWLEDGE)){
-            //—LŒø‚Å‚È‚¢’l‚ªİ’è‚³‚ê‚½ê‡‚È‚É‚à‚µ‚È‚¢B
-            //Œ‹‰Ê‚Æ‚µ‚ÄƒfƒtƒHƒ‹ƒg‚ÌSession.AUTO_ACKNOWLEDGE‚Æ‚È‚éB
+            //æœ‰åŠ¹ã§ãªã„å€¤ãŒè¨­å®šã•ã‚ŒãŸå ´åˆãªã«ã‚‚ã—ãªã„ã€‚
+            //çµæœã¨ã—ã¦ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Session.AUTO_ACKNOWLEDGEã¨ãªã‚‹ã€‚
         }
         else{
             mAckMode = mode;
@@ -327,7 +327,7 @@ public class JmsQueueSessionService
     }
     
     /**
-     * QueueSession¶¬ƒƒ\ƒbƒh
+     * QueueSessionç”Ÿæˆãƒ¡ã‚½ãƒƒãƒ‰
      * @param key
      * @return TransactionObject
      */
@@ -340,13 +340,13 @@ public class JmsQueueSessionService
         }
         try{
         	if(mConnection == null && connectionCache != null){
-				//ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvg—pƒP[ƒX
+				//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ä½¿ç”¨ã‚±ãƒ¼ã‚¹
         		conn = (QueueConnection)connectionCache.get(connectionKey);
         		if(conn == null){
 			        synchronized(connectionCache){
                 		conn = (QueueConnection)connectionCache.get(connectionKey);
         			    if(conn == null){
-        					//•Û‚·‚éƒRƒlƒNƒVƒ‡ƒ“–³‚µ
+        					//ä¿æŒã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç„¡ã—
                 			conn = createConnection();
                 			connectionCache.put(connectionKey, conn);
                             connectionCache.getCachedReference(connectionKey)
@@ -355,27 +355,27 @@ public class JmsQueueSessionService
 			        }
         		}
         	}else{
-				//ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvg—p‚µ‚È‚¢ƒP[ƒX
+				//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ä½¿ç”¨ã—ãªã„ã‚±ãƒ¼ã‚¹
         		conn = mConnection;
         	}
         }catch(JMSException e){
             try{
-    			//ƒRƒlƒNƒVƒ‡ƒ“¶¬‚É—áŠO”­¶ƒP[ƒX
+    			//ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆæ™‚ã«ä¾‹å¤–ç™ºç”Ÿã‚±ãƒ¼ã‚¹
             	try {
-    				//ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ[‚Ìæ“¾
+    				//ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã®å–å¾—
     				mQueueConnectionFactory = (QueueConnectionFactory)mJndiFinderService.lookup(queueConnectionFactoryName);
     			} catch (NamingException e1) {
-    				//QueueConnectionFactory‚Ìlookup¸”s
+    				//QueueConnectionFactoryã®lookupå¤±æ•—
     				throw new ServiceException("00013","Fail to lookup key = "+ queueConnectionFactoryName,e1); 
     			}
     			if(mConnection == null && connectionCache != null){
-    				//ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvg—pƒP[ƒX
+    				//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ä½¿ç”¨ã‚±ãƒ¼ã‚¹
             		conn = (QueueConnection)connectionCache.get(connectionKey);
             		if(conn == null){
     			        synchronized(connectionCache){
                     		conn = (QueueConnection)connectionCache.get(connectionKey);
             			    if(conn == null){
-            					//•Û‚·‚éƒRƒlƒNƒVƒ‡ƒ“–³‚µ
+            					//ä¿æŒã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç„¡ã—
                     			conn = createConnection();
                     			connectionCache.put(connectionKey, conn);
                                 connectionCache.getCachedReference(connectionKey)
@@ -412,10 +412,10 @@ public class JmsQueueSessionService
             }
         }
         try{
-            //ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾ŒãAƒZƒbƒVƒ‡ƒ“‚ğæ“¾
+            //ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—å¾Œã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’å–å¾—
             qSession = conn.createQueueSession(mTransanctionMode, mAckMode);
-            //QueTransanctionResource‚ÉAƒZƒ}ƒtƒH‚ğ“n‚µ‚Ä‚¨‚­
-            //QueTransanctionResource‚Ìclose()‚ÅAƒZƒ}ƒtƒH‚ÌfreeResource()‚ğƒR[ƒ‹‚·‚éB
+            //QueTransanctionResourceã«ã€ã‚»ãƒãƒ•ã‚©ã‚’æ¸¡ã—ã¦ãŠã
+            //QueTransanctionResourceã®close()ã§ã€ã‚»ãƒãƒ•ã‚©ã®freeResource()ã‚’ã‚³ãƒ¼ãƒ«ã™ã‚‹ã€‚
         }catch(JMSException e){
             if(mSemaphore != null){
                 mSemaphore.freeResource();
@@ -437,12 +437,12 @@ public class JmsQueueSessionService
     }
     
     /**
-     * ƒLƒ…[ƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬
-     * @retrun QueueConnection ƒLƒ…[ƒRƒlƒNƒVƒ‡ƒ“
+     * ã‚­ãƒ¥ãƒ¼ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆ
+     * @retrun QueueConnection ã‚­ãƒ¥ãƒ¼ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     private QueueConnection createConnection() throws JMSException{
     	if(userName != null){
-			//ƒ†[ƒU[–¼‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡Aƒ†[ƒU[–¼AƒpƒXƒ[ƒh‚ğg—p‚µ‚ÄƒRƒlƒNƒVƒ‡ƒ“æ“¾
+			//ãƒ¦ãƒ¼ã‚¶ãƒ¼åãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã€ãƒ¦ãƒ¼ã‚¶ãƒ¼åã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã—ã¦ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³å–å¾—
             return mQueueConnectionFactory
                 .createQueueConnection(userName, password);
         }else{
@@ -451,10 +451,10 @@ public class JmsQueueSessionService
     }
     
     /**
-     * Connection‚ğƒLƒƒƒbƒVƒ…‚µ‚Ä‚¢‚é‚ÉAƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½Connection‚ğclose‚·‚éB<br>
+     * Connectionã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸConnectionã‚’closeã™ã‚‹ã€‚<br>
      *
-     * @param ref íœ‚³‚ê‚éƒLƒƒƒbƒVƒ…QÆ
+     * @param ref å‰Šé™¤ã•ã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         final Connection con = (Connection)ref.get();

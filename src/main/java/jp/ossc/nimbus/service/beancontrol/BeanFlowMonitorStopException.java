@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol;
 
 /**
- * ‹Æ–±ƒtƒ[‚ªBeanFlowMonitor‚É‚æ‚Á‚Ä’âŽ~‚³‚ê‚½Žž‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼ãŒBeanFlowMonitorã«ã‚ˆã£ã¦åœæ­¢ã•ã‚ŒãŸæ™‚ã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,16 +45,16 @@ public class BeanFlowMonitorStopException extends RuntimeException{
     private String stepName;
     
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BeanFlowMonitorStopException(){
         super();
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ðŽ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public BeanFlowMonitorStopException(String message){
         super(message);

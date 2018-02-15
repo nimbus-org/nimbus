@@ -31,21 +31,21 @@ package jp.ossc.nimbus.service.resource.datasource;
  * policies, either expressed or implied, of the Nimbus Project.
  */
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 //
 /**
- * JDBCƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ[ŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒX 
+ * JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/29 -@K.Nagai
+ * @version  1.00 ä½œæˆ: 2003/11/29 -ã€€K.Nagai
  */
 public interface JdbcConnectionFactoryFromDataSourceServiceMBean
 	extends ServiceBaseMBean {
-    /**ƒRƒlƒNƒVƒ‡ƒ“ƒ‚[ƒhF’Êí*/
+    /**ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ï¼šé€šå¸¸*/
     public final static int CONNECTION_MODE_NORMAL=0;
-    /**ƒRƒlƒNƒVƒ‡ƒ“ƒ‚[ƒhƒtƒFƒCƒN(setAutoCommit/close‚Í–³‹‚·‚é)*/
+    /**ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ãƒ•ã‚§ã‚¤ã‚¯(setAutoCommit/closeã¯ç„¡è¦–ã™ã‚‹)*/
     public final static int CONNECTION_MODE_FAKE=1;
     
 	/**
@@ -55,7 +55,7 @@ public interface JdbcConnectionFactoryFromDataSourceServiceMBean
 	public void setJndiFinderServiceName(ServiceName name) ;
 	/**
 	 * getJndiFinderServiceName
-	 * @return JndiFinderƒT[ƒrƒX–¼
+	 * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getJndiFinderServiceName() ;
 	/**
@@ -70,61 +70,61 @@ public interface JdbcConnectionFactoryFromDataSourceServiceMBean
 	public void setManagedResource(boolean isManaged) ;
 	/**
 	 * setConnectionClassName
-	 * @param name NimbusJdbcConnection‚ğŒp³‚µ‚½ƒNƒ‰ƒX–¼
+	 * @param name NimbusJdbcConnectionã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹å
 	 */
 	public void setConnectionClassName(String name);
 	/**
 	 * setPreformanceServiceName
-	 * @param serviceName ƒpƒtƒH[ƒ}ƒ“ƒX“Œv‚ğæ‚éƒT[ƒrƒX–¼
+	 * @param serviceName ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹çµ±è¨ˆã‚’å–ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public void setPerformanceServiceName(ServiceName serviceName);
 	/**
 	 * getPreformanceServiceName
-	 * @return serviceName ƒpƒtƒH[ƒ}ƒ“ƒX“Œv‚ğæ‚éƒT[ƒrƒX–¼
+	 * @return serviceName ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹çµ±è¨ˆã‚’å–ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getPerformanceServiceName();
 	/**
 	 * setJournalServiceName
-	 * @param serviceName ƒWƒƒ[ƒiƒ‹‚ğæ‚éƒT[ƒrƒX–¼
+	 * @param serviceName ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å–ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public void setJournalServiceName(ServiceName serviceName);	
 	/**
 	 * getJournalServiceName
-	 * @return serviceName ƒWƒƒ[ƒiƒ‹‚ğæ‚éƒT[ƒrƒX–¼
+	 * @return serviceName ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å–ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getJournalServiceName();	
 	
 	/**
 	 * setJournalLevel<p>
-	 * ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹‚ğİ’è‚·‚é
-	 * @param journalLevel ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹
+	 * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹
+	 * @param journalLevel ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«
 	 */
 	public void setJournalLevel(int journalLevel);	
 	/**
 	 * getJournalLevel<p>
-	 * ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹‚ğæ“¾‚·‚é
-	 * @return journalLevel ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹
+	 * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹
+	 * @return journalLevel ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«
 	 */
 	public int getJournalLevel();	
 	/**
 	 * setSequenceServiceName
-	 * @param serviceName Sequence‚ğæ‚éƒT[ƒrƒX–¼
+	 * @param serviceName Sequenceã‚’å–ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public void setSequenceServiceName(ServiceName serviceName);	
 
 	/** 
 	 * getSequenceServiceName
-	 * @return serviceName Sequence‚ğæ‚éƒT[ƒrƒX–¼
+	 * @return serviceName Sequenceã‚’å–ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getSequenceServiceName();	 
 	/** 
 	 * getConnectionMode
-	 * @return mode CONNECTION_MODE_XXX‚Åw’è‚³‚ê‚éƒRƒlƒNƒVƒ‡ƒ“ƒ‚[ƒh
+	 * @return mode CONNECTION_MODE_XXXã§æŒ‡å®šã•ã‚Œã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰
 	 */
 	public int getConnectionMode();
 	/** 
 	 * setConnectionMode
-	 * @param mode CONNECTION_MODE_XXX‚Åw’è‚³‚ê‚éƒRƒlƒNƒVƒ‡ƒ“ƒ‚[ƒh
+	 * @param mode CONNECTION_MODE_XXXã§æŒ‡å®šã•ã‚Œã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰
 	 */
 	public void setConnectionMode(int mode);
 	

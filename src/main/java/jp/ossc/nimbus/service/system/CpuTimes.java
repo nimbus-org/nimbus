@@ -32,65 +32,65 @@
 package jp.ossc.nimbus.service.system;
 
 /**
- * CPUg—pŠÔB<p>
+ * CPUä½¿ç”¨æ™‚é–“ã€‚<p>
  *
  * @author M.Takata
  */
 public interface CpuTimes{
     
     /**
-     * ƒ†[ƒUƒvƒƒZƒX‚ÌCPUg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¦ãƒ¼ã‚¶ãƒ—ãƒ­ã‚»ã‚¹ã®CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒ†[ƒUƒvƒƒZƒX‚ÌCPUg—pŠÔ[ms]
+     * @return ãƒ¦ãƒ¼ã‚¶ãƒ—ãƒ­ã‚»ã‚¹ã®CPUä½¿ç”¨æ™‚é–“[ms]
      */
     public long getUserTimeMillis();
     
     /**
-     * ƒVƒXƒeƒ€‚ÌCPUg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ã®CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒVƒXƒeƒ€‚ÌCPUg—pŠÔ[ms]
+     * @return ã‚·ã‚¹ãƒ†ãƒ ã®CPUä½¿ç”¨æ™‚é–“[ms]
      */
     public long getSystemTimeMillis();
     
     /**
-     * CPU–¢g—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * CPUæœªä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return CPU–¢g—pŠÔ[ms]
+     * @return CPUæœªä½¿ç”¨æ™‚é–“[ms]
      */
     public long getIdleTimeMillis();
     
     /**
-     * CPU‘g—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * CPUç·ä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return CPU‘g—pŠÔ[ms]
+     * @return CPUç·ä½¿ç”¨æ™‚é–“[ms]
      */
     public long getTotalTimeMillis();
     
     /**
-     * ƒ†[ƒUƒvƒƒZƒX‚ÌCPUg—p—¦‚ğæ“¾‚·‚éB<p>
+     * ãƒ¦ãƒ¼ã‚¶ãƒ—ãƒ­ã‚»ã‚¹ã®CPUä½¿ç”¨ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒ†[ƒUƒvƒƒZƒX‚ÌCPUg—p—¦
+     * @return ãƒ¦ãƒ¼ã‚¶ãƒ—ãƒ­ã‚»ã‚¹ã®CPUä½¿ç”¨ç‡
      */
     public float getUserRate();
     
     /**
-     * ƒVƒXƒeƒ€‚ÌCPUg—p—¦‚ğæ“¾‚·‚éB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ã®CPUä½¿ç”¨ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒVƒXƒeƒ€‚ÌCPUg—p—¦
+     * @return ã‚·ã‚¹ãƒ†ãƒ ã®CPUä½¿ç”¨ç‡
      */
     public float getSystemRate();
     
     /**
-     * CPU–¢g—p—¦‚ğæ“¾‚·‚éB<p>
+     * CPUæœªä½¿ç”¨ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return CPU–¢g—p—¦
+     * @return CPUæœªä½¿ç”¨ç‡
      */
     public float getIdleRate();
     
     /**
-     * ‚±‚ÌCPUg—pŠÔ‚Éw’è‚³‚ê‚½CPUg—pŠÔ‚ğ‰ÁZ‚·‚éB<p>
+     * ã“ã®CPUä½¿ç”¨æ™‚é–“ã«æŒ‡å®šã•ã‚ŒãŸCPUä½¿ç”¨æ™‚é–“ã‚’åŠ ç®—ã™ã‚‹ã€‚<p>
      *
-     * @param times ‰ÁZ‚·‚éCPUg—pŠÔ
+     * @param times åŠ ç®—ã™ã‚‹CPUä½¿ç”¨æ™‚é–“
      */
     public void add(CpuTimes times);
 }

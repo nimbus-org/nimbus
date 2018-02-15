@@ -36,8 +36,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * RMIƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠB<p>
- * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚©‚ç¶¬‚³‚ê‚éƒ\ƒPƒbƒg‚ÍA{@link #setSocketProperty(String, Object)}‚ÅA—\‚ßİ’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚éB<br>
+ * RMIã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã‚‰ç”Ÿæˆã•ã‚Œã‚‹ã‚½ã‚±ãƒƒãƒˆã¯ã€{@link #setSocketProperty(String, Object)}ã§ã€äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

@@ -35,11 +35,11 @@ package jp.ossc.nimbus.service.resource;
 /**
  *  
  * @author   nakano
- * @version  1.00 作成: 2003/11/29 -　H.Nakano
+ * @version  1.00 菴懈��: 2003/11/29 -縲H.Nakano
  */
 public interface ResourceFactory {
 	/**
-	 * lookupキーを指定して、TransanctionResourceを取得するインターフェイス
+	 * lookup繧ｭ繝ｼ繧呈欠螳壹＠縺ｦ縲ゝransanctionResource繧貞叙蠕励☆繧九う繝ｳ繧ｿ繝ｼ繝輔ぉ繧､繧ｹ
 	 */
 	public TransactionResource makeResource(String key) throws Exception;
 }

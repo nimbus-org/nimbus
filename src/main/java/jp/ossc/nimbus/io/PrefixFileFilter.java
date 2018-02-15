@@ -34,8 +34,8 @@ package jp.ossc.nimbus.io;
 import java.io.*;
 
 /**
- * ƒvƒŒƒtƒBƒNƒXƒtƒ@ƒCƒ‹ƒtƒBƒ‹ƒ^B<p>
- * w’è‚³‚ê‚½ƒvƒŒƒtƒBƒNƒX‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚éƒtƒBƒ‹ƒ^B
+ * ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚£ãƒ«ã‚¿ã€‚<p>
+ * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã€‚
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.PrefixFileFilter;
@@ -51,39 +51,39 @@ public class PrefixFileFilter implements FilenameFilter, Serializable{
     private static final long serialVersionUID = 3579204076741445814L;
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌƒvƒŒƒtƒBƒNƒXB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã€‚<p>
      */
     protected String prefix;
     
     private String upperPrefix;
     
     /**
-     * ƒvƒŒƒtƒBƒNƒX‚Ì‘å•¶šE¬•¶š‚ğ‹æ•Ê‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA‘å•¶šE¬•¶š‚ğ‹æ•Ê‚·‚éB<br>
+     * ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã™ã‚‹ã€‚<br>
      */
     protected boolean isIgnoreCase;
     
     /**
-     * ƒvƒŒƒtƒBƒNƒX‚ğw’è‚µ‚È‚¢ƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã‚’æŒ‡å®šã—ãªã„ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PrefixFileFilter(){
         this(null, false);
     }
     
     /**
-     * w’è‚µ‚½ƒvƒŒƒtƒBƒNƒX‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚éƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param prefix ƒvƒŒƒtƒBƒNƒX
+     * @param prefix ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹
      */
     public PrefixFileFilter(String prefix){
         this(prefix, false);
     }
     
     /**
-     * w’è‚µ‚½ƒvƒŒƒtƒBƒNƒX‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚éƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param prefix ƒvƒŒƒtƒBƒNƒX
-     * @param isIgnoreCase ƒvƒŒƒtƒBƒNƒX‚Ì‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢ê‡‚Ítrue
+     * @param prefix ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹
+     * @param isIgnoreCase ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„å ´åˆã¯true
      */
     public PrefixFileFilter(
         String prefix,
@@ -94,10 +94,10 @@ public class PrefixFileFilter implements FilenameFilter, Serializable{
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌƒvƒŒƒtƒBƒNƒX‚ğİ’è‚·‚éB<p>
-     * null‚â‹ó•¶š‚ğw’è‚µ‚½ê‡‚ÍAƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚È‚¢B<br>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * nullã‚„ç©ºæ–‡å­—ã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãªã„ã€‚<br>
      * 
-     * @param prefix ƒtƒ@ƒCƒ‹‚ÌƒvƒŒƒtƒBƒNƒX
+     * @param prefix ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹
      */
     public void setPrefix(String prefix){
         if(prefix == null || prefix.length() == 0){
@@ -109,39 +109,39 @@ public class PrefixFileFilter implements FilenameFilter, Serializable{
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌƒvƒŒƒtƒBƒNƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒ@ƒCƒ‹‚ÌƒvƒŒƒtƒBƒNƒX
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹
      */
     public String getPrefix(){
         return prefix;
     }
     
     /**
-     * ƒvƒŒƒtƒBƒNƒX‚Ì‘å•¶šE¬•¶š‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param isIgnoreCase ‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢ê‡‚Ítrue
+     * @param isIgnoreCase å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„å ´åˆã¯true
      */
     public void setIgnoreCase(boolean isIgnoreCase){
         this.isIgnoreCase = isIgnoreCase;
     }
     
     /**
-     * ƒvƒŒƒtƒBƒNƒX‚Ì‘å•¶šE¬•¶š‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢
+     * @return trueã®å ´åˆã€å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„
      */
     public boolean isIgnoreCase(){
         return isIgnoreCase;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒŒƒtƒBƒNƒX‚Ìƒtƒ@ƒCƒ‹‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @param dir ƒfƒBƒŒƒNƒgƒŠ
-     * @param fileName ƒtƒ@ƒCƒ‹–¼
-     * @return w’è‚³‚ê‚½ƒvƒŒƒtƒBƒNƒX‚Ìƒtƒ@ƒCƒ‹‚Ìê‡true
+     * @param dir ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param fileName ãƒ•ã‚¡ã‚¤ãƒ«å
+     * @return æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´åˆtrue
      */
     public boolean accept(File dir, String fileName) {
         if(isIgnoreCase){

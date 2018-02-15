@@ -36,42 +36,42 @@ import java.util.Map;
 import javax.servlet.http.*;
 
 /**
- * RESTƒŠƒNƒGƒXƒgB<p>
+ * RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class RestRequest{
     
     /**
-     * HTTPƒŠƒNƒGƒXƒgB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
      */
     protected HttpServletRequest request;
     
     /**
-     * ƒŠƒNƒGƒXƒgURIB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆURIã€‚<p>
      */
     protected String uri;
     
     /**
-     * ƒpƒXƒpƒ‰ƒ[ƒ^ƒ}ƒbƒvB<p>
+     * ãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map pathParameterMap;
     
     /**
-     * ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object requestObject;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RestRequest(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public RestRequest(HttpServletRequest request){
         this.request = request;
@@ -81,64 +81,64 @@ public class RestRequest{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒŠƒNƒGƒXƒg
+     * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public HttpServletRequest getRequest(){
         return request;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgURI‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆURIã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgURI
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆURI
      */
     public String getURI(){
         return uri;
     }
     
     /**
-     * ƒpƒXƒpƒ‰ƒ[ƒ^ƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param map ƒpƒXƒpƒ‰ƒ[ƒ^ƒ}ƒbƒv
+     * @param map ãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒãƒƒãƒ—
      */
     protected void setPathParameterMap(Map map){
         pathParameterMap = map;
     }
     
     /**
-     * ƒpƒXƒpƒ‰ƒ[ƒ^ƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒXƒpƒ‰ƒ[ƒ^ƒ}ƒbƒv
+     * @return ãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒãƒƒãƒ—
      */
     public Map getPathParameterMap(){
         return pathParameterMap;
     }
     
     /**
-     * w’è‚µ‚½ƒpƒXƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒ‰ƒ[ƒ^–¼
-     * @return ƒpƒXƒpƒ‰ƒ[ƒ^
+     * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @return ãƒ‘ã‚¹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public String getPathParameter(String name){
         return pathParameterMap == null ? null : (String)pathParameterMap.get(name);
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param requestObj ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg
+     * @param requestObj ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setRequestObject(Object requestObj){
         requestObject = requestObj;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getRequestObject(){
         return requestObject;

@@ -46,9 +46,9 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.interpreter.*;
 
 /**
- * ƒeƒXƒg—p‚ÌHTTPƒvƒƒLƒV‚ÌƒŠƒNƒGƒXƒgˆ—ƒT[ƒrƒXB<p>
- * HTTPƒŠƒNƒGƒXƒg‚Ì“à—e‚ğƒtƒ@ƒCƒ‹‚Éo—Í‚·‚éB<br>
- * HTTPƒŒƒXƒ|ƒ“ƒX‚Ì“à—e‚ÍAHTTPƒŠƒNƒGƒXƒg‚ÌğŒ‚É‰‚¶‚ÄAƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚ñ‚Å‰“š‚·‚éB‚Ü‚½‚ÍA{@link #addAction(TestHttpProcessService.Action)}‚Åİ’è‚³‚ê‚½‡‚ÉAƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚ñ‚Å‰“š‚·‚éB<br>
+ * ãƒ†ã‚¹ãƒˆç”¨ã®HTTPãƒ—ãƒ­ã‚­ã‚·ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å†…å®¹ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚<br>
+ * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®å†…å®¹ã¯ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ¡ä»¶ã«å¿œã˜ã¦ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§å¿œç­”ã™ã‚‹ã€‚ã¾ãŸã¯ã€{@link #addAction(TestHttpProcessService.Action)}ã§è¨­å®šã•ã‚ŒãŸé †ã«ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§å¿œç­”ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -63,30 +63,30 @@ public class TestHttpProcessService extends HttpProcessServiceBase
     private List conditionActions = new ArrayList();
     private List actions = new ArrayList();
     
-    // TestHttpProcessServiceMBean‚ÌJavaDoc
+    // TestHttpProcessServiceMBeanã®JavaDoc
     public String getRequestOutputFileEncoding(){
         return requestOutputFileEncoding;
     }
-    // TestHttpProcessServiceMBean‚ÌJavaDoc
+    // TestHttpProcessServiceMBeanã®JavaDoc
     public void setRequestOutputFileEncoding(String encoding){
         requestOutputFileEncoding = encoding;
     }
     
-    // TestHttpProcessServiceMBean‚ÌJavaDoc
+    // TestHttpProcessServiceMBeanã®JavaDoc
     public String getResponseInputFileEncoding(){
         return responseInputFileEncoding;
     }
-    // TestHttpProcessServiceMBean‚ÌJavaDoc
+    // TestHttpProcessServiceMBeanã®JavaDoc
     public void setResponseInputFileEncoding(String encoding){
         responseInputFileEncoding = encoding;
     }
     
     /**
-     * {@link HttpRequest}‚É‘Î‚·‚éğŒ–ˆ‚ÉƒAƒNƒVƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * {@link HttpRequest}ã«å¯¾ã™ã‚‹æ¡ä»¶æ¯ã«ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param condition ğŒ
-     * @param action ƒAƒNƒVƒ‡ƒ“
-     * @exception Exception ğŒ®‚Ì‰ğÍ‚É¸”s‚µ‚½ê‡
+     * @param condition æ¡ä»¶
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
+     * @exception Exception æ¡ä»¶å¼ã®è§£æã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setAction(String condition, Action action) throws Exception{
         final Condition cond = new Condition(condition, action);
@@ -97,11 +97,11 @@ public class TestHttpProcessService extends HttpProcessServiceBase
     }
     
     /**
-     * ‡Ÿ‰“š‚·‚éƒAƒNƒVƒ‡ƒ“‚ğ“o˜^‚·‚éB<p>
-     * “o˜^‚³‚ê‚½ƒAƒNƒVƒ‡ƒ“‚ÍAŒÄ‚Ño‚³‚ê‚é‚½‚Ñ‚ÉÁ”ï‚³‚ê‚é‚½‚ßAŒÄ‚Ño‚µ–ˆ‚É“o˜^‚·‚é•K—v‚ª‚ ‚éB<br>
-     * {@link #setAction(String, TestHttpProcessService.Action)}‚æ‚è‚à—Dæ‚³‚ê‚éB<br>
+     * é †æ¬¡å¿œç­”ã™ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
+     * ç™»éŒ²ã•ã‚ŒãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¯ã€å‘¼ã³å‡ºã•ã‚Œã‚‹ãŸã³ã«æ¶ˆè²»ã•ã‚Œã‚‹ãŸã‚ã€å‘¼ã³å‡ºã—æ¯ã«ç™»éŒ²ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * {@link #setAction(String, TestHttpProcessService.Action)}ã‚ˆã‚Šã‚‚å„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param action ƒAƒNƒVƒ‡ƒ“
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      */
     public void addAction(Action action){
         if(actions.contains(action)){
@@ -111,20 +111,20 @@ public class TestHttpProcessService extends HttpProcessServiceBase
     }
     
     /**
-     * ‡Ÿ‰“š‚·‚éƒAƒNƒVƒ‡ƒ“‚ğƒNƒŠƒA‚·‚éB<p>
+     * é †æ¬¡å¿œç­”ã™ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearAction(){
         actions.clear();
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚ÌƒvƒƒLƒVˆ—‚ğs‚¤B<p>
-     * HTTPƒŠƒNƒGƒXƒg‚Ì“à—e‚ğƒtƒ@ƒCƒ‹‚Éo—Í‚·‚éB<br>
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚Ì“à—e‚ÍA{@link #setAction(String, TestHttpProcessService.Action)}‚Åİ’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚ÌğŒ‚É‰‚¶‚ÄAƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚ñ‚Å‰“š‚·‚éB‚Ü‚½‚ÍA{@link #addAction(TestHttpProcessService.Action)}‚Åİ’è‚³‚ê‚½‡‚ÉAƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚ñ‚Å‰“š‚·‚éB<br>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ—ãƒ­ã‚­ã‚·å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å†…å®¹ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®å†…å®¹ã¯ã€{@link #setAction(String, TestHttpProcessService.Action)}ã§è¨­å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ¡ä»¶ã«å¿œã˜ã¦ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§å¿œç­”ã™ã‚‹ã€‚ã¾ãŸã¯ã€{@link #addAction(TestHttpProcessService.Action)}ã§è¨­å®šã•ã‚ŒãŸé †ã«ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§å¿œç­”ã™ã‚‹ã€‚<br>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
-     * @exception Exception HTTPƒŠƒNƒGƒXƒg‚Ìˆ—‚É¸”s‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Exception HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void doProcess(
         HttpRequest request,
@@ -168,8 +168,8 @@ public class TestHttpProcessService extends HttpProcessServiceBase
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Ìˆ—İ’è‚ğs‚¤ƒNƒ‰ƒXB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚Ìo—Íƒtƒ@ƒCƒ‹AHTTPƒŒƒXƒ|ƒ“ƒXƒwƒbƒ_‚Ìİ’èAHTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹‚Ìİ’è‚ª‰Â”\‚Å‚ ‚éB<br>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†è¨­å®šã‚’è¡Œã†ã‚¯ãƒ©ã‚¹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã€HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ˜ãƒƒãƒ€ã®è¨­å®šã€HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®è¨­å®šãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -178,19 +178,19 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         private static final long serialVersionUID = 4155428986485777449L;
         
         /**
-         * {@link Interpreter}‚ÅA‰“š‚Ìƒ{ƒfƒB‚ğ•ÒW‚·‚éÛ‚ÌƒXƒNƒŠƒvƒg“à‚ÅQÆ‰Â”\‚ÈA{@link HttpRequest}‚Ì•Ï”–¼B<p>
+         * {@link Interpreter}ã§ã€å¿œç­”ã®ãƒœãƒ‡ã‚£ã‚’ç·¨é›†ã™ã‚‹éš›ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§å‚ç…§å¯èƒ½ãªã€{@link HttpRequest}ã®å¤‰æ•°åã€‚<p>
          */
         public static final String INTERPRET_VAR_NAME_REQUEST = "request";
         /**
-         * {@link Interpreter}‚ÅA‰“š‚Ìƒ{ƒfƒB‚ğ•ÒW‚·‚éÛ‚ÌƒXƒNƒŠƒvƒg“à‚ÅQÆ‰Â”\‚ÈAƒ{ƒfƒB‚ÌInputStream‚Ì•Ï”–¼B<p>
+         * {@link Interpreter}ã§ã€å¿œç­”ã®ãƒœãƒ‡ã‚£ã‚’ç·¨é›†ã™ã‚‹éš›ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§å‚ç…§å¯èƒ½ãªã€ãƒœãƒ‡ã‚£ã®InputStreamã®å¤‰æ•°åã€‚<p>
          */
         public static final String INTERPRET_VAR_NAME_RESPONSE_INPUT_STREAM = "inputStream";
         /**
-         * {@link Interpreter}‚ÅA‰“š‚Ìƒ{ƒfƒB‚ğ•ÒW‚·‚éÛ‚ÌƒXƒNƒŠƒvƒg“à‚ÅQÆ‰Â”\‚ÈAƒ{ƒfƒB‚ÌOutputStream‚Ì•Ï”–¼B<p>
+         * {@link Interpreter}ã§ã€å¿œç­”ã®ãƒœãƒ‡ã‚£ã‚’ç·¨é›†ã™ã‚‹éš›ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§å‚ç…§å¯èƒ½ãªã€ãƒœãƒ‡ã‚£ã®OutputStreamã®å¤‰æ•°åã€‚<p>
          */
         public static final String INTERPRET_VAR_NAME_RESPONSE_OUTPUT_STREAM = "outputStream";
         /**
-         * {@link Interpreter}‚ÅA‰“š‚Ìƒ{ƒfƒB‚ğ•ÒW‚·‚éÛ‚ÌƒXƒNƒŠƒvƒg“à‚ÅQÆ‰Â”\‚ÈAƒ{ƒfƒB‚Ì•¶š—ñ‚Ì•Ï”–¼B<p>
+         * {@link Interpreter}ã§ã€å¿œç­”ã®ãƒœãƒ‡ã‚£ã‚’ç·¨é›†ã™ã‚‹éš›ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§å‚ç…§å¯èƒ½ãªã€ãƒœãƒ‡ã‚£ã®æ–‡å­—åˆ—ã®å¤‰æ•°åã€‚<p>
          */
         public static final String INTERPRET_VAR_NAME_RESPONSE_STRING = "response";
         
@@ -209,104 +209,104 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         protected String responseBodyEditScript;
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ìo—Íƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return HTTPƒŠƒNƒGƒXƒg‚Ìo—Íƒtƒ@ƒCƒ‹
+         * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public String getRequestOutputFile(){
             return requestOutputFile;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ìo—Íƒtƒ@ƒCƒ‹‚ğİ’è‚·‚éB<p>
-         * ‚±‚Ìİ’è‚ğs‚Á‚½ê‡AHTTPƒwƒbƒ_‹y‚ÑHTTPƒ{ƒfƒB‚Ì—¼•û‚ªA‚±‚Ìƒtƒ@ƒCƒ‹‚Éo—Í‚³‚ê‚éB<br>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ã“ã®è¨­å®šã‚’è¡Œã£ãŸå ´åˆã€HTTPãƒ˜ãƒƒãƒ€åŠã³HTTPãƒœãƒ‡ã‚£ã®ä¸¡æ–¹ãŒã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
          *
-         * @param file HTTPƒŠƒNƒGƒXƒg‚Ìo—Íƒtƒ@ƒCƒ‹
+         * @param file HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public void setRequestOutputFile(String file){
             requestOutputFile = file;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_‚Ìo—Íƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_‚Ìo—Íƒtƒ@ƒCƒ‹
+         * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public String getRequestHeaderOutputFile(){
             return requestHeaderOutputFile;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_‚Ìo—Íƒtƒ@ƒCƒ‹‚ğİ’è‚·‚éB<p>
-         * ‚±‚Ìİ’è‚ğs‚Á‚½ê‡AHTTPƒwƒbƒ_‚Ì‚İ‚ªA‚±‚Ìƒtƒ@ƒCƒ‹‚Éo—Í‚³‚ê‚éB<br>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ã“ã®è¨­å®šã‚’è¡Œã£ãŸå ´åˆã€HTTPãƒ˜ãƒƒãƒ€ã®ã¿ãŒã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
          *
-         * @param file HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_‚Ìo—Íƒtƒ@ƒCƒ‹
+         * @param file HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public void setRequestHeaderOutputFile(String file){
             requestHeaderOutputFile = file;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒgƒ{ƒfƒB‚Ìo—Íƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return HTTPƒŠƒNƒGƒXƒgƒ{ƒfƒB‚Ìo—Íƒtƒ@ƒCƒ‹
+         * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public String getRequestBodyOutputFile(){
             return requestBodyOutputFile;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒgƒ{ƒfƒB‚Ìo—Íƒtƒ@ƒCƒ‹‚ğİ’è‚·‚éB<p>
-         * ‚±‚Ìİ’è‚ğs‚Á‚½ê‡AHTTPƒ{ƒfƒB‚Ì‚İ‚ªA‚±‚Ìƒtƒ@ƒCƒ‹‚Éo—Í‚³‚ê‚éB<br>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ã“ã®è¨­å®šã‚’è¡Œã£ãŸå ´åˆã€HTTPãƒœãƒ‡ã‚£ã®ã¿ãŒã€ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
          *
-         * @param file HTTPƒŠƒNƒGƒXƒgƒ{ƒfƒB‚Ìo—Íƒtƒ@ƒCƒ‹
+         * @param file HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public void setRequestBodyOutputFile(String file){
             requestBodyOutputFile = file;
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒo[ƒWƒ‡ƒ“‚ğİ’è‚·‚éB<p>
-         * İ’è‚µ‚È‚¢ê‡‚ÍAHTTPƒŠƒNƒGƒXƒg‚ÌHTTPƒo[ƒWƒ‡ƒ“‚Æ“¯‚¶’l‚É‚È‚éB<br>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * è¨­å®šã—ãªã„å ´åˆã¯ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¨åŒã˜å€¤ã«ãªã‚‹ã€‚<br>
          *
-         * @param version HTTPƒo[ƒWƒ‡ƒ“
+         * @param version HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³
          */
         public void setResponseVersion(String version){
             responseVersion = version;
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒe[ƒ^ƒXƒR[ƒh‚ğİ’è‚·‚éB<p>
-         * İ’è‚µ‚È‚¢ê‡‚ÍA{@link HttpResponse#getStatusCode()}‚É‚È‚éB<br>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link HttpResponse#getStatusCode()}ã«ãªã‚‹ã€‚<br>
          *
-         * @param code HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒe[ƒ^ƒXƒR[ƒh
+         * @param code HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚³ãƒ¼ãƒ‰
          */
         public void setResponseStatusCode(int code){
            responseStatusCode = code;
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW‚ğİ’è‚·‚éB<p>
-         * İ’è‚µ‚È‚¢ê‡‚ÍA{@link HttpResponse#getStatusMessage()}‚É‚È‚éB<br>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link HttpResponse#getStatusMessage()}ã«ãªã‚‹ã€‚<br>
          *
-         * @param message HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW
+         * @param message HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
          */
         public void setResponseStatusMessage(String message){
             responseStatusMessage = message;
         }
         
         /**
-         * ˆ—ŠÔ[ms]‚ğİ’è‚·‚éB<p>
+         * å‡¦ç†æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          */
         public void setProcessTime(long time){
             processTime = time;
         }
         
         /**
-         * ƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+         * ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ƒwƒbƒ_–¼
-         * @param val ƒwƒbƒ_’l
+         * @param name ãƒ˜ãƒƒãƒ€å
+         * @param val ãƒ˜ãƒƒãƒ€å€¤
          */
         public void setHeader(String name, String val){
             String[] vals = (String[])responseHeaderMap.get(name);
@@ -323,29 +323,29 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * ƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+         * ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ƒwƒbƒ_–¼
-         * @param vals ƒwƒbƒ_’l”z—ñ
+         * @param name ãƒ˜ãƒƒãƒ€å
+         * @param vals ãƒ˜ãƒƒãƒ€å€¤é…åˆ—
          */
         public void setHeaders(String name, String[] vals){
             responseHeaderMap.put(name, vals);
         }
         
         /**
-         * ƒwƒbƒ_–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+         * ãƒ˜ãƒƒãƒ€åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒwƒbƒ_–¼‚ÌW‡
+         * @return ãƒ˜ãƒƒãƒ€åã®é›†åˆ
          */
         protected Set getHeaderNameSet(){
             return responseHeaderMap.keySet();
         }
         
         /**
-         * ƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param name ƒwƒbƒ_–¼
-         * @return ƒwƒbƒ_’l
+         * @param name ãƒ˜ãƒƒãƒ€å
+         * @return ãƒ˜ãƒƒãƒ€å€¤
          */
         protected String getHeader(String name){
             final String[] vals = (String[])responseHeaderMap.get(name);
@@ -353,64 +353,64 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * ƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param name ƒwƒbƒ_–¼
-         * @return ƒwƒbƒ_’l”z—ñ
+         * @param name ãƒ˜ãƒƒãƒ€å
+         * @return ãƒ˜ãƒƒãƒ€å€¤é…åˆ—
          */
         protected String[] getHeaders(String name){
             return (String[])responseHeaderMap.get(name);
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return HTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹
+         * @return HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public String getResponseBodyInputFile(){
             return responseBodyInputFile;
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹‚ğİ’è‚·‚éB<p>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param file HTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹
+         * @param file HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«
          */
         public void setResponseBodyInputFile(String file){
             responseBodyInputFile = file;
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹‚ªƒoƒCƒiƒŠ‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒã‚¤ãƒŠãƒªã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param isBinary ƒoƒCƒiƒŠ‚Ìê‡true
+         * @param isBinary ãƒã‚¤ãƒŠãƒªã®å ´åˆtrue
          */
         public void setBinaryResponse(boolean isBinary){
             isBinaryResponse = isBinary;
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì“ü—Íƒtƒ@ƒCƒ‹‚ªƒoƒCƒiƒŠ‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒã‚¤ãƒŠãƒªã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡AƒoƒCƒiƒŠ
+         * @return trueã®å ´åˆã€ãƒã‚¤ãƒŠãƒª
          */
         public boolean isBinaryResponse(){
             return isBinaryResponse;
         }
         
         /**
-         * {@link Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+         * {@link Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name {@link Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+         * @param name {@link Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public void setInterpreterServiceName(ServiceName name){
             interpreterServiceName = name;
         }
         
         /**
-         * {@link Interpreter}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+         * {@link Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param interpreter {@link Interpreter}ƒT[ƒrƒX
+         * @param interpreter {@link Interpreter}ã‚µãƒ¼ãƒ“ã‚¹
          */
         public void setInterpreter(Interpreter interpreter){
             this.interpreter = interpreter;
@@ -424,11 +424,11 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * {@link Interpreter}‚ğg‚Á‚ÄA‰“š‚Ìƒ{ƒfƒB‚ğ•ÒW‚·‚é‚½‚ß‚ÌƒXƒNƒŠƒvƒg‚ğİ’è‚·‚éB<p>
-         * {@link #setBinaryResponse(boolean) setBinaryResponse(true)}‚Éİ’è‚µ‚½ê‡‚ÍAƒXƒNƒŠƒvƒg“à‚ÅA•Ï”{@link #INTERPRET_VAR_NAME_REQUEST}A{@link #INTERPRET_VAR_NAME_RESPONSE_INPUT_STREAM}A{@link #INTERPRET_VAR_NAME_RESPONSE_OUTPUT_STREAM}‚ªQÆ‰Â”\‚ÅAƒ{ƒfƒB‚Ì•ÒWŒ‹‰Ê‚ğ{@link #INTERPRET_VAR_NAME_RESPONSE_OUTPUT_STREAM}‚É‘‚«‚ŞB<br>
-         * {@link #setBinaryResponse(boolean) setBinaryResponse(false)}‚Éİ’è‚µ‚½ê‡‚ÍAƒXƒNƒŠƒvƒg“à‚ÅA•Ï”{@link #INTERPRET_VAR_NAME_REQUEST}A{@link #INTERPRET_VAR_NAME_RESPONSE_STRING}‚ªQÆ‰Â”\‚ÅAƒ{ƒfƒB‚Ì•ÒWŒ‹‰Ê‚ğ–ß‚è’l‚Å•Ô‚·B<br>
+         * {@link Interpreter}ã‚’ä½¿ã£ã¦ã€å¿œç­”ã®ãƒœãƒ‡ã‚£ã‚’ç·¨é›†ã™ã‚‹ãŸã‚ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * {@link #setBinaryResponse(boolean) setBinaryResponse(true)}ã«è¨­å®šã—ãŸå ´åˆã¯ã€ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã€å¤‰æ•°{@link #INTERPRET_VAR_NAME_REQUEST}ã€{@link #INTERPRET_VAR_NAME_RESPONSE_INPUT_STREAM}ã€{@link #INTERPRET_VAR_NAME_RESPONSE_OUTPUT_STREAM}ãŒå‚ç…§å¯èƒ½ã§ã€ãƒœãƒ‡ã‚£ã®ç·¨é›†çµæœã‚’{@link #INTERPRET_VAR_NAME_RESPONSE_OUTPUT_STREAM}ã«æ›¸ãè¾¼ã‚€ã€‚<br>
+         * {@link #setBinaryResponse(boolean) setBinaryResponse(false)}ã«è¨­å®šã—ãŸå ´åˆã¯ã€ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã€å¤‰æ•°{@link #INTERPRET_VAR_NAME_REQUEST}ã€{@link #INTERPRET_VAR_NAME_RESPONSE_STRING}ãŒå‚ç…§å¯èƒ½ã§ã€ãƒœãƒ‡ã‚£ã®ç·¨é›†çµæœã‚’æˆ»ã‚Šå€¤ã§è¿”ã™ã€‚<br>
          *
-         * @param script ‰“š‚Ìƒ{ƒfƒB‚ğ•ÒW‚·‚é‚½‚ß‚ÌƒXƒNƒŠƒvƒg
+         * @param script å¿œç­”ã®ãƒœãƒ‡ã‚£ã‚’ç·¨é›†ã™ã‚‹ãŸã‚ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
          */
         public void setResponseBodyEditScript(String script){
             responseBodyEditScript = script;
@@ -458,11 +458,11 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚ğƒtƒ@ƒCƒ‹‚Éo—Í‚·‚éB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
          *
-         * @param request HTTPƒŠƒNƒGƒXƒg
-         * @param requestOutputFileEncoding o—Íƒtƒ@ƒCƒ‹•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-         * @exception IOException ƒtƒ@ƒCƒ‹‚Ìo—Í‚É¸”s‚µ‚½ê‡
+         * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+         * @param requestOutputFileEncoding å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+         * @exception IOException ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected void writeRequest(
             HttpRequest request,
@@ -504,13 +504,13 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * HTTPƒŒƒXƒ|ƒ“ƒX‚ğƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚ñ‚ÅAƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚Éo—Í‚·‚éB<p>
+         * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
          *
-         * @param request HTTPƒŠƒNƒGƒXƒg
-         * @param response HTTPƒŒƒXƒ|ƒ“ƒX
-         * @param responseInputFileEncoding “ü—Íƒtƒ@ƒCƒ‹•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-         * @exception IOException ƒtƒ@ƒCƒ‹‚Ì“ü—Í‚É¸”s‚µ‚½ê‡
-         * @exception EvaluateException ‰“š•ÒWƒXƒNƒŠƒvƒg‚Ì•]‰¿‚É¸”s‚µ‚½ê‡
+         * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+         * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+         * @param responseInputFileEncoding å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+         * @exception IOException ãƒ•ã‚¡ã‚¤ãƒ«ã®å…¥åŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception EvaluateException å¿œç­”ç·¨é›†ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®è©•ä¾¡ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected void writeResponse(HttpRequest request, HttpResponse response, String responseInputFileEncoding) throws IOException, EvaluateException{
             if(responseVersion != null){
@@ -579,7 +579,7 @@ public class TestHttpProcessService extends HttpProcessServiceBase
     }
     
     /**
-     * ğŒB<p>
+     * æ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -595,16 +595,16 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         private String condition;
         
         /**
-         * ‚±‚ÌğŒ‚É‡’v‚µ‚½ê‡‚ÌƒAƒNƒVƒ‡ƒ“B<p>
+         * ã“ã®æ¡ä»¶ã«åˆè‡´ã—ãŸå ´åˆã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          */
         Action action;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param cond ğŒ®
-         * @param action ‚±‚ÌğŒ‚É‡’v‚µ‚½ê‡‚ÌƒAƒNƒVƒ‡ƒ“
-         * @exception Exception ğŒ®‚Ì‰ğÍ‚É¸”s‚µ‚½ê‡
+         * @param cond æ¡ä»¶å¼
+         * @param action ã“ã®æ¡ä»¶ã«åˆè‡´ã—ãŸå ´åˆã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
+         * @exception Exception æ¡ä»¶å¼ã®è§£æã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Condition(String cond, Action action) throws Exception{
             initCondition(cond);
@@ -612,10 +612,10 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * ğŒ‚ğ‰ğÍ‚·‚éB<p>
+         * æ¡ä»¶ã‚’è§£æã™ã‚‹ã€‚<p>
          *
-         * @param cond ğŒ®
-         * @exception Exception ğŒ®‚Ì‰ğÍ‚É¸”s‚µ‚½ê‡
+         * @param cond æ¡ä»¶å¼
+         * @exception Exception æ¡ä»¶å¼ã®è§£æã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void initCondition(String cond) throws Exception{
             keyList = new ArrayList();
@@ -658,23 +658,23 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚ª‚±‚ÌğŒ‚É‡’v‚·‚é‚©”»’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãŒã“ã®æ¡ä»¶ã«åˆè‡´ã™ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @param request HTTPƒŠƒNƒGƒXƒg
-         * @return ğŒ‚É‡’v‚·‚éê‡true
+         * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+         * @return æ¡ä»¶ã«åˆè‡´ã™ã‚‹å ´åˆtrue
          */
         protected boolean matchRequest(HttpRequest request){
             return matchRequest(request, false);
         }
         
         /**
-         * w’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚ª‚±‚ÌğŒ‚É‡’v‚·‚é‚©”»’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãŒã“ã®æ¡ä»¶ã«åˆè‡´ã™ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @param request HTTPƒŠƒNƒGƒXƒg
-         * @param isTest ‰Šú‰»‚ÌƒeƒXƒgÀs‚©‚Ç‚¤‚©Btrue‚Ìê‡AƒeƒXƒgÀs‚Å‚ ‚èA“n‚³‚ê‚éHTTPƒŠƒNƒGƒXƒg‚ª‹ó‚Å‚ ‚é‚½‚ßA•]‰¿Œ‹‰Ê‚ªboolean‚É‚È‚ç‚È‚­‚Ä‚à—áŠO‚Íthrow‚µ‚È‚¢
-         * @return ğŒ‚É‡’v‚·‚éê‡true
-         * @exception IllegalArgumentException •]‰¿Œ‹‰Ê‚ªboolean‚Å‚È‚¢ê‡B’A‚µAƒeƒXƒgÀs‚Ìê‡‚ÍAthrow‚³‚ê‚È‚¢B
-         * @exception RuntimeException ğŒ®‚Ì•]‰¿’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+         * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+         * @param isTest åˆæœŸåŒ–æ™‚ã®ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã‹ã©ã†ã‹ã€‚trueã®å ´åˆã€ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã§ã‚ã‚Šã€æ¸¡ã•ã‚Œã‚‹HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãŒç©ºã§ã‚ã‚‹ãŸã‚ã€è©•ä¾¡çµæœãŒbooleanã«ãªã‚‰ãªãã¦ã‚‚ä¾‹å¤–ã¯throwã—ãªã„
+         * @return æ¡ä»¶ã«åˆè‡´ã™ã‚‹å ´åˆtrue
+         * @exception IllegalArgumentException è©•ä¾¡çµæœãŒbooleanã§ãªã„å ´åˆã€‚ä½†ã—ã€ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã®å ´åˆã¯ã€throwã•ã‚Œãªã„ã€‚
+         * @exception RuntimeException æ¡ä»¶å¼ã®è©•ä¾¡ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
          */
         protected boolean matchRequest(HttpRequest request, boolean isTest){
             JexlContext jexlContext = JexlHelper.createContext();
@@ -715,15 +715,15 @@ public class TestHttpProcessService extends HttpProcessServiceBase
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
             }
         }
         
         /**
-         * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ª‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª‚ÂğŒ®‚Æ“¯‚¶ğŒ®‚ğ‚ÂConditionƒIƒuƒWƒFƒNƒg‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒã¤æ¡ä»¶å¼ã¨åŒã˜æ¡ä»¶å¼ã‚’æŒã¤Conditionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @param obj ”äŠr‘ÎÛƒIƒuƒWƒFƒNƒg
-         * @return “¯‚¶ğŒ®‚ğ‚ÂConditionƒIƒuƒWƒFƒNƒg‚Ìê‡true
+         * @param obj æ¯”è¼ƒå¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return åŒã˜æ¡ä»¶å¼ã‚’æŒã¤Conditionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å ´åˆtrue
          */
         public boolean equals(Object obj){
             if(obj == null){
@@ -744,9 +744,9 @@ public class TestHttpProcessService extends HttpProcessServiceBase
         }
         
         /**
-         * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+         * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒnƒbƒVƒ…’l
+         * @return ãƒãƒƒã‚·ãƒ¥å€¤
          */
         public int hashCode(){
             return condition == null ? 0 : condition.hashCode();

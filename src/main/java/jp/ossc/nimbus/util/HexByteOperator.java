@@ -29,36 +29,36 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 /**
- * ƒoƒCƒg•\Œ»‚Ì‚P‚Ui•¶š—ñ‚ğo—Í‚·‚é<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒã‚¤ãƒˆè¡¨ç¾ã®ï¼‘ï¼–é€²æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class HexByteOperator {
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public HexByteOperator() {
 		super();
 	}
 	/**
-	 *	ƒoƒCƒg”z—ñ‚ğƒwƒLƒT•¶š‚Ö•ÏŠ·
-	 *	@param compByte		ƒoƒCƒg”z—ñ
-	 * 	@return •ÏŠ·‚³‚ê‚½•¶š—ñ
+	 *	ãƒã‚¤ãƒˆé…åˆ—ã‚’ãƒ˜ã‚­ã‚µæ–‡å­—ã¸å¤‰æ›
+	 *	@param compByte		ãƒã‚¤ãƒˆé…åˆ—
+	 * 	@return å¤‰æ›ã•ã‚ŒãŸæ–‡å­—åˆ—
 	 */
 	public  static String bytesToHexString(byte[] compByte){
-		// ƒoƒCƒg‚Ì”z—ñ‚ğ‚P‚Ui”‚Ì®”‚Å•\‚µ‚½String‚É•ÏŠ·
+		// ãƒã‚¤ãƒˆã®é…åˆ—ã‚’ï¼‘ï¼–é€²æ•°ã®æ•´æ•°ã§è¡¨ã—ãŸStringã«å¤‰æ›
 		StringBuilder stringBuff = new StringBuilder("");
 		for (int i=0; i<compByte.length; i++) {
 			int ival = (compByte[i] < 0) ? (int)compByte[i] + 256 : (int)compByte[i] ;
@@ -71,10 +71,10 @@ public class HexByteOperator {
 		return stringBuff.toString() ;
 	}
 	/**
-	 * •¶š—ñ‚ğSHA1‚ÅƒnƒbƒVƒ…‚µ‚Ä‚P‚Ui•¶š‚Æ‚µ‚Äo—Í
+	 * æ–‡å­—åˆ—ã‚’SHA1ã§ãƒãƒƒã‚·ãƒ¥ã—ã¦ï¼‘ï¼–é€²æ–‡å­—ã¨ã—ã¦å‡ºåŠ›
 	 * @param orgStr
 	 * @param encode
-	 * @return ƒnƒbƒVƒ…•¶š—ñ
+	 * @return ãƒãƒƒã‚·ãƒ¥æ–‡å­—åˆ—
 	 */
 	public static String convertSHA1String(String orgStr,String encode){
 		MessageDigest md;

@@ -38,37 +38,37 @@ import java.io.*;
 import jp.ossc.nimbus.beans.dataset.*;
 
 /**
- * ƒ}ƒbƒvƒvƒƒpƒeƒBB<p>
- * ”CˆÓ‚ÌBean‚ÌA‚ ‚éƒvƒƒpƒeƒB–¼‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ì{@link Property}B<br>
- * ˆÈ‰º‚Ì‚æ‚¤‚ÈƒL[•t‚«ƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚éƒ^ƒCƒvƒZ[ƒt‚ÈƒR[ƒh‚ª‚ ‚éB<br>
+ * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
+ * ä»»æ„ã®Beanã®ã€ã‚ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®{@link Property}ã€‚<br>
+ * ä»¥ä¸‹ã®ã‚ˆã†ãªã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ãªã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹ã€‚<br>
  * <pre>
  *   Object propValue = obj.getHoge("fuga");
  *   obj.setHoge("fuga", propValue);
  * </pre>
- * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ğg‚¤–‚ÅA‚±‚ÌƒR[ƒh‚ğ<br>
+ * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ä½¿ã†äº‹ã§ã€ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’<br>
  * <pre>
  *   MappedProperty prop = new MappedProperty();
  *   prop.parse("hoge(fuga)");
  *   Object propValue = prop.getProperty(obj);
  *   prop.setProperty(obj, propValue);
  * </pre>
- * ‚Æ‚¢‚¤ƒR[ƒh‚É’u‚«Š·‚¦‚é–‚ª‚Å‚«‚éB<br>
- * ‚±‚ÌƒR[ƒh‚ÍAç’·‚É‚È‚Á‚Ä‚¢‚é‚ªA‘ÎÛ‚Æ‚È‚éBean‚ÌŒ^‚âƒƒ\ƒbƒh‚ğƒ^ƒCƒvƒZ[ƒt‚É‘‚©‚È‚¢“®“I‚ÈƒR[ƒh‚É‚È‚Á‚Ä‚¢‚éB<br>
+ * ã¨ã„ã†ã‚³ãƒ¼ãƒ‰ã«ç½®ãæ›ãˆã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€å†—é•·ã«ãªã£ã¦ã„ã‚‹ãŒã€å¯¾è±¡ã¨ãªã‚‹Beanã®å‹ã‚„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ã«æ›¸ã‹ãªã„å‹•çš„ãªã‚³ãƒ¼ãƒ‰ã«ãªã£ã¦ã„ã‚‹ã€‚<br>
  * <p>
- * ‚±‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚Å‚ÍAˆÈ‰º‚Ì‚æ‚¤‚ÈBean‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éƒAƒNƒZƒX•û–@‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã“ã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ãªBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th rowspan="3">ƒAƒNƒZƒX•û–@</th><th>Java•\Œ»</th><th rowspan="3">ƒvƒƒpƒeƒB•¶š—ñ•\Œ»</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBæ“¾</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBİ’è</th></tr>
- *   <tr><td rowspan="2">ƒL[•t‚«ƒvƒƒpƒeƒB</td><td>bean.getHoge("fuga")</td><td rowspan="2">hoge(fuga)</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th rowspan="3">ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•</th><th>Javaè¡¨ç¾</th><th rowspan="3">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—è¡¨ç¾</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨­å®š</th></tr>
+ *   <tr><td rowspan="2">ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>bean.getHoge("fuga")</td><td rowspan="2">hoge(fuga)</td></tr>
  *   <tr><td>bean.setHoge("fuga", value)</td></tr>
- *   <tr><td rowspan="2">–ß‚è’l‚ªjava.util.Map‚Ì’PƒƒvƒƒpƒeƒB</td><td>((java.util.Map)bean.getHoge()).get("fuga")</td><td rowspan="2">hoge(fuga)</td></tr>
+ *   <tr><td rowspan="2">æˆ»ã‚Šå€¤ãŒjava.util.Mapã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>((java.util.Map)bean.getHoge()).get("fuga")</td><td rowspan="2">hoge(fuga)</td></tr>
  *   <tr><td>((java.util.Map)bean.getHoge()).set("fuga", value)</td></tr>
- *   <tr><td rowspan="2">–ß‚è’l‚ªget(String)ƒƒ\ƒbƒh‚ğ‚Â”CˆÓ‚ÌƒNƒ‰ƒX‚Ì’PƒƒvƒƒpƒeƒB</td><td>bean.getHoge().get("fuga")</td><td rowspan="2">hoge(fuga)</td></tr>
+ *   <tr><td rowspan="2">æˆ»ã‚Šå€¤ãŒget(String)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤ä»»æ„ã®ã‚¯ãƒ©ã‚¹ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>bean.getHoge().get("fuga")</td><td rowspan="2">hoge(fuga)</td></tr>
  *   <tr><td>bean.getHoge().set("fuga", value)</td></tr>
- *   <tr><td rowspan="2">java.util.Map‚Ì—v‘f</td><td>bean.get("fuga")</td><td rowspan="2">(fuga)</td></tr>
+ *   <tr><td rowspan="2">java.util.Mapã®è¦ç´ </td><td>bean.get("fuga")</td><td rowspan="2">(fuga)</td></tr>
  *   <tr><td>bean.set("fuga", value)</td></tr>
- *   <tr><td rowspan="2">get(String)ƒƒ\ƒbƒh‚ğ‚Â”CˆÓ‚ÌƒNƒ‰ƒX‚Ì—v‘f</td><td>bean.get("fuga")</td><td rowspan="2">(fuga)</td></tr>
+ *   <tr><td rowspan="2">get(String)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤ä»»æ„ã®ã‚¯ãƒ©ã‚¹ã®è¦ç´ </td><td>bean.get("fuga")</td><td rowspan="2">(fuga)</td></tr>
  *   <tr><td>bean.set("fuga", value)</td></tr>
  * </table>
  * 
@@ -81,74 +81,74 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     private static final String RECORD_PROP_NAME = "Property";
     
     /**
-     * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒh–¼B<p>
+     * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰åã€‚<p>
      */
     protected static final String GET_METHOD_NAME = "get";
     
     /**
-     * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒh–¼B<p>
+     * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰åã€‚<p>
      */
     protected static final String IS_METHOD_NAME = "is";
     
     /**
-     * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒh‚Ìˆø”Œ^”z—ñB<p>
+     * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°å‹é…åˆ—ã€‚<p>
      */
     protected static final Class[] GET_METHOD_ARGS
         = new Class[]{String.class};
     
     /**
-     * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ÌSetterƒƒ\ƒbƒh–¼B<p>
+     * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Setterãƒ¡ã‚½ãƒƒãƒ‰åã€‚<p>
      */
     protected static final String SET_METHOD_NAME = "set";
     
     /**
-     * ƒL[B<p>
+     * ã‚­ãƒ¼ã€‚<p>
      */
     protected String key;
     
     /**
-     * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map mappedReadMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒ}ƒbƒvƒvƒƒpƒeƒB‚ÌSetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map mappedWriteMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map mappedObjReadMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚ÌSetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map mappedObjWriteMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ‹ó‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public MappedProperty(){
         super();
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB–¼‚ÅAƒL[‚ªnull‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§ã€ã‚­ãƒ¼ãŒnullã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @exception IllegalArgumentException ˆø”‚Énull‚ğw’è‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @exception IllegalArgumentException å¼•æ•°ã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public MappedProperty(String name) throws IllegalArgumentException{
         super(name);
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB–¼‚ÆƒL[‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨ã‚­ãƒ¼ã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param key ƒL[
-     * @exception IllegalArgumentException ˆø”name‚Énull‚ğw’è‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param key ã‚­ãƒ¼
+     * @exception IllegalArgumentException å¼•æ•°nameã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public MappedProperty(String name, String key)
      throws IllegalArgumentException{
@@ -157,32 +157,32 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼(ƒL[)
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(ã‚­ãƒ¼)
      */
     public String getPropertyName(){
         return (super.getPropertyName() == null ? "" : super.getPropertyName()) + '(' + key + ')';
     }
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param prop ƒvƒƒpƒeƒB–¼
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     protected void setPropertyName(String prop){
         property = prop;
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‰ğÍ‚·‚éB<p>
-     * ‚±‚±‚Åw’è‰Â”\‚È•¶š—ñ‚ÍA<br>
-     * &nbsp;ƒvƒƒpƒeƒB–¼(ƒL[)<br>
-     * ‚Å‚ ‚éB<br>
-     * ’A‚µAƒvƒƒpƒeƒB–¼‚ÍÈ—ª‰ÂB<br>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šå¯èƒ½ãªæ–‡å­—åˆ—ã¯ã€<br>
+     * &nbsp;ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(ã‚­ãƒ¼)<br>
+     * ã§ã‚ã‚‹ã€‚<br>
+     * ä½†ã—ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¯çœç•¥å¯ã€‚<br>
      *
-     * @param prop ƒvƒƒpƒeƒB•¶š—ñ
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‚±‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ª‰ğÍ‚Å‚«‚È‚¢ê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè§£æã§ããªã„å ´åˆ
      */
     public void parse(String prop) throws IllegalArgumentException{
         final int startMappedDelim = prop.indexOf('(');
@@ -201,18 +201,18 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getKey(){
         return key;
     }
     
     /**
-     * ƒL[‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
+     * @param key ã‚­ãƒ¼
      */
     public void setKey(String key){
         this.key = key;
@@ -448,14 +448,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NullKeyPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒL[•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NullKeyPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -489,11 +489,11 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚©‚çƒL[•t‚«GetterigetƒvƒƒpƒeƒB–¼(String)jƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
-     * ƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã‚­ãƒ¼ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param clazz ‘ÎÛ‚ÌBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ƒL[•t‚«GetterigetƒvƒƒpƒeƒB–¼(String)jƒƒ\ƒbƒh
+     * @param clazz å¯¾è±¡ã®Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ¼ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰
      */
     protected Method getReadMappedMethod(Class clazz){
         if(mappedReadMethodCache.containsKey(clazz)){
@@ -555,14 +555,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NullKeyPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒL[•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NullKeyPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -570,15 +570,15 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param type ƒvƒƒpƒeƒB‚ÌŒ^
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NullKeyPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒL[•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param type ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NullKeyPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Class type, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -638,12 +638,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
      }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚©‚çƒL[•t‚«SetterisetƒvƒƒpƒeƒB–¼(String, ˆø”‚Åw’è‚µ‚½param‚ÌƒNƒ‰ƒXŒ^)jƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
-     * ƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã‚­ãƒ¼ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String, å¼•æ•°ã§æŒ‡å®šã—ãŸparamã®ã‚¯ãƒ©ã‚¹å‹)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param clazz ‘ÎÛ‚ÌBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param param İ’è‚·‚é’l‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ƒL[•t‚«SetterisetƒvƒƒpƒeƒB–¼(String, ˆø”‚Åw’è‚µ‚½param‚ÌƒNƒ‰ƒXŒ^)jƒƒ\ƒbƒh
+     * @param clazz å¯¾è±¡ã®Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param param è¨­å®šã™ã‚‹å€¤ã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ¼ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String, å¼•æ•°ã§æŒ‡å®šã—ãŸparamã®ã‚¯ãƒ©ã‚¹å‹)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰
      */
     protected Method getWriteMappedMethod(Class clazz, Class param){
         if(mappedWriteMethodCache.containsKey(clazz)){
@@ -827,13 +827,13 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«GetterigetƒvƒƒpƒeƒB–¼(String)j‚ğŒÄ‚Ño‚µƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String)ï¼‰ã‚’å‘¼ã³å‡ºã—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒL[•t‚«GetterigetƒvƒƒpƒeƒB–¼(String)j
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚­ãƒ¼ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String)ï¼‰
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getMappedProperty(Object obj, Method readMethod)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -841,14 +841,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
         try{
             return readMethod.invoke(obj, new Object[]{getKey()});
         }catch(IllegalAccessException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
                 e
             );
         }catch(IllegalArgumentException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
@@ -858,13 +858,13 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«SetterisetƒvƒƒpƒeƒB–¼(String, ”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğŒÄ‚Ño‚µƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String, ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’å‘¼ã³å‡ºã—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param writeMethod ƒL[•t‚«SetterisetƒvƒƒpƒeƒB–¼(String, ”CˆÓ‚ÌƒNƒ‰ƒX)j
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param writeMethod ã‚­ãƒ¼ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(String, ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected void setMappedProperty(
         Object obj,
@@ -882,14 +882,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             }
             writeMethod.invoke(obj, new Object[]{getKey(), value});
         }catch(IllegalAccessException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
                 e
             );
         }catch(IllegalArgumentException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
@@ -899,13 +899,13 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA‚»‚Ì–ß‚è’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€ãã®æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í–ß‚è’l‚ªƒL[•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚Ü‚½‚ÍƒL[•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æˆ»ã‚Šå€¤ãŒã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã¾ãŸã¯ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getMappedObject(
         Object obj,
@@ -927,7 +927,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             }
         }catch(IllegalAccessException e){
             if(isThrow){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
@@ -938,7 +938,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             }
         }catch(IllegalArgumentException e){
             if(isThrow){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
@@ -951,14 +951,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NullKeyPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒL[•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í–ß‚è’l‚ªƒL[•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚Ü‚½‚ÍƒL[•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NullKeyPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æˆ»ã‚Šå€¤ãŒã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã¾ãŸã¯ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getNoMappedProperty(Object obj, Method readMethod)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -979,14 +979,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÉƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @param value ƒvƒƒpƒeƒB’l
-     * @exception NullKeyPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒL[•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í–ß‚è’l‚ªƒL[•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚Ü‚½‚ÍƒL[•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NullKeyPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æˆ»ã‚Šå€¤ãŒã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã¾ãŸã¯ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected void setNoMappedProperty(
         Object obj,
@@ -1006,11 +1006,11 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒL[•t‚«–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableNoMappedProperty(Object obj, Method readMethod){
         Object mappedObj = null;
@@ -1027,10 +1027,10 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param readMethod ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒL[•t‚«–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param readMethod ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableNoMappedProperty(Method readMethod){
         Class mappedClass = readMethod.getReturnType();
@@ -1042,12 +1042,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Getteriget(String)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãGetterï¼ˆget(String)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param clazz ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^ƒtƒF[ƒX
-     * @param obj ƒL[•t‚«ƒIƒuƒWƒFƒNƒg
-     * @return ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param clazz ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
+     * @param obj ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableMappedObjectProperty(Class clazz, Object obj){
         if(obj instanceof Record){
@@ -1108,11 +1108,11 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚©‚çA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Getteriget(String)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãGetterï¼ˆget(String)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param clazz ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^ƒtƒF[ƒX
-     * @return ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚©‚çA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param clazz ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
+     * @return ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableMappedObjectProperty(Class clazz){
         Method getMethod = null;
@@ -1159,12 +1159,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA‚»‚Ì–ß‚è’l‚ÉƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€ãã®æˆ»ã‚Šå€¤ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒL[•t‚«–ß‚è’lGetteriƒL[•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @param clazz ƒvƒƒpƒeƒB‚ÌŒ^
-     * @return w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒL[•t‚«–ß‚è’l‚ÉƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚Èê‡true
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @param clazz ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @return æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isWritableNoMappedProperty(
         Object obj,
@@ -1185,12 +1185,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Setteriset(String, ƒvƒƒpƒeƒB’l‚ÌŒ^‚É“K‡‚·‚é”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãSetterï¼ˆset(String, ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®å‹ã«é©åˆã™ã‚‹ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param obj ƒL[•t‚«ƒIƒuƒWƒFƒNƒg
-     * @param clazz ƒvƒƒpƒeƒB‚ÌŒ^
-     * @return w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚Èê‡true
+     * @param obj ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param clazz ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isWritableMappedObjectProperty(Object obj, Class clazz){
         final Class mappedClazz = obj.getClass();
@@ -1252,12 +1252,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Setteriset(String, ƒvƒƒpƒeƒB’l‚ÌŒ^‚É“K‡‚·‚é”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãSetterï¼ˆset(String, ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®å‹ã«é©åˆã™ã‚‹ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param mappedClazz ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
-     * @param clazz ƒvƒƒpƒeƒB‚ÌŒ^
-     * @return w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚Èê‡true
+     * @param mappedClazz ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
+     * @param clazz ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isWritableMappedObjectProperty(Class mappedClazz, Class clazz){
         Method setMethod = null;
@@ -1312,14 +1312,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒL[ƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Getteriget(String)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ã‚­ãƒ¼ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãGetterï¼ˆget(String)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param clazz ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^ƒtƒF[ƒX
-     * @param obj ƒL[•t‚«ƒIƒuƒWƒFƒNƒg
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
+     * @param obj ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getMappedObjectProperty(Class clazz, Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -1406,14 +1406,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                 new Object[]{getKey()}
             );
         }catch(IllegalAccessException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
                 e
             );
         }catch(IllegalArgumentException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
@@ -1423,12 +1423,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚©‚çA‚±‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒBŒ^‚ğæ“¾‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Getteriget(String)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãGetterï¼ˆget(String)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param mappedClazz ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÌŒ^
-     * @return ƒvƒƒpƒeƒBŒ^
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒL[•t‚«–ß‚è’l‚ªAƒL[•t‚«–ß‚è’l‚Å‚È‚¢ê‡
+     * @param mappedClazz ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‹
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
      */
     protected Class getMappedObjectPropertyType(Class mappedClazz)
      throws NoSuchPropertyException{
@@ -1513,7 +1513,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                     if(setMethod == null){
                         setMethod = method;
                     }else{
-                        // Šm’è‚Å‚«‚È‚¢‚Ì‚ÅƒGƒ‰[
+                        // ç¢ºå®šã§ããªã„ã®ã§ã‚¨ãƒ©ãƒ¼
                         mappedObjWriteMethodCache.put(mappedClazz, null);
                         if(Map.class.isAssignableFrom(mappedClazz)){
                             return Object.class;
@@ -1546,13 +1546,13 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚ª‚ÂƒL[‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒL[•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA{@link java.util.Map}AƒL[•t‚«Setteriset(String, ƒvƒƒpƒeƒB’l‚ÌŒ^‚É“K‡‚·‚é”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€{@link java.util.Map}ã€ã‚­ãƒ¼ä»˜ãSetterï¼ˆset(String, ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®å‹ã«é©åˆã™ã‚‹ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param obj ƒL[•t‚«ƒIƒuƒWƒFƒNƒg
-     * @param value ƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒL[•t‚«–ß‚è’l‚ªAƒL[•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½ƒL[•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj ã‚­ãƒ¼ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ãŒã€ã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected void setMappedObjectProperty(Class clazz, Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -1643,14 +1643,14 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                 new Object[]{getKey(), value}
             );
         }catch(IllegalAccessException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
                 e
             );
         }catch(IllegalArgumentException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
@@ -1660,22 +1660,22 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒL[‚ÍAnullB<br>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚­ãƒ¼ã¯ã€nullã€‚<br>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static MappedProperty[] getMappedProperties(Object bean){
         return getMappedProperties(bean.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒL[‚ÍAnullB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚­ãƒ¼ã¯ã€nullã€‚<br>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static MappedProperty[] getMappedProperties(Class clazz){
         Set props = new HashSet();
@@ -1823,12 +1823,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌAw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒL[‚ÍAnullB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚­ãƒ¼ã¯ã€nullã€‚<br>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @param prop ‘ÎÛ‚Æ‚È‚éƒvƒƒpƒeƒB–¼
-     * @return w’è‚³‚ê‚½Bean‚ÌAw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒL[•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @param prop å¯¾è±¡ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚­ãƒ¼ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static MappedProperty[] getMappedProperties(Class clazz, String prop){
         Set props = new HashSet();
@@ -1850,19 +1850,19 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒ}ƒbƒvƒvƒƒpƒeƒB‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MappedProperty{ƒvƒƒpƒeƒB–¼[ƒL[]}
+     * @return MappedProperty{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å[ã‚­ãƒ¼]}
      */
     public String toString(){
         return "MappedProperty{" + property + '(' + getKey() + ")}";
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ¦‚µ‚Ü‚·B <p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ç¤ºã—ã¾ã™ã€‚ <p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ˆø”‚Éw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢ê‡‚Í trueA‚»‚¤‚Å‚È‚¢ê‡‚Í falseB
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„å ´åˆã¯ trueã€ãã†ã§ãªã„å ´åˆã¯ falseã€‚
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -1889,19 +1889,19 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return (property == null ? 0 : property.hashCode()) + (key == null ? 0 : key.hashCode()) + 1;
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ì‡˜‚ğ”äŠr‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é †åºã‚’æ¯”è¼ƒã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚æ‚è¬‚³‚¢ê‡‚Í•‰‚Ì®”A“™‚µ‚¢ê‡‚Íƒ[ƒA‘å‚«‚¢ê‡‚Í³‚Ì®”
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚ˆã‚Šå°ã•ã„å ´åˆã¯è² ã®æ•´æ•°ã€ç­‰ã—ã„å ´åˆã¯ã‚¼ãƒ­ã€å¤§ãã„å ´åˆã¯æ­£ã®æ•´æ•°
      */
     public int compareTo(Object obj){
         if(obj == null){

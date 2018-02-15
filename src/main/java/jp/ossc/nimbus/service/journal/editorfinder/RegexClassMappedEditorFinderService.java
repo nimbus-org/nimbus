@@ -69,7 +69,7 @@ public class RegexClassMappedEditorFinderService extends ServiceBase
     }
     
     /**
-     * EditorFinder��ݒ肷��B
+     * EditorFinderを設定する。
      */
     public void setEditorfinder(EditorFinder parentEditorfinder) {
         this.parentEditorfinder = parentEditorfinder;

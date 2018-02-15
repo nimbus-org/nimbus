@@ -46,8 +46,8 @@ import java.net.UnknownHostException;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠB<p>
- * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚©‚ç¶¬‚³‚ê‚éƒ\ƒPƒbƒg‚ÍA{@link #setSocketProperty(String, Object)}‚ÅA—\‚ßİ’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚éB<br>
+ * ã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã‚‰ç”Ÿæˆã•ã‚Œã‚‹ã‚½ã‚±ãƒƒãƒˆã¯ã€{@link #setSocketProperty(String, Object)}ã§ã€äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -161,46 +161,46 @@ public class SocketFactory extends javax.net.SocketFactory implements Externaliz
     }
     
     /**
-     * NAT‚·‚éƒzƒXƒg–¼‚ğw’è‚·‚éƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_HOST_PROPERTY_NAME}B<br>
-     * {ƒvƒƒpƒeƒB–¼}.{NAT‘ÎÛƒzƒXƒg–¼}={NATŒã‚ÌƒzƒXƒg–¼}‚Åw’è‚·‚éB<br>
+     * NATã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_HOST_PROPERTY_NAME}ã€‚<br>
+     * {ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}.{NATå¯¾è±¡ãƒ›ã‚¹ãƒˆå}={NATå¾Œã®ãƒ›ã‚¹ãƒˆå}ã§æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void setHostPropertyName(String name){
         hostPropertyName = name;
     }
     
     /**
-     * NAT‚·‚éƒzƒXƒg–¼‚ğw’è‚·‚éƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * NATã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getHostPropertyName(){
         return hostPropertyName;
     }
     
     /**
-     * ƒ}ƒ‹ƒ`ƒz[ƒ€‚Å‚Ìƒ[ƒJƒ‹ƒzƒXƒg–¼‚ğw’è‚·‚éƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_LOCAL_HOST_PROPERTY_NAME}B<br>
+     * ãƒãƒ«ãƒãƒ›ãƒ¼ãƒ ã§ã®ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_LOCAL_HOST_PROPERTY_NAME}ã€‚<br>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void setLocalHostPropertyName(String name){
         localHostPropertyName = name;
     }
     
     /**
-     * ƒ}ƒ‹ƒ`ƒz[ƒ€‚Å‚Ìƒ[ƒJƒ‹ƒzƒXƒg–¼‚ğw’è‚·‚éƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ«ãƒãƒ›ãƒ¼ãƒ ã§ã®ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getLocalHostPropertyName(){
         return localHostPropertyName;
     }
     
     /**
-     * javax.net.SocketFactory‚ğİ’è‚·‚éB<p>
+     * javax.net.SocketFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory javax.net.SocketFactory
      */
@@ -209,9 +209,9 @@ public class SocketFactory extends javax.net.SocketFactory implements Externaliz
     }
     
     /**
-     * {@link Socket}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link Socket}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setSocketProperties(Map props){
         if(props == null || props.size() == 0){
@@ -228,10 +228,10 @@ public class SocketFactory extends javax.net.SocketFactory implements Externaliz
     }
     
     /**
-     * {@link Socket}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link Socket}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setSocketProperty(String name, Object value){
         if(socketProperties == null){
@@ -242,10 +242,10 @@ public class SocketFactory extends javax.net.SocketFactory implements Externaliz
     }
     
     /**
-     * {@link Socket}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link Socket}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getSocketProperty(String name){
         if(socketProperties == null){

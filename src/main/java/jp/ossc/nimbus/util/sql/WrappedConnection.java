@@ -69,9 +69,9 @@ public class WrappedConnection extends ConnectionWrapper{
     protected String journalKeyRollbackFail = DEFAULT_JOURNAL_ROLLBACK_FAIL;
     
     /**
-     * Žw’è‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒ‰ƒbƒv‚·‚éƒRƒlƒNƒVƒ‡ƒ“
+     * @param con ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public WrappedConnection(Connection con){
         super(con);

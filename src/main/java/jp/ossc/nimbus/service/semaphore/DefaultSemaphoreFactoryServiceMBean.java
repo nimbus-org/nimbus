@@ -35,24 +35,24 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.lang.ServiceException;
 
 /**
- * {@link DefaultSemaphoreFactoryService}‚ÌMBeanƒCƒ“ƒ^[ƒtƒFƒCƒXB<p>
+ * {@link DefaultSemaphoreFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚<p>
  *
  * @author H.Nakano
  */
 public interface DefaultSemaphoreFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link MemorySemaphore}B
+     * ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link MemorySemaphore}ã€‚
      *
-     * @param className ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼
+     * @param className ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     public void setImplementClassName(String className) throws ServiceException;
     
     /**
-     * ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼
+     * @return ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     public String getImplementClassName();
 }

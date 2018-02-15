@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * W”zMƒŒƒXƒ|ƒ“ƒXB<p>
+ * é›†é…ä¿¡ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -164,18 +164,18 @@ public class ConcentrateResponse implements Serializable{
     }
     
     /**
-     * ûW‚µ‚½ƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
+     * åé›†ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path ûW‚µ‚½ƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ
+     * @param path åé›†ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setRootDirectory(String path){
         rootDirectory = path;
     }
     
     /**
-     * ûW‚µ‚½ƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * åé›†ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ûW‚µ‚½ƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ
+     * @return åé›†ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public String getRootDirectory(){
         return rootDirectory;
@@ -189,18 +189,18 @@ public class ConcentrateResponse implements Serializable{
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìˆ—Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡¦ç†çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ—Œ‹‰Ê
+     * @return å‡¦ç†çµæœ
      */
     public Object getOutput(){
         return output;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param out ˆ—Œ‹‰Ê
+     * @param out å‡¦ç†çµæœ
      */
     public void setOutput(Object out){
         output = out;

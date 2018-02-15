@@ -32,15 +32,15 @@
 package jp.ossc.nimbus.service.cui;
 
 /**
- *	‚Ç‚ñ‚È’l‚ğw’è‚³‚ê‚Ä‚àA—LŒø’l‚Æ‚µ‚Ä•Ô‚·ƒ`ƒFƒbƒJ[
+ *	ã©ã‚“ãªå€¤ã‚’æŒ‡å®šã•ã‚Œã¦ã‚‚ã€æœ‰åŠ¹å€¤ã¨ã—ã¦è¿”ã™ãƒã‚§ãƒƒã‚«ãƒ¼
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/31| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/31ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class AnyValueOkChecker implements InputChecker {
 	/**
-	 * ‚È‚ñ‚Å‚àƒIƒbƒP[‚Ìƒ`ƒFƒbƒJ[
-	 * DataInputStepƒIƒuƒWƒFƒNƒg
+	 * ãªã‚“ã§ã‚‚ã‚ªãƒƒã‚±ãƒ¼ã®ãƒã‚§ãƒƒã‚«ãƒ¼
+	 * DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public String check(String input) {
 		return input;

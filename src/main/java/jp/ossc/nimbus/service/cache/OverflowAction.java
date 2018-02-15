@@ -32,27 +32,27 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ���ӂꓮ��B<p>
- * ���ӂꂪ���������ꍇ�ɍs��������������邽�߂̃C���^�t�F�[�X�ł���B<br>
+ * あふれ動作。<p>
+ * あふれが発生した場合に行う動作を実装するためのインタフェースである。<br>
  *
  * @author M.Takata
  */
 public interface OverflowAction{
     
     /**
-     * ���ӂꐧ���ݒ肷��B<p>
-     * ���ӂꓮ��̎����ɂ����āA���ӂꐧ����ēx���s����K�v������ꍇ�Ȃǂ��l�����邽�߁A���ӂꐧ��̎Q�Ƃ�ݒ肷��B<br>
+     * あふれ制御を設定する。<p>
+     * あふれ動作の実装において、あふれ制御を再度実行する必要がある場合などが考えられるため、あふれ制御の参照を設定する。<br>
      *
-     * @param controller ���ӂꐧ��
+     * @param controller あふれ制御
      */
     public void setOverflowController(OverflowController controller);
     
     /**
-     * ���ӂꓮ����s���B<p>
+     * あふれ動作を行う。<p>
      *
-     * @param validator ���ӂꌟ�؂��s����OverflowValidator
-     * @param algorithm ���ӂ�L���b�V���Q�Ƃ����肵��OverflowAlgorithm
-     * @param ref ���ӂꂽ�L���b�V���Q��
+     * @param validator あふれ検証を行ったOverflowValidator
+     * @param algorithm あふれキャッシュ参照を決定したOverflowAlgorithm
+     * @param ref あふれたキャッシュ参照
      */
     public void action(
         OverflowValidator validator,
@@ -61,7 +61,7 @@ public interface OverflowAction{
     );
     
     /**
-     * ���ӂꓮ����s�����߂ɕێ����Ă����������������B<p>
+     * あふれ動作を行うために保持している情報を初期化する。<p>
      */
     public void reset();
 }

@@ -48,8 +48,8 @@ import jp.ossc.nimbus.service.test.TestAction;
 import jp.ossc.nimbus.service.test.TestActionEstimation;
 
 /**
- * ƒtƒ@ƒCƒ‹‘€ì‚ğs‚¤ƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚’è¡Œã†ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -59,26 +59,26 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
     protected double expectedCost = 0d;
 
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒtƒ@ƒCƒ‹‘€ì‚ğs‚¤B<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚’è¡Œã†ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * operateType
      * filePaths
      * </pre>
-     * operateType‚ÍAMOVEACOPYADELETEACLEARALS‚Ì‚¢‚¸‚ê‚©‚ğw’è‚·‚éBMOVE‚ÍAƒtƒ@ƒCƒ‹ˆÚ“®BCOPY‚Íƒtƒ@ƒCƒ‹ƒRƒs[BDELETE‚ÍAƒtƒ@ƒCƒ‹íœBCLEAR‚ÍAƒtƒ@ƒCƒ‹‚Ì’†g‚ğ‹ó‚É‚·‚éBLS‚ÍAw’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹ƒŠƒXƒg‚ğæ“¾‚·‚éB<br>
-     * filePaths‚ÍAoperateType‚É‚æ‚Á‚ÄA‹Lq•û–@‚ªˆÙ‚È‚éB‚Ü‚½AfilePaths‚ÍA•¡”sw’è‰Â”\‚Å‚ ‚éB<br>
+     * operateTypeã¯ã€MOVEã€COPYã€DELETEã€CLEARã€LSã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚MOVEã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ç§»å‹•ã€‚COPYã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‚³ãƒ”ãƒ¼ã€‚DELETEã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«å‰Šé™¤ã€‚CLEARã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­èº«ã‚’ç©ºã«ã™ã‚‹ã€‚LSã¯ã€æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * filePathsã¯ã€operateTypeã«ã‚ˆã£ã¦ã€è¨˜è¿°æ–¹æ³•ãŒç•°ãªã‚‹ã€‚ã¾ãŸã€filePathsã¯ã€è¤‡æ•°è¡ŒæŒ‡å®šå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
      * <ul>
-     * <li>operateType‚ª"MOVE"‚Ìê‡<br>ˆÚ“®Œ³ƒtƒ@ƒCƒ‹ƒpƒX‚ÆˆÚ“®æƒfƒBƒŒƒNƒgƒŠƒpƒX‚Ì2s‚ğw’è‚·‚éBˆÚ“®æƒfƒBƒŒƒNƒgƒŠƒpƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link TestContext#getCurrentDirectory()}‚É“¯‚¶ƒtƒ@ƒCƒ‹–¼‚ÅˆÚ“®‚·‚éB</li>
-     * <li>operateType‚ª"COPY"‚Ìê‡<br>ƒRƒs[Œ³ƒtƒ@ƒCƒ‹ƒpƒX‚ÆƒRƒs[æƒtƒ@ƒCƒ‹ƒpƒX‚Ì2s‚ğw’è‚·‚éBƒRƒs[æƒtƒ@ƒCƒ‹ƒpƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link TestContext#getCurrentDirectory()}‚É“¯‚¶ƒtƒ@ƒCƒ‹–¼‚ÅƒRƒs[‚·‚éB</li>
-     * <li>operateType‚ª"DELETE"‚Ìê‡<br>íœƒtƒ@ƒCƒ‹ƒpƒX‚ğw’è‚·‚éB</li>
-     * <li>operateType‚ª"CLEAR"‚Ìê‡<br>‘ÎÛƒtƒ@ƒCƒ‹ƒpƒX‚ğw’è‚·‚éB</li>
-     * <li>operateType‚ª"LS"‚Ìê‡<br>‘ÎÛƒtƒ@ƒCƒ‹ƒpƒX‚ğw’è‚·‚éB</li>
+     * <li>operateTypeãŒ"MOVE"ã®å ´åˆ<br>ç§»å‹•å…ƒãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã¨ç§»å‹•å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹ã®2è¡Œã‚’æŒ‡å®šã™ã‚‹ã€‚ç§»å‹•å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link TestContext#getCurrentDirectory()}ã«åŒã˜ãƒ•ã‚¡ã‚¤ãƒ«åã§ç§»å‹•ã™ã‚‹ã€‚</li>
+     * <li>operateTypeãŒ"COPY"ã®å ´åˆ<br>ã‚³ãƒ”ãƒ¼å…ƒãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã¨ã‚³ãƒ”ãƒ¼å…ˆãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã®2è¡Œã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚³ãƒ”ãƒ¼å…ˆãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link TestContext#getCurrentDirectory()}ã«åŒã˜ãƒ•ã‚¡ã‚¤ãƒ«åã§ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚</li>
+     * <li>operateTypeãŒ"DELETE"ã®å ´åˆ<br>å‰Šé™¤ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚</li>
+     * <li>operateTypeãŒ"CLEAR"ã®å ´åˆ<br>å¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚</li>
+     * <li>operateTypeãŒ"LS"ã®å ´åˆ<br>å¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚</li>
      * </ul>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return LS‚Ìê‡‚Ì‚İŒ©‚Â‚©‚Á‚½ƒtƒ@ƒCƒ‹‚ÌƒŠƒXƒgB‚»‚êˆÈŠO‚ÍAnull
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return LSã®å ´åˆã®ã¿è¦‹ã¤ã‹ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚¹ãƒˆã€‚ãã‚Œä»¥å¤–ã¯ã€null
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
@@ -306,10 +306,10 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
     
     protected String replaceProperty(String textValue){
         
-        // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceSystemProperty(textValue);
         
-        // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceLoader() != null){
             textValue = Utility.replaceServiceLoderConfig(
                 textValue,
@@ -317,7 +317,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
             );
         }
         
-        // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceManager() != null){
             textValue = Utility.replaceManagerProperty(
                 getServiceManager(),
@@ -325,7 +325,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
             );
         }
         
-        // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceServerProperty(textValue);
         
         return textValue;

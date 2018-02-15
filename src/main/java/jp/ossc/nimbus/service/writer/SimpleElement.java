@@ -36,9 +36,9 @@ import jp.ossc.nimbus.util.converter.FormatConverter;
 import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
- * ŠÈˆÕ‹Lq—v‘fB<p>
- * İ’è‚³‚ê‚½’l‚ğ‚»‚Ì‚Ü‚Üæ‚èo‚·ŠÈˆÕ‚È‹Lq—v‘fƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * {@link WritableRecord}‚ÌƒfƒtƒHƒ‹ƒg‚Ì—v‘f‚Å‚ ‚éB<br>
+ * ç°¡æ˜“è¨˜è¿°è¦ç´ ã€‚<p>
+ * è¨­å®šã•ã‚ŒãŸå€¤ã‚’ãã®ã¾ã¾å–ã‚Šå‡ºã™ç°¡æ˜“ãªè¨˜è¿°è¦ç´ ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * {@link WritableRecord}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¦ç´ ã§ã‚ã‚‹ã€‚<br>
  *
  * @author Y.Tokuda
  */
@@ -57,16 +57,16 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     protected String nullString = null;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public SimpleElement(){
         key = this;
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param value •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param value å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public SimpleElement(Object value){
         key = this;
@@ -74,76 +74,76 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param key ã‚­ãƒ¼
+     * @param value å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public SimpleElement(Object key, Object value){
         this.key = key;
         mValue = value;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public void setKey(Object key){
         this.key = key;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public Object getKey(){
         return key == null ? this : key;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public void setValue(Object val){
         mValue = val;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public Object getValue(){
         return mValue;
     }
     
     /**
-     * ’l‚ªnull‚¾‚Á‚½‚Éo—Í‚·‚é•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * å€¤ãŒnullã ã£ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
+     * @param str æ–‡å­—åˆ—
      */
     public void setNullString(String str){
         nullString = str;
     }
     
     /**
-     * ’l‚ªnull‚¾‚Á‚½‚Éo—Í‚·‚é•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * å€¤ãŒnullã ã£ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ
+     * @return æ–‡å­—åˆ—
      */
     public String getNullString(){
         return nullString;
     }
     
     /**
-     * •¶š—ñ•ÏŠ·‚ğs‚¤Û‚É“K—p‚·‚éƒRƒ“ƒo[ƒ^‚ğİ’è‚·‚éB<p>
+     * æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†éš›ã«é©ç”¨ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param converter ƒRƒ“ƒo[ƒ^
+     * @param converter ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public void setStringConverter(StringConverter converter){
         stringConverter = converter;
     }
     
     /**
-     * •¶š—ñ•ÏŠ·‚ğs‚¤Û‚É“K—p‚·‚éƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†éš›ã«é©ç”¨ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒo[ƒ^
+     * @return ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public StringConverter getStringConverter(){
         return stringConverter;
     }
     
     /**
-     * •¶š—ñ•ÏŠ·‚ğs‚¤Û‚É“K—p‚·‚éƒRƒ“ƒo[ƒ^‚ğİ’è‚·‚éB<p>
+     * æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†éš›ã«é©ç”¨ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param converter ƒRƒ“ƒo[ƒ^
+     * @param converter ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public void setFormatConverter(FormatConverter converter){
         formatConverter = converter;
@@ -151,18 +151,18 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     }
     
     /**
-     * •¶š—ñ•ÏŠ·‚ğs‚¤Û‚É“K—p‚·‚éƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†éš›ã«é©ç”¨ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒo[ƒ^
+     * @return ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public FormatConverter getFormatConverter(){
         return formatConverter;
     }
     
     /**
-     * ‚±‚Ì—v‘f‚Ì’l‚ğ‚»‚Ì‚Ü‚Ü•¶š—ñ‚É‚µ‚Äæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ ã®å€¤ã‚’ãã®ã¾ã¾æ–‡å­—åˆ—ã«ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì—v‘f‚Ì’l‚ÌtoString()‚ğŒÄ‚Ño‚µ‚½Œ‹‰Ê
+     * @return ã“ã®è¦ç´ ã®å€¤ã®toString()ã‚’å‘¼ã³å‡ºã—ãŸçµæœ
      */
     public String toString(){
         if(formatConverter == null){
@@ -185,10 +185,10 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     }
     
     /**
-     * ‚±‚Ì—v‘f‚ÌƒIƒuƒWƒFƒNƒg‚ğ‚»‚Ì‚Ü‚Üæ“¾‚·‚éB<p>
-     * {@link #getValue()}‚Æ“¯‚¶’l‚ğ•Ô‚·B<br>
+     * ã“ã®è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãã®ã¾ã¾å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getValue()}ã¨åŒã˜å€¤ã‚’è¿”ã™ã€‚<br>
      * 
-     * @return ‚±‚Ì—v‘f‚ÌƒIƒuƒWƒFƒNƒg
+     * @return ã“ã®è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object toObject(){
         return mValue;

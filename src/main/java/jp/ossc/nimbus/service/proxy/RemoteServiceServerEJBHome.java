@@ -35,18 +35,18 @@ import java.rmi.RemoteException;
 import javax.ejb.*;
 
 /**
- * �����[�g�Ăяo���T�[�oInvoker��EJBHome�C���^�t�F�[�X�B<p>
+ * リモート呼び出しサーバInvokerのEJBHomeインタフェース。<p>
  *
  * @author M.Takata
  */
 public interface RemoteServiceServerEJBHome extends EJBHome{
     
     /**
-     * ����EJB��EJB�����[�g�C���^�t�F�[�XRemoteServerInvoker�̃C���X�^���X�𐶐�����B<p>
+     * このEJBのEJBリモートインタフェースRemoteServerInvokerのインスタンスを生成する。<p>
      * 
-     * @return RemoteServerInvokerEJBObject�I�u�W�F�N�g
-     * @exception CreateException EJB�I�u�W�F�N�g�̐����Ɏ��s�����ꍇ
-     * @exception RemoteException ���̗�O�́AEJB 1.0�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean �ɉ��ʌ݊������������邽�߂Ƀ��\�b�h�̃V�O�j�`���[�ɒ�`����Ă���BEJB 1.1�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������BEJB2.0�ȍ~�����l�ł���B
+     * @return RemoteServerInvokerEJBObjectオブジェクト
+     * @exception CreateException EJBオブジェクトの生成に失敗した場合
+     * @exception RemoteException この例外は、EJB 1.0仕様向けに書かれたエンタープライズBean に下位互換性を持たせるためにメソッドのシグニチャーに定義されている。EJB 1.1仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある。EJB2.0以降も同様である。
      */
     public RemoteServiceServerEJBObject create()
      throws RemoteException, CreateException;

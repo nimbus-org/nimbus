@@ -57,7 +57,7 @@ import jp.ossc.nimbus.io.CSVReader;
 import jp.ossc.nimbus.service.test.TemplateEngine;
 
 /**
- * Apache Velocity���g����{@link TemplateEngine}�T�[�r�X�B<p>
+ * Apache Velocityを使った{@link TemplateEngine}サービス。<p>
  *
  * @author M.Takata
  */
@@ -104,18 +104,18 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     }
     
     /**
-     * �e���v���[�g�t�@�C���ƃf�[�^�t�@�C����ǂݍ���ŁA�ϊ����s���o�̓t�@�C���ɏ����o���B<p>
-     * �e���v���[�g�t�@�C���́AApache Velocity��VTL(Velocity Template Language)�ŋL�q����B<br>
-     * �f�[�^�t�@�C���́AVTL�ŎQ�Ƃ���I�u�W�F�N�g���A2��ނ̋L�q���@�����݂����āA�����L�q�ł���B<br>
-     * �P�́A�v���p�e�B�`���ŁA"�ϐ���=�l"�Ŏw�肷��B�����w�肷��ꍇ�́A���s���ċL�q����B<br>
-     * �����P�́ACSV�`���ŁA1�s�ڂɕϐ����A2�s�ڂɃv���p�e�B���A�R�s�ڈȍ~�ɒl���L�q����B�v���p�e�B���́ACSV�`���łP�s�̂݋L�q����B�l�́ACSV�`���ŕ����s�L�q�ł���B�l�̍s�̏I�[�������ɂ́A��s��}������B���̕ϐ����Q�Ƃ���ƁA�w�肵���l�̍s������List�ŁA���̗v�f�ɂ́A�v���p�e�B���ƒl���i�[���ꂽMap���i�[����Ă���B<br>
+     * テンプレートファイルとデータファイルを読み込んで、変換を行い出力ファイルに書き出す。<p>
+     * テンプレートファイルは、Apache VelocityのVTL(Velocity Template Language)で記述する。<br>
+     * データファイルは、VTLで参照するオブジェクトを、2種類の記述方法を混在させて、複数記述できる。<br>
+     * １つは、プロパティ形式で、"変数名=値"で指定する。複数指定する場合は、改行して記述する。<br>
+     * もう１つは、CSV形式で、1行目に変数名、2行目にプロパティ名、３行目以降に値を記述する。プロパティ名は、CSV形式で１行のみ記述する。値は、CSV形式で複数行記述できる。値の行の終端を示すには、空行を挿入する。この変数を参照すると、指定した値の行数分のListで、その要素には、プロパティ名と値が格納されたMapが格納されている。<br>
      * 
      *
-     * @param tmplateFile �e���v���[�g�t�@�C��
-     * @param dataFile �f�[�^�t�@�C��
-     * @param outputFile �o�̓t�@�C��
-     * @param encoding �����G���R�[�f�B���O�B�e���v���[�g�t�@�C���A�f�[�^�t�@�C���́A���������G���R�[�f�B���O�ł���K�v������A�o�̓t�@�C�����A���̕����G���R�[�f�B���O�ƂȂ�B
-     * @exception Exception �ϊ��Ɏ��s�����ꍇ
+     * @param tmplateFile テンプレートファイル
+     * @param dataFile データファイル
+     * @param outputFile 出力ファイル
+     * @param encoding 文字エンコーディング。テンプレートファイル、データファイルは、同じ文字エンコーディングである必要があり、出力ファイルも、この文字エンコーディングとなる。
+     * @exception Exception 変換に失敗した場合
      */
     public void transform(File tmplateFile, File dataFile, File outputFile, String encoding) throws Exception{
         if(dataFile == null){

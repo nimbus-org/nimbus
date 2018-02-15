@@ -34,55 +34,55 @@ package jp.ossc.nimbus.service.test;
 import java.io.File;
 
 /**
- * ƒXƒ^ƒuƒŠƒ\[ƒXŠÇ—B<p>
+ * ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ç®¡ç†ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface StubResourceManager{
     
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒI‚ÌƒXƒ^ƒuƒŠƒ\[ƒX‚ğƒAƒbƒvƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã®ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param dir ƒAƒbƒvƒ[ƒh‘ÎÛ‚ÌƒŠƒ\[ƒXƒtƒHƒ‹ƒ_
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param stubId ƒXƒ^ƒuID
-     * @exception Exception ƒAƒbƒvƒ[ƒh‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param dir ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚©ãƒ«ãƒ€
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param stubId ã‚¹ã‚¿ãƒ–ID
+     * @exception Exception ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId, String stubId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒI‚ÌƒXƒ^ƒuƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã®ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param dir ƒ_ƒEƒ“ƒ[ƒhæ‚ÌƒŠƒ\[ƒXƒtƒHƒ‹ƒ_
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param stubId ƒXƒ^ƒuID
-     * @exception Exception ƒ_ƒEƒ“ƒ[ƒh‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param dir ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å…ˆã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚©ãƒ«ãƒ€
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param stubId ã‚¹ã‚¿ãƒ–ID
+     * @exception Exception ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void downloadScenarioResource(File dir, String scenarioGroupId, String scenarioId, String stubId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒeƒXƒgƒP[ƒX‚ÌƒXƒ^ƒuƒŠƒ\[ƒX‚ğƒAƒbƒvƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param dir ƒAƒbƒvƒ[ƒh‘ÎÛ‚ÌƒŠƒ\[ƒXƒtƒHƒ‹ƒ_
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
-     * @param stubId ƒXƒ^ƒuID
-     * @exception Exception ƒAƒbƒvƒ[ƒh‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param dir ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚©ãƒ«ãƒ€
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
+     * @param stubId ã‚¹ã‚¿ãƒ–ID
+     * @exception Exception ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void uploadTestCaseResource(File dir, String scenarioGroupId, String scenarioId, String testcaseId, String stubId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒeƒXƒgƒP[ƒX‚ÌƒXƒ^ƒuƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param dir ƒ_ƒEƒ“ƒ[ƒhæ‚ÌƒŠƒ\[ƒXƒtƒHƒ‹ƒ_
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
-     * @param stubId ƒXƒ^ƒuID
-     * @exception Exception ƒ_ƒEƒ“ƒ[ƒh‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param dir ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å…ˆã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚©ãƒ«ãƒ€
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
+     * @param stubId ã‚¹ã‚¿ãƒ–ID
+     * @exception Exception ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void downloadTestCaseResource(File dir, String scenarioGroupId, String scenarioId, String testcaseId, String stubId) throws Exception;
 }

@@ -36,7 +36,7 @@ import javax.servlet.http.HttpServletRequest;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * BeanFlow‚Ìƒtƒ[–¼‚ğƒŠƒNƒGƒXƒgƒpƒX‚©‚ç‘I‘ğ‚·‚éB<p>
+ * BeanFlowã®ãƒ•ãƒ­ãƒ¼åã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã‹ã‚‰é¸æŠã™ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -46,8 +46,8 @@ public class DefaultBeanFlowSelectorService extends ServiceBase
     private static final long serialVersionUID = 7550507018580655170L;
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlow‚ÌŒã’uŒB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_BEAN_FLOW_PATH_POSTFIX}B<br>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã®å¾Œç½®è©ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_BEAN_FLOW_PATH_POSTFIX}ã€‚<br>
      */
     protected String beanFlowPathPostfix = DEFAULT_BEAN_FLOW_PATH_POSTFIX;
     
@@ -60,10 +60,10 @@ public class DefaultBeanFlowSelectorService extends ServiceBase
     }
     
     /**
-     * BeanFlow‚Ìƒtƒ[–¼‚ğ‘I‘ğ‚·‚éB<p>
+     * BeanFlowã®ãƒ•ãƒ­ãƒ¼åã‚’é¸æŠã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @return BeanFlow‚Ìƒtƒ[–¼
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @return BeanFlowã®ãƒ•ãƒ­ãƒ¼å
      */
     public String selectBeanFlow(HttpServletRequest req){
         

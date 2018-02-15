@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.proxy.invoker;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link LocalClientMethodCallInvokerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link LocalClientMethodCallInvokerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see LocalClientMethodCallInvokerService
@@ -43,38 +43,38 @@ public interface LocalClientMethodCallInvokerServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚Æ‚È‚éƒ[ƒJƒ‹‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã¨ãªã‚‹ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ŒÄ‚Ño‚µ‘ÎÛ‚Æ‚È‚éƒ[ƒJƒ‹‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name å‘¼ã³å‡ºã—å¯¾è±¡ã¨ãªã‚‹ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setLocalServiceName(ServiceName name);
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚Æ‚È‚éƒ[ƒJƒ‹‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã¨ãªã‚‹ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒÄ‚Ño‚µ‘ÎÛ‚Æ‚È‚éƒ[ƒJƒ‹‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return å‘¼ã³å‡ºã—å¯¾è±¡ã¨ãªã‚‹ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getLocalServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA{@link LocalClientMethodCallInvokerService#getResourceUsage() getResourceUsage()}‚Ì–ß‚è’l‚ÍAnullB<br>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link LocalClientMethodCallInvokerService#getResourceUsage() getResourceUsage()}ã®æˆ»ã‚Šå€¤ã¯ã€nullã€‚<br>
      *
-     * @param name ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResourceUsageServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResourceUsageServiceName();
     
     /**
-     * ‚±‚ÌInvoker‚ª¶‘¶‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®InvokerãŒç”Ÿå­˜ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ¶‘¶‚µ‚Ä‚¢‚éê‡true
+     * @return ç”Ÿå­˜ã—ã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean isAlive();
 }

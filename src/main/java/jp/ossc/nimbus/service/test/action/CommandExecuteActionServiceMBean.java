@@ -1,7 +1,7 @@
 package jp.ossc.nimbus.service.test.action;
 
 /**
- * {@link CommandExecuteActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link CommandExecuteActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author T.Takakura
  * @see CommandExecuteActionService
@@ -9,45 +9,45 @@ package jp.ossc.nimbus.service.test.action;
 public interface CommandExecuteActionServiceMBean {
     
     /**
-     * ƒRƒ}ƒ“ƒhÀs‚É“K—p‚·‚éŠÂ‹«•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã«é©ç”¨ã™ã‚‹ç’°å¢ƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param environments ŠÂ‹«•Ï”B•Ï”–¼=’l‚Ì”z—ñ‚Åw’è‚·‚éB
+     * @param environments ç’°å¢ƒå¤‰æ•°ã€‚å¤‰æ•°å=å€¤ã®é…åˆ—ã§æŒ‡å®šã™ã‚‹ã€‚
      */
     public void setEnvironments(String[] environments);
     
     /**
-     * ƒRƒ}ƒ“ƒhÀs‚É“K—p‚·‚éŠÂ‹«•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã«é©ç”¨ã™ã‚‹ç’°å¢ƒå¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÂ‹«•Ï”B•Ï”–¼=’l‚Ì”z—ñ‚Åw’è‚·‚éB
+     * @return ç’°å¢ƒå¤‰æ•°ã€‚å¤‰æ•°å=å€¤ã®é…åˆ—ã§æŒ‡å®šã™ã‚‹ã€‚
      */
     public String[] getEnvironments();
     
     /**
-     * ƒƒOƒtƒ@ƒCƒ‹‚ÌI—¹‘Ò‚¿‚ğ‚·‚éê‡‚ÌAƒƒOƒtƒ@ƒCƒ‹ƒ`ƒFƒbƒNŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ‚äº†å¾…ã¡ã‚’ã™ã‚‹å ´åˆã®ã€ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚§ãƒƒã‚¯é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      *
-     * @param interval ƒ`ƒFƒbƒNŠÔŠu
+     * @param interval ãƒã‚§ãƒƒã‚¯é–“éš”
      */
     public void setCheckInterval(long interval);
     
     /**
-     * ƒƒOƒtƒ@ƒCƒ‹‚ÌI—¹‘Ò‚¿‚ğ‚·‚éê‡‚ÌAƒƒOƒtƒ@ƒCƒ‹ƒ`ƒFƒbƒNŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ‚äº†å¾…ã¡ã‚’ã™ã‚‹å ´åˆã®ã€ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚§ãƒƒã‚¯é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒNŠÔŠu
+     * @return ãƒã‚§ãƒƒã‚¯é–“éš”
      */
     public long getCheckInterval();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 

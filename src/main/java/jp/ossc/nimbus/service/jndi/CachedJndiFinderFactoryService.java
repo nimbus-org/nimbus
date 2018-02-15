@@ -37,8 +37,8 @@ import javax.naming.NamingException;
 import jp.ossc.nimbus.core.*;
 
 /**
- * JNDIÉtÉ@ÉCÉìÉ_Å[ÉTÅ[ÉrÉXÉtÉ@ÉNÉgÉäÅB<p>
- * {@link CachedJndiFinderService}Çê∂ê¨Ç∑ÇÈÉtÉ@ÉNÉgÉäÉTÅ[ÉrÉXÇ≈Ç†ÇÈÅB<br>
+ * JNDI„Éï„Ç°„Ç§„É≥„ÉÄ„Éº„Çµ„Éº„Éì„Çπ„Éï„Ç°„ÇØ„Éà„É™„ÄÇ<p>
+ * {@link CachedJndiFinderService}„ÇíÁîüÊàê„Åô„Çã„Éï„Ç°„ÇØ„Éà„É™„Çµ„Éº„Éì„Çπ„Åß„ÅÇ„Çã„ÄÇ<br>
  *
  * @author M.Takata
  * @see CachedJndiFinderService
@@ -52,10 +52,10 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
          = new CachedJndiFinderService();
     
     /**
-     * {@link CachedJndiFinderService}ÉTÅ[ÉrÉXÇê∂ê¨Ç∑ÇÈÅB<p>
+     * {@link CachedJndiFinderService}„Çµ„Éº„Éì„Çπ„ÇíÁîüÊàê„Åô„Çã„ÄÇ<p>
      *
-     * @return CashedJndiFinderServiceÉTÅ[ÉrÉX
-     * @exception Exception CashedJndiFinderServiceÇÃê∂ê¨ÅEãNìÆÇ…é∏îsÇµÇΩèÍçá
+     * @return CashedJndiFinderService„Çµ„Éº„Éì„Çπ
+     * @exception Exception CashedJndiFinderService„ÅÆÁîüÊàê„ÉªËµ∑Âãï„Å´Â§±Êïó„Åó„ÅüÂ†¥Âêà
      * @see CachedJndiFinderService
      */
     protected Service createServiceInstance() throws Exception{
@@ -68,7 +68,7 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         return finder;
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setEnvironment(Properties prop){
         template.setEnvironment(prop);
         final Set instanceSet = getManagedInstanceSet();
@@ -80,12 +80,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public Properties getEnvironment() throws NamingException{
         return template.getEnvironment();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setPrefix(String prefix){
         template.setPrefix(prefix);
         final Set instanceSet = getManagedInstanceSet();
@@ -97,12 +97,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public String getPrefix(){
         return template.getPrefix();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setCacheMapServiceName(ServiceName name){
         template.setCacheMapServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -114,12 +114,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public ServiceName getCacheMapServiceName(){
         return template.getCacheMapServiceName();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setRetryCount(int num){
         template.setRetryCount(num);
         final Set instanceSet = getManagedInstanceSet();
@@ -131,12 +131,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public int getRetryCount(){
         return template.getRetryCount();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setRetryInterval(long interval){
         template.setRetryInterval(interval);
         final Set instanceSet = getManagedInstanceSet();
@@ -148,12 +148,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public long getRetryInterval(){
         return template.getRetryInterval();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setRetryExceptionClassNames(String[] classNames){
         template.setRetryExceptionClassNames(classNames);
         final Set instanceSet = getManagedInstanceSet();
@@ -165,12 +165,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public String[] getRetryExceptionClassNames(){
         return template.getRetryExceptionClassNames();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setAliveCheckJNDIServer(boolean isCheck){
         template.setAliveCheckJNDIServer(isCheck);
         final Set instanceSet = getManagedInstanceSet();
@@ -182,12 +182,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public boolean isAliveCheckJNDIServer(){
         return template.isAliveCheckJNDIServer();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setAliveCheckJNDIServerInterval(long interval){
         template.setAliveCheckJNDIServerInterval(interval);
         final Set instanceSet = getManagedInstanceSet();
@@ -199,12 +199,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public long getAliveCheckJNDIServerInterval(){
         return template.getAliveCheckJNDIServerInterval();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setLoggingDeadJNDIServer(boolean isOutput){
         template.setLoggingDeadJNDIServer(isOutput);
         final Set instanceSet = getManagedInstanceSet();
@@ -216,12 +216,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public boolean isLoggingDeadJNDIServer(){
         return template.isLoggingDeadJNDIServer();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setLoggingRecoverJNDIServer(boolean isOutput){
         template.setLoggingRecoverJNDIServer(isOutput);
         final Set instanceSet = getManagedInstanceSet();
@@ -233,12 +233,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public boolean isLoggingRecoverJNDIServer(){
         return template.isLoggingRecoverJNDIServer();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setDeadJNDIServerLogMessageId(String id){
         template.setDeadJNDIServerLogMessageId(id);
         final Set instanceSet = getManagedInstanceSet();
@@ -250,12 +250,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public String getDeadJNDIServerLogMessageId(){
         return template.getDeadJNDIServerLogMessageId();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void setRecoverJNDIServerLogMessageId(String id){
         template.setRecoverJNDIServerLogMessageId(id);
         final Set instanceSet = getManagedInstanceSet();
@@ -267,12 +267,12 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public String getRecoverJNDIServerLogMessageId(){
         return template.getRecoverJNDIServerLogMessageId();
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public boolean isAliveJNDIServer(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -285,7 +285,7 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void clearCache(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -296,7 +296,7 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public void clearCache(String name){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -307,7 +307,7 @@ public class CachedJndiFinderFactoryService extends ServiceFactoryServiceBase
         }
     }
     
-    // CashedJndiFinderServiceFactoryMBeanÇÃJavaDoc
+    // CashedJndiFinderServiceFactoryMBean„ÅÆJavaDoc
     public String listContext() throws NamingException{
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

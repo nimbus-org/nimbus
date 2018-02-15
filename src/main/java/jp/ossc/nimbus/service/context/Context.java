@@ -34,156 +34,156 @@ package jp.ossc.nimbus.service.context;
 import java.util.*;
 
 /**
- * �R���e�L�X�g�B<p>
- * ��ӂȃL�[�Ɋ֘A�t����ꂽ�R���e�L�X�g����ێ�����B<br>
+ * コンテキスト。<p>
+ * 一意なキーに関連付けられたコンテキスト情報を保持する。<br>
  *
  * @author H.Nakano
  */
 public interface Context extends Map{
     
     /**
-     * �ێ����Ă���R���e�L�X�g���̐����擾����B<p>
+     * 保持しているコンテキスト情報の数を取得する。<p>
      *
-     * @return �ێ����Ă���R���e�L�X�g���̐�
+     * @return 保持しているコンテキスト情報の数
      */
     public int size();
     
     /**
-     * �R���e�L�X�g����ێ����Ă��Ȃ������ׂ�B<p>
+     * コンテキスト情報を保持していないか調べる。<p>
      *
-     * @return �R���e�L�X�g����ێ����Ă��Ȃ��ꍇtrue
+     * @return コンテキスト情報を保持していない場合true
      */
     public boolean isEmpty();
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g��񂪑��݂��邩���ׂ�B<p>
+     * 指定されたキーに関連付けられたコンテキスト情報が存在するか調べる。<p>
      *
-     * @param key �L�[
-     * @return �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g��񂪑��݂���ꍇtrue
+     * @param key キー
+     * @return 指定されたキーに関連付けられたコンテキスト情報が存在する場合true
      */
     public boolean containsKey(Object key);
     
     /**
-     * �w�肳�ꂽ�R���e�L�X�g��񂪑��݂��邩���ׂ�B<p>
+     * 指定されたコンテキスト情報が存在するか調べる。<p>
      *
-     * @param value �R���e�L�X�g���
-     * @return �w�肳�ꂽ�R���e�L�X�g��񂪑��݂���ꍇtrue
+     * @param value コンテキスト情報
+     * @return 指定されたコンテキスト情報が存在する場合true
      */
     public boolean containsValue(Object value);
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g�����擾����B<p>
+     * 指定されたキーに関連付けられたコンテキスト情報を取得する。<p>
      *
-     * @param key �L�[
-     * @return �L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g���B�Y������R���e�L�X�g��񂪂Ȃ��ꍇ�́Anull
+     * @param key キー
+     * @return キーに関連付けられたコンテキスト情報。該当するコンテキスト情報がない場合は、null
      */
     public Object get(Object key);
     
     /**
-     * �w�肳�ꂽ�R���e�L�X�g�����w�肳�ꂽ�L�[���Ɋ֘A�t���Đݒ肷��B<p>
+     * 指定されたコンテキスト情報を指定されたキー情報に関連付けて設定する。<p>
      * 
-     * @param key �L�[
-     * @param value �R���e�L�X�g���
-     * @return �w�肳�ꂽ�L�[�Ɋ֘A�t�����Ă����R���e�L�X�g���B���݂��Ȃ��ꍇ�́Anull
+     * @param key キー
+     * @param value コンテキスト情報
+     * @return 指定されたキーに関連付けられていたコンテキスト情報。存在しない場合は、null
      */
     public Object put(Object key, Object value);
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g�����폜����B<p>
+     * 指定されたキーに関連付けられたコンテキスト情報を削除する。<p>
      *
-     * @param key �L�[
-     * @return �폜���ꂽ�R���e�L�X�g���B�폜����R���e�L�X�g��񂪂Ȃ��ꍇ�́Anull
+     * @param key キー
+     * @return 削除されたコンテキスト情報。削除するコンテキスト情報がない場合は、null
      */
     public Object remove(Object key);
     
     /**
-     * �w�肳�ꂽ�}�b�v�Ɋ܂܂��S�ẴL�[�ƒl���R���e�L�X�g���Ƃ��Đݒ肷��B<p>
+     * 指定されたマップに含まれる全てのキーと値をコンテキスト情報として設定する。<p>
      *
-     * @param t �R���e�L�X�g���Ƃ��Đݒ肷��}�b�v
+     * @param t コンテキスト情報として設定するマップ
      */
     public void putAll(Map t);
     
     /**
-     * �S�ẴR���e�L�X�g�����폜����B<p>
+     * 全てのコンテキスト情報を削除する。<p>
      */
     public void clear();
     
     /**
-     * �R���e�L�X�g���̃L�[�W�����擾����B<p>
+     * コンテキスト情報のキー集合を取得する。<p>
      *
-     * @return �R���e�L�X�g���̃L�[�W��
+     * @return コンテキスト情報のキー集合
      */
     public Set keySet();
     
     /**
-     * �R���e�L�X�g���̏W�����擾����B<p>
+     * コンテキスト情報の集合を取得する。<p>
      *
-     * @return �R���e�L�X�g���̏W��
+     * @return コンテキスト情報の集合
      */
     public Collection values();
     
     /**
-     * �R���e�L�X�g���̃G���g���W�����擾����B<p>
+     * コンテキスト情報のエントリ集合を取得する。<p>
      *
-     * @return �R���e�L�X�g���̃G���g���W��
+     * @return コンテキスト情報のエントリ集合
      */
     public Set entrySet();
     
     /**
-     * �w�肳�ꂽ�I�u�W�F�N�g�Ɠ���������r����B<p>
+     * 指定されたオブジェクトと等しいか比較する。<p>
      *
-     * @return �������ꍇtrue
+     * @return 等しい場合true
      */
     public boolean equals(Object o);
     
     /**
-     * ���̃R���e�L�X�g�̃n�b�V���l���擾����B<p>
+     * このコンテキストのハッシュ値を取得する。<p>
      *
-     * @return �n�b�V���l
+     * @return ハッシュ値
      */
     public int hashCode();
     
     /**
-     * ���̃R���e�L�X�g�̓��e��S�Ċ܂ރ}�b�v���擾����B<p>
+     * このコンテキストの内容を全て含むマップを取得する。<p>
      *
-     * @return �R���e�L�X�g�̓��e��S�Ċ܂ރ}�b�v
+     * @return コンテキストの内容を全て含むマップ
      */
     public Map all();
     
     /**
-     * {@link ContextStore}�T�[�r�X���g���ēǂݍ��ݏ������s���B<p>
+     * {@link ContextStore}サービスを使って読み込み処理を行う。<p>
      *
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void load() throws Exception;
     
     /**
-     * {@link ContextStore}�T�[�r�X���g���ăL�[�̓ǂݍ��ݏ������s���B<p>
+     * {@link ContextStore}サービスを使ってキーの読み込み処理を行う。<p>
      *
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void loadKey() throws Exception;
     
     /**
-     * �w�肳�ꂽ�L�[�ɊY������l��{@link ContextStore}�T�[�r�X���g���ēǂݍ��ݏ������s���B<p>
+     * 指定されたキーに該当する値を{@link ContextStore}サービスを使って読み込み処理を行う。<p>
      *
-     * @param key �L�[
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @param key キー
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void load(Object key) throws Exception;
     
     /**
-     * {@link ContextStore}�T�[�r�X���g���ď������ݏ������s���B<p>
+     * {@link ContextStore}サービスを使って書き込み処理を行う。<p>
      *
-     * @exception Exception �������ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 書き込み処理に失敗した場合
      */
     public void save() throws Exception;
     
     /**
-     * �w�肳�ꂽ�L�[�ɊY������l��{@link ContextStore}�T�[�r�X���g���ď����ݏ������s���B<p>
+     * 指定されたキーに該当する値を{@link ContextStore}サービスを使って書込み処理を行う。<p>
      *
-     * @param key �L�[
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @param key キー
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void save(Object key) throws Exception;
 }

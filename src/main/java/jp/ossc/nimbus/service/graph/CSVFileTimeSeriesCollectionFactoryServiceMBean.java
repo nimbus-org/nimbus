@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.CSVReader;
 
 /**
- * {@link CSVFileTimeSeriesCollectionFactoryService}ÇÃMBeanÉCÉìÉ^ÉtÉFÅ[ÉXÅB<p>
+ * {@link CSVFileTimeSeriesCollectionFactoryService}„ÅÆMBean„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÄÇ<p>
  */
 public interface CSVFileTimeSeriesCollectionFactoryServiceMBean
  extends TimeSeriesCollectionFactoryServiceMBean{

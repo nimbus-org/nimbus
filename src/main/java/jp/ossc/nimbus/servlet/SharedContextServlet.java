@@ -45,28 +45,28 @@ import jp.ossc.nimbus.service.interpreter.*;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒgƒT[ƒuƒŒƒbƒgB<p>
- * HTTPŒo—R‚Å‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌŠÇ—‚ğƒTƒ|[ƒg‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‚ğ’ñ‹Ÿ‚·‚éB<br>
- * ‚±‚ÌƒT[ƒuƒŒƒbƒg‚É‚ÍAˆÈ‰º‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^‚ª‚ ‚éB<br>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã€‚<p>
+ * HTTPçµŒç”±ã§ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ç®¡ç†ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’æä¾›ã™ã‚‹ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã«ã¯ã€ä»¥ä¸‹ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒã‚ã‚‹ã€‚<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th>#</th><th>ƒpƒ‰ƒ[ƒ^–¼</th><th>’l‚Ìà–¾</th><th>ƒfƒtƒHƒ‹ƒg</th></tr>
- *     <tr><td>1</td><td>ServiceNames</td><td>‘ÎÛ‚Æ‚·‚é‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB</td><td>‘¶İ‚·‚é‘S‚Ä‚Ì{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX}B</td></tr>
- *     <tr><td>2</td><td>InterpreterServiceName</td><td>“ü—ÍƒtƒB[ƒ‹ƒh‚ÅƒXƒNƒŠƒvƒg‚ğ“ü—Í‚³‚ê‚½ê‡‚ÉA‚»‚Ì‰ğß‚ğs‚¤{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚éB</td><td>“à•”“I‚É¶¬‚³‚ê‚½{@link BeanShellInterpreterService}B</td></tr>
- *     <tr><td>3</td><td>PutEnabled</td><td>{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚Ö‚Ì’Ç‰Á‘€ì‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>4</td><td>UpdateEnabled</td><td>{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚Ö‚ÌXV‘€ì‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>5</td><td>RemoveEnabled</td><td>{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚Ö‚Ìíœ‘€ì‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>6</td><td>ClearEnabled</td><td>{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚Ö‚Ì‘Síœ‘€ì‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>7</td><td>LoadEnabled</td><td>{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚Ö‚Ì“Ç‘€ì‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>8</td><td>SaveEnabled</td><td>{@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚Ö‚Ì‰i‘±‰»‘€ì‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>9</td><td>JSONConverterServiceName</td><td>JSONŒ`®‚Å‚Ì‰“š‚ğ—v‹‚·‚éê‡‚Ég—p‚·‚é{@link BeanJSONConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚éB</td><td>w’è‚µ‚È‚¢ê‡‚ÍA“à•”¶¬‚³‚ê‚éB</td></tr>
- *     <tr><td>10</td><td>UnicodeEscape</td><td>JSONŒ`®‚Å‚Ì‰“š‚ğ—v‹‚·‚éê‡‚ÉA‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>true</td></tr>
+ *     <tr bgcolor="#cccccc"><th>#</th><th>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</th><th>å€¤ã®èª¬æ˜</th><th>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ</th></tr>
+ *     <tr><td>1</td><td>ServiceNames</td><td>å¯¾è±¡ã¨ã™ã‚‹å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚</td><td>å­˜åœ¨ã™ã‚‹å…¨ã¦ã®{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹}ã€‚</td></tr>
+ *     <tr><td>2</td><td>InterpreterServiceName</td><td>å…¥åŠ›ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å…¥åŠ›ã•ã‚ŒãŸå ´åˆã«ã€ãã®è§£é‡ˆã‚’è¡Œã†{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>å†…éƒ¨çš„ã«ç”Ÿæˆã•ã‚ŒãŸ{@link BeanShellInterpreterService}ã€‚</td></tr>
+ *     <tr><td>3</td><td>PutEnabled</td><td>{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã¸ã®è¿½åŠ æ“ä½œã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>4</td><td>UpdateEnabled</td><td>{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã¸ã®æ›´æ–°æ“ä½œã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>5</td><td>RemoveEnabled</td><td>{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã¸ã®å‰Šé™¤æ“ä½œã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>6</td><td>ClearEnabled</td><td>{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã¸ã®å…¨å‰Šé™¤æ“ä½œã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>7</td><td>LoadEnabled</td><td>{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã¸ã®èª­è¾¼æ“ä½œã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>8</td><td>SaveEnabled</td><td>{@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã¸ã®æ°¸ç¶šåŒ–æ“ä½œã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>9</td><td>JSONConverterServiceName</td><td>JSONå½¢å¼ã§ã®å¿œç­”ã‚’è¦æ±‚ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link BeanJSONConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>æŒ‡å®šã—ãªã„å ´åˆã¯ã€å†…éƒ¨ç”Ÿæˆã•ã‚Œã‚‹ã€‚</td></tr>
+ *     <tr><td>10</td><td>UnicodeEscape</td><td>JSONå½¢å¼ã§ã®å¿œç­”ã‚’è¦æ±‚ã™ã‚‹å ´åˆã«ã€ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>true</td></tr>
  * </table>
  * <p>
- * WebƒT[ƒrƒX‚ÍAƒNƒGƒŠw’è‚Å‚ÌGETƒŠƒNƒGƒXƒg‚É‘Î‚µ‚ÄAJSON‚Åƒf[ƒ^‚ğ‰“š‚·‚éB<br>
+ * Webã‚µãƒ¼ãƒ“ã‚¹ã¯ã€ã‚¯ã‚¨ãƒªæŒ‡å®šã§ã®GETãƒªã‚¯ã‚¨ã‚¹ãƒˆã«å¯¾ã—ã¦ã€JSONã§ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã™ã‚‹ã€‚<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th rowspan="2">#</th><th rowspan="2">ƒAƒNƒVƒ‡ƒ“</th><th colspan="2">ƒNƒGƒŠƒpƒ‰ƒ[ƒ^</th><th rowspan="2">‰“šJSON‚Ì—á</th></tr>
- *     <tr bgcolor="#cccccc"><th>ƒpƒ‰ƒ[ƒ^–¼</th><th>’l</th></tr>
- *     <tr><td>1</td><td><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td>
+ *     <tr bgcolor="#cccccc"><th rowspan="2">#</th><th rowspan="2">ã‚¢ã‚¯ã‚·ãƒ§ãƒ³</th><th colspan="2">ã‚¯ã‚¨ãƒªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿</th><th rowspan="2">å¿œç­”JSONã®ä¾‹</th></tr>
+ *     <tr bgcolor="#cccccc"><th>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</th><th>å€¤</th></tr>
+ *     <tr><td>1</td><td><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td>
  *     <code><pre>
  *[
  *    {
@@ -87,7 +87,7 @@ import jp.ossc.nimbus.util.converter.*;
  *    }
  *]
  *     </pre></code></td></tr>
- *     <tr><td rowspan="3">2</td><td rowspan="3"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ì‘®«æ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="3">
+ *     <tr><td rowspan="3">2</td><td rowspan="3"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å±æ€§å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="3">
  *     <code><pre>
  *{
  *    "id":"USER-PC\/192.168.1.1:4506101c:14d9ec2142a:-7ffd",
@@ -104,19 +104,19 @@ import jp.ossc.nimbus.util.converter.*;
  *}
  *     </pre></code></td></tr>
  *     <tr><td>action</td><td>context</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td rowspan="4">3</td><td rowspan="4"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ì’læ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"key":"hoge", "value":100}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td rowspan="4">3</td><td rowspan="4"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"key":"hoge", "value":100}</pre></code></td></tr>
  *     <tr><td>action</td><td>get</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>ƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td rowspan="4">4</td><td rowspan="4"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒL[‘¶İ”»’è</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"key":"hoge", "contains":true}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td rowspan="4">4</td><td rowspan="4"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼å­˜åœ¨åˆ¤å®š</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"key":"hoge", "contains":true}</pre></code></td></tr>
  *     <tr><td>action</td><td>containsKey</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>ƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td rowspan="3">5</td><td rowspan="3"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒL[W‡æ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code><pre>{"keys":["hoge", "fuga"]}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td rowspan="3">5</td><td rowspan="3"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼é›†åˆå–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code><pre>{"keys":["hoge", "fuga"]}</pre></code></td></tr>
  *     <tr><td>action</td><td>keySet</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td rowspan="6">6</td><td rowspan="6"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ö‚ÌŒŸõƒNƒGƒŠÀs</nobr></td><td>responseType</td><td>json</td><td rowspan="6">
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td rowspan="6">6</td><td rowspan="6"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¸ã®æ¤œç´¢ã‚¯ã‚¨ãƒªå®Ÿè¡Œ</nobr></td><td>responseType</td><td>json</td><td rowspan="6">
  *     <code><pre>
  *{
  *    "query":"import java.util.*;Iterator vals=context.values().iterator();int result=0;while(vals.hasNext())result+=vals.next().intValue();return result;",
@@ -124,47 +124,47 @@ import jp.ossc.nimbus.util.converter.*;
  *}
  *     </pre></code></td></tr>
  *     <tr><td>action</td><td>query</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>query</td><td>ŒŸõƒNƒGƒŠ</td></tr>
- *     <tr><td>timeout</td><td>ŒŸõƒNƒGƒŠ‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]</td></tr>
- *     <tr><td>mergeQuery</td><td>•ªU‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ö‚ÌŒŸõŒ‹‰Êƒ}[ƒWƒNƒGƒŠ</td></tr>
- *     <tr><td rowspan="5">7</td><td rowspan="5"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ö‚Ì’Ç‰Á</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code><pre>{"key":"hoge","value":150,"old":100}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>query</td><td>æ¤œç´¢ã‚¯ã‚¨ãƒª</td></tr>
+ *     <tr><td>timeout</td><td>æ¤œç´¢ã‚¯ã‚¨ãƒªã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]</td></tr>
+ *     <tr><td>mergeQuery</td><td>åˆ†æ•£å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¸ã®æ¤œç´¢çµæœãƒãƒ¼ã‚¸ã‚¯ã‚¨ãƒª</td></tr>
+ *     <tr><td rowspan="5">7</td><td rowspan="5"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¸ã®è¿½åŠ </nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code><pre>{"key":"hoge","value":150,"old":100}</pre></code></td></tr>
  *     <tr><td>action</td><td>put</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>ƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td>value</td><td>’lB{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td rowspan="8">8</td><td rowspan="8"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ö‚ÌXV</nobr></td><td>responseType</td><td>json</td><td rowspan="8"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td>value</td><td>å€¤ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td rowspan="8">8</td><td rowspan="8"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¸ã®æ›´æ–°</nobr></td><td>responseType</td><td>json</td><td rowspan="8"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>update</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>ƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td>value[index]</td><td>{@link SharedContextRecord}‚Ìindex”Ô–Ú‚ÌƒvƒƒpƒeƒB’lB{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td>value(propertyName)</td><td>{@link SharedContextRecord}‚ÌƒvƒƒpƒeƒB–¼propertyName‚ÌƒvƒƒpƒeƒB’lB{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td>value_listIndex[index]</td><td>{@link SharedContextRecordList}‚ÌlistIndex”Ô–Ú‚Ì{@link SharedContextRecord}‚Ìindex”Ô–Ú‚ÌƒvƒƒpƒeƒB’lB{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td>value_listIndex(propertyName)</td><td>{@link SharedContextRecordList}‚ÌlistIndex”Ô–Ú‚Ì{@link SharedContextRecord}‚ÌƒvƒƒpƒeƒB–¼propertyName‚ÌƒvƒƒpƒeƒB’lB{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td rowspan="6">9</td><td rowspan="6"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚©‚ç‚Ìíœ</nobr></td><td>responseType</td><td>json</td><td rowspan="6"><code><pre>{"key":"hoge","old":100}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td>value[index]</td><td>{@link SharedContextRecord}ã®indexç•ªç›®ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td>value(propertyName)</td><td>{@link SharedContextRecord}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åpropertyNameã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td>value_listIndex[index]</td><td>{@link SharedContextRecordList}ã®listIndexç•ªç›®ã®{@link SharedContextRecord}ã®indexç•ªç›®ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td>value_listIndex(propertyName)</td><td>{@link SharedContextRecordList}ã®listIndexç•ªç›®ã®{@link SharedContextRecord}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åpropertyNameã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td rowspan="6">9</td><td rowspan="6"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰ã®å‰Šé™¤</nobr></td><td>responseType</td><td>json</td><td rowspan="6"><code><pre>{"key":"hoge","old":100}</pre></code></td></tr>
  *     <tr><td>action</td><td>remove</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>ƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\B</td></tr>
- *     <tr><td>index</td><td>{@link SharedContextRecordList}ã‚ÌƒCƒ“ƒfƒbƒNƒXBw’è‚µ‚È‚¢ê‡‚ÍAƒL[–ˆíœB</td></tr>
- *     <tr><td>clear</td><td>{@link SharedContextRecordList}‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éBtrue‚Ìê‡ƒNƒŠƒA‚·‚éB</td></tr>
- *     <tr><td rowspan="4">10</td><td rowspan="4"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒNƒŠƒA</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"local":false}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚</td></tr>
+ *     <tr><td>index</td><td>{@link SharedContextRecordList}ä¸Šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã‚­ãƒ¼æ¯å‰Šé™¤ã€‚</td></tr>
+ *     <tr><td>clear</td><td>{@link SharedContextRecordList}ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚trueã®å ´åˆã‚¯ãƒªã‚¢ã™ã‚‹ã€‚</td></tr>
+ *     <tr><td rowspan="4">10</td><td rowspan="4"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚¯ãƒªã‚¢</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"local":false}</pre></code></td></tr>
  *     <tr><td>action</td><td>clear</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>local</td><td>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹ƒf[ƒ^‚Ì‚İƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éBtrue‚Ìê‡Aƒ[ƒJƒ‹‚Ì‚İBw’è‚µ‚È‚¢ê‡‚ÍAfalseB</td></tr>
- *     <tr><td rowspan="4">11</td><td rowspan="4"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ì“Ç‚İ‚İ</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>local</td><td>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‡ãƒ¼ã‚¿ã®ã¿ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚trueã®å ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã®ã¿ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€falseã€‚</td></tr>
+ *     <tr><td rowspan="4">11</td><td rowspan="4"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®èª­ã¿è¾¼ã¿</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>load</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>“Ç‚İ‚İ‘ÎÛ‚ÌƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\Bw’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä“Ç‚İ‚ŞB</td></tr>
- *     <tr><td rowspan="3">12</td><td rowspan="3"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ì“Ç‚İ‚İ</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>èª­ã¿è¾¼ã¿å¯¾è±¡ã®ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦èª­ã¿è¾¼ã‚€ã€‚</td></tr>
+ *     <tr><td rowspan="3">12</td><td rowspan="3"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®èª­ã¿è¾¼ã¿</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>loadKey</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td rowspan="4">13</td><td rowspan="4"><nobr>‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ì•Û‘¶</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td rowspan="4">13</td><td rowspan="4"><nobr>å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä¿å­˜</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>save</td></tr>
- *     <tr><td>name</td><td>‘ÎÛ‚Ì‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼B</td></tr>
- *     <tr><td>key</td><td>•Û‘¶‘ÎÛ‚ÌƒL[B{@link Interpreter ƒCƒ“ƒ^[ƒvƒŠƒ^}‚ğg‚Á‚½ƒIƒuƒWƒFƒNƒg¶¬®‚àw’è‰Â”\Bw’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä•Û‘¶‚·‚éB</td></tr>
+ *     <tr><td>name</td><td>å¯¾è±¡ã®å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚</td></tr>
+ *     <tr><td>key</td><td>ä¿å­˜å¯¾è±¡ã®ã‚­ãƒ¼ã€‚{@link Interpreter ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿}ã‚’ä½¿ã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆå¼ã‚‚æŒ‡å®šå¯èƒ½ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ä¿å­˜ã™ã‚‹ã€‚</td></tr>
  * </table>
  * <p>
- * ˆÈ‰º‚ÉAƒT[ƒuƒŒƒbƒg‚Ìweb.xml’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®web.xmlå®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;servlet&gt;
  *     &lt;servlet-name&gt;SharedContextServlet&lt;/servlet-name&gt;
@@ -184,52 +184,52 @@ public class SharedContextServlet extends HttpServlet{
     private static final long serialVersionUID = -6992362984683159336L;
 
     /**
-     * ‘ÎÛ‚Æ‚·‚é‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * å¯¾è±¡ã¨ã™ã‚‹å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_SERVICE_NAMES = "ServiceNames";
     
     /**
-     * ƒCƒ“ƒ^ƒvƒŠƒ^‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_INTERPRETER_SERVICE_NAME = "InterpreterServiceName";
     
     /**
-     * ’Ç‰Á‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * è¿½åŠ ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_PUT_ENABLED = "PutEnabled";
     
     /**
-     * XV‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * æ›´æ–°ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_UPDATE_ENABLED = "UpdateEnabled";
     
     /**
-     * íœ‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * å‰Šé™¤ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_REMOVE_ENABLED = "RemoveEnabled";
     
     /**
-     * ‘Síœ‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * å…¨å‰Šé™¤ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_CLEAR_ENABLED = "ClearEnabled";
     
     /**
-     * “Ç‚İ‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * èª­è¾¼ã¿ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_LOAD_ENABLED = "LoadEnabled";
     
     /**
-     * ‘‚İ‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * æ›¸è¾¼ã¿ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_SAVE_ENABLED = "SaveEnabled";
     
     /**
-     * JSONƒRƒ“ƒo[ƒ^‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * JSONã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_JSON_CONVERTER_SERVICE_NAME = "JSONConverterServiceName";
     
     /**
-     * JSON‰“š‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * JSONå¿œç­”æ™‚ã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_UNICODE_ESCAPE = "UnicodeEscape";
     
@@ -313,10 +313,10 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚ğs‚¤B<p>
-     * ƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‹y‚Ñƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰åŠã³ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚
      *
-     * @exception ServletException ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception ServletException ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public synchronized void init() throws ServletException{
         ServiceName jsonConverterServiceName = getJSONConverterServiceName();
@@ -346,10 +346,10 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * POSTƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * POSTãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -361,10 +361,10 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * GETƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * GETãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -376,11 +376,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹ˆ—‚ğs‚¤B
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡¦ç†ã‚’è¡Œã†ã€‚
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -456,11 +456,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -568,11 +568,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -735,11 +735,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚Ì’l‚ğæ“¾‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã‚’å–å¾—ã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -897,7 +897,7 @@ public class SharedContextServlet extends HttpServlet{
                    .append("<td>").append(propSchemata[i].getType().getName()).append("</td>")
                    .append("<td>").append(record.getProperty(i)).append("</td>");
                 if(isUpdateSupport){
-                    buf.append("<td><table><tr><td>¨</td><td><textarea name=\"value\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td>");
+                    buf.append("<td><table><tr><td>â†’</td><td><textarea name=\"value\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td>");
                 }
                 buf.append("</tr>");
             }
@@ -936,7 +936,7 @@ public class SharedContextServlet extends HttpServlet{
             for(int i = 0; i < propSchemata.length; i++){
                 buf.append("<th>").append(propSchemata[i].getName()).append("</th>");
             }
-            buf.append("<th rowspan=\"2\">@</th>");
+            buf.append("<th rowspan=\"2\">ã€€</th>");
             buf.append("</tr>");
             buf.append("<tr bgcolor=\"#cccccc\">");
             for(int i = 0; i < propSchemata.length; i++){
@@ -960,7 +960,7 @@ public class SharedContextServlet extends HttpServlet{
                 if(isUpdateSupport){
                     buf.append("<tr>").append("<td>new</td>");
                     for(int j = 0; j < propSchemata.length; j++){
-                        buf.append("<td><table><tr><td style=\"text-align:center;\">«</td></tr><tr><td><textarea name=\"value_").append(i).append("\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td>");
+                        buf.append("<td><table><tr><td style=\"text-align:center;\">â†“</td></tr><tr><td><textarea name=\"value_").append(i).append("\" cols=\"40\" rows=\"4\"></textarea></td></tr></table></td>");
                     }
                     buf.append("</tr>");
                 }
@@ -980,7 +980,7 @@ public class SharedContextServlet extends HttpServlet{
             }
             buf.append("<table><tr><td>").append(value.toString()).append("</td>");
             if(isLink && isPutEnabled()){
-                buf.append("<td>¨</td><td><textarea name=\"value\" cols=\"40\" rows=\"4\"></textarea></td><td><input type=\"submit\" value=\"put\"></td></tr></table>");
+                buf.append("<td>â†’</td><td><textarea name=\"value\" cols=\"40\" rows=\"4\"></textarea></td><td><input type=\"submit\" value=\"put\"></td></tr></table>");
                 buf.append("</form>");
             }else{
                 buf.append("</tr></table>");
@@ -990,11 +990,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÌƒL[‚ª‘¶İ‚·‚é‚©Šm”F‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèªã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1098,11 +1098,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÌƒL[W‡‚ğæ“¾‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼é›†åˆã‚’å–å¾—ã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1232,11 +1232,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÉƒNƒGƒŠ‚ğÀs‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1332,11 +1332,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚Ì’l‚ğíœ‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã‚’å‰Šé™¤ã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1487,11 +1487,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚É’l‚ğ’Ç‰Á‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«å€¤ã‚’è¿½åŠ ã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1603,11 +1603,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚Ì’l‚ğ‘Síœ‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã‚’å…¨å‰Šé™¤ã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1686,11 +1686,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ğ“Ç‚İ‚ŞƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’èª­ã¿è¾¼ã‚€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1784,11 +1784,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÌƒL[‚ğ“Ç‚İ‚ŞƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1857,11 +1857,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ğ‘‚«‚ŞƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›¸ãè¾¼ã‚€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1956,11 +1956,11 @@ public class SharedContextServlet extends HttpServlet{
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚Ì’l‚ğXV‚·‚éƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã‚’æ›´æ–°ã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */

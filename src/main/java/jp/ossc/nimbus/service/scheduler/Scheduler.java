@@ -34,90 +34,90 @@ package jp.ossc.nimbus.service.scheduler;
 import java.util.*;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‰B<p>
- * ƒXƒPƒWƒ…[ƒ‰‚ªÀ‘•‚·‚×‚«ƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ãŒå®Ÿè£…ã™ã¹ãã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface Scheduler{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğŠJn‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param key Às‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌƒL[
+     * @param key å®Ÿè¡Œã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼
      */
     public void startSchedule(Object key);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ’â~‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stopSchedule();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ªI—¹‚·‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒçµ‚äº†ã™ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
      */
     public void waitUntilScheduleClose();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ªI—¹‚·‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒçµ‚äº†ã™ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡false
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆfalse
      */
     public boolean waitUntilScheduleClose(long timeout);
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÅƒXƒPƒWƒ…[ƒ‹‚³‚ê‚éƒXƒPƒWƒ…[ƒ‹‚©‚çw’è‚³‚ê‚½–¼‘O‚ÌƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚Œã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸåå‰ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @return ƒXƒPƒWƒ…[ƒ‹
+     * @param key ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
      */
     public Schedule getSchedule(Object key, String name);
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÅƒXƒPƒWƒ…[ƒ‹‚³‚ê‚é‘S‚Ä‚ÌƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚Œã‚‹å…¨ã¦ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+     * @param key ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
      */
     public Schedule[] getSchedules(Object key);
     
     /**
-     * Œ»İƒXƒPƒWƒ…[ƒ‹‚³‚ê‚Ä‚¢‚éƒXƒPƒWƒ…[ƒ‹‚©‚çw’è‚³‚ê‚½–¼‘O‚ÌƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸåå‰ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @return ƒXƒPƒWƒ…[ƒ‹
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
      */
     public Schedule getSchedule(String name);
     
     /**
-     * Œ»İƒXƒPƒWƒ…[ƒ‹‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
      */
     public Schedule[] getSchedules();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§“I‚ÉÀs‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çš„ã«å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void executeSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§“I‚É’x‰„Às‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çš„ã«é…å»¶å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @param delay ’x‰„ŠÔ
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @param delay é…å»¶æ™‚é–“
      */
     public void executeSchedule(String name, long delay);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§“I‚ÉƒXƒPƒWƒ…[ƒ‹Às‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çš„ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @param time Às
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @param time å®Ÿè¡Œæ™‚åˆ»
      */
     public void executeSchedule(String name, Date time);
 }

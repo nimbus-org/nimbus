@@ -35,7 +35,7 @@ import java.text.*;
 import java.util.Date;
 
 /**
- * ’Ê”ÔŠÇ—B<p>
+ * æ™‚åˆ»é€šç•ªç®¡ç†ã€‚<p>
  * 
  * @author M.Takata
  */

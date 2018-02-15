@@ -29,46 +29,46 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.performance;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.writer.*;
 /**
- * ƒtƒ@ƒCƒ‹‘‚«o‚µŠÄ‹ƒf[ƒ‚ƒ“B<br>
- * w’è‚³‚ê‚½ƒCƒ“ƒ^[ƒoƒ‹ŠÔŠu‚Å{@link FileReportPerformanceStatisticsService}‚ğŠÄ‹‚·‚éB<br>
- * ƒpƒtƒH[ƒ}ƒ“ƒXŠÇ—HASH‚Ì“à—e‚ğ’èŠú“I‚Éƒtƒ@ƒCƒ‹o—Í‚·‚éB
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ç›£è¦–ãƒ‡ãƒ¼ãƒ¢ãƒ³ã€‚<br>
+ * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«é–“éš”ã§{@link FileReportPerformanceStatisticsService}ã‚’ç›£è¦–ã™ã‚‹ã€‚<br>
+ * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ç®¡ç†HASHã®å†…å®¹ã‚’å®šæœŸçš„ã«ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã™ã‚‹ã€‚
  * @author K.Nakamura
- * @version 1.00 ì¬F2004.02.16 - K.Nakamura<BR>
+ * @version 1.00 ä½œæˆï¼š2004.02.16 - K.Nakamura<BR>
  */
 public class WriterDaemonRunnable implements DaemonRunnable{
 	protected FileReportPerformanceStatisticsService mCallBack = null;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public WriterDaemonRunnable(FileReportPerformanceStatisticsService inObj){
 		this.mCallBack = inObj;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onStop()
 	 */
 	public boolean onStop(){
 		return true;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onSuspend()
 	 */
 	public boolean onSuspend(){
 		return true;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onResume()
 	 */
 	public boolean onResume(){
 		return true;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#provide(jp.ossc.nimbus.daemon.DaemonControl)
 	 */
 	public Object provide(DaemonControl ctrl) throws Exception{
@@ -76,7 +76,7 @@ public class WriterDaemonRunnable implements DaemonRunnable{
 		Thread.sleep(tn);
 		return new Object();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#consume(java.lang.Object, jp.ossc.nimbus.daemon.DaemonControl)
 	 */
 	public void consume(Object paramObj, DaemonControl ctrl) throws Exception{
@@ -97,20 +97,20 @@ public class WriterDaemonRunnable implements DaemonRunnable{
 		for(int i = 0; i < performance.length; i++){
 			final Map elements = new HashMap();
 			elements.put("", performance[i]);
-			// ƒtƒ@ƒCƒ‹‘‚«o‚µ
+			// ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—
 			WritableRecord rec = mCallBack.mWritableRecFac.createRecord(elements); 
 			mCallBack.mWriter.write(rec);
 		}
 	}
 	/**
-	 *	ƒXƒŒƒbƒh‚ÌŒãˆ—‚ğs‚¤ƒCƒ“ƒ^[ƒtƒFƒCƒXB
+	 *	ã‚¹ãƒ¬ãƒƒãƒ‰ã®å¾Œå‡¦ç†ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#garbage() 
 	 */
 	public void garbage(){
 	}
 	/**
-	 * ƒXƒ^[ƒgˆ—B
-	 * @return boolean true - ƒXƒ^[ƒg³”FAfalse - ƒXƒ^[ƒg”ñ³”F
+	 * ã‚¹ã‚¿ãƒ¼ãƒˆå‡¦ç†ã€‚
+	 * @return boolean true - ã‚¹ã‚¿ãƒ¼ãƒˆæ‰¿èªã€false - ã‚¹ã‚¿ãƒ¼ãƒˆéæ‰¿èª
 	 */
 	public boolean onStart(){
 		return true;

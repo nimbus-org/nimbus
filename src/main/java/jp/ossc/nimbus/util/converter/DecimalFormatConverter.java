@@ -39,7 +39,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ¬”ƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^B<p>
+ * å°æ•°ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -48,12 +48,12 @@ public class DecimalFormatConverter implements FormatConverter{
     private static final long serialVersionUID = -1183874197480695923L;
     
     /**
-     * ”’l¨•¶š—ñ‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ•°å€¤â†’æ–‡å­—åˆ—ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int NUMBER_TO_STRING = OBJECT_TO_STRING;
     
     /**
-     * •¶š—ñ¨”’l•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ–‡å­—åˆ—â†’æ•°å€¤å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STRING_TO_NUMBER = STRING_TO_OBJECT;
     
@@ -71,126 +71,126 @@ public class DecimalFormatConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      */
     protected String format;
     
     /**
-     * NA’l‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åg—p‚µ‚È‚¢B<br>
+     * NAå€¤ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ä½¿ç”¨ã—ãªã„ã€‚<br>
      */
     protected boolean isUseNotApplicable;
     
     /**
-     * byte‚ÌNA’lB<p>
+     * byteã®NAå€¤ã€‚<p>
      */
     protected Byte notApplicableForByte;
     
     /**
-     * short‚ÌNA’lB<p>
+     * shortã®NAå€¤ã€‚<p>
      */
     protected Short notApplicableForShort;
     
     /**
-     * int‚ÌNA’lB<p>
+     * intã®NAå€¤ã€‚<p>
      */
     protected Integer notApplicableForInt;
     
     /**
-     * long‚ÌNA’lB<p>
+     * longã®NAå€¤ã€‚<p>
      */
     protected Long notApplicableForLong;
     
     /**
-     * float‚ÌNA’lB<p>
+     * floatã®NAå€¤ã€‚<p>
      */
     protected Float notApplicableForFloat;
     
     /**
-     * double‚ÌNA’lB<p>
+     * doubleã®NAå€¤ã€‚<p>
      */
     protected Double notApplicableForDouble;
     
     /**
-     * BigInteger‚ÌNA’lB<p>
+     * BigIntegerã®NAå€¤ã€‚<p>
      */
     protected BigInteger notApplicableForBigInteger;
     
     /**
-     * BigDecimal‚ÌNA’lB<p>
+     * BigDecimalã®NAå€¤ã€‚<p>
      */
     protected BigDecimal notApplicableForBigDecimal;
     
     /**
-     * byte‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * byteã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForByte;
     
     /**
-     * short‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * shortã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForShort;
     
     /**
-     * int‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * intã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForInt;
     
     /**
-     * long‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * longã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForLong;
     
     /**
-     * float‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * floatã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForFloat;
     
     /**
-     * double‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * doubleã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForDouble;
     
     /**
-     * BigInteger‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * BigIntegerã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForBigInteger;
     
     /**
-     * BigDecimal‚ÌNA’l‚Ì•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * BigDecimalã®NAå€¤ã®æ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      */
     protected String notApplicableStringForBigDecimal;
     
     /**
-     * java.text.DecimalFormat‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğŠÇ—‚·‚éƒ}ƒbƒvB<p>
+     * java.text.DecimalFormatã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç®¡ç†ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map decimalFormatProperties;
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg‚È‚µ‚Å”’l¨•¶š—ñ•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãªã—ã§æ•°å€¤â†’æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DecimalFormatConverter(){
         this(NUMBER_TO_STRING, "");
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param format ”’lƒtƒH[ƒ}ƒbƒg
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param format æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      * @see #NUMBER_TO_STRING
      * @see #STRING_TO_NUMBER
      */
@@ -201,9 +201,9 @@ public class DecimalFormatConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #NUMBER_TO_STRING
      * @see #STRING_TO_NUMBER
@@ -213,9 +213,9 @@ public class DecimalFormatConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -223,18 +223,18 @@ public class DecimalFormatConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·ƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param format {@link DecimalFormat}‚Ì•ÏŠ·ƒtƒH[ƒ}ƒbƒg
+     * @param format {@link DecimalFormat}ã®å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setFormat(String format){
         this.format = format;
     }
     
     /**
-     * •ÏŠ·ƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·ƒtƒH[ƒ}ƒbƒg
+     * @return å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      * @see #setFormat(String)
      */
     public String getFormat(){
@@ -242,325 +242,325 @@ public class DecimalFormatConverter implements FormatConverter{
     }
     
     /**
-     * NA’l‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * NAå€¤ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ANA’l‚ğg—p‚·‚é
+     * @return trueã®å ´åˆã€NAå€¤ã‚’ä½¿ç”¨ã™ã‚‹
      */
     public boolean isUseNotApplicable(){
         return isUseNotApplicable;
     }
     
     /**
-     * NA’l‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅANA’l‚ğg—p‚µ‚È‚¢B<br>
+     * NAå€¤ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€NAå€¤ã‚’ä½¿ç”¨ã—ãªã„ã€‚<br>
      *
-     * @param isUse NA’l‚ğg—p‚·‚éê‡Atrue
+     * @param isUse NAå€¤ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã€true
      */
     public void setUseNotApplicable(boolean isUse){
         isUseNotApplicable = isUse;
     }
     
     /**
-     * byte‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * byteã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return byte‚ÌNA’l
+     * @return byteã®NAå€¤
      */
     public Byte getNotApplicableForByte(){
         return notApplicableForByte;
     }
     
     /**
-     * byte‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * byteã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na byte‚ÌNA’l
+     * @param na byteã®NAå€¤
      */
     public void setNotApplicableForByte(Byte na){
         notApplicableForByte = na;
     }
     
     /**
-     * short‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * shortã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return short‚ÌNA’l
+     * @return shortã®NAå€¤
      */
     public Short getNotApplicableForShort(){
         return notApplicableForShort;
     }
     
     /**
-     * short‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * shortã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na short‚ÌNA’l
+     * @param na shortã®NAå€¤
      */
     public void setNotApplicableForShort(Short na){
         notApplicableForShort = na;
     }
     
     /**
-     * int‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * intã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return int‚ÌNA’l
+     * @return intã®NAå€¤
      */
     public Integer getNotApplicableForInt(){
         return notApplicableForInt;
     }
     
     /**
-     * int‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * intã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na int‚ÌNA’l
+     * @param na intã®NAå€¤
      */
     public void setNotApplicableForInt(Integer na){
         notApplicableForInt = na;
     }
     
     /**
-     * long‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * longã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return long‚ÌNA’l
+     * @return longã®NAå€¤
      */
     public Long getNotApplicableForLong(){
         return notApplicableForLong;
     }
     
     /**
-     * long‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * longã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na long‚ÌNA’l
+     * @param na longã®NAå€¤
      */
     public void setNotApplicableForLong(Long na){
         notApplicableForLong = na;
     }
     
     /**
-     * float‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * floatã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return byte‚ÌNA’l
+     * @return byteã®NAå€¤
      */
     public Float getNotApplicableForFloat(){
         return notApplicableForFloat;
     }
     
     /**
-     * float‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * floatã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na float‚ÌNA’l
+     * @param na floatã®NAå€¤
      */
     public void setNotApplicableForFloat(Float na){
         notApplicableForFloat = na;
     }
     
     /**
-     * double‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * doubleã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return byte‚ÌNA’l
+     * @return byteã®NAå€¤
      */
     public Double getNotApplicableForDouble(){
         return notApplicableForDouble;
     }
     
     /**
-     * double‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * doubleã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na double‚ÌNA’l
+     * @param na doubleã®NAå€¤
      */
     public void setNotApplicableForDouble(Double na){
         notApplicableForDouble = na;
     }
     
     /**
-     * BigInteger‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * BigIntegerã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return byte‚ÌNA’l
+     * @return byteã®NAå€¤
      */
     public BigInteger getNotApplicableForBigInteger(){
         return notApplicableForBigInteger;
     }
     
     /**
-     * BigInteger‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * BigIntegerã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na BigInteger‚ÌNA’l
+     * @param na BigIntegerã®NAå€¤
      */
     public void setNotApplicableForBigInteger(BigInteger na){
         notApplicableForBigInteger = na;
     }
     
     /**
-     * BigDecimal‚ÌNA’l‚ğæ“¾‚·‚éB<p>
+     * BigDecimalã®NAå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return byte‚ÌNA’l
+     * @return byteã®NAå€¤
      */
     public BigDecimal getNotApplicableForBigDecimal(){
         return notApplicableForBigDecimal;
     }
     
     /**
-     * BigDecimal‚ÌNA’l‚ğİ’è‚·‚éB<p>
+     * BigDecimalã®NAå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na BigDecimal‚ÌNA’l
+     * @param na BigDecimalã®NAå€¤
      */
     public void setNotApplicableForBigDecimal(BigDecimal na){
         notApplicableForBigDecimal = na;
     }
     
     /**
-     * byte‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * byteã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return byte‚ÌNA’l‚Ì•¶š—ñ
+     * @return byteã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForByte(){
         return notApplicableStringForByte;
     }
     
     /**
-     * byte‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * byteã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na byte‚ÌNA’l‚Ì•¶š—ñ
+     * @param na byteã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForByte(String na){
         notApplicableStringForByte = na;
     }
     
     /**
-     * short‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * shortã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return short‚ÌNA’l‚Ì•¶š—ñ
+     * @return shortã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForShort(){
         return notApplicableStringForShort;
     }
     
     /**
-     * short‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * shortã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na short‚ÌNA’l‚Ì•¶š—ñ
+     * @param na shortã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForShort(String na){
         notApplicableStringForShort = na;
     }
     
     /**
-     * int‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * intã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return int‚ÌNA’l‚Ì•¶š—ñ
+     * @return intã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForInt(){
         return notApplicableStringForInt;
     }
     
     /**
-     * int‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * intã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na int‚ÌNA’l‚Ì•¶š—ñ
+     * @param na intã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForInt(String na){
         notApplicableStringForInt = na;
     }
     
     /**
-     * long‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * longã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return long‚ÌNA’l‚Ì•¶š—ñ
+     * @return longã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForLong(){
         return notApplicableStringForLong;
     }
     
     /**
-     * long‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * longã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na long‚ÌNA’l‚Ì•¶š—ñ
+     * @param na longã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForLong(String na){
         notApplicableStringForLong = na;
     }
     
     /**
-     * float‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * floatã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return float‚ÌNA’l‚Ì•¶š—ñ
+     * @return floatã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForFloat(){
         return notApplicableStringForFloat;
     }
     
     /**
-     * float‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * floatã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na float‚ÌNA’l‚Ì•¶š—ñ
+     * @param na floatã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForFloat(String na){
         notApplicableStringForFloat = na;
     }
     
     /**
-     * double‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * doubleã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return double‚ÌNA’l‚Ì•¶š—ñ
+     * @return doubleã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForDouble(){
         return notApplicableStringForDouble;
     }
     
     /**
-     * double‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * doubleã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na double‚ÌNA’l‚Ì•¶š—ñ
+     * @param na doubleã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForDouble(String na){
         notApplicableStringForDouble = na;
     }
     
     /**
-     * BigInteger‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * BigIntegerã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BigInteger‚ÌNA’l‚Ì•¶š—ñ
+     * @return BigIntegerã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForBigInteger(){
         return notApplicableStringForBigInteger;
     }
     
     /**
-     * BigInteger‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * BigIntegerã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na BigInteger‚ÌNA’l‚Ì•¶š—ñ
+     * @param na BigIntegerã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForBigInteger(String na){
         notApplicableStringForBigInteger = na;
     }
     
     /**
-     * BigDecimal‚ÌNA’l‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * BigDecimalã®NAå€¤ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BigDecimal‚ÌNA’l‚Ì•¶š—ñ
+     * @return BigDecimalã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public String getNotApplicableStringForBigDecimal(){
         return notApplicableStringForBigDecimal;
     }
     
     /**
-     * BigDecimal‚ÌNA’l‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * BigDecimalã®NAå€¤ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param na BigDecimal‚ÌNA’l‚Ì•¶š—ñ
+     * @param na BigDecimalã®NAå€¤ã®æ–‡å­—åˆ—
      */
     public void setNotApplicableStringForBigDecimal(String na){
         notApplicableStringForBigDecimal = na;
     }
     
     /**
-     * java.text.DecimalFormat‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * java.text.DecimalFormatã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setDecimalFormatProperty(String name, Object value){
         if(decimalFormatProperties == null){
@@ -589,11 +589,11 @@ public class DecimalFormatConverter implements FormatConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         

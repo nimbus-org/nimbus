@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE server PUBLIC
   "-//Nimbus//DTD Nimbus 1.0//JA"
   "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
 <server>
 <!--
-    HTTPでリクエストを送って、HTMLをDOMとして取得するサンプル
+    HTTP縺ｧ繝ｪ繧ｯ繧ｨ繧ｹ繝医ｒ騾√▲縺ｦ縲？TML繧奪OM縺ｨ縺励※蜿門ｾ励☆繧九し繝ｳ繝励Ν
 -->
     <default-log>
         <information output="false"/>

@@ -34,45 +34,45 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * ƒ{ƒfƒB‚ğ‚ÂRESTƒŠƒNƒGƒXƒgB<p>
+ * ãƒœãƒ‡ã‚£ã‚’æŒã¤RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class BodyRestRequest extends RestRequest{
     
     /**
-     * ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object requestObject;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BodyRestRequest(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public BodyRestRequest(HttpServletRequest request){
         super(request);
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getRequestObject(){
         return requestObject;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param requestObj ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg
+     * @param requestObj ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setRequestObject(Object requestObj){
         requestObject = requestObj;

@@ -41,7 +41,7 @@ import com.jezhumble.javasysmon.Monitor;
 import com.jezhumble.javasysmon.JavaSysMon;
 
 /**
- * com.jezhumble.javasysmon.JavaSysMonÀ‘•‚Ì{@link OperationSystem}ƒT[ƒrƒXB<p>
+ * com.jezhumble.javasysmon.JavaSysMonå®Ÿè£…ã®{@link OperationSystem}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.FactoryServiceBaseMBean;
 
 /**
- * {@link MemorySizeOverflowValidatorFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link MemorySizeOverflowValidatorFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see MemorySizeOverflowValidatorFactoryService
@@ -43,43 +43,43 @@ public interface MemorySizeOverflowValidatorFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * �q�[�v�������̍ő�T�C�Y��ݒ肷��B<p>
-     * �L���Ȓl�͈̔͂́A0�ȏ�B�f�t�H���g��{@link Runtime#maxMemory()}�Ŏ擾�ł���l�B���̃��\�b�h���T�|�[�g����Ă��Ȃ��ꍇ�́A64MByte�B<br>
-     * �P�ʂ��w�肵�Ȃ��ꍇ�́A�o�C�g�P�ʁB�P�ʂ��w�肷��ꍇ�́A"K"�̏ꍇ�̓L���o�C�g�P�ʁB"M"�̏ꍇ�̓��K�o�C�g�P�ʁB"G"�̏ꍇ�̓M�K�o�C�g�P�ʁB
+     * ヒープメモリの最大サイズを設定する。<p>
+     * 有効な値の範囲は、0以上。デフォルトは{@link Runtime#maxMemory()}で取得できる値。そのメソッドがサポートされていない場合は、64MByte。<br>
+     * 単位を指定しない場合は、バイト単位。単位を指定する場合は、"K"の場合はキロバイト単位。"M"の場合はメガバイト単位。"G"の場合はギガバイト単位。
      *
-     * @param size �q�[�v�������̍ő�T�C�Y
-     * @exception IllegalArgumentException ���l�łȂ�������A���̒l�A���e����Ȃ��P�ʕ������w�肵���ꍇ
+     * @param size ヒープメモリの最大サイズ
+     * @exception IllegalArgumentException 数値でない文字列、負の値、許容されない単位文字を指定した場合
      */
     public void setMaxHeapMemorySize(String size)
      throws IllegalArgumentException;
     
     /**
-     * �q�[�v�������̍ő�T�C�Y���擾����B<p>
+     * ヒープメモリの最大サイズを取得する。<p>
      *
-     * @return �q�[�v�������̍ő�T�C�Y
+     * @return ヒープメモリの最大サイズ
      */
     public String getMaxHeapMemorySize();
     
     /**
-     * �q�[�v�������̍����׃T�C�Y��ݒ肷��B<p>
-     * �L���Ȓl�͈̔͂́A0�ȏ�B�f�t�H���g��{@link Runtime#maxMemory()}�Ŏ擾�ł���l�B���̃��\�b�h���T�|�[�g����Ă��Ȃ��ꍇ�́A64MByte�B<br>
-     * �P�ʂ��w�肵�Ȃ��ꍇ�́A�o�C�g�P�ʁB�P�ʂ��w�肷��ꍇ�́A"K"�̏ꍇ�̓L���o�C�g�P�ʁB"M"�̏ꍇ�̓��K�o�C�g�P�ʁB"G"�̏ꍇ�̓M�K�o�C�g�P�ʁB
+     * ヒープメモリの高負荷サイズを設定する。<p>
+     * 有効な値の範囲は、0以上。デフォルトは{@link Runtime#maxMemory()}で取得できる値。そのメソッドがサポートされていない場合は、64MByte。<br>
+     * 単位を指定しない場合は、バイト単位。単位を指定する場合は、"K"の場合はキロバイト単位。"M"の場合はメガバイト単位。"G"の場合はギガバイト単位。
      *
-     * @param size �q�[�v�������̍����׃T�C�Y
-     * @exception IllegalArgumentException ���l�łȂ�������A���̒l�A���e����Ȃ��P�ʕ������w�肵���ꍇ
+     * @param size ヒープメモリの高負荷サイズ
+     * @exception IllegalArgumentException 数値でない文字列、負の値、許容されない単位文字を指定した場合
      */
     public void setHighHeapMemorySize(String size)
      throws IllegalArgumentException;
     
     /**
-     * �q�[�v�������̍����׃T�C�Y���擾����B<p>
+     * ヒープメモリの高負荷サイズを取得する。<p>
      *
-     * @return �q�[�v�������̍����׃T�C�Y
+     * @return ヒープメモリの高負荷サイズ
      */
     public String getHighHeapMemorySize();
     
     /**
-     * ���ӂꌟ�؂����s���邽�߂ɕێ����Ă����������������B<p>
+     * あふれ検証を実行するために保持している情報を初期化する。<p>
      */
     public void reset();
 }

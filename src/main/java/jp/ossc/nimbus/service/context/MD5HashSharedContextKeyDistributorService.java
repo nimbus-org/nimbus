@@ -42,7 +42,7 @@ import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * JavaƒIƒuƒWƒFƒNƒg‚ÌƒnƒbƒVƒ…’l‚ğg‚Á‚½{@link SharedContextKeyDistributor}ƒT[ƒrƒXB<p>
+ * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒã‚·ãƒ¥å€¤ã‚’ä½¿ã£ãŸ{@link SharedContextKeyDistributor}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

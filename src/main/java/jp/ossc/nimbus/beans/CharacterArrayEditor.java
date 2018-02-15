@@ -34,26 +34,26 @@ package jp.ossc.nimbus.beans;
 import java.util.*;
 
 /**
- * char�z��^��PropertyEditor�N���X�B<p>
- * �J���}��؂�̕������char[]�^�̃I�u�W�F�N�g�ɕϊ�����B<br>
- * �ŏ��ƍŌ�̋󔒂Ɖ��s�O��̋󔒂̓g���������B
- * �󔒂́A{@link java.lang.Character#isWhitespace(char)}�Ŕ��肳���B
- * �܂��A"&lt;!--"��"--&gt;"�Ɉ͂܂ꂽ������̓R�����g�Ɖ��߂��ꖳ�������B
- * �܂��A"${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B
- * "${\t}"�A"${\n}"�A"${\r}"�A"${\f}"�́A�G�X�P�[�v�V�[�P���X�Ƃ��Ēu�������B
- * "0x"����n�܂镶����́A16�i�����Ƃ���char�ɕϊ������B
- * "��u"����n�܂镶����́A���j�R�[�h�����Ƃ���char�ɕϊ������B<br>
+ * char配列型のPropertyEditorクラス。<p>
+ * カンマ区切りの文字列をchar[]型のオブジェクトに変換する。<br>
+ * 最初と最後の空白と改行前後の空白はトリムされる。
+ * 空白は、{@link java.lang.Character#isWhitespace(char)}で判定される。
+ * また、"&lt;!--"と"--&gt;"に囲まれた文字列はコメントと解釈され無視される。
+ * また、"${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。
+ * "${\t}"、"${\n}"、"${\r}"、"${\f}"は、エスケープシーケンスとして置換される。
+ * "0x"から始まる文字列は、16進文字としてcharに変換される。
+ * "￥u"から始まる文字列は、ユニコード文字としてcharに変換される。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;a,b,0x63,<br>
- * &nbsp;&nbsp;d,��u3042, ,&lt;!--7,<br>
+ * &nbsp;&nbsp;d,￥u3042, ,&lt;!--7,<br>
  * &nbsp;&nbsp;8,--&gt;9<br>
  * <br>
- * &nbsp;�̂悤�ȕ�����<br>
+ * &nbsp;のような文字列が<br>
  * <br>
- * &nbsp;&nbsp;new char[]{'a', 'b', 'c', 'd', '��', ' ', '9'}<br>
+ * &nbsp;&nbsp;new char[]{'a', 'b', 'c', 'd', 'あ', ' ', '9'}<br>
  * <br>
- * &nbsp;�̂悤�ɕϊ������B<br>
+ * &nbsp;のように変換される。<br>
  *
  * @author M.Takata
  */

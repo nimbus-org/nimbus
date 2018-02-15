@@ -1,23 +1,23 @@
-ƒRƒ}ƒ“ƒhg—p•û–@F
+ã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•ï¼š
  java jp.ossc.nimbus.service.beancontrol.Compiler [options] [beanflow files]
 
 [options]
 
  [-v]
-  Às‚ÌÚ×‚ğ•\¦‚µ‚Ü‚·B
+  å®Ÿè¡Œã®è©³ç´°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 
  [-class]
-   jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker‚ÌÀ‘•ƒNƒ‰ƒXB
+   jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚
 
  [-testInterpreterClass]
-   jp.ossc.nimbus.service.interpreter.Interpreter‚ÌÀ‘•ƒNƒ‰ƒXB
+   jp.ossc.nimbus.service.interpreter.Interpreterã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚
 
  [-help]
-  ƒwƒ‹ƒv‚ğ•\¦‚µ‚Ü‚·B
+  ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 
 [beanflow files]
- ƒRƒ“ƒpƒCƒ‹‚·‚é‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹A‚Ü‚½‚ÍƒfƒBƒŒƒNƒgƒŠ‚ğw’è‚µ‚Ü‚·B
- ƒXƒy[ƒX‹æØ‚è‚Å•¡”w’è‰Â”\‚Å‚·B
+ ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã€ã¾ãŸã¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã—ã¾ã™ã€‚
+ ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯èƒ½ã§ã™ã€‚
 
-g—p—á : 
+ä½¿ç”¨ä¾‹ : 
    java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.service.beancontrol.Compiler beanflow-def.xml

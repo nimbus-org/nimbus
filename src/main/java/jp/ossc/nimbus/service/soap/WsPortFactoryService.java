@@ -48,7 +48,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * WebƒT[ƒrƒXƒ|[ƒgƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒXB
+ * Webã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -70,7 +70,7 @@ public class WsPortFactoryService extends ServiceBase implements PortFactory, Ws
     private Map requestContext;
 
     /**
-     * ƒ|[ƒgƒGƒCƒŠƒAƒXƒvƒƒpƒeƒB ƒL[‚É[ƒ|[ƒgƒGƒCƒŠƒAƒX–¼]A’l‚É[ƒ|[ƒg–¼,ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼]‚ÌƒvƒƒpƒeƒB
+     * ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ ã‚­ãƒ¼ã«[ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹å]ã€å€¤ã«[ãƒãƒ¼ãƒˆå,ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     private Properties portAliasProp;
 

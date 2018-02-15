@@ -36,7 +36,7 @@ import javax.jms.*;
 import jp.ossc.nimbus.service.writer.WritableRecord;
 
 /**
- * MessageWriter‚Ì“ü—Í‚Å‚ ‚éWritableRecord‚©‚çJMS‚ÌMessage‚ğ¶¬‚·‚éƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * MessageWriterã®å…¥åŠ›ã§ã‚ã‚‹WritableRecordã‹ã‚‰JMSã®Messageã‚’ç”Ÿæˆã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

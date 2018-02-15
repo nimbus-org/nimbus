@@ -38,20 +38,20 @@ import jp.ossc.nimbus.service.journal.*;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link RequestJournal}‚ğMapƒtƒH[ƒ}ƒbƒg‚·‚éŠÈˆÕƒGƒfƒBƒ^B<p>
- * ‚±‚ÌƒGƒfƒBƒ^‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚½Map‚ÍAˆÈ‰º‚Ì\‘¢‚ğ‚ÂB<br>
+ * {@link RequestJournal}ã‚’Mapãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ç°¡æ˜“ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * ã“ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«ã‚ˆã£ã¦ç·¨é›†ã•ã‚ŒãŸMapã¯ã€ä»¥ä¸‹ã®æ§‹é€ ã‚’æŒã¤ã€‚<br>
  * <table broder="1">
- *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="5">’l</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th colspan="4">“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REQUEST_ID_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒgID</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #START_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">ŠJn</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #END_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">I—¹</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #PERFORMANCE_KEY}</td><td>java.lang.Long</td><td colspan="4">ˆ—ŠÔ[ms]</td></tr>
- *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #RECORDS_KEY}</td><td rowspan="3">java.util.SortedMap</td><td colspan="4">JournalRecord‚Ì•ÒWŒ‹‰Ê‚Ìƒ}ƒbƒv</td></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>JournalRecord‚ÌƒL[</td><td>java.util.List</td><td>JournalRecord‚Ì•ÒWŒ‹‰Ê‚ÌObject‚ÌƒŠƒXƒgBd•¡‚·‚éJournalRecord‚ÌƒL[‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍA‚±‚ÌƒŠƒXƒg‚ÌƒTƒCƒY‚Í‚PB</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="5">å€¤</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th colspan="4">å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REQUEST_ID_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆID</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #START_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">é–‹å§‹æ™‚åˆ»</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #END_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">çµ‚äº†æ™‚åˆ»</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #PERFORMANCE_KEY}</td><td>java.lang.Long</td><td colspan="4">å‡¦ç†æ™‚é–“[ms]</td></tr>
+ *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #RECORDS_KEY}</td><td rowspan="3">java.util.SortedMap</td><td colspan="4">JournalRecordã®ç·¨é›†çµæœã®ãƒãƒƒãƒ—</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>JournalRecordã®ã‚­ãƒ¼</td><td>java.util.List</td><td>JournalRecordã®ç·¨é›†çµæœã®Objectã®ãƒªã‚¹ãƒˆã€‚é‡è¤‡ã™ã‚‹JournalRecordã®ã‚­ãƒ¼ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€ã“ã®ãƒªã‚¹ãƒˆã®ã‚µã‚¤ã‚ºã¯ï¼‘ã€‚</td></tr>
  * </table>
- * ’A‚µAo—Í‚µ‚È‚¢‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚à‚Ì‚âAŒ³‚ÌRequestJournal‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚©‚Á‚½î•ñ‚ÍŠÜ‚Ü‚ê‚È‚¢B<br>
+ * ä½†ã—ã€å‡ºåŠ›ã—ãªã„ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã‚„ã€å…ƒã®RequestJournalã«å«ã¾ã‚Œã¦ã„ãªã‹ã£ãŸæƒ…å ±ã¯å«ã¾ã‚Œãªã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -127,12 +127,12 @@ public class SimpleRequestMapJournalEditorService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½RequestJournalŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸRequestJournalå‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public Map toMap(EditorFinder finder, Object key, Object value){
         final RequestJournal request = (RequestJournal)value;

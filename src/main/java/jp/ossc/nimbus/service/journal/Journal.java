@@ -35,18 +35,18 @@ import java.util.*;
 import jp.ossc.nimbus.service.journal.editorfinder.*;
 
 /**
- * ƒWƒƒ[ƒiƒ‹ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ˆÈ‰º‚Ì‚æ‚¤‚ÈƒWƒƒ[ƒiƒ‹‚ğæ“¾‚·‚éB<br>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã®ã‚ˆã†ãªã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<br>
  * <ul>
- *   <li>ƒAƒNƒZƒXŠJn</li>
- *   <li>ƒAƒNƒZƒXI—¹</li>
- *   <li>ƒAƒNƒZƒXŠÔ</li>
- *   <li>ƒAƒNƒZƒX¯•Êq</li>
- *   <li>ƒAƒNƒZƒX‚É‚æ‚é“üo—Íî•ñ</li>
+ *   <li>ã‚¢ã‚¯ã‚»ã‚¹é–‹å§‹æ™‚åˆ»</li>
+ *   <li>ã‚¢ã‚¯ã‚»ã‚¹çµ‚äº†æ™‚åˆ»</li>
+ *   <li>ã‚¢ã‚¯ã‚»ã‚¹æ™‚é–“</li>
+ *   <li>ã‚¢ã‚¯ã‚»ã‚¹è­˜åˆ¥å­</li>
+ *   <li>ã‚¢ã‚¯ã‚»ã‚¹ã«ã‚ˆã‚‹å…¥å‡ºåŠ›æƒ…å ±</li>
  * </ul>
  * <p>
- * ‚Ü‚½A•¡”ŠK‘w‚ÌƒVƒXƒeƒ€‚ÅŠeŠK‘w‚Å‚ÌƒWƒƒ[ƒiƒ‹‚ğo—Í‚µA‚»‚ê‚ğˆê˜A‚ÌƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚é–‚ğÀŒ»‚·‚é‚½‚ß‚ÉAƒWƒƒ[ƒiƒ‹‚Ì“ü‚êq\‘¢‚ğƒTƒ|[ƒg‚·‚éB<br>
- * ’Pƒ‚È1ŠK‘w‚ÌƒWƒƒ[ƒiƒ‹æ“¾‚ÍAˆÈ‰º‚Ì‚æ‚¤‚És‚¤B<br>
+ * ã¾ãŸã€è¤‡æ•°éšå±¤ã®ã‚·ã‚¹ãƒ†ãƒ ã§å„éšå±¤ã§ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã—ã€ãã‚Œã‚’ä¸€é€£ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹äº‹ã‚’å®Ÿç¾ã™ã‚‹ãŸã‚ã«ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å…¥ã‚Œå­æ§‹é€ ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚<br>
+ * å˜ç´”ãª1éšå±¤ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«è¡Œã†ã€‚<br>
  * <pre>
  *   :
  * Journal journal = (Journal)ServiceManagerFactory.getServiceObject("Journal");
@@ -63,8 +63,8 @@ import jp.ossc.nimbus.service.journal.editorfinder.*;
  *     journal.endJournal();
  * }
  * </pre>
- * ‚±‚ÌƒR[ƒh‚É‚æ‚èæ“¾‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚ÍA"Request"‚Æ‚¢‚¤ƒWƒƒ[ƒiƒ‹‚Ì’†‚É"Input"‚Æ"Output"‚ªŠÜ‚Ü‚ê‚é‚Æ‚¢‚¤\‘¢‚É‚È‚éB<br>
- * ‚Ü‚½Aã‹L‚Ìhoge.getFuga()ƒƒ\ƒbƒh‚Ìæ‚Ì‰ºˆÊ‚ÌŠK‘w‚ÅAˆÈ‰º‚Ì‚æ‚¤‚È“¯—l‚ÌƒR[ƒh‚ª‚ ‚Á‚½ê‡A<br>
+ * ã“ã®ã‚³ãƒ¼ãƒ‰ã«ã‚ˆã‚Šå–å¾—ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¯ã€"Request"ã¨ã„ã†ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ä¸­ã«"Input"ã¨"Output"ãŒå«ã¾ã‚Œã‚‹ã¨ã„ã†æ§‹é€ ã«ãªã‚‹ã€‚<br>
+ * ã¾ãŸã€ä¸Šè¨˜ã®hoge.getFuga()ãƒ¡ã‚½ãƒƒãƒ‰ã®å…ˆã®ä¸‹ä½ã®éšå±¤ã§ã€ä»¥ä¸‹ã®ã‚ˆã†ãªåŒæ§˜ã®ã‚³ãƒ¼ãƒ‰ãŒã‚ã£ãŸå ´åˆã€<br>
  * <pre>
  *   :
  * Journal journal = (Journal)ServiceManagerFactory.getServiceObject("Journal");
@@ -79,92 +79,92 @@ import jp.ossc.nimbus.service.journal.editorfinder.*;
  *     journal.addEndStep();
  * }
  * </pre>
- * ‚±‚Ì2ŠK‘w‚ÌƒR[ƒh‚É‚æ‚èæ“¾‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚ÍA"Request"‚Æ‚¢‚¤ƒWƒƒ[ƒiƒ‹‚Ì’†‚É"Input"‚Æ"Request2"‚Æ"Output"‚ªŠÜ‚Ü‚êAX‚É"Request2"‚É‚ÍA"Input2"‚Æ"Output2"‚ªŠÜ‚Ü‚ê‚é‚Æ‚¢‚¤“ü‚êq\‘¢‚É‚È‚éB<br>
+ * ã“ã®2éšå±¤ã®ã‚³ãƒ¼ãƒ‰ã«ã‚ˆã‚Šå–å¾—ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¯ã€"Request"ã¨ã„ã†ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ä¸­ã«"Input"ã¨"Request2"ã¨"Output"ãŒå«ã¾ã‚Œã€æ›´ã«"Request2"ã«ã¯ã€"Input2"ã¨"Output2"ãŒå«ã¾ã‚Œã‚‹ã¨ã„ã†å…¥ã‚Œå­æ§‹é€ ã«ãªã‚‹ã€‚<br>
  *
  * @author H.Nakano
  */
 public interface Journal {
-    //ƒŒƒxƒ‹‚ğ‰½’iŠK‚©ì‚é
-    //—LŒø‚ÈƒŒƒxƒ‹
+    //ãƒ¬ãƒ™ãƒ«ã‚’ä½•æ®µéšã‹ä½œã‚‹
+    //æœ‰åŠ¹ãªãƒ¬ãƒ™ãƒ«
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹ DEBUGB<p>
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ« DEBUGã€‚<p>
      */
     public static final int JOURNAL_LEVEL_DEBUG = 0;
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹ INFOB<p>
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ« INFOã€‚<p>
      */
     public static final int JOURNAL_LEVEL_INFO = 25;
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹ WARNB<p>
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ« WARNã€‚<p>
      */
     public static final int JOURNAL_LEVEL_WARN = 50;
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹ ERRORB<p>
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ« ERRORã€‚<p>
      */
     public static final int JOURNAL_LEVEL_ERROR = 75;
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹ FATALB<p>
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ« FATALã€‚<p>
      */
     public static final int JOURNAL_LEVEL_FATAL = 100;
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚³‚ê‚éƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒWƒƒ[ƒiƒ‹‚Éo—Í‚³‚ê‚éƒŠƒNƒGƒXƒgID
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆID
      */
     public String getRequestId();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚³‚ê‚éƒŠƒNƒGƒXƒgID‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param requestID ƒWƒƒ[ƒiƒ‹‚Éo—Í‚³‚ê‚éƒŠƒNƒGƒXƒgID
+     * @param requestID ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆID
      */
     public void setRequestId(String requestID);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * {@link #startJournal(String, Date, EditorFinder) startJournal(key, null, null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #startJournal(String, Date, EditorFinder) startJournal(key, null, null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
      * @see #startJournal(String, Date, EditorFinder)
      */
     public void startJournal(String key);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * {@link #startJournal(String, Date, EditorFinder) startJournal(key, null, finder)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #startJournal(String, Date, EditorFinder) startJournal(key, null, finder)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
      * @see #startJournal(String, Date, EditorFinder)
      */
     public void startJournal(String key, EditorFinder finder);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * {@link #startJournal(String, Date, EditorFinder) startJournal(key, startTime, null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #startJournal(String, Date, EditorFinder) startJournal(key, startTime, null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param startTime ƒWƒƒ[ƒiƒ‹æ“¾ŠJn
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param startTime ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—é–‹å§‹æ™‚åˆ»
      * @see #startJournal(String, Date, EditorFinder)
      */
     public void startJournal(String key, Date startTime);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * ƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ğì¬‚·‚éB<br>
-     * Šù‚Éƒ‹[ƒgƒXƒeƒbƒv‚ªì¬‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ÌqƒXƒeƒbƒv‚ğì¬‚·‚éB<br>
-     * ì¬‚³‚ê‚½ƒXƒeƒbƒv‚É’Ç‰Á‚³‚ê‚½ƒWƒƒ[ƒiƒ‹î•ñ‚âqƒXƒeƒbƒv‚ÍA‚»‚ê‚¼‚ê‚Å“Á‚Éw’è‚ª‚È‚¯‚ê‚ÎA‚±‚±‚Åw’è‚³‚ê‚½{@link EditorFinder}‚Å{@link JournalEditor}‚ªŒŸõ‚³‚êA•ÒW‚³‚ê‚éB<br>
-     * EditorFinder‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAeƒXƒeƒbƒv‚ğŠJn‚µ‚½‚Éw’è‚³‚ê‚½EditorFinder‚ª“K—p‚³‚ê‚éB‚³‚ç‚Éƒ‹[ƒgƒXƒeƒbƒv‚Ìê‡‚ÍAw’è‚ª‚È‚¯‚ê‚ÎAJournalƒT[ƒrƒX‚ÌƒfƒtƒHƒ‹ƒg‚ÌEditorFinder‚ª“K—p‚³‚ê‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ä½œæˆã™ã‚‹ã€‚<br>
+     * æ—¢ã«ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ãŒä½œæˆã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®å­ã‚¹ãƒ†ãƒƒãƒ—ã‚’ä½œæˆã™ã‚‹ã€‚<br>
+     * ä½œæˆã•ã‚ŒãŸã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã•ã‚ŒãŸã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚„å­ã‚¹ãƒ†ãƒƒãƒ—ã¯ã€ãã‚Œãã‚Œã§ç‰¹ã«æŒ‡å®šãŒãªã‘ã‚Œã°ã€ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸ{@link EditorFinder}ã§{@link JournalEditor}ãŒæ¤œç´¢ã•ã‚Œã€ç·¨é›†ã•ã‚Œã‚‹ã€‚<br>
+     * EditorFinderãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€è¦ªã‚¹ãƒ†ãƒƒãƒ—ã‚’é–‹å§‹ã—ãŸæ™‚ã«æŒ‡å®šã•ã‚ŒãŸEditorFinderãŒé©ç”¨ã•ã‚Œã‚‹ã€‚ã•ã‚‰ã«ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®å ´åˆã¯ã€æŒ‡å®šãŒãªã‘ã‚Œã°ã€Journalã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®EditorFinderãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param startTime ƒWƒƒ[ƒiƒ‹æ“¾ŠJn
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param startTime ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—é–‹å§‹æ™‚åˆ»
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
      */
     public void startJournal(
         String key,
@@ -173,40 +173,40 @@ public interface Journal {
     );
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğI—¹‚·‚éB<p>
-     * {@link #endJournal(Date) endJournal(null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
+     * {@link #endJournal(Date) endJournal(null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      *
      * @see #endJournal(Date)
      */
     public void endJournal();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğI—¹‚·‚éB<p>
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ğI—¹‚·‚éB<br>
-     * ‚Ü‚½AƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ªƒ‹[ƒgƒXƒeƒbƒv‚Ìê‡‚É‚ÍAƒWƒƒ[ƒiƒ‹o—Í‚ğs‚¢AƒXƒeƒbƒv‚ğƒNƒŠƒA‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã‚’çµ‚äº†ã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ãŒãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®å ´åˆã«ã¯ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã„ã€ã‚¹ãƒ†ãƒƒãƒ—ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<br>
      * 
-     * @param endTime ƒWƒƒ[ƒiƒ‹æ“¾I—¹
+     * @param endTime ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—çµ‚äº†æ™‚åˆ»
      */
     public void endJournal(Date endTime);
     
     /**
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ÉƒWƒƒ[ƒiƒ‹î•ñ‚ğ’Ç‰Á‚·‚éB<p>
-     * {@link #addInfo(String, Object, EditorFinder) addInfo(key, value, null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã«ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * {@link #addInfo(String, Object, EditorFinder) addInfo(key, value, null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key ƒXƒeƒbƒv‚É’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param value ’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ
+     * @param key ã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param value è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
      * @see #addInfo(String, Object, EditorFinder)
      */
     public void addInfo(String key, Object value);
     
     /**
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ÉƒWƒƒ[ƒiƒ‹î•ñ‚ğ’Ç‰Á‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒWƒƒ[ƒiƒ‹î•ñ‚ÍAw’è‚³‚ê‚½{@link EditorFinder}‚Å{@link JournalEditor}‚ªŒŸõ‚³‚êA•ÒW‚³‚ê‚éB<br>
-     * EditorFinder‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ğŠJn‚µ‚½‚Éw’è‚³‚ê‚½EditorFinder‚ª“K—p‚³‚ê‚éB<br>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã«ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã¯ã€æŒ‡å®šã•ã‚ŒãŸ{@link EditorFinder}ã§{@link JournalEditor}ãŒæ¤œç´¢ã•ã‚Œã€ç·¨é›†ã•ã‚Œã‚‹ã€‚<br>
+     * EditorFinderãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã‚’é–‹å§‹ã—ãŸæ™‚ã«æŒ‡å®šã•ã‚ŒãŸEditorFinderãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param key ƒXƒeƒbƒv‚É’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param value ’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
+     * @param key ã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param value è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
      */
     public void addInfo(
         String key,
@@ -215,24 +215,24 @@ public interface Journal {
     );
     
     /**
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ÉƒWƒƒ[ƒiƒ‹î•ñ‚ğ’Ç‰Á‚·‚éB<p>
-     * o—ÍƒŒƒxƒ‹§Œä‚ÌŒã‚ÉA{@link #addInfo(String, Object, EditorFinder) addInfo(key, value, null)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã«ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * å‡ºåŠ›ãƒ¬ãƒ™ãƒ«åˆ¶å¾¡ã®å¾Œã«ã€{@link #addInfo(String, Object, EditorFinder) addInfo(key, value, null)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param key ƒXƒeƒbƒv‚É’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param value ’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ
-     * @param level o—ÍƒŒƒxƒ‹
+     * @param key ã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param value è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @param level å‡ºåŠ›ãƒ¬ãƒ™ãƒ«
      * @see #addInfo(String, Object, EditorFinder)
      */
     public void addInfo(String key, Object value, int level);
     
     /**
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ÉƒWƒƒ[ƒiƒ‹î•ñ‚ğ’Ç‰Á‚·‚éB<p>
-     * o—ÍƒŒƒxƒ‹§Œä‚ÌŒã‚ÉA{@link #addInfo(String, Object, EditorFinder) addInfo(key, value, finder)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã«ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * å‡ºåŠ›ãƒ¬ãƒ™ãƒ«åˆ¶å¾¡ã®å¾Œã«ã€{@link #addInfo(String, Object, EditorFinder) addInfo(key, value, finder)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param key ƒXƒeƒbƒv‚É’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param value ’Ç‰Á‚·‚éƒWƒƒ[ƒiƒ‹î•ñ
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
-     * @param level o—ÍƒŒƒxƒ‹
+     * @param key ã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param value è¿½åŠ ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
+     * @param level å‡ºåŠ›ãƒ¬ãƒ™ãƒ«
      * @see #addInfo(String, Object, EditorFinder)
      */
     public void addInfo(
@@ -243,51 +243,51 @@ public interface Journal {
     );
     
     /**
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚É’Ç‰Á‚³‚ê‚½ƒWƒƒ[ƒiƒ‹î•ñ‚Ì‚¤‚¿Aw’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒXˆÈ~‚ğíœ‚·‚éB<p>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã•ã‚ŒãŸã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã†ã¡ã€æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»¥é™ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param from ƒCƒ“ƒfƒbƒNƒX
+     * @param from ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void removeInfo(int from);
     
     /**
-     * qƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * {@link #addStartStep(String, Date, EditorFinder) addStartStep(key, null, null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * å­ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #addStartStep(String, Date, EditorFinder) addStartStep(key, null, null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
      * @see #addStartStep(String, Date, EditorFinder)
      */
     public void addStartStep(String key);
     
     /**
-     * qƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * {@link #addStartStep(String, Date, EditorFinder) addStartStep(key, null, finder)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * å­ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #addStartStep(String, Date, EditorFinder) addStartStep(key, null, finder)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
      * @see #addStartStep(String, Date, EditorFinder)
      */
     public void addStartStep(String key, EditorFinder finder);
     
     /**
-     * qƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * {@link #addStartStep(String, Date, EditorFinder) addStartStep(key, startTime, null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * å­ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #addStartStep(String, Date, EditorFinder) addStartStep(key, startTime, null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param startTime ƒWƒƒ[ƒiƒ‹æ“¾ŠJn
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param startTime ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—é–‹å§‹æ™‚åˆ»
      * @see #addStartStep(String, Date, EditorFinder)
      */
     public void addStartStep(String key, Date startTime);
     
     /**
-     * qƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğŠJn‚·‚éB<p>
-     * ƒWƒƒ[ƒiƒ‹‚ÌqƒXƒeƒbƒv‚ğì¬‚·‚éB<br>
-     * ƒ‹[ƒgƒXƒeƒbƒv‚ªì¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
-     * ì¬‚³‚ê‚½ƒXƒeƒbƒv‚É’Ç‰Á‚³‚ê‚½ƒWƒƒ[ƒiƒ‹î•ñ‚âqƒXƒeƒbƒv‚ÍA‚»‚ê‚¼‚ê‚Å“Á‚Éw’è‚ª‚È‚¯‚ê‚ÎA‚±‚±‚Åw’è‚³‚ê‚½{@link EditorFinder}‚Å{@link JournalEditor}‚ªŒŸõ‚³‚êA•ÒW‚³‚ê‚éB<br>
-     * EditorFinder‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAeƒXƒeƒbƒv‚ğŠJn‚µ‚½‚Éw’è‚³‚ê‚½EditorFinder‚ª“K—p‚³‚ê‚éB<br>
+     * å­ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å­ã‚¹ãƒ†ãƒƒãƒ—ã‚’ä½œæˆã™ã‚‹ã€‚<br>
+     * ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ãŒä½œæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
+     * ä½œæˆã•ã‚ŒãŸã‚¹ãƒ†ãƒƒãƒ—ã«è¿½åŠ ã•ã‚ŒãŸã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚„å­ã‚¹ãƒ†ãƒƒãƒ—ã¯ã€ãã‚Œãã‚Œã§ç‰¹ã«æŒ‡å®šãŒãªã‘ã‚Œã°ã€ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸ{@link EditorFinder}ã§{@link JournalEditor}ãŒæ¤œç´¢ã•ã‚Œã€ç·¨é›†ã•ã‚Œã‚‹ã€‚<br>
+     * EditorFinderãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€è¦ªã‚¹ãƒ†ãƒƒãƒ—ã‚’é–‹å§‹ã—ãŸæ™‚ã«æŒ‡å®šã•ã‚ŒãŸEditorFinderãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param key æ“¾‚·‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
-     * @param startTime ƒWƒƒ[ƒiƒ‹æ“¾ŠJn
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
+     * @param key å–å¾—ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
+     * @param startTime ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—é–‹å§‹æ™‚åˆ»
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
      */
     public void addStartStep(
         String key,
@@ -296,33 +296,33 @@ public interface Journal {
     );
     
     /**
-     * qƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğI—¹‚·‚éB<p>
-     * {@link #addEndStep(Date) addEndStep(null)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶‚Å‚ ‚éB<br>
+     * å­ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
+     * {@link #addEndStep(Date) addEndStep(null)}ã§å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã§ã‚ã‚‹ã€‚<br>
      *
      * @see #addEndStep(Date)
      */
     public void addEndStep();
     
     /**
-     * qƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹‚Ìæ“¾‚ğI—¹‚·‚éB<p>
-     * ƒJƒŒƒ“ƒg‚ÌƒXƒeƒbƒv‚ğI—¹‚·‚éB<br>
+     * å­ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å–å¾—ã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
+     * ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚¹ãƒ†ãƒƒãƒ—ã‚’çµ‚äº†ã™ã‚‹ã€‚<br>
      * 
-     * @param endTime ƒWƒƒ[ƒiƒ‹æ“¾I—¹
+     * @param endTime ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—çµ‚äº†æ™‚åˆ»
      */
     public void addEndStep(Date endTime);
     
     /**
-     * Œ»İ‚ÌƒWƒƒ[ƒiƒ‹o—Í•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param finder ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
-     * @return Œ»İ‚ÌƒWƒƒ[ƒiƒ‹o—Í•¶š—ñ
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
+     * @return ç¾åœ¨ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›æ–‡å­—åˆ—
      */
     public String getCurrentJournalString(EditorFinder finder);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ªŠJn‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒWƒƒ[ƒiƒ‹‚ªŠJn‚³‚ê‚Ä‚¢‚éê‡‚ÍAtrue
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€true
      */
     public boolean isStartJournal();
 }

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 /**
- * •ÂÇ‚µ‚Ä‚¢‚éê‡‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * é–‰å¡ã—ã¦ã„ã‚‹å ´åˆã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class BlockadeException extends RuntimeException{
     private static final long serialVersionUID = -4274275146482442860L;
     
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BlockadeException(){
         super();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public BlockadeException(String message){
         super(message);
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public BlockadeException(Throwable cause){
         super(cause);
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ÆA‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã€ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public BlockadeException(String message, Throwable cause){
         super(message, cause);

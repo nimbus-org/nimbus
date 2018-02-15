@@ -34,20 +34,20 @@ package jp.ossc.nimbus.beans;
 import java.beans.*;
 
 /**
- * float�^��PropertyEditor�N���X�B<p>
- * ���l�������float�^�̃I�u�W�F�N�g�ɕϊ�����B<br>
- * "${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
- * float�^��static�萔�����Q�Ƃ��鎖���ł���B<br>
- * �܂��A����l�Ƃ��āAMAX_VALUE�AMIN_VALUE�ANaN�APOSITIVE_INFINITY�ANEGATIVE_INFINITY���T�|�[�g����B<br>
+ * float型のPropertyEditorクラス。<p>
+ * 数値文字列をfloat型のオブジェクトに変換する。<br>
+ * "${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
+ * float型のstatic定数名を参照する事もできる。<br>
+ * また、特殊値として、MAX_VALUE、MIN_VALUE、NaN、POSITIVE_INFINITY、NEGATIVE_INFINITYをサポートする。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;1234.5<br>
  * <br>
- * �̂悤�ȕ�����<br>
+ * のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;Float.parseFloat("1234.5")<br>
  * <br>
- * �̂悤�ɕϊ������B<br>
+ * のように変換される。<br>
  *
  * @author M.Takata
  */
@@ -57,9 +57,9 @@ public class FloatEditor extends PropertyEditorSupport
     private static final long serialVersionUID = -4548783181711431861L;
     
     /**
-     * �w�肳�ꂽ���������͂��ăv���p�e�B�l��ݒ肷��B<p>
+     * 指定された文字列を解析してプロパティ値を設定する。<p>
      *
-     * @param text ��͂���镶����
+     * @param text 解析される文字列
      */
     public void setAsText(String text){
         if(text == null){
@@ -113,9 +113,9 @@ public class FloatEditor extends PropertyEditorSupport
     }
     
     /**
-     * �v���p�e�B��������擾����B<p>
+     * プロパティ文字列を取得する。<p>
      *
-     * @return �v���p�e�B������
+     * @return プロパティ文字列
      */
     public String getAsText(){
         final Float val = (Float)getValue();

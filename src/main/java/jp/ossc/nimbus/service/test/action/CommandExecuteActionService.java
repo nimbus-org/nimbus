@@ -24,8 +24,8 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * ƒRƒ}ƒ“ƒh‚ğÀs‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author T.Takakura
  */
@@ -65,8 +65,8 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
     }
     
     /**
-     * ƒRƒ}ƒ“ƒh‚ğÀs‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * commands
      * environments
@@ -76,17 +76,17 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
      * logFile
      * waitPattern
      * </pre>
-     * commands‚ÍAƒRƒ}ƒ“ƒh‹y‚Ñˆø”‚ğƒXƒy[ƒX‹æØ‚è‚Åw’è‚·‚éB<br>
-     * environments‚ÍAƒRƒ}ƒ“ƒhÀs‚É“K—p‚·‚éŠÂ‹«•Ï”‚ğ•Ï”–¼=’l‚Åw’è‚·‚éB•¡”w’è‚·‚éê‡‚ÍA‰üs‚µ‚Äw’è‚·‚éBI—¹‚ÍA‹ós‚ğw’è‚·‚éB<br>
-     * workDir‚ÍAƒRƒ}ƒ“ƒh‚Ìì‹ÆƒfƒBƒŒƒNƒgƒŠ‚ğw’è‚·‚éB<br>
-     * timeout‚ÍAƒRƒ}ƒ“ƒh‚ÌI—¹‘Ò‚¿ƒ^ƒCƒ€ƒAƒEƒg‚ğw’è‚·‚éBw’è‚µ‚È‚¢ê‡‚ÍAI—¹‘Ò‚¿‚µ‚È‚¢B<br>
-     * logFile‚ÍAƒRƒ}ƒ“ƒh‚ÌI—¹‘Ò‚¿‚ğAƒƒOƒtƒ@ƒCƒ‹‚Ìo—Í‚Ås‚¤ê‡‚ÌAƒƒOƒtƒ@ƒCƒ‹ƒpƒX‚ğw’è‚·‚éB‚Ü‚½Aƒtƒ@ƒCƒ‹‚Ì•¶šƒR[ƒh‚ğw’è‚·‚éê‡‚ÍAƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éBƒƒOƒtƒ@ƒCƒ‹‚ğw’è‚µ‚È‚¢ê‡‚ÍAƒvƒƒZƒX‚ÌI—¹‘Ò‚¿‚ğs‚¤B<br>
-     * waitPattern‚ÍAƒRƒ}ƒ“ƒh‚ÌI—¹‘Ò‚¿‚ğAƒƒOƒtƒ@ƒCƒ‹‚Ìo—Í“à—e‚Ås‚¤ê‡‚ÌAo—Í“à—e‚Ì³‹K•\Œ»‚ğw’è‚·‚éB‚±‚Ì³‹K•\Œ»‚Éˆê’v‚·‚éo—Í‚ªŒ©‚ç‚ê‚½ê‡‚ÉAI—¹‘Ò‚¿‚ğI‚¦‚éBw’è‚µ‚È‚¢ê‡‚ÍAƒƒOƒtƒ@ƒCƒ‹‚Ìì¬‘Ò‚¿‚ğs‚¤B<br>
+     * commandsã¯ã€ã‚³ãƒãƒ³ãƒ‰åŠã³å¼•æ•°ã‚’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * environmentsã¯ã€ã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã«é©ç”¨ã™ã‚‹ç’°å¢ƒå¤‰æ•°ã‚’å¤‰æ•°å=å€¤ã§æŒ‡å®šã™ã‚‹ã€‚è¤‡æ•°æŒ‡å®šã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã—ã¦æŒ‡å®šã™ã‚‹ã€‚çµ‚äº†ã¯ã€ç©ºè¡Œã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * workDirã¯ã€ã‚³ãƒãƒ³ãƒ‰ã®ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * timeoutã¯ã€ã‚³ãƒãƒ³ãƒ‰ã®çµ‚äº†å¾…ã¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€çµ‚äº†å¾…ã¡ã—ãªã„ã€‚<br>
+     * logFileã¯ã€ã‚³ãƒãƒ³ãƒ‰ã®çµ‚äº†å¾…ã¡ã‚’ã€ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›ã§è¡Œã†å ´åˆã®ã€ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ—ãƒ­ã‚»ã‚¹ã®çµ‚äº†å¾…ã¡ã‚’è¡Œã†ã€‚<br>
+     * waitPatternã¯ã€ã‚³ãƒãƒ³ãƒ‰ã®çµ‚äº†å¾…ã¡ã‚’ã€ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡ºåŠ›å†…å®¹ã§è¡Œã†å ´åˆã®ã€å‡ºåŠ›å†…å®¹ã®æ­£è¦è¡¨ç¾ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®æ­£è¦è¡¨ç¾ã«ä¸€è‡´ã™ã‚‹å‡ºåŠ›ãŒè¦‹ã‚‰ã‚ŒãŸå ´åˆã«ã€çµ‚äº†å¾…ã¡ã‚’çµ‚ãˆã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆå¾…ã¡ã‚’è¡Œã†ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ƒRƒ}ƒ“ƒh‚ÌI—¹‘Ò‚¿‚ğ‚µ‚½ê‡‚ÍAexitƒR[ƒhB
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ã‚³ãƒãƒ³ãƒ‰ã®çµ‚äº†å¾…ã¡ã‚’ã—ãŸå ´åˆã¯ã€exitã‚³ãƒ¼ãƒ‰ã€‚
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
@@ -100,12 +100,12 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
         Pattern waitPattern = null;
         try{
             String str;
-            //ƒRƒ}ƒ“ƒh–¼‚Æˆø”
+            //ã‚³ãƒãƒ³ãƒ‰åã¨å¼•æ•°
             if ((str = br.readLine()) != null && str.length() != 0) {
                 command = str;
                 cmdarray = CSVReader.toArray(replaceProperty(str), ' ', '\\', '"', null, null, false, false, true, true);
             } else {
-                throw new Exception("ƒtƒ@ƒCƒ‹ƒtƒH[ƒ}ƒbƒg‚ª‘z’èŠO‚Å‚·B");
+                throw new Exception("ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒæƒ³å®šå¤–ã§ã™ã€‚");
             }
             Map tmpEnv = new LinkedHashMap();
 
@@ -118,7 +118,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
                 }
                 
             }
-            //ŠÂ‹«•Ï”
+            //ç’°å¢ƒå¤‰æ•°
             while((str = br.readLine()) != null && str.length() != 0){
                 int index = str.indexOf('=');
                 if(index == -1){
@@ -135,7 +135,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
                     envp[index++] = (String)entry.getKey() + '=' + (String)entry.getValue();
                 }
             }
-            //ì‹ÆƒfƒBƒŒƒNƒgƒŠ
+            //ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
             if ((str = br.readLine()) != null && str.length() != 0) {
                 String workDirStr = replaceProperty(str);
                 if(".".equals(workDirStr)){
@@ -144,11 +144,11 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
                     dir = new File(workDirStr);
                 }
             }
-            //ƒ^ƒCƒ€ƒAƒEƒg
+            //ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
             if ((str = br.readLine()) != null && str.length() != 0) {
                 waitTime = Long.parseLong(str);
             }
-            //ƒƒOƒtƒ@ƒCƒ‹
+            //ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«
             if ((str = br.readLine()) != null && str.length() != 0) {
                 String logFilePath = replaceProperty(str);
                 final int index = logFilePath.indexOf(',');
@@ -158,7 +158,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
                 }
                 logFile = new File(logFilePath);
             }
-            //I—¹‘Ò‚¿³‹K•\Œ»
+            //çµ‚äº†å¾…ã¡æ­£è¦è¡¨ç¾
             if ((str = br.readLine()) != null && str.length() != 0) {
                 waitPattern = Pattern.compile(str);
             }
@@ -194,7 +194,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
                 }else{
                     stdReadThread.join();
                     errReadThread.join();
-                    ret = waitRunnable.exitCode; //–ß‚è’l
+                    ret = waitRunnable.exitCode; //æˆ»ã‚Šå€¤
                 }
             }else{
                 isTimeout = true;
@@ -243,13 +243,13 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
                 BufferedWriter bw = new BufferedWriter(filewriter);
                 pw = new PrintWriter(bw);
                 
-                pw.println("•W€o—ÍF");
+                pw.println("æ¨™æº–å‡ºåŠ›ï¼š");
                 pw.println(stdReadRunnable.getResult() == null ? stdReadRunnable.getCurrentResult() : stdReadRunnable.getResult());
                 pw.println();
-                pw.println("ƒGƒ‰[o—ÍF");
+                pw.println("ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ï¼š");
                 pw.println(errReadRunnable.getResult() == null ? errReadRunnable.getCurrentResult() : errReadRunnable.getResult());
                 pw.println();
-                pw.println("–ß‚è’lF");
+                pw.println("æˆ»ã‚Šå€¤ï¼š");
                 pw.println(ret);
                 pw.flush();
             } finally {
@@ -269,10 +269,10 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
     
     protected String replaceProperty(String textValue){
         
-        // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceSystemProperty(textValue);
         
-        // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceLoader() != null){
             textValue = Utility.replaceServiceLoderConfig(
                 textValue,
@@ -280,7 +280,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
             );
         }
         
-        // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceManager() != null){
             textValue = Utility.replaceManagerProperty(
                 getServiceManager(),
@@ -288,7 +288,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
             );
         }
         
-        // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceServerProperty(textValue);
         
         return textValue;

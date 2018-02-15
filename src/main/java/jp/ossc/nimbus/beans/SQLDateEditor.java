@@ -35,45 +35,45 @@ import java.util.Date;
 
 
 /**
- * {@link java.sql.Date}Œ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * “ú•t•¶š—ñiyyyy/MM/dd HH:mm:ss SSSj‚ğjava.sql.DateŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * "${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * {@link java.sql.Date}å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * æ—¥ä»˜æ–‡å­—åˆ—ï¼ˆyyyy/MM/dd HH:mm:ss SSSï¼‰ã‚’java.sql.Dateå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * "${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;2006/08/15 15:20:11 100<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS").parse("2006/08/15 15:20:11 100").getTime())<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
- * ‚Ü‚½Aİ’è‚·‚é•K—v‚Ì‚È‚¢ƒtƒB[ƒ‹ƒh‚Í‹ó‚É‚·‚é‚ÆA‚»‚ÌƒtƒB[ƒ‹ƒh‚ÌÅ¬’l‚Éİ’è‚³‚ê‚éB<br>
- * —áF<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
+ * ã¾ãŸã€è¨­å®šã™ã‚‹å¿…è¦ã®ãªã„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¯ç©ºã«ã™ã‚‹ã¨ã€ãã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®æœ€å°å€¤ã«è¨­å®šã•ã‚Œã‚‹ã€‚<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;//15 15::11<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS").parse("1970/01/15 15:00:11 000").getTime())<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
- * ‚Ü‚½AŒ»İ‚©‚çİ’è‚µ‚½‚¢ê‡‚ÍAŠeƒtƒB[ƒ‹ƒh‚É"NOW"‚ğİ’è‚·‚éB<br>
- * —áF<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
+ * ã¾ãŸã€ç¾åœ¨æ™‚åˆ»ã‹ã‚‰è¨­å®šã—ãŸã„å ´åˆã¯ã€å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«"NOW"ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;NOW/NOW/15 15:NOW:11 NOW<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ªAŒ»İ“ú•t‚ğ2006/09/01 13:59:40 150‚Æ‚·‚é‚Æ<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒã€ç¾åœ¨æ—¥ä»˜ã‚’2006/09/01 13:59:40 150ã¨ã™ã‚‹ã¨<br>
  * <br>
  * &nbsp;&nbsp;new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS").parse("2006/09/15 15:59:11 150").getTime())<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
- * ‚Ü‚½A’Pƒ‚ÉŒ»İ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA"NOW"‚ğİ’è‚·‚éB<br>
- * —áF<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
+ * ã¾ãŸã€å˜ç´”ã«ç¾åœ¨æ™‚åˆ»ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€"NOW"ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;NOW<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ªA<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒã€<br>
  * <br>
  * &nbsp;&nbsp;new java.sql.Date(System.currentTimeMillis())<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -83,9 +83,9 @@ public class SQLDateEditor extends DateEditor
     private static final long serialVersionUID = 4216221057481182615L;
 
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         super.setAsText(text);

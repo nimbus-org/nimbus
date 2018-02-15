@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * {@link TickUnitAdjuster}‚Å’²®‚·‚éƒƒ‚ƒŠ‚ÌŒö–ñ”‚Ìƒ}ƒbƒsƒ“ƒO‚ğ’ñ‹Ÿ‚·‚éƒT[ƒrƒXB<p>
+ * {@link TickUnitAdjuster}ã§èª¿æ•´ã™ã‚‹ãƒ¡ãƒ¢ãƒªã®å…¬ç´„æ•°ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’æä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

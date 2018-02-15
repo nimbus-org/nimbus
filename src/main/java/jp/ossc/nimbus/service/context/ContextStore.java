@@ -32,58 +32,58 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ƒRƒ“ƒeƒLƒXƒgƒXƒgƒAB<p>
+ * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¹ãƒˆã‚¢ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ContextStore{
     
     /**
-     * ƒXƒgƒAæ‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã‚¹ãƒˆã‚¢å…ˆã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ¸”s‚µ‚½ê‡
+     * @exception Exception å¤±æ•—ã—ãŸå ´åˆ
      */
     public void clear() throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ğ•Û‘¶‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ä¿å­˜ã™ã‚‹ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @exception Exception ¸”s‚µ‚½ê‡
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @exception Exception å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save(Context context) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgã‚Ìw’è‚³‚ê‚½ƒL[‚ÉŠY“–‚·‚é’l‚ğ•Û‘¶‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¸Šã®æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã‚’ä¿å­˜ã™ã‚‹ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param key ƒL[
-     * @exception Exception ¸”s‚µ‚½ê‡
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param key ã‚­ãƒ¼
+     * @exception Exception å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save(Context context, Object key) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚É“Ç‚İ‚ŞB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @exception Exception ¸”s‚µ‚½ê‡
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @exception Exception å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load(Context context) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÉƒL[‚ğ“Ç‚İ‚ŞB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«ã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @exception Exception ¸”s‚µ‚½ê‡
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @exception Exception å¤±æ•—ã—ãŸå ´åˆ
      */
     public void loadKey(Context context) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠY“–‚·‚é’l‚ğƒRƒ“ƒeƒLƒXƒg‚É“Ç‚İ‚ŞB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param key ƒL[
-     * @exception Exception ¸”s‚µ‚½ê‡
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param key ã‚­ãƒ¼
+     * @exception Exception å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load(Context context, Object key) throws Exception;
 }

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 /**
- * �񓯊��Ăяo���ɑ΂��ă^�C�}�[�������ĉ����҂������Ă��鎞�ɁA�^�C���A�E�g�����ꍇ��throw������O�B<p>
+ * 非同期呼び出しに対してタイマーをかけて応答待ちをしている時に、タイムアウトした場合にthrowされる例外。<p>
  * 
  * @author M.Takata
  * @see MethodAsynchronousInterceptorService
@@ -42,16 +42,16 @@ public class AsynchronousTimeoutException extends RuntimeException{
     private static final long serialVersionUID = -6444841835836369422L;
     
     /**
-     * ��̗�O�C���X�^���X�𐶐�����B<p>
+     * 空の例外インスタンスを生成する。<p>
      */
     public AsynchronousTimeoutException(){
         super();
     }
     
     /**
-     * �w�肳�ꂽ���b�Z�[�W����������O�C���X�^���X�𐶐�����B<p>
+     * 指定されたメッセージを持った例外インスタンスを生成する。<p>
      *
-     * @param message ���b�Z�[�W
+     * @param message メッセージ
      */
     public AsynchronousTimeoutException(String message){
         super(message);

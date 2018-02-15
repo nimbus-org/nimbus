@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link FlowControlInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link FlowControlInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see FlowControlInterceptorService
@@ -42,76 +42,76 @@ import jp.ossc.nimbus.core.*;
 public interface FlowControlInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒZƒ}ƒtƒHƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒZƒ}ƒtƒHƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSemaphoreServiceName(ServiceName name);
     
     /**
-     * ƒZƒ}ƒtƒHƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒZƒ}ƒtƒHƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSemaphoreServiceName();
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿ƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚·‚éB<p>
-     * 0ˆÈ‰º‚Ì’l‚ğİ’è‚·‚é‚Æ–³ŒÀ‚ÉƒZƒ}ƒtƒHŠl“¾‘Ò‚¿‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍA-1B
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * 0ä»¥ä¸‹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã¨ç„¡é™ã«ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã€‚
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setTimeout(long timeout);
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿ƒ^ƒCƒ€ƒAƒEƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getTimeout();
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿Å‘å”‚ğİ’è‚·‚éB<p>
-     * 0ˆÈ‰º‚Ì’l‚ğİ’è‚·‚é‚ÆƒZƒ}ƒtƒHŠl“¾‘Ò‚¿”‚ğ§ŒÀ‚µ‚È‚¢BƒfƒtƒHƒ‹ƒg‚ÍA-1B
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡æœ€å¤§æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * 0ä»¥ä¸‹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã¨ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡æ•°ã‚’åˆ¶é™ã—ãªã„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã€‚
      *
-     * @param count ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿Å‘å”
+     * @param count ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡æœ€å¤§æ•°
      */
     public void setMaxWaitingCount(int count);
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿Å‘å”‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡æœ€å¤§æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿Å‘å”
+     * @return ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡æœ€å¤§æ•°
      */
     public int getMaxWaitingCount();
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾Œã‚Ì‹­§ƒZƒ}ƒtƒHŠJ•úŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * 0ˆÈ‰º‚Ì’l‚ğİ’è‚·‚é‚Æ‹­§ƒZƒ}ƒtƒHŠJ•ú‚ğs‚í‚È‚¢BƒfƒtƒHƒ‹ƒg‚ÍA-1B
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾Œã®å¼·åˆ¶ã‚»ãƒãƒ•ã‚©é–‹æ”¾æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * 0ä»¥ä¸‹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã¨å¼·åˆ¶ã‚»ãƒãƒ•ã‚©é–‹æ”¾ã‚’è¡Œã‚ãªã„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã€‚
      *
-     * @param timeout ‹­§ƒZƒ}ƒtƒHŠJ•úŠÔ
+     * @param timeout å¼·åˆ¶ã‚»ãƒãƒ•ã‚©é–‹æ”¾æ™‚é–“
      */
     public void setForceFreeTimeout(long timeout);
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾Œã‚Ì‹­§ƒZƒ}ƒtƒHŠJ•úŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾Œã®å¼·åˆ¶ã‚»ãƒãƒ•ã‚©é–‹æ”¾æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹­§ƒZƒ}ƒtƒHŠJ•úŠÔ
+     * @return å¼·åˆ¶ã‚»ãƒãƒ•ã‚©é–‹æ”¾æ™‚é–“
      */
     public long getForceFreeTimeout();
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‚É¸”s‚µ‚½ê‡‚É—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—ã«å¤±æ•—ã—ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      * 
-     * @param isThrow ƒZƒ}ƒtƒHŠl“¾‚É¸”s‚µ‚½ê‡‚É—áŠO‚ğthrow‚·‚éê‡true
+     * @param isThrow ã‚»ãƒãƒ•ã‚©ç²å¾—ã«å¤±æ•—ã—ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆtrue
      */
     public void setFailToObtainSemaphore(boolean isThrow);
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‚É¸”s‚µ‚½ê‡‚É—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—ã«å¤±æ•—ã—ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ƒZƒ}ƒtƒHŠl“¾‚É¸”s‚µ‚½ê‡‚É—áŠO‚ğthrow‚·‚éê‡true
+     * @return ã‚»ãƒãƒ•ã‚©ç²å¾—ã«å¤±æ•—ã—ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆtrue
      */
     public boolean isFailToObtainSemaphore();
 }

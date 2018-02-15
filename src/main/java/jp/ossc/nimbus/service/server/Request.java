@@ -41,10 +41,10 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒŠƒNƒGƒXƒgB<p>
- * “d•¶‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
+ * é›»æ–‡ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€
  * <pre>
- * [”CˆÓ‚Ìƒf[ƒ^]
+ * [ä»»æ„ã®ãƒ‡ãƒ¼ã‚¿]
  * </pre>
  *
  * @author M.Takata
@@ -60,10 +60,10 @@ public class Request{
     protected boolean isFirst;
     
     /**
-     * ƒ\ƒPƒbƒgó•t‚ğ“Ç‚İ‚ŞB<p>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜ã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param channel ƒ\ƒPƒbƒgƒ`ƒƒƒlƒ‹
-     * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param channel ã‚½ã‚±ãƒƒãƒˆãƒãƒ£ãƒãƒ«
+     * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void accept(SocketChannel channel) throws IOException{
         if(remoteHost == null){
@@ -78,11 +78,11 @@ public class Request{
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğ“Ç‚İ‚ŞB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param channel ƒ\ƒPƒbƒgƒ`ƒƒƒlƒ‹
-     * @return ƒŠƒNƒGƒXƒg‚Ì‘±‚«‚ğ“Ç‚İ‚İ‘Ò‚¿‚·‚é•K—v‚ª‚ ‚éê‡AfalseBƒŠƒNƒGƒXƒg‚ğ“Ç‚İØ‚Á‚½ê‡‚ÍAtrueB
-     * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param channel ã‚½ã‚±ãƒƒãƒˆãƒãƒ£ãƒãƒ«
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ç¶šãã‚’èª­ã¿è¾¼ã¿å¾…ã¡ã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆã€falseã€‚ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’èª­ã¿åˆ‡ã£ãŸå ´åˆã¯ã€trueã€‚
+     * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean read(SocketChannel channel) throws IOException{
         if(remoteHost == null){
@@ -119,98 +119,98 @@ public class Request{
     }
     
     /**
-     * ƒ\ƒPƒbƒgó•t‚ÌƒŠƒNƒGƒXƒg‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isAccept ƒ\ƒPƒbƒgó•t‚ÌƒŠƒNƒGƒXƒg‚Ìê‡Atrue
+     * @param isAccept ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å ´åˆã€true
      */
     public void setAccept(boolean isAccept){
         this.isAccept = isAccept;
     }
     
     /**
-     * ƒ\ƒPƒbƒgó•t‚ÌƒŠƒNƒGƒXƒg‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * ƒ\ƒPƒbƒgó•t‚ÌƒŠƒNƒGƒXƒg‚Ìê‡A{@link #getInputStream()}‚ÍAnull‚ğ•Ô‚·B<br>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å ´åˆã€{@link #getInputStream()}ã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return ƒ\ƒPƒbƒgó•t‚ÌƒŠƒNƒGƒXƒg‚Ìê‡Atrue
+     * @return ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å ´åˆã€true
      */
     public boolean isAccept(){
         return isAccept;
     }
     
     /**
-     * ƒ\ƒPƒbƒgó•tŒã‚Ì‰‰ñƒŠƒNƒGƒXƒg‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜å¾Œã®åˆå›ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isFirst ƒ\ƒPƒbƒgó•tŒã‚Ì‰‰ñƒŠƒNƒGƒXƒg‚Ìê‡Atrue
+     * @param isFirst ã‚½ã‚±ãƒƒãƒˆå—ä»˜å¾Œã®åˆå›ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å ´åˆã€true
      */
     public void setFirst(boolean isFirst){
         this.isFirst = isFirst;
     }
     
     /**
-     * ƒ\ƒPƒbƒgó•tŒã‚Ì‰‰ñƒŠƒNƒGƒXƒg‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜å¾Œã®åˆå›ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒ\ƒPƒbƒgó•tŒã‚Ì‰‰ñƒŠƒNƒGƒXƒg
+     * @return trueã®å ´åˆã€ã‚½ã‚±ãƒƒãƒˆå—ä»˜å¾Œã®åˆå›ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public boolean isFirst(){
         return isFirst;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgID
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆID
      */
     public String getRequestId(){
         return requestId;
     }
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒŠƒNƒGƒXƒgID
+     * @param id ãƒªã‚¯ã‚¨ã‚¹ãƒˆID
      */
     protected void setRequestId(String id){
         this.requestId = id;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgó•t‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgó•t
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜æ™‚åˆ»
      */
     public Date getDate(){
         return date;
     }
     /**
-     * ƒŠƒNƒGƒXƒgó•t‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param date ƒŠƒNƒGƒXƒgó•t
+     * @param date ãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜æ™‚åˆ»
      */
     protected void setDate(Date date){
         this.date = date;
     }
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚ÌIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒCƒAƒ“ƒg‚ÌIPƒAƒhƒŒƒX
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IPã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getRemoteHost(){
         return remoteHost;
     }
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚ÌÚ‘±ƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®æ¥ç¶šãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒCƒAƒ“ƒg‚ÌÚ‘±ƒ|[ƒg”Ô†
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®æ¥ç¶šãƒãƒ¼ãƒˆç•ªå·
      */
     public int getRemotePort(){
         return remotePort;
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍƒXƒgƒŠ[ƒ€
+     * @return å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
      */
     public InputStream getInputStream(){
         return requestInputStream;

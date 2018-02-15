@@ -34,42 +34,42 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import java.util.List;
 
 /**
- * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒgB<p>
+ * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface CheckPoint{
     
     /**
-     * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg–¼
+     * @return ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆå
      */
     public String getCheckPointName();
     
     /**
-     * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Ì—LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enabled —LŒø‚É‚·‚éê‡‚ÍAtrue
+     * @param enabled æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabled(boolean enabled);
     
     /**
-     * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Ì—LŒø/–³Œø‚ğ”»’è‚·‚éB<p>
+     * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isEnabled();
     
     /**
-     * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚ğ’Ê‰ß‚µ‚½ƒXƒŒƒbƒh–¼ƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’é€šéã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰åãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚ğ’Ê‰ß‚µ‚½ƒXƒŒƒbƒh–¼ƒŠƒXƒg
+     * @return ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’é€šéã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰åãƒªã‚¹ãƒˆ
      */
     public List passOverThreads();
     
     /**
-     * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚ğƒNƒŠƒA‚·‚éB<p>
+     * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clear();
 }

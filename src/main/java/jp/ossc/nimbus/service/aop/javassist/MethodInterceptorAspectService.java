@@ -42,8 +42,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * Javassist‚ğg‚Á‚ÄAƒƒ\ƒbƒh‚É{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}‚ğƒAƒXƒyƒNƒg‚·‚éƒT[ƒrƒXB<p>
- * —á‚¦‚ÎAˆÈ‰º‚Ì‚æ‚¤‚ÈSampleƒNƒ‰ƒX‚ª‚ ‚éB<br>
+ * Javassistã‚’ä½¿ã£ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰ã«{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚’ã‚¢ã‚¹ãƒšã‚¯ãƒˆã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä¾‹ãˆã°ã€ä»¥ä¸‹ã®ã‚ˆã†ãªSampleã‚¯ãƒ©ã‚¹ãŒã‚ã‚‹ã€‚<br>
  * Sample.java<br>
  * <pre>
  * package sample;
@@ -63,7 +63,7 @@ import jp.ossc.nimbus.service.aop.*;
  *     }
  * }
  * </pre>
- * ‚±‚ÌSampleƒNƒ‰ƒX‚ÌgetValue(String)ƒƒ\ƒbƒh‚ÉAƒƒgƒŠƒNƒXæ“¾ƒCƒ“ƒ^[ƒZƒvƒ^i{@link jp.ossc.nimbus.service.aop.interceptor.MethodMetricsInterceptorService MethodMetricsInterceptorService}j‚Æ“¯ŠúƒCƒ“ƒ^[ƒZƒvƒ^i{@link jp.ossc.nimbus.service.aop.interceptor.MethodSynchronizeInterceptorService MethodSynchronizeInterceptorService}j‚ğ‹²‚İ‚Ş‚æ‚¤‚ÉƒT[ƒrƒX’è‹`‚ğs‚¤B<br>
+ * ã“ã®Sampleã‚¯ãƒ©ã‚¹ã®getValue(String)ãƒ¡ã‚½ãƒƒãƒ‰ã«ã€ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ï¼ˆ{@link jp.ossc.nimbus.service.aop.interceptor.MethodMetricsInterceptorService MethodMetricsInterceptorService}ï¼‰ã¨åŒæœŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ï¼ˆ{@link jp.ossc.nimbus.service.aop.interceptor.MethodSynchronizeInterceptorService MethodSynchronizeInterceptorService}ï¼‰ã‚’æŒŸã¿è¾¼ã‚€ã‚ˆã†ã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’è¡Œã†ã€‚<br>
  * aspect-service.xml<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
@@ -102,8 +102,8 @@ import jp.ossc.nimbus.service.aop.*;
  *     
  * &lt;/server&gt;
  * </pre>
- * ‚±‚ÌƒT[ƒrƒX‚ª‹N“®‚³‚ê‚½Œã‚ÉA{@link NimbusClassLoader}‚ğŒo—R‚µ‚ÄSampleƒNƒ‰ƒX‚ğƒ[ƒh‚·‚é‚ÆAˆÈ‰º‚Ì‚æ‚¤‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ•ÒW‚µ‚Äƒ[ƒh‚·‚éB<br>
- * ƒAƒXƒyƒNƒgŒã‚ÌSample.class‚Ìƒ\[ƒXƒCƒ[ƒW<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒèµ·å‹•ã•ã‚ŒãŸå¾Œã«ã€{@link NimbusClassLoader}ã‚’çµŒç”±ã—ã¦Sampleã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã¨ã€ä»¥ä¸‹ã®ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç·¨é›†ã—ã¦ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
+ * ã‚¢ã‚¹ãƒšã‚¯ãƒˆå¾Œã®Sample.classã®ã‚½ãƒ¼ã‚¹ã‚¤ãƒ¡ãƒ¼ã‚¸<br>
  * <pre>
  * package sample;
  * 
@@ -156,29 +156,29 @@ import jp.ossc.nimbus.service.aop.*;
  *     }
  * }
  * </pre>
- * ]‚Á‚ÄAgetValue(String)ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·‚ÆA<br>
+ * å¾“ã£ã¦ã€getValue(String)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã¨ã€<br>
  * <ol>
- *     <li>ƒtƒB[ƒ‹ƒh‚ÉéŒ¾‚³‚ê‚½{@link InterceptorChain}‚ªŒÄ‚Ño‚³‚ê‚éB</li>
- *     <li>InterceptorChain‚ÍAƒT[ƒrƒX–¼"SampleInterceptorChainList"‚Ì{@link InterceptorChainList}‚É‘®«"InterceptorServiceNames"‚Åİ’è‚³‚ê‚½{Interceptor}ƒT[ƒrƒX‚ğ‡ŸŒÄ‚Ño‚·B</li>
- *     <li>InterceptorChain‚©‚çAƒT[ƒrƒX–¼"MethodMetricsInterceptor"‚ÌƒƒgƒŠƒNƒXæ“¾ƒCƒ“ƒ^[ƒZƒvƒ^i{@link jp.ossc.nimbus.service.aop.interceptor.MethodMetricsInterceptorService MethodMetricsInterceptorService}j‚ªŒÄ‚Ño‚³‚ê‚éB
- *     <li>InterceptorChain‚©‚çAƒT[ƒrƒX–¼"MethodSynchronizeInterceptor"‚Ì“¯ŠúƒCƒ“ƒ^[ƒZƒvƒ^i{@link jp.ossc.nimbus.service.aop.interceptor.MethodSynchronizeInterceptorService MethodSynchronizeInterceptorService}j‚ªŒÄ‚Ño‚³‚ê‚éB</li>
- *     <li>InterceptorChain‚©‚çAƒT[ƒrƒX–¼"SampleAspect"‚Ì{@link MethodInterceptorAspectService}‚ª{@link Invoker}ƒT[ƒrƒX‚Æ‚µ‚ÄŒÄ‚Ño‚³‚ê‚éB</li>
- *     <li>MethodInterceptorAspectService‚Ì‘®«"InvokerServiceName"‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢‚Ì‚ÅAƒfƒtƒHƒ‹ƒg‚Ì{@link WrappedMethodReflectionCallInvokerService}‚ª©“®“I‚É¶¬‚³‚êA{@link Invoker}ƒT[ƒrƒX‚Æ‚µ‚ÄŒÄ‚Ño‚³‚ê‚éB</li>
- *     <li>Invoker‚ªASampleƒNƒ‰ƒX‚Ìsample$Sample$getValue$nimbus_aop(String)ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·B</li>
+ *     <li>ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å®£è¨€ã•ã‚ŒãŸ{@link InterceptorChain}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚</li>
+ *     <li>InterceptorChainã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å"SampleInterceptorChainList"ã®{@link InterceptorChainList}ã«å±æ€§"InterceptorServiceNames"ã§è¨­å®šã•ã‚ŒãŸ{Interceptor}ã‚µãƒ¼ãƒ“ã‚¹ã‚’é †æ¬¡å‘¼ã³å‡ºã™ã€‚</li>
+ *     <li>InterceptorChainã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å"MethodMetricsInterceptor"ã®ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ï¼ˆ{@link jp.ossc.nimbus.service.aop.interceptor.MethodMetricsInterceptorService MethodMetricsInterceptorService}ï¼‰ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
+ *     <li>InterceptorChainã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å"MethodSynchronizeInterceptor"ã®åŒæœŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ï¼ˆ{@link jp.ossc.nimbus.service.aop.interceptor.MethodSynchronizeInterceptorService MethodSynchronizeInterceptorService}ï¼‰ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚</li>
+ *     <li>InterceptorChainã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å"SampleAspect"ã®{@link MethodInterceptorAspectService}ãŒ{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚</li>
+ *     <li>MethodInterceptorAspectServiceã®å±æ€§"InvokerServiceName"ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã®ã§ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link WrappedMethodReflectionCallInvokerService}ãŒè‡ªå‹•çš„ã«ç”Ÿæˆã•ã‚Œã€{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚</li>
+ *     <li>InvokerãŒã€Sampleã‚¯ãƒ©ã‚¹ã®sample$Sample$getValue$nimbus_aop(String)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã€‚</li>
  * </ol>
- * ‚Ì‚æ‚¤‚È“®ì‚ğ‚µ‚ÄA–{—ˆ‚ÌgetValue(String)ƒƒ\ƒbƒh‚Ìˆ—‚Ì“ü‚èŒûAoŒû‚ÉInterceptor‚ğ‹²‚İ‚ŞB<br>
+ * ã®ã‚ˆã†ãªå‹•ä½œã‚’ã—ã¦ã€æœ¬æ¥ã®getValue(String)ãƒ¡ã‚½ãƒƒãƒ‰ã®å‡¦ç†ã®å…¥ã‚Šå£ã€å‡ºå£ã«Interceptorã‚’æŒŸã¿è¾¼ã‚€ã€‚<br>
  * <p>
- * ‚±‚ÌƒAƒXƒyƒNƒgƒT[ƒrƒX‚É‚æ‚éƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚Ì•ÏX‚ğs‚¤•û–@‚ÍAÃ“IƒAƒXƒyƒNƒg‚Æ“®“IƒAƒXƒyƒNƒg‚Ì2’Ê‚è—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã“ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã‚‹ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®å¤‰æ›´ã‚’è¡Œã†æ–¹æ³•ã¯ã€é™çš„ã‚¢ã‚¹ãƒšã‚¯ãƒˆã¨å‹•çš„ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®2é€šã‚Šç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * <p>
- * Ã“IƒAƒXƒyƒNƒg‚ÍA{@link Compiler}‚ğg‚Á‚ÄASampleƒNƒ‰ƒX‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ–‘O‚ÉƒAƒXƒyƒNƒgƒRƒ“ƒpƒCƒ‹‚µ‚Ä‚¨‚­B<br>
- * ƒAƒXƒyƒNƒgƒRƒ“ƒpƒCƒ‹‚ÌƒRƒ}ƒ“ƒh‚É‚ÍAˆÈ‰º‚Ì‚æ‚¤‚ÉƒAƒXƒyƒNƒg‚Ì“à—e‚ğ‹Lq‚µ‚½ã‹L‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹aspect-service.xml‚ÆAƒAƒXƒyƒNƒg‚·‚é‘ÎÛ‚Æ‚È‚éSampleƒNƒ‰ƒX‚ğw’è‚·‚éB<br>
+ * é™çš„ã‚¢ã‚¹ãƒšã‚¯ãƒˆã¯ã€{@link Compiler}ã‚’ä½¿ã£ã¦ã€Sampleã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’äº‹å‰ã«ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ã¦ãŠãã€‚<br>
+ * ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®ã‚³ãƒãƒ³ãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®å†…å®¹ã‚’è¨˜è¿°ã—ãŸä¸Šè¨˜ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«aspect-service.xmlã¨ã€ã‚¢ã‚¹ãƒšã‚¯ãƒˆã™ã‚‹å¯¾è±¡ã¨ãªã‚‹Sampleã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
  * <pre>
  * java -classpath .;javassist-3.0.jar;nimbus.jar jp.ossc.nimbus.service.aop.Compiler -servicepath aspect-service.xml sample.Sample
  * </pre>
  * <p>
- * “®“IƒAƒXƒyƒNƒg‚ÍAã‹L‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹aspect-service.xml‚ğSampleƒNƒ‰ƒX‚ğƒ[ƒh‚·‚é‘O‚É“Ç‚İ‚İA‚±‚ÌƒT[ƒrƒX‚ğ‹N“®‚µ‚Ä‚¨‚­B<br>
- * ‚±‚ÌƒT[ƒrƒX‚ÍA‹N“®‚ÉA{@link NimbusClassLoader}‚É©•ª©g‚ğ{@link AspectTranslator}‚Æ‚µ‚Ä“o˜^‚·‚éB<br>
- * ‚»‚Ì‚½‚ßANimbusClassLoader‚ğŒo—R‚µ‚ÄSampleƒNƒ‰ƒX‚ğƒ[ƒh‚·‚é‚ÆA‚±‚ÌƒT[ƒrƒX‚É‚æ‚Á‚ÄƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ª“®“I‚É•ÏX‚³‚ê‚éB<br>
+ * å‹•çš„ã‚¢ã‚¹ãƒšã‚¯ãƒˆã¯ã€ä¸Šè¨˜ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«aspect-service.xmlã‚’Sampleã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å‰ã«èª­ã¿è¾¼ã¿ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•ã—ã¦ãŠãã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã¯ã€èµ·å‹•æ™‚ã«ã€{@link NimbusClassLoader}ã«è‡ªåˆ†è‡ªèº«ã‚’{@link AspectTranslator}ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã€‚<br>
+ * ãã®ãŸã‚ã€NimbusClassLoaderã‚’çµŒç”±ã—ã¦Sampleã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã¨ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã£ã¦ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ãŒå‹•çš„ã«å¤‰æ›´ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see Invoker
@@ -243,7 +243,7 @@ public class MethodInterceptorAspectService extends ServiceBase
     private Map classBytes;
     private final Map classPools = new WeakHashMap();
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setTargetClassModifiers(String modifiers){
         Boolean isPublicClass = null;
         Boolean isProtectedClass = null;
@@ -294,52 +294,52 @@ public class MethodInterceptorAspectService extends ServiceBase
         this.isAbstractClass = isAbstractClass;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getTargetClassModifiers(){
         return targetClassModifiers;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setTargetClassName(String name){
         targetClassName = name;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getTargetClassName(){
         return targetClassName;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setNoTargetClassName(String name){
         noTargetClassName = name;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getNoTargetClassName(){
         return noTargetClassName;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setTargetInstanceClassName(String name){
         targetInstanceClassName = name;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getTargetInstanceClassName(){
         return targetInstanceClassName;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setStaticCompile(boolean isStatic){
         isStaticCompile = isStatic;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public boolean isStaticCompile(){
         return isStaticCompile;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setTargetMethodModifiers(String modifiers){
         Boolean isPublicMethod = null;
         Boolean isProtectedMethod = null;
@@ -390,67 +390,67 @@ public class MethodInterceptorAspectService extends ServiceBase
         this.isSynchronizedMethod = isSynchronizedMethod;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getTargetMethodModifiers(){
         return targetMethodModifiers;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setTargetMethodName(String name){
         targetMethodName = name;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getTargetMethodName(){
         return targetMethodName;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setTargetParameterTypes(String[] paramTypes){
         targetParameterTypes = paramTypes;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String[] getTargetParameterTypes(){
         return targetParameterTypes;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setInterceptorChainListServiceName(ServiceName name){
         interceptorChainListServiceName = name;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public ServiceName getInterceptorChainListServiceName(){
         return interceptorChainListServiceName;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setInvokerServiceName(ServiceName name){
         invokerServiceName = name;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public ServiceName getInvokerServiceName(){
         return invokerServiceName;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setRegisterVMClassLoader(boolean isRegister){
         isRegisterVMClassLoader = isRegister;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public boolean isRegisterVMClassLoader(){
         return isRegisterVMClassLoader;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public void setAspectKey(String key){
         aspectKey = key;
     }
     
-    // MethodInterceptorAspectServiceMBean‚ÌJavaDoc
+    // MethodInterceptorAspectServiceMBeanã®JavaDoc
     public String getAspectKey(){
         if(aspectKey == null){
             return getServiceName();
@@ -460,19 +460,19 @@ public class MethodInterceptorAspectService extends ServiceBase
     }
 
 	/**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         classBytes = new WeakHashMap();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‘®«‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX‚Ìæ“¾A‹y‚Ñ{@link NimbusClassLoader}‚Ö‚Ì{@link AspectTranslator}‚Æ‚µ‚Ä‚Ì“o˜^‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * å±æ€§ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã€åŠã³{@link NimbusClassLoader}ã¸ã®{@link AspectTranslator}ã¨ã—ã¦ã®ç™»éŒ²ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ‘®«‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception Exception å±æ€§ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(!isStaticCompile){
@@ -501,10 +501,10 @@ public class MethodInterceptorAspectService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * {@link NimbusClassLoader}‚©‚ç‚Ì{@link AspectTranslator}‚Æ‚µ‚Ä‚Ì“o˜^‰ğœ‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link NimbusClassLoader}ã‹ã‚‰ã®{@link AspectTranslator}ã¨ã—ã¦ã®ç™»éŒ²è§£é™¤ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(getDefaultInvokerService() != null && getInvokerService() == getDefaultInvokerService()){
@@ -516,9 +516,9 @@ public class MethodInterceptorAspectService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         if(getInvokerService() == getDefaultInvokerService()
@@ -555,14 +555,14 @@ public class MethodInterceptorAspectService extends ServiceBase
     }
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒƒ\ƒbƒh‚Éw’è‚³‚ê‚½{@link InterceptorChainList}‚ğ·‚µ‚Ş‚æ‚¤‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ•ÏŠ·‚·‚éB<p>
-     * ‘ÎÛŠO‚ÌƒNƒ‰ƒX‚Ìê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã‚’å·®ã—è¾¼ã‚€ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¯¾è±¡å¤–ã®ã‚¯ãƒ©ã‚¹ã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param loader ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éƒNƒ‰ƒXƒ[ƒ_
-     * @param className ƒNƒ‰ƒX–¼
-     * @param domain ƒNƒ‰ƒX‚ÌƒhƒƒCƒ“
-     * @param bytecode ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌƒoƒCƒg”z—ñ
-     * @return •ÏŠ·Œã‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌƒoƒCƒg”z—ñB•ÏŠ·‘ÎÛ‚Å‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @param loader ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€
+     * @param className ã‚¯ãƒ©ã‚¹å
+     * @param domain ã‚¯ãƒ©ã‚¹ã®ãƒ‰ãƒ¡ã‚¤ãƒ³
+     * @param bytecode ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒˆé…åˆ—
+     * @return å¤‰æ›å¾Œã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒˆé…åˆ—ã€‚å¤‰æ›å¯¾è±¡ã§ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     public synchronized byte[] transform(
         ClassLoader loader,
@@ -648,7 +648,7 @@ public class MethodInterceptorAspectService extends ServiceBase
             }
             
             final CtClass transformed = addInterceptor(classPool, clazz);
-/* ƒeƒXƒg—p‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğo—Í‚·‚é
+/* ãƒ†ã‚¹ãƒˆç”¨ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‡ºåŠ›ã™ã‚‹
 if(transformed != null){
     byte[] tmp = transformed.toBytecode();
     OutputStream os = null;
@@ -682,12 +682,12 @@ if(transformed != null){
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚Ì‘ÎÛ‚Æ‚È‚éƒƒ\ƒbƒh‚Éw’è‚³‚ê‚½{@link InterceptorChainList}‚ğ·‚µ‚Ş‚æ‚¤‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ•ÏŠ·‚·‚éB<p>
-     * ‘ÎÛŠO‚ÌƒNƒ‰ƒX‚Ìê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®å¯¾è±¡ã¨ãªã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã‚’å·®ã—è¾¼ã‚€ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¯¾è±¡å¤–ã®ã‚¯ãƒ©ã‚¹ã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param classPool Javasisst‚ÌƒNƒ‰ƒXƒv[ƒ‹
-     * @param clazz Javasisst‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒNƒ‰ƒX‚ğ•\‚·Javasisst‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒgB•ÏŠ·‘ÎÛ‚Å‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @param classPool Javasisstã®ã‚¯ãƒ©ã‚¹ãƒ—ãƒ¼ãƒ«
+     * @param clazz Javasisstã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚¯ãƒ©ã‚¹ã‚’è¡¨ã™Javasisstã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚å¤‰æ›å¯¾è±¡ã§ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     protected CtClass addInterceptor(ClassPool classPool, CtClass clazz)
      throws NotFoundException, CannotCompileException{
@@ -729,12 +729,12 @@ if(transformed != null){
     }
     
     /**
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Şƒƒ\ƒbƒh‚ğƒ‰ƒbƒv‚·‚éƒƒ\ƒbƒh‚Ìƒƒ\ƒbƒh–¼‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ¡ã‚½ãƒƒãƒ‰åã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz Javasisst‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param className ƒNƒ‰ƒX–¼
-     * @param methodName ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Şƒƒ\ƒbƒh‚Ìƒƒ\ƒbƒh–¼
-     * @return ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Şƒƒ\ƒbƒh‚ğƒ‰ƒbƒv‚·‚éƒƒ\ƒbƒh‚Ìƒƒ\ƒbƒh–¼
+     * @param clazz Javasisstã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param className ã‚¯ãƒ©ã‚¹å
+     * @param methodName ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ¡ã‚½ãƒƒãƒ‰å
+     * @return ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ¡ã‚½ãƒƒãƒ‰å
      */
     protected String createWrappedMethodName(
         CtClass clazz,
@@ -761,12 +761,12 @@ if(transformed != null){
     }
     
     /**
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‚½‚ß‚Ì{@link InterceptorChain}‚ğƒtƒB[ƒ‹ƒh‚ÉéŒ¾‚·‚é‚½‚ß‚ÌƒtƒB[ƒ‹ƒh–¼‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€ãŸã‚ã®{@link InterceptorChain}ã‚’ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å®£è¨€ã™ã‚‹ãŸã‚ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰åã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz Javasisst‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param className ƒNƒ‰ƒX–¼
-     * @param methodName ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Şƒƒ\ƒbƒh‚Ìƒƒ\ƒbƒh–¼
-     * @return  ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‚½‚ß‚Ì{@link InterceptorChain}‚ğƒtƒB[ƒ‹ƒh‚ÉéŒ¾‚·‚é‚½‚ß‚ÌƒtƒB[ƒ‹ƒh–¼
+     * @param clazz Javasisstã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param className ã‚¯ãƒ©ã‚¹å
+     * @param methodName ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ¡ã‚½ãƒƒãƒ‰å
+     * @return  ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€ãŸã‚ã®{@link InterceptorChain}ã‚’ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å®£è¨€ã™ã‚‹ãŸã‚ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å
      */
     protected String createInterceptorChainFieldName(
         CtClass clazz,
@@ -789,13 +789,13 @@ if(transformed != null){
     }
     
     /**
-     * w’è‚³‚ê‚½ƒƒ\ƒbƒh‚ª‘ÎÛ‚Æ‚È‚éƒƒ\ƒbƒh‚Ìê‡‚Éw’è‚³‚ê‚½{@link InterceptorChainList}‚ğ·‚µ‚Ş‚æ‚¤‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ•ÏŠ·‚·‚éB<p>
-     * ‘ÎÛŠO‚Ìƒƒ\ƒbƒh‚Ìê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãŒå¯¾è±¡ã¨ãªã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®å ´åˆã«æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã‚’å·®ã—è¾¼ã‚€ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¯¾è±¡å¤–ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param classPool Javasisst‚ÌƒNƒ‰ƒXƒv[ƒ‹
-     * @param clazz Javasisst‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param method Javasisst‚Ìƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒNƒ‰ƒX‚ğ•\‚·Javasisst‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒgB•ÏŠ·‘ÎÛ‚Å‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @param classPool Javasisstã®ã‚¯ãƒ©ã‚¹ãƒ—ãƒ¼ãƒ«
+     * @param clazz Javasisstã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param method Javasisstã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚¯ãƒ©ã‚¹ã‚’è¡¨ã™Javasisstã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚å¤‰æ›å¯¾è±¡ã§ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     protected CtClass addInterceptorForMethod(
         ClassPool classPool,
@@ -859,11 +859,11 @@ if(transformed != null){
             }
         }
         
-        // Javassist 3.1‘Î‰
+        // Javassist 3.1å¯¾å¿œ
         try{
             clazz.stopPruning(true);
         }catch(java.lang.NoSuchMethodError e){
-            // Javassist 3.0‚Å‚ÍA‚±‚Ìƒƒ\ƒbƒh‚Í‚È‚¢HI
+            // Javassist 3.0ã§ã¯ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ãªã„ï¼Ÿï¼
         }
         
         if(!Modifier.isPublic(clazz.getModifiers())){
@@ -873,8 +873,8 @@ if(transformed != null){
                          | Modifier.PUBLIC
                 );
             }catch(RuntimeException e){
-                // Javassist •s‹ï‡iHj‘Î‰
-                // static‚Å‚È‚¢“à•”ƒNƒ‰ƒX‚ÌƒAƒNƒZƒXCüq‚ªstatic‚É‚È‚Á‚Ä‚µ‚Ü‚¤
+                // Javassist ä¸å…·åˆï¼ˆï¼Ÿï¼‰å¯¾å¿œ
+                // staticã§ãªã„å†…éƒ¨ã‚¯ãƒ©ã‚¹ã®ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ãŒstaticã«ãªã£ã¦ã—ã¾ã†
                 clazz.setModifiers(
                     (clazz.getModifiers() & (~(Modifier.PROTECTED | Modifier.PRIVATE | Modifier.STATIC)))
                          | Modifier.PUBLIC
@@ -1089,7 +1089,7 @@ if(transformed != null){
         return buf;
     }
     
-    // Invoker‚ÌJavaDoc
+    // Invokerã®JavaDoc
     public Object invoke(InvocationContext context) throws Throwable{
         if(getInvokerService() == null){
             return null;
@@ -1099,36 +1099,36 @@ if(transformed != null){
     }
     
     /**
-     * {@link Invoker}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * {@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param invoker {@link Invoker}ƒT[ƒrƒX
+     * @param invoker {@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹
      */
     protected void setInvokerService(Invoker invoker){
         this.invoker = invoker;
     }
     
     /**
-     * {@link Invoker}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * {@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link Invoker}ƒT[ƒrƒX
+     * @return {@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹
      */
     protected Invoker getInvokerService(){
         return invoker;
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link Invoker}ƒT[ƒrƒX‚Å‚ ‚é{@link WrappedMethodReflectionCallInvokerService}‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹{@link WrappedMethodReflectionCallInvokerService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link WrappedMethodReflectionCallInvokerService}ƒIƒuƒWƒFƒNƒg
+     * @return {@link WrappedMethodReflectionCallInvokerService}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected WrappedMethodReflectionCallInvokerService getDefaultInvokerService(){
         return defaultInvoker;
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link Invoker}ƒT[ƒrƒX‚Å‚ ‚é{@link WrappedMethodReflectionCallInvokerService}‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹{@link WrappedMethodReflectionCallInvokerService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param invoker {@link WrappedMethodReflectionCallInvokerService}ƒIƒuƒWƒFƒNƒg
+     * @param invoker {@link WrappedMethodReflectionCallInvokerService}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setDefaultInvokerService(
         WrappedMethodReflectionCallInvokerService invoker

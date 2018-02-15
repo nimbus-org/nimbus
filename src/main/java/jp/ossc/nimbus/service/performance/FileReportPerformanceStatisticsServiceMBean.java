@@ -29,46 +29,46 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.performance;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 
 //
 /**
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒXŠÇ—ƒNƒ‰ƒXB<BR>
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX‚ÌŒŸõA“o˜^‚ğs‚¤B<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ã®æ¤œç´¢ã€ç™»éŒ²ã‚’è¡Œã†ã€‚<BR>
  * @author H.Nakano
  * @version 1.00 
  */
 public interface FileReportPerformanceStatisticsServiceMBean extends ServiceBaseMBean{
-	/**	ƒL[–¼ƒ\[ƒg						*/		
+	/**	ã‚­ãƒ¼åã‚½ãƒ¼ãƒˆ						*/		
 	static public final int C_NAME = 0;
 	static public final String C_NAME_STR = "NAME";
-	/**	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒXƒ\[ƒg			*/
+	/**	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚½ãƒ¼ãƒˆ			*/
 	static public final int	C_BEST = 1;
 	static public final String C_BEST_STR = "BEST";
-	/**	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒXƒ\[ƒg		*/	
+	/**	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚½ãƒ¼ãƒˆ		*/	
 	static public final int C_WORST = 2;
 	static public final String C_WORST_STR = "WORST";
-	/**	•½‹ÏƒpƒtƒH[ƒ}ƒ“ƒXƒ\[ƒg			*/	
+	/**	å¹³å‡ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚½ãƒ¼ãƒˆ			*/	
 	static public final int C_AVERAGE = 3;
 	static public final String C_AVERAGE_STR = "AVERAGE";
-	/**	ƒR[ƒ‹‰ñ”ƒ\[ƒg					*/	
+	/**	ã‚³ãƒ¼ãƒ«å›æ•°ã‚½ãƒ¼ãƒˆ					*/	
 	static public final int C_COUNT = 4;
 	static public final String C_COUNT_STR = "COUNT";
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXHASH‚ğƒNƒŠƒA‚·‚éB
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹HASHã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
 	 */
 	public void clear() ;
 	//
 	/**
-	 * •¶šo—Íƒƒ\ƒbƒh<BR>
-	 * w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset		¸‡A~‡‚Ìw’è
-	 * @return String[] ƒ\[ƒgŒ‹‰Ê
+	 * æ–‡å­—å‡ºåŠ›ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 * æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset		æ˜‡é †ã€é™é †ã®æŒ‡å®š
+	 * @return String[] ã‚½ãƒ¼ãƒˆçµæœ
 	 */
 	public String[] toStringAry (int sortKey,boolean isUpset);
 	/**
@@ -82,53 +82,53 @@ public interface FileReportPerformanceStatisticsServiceMBean extends ServiceBase
 	 */
 	public String getRecordClassName() ;
 	/**
-	 * ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚é.
-	 * @param name - ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+	 * ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹.
+	 * @param name - ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
 	 */
 	public void setQueueServiceName(ServiceName name) ;
 	/**
-	 * ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğæ“¾‚·‚éB
-	 * @return ServiceName - ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+	 * ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚
+	 * @return ServiceName - ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
 	 */
 	public ServiceName getQueueServiceName() ;
 	/**
-	 * ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚éB
-	 * @param name - ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+	 * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param name - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
 	 */
 	public void setWriterServiceName(ServiceName name) ;
 	/**
-	 * ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚éB
-	 * @return - ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+	 * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @return - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
 	 */
 	public ServiceName getWriterServiceName() ;
 	/**
-	 * ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚éB
-	 * @param name - ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+	 * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param name - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
 	 */
 	public void setWriteableRecordFactoryServiceName(ServiceName name) ;
 	/**
-	 * ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğæ“¾‚·‚éB
-	 * @return ComponentName - ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+	 * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚
+	 * @return ComponentName - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
 	 */
 	public ServiceName getWriteableRecordFactoryServiceName() ;
 	/**
-	 * ƒtƒ@ƒCƒ‹‘‚«o‚µƒCƒ“ƒ^[ƒoƒ‹(•b)‚ğİ’è‚·‚éB
-	 * @param intervalSec - ƒCƒ“ƒ^[ƒoƒ‹(•b)
+	 * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)ã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param intervalSec - ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)
 	 */
 	public void setWritableInterval(String intervalSec);
 	/**
-	 * ƒtƒ@ƒCƒ‹‘‚«o‚µƒCƒ“ƒ^[ƒoƒ‹(•b)‚ğæ“¾‚·‚éB
-	 * @return String - ƒCƒ“ƒ^[ƒoƒ‹(•b)
+	 * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)ã‚’å–å¾—ã™ã‚‹ã€‚
+	 * @return String - ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)
 	 */
 	public String getWritableInterval();
 	/**
-	 * ƒ\[ƒgƒL[‚ğİ’è‚·‚éB("NAME","BEST","WORST","AVERAGE","COUNT")
-	 * @param sortKey - ƒ\[ƒgƒL[
+	 * ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚("NAME","BEST","WORST","AVERAGE","COUNT")
+	 * @param sortKey - ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
 	 */
 	public void setSortKey(String sortKey);
 	/**
-	 * ƒ\[ƒgƒL[‚ğæ“¾‚·‚éB("NAME","BEST","WORST","AVERAGE","COUNT")
-	 * @return ƒ\[ƒgƒL[
+	 * ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚("NAME","BEST","WORST","AVERAGE","COUNT")
+	 * @return ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
 	 */
 	public String getSortKey();
 }

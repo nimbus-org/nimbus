@@ -1,10 +1,10 @@
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.recset;
 
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -13,7 +13,7 @@ package jp.ossc.nimbus.recset;
 public class TestRecSet extends RecordSet {
 
     private static final long serialVersionUID = -393903869827407791L;
-    /** ƒXƒL[ƒ}’è‹` */
+    /** ã‚¹ã‚­ãƒ¼ãƒå®šç¾© */
     private static final String C_SCHEMA =
        "OPERATIONDATE,CHAR,8,3,0" + C_SEPARATOR
      + "GYOUMUCD,CHAR,3,3,0" + C_SEPARATOR
@@ -21,11 +21,11 @@ public class TestRecSet extends RecordSet {
 	 + "LINENO,INT,3,3,0" + C_SEPARATOR
 	 + "MEMODATA,VARCHAR,100,3,0" + C_SEPARATOR
 	 + "ROWVERSION,INT,9,1,0";
-    /** ƒe[ƒuƒ‹–¼ */
+    /** ãƒ†ãƒ¼ãƒ–ãƒ«å */
     private static final String TABLE_NAME = "COMMON_MEMO_DATA";
 	public TestRecSet() {
 		/**
-		 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+		 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 		 */
 		super();
         super.initSchema(C_SCHEMA);

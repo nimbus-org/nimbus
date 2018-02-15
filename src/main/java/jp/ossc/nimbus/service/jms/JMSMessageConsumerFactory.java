@@ -34,72 +34,72 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMSƒƒbƒZ[ƒWƒRƒ“ƒVƒ…[ƒ}ƒtƒ@ƒNƒgƒŠB<p>
+ * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  * 
  * @author M.Takata
  */
 public interface JMSMessageConsumerFactory{
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éSession‚ğæ“¾‚·‚éB<p>
-     * createConsumerƒƒ\ƒbƒh‚ÅAMessageConsumer‚ğ¶¬‚·‚éÛ‚ÉAˆø”‚ÅSession‚ğw’è‚µ‚È‚©‚Á‚½ê‡‚ÍA‚±‚ÌSession‚ªg—p‚³‚ê‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Sessionã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * createConsumerãƒ¡ã‚½ãƒƒãƒ‰ã§ã€MessageConsumerã‚’ç”Ÿæˆã™ã‚‹éš›ã«ã€å¼•æ•°ã§Sessionã‚’æŒ‡å®šã—ãªã‹ã£ãŸå ´åˆã¯ã€ã“ã®SessionãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éSessionBSession‚ğ•Û‚µ‚Ä‚¢‚È‚¢ê‡‚ÍnullB
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Sessionã€‚Sessionã‚’ä¿æŒã—ã¦ã„ãªã„å ´åˆã¯nullã€‚
      */
     public Session getSession();
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªSession‚Ìæ“¾‚Ég—p‚·‚é{@link JMSSessionFactory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒSessionã®å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link JMSSessionFactory}ƒT[ƒrƒX
+     * @return {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹
      */
     public JMSSessionFactory getSessionFactory();
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éDestination‚ğæ“¾‚·‚éB<p>
-     * createConsumerƒƒ\ƒbƒh‚ÅAMessageConsumer‚ğ¶¬‚·‚éÛ‚ÉAˆø”‚ÅDestination‚ğw’è‚µ‚È‚©‚Á‚½ê‡‚ÍA‚±‚ÌDestination‚ªg—p‚³‚ê‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Destinationã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * createConsumerãƒ¡ã‚½ãƒƒãƒ‰ã§ã€MessageConsumerã‚’ç”Ÿæˆã™ã‚‹éš›ã«ã€å¼•æ•°ã§Destinationã‚’æŒ‡å®šã—ãªã‹ã£ãŸå ´åˆã¯ã€ã“ã®DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éDestinationBDestination‚ğ•Û‚µ‚Ä‚¢‚È‚¢ê‡‚ÍnullB
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Destinationã€‚Destinationã‚’ä¿æŒã—ã¦ã„ãªã„å ´åˆã¯nullã€‚
      */
     public Destination getDestination();
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½Aˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‘æ‚Qˆø”‚Æ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎnullAfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼’å¼•æ•°ã¨ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°nullã€falseã€‚<br>
      *
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer()
      throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½Aˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°falseã€‚<br>
      *
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(String messageSelector)
      throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½Aˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal Destination‚ªTopic‚ÅAtrue‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éBDestination‚ªQueue‚Ìê‡‚Ì“®ì‚Í‹K’è‚³‚ê‚Ä‚¢‚È‚¢B
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal DestinationãŒTopicã§ã€trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚DestinationãŒQueueã®å ´åˆã®å‹•ä½œã¯è¦å®šã•ã‚Œã¦ã„ãªã„ã€‚
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         String messageSelector,
@@ -107,28 +107,28 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‘æ‚Qˆø”‚Æ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎnullAfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼’å¼•æ•°ã¨ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°nullã€falseã€‚<br>
      *
-     * @param destination ”zMŒ³‚ÌQueue‚Ü‚½‚ÍTopic
+     * @param destination é…ä¿¡å…ƒã®Queueã¾ãŸã¯Topic
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(Destination destination)
      throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°falseã€‚<br>
      *
-     * @param destination ”zMŒ³‚ÌQueue‚Ü‚½‚ÍTopic
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param destination é…ä¿¡å…ƒã®Queueã¾ãŸã¯Topic
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Destination destination,
@@ -136,15 +136,15 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param destination ”zMŒ³‚ÌQueue‚Ü‚½‚ÍTopic
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal Destination‚ªTopic‚ÅAtrue‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éBDestination‚ªQueue‚Ìê‡‚Ì“®ì‚Í‹K’è‚³‚ê‚Ä‚¢‚È‚¢B
+     * @param destination é…ä¿¡å…ƒã®Queueã¾ãŸã¯Topic
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal DestinationãŒTopicã§ã€trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚DestinationãŒQueueã®å ´åˆã®å‹•ä½œã¯è¦å®šã•ã‚Œã¦ã„ãªã„ã€‚
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Destination destination,
@@ -153,28 +153,28 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‘æ‚Qˆø”‚Æ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎnullAfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼’å¼•æ•°ã¨ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°nullã€falseã€‚<br>
      *
      * @param session Session
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(Session session)
      throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°falseã€‚<br>
      *
      * @param session Session
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -182,15 +182,15 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal Destination‚ªTopic‚ÅAtrue‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éBDestination‚ªQueue‚Ìê‡‚Ì“®ì‚Í‹K’è‚³‚ê‚Ä‚¢‚È‚¢B
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal DestinationãŒTopicã§ã€trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚DestinationãŒQueueã®å ´åˆã®å‹•ä½œã¯è¦å®šã•ã‚Œã¦ã„ãªã„ã€‚
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -199,14 +199,14 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ‘æ‚Qˆø”‚Æ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎnullAfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼’å¼•æ•°ã¨ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°nullã€falseã€‚<br>
      *
      * @param session Session
-     * @param destination ”zMŒ³‚ÌQueue‚Ü‚½‚ÍTopic
+     * @param destination é…ä¿¡å…ƒã®Queueã¾ãŸã¯Topic
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -214,15 +214,15 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ‘æ‚Rˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎfalseB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼“å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°falseã€‚<br>
      *
      * @param session Session
-     * @param destination ”zMŒ³‚ÌQueue‚Ü‚½‚ÍTopic
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param destination é…ä¿¡å…ƒã®Queueã¾ãŸã¯Topic
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -231,15 +231,15 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * MessageConsumer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link Session#createConsumer(Destination, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * MessageConsumerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link Session#createConsumer(Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param destination ”zMŒ³‚ÌQueue‚Ü‚½‚ÍTopic
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal Destination‚ªTopic‚ÅAtrue‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éBDestination‚ªQueue‚Ìê‡‚Ì“®ì‚Í‹K’è‚³‚ê‚Ä‚¢‚È‚¢B
+     * @param destination é…ä¿¡å…ƒã®Queueã¾ãŸã¯Topic
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal DestinationãŒTopicã§ã€trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚DestinationãŒQueueã®å ´åˆã®å‹•ä½œã¯è¦å®šã•ã‚Œã¦ã„ãªã„ã€‚
      * @return MessageConsumer
-     * @exception JMSMessageConsumerCreateException MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -249,27 +249,27 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createDurableSubscriber(Topic, String)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½Aˆø”‚ÌTopic‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡A‚Ü‚½‚ÍgetDestination()‚ªTopic‚Å‚È‚¢ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€å¼•æ•°ã®Topicã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã€ã¾ãŸã¯getDestination()ãŒTopicã§ãªã„å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(String name)
      throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createDurableSubscriber(Topic, String)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Topic topic,
@@ -277,14 +277,14 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚©‚çA{@link Session#createDurableSubscriber(Topic, String)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ˆø”‚ÌTopic‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡A‚Ü‚½‚ÍgetDestination()‚ªTopic‚Å‚È‚¢ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * å¼•æ•°ã®Topicã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã€ã¾ãŸã¯getDestination()ãŒTopicã§ãªã„å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -292,14 +292,14 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚©‚çA{@link Session#createDurableSubscriber(Topic, String)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -308,16 +308,16 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½A‘æ‚Pˆø”‚ÌTopic‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡A‚Ü‚½‚ÍgetDestination()‚ªTopic‚Å‚È‚¢ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€ç¬¬ï¼‘å¼•æ•°ã®Topicã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã€ã¾ãŸã¯getDestination()ãŒTopicã§ãªã„å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         String name,
@@ -326,16 +326,16 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Topic topic,
@@ -345,16 +345,16 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚©‚çA{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ‘æ‚Pˆø”‚ÌTopic‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡A‚Ü‚½‚ÍgetDestination()‚ªTopic‚Å‚È‚¢ê‡‚ÍAJMSMessageConsumerCreateException‚ğthrow‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼‘å¼•æ•°ã®Topicã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã€ã¾ãŸã¯getDestination()ãŒTopicã§ãªã„å ´åˆã¯ã€JMSMessageConsumerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -364,16 +364,16 @@ public interface JMSMessageConsumerFactory{
     ) throws JMSMessageConsumerCreateException;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚©‚çA{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã‹ã‚‰ã€{@link Session#createDurableSubscriber(Topic, String, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,

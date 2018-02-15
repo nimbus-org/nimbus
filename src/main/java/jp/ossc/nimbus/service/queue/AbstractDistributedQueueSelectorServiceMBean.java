@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.queue;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractDistributedQueueSelectorService}のMBeanインタフェース<p>
+ * {@link AbstractDistributedQueueSelectorService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see AbstractDistributedQueueSelectorService

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.core;
 
 /**
- * {@link FactoryServiceBase}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link FactoryServiceBase}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see FactoryServiceBase
@@ -40,17 +40,17 @@ package jp.ossc.nimbus.core;
 public interface FactoryServiceBaseMBean extends ServiceBaseMBean, FactoryService{
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒtƒ@ƒNƒgƒŠ‚·‚éƒIƒuƒWƒFƒNƒg‚Ì¶¬‚ğ‚İ‚Ä‚İ‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ•ã‚¡ã‚¯ãƒˆãƒªã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆã‚’è©¦ã¿ã¦ã¿ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isCreate ¶¬‚ğ‚İ‚éê‡‚ÍAtrue
+     * @param isCreate ç”Ÿæˆã‚’è©¦ã¿ã‚‹å ´åˆã¯ã€true
      */
     public void setCreateTemplateOnStart(boolean isCreate);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒtƒ@ƒNƒgƒŠ‚·‚éƒIƒuƒWƒFƒNƒg‚Ì¶¬‚ğ‚İ‚Ä‚İ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ•ã‚¡ã‚¯ãƒˆãƒªã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆã‚’è©¦ã¿ã¦ã¿ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A¶¬‚ğ‚İ‚é
+     * @return trueã®å ´åˆã€ç”Ÿæˆã‚’è©¦ã¿ã‚‹
      */
     public boolean isCreateTemplateOnStart();
 }

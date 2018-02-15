@@ -34,63 +34,63 @@ package jp.ossc.nimbus.service.performance;
 import java.util.Date;
 //
 /**
- *	ŠeƒpƒtƒH[ƒ}ƒ“ƒX‚Ì“o˜^Ao—Í‚ğs‚¤B
+ *	å„ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã®ç™»éŒ²ã€å‡ºåŠ›ã‚’è¡Œã†ã€‚
  *	@author 	NRI Hirotaka.Nakano
- *				XVF
+ *				æ›´æ–°ï¼š
  */
 public interface PerformanceRecord {
 	//
 	/**
-	 *	•¶š—ñ‚ğì¬‚·‚éB
-	 * @return String ƒpƒtƒH[ƒ}ƒ“ƒXî•ñ
+	 *	æ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹ã€‚
+	 * @return String ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±
 	 */
 	public String toString() ;
 	//
 	/**
-	 *	ƒŠƒ\[ƒX‚h‚c‚ğo—Í‚·‚éB
-	 * @return String ƒŠƒ\[ƒXID
+	 *	ãƒªã‚½ãƒ¼ã‚¹ï¼©ï¼¤ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return String ãƒªã‚½ãƒ¼ã‚¹ID
 	 */
 	public String getResourceId() ;
 	//
 	/**
-	 *	ŒÄ‚Ño‚µ‰ñ”‚ğo—Í‚·‚éB
-	 *	@return long ŒÄ‚Ño‚µ‰ñ”
+	 *	å‘¼ã³å‡ºã—å›æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@return long å‘¼ã³å‡ºã—å›æ•°
 	 */
 	public long getCallTime() ;
 	//
 	/**
-	 *	ÅIƒR[ƒ‹“ú‚ğo—Í‚·‚éB
-	 * @return Date ÅIƒR[ƒ‹“ú
+	 *	æœ€çµ‚ã‚³ãƒ¼ãƒ«æ—¥æ™‚ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date æœ€çµ‚ã‚³ãƒ¼ãƒ«æ—¥æ™‚
 	 */
 	public Date getLastCallTime();
 	//
 	/**
-	 *	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚éB
-	 * @return long ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX
+	 *	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return long ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹
 	 */
 	public long getBestPerformance();
 	//
 	/**
-	 *	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú‚ğo—Í‚·‚éB
-	 * @return Date ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú
+	 *	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚
 	 */
 	public Date getBestPerformanceTime() ;
 	//
 	/**
-	 *	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚éB
-	 * @return long ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX
+	 *	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return long ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹
 	 */
 	public long getWorstPerformance() ;
 	//
 	/**
-	 *	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú‚ğo—Í‚·‚éB
-	 * @return Date ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú
+	 *	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚
 	 */
 	public Date getWorstPerformanceTime();
 	//
 	/**
-	 *	ƒAƒxƒŒ[ƒWƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚éB
-	 * @return Date ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú
+	 *	ã‚¢ãƒ™ãƒ¬ãƒ¼ã‚¸ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚
 	 */
 	public long getAveragePerformance() ;
 	//

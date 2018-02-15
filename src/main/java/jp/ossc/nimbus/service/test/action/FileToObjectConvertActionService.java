@@ -55,8 +55,8 @@ import jp.ossc.nimbus.util.converter.StreamStringConverter;
 import jp.ossc.nimbus.util.converter.FormatConverter;
 
 /**
- * ƒtƒ@ƒCƒ‹‚©‚çƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -129,41 +129,41 @@ public class FileToObjectConvertActionService extends ServiceBase implements Tes
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒtƒ@ƒCƒ‹‚ğƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * filePath
      * bindingObjectScript|format
      * </pre>
-     * filePath‚ÍAƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éBƒpƒX‚ÍAâ‘ÎƒpƒX‚Ü‚½‚ÍA‘Š‘ÎƒpƒX‚Åw’è‚·‚éB<br>
-     * bindingObjectScript‚ÍAİ’è‚³‚ê‚Ä‚¢‚é{@link StreamConverter}‚ªA{@link BindingStreamConverter}‚Ìê‡‚ÉA•ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éƒXƒNƒŠƒvƒg‚ğw’è‚·‚éBƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}‚ª“n‚³‚ê‚éB<br>
-     * format‚ÍAİ’è‚³‚ê‚Ä‚¢‚é{@link FormatConverter}‚Ì{@link FormatConverter#setFormat(String) setFormat(format)}‚É“n‚·ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ğw’è‚·‚éBw’è‚µ‚È‚¢ê‡‚ÍAƒtƒH[ƒ}ƒbƒg‚Íİ’è‚µ‚È‚¢B<br>
+     * filePathã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‘ã‚¹ã¯ã€çµ¶å¯¾ãƒ‘ã‚¹ã¾ãŸã¯ã€ç›¸å¯¾ãƒ‘ã‚¹ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * bindingObjectScriptã¯ã€è¨­å®šã•ã‚Œã¦ã„ã‚‹{@link StreamConverter}ãŒã€{@link BindingStreamConverter}ã®å ´åˆã«ã€å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
+     * formatã¯ã€è¨­å®šã•ã‚Œã¦ã„ã‚‹{@link FormatConverter}ã®{@link FormatConverter#setFormat(String) setFormat(format)}ã«æ¸¡ã™ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯è¨­å®šã—ãªã„ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒtƒ@ƒCƒ‹‚ğƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * filePath
      * bindingObjectScript|format
      * </pre>
-     * filePath‚ÍAƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éBƒpƒX‚ÍAâ‘ÎƒpƒX‚Ü‚½‚ÍA‘Š‘ÎƒpƒX‚Åw’è‚·‚éB<br>
-     * bindingObjectScript‚ÍAİ’è‚³‚ê‚Ä‚¢‚é{@link StreamConverter}‚ªA{@link BindingStreamConverter}‚Ìê‡‚ÉA•ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éƒXƒNƒŠƒvƒg‚ğw’è‚·‚éBƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}A"preResult"‚Åˆø”‚ÌpreResult‚ª“n‚³‚ê‚éB<br>
-     * format‚ÍAİ’è‚³‚ê‚Ä‚¢‚é{@link FormatConverter}‚Ì{@link FormatConverter#setFormat(String) setFormat(format)}‚É“n‚·ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ğw’è‚·‚éBw’è‚µ‚È‚¢ê‡‚ÍAƒtƒH[ƒ}ƒbƒg‚Íİ’è‚µ‚È‚¢B<br>
+     * filePathã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‘ã‚¹ã¯ã€çµ¶å¯¾ãƒ‘ã‚¹ã¾ãŸã¯ã€ç›¸å¯¾ãƒ‘ã‚¹ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * bindingObjectScriptã¯ã€è¨­å®šã•ã‚Œã¦ã„ã‚‹{@link StreamConverter}ãŒã€{@link BindingStreamConverter}ã®å ´åˆã«ã€å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ã€"preResult"ã§å¼•æ•°ã®preResultãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
+     * formatã¯ã€è¨­å®šã•ã‚Œã¦ã„ã‚‹{@link FormatConverter}ã®{@link FormatConverter#setFormat(String) setFormat(format)}ã«æ¸¡ã™ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯è¨­å®šã—ãªã„ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param preResult •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg
-     * @param resource ƒŠƒ\[ƒX
-     * @return •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param preResult å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

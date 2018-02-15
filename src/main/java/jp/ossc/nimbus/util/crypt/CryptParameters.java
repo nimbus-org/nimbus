@@ -42,47 +42,47 @@ import javax.crypto.*;
 import javax.crypto.spec.*;
 
 /**
- * �Í����p�����[�^�B<p>
- * JCE(Java Cryptographic Extension)���g�p���āA�p�����[�^���Í������郆�[�e�B���e�B�N���X�ł���B<br>
+ * 暗号化パラメータ。<p>
+ * JCE(Java Cryptographic Extension)を使用して、パラメータを暗号化するユーティリティクラスである。<br>
  * <p>
- * ���������ɂ́A�Í���������̉�₂�h�����߂Ƀn�b�V���l�ɂ���₃`�F�b�N���s���@�\���񋟂���B<br>
- * �܂��A�Í����p�����[�^�������s���ɓ��肵�čė��p���鎖�ɂ��u�Ȃ肷�܂��v��h�����߂ɁA�Í����p�����[�^������̗L�������`�F�b�N���s���@�\���񋟂���B<br>
+ * 復号化時には、暗号化文字列の改竄を防ぐためにハッシュ値による改竄チェックを行う機能も提供する。<br>
+ * また、暗号化パラメータ文字列を不正に入手して再利用する事による「なりすまし」を防ぐために、暗号化パラメータ文字列の有効期限チェックを行う機能も提供する。<br>
  * <p>
- * �ȉ��ɁA�g�p���@�̃T���v���R�[�h�������B<br>
+ * 以下に、使用方法のサンプルコードを示す。<br>
  * <pre>
- *     // �閧��
+ *     // 秘密鍵
  *     final byte[] KEY = "12345678".getBytes();
  *     
- *     // �n�b�V�����ʌ�(�C��)
+ *     // ハッシュ共通鍵(任意)
  *     final String HASH_KEY = "hogehoge";
  *     
- *     // CryptParameters�̐���
+ *     // CryptParametersの生成
  *     CryptParameters cipher = new CryptParameters(KEY, HASH_KEY);
  *     
- *     // �Í����p�����[�^�̐���
+ *     // 暗号化パラメータの生成
  *     final Map params = cipher.createParametersMap();
  *     params.put("user_id", "m-takata");
  *     params.put("access_id", "hoge");
  *     params.put("password", "fugafuga");
  *     System.out.println("params : " + params);
  *     
- *     // ��ₖh�~�p�n�b�V���̐���
+ *     // 改竄防止用ハッシュの生成
  *     final String hash = cipher.createHash(params);
  *     System.out.println("hash : " + hash);
  *     
- *     // �Í����p�����x�N�^�̐���
+ *     // 暗号化用初期ベクタの生成
  *     final String iv = cipher.createInitialVector();
  *     System.out.println("iv : " + iv);
  *     
- *     // �Í���
+ *     // 暗号化
  *     final String encrypt = cipher.encrypt(iv, params);
  *     System.out.println("encrypt : " + encrypt);
  *     
- *     // �������i��₃`�F�b�N�y�їL�������`�F�b�N�t���j
+ *     // 復号化（改竄チェック及び有効期限チェック付き）
  *     final Map decrypt = cipher.decrypt(iv, encrypt, hash, 10000);
  *     System.out.println("decrypt : " + decrypt);
  * </pre>
- * ���s���ʂ̗���ȉ��Ɏ����B<br>
+ * 実行結果の例を以下に示す。<br>
  * <pre>
  *     params : {jp/ossc/nimbus/util/crypt/CryptParameters/DATE=20090826151355754JST, user_id=m-takata, access_id=hoge, password=fugafuga}
  *     hash : 6CDED7C09CC7C9B56B9DF3DD48616B4B
@@ -96,57 +96,57 @@ import javax.crypto.spec.*;
 public class CryptParameters{
     
     /**
-     * �L�������`�F�b�N�Ɏg�p������t������̃f�t�H���g�t�H�[�}�b�g�B<p>
+     * 有効期限チェックに使用する日付文字列のデフォルトフォーマット。<p>
      */
     public static final String DEFAULT_DATE_FORMAT_PATTERN = "yyyyMMddHHmmssSSSz";
     
     /**
-     * �Í���������y�уn�b�V��������̃f�t�H���g�����G���R�[�f�B���O�B<p>
+     * 暗号化文字列及びハッシュ文字列のデフォルト文字エンコーディング。<p>
      */
     public static final String DEFAULT_ENCODING = "ISO_8859-1";
     
     /**
-     * �f�t�H���g�̕ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j�B<p>
+     * デフォルトの変換方式（アルゴリズム/モード/パディング）。<p>
      */
     public static final String DEFAULT_TRANSFORMATION = "DES/CBC/PKCS5Padding";
     
     /**
-     * �f�t�H���g�̔閧���A���S���Y���B
+     * デフォルトの秘密鍵アルゴリズム。
      */
     public static final String DEFAULT_SECRET_KEY_ALGORITHM = "DES";
     
     /**
-     * �f�t�H���g�̏����x�N�^���B
+     * デフォルトの初期ベクタ長。
      */
     public static final int DEFAULT_INITIAL_VECTOR_LENGTH = 8;
     
     /**
-     * �f�t�H���g�̃n�b�V���A���S���Y���B
+     * デフォルトのハッシュアルゴリズム。
      */
     public static final String DEFAULT_HASH_ALGORITHM = "MD5";
     
     /**
-     * �L�������`�F�b�N�p�����[�^�̃f�t�H���g�̃p�����[�^���B<p>
+     * 有効期限チェックパラメータのデフォルトのパラメータ名。<p>
      */
     public static final String DEFAULT_DATE_KEY = "$D";
     
     /**
-     * �L�������`�F�b�N�p�����[�^�̋��p�����[�^���B<p>
-     * ���̋��p�����[�^�ŁA���삳�������ꍇ�́A{@link #setDateKey(String)}�Ŏw�肷�邩�A�V�X�e���v���p�e�B{@link #SYSTEM_PROPERTY_OLD_DATE_KEY}�ŁAtrue���w�肵�ĉ������B<br>
+     * 有効期限チェックパラメータの旧パラメータ名。<p>
+     * この旧パラメータで、動作させたい場合は、{@link #setDateKey(String)}で指定するか、システムプロパティ{@link #SYSTEM_PROPERTY_OLD_DATE_KEY}で、trueを指定して下さい。<br>
      *
-     * @deprecated {@link #DEFAULT_DATE_KEY}�ɒu���������܂���
+     * @deprecated {@link #DEFAULT_DATE_KEY}に置き換えられました
      */
     public static final String DATE_KEY
         = CryptParameters.class.getName().replaceAll("\\.", "/") + "/DATE";
     
     /**
-     * �L�������`�F�b�N�p�����[�^�̃p�����[�^���̃f�t�H���g�l���A{@link #DATE_KEY}�ɕς��邽�߂̃V�X�e���v���p�e�B���B<p>
-     * -Djp.ossc.nimbus.util.crypt.CryptParameters.oldDateKey=true�Ǝw�肷��B<br>
+     * 有効期限チェックパラメータのパラメータ名のデフォルト値を、{@link #DATE_KEY}に変えるためのシステムプロパティ名。<p>
+     * -Djp.ossc.nimbus.util.crypt.CryptParameters.oldDateKey=trueと指定する。<br>
      */
     public static final String SYSTEM_PROPERTY_OLD_DATE_KEY = CryptParameters.class.getName() + ".oldDateKey";
     
     /**
-     * �P��p�����[�^�̃p�����[�^���B<p>
+     * 単一パラメータのパラメータ名。<p>
      */
     public static final String SINGLE_KEY = "K";
     
@@ -170,31 +170,31 @@ public class CryptParameters{
     private final SecureRandom random = new SecureRandom();
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧���̃o�C�g�z��
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param key 秘密鍵のバイト配列
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(byte[] key) throws InvalidKeyException{
         this(key, null);
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProviderName �L�[�X�g�A�̃v���o�C�_��
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProviderName キーストアのプロバイダ名
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(
         String storePath,
@@ -218,21 +218,21 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProvider �L�[�X�g�A�̃v���o�C�_
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProvider キーストアのプロバイダ
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(
         String storePath,
@@ -256,19 +256,19 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧��
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param key 秘密鍵
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(Key key) throws InvalidKeyException{
         this(key, null);
     }
     
     /**
-     * �n�b�V�������p�̃C���X�^���X�𐶐�����B<p>
+     * ハッシュ生成用のインスタンスを生成する。<p>
      *
-     * @param hashKey �n�b�V�����ʌ�
+     * @param hashKey ハッシュ共通鍵
      */
     public CryptParameters(String hashKey){
         try{
@@ -281,32 +281,32 @@ public class CryptParameters{
                 hashKey
             );
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchPaddingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidAlgorithmParameterException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(IllegalBlockSizeException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidKeyException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧���̃o�C�g�z��
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param key 秘密鍵のバイト配列
+     * @param hashKey ハッシュ共通鍵
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(byte[] key, String hashKey) throws InvalidKeyException{
         this(key == null ? null : new SecretKeySpec(key, DEFAULT_SECRET_KEY_ALGORITHM), hashKey);
@@ -314,22 +314,22 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProviderName �L�[�X�g�A�̃v���o�C�_��
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProviderName キーストアのプロバイダ名
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @param hashKey ハッシュ共通鍵
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(
         String storePath,
@@ -361,40 +361,40 @@ public class CryptParameters{
                 hashKey
             );
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchPaddingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidAlgorithmParameterException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(IllegalBlockSizeException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProvider �L�[�X�g�A�̃v���o�C�_
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProvider キーストアのプロバイダ
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @param hashKey ハッシュ共通鍵
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(
         String storePath,
@@ -426,29 +426,29 @@ public class CryptParameters{
                 hashKey
             );
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchPaddingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidAlgorithmParameterException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(IllegalBlockSizeException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧��
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
+     * @param key 秘密鍵
+     * @param hashKey ハッシュ共通鍵
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
      */
     public CryptParameters(Key key, String hashKey) throws InvalidKeyException{
         try{
@@ -461,37 +461,37 @@ public class CryptParameters{
                 hashKey
             );
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchPaddingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidAlgorithmParameterException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(IllegalBlockSizeException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧���̃o�C�g�z��
-     * @param algorithm �閧���̃A���S���Y��
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param provider �v���o�C�_��
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �w�肳��A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param key 秘密鍵のバイト配列
+     * @param algorithm 秘密鍵のアルゴリズム
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param provider プロバイダ名
+     * @param hashKey ハッシュ共通鍵
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException 指定されアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     public CryptParameters(
         byte[] key,
@@ -516,19 +516,19 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧���̃o�C�g�z��
-     * @param algorithm �閧���̃A���S���Y��
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param provider �v���o�C�_
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �w�肳��A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param key 秘密鍵のバイト配列
+     * @param algorithm 秘密鍵のアルゴリズム
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param provider プロバイダ
+     * @param hashKey ハッシュ共通鍵
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException 指定されアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     public CryptParameters(
         byte[] key,
@@ -553,27 +553,27 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProviderName �L�[�X�g�A�̃v���o�C�_��
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param provider �v���o�C�_��
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ�A�܂��͎w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProviderName キーストアのプロバイダ名
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param provider プロバイダ名
+     * @param hashKey ハッシュ共通鍵
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合、または指定されたアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     public CryptParameters(
         String storePath,
@@ -610,27 +610,27 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProvider �L�[�X�g�A�̃v���o�C�_
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param provider �v���o�C�_
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ�A�܂��͎w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProvider キーストアのプロバイダ
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param provider プロバイダ
+     * @param hashKey ハッシュ共通鍵
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合、または指定されたアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     public CryptParameters(
         String storePath,
@@ -667,18 +667,18 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧��
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param provider �v���o�C�_��
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param key 秘密鍵
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param provider プロバイダ名
+     * @param hashKey ハッシュ共通鍵
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     public CryptParameters(
         Key key,
@@ -694,18 +694,18 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X�𐶐�����B<p>
+     * インスタンスを生成する。<p>
      *
-     * @param key �閧��
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param provider �v���o�C�_
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param key 秘密鍵
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param provider プロバイダ
+     * @param hashKey ハッシュ共通鍵
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     public CryptParameters(
         Key key,
@@ -721,21 +721,21 @@ public class CryptParameters{
     }
     
     /**
-     * �L�[�X�g�A����閧����ǂݍ��ށB<p>
+     * キーストアから秘密鍵を読み込む。<p>
      *
-     * @param storePath �L�[�X�g�A�̃p�X
-     * @param storeType �L�[�X�g�A�̎��
-     * @param storeProviderName �L�[�X�g�A�̃v���o�C�_��
-     * @param storeProvider �L�[�X�g�A�̃v���o�C�_
-     * @param storePassword �L�[�X�g�A�̃p�X���[�h
-     * @param alias �閧���̕ʖ�
-     * @param password �閧���̃p�X���[�h
-     * @exception IOException �L�[�X�g�A�f�[�^�ɓ��o�͂܂��͌`���̖�肪�������ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception KeyStoreException �v���o�C�_�ɁA�v�����ꂽ�L�[�X�g�A�^���Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �L�[�X�g�A�̊��S������������A���S���Y����������Ȃ������ꍇ
-     * @exception CertificateException �L�[�X�g�A�̂ǂ̏ؖ��������[�h�ł��Ȃ������ꍇ
-     * @exception UnrecoverableKeyException �w�肳�ꂽ�p�X���[�h���Ԉ���Ă���ꍇ�ȂǁA���𕜌��ł��Ȃ��ꍇ
+     * @param storePath キーストアのパス
+     * @param storeType キーストアの種別
+     * @param storeProviderName キーストアのプロバイダ名
+     * @param storeProvider キーストアのプロバイダ
+     * @param storePassword キーストアのパスワード
+     * @param alias 秘密鍵の別名
+     * @param password 秘密鍵のパスワード
+     * @exception IOException キーストアデータに入出力または形式の問題があった場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception KeyStoreException プロバイダに、要求されたキーストア型がない場合
+     * @exception NoSuchAlgorithmException キーストアの完全性を検査するアルゴリズムが見つからなかった場合
+     * @exception CertificateException キーストアのどの証明書もロードできなかった場合
+     * @exception UnrecoverableKeyException 指定されたパスワードが間違っている場合など、鍵を復元できない場合
      */
     private final Key loadKey(
         String storePath,
@@ -769,19 +769,19 @@ public class CryptParameters{
     }
     
     /**
-     * �C���X�^���X������������B<p>
+     * インスタンスを初期化する。<p>
      *
-     * @param key �閧��
-     * @param transformation �ϊ������i�A���S���Y��/���[�h/�p�f�B���O�j
-     * @param ivLength �����x�N�^��
-     * @param providerName �v���o�C�_��
-     * @param provider �v���o�C�_
-     * @param hashKey �n�b�V�����ʌ�
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchAlgorithmException �w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception InvalidKeyException �w�肳�ꂽ�������̈Í��̏������ɕs�K�؂ȏꍇ�A�܂��͎w�肳�ꂽ���̃T�C�Y���ő勖�e���T�C�Y (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���ꍇ
-     * @exception InvalidAlgorithmParameterException �w�肳�ꂽ�A���S���Y���p�����[�^���L���Ȑ��� (�ݒ肳��Ă���Ǌ��|���V�[�t�@�C���ɂ�茈��) �𒴂���Í������x�������ꍇ
-     * @exception IllegalBlockSizeException ���̈Í����u���b�N�Í��ł���A�p�f�B���O���v������Ă��炸�A���̈Í��ŏ������ꂽ�f�[�^�̓��͒��̍��v���u���b�N�T�C�Y�̔{���łȂ��ꍇ
+     * @param key 秘密鍵
+     * @param transformation 変換方式（アルゴリズム/モード/パディング）
+     * @param ivLength 初期ベクタ長
+     * @param providerName プロバイダ名
+     * @param provider プロバイダ
+     * @param hashKey ハッシュ共通鍵
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムがサポートされていない場合
+     * @exception InvalidKeyException 指定された鍵がこの暗号の初期化に不適切な場合、または指定された鍵のサイズが最大許容鍵サイズ (設定されている管轄ポリシーファイルにより決定) を超える場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが有効な制限 (設定されている管轄ポリシーファイルにより決定) を超える暗号化強度を示す場合
+     * @exception IllegalBlockSizeException この暗号がブロック暗号であり、パディングが要求されておらず、この暗号で処理されたデータの入力長の合計がブロックサイズの倍数でない場合
      */
     private final void init(
         Key key,
@@ -825,10 +825,10 @@ public class CryptParameters{
                 try{
                     encrypt = c.doFinal("test".getBytes(encoding));
                 }catch(BadPaddingException e){
-                    // �Í����ł͋N����Ȃ��͂�
+                    // 暗号化では起こらないはず
                     throw new UnexpectedCryptException(e);
                 }catch(UnsupportedEncodingException e){
-                    // �N����Ȃ��͂�
+                    // 起こらないはず
                     throw new UnexpectedCryptException(e);
                 }
                 c.init(
@@ -839,7 +839,7 @@ public class CryptParameters{
                 try{
                     c.doFinal(encrypt);
                 }catch(BadPaddingException e){
-                    // �N����Ȃ��͂�
+                    // 起こらないはず
                     throw new UnexpectedCryptException(e);
                 }
             }else{
@@ -851,10 +851,10 @@ public class CryptParameters{
                 try{
                     encrypt = c.doFinal("test".getBytes(encoding));
                 }catch(BadPaddingException e){
-                    // �Í����ł͋N����Ȃ��͂�
+                    // 暗号化では起こらないはず
                     throw new UnexpectedCryptException(e);
                 }catch(UnsupportedEncodingException e){
-                    // �N����Ȃ��͂�
+                    // 起こらないはず
                     throw new UnexpectedCryptException(e);
                 }
                 c.init(
@@ -864,7 +864,7 @@ public class CryptParameters{
                 try{
                     c.doFinal(encrypt);
                 }catch(BadPaddingException e){
-                    // �N����Ȃ��͂�
+                    // 起こらないはず
                     throw new UnexpectedCryptException(e);
                 }
             }
@@ -873,30 +873,30 @@ public class CryptParameters{
     }
     
     /**
-     * �L�������`�F�b�N�p�����[�^�̃p�����[�^����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_DATE_KEY}�B<br>
+     * 有効期限チェックパラメータのパラメータ名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_DATE_KEY}。<br>
      *
-     * @param key �p�����[�^��
+     * @param key パラメータ名
      */
     public void setDateKey(String key){
         dateKey = key;
     }
     
     /**
-     * �L�������`�F�b�N�p�����[�^�̃p�����[�^�����擾����B<p>
+     * 有効期限チェックパラメータのパラメータ名を取得する。<p>
      *
-     * @return �p�����[�^��
+     * @return パラメータ名
      */
     public String getDateKey(){
         return dateKey;
     }
     
     /**
-     * �L�������`�F�b�N�Ɏg�p������t������̃t�H�[�}�b�g��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_DATE_FORMAT_PATTERN}�B<br>
+     * 有効期限チェックに使用する日付文字列のフォーマットを設定する。<p>
+     * デフォルトは、{@link #DEFAULT_DATE_FORMAT_PATTERN}。<br>
      *
-     * @param format ���t�t�H�[�}�b�g
-     * @exception IllegalArgumentException �w�肳�ꂽ���t�t�H�[�}�b�g���������Ȃ��ꍇ
+     * @param format 日付フォーマット
+     * @exception IllegalArgumentException 指定された日付フォーマットが正しくない場合
      */
     public void setDateFormat(String format) throws IllegalArgumentException{
         new SimpleDateFormat(format);
@@ -904,20 +904,20 @@ public class CryptParameters{
     }
     
     /**
-     * �L�������`�F�b�N�Ɏg�p������t������̃t�H�[�}�b�g���擾����B<p>
+     * 有効期限チェックに使用する日付文字列のフォーマットを取得する。<p>
      *
-     * @return ���t�t�H�[�}�b�g
+     * @return 日付フォーマット
      */
     public String getDateFormat(){
         return dateFormat;
     }
     
     /**
-     * �Í���������y�уn�b�V��������̕����G���R�[�f�B���O��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_ENCODING}�B<br>
+     * 暗号化文字列及びハッシュ文字列の文字エンコーディングを設定する。<p>
+     * デフォルトは、{@link #DEFAULT_ENCODING}。<br>
      *
-     * @param encoding �����G���R�[�f�B���O
-     * @exception UnsupportedEncodingException �w�肳�ꂽ�����G���R�[�f�B���O���T�|�[�g����Ă��Ȃ��ꍇ
+     * @param encoding 文字エンコーディング
+     * @exception UnsupportedEncodingException 指定された文字エンコーディングがサポートされていない場合
      */
     public void setEncoding(String encoding)
      throws UnsupportedEncodingException{
@@ -926,28 +926,28 @@ public class CryptParameters{
     }
     
     /**
-     * �Í���������y�уn�b�V��������̕����G���R�[�f�B���O���擾����B<p>
+     * 暗号化文字列及びハッシュ文字列の文字エンコーディングを取得する。<p>
      *
-     * @return �����G���R�[�f�B���O
+     * @return 文字エンコーディング
      */
     public String getEncoding(){
         return encoding;
     }
     
     /**
-     * �Í���/�������̕ϊ��������擾����B<p>
+     * 暗号化/復号化の変換方式を取得する。<p>
      *
-     * @return �ϊ�����
+     * @return 変換方式
      */
     public String getTransformation(){
         return transformation;
     }
     
     /**
-     * �閧���A���S���Y����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_SECRET_KEY_ALGORITHM}�B<br>
+     * 秘密鍵アルゴリズムを設定する。<p>
+     * デフォルトは、{@link #DEFAULT_SECRET_KEY_ALGORITHM}。<br>
      *
-     * @param algorithm �A���S���Y��
+     * @param algorithm アルゴリズム
      */
     public void setAlgorithm(String algorithm){
         this.algorithm = algorithm;
@@ -957,18 +957,18 @@ public class CryptParameters{
     }
     
     /**
-     * �閧���A���S���Y�����擾����B<p>
+     * 秘密鍵アルゴリズムを取得する。<p>
      *
-     * @return �A���S���Y��
+     * @return アルゴリズム
      */
     public String getAlgorithm(){
         return algorithm;
     }
     
     /**
-     * �閧����ݒ肷��B<p>
+     * 秘密鍵を設定する。<p>
      * 
-     * @param key �閧���̃o�C�g�z��
+     * @param key 秘密鍵のバイト配列
      */
     public void setKey(byte[] key){
         if(key == null){
@@ -979,9 +979,9 @@ public class CryptParameters{
     }
     
     /**
-     * �閧����ݒ肷��B<p>
+     * 秘密鍵を設定する。<p>
      * 
-     * @param key �閧��
+     * @param key 秘密鍵
      */
     public void setKey(Key key){
         if(key == null){
@@ -992,20 +992,20 @@ public class CryptParameters{
     }
     
     /**
-     * �閧�����擾����B<p>
+     * 秘密鍵を取得する。<p>
      * 
-     * @return �閧��
+     * @return 秘密鍵
      */
     public Key getKey(){
         return secretKey;
     }
     
     /**
-     * �n�b�V���A���S���Y����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_HASH_ALGORITHM}�B<br>
+     * ハッシュアルゴリズムを設定する。<p>
+     * デフォルトは、{@link #DEFAULT_HASH_ALGORITHM}。<br>
      *
-     * @param algorithm �A���S���Y��
-     * @exception NoSuchAlgorithmException �w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
+     * @param algorithm アルゴリズム
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムがサポートされていない場合
      */
     public void setHashAlgorithm(String algorithm)
      throws NoSuchAlgorithmException{
@@ -1016,13 +1016,13 @@ public class CryptParameters{
     }
     
     /**
-     * �n�b�V���A���S���Y����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_HASH_ALGORITHM}�B<br>
+     * ハッシュアルゴリズムを設定する。<p>
+     * デフォルトは、{@link #DEFAULT_HASH_ALGORITHM}。<br>
      *
-     * @param algorithm �A���S���Y��
-     * @param provider �v���o�C�_��
-     * @exception NoSuchAlgorithmException �w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
+     * @param algorithm アルゴリズム
+     * @param provider プロバイダ名
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムがサポートされていない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
      */
     public void setHashAlgorithm(String algorithm, String provider)
      throws NoSuchAlgorithmException, NoSuchProviderException{
@@ -1033,13 +1033,13 @@ public class CryptParameters{
     }
     
     /**
-     * �n�b�V���A���S���Y����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_HASH_ALGORITHM}�B<br>
+     * ハッシュアルゴリズムを設定する。<p>
+     * デフォルトは、{@link #DEFAULT_HASH_ALGORITHM}。<br>
      *
-     * @param algorithm �A���S���Y��
-     * @param provider �v���o�C�_
-     * @exception NoSuchAlgorithmException �w�肳�ꂽ�A���S���Y�����T�|�[�g����Ă��Ȃ��ꍇ
-     * @exception NoSuchProviderException �w�肳�ꂽ�v���o�C�_���T�|�[�g����Ă��Ȃ��ꍇ
+     * @param algorithm アルゴリズム
+     * @param provider プロバイダ
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムがサポートされていない場合
+     * @exception NoSuchProviderException 指定されたプロバイダがサポートされていない場合
      */
     public void setHashAlgorithm(String algorithm, Provider provider)
      throws NoSuchAlgorithmException, NoSuchProviderException{
@@ -1050,39 +1050,39 @@ public class CryptParameters{
     }
     
     /**
-     * �n�b�V���A���S���Y�����擾����B<p>
+     * ハッシュアルゴリズムを取得する。<p>
      *
-     * @return �A���S���Y��
+     * @return アルゴリズム
      */
     public String getHashAlgorithm(){
         return hashAlgorithm;
     }
     
     /**
-     * �n�b�V�����ʌ���ݒ肷��B<p>
+     * ハッシュ共通鍵を設定する。<p>
      *
-     * @param key �n�b�V�����ʌ�
+     * @param key ハッシュ共通鍵
      */
     public void setHashKey(String key){
         hashKey = key;
     }
     
     /**
-     * �n�b�V�����ʌ����擾����B<p>
+     * ハッシュ共通鍵を取得する。<p>
      *
-     * @return �n�b�V�����ʌ�
+     * @return ハッシュ共通鍵
      */
     public String getHashKey(){
         return hashKey;
     }
     
     /**
-     * �Í�������p�����[�^���i�[����}�b�v�𐶐�����B<p>
-     * �Í�������p�����[�^���i�[����}�b�v�́A�K���������̃��\�b�h�Ő��������}�b�v���g�p����K�v�͂Ȃ��B�A���A���������ɁA�Í����p�����[�^������̗L�������̃`�F�b�N��L���ɂ������ꍇ�́A���̃��\�b�h�Ő��������}�b�v���g�p����K�v������B<br>
-     * ���̃}�b�v�́A�ė��p���Ă͂Ȃ�Ȃ��B�܂��A����������Ȃ��B<br>
-     * �}�b�v���ė��p�������ꍇ�́A{@link #createParametersMap(Map)}���g�p���邱�ƁB<br>
+     * 暗号化するパラメータを格納するマップを生成する。<p>
+     * 暗号化するパラメータを格納するマップは、必ずしもこのメソッドで生成したマップを使用する必要はない。但し、復号化時に、暗号化パラメータ文字列の有効期限のチェックを有効にしたい場合は、このメソッドで生成したマップを使用する必要がある。<br>
+     * このマップは、再利用してはならない。また、同期化されない。<br>
+     * マップを再利用したい場合は、{@link #createParametersMap(Map)}を使用すること。<br>
      *
-     * @return �Í�������p�����[�^���i�[����}�b�v
+     * @return 暗号化するパラメータを格納するマップ
      * @see #createParametersMap(Map)
      */
     public Map createParametersMap(){
@@ -1092,12 +1092,12 @@ public class CryptParameters{
     }
     
     /**
-     * �Í�������p�����[�^���i�[����}�b�v�𐶐�����B<p>
-     * �Í�������p�����[�^���i�[����}�b�v�́A�K���������̃��\�b�h�Ő��������}�b�v���g�p����K�v�͂Ȃ��B�A���A���������ɁA�Í����p�����[�^������̗L�������̃`�F�b�N��L���ɂ������ꍇ�́A���̃��\�b�h�Ő��������}�b�v���g�p����K�v������B<br>
-     * �ė��p�̂��߂ɓn���ꂽ�}�b�vparams�́A�����������B<br>
+     * 暗号化するパラメータを格納するマップを生成する。<p>
+     * 暗号化するパラメータを格納するマップは、必ずしもこのメソッドで生成したマップを使用する必要はない。但し、復号化時に、暗号化パラメータ文字列の有効期限のチェックを有効にしたい場合は、このメソッドで生成したマップを使用する必要がある。<br>
+     * 再利用のために渡されたマップparamsは、初期化される。<br>
      *
-     * @param params �ė��p�̂��߂̃}�b�v
-     * @return �Í�������p�����[�^���i�[����}�b�v
+     * @param params 再利用のためのマップ
+     * @return 暗号化するパラメータを格納するマップ
      */
     public Map createParametersMap(Map params){
         params.clear();
@@ -1109,20 +1109,20 @@ public class CryptParameters{
     }
     
     /**
-     * �Í���������̉�ₖh�~�p�n�b�V���l�𐶐�����B<p>
+     * 暗号化文字列の改竄防止用ハッシュ値を生成する。<p>
      *
-     * @param params �Í�������p�����[�^���i�[�����}�b�v
-     * @return �n�b�V���l
+     * @param params 暗号化するパラメータを格納したマップ
+     * @return ハッシュ値
      */
     public String createHash(Map params){
         return createHash(encodeParams(params));
     }
     
     /**
-     * �Í���������̉�ₖh�~�p�n�b�V���l�𐶐�����B<p>
+     * 暗号化文字列の改竄防止用ハッシュ値を生成する。<p>
      *
-     * @param str �Í������镶����
-     * @return �n�b�V���l
+     * @param str 暗号化する文字列
+     * @return ハッシュ値
      */
     public String createHash(String str){
         if(hashKey != null){
@@ -1149,64 +1149,64 @@ public class CryptParameters{
                 )
             );
         }catch(UnsupportedEncodingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �閧���o�C�g�z��𐶐�����B<p>
+     * 秘密鍵バイト配列を生成する。<p>
      *
-     * @param byteLength �o�C�g��
-     * @return �閧���o�C�g�z��
+     * @param byteLength バイト長
+     * @return 秘密鍵バイト配列
      */
     public byte[] createRandomKey(int byteLength){
         return random.generateSeed(byteLength);
     }
     
     /**
-     * �Í����p�����x�N�^�𐶐�����B<p>
+     * 暗号化用初期ベクタを生成する。<p>
      *
-     * @return �����x�N�^
+     * @return 初期ベクタ
      */
     public String createInitialVector(){
         return toHexString(random.generateSeed(ivLength));
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^���Í�������B<p>
+     * 指定されたパラメータを暗号化する。<p>
      *
-     * @param params �Í�������p�����[�^���i�[�����}�b�v
-     * @return �Í����p�����[�^������
+     * @param params 暗号化するパラメータを格納したマップ
+     * @return 暗号化パラメータ文字列
      */
     public String encrypt(Map params){
         return encrypt(null, params);
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^���Í�������B<p>
+     * 指定されたパラメータを暗号化する。<p>
      *
-     * @param iv �����x�N�^
-     * @param params �Í�������p�����[�^���i�[�����}�b�v
-     * @return �Í����p�����[�^������
+     * @param iv 初期ベクタ
+     * @param params 暗号化するパラメータを格納したマップ
+     * @return 暗号化パラメータ文字列
      */
     public String encrypt(String iv, Map params){
         return encrypt(iv, params, false);
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^���Í�������B<p>
+     * 指定されたパラメータを暗号化する。<p>
      *
-     * @param iv �����x�N�^
-     * @param params �Í�������p�����[�^���i�[�����}�b�v
-     * @param isCreateHash ��ₖh�~�̃n�b�V���l�𐶐����邩�ǂ���
-     * @return �Í����p�����[�^������
+     * @param iv 初期ベクタ
+     * @param params 暗号化するパラメータを格納したマップ
+     * @param isCreateHash 改竄防止のハッシュ値を生成するかどうか
+     * @return 暗号化パラメータ文字列
      */
     public String encrypt(String iv, Map params, boolean isCreateHash){
         if(secretKey == null){
@@ -1240,22 +1240,22 @@ public class CryptParameters{
                 );
             }
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchPaddingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidKeyException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidAlgorithmParameterException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(FalsifiedParameterException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
         
@@ -1265,13 +1265,13 @@ public class CryptParameters{
                 encodeParams(params).getBytes(encoding)
             );
         }catch(BadPaddingException e){
-            // �Í����ł͋N����Ȃ��͂�
+            // 暗号化では起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(UnsupportedEncodingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(IllegalBlockSizeException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
         String result = toHexString(encrypt);
@@ -1288,21 +1288,21 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ��������Í�������B<p>
+     * 指定された文字列を暗号化する。<p>
      *
-     * @param str �Í������镶����
-     * @return �Í���������
+     * @param str 暗号化する文字列
+     * @return 暗号化文字列
      */
     public String encryptString(String str){
         return encryptString(null, str);
     }
     
     /**
-     * �w�肳�ꂽ��������Í�������B<p>
+     * 指定された文字列を暗号化する。<p>
      *
-     * @param iv �����x�N�^
-     * @param str �Í������镶����
-     * @return �Í���������
+     * @param iv 初期ベクタ
+     * @param str 暗号化する文字列
+     * @return 暗号化文字列
      */
     public String encryptString(String iv, String str){
         Map params = createParametersMap();
@@ -1311,31 +1311,31 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^�𕜍�������B<p>
-     * {@link #decrypt(String, String, String) decrypt(null, params, null)}�ŌĂяo���̂Ɠ����ł���B<br>
+     * 指定されたパラメータを復号化する。<p>
+     * {@link #decrypt(String, String, String) decrypt(null, params, null)}で呼び出すのと同じである。<br>
      *
-     * @param params �Í����p�����[�^������
-     * @return ���������ꂽ�p�����[�^���i�[���ꂽ�}�b�v
-     * @exception FalsifiedParameterException �p�����[�^����₂���Ă����ꍇ
+     * @param params 暗号化パラメータ文字列
+     * @return 復号化されたパラメータが格納されたマップ
+     * @exception FalsifiedParameterException パラメータが改竄されていた場合
      * @see #decrypt(String, String, String)
      */
     public Map decrypt(String params) throws FalsifiedParameterException{
         try{
             return decrypt(null, params, null, -1, false);
         }catch(OverLimitExpiresException e){
-            // �N����Ȃ�
+            // 起こらない
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^�𕜍�������B<p>
-     * {@link #decrypt(String, String, String) decrypt(iv, params, null)}�ŌĂяo���̂Ɠ����ł���B<br>
+     * 指定されたパラメータを復号化する。<p>
+     * {@link #decrypt(String, String, String) decrypt(iv, params, null)}で呼び出すのと同じである。<br>
      *
-     * @param iv �����x�N�^
-     * @param params �Í����p�����[�^������
-     * @return ���������ꂽ�p�����[�^���i�[���ꂽ�}�b�v
-     * @exception FalsifiedParameterException �p�����[�^����₂���Ă����ꍇ
+     * @param iv 初期ベクタ
+     * @param params 暗号化パラメータ文字列
+     * @return 復号化されたパラメータが格納されたマップ
+     * @exception FalsifiedParameterException パラメータが改竄されていた場合
      * @see #decrypt(String, String, String)
      */
     public Map decrypt(
@@ -1345,20 +1345,20 @@ public class CryptParameters{
         try{
             return decrypt(iv, params, null, -1, false);
         }catch(OverLimitExpiresException e){
-            // �N����Ȃ�
+            // 起こらない
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^�𕜍�������B�����ɗL�������`�F�b�N���s���B<p>
-     * �����������p�����[�^��{@link #createParametersMap()}�ō��ꂽ�}�b�v�łȂ��ꍇ��Aexpires��0�ȉ��̒l���w�肳��Ă���ꍇ�́A�L�������`�F�b�N���s��Ȃ��B<br>
+     * 指定されたパラメータを復号化する。同時に有効期限チェックを行う。<p>
+     * 復号化したパラメータが{@link #createParametersMap()}で作られたマップでない場合や、expiresに0以下の値が指定されている場合は、有効期限チェックを行わない。<br>
      *
-     * @param params �Í����p�����[�^������
-     * @param expires �L������[msec]
-     * @return ���������ꂽ�p�����[�^���i�[���ꂽ�}�b�v
-     * @exception OverLimitExpiresException �Í����p�����[�^������̗L���������߂��Ă��܂����ꍇ
-     * @exception FalsifiedParameterException �p�����[�^����₂���Ă����ꍇ
+     * @param params 暗号化パラメータ文字列
+     * @param expires 有効期限[msec]
+     * @return 復号化されたパラメータが格納されたマップ
+     * @exception OverLimitExpiresException 暗号化パラメータ文字列の有効期限が過ぎてしまった場合
+     * @exception FalsifiedParameterException パラメータが改竄されていた場合
      */
     public Map decrypt(
         String params,
@@ -1374,15 +1374,15 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^�𕜍�������B�����ɗL�������`�F�b�N���s���B<p>
-     * �����������p�����[�^��{@link #createParametersMap()}�ō��ꂽ�}�b�v�łȂ��ꍇ��Aexpires��0�ȉ��̒l���w�肳��Ă���ꍇ�́A�L�������`�F�b�N���s��Ȃ��B<br>
+     * 指定されたパラメータを復号化する。同時に有効期限チェックを行う。<p>
+     * 復号化したパラメータが{@link #createParametersMap()}で作られたマップでない場合や、expiresに0以下の値が指定されている場合は、有効期限チェックを行わない。<br>
      *
-     * @param iv �����x�N�^
-     * @param params �Í����p�����[�^������
-     * @param expires �L������[msec]
-     * @return ���������ꂽ�p�����[�^���i�[���ꂽ�}�b�v
-     * @exception OverLimitExpiresException �Í����p�����[�^������̗L���������߂��Ă��܂����ꍇ
-     * @exception FalsifiedParameterException �p�����[�^����₂���Ă����ꍇ
+     * @param iv 初期ベクタ
+     * @param params 暗号化パラメータ文字列
+     * @param expires 有効期限[msec]
+     * @return 復号化されたパラメータが格納されたマップ
+     * @exception OverLimitExpiresException 暗号化パラメータ文字列の有効期限が過ぎてしまった場合
+     * @exception FalsifiedParameterException パラメータが改竄されていた場合
      */
     public Map decrypt(
         String iv,
@@ -1399,16 +1399,16 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^�𕜍�������B�����ɉ�₃`�F�b�N�y�їL�������`�F�b�N���s���B<p>
-     * hash��null�̏ꍇ�́AFalsifiedParameterException��throw����B<br>
-     * �܂��A�Í����p�����[�^������̗L�������̃`�F�b�N�͍s��Ȃ��B<br>
-     * {@link #decrypt(String, String, String, long) decrypt(iv, params, hash, encoding, -1)}�ŌĂяo���̂Ɠ����ł���B<br>
+     * 指定されたパラメータを復号化する。同時に改竄チェック及び有効期限チェックを行う。<p>
+     * hashがnullの場合は、FalsifiedParameterExceptionをthrowする。<br>
+     * また、暗号化パラメータ文字列の有効期限のチェックは行わない。<br>
+     * {@link #decrypt(String, String, String, long) decrypt(iv, params, hash, encoding, -1)}で呼び出すのと同じである。<br>
      *
-     * @param iv �����x�N�^
-     * @param params �Í����p�����[�^������
-     * @param hash �Í����O�̃n�b�V���l
-     * @return ���������ꂽ�p�����[�^���i�[���ꂽ�}�b�v
-     * @exception FalsifiedParameterException �p�����[�^����₂���Ă����ꍇ
+     * @param iv 初期ベクタ
+     * @param params 暗号化パラメータ文字列
+     * @param hash 暗号化前のハッシュ値
+     * @return 復号化されたパラメータが格納されたマップ
+     * @exception FalsifiedParameterException パラメータが改竄されていた場合
      * @see #decrypt(String, String, String, long)
      */
     public Map decrypt(
@@ -1424,23 +1424,23 @@ public class CryptParameters{
                 -1
             );
         }catch(OverLimitExpiresException e){
-            // �N����Ȃ�
+            // 起こらない
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �w�肳�ꂽ�p�����[�^�𕜍�������B�����ɉ�₃`�F�b�N�y�їL�������`�F�b�N���s���B<p>
-     * hash��null�̏ꍇ�́AFalsifiedParameterException��throw����B<br>
-     * �܂��A�����������p�����[�^��{@link #createParametersMap()}�ō��ꂽ�}�b�v�łȂ��ꍇ��Aexpires��0�ȉ��̒l���w�肳��Ă���ꍇ�́A�L�������`�F�b�N���s��Ȃ��B<br>
+     * 指定されたパラメータを復号化する。同時に改竄チェック及び有効期限チェックを行う。<p>
+     * hashがnullの場合は、FalsifiedParameterExceptionをthrowする。<br>
+     * また、復号化したパラメータが{@link #createParametersMap()}で作られたマップでない場合や、expiresに0以下の値が指定されている場合は、有効期限チェックを行わない。<br>
      *
-     * @param iv �����x�N�^
-     * @param params �Í����p�����[�^������
-     * @param hash �Í����O�̃n�b�V���l
-     * @param expires �L������[msec]
-     * @return ���������ꂽ�p�����[�^���i�[���ꂽ�}�b�v
-     * @exception FalsifiedParameterException �p�����[�^����₂���Ă����ꍇ
-     * @exception OverLimitExpiresException �Í����p�����[�^������̗L���������߂��Ă��܂����ꍇ
+     * @param iv 初期ベクタ
+     * @param params 暗号化パラメータ文字列
+     * @param hash 暗号化前のハッシュ値
+     * @param expires 有効期限[msec]
+     * @return 復号化されたパラメータが格納されたマップ
+     * @exception FalsifiedParameterException パラメータが改竄されていた場合
+     * @exception OverLimitExpiresException 暗号化パラメータ文字列の有効期限が過ぎてしまった場合
      */
     public Map decrypt(
         String iv,
@@ -1486,13 +1486,13 @@ public class CryptParameters{
                 c = Cipher.getInstance(transformation);
             }
         }catch(NoSuchAlgorithmException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchPaddingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(NoSuchProviderException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
         
@@ -1517,7 +1517,7 @@ public class CryptParameters{
                 );
             }
         }catch(InvalidKeyException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }catch(InvalidAlgorithmParameterException e){
             throw new FalsifiedParameterException(e);
@@ -1541,7 +1541,7 @@ public class CryptParameters{
         try{
             decryptStr = new String(decrypt, encoding);
         }catch(UnsupportedEncodingException e){
-            // �N����Ȃ��͂�
+            // 起こらないはず
             throw new UnexpectedCryptException(e);
         }
         if(isAlterated && hash != null){
@@ -1579,31 +1579,31 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ������𕜍�������B<p>
-     * {@link #decryptString(String, String, String) decryptString(null, params, null)}�ŌĂяo���̂Ɠ����ł���B<br>
+     * 指定された文字列を復号化する。<p>
+     * {@link #decryptString(String, String, String) decryptString(null, params, null)}で呼び出すのと同じである。<br>
      *
-     * @param str �Í���������
-     * @return ���������ꂽ������
-     * @exception FalsifiedParameterException �Í��������񂪉�₂���Ă����ꍇ
+     * @param str 暗号化文字列
+     * @return 復号化された文字列
+     * @exception FalsifiedParameterException 暗号化文字列が改竄されていた場合
      * @see #decryptString(String, String, String)
      */
     public String decryptString(String str) throws FalsifiedParameterException{
         try{
             return decryptString(null, str, null, -1, false);
         }catch(OverLimitExpiresException e){
-            // �N����Ȃ�
+            // 起こらない
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �w�肳�ꂽ������𕜍�������B<p>
-     * {@link #decryptString(String, String, String) decryptString(iv, params, null)}�ŌĂяo���̂Ɠ����ł���B<br>
+     * 指定された文字列を復号化する。<p>
+     * {@link #decryptString(String, String, String) decryptString(iv, params, null)}で呼び出すのと同じである。<br>
      *
-     * @param iv �����x�N�^
-     * @param str �Í���������
-     * @return ���������ꂽ������
-     * @exception FalsifiedParameterException �Í��������񂪉�₂���Ă����ꍇ
+     * @param iv 初期ベクタ
+     * @param str 暗号化文字列
+     * @return 復号化された文字列
+     * @exception FalsifiedParameterException 暗号化文字列が改竄されていた場合
      * @see #decryptString(String, String, String)
      */
     public String decryptString(
@@ -1613,20 +1613,20 @@ public class CryptParameters{
         try{
             return decryptString(iv, str, null, -1, false);
         }catch(OverLimitExpiresException e){
-            // �N����Ȃ�
+            // 起こらない
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �w�肳�ꂽ������𕜍�������B�����ɗL�������`�F�b�N���s���B<p>
-     * expires��0�ȉ��̒l���w�肳��Ă���ꍇ�́A�L�������`�F�b�N���s��Ȃ��B<br>
+     * 指定された文字列を復号化する。同時に有効期限チェックを行う。<p>
+     * expiresに0以下の値が指定されている場合は、有効期限チェックを行わない。<br>
      *
-     * @param str �Í���������
-     * @param expires �L������[msec]
-     * @return ���������ꂽ������
-     * @exception OverLimitExpiresException �Í���������̗L���������߂��Ă��܂����ꍇ
-     * @exception FalsifiedParameterException �Í��������񂪉�₂���Ă����ꍇ
+     * @param str 暗号化文字列
+     * @param expires 有効期限[msec]
+     * @return 復号化された文字列
+     * @exception OverLimitExpiresException 暗号化文字列の有効期限が過ぎてしまった場合
+     * @exception FalsifiedParameterException 暗号化文字列が改竄されていた場合
      */
     public String decryptString(
         String str,
@@ -1642,15 +1642,15 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ�Í���������𕜍�������B�����ɗL�������`�F�b�N���s���B<p>
-     * expires��0�ȉ��̒l���w�肳��Ă���ꍇ�́A�L�������`�F�b�N���s��Ȃ��B<br>
+     * 指定された暗号化文字列を復号化する。同時に有効期限チェックを行う。<p>
+     * expiresに0以下の値が指定されている場合は、有効期限チェックを行わない。<br>
      *
-     * @param iv �����x�N�^
-     * @param str �Í���������
-     * @param expires �L������[msec]
-     * @return ���������ꂽ������
-     * @exception OverLimitExpiresException �Í���������̗L���������߂��Ă��܂����ꍇ
-     * @exception FalsifiedParameterException �Í��������񂪉�₂���Ă����ꍇ
+     * @param iv 初期ベクタ
+     * @param str 暗号化文字列
+     * @param expires 有効期限[msec]
+     * @return 復号化された文字列
+     * @exception OverLimitExpiresException 暗号化文字列の有効期限が過ぎてしまった場合
+     * @exception FalsifiedParameterException 暗号化文字列が改竄されていた場合
      */
     public String decryptString(
         String iv,
@@ -1667,16 +1667,16 @@ public class CryptParameters{
     }
     
     /**
-     * �w�肳�ꂽ������𕜍�������B�����ɉ�₃`�F�b�N�y�їL�������`�F�b�N���s���B<p>
-     * hash��null�̏ꍇ�́AFalsifiedParameterException��throw����B<br>
-     * �܂��A�Í���������̗L�������̃`�F�b�N�͍s��Ȃ��B<br>
-     * {@link #decryptString(String, String, String, long) decryptString(iv, params, hash, encoding, -1)}�ŌĂяo���̂Ɠ����ł���B<br>
+     * 指定された文字列を復号化する。同時に改竄チェック及び有効期限チェックを行う。<p>
+     * hashがnullの場合は、FalsifiedParameterExceptionをthrowする。<br>
+     * また、暗号化文字列の有効期限のチェックは行わない。<br>
+     * {@link #decryptString(String, String, String, long) decryptString(iv, params, hash, encoding, -1)}で呼び出すのと同じである。<br>
      *
-     * @param iv �����x�N�^
-     * @param str �Í���������
-     * @param hash �Í����O�̃n�b�V���l
-     * @return ���������ꂽ������
-     * @exception FalsifiedParameterException �Í��������񂪉�₂���Ă����ꍇ
+     * @param iv 初期ベクタ
+     * @param str 暗号化文字列
+     * @param hash 暗号化前のハッシュ値
+     * @return 復号化された文字列
+     * @exception FalsifiedParameterException 暗号化文字列が改竄されていた場合
      * @see #decryptString(String, String, String, long)
      */
     public String decryptString(
@@ -1692,23 +1692,23 @@ public class CryptParameters{
                 -1
             );
         }catch(OverLimitExpiresException e){
-            // �N����Ȃ�
+            // 起こらない
             throw new UnexpectedCryptException(e);
         }
     }
     
     /**
-     * �w�肳�ꂽ������𕜍�������B�����ɉ�₃`�F�b�N�y�їL�������`�F�b�N���s���B<p>
-     * hash��null�̏ꍇ�́AFalsifiedParameterException��throw����B<br>
-     * �܂��Aexpires��0�ȉ��̒l���w�肳��Ă���ꍇ�́A�L�������`�F�b�N���s��Ȃ��B<br>
+     * 指定された文字列を復号化する。同時に改竄チェック及び有効期限チェックを行う。<p>
+     * hashがnullの場合は、FalsifiedParameterExceptionをthrowする。<br>
+     * また、expiresに0以下の値が指定されている場合は、有効期限チェックを行わない。<br>
      *
-     * @param iv �����x�N�^
-     * @param str �Í���������
-     * @param hash �Í����O�̃n�b�V���l
-     * @param expires �L������[msec]
-     * @return ���������ꂽ������
-     * @exception FalsifiedParameterException �Í��������񂪉�₂���Ă����ꍇ
-     * @exception OverLimitExpiresException �Í���������̗L���������߂��Ă��܂����ꍇ
+     * @param iv 初期ベクタ
+     * @param str 暗号化文字列
+     * @param hash 暗号化前のハッシュ値
+     * @param expires 有効期限[msec]
+     * @return 復号化された文字列
+     * @exception FalsifiedParameterException 暗号化文字列が改竄されていた場合
+     * @exception OverLimitExpiresException 暗号化文字列の有効期限が過ぎてしまった場合
      */
     public String decryptString(
         String iv,

@@ -35,38 +35,38 @@ import jp.ossc.nimbus.core.*;
 /**
  * @author y-tokuda
  *
- * ‚±‚Ì¶¬‚³‚ê‚½ƒRƒƒ“ƒg‚Ì‘}“ü‚³‚ê‚éƒeƒ“ƒvƒŒ[ƒg‚ğ•ÏX‚·‚é‚½‚ß
- * ƒEƒBƒ“ƒhƒE > İ’è > Java > ƒR[ƒh¶¬ > ƒR[ƒh‚ÆƒRƒƒ“ƒg
+ * ã“ã®ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¡ãƒ³ãƒˆã®æŒ¿å…¥ã•ã‚Œã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å¤‰æ›´ã™ã‚‹ãŸã‚
+ * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ > è¨­å®š > Java > ã‚³ãƒ¼ãƒ‰ç”Ÿæˆ > ã‚³ãƒ¼ãƒ‰ã¨ã‚³ãƒ¡ãƒ³ãƒˆ
  */
 public interface MessageResourceFactoryServiceMBean extends ServiceBaseMBean{
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹Ši”[ƒfƒBƒŒƒNƒgƒŠ‚ÌƒZƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param dir
 	 */
 	public void setDefineFileDir(String dir);
 	/** 
-	 * ’è‹`ƒtƒ@ƒCƒ‹Ši”[ƒfƒBƒŒƒNƒgƒŠ‚ÌƒQƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã‚²ãƒƒã‚¿ãƒ¼
 	 * 
 	 * @return
 	 */
 	public String getDefineFineDir();
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹Šg’£q‚ÌƒZƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public void setDefineFileExt(String ext);
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹Šg’£q‚ÌƒQƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public String getDefineFileExt();
 	/**
-	 * ƒoƒCƒgƒRƒ“ƒo[ƒ^[ƒT[ƒrƒX–¼‚ÌƒZƒbƒ^[
+	 * ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚»ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public void setByteConverterServiceName(ServiceName name);
 	/**
-	 * ƒoƒCƒgƒRƒ“ƒo[ƒ^[ƒT[ƒrƒX–¼‚ÌƒQƒbƒ^[
+	 * ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚²ãƒƒã‚¿ãƒ¼
 	 * 
 	 */
 	public ServiceName getByteConverterServiceName();

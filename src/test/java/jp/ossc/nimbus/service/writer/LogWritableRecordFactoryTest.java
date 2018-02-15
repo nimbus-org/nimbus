@@ -38,8 +38,8 @@ import java.util.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/13| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/13ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class LogWritableRecordFactoryTest extends TestCase {
 
@@ -64,7 +64,7 @@ public class LogWritableRecordFactoryTest extends TestCase {
 		WritableRecord rec = writableRecordFactory.createRecord(elements);
 		System.out.println(rec);
 	}
-	//nimbus-service.xml‚ÅA•s³‚È•¶š—ñ‚ğƒtƒH[ƒ}ƒbƒg‚É‚ ‚½‚¦‚Ä‚¢‚éê‡
+	//nimbus-service.xmlã§ã€ä¸æ­£ãªæ–‡å­—åˆ—ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã‚ãŸãˆã¦ã„ã‚‹å ´åˆ
 	public void testDateElement2(){
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","LogWritableRecFactory2");
 		Date d = new Date();
@@ -73,7 +73,7 @@ public class LogWritableRecordFactoryTest extends TestCase {
 		WritableRecord rec = writableRecordFactory.createRecord(elements);
 		System.out.println(rec);
 	}	
-	//nimbus-service.xml‚ÅA•s³‚È•¶š—ñ‚ğƒtƒH[ƒ}ƒbƒg‚É‚ ‚½‚¦‚Ä‚¢‚éê‡
+	//nimbus-service.xmlã§ã€ä¸æ­£ãªæ–‡å­—åˆ—ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã‚ãŸãˆã¦ã„ã‚‹å ´åˆ
 	public void testDateElement3(){
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","LogWritableRecFactory3");
 		Date d = new Date();

@@ -38,7 +38,7 @@ import jp.ossc.nimbus.service.aop.interceptor.MetricsInfo;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link HttpServletRequestMetricsInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link HttpServletRequestMetricsInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see HttpServletRequestMetricsInterceptorService
@@ -61,333 +61,333 @@ public interface HttpServletRequestMetricsInterceptorServiceMBean extends Servle
     public static final String RECORD_KEY_AVERAGE_PERFORMANCE = "AveragePerformance";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“ú•tƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      */
     public static final String DEFAULT_DATE_FORMAT = "HH:mm:ss.SSS";
     
     /**
-     * ƒƒgƒŠƒNƒXî•ñ‚ğ•\¦‚·‚éB<p>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒgƒŠƒNƒXî•ñ
+     * @return ãƒ¡ãƒˆãƒªã‚¯ã‚¹æƒ…å ±
      */
     public String displayMetricsInfo();
     
     /**
-     * æ“¾‚µ‚½ƒƒgƒŠƒNƒXî•ñ‚ğƒŠƒZƒbƒg‚·‚éB<p>
+     * å–å¾—ã—ãŸãƒ¡ãƒˆãƒªã‚¯ã‚¹æƒ…å ±ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
      */
     public void reset();
     
     /**
-     * ƒƒgƒŠƒNƒXæ“¾‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚
      *
-     * @param enable ƒƒgƒŠƒNƒXæ“¾‚ğs‚¤ê‡true
+     * @param enable ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚’è¡Œã†å ´åˆtrue
      * @see #isEnabled()
      */
     public void setEnabled(boolean enable);
     
     /**
-     * ƒƒgƒŠƒNƒXæ“¾‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒgƒŠƒNƒXæ“¾‚ğs‚¤ê‡true
+     * @return ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚’è¡Œã†å ´åˆtrue
      * @see #setEnabled(boolean)
      */
     public boolean isEnabled();
     
     /**
-     * ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse
+     * æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯false
      *
-     * @param isCalc ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤ê‡‚ÍAtrue
+     * @param isCalc æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†å ´åˆã¯ã€true
      */
     public void setCalculateOnlyNormal(boolean isCalc);
     
     /**
-     * ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤
+     * @return trueã®å ´åˆã¯ã€æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†
      */
     public boolean isCalculateOnlyNormal();
     
     /**
-     * o—Í‚·‚é‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹æ™‚åˆ»ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param format “ú•tƒtƒH[ƒ}ƒbƒg
+     * @param format æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setDateFormat(String format);
     
     /**
-     * o—Í‚·‚é‚ÌƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹æ™‚åˆ»ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ú•tƒtƒH[ƒ}ƒbƒg
+     * @return æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public String getDateFormat();
     
     /**
-     * w’è‚³‚ê‚½ƒŠƒNƒGƒXƒgƒpƒX‚ÉŠÖ‚·‚éƒƒgƒŠƒNƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã«é–¢ã™ã‚‹ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param path ƒŠƒNƒGƒXƒgƒpƒX
-     * @return ƒƒgƒŠƒNƒX
+     * @param path ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹
+     * @return ãƒ¡ãƒˆãƒªã‚¯ã‚¹
      */
     public MetricsInfo getMetricsInfo(String path);
     
     /**
-     * ‘S‚Ä‚ÌƒƒgƒŠƒNƒX‚ğæ“¾‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ªƒŠƒNƒGƒXƒgƒpƒX–¼A’l‚ªƒƒgƒŠƒNƒX‚ÌMap
+     * @return ã‚­ãƒ¼ãŒãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹åã€å€¤ãŒãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®Map
      */
     public Map getMetricsInfos();
     
     /**
-     * ƒƒgƒŠƒNƒX‚Ìo—ÍŠÔŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA60000[ms]B
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›æ™‚é–“é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€60000[ms]ã€‚
      *
-     * @param interval o—ÍŠÔŠÔŠu
+     * @param interval å‡ºåŠ›æ™‚é–“é–“éš”
      */
     public void setOutputInterval(long interval);
     
     /**
-     * ƒƒgƒŠƒNƒX‚Ìo—ÍŠÔŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›æ™‚é–“é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—ÍŠÔŠÔŠu
+     * @return å‡ºåŠ›æ™‚é–“é–“éš”
      */
     public long getOutputInterval();
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒX–ˆ‚ÌƒƒgƒŠƒNƒX‚Ìo—Íæƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ƒŠƒNƒGƒXƒgƒpƒX=CategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹æ¯ã®ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›å…ˆãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹=Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      *
-     * @param mapping ƒŠƒNƒGƒXƒgƒpƒX‚Æo—Íæ‚Æ‚È‚éCategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param mapping ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨å‡ºåŠ›å…ˆã¨ãªã‚‹Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setPathAndCategoryServiceNameMapping(Properties mapping);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒX–ˆ‚ÌƒƒgƒŠƒNƒX‚Ìo—Íæƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹æ¯ã®ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›å…ˆãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒpƒX‚Æo—Íæ‚Æ‚È‚éCategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨å‡ºåŠ›å…ˆã¨ãªã‚‹Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getPathAndCategoryServiceNameMapping();
     
     /**
-     * ƒƒgƒŠƒNƒX‚Ìo—Íæ‚Æ‚È‚éCategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›å…ˆã¨ãªã‚‹Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒƒgƒŠƒNƒX‚Ìo—Íæ‚Æ‚È‚éCategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›å…ˆã¨ãªã‚‹Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCategoryServiceName(ServiceName name);
     
     /**
-     * ƒƒgƒŠƒNƒX‚Ìo—Íæ‚Æ‚È‚éCategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›å…ˆã¨ãªã‚‹Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒgƒŠƒNƒX‚Ìo—Íæ‚Æ‚È‚éCategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã®å‡ºåŠ›å…ˆã¨ãªã‚‹Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCategoryServiceName();
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éPerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éPerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPerformanceRecorderServiceName();
     
     /**
-     * ƒƒgƒŠƒNƒX‚ğCategory‚Éo—Í‚·‚é–ˆ‚ÉƒƒgƒŠƒNƒX‚ğƒŠƒZƒbƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒŠƒZƒbƒg‚µ‚È‚¢B<br>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’Categoryã«å‡ºåŠ›ã™ã‚‹æ¯ã«ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ãƒªã‚»ãƒƒãƒˆã—ãªã„ã€‚<br>
      *
-     * @param isReset ƒŠƒZƒbƒg‚·‚éê‡‚ÍAtrue
+     * @param isReset ãƒªã‚»ãƒƒãƒˆã™ã‚‹å ´åˆã¯ã€true
      */
     public void setResetByOutput(boolean isReset);
     
     /**
-     * ƒƒgƒŠƒNƒX‚ğCategory‚Éo—Í‚·‚é–ˆ‚ÉƒƒgƒŠƒNƒX‚ğƒŠƒZƒbƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’Categoryã«å‡ºåŠ›ã™ã‚‹æ¯ã«ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒŠƒZƒbƒg‚·‚é
+     * @return trueã®å ´åˆã€ãƒªã‚»ãƒƒãƒˆã™ã‚‹
      */
     public boolean isResetByOutput();
     
     /**
-     * ƒƒgƒŠƒNƒXæ“¾ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputTimestamp(boolean isOutput);
     
     /**
-     * ƒƒgƒŠƒNƒXæ“¾ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputTimestamp();
     
     /**
-     * ƒŠƒNƒGƒXƒg‰ñ”i³í‰“šj‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå›æ•°ï¼ˆæ­£å¸¸å¿œç­”ï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputCount(boolean isOutput);
     
     /**
-     * ƒŠƒNƒGƒXƒg‰ñ”i³í‰“šj‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå›æ•°ï¼ˆæ­£å¸¸å¿œç­”ï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputCount();
     
     /**
-     * ƒŠƒNƒGƒXƒg‰ñ”i—áŠO‰“šj‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå›æ•°ï¼ˆä¾‹å¤–å¿œç­”ï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputExceptionCount(boolean isOutput);
     
     /**
-     * ƒŠƒNƒGƒXƒg‰ñ”i—áŠO‰“šj‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå›æ•°ï¼ˆä¾‹å¤–å¿œç­”ï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputExceptionCount();
     
     /**
-     * ƒŠƒNƒGƒXƒg‰ñ”iƒGƒ‰[‰“šj‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå›æ•°ï¼ˆã‚¨ãƒ©ãƒ¼å¿œç­”ï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputErrorCount(boolean isOutput);
     
     /**
-     * ƒŠƒNƒGƒXƒg‰ñ”iƒGƒ‰[‰“šj‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå›æ•°ï¼ˆã‚¨ãƒ©ãƒ¼å¿œç­”ï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputErrorCount();
     
     /**
-     * ƒŠƒNƒGƒXƒgÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputLastTime(boolean isOutput);
     
     /**
-     * ƒŠƒNƒGƒXƒgÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputLastTime();
     
     /**
-     * —áŠO”­¶ÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * ä¾‹å¤–ç™ºç”Ÿæœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputLastExceptionTime(boolean isOutput);
     
     /**
-     * —áŠO”­¶ÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ä¾‹å¤–ç™ºç”Ÿæœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputLastExceptionTime();
     
     /**
-     * ƒGƒ‰[”­¶ÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputLastErrorTime(boolean isOutput);
     
     /**
-     * ƒGƒ‰[”­¶ÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputLastErrorTime();
     
     /**
-     * Å‚ˆ—ŠÔ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * æœ€é«˜å‡¦ç†æ™‚é–“ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputBestPerformance(boolean isOutput);
     
     /**
-     * Å‚ˆ—ŠÔ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * æœ€é«˜å‡¦ç†æ™‚é–“ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputBestPerformance();
     
     /**
-     * Å‚ˆ—‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * æœ€é«˜å‡¦ç†æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputBestPerformanceTime(boolean isOutput);
     
     /**
-     * Å‚ˆ—‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * æœ€é«˜å‡¦ç†æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputBestPerformanceTime();
     
     /**
-     * Å’áˆ—ŠÔ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * æœ€ä½å‡¦ç†æ™‚é–“ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputWorstPerformance(boolean isOutput);
     
     /**
-     * Å’áˆ—ŠÔ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * æœ€ä½å‡¦ç†æ™‚é–“ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputWorstPerformance();
     
     /**
-     * Å’áˆ—‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB
+     * æœ€ä½å‡¦ç†æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputWorstPerformanceTime(boolean isOutput);
     
     /**
-     * Å’áˆ—‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * æœ€ä½å‡¦ç†æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputWorstPerformanceTime();
     
     /**
-     * •½‹Ïˆ—ŠÔ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * å¹³å‡å‡¦ç†æ™‚é–“ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      *
-     * @param isOutput o—Í‚·‚éê‡‚Ítrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputAveragePerformance(boolean isOutput);
     
     /**
-     * •½‹Ïˆ—ŠÔ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * å¹³å‡å‡¦ç†æ™‚é–“ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      *
-     * @return true‚Ìê‡‚Ío—Í‚·‚é
+     * @return trueã®å ´åˆã¯å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputAveragePerformance();
 }

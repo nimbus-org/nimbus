@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link ListJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ListJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ListJournalEditorService
@@ -41,17 +41,17 @@ public interface ListJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * List‚ª‚Â—v‘f‚ÌÅ‘åo—ÍŒ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Åo—ÍŒ”‚ğ§ŒÀ‚µ‚È‚¢B<p>
+     * ListãŒæŒã¤è¦ç´ ã®æœ€å¤§å‡ºåŠ›ä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§å‡ºåŠ›ä»¶æ•°ã‚’åˆ¶é™ã—ãªã„ã€‚<p>
      * 
-     * @param max Å‘åo—ÍŒ”
+     * @param max æœ€å¤§å‡ºåŠ›ä»¶æ•°
      */
     public void setMaxSize(int max);
     
     /**
-     * List‚ª‚Â—v‘f‚ÌÅ‘åo—ÍŒ”‚ğæ“¾‚·‚éB<p>
+     * ListãŒæŒã¤è¦ç´ ã®æœ€å¤§å‡ºåŠ›ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Å‘åo—ÍŒ”
+     * @return æœ€å¤§å‡ºåŠ›ä»¶æ•°
      */
     public int getMaxSize();
 }

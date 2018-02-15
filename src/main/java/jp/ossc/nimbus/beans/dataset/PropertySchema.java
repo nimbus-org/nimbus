@@ -32,90 +32,90 @@
 package jp.ossc.nimbus.beans.dataset;
 
 /**
- * �v���p�e�B�̃X�L�[�}��`�B<p>
+ * プロパティのスキーマ定義。<p>
  * 
  * @author M.Takata
  */
 public interface PropertySchema{
     
     /**
-     * �v���p�e�B�̃X�L�[�}��`��ݒ肷��B<p>
+     * プロパティのスキーマ定義を設定する。<p>
      *
-     * @param schema �v���p�e�B�̃X�L�[�}��`
-     * @exception PropertySchemaDefineException �v���p�e�B�̃X�L�[�}��`�Ɏ��s�����ꍇ
+     * @param schema プロパティのスキーマ定義
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
      */
     public void setSchema(String schema) throws PropertySchemaDefineException;
     
     /**
-     * �v���p�e�B�̃X�L�[�}��������擾����B<p>
+     * プロパティのスキーマ文字列を取得する。<p>
      *
-     * @return �v���p�e�B�̃X�L�[�}������
+     * @return プロパティのスキーマ文字列
      */
     public String getSchema();
     
     /**
-     * �v���p�e�B�̖��O���擾����B<p>
+     * プロパティの名前を取得する。<p>
      *
-     * @return �v���p�e�B�̖��O
+     * @return プロパティの名前
      */
     public String getName();
     
     /**
-     * �v���p�e�B�̌^���擾����B<p>
+     * プロパティの型を取得する。<p>
      *
-     * @return �v���p�e�B�̌^
+     * @return プロパティの型
      */
     public Class getType();
     
     /**
-     * ��L�[���ǂ����𔻕ʂ���B<p>
+     * 主キーかどうかを判別する。<p>
      *
-     * @return true�̏ꍇ�A��L�[
+     * @return trueの場合、主キー
      */
     public boolean isPrimaryKey();
     
     /**
-     * �v���p�e�B�̒l��ݒ肷�鎞�ɌĂяo�����B<p>
+     * プロパティの値を設定する時に呼び出される。<p>
      *
-     * @param val �ݒ肵�悤�Ƃ��Ă���v���p�e�B�̒l
-     * @return �ݒ肳���v���p�e�B�̒l
-     * @exception PropertySetException �v���p�e�B�̐ݒ�Ɏ��s�����ꍇ
+     * @param val 設定しようとしているプロパティの値
+     * @return 設定されるプロパティの値
+     * @exception PropertySetException プロパティの設定に失敗した場合
      */
     public Object set(Object val) throws PropertySetException;
     
     /**
-     * �v���p�e�B�̒l���擾���鎞�ɌĂяo�����B<p>
+     * プロパティの値を取得する時に呼び出される。<p>
      *
-     * @param val �擾���悤�Ƃ��Ă���v���p�e�B�̒l
-     * @return �擾�����v���p�e�B�̒l
-     * @exception PropertyGetException �v���p�e�B�̎擾�Ɏ��s�����ꍇ
+     * @param val 取得しようとしているプロパティの値
+     * @return 取得されるプロパティの値
+     * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public Object get(Object val) throws PropertyGetException;
     
     /**
-     * �t�H�[�}�b�g���ꂽ�v���p�e�B�̒l���擾���鎞�ɌĂяo�����B<p>
+     * フォーマットされたプロパティの値を取得する時に呼び出される。<p>
      *
-     * @param val �擾���悤�Ƃ��Ă���t�H�[�}�b�g���ꂽ�v���p�e�B�̒l
-     * @return �擾�����t�H�[�}�b�g���ꂽ�v���p�e�B�̒l
-     * @exception PropertyGetException �v���p�e�B�̎擾�Ɏ��s�����ꍇ
+     * @param val 取得しようとしているフォーマットされたプロパティの値
+     * @return 取得されるフォーマットされたプロパティの値
+     * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public Object format(Object val) throws PropertyGetException;
     
     /**
-     * �p�[�X���ăv���p�e�B�̒l��ݒ肷�鎞�ɌĂяo�����B<p>
+     * パースしてプロパティの値を設定する時に呼び出される。<p>
      *
-     * @param val �ݒ肵�悤�Ƃ��Ă���p�[�X����v���p�e�B�̒l
-     * @return �ݒ肳���p�[�X���ꂽ�v���p�e�B�̒l
-     * @exception PropertySetException �v���p�e�B�̐ݒ�Ɏ��s�����ꍇ
+     * @param val 設定しようとしているパースするプロパティの値
+     * @return 設定されるパースされたプロパティの値
+     * @exception PropertySetException プロパティの設定に失敗した場合
      */
     public Object parse(Object val) throws PropertySetException;
     
     /**
-     * �v���p�e�B�̒l�����؂��鎞�ɌĂяo�����B<p>
+     * プロパティの値を検証する時に呼び出される。<p>
      *
-     * @param val ���؂��悤�Ƃ��Ă���v���p�e�B�̒l
-     * @return ���،��ʁBtrue�̏ꍇ�A���ؐ���
-     * @exception PropertyValidateException �v���p�e�B�̌��؎��ɗ�O�����������ꍇ
+     * @param val 検証しようとしているプロパティの値
+     * @return 検証結果。trueの場合、検証成功
+     * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validate(Object val) throws PropertyValidateException;
 }

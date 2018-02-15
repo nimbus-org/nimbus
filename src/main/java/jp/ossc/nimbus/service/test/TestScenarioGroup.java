@@ -34,86 +34,86 @@ package jp.ossc.nimbus.service.test;
 import java.util.Date;
 
 /**
- * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒvB<p>
+ * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface TestScenarioGroup {
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID
+     * @return ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ID
      */
     public String getScenarioGroupId();
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒŠƒ\[ƒXî•ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒŠƒ\[ƒXî•ñ
-     * @exception Exception ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒŠƒ\[ƒXî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @return ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TestScenarioGroupResource getTestScenarioGroupResource() throws Exception;
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌÀsƒXƒe[ƒ^ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌÀsƒXƒe[ƒ^ƒX
+     * @return ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public Status getStatus();
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒŠƒ\[ƒXî•ñB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã€‚<p>
      * 
      * @author M.Ishida
-     * @see <a href="scenariogroup_1_0.dtd">ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+     * @see <a href="scenariogroup_1_0.dtd">ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
      */
     public interface TestScenarioGroupResource extends ScheduledTestResource {
         
         /**
-         * –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğæ“¾‚·‚éB<p>
+         * äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @return äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public String[] getBeforeActionIds();
         
         /**
-         * ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğæ“¾‚·‚éB<p>
+         * æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @return æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public String[] getFinallyActionIds();
         
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌÀsƒXƒe[ƒ^ƒXB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã€‚<p>
      * 
      * @author M.Ishida
      */
     public interface Status extends StatusActionMnager {
         
         /**
-         * ó‘ÔF‰ŠúB<p>
+         * çŠ¶æ…‹ï¼šåˆæœŸã€‚<p>
          */
         public static final int INITIAL = 0;
         /**
-         * ó‘ÔFŠJnB<p>
+         * çŠ¶æ…‹ï¼šé–‹å§‹ã€‚<p>
          */
         public static final int STARTED = 1;
         /**
-         * ó‘ÔFI—¹B<p>
+         * çŠ¶æ…‹ï¼šçµ‚äº†ã€‚<p>
          */
         public static final int END = 2;
         /**
-         * ó‘ÔFˆÙíB<p>
+         * çŠ¶æ…‹ï¼šç•°å¸¸ã€‚<p>
          */
         public static final int ERROR = 4;
         
         /**
-         * ó‘Ô‚ğæ“¾‚·‚éB<p>
+         * çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ó‘Ô
+         * @return çŠ¶æ…‹
          * @see #INITIAL
          * @see #STARTED
          * @see #END
@@ -122,16 +122,16 @@ public interface TestScenarioGroup {
         public int getState();
         
         /**
-         * ó‘Ô•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * çŠ¶æ…‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ó‘Ô•¶š—ñ
+         * @return çŠ¶æ…‹æ–‡å­—åˆ—
          */
         public String getStateString();
         
         /**
-         * I—¹“ú‚ğæ“¾‚·‚éB<p>
+         * çµ‚äº†æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return I—¹“ú
+         * @return çµ‚äº†æ—¥æ™‚
          */
         public Date getEndTime();
     }

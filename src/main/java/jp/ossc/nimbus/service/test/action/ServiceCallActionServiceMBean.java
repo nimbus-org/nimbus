@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link ServiceCallActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ServiceCallActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ServiceCallActionService
@@ -43,44 +43,44 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface ServiceCallActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterpreterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterpreterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.aop.Invoker Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInvokerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.aop.Invoker Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInvokerServiceName();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

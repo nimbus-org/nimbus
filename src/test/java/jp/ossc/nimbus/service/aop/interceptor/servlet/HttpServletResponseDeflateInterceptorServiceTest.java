@@ -19,17 +19,17 @@ public class HttpServletResponseDeflateInterceptorServiceTest extends TestCase {
         junit.textui.TestRunner.run(HttpServletResponseDeflateInterceptorServiceTest.class);
     }
 	/**
-	 * HttpServletResponseDeflateInterceptorService‚ÌŠeƒvƒƒpƒeƒB‚ğİ’èAæ“¾‚·‚éƒeƒXƒgB
+	 * HttpServletResponseDeflateInterceptorServiceã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã€å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>HttpServletResponseDeflateInterceptorServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>Šesetterƒƒ\ƒbƒh‚ğÀs</li>
-	 * <li>Šegetterƒƒ\ƒbƒh‚ğÀs</li>
+	 * <li>HttpServletResponseDeflateInterceptorServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>å„setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œ</li>
+	 * <li>å„getterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹Bİ’è‚µ‚½’l‚ª³‚µ‚­æ“¾‚Å‚«‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚è¨­å®šã—ãŸå€¤ãŒæ­£ã—ãå–å¾—ã§ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetterGetter() {
@@ -48,19 +48,19 @@ public class HttpServletResponseDeflateInterceptorServiceTest extends TestCase {
 	}
 
 	/**
-	 * ƒŒƒXƒ|ƒ“ƒX‚ğˆ³kˆ—‚ğs‚¤ƒ‰ƒbƒp[‚Åƒ‰ƒbƒv‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·ƒeƒXƒgB
+	 * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’åœ§ç¸®å‡¦ç†ã‚’è¡Œã†ãƒ©ãƒƒãƒ‘ãƒ¼ã§ãƒ©ãƒƒãƒ—ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>HttpServletResponseDeflateInterceptorServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬</li>
-	 * <li>ServletRequest‚ÌInputStreamƒpƒ‰ƒ[ƒ^‚É•ÏŠ·Œ³XMLƒXƒgƒŠ[ƒ€‚ğİ’è</li>
-	 * <li>ã‹LƒCƒ“ƒXƒ^ƒ“ƒX‚ğg‚Á‚ÄƒRƒ“ƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µA<BR>
-	 * invokeFilter(context, chain)‚ğÀs‚·‚é</li>
+	 * <li>HttpServletResponseDeflateInterceptorServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ</li>
+	 * <li>ServletRequestã®InputStreamãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å¤‰æ›å…ƒXMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š</li>
+	 * <li>ä¸Šè¨˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½¿ã£ã¦ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã€<BR>
+	 * invokeFilter(context, chain)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>HttpServletRequest‚Éİ’è‚³‚ê‚Ä‚¢‚é•ÏŠ·Œ³‚ÌXMLƒXƒgƒŠ[ƒ€‚ª³‚µ‚­•ÏŠ·‚·‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>HttpServletRequestã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å¤‰æ›å…ƒã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒæ­£ã—ãå¤‰æ›ã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testInvokeFilter() {
@@ -74,34 +74,34 @@ public class HttpServletResponseDeflateInterceptorServiceTest extends TestCase {
 					.getServiceObject("HttpServletResponseDeflateInterceptor");
 			ic.startService();
 			
-			//ServletRequest‚ÌInputStreamƒpƒ‰ƒ[ƒ^‚É•ÏŠ·Œ³XMLƒXƒgƒŠ[ƒ€‚ğİ’è
+			//ServletRequestã®InputStreamãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å¤‰æ›å…ƒXMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š
 			String inxml = "<?xml version=\"1.0\" encoding=\"Shift_JIS\"?>\n" +
 			"<dataSet><schema><header name=\"TestHeader\">" +
 			":name,java.lang.String,,,\n:password,java.lang.String,,,"  +
 							"</header></schema><header name=\"TestHeader\">" +
 							"<name>TestName</name><password>TestPassWord</password></header></dataSet>";
-			//ServletinputStream‚ÌƒZƒbƒg
+			//ServletinputStreamã®ã‚»ãƒƒãƒˆ
 			MockServletInputStream is = new MockServletInputStream(inxml.getBytes());
-			//ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬
+			//ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ
 			MockHttpServletRequest req = new MockHttpServletRequest(is);			
 			ServletResponse res = new MockHttpServletResponse();
 			MockFilterChain chain = new MockFilterChain();
-			//ƒGƒ“ƒR[ƒfƒBƒ“ƒOƒZƒbƒg
+			//ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚»ãƒƒãƒˆ
 			req.setCharacterEncoding("Shift_JIS");
-			//ƒRƒ“ƒeƒLƒXƒgì¬			
+			//ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä½œæˆ			
 			ServletFilterInvocationContext context = 
 				new ServletFilterInvocationContext((ServletRequest)req,res,(javax.servlet.FilterChain)chain);
 
-			//ƒCƒ“ƒ^ƒZƒvƒ^ƒCƒ“ƒXƒ^ƒ“ƒX¶¬
+			//ã‚¤ãƒ³ã‚¿ã‚»ãƒ—ã‚¿ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ
 			DefaultInterceptorChain ichain = new DefaultInterceptorChain();
-			//“ü—ÍƒXƒgƒŠ[ƒ€‚Í”ñˆ³k
+			//å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¯éåœ§ç¸®
 			ic.invokeFilter(context, (InterceptorChain)ichain);
 			
 			
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/aop/interceptor/servlet/service-definitionTestdef.xml");
@@ -109,19 +109,19 @@ public class HttpServletResponseDeflateInterceptorServiceTest extends TestCase {
 	}
 
 	/**
-	 * ƒŒƒXƒ|ƒ“ƒXˆ³kˆ—‚ğs‚í‚¸‚ÉAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·ƒeƒXƒgB
+	 * ãƒ¬ã‚¹ãƒãƒ³ã‚¹åœ§ç¸®å‡¦ç†ã‚’è¡Œã‚ãšã«ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>HttpServletResponseDeflateInterceptorServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬</li>
-	 * <li>ServletRequest‚ÌInputStreamƒpƒ‰ƒ[ƒ^‚É•ÏŠ·Œ³XMLƒXƒgƒŠ[ƒ€‚ğİ’è</li>
-	 * <li>ã‹LƒCƒ“ƒXƒ^ƒ“ƒX‚ğg‚Á‚ÄƒRƒ“ƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µA<BR>
-	 * invokeFilter(context, chain)‚ğÀs‚·‚é</li>
+	 * <li>HttpServletResponseDeflateInterceptorServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ</li>
+	 * <li>ServletRequestã®InputStreamãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å¤‰æ›å…ƒXMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š</li>
+	 * <li>ä¸Šè¨˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½¿ã£ã¦ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã€<BR>
+	 * invokeFilter(context, chain)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>HttpServletRequest‚Éİ’è‚³‚ê‚Ä‚¢‚é•ÏŠ·Œ³‚ÌXMLƒXƒgƒŠ[ƒ€‚ª³‚µ‚­•ÏŠ·‚·‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>HttpServletRequestã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å¤‰æ›å…ƒã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒæ­£ã—ãå¤‰æ›ã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testInvokeFilterNoDef() {
@@ -135,34 +135,34 @@ public class HttpServletResponseDeflateInterceptorServiceTest extends TestCase {
 					.getServiceObject("HttpServletResponseDeflateInterceptor");
 			ic.startService();
 			
-			//ServletRequest‚ÌInputStreamƒpƒ‰ƒ[ƒ^‚É•ÏŠ·Œ³XMLƒXƒgƒŠ[ƒ€‚ğİ’è
+			//ServletRequestã®InputStreamãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å¤‰æ›å…ƒXMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š
 			String inxml = "<?xml version=\"1.0\" encoding=\"Shift_JIS\"?>\n" +
 			"<dataSet><schema><header name=\"TestHeader\">" +
 			":name,java.lang.String,,,\n:password,java.lang.String,,,"  +
 							"</header></schema><header name=\"TestHeader\">" +
 							"<name>TestName</name><password>TestPassWord</password></header></dataSet>";
-			//ServletinputStream‚ÌƒZƒbƒg
+			//ServletinputStreamã®ã‚»ãƒƒãƒˆ
 			MockServletInputStream is = new MockServletInputStream(inxml.getBytes());
-			//ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬
+			//ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ
 			MockHttpServletRequest2 req = new MockHttpServletRequest2(is);			
 			ServletResponse res = new MockHttpServletResponse();
 			MockFilterChain chain = new MockFilterChain();
-			//ƒGƒ“ƒR[ƒfƒBƒ“ƒOƒZƒbƒg
+			//ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚»ãƒƒãƒˆ
 			req.setCharacterEncoding("Shift_JIS");
-			//ƒRƒ“ƒeƒLƒXƒgì¬			
+			//ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä½œæˆ			
 			ServletFilterInvocationContext context = 
 				new ServletFilterInvocationContext((ServletRequest)req,res,(javax.servlet.FilterChain)chain);
 
-			//ƒCƒ“ƒ^ƒZƒvƒ^ƒCƒ“ƒXƒ^ƒ“ƒX¶¬
+			//ã‚¤ãƒ³ã‚¿ã‚»ãƒ—ã‚¿ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ
 			DefaultInterceptorChain ichain = new DefaultInterceptorChain();
-			//“ü—ÍƒXƒgƒŠ[ƒ€‚Í”ñˆ³k
+			//å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¯éåœ§ç¸®
 			ic.invokeFilter(context, (InterceptorChain)ichain);
 			
 			
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/aop/interceptor/servlet/service-definitionTestdef.xml");

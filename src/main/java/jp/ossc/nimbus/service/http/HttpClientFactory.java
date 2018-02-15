@@ -32,17 +32,17 @@
 package jp.ossc.nimbus.service.http;
 
 /**
- * HTTPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
+ * HTTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
 public interface HttpClientFactory{
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚ğ¶¬‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param action ƒAƒNƒVƒ‡ƒ“–¼
-     * @exception HttpRequestCreateException HTTPƒŠƒNƒGƒXƒg‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
+     * @exception HttpRequestCreateException HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public HttpRequest createRequest(String action) throws HttpRequestCreateException;
     

@@ -52,10 +52,10 @@ import jp.ossc.nimbus.service.repository.Repository;
 import jp.ossc.nimbus.service.repository.JNDIRepositoryService;
 
 /**
- * ƒf[ƒ^ƒ\[ƒXƒ‰ƒbƒvB<p>
- * w’è‚³‚ê‚½ƒf[ƒ^ƒ\[ƒX‚ğƒ‰ƒbƒv‚µ‚ÄAƒRƒlƒNƒVƒ‡ƒ“ƒ‰ƒbƒp‚Åƒ‰ƒbƒv‚³‚ê‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğ•Ô‚·ƒf[ƒ^ƒ\[ƒX‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éB<br>
- * ƒRƒlƒNƒVƒ‡ƒ“ƒ‰ƒbƒpƒNƒ‰ƒX‚ÍAjava.sql.ConnectionƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µAˆø”‚Éjava.sql.Connection‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚½‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ãƒ©ãƒƒãƒ—ã€‚<p>
+ * æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã—ã¦ã€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ã§ãƒ©ãƒƒãƒ—ã•ã‚ŒãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿”ã™ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã€‚<br>
+ * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ã‚¯ãƒ©ã‚¹ã¯ã€java.sql.Connectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã€å¼•æ•°ã«java.sql.Connectionã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒãŸãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -86,23 +86,23 @@ public class WrappedDataSourceService extends ServiceBase
     private Repository jndiRepository;
     
     /**
-     * ƒ‰ƒbƒv‚·‚éDataSource‚ÌJNDI–¼B<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹DataSourceã®JNDIåã€‚<p>
      */
     private String sourceJNDIName;
     
     /**
-     * ƒ‰ƒbƒv‚µ‚½DataSource‚ÌJNDI–¼B<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸDataSourceã®JNDIåã€‚<p>
      */
     private String wrappedJNDIName;
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼B<p>
-     * ‚±‚±‚Åw’è‚Å‚«‚éƒNƒ‰ƒX‚ÍAjava.sql.ConnectionƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¨‚èAˆø”‚Éjava.sql.Connection‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğÀ‘•‚µ‚Ä‚¢‚éƒNƒ‰ƒX‚Å‚ ‚éB<br>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã§ãã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€java.sql.Connectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ãŠã‚Šã€å¼•æ•°ã«java.sql.Connectionã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
      */
     private String connectionWrapperClassName;
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒXB<p>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private Class connectionWrapperClass;
     
@@ -112,60 +112,60 @@ public class WrappedDataSourceService extends ServiceBase
     
     private Reference reference;
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public void setJNDIRepositoryServiceName(ServiceName name){
         jndiRepositoryServiceName = name;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public ServiceName getJNDIRepositoryServiceName(){
         return jndiRepositoryServiceName;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public void setSourceJNDIName(String name){
         sourceJNDIName = name;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public String getSourceJNDIName(){
         return sourceJNDIName;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public void setWrappedJNDIName(String name){
         wrappedJNDIName = name;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public String getWrappedJNDIName(){
         return wrappedJNDIName;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public void setConnectionWrapperClassName(String className){
         connectionWrapperClassName = className;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public String getConnectionWrapperClassName(){
         return connectionWrapperClassName;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public void setConnectionWrapperProperties(Map prop){
         connectionWrapperProperties = prop;
     }
     
-    // WrappedDataSourceServiceMBean‚ÌJavaDoc
+    // WrappedDataSourceServiceMBeanã®JavaDoc
     public Map getConnectionWrapperProperties(){
         return connectionWrapperProperties;
     }
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -236,9 +236,9 @@ public class WrappedDataSourceService extends ServiceBase
     }
     
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         jndiRepository.unregister(wrappedJNDIName);
@@ -279,45 +279,45 @@ public class WrappedDataSourceService extends ServiceBase
         return con;
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public Connection getConnection() throws SQLException{
         Connection con = getSourceDataSource().getConnection();
         return wrapConnection(con);
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public Connection getConnection(String username, String password) throws SQLException{
         Connection con = getSourceDataSource().getConnection(username, password);
         return wrapConnection(con);
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public PrintWriter getLogWriter() throws SQLException{
         return getSourceDataSource().getLogWriter();
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public void setLogWriter(PrintWriter out) throws SQLException{
         getSourceDataSource().setLogWriter(out);
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public void setLoginTimeout(int seconds) throws SQLException{
         getSourceDataSource().setLoginTimeout(seconds);
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public int getLoginTimeout() throws SQLException{
         return getSourceDataSource().getLoginTimeout();
     }
     
 
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public <T> T unwrap(Class<T> iface) throws SQLException{
         return getSourceDataSource().unwrap(iface);
     }
     
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public boolean isWrapperFor(Class<?> iface) throws SQLException{
         return getSourceDataSource().isWrapperFor(iface);
     }
@@ -325,7 +325,7 @@ public class WrappedDataSourceService extends ServiceBase
 
     
 
-    // DataSource‚ÌJavaDoc
+    // DataSourceã®JavaDoc
     public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException{
         return getSourceDataSource().getParentLogger();
     }

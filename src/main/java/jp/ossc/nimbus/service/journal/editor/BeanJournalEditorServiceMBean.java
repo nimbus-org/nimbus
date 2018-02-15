@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link BeanJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see BeanJournalEditorService
@@ -41,179 +41,179 @@ public interface BeanJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB<br>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputPropertyType(boolean isOutput);
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputPropertyType();
     
     /**
-     * •ÒW‚ÉBean‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç·¨é›†æ™‚ã«Beanã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ApublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isFieldOnly();
     
     /**
-     * •ÒW‚ÉBean‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * ç·¨é›†æ™‚ã«Beanã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      *
-     * @param isFieldOnly publicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡‚ÍAtrue
+     * @param isFieldOnly publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setFieldOnly(boolean isFieldOnly);
     
     /**
-     * •ÒW‚ÉBean‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç·¨é›†æ™‚ã«Beanã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Apublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isAccessorOnly();
     
     /**
-     * •ÒW‚ÉBean‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * ç·¨é›†æ™‚ã«Beanã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      *
-     * @param isAccessorOnly public‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡Atrue
+     * @param isAccessorOnly publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã€true
      */
     public void setAccessorOnly(boolean isAccessorOnly);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param str ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @param str å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #getSecretString()
      */
     public void setSecretString(String str);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @return å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #setSecretString(String)
      */
     public String getSecretString();
     
     /**
-     * Bean‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
-     * ƒNƒ‰ƒX–¼‚Ü‚Åw’è‚µ‚½‚¢ê‡‚ÍAuŠ®‘SCüƒNƒ‰ƒX–¼#ƒvƒƒpƒeƒB–¼v‚Åw’è‚·‚éB<br>
+     * Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹åã¾ã§æŒ‡å®šã—ãŸã„å ´åˆã¯ã€ã€Œå®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å#ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ã§æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param names ’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #getSecretString()
      */
     public void setSecretProperties(String[] names);
     
     /**
-     * Bean‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #setSecretProperties(String[])
      */
     public String[] getSecretProperties();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éBean‚ÌƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
-     * ƒNƒ‰ƒX–¼‚Ü‚Åw’è‚µ‚½‚¢ê‡‚ÍAuŠ®‘SCüƒNƒ‰ƒX–¼#ƒvƒƒpƒeƒB–¼v‚Åw’è‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹åã¾ã§æŒ‡å®šã—ãŸã„å ´åˆã¯ã€ã€Œå®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å#ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ã§æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param names ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @param names ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      */
     public void setEnabledProperties(String[] names);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éBean‚ÌƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      */
     public String[] getEnabledProperties();
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^î•ñ‚ğo—Í‚·‚éÛ‚ÌŠJn‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹éš›ã®é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delimiter ‹æØ‚è•¶š
+     * @param delimiter åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setPropertyTypeStartDelimiter(String delimiter);
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^î•ñ‚ğo—Í‚·‚éÛ‚ÌŠJn‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹éš›ã®é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getPropertyTypeStartDelimiter();
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^î•ñ‚ğo—Í‚·‚éÛ‚ÌI—¹‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹éš›ã®çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delimiter ‹æØ‚è•¶š
+     * @param delimiter åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setPropertyTypeEndDelimiter(String delimiter);
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^î•ñ‚ğo—Í‚·‚éÛ‚ÌI—¹‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹éš›ã®çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getPropertyTypeEndDelimiter();
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚Æ’l‚Ì‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨å€¤ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delimiter ‹æØ‚è•¶š
+     * @param delimiter åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setPropertyNameValueDelimiter(String delimiter);
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚Æ’l‚Ì‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨å€¤ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getPropertyNameValueDelimiter();
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ÌŠJn‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delimiter ‹æØ‚è•¶š
+     * @param delimiter åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setStartValueDelimiter(String delimiter);
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ÌŠJn‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getStartValueDelimiter();
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ÌI—¹‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delimiter ‹æØ‚è•¶š
+     * @param delimiter åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setEndValueDelimiter(String delimiter);
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ÌI—¹‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getEndValueDelimiter();
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delimiter ‹æØ‚è•¶š
+     * @param delimiter åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setPropertyDelimiter(String delimiter);
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getPropertyDelimiter();
 }

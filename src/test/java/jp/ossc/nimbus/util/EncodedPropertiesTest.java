@@ -43,7 +43,7 @@ import java.io.*;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/30 -ã€€H.Nakano
  */
 public class EncodedPropertiesTest extends TestCase {
 
@@ -61,14 +61,14 @@ public class EncodedPropertiesTest extends TestCase {
 	}
 
 	/*
-	 * void EncodedProperties ‚ÌƒeƒXƒg()
+	 * void EncodedProperties ã®ãƒ†ã‚¹ãƒˆ()
 	 */
 	public void testEncodedProperties() throws IOException, Exception {
 
 		EncodedProperties prop = new EncodedProperties("MS932") ;
 		prop.loadFromFile("src/test/resources/jp/ossc/nimbus/util/test1.properties");
 		String aa = prop.getProperty("test");
-		assertEquals(aa,"ƒ\ƒtƒB[‚Ì\¿") ;					
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹") ;					
 	}
 
 	public void testProperties() throws IOException, Exception {
@@ -88,46 +88,46 @@ public class EncodedPropertiesTest extends TestCase {
 	}
 
 	/*
-	 * void EncodedProperties ‚ÌƒeƒXƒg(String)
+	 * void EncodedProperties ã®ãƒ†ã‚¹ãƒˆ(String)
 	 */
 	public void testEncodedPropertiesString() throws IOException, Exception {
 		EncodedProperties prop = new EncodedProperties("euc-jp") ;
 		prop.loadFromFile("src/test/resources/jp/ossc/nimbus/util/test2.properties");
 		String aa = prop.getProperty("test1");
-		assertEquals(aa,"ƒ\ƒtƒB[‚Ì\¿1_2") ;		
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹1_2") ;		
 		aa = prop.getProperty("test2");
-		assertEquals(aa,"ƒ\ƒtƒB[‚Ì\¿2_2") ;		
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹2_2") ;		
 		aa = prop.getProperty("test3");
-		assertEquals(aa,"\\ƒ\ƒtƒB[‚Ì\¿3_2 aabb ccdd") ;		
+		assertEquals(aa,"\\ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹3_2 aabb ccdd") ;		
 		aa = prop.getProperty("test4");
-		assertEquals(aa,"ƒ\ƒtƒB[‚Ì\¿4_2") ;		
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹4_2") ;		
 	}
 
 	public void testLoadFromString() throws IOException, Exception {
 		EncodedProperties prop = new EncodedProperties() ;
-		prop.loadFromString("test=ƒ\ƒtƒB[‚Ì\¿");
+		prop.loadFromString("test=ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹");
 		String aa = prop.getProperty("test");
-		assertEquals(aa,"ƒ\ƒtƒB[‚Ì\¿") ;		
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹") ;		
 	}
 
 	/*
-	 * Object setProperty ‚ÌƒeƒXƒg(String, String)
+	 * Object setProperty ã®ãƒ†ã‚¹ãƒˆ(String, String)
 	 */
 	public void testSetPropertyStringString() throws Exception {
 		EncodedProperties prop = new EncodedProperties() ;
-		prop.setProperty("test","ƒ\ƒtƒB[‚Ì\¿") ;
+		prop.setProperty("test","ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹") ;
 		String aa = prop.getProperty("test");
-		assertEquals(aa,"ƒ\ƒtƒB[‚Ì\¿") ;		
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹") ;		
 	}
 
 	/*
-	 * String getProperty ‚ÌƒeƒXƒg(String, String)
+	 * String getProperty ã®ãƒ†ã‚¹ãƒˆ(String, String)
 	 */
 	public void testGetPropertyStringString() throws IOException, Exception {
 		EncodedProperties prop = new EncodedProperties("euc-jp") ;
 		prop.loadFromFile("src/test/resources/jp/ossc/nimbus/util/test2.properties");
-		String aa = prop.getProperty("test44","ƒ\ƒtƒBƒ\ƒtƒB[");
-		assertEquals(aa,"ƒ\ƒtƒBƒ\ƒtƒB[") ;		
+		String aa = prop.getProperty("test44","ã‚½ãƒ•ã‚£ã‚½ãƒ•ã‚£ãƒ¼");
+		assertEquals(aa,"ã‚½ãƒ•ã‚£ã‚½ãƒ•ã‚£ãƒ¼") ;		
 	}
 
 	public void testGetEncoding() throws Exception {

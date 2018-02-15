@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.queue;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultQueueFactoryService}��MBean�C���^�t�F�[�X�B<p>
+ * {@link DefaultQueueFactoryService}のMBeanインタフェース。<p>
  * 
  * @author M.Takata
  * @see DefaultQueueService
@@ -43,54 +43,54 @@ public interface DefaultQueueFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * �L���[�̏����e�ʂ�ݒ肷��B<p>
-     * �T�[�r�X�̐������Ɏg�p����鑮���Ȃ̂ŁA������̕ύX�͂ł��Ȃ��B<br>
-     * 0�ȏ�̒l��ݒ肷��ƗL���ɂȂ�B�f�t�H���g�l�́A-1�Łu�����e�ʂ��w�肵�Ȃ��v�ł���B<br>
+     * キューの初期容量を設定する。<p>
+     * サービスの生成時に使用される属性なので、生成後の変更はできない。<br>
+     * 0以上の値を設定すると有効になる。デフォルト値は、-1で「初期容量を指定しない」である。<br>
      *
-     * @param initial �L���[�̏����e��
+     * @param initial キューの初期容量
      */
     public void setInitialCapacity(int initial);
     
     /**
-     * �L���[�̏����e�ʂ��擾����B<p>
+     * キューの初期容量を取得する。<p>
      *
-     * @return �L���[�̏����e��
+     * @return キューの初期容量
      */
     public int getInitialCapacity();
     
     /**
-     * �L���[�̗v�f�����e�ʂ��z�������ɁA����������e�ʂ�ݒ肷��B<p>
-     * �T�[�r�X�̐������Ɏg�p����鑮���Ȃ̂ŁA������̕ύX�͂ł��Ȃ��B<br>
-     * 0�ȏ�̒l��ݒ肷��ƗL���ɂȂ�B�܂��A�L���ȏ����e�ʂ��ݒ肳��Ă��Ȃ��ꍇ�́A�����ƂȂ�B�f�t�H���g�l�́A-1�Łu�����e�ʂ��w�肵�Ȃ��v�ł���B<br>
+     * キューの要素数が容量を越えた時に、増加させる容量を設定する。<p>
+     * サービスの生成時に使用される属性なので、生成後の変更はできない。<br>
+     * 0以上の値を設定すると有効になる。また、有効な初期容量が設定されていない場合は、無効となる。デフォルト値は、-1で「増加容量を指定しない」である。<br>
      *
-     * @param increment �����e��
+     * @param increment 増加容量
      */
     public void setCapacityIncrement(int increment);
     
     /**
-     * �L���[�̗v�f�����e�ʂ��z�������ɁA����������e�ʂ��擾����B<p>
+     * キューの要素数が容量を越えた時に、増加させる容量を取得する。<p>
      *
-     * @return �����e��
+     * @return 増加容量
      */
     public int getCapacityIncrement();
     
     /**
-     * �L���[�v�f���L���b�V������L���b�V���T�[�r�X����ݒ肷��B<p>
-     * ���̑������ݒ肳��Ă���ꍇ�A�w�肳�ꂽ�L���b�V���T�[�r�X�ɁA�L���[�v�f���L���b�V������B�L���[�����ɂ́A{@link jp.ossc.nimbus.service.cache.CachedReference CachedReference}���ێ�����邽�߁A�L���[�v�f�̐����̓L���b�V���T�[�r�X�Ɉς˂���B<br>
+     * キュー要素をキャッシュするキャッシュサービス名を設定する。<p>
+     * この属性が設定されている場合、指定されたキャッシュサービスに、キュー要素をキャッシュする。キュー内部には、{@link jp.ossc.nimbus.service.cache.CachedReference CachedReference}が保持されるため、キュー要素の性質はキャッシュサービスに委ねられる。<br>
      *
-     * @param name {@link jp.ossc.nimbus.service.cache.Cache Cache}�T�[�r�X��
+     * @param name {@link jp.ossc.nimbus.service.cache.Cache Cache}サービス名
      */
     public void setCacheServiceName(ServiceName name);
     
     /**
-     * �L���[�v�f���L���b�V������L���b�V���T�[�r�X�����擾����B<p>
+     * キュー要素をキャッシュするキャッシュサービス名を取得する。<p>
      *
-     * @return {@link jp.ossc.nimbus.service.cache.Cache Cache}�T�[�r�X��
+     * @return {@link jp.ossc.nimbus.service.cache.Cache Cache}サービス名
      */
     public ServiceName getCacheServiceName();
     
     /**
-     * �L���[������������B <p>
+     * キューを初期化する。 <p>
      */
     public void clear();
 }

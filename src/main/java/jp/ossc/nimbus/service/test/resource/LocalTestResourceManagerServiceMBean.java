@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link LocalTestResourceManagerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link LocalTestResourceManagerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Aono
  * @see LocalTestResourceManagerService
@@ -47,60 +47,60 @@ public interface LocalTestResourceManagerServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_TEMPLATE_LINK_FILE_EXTENTION = ".tln";
     
     /**
-     * ƒeƒXƒgƒŠƒ\[ƒX‚ª‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getTestResourceDirectory();
     
     /**
-     * ƒeƒXƒgƒŠƒ\[ƒX‚ª‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA‚±‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠB<br>
+     * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚<br>
      *
-     * @param path ƒfƒBƒŒƒNƒgƒŠ
+     * @param path ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setTestResourceDirectory(File path);
     
     /**
-     * {@link jp.ossc.nimbus.service.test.TemplateEngine TemplateEngine}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.test.TemplateEngine TemplateEngine}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name TemplateEngineƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name TemplateEngineã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTemplateEngineServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.test.TemplateEngine TemplateEngine}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.test.TemplateEngine TemplateEngine}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TemplateEngineƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TemplateEngineã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTemplateEngineServiceName();
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒŠƒ“ƒNƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_TEMPLATE_LINK_FILE_EXTENTION}B<br>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒªãƒ³ã‚¯ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_TEMPLATE_LINK_FILE_EXTENTION}ã€‚<br>
      *
-     * @param ext Šg’£q
+     * @param ext æ‹¡å¼µå­
      */
     public void setTemplateLinkFileExtention(String ext);
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒŠƒ“ƒNƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒªãƒ³ã‚¯ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Šg’£q
+     * @return æ‹¡å¼µå­
      */
     public String getTemplateLinkFileExtention();
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒŠƒ“ƒNƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒªãƒ³ã‚¯ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setTemplateLinkFileEncoding(String encoding);
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒŠƒ“ƒNƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒªãƒ³ã‚¯ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getTemplateLinkFileEncoding();
 }

@@ -34,37 +34,37 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link SimpleScheduleFactoryService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SimpleScheduleFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface SimpleScheduleFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setScheduleServiceNames(ServiceName[] names);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getScheduleServiceNames();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğŠÇ—‚·‚é{@link ScheduleStateManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleStateManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ScheduleStateManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleStateManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleStateManagerServiceName(ServiceName name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğŠÇ—‚·‚é{@link ScheduleStateManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleStateManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleStateManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleStateManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleStateManagerServiceName();
 }

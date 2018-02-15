@@ -34,68 +34,68 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowScheduleExecutorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowScheduleExecutorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface BeanFlowScheduleExecutorServiceMBean extends AbstractScheduleExecutorServiceMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒXƒPƒWƒ…[ƒ‹Àsí•ÊB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œç¨®åˆ¥ã€‚<p>
      */
     public static final String DEFAULT_EXECUTOR_TYPE = "BEANFLOW";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğˆê’â~‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä¸€æ™‚åœæ­¢ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_PAUSE = "BFSE_00001";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÄŠJ‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å†é–‹ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_RESUME = "BFSE_00002";
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚Ì•ÏX‚ªÀÛ‚ÉŒø‚¢‚½‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA500[ms]B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ãŒå®Ÿéš›ã«åŠ¹ã„ãŸã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€500[ms]ã€‚<br>
      *
-     * @param interval ŠÔŠu[ms]
+     * @param interval é–“éš”[ms]
      */
     public void setControlStateChangingWaitInterval(long interval);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚Ì•ÏX‚ªÀÛ‚ÉŒø‚¢‚½‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ãŒå®Ÿéš›ã«åŠ¹ã„ãŸã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÔŠu[ms]
+     * @return é–“éš”[ms]
      */
     public long getControlStateChangingWaitInterval();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚Ì•ÏX‚ªÀÛ‚ÉŒø‚¢‚½‚©‚Ç‚¤‚©‚ğŠm”F‘Ò‚¿‚·‚éŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Å–³ŒÀ‘Ò‚¿B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ãŒå®Ÿéš›ã«åŠ¹ã„ãŸã‹ã©ã†ã‹ã‚’ç¢ºèªå¾…ã¡ã™ã‚‹æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§ç„¡é™å¾…ã¡ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setControlStateChangingWaitTimeout(long timeout);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚Ì•ÏX‚ªÀÛ‚ÉŒø‚¢‚½‚©‚Ç‚¤‚©‚ğŠm”F‘Ò‚¿‚·‚éŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ãŒå®Ÿéš›ã«åŠ¹ã„ãŸã‹ã©ã†ã‹ã‚’ç¢ºèªå¾…ã¡ã™ã‚‹æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getControlStateChangingWaitTimeout();
 }

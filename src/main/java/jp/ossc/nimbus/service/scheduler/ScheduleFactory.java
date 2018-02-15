@@ -32,17 +32,17 @@
 package jp.ossc.nimbus.service.scheduler;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠB<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
 public interface ScheduleFactory{
     
     /**
-     * w’è‚µ‚½ƒL[î•ñ‚ÉŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼æƒ…å ±ã«è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[
-     * @return ƒXƒPƒWƒ…[ƒ‹”z—ñ
+     * @param key ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é…åˆ—
      */
     public Schedule[] getSchedules(Object key);
 }

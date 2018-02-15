@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.service.aop.interceptor.servlet.ThreadContextKey;
 
 /**
- * {@link WsServiceJournalHandlerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB
+ * {@link WsServiceJournalHandlerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida

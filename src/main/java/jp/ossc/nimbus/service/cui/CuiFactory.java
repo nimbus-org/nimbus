@@ -32,12 +32,12 @@
 package jp.ossc.nimbus.service.cui;
 
 /**
- *	Cuiƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒX
+ *	Cuiãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/20| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/20ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface CuiFactory {
-	/** CuiƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚· */
+	/** Cuiã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ */
 	public Cui findInstance(String key);
 }

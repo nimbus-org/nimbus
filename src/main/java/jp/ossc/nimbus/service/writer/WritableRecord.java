@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.writer;
 import java.util.*;
 
 /**
- * o—ÍƒŒƒR[ƒhB<p>
- * {@link WritableElement}‚ğ•¡”‚¿A‚»‚Ì‡˜«‹y‚ÑƒL[‚Æ‚Ìƒ}ƒbƒsƒ“ƒO«‚ğ‚ÂB<br>
+ * å‡ºåŠ›ãƒ¬ã‚³ãƒ¼ãƒ‰ã€‚<p>
+ * {@link WritableElement}ã‚’è¤‡æ•°æŒã¡ã€ãã®é †åºæ€§åŠã³ã‚­ãƒ¼ã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°æ€§ã‚’æŒã¤ã€‚<br>
  * 
  * @author Y.Tokuda
  */
@@ -43,48 +43,48 @@ public class WritableRecord implements java.io.Serializable{
     
     private static final long serialVersionUID = 7030165706406015562L;
     
-    //ƒƒ“ƒo•Ï”
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
     private Map mElements;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public WritableRecord(){
         mElements = new LinkedHashMap();
     }
     
     /**
-     * —v‘f‚ğ’Ç‰Á‚·‚éB<p>
+     * è¦ç´ ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param elem —v‘f
+     * @param elem è¦ç´ 
      */
     public void addElement(WritableElement elem){
         mElements.put(elem.getKey() == null ? elem : elem.getKey(), elem);
     }
     
     /**
-     * —v‘f‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * è¦ç´ ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableElement‚ÌList
+     * @return WritableElementã®List
      */
     public List getElements(){
         return new ArrayList(mElements.values());
     }
     
     /**
-     * —v‘f‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * è¦ç´ ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableElement‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return WritableElementã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getElementMap(){
         return mElements;
     }
     
     /**
-     * —v‘f‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
-     * {@link WritableElement}‚ğ’Ç‰Á‚³‚ê‚½‡˜‚ÅAŠeWritableElement‚Ì{@link WritableElement#toString()}‚ğŒÄ‚Ño‚µ˜AŒ‹‚µ‚½•¶š—ñ‚ğ•Ô‚·B<br>
+     * è¦ç´ ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link WritableElement}ã‚’è¿½åŠ ã•ã‚ŒãŸé †åºã§ã€å„WritableElementã®{@link WritableElement#toString()}ã‚’å‘¼ã³å‡ºã—é€£çµã—ãŸæ–‡å­—åˆ—ã‚’è¿”ã™ã€‚<br>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder ret = new StringBuilder();

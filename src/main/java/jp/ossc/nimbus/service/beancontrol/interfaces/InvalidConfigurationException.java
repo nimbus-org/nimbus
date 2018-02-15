@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol.interfaces;
 
 /**
- * BeanFlow定義例外。<p>
+ * BeanFlow螳夂ｾｩ萓句､悶�<p>
  * 
  * @author H.Nakano
  */
@@ -43,14 +43,14 @@ public class InvalidConfigurationException extends RuntimeException {
     protected String resourceName;
     
     /**
-     * コンストラクター
+     * 繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ
      */
     public InvalidConfigurationException() {
         super();
     }
     
     /**
-     * コンストラクター
+     * 繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ
      * @param arg0
      */
     public InvalidConfigurationException(String arg0) {
@@ -58,7 +58,7 @@ public class InvalidConfigurationException extends RuntimeException {
     }
     
     /**
-     * コンストラクター
+     * 繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ
      * @param arg0
      */
     public InvalidConfigurationException(Throwable arg0) {
@@ -66,7 +66,7 @@ public class InvalidConfigurationException extends RuntimeException {
     }
     
     /**
-     * コンストラクター
+     * 繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ
      * @param arg0
      * @param arg1
      */

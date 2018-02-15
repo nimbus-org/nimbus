@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.recset;
 
 /**
- * Rowƒo[ƒWƒ‡ƒ“•s³‚ğ¦‚·—áŠO<p>
- * XV‚ÉRowƒo[ƒWƒ‡ƒ“‚ª‘¼‚Ìˆ—‚ÅXV‚³‚ê‚Ä‚¢‚½ê‡‚Éthrow‚³‚ê‚Ü‚·B
+ * Rowãƒãƒ¼ã‚¸ãƒ§ãƒ³ä¸æ­£ã‚’ç¤ºã™ä¾‹å¤–<p>
+ * æ›´æ–°æ™‚ã«Rowãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒä»–ã®å‡¦ç†ã§æ›´æ–°ã•ã‚Œã¦ã„ãŸå ´åˆã«throwã•ã‚Œã¾ã™ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,15 +45,15 @@ public class RowVersionException extends Exception {
     private static final long serialVersionUID = 1312782242238688431L;
     
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public RowVersionException() {
 		super();
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	 * @param message Ú×ƒƒbƒZ[ƒW
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	 * @param message è©³ç´°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 */
 	public RowVersionException(String message) {
 		super(message);

@@ -89,10 +89,10 @@ import jp.ossc.nimbus.util.converter.BindingStreamConverter;
 import jp.ossc.nimbus.util.converter.StreamStringConverter;
 
 /**
- * ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ˆ—‚ğBeanFlow‚ÉˆÏ÷‚·‚é{@link RestServer}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒT[ƒrƒXB<p>
+ * ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†ã‚’BeanFlowã«å§”è­²ã™ã‚‹{@link RestServer}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="restserver_1_0.dtd">RESTƒT[ƒo’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="restserver_1_0.dtd">RESTã‚µãƒ¼ãƒå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class BeanFlowRestServerService extends ServiceBase implements RestServer, BeanFlowRestServerServiceMBean{
     
@@ -428,7 +428,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             try{
                 url = localFile.toURI().toURL();
             }catch(MalformedURLException e){
-                // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
             }
         }else{
             final ClassLoader classLoader
@@ -1118,14 +1118,14 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     }
     
     protected ByteArrayOutputStream decompress(HttpServletRequest request, ByteArrayOutputStream baos) throws IOException {
-        // ƒwƒbƒ_[[Content-Encoding]‚Ì’l‚ğæ“¾
+        // ãƒ˜ãƒƒãƒ€ãƒ¼[Content-Encoding]ã®å€¤ã‚’å–å¾—
         Enumeration encodeEnum = (Enumeration)request.getHeaders(HTTP_HEADER_NAME_CONTENT_ENCODING);
         if(encodeEnum == null || !encodeEnum.hasMoreElements()){
             return baos;
         }
         InputStream in = new ByteArrayInputStream(baos.toByteArray());
         try{
-            // ˆ³k‚³‚ê‚½‹t‡‚Å‰ğ“€
+            // åœ§ç¸®ã•ã‚ŒãŸé€†é †ã§è§£å‡
             List encodes = new ArrayList();
             while(encodeEnum.hasMoreElements()){
                 encodes.add(encodeEnum.nextElement());
@@ -1134,11 +1134,11 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 final String encode = (String)encodes.get(i);
                 if(encode != null){
                     if(encode.indexOf(CONTENT_ENCODING_DEFLATE) != -1){
-                        // deflateˆ³k‰ğœ
+                        // deflateåœ§ç¸®è§£é™¤
                         in = new InflaterInputStream(in);
                     }else if(encode.indexOf(CONTENT_ENCODING_GZIP) != -1
                                 || encode.indexOf(CONTENT_ENCODING_X_GZIP) != -1){
-                        // gzipˆ³k‰ğœ
+                        // gzipåœ§ç¸®è§£é™¤
                         in = new GZIPInputStream(in);
                     }else{
                         throw new IOException("Can not decompress. [" + encode + "]");
@@ -1270,7 +1270,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             try{
                 accept = new Accept(acceptStr);
             }catch(IllegalArgumentException e){
-                // –‘O‚Éƒ`ƒFƒbƒN‚·‚é‚½‚ß‹N‚±‚ç‚È‚¢‚Í‚¸
+                // äº‹å‰ã«ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãŸã‚èµ·ã“ã‚‰ãªã„ã¯ãš
             }
             for(int i = 0; i < accept.mediaRanges.size(); i++){
                 MediaRange mr = (MediaRange)accept.mediaRanges.get(i);

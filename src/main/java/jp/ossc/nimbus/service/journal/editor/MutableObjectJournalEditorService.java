@@ -40,9 +40,9 @@ import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒIƒuƒWƒFƒNƒg‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * “n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ğŒ©‚ÄA{@link EditorFinder}‚Éİ’è‚³‚ê‚½AŒ^‚ÆƒGƒfƒBƒ^‚Ìƒ}ƒbƒsƒ“ƒO‚ğg‚Á‚ÄAˆ—‚ğ‘¼‚ÌƒGƒfƒBƒ^‚ÉˆÏ÷‚·‚éB‚Ü‚½A“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ª”z—ñŒ^‚Ìê‡AŠe—v‘f‚É‘Î‚µ‚Ä“¯—l‚Ìˆ—‚ğs‚¢AObject”z—ñ‚É•ÏŠ·‚·‚éB<br>
- * EditorFinder‚ÅƒGƒfƒBƒ^‚ğŒŸõ‚µ‚Ä‚àŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚»‚Ì‚Ü‚Ü•Ô‚·B<br>
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ã‚’è¦‹ã¦ã€{@link EditorFinder}ã«è¨­å®šã•ã‚ŒãŸã€å‹ã¨ã‚¨ãƒ‡ã‚£ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’ä½¿ã£ã¦ã€å‡¦ç†ã‚’ä»–ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«å§”è­²ã™ã‚‹ã€‚ã¾ãŸã€æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ãŒé…åˆ—å‹ã®å ´åˆã€å„è¦ç´ ã«å¯¾ã—ã¦åŒæ§˜ã®å‡¦ç†ã‚’è¡Œã„ã€Objecté…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * EditorFinderã§ã‚¨ãƒ‡ã‚£ã‚¿ã‚’æ¤œç´¢ã—ã¦ã‚‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ãã®ã¾ã¾è¿”ã™ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -51,7 +51,7 @@ public class MutableObjectJournalEditorService extends ServiceBase
     
     private static final long serialVersionUID = -2158326775826244589L;
     
-    // JournalEditor‚ÌJavaDoc
+    // JournalEditorã®JavaDoc
     public Object toObject(EditorFinder finder, Object key, Object value){
         if(value == null){
             return null;

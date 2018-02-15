@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.semaphore;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultSemaphoreServiceFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultSemaphoreServiceFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultSemaphoreServiceFactoryService
@@ -43,41 +43,41 @@ public interface DefaultSemaphoreServiceFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼
+     * @param name ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     public void setSemaphoreClassName(String name);
     
     /**
-     * ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒ}ƒtƒHÀ‘•ƒNƒ‰ƒX–¼
+     * @return ã‚»ãƒãƒ•ã‚©å®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     public String getSemaphoreClassName();
     
     /**
-     * ƒZƒ}ƒtƒH‚ÌƒŠƒ\[ƒX‘”‚ğ•Ô‚·B<p>
+     * ã‚»ãƒãƒ•ã‚©ã®ãƒªã‚½ãƒ¼ã‚¹ç·æ•°ã‚’è¿”ã™ã€‚<p>
      *
-     * @return ƒŠƒ\[ƒX‘”
+     * @return ãƒªã‚½ãƒ¼ã‚¹ç·æ•°
      */
     public int getResourceCapacity();
     
     /**
-     * ƒZƒ}ƒtƒH‚ÌƒŠƒ\[ƒX‘”‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ã®ãƒªã‚½ãƒ¼ã‚¹ç·æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param capa ƒŠƒ\[ƒX‘”
+     * @param capa ãƒªã‚½ãƒ¼ã‚¹ç·æ•°
      */
     public void setResourceCapacity(int capa);
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿ƒXƒŒƒbƒh‚ğŠJ•ú‚µAƒZƒ}ƒtƒHŠl“¾‘Ò‚¿‚ğó‚¯•t‚¯‚È‚¢‚æ‚¤‚É‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’é–‹æ”¾ã—ã€ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã‚’å—ã‘ä»˜ã‘ãªã„ã‚ˆã†ã«ã™ã‚‹ã€‚<p>
      */
     public void release();
     
     /**
-     * ƒZƒ}ƒtƒHŠl“¾‘Ò‚¿‚Ìó•t‚ğŠJn‚·‚éB<p>
-     * {@link #release()}ŒÄo‚µŒã‚ÉAƒZƒ}ƒtƒHŠl“¾‘Ò‚¿‚ğó‚¯•t‚¯‚é‚æ‚¤‚É‚·‚éB
+     * ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã®å—ä»˜ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #release()}å‘¼å‡ºã—å¾Œã«ã€ã‚»ãƒãƒ•ã‚©ç²å¾—å¾…ã¡ã‚’å—ã‘ä»˜ã‘ã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚
      */
     public void accept();
 }

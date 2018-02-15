@@ -44,7 +44,7 @@ import org.netcrusher.tcp.TcpCrusher;
 import org.netcrusher.tcp.TcpCrusherBuilder;
 
 /**
- * TcpCrusher‚ğg—p‚µ‚½TcpNetProxy{@link TcpNetProxy}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+ * TcpCrusherã‚’ä½¿ç”¨ã—ãŸTcpNetProxy{@link TcpNetProxy}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  */

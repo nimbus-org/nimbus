@@ -38,32 +38,32 @@ import jp.ossc.nimbus.service.log.*;
 import jp.ossc.nimbus.service.message.*;
 
 /**
- * ƒT[ƒrƒXŠî’êƒNƒ‰ƒXB<p>
- * {@link ServiceManager}‚ÅŠÇ—A§Œä‰Â”\‚ÈƒT[ƒrƒX‚ÌŠî’êƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * ƒT[ƒrƒX‚ÌŠJ”­Ò‚ÍA’ÊíA‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚ÄAƒT[ƒrƒX‚ğÀ‘•‚·‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * {@link ServiceManager}ã§ç®¡ç†ã€åˆ¶å¾¡å¯èƒ½ãªã‚µãƒ¼ãƒ“ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹ç™ºè€…ã¯ã€é€šå¸¸ã€ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã€‚<br>
  * <pre>
  *   public class MyService extends ServiceBase{
- *             F
+ *             ï¼š
  * </pre>
- * ‚±‚ÌƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX‚ÍAServiceManager‚É‚æ‚Á‚ÄA¶¬i{@link #create()}jA‹N“®i{@link #start()}jA’â~i{@link #stop()}jA”pŠüi{@link #destroy()}j‚ÌŒ_‹@‚ğ§Œä‚·‚é–‚ª‰Â”\‚Å‚ ‚éB‚»‚ê‚¼‚ê‚Ì“®ì‚Ìƒƒ\ƒbƒhicreate()Astart()Astop()Adestroy()j‚É‚ÍAÀ‘•‚ªs‚í‚ê‚Ä‚¢‚é‚Ì‚ÅA’Êí‚ÍAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B‚±‚ÌƒNƒ‰ƒX‚ğg‚Á‚ÄƒT[ƒrƒX‚Ì§Œä‚ÌÀ‘•‚ğs‚¤‚É‚ÍA{@link #createService()}A{@link #startService()}A{@link #stopService()}A{@link #destroyService()}‚ªA‹óÀ‘•‚Æ‚È‚Á‚Ä‚¢‚é‚Ì‚ÅA•K—v‚É‰‚¶‚ÄƒI[ƒo[ƒ‰ƒCƒh‚·‚é‚±‚ÆB<br>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¯ã€ServiceManagerã«ã‚ˆã£ã¦ã€ç”Ÿæˆï¼ˆ{@link #create()}ï¼‰ã€èµ·å‹•ï¼ˆ{@link #start()}ï¼‰ã€åœæ­¢ï¼ˆ{@link #stop()}ï¼‰ã€å»ƒæ£„ï¼ˆ{@link #destroy()}ï¼‰ã®å¥‘æ©Ÿã‚’åˆ¶å¾¡ã™ã‚‹äº‹ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚ãã‚Œãã‚Œã®å‹•ä½œã®ãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆcreate()ã€start()ã€stop()ã€destroy()ï¼‰ã«ã¯ã€å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã®ã§ã€é€šå¸¸ã¯ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ä½¿ã£ã¦ã‚µãƒ¼ãƒ“ã‚¹ã®åˆ¶å¾¡ã®å®Ÿè£…ã‚’è¡Œã†ã«ã¯ã€{@link #createService()}ã€{@link #startService()}ã€{@link #stopService()}ã€{@link #destroyService()}ãŒã€ç©ºå®Ÿè£…ã¨ãªã£ã¦ã„ã‚‹ã®ã§ã€å¿…è¦ã«å¿œã˜ã¦ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹ã“ã¨ã€‚<br>
  * <pre>
  *   public class MyService extends ServiceBase{
- *             F
+ *             ï¼š
  *       public void createService() throws Exception{
- *                 F
+ *                 ï¼š
  *       }
  *       public void startService() throws Exception{
- *                 F
+ *                 ï¼š
  *       }
  *       public void stopService() throws Exception{
- *                 F
+ *                 ï¼š
  *       }
  *       public void destroyService() throws Exception{
- *                 F
+ *                 ï¼š
  *       }
- *             F
+ *             ï¼š
  * </pre>
- * create()Astart()Astop()Adestroy()‚Ì‚S‚Â‚Ì“®ì‚ÌÀ‘•‚ÅAó‘Ô‚Ì§Œä‚ªs‚í‚ê‚Ä‚éB‚Ü‚½Acreate()‚Å‚ÍA{@link #setServiceManagerName(String)}‚Åİ’è‚³‚ê‚½ServiceManager‚ÉA{@link #setServiceName(String)}‚Åİ’è‚³‚ê‚½–¼‘O‚Å©•ª©g‚ğ“o˜^‚·‚éB“¯—l‚ÉAdestroy()‚Å‚ÍAServiceManager‚©‚ç©•ª©g‚ğ“o˜^‰ğœ‚·‚éB<br>
+ * create()ã€start()ã€stop()ã€destroy()ã®ï¼”ã¤ã®å‹•ä½œã®å®Ÿè£…ã§ã€çŠ¶æ…‹ã®åˆ¶å¾¡ãŒè¡Œã‚ã‚Œã¦ã‚‹ã€‚ã¾ãŸã€create()ã§ã¯ã€{@link #setServiceManagerName(String)}ã§è¨­å®šã•ã‚ŒãŸServiceManagerã«ã€{@link #setServiceName(String)}ã§è¨­å®šã•ã‚ŒãŸåå‰ã§è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚åŒæ§˜ã«ã€destroy()ã§ã¯ã€ServiceManagerã‹ã‚‰è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see ServiceManager
@@ -74,7 +74,7 @@ public abstract class ServiceBase
     
     private static final long serialVersionUID = -2021965433743797247L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SVC__ = "SVC__";
     private static final String SVC__0 = SVC__ + 0;
     private static final String SVC__00 = SVC__0 + 0;
@@ -170,15 +170,15 @@ public abstract class ServiceBase
     private static final String SVC__00088 = SVC__000 + 88;
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ğ•\‚·’lB<p>
-     * ‰Šú’l‚ÍA{@link #DESTROYED}‚Å‚ ‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’è¡¨ã™å€¤ã€‚<p>
+     * åˆæœŸå€¤ã¯ã€{@link #DESTROYED}ã§ã‚ã‚‹ã€‚
      * 
      * @see #getState()
      */
     protected volatile int state = DESTROYED;
     
     /**
-     * ƒT[ƒrƒX‚Ì–¼‘OB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã€‚<p>
      *
      * @see #setServiceName(String)
      * @see #getServiceName()
@@ -186,19 +186,19 @@ public abstract class ServiceBase
     protected String name;
     
     /**
-     * ƒT[ƒrƒX‚Ì–¼‘OB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã€‚<p>
      *
      * @see #getServiceNameObject()
      */
     protected ServiceName nameObj;
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éServiceManagerB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ServiceManagerã€‚<p>
      */
     protected transient ServiceManager manager;
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éServiceManager‚ÌƒT[ƒrƒX–¼B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      *
      * @see #setServiceManagerName(String)
      * @see #getServiceManagerName()
@@ -206,13 +206,13 @@ public abstract class ServiceBase
     protected String managerName;
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link ServiceBaseSupport}ƒIƒuƒWƒFƒNƒgB<p>
-     * ServiceBaseSupportƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚É“n‚·–‚ÅA‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚È‚­‚Ä‚àA‚±‚ÌƒNƒ‰ƒX‚ÌÀ‘•‚ğ—˜—p‚Å‚«‚é‚æ‚¤‚É‚·‚é‚½‚ß‚Ì‚à‚ÌB
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link ServiceBaseSupport}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
+     * ServiceBaseSupportã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã«æ¸¡ã™äº‹ã§ã€ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ãªãã¦ã‚‚ã€ã“ã®ã‚¯ãƒ©ã‚¹ã®å®Ÿè£…ã‚’åˆ©ç”¨ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã€‚
      */
     protected ServiceBaseSupport support;
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚É“o˜^‚³‚ê‚½ƒT[ƒrƒXó‘ÔƒŠƒXƒi‚ÌƒŠƒXƒgB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«ç™»éŒ²ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãƒªã‚¹ãƒŠã®ãƒªã‚¹ãƒˆã€‚<p>
      * 
      * @see #addServiceStateListener(ServiceStateListener)
      * @see #removeServiceStateListener(ServiceStateListener)
@@ -220,7 +220,7 @@ public abstract class ServiceBase
     protected transient List serviceStateListeners = new ArrayList();
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘OB<p>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã€‚<p>
      * 
      * @see #getSystemLoggerServiceName()
      * @see #setSystemLoggerServiceName(ServiceName)
@@ -228,13 +228,13 @@ public abstract class ServiceBase
     protected ServiceName loggerServiceName;
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒXB<p>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected transient LoggerWrapper logger
          = new LoggerWrapper(ServiceManagerFactory.getLogger());
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘OB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã€‚<p>
      * 
      * @see #getSystemMessageRecordFactoryServiceName()
      * @see #setSystemMessageRecordFactoryServiceName(ServiceName)
@@ -242,7 +242,7 @@ public abstract class ServiceBase
     protected ServiceName messageServiceName;
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒXB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected transient MessageRecordFactoryWrapper message
          = new MessageRecordFactoryWrapper(
@@ -250,15 +250,15 @@ public abstract class ServiceBase
          );
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public ServiceBase(){
     }
     
     /**
-     * {@link ServiceBaseSupport}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒXƒNƒ‰ƒX‚ğƒ‰ƒbƒv‚µ‚ÄAServiceBase‚ÌÀ‘•‚ğ—˜—p‚Å‚«‚é‚æ‚¤‚É‚·‚é‚½‚ß‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * {@link ServiceBaseSupport}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã—ã¦ã€ServiceBaseã®å®Ÿè£…ã‚’åˆ©ç”¨ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      * 
-     * @param support ServiceBaseSupportƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param support ServiceBaseSupportã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     protected ServiceBase(ServiceBaseSupport support){
         this();
@@ -267,16 +267,16 @@ public abstract class ServiceBase
             try{
                 support.setServiceBase(this);
             }catch(AbstractMethodError e){
-                // ŒİŠ·«’S•Û‚Ì‚½‚ß—áŠO”­¶‚Í–³‹
+                // äº’æ›æ€§æ‹…ä¿ã®ãŸã‚ä¾‹å¤–ç™ºç”Ÿæ™‚ã¯ç„¡è¦–
             }
         }
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ğŠÇ—‚·‚é{@link ServiceManager}‚ğİ’è‚·‚éB<p>
-     * ServiceManager‚ğƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÉŠi”[‚·‚é‚Æ“¯‚ÉA{@link ServiceManager#getLogger()}‚Åæ“¾‚µ‚½{@link Logger}‚ğA‚±‚ÌƒT[ƒrƒX‚Ì‚Â{@link LoggerWrapper}‚ÌƒfƒtƒHƒ‹ƒg‚ÌLogger‚Éİ’è‚·‚éB‚Ü‚½A{@link #setSystemLoggerServiceName(ServiceName)}‚ÅLoggerƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍALoggerWrapper‚ÌƒJƒŒƒ“ƒg‚ÌLogger‚É‚àİ’è‚·‚éB<br>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link ServiceManager}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ServiceManagerã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã«æ ¼ç´ã™ã‚‹ã¨åŒæ™‚ã«ã€{@link ServiceManager#getLogger()}ã§å–å¾—ã—ãŸ{@link Logger}ã‚’ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æŒã¤{@link LoggerWrapper}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Loggerã«è¨­å®šã™ã‚‹ã€‚ã¾ãŸã€{@link #setSystemLoggerServiceName(ServiceName)}ã§Loggerã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€LoggerWrapperã®ã‚«ãƒ¬ãƒ³ãƒˆã®Loggerã«ã‚‚è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param mng ‚±‚ÌƒT[ƒrƒX‚ğŠÇ—‚·‚éServiceManager
+     * @param mng ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç®¡ç†ã™ã‚‹ServiceManager
      */
     protected void setServiceManager(ServiceManager mng){
         if(manager != null && manager.equals(mng)){
@@ -300,18 +300,18 @@ public abstract class ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ğŠÇ—‚·‚é{@link ServiceManager}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link ServiceManager}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚ÌƒT[ƒrƒX‚ğŠÇ—‚·‚éServiceManager
+     * @return ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç®¡ç†ã™ã‚‹ServiceManager
      */
     public ServiceManager getServiceManager(){
         return manager;
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}
+     * @return ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}
      */
     public ServiceLoader getServiceLoader(){
         if(manager == null){
@@ -327,17 +327,17 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link #isNecessaryToCreate()}‚ÌŒÄ‚Ño‚µB–ß‚è’l‚ªfalse‚Ìê‡‚ÍA¶¬ˆ—‚ğ’†~‚·‚éB</li>
-     *   <li>{@link #preCreateService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍA{@link #FAILED}‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #createService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #postCreateService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
+     *   <li>{@link #isNecessaryToCreate()}ã®å‘¼ã³å‡ºã—ã€‚æˆ»ã‚Šå€¤ãŒfalseã®å ´åˆã¯ã€ç”Ÿæˆå‡¦ç†ã‚’ä¸­æ­¢ã™ã‚‹ã€‚</li>
+     *   <li>{@link #preCreateService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€{@link #FAILED}ã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #createService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #postCreateService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception preCreateService()AcreateService()ApostCreateService()‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception preCreateService()ã€createService()ã€postCreateService()ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #isNecessaryToCreate()
      * @see #preCreateService()
      * @see #createService()
@@ -430,11 +430,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚·‚é•K—v‚ª‚ ‚é‚©’²‚×‚éB<p>
-     * ƒT[ƒrƒXó‘Ô‚ª{@link #CREATING}‚Ü‚½‚ÍA{@link #CREATED}A{@link #STARTED}‚Ìê‡AƒT[ƒrƒX‚ğ¶¬‚·‚é•K—v‚ª‚È‚¢‚Æ”»’f‚µ‚Äfalse•Ô‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #CREATING}ã¾ãŸã¯ã€{@link #CREATED}ã€{@link #STARTED}ã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å¿…è¦ãŒãªã„ã¨åˆ¤æ–­ã—ã¦falseè¿”ã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX‚ğ¶¬‚·‚é•K—v‚ª‚ ‚éê‡trueA‚»‚¤‚Å‚È‚¢ê‡false
-     * @exception Exception •s³‚Èó‘Ô‚ÅƒT[ƒrƒX‚ğ¶¬‚µ‚æ‚¤‚Æ‚µ‚½ê‡B‚±‚±‚Å‚ÍAthrow‚³‚ê‚È‚¢BƒI[ƒo[ƒ‰ƒCƒh‚µ‚½ê‡‚ÉA•K—v‚È‚ç‚Î—áŠO‚ğthrow‚Å‚«‚éB
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆtrueã€ãã†ã§ãªã„å ´åˆfalse
+     * @exception Exception ä¸æ­£ãªçŠ¶æ…‹ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã—ã‚ˆã†ã¨ã—ãŸå ´åˆã€‚ã“ã“ã§ã¯ã€throwã•ã‚Œãªã„ã€‚ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ãŸå ´åˆã«ã€å¿…è¦ãªã‚‰ã°ä¾‹å¤–ã‚’throwã§ãã‚‹ã€‚
      * @see #create()
      */
     protected boolean isNecessaryToCreate() throws Exception{
@@ -442,14 +442,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚·‚é‘Oˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚB{@link #CREATING}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚{@link #CREATING}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #create()
      */
     protected void preCreateService() throws Exception{
@@ -459,15 +459,15 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚·‚éŒãˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ServiceManager‚Ö‚Ì“o˜^B{@link #getServiceManagerName()}‚Åæ“¾‚Å‚«‚éƒT[ƒrƒX–¼‚ÌServiceManager‚ÉA{@link #getServiceName()}‚Åæ“¾‚Å‚«‚éƒT[ƒrƒX–¼‚ÅA©•ª©g‚ğ“o˜^‚·‚éB‚Ç‚¿‚ç‚©‚ªnull‚Ìê‡A“o˜^‚³‚ê‚È‚¢B</li>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚBcreateService()‚ÌŒÄ‚Ño‚µ‚ª³í‚És‚í‚ê‚é‚ÆA{@link #CREATED}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ServiceManagerã¸ã®ç™»éŒ²ã€‚{@link #getServiceManagerName()}ã§å–å¾—ã§ãã‚‹ã‚µãƒ¼ãƒ“ã‚¹åã®ServiceManagerã«ã€{@link #getServiceName()}ã§å–å¾—ã§ãã‚‹ã‚µãƒ¼ãƒ“ã‚¹åã§ã€è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚ã©ã¡ã‚‰ã‹ãŒnullã®å ´åˆã€ç™»éŒ²ã•ã‚Œãªã„ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚createService()ã®å‘¼ã³å‡ºã—ãŒæ­£å¸¸ã«è¡Œã‚ã‚Œã‚‹ã¨ã€{@link #CREATED}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #create()
      */
     protected void postCreateService() throws Exception{
@@ -500,25 +500,25 @@ public abstract class ServiceBase
         processStateChanged(CREATED);
     }
     
-    // ServiceBaseMBean ‚ÌJavaDoc
+    // ServiceBaseMBean ã®JavaDoc
     public synchronized void restart() throws Exception{
         stop();
         start();
     }
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link #isNecessaryToStart()}‚ÌŒÄ‚Ño‚µB–ß‚è’l‚ªfalse‚Ìê‡‚ÍAŠJnˆ—‚ğ’†~‚·‚éB</li>
-     *   <li>{@link #preStartService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍA{@link #FAILED}‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #startService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #postStartService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
+     *   <li>{@link #isNecessaryToStart()}ã®å‘¼ã³å‡ºã—ã€‚æˆ»ã‚Šå€¤ãŒfalseã®å ´åˆã¯ã€é–‹å§‹å‡¦ç†ã‚’ä¸­æ­¢ã™ã‚‹ã€‚</li>
+     *   <li>{@link #preStartService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€{@link #FAILED}ã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #startService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #postStartService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception IllegalStateException ƒT[ƒrƒXó‘Ôƒ`ƒFƒbƒN‚É¸”s‚µ‚½ê‡
-     * @exception Exception preStartService()AstartService()ApostStartService()‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception IllegalStateException ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãƒã‚§ãƒƒã‚¯ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception Exception preStartService()ã€startService()ã€postStartService()ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #preStartService()
      * @see #startService()
      * @see #postStartService()
@@ -603,11 +603,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚é•K—v‚ª‚ ‚é‚©’²‚×‚éB<p>
-     * ƒT[ƒrƒXó‘Ô‚ª{@link #STARTING}‚Ü‚½‚ÍA{@link #STARTED}‚Ìê‡AƒT[ƒrƒX‚ğŠJn‚·‚é•K—v‚ª‚È‚¢‚Æ”»’f‚µ‚Äfalse•Ô‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #STARTING}ã¾ãŸã¯ã€{@link #STARTED}ã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹å¿…è¦ãŒãªã„ã¨åˆ¤æ–­ã—ã¦falseè¿”ã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX‚ğŠJn‚·‚é•K—v‚ª‚ ‚éê‡trueA‚»‚¤‚Å‚È‚¢ê‡false
-     * @exception Exception ƒT[ƒrƒXó‘Ô‚ª{@link #DESTROYED}‚Ü‚½‚ÍA{@link #FAILED}‚ÅAƒT[ƒrƒX‚ğŠJn‚µ‚æ‚¤‚Æ‚µ‚½ê‡
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆtrueã€ãã†ã§ãªã„å ´åˆfalse
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #DESTROYED}ã¾ãŸã¯ã€{@link #FAILED}ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã—ã‚ˆã†ã¨ã—ãŸå ´åˆ
      * @see #start()
      */
     protected boolean isNecessaryToStart() throws Exception{
@@ -620,7 +620,7 @@ public abstract class ServiceBase
             );
         }
         if(state == FAILED){
-            // TODO ‘Ò‹@‚³‚¹‚éH
+            // TODO å¾…æ©Ÿã•ã›ã‚‹ï¼Ÿ
             return false;
         }
         if(state == STARTED || state == STARTING){
@@ -630,14 +630,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚é‘Oˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚB{@link #STARTING}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚{@link #STARTING}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #start()
      */
     protected void preStartService() throws Exception{
@@ -646,14 +646,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚBstartService()‚ÌŒÄ‚Ño‚µ‚ª³í‚És‚í‚ê‚é‚ÆA{@link #STARTED}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚startService()ã®å‘¼ã³å‡ºã—ãŒæ­£å¸¸ã«è¡Œã‚ã‚Œã‚‹ã¨ã€{@link #STARTED}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #start()
      */
     protected void postStartService() throws Exception{
@@ -662,14 +662,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ’â~‚·‚éB<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link #isNecessaryToStop()}‚ÌŒÄ‚Ño‚µB–ß‚è’l‚ªfalse‚Ìê‡‚ÍA’â~ˆ—‚ğ’†~‚·‚éB</li>
-     *   <li>{@link #preStopService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍA{@link #FAILED}‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #stopService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #postStopService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
+     *   <li>{@link #isNecessaryToStop()}ã®å‘¼ã³å‡ºã—ã€‚æˆ»ã‚Šå€¤ãŒfalseã®å ´åˆã¯ã€åœæ­¢å‡¦ç†ã‚’ä¸­æ­¢ã™ã‚‹ã€‚</li>
+     *   <li>{@link #preStopService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€{@link #FAILED}ã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #stopService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #postStopService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
      * @see #preStopService()
@@ -774,11 +774,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ’â~‚·‚é•K—v‚ª‚ ‚é‚©’²‚×‚éB<p>
-     * ƒT[ƒrƒXó‘Ô‚ª{@link #STARTED}‚Ìê‡AƒT[ƒrƒX‚ğ’â~‚·‚é•K—v‚ª‚ ‚é‚Æ”»’f‚µ‚Ätrue•Ô‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #STARTED}ã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã¨åˆ¤æ–­ã—ã¦trueè¿”ã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX‚ğ’â~‚·‚é•K—v‚ª‚ ‚éê‡trueA‚»‚¤‚Å‚È‚¢ê‡false
-     * @exception Exception •s³‚Èó‘Ô‚ÅƒT[ƒrƒX‚ğ’â~‚µ‚æ‚¤‚Æ‚µ‚½ê‡B‚±‚±‚Å‚ÍAthrow‚³‚ê‚È‚¢BƒI[ƒo[ƒ‰ƒCƒh‚µ‚½ê‡‚ÉA•K—v‚È‚ç‚Î—áŠO‚ğthrow‚Å‚«‚éB
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆtrueã€ãã†ã§ãªã„å ´åˆfalse
+     * @exception Exception ä¸æ­£ãªçŠ¶æ…‹ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã—ã‚ˆã†ã¨ã—ãŸå ´åˆã€‚ã“ã“ã§ã¯ã€throwã•ã‚Œãªã„ã€‚ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ãŸå ´åˆã«ã€å¿…è¦ãªã‚‰ã°ä¾‹å¤–ã‚’throwã§ãã‚‹ã€‚
      * @see #stop()
      */
     protected boolean isNecessaryToStop() throws Exception{
@@ -786,15 +786,15 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ’â~‚·‚é‘Oˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ôƒ`ƒFƒbƒNBƒT[ƒrƒXó‘Ô‚ª{@link #STARTED}‚Å‚È‚¢ê‡Aˆ—‚ğs‚í‚¸‚É•Ô‚·B</li>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚBƒT[ƒrƒXó‘Ôƒ`ƒFƒbƒN‚ğ’Ê‰ß‚·‚é‚ÆA{@link #STOPPING}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãƒã‚§ãƒƒã‚¯ã€‚ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #STARTED}ã§ãªã„å ´åˆã€å‡¦ç†ã‚’è¡Œã‚ãšã«è¿”ã™ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãƒã‚§ãƒƒã‚¯ã‚’é€šéã™ã‚‹ã¨ã€{@link #STOPPING}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #stop()
      */
     protected void preStopService() throws Exception{
@@ -803,14 +803,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ’â~‚·‚éŒãˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚBstopService()‚ÌŒÄ‚Ño‚µ‚ª³í‚És‚í‚ê‚é‚ÆA{@link #STOPPED}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚stopService()ã®å‘¼ã³å‡ºã—ãŒæ­£å¸¸ã«è¡Œã‚ã‚Œã‚‹ã¨ã€{@link #STOPPED}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #stop()
      */
     protected void postStopService() throws Exception{
@@ -819,14 +819,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ”jŠü‚·‚éB<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link #isNecessaryToDestroy()}‚ÌŒÄ‚Ño‚µB–ß‚è’l‚ªfalse‚Ìê‡‚ÍA”jŠüˆ—‚ğ’†~‚·‚éB</li>
-     *   <li>{@link #preDestroyService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍA{@link #FAILED}‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #destroyService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
-     *   <li>{@link #postDestroyService()}‚ÌŒÄ‚Ño‚µB—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFAILED‚É‘JˆÚ‚·‚éB</li>
+     *   <li>{@link #isNecessaryToDestroy()}ã®å‘¼ã³å‡ºã—ã€‚æˆ»ã‚Šå€¤ãŒfalseã®å ´åˆã¯ã€ç ´æ£„å‡¦ç†ã‚’ä¸­æ­¢ã™ã‚‹ã€‚</li>
+     *   <li>{@link #preDestroyService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€{@link #FAILED}ã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #destroyService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>{@link #postDestroyService()}ã®å‘¼ã³å‡ºã—ã€‚ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FAILEDã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
      * @see #preDestroyService()
@@ -931,11 +931,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ”jŠü‚·‚é•K—v‚ª‚ ‚é‚©’²‚×‚éB<p>
-     * ƒT[ƒrƒXó‘Ô‚ª{@link #DESTROYING}‚Ü‚½‚Í{@link #DESTROYED}‚Ìê‡AƒT[ƒrƒX‚ğ”jŠü‚·‚é•K—v‚ª‚È‚¢‚Æ”»’f‚µ‚Äfalse•Ô‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #DESTROYING}ã¾ãŸã¯{@link #DESTROYED}ã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹å¿…è¦ãŒãªã„ã¨åˆ¤æ–­ã—ã¦falseè¿”ã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX‚ğ”jŠü‚·‚é•K—v‚ª‚ ‚éê‡trueA‚»‚¤‚Å‚È‚¢ê‡false
-     * @exception Exception •s³‚Èó‘Ô‚ÅƒT[ƒrƒX‚ğ”jŠü‚µ‚æ‚¤‚Æ‚µ‚½ê‡B‚±‚±‚Å‚ÍAthrow‚³‚ê‚È‚¢BƒI[ƒo[ƒ‰ƒCƒh‚µ‚½ê‡‚ÉA•K—v‚È‚ç‚Î—áŠO‚ğthrow‚Å‚«‚éB
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆtrueã€ãã†ã§ãªã„å ´åˆfalse
+     * @exception Exception ä¸æ­£ãªçŠ¶æ…‹ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã—ã‚ˆã†ã¨ã—ãŸå ´åˆã€‚ã“ã“ã§ã¯ã€throwã•ã‚Œãªã„ã€‚ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ãŸå ´åˆã«ã€å¿…è¦ãªã‚‰ã°ä¾‹å¤–ã‚’throwã§ãã‚‹ã€‚
      * @see #stop()
      */
     protected boolean isNecessaryToDestroy() throws Exception{
@@ -943,16 +943,16 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ”jŠü‚·‚é‘Oˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ô‚ª{@link #STOPPED}‚Å‚È‚¢ê‡A{@link #stop()}‚ğŒÄ‚Ño‚·B</li>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚB{@link #DESTROYING}‚É‘JˆÚ‚·‚éB</li>
-     *   <li>ServiceManager‚©‚ç‚ÌíœB{@link #getServiceManagerName()}‚Åæ“¾‚Å‚«‚éƒT[ƒrƒX–¼‚ÌServiceManager‚©‚çA{@link #getServiceName()}‚Åæ“¾‚Å‚«‚éƒT[ƒrƒX–¼‚ÅA©•ª©g‚ğíœ‚·‚éB‚Ç‚¿‚ç‚©‚ªnull‚Ìê‡Aíœ‚³‚ê‚È‚¢B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #STOPPED}ã§ãªã„å ´åˆã€{@link #stop()}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚{@link #DESTROYING}ã«é·ç§»ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerã‹ã‚‰ã®å‰Šé™¤ã€‚{@link #getServiceManagerName()}ã§å–å¾—ã§ãã‚‹ã‚µãƒ¼ãƒ“ã‚¹åã®ServiceManagerã‹ã‚‰ã€{@link #getServiceName()}ã§å–å¾—ã§ãã‚‹ã‚µãƒ¼ãƒ“ã‚¹åã§ã€è‡ªåˆ†è‡ªèº«ã‚’å‰Šé™¤ã™ã‚‹ã€‚ã©ã¡ã‚‰ã‹ãŒnullã®å ´åˆã€å‰Šé™¤ã•ã‚Œãªã„ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #destroy()
      */
     protected void preDestroyService() throws Exception{
@@ -979,14 +979,14 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ”jŠü‚·‚éŒãˆ—‚ğs‚¤B<p>
-     * <b><i>‚±‚Ìƒƒ\ƒbƒh‚ÍA’ÊíAƒI[ƒo[ƒ‰ƒCƒh‚µ‚Ä‚Í‚¢‚¯‚È‚¢B</i></b><br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * <b><i>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€é€šå¸¸ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦ã¯ã„ã‘ãªã„ã€‚</i></b><br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXó‘Ô‚Ì‘JˆÚBdestroyService()‚ÌŒÄ‚Ño‚µ‚ª³í‚És‚í‚ê‚é‚ÆA{@link #DESTROYED}‚É‘JˆÚ‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®é·ç§»ã€‚destroyService()ã®å‘¼ã³å‡ºã—ãŒæ­£å¸¸ã«è¡Œã‚ã‚Œã‚‹ã¨ã€{@link #DESTROYED}ã«é·ç§»ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception {@link #processStateChanged(int)}‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception {@link #processStateChanged(int)}ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #destroy()
      */
     protected void postDestroyService() throws Exception{
@@ -995,10 +995,10 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link ServiceLoader}‚ÅƒT[ƒrƒX‚ğƒ[ƒh‚·‚éê‡‚ÍAServiceLoader‚ªİ’è‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link ServiceLoader}ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã¯ã€ServiceLoaderãŒè¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getServiceName()
      */
     public void setServiceName(String name){
@@ -1010,32 +1010,32 @@ public abstract class ServiceBase
         }
     }
     
-    // Service‚ÌJavaDoc
+    // Serviceã®JavaDoc
     public String getServiceName(){
         return name;
     }
     
-    // Service‚ÌJavaDoc
+    // Serviceã®JavaDoc
     public ServiceName getServiceNameObject(){
         return nameObj;
     }
     
-    // Service‚ÌJavaDoc
+    // Serviceã®JavaDoc
     public int getState(){
         return state;
     }
     
-    // Service‚ÌJavaDoc
+    // Serviceã®JavaDoc
     public String getStateString(){
         return STATES[state];
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
-     * ‚±‚ÌƒT[ƒrƒX‚É•K—v‚ÈƒIƒuƒWƒFƒNƒg‚Ì¶¬‚È‚Ç‚Ì‰Šú‰»ˆ—‚ğs‚¤B<br>
-     * ‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚ÄƒT[ƒrƒX‚ğÀ‘•‚·‚éƒT[ƒrƒXŠJ”­Ò‚ÍAƒT[ƒrƒX‚Ì¶¬ˆ—‚ğA‚±‚Ìƒƒ\ƒbƒh‚ğƒI[ƒo[ƒ‰ƒCƒh‚µ‚ÄÀ‘•‚·‚é‚±‚ÆBƒfƒtƒHƒ‹ƒgÀ‘•‚ÍA‹ó‚Å‚ ‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«å¿…è¦ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆãªã©ã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ã€‚<br>
+     * ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹é–‹ç™ºè€…ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å®Ÿè£…ã™ã‚‹ã“ã¨ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã¯ã€ç©ºã§ã‚ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #create()
      */
     public void createService() throws Exception{
@@ -1045,11 +1045,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
-     * ‚±‚ÌƒT[ƒrƒX‚ğ—˜—p‰Â”\‚Èó‘Ô‚É‚·‚éB‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒã‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì‹@”\‚ğ—˜—p‚Å‚«‚é–‚ª•ÛØ‚³‚ê‚éB<br>
-     * ‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚ÄƒT[ƒrƒX‚ğÀ‘•‚·‚éƒT[ƒrƒXŠJ”­Ò‚ÍAƒT[ƒrƒX‚ÌŠJnˆ—‚ğA‚±‚Ìƒƒ\ƒbƒh‚ğƒI[ƒo[ƒ‰ƒCƒh‚µ‚ÄÀ‘•‚·‚é‚±‚ÆBƒfƒtƒHƒ‹ƒgÀ‘•‚ÍA‹ó‚Å‚ ‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨å¯èƒ½ãªçŠ¶æ…‹ã«ã™ã‚‹ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹äº‹ãŒä¿è¨¼ã•ã‚Œã‚‹ã€‚<br>
+     * ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹é–‹ç™ºè€…ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å®Ÿè£…ã™ã‚‹ã“ã¨ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã¯ã€ç©ºã§ã‚ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #start()
      */
     public void startService() throws Exception{
@@ -1059,11 +1059,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ’â~‚·‚éB<p>
-     * ‚±‚ÌƒT[ƒrƒX‚ğ—˜—p•s‰Â”\‚Èó‘Ô‚É‚·‚éB‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒã‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì‹@”\‚ğ—˜—p‚Å‚«‚é–‚Í•ÛØ‚³‚ê‚È‚¢B<br>
-     * ‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚ÄƒT[ƒrƒX‚ğÀ‘•‚·‚éƒT[ƒrƒXŠJ”­Ò‚ÍAƒT[ƒrƒX‚Ì’â~ˆ—‚ğA‚±‚Ìƒƒ\ƒbƒh‚ğƒI[ƒo[ƒ‰ƒCƒh‚µ‚ÄÀ‘•‚·‚é‚±‚ÆBƒfƒtƒHƒ‹ƒgÀ‘•‚ÍA‹ó‚Å‚ ‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ä¸å¯èƒ½ãªçŠ¶æ…‹ã«ã™ã‚‹ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹äº‹ã¯ä¿è¨¼ã•ã‚Œãªã„ã€‚<br>
+     * ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹é–‹ç™ºè€…ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å®Ÿè£…ã™ã‚‹ã“ã¨ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã¯ã€ç©ºã§ã‚ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡B’A‚µAstop()‚Åˆ¬‚è’×‚³‚ê‚ÄAˆ—‚Í‘±s‚³‚ê‚éB
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚ä½†ã—ã€stop()ã§æ¡ã‚Šæ½°ã•ã‚Œã¦ã€å‡¦ç†ã¯ç¶šè¡Œã•ã‚Œã‚‹ã€‚
      * @see #stop()
      */
     public void stopService() throws Exception{
@@ -1073,11 +1073,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ”jŠü‚·‚éB<p>
-     * ‚±‚ÌƒT[ƒrƒX‚Åg—p‚·‚éƒŠƒ\[ƒX‚ğŠJ•ú‚·‚éB‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒã‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì‹@”\‚ğ—˜—p‚Å‚«‚é–‚Í•ÛØ‚³‚ê‚È‚¢B<br>
-     * ‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µ‚ÄƒT[ƒrƒX‚ğÀ‘•‚·‚éƒT[ƒrƒXŠJ”­Ò‚ÍAƒT[ƒrƒX‚Ì”jŠüˆ—‚ğA‚±‚Ìƒƒ\ƒbƒh‚ğƒI[ƒo[ƒ‰ƒCƒh‚µ‚ÄÀ‘•‚·‚é‚±‚ÆBƒfƒtƒHƒ‹ƒgÀ‘•‚ÍA‹ó‚Å‚ ‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§ä½¿ç”¨ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹äº‹ã¯ä¿è¨¼ã•ã‚Œãªã„ã€‚<br>
+     * ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹é–‹ç™ºè€…ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å®Ÿè£…ã™ã‚‹ã“ã¨ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã¯ã€ç©ºã§ã‚ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡B’A‚µAdestroy()‚Åˆ¬‚è’×‚³‚ê‚ÄAˆ—‚Í‘±s‚³‚ê‚éB
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚ä½†ã—ã€destroy()ã§æ¡ã‚Šæ½°ã•ã‚Œã¦ã€å‡¦ç†ã¯ç¶šè¡Œã•ã‚Œã‚‹ã€‚
      * @see #destroy()
      */
     public void destroyService() throws Exception{
@@ -1086,7 +1086,7 @@ public abstract class ServiceBase
         }
     }
     
-    // ServiceBaseMBean‚ÌJavaDoc
+    // ServiceBaseMBeanã®JavaDoc
     public void setSystemLoggerServiceName(final ServiceName name){
         if(ServiceManagerFactory.isRegisteredService(name)
              && ServiceManagerFactory.getService(name).getState()
@@ -1129,12 +1129,12 @@ public abstract class ServiceBase
         }
     }
     
-    // ServiceBaseMBean‚ÌJavaDoc
+    // ServiceBaseMBeanã®JavaDoc
     public ServiceName getSystemLoggerServiceName(){
         return loggerServiceName;
     }
     
-    // ServiceBaseMBean‚ÌJavaDoc
+    // ServiceBaseMBeanã®JavaDoc
     public void setSystemMessageRecordFactoryServiceName(
         final ServiceName name
     ){
@@ -1179,24 +1179,24 @@ public abstract class ServiceBase
         }
     }
     
-    // ServiceBaseMBean‚ÌJavaDoc
+    // ServiceBaseMBeanã®JavaDoc
     public ServiceName getSystemMessageRecordFactoryServiceName(){
         return messageServiceName;
     }
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}‚ğæ“¾‚·‚éB<p>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}
+     * @return Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}
      */
     public Logger getLogger(){
         return logger;
     }
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}‚ğİ’è‚·‚éB<p>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param log Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}
+     * @param log Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}
      */
     public void setLogger(Logger log){
         if(log != null){
@@ -1230,18 +1230,18 @@ public abstract class ServiceBase
     }
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX
+     * @return Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹
      */
     public MessageRecordFactory getMessageRecordFactory(){
         return message;
     }
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}‚ğİ’è‚·‚éB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param msg Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}
+     * @param msg Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}
      */
     public void setMessageRecordFactory(MessageRecordFactory msg){
         if(msg != null){
@@ -1275,9 +1275,9 @@ public abstract class ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ğ“o˜^‚·‚é{@link ServiceManager}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹{@link ServiceManager}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServiceManager‚ÌƒT[ƒrƒX–¼
+     * @return ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setServiceManagerName(String)
      */
     public String getServiceManagerName(){
@@ -1285,10 +1285,10 @@ public abstract class ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ğ“o˜^‚·‚é{@link ServiceManager}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link ServiceLoader}‚ÅƒT[ƒrƒX‚ğƒ[ƒh‚·‚éê‡‚ÍAServiceLoader‚ªA“o˜^‚·‚×‚«ServiceManager‚ğ’m‚Á‚Ä‚¨‚èAŠY“–‚·‚éServiceManager‚É“o˜^‚·‚é‚ÉA“o˜^‚·‚éServiceManager‚É‚æ‚Á‚Äİ’è‚³‚ê‚éB<br>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹{@link ServiceManager}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link ServiceLoader}ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã¯ã€ServiceLoaderãŒã€ç™»éŒ²ã™ã¹ãServiceManagerã‚’çŸ¥ã£ã¦ãŠã‚Šã€è©²å½“ã™ã‚‹ServiceManagerã«ç™»éŒ²ã™ã‚‹æ™‚ã«ã€ç™»éŒ²ã™ã‚‹ServiceManagerã«ã‚ˆã£ã¦è¨­å®šã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name ServiceManager‚ÌƒT[ƒrƒX–¼
+     * @param name ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getServiceManagerName()
      */
     public void setServiceManagerName(String name){
@@ -1301,7 +1301,7 @@ public abstract class ServiceBase
     }
     
     /**
-     * {@link ServiceBaseSupport}‚Ìƒ‰ƒbƒv‚Æ‚µ‚Ä¶¬‚³‚ê‚½ê‡‚ÉAƒ‰ƒbƒv‚·‚éServiceBaseSupport‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * {@link ServiceBaseSupport}ã®ãƒ©ãƒƒãƒ—ã¨ã—ã¦ç”Ÿæˆã•ã‚ŒãŸå ´åˆã«ã€ãƒ©ãƒƒãƒ—ã™ã‚‹ServiceBaseSupportã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @see #ServiceBase(ServiceBaseSupport)
      */
@@ -1313,9 +1313,9 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void addServiceStateListener(ServiceStateListener listener){
         if(!serviceStateListeners.contains(listener)){
@@ -1324,19 +1324,19 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void removeServiceStateListener(ServiceStateListener listener){
         serviceStateListeners.remove(listener);
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğServiceStateListener‚É’Ê’m‚·‚éB<p>
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½ê‡‚ÉAŒÄ‚Ño‚³‚ê‚Ü‚·B’A‚µAƒI[ƒo[ƒ‰ƒCƒh‚·‚éê‡‚ÍA•K‚¸super.processStateChanged(int)‚ğŒÄ‚Ño‚·‚±‚ÆB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ServiceStateListenerã«é€šçŸ¥ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆã«ã€å‘¼ã³å‡ºã•ã‚Œã¾ã™ã€‚ä½†ã—ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹å ´åˆã¯ã€å¿…ãšsuper.processStateChanged(int)ã‚’å‘¼ã³å‡ºã™ã“ã¨ã€‚<br>
      * 
-     * @param state •ÏXŒã‚ÌƒT[ƒrƒX‚Ìó‘Ô
+     * @param state å¤‰æ›´å¾Œã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹
      * @see ServiceStateListener
      */
     protected void processStateChanged(int state) throws Exception{
@@ -1352,11 +1352,11 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒfƒVƒŠƒAƒ‰ƒCƒY‚ğs‚¤B<p>
+     * ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã‚’è¡Œã†ã€‚<p>
      *
-     * @param in ƒfƒVƒŠƒAƒ‰ƒCƒY‚ÌŒ³î•ñ‚Æ‚È‚éƒXƒgƒŠ[ƒ€
-     * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException ƒfƒVƒŠƒAƒ‰ƒCƒY‚µ‚æ‚¤‚Æ‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param in ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã®å…ƒæƒ…å ±ã¨ãªã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã‚ˆã†ã¨ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     private void readObject(java.io.ObjectInputStream in)
      throws IOException, ClassNotFoundException{
@@ -1382,18 +1382,18 @@ public abstract class ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ¦‚·B<p>
-     * ˆÈ‰º‚Ì‡‚ÅA“™‰¿”äŠr‚ğs‚¤B<br>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚<p>
+     * ä»¥ä¸‹ã®é †ã§ã€ç­‰ä¾¡æ¯”è¼ƒã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>obj‚ªnull‚Ìê‡Afalse</li>
-     *   <li>obj‚ÌQÆ‚ª‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌQÆ‚Æ“™‚µ‚¢ê‡Atrue</li>
-     *   <li>{@link #getServiceName()}‚ªnull‚Ìê‡A{Object#equals(Object)}‚ÉˆÏ÷</li>
-     *   <li>obj‚ªService‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚È‚¢ê‡Afalse</li>
-     *   <li>obj‚ªService‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÅA‚»‚Ì{@link Service#getServiceManagerName()}‚Æ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì{@link #getServiceManagerName()}‚ª“™‚µ‚­A‚»‚Ì{@link Service#getServiceName()}‚Æ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì{@link #getServiceName()}‚ª“™‚µ‚¢ê‡AtrueB‚»‚¤‚Å‚È‚¢ê‡Afalse</li>
+     *   <li>objãŒnullã®å ´åˆã€false</li>
+     *   <li>objã®å‚ç…§ãŒã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å‚ç…§ã¨ç­‰ã—ã„å ´åˆã€true</li>
+     *   <li>{@link #getServiceName()}ãŒnullã®å ´åˆã€{Object#equals(Object)}ã«å§”è­²</li>
+     *   <li>objãŒServiceã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ãªã„å ´åˆã€false</li>
+     *   <li>objãŒServiceã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã€ãã®{@link Service#getServiceManagerName()}ã¨ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®{@link #getServiceManagerName()}ãŒç­‰ã—ãã€ãã®{@link Service#getServiceName()}ã¨ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®{@link #getServiceName()}ãŒç­‰ã—ã„å ´åˆã€trueã€‚ãã†ã§ãªã„å ´åˆã€false</li>
      * </ol>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌQÆƒIƒuƒWƒFƒNƒg
-     * @return obj ˆø”‚Éw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢ê‡‚ÍtrueA‚»‚¤‚Å‚È‚¢ê‡‚Ífalse
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®å‚ç…§ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return obj å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„å ´åˆã¯trueã€ãã†ã§ãªã„å ´åˆã¯false
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -1422,9 +1422,9 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ÌƒnƒbƒVƒ…ƒR[ƒh’l‚ğ•Ô‚·B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰å€¤ã‚’è¿”ã™ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…ƒR[ƒh’l
+     * @return ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰å€¤
      */
     public int hashCode(){
         if(name == null){
@@ -1437,9 +1437,9 @@ public abstract class ServiceBase
     
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğ•Ô‚·B<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’è¿”ã™ã€‚<p>
      *
-     * @return ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»
+     * @return ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         StringBuilder buf = new StringBuilder();
@@ -1464,9 +1464,9 @@ public abstract class ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ª’â~‹y‚Ñ”jŠü‚³‚ê‚¸‚ÉƒKƒx[ƒW‚³‚ê‚æ‚¤‚Æ‚µ‚½ê‡‚ÉA’â~ˆ—‹y‚Ñ”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒåœæ­¢åŠã³ç ´æ£„ã•ã‚Œãšã«ã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚Œã‚ˆã†ã¨ã—ãŸå ´åˆã«ã€åœæ­¢å‡¦ç†åŠã³ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Throwable ’â~A‹y‚Ñ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Throwable åœæ­¢ã€åŠã³ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void finalize() throws Throwable{
         try{

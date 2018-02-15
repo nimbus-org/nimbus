@@ -39,9 +39,9 @@ import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 import java.util.*;
 
 /**
- * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄA”CˆÓ‚ÌŠÔAƒXƒŒƒbƒh‚ğ’†’f‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒuƒŒƒCƒNƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ä»»æ„ã®é–“ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ä¸­æ–­ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -71,64 +71,64 @@ public class BreakPointInterceptorService extends ServiceBase
     private long timeout;
     private List threads = new ArrayList();
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void setEnabled(boolean enabled){
         this.enabled = enabled;
     }
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return enabled;
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void setMonitor(SynchronizeMonitor monitor){
         this.monitor = monitor;
     }
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public SynchronizeMonitor getMonitor(){
         return monitor;
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void setBreakPoint(int breakPoint){
         this.breakPoint = breakPoint;
     }
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public int getBreakPoint(){
         return breakPoint;
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void setTimeout(long timeout){
         this.timeout = timeout;
     }
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public long getTimeout(){
         return timeout;
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void resume(){
         synchronized(monitor){
             monitor.notifyMonitor();
         }
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void resumeAll(){
         synchronized(monitor){
             monitor.notifyAllMonitor();
         }
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public List suspendThreads(){
         synchronized(threads){
             return new ArrayList(threads);
         }
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void waitSuspend() throws InterruptedException{
         if(getState() != STARTED){
             return;
@@ -144,7 +144,7 @@ public class BreakPointInterceptorService extends ServiceBase
         }
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public boolean waitSuspend(long timeout) throws InterruptedException{
         if(getState() != STARTED){
             return false;
@@ -167,7 +167,7 @@ public class BreakPointInterceptorService extends ServiceBase
         }
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public void waitSuspend(String threadName) throws InterruptedException{
         if(getState() != STARTED){
             return;
@@ -189,7 +189,7 @@ public class BreakPointInterceptorService extends ServiceBase
         }
     }
     
-    // BreakPointInterceptorServiceMBean‚ÌJavaDoc
+    // BreakPointInterceptorServiceMBeanã®JavaDoc
     public boolean waitSuspend(String threadName, long timeout) throws InterruptedException{
         if(getState() != STARTED){
             return false;
@@ -225,13 +225,13 @@ public class BreakPointInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ª{@link #BREAK_POINT_IN}‚Ìê‡A{@link #resume()}‚à‚µ‚­‚Í{@link #resumeAll()}‚ªŒÄ‚Ño‚³‚ê‚é‚Ü‚Å‘Ò‹@‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·BƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ª{@link #BREAK_POINT_OUT}‚Ìê‡AŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µ‚½ŒãA{@link #resume()}‚à‚µ‚­‚Í{@link #resumeAll()}‚ªŒÄ‚Ño‚³‚ê‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆãŒ{@link #BREAK_POINT_IN}ã®å ´åˆã€{@link #resume()}ã‚‚ã—ãã¯{@link #resumeAll()}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆãŒ{@link #BREAK_POINT_OUT}ã®å ´åˆã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ãŸå¾Œã€{@link #resume()}ã‚‚ã—ãã¯{@link #resumeAll()}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,

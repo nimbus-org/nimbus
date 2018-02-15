@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.performance;
 
 /**
- * ƒpƒtƒH[ƒ}ƒ“ƒX‚ÉŠÖ‚í‚éƒŠƒ\[ƒX‚Ì—˜—p—ÊB<p>
+ * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã«é–¢ã‚ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã®åˆ©ç”¨é‡ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ResourceUsage{
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ÉŠÖ‚í‚éƒŠƒ\[ƒX‚Ì—˜—p—Ê‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã«é–¢ã‚ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã®åˆ©ç”¨é‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒ\[ƒX—˜—p—Ê
+     * @return ãƒªã‚½ãƒ¼ã‚¹åˆ©ç”¨é‡
      */
     public Comparable getUsage();
 }

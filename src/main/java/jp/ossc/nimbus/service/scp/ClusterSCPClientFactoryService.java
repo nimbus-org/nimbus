@@ -39,7 +39,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 
 /**
- * ƒNƒ‰ƒXƒ^SCPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
+ * ã‚¯ãƒ©ã‚¹ã‚¿SCPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */

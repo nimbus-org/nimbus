@@ -43,19 +43,19 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
- * {@link DataSetHtmlConverter}ƒeƒXƒgƒP[ƒXB
+ * {@link DataSetHtmlConverter}ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€‚
  * <p>
- *   •K{ŠÂ‹«F
+ *   å¿…é ˆç’°å¢ƒï¼š
  *   <ul>
- *      <li>JDK 5.0 ˆÈ~</li>
+ *      <li>JDK 5.0 ä»¥é™</li>
  *      <li>
- *          ‚Ü‚½‚ÍAJDK 1.4 + ˆÈ‰º‚Ìendorsedƒ‚ƒWƒ…[ƒ‹F
+ *          ã¾ãŸã¯ã€JDK 1.4 + ä»¥ä¸‹ã®endorsedãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼š
  *          <ul>
  *              <li>Xerces 2.9</li>
  *              <li>Xalan 2.7</li>
  *              <li>Xalan Serializer 2.7</li>
  *          </ul>
- *          ‚±‚Ìê‡AƒeƒXƒgƒ‰ƒ“ƒi‚ÌJVM‹N“®ƒIƒvƒVƒ‡ƒ“‚É-Djava.endorsed.dirs‚ğİ’è‚·‚é•K—v‚ ‚è
+ *          ã“ã®å ´åˆã€ãƒ†ã‚¹ãƒˆãƒ©ãƒ³ãƒŠã®JVMèµ·å‹•ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«-Djava.endorsed.dirsã‚’è¨­å®šã™ã‚‹å¿…è¦ã‚ã‚Š
  *          -Djava.endorsed.dirs=lib/endorsed
  *      </li>
  *   </ul>
@@ -76,14 +76,14 @@ public class DataSetHtmlConverterTest extends TestCase {
         Header header = dataSet.getHeader();
         RecordList recordList = dataSet.getRecordList();
         
-        Assert.assertEquals("ƒ^ƒCƒgƒ‹", header.get(DataSetHtmlConverterTestDataSet.PROPERTY1));
-        Assert.assertEquals("ƒeƒLƒXƒg", header.get(DataSetHtmlConverterTestDataSet.PROPERTY2));
+        Assert.assertEquals("ã‚¿ã‚¤ãƒˆãƒ«", header.get(DataSetHtmlConverterTestDataSet.PROPERTY1));
+        Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ", header.get(DataSetHtmlConverterTestDataSet.PROPERTY2));
 
         for(int i=0; i<recordList.size(); i++) {
             Record record = (Record)recordList.get(i);
-            Assert.assertEquals("ƒeƒLƒXƒg"+(i+1)+"-1", record.get(DataSetHtmlConverterTestDataSet.PROPERTY3));
-            Assert.assertEquals("ƒeƒLƒXƒg"+(i+1)+"-2", record.get(DataSetHtmlConverterTestDataSet.PROPERTY4));
-            Assert.assertEquals("ƒeƒLƒXƒg"+(i+1)+"-3", record.get(DataSetHtmlConverterTestDataSet.PROPERTY5));
+            Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ"+(i+1)+"-1", record.get(DataSetHtmlConverterTestDataSet.PROPERTY3));
+            Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ"+(i+1)+"-2", record.get(DataSetHtmlConverterTestDataSet.PROPERTY4));
+            Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ"+(i+1)+"-3", record.get(DataSetHtmlConverterTestDataSet.PROPERTY5));
         }
     }
     

@@ -49,7 +49,7 @@ import net.jpountz.lz4.LZ4BlockOutputStream;
 
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTPƒŠƒNƒGƒXƒg’ŠÛƒNƒ‰ƒXB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆæŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -59,11 +59,11 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     public static final String HTTP_VERSION_1_0 = "1.0";
     public static final String HTTP_VERSION_1_1 = "1.1";
     
-    /** ƒwƒbƒ_[ : Content-Type */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Type */
     protected static final String HEADER_CONTENT_TYPE = "Content-Type";
-    /** ƒwƒbƒ_[ : charset */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : charset */
     protected static final String HEADER_CHARSET = "charset";
-    /** ƒwƒbƒ_[ : Content-Encoding */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Encoding */
     protected static final String HEADER_CONTENT_ENCODING = "Content-Encoding";
     /** Content-Encoding : deflate */
     protected static final String CONTENT_ENCODING_DEFLATE = "deflate";
@@ -95,46 +95,46 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     protected int deflateLength = -1;
     protected Map httpMethodParamMap;
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getActionName(){
         return actionName;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğˆêˆÓ‚É¯•Ê‚·‚é˜_—ƒAƒNƒVƒ‡ƒ“–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒAƒNƒVƒ‡ƒ“–¼
+     * @param name ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
      */
     public void setActionName(String name){
         actionName = name;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getURL(){
         return url;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setURL(String url){
         this.url = url;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getHttpVersion(){
         return httpVersion;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setHttpVersion(String version){
         httpVersion = version;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public Set getHeaderNameSet(){
         return headerMap == null ? new HashSet() : headerMap.keySet();
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getHeader(String name){
         final String[] headers = getHeaders(name);
         if(headers == null){
@@ -143,7 +143,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         return headers[0];
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String[] getHeaders(String name){
         if(headerMap == null){
             return null;
@@ -152,16 +152,16 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
-     * HTTPƒwƒbƒ_‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnullB<br>
+     * HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * HTTPãƒ˜ãƒƒãƒ€ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã€‚<br>
      *
-     * @return HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv
+     * @return HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—
      */
     public Map getHeaderMap(){
         return headerMap;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setHeader(String name, String value){
         if(headerMap == null){
             headerMap = new HashMap();
@@ -169,7 +169,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         headerMap.put(name, new String[]{value});
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setHeaders(String name, String[] value){
         if(headerMap == null){
             headerMap = new HashMap();
@@ -177,7 +177,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         headerMap.put(name, value);
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void addHeader(String name, String value){
         if(headerMap == null){
             headerMap = new HashMap();
@@ -195,9 +195,9 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒwƒbƒ_‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ˜ãƒƒãƒ€ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
+     * @param name ãƒ˜ãƒƒãƒ€å
      */
     public void removeHeader(String name){
         if(headerMap == null){
@@ -206,42 +206,42 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         headerMap.remove(name);
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getContentType(){
         return contentType;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setContentType(String type){
         contentType = type;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getCharacterEncoding(){
         return characterEncoding;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setCharacterEncoding(String encoding){
         characterEncoding = encoding;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getQueryString(){
         return queryString;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setQueryString(String query){
         queryString = query;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public Set getParameterNameSet(){
         return parameterMap == null ? new HashSet() : parameterMap.keySet();
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String getParameter(String name){
         final String[] params = getParameters(name);
         if(params == null){
@@ -250,7 +250,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         return params[0];
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public String[] getParameters(String name){
         if(parameterMap == null){
             return null;
@@ -259,16 +259,16 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnullB<br>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã€‚<br>
      *
-     * @return HTTPƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv
+     * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—
      */
     public Map getParameterMap(){
         return parameterMap;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setParameter(String name, String value){
         if(parameterMap == null){
             parameterMap = new LinkedHashMap();
@@ -285,7 +285,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         }
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setParameters(String name, String[] value){
         if(parameterMap == null){
             parameterMap = new LinkedHashMap();
@@ -293,12 +293,12 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         parameterMap.put(name, value);
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setFileParameter(String name, File file) throws java.io.FileNotFoundException{
         setFileParameter(name, file, null, null);
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setFileParameter(String name, File file, String fileName, String contentType) throws java.io.FileNotFoundException{
         FilePart part = new FilePart(
             name,
@@ -313,12 +313,12 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         parameterMap.put(name, part);
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setInputStream(InputStream is){
         inputStream = is;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public OutputStream getOutputStream(){
         if(outputStream == null){
             outputStream = new ByteArrayOutputStream();
@@ -326,66 +326,66 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         return outputStream;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public void setObject(Object input){
         inputObject = input;
     }
     
-    // HttpRequest‚ÌJavaDoc
+    // HttpRequestã®JavaDoc
     public Object getObject(){
         return inputObject;
     }
     
     /**
-     * ”FØî•ñ‚ğ‘—M‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’é€ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isDo ”FØî•ñ‚ğ‘—M‚·‚éê‡true
+     * @param isDo èªè¨¼æƒ…å ±ã‚’é€ä¿¡ã™ã‚‹å ´åˆtrue
      */
     public void setDoAuthentication(boolean isDo){
         isDoAuthentication = isDo;
     }
     
     /**
-     * ”FØî•ñ‚ğ‘—M‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’é€ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A”FØî•ñ‚ğ‘—M‚·‚é
+     * @return trueã®å ´åˆã€èªè¨¼æƒ…å ±ã‚’é€ä¿¡ã™ã‚‹
      */
     public boolean isDoAuthentication(){
         return isDoAuthentication;
     }
     
     /**
-     * 304ƒŒƒXƒ|ƒ“ƒX‚ğóM‚µ‚½ê‡‚ÉAw’è‚³‚ê‚½URL‚ÉƒŠƒ_ƒCƒŒƒNƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * 304ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å—ä¿¡ã—ãŸå ´åˆã«ã€æŒ‡å®šã•ã‚ŒãŸURLã«ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isRedirects ƒŠƒ_ƒCƒŒƒNƒg‚·‚éê‡true
+     * @param isRedirects ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã™ã‚‹å ´åˆtrue
      */
     public void setFollowRedirects(boolean isRedirects){
         isFollowRedirects = isRedirects;
     }
     
     /**
-     * 304ƒŒƒXƒ|ƒ“ƒX‚ğóM‚µ‚½ê‡‚ÉAw’è‚³‚ê‚½URL‚ÉƒŠƒ_ƒCƒŒƒNƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * 304ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å—ä¿¡ã—ãŸå ´åˆã«ã€æŒ‡å®šã•ã‚ŒãŸURLã«ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒŠƒ_ƒCƒŒƒNƒg‚·‚é
+     * @return trueã®å ´åˆã€ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã™ã‚‹
      */
     public boolean isFollowRedirects(){
         return isFollowRedirects;
     }
     
     /**
-     * Jakarta HttpClient‚ÌHttpMethodParams‚Éİ’è‚·‚éƒpƒ‰ƒ[ƒ^–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * Jakarta HttpClientã®HttpMethodParamsã«è¨­å®šã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒ‰ƒ[ƒ^–¼‚ÌW‡
+     * @return ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã®é›†åˆ
      */
     public Set getHttpMethodParamNameSet(){
         return httpMethodParamMap == null ? new HashSet() : httpMethodParamMap.keySet();
     }
     
     /**
-     * Jakarta HttpClient‚ÌHttpMethodParams‚Éİ’è‚·‚éƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * Jakarta HttpClientã®HttpMethodParamsã«è¨­å®šã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒ‰ƒ[ƒ^–¼
-     * @param value ’l
+     * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param value å€¤
      */
     public void setHttpMethodParam(String name, Object value){
         if(httpMethodParamMap == null){
@@ -395,10 +395,10 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * Jakarta HttpClient‚ÌHttpMethodParams‚Éİ’è‚·‚éƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * Jakarta HttpClientã®HttpMethodParamsã«è¨­å®šã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒ‰ƒ[ƒ^–¼
-     * @return ’l
+     * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @return å€¤
      */
     public Object getHttpMethodParam(String name){
         if(httpMethodParamMap == null){
@@ -408,9 +408,9 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * Jakarta HttpClient‚ÌHttpMethodParams‚Éİ’è‚·‚éƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * Jakarta HttpClientã®HttpMethodParamsã«è¨­å®šã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HttpMethodParams‚Éİ’è‚·‚éƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv
+     * @return HttpMethodParamsã«è¨­å®šã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—
      */
     public Map getHttpMethodParamMap(){
         if(httpMethodParamMap == null){
@@ -420,25 +420,25 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setStreamConverterServiceName(ServiceName name){
         streamConverterServiceName = name;
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getStreamConverterServiceName(){
         return streamConverterServiceName;
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğİ’è‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param converter StreamConverter
      */
@@ -447,7 +447,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return StreamConverter
      */
@@ -456,46 +456,46 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğˆ³k‚·‚éê‡‚Ìè‡’l[byte]‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA“ü—ÍƒXƒgƒŠ[ƒ€‚ÌƒTƒCƒY‚ÉŠÖ‚í‚ç‚¸ˆ³k‚·‚éB<br>
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’åœ§ç¸®ã™ã‚‹å ´åˆã®é–¾å€¤[byte]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ã‚µã‚¤ã‚ºã«é–¢ã‚ã‚‰ãšåœ§ç¸®ã™ã‚‹ã€‚<br>
      *
-     * @param length è‡’l[byte]
+     * @param length é–¾å€¤[byte]
      */
     public void setDeflateLength(int length){
         deflateLength = length;
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğˆ³k‚·‚éê‡‚Ìè‡’l[byte]‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’åœ§ç¸®ã™ã‚‹å ´åˆã®é–¾å€¤[byte]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l[byte]
+     * @return é–¾å€¤[byte]
      */
     public int getDeflateLength(){
         return deflateLength;
     }
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚µ‚½Û‚ÌƒoƒCƒg”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã—ãŸéš›ã®ãƒã‚¤ãƒˆé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚µ‚½Û‚ÌƒoƒCƒg”z—ñ
+     * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã—ãŸéš›ã®ãƒã‚¤ãƒˆé…åˆ—
      */
     public byte[] getInputBytes(){
         return inputBytes;
     }
     
     /**
-     * ‹ó‚ÌHTTPƒƒ\ƒbƒh‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®HTTPãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒƒ\ƒbƒh
-     * @exception Exception HTTPƒƒ\ƒbƒh‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception Exception HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected abstract HttpMethodBase instanciateHttpMethod() throws Exception;
     
     /**
-     * HTTPƒƒ\ƒbƒh‚ğ‰Šú‰»‚·‚éB<p>
+     * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @exception Exception HTTPƒƒ\ƒbƒh‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception Exception HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initHttpMethod(HttpMethodBase method) throws Exception{
         if(url != null){
@@ -605,15 +605,15 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğˆ³k‚·‚éB<p>
-     * (Content-Encoding‚Éw’è‚³‚ê‚½‡‚Åˆ³k)
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’åœ§ç¸®ã™ã‚‹ã€‚<p>
+     * (Content-Encodingã«æŒ‡å®šã•ã‚ŒãŸé †ã§åœ§ç¸®)
      * 
-     * @param inputBytes “ü—ÍƒoƒCƒg”z—ñ
-     * @return ˆ³k‚³‚ê‚½“ü—ÍƒXƒgƒŠ[ƒ€
-     * @throws IOException ƒTƒ|[ƒg‚µ‚Ä‚¢‚È‚¢ˆ³kŒ`®(deflate, gzipˆÈŠO)‚ªw’è‚³‚ê‚½ê‡
+     * @param inputBytes å…¥åŠ›ãƒã‚¤ãƒˆé…åˆ—
+     * @return åœ§ç¸®ã•ã‚ŒãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @throws IOException ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ãªã„åœ§ç¸®å½¢å¼(deflate, gzipä»¥å¤–)ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆ
      */
     protected InputStream compress(byte[] inputBytes) throws IOException {
-        // ƒwƒbƒ_[[Content-Encoding]‚Ì’l‚ğæ“¾
+        // ãƒ˜ãƒƒãƒ€ãƒ¼[Content-Encoding]ã®å€¤ã‚’å–å¾—
         String encode = getHeader(HEADER_CONTENT_ENCODING);
         if(encode == null){
             return new ByteArrayInputStream(inputBytes);
@@ -632,11 +632,11 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         OutputStream os = baos;
         if(encode.indexOf(CONTENT_ENCODING_DEFLATE) != -1){
-            // deflateˆ³k
+            // deflateåœ§ç¸®
             os = new DeflaterOutputStream(os);
         }else if(encode.indexOf(CONTENT_ENCODING_GZIP) != -1
                     || encode.indexOf(CONTENT_ENCODING_X_GZIP) != -1){
-            // gzipˆ³k
+            // gzipåœ§ç¸®
             os = new GZIPOutputStream(os);
 
         }else if(encode.indexOf(CONTENT_ENCODING_SNAPPY) != -1){
@@ -657,11 +657,11 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * HTTPƒƒ\ƒbƒh‚ÌƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğ‰Šú‰»‚·‚éB<p>
+     * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param params ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
-     * @exception Exception HTTPƒƒ\ƒbƒh‚ÌƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @exception Exception HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected abstract void initParameter(
         HttpMethodBase method,
@@ -669,11 +669,11 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     ) throws Exception;
     
     /**
-     * HTTPƒƒ\ƒbƒh‚ÌƒŠƒNƒGƒXƒgƒ{ƒfƒB‚ğ‰Šú‰»‚·‚éB<p>
+     * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception Exception HTTPƒƒ\ƒbƒh‚ÌƒŠƒNƒGƒXƒgƒ{ƒfƒB‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected abstract void initInputStream(
         HttpMethodBase method,
@@ -681,10 +681,10 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     ) throws Exception;
     
     /**
-     * HTTPƒƒ\ƒbƒh‚ğ¶¬‚·‚éB<p>
+     * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒƒ\ƒbƒh
-     * @exception HttpRequestCreateException HTTPƒƒ\ƒbƒh‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception HttpRequestCreateException HTTPãƒ¡ã‚½ãƒƒãƒ‰ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public HttpMethodBase createHttpMethod() throws HttpRequestCreateException{
         HttpMethodBase httpMethod = null;
@@ -700,10 +700,10 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
-     * •¡»‚ğ¶¬‚·‚éB<p>
+     * è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return •¡»
-     * @exception CloneNotSupportedException •¡»‚É¸”s‚µ‚½ê‡
+     * @return è¤‡è£½
+     * @exception CloneNotSupportedException è¤‡è£½ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object clone() throws CloneNotSupportedException{
         final HttpRequestImpl clone = (HttpRequestImpl)super.clone();

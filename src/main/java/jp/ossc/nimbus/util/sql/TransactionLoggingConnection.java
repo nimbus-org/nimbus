@@ -68,8 +68,8 @@ import jp.ossc.nimbus.core.ServiceNotFoundException;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‹L˜^ConnectionB<p>
- * ‚±‚ÌConnectionWrapper‚ğg—p‚·‚éê‡‚ÍA—\‚ßTRANSACTION_LOGƒe[ƒuƒ‹‚ÆTRANSACTION_PARAMS_LOGƒe[ƒuƒ‹‚ğì¬‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+ * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³è¨˜éŒ²Connectionã€‚<p>
+ * ã“ã®ConnectionWrapperã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€äºˆã‚TRANSACTION_LOGãƒ†ãƒ¼ãƒ–ãƒ«ã¨TRANSACTION_PARAMS_LOGãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -120,9 +120,9 @@ public class  TransactionLoggingConnection extends ConnectionWrapper {
     }
     
     /**
-     * w’è‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒ‰ƒbƒv‚·‚éƒRƒlƒNƒVƒ‡ƒ“
+     * @param con ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public TransactionLoggingConnection(Connection con){
         super(con);
@@ -130,55 +130,55 @@ public class  TransactionLoggingConnection extends ConnectionWrapper {
     }
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‹L˜^ƒe[ƒuƒ‹–¼‚ğİ’è‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³è¨˜éŒ²ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒe[ƒuƒ‹–¼
+     * @param name ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public void setTransactionTableName(String name){
         transactionTableName = name;
     }
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‹L˜^ƒpƒ‰ƒ[ƒ^ƒe[ƒuƒ‹–¼‚ğİ’è‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³è¨˜éŒ²ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒe[ƒuƒ‹–¼
+     * @param name ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public void setTransactionParamTableName(String name){
         transactionParamTableName = name;
     }
     
     /**
-     * ’Ê”ÔƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * é€šç•ªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
     
     /**
-     * ’Ê”ÔƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * é€šç•ªã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param sequence ’Ê”ÔƒT[ƒrƒX
+     * @param sequence é€šç•ªã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setSequence(Sequence sequence){
         this.sequence = sequence;
     }
     
     /**
-     * XVƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
+     * æ›´æ–°ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name XVƒ†[ƒU–¼
+     * @param name æ›´æ–°ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUpdateUser(String name){
         updateUser = name;
     }
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‹L˜^‚ğƒoƒbƒ`Às‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åƒoƒbƒ`Às‚·‚éB<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³è¨˜éŒ²ã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã€‚<br>
      *
-     * @param isBatch ƒoƒbƒ`Às‚·‚éê‡true
+     * @param isBatch ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹å ´åˆtrue
      */
     public void setBatch(boolean isBatch){
         this.isBatch = isBatch;

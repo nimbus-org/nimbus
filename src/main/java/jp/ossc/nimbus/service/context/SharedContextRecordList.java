@@ -47,8 +47,8 @@ import jp.ossc.nimbus.beans.dataset.RecordSchema;
 import jp.ossc.nimbus.beans.dataset.PropertySchemaDefineException;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒg—p‚ÌƒŒƒR[ƒhƒŠƒXƒgB<p>
- * ·•ªXV‚ğƒTƒ|[ƒg‚·‚éB<br>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç”¨ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã€‚<p>
+ * å·®åˆ†æ›´æ–°ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -59,45 +59,45 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     protected int updateVersion;
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public SharedContextRecordList(){
     }
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
      */
     public SharedContextRecordList(boolean isSynch){
         super(isSynch);
     }
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
      */
     public SharedContextRecordList(String name){
         super(name);
     }
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
      */
     public SharedContextRecordList(String name, boolean isSynch){
         super(name, isSynch);
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecordList(String name, String schema)
      throws PropertySchemaDefineException{
@@ -105,12 +105,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecordList(String name, String schema, boolean isSynch)
      throws PropertySchemaDefineException{
@@ -118,11 +118,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecordList(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
@@ -130,12 +130,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecordList(String name, RecordSchema schema, boolean isSynch)
      throws PropertySchemaDefineException{
@@ -143,11 +143,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param clazz ƒŒƒR[ƒhƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecordList(String name, Class clazz)
      throws PropertySchemaDefineException{
@@ -155,12 +155,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param clazz ƒŒƒR[ƒhƒNƒ‰ƒX
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecordList(String name, Class clazz, boolean isSynch)
      throws PropertySchemaDefineException{
@@ -184,12 +184,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğ’Ç‰Á‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param record ƒŒƒR[ƒh
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param record ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateAdd(Record record, SharedContextValueDifference diff) throws SharedContextUpdateException{
         if(diff == null){
@@ -202,13 +202,13 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğAw’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚É‘}“ü‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ã€æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«æŒ¿å…¥ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @param record ƒŒƒR[ƒh
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param record ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateAdd(int index, Record record, SharedContextValueDifference diff) throws SharedContextUpdateException{
         if(diff == null){
@@ -221,13 +221,13 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğAw’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚Æ·‚µ‘Ö‚¦‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ã€æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨å·®ã—æ›¿ãˆãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @param record ƒŒƒR[ƒh
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param record ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateSet(int index, Record record, SharedContextValueDifference diff) throws SharedContextUpdateException{
         if(diff == null){
@@ -240,12 +240,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğíœ‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateRemove(int index, SharedContextValueDifference diff) throws SharedContextUpdateException{
         if(diff == null){
@@ -295,7 +295,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg·•ªî•ñB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå·®åˆ†æƒ…å ±ã€‚<p>
      *
      * @author M.Takata
      */
@@ -312,11 +312,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param record ’Ç‰Á‚·‚éƒŒƒR[ƒh
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param record è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void add(SharedContextRecordList list, Record record) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -327,12 +327,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param index ’Ç‰Á‚·‚éƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @param record ’Ç‰Á‚·‚éƒŒƒR[ƒh
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param index è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param record è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void add(SharedContextRecordList list, int index, Record record) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -354,12 +354,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ğ·‚µ‘Ö‚¦‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å·®ã—æ›¿ãˆã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param index ·‚µ‘Ö‚¦‚·‚éƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @param record ·‚µ‘Ö‚¦‚·‚éƒŒƒR[ƒh
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param index å·®ã—æ›¿ãˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param record å·®ã—æ›¿ãˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void set(SharedContextRecordList list, int index, Record record) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -381,12 +381,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ğíœ‚·‚éXV‚ğŠi”[‚·‚éB<p>
-         * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ªƒŒƒR[ƒhƒŠƒXƒg‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA–³‹‚·‚éB<br>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãŒãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«å«ã¾ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç„¡è¦–ã™ã‚‹ã€‚<br>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param val íœ‚·‚éƒŒƒR[ƒh
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param val å‰Šé™¤ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void remove(SharedContextRecordList list, Object val) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -415,11 +415,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ğíœ‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param index íœ‚·‚éƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param index å‰Šé™¤ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void remove(SharedContextRecordList list, int index) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -441,10 +441,10 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒhƒŠƒXƒg‚ğ‘S‚Äíœ‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void clear(SharedContextRecordList list) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -455,11 +455,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ÌW‡‚ğ’Ç‰Á‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆã‚’è¿½åŠ ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param c ’Ç‰Á‚·‚éƒŒƒR[ƒh‚ÌW‡
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param c è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆ
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void addAll(SharedContextRecordList list, Collection c) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -470,12 +470,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ÌW‡‚ğ’Ç‰Á‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆã‚’è¿½åŠ ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param index ’Ç‰Á‚·‚éƒCƒ“ƒfƒbƒNƒX
-         * @param c ’Ç‰Á‚·‚éƒŒƒR[ƒh‚ÌW‡
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param index è¿½åŠ ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param c è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆ
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void addAll(SharedContextRecordList list, int index, Collection c) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -489,11 +489,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒh‚ÌW‡‚ğíœ‚·‚éXV‚ğŠi”[‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆã‚’å‰Šé™¤ã™ã‚‹æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param c íœ‚·‚éƒŒƒR[ƒh‚ÌW‡
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param c å‰Šé™¤ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆ
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void removeAll(SharedContextRecordList list, Collection c) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -504,11 +504,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ÌW‡‚Ì‚İ‚ğc‚·XV‚ğŠi”[‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆã®ã¿ã‚’æ®‹ã™æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param c c‚·ƒŒƒR[ƒh‚ÌW‡
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param c æ®‹ã™ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é›†åˆ
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void retainAll(SharedContextRecordList list, Collection c) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -519,12 +519,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * w’è‚³‚ê‚½ƒŒƒR[ƒh‚Ì·•ª‚ğXV‚ğŠi”[‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®å·®åˆ†ã‚’æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
          *
-         * @param list ƒŒƒR[ƒhƒŠƒXƒg
-         * @param index ƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @param diff ƒŒƒR[ƒh‚Ì·•ªî•ñ
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @param index ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param diff ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å·®åˆ†æƒ…å ±
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void updateRecord(SharedContextRecordList list, int index, SharedContextRecord.Difference diff) throws SharedContextUpdateException{
             if(transactionList == null){
@@ -553,21 +553,21 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * w’è‚³‚ê‚½ƒŒƒR[ƒh‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @return ·•ªî•ñB·•ª‚ª‚È‚¢ê‡‚ÍAnull
+         * @param index ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return å·®åˆ†æƒ…å ±ã€‚å·®åˆ†ãŒãªã„å ´åˆã¯ã€null
          */
         protected SharedContextRecord.Difference getRecordDifference(int index){
             return recordDiffMap == null ? null : (SharedContextRecord.Difference)recordDiffMap.get(new Integer(index));
         }
         
         /**
-         * w’è‚³‚ê‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÉXV‚ğ”½‰f‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«æ›´æ–°ã‚’åæ˜ ã™ã‚‹ã€‚<p>
          *
-         * @param list XV‘ÎÛ‚ÌƒŒƒR[ƒhƒŠƒXƒg
-         * @return ‘S‚ÄXV‚³‚ê‚½ê‡A1BXV‚³‚ê‚½‚à‚Ì‚ÆAXV‚·‚é•K—v‚ª‚È‚©‚Á‚½‚à‚Ì‚ª‘¶İ‚·‚éê‡A0B®‡«‚ªæ‚ê‚¸‚ÉAXV‚Å‚«‚È‚¢‚à‚Ì‚ª‘¶İ‚·‚éê‡A-1B
-         * @exception SharedContextUpdateException XV‚Ì”½‰f‚É¸”s‚µ‚½ê‡
+         * @param list æ›´æ–°å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+         * @return å…¨ã¦æ›´æ–°ã•ã‚ŒãŸå ´åˆã€1ã€‚æ›´æ–°ã•ã‚ŒãŸã‚‚ã®ã¨ã€æ›´æ–°ã™ã‚‹å¿…è¦ãŒãªã‹ã£ãŸã‚‚ã®ãŒå­˜åœ¨ã™ã‚‹å ´åˆã€0ã€‚æ•´åˆæ€§ãŒå–ã‚Œãšã«ã€æ›´æ–°ã§ããªã„ã‚‚ã®ãŒå­˜åœ¨ã™ã‚‹å ´åˆã€-1ã€‚
+         * @exception SharedContextUpdateException æ›´æ–°ã®åæ˜ ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public int updateRecordList(SharedContextRecordList list) throws SharedContextUpdateException{
             int result = 1;
@@ -598,28 +598,28 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * XV‚³‚ê‚½‚©‚ğ”»’è‚·‚éB<p>
+         * æ›´æ–°ã•ã‚ŒãŸã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return XV‚³‚ê‚½ê‡‚ÍAtrue
+         * @return æ›´æ–°ã•ã‚ŒãŸå ´åˆã¯ã€true
          */
         public boolean isUpdate(){
             return transactionList != null && transactionList.size() != 0;
         }
         
         /**
-         * XV‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * æ›´æ–°ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return XVƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg
+         * @return æ›´æ–°ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆ
          */
         public List getTransactionList(){
             return transactionList;
         }
         
         /**
-         * w’è‚³‚ê‚½í•Ê‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸç¨®åˆ¥ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          * 
-         * @param type ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“í•Ê
-         * @return XVƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgBw’è‚³‚ê‚½í•Ê‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @param type ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç¨®åˆ¥
+         * @return æ›´æ–°ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚æŒ‡å®šã•ã‚ŒãŸç¨®åˆ¥ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         protected List getTransactionList(int type){
             if(transactionList == null || transactionList.size() == 0){
@@ -639,81 +639,81 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ’Ç‰Áƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * è¿½åŠ ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ’Ç‰Áƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return è¿½åŠ ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getAddTransactionList(){
             return getTransactionList(Transaction.ADD);
         }
         
         /**
-         * ·‚µ‘Ö‚¦ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * å·®ã—æ›¿ãˆãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ·‚µ‘Ö‚¦ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return å·®ã—æ›¿ãˆãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getSetTransactionList(){
             return getTransactionList(Transaction.SET);
         }
         
         /**
-         * íœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return íœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getRemoveTransactionList(){
             return getTransactionList(Transaction.REMOVE);
         }
         
         /**
-         * ƒCƒ“ƒfƒbƒNƒXw’èíœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æŒ‡å®šå‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒCƒ“ƒfƒbƒNƒXw’èíœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æŒ‡å®šå‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getRemoveIndexTransactionList(){
             return getTransactionList(Transaction.REMOVEINDEX);
         }
         
         /**
-         * ‘S’Ç‰Áƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * å…¨è¿½åŠ ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ‘S’Ç‰Áƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return å…¨è¿½åŠ ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getAddAllTransactionList(){
             return getTransactionList(Transaction.ADDALL);
         }
         
         /**
-         * ‘Síœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * å…¨å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ‘Síœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return å…¨å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getRemoveAllTransactionList(){
             return getTransactionList(Transaction.REMOVEALL);
         }
         
         /**
-         * w’è—v‘fW‡‚Ì‚İ‚ğc‚·ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šè¦ç´ é›†åˆã®ã¿ã‚’æ®‹ã™ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return w’è—v‘fW‡‚Ì‚İ‚ğc‚·ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return æŒ‡å®šè¦ç´ é›†åˆã®ã¿ã‚’æ®‹ã™ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getRetainAllTransactionList(){
             return getTransactionList(Transaction.RETAINALL);
         }
         
         /**
-         * ƒŒƒR[ƒhXVƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒŒƒR[ƒhXVƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒŠƒXƒgB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+         * @return ãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚¹ãƒˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
          */
         public List getUpdateTransactionList(){
             return getTransactionList(Transaction.UPDATE);
         }
         
         /**
-         * ‘SŒíœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚é‚©”»’è‚·‚éB<p>
+         * å…¨ä»¶å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ‘SŒíœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAtrue
+         * @return å…¨ä»¶å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€true
          */
         public boolean isClear(){
             List trans = getTransactionList(Transaction.CLEAR);
@@ -780,61 +780,61 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
         public static interface Transaction extends Externalizable{
             
             /**
-             * XVí•ÊF’Ç‰ÁB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šè¿½åŠ ã€‚<p>
              */
             public static final byte ADD         = 1;
             
             /**
-             * XVí•ÊF·‚µ‘Ö‚¦B<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šå·®ã—æ›¿ãˆã€‚<p>
              */
             public static final byte SET         = 2;
             
             /**
-             * XVí•ÊFíœB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šå‰Šé™¤ã€‚<p>
              */
             public static final byte REMOVE      = 3;
             
             /**
-             * XVí•ÊF‘SíœB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šå…¨å‰Šé™¤ã€‚<p>
              */
             public static final byte CLEAR       = 4;
             
             /**
-             * XVí•ÊFW‡’Ç‰ÁB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šé›†åˆè¿½åŠ ã€‚<p>
              */
             public static final byte ADDALL      = 5;
             
             /**
-             * XVí•ÊFW‡íœB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šé›†åˆå‰Šé™¤ã€‚<p>
              */
             public static final byte REMOVEALL   = 6;
             
             /**
-             * XVí•ÊFW‡c‚µB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šé›†åˆæ®‹ã—ã€‚<p>
              */
             public static final byte RETAINALL   = 7;
             
             /**
-             * XVí•ÊFƒŒƒR[ƒhXVB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ã€‚<p>
              */
             public static final byte UPDATE      = 8;
             
             /**
-             * XVí•ÊFƒCƒ“ƒfƒbƒNƒXw’èíœB<p>
+             * æ›´æ–°ç¨®åˆ¥ï¼šã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æŒ‡å®šå‰Šé™¤ã€‚<p>
              */
             public static final byte REMOVEINDEX = 9;
             
             /**
-             * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“í•Ê‚ğæ“¾‚·‚éB<p>
+             * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“í•Ê
+             * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç¨®åˆ¥
              * @see #ADD
              * @see #SET
              * @see #REMOVE
@@ -848,11 +848,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             public byte getType();
             
             /**
-             * ƒŒƒR[ƒhƒŠƒXƒg‚Éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğ”½‰f‚·‚éB<p>
+             * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’åæ˜ ã™ã‚‹ã€‚<p>
              *
-             * @param list ƒŒƒR[ƒhƒŠƒXƒg
-             * @return XV‚³‚ê‚½ê‡A1BXV‚·‚é•K—v‚ª‚È‚©‚Á‚½ê‡A0B®‡«‚ªæ‚ê‚¸‚ÉAXV‚Å‚«‚È‚¢ê‡A-1B
-             * @exception SharedContextUpdateException XV‚Ì”½‰f‚É¸”s‚µ‚½ê‡
+             * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+             * @return æ›´æ–°ã•ã‚ŒãŸå ´åˆã€1ã€‚æ›´æ–°ã™ã‚‹å¿…è¦ãŒãªã‹ã£ãŸå ´åˆã€0ã€‚æ•´åˆæ€§ãŒå–ã‚Œãšã«ã€æ›´æ–°ã§ããªã„å ´åˆã€-1ã€‚
+             * @exception SharedContextUpdateException æ›´æ–°ã®åæ˜ ã«å¤±æ•—ã—ãŸå ´åˆ
              */
             public int execute(SharedContextRecordList list) throws SharedContextUpdateException;
             
@@ -861,7 +861,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * W‡ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * é›†åˆãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -869,7 +869,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ’Ç‰Áƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * è¿½åŠ ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -901,18 +901,18 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * ’Ç‰Á‚·‚éƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+             * è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒXB––”ö‚É’Ç‰Á‚·‚éê‡‚ÍA-1
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚æœ«å°¾ã«è¿½åŠ ã™ã‚‹å ´åˆã¯ã€-1
              */
             public int getIndex(){
                 return index;
             }
             
             /**
-             * ’Ç‰Á‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+             * è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
              */
             public Record getRecord(){
                 return record;
@@ -945,7 +945,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ·‚µ‘Ö‚¦ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * å·®ã—æ›¿ãˆãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -970,18 +970,18 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * ·‚µ‘Ö‚¦‚éƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+             * å·®ã—æ›¿ãˆã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
              */
             public int getIndex(){
                 return index;
             }
             
             /**
-             * ·‚µ‘Ö‚¦‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+             * å·®ã—æ›¿ãˆã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
              */
             public Record getRecord(){
                 return record;
@@ -1014,7 +1014,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * íœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1039,9 +1039,9 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * íœ‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+             * å‰Šé™¤ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
              */
             public Object getObject(){
                 return obj;
@@ -1072,7 +1072,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒCƒ“ƒfƒbƒNƒXw’èíœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æŒ‡å®šå‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1095,9 +1095,9 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * íœƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+             * å‰Šé™¤ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
              */
             public int getIndex(){
                 return index;
@@ -1128,7 +1128,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ‘Síœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * å…¨å‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1157,7 +1157,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * W‡’Ç‰Áƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * é›†åˆè¿½åŠ ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1189,18 +1189,18 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * ’Ç‰Á‚·‚éƒŒƒR[ƒhW‡‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+             * è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒhW‡‚ÌƒCƒ“ƒfƒbƒNƒXB––”ö‚É’Ç‰Á‚·‚éê‡‚ÍA-1
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚æœ«å°¾ã«è¿½åŠ ã™ã‚‹å ´åˆã¯ã€-1
              */
             public int getIndex(){
                 return index;
             }
             
             /**
-             * ’Ç‰Á‚·‚éƒŒƒR[ƒhW‡‚ğæ“¾‚·‚éB<p>
+             * è¿½åŠ ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒhW‡
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆ
              */
             public Collection getRecords(){
                 return c;
@@ -1223,7 +1223,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * W‡íœƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * é›†åˆå‰Šé™¤ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1246,9 +1246,9 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * íœ‚·‚éƒŒƒR[ƒhW‡‚ğæ“¾‚·‚éB<p>
+             * å‰Šé™¤ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒhW‡
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆ
              */
             public Collection getRecords(){
                 return c;
@@ -1268,7 +1268,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * W‡c‚µƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * é›†åˆæ®‹ã—ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1291,9 +1291,9 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * c‚·ƒŒƒR[ƒhW‡‚ğæ“¾‚·‚éB<p>
+             * æ®‹ã™ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒhW‡
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰é›†åˆ
              */
             public Collection getRecords(){
                 return c;
@@ -1313,7 +1313,7 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         }
         
         /**
-         * ƒŒƒR[ƒhXVƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+         * ãƒ¬ã‚³ãƒ¼ãƒ‰æ›´æ–°ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
          *
          * @author M.Takata
          */
@@ -1334,9 +1334,9 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * XV‚³‚ê‚½‚©‚ğ”»’è‚·‚éB<p>
+             * æ›´æ–°ã•ã‚ŒãŸã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
              *
-             * @return XV‚³‚ê‚½ê‡‚ÍAtrue
+             * @return æ›´æ–°ã•ã‚ŒãŸå ´åˆã¯ã€true
              */
             public boolean isUpdate(){
                 return diff.isUpdate();
@@ -1353,18 +1353,18 @@ public class SharedContextRecordList extends RecordList implements SharedContext
             }
             
             /**
-             * XV‚·‚éƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+             * æ›´æ–°ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒX
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
              */
             public int getIndex(){
                 return index;
             }
             
             /**
-             * XV‚·‚éƒŒƒR[ƒh‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+             * æ›´æ–°ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒŒƒR[ƒh‚Ì·•ªî•ñ
+             * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å·®åˆ†æƒ…å ±
              */
             public SharedContextRecord.Difference getRecordDifference(){
                 return diff;

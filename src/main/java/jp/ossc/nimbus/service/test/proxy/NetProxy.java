@@ -32,48 +32,48 @@
 package jp.ossc.nimbus.service.test.proxy;
 
 /**
- * ƒvƒƒLƒV‚ð‘€ìEŠÇ—‚·‚é‚½‚ß‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒXB<p>
+ * ãƒ—ãƒ­ã‚­ã‚·ã‚’æ“ä½œãƒ»ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  */
 public interface NetProxy {
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ðƒI[ƒvƒ“‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹ã€‚<p>
      */
     public void open();
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ðƒNƒ[ƒY‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã€‚<p>
      */
     public void close();
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ªƒI[ƒvƒ“‚µ‚Ä‚¢‚é‚©‚ðŠm”F‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆãŒã‚ªãƒ¼ãƒ—ãƒ³ã—ã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ªƒI[ƒvƒ“‚µ‚Ä‚¢‚éê‡Atrue
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆãŒã‚ªãƒ¼ãƒ—ãƒ³ã—ã¦ã„ã‚‹å ´åˆã€true
      */
     public boolean isOpen();
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ðÄƒI[ƒvƒ“‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆã‚’å†ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹ã€‚<p>
      */
     public void reopen();
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ð“€Œ‹‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆã‚’å‡çµã™ã‚‹ã€‚<p>
      */
     public void freeze();
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚Ì“€Œ‹‚ð‰ðœ‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆã®å‡çµã‚’è§£é™¤ã™ã‚‹ã€‚<p>
      */
     public void unfreeze();
 
     /**
-     * ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ª“€Œ‹‚µ‚Ä‚¢‚é‚©‚ðŠm”F‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆãŒå‡çµã—ã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚Ìƒ\ƒPƒbƒg‚ª“€Œ‹‚µ‚Ä‚¢‚éê‡Atrue
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®ã‚½ã‚±ãƒƒãƒˆãŒå‡çµã—ã¦ã„ã‚‹å ´åˆã€true
      */
     public boolean isFrozen();
 

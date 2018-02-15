@@ -41,8 +41,8 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.queue.*;
 
 /**
- * ƒvƒƒLƒVƒT[ƒoƒT[ƒrƒXB<p>
- * “Á’è‚Ìƒ|[ƒg‚ÅÚ‘±‚ğ‘Ò‚¿ó‚¯AÚ‘±‚³‚ê‚é‚ÆƒXƒŒƒbƒh‚ğŠ„‚è“–‚Ä{@link Process}ƒT[ƒrƒX‚Éˆ—‚ğˆÏ÷‚·‚éB<br>
+ * ãƒ—ãƒ­ã‚­ã‚·ã‚µãƒ¼ãƒã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ç‰¹å®šã®ãƒãƒ¼ãƒˆã§æ¥ç¶šã‚’å¾…ã¡å—ã‘ã€æ¥ç¶šã•ã‚Œã‚‹ã¨ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å‰²ã‚Šå½“ã¦{@link Process}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡¦ç†ã‚’å§”è­²ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -67,66 +67,66 @@ public class ProxyServerService extends ServiceBase
     private String bindAddress;
     private int backlog;
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setProcessServiceName(ServiceName name){
         processServiceName = name;
     }
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public ServiceName getProcessServiceName(){
         return processServiceName;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setServerSocketFactoryServiceName(ServiceName name){
         serverSocketFactoryServiceName = name;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public ServiceName getServerSocketFactoryServiceName(){
         return serverSocketFactoryServiceName;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setBindAddress(String address){
         bindAddress = address;
     }
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public String getBindAddress(){
         return bindAddress;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setBacklog(int backlog){
         this.backlog = backlog;
     }
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public int getBacklog(){
         return backlog;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setPort(int port){
         this.port = port;
     }
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public int getPort(){
         return port;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setSoTimeout(int millis){
         soTimeout = millis;
     }
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public int getSoTimeout(){
         return soTimeout;
     }
     
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public void setMaxProcessCount(int count){
         maxProcessCount = count;
     }
-    // ProxyServerServiceMBean‚ÌJavaDoc
+    // ProxyServerServiceMBeanã®JavaDoc
     public int getMaxProcessCount(){
         return maxProcessCount;
     }
@@ -142,18 +142,18 @@ public class ProxyServerService extends ServiceBase
     
     
     /**
-     * {@link Process}‚ğİ’è‚·‚éB<p>
+     * {@link Process}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param process ˆ—‚ğˆÏ÷‚·‚éProcess
+     * @param process å‡¦ç†ã‚’å§”è­²ã™ã‚‹Process
      */
     public void setProcess(Process process){
         this.process = process;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(processServiceName != null){
@@ -204,9 +204,9 @@ public class ProxyServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         try{
@@ -214,7 +214,7 @@ public class ProxyServerService extends ServiceBase
         }catch(IOException e){
         }
         if(serverDaemon != null){
-            // ƒf[ƒ‚ƒ“’â~
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
             serverDaemon.stop();
         }
         queueHandlerContainer.stop();
@@ -224,31 +224,31 @@ public class ProxyServerService extends ServiceBase
         queue.destroy();
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStart(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStop(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onSuspend(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onResume(){
         return true;
     }
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒg‚Ö‚ÌÚ‘±—v‹‚ğ‘Ò‚¿ó‚¯AÚ‘±‚³‚ê‚½ƒ\ƒPƒbƒg‚ğ•Ô‚·B<p>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã¸ã®æ¥ç¶šè¦æ±‚ã‚’å¾…ã¡å—ã‘ã€æ¥ç¶šã•ã‚ŒãŸã‚½ã‚±ãƒƒãƒˆã‚’è¿”ã™ã€‚<p>
      *
-     * @param ctrl ƒf[ƒ‚ƒ“§Œä
-     * @exception Exceptioon Ú‘±—v‹‚Ì‘Ò‚¿ó‚¯‚É¸”s‚µ‚½ê‡
+     * @param ctrl ãƒ‡ãƒ¼ãƒ¢ãƒ³åˆ¶å¾¡
+     * @exception Exceptioon æ¥ç¶šè¦æ±‚ã®å¾…ã¡å—ã‘ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object provide(DaemonControl ctrl) throws Exception{
         Socket socket = null;
@@ -269,11 +269,11 @@ public class ProxyServerService extends ServiceBase
     }
     
     /**
-     * Ú‘±‚³‚ê‚½ƒ\ƒPƒbƒg‚ğProcess‘Ò‚¿ó‚¯ƒLƒ…[‚É“Š“ü‚·‚éB<p>
+     * æ¥ç¶šã•ã‚ŒãŸã‚½ã‚±ãƒƒãƒˆã‚’Processå¾…ã¡å—ã‘ã‚­ãƒ¥ãƒ¼ã«æŠ•å…¥ã™ã‚‹ã€‚<p>
      * 
-     * @param paramObj Ú‘±‚³‚ê‚½ƒ\ƒPƒbƒg
-     * @param ctrl ƒf[ƒ‚ƒ“§Œä
-     * @exception Exception ”­¶‚µ‚È‚¢
+     * @param paramObj æ¥ç¶šã•ã‚ŒãŸã‚½ã‚±ãƒƒãƒˆ
+     * @param ctrl ãƒ‡ãƒ¼ãƒ¢ãƒ³åˆ¶å¾¡
+     * @exception Exception ç™ºç”Ÿã—ãªã„
      */
     public void consume(Object paramObj, DaemonControl ctrl) throws Exception{
         if(paramObj == null){
@@ -284,7 +284,7 @@ public class ProxyServerService extends ServiceBase
     }
     
     /**
-     * Ú‘±’†‚Ì‘S‚Ä‚Ìƒ\ƒPƒbƒg‚ğ‹­§“I‚ÉØ’f‚·‚éB<p>
+     * æ¥ç¶šä¸­ã®å…¨ã¦ã®ã‚½ã‚±ãƒƒãƒˆã‚’å¼·åˆ¶çš„ã«åˆ‡æ–­ã™ã‚‹ã€‚<p>
      */
     public void garbage(){
         if(queue != null){
@@ -300,10 +300,10 @@ public class ProxyServerService extends ServiceBase
     }
     
     /**
-     * Process‘Ò‚¿ó‚¯ƒLƒ…[‚©‚çæ‚èo‚µ‚½ƒ\ƒPƒbƒg‚©‚ç“üo—ÍƒXƒgƒŠ[ƒ€‚ğæ‚èo‚µAProcess‚Éˆ—‚ğˆÏ÷‚·‚éB<p>
+     * Processå¾…ã¡å—ã‘ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚½ã‚±ãƒƒãƒˆã‹ã‚‰å…¥å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–ã‚Šå‡ºã—ã€Processã«å‡¦ç†ã‚’å§”è­²ã™ã‚‹ã€‚<p>
      *
-     * @param obj Ú‘±‚³‚ê‚½ƒ\ƒPƒbƒg
-     * @exception Throwable Process‚Ìˆ—‚É¸”s‚µ‚½ê‡
+     * @param obj æ¥ç¶šã•ã‚ŒãŸã‚½ã‚±ãƒƒãƒˆ
+     * @exception Throwable Processã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void handleDequeuedObject(Object obj) throws Throwable{
         if(obj == null){

@@ -32,24 +32,24 @@
 package jp.ossc.nimbus.service.publish;
 
 /**
- * ŠÔˆø‚«ƒtƒBƒ‹ƒ^[ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * é–“å¼•ããƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ThinOutFilter{
     
     /**
-     * ŠÔˆø‚«‘ÎÛ‚Æ‚·‚é‚©‚ğ”»’è‚·‚éB<p>
+     * é–“å¼•ãå¯¾è±¡ã¨ã™ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param msg ƒƒbƒZ[ƒW
-     * @return true‚Ìê‡AŠÔˆø‚«‘ÎÛ‚Æ‚·‚é
+     * @param msg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @return trueã®å ´åˆã€é–“å¼•ãå¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isThinOut(Message msg);
     
     /**
-     * ŠÔˆø‚©‚¸‚É‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ğƒtƒBƒ‹ƒ^[‚É’Ê’m‚·‚éB<p>
+     * é–“å¼•ã‹ãšã«é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      *
-     * @param msg ƒƒbƒZ[ƒW
+     * @param msg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void notifySendMessage(Message msg);
 }

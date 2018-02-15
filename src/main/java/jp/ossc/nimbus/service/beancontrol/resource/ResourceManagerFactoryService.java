@@ -29,16 +29,16 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol.resource;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 //
 /**
- * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ[ƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒXƒNƒ‰ƒX 
+ * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/30 -ã€€H.Nakano
  */
 public class ResourceManagerFactoryService
 	extends ServiceBase
@@ -47,11 +47,11 @@ public class ResourceManagerFactoryService
 	
     private static final long serialVersionUID = 5040902327875790079L;
     
-    /** À‘•ƒNƒ‰ƒX–¼ */
+    /** å®Ÿè£…ã‚¯ãƒ©ã‚¹å */
 	private String mImplClsName = "jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerImpl" ;
-	/** ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ[ƒNƒ‰ƒXƒNƒ‰ƒX */
+	/** ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚¯ãƒ©ã‚¹ã‚¯ãƒ©ã‚¹ */
 	private Class mImplClass = null ;
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactory#createResourceManager()
 	 */
 	public ResourceManager createResourceManager() {
@@ -65,20 +65,20 @@ public class ResourceManagerFactoryService
 		}
 		return (ResourceManager)ret;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactoryServiceMBean#setImplementsClassName(java.lang.String)
 	 */
 	public void setImplementsClassName(String clsName) {
 		mImplClsName = clsName ;
 		
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactoryServiceMBean#getImplementsClassName()
 	 */
 	public String getImplementsClassName() {
 		return this.mImplClsName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService() throws ClassNotFoundException{

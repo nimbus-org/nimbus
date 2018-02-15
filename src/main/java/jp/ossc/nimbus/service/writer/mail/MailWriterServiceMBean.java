@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MailWriterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MailWriterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MailWriterService
@@ -44,1197 +44,1197 @@ import jp.ossc.nimbus.core.*;
 public interface MailWriterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * javax.mail.Session‚ğJNDI‚©‚çlookup‚·‚é‚ÌƒfƒtƒHƒ‹ƒg‚ÌJNDI–¼B<p>
+     * javax.mail.Sessionã‚’JNDIã‹ã‚‰lookupã™ã‚‹æ™‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®JNDIåã€‚<p>
      */
     public static final String DEFAULT_MAIL_SESSION_JNDI_NAME = "java:/Mail";
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param prop javax.mail.Session‚ÌƒvƒƒpƒeƒB
+     * @param prop javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setSessionProperties(Properties prop);
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Session‚ÌƒvƒƒpƒeƒB
+     * @return javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getSessionProperties();
     
     /**
-     * javax.mail.AuthenticatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Authenticatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name javax.mail.AuthenticatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name javax.mail.Authenticatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setAuthenticatorServiceName(ServiceName name);
     
     /**
-     * javax.mail.AuthenticatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Authenticatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.AuthenticatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return javax.mail.Authenticatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getAuthenticatorServiceName();
     
     /**
-     * javax.mail.Message‚Ìƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param prop javax.mail.Message‚Ìƒwƒbƒ_
+     * @param prop javax.mail.Messageã®ãƒ˜ãƒƒãƒ€
      */
     public void setHeaders(Properties prop);
     
     /**
-     * javax.mail.Message‚Ìƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚Ìƒwƒbƒ_
+     * @return javax.mail.Messageã®ãƒ˜ãƒƒãƒ€
      */
     public Properties getHeaders();
     
     /**
-     * javax.mail.Message‚Ìƒwƒbƒ_‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ãƒ˜ãƒƒãƒ€ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys WritableRecord“à‚ÌƒL[–¼”z—ñ
+     * @param keys WritableRecordå†…ã®ã‚­ãƒ¼åé…åˆ—
      */
     public void setHeaderKeys(String[] keys);
     
     /**
-     * javax.mail.Message‚Ìƒwƒbƒ_‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğsæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ãƒ˜ãƒƒãƒ€ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’så–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼”z—ñ
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼åé…åˆ—
      */
     public String[] getHeaderKeys();
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setEnvelopeFromAddressKey(String key);
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getEnvelopeFromAddressKey();
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"‚ğİ’è‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"
+     * @param address javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"
      */
     public void setEnvelopeFromAddress(String address);
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"
+     * @return javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"
      */
     public String getEnvelopeFromAddress();
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setEnvelopeFromAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Session‚ÌƒvƒƒpƒeƒB"mail.smtp.from"‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Sessionã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"mail.smtp.from"ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isEnvelopeFromAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setFromAddressKey(String key);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getFromAddressKey();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Message‚ÌFromƒAƒhƒŒƒX
+     * @param address javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public void setFromAddress(String address);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌFromƒAƒhƒŒƒX
+     * @return javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getFromAddress();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setFromPersonalKey(String key);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getFromPersonalKey();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param personal javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼
+     * @param personal javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºå
      */
     public void setFromPersonal(String personal);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼
+     * @return javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºå
      */
     public String getFromPersonal();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setFromPersonalEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getFromPersonalEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFromPersonalEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFromPersonalEncoding();
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setFromAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Message‚ÌFromƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Messageã®Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isFromAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setSenderAddressKey(String key);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getSenderAddressKey();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Message‚ÌSenderƒAƒhƒŒƒX
+     * @param address javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public void setSenderAddress(String address);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌSenderƒAƒhƒŒƒX
+     * @return javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getSenderAddress();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setSenderPersonalKey(String key);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getSenderPersonalKey();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param personal javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼
+     * @param personal javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºå
      */
     public void setSenderPersonal(String personal);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼
+     * @return javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºå
      */
     public String getSenderPersonal();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setSenderPersonalEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getSenderPersonalEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setSenderPersonalEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getSenderPersonalEncoding();
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setSenderAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Message‚ÌSenderƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Messageã®Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isSenderAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setToAddressKey(String key);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getToAddressKey();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Message‚ÌToƒAƒhƒŒƒX”z—ñ
+     * @param address javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public void setToAddress(String[] address);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌToƒAƒhƒŒƒX”z—ñ
+     * @return javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public String[] getToAddress();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setToPersonalKey(String key);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getToPersonalKey();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param personal javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @param personal javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public void setToPersonals(String[] personal);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @return javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public String[] getToPersonals();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setToPersonalEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getToPersonalEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO”z—ñ
+     * @param encoding javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°é…åˆ—
      */
     public void setToPersonalEncodings(String[] encoding);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO”z—ñ
+     * @return javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°é…åˆ—
      */
     public String[] getToPersonalEncodings();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setToPersonalEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getToPersonalEncoding();
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setToAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Message‚ÌToƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Messageã®Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isToAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setCcAddressKey(String key);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getCcAddressKey();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Message‚ÌCcƒAƒhƒŒƒX”z—ñ
+     * @param address javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public void setCcAddress(String[] address);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌCcƒAƒhƒŒƒX”z—ñ
+     * @return javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public String[] getCcAddress();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setCcPersonalKey(String key);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getCcPersonalKey();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param personal javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @param personal javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public void setCcPersonals(String[] personal);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @return javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public String[] getCcPersonals();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setCcPersonalEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getCcPersonalEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO”z—ñ
+     * @param encoding javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°é…åˆ—
      */
     public void setCcPersonalEncodings(String[] encoding);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String[] getCcPersonalEncodings();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCcPersonalEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCcPersonalEncoding();
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setCcAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Message‚ÌCcƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Messageã®Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isCcAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setBccAddressKey(String key);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getBccAddressKey();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Message‚ÌBccƒAƒhƒŒƒX”z—ñ
+     * @param address javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public void setBccAddress(String[] address);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌBccƒAƒhƒŒƒX”z—ñ
+     * @return javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public String[] getBccAddress();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setBccPersonalKey(String key);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getBccPersonalKey();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param personal javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @param personal javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public void setBccPersonals(String[] personal);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @return javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public String[] getBccPersonals();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setBccPersonalEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getBccPersonalEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO”z—ñ
+     * @param encoding javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°é…åˆ—
      */
     public void setBccPersonalEncodings(String[] encoding);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String[] getBccPersonalEncodings();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setBccPersonalEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getBccPersonalEncoding();
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setBccAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Message‚ÌBccƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Messageã®Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isBccAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setReplyToAddressKey(String key);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getReplyToAddressKey();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX”z—ñ
+     * @param address javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public void setReplyToAddress(String[] address);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX”z—ñ
+     * @return javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹é…åˆ—
      */
     public String[] getReplyToAddress();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setReplyToPersonalKey(String key);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getReplyToPersonalKey();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param personal javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @param personal javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public void setReplyToPersonals(String[] personal);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼”z—ñ
+     * @return javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåé…åˆ—
      */
     public String[] getReplyToPersonals();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setReplyToPersonalEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getReplyToPersonalEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO”z—ñ
+     * @param encoding javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°é…åˆ—
      */
     public void setReplyToPersonalEncodings(String[] encoding);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String[] getReplyToPersonalEncodings();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setReplyToPersonalEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚Ì•\¦–¼•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã®è¡¨ç¤ºåæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getReplyToPersonalEncoding();
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isValidate ŒŸØ‚·‚éê‡true
+     * @param isValidate æ¤œè¨¼ã™ã‚‹å ´åˆtrue
      */
     public void setReplyToAddressValidate(boolean isValidate);
     
     /**
-     * javax.mail.Message‚ÌReplyToƒAƒhƒŒƒX‚ğƒ[ƒ‹ƒAƒhƒŒƒX‚Æ‚µ‚Ä³‚µ‚¢‚©ŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * javax.mail.Messageã®ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ã—ã¦æ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isReplyToAddressValidate();
     
     /**
-     * javax.mail.Message‚ÌSubject‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setSubjectKey(String key);
     
     /**
-     * javax.mail.Message‚ÌSubject‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getSubjectKey();
     
     /**
-     * javax.mail.Message‚ÌSubject‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param subject javax.mail.Message‚ÌSubject
+     * @param subject javax.mail.Messageã®Subject
      */
     public void setSubject(String subject);
     
     /**
-     * javax.mail.Message‚ÌSubject‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌSubject
+     * @return javax.mail.Messageã®Subject
      */
     public String getSubject();
     
     /**
-     * javax.mail.Message‚ÌSubject‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setSubjectEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌSubject‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getSubjectEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌSubject‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌSubject‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Subjectã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setSubjectEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌSubject‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Subjectã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌSubject‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Subjectã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getSubjectEncoding();
     
     /**
-     * javax.mail.Message‚ÌContentID‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ContentIDã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setContentIDKey(String key);
     
     /**
-     * javax.mail.Message‚ÌContentID‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ContentIDã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getContentIDKey();
     
     /**
-     * javax.mail.Message‚ÌContentID‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ContentIDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id javax.mail.Message‚ÌContentID
+     * @param id javax.mail.Messageã®ContentID
      */
     public void setContentID(String id);
     
     /**
-     * javax.mail.Message‚ÌContentID‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ContentIDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌContentID
+     * @return javax.mail.Messageã®ContentID
      */
     public String getContentID();
     
     /**
-     * javax.mail.Message‚ÌContentLanguage‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ContentLanguageã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setContentLanguageKey(String key);
     
     /**
-     * javax.mail.Message‚ÌContentLanguage‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ContentLanguageã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getContentLanguageKey();
     
     /**
-     * javax.mail.Message‚ÌContentLanguage‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ContentLanguageã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param lang javax.mail.Message‚ÌContentLanguage
+     * @param lang javax.mail.Messageã®ContentLanguage
      */
     public void setContentLanguage(String[] lang);
     
     /**
-     * javax.mail.Message‚ÌContentLanguage‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ContentLanguageã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌContentLanguage
+     * @return javax.mail.Messageã®ContentLanguage
      */
     public String[] getContentLanguage();
     
     /**
-     * javax.mail.Message‚ÌContentMD5‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ContentMD5ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setContentMD5Key(String key);
     
     /**
-     * javax.mail.Message‚ÌContentMD5‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ContentMD5ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getContentMD5Key();
     
     /**
-     * javax.mail.Message‚ÌContentMD5‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®ContentMD5ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param val javax.mail.Message‚ÌContentMD5
+     * @param val javax.mail.Messageã®ContentMD5
      */
     public void setContentMD5(String val);
     
     /**
-     * javax.mail.Message‚ÌContentMD5‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®ContentMD5ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌContentMD5
+     * @return javax.mail.Messageã®ContentMD5
      */
     public String getContentMD5();
     
     /**
-     * javax.mail.Message‚ÌDescription‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setDescriptionKey(String key);
     
     /**
-     * javax.mail.Message‚ÌDescription‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getDescriptionKey();
     
     /**
-     * javax.mail.Message‚ÌDescription‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param val javax.mail.Message‚ÌDescription
+     * @param val javax.mail.Messageã®Description
      */
     public void setDescription(String val);
     
     /**
-     * javax.mail.Message‚ÌDescription‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌDescription
+     * @return javax.mail.Messageã®Description
      */
     public String getDescription();
     
     /**
-     * javax.mail.Message‚ÌDescription‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setDescriptionEncodingKey(String key);
     
     /**
-     * javax.mail.Message‚ÌDescription‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getDescriptionEncodingKey();
     
     /**
-     * javax.mail.Message‚ÌDescription‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding javax.mail.Message‚ÌDescription‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding javax.mail.Messageã®Descriptionã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setDescriptionEncoding(String encoding);
     
     /**
-     * javax.mail.Message‚ÌDescription‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Descriptionã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌDescription‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return javax.mail.Messageã®Descriptionã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getDescriptionEncoding();
     
     /**
-     * javax.mail.Message‚ÌDisposition‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Dispositionã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setDispositionKey(String key);
     
     /**
-     * javax.mail.Message‚ÌDisposition‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Dispositionã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getDispositionKey();
     
     /**
-     * javax.mail.Message‚ÌDisposition‚ğİ’è‚·‚éB<p>
+     * javax.mail.Messageã®Dispositionã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param val javax.mail.Message‚ÌDisposition
+     * @param val javax.mail.Messageã®Disposition
      */
     public void setDisposition(String val);
     
     /**
-     * javax.mail.Message‚ÌDisposition‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Messageã®Dispositionã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Message‚ÌDisposition
+     * @return javax.mail.Messageã®Disposition
      */
     public String getDisposition();
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setFilePartKey(String key);
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getFilePartKey();
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚Ì•¶šƒR[ƒh‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setFileCharsetKey(String key);
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚Ì•¶šƒR[ƒh‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getFileCharsetKey();
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚Ì•¶šƒR[ƒh‚ğ‚ğİ’è‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param charset •¶šƒR[ƒh
+     * @param charset æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public void setFileCharset(String charset);
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚Ì•¶šƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒR[ƒh
+     * @return æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public String getFileCharset();
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚ÌŒ¾ŒêƒR[ƒh‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®è¨€èªã‚³ãƒ¼ãƒ‰ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public void setFileLanguageKey(String key);
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚ÌŒ¾ŒêƒR[ƒh‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®è¨€èªã‚³ãƒ¼ãƒ‰ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®ã‚­ãƒ¼å
      */
     public String getFileLanguageKey();
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚ÌŒ¾ŒêƒR[ƒh‚ğ‚ğİ’è‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®è¨€èªã‚³ãƒ¼ãƒ‰ã‚’ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param lang Œ¾ŒêƒR[ƒh
+     * @param lang è¨€èªã‚³ãƒ¼ãƒ‰
      */
     public void setFileLanguage(String lang);
     
     /**
-     * “Y•tƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚ÌŒ¾ŒêƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã®è¨€èªã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ¾ŒêƒR[ƒh
+     * @return è¨€èªã‚³ãƒ¼ãƒ‰
      */
     public String getFileLanguage();
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX‚ğw’è‚·‚é{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒ‡å®šã™ã‚‹{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key WritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX‚ğw’è‚·‚éWritableElement‚ÌƒL[–¼
+     * @param key WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒ‡å®šã™ã‚‹WritableElementã®ã‚­ãƒ¼å
      */
     public void setBodyIndexKey(String key);
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX‚ğw’è‚·‚é{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒ‡å®šã™ã‚‹{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX‚ğw’è‚·‚éWritableElement‚ÌƒL[–¼
+     * @return WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒ‡å®šã™ã‚‹WritableElementã®ã‚­ãƒ¼å
      */
     public String getBodyIndexKey();
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index WritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX
+     * @param index WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setBodyIndex(int index);
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚©‚çæ“¾‚µ‚Äİ’è‚·‚éÛ‚ÌAWritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã‹ã‚‰å–å¾—ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecord“à‚ÌŠJnƒCƒ“ƒfƒbƒNƒX
+     * @return WritableRecordå†…ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getBodyIndex();
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ƒ[ƒ‹‚Ì–{•¶
+     * @param text ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡
      */
     public void setBodyText(String text);
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ[ƒ‹‚Ì–{•¶
+     * @return ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡
      */
     public String getBodyText();
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding ƒ[ƒ‹‚Ì–{•¶‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setBodyEncoding(String encoding);
     
     /**
-     * ƒ[ƒ‹‚Ì–{•¶‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ[ƒ‹‚Ì–{•¶‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getBodyEncoding();
     
     /**
-     * SMTPƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
+     * SMTPã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SMTPƒT[ƒo‚ÌƒzƒXƒg–¼
+     * @param name SMTPã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆå
      */
     public void setSmtpHostName(String name);
     
     /**
-     * SMTPƒT[ƒo‚ÌƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * SMTPã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SMTPƒT[ƒo‚ÌƒzƒXƒg–¼
+     * @return SMTPã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆå
      */
     public String getSmtpHostName();
     
     /**
-     * SMTPƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * SMTPã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port SMTPƒT[ƒo‚Ìƒ|[ƒg”Ô†
+     * @param port SMTPã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setSmtpPort(int port);
     
     /**
-     * SMTPƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * SMTPã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SMTPƒT[ƒo‚Ìƒ|[ƒg”Ô†
+     * @return SMTPã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getSmtpPort();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.smtp.SmtpKeepAliveChecker SmtpKeepAliveChecker}‚ğ‘I‘ğ‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.smtp.SmtpKeepAliveChecker SmtpKeepAliveChecker}ã‚’é¸æŠã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name KeepAliveCheckerSelectorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name KeepAliveCheckerSelectorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSmtpKeepAliveCheckerSelectorServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.smtp.SmtpKeepAliveChecker SmtpKeepAliveChecker}‚ğ‘I‘ğ‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.smtp.SmtpKeepAliveChecker SmtpKeepAliveChecker}ã‚’é¸æŠã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return KeepAliveCheckerSelectorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return KeepAliveCheckerSelectorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSmtpKeepAliveCheckerSelectorServiceName();
     
     /**
-     * ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒC‰ñ”‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param count ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒC‰ñ”
+     * @param count ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setRetryCount(int count);
     
     /**
-     * ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒC‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒC‰ñ”
+     * @return ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public int getRetryCount();
     
     /**
-     * ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒCŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param millis ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒCŠÔŠu[ms]
+     * @param millis ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
      */
     public void setRetryInterval(long millis);
     
     /**
-     * ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒCŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ[ƒ‹‘—MƒŠƒgƒ‰ƒCŠÔŠu[ms]
+     * @return ãƒ¡ãƒ¼ãƒ«é€ä¿¡ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
      */
     public long getRetryInterval();
     
     /**
-     * javax.mail.Session‚ğJNDI‚©‚çlookup‚·‚éÛ‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Sessionã‚’JNDIã‹ã‚‰lookupã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * javax.mail.Session‚ğJNDI‚©‚çlookup‚·‚éÛ‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Sessionã‚’JNDIã‹ã‚‰lookupã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * javax.mail.Session‚ğJNDI‚©‚çlookup‚·‚éÛ‚Ég—p‚·‚éJNDI–¼‚ğİ’è‚·‚éB<p>
+     * javax.mail.Sessionã‚’JNDIã‹ã‚‰lookupã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name javax.mail.Session‚ÌJNDI–¼
+     * @param name javax.mail.Sessionã®JNDIå
      */
     public void setMailSessionJndiName(String name);
     
     /**
-     * javax.mail.Session‚ğJNDI‚©‚çlookup‚·‚éÛ‚Ég—p‚·‚éJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * javax.mail.Sessionã‚’JNDIã‹ã‚‰lookupã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.mail.Session‚ÌJNDI–¼
+     * @return javax.mail.Sessionã®JNDIå
      */
     public String getMailSessionJndiName();
 }

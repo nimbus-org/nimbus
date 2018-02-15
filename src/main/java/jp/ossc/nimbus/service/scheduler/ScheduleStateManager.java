@@ -32,72 +32,72 @@
 package jp.ossc.nimbus.service.scheduler;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ó‘ÔŠÇ—B<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ç®¡ç†ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ScheduleStateManager{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXF•s–¾iŠÇ—‚³‚ê‚Ä‚¢‚È‚¢jB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šä¸æ˜ï¼ˆç®¡ç†ã•ã‚Œã¦ã„ãªã„ï¼‰ã€‚<p>
      */
     public static final int STATE_UNKNOWN = -1;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXF‰ŠúB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šåˆæœŸã€‚<p>
      */
     public static final int STATE_INIT = 0;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXFÀs‘Ò‚¿B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šå®Ÿè¡Œå¾…ã¡ã€‚<p>
      */
     public static final int STATE_WAIT = 1;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXFˆË‘¶ŠÖŒW‚É‚æ‚éÀs‘Ò‚¿B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚‹å®Ÿè¡Œå¾…ã¡ã€‚<p>
      */
     public static final int STATE_DEPENDS_WAIT = 2;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXFÀs’†B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šå®Ÿè¡Œä¸­ã€‚<p>
      */
     public static final int STATE_RUN = 3;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXFI—¹B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šçµ‚äº†ã€‚<p>
      */
     public static final int STATE_CLOSE = 4;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒXƒe[ƒ^ƒXF–³ŒøB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ï¼šç„¡åŠ¹ã€‚<p>
      */
     public static final int STATE_INVALID = 5;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @param state ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @param state ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹
      */
     public void changeState(String name, int state);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹
      */
     public int getState(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔŠÇ—‚ğíœ‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ç®¡ç†ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void clearState(String name);
     
     /**
-     * ‘S‚Ä‚ÌƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔŠÇ—‚ğíœ‚·‚éB<p>
+     * å…¨ã¦ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ç®¡ç†ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearAllStates();
 }

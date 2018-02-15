@@ -34,7 +34,7 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * ƒtƒ@ƒNƒgƒŠƒT[ƒrƒXŠî’êƒNƒ‰ƒXB<p>
+ * ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -44,61 +44,61 @@ public abstract class FactoryServiceBase extends ServiceBase
     private static final long serialVersionUID = -7723361215992951033L;
 
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚É‚æ‚Á‚Ä¶¬‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğŠÇ—‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
-     * ŠÇ—‚·‚éê‡AtrueB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã«ã‚ˆã£ã¦ç”Ÿæˆã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç®¡ç†ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ç®¡ç†ã™ã‚‹å ´åˆã€trueã€‚<br>
      */
     protected volatile boolean isManaged;
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚É‚æ‚Á‚ÄƒXƒŒƒbƒh’PˆÊ‚ÉƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
-     * ƒXƒŒƒbƒh’PˆÊ‚É¶¬‚·‚éê‡AtrueB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã«ã‚ˆã£ã¦ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã«ç”Ÿæˆã™ã‚‹å ´åˆã€trueã€‚<br>
      */
     protected volatile boolean isThreadLocal;
     
     /**
-     * ŠÇ—‚µ‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Û‚·‚éW‡B<p>
+     * ç®¡ç†ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä¿æŒã™ã‚‹é›†åˆã€‚<p>
      */
     protected Set managedInstances = Collections.synchronizedSet(new HashSet());
     
     /**
-     * ƒXƒŒƒbƒh’PˆÊ‚ÉŠÇ—‚µ‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Û‚·‚éThreadLocalB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã«ç®¡ç†ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä¿æŒã™ã‚‹ThreadLocalã€‚<p>
      */
     protected ThreadLocal threadLocal = new ThreadLocal();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒtƒ@ƒNƒgƒŠ‚·‚éƒIƒuƒWƒFƒNƒg‚Ì¶¬‚ğ‚İ‚Ä‚İ‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ•ã‚¡ã‚¯ãƒˆãƒªã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆã‚’è©¦ã¿ã¦ã¿ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      */
     protected boolean isCreateTemplateOnStart = true;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public FactoryServiceBase(){
         super();
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public void setManagement(boolean isManaged){
         this.isManaged = isManaged;
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public boolean isManagement(){
         return isManaged;
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public void setThreadLocal(boolean isThreadLocal){
         this.isThreadLocal = isThreadLocal;
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public boolean isThreadLocal(){
         return isThreadLocal;
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public void release(Object service){
         if(managedInstances.size() != 0){
             managedInstances.remove(service);
@@ -106,7 +106,7 @@ public abstract class FactoryServiceBase extends ServiceBase
         threadLocal.set(null);
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public void release(){
         final Object[] instances = managedInstances.toArray();
         for(int i = 0; i < instances.length; i++){
@@ -115,7 +115,7 @@ public abstract class FactoryServiceBase extends ServiceBase
         threadLocal = new ThreadLocal();
     }
     
-    // FactoryService‚ÌJavaDoc
+    // FactoryServiceã®JavaDoc
     public Object newInstance(){
         Object obj = null;
         if(isManaged){
@@ -153,48 +153,48 @@ public abstract class FactoryServiceBase extends ServiceBase
         return obj;
     }
     
-    // FactoryServiceBaseMBean‚ÌJavaDoc
+    // FactoryServiceBaseMBeanã®JavaDoc
     public void setCreateTemplateOnStart(boolean isCreate){
         isCreateTemplateOnStart = isCreate;
     }
     
-    // FactoryServiceBaseMBean‚ÌJavaDoc
+    // FactoryServiceBaseMBeanã®JavaDoc
     public boolean isCreateTemplateOnStart(){
         return isCreateTemplateOnStart;
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Å¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚Ì“àAŠÇ—‚µ‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å†…ã€ç®¡ç†ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÇ—‚µ‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ÌW‡
+     * @return ç®¡ç†ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é›†åˆ
      */
     protected Set getManagedInstanceSet(){
         return managedInstances;
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected abstract Object createInstance() throws Exception;
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğƒeƒ“ƒvƒŒ[ƒg—p‚É¶¬‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ã«ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected Object createTemplate() throws Exception{
         return createInstance();
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Ì¶¬Œãˆ—‚ğs‚¤B<p>
-     * {@link #createInstance()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª¶¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬‚ª‰Â”\‚©‚Ç‚¤‚©‚ğƒeƒXƒg‚·‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ç”Ÿæˆå¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #createInstance()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç”Ÿæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”ŸæˆãŒå¯èƒ½ã‹ã©ã†ã‹ã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ã€‚<br>
      * 
-     * @exception Exception createInstance()‚É¸”s‚µ‚½ê‡
+     * @exception Exception createInstance()ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postStartService() throws Exception{
         super.postStartService();
@@ -205,10 +205,10 @@ public abstract class FactoryServiceBase extends ServiceBase
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Ì”jŠüŒãˆ—‚ğs‚¤B<p>
-     * ŠÇ—‚µ‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğƒNƒŠƒA‚·‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ç ´æ£„å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ç®¡ç†ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<br>
      * 
-     * @exception Exception ”jŠüŒãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postDestroyService() throws Exception{
         super.postDestroyService();

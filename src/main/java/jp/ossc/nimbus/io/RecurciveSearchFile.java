@@ -35,7 +35,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Ä‹A“IFileList‹@”\‚ğ•t‰Á‚µ‚½ƒtƒ@ƒCƒ‹B<p>
+ * å†å¸°çš„FileListæ©Ÿèƒ½ã‚’ä»˜åŠ ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã€‚<p>
  *
  * @author H.Nakano
  */
@@ -44,77 +44,77 @@ public class RecurciveSearchFile extends File implements Serializable {
     private static final long serialVersionUID = 4549749658684567046L;
     
     /**
-     * ŒŸõí•ÊFƒtƒ@ƒCƒ‹‚Ì‚İŒŸõ‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’lB<br>
+     * æ¤œç´¢ç¨®åˆ¥ï¼šãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<br>
      */
     public static final int SEARCH_TYPE_FILE = 0;
     
     /**
-     * ŒŸõí•ÊFƒfƒBƒŒƒNƒgƒŠ‚Ì‚İŒŸõ‚·‚éB<p>
+     * æ¤œç´¢ç¨®åˆ¥ï¼šãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã¿æ¤œç´¢ã™ã‚‹ã€‚<p>
      */
     public static final int SEARCH_TYPE_DIR = 1;
     
     /**
-     * ŒŸõí•ÊFƒtƒ@ƒCƒ‹‚ÆƒfƒBƒŒƒNƒgƒŠ‚Ì—¼•û‚ğŒŸõ‚·‚éB<p>
+     * æ¤œç´¢ç¨®åˆ¥ï¼šãƒ•ã‚¡ã‚¤ãƒ«ã¨ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä¸¡æ–¹ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      */
     public static final int SEARCH_TYPE_ALL = 2;
     
     private static final String REGEX_ESCAPE_ESCAPE = Character.toString((char) 0x00);
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param pathname ƒpƒX
+     * @param pathname ãƒ‘ã‚¹
      */
     public RecurciveSearchFile(String pathname) {
         super(pathname);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param file ƒtƒ@ƒCƒ‹
+     * @param file ãƒ•ã‚¡ã‚¤ãƒ«
      */
     public RecurciveSearchFile(File file) {
         super(file.getPath());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param parent eƒpƒX
-     * @param child qƒpƒX
+     * @param parent è¦ªãƒ‘ã‚¹
+     * @param child å­ãƒ‘ã‚¹
      */
     public RecurciveSearchFile(File parent, String child) {
         super(parent, child);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚Ìƒtƒ@ƒCƒ‹ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param parent eƒpƒX
-     * @param child qƒpƒX
+     * @param parent è¦ªãƒ‘ã‚¹
+     * @param child å­ãƒ‘ã‚¹
      */
     public RecurciveSearchFile(String parent, String child) {
         super(parent, child);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹ƒpƒX‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      */
     public String[] listAllTree() {
         return listAllTree(SEARCH_TYPE_FILE);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹ƒpƒX‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -135,23 +135,23 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      */
     public String[] listAllTree(FilenameFilter filter) {
         return listAllTree(filter, SEARCH_TYPE_FILE);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -166,23 +166,23 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^”z—ñ
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿é…åˆ—
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      */
     public String[] listAllTree(FilenameFilter[] filter) {
         return listAllTree(filter, SEARCH_TYPE_FILE);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^”z—ñ
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿é…åˆ—
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -203,21 +203,21 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      */
     public File[] listAllTreeFiles() {
         return listAllTreeFiles(SEARCH_TYPE_FILE);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -237,23 +237,23 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      */
     public File[] listAllTreeFiles(FilenameFilter filter) {
         return listAllTreeFiles(filter, SEARCH_TYPE_FILE);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -275,23 +275,23 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^”z—ñ
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿é…åˆ—
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      */
     public File[] listAllTreeFiles(FilenameFilter filter[]) {
         return listAllTreeFiles(filter, SEARCH_TYPE_FILE);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ª¦‚·ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒtƒ@ƒCƒ‹‚ªƒfƒBƒŒƒNƒgƒŠ‚ğ¦‚³‚È‚¢ê‡‚É‚ÍAnull‚ğ•Ô‚·B
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ç¤ºã•ãªã„å ´åˆã«ã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param filter ƒtƒBƒ‹ƒ^”z—ñ
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿é…åˆ—
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -311,11 +311,11 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * w’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠƒŠƒXƒg‚ÌŠeƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒªã‚¹ãƒˆã®å„ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param dirList ƒfƒBƒŒƒNƒgƒŠ‚ÌƒŠƒXƒg
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹‚ÌƒŠƒXƒg
+     * @param dirList ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒªã‚¹ãƒˆ
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚¹ãƒˆ
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -358,12 +358,12 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * w’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠƒŠƒXƒg‚ÌŠeƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚½‘S‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒtƒBƒ‹ƒ^‚ÅƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒªã‚¹ãƒˆã®å„ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ãŸå…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿ã§ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param dirList ƒfƒBƒŒƒNƒgƒŠ‚ÌƒŠƒXƒg
-     * @param filter ƒtƒBƒ‹ƒ^”z—ñ
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param dirList ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒªã‚¹ãƒˆ
+     * @param filter ãƒ•ã‚£ãƒ«ã‚¿é…åˆ—
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -417,10 +417,10 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÅAw’è‚³‚ê‚½³‹K•\Œ»‚Éˆê’v‚·‚éƒtƒ@ƒCƒ‹ƒpƒX”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã§ã€æŒ‡å®šã•ã‚ŒãŸæ­£è¦è¡¨ç¾ã«ä¸€è‡´ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param regexPath ƒpƒX‚Ì³‹K•\Œ»
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param regexPath ãƒ‘ã‚¹ã®æ­£è¦è¡¨ç¾
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      * @see #listAllTreeFiles(String, int)
      */
     public String[] listAllTree(String regexPath) {
@@ -428,11 +428,11 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÅAw’è‚³‚ê‚½³‹K•\Œ»‚Éˆê’v‚·‚éƒtƒ@ƒCƒ‹ƒpƒX”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã§ã€æŒ‡å®šã•ã‚ŒãŸæ­£è¦è¡¨ç¾ã«ä¸€è‡´ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param regexPath ƒpƒX‚Ì³‹K•\Œ»
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹ƒpƒX”z—ñ
+     * @param regexPath ãƒ‘ã‚¹ã®æ­£è¦è¡¨ç¾
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹é…åˆ—
      * @see #listAllTreeFiles(String, int)
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
@@ -448,10 +448,10 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÅAw’è‚³‚ê‚½³‹K•\Œ»‚Éˆê’v‚·‚éƒtƒ@ƒCƒ‹”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã§ã€æŒ‡å®šã•ã‚ŒãŸæ­£è¦è¡¨ç¾ã«ä¸€è‡´ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param regexPath ƒpƒX‚Ì³‹K•\Œ»
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param regexPath ãƒ‘ã‚¹ã®æ­£è¦è¡¨ç¾
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      * @see #listAllTreeFiles(String, int)
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
@@ -462,14 +462,14 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÅAw’è‚³‚ê‚½³‹K•\Œ»‚Éˆê’v‚·‚éƒtƒ@ƒCƒ‹”z—ñ‚ğæ“¾‚·‚éB<p>
-     * ƒpƒX‚Ì³‹K•\Œ»‚É‚ÍA’Êí‚Ì³‹K•\Œ»‚É‰Á‚¦‚Ä"**"‚Æ‚¢‚¤w’è‚ª‰Â”\‚Å‚ ‚éB<br>
-     * "**"‚Æw’è‚³‚ê‚½ê‡A“r’†‚Ì‘S‚Ä‚ÌƒfƒBƒŒƒNƒgƒŠ\‘¢‚ğŠÜ‚Ş–‚ğ¦‚·B<br>
-     * §ŒÀ–€‚Æ‚µ‚ÄA³‹K•\Œ»‚ÌƒGƒXƒP[ƒv•¶š‚Å‚ ‚é"\"‚ÍAWindows OS‚ÌƒpƒXƒZƒpƒŒ[ƒ^‚É‚à‚È‚Á‚Ä‚¢‚é‚½‚ßA³‹K•\Œ»‚Æ‚µ‚Ä"\"‚ğw’è‚µ‚½‚¢ê‡‚ÍA"\\"‚Æw’è‚·‚é–B<br>
+     * ã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã§ã€æŒ‡å®šã•ã‚ŒãŸæ­£è¦è¡¨ç¾ã«ä¸€è‡´ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ‘ã‚¹ã®æ­£è¦è¡¨ç¾ã«ã¯ã€é€šå¸¸ã®æ­£è¦è¡¨ç¾ã«åŠ ãˆã¦"**"ã¨ã„ã†æŒ‡å®šãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+     * "**"ã¨æŒ‡å®šã•ã‚ŒãŸå ´åˆã€é€”ä¸­ã®å…¨ã¦ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæ§‹é€ ã‚’å«ã‚€äº‹ã‚’ç¤ºã™ã€‚<br>
+     * åˆ¶é™äº‹é …ã¨ã—ã¦ã€æ­£è¦è¡¨ç¾ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã§ã‚ã‚‹"\"ã¯ã€Windows OSã®ãƒ‘ã‚¹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã«ã‚‚ãªã£ã¦ã„ã‚‹ãŸã‚ã€æ­£è¦è¡¨ç¾ã¨ã—ã¦"\"ã‚’æŒ‡å®šã—ãŸã„å ´åˆã¯ã€"\\"ã¨æŒ‡å®šã™ã‚‹äº‹ã€‚<br>
      *
-     * @param regexPath ƒpƒX‚Ì³‹K•\Œ»
-     * @param searchType ŒŸõí•Ê
-     * @return ƒtƒ@ƒCƒ‹”z—ñ
+     * @param regexPath ãƒ‘ã‚¹ã®æ­£è¦è¡¨ç¾
+     * @param searchType æ¤œç´¢ç¨®åˆ¥
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«é…åˆ—
      * @see #SEARCH_TYPE_FILE
      * @see #SEARCH_TYPE_DIR
      * @see #SEARCH_TYPE_ALL
@@ -646,40 +646,40 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚Éíœ‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      */
     public boolean deleteAllTree() {
         return deleteAllTree(this);
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚Éíœ‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param containsOwn ˆø”‚Ìfile©g‚àÁ‚·ê‡true
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @param containsOwn å¼•æ•°ã®fileè‡ªèº«ã‚‚æ¶ˆã™å ´åˆtrue
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      */
     public boolean deleteAllTree(boolean containsOwn) {
         return deleteAllTree(this, containsOwn);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚Éíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param file íœ‚·‚éƒtƒ@ƒCƒ‹
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @param file å‰Šé™¤ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      */
     public static boolean deleteAllTree(File file) {
         return deleteAllTree(file, true);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚Éíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param file íœ‚·‚éƒtƒ@ƒCƒ‹
-     * @param containsOwn ˆø”‚Ìfile©g‚àÁ‚·ê‡true
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @param file å‰Šé™¤ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param containsOwn å¼•æ•°ã®fileè‡ªèº«ã‚‚æ¶ˆã™å ´åˆtrue
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      */
     public static boolean deleteAllTree(File file, boolean containsOwn) {
         if (!file.exists()) {
@@ -703,9 +703,9 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹ˆÈ‰º‚ğw’è‚µ‚½ƒtƒ@ƒCƒ‹‚ÉÄ‹A“I‚ÉƒRƒs[‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã«å†å¸°çš„ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚<p>
      *
-     * @return ‘S‚Äì¬‚Å‚«‚½ê‡true
+     * @return å…¨ã¦ä½œæˆã§ããŸå ´åˆtrue
      * @throws Exception
      */
     public boolean copyAllTree(File file) throws IOException {
@@ -713,9 +713,9 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹ˆÈ‰º‚ğw’è‚µ‚½ƒtƒ@ƒCƒ‹‚ÉÄ‹A“I‚ÉƒRƒs[‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã«å†å¸°çš„ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚<p>
      *
-     * @return ‘S‚Äì¬‚Å‚«‚½ê‡true
+     * @return å…¨ã¦ä½œæˆã§ããŸå ´åˆtrue
      * @throws Exception
      */
     public boolean copyAllTree(File file, FilenameFilter filter) throws IOException {
@@ -723,22 +723,22 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
 
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚ÉƒRƒs[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚<p>
      *
-     * @param fromFile@ƒRƒs[Œ³ƒtƒ@ƒCƒ‹
-     * @param toFile@ƒRƒs[æƒtƒ@ƒCƒ‹
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @param fromFileã€€ã‚³ãƒ”ãƒ¼å…ƒãƒ•ã‚¡ã‚¤ãƒ«
+     * @param toFileã€€ã‚³ãƒ”ãƒ¼å…ˆãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      * @throws Exception
      */
     public static boolean copyAllTree(File fromFile, File toFile) throws IOException {
         return copyAllTree(fromFile, toFile, null);
     }
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚ÉƒRƒs[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚<p>
      *
-     * @param fromFile@ƒRƒs[Œ³ƒtƒ@ƒCƒ‹
-     * @param toFile@ƒRƒs[æƒtƒ@ƒCƒ‹
-     * @return ‘S‚Äíœ‚Å‚«‚½ê‡true
+     * @param fromFileã€€ã‚³ãƒ”ãƒ¼å…ƒãƒ•ã‚¡ã‚¤ãƒ«
+     * @param toFileã€€ã‚³ãƒ”ãƒ¼å…ˆãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å…¨ã¦å‰Šé™¤ã§ããŸå ´åˆtrue
      * @throws Exception
      */
     public static boolean copyAllTree(File fromFile, File toFile, FilenameFilter filter) throws IOException {
@@ -810,16 +810,16 @@ public class RecurciveSearchFile extends File implements Serializable {
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚É‰¼‘zƒ}ƒVƒ“‚ªI—¹‚µ‚½‚Æ‚«‚Éíœ‚³‚ê‚é‚æ‚¤‚É—v‹‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«ä»®æƒ³ãƒã‚·ãƒ³ãŒçµ‚äº†ã—ãŸã¨ãã«å‰Šé™¤ã•ã‚Œã‚‹ã‚ˆã†ã«è¦æ±‚ã™ã‚‹ã€‚<p>
      */
     public void deleteOnExitAllTree() {
         deleteOnExitAllTree(this);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹ˆÈ‰º‚ğÄ‹A“I‚É‰¼‘zƒ}ƒVƒ“‚ªI—¹‚µ‚½‚Æ‚«‚Éíœ‚³‚ê‚é‚æ‚¤‚É—v‹‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ä»¥ä¸‹ã‚’å†å¸°çš„ã«ä»®æƒ³ãƒã‚·ãƒ³ãŒçµ‚äº†ã—ãŸã¨ãã«å‰Šé™¤ã•ã‚Œã‚‹ã‚ˆã†ã«è¦æ±‚ã™ã‚‹ã€‚<p>
      *
-     * @param file ƒtƒ@ƒCƒ‹
+     * @param file ãƒ•ã‚¡ã‚¤ãƒ«
      */
     public static void deleteOnExitAllTree(File file) {
         file.deleteOnExit();

@@ -6,7 +6,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link TestControllerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TestControllerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Ishida
  * @see TestControllerService
@@ -19,177 +19,177 @@ public interface TestControllerServiceMBean extends ServiceBaseMBean {
     public static final String DEFAULT_TESTCASE_RESOURCE_FILE_NAME = "testcase.xml";
     
     /**
-     * ƒeƒXƒgƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.TestResourceManager
-     * TestResourceManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.TestResourceManager
+     * TestResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return TestResourceManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TestResourceManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTestResourceManagerServiceName();
     
     /**
-     * ƒeƒXƒgƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.TestResourceManager
-     * TestResourceManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.TestResourceManager
+     * TestResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param serviceName TestResourceManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param serviceName TestResourceManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTestResourceManagerServiceName(ServiceName serviceName);
     
     /**
-     * ƒeƒXƒgƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.TestResourceManager
-     * TestResourceManager}ƒT[ƒrƒX‚ğæ“¾‚·‚éB
+     * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.TestResourceManager
+     * TestResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return TestResourceManagerƒT[ƒrƒX
+     * @return TestResourceManagerã‚µãƒ¼ãƒ“ã‚¹
      */
     public TestResourceManager getTestResourceManager();
     
     /**
-     * ƒeƒXƒgƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.TestResourceManager
-     * TestResourceManager}ƒT[ƒrƒX‚ğİ’è‚·‚éB
+     * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.TestResourceManager
+     * TestResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param manager TestResourceManagerƒT[ƒrƒX
+     * @param manager TestResourceManagerã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setTestResourceManager(TestResourceManager manager);
     
     /**
-     * ƒXƒ^ƒuƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.StubResourceManager
-     * StubResourceManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.StubResourceManager
+     * StubResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return StubResourceManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StubResourceManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getStubResourceManagerServiceName();
     
     /**
-     * ƒXƒ^ƒuƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.StubResourceManager
-     * StubResourceManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.StubResourceManager
+     * StubResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param serviceName StubResourceManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param serviceName StubResourceManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setStubResourceManagerServiceName(ServiceName serviceName);
     
     /**
-     * ƒXƒ^ƒuƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.StubResourceManager
-     * StubResourceManager}ƒT[ƒrƒX‚ğæ“¾‚·‚éB
+     * ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.StubResourceManager
+     * StubResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return StubResourceManagerƒT[ƒrƒX
+     * @return StubResourceManagerã‚µãƒ¼ãƒ“ã‚¹
      */
     public StubResourceManager getStubResourceManager();
     
     /**
-     * ƒXƒ^ƒuƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link jp.ossc.nimbus.service.test.StubResourceManager
-     * StubResourceManager}ƒT[ƒrƒX‚Ìİ’è‚·‚éB
+     * ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link jp.ossc.nimbus.service.test.StubResourceManager
+     * StubResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param manager StubResourceManagerƒT[ƒrƒX
+     * @param manager StubResourceManagerã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setStubResourceManager(StubResourceManager manager);
     
     /**
-     * ƒXƒ^ƒu{@link jp.ossc.nimbus.service.test.TestStub TestStub}
-     * ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * ã‚¹ã‚¿ãƒ–{@link jp.ossc.nimbus.service.test.TestStub TestStub}
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return TestStubƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return TestStubã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getTestStubServiceNames();
     
     /**
-     * ƒXƒ^ƒu{@link jp.ossc.nimbus.service.test.TestStub TestStub}
-     * ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB
+     * ã‚¹ã‚¿ãƒ–{@link jp.ossc.nimbus.service.test.TestStub TestStub}
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param serviceNames TestStubƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param serviceNames TestStubã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setTestStubServiceNames(ServiceName[] serviceNames);
     
     /**
-     * ƒXƒ^ƒu{@link jp.ossc.nimbus.service.test.TestStub TestStub}ƒT[ƒrƒX‚ğæ“¾‚·‚éB
+     * ã‚¹ã‚¿ãƒ–{@link jp.ossc.nimbus.service.test.TestStub TestStub}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return TestStubƒT[ƒrƒX‚Ì”z—ñ
+     * @return TestStubã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—
      */
     public TestStub[] getTestStubs();
     
     /**
-     * ƒXƒ^ƒu{@link jp.ossc.nimbus.service.test.TestStub TestStub}ƒT[ƒrƒX‚ğİ’è‚·‚éB
+     * ã‚¹ã‚¿ãƒ–{@link jp.ossc.nimbus.service.test.TestStub TestStub}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param stubs TestStubƒT[ƒrƒX‚Ì”z—ñ
+     * @param stubs TestStubã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—
      */
     public void setTestStubs(TestStub[] stubs);
     
     /**
-     * ƒCƒxƒ“ƒgƒŠƒXƒi{@link jp.ossc.nimbus.service.test.TestEventListener
-     * TestEventListener}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠ{@link jp.ossc.nimbus.service.test.TestEventListener
+     * TestEventListener}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return TestEventListenerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return TestEventListenerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getTestEventListenerServiceNames();
     
     /**
-     * ƒCƒxƒ“ƒgƒŠƒXƒi{@link jp.ossc.nimbus.service.test.TestEventListener
-     * TestEventListener}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB
+     * ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠ{@link jp.ossc.nimbus.service.test.TestEventListener
+     * TestEventListener}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param serviceNames TestEventListenerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param serviceNames TestEventListenerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setTestEventListenerServiceNames(ServiceName[] serviceNames);
     
     /**
-     * ƒCƒxƒ“ƒgƒŠƒXƒi{@link jp.ossc.nimbus.service.test.TestEventListener
-     * TestEventListener}ƒT[ƒrƒX‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠ{@link jp.ossc.nimbus.service.test.TestEventListener
+     * TestEventListener}ã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return TestEventListenerƒT[ƒrƒX‚Ì”z—ñ
+     * @return TestEventListenerã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—
      */
     public TestEventListener[] getTestEventListeners();
     
     /**
-     * ƒCƒxƒ“ƒgƒŠƒXƒi{@link jp.ossc.nimbus.service.test.TestEventListener
-     * TestEventListener}ƒT[ƒrƒX‚Ì”z—ñ‚ğİ’è‚·‚éB
+     * ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠ{@link jp.ossc.nimbus.service.test.TestEventListener
+     * TestEventListener}ã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param listeners TestEventListenerƒT[ƒrƒX‚Ì”z—ñ
+     * @param listeners TestEventListenerã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—
      */
     public void setTestEventListeners(TestEventListener[] listeners);
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ªg—p‚·‚éƒŠƒ\[ƒXŒQ‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãŒä½¿ç”¨ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ç¾¤ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return ƒŠƒ\[ƒXŒQ‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒªã‚½ãƒ¼ã‚¹ç¾¤ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getTestResourceFileBaseDirectory();
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ªg—p‚·‚éƒŠƒ\[ƒXŒQ‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãŒä½¿ç”¨ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ç¾¤ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      * 
-     * @param dir ƒŠƒ\[ƒXŒQ‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒªã‚½ãƒ¼ã‚¹ç¾¤ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setTestResourceFileBaseDirectory(File dir);
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ªg—p‚·‚éˆêƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãŒä½¿ç”¨ã™ã‚‹ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return ˆêƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ
+     * @return ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getTestResourceFileTempDirectory();
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ªg—p‚·‚éˆêƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãŒä½¿ç”¨ã™ã‚‹ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
-     * È—ª‚ÍƒVƒXƒeƒ€‚ÌTempƒfƒBƒŒƒNƒgƒŠ‚ğg—p‚·‚éB<br>
+     * çœç•¥æ™‚ã¯ã‚·ã‚¹ãƒ†ãƒ ã®Tempãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param dir ˆêƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚·‚éƒx[ƒXƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã™ã‚‹ãƒ™ãƒ¼ã‚¹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setTestResourceFileTempDirectory(File dir);
     

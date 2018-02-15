@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link CodeMasterNotifyActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link CodeMasterNotifyActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see CodeMasterNotifyActionService
@@ -43,100 +43,100 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface CodeMasterNotifyActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSTopicSessionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSTopicSessionFactoryServiceName();
     
     /**
-     * XV’Ê’m‚ğ‘—M‚·‚éˆ¶æ‚Æ‚È‚éJMSƒgƒsƒbƒN–¼‚ğİ’è‚·‚éB<p>
+     * æ›´æ–°é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹å®›å…ˆã¨ãªã‚‹JMSãƒˆãƒ”ãƒƒã‚¯åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSƒgƒsƒbƒN–¼
+     * @param name JMSãƒˆãƒ”ãƒƒã‚¯å
      */
     public void setTopicName(String name);
     
     /**
-     * XV’Ê’m‚ğ‘—M‚·‚éˆ¶æ‚Æ‚È‚éJMSƒgƒsƒbƒN–¼‚ğæ“¾‚·‚éB<p>
+     * æ›´æ–°é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹å®›å…ˆã¨ãªã‚‹JMSãƒˆãƒ”ãƒƒã‚¯åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSƒgƒsƒbƒN–¼
+     * @return JMSãƒˆãƒ”ãƒƒã‚¯å
      */
     public String getTopicName();
     
     /**
-     * {@link jp.ossc.nimbus.service.publish.ServerConnectionFactory ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.publish.ServerConnectionFactory ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.publish.ServerConnectionFactory ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.publish.ServerConnectionFactory ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerConnectionFactoryServiceName();
     
     /**
-     * XV’Ê’m‚ğ‘—M‚·‚é{@link jp.ossc.nimbus.service.publish.Message Message}‚Ìˆ¶æ‚ğİ’è‚·‚éB<p>
+     * æ›´æ–°é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹{@link jp.ossc.nimbus.service.publish.Message Message}ã®å®›å…ˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param subject ˆ¶æ
+     * @param subject å®›å…ˆ
      */
     public void setSubject(String subject);
     
     /**
-     * XV’Ê’m‚ğ‘—M‚·‚é{@link jp.ossc.nimbus.service.publish.Message Message}‚Ìˆ¶æ‚ğæ“¾‚·‚éB<p>
+     * æ›´æ–°é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹{@link jp.ossc.nimbus.service.publish.Message Message}ã®å®›å…ˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ¶æ
+     * @return å®›å…ˆ
      */
     public String getSubject();
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterpreterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterpreterServiceName();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 

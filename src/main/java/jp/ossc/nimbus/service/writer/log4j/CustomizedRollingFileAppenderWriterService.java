@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer.log4j;
 import org.apache.log4j.*;
 
 /**
- * Log4J‚ÌRollingFileAppender‚ğ‰ü—Ç‚µ‚½CustomizedRollingFileAppender‚ğg‚Á‚½MessageWriterƒT[ƒrƒXB<p>
+ * Log4Jã®RollingFileAppenderã‚’æ”¹è‰¯ã—ãŸCustomizedRollingFileAppenderã‚’ä½¿ã£ãŸMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,16 +45,16 @@ public class CustomizedRollingFileAppenderWriterService
     private static final long serialVersionUID = -7154584860141909721L;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CustomizedRollingFileAppenderWriterService(){
         super();
     }
     
     /**
-     * CustomizedRollingFileAppenderƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µ‚ÄAƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì{@link #appender}‚ğ‰Šú‰»‚·‚éB<p>
+     * CustomizedRollingFileAppenderã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¦ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®{@link #appender}ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception CustomizedRollingFileAppender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception CustomizedRollingFileAppenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected WriterAppender createWriterAppender() throws Exception{
         return new CustomizedRollingFileAppender();

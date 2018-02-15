@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.websocket;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultConfiguratorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link DefaultConfiguratorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -42,131 +42,131 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DefaultConfiguratorServiceMBean extends NimbusConfigurator {
 
     /**
-     * Header‚Ü‚½‚ÍƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Éƒnƒ“ƒhƒVƒFƒCƒN”FØ‚Ég—p‚·‚éID‚ğİ’è‚·‚éÛ‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * Headerã¾ãŸã¯ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«ãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯èªè¨¼æ™‚ã«ä½¿ç”¨ã™ã‚‹IDã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_HANDSHAKE_ID_KEY = "id";
 
     /**
-     * Header‚Ü‚½‚ÍƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Éƒnƒ“ƒhƒVƒFƒCƒN”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒg‚ğİ’è‚·‚éÛ‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * Headerã¾ãŸã¯ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«ãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯èªè¨¼æ™‚ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_HANDSHAKE_TICKET_KEY = "ticket";
 
     /**
-     * ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgIPƒAƒhƒŒƒX‚ğİ’è‚·‚éÛ‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_CONTEXT_IP_KEY = "WebSocket-Remote-IP";
 
     /**
-     * ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgƒ|[ƒg‚ğİ’è‚·‚éÛ‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_CONTEXT_PORT_KEY = "WebSocket-Remote-Port";
 
     /**
-     * Endpoint‚É‘Î‚·‚éƒpƒX‚ğİ’è‚·‚éB
+     * Endpointã«å¯¾ã™ã‚‹ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param path Endpoint‚É‘Î‚·‚éƒpƒX
+     * @param path Endpointã«å¯¾ã™ã‚‹ãƒ‘ã‚¹
      */
     public void setPath(String path);
 
     /**
-     * EndpointƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * Endpointã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return EndpointƒT[ƒrƒX–¼
+     * @return Endpointã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getEndpointServiceName();
 
     /**
-     * EndpointƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * Endpointã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name EndpointƒT[ƒrƒX–¼
+     * @param name Endpointã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEndpointServiceName(ServiceName name);
 
     /**
-     * ThreadContextƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ThreadContextã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ThreadContextƒT[ƒrƒX–¼
+     * @return ThreadContextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
 
     /**
-     * ThreadContextƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ThreadContextã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name ThreadContextƒT[ƒrƒX–¼
+     * @param name ThreadContextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
 
     /**
-     * ID‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[‚ğæ“¾‚·‚éB
+     * IDãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ID‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[
+     * @return IDãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼
      */
     public String getIdKey();
 
     /**
-     * ID‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[‚ğİ’è‚·‚éBƒfƒtƒHƒ‹ƒg‚Í{@link #DEFAULT_HANDSHAKE_ID_KEY}B
+     * IDãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯{@link #DEFAULT_HANDSHAKE_ID_KEY}ã€‚
      * <p>
      *
-     * @param idKey ID‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[
+     * @param idKey IDãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼
      */
     public void setIdKey(String idKey);
 
     /**
-     * ƒ`ƒPƒbƒg‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[‚ğæ“¾‚·‚éB
+     * ãƒã‚±ãƒƒãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ`ƒPƒbƒg‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[
+     * @return ãƒã‚±ãƒƒãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼
      */
     public String getTicketKey();
 
     /**
-     * ƒ`ƒPƒbƒg‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[‚ğİ’è‚·‚éBƒfƒtƒHƒ‹ƒg‚Í
-     * {@link #DEFAULT_HANDSHAKE_TICKET_KEY}B
+     * ãƒã‚±ãƒƒãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯
+     * {@link #DEFAULT_HANDSHAKE_TICKET_KEY}ã€‚
      * <p>
      *
-     * @param ticketKey ƒ`ƒPƒbƒg‚ªİ’è‚³‚ê‚Ä‚¢‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÌƒL[
+     * @param ticketKey ãƒã‚±ãƒƒãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼
      */
     public void setTicketKey(String ticketKey);
 
     /**
-     * ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgIPƒAƒhƒŒƒX‚ğİ’è‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB
+     * ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgIPƒAƒhƒŒƒX‚ğİ’è‚·‚éÛ‚ÌƒL[
+     * @return ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼
      */
     public String getContextIpKey();
 
     /**
-     * ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgIPƒAƒhƒŒƒX‚ğİ’è‚·‚éÛ‚ÌƒL[‚ğİ’è‚·‚éBƒfƒtƒHƒ‹ƒg‚Í{@link #DEFAULT_CONTEXT_IP_KEY}B
+     * ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯{@link #DEFAULT_CONTEXT_IP_KEY}ã€‚
      * <p>
      *
-     * @param key ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgIPƒAƒhƒŒƒX‚ğİ’è‚·‚éÛ‚ÌƒL[
+     * @param key ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼
      */
     public void setContextIpKey(String key);
 
     /**
-     * ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgƒ|[ƒg‚ğİ’è‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB
+     * ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgƒ|[ƒg‚ğİ’è‚·‚éÛ‚ÌƒL[
+     * @return ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼
      */
     public String getContextPortKey();
 
     /**
-     * ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgƒ|[ƒg‚ğİ’è‚·‚éÛ‚ÌƒL[‚ğİ’è‚·‚éBƒfƒtƒHƒ‹ƒg‚Í{@link #DEFAULT_CONTEXT_PORT_KEY}B
+     * ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯{@link #DEFAULT_CONTEXT_PORT_KEY}ã€‚
      * <p>
      *
-     * @param key ThreadContext‚ÉƒNƒ‰ƒCƒAƒ“ƒgƒ|[ƒg‚ğİ’è‚·‚éÛ‚ÌƒL[
+     * @param key ThreadContextã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹éš›ã®ã‚­ãƒ¼
      */
     public void setContextPortKey(String key);
 

@@ -38,7 +38,7 @@ import jp.ossc.nimbus.beans.dataset.PropertyGetException;
 import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 
 /**
- * {@link Record}‚ğFLVŒ`®‚ÌƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä‘‚«‚ŞWriterƒNƒ‰ƒXB<p>
+ * {@link Record}ã‚’FLVå½¢å¼ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ›¸ãè¾¼ã‚€Writerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.FLVRecordWriter;
@@ -70,68 +70,68 @@ import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 public class FLVRecordWriter extends FLVWriter{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FLVRecordWriter(){
         super();
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
      */
     public FLVRecordWriter(Writer writer){
         super(writer);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param convs ƒtƒB[ƒ‹ƒh‚ğƒpƒfƒBƒ“ƒO‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
      */
     public FLVRecordWriter(Writer writer, PaddingStringConverter[] convs){
         super(writer, convs);
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVRecordWriter(int size){
         super(size);
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVRecordWriter(Writer writer, int size){
         super(writer, size);
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param convs ƒtƒB[ƒ‹ƒh‚ğƒpƒfƒBƒ“ƒO‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVRecordWriter(Writer writer, PaddingStringConverter[] convs, int size){
         super(writer, convs, size);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğFLV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
-     * ‰üs•¶š‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÌƒGƒXƒP[ƒvAˆÍ‚İ•¶š‚Å‚ÌˆÍ‚İˆ—‚ğ©“®‚Ås‚¤B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’FLVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æ”¹è¡Œæ–‡å­—ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€å›²ã¿æ–‡å­—ã§ã®å›²ã¿å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      *
-     * @param record FLVŒ`®‚Åo—Í‚·‚éƒŒƒR[ƒh
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
-     * @exception PropertyGetException FLVŒ`®‚Ì—v‘f•¶š—ñ‚ÌƒtƒH[ƒ}ƒbƒg‚É¸”s‚µ‚½ê‡
+     * @param record FLVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception PropertyGetException FLVå½¢å¼ã®è¦ç´ æ–‡å­—åˆ—ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void writeRecord(Record record) throws IOException, PropertyGetException{
         for(int i = 0, imax = record.size(); i < imax; i++){
@@ -141,9 +141,9 @@ public class FLVRecordWriter extends FLVWriter{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public FLVWriter cloneWriter(){
         return cloneWriter(new FLVRecordWriter());

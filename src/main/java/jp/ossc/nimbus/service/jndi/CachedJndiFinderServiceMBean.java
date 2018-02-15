@@ -37,7 +37,7 @@ import javax.naming.NamingException;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link CachedJndiFinderService}��MBean�C���^�t�F�[�X<p>
+ * {@link CachedJndiFinderService}のMBeanインタフェース<p>
  * 
  * @author Y.Tokuda
  * @see CachedJndiFinderService
@@ -45,17 +45,17 @@ import jp.ossc.nimbus.core.*;
 public interface CachedJndiFinderServiceMBean extends ServiceBaseMBean{
     
     /**
-     * JNDI�T�[�o�����`�F�b�N�ŁAJNDI�T�[�o�����񂾎��ɏo�͂���郍�O�̃��b�Z�[�WID�B<p>
+     * JNDIサーバ生存チェックで、JNDIサーバが死んだ時に出力されるログのメッセージID。<p>
      */
     public static final String JNDI_SERVER_DEAD_MSG_ID = "CJF__00001";
     
     /**
-     * JNDI�T�[�o�����`�F�b�N�ŁAJNDI�T�[�o�����A�������ɏo�͂���郍�O�̃��b�Z�[�WID�B<p>
+     * JNDIサーバ生存チェックで、JNDIサーバが復帰した時に出力されるログのメッセージID。<p>
      */
     public static final String JNDI_SERVER_RECOVER_MSG_ID = "CJF__00002";
     
     /**
-     * ���g���C�̑ΏۂƂ����O�̃f�t�H���g�l�B<p>
+     * リトライの対象とする例外のデフォルト値。<p>
      * <ul>
      *     <li>javax.naming.CommunicationException</li>
      *     <li>javax.naming.InsufficientResourcesException</li>
@@ -73,206 +73,206 @@ public interface CachedJndiFinderServiceMBean extends ServiceBaseMBean{
     };
     
     /**
-     * InitialContext�̏������Ɏg�p����JNDI���ϐ���ݒ肷��B<p>
+     * InitialContextの初期化に使用するJNDI環境変数を設定する。<p>
      * 
-     * @param prop JNDI���ϐ����i�[�����v���p�e�B
+     * @param prop JNDI環境変数を格納したプロパティ
      */
     public void setEnvironment(Properties prop);
     
     /**
-     * InitialContext�̏������Ɏg�p����JNDI���ϐ����擾����B<p>
+     * InitialContextの初期化に使用するJNDI環境変数を取得する。<p>
      * 
-     * @return JNDI���ϐ����i�[�����v���p�e�B
-     * @exception NamingException JNDI���ϐ����擾�ł��Ȃ������ꍇ
+     * @return JNDI環境変数を格納したプロパティ
+     * @exception NamingException JNDI環境変数を取得できなかった場合
      */
     public Properties getEnvironment() throws NamingException;
     
     /**
-     * lookup���Ɏg�p����JNDI�v���t�B�b�N�X��ݒ肷��B<p>
-     * �f�t�H���g�́A�󕶎��B<br>
+     * lookup時に使用するJNDIプレフィックスを設定する。<p>
+     * デフォルトは、空文字。<br>
      *
-     * @param prefix JNDI�v���t�B�b�N�X
+     * @param prefix JNDIプレフィックス
      */
     public void setPrefix(String prefix);
     
     /**
-     * lookup���Ɏg�p����JNDI�v���t�B�b�N�X���擾����B<p>
+     * lookup時に使用するJNDIプレフィックスを取得する。<p>
      *
-     * @return JNDI�v���t�B�b�N�X
+     * @return JNDIプレフィックス
      */
     public String getPrefix();
     
     /**
-     * lookup���������[�g�I�u�W�F�N�g���L���b�V������L���b�V���T�[�r�X����ݒ肷��B<p>
-     * ���̑�����ݒ肵�Ȃ��ꍇ�́A�����[�g�I�u�W�F�N�g���L���b�V�����Ȃ��B<br>
+     * lookupしたリモートオブジェクトをキャッシュするキャッシュサービス名を設定する。<p>
+     * この属性を設定しない場合は、リモートオブジェクトをキャッシュしない。<br>
      *
-     * @param name �L���b�V���T�[�r�X��
+     * @param name キャッシュサービス名
      */
     public void setCacheMapServiceName(ServiceName name);
     
     /**
-     * lookup���������[�g�I�u�W�F�N�g���L���b�V������L���b�V���T�[�r�X�����擾����B<p>
+     * lookupしたリモートオブジェクトをキャッシュするキャッシュサービス名を取得する。<p>
      *
-     * @return �L���b�V���T�[�r�X��
+     * @return キャッシュサービス名
      */
     public ServiceName getCacheMapServiceName();
     
     /** 
-     * lookup���Ƀ��g���C��O�����������ꍇ�Ƀ��g���C����񐔂�ݒ肷��B<p>
-     * �f�t�H���g�́A0�Ń��g���C���Ȃ��B<br>
+     * lookup時にリトライ例外が発生した場合にリトライする回数を設定する。<p>
+     * デフォルトは、0でリトライしない。<br>
      *
-     * @param num ���g���C��
+     * @param num リトライ回数
      * @see #setRetryExceptionClassNames(String[])
      */
     public void setRetryCount(int num);
     
     /** 
-     * lookup���Ƀ��g���C��O�����������ꍇ�Ƀ��g���C����񐔂��擾����B<p>
+     * lookup時にリトライ例外が発生した場合にリトライする回数を取得する。<p>
      *
-     * @return ���g���C��
+     * @return リトライ回数
      */
     public int getRetryCount();
     
     /** 
-     * lookup���Ƀ��g���C��O�����������ꍇ�Ƀ��g���C����Ԋu[msec]��ݒ肷��B<p>
-     * �f�t�H���g�́A1000�B<br>
+     * lookup時にリトライ例外が発生した場合にリトライする間隔[msec]を設定する。<p>
+     * デフォルトは、1000。<br>
      *
-     * @param interval ���g���C�Ԋu
+     * @param interval リトライ間隔
      * @see #setRetryExceptionClassNames(String[])
      */
     public void setRetryInterval(long interval);
     
     /** 
-     * lookup���Ƀ��g���C��O�����������ꍇ�Ƀ��g���C����Ԋu[msec]���擾����B<p>
+     * lookup時にリトライ例外が発生した場合にリトライする間隔[msec]を取得する。<p>
      *
-     * @return ���g���C�Ԋu
+     * @return リトライ間隔
      */
     public long getRetryInterval();
     
     /** 
-     * lookup����javax.naming.NamingException�����������ꍇ�ɁA���g���C�����O�N���X����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #DEFAULT_RETRY_EXCXEPTION_NAME}�B<br>
+     * lookup時にjavax.naming.NamingExceptionが発生した場合に、リトライする例外クラス名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_RETRY_EXCXEPTION_NAME}。<br>
      *
-     * @param classNames ���g���C�����O�N���X���z��
+     * @param classNames リトライする例外クラス名配列
      */
     public void setRetryExceptionClassNames(String[] classNames);
     
     /** 
-     * lookup����javax.naming.NamingException�����������ꍇ�ɁA���g���C�����O�N���X�����擾����B<p>
+     * lookup時にjavax.naming.NamingExceptionが発生した場合に、リトライする例外クラス名を取得する。<p>
      *
-     * @return ���g���C�����O�N���X���z��
+     * @return リトライする例外クラス名配列
      */
     public String[] getRetryExceptionClassNames();
     
     /**
-     * JNDI�T�[�o�̐����`�F�b�N���s�����ǂ�����ݒ肷��B<p>
-     * true�ɐݒ肳�ꂽ�ꍇ�A{@link #setAliveCheckJNDIServerInterval(long)}�Őݒ肳�ꂽ�Ԋu�ŁA���[�g�R���e�L�X�g�i"/"�j��lookup���āAJNDI�T�[�o�̐����`�F�b�N���s���B<br>
-     * ���[�g�R���e�L�X�g���擾�ł��Ȃ��Ȃ����ꍇ�A�G���[���O���o�͂��āA�L���b�V�����N���A����B�܂��A���[�g�R���e�L�X�g���擾�ł���悤�ɂȂ����ꍇ�A�ʒm���O���o�͂���B<br>
+     * JNDIサーバの生存チェックを行うかどうかを設定する。<p>
+     * trueに設定された場合、{@link #setAliveCheckJNDIServerInterval(long)}で設定された間隔で、ルートコンテキスト（"/"）をlookupして、JNDIサーバの生存チェックを行う。<br>
+     * ルートコンテキストが取得できなくなった場合、エラーログを出力して、キャッシュをクリアする。また、ルートコンテキストが取得できるようになった場合、通知ログを出力する。<br>
      *
-     * @param isCheck �����`�F�b�N���s���ꍇ��true
+     * @param isCheck 生存チェックを行う場合はtrue
      */
     public void setAliveCheckJNDIServer(boolean isCheck);
     
     /**
-     * JNDI�T�[�o�̐����`�F�b�N���s�����ǂ�����ݒ肷��B<p>
+     * JNDIサーバの生存チェックを行うかどうかを設定する。<p>
      *
-     * @return �����`�F�b�N���s���ꍇ��true
+     * @return 生存チェックを行う場合はtrue
      */
     public boolean isAliveCheckJNDIServer();
     
     /**
-     * JNDI�T�[�o�̐����`�F�b�N���s���Ԋu[msec]��ݒ肷��B<p>
-     * �f�t�H���g�́A60000[msec]�B
+     * JNDIサーバの生存チェックを行う間隔[msec]を設定する。<p>
+     * デフォルトは、60000[msec]。
      * 
-     * @param interval JNDI�T�[�o�̐����`�F�b�N���s���Ԋu[msec]
+     * @param interval JNDIサーバの生存チェックを行う間隔[msec]
      */
     public void setAliveCheckJNDIServerInterval(long interval);
     
     /**
-     * JNDI�T�[�o�̐����`�F�b�N���s���Ԋu[msec]���擾����B<p>
+     * JNDIサーバの生存チェックを行う間隔[msec]を取得する。<p>
      * 
-     * @return JNDI�T�[�o�̐����`�F�b�N���s���Ԋu[msec]
+     * @return JNDIサーバの生存チェックを行う間隔[msec]
      */
     public long getAliveCheckJNDIServerInterval();
     
     /**
-     * JNDI�T�[�o���������Ă��邩�ǂ����𒲂ׂ�B<p>
-     * {@link #isAliveCheckJNDIServer()}��true��Ԃ��ꍇ�́A�Ō�Ƀ`�F�b�N�������̏�Ԃ�Ԃ��B<br>
-     * isAliveCheckJNDIServer()��false��Ԃ��ꍇ�́A�����Ƀ`�F�b�N���Č��ʂ�Ԃ��B�A���A�T�[�r�X���J�n���Ă��Ȃ��ꍇ�́Afalse��Ԃ��B<br>
+     * JNDIサーバが生存しているかどうかを調べる。<p>
+     * {@link #isAliveCheckJNDIServer()}がtrueを返す場合は、最後にチェックした時の状態を返す。<br>
+     * isAliveCheckJNDIServer()がfalseを返す場合は、即時にチェックして結果を返す。但し、サービスが開始していない場合は、falseを返す。<br>
      * 
-     * @return JNDI�T�[�o���������Ă���ꍇtrue
+     * @return JNDIサーバが生存している場合true
      */
     public boolean isAliveJNDIServer();
     
     /**
-     * JNDI�T�[�o���_�E�������������m�����|�̃��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * JNDIサーバがダウンした事を検知した旨のログを出力するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isOutput ���O���o�͂���ꍇtrue
+     * @param isOutput ログを出力する場合true
      */
     public void setLoggingDeadJNDIServer(boolean isOutput);
     
     /**
-     * JNDI�T�[�o���_�E�������������m�����|�̃��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * JNDIサーバがダウンした事を検知した旨のログを出力するかどうかを判定する。<p>
      *
-     * @return ���O���o�͂���ꍇtrue
+     * @return ログを出力する場合true
      */
     public boolean isLoggingDeadJNDIServer();
     
     /**
-     * JNDI�T�[�o�����A�����������m�����|�̃��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * JNDIサーバが復帰した事を検知した旨のログを出力するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isOutput ���O���o�͂���ꍇtrue
+     * @param isOutput ログを出力する場合true
      */
     public void setLoggingRecoverJNDIServer(boolean isOutput);
     
     /**
-     * JNDI�T�[�o�����A�����������m�����|�̃��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * JNDIサーバが復帰した事を検知した旨のログを出力するかどうかを判定する。<p>
      *
-     * @return ���O���o�͂���ꍇtrue
+     * @return ログを出力する場合true
      */
     public boolean isLoggingRecoverJNDIServer();
     
     /**
-     * JNDI�T�[�o���_�E�������������m�����|�̃��O�o�͂̃��b�Z�[�WID��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #JNDI_SERVER_DEAD_MSG_ID}�B<br>
+     * JNDIサーバがダウンした事を検知した旨のログ出力のメッセージIDを設定する。<p>
+     * デフォルトは、{@link #JNDI_SERVER_DEAD_MSG_ID}。<br>
      *
-     * @param id ���O�o�͂̃��b�Z�[�WID
+     * @param id ログ出力のメッセージID
      */
     public void setDeadJNDIServerLogMessageId(String id);
     
     /**
-     * JNDI�T�[�o���_�E�������������m�����|�̃��O�o�͂̃��b�Z�[�WID���擾����B<p>
+     * JNDIサーバがダウンした事を検知した旨のログ出力のメッセージIDを取得する。<p>
      *
-     * @return ���O�o�͂̃��b�Z�[�WID
+     * @return ログ出力のメッセージID
      */
     public String getDeadJNDIServerLogMessageId();
     
     /**
-     * JNDI�T�[�o�����A�����������m�����|�̃��O�o�͂̃��b�Z�[�WID��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #JNDI_SERVER_RECOVER_MSG_ID}�B<br>
+     * JNDIサーバが復帰した事を検知した旨のログ出力のメッセージIDを設定する。<p>
+     * デフォルトは、{@link #JNDI_SERVER_RECOVER_MSG_ID}。<br>
      *
-     * @param id ���O�o�͂̃��b�Z�[�WID
+     * @param id ログ出力のメッセージID
      */
     public void setRecoverJNDIServerLogMessageId(String id);
     
     /**
-     * JNDI�T�[�o�����A�����������m�����|�̃��O�o�͂̃��b�Z�[�WID���擾����B<p>
+     * JNDIサーバが復帰した事を検知した旨のログ出力のメッセージIDを取得する。<p>
      *
-     * @return ���O�o�͂̃��b�Z�[�WID
+     * @return ログ出力のメッセージID
      */
     public String getRecoverJNDIServerLogMessageId();
     
     /**
-     * �L���b�V�����������[�g�I�u�W�F�N�g��S�ăN���A����B<p>
+     * キャッシュしたリモートオブジェクトを全てクリアする。<p>
      */
     public void clearCache();
     
     /**
-     * �w�肵��JNDI���̂��������[�g�I�u�W�F�N�g�̃L���b�V�����N���A����B<p>
+     * 指定したJNDI名のしたリモートオブジェクトのキャッシュをクリアする。<p>
      * 
-     * @param jndiName �L���b�V������폜���郊���[�g�I�u�W�F�N�g��JNDI��
+     * @param jndiName キャッシュから削除するリモートオブジェクトのJNDI名
      */
     public void clearCache(String jndiName);
     

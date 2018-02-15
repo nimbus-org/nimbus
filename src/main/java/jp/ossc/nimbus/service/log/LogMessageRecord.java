@@ -36,20 +36,20 @@ import java.util.List;
 import jp.ossc.nimbus.service.message.MessageRecord;
 //
 /**
- *	ŠeíƒƒO‚Ìo—ÍƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ‹K’è‚·‚éB<BR>
+ *	å„ç¨®ãƒ­ã‚°ã®å‡ºåŠ›ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’è¦å®šã™ã‚‹ã€‚<BR>
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface LogMessageRecord extends MessageRecord{
 	/**
-	 *	ƒvƒ‰ƒCƒIƒŠƒeƒB‚ğæ“¾‚·‚éB<br>
-	 *	@return		int		ƒvƒ‰ƒCƒIƒŠƒeƒB[ƒR[ƒh<BR>
+	 *	ãƒ—ãƒ©ã‚¤ã‚ªãƒªãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return		int		ãƒ—ãƒ©ã‚¤ã‚ªãƒªãƒ†ã‚£ãƒ¼ã‚³ãƒ¼ãƒ‰<BR>
 	 */
 	public int getPriority();
 	/**
-	 *	ƒJƒeƒSƒŠ[‚ğæ“¾‚·‚éB<br>
-	 *	@return		String		ƒJƒeƒSƒŠ[ƒR[ƒh<BR>
+	 *	ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return		String		ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚³ãƒ¼ãƒ‰<BR>
 	 */
 	public List getCategories();
 	

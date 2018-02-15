@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.scheduler2;
 
 /**
- * W”zMƒoƒbƒNƒAƒbƒv‚ÌŠÇ—‚ÅˆÙí‚ª”­¶‚µ‚½‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * é›†é…ä¿¡ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã®ç®¡ç†ã§ç•°å¸¸ãŒç™ºç”Ÿã—ãŸæ™‚ã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class ConcentrateBackupException extends RuntimeException{
     private static final long serialVersionUID = 4333687040656708000L;
 
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ConcentrateBackupException(){
         super();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public ConcentrateBackupException(String message){
         super(message);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public ConcentrateBackupException(String message, Throwable cause){
         super(message, cause);
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public ConcentrateBackupException(Throwable cause){
         super(cause);

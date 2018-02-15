@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.core;
 
 /**
- * {@link Service}‚ğ¯•Ê‚·‚é‚½‚ß‚Ì–¼‘OB<p>
+ * {@link Service}ã‚’è­˜åˆ¥ã™ã‚‹ãŸã‚ã®åå‰ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,32 +41,32 @@ public class ServiceName implements java.io.Serializable, Comparable{
     private static final long serialVersionUID = 3004514157528131335L;
     
     /**
-     * {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘OB<p>
+     * {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã€‚<p>
      */
     private String managerName;
     
     /**
-     * {@link Service}‚Ì–¼‘OB<p>
+     * {@link Service}ã®åå‰ã€‚<p>
      */
     private String serviceName;
     
     public ServiceName(){}
     
     /**
-     * {@link Service}‚Ì–¼‘O‚ğw’è‚µ‚ÄAƒT[ƒrƒX‚Ì¯•Ê–¼ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * Service‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O‚ÍA{@link ServiceManager#DEFAULT_NAME}‚Æ‚È‚éB<br>
+     * {@link Service}ã®åå‰ã‚’æŒ‡å®šã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ã®è­˜åˆ¥åã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ServiceãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã¯ã€{@link ServiceManager#DEFAULT_NAME}ã¨ãªã‚‹ã€‚<br>
      *
-     * @param service Service‚Ì–¼‘O
+     * @param service Serviceã®åå‰
      */
     public ServiceName(String service){
         this(ServiceManager.DEFAULT_NAME, service);
     }
     
     /**
-     * {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O‚ÆService‚Ì–¼‘O‚ğw’è‚µ‚ÄAƒT[ƒrƒX‚Ì¯•Ê–¼ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã¨Serviceã®åå‰ã‚’æŒ‡å®šã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ã®è­˜åˆ¥åã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param manager Service‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param service Service‚Ì–¼‘O
+     * @param manager ServiceãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param service Serviceã®åå‰
      */
     public ServiceName(String manager, String service){
         managerName = manager;
@@ -74,27 +74,27 @@ public class ServiceName implements java.io.Serializable, Comparable{
     }
     
     /**
-     * {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O
+     * @return {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰
      */
     public String getServiceManagerName(){
         return managerName;
     }
     
     /**
-     * {@link Service}‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * {@link Service}ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return {@link Service}‚Ì–¼‘O
+     * @return {@link Service}ã®åå‰
      */
     public String getServiceName(){
         return serviceName;
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğ•Ô‚·B<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’è¿”ã™ã€‚<p>
      *
-     * @return [{@link ServiceManager}‚Ì–¼‘O]#[{@link Service}‚Ì–¼‘O]
+     * @return [{@link ServiceManager}ã®åå‰]#[{@link Service}ã®åå‰]
      */
     public String toString(){
         StringBuilder buf = new StringBuilder();
@@ -111,11 +111,11 @@ public class ServiceName implements java.io.Serializable, Comparable{
     }
     
     /**
-     * ˆø”‚Ìobj‚ª‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ“™‚µ‚¢‚©’²‚×‚éB<p>
-     * {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O‚ÆService‚Ì–¼‘O‚Ì—¼•û‚ª“™‚µ‚¢ê‡‚Ì‚İtrue‚ğ•Ô‚·B<br>
+     * å¼•æ•°ã®objãŒã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ç­‰ã—ã„ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã¨Serviceã®åå‰ã®ä¸¡æ–¹ãŒç­‰ã—ã„å ´åˆã®ã¿trueã‚’è¿”ã™ã€‚<br>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return “™‚µ‚¢ê‡true
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç­‰ã—ã„å ´åˆtrue
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -146,9 +146,9 @@ public class ServiceName implements java.io.Serializable, Comparable{
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return (managerName != null ? managerName.hashCode() : 0)
@@ -156,10 +156,10 @@ public class ServiceName implements java.io.Serializable, Comparable{
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ì‡˜‚ğ”äŠr‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é †åºã‚’æ¯”è¼ƒã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÆ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚æ‚è¬‚³‚¢ê‡‚Í•‰‚Ì®”A“™‚µ‚¢ê‡‚Íƒ[ƒA‘å‚«‚¢ê‡‚Í³‚Ì®”‚ğ•Ô‚·B
+     * @param obj æ¯”è¼ƒå¯¾ç…§ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚ˆã‚Šå°ã•ã„å ´åˆã¯è² ã®æ•´æ•°ã€ç­‰ã—ã„å ´åˆã¯ã‚¼ãƒ­ã€å¤§ãã„å ´åˆã¯æ­£ã®æ•´æ•°ã‚’è¿”ã™ã€‚
      */
     public int compareTo(Object obj){
         if(obj instanceof ServiceName){

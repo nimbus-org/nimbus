@@ -51,9 +51,9 @@ import jp.ossc.nimbus.service.proxy.RemoteServiceCallException;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * ƒNƒ‰ƒXƒ^InvokerƒT[ƒrƒXB<p>
- * {@link KeepAliveCheckInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½{@link Invoker}‚ğ{@link KeepAliveCheckerSelector}‚É‚æ‚Á‚Ä‘I‘ğ‚µ‚ÄAŒÄ‚Ño‚·Invoker‚Å‚ ‚éB<br>
- * ‚±‚ê‚É‚æ‚èA•¡”ƒT[ƒo‚ÉŒ×‚Á‚Ä‘¶İ‚·‚éƒT[ƒrƒX‚ğA€ŠˆŠÄ‹‹y‚Ñ•‰‰×•ªU‚³‚¹‚È‚ª‚çŒÄ‚Ño‚·–‚ª‰Â”\‚É‚È‚éB<br>
+ * ã‚¯ãƒ©ã‚¹ã‚¿Invokerã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * {@link KeepAliveCheckInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸ{@link Invoker}ã‚’{@link KeepAliveCheckerSelector}ã«ã‚ˆã£ã¦é¸æŠã—ã¦ã€å‘¼ã³å‡ºã™Invokerã§ã‚ã‚‹ã€‚<br>
+ * ã“ã‚Œã«ã‚ˆã‚Šã€è¤‡æ•°ã‚µãƒ¼ãƒã«è·¨ã£ã¦å­˜åœ¨ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ã€æ­»æ´»ç›£è¦–åŠã³è² è·åˆ†æ•£ã•ã›ãªãŒã‚‰å‘¼ã³å‡ºã™äº‹ãŒå¯èƒ½ã«ãªã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -80,56 +80,56 @@ public class ClusterInvokerService extends ServiceBase
     protected ServiceName threadContextServiceName;
     protected Context threadContext;
     
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public void setKeepAliveCheckerSelectorServiceName(ServiceName name){
         selectorServiceName = name;
     }
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public ServiceName getKeepAliveCheckerSelectorServiceName(){
         return selectorServiceName;
     }
     
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public void setExceptionConditions(String[] conditions){
         exceptionConditions = conditions;
     }
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public String[] getExceptionConditions(){
         return exceptionConditions;
     }
     
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public void setMaxRetryCount(int count){
         maxRetryCount = count;
     }
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public int getMaxRetryCount(){
         return maxRetryCount;
     }
     
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public void setRetryInterval(long interval){
         retryInterval = interval;
     }
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
     
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public void setBroadcast(boolean isBroadcast){
         this.isBroadcast = isBroadcast;
     }
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public boolean isBroadcast(){
         return isBroadcast;
     }
     
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // ClusterInvokerServiceMBean‚ÌJavaDoc
+    // ClusterInvokerServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
@@ -181,11 +181,11 @@ public class ClusterInvokerService extends ServiceBase
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½RMIƒIƒuƒWƒFƒNƒg‚ğŒÄ‚Ño‚·B<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸRMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‘¼ã³å‡ºã™ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context) throws Throwable{
         boolean isBroadcast = this.isBroadcast;
@@ -301,22 +301,22 @@ public class ClusterInvokerService extends ServiceBase
                 }
             }
         }
-        // ‚±‚±‚É‚Í—ˆ‚È‚¢
+        // ã“ã“ã«ã¯æ¥ãªã„
         return null;
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚É‘Î‰‚·‚éğŒ‚ğæ‚èo‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã«å¯¾å¿œã™ã‚‹æ¡ä»¶ã‚’å–ã‚Šå‡ºã™ã€‚<p>
      * 
-     * @param conditions —áŠO‚ÆğŒ‚Ìƒ}ƒbƒv
-     * @param th —áŠO
-     * @return ğŒ
+     * @param conditions ä¾‹å¤–ã¨æ¡ä»¶ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–
+     * @return æ¡ä»¶
      */
     private Condition getTargetCondition(ClassMappingTree conditions, Throwable th) {
         if(conditions == null){
             return null;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚éğŒ‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹æ¡ä»¶ã‚’å–å¾—
         Condition condition = (Condition)conditions.getValue(th.getClass());
         if(condition != null){
             return condition;
@@ -327,15 +327,15 @@ public class ClusterInvokerService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çŒ´ˆö‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰åŸå› ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
-     * @return Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @return åŸå› 
      */
     private Throwable getCause(Throwable th){
         Throwable cause = null;
         if(th.getClass().getName().equals(SERVLET_EXCEPTION_NAME)){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try{
                 cause = (Throwable)th.getClass()
                     .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -344,7 +344,7 @@ public class ClusterInvokerService extends ServiceBase
             }catch(InvocationTargetException e){
             }
         }else if(th.getClass().getName().equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -497,7 +497,7 @@ public class ClusterInvokerService extends ServiceBase
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
             }
         }
     }

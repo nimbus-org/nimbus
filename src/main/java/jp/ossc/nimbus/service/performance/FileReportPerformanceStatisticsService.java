@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.performance;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import java.text.SimpleDateFormat;
 import jp.ossc.nimbus.core.*;
@@ -43,8 +43,8 @@ import jp.ossc.nimbus.service.queue.Queue;
 import jp.ossc.nimbus.service.writer.*;
 //
 /**
- * ƒXƒ^ƒeƒBƒXƒeƒBƒNƒXŠÇ—ƒNƒ‰ƒXB<BR>
- * ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX‚ÌŒŸõA“o˜^‚ğs‚¤B<BR>
+ * ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<BR>
+ * ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ã®æ¤œç´¢ã€ç™»éŒ²ã‚’è¡Œã†ã€‚<BR>
  * @author H.Nakano
  * @version 1.00 
  */
@@ -54,90 +54,90 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
     
     private static final long serialVersionUID = 3609558424484833722L;
     
-    /** ƒfƒtƒHƒ‹ƒgƒCƒ“ƒ^[ƒoƒ‹(10•ª) */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(10åˆ†) */
     private static final String C_DEFAULT_INTERVAL = "600";
     
-    /** ƒfƒtƒHƒ‹ƒgƒCƒ“ƒ^[ƒoƒ‹(10•ª) */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(10åˆ†) */
     private static final String C_SEP = "---";
     private static final String C_FORMAT = "yyyy-MM-dd HH-mm-ss";
     private static final SimpleDateFormat formatter
         = new SimpleDateFormat(C_FORMAT);
     
-    /** MBeanƒZƒbƒ^•Û•Ï”(ƒ\[ƒgƒL[) */
+    /** MBeanã‚»ãƒƒã‚¿ä¿æŒå¤‰æ•°(ã‚½ãƒ¼ãƒˆã‚­ãƒ¼) */
     protected String mSortKey;
-    /** MBeanƒZƒbƒ^•Û•Ï”(‘‚«o‚µƒCƒ“ƒ^[ƒoƒ‹•b) */
+    /** MBeanã‚»ãƒƒã‚¿ä¿æŒå¤‰æ•°(æ›¸ãå‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ç§’) */
     protected String mIntervalSec = C_DEFAULT_INTERVAL;
     
-    /** MBeanƒZƒbƒ^•Û•Ï”iƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼j*/
+    /** MBeanã‚»ãƒƒã‚¿ä¿æŒå¤‰æ•°ï¼ˆãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåï¼‰*/
     protected ServiceName mWritableRecordFactoryName;
-    /** ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg*/
+    /** ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ*/
     protected WritableRecordFactoryService mWritableRecFac;
     
-    /** MBeanƒZƒbƒ^•Û•Ï”iƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼j*/
+    /** MBeanã‚»ãƒƒã‚¿ä¿æŒå¤‰æ•°ï¼ˆãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåï¼‰*/
     protected ServiceName mWriterName;
-    /** ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg */
+    /** ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ */
     protected MessageWriter mWriter;
     
-    /** MBeanƒZƒbƒ^•Û•Ï”iƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼j*/
+    /** MBeanã‚»ãƒƒã‚¿ä¿æŒå¤‰æ•°ï¼ˆã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåï¼‰*/
     protected ServiceName mQueueName;
-    /** ƒpƒtƒH[ƒ}ƒ“ƒXZoƒLƒ…[*/
+    /** ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ç®—å‡ºã‚­ãƒ¥ãƒ¼*/
     protected Queue mQueue;
     /**
-     * {@link #getQueueServiceName()}‚ªnull‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ì{@link Queue}ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚·‚é{@link DefaultQueueService}ƒT[ƒrƒXB<p>
+     * {@link #getQueueServiceName()}ãŒnullã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã™ã‚‹{@link DefaultQueueService}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private DefaultQueueService defaultQueue;
     
-    /** ƒpƒtƒH[ƒ}ƒ“ƒXXVƒf[ƒ‚ƒ“ƒXƒŒƒbƒhƒIƒuƒWƒFƒNƒg */
+    /** ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ›´æ–°ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     protected Daemon mPerformDaemon;
-    /** ƒpƒtƒH[ƒ}ƒ“ƒXo—Íƒf[ƒ‚ƒ“ƒXƒŒƒbƒhƒIƒuƒWƒFƒNƒg */
+    /** ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹å‡ºåŠ›ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     protected Daemon mWriterDaemon;
     
-    /** ƒpƒtƒH[ƒ}ƒ“ƒXŠÇ—ƒnƒbƒVƒ… */
+    /** ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ç®¡ç†ãƒãƒƒã‚·ãƒ¥ */
     protected Hashtable mHash = null;
-    /** ƒpƒtƒH[ƒ}ƒ“ƒXƒŒƒR[ƒhƒNƒ‰ƒX–¼ */
+    /** ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹å */
     protected String mClassName = null;
-    /** ƒpƒtƒH[ƒ}ƒ“ƒXƒŒƒR[ƒhƒNƒ‰ƒX */
+    /** ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹ */
     protected Class mClsRec = null;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-     * Hash‚ğƒCƒ“ƒXƒ^ƒ“ƒVƒ“ƒO‚µ‚ÄKey‚ğƒZƒbƒg‚·‚éB<BR>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+     * Hashã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚·ãƒ³ã‚°ã—ã¦Keyã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€‚<BR>
      */
     public FileReportPerformanceStatisticsService(){
         super();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         mHash = new Hashtable(1024,256);
     }
     
     /**
-     * Queue‚ğİ’è‚·‚éB
+     * Queueã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setQueue(Queue queue) {
         mQueue = queue;
     }
 
     /**
-     * WritableRecordFactoryService‚ğİ’è‚·‚éB
+     * WritableRecordFactoryServiceã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setWritableRecordFactoryService(WritableRecordFactoryService writableRecFac) {
         mWritableRecFac = writableRecFac;
     }
 
     /**
-     * MessageWriter‚ğİ’è‚·‚éB
+     * MessageWriterã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setMessageWriter(MessageWriter writer) {
         mWriter = writer;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
      */
     public void startService() throws Exception{
@@ -145,17 +145,17 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
             throw new ServiceException("PEFORMANCE010","RecordClass is null");
         }
         
-        // ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒgæ“¾
+        // ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå–å¾—
         mWriter = (MessageWriter)ServiceManagerFactory.getServiceObject(
             mWriterName
         );
         
-        // ƒ‰ƒCƒ^ƒuƒ‹ƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒgæ“¾
+        // ãƒ©ã‚¤ã‚¿ãƒ–ãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå–å¾—
         mWritableRecFac = (WritableRecordFactoryService)ServiceManagerFactory
             .getServiceObject(mWritableRecordFactoryName);
         
         
-        // QueueƒT[ƒrƒX‚Ì¶¬‚Ü‚½‚Íæ“¾
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã¾ãŸã¯å–å¾—
         if(getQueueServiceName() == null){
             if(getDefaultQueueService() == null){
                 final DefaultQueueService defaultQueue
@@ -172,7 +172,7 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
                     .getServiceObject(getQueueServiceName());
         }
         
-        // ‘‚«o‚µƒCƒ“ƒ^[ƒoƒ‹ƒ`ƒFƒbƒN
+        // æ›¸ãå‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ãƒã‚§ãƒƒã‚¯
         if (mIntervalSec == null || "".equals(mIntervalSec)){
             mIntervalSec = C_DEFAULT_INTERVAL;
         }else{
@@ -183,17 +183,17 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
             }
         }
         
-        // ƒLƒ…[ó•tŠJn
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜é–‹å§‹
         mQueue.accept();
         
-        // ƒpƒtƒH[ƒ}ƒ“ƒXXVƒf[ƒ‚ƒ“ƒXƒŒƒbƒh¶¬
+        // ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ›´æ–°ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ç”Ÿæˆ
         mPerformDaemon = new Daemon(this);
-        // ƒtƒ@ƒCƒ‹o—Íƒf[ƒ‚ƒ“ƒXƒŒƒbƒh¶¬
+        // ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ç”Ÿæˆ
         mWriterDaemon = new Daemon(new WriterDaemonRunnable(this));
         mPerformDaemon.start();
         mWriterDaemon.start();
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
      */
     public void stopService() throws Exception{
@@ -202,16 +202,16 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         mPerformDaemon.stop();
         mWriterDaemon.stop();
         
-        // ƒLƒ…[ó•t’â~
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜åœæ­¢
         mQueue.release();
         
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(mQueue == getDefaultQueueService()){
             getDefaultQueueService().stop();
         }
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#destroyService()
      */
     public void destroyService() throws Exception{
@@ -219,14 +219,14 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         mClassName = null;
         mClsRec = null;
         
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(mQueue == getDefaultQueueService()){
             getDefaultQueueService().destroy();
             setDefaultQueueService(null);
         }
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.performance.PerformanceStatistics#entry(java.lang.String, long)
      */
     public void entry(String key, long msec) {
@@ -236,10 +236,10 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         final ArrayList enqueueList = new ArrayList(2);
         enqueueList.add(key);
         enqueueList.add(new Long(msec));
-        // ƒpƒtƒH[ƒ}ƒ“ƒXƒGƒ“ƒgƒŠ‚ğƒLƒ…[“Š“ü‚·‚éB
+        // ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚¨ãƒ³ãƒˆãƒªã‚’ã‚­ãƒ¥ãƒ¼æŠ•å…¥ã™ã‚‹ã€‚
         this.mQueue.push(enqueueList);
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.performance.FileReportPerformanceStatisticsServiceMBean#clear()
      */
     public void clear(){
@@ -247,51 +247,51 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
             this.mHash.clear();
         }
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.performance.FileReportPerformanceStatisticsServiceMBean#toStringAry(int, boolean)
      */
     public String[] toStringAry(int sortKey, boolean isUpset){
-        // ƒƒO‚ğæ“¾‚·‚é
+        // ãƒ­ã‚°ã‚’å–å¾—ã™ã‚‹
         final ArrayList sortList = new ArrayList();
         final CsvArrayList retAry = new CsvArrayList();
         Hashtable tb = null;
         synchronized(mHash){
             tb = (Hashtable)mHash.clone();
         }
-        /** ƒf[ƒ^ƒŠƒXƒg‚©‚çˆê€–Ú‚Ã‚Âæ‚èo‚·B*/
+        /** ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆã‹ã‚‰ä¸€é …ç›®ã¥ã¤å–ã‚Šå‡ºã™ã€‚*/
         for(Enumeration enumeration = tb.elements(); enumeration.hasMoreElements(); ){
             final PerformanceRecord item = (PerformanceRecord)enumeration.nextElement();
             if(item != null){
-                //ƒL[ƒ\[ƒgƒƒ\ƒbƒh‚ğƒR[ƒ‹
+                //ã‚­ãƒ¼ã‚½ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚³ãƒ¼ãƒ«
                 _sortList(sortList, item, sortKey, isUpset);
             }
         }
         retAry.add(C_SEP);
         retAry.add(getNowDate());
-        /** ƒL[ƒ\[ƒgƒŠƒXƒg‚©‚ço—Í•¶š”z—ñ‚Éƒf[ƒ^‚ğ“]‹L */
+        /** ã‚­ãƒ¼ã‚½ãƒ¼ãƒˆãƒªã‚¹ãƒˆã‹ã‚‰å‡ºåŠ›æ–‡å­—é…åˆ—ã«ãƒ‡ãƒ¼ã‚¿ã‚’è»¢è¨˜ */
         for(ListIterator iterator = sortList.listIterator(); iterator.hasNext(); ){
-            //KEY•¶šƒf[ƒ^æ“¾ECSV•ª‰ğ
+            //KEYæ–‡å­—ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ»CSVåˆ†è§£
             final String sortItem = (String)iterator.next();
             final CsvArrayList keyAry = new CsvArrayList();
             keyAry.split(sortItem, ";");
-            //ƒL[‚ÅHASH‚©‚ç‘ÎÛƒpƒtƒH[ƒ}ƒ“ƒXƒ}ƒl[ƒWƒƒ‚ğæ‚èo‚·B
+            //ã‚­ãƒ¼ã§HASHã‹ã‚‰å¯¾è±¡ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å–ã‚Šå‡ºã™ã€‚
             if(mHash.containsKey(keyAry.getStr(0))){
                 final PerformanceRecord item = (PerformanceRecord)mHash.get(keyAry.getStr(0));
-                //o—ÍƒŠƒXƒg‚ÉƒpƒtƒH[ƒ}ƒ“ƒX•¶šŠi”[
+                //å‡ºåŠ›ãƒªã‚¹ãƒˆã«ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ–‡å­—æ ¼ç´
                 retAry.add(item.toString());
             }
         }
-        /** o—Í */
+        /** å‡ºåŠ› */
         final String[] retStrAry = retAry.toStringAry();
         return retStrAry;
     }
     //
     /**
-     * w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-     * @param sortList - ƒ\[ƒgŒ‹‰ÊŠi”[”z—ñ
-     * @param item - PerformanceMangerƒIƒuƒWƒFƒNƒg
-     * @param sortKey - ƒ\[ƒgƒL[
-     * @param isUpset - ¸‡A~‡‚Ìw’è
+     * æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+     * @param sortList - ã‚½ãƒ¼ãƒˆçµæœæ ¼ç´é…åˆ—
+     * @param item - PerformanceMangerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param sortKey - ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+     * @param isUpset - æ˜‡é †ã€é™é †ã®æŒ‡å®š
      */
     private void _sortList(ArrayList sortList, PerformanceRecord item, int sortKey, boolean isUpset){
         if(sortList == null || item == null){
@@ -313,17 +313,17 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
             final Long tmpLong = new Long(item.getCallTime());
             cmpKey = tmpLong.toString();
         }
-        /** sortƒf[ƒ^•¶š—ñ‚ğì¬‚·‚é<BR>
-         *    resourceId + ";" ”äŠrƒf[ƒ^  */
+        /** sortãƒ‡ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹<BR>
+         *    resourceId + ";" æ¯”è¼ƒãƒ‡ãƒ¼ã‚¿  */
         final String rscId = item.getResourceId() + ";" + cmpKey;
         int entryCnt = 0;
-        /** sortList‚Éƒ\[ƒgƒCƒ“ƒT[ƒg‚·‚éB */
+        /** sortListã«ã‚½ãƒ¼ãƒˆã‚¤ãƒ³ã‚µãƒ¼ãƒˆã™ã‚‹ã€‚ */
         for(ListIterator iterator = sortList.listIterator(); iterator.hasNext(); entryCnt++){
-            //ƒŠƒXƒg‚ÌƒRƒ“ƒyƒA€–Ú‚ğæ‚èo‚·B
+            //ãƒªã‚¹ãƒˆã®ã‚³ãƒ³ãƒšã‚¢é …ç›®ã‚’å–ã‚Šå‡ºã™ã€‚
             final String destCmp = (String)iterator.next();
             final CsvArrayList parse = new CsvArrayList();
             parse.split(destCmp, ";");
-            //ƒRƒ“ƒyƒA
+            //ã‚³ãƒ³ãƒšã‚¢
             final int ret = cmpKey.compareTo(parse.getStr(1));
             if(isUpset){
                 if(ret <= 0){
@@ -337,7 +337,7 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         }
         sortList.add(entryCnt, rscId);
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.performance.FileReportPerformanceStatisticsServiceMBean#setRecordClassName(java.lang.String)
      */
     public void setRecordClassName(String className) throws ServiceException{
@@ -357,144 +357,144 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         }
     }
     /**
-     * @return String - ƒpƒtƒH[ƒ}ƒ“ƒXƒNƒ‰ƒX–¼
+     * @return String - ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚¯ãƒ©ã‚¹å
      * @see jp.ossc.nimbus.service.performance.FileReportPerformanceStatisticsServiceMBean#getRecordClassName()
      */
     public String getRecordClassName(){
         return this.mClassName;
     }
     /**
-     * ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚é.
-     * @param name - ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+     * ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹.
+     * @param name - ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
      */
     public void setQueueServiceName(ServiceName name){
         this.mQueueName = name;
     }
     /**
-     * ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğæ“¾‚·‚éB
-     * @return ServiceName - ƒLƒ…[•”•iƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+     * ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚
+     * @return ServiceName - ã‚­ãƒ¥ãƒ¼éƒ¨å“ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
      */
     public ServiceName getQueueServiceName(){
         return this.mQueueName;
     }
     
     /**
-     * Queue‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link DefaultQueueService}‚ğæ“¾‚·‚éB<p>
-     * ‚±‚ÌDefaultQueueService‚ÍA–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚³‚ê‚éB‚Ü‚½A{@link #setQueueServiceName(ServiceName)}‚ÅQueue‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAnull‚ğ•Ô‚·ê‡‚ª‚ ‚éB<br>
+     * QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link DefaultQueueService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®DefaultQueueServiceã¯ã€ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã•ã‚Œã‚‹ã€‚ã¾ãŸã€{@link #setQueueServiceName(ServiceName)}ã§QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€nullã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã€‚<br>
      *
-     * @return DefaultQueueServiceƒIƒuƒWƒFƒNƒgB¶¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ínull‚ğ•Ô‚·B
+     * @return DefaultQueueServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ç”Ÿæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯nullã‚’è¿”ã™ã€‚
      */
     protected DefaultQueueService getDefaultQueueService(){
         return defaultQueue;
     }
     
     /**
-     * Queue‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link DefaultQueueService}‚ğİ’è‚·‚éB<p>
+     * QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link DefaultQueueService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue DefaultQueueServiceƒIƒuƒWƒFƒNƒg
+     * @param queue DefaultQueueServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setDefaultQueueService(DefaultQueueService queue){
         defaultQueue = queue;
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚éB
-     * @param name - ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
+     * @param name - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
      */
     public void setWriterServiceName(ServiceName name){
         this.mWriterName = name;
     }
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚éB
-     * @return - ƒtƒ@ƒCƒ‹‘‚«o‚µƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
+     * @return - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
      */
     public ServiceName getWriterServiceName(){
         return this.mWriterName;
     }
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚·‚éB
-     * @param name - ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
+     * @param name - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
      */
     public void setWriteableRecordFactoryServiceName(ServiceName name){
         this.mWritableRecordFactoryName = name;
     }
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğæ“¾‚·‚éB
-     * @return ServiceName - ƒtƒ@ƒCƒ‹‘‚«o‚µƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠƒRƒ“ƒ|[ƒlƒ“ƒg–¼
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚
+     * @return ServiceName - ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
      */
     public ServiceName getWriteableRecordFactoryServiceName(){
         return this.mWritableRecordFactoryName;
     }
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«o‚µƒCƒ“ƒ^[ƒoƒ‹(•b)‚ğİ’è‚·‚éB
-     * @param intervalSec - ƒCƒ“ƒ^[ƒoƒ‹(•b)
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)ã‚’è¨­å®šã™ã‚‹ã€‚
+     * @param intervalSec - ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)
      */
     public void setWritableInterval(String intervalSec){
         this.mIntervalSec = intervalSec;
     }
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«o‚µƒCƒ“ƒ^[ƒoƒ‹(•b)‚ğæ“¾‚·‚éB
-     * @return String - ƒCƒ“ƒ^[ƒoƒ‹(•b)
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãå‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)ã‚’å–å¾—ã™ã‚‹ã€‚
+     * @return String - ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ç§’)
      */
     public String getWritableInterval(){
         return this.mIntervalSec;
     }
     /**
-     * ƒ\[ƒgƒL[‚ğİ’è‚·‚éB
-     * @param inSortKey - ƒ\[ƒgƒL[
+     * ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚
+     * @param inSortKey - ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
      */
     public void setSortKey(String inSortKey){
         this.mSortKey = inSortKey;
     }
     /**
-     * ƒ\[ƒgƒL[‚ğæ“¾‚·‚éB
-     * @return String - ƒ\[ƒgƒL[
+     * ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚
+     * @return String - ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
      */
     public String getSortKey(){
         return this.mSortKey;
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì’â~³”F‚ğs‚¤B
-     * @return true ƒXƒgƒbƒv³”FAfalse ƒXƒgƒbƒv”ñ³”F
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®åœæ­¢æ‰¿èªã‚’è¡Œã†ã€‚
+     * @return true ã‚¹ãƒˆãƒƒãƒ—æ‰¿èªã€false ã‚¹ãƒˆãƒƒãƒ—éæ‰¿èª
      */
     public boolean onStop(){
         return true;
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌƒTƒXƒyƒ“ƒh³”F‚ğs‚¤B
-     * @return boolean - true:ƒTƒXƒyƒ“ƒh³”F false:ƒTƒXƒyƒ“ƒh”ñ³”F
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚µã‚¹ãƒšãƒ³ãƒ‰æ‰¿èªã‚’è¡Œã†ã€‚
+     * @return boolean - true:ã‚µã‚¹ãƒšãƒ³ãƒ‰æ‰¿èª false:ã‚µã‚¹ãƒšãƒ³ãƒ‰éæ‰¿èª
      */
     public boolean onSuspend(){
         return true;
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌƒŒƒWƒ…|ƒ€³”F‚ğs‚¤B
-     * @return boolean - true:ƒŒƒWƒ…|ƒ€³”F false:ƒŒƒWƒ…|ƒ€”ñ³”F
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒ¬ã‚¸ãƒ¥ï¼ãƒ æ‰¿èªã‚’è¡Œã†ã€‚
+     * @return boolean - true:ãƒ¬ã‚¸ãƒ¥ï¼ãƒ æ‰¿èª false:ãƒ¬ã‚¸ãƒ¥ï¼ãƒ éæ‰¿èª
      */
     public boolean onResume(){
         return true;
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌƒuƒƒbƒLƒ“ƒOˆ—‚ğs‚¤Bƒƒ‚ƒŠƒLƒ…[‚©‚çƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB
-     *    @return Object - ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°å‡¦ç†ã‚’è¡Œã†ã€‚ãƒ¡ãƒ¢ãƒªã‚­ãƒ¥ãƒ¼ã‹ã‚‰ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
+     *    @return Object - ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object provide(DaemonControl ctrl){
         return this.mQueue.get();
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ìˆ—‚ğs‚¤BƒpƒtƒH[ƒ}ƒ“ƒXXV‚ğs‚¤B
-     * @param paramObj - ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å‡¦ç†ã‚’è¡Œã†ã€‚ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ›´æ–°ã‚’è¡Œã†ã€‚
+     * @param paramObj - ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @param ctrl - DaemonControl
      */
     public void consume(Object paramObj, DaemonControl ctrl) throws ServiceException{
         if(paramObj == null){
             return;
         }
-        // ƒLƒ…[‚©‚çentryƒf[ƒ^‚ğæ“¾‚·‚éB
+        // ã‚­ãƒ¥ãƒ¼ã‹ã‚‰entryãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚
         final ArrayList entryList = (ArrayList)paramObj;
         final String key = (String)entryList.get(0);
         long msec = ((Long)entryList.get(1)).longValue();
-        // ƒpƒtƒH[ƒ}ƒ“ƒXXV
+        // ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ›´æ–°
         PerformanceRecordOperator performanceObj = null;
         performanceObj = (PerformanceRecordOperator)mHash.get(key);
         if(performanceObj != null){
@@ -513,13 +513,13 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         }
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌŒãˆ—‚ğs‚¤Bƒƒ‚ƒŠƒLƒ…[‚Éc‚Á‚Ä‚¢‚éƒWƒƒ[ƒiƒ‹ƒƒO‚ğ‘S‚Äo—Í‚·‚éB
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚ãƒ¡ãƒ¢ãƒªã‚­ãƒ¥ãƒ¼ã«æ®‹ã£ã¦ã„ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ­ã‚°ã‚’å…¨ã¦å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public void garbage(){
         if(mQueue == null){
             return;
         }
-        //ƒƒ‚ƒŠƒLƒ…[‚Ì“à—e‚ª‚È‚­‚È‚é‚Ü‚Å
+        //ãƒ¡ãƒ¢ãƒªã‚­ãƒ¥ãƒ¼ã®å†…å®¹ãŒãªããªã‚‹ã¾ã§
         while(mQueue.size() > 0){
             Object obj = mQueue.get();
             try{
@@ -529,8 +529,8 @@ public class FileReportPerformanceStatisticsService extends ServiceBase
         }
     }
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌƒXƒ^[ƒg³”F‚ğs‚¤B
-     *    @return true ƒXƒ^[ƒg³”FAfalse ƒXƒ^[ƒg”ñ³”F
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚¹ã‚¿ãƒ¼ãƒˆæ‰¿èªã‚’è¡Œã†ã€‚
+     *    @return true ã‚¹ã‚¿ãƒ¼ãƒˆæ‰¿èªã€false ã‚¹ã‚¿ãƒ¼ãƒˆéæ‰¿èª
      */
     public boolean onStart(){
         return true;

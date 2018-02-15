@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.validator;
 
 /**
- * •¶š—ñƒoƒŠƒf[ƒ^’ŠÛƒNƒ‰ƒXB<p>
+ * æ–‡å­—åˆ—ãƒãƒªãƒ‡ãƒ¼ã‚¿æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,139 +42,139 @@ public abstract class AbstractStringValidator
     private static final long serialVersionUID = -468946068283281754L;
     
     /**
-     * null‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡A‹–—e‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * nullã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€è¨±å®¹ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isAllowNull = true;
     
     /**
-     * ‹ó•¶š‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡A‹–—e‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ç©ºæ–‡å­—ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€è¨±å®¹ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isAllowEmpty;
     
     /**
-     * StringˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡AtoString()‚Å•¶š—ñ‚É•ÏŠ·‚µ‚ÄŒŸØ‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * Stringä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€toString()ã§æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isAllowObject;
     
     /**
-     * ‹ó”’‚ğƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡AƒgƒŠƒ€‚µ‚ÄŒŸØ‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€ãƒˆãƒªãƒ ã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isTrim;
     
     /**
-     * ‹ó”’‚ğƒgƒŠƒ€‚·‚éê‡‚Ì‹ó”’•¶š‚Ì”z—ñB<p>
-     * İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link Character#isWhitespace(char)}‚ğg—p‚·‚éB<br>
+     * ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã®ç©ºç™½æ–‡å­—ã®é…åˆ—ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link Character#isWhitespace(char)}ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      */
     protected char[] whiteSpaceCharacters;
     
     /**
-     * null‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * nullã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      * 
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowNull(boolean isAllow){
         isAllowNull = isAllow;
     }
     
     /**
-     * null‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * nullã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowNull(){
         return isAllowNull;
     }
     
     /**
-     * ‹ó•¶š‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ç©ºæ–‡å­—ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowEmpty(boolean isAllow){
         isAllowEmpty = isAllow;
     }
     
     /**
-     * ‹ó•¶š‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç©ºæ–‡å­—ã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowEmpty(){
         return isAllowEmpty;
     }
     
     /**
-     * StringˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Ìê‡AtoString()‚Å•¶š—ñ‚É•ÏŠ·‚µ‚ÄŒŸØ‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * Stringä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã®å ´åˆã€toString()ã§æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isAllow true‚Ìê‡A‹–—e‚·‚é
+     * @param isAllow trueã®å ´åˆã€è¨±å®¹ã™ã‚‹
      */
     public void setAllowObject(boolean isAllow){
         isAllowObject = isAllow;
     }
     
     /**
-     * StringˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg‚ğ‹–—e‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Stringä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨±å®¹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ‹–—e‚·‚éê‡Atrue
+     * @return è¨±å®¹ã™ã‚‹å ´åˆã€true
      */
     public boolean isAllowObject(){
         return isAllowObject;
     }
     
     /**
-     * ‹ó”’‚ğƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Ìê‡AƒgƒŠƒ€‚µ‚ÄŒŸØ‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã®å ´åˆã€ãƒˆãƒªãƒ ã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param trim true‚Ìê‡AƒgƒŠƒ€‚·‚é
+     * @param trim trueã®å ´åˆã€ãƒˆãƒªãƒ ã™ã‚‹
      */
     public void setTrim(boolean trim){
         isTrim = trim;
     }
     
     /**
-     * ‹ó”’‚ğƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒgƒŠƒ€‚·‚éê‡Atrue
+     * @return ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã€true
      */
     public boolean isTrim(){
         return isTrim;
     }
     
     /**
-     * ‹ó”’‚ğƒgƒŠƒ€‚·‚éê‡‚Ì‹ó”’•¶š‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link Character#isWhitespace(char)}‚ğg—p‚·‚éB<br>
+     * ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã®ç©ºç™½æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link Character#isWhitespace(char)}ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param chars ‹ó”’‚ğƒgƒŠƒ€‚·‚éê‡‚Ì‹ó”’•¶š”z—ñ
+     * @param chars ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã®ç©ºç™½æ–‡å­—é…åˆ—
      */
     public void setWhiteSpaceCharacters(char[] chars){
         whiteSpaceCharacters = chars;
     }
     
     /**
-     * ‹ó”’‚ğƒgƒŠƒ€‚·‚éê‡‚Ì‹ó”’•¶š‚ğæ“¾‚·‚éB<p>
+     * ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã®ç©ºç™½æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‹ó”’‚ğƒgƒŠƒ€‚·‚éê‡‚Ì‹ó”’•¶š”z—ñ
+     * @return ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã®ç©ºç™½æ–‡å­—é…åˆ—
      */
     public char[] getWhiteSpaceCharacters(){
         return whiteSpaceCharacters;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğŒŸØ‚·‚éB<p>
-     * nullƒ`ƒFƒbƒNAString‚©‚Ç‚¤‚©‚Ìƒ`ƒFƒbƒNA‹ó•¶šƒ`ƒFƒbƒN‚ğ’Ê‰ß‚µ‚ÄA{@link #validateString(String)}‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
+     * nullãƒã‚§ãƒƒã‚¯ã€Stringã‹ã©ã†ã‹ã®ãƒã‚§ãƒƒã‚¯ã€ç©ºæ–‡å­—ãƒã‚§ãƒƒã‚¯ã‚’é€šéã—ã¦ã€{@link #validateString(String)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #validateString(String)
      */
     public boolean validate(Object obj) throws ValidateException{
@@ -200,20 +200,20 @@ public abstract class AbstractStringValidator
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param str ŒŸØ‘ÎÛ‚Ì•¶š—ñ
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param str æ¤œè¨¼å¯¾è±¡ã®æ–‡å­—åˆ—
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected abstract boolean validateString(String str)
      throws ValidateException;
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚Ì‘OŒã‚Ì‹ó”’‚ğƒgƒŠƒ€‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®å‰å¾Œã®ç©ºç™½ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã€‚<p>
      *
-     * @param str ƒgƒŠƒ€‘ÎÛ•¶š—ñ
-     * @return ƒgƒŠƒ€Œã‚Ì•¶š—ñ
+     * @param str ãƒˆãƒªãƒ å¯¾è±¡æ–‡å­—åˆ—
+     * @return ãƒˆãƒªãƒ å¾Œã®æ–‡å­—åˆ—
      */
     protected String trim(String str){
         String result = str;
@@ -235,10 +235,10 @@ public abstract class AbstractStringValidator
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š‚ª‹ó”’‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ãŒç©ºç™½ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param c ‘ÎÛ•¶š
-     * @return ‹ó”’‚Ìê‡Atrue
+     * @param c å¯¾è±¡æ–‡å­—
+     * @return ç©ºç™½ã®å ´åˆã€true
      */
     protected boolean isWhitespace(char c){
         if(whiteSpaceCharacters == null || whiteSpaceCharacters.length == 0){

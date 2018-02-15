@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ‰i‘±‰»‰Â”\ƒLƒƒƒbƒVƒ…B<p>
+ * æ°¸ç¶šåŒ–å¯èƒ½ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
  *
  * @author M.Takata
  */

@@ -41,8 +41,8 @@ import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ‘I‘ğ‰Â”\ƒT[ƒuƒŒƒbƒgƒtƒBƒ‹ƒ^ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒŠƒNƒGƒXƒg‚ÌURLAURIAƒT[ƒuƒŒƒbƒgƒpƒX–ˆ‚ÉAˆÙ‚È‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÉU‚è•ª‚¯‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
+ * é¸æŠå¯èƒ½ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ•ã‚£ãƒ«ã‚¿ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®URLã€URIã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹æ¯ã«ã€ç•°ãªã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã«æŒ¯ã‚Šåˆ†ã‘ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -61,40 +61,40 @@ public class SelectableServletFilterInterceptorService
     protected String[] pathAndInterceptorServiceNameMapping;
     protected Map pathAndInterceptorServiceNameMap;
     
-    // SelectableServletFilterInterceptorServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorServiceMBeanã®JavaDoc
     public void setURLAndInterceptorServiceNameMapping(String[] mapping){
         urlAndInterceptorServiceNameMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorServiceMBeanã®JavaDoc
     public String[] getURLAndInterceptorServiceNameMapping(){
         return urlAndInterceptorServiceNameMapping;
     }
     
-    // SelectableServletFilterInterceptorServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorServiceMBeanã®JavaDoc
     public void setURIAndInterceptorServiceNameMapping(String[] mapping){
         uriAndInterceptorServiceNameMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorServiceMBeanã®JavaDoc
     public String[] getURIAndInterceptorServiceNameMapping(){
         return uriAndInterceptorServiceNameMapping;
     }
     
-    // SelectableServletFilterInterceptorServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorServiceMBeanã®JavaDoc
     public void setPathAndInterceptorServiceNameMapping(String[] mapping){
         pathAndInterceptorServiceNameMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorServiceMBeanã®JavaDoc
     public String[] getPathAndInterceptorServiceNameMapping(){
         return pathAndInterceptorServiceNameMapping;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         urlAndInterceptorServiceNameMap = new LinkedHashMap();
@@ -103,9 +103,9 @@ public class SelectableServletFilterInterceptorService
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         super.preStartService();
@@ -189,12 +189,12 @@ public class SelectableServletFilterInterceptorService
     
     
     /**
-     * ƒT[ƒuƒŒƒbƒgŒÄ‚Ño‚µ‚ğƒCƒ“ƒ^[ƒZƒvƒg‚µ‚ÄA‘I‘ğ‰Â”\‚ÈƒCƒ“ƒ^[ƒZƒvƒ^‚Ì’†‚©‚çŠY“–‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒ©‚Â‚¯‚ÄŒÄ‚Ño‚·B<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆå‘¼ã³å‡ºã—ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ãƒˆã—ã¦ã€é¸æŠå¯èƒ½ãªã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ä¸­ã‹ã‚‰è©²å½“ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’è¦‹ã¤ã‘ã¦å‘¼ã³å‡ºã™ã€‚<p>
      *
-     * @param context ƒT[ƒuƒŒƒbƒgƒtƒBƒ‹ƒ^ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ•ã‚£ãƒ«ã‚¿å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,

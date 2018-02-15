@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.websocket.ExceptionHandlerMappingService;
 
 /**
- * {@link AbstractPublishMessageDispatcherService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link AbstractPublishMessageDispatcherService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -44,126 +44,126 @@ import jp.ossc.nimbus.service.websocket.ExceptionHandlerMappingService;
 public interface AbstractPublishMessageDispatcherServiceMBean extends ServiceBaseMBean {
 
     /**
-     * ƒf[ƒ^‘—M‚ÉƒGƒ‰[‚ª”­¶‚µ‚½Û‚Éo—Í‚·‚éƒƒbƒZ[ƒWID‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * ãƒ‡ãƒ¼ã‚¿é€ä¿¡æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸéš›ã«å‡ºåŠ›ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_SEND_ERROR_MESSAGE_ID = "WS___00006";
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Ö‚Ìƒpƒ‰ƒ[ƒ^ƒIƒuƒWƒFƒNƒg‚ğÄ—˜—p‚·‚é‚½‚ß‚ÌƒŠƒXƒgƒTƒCƒY‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã¸ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      *
      */
     public static final int DEFAULT_MESSAGE_SEND_PARAMETER_RECYCLE_LIST_SIZE = -1;
 
     /**
-     * ƒƒbƒZ[ƒW”zM‚ğóM‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageListenerQueueHandlerContainerServiceName();
 
     /**
-     * ƒƒbƒZ[ƒW”zM‚ğóM‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageListenerQueueHandlerContainerServiceName(ServiceName name);
 
     /**
-     * ƒƒbƒZ[ƒW”zM‚ğóM‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Éİ’è‚·‚éDistributedQueueSelector‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚é
-     * B
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã«è¨­å®šã™ã‚‹DistributedQueueSelectorã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹
+     * ã€‚
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageListenerQueueSelectorServiceName();
 
     /**
-     * ƒƒbƒZ[ƒW”zM‚ğóM‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Éİ’è‚·‚éDistributedQueueSelector‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚é
-     * B
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã«è¨­å®šã™ã‚‹DistributedQueueSelectorã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹
+     * ã€‚
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageListenerQueueSelectorServiceName(ServiceName name);
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageSendQueueHandlerContainerServiceName();
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageSendQueueHandlerContainerServiceName(ServiceName name);
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Éİ’è‚·‚éDistributedQueueSelector‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚é
-     * B
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã«è¨­å®šã™ã‚‹DistributedQueueSelectorã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹
+     * ã€‚
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageSendQueueSelectorServiceName();
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Éİ’è‚·‚éDistributedQueueSelector‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚é
-     * B
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã«è¨­å®šã™ã‚‹DistributedQueueSelectorã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹
+     * ã€‚
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageSendQueueSelectorServiceName(ServiceName name);
 
     /**
-     * —áŠOƒnƒ“ƒhƒ‹ƒ}ƒbƒsƒ“ƒOƒT[ƒrƒX{@link ExceptionHandlerMappingService}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ«ãƒãƒƒãƒ”ãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹{@link ExceptionHandlerMappingService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageSendExceptionHandlerMappingServiceName();
 
     /**
-     * —áŠOƒnƒ“ƒhƒ‹ƒ}ƒbƒsƒ“ƒOƒT[ƒrƒX{@link ExceptionHandlerMappingService}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ«ãƒãƒƒãƒ”ãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹{@link ExceptionHandlerMappingService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageSendExceptionHandlerMappingServiceName(ServiceName name);
 
     /**
-     * ƒf[ƒ^‘—M‚ÉƒGƒ‰[‚ª”­¶‚µ‚½Û‚Éo—Í‚·‚éƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿é€ä¿¡æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸéš›ã«å‡ºåŠ›ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒƒbƒZ[ƒWID
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getSendErrorMessageId();
 
     /**
-     * ƒf[ƒ^‘—M‚ÉƒGƒ‰[‚ª”­¶‚µ‚½Û‚Éo—Í‚·‚éƒƒbƒZ[ƒWID‚ğİ’è‚·‚éBƒfƒtƒHƒ‹ƒg‚Í
-     * {@link #DEFAULT_SEND_ERROR_MESSAGE_ID} B
+     * ãƒ‡ãƒ¼ã‚¿é€ä¿¡æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸéš›ã«å‡ºåŠ›ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯
+     * {@link #DEFAULT_SEND_ERROR_MESSAGE_ID} ã€‚
      *
-     * @param messageId ƒƒbƒZ[ƒWID
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setSendErrorMessageId(String messageId);
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Ö‚Ìƒpƒ‰ƒ[ƒ^ƒIƒuƒWƒFƒNƒg‚ğÄ—˜—p‚·‚é‚½‚ß‚ÌƒŠƒXƒgƒTƒCƒY‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã¸ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒŠƒXƒgƒTƒCƒY
+     * @return ãƒªã‚¹ãƒˆã‚µã‚¤ã‚º
      */
     public int getMessageSendParameterRecycleListSize();
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerContainer‚Ö‚Ìƒpƒ‰ƒ[ƒ^ƒIƒuƒWƒFƒNƒg‚ğÄ—˜—p‚·‚é‚½‚ß‚ÌƒŠƒXƒgƒTƒCƒY‚ğİ’è‚·‚éB
-     * ƒfƒtƒHƒ‹ƒg‚Í {@link #DEFAULT_MESSAGE_SEND_PARAMETER_RECYCLE_LIST_SIZE} B
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerContainerã¸ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ {@link #DEFAULT_MESSAGE_SEND_PARAMETER_RECYCLE_LIST_SIZE} ã€‚
      *
-     * @param size ƒŠƒXƒgƒTƒCƒY
+     * @param size ãƒªã‚¹ãƒˆã‚µã‚¤ã‚º
      */
     public void setMessageSendParameterRecycleListSize(int size);
 
     /**
-     * ƒƒbƒZ[ƒW‘—MŒ”‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒƒbƒZ[ƒW‘—MŒ”
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ä»¶æ•°
      */
     public long getMessageSendCount();
 }

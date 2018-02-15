@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.test;
 
 /**
- * ƒeƒXƒgƒŒƒ|[ƒ^B<p>
+ * ãƒ†ã‚¹ãƒˆãƒ¬ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface TestReporter{
     
     /**
-     * ƒŒƒ|[ƒg‚ğo—Í‚·‚éB<p>
+     * ãƒ¬ãƒãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param controller ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰
+     * @param controller ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
      */
     public void report(TestController controller);
 }

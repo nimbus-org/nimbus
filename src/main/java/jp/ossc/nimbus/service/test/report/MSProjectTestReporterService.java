@@ -57,7 +57,7 @@ import net.sf.mpxj.Duration;
 import net.sf.mpxj.TimeUnit;
 
 /**
- * Microsoft Project ‚Ìƒtƒ@ƒCƒ‹Œ`Ž®‚ÅƒeƒXƒg‚Ìi’»‚ðƒŒƒ|[ƒg‚·‚éB<p>
+ * Microsoft Project ã®ãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼ã§ãƒ†ã‚¹ãƒˆã®é€²æ—ã‚’ãƒ¬ãƒãƒ¼ãƒˆã™ã‚‹ã€‚<p>
  * 
  * @author M.Takata
  */

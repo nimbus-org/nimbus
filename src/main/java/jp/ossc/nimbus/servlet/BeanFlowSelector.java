@@ -34,17 +34,17 @@ package jp.ossc.nimbus.servlet;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * BeanFlow‚Ìƒtƒ[–¼‚ğ‘I‘ğ‚·‚éB<p>
+ * BeanFlowã®ãƒ•ãƒ­ãƒ¼åã‚’é¸æŠã™ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface BeanFlowSelector{
     
     /**
-     * BeanFlow‚Ìƒtƒ[–¼‚ğ‘I‘ğ‚·‚éB<p>
+     * BeanFlowã®ãƒ•ãƒ­ãƒ¼åã‚’é¸æŠã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @return BeanFlow‚Ìƒtƒ[–¼
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @return BeanFlowã®ãƒ•ãƒ­ãƒ¼å
      */
     public String selectBeanFlow(HttpServletRequest req);
 }

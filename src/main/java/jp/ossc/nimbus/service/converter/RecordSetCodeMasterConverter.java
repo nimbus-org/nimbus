@@ -36,15 +36,15 @@ import java.util.*;
 import jp.ossc.nimbus.recset.*;
 import jp.ossc.nimbus.util.converter.ConvertException;
 /**
- * {@link RecordSet}Œ^ƒR[ƒhƒ}ƒXƒ^•ÏŠ·B<p>
- * {@link RecordSet}Œ^‚ÌƒR[ƒhƒ}ƒXƒ^‚ğg‚Á‚ÄA’l‚Ì•ÏŠ·‚ğs‚¤{@link CodeMasterConverter}À‘•ƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * •ÏŠ·•û–@‚ÍAˆÈ‰º‚Ìƒpƒ^[ƒ“‚ª‚ ‚éB<br>
+ * {@link RecordSet}å‹ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿å¤‰æ›ã€‚<p>
+ * {@link RecordSet}å‹ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’ä½¿ã£ã¦ã€å€¤ã®å¤‰æ›ã‚’è¡Œã†{@link CodeMasterConverter}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * å¤‰æ›æ–¹æ³•ã¯ã€ä»¥ä¸‹ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒã‚ã‚‹ã€‚<br>
  * <ul>
- *   <li>ˆø”‚Åw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒvƒ‰ƒCƒ}ƒŠƒL[‚Æ‚µ‚ÄARecordSet‚©‚ç{@link RecordSet#get(RowData) RowDataƒvƒ‰ƒCƒ}ƒŠƒL[ŒŸõ}‚Ü‚½‚Í{@link RecordSet#get(String) •¶š—ñƒvƒ‰ƒCƒ}ƒŠƒL[ŒŸõ}‚ğs‚¢ARowData‚Ü‚½‚Í‚»‚ÌƒtƒB[ƒ‹ƒh‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordSetCodeMasterConverter.Key}‚ğw’è‚µ‚ÄARecordSet‚©‚ç{@link RecordSet#get(RowData) RowDataƒvƒ‰ƒCƒ}ƒŠƒL[ŒŸõ}‚Ü‚½‚Í{@link RecordSet#get(String) •¶š—ñƒvƒ‰ƒCƒ}ƒŠƒL[ŒŸõ}‚ğs‚¢ARowData‚Ü‚½‚Í‚»‚ÌƒtƒB[ƒ‹ƒh‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordSetCodeMasterConverter.DynamicKey}‚ğw’è‚µ‚ÄARecordSet‚©‚ç{@link RecordSet#searchDynamicKey(String, RowData, String[], boolean[]) ’~ÏŒ^ƒL[ŒŸõ}‚ğs‚¢ARowData‚Ü‚½‚Í‚»‚ÌƒtƒB[ƒ‹ƒh‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordSetCodeMasterConverter.DynamicCondition}‚ğw’è‚µ‚ÄARecordSet‚©‚ç{@link RecordSet#searchDynamicCondition(String) ’~ÏŒ^ğŒŒŸõ}‚ğs‚¢ARowData‚Ü‚½‚Í‚»‚ÌƒtƒB[ƒ‹ƒh‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordSetCodeMasterConverter.DynamicConditionReal}‚ğw’è‚µ‚ÄARecordSet‚©‚ç{@link RecordSet#searchDynamicConditionReal(String, String[], boolean[], Map) ƒŠƒAƒ‹Œ^ğŒŒŸõ}‚ğs‚¢ARowData‚Ü‚½‚Í‚»‚ÌƒtƒB[ƒ‹ƒh‚É•ÏŠ·‚·‚éB</li>
+ *   <li>å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã—ã¦ã€RecordSetã‹ã‚‰{@link RecordSet#get(RowData) RowDataãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ¤œç´¢}ã¾ãŸã¯{@link RecordSet#get(String) æ–‡å­—åˆ—ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ¤œç´¢}ã‚’è¡Œã„ã€RowDataã¾ãŸã¯ãã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordSetCodeMasterConverter.Key}ã‚’æŒ‡å®šã—ã¦ã€RecordSetã‹ã‚‰{@link RecordSet#get(RowData) RowDataãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ¤œç´¢}ã¾ãŸã¯{@link RecordSet#get(String) æ–‡å­—åˆ—ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ¤œç´¢}ã‚’è¡Œã„ã€RowDataã¾ãŸã¯ãã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordSetCodeMasterConverter.DynamicKey}ã‚’æŒ‡å®šã—ã¦ã€RecordSetã‹ã‚‰{@link RecordSet#searchDynamicKey(String, RowData, String[], boolean[]) è“„ç©å‹ã‚­ãƒ¼æ¤œç´¢}ã‚’è¡Œã„ã€RowDataã¾ãŸã¯ãã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordSetCodeMasterConverter.DynamicCondition}ã‚’æŒ‡å®šã—ã¦ã€RecordSetã‹ã‚‰{@link RecordSet#searchDynamicCondition(String) è“„ç©å‹æ¡ä»¶æ¤œç´¢}ã‚’è¡Œã„ã€RowDataã¾ãŸã¯ãã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordSetCodeMasterConverter.DynamicConditionReal}ã‚’æŒ‡å®šã—ã¦ã€RecordSetã‹ã‚‰{@link RecordSet#searchDynamicConditionReal(String, String[], boolean[], Map) ãƒªã‚¢ãƒ«å‹æ¡ä»¶æ¤œç´¢}ã‚’è¡Œã„ã€RowDataã¾ãŸã¯ãã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¤‰æ›ã™ã‚‹ã€‚</li>
  * </ul>
  *
  * @author M.Takata

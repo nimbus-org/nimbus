@@ -36,9 +36,9 @@ import java.util.*;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * First In First Out‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒXB<p>
- * æ“ü‚êæo‚µ(First In First Out)‚Å‚ ‚Ó‚ê‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğŒˆ’è‚·‚éOverflowAlgorithm‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAFIFO‚Å‚ ‚Ó‚ê‘ÎÛ‚Æ‚È‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğŒˆ’è‚·‚é‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * First In First Outã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * å…ˆå…¥ã‚Œå…ˆå‡ºã—(First In First Out)ã§ã‚ãµã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ±ºå®šã™ã‚‹OverflowAlgorithmã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€FIFOã§ã‚ãµã‚Œå¯¾è±¡ã¨ãªã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ±ºå®šã™ã‚‹ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -63,31 +63,31 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     private static final long serialVersionUID = -8206003382892774163L;
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚Ä‚¢‚éƒLƒƒƒbƒVƒ…QÆ‚ÌƒŠƒXƒgB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     private List referenceList;
     
-    // FIFOOverflowAlgorithmServiceMBean‚ÌJavaDoc
+    // FIFOOverflowAlgorithmServiceMBeanã®JavaDoc
     public int size(){
         return referenceList == null ? 0 : referenceList.size();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ‰Šú‰»‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         referenceList = Collections.synchronizedList(new ArrayList());
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * {@link #reset()}‚ğŒÄ‚Ño‚·B<br>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #reset()}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         reset();
@@ -95,10 +95,10 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ•Û‚·‚éB“¯‚ÉA{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ä¿æŒã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void add(CachedReference ref){
         if(referenceList == null || ref == null){
@@ -113,10 +113,10 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğíœ‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ“à•”‚Å•Û‚µ‚Ä‚¢‚éê‡‚ÍA”jŠü‚·‚éB“¯‚ÉA{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‰ğœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å†…éƒ¨ã§ä¿æŒã—ã¦ã„ã‚‹å ´åˆã¯ã€ç ´æ£„ã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void remove(CachedReference ref){
         if(referenceList == null || ref == null){
@@ -131,10 +131,10 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * æ“ü‚êæo‚µ‚ÅA‚ ‚Ó‚ê‚éƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚·‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’†‚©‚çAÅ‰‚É’Ç‰Á‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğA‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚Æ‚µ‚Ä•Ô‚·B<br>
+     * å…ˆå…¥ã‚Œå…ˆå‡ºã—ã§ã€ã‚ãµã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã™ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ä¸­ã‹ã‚‰ã€æœ€åˆã«è¿½åŠ ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã€ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¨ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @return æ“ü‚êæo‚µ‚ÌƒAƒ‹ƒSƒŠƒYƒ€‚ÅŒˆ’è‚³‚ê‚½‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ
+     * @return å…ˆå…¥ã‚Œå…ˆå‡ºã—ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã§æ±ºå®šã•ã‚ŒãŸã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public CachedReference overflow(){
         if(referenceList == null){
@@ -149,11 +149,11 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * æ“ü‚êæo‚µ‚ÅA‚ ‚Ó‚ê‚éƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚·‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’†‚©‚çAÅ‰‚É’Ç‰Á‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğA‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚Æ‚µ‚Ä•Ô‚·B<br>
+     * å…ˆå…¥ã‚Œå…ˆå‡ºã—ã§ã€ã‚ãµã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã™ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ä¸­ã‹ã‚‰ã€æœ€åˆã«è¿½åŠ ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã€ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¨ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param size ‚ ‚Ó‚ê”
-     * @return æ“ü‚êæo‚µ‚ÌƒAƒ‹ƒSƒŠƒYƒ€‚ÅŒˆ’è‚³‚ê‚½‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ
+     * @param size ã‚ãµã‚Œæ•°
+     * @return å…ˆå…¥ã‚Œå…ˆå‡ºã—ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã§æ±ºå®šã•ã‚ŒãŸã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public CachedReference[] overflow(int size){
         if(referenceList == null || referenceList.size() == 0){
@@ -172,8 +172,8 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ‘S‚Ä”jŠü‚·‚éB<br>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å…¨ã¦ç ´æ£„ã™ã‚‹ã€‚<br>
      */
     public void reset(){
         if(referenceList != null){
@@ -182,10 +182,10 @@ public class FIFOOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * {@link #remove(CachedReference)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * {@link #remove(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         remove(ref);

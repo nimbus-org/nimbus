@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒRƒ“ƒo[ƒ^—áŠOB<p>
+ * ã‚³ãƒ³ãƒãƒ¼ã‚¿ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class ConvertException extends RuntimeException{
     private static final long serialVersionUID = -8317763472433914951L;
     
     /**
-     * ‹ó‚ÌƒRƒ“ƒo[ƒ^—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ConvertException(){
         super();
     }
     
     /**
-     * ƒƒbƒZ[ƒW•t‚«‚ÌƒRƒ“ƒo[ƒ^—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä»˜ãã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public ConvertException(String message){
         super(message);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚é—áŠO•t‚«‚ÌƒRƒ“ƒo[ƒ^—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã‚‹ä¾‹å¤–ä»˜ãã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚é—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã‚‹ä¾‹å¤–
      */
     public ConvertException(String message, Throwable cause){
         super(message, cause);
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚é—áŠO•t‚«‚ÌƒRƒ“ƒo[ƒ^—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã‚‹ä¾‹å¤–ä»˜ãã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚é—áŠO
+     * @param cause åŸå› ã¨ãªã‚‹ä¾‹å¤–
      */
     public ConvertException(Throwable cause){
         super(cause);

@@ -45,7 +45,7 @@ import jp.ossc.nimbus.service.aop.InvocationContext;
 import jp.ossc.nimbus.service.aop.MethodInvocationContext;
 
 /**
- * —áŠOˆ—ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
+ * ä¾‹å¤–å‡¦ç†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -66,30 +66,30 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
     protected ServiceName defaultExceptionHandlerServiceName;
     protected ExceptionHandler defaultExceptionHandler;
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public void setExceptionAndHandlerMapping(Properties map){
         exceptionAndHandlerMapping = map;
     }
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public Properties getExceptionAndHandlerMapping(){
         return exceptionAndHandlerMapping;
     }
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public void setDefaultExceptionHandlerServiceName(ServiceName name){
         defaultExceptionHandlerServiceName = name;
     }
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public ServiceName getDefaultExceptionHandlerServiceName(){
         return defaultExceptionHandlerServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(exceptionAndHandlerMapping != null){
@@ -119,10 +119,10 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚Ìƒnƒ“ƒhƒ‰ƒNƒ‰ƒX‚ğƒ}ƒbƒv‚©‚çŒ©‚Â‚¯‚Ä•Ô‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒ©ã‚¯ãƒ©ã‚¹ã‚’ãƒãƒƒãƒ—ã‹ã‚‰è¦‹ã¤ã‘ã¦è¿”ã™ã€‚<p>
      *
-     * @param th —áŠO(ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğŠÜ‚ñ‚Å‚¢‚é)
-     * @return —áŠOƒnƒ“ƒhƒ‰
+     * @param th ä¾‹å¤–(ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å«ã‚“ã§ã„ã‚‹)
+     * @return ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©
      */
     protected ExceptionHandler getTargetExceptionHandlerCause(Throwable th){
         ExceptionHandler handler = (ExceptionHandler)getTargetHandlerCause(exceptionMapForHandler, th);
@@ -130,17 +130,17 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚Ìƒnƒ“ƒhƒ‰‚ğƒ}ƒbƒv‚©‚çŒ©‚Â‚¯‚Ä•Ô‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒ©ã‚’ãƒãƒƒãƒ—ã‹ã‚‰è¦‹ã¤ã‘ã¦è¿”ã™ã€‚<p>
      *
-     * @param handlers ƒnƒ“ƒhƒ‰‚Ìƒ}ƒbƒv
-     * @param th —áŠO(ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğŠÜ‚ñ‚Å‚¢‚é)
-     * @return —áŠOƒnƒ“ƒhƒ‰
+     * @param handlers ãƒãƒ³ãƒ‰ãƒ©ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–(ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å«ã‚“ã§ã„ã‚‹)
+     * @return ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©
      */
     protected Object getTargetHandlerCause(ClassMappingTree handlers, Throwable th){
         if(handlers == null){
             return null;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚é—áŠOƒnƒ“ƒhƒ‰‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚’å–å¾—
         Object handler = handlers.getValue(th.getClass());
         if(handler != null){
             return handler;
@@ -150,17 +150,17 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çAƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğæ‚èo‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰ã€ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å–ã‚Šå‡ºã™ã€‚<p>
      * 
-     * @param handlers ƒnƒ“ƒhƒ‰‚Ìƒ}ƒbƒv
-     * @param th —áŠO
-     * @return ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO
+     * @param handlers ãƒãƒ³ãƒ‰ãƒ©ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–
+     * @return ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–
      */
     protected Throwable getTargetException(ClassMappingTree handlers, Throwable th) {
         if(handlers == null){
             return th;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚é—áŠOƒnƒ“ƒhƒ‰‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚’å–å¾—
         Object handler = handlers.getValue(th.getClass());
         if(handler != null){
             return th;
@@ -171,16 +171,16 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çŒ´ˆö‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰åŸå› ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
-     * @return Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @return åŸå› 
      */
     protected Throwable getCause(Throwable th){
         Throwable cause = null;
         String thClassName = th.getClass().getName();
         if(thClassName.equals(SERVLET_EXCEPTION_NAME)){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try{
                 cause = (Throwable)th.getClass()
                     .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -189,7 +189,7 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
             }catch(InvocationTargetException e){
             }
         }else if(thClassName.equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -287,7 +287,7 @@ public class ExceptionHandlingInterceptorService extends ServiceBase
     ) throws Throwable{
         ExceptionHandler handler = getTargetExceptionHandlerCause(th);
         if(handler != null){
-            // ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO
+            // ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–
             Throwable targetTh = getTargetException(
                 exceptionMapForHandler,
                 th

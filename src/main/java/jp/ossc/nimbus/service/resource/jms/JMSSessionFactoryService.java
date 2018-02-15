@@ -38,7 +38,7 @@ import jp.ossc.nimbus.service.resource.*;
 import javax.jms.*;
 
 /**
- * JMSƒZƒbƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
+ * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */

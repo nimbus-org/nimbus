@@ -38,18 +38,18 @@ import org.w3c.dom.*;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 
 /**
- * ƒT[ƒrƒX’è‹`&lt;service&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;service&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;service&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;service&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ServiceMetaData extends ObjectMetaData implements Serializable{
     
     private static final long serialVersionUID = 1524948064493968357L;
     
     /**
-     * &lt;service&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;service&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SERVICE_TAG_NAME = "service";
     
@@ -92,15 +92,15 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     private String template;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ServiceMetaData(){
     }
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX–¼AÀ‘•ƒNƒ‰ƒX–¼‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * @param name ƒT[ƒrƒX–¼
-     * @param code À‘•ƒNƒ‰ƒX–¼
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã€å®Ÿè£…ã‚¯ãƒ©ã‚¹åã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param code å®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     public ServiceMetaData(String name, String code){
         setName(name);
@@ -108,12 +108,12 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * ServiceMetaData‚Ìe—v‘f‚ÍA&lt;manager&gt;—v‘f‚ğ•\‚·ManagerMetaDataA‚Ü‚½‚ÍA&lt;depends&gt;—v‘f‚ğ•\‚·DependsMetaData‚Å‚ ‚éB<br>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ServiceMetaDataã®è¦ªè¦ç´ ã¯ã€&lt;manager&gt;è¦ç´ ã‚’è¡¨ã™ManagerMetaDataã€ã¾ãŸã¯ã€&lt;depends&gt;è¦ç´ ã‚’è¡¨ã™DependsMetaDataã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param loader ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
-     * @param manager ‚±‚Ì&lt;service&gt;—v‘f‚Å’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é{@link ServiceManager}‚Ì&lt;manager&gt;—v‘f‚ğ•\‚·ManagerMetaData
+     * @param loader è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @param manager ã“ã®&lt;service&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹{@link ServiceManager}ã®&lt;manager&gt;è¦ç´ ã‚’è¡¨ã™ManagerMetaData
      * @see ManagerMetaData
      * @see ServiceMetaData.DependsMetaData
      */
@@ -127,36 +127,36 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return name‘®«‚Ì’l
+     * @return nameå±æ€§ã®å€¤
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name name‘®«‚Ì’l
+     * @param name nameå±æ€§ã®å€¤
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ÌinitState‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®initStateå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return initState‘®«‚Ì’l
+     * @return initStateå±æ€§ã®å€¤
      */
     public String getInitState(){
         return initState;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ÌinitState‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®initStateå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state initState‘®«‚Ì’l
+     * @param state initStateå±æ€§ã®å€¤
      */
     public void setInitState(String state){
         for(int i = 0; i < Service.STATES.length; i++){
@@ -169,18 +169,18 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìinstance‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®instanceå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return instance‘®«‚Ì’l
+     * @return instanceå±æ€§ã®å€¤
      */
     public String getInstance(){
         return instance;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìinstance‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®instanceå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param val instance‘®«‚Ì’l
+     * @param val instanceå±æ€§ã®å€¤
      */
     public void setInstance(String val){
         if(INSTANCE_TYPE_SINGLETON.equals(val)){
@@ -198,108 +198,108 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒtƒ@ƒNƒgƒŠ‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒtƒ@ƒNƒgƒŠ‚Ìê‡true
+     * @return ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ•ã‚¡ã‚¯ãƒˆãƒªã®å ´åˆtrue
      */
     public boolean isFactory(){
         return isFactory;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒtƒ@ƒNƒgƒŠ‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isFactory true‚Ìê‡A‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒtƒ@ƒNƒgƒŠ
+     * @param isFactory trueã®å ´åˆã€ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ•ã‚¡ã‚¯ãƒˆãƒª
      */
     public void setFactory(boolean isFactory){
         this.isFactory = isFactory;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìtemplate‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®templateå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return template‘®«‚Ì’l
+     * @return templateå±æ€§ã®å€¤
      */
     public String getTemplateName(){
         return template;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìtemplate‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®templateå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name template‘®«‚Ì’l
+     * @param name templateå±æ€§ã®å€¤
      */
     public void setTemplateName(String name){
         this.template = name;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒeƒ“ƒvƒŒ[ƒg‚Ìê‡true
+     * @return ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®å ´åˆtrue
      */
     public boolean isTemplate(){
         return isTemplate;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isTemplate true‚Ìê‡A‚±‚Ì&lt;service&gt;—v‘f‚ª•\‚·ƒT[ƒrƒX‚ªƒeƒ“ƒvƒŒ[ƒg
+     * @param isTemplate trueã®å ´åˆã€ã“ã®&lt;service&gt;è¦ç´ ãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
      */
     public void setTemplate(boolean isTemplate){
         this.isTemplate = isTemplate;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìmanagement‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®managementå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return management‘®«‚Ì’l
+     * @return managementå±æ€§ã®å€¤
      */
     public boolean isManagement(){
         return isManagement;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìmanagement‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®managementå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param flg management‘®«‚Ì’l
+     * @param flg managementå±æ€§ã®å€¤
      */
     public void setManagement(boolean flg){
         isManagement = flg;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ÌcreateTemplate‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®createTemplateå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return createTemplate‘®«‚Ì’l
+     * @return createTemplateå±æ€§ã®å€¤
      */
     public boolean isCreateTemplate(){
         return isCreateTemplate;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ÌcreateTemplate‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®createTemplateå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param flg createTemplate‘®«‚Ì’l
+     * @param flg createTemplateå±æ€§ã®å€¤
      */
     public void setCreateTemplate(boolean flg){
         isCreateTemplate = flg;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ÌinitState‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®initStateå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return initState‘®«‚Ì’l
+     * @return initStateå±æ€§ã®å€¤
      */
     public int getInitStateValue(){
         return initStateValue;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚ÌinitState‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®initStateå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state initState‘®«‚Ì’l
+     * @param state initStateå±æ€§ã®å€¤
      */
     public void setInitStateValue(int state){
         if(state >= 0 && Service.STATES.length > state){
@@ -309,81 +309,81 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìq—v‘f&lt;optional-config&gt;—v‘f‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;optional-config&gt;è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;optional-config&gt;—v‘f
+     * @return å­è¦ç´ &lt;optional-config&gt;è¦ç´ 
      */
     public Element getOptionalConfig(){
         return optionalConfig;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìq—v‘f&lt;optional-config&gt;—v‘f‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;optional-config&gt;è¦ç´ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param option q—v‘f&lt;optional-config&gt;—v‘f
+     * @param option å­è¦ç´ &lt;optional-config&gt;è¦ç´ 
      */
     public void setOptionalConfig(Element option){
         optionalConfig = option;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìq—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·{@link ServiceMetaData.DependsMetaData}‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™{@link ServiceMetaData.DependsMetaData}ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·DependsMetaData‚ÌƒŠƒXƒg
+     * @return å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™DependsMetaDataã®ãƒªã‚¹ãƒˆ
      */
     public List getDepends(){
         return depends;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìq—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·{@link ServiceMetaData.DependsMetaData}‚ğ’Ç‰Á‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™{@link ServiceMetaData.DependsMetaData}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param depends q—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·DependsMetaData
+     * @param depends å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™DependsMetaData
      */
     public void addDepends(DependsMetaData depends){
         this.depends.add(depends);
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìq—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·{@link ServiceMetaData.DependsMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™{@link ServiceMetaData.DependsMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param depends q—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·DependsMetaData
+     * @param depends å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™DependsMetaData
      */
     public void removeDepends(DependsMetaData depends){
         this.depends.remove(depends);
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Ìq—v‘f&lt;depends&gt;—v‘f‚ğ•\‚·{@link ServiceMetaData.DependsMetaData}‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;depends&gt;è¦ç´ ã‚’è¡¨ã™{@link ServiceMetaData.DependsMetaData}ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearDepends(){
         this.depends.clear();
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Å’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚ğ’è‹`‚·‚é&lt;manager&gt;—v‘f‚ğ•\‚·ManagerMetaData‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å®šç¾©ã™ã‚‹&lt;manager&gt;è¦ç´ ã‚’è¡¨ã™ManagerMetaDataã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ì&lt;service&gt;—v‘f‚Å’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚ğ’è‹`‚·‚é&lt;manager&gt;—v‘f‚ğ•\‚·ManagerMetaData
+     * @return ã“ã®&lt;service&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å®šç¾©ã™ã‚‹&lt;manager&gt;è¦ç´ ã‚’è¡¨ã™ManagerMetaData
      */
     public ManagerMetaData getManager(){
         return manager;
     }
     
     /**
-     * ‚±‚Ì&lt;service&gt;—v‘f‚Å’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚ğ’è‹`‚·‚é&lt;manager&gt;—v‘f‚ğ•\‚·ManagerMetaData‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;service&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å®šç¾©ã™ã‚‹&lt;manager&gt;è¦ç´ ã‚’è¡¨ã™ManagerMetaDataã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param manager ‚±‚Ì&lt;service&gt;—v‘f‚Å’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚ğ’è‹`‚·‚é&lt;manager&gt;—v‘f‚ğ•\‚·ManagerMetaData
+     * @param manager ã“ã®&lt;service&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å®šç¾©ã™ã‚‹&lt;manager&gt;è¦ç´ ã‚’è¡¨ã™ManagerMetaData
      */
     public void setManager(ManagerMetaData manager){
         this.manager = manager;
     }
     
     /**
-     * &lt;depends&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;depends&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param managerName ˆË‘¶‚·‚éƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ˆË‘¶‚·‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return &lt;depends&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param managerName ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return &lt;depends&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public DependsMetaData createDependsMetaData(
         String managerName,
@@ -396,10 +396,10 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * —v‘f–¼‚ªservice‚Å‚ ‚é–‚ğƒ`ƒFƒbƒN‚·‚éB<p>
+     * è¦ç´ åãŒserviceã§ã‚ã‚‹äº‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @param element service—v‘f
-     * @exception DeploymentException —v‘f–¼‚ªservice‚Å‚È‚¢ê‡
+     * @param element serviceè¦ç´ 
+     * @exception DeploymentException è¦ç´ åãŒserviceã§ãªã„å ´åˆ
      */
     protected void checkTagName(Element element) throws DeploymentException{
         if(!element.getTagName().equals(SERVICE_TAG_NAME)){
@@ -411,11 +411,11 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg‚ğ“K—p‚µ‚½ƒƒ^ƒf[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’é©ç”¨ã—ãŸãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
      * @param loader ServiceLoader
-     * @return ƒeƒ“ƒvƒŒ[ƒg“K—pŒã‚Ìƒƒ^ƒf[ƒ^
-     * @exception ServiceNotFoundException ƒeƒ“ƒvƒŒ[ƒg‚Æ‚µ‚Äw’è‚³‚ê‚Ä‚¢‚éƒT[ƒrƒXƒƒ^ƒf[ƒ^‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé©ç”¨å¾Œã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @exception ServiceNotFoundException ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ã—ã¦æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public ServiceMetaData applyTemplate(ServiceLoader loader) throws ServiceNotFoundException{
         if(getTemplateName() == null){
@@ -474,49 +474,49 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * &lt;service&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;service&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;service&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;service&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;service&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;service&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         
         name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
         if(name != null){
-            // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             name = Utility.replaceSystemProperty(name);
             if(getServiceLoader() != null){
-                // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 name = Utility.replaceServiceLoderConfig(
                     name,
                     getServiceLoader().getConfig()
                 );
             }
             if(manager != null){
-                // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 name = Utility.replaceManagerProperty(manager, name);
             }
-            // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             name = Utility.replaceServerProperty(name);
         }
         
         String tmpInitState
              = getOptionalAttribute(element, INIT_STATE_ATTRIBUTE_NAME);
         if(tmpInitState != null){
-            // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             tmpInitState = Utility.replaceSystemProperty(tmpInitState);
             if(getServiceLoader() != null){
-                // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 tmpInitState = Utility.replaceServiceLoderConfig(
                     tmpInitState,
                     getServiceLoader().getConfig()
                 );
             }
             if(manager != null){
-                // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 tmpInitState = Utility.replaceManagerProperty(manager, tmpInitState);
             }
-            // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             tmpInitState = Utility.replaceServerProperty(tmpInitState);
         }
         
@@ -716,9 +716,9 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¡»
+     * @return ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®è¤‡è£½
      */
     public Object clone(){
         ServiceMetaData clone = (ServiceMetaData)super.clone();
@@ -727,9 +727,9 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder();
@@ -751,11 +751,11 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
-     * ˆË‘¶ŠÖŒW’è‹`&lt;depends&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;depends&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+     * ä¾å­˜é–¢ä¿‚å®šç¾©&lt;depends&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;depends&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
      *
      * @author M.Takata
-     * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+     * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
      */
     public class DependsMetaData extends ServiceNameMetaData
      implements Serializable{
@@ -765,38 +765,38 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         private ServiceMetaData serviceData;
         
         /**
-         * w’è‚³‚ê‚½ƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚½ƒT[ƒrƒX‚ÉˆË‘¶‚·‚é–‚ğ•\‚·ˆË‘¶ŠÖŒW’è‹`‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã«ä¾å­˜ã™ã‚‹äº‹ã‚’è¡¨ã™ä¾å­˜é–¢ä¿‚å®šç¾©ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param manager ˆË‘¶‚·‚éƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼
+         * @param manager ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£å
          */
         public DependsMetaData(String manager){
             super(ServiceMetaData.this, manager);
         }
         
         /**
-         * w’è‚³‚ê‚½ƒT[ƒrƒX‚ÉˆË‘¶‚·‚é–‚ğ•\‚·ˆË‘¶ŠÖŒW’è‹`‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã«ä¾å­˜ã™ã‚‹äº‹ã‚’è¡¨ã™ä¾å­˜é–¢ä¿‚å®šç¾©ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param manager ˆË‘¶‚·‚éƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼
-         * @param service ˆË‘¶‚·‚éƒT[ƒrƒX–¼
+         * @param manager ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£å
+         * @param service ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public DependsMetaData(String manager, String service){
             super(ServiceMetaData.this, DEPENDS_TAG_NAME, manager, service);
         }
         
         /**
-         * &lt;depends&gt;—v‘f‚Ìq—v‘f‚Ì&lt;service&gt;—v‘f‚ğ•\‚·ServiceMetaData‚ğæ“¾‚·‚éB<p>
+         * &lt;depends&gt;è¦ç´ ã®å­è¦ç´ ã®&lt;service&gt;è¦ç´ ã‚’è¡¨ã™ServiceMetaDataã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return &lt;service&gt;—v‘f‚ğ•\‚·ServiceMetaData
+         * @return &lt;service&gt;è¦ç´ ã‚’è¡¨ã™ServiceMetaData
          */
         public ServiceMetaData getService(){
             return serviceData;
         }
         
         /**
-         * &lt;depends&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+         * &lt;depends&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
          *
-         * @param element &lt;depends&gt;—v‘f‚ÌElement
-         * @exception DeploymentException &lt;depends&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+         * @param element &lt;depends&gt;è¦ç´ ã®Element
+         * @exception DeploymentException &lt;depends&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void importXML(Element element) throws DeploymentException{
             

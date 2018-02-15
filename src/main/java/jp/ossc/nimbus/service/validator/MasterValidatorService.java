@@ -51,21 +51,21 @@ import jp.ossc.nimbus.util.validator.Validator;
 import jp.ossc.nimbus.util.validator.ValidateException;
 
 /**
- * ƒ}ƒXƒ^ƒoƒŠƒf[ƒ^B<p>
- * DB‚Ìƒ}ƒXƒ^‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğŒŸØ‚·‚éB<br>
- * ƒ}ƒXƒ^‚Ìæ“¾•û–@‚Æ‚µ‚Ä‘å‚«‚­‚Qí—Ş‚ ‚èAƒ}ƒXƒ^‚ÌXV•p“x‚É‰‚¶‚Ä‘I‘ğ‰Â”\‚Å‚ ‚éB<br>
+ * ãƒã‚¹ã‚¿ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * DBã®ãƒã‚¹ã‚¿ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<br>
+ * ãƒã‚¹ã‚¿ã®å–å¾—æ–¹æ³•ã¨ã—ã¦å¤§ããï¼’ç¨®é¡ã‚ã‚Šã€ãƒã‚¹ã‚¿ã®æ›´æ–°é »åº¦ã«å¿œã˜ã¦é¸æŠå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
  * <p>
- * ƒ}ƒXƒ^‚ÌXV•p“x‚ª‚‚¢ê‡‚ÍAŒŸØ‚Ì“s“xƒ}ƒXƒ^‚ğŒŸõ‚·‚é•K—v‚ª‚ ‚éB<br>
- * ‚»‚Ì‚æ‚¤‚Èê‡‚ÍA{@link #setRecordSet(RecordSet)}A{@link #setConnectionFactoryServiceName(ServiceName)}A{@link #setBindData(int, String)}‚ğİ’è‚·‚éB<br>
- * ‚Ü‚½‚ÍA{@link #setQuery(String)}A{@link #setConnectionFactoryServiceName(ServiceName)}A{@link #setPersistentManagerServiceName(ServiceName)}‚ğİ’è‚·‚éB<br>
+ * ãƒã‚¹ã‚¿ã®æ›´æ–°é »åº¦ãŒé«˜ã„å ´åˆã¯ã€æ¤œè¨¼ã®éƒ½åº¦ãƒã‚¹ã‚¿ã‚’æ¤œç´¢ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+ * ãã®ã‚ˆã†ãªå ´åˆã¯ã€{@link #setRecordSet(RecordSet)}ã€{@link #setConnectionFactoryServiceName(ServiceName)}ã€{@link #setBindData(int, String)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+ * ã¾ãŸã¯ã€{@link #setQuery(String)}ã€{@link #setConnectionFactoryServiceName(ServiceName)}ã€{@link #setPersistentManagerServiceName(ServiceName)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
  * <p>
- * ƒ}ƒXƒ^‚ÌXV•p“x‚ª’á‚¢ê‡‚ÍAŒŸØ‚Ì“s“xƒ}ƒXƒ^‚ğŒŸõ‚·‚é•K—v‚ª‚È‚¢B<br>
- * ‚±‚Ì‚æ‚¤‚Èƒ}ƒXƒ^‚ğg—p‚·‚éê‡ANimbus‚Å‚Í’Êí{@link CodeMasterFinder ƒR[ƒhƒ}ƒXƒ^}‚ÉAƒ}ƒXƒ^RecordSet‚Ü‚½‚ÍRecordList‚ğ“o˜^‚µ‚Ä‚¨‚­–‚ÅAƒ}ƒXƒ^‚ğ–ˆ‰ñŒŸõ‚µ‚È‚¢‚æ‚¤‚É‚·‚éB<br>
- * ‚»‚Ì‹@”\‚ğ—˜—p‚·‚é–‚ÅAŒŸØ‚Ì“s“xƒ}ƒXƒ^‚ğŒŸõ‚¹‚¸‚ÉAƒR[ƒhƒ}ƒXƒ^ã‚Ìƒ}ƒXƒ^RecordSet‚Ü‚½‚ÍRecordList‚É‘Î‚µ‚Ä“®“IŒŸõ‚ğs‚¢ŒŸØ‚·‚é‚±‚Æ‚ª‚Å‚«‚éB<br>
- * ƒR[ƒhƒ}ƒXƒ^‚Ìæ“¾•û–@‚É‚Í‚Qí—Ş‚ ‚èA“Ç‚İæ‚èˆêŠÑ«•Ûá‚·‚éê‡‚ÍAƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚©‚çæ“¾‚·‚éB‚»‚Ìê‡A{@link #setThreadContextServiceName(ServiceName)}A{@link #setCodeMasterThreadContextKey(String)}‚ğİ’è‚·‚éB<br>
- * ‚Ü‚½A“Ç‚İæ‚èˆêŠÑ«•Ûá‚ğ‚·‚é•K—v‚ª‚È‚¢ê‡‚ÍA’¼Ú{@link CodeMasterFinder}‚©‚çæ“¾‚·‚é–‚à‰Â”\‚Å‚ ‚éB‚»‚Ìê‡A{@link #setCodeMasterFinderServiceName(ServiceName)}‚ğİ’è‚·‚éB<br>
- * æ“¾‚µ‚½ƒR[ƒhƒ}ƒXƒ^‚©‚çƒ}ƒXƒ^RecordSet‚Ü‚½‚ÍRecordList‚ğ“Á’è‚·‚é‚½‚ß‚ÉA{@link #setCodeMasterName(String)}‚ğİ’è‚·‚éB<br>
- * ƒ}ƒXƒ^RecordSet‚Ü‚½‚ÍRecordList‚©‚ç“®“IŒŸõ‚ğs‚¤Û‚ÌŒŸõğŒ‚ÍAŒŸØ’l‚ª”CˆÓ‚ÌğŒ‚É‡’v‚·‚éƒŒƒR[ƒh‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚é–‚ª‰Â”\‚ÅA‚»‚Ìê‡‚ÍA{@link #setRecordSetSearchCondition(String)}A{@link #setBindDataMap(String, String)}‚ğİ’è‚·‚éB<br>
+ * ãƒã‚¹ã‚¿ã®æ›´æ–°é »åº¦ãŒä½ã„å ´åˆã¯ã€æ¤œè¨¼ã®éƒ½åº¦ãƒã‚¹ã‚¿ã‚’æ¤œç´¢ã™ã‚‹å¿…è¦ãŒãªã„ã€‚<br>
+ * ã“ã®ã‚ˆã†ãªãƒã‚¹ã‚¿ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã€Nimbusã§ã¯é€šå¸¸{@link CodeMasterFinder ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿}ã«ã€ãƒã‚¹ã‚¿RecordSetã¾ãŸã¯RecordListã‚’ç™»éŒ²ã—ã¦ãŠãäº‹ã§ã€ãƒã‚¹ã‚¿ã‚’æ¯å›æ¤œç´¢ã—ãªã„ã‚ˆã†ã«ã™ã‚‹ã€‚<br>
+ * ãã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹äº‹ã§ã€æ¤œè¨¼ã®éƒ½åº¦ãƒã‚¹ã‚¿ã‚’æ¤œç´¢ã›ãšã«ã€ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ä¸Šã®ãƒã‚¹ã‚¿RecordSetã¾ãŸã¯RecordListã«å¯¾ã—ã¦å‹•çš„æ¤œç´¢ã‚’è¡Œã„æ¤œè¨¼ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚<br>
+ * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®å–å¾—æ–¹æ³•ã«ã¯ï¼’ç¨®é¡ã‚ã‚Šã€èª­ã¿å–ã‚Šä¸€è²«æ€§ä¿éšœã™ã‚‹å ´åˆã¯ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å–å¾—ã™ã‚‹ã€‚ãã®å ´åˆã€{@link #setThreadContextServiceName(ServiceName)}ã€{@link #setCodeMasterThreadContextKey(String)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€èª­ã¿å–ã‚Šä¸€è²«æ€§ä¿éšœã‚’ã™ã‚‹å¿…è¦ãŒãªã„å ´åˆã¯ã€ç›´æ¥{@link CodeMasterFinder}ã‹ã‚‰å–å¾—ã™ã‚‹äº‹ã‚‚å¯èƒ½ã§ã‚ã‚‹ã€‚ãã®å ´åˆã€{@link #setCodeMasterFinderServiceName(ServiceName)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+ * å–å¾—ã—ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‹ã‚‰ãƒã‚¹ã‚¿RecordSetã¾ãŸã¯RecordListã‚’ç‰¹å®šã™ã‚‹ãŸã‚ã«ã€{@link #setCodeMasterName(String)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+ * ãƒã‚¹ã‚¿RecordSetã¾ãŸã¯RecordListã‹ã‚‰å‹•çš„æ¤œç´¢ã‚’è¡Œã†éš›ã®æ¤œç´¢æ¡ä»¶ã¯ã€æ¤œè¨¼å€¤ãŒä»»æ„ã®æ¡ä»¶ã«åˆè‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹äº‹ãŒå¯èƒ½ã§ã€ãã®å ´åˆã¯ã€{@link #setRecordSetSearchCondition(String)}ã€{@link #setBindDataMap(String, String)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -93,43 +93,43 @@ public class MasterValidatorService extends ServiceBase
     private String searchCondition;
     private Map bindDataMap;
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public ServiceName getConnectionFactoryServiceName(){
         return connectionFactoryServiceName;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setPersistentManagerServiceName(ServiceName name){
         persistentManagerServiceName = name;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public ServiceName getPersistentManagerServiceName(){
         return persistentManagerServiceName;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setQuery(String query){
         this.query = query;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getQuery(){
         return query;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setRecordSet(RecordSet recset){
         templateRecordSet = recset;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public RecordSet getRecordSet(){
         return templateRecordSet;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setBindData(int index, String valueKey){
         if(bindDataList == null){
             bindDataList = new ArrayList();
@@ -148,7 +148,7 @@ public class MasterValidatorService extends ServiceBase
             bindDataList.set(index, PropertyFactory.createProperty(valueKey));
         }
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getBindData(int index){
         if(bindDataList == null || bindDataList.size() <= index){
             return null;
@@ -158,61 +158,61 @@ public class MasterValidatorService extends ServiceBase
              : BIND_DATA_VALUE_KEY + '.' + prop.getPropertyName();
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setCodeMasterFinderServiceName(ServiceName name){
         codeMasterFinderServiceName = name;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public ServiceName getCodeMasterFinderServiceName(){
         return codeMasterFinderServiceName;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setCodeMasterThreadContextKey(String key){
         codeMasterThreadContextKey = key;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getCodeMasterThreadContextKey(){
         return codeMasterThreadContextKey;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setCodeMasterName(String name){
         codeMasterName = name;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getCodeMasterName(){
         return codeMasterName;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setRecordSetSearchCondition(String condition){
         searchCondition = condition;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getRecordSetSearchCondition(){
         return searchCondition;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setSearchCondition(String condition){
         searchCondition = condition;
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getSearchCondition(){
         return searchCondition;
     }
     
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public void setBindDataMap(String key, String valueKey){
         if(bindDataMap == null){
             bindDataMap = new HashMap();
@@ -230,7 +230,7 @@ public class MasterValidatorService extends ServiceBase
             bindDataMap.put(key, PropertyFactory.createProperty(valueKey));
         }
     }
-    // MasterValidatorServiceMBean‚ÌJavaDoc
+    // MasterValidatorServiceMBeanã®JavaDoc
     public String getBindDataMap(String key){
         if(bindDataMap == null){
             return null;
@@ -241,9 +241,9 @@ public class MasterValidatorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(connectionFactoryServiceName != null){
@@ -288,11 +288,11 @@ public class MasterValidatorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªƒ}ƒXƒ^‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒãƒã‚¹ã‚¿ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(Object obj) throws ValidateException{
         if(connectionFactory != null){

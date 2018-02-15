@@ -45,7 +45,7 @@ import jp.ossc.nimbus.service.resource.*;
 import jp.ossc.nimbus.service.resource.jmsqueue.QueueTransanctionResource;
 
 /**
- * IOC ”ñ“¯ŠúŒÄ‚Ño‚µ‚ÌMDB—p‚ÌƒCƒ“ƒ^[ƒZƒvƒ^B<p>
+ * IOC éåŒæœŸå‘¼ã³å‡ºã—ã®MDBç”¨ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
  * 
  * @version $Name:  $
  * @author H.Nakano
@@ -71,16 +71,16 @@ public class DefaultAsynchCallInterceptorService extends ServiceBase
     
     private long redeliveryInterval;
     
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public void setQueueSessionFactoryServiceName(ServiceName name){
         queueSessionFactoryServiceName = name;
     }
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public ServiceName getQueueSessionFactoryServiceName(){
         return queueSessionFactoryServiceName;
     }
     
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public void setDeliveryMode(String mode){
         if(DELIVERY_MODE_PERSISTENT.equals(mode)){
             deliveryMode = DeliveryMode.PERSISTENT;
@@ -91,49 +91,49 @@ public class DefaultAsynchCallInterceptorService extends ServiceBase
         }
         deliveryModeStr = mode;
     }
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public String getDeliveryMode(){
         return deliveryModeStr;
     }
     
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public void setPriority(int priority){
         this.priority = priority;
     }
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public int getPriority(){
         return priority;
     }
     
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public void setTimeToLive(long millis){
         timeToLive = millis;
     }
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public long getTimeToLive(){
         return timeToLive;
     }
     
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public void setIgnoreRedelivery(boolean ignore){
         isIgnoreRedelivery = ignore;
     }
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public boolean isIgnoreRedelivery(){
         return isIgnoreRedelivery;
     }
     
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public void setRedeliveryInterval(long millis){
         redeliveryInterval = millis;
     }
-    // DefaultAsynchCallInterceptorServiceMBean‚ÌJavaDoc
+    // DefaultAsynchCallInterceptorServiceMBeanã®JavaDoc
     public long getRedeliveryInterval(){
         return redeliveryInterval;
     }
     
     /**
-     * QueueSessionæ“¾—p‚ÌResourceFactory‚ğİ’è‚·‚éB<p>
+     * QueueSessionå–å¾—ç”¨ã®ResourceFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory ResourceFactory
      */
@@ -142,9 +142,9 @@ public class DefaultAsynchCallInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(queueSessionFactoryServiceName != null){
@@ -249,8 +249,8 @@ public class DefaultAsynchCallInterceptorService extends ServiceBase
                     throw new InterceptorException("Unexpected Exception", th);
                 }
             }catch(TargetCheckedException e){
-                //‚±‚±‚É”ò‚ñ‚Å‚­‚é‚±‚Æ‚Í‚È‚¢B
-                //ƒRƒ}ƒ“ƒh‘w‚ÅƒLƒƒƒbƒ`‚³‚êˆ—Ï‚İ‚Ì‚Í‚¸B
+                //ã“ã“ã«é£›ã‚“ã§ãã‚‹ã“ã¨ã¯ãªã„ã€‚
+                //ã‚³ãƒãƒ³ãƒ‰å±¤ã§ã‚­ãƒ£ãƒƒãƒã•ã‚Œå‡¦ç†æ¸ˆã¿ã®ã¯ãšã€‚
                 e.printStackTrace();
             }
             if(queueSessionFactory != null){

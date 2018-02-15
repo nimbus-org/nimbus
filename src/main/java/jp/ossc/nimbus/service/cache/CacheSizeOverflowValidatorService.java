@@ -36,9 +36,9 @@ import java.util.*;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ ‚Ó‚êŒŸØƒT[ƒrƒXB<p>
- * Å‘åƒLƒƒƒbƒVƒ…”‚Å‚ ‚Ó‚ê‚ğŒŸØ‚·‚éOverflowValidator‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ª10‚ğ’´‚¦‚é‚Æ‚ ‚Ó‚ê‚é‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * æœ€å¤§ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã§ã‚ãµã‚Œã‚’æ¤œè¨¼ã™ã‚‹OverflowValidatorã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºãŒ10ã‚’è¶…ãˆã‚‹ã¨ã‚ãµã‚Œã‚‹ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -65,47 +65,47 @@ public class CacheSizeOverflowValidatorService extends ServiceBase
     private static final long serialVersionUID = -2810585852541528435L;
     
     /**
-     * Å‘åƒLƒƒƒbƒVƒ…”B<p>
+     * æœ€å¤§ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã€‚<p>
      */
     private int maxSize;
     
     /**
-     * ‚ ‚Ó‚êè‡’lB<p>
+     * ã‚ãµã‚Œé–¾å€¤ã€‚<p>
      */
     private int overflowThreshold;
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ÌW‡B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é›†åˆã€‚<p>
      */
     private Set references;
     
-    // CacheSizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorServiceMBeanã®JavaDoc
     public int size(){
         return references == null ? 0 : references.size();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<br>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         references = Collections.synchronizedSet(new HashSet());
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * {@link #reset()}‚ğŒÄ‚Ño‚·B‚Ü‚½AƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #reset()}ã‚’å‘¼ã³å‡ºã™ã€‚ã¾ãŸã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         reset();
         references = null;
     }
     
-    // CacheSizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setMaxSize(int size) throws IllegalArgumentException{
         if(size < 0){
             throw new IllegalArgumentException("Invalid size : " + size);
@@ -113,26 +113,26 @@ public class CacheSizeOverflowValidatorService extends ServiceBase
         maxSize = size;
     }
     
-    // CacheSizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorServiceMBeanã®JavaDoc
     public int getMaxSize(){
         return maxSize;
     }
     
-    // CacheSizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setOverflowThreshold(int threshold){
         overflowThreshold = threshold;
     }
     
-    // CacheSizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorServiceMBeanã®JavaDoc
     public int getOverflowThreshold(){
         return overflowThreshold;
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…”‚ªÅ‘åƒLƒƒƒbƒVƒ…”‚ğ’´‚¦‚Ä‚¢‚é‚©ŒŸØ‚·‚éB<p>
-     * Å‘åƒLƒƒƒbƒVƒ…”‚ÍA{@link #setMaxSize(int)}‚Åİ’è‚³‚ê‚½’lB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ãŒæœ€å¤§ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’è¶…ãˆã¦ã„ã‚‹ã‹æ¤œè¨¼ã™ã‚‹ã€‚<p>
+     * æœ€å¤§ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã¯ã€{@link #setMaxSize(int)}ã§è¨­å®šã•ã‚ŒãŸå€¤ã€‚<br>
      *
-     * @return ƒLƒƒƒbƒVƒ…”‚ªÅ‘åƒLƒƒƒbƒVƒ…”‚ğ’´‚¦‚Ä‚¢‚éê‡A’´‚¦‚Ä‚¢‚é”‚ğ•Ô‚·B’´‚¦‚Ä‚¢‚È‚¢ê‡‚ÍA0‚ğ•Ô‚·
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ãŒæœ€å¤§ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’è¶…ãˆã¦ã„ã‚‹å ´åˆã€è¶…ãˆã¦ã„ã‚‹æ•°ã‚’è¿”ã™ã€‚è¶…ãˆã¦ã„ãªã„å ´åˆã¯ã€0ã‚’è¿”ã™
      */
     public int validate(){
         if(references == null || references.size() == 0){
@@ -151,7 +151,7 @@ public class CacheSizeOverflowValidatorService extends ServiceBase
         return overflowSize > 0 ? overflowSize : 0;
     }
     
-    // OverflowValidator‚ÌJavaDoc
+    // OverflowValidatorã®JavaDoc
     public void add(CachedReference ref){
         if(references == null || ref == null){
             return;
@@ -162,7 +162,7 @@ public class CacheSizeOverflowValidatorService extends ServiceBase
         }
     }
     
-    // OverflowValidator‚ÌJavaDoc
+    // OverflowValidatorã®JavaDoc
     public void remove(CachedReference ref){
         if(references == null || ref == null){
             return;
@@ -173,7 +173,7 @@ public class CacheSizeOverflowValidatorService extends ServiceBase
         }
     }
     
-    // OverflowValidator‚ÌJavaDoc
+    // OverflowValidatorã®JavaDoc
     public void reset(){
         if(references != null){
             final Object[] refs = references.toArray();
@@ -185,10 +185,10 @@ public class CacheSizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * {@link #add(CachedReference)}‚Å’Ç‰Á‚³‚ê‚½{@link CachedReference}‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
-     * íœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ{@link #remove(CachedReference)}‚ÅA‚±‚ÌOverflowValidator‚©‚ç‚àíœ‚·‚éB<br>
+     * {@link #add(CachedReference)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link CachedReference}ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚ŒãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
+     * å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’{@link #remove(CachedReference)}ã§ã€ã“ã®OverflowValidatorã‹ã‚‰ã‚‚å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref íœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
+     * @param ref å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         if(references == null){

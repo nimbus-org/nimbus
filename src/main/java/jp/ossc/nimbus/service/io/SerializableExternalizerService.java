@@ -45,7 +45,7 @@ import net.jpountz.lz4.LZ4BlockInputStream;
 
 
 /**
- * ’¼—ñ‰»‰Â”\ƒIƒuƒWƒFƒNƒg’¼—ñ‰»ƒT[ƒrƒXB<p>
+ * ç›´åˆ—åŒ–å¯èƒ½ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç›´åˆ—åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

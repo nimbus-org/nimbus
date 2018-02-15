@@ -40,15 +40,15 @@ import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.queue.Queue;
 
 /**
- * ƒ^ƒCƒ}[ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒXB<p>
- * {@link TimerSchedulerService}‚É“o˜^‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğİ’è‚·‚éƒT[ƒrƒX‚Å‚ ‚éB<br>
- * ˆÈ‰º‚Ìİ’è‚ª‰Â”\‚Å‚ ‚éB<br>
+ * ã‚¿ã‚¤ãƒãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * {@link TimerSchedulerService}ã«ç™»éŒ²ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¨­å®šã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã®è¨­å®šãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
  * <ul>
- *     <li>Às</li>
- *     <li>’x‰„ŠÔ</li>
- *     <li>ŒJ‚è•Ô‚µŠÔŠu</li>
- *     <li>ŒÅ’è’x‰„Às</li>
- *     <li>”ñ“¯ŠúÀs</li>
+ *     <li>å®Ÿè¡Œæ™‚åˆ»</li>
+ *     <li>é…å»¶æ™‚é–“</li>
+ *     <li>ç¹°ã‚Šè¿”ã—é–“éš”</li>
+ *     <li>å›ºå®šé…å»¶å®Ÿè¡Œ</li>
+ *     <li>éåŒæœŸå®Ÿè¡Œ</li>
  * </ul>
  *
  * @author M.Takata
@@ -59,314 +59,314 @@ public class TimerScheduleService extends ServiceBase
     private static final long serialVersionUID = 8328157884039980522L;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹–¼B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åã€‚<p>
      */
     protected String name;
     
     /**
-     * ƒ^ƒXƒNƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚¿ã‚¹ã‚¯ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName taskServiceName;
     
     /**
-     * ƒ^ƒCƒ}[ƒ^ƒXƒNB<p>
+     * ã‚¿ã‚¤ãƒãƒ¼ã‚¿ã‚¹ã‚¯ã€‚<p>
      */
     protected ManagedTimerTask task;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ^ƒXƒNB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚¿ã‚¹ã‚¯ã€‚<p>
      */
     protected transient ScheduleTask scheduleTask;
     
     /**
-     * ÀsŠJnB<p>
+     * å®Ÿè¡Œé–‹å§‹æ™‚åˆ»ã€‚<p>
      */
     protected Date startTime;
     
     /**
-     * ÀsI—¹B<p>
+     * å®Ÿè¡Œçµ‚äº†æ™‚åˆ»ã€‚<p>
      */
     protected Date endTime;
     
     /**
-     * ’x‰„ŠÔ[ms]B<p>
+     * é…å»¶æ™‚é–“[ms]ã€‚<p>
      */
     protected long delay = -1;
     
     /**
-     * ŒJ‚è•Ô‚µŠÔŠu[ms]B<p>
+     * ç¹°ã‚Šè¿”ã—é–“éš”[ms]ã€‚<p>
      */
     protected long period = -1;
     
     /**
-     * ŒJ‚è•Ô‚µ‰ñ”B<p>
+     * ç¹°ã‚Šè¿”ã—å›æ•°ã€‚<p>
      */
     protected int count = -1;
     
     /**
-     * ŒÅ’è•p“xÀsƒtƒ‰ƒOB<p>
-     * true‚Ìê‡AŒÅ’è•p“xÀsB<br>
+     * å›ºå®šé »åº¦å®Ÿè¡Œãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€å›ºå®šé »åº¦å®Ÿè¡Œã€‚<br>
      */
     protected boolean isFixedRate;
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹–¼”z—ñB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åé…åˆ—ã€‚<p>
      */
     protected String[] dependsScheduleNames;
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‘Ò‚¿‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]B<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å¾…ã¡ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã€‚<p>
      */
     protected long dependencyTimeout = -1;
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹I—¹Šm”F‚ÌŠÔŠu[ms]B<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çµ‚äº†ç¢ºèªã®é–“éš”[ms]ã€‚<p>
      */
     protected long dependencyConfirmInterval = 1000;
     
     /**
-     * ƒGƒ‰[ƒƒO‚ÌƒƒbƒZ[ƒWIDB<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     protected String errorLogMessageId = DEFAULT_ERROR_LOG_MESSAGE_ID;
     
     /**
-     * ƒGƒ‰[ƒƒO‚ÌƒƒbƒZ[ƒWIDB<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     protected String timeoutLogMessageId = DEFAULT_TIMEOUT_LOG_MESSAGE_ID;
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName journalServiceName;
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒXB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected transient Journal journal;
     
     /**
-     * QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName queueServiceName;
     
     /**
-     * QueueƒT[ƒrƒXB<p>
+     * Queueã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected transient Queue queue;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‚ÉƒLƒ…[‚É—­‚Ü‚Á‚½ƒ^ƒXƒN‚ğˆ—‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†æ™‚ã«ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ãŸã‚¿ã‚¹ã‚¯ã‚’å‡¦ç†ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isGarbageQueue = false;
     
     /**
-     * ”ñ“¯Šúˆ—ƒf[ƒ‚ƒ“B<p>
+     * éåŒæœŸå‡¦ç†ãƒ‡ãƒ¼ãƒ¢ãƒ³ã€‚<p>
      */
     protected transient Daemon daemon;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‰B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã€‚<p>
      */
     protected transient Scheduler scheduler;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ó‘ÔŠÇ—ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ç®¡ç†ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName scheduleStateManagerServiceName;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ó‘ÔŠÇ—B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ç®¡ç†ã€‚<p>
      */
     protected transient ScheduleStateManager scheduleStateManager;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğŠJn‚·‚é‚ÉAŠù‚ÉÀsŠJn‚ğ‰ß‚¬‚Ä‚¢‚½ê‡‚ÉAƒ^ƒXƒN‚ğÀs‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹å§‹ã™ã‚‹æ™‚ã«ã€æ—¢ã«å®Ÿè¡Œé–‹å§‹æ™‚åˆ»ã‚’éãã¦ã„ãŸå ´åˆã«ã€ã‚¿ã‚¹ã‚¯ã‚’å®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isExecuteWhenOverStartTime = true;
     
     /**
-     * ‹ó‚ÌƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<p>
+     * ç©ºã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      */
     public TimerScheduleService(){
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setName(String name){
         this.name = name;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setTaskServiceName(ServiceName name){
         taskServiceName = name;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public ServiceName getTaskServiceName(){
         return taskServiceName;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setStartTime(Date time){
         startTime = time;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public Date getStartTime(){
         return startTime;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setExecuteWhenOverStartTime(boolean isExecute){
         isExecuteWhenOverStartTime = isExecute;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public boolean isExecuteWhenOverStartTime(){
         return isExecuteWhenOverStartTime;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setEndTime(Date time){
         endTime = time;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public Date getEndTime(){
         return endTime;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setDelay(long delay){
         this.delay = delay;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public long getDelay(){
         return delay;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setPeriod(long period){
         this.period = period;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public long getPeriod(){
         return period;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setCount(int count){
         this.count = count;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public int getCount(){
         return count;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setFixedRate(boolean isFixedRate){
         this.isFixedRate = isFixedRate;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public boolean isFixedRate(){
         return isFixedRate;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setDependsScheduleNames(String[] names){
         dependsScheduleNames = names;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public String[] getDependsScheduleNames(){
         return dependsScheduleNames;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setDependencyTimeout(long timeout){
         dependencyTimeout = timeout;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public long getDependencyTimeout(){
         return dependencyTimeout;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setDependencyConfirmInterval(long interval){
         dependencyConfirmInterval = interval;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public long getDependencyConfirmInterval(){
         return dependencyConfirmInterval;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setErrorLogMessageId(String id){
         errorLogMessageId = id;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public String getErrorLogMessageId(){
         return errorLogMessageId;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setTimeoutLogMessageId(String id){
         timeoutLogMessageId = id;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public String getTimeoutLogMessageId(){
         return timeoutLogMessageId;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setGarbageQueue(boolean isGarbage){
         isGarbageQueue = isGarbage;
     }
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public boolean isGarbageQueue(){
         return isGarbageQueue;
     }
     
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public void setScheduleStateManagerServiceName(ServiceName name){
         scheduleStateManagerServiceName = name;
     }
-    // TimerScheduleMBean‚ÌJavaDoc
+    // TimerScheduleMBeanã®JavaDoc
     public ServiceName getScheduleStateManagerServiceName(){
         return scheduleStateManagerServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -413,9 +413,9 @@ public class TimerScheduleService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         cancel();
@@ -427,33 +427,33 @@ public class TimerScheduleService extends ServiceBase
         }
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void setScheduler(Scheduler scheduler){
         this.scheduler = scheduler;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void executeForce(){
         ManagedTimerTask tmpTask = new ManagedTimerTask(scheduleTask);
         tmpTask.isForce = true;
         tmpTask.run();
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void executeForce(Timer timer, long delay){
         ManagedTimerTask tmpTask = new ManagedTimerTask(scheduleTask);
         tmpTask.isForce = true;
         timer.schedule(tmpTask, delay);
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void executeForce(Timer timer, Date time){
         ManagedTimerTask tmpTask = new ManagedTimerTask(scheduleTask);
         tmpTask.isForce = true;
         timer.schedule(tmpTask, time);
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void schedule(Timer timer){
         
         if(scheduleStateManager != null){
@@ -559,19 +559,19 @@ public class TimerScheduleService extends ServiceBase
         }
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public String getName(){
          return name == null ? getServiceName() : name;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void cancel(){
         if(task != null){
             task.cancel();
         }
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public void setValid(boolean isValid){
         if(task != null){
             task.isValid = isValid;
@@ -585,47 +585,47 @@ public class TimerScheduleService extends ServiceBase
         }
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isValid(){
         return task == null ? false : task.isValid;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isCyclic(){
         return task == null ? false : task.isCyclic;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isClosed(){
         return task == null ? true : task.isClosed;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isRunning(){
         return task == null ? false : task.isRunning;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isError(){
         return task == null ? false : task.isError;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isWaiting(){
         return task == null ? false : task.isWaiting;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public boolean isTimeout(){
         return task == null ? false : task.isTimeout;
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public Date getLastExecutionTime(){
         return task == null || task.lastExecutionTime == 0 ? null : new Date(task.lastExecutionTime);
     }
     
-    // TimerSchedule‚ÌJavaDoc
+    // TimerScheduleã®JavaDoc
     public Date getScheduledExecutionTime(){
         return task == null ? null : new Date(
             task.scheduledExecutionTime == 0
@@ -633,7 +633,7 @@ public class TimerScheduleService extends ServiceBase
         );
     }
     
-    // Schedule‚ÌJavaDoc
+    // Scheduleã®JavaDoc
     public void setScheduleStateManager(ScheduleStateManager manager){
         scheduleStateManager = manager;
         
@@ -648,15 +648,15 @@ public class TimerScheduleService extends ServiceBase
         }
     }
     
-    // Schedule‚ÌJavaDoc
+    // Scheduleã®JavaDoc
     public ScheduleStateManager getScheduleStateManager(){
         return scheduleStateManager;
     }
     
     /**
-     * ƒ^ƒXƒN‚ğİ’è‚·‚éB<p>
+     * ã‚¿ã‚¹ã‚¯ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param task ƒ^ƒXƒN
+     * @param task ã‚¿ã‚¹ã‚¯
      */
     public void setTask(ScheduleTask task){
         if(task == null){
@@ -666,27 +666,27 @@ public class TimerScheduleService extends ServiceBase
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param journal ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX
+     * @param journal ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJournal(Journal journal){
         this.journal = journal;
     }
     
     /**
-     * QueueƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue QueueƒT[ƒrƒX
+     * @param queue Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setQueue(Queue queue){
         this.queue = queue;
     }
     
     /**
-     * •¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder(super.toString());
@@ -709,7 +709,7 @@ public class TimerScheduleService extends ServiceBase
     }
     
     /**
-     * ŠÇ—‰Â”\‚ÈTimerTaskB<p>
+     * ç®¡ç†å¯èƒ½ãªTimerTaskã€‚<p>
      *
      * @author M.Takata
      */

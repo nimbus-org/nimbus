@@ -29,16 +29,16 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.metadata;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.io.*;
 import java.util.*;
 import org.w3c.dom.*;
 import jp.ossc.nimbus.core.*;
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -50,11 +50,11 @@ public class InterceptorMappingsMetaData
     private static final long serialVersionUID = 1599099889157424387L;
     
     /**
-	 * &lt;interceptor-mappings&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<br>
+	 * &lt;interceptor-mappings&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<br>
 	 */
 	public static final String INTERCEPTOR_MAPPINGS_TAG_NAME = "interceptor-mappings";
 	/**
-	 * &lt;interceptor-mapping&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ìƒ}ƒbƒv
+	 * &lt;interceptor-mapping&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—
 	 */
 	private final List mInterceptorMappingList = new ArrayList();
 	/**
@@ -64,15 +64,15 @@ public class InterceptorMappingsMetaData
 		super();
 	}
 	/**
-	 * &lt;interceptor-mappings&gt;—v‘f‚Ìq—v‘f‚Ì&lt;interceptor-mapping&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB
-	 *	@return List - &lt;interceptor-mapping&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌƒŠƒXƒg
+	 * &lt;interceptor-mappings&gt;è¦ç´ ã®å­è¦ç´ ã®&lt;interceptor-mapping&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
+	 *	@return List - &lt;interceptor-mapping&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆ
 	 */
 	public List getInterceptorMappingList(){
 		return mInterceptorMappingList;
 	}
 	/**
-	 * &lt;interceptor-mappings&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚é&lt;interceptor-mapping&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ“o˜^‚·‚éB
-	 *	@param interceptorMapping - &lt;interceptor-mapping&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+	 * &lt;interceptor-mappings&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚Œã‚‹&lt;interceptor-mapping&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç™»éŒ²ã™ã‚‹ã€‚
+	 *	@param interceptorMapping - &lt;interceptor-mapping&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void addInterceptorMapping(InterceptorMappingMetaData interceptorMapping){
 		mInterceptorMappingList.add(interceptorMapping);

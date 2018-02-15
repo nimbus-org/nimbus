@@ -52,16 +52,16 @@ import jp.ossc.nimbus.service.codemaster.CodeMasterFinder;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * �ǃC���^�[�Z�v�^�B
+ * 閉塞インターセプタ。
  * <p>
- * ���N�G�X�g�������C���^�[�Z�v�g���āA�ǃR�[�h�}�X�^�Ɠ������[�U�R�[�h�}�X�^���Q�Ƃ��A���N�G�X�g���ꂽ�p�X���ǂ��Ă��Ȃ����`�F�b�N����B
- * �ǂ��Ă���ꍇ�́A{@link BlockadeException}��throw����B<br>
- * �ǃR�[�h�}�X�^�ɂ́A�p�X�A�Ǐ�ԁA�ǃ��b�Z�[�W���Ǘ�����B<br>
- * �Ǐ�Ԃɂ́A{@link #BLOCKADE_STATE_OPEN �J��}�A{@link #BLOCKADE_STATE_CLOSE ��}�A
- * {@link #BLOCKADE_STATE_TEST_OPEN �e�X�g�J��}
- * �̂R������B�u�ǁv��Ԃ̏ꍇ�́A��������BlockadeException��throw����
- * �B�u�e�X�g�J���v��Ԃ̏ꍇ�́A�������[�U�R�[�h�}�X�^�ɑ��݂��郆�[�U����̃A�N�Z�X�̂݋��e����B<br>
- * �ȉ��ɁA�ǃC���^�[�Z�v�^�̃T�[�r�X��`��������B<br>
+ * リクエスト処理をインターセプトして、閉塞コードマスタと特権ユーザコードマスタを参照し、リクエストされたパスが閉塞していないかチェックする。
+ * 閉塞している場合は、{@link BlockadeException}をthrowする。<br>
+ * 閉塞コードマスタには、パス、閉塞状態、閉塞メッセージを管理する。<br>
+ * 閉塞状態には、{@link #BLOCKADE_STATE_OPEN 開放}、{@link #BLOCKADE_STATE_CLOSE 閉塞}、
+ * {@link #BLOCKADE_STATE_TEST_OPEN テスト開放}
+ * の３つがある。「閉塞」状態の場合は、無条件にBlockadeExceptionをthrowする
+ * 。「テスト開放」状態の場合は、特権ユーザコードマスタに存在するユーザからのアクセスのみ許容する。<br>
+ * 以下に、閉塞インターセプタのサービス定義例を示す。<br>
  * 
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
@@ -76,7 +76,7 @@ import jp.ossc.nimbus.service.context.Context;
  *             &lt;depends&gt;CodeMasterFinder&lt;/depends&gt;
  *         &lt;/service&gt;
  *         
- *         &lt;!-- �ȉ��̓R�[�h�}�X�^�T�[�r�X��` --&gt;
+ *         &lt;!-- 以下はコードマスタサービス定義 --&gt;
  *         &lt;service name="CodeMasterFinder"
  *                  code="jp.ossc.nimbus.service.codemaster.CodeMasterService"&gt;
  *             &lt;attribute name="MasterNames"&gt;
@@ -270,10 +270,10 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     }
     
     /**
-     * �T�[�r�X�̐����������s���B
+     * サービスの生成処理を行う。
      * <p>
      *
-     * @exception Exception �T�[�r�X�̐����Ɏ��s�����ꍇ
+     * @exception Exception サービスの生成に失敗した場合
      */
     public void createService() throws Exception {
         propertyAccess = new PropertyAccess();
@@ -281,10 +281,10 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     }
     
     /**
-     * �T�[�r�X�̊J�n�������s���B
+     * サービスの開始処理を行う。
      * <p>
      *
-     * @exception Exception �T�[�r�X�̊J�n�Ɏ��s�����ꍇ
+     * @exception Exception サービスの開始に失敗した場合
      */
     public void startService() throws Exception {
         if (codeMasterFinderServiceName == null && codeMasterFinder == null && threadContextServiceName == null && threadContext == null) {
@@ -306,26 +306,26 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     }
     
     /**
-     * �T�[�r�X�̔j���������s���B
+     * サービスの破棄処理を行う。
      * <p>
      *
-     * @exception Exception �T�[�r�X�̔j���Ɏ��s�����ꍇ
+     * @exception Exception サービスの破棄に失敗した場合
      */
     public void destroyService() throws Exception {
         propertyAccess = null;
     }
     
     /**
-     * �R�[�h�}�X�^�̕ǃ}�X�^�y�ѓ������[�U�}�X�^���`�F�b�N���āA�Ǐ�Ԃ̏ꍇ�͗�O��throw����B
+     * コードマスタの閉塞マスタ及び特権ユーザマスタをチェックして、閉塞状態の場合は例外をthrowする。
      * <p>
-     * �T�[�r�X���J�n����Ă��Ȃ��ꍇ�́A���������Ɏ��̃C���^�[�Z�v�^���Ăяo���B<br>
+     * サービスが開始されていない場合は、何もせずに次のインターセプタを呼び出す。<br>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @param chain ���̃C���^�[�Z�v�^���Ăяo�����߂̃`�F�[��
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ�A�܂��͂��̃C���^�[�Z�v�^�ŔC�ӂ̗�O�����������ꍇ�B�A���A
-     *                �{���Ăяo����鏈����throw���Ȃ�RuntimeException�ȊO�̗�O��throw���Ă�
-     *                �A�Ăяo�����ɂ͓`�d����Ȃ��B
+     * @param context 呼び出しのコンテキスト情報
+     * @param chain 次のインターセプタを呼び出すためのチェーン
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合、またはこのインターセプタで任意の例外が発生した場合。但し、
+     *                本来呼び出される処理がthrowしないRuntimeException以外の例外をthrowしても
+     *                、呼び出し元には伝播されない。
      */
     public Object invokeFilter(ServletFilterInvocationContext context, InterceptorChain chain) throws Throwable {
         if (getState() != STARTED) {

@@ -42,11 +42,11 @@ import java.util.*;
 import jp.ossc.nimbus.lang.*;
 
 /**
- *	ObjectMessageFormat‚ğƒeƒXƒg‚·‚éB<BR>
- *	MessageResourceFactory©‘Ì‚ÌƒeƒXƒg‚às‚¤<BR>
+ *	ObjectMessageFormatã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ã€‚<BR>
+ *	MessageResourceFactoryè‡ªä½“ã®ãƒ†ã‚¹ãƒˆã‚‚è¡Œã†<BR>
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/17| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/17ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MessageResourceFactoryServiceTest4 extends TestCase {
 	private static final String serviceDefFilename = 
@@ -81,11 +81,11 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	public MessageResourceFactoryServiceTest4(String arg0) {
 		super(arg0);
 		ServiceManagerFactory.loadManager(serviceDefFilename);
-		//ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅAQueueSession,Sender‚Ì¶¬‚Ü‚Ås‚¤
+		//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã€QueueSession,Senderã®ç”Ÿæˆã¾ã§è¡Œã†
 		
 		mMessageResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		try{
 			QueueTransanctionResource tranRes = (QueueTransanctionResource)jmsQueSession.makeResource(mQueueConnectionFactoryName);
 			mSession = (QueueSession)tranRes.getObject();
@@ -95,10 +95,10 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		}
 		
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		try{
 			mQueue = (Queue)finder.lookup(QueueName);
-			//QueueSenderì¬
+			//QueueSenderä½œæˆ
 			mSender = mSession.createSender(mQueue);
 		}
 		catch(Exception e){
@@ -112,10 +112,10 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	
 	public void testCheck(){
 		write("testCheck Start");
-		//‘¶İ‚·‚éê‡A‚»‚Ì‚Ü‚Ü•Ô‚·B
+		//å­˜åœ¨ã™ã‚‹å ´åˆã€ãã®ã¾ã¾è¿”ã™ã€‚
 		String ret = mMessageResourceFactory.check("59");
 		assertEquals("59",ret);
-		//‘¶İ‚µ‚È‚¢ê‡Anull‚ğ•Ô‚·B
+		//å­˜åœ¨ã—ãªã„å ´åˆã€nullã‚’è¿”ã™ã€‚
 		ret = mMessageResourceFactory.check("hoge");
 		assertNull(ret);
 		write("testCheck End");
@@ -144,8 +144,8 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		assertEquals("ByteConverter",name);
 	}
 	
-	//FileMessageInput‚ÌUnitƒeƒXƒg
-	//ƒRƒƒ“ƒgs“Ç‚İ”ò‚Î‚µŠm”F
+	//FileMessageInputã®Unitãƒ†ã‚¹ãƒˆ
+	//ã‚³ãƒ¡ãƒ³ãƒˆè¡Œèª­ã¿é£›ã°ã—ç¢ºèª
 	public void testFileMessageInput(){
 		FileMessageInput fileMessageInput = new FileMessageInput("jp/ossc/nimbus/service/msgresource/msgdata/FileInputTest1.txt");
 		String firstPayloadStr = fileMessageInput.getInputString();
@@ -155,7 +155,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		String propVal2 = (String)firstProperties.get("prop2");
 		assertEquals("property1",propVal1);
 		assertEquals("property2",propVal2);
-		//Ÿ‚Ìs‚Ö
+		//æ¬¡ã®è¡Œã¸
 		fileMessageInput.nextLine();
 		String secondPayloadStr = fileMessageInput.getInputString();
 		Properties secondProperties = fileMessageInput.getMessageHeadProp();
@@ -165,8 +165,8 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		assertEquals("property3",propVal1);
 		assertEquals("property4",propVal2);
 	}
-	//FileMessageInput‚ÌUnitƒeƒXƒg
-	//‰üs‚Ì‚İ‚Ìs“Ç‚İ”ò‚Î‚µŠm”F
+	//FileMessageInputã®Unitãƒ†ã‚¹ãƒˆ
+	//æ”¹è¡Œã®ã¿ã®è¡Œèª­ã¿é£›ã°ã—ç¢ºèª
 	public void testFileMessageInput2(){
 		FileMessageInput fileMessageInput = new FileMessageInput("jp/ossc/nimbus/service/msgresource/msgdata/FileInputTest2.txt");
 		String firstPayloadStr = fileMessageInput.getInputString();
@@ -176,7 +176,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		String propVal2 = (String)firstProperties.get("prop2");
 		assertEquals("property1",propVal1);
 		assertEquals("property2",propVal2);
-		//Ÿ‚Ìs‚Ö
+		//æ¬¡ã®è¡Œã¸
 		fileMessageInput.nextLine();
 		String secondPayloadStr = fileMessageInput.getInputString();
 		Properties secondProperties = fileMessageInput.getMessageHeadProp();
@@ -187,27 +187,27 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		assertEquals("property4",propVal2);
 	}
 	
-	//FileMessageInput‚ÌUnitƒeƒXƒg
-	//ƒyƒCƒ[ƒh‚È‚µB
+	//FileMessageInputã®Unitãƒ†ã‚¹ãƒˆ
+	//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ãªã—ã€‚
 	public void testFileMessageInput3(){
 		FileMessageInput fileMessageInput = new FileMessageInput("jp/ossc/nimbus/service/msgresource/msgdata/FileInputTest3.txt");
 		String firstPayloadStr = fileMessageInput.getInputString();
 		Properties firstProperties = fileMessageInput.getMessageHeadProp();
-		//‹ó•¶š‚ª•Ô‚éB
+		//ç©ºæ–‡å­—ãŒè¿”ã‚‹ã€‚
 		assertEquals("",firstPayloadStr);
 		String propVal1 = (String)firstProperties.get("prop1");
 		String propVal2 = (String)firstProperties.get("prop2");
 		assertEquals("property1",propVal1);
 		assertEquals("property2",propVal2);
-		//Ÿ‚Ìs‚ÖiƒvƒƒpƒeƒB‚È‚µj
+		//æ¬¡ã®è¡Œã¸ï¼ˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãªã—ï¼‰
 		fileMessageInput.nextLine();
 		String secondPayloadStr = fileMessageInput.getInputString();
 		Properties secondProperties = fileMessageInput.getMessageHeadProp();
 		assertEquals("What's the matter?",secondPayloadStr);
-		//‹ó‚Ì”¤B
+		//ç©ºã®ç­ˆã€‚
 		assertEquals(0,secondProperties.size());
 	}
-	//ƒvƒƒpƒeƒB•s³’è‹`
+	//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ä¸æ­£å®šç¾©
 	public void testFileMessageInput4(){
 		System.out.println("Start testFileMessageInput4");
 		System.out.println("Attention! this test throws ServiceException cause that's the purpose.");
@@ -219,7 +219,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 
 		}
 	}
-	//ƒvƒƒpƒeƒB•s³’è‹`
+	//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ä¸æ­£å®šç¾©
 	public void testFileMessageInput5(){
 		System.out.println("Start testFileMessageInput5");
 		System.out.println("Attention! this test throws ServiceException cause that's the purpose.");
@@ -231,7 +231,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		}
 	}
 	
-	//ƒvƒƒpƒeƒB•s³’è‹`
+	//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ä¸æ­£å®šç¾©
 	public void testFileMessageInput6(){
 		System.out.println("Start testFileMessageInput6");
 		System.out.println("Attention! this test throws ServiceException cause that's the purpose.");
@@ -278,7 +278,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	
 	public void testMessageResourceImplDisplay(){
 		MessageResource msgResource = mMessageResourceFactory.findInstance("59");
-		assertEquals("ObjectƒƒbƒZ[ƒW",((MessageResourceImpl)msgResource).display());
+		assertEquals("Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸",((MessageResourceImpl)msgResource).display());
 	}
 	
 	public void testMessageResourceImplGetKey(){
@@ -289,7 +289,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	public void testSendObjectMessage() throws Exception {
 		System.out.println("MapMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("59");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		ObjectMessage msg = (ObjectMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		Object payloadObj = msg.getObject();
@@ -300,7 +300,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	public void testSendObjectMessageUseFileData() throws Exception {
 		System.out.println("MapMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("60");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		ObjectMessage msg = (ObjectMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		Object payloadObj = msg.getObject();
@@ -311,14 +311,14 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	public void testSendObjectMessageUseFileDataInvalidColumnNumber(){
 		System.out.println("MapMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("61");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		ObjectMessage msg = null;
 		try{
 			msg = (ObjectMessage)msgResource.makeMessage(mSession);
 			mSender.send(msg);
 		}
 		catch(Exception e){
-			//makeMessage‚ÅServiceException”­¶B
+			//makeMessageã§ServiceExceptionç™ºç”Ÿã€‚
 			//e.printStackTrace();
 			assertTrue(e instanceof ServiceException);
 		}
@@ -327,21 +327,21 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 	public void testSendObjectMessageUseFileDataInvalidColum(){
 		System.out.println("MapMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("62");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		ObjectMessage msg = null;
 		try{
 			msg = (ObjectMessage)msgResource.makeMessage(mSession);
 			mSender.send(msg);
 		}
 		catch(Exception e){
-			//makeMessage‚ÅServiceException”­¶B
+			//makeMessageã§ServiceExceptionç™ºç”Ÿã€‚
 			//e.printStackTrace();
 			assertTrue(e instanceof ServiceException);
 		}
 	}
 	
 	public void testRecvObjectMessage() throws Exception {
-		//“d•¶‚ğóM‚·‚éB
+		//é›»æ–‡ã‚’å—ä¿¡ã™ã‚‹ã€‚
 		JmsQueueSession jmsQueueSession = 
 				(JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		QueueTransanctionResource tranRes = 
@@ -351,7 +351,7 @@ public class MessageResourceFactoryServiceTest4 extends TestCase {
 		QueueReceiver receiver = recvSession.createReceiver(mQueue);
 		MessageResource msgResource = null;
 		ObjectMessage msg = null;
-		//óMŠJn
+		//å—ä¿¡é–‹å§‹
 		recvConnection.start();
 		//Object
 		msg = (ObjectMessage)receiver.receive();

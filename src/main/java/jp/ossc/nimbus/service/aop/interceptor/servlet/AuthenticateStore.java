@@ -34,45 +34,45 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import javax.servlet.http.*;
 
 /**
- * ”FØƒXƒgƒAB<p>
+ * èªè¨¼ã‚¹ãƒˆã‚¢ã€‚<p>
  *
  * @author M.Takata
  */
 public interface AuthenticateStore{
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @param authenticatedInfo ”FØî•ñ
-     * @exception AuthenticateStoreException ƒXƒgƒA‚É¸”s‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param authenticatedInfo èªè¨¼æƒ…å ±
+     * @exception AuthenticateStoreException ã‚¹ãƒˆã‚¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void create(HttpServletRequest request, Object authenticatedInfo) throws AuthenticateStoreException;
     
     /**
-     * ƒXƒgƒA‚³‚ê‚Ä‚¢‚é”FØî•ñ‚ğ•œŒ³‚·‚éB<p>
+     * ã‚¹ãƒˆã‚¢ã•ã‚Œã¦ã„ã‚‹èªè¨¼æƒ…å ±ã‚’å¾©å…ƒã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @param authenticatedKey ”FØî•ñ‚ÌƒL[
-     * @exception AuthenticateStoreException ƒXƒgƒA‚©‚ç‚Ì•œŒ³‚É¸”s‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param authenticatedKey èªè¨¼æƒ…å ±ã®ã‚­ãƒ¼
+     * @exception AuthenticateStoreException ã‚¹ãƒˆã‚¢ã‹ã‚‰ã®å¾©å…ƒã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object activate(HttpServletRequest request, Object authenticatedKey) throws AuthenticateStoreException;
     
     /**
-     * ”FØî•ñ‚ğ”ñŠˆ«‰»‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’éæ´»æ€§åŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param session HTTPƒZƒbƒVƒ‡ƒ“
-     * @param authenticatedInfo ”FØî•ñ
-     * @exception AuthenticateStoreException ”FØî•ñ‚Ì”ñŠˆ«‰»‚É¸”s‚µ‚½ê‡
+     * @param session HTTPã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @param authenticatedInfo èªè¨¼æƒ…å ±
+     * @exception AuthenticateStoreException èªè¨¼æƒ…å ±ã®éæ´»æ€§åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void deactivate(HttpSession session, Object authenticatedInfo) throws AuthenticateStoreException;
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚©‚ç”jŠü‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã‹ã‚‰ç ´æ£„ã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @param authenticatedKey ”FØî•ñ‚ÌƒL[
-     * @exception AuthenticateStoreException ƒXƒgƒA‚©‚ç‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param authenticatedKey èªè¨¼æƒ…å ±ã®ã‚­ãƒ¼
+     * @exception AuthenticateStoreException ã‚¹ãƒˆã‚¢ã‹ã‚‰ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroy(HttpServletRequest request, Object authenticatedKey) throws AuthenticateStoreException;
 }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import junit.framework.*;
 
 /**
- * �L���b�V���T�C�Y���ӂꌟ�؃T�[�r�X�e�X�g�B<p>
+ * キャッシュサイズあふれ検証サービステスト。<p>
  *
  * @author M.Takata
  */

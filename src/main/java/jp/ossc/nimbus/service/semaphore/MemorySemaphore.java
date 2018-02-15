@@ -39,7 +39,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ƒƒ‚ƒŠƒZƒ}ƒtƒHB<p>
+ * ãƒ¡ãƒ¢ãƒªã‚»ãƒãƒ•ã‚©ã€‚<p>
  *
  * @author H.Nakano
  */
@@ -47,67 +47,67 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
     
     private static final long serialVersionUID = -408553618405283847L;
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾ ##
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
     
-    /** ƒZƒ}ƒtƒHƒŠƒ\[ƒX” */
+    /** ã‚»ãƒãƒ•ã‚©ãƒªã‚½ãƒ¼ã‚¹æ•° */
     protected volatile int mResourceCnt = -1;
     
-    /** ƒZƒ}ƒtƒH‰Šú‰»” */
+    /** ã‚»ãƒãƒ•ã‚©åˆæœŸåŒ–æ•° */
     protected volatile int mInitialResource = -1;
     
-    /** ‹­§I—¹ƒtƒ‰ƒO */
+    /** å¼·åˆ¶çµ‚äº†ãƒ•ãƒ©ã‚° */
     protected volatile boolean mFourceEndFlg = false;
     
-    /** ƒZƒ}ƒtƒHŠl“¾ƒ‚ƒjƒ^ */
+    /** ã‚»ãƒãƒ•ã‚©ç²å¾—ãƒ¢ãƒ‹ã‚¿ */
     protected transient SynchronizeMonitor getMonitor = new WaitSynchronizeMonitor();
     
-    /** ƒZƒ}ƒtƒHŠl“¾ƒXƒŒƒbƒhW‡ */
+    /** ã‚»ãƒãƒ•ã‚©ç²å¾—ã‚¹ãƒ¬ãƒƒãƒ‰é›†åˆ */
     protected transient ConcurrentMap usedThreads = new ConcurrentHashMap();
     
-    /** ƒZƒ}ƒtƒHŠl“¾ƒXƒŒƒbƒhW‡ */
+    /** ã‚»ãƒãƒ•ã‚©ç²å¾—ã‚¹ãƒ¬ãƒƒãƒ‰é›†åˆ */
     protected transient ConcurrentMap threadTasks = new ConcurrentHashMap();
     
-    /** –³ŒÀŠl“¾‘Ò‚¿ƒXƒŒƒbƒhSleepŠÔ[ms] */
+    /** ç„¡é™ç²å¾—å¾…ã¡ã‚¹ãƒ¬ãƒƒãƒ‰Sleepæ™‚é–“[ms] */
     protected long sleepTime = 10000;
     
-    /** ƒŠƒ\[ƒXŠÄ‹ŠÔŠu */
+    /** ãƒªã‚½ãƒ¼ã‚¹ç›£è¦–é–“éš” */
     protected long checkInterval = -1;
     
-    /** ƒŠƒ\[ƒXŠÄ‹ƒ^ƒXƒN */
+    /** ãƒªã‚½ãƒ¼ã‚¹ç›£è¦–ã‚¿ã‚¹ã‚¯ */
     protected transient ResourceChecker checker;
     
-    /** Å‘åƒŠƒ\[ƒXg—p”ÀÑ */
+    /** æœ€å¤§ãƒªã‚½ãƒ¼ã‚¹ä½¿ç”¨æ•°å®Ÿç¸¾ */
     protected int maxUsedResource;
     
-    /** Å‘åƒŠƒ\[ƒXŠl“¾‘Ò‚¿”ÀÑ */
+    /** æœ€å¤§ãƒªã‚½ãƒ¼ã‚¹ç²å¾—å¾…ã¡æ•°å®Ÿç¸¾ */
     protected int maxWaitedCount;
     
-    /** ‹­§ŠJ•úƒ^ƒCƒ}[ */
+    /** å¼·åˆ¶é–‹æ”¾ã‚¿ã‚¤ãƒãƒ¼ */
     protected transient Timer forceFreeTimer = new Timer(true);
     
     protected boolean isThreadBinding = true;
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public boolean getResource(){
         return this.getResource(-1L) ;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public boolean getResource(int maxWaitCount){
         return getResource(-1L, maxWaitCount) ;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public boolean getResource(long timeOutMiliSecond){
         return getResource(timeOutMiliSecond, -1);
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public boolean getResource(long timeOutMiliSecond, int maxWaitCount){
         return getResource(timeOutMiliSecond, maxWaitCount, -1);
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public boolean getResource(
         long timeOutMiliSecond,
         int maxWaitCount,
@@ -125,14 +125,14 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
         }
         long processTime = 0;
         try{
-            // ‹­§I—¹‚Å‚È‚¢ê‡
+            // å¼·åˆ¶çµ‚äº†ã§ãªã„å ´åˆ
             while(!mFourceEndFlg){
-                // ƒŠƒ\[ƒX‚ª—]‚Á‚Ä‚¢‚éê‡
+                // ãƒªã‚½ãƒ¼ã‚¹ãŒä½™ã£ã¦ã„ã‚‹å ´åˆ
                 if(mResourceCnt > 0){
                     boolean isGet = false;
                     synchronized(getMonitor){
                         if(mResourceCnt > 0){
-                            // ƒŠƒ\[ƒX‚ğŠl“¾‚·‚é
+                            // ãƒªã‚½ãƒ¼ã‚¹ã‚’ç²å¾—ã™ã‚‹
                             mResourceCnt--;
                             getMonitor.releaseMonitor();
                             final int nowUsed = mInitialResource - mResourceCnt;
@@ -144,20 +144,20 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
                     }
                     if(isGet){
                         if(isThreadBinding){
-                            // ‹­§ŠJ•úŠÔ‚ªw’è‚³‚ê‚Ä‚¢‚éê‡
+                            // å¼·åˆ¶é–‹æ”¾æ™‚é–“ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
                             TimerTask task = null;
                             if(forceFreeMiliSecond > 0){
                                 
-                                // ‹­§ŠJ•úƒ^ƒXƒN‚ğƒ^ƒCƒ}[‚É“o˜^‚·‚é
+                                // å¼·åˆ¶é–‹æ”¾ã‚¿ã‚¹ã‚¯ã‚’ã‚¿ã‚¤ãƒãƒ¼ã«ç™»éŒ²ã™ã‚‹
                                 task = new ForceFreeTimerTask(current);
                                 forceFreeTimer.schedule(task, forceFreeMiliSecond);
                             }
                             
-                            // ƒŠƒ\[ƒXg—p’†ƒXƒŒƒbƒh‚É“o˜^‚·‚é
+                            // ãƒªã‚½ãƒ¼ã‚¹ä½¿ç”¨ä¸­ã‚¹ãƒ¬ãƒƒãƒ‰ã«ç™»éŒ²ã™ã‚‹
                             usedThreads.put(current, current);
                             
                             if(task != null){
-                                // ƒ^ƒXƒNŠÇ—‚Éƒ^ƒXƒN‚ğ“o˜^‚·‚é
+                                // ã‚¿ã‚¹ã‚¯ç®¡ç†ã«ã‚¿ã‚¹ã‚¯ã‚’ç™»éŒ²ã™ã‚‹
                                 if(threadTasks.containsKey(current)){
                                     final Object tasks = threadTasks.get(current);
                                     List taskList = null;
@@ -181,16 +181,16 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
                 }
                 long proc = 0;
                 synchronized(current){
-                    // ƒŠƒ\[ƒX‚ª—]‚Á‚Ä‚¢‚È‚¢ê‡
-                    // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                    // ãƒªã‚½ãƒ¼ã‚¹ãŒä½™ã£ã¦ã„ãªã„å ´åˆ
+                    // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                     
-                    // ‹­§I—¹‚Ü‚½‚Íƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+                    // å¼·åˆ¶çµ‚äº†ã¾ãŸã¯ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
                     if(mFourceEndFlg || (timeOutMs >= 0 && timeOutMs <= processTime)){
                         break;
                     }
                     
-                    // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚ ‚éê‡‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚Ü‚Åsleep‚·‚é
-                    // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚È‚¢ê‡‚ÍAsleepTime•ªsleep‚µ‚Ä‚İ‚é
+                    // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒã‚ã‚‹å ´åˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¾ã§sleepã™ã‚‹
+                    // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒãªã„å ´åˆã¯ã€sleepTimeåˆ†sleepã—ã¦ã¿ã‚‹
                     if(timeOutMs >= 0){
                         proc = System.currentTimeMillis();
                     }
@@ -229,14 +229,14 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
                 }
             }
             
-            // ‹­§I—¹‚Ü‚½‚Íƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+            // å¼·åˆ¶çµ‚äº†ã¾ãŸã¯ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
             return false;
         }finally{
             getMonitor.releaseMonitor();
         }
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public void freeResource(){
         freeResource(Thread.currentThread());
     }
@@ -281,12 +281,12 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
         }
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public int getResourceCapacity(){
         return mInitialResource;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public void setResourceCapacity(int capa) {
         if(mInitialResource == -1){
             mInitialResource = capa ;
@@ -294,43 +294,43 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
         }
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public int getResourceRemain() {
         return mResourceCnt;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public int getWaitingCount(){
         return getMonitor.getWaitCount();
     }
     
     /**
-     * ƒZƒ}ƒtƒH‚É‘Î‚µ‚Ä–³ŒÀæ“¾‘Ò‚¿‚ğ‚·‚éƒXƒŒƒbƒh‚ªsleep‚·‚éŠÔ‚ğİ’è‚·‚éB<p>
-     * ©•ª‚ªƒZƒ}ƒtƒH‘Ò‚¿‚Ìæ“ª‚Å‚È‚¢ê‡‚ÍAÄ‚Ñsleep‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA10•bB
+     * ã‚»ãƒãƒ•ã‚©ã«å¯¾ã—ã¦ç„¡é™å–å¾—å¾…ã¡ã‚’ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒsleepã™ã‚‹æ™‚é–“ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è‡ªåˆ†ãŒã‚»ãƒãƒ•ã‚©å¾…ã¡ã®å…ˆé ­ã§ãªã„å ´åˆã¯ã€å†ã³sleepã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€10ç§’ã€‚
      *
-     * @param millis ƒZƒ}ƒtƒH‚É‘Î‚µ‚Ä–³ŒÀæ“¾‘Ò‚¿‚ğ‚·‚éƒXƒŒƒbƒh‚ªsleep‚·‚éŠÔ[ms]
+     * @param millis ã‚»ãƒãƒ•ã‚©ã«å¯¾ã—ã¦ç„¡é™å–å¾—å¾…ã¡ã‚’ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒsleepã™ã‚‹æ™‚é–“[ms]
      */
     public void setSleepTime(long millis){
         sleepTime = millis;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public long getSleepTime(){
         return sleepTime;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public void setCheckInterval(long millis){
         checkInterval = millis;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public long getCheckInterval(){
         return checkInterval;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public synchronized void release(){
         if(checker != null){
             checker.isStop = true;
@@ -351,7 +351,7 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
         forceFreeTimer = new Timer(true);
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public synchronized void accept(){
         mFourceEndFlg = false;
         if(checkInterval > 0){
@@ -360,32 +360,32 @@ public class MemorySemaphore implements Semaphore, java.io.Serializable{
         }
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public int getMaxUsedResource(){
         return maxUsedResource;
     }
     
-    // Semaphore‚ÌJavaDoc
+    // Semaphoreã®JavaDoc
     public int getMaxWaitedCount(){
         return maxWaitedCount;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setThreadBinding(boolean isBinding){
         isThreadBinding = isBinding;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean isThreadBinding(){
         return isThreadBinding;
     }
     
     /**
-     * ƒfƒVƒŠƒAƒ‰ƒCƒY‚ğs‚¤B<p>
+     * ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã‚’è¡Œã†ã€‚<p>
      *
-     * @param in ƒfƒVƒŠƒAƒ‰ƒCƒY‚ÌŒ³î•ñ‚Æ‚È‚éƒXƒgƒŠ[ƒ€
-     * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException ƒfƒVƒŠƒAƒ‰ƒCƒY‚µ‚æ‚¤‚Æ‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param in ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã®å…ƒæƒ…å ±ã¨ãªã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã‚ˆã†ã¨ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     private void readObject(java.io.ObjectInputStream in)
      throws java.io.IOException, ClassNotFoundException{

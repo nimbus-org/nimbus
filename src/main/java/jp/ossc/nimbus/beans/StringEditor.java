@@ -35,12 +35,12 @@ import java.beans.*;
 import java.lang.reflect.*;
 
 /**
- * String�^��PropertyEditor�N���X�B<p>
- * "${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
- * "${\t}"�A"${\n}"�A"${\r}"�A"${\f}"�́A�G�X�P�[�v�V�[�P���X�Ƃ��Ēu�������B<br>
- * "��u"����n�܂�U�����́A���j�R�[�h������Ƃ��Ēu�������B<br>
- * String�^��static�萔�����Q�Ƃ��鎖���ł���B<br>
- * �܂��A�󔒂𕶎���̑O��ɕt���������ꍇ�ɂ́A"�ň͂ށB"�𕶎���̗��[�ɈӐ}�I�ɕt���������ꍇ�ɂ́A"���d�ɏd�˂ċL�q����B<br>
+ * String型のPropertyEditorクラス。<p>
+ * "${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
+ * "${\t}"、"${\n}"、"${\r}"、"${\f}"は、エスケープシーケンスとして置換される。<br>
+ * "￥u"から始まる６文字は、ユニコード文字列として置換される。<br>
+ * String型のstatic定数名を参照する事もできる。<br>
+ * また、空白を文字列の前後に付加したい場合には、"で囲む。"を文字列の両端に意図的に付加したい場合には、"を二重に重ねて記述する。<br>
  *
  * @author M.Takata
  */
@@ -50,9 +50,9 @@ public class StringEditor extends PropertyEditorSupport
     private static final long serialVersionUID = -6687819269846555560L;
     
     /**
-     * �w�肳�ꂽ���������͂��ăv���p�e�B�l��ݒ肷��B<p>
+     * 指定された文字列を解析してプロパティ値を設定する。<p>
      *
-     * @param text ��͂���镶����
+     * @param text 解析される文字列
      */
     public void setAsText(String text){
         if(text == null){
@@ -88,9 +88,9 @@ public class StringEditor extends PropertyEditorSupport
     }
     
     /**
-     * �w�肳�ꂽ�l�𕶎���Ƃ��Ď擾����B<p>
+     * 指定された値を文字列として取得する。<p>
      *
-     * @return ������
+     * @return 文字列
      */
     public String getAsText(){
         final Object val = getValue();

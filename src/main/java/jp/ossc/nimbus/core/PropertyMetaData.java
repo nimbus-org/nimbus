@@ -35,7 +35,7 @@ import java.io.*;
 import org.w3c.dom.*;
 
 /**
- * ƒvƒƒpƒeƒB—v‘fƒƒ^ƒf[ƒ^B<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -51,62 +51,62 @@ public abstract class PropertyMetaData extends MetaData
     protected String value;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public PropertyMetaData(MetaData parent){
         super(parent);
     }
     
     /**
-     * ƒ^ƒO–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¿ã‚°åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒO–¼
+     * @return ã‚¿ã‚°å
      */
     protected abstract String getTagName();
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB—v‘f‚Ìname‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return name‘®«‚Ì’l
+     * @return nameå±æ€§ã®å€¤
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB—v‘f‚Ìname‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name name‘®«‚Ì’l
+     * @param name nameå±æ€§ã®å€¤
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB—v‘f‚Ì“à—e‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®å†…å®¹ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒvƒƒpƒeƒB’l
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public String getValue(){
         return value;
     }
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB—v‘f‚Ì“à—e‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®å†…å®¹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setValue(String value){
         this.value = value;
     }
     
     /**
-     * ƒvƒƒpƒeƒB—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element ƒvƒƒpƒeƒB—v‘f‚ÌElement
-     * @exception DeploymentException ƒvƒƒpƒeƒB—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®Element
+     * @exception DeploymentException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);

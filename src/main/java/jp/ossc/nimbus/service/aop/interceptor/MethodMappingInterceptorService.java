@@ -41,9 +41,9 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * ƒƒ\ƒbƒhƒ}ƒbƒsƒ“ƒOƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄA”CˆÓ‚Ìƒƒ\ƒbƒh–ˆ‚ÉˆÙ‚È‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·ƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒƒ\ƒbƒhƒ}ƒbƒsƒ“ƒOƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ãƒãƒƒãƒ”ãƒ³ã‚°ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ä»»æ„ã®ãƒ¡ã‚½ãƒƒãƒ‰æ¯ã«ç•°ãªã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãƒ¡ã‚½ãƒƒãƒ‰ãƒãƒƒãƒ”ãƒ³ã‚°ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -67,7 +67,7 @@ import jp.ossc.nimbus.service.context.Context;
  *         &lt;service name="UnsupportedOperationExceptionTrowInterceptor"
  *                  code="jp.ossc.nimbus.service.aop.interceptor.ExceptionThrowInterceptorService"&gt;
  *             &lt;attribute name="ExceptionClassName"&gt;java.lang.UnsupportedOperationException&lt;/attribute&gt;
- *             &lt;attribute name="Message"&gt;‚±‚Ìƒƒ\ƒbƒh‚ÍŒÄ‚Ño‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñB&lt;/attribute&gt;
+ *             &lt;attribute name="Message"&gt;ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯å‘¼ã³å‡ºã—ã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚&lt;/attribute&gt;
  *         &lt;/service&gt;
  *         
  *     &lt;/manager&gt;
@@ -89,29 +89,29 @@ public class MethodMappingInterceptorService extends ServiceBase
     private ServiceName contextServiceName;
     private Context context;
     
-    // MethodMappingInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMappingInterceptorServiceMBeanã®JavaDoc
     public void setTargetMethodMapping(Properties mapping){
         targetMethodMapping = mapping;
     }
-    // MethodMappingInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMappingInterceptorServiceMBeanã®JavaDoc
     public Properties getTargetMethodMapping(){
         return targetMethodMapping;
     }
     
-    // MethodMappingInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMappingInterceptorServiceMBeanã®JavaDoc
     public void setTargetMethodReturnMapping(Properties mapping){
         targetMethodReturnMapping = mapping;
     }
-    // MethodMappingInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMappingInterceptorServiceMBeanã®JavaDoc
     public Properties getTargetMethodReturnMapping(){
         return targetMethodReturnMapping;
     }
     
-    // MethodMappingInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMappingInterceptorServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
-    // MethodMappingInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMappingInterceptorServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
@@ -122,7 +122,7 @@ public class MethodMappingInterceptorService extends ServiceBase
     }
     
     /**
-     * Context‚ğİ’è‚·‚éB
+     * Contextã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setContext(Context context) {
         this.context = context;
@@ -174,14 +174,14 @@ public class MethodMappingInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄAƒ}ƒbƒsƒ“ƒO‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
-     * ŒÄ‚Ño‚³‚ê‚½ƒƒ\ƒbƒh‚É‘Î‚µ‚Äƒ}ƒbƒsƒ“ƒO‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * å‘¼ã³å‡ºã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ã«å¯¾ã—ã¦ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param ctx ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param ctx å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext ctx,

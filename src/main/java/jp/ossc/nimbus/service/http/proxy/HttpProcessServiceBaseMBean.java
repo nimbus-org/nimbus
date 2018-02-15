@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.http.proxy;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link HttpProcessServiceBase}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link HttpProcessServiceBase}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see HttpProcessServiceBase
@@ -42,101 +42,101 @@ import jp.ossc.nimbus.core.*;
 public interface HttpProcessServiceBaseMBean extends ServiceBaseMBean{
     
     /**
-     * ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€‚Ì‰ğ“€‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã®è§£å‡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isInflate ‰ğ“€‚ğs‚¤ê‡‚ÍAtrue
+     * @param isInflate è§£å‡ã‚’è¡Œã†å ´åˆã¯ã€true
      */
     public void setRequestStreamInflate(boolean isInflate);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€‚Ì‰ğ“€‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã®è§£å‡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‰ğ“€‚ğs‚¤
+     * @return trueã®å ´åˆã€è§£å‡ã‚’è¡Œã†
      */
     public boolean isRequestStreamInflate();
     
     /**
-     * HTTPƒgƒ“ƒlƒŠƒ“ƒO‚ğs‚¤ê‡‚ÉƒT[ƒo‚Æ‚ÌÚ‘±‚Ég—p‚·‚éSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * HTTPãƒˆãƒ³ãƒãƒªãƒ³ã‚°ã‚’è¡Œã†å ´åˆã«ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«ä½¿ç”¨ã™ã‚‹SocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name SocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTunnelSocketFactoryServiceName(ServiceName name);
     
     /**
-     * HTTPƒgƒ“ƒlƒŠƒ“ƒO‚ğs‚¤ê‡‚ÉƒT[ƒo‚Æ‚ÌÚ‘±‚Ég—p‚·‚éSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒˆãƒ³ãƒãƒªãƒ³ã‚°ã‚’è¡Œã†å ´åˆã«ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«ä½¿ç”¨ã™ã‚‹SocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return SocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTunnelSocketFactoryServiceName();
     
     /**
-     * HTTPƒgƒ“ƒlƒŠƒ“ƒO‚ğs‚¤ê‡‚Ì’ÊMƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * HTTPãƒˆãƒ³ãƒãƒªãƒ³ã‚°ã‚’è¡Œã†å ´åˆã®é€šä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size ’ÊMƒoƒbƒtƒ@ƒTƒCƒY[byte]
+     * @param size é€šä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º[byte]
      */
     public void setTunnelBufferSize(int size);
     
     /**
-     * HTTPƒgƒ“ƒlƒŠƒ“ƒO‚ğs‚¤ê‡‚Ì’ÊMƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒˆãƒ³ãƒãƒªãƒ³ã‚°ã‚’è¡Œã†å ´åˆã®é€šä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’ÊMƒoƒbƒtƒ@ƒTƒCƒY[byte]
+     * @return é€šä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º[byte]
      */
     public int getTunnelBufferSize();
     
     /**
-     * ƒvƒƒLƒV‚ÌƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚ÌƒzƒXƒg–¼
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ›ã‚¹ãƒˆå
      */
     public String getProxyHost();
     
     /**
-     * ƒvƒƒLƒV‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param host ƒvƒƒLƒV‚ÌƒzƒXƒg–¼
+     * @param host ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ›ã‚¹ãƒˆå
      */
     public void setProxyHost(String host);
     
     /**
-     * ƒvƒƒLƒV‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚Ìƒ|[ƒg”Ô†
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getProxyPort();
     
     /**
-     * ƒvƒƒLƒV‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒvƒƒLƒV‚Ìƒ|[ƒg”Ô†
+     * @param port ãƒ—ãƒ­ã‚­ã‚·ã®ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setProxyPort(int port);
     
     /**
-     * ƒvƒƒLƒV‚ÌBASIC”FØƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚ÌBASIC”FØƒ†[ƒU–¼
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ¦ãƒ¼ã‚¶å
      */
     public String getProxyUser();
     
     /**
-     * ƒvƒƒLƒV‚ÌBASIC”FØƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param user ƒvƒƒLƒV‚ÌBASIC”FØƒ†[ƒU–¼
+     * @param user ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ¦ãƒ¼ã‚¶å
      */
     public void setProxyUser(String user);
     
     /**
-     * ƒvƒƒLƒV‚ÌBASIC”FØƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚ÌBASIC”FØƒpƒXƒ[ƒh
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getProxyPassword();
     
     /**
-     * ƒvƒƒLƒV‚ÌBASIC”FØƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password ƒvƒƒLƒV‚ÌBASIC”FØƒpƒXƒ[ƒh
+     * @param password ãƒ—ãƒ­ã‚­ã‚·ã®BASICèªè¨¼ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setProxyPassword(String password);
 }

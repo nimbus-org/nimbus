@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.publish.websocket;
 
 /**
- * WebSocket‚ÌƒƒbƒZ[ƒW”zMŠÇ—ƒ}ƒl[ƒWƒƒ—pƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ * WebSocketã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ç®¡ç†ãƒãƒãƒ¼ã‚¸ãƒ£ç”¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -40,32 +40,32 @@ package jp.ossc.nimbus.service.publish.websocket;
 public interface MessageDispatcher {
 
     /**
-     * ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğ’Ç‰Á‚·‚é
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’è¿½åŠ ã™ã‚‹
      *
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public void addMessageSender(MessageSender sender);
 
     /**
-     * ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğíœ‚·‚é
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’å‰Šé™¤ã™ã‚‹
      *
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public void removeMessageSender(MessageSender handler);
 
     /**
-     * ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğ’Ç‰Á‚·‚é
+     * é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’è¿½åŠ ã™ã‚‹
      *
-     * @param key ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param key é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public void addKey(Object key, MessageSender sender);
 
     /**
-     * ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğíœ‚·‚é
+     * é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’å‰Šé™¤ã™ã‚‹
      *
-     * @param key ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param key é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public void removeKey(Object key, MessageSender sender);
 

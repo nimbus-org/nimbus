@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link CSVJournalEditorServiceBase}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link CSVJournalEditorServiceBase}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see CSVJournalEditorServiceBase
@@ -41,17 +41,17 @@ public interface CSVJournalEditorServiceBaseMBean
  extends ImmutableJournalEditorServiceBaseMBean{
     
     /**
-     * CSVƒZƒpƒŒ[ƒ^•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * CSVã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator CSVƒZƒpƒŒ[ƒ^•¶š—ñ
+     * @param separator CSVã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
      * @see #getCSVSeparator()
      */
     public void setCSVSeparator(String separator);
     
     /**
-     * CSVƒZƒpƒŒ[ƒ^•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * CSVã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CSVƒZƒpƒŒ[ƒ^•¶š—ñ
+     * @return CSVã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
      * @see #setCSVSeparator(String)
      */
     public String getCSVSeparator();

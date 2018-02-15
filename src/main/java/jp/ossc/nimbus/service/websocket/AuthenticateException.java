@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.websocket;
 
 /**
- * ”FØ‚É¸”s‚µ‚½ê‡‚Éthrow‚³‚ê‚é—áŠOB
+ * èªè¨¼ã«å¤±æ•—ã—ãŸå ´åˆã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -40,7 +40,7 @@ package jp.ossc.nimbus.service.websocket;
 public class AuthenticateException extends RuntimeException {
 
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚
      * <p>
      */
     public AuthenticateException() {
@@ -48,31 +48,31 @@ public class AuthenticateException extends RuntimeException {
     }
 
     /**
-     * w’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚
      * <p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public AuthenticateException(String message) {
         super(message);
     }
 
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚
      * <p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public AuthenticateException(Throwable cause) {
         super(cause);
     }
 
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ÆA‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã€ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚
      * <p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public AuthenticateException(String message, Throwable cause) {
         super(message, cause);

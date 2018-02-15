@@ -34,66 +34,66 @@ package jp.ossc.nimbus.service.message;
 import java.util.*;
 
 /**
- * ƒƒbƒZ[ƒWƒŒƒR[ƒh‚ÌŠÇ——pƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒƒbƒZ[ƒWƒŒƒR[ƒh–ˆ‚Ìg—p‰ñ”‚Ìæ“¾AƒŠƒZƒbƒg‚È‚Ç‚ğs‚¤ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚·‚éB
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ç®¡ç†ç”¨ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰æ¯ã®ä½¿ç”¨å›æ•°ã®å–å¾—ã€ãƒªã‚»ãƒƒãƒˆãªã©ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã™ã‚‹ã€‚
  *
  * @author H.Nakano
  */
 public interface MessageRecordOperator{
     
     /**
-     * ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì1s‚ğ“Ç‚İ‚ŞB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®1è¡Œã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param defString ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì1s‚Ì•¶š—ñ
+     * @param defString ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®1è¡Œã®æ–‡å­—åˆ—
      */
     public void rec2Obj(String defString) throws MessageRecordParseException;
     
     /**
-     * ƒƒP[ƒ‹–ˆ‚ÌƒƒbƒZ[ƒW‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ­ã‚±ãƒ¼ãƒ«æ¯ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param message ƒƒbƒZ[ƒW•¶š—ñ
-     * @param locale ƒƒP[ƒ‹w’è•¶š—ñ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ–‡å­—åˆ—
+     * @param locale ãƒ­ã‚±ãƒ¼ãƒ«æŒ‡å®šæ–‡å­—åˆ—
      */
     public void addMessage(String message, String locale);
     
     /**
-     * g—p‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ä½¿ç”¨å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return g—p‰ñ”
+     * @return ä½¿ç”¨å›æ•°
      */
     public long getUsedCount();
     
     /**
-     * g—p‰ñ”‚ğƒNƒŠƒA‚·‚éB<p>
+     * ä½¿ç”¨å›æ•°ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearUsedCount();
     
     /**
-     * g—pÅI“ú‚ğæ“¾‚·‚éB<p>
+     * ä½¿ç”¨æœ€çµ‚æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ÅIg—p“ú
+     * @return æœ€çµ‚ä½¿ç”¨æ—¥æ™‚
      */
     public Date getLastUsedDate();
     
     /**
-     * ”é–§–„‚ß‚İƒƒbƒZ[ƒW‚ğ”é–§•¶š‚Åƒ}ƒXƒN‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ç§˜å¯†åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç§˜å¯†æ–‡å­—ã§ãƒã‚¹ã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param flg ”é–§•¶š‚Åƒ}ƒXƒN‚·‚éê‡true
+     * @param flg ç§˜å¯†æ–‡å­—ã§ãƒã‚¹ã‚¯ã™ã‚‹å ´åˆtrue
      */
     public void setSecret(boolean flg);
     
     /**
-     * ”é–§•¶š‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒƒbƒZ[ƒW’è‹`‚Ì‚Ü‚Ü‚Åo—Í‚³‚ê‚éB<br>
+     * ç§˜å¯†æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ã®ã¾ã¾ã§å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param secret ”é–§•¶š
+     * @param secret ç§˜å¯†æ–‡å­—
      */
     public void setSecretString(String secret);
     
     /**
-     * ƒƒbƒZ[ƒWƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param fac ƒƒbƒZ[ƒWƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠ
+     * @param fac ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      */
     public void setFactory(MessageRecordFactory fac);
 }

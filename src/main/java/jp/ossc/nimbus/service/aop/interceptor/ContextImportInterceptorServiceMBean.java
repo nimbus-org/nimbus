@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ContextImportInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ContextImportInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ContextImportInterceptorService
@@ -42,8 +42,8 @@ import jp.ossc.nimbus.core.*;
 public interface ContextImportInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚ÉƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ğæ“¾‚·‚é‚Ì‘®«–¼‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
-     * ‘®«–¼‚ğƒfƒtƒHƒ‹ƒgˆÈŠO‚Ì’l‚ğg—p‚µ‚½‚¢ê‡‚ÍA{@link #setAttributeName(String)}‚Åİ’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹æ™‚ã®å±æ€§åã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
+     * å±æ€§åã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä»¥å¤–ã®å€¤ã‚’ä½¿ç”¨ã—ãŸã„å ´åˆã¯ã€{@link #setAttributeName(String)}ã§è¨­å®šã™ã‚‹ã€‚<br>
      * 
      * @see #setAttributeName(String)
      */
@@ -51,47 +51,47 @@ public interface ContextImportInterceptorServiceMBean extends ServiceBaseMBean{
          = ContextExportInterceptorServiceMBean.DEFAULT_ATTRIBUTE_NAME;
     
     /**
-     * ƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * ƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚ÉƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ğæ“¾‚·‚é‚Ì‘®«–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Æ‚µ‚ÄA{@link #DEFAULT_ATTRIBUTE_NAME}‚ªg—p‚³‚ê‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹æ™‚ã®å±æ€§åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¨ã—ã¦ã€{@link #DEFAULT_ATTRIBUTE_NAME}ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name {@link jp.ossc.nimbus.service.context.Context Context}‚ÉƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ğæ“¾‚·‚é‚Ì‘®«–¼
+     * @param name {@link jp.ossc.nimbus.service.context.Context Context}ã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹æ™‚ã®å±æ€§å
      * @see #DEFAULT_ATTRIBUTE_NAME
      */
     public void setAttributeName(String name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚ÉƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ğæ“¾‚·‚é‚Ì‘®«–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹æ™‚ã®å±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link jp.ossc.nimbus.service.context.Context Context}‚ÉƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ğæ“¾‚·‚é‚Ì‘®«–¼
+     * @return {@link jp.ossc.nimbus.service.context.Context Context}ã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹æ™‚ã®å±æ€§å
      */
     public String getAttributeName();
     
     /**
-     * ƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[”z—ñ‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAInvocationContext‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ÉŠi”[‚³‚ê‚½‘S‚Ä‚Ìî•ñ‚ªƒCƒ“ƒ|[ƒg‚³‚ê‚éB<br>
+     * ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€InvocationContextã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã«æ ¼ç´ã•ã‚ŒãŸå…¨ã¦ã®æƒ…å ±ãŒã‚¤ãƒ³ãƒãƒ¼ãƒˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param keys ƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[”z—ñ
+     * @param keys ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼é…åˆ—
      */
     public void setContextKeys(String[] keys);
     
     /**
-     * ƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒ|[ƒg‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«‚Æ‚µ‚Äİ’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[”z—ñ
+     * @return ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼é…åˆ—
      */
     public String[] getContextKeys();
 }

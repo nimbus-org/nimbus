@@ -29,14 +29,14 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.recset;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import jp.ossc.nimbus.util.*;
 /**
- * sƒXƒL[ƒ}ŠÇ—ƒNƒ‰ƒX<p>
- * ƒtƒB[ƒ‹ƒhƒXƒL[ƒ}‚ÌW‡‚ğŠÇ—‚·‚éB
+ * è¡Œã‚¹ã‚­ãƒ¼ãƒç®¡ç†ã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã®é›†åˆã‚’ç®¡ç†ã™ã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,38 +45,38 @@ public class RowSchema implements java.io.Serializable{
 	
     private static final long serialVersionUID = 2519505358076142786L;
     
-	/** —ñ–¼ŠÇ—ƒnƒbƒVƒ… */
+	/** åˆ—åç®¡ç†ãƒãƒƒã‚·ãƒ¥ */
 	private HashMap mFieldHash = new HashMap();
-	/** —ñ‡ŠÇ—ƒŠƒXƒg */
+	/** åˆ—é †ç®¡ç†ãƒªã‚¹ãƒˆ */
 	private ArrayList mFieldAry = new ArrayList() ;
-	/** UniqueKey—ñŠÇ—ƒŠƒXƒg */
+	/** UniqueKeyåˆ—ç®¡ç†ãƒªã‚¹ãƒˆ */
 	private ArrayList mUniqueKeyAry = new ArrayList() ;
-	/** ƒnƒbƒVƒ…ƒR[ƒh */
+	/** ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ */
 	private int mHashCode = 0 ;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public RowSchema(){
 	}
 	/**
-	 * UniqueKey‚Ì”‚ğo—Í‚·‚é
-	 * @return UniqueKey‚Ì”
+	 * UniqueKeyã®æ•°ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return UniqueKeyã®æ•°
 	 */
 	public int getUniqueKeySize(){
 		return this.mUniqueKeyAry.size();
 	}
 	/**
-	 * UniqueKey‚Ì—ñî•ñ‚ğo—Í‚·‚éB
+	 * UniqueKeyã®åˆ—æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @param index
-	 * @return@FieldSchema
+	 * @returnã€€FieldSchema
 	 */
 	public FieldSchema getUniqueFieldSchema(int index){
 		return (FieldSchema)mUniqueKeyAry.get(index) ;
 	}
 	/**
-	 * XV—pRowSchema‚ğì¬‚µ‰“š‚µ‚Ü‚·B
-	 * @return XV—pRowSchema
+	 * æ›´æ–°ç”¨RowSchemaã‚’ä½œæˆã—å¿œç­”ã—ã¾ã™ã€‚
+	 * @return æ›´æ–°ç”¨RowSchema
 	 */
 	public RowSchema makeGoneSchema(){
 		RowSchema ret = new RowSchema() ;
@@ -96,16 +96,16 @@ public class RowSchema implements java.io.Serializable{
 	}
 	
 	/**
-	 * ƒnƒbƒVƒ…ƒR[ƒh‚ğ‰“š‚µ‚Ü‚·B
-	 * @return ƒnƒbƒVƒ…ƒR[ƒh
+	 * ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @return ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰
 	 */
 	public Integer getHashCodeObject() {
 		return new Integer(this.mHashCode) ;	
 	}
 
 	/**
-	 * ƒnƒbƒVƒ…ƒR[ƒh‚ğ‰“š‚µ‚Ü‚·B
-	 * @return ƒnƒbƒVƒ…ƒR[ƒh
+	 * ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @return ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰
 	 * @see java.lang.Object#hashCode()
 	 */
 	public int	hashCode() {
@@ -113,11 +113,11 @@ public class RowSchema implements java.io.Serializable{
 	}
 	
 	/**
-	 * RowSchema‚ª“¯’l‚©‚Ç‚¤‚©‚ğ‰“š‚µ‚Ü‚·B
-	 * RowSchema‚ÌƒnƒbƒVƒ…ƒR[ƒh‚ğ”äŠr‚µ‚½Œ‹‰Ê‚ğ‰“š‚µ‚Ü‚·B
-	 * @param another ”äŠr‚·‚éƒIƒuƒWƒFƒNƒg
-	 * @return true “¯’l<br>
-	 * 			false ”ñ“¹’l
+	 * RowSchemaãŒåŒå€¤ã‹ã©ã†ã‹ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * RowSchemaã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã‚’æ¯”è¼ƒã—ãŸçµæœã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param another æ¯”è¼ƒã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return true åŒå€¤<br>
+	 * 			false éé“å€¤
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(Object another){
@@ -137,10 +137,10 @@ public class RowSchema implements java.io.Serializable{
 	}
 	
 	/**
-	 * ƒXƒL[ƒ}î•ñ‚ğ¶¬‚·‚éB
-	 * ƒXƒL[ƒ}‚Ì‹Lq•û–@‚ÍˆÈ‰º‚Ì’Ê‚èB
-	 * fieldName,[VARCHAR,CAHR,NUMBER,DATE],FIELDLENGTH,[0:KEY,1:ROWVERSION,2:ŒŸõ—ñC3XV—ñ]
-	 * —á
+	 * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’ç”Ÿæˆã™ã‚‹ã€‚
+	 * ã‚¹ã‚­ãƒ¼ãƒã®è¨˜è¿°æ–¹æ³•ã¯ä»¥ä¸‹ã®é€šã‚Šã€‚
+	 * fieldName,[VARCHAR,CAHR,NUMBER,DATE],FIELDLENGTH,[0:KEY,1:ROWVERSION,2:æ¤œç´¢åˆ—ï¼Œ3æ›´æ–°åˆ—]
+	 * ä¾‹
 	 * REC_ID,CHAR,5,1
 	 * SALARY,INT,0,0
 	 * INSDATE,DATE,0,0
@@ -165,9 +165,9 @@ public class RowSchema implements java.io.Serializable{
 	}
 	
 	/**
-	 * •¶š—ñw’è‚©‚ç—ñƒXƒL[ƒ}‚ğ¶¬‚·‚éB
-	 * @param fieldInf@—ñw’è•¶š—ñ
-	 * @return@FieldSchema
+	 * æ–‡å­—åˆ—æŒ‡å®šã‹ã‚‰åˆ—ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚
+	 * @param fieldInfã€€åˆ—æŒ‡å®šæ–‡å­—åˆ—
+	 * @returnã€€FieldSchema
 	 */
 	private FieldSchema makeFieldSchema(String fieldInf){
 		if(fieldInf == null || fieldInf.length() == 0){
@@ -179,14 +179,14 @@ public class RowSchema implements java.io.Serializable{
 			throw new InvalidSchemaException(fieldInf + "invalid") ; 
 		}
 		FieldSchema field = new FieldSchema() ;
-		// —ñ–¼İ’è
+		// åˆ—åè¨­å®š
 		field.setFieldName(colInf.getStr(0)) ;
-		// ƒf[ƒ^Œ^İ’è
+		// ãƒ‡ãƒ¼ã‚¿å‹è¨­å®š
 		String tp = colInf.getStr(1);
 		field.setFieldType(FieldSchema.getFieldTypeValue(tp)); 
-		//ƒŒƒ“ƒOƒXİ’è
+		//ãƒ¬ãƒ³ã‚°ã‚¹è¨­å®š
 		field.setFieldLength(Integer.parseInt(colInf.getStr(2))) ;
-		//‚j‚d‚x‘®«İ’è
+		//ï¼«ï¼¥ï¼¹å±æ€§è¨­å®š
 		field.setFieldKey(Integer.parseInt(colInf.getStr(3))) ;
 		if(sz > 4){
 			field.setCrypt(Integer.parseInt(colInf.getStr(4)) > 0);
@@ -195,8 +195,8 @@ public class RowSchema implements java.io.Serializable{
 	}
 
 	/**
-	 * —ñƒTƒCƒY‚ğo—Í‚·‚éB
-	 * @return@—ñ”
+	 * åˆ—ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€åˆ—æ•°
 	 */
 	public int size(){
 		if(mFieldAry == null){
@@ -207,9 +207,9 @@ public class RowSchema implements java.io.Serializable{
 	}
 
 	/**
-	 * INDEX”Ô†w’è‚Å—ñƒXƒL[ƒ}‚ğo—Í‚·‚éB
+	 * INDEXç•ªå·æŒ‡å®šã§åˆ—ã‚¹ã‚­ãƒ¼ãƒã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @param index
-	 * @return@FieldSchema
+	 * @returnã€€FieldSchema
 	 */
 	public FieldSchema get(int index){
         if(index < 0 || index >= mFieldAry.size()){
@@ -218,24 +218,24 @@ public class RowSchema implements java.io.Serializable{
 		return (FieldSchema)mFieldAry.get(index) ;
 	}
 	/**
-	 * —ñ–¼w’è‚Å—ñƒXƒL[ƒ}‚ğo—Í‚·‚éB
+	 * åˆ—åæŒ‡å®šã§åˆ—ã‚¹ã‚­ãƒ¼ãƒã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @param name
-	 * @return@FieldSchema
+	 * @returnã€€FieldSchema
 	 */
 	public FieldSchema get(String name){
 		return (FieldSchema)mFieldHash.get(name) ;
 	}
 	
 	/**
-	 * —ñƒXƒL[ƒ}‚ÌƒŠƒXƒg‚ğListIterator‚Å‰“š‚µ‚Ü‚·B
-	 * @return —ñƒXƒL[ƒ}ƒŠƒXƒg
+	 * åˆ—ã‚¹ã‚­ãƒ¼ãƒã®ãƒªã‚¹ãƒˆã‚’ListIteratorã§å¿œç­”ã—ã¾ã™ã€‚
+	 * @return åˆ—ã‚¹ã‚­ãƒ¼ãƒãƒªã‚¹ãƒˆ
 	 */
 	public ListIterator listIterator(){
 		return mFieldAry.listIterator();
 	}
 	
 	/**
-	 * —ñƒXƒL[ƒ}‚ğ’Ç‰Á‚µ‚Ü‚·B
+	 * åˆ—ã‚¹ã‚­ãƒ¼ãƒã‚’è¿½åŠ ã—ã¾ã™ã€‚
 	 * @param scm
 	 */
 	private void add(FieldSchema scm){

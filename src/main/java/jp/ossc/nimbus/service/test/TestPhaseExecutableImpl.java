@@ -36,7 +36,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * ƒeƒXƒgƒtƒF[ƒYÀsƒNƒ‰ƒXB<p>
+ * ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚ºå®Ÿè¡Œã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -48,7 +48,7 @@ public class TestPhaseExecutableImpl implements TestPhaseExecutable, java.io.Ser
     private Set excludePhaseSet;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public TestPhaseExecutableImpl() {
         includePhaseSet = new HashSet();
@@ -56,18 +56,18 @@ public class TestPhaseExecutableImpl implements TestPhaseExecutable, java.io.Ser
     }
     
     /**
-     * Às‚·‚éƒtƒF[ƒY‚ğ’Ç‰Á‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹ãƒ•ã‚§ãƒ¼ã‚ºã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param phases ƒtƒF[ƒY‚Ì”z—ñ
+     * @param phases ãƒ•ã‚§ãƒ¼ã‚ºã®é…åˆ—
      */
     public void addIncludePhase(String[] phases) {
         includePhaseSet.addAll(Arrays.asList(phases));
     }
     
     /**
-     * Às‚µ‚È‚¢ƒtƒF[ƒY‚ğ’Ç‰Á‚·‚éB<p>
+     * å®Ÿè¡Œã—ãªã„ãƒ•ã‚§ãƒ¼ã‚ºã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param phases ƒtƒF[ƒY‚Ì”z—ñ
+     * @param phases ãƒ•ã‚§ãƒ¼ã‚ºã®é…åˆ—
      */
     public void addExcludePhase(String[] phases) {
         excludePhaseSet.addAll(Arrays.asList(phases));

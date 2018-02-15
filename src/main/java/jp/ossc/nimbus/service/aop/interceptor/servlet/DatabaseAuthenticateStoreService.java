@@ -55,7 +55,7 @@ import jp.ossc.nimbus.service.connection.PersistentException;
 import jp.ossc.nimbus.service.connection.PersistentManager;
 
 /**
- * ƒf[ƒ^ƒx[ƒX”FØƒXƒgƒAB
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹èªè¨¼ã‚¹ãƒˆã‚¢ã€‚
  * <p>
  *
  * @author M.Takata
@@ -213,10 +213,10 @@ public class DatabaseAuthenticateStoreService extends ServiceBase implements Aut
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚
      * <p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception {
         if (connectionFactory == null && connectionFactoryServiceName == null) {

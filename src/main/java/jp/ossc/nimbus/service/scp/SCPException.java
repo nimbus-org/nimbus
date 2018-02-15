@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.scp;
 
 /**
- * SCP—áŠOB<p>
+ * SCPä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class SCPException extends RuntimeException {
     private static final long serialVersionUID = 8059601442152399734L;
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public SCPException() {
         super();
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public SCPException(String message) {
         super(message);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŽŸå› 
      */
     public SCPException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param cause Œ´ˆö
+     * @param cause åŽŸå› 
      */
     public SCPException(Throwable cause) {
         super(cause);

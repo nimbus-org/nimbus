@@ -27,12 +27,12 @@ import jp.ossc.nimbus.service.test.TestCase.Status;
 
 public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     
-    private final int MARGIN = 8;       // ü‚èAsŠÔ‚Ì—]”’
-    private final int HEIGHT = 30;      // s‚Ì‚‚³
+    private final int MARGIN = 8;       // å‘¨ã‚Šã€è¡Œé–“ã®ä½™ç™½
+    private final int HEIGHT = 30;      // è¡Œã®é«˜ã•
     
     private final int NO_WIDTH = 50;
-    private int ID_WIDTH = 150; //‰Â•Ï
-    private int TITLE_WIDTH = 150; //‰Â•Ï
+    private int ID_WIDTH = 150; //å¯å¤‰
+    private int TITLE_WIDTH = 150; //å¯å¤‰
     private final int START_DATE_WIDTH = 150;
     private final int END_DATE_WIDTH = 150;
     private final int STATE_WIDTH = 65;
@@ -97,13 +97,13 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     
     
     /**
-     * ƒeƒXƒgƒP[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒZƒbƒgƒAƒbƒv
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
      * @throws Exception 
      */
     private void setupTestCaseCompornents() throws Exception {
 
-        int ROW_SPACE = 10;   // —ñŠÔ‚Ì—]”’
-        Font font = new Font("‚l‚r ƒSƒVƒbƒN", Font.BOLD, 16);
+        int ROW_SPACE = 10;   // åˆ—é–“ã®ä½™ç™½
+        Font font = new Font("ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯", Font.BOLD, 16);
         
         int tmpX = 0;
         int tmpY = 0;
@@ -111,7 +111,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         String DATE_PATTERN = "yyyy/MM/dd HH:mm";
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
         
-        // ‰Šú‰»
+        // åˆæœŸåŒ–
         this.removeAll();
         this.setLayout(null);
         
@@ -121,17 +121,17 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         ID_WIDTH = ROW_SPACE;
         TITLE_WIDTH = ROW_SPACE;
         
-        // ƒ^ƒCƒgƒ‹s‚ÌƒZƒbƒgƒAƒbƒv
+        // ã‚¿ã‚¤ãƒˆãƒ«è¡Œã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
         JLabel label1 = new JLabel("No");
-        JLabel label2 = new JLabel("ƒeƒXƒgƒP[ƒXID");
-        JLabel label3 = new JLabel("ƒeƒXƒgƒP[ƒX–¼");
-        JLabel label4 = new JLabel("ŠJn“ú");
-        JLabel label5 = new JLabel("I—¹“ú");
-        JLabel label6 = new JLabel("´×°ó‘Ô");
-        JLabel label7 = new JLabel("ó‘Ô");
-        JLabel label8 = new JLabel("@");
-        JLabel label9 = new JLabel("@");
-        JLabel label10 = new JLabel("@");
+        JLabel label2 = new JLabel("ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID");
+        JLabel label3 = new JLabel("ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹å");
+        JLabel label4 = new JLabel("é–‹å§‹æ—¥æ™‚");
+        JLabel label5 = new JLabel("çµ‚äº†æ—¥æ™‚");
+        JLabel label6 = new JLabel("ï½´ï¾—ï½°çŠ¶æ…‹");
+        JLabel label7 = new JLabel("çŠ¶æ…‹");
+        JLabel label8 = new JLabel("ã€€");
+        JLabel label9 = new JLabel("ã€€");
+        JLabel label10 = new JLabel("ã€€");
         
         label1.setFont(font);
         label2.setFont(font);
@@ -234,7 +234,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 Point yLinePoint = new Point(tmpX, tmpY - ((int)(MARGIN / 2)));
                 lineList.add(new Line(xLinePoint, yLinePoint));
                 
-                // ŠJnŠÔAI—¹ŠÔAó‘Ô ‚ğ•\¦
+                // é–‹å§‹æ™‚é–“ã€çµ‚äº†æ™‚é–“ã€çŠ¶æ…‹ ã‚’è¡¨ç¤º
                 if (status != null){
                     if(status.getStartTime() != null)
                         label4.setText(dateFormat.format(status.getStartTime()));
@@ -245,13 +245,13 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 }
                 tmpErrorStatusButton.change(status);
                 
-                JButton tmpButton1 = new JButton("ŠJn");
+                JButton tmpButton1 = new JButton("é–‹å§‹");
                 tmpButton1.addActionListener(new StartButtonActionListener(testCase));
                 
-                JButton tmpButton2 = new JButton("I—¹");
+                JButton tmpButton2 = new JButton("çµ‚äº†");
                 tmpButton2.addActionListener(new EndButtonActionListener(testCase));
                 
-                JButton tmpButton3 = new JButton("Œ‹‰ÊDL");
+                JButton tmpButton3 = new JButton("çµæœDL");
                 tmpButton3.addActionListener(new DownloadButtonActionListener(testCase));
                 
                 if (status != null && status.getState() == TestCase.Status.STARTED) {
@@ -310,7 +310,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒXŠJnƒ{ƒ^ƒ“‚ÌƒAƒNƒVƒ‡ƒ“ƒŠƒXƒi[
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹é–‹å§‹ãƒœã‚¿ãƒ³ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠãƒ¼
      * @author j-higuchi
      */
     private class StartButtonActionListener implements ActionListener {
@@ -324,17 +324,17 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         }
 
         public void actionPerformed(ActionEvent e) {
-            // ƒeƒXƒgƒP[ƒX‚ÌŠJn
+            // ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®é–‹å§‹
             try {
                 testController.startTestCase(userId, scenarioId, testCase.getTestCaseId());
                 
-                // ƒeƒXƒgƒP[ƒX‚ğŠJn‚µ‚½Œ‹‰ÊAƒGƒ‰[iResultfalsej‚¾‚Á‚½ê‡A·¬İ¾Ù‚ğ‘—‚é
+                // ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚’é–‹å§‹ã—ãŸçµæœã€ã‚¨ãƒ©ãƒ¼ï¼ˆResultï¼falseï¼‰ã ã£ãŸå ´åˆã€ï½·ï½¬ï¾ï½¾ï¾™ã‚’é€ã‚‹
                 TestCase.Status state = testController.getTestCase(scenarioGroupId, scenarioId, testCase.getTestCaseId()).getStatus();
                 if(!state.getResult()){
                     testController.cancelTestCase(scenarioId, testCase.getTestCaseId());
                 }
                 
-                // ƒŠƒXƒi[ŒÄ‚Ño‚µ
+                // ãƒªã‚¹ãƒŠãƒ¼å‘¼ã³å‡ºã—
                 for(int i=0; i < testCaseControlListenerList.size(); i++)
                     ((TestCaseControlListener)testCaseControlListenerList.get(i)).startTestCase(this.testCase);
                 
@@ -349,7 +349,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 dialog.setVisible(true);
             }
             
-            // ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌÄ”z’u
+            // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å†é…ç½®
             try {
                 setupTestCaseCompornents();
             } catch (Exception e1) {
@@ -359,7 +359,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     }
 
     /**
-     * ƒeƒXƒgƒP[ƒXI—¹ƒ{ƒ^ƒ“‚ÌƒAƒNƒVƒ‡ƒ“ƒŠƒXƒi[
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹çµ‚äº†ãƒœã‚¿ãƒ³ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠãƒ¼
      * @author j-higuchi
      */
     private class EndButtonActionListener implements ActionListener {
@@ -373,11 +373,11 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         }
 
         public void actionPerformed(ActionEvent e) {
-            // ƒeƒXƒgƒP[ƒX‚ÌI—¹
+            // ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®çµ‚äº†
             try {
                 testController.endTestCase(scenarioId, testCase.getTestCaseId());
                 
-                // ƒŠƒXƒi[ŒÄ‚Ño‚µ
+                // ãƒªã‚¹ãƒŠãƒ¼å‘¼ã³å‡ºã—
                 for(int i=0; i < testCaseControlListenerList.size(); i++)
                     ((TestCaseControlListener)testCaseControlListenerList.get(i)).endTestCase(this.testCase);
                 
@@ -393,7 +393,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 dialog.setVisible(true);
             }
             
-            // ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌÄ”z’u
+            // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å†é…ç½®
             try {
                 setupTestCaseCompornents();
             } catch (Exception e1) {
@@ -403,7 +403,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌÀsŒ‹‰Êƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“‚ÌƒAƒNƒVƒ‡ƒ“ƒŠƒXƒi[
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®å®Ÿè¡Œçµæœãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠãƒ¼
      * @author j-higuchi
      */
     private class DownloadButtonActionListener implements ActionListener {
@@ -415,17 +415,17 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         }
         
         public void actionPerformed(ActionEvent e) {
-            // ƒeƒXƒgƒP[ƒX‚ÌŒ‹‰Êƒ_ƒEƒ“ƒ[ƒh
+            // ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®çµæœãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
             try {
                 File dlDir = showDownloadFileSaveDialog(cashDlDir);
                 if(dlDir != null){
                     testController.downloadTestCaseResult(dlDir, scenarioGroupId, scenarioId, testCase.getTestCaseId(), TestController.RESPONSE_FILE_TYPE_ZIP);
                     
-                    showMessageDialog("ƒfƒBƒŒƒNƒgƒŠu" + dlDir + "v‚É\r\n³í‚Éƒ_ƒEƒ“ƒ[ƒh‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+                    showMessageDialog("ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€Œ" + dlDir + "ã€ã«\r\næ­£å¸¸ã«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
                 }
                 cashDlDir = dlDir;
                 
-                // ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌÄ”z’u
+                // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å†é…ç½®
                 setupTestCaseCompornents();
             } catch (Exception e1) {
                 JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);

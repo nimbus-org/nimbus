@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.log;
 import java.util.*;
 
 /**
- * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚³‚ê‚éî•ñ‚ğŠi”[‚·‚éƒNƒ‰ƒXB<p>
+ * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã•ã‚Œã‚‹æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

@@ -34,22 +34,22 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * PUTƒƒ\ƒbƒhRESTƒŠƒNƒGƒXƒgB<p>
+ * PUTãƒ¡ã‚½ãƒƒãƒ‰RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class PutRestRequest extends BodyRestRequest{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PutRestRequest(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public PutRestRequest(HttpServletRequest request){
         super(request);

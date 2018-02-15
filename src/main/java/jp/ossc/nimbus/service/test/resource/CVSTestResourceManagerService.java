@@ -53,10 +53,10 @@ import org.apache.maven.scm.repository.ScmRepository;
 import org.apache.maven.scm.repository.ScmRepositoryException;
 
 /**
- * CVSƒT[ƒo‚ÅŠÇ—‚³‚ê‚½ƒeƒXƒgƒŠƒ\[ƒX‚ğg—p‚·‚é{@link TestResourceManager}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒT[ƒrƒXB
+ * CVSã‚µãƒ¼ãƒã§ç®¡ç†ã•ã‚ŒãŸãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹{@link TestResourceManager}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
- * scmUrl‚ÍˆÈ‰º‚Ìd—l‚Æ‚È‚éB<br>
+ * scmUrlã¯ä»¥ä¸‹ã®ä»•æ§˜ã¨ãªã‚‹ã€‚<br>
  *
  * <pre>
  * scm:cvs&lt;delimiter&gt;local&lt;delimiter&gt;path_to_repository&lt;delimiter&gt;module_name

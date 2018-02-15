@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml version="1.0" encoding="UTF-8" ?> 
 <server>
     <default-log>
         <debug output="false"/>
@@ -8,17 +8,17 @@
         <fatal output="true"/>
     </default-log>
     <manager name="TheManager">
-    	<!-- JmsQueueSessionサービス -->
+    	<!-- JmsQueueSession繧ｵ繝ｼ繝薙せ -->
     	<service code="jp.ossc.nimbus.service.resource.jmsqueue.JmsQueueSessionService" name="JmsQueueSessionService">
     	<attribute name="JndiFinderServiceName">#JndiFinderService</attribute>
     	<depends>JndiFinderService</depends>
     	</service>
-		<!--jndiファクトリサービス-->
+		<!--jndi繝輔ぃ繧ｯ繝医Μ繧ｵ繝ｼ繝薙せ-->
 		<service code="jp.ossc.nimbus.service.jndi.CashedJndiFinderService" name="JndiFinderService">
 		<attribute name="CacheServiceName">#CacheService</attribute>
 		<depends>CacheService</depends>
 		</service>
-		<!--キャッシュサービス-->
+		<!--繧ｭ繝｣繝�繧ｷ繝･繧ｵ繝ｼ繝薙せ-->
 		<service code="jp.ossc.nimbus.service.cache.EternalCacheService" name="CacheService">
 		</service>       
     </manager>

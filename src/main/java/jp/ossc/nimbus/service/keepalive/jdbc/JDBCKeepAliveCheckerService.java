@@ -43,7 +43,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.connection.ConnectionFactory;
 
 /**
- * JDBCƒT[ƒo‚Ì‰Ò“®ó‘Ô‚ğƒ`ƒFƒbƒN‚·‚é{@link KeepAliveChecker}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒT[ƒrƒXB<p>
+ * JDBCã‚µãƒ¼ãƒã®ç¨¼å‹•çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹{@link KeepAliveChecker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

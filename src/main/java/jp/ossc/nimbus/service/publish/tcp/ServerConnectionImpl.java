@@ -85,7 +85,7 @@ import jp.ossc.nimbus.service.io.Externalizer;
 import jp.ossc.nimbus.util.net.SocketFactory;
 
 /**
- * TCPƒvƒƒgƒRƒ‹—p‚Ì{@link ServerConnection}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * TCPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ServerConnection}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -1431,7 +1431,7 @@ public class ServerConnectionImpl implements ServerConnection{
                     send(response);
                 }catch(MessageSendException e){
                 }catch(MessageException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                 }
             }
             return isClosed;

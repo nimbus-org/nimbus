@@ -35,8 +35,8 @@ import jp.ossc.nimbus.core.ServiceBase;
 import java.io.*;
 
 /**
- * •W€o—ÍE•W€ƒGƒ‰[o—Í‚Ö‚Ìo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * æ¨™æº–å‡ºåŠ›ãƒ»æ¨™æº–ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã¸ã®å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -61,13 +61,13 @@ public class ConsoleWriterService extends ServiceBase
     
     private static final long serialVersionUID = 4209363683339544273L;
     
-    /** o—Íí•Ê */
+    /** å‡ºåŠ›ç¨®åˆ¥ */
     private String mOutputKind = OUTPUT_STDOUT;
     
-    /** o—ÍƒXƒgƒŠ[ƒ€ */
+    /** å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ  */
     private PrintStream mOutputStream;
     
-    // ConsoleWriterServiceMBean ‚ÌJavaDoc
+    // ConsoleWriterServiceMBean ã®JavaDoc
     public void setOutput(String kind){
         if(OUTPUT_STDOUT.equals(kind)
             || OUTPUT_STDERR.equals(kind)){
@@ -78,13 +78,13 @@ public class ConsoleWriterService extends ServiceBase
         }
     }
     
-    // ConsoleWriterServiceMBean ‚ÌJavaDoc
+    // ConsoleWriterServiceMBean ã®JavaDoc
     public String getOutput(){
         return mOutputKind;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      */
     public void startService(){
         if(mOutputKind.equals(OUTPUT_STDERR)){
@@ -96,13 +96,13 @@ public class ConsoleWriterService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      */
     public void stopService(){
         mOutputStream = null;
     }
     
-    // MessageWriter ‚ÌJavaDoc
+    // MessageWriter ã®JavaDoc
     public void write(WritableRecord rec){
         mOutputStream.println(rec.toString());
     }

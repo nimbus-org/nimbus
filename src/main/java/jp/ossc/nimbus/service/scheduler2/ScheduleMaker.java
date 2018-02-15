@@ -34,33 +34,33 @@ package jp.ossc.nimbus.service.scheduler2;
 import java.util.Date;
 
 /**
- * �X�P�W���[���쐬�B<p>
- * �X�P�W���[���}�X�^����w�肳�ꂽ���t�̃X�P�W���[�����쐬����B<p>
- * �X�P�W���[���}�X�^�́A���t�̊T�O�������Ȃ����߁A�w�肳�ꂽ���t�ł͕K�v�̂Ȃ��X�P�W���[���ł���ꍇ������B<br>
- * �܂��A�X�P�W���[���}�X�^�́A�J��Ԃ��̊T�O�����Ă邽�߁A�X�P�W���[���}�X�^�ƃX�P�W���[���̊֌W�́A1:n�ɂȂ�B<br>
+ * スケジュール作成。<p>
+ * スケジュールマスタから指定された日付のスケジュールを作成する。<p>
+ * スケジュールマスタは、日付の概念を持たないため、指定された日付では必要のないスケジュールである場合がある。<br>
+ * また、スケジュールマスタは、繰り返しの概念を持てるため、スケジュールマスタとスケジュールの関係は、1:nになる。<br>
  *
  * @author M.Takata
  */
 public interface ScheduleMaker{
     
     /**
-     * �w�肳�ꂽ�X�P�W���[���}�X�^����X�P�W���[�����쐬����B<p>
+     * 指定されたスケジュールマスタからスケジュールを作成する。<p>
      *
-     * @param date �쐬��
-     * @param master �X�P�W���[���}�X�^
-     * @return �X�P�W���[���̔z��
-     * @exception ScheduleMakeException �X�P�W���[���̍쐬�Ɏ��s�����ꍇ
+     * @param date 作成日
+     * @param master スケジュールマスタ
+     * @return スケジュールの配列
+     * @exception ScheduleMakeException スケジュールの作成に失敗した場合
      */
     public Schedule[] makeSchedule(Date date, ScheduleMaster master)
      throws ScheduleMakeException;
      
     /**
-     * �w�肳�ꂽ�X���t�Ɏw�肳�ꂽ�X�P�W���[���}�X�^����X�P�W���[�����쐬���邩�ǂ����𔻒肷��B<p>
+     * 指定されたス日付に指定されたスケジュールマスタからスケジュールを作成するかどうかを判定する。<p>
      *
-     * @param date �쐬��
-     * @param master �X�P�W���[���}�X�^
-     * @return �X�P�W���[�����쐬����ꍇtrue
-     * @exception ScheduleMakeException �X�P�W���[���̍쐬����Ɏ��s�����ꍇ
+     * @param date 作成日
+     * @param master スケジュールマスタ
+     * @return スケジュールを作成する場合true
+     * @exception ScheduleMakeException スケジュールの作成判定に失敗した場合
      */
     public boolean isMakeSchedule(Date date, ScheduleMaster master)
      throws ScheduleMakeException;

@@ -52,7 +52,7 @@ import jp.ossc.nimbus.service.keepalive.ClusterService;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
 
 /**
- * {@link ClientConnection}‚ğƒNƒ‰ƒXƒ^‰»‚·‚éClientConnectionƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link ClientConnection}ã‚’ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã™ã‚‹ClientConnectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

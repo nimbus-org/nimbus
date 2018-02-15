@@ -34,228 +34,228 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractSchedulerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link AbstractSchedulerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô•ÏX‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_STATE_CHANGE_ERROR = "AS___00001";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÀs‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_EXECUTE_ERROR = "AS___00002";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“Š“ü‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æŠ•å…¥ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_ENTRY = "AS___00003";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìæ‚èo‚µ‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å–ã‚Šå‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_SCHEDULE_GET_ERROR = "AS___00004";
     
     /**
-     * —\Šú‚µ‚È‚¢ƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * äºˆæœŸã—ãªã„ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_UNEXPEXTED_ERROR = "AS___00005";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‘JˆÚ‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹é·ç§»ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_STATE_TRANS_ERROR = "AS___00006";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_ENTRY_ERROR = "AS___00007";
     
     /**
-     * ŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹Às‚ª‘¶İ‚µ‚È‚¢ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡ŒãŒå­˜åœ¨ã—ãªã„å ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_NOT_FOUND_EXECUTOR_ERROR = "AS___00008";
     
     /**
-     * Às‚·‚×‚«ƒXƒPƒWƒ…[ƒ‹‚ğ{@link ScheduleManager}‚ÉŠm”F‚µ‚É‚¢‚­ŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1000[ms]B<br>
+     * å®Ÿè¡Œã™ã¹ãã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link ScheduleManager}ã«ç¢ºèªã—ã«ã„ãé–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1000[ms]ã€‚<br>
      *
-     * @param interval ŠÔŠu[ms]
+     * @param interval é–“éš”[ms]
      */
     public void setScheduleTickerInterval(long interval);
     
     /**
-     * Às‚·‚×‚«ƒXƒPƒWƒ…[ƒ‹‚ğ{@link ScheduleManager}‚ÉŠm”F‚µ‚É‚¢‚­ŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œã™ã¹ãã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link ScheduleManager}ã«ç¢ºèªã—ã«ã„ãé–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÔŠu[ms]
+     * @return é–“éš”[ms]
      */
     public long getScheduleTickerInterval();
     
     /**
-     * {@link ScheduleManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ScheduleManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ScheduleManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleManagerServiceName(ServiceName name);
     
     /**
-     * {@link ScheduleManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleManagerServiceName();
     
     /**
-     * {@link ScheduleExecutor}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ScheduleExecutor}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ScheduleExecutorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleExecutorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleExecutorServiceName(ServiceName name);
     
     /**
-     * {@link ScheduleExecutor}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleExecutor}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleExecutorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleExecutorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleExecutorServiceName();
     
     /**
-     * {@link ScheduleExecutor}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link ScheduleExecutor}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ScheduleExecutorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ScheduleExecutorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setScheduleExecutorServiceNames(ServiceName[] names);
     
     /**
-     * {@link ScheduleExecutor}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleExecutor}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleExecutorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ScheduleExecutorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getScheduleExecutorServiceNames();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚Å”­”Ô‚µ‚½’Ê”Ô‚ğæ‚¹‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã§ç™ºç•ªã—ãŸé€šç•ªã‚’ä¹—ã›ã‚‹ã€‚<br>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“üˆ—‚Åƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚µ‚È‚¢B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥å‡¦ç†ã§ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã—ãªã„ã€‚<br>
      *
-     * @param isControl ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ğs‚¤ê‡true
+     * @param isControl ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã‚’è¡Œã†å ´åˆtrue
      */
     public void setTransactionControl(boolean isControl);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“üˆ—‚Åƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥å‡¦ç†ã§ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ğs‚¤
+     * @return trueã®å ´åˆã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã‚’è¡Œã†
      */
     public boolean isTransactionControl();
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹Às‚ğ“Á’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
-     * ƒXƒPƒWƒ…[ƒ‰–ˆ‚ÉƒXƒPƒWƒ…[ƒ‹‚ğŠ„‚èU‚è‚½‚¢‚Ég—p‚·‚éB<br>
-     * ‚±‚ÌƒL[‚ğw’è‚·‚é‚ÆA{@link ScheduleManager}‚©‚çƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éÛ‚ÉA{@link ScheduleManager#findExecutableSchedules(Date, String[], String)}‚Ì‘æOˆø”‚Æ‚µ‚Ä“n‚·B<br>
-     * w’è‚µ‚È‚¢ê‡‚ÍA{@link ScheduleManager#findExecutableSchedules(Date, String[])}‚ğg—p‚·‚éB<br>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©æ¯ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰²ã‚ŠæŒ¯ã‚ŠãŸã„æ™‚ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã“ã®ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹ã¨ã€{@link ScheduleManager}ã‹ã‚‰ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹éš›ã«ã€{@link ScheduleManager#findExecutableSchedules(Date, String[], String)}ã®ç¬¬ä¸‰å¼•æ•°ã¨ã—ã¦æ¸¡ã™ã€‚<br>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€{@link ScheduleManager#findExecutableSchedules(Date, String[])}ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param key ÀsƒL[
+     * @param key å®Ÿè¡Œã‚­ãƒ¼
      */
     public void setExecutorKey(String key);
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹Às‚ğ“Á’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsƒL[
+     * @return å®Ÿè¡Œã‚­ãƒ¼
      */
     public String getExecutorKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name TransactionManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name TransactionManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTransactionManagerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TransactionManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TransactionManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTransactionManagerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚½ê‡AƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ª{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=true‚Æ‚È‚Á‚Ä‚¢‚éê‡‚Ì‚İAƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğs‚¤B<br>
-     * ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^‚Ö‚ÌQ‰Á‚ÍA‚±‚ÌƒT[ƒrƒX‚Ìó‘Ô‚Æ˜A“®‚·‚é•K—v‚ª‚ ‚é‚½‚ßA{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}‚É‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãŸå ´åˆã€ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=trueã¨ãªã£ã¦ã„ã‚‹å ´åˆã®ã¿ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’è¡Œã†ã€‚<br>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿ã¸ã®å‚åŠ ã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã¨é€£å‹•ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ãŸã‚ã€{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}ã«ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param name ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.system.Time Time}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.system.Time Time}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name TimeƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Timeã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTimeServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.system.Time Time}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.system.Time Time}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TimeƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Timeã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTimeServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğŠJn‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public void startEntry();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğ’â~‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stopEntry();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ªŠJn‚³‚ê‚Ä‚¢‚é‚©”»’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ªŠJn‚³‚ê‚Ä‚¢‚éê‡true
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean isStartEntry();
 }

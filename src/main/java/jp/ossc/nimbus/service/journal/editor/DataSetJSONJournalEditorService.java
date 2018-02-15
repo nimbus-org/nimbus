@@ -38,7 +38,7 @@ import jp.ossc.nimbus.beans.dataset.*;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link DataSet}ƒIƒuƒWƒFƒNƒg‚ğJSONƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * {@link DataSet}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’JSONãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -91,29 +91,29 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
     private boolean isOutputPropertyNameOfHeader = true;
     private boolean isOutputPropertyNameOfRecordList = true;
     
-    // DataSetJSONJournalEditorServiceMBean‚ÌJavaDoc
+    // DataSetJSONJournalEditorServiceMBeanã®JavaDoc
     public void setOutputSchema(boolean isOutput){
         isOutputSchema = isOutput;
     }
-    // DataSetJSONJournalEditorServiceMBean‚ÌJavaDoc
+    // DataSetJSONJournalEditorServiceMBeanã®JavaDoc
     public boolean isOutputSchema(){
         return isOutputSchema;
     }
     
-    // DataSetJSONJournalEditorServiceMBean‚ÌJavaDoc
+    // DataSetJSONJournalEditorServiceMBeanã®JavaDoc
     public void setOutputPropertyNameOfHeader(boolean isOutput){
         isOutputPropertyNameOfHeader = isOutput;
     }
-    // DataSetJSONJournalEditorServiceMBean‚ÌJavaDoc
+    // DataSetJSONJournalEditorServiceMBeanã®JavaDoc
     public boolean isOutputPropertyNameOfHeader(){
         return isOutputPropertyNameOfHeader;
     }
     
-    // DataSetJSONJournalEditorServiceMBean‚ÌJavaDoc
+    // DataSetJSONJournalEditorServiceMBeanã®JavaDoc
     public void setOutputPropertyNameOfRecordList(boolean isOutput){
         isOutputPropertyNameOfRecordList = isOutput;
     }
-    // DataSetJSONJournalEditorServiceMBean‚ÌJavaDoc
+    // DataSetJSONJournalEditorServiceMBeanã®JavaDoc
     public boolean isOutputPropertyNameOfRecordList(){
         return isOutputPropertyNameOfRecordList;
     }
@@ -135,13 +135,13 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         buf.append(OBJECT_ENCLOSURE_START);
         
         boolean isOutput = false;
-        // ƒXƒL[ƒ}o—Í
+        // ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
         if(isOutputSchema){
             appendName(buf, NAME_SCHEMA);
             buf.append(PROPERTY_SEPARATOR);
             buf.append(OBJECT_ENCLOSURE_START);
             
-            // ƒwƒbƒ_‚ÌƒXƒL[ƒ}o—Í
+            // ãƒ˜ãƒƒãƒ€ã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
             final String[] headerNames = dataSet.getHeaderNames();
             if(headerNames != null && headerNames.length > 0){
                 appendName(buf, NAME_HEADER);
@@ -163,7 +163,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                 isOutput = true;
             }
             
-            // ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}o—Í
+            // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
             String[] recListNames = dataSet.getRecordListNames();
             if(recListNames != null && recListNames.length > 0){
                 if(isOutput){
@@ -189,7 +189,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                 isOutput = true;
             }
             
-            // ƒlƒXƒgƒŒƒR[ƒh‚ÌƒXƒL[ƒ}o—Í
+            // ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
             String[] recNames = dataSet.getNestedRecordSchemaNames();
             if(recNames != null && recNames.length > 0){
                 if(isOutput){
@@ -212,7 +212,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                 isOutput = true;
             }
             
-            // ƒlƒXƒgƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}o—Í
+            // ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
             recListNames = dataSet.getNestedRecordListSchemaNames();
             if(recListNames != null && recListNames.length > 0){
                 if(isOutput){
@@ -238,7 +238,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
             buf.append(OBJECT_ENCLOSURE_END);
         }
         
-        // ƒwƒbƒ_o—Í
+        // ãƒ˜ãƒƒãƒ€å‡ºåŠ›
         final String[] headerNames = dataSet.getHeaderNames();
         if(headerNames != null && headerNames.length > 0){
             if(isOutput){
@@ -263,7 +263,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
             isOutput = true;
         }
         
-        // ƒŒƒR[ƒhƒŠƒXƒgo—Í
+        // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå‡ºåŠ›
         String[] recListNames = dataSet.getRecordListNames();
         if(recListNames != null && recListNames.length > 0){
             if(isOutput){

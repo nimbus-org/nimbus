@@ -6,7 +6,7 @@ import java.util.regex.PatternSyntaxException;
 import java.lang.IllegalArgumentException;
 
 /**
- * ³‹K•\Œ»ƒRƒ“ƒo[ƒ^B<p>
+ * æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author Y.Yamashina
  */
@@ -16,35 +16,35 @@ public class PatternStringConverter
     private static final long serialVersionUID = 9056240502325078689L;
     
     /**
-     * •ÏŠ·ƒpƒ^[ƒ“”z—ñB<p>
+     * å¤‰æ›ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã€‚<p>
      */
     protected Object[][] convertObjects;
     
     /**
-     * ƒ}ƒbƒ`ƒ“ƒOƒtƒ‰ƒOB<p>
+     * ãƒãƒƒãƒãƒ³ã‚°ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected int matchingFlag = -1;
     
     /**
-     * ‹ó‚Ì³‹K•\Œ»ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PatternStringConverter(){
     }
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒbƒ`ƒtƒ‰ƒO‚Ì³‹K•\Œ»ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒãƒ•ãƒ©ã‚°ã®æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flags ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param flags ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public PatternStringConverter(int flags){
         setMatchingFlag(flags);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒbƒ`ƒtƒ‰ƒO‚Æ•ÏŠ·ƒpƒ^[ƒ“‚Ì³‹K•\Œ»ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒãƒ•ãƒ©ã‚°ã¨å¤‰æ›ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fromStrs •ÏŠ·‘ÎÛ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·Œã•¶š—ñ”z—ñ
+     * @param fromStrs å¤‰æ›å¯¾è±¡æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
      */
     public PatternStringConverter(
         int flags,
@@ -56,13 +56,13 @@ public class PatternStringConverter
     }
     
     /**
-     * ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO‚ğİ’è‚·‚éB<p>
-     * ƒ}ƒbƒ`ƒtƒ‰ƒO‚Æ‚ÍAPattern.CASE_INSENSITIVEAPattern.MULTILINEAPattern.DOTALLAPattern.UNICODE_CASEAPattern.CANON_EQ ‚È‚Ç‚ğŠÜ‚Şƒrƒbƒgƒ}ƒXƒN‚Å‚ ‚éB
+     * æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†æ™‚ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã¨ã¯ã€Pattern.CASE_INSENSITIVEã€Pattern.MULTILINEã€Pattern.DOTALLã€Pattern.UNICODE_CASEã€Pattern.CANON_EQ ãªã©ã‚’å«ã‚€ãƒ“ãƒƒãƒˆãƒã‚¹ã‚¯ã§ã‚ã‚‹ã€‚
      *
-     * @param flags ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param flags ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public void setMatchingFlag(int flags){
-        // ƒ}ƒbƒ`ƒ“ƒOƒtƒ‰ƒO‚ª•ÏX‚³‚ê‚½ê‡Apattern‚ğÄì¬
+        // ãƒãƒƒãƒãƒ³ã‚°ãƒ•ãƒ©ã‚°ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆã€patternã‚’å†ä½œæˆ
         if(matchingFlag != flags && convertObjects != null){
             for(int i = 0; i < convertObjects.length; i++){
                 Pattern pattern = (Pattern)convertObjects[i][0];
@@ -80,19 +80,19 @@ public class PatternStringConverter
     }
     
     /**
-     * ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†æ™‚ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @return ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public int getMatchingFlag(){
         return matchingFlag;
     }
     
     /**
-     * •ÏŠ·ƒpƒ^[ƒ“‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param fromStrs •ÏŠ·‘ÎÛ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·Œã•¶š—ñ”z—ñ
+     * @param fromStrs å¤‰æ›å¯¾è±¡æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
      */
     public void setConvertStrings(String[] fromStrs, String[] toStrs){
         if(toStrs == null && fromStrs == null){
@@ -118,10 +118,10 @@ public class PatternStringConverter
                     convObjs[i] = new Object[]{pattern, toStrs[i]};
                 }
             }catch(PatternSyntaxException pe){
-                //’è‹`‚³‚ê‚½ƒ}ƒbƒ`ƒtƒ‰ƒO‚É‘Î‰‚µ‚È‚¢ƒrƒbƒg’l‚ª flags ‚Éİ’è‚³‚ê‚½ê‡
+                //å®šç¾©ã•ã‚ŒãŸãƒãƒƒãƒãƒ•ãƒ©ã‚°ã«å¯¾å¿œã—ãªã„ãƒ“ãƒƒãƒˆå€¤ãŒ flags ã«è¨­å®šã•ã‚ŒãŸå ´åˆ
                 throw new IllegalArgumentException("Invalid ConvertStrings.");
             }catch(IllegalArgumentException ie){
-                //•\Œ»‚Ì\•¶‚ª–³Œø‚Å‚ ‚éê‡
+                //è¡¨ç¾ã®æ§‹æ–‡ãŒç„¡åŠ¹ã§ã‚ã‚‹å ´åˆ
                 throw new IllegalArgumentException("Invalid ConvertStrings.");
             }
             
@@ -129,7 +129,7 @@ public class PatternStringConverter
         }
     }
     
-    // Converter‚ÌJavaDoc
+    // Converterã®JavaDoc
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
             return null;
@@ -141,12 +141,12 @@ public class PatternStringConverter
     }
     
     /**
-     * •¶š—ñ‚ğ•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·ƒpƒ^[ƒ“”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<br>
+     * æ–‡å­—åˆ—ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param str •ÏŠ·‘ÎÛ‚Ì•¶š—ñ 
-     * @return •ÏŠ·Œã‚Ì•¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®æ–‡å­—åˆ— 
+     * @return å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String convert(String str) throws ConvertException{
         String result = str;

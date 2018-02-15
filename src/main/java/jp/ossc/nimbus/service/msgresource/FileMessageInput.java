@@ -36,28 +36,28 @@ import java.io.*;
 import jp.ossc.nimbus.util.*;
 import jp.ossc.nimbus.lang.*;
 /**
- *	FileƒƒbƒZ[ƒWƒCƒ“ƒvƒbƒgƒNƒ‰ƒX
+ *	Fileãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ãƒ—ãƒƒãƒˆã‚¯ãƒ©ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/05| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/05ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class FileMessageInput implements MessageInput,MessageResourceDefine{
-	//ƒƒ“ƒo•Ï”
-	/** ƒyƒCƒ[ƒh•¶š—ñ */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰æ–‡å­—åˆ— */
 	private String[] mPayloadArray = null;
-	/** ƒvƒƒpƒeƒB*/
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£*/
 	private Properties[] mPropertiesArray = null;
-	/** Œ»İs */
+	/** ç¾åœ¨è¡Œ */
 	private int mCurrentline = 0;
-	/** ƒŒƒR[ƒh” */
+	/** ãƒ¬ã‚³ãƒ¼ãƒ‰æ•° */
 	private int mRecordNum = 0;
-	/** ƒvƒƒpƒeƒB•”‚ÆƒyƒCƒ[ƒh•”‚ÌƒZƒpƒŒ[ƒ^[ */
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã¨ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ãƒ¼ */
 	private final String SEP = ":";
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public FileMessageInput(String filename){
-		//w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğŠJ‚«Aƒf[ƒ^‚ğƒLƒƒƒbƒVƒ…‚·‚éB
+		//æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã€ãƒ‡ãƒ¼ã‚¿ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚
 		ArrayList payloadDefs = new ArrayList();
 		ArrayList propertyDefs = new ArrayList();
 		try{
@@ -67,27 +67,27 @@ public class FileMessageInput implements MessageInput,MessageResourceDefine{
 			String payloadStr = "";
 			String propStr = "";
 			while( (line = reader.readLine()) != null){
-				//‰üs‚Ì‚İ‚Ìs‚Í‘¶İ‚µ‚È‚¢‚à‚Ì‚Æ‚µ‚Äˆµ‚¤
+				//æ”¹è¡Œã®ã¿ã®è¡Œã¯å­˜åœ¨ã—ãªã„ã‚‚ã®ã¨ã—ã¦æ‰±ã†
 				if(line.equals("")){
 					continue;
 				}
-				//ƒRƒƒ“ƒgs‚Í‘¶İ‚µ‚È‚¢‚à‚Ì‚Æ‚µ‚Äˆµ‚¤
+				//ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã¯å­˜åœ¨ã—ãªã„ã‚‚ã®ã¨ã—ã¦æ‰±ã†
 				if(line.charAt(0) == '#'){
 					continue;
 				}
-				//ƒvƒƒpƒeƒB•”‚ÆƒyƒCƒ[ƒh•”‚ğ•ªŠ„‚·‚éB
+				//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã¨ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨ã‚’åˆ†å‰²ã™ã‚‹ã€‚
 				int pos = line.indexOf(SEP);				
 				if(pos == -1){
-					//ƒZƒpƒŒ[ƒ^–³‚µ‚Ìê‡•s³ƒtƒH[ƒ}ƒbƒg‚Æ‚µ‚ÄServiceException‚ğ”­¶
+					//ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ç„¡ã—ã®å ´åˆä¸æ­£ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¨ã—ã¦ServiceExceptionã‚’ç™ºç”Ÿ
 					throw new ServiceException("MESSAGERESOURCESERVICE901","line no."+reader.getLineNumber() + " is invalid. filename is " + filename+ ".");
 				}
 				else if(pos == 0){
-					//ƒZƒpƒŒ[ƒ^æ“ª‚Ìê‡AƒvƒƒpƒeƒBw’è–³‚µ‚Æ‰ğßB
+					//ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿å…ˆé ­ã®å ´åˆã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æŒ‡å®šç„¡ã—ã¨è§£é‡ˆã€‚
 					propStr = "";
 					payloadStr=line.substring(1);
 					
 				}
-				//ƒZƒpƒŒ[ƒ^•¶š‚ªÅŒã‚¾‚Á‚½‚çAƒyƒCƒ[ƒhw’è–³‚µ‚Æ‰ğß
+				//ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒæœ€å¾Œã ã£ãŸã‚‰ã€ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰æŒ‡å®šç„¡ã—ã¨è§£é‡ˆ
 				else if(pos == (line.length() -1)){
 					propStr=line.substring(0,pos);
 					payloadStr="";
@@ -96,12 +96,12 @@ public class FileMessageInput implements MessageInput,MessageResourceDefine{
 					propStr = line.substring(0,pos);
 					payloadStr = line.substring(pos+1);
 				}
-				//ƒvƒƒpƒeƒB‚ğ¶¬‚µ‚Ä‚¨‚­
+				//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã—ã¦ãŠã
 				Properties jmsProp = new Properties();
 				CsvArrayList props = new CsvArrayList();
 				props.split(propStr);
 				if(propStr.equals("")){
-					//‰½‚à‚µ‚È‚¢BjmsProp‚Í‹ó‚Ì‚Ü‚Ü
+					//ä½•ã‚‚ã—ãªã„ã€‚jmsPropã¯ç©ºã®ã¾ã¾
 					;
 				}
 				else{
@@ -128,11 +128,11 @@ public class FileMessageInput implements MessageInput,MessageResourceDefine{
 			}
 		}
 		catch(Exception e){
-			//ƒf[ƒ^ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½‚çException‚ğã‚°‚éB
+			//ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸã‚‰Exceptionã‚’ä¸Šã’ã‚‹ã€‚
 			//e.printStackTrace();
 			throw new ServiceException("MESSAGERESOURCESERVICE900","Exception were thrown while reading "+filename+" .",e);
 		}
-		//”z—ñ‚É‹l‚ß‚È‚¨‚·
+		//é…åˆ—ã«è©°ã‚ãªãŠã™
 		mPayloadArray = new String[mRecordNum];
 		mPropertiesArray = new Properties[mRecordNum];
 		for(int rCnt=0;rCnt<mRecordNum;rCnt++){
@@ -142,7 +142,7 @@ public class FileMessageInput implements MessageInput,MessageResourceDefine{
 	}
 	
 	/**
-	 * 1si‚ß‚éBÅIs‚É’B‚µ‚½‚çAæ“ª‚É–ß‚éB
+	 * 1è¡Œé€²ã‚ã‚‹ã€‚æœ€çµ‚è¡Œã«é”ã—ãŸã‚‰ã€å…ˆé ­ã«æˆ»ã‚‹ã€‚
 	 */
 	public void nextLine(){
 		if( (mRecordNum -1) > mCurrentline){
@@ -153,13 +153,13 @@ public class FileMessageInput implements MessageInput,MessageResourceDefine{
 		}
 	}
 	/**
-	 * ƒyƒCƒ[ƒhƒf[ƒ^•¶š—ñ‚ğ•Ô‚·
+	 * ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’è¿”ã™
 	 */
 	public String getInputString(){
 		return mPayloadArray[mCurrentline];
 	}
 	/**
-	 * ƒvƒƒpƒeƒBƒf[ƒ^•¶š—ñ‚ğ•Ô‚·
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ‡ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’è¿”ã™
 	 *	
 	 */
 	public Properties getMessageHeadProp(){

@@ -36,7 +36,7 @@ import jp.ossc.nimbus.service.http.*;
 import jp.ossc.nimbus.service.resource.*;
 
 /**
- * HttpClientƒtƒ@ƒNƒgƒŠB<p>
+ * HttpClientãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -90,28 +90,28 @@ public class HttpClientFactoryService extends ServiceBase
         }
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ÍƒTƒ|[ƒg‚µ‚È‚¢‚½‚ßA‰½‚à‚µ‚È‚¢B<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã¯ã‚µãƒãƒ¼ãƒˆã—ãªã„ãŸã‚ã€ä½•ã‚‚ã—ãªã„ã€‚<p>
          */
         public void commit() throws Exception{
-            // ‰½‚à‚µ‚È‚¢
+            // ä½•ã‚‚ã—ãªã„
         }
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ÍƒTƒ|[ƒg‚µ‚È‚¢‚½‚ßA‰½‚à‚µ‚È‚¢B<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã¯ã‚µãƒãƒ¼ãƒˆã—ãªã„ãŸã‚ã€ä½•ã‚‚ã—ãªã„ã€‚<p>
          */
         public void rollback() throws Exception{
-            // ‰½‚à‚µ‚È‚¢
+            // ä½•ã‚‚ã—ãªã„
         }
         
         /**
-         * {@link HttpClient#close()}‚ğŒÄ‚Ño‚·B<p>
+         * {@link HttpClient#close()}ã‚’å‘¼ã³å‡ºã™ã€‚<p>
          */
         public void close() throws Exception{
             client.close();
         }
         
         /**
-         * {@link HttpClient}‚ğæ“¾‚·‚éB<p>
+         * {@link HttpClient}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
          * @return HttpClient
          */

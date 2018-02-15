@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 
 /**
- * ƒL[ƒ}ƒbƒsƒ“ƒOƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠB<p>
+ * ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -52,37 +52,37 @@ public class KeyMappingScheduleFactoryService extends ServiceBase
     protected ServiceName defaultScheduleFactoryServiceName;
     protected ScheduleFactory defaultScheduleFactory;
     
-    // KeyMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // KeyMappingScheduleFactoryServiceMBeanã®JavaDoc
     public void setKeyAndScheduleFactoryServiceName(String[] mapping){
         keyAndScheduleFactoryServiceName = mapping;
     }
-    // KeyMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // KeyMappingScheduleFactoryServiceMBeanã®JavaDoc
     public String[] getKeyAndScheduleFactoryServiceName(){
         return keyAndScheduleFactoryServiceName;
     }
     
-    // KeyMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // KeyMappingScheduleFactoryServiceMBeanã®JavaDoc
     public void setDefaultScheduleFactoryServiceName(ServiceName name){
         defaultScheduleFactoryServiceName = name;
     }
-    // KeyMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // KeyMappingScheduleFactoryServiceMBeanã®JavaDoc
     public ServiceName getDefaultScheduleFactoryServiceName(){
         return defaultScheduleFactoryServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         keyAndScheduleFactory = new HashMap();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(keyAndScheduleFactoryServiceName != null){
@@ -121,50 +121,50 @@ public class KeyMappingScheduleFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         keyAndScheduleFactory.clear();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         keyAndScheduleFactory = null;
     }
     
     /**
-     * İ’è‚³‚ê‚½ƒL[ƒIƒuƒWƒFƒNƒg‚ğA“KØ‚ÈƒL[ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·‚¹‚¸‚É‚»‚Ì‚Ü‚Ü•Ô‚·B<br>
-     * ƒTƒuƒNƒ‰ƒX‚Å•K—v‚É‰‚¶‚ÄƒI[ƒo[ƒ‰ƒCƒh‚·‚é‚±‚ÆB<br>
+     * è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€é©åˆ‡ãªã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›ã›ãšã«ãã®ã¾ã¾è¿”ã™ã€‚<br>
+     * ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§å¿…è¦ã«å¿œã˜ã¦ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹ã“ã¨ã€‚<br>
      *
-     * @param key İ’è‚³‚ê‚½ƒL[ƒIƒuƒWƒFƒNƒg
-     * @return “KØ‚ÈƒL[ƒIƒuƒWƒFƒNƒg
-     * @exception Exception •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param key è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return é©åˆ‡ãªã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception Exception å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object createKey(Object key) throws Exception{
         return key;
     }
     
     /**
-     * ƒL[‚Æ{@link ScheduleFactory}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã¨{@link ScheduleFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ƒL[‚ÆScheduleFactoryƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param mapping ã‚­ãƒ¼ã¨ScheduleFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setKeyAndScheduleFactory(Map mapping){
         attrKeyAndScheduleFactory = mapping;
     }
     
     /**
-     * ƒL[‚ÉŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒXƒPƒWƒ…[ƒ‹”z—ñ
+     * @param key ã‚­ãƒ¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é…åˆ—
      */
     public Schedule[] getSchedules(Object key){
         ScheduleFactory factory

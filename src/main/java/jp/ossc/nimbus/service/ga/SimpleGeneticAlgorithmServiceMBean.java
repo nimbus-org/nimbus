@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link SimpleGeneticAlgorithmService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SimpleGeneticAlgorithmService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SimpleGeneticAlgorithmService
@@ -43,76 +43,76 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface SimpleGeneticAlgorithmServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link SeedMatchMaker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link SeedMatchMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SeedMatchMakerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name SeedMatchMakerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSeedMatchMakerServiceName(ServiceName name);
     
     /**
-     * {@link SeedMatchMaker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link SeedMatchMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SeedMatchMakerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return SeedMatchMakerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSeedMatchMakerServiceName();
     
     /**
-     * ¢‘ã‹£‘ˆ‚ÌŠeƒV[ƒh‚Ì“K‰’lŒvZ‚ğ•À—ñ‚És‚¤ê‡‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ä¸–ä»£ç«¶äº‰æ™‚ã®å„ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueHandlerContainerServiceName(ServiceName name);
     
     /**
-     * ¢‘ã‹£‘ˆ‚ÌŠeƒV[ƒh‚Ì“K‰’lŒvZ‚ğ•À—ñ‚És‚¤ê‡‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ä¸–ä»£ç«¶äº‰æ™‚ã®å„ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueHandlerContainerServiceName();
     
     /**
-     * ¢‘ã‹£‘ˆ‚ÌŠeƒV[ƒh‚Ì“K‰’lŒvZ‚ğ•À—ñ‚És‚¤ê‡‚ÌƒXƒŒƒbƒh”‚ğİ’è‚·‚éB<p>
-     * {@link #setQueueHandlerContainerServiceName(ServiceName)}‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚Ì{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚Ì{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer#getQueueHandlerSize() getQueueHandlerSize()}‚ª—Dæ‚³‚ê‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å’¼—ñ‚É“K‰’lŒvZ‚ğs‚¤B<br>
+     * ä¸–ä»£ç«¶äº‰æ™‚ã®å„ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setQueueHandlerContainerServiceName(ServiceName)}ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®{@link jp.ossc.nimbus.service.queue.QueueHandlerContainer#getQueueHandlerSize() getQueueHandlerSize()}ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ç›´åˆ—ã«é©å¿œå€¤è¨ˆç®—ã‚’è¡Œã†ã€‚<br>
      *
-     * @param num ƒV[ƒh‚Ì“K‰’lŒvZ‚Ì•À—ñ“x
+     * @param num ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã®ä¸¦åˆ—åº¦
      */
     public void setParallelThreadNum(int num);
     
     /**
-     * ¢‘ã‹£‘ˆ‚ÌŠeƒV[ƒh‚Ì“K‰’lŒvZ‚ğ•À—ñ‚És‚¤ê‡‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ä¸–ä»£ç«¶äº‰æ™‚ã®å„ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒV[ƒh‚Ì“K‰’lŒvZ‚Ì•À—ñ“x
+     * @return ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã®ä¸¦åˆ—åº¦
      */
     public int getParallelThreadNum();
     
     /**
-     * ¢‘ã‹£‘ˆ‚ÌŠeƒV[ƒh‚Ì“K‰’lŒvZ‚ğ•À—ñ‚És‚¤ê‡‚Ì‰“š‘Ò‚¿ŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Å–³ŒÀ‘Ò‚¿B<br>
+     * ä¸–ä»£ç«¶äº‰æ™‚ã®å„ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã®å¿œç­”å¾…ã¡æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§ç„¡é™å¾…ã¡ã€‚<br>
      *
-     * @param timeout ‰“š‘Ò‚¿ŠÔ[ms]
+     * @param timeout å¿œç­”å¾…ã¡æ™‚é–“[ms]
      */
     public void setParallelResponseTimout(long timeout);
     
     /**
-     * ¢‘ã‹£‘ˆ‚ÌŠeƒV[ƒh‚Ì“K‰’lŒvZ‚ğ•À—ñ‚És‚¤ê‡‚Ì‰“š‘Ò‚¿ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ä¸–ä»£ç«¶äº‰æ™‚ã®å„ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã®å¿œç­”å¾…ã¡æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰“š‘Ò‚¿ŠÔ[ms]
+     * @return å¿œç­”å¾…ã¡æ™‚é–“[ms]
      */
     public long getParallelResponseTimout();
     
     /**
-     * Ÿ¢‘ã‚ğ¶¬‚µ‚½Œã‚ÉA“¯‚¶ƒV[ƒh‚ğ”rœ‚µAV‚µ‚¢ƒV[ƒh‚Æ“ü‚ê‘Ö‚¦‚é“‘‘¿‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å“‘‘¿‚Ís‚í‚È‚¢B<br>
+     * æ¬¡ä¸–ä»£ã‚’ç”Ÿæˆã—ãŸå¾Œã«ã€åŒã˜ã‚·ãƒ¼ãƒ‰ã‚’æ’é™¤ã—ã€æ–°ã—ã„ã‚·ãƒ¼ãƒ‰ã¨å…¥ã‚Œæ›¿ãˆã‚‹æ·˜æ±°ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æ·˜æ±°ã¯è¡Œã‚ãªã„ã€‚<br>
      *
-     * @param isSelection “‘‘¿‚·‚éê‡Atrue
+     * @param isSelection æ·˜æ±°ã™ã‚‹å ´åˆã€true
      */
     public void setSeedSelection(boolean isSelection);
     
     /**
-     * Ÿ¢‘ã‚ğ¶¬‚µ‚½Œã‚ÉA“¯‚¶ƒV[ƒh‚ğ”rœ‚µAV‚µ‚¢ƒV[ƒh‚Æ“ü‚ê‘Ö‚¦‚é“‘‘¿‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ¬¡ä¸–ä»£ã‚’ç”Ÿæˆã—ãŸå¾Œã«ã€åŒã˜ã‚·ãƒ¼ãƒ‰ã‚’æ’é™¤ã—ã€æ–°ã—ã„ã‚·ãƒ¼ãƒ‰ã¨å…¥ã‚Œæ›¿ãˆã‚‹æ·˜æ±°ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A“‘‘¿‚·‚é
+     * @return trueã®å ´åˆã€æ·˜æ±°ã™ã‚‹
      */
     public boolean isSeedSelection();
 }

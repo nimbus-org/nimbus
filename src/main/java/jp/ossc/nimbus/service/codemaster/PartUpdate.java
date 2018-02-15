@@ -29,11 +29,11 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// パッケージ
+// 繝代ャ繧ｱ繝ｼ繧ｸ
 package jp.ossc.nimbus.service.codemaster;
 
 /**
- * 部分更新マスター<p>
+ * 驛ｨ蛻�譖ｴ譁ｰ繝槭せ繧ｿ繝ｼ<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0

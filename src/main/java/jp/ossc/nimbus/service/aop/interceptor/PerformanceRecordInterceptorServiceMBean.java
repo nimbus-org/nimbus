@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link PerformanceRecordInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link PerformanceRecordInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see PerformanceRecordInterceptorService
@@ -42,33 +42,33 @@ import jp.ossc.nimbus.core.*;
 public interface PerformanceRecordInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚
      *
-     * @param enable ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éê‡true
+     * @param enable ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹å ´åˆtrue
      * @see #isEnabled()
      */
     public void setEnabled(boolean enable);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éê‡true
+     * @return ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹å ´åˆtrue
      * @see #setEnabled(boolean)
      */
     public boolean isEnabled();
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éPerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éPerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPerformanceRecorderServiceName();
 }

@@ -36,7 +36,7 @@ import java.io.File;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link LocalStubResourceManagerService}��MBean�C���^�t�F�[�X<p>
+ * {@link LocalStubResourceManagerService}のMBeanインタフェース<p>
  * 
  * @author M.Aono
  * @see LocalStubResourceManagerService
@@ -44,18 +44,18 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface LocalStubResourceManagerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * �A�b�v���[�h���ꂽ�t�@�C�����_�E�����[�h�����܂ŕۑ����Ă����ꎞ�f�B���N�g�����擾����B<p>
+     * アップロードされたファイルをダウンロードされるまで保存しておく一時ディレクトリを取得する。<p>
      *
-     * @return �ꎞ�f�B���N�g��
+     * @return 一時ディレクトリ
      */
     public File getTemporaryDirectory();
     
     /**
-     * �A�b�v���[�h���ꂽ�t�@�C�����_�E�����[�h�����܂ŕۑ����Ă����ꎞ�f�B���N�g����ݒ肷��B<p>
-     * �w�肵�Ȃ��ꍇ�́A"java.io.tmpdir"�B<br>
-     * �A�b�v���[�h���ꂽ�t�@�C���́A�����Ŏw�肳�ꂽ�ꎞ�f�B���N�g�����ɁA�N���X��/�^�C���X�^���v�̃f�B���N�g�����쐬���A���̉��ɕۑ������B�܂��A�����̃f�B���N�g���́AJavaVM�I�����ɑS�č폜�����B<br>
+     * アップロードされたファイルをダウンロードされるまで保存しておく一時ディレクトリを設定する。<p>
+     * 指定しない場合は、"java.io.tmpdir"。<br>
+     * アップロードされたファイルは、ここで指定された一時ディレクトリ下に、クラス名/タイムスタンプのディレクトリを作成し、その下に保存される。また、これらのディレクトリは、JavaVM終了時に全て削除される。<br>
      *
-     * @param path �ꎞ�f�B���N�g��
+     * @param path 一時ディレクトリ
      */
     public void setTemporaryDirectory(File path);
 }

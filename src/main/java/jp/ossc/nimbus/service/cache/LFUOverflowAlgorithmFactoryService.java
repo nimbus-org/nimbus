@@ -37,8 +37,8 @@ import jp.ossc.nimbus.core.Service;
 import jp.ossc.nimbus.core.ServiceFactoryServiceBase;
 
 /**
- * LFU‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒtƒ@ƒNƒgƒŠB<p>
- * {@link LFUOverflowAlgorithmService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * LFUã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link LFUOverflowAlgorithmService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see LFUOverflowAlgorithmService
@@ -50,17 +50,17 @@ public class LFUOverflowAlgorithmFactoryService
     private static final long serialVersionUID = -5716524428731947329L;
     
     /**
-     * {@link LFUOverflowAlgorithmService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link LFUOverflowAlgorithmService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return LFUOverflowAlgorithmServiceƒT[ƒrƒX
-     * @exception Exception LFUOverflowAlgorithmService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return LFUOverflowAlgorithmServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception LFUOverflowAlgorithmServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see LFUOverflowAlgorithmService
      */
     protected Service createServiceInstance() throws Exception{
         return new LFUOverflowAlgorithmService();
     }
     
-    // LFUOverflowAlgorithmFactoryServiceMBean‚ÌJavaDoc
+    // LFUOverflowAlgorithmFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

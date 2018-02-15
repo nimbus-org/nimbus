@@ -34,7 +34,7 @@ package jp.ossc.nimbus.servlet;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link DefaultBeanFlowSelectorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultBeanFlowSelectorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultBeanFlowSelectorService
@@ -42,22 +42,22 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface DefaultBeanFlowSelectorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlow‚ÌŒã’uŒ‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã®å¾Œç½®è©ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_BEAN_FLOW_PATH_POSTFIX = ".bf";
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlowƒpƒX‚ÌŒã’uŒ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_BEAN_FLOW_PATH_POSTFIX}B<br>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowãƒ‘ã‚¹ã®å¾Œç½®è©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_BEAN_FLOW_PATH_POSTFIX}ã€‚<br>
      * 
-     * @param postfix Œã’uŒ
+     * @param postfix å¾Œç½®è©
      */
     public void setBeanFlowPathPostfix(String postfix);
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlowƒpƒX‚ÌŒã’uŒ‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowãƒ‘ã‚¹ã®å¾Œç½®è©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Œã’uŒ
+     * @return å¾Œç½®è©
      */
     public String getBeanFlowPathPostfix();
 }

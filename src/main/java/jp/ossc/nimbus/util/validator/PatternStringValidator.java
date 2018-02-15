@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.validator;
 import java.util.regex.*;
 
 /**
- * ³‹K•\Œ»•¶š—ñƒoƒŠƒf[ƒ^B<p>
+ * æ­£è¦è¡¨ç¾æ–‡å­—åˆ—ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,62 +44,62 @@ public class PatternStringValidator extends AbstractStringValidator
     private static final long serialVersionUID = 3525013552708443644L;
     
     /**
-     * •¶š—ñ‚ğŒŸØ‚·‚é³‹K•\Œ»B<p>
+     * æ–‡å­—åˆ—ã‚’æ¤œè¨¼ã™ã‚‹æ­£è¦è¡¨ç¾ã€‚<p>
      */
     protected Pattern pattern;
     
     /**
-     * ŒŸØ‚Ég—p‚·‚é³‹K•\Œ»ƒpƒ^[ƒ“‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼ã«ä½¿ç”¨ã™ã‚‹æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param pattern ³‹K•\Œ»ƒpƒ^[ƒ“
+     * @param pattern æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³
      */
     public void setPattern(Pattern pattern){
         this.pattern = pattern;
     }
     
     /**
-     * ŒŸØ‚Ég—p‚·‚é³‹K•\Œ»ƒpƒ^[ƒ“‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼ã«ä½¿ç”¨ã™ã‚‹æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ³‹K•\Œ»ƒpƒ^[ƒ“
+     * @return æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³
      */
     public Pattern getPattern(){
         return pattern;
     }
     
     /**
-     * ŒŸØ‚Ég—p‚·‚é³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼ã«ä½¿ç”¨ã™ã‚‹æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param pattern ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ
+     * @param pattern æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—
      */
     public void setPatternString(String pattern){
         this.pattern = Pattern.compile(pattern);
     }
     
     /**
-     * ŒŸØ‚Ég—p‚·‚é³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * æ¤œè¨¼ã«ä½¿ç”¨ã™ã‚‹æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param pattern ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ
-     * @param flags ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param pattern æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—
+     * @param flags ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public void setPatternString(String pattern, int flags){
         this.pattern = Pattern.compile(pattern, flags);
     }
     
     /**
-     * ŒŸØ‚Ég—p‚·‚é³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * æ¤œè¨¼ã«ä½¿ç”¨ã™ã‚‹æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ
+     * @return æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—
      */
     public String getPatternString(){
         return pattern == null ? null : pattern.pattern();
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ª³‹K•\Œ»‚Éƒ}ƒbƒ`‚·‚é‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãŒæ­£è¦è¡¨ç¾ã«ãƒãƒƒãƒã™ã‚‹ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param str ŒŸØ‘ÎÛ‚Ì•¶š—ñ
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param str æ¤œè¨¼å¯¾è±¡ã®æ–‡å­—åˆ—
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean validateString(String str) throws ValidateException{
         if(pattern != null){

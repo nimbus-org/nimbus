@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.service.connection.ConnectionFactory;
 
 /**
- * {@link DatabaseDatasetFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseDatasetFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,60 +43,60 @@ public interface DatabaseDatasetFactoryServiceMBean
     extends ServiceBaseMBean {
 
     /**
-     * ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param connFactory ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ
+     * @param connFactory ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      */
     public void setConnectionFactory(ConnectionFactory connFactory);
 
     /**
-     * ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ
+     * @return ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      */
     public ConnectionFactory getConnectionFactory();
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğì‚éÛ‚É•K—v‚Èƒf[ƒ^‚ğæ“¾‚·‚éSQL•¶š—ñ”z—ñ‚ğİ’è‚·‚éB<p>
-     * [ƒVƒŠ[ƒY–¼=SQL]‚Æ‚¢‚¤•¶š—ñ‚Åİ’è‚³‚ê‚Ä‚¢‚Ü‚·B
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ä½œã‚‹éš›ã«å¿…è¦ãªãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹SQLæ–‡å­—åˆ—é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * [ã‚·ãƒªãƒ¼ã‚ºå=SQL]ã¨ã„ã†æ–‡å­—åˆ—ã§è¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚
      *
-     * @param sqls [ƒVƒŠ[ƒY–¼=SQL]‚Ì”z—ñ
+     * @param sqls [ã‚·ãƒªãƒ¼ã‚ºå=SQL]ã®é…åˆ—
      */
     public void setSqls(String[] sqls);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğì‚éÛ‚É•K—v‚Èƒf[ƒ^‚ğæ“¾‚·‚éSQL•¶š—ñ”z—ñ‚ğİ’è‚·‚éB<p>
-     * [ƒVƒŠ[ƒY–¼=SQL]‚Æ‚¢‚¤•¶š—ñ‚Åİ’è‚³‚ê‚Ä‚¢‚Ü‚·B
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ä½œã‚‹éš›ã«å¿…è¦ãªãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹SQLæ–‡å­—åˆ—é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * [ã‚·ãƒªãƒ¼ã‚ºå=SQL]ã¨ã„ã†æ–‡å­—åˆ—ã§è¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚
      *
-     * @return [ƒVƒŠ[ƒY–¼=SQL]‚Ì”z—ñ
+     * @return [ã‚·ãƒªãƒ¼ã‚ºå=SQL]ã®é…åˆ—
      */
     public String[] getSqls();
 
     /**
-     * ƒf[ƒ^ƒZƒbƒgğŒ‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param dsCondition ƒf[ƒ^ƒZƒbƒgğŒ
+     * @param dsCondition ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
      */
     public void addDatasetCondition(DatasetCondition dsCondition);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒgğŒ‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒf[ƒ^ƒZƒbƒgğŒ‚Ì”z—ñ
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®é…åˆ—
      */
     public DatasetCondition[] getDatasetConditions();
 
     /**
-     * ƒtƒFƒbƒ`ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param size ƒtƒFƒbƒ`ƒTƒCƒY
+     * @param size ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º
      */
     public void setFetchSize(int size);
     
     /**
-     * ƒtƒFƒbƒ`ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒFƒbƒ`ƒTƒCƒY
+     * @return ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º
      */
     public int getFetchSize();
 

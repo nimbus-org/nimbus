@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ga;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link DefaultSeedMatchMakerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultSeedMatchMakerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultSeedMatchMakerService
@@ -42,92 +42,92 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface DefaultSeedMatchMakerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ’‡l•û®Fƒ‰ƒ“ƒ_ƒ€B<p>
+     * ä»²äººæ–¹å¼ï¼šãƒ©ãƒ³ãƒ€ãƒ ã€‚<p>
      */
     public static final int MATCH_MAKE_METHOD_RANDOM   = 1;
     
     /**
-     * ’‡l•û®Fƒ‹[ƒŒƒbƒgB<p>
+     * ä»²äººæ–¹å¼ï¼šãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆã€‚<p>
      */
     public static final int MATCH_MAKE_METHOD_ROULETTE = 2;
     
     /**
-     * ƒGƒŠ[ƒg—¦‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0.0B<br>
+     * ã‚¨ãƒªãƒ¼ãƒˆç‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0.0ã€‚<br>
      *
-     * @param rate ƒGƒŠ[ƒg—¦B0.0 &gt;= rate &gt; 1.0
-     * @exception IllegalArgumentException w’è‚³‚ê‚½’l‚ª•s³‚Èê‡
+     * @param rate ã‚¨ãƒªãƒ¼ãƒˆç‡ã€‚0.0 &gt;= rate &gt; 1.0
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸå€¤ãŒä¸æ­£ãªå ´åˆ
      */
     public void setEliteRate(float rate) throws IllegalArgumentException;
     
     /**
-     * ƒGƒŠ[ƒg—¦‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒªãƒ¼ãƒˆç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒŠ[ƒg—¦
+     * @return ã‚¨ãƒªãƒ¼ãƒˆç‡
      */
     public float getEliteRate();
     
     /**
-     * ƒhƒƒbƒv—¦‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0.0B<br>
+     * ãƒ‰ãƒ­ãƒƒãƒ—ç‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0.0ã€‚<br>
      *
-     * @param rate ƒhƒƒbƒv—¦B0.0 &gt;= rate &gt; 1.0
-     * @exception IllegalArgumentException w’è‚³‚ê‚½’l‚ª•s³‚Èê‡
+     * @param rate ãƒ‰ãƒ­ãƒƒãƒ—ç‡ã€‚0.0 &gt;= rate &gt; 1.0
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸå€¤ãŒä¸æ­£ãªå ´åˆ
      */
     public void setDropRate(float rate) throws IllegalArgumentException;
     
     /**
-     * ƒhƒƒbƒv—¦‚ğæ“¾‚·‚éB<p>
+     * ãƒ‰ãƒ­ãƒƒãƒ—ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒhƒƒbƒv—¦
+     * @return ãƒ‰ãƒ­ãƒƒãƒ—ç‡
      */
     public float getDropRate();
     
     /**
-     * V‹K—¦‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0.0B<br>
+     * æ–°è¦ç‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0.0ã€‚<br>
      *
-     * @param rate V‹K—¦B0.0 &gt;= rate &gt; 1.0
-     * @exception IllegalArgumentException w’è‚³‚ê‚½’l‚ª•s³‚Èê‡
+     * @param rate æ–°è¦ç‡ã€‚0.0 &gt;= rate &gt; 1.0
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸå€¤ãŒä¸æ­£ãªå ´åˆ
      */
     public void setNewRate(float rate) throws IllegalArgumentException;
     
     /**
-     * V‹K—¦‚ğæ“¾‚·‚éB<p>
+     * æ–°è¦ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return V‹K—¦
+     * @return æ–°è¦ç‡
      */
     public float getNewRate();
     
     /**
-     * ’‡l•û–@‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #MATCH_MAKE_METHOD_RANDOM ƒ‰ƒ“ƒ_ƒ€}B<br>
+     * ä»²äººæ–¹æ³•ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #MATCH_MAKE_METHOD_RANDOM ãƒ©ãƒ³ãƒ€ãƒ }ã€‚<br>
      *
-     * @param method ’‡l•û–@
-     * @see #MATCH_MAKE_METHOD_RANDOM ƒ‰ƒ“ƒ_ƒ€
-     * @see #MATCH_MAKE_METHOD_ROULETTE ƒ‹[ƒŒƒbƒg
+     * @param method ä»²äººæ–¹æ³•
+     * @see #MATCH_MAKE_METHOD_RANDOM ãƒ©ãƒ³ãƒ€ãƒ 
+     * @see #MATCH_MAKE_METHOD_ROULETTE ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆ
      */
     public void setMatchMakeMethod(int method) throws IllegalArgumentException;
     
     /**
-     * ’‡l•û–@‚ğæ“¾‚·‚éB<p>
+     * ä»²äººæ–¹æ³•ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’‡l•û–@
+     * @return ä»²äººæ–¹æ³•
      */
     public int getMatchMakeMethod();
     
     /**
-     * ƒGƒŠ[ƒg‚ğŒğ³‘ÎÛ‚ÉŠÜ‚ß‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅŒğ³‘ÎÛ‚ÉŠÜ‚ß‚éB<br>
+     * ã‚¨ãƒªãƒ¼ãƒˆã‚’äº¤å‰å¯¾è±¡ã«å«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§äº¤å‰å¯¾è±¡ã«å«ã‚ã‚‹ã€‚<br>
      *
-     * @param isContanis Œğ³‘ÎÛ‚ÉŠÜ‚ß‚éê‡true
+     * @param isContanis äº¤å‰å¯¾è±¡ã«å«ã‚ã‚‹å ´åˆtrue
      */
     public void setContanisEliteInMatchMake(boolean isContanis);
     
     /**
-     * ƒGƒŠ[ƒg‚ğŒğ³‘ÎÛ‚ÉŠÜ‚ß‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¨ãƒªãƒ¼ãƒˆã‚’äº¤å‰å¯¾è±¡ã«å«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒğ³‘ÎÛ‚ÉŠÜ‚ß‚é
+     * @return trueã®å ´åˆã€äº¤å‰å¯¾è±¡ã«å«ã‚ã‚‹
      */
     public boolean isContanisEliteInMatchMake();
 }

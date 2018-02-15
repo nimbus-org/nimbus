@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultPingPongHandlerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link DefaultPingPongHandlerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -43,120 +43,120 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DefaultPingPongHandlerServiceMBean extends ServiceBaseMBean {
 
     /**
-     * Ping‘—MˆË—Š“ú‚ğUserProperties‚ÉŠi”[‚·‚éÛ‚ÌƒL[B
+     * Pingé€ä¿¡ä¾é ¼æ—¥æ™‚ã‚’UserPropertiesã«æ ¼ç´ã™ã‚‹éš›ã®ã‚­ãƒ¼ã€‚
      * <p>
      */
     public static final String PING_REQUEST_TIME_KEY = "PingRequestTime";
 
     /**
-     * Ping‘—M“ú‚ğUserProperties‚ÉŠi”[‚·‚éÛ‚ÌƒL[B
+     * Pingé€ä¿¡æ—¥æ™‚ã‚’UserPropertiesã«æ ¼ç´ã™ã‚‹éš›ã®ã‚­ãƒ¼ã€‚
      * <p>
      */
     public static final String PING_SEND_TIME_KEY = "PingSendTime";
 
     /**
-     * Ping‘—MƒƒbƒZ[ƒW‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * Pingé€ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_PING_MESSAGE = "";
 
     /**
-     * Ping‘—MƒCƒ“ƒ^[ƒoƒ‹‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * Pingé€ä¿¡ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final long DEFAULT_PING_SEND_INTERVAL = 5000l;
 
     /**
-     * PingSendQueueHandlerContainerService‚ªw’è‚³‚ê‚È‚©‚Á‚½ê‡‚ÌQueueƒTƒCƒYB
+     * PingSendQueueHandlerContainerServiceãŒæŒ‡å®šã•ã‚Œãªã‹ã£ãŸå ´åˆã®Queueã‚µã‚¤ã‚ºã€‚
      * <p>
      */
     public static final int DEFAULT_QUEUE_SIZE = 1;
 
     /**
-     * Ping‘—MƒGƒ‰[‚ª”­¶‚µ‚½Û‚Éo—Í‚·‚éƒƒbƒZ[ƒWID‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * Pingé€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸéš›ã«å‡ºåŠ›ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final String DEFAULT_PING_SEND_ERROR_MESSAGE_ID = "WS___00005";
 
     /**
-     * Pong–¢óM‹–—eƒtƒ‰ƒO‚ÌƒfƒtƒHƒ‹ƒg’lB
+     * Pongæœªå—ä¿¡è¨±å®¹ãƒ•ãƒ©ã‚°ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚
      * <p>
      */
     public static final boolean DEFAULT_ALLOW_NO_PONG = false;
 
     /**
-     * Ping‚ğ‘—M‚·‚éÛ‚ÌQueueHandlerContainerService‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * Pingã‚’é€ä¿¡ã™ã‚‹éš›ã®QueueHandlerContainerServiceã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return QueueHandlerContainerService‚ÌƒT[ƒrƒX–¼
+     * @return QueueHandlerContainerServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPingSendQueueHandlerContainerServiceName();
 
     /**
-     * Ping‚ğ‘—M‚·‚éÛ‚ÌQueueHandlerContainerService‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * Pingã‚’é€ä¿¡ã™ã‚‹éš›ã®QueueHandlerContainerServiceã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name QueueHandlerContainerService‚ÌƒT[ƒrƒX–¼
+     * @param name QueueHandlerContainerServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPingSendQueueHandlerContainerServiceName(ServiceName name);
 
     /**
-     * QueueHandlerContainerService‚ªİ’è‚³‚ê‚È‚©‚Á‚½ê‡‚Ég—p‚·‚éƒfƒtƒHƒ‹ƒg‚ÌQueueHandler‚ÌƒTƒCƒY‚ğæ“¾‚·‚éB
+     * QueueHandlerContainerServiceãŒè¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®QueueHandlerã®ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return QueueHandler‚ÌƒTƒCƒY
+     * @return QueueHandlerã®ã‚µã‚¤ã‚º
      */
     public int getQueueHandlerSize();
 
     /**
-     * QueueHandlerContainerService‚ªİ’è‚³‚ê‚È‚©‚Á‚½ê‡‚Ég—p‚·‚éƒfƒtƒHƒ‹ƒg‚ÌQueueHandler‚ÌƒTƒCƒY‚ğİ’è‚·‚éB
+     * QueueHandlerContainerServiceãŒè¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®QueueHandlerã®ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param size QueueHandler‚ÌƒTƒCƒY
+     * @param size QueueHandlerã®ã‚µã‚¤ã‚º
      */
     public void setQueueHandlerSize(int size);
 
     /**
-     * Ping‘—MƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB
+     * Pingé€ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return Ping‘—MƒƒbƒZ[ƒW
+     * @return Pingé€ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getPingMessage();
 
     /**
-     * Ping‘—MƒƒbƒZ[ƒW‚ğİ’è‚·‚éB
+     * Pingé€ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param message Ping‘—MƒƒbƒZ[ƒW
+     * @param message Pingé€ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void setPingMessage(String message);
 
     /**
-     * Ping‘—MƒCƒ“ƒ^[ƒoƒ‹(ƒ~ƒŠ•b)‚ğæ“¾‚·‚éB
+     * Pingé€ä¿¡ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ãƒŸãƒªç§’)ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return Ping‘—MƒCƒ“ƒ^[ƒoƒ‹(ƒ~ƒŠ•b)
+     * @return Pingé€ä¿¡ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ãƒŸãƒªç§’)
      */
     public long getPingSendInterval();
 
     /**
-     * Ping‘—MƒCƒ“ƒ^[ƒoƒ‹(ƒ~ƒŠ•b)‚ğİ’è‚·‚éB
+     * Pingé€ä¿¡ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ãƒŸãƒªç§’)ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param interval Ping‘—MƒCƒ“ƒ^[ƒoƒ‹(ƒ~ƒŠ•b)
+     * @param interval Pingé€ä¿¡ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«(ãƒŸãƒªç§’)
      */
     public void setPingSendInterval(long interval);
 
     /**
-     * Ping‘—MƒGƒ‰[‚ª”­¶‚µ‚½Û‚Éo—Í‚·‚éƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB
+     * Pingé€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸéš›ã«å‡ºåŠ›ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒƒbƒZ[ƒWID
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getPingSendErrorMessageId();
 
     /**
-     * Ping‘—MƒGƒ‰[‚ª”­¶‚µ‚½Û‚Éo—Í‚·‚éƒƒbƒZ[ƒWID‚ğİ’è‚·‚éBƒfƒtƒHƒ‹ƒg‚Í
-     * {@link #DEFAULT_PING_SEND_ERROR_MESSAGE_ID} B
+     * Pingé€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸéš›ã«å‡ºåŠ›ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯
+     * {@link #DEFAULT_PING_SEND_ERROR_MESSAGE_ID} ã€‚
      *
      * @param messageId
      */

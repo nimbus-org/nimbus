@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.sftp.jsch;
 import jp.ossc.nimbus.service.sftp.SFTPException;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg¶¬ƒ^ƒCƒ€ƒAƒEƒg—áŠOB<p>
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆç”Ÿæˆã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,35 +43,35 @@ public class SFTPClientCreateTimeoutException extends SFTPException {
     private static final long serialVersionUID = 3680448762842402399L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public SFTPClientCreateTimeoutException() {
         super();
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public SFTPClientCreateTimeoutException(String message) {
         super(message);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŽŸå› 
      */
     public SFTPClientCreateTimeoutException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param cause Œ´ˆö
+     * @param cause åŽŸå› 
      */
     public SFTPClientCreateTimeoutException(Throwable cause) {
         super(cause);

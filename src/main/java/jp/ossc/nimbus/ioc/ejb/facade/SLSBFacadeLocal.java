@@ -29,14 +29,14 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.facade;
-// ƒCƒ“ƒ|[ƒg
-//ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.*;
 import jp.ossc.nimbus.ioc.*;
 /**
- * FacadeValue‚ğÀs‚·‚éEJBƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * FacadeValueã‚’å®Ÿè¡Œã™ã‚‹EJBãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -44,20 +44,20 @@ import jp.ossc.nimbus.ioc.*;
 public interface SLSBFacadeLocal extends EJBLocalObject {
 	
 	/**
-	 * FacadeValue‚ğÀs‚·‚éB
-	 * –{—ˆƒpƒ‰ƒ[ƒ^‚Æ‚µ‚ÄCommandsValue‚ğó‚¯æ‚é‚ª
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^[‚É‚æ‚è•ÏŠ·‚³‚ê‚éê‡‚ğl—¶‚µ‚Ä
-	 * ‚ä‚é‚¢Interface‚Æ‚µ‚Ä‚¢‚éB
+	 * FacadeValueã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+	 * æœ¬æ¥ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦CommandsValueã‚’å—ã‘å–ã‚‹ãŒ
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã«ã‚ˆã‚Šå¤‰æ›ã•ã‚Œã‚‹å ´åˆã‚’è€ƒæ…®ã—ã¦
+	 * ã‚†ã‚‹ã„Interfaceã¨ã—ã¦ã„ã‚‹ã€‚
 	 * @param vallue
-	 * @return o—ÍƒIƒuƒWƒFƒNƒg
+	 * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws RemoteException
 	 */
 	public Object invoke(Object vallue)  ;
 	
 	/**
-	 * FacadeValue‚ğÀs‚·‚éB
+	 * FacadeValueã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 	 * @param fv
-	 * @return@FacadeValue
+	 * @returnã€€FacadeValue
 	 * @throws RemoteException
 	 */
 	public FacadeValue invokeFacade(FacadeValue fv)  ; 

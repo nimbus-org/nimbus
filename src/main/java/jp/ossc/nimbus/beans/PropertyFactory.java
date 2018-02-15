@@ -32,32 +32,32 @@
 package jp.ossc.nimbus.beans;
 
 /**
- * ƒvƒƒpƒeƒBƒtƒ@ƒNƒgƒŠB<p>
- * ƒvƒƒpƒeƒB•¶š—ñ‚©‚çA‚»‚ÌƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ì{@link Property}ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠB<br>
- * ˆÈ‰º‚Ì‚æ‚¤‚ÈABean‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éƒAƒNƒZƒX•û–@‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‹ã‚‰ã€ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®{@link Property}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<br>
+ * ä»¥ä¸‹ã®ã‚ˆã†ãªã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th>ƒAƒNƒZƒX•û–@</th><th>Java•\Œ»</th><th>ƒvƒƒpƒeƒB•¶š—ñ•\Œ»</th></tr>
- *   <tr><td>ƒVƒ“ƒvƒ‹ƒvƒƒpƒeƒB{@link SimpleProperty}</td><td>bean.getHoge()<br>map.get("hoge")</td><td>hoge</td></tr>
- *   <tr><td>ƒlƒXƒgƒvƒƒpƒeƒB{@link NestedProperty}</td><td>bean.getHoge().getFuga()</td><td>hoge.fuga</td></tr>
- *   <tr><td>ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB{@link IndexedProperty}</td><td>bean.getHoge(1)<br>((List)bean.getHoge()).get(1)<br>((Object[])bean.getHoge())[1]</td><td>hoge[1]</td></tr>
- *   <tr><td>ƒ}ƒbƒvƒvƒƒpƒeƒB{@link MappedProperty}</td><td>bean.getHoge("fuga")</td><td>hoge(fuga)</td></tr>
- *   <tr><td>˜AŒ‹ƒvƒƒpƒeƒB{@link ConcatenatedProperty}</td><td>bean.getHoge() + bean.getFuga()</td><td>hoge+fuga</td></tr>
- *   <tr><td>ORƒvƒƒpƒeƒB{@link OrProperty}</td><td>bean.getHoge() != null ?  bean.getHoge() : bean.getFuga()</td><td>hoge|fuga</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•</th><th>Javaè¡¨ç¾</th><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—è¡¨ç¾</th></tr>
+ *   <tr><td>ã‚·ãƒ³ãƒ—ãƒ«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£{@link SimpleProperty}</td><td>bean.getHoge()<br>map.get("hoge")</td><td>hoge</td></tr>
+ *   <tr><td>ãƒã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£{@link NestedProperty}</td><td>bean.getHoge().getFuga()</td><td>hoge.fuga</td></tr>
+ *   <tr><td>ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£{@link IndexedProperty}</td><td>bean.getHoge(1)<br>((List)bean.getHoge()).get(1)<br>((Object[])bean.getHoge())[1]</td><td>hoge[1]</td></tr>
+ *   <tr><td>ãƒãƒƒãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£{@link MappedProperty}</td><td>bean.getHoge("fuga")</td><td>hoge(fuga)</td></tr>
+ *   <tr><td>é€£çµãƒ—ãƒ­ãƒ‘ãƒ†ã‚£{@link ConcatenatedProperty}</td><td>bean.getHoge() + bean.getFuga()</td><td>hoge+fuga</td></tr>
+ *   <tr><td>ORãƒ—ãƒ­ãƒ‘ãƒ†ã‚£{@link OrProperty}</td><td>bean.getHoge() != null ?  bean.getHoge() : bean.getFuga()</td><td>hoge|fuga</td></tr>
  * </table>
  * <p>
- * ˆÈ‰º‚ÉƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  *     import java.util.*;
  *     import jp.ossc.nimbus.beans.*;
  *     
- *     // Map‚ÉList‚ªŠi”[‚³‚ê‚½ƒlƒXƒg‚µ‚½\‘¢‚ÌBean‚ğ¶¬‚·‚é
+ *     // Mapã«ListãŒæ ¼ç´ã•ã‚ŒãŸãƒã‚¹ãƒˆã—ãŸæ§‹é€ ã®Beanã‚’ç”Ÿæˆã™ã‚‹
  *     Map map = new HashMap();
  *     List list = new ArrayList();
  *     list.add("a");
  *     list.add("b");
  *     map.put("A", list);
  *     
- *     // ƒlƒXƒg‚³‚ê‚½\‘¢‚ÌBean‚©‚ç––’[‚Ì’l‚ğæ‚èo‚·
+ *     // ãƒã‚¹ãƒˆã•ã‚ŒãŸæ§‹é€ ã®Beanã‹ã‚‰æœ«ç«¯ã®å€¤ã‚’å–ã‚Šå‡ºã™
  *     Property prop = PropertyFactory.createProperty("A[0]");
  *     String val = (String)prop.getProperty(map);
  * </pre>
@@ -76,11 +76,11 @@ public class PropertyFactory implements java.io.Serializable{
     private static final long serialVersionUID = 393005154068498255L;
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB•¶š—ñ‚Å•\Œ»‚³‚ê‚½ƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ì{@link Property}ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã§è¡¨ç¾ã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®{@link Property}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param prop ƒvƒƒpƒeƒB•¶š—ñ
-     * @return ƒvƒƒpƒeƒB•¶š—ñ‚Å•\Œ»‚³‚ê‚½ƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌPropertyƒIƒuƒWƒFƒNƒg
-     * @exception w’è‚³‚ê‚½ƒvƒƒpƒeƒB•¶š—ñ‚ª•s³‚Èê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã§è¡¨ç¾ã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®Propertyã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ãŒä¸æ­£ãªå ´åˆ
      */
     public static Property createProperty(String prop)
      throws IllegalArgumentException{

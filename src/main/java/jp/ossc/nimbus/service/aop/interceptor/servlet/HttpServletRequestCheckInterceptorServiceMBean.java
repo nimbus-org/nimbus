@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import java.util.Properties;
 
 /**
- * {@link HttpServletRequestCheckInterceptorService}��MBean�C���^�t�F�[�X�B<p>
+ * {@link HttpServletRequestCheckInterceptorService}のMBeanインタフェース。<p>
  * 
  * @author M.Takata
  * @see HttpServletRequestCheckInterceptorService
@@ -43,317 +43,317 @@ public interface HttpServletRequestCheckInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Length�̍ő�l��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AContent-Length�̍ő�l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストヘッダのContent-Lengthの最大値を設定する。<p>
+     * 設定しない場合は、Content-Lengthの最大値はチェックされない。<br>
      *
-     * @param max Content-Length�̍ő�l
+     * @param max Content-Lengthの最大値
      */
     public void setMaxContentLength(int max);
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Length�̍ő�l���擾����B<p>
+     * リクエストヘッダのContent-Lengthの最大値を取得する。<p>
      *
-     * @return Content-Length�̍ő�l
+     * @return Content-Lengthの最大値
      */
     public int getMaxContentLength();
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Length�̍ŏ��l��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AContent-Length�̍ŏ��l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストヘッダのContent-Lengthの最小値を設定する。<p>
+     * 設定しない場合は、Content-Lengthの最小値はチェックされない。<br>
      *
-     * @param min Content-Length�̍ŏ��l
+     * @param min Content-Lengthの最小値
      */
     public void setMinContentLength(int min);
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Length�̍ŏ��l���擾����B<p>
+     * リクエストヘッダのContent-Lengthの最小値を取得する。<p>
      *
-     * @return Content-Length�̍ŏ��l
+     * @return Content-Lengthの最小値
      */
     public int getMinContentLength();
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Type��null�ł��鎖�����e���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * リクエストヘッダのContent-Typeがnullである事を許容するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isAllow Content-Type��null�ł��鎖�����e����ꍇ�Atrue
+     * @param isAllow Content-Typeがnullである事を許容する場合、true
      */
     public void setAllowNullContentType(boolean isAllow);
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Type��null�ł��鎖�����e���邩�ǂ����𔻒肷��B<p>
+     * リクエストヘッダのContent-Typeがnullである事を許容するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�AContent-Type��null�ł��鎖�����e����
+     * @return trueの場合、Content-Typeがnullである事を許容する
      */
     public boolean isAllowNullContentType();
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Type�̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AContent-Type�̒l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストヘッダのContent-Typeの値として有効な値を設定する。<p>
+     * 設定しない場合は、Content-Typeの値はチェックされない。<br>
      *
-     * @param types Content-Type�̒l�Ƃ��ėL���Ȓl�̕�����z��
+     * @param types Content-Typeの値として有効な値の文字列配列
      */
     public void setValidContentTypes(String[] types);
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Type�̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * リクエストヘッダのContent-Typeの値として有効な値を取得する。<p>
      *
-     * @return Content-Type�̒l�Ƃ��ėL���Ȓl�̕�����z��
+     * @return Content-Typeの値として有効な値の文字列配列
      */
     public String[] getValidContentTypes();
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Type�̒l�Ƃ��Ė����Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AContent-Type�̒l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストヘッダのContent-Typeの値として無効な値を設定する。<p>
+     * 設定しない場合は、Content-Typeの値はチェックされない。<br>
      *
-     * @param types Content-Type�̒l�Ƃ��Ė����Ȓl�̕�����z��
+     * @param types Content-Typeの値として無効な値の文字列配列
      */
     public void setInvalidContentTypes(String[] types);
     
     /**
-     * ���N�G�X�g�w�b�_��Content-Type�̒l�Ƃ��Ė����Ȓl���擾����B<p>
+     * リクエストヘッダのContent-Typeの値として無効な値を取得する。<p>
      *
-     * @return Content-Type�̒l�Ƃ��Ė����Ȓl�̕�����z��
+     * @return Content-Typeの値として無効な値の文字列配列
      */
     public String[] getInvalidContentTypes();
     
     /**
-     * ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O���w�肳��Ă��Ȃ��������e���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * リクエストボディの文字エンコーディングが指定されていない事を許容するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isAllow ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O���w�肳��Ă��Ȃ��������e����ꍇ�Atrue
+     * @param isAllow リクエストボディの文字エンコーディングが指定されていない事を許容する場合、true
      */
     public void setAllowNullCharacterEncoding(boolean isAllow);
     
     /**
-     * ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O���w�肳��Ă��Ȃ��������e���邩�ǂ����𔻒肷��B<p>
+     * リクエストボディの文字エンコーディングが指定されていない事を許容するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���N�G�X�g�{�f�B�̕����G���R�[�f�B���O���w�肳��Ă��Ȃ��������e����
+     * @return trueの場合、リクエストボディの文字エンコーディングが指定されていない事を許容する
      */
     public boolean isAllowNullCharacterEncoding();
     
     /**
-     * ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�����G���R�[�f�B���O�̓`�F�b�N����Ȃ��B<br>
+     * リクエストボディの文字エンコーディングとして有効な値を設定する。<p>
+     * 設定しない場合は、文字エンコーディングはチェックされない。<br>
      *
-     * @param encodings �����G���R�[�f�B���O�Ƃ��ėL���Ȓl�̕�����z��
+     * @param encodings 文字エンコーディングとして有効な値の文字列配列
      */
     public void setValidCharacterEncodings(String[] encodings);
     
     /**
-     * ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O�Ƃ��ėL���Ȓl���擾����B<p>
+     * リクエストボディの文字エンコーディングとして有効な値を取得する。<p>
      *
-     * @return �����G���R�[�f�B���O�Ƃ��ėL���Ȓl�̕�����z��
+     * @return 文字エンコーディングとして有効な値の文字列配列
      */
     public String[] getValidCharacterEncodings();
     
     /**
-     * ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O�Ƃ��Ė����Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�����G���R�[�f�B���O�̓`�F�b�N����Ȃ��B<br>
+     * リクエストボディの文字エンコーディングとして無効な値を設定する。<p>
+     * 設定しない場合は、文字エンコーディングはチェックされない。<br>
      *
-     * @param encodings �����G���R�[�f�B���O�Ƃ��Ė����Ȓl�̕�����z��
+     * @param encodings 文字エンコーディングとして無効な値の文字列配列
      */
     public void setInvalidCharacterEncodings(String[] encodings);
     
     /**
-     * ���N�G�X�g�{�f�B�̕����G���R�[�f�B���O�Ƃ��Ė����Ȓl���擾����B<p>
+     * リクエストボディの文字エンコーディングとして無効な値を取得する。<p>
      *
-     * @return �����G���R�[�f�B���O�Ƃ��Ė����Ȓl�̕�����z��
+     * @return 文字エンコーディングとして無効な値の文字列配列
      */
     public String[] getInvalidCharacterEncodings();
     
     /**
-     * ���N�G�X�g�w�b�_��Accept-Language��null�ł��鎖�����e���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * リクエストヘッダのAccept-Languageがnullである事を許容するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isAllow Accept-Language��null�ł��鎖�����e����ꍇ�Atrue
+     * @param isAllow Accept-Languageがnullである事を許容する場合、true
      */
     public void setAllowNullLocale(boolean isAllow);
     
     /**
-     * ���N�G�X�g�w�b�_��Accept-Language��null�ł��鎖�����e���邩�ǂ����𔻒肷��B<p>
+     * リクエストヘッダのAccept-Languageがnullである事を許容するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�AAccept-Language��null�ł��鎖�����e����
+     * @return trueの場合、Accept-Languageがnullである事を許容する
      */
     public boolean isAllowNullLocale();
     
     /**
-     * ���N�G�X�g�w�b�_��Accept-Language�̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AAccept-Language�̒l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストヘッダのAccept-Languageの値として有効な値を設定する。<p>
+     * 設定しない場合は、Accept-Languageの値はチェックされない。<br>
      *
-     * @param locales Accept-Language�̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @param locales Accept-Languageの値として有効な値（正規表現）の文字列配列
      */
     public void setValidLocales(String[] locales);
     
     /**
-     * ���N�G�X�g�w�b�_��Accept-Language�̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * リクエストヘッダのAccept-Languageの値として有効な値を取得する。<p>
      *
-     * @return Accept-Language�̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @return Accept-Languageの値として有効な値（正規表現）の文字列配列
      */
     public String[] getValidLocales();
     
     /**
-     * ���N�G�X�g�̃v���g�R���̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�v���g�R���̒l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストのプロトコルの値として有効な値を設定する。<p>
+     * 設定しない場合は、プロトコルの値はチェックされない。<br>
      *
-     * @param protocols �v���g�R���̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @param protocols プロトコルの値として有効な値（正規表現）の文字列配列
      */
     public void setValidProtocols(String[] protocols);
     
     /**
-     * ���N�G�X�g�̃v���g�R���̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * リクエストのプロトコルの値として有効な値を取得する。<p>
      *
-     * @return �v���g�R���̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @return プロトコルの値として有効な値（正規表現）の文字列配列
      */
     public String[] getValidProtocols();
     
     /**
-     * �N���C�A���g��IP�A�h���X�̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AIP�A�h���X�̒l�̓`�F�b�N����Ȃ��B<br>
+     * クライアントのIPアドレスの値として有効な値を設定する。<p>
+     * 設定しない場合は、IPアドレスの値はチェックされない。<br>
      *
-     * @param addrs IP�A�h���X�̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @param addrs IPアドレスの値として有効な値（正規表現）の文字列配列
      */
     public void setValidRemoteAddrs(String[] addrs);
     
     /**
-     * �N���C�A���g��IP�A�h���X�̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * クライアントのIPアドレスの値として有効な値を取得する。<p>
      *
-     * @return IP�A�h���X�̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @return IPアドレスの値として有効な値（正規表現）の文字列配列
      */
     public String[] getValidRemoteAddrs();
     
     /**
-     * �N���C�A���g�̃z�X�g���Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�z�X�g���̓`�F�b�N����Ȃ��B<br>
+     * クライアントのホスト名として有効な値を設定する。<p>
+     * 設定しない場合は、ホスト名はチェックされない。<br>
      *
-     * @param hosts �z�X�g���Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @param hosts ホスト名として有効な値（正規表現）の文字列配列
      */
     public void setValidRemoteHosts(String[] hosts);
     
     /**
-     * �N���C�A���g�̃z�X�g���Ƃ��ėL���Ȓl���擾����B<p>
+     * クライアントのホスト名として有効な値を取得する。<p>
      *
-     * @return �z�X�g���Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @return ホスト名として有効な値（正規表現）の文字列配列
      */
     public String[] getValidRemoteHosts();
     
     /**
-     * �N���C�A���g�̃|�[�g�ԍ��Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�|�[�g�ԍ��̓`�F�b�N����Ȃ��B<br>
+     * クライアントのポート番号として有効な値を設定する。<p>
+     * 設定しない場合は、ポート番号はチェックされない。<br>
      *
-     * @param ports �|�[�g�ԍ��Ƃ��ėL���Ȓl�̔z��
+     * @param ports ポート番号として有効な値の配列
      */
     public void setValidRemotePorts(int[] ports);
     
     /**
-     * �N���C�A���g�̃|�[�g�ԍ��Ƃ��ėL���Ȓl���擾����B<p>
+     * クライアントのポート番号として有効な値を取得する。<p>
      *
-     * @return �|�[�g�ԍ��Ƃ��ėL���Ȓl�̔z��
+     * @return ポート番号として有効な値の配列
      */
     public int[] getValidRemotePorts();
     
     /**
-     * ���N�G�X�gURL�̃X�L�[�}�̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�X�L�[�}�̒l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストURLのスキーマの値として有効な値を設定する。<p>
+     * 設定しない場合は、スキーマの値はチェックされない。<br>
      *
-     * @param schemata �X�L�[�}�̒l�Ƃ��ėL���Ȓl�̕�����z��
+     * @param schemata スキーマの値として有効な値の文字列配列
      */
     public void setValidSchemata(String[] schemata);
     
     /**
-     * ���N�G�X�gURL�̃X�L�[�}�̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * リクエストURLのスキーマの値として有効な値を取得する。<p>
      *
-     * @return �X�L�[�}�̒l�Ƃ��ėL���Ȓl�̕�����z��
+     * @return スキーマの値として有効な値の文字列配列
      */
     public String[] getValidSchemata();
     
     /**
-     * ���N�G�X�gURL�̃z�X�g���̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�z�X�g���̒l�̓`�F�b�N����Ȃ��B<br>
+     * リクエストURLのホスト名の値として有効な値を設定する。<p>
+     * 設定しない場合は、ホスト名の値はチェックされない。<br>
      *
-     * @param names �z�X�g���̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @param names ホスト名の値として有効な値（正規表現）の文字列配列
      */
     public void setValidServerNames(String[] names);
     
     /**
-     * ���N�G�X�gURL�̃z�X�g���̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * リクエストURLのホスト名の値として有効な値を取得する。<p>
      *
-     * @return �z�X�g���̒l�Ƃ��ėL���Ȓl�i���K�\���j�̕�����z��
+     * @return ホスト名の値として有効な値（正規表現）の文字列配列
      */
     public String[] getValidServerNames();
     
     /**
-     * HTTP���N�G�X�g�̃��\�b�h���̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A���\�b�h���̒l�̓`�F�b�N����Ȃ��B<br>
+     * HTTPリクエストのメソッド名の値として有効な値を設定する。<p>
+     * 設定しない場合は、メソッド名の値はチェックされない。<br>
      *
-     * @param methods ���\�b�h���̒l�Ƃ��ėL���Ȓl�̕�����z��
+     * @param methods メソッド名の値として有効な値の文字列配列
      */
     public void setValidMethods(String[] methods);
     
     /**
-     * HTTP���N�G�X�g�̃��\�b�h���̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * HTTPリクエストのメソッド名の値として有効な値を取得する。<p>
      *
-     * @return ���\�b�h���̒l�Ƃ��ėL���Ȓl�̕�����z��
+     * @return メソッド名の値として有効な値の文字列配列
      */
     public String[] getValidMethods();
     
     /**
-     * HTTP���N�G�X�g�̃��\�b�h���̒l�Ƃ��Ė����Ȓl��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A���\�b�h���̒l�̓`�F�b�N����Ȃ��B<br>
+     * HTTPリクエストのメソッド名の値として無効な値を設定する。<p>
+     * 設定しない場合は、メソッド名の値はチェックされない。<br>
      *
-     * @param methods ���\�b�h���̒l�Ƃ��Ė����Ȓl�̕�����z��
+     * @param methods メソッド名の値として無効な値の文字列配列
      */
     public void setInvalidMethods(String[] methods);
     
     /**
-     * HTTP���N�G�X�g�̃��\�b�h���̒l�Ƃ��Ė����Ȓl���擾����B<p>
+     * HTTPリクエストのメソッド名の値として無効な値を取得する。<p>
      *
-     * @return ���\�b�h���̒l�Ƃ��Ė����Ȓl�̕�����z��
+     * @return メソッド名の値として無効な値の文字列配列
      */
     public String[] getInvalidMethods();
     
     /**
-     * �C�ӂ̃��N�G�X�g�w�b�_�̒l�Ƃ��ėL���Ȓl��ݒ肷��B<p>
+     * 任意のリクエストヘッダの値として有効な値を設定する。<p>
      *
-     * @param cond �C�ӂ̃��N�G�X�g�w�b�_���ƗL���Ȓl�i���K�\���j�̃}�b�s���O�B���N�G�X�g�w�b�_��=�l�i���K�\���j
+     * @param cond 任意のリクエストヘッダ名と有効な値（正規表現）のマッピング。リクエストヘッダ名=値（正規表現）
      */
     public void setHeaderEquals(Properties cond);
     
     /**
-     * �C�ӂ̃��N�G�X�g�w�b�_�̒l�Ƃ��ėL���Ȓl���擾����B<p>
+     * 任意のリクエストヘッダの値として有効な値を取得する。<p>
      *
-     * @return �C�ӂ̃��N�G�X�g�w�b�_���ƗL���Ȓl�i���K�\���j�̃}�b�s���O
+     * @return 任意のリクエストヘッダ名と有効な値（正規表現）のマッピング
      */
     public Properties getHeaderEquals();
     
     /**
-     * �`�F�b�N�G���[�ɂȂ����ꍇ�ɕԂ�HTTP���X�|���X�̃X�e�[�^�X��ݒ肷��B<p>
-     * �f�t�H���g�́A400�B<br>
-     * {@link #isThrowOnError()}��true�̏ꍇ�́A���̐ݒ�͖����ł���B<br>
+     * チェックエラーになった場合に返すHTTPレスポンスのステータスを設定する。<p>
+     * デフォルトは、400。<br>
+     * {@link #isThrowOnError()}がtrueの場合は、この設定は無効である。<br>
      *
-     * @param status HTTP���X�|���X�̃X�e�[�^�X
+     * @param status HTTPレスポンスのステータス
      */
     public void setErrorStatus(int status);
     
     /**
-     * �`�F�b�N�G���[�ɂȂ����ꍇ�ɕԂ�HTTP���X�|���X�̃X�e�[�^�X���擾����B<p>
+     * チェックエラーになった場合に返すHTTPレスポンスのステータスを取得する。<p>
      *
-     * @return HTTP���X�|���X�̃X�e�[�^�X
+     * @return HTTPレスポンスのステータス
      */
     public int getErrorStatus();
     
     /**
-     * �`�F�b�N�G���[�ɂȂ����ꍇ�ɗ�O��throw���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * チェックエラーになった場合に例外をthrowするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isThrow �`�F�b�N�G���[�ɂȂ����ꍇ�ɗ�O��throw����ꍇ�Atrue
+     * @param isThrow チェックエラーになった場合に例外をthrowする場合、true
      */
     public void setThrowOnError(boolean isThrow);
     
     /**
-     * �`�F�b�N�G���[�ɂȂ����ꍇ�ɗ�O��throw���邩�ǂ����𔻒肷��B<p>
+     * チェックエラーになった場合に例外をthrowするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�`�F�b�N�G���[�ɂȂ����ꍇ�ɗ�O��throw����
+     * @return trueの場合、チェックエラーになった場合に例外をthrowする
      */
     public boolean isThrowOnError();
 }

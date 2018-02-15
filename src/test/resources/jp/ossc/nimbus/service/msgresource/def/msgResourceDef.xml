@@ -1,6 +1,6 @@
-<?xml version = "1.0" encoding="Shift_JIS"?>
+<?xml version = "1.0" encoding="UTF-8"?>
 <MessageResourceDefine>
-<Message name="" display="TextƒƒbƒZ[ƒW‚ÌƒŠƒNƒGƒXƒgƒŠƒvƒ‰ƒC" selectKey="1">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒªãƒ—ãƒ©ã‚¤" selectKey="1">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -28,7 +28,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Byte)" selectKey="2">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Byte)" selectKey="2">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -59,7 +59,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Bytes)" selectKey="3">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Bytes)" selectKey="3">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -92,7 +92,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Boolean)" selectKey="4">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Boolean)" selectKey="4">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -124,7 +124,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Char)" selectKey="5">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Char)" selectKey="5">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -145,7 +145,7 @@
 			<item name="prop3" type="Byte">31</item>
 		</prop>
 		<payload>
-			<item type="Char">“Á</item>
+			<item type="Char">ç‰¹</item>
 		</payload>
 	</SendData>
 	<RecvData type="Bytes">
@@ -156,7 +156,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Int)" selectKey="6">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Int)" selectKey="6">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -188,7 +188,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Short)" selectKey="7">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Short)" selectKey="7">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -220,7 +220,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Long)" selectKey="8">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Long)" selectKey="8">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -252,7 +252,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Float)" selectKey="9">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Float)" selectKey="9">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -284,7 +284,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Double)" selectKey="10">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Double)" selectKey="10">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -316,7 +316,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(UTF)" selectKey="11">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(UTF)" selectKey="11">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -348,7 +348,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Byte)" selectKey="12">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Byte)" selectKey="12">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -381,7 +381,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Bytes)" selectKey="13">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Bytes)" selectKey="13">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -413,7 +413,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Boolean)" selectKey="14">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Boolean)" selectKey="14">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -445,7 +445,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Char)" selectKey="15">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Char)" selectKey="15">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -466,7 +466,7 @@
 			<item name="prop3" type="Byte">31</item>
 		</prop>
 		<payload>
-			<item type="Char">“Á</item>
+			<item type="Char">ç‰¹</item>
 		</payload>
 	</SendData>
 	<RecvData type="Bytes">
@@ -477,7 +477,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Int)" selectKey="16">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Int)" selectKey="16">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -509,7 +509,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Short)" selectKey="17">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Short)" selectKey="17">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -541,7 +541,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Long)" selectKey="18">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Long)" selectKey="18">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -573,7 +573,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Float)" selectKey="19">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Float)" selectKey="19">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -605,7 +605,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Double)" selectKey="20">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Double)" selectKey="20">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -637,7 +637,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(String)" selectKey="21">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(String)" selectKey="21">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -669,7 +669,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="BytesƒƒbƒZ[ƒW(Object)" selectKey="22">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="22">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -701,7 +701,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="23">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="23">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -733,7 +733,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="StreamƒƒbƒZ[ƒW(Int) File‚Ìƒf[ƒ^‚ğg‚¤" selectKey="24">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Int) Fileã®ãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ã†" selectKey="24">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -759,7 +759,7 @@
 			<item type="Int" resourceType="file">2</item>
 		</payload>
 		<payload>
-			<!--–³‹‚³‚ê‚é-->
+			<!--ç„¡è¦–ã•ã‚Œã‚‹-->
 			<item type="Int">999</item>
 			<item type="Short">888</item>
 			<item type="Long">777</item>
@@ -773,7 +773,7 @@
 			<item type="Int"></item>
 		</payload>
 		<payload>
-			<!--–³‹‚³‚ê‚é-->
+			<!--ç„¡è¦–ã•ã‚Œã‚‹-->
 			<item type="Int"></item>
 			<item type="Short"></item>
 			<item type="Long"></item>
@@ -783,9 +783,9 @@
 	</RecvData>
 </Message>
 
-<!--•s³’è‹` ƒyƒCƒ[ƒh‚Ìitem‚ÉAtype‘®«–³‚µ-->
+<!--ä¸æ­£å®šç¾© ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®itemã«ã€typeå±æ€§ç„¡ã—-->
 <!--
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="26">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="26">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -818,9 +818,9 @@
 </Message>
 -->
 
-<!--•s³’è‹`RecvDataƒGƒŒƒƒ“ƒg‚ÉApayloadƒGƒŒƒƒ“ƒg–³‚µ-->
+<!--ä¸æ­£å®šç¾©RecvDataã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã«ã€payloadã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆç„¡ã—-->
 <!--
-<Message name="" display="StreamƒƒbƒZ[ƒW(Int) File‚Ìƒf[ƒ^‚ğg‚¤" selectKey="25">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Int) Fileã®ãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ã†" selectKey="25">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -851,7 +851,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="27">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="27">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -883,7 +883,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="28">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="28">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -915,7 +915,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="29">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="29">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -944,7 +944,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="30">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="30">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -977,7 +977,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="BytesƒƒbƒZ[ƒW(Object)" selectKey="31">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="31">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1010,7 +1010,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="BytesƒƒbƒZ[ƒW(Object)" selectKey="32">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="32">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1043,7 +1043,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="BytesƒƒbƒZ[ƒW(Object)" selectKey="33">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="33">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1075,7 +1075,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="BytesƒƒbƒZ[ƒW(Object)" selectKey="34">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="34">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1108,7 +1108,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="24">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="24">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1138,7 +1138,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="ObjectƒƒbƒZ[ƒW" selectKey="25">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="25">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1170,8 +1170,8 @@
 </Message>
 -->
 
-<!-- •s³’è‹`
-<Message name="" display="TextƒƒbƒZ[ƒW‚ÌƒŠƒNƒGƒXƒgƒŠƒvƒ‰ƒC" selectKey="35">
+<!-- ä¸æ­£å®šç¾©
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒªãƒ—ãƒ©ã‚¤" selectKey="35">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1200,7 +1200,7 @@
 	</RecvData>
 </Message>
 -->
-<Message name="" display="MapƒƒbƒZ[ƒW(Byte)" selectKey="36">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Byte)" selectKey="36">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1224,7 +1224,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Bytes)" selectKey="37">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Bytes)" selectKey="37">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1248,7 +1248,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Boolean)" selectKey="38">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Boolean)" selectKey="38">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1272,7 +1272,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Short)" selectKey="39">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Short)" selectKey="39">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1296,7 +1296,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Char)" selectKey="40">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Char)" selectKey="40">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1314,13 +1314,13 @@
 			<item name="prop1" type="String">property1</item>
 		</prop>
 		<payload>
-			<item name="map_payload1" type="Char">“Á</item>
+			<item name="map_payload1" type="Char">ç‰¹</item>
 		</payload>
 	</SendData>
 	<RecvData type="Map">	map_payload1
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Int)" selectKey="41">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Int)" selectKey="41">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1344,7 +1344,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Long)" selectKey="42">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Long)" selectKey="42">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1353,7 +1353,7 @@
 	</BLFlow>
 		if(type.equals(TYPE_BYTES_STR)){
 			if(propertyMode){
-				//ƒvƒƒpƒeƒB‚É"Bytes"‚Í‚È‚¢B
+				//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«"Bytes"ã¯ãªã„ã€‚
 				return -1;
 			}
 			return TYPE_BYTES;
@@ -1375,7 +1375,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Float)" selectKey="43">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Float)" selectKey="43">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1399,7 +1399,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Double)" selectKey="44">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Double)" selectKey="44">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1418,13 +1418,13 @@
 		</prop>
 		<payload>
 			<item name="map_payload1" type="Double">6.5432</item>
-³í
+æ­£å¸¸
 		</payload>
 	</SendData>
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(String)" selectKey="45">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(String)" selectKey="45">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1448,7 +1448,7 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW(Object)" selectKey="46">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="46">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1472,8 +1472,8 @@
 	<RecvData type="Map">	
 	</RecvData>
 </Message>
-<!-- wrappedType‘®«‚È‚µ
-<Message name="" display="MapƒƒbƒZ[ƒW(Object)" selectKey="47">
+<!-- wrappedTypeå±æ€§ãªã—
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="47">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1498,8 +1498,8 @@
 	</RecvData>
 </Message>
 -->
-<!-- •s³‚ÈwrappedType
-<Message name="" display="MapƒƒbƒZ[ƒW(Object)" selectKey="48">
+<!-- ä¸æ­£ãªwrappedType
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="48">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1524,8 +1524,8 @@
 	</RecvData>
 </Message>
 -->
-<!-- resourceType‚ªfile‚È‚Ì‚ÉAƒf[ƒ^ƒtƒ@ƒCƒ‹‚Ìw’è‚È‚µB
-<Message name="" display="TextƒƒbƒZ[ƒW‚ÌƒŠƒNƒGƒXƒgƒŠƒvƒ‰ƒC" selectKey="49">
+<!-- resourceTypeãŒfileãªã®ã«ã€ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®šãªã—ã€‚
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒªãƒ—ãƒ©ã‚¤" selectKey="49">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1552,8 +1552,8 @@
 	</RecvData>
 </Message>
 -->
-<!-- •s³‚Ètypew’è
-<Message name="" display="TextƒƒbƒZ[ƒW‚ÌƒŠƒNƒGƒXƒgƒŠƒvƒ‰ƒC" selectKey="50">
+<!-- ä¸æ­£ãªtypeæŒ‡å®š
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒªãƒ—ãƒ©ã‚¤" selectKey="50">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1577,7 +1577,7 @@
 	</RecvData>
 </Message>
 -->
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="51">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="51">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1610,7 +1610,7 @@
 	</RecvData>
 </Message>
 
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="52">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="52">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1629,7 +1629,7 @@
 			<item name="prop1" type="Byte">30</item>
 			<item name="prop2" type="Boolean">false</item>
 			<item name="prop3" type="Short">999</item>
-			<!-- prop4,prop5‚Íƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚Ş -->
+			<!-- prop4,prop5ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€ -->
 			<item name="prop4" type="String" resourceType="file"></item>
 			<item name="prop5" type="String" resourceType="file"></item>
 		</prop>
@@ -1640,7 +1640,7 @@
 	<RecvData type="Map">
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="53">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="53">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1659,7 +1659,7 @@
 			<item name="prop1" type="Byte">30</item>
 			<item name="prop2" type="Boolean">false</item>
 			<item name="prop3" type="Short">999</item>
-			<!-- prop4,prop5‚Íƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚Ş -->
+			<!-- prop4,prop5ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€ -->
 			<item name="prop4" type="String" resourceType="file"></item>
 			<item name="prop5" type="String" resourceType="file"></item>
 		</prop>
@@ -1672,7 +1672,7 @@
 	<RecvData type="Map">
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="54">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="54">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1691,7 +1691,7 @@
 			<item name="prop1" type="Byte">30</item>
 			<item name="prop2" type="Boolean">false</item>
 			<item name="prop3" type="Short">999</item>
-			<!-- prop4,prop5‚Íƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚Ş -->
+			<!-- prop4,prop5ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€ -->
 			<item name="prop4" type="String" resourceType="file"></item>
 			<item name="prop5" type="String" resourceType="file"></item>
 		</prop>
@@ -1704,7 +1704,7 @@
 	<RecvData type="Map">
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="55">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="55">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1723,7 +1723,7 @@
 			<item name="prop1" type="Byte">30</item>
 			<item name="prop2" type="Boolean">false</item>
 			<item name="prop3" type="Short">999</item>
-			<!-- prop4,prop5‚Íƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚Ş -->
+			<!-- prop4,prop5ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€ -->
 			<item name="prop4" type="String" resourceType="file"></item>
 			<item name="prop5" type="String" resourceType="file"></item>
 		</prop>
@@ -1736,7 +1736,7 @@
 	<RecvData type="Map">
 	</RecvData>
 </Message>
-<Message name="" display="MapƒƒbƒZ[ƒW" selectKey="56">
+<Message name="" display="Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="56">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1759,7 +1759,7 @@
 			<item name="map_payload1" type="Object" wrappedType="Byte">30</item>
 			<item name="map_payload2" type="Object" wrappedType="Bytes">30313233</item>
 			<item name="map_payload3" type="Object" wrappedType="Boolean">false</item>
-			<item name="map_payload4" type="Object" wrappedType="Char">½</item>
+			<item name="map_payload4" type="Object" wrappedType="Char">èª </item>
 			<item name="map_payload5" type="Object" wrappedType="Short">999</item>
 			<item name="map_payload6" type="Object" wrappedType="Int">99999</item>
 			<item name="map_payload7" type="Object" wrappedType="Long">9999999</item>
@@ -1771,7 +1771,7 @@
 	<RecvData type="Map">
 	</RecvData>
 </Message>
-<Message name="" display="BytesƒƒbƒZ[ƒW(Object)" selectKey="57">
+<Message name="" display="Bytesãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="57">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1795,7 +1795,7 @@
 			<item type="Object" wrappedType="Byte">30</item>
 			<item type="Object" wrappedType="Bytes">30313233</item>
 			<item type="Object" wrappedType="Boolean">false</item>
-			<item type="Object" wrappedType="Char">‹Z</item>
+			<item type="Object" wrappedType="Char">æŠ€</item>
 			<item type="Object" wrappedType="Short">555</item>
 			<item type="Object" wrappedType="Int">55555</item>
 			<item type="Object" wrappedType="Long">5555555</item>
@@ -1819,7 +1819,7 @@
 		</payload>
 	</RecvData>
 </Message>
-<Message name="" display="StreamƒƒbƒZ[ƒW(Object)" selectKey="58">
+<Message name="" display="Streamãƒ¡ãƒƒã‚»ãƒ¼ã‚¸(Object)" selectKey="58">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1842,7 +1842,7 @@
 			<item type="Object" wrappedType="Byte">30</item>
 			<item type="Object" wrappedType="Bytes">30313233</item>
 			<item type="Object" wrappedType="Boolean">false</item>
-			<item type="Object" wrappedType="Char">‹Z</item>
+			<item type="Object" wrappedType="Char">æŠ€</item>
 			<item type="Object" wrappedType="Short">555</item>
 			<item type="Object" wrappedType="Int">55555</item>
 			<item type="Object" wrappedType="Long">5555555</item>
@@ -1866,7 +1866,7 @@
 		</payload>
 	</RecvData>
 </Message>
-<Message name="" display="ObjectƒƒbƒZ[ƒW" selectKey="59">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="59">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1899,7 +1899,7 @@
 	<RecvData type="Object">
 	</RecvData>
 </Message>
-<Message name="" display="ObjectƒƒbƒZ[ƒW@•s³’è‹` attribute‚É•s³‚ÈƒJƒ‰ƒ€’l" selectKey="61">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€ä¸æ­£å®šç¾© attributeã«ä¸æ­£ãªã‚«ãƒ©ãƒ å€¤" selectKey="61">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1924,7 +1924,7 @@
 	<RecvData type="Object">
 	</RecvData>
 </Message>
-<Message name="" display="ObjectƒƒbƒZ[ƒW@•s³’è‹` attribute‚É•s³‚ÈƒJƒ‰ƒ€’l" selectKey="62">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€ä¸æ­£å®šç¾© attributeã«ä¸æ­£ãªã‚«ãƒ©ãƒ å€¤" selectKey="62">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1950,7 +1950,7 @@
 	</RecvData>
 </Message>
 <!--
-<Message name="" display="ObjectƒƒbƒZ[ƒW@ƒyƒCƒ[ƒh’è‹`‚È‚µ" selectKey="62">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰å®šç¾©ãªã—" selectKey="62">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1973,7 +1973,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="ObjectƒƒbƒZ[ƒW@•s³’è‹` payload—v‘f‚ÉƒNƒ‰ƒX–¼w’è‚È‚µ" selectKey="63">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€ä¸æ­£å®šç¾© payloadè¦ç´ ã«ã‚¯ãƒ©ã‚¹åæŒ‡å®šãªã—" selectKey="63">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -1998,7 +1998,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="ObjectƒƒbƒZ[ƒW ’è‹`•s³@attribute‚Éname‘®«‚È‚µB" selectKey="64">
+<Message name="" display="Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ å®šç¾©ä¸æ­£ã€€attributeã«nameå±æ€§ãªã—ã€‚" selectKey="64">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -2024,7 +2024,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="TextƒƒbƒZ[ƒW@RecvDataƒ^ƒO‚ª‚QŒÂB’è‹`•s³" selectKey="65">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€RecvDataã‚¿ã‚°ãŒï¼’å€‹ã€‚å®šç¾©ä¸æ­£" selectKey="65">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -2055,7 +2055,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="TextƒƒbƒZ[ƒW@SendDataƒ^ƒO‚Étype‘®«‚È‚µB’è‹`•s³" selectKey="66">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€SendDataã‚¿ã‚°ã«typeå±æ€§ãªã—ã€‚å®šç¾©ä¸æ­£" selectKey="66">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>
@@ -2084,7 +2084,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="TextƒƒbƒZ[ƒW@BLFlowƒ^ƒO‚Épattern‘®«‚È‚µB’è‹`•s³" selectKey="67">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€BLFlowã‚¿ã‚°ã«patternå±æ€§ãªã—ã€‚å®šç¾©ä¸æ­£" selectKey="67">
 	<BLFlow>
 		heat.rr.pattern1
 	</BLFlow>
@@ -2113,7 +2113,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="TextƒƒbƒZ[ƒW@BLFlowƒ^ƒO‚É’l‚È‚µB’è‹`•s³" selectKey="68">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€BLFlowã‚¿ã‚°ã«å€¤ãªã—ã€‚å®šç¾©ä¸æ­£" selectKey="68">
 	<BLFlow pattern="heat.reqrep">
 	</BLFlow>
 	<BLFlow pattern="heat.req">
@@ -2141,7 +2141,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="TextƒƒbƒZ[ƒW@selectKey‚È‚µB’è‹`•s³">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€€selectKeyãªã—ã€‚å®šç¾©ä¸æ­£">
 	<BLFlow pattern="heat.reqrep">
 	</BLFlow>
 	<BLFlow pattern="heat.req">
@@ -2169,7 +2169,7 @@
 </Message>
 -->
 <!--
-<Message name="" display="TextƒƒbƒZ[ƒW" selectKey="69">
+<Message name="" display="Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" selectKey="69">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>

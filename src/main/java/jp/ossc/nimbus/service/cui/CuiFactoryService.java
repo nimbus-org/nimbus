@@ -40,11 +40,11 @@ import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import jp.ossc.nimbus.lang.*;
 /**
- *	ƒRƒ}ƒ“ƒh“ü—ÍƒT[ƒrƒX
- *	’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İAƒRƒ}ƒ“ƒh“ü—ÍƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB
+ *	ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ã‚µãƒ¼ãƒ“ã‚¹
+ *	å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/20| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/20ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class CuiFactoryService
 	extends ServiceBase
@@ -53,71 +53,71 @@ public class CuiFactoryService
 	
     private static final long serialVersionUID = -3162235897050844253L;
     
-    //ƒƒ“ƒo•Ï”
-	/** ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹”z’uƒfƒBƒŒƒNƒgƒŠ@*/
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«é…ç½®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€€*/
 	private String mDefFileDir = null;
-	/** ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹Šg’£q */
+	/** ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ */
 	private String mDefFileExt = null;
-	/** ƒRƒ}ƒ“ƒh“ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒnƒbƒVƒ… */
+	/** ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒã‚·ãƒ¥ */
 	private HashMap mCuiHash = null;
-	/** CuiÀ‘•ƒNƒ‰ƒX–¼ */
+	/** Cuiå®Ÿè£…ã‚¯ãƒ©ã‚¹å */
 	private String  mImplementClassName = null;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public CuiFactoryService() {
 		super();
 	}
 	/**
-	 * CuiOperatorÀ‘•ƒNƒ‰ƒX–¼ƒZƒbƒ^[
+	 * CuiOperatorå®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setImplementClassName(String name){
 		mImplementClassName = name;
 	}
 	/**
-	 * CuiOperatorÀ‘•ƒNƒ‰ƒX–¼ƒQƒbƒ^[
+	 * CuiOperatorå®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚²ãƒƒã‚¿ãƒ¼
 	 */
 	public String getImplementClassName(){
 		return mImplementClassName;
 	}	
 	/**
-	 * ¶¬
+	 * ç”Ÿæˆ
 	 */
 	public void createService(){
 		mCuiHash = new HashMap();
 	}
 	/**
-	 * ‹N“®
+	 * èµ·å‹•
 	 * 
 	 */
 	public void startService(){
-		//’è‹`ƒtƒ@ƒCƒ‹‚ğ’T‚µAƒ[ƒh‚·‚éB
+		//å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¢ã—ã€ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
 		File DefDir = new File(mDefFileDir);
 		ExtentionFileFilter filter = new ExtentionFileFilter(mDefFileExt);
 		File[] defFileList = DefDir.listFiles(filter);
-		//‚·‚×‚Ä‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ğOpen
+		//ã™ã¹ã¦ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’Open
 		if(defFileList != null){
 			for(int rCnt=0;rCnt<defFileList.length;rCnt++){
-				//ƒp[ƒX‚·‚éB
+				//ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚
 				parse(defFileList[rCnt]);
 			}
 		}
 	}
 	/**
-	 * ’â~
+	 * åœæ­¢
 	 * 
 	 * 
 	 */
 	public void stopService(){	
 	}
 	/**
-	 * ”jŠü
+	 * ç ´æ£„
 	 */
 	public void destroy(){
 		mCuiHash = null;
 	}
     /**
-     * ŠO•”AP‚ÉCuiƒCƒ“ƒXƒ^ƒ“ƒX‚ğ’ñ‹Ÿ‚·‚éB
+     * å¤–éƒ¨APã«Cuiã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æä¾›ã™ã‚‹ã€‚
      * @param key
      * @return Cui
      */
@@ -125,117 +125,117 @@ public class CuiFactoryService
 		return (Cui)mCuiHash.get(key);
 	}
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠƒZƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚»ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public void setDefFileDir(String dir){
 		mDefFileDir = dir;
 	}
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹Šg’£qƒZƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã‚»ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public void setDefFileExtention(String ext){
 		mDefFileExt = ext;
 	}
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠƒQƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚²ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public String getDefFileDir(){
 		return mDefFileDir;
 	}
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹Šg’£qƒQƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã‚²ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public String getDefFileExtention(){
 		return mDefFileExt;
 	}
 	/**
-	 * XML’è‹`ƒtƒ@ƒCƒ‹ƒp[ƒXƒƒ\ƒbƒh
+	 * XMLå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public void parse(File xmlFile) {
 		Element root = getRoot(xmlFile);
-		// dataInputƒGƒŒƒƒ“ƒg‚ğæ“¾
+		// dataInputã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
 		NodeList dataInputList = root.getElementsByTagName(DATAINPUT_TAG);
-		// ’è‹`‚³‚ê‚Ä‚¢‚édataInput‚Ì”ƒ‹[ƒv‚·‚éB
+		// å®šç¾©ã•ã‚Œã¦ã„ã‚‹dataInputã®æ•°ãƒ«ãƒ¼ãƒ—ã™ã‚‹ã€‚
 		for(int rCnt=0;rCnt<dataInputList.getLength();rCnt++){
 			Element dataInputElement = (Element)dataInputList.item(rCnt);
-			//key‚ğæ“¾
+			//keyã‚’å–å¾—
 			String key = dataInputElement.getAttribute(DATAINPUT_TAG_KEY_ATT);
 			if (key.length() < 1){
-				//’v–½“IƒGƒ‰[
+				//è‡´å‘½çš„ã‚¨ãƒ©ãƒ¼
 				throw new ServiceException("CUIFACTORY001","attribute name is none. tag name is"+ dataInputElement.getTagName());
 			}
-			//CuiOperatorƒIƒuƒWƒFƒNƒg‚ğ¶¬
+			//CuiOperatorã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
 			CuiOperator cuiObj = createCuiOperator();
-			//step—v‘f‚ğæ“¾
+			//stepè¦ç´ ã‚’å–å¾—
 			NodeList steps = dataInputElement.getElementsByTagName(STEP_TAG);
 			for(int rCount=0;rCount<steps.getLength();rCount++){
 				Element stepElement = (Element)steps.item(rCount);
 				String stepName = stepElement.getAttribute(STEP_TAG_NAME_ATT);
 				if(stepName == null){
-					//’v–½“IƒGƒ‰[
+					//è‡´å‘½çš„ã‚¨ãƒ©ãƒ¼
 					throw new ServiceException("CUIFACTORY002","Tag name is "+ stepElement.getTagName());
 				}
-				//DataInputStepƒIƒuƒWƒFƒNƒg‚ğnew
+				//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’new
 				DataInputStep dataInputStep = new DataInputStep(stepName);
-				//DataInputStepƒIƒuƒWƒFƒNƒg‚ÉDisplayƒIƒuƒWƒFƒNƒg‚ğƒZƒbƒg
+				//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«Displayã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚»ãƒƒãƒˆ
 				setDisplayObject(dataInputStep,stepElement); 
-				//DataInputStepƒIƒuƒWƒFƒNƒg‚ÉInputCheckerƒIƒuƒWƒFƒNƒgƒZƒbƒg
+				//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«InputCheckerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚»ãƒƒãƒˆ
 				setInputChecker(dataInputStep,stepElement);
-				//DataInputStepƒIƒuƒWƒFƒNƒg‚É‘JˆÚæƒnƒbƒVƒ…‚ğƒZƒbƒg
+				//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é·ç§»å…ˆãƒãƒƒã‚·ãƒ¥ã‚’ã‚»ãƒƒãƒˆ
 				setWhereToGoHash(dataInputStep,stepElement);
 				NodeList ends = stepElement.getElementsByTagName(END_TAG);
 				if(ends.getLength() > 1){
-					//ˆê‚Â‚Ìstep’†‚Éend—v‘f‚ª2ŒÂˆÈã‚ ‚Á‚½‚çException‚ğthrow
+					//ä¸€ã¤ã®stepä¸­ã«endè¦ç´ ãŒ2å€‹ä»¥ä¸Šã‚ã£ãŸã‚‰Exceptionã‚’throw
 					throw new ServiceException("CUIFACTORY003",END_MULTI_DEF_ERR + "Tag name is "+ stepElement.getTagName());		
 				}
 				if(ends.getLength() == 1){
-					//endéŒ¾‚ª‚ ‚é‚Ì‚ÅADataInputObject‚ÌŸStep‚ÉI—¹‚ğƒZƒbƒg
+					//endå®£è¨€ãŒã‚ã‚‹ã®ã§ã€DataInputObjectã®æ¬¡Stepã«çµ‚äº†ã‚’ã‚»ãƒƒãƒˆ
 					Element endElem = (Element)ends.item(0);
 					String type_att = endElem.getAttribute(END_TAG_TYPE_ATT);
 					String endMsg = getValueIfSpecified(endElem);
 					if( type_att.equals(END_FORCE)){
-						//³íI—¹İ’è
+						//æ­£å¸¸çµ‚äº†è¨­å®š
 						dataInputStep.setNextStepName(INTERRUPT);
 					}
 					else{
-						//‹­§I—¹İ’è
+						//å¼·åˆ¶çµ‚äº†è¨­å®š
 						dataInputStep.setNextStepName(END);
 					}
-					//I—¹ƒƒbƒZ[ƒWİ’è
+					//çµ‚äº†ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¨­å®š
 					dataInputStep.setEndMessage(endMsg);
 				}
 				else{
-					//endéŒ¾–³‚µ
-					//‚±‚±‚Ü‚Å‚Ìˆ—‚ÅADataInputStepƒIƒuƒWƒFƒNƒg‚ÉAŸStep‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎˆÈ‰º‚Ìˆ—
-					//‚ğs‚¤B
+					//endå®£è¨€ç„¡ã—
+					//ã“ã“ã¾ã§ã®å‡¦ç†ã§ã€DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€æ¬¡StepãŒè¨­å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä»¥ä¸‹ã®å‡¦ç†
+					//ã‚’è¡Œã†ã€‚
 					if(dataInputStep.getNextStepName() == null){
-						//ÅŒã‚Ìstep‚Å‚È‚¯‚ê‚ÎŸ‚É‹Lq‚³‚ê‚Ä‚¢‚éƒXƒeƒbƒv‚ğŸƒXƒeƒbƒv‚É‚·‚éB
+						//æœ€å¾Œã®stepã§ãªã‘ã‚Œã°æ¬¡ã«è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹ã‚¹ãƒ†ãƒƒãƒ—ã‚’æ¬¡ã‚¹ãƒ†ãƒƒãƒ—ã«ã™ã‚‹ã€‚
 						if(rCount != (steps.getLength() -1) ){
 							Element nextStepElem = (Element)steps.item(rCount+1);
 							String name_att = nextStepElem.getAttribute(STEP_TAG_NAME_ATT);
 							dataInputStep.setNextStepName(name_att);
 						}
 						else{
-							//ÅŒã‚É‹Lq‚³‚ê‚Ä‚¢‚éƒXƒeƒbƒv‚É‚ÍAendƒ^ƒO‚ğ‹Lq‚µ‚È‚­‚Ä‚æ‚¢‚±‚Æ‚É‚·‚éB
+							//æœ€å¾Œã«è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹ã‚¹ãƒ†ãƒƒãƒ—ã«ã¯ã€endã‚¿ã‚°ã‚’è¨˜è¿°ã—ãªãã¦ã‚ˆã„ã“ã¨ã«ã™ã‚‹ã€‚
 							dataInputStep.setNextStepName(END);
 						}
 					}
 				}
-			//DataInputStepƒIƒuƒWƒFƒNƒg‚ğCuiƒIƒuƒWƒFƒNƒg‚ÉŠi”[‚·‚éB
+			//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Cuiã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«æ ¼ç´ã™ã‚‹ã€‚
 			cuiObj.addStep(stepName,dataInputStep);
 			}
-		//CuiƒIƒuƒWƒFƒNƒg‚ğƒnƒbƒVƒ…‚ÉŠi”[‚·‚éB
+		//Cuiã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒãƒƒã‚·ãƒ¥ã«æ ¼ç´ã™ã‚‹ã€‚
 		mCuiHash.put(key,cuiObj);
 		}
 	}
 	/**
-	 * ƒ‹[ƒgƒGƒŒƒƒ“ƒg‚ğ•Ô‚·B
+	 * ãƒ«ãƒ¼ãƒˆã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’è¿”ã™ã€‚
 	 * @param xmlFile
-	 * @return@Element
+	 * @returnã€€Element
 	 */
 	protected Element getRoot(File xmlFile){
 		DocumentBuilderFactory dbfactory;
@@ -243,13 +243,13 @@ public class CuiFactoryService
 		Document doc;
 		Element root;
 		try{
-			// ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[ƒtƒ@ƒNƒgƒŠ‚ğ¶¬
+			// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’ç”Ÿæˆ
 			dbfactory = DocumentBuilderFactory.newInstance();
-			// ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[‚ğ¶¬
+			// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ã‚’ç”Ÿæˆ
 			builder = dbfactory.newDocumentBuilder();
-			// ƒp[ƒX‚ğÀs‚µ‚ÄDocumentƒIƒuƒWƒFƒNƒg‚ğæ“¾
+			// ãƒ‘ãƒ¼ã‚¹ã‚’å®Ÿè¡Œã—ã¦Documentã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
 			doc = builder.parse(xmlFile);
-			// ƒ‹[ƒg—v‘f‚ğæ“¾
+			// ãƒ«ãƒ¼ãƒˆè¦ç´ ã‚’å–å¾—
 			root = doc.getDocumentElement();
 		}
 		catch(Exception e){
@@ -259,20 +259,20 @@ public class CuiFactoryService
 	}
 	
 	/**
-	 * DataInputStepƒIƒuƒWƒFƒNƒg‚ÉAƒfƒBƒXƒvƒŒƒCƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB
+	 * DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
 	 * @param step
 	 * @param stepElem
 	 */
 	protected void setDisplayObject(DataInputStep step,
 									Element stepElem) {
-		//display—v‘f‚ğæ“¾
+		//displayè¦ç´ ã‚’å–å¾—
 		NodeList displays = stepElem.getElementsByTagName(DISPLAY_TAG);
-		//Display TAG‚ğƒT[ƒ`
+		//Display TAGã‚’ã‚µãƒ¼ãƒ
 		for(int rCnt=0;rCnt<displays.getLength();rCnt++){
 			Element display = (Element)displays.item(rCnt);
 			String type = display.getAttribute(DISPLAY_TAG_TYPE_ATT);
 			if (type.equals(DISPLAY_TYPE_SERVICE)){
-				//ƒT[ƒrƒXŒŸõ
+				//ã‚µãƒ¼ãƒ“ã‚¹æ¤œç´¢
 				String name = getValueMustSpecified(display);
 				ServiceNameEditor edit = new ServiceNameEditor() ;
 				edit.setAsText(name) ;
@@ -281,20 +281,20 @@ public class CuiFactoryService
 				if (displayObject == null){
 					throw new ServiceException("CUIFACTORY022","Service not found. servicename is "+ name);
 				}
-				//DataInputStepƒIƒuƒWƒFƒNƒg‚Éİ’è
+				//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«è¨­å®š
 				step.addDisplay(displayObject);				
 			}else{
-				//TextDisplay‚ğ¶¬
+				//TextDisplayã‚’ç”Ÿæˆ
 				TextDisplay textDisplay = new TextDisplay();
-				//•\¦•¶š‚ğƒZƒbƒg
+				//è¡¨ç¤ºæ–‡å­—ã‚’ã‚»ãƒƒãƒˆ
 				textDisplay.setDisplayMenu(getValueIfSpecified(display)) ;
-				//DataInputStepƒIƒuƒWƒFƒNƒg‚Éİ’è
+				//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«è¨­å®š
 				step.addDisplay(textDisplay);
 			}
 		}
 	}
 	/**
-	 * DataInputStepƒIƒuƒWƒFƒNƒg‚ÉAInputChekerƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB
+	 * DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€InputChekerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
 	 * @param step
 	 * @param stepElem
 	 */
@@ -305,11 +305,11 @@ public class CuiFactoryService
 		}
 		for(int rCnt=0;rCnt<checkList.getLength();rCnt++){
 			Element inputElem = (Element)checkList.item(rCnt);
-			//‘®«‚ğƒ`ƒFƒbƒN‚·‚éB
+			//å±æ€§ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚
 			String type = inputElem.getAttribute(INPUT_TAG_TYPE_ATT);
 			InputChecker checker = null;
 			if(type.equals(INPUT_TYPE_SERVICE)){
-				//ƒT[ƒrƒX‚¾‚Á‚½ê‡
+				//ã‚µãƒ¼ãƒ“ã‚¹ã ã£ãŸå ´åˆ
 				String name = getValueMustSpecified(inputElem);
 				ServiceNameEditor edit = new ServiceNameEditor() ;
 				edit.setAsText(name) ;
@@ -321,15 +321,15 @@ public class CuiFactoryService
 						
 			}
 			else{
-				//ƒT[ƒrƒX‚Å‚Í‚È‚©‚Á‚½ê‡ATextInputChecker‚ğ¶¬
+				//ã‚µãƒ¼ãƒ“ã‚¹ã§ã¯ãªã‹ã£ãŸå ´åˆã€TextInputCheckerã‚’ç”Ÿæˆ
 				String inputDefStr = getValueMustSpecified(inputElem);
 				checker = new TextInputChecker();
 				((TextInputChecker)checker).setValidInput(inputDefStr);
 			}
-			//DataInputStepƒIƒuƒWƒFƒNƒg‚Éİ’è	
+			//DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«è¨­å®š	
 			step.setChecker(checker);	
 		}
-		//‚à‚µ‚àchecker‚ªİ’è‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚çA‚Ç‚ñ‚È’l‚à—LŒø’l‚Æ‚µ‚Ä•Ô‚·ƒ`ƒFƒbƒJ[‚ğİ’èB
+		//ã‚‚ã—ã‚‚checkerãŒè¨­å®šã•ã‚Œã¦ã„ãªã‹ã£ãŸã‚‰ã€ã©ã‚“ãªå€¤ã‚‚æœ‰åŠ¹å€¤ã¨ã—ã¦è¿”ã™ãƒã‚§ãƒƒã‚«ãƒ¼ã‚’è¨­å®šã€‚
 		if(step.getChecker() == null){
 			step.setChecker(new AnyValueOkChecker());	
 		}
@@ -338,30 +338,30 @@ public class CuiFactoryService
 	
 
 	/**
-	 * DataInputStepƒIƒuƒWƒFƒNƒg‚É‘JˆÚæ‚ğƒZƒbƒg‚·‚éB
+	 * DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é·ç§»å…ˆã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€‚
 	 * 
 	 */
 	protected void setWhereToGoHash(DataInputStep step,Element stepElem) {
-		//‘JˆÚæƒnƒbƒVƒ…‚ğİ’è‚·‚éB
+		//é·ç§»å…ˆãƒãƒƒã‚·ãƒ¥ã‚’è¨­å®šã™ã‚‹ã€‚
 		NodeList gotolist =stepElem.getElementsByTagName(GOTO_TAG);
 		for(int rCnt=0;rCnt<gotolist.getLength();rCnt++){
 			Element gotoElem = (Element)gotolist.item(rCnt);
 			String value_att = gotoElem.getAttribute(GOTO_TAG_VALUE_ATT);		
 			if (value_att.length() < 1){
 				String distination = getValueMustSpecified(gotoElem);
-				//–³ğŒGOTO‚ÍAƒnƒbƒVƒ…‚Å‚Í‚È‚­AŸSTEP‚ğ•Û‚·‚éƒƒ“ƒo•Ï”‚ÉƒZƒbƒg‚·‚éB
+				//ç„¡æ¡ä»¶GOTOã¯ã€ãƒãƒƒã‚·ãƒ¥ã§ã¯ãªãã€æ¬¡STEPã‚’ä¿æŒã™ã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°ã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚
 				step.setNextStepName(distination);
 			}
 			else{
-				//ğŒ•t‚«GOTO‚ÍƒnƒbƒVƒ…‚ÉŠi”[
+				//æ¡ä»¶ä»˜ãGOTOã¯ãƒãƒƒã‚·ãƒ¥ã«æ ¼ç´
 				String distination = getValueMustSpecified(gotoElem);
 				step.addWhereToGo(value_att,distination);
 			}
 		}
 	}
 	/**
-	 * getFirstChild‚ªnull‚ğ•Ô‚µ‚½‚çAƒT[ƒrƒXƒGƒNƒZƒvƒVƒ‡ƒ“‚ğ“Š‚°‚éƒƒ\ƒbƒh
-	 * •K‚¸’l‚ªİ’è‚³‚ê‚Ä‚¢‚é‚×‚«
+	 * getFirstChildãŒnullã‚’è¿”ã—ãŸã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ã‚¯ã‚»ãƒ—ã‚·ãƒ§ãƒ³ã‚’æŠ•ã’ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+	 * å¿…ãšå€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã¹ã
 	 * @return
 	 */
 	protected String getValueMustSpecified(Element elem){
@@ -372,7 +372,7 @@ public class CuiFactoryService
 		return node.getNodeValue();
 	}
 	/**
-	 * getFirstChild‚ªnull‚ğ•Ô‚µ‚½‚çA‹ó•¶š‚ğ•Ô‚·ƒƒ\ƒbƒh
+	 * getFirstChildãŒnullã‚’è¿”ã—ãŸã‚‰ã€ç©ºæ–‡å­—ã‚’è¿”ã™ãƒ¡ã‚½ãƒƒãƒ‰
 	 * 
 	 */
 	protected String getValueIfSpecified(Element elem){
@@ -385,7 +385,7 @@ public class CuiFactoryService
 		}
 	}
 	/**
-	 * İ’è‚³‚ê‚½À‘•ƒNƒ‰ƒX–¼‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB
+	 * è¨­å®šã•ã‚ŒãŸå®Ÿè£…ã‚¯ãƒ©ã‚¹åã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚
 	 * 
 	 */
 	protected CuiOperator createCuiOperator(){

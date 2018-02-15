@@ -34,38 +34,38 @@ package jp.ossc.nimbus.service.graph;
 import org.jfree.chart.plot.Plot;
 
 /**
- * ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠB<p>
+ * ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface PlotFactory {
 
     /**
-     * ƒvƒƒbƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒbƒg–¼
+     * @param name ãƒ—ãƒ­ãƒƒãƒˆå
      */
     public void setName(String name);
 
     /**
-     * ƒvƒƒbƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒbƒg–¼
+     * @return ãƒ—ãƒ­ãƒƒãƒˆå
      */
     public String getName();
 
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg—pƒvƒƒbƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ãƒ—ãƒ­ãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒ“ƒvƒŒ[ƒg—pƒvƒƒbƒg
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ãƒ—ãƒ­ãƒƒãƒˆ
      */
     public Plot getPlot();
 
     /**
-     * ƒvƒƒbƒg‚ğ¶¬‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param plotConditions ƒvƒƒbƒgğŒ‚Ì”z—ñ
-     * @return ƒvƒƒbƒg
+     * @param plotConditions ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã®é…åˆ—
+     * @return ãƒ—ãƒ­ãƒƒãƒˆ
      * @exception PlotCreateException
      */
     public Plot createPlot(PlotCondition[] plotConditions)

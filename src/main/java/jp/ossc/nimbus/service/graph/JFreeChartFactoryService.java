@@ -47,7 +47,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * JFreeChartƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * JFreeChartãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -56,23 +56,23 @@ public class JFreeChartFactoryService extends ServiceBase
     
     private static final long serialVersionUID = -7164526648533773901L;
     
-    /** ƒeƒ“ƒvƒŒ[ƒg—pJFreeChart */
+    /** ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨JFreeChart */
     private JFreeChart tmpJFreeChart;
-    /** ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼ */
+    /** ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName plotFactoryServiceName;
-    /** ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠ */
+    /** ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒª */
     private PlotFactory plotFactory;
     private List subtitles;
-    /** ƒŒƒWƒFƒ“ƒh‚ğ¶¬‚·‚é‚©(ƒfƒtƒHƒ‹ƒgtrue) */
+    /** ãƒ¬ã‚¸ã‚§ãƒ³ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã‹(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆtrue) */
     private boolean createLegend = true;
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception {
         tmpJFreeChart = new JFreeChart(new XYPlot());
         subtitles = new ArrayList();
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception {
         if (plotFactoryServiceName != null) {
             plotFactory = (PlotFactory) ServiceManagerFactory.getServiceObject(plotFactoryServiceName);
@@ -85,35 +85,35 @@ public class JFreeChartFactoryService extends ServiceBase
 
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void stopService() throws Exception {
         subtitles.clear();
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception {
         tmpJFreeChart = null;
         subtitles = null;
     }
 
-    // JFreeChartFactory‚ÌJavaDoc
+    // JFreeChartFactoryã®JavaDoc
     public JFreeChart getJFreeChart() {
         return tmpJFreeChart;
     }
 
-    // JFreeChartFactory‚ÌJavaDoc
+    // JFreeChartFactoryã®JavaDoc
     public JFreeChart createChart(ChartCondition chartCondition)
         throws JFreeChartCreateException {
         Plot plot = null;
         try {
             plot = plotFactory.createPlot(chartCondition.getPlotConditions());
         } catch (PlotCreateException e) {
-            // ƒvƒƒbƒg¶¬¸”s
+            // ãƒ—ãƒ­ãƒƒãƒˆç”Ÿæˆå¤±æ•—
             throw new JFreeChartCreateException(e);
         }
 
         JFreeChart chart = copyJFreeChart(plot);
-        // ƒ^ƒCƒgƒ‹‚Ìİ’è
+        // ã‚¿ã‚¤ãƒˆãƒ«ã®è¨­å®š
         if (chartCondition.getTitle() != null
             && (chartCondition.getTitleFontName() != null
                 || chartCondition.getTitleFontStyle() != Integer.MIN_VALUE
@@ -141,7 +141,7 @@ public class JFreeChartFactoryService extends ServiceBase
                 chart.setTitle(chartCondition.getTitle());
             }
         } else if (chartCondition.getTitle() != null) {
-            // ƒ^ƒCƒgƒ‹•¶š—ñ‚Ì‚İİ’è‚³‚ê‚½
+            // ã‚¿ã‚¤ãƒˆãƒ«æ–‡å­—åˆ—ã®ã¿è¨­å®šã•ã‚ŒãŸ
             chart.setTitle(chartCondition.getTitle());
         }
 
@@ -154,7 +154,7 @@ public class JFreeChartFactoryService extends ServiceBase
                 || defaultFontStyle != Integer.MIN_VALUE
                 || defaultFontSize != Integer.MIN_VALUE
             ) {
-                // ƒTƒuƒ^ƒCƒgƒ‹‚·‚×‚Ä‚ÉƒfƒtƒHƒ‹ƒg‚ÌƒtƒHƒ“ƒg‚ğİ’è‚·‚éB
+                // ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã™ã¹ã¦ã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ•ã‚©ãƒ³ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
                 for (int i = 0; i < subList.size(); i++) {
                     Object subtitle = subList.get(i);
                     if (subtitle instanceof LegendTitle) {
@@ -180,7 +180,7 @@ public class JFreeChartFactoryService extends ServiceBase
                     }
                 }
             } else {
-                // ŒÂX‚ÌƒTƒuƒ^ƒCƒgƒ‹‚ÉƒtƒHƒ“ƒg‚ğİ’è
+                // å€‹ã€…ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã«ãƒ•ã‚©ãƒ³ãƒˆã‚’è¨­å®š
                 for (int i = 0; i < subList.size(); i++) {
                     String subFontName = chartCondition.getSubtitleFontName(i);
                     int subFontStyle = chartCondition.getSubtitleFontStyle(i);
@@ -222,15 +222,15 @@ public class JFreeChartFactoryService extends ServiceBase
     }
 
     /**
-     * Œ³‚ÌƒtƒHƒ“ƒg‚Æw’è‚³‚ê‚½ƒtƒHƒ“ƒg–¼AƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹AƒtƒHƒ“ƒgƒTƒCƒY‚ğƒ}[ƒW‚·‚éB<p>
-     * ƒtƒHƒ“ƒg–¼AƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹AƒtƒHƒ“ƒgƒTƒCƒY‚ªw’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎA
-     * Œ³‚ÌƒtƒHƒ“ƒg‚Ì’l‚ğˆø‚«Œp‚¬‚Ü‚·B
+     * å…ƒã®ãƒ•ã‚©ãƒ³ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ³ãƒˆåã€ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã€ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’ãƒãƒ¼ã‚¸ã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚©ãƒ³ãƒˆåã€ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã€ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ã€
+     * å…ƒã®ãƒ•ã‚©ãƒ³ãƒˆã®å€¤ã‚’å¼•ãç¶™ãã¾ã™ã€‚
      *
-     * @param orgFont Œ³‚ÌƒtƒHƒ“ƒg
-     * @param fontName ƒtƒHƒ“ƒg–¼
-     * @param fontStyle ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
-     * @param fontSize ƒtƒHƒ“ƒgƒTƒCƒY
-     * @return ƒ}[ƒW‚µ‚½ƒtƒHƒ“ƒg
+     * @param orgFont å…ƒã®ãƒ•ã‚©ãƒ³ãƒˆ
+     * @param fontName ãƒ•ã‚©ãƒ³ãƒˆå
+     * @param fontStyle ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
+     * @param fontSize ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
+     * @return ãƒãƒ¼ã‚¸ã—ãŸãƒ•ã‚©ãƒ³ãƒˆ
      */
     private Font mergeFont(
         Font orgFont,
@@ -258,9 +258,9 @@ public class JFreeChartFactoryService extends ServiceBase
     }
 
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg—pJFreeChart‚©‚ç’l‚ğƒRƒs[‚µ‚½JFreeChart‚ğ¶¬‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨JFreeChartã‹ã‚‰å€¤ã‚’ã‚³ãƒ”ãƒ¼ã—ãŸJFreeChartã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param plot ƒvƒƒbƒg
+     * @param plot ãƒ—ãƒ­ãƒƒãƒˆ
      * @return JFreeChart
      */
     private JFreeChart copyJFreeChart(Plot plot) {
@@ -286,22 +286,22 @@ public class JFreeChartFactoryService extends ServiceBase
         return chart;
     }
 
-    // JFreeChartFactoryServiceMBean‚ÌJavaDoc
+    // JFreeChartFactoryServiceMBeanã®JavaDoc
     public ServiceName getPlotFactoryServiceName() {
         return plotFactoryServiceName;
     }
 
-    // JFreeChartFactoryServiceMBean‚ÌJavaDoc
+    // JFreeChartFactoryServiceMBeanã®JavaDoc
     public void setPlotFactoryServiceName(ServiceName serviceName) {
         plotFactoryServiceName = serviceName;
     }
 
-    // JFreeChartFactoryServiceMBean‚ÌJavaDoc
+    // JFreeChartFactoryServiceMBeanã®JavaDoc
     public void addSubtitle(Title title) {
         subtitles.add(title);
     }
 
-    // JFreeChartFactoryServiceMBean‚ÌJavaDoc
+    // JFreeChartFactoryServiceMBeanã®JavaDoc
     public void setCreateLegend(boolean createLegend) {
         this.createLegend = createLegend;
     }

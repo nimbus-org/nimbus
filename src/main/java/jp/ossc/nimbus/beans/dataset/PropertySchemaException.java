@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.beans.dataset;
 
 /**
- * ƒvƒƒpƒeƒBƒXƒL[ƒ}—áŠOB<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,24 +41,24 @@ public class PropertySchemaException extends DataSetException{
     private static final long serialVersionUID = -8950401972831897014L;
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã€‚<p>
      */
     protected PropertySchema propertySchema;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}
+     * @param propertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒ
      */
     public PropertySchemaException(PropertySchema propertySchema){
         this.propertySchema = propertySchema;
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}
-     * @param message ƒƒbƒZ[ƒW
+     * @param propertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public PropertySchemaException(
         PropertySchema propertySchema,
@@ -69,11 +69,11 @@ public class PropertySchemaException extends DataSetException{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param propertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertySchemaException(PropertySchema propertySchema, String message, Throwable cause){
         super(message, cause);
@@ -81,10 +81,10 @@ public class PropertySchemaException extends DataSetException{
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param propertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒ
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertySchemaException(PropertySchema propertySchema, Throwable cause){
         super(cause);
@@ -92,18 +92,18 @@ public class PropertySchemaException extends DataSetException{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒW
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessage(){
         return (propertySchema == null ? "" : propertySchema.toString() + ':') + message;
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒBƒXƒL[ƒ}
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒ
      */
     public PropertySchema getPropertySchema(){
         return propertySchema;

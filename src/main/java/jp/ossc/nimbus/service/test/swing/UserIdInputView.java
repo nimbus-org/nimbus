@@ -57,7 +57,7 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     
     private void initialize() throws Exception {
         
-        Font font = new Font("‚l‚r ƒSƒVƒbƒN", Font.BOLD, 16);
+        Font font = new Font("ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯", Font.BOLD, 16);
         
         JPanel p = new JPanel();
         p.setLayout(new FlowLayout());
@@ -81,14 +81,14 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
             }
         );
         
-        JLabel label = new JLabel("ƒ†[ƒUIDF");
+        JLabel label = new JLabel("ãƒ¦ãƒ¼ã‚¶IDï¼š");
         label.setFont(font);
         
         p.add(label);
         p.add(this.textBox);
         p.add(this.okButton);
         
-        this.setTitle("ƒ†[ƒUID‚Ì“ü—Í‰æ–Ê");
+        this.setTitle("ãƒ¦ãƒ¼ã‚¶IDã®å…¥åŠ›ç”»é¢");
         this.setBounds(100, 100, 400, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -124,14 +124,14 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     }
 
     /**
-     * uOKvƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚½‚ÌƒCƒxƒ“ƒg
+     * ã€ŒOKã€ãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆ
      */
     public void actionPerformed(ActionEvent e) {
         mainViewStartup();
     }
 
     public void keyTyped(KeyEvent e) {
-        // ˆ—‚È‚µ
+        // å‡¦ç†ãªã—
     }
 
     public void keyPressed(KeyEvent e) {
@@ -141,6 +141,6 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     }
 
     public void keyReleased(KeyEvent e) {
-        // ˆ—‚È‚µ
+        // å‡¦ç†ãªã—
     }
 }

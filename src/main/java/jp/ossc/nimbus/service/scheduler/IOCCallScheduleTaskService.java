@@ -38,7 +38,7 @@ import jp.ossc.nimbus.ioc.*;
 import jp.ossc.nimbus.service.ioccall.FacadeCaller;
 
 /**
- * IOCŒÄ‚Ño‚µƒXƒPƒWƒ…[ƒ‹ƒ^ƒXƒNB<p>
+ * IOCå‘¼ã³å‡ºã—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚¿ã‚¹ã‚¯ã€‚<p>
  *
  * @author M.Takata
  */
@@ -48,84 +48,84 @@ public class IOCCallScheduleTaskService extends ServiceBase
     private static final long serialVersionUID = 2146486759345788960L;
     
     /**
-     * IOCŒÄ‚Ño‚µí•Ê “¯ŠúˆêŠ‡B<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ åŒæœŸä¸€æ‹¬ã€‚<p>
      */
     protected static final int IOC_CALL_TYPE_SYNCH_VAL = 1;
     /**
-     * IOCŒÄ‚Ño‚µí•Ê “¯Šú•À—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ åŒæœŸä¸¦åˆ—ã€‚<p>
      */
     protected static final int IOC_CALL_TYPE_SYNCH_PARALLEL_VAL = 2;
     /**
-     * IOCŒÄ‚Ño‚µí•Ê “¯Šú’¼—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ åŒæœŸç›´åˆ—ã€‚<p>
      */
     protected static final int IOC_CALL_TYPE_SYNCH_SEQUENCE_VAL = 3;
     /**
-     * IOCŒÄ‚Ño‚µí•Ê ”ñ“¯ŠúˆêŠ‡B<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ éåŒæœŸä¸€æ‹¬ã€‚<p>
      */
     protected static final int IOC_CALL_TYPE_ASYNCH_VAL = 4;
     /**
-     * IOCŒÄ‚Ño‚µí•Ê ”ñ“¯Šú’¼—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ éåŒæœŸç›´åˆ—ã€‚<p>
      */
     protected static final int IOC_CALL_TYPE_ASYNCH_SEQUENCE_VAL = 5;
     
     /**
-     * {@link FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName facadeCallerServiceName;
     
     /**
-     * {@link FacadeCaller}B<p>
+     * {@link FacadeCaller}ã€‚<p>
      */
     protected FacadeCaller facadeCaller;
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[–¼”z—ñB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼åé…åˆ—ã€‚<p>
      */
     protected String[] beanFlowNames;
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[‚É“n‚·“ü—ÍƒIƒuƒWƒFƒNƒg”z—ñB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã«æ¸¡ã™å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé…åˆ—ã€‚<p>
      */
     protected Object[] beanFlowInputs;
     
     /**
-     * IOCŒÄ‚Ño‚µí•Ê•¶š—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥æ–‡å­—åˆ—ã€‚<p>
      */
     protected String iocCallType = IOC_CALL_TYPE_SYNCH;
     
     /**
-     * IOCŒÄ‚Ño‚µí•ÊB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã€‚<p>
      */
     protected int iocCallTypeValue = IOC_CALL_TYPE_SYNCH_VAL;
     
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public void setFacadeCallerServiceName(ServiceName name){
         facadeCallerServiceName = name;
     }
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public ServiceName getFacadeCallerServiceName(){
         return facadeCallerServiceName;
     }
     
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public void setBeanFlowNames(String[] names){
         beanFlowNames = names;
     }
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public String[] getBeanFlowNames(){
         return beanFlowNames;
     }
     
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public void setBeanFlowInputs(Object[] in){
         beanFlowInputs = in;
     }
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public Object[] getBeanFlowInputs(){
         return beanFlowInputs;
     }
     
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public void setIOCCallType(String type){
         if(IOC_CALL_TYPE_SYNCH.equals(type)){
             iocCallTypeValue = IOC_CALL_TYPE_SYNCH_VAL;
@@ -144,15 +144,15 @@ public class IOCCallScheduleTaskService extends ServiceBase
         }
         iocCallType = type;
     }
-    // IOCCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // IOCCallScheduleTaskServiceMBeanã®JavaDoc
     public String getIOCCallType(){
         return iocCallType;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(facadeCallerServiceName != null){
@@ -179,7 +179,7 @@ public class IOCCallScheduleTaskService extends ServiceBase
     }
     
     /**
-     * {@link FacadeCaller}‚ğİ’è‚·‚éB<p>
+     * {@link FacadeCaller}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param caller FacadeCaller
      */
@@ -187,7 +187,7 @@ public class IOCCallScheduleTaskService extends ServiceBase
         facadeCaller = caller;
     }
     
-    // ScheduleTask‚ÌJavaDoc
+    // ScheduleTaskã®JavaDoc
     public void run() throws Exception{
         
         try{

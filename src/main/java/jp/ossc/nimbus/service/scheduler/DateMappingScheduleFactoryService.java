@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * “ú•tƒ}ƒbƒsƒ“ƒOƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠB<p>
+ * æ—¥ä»˜ãƒãƒƒãƒ”ãƒ³ã‚°ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -49,20 +49,20 @@ public class DateMappingScheduleFactoryService
     protected ServiceName dateEvaluatorServiceName;
     protected DateEvaluator dateEvaluator;
     
-    // DateMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // DateMappingScheduleFactoryServiceMBeanã®JavaDoc
     public void setDateEvaluatorServiceName(ServiceName name){
         dateEvaluatorServiceName = name;
     }
     
-    // DateMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // DateMappingScheduleFactoryServiceMBeanã®JavaDoc
     public ServiceName getDateEvaluatorServiceName(){
         return dateEvaluatorServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(dateEvaluatorServiceName != null){
@@ -73,8 +73,8 @@ public class DateMappingScheduleFactoryService
     }
     
     /**
-     * {@link DateEvaluator}‚ğİ’è‚·‚éB<p>
-     * “ú•tŠg’£ƒL[‚ğg—p‚·‚éê‡‚Éİ’è‚·‚éB<br>
+     * {@link DateEvaluator}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ—¥ä»˜æ‹¡å¼µã‚­ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
      * @param evaluator DateEvaluator
      */
@@ -83,12 +83,12 @@ public class DateMappingScheduleFactoryService
     }
     
     /**
-     * İ’è‚³‚ê‚½ƒL[ƒIƒuƒWƒFƒNƒg‚ğA{@link DateKey}ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
-     * •¶š—ñ‚ğDateKey‚É•ÏŠ·‚·‚éB<br>
+     * è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€{@link DateKey}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
+     * æ–‡å­—åˆ—ã‚’DateKeyã«å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param key İ’è‚³‚ê‚½ƒL[ƒIƒuƒWƒFƒNƒg
-     * @return DateKeyƒIƒuƒWƒFƒNƒg
-     * @exception Exception •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param key è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return DateKeyã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception Exception å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object createKey(Object key) throws Exception{
         if(key instanceof String){
@@ -108,10 +108,10 @@ public class DateMappingScheduleFactoryService
     }
     
     /**
-     * ƒL[‚ÉŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒXƒPƒWƒ…[ƒ‹”z—ñ
+     * @param key ã‚­ãƒ¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é…åˆ—
      */
     public Schedule[] getSchedules(Object key){
         ScheduleFactory factory = null;

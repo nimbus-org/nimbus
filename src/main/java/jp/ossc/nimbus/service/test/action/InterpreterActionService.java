@@ -46,8 +46,8 @@ import jp.ossc.nimbus.service.test.ChainTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * ƒCƒ“ƒ^ƒvƒŠƒ^‚ÅƒXƒNƒŠƒvƒg‚ğÀs‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å®Ÿè¡Œã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -80,27 +80,27 @@ public class InterpreterActionService extends ServiceBase implements TestAction,
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒCƒ“ƒ^ƒvƒŠƒ^‚ÅƒXƒNƒŠƒvƒg‚ğÀs‚·‚éB<p>
-     * ƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}‚ª“n‚³‚ê‚éB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
+     * ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ƒCƒ“ƒ^ƒvƒŠƒ^‚ÌÀsŒ‹‰Ê
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã®å®Ÿè¡Œçµæœ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒCƒ“ƒ^ƒvƒŠƒ^‚ÅƒXƒNƒŠƒvƒg‚ğÀs‚·‚éB<p>
-     * ƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}‚ªA"preResult"‚Å‘OƒAƒNƒVƒ‡ƒ“‚ÌŒ‹‰Ê‚ª“n‚³‚ê‚éB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
+     * ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ãŒã€"preResult"ã§å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®çµæœãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param preResult XVƒNƒGƒŠ‚Ìˆø”
-     * @param resource ƒŠƒ\[ƒX
-     * @return ƒCƒ“ƒ^ƒvƒŠƒ^‚ÌÀsŒ‹‰Ê
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param preResult æ›´æ–°ã‚¯ã‚¨ãƒªã®å¼•æ•°
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ã‚¤ãƒ³ã‚¿ãƒ—ãƒªã‚¿ã®å®Ÿè¡Œçµæœ
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         StringWriter sw = new StringWriter();

@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceName;
 
 
 /**
- * {@link ClusterSCPClientFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ClusterSCPClientFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ClusterSCPClientFactoryService
@@ -44,87 +44,87 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface ClusterSCPClientFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * •¡”‚ÌSCPƒT[ƒo‚Ì‚¤‚¿A‚P‘ä‚Ì‚İ‚ª‰Ò“­Œn‚Æ‚È‚éƒ‚[ƒhB<p>
-     * ƒNƒ‰ƒXƒ^‰»‚³‚ê‚½SCPƒT[ƒo‚Ì‚¤‚¿‚Ì1‘ä‚É‚¾‚¯Ú‘±‚·‚éB<br>
-     * Ú‘±‚Ì—Dæ‡ˆÊ‚ÍA{@link #setSCPClientFactoryServiceNames(ServiceName[])}‚Ì‡˜‚ÉˆË‘¶‚·‚éB<br>
+     * è¤‡æ•°ã®SCPã‚µãƒ¼ãƒã®ã†ã¡ã€ï¼‘å°ã®ã¿ãŒç¨¼åƒç³»ã¨ãªã‚‹ãƒ¢ãƒ¼ãƒ‰ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã•ã‚ŒãŸSCPã‚µãƒ¼ãƒã®ã†ã¡ã®1å°ã«ã ã‘æ¥ç¶šã™ã‚‹ã€‚<br>
+     * æ¥ç¶šã®å„ªå…ˆé †ä½ã¯ã€{@link #setSCPClientFactoryServiceNames(ServiceName[])}ã®é †åºã«ä¾å­˜ã™ã‚‹ã€‚<br>
      */
     public static final int CLUSTER_MODE_ACTIVE_STANDBY = 1;
     
     /**
-     * •¡”‚ÌSCPƒT[ƒo‚Ì‘S‚Ä‚ª‰Ò“­Œn‚Æ‚È‚éƒ‚[ƒhB<p>
-     * ƒNƒ‰ƒXƒ^‰»‚³‚ê‚½SCPƒT[ƒo‚Ì‘S‚Ä‚ÉÚ‘±‚·‚éB<br>
-     * Ú‘±‚É¸”s‚µ‚½SCPƒT[ƒo‚ª‘¶İ‚µ‚Ä‚àA­‚È‚­‚Æ‚à1‘ä‚ÉÚ‘±‚Å‚«‚ê‚Îˆ—‚Í‘±s‚·‚éB<br>
+     * è¤‡æ•°ã®SCPã‚µãƒ¼ãƒã®å…¨ã¦ãŒç¨¼åƒç³»ã¨ãªã‚‹ãƒ¢ãƒ¼ãƒ‰ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã•ã‚ŒãŸSCPã‚µãƒ¼ãƒã®å…¨ã¦ã«æ¥ç¶šã™ã‚‹ã€‚<br>
+     * æ¥ç¶šã«å¤±æ•—ã—ãŸSCPã‚µãƒ¼ãƒãŒå­˜åœ¨ã—ã¦ã‚‚ã€å°‘ãªãã¨ã‚‚1å°ã«æ¥ç¶šã§ãã‚Œã°å‡¦ç†ã¯ç¶šè¡Œã™ã‚‹ã€‚<br>
      */
     public static final int CLUSTER_MODE_ACTIVE_ACTIVE  = 2;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌÚ‘±¸”s‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ¥ç¶šå¤±æ•—æ™‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_CONNECT_ERROR  = "CSCP_00001";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ìˆ—ƒXƒLƒbƒv‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å‡¦ç†ã‚¹ã‚­ãƒƒãƒ—æ™‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_SKIP           = "CSCP_00002";
     
     /**
-     * ƒNƒ‰ƒXƒ^‰»‚·‚é{@link SCPClientFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã™ã‚‹{@link SCPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names {@link SCPClientFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names {@link SCPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setSCPClientFactoryServiceNames(ServiceName[] names);
     
     /**
-     * ƒNƒ‰ƒXƒ^‰»‚·‚é{@link SCPClientFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã™ã‚‹{@link SCPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link SCPClientFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return {@link SCPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getSCPClientFactoryServiceNames();
     
     /**
-     * ƒNƒ‰ƒXƒ^ƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #CLUSTER_MODE_ACTIVE_STANDBY}B<br>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #CLUSTER_MODE_ACTIVE_STANDBY}ã€‚<br>
      *
-     * @param mode ƒNƒ‰ƒXƒ^ƒ‚[ƒh
+     * @param mode ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¢ãƒ¼ãƒ‰
      * @see #CLUSTER_MODE_ACTIVE_STANDBY
      * @see #CLUSTER_MODE_ACTIVE_ACTIVE
      */
     public void setClusterMode(int mode) throws IllegalArgumentException;
     
     /**
-     * ƒNƒ‰ƒXƒ^ƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒ‚[ƒh
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¢ãƒ¼ãƒ‰
      */
     public int getClusterMode();
     
     /**
-     * Ú‘±¸”s‚ÌƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šå¤±æ•—æ™‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      * @see #MSG_ID_CONNECT_ERROR
      */
     public void setConnectErrorMessageId(String id);
     
     /**
-     * Ú‘±¸”s‚ÌƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå¤±æ•—æ™‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getConnectErrorMessageId();
     
     /**
-     * ˆ—ƒXƒLƒbƒv‚ÌƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * å‡¦ç†ã‚¹ã‚­ãƒƒãƒ—æ™‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      * @see #MSG_ID_CONNECT_ERROR
      */
     public void setSkipMessageId(String id);
     
     /**
-     * ˆ—ƒXƒLƒbƒv‚ÌƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * å‡¦ç†ã‚¹ã‚­ãƒƒãƒ—æ™‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getSkipMessageId();
 }

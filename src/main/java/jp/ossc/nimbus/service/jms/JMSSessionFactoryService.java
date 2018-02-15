@@ -37,10 +37,10 @@ import javax.jms.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * JMSƒZƒbƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * javax.jms.Connection‚ğƒ‰ƒbƒv‚µAJMSƒZƒbƒVƒ‡ƒ“‚Ì¶¬‚ğŠÈ—ª‰»‚·‚éB<br>
- * ‚Ü‚½A¶¬‚³‚ê‚½JMSƒZƒbƒVƒ‡ƒ“‚ÌŠJ•ú˜R‚ê‚ğ–h~‚·‚é‹@”\‚ğ‚ÂB<br>
- * Queue‚ÆTopi‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“‡‚³‚ê‚½JMS 1.1‚É‘Î‰‚µ‚Ä‚¢‚Ü‚·BJMS 1.1ˆÈ‘O‚Ìƒo[ƒWƒ‡ƒ“‚Åg—p‚·‚éê‡‚É‚ÍAƒTƒuƒNƒ‰ƒX‚Ì{@link JMSQueueSessionFactoryService}‚âA{@link JMSTopicSessionFactoryService}‚ğg—p‚µ‚Ä‰º‚³‚¢B<br>
+ * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * javax.jms.Connectionã‚’ãƒ©ãƒƒãƒ—ã—ã€JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã‚’ç°¡ç•¥åŒ–ã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€ç”Ÿæˆã•ã‚ŒãŸJMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã®é–‹æ”¾æ¼ã‚Œã‚’é˜²æ­¢ã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
+ * Queueã¨Topiã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±åˆã•ã‚ŒãŸJMS 1.1ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚JMS 1.1ä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ä½¿ç”¨ã™ã‚‹å ´åˆã«ã¯ã€ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®{@link JMSQueueSessionFactoryService}ã‚„ã€{@link JMSTopicSessionFactoryService}ã‚’ä½¿ç”¨ã—ã¦ä¸‹ã•ã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -65,25 +65,25 @@ public class JMSSessionFactoryService extends ServiceBase
     protected boolean isCloseConnection;
     protected boolean isSessionManagement;
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setSessionManagement(boolean isManaged){
         isSessionManagement = isManaged;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public boolean isSessionManagement(){
         return isSessionManagement;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setJMSConnectionFactoryServiceName(ServiceName name){
         jmsConnectionFactoryServiceName = name;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public ServiceName getJMSConnectionFactoryServiceName(){
         return jmsConnectionFactoryServiceName;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setAcknowledgeMode(String mode){
         if(AUTO_ACKNOWLEDGE.equals(ackModeStr)){
             ackModeStr = mode;
@@ -98,80 +98,80 @@ public class JMSSessionFactoryService extends ServiceBase
             throw new IllegalArgumentException(mode);
         }
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public String getAcknowledgeMode(){
         return ackModeStr;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setTransactionMode(boolean isTransacted){
         transactionMode = isTransacted;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public boolean getTransactionMode(){
         return transactionMode;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setConnectionCreate(boolean isCreate){
         isConnectionCreate = isCreate;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public boolean isConnectionCreate(){
         return isConnectionCreate;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setStartConnection(boolean isStart){
         isStartConnection = isStart;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public boolean isStartConnection(){
         return isStartConnection;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setStopConnection(boolean isStop){
         isStopConnection = isStop;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public boolean isStopConnection(){
         return isStopConnection;
     }
     
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public void setCloseConnection(boolean isClose){
         isCloseConnection = isClose;
     }
-    // JMSSessionFactoryServiceMBean‚ÌJavaDoc
+    // JMSSessionFactoryServiceMBeanã®JavaDoc
     public boolean isCloseConnection(){
         return isCloseConnection;
     }
     
     /**
-     * {@link JMSConnectionFactory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ConnectionCreate‘®«‚ªtrue‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉA‚±‚±‚Åİ’è‚³‚ê‚½JMSConnectionFactoryƒT[ƒrƒX‚ğg‚Á‚ÄAConnection‚ğ¶¬‚µ•Û‚·‚éB<br>
-     * ConnectionCreate‘®«‚ªfalse‚Ìê‡AÅ‰‚ÉSession‚ğæ“¾‚µ‚æ‚¤‚Æ‚µ‚½‚ÉAConnection‚ğ¶¬‚µ•Û‚·‚éB<br>
+     * {@link JMSConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ConnectionCreateå±æ€§ãŒtrueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJMSConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€Connectionã‚’ç”Ÿæˆã—ä¿æŒã™ã‚‹ã€‚<br>
+     * ConnectionCreateå±æ€§ãŒfalseã®å ´åˆã€æœ€åˆã«Sessionã‚’å–å¾—ã—ã‚ˆã†ã¨ã—ãŸæ™‚ã«ã€Connectionã‚’ç”Ÿæˆã—ä¿æŒã™ã‚‹ã€‚<br>
      *
-     * @param jmsConnectionFactory JMSConnectionFactoryƒT[ƒrƒX‚Ì
+     * @param jmsConnectionFactory JMSConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®
      */
     public void setJMSConnectionFactory(JMSConnectionFactory jmsConnectionFactory) {
         this.jmsConnectionFactory = jmsConnectionFactory;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         sessions = new HashSet();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -194,9 +194,9 @@ public class JMSSessionFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
@@ -230,25 +230,25 @@ public class JMSSessionFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         sessions = null;
     }
     
-    // JMSSessionFactory‚ÌJavaDoc
+    // JMSSessionFactoryã®JavaDoc
     public Connection getConnection(){
         return connection;
     }
     
-    // JMSSessionFactory‚ÌJavaDoc
+    // JMSSessionFactoryã®JavaDoc
     public JMSConnectionFactory getConnectionFactory(){
         return jmsConnectionFactory;
     }
     
-    // JMSSessionFactory‚ÌJavaDoc
+    // JMSSessionFactoryã®JavaDoc
     public Session getSession() throws JMSSessionCreateException{
         Connection con = connection;
         if(con == null){
@@ -261,7 +261,7 @@ public class JMSSessionFactoryService extends ServiceBase
         return getSession(con);
     }
     
-    // JMSSessionFactory‚ÌJavaDoc
+    // JMSSessionFactoryã®JavaDoc
     public Session getSession(
         boolean transactionMode,
         int ackMode
@@ -282,12 +282,12 @@ public class JMSSessionFactoryService extends ServiceBase
         return getSession(con, transactionMode, ackMode);
     }
     
-    // JMSSessionFactory‚ÌJavaDoc
+    // JMSSessionFactoryã®JavaDoc
     public Session getSession(Connection con) throws JMSSessionCreateException{
         return getSession(con, transactionMode, ackMode);
     }
     
-    // JMSSessionFactory‚ÌJavaDoc
+    // JMSSessionFactoryã®JavaDoc
     public Session getSession(
         Connection con,
         boolean transactionMode,

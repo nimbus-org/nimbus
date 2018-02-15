@@ -41,9 +41,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 
 /**
- * ƒOƒ‹[ƒvEJBƒtƒ@ƒNƒgƒŠB<p>
- * EJBƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ğƒOƒ‹[ƒsƒ“ƒO‚µ‚ÄAEJB–¼‚É‘Î‚µ‚ÄƒOƒ‹[ƒsƒ“ƒO‚µ‚½EJBƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚°ãƒ«ãƒ¼ãƒ—EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ã¦ã€EJBåã«å¯¾ã—ã¦ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ãŸEJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -112,22 +112,22 @@ public class GroupEJBFactoryService extends ServiceBase
     private ServiceName defaultEJBFactoryServiceName;
     private EJBFactory defaultEJBFactory;
     
-    // GroupEJBFactoryServiceMBean‚ÌJavaDoc
+    // GroupEJBFactoryServiceMBeanã®JavaDoc
     public void setNameAndEJBFactoryServiceNameMapping(Properties mapping){
         nameAndEJBFactoryServiceNameMapping = mapping;
     }
     
-    // GroupEJBFactoryServiceMBean‚ÌJavaDoc
+    // GroupEJBFactoryServiceMBeanã®JavaDoc
     public Properties getNameAndEJBFactoryServiceNameMapping(){
         return nameAndEJBFactoryServiceNameMapping;
     }
     
-    // GroupEJBFactoryServiceMBean‚ÌJavaDoc
+    // GroupEJBFactoryServiceMBeanã®JavaDoc
     public void setDefaultEJBFactoryServiceName(ServiceName name){
         defaultEJBFactoryServiceName = name;
     }
     
-    // GroupEJBFactoryServiceMBean‚ÌJavaDoc
+    // GroupEJBFactoryServiceMBeanã®JavaDoc
     public ServiceName getDefaultEJBFactoryServiceName(){
         return defaultEJBFactoryServiceName;
     }
@@ -174,7 +174,7 @@ public class GroupEJBFactoryService extends ServiceBase
         nameAndEJBFactoryMap = null;
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name
     ) throws NamingException, CreateException, NoSuchMethodException,
@@ -186,7 +186,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.get(name);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name
     ) throws NamingException, CreateException, NoSuchMethodException,
@@ -198,7 +198,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.getLocal(name);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name,
         Object[] params
@@ -211,7 +211,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.get(name, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name,
         Object[] params
@@ -224,7 +224,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.getLocal(name, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name,
         Class homeType
@@ -237,7 +237,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.get(name, homeType);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name,
         Class homeType
@@ -250,7 +250,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.getLocal(name, homeType);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name,
         Class homeType,
@@ -265,7 +265,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.get(name, homeType, paramTypes, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name,
         Class homeType,
@@ -280,7 +280,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.getLocal(name, homeType, paramTypes, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name,
         Class homeType,
@@ -296,7 +296,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.get(name, homeType, remoteType, paramTypes, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name,
         Class homeType,
@@ -312,7 +312,7 @@ public class GroupEJBFactoryService extends ServiceBase
         return factory.getLocal(name, homeType, remoteType, paramTypes, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public void invalidate(String name){
         final EJBFactory factory = findEJBFactory(name);
         if(factory == null){
@@ -321,7 +321,7 @@ public class GroupEJBFactoryService extends ServiceBase
         factory.invalidate(name);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public void invalidate(){
         if(nameAndEJBFactoryMap == null){
             return;

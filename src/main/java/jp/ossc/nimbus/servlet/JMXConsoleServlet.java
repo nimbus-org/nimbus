@@ -48,65 +48,65 @@ import jp.ossc.nimbus.service.jmx.*;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * JMXƒRƒ“ƒ\[ƒ‹ƒT[ƒuƒŒƒbƒgB<p>
- * ƒ[ƒJƒ‹‹y‚ÑAƒŠƒ‚[ƒg‚É‘¶İ‚·‚é•¡”‚ÌJMXƒT[ƒo‚ğŠÇ—‚µAMBean‚ğ‘€ì‚·‚éƒRƒ“ƒ\[ƒ‹‰æ–Ê‚ğ’ñ‹Ÿ‚·‚éB<br>
- * HTTPŒo—R‚Å‚ÌMBean‚ÌŠÇ—‚ğƒTƒ|[ƒg‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éB<br>
- * ‚±‚ÌƒT[ƒuƒŒƒbƒg‚É‚ÍAˆÈ‰º‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^‚ª‚ ‚éB<br>
+ * JMXã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã€‚<p>
+ * ãƒ­ãƒ¼ã‚«ãƒ«åŠã³ã€ãƒªãƒ¢ãƒ¼ãƒˆã«å­˜åœ¨ã™ã‚‹è¤‡æ•°ã®JMXã‚µãƒ¼ãƒã‚’ç®¡ç†ã—ã€MBeanã‚’æ“ä½œã™ã‚‹ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ç”»é¢ã‚’æä¾›ã™ã‚‹ã€‚<br>
+ * HTTPçµŒç”±ã§ã®MBeanã®ç®¡ç†ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã«ã¯ã€ä»¥ä¸‹ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒã‚ã‚‹ã€‚<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th>#</th><th>ƒpƒ‰ƒ[ƒ^–¼</th><th>’l‚Ìà–¾</th><th>ƒfƒtƒHƒ‹ƒg</th></tr>
- *     <tr><td>1</td><td>MBeanServerConnectionFactoryManagerNames</td><td>{@link MBeanServerConnectionFactory}ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚Ì–¼‘O‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB<br>w’è‚³‚ê‚½ƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚éMBeanServerConnectionFactory‚ğŒŸõ‚µ‚ÄA‚»‚ÌJMXÚ‘±‚ğ—˜—p‚µ‚ÄAJMXƒT[ƒo‚ÉÚ‘±‚·‚éB</td><td></td></tr>
- *     <tr><td>2</td><td>MBeanServerConnectionFactoryServiceNames</td><td>{@link MBeanServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB<br>w’è‚³‚ê‚½MBeanServerConnectionFactory‚ÌJMXÚ‘±‚ğ—˜—p‚µ‚ÄAJMXƒT[ƒo‚ÉÚ‘±‚·‚éB</td><td></td></tr>
- *     <tr><td>3</td><td>AttributeSetEnabled</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ÅAMBean‚Ì‘®«‚ğ•ÏX‚·‚é‹@”\‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>—LŒø‚É‚·‚éê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>4</td><td>AttributeMaxLength</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÅAMBean‚Ì‘®«‚ğ•\¦‚·‚éê‡‚É•\¦‚·‚é‘®«’l‚ÌÅ‘å’·‚ğw’è‚·‚éB</td><td>§ŒÀ‚È‚µ</td></tr>
- *     <tr><td>5</td><td>OperationEnabled</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ÅAMBean‚Ì‘€ì‚ğÀs‚·‚é‹@”\‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>—LŒø‚É‚·‚éê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>6</td><td>JSONConverterServiceName</td><td>JSONŒ`®‚Å‚Ì‰“š‚ğ—v‹‚·‚éê‡‚Ég—p‚·‚é{@link BeanJSONConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚éB</td><td>w’è‚µ‚È‚¢ê‡‚ÍA“à•”¶¬‚³‚ê‚éB</td></tr>
- *     <tr><td>7</td><td>UnicodeEscape</td><td>JSONŒ`®‚Å‚Ì‰“š‚ğ—v‹‚·‚éê‡‚ÉA‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>true</td></tr>
+ *     <tr bgcolor="#cccccc"><th>#</th><th>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</th><th>å€¤ã®èª¬æ˜</th><th>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ</th></tr>
+ *     <tr><td>1</td><td>MBeanServerConnectionFactoryManagerNames</td><td>{@link MBeanServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã®åå‰ã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹MBeanServerConnectionFactoryã‚’æ¤œç´¢ã—ã¦ã€ãã®JMXæ¥ç¶šã‚’åˆ©ç”¨ã—ã¦ã€JMXã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹ã€‚</td><td></td></tr>
+ *     <tr><td>2</td><td>MBeanServerConnectionFactoryServiceNames</td><td>{@link MBeanServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>æŒ‡å®šã•ã‚ŒãŸMBeanServerConnectionFactoryã®JMXæ¥ç¶šã‚’åˆ©ç”¨ã—ã¦ã€JMXã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹ã€‚</td><td></td></tr>
+ *     <tr><td>3</td><td>AttributeSetEnabled</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã§ã€MBeanã®å±æ€§ã‚’å¤‰æ›´ã™ã‚‹æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>4</td><td>AttributeMaxLength</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã§ã€MBeanã®å±æ€§ã‚’è¡¨ç¤ºã™ã‚‹å ´åˆã«è¡¨ç¤ºã™ã‚‹å±æ€§å€¤ã®æœ€å¤§é•·ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>åˆ¶é™ãªã—</td></tr>
+ *     <tr><td>5</td><td>OperationEnabled</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã§ã€MBeanã®æ“ä½œã‚’å®Ÿè¡Œã™ã‚‹æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>6</td><td>JSONConverterServiceName</td><td>JSONå½¢å¼ã§ã®å¿œç­”ã‚’è¦æ±‚ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link BeanJSONConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>æŒ‡å®šã—ãªã„å ´åˆã¯ã€å†…éƒ¨ç”Ÿæˆã•ã‚Œã‚‹ã€‚</td></tr>
+ *     <tr><td>7</td><td>UnicodeEscape</td><td>JSONå½¢å¼ã§ã®å¿œç­”ã‚’è¦æ±‚ã™ã‚‹å ´åˆã«ã€ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>true</td></tr>
  * </table>
  * <p>
  * <p>
- * WebƒT[ƒrƒX‚ÍAƒNƒGƒŠw’è‚Å‚ÌGETƒŠƒNƒGƒXƒg‚É‘Î‚µ‚ÄAJSON‚Åƒf[ƒ^‚ğ‰“š‚·‚éB<br>
+ * Webã‚µãƒ¼ãƒ“ã‚¹ã¯ã€ã‚¯ã‚¨ãƒªæŒ‡å®šã§ã®GETãƒªã‚¯ã‚¨ã‚¹ãƒˆã«å¯¾ã—ã¦ã€JSONã§ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã™ã‚‹ã€‚<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th rowspan="2">#</th><th rowspan="2">ƒAƒNƒVƒ‡ƒ“</th><th colspan="2">ƒNƒGƒŠƒpƒ‰ƒ[ƒ^</th><th rowspan="2">‰“šJSON‚Ì—á</th></tr>
- *     <tr bgcolor="#cccccc"><th>ƒpƒ‰ƒ[ƒ^–¼</th><th>’l</th></tr>
- *     <tr><td>1</td><td><nobr>JMXƒT[ƒo‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td><code>["WebServer%23web01","WebServer%23web02","BatchServer%23batch01","BatchServer%23batch02"]</code></td></tr>
- *     <tr><td rowspan="3">2</td><td rowspan="3"><nobr>w’èJMXƒT[ƒo“à‚ÌƒhƒƒCƒ“–¼‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code>[["JMImplementation","com.sun.management","java.lang","java.util.logging"],["myDomain"]]</code></td></tr>
+ *     <tr bgcolor="#cccccc"><th rowspan="2">#</th><th rowspan="2">ã‚¢ã‚¯ã‚·ãƒ§ãƒ³</th><th colspan="2">ã‚¯ã‚¨ãƒªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿</th><th rowspan="2">å¿œç­”JSONã®ä¾‹</th></tr>
+ *     <tr bgcolor="#cccccc"><th>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</th><th>å€¤</th></tr>
+ *     <tr><td>1</td><td><nobr>JMXã‚µãƒ¼ãƒã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td><code>["WebServer%23web01","WebServer%23web02","BatchServer%23batch01","BatchServer%23batch02"]</code></td></tr>
+ *     <tr><td rowspan="3">2</td><td rowspan="3"><nobr>æŒ‡å®šJMXã‚µãƒ¼ãƒå†…ã®ãƒ‰ãƒ¡ã‚¤ãƒ³åã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code>[["JMImplementation","com.sun.management","java.lang","java.util.logging"],["myDomain"]]</code></td></tr>
  *     <tr><td>action</td><td>server</td></tr>
- *     <tr><td>name</td><td>JMXƒT[ƒo–¼Bw’è‚µ‚È‚¢ê‡‚ÍAƒ[ƒJƒ‹ƒzƒXƒg‚ª‘ÎÛ‚Æ‚È‚éB</td></tr>
- *     <tr><td rowspan="5">3</td><td rowspan="5"><nobr>w’èƒhƒƒCƒ““à‚ÌMBean‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code>["java.lang:type=ClassLoading","java.lang:type=Compilation","java.lang:type=GarbageCollector,name=PS MarkSweep","java.lang:type=GarbageCollector,name=PS Scavenge","java.lang:type=Memory","java.lang:type=MemoryManager,name=CodeCacheManager","java.lang:type=MemoryPool,name=Code Cache","java.lang:type=MemoryPool,name=PS Eden Space","java.lang:type=MemoryPool,name=PS Old Gen","java.lang:type=MemoryPool,name=PS Perm Gen","java.lang:type=MemoryPool,name=PS Survivor Space","java.lang:type=OperatingSystem","java.lang:type=Runtime","java.lang:type=Threading"]</code></td></tr>
+ *     <tr><td>name</td><td>JMXã‚µãƒ¼ãƒåã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆãŒå¯¾è±¡ã¨ãªã‚‹ã€‚</td></tr>
+ *     <tr><td rowspan="5">3</td><td rowspan="5"><nobr>æŒ‡å®šãƒ‰ãƒ¡ã‚¤ãƒ³å†…ã®MBeanã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code>["java.lang:type=ClassLoading","java.lang:type=Compilation","java.lang:type=GarbageCollector,name=PS MarkSweep","java.lang:type=GarbageCollector,name=PS Scavenge","java.lang:type=Memory","java.lang:type=MemoryManager,name=CodeCacheManager","java.lang:type=MemoryPool,name=Code Cache","java.lang:type=MemoryPool,name=PS Eden Space","java.lang:type=MemoryPool,name=PS Old Gen","java.lang:type=MemoryPool,name=PS Perm Gen","java.lang:type=MemoryPool,name=PS Survivor Space","java.lang:type=OperatingSystem","java.lang:type=Runtime","java.lang:type=Threading"]</code></td></tr>
  *     <tr><td>action</td><td>domain</td></tr>
- *     <tr><td>serverName</td><td>JMXƒT[ƒo–¼</td></tr>
- *     <tr><td>index</td><td>ƒ[ƒJƒ‹ƒzƒXƒg‚ÉJMXƒT[ƒo‚ª•¡”‘¶İ‚·‚éê‡‚ÉA‰½”Ô–Ú‚ÌJMXƒT[ƒo‚©‚ğw’è‚·‚éƒCƒ“ƒfƒbƒNƒXB</td></tr>
- *     <tr><td>name</td><td>JMXƒhƒƒCƒ“–¼</td></tr>
- *     <tr><td rowspan="5">4</td><td rowspan="5"><nobr>MBean‚Ì‘®«‹y‚Ñ‘€ìˆê——</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code>{"attributes":[{"description":"Verbose","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.SimpleType(name=java.lang.Boolean))","originalType=boolean"],"valid":true},"is":true,"name":"Verbose","readable":true,"type":"boolean","writable":true},{"defaultValue":null,"description":"HeapMemoryUsage","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.CompositeType(name=java.lang.management.MemoryUsage,items=((itemName=committed,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=init,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=max,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=used,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)))))","originalType=java.lang.management.MemoryUsage"],"valid":true},"is":false,"legalValues":null,"maxValue":null,"minValue":null,"name":"HeapMemoryUsage","openType":{"array":false,"className":"javax.management.openmbean.CompositeData","description":"java.lang.management.MemoryUsage","typeName":"java.lang.management.MemoryUsage"},"readable":true,"type":"javax.management.openmbean.CompositeData","writable":false},{"defaultValue":null,"description":"NonHeapMemoryUsage","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.CompositeType(name=java.lang.management.MemoryUsage,items=((itemName=committed,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=init,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=max,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=used,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)))))","originalType=java.lang.management.MemoryUsage"],"valid":true},"is":false,"legalValues":null,"maxValue":null,"minValue":null,"name":"NonHeapMemoryUsage","openType":{"array":false,"className":"javax.management.openmbean.CompositeData","description":"java.lang.management.MemoryUsage","typeName":"java.lang.management.MemoryUsage"},"readable":true,"type":"javax.management.openmbean.CompositeData","writable":false},{"description":"ObjectPendingFinalizationCount","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.SimpleType(name=java.lang.Integer))","originalType=int"],"valid":true},"is":false,"name":"ObjectPendingFinalizationCount","readable":true,"type":"int","writable":false}],"className":"sun.management.MemoryImpl","constructors":[],"description":"Information on the management interface of the MBean","descriptor":{"fieldNames":["immutableInfo","interfaceClassName","mxbean"],"fields":["immutableInfo=true","interfaceClassName=java.lang.management.MemoryMXBean","mxbean=true"],"valid":true},"notifications":[{"description":"Memory Notification","descriptor":{"fieldNames":[],"fields":[],"valid":true},"name":"javax.management.Notification","notifTypes":["java.management.memory.threshold.exceeded","java.management.memory.collection.threshold.exceeded"]}],"operations":[{"description":"gc","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.SimpleType(name=java.lang.Void))","originalType=void"],"valid":true},"impact":3,"name":"gc","returnType":"void","signature":[]}]}</code></td></tr>
+ *     <tr><td>serverName</td><td>JMXã‚µãƒ¼ãƒå</td></tr>
+ *     <tr><td>index</td><td>ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«JMXã‚µãƒ¼ãƒãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã«ã€ä½•ç•ªç›®ã®JMXã‚µãƒ¼ãƒã‹ã‚’æŒ‡å®šã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</td></tr>
+ *     <tr><td>name</td><td>JMXãƒ‰ãƒ¡ã‚¤ãƒ³å</td></tr>
+ *     <tr><td rowspan="5">4</td><td rowspan="5"><nobr>MBeanã®å±æ€§åŠã³æ“ä½œä¸€è¦§</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code>{"attributes":[{"description":"Verbose","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.SimpleType(name=java.lang.Boolean))","originalType=boolean"],"valid":true},"is":true,"name":"Verbose","readable":true,"type":"boolean","writable":true},{"defaultValue":null,"description":"HeapMemoryUsage","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.CompositeType(name=java.lang.management.MemoryUsage,items=((itemName=committed,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=init,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=max,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=used,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)))))","originalType=java.lang.management.MemoryUsage"],"valid":true},"is":false,"legalValues":null,"maxValue":null,"minValue":null,"name":"HeapMemoryUsage","openType":{"array":false,"className":"javax.management.openmbean.CompositeData","description":"java.lang.management.MemoryUsage","typeName":"java.lang.management.MemoryUsage"},"readable":true,"type":"javax.management.openmbean.CompositeData","writable":false},{"defaultValue":null,"description":"NonHeapMemoryUsage","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.CompositeType(name=java.lang.management.MemoryUsage,items=((itemName=committed,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=init,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=max,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)),(itemName=used,itemType=javax.management.openmbean.SimpleType(name=java.lang.Long)))))","originalType=java.lang.management.MemoryUsage"],"valid":true},"is":false,"legalValues":null,"maxValue":null,"minValue":null,"name":"NonHeapMemoryUsage","openType":{"array":false,"className":"javax.management.openmbean.CompositeData","description":"java.lang.management.MemoryUsage","typeName":"java.lang.management.MemoryUsage"},"readable":true,"type":"javax.management.openmbean.CompositeData","writable":false},{"description":"ObjectPendingFinalizationCount","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.SimpleType(name=java.lang.Integer))","originalType=int"],"valid":true},"is":false,"name":"ObjectPendingFinalizationCount","readable":true,"type":"int","writable":false}],"className":"sun.management.MemoryImpl","constructors":[],"description":"Information on the management interface of the MBean","descriptor":{"fieldNames":["immutableInfo","interfaceClassName","mxbean"],"fields":["immutableInfo=true","interfaceClassName=java.lang.management.MemoryMXBean","mxbean=true"],"valid":true},"notifications":[{"description":"Memory Notification","descriptor":{"fieldNames":[],"fields":[],"valid":true},"name":"javax.management.Notification","notifTypes":["java.management.memory.threshold.exceeded","java.management.memory.collection.threshold.exceeded"]}],"operations":[{"description":"gc","descriptor":{"fieldNames":["openType","originalType"],"fields":["openType=(javax.management.openmbean.SimpleType(name=java.lang.Void))","originalType=void"],"valid":true},"impact":3,"name":"gc","returnType":"void","signature":[]}]}</code></td></tr>
  *     <tr><td>action</td><td>mbean</td></tr>
- *     <tr><td>serverName</td><td>JMXƒT[ƒo–¼</td></tr>
- *     <tr><td>index</td><td>ƒ[ƒJƒ‹ƒzƒXƒg‚ÉJMXƒT[ƒo‚ª•¡”‘¶İ‚·‚éê‡‚ÉA‰½”Ô–Ú‚ÌJMXƒT[ƒo‚©‚ğw’è‚·‚éƒCƒ“ƒfƒbƒNƒXB</td></tr>
- *     <tr><td>name</td><td>MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼</td></tr>
- *     <tr><td rowspan="8">5</td><td rowspan="8"><nobr>MBean‚Ì‘®«‚ğİ’è‚·‚é</nobr></td><td>responseType</td><td>json</td><td rowspan="8"><code>{"result":"Success!!"}</code></td></tr>
+ *     <tr><td>serverName</td><td>JMXã‚µãƒ¼ãƒå</td></tr>
+ *     <tr><td>index</td><td>ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«JMXã‚µãƒ¼ãƒãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã«ã€ä½•ç•ªç›®ã®JMXã‚µãƒ¼ãƒã‹ã‚’æŒ‡å®šã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</td></tr>
+ *     <tr><td>name</td><td>MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå</td></tr>
+ *     <tr><td rowspan="8">5</td><td rowspan="8"><nobr>MBeanã®å±æ€§ã‚’è¨­å®šã™ã‚‹</nobr></td><td>responseType</td><td>json</td><td rowspan="8"><code>{"result":"Success!!"}</code></td></tr>
  *     <tr><td>action</td><td>set</td></tr>
- *     <tr><td>serverName</td><td>JMXƒT[ƒo–¼</td></tr>
- *     <tr><td>index</td><td>ƒ[ƒJƒ‹ƒzƒXƒg‚ÉJMXƒT[ƒo‚ª•¡”‘¶İ‚·‚éê‡‚ÉA‰½”Ô–Ú‚ÌJMXƒT[ƒo‚©‚ğw’è‚·‚éƒCƒ“ƒfƒbƒNƒXB</td></tr>
- *     <tr><td>name</td><td>MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼</td></tr>
- *     <tr><td>attribute</td><td>MBean‚Ì‘®«–¼</td></tr>
- *     <tr><td>attributeType</td><td>MBean‚Ì‘®«Œ^Bvalue‚ğ•¶š—ñ‚©‚ç‘®«Œ^‚É•ÒW‚·‚é‚½‚ß‚Éw’è‚·‚éB</td></tr>
- *     <tr><td>value</td><td>MBean‚Ì‘®«’l</td></tr>
- *     <tr><td rowspan="6">6</td><td rowspan="6"><nobr>MBean‚Ì‘®«‚ğæ“¾‚·‚é</nobr></td><td>responseType</td><td>json</td><td rowspan="6"><code>{"value":false}</code></td></tr>
+ *     <tr><td>serverName</td><td>JMXã‚µãƒ¼ãƒå</td></tr>
+ *     <tr><td>index</td><td>ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«JMXã‚µãƒ¼ãƒãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã«ã€ä½•ç•ªç›®ã®JMXã‚µãƒ¼ãƒã‹ã‚’æŒ‡å®šã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</td></tr>
+ *     <tr><td>name</td><td>MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå</td></tr>
+ *     <tr><td>attribute</td><td>MBeanã®å±æ€§å</td></tr>
+ *     <tr><td>attributeType</td><td>MBeanã®å±æ€§å‹ã€‚valueã‚’æ–‡å­—åˆ—ã‹ã‚‰å±æ€§å‹ã«ç·¨é›†ã™ã‚‹ãŸã‚ã«æŒ‡å®šã™ã‚‹ã€‚</td></tr>
+ *     <tr><td>value</td><td>MBeanã®å±æ€§å€¤</td></tr>
+ *     <tr><td rowspan="6">6</td><td rowspan="6"><nobr>MBeanã®å±æ€§ã‚’å–å¾—ã™ã‚‹</nobr></td><td>responseType</td><td>json</td><td rowspan="6"><code>{"value":false}</code></td></tr>
  *     <tr><td>action</td><td>get</td></tr>
- *     <tr><td>serverName</td><td>JMXƒT[ƒo–¼</td></tr>
- *     <tr><td>index</td><td>ƒ[ƒJƒ‹ƒzƒXƒg‚ÉJMXƒT[ƒo‚ª•¡”‘¶İ‚·‚éê‡‚ÉA‰½”Ô–Ú‚ÌJMXƒT[ƒo‚©‚ğw’è‚·‚éƒCƒ“ƒfƒbƒNƒXB</td></tr>
- *     <tr><td>name</td><td>MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼</td></tr>
- *     <tr><td>attribute</td><td>MBean‚Ì‘®«–¼</td></tr>
- *     <tr><td rowspan="8">7</td><td rowspan="8"><nobr>MBean‚Ì‘€ì‚ğÀs‚·‚é</nobr></td><td>responseType</td><td>json</td><td rowspan="8"><code>{"result":null}</code></td></tr>
+ *     <tr><td>serverName</td><td>JMXã‚µãƒ¼ãƒå</td></tr>
+ *     <tr><td>index</td><td>ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«JMXã‚µãƒ¼ãƒãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã«ã€ä½•ç•ªç›®ã®JMXã‚µãƒ¼ãƒã‹ã‚’æŒ‡å®šã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</td></tr>
+ *     <tr><td>name</td><td>MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå</td></tr>
+ *     <tr><td>attribute</td><td>MBeanã®å±æ€§å</td></tr>
+ *     <tr><td rowspan="8">7</td><td rowspan="8"><nobr>MBeanã®æ“ä½œã‚’å®Ÿè¡Œã™ã‚‹</nobr></td><td>responseType</td><td>json</td><td rowspan="8"><code>{"result":null}</code></td></tr>
  *     <tr><td>action</td><td>operation</td></tr>
- *     <tr><td>serverName</td><td>JMXƒT[ƒo–¼</td></tr>
- *     <tr><td>index</td><td>ƒ[ƒJƒ‹ƒzƒXƒg‚ÉJMXƒT[ƒo‚ª•¡”‘¶İ‚·‚éê‡‚ÉA‰½”Ô–Ú‚ÌJMXƒT[ƒo‚©‚ğw’è‚·‚éƒCƒ“ƒfƒbƒNƒXB</td></tr>
- *     <tr><td>name</td><td>MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼</td></tr>
- *     <tr><td>operation</td><td>MBean‚Ì‘€ì–¼ƒVƒOƒjƒ`ƒƒBƒƒ\ƒbƒh–¼(ˆø”Œ^1,ˆø”Œ^2,...)</td></tr>
- *     <tr><td>argTypes</td><td>ˆø”Œ^Bargs‚ğ•¶š—ñ‚©‚çˆø”Œ^‚É•ÒW‚·‚é‚½‚ß‚Éw’è‚·‚éB</td></tr>
- *     <tr><td>args</td><td>‘€ì‚Ìˆø”</td></tr>
+ *     <tr><td>serverName</td><td>JMXã‚µãƒ¼ãƒå</td></tr>
+ *     <tr><td>index</td><td>ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«JMXã‚µãƒ¼ãƒãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã«ã€ä½•ç•ªç›®ã®JMXã‚µãƒ¼ãƒã‹ã‚’æŒ‡å®šã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</td></tr>
+ *     <tr><td>name</td><td>MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå</td></tr>
+ *     <tr><td>operation</td><td>MBeanã®æ“ä½œåã‚·ã‚°ãƒ‹ãƒãƒ£ã€‚ãƒ¡ã‚½ãƒƒãƒ‰å(å¼•æ•°å‹1,å¼•æ•°å‹2,...)</td></tr>
+ *     <tr><td>argTypes</td><td>å¼•æ•°å‹ã€‚argsã‚’æ–‡å­—åˆ—ã‹ã‚‰å¼•æ•°å‹ã«ç·¨é›†ã™ã‚‹ãŸã‚ã«æŒ‡å®šã™ã‚‹ã€‚</td></tr>
+ *     <tr><td>args</td><td>æ“ä½œã®å¼•æ•°</td></tr>
  * </table>
  * <p>
- * ˆÈ‰º‚ÉAƒT[ƒuƒŒƒbƒg‚Ìweb.xml’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®web.xmlå®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;servlet&gt;
  *     &lt;servlet-name&gt;JMXConsoleServlet&lt;/servlet-name&gt;
@@ -125,37 +125,37 @@ import jp.ossc.nimbus.util.converter.*;
 public class JMXConsoleServlet extends HttpServlet{
     
     /**
-     * MBeanServerConnectionFactory‚Ìƒ}ƒl[ƒWƒƒ–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * MBeanServerConnectionFactoryã®ãƒãƒãƒ¼ã‚¸ãƒ£åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_MBEAN_SERVER_CONNECTION_FACTORY_MANAGER_NAMES = "MBeanServerConnectionFactoryManagerNames";
     
     /**
-     * MBeanServerConnectionFactory‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * MBeanServerConnectionFactoryã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_MBEAN_SERVER_CONNECTION_FACTORY_SERVICE_NAMES = "MBeanServerConnectionFactoryServiceNames";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚©‚ç‚Ì‘®«İ’è‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‹ã‚‰ã®å±æ€§è¨­å®šã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_ATTR_SET_ENABLED = "AttributeSetEnabled";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚É‘®«‚Ì’l‚ğ•\¦‚·‚éÛ‚Ì•\¦Å‘å’·‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å±æ€§ã®å€¤ã‚’è¡¨ç¤ºã™ã‚‹éš›ã®è¡¨ç¤ºæœ€å¤§é•·ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_ATTR_MAX_LENGTH = "AttributeMaxLength";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚©‚ç‚Ì‘€ìŒÄ‚Ño‚µ‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‹ã‚‰ã®æ“ä½œå‘¼ã³å‡ºã—ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_OPERATION_ENABLED = "OperationEnabled";
     
     /**
-     * JSONƒRƒ“ƒo[ƒ^‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * JSONã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_JSON_CONVERTER_SERVICE_NAME = "JSONConverterServiceName";
     
     /**
-     * JSON‰“š‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * JSONå¿œç­”æ™‚ã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_UNICODE_ESCAPE = "UnicodeEscape";
     
@@ -168,10 +168,10 @@ public class JMXConsoleServlet extends HttpServlet{
     private StringStreamConverter toStringConverter;
     
     /**
-     * ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚ğs‚¤B<p>
-     * ƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‹y‚Ñƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰åŠã³ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚
      *
-     * @exception ServletException ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception ServletException ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public synchronized void init() throws ServletException{
         ServiceName jsonConverterServiceName = getJSONConverterServiceName();
@@ -280,10 +280,10 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * POSTƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * POSTãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -295,10 +295,10 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * GETƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * GETãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -310,11 +310,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹ˆ—‚ğs‚¤B
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡¦ç†ã‚’è¡Œã†ã€‚
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -359,11 +359,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚Ìƒgƒbƒv‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®ãƒˆãƒƒãƒ—ç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -454,11 +454,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * MBeanƒT[ƒo‚ÌƒhƒƒCƒ“ˆê——‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * MBeanã‚µãƒ¼ãƒã®ãƒ‰ãƒ¡ã‚¤ãƒ³ä¸€è¦§ç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -651,11 +651,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * ƒhƒƒCƒ““à‚ÌMBeanˆê——‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ãƒ‰ãƒ¡ã‚¤ãƒ³å†…ã®MBeanä¸€è¦§ç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -787,11 +787,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * MBean‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * MBeanç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -976,7 +976,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     if(attributeInfo.isWritable()){
                         buf.append("<input type=\"submit\" value=\"apply\">");
                     }else{
-                        buf.append("@");
+                        buf.append("ã€€");
                     }
                     buf.append("</td>");
                     buf.append("</tr>");
@@ -1017,7 +1017,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     buf.append("<td>").append(signature).append("</td>");
                     buf.append("<td>");
                     if(paramInfos == null || paramInfos.length == 0){
-                        buf.append("@");
+                        buf.append("ã€€");
                     }else{
                         for(int j = 0, max = paramInfos.length; j < max; j++){
                             buf.append(paramInfos[j].getName())
@@ -1030,7 +1030,7 @@ public class JMXConsoleServlet extends HttpServlet{
                     buf.append("</td>");
                     buf.append("<td>");
                     if(paramInfos == null || paramInfos.length == 0){
-                        buf.append("@");
+                        buf.append("ã€€");
                     }else{
                         for(int j = 0, max = paramInfos.length; j < max; j++){
                             buf.append("<input type=\"text\" name=\"argTypes\">");
@@ -1276,11 +1276,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * MBean‘®«İ’èƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * MBeanå±æ€§è¨­å®šãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1421,11 +1421,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * MBean‘®«æ“¾ƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * MBeanå±æ€§å–å¾—ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1515,11 +1515,11 @@ public class JMXConsoleServlet extends HttpServlet{
     }
     
     /**
-     * MBean‘€ìƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * MBeanæ“ä½œãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */

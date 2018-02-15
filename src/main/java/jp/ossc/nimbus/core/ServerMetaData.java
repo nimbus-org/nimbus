@@ -37,42 +37,42 @@ import java.net.*;
 import org.w3c.dom.*;
 
 /**
- * ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;server&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;server&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ServerMetaData extends MetaData implements Serializable{
     
     private static final long serialVersionUID = -5309966428718081110L;
     
     /**
-     * &lt;server&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;server&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SERVER_TAG_NAME = "server";
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f&lt;manager-repository&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ &lt;manager-repository&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String REPOSITORY_TAG_NAME = "manager-repository";
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f&lt;log&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ &lt;log&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String LOG_TAG_NAME = "log";
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f&lt;message&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ &lt;message&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String MESSAGE_TAG_NAME = "message";
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚½&lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğŠi”[‚·‚éƒ}ƒbƒvB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚ŒãŸ&lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>&lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l</td><td>{@link ManagerMetaData}</td><td>&lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>&lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤</td><td>{@link ManagerMetaData}</td><td>&lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿</td></tr>
      * </table>
      *
      * @see #getManager(String)
@@ -82,14 +82,14 @@ public class ServerMetaData extends MetaData implements Serializable{
     private final Map managers = new LinkedHashMap();
     
     /**
-     * &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ÌW‡B<p>
+     * &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã®é›†åˆã€‚<p>
      *
      * @see #getReferenceURL()
      */
     private final Set referenceURL = new LinkedHashSet();
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚½&lt;property-editors&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚ŒãŸ&lt;property-editors&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getPropertyEditors()
      * @see #addPropertyEditor(String, String)
@@ -97,45 +97,45 @@ public class ServerMetaData extends MetaData implements Serializable{
     private PropertyEditorsMetaData propertyEditors;
     
     /**
-     * ‚±‚Ìƒƒ^ƒf[ƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURLB<p>
+     * ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã€‚<p>
      */
     private final URL myUrl;
     
     /**
-     * &lt;manager-repository&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;manager-repository&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getRepository()
      */
     private ServiceNameMetaData repository;
     
     /**
-     * &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getLog()
      */
     private ServiceNameMetaData log;
     
     /**
-     * &lt;message&gt;—v‘f‚Åw’è‚³‚ê‚½MessageRecordFactory‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;message&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸMessageRecordFactoryã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getMessage()
      */
     private ServiceNameMetaData message;
     
     /**
-     * &lt;default-log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;default-log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getDefaultLog()
      */
     private DefaultLogMetaData defaultLog;
     
     /**
-     * ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader
+     * è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
      */
     private ServiceLoader myLoader;
     
     /**
-     * &lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒBB<p>
+     * &lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     private Map properties = new LinkedHashMap();
     
@@ -145,10 +145,10 @@ public class ServerMetaData extends MetaData implements Serializable{
     private List ifDefMetaDataList;
     
     /**
-     * ‚±‚Ìƒƒ^ƒf[ƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ğ‚Á‚½Aƒ‹[ƒgƒƒ^ƒf[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã‚’æŒã£ãŸã€ãƒ«ãƒ¼ãƒˆãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param loader ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader
-     * @param url ‚±‚Ìƒƒ^ƒf[ƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
+     * @param loader è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
+     * @param url ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
      */
     public ServerMetaData(ServiceLoader loader, URL url){
         super();
@@ -157,57 +157,57 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * ‚±‚Ìƒƒ^ƒf[ƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ìƒƒ^ƒf[ƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
+     * @return ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
      */
     public URL getURL(){
         return myUrl;
     }
     
     /**
-     * ©•ª‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğæ“¾‚·‚éB<p>
+     * è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader 
+     * @return è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader 
      */
     public ServiceLoader getServiceLoader(){
         return myLoader;
     }
     
     /**
-     * ©•ª‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğİ’è‚·‚éB<p>
+     * è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param loader ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader 
+     * @param loader è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader 
      */
     public void setServiceLoader(ServiceLoader loader){
         myLoader = loader;
     }
     
     /**
-     * ‚±‚Ì&lt;server&gt;—v‘f‚Ìq—v‘f‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ğ‚Â&lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚Ì&lt;manager&gt;—v‘f‚ªA‚±‚Ì&lt;server&gt;—v‘f‚Ìq—v‘f‚É’è‹`‚³‚ê‚Ä‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * ã“ã®&lt;server&gt;è¦ç´ ã®å­è¦ç´ ã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒã¤&lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®&lt;manager&gt;è¦ç´ ãŒã€ã“ã®&lt;server&gt;è¦ç´ ã®å­è¦ç´ ã«å®šç¾©ã•ã‚Œã¦ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @return &lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return &lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ManagerMetaData getManager(String name){
         return (ManagerMetaData)managers.get(name);
     }
     
     /**
-     * ‚±‚Ì&lt;server&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚Ä‚¢‚é&lt;manager&gt;—v‘f‚ÌW‡‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ì&lt;server&gt;—v‘f‚Ìq—v‘f‚É&lt;manager&gt;—v‘f‚ª‚P‚Â‚à’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‹ó‚ÌW‡‚ğ•Ô‚·B<br>
+     * ã“ã®&lt;server&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚Œã¦ã„ã‚‹&lt;manager&gt;è¦ç´ ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®&lt;server&gt;è¦ç´ ã®å­è¦ç´ ã«&lt;manager&gt;è¦ç´ ãŒï¼‘ã¤ã‚‚å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç©ºã®é›†åˆã‚’è¿”ã™ã€‚<br>
      * 
-     * @return &lt;manager&gt;—v‘f‚ÌW‡
+     * @return &lt;manager&gt;è¦ç´ ã®é›†åˆ
      */
     public Collection getManagers(){
         return managers.values();
     }
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚Ä‚¢‚é&lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ“o˜^‚·‚éB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚Œã¦ã„ã‚‹&lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param manager &lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param manager &lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void addManager(ManagerMetaData manager){
         manager.setParent(this);
@@ -216,26 +216,26 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚Ä‚¢‚é&lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğíœ‚·‚éB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚Œã¦ã„ã‚‹&lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name &lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l
+     * @param name &lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
      */
     public void removeManager(String name){
         managers.remove(name);
     }
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚Ä‚¢‚é&lt;manager&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‘S‚Äíœ‚·‚éB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚Œã¦ã„ã‚‹&lt;manager&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearManagers(){
         managers.clear();
     }
     
     /**
-     * &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ÌW‡‚ğæ“¾‚·‚éB<p>
-     * &lt;ref-url&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‹ó‚ÌW‡‚ğ•Ô‚·B<br>
+     * &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;ref-url&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç©ºã®é›†åˆã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒ^ƒf[ƒ^‚ÌW‡
+     * @return &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®é›†åˆ
      */
     public Set getReferenceURL(){
         Set urls = new HashSet();
@@ -247,9 +247,9 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ğ’Ç‰Á‚·‚éB<p>
+     * &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param urlStr &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL•¶š—ñ
+     * @param urlStr &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLæ–‡å­—åˆ—
      */
     public void addReferenceURL(String urlStr){
         RefURLMetaData data = new RefURLMetaData(this);
@@ -258,9 +258,9 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;property-editors&gt;—v‘f‚Åw’è‚³‚ê‚½Œ^‚Æjava.beans.PropertyEditor‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * &lt;property-editors&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸå‹ã¨java.beans.PropertyEditorã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return &lt;property-editors&gt;—v‘f‚Åw’è‚³‚ê‚½Œ^‚Æjava.beans.PropertyEditor‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return &lt;property-editors&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸå‹ã¨java.beans.PropertyEditorã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getPropertyEditors(){
         Map result = new HashMap();
@@ -276,10 +276,10 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;property-editors&gt;—v‘f‚Åw’è‚³‚ê‚½Œ^‚Æjava.beans.PropertyEditor‚Ìƒ}ƒbƒsƒ“ƒO‚ğ’Ç‰Á‚·‚éB<p>
+     * &lt;property-editors&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸå‹ã¨java.beans.PropertyEditorã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param type java.beans.PropertyEditor‚ª•ÒW‚·‚éƒNƒ‰ƒX–¼
-     * @param editor java.beans.PropertyEditorÀ‘•ƒNƒ‰ƒX–¼
+     * @param type java.beans.PropertyEditorãŒç·¨é›†ã™ã‚‹ã‚¯ãƒ©ã‚¹å
+     * @param editor java.beans.PropertyEditorå®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     public void addPropertyEditor(String type, String editor){
         if(propertyEditors == null){
@@ -289,9 +289,9 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;property-editors&gt;—v‘f‚Åw’è‚³‚ê‚½Œ^‚Ìjava.beans.PropertyEditor‚ğíœ‚·‚éB<p>
+     * &lt;property-editors&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸå‹ã®java.beans.PropertyEditorã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param type java.beans.PropertyEditor‚ª•ÒW‚·‚éƒNƒ‰ƒX–¼
+     * @param type java.beans.PropertyEditorãŒç·¨é›†ã™ã‚‹ã‚¯ãƒ©ã‚¹å
      */
     public void removePropertyEditor(String type){
         if(propertyEditors == null){
@@ -301,103 +301,103 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;property-editors&gt;—v‘f‚Å’è‹`‚³‚ê‚½java.beans.PropertyEditor‚Ìƒ}ƒbƒsƒ“ƒO‚ğ‘S‚Äíœ‚·‚éB<p>
+     * &lt;property-editors&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸjava.beans.PropertyEditorã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearPropertyEditors(){
         propertyEditors.clearPropertyEditors();
     }
     
     /**
-     * &lt;manager-repository&gt;—v‘f‚Åw’è‚³‚ê‚½ƒŠƒ|ƒWƒgƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;manager-repository&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;manager-repository&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒªãƒã‚¸ãƒˆãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;manager-repository&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;manager-repository&gt;—v‘f‚Åw’è‚³‚ê‚½ƒŠƒ|ƒWƒgƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;manager-repository&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒªãƒã‚¸ãƒˆãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceNameMetaData getRepository(){
         return repository;
     }
     
     /**
-     * &lt;manager-repository&gt;—v‘f‚Åw’è‚³‚ê‚½ƒŠƒ|ƒWƒgƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;manager-repository&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒªãƒã‚¸ãƒˆãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;manager-repository&gt;—v‘f‚Åw’è‚³‚ê‚½ƒŠƒ|ƒWƒgƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;manager-repository&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒªãƒã‚¸ãƒˆãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setRepository(ServiceNameMetaData data){
         repository = data;
     }
     
     /**
-     * &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;log&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;log&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceNameMetaData getLog(){
         return log;
     }
     
     /**
-     * &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setLog(ServiceNameMetaData data){
         log = data;
     }
     
     /**
-     * &lt;message&gt;—v‘f‚Åw’è‚³‚ê‚½MessageRecordFactory‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;message&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;message&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸMessageRecordFactoryã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;message&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceNameMetaData getMessage(){
         return message;
     }
     
     /**
-     * &lt;message&gt;—v‘f‚Åw’è‚³‚ê‚½MessageRecordFactory‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;message&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸMessageRecordFactoryã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setMessage(ServiceNameMetaData data){
         message = data;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;default-log&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;default-log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;default-log&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;default-log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;default-log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public DefaultLogMetaData getDefaultLog(){
         return defaultLog;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;default-log&gt;—v‘f‚Åw’è‚³‚ê‚½Logger‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;default-log&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸLoggerã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setDefaultLog(DefaultLogMetaData data){
         defaultLog = data;
     }
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return &lt;manager-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌW‡
+     * @return &lt;manager-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆ
      */
     public Set getPropertyNameSet(){
         return properties.keySet();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚Ì&lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
-     * ŠY“–‚·‚éƒvƒƒpƒeƒB–¼‚Ì&lt;server-property&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®&lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®&lt;server-property&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param property ƒvƒƒpƒeƒB–¼
-     * @return &lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB’l
+     * @param property ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return &lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public String getProperty(String property){
         ServerPropertyMetaData propData
@@ -406,10 +406,10 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
-     * &lt;server-property&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‹ó‚ÌProperties‚ğ•Ô‚·B<br>
+     * &lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;server-property&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç©ºã®Propertiesã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB
+     * @return &lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getProperties(){
         final Properties props = new Properties();
@@ -422,10 +422,10 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚Ì&lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®&lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param property ƒvƒƒpƒeƒB–¼
-     * @param value &lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB’l
+     * @param property ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value &lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setProperty(String property, String value){
         ServerPropertyMetaData propData
@@ -439,27 +439,27 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚Ì&lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®&lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param property ƒvƒƒpƒeƒB–¼
+     * @param property ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void removeProperty(String property){
         properties.remove(property);
     }
     
     /**
-     * &lt;server-property&gt;—v‘f‚Åw’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ğ‘S‚Äíœ‚·‚éB<p>
+     * &lt;server-property&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearProperties(){
         properties.clear();
     }
     
     /**
-     * &lt;manager-repository&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;manager-repository&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param managerName ƒŠƒ|ƒWƒgƒŠƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ƒŠƒ|ƒWƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return &lt;manager-repository&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param managerName ãƒªãƒã‚¸ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ãƒªãƒã‚¸ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return &lt;manager-repository&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceNameMetaData createRepositoryMetaData(
         String managerName,
@@ -474,11 +474,11 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;log&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;log&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param managerName ƒƒOƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ƒƒOƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return &lt;log&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param managerName ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return &lt;log&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceNameMetaData createLogMetaData(
         String managerName,
@@ -493,11 +493,11 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;message&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;message&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param managerName ƒƒbƒZ[ƒWƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ƒƒbƒZ[ƒWƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return &lt;message&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param managerName ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return &lt;message&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceNameMetaData createMessageMetaData(
         String managerName,
@@ -528,10 +528,10 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;server&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;server&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;server&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;server&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;server&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;server&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);
@@ -598,14 +598,14 @@ public class ServerMetaData extends MetaData implements Serializable{
                     propData
                 );
                 String prop = propData.getValue();
-                // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceSystemProperty(prop);
-                // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceServiceLoderConfig(
                     prop,
                     myLoader == null ? null : myLoader.getConfig()
                 );
-                // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceServerProperty(prop);
                 propData.setValue(prop);
             }

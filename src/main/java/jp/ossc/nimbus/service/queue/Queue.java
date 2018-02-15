@@ -32,105 +32,105 @@
 package jp.ossc.nimbus.service.queue;
 
 /**
- * Queue�C���^�t�F�[�X�B<p>
+ * Queueインタフェース。<p>
  * 
  * @author H.Nakano
  */
 public interface Queue{
     
     /**
-     * �L���[�Ƀf�[�^�𓊓�����B<p>
+     * キューにデータを投入する。<p>
      * 
-     * @param item �����I�u�W�F�N�g
+     * @param item 投入オブジェクト
      */
     public void push(Object item);
     
     /**
-     * �L���[�Ƀf�[�^�𓊓�����B<p>
+     * キューにデータを投入する。<p>
      * 
-     * @param item �����I�u�W�F�N�g
-     * @param timeout �^�C���A�E�g[ms]
-     * @return �^�C���A�E�g�����ꍇfalse
+     * @param item 投入オブジェクト
+     * @param timeout タイムアウト[ms]
+     * @return タイムアウトした場合false
      */
     public boolean push(Object item, long timeout);
     
     /**
-     * �L���[����f�[�^�����o���B<p>
-     * �L���[����f�[�^���擾�ł���܂ŁA�����ɑ҂B<br>
+     * キューからデータを取り出す。<p>
+     * キューからデータが取得できるまで、無限に待つ。<br>
      * 
-     * @return �L���[�擾�I�u�W�F�N�g
+     * @return キュー取得オブジェクト
      */
     public Object get();
     
     /**
-     * �L���[����f�[�^�����o���B<p>
-     * �w�肵�����Ԃ��߂���܂łɃL���[����f�[�^���擾�ł��Ȃ��ꍇ�́Anull���Ԃ�B<br>
+     * キューからデータを取り出す。<p>
+     * 指定した時間が過ぎるまでにキューからデータが取得できない場合は、nullが返る。<br>
      * 
-     * @param timeOutMs �^�C���A�E�g[ms]
-     * @return �L���[�擾�I�u�W�F�N�g
+     * @param timeOutMs タイムアウト[ms]
+     * @return キュー取得オブジェクト
      */
     public Object get(long timeOutMs);
     
     /**
-     * �L���[����f�[�^��ǂށB<p>
-     * �Q�Ƃ��邾���ŁA�L���[����f�[�^�͎��o���Ȃ��B<br>
+     * キューからデータを読む。<p>
+     * 参照するだけで、キューからデータは取り出さない。<br>
      * 
-     * @return �L���[�擾�I�u�W�F�N�g
+     * @return キュー取得オブジェクト
      */
     public Object peek();
     
     /**
-     * �L���[����f�[�^��ǂށB<br>
-     * �Q�Ƃ��邾���ŁA�L���[����f�[�^�͎��o���Ȃ��B<br>
-     * �w�肵�����Ԃ��߂���܂łɃL���[����f�[�^���ǂ߂Ȃ��ꍇ�́Anull���Ԃ�B<br>
+     * キューからデータを読む。<br>
+     * 参照するだけで、キューからデータは取り出さない。<br>
+     * 指定した時間が過ぎるまでにキューからデータが読めない場合は、nullが返る。<br>
      * 
-     * @param timeOutMs �^�C���A�E�g[ms]
-     * @return �L���[�擾�I�u�W�F�N�g
+     * @param timeOutMs タイムアウト[ms]
+     * @return キュー取得オブジェクト
      */
     public Object peek(long timeOutMs);
     
     /**
-     * �L���[����w�肵���f�[�^���폜����B<p>
+     * キューから指定したデータを削除する。<p>
      *
-     * @param item �폜�Ώۂ̃I�u�W�F�N�g
-     * @return �폜���ꂽ�I�u�W�F�N�g
+     * @param item 削除対象のオブジェクト
+     * @return 削除されたオブジェクト
      */
     public Object remove(Object item);
     
     /**
-     * �L���[������������B<p>
+     * キューを初期化する。<p>
      */
     public void clear();
     
     /**
-     * �L���[�T�C�Y���擾����B<p>
+     * キューサイズを取得する。<p>
      * 
-     * @return �L���[�i�[����
+     * @return キュー格納件数
      */
     public int size();
     
     /**
-     * �L���[�ɓ������ꂽ�������擾����B<p>
+     * キューに投入された件数を取得する。<p>
      *
-     * @return �L���[��������
+     * @return キュー投入件数
      */
     public long getCount();
     
     /**
-     * �L���[�擾�҂������擾����B<p>
+     * キュー取得待ち数を取得する。<p>
      *
-     * @return �L���[�擾�҂���
+     * @return キュー取得待ち数
      */
     public int getWaitCount();
     
     /**
-     * �L���[�擾�҂����J�n����B<p>
-     * {@link #release()}�ďo����ɁA�L���[�擾�҂����󂯕t����悤�ɂ���B
+     * キュー取得待ちを開始する。<p>
+     * {@link #release()}呼出し後に、キュー取得待ちを受け付けるようにする。
      */
     public void accept();
     
     /**
-     * �L���[�擾�҂����J�����A�L���[�擾�҂����󂯕t���Ȃ��悤�ɂ���B<p>
+     * キュー取得待ちを開放し、キュー取得待ちを受け付けないようにする。<p>
      */
     public void release();
 }

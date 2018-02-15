@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.aop;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒXƒŒƒbƒh’PˆÊƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“B<p>
- * Œ»İŒÄ‚Ño‚³‚ê‚Ä‚¢‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Ìî•ñ‚ğƒXƒŒƒbƒh’PˆÊ‚ÉƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÉŠi”[‚·‚é‚Ì‚ÅAƒXƒŒƒbƒhƒZ[ƒt‚ÈƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚Å‚ ‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã€‚<p>
+ * ç¾åœ¨å‘¼ã³å‡ºã•ã‚Œã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®æƒ…å ±ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã«æ ¼ç´ã™ã‚‹ã®ã§ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ãªã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -45,7 +45,7 @@ public class DefaultThreadLocalInterceptorChain
     private static final long serialVersionUID = 5302115451138234378L;
     
     /**
-     * Œ»İŒÄ‚Ño‚µ’†‚Ìî•ñ‚ğƒXƒŒƒbƒh’PˆÊ‚É•Û‚·‚éThreadLocalB<p>
+     * ç¾åœ¨å‘¼ã³å‡ºã—ä¸­ã®æƒ…å ±ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã«ä¿æŒã™ã‚‹ThreadLocalã€‚<p>
      */
     protected transient ThreadLocal state = new ThreadLocal(){
         protected synchronized Object initialValue(){
@@ -54,17 +54,17 @@ public class DefaultThreadLocalInterceptorChain
     };
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultThreadLocalInterceptorChain(){
         super();
     }
     
     /**
-     * w’è‚³‚ê‚½{@link InterceptorChainList}‚Æ{@link Invoker}‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã¨{@link Invoker}ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param list ƒ`ƒF[ƒ“‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg
-     * @param invoker –{—ˆ‚ÌŒÄ‚Ño‚µæ‚ğŒÄ‚Ño‚·Invoker
+     * @param list ãƒã‚§ãƒ¼ãƒ³ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆ
+     * @param invoker æœ¬æ¥ã®å‘¼ã³å‡ºã—å…ˆã‚’å‘¼ã³å‡ºã™Invoker
      */
     public DefaultThreadLocalInterceptorChain(
         InterceptorChainList list,
@@ -74,10 +74,10 @@ public class DefaultThreadLocalInterceptorChain
     }
     
     /**
-     * w’è‚³‚ê‚½{@link InterceptorChainList}ƒT[ƒrƒX‚Æ{@link Invoker}ƒT[ƒrƒX‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã¨{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param listServiceName ƒ`ƒF[ƒ“‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒgInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @param invokerServiceName –{—ˆ‚ÌŒÄ‚Ño‚µæ‚ğŒÄ‚Ño‚·InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param listServiceName ãƒã‚§ãƒ¼ãƒ³ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param invokerServiceName æœ¬æ¥ã®å‘¼ã³å‡ºã—å…ˆã‚’å‘¼ã³å‡ºã™Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public DefaultThreadLocalInterceptorChain(
         ServiceName listServiceName,
@@ -86,23 +86,23 @@ public class DefaultThreadLocalInterceptorChain
         super(listServiceName, invokerServiceName);
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public int getCurrentInterceptorIndex(){
         InterceptorChainState chainState = (InterceptorChainState)state.get();
         return chainState.currentIndex;
     }
     
     /**
-     * Œ»İ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Ì‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ã‚ÌƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ä¸Šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index Œ»İ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Ì‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ã‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @param index ç¾åœ¨ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ä¸Šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setCurrentInterceptorIndex(int index){
         InterceptorChainState chainState = (InterceptorChainState)state.get();
         chainState.currentIndex = index;
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public InterceptorChain cloneChain(){
         DefaultThreadLocalInterceptorChain clone
              = (DefaultThreadLocalInterceptorChain)super.cloneChain();
@@ -115,7 +115,7 @@ public class DefaultThreadLocalInterceptorChain
     }
     
     /**
-     * Œ»İŒÄ‚Ño‚µ’†‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Ìî•ñ‚ğŠi”[‚·‚éƒNƒ‰ƒXB<p>
+     * ç¾åœ¨å‘¼ã³å‡ºã—ä¸­ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
      * 
      * @author M.Takata
      */
@@ -125,8 +125,8 @@ public class DefaultThreadLocalInterceptorChain
         private static final long serialVersionUID = -24647693558335555L;
         
         /**
-         * {@link InterceptorChainList}“à‚ÌAŒ»İ‚Ìˆ—’†‚Ì{@link Interceptor}‚ÌƒCƒ“ƒfƒbƒNƒXB<p>
-         * ‰Šú’l‚ÍA-1B
+         * {@link InterceptorChainList}å†…ã®ã€ç¾åœ¨ã®å‡¦ç†ä¸­ã®{@link Interceptor}ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
+         * åˆæœŸå€¤ã¯ã€-1ã€‚
          */
         public int currentIndex = -1;
     }

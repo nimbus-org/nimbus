@@ -52,7 +52,7 @@ import jp.ossc.nimbus.service.performance.ResourceUsage;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * {@link Endpoint}‚ğŒp³‚µ‚½EndpointƒT[ƒrƒXƒNƒ‰ƒXB
+ * {@link Endpoint}ã‚’ç¶™æ‰¿ã—ãŸEndpointã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -557,7 +557,7 @@ public class DefaultEndpointService extends Endpoint implements ServiceBaseSuppo
         try {
             SessionProperties prop = (SessionProperties) config.getUserProperties().get(SessionProperties.SESSION_PROPERTY_KEY);
             prop.setWebSocketSessionId(session.getId());
-            // Journalo—Í
+            // Journalå‡ºåŠ›
             if (accessJournal != null) {
                 accessJournal.startJournal(accessJournalKey, editorFinder);
                 accessJournal.setRequestId(sequence.increment());
@@ -571,7 +571,7 @@ public class DefaultEndpointService extends Endpoint implements ServiceBaseSuppo
                 accessJournal.addInfo(headerJournalKey, prop.getHeaders());
                 accessJournal.addInfo(parameterJournalKey, prop.getParameterMap());
             }
-            // ID‚Æƒ`ƒPƒbƒg‚Í•K{
+            // IDã¨ãƒã‚±ãƒƒãƒˆã¯å¿…é ˆ
             if (prop.getId() == null && prop.getTicket() == null) {
                 CloseReason reason = new CustomCloseReason(CustomCloseReason.CloseCodes.SERVER_ACCESS_DENIED, "Server access denied");
                 try {
@@ -581,7 +581,7 @@ public class DefaultEndpointService extends Endpoint implements ServiceBaseSuppo
                 service.getLogger().write(illegalRequestMessageId, prop.getIp());
                 return;
             }
-            // ƒNƒ‰ƒCƒAƒ“ƒg”ƒ`ƒFƒbƒN
+            // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ•°ãƒã‚§ãƒƒã‚¯
             if (maxClientSize != -1 && sessionSet.size() >= maxClientSize) {
                 CloseReason reason = new CustomCloseReason(CustomCloseReason.CloseCodes.MAX_CLIENT_SIZE_OVER, "MaxClientSizeOver");
                 try {
@@ -591,7 +591,7 @@ public class DefaultEndpointService extends Endpoint implements ServiceBaseSuppo
                 service.getLogger().write(maxClientSizeOverMessageId, prop);
                 return;
             }
-            // ”FØˆ—
+            // èªè¨¼å‡¦ç†
             if (authenticator != null) {
                 boolean result = false;
                 try {

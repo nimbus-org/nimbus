@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.interpreter;
 import java.util.Map;
 
 /**
- * ƒRƒ“ƒpƒCƒ‹‚³‚ê‚½ƒCƒ“ƒ^[ƒvƒŠƒ^B<p>
+ * ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

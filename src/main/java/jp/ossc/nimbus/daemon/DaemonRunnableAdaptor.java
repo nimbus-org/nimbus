@@ -32,48 +32,48 @@
 package jp.ossc.nimbus.daemon;
 
 /**
- * ƒf[ƒ‚ƒ“ƒ‰ƒ“ƒiƒuƒ‹‚ÌƒAƒ_ƒvƒ^B<p>
- * DaemonRunnableƒCƒ“ƒ^ƒtƒF[ƒX‚Ì‘S‚Ä‚Ìƒƒ\ƒbƒh‚ª‹óÀ‘•‚³‚ê‚½ƒAƒ_ƒvƒ^ƒNƒ‰ƒX‚Å‚ ‚éB<br>
+ * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãƒ©ãƒ³ãƒŠãƒ–ãƒ«ã®ã‚¢ãƒ€ãƒ—ã‚¿ã€‚<p>
+ * DaemonRunnableã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å…¨ã¦ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒç©ºå®Ÿè£…ã•ã‚ŒãŸã‚¢ãƒ€ãƒ—ã‚¿ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author H.Nakano
  */
 public abstract class DaemonRunnableAdaptor implements DaemonRunnable{
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DaemonRunnableAdaptor(){
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onStop(){
         return true;
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onSuspend(){
         return true;
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onResume(){
         return true;
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public Object provide(DaemonControl ctrl) throws Throwable{
         return null;
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public void garbage(){
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onStart(){
         return true;
     }

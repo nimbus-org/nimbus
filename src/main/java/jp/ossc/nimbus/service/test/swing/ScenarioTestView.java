@@ -36,67 +36,67 @@ import jp.ossc.nimbus.service.test.TestScenarioGroup;
 public class ScenarioTestView extends JFrame implements ActionListener, ComponentListener{
 
     /**
-     * ƒEƒBƒ“ƒhƒE‚ÌÅ¬ƒTƒCƒY
+     * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®æœ€å°ã‚µã‚¤ã‚º
      */
     private Dimension MINIMUM_SIZE = new Dimension(1150, 700);
 
 
 
-    // ã•”‚É•\¦‚·‚éƒ†[ƒUID
+    // ä¸Šéƒ¨ã«è¡¨ç¤ºã™ã‚‹ãƒ¦ãƒ¼ã‚¶ID
     private String userId = null;
 
-    // ƒRƒ“ƒgƒ[ƒ‰XVƒ{ƒ^ƒ“
+    // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©æ›´æ–°ãƒœã‚¿ãƒ³
     private JButton updateButton = null;
 
-    // ƒRƒ“ƒgƒ[ƒ‰ƒŠƒZƒbƒgƒ{ƒ^ƒ“
+    // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒªã‚»ãƒƒãƒˆãƒœã‚¿ãƒ³
     private JButton resetButton = null;
 
-    // ƒVƒiƒŠƒIƒOƒ‹[ƒvƒRƒ“ƒ{ƒ{ƒbƒNƒX
+    // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
     private JComboBox scenarioGroupCombobox = null;
 
-    // ƒVƒiƒŠƒIƒOƒ‹[ƒvŠJnƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—é–‹å§‹ãƒœã‚¿ãƒ³
     private JButton scenarioGroupStartButton = null;
 
-    // ƒVƒiƒŠƒIƒOƒ‹[ƒvI—¹ƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—çµ‚äº†ãƒœã‚¿ãƒ³
     private JButton scenarioGroupEndButton = null;
 
-    // ó‘Ôƒ‰ƒxƒ‹
+    // çŠ¶æ…‹ãƒ©ãƒ™ãƒ«
     private JLabel statusLabel = null;
 
-    // ó‘Ôƒ‰ƒxƒ‹
+    // çŠ¶æ…‹ãƒ©ãƒ™ãƒ«
     private JLabel statusLabel2 = null;
 
-    // ƒVƒiƒŠƒIƒRƒ“ƒ{ƒ{ƒbƒNƒX
+    // ã‚·ãƒŠãƒªã‚ªã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
     private JComboBox scenarioCombobox = null;
 
-    // ƒVƒiƒŠƒIŠJnƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªé–‹å§‹ãƒœã‚¿ãƒ³
     private JButton scenarioStartButton = null;
 
-    // ƒVƒiƒŠƒII—¹ƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªçµ‚äº†ãƒœã‚¿ãƒ³
     private JButton scenarioEndButton = null;
 
-    // ƒVƒiƒŠƒIƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³
     private JButton scenarioCancelButton = null;
 
-    // ƒVƒiƒŠƒIƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³
     private JButton scenarioDownloadButton = null;
 
-    // ƒeƒXƒgƒP[ƒXƒpƒlƒ‹
+    // ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ãƒ‘ãƒãƒ«
     private TestCaseListPanel testCasePanel = null;
     private JScrollPane testCaseScrollPanel = null;
 
-    // ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰[
+    // ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
     private TestController testController = null;
 
-    // ˆê“xDL‚µ‚½ƒfƒBƒŒƒNƒgƒŠ
+    // ä¸€åº¦DLã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
     private File cashDlDir = null;
 
 
 
-    // ƒVƒiƒŠƒIƒOƒ‹[ƒv‚Ìó‘Ô‚ğ•\¦‚·‚éƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®çŠ¶æ…‹ã‚’è¡¨ç¤ºã™ã‚‹ãƒœã‚¿ãƒ³
     private TestErrorStatusDispButton scenarioGroupStatusButton = null;
 
-    // ƒVƒiƒŠƒI‚Ìó‘Ô‚ğ•\¦‚·‚éƒ{ƒ^ƒ“
+    // ã‚·ãƒŠãƒªã‚ªã®çŠ¶æ…‹ã‚’è¡¨ç¤ºã™ã‚‹ãƒœã‚¿ãƒ³
     private TestErrorStatusDispButton scenarioStatusButton = null;
 
 
@@ -114,7 +114,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(100, 100, MINIMUM_SIZE.width, MINIMUM_SIZE.height);
 
-        Font font = new Font("‚l‚r ƒSƒVƒbƒN", Font.BOLD, 16);
+        Font font = new Font("ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯", Font.BOLD, 16);
 
         JPanel p = new JPanel();
         GridBagLayout layout = new GridBagLayout();
@@ -129,7 +129,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.weighty = 0;
         constraints.insets = new Insets(5, 5, 5, 5);
 
-        // uƒ†[ƒUIDv•\¦ƒ‰ƒxƒ‹
+        // ã€Œãƒ¦ãƒ¼ã‚¶IDã€è¡¨ç¤ºãƒ©ãƒ™ãƒ«
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.weightx = 0;
@@ -137,14 +137,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 2;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        JLabel label1 = new JLabel("ƒ†[ƒUID F " + userId);
+        JLabel label1 = new JLabel("ãƒ¦ãƒ¼ã‚¶ID ï¼š " + userId);
         label1.setFont(font);
         label1.setHorizontalTextPosition(JLabel.LEFT);
         label1.setVerticalTextPosition(JLabel.TOP);
         layout.setConstraints(label1, constraints);
         p.add(label1);
 
-        // uXVvƒ{ƒ^ƒ“
+        // ã€Œæ›´æ–°ã€ãƒœã‚¿ãƒ³
         constraints.gridx = 5;
         constraints.gridy = 0;
         constraints.weightx = 0;
@@ -152,14 +152,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.updateButton = new JButton("ƒXƒe[ƒ^ƒXXV");
+        this.updateButton = new JButton("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æ›´æ–°");
         this.updateButton.setFont(font);
         this.updateButton.addActionListener(this);
         this.updateButton.setSize(150, 25);
         layout.setConstraints(this.updateButton, constraints);
         p.add(this.updateButton);
 
-        // uƒŠƒZƒbƒgvƒ{ƒ^ƒ“
+        // ã€Œãƒªã‚»ãƒƒãƒˆã€ãƒœã‚¿ãƒ³
         constraints.gridx = 6;
         constraints.gridy = 0;
         constraints.weightx = 0;
@@ -167,14 +167,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.resetButton = new JButton("ƒŠƒ\[ƒXÅV‰»");
+        this.resetButton = new JButton("ãƒªã‚½ãƒ¼ã‚¹æœ€æ–°åŒ–");
         this.resetButton.setFont(font);
         this.resetButton.addActionListener(this);
         this.resetButton.setSize(150, 25);
         layout.setConstraints(this.resetButton, constraints);
         p.add(this.resetButton);
 
-        // ó‘Ôƒ‰ƒxƒ‹
+        // çŠ¶æ…‹ãƒ©ãƒ™ãƒ«
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.weightx = 1;
@@ -182,12 +182,12 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(0, 5, 5, 5);
-        this.statusLabel = new JLabel("Àsó‘Ô");
+        this.statusLabel = new JLabel("å®Ÿè¡ŒçŠ¶æ…‹");
         this.statusLabel.setFont(font);
         layout.setConstraints(this.statusLabel, constraints);
         p.add(this.statusLabel);
 
-        // ó‘Ôƒ‰ƒxƒ‹
+        // çŠ¶æ…‹ãƒ©ãƒ™ãƒ«
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.weightx = 1;
@@ -201,7 +201,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         p.add(this.statusLabel2);
 
 
-        // uƒVƒiƒŠƒIƒOƒ‹[ƒvv•\¦ƒ‰ƒxƒ‹
+        // ã€Œã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€è¡¨ç¤ºãƒ©ãƒ™ãƒ«
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.weightx = 0;
@@ -209,14 +209,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        JLabel label2 = new JLabel("ƒVƒiƒŠƒIƒOƒ‹[ƒv");
+        JLabel label2 = new JLabel("ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—");
         label2.setFont(font);
         label2.setHorizontalTextPosition(JLabel.LEFT);
         label2.setVerticalTextPosition(JLabel.TOP);
         layout.setConstraints(label2, constraints);
         p.add(label2);
 
-        // uƒVƒiƒŠƒIƒOƒ‹[ƒvvƒRƒ“ƒ{ƒ{ƒbƒNƒX
+        // ã€Œã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
         constraints.gridx = 1;
         constraints.gridy = 2;
         constraints.weightx = 1;
@@ -230,7 +230,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(this.scenarioGroupCombobox, constraints);
         p.add(this.scenarioGroupCombobox);
 
-        // uƒVƒiƒŠƒIƒOƒ‹[ƒvvó‘Ôƒ‰ƒxƒ‹
+        // ã€Œã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€çŠ¶æ…‹ãƒ©ãƒ™ãƒ«
         constraints.gridx = 2;
         constraints.gridy = 2;
         constraints.weightx = 0;
@@ -242,7 +242,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(this.scenarioGroupStatusButton, constraints);
         p.add(this.scenarioGroupStatusButton);
 
-        // uƒVƒiƒŠƒIƒOƒ‹[ƒvvŠJnƒ{ƒ^ƒ“
+        // ã€Œã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€é–‹å§‹ãƒœã‚¿ãƒ³
         constraints.gridx = 3;
         constraints.gridy = 2;
         constraints.weightx = 1;
@@ -250,14 +250,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.scenarioGroupStartButton = new JButton("ŠJn");
+        this.scenarioGroupStartButton = new JButton("é–‹å§‹");
         this.scenarioGroupStartButton.setFont(font);
         this.scenarioGroupStartButton.addActionListener(this);
         this.scenarioGroupStartButton.setSize(150, 25);
         layout.setConstraints(this.scenarioGroupStartButton, constraints);
         p.add(this.scenarioGroupStartButton);
 
-        // uƒVƒiƒŠƒIƒOƒ‹[ƒvvŠJnƒ{ƒ^ƒ“
+        // ã€Œã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€é–‹å§‹ãƒœã‚¿ãƒ³
         constraints.gridx = 4;
         constraints.gridy = 2;
         constraints.weightx = 1;
@@ -265,14 +265,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.scenarioGroupEndButton = new JButton("I—¹");
+        this.scenarioGroupEndButton = new JButton("çµ‚äº†");
         this.scenarioGroupEndButton.setFont(font);
         this.scenarioGroupEndButton.addActionListener(this);
         this.scenarioGroupEndButton.setSize(150, 25);
         layout.setConstraints(this.scenarioGroupEndButton, constraints);
         p.add(this.scenarioGroupEndButton);
 
-        // uƒVƒiƒŠƒIv•\¦ƒ‰ƒxƒ‹
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€è¡¨ç¤ºãƒ©ãƒ™ãƒ«
         constraints.gridx = 0;
         constraints.gridy = 3;
         constraints.weightx = 0;
@@ -280,14 +280,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        JLabel label3 = new JLabel("ƒVƒiƒŠƒI");
+        JLabel label3 = new JLabel("ã‚·ãƒŠãƒªã‚ª");
         label3.setFont(font);
         label3.setHorizontalTextPosition(JLabel.LEFT);
         label3.setVerticalTextPosition(JLabel.TOP);
         layout.setConstraints(label3, constraints);
         p.add(label3);
 
-        // uƒVƒiƒŠƒIvƒRƒ“ƒ{ƒ{ƒbƒNƒX
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
         constraints.gridx = 1;
         constraints.gridy = 3;
         constraints.weightx = 1;
@@ -301,7 +301,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(this.scenarioCombobox, constraints);
         p.add(this.scenarioCombobox);
 
-        // uƒVƒiƒŠƒIvó‘Ôƒ‰ƒxƒ‹
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€çŠ¶æ…‹ãƒ©ãƒ™ãƒ«
         constraints.gridx = 2;
         constraints.gridy = 3;
         constraints.weightx = 0;
@@ -313,7 +313,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(this.scenarioStatusButton, constraints);
         p.add(this.scenarioStatusButton);
 
-        // uƒVƒiƒŠƒIvŠJnƒ{ƒ^ƒ“
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€é–‹å§‹ãƒœã‚¿ãƒ³
         constraints.gridx = 3;
         constraints.gridy = 3;
         constraints.weightx = 1;
@@ -321,13 +321,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.scenarioStartButton = new JButton("ŠJn");
+        this.scenarioStartButton = new JButton("é–‹å§‹");
         this.scenarioStartButton.setFont(font);
         this.scenarioStartButton.addActionListener(this);
         layout.setConstraints(this.scenarioStartButton, constraints);
         p.add(this.scenarioStartButton);
 
-        // uƒVƒiƒŠƒIvI—¹ƒ{ƒ^ƒ“
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€çµ‚äº†ãƒœã‚¿ãƒ³
         constraints.gridx = 4;
         constraints.gridy = 3;
         constraints.weightx = 1;
@@ -335,13 +335,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.scenarioEndButton = new JButton("I—¹");
+        this.scenarioEndButton = new JButton("çµ‚äº†");
         this.scenarioEndButton.setFont(font);
         this.scenarioEndButton.addActionListener(this);
         layout.setConstraints(this.scenarioEndButton, constraints);
         p.add(this.scenarioEndButton);
 
-        // uƒVƒiƒŠƒIvƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³
         constraints.gridx = 5;
         constraints.gridy = 3;
         constraints.weightx = 1;
@@ -349,13 +349,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.scenarioCancelButton = new JButton("·¬İ¾Ù");
+        this.scenarioCancelButton = new JButton("ï½·ï½¬ï¾ï½¾ï¾™");
         this.scenarioCancelButton.setFont(font);
         this.scenarioCancelButton.addActionListener(this);
         layout.setConstraints(this.scenarioCancelButton, constraints);
         p.add(this.scenarioCancelButton);
 
-        // uƒVƒiƒŠƒIvƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“
+        // ã€Œã‚·ãƒŠãƒªã‚ªã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³
         constraints.gridx = 6;
         constraints.gridy = 3;
         constraints.weightx = 1;
@@ -363,13 +363,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        this.scenarioDownloadButton = new JButton("Œ‹‰ÊDL");
+        this.scenarioDownloadButton = new JButton("çµæœDL");
         this.scenarioDownloadButton.setFont(font);
         this.scenarioDownloadButton.addActionListener(this);
         layout.setConstraints(this.scenarioDownloadButton, constraints);
         p.add(this.scenarioDownloadButton);
 
-        // uƒeƒXƒgƒP[ƒXv•\¦ƒ‰ƒxƒ‹
+        // ã€Œãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€è¡¨ç¤ºãƒ©ãƒ™ãƒ«
         constraints.gridx = 0;
         constraints.gridy = 5;
         constraints.weightx = 0;
@@ -377,7 +377,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        JLabel label4 = new JLabel("ƒeƒXƒgƒP[ƒX");
+        JLabel label4 = new JLabel("ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹");
         label4.setFont(font);
         label4.setHorizontalTextPosition(JLabel.LEFT);
         label4.setVerticalTextPosition(JLabel.TOP);
@@ -386,7 +386,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(label4, constraints);
         p.add(label4);
 
-        // uƒeƒXƒgƒP[ƒXv‚ÌƒeƒXƒgƒP[ƒXÀ{ƒpƒlƒ‹
+        // ã€Œãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€ã®ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹å®Ÿæ–½ãƒ‘ãƒãƒ«
         constraints = new GridBagConstraints();
         constraints.gridx = 1;
         constraints.gridy = 5;
@@ -411,23 +411,23 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
         updatehState();
 
-        // ƒTƒCƒY•ÏXƒCƒxƒ“ƒg
+        // ã‚µã‚¤ã‚ºå¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆ
         this.addComponentListener(this);
     }
 
-    // Contoroller‚©‚çÅV‚Ìî•ñ‚ğæ“¾‚µ‰æ–Ê‚É•\¦‚·‚é
+    // Contorollerã‹ã‚‰æœ€æ–°ã®æƒ…å ±ã‚’å–å¾—ã—ç”»é¢ã«è¡¨ç¤ºã™ã‚‹
     private void updatehState() throws Exception{
-        // Às’†‚ÌƒVƒiƒŠƒIƒOƒ‹[ƒv‚ª‚ ‚éê‡æ“¾‚µ‚Ä‚¨‚­
+        // å®Ÿè¡Œä¸­ã®ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ãŒã‚ã‚‹å ´åˆå–å¾—ã—ã¦ãŠã
         TestScenarioGroup currentScenarioGroup = this.testController.getCurrentScenarioGroup();
 
-        // ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğİ’è
+        // ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’è¨­å®š
         this.setupScenarioGroupCombobox(null);
 
-        // ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğ•ÒW‰Â”\‚Éİ’è
+        // ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’ç·¨é›†å¯èƒ½ã«è¨­å®š
         this.scenarioGroupCombobox.setEditable(true);
         this.scenarioCombobox.setEditable(true);
 
-        // Às’†‚ÌƒVƒiƒŠƒIƒOƒ‹[ƒv‚ª‚ ‚éê‡‚Ì‚İ
+        // å®Ÿè¡Œä¸­ã®ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ãŒã‚ã‚‹å ´åˆã®ã¿
         if(currentScenarioGroup != null){
             this.scenarioGroupCombobox.setSelectedItem(currentScenarioGroup.getScenarioGroupId());
 
@@ -437,34 +437,34 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             this.scenarioCancelButton.setEnabled(false);
             this.scenarioDownloadButton.setEnabled(false);
 
-            // ƒVƒiƒŠƒIƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ìİ’è
+            // ã‚·ãƒŠãƒªã‚ªã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®è¨­å®š
             this.setupScenarioCombobox(null);
         }
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’èi‰Šú‰»j
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®šï¼ˆåˆæœŸåŒ–ï¼‰
         this.setupScenarioComponents();
     }
 
-    // ƒ{ƒ^ƒ“‰Ÿ‰º‚ÌƒCƒxƒ“ƒg
+    // ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆ
     public void actionPerformed(ActionEvent e) {
 
         try {
             if (e.getSource() == this.scenarioGroupStartButton) {
-                // ƒVƒiƒŠƒIƒOƒ‹[ƒvŠJnƒ{ƒ^ƒ“
+                // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—é–‹å§‹ãƒœã‚¿ãƒ³
                 this.scenarioGroupStartAction();
 
             } else if (e.getSource() == this.scenarioGroupEndButton) {
 
-                // ƒVƒiƒŠƒIƒOƒ‹[ƒvI—¹ƒ{ƒ^ƒ“
+                // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—çµ‚äº†ãƒœã‚¿ãƒ³
                 this.scenarioGroupEndAction();
 
             } else if (e.getSource() == this.scenarioStartButton) {
 
                 try{
-                    // ƒVƒiƒŠƒIŠJnƒ{ƒ^ƒ“
+                    // ã‚·ãƒŠãƒªã‚ªé–‹å§‹ãƒœã‚¿ãƒ³
                     this.scenarioStartAction();
                 }catch(Exception eStart){
-                    // ƒVƒiƒŠƒIƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“
+                    // ã‚·ãƒŠãƒªã‚ªã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³
                     try{
                         this.scenarioCancelAction();
                     }catch(Exception e2){
@@ -476,10 +476,10 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             } else if (e.getSource() == this.scenarioEndButton) {
 
                 try{
-                    // ƒVƒiƒŠƒII—¹ƒ{ƒ^ƒ“
+                    // ã‚·ãƒŠãƒªã‚ªçµ‚äº†ãƒœã‚¿ãƒ³
                     this.scenarioEndAction();
                 }catch(Exception eStart){
-                    // ƒVƒiƒŠƒIƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“
+                    // ã‚·ãƒŠãƒªã‚ªã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³
                     try{
                         this.scenarioCancelAction();
                     }catch(Exception e2){
@@ -489,49 +489,49 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 }
 
             } else if (e.getSource() == this.scenarioCancelButton) {
-                // ƒVƒiƒŠƒIƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“
+                // ã‚·ãƒŠãƒªã‚ªã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³
                 this.scenarioCancelAction();
 
             } else if (e.getSource() == this.scenarioDownloadButton) {
-                // ƒVƒiƒŠƒIƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“
+                // ã‚·ãƒŠãƒªã‚ªãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³
                 this.scenarioDownloadAction();
 
             } else if (e.getSource() == this.scenarioGroupCombobox) {
-                // ƒVƒiƒŠƒIƒOƒ‹[ƒv ‘I‘ğƒRƒ“ƒ{ƒ{ƒbƒNƒX
+                // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ— é¸æŠã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
                 if("comboBoxEdited".equals(e.getActionCommand())){
-                    // ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì•¶š—ñ‚ª•ÒW‚³‚ê‚½ê‡
+                    // ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ—ãŒç·¨é›†ã•ã‚ŒãŸå ´åˆ
                     this.scenarioGroupComboboxAction();
                 }else if("comboBoxChanged".equals(e.getActionCommand())){
-                    // ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì‘I‘ğ’l‚ª•ÏX‚³‚ê‚½ê‡
+                    // ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®é¸æŠå€¤ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆ
 
                 }
             } else if (e.getSource() == this.scenarioCombobox) {
-                // ƒVƒiƒŠƒI ‘I‘ğƒRƒ“ƒ{ƒ{ƒbƒNƒX
+                // ã‚·ãƒŠãƒªã‚ª é¸æŠã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹
                 if("comboBoxEdited".equals(e.getActionCommand())){
-                    // ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì•¶š—ñ‚ª•ÒW‚³‚ê‚½ê‡
+                    // ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ—ãŒç·¨é›†ã•ã‚ŒãŸå ´åˆ
                     this.scenarioComboboxEditedAction();
                 }else if("comboBoxChanged".equals(e.getActionCommand())){
-                    // ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì‘I‘ğ’l‚ª•ÏX‚³‚ê‚½ê‡
+                    // ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®é¸æŠå€¤ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆ
                     this.scenarioComboboxChangeAction();
                 }
             } else if (e.getSource() == this.resetButton) {
-                // ƒRƒ“ƒgƒ[ƒ‰ƒŠƒZƒbƒg
+                // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒªã‚»ãƒƒãƒˆ
                 this.testController.reset();
             } else if (e.getSource() == this.updateButton) {
-                // XV
+                // æ›´æ–°
                 this.setupStatusLabel();
                 this.updatehState();
             }
 
         } catch (Exception e1) {
-            JDialog dialog = new StatusDialogView(this, "—áŠO", e1);
+            JDialog dialog = new StatusDialogView(this, "ä¾‹å¤–", e1);
             dialog.setModal(true);
             dialog.setVisible(true);
         }
     }
 
     /**
-     * ƒVƒiƒŠƒIƒOƒ‹[ƒvŠJnƒ{ƒ^ƒ“‚Ì‰Ÿ‰ºƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—é–‹å§‹ãƒœã‚¿ãƒ³ã®æŠ¼ä¸‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioGroupStartAction() throws Exception {
@@ -541,47 +541,47 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
         if(obj != null && obj.getStatus() != null && obj.getStatus().getUserId() != null){
 
-            int result = JOptionPane.showConfirmDialog(this, "ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÍŠù‚ÉŠJn‚³‚ê‚Ä‚¢‚Ü‚·‚ªAƒŠƒZƒbƒg‚µ‚ÄÄ“xŠJn‚µ‚Ü‚·‚©H", "Šm”F", JOptionPane.OK_CANCEL_OPTION);
+            int result = JOptionPane.showConfirmDialog(this, "ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã¯æ—¢ã«é–‹å§‹ã•ã‚Œã¦ã„ã¾ã™ãŒã€ãƒªã‚»ãƒƒãƒˆã—ã¦å†åº¦é–‹å§‹ã—ã¾ã™ã‹ï¼Ÿ", "ç¢ºèª", JOptionPane.OK_CANCEL_OPTION);
             if(JOptionPane.OK_OPTION != result){
                 return;
             }
         }
 
-        // ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌŠJn
+        // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®é–‹å§‹
         this.testController.startScenarioGroup(this.userId, selectScenarioGroupId);
 
-        // ƒVƒiƒŠƒI‚ÌŒŸõAƒVƒiƒŠƒIˆê——‚ğƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Éİ’è
+        // ã‚·ãƒŠãƒªã‚ªã®æ¤œç´¢ã€ã‚·ãƒŠãƒªã‚ªä¸€è¦§ã‚’ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã«è¨­å®š
         this.scenarioCombobox.setEnabled(true);
-        // ƒVƒiƒŠƒIƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğİ’è
+        // ã‚·ãƒŠãƒªã‚ªã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’è¨­å®š
         this.setupScenarioCombobox(null);
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’èi‰Šú‰»j
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®šï¼ˆåˆæœŸåŒ–ï¼‰
         this.setupScenarioComponents();
 
-        // ƒeƒXƒgƒP[ƒX•\¦ƒpƒlƒ‹‚Ì‰Šú‰»
+        // ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹è¡¨ç¤ºãƒ‘ãƒãƒ«ã®åˆæœŸåŒ–
         this.testCasePanel.initialize();
     }
 
     /**
-     * ƒVƒiƒŠƒIƒOƒ‹[ƒvI—¹ƒ{ƒ^ƒ“‚Ì‰Ÿ‰ºƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—çµ‚äº†ãƒœã‚¿ãƒ³ã®æŠ¼ä¸‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioGroupEndAction() throws Exception {
 
-        // ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌI—¹
+        // ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®çµ‚äº†
         this.testController.endScenarioGroup();
 
-        // ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğ”ñŠˆ«‚É
+        // ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’éæ´»æ€§ã«
         this.scenarioCombobox.setEnabled(false);
-        // ƒVƒiƒŠƒIƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğİ’è
+        // ã‚·ãƒŠãƒªã‚ªã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’è¨­å®š
         this.setupScenarioCombobox(null);
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’èi‰Šú‰»j
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®šï¼ˆåˆæœŸåŒ–ï¼‰
         this.setupScenarioComponents();
     }
 
     /**
-     * ƒVƒiƒŠƒIŠJnƒ{ƒ^ƒ“‚Ì‰Ÿ‰ºƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªé–‹å§‹ãƒœã‚¿ãƒ³ã®æŠ¼ä¸‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioStartAction() throws Exception {
@@ -589,16 +589,16 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         String selectScenarioGroupId = this.scenarioGroupCombobox.getSelectedItem().toString();
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
 
-        // ƒVƒiƒŠƒI‚ÌŠJn
+        // ã‚·ãƒŠãƒªã‚ªã®é–‹å§‹
         this.testController.startScenario(this.userId, selectScenarioId);
 
-        // ƒVƒiƒŠƒI‚ÌŒŸõAƒVƒiƒŠƒIˆê——‚ğƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Éİ’è
+        // ã‚·ãƒŠãƒªã‚ªã®æ¤œç´¢ã€ã‚·ãƒŠãƒªã‚ªä¸€è¦§ã‚’ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã«è¨­å®š
         TestCase[] testCaseArray = this.testController.getTestCases(selectScenarioGroupId, selectScenarioId);
         List testCaseList = new ArrayList();
         for (int i = 0; i < testCaseArray.length; i++){
             testCaseList.add(testCaseArray[i]);
         }
-        // ƒRƒ“ƒ|[ƒlƒ“ƒgAƒAƒNƒVƒ‡ƒ“ƒŠƒXƒi[‚Ìİ’è
+        // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã€ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠãƒ¼ã®è¨­å®š
         this.testCasePanel.initialize();
         this.testCasePanel.setScenarioGroupId(selectScenarioGroupId);
         this.testCasePanel.setScenarioId(selectScenarioId);
@@ -606,61 +606,61 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         this.testCasePanel.addTestCaseControlListener(new TestCaseControlListenerImpl());
         this.testCasePanel.setUserId(userId);
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’èi‰Šú‰»j
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®šï¼ˆåˆæœŸåŒ–ï¼‰
         this.setupScenarioComponents();
     }
 
     /**
-     * ƒVƒiƒŠƒII—¹ƒ{ƒ^ƒ“‚Ì‰Ÿ‰ºƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªçµ‚äº†ãƒœã‚¿ãƒ³ã®æŠ¼ä¸‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioEndAction() throws Exception {
-        // ƒVƒiƒŠƒI‚ÌI—¹
+        // ã‚·ãƒŠãƒªã‚ªã®çµ‚äº†
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
         this.testController.endScenario(selectScenarioId);
         this.testCasePanel.initialize();
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’è
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®š
         this.setupScenarioComponents();
     }
 
     /**
-     * ƒVƒiƒŠƒIƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“‚Ì‰Ÿ‰ºƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³ã®æŠ¼ä¸‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioCancelAction() throws Exception {
-        // ƒVƒiƒŠƒI‚ÌƒLƒƒƒ“ƒZƒ‹
+        // ã‚·ãƒŠãƒªã‚ªã®ã‚­ãƒ£ãƒ³ã‚»ãƒ«
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
         this.testController.cancelScenario(selectScenarioId);
         this.testCasePanel.initialize();
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’è
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®š
         this.setupScenarioComponents();
     }
 
     /**
-     * ƒVƒiƒŠƒIƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“‚Ì‰Ÿ‰ºƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³ã®æŠ¼ä¸‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioDownloadAction() throws Exception {
-        // ƒVƒiƒŠƒI‚ÌŒ‹‰Êƒ_ƒEƒ“ƒ[ƒh
+        // ã‚·ãƒŠãƒªã‚ªã®çµæœãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
         File dlDir = showDownloadFileSaveDialog(this.cashDlDir);
         if(dlDir != null){
             String scenarioGroup = testController.getCurrentScenarioGroup().getScenarioGroupId();
             String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
             testController.downloadScenarioResult(dlDir, scenarioGroup, selectScenarioId, TestController.RESPONSE_FILE_TYPE_ZIP);
 
-            JOptionPane.showMessageDialog(this, "ƒfƒBƒŒƒNƒgƒŠu" + dlDir + "v‚É\r\n³í‚Éƒ_ƒEƒ“ƒ[ƒh‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            JOptionPane.showMessageDialog(this, "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€Œ" + dlDir + "ã€ã«\r\næ­£å¸¸ã«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
         this.cashDlDir = dlDir;
         this.testCasePanel.initialize();
 
-        // ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’è
+        // ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®š
         this.setupScenarioComponents();
     }
 
     /**
-     * ƒ_ƒEƒ“ƒ[ƒhæƒfƒBƒŒƒNƒgƒŠ‚Ì‘I‘ğ
+     * ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®é¸æŠ
      * @return
      */
     private File showDownloadFileSaveDialog(File cashDlDir){
@@ -675,7 +675,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     }
 
     /**
-     * ƒVƒiƒŠƒIƒOƒ‹[ƒvƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì’l•ÏX‚ÌƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®å€¤å¤‰æ›´æ™‚ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioGroupComboboxAction() throws Exception {
@@ -687,7 +687,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     }
 
     /**
-     * ƒVƒiƒŠƒIƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì’l•ÒW‚ÌƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®å€¤ç·¨é›†æ™‚ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioComboboxEditedAction() throws Exception {
@@ -700,7 +700,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     }
 
     /**
-     * ƒVƒiƒŠƒIƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì’l•ÏX‚ÌƒAƒNƒVƒ‡ƒ“
+     * ã‚·ãƒŠãƒªã‚ªã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®å€¤å¤‰æ›´æ™‚ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      * @throws Exception
      */
     private void scenarioComboboxChangeAction() throws Exception {
@@ -708,15 +708,15 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     }
 
     /**
-     * ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğİ’è
+     * ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’è¨­å®š
      *
-     * @param keyword ‚±‚ê‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚±‚Ì•¶š‚ğŠÜ‚Ş‚à‚Ì‚Ì‚İƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Éİ’è
+     * @param keyword ã“ã‚ŒãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ã“ã®æ–‡å­—ã‚’å«ã‚€ã‚‚ã®ã®ã¿ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã«è¨­å®š
      * @throws Exception
      */
     private void setupScenarioGroupCombobox(String keyword) throws Exception{
 
         this.scenarioGroupCombobox.removeAllItems();
-        // ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğİ’è
+        // ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’è¨­å®š
         TestScenarioGroup[] testScenarioGroupArray = this.testController.getScenarioGroups();
         if(testScenarioGroupArray != null){
             for (int i = 0; i < testScenarioGroupArray.length; i++) {
@@ -739,7 +739,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         }
         this.scenarioCombobox.setEnabled(true);
 
-        // ƒeƒXƒgƒVƒiƒŠƒI‚ÌƒRƒ“ƒ{ƒ{ƒbƒNƒX‚ğİ’è
+        // ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã®ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã‚’è¨­å®š
         TestScenario[] testScenarioArray = this.testController.getScenarios(currentScenarioGroup.getScenarioGroupId());
         if(testScenarioArray != null){
             for (int i = 0; i < testScenarioArray.length; i++) {
@@ -748,7 +748,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                     this.scenarioCombobox.addItem(scenarioId);
                 }
 
-                // ŠJnó‘Ô‚Ìê‡
+                // é–‹å§‹çŠ¶æ…‹ã®å ´åˆ
                 if(testScenarioArray[i] != null &&
                         testScenarioArray[i].getStatus() != null &&
                         testScenarioArray[i].getStatus().getState() == Status.STARTED){
@@ -774,7 +774,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     }
 
     /**
-     * Às’†‚ÌƒVƒiƒŠƒIƒOƒ‹[ƒvAƒVƒiƒŠƒIAƒeƒXƒgƒP[ƒX‚ğƒ‰ƒxƒ‹‚Éİ’è‚·‚éB
+     * å®Ÿè¡Œä¸­ã®ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€ã‚·ãƒŠãƒªã‚ªã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚’ãƒ©ãƒ™ãƒ«ã«è¨­å®šã™ã‚‹ã€‚
      * @throws Exception
      */
     private void setupStatusLabel() throws Exception {
@@ -814,14 +814,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 }
             }
         } else {
-            sb.append("–³‚µ");
+            sb.append("ç„¡ã—");
         }
         this.statusLabel2.setText(sb.toString());
         this.statusLabel2.setToolTipText(sb.toString());
     }
 
     /**
-     * ƒVƒiƒŠƒIŒnƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìİ’è
+     * ã‚·ãƒŠãƒªã‚ªç³»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¨­å®š
      * @throws Exception
      */
     private void setupScenarioComponents() throws Exception {
@@ -931,7 +931,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     }
 
     /**
-     * ƒeƒXƒgƒP[ƒX‚ªƒXƒ^[ƒgAƒGƒ“ƒh‚È‚Ç‚³‚ê‚½Û‚É’Ê’m‚µ‚Ä‚­‚ê‚éƒŠƒXƒi[À‘•ƒNƒ‰ƒX
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ãŒã‚¹ã‚¿ãƒ¼ãƒˆã€ã‚¨ãƒ³ãƒ‰ãªã©ã•ã‚ŒãŸéš›ã«é€šçŸ¥ã—ã¦ãã‚Œã‚‹ãƒªã‚¹ãƒŠãƒ¼å®Ÿè£…ã‚¯ãƒ©ã‚¹
      * @author j-higuchi
      */
     private class TestCaseControlListenerImpl implements TestCaseControlListener{

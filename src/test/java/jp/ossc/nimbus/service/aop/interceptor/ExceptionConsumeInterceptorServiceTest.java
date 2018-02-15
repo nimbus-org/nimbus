@@ -81,7 +81,7 @@ public class ExceptionConsumeInterceptorServiceTest extends TestCase{
             );
             interceptor1.setLoggerMessageCode("WARN");
             interceptor1.setLoggerMessageArgs(
-                new String[]{"—áŠO‚ª”­¶‚µ‚Ü‚µ‚½Bˆ¬‚è’×‚µ‚Ü‚·B"}
+                new String[]{"ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚æ¡ã‚Šæ½°ã—ã¾ã™ã€‚"}
             );
             interceptor1.setLoggingException(true);
             ServiceManagerFactory.findManager("Test").startAllService();

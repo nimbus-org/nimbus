@@ -40,8 +40,8 @@ import java.net.InetAddress;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ƒT[ƒoƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠB<p>
- * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚©‚ç¶¬‚³‚ê‚éƒT[ƒoƒ\ƒPƒbƒg‚ÍA{@link #setServerSocketProperty(String, Object)}‚ÅA—\‚ßİ’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚éB<br>
+ * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã‚‰ç”Ÿæˆã•ã‚Œã‚‹ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã¯ã€{@link #setServerSocketProperty(String, Object)}ã§ã€äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -71,9 +71,9 @@ public class ServerSocketFactory extends javax.net.ServerSocketFactory implement
     }
     
     /**
-     * java.net.ServerSocket‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * java.net.ServerSocketã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setServerSocketProperties(Map props){
         if(props == null || props.size() == 0){
@@ -90,10 +90,10 @@ public class ServerSocketFactory extends javax.net.ServerSocketFactory implement
     }
     
     /**
-     * java.net.ServerSocket‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * java.net.ServerSocketã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setServerSocketProperty(String name, Object value){
         if(serverSocketProperties == null){
@@ -104,10 +104,10 @@ public class ServerSocketFactory extends javax.net.ServerSocketFactory implement
     }
     
     /**
-     * java.net.ServerSocket‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * java.net.ServerSocketã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getServerSocketProperty(String name){
         if(serverSocketProperties == null){
@@ -124,9 +124,9 @@ public class ServerSocketFactory extends javax.net.ServerSocketFactory implement
     }
     
     /**
-     * java.net.Socket‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * java.net.Socketã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setSocketProperties(Map props){
         if(props == null || props.size() == 0){
@@ -143,10 +143,10 @@ public class ServerSocketFactory extends javax.net.ServerSocketFactory implement
     }
     
     /**
-     * java.net.Socket‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * java.net.Socketã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setSocketProperty(String name, Object value){
         if(socketProperties == null){
@@ -156,10 +156,10 @@ public class ServerSocketFactory extends javax.net.ServerSocketFactory implement
     }
     
     /**
-     * java.net.Socket‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * java.net.Socketã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getSocketProperty(String name){
         if(socketProperties == null){

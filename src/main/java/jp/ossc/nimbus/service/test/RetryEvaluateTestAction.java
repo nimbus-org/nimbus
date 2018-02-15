@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.test;
 import java.io.Reader;
 
 /**
- * ƒŠƒgƒ‰ƒC•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ğ˜A½‚³‚¹‚ÄÀs‚µ‚ÄAÀsŒ‹‰Ê‚Ì•]‰¿‚ª¸”s‚µ‚½ê‡‚ÉAƒŠƒgƒ‰ƒC‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+ * ãƒªãƒˆãƒ©ã‚¤è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€£é–ã•ã›ã¦å®Ÿè¡Œã—ã¦ã€å®Ÿè¡Œçµæœã®è©•ä¾¡ãŒå¤±æ•—ã—ãŸå ´åˆã«ã€ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */
 public interface RetryEvaluateTestAction{
     
     /**
-     * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ğ˜A½‚³‚¹‚ÄÀs‚µ‚ÄAÀsŒ‹‰Ê‚ğ•]‰¿‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€£é–ã•ã›ã¦å®Ÿè¡Œã—ã¦ã€å®Ÿè¡Œçµæœã‚’è©•ä¾¡ã™ã‚‹ã€‚<p>
      *
-     * @param context ƒeƒXƒgƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌID
-     * @param resources ˜A½‚³‚¹‚Ä‚¢‚éŠeƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ö‚ÌƒŠƒ\[ƒX”z—ñ
-     * @param interval ƒŠƒgƒ‰ƒC‚ÌƒŠƒgƒ‰ƒCŠÔŠu[ms]
-     * @param retryCount ƒŠƒgƒ‰ƒC‚ÌƒŠƒgƒ‰ƒC‰ñ”
-     * @return ÀsŒ‹‰Ê‚Ì•]‰¿B¬Œ÷‚µ‚½ê‡Atrue
-     * @exception Exception ˜A½‚³‚¹‚½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ID
+     * @param resources é€£é–ã•ã›ã¦ã„ã‚‹å„ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¸ã®ãƒªã‚½ãƒ¼ã‚¹é…åˆ—
+     * @param interval ãƒªãƒˆãƒ©ã‚¤æ™‚ã®ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
+     * @param retryCount ãƒªãƒˆãƒ©ã‚¤æ™‚ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°
+     * @return å®Ÿè¡Œçµæœã®è©•ä¾¡ã€‚æˆåŠŸã—ãŸå ´åˆã€true
+     * @exception Exception é€£é–ã•ã›ãŸãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean execute(TestContext context, String actionId, Reader[] resources, long interval, int retryCount) throws Exception;
 }

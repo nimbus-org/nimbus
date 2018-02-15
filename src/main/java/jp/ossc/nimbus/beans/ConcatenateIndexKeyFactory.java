@@ -41,7 +41,7 @@ import java.io.ObjectInput;
 import java.io.IOException;
 
 /**
- * •¡”‚ÌƒvƒƒpƒeƒB‚ğ˜AŒ‹‚µ‚ÄƒCƒ“ƒfƒbƒNƒX‚Æ‚·‚é{@link BeanTableIndexKeyFactory}À‘•ƒNƒ‰ƒXB<p>
+ * è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é€£çµã—ã¦ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã™ã‚‹{@link BeanTableIndexKeyFactory}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -53,11 +53,11 @@ public class ConcatenateIndexKeyFactory implements BeanTableIndexKeyFactory, Ext
     public ConcatenateIndexKeyFactory(){}
     
     /**
-     * •¡”‚ÌƒvƒƒpƒeƒB‚ğ˜AŒ‹‚µ‚ÄƒCƒ“ƒfƒbƒNƒX‚ğ¶¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é€£çµã—ã¦ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚Ì—v‘f‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param aliasName ˜AŒ‹‚µ‚½ƒvƒƒpƒeƒB‚Ì•Ê–¼
-     * @param propNames ˜AŒ‹‚·‚éƒvƒƒpƒeƒB–¼‚Ì”z—ñ
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã®è¦ç´ ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param aliasName é€£çµã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åˆ¥å
+     * @param propNames é€£çµã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é…åˆ—
      */
     public ConcatenateIndexKeyFactory(
         Class elementClass,

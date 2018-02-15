@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// パッケージ
+// 繝代ャ繧ｱ繝ｼ繧ｸ
 package jp.ossc.nimbus.service.crypt;
 
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link FixCryptService}のMBeanインタフェース<p>
+ * {@link FixCryptService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author A.Kokubu
  * @see FixCryptService

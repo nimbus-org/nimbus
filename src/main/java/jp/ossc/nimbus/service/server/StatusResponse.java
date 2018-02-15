@@ -38,10 +38,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg‚Ö‚ÌƒXƒe[ƒ^ƒX•t‚«ƒŒƒXƒ|ƒ“ƒXB<p>
- * “d•¶‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ä»˜ããƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
+ * é›»æ–‡ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€
  * <pre>
- * [ƒXƒe[ƒ^ƒX’l][ƒf[ƒ^’·][”CˆÓ‚Ìƒf[ƒ^]
+ * [ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤][ãƒ‡ãƒ¼ã‚¿é•·][ä»»æ„ã®ãƒ‡ãƒ¼ã‚¿]
  * </pre>
  *
  * @author M.Takata
@@ -51,37 +51,37 @@ public class StatusResponse extends Response{
     protected int status;
     
     /**
-     * ƒXƒe[ƒ^ƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param status ƒXƒe[ƒ^ƒX
+     * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public void setStatus(int status){
         this.status = status;
     }
     
     /**
-     * ƒXƒe[ƒ^ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒe[ƒ^ƒX
+     * @return ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public int getStatus(){
         return status;
     }
     
     /**
-     * ‹ó‚Ì‰“š‚ğ•Ô‚·B<p>
+     * ç©ºã®å¿œç­”ã‚’è¿”ã™ã€‚<p>
      *
-     * @exception IOException ‰“š‚ğ•Ô‚¹‚È‚¢ê‡
+     * @exception IOException å¿œç­”ã‚’è¿”ã›ãªã„å ´åˆ
      */
     public void response() throws IOException{
         response((byte[])null);
     }
     
     /**
-     * w’è‚³‚ê‚½“ü—ÍƒXƒgƒŠ[ƒ€‚Ì“à—e‚ğ‰“š‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®å†…å®¹ã‚’å¿œç­”ã™ã‚‹ã€‚<p>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception IOException ‰“š‚ğ•Ô‚¹‚È‚¢ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception IOException å¿œç­”ã‚’è¿”ã›ãªã„å ´åˆ
      */
     public void response(InputStream is) throws IOException{
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -97,10 +97,10 @@ public class StatusResponse extends Response{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒoƒCƒg”z—ñ‚ğ‰“š‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—ã‚’å¿œç­”ã™ã‚‹ã€‚<p>
      *
-     * @param bytes ƒoƒCƒg”z—ñ
-     * @exception IOException ‰“š‚ğ•Ô‚¹‚È‚¢ê‡
+     * @param bytes ãƒã‚¤ãƒˆé…åˆ—
+     * @exception IOException å¿œç­”ã‚’è¿”ã›ãªã„å ´åˆ
      */
     public void response(byte[] bytes) throws IOException{
         DataOutputStream dos = new DataOutputStream(servant.getOutputStream(selectionKey));

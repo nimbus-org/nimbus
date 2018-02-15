@@ -34,47 +34,47 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMSƒZƒbƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
+ * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  * 
  * @author M.Takata
  */
 public interface JMSSessionFactory{
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éConnection‚ğæ“¾‚·‚éB<p>
-     * getSessionƒƒ\ƒbƒh‚ÅASession‚ğ¶¬‚·‚éÛ‚ÉAˆø”‚ÅConnection‚ğw’è‚µ‚È‚©‚Á‚½ê‡‚ÍA‚±‚ÌConnection‚ªg—p‚³‚ê‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Connectionã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * getSessionãƒ¡ã‚½ãƒƒãƒ‰ã§ã€Sessionã‚’ç”Ÿæˆã™ã‚‹éš›ã«ã€å¼•æ•°ã§Connectionã‚’æŒ‡å®šã—ãªã‹ã£ãŸå ´åˆã¯ã€ã“ã®ConnectionãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éConnectionBConnection‚ğ•Û‚µ‚Ä‚¢‚È‚¢ê‡‚ÍnullB
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Connectionã€‚Connectionã‚’ä¿æŒã—ã¦ã„ãªã„å ´åˆã¯nullã€‚
      */
     public Connection getConnection();
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªConnection‚Ìæ“¾‚Ég—p‚·‚é{@link JMSConnectionFactory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒConnectionã®å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link JMSConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link JMSConnectionFactory}ƒT[ƒrƒX
+     * @return {@link JMSConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹
      */
     public JMSConnectionFactory getConnectionFactory();
     
     /**
-     * JMSƒZƒbƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
-     * {@link #getConnection()}‚Åæ“¾‚³‚ê‚éConnection‚©‚çA{@link Connection#createSession(boolean, int)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getConnection()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSSessionCreateException‚ğthrow‚·‚éB<br>
-     * ˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎfalseASession.AUTO_ACKNOWLEDGEB<br>
+     * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getConnection()}ã§å–å¾—ã•ã‚Œã‚‹Connectionã‹ã‚‰ã€{@link Connection#createSession(boolean, int)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getConnection()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSSessionCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°falseã€Session.AUTO_ACKNOWLEDGEã€‚<br>
      *
-     * @return JMSƒZƒbƒVƒ‡ƒ“
-     * @exception JMSSessionCreateException JMSƒZƒbƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return JMSã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @exception JMSSessionCreateException JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Session getSession() throws JMSSessionCreateException;
     
     /**
-     * JMSƒZƒbƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
-     * {@link #getConnection()}‚Åæ“¾‚³‚ê‚éConnection‚©‚çA{@link Connection#createSession(boolean, int)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getConnection()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSSessionCreateException‚ğthrow‚·‚éB<br>
+     * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getConnection()}ã§å–å¾—ã•ã‚Œã‚‹Connectionã‹ã‚‰ã€{@link Connection#createSession(boolean, int)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getConnection()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSSessionCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param transactionMode ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚éê‡Atrue
-     * @param ackMode MessageConsumer‚âJMSƒNƒ‰ƒCƒAƒ“ƒg‚ªƒƒbƒZ[ƒW‚ğóM‚µ‚½‚ÌACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh
-     * @return JMSƒZƒbƒVƒ‡ƒ“
-     * @exception JMSSessionCreateException JMSƒZƒbƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param transactionMode ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã€true
+     * @param ackMode MessageConsumerã‚„JMSã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ãŸæ™‚ã®ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰
+     * @return JMSã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @exception JMSSessionCreateException JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Session getSession(
         boolean transactionMode,
@@ -82,25 +82,25 @@ public interface JMSSessionFactory{
     ) throws JMSSessionCreateException;
     
     /**
-     * JMSƒZƒbƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½Connection‚©‚çA{@link Connection#createSession(boolean, int)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ˆø”‚ÍAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚·‚é‚ªA“Á‚Éİ’è‚ª‚È‚¯‚ê‚ÎfalseASession.AUTO_ACKNOWLEDGEB<br>
+     * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸConnectionã‹ã‚‰ã€{@link Connection#createSession(boolean, int)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * å¼•æ•°ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ãŒã€ç‰¹ã«è¨­å®šãŒãªã‘ã‚Œã°falseã€Session.AUTO_ACKNOWLEDGEã€‚<br>
      *
      * @param con Connection
-     * @return JMSƒZƒbƒVƒ‡ƒ“
-     * @exception JMSSessionCreateException JMSƒZƒbƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return JMSã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @exception JMSSessionCreateException JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Session getSession(Connection con) throws JMSSessionCreateException;
     
     /**
-     * JMSƒZƒbƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½Connection‚©‚çA{@link Connection#createSession(boolean, int)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸConnectionã‹ã‚‰ã€{@link Connection#createSession(boolean, int)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param con Connection
-     * @param transactionMode ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚éê‡Atrue
-     * @param ackMode MessageConsumer‚âJMSƒNƒ‰ƒCƒAƒ“ƒg‚ªƒƒbƒZ[ƒW‚ğóM‚µ‚½‚ÌACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh
-     * @return JMSƒZƒbƒVƒ‡ƒ“
-     * @exception JMSSessionCreateException JMSƒZƒbƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param transactionMode ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã€true
+     * @param ackMode MessageConsumerã‚„JMSã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ãŸæ™‚ã®ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰
+     * @return JMSã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @exception JMSSessionCreateException JMSã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Session getSession(
         Connection con,

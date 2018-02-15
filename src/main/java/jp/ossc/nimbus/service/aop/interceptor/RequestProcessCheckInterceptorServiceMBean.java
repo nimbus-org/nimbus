@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link RequestProcessCheckInterceptorService}‚МMBeanѓCѓ“ѓ^ѓtѓFЃ[ѓX<p>
+ * {@link RequestProcessCheckInterceptorService}гЃ®MBeanг‚¤гѓіг‚їгѓ•г‚§гѓјг‚№<p>
  * 
  * @author M.Takata
  * @see RequestProcessCheckInterceptorService
@@ -50,94 +50,94 @@ public interface RequestProcessCheckInterceptorServiceMBean
     public static final String FATAL_MESSAGE_ID = "RPC__00004";
     
     /**
-     * ѓЌѓOЏo—Н‚·‚й{@link jp.ossc.nimbus.service.log.Logger Logger}ѓTЃ[ѓrѓX‚МѓTЃ[ѓrѓX–ј‚рђЭ’и‚·‚йЃB<p>
-     * ѓfѓtѓHѓ‹ѓg‚Е‚НЃA{@link RequestProcessCheckInterceptorService#getLogger()}‚ЕЋж“ѕ‚Е‚«‚йLogger‚рЋg—p‚·‚йЃB<br>
+     * гѓ­г‚°е‡єеЉ›гЃ™г‚‹{@link jp.ossc.nimbus.service.log.Logger Logger}г‚µгѓјгѓ“г‚№гЃ®г‚µгѓјгѓ“г‚№еђЌг‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * гѓ‡гѓ•г‚©гѓ«гѓ€гЃ§гЃЇгЂЃ{@link RequestProcessCheckInterceptorService#getLogger()}гЃ§еЏ–еѕ—гЃ§гЃЌг‚‹Loggerг‚’дЅїз”ЁгЃ™г‚‹гЂ‚<br>
      *
-     * @param name LoggerѓTЃ[ѓrѓX–ј
+     * @param name Loggerг‚µгѓјгѓ“г‚№еђЌ
      */
     public void setReportingLoggerServiceName(ServiceName name);
     
     /**
-     * ѓЌѓOЏo—Н‚·‚й{@link jp.ossc.nimbus.service.log.Logger Logger}ѓTЃ[ѓrѓX‚МѓTЃ[ѓrѓX–ј‚рЋж“ѕ‚·‚йЃB<p>
+     * гѓ­г‚°е‡єеЉ›гЃ™г‚‹{@link jp.ossc.nimbus.service.log.Logger Logger}г‚µгѓјгѓ“г‚№гЃ®г‚µгѓјгѓ“г‚№еђЌг‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return LoggerѓTЃ[ѓrѓX–ј
+     * @return Loggerг‚µгѓјгѓ“г‚№еђЌ
      */
     public ServiceName getReportingLoggerServiceName();
     
     /**
-     * Џ€—ќЋћЉФ‚Ми‡’l‚ЖЏo—Н‚·‚йѓЌѓO‚МѓЃѓbѓZЃ[ѓWID‚Мѓ}ѓbѓsѓ“ѓO‚рђЭ’и‚·‚йЃB<p>
-     * Џ€—ќЋћЉФ‚Ми‡’l[ms]=Џo—Н‚·‚йѓЌѓO‚МѓЃѓbѓZЃ[ѓWID,ѓЌѓO‚МЏo—НЉФЉu[ms]<br>
-     * ѓЌѓO‚МЏo—НЉФЉu‚рЋw’и‚µ‚И‚ўЏкЌ‡ЃA‚Ь‚Ѕ‚Н0‚рЋw’и‚µ‚ЅЏкЌ‡‚НЃAѓ`ѓFѓbѓN‚·‚й–€‚ЙЏo—Н‚·‚йЃB•‰‚Мђ”’l‚рЋw’и‚µ‚ЅЏкЌ‡‚НЃA‚P‰с‚ѕ‚ЇЏo—Н‚·‚йЃB0‚ж‚и‘е‚«‚ўђ”’l‚рЋw’и‚µ‚ЅЏкЌ‡‚Й‚НЃA‚»‚МЉФЉu[ms]‚ЕѓЌѓO‚рЏo—Н‚·‚йЃB<br>
+     * е‡¦зђ†ж™‚й–“гЃ®й–ѕеЂ¤гЃЁе‡єеЉ›гЃ™г‚‹гѓ­г‚°гЃ®гѓЎгѓѓг‚»гѓјг‚ёIDгЃ®гѓћгѓѓгѓ”гѓіг‚°г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * е‡¦зђ†ж™‚й–“гЃ®й–ѕеЂ¤[ms]=е‡єеЉ›гЃ™г‚‹гѓ­г‚°гЃ®гѓЎгѓѓг‚»гѓјг‚ёID,гѓ­г‚°гЃ®е‡єеЉ›й–“йљ”[ms]<br>
+     * гѓ­г‚°гЃ®е‡єеЉ›й–“йљ”г‚’жЊ‡е®љгЃ—гЃЄгЃ„е ґеђ€гЂЃгЃѕгЃџгЃЇ0г‚’жЊ‡е®љгЃ—гЃџе ґеђ€гЃЇгЂЃгѓЃг‚§гѓѓг‚ЇгЃ™г‚‹жЇЋгЃ«е‡єеЉ›гЃ™г‚‹гЂ‚иІ гЃ®ж•°еЂ¤г‚’жЊ‡е®љгЃ—гЃџе ґеђ€гЃЇгЂЃпј‘е›ћгЃ гЃ‘е‡єеЉ›гЃ™г‚‹гЂ‚0г‚€г‚Ље¤§гЃЌгЃ„ж•°еЂ¤г‚’жЊ‡е®љгЃ—гЃџе ґеђ€гЃ«гЃЇгЂЃгЃќгЃ®й–“йљ”[ms]гЃ§гѓ­г‚°г‚’е‡єеЉ›гЃ™г‚‹гЂ‚<br>
      *
-     * @param threshold Џ€—ќЋћЉФ‚Ми‡’l‚ЖЏo—Н‚·‚йѓЌѓO‚МѓЃѓbѓZЃ[ѓWID‚Мѓ}ѓbѓsѓ“ѓO
+     * @param threshold е‡¦зђ†ж™‚й–“гЃ®й–ѕеЂ¤гЃЁе‡єеЉ›гЃ™г‚‹гѓ­г‚°гЃ®гѓЎгѓѓг‚»гѓјг‚ёIDгЃ®гѓћгѓѓгѓ”гѓіг‚°
      */
     public void setThreshold(Map threshold);
     
     /**
-     * Џ€—ќЋћЉФ‚Ми‡’l‚ЖЏo—Н‚·‚йѓЌѓO‚МѓЃѓbѓZЃ[ѓWID‚Мѓ}ѓbѓsѓ“ѓO‚рЋж“ѕ‚·‚йЃB<p>
+     * е‡¦зђ†ж™‚й–“гЃ®й–ѕеЂ¤гЃЁе‡єеЉ›гЃ™г‚‹гѓ­г‚°гЃ®гѓЎгѓѓг‚»гѓјг‚ёIDгЃ®гѓћгѓѓгѓ”гѓіг‚°г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return Џ€—ќЋћЉФ‚Ми‡’l‚ЖЏo—Н‚·‚йѓЌѓO‚МѓЃѓbѓZЃ[ѓWID‚Мѓ}ѓbѓsѓ“ѓO
+     * @return е‡¦зђ†ж™‚й–“гЃ®й–ѕеЂ¤гЃЁе‡єеЉ›гЃ™г‚‹гѓ­г‚°гЃ®гѓЎгѓѓг‚»гѓјг‚ёIDгЃ®гѓћгѓѓгѓ”гѓіг‚°
      */
     public Map getThreshold();
     
     /**
-     * Џ€—ќЋћЉФ‚Мѓ`ѓFѓbѓN‚рЌs‚¤ЉФЉu[ms]‚рђЭ’и‚·‚йЃB<p>
+     * е‡¦зђ†ж™‚й–“гЃ®гѓЃг‚§гѓѓг‚Їг‚’иЎЊгЃ†й–“йљ”[ms]г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
      *
-     * @param interval ѓ`ѓFѓbѓNЉФЉu
+     * @param interval гѓЃг‚§гѓѓг‚Їй–“йљ”
      */
     public void setCheckInterval(long interval);
     
     /**
-     * Џ€—ќЋћЉФ‚Мѓ`ѓFѓbѓN‚рЌs‚¤ЉФЉu[ms]‚рЋж“ѕ‚·‚йЃB<p>
+     * е‡¦зђ†ж™‚й–“гЃ®гѓЃг‚§гѓѓг‚Їг‚’иЎЊгЃ†й–“йљ”[ms]г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return ѓ`ѓFѓbѓNЉФЉu
+     * @return гѓЃг‚§гѓѓг‚Їй–“йљ”
      */
     public long getCheckInterval();
     
     /**
-     * Њ»ЌЭ‚МѓЉѓNѓGѓXѓg‚МѓЊѓ|Ѓ[ѓg‚рЏo—Н‚·‚йЃB<p>
+     * зЏѕењЁгЃ®гѓЄг‚Їг‚Ёг‚№гѓ€гЃ®гѓ¬гѓќгѓјгѓ€г‚’е‡єеЉ›гЃ™г‚‹гЂ‚<p>
      * 
-     * @return Њ»ЌЭ‚МѓЉѓNѓGѓXѓg‚МѓЊѓ|Ѓ[ѓg
+     * @return зЏѕењЁгЃ®гѓЄг‚Їг‚Ёг‚№гѓ€гЃ®гѓ¬гѓќгѓјгѓ€
      */
     public String displayCurrentReport();
     
     /**
-     * Џ€—ќЋћЉФ‚Мѓ`ѓFѓbѓN‚р’†’f‚·‚йЃB<p>
+     * е‡¦зђ†ж™‚й–“гЃ®гѓЃг‚§гѓѓг‚Їг‚’дё­ж–­гЃ™г‚‹гЂ‚<p>
      */
     public void suspendChecker();
     
     /**
-     * Џ€—ќЋћЉФ‚Мѓ`ѓFѓbѓN‚рЌДЉJ‚·‚йЃB<p>
+     * е‡¦зђ†ж™‚й–“гЃ®гѓЃг‚§гѓѓг‚Їг‚’е†Ќй–‹гЃ™г‚‹гЂ‚<p>
      */
     public void resumeChecker();
     
     /**
-     * Ћw’и‚і‚к‚ЅѓЉѓNѓGѓXѓg’†ѓXѓЊѓbѓh‚рѓCѓ“ѓ^Ѓ[ѓ‰ѓvѓg‚·‚йЃB<p>
+     * жЊ‡е®љгЃ•г‚ЊгЃџгѓЄг‚Їг‚Ёг‚№гѓ€дё­г‚№гѓ¬гѓѓгѓ‰г‚’г‚¤гѓіг‚їгѓјгѓ©гѓ—гѓ€гЃ™г‚‹гЂ‚<p>
      *
-     * @param groupName ѓXѓЊѓbѓh‚МѓOѓ‹Ѓ[ѓv–ј
-     * @param threadName ѓXѓЊѓbѓh–ј
-     * @return ѓCѓ“ѓ^Ѓ[ѓ‰ѓvѓg‚Е‚«‚ЅЏкЌ‡‚НЃAtrue
+     * @param groupName г‚№гѓ¬гѓѓгѓ‰гЃ®г‚°гѓ«гѓјгѓ—еђЌ
+     * @param threadName г‚№гѓ¬гѓѓгѓ‰еђЌ
+     * @return г‚¤гѓіг‚їгѓјгѓ©гѓ—гѓ€гЃ§гЃЌгЃџе ґеђ€гЃЇгЂЃtrue
      */
     public boolean interruptRequest(String groupName, String threadName);
     
     /**
-     * Ћw’и‚і‚к‚ЅѓЉѓNѓGѓXѓg’†ѓXѓЊѓbѓh‚рѓ`ѓFѓbѓN‘ОЏЫ‚©‚зЌнЏњ‚·‚йЃB<p>
+     * жЊ‡е®љгЃ•г‚ЊгЃџгѓЄг‚Їг‚Ёг‚№гѓ€дё­г‚№гѓ¬гѓѓгѓ‰г‚’гѓЃг‚§гѓѓг‚ЇеЇѕи±ЎгЃ‹г‚‰е‰Љй™¤гЃ™г‚‹гЂ‚<p>
      *
-     * @param groupName ѓXѓЊѓbѓh‚МѓOѓ‹Ѓ[ѓv–ј
-     * @param threadName ѓXѓЊѓbѓh–ј
-     * @return ЌнЏњ‚Е‚«‚ЅЏкЌ‡‚НЃAtrue
+     * @param groupName г‚№гѓ¬гѓѓгѓ‰гЃ®г‚°гѓ«гѓјгѓ—еђЌ
+     * @param threadName г‚№гѓ¬гѓѓгѓ‰еђЌ
+     * @return е‰Љй™¤гЃ§гЃЌгЃџе ґеђ€гЃЇгЂЃtrue
      */
     public boolean removeRequest(String groupName, String threadName);
     
     /**
-     * ѓЉѓNѓGѓXѓg’†ѓXѓЊѓbѓh‚рѓ`ѓFѓbѓN‘ОЏЫ‚©‚з‘S‚ДЌнЏњ‚·‚йЃB<p>
+     * гѓЄг‚Їг‚Ёг‚№гѓ€дё­г‚№гѓ¬гѓѓгѓ‰г‚’гѓЃг‚§гѓѓг‚ЇеЇѕи±ЎгЃ‹г‚‰е…ЁгЃ¦е‰Љй™¤гЃ™г‚‹гЂ‚<p>
      */
     public void clearRequest();
     
     /**
-     * ѓЉѓNѓGѓXѓg’†‚МѓXѓЊѓbѓhђ”‚рЋж“ѕ‚·‚йЃB<p>
+     * гѓЄг‚Їг‚Ёг‚№гѓ€дё­гЃ®г‚№гѓ¬гѓѓгѓ‰ж•°г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return ѓЉѓNѓGѓXѓg’†‚МѓXѓЊѓbѓhђ”
+     * @return гѓЄг‚Їг‚Ёг‚№гѓ€дё­гЃ®г‚№гѓ¬гѓѓгѓ‰ж•°
      */
     public int getRequestCount();
 }

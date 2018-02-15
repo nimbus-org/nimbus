@@ -32,24 +32,24 @@
 package jp.ossc.nimbus.service.keepalive;
 
 /**
- * ƒOƒ‹[ƒsƒ“ƒO‚³‚ê‚½KeepAliveChecker‚©‚çA”CˆÓ‚ÌƒƒWƒbƒN‚Å¶‘¶‚µ‚Ä‚¢‚é‚P‚Â‚ÌKeepAliveChecker‚ğ‘I‘ğ‚·‚é‹@”\‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã•ã‚ŒãŸKeepAliveCheckerã‹ã‚‰ã€ä»»æ„ã®ãƒ­ã‚¸ãƒƒã‚¯ã§ç”Ÿå­˜ã—ã¦ã„ã‚‹ï¼‘ã¤ã®KeepAliveCheckerã‚’é¸æŠã™ã‚‹æ©Ÿèƒ½ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface KeepAliveCheckerSelector{
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚³‚ê‚½KeepAliveChecker‚©‚çA”CˆÓ‚ÌƒƒWƒbƒN‚Å‚P‚Â‚ÌKeepAliveChecker‚ğ‘I‘ğ‚·‚éB<p>
-     * ‘I‘ğƒƒWƒbƒN‚ÍAÀ‘•ƒNƒ‰ƒX‚ÉˆË‘¶‚·‚éB<br>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã•ã‚ŒãŸKeepAliveCheckerã‹ã‚‰ã€ä»»æ„ã®ãƒ­ã‚¸ãƒƒã‚¯ã§ï¼‘ã¤ã®KeepAliveCheckerã‚’é¸æŠã™ã‚‹ã€‚<p>
+     * é¸æŠãƒ­ã‚¸ãƒƒã‚¯ã¯ã€å®Ÿè£…ã‚¯ãƒ©ã‚¹ã«ä¾å­˜ã™ã‚‹ã€‚<br>
      *
-     * @return ‘I‘ğ‚³‚ê‚½KeepAliveChecker
+     * @return é¸æŠã•ã‚ŒãŸKeepAliveChecker
      */
     public KeepAliveChecker selectChecker();
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈKeepAliveChecker‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªKeepAliveCheckerã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘I‘ğ‰Â”\‚ÈKeepAliveChecker‚Ì”z—ñ
+     * @return é¸æŠå¯èƒ½ãªKeepAliveCheckerã®é…åˆ—
      */
     public KeepAliveChecker[] getSelectableCheckers();
 }

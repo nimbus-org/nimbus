@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 /**
- * {@link HttpServletRequestCheckInterceptorService}‚Ìƒ`ƒFƒbƒN‚ÅƒGƒ‰[‚É‚È‚Á‚½–‚ğ¦‚·—áŠOB<p>
+ * {@link HttpServletRequestCheckInterceptorService}ã®ãƒã‚§ãƒƒã‚¯ã§ã‚¨ãƒ©ãƒ¼ã«ãªã£ãŸäº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,34 +41,34 @@ public class HttpServletRequestCheckException extends RuntimeException{
     private static final long serialVersionUID = -8758230331082690946L;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public HttpServletRequestCheckException(){
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public HttpServletRequestCheckException(String message){
         super(message);
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public HttpServletRequestCheckException(Throwable cause){
         super(cause);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public HttpServletRequestCheckException(String message, Throwable cause){
         super(message, cause);

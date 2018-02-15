@@ -39,8 +39,8 @@ import jp.ossc.nimbus.service.message.MessageRecordFactory;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 
 /**
- * ŠÈˆÕƒƒOƒJƒeƒSƒŠƒT[ƒrƒXB<p>
- * ƒƒOo—Íæ‚ğ•ª—Ş‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ÌŠÈˆÕÀ‘•ƒNƒ‰ƒXB<br>
+ * ç°¡æ˜“ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’åˆ†é¡ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ç°¡æ˜“å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -50,7 +50,7 @@ public class SimpleCategoryService
     
     private static final long serialVersionUID = 7967745897491812488L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SCGRY = "SCGRY";
     private static final String SCGRY0 = SCGRY + 0;
     private static final String SCGRY00 = SCGRY0 + 0;
@@ -64,21 +64,21 @@ public class SimpleCategoryService
     private static final String PRIORITY_RANGE_DELIMITER = ":";
     
     /**
-     * ƒJƒeƒSƒŠ–¼B<p>
+     * ã‚«ãƒ†ã‚´ãƒªåã€‚<p>
      */
     protected String categoryName;
     
     /**
-     * ƒƒO‚Ì—Dæ‡ˆÊ”ÍˆÍB<p>
+     * ãƒ­ã‚°ã®å„ªå…ˆé †ä½ç¯„å›²ã€‚<p>
      */
     private Range priorityRange;
     
     /**
-     * —Dæ‡ˆÊ‚Æƒ‰ƒxƒ‹‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * å„ªå…ˆé †ä½ã¨ãƒ©ãƒ™ãƒ«ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>Range</td><td>—Dæ‡ˆÊ”ÍˆÍ</td><td>String</td><td>ƒ‰ƒxƒ‹</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>Range</td><td>å„ªå…ˆé †ä½ç¯„å›²</td><td>String</td><td>ãƒ©ãƒ™ãƒ«</td></tr>
      * </table>
      */
     private Map labelMap = new HashMap();
@@ -97,45 +97,45 @@ public class SimpleCategoryService
         }
     }
     
-    // LogCategory‚ÌJavaDoc
+    // LogCategoryã®JavaDoc
     public String getCategoryName(){
         return categoryName;
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public void setCategoryName(String name){
         categoryName = name;
     }
     
-    // LogCategory‚ÌJavaDoc
+    // LogCategoryã®JavaDoc
     public boolean isValidPriorityRange(int priority){
         return priorityRange.contains(priority);
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Åo—Í‚³‚ê‚éƒƒO‚Ì—Dæ‡ˆÊ”ÍˆÍ‚ÌÅ¬’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã§å‡ºåŠ›ã•ã‚Œã‚‹ãƒ­ã‚°ã®å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ¬’l
+     * @return å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å°å€¤
      */
     public int getPriorityRangeMin(){
         return priorityRange.min;
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Åo—Í‚³‚ê‚éƒƒO‚Ì—Dæ‡ˆÊ”ÍˆÍ‚ÌÅ‘å’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã§å‡ºåŠ›ã•ã‚Œã‚‹ãƒ­ã‚°ã®å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ‘å’l
+     * @return å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å¤§å€¤
      */
     public int getPriorityRangeMax(){
         return priorityRange.max;
     }
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Åo—Í‚³‚ê‚éƒƒO‚Ì—Dæ‡ˆÊ”ÍˆÍ‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã§å‡ºåŠ›ã•ã‚Œã‚‹ãƒ­ã‚°ã®å„ªå…ˆé †ä½ç¯„å›²ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param min —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ¬’l
-     * @param max —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ‘å’l
-     * @exception IllegalArgumentException —Dæ‡ˆÊ”ÍˆÍ‚Ìw’è‚ª•s³‚Èê‡B
+     * @param min å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å°å€¤
+     * @param max å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å¤§å€¤
+     * @exception IllegalArgumentException å„ªå…ˆé †ä½ç¯„å›²ã®æŒ‡å®šãŒä¸æ­£ãªå ´åˆã€‚
      */
     public void setPriorityRangeValue(int min, int max)
      throws IllegalArgumentException{
@@ -148,13 +148,13 @@ public class SimpleCategoryService
         priorityRange = new Range(min, max);
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public void setPriorityRange(String range)
      throws IllegalArgumentException{
         priorityRange = parseRange(range);
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public String getPriorityRange(){
         return priorityRange == null ? null : priorityRange.toString();
     }
@@ -188,7 +188,7 @@ public class SimpleCategoryService
         return new Range(min, max);
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public String getLabel(int priority){
         final Iterator ranges = labelMap.keySet().iterator();
         while(ranges.hasNext()){
@@ -200,7 +200,7 @@ public class SimpleCategoryService
         return null;
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public void setLabels(Properties labels) throws IllegalArgumentException{
         final Iterator ranges = labels.keySet().iterator();
         while(ranges.hasNext()){
@@ -217,7 +217,7 @@ public class SimpleCategoryService
         }
     }
     
-    // SimpleCategoryServiceMBean‚ÌJavaDoc
+    // SimpleCategoryServiceMBeanã®JavaDoc
     public Properties getLabels(){
         Properties props = new Properties();
         final Iterator entries = labelMap.entrySet().iterator();
@@ -230,12 +230,12 @@ public class SimpleCategoryService
     }
     
     /**
-     * ƒƒO‚Ì—Dæ‡ˆÊ‚É‘Î‰‚·‚éƒ‰ƒxƒ‹‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°ã®å„ªå…ˆé †ä½ã«å¯¾å¿œã™ã‚‹ãƒ©ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param min —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ¬’l
-     * @param max —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ‘å’l
-     * @param label ƒ‰ƒxƒ‹
-     * @exception IllegalArgumentException —Dæ‡ˆÊ”ÍˆÍ‚Ìw’è‚ª•s³‚Èê‡B
+     * @param min å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å°å€¤
+     * @param max å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å¤§å€¤
+     * @param label ãƒ©ãƒ™ãƒ«
+     * @exception IllegalArgumentException å„ªå…ˆé †ä½ç¯„å›²ã®æŒ‡å®šãŒä¸æ­£ãªå ´åˆã€‚
      */
     public void setLabel(int min, int max, String label)
      throws IllegalArgumentException{
@@ -249,7 +249,7 @@ public class SimpleCategoryService
         labelMap.put(range, label);
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void write(int priority, Map elements) throws MessageWriteException{
         if(isValidPriorityRange(priority)){
             super.write(elements);

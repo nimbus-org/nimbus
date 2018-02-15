@@ -62,23 +62,23 @@ public class ClassLoaderServiceTest extends TestCase {
 		junit.textui.TestRunner.run(ClassLoaderServiceTest.class);
 	}
    /**
-	* GetClassPath()ƒeƒXƒg
-	* ƒNƒ‰ƒXƒpƒX‚ğæ“¾‚·‚é
+	* GetClassPath()ãƒ†ã‚¹ãƒˆ
+	* ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹
 	*/
 	public void testGetClassPath() throws Exception{
 		System.out.println("testGetClassPath() START");
 
-		//ClassLoaderServiceMBean‚ğæ“¾
+		//ClassLoaderServiceMBeanã‚’å–å¾—
 		ClassLoaderServiceMBean loader = (ClassLoaderServiceMBean)ServiceManagerFactory.getServiceObject("tstruts","cl2");
-		//getClassPath‚ğÀs‚·‚éB
+		//getClassPathã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 		String path = loader.getClassPath();
 		assertEquals("target/test-classes/jp/ossc/nimbus/service/loader/jar-test/after/Msg.jar",path);
 		System.out.println("testGetClassPath() END");
 	}
 	
 	/**
-	 * loadNewInstance2()³íŒnƒeƒXƒg
-	 * ƒNƒ‰ƒX‚ğæ“¾‚·‚é
+	 * loadNewInstance2()æ­£å¸¸ç³»ãƒ†ã‚¹ãƒˆ
+	 * ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹
 	 */
 	public void testLoadNewInstance2() throws Exception{
 		System.out.println("testLoadNewInstance2() START");
@@ -93,8 +93,8 @@ public class ClassLoaderServiceTest extends TestCase {
 	
 	
 	/**
-	 * loadNewInstance3()³íŒnƒeƒXƒg
-	 * V‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é
+	 * loadNewInstance3()æ­£å¸¸ç³»ãƒ†ã‚¹ãƒˆ
+	 * æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹
 	 */ 
 	public void testLoadNewInstance3() throws Exception{
 		System.out.println("testLoaderNewInstance3() START");
@@ -107,7 +107,7 @@ public class ClassLoaderServiceTest extends TestCase {
 		assertEquals("Before:Jar-File",ret);				
 	}
 
-	/* JDK1.4 ˆÈŒã‚È‚ç‚Î’Ê‚é
+	/* JDK1.4 ä»¥å¾Œãªã‚‰ã°é€šã‚‹
 	public void testLoadNewInstance4() throws Exception{
 		System.out.println("testLoaderNewInstance4() START");
 		Date now = new Date() ;
@@ -116,40 +116,40 @@ public class ClassLoaderServiceTest extends TestCase {
 		try{
 			ClassLauncher lancher = (ClassLauncher)ServiceManagerFactory.getServiceObject("tstruts","cl3");
 		    ClassLoaderService loader =(ClassLoaderService)lancher;
-			//ƒŠƒtƒŒƒbƒVƒ…—\’è‚ğ10•ªŒã‚É‚µ‚Ä‚µ‚Ü‚¤B
-			//refreshNow()‚µ‚È‚¢‚©‚¬‚èArefresh‚³‚ê‚È‚¢B
+			//ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥äºˆå®šæ™‚åˆ»ã‚’10åˆ†å¾Œã«ã—ã¦ã—ã¾ã†ã€‚
+			//refreshNow()ã—ãªã„ã‹ãã‚Šã€refreshã•ã‚Œãªã„ã€‚
 		    loader.setRefreshTime(ft.format(next));
 		    Object obj =lancher.loadNewInstance("GetMessage2");
 			Class cls=obj.getClass();
 			Method method = cls.getMethod("mesPrint",null);
-      		System.out.print("testLoaderNewInstance4()’uŠ·‘O:@@@@ ");
+      		System.out.print("testLoaderNewInstance4()ç½®æ›å‰:ã€€ã€€ã€€ã€€ ");
       		String ret = (String)method.invoke(obj,null);
       		System.out.println(ret);
       		
       		assertEquals("Before:Jar-File",ret);
-      		System.out.println("testLoaderNewInstance4ƒRƒs[’†:EEEEE ");
+      		System.out.println("testLoaderNewInstance4ã‚³ãƒ”ãƒ¼ä¸­:ãƒ»ãƒ»ãƒ»ãƒ»ãƒ» ");
       		
-      		//ƒRƒs[‚·‚éB
+      		//ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
 			OperateFile op = new OperateFile("jp/ossc/nimbus/service/loader/jar-test/after/Msg.jar") ;
 			op.copyTo("jp/ossc/nimbus/service/loader/jar-test/lib/Msg.jar") ;			
       		
-      		//ƒRƒs[‚µ‚½‚ªArefreshNow‚ğƒR[ƒ‹‚·‚é‚Ü‚Å‚Í“ü‚ê‘Ö‚í‚ç‚È‚¢‚±‚Æ‚ğŠm”F
+      		//ã‚³ãƒ”ãƒ¼ã—ãŸãŒã€refreshNowã‚’ã‚³ãƒ¼ãƒ«ã™ã‚‹ã¾ã§ã¯å…¥ã‚Œæ›¿ã‚ã‚‰ãªã„ã“ã¨ã‚’ç¢ºèª
       		
       		obj = lancher.loadNewInstance("GetMessage2");
       		cls = obj.getClass();
       		method = cls.getMethod("mesPrint",null);
       		ret = (String)method.invoke(obj,null);
       		assertEquals("Before:Jar-File",ret);
-      		//refreshNow()‚ğƒR[ƒ‹‚µAƒNƒ‰ƒX‚ª“ü‚ê‘Ö‚í‚Á‚Ä‚¢‚é–‚ğŠm”F
+      		//refreshNow()ã‚’ã‚³ãƒ¼ãƒ«ã—ã€ã‚¯ãƒ©ã‚¹ãŒå…¥ã‚Œæ›¿ã‚ã£ã¦ã„ã‚‹äº‹ã‚’ç¢ºèª
 			loader.refreshNow();
 			obj =lancher.loadNewInstance("GetMessage2");
 			cls =obj.getClass();
 			method = cls.getMethod("mesPrint",null);
-			System.out.print("testLoaderNewInstance4()’uŠ·Œã: @@@@");
+			System.out.print("testLoaderNewInstance4()ç½®æ›å¾Œ: ã€€ã€€ã€€ã€€");
       		ret = (String)method.invoke(obj,null);
       		System.out.println(ret);
       		assertEquals("After:Jar-File",ret);
-      		//Œãn––Bbefore‚É–ß‚µ‚Ä‚¨‚­
+      		//å¾Œå§‹æœ«ã€‚beforeã«æˆ»ã—ã¦ãŠã
 			op = new OperateFile("jp/ossc/nimbus/service/loader/jar-test/before/Msg.jar") ;
 			op.copyTo("jp/ossc/nimbus/service/loader/jar-test/lib/Msg.jar")
 		}
@@ -157,7 +157,7 @@ public class ClassLoaderServiceTest extends TestCase {
 			throw e;	
 		}
 		finally{
-			//Œãn––Bbefore‚É–ß‚µ‚Ä‚¨‚­
+			//å¾Œå§‹æœ«ã€‚beforeã«æˆ»ã—ã¦ãŠã
 			OperateFile op = new OperateFile("jp/ossc/nimbus/service/loader/jar-test/before/Msg.jar") ;
 			op.copyTo("jp/ossc/nimbus/service/loader/jar-test/lib/Msg.jar") ;	
 		}
@@ -166,7 +166,7 @@ public class ClassLoaderServiceTest extends TestCase {
 	*/
 	
 	/**
-	 * Jar-File“à‚ÉClass‚ğ•¡”’u‚«AJar-File‚ğ’uŠ·‚·‚éB 
+	 * Jar-Fileå†…ã«Classã‚’è¤‡æ•°ç½®ãã€Jar-Fileã‚’ç½®æ›ã™ã‚‹ã€‚ 
 	 * 
 	 */
 	public void testLoadNewInstance5() throws Exception{
@@ -178,24 +178,24 @@ public class ClassLoaderServiceTest extends TestCase {
 		try{
 			ClassLauncher lancher = (ClassLauncher)ServiceManagerFactory.getServiceObject("tstruts","cl4");
 			ClassLoaderService loader =(ClassLoaderService)lancher;
-			//ƒŠƒtƒŒƒbƒVƒ…—\’è‚ğ10•ªŒã‚É‚µ‚Ä‚µ‚Ü‚¤B
-			//refreshNow()‚µ‚È‚¢‚©‚¬‚èArefresh‚³‚ê‚È‚¢B
+			//ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥äºˆå®šæ™‚åˆ»ã‚’10åˆ†å¾Œã«ã—ã¦ã—ã¾ã†ã€‚
+			//refreshNow()ã—ãªã„ã‹ãã‚Šã€refreshã•ã‚Œãªã„ã€‚
 			loader.setRefreshTime(ft.format(next));			
 			Object obj =lancher.loadNewInstance("GetMessage2");
 			Class cls=obj.getClass();
 			Method method = cls.getMethod("mesPrint",(Class[])null);
-			System.out.print("testLoaderNewInstance5()’uŠ·‘O:@@@@ ");
+			System.out.print("testLoaderNewInstance5()ç½®æ›å‰:ã€€ã€€ã€€ã€€ ");
 			String ret = (String)method.invoke(obj,(Object[])null);
 			System.out.println(ret);
       		
 			assertEquals("Before:Jar-File",ret);
-			System.out.println("testLoaderNewInstance5ƒRƒs[’†:EEEEE ");
+			System.out.println("testLoaderNewInstance5ã‚³ãƒ”ãƒ¼ä¸­:ãƒ»ãƒ»ãƒ»ãƒ»ãƒ» ");
       		
-			//ƒRƒs[‚·‚éB
+			//ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
 			OperateFile op = new OperateFile("target/test-classes/jp/ossc/nimbus/service/loader/class-test/after/ReMessage2.class") ;
 			op.copyTo("target/test-classes/jp/ossc/nimbus/service/loader/class-test/lib/ReMessage2.class") ;			
       		
-			//ƒRƒs[‚µ‚½‚ªArefreshNow‚ğƒR[ƒ‹‚·‚é‚Ü‚Å‚Í“ü‚ê‘Ö‚í‚ç‚È‚¢‚±‚Æ‚ğŠm”F
+			//ã‚³ãƒ”ãƒ¼ã—ãŸãŒã€refreshNowã‚’ã‚³ãƒ¼ãƒ«ã™ã‚‹ã¾ã§ã¯å…¥ã‚Œæ›¿ã‚ã‚‰ãªã„ã“ã¨ã‚’ç¢ºèª
       		
 			obj = lancher.loadNewInstance("GetMessage2");
 			cls = obj.getClass();
@@ -204,12 +204,12 @@ public class ClassLoaderServiceTest extends TestCase {
 			assertEquals("Before:Jar-File",ret);
       		
       		
-			//refreshNow()‚ğƒR[ƒ‹‚µAƒNƒ‰ƒX‚ª“ü‚ê‘Ö‚í‚Á‚Ä‚¢‚é–‚ğŠm”F
+			//refreshNow()ã‚’ã‚³ãƒ¼ãƒ«ã—ã€ã‚¯ãƒ©ã‚¹ãŒå…¥ã‚Œæ›¿ã‚ã£ã¦ã„ã‚‹äº‹ã‚’ç¢ºèª
 			loader.refreshNow();
 			obj =lancher.loadNewInstance("GetMessage2");
 			cls =obj.getClass();
 			method = cls.getMethod("mesPrint",(Class[])null);
-			System.out.print("testLoaderNewInstance5()’uŠ·Œã: @@@@");
+			System.out.print("testLoaderNewInstance5()ç½®æ›å¾Œ: ã€€ã€€ã€€ã€€");
 			ret = (String)method.invoke(obj,(Object[])null);
 			System.out.println(ret);
 			assertEquals("After:Jar-File",ret);
@@ -218,7 +218,7 @@ public class ClassLoaderServiceTest extends TestCase {
 			throw e;	
 		}
 		finally{
-			//Œãn––Bbefore‚É–ß‚µ‚Ä‚¨‚­
+			//å¾Œå§‹æœ«ã€‚beforeã«æˆ»ã—ã¦ãŠã
 			OperateFile op = new OperateFile("target/test-classes/jp/ossc/nimbus/service/loader/class-test/before/ReMessage2.class") ;
 			op.copyTo("target/test-classes/jp/ossc/nimbus/service/loader/jar-test/lib/ReMessage2.class") ;
 		}
@@ -226,21 +226,21 @@ public class ClassLoaderServiceTest extends TestCase {
 	}
 	/**
 	 * getLastRefreshTime
-	 * ƒŠƒtƒŒƒbƒVƒ…—\’è‚É‚È‚é‚Ü‚ÅƒŠƒtƒŒƒbƒVƒ…‚µ‚È‚¢Šm”F
+	 * ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥äºˆå®šæ™‚åˆ»ã«ãªã‚‹ã¾ã§ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã—ãªã„ç¢ºèª
 	 */
 	public void testGetLastRefreshTime(){
 		System.out.println("testGetLastRefreshTime() START");
 	 	try{
 	 		ClassLoaderService cl=(ClassLoaderService)ServiceManagerFactory.getServiceObject("tstruts","cl1");	
-			//1‰ñrefresh
+			//1å›refresh
 			cl.refreshNow();
 			Date now = new Date() ;
 			Date next = new Date(now.getTime()+10000) ;
 			SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss") ;
-	 		//ƒŠƒtƒŒƒbƒVƒ…—\’è‚ğ10•bŒã‚ÉƒZƒbƒg
+	 		//ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥äºˆå®šæ™‚åˆ»ã‚’10ç§’å¾Œã«ã‚»ãƒƒãƒˆ
 	 		cl.setRefreshTime(ft.format(next));
 			Thread.sleep(2000);
-			//ƒŠƒtƒŒƒbƒVƒ…‚³‚ê‚È‚¢‚Í‚¸B—\’è‚Í10•bŒã‚È‚Ì‚Å
+			//ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã•ã‚Œãªã„ã¯ãšã€‚äºˆå®šæ™‚åˆ»ã¯10ç§’å¾Œãªã®ã§
 			cl.loadClass("GetMessage2");
 	 		Date lastRefreshedTime = ft.parse(cl.getLastRrefreshTime());
 	 		Date completeTime = new Date();
@@ -254,7 +254,7 @@ public class ClassLoaderServiceTest extends TestCase {
 
 	/*
 	 * getNextRefreshTime
-	 * Ÿ‰ñƒŠƒtƒŒƒbƒVƒ…‚ÌŠm”F
+	 * æ¬¡å›ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ™‚åˆ»ã®ç¢ºèª
 	 */
 	 public void testGetNextRefreshTime() throws Exception{
 	 	String nextTime=new String();

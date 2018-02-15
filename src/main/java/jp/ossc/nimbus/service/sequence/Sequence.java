@@ -32,35 +32,35 @@
 package jp.ossc.nimbus.service.sequence;
 
 /**
- * ’Ê”Ô”­”ÔƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * é€šç•ªç™ºç•ªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface Sequence{
     
     /**
-     * V‚µ‚¢”Ô†‚ğ”­”Ô‚·‚éB<p>
+     * æ–°ã—ã„ç•ªå·ã‚’ç™ºç•ªã™ã‚‹ã€‚<p>
      * 
-     * @return V‚µ‚¢”Ô†
+     * @return æ–°ã—ã„ç•ªå·
      */
     public String increment();
     
     /**
-     * ŠJn”Ô†‚ğæ“¾‚·‚éB<p>
+     * é–‹å§‹ç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ŠJn”Ô†
+     * @return é–‹å§‹ç•ªå·
      */
     public String getInitial();
     
     /**
-     * ”­”Ô‚ğ‰Šú‰»‚·‚éB<p>
+     * ç™ºç•ªã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
     
     /** 
-     * Œ»İ”­”ÔÏ‚İ‚ÌÅV‚Ì”Ô†‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ç™ºç•ªæ¸ˆã¿ã®æœ€æ–°ã®ç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Œ»İ”­”ÔÏ‚İ‚ÌÅV‚Ì”Ô†
+     * @return ç¾åœ¨ç™ºç•ªæ¸ˆã¿ã®æœ€æ–°ã®ç•ªå·
      */ 
     public String getCurrent();
 }

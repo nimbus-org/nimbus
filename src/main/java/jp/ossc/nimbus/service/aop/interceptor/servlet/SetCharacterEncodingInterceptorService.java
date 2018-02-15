@@ -39,8 +39,8 @@ import javax.servlet.http.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ƒŠƒNƒGƒXƒg•¶šƒR[ƒhİ’èƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ISO8859_1‚ÅƒGƒ“ƒR[ƒh‚³‚ê‚½ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğ”CˆÓ‚Ì•¶šƒR[ƒh‚É•ÏŠ·‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæ–‡å­—ã‚³ãƒ¼ãƒ‰è¨­å®šã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ISO8859_1ã§ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä»»æ„ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã«å¤‰æ›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -56,34 +56,34 @@ public class SetCharacterEncodingInterceptorService
     protected String characterEncoding;
     protected boolean isEncodeQuery;
     
-    // SetCharacterEncodingInterceptorServiceMBean‚ÌJavaDoc
+    // SetCharacterEncodingInterceptorServiceMBeanã®JavaDoc
     public void setCharacterEncoding(String encoding){
         characterEncoding = encoding;
     }
     
-    // SetCharacterEncodingInterceptorServiceMBean‚ÌJavaDoc
+    // SetCharacterEncodingInterceptorServiceMBeanã®JavaDoc
     public String getCharacterEncoding(){
         return characterEncoding;
     }
     
-    // SetCharacterEncodingInterceptorServiceMBean‚ÌJavaDoc
+    // SetCharacterEncodingInterceptorServiceMBeanã®JavaDoc
     public void setEncodeQuery(boolean isEncode){
         isEncodeQuery = isEncode;
     }
     
-    // SetCharacterEncodingInterceptorServiceMBean‚ÌJavaDoc
+    // SetCharacterEncodingInterceptorServiceMBeanã®JavaDoc
     public boolean isEncodeQuery(){
         return isEncodeQuery;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ì•¶šƒR[ƒh‚ğİ’è‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,

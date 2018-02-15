@@ -38,7 +38,7 @@ import junit.framework.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX’ŠÛƒeƒXƒgƒNƒ‰ƒXB<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹æŠ½è±¡ãƒ†ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

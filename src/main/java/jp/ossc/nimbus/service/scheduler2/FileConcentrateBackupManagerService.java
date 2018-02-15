@@ -51,11 +51,11 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.io.OperateFile;
 
 /**
- * �t�@�C���W�z�M�o�b�N�A�b�v�Ǘ��B<p>
- * �W�z�M�o�b�N�A�b�v���t�@�C���x�[�X�ōs���B<br>
- * "�o�b�N�A�b�v���[�g/�O���[�v/���t/�L�[/�o�b�N�A�b�v�t�@�C��"�̊K�w�Ńo�b�N�A�b�v�t�@�C�����쐬����B
- * �e�K�w�͎w�肳��Ă��Ȃ��ꍇ�́A���݂��Ȃ��B<br>
- * �܂��A���k���[�h���w�肳��Ă���ꍇ�́A���k���ăo�b�N�A�b�v����B<br>
+ * ファイル集配信バックアップ管理。<p>
+ * 集配信バックアップをファイルベースで行う。<br>
+ * "バックアップルート/グループ/日付/キー/バックアップファイル"の階層でバックアップファイルを作成する。
+ * 各階層は指定されていない場合は、存在しない。<br>
+ * また、圧縮モードが指定されている場合は、圧縮してバックアップする。<br>
  * 
  * @author M.Takata
  */

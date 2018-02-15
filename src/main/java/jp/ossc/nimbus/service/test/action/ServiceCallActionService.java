@@ -55,8 +55,8 @@ import jp.ossc.nimbus.service.aop.Invoker;
 import jp.ossc.nimbus.service.aop.DefaultMethodInvocationContext;
 
 /**
- * ���[�J���̃T�[�r�X���Ăяo���e�X�g�A�N�V�����B<p>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * ローカルのサービスを呼び出すテストアクション。<p>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  * 
  * @author M.Takata
  */
@@ -112,59 +112,59 @@ public class ServiceCallActionService extends ServiceBase implements TestAction,
     }
     
     /**
-     * ���[�J���̃T�[�r�X���Ăяo���āA�߂�l��Ԃ��B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * ローカルのサービスを呼び出して、戻り値を返す。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * serviceName
      * methodSigniture
      * argumentsType
      * arguments
      * </pre>
-     * serviceName�́A�Ăяo���Ώۂ̃T�[�r�X�����w�肷��B�T�[�r�X���̃t�H�[�}�b�g�́A{@link ServiceNameEditor}�̎d�l�ɏ�����B<br>
-     * methodSigniture�́A�Ăяo�����\�b�h�̃V�O�j�`�����w�肷��B�V�O�j�`���̃t�H�[�}�b�g�́A{@link MethodEditor}�̎d�l�ɏ�����B<br>
-     * argumentType�́A�Ăяo�����\�b�h�̈����̎w����@�ŁA"id"�A"value"�A"interpreter"�̂����ꂩ���w�肷��B<br>
-     * argument�́AargumentType�ɂ���āA�L�q���@���قȂ�B<br>
+     * serviceNameは、呼び出す対象のサービス名を指定する。サービス名のフォーマットは、{@link ServiceNameEditor}の仕様に準じる。<br>
+     * methodSignitureは、呼び出すメソッドのシグニチャを指定する。シグニチャのフォーマットは、{@link MethodEditor}の仕様に準じる。<br>
+     * argumentTypeは、呼び出すメソッドの引数の指定方法で、"id"、"value"、"interpreter"のいずれかを指定する。<br>
+     * argumentは、argumentTypeによって、記述方法が異なる。<br>
      * <ul>
-     * <li>argumentType��"id"�̏ꍇ<br>TestAction�̖߂�l�������Ƃ��Ďg�p������̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA�����I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA�����I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B</li>
-     * <li>argumentType��"value"�̏ꍇ<br>�����𕶎���Ŏw�肷��B�������������݂���ꍇ�́A���s����B������null�ł��鎖���w�肷��ꍇ�́A"null"�Ǝw�肷��B</li>
-     * <li>argumentType��"interpreter"�̏ꍇ<br>�����𐶐�����X�N���v�g��������L�q����B�X�N���v�g������́A{@link Interpreter#evaluate(String,java.util.Map)}�ŕ]������A���̖߂�l�������Ƃ��Ďg�p�����B�X�N���v�g���ł́A�ϐ�"context"�ŁATestContext���Q�Ƃł���B�X�N���v�g�̏I���́A��s�B</li>
+     * <li>argumentTypeが"id"の場合<br>TestActionの戻り値を引数として使用するもので、同一テストケース中に、このTestActionより前に、引数オブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、引数オブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。</li>
+     * <li>argumentTypeが"value"の場合<br>引数を文字列で指定する。引数が複数存在する場合は、改行する。引数がnullである事を指定する場合は、"null"と指定する。</li>
+     * <li>argumentTypeが"interpreter"の場合<br>引数を生成するスクリプト文字列を記述する。スクリプト文字列は、{@link Interpreter#evaluate(String,java.util.Map)}で評価され、その戻り値が引数として使用される。スクリプト内では、変数"context"で、TestContextが参照できる。スクリプトの終了は、空行。</li>
      * </ul>
-     * ��������������ꍇ�́AargumentType�Aargument���J��Ԃ��B<br>
+     * 引数が複数ある場合は、argumentType、argumentを繰り返す。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return �T�[�r�X���Ăяo�����߂�l
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return サービスを呼び出した戻り値
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     /**
-     * ���[�J���̃T�[�r�X���Ăяo���āA�߂�l��Ԃ��B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * ローカルのサービスを呼び出して、戻り値を返す。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * serviceName
      * methodSigniture
      * argumentType
      * argument
      * </pre>
-     * serviceName�́A�Ăяo���Ώۂ̃T�[�r�X�����w�肷��B�T�[�r�X���̃t�H�[�}�b�g�́A{@link ServiceNameEditor}�̎d�l�ɏ�����B<br>
-     * methodSigniture�́A�Ăяo�����\�b�h�̃V�O�j�`�����w�肷��B�V�O�j�`���̃t�H�[�}�b�g�́A{@link MethodEditor}�̎d�l�ɏ�����B<br>
-     * argumentType�́A�Ăяo�����\�b�h�̈����̎w����@�ŁA"id"�A"value"�A"chain"�A"interpreter"�̂����ꂩ���w�肷��B<br>
-     * argument�́AargumentType�ɂ���āA�L�q���@���قȂ�B<br>
+     * serviceNameは、呼び出す対象のサービス名を指定する。サービス名のフォーマットは、{@link ServiceNameEditor}の仕様に準じる。<br>
+     * methodSignitureは、呼び出すメソッドのシグニチャを指定する。シグニチャのフォーマットは、{@link MethodEditor}の仕様に準じる。<br>
+     * argumentTypeは、呼び出すメソッドの引数の指定方法で、"id"、"value"、"chain"、"interpreter"のいずれかを指定する。<br>
+     * argumentは、argumentTypeによって、記述方法が異なる。<br>
      * <ul>
-     * <li>argumentType��"id"�̏ꍇ<br>TestAction�̖߂�l�������Ƃ��Ďg�p������̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA�����I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA�����I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B</li>
-     * <li>argumentType��"value"�̏ꍇ<br>�����𕶎���Ŏw�肷��B�������������݂���ꍇ�́A���s����B������null�ł��鎖���w�肷��ꍇ�́A"null"�Ǝw�肷��B</li>
-     * <li>argumentType��"chain"�̏ꍇ<br>{@link ChainTestAction$TestActionProcess TestActionProcess}�Ƃ��ČĂяo����A�O�A�N�V��������������󂯎�鎖���Ӗ�����B���̏ꍇargument�̍s�͎w�肷��K�v���Ȃ��B</li>
-     * <li>argumentType��"interpreter"�̏ꍇ<br>�����𐶐�����X�N���v�g��������L�q����B�X�N���v�g������́A{@link Interpreter#evaluate(String,java.util.Map)}�ŕ]������A���̖߂�l�������Ƃ��Ďg�p�����B�X�N���v�g���ł́A�ϐ�"context"�ŁATestContext���Q�Ƃł���B�X�N���v�g�̏I���́A��s�B</li>
+     * <li>argumentTypeが"id"の場合<br>TestActionの戻り値を引数として使用するもので、同一テストケース中に、このTestActionより前に、引数オブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、引数オブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。</li>
+     * <li>argumentTypeが"value"の場合<br>引数を文字列で指定する。引数が複数存在する場合は、改行する。引数がnullである事を指定する場合は、"null"と指定する。</li>
+     * <li>argumentTypeが"chain"の場合<br>{@link ChainTestAction$TestActionProcess TestActionProcess}として呼び出され、前アクションから引数を受け取る事を意味する。この場合argumentの行は指定する必要がない。</li>
+     * <li>argumentTypeが"interpreter"の場合<br>引数を生成するスクリプト文字列を記述する。スクリプト文字列は、{@link Interpreter#evaluate(String,java.util.Map)}で評価され、その戻り値が引数として使用される。スクリプト内では、変数"context"で、TestContextが参照できる。スクリプトの終了は、空行。</li>
      * </ul>
-     * ��������������ꍇ�́AargumentType�Aargument���J��Ԃ��B<br>
+     * 引数が複数ある場合は、argumentType、argumentを繰り返す。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param preResult 1�O�̃A�N�V�����̖߂�l
-     * @param resource ���\�[�X
-     * @return �T�[�r�X���Ăяo�����߂�l
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param preResult 1つ前のアクションの戻り値
+     * @param resource リソース
+     * @return サービスを呼び出した戻り値
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

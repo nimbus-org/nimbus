@@ -32,215 +32,215 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ƒT[ƒoî•ñB<p>
+ * ã‚µãƒ¼ãƒæƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ServerInfo extends Context{
     
     /**
-     * JRE‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚éƒL[B<p>
+     * JREã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JAVA_VERSION_KEY = "JAVA_VERSION";
     
     /**
-     * JRE‚Ìƒxƒ“ƒ_î•ñ‚ğæ“¾‚·‚éƒL[B<p>
+     * JREã®ãƒ™ãƒ³ãƒ€æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JAVA_VENDOR_KEY = "JAVA_VENDOR";
     
     /**
-     * JVM‚Ì–¼‘O‚ğæ“¾‚·‚éƒL[B<p>
+     * JVMã®åå‰ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JAVA_VM_NAME_KEY = "JAVA_VM_NAME";
     
     /**
-     * JVM‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚éƒL[B<p>
+     * JVMã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JAVA_VM_VERSION_KEY = "JAVA_VM_VERSION";
     
     /**
-     * JVM‚Ìƒxƒ“ƒ_î•ñ‚ğæ“¾‚·‚éƒL[B<p>
+     * JVMã®ãƒ™ãƒ³ãƒ€æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JAVA_VM_VENDOR_KEY = "JAVA_VM_VENDOR";
     
     /**
-     * OS‚Ì–¼‘O‚ğæ“¾‚·‚éƒL[B<p>
+     * OSã®åå‰ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String OS_NAME_KEY = "OS_NAME";
     
     /**
-     * OS‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚éƒL[B<p>
+     * OSã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String OS_VERSION_KEY = "OS_VERSION";
     
     /**
-     * OS‚ÌƒA[ƒLƒeƒNƒ`ƒƒî•ñ‚ğæ“¾‚·‚éƒL[B<p>
+     * OSã®ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String OS_ARCH_KEY = "OS_ARCH";
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚ÌŒ»İ‚Ì‘—e—Ê‚ğæ“¾‚·‚éƒL[B<p>
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç¾åœ¨ã®ç·å®¹é‡ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String TOTAL_MEMORY_KEY = "TOTAL_MEMORY";
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚ÌŒ»İ‚Ìg—p—Ê‚ğæ“¾‚·‚éƒL[B<p>
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç¾åœ¨ã®ä½¿ç”¨é‡ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String USED_MEMORY_KEY = "USED_MEMORY";
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚ÌŒ»İ‚Ì‹ó‚«—e—Ê‚ğæ“¾‚·‚éƒL[B<p>
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç¾åœ¨ã®ç©ºãå®¹é‡ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String FREE_MEMORY_KEY = "FREE_MEMORY";
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚ÌÅ‘å—e—Ê‚ğæ“¾‚·‚éƒL[B<p>
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®æœ€å¤§å®¹é‡ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String MAX_MEMORY_KEY = "MAX_MEMORY";
     
     /**
-     * g—p‰Â”\‚ÈCPU‚Ì”‚ğæ“¾‚·‚éƒL[B<p>
+     * ä½¿ç”¨å¯èƒ½ãªCPUã®æ•°ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String AVAILABLE_PROCESSORS_KEY
          = "AVAILABLE_PROCESSORS";
     
     /**
-     * ƒzƒXƒg–¼‚ğæ“¾‚·‚éƒL[B<p>
+     * ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String HOST_NAME_KEY = "HOST_NAME";
     
     /**
-     * ƒzƒXƒg‚ÌƒAƒhƒŒƒX‚ğæ“¾‚·‚éƒL[B<p>
+     * ãƒ›ã‚¹ãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String HOST_ADDRESS_KEY = "HOST_ADDRESS";
     
     /**
-     * Œ»İƒAƒNƒeƒBƒu‚ÈƒXƒŒƒbƒh”‚ğæ“¾‚·‚éƒL[B<p>
+     * ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String ACTIVE_THREAD_COUNT_KEY = "ACTIVE_THREAD_COUNT";
     
     /**
-     * Œ»İƒAƒNƒeƒBƒu‚ÈƒXƒŒƒbƒhƒOƒ‹[ƒv”‚ğæ“¾‚·‚éƒL[B<p>
+     * ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚¹ãƒ¬ãƒƒãƒ‰ã‚°ãƒ«ãƒ¼ãƒ—æ•°ã‚’å–å¾—ã™ã‚‹ã‚­ãƒ¼ã€‚<p>
      */
     public static final String ACTIVE_THREAD_GROUP_COUNT_KEY
          = "ACTIVE_THREAD_GROUP_COUNT";
     
     /**
-     * JRE‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚éB<p>
+     * JREã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JRE‚Ìƒo[ƒWƒ‡ƒ“î•ñ
+     * @return JREã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±
      */
     public String getJavaVersion();
     
     /**
-     * JRE‚Ìƒxƒ“ƒ_î•ñ‚ğæ“¾‚·‚éB<p>
+     * JREã®ãƒ™ãƒ³ãƒ€æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JRE‚Ìƒxƒ“ƒ_î•ñ
+     * @return JREã®ãƒ™ãƒ³ãƒ€æƒ…å ±
      */
     public String getJavaVendor();
     
     /**
-     * JVM‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * JVMã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JVM‚Ì–¼‘O
+     * @return JVMã®åå‰
      */
     public String getJavaVMName();
     
     /**
-     * JVM‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚éB<p>
+     * JVMã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JVM‚Ìƒo[ƒWƒ‡ƒ“î•ñ
+     * @return JVMã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±
      */
     public String getJavaVMVersion();
     
     /**
-     * JVM‚Ìƒxƒ“ƒ_î•ñ‚ğæ“¾‚·‚éB<p>
+     * JVMã®ãƒ™ãƒ³ãƒ€æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JVM‚Ìƒxƒ“ƒ_î•ñ
+     * @return JVMã®ãƒ™ãƒ³ãƒ€æƒ…å ±
      */
     public String getJavaVMVendor();
     
     /**
-     * OS‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * OSã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return OS‚Ì–¼‘O
+     * @return OSã®åå‰
      */
     public String getOSName();
     
     /**
-     * OS‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚éB<p>
+     * OSã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return OS‚Ìƒo[ƒWƒ‡ƒ“î•ñ
+     * @return OSã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±
      */
     public String getOSVersion();
     
     /**
-     * OS‚ÌƒA[ƒLƒeƒNƒ`ƒƒî•ñ‚ğæ“¾‚·‚éB<p>
+     * OSã®ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return OS‚ÌƒA[ƒLƒeƒNƒ`ƒƒî•ñ
+     * @return OSã®ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£æƒ…å ±
      */
     public String getOSArch();
     
     /**
-     * Œ»İ‚Ìƒq[ƒvƒƒ‚ƒŠ‚Ì‘—e—Ê[byte]‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç·å®¹é‡[byte]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‚Ìƒq[ƒvƒƒ‚ƒŠ‚Ì‘—e—Ê[byte]
+     * @return ç¾åœ¨ã®ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç·å®¹é‡[byte]
      */
     public long getTotalMemory();
     
     /**
-     * Œ»İ‚Ìƒq[ƒvƒƒ‚ƒŠ‚Ìg—p—Ê[byte]‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨é‡[byte]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‚Ìƒq[ƒvƒƒ‚ƒŠ‚Ìg—p—Ê[byte]
+     * @return ç¾åœ¨ã®ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨é‡[byte]
      */
     public long getUsedMemory();
     
     /**
-     * Œ»İ‚Ìƒq[ƒvƒƒ‚ƒŠ‚Ì‹ó‚«—e—Ê[byte]‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç©ºãå®¹é‡[byte]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‚Ìƒq[ƒvƒƒ‚ƒŠ‚Ì‹ó‚«—e—Ê[byte]
+     * @return ç¾åœ¨ã®ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ç©ºãå®¹é‡[byte]
      */
     public long getFreeMemory();
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚ÌÅ‘å—e—Ê[byte]‚ğæ“¾‚·‚éB<p>
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®æœ€å¤§å®¹é‡[byte]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒq[ƒvƒƒ‚ƒŠ‚ÌÅ‘å—e—Ê[byte]
+     * @return ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®æœ€å¤§å®¹é‡[byte]
      */
     public long getMaxMemory();
     
     /**
-     * g—p‰Â”\‚ÈCPU‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ä½¿ç”¨å¯èƒ½ãªCPUã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return g—p‰Â”\‚ÈCPU‚Ì”
+     * @return ä½¿ç”¨å¯èƒ½ãªCPUã®æ•°
      */
     public int getAvailableProcessors();
     
     /**
-     * ƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * ƒzƒXƒg‚ÌƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ›ã‚¹ãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg‚ÌƒAƒhƒŒƒX
+     * @return ãƒ›ã‚¹ãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getHostAddress();
     
     /**
-     * Œ»İƒAƒNƒeƒBƒu‚ÈƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İƒAƒNƒeƒBƒu‚ÈƒXƒŒƒbƒh”
+     * @return ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getActiveThreadCount();
     
     /**
-     * Œ»İƒAƒNƒeƒBƒu‚ÈƒXƒŒƒbƒhƒOƒ‹[ƒv”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚¹ãƒ¬ãƒƒãƒ‰ã‚°ãƒ«ãƒ¼ãƒ—æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İƒAƒNƒeƒBƒu‚ÈƒXƒŒƒbƒhƒOƒ‹[ƒv”
+     * @return ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚¹ãƒ¬ãƒƒãƒ‰ã‚°ãƒ«ãƒ¼ãƒ—æ•°
      */
     public int getActiveThreadGroupCount();
 }

@@ -39,32 +39,32 @@ import javax.servlet.http.*;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * HttpServletRequestƒIƒuƒWƒFƒNƒg‚ğMapƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * ‚±‚ÌƒGƒfƒBƒ^‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚½Map‚ÍA{@link ServletRequestMapJournalEditorService}‚Ì‚ÂMap\‘¢‚É‰Á‚¦‚ÄAˆÈ‰º‚Ì\‘¢‚ğ‚ÂB<br>
+ * HttpServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Mapãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * ã“ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«ã‚ˆã£ã¦ç·¨é›†ã•ã‚ŒãŸMapã¯ã€{@link ServletRequestMapJournalEditorService}ã®æŒã¤Mapæ§‹é€ ã«åŠ ãˆã¦ã€ä»¥ä¸‹ã®æ§‹é€ ã‚’æŒã¤ã€‚<br>
  * <table broder="1">
- *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="5">’l</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th colspan="4">“à—e</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>{@link #AUTH_TYPE_KEY}</td><td>java.lang.String</td><td colspan="4">”FØƒ^ƒCƒv–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REMOTE_USER_KEY}</td><td>java.lang.String</td><td colspan="4">”FØ‚³‚ê‚½ƒŠƒ‚[ƒg‚Ìƒ†[ƒU–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #USER_PRINCIPAL_KEY}</td><td>java.lang.String</td><td colspan="4">”FØ‚³‚ê‚½ƒ†[ƒU‚Ìå‘Ì</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REQUEST_URL_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒg‚³‚ê‚½URL</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REQUEST_URI_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒg‚³‚ê‚½URL‚ÌƒvƒƒgƒRƒ‹–¼‚©‚çƒNƒGƒŠ•¶š—ñ‚Ü‚Å‚Ì•”•ª</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SERVLET_PATH_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒg‚³‚ê‚½URL‚ÌƒT[ƒuƒŒƒbƒg‚ğŒÄ‚Ño‚·URL•”•ª</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SESSION_ID_KEY}</td><td>java.lang.String</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“ID</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SESSION_ID_FROM_COOKIE_KEY}</td><td>java.lang.Boolean</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“ID‚ªCookie‚©‚çæ“¾‚³‚ê‚½‚©‚ğ¦‚·ƒtƒ‰ƒO</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SESSION_ID_FROM_URL_KEY}</td><td>java.lang.Boolean</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“ID‚ªURL‚©‚çæ“¾‚³‚ê‚½‚©‚ğ¦‚·ƒtƒ‰ƒO</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #HTTP_METHOD_KEY}</td><td>java.lang.String</td><td colspan="4">HTTPƒƒ\ƒbƒh–¼</td></tr>
- *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #HTTP_HEADERS_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv</td></tr>
- *   <tr><td>java.lang.String</td><td>HTTPƒwƒbƒ_‚ÌƒL[–¼</td><td>java.util.Enumeration</td><td>HTTPƒwƒbƒ_‚Ì’l‚Ì—ñ‹“</td></tr>
- *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #COOKIES_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">Cookie‚Ìƒ}ƒbƒv</td></tr>
- *   <tr><td>java.lang.String</td><td>Cookie‚ÌƒL[–¼</td><td>java.lang.String</td><td>Cookie‚Ì’l</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CONTEXT_PATH_KEY}</td><td>java.lang.String</td><td colspan="4">ƒRƒ“ƒeƒLƒXƒg‚ğ¦‚·ƒŠƒNƒGƒXƒgURI‚Ìˆê•”</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #PATH_INFO_KEY}</td><td>java.lang.String</td><td colspan="4">ƒNƒ‰ƒCƒAƒ“ƒg‚ªURL‚ÉŠÖ˜A•t‚¯‚Ä‘—M‚µ‚½’Ç‰Á‚ÌƒpƒXî•ñ</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #PATH_TRAN_KEY}</td><td>java.lang.String</td><td colspan="4">ƒT[ƒuƒŒƒbƒg–¼‚ÌŒã‚ÅƒNƒGƒŠ•¶š—ñ‚Ì‘O‚É‚ ‚é’Ç‰ÁƒpƒXî•ñ‚ğÀÛ‚ÌƒpƒX‚É•ÏŠ·‚µ‚½‚à‚Ì</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #QUERY_STRING_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒgURL‚ÌƒpƒX‚ÌŒã‚ë‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚éƒNƒGƒŠ•¶š—ñ</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="5">å€¤</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th colspan="4">å†…å®¹</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #AUTH_TYPE_KEY}</td><td>java.lang.String</td><td colspan="4">èªè¨¼ã‚¿ã‚¤ãƒ—å</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REMOTE_USER_KEY}</td><td>java.lang.String</td><td colspan="4">èªè¨¼ã•ã‚ŒãŸãƒªãƒ¢ãƒ¼ãƒˆã®ãƒ¦ãƒ¼ã‚¶å</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #USER_PRINCIPAL_KEY}</td><td>java.lang.String</td><td colspan="4">èªè¨¼ã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ã®ä¸»ä½“</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REQUEST_URL_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã•ã‚ŒãŸURL</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REQUEST_URI_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã•ã‚ŒãŸURLã®ãƒ—ãƒ­ãƒˆã‚³ãƒ«åã‹ã‚‰ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã¾ã§ã®éƒ¨åˆ†</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SERVLET_PATH_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã‚’å‘¼ã³å‡ºã™URLéƒ¨åˆ†</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SESSION_ID_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³ID</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SESSION_ID_FROM_COOKIE_KEY}</td><td>java.lang.Boolean</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³IDãŒCookieã‹ã‚‰å–å¾—ã•ã‚ŒãŸã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SESSION_ID_FROM_URL_KEY}</td><td>java.lang.Boolean</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³IDãŒURLã‹ã‚‰å–å¾—ã•ã‚ŒãŸã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #HTTP_METHOD_KEY}</td><td>java.lang.String</td><td colspan="4">HTTPãƒ¡ã‚½ãƒƒãƒ‰å</td></tr>
+ *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #HTTP_HEADERS_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—</td></tr>
+ *   <tr><td>java.lang.String</td><td>HTTPãƒ˜ãƒƒãƒ€ã®ã‚­ãƒ¼å</td><td>java.util.Enumeration</td><td>HTTPãƒ˜ãƒƒãƒ€ã®å€¤ã®åˆ—æŒ™</td></tr>
+ *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #COOKIES_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">Cookieã®ãƒãƒƒãƒ—</td></tr>
+ *   <tr><td>java.lang.String</td><td>Cookieã®ã‚­ãƒ¼å</td><td>java.lang.String</td><td>Cookieã®å€¤</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CONTEXT_PATH_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç¤ºã™ãƒªã‚¯ã‚¨ã‚¹ãƒˆURIã®ä¸€éƒ¨</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #PATH_INFO_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒURLã«é–¢é€£ä»˜ã‘ã¦é€ä¿¡ã—ãŸè¿½åŠ ã®ãƒ‘ã‚¹æƒ…å ±</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #PATH_TRAN_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆåã®å¾Œã§ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã®å‰ã«ã‚ã‚‹è¿½åŠ ãƒ‘ã‚¹æƒ…å ±ã‚’å®Ÿéš›ã®ãƒ‘ã‚¹ã«å¤‰æ›ã—ãŸã‚‚ã®</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #QUERY_STRING_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆURLã®ãƒ‘ã‚¹ã®å¾Œã‚ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—</td></tr>
  * </table>
- * ’A‚µAo—Í‚µ‚È‚¢‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚à‚Ì‚âAŒ³‚ÌHttpServletRequest‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚©‚Á‚½î•ñAJ2EE‚Ìƒo[ƒWƒ‡ƒ“‚É‚æ‚Á‚Äæ“¾‚Å‚«‚È‚¢î•ñ‚ÍŠÜ‚Ü‚ê‚È‚¢B<br>
+ * ä½†ã—ã€å‡ºåŠ›ã—ãªã„ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã‚„ã€å…ƒã®HttpServletRequestã«å«ã¾ã‚Œã¦ã„ãªã‹ã£ãŸæƒ…å ±ã€J2EEã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ã‚ˆã£ã¦å–å¾—ã§ããªã„æƒ…å ±ã¯å«ã¾ã‚Œãªã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -309,12 +309,12 @@ public class HttpServletRequestMapJournalEditorService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½HttpServletRequestŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸHttpServletRequestå‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public Map toMap(EditorFinder finder, Object key, Object value){
         final ServletRequest request = (ServletRequest)value;

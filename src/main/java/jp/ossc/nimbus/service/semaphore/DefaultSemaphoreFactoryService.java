@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.lang.ServiceException;
 
 /**
- * ƒZƒ}ƒtƒHƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * ã‚»ãƒãƒ•ã‚©ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
@@ -44,16 +44,16 @@ public class DefaultSemaphoreFactoryService extends ServiceBase
     
     private static final long serialVersionUID = 3492118724467267733L;
     
-    /** ƒCƒ“ƒvƒŠƒƒ“ƒgƒNƒ‰ƒX–¼ */
+    /** ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒˆã‚¯ãƒ©ã‚¹å */
     protected String mImplClassName = MemorySemaphore.class.getName();
     
-    /** ƒCƒ“ƒvƒŠƒƒ“ƒgƒNƒ‰ƒX–¼ */
+    /** ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒˆã‚¯ãƒ©ã‚¹å */
     protected Class mClassObj = MemorySemaphore.class;
     
-    /** —áŠOƒƒbƒZ[ƒW */
+    /** ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
     static final String C_EXCPT = "SEMAPHOREFACTORY"; //$NON-NLS-1$
     
-    // SemaphoreFactory‚ÌJavaDoc
+    // SemaphoreFactoryã®JavaDoc
     public Semaphore createSemaphore() throws ServiceException {
         try{
             synchronized(mImplClassName){
@@ -68,7 +68,7 @@ public class DefaultSemaphoreFactoryService extends ServiceBase
         }
     }
     
-    // SemaphoreFactory‚ÌJavaDoc
+    // SemaphoreFactoryã®JavaDoc
     public Semaphore createSemaphore(int capa) throws ServiceException{
         try{
             Semaphore ret = null ;
@@ -86,7 +86,7 @@ public class DefaultSemaphoreFactoryService extends ServiceBase
         }
     }
     
-    // DefaultSemaphoreFactoryServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreFactoryServiceMBeanã®JavaDoc
     public void setImplementClassName(String className)
      throws ServiceException {
         synchronized(mImplClassName){
@@ -107,7 +107,7 @@ public class DefaultSemaphoreFactoryService extends ServiceBase
         }
     }
     
-    // DefaultSemaphoreFactoryServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreFactoryServiceMBeanã®JavaDoc
     public String getImplementClassName(){
         return mImplClassName;
     }

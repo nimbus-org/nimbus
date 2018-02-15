@@ -45,8 +45,8 @@ import jp.ossc.nimbus.service.websocket.AbstractMessageHandlerFactoryService;
 import jp.ossc.nimbus.service.websocket.SessionProperties;
 
 /**
- * WebSocket‚ğg‚Á‚½ƒƒbƒZ[ƒWƒnƒ“ƒhƒ‰ƒtƒ@ƒNƒgƒŠƒT[ƒrƒX’ŠÛƒNƒ‰ƒXB
- * MessageDispatcher‚É‘Î‚µ‚ÄA”zM‚µ‚Ä‚Ù‚µ‚¢ƒƒbƒZ[ƒW‚ÌƒL[‚ğ“o˜^‚·‚é‚±‚Æ‚ÅA‘ÎÛƒƒbƒZ[ƒW‚ğƒNƒ‰ƒCƒAƒ“ƒg‚É”zM‚·‚éB
+ * WebSocketã‚’ä½¿ã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ³ãƒ‰ãƒ©ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚
+ * MessageDispatcherã«å¯¾ã—ã¦ã€é…ä¿¡ã—ã¦ã»ã—ã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚­ãƒ¼ã‚’ç™»éŒ²ã™ã‚‹ã“ã¨ã§ã€å¯¾è±¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã«é…ä¿¡ã™ã‚‹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -104,9 +104,9 @@ public abstract class AbstractPublishMessageHandlerFactoryService extends Abstra
     protected abstract Service createServiceInstance() throws Exception;
 
     /**
-     * ƒƒbƒZ[ƒW‘—óM—pMessageHandlerƒT[ƒrƒXƒNƒ‰ƒXB
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚çóM‚µ‚½ƒƒbƒZ[ƒW‚É‰‚¶‚ÄAMessageDispatcher‚É‘Î‚µ‚Ä”zM“o˜^‚ğs‚¤B
-     * ‚Ü‚½AƒƒbƒZ[ƒW‚Ìƒv[ƒŠƒ“ƒO‹@”\‚É‚æ‚èAˆê’èŠúŠÔAƒƒbƒZ[ƒW‚ğƒv[ƒŠƒ“ƒO‚µ‚Ä‘—M‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€å—ä¿¡ç”¨MessageHandlerã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã€‚
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¿œã˜ã¦ã€MessageDispatcherã«å¯¾ã—ã¦é…ä¿¡ç™»éŒ²ã‚’è¡Œã†ã€‚
+     * ã¾ãŸã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ—ãƒ¼ãƒªãƒ³ã‚°æ©Ÿèƒ½ã«ã‚ˆã‚Šã€ä¸€å®šæœŸé–“ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ—ãƒ¼ãƒªãƒ³ã‚°ã—ã¦é€ä¿¡ã™ã‚‹ã€‚
      *
      * @author m-ishida
      *

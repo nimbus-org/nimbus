@@ -34,26 +34,26 @@ package jp.ossc.nimbus.service.semaphore;
 import jp.ossc.nimbus.lang.ServiceException;
 
 /**
- * ƒZƒ}ƒtƒHƒtƒ@ƒNƒgƒŠB<p>
+ * ã‚»ãƒãƒ•ã‚©ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface SemaphoreFactory {
     
     /**
-     * ƒZƒ}ƒtƒH‚ğ¶¬‚·‚éB<p>
+     * ã‚»ãƒãƒ•ã‚©ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @return ƒZƒ}ƒtƒH
-     * @throws ServiceException ƒZƒ}ƒtƒH‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return ã‚»ãƒãƒ•ã‚©
+     * @throws ServiceException ã‚»ãƒãƒ•ã‚©ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Semaphore createSemaphore() throws ServiceException;
     
     /**
-     * w’è‚µ‚½ƒŠƒ\[ƒX”‚ğ‚ÂƒZƒ}ƒtƒH‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒªã‚½ãƒ¼ã‚¹æ•°ã‚’æŒã¤ã‚»ãƒãƒ•ã‚©ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param capa ƒZƒ}ƒtƒH‚ÌƒŠƒ\[ƒX‘”
-     * @return ƒZƒ}ƒtƒH
-     * @throws ServiceException ƒZƒ}ƒtƒH‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param capa ã‚»ãƒãƒ•ã‚©ã®ãƒªã‚½ãƒ¼ã‚¹ç·æ•°
+     * @return ã‚»ãƒãƒ•ã‚©
+     * @throws ServiceException ã‚»ãƒãƒ•ã‚©ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Semaphore createSemaphore(int capa) throws ServiceException;
 }

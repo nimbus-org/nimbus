@@ -1,19 +1,19 @@
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.recset;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 import junit.framework.TestCase;
 
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  * @see 
  */
 public class RecordSetTest extends TestCase {
-	//ƒƒbƒZ[ƒWƒtƒ@ƒCƒ‹ƒpƒX‚ğ‚PŒÂw’è‚µ‚½ê‡
+	//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’ï¼‘å€‹æŒ‡å®šã—ãŸå ´åˆ
 	public void testInsertRecord() throws Exception{
 		TestRecSet tmp = new TestRecSet() ;
 		RowData rd = tmp.createNewRecord() ;

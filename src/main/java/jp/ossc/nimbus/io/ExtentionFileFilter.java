@@ -34,7 +34,7 @@ package jp.ossc.nimbus.io;
 import java.io.*;
 
 /**
- * Šg’£qw’è‚Ìƒtƒ@ƒCƒ‹ƒtƒBƒ‹ƒ^B<p>
+ * æ‹¡å¼µå­æŒ‡å®šã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚£ãƒ«ã‚¿ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.ExtentionFileFilter;
@@ -50,39 +50,39 @@ public class ExtentionFileFilter implements FilenameFilter, Serializable{
     private static final long serialVersionUID = 5687776723127309667L;
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌŠg’£qB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã€‚<p>
      */
     protected String extention;
     
     /**
-     * Šg’£q‚Ì‘å•¶šE¬•¶š‚ğ‹æ•Ê‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅA‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢B<br>
+     * æ‹¡å¼µå­ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„ã€‚<br>
      */
     protected boolean isIgnoreCase = true;
     
     private String upperExtention;
     
     /**
-     * Šg’£q‚ğw’è‚µ‚È‚¢ƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æ‹¡å¼µå­ã‚’æŒ‡å®šã—ãªã„ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ExtentionFileFilter(){
         this(null, true);
     }
     
     /**
-     * w’è‚µ‚½Šg’£q‚Ìƒtƒ@ƒCƒ‹ƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ‹¡å¼µå­ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param ext Šg’£q•¶š—ñ
+     * @param ext æ‹¡å¼µå­æ–‡å­—åˆ—
      */
     public ExtentionFileFilter(String ext){
         this(ext, true);
     }
     
     /**
-     * w’è‚µ‚½Šg’£q‚Ìƒtƒ@ƒCƒ‹ƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ‹¡å¼µå­ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param ext Šg’£q•¶š—ñ
-     * @param isIgnoreCase ‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢ê‡‚Ítrue
+     * @param ext æ‹¡å¼µå­æ–‡å­—åˆ—
+     * @param isIgnoreCase å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„å ´åˆã¯true
      */
     public ExtentionFileFilter(String ext, boolean isIgnoreCase){
         setExtention(ext);
@@ -90,10 +90,10 @@ public class ExtentionFileFilter implements FilenameFilter, Serializable{
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğİ’è‚·‚éB<p>
-     * w’è‚³‚ê‚½Šg’£q‚ªA"."‚©‚çn‚Ü‚ç‚È‚¢ê‡‚ÍA©“®“I‚É•t‰Á‚·‚éB‚Ü‚½Anull‚â‹ó•¶š‚ğw’è‚µ‚½ê‡‚ÍAƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚µ‚È‚¢B<br>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ‹¡å¼µå­ãŒã€"."ã‹ã‚‰å§‹ã¾ã‚‰ãªã„å ´åˆã¯ã€è‡ªå‹•çš„ã«ä»˜åŠ ã™ã‚‹ã€‚ã¾ãŸã€nullã‚„ç©ºæ–‡å­—ã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã—ãªã„ã€‚<br>
      * 
-     * @param ext ƒtƒ@ƒCƒ‹‚ÌŠg’£q
+     * @param ext ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­
      */
     public void setExtention(String ext){
         if(ext == null || ext.length() == 0){
@@ -108,39 +108,39 @@ public class ExtentionFileFilter implements FilenameFilter, Serializable{
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒ@ƒCƒ‹‚ÌŠg’£q
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­
      */
     public String getExtention(){
         return extention;
     }
     
     /**
-     * Šg’£q‚Ì‘å•¶šE¬•¶š‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * æ‹¡å¼µå­ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param isIgnoreCase ‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢ê‡‚Ítrue
+     * @param isIgnoreCase å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„å ´åˆã¯true
      */
     public void setIgnoreCase(boolean isIgnoreCase){
         this.isIgnoreCase = isIgnoreCase;
     }
     
     /**
-     * Šg’£q‚Ì‘å•¶šE¬•¶š‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ‹¡å¼µå­ã®å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘å•¶šE¬•¶š‚ğ‹æ•Ê‚µ‚È‚¢
+     * @return trueã®å ´åˆã€å¤§æ–‡å­—ãƒ»å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„
      */
     public boolean isIgnoreCase(){
         return isIgnoreCase;
     }
     
     /**
-     * w’è‚³‚ê‚½Šg’£q‚Ìƒtƒ@ƒCƒ‹‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ‹¡å¼µå­ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @param dir ƒfƒBƒŒƒNƒgƒŠ
-     * @param fileName ƒtƒ@ƒCƒ‹–¼
-     * @return w’è‚³‚ê‚½Šg’£q‚Ìƒtƒ@ƒCƒ‹‚Ìê‡true
+     * @param dir ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param fileName ãƒ•ã‚¡ã‚¤ãƒ«å
+     * @return æŒ‡å®šã•ã‚ŒãŸæ‹¡å¼µå­ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´åˆtrue
      */
     public boolean accept(File dir, String fileName){
         if(extention == null){

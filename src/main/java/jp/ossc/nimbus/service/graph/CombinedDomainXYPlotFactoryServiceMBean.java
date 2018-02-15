@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.graph;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link CombinedDomainXYPlotFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link CombinedDomainXYPlotFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface CombinedDomainXYPlotFactoryServiceMBean
     extends XYPlotFactoryServiceMBean {
     /**
-     * ƒTƒuƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param serviceNames ƒTƒuƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param serviceNames ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setSubPlotFactoryServiceNames(ServiceName[] serviceNames);
 
     /**
-     * ƒTƒuƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒTƒuƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getSubPlotFactoryServiceNames();
 

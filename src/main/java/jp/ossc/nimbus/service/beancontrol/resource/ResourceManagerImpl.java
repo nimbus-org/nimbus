@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol.resource;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.core.ServiceBase;
@@ -39,9 +39,9 @@ import jp.ossc.nimbus.service.resource.*;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 //
 /**
- * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒÀ‘•ƒNƒ‰ƒX 
+ * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£å®Ÿè£…ã‚¯ãƒ©ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/29 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/29 -ã€€H.Nakano
  */
 public class ResourceManagerImpl
 	extends ServiceBase
@@ -49,19 +49,19 @@ public class ResourceManagerImpl
 	
     private static final long serialVersionUID = 1692609765851402548L;
     
-    /** ƒŠƒ\[ƒXŠÇ—Hash */
+    /** ãƒªã‚½ãƒ¼ã‚¹ç®¡ç†Hash */
 	private HashMap mResourceMap= null ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public  ResourceManagerImpl(){
 		mResourceMap = new HashMap() ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManager#terminateResourceManager()
 	 */
 	public void terminateResourceManager() {
-		//ƒRƒ“ƒgƒ[ƒ‹‚ª•K—v‚©”»’è‚·‚é
+		//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒå¿…è¦ã‹åˆ¤å®šã™ã‚‹
 		HashMap map = mResourceMap ;
 		boolean bControl = false ;
 		for(Iterator iterator = map.keySet().iterator();iterator.hasNext();){
@@ -82,7 +82,7 @@ public class ResourceManagerImpl
 		map.clear() ;
 		mResourceMap=null ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beanflow.resource.ResourceManager#addResource(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public void addResource(
@@ -109,20 +109,20 @@ public class ResourceManagerImpl
 		rec.setTransactionClose(isTranClose);
 		map.put(key,rec) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManager#commitResource(java.lang.String, boolean)
 	 */
 	public void commitResource(String key, boolean isClose) {
-		//ƒRƒ“ƒgƒ[ƒ‹‚ª•K—v‚©”»’è‚·‚é
+		//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒå¿…è¦ã‹åˆ¤å®šã™ã‚‹
 		boolean bControl =  false ;
 		if(bControl==false && isClose== false){
 			return ;
 		}
-		//Hash‚©‚çƒŠƒ\[ƒX‚ğæ‚èo‚·
+		//Hashã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’å–ã‚Šå‡ºã™
 		HashMap map = (HashMap)this.mResourceMap ;
 		ResourceRecord rec = (ResourceRecord)map.get(key) ;
 		if(rec != null){
-			//g—p‚³‚ê‚Ä‚¢‚é‚©
+			//ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã‹
 			if(rec.isGet()){
 				bControl = rec.isTransactionControl() ;
 				if(bControl){
@@ -143,20 +143,20 @@ public class ResourceManagerImpl
 			}
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManager#rollBackResource(java.lang.String, boolean)
 	 */
 	public void rollBackResource(String key, boolean isClose) {
-		//ƒRƒ“ƒgƒ[ƒ‹‚ª•K—v‚©”»’è‚·‚é
+		//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒå¿…è¦ã‹åˆ¤å®šã™ã‚‹
 		boolean bControl =  false ;
 		if(bControl==false && isClose== false){
 			return ;
 		}
-		//Hash‚©‚çƒŠƒ\[ƒX‚ğæ‚èo‚·
+		//Hashã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’å–ã‚Šå‡ºã™
 		HashMap map = this.mResourceMap ;
 		ResourceRecord rec = (ResourceRecord)map.get(key) ;
 		if(rec != null){
-			//g—p‚³‚ê‚Ä‚¢‚é‚©
+			//ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã‹
 			if(rec.isGet()){
 				bControl = rec.isTransactionControl() ;
 				if(bControl){
@@ -178,11 +178,11 @@ public class ResourceManagerImpl
 			}
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManager#commitAllResources()
 	 */
 	public void commitAllResources() {
-		//ƒRƒ“ƒgƒ[ƒ‹‚ª•K—v‚©”»’è‚·‚é
+		//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒå¿…è¦ã‹åˆ¤å®šã™ã‚‹
 		HashMap map = this.mResourceMap ;
 		boolean bControl = false ;
 		boolean bClose = false;
@@ -211,11 +211,11 @@ public class ResourceManagerImpl
 		}
 		map.clear();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManager#rollbbackAllResources()
 	 */
 	public void rollbbackAllResources() {
-		//ƒRƒ“ƒgƒ[ƒ‹‚ª•K—v‚©”»’è‚·‚é
+		//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒå¿…è¦ã‹åˆ¤å®šã™ã‚‹
 		HashMap map = this.mResourceMap ;
 		boolean bControl =  false ;
 		boolean bClose = false;
@@ -244,7 +244,7 @@ public class ResourceManagerImpl
 		}
 		map.clear();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.beancontrol.resource.ResourceManager#getResource(java.lang.String)
 	 */
 	public Object getResource(String key) {
@@ -259,9 +259,9 @@ public class ResourceManagerImpl
 	}
 	//
 	/**
-	 * ƒŠƒ\[ƒXŠÇ—ƒŒƒR[ƒh 
+	 * ãƒªã‚½ãƒ¼ã‚¹ç®¡ç†ãƒ¬ã‚³ãƒ¼ãƒ‰ 
 	 * @author   nakano
-	 * @version  1.00 ì¬: 2003/11/29 -@H.Nakano
+	 * @version  1.00 ä½œæˆ: 2003/11/29 -ã€€H.Nakano
 	 */
 	private class ResourceRecord {
 		private TransactionResource mTransanctionResource = null;
@@ -271,21 +271,21 @@ public class ResourceManagerImpl
 		private String mResourceKey= null ;
 		private ServiceName mServiceName = null ;
 		/**
-		 * ƒT[ƒrƒX–¼‚ğİ’è‚·‚é
+		 * ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹
 		 * @param name
 		 */
 		public void setServiceName(ServiceName name){
 			mServiceName = name ;
 		}
 		/**
-		 * ƒŠƒ\[ƒXƒL[‚ğİ’è‚·‚é
+		 * ãƒªã‚½ãƒ¼ã‚¹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹
 		 * @param key
 		 */
 		public void setResourceKey(String key) {
 			mResourceKey = key ;
 		}
 		/**
-		 * ƒŠƒ\[ƒX‚ğæ“¾‚³‚ê‚½‚©
+		 * ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã•ã‚ŒãŸã‹
 		 * @return
 		 */
 		public boolean isGet() {
@@ -329,7 +329,7 @@ public class ResourceManagerImpl
 		}
 
 		/**
-		 * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+		 * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
 		 */
 		public boolean isTransactionControl() {
 			return mIsTransactionControl;
@@ -343,13 +343,13 @@ public class ResourceManagerImpl
 		}
 
 		/**
-		 * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒRƒ“ƒgƒ[ƒ‹‚·‚é‚©”Û‚©‚ğİ’è‚·‚éB
+		 * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã™ã‚‹ã‹å¦ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
 		 */
 		public void setTransactionControl(boolean b) {
 			mIsTransactionControl = b;
 		}
 		/**
-		 * ƒRƒlƒNƒVƒ‡ƒ“‚ğƒNƒ[ƒY‚·‚é‚©”Û‚©‚ğİ’è‚·‚éB
+		 * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹å¦ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
 		 */
 		public void setTransactionClose(boolean b){
 			mIsTransactionClose = b;

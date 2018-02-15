@@ -29,14 +29,14 @@ public class StatusDialogView extends JDialog {
         Container contentPane = getContentPane();
         contentPane.add(scrollpane1, BorderLayout.CENTER);
         
-        // StatusƒIƒuƒWƒFƒNƒg‚ğ•\¦
+        // Statusã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
         StringBuilder stringBuilder = new StringBuilder();
         
         String lineSp = System.getProperty("line.separator");
         
         if(statusObject != null){
-            stringBuilder.append("Às’†ActionF" + statusObject.getCurrentActionId() + lineSp);
-            stringBuilder.append("‘SAction‚ÌŒ‹‰ÊF" + lineSp);
+            stringBuilder.append("å®Ÿè¡Œä¸­Actionï¼š" + statusObject.getCurrentActionId() + lineSp);
+            stringBuilder.append("å…¨Actionã®çµæœï¼š" + lineSp);
             
             Map resultMap = statusObject.getActionResultMap();
             Set keys = resultMap.keySet();
@@ -53,7 +53,7 @@ public class StatusDialogView extends JDialog {
             Throwable th = statusObject.getThrowable();
             
             if(th != null){
-                stringBuilder.append("—áŠOF ").append(th).append(lineSp);
+                stringBuilder.append("ä¾‹å¤–ï¼š ").append(th).append(lineSp);
                 final StackTraceElement[] elemss = th.getStackTrace();
                 if(elemss != null){
                     for(int i = 0, max = elemss.length; i < max; i++){
@@ -79,7 +79,7 @@ public class StatusDialogView extends JDialog {
                     }
                 }
             }else{
-                stringBuilder.append("—áŠOF‚È‚µ");
+                stringBuilder.append("ä¾‹å¤–ï¼šãªã—");
             }
             area1.setText(stringBuilder.toString());
         }
@@ -104,7 +104,7 @@ public class StatusDialogView extends JDialog {
         Container contentPane = getContentPane();
         contentPane.add(scrollpane1, BorderLayout.CENTER);
         
-        // StatusƒIƒuƒWƒFƒNƒg‚ğ•\¦
+        // Statusã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
         StringBuilder stringBuilder = new StringBuilder();
         
         String lineSp = System.getProperty("line.separator");

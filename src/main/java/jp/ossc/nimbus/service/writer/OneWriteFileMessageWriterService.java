@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * “®“I‚Éƒtƒ@ƒCƒ‹–¼‚ğŒˆ‚ß‚Äƒtƒ@ƒCƒ‹‚Éo—Í‚·‚é{@link MessageWriter}ƒT[ƒrƒXB<p>
+ * å‹•çš„ã«ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ±ºã‚ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -71,119 +71,119 @@ public class OneWriteFileMessageWriterService extends ServiceBase
 
     private String header;
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setEncoding(String encoding){
         this.encoding = encoding;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public String getEncoding(){
         return encoding;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setFile(String file){
         this.file = file;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public String getFile(){
         return file;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setAppend(boolean isAppend){
         this.isAppend = isAppend;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public boolean isAppend(){
         return isAppend;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setEveryTimeCloseStream(boolean isClose){
         isEveryTimeCloseStream = isClose;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public boolean isEveryTimeCloseStream(){
         return isEveryTimeCloseStream;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setFilePrefix(String prefix){
         filePrefix = prefix;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public String getFilePrefix(){
         return filePrefix;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setFilePostfix(String postfix){
         filePostfix = postfix;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public String getFilePostfix(){
         return filePostfix;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setOutputKey(boolean isOutput){
         isOutputKey = isOutput;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public boolean isOutputKey(){
         return isOutputKey;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setSeparator(String separator){
         this.separator = separator;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public String getSeparator(){
         return separator;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public void setHeader(String header){
         this.header = header;
     }
 
-    // OneWriteFileMessageWriterServiceMBean‚ÌJavaDoc
+    // OneWriteFileMessageWriterServiceMBeanã®JavaDoc
     public String getHeader(){
         return header;
     }
 
     /**
-     * ƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setContext(Context context) {
         this.context = context;
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(encoding != null){
@@ -223,9 +223,9 @@ public class OneWriteFileMessageWriterService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(fos != null){
@@ -235,12 +235,12 @@ public class OneWriteFileMessageWriterService extends ServiceBase
     }
 
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğƒtƒ@ƒCƒ‹‚Éo—Í‚·‚éB<p>
-     * {@link #isEveryTimeCloseStream()}‚ªtrue‚Ìê‡‚ÍA‚±‚Ìƒƒ\ƒbƒh‚ªŒÄ‚Ño‚³‚ê‚é“x‚ÉAo—ÍƒXƒgƒŠ[ƒ€‚ğŠJ•Â‚·‚éB‚Ü‚½Aƒtƒ@ƒCƒ‹–¼‚É“®“I‚È—v‘f‚ğŠÜ‚Şê‡‚ÍAƒtƒ@ƒCƒ‹–¼‚à‚»‚Ì“s“xŒˆ’è‚·‚éB<br>
-     * {@link #isEveryTimeCloseStream()}‚ªfalse‚Ìê‡‚ÍAƒT[ƒrƒX‚ÌŠJn‚ÉŒˆ‚ß‚ç‚ê‚½ƒtƒ@ƒCƒ‹–¼‚Ìo—ÍƒXƒgƒŠ[ƒ€‚ğŠJ‚¢‚½‚Ü‚ÜAo—Í‚µ‚Ä‚¢‚­BƒT[ƒrƒX‚Ì’â~‚ÉAo—ÍƒXƒgƒŠ[ƒ€‚ğ•Â‚¶‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * {@link #isEveryTimeCloseStream()}ãŒtrueã®å ´åˆã¯ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹åº¦ã«ã€å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é–‹é–‰ã™ã‚‹ã€‚ã¾ãŸã€ãƒ•ã‚¡ã‚¤ãƒ«åã«å‹•çš„ãªè¦ç´ ã‚’å«ã‚€å ´åˆã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«åã‚‚ãã®éƒ½åº¦æ±ºå®šã™ã‚‹ã€‚<br>
+     * {@link #isEveryTimeCloseStream()}ãŒfalseã®å ´åˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«æ±ºã‚ã‚‰ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«åã®å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é–‹ã„ãŸã¾ã¾ã€å‡ºåŠ›ã—ã¦ã„ãã€‚ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é–‰ã˜ã‚‹ã€‚<br>
      *
-     * @param rec o—Í‚·‚éƒŒƒR[ƒh
-     * @exception MessageWriteException o—Í‚É¸”s‚µ‚½ê‡
+     * @param rec å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception MessageWriteException å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void write(WritableRecord rec) throws MessageWriteException{
         FileOutputStream tmpFos = null;

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ioccall.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultAsynchCallInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultAsynchCallInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author Y.Tokuda
  */
@@ -45,94 +45,94 @@ public interface DefaultAsynchCallInterceptorServiceMBean
     public static final String DELIVERY_MODE_NON_PERSISTENT = "NON_PERSISTENT";
     
     /**
-     * QueueSession‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller#syncParallelFacadeCall}ƒƒ\ƒbƒh‚ğg—p‚·‚éê‡‚ÍAİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * QueueSessionã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller#syncParallelFacadeCall}ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param name ResourceFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueSessionFactoryServiceName(ServiceName name);
     
     /**
-     * QueueSession‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * QueueSessionã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ResourceFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueSessionFactoryServiceName();
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚Ì”zMƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param mode ”zMƒ‚[ƒh
+     * @param mode é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      * @see #DELIVERY_MODE_PERSISTENT
      * @see #DELIVERY_MODE_NON_PERSISTENT
      */
     public void setDeliveryMode(String mode);
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚Ì”zMƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”zMƒ‚[ƒh
+     * @return é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      */
     public String getDeliveryMode();
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒW—Dæ‡ˆÊ‚ğİ’è‚·‚éB<p>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param priority ƒƒbƒZ[ƒW—Dæ‡ˆÊ
+     * @param priority ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½
      */
     public void setPriority(int priority);
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒW—Dæ‡ˆÊ‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒW—Dæ‡ˆÊ
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½
      */
     public int getPriority();
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒWõ–½‚ğİ’è‚·‚éB<p>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param millis ƒƒbƒZ[ƒWõ–½[ms]
+     * @param millis ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½[ms]
      */
     public void setTimeToLive(long millis);
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒWõ–½‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒWõ–½[ms]
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½[ms]
      */
     public long getTimeToLive();
     
     /**
-     * MDB‚Ö‚ÌÄ‘—ƒƒbƒZ[ƒW‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB
+     * MDBã¸ã®å†é€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚
      *
-     * @param ignore –³‹‚·‚éê‡true
+     * @param ignore ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreRedelivery(boolean ignore);
     
     /**
-     * MDB‚Ö‚ÌÄ‘—ƒƒbƒZ[ƒW‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * MDBã¸ã®å†é€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreRedelivery();
     
     /**
-     * Ä‘—ƒƒbƒZ[ƒW‚ğÀs‚·‚é‘O‚Éˆê’èŠÔ‘Ò‹@‚·‚é‘Ò‹@ŠÔ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å‘Ò‹@‚µ‚È‚¢B<br>
+     * å†é€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å®Ÿè¡Œã™ã‚‹å‰ã«ä¸€å®šæ™‚é–“å¾…æ©Ÿã™ã‚‹å¾…æ©Ÿæ™‚é–“ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§å¾…æ©Ÿã—ãªã„ã€‚<br>
      *
-     * @param millis ‘Ò‹@ŠÔ[ms]
+     * @param millis å¾…æ©Ÿæ™‚é–“[ms]
      */
     public void setRedeliveryInterval(long millis);
     
     /**
-     * Ä‘—ƒƒbƒZ[ƒW‚ğÀs‚·‚é‘O‚Éˆê’èŠÔ‘Ò‹@‚·‚é‘Ò‹@ŠÔ‚ğæ“¾‚·‚éB<p>
+     * å†é€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å®Ÿè¡Œã™ã‚‹å‰ã«ä¸€å®šæ™‚é–“å¾…æ©Ÿã™ã‚‹å¾…æ©Ÿæ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘Ò‹@ŠÔ[ms]
+     * @return å¾…æ©Ÿæ™‚é–“[ms]
      */
     public long getRedeliveryInterval();
 }

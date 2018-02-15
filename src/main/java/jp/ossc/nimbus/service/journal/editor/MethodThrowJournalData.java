@@ -32,9 +32,9 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * ƒWƒƒ[ƒiƒ‹—pƒƒ\ƒbƒh—áŠOî•ñB<p>
- * ƒƒ\ƒbƒh—áŠOî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Éæ‚è‚½‚¢‚ÉA‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚ÄAƒƒ\ƒbƒh‚Åthrow‚³‚ê‚½—áŠOî•ñ‚ğŠi”[‚µA{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String key, Object value)}‚Ìvalue‚É“n‚·B<br>
- * MethodThrowJournalData‚ÌƒGƒfƒBƒ^‚ÍA{@link MethodThrowJournalEditorService}‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç”¨ãƒ¡ã‚½ãƒƒãƒ‰ä¾‹å¤–æƒ…å ±ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ä¾‹å¤–æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å–ã‚ŠãŸã„æ™‚ã«ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰ã§throwã•ã‚ŒãŸä¾‹å¤–æƒ…å ±ã‚’æ ¼ç´ã—ã€{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String key, Object value)}ã®valueã«æ¸¡ã™ã€‚<br>
+ * MethodThrowJournalDataã®ã‚¨ãƒ‡ã‚£ã‚¿ã¯ã€{@link MethodThrowJournalEditorService}ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see MethodThrowJournalEditorService

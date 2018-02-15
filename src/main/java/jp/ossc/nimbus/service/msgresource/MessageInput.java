@@ -34,24 +34,24 @@ package jp.ossc.nimbus.service.msgresource;
 import java.util.*;
 
 /**
- *	ƒƒbƒZ[ƒWƒCƒ“ƒvƒbƒg@ƒCƒ“ƒ^[ƒtƒFƒCƒX
+ *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ãƒ—ãƒƒãƒˆã€€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/28| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/28ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface MessageInput {
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ÌƒvƒƒpƒeƒB•”ƒf[ƒ^æ“¾ƒƒ\ƒbƒh
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @return
 	 */
 	public Properties getMessageHeadProp();
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ÌƒyƒCƒ[ƒh•”ƒf[ƒ^æ“¾ƒƒ\ƒbƒh
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @return
 	 */
 	public String getInputString();
 	/**
-	 * ƒJ[ƒ\ƒ‹s‚ğ‚·‚·‚ß‚éƒƒ\ƒbƒh
+	 * ã‚«ãƒ¼ã‚½ãƒ«è¡Œã‚’ã™ã™ã‚ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	 *
 	 */
 	public void nextLine();

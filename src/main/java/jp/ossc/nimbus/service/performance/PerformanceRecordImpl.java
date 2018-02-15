@@ -35,31 +35,31 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 //
 /**
- *	ŠeƒpƒtƒH[ƒ}ƒ“ƒX‚Ì“o˜^Ao—Í‚ğs‚¤B
+ *	å„ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã®ç™»éŒ²ã€å‡ºåŠ›ã‚’è¡Œã†ã€‚
  *	@author 	NRI Hirotaka.Nakano
- *				XVF
+ *				æ›´æ–°ï¼š
  */
 public class PerformanceRecordImpl implements PerformanceRecord,
 												PerformanceRecordOperator {
-	//##	ƒƒ“ƒo[•Ï”éŒ¾	##
-	/** ƒŠƒ\[ƒX‚h‚c					*/	protected String	mResourceId;
-	/** ÅIÀsŠÔ					*/	protected Date	mLastProcTime;
-	/** ƒxƒXƒgˆ—					*/	protected Date	mBestTime;
-	/** ƒ[ƒXƒgˆ—					*/	protected Date	mWorstTime;
-	/** Às‰ñ”						*/	protected long	mProcTimes;
-	/** ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX				*/	protected long	mBestPerformance;
-	/** ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX			*/	protected long	mWorstPerformance;
-	/** ƒAƒxƒŒ[ƒWƒpƒtƒH[ƒ}ƒ“ƒX			*/	protected long 	mAveragePerformance;
-	/** ƒƒO”z—ñ						*/	protected String[] logMsg = new String[2];
-	/** ‘ˆ—ŠÔ 						*/	protected long mTotalTime;
+	//##	ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€	##
+	/** ãƒªã‚½ãƒ¼ã‚¹ï¼©ï¼¤					*/	protected String	mResourceId;
+	/** æœ€çµ‚å®Ÿè¡Œæ™‚é–“					*/	protected Date	mLastProcTime;
+	/** ãƒ™ã‚¹ãƒˆå‡¦ç†æ™‚åˆ»					*/	protected Date	mBestTime;
+	/** ãƒ¯ãƒ¼ã‚¹ãƒˆå‡¦ç†æ™‚åˆ»					*/	protected Date	mWorstTime;
+	/** å®Ÿè¡Œå›æ•°						*/	protected long	mProcTimes;
+	/** ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹				*/	protected long	mBestPerformance;
+	/** ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹			*/	protected long	mWorstPerformance;
+	/** ã‚¢ãƒ™ãƒ¬ãƒ¼ã‚¸ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹			*/	protected long 	mAveragePerformance;
+	/** ãƒ­ã‚°é…åˆ—						*/	protected String[] logMsg = new String[2];
+	/** ç·å‡¦ç†æ™‚é–“ 						*/	protected long mTotalTime;
 	//
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 * Šeƒƒ“ƒo[•Ï”‚ğ‰Šú‰»‚·‚éB<BR>
-	 * ƒŠƒ\[ƒXƒL[‚ğˆø”‚©‚çİ’è‚·‚éB
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 * å„ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<BR>
+	 * ãƒªã‚½ãƒ¼ã‚¹ã‚­ãƒ¼ã‚’å¼•æ•°ã‹ã‚‰è¨­å®šã™ã‚‹ã€‚
 	 */
 	public PerformanceRecordImpl () {
-		/** Šeƒƒ“ƒo[•Ï”‚Ì‰Šú‰»‚ğs‚¤	*/
+		/** å„ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†	*/
 		this.mLastProcTime = null;
 		this.mProcTimes = 0;
 		this.mBestPerformance = 0;
@@ -72,12 +72,12 @@ public class PerformanceRecordImpl implements PerformanceRecord,
 
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXƒAƒbƒvƒƒ\ƒbƒh<BR>
-	 *	ƒR[ƒ‹‰ñ”‚ğ‚t‚o‚·‚éB<BR>
-	 *	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚Æ‚Ì”äŠrA“o˜^ˆ—‚ğs‚¤B<BR>
-	 *	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚Æ‚Ì”äŠrA“o˜^ˆ—‚ğs‚¤B<BR>
-	 *	ÅIƒR[ƒ‹“ú‚ğ“o˜^‚·‚éB
-	 * @param msec ƒpƒtƒH[ƒ}ƒ“ƒXƒ^ƒCƒ€
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚¢ãƒƒãƒ—ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	ã‚³ãƒ¼ãƒ«å›æ•°ã‚’ï¼µï¼°ã™ã‚‹ã€‚<BR>
+	 *	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã¨ã®æ¯”è¼ƒã€ç™»éŒ²å‡¦ç†ã‚’è¡Œã†ã€‚<BR>
+	 *	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã¨ã®æ¯”è¼ƒã€ç™»éŒ²å‡¦ç†ã‚’è¡Œã†ã€‚<BR>
+	 *	æœ€çµ‚ã‚³ãƒ¼ãƒ«æ—¥æ™‚ã‚’ç™»éŒ²ã™ã‚‹ã€‚
+	 * @param msec ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚¿ã‚¤ãƒ 
 	 */
 	public void entry (long msec){
 		this.mLastProcTime = new Date();
@@ -103,8 +103,8 @@ public class PerformanceRecordImpl implements PerformanceRecord,
 	}
 	//
 	/**
-	 *	•¶š—ñ‚ğì¬‚·‚éB
-	 * @return String ƒpƒtƒH[ƒ}ƒ“ƒXî•ñ
+	 *	æ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹ã€‚
+	 * @return String ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±
 	 */
 	public String toString() {
 		StringBuilder retStr = new StringBuilder();
@@ -122,72 +122,72 @@ public class PerformanceRecordImpl implements PerformanceRecord,
 	}
 	//
 	/**
-	 *	ƒŠƒ\[ƒX‚h‚c‚ğo—Í‚·‚éB
-	 * @param id String ƒŠƒ\[ƒXID
+	 *	ãƒªã‚½ãƒ¼ã‚¹ï¼©ï¼¤ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @param id String ãƒªã‚½ãƒ¼ã‚¹ID
 	 */
 	public void setResourceId(String id) {
 		this.mResourceId = id ;
 	}
 	//
 	/**
-	 *	ƒŠƒ\[ƒX‚h‚c‚ğo—Í‚·‚éB
-	 * @return String ƒŠƒ\[ƒXID
+	 *	ãƒªã‚½ãƒ¼ã‚¹ï¼©ï¼¤ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return String ãƒªã‚½ãƒ¼ã‚¹ID
 	 */
 	public String getResourceId() {
 		return this.mResourceId;
 	}
 	//
 	/**
-	 *	ŒÄ‚Ño‚µ‰ñ”‚ğo—Í‚·‚éB
-	 *	@return long ŒÄ‚Ño‚µ‰ñ”
+	 *	å‘¼ã³å‡ºã—å›æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@return long å‘¼ã³å‡ºã—å›æ•°
 	 */
 	public long getCallTime() {
 		return this.mProcTimes;
 	}
 	//
 	/**
-	 *	ÅIƒR[ƒ‹“ú‚ğo—Í‚·‚éB
-	 * @return Date ÅIƒR[ƒ‹“ú
+	 *	æœ€çµ‚ã‚³ãƒ¼ãƒ«æ—¥æ™‚ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date æœ€çµ‚ã‚³ãƒ¼ãƒ«æ—¥æ™‚
 	 */
 	public Date getLastCallTime() {
 		return this.mLastProcTime;
 	}
 	//
 	/**
-	 *	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚éB
-	 * @return long ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX
+	 *	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return long ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹
 	 */
 	public long getBestPerformance() {
 		return this.mBestPerformance;
 	}
 	//
 	/**
-	 *	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú‚ğo—Í‚·‚éB
-	 * @return Date ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú
+	 *	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚
 	 */
 	public Date getBestPerformanceTime() {
 		return this.mBestTime;
 	}
 	//
 	/**
-	 *	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚éB
-	 * @return long ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX
+	 *	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return long ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹
 	 */
 	public long getWorstPerformance() {
 		return this.mWorstPerformance;
 	}
 	//
 	/**
-	 *	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú‚ğo—Í‚·‚éB
-	 * @return Date ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú
+	 *	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚
 	 */
 	public Date getWorstPerformanceTime() {
 		return this.mWorstTime;
 	}
 	//
 	/**
-	 *	ƒAƒxƒŒ[ƒWƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚éB
-	 * @return Date ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX“ú
+	 *	ã‚¢ãƒ™ãƒ¬ãƒ¼ã‚¸ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return Date ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ—¥æ™‚
 	 */
 	public long getAveragePerformance() {
 		return this.mAveragePerformance;

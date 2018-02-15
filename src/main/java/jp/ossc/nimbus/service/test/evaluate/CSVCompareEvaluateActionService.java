@@ -52,9 +52,9 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * CSVƒtƒ@ƒCƒ‹”äŠr•]‰¿ƒAƒNƒVƒ‡ƒ“B<p>
- * ‚Q‚Â‚ÌCSVƒtƒ@ƒCƒ‹‚ğ”äŠr‚µ‚ÄA“à—e‚ª“™‰¿‚©‚Ç‚¤‚©•]‰¿‚·‚éB<br>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * CSVãƒ•ã‚¡ã‚¤ãƒ«æ¯”è¼ƒè©•ä¾¡ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ï¼’ã¤ã®CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¯”è¼ƒã—ã¦ã€å†…å®¹ãŒç­‰ä¾¡ã‹ã©ã†ã‹è©•ä¾¡ã™ã‚‹ã€‚<br>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -102,7 +102,7 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     }
     
     /**
-     * ‘ÎÛ‚ÌCSVƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚Ég—p‚·‚é{@link CSVReader}‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã®CSVãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«ä½¿ç”¨ã™ã‚‹{@link CSVReader}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param reader CSVReader
      */
@@ -111,7 +111,7 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     }
     
     /**
-     * ”äŠr‘ÎÛ‚Ì‚İ‚É•ÒW‚ğs‚Á‚½CSVƒtƒ@ƒCƒ‹‚Ì‘‚«‚İ‚Ég—p‚·‚é{@link CSVWriter}‚ğİ’è‚·‚éB<p>
+     * æ¯”è¼ƒå¯¾è±¡ã®ã¿ã«ç·¨é›†ã‚’è¡Œã£ãŸCSVãƒ•ã‚¡ã‚¤ãƒ«ã®æ›¸ãè¾¼ã¿ã«ä½¿ç”¨ã™ã‚‹{@link CSVWriter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param writer CSVWriter
      */
@@ -127,21 +127,21 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     }
     
     /**
-     * ‚Q‚Â‚ÌCSVƒtƒ@ƒCƒ‹‚ğ”äŠr‚µ‚ÄA“à—e‚ª“™‰¿‚©‚Ç‚¤‚©•]‰¿‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ï¼’ã¤ã®CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¯”è¼ƒã—ã¦ã€å†…å®¹ãŒç­‰ä¾¡ã‹ã©ã†ã‹è©•ä¾¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * srcFilePath
      * dstFilePath
      * ignoreCSVElements
      * </pre>
-     * srcFilePath‚ÍA”äŠrŒ³‚ÌCSVƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB<br>
-     * dstFilePath‚ÍA”äŠræ‚ÌCSVƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB‚±‚±‚Åw’è‚µ‚½ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍA”äŠr‚ğs‚í‚¸‚Étrue‚ğ•Ô‚·B<br>
-     * ignoreCSVElements‚ÍA”äŠr‚É–³‹‚·‚éCSV—v‘f‚ğ—v‘f–¼‚Ü‚½‚Í—v‘fƒCƒ“ƒfƒbƒNƒX‚Åw’è‚·‚éB—v‘f–¼‚ğw’è‚·‚éê‡‚ÍACSVƒtƒ@ƒCƒ‹‚Ìˆês–Ú‚ÉCSV—v‘f–¼ƒwƒbƒ_s‚ª•K—v‚Å‚ ‚éB—v‘fƒCƒ“ƒfƒbƒNƒX‚ÍA0‚©‚çŠJn‚·‚éB•¡”w’è‚·‚éê‡‚ÍAƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB<br>
+     * srcFilePathã¯ã€æ¯”è¼ƒå…ƒã®CSVãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * dstFilePathã¯ã€æ¯”è¼ƒå…ˆã®CSVãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€æ¯”è¼ƒã‚’è¡Œã‚ãšã«trueã‚’è¿”ã™ã€‚<br>
+     * ignoreCSVElementsã¯ã€æ¯”è¼ƒæ™‚ã«ç„¡è¦–ã™ã‚‹CSVè¦ç´ ã‚’è¦ç´ åã¾ãŸã¯è¦ç´ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã§æŒ‡å®šã™ã‚‹ã€‚è¦ç´ åã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€CSVãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸€è¡Œç›®ã«CSVè¦ç´ åãƒ˜ãƒƒãƒ€è¡ŒãŒå¿…è¦ã§ã‚ã‚‹ã€‚è¦ç´ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€0ã‹ã‚‰é–‹å§‹ã™ã‚‹ã€‚è¤‡æ•°æŒ‡å®šã™ã‚‹å ´åˆã¯ã€ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ”äŠrŒ‹‰Ê‚ª“™‚µ‚¢ê‡‚ÍAtrue
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return æ¯”è¼ƒçµæœãŒç­‰ã—ã„å ´åˆã¯ã€true
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

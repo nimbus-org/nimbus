@@ -38,8 +38,8 @@ import jp.ossc.nimbus.service.jms.*;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 
 /**
- * JMSƒXƒPƒWƒ…[ƒ‰B<p>
- * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚µ‚ÄAjavax.jms.MessageListener‚Å‘Ò‚¿ó‚¯AƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚éB<br>
+ * JMSã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã—ã¦ã€javax.jms.MessageListenerã§å¾…ã¡å—ã‘ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -67,34 +67,34 @@ public class JMSSchedulerService extends AbstractSchedulerService
     protected int priority = Message.DEFAULT_PRIORITY;
     protected long timeToLive = Message.DEFAULT_TIME_TO_LIVE;
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setJMSSessionFactoryServiceName(ServiceName name){
         sessionFactoryServiceName = name;
     }
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public ServiceName getJMSSessionFactoryServiceName(){
         return sessionFactoryServiceName;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setJMSMessageProducerFactoryServiceName(ServiceName name){
         messageProducerFactoryServiceName = name;
     }
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public ServiceName getJMSMessageProducerFactoryServiceName(){
         return messageProducerFactoryServiceName;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setJMSMessageConsumerFactoryServiceName(ServiceName name){
         messageConsumerFactoryServiceName = name;
     }
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public ServiceName getJMSMessageConsumerFactoryServiceName(){
         return messageConsumerFactoryServiceName;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setMessageConsumerSize(int size){
         if(messageConsumerSize <= 0){
             throw new IllegalArgumentException("MessageConsumerSize > 0. size=" + size);
@@ -102,45 +102,45 @@ public class JMSSchedulerService extends AbstractSchedulerService
         messageConsumerSize = size;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public int getMessageConsumerSize(){
         return messageConsumerSize;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setDeliveryMode(int mode){
         deliveryMode = mode;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public int getDeliveryMode(){
         return deliveryMode;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setPriority(int priority){
         this.priority = priority;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public int getPriority(){
         return priority;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public void setTimeToLive(long millis){
         timeToLive = millis;
     }
     
-    // JMSSchedulerServiceMBean‚ÌJavaDoc
+    // JMSSchedulerServiceMBeanã®JavaDoc
     public long getTimeToLive(){
         return timeToLive;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(sessionFactoryServiceName != null){
@@ -172,9 +172,9 @@ public class JMSSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
@@ -191,7 +191,7 @@ public class JMSSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“Q‰Á‰Â”\‚È‚Ì‚Åtrue‚ğ•Ô‚·B<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å‚åŠ å¯èƒ½ãªã®ã§trueã‚’è¿”ã™ã€‚<p>
      *
      * @return true
      */
@@ -200,10 +200,10 @@ public class JMSSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * JMS‚Ìˆ¶æ‚ÉObjectMessage‚Æ‚µ‚ÄƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒg‚ğ“Š“ü‚·‚éB<p>
+     * JMSã®å®›å…ˆã«ObjectMessageã¨ã—ã¦ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’æŠ•å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param request ƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒg
-     * @exception Throwable “Š“ü‚É¸”s‚µ‚½ê‡
+     * @param request ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @exception Throwable æŠ•å…¥ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void entrySchedule(ScheduleRequest request) throws Throwable{
         Session session = null;
@@ -261,9 +261,9 @@ public class JMSSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * JMS‚Ìˆ¶æ‚©‚çæ‚èo‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ğ{@link ScheduleExecutor}‚ÉÀsˆË—Š‚·‚éB<p>
+     * JMSã®å®›å…ˆã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link ScheduleExecutor}ã«å®Ÿè¡Œä¾é ¼ã™ã‚‹ã€‚<p>
      *
-     * @param message JMS‚Ìˆ¶æ‚©‚çæ‚èo‚µ‚½ƒXƒPƒWƒ…[ƒ‹
+     * @param message JMSã®å®›å…ˆã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
      * @exception Throwable
      */
     public void onMessage(Message message){

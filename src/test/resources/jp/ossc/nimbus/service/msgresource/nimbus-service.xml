@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml version="1.0" encoding="UTF-8" ?> 
 <server>
     <default-log>
         <debug output="false"/>
@@ -8,29 +8,29 @@
         <fatal output="true"/>
     </default-log>
     <manager name="TheManager">
-      <!--ƒƒbƒZ[ƒWƒŠƒ\[ƒX-->
+      <!--ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹-->
        <service code="jp.ossc.nimbus.service.msgresource.MessageResourceFactoryService" name="MessageResourceFactoryService">
        		<attribute name="DefineFileExt">xml</attribute>
        		<attribute name="DefineFileDir">jp/ossc/nimbus/service/msgresource/def</attribute>
        		<attribute name="ByteConverterServiceName">#ByteConverter</attribute>
        		<depends>ByteConverter</depends>
        </service>
-       <!--ƒoƒCƒgƒRƒ“ƒo[ƒ^-->
+       <!--ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿-->
        <service code="jp.ossc.nimbus.service.byteconvert.ByteConverterService" name="ByteConverter">
        		<attribute name="DifferentEndianClassName">jp.ossc.nimbus.service.byteconvert.ByteConverterDifferentEndian</attribute>
        		<attribute name="SameEndianClassName">jp.ossc.nimbus.service.byteconvert.ByteConverterSameEndian</attribute>
        </service>
-        <!-- JmsQueueSessionƒT[ƒrƒX -->
+        <!-- JmsQueueSessionã‚µãƒ¼ãƒ“ã‚¹ -->
     	<service code="jp.ossc.nimbus.service.resource.jmsqueue.JmsQueueSessionService" name="JmsQueueSessionService">
     	<attribute name="JndiFinderServiceName">#JndiFinderService</attribute>
     	<depends>JndiFinderService</depends>
     	</service>
-		<!--jndiƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX-->
+		<!--jndiãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹-->
 		<service code="jp.ossc.nimbus.service.jndi.CachedJndiFinderService" name="JndiFinderService">
 		<attribute name="CacheServiceName">#CacheService</attribute>
 		<depends>CacheService</depends>
 		</service>
-		<!--ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX-->
+		<!--ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹-->
 		<service code="jp.ossc.nimbus.service.cache.EternalCacheService" name="CacheService">
 		</service>       
     </manager>

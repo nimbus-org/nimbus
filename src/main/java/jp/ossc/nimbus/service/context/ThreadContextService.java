@@ -35,10 +35,10 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 //
 /**
- * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒXB<p>
- * ƒXƒŒƒbƒh–ˆ‚ÌƒRƒ“ƒeƒLƒXƒg‚ÅƒL[A’l‚ğŠÇ—‚Å‚«‚éB<br>
- * ‚Ü‚½AqƒXƒŒƒbƒh‚©‚ç‚Ì’l‚ÌQÆ‚à‰Â”\‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚¹ãƒ¬ãƒƒãƒ‰æ¯ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§ã‚­ãƒ¼ã€å€¤ã‚’ç®¡ç†ã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€å­ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰ã®å€¤ã®å‚ç…§ã‚‚å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -65,29 +65,29 @@ public class ThreadContextService extends ServiceBase
     private static final long serialVersionUID = -7304455455493489289L;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgŠi”[—pƒXƒŒƒbƒhƒ[ƒJƒ‹B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ ¼ç´ç”¨ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«ã€‚<p>
      */
     protected ThreadLocal threadLocal;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg’lŠi”[—p‚Ìƒ}ƒbƒvB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤æ ¼ç´ç”¨ã®ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map defaultMap;
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<br>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         defaultMap = new HashMap();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(threadLocal == null){
@@ -96,25 +96,25 @@ public class ThreadContextService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         clearAllThreadContext();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì”jŠü‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®ç ´æ£„ã‚’è¡Œã†ã€‚<br>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         defaultMap = null;
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public void clear(){
         Map map = (Map)threadLocal.get();
         init(map);
@@ -154,7 +154,7 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public int size(){
         Map map = (Map)threadLocal.get();
         if(map != null){
@@ -164,7 +164,7 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean isEmpty(){
         Map map = (Map)threadLocal.get();
         if(map != null){
@@ -174,7 +174,7 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean containsKey(Object key){
         Map map = (Map)threadLocal.get();
         if(map != null){
@@ -184,7 +184,7 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean containsValue(Object value){
         Map map = (Map)threadLocal.get();
         if(map != null){
@@ -194,7 +194,7 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Set entrySet(){
         Map map = (Map)threadLocal.get();
         if(map != null){
@@ -204,13 +204,13 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object get(Object key){
         Map map = (Map)threadLocal.get();
         return map.get(key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object put(Object key, Object value){
         if(threadLocal == null){
             return defaultMap.put(key, value);
@@ -219,7 +219,7 @@ public class ThreadContextService extends ServiceBase
         return map.put(key,value);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object remove(Object key){
         Map map = (Map)threadLocal.get();
         if(map != null){
@@ -229,25 +229,25 @@ public class ThreadContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public void putAll(Map t){
         Map map = (Map)threadLocal.get();
         map.putAll(t);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Set keySet(){
         Map map = (Map)threadLocal.get();
         return map.keySet();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Collection values(){
         Map map = (Map)threadLocal.get();
         return map.values();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Map all(){
         Map map = (Map)threadLocal.get();
         return new HashMap(map);
@@ -257,7 +257,7 @@ public class ThreadContextService extends ServiceBase
         return defaultMap;
     }
     
-    // ThreadContextServiceMBean‚ÌJavaDoc
+    // ThreadContextServiceMBeanã®JavaDoc
     public void clearAllThreadContext(){
         threadLocal = new ThreadLocal(){
             protected synchronized Object initialValue(){
@@ -269,47 +269,47 @@ public class ThreadContextService extends ServiceBase
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void load() throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void loadKey() throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param key ƒL[
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @param key ã‚­ãƒ¼
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void load(Object key) throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void save() throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param key ƒL[
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @param key ã‚­ãƒ¼
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void save(Object key) throws Exception{
         throw new UnsupportedOperationException();

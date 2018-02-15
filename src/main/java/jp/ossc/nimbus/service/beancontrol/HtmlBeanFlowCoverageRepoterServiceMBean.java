@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.beancontrol;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ConsoleBeanFlowCoverageRepoterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ConsoleBeanFlowCoverageRepoterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,38 +42,38 @@ public interface HtmlBeanFlowCoverageRepoterServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactory‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactory‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉƒŒƒ|[ƒg‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ãƒ¬ãƒãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isReport o—Í‚·‚éê‡Atrue
+     * @param isReport å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setReportOnStop(boolean isReport);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉƒŒƒ|[ƒg‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ãƒ¬ãƒãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isReportOnStop();
     
     /**
-     * ƒŒƒ|[ƒg‚ğo—Í‚·‚éB<p>
+     * ãƒ¬ãƒãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception o—Í‚É¸”s‚µ‚½ê‡
+     * @exception Exception å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void report() throws Exception;
     

@@ -50,8 +50,8 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPFileListParser;
 
 /**
- * FTPƒNƒ‰ƒCƒAƒ“ƒgB<p>
-* <a href="http://commons.apache.org/net/">Jakarta Commons Net</a>‚ÌFTPƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚µ‚½{@link FTPClient}À‘•ƒNƒ‰ƒX‚Å‚ ‚éB<br>
+ * FTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã€‚<p>
+* <a href="http://commons.apache.org/net/">Jakarta Commons Net</a>ã®FTPãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸ{@link FTPClient}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
   *
  * @author M.Takata
  */
@@ -636,7 +636,7 @@ public class FTPClientImpl implements FTPClient{
         if(isPassive){
 //            try{
                 client.enterLocalActiveMode();
-// ŒÄ‚Ô‚ÆƒGƒ‰[‚É‚È‚éB‚Æ‚è‚ ‚¦‚¸AƒRƒƒ“ƒgƒAƒEƒgB
+// å‘¼ã¶ã¨ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã€‚ã¨ã‚Šã‚ãˆãšã€ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã€‚
 //                if(!client.enterRemoteActiveMode(client.getRemoteAddress(), port)){
 //                    throw new FTPErrorResponseException(
 //                        client.getReplyCode(),

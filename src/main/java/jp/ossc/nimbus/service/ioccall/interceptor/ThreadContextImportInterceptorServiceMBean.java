@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ioccall.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ThreadContextImportInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ThreadContextImportInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,32 +42,32 @@ public interface ThreadContextImportInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_€–Ú‚ğƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éB<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€é …ç›®ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚é{@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_€–Ú–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚Ìƒwƒbƒ_€–Ú‚ğƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éB<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹{@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€é …ç›®åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ãƒ˜ãƒƒãƒ€é …ç›®ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param keys ƒwƒbƒ_€–Ú–¼”z—ñ
+     * @param keys ãƒ˜ãƒƒãƒ€é …ç›®åé…åˆ—
      */
     public void setHeaderKeys(String[] keys);
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚é{@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_€–Ú–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹{@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€é …ç›®åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_€–Ú–¼”z—ñ
+     * @return ãƒ˜ãƒƒãƒ€é …ç›®åé…åˆ—
      */
     public String[] getHeaderKeys();
 }

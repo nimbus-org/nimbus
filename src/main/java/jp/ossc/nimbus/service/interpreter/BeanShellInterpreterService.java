@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 
 /**
- * BeanShell(http://www.beanshell.org/)‚ğg‚Á‚ÄJavaƒR[ƒh‚ğÀs‚·‚éƒCƒ“ƒ^[ƒvƒŠƒ^ƒT[ƒrƒXB<p>
+ * BeanShell(http://www.beanshell.org/)ã‚’ä½¿ã£ã¦Javaã‚³ãƒ¼ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -268,34 +268,34 @@ public class BeanShellInterpreterService extends ServiceBase
     }
     
     private static void usage(){
-        System.out.println("ƒRƒ}ƒ“ƒhg—p•û–@F");
+        System.out.println("ã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•ï¼š");
         System.out.println(" java jp.ossc.nimbus.service.interpreter.BeanShellInterpreterService [options] [source code]");
         System.out.println();
         System.out.println("[options]");
         System.out.println();
         System.out.println(" [-servicepath paths]");
-        System.out.println("  ƒCƒ“ƒ^[ƒvƒŠƒ^ƒT[ƒrƒX‚Ì‹N“®‚É•K—v‚ÈƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚µ‚Ü‚·B");
-        System.out.println("  ƒpƒXƒZƒpƒŒ[ƒ^‹æØ‚è‚Å•¡”w’è‰Â”\‚Å‚·B");
+        System.out.println("  ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®èµ·å‹•ã«å¿…è¦ãªã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¾ã™ã€‚");
+        System.out.println("  ãƒ‘ã‚¹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯èƒ½ã§ã™ã€‚");
         System.out.println();
         System.out.println(" [-servicename name]");
-        System.out.println("  ƒCƒ“ƒ^[ƒvƒŠƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğw’è‚µ‚Ü‚·B");
-        System.out.println("  w’è‚µ‚È‚¢ê‡‚ÍNimbus#Interpreter‚Æ‚İ‚È‚µ‚Ü‚·B");
+        System.out.println("  ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã—ã¾ã™ã€‚");
+        System.out.println("  æŒ‡å®šã—ãªã„å ´åˆã¯Nimbus#Interpreterã¨ã¿ãªã—ã¾ã™ã€‚");
         System.out.println();
         System.out.println(" [-file paths]");
-        System.out.println("  Às‚·‚éƒ\[ƒXƒR[ƒhƒtƒ@ƒCƒ‹‚ğw’è‚µ‚Ü‚·B");
-        System.out.println("  ƒpƒXƒZƒpƒŒ[ƒ^‹æØ‚è‚Å•¡”w’è‰Â”\‚Å‚·B");
-        System.out.println("  ‚±‚ÌƒIƒvƒVƒ‡ƒ“‚Ìw’è‚ª‚È‚¢ê‡‚ÍAˆø”source code‚Åƒ\[ƒXƒR[ƒh‚ğw’è‚µ‚Ü‚·B");
+        System.out.println("  å®Ÿè¡Œã™ã‚‹ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã—ã¾ã™ã€‚");
+        System.out.println("  ãƒ‘ã‚¹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯èƒ½ã§ã™ã€‚");
+        System.out.println("  ã“ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®æŒ‡å®šãŒãªã„å ´åˆã¯ã€å¼•æ•°source codeã§ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚");
         System.out.println();
         System.out.println(" [-encoding path]");
-        System.out.println("  Às‚·‚éƒ\[ƒXƒR[ƒhƒtƒ@ƒCƒ‹‚Ì•¶šƒR[ƒh‚ğw’è‚µ‚Ü‚·B");
+        System.out.println("  å®Ÿè¡Œã™ã‚‹ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚");
         System.out.println();
         System.out.println(" [-help]");
-        System.out.println("  ƒwƒ‹ƒv‚ğ•\¦‚µ‚Ü‚·B");
+        System.out.println("  ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚");
         System.out.println();
         System.out.println("[source code]");
-        System.out.println(" Às‚·‚éƒ\[ƒXƒR[ƒh‚ğw’è‚µ‚Ü‚·B");
+        System.out.println(" å®Ÿè¡Œã™ã‚‹ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚");
         System.out.println();
-        System.out.println(" g—p—á : ");
+        System.out.println(" ä½¿ç”¨ä¾‹ : ");
         System.out.println("    java -classpath classes;lib/bsh-2.0b4.jar;lib/nimbus.jar jp.ossc.nimbus.service.interpreter.BeanShellInterpreterService System.out.println(\"test\");");
     }
     

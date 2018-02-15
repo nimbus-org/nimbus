@@ -34,352 +34,352 @@ package jp.ossc.nimbus.service.keepalive.smtp;
 import jp.ossc.nimbus.core.*;
 //
 /**
- * SMTP�T�[�o�`�F�b�J�[�̊Ǘ��C���^�[�t�F�C�X�B<p>
+ * SMTPサーバチェッカーの管理インターフェイス。<p>
  *
  * @author H.Nakano
- * @version  1.00 �쐬: 2003/10/09 - H.Nakano
+ * @version  1.00 作成: 2003/10/09 - H.Nakano
  */
 public interface SmtpCheckerServiceMBean extends ServiceBaseMBean, SmtpKeepAliveChecker{
     
     /**
-     * SMTP�T�[�o�����`�F�b�N�ŁASMTP�T�[�o�����񂾎��ɏo�͂���郍�O�̃��b�Z�[�WID�B<p>
+     * SMTPサーバ生存チェックで、SMTPサーバが死んだ時に出力されるログのメッセージID。<p>
      */
     public static final String SMTP_SERVER_DEAD_MSG_ID = "SMTP_00001";
     
     /**
-     * SMTP�T�[�o�����`�F�b�N�ŁASMTP�T�[�o�����A�������ɏo�͂���郍�O�̃��b�Z�[�WID�B<p>
+     * SMTPサーバ生存チェックで、SMTPサーバが復帰した時に出力されるログのメッセージID。<p>
      */
     public static final String SMTP_SERVER_RECOVER_MSG_ID = "SMTP_00002";
     
     /**
-     * SMTP�T�[�o�̃z�X�g����ݒ肷��B<p>
+     * SMTPサーバのホスト名を設定する。<p>
      *
-     * @param hostName SMTP�T�[�o�̃z�X�g��
+     * @param hostName SMTPサーバのホスト名
      */
     public void setHostName(String hostName) throws java.net.UnknownHostException;
     
     /**
-     * SMTP�T�[�o�̃z�X�g�����擾����B<p>
+     * SMTPサーバのホスト名を取得する。<p>
      *
-     * @return SMTP�T�[�o�̃z�X�g��
+     * @return SMTPサーバのホスト名
      */
     public String getHostName();
     
     /**
-     * SMTP�T�[�o��Port�ԍ���ݒ肷��B<p>
+     * SMTPサーバのPort番号を設定する。<p>
      *
-     * @param port SMTP�T�[�o��Port�ԍ�
+     * @param port SMTPサーバのPort番号
      */
     public void setPort(int port);
     
     /**
-     * SMTP�T�[�o��Port�ԍ����擾����B<p>
+     * SMTPサーバのPort番号を取得する。<p>
      *
-     * @return SMTP�T�[�o��Port�ԍ�
+     * @return SMTPサーバのPort番号
      */
     public int getPort();
     
     /**
-     * �ڑ��҂��̃^�C���A�E�g[ms]��ݒ肷��B<p>
-     * �f�t�H���g�́A0�Ŗ����҂��B<br>
+     * 接続待ちのタイムアウト[ms]を設定する。<p>
+     * デフォルトは、0で無限待ち。<br>
      *
-     * @param milisec �^�C���A�E�g[ms]
+     * @param milisec タイムアウト[ms]
      */
     public void setConnectionTimeoutMillis(int milisec);
     
     /**
-     * �ڑ��҂��̃^�C���A�E�g[ms]���擾����B<p>
+     * 接続待ちのタイムアウト[ms]を取得する。<p>
      *
-     * @return �^�C���A�E�g[ms]
+     * @return タイムアウト[ms]
      */
     public int getConnectionTimeoutMillis();
     
     /**
-     * �����҂��̃^�C���A�E�g[ms]��ݒ肷��B<p>
-     * �f�t�H���g�́A1�b�B<br>
+     * 応答待ちのタイムアウト[ms]を設定する。<p>
+     * デフォルトは、1秒。<br>
      *
-     * @param milisec �^�C���A�E�g[ms]
+     * @param milisec タイムアウト[ms]
      */
     public void setTimeoutMillis(int milisec);
     
     /**
-     * �����҂��̃^�C���A�E�g[ms]���擾����B<p>
+     * 応答待ちのタイムアウト[ms]を取得する。<p>
      *
-     * @return �^�C���A�E�g[ms]
+     * @return タイムアウト[ms]
      */
     public int getTimeoutMillis();
     
     /**
-     * EOF�����m�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
+     * EOFを検知した場合に出力するログのメッセージIDを設定する。<p>
      *
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setEOFLogMessageId(String id);
     
     /**
-     * EOF�����m�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * EOFを検知した場合に出力するログのメッセージIDを取得する。<p>
      *
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getEOFLogMessageId();
     
     /**
-     * �T�[�o����G���[��Ԃ���M�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
+     * サーバからエラー状態を受信した場合に出力するログのメッセージIDを設定する。<p>
      *
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setErrorStateLogMessageId(String id);
     
     /**
-     * �T�[�o����G���[��Ԃ���M�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * サーバからエラー状態を受信した場合に出力するログのメッセージIDを取得する。<p>
      *
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getErrorStateLogMessageId();
     
     /**
-     * �T�[�o���琳���Ԃ���M�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
+     * サーバから正常状態を受信した場合に出力するログのメッセージIDを設定する。<p>
      *
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setNormalStateLogMessageId(String id);
     
     /**
-     * �T�[�o���琳���Ԃ���M�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * サーバから正常状態を受信した場合に出力するログのメッセージIDを取得する。<p>
      *
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getNormalStateLogMessageId();
     
     /**
-     * �T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
+     * サーバからの応答待ちでタイムアウトした場合に出力するログのメッセージIDを設定する。<p>
      *
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setTimeoutLogMessageId(String id);
     
     /**
-     * �T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * サーバからの応答待ちでタイムアウトした場合に出力するログのメッセージIDを取得する。<p>
      *
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getTimeoutLogMessageId();
     
     /**
-     * TCP���x���ł̃v���g�R���G���[�����������ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
+     * TCPレベルでのプロトコルエラーが発生した場合に出力するログのメッセージIDを設定する。<p>
      *
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setProtocolErrorLogMessageId(String id);
     
     /**
-     * TCP���x���ł̃v���g�R���G���[�����������ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * TCPレベルでのプロトコルエラーが発生した場合に出力するログのメッセージIDを取得する。<p>
      *
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getProtocolErrorLogMessageId();
     
     /**
-     * ���o�̓G���[�����������ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
+     * 入出力エラーが発生した場合に出力するログのメッセージIDを設定する。<p>
      *
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setIOErrorLogMessageId(String id);
     
     /**
-     * ���o�̓G���[�����������ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * 入出力エラーが発生した場合に出力するログのメッセージIDを取得する。<p>
      *
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getIOErrorLogMessageId();
     
     /**
-     * EOF�����m�����ꍇ�Ƀ��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Afalse�B<br>
+     * EOFを検知した場合にログを出力するかどうかを設定する。<p>
+     * デフォルトでは、false。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputEOFLogMessage(boolean isOutput);
     
     /**
-     * EOF�����m�����ꍇ�Ƀ��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * EOFを検知した場合にログを出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A�o�͂���
+     * @return trueの場合は、出力する
      */
     public boolean isOutputEOFLogMessage();
     
     /**
-     * �T�[�o����G���[��Ԃ���M�����ꍇ�Ƀ��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Afalse�B<br>
+     * サーバからエラー状態を受信した場合にログを出力するかどうかを設定する。<p>
+     * デフォルトでは、false。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputErrorStateLogMessage(boolean isOutput);
     
     /**
-     * �T�[�o����G���[��Ԃ���M�����ꍇ�Ƀ��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * サーバからエラー状態を受信した場合にログを出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A�o�͂���
+     * @return trueの場合は、出力する
      */
     public boolean isOutputErrorStateLogMessage();
     
     /**
-     * �T�[�o���琳���Ԃ���M�����ꍇ�Ƀ��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Afalse�B<br>
+     * サーバから正常状態を受信した場合にログを出力するかどうかを設定する。<p>
+     * デフォルトでは、false。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputNormalStateLogMessage(boolean isOutput);
     
     /**
-     * �T�[�o���琳���Ԃ���M�����ꍇ�Ƀ��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * サーバから正常状態を受信した場合にログを出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A�o�͂���
+     * @return trueの場合は、出力する
      */
     public boolean isOutputNormalStateLogMessage();
     
     /**
-     * �T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ�Ƀ��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Afalse�B<br>
+     * サーバからの応答待ちでタイムアウトした場合にログを出力するかどうかを設定する。<p>
+     * デフォルトでは、false。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputTimeoutLogMessage(boolean isOutput);
     
     /**
-     * �T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ�Ƀ��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * サーバからの応答待ちでタイムアウトした場合にログを出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A�o�͂���
+     * @return trueの場合は、出力する
      */
     public boolean isOutputTimeoutLogMessage();
     
     /**
-     * TCP���x���ł̃v���g�R���G���[�����������ꍇ�Ƀ��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Afalse�B<br>
+     * TCPレベルでのプロトコルエラーが発生した場合にログを出力するかどうかを設定する。<p>
+     * デフォルトでは、false。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputProtocolErrorLogMessage(boolean isOutput);
     
     /**
-     * TCP���x���ł̃v���g�R���G���[�����������ꍇ�Ƀ��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * TCPレベルでのプロトコルエラーが発生した場合にログを出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A�o�͂���
+     * @return trueの場合は、出力する
      */
     public boolean isOutputProtocolErrorLogMessage();
     
     /**
-     * ���o�̓G���[�����������ꍇ�Ƀ��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Afalse�B<br>
+     * 入出力エラーが発生した場合にログを出力するかどうかを設定する。<p>
+     * デフォルトでは、false。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputIOErrorLogMessage(boolean isOutput);
     
     /**
-     * ���o�̓G���[�����������ꍇ�Ƀ��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * 入出力エラーが発生した場合にログを出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A�o�͂���
+     * @return trueの場合は、出力する
      */
     public boolean isOutputIOErrorLogMessage();
     
     /**
-     * SMTP�T�[�o�̐����`�F�b�N���s�����ǂ�����ݒ肷��B<p>
-     * true�ɐݒ肳�ꂽ�ꍇ�A{@link #setAliveCheckSMTPServerInterval(long)}�Őݒ肳�ꂽ�Ԋu�ŁA"HELO"���b�Z�[�W�𑗐M���āASMTP�T�[�o�̐����`�F�b�N���s���B<br>
-     * "HELO"���b�Z�[�W�̉���������łȂ��ꍇ�A�G���[���O���o�͂���B�܂��A���퉞���ł���悤�ɂȂ����ꍇ�A�ʒm���O���o�͂���B<br>
+     * SMTPサーバの生存チェックを行うかどうかを設定する。<p>
+     * trueに設定された場合、{@link #setAliveCheckSMTPServerInterval(long)}で設定された間隔で、"HELO"メッセージを送信して、SMTPサーバの生存チェックを行う。<br>
+     * "HELO"メッセージの応答が正常でない場合、エラーログを出力する。また、正常応答できるようになった場合、通知ログを出力する。<br>
      *
-     * @param isCheck �����`�F�b�N���s���ꍇ��true
+     * @param isCheck 生存チェックを行う場合はtrue
      */
     public void setAliveCheckSMTPServer(boolean isCheck);
     
     /**
-     * SMTP�T�[�o�̐����`�F�b�N���s�����ǂ�����ݒ肷��B<p>
+     * SMTPサーバの生存チェックを行うかどうかを設定する。<p>
      *
-     * @return �����`�F�b�N���s���ꍇ��true
+     * @return 生存チェックを行う場合はtrue
      */
     public boolean isAliveCheckSMTPServer();
     
     /**
-     * SMTP�T�[�o�̐����`�F�b�N���s���Ԋu[msec]��ݒ肷��B<p>
-     * �f�t�H���g�́A60000[msec]�B
+     * SMTPサーバの生存チェックを行う間隔[msec]を設定する。<p>
+     * デフォルトは、60000[msec]。
      * 
-     * @param interval SMTP�T�[�o�̐����`�F�b�N���s���Ԋu[msec]
+     * @param interval SMTPサーバの生存チェックを行う間隔[msec]
      */
     public void setAliveCheckSMTPServerInterval(long interval);
     
     /**
-     * SMTP�T�[�o�̐����`�F�b�N���s���Ԋu[msec]���擾����B<p>
+     * SMTPサーバの生存チェックを行う間隔[msec]を取得する。<p>
      * 
-     * @return SMTP�T�[�o�̐����`�F�b�N���s���Ԋu[msec]
+     * @return SMTPサーバの生存チェックを行う間隔[msec]
      */
     public long getAliveCheckSMTPServerInterval();
     
     /**
-     * SMTP�T�[�o���������Ă��邩�ǂ����𒲂ׂ�B<p>
-     * {@link #isAliveCheckSMTPServer()}��true��Ԃ��ꍇ�́A�Ō�Ƀ`�F�b�N�������̏�Ԃ�Ԃ��B<br>
-     * isAliveCheckSMTPServer()��false��Ԃ��ꍇ�́A�����Ƀ`�F�b�N���Č��ʂ�Ԃ��B�A���A�T�[�r�X���J�n���Ă��Ȃ��ꍇ�́Afalse��Ԃ��B<br>
+     * SMTPサーバが生存しているかどうかを調べる。<p>
+     * {@link #isAliveCheckSMTPServer()}がtrueを返す場合は、最後にチェックした時の状態を返す。<br>
+     * isAliveCheckSMTPServer()がfalseを返す場合は、即時にチェックして結果を返す。但し、サービスが開始していない場合は、falseを返す。<br>
      * 
-     * @return SMTP�T�[�o���������Ă���ꍇtrue
+     * @return SMTPサーバが生存している場合true
      */
     public boolean isAliveSMTPServer();
     
     /**
-     * SMTP�T�[�o���_�E�������������m�����|�̃��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * SMTPサーバがダウンした事を検知した旨のログを出力するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isOutput ���O���o�͂���ꍇtrue
+     * @param isOutput ログを出力する場合true
      */
     public void setLoggingDeadSMTPServer(boolean isOutput);
     
     /**
-     * SMTP�T�[�o���_�E�������������m�����|�̃��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * SMTPサーバがダウンした事を検知した旨のログを出力するかどうかを判定する。<p>
      *
-     * @return ���O���o�͂���ꍇtrue
+     * @return ログを出力する場合true
      */
     public boolean isLoggingDeadSMTPServer();
     
     /**
-     * SMTP�T�[�o�����A�����������m�����|�̃��O���o�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * SMTPサーバが復帰した事を検知した旨のログを出力するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isOutput ���O���o�͂���ꍇtrue
+     * @param isOutput ログを出力する場合true
      */
     public void setLoggingRecoverSMTPServer(boolean isOutput);
     
     /**
-     * SMTP�T�[�o�����A�����������m�����|�̃��O���o�͂��邩�ǂ����𔻒肷��B<p>
+     * SMTPサーバが復帰した事を検知した旨のログを出力するかどうかを判定する。<p>
      *
-     * @return ���O���o�͂���ꍇtrue
+     * @return ログを出力する場合true
      */
     public boolean isLoggingRecoverSMTPServer();
     
     /**
-     * SMTP�T�[�o���_�E�������������m�����|�̃��O�o�͂̃��b�Z�[�WID��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #SMTP_SERVER_DEAD_MSG_ID}�B<br>
+     * SMTPサーバがダウンした事を検知した旨のログ出力のメッセージIDを設定する。<p>
+     * デフォルトは、{@link #SMTP_SERVER_DEAD_MSG_ID}。<br>
      *
-     * @param id ���O�o�͂̃��b�Z�[�WID
+     * @param id ログ出力のメッセージID
      */
     public void setDeadSMTPServerLogMessageId(String id);
     
     /**
-     * SMTP�T�[�o���_�E�������������m�����|�̃��O�o�͂̃��b�Z�[�WID���擾����B<p>
+     * SMTPサーバがダウンした事を検知した旨のログ出力のメッセージIDを取得する。<p>
      *
-     * @return ���O�o�͂̃��b�Z�[�WID
+     * @return ログ出力のメッセージID
      */
     public String getDeadSMTPServerLogMessageId();
     
     /**
-     * SMTP�T�[�o�����A�����������m�����|�̃��O�o�͂̃��b�Z�[�WID��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #SMTP_SERVER_RECOVER_MSG_ID}�B<br>
+     * SMTPサーバが復帰した事を検知した旨のログ出力のメッセージIDを設定する。<p>
+     * デフォルトは、{@link #SMTP_SERVER_RECOVER_MSG_ID}。<br>
      *
-     * @param id ���O�o�͂̃��b�Z�[�WID
+     * @param id ログ出力のメッセージID
      */
     public void setRecoverSMTPServerLogMessageId(String id);
     
     /**
-     * SMTP�T�[�o�����A�����������m�����|�̃��O�o�͂̃��b�Z�[�WID���擾����B<p>
+     * SMTPサーバが復帰した事を検知した旨のログ出力のメッセージIDを取得する。<p>
      *
-     * @return ���O�o�͂̃��b�Z�[�WID
+     * @return ログ出力のメッセージID
      */
     public String getRecoverSMTPServerLogMessageId();
 }

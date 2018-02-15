@@ -34,9 +34,9 @@ package jp.ossc.nimbus.service.journal.editor;
 import java.util.*;
 
 /**
- * ƒWƒƒ[ƒiƒ‹—pƒƒ\ƒbƒhî•ñB<p>
- * ƒƒ\ƒbƒhî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Éæ‚è‚½‚¢‚ÉA‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚ÄAƒƒ\ƒbƒhî•ñ‚ğŠi”[‚µA{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String key, Object value)}‚Ìvalue‚É“n‚·B<br>
- * MethodJournalData‚ÌƒGƒfƒBƒ^‚ÍA{@link MethodJournalEditorService}‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç”¨ãƒ¡ã‚½ãƒƒãƒ‰æƒ…å ±ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å–ã‚ŠãŸã„æ™‚ã«ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰æƒ…å ±ã‚’æ ¼ç´ã—ã€{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String key, Object value)}ã®valueã«æ¸¡ã™ã€‚<br>
+ * MethodJournalDataã®ã‚¨ãƒ‡ã‚£ã‚¿ã¯ã€{@link MethodJournalEditorService}ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see MethodJournalEditorService

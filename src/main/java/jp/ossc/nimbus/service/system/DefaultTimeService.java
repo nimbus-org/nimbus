@@ -37,7 +37,7 @@ import java.text.SimpleDateFormat;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒVƒXƒeƒ€B<p>
+ * ã‚·ã‚¹ãƒ†ãƒ æ™‚åˆ»ã€‚<p>
  *
  * @author M.Takata
  */

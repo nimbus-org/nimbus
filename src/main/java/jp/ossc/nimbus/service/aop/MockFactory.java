@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.service.aop;
 
 /**
- * ƒ‚ƒbƒNƒtƒ@ƒNƒgƒŠB<p>
- * –{—ˆŒÄ‚Ño‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚Ìƒ‚ƒbƒN‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ‚Å‚ ‚éB
+ * ãƒ¢ãƒƒã‚¯ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ã‚ã‚‹ã€‚
  *
  * @author M.Takata
  */
 public interface MockFactory{
     
     /**
-     * ƒ‚ƒbƒN‚ğ¶¬‚·‚éB<p>
+     * ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µî•ñ
-     * @return ƒ‚ƒbƒN
+     * @param context å‘¼ã³å‡ºã—æƒ…å ±
+     * @return ãƒ¢ãƒƒã‚¯
      */
     public Object createMock(InvocationContext context);
 }

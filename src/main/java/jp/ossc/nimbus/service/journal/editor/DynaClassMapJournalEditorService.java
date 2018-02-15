@@ -40,8 +40,8 @@ import org.apache.commons.beanutils.DynaProperty;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link DynaClass}‚ğMapƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * DynaClass‚ÌƒvƒƒpƒeƒB‚ğƒ}ƒbƒv‚ÉŠi”[‚·‚éB<br>
+ * {@link DynaClass}ã‚’Mapãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * DynaClassã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -71,12 +71,12 @@ public class DynaClassMapJournalEditorService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½DynaClassŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸDynaClasså‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public Map toMap(EditorFinder finder, Object key, Object value){
         final DynaClass dynaClass = (DynaClass)value;

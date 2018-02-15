@@ -38,10 +38,10 @@ import javax.ejb.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’PˆêEJBƒtƒ@ƒNƒgƒŠB<p>
- * ‚ ‚éEJBObject‚ğæ“¾‚·‚é‚½‚ß‚ÌEJBƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
- * EJBHome‚ÌƒNƒ‰ƒX–¼AEJBObject‚ÌƒNƒ‰ƒX–¼AEJBHome‚Ìcreateƒƒ\ƒbƒh‚ÌƒVƒOƒjƒ`ƒƒ‚È‚Ç‚ğİ’è‚·‚é–‚ÅAEJBObject‚Ìæ“¾‚ğŠÈˆÕ‰»‚·‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * å˜ä¸€EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ã‚ã‚‹EJBObjectã‚’å–å¾—ã™ã‚‹ãŸã‚ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * EJBHomeã®ã‚¯ãƒ©ã‚¹åã€EJBObjectã®ã‚¯ãƒ©ã‚¹åã€EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚·ã‚°ãƒ‹ãƒãƒ£ãªã©ã‚’è¨­å®šã™ã‚‹äº‹ã§ã€EJBObjectã®å–å¾—ã‚’ç°¡æ˜“åŒ–ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -82,27 +82,27 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
     private static final long serialVersionUID = 7479531378907664537L;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌEJBHomeƒNƒ‰ƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®EJBHomeã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static final Class DEFAULT_HOME_CLASS = javax.ejb.EJBHome.class;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌEJBLocalHomeƒNƒ‰ƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®EJBLocalHomeã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static final Class DEFAULT_LOCAL_HOME_CLASS = javax.ejb.EJBLocalHome.class;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌEJBObjectƒNƒ‰ƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®EJBObjectã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static final Class DEFAULT_REMOTE_CLASS = javax.ejb.EJBObject.class;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌEJBLocalObjectƒNƒ‰ƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®EJBLocalObjectã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static final Class DEFAULT_LOCAL_CLASS = javax.ejb.EJBLocalObject.class;
     
     /**
-     * EJBHome‚ÌƒNƒ‰ƒX–¼B<p>
+     * EJBHomeã®ã‚¯ãƒ©ã‚¹åã€‚<p>
      * 
      * @see #setHomeType(String)
      * @see #getHomeType()
@@ -110,7 +110,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
     private String homeClassName;
     
     /**
-     * EJBLocalHome‚ÌƒNƒ‰ƒX–¼B<p>
+     * EJBLocalHomeã®ã‚¯ãƒ©ã‚¹åã€‚<p>
      * 
      * @see #setLocalHomeType(String)
      * @see #getLocalHomeType()
@@ -118,7 +118,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
     private String localHomeClassName;
     
     /**
-     * EJBObject‚ÌƒNƒ‰ƒX–¼B<p>
+     * EJBObjectã®ã‚¯ãƒ©ã‚¹åã€‚<p>
      * 
      * @see #setRemoteType(String)
      * @see #getRemoteType()
@@ -126,7 +126,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
     private String remoteClassName;
     
     /**
-     * EJBLocalObject‚ÌƒNƒ‰ƒX–¼B<p>
+     * EJBLocalObjectã®ã‚¯ãƒ©ã‚¹åã€‚<p>
      * 
      * @see #setLocalType(String)
      * @see #getLocalType()
@@ -134,7 +134,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
     private String localClassName;
     
     /**
-     * EJBHome‚Ìcreateƒƒ\ƒbƒh‚Ìˆø”‚ÌŒ^–¼”z—ñB<p>
+     * EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã®å‹åé…åˆ—ã€‚<p>
      * 
      * @see #setCreateMethodParamTypes(String[])
      * @see #getCreateMethodParamTypes()
@@ -142,92 +142,92 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
     private String[] createMethodParamTypes;
     
     /**
-     * EJBHome‚ÌƒNƒ‰ƒXB<p>
+     * EJBHomeã®ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private Class homeClass = DEFAULT_HOME_CLASS;
     
     /**
-     * EJBLocalHome‚ÌƒNƒ‰ƒXB<p>
+     * EJBLocalHomeã®ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private Class localHomeClass = DEFAULT_LOCAL_HOME_CLASS;
     
     /**
-     * EJBObject‚ÌƒNƒ‰ƒXB<p>
+     * EJBObjectã®ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private Class remoteClass = DEFAULT_REMOTE_CLASS;
     
     /**
-     * EJBLocalObject‚ÌƒNƒ‰ƒXB<p>
+     * EJBLocalObjectã®ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private Class localClass = DEFAULT_LOCAL_CLASS;
     
     /**
-     * EJBHome‚Ìcreateƒƒ\ƒbƒh‚Ìˆø”‚ÌŒ^”z—ñB<p>
+     * EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã®å‹é…åˆ—ã€‚<p>
      */
     private Class[] paramTypes;
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public String getHomeType(){
         return homeClassName;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public void setHomeType(String className){
         homeClassName = className;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public String getLocalHomeType(){
         return localHomeClassName;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public void setLocalHomeType(String className){
         localHomeClassName = className;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public String getRemoteType(){
         return remoteClassName;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public void setRemoteType(String className){
         remoteClassName = className;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public String getLocalType(){
         return localClassName;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public void setLocalType(String className){
         localClassName = className;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public String[] getCreateMethodParamTypes(){
         return createMethodParamTypes;
     }
     
-    // UnitEJBFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryMBeanã®JavaDoc
     public void setCreateMethodParamTypes(String[] params){
         createMethodParamTypes = params;
     }
     
     /**
-     * EJBƒtƒ@ƒNƒgƒŠ‚Ì‰Šú‰»ˆ—‚ğs‚¤B<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link #setHomeType(String)}‚Åİ’è‚³‚ê‚½EJBHomeƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB</li>
-     *   <li>{@link #setLocalHomeType(String)}‚Åİ’è‚³‚ê‚½EJBLocalHomeƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB</li>
-     *   <li>{@link #setRemoteType(String)}‚Åİ’è‚³‚ê‚½EJBObjectƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB</li>
-     *   <li>{@link #setLocalType(String)}‚Åİ’è‚³‚ê‚½EJBLocalObjectƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB</li>
-     *   <li>{@link #setCreateMethodParamTypes(String[])}‚Åİ’è‚³‚ê‚½EJBHome‚Ìcreateƒƒ\ƒbƒhˆø””z—ñ‚ÌƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB</li>
+     *   <li>{@link #setHomeType(String)}ã§è¨­å®šã•ã‚ŒãŸEJBHomeã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>{@link #setLocalHomeType(String)}ã§è¨­å®šã•ã‚ŒãŸEJBLocalHomeã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>{@link #setRemoteType(String)}ã§è¨­å®šã•ã‚ŒãŸEJBObjectã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>{@link #setLocalType(String)}ã§è¨­å®šã•ã‚ŒãŸEJBLocalObjectã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>{@link #setCreateMethodParamTypes(String[])}ã§è¨­å®šã•ã‚ŒãŸEJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°é…åˆ—ã®ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception InitialContext‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡A‚Ü‚½‚ÍAEJBHome“™‚ÌƒNƒ‰ƒX‚Ìƒ[ƒh‚É¸”s‚µ‚½ê‡B
+     * @exception Exception InitialContextã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆã€ã¾ãŸã¯ã€EJBHomeç­‰ã®ã‚¯ãƒ©ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
     public void startService() throws Exception{
         super.startService();
@@ -277,7 +277,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
         }
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name
     ) throws NamingException, CreateException, NoSuchMethodException,
@@ -285,7 +285,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
         return get(name, homeClass, remoteClass, null, null);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name
     ) throws NamingException, CreateException, NoSuchMethodException,
@@ -293,7 +293,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
         return getLocal(name, localHomeClass, localClass, null, null);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBObject get(
         String name,
         Object[] params
@@ -302,7 +302,7 @@ public class UnitEJBFactoryService extends InvocationEJBFactoryService
         return get(name, homeClass, remoteClass, paramTypes, params);
     }
     
-    // EJBFactory‚ÌJavaDoc
+    // EJBFactoryã®JavaDoc
     public EJBLocalObject getLocal(
         String name,
         Object[] params

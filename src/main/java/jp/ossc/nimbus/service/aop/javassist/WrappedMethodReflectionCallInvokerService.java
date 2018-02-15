@@ -37,9 +37,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ���\�b�h���t���N�V�����Ăяo���C���{�[�J�B<p>
- * ���t���N�V����API���g���āA�A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�̌Ăяo�����s���B
- * �ȉ��ɁA�T�[�r�X��`��������B<br>
+ * メソッドリフレクション呼び出しインボーカ。<p>
+ * リフレクションAPIを使って、アスペクトによってラップされたメソッドの呼び出しを行う。
+ * 以下に、サービス定義例を示す。<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -63,12 +63,12 @@ public class WrappedMethodReflectionCallInvokerService extends ServiceBase
     private static final long serialVersionUID = -1539581966728381008L;
     
     /**
-     * ���t���N�V����API���g���āA�A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�̌Ăяo�����s���B<p>
-     * �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�́A{@link WrappedMethodInvocationContext#getWrappedTargetMethod()}�Ŏ擾����B<br>
+     * リフレクションAPIを使って、アスペクトによってラップされたメソッドの呼び出しを行う。<p>
+     * アスペクトによってラップされたメソッドは、{@link WrappedMethodInvocationContext#getWrappedTargetMethod()}で取得する。<br>
      * 
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ
+     * @param context 呼び出しのコンテキスト情報
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final WrappedMethodInvocationContext methodContext

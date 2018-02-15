@@ -36,11 +36,11 @@ import java.util.*;
 import org.w3c.dom.*;
 
 /**
- * ƒƒ\ƒbƒhÀs’è‹`&lt;invoke&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;invoke&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰å®Ÿè¡Œå®šç¾©&lt;invoke&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;invoke&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class InvokeMetaData extends MetaData
  implements Serializable{
@@ -48,12 +48,12 @@ public class InvokeMetaData extends MetaData
     private static final long serialVersionUID = 3183679039637608032L;
     
     /**
-     * &lt;invoke&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;invoke&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String INVOKE_TAG_NAME = "invoke";
     
     /**
-     * &lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;target&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;target&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String TARGET_TAG_NAME = "target";
     
@@ -69,97 +69,97 @@ public class InvokeMetaData extends MetaData
     protected MetaData target;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public InvokeMetaData(MetaData parent){
         super(parent);
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return name‘®«‚Ì’l
+     * @return nameå±æ€§ã®å€¤
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name name‘®«‚Ì’l
+     * @param name nameå±æ€§ã®å€¤
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;target&gt;—v‘f‚Åw’è‚·‚éƒƒ\ƒbƒhŒÄ‚Ño‚µ‘ÎÛ‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;target&gt;è¦ç´ ã§æŒ‡å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—å¯¾è±¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return q—v‘f&lt;target&gt;—v‘f‚Åw’è‚·‚éƒƒ\ƒbƒhŒÄ‚Ño‚µ‘ÎÛ
+     * @return å­è¦ç´ &lt;target&gt;è¦ç´ ã§æŒ‡å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—å¯¾è±¡
      */
     public MetaData getTarget(){
         return target;
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;target&gt;—v‘f‚Åw’è‚·‚éƒƒ\ƒbƒhŒÄ‚Ño‚µ‘ÎÛ‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;target&gt;è¦ç´ ã§æŒ‡å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—å¯¾è±¡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param target q—v‘f&lt;target&gt;—v‘f‚Åw’è‚·‚éƒƒ\ƒbƒhŒÄ‚Ño‚µ‘ÎÛ
+     * @param target å­è¦ç´ &lt;target&gt;è¦ç´ ã§æŒ‡å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—å¯¾è±¡
      */
     public void setTarget(MetaData target){
         this.target = target;
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·ArgumentMetaData‚ÌW‡
+     * @return å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™ArgumentMetaDataã®é›†åˆ
      */
     public Collection getArguments(){
         return arguments;
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ğ’Ç‰Á‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param arg q—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·ArgumentMetaData
+     * @param arg å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™ArgumentMetaData
      */
     public void addArgument(ArgumentMetaData arg){
         arguments.add(arg);
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param arg q—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·ArgumentMetaData
+     * @param arg å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™ArgumentMetaData
      */
     public void removeArgument(ArgumentMetaData arg){
         arguments.remove(arg);
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearArguments(){
         arguments.clear();
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚ÌcallState‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®callStateå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return callState‘®«‚Ì’l
+     * @return callStateå±æ€§ã®å€¤
      */
     public String getCallState(){
         return callState;
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚ÌcallState‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®callStateå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state callState‘®«‚Ì’l
+     * @param state callStateå±æ€§ã®å€¤
      */
     public void setCallState(String state) throws IllegalArgumentException{
         boolean isMatch = false;
@@ -177,19 +177,19 @@ public class InvokeMetaData extends MetaData
     }
     
     /**
-     * ‚±‚Ì&lt;invoke&gt;—v‘f‚ÌcallState‘®«‚Ìstate’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;invoke&gt;è¦ç´ ã®callStateå±æ€§ã®stateå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return callState‘®«‚Ìstate’l
+     * @return callStateå±æ€§ã®stateå€¤
      */
     public int getCallStateValue(){
         return callStateValue;
     }
     
     /**
-     * &lt;invoke&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;invoke&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;invoke&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;invoke&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;invoke&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;invoke&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);
@@ -350,9 +350,9 @@ public class InvokeMetaData extends MetaData
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder();

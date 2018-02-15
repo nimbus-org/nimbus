@@ -34,27 +34,27 @@ package jp.ossc.nimbus.beans;
 import java.lang.reflect.*;
 
 /**
- * ORƒvƒƒpƒeƒBB<p>
- * ‚Q‚Â‚ÌƒvƒƒpƒeƒB‚©‚çNull‚Å‚È‚¢•û‚ÌƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ì{@link Property}B<br>
- * ˆÈ‰º‚Ì‚æ‚¤‚ÈƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚éƒ^ƒCƒvƒZ[ƒt‚ÈƒR[ƒh‚ª‚ ‚éB<br>
+ * ORãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
+ * ï¼’ã¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‹ã‚‰Nullã§ãªã„æ–¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®{@link Property}ã€‚<br>
+ * ä»¥ä¸‹ã®ã‚ˆã†ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ãªã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹ã€‚<br>
  * <pre>
  *   Object propValue = bean.getHoge() != null ? bean.getHoge() : bean.getFuga();
  * </pre>
- * ORƒvƒƒpƒeƒB‚ğg‚¤–‚ÅA‚±‚ÌƒR[ƒh‚ğ<br>
+ * ORãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ä½¿ã†äº‹ã§ã€ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’<br>
  * <pre>
  *   OrPropery prop = new OrPropery(new SimpleProperty("hoge"), new SimpleProperty("fuga"));
  *   Object propValue = prop.getProperty(obj);
  * </pre>
- * ‚Æ‚¢‚¤ƒR[ƒh‚É’u‚«Š·‚¦‚é–‚ª‚Å‚«‚éB<br>
- * ‚±‚ÌƒR[ƒh‚ÍAç’·‚É‚È‚Á‚Ä‚¢‚é‚ªA‘ÎÛ‚Æ‚È‚éBean‚ÌŒ^‚âƒƒ\ƒbƒh‚ğƒ^ƒCƒvƒZ[ƒt‚É‘‚©‚È‚¢“®“I‚ÈƒR[ƒh‚É‚È‚Á‚Ä‚¢‚éB<br>
+ * ã¨ã„ã†ã‚³ãƒ¼ãƒ‰ã«ç½®ãæ›ãˆã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€å†—é•·ã«ãªã£ã¦ã„ã‚‹ãŒã€å¯¾è±¡ã¨ãªã‚‹Beanã®å‹ã‚„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ã«æ›¸ã‹ãªã„å‹•çš„ãªã‚³ãƒ¼ãƒ‰ã«ãªã£ã¦ã„ã‚‹ã€‚<br>
  * <p>
- * ‚±‚ÌƒlƒXƒgƒvƒƒpƒeƒB‚Å‚ÍAˆÈ‰º‚Ì‚æ‚¤‚ÈBean‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éƒAƒNƒZƒX•û–@‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã“ã®ãƒã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ãªBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th rowspan="2">ƒAƒNƒZƒX•û–@</th><th>Java•\Œ»</th><th rowspan="2">ƒvƒƒpƒeƒB•¶š—ñ•\Œ»</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBæ“¾</th></tr>
- *   <tr><td>ORƒvƒƒpƒeƒB</td><td>bean.getHoge() != null ? bean.getHoge() : bean.getFuga()</td><td>hoge|fuga</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th rowspan="2">ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•</th><th>Javaè¡¨ç¾</th><th rowspan="2">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—è¡¨ç¾</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—</th></tr>
+ *   <tr><td>ORãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>bean.getHoge() != null ? bean.getHoge() : bean.getFuga()</td><td>hoge|fuga</td></tr>
  * </table>
- * OR‘ÎÛ‚Ì‚Q‚Â‚ÌƒvƒƒpƒeƒB‚ÍA{@link Property}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚ê‚Î—Ç‚¢B<br>
+ * ORå¯¾è±¡ã®ï¼’ã¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯ã€{@link Property}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚Œã°è‰¯ã„ã€‚<br>
  *
  * @author M.Takata
  */
@@ -65,33 +65,33 @@ public class OrProperty implements Property, java.io.Serializable{
     private static final String MSG_00002 = "Arguments is null.";
     
     /**
-     * ‘æˆêƒvƒƒpƒeƒBB<p>
+     * ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     protected Property firstProperty;
     
     /**
-     * ‘æ“ñƒvƒƒpƒeƒBB<p>
+     * ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     protected Property secondProperty;
     
     /**
-     * nullQÆ‚ÌƒvƒƒpƒeƒB‚ğæ“¾g—p‚Æ‚µ‚½ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡‚ÍA—áŠO‚ğthrow‚µ‚È‚¢BƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * nullå‚ç…§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ä½¿ç”¨ã¨ã—ãŸå ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã—ãªã„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isIgnoreNullProperty;
     
     /**
-     * ‹ó‚ÌORƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ORãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public OrProperty(){
     }
     
     /**
-     * w’è‚µ‚½‚Q‚Â‚ÌƒvƒƒpƒeƒB‚ÌORƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸï¼’ã¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ORãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param first ‘æˆêƒvƒƒpƒeƒB
-     * @param second ‘æ“ñƒvƒƒpƒeƒB
-     * @exception IllegalArgumentException ˆø”‚Énull‚ğw’è‚µ‚½ê‡
+     * @param first ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @param second ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @exception IllegalArgumentException å¼•æ•°ã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public OrProperty(Property first, Property second)
      throws IllegalArgumentException{
@@ -103,10 +103,10 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‘æˆêƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param prop ‘æˆêƒvƒƒpƒeƒB
-     * @exception IllegalArgumentException ˆø”‚Énull‚ğw’è‚µ‚½ê‡
+     * @param prop ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @exception IllegalArgumentException å¼•æ•°ã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public void setFirstProperty(Property prop) throws IllegalArgumentException{
         if(prop == null){
@@ -116,18 +116,18 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‘æˆêƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘æˆêƒvƒƒpƒeƒB
+     * @return ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Property getFirstProperty(){
         return firstProperty;
     }
     
     /**
-     * ƒlƒXƒg‚µ‚½‘æˆêƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ãƒˆã—ãŸç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒlƒXƒg‚µ‚½‘æˆêƒvƒƒpƒeƒB
+     * @return ãƒã‚¹ãƒˆã—ãŸç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Property getNestedFirstProperty(){
         if(firstProperty instanceof OrProperty){
@@ -138,10 +138,10 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‘æ“ñƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param prop ‘æ“ñƒvƒƒpƒeƒB
-     * @exception IllegalArgumentException ˆø”‚Énull‚ğw’è‚µ‚½ê‡
+     * @param prop ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @exception IllegalArgumentException å¼•æ•°ã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public void setSecondProperty(Property prop)
      throws IllegalArgumentException{
@@ -152,22 +152,22 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‘æ“ñƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘æ“ñƒvƒƒpƒeƒB
+     * @return ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Property getSecondProperty(){
         return secondProperty;
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‰ğÍ‚·‚éB<p>
-     * ‚±‚±‚Åw’è‰Â”\‚È•¶š—ñ‚ÍA<br>
-     * &nbsp;‘æˆêƒvƒƒpƒeƒB–¼|‘æ“ñƒvƒƒpƒeƒB–¼<br>
-     * ‚Å‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šå¯èƒ½ãªæ–‡å­—åˆ—ã¯ã€<br>
+     * &nbsp;ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å|ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å<br>
+     * ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param prop ƒvƒƒpƒeƒB•¶š—ñ
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‚±‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ª‰ğÍ‚Å‚«‚È‚¢ê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè§£æã§ããªã„å ´åˆ
      */
     public void parse(String prop) throws IllegalArgumentException{
         final int index = prop.indexOf('|');
@@ -214,12 +214,12 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -235,12 +235,12 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -248,14 +248,14 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param type ƒvƒƒpƒeƒB‚ÌŒ^
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NullNestPropertyException ƒlƒXƒg‚·‚éƒvƒƒpƒeƒB‚ªAnull‚Ìê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param type ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NullNestPropertyException ãƒã‚¹ãƒˆã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒã€nullã®å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Class type, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -263,9 +263,9 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘æˆêƒvƒƒpƒeƒB–¼|‘æ“ñƒvƒƒpƒeƒB–¼
+     * @return ç¬¬ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å|ç¬¬äºŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getPropertyName(){
         return firstProperty != null && secondProperty != null
@@ -287,9 +287,9 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‚±‚ÌƒlƒXƒgƒvƒƒpƒeƒB‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return NestedProperty{ƒvƒƒpƒeƒB–¼.ƒlƒXƒg‚·‚éƒvƒƒpƒeƒB–¼}
+     * @return NestedProperty{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å.ãƒã‚¹ãƒˆã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}
      */
     public String toString(){
         return "OrProperty{"
@@ -298,10 +298,10 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ¦‚µ‚Ü‚·B <p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ç¤ºã—ã¾ã™ã€‚ <p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ˆø”‚Éw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢ê‡‚Í trueA‚»‚¤‚Å‚È‚¢ê‡‚Í falseB
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„å ´åˆã¯ trueã€ãã†ã§ãªã„å ´åˆã¯ falseã€‚
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -328,19 +328,19 @@ public class OrProperty implements Property, java.io.Serializable{
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return (firstProperty == null ? 0 : (firstProperty.hashCode() * 2)) + (secondProperty == null ? 0 : (secondProperty.hashCode() * 3));
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ì‡˜‚ğ”äŠr‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é †åºã‚’æ¯”è¼ƒã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚æ‚è¬‚³‚¢ê‡‚Í•‰‚Ì®”A“™‚µ‚¢ê‡‚Íƒ[ƒA‘å‚«‚¢ê‡‚Í³‚Ì®”
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚ˆã‚Šå°ã•ã„å ´åˆã¯è² ã®æ•´æ•°ã€ç­‰ã—ã„å ´åˆã¯ã‚¼ãƒ­ã€å¤§ãã„å ´åˆã¯æ­£ã®æ•´æ•°
      */
     public int compareTo(Object obj){
         if(obj == null){

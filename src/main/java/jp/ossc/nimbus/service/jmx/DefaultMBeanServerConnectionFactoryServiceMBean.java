@@ -37,101 +37,101 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultMBeanServerConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultMBeanServerConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface DefaultMBeanServerConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * javax.management.MBeanServerConnectionã®JNDIåã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_JMX_RMI_ADAPTOR_NAME = "jmx/invoker/RMIAdaptor";
     
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_JMX_RMI_ADAPTOR_NAME}B<br>
+     * javax.management.MBeanServerConnectionã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_JMX_RMI_ADAPTOR_NAME}ã€‚<br>
      *
-     * @param name javax.management.MBeanServerConnection‚ÌJNDI–¼
+     * @param name javax.management.MBeanServerConnectionã®JNDIå
      */
     public void setRMIAdaptorName(String name);
     
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.management.MBeanServerConnection‚ÌJNDI–¼
+     * @return javax.management.MBeanServerConnectionã®JNDIå
      */
     public String getRMIAdaptorName();
     
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌƒT[ƒrƒXURL‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹URLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒXURL
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹URL
      */
     public void setServiceURL(String url);
     
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌƒT[ƒrƒXURL‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒXURL
+     * @return ã‚µãƒ¼ãƒ“ã‚¹URL
      */
     public String getServiceURL();
     
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌÚ‘±ŠÂ‹«•Ï”‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®æ¥ç¶šç’°å¢ƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param env Ú‘±ŠÂ‹«•Ï”
+     * @param env æ¥ç¶šç’°å¢ƒå¤‰æ•°
      */
     public void setJMXConnectorEnvironment(Map env);
     
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌÚ‘±ŠÂ‹«•Ï”‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®æ¥ç¶šç’°å¢ƒå¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Ú‘±ŠÂ‹«•Ï”
+     * @return æ¥ç¶šç’°å¢ƒå¤‰æ•°
      */
     public Map getJMXConnectorEnvironment();
     
     /**
-     * ƒT[ƒrƒXURL‚ğg‚Á‚ÄÚ‘±‚·‚éê‡‚ÉAƒT[ƒrƒX‚ÌŠJn‚ÉÚ‘±‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA‰‰ñ‚ÌÚ‘±æ“¾‚ÉAÚ‘±‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹URLã‚’ä½¿ã£ã¦æ¥ç¶šã™ã‚‹å ´åˆã«ã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«æ¥ç¶šã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åˆå›ã®æ¥ç¶šå–å¾—æ™‚ã«ã€æ¥ç¶šã™ã‚‹ã€‚<br>
      *
-     * @param isConnect ƒT[ƒrƒX‚ÌŠJn‚ÉÚ‘±‚ğs‚¤ê‡Atrue
+     * @param isConnect ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«æ¥ç¶šã‚’è¡Œã†å ´åˆã€true
      */
     public void setConnectOnStart(boolean isConnect);
     
     /**
-     * ƒT[ƒrƒXURL‚ğg‚Á‚ÄÚ‘±‚·‚éê‡‚ÉAƒT[ƒrƒX‚ÌŠJn‚ÉÚ‘±‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹URLã‚’ä½¿ã£ã¦æ¥ç¶šã™ã‚‹å ´åˆã«ã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«æ¥ç¶šã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉÚ‘±‚ğs‚¤
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«æ¥ç¶šã‚’è¡Œã†
      */
     public boolean isConnectOnStart();
     
     /**
-     * ƒT[ƒrƒXURL‚ğg‚Á‚ÄÚ‘±‚·‚éê‡‚ÉA{@link DefaultMBeanServerConnectionFactoryService#getConnection() getConnection()}ŒÄ‚Ño‚µ‚ÉA–ˆ‰ñV‚µ‚¢Ú‘±‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹URLã‚’ä½¿ã£ã¦æ¥ç¶šã™ã‚‹å ´åˆã«ã€{@link DefaultMBeanServerConnectionFactoryService#getConnection() getConnection()}å‘¼ã³å‡ºã—æ™‚ã«ã€æ¯å›æ–°ã—ã„æ¥ç¶šã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isNew –ˆ‰ñV‚µ‚¢Ú‘±‚ğì¬‚·‚éê‡Atrue
+     * @param isNew æ¯å›æ–°ã—ã„æ¥ç¶šã‚’ä½œæˆã™ã‚‹å ´åˆã€true
      */
     public void setNewConnection(boolean isNew);
     
     /**
-     * ƒT[ƒrƒXURL‚ğg‚Á‚ÄÚ‘±‚·‚éê‡‚ÉA{@link DefaultMBeanServerConnectionFactoryService#getConnection() getConnection()}ŒÄ‚Ño‚µ‚ÉA–ˆ‰ñV‚µ‚¢Ú‘±‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹URLã‚’ä½¿ã£ã¦æ¥ç¶šã™ã‚‹å ´åˆã«ã€{@link DefaultMBeanServerConnectionFactoryService#getConnection() getConnection()}å‘¼ã³å‡ºã—æ™‚ã«ã€æ¯å›æ–°ã—ã„æ¥ç¶šã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A–ˆ‰ñV‚µ‚¢Ú‘±‚ğì¬‚·‚é
+     * @return trueã®å ´åˆã€æ¯å›æ–°ã—ã„æ¥ç¶šã‚’ä½œæˆã™ã‚‹
      */
     public boolean isNewConnection();
 }

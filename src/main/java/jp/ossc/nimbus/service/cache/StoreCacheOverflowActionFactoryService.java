@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ ‚Ó‚êŒŸØƒtƒ@ƒNƒgƒŠB<p>
- * {@link StoreCacheOverflowActionService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link StoreCacheOverflowActionService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see StoreCacheOverflowActionService
@@ -52,10 +52,10 @@ public class StoreCacheOverflowActionFactoryService
          = new StoreCacheOverflowActionService();
     
     /**
-     * {@link StoreCacheOverflowActionService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link StoreCacheOverflowActionService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return StoreCacheOverflowActionServiceƒT[ƒrƒX
-     * @exception Exception StoreCacheOverflowActionService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return StoreCacheOverflowActionServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception StoreCacheOverflowActionServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see StoreCacheOverflowActionService
      */
     protected Service createServiceInstance() throws Exception{
@@ -66,7 +66,7 @@ public class StoreCacheOverflowActionFactoryService
         return action;
     }
     
-    // StoreCacheOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionFactoryServiceMBeanã®JavaDoc
     public void setCacheServiceName(ServiceName name){
         template.setCacheServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -78,12 +78,12 @@ public class StoreCacheOverflowActionFactoryService
         }
     }
     
-    // StoreCacheOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionFactoryServiceMBeanã®JavaDoc
     public ServiceName getCacheServiceName(){
         return template.getCacheServiceName();
     }
     
-    // StoreCacheOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionFactoryServiceMBeanã®JavaDoc
     public void setCacheMapServiceName(ServiceName name){
         template.setCacheMapServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -95,12 +95,12 @@ public class StoreCacheOverflowActionFactoryService
         }
     }
     
-    // StoreCacheOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionFactoryServiceMBeanã®JavaDoc
     public ServiceName getCacheMapServiceName(){
         return template.getCacheMapServiceName();
     }
     
-    // StoreCacheOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

@@ -51,7 +51,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.CSVReader;
 
 /**
- * CSVƒtƒ@ƒCƒ‹OHLCDatasetƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * CSVãƒ•ã‚¡ã‚¤ãƒ«OHLCDatasetãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -61,14 +61,14 @@ public class CSVFileOHLCDatasetFactoryService
     
     private static final long serialVersionUID = -8408768976005927594L;
     
-    /** [ƒVƒŠ[ƒY–¼=CSVFileInfo]‚Ìƒ}ƒbƒv */
+    /** [ã‚·ãƒªãƒ¼ã‚ºå=CSVFileInfo]ã®ãƒãƒƒãƒ— */
     protected Map seriesInfoMap;
-    /** ƒf[ƒ^ƒZƒbƒgğŒ‚ÌƒŠƒXƒg */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®ãƒªã‚¹ãƒˆ */
     protected List dsConditionList;
     
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ */
     protected String dateFormatPattern;
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName dateFormatServiceName;
     
     protected boolean isTimeOnly;
@@ -76,37 +76,37 @@ public class CSVFileOHLCDatasetFactoryService
     protected CSVReader csvReader;
     protected String encoding;
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setCSVFileInfo(String seriesName, CSVFileInfo info){
         seriesInfoMap.put(seriesName, info);
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public CSVFileInfo getCSVFileInfo(String seriesName){
         return (CSVFileInfo)seriesInfoMap.get(seriesName);
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public Map getCSVFileInfoMap(){
         return seriesInfoMap;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setDateFormatPattern(String pattern){
         dateFormatPattern = pattern;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getDateFormatPattern(){
         return dateFormatPattern;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setDateFormatServiceName(ServiceName serviceName){
         dateFormatServiceName = serviceName;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public ServiceName getDateFormatServiceName(){
         return dateFormatServiceName;
     }
@@ -118,45 +118,45 @@ public class CSVFileOHLCDatasetFactoryService
         return isTimeOnly;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setCSVReader(CSVReader reader){
         csvReader = reader;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public CSVReader getCSVReader(){
         return csvReader;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setEncoding(String encoding){
         this.encoding = encoding;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getEncoding(){
         return encoding;
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void addDatasetCondition(DatasetCondition dsCondition){
         dsConditionList.add(dsCondition);
     }
     
-    // CSVFileOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public DatasetCondition[] getDatasetConditions(){
         return (DatasetCondition[]) dsConditionList.toArray(
             new DatasetCondition[dsConditionList.size()]
         );
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception{
         dsConditionList = new ArrayList();
         seriesInfoMap = new LinkedHashMap();
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception{
         
         if(seriesInfoMap.size() == 0){
@@ -170,7 +170,7 @@ public class CSVFileOHLCDatasetFactoryService
         }
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception{
         dsConditionList = null;
         seriesInfoMap = null;
@@ -178,14 +178,14 @@ public class CSVFileOHLCDatasetFactoryService
     
     protected DatasetConnection createConnection(DatasetCondition[] dsConditions) throws DatasetCreateException{
         
-        // ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—
         DatasetConnection connection = new DatasetConnection(
             getName()
         );
         
         Iterator itr = seriesInfoMap.keySet().iterator();
         while(itr.hasNext()){
-            // ƒVƒŠ[ƒY
+            // ã‚·ãƒªãƒ¼ã‚º
             String series = (String)itr.next();
             CSVFileOHLCDatasetSeriesCursor cursor = new CSVFileOHLCDatasetSeriesCursor(
                 series,
@@ -292,7 +292,7 @@ public class CSVFileOHLCDatasetFactoryService
                 
                 date = dateFormat.parse(dateStr);
                 if(info.isTimeOnly || isTimeOnly){
-                    // ‚Ì‚İ‚¾‚Á‚½ê‡A“ú•t‚ğ¡“ú‚Éİ’è
+                    // æ™‚åˆ»ã®ã¿ã ã£ãŸå ´åˆã€æ—¥ä»˜ã‚’ä»Šæ—¥ã«è¨­å®š
                     Calendar cal = Calendar.getInstance();
                     int year = cal.get(Calendar.YEAR);
                     int month = cal.get(Calendar.MONTH);

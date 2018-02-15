@@ -34,138 +34,138 @@ package jp.ossc.nimbus.service.graph;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link TimeSeriesCollectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link TimeSeriesCollectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface TimeSeriesCollectionFactoryServiceMBean extends ServiceBaseMBean{
     
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éˆ—ƒ^ƒCƒv : ŠJn */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹å‡¦ç†ã‚¿ã‚¤ãƒ— : é–‹å§‹ */
     public static final int COLLATE_DATA_TYPE_START = 1;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éˆ—ƒ^ƒCƒv : I—¹ */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹å‡¦ç†ã‚¿ã‚¤ãƒ— : çµ‚äº† */
     public static final int COLLATE_DATA_TYPE_END = 2;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éˆ—ƒ^ƒCƒv : ‘SŒ */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹å‡¦ç†ã‚¿ã‚¤ãƒ— : å…¨ä»¶ */
     public static final int COLLATE_DATA_TYPE_ALL = 3;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éˆ—ƒ^ƒCƒv : •½‹Ï */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹å‡¦ç†ã‚¿ã‚¤ãƒ— : å¹³å‡ */
     public static final int COLLATE_DATA_TYPE_AVERAGE = 4;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éˆ—ƒ^ƒCƒv : OHLC */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹å‡¦ç†ã‚¿ã‚¤ãƒ— : OHLC */
     public static final int COLLATE_DATA_TYPE_OHLC = 5;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éˆ—ƒ^ƒCƒv : ‡Œv */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹å‡¦ç†ã‚¿ã‚¤ãƒ— : åˆè¨ˆ */
     public static final int COLLATE_DATA_TYPE_SUM = 6;
     
     /**
-     * ‚ ‚éŠúŠÔ–ˆ‚Éƒf[ƒ^‚ğWŒv‚µ1“_‚ÉW–ñ‚·‚éê‡‚ÉA‚»‚Ì1“_‚Ì‚Æ‚µ‚ÄAŠúŠÔ‚ÌŠJnŠÔ‚ğÌ—p‚·‚éí•ÊB<p>
+     * ã‚ã‚‹æœŸé–“æ¯ã«ãƒ‡ãƒ¼ã‚¿ã‚’é›†è¨ˆã—1ç‚¹ã«é›†ç´„ã™ã‚‹å ´åˆã«ã€ãã®1ç‚¹ã®æ™‚åˆ»ã¨ã—ã¦ã€æœŸé–“ã®é–‹å§‹æ™‚é–“ã‚’æ¡ç”¨ã™ã‚‹ç¨®åˆ¥ã€‚<p>
      */
     public static final int COLLATE_DATA_DATE_TYPE_START = 1;
     
     /**
-     * ‚ ‚éŠúŠÔ–ˆ‚Éƒf[ƒ^‚ğWŒv‚µ1“_‚ÉW–ñ‚·‚éê‡‚ÉA‚»‚Ì1“_‚Ì‚Æ‚µ‚ÄAŠúŠÔ‚ÌI—¹ŠÔ‚ğÌ—p‚·‚éí•ÊB<p>
+     * ã‚ã‚‹æœŸé–“æ¯ã«ãƒ‡ãƒ¼ã‚¿ã‚’é›†è¨ˆã—1ç‚¹ã«é›†ç´„ã™ã‚‹å ´åˆã«ã€ãã®1ç‚¹ã®æ™‚åˆ»ã¨ã—ã¦ã€æœŸé–“ã®çµ‚äº†æ™‚é–“ã‚’æ¡ç”¨ã™ã‚‹ç¨®åˆ¥ã€‚<p>
      */
     public static final int COLLATE_DATA_DATE_TYPE_END = 2;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒT[ƒrƒX–¼B<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹åã€‚<br>
      *
-     * @param name ƒf[ƒ^ƒZƒbƒg–¼
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public void setName(String name);
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public String getName();
     
     /**
-     * w’è‚³‚ê‚½ƒVƒŠ[ƒY–¼‚ÌTimePeriodƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒªãƒ¼ã‚ºåã®TimePeriodã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param seriesName ƒVƒŠ[ƒY–¼
-     * @param clazz TimePeriodƒNƒ‰ƒX
+     * @param seriesName ã‚·ãƒªãƒ¼ã‚ºå
+     * @param clazz TimePeriodã‚¯ãƒ©ã‚¹
      */
     public void setTimePeriodClass(String seriesName, Class clazz);
     
     /**
-     * w’è‚³‚ê‚½ƒVƒŠ[ƒY–¼‚ÌTimePeriodƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒªãƒ¼ã‚ºåã®TimePeriodã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param seriesName ƒVƒŠ[ƒY–¼
-     * @return TimePeriodƒNƒ‰ƒX
+     * @param seriesName ã‚·ãƒªãƒ¼ã‚ºå
+     * @return TimePeriodã‚¯ãƒ©ã‚¹
      */
     public Class getTimePeriodClass(String seriesName);
     
     /**
-     * ’l‚ğ‚Ü‚Æ‚ß‚éê‡‚Ìˆ—ƒ^ƒCƒv‚ğİ’è‚·‚éB<p>
+     * å€¤ã‚’ã¾ã¨ã‚ã‚‹å ´åˆã®å‡¦ç†ã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param type ˆ—ƒ^ƒCƒv
+     * @param type å‡¦ç†ã‚¿ã‚¤ãƒ—
      */
     public void setCollateDataType(int type);
     
     /**
-     * ’l‚ğ‚Ü‚Æ‚ß‚éê‡‚Ìˆ—ƒ^ƒCƒv‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚’ã¾ã¨ã‚ã‚‹å ´åˆã®å‡¦ç†ã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ—ƒ^ƒCƒv
+     * @return å‡¦ç†ã‚¿ã‚¤ãƒ—
      */
     public int getCollateDataType();
     
     /**
-     * “¯’l‚ğ–³‹‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+     * åŒå€¤ã‚’ç„¡è¦–ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return true:–³‹‚·‚é/false:–³‹‚µ‚È‚¢
+     * @return true:ç„¡è¦–ã™ã‚‹/false:ç„¡è¦–ã—ãªã„
      */
     public boolean isIgnoreSameValue();
     
     /**
-     * “¯’l‚ğ–³‹‚·‚é‚©‚ğİ’è‚·‚éB<p>
+     * åŒå€¤ã‚’ç„¡è¦–ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param isIgnore true:–³‹‚·‚é/false:–³‹‚µ‚È‚¢
+     * @param isIgnore true:ç„¡è¦–ã™ã‚‹/false:ç„¡è¦–ã—ãªã„
      */
     public void setIgnoreSameValue(boolean isIgnore);
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔƒtƒB[ƒ‹ƒh‚Æw’è‚³‚ê‚½ŠúŠÔ‚Ì’·‚³‚ÅAƒf[ƒ^‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¨æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã®é•·ã•ã§ã€ãƒ‡ãƒ¼ã‚¿ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param field ŠúŠÔƒtƒB[ƒ‹ƒh
-     * @param period ŠúŠÔ‚Ì’·‚³
+     * @param field æœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+     * @param period æœŸé–“ã®é•·ã•
      */
     public void setCollateDataPeriod(int field, int period);
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔƒtƒB[ƒ‹ƒh‚Æw’è‚³‚ê‚½ŠúŠÔ‚Ì’·‚³‚ÅA“ü—Í‘ÎÛ‚Ìƒf[ƒ^‚ª‚Ç‚¤‚¢‚¤ŠúŠÔ‚Å“ü‚Á‚Ä‚¢‚é‚Ì‚©‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¨æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã®é•·ã•ã§ã€å…¥åŠ›å¯¾è±¡ã®ãƒ‡ãƒ¼ã‚¿ãŒã©ã†ã„ã†æœŸé–“ã§å…¥ã£ã¦ã„ã‚‹ã®ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param field ŠúŠÔƒtƒB[ƒ‹ƒh
-     * @param period ŠúŠÔ‚Ì’·‚³
+     * @param field æœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+     * @param period æœŸé–“ã®é•·ã•
      */
     public void setInputDataPeriod(int field, int period);
     
     /**
-     * ©“®•ªŠ„‹@”\‚ğg—p‚·‚é‚©İ’è‚·‚éB<p>
+     * è‡ªå‹•æ™‚åˆ†å‰²æ©Ÿèƒ½ã‚’ä½¿ç”¨ã™ã‚‹ã‹è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param isAuto true:©“®•ªŠ„‚·‚é/false:©“®•ªŠ„‚µ‚È‚¢
+     * @param isAuto true:è‡ªå‹•æ™‚åˆ†å‰²ã™ã‚‹/false:è‡ªå‹•æ™‚åˆ†å‰²ã—ãªã„
      */
     public void setAutoTimesharing(boolean isAuto);
     
     /**
-     * ©“®•ªŠ„‹@”\‚ğg—p‚·‚é‚©‚ğæ“¾‚·‚éB<P>
+     * è‡ªå‹•æ™‚åˆ†å‰²æ©Ÿèƒ½ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<P>
      * 
-     * @return true:©“®•ªŠ„‚·‚é/false:©“®•ªŠ„‚µ‚È‚¢
+     * @return true:è‡ªå‹•æ™‚åˆ†å‰²ã™ã‚‹/false:è‡ªå‹•æ™‚åˆ†å‰²ã—ãªã„
      */
     public boolean isAutoTimesharing();
     
     /**
-     * ‚ ‚éŠúŠÔ–ˆ‚Éƒf[ƒ^‚ğWŒv‚µ1“_‚ÉW–ñ‚·‚éê‡‚ÉA‚»‚Ì1“_‚Ì‚ğ‚Ç‚Ì‚æ‚¤‚ÉÌ—p‚·‚é‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #COLLATE_DATA_DATE_TYPE_START}B<br>
+     * ã‚ã‚‹æœŸé–“æ¯ã«ãƒ‡ãƒ¼ã‚¿ã‚’é›†è¨ˆã—1ç‚¹ã«é›†ç´„ã™ã‚‹å ´åˆã«ã€ãã®1ç‚¹ã®æ™‚åˆ»ã‚’ã©ã®ã‚ˆã†ã«æ¡ç”¨ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #COLLATE_DATA_DATE_TYPE_START}ã€‚<br>
      *
-     * @param type ‚ÌÌ—p•û–@
+     * @param type æ™‚åˆ»ã®æ¡ç”¨æ–¹æ³•
      * @see #COLLATE_DATA_DATE_TYPE_START
      * @see #COLLATE_DATA_DATE_TYPE_END
      */
     public void setCollateDataDateType(int type);
     
     /**
-     * ‚ ‚éŠúŠÔ–ˆ‚Éƒf[ƒ^‚ğWŒv‚µ1“_‚ÉW–ñ‚·‚éê‡‚ÉA‚»‚Ì1“_‚Ì‚ğ‚Ç‚Ì‚æ‚¤‚ÉÌ—p‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+     * ã‚ã‚‹æœŸé–“æ¯ã«ãƒ‡ãƒ¼ã‚¿ã‚’é›†è¨ˆã—1ç‚¹ã«é›†ç´„ã™ã‚‹å ´åˆã«ã€ãã®1ç‚¹ã®æ™‚åˆ»ã‚’ã©ã®ã‚ˆã†ã«æ¡ç”¨ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚ÌÌ—p•û–@
+     * @return æ™‚åˆ»ã®æ¡ç”¨æ–¹æ³•
      */
     public int getCollateDataDateType();
 }

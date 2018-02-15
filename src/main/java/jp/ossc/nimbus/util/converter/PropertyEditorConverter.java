@@ -38,7 +38,7 @@ import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link PropertyEditor}ƒRƒ“ƒo[ƒ^B<p>
+ * {@link PropertyEditor}ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -47,37 +47,37 @@ public class PropertyEditorConverter implements FormatConverter{
     private static final long serialVersionUID = 1236107411843329600L;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      */
     protected Class type;
     
     /**
-     * {@link PropertyEditor}‚Ìƒ}ƒbƒvB<p>
+     * {@link PropertyEditor}ã®ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map editorMap;
     
     /**
-     * {@link PropertyEditor}‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒvB<p>
+     * {@link PropertyEditor}ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map propertyMap;
     
     /**
-     * java.lang.StringŒ^ƒIƒuƒWƒFƒNƒg¨•¶š—ñ•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * java.lang.Stringå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PropertyEditorConverter(){
         this(OBJECT_TO_STRING, String.class.getName());
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param className •ÏŠ·‚·‚éƒIƒuƒWƒFƒNƒg‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param className å¤‰æ›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #OBJECT_TO_STRING
      * @see #STRING_TO_OBJECT
      */
@@ -87,9 +87,9 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #OBJECT_TO_STRING
      * @see #STRING_TO_OBJECT
@@ -99,9 +99,9 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -109,9 +109,9 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className •ÏŠ·‚·‚éƒIƒuƒWƒFƒNƒg‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @param className å¤‰æ›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      */
     public void setFormat(String className){
         try{
@@ -125,9 +125,9 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * •ÏŠ·‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·‚·‚éƒIƒuƒWƒFƒNƒg‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @return å¤‰æ›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #setFormat(String)
      */
     public String getFormat(){
@@ -135,10 +135,10 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * {@link PropertyEditor}‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link PropertyEditor}ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setEditorProperty(String name, Object value){
         if(propertyMap == null){
@@ -148,10 +148,10 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * {@link PropertyEditor}‚ğ“o˜^‚·‚éB<p>
+     * {@link PropertyEditor}ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param clazz •ÒW‚·‚éŒ^
-     * @param editorClass PropertyEditor‚ÌŒ^
+     * @param clazz ç·¨é›†ã™ã‚‹å‹
+     * @param editorClass PropertyEditorã®å‹
      */
     public void registerEditor(Class clazz, Class editorClass){
         if(editorMap == null){
@@ -161,9 +161,9 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * {@link PropertyEditor}‚ğŒ©‚Â‚¯‚éB<p>
+     * {@link PropertyEditor}ã‚’è¦‹ã¤ã‘ã‚‹ã€‚<p>
      * 
-     * @param clazz •ÒW‚·‚éŒ^
+     * @param clazz ç·¨é›†ã™ã‚‹å‹
      * @return PropertyEditor
      */
     protected PropertyEditor findEditor(Class clazz){
@@ -195,11 +195,11 @@ public class PropertyEditorConverter implements FormatConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){

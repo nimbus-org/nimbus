@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import java.util.Locale;
 
 /**
- * {@link ServletResponseSetInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ServletResponseSetInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ServletResponseSetInterceptorService
@@ -43,58 +43,58 @@ public interface ServletResponseSetInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * {@link javax.servlet.ServletResponse#setBufferSize(int)}‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setBufferSize(int)}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size ƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setBufferSize(int size);
     
     /**
-     * {@link javax.servlet.ServletResponse#setBufferSize(int)}‚Éİ’è‚·‚é’l‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setBufferSize(int)}ã«è¨­å®šã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒtƒ@ƒTƒCƒY
+     * @return ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getBufferSize();
     
     /**
-     * {@link javax.servlet.ServletResponse#setCharacterEncoding(String)}‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setCharacterEncoding(String)}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param charset •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param charset æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncoding(String charset);
     
     /**
-     * {@link javax.servlet.ServletResponse#setCharacterEncoding(String)}‚Éİ’è‚·‚é’l‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setCharacterEncoding(String)}ã«è¨­å®šã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncoding();
     
     /**
-     * {@link javax.servlet.ServletResponse#setContentType(String)}‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setContentType(String)}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type Content-Typeƒwƒbƒ_
+     * @param type Content-Typeãƒ˜ãƒƒãƒ€
      */
     public void setContentType(String type);
     
     /**
-     * {@link javax.servlet.ServletResponse#setContentType(String)}‚Éİ’è‚·‚é’l‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setContentType(String)}ã«è¨­å®šã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Content-Typeƒwƒbƒ_
+     * @return Content-Typeãƒ˜ãƒƒãƒ€
      */
     public String getContentType();
     
     /**
-     * {@link javax.servlet.ServletResponse#setLocale(Locale)}‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setLocale(Locale)}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param loc ƒƒP[ƒ‹î•ñ
+     * @param loc ãƒ­ã‚±ãƒ¼ãƒ«æƒ…å ±
      */
     public void setLocale(Locale loc);
     
     /**
-     * {@link javax.servlet.ServletResponse#setLocale(Locale)}‚Éİ’è‚·‚é’l‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.ServletResponse#setLocale(Locale)}ã«è¨­å®šã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒP[ƒ‹î•ñ
+     * @return ãƒ­ã‚±ãƒ¼ãƒ«æƒ…å ±
      */
     public Locale getLocale();
 }

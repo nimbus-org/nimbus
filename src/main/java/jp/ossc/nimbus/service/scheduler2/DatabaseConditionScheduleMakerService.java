@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.connection.*;
 
 
 /**
- * ƒf[ƒ^ƒx[ƒXğŒƒXƒPƒWƒ…[ƒ‹ì¬ƒT[ƒrƒXB<p>
- * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚Ì”»’è‚ğSQL‚ÉˆÏ÷‚·‚éB<br>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¡ä»¶ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã®åˆ¤å®šã‚’SQLã«å§”è­²ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -57,37 +57,37 @@ public class DatabaseConditionScheduleMakerService
     protected String query;
     protected String dateFormat;
     
-    // DatabaseConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // DatabaseConditionScheduleMakerServiceMBeanã®JavaDoc
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;
     }
-    // DatabaseConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // DatabaseConditionScheduleMakerServiceMBeanã®JavaDoc
     public ServiceName getConnectionFactoryServiceName(){
         return connectionFactoryServiceName;
     }
     
-    // DatabaseConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // DatabaseConditionScheduleMakerServiceMBeanã®JavaDoc
     public void setQuery(String query){
         this.query = query;
     }
-    // DatabaseConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // DatabaseConditionScheduleMakerServiceMBeanã®JavaDoc
     public String getQuery(){
         return query;
     }
     
-    // DatabaseConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // DatabaseConditionScheduleMakerServiceMBeanã®JavaDoc
     public void setDateFormat(String format){
         dateFormat = format;
     }
-    // DatabaseConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // DatabaseConditionScheduleMakerServiceMBeanã®JavaDoc
     public String getDateFormat(){
         return dateFormat;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -104,7 +104,7 @@ public class DatabaseConditionScheduleMakerService
     }
     
     /**
-     * {@link ConnectionFactory}‚ğİ’è‚·‚éB<p>
+     * {@link ConnectionFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory ConnectionFactory
      */
@@ -113,7 +113,7 @@ public class DatabaseConditionScheduleMakerService
     }
     
     /**
-     * {@link ConnectionFactory}‚ğæ“¾‚·‚éB<p>
+     * {@link ConnectionFactory}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return ConnectionFactory
      */
@@ -122,17 +122,17 @@ public class DatabaseConditionScheduleMakerService
     }
     
     /**
-     * ‚±‚Ì“ú•t‚ÅAƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * {@link #setQuery(String)}‚Åw’è‚³‚ê‚½SQL‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÉAˆø”‚Åw’è‚³‚ê‚½date‚ğİ’è‚µ‚ÄÀs‚·‚éB<br>
-     * ÀsŒ‹‰Ê‚ÍABooleanŒ^A”’lŒ^A•¶š—ñŒ^‚Ì‚¢‚¸‚ê‚©‚ğ‘z’è‚µ‚Ä‚¨‚èA<br>
-     * BooleanŒ^‚Ìê‡‚ÍA‚»‚Ì‚Ü‚Ü–ß‚è’l‚Æ‚·‚éB<br>
-     * ”’lŒ^‚Ìê‡‚ÍA0ˆÈŠO‚Ì’l‚Ìê‡A–ß‚è’l‚ğtrue‚Æ‚·‚éB<br>
-     * •¶š—ñŒ^‚Ìê‡‚ÍA"0"ˆÈŠO‚Ì’l‚Ìê‡A–ß‚è’l‚ğtrue‚Æ‚·‚éB<br>
+     * ã“ã®æ—¥ä»˜ã§ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * {@link #setQuery(String)}ã§æŒ‡å®šã•ã‚ŒãŸSQLã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«ã€å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸdateã‚’è¨­å®šã—ã¦å®Ÿè¡Œã™ã‚‹ã€‚<br>
+     * å®Ÿè¡Œçµæœã¯ã€Booleanå‹ã€æ•°å€¤å‹ã€æ–‡å­—åˆ—å‹ã®ã„ãšã‚Œã‹ã‚’æƒ³å®šã—ã¦ãŠã‚Šã€<br>
+     * Booleanå‹ã®å ´åˆã¯ã€ãã®ã¾ã¾æˆ»ã‚Šå€¤ã¨ã™ã‚‹ã€‚<br>
+     * æ•°å€¤å‹ã®å ´åˆã¯ã€0ä»¥å¤–ã®å€¤ã®å ´åˆã€æˆ»ã‚Šå€¤ã‚’trueã¨ã™ã‚‹ã€‚<br>
+     * æ–‡å­—åˆ—å‹ã®å ´åˆã¯ã€"0"ä»¥å¤–ã®å€¤ã®å ´åˆã€æˆ»ã‚Šå€¤ã‚’trueã¨ã™ã‚‹ã€‚<br>
      *
-     * @param date ì¬“ú
-     * @param master ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^
-     * @return true‚Ìê‡Aì‚é•K—v‚ª‚ ‚é
-     * @exception ScheduleMakeException ”»’è‚É¸”s‚µ‚½ê‡
+     * @param date ä½œæˆæ—¥
+     * @param master ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿
+     * @return trueã®å ´åˆã€ä½œã‚‹å¿…è¦ãŒã‚ã‚‹
+     * @exception ScheduleMakeException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean isNecessaryMake(Date date, ScheduleMaster master)
      throws ScheduleMakeException{

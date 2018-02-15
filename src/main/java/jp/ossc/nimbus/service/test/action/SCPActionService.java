@@ -47,9 +47,9 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * SCP��GET/MGET/PUT/MPUT���s���e�X�g�A�N�V�����B
+ * SCPでGET/MGET/PUT/MPUTを行うテストアクション。
  * <p>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  *
  * @author M.Ishida
  */
@@ -79,27 +79,27 @@ public class SCPActionService extends ServiceBase implements TestAction, TestAct
     }
 
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁASCP��GET/MGET/PUT/MPUT���s���B
+     * リソースの内容を読み込んで、SCPでGET/MGET/PUT/MPUTを行う。
      * <p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースのフォーマットは、以下。<br>
      *
      * <pre>
      * actionType
      * filePath
      * </pre>
      *
-     * actionType�́AGET�AMGET�܂���PUT�AMPUT���w�肷��B<br>
-     * filePath�́A�ȉ��̃t�H�[�}�b�g�ƂȂ�B<br>
-     * GET�̏ꍇ�A�擾����t�@�C���̃p�X,�擾��̃t�@�C����<br>
-     * MGET�̏ꍇ�A�擾����t�@�C���̃p�X<br>
-     * PUT�̏ꍇ�A�]������t�@�C����,�]����̃f�B���N�g����,�]����ł̃t�@�C���̌����i�ȗ��j<br>
-     * MPUT�̏ꍇ�A�]������f�B���N�g����,�]����̃f�B���N�g����,�]����ł̃t�@�C���̌����i�ȗ��j<br>
-     * �����w�肷��ꍇ�́A���s���Ďw�肷��B<br>
+     * actionTypeは、GET、MGETまたはPUT、MPUTを指定する。<br>
+     * filePathは、以下のフォーマットとなる。<br>
+     * GETの場合、取得するファイルのパス,取得後のファイル名<br>
+     * MGETの場合、取得するファイルのパス<br>
+     * PUTの場合、転送するファイル名,転送先のディレクトリ名,転送先でのファイルの権限（省略可）<br>
+     * MPUTの場合、転送するディレクトリ名,転送先のディレクトリ名,転送先でのファイルの権限（省略可）<br>
+     * 複数指定する場合は、改行して指定する。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return GET�AMGET�̏ꍇ�A�擾�����t�@�C���̃��X�g�BPUT�AMPUTE�̏ꍇ�Anull�B
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return GET、MGETの場合、取得したファイルのリスト。PUT、MPUTEの場合、null。
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception {
         BufferedReader br = new BufferedReader(resource);

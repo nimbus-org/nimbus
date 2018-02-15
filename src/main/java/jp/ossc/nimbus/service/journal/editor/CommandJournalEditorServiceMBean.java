@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link CommandJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link CommandJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see CommandJournalEditorService
@@ -41,77 +41,77 @@ public interface CommandJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * Às‚·‚éBeanFlow‚ÌƒL[‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * å®Ÿè¡Œã™ã‚‹BeanFlowã®ã‚­ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputFlowKey(boolean isOutput);
     
     /**
-     * Às‚·‚éBeanFlow‚ÌƒL[‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹BeanFlowã®ã‚­ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputFlowKey();
     
     /**
-     * ƒRƒ}ƒ“ƒh“ü—Í‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputInput(boolean isOutput);
     
     /**
-     * ƒRƒ}ƒ“ƒh“ü—Í‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputInput();
     
     /**
-     * ƒRƒ}ƒ“ƒho—Í‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * ã‚³ãƒãƒ³ãƒ‰å‡ºåŠ›ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputOutput(boolean isOutput);
     
     /**
-     * ƒRƒ}ƒ“ƒho—Í‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚³ãƒãƒ³ãƒ‰å‡ºåŠ›ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputOutput();
     
     /**
-     * ÀsƒXƒe[ƒ^ƒX‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputStatus(boolean isOutput);
     
     /**
-     * ÀsƒXƒe[ƒ^ƒX‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputStatus();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputException(boolean isOutput);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputException();
 }

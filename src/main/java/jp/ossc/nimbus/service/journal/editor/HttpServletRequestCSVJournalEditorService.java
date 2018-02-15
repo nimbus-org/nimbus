@@ -39,7 +39,7 @@ import javax.servlet.http.*;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * HttpServletRequestƒIƒuƒWƒFƒNƒg‚ğCSVŒ`®‚ÅƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * HttpServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’CSVå½¢å¼ã§ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

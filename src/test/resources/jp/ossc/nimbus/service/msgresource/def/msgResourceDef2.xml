@@ -1,6 +1,6 @@
-<?xml version = "1.0" encoding="Shift_JIS"?>
+<?xml version = "1.0" encoding="UTF-8"?>
 <MessageResourceDefine>
-<Message name="" display="Objectメッセージ" selectKey="60">
+<Message name="" display="Object繝｡繝�繧ｻ繝ｼ繧ｸ" selectKey="60">
 	<BLFlow pattern="heat.reqrep">
 		heat.rr.pattern1
 	</BLFlow>

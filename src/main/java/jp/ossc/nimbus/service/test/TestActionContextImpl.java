@@ -35,7 +35,7 @@ import java.io.Reader;
 import java.io.Serializable;
 
 /**
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXB<p>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */

@@ -40,9 +40,9 @@ import jp.ossc.nimbus.util.converter.StreamStringConverter;
 import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
- * ƒyƒCƒ[ƒhƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ğw’è‚Å‚«‚é{@link jp.ossc.nimbus.service.http.HttpResponse HttpResponse}B
+ * ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ã‚’æŒ‡å®šã§ãã‚‹{@link jp.ossc.nimbus.service.http.HttpResponse HttpResponse}ã€‚
  * <p>
- *     StreamConverterƒvƒƒpƒeƒB‚É‚Í{@link BindingStreamConverter}À‘•ƒNƒ‰ƒX‚ğw’è‚·‚éB
+ *     StreamConverterãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã¯{@link BindingStreamConverter}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚
  * </p>
  * @author T.Okada
  */
@@ -51,7 +51,7 @@ public class BindingHttpResponse extends HttpResponseImpl {
     private Object responseObject;
 
     /**
-     * ƒyƒCƒ[ƒhƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ğİ’è‚·‚éB
+     * ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setResponseObject(Object responseObject) {
         this.responseObject = responseObject;

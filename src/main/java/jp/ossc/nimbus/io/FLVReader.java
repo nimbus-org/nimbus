@@ -40,7 +40,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 
 /**
- * FLViFixed Length ValuejŒ`®‚ÌReaderƒNƒ‰ƒXB<p>
+ * FLVï¼ˆFixed Length Valueï¼‰å½¢å¼ã®Readerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.FLVReader;
@@ -65,7 +65,7 @@ import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 public class FLVReader extends LineNumberReader{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‰üs•¶šB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ”¹è¡Œæ–‡å­—ã€‚<p>
      */
     public static final String LINE_SEPARATOR
          = System.getProperty("line.separator");
@@ -82,79 +82,79 @@ public class FLVReader extends LineNumberReader{
     protected ReaderWrapper readerWrapper;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FLVReader(){
         this(new ReaderWrapper());
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVReader(int[] fieldLen){
         this(fieldLen, null);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(int[] fieldLen, String encoding){
         this(new ReaderWrapper(), fieldLen, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         this(new ReaderWrapper(), fieldLen, convs, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
      */
     public FLVReader(Reader reader){
         this(reader, null);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVReader(Reader reader, int[] fieldLen){
         this(reader, fieldLen, null);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(Reader reader, int[] fieldLen, String encoding){
         this(reader, fieldLen, null, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(Reader reader, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader instanceof ReaderWrapper ? reader : new ReaderWrapper(reader));
@@ -165,88 +165,88 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVReader(int size){
         this(size, null);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVReader(int size, int[] fieldLen){
         this(size, fieldLen, null);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(int size, int[] fieldLen, String encoding){
         this(size, fieldLen, null, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         this(new ReaderWrapper(), size, fieldLen, convs, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVReader(Reader reader, int size){
         this(reader, size, null);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVReader(Reader reader, int size, int[] fieldLen){
         this(reader, size, fieldLen, null);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(Reader reader, int size, int[] fieldLen, String encoding){
         this(reader, size, fieldLen, null, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVReader(Reader reader, int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader instanceof ReaderWrapper ? reader : new ReaderWrapper(reader), size);
@@ -257,61 +257,61 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * ŠeƒtƒB[ƒ‹ƒh‚ÌƒoƒCƒg’·‚ğİ’è‚·‚éB<p>
+     * å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒã‚¤ãƒˆé•·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param length ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param length ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public void setFieldLength(int[] length){
         fieldLength = length;
     }
     
     /**
-     * ŠeƒtƒB[ƒ‹ƒh‚ÌƒoƒCƒg’·‚ğæ“¾‚·‚éB<p>
+     * å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒã‚¤ãƒˆé•·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @return ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public int[] getFieldLength(){
         return fieldLength;
     }
     
     /**
-     * ŠeƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚Ì‰ğœ‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğİ’è‚·‚éB<p>
+     * å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã®è§£é™¤ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param convs ƒpƒfƒBƒ“ƒO‚Ì‰ğœ‚ğs‚¤ƒRƒ“ƒo[ƒ^‚Ì”z—ñ
+     * @param convs ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã®è§£é™¤ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®é…åˆ—
      */
     public void setFieldPaddingStringConverter(PaddingStringConverter[] convs){
         converters = convs;
     }
     
     /**
-     * ŠeƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚Ì‰ğœ‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã®è§£é™¤ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒfƒBƒ“ƒO‚Ì‰ğœ‚ğs‚¤ƒRƒ“ƒo[ƒ^‚Ì”z—ñ
+     * @return ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã®è§£é™¤ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®é…åˆ—
      */
     public PaddingStringConverter[] getFieldPaddingStringConverter(){
         return converters;
     }
     
     /**
-     * •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setEncoding(String encoding){
         this.encoding = encoding;
     }
     
     /**
-     * •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getEncoding(){
         return encoding;
     }
     
     /**
-     * Reader‚ğİ’è‚·‚éB<p>
+     * Readerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param reader Reader
      */
@@ -320,49 +320,49 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * ‹ós‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ‹ós‚ğ–³‹‚·‚é‚æ‚¤‚Éİ’è‚µ‚½ê‡A‹ós‚Ís”‚Æ‚µ‚Ä‚àƒJƒEƒ“ƒg‚³‚ê‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³‹‚µ‚È‚¢B<br>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‚ˆã†ã«è¨­å®šã—ãŸå ´åˆã€ç©ºè¡Œã¯è¡Œæ•°ã¨ã—ã¦ã‚‚ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param isIgnore ‹ós‚ğ–³‹‚·‚éê‡true
+     * @param isIgnore ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreEmptyLine(boolean isIgnore){
         isIgnoreEmptyLine = isIgnore;
     }
     
     /**
-     * ‹ós‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‹ós‚ğ–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreEmptyLine(){
          return isIgnoreEmptyLine;
     }
     
     /**
-     * ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param value ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ
+     * @param value ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—
      */
     public void setCommentPrefix(String value){
         commentPrefix = value;
     }
     
     /**
-     * ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ
+     * @return ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—
      */
     public String getCommentPrefix(){
         return commentPrefix;
     }
     
     /**
-     * w’è‚³‚ê‚½s”•ªƒXƒLƒbƒv‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸè¡Œæ•°åˆ†ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ã€‚<p>
      *
-     * @param line ƒXƒLƒbƒv‚·‚és”
-     * @return ƒXƒLƒbƒv‚³‚ê‚½s”
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param line ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹è¡Œæ•°
+     * @return ã‚¹ã‚­ãƒƒãƒ—ã•ã‚ŒãŸè¡Œæ•°
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public long skipLine(long line) throws IOException{
         int result = 0;
@@ -375,12 +375,12 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * w’è‚³‚ê‚½FLVs”•ªƒXƒLƒbƒv‚·‚éB<p>
-     * {@link #isIgnoreEmptyLine()}‚ªtrue‚Ìê‡‚ÍA‹ós‚ÍƒXƒLƒbƒvs”‚ÌƒJƒEƒ“ƒg‚©‚çœ‚©‚ê‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸFLVè¡Œæ•°åˆ†ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ã€‚<p>
+     * {@link #isIgnoreEmptyLine()}ãŒtrueã®å ´åˆã¯ã€ç©ºè¡Œã¯ã‚¹ã‚­ãƒƒãƒ—è¡Œæ•°ã®ã‚«ã‚¦ãƒ³ãƒˆã‹ã‚‰é™¤ã‹ã‚Œã‚‹ã€‚<br>
      *
-     * @param line ƒXƒLƒbƒv‚·‚és”
-     * @return ƒXƒLƒbƒv‚³‚ê‚½s”
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param line ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹è¡Œæ•°
+     * @return ã‚¹ã‚­ãƒƒãƒ—ã•ã‚ŒãŸè¡Œæ•°
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public long skipFLVLine(long line) throws IOException{
         List flv = null;
@@ -395,10 +395,10 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * FLVs‚ğ1s“Ç‚İ‚ŞB<p>
+     * FLVè¡Œã‚’1è¡Œèª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return FLV—v‘f‚Ì•¶š—ñ”z—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @return FLVè¦ç´ ã®æ–‡å­—åˆ—é…åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public String[] readFLVLine() throws IOException{
         final List flv = readFLVLineList();
@@ -407,22 +407,22 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * FLVs‚ğ1s“Ç‚İ‚ŞB<p>
+     * FLVè¡Œã‚’1è¡Œèª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return FLV—v‘f‚Ì•¶š—ñƒŠƒXƒg
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @return FLVè¦ç´ ã®æ–‡å­—åˆ—ãƒªã‚¹ãƒˆ
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List readFLVLineList() throws IOException{
         return readFLVLineList(null);
     }
     
     /**
-     * FLVs‚ğ1s“Ç‚İ‚ŞB<p>
-     * FLV—v‘f‚Ì•¶š—ñ‚ğŠi”[‚·‚éƒŠƒXƒg‚ğÄ—˜—p‚·‚é‚½‚ß‚Ìƒƒ\ƒbƒh‚Å‚ ‚éB<br>
+     * FLVè¡Œã‚’1è¡Œèª­ã¿è¾¼ã‚€ã€‚<p>
+     * FLVè¦ç´ ã®æ–‡å­—åˆ—ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param flv FLV—v‘f‚Ì•¶š—ñ‚ğŠi”[‚·‚éƒŠƒXƒg
-     * @return FLV—v‘f‚Ì•¶š—ñƒŠƒXƒg
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param flv FLVè¦ç´ ã®æ–‡å­—åˆ—ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆ
+     * @return FLVè¦ç´ ã®æ–‡å­—åˆ—ãƒªã‚¹ãƒˆ
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List readFLVLineList(List flv) throws IOException{
         String line = null;
@@ -484,9 +484,9 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * {@link FLVReader.FLVElements}‚ÌŒJ‚è•Ô‚µ‚ğæ“¾‚·‚éB<p>
+     * {@link FLVReader.FLVElements}ã®ç¹°ã‚Šè¿”ã—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return FLVElements‚ÌŒJ‚è•Ô‚µ
+     * @return FLVElementsã®ç¹°ã‚Šè¿”ã—
      */
     public FLVIterator iterator(){
         if(iterator == null){
@@ -496,7 +496,7 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * {@link FLVReader.FLVElements}‚ÌŒJ‚è•Ô‚µB<p>
+     * {@link FLVReader.FLVElements}ã®ç¹°ã‚Šè¿”ã—ã€‚<p>
      *
      * @author M.Takata
      */
@@ -507,10 +507,10 @@ public class FLVReader extends LineNumberReader{
         private FLVIterator(){}
         
         /**
-         * Ÿ‚ÌFLV—v‘f‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * æ¬¡ã®FLVè¦ç´ ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return Ÿ‚ÌFLV—v‘f‚ª‚ ‚éê‡‚Ítrue
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®FLVè¦ç´ ãŒã‚ã‚‹å ´åˆã¯true
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean hasNext() throws IOException{
             if(hasNext){
@@ -522,10 +522,10 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * Ÿ‚ÌFLV—v‘f‚ğæ“¾‚·‚éB<p>
+         * æ¬¡ã®FLVè¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Ÿ‚ÌFLV—v‘fBŸ‚ÌFLV—v‘f‚ª‚È‚¢ê‡‚Ínull
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®FLVè¦ç´ ã€‚æ¬¡ã®FLVè¦ç´ ãŒãªã„å ´åˆã¯null
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          * @see #nextElements()
          */
         public Object next() throws IOException{
@@ -533,11 +533,11 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * Ÿ‚ÌFLV—v‘f‚ğæ“¾‚·‚éB<p>
-         * ‚±‚±‚Åæ“¾‚³‚ê‚é{@link FLVReader.FLVElements}‚ÍA–ˆ‰ñÄ—˜—p‚³‚ê‚éB<br>
+         * æ¬¡ã®FLVè¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * ã“ã“ã§å–å¾—ã•ã‚Œã‚‹{@link FLVReader.FLVElements}ã¯ã€æ¯å›å†åˆ©ç”¨ã•ã‚Œã‚‹ã€‚<br>
          *
-         * @return Ÿ‚ÌFLV—v‘fBŸ‚ÌFLV—v‘f‚ª‚È‚¢ê‡‚Ínull
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®FLVè¦ç´ ã€‚æ¬¡ã®FLVè¦ç´ ãŒãªã„å ´åˆã¯null
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public FLVElements nextElements() throws IOException{
             if(!hasNext){
@@ -551,19 +551,19 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public FLVReader cloneReader(){
         return cloneReader(new FLVReader());
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clone –¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @return –¢Ú‘±‚Ì•¡»
+     * @param clone æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     protected FLVReader cloneReader(FLVReader clone){
         clone.encoding = encoding;
@@ -578,7 +578,7 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
-     * FLVŒ`®ƒf[ƒ^‚Ì1s‚ğ•\‚·FLV—v‘fB<p>
+     * FLVå½¢å¼ãƒ‡ãƒ¼ã‚¿ã®1è¡Œã‚’è¡¨ã™FLVè¦ç´ ã€‚<p>
      * 
      * @author M.Takata
      */
@@ -591,7 +591,7 @@ public class FLVReader extends LineNumberReader{
         private FLVElements(){}
         
         /**
-         * ‚±‚ÌFLV—v‘f‚ğƒNƒŠƒA‚·‚éB<p>
+         * ã“ã®FLVè¦ç´ ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
          */
         public void clear(){
             wasNull = false;
@@ -599,20 +599,20 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * æ“¾‚µ‚½’l‚ªnull‚¾‚Á‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-         * {@link #getInt(int)}‚È‚Ç‚ÌA”’lŒn‚Ìgetter‚Å’l‚ğæ“¾‚µ‚½ê‡A’l‚ªnull‚â‹ó•¶š‚¾‚Á‚½ê‡‚ÉA0‚ğ•Ô‚·B‚»‚ÌA’l‚ª0‚¾‚Á‚½‚Ì‚©null‚Ü‚½‚Í‹ó•¶š‚¾‚Á‚½‚Ì‚©‚ğ”»’f‚·‚é‚Ì‚Ég—p‚·‚éB<br>
+         * å–å¾—ã—ãŸå€¤ãŒnullã ã£ãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+         * {@link #getInt(int)}ãªã©ã®ã€æ•°å€¤ç³»ã®getterã§å€¤ã‚’å–å¾—ã—ãŸå ´åˆã€å€¤ãŒnullã‚„ç©ºæ–‡å­—ã ã£ãŸå ´åˆã«ã€0ã‚’è¿”ã™ã€‚ãã®æ™‚ã€å€¤ãŒ0ã ã£ãŸã®ã‹nullã¾ãŸã¯ç©ºæ–‡å­—ã ã£ãŸã®ã‹ã‚’åˆ¤æ–­ã™ã‚‹ã®ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
          *
-         * @return æ“¾‚µ‚½’l‚ªnull‚¾‚Á‚½ê‡true
+         * @return å–å¾—ã—ãŸå€¤ãŒnullã ã£ãŸå ´åˆtrue
          */
         public boolean wasNull(){
             return wasNull;
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ 
          */
         public Object get(int index){
             Object obj = super.get(index);
@@ -621,10 +621,10 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š—ñ
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—åˆ—
          */
         public String getString(int index){
             String str = (String)get(index);
@@ -633,24 +633,24 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg
-         * @exception NumberFormatException —v‘f‚ªƒoƒCƒg•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆ
+         * @exception NumberFormatException è¦ç´ ãŒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public byte getByte(int index) throws NumberFormatException{
             return getByte(index, 10);
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @param radix Šî”
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg
-         * @exception NumberFormatException —v‘f‚ªƒoƒCƒg•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param radix åŸºæ•°
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆ
+         * @exception NumberFormatException è¦ç´ ãŒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public byte getByte(int index, int radix) throws NumberFormatException{
             String str = getString(index);
@@ -665,12 +665,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public short getShort(int index) throws NumberFormatException{
             String str = getString(index);
@@ -685,12 +685,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
-         * ‚Ü‚½Aw’è‚³‚ê‚½—v‘f‚ªA•¡”•¶š‚©‚ç¬‚éê‡‚ÍA1•¶š–Ú‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
+         * ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒã€è¤‡æ•°æ–‡å­—ã‹ã‚‰æˆã‚‹å ´åˆã¯ã€1æ–‡å­—ç›®ã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—
          */
         public char getChar(int index){
             final String str = getString(index);
@@ -702,12 +702,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public int getInt(int index) throws NumberFormatException{
             String str = getString(index);
@@ -722,12 +722,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public long getLong(int index) throws NumberFormatException{
             String str = getString(index);
@@ -742,12 +742,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public float getFloat(int index) throws NumberFormatException{
             String str = getString(index);
@@ -762,12 +762,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public double getDouble(int index) throws NumberFormatException{
             String str = getString(index);
@@ -782,11 +782,11 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍAfalse‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€falseã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒtƒ‰ƒO
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒ•ãƒ©ã‚°
          */
         public boolean getBoolean(int index){
             String str = getString(index);
@@ -801,12 +801,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍAnull‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€nullã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public BigInteger getBigInteger(int index) throws NumberFormatException{
             String str = getString(index);
@@ -821,12 +821,12 @@ public class FLVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍAnull‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€nullã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public BigDecimal getBigDecimal(int index) throws NumberFormatException{
             String str = getString(index);

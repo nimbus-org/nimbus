@@ -38,9 +38,9 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.message.*;
 
 /**
- * —áŠOƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄA‰½‚à‚¹‚¸‚É—áŠO‚ğ•Ô‚·ƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAUnsupportedOperationException‚ğthrow‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä¾‹å¤–ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ä½•ã‚‚ã›ãšã«ä¾‹å¤–ã‚’è¿”ã™ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€UnsupportedOperationExceptionã‚’throwã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -51,7 +51,7 @@ import jp.ossc.nimbus.service.message.*;
  *         &lt;service name="UnsupportedOperationExceptionTrowInterceptor"
  *                  code="jp.ossc.nimbus.service.aop.interceptor.ExceptionThrowInterceptorService"&gt;
  *             &lt;attribute name="ExceptionClassName"&gt;java.lang.UnsupportedOperationException&lt;/attribute&gt;
- *             &lt;attribute name="Message"&gt;‚±‚Ìƒƒ\ƒbƒh‚ÍŒÄ‚Ño‚µ‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñB&lt;/attribute&gt;
+ *             &lt;attribute name="Message"&gt;ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯å‘¼ã³å‡ºã—ã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚&lt;/attribute&gt;
  *         &lt;/service&gt;
  *         
  *     &lt;/manager&gt;
@@ -76,78 +76,78 @@ public class ExceptionThrowInterceptorService extends ServiceBase
     private Locale messageLocale;
     private boolean isEnabled = true;
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setEnabled(boolean enabled){
         isEnabled = enabled;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setExceptionClassName(String className){
         exceptionClassName = className;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public String getExceptionClassName(){
         return exceptionClassName;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setMessage(String msg){
         message = msg;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public String getMessage(){
         return message;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setMessageRecordFactoryServiceName(ServiceName name){
         messageRecordFactoryServiceName = name;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public ServiceName getMessageRecordFactoryServiceName(){
         return messageRecordFactoryServiceName;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setMessageKey(String key){
         messageKey = key;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public String getMessageKey(){
         return messageKey;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setMessageArgs(String[] args){
         messageArgs = args;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public String[] getMessageArgs(){
         return messageArgs;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public void setMessageLocale(Locale locale){
         messageLocale = locale;
     }
     
-    // ExceptionThrowInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionThrowInterceptorServiceMBeanã®JavaDoc
     public Locale getMessageLocale(){
         return messageLocale;
     }
     
     /**
-     * MessageRecordFactory‚ğİ’è‚·‚éB<p>
+     * MessageRecordFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory MessageRecordFactory
      */
@@ -160,9 +160,9 @@ public class ExceptionThrowInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception w’è‚³‚ê‚½—áŠO‚ª¶¬‚Å‚«‚È‚¢ê‡
+     * @exception Exception æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ãŒç”Ÿæˆã§ããªã„å ´åˆ
      */
     public void startService() throws Exception{
         createThrowable();
@@ -242,13 +242,13 @@ public class ExceptionThrowInterceptorService extends ServiceBase
     }
     
     /**
-     * İ’è‚³‚ê‚½—áŠO‚ğthrow‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAİ’è‚³‚ê‚½—áŠO‚Íthrow‚¹‚¸‚ÉAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B
+     * è¨­å®šã•ã‚ŒãŸä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€è¨­å®šã•ã‚ŒãŸä¾‹å¤–ã¯throwã›ãšã«ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable İ’è‚³‚ê‚½—áŠO
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable è¨­å®šã•ã‚ŒãŸä¾‹å¤–
      */
     public Object invoke(
         InvocationContext context,

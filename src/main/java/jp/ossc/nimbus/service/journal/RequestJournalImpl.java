@@ -35,7 +35,7 @@ import java.util.*;
 import jp.ossc.nimbus.service.journal.editorfinder.*;
 
 /**
- * {@link RequestJournal}À‘•ƒNƒ‰ƒXB<p>
+ * {@link RequestJournal}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author   H.Nakano
  */
@@ -44,50 +44,50 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
     private static final long serialVersionUID = 687167860749686268L;
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ÌƒŠƒXƒgB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List mRequestAry;
     
     /**
-     * ƒXƒeƒbƒvŠJnB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—é–‹å§‹æ™‚åˆ»ã€‚<p>
      */
     protected Date mStartTime;
     
     /**
-     * ƒXƒeƒbƒvI—¹B<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—çµ‚äº†æ™‚åˆ»ã€‚<p>
      */
     protected Date mEndTime;
     
     /**
-     * ƒXƒeƒbƒv‚ÌƒL[B<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã€‚<p>
      */
     protected String mKey;
     
     /**
-     * ƒŠƒNƒGƒXƒgIDB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã€‚<p>
      */
     protected String mRequestId;
     
     /**
-     * eƒXƒeƒbƒv‚ÌJournalRecordB<p>
+     * è¦ªã‚¹ãƒ†ãƒƒãƒ—ã®JournalRecordã€‚<p>
      */
     protected JournalRecordImpl mStepRoot;
     
     /**
-     * Œ»İ‚ÌƒXƒeƒbƒv‚ÌJournalRecordB<p>
+     * ç¾åœ¨ã®ã‚¹ãƒ†ãƒƒãƒ—ã®JournalRecordã€‚<p>
      */
     protected JournalRecordImpl mCurrentRoot;
     
     /**
-     * ƒXƒeƒbƒv‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡ƒXƒeƒbƒvB<br>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã‚¹ãƒ†ãƒƒãƒ—ã€‚<br>
      */
     protected boolean mIsStep = false ;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param isStep ƒXƒeƒbƒv‚Ìê‡true
+     * @param isStep ã‚¹ãƒ†ãƒƒãƒ—ã®å ´åˆtrue
      */
     public RequestJournalImpl(boolean isStep) {
         super();
@@ -98,71 +98,71 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
     }
     
     /**
-     * ƒXƒeƒbƒv‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒeƒbƒv‚Ìê‡true
+     * @return ã‚¹ãƒ†ãƒƒãƒ—ã®å ´åˆtrue
      */
     public boolean isStep(){
         return this.mIsStep;
     }
     
     /**
-     * ƒXƒeƒbƒv‚ÌƒL[‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒXƒeƒbƒv‚ÌƒL[
+     * @param key ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      */
     public void setKey(String key){
         mKey=key;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒŠƒNƒGƒXƒgID
+     * @param id ãƒªã‚¯ã‚¨ã‚¹ãƒˆID
      */
     public void setRequestId(String id){
         mRequestId=id;
     }
     
     /**
-     * ƒXƒeƒbƒv‚ÌŠJn‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã®é–‹å§‹æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param dt ƒXƒeƒbƒv‚ÌŠJn
+     * @param dt ã‚¹ãƒ†ãƒƒãƒ—ã®é–‹å§‹æ™‚åˆ»
      */
     public void setStartTime(Date dt){
         mStartTime = dt;
     }
     
     /**
-     * Œ»İ‚ğƒXƒeƒbƒv‚ÌŠJn‚Éİ’è‚·‚éB<p>
+     * ç¾åœ¨æ™‚åˆ»ã‚’ã‚¹ãƒ†ãƒƒãƒ—ã®é–‹å§‹æ™‚åˆ»ã«è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void setStartTime(){
         mStartTime = new Date();
     }
     
     /**
-     * Œ»İ‚ğƒXƒeƒbƒv‚ÌI—¹‚Éİ’è‚·‚éB<p>
+     * ç¾åœ¨æ™‚åˆ»ã‚’ã‚¹ãƒ†ãƒƒãƒ—ã®çµ‚äº†æ™‚åˆ»ã«è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void setEndTime(){
         mEndTime = new Date();
     }
     
     /**
-     * ƒXƒeƒbƒv‚ÌI—¹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã®çµ‚äº†æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒeƒbƒv‚ÌI—¹
+     * @param time ã‚¹ãƒ†ãƒƒãƒ—ã®çµ‚äº†æ™‚åˆ»
      */
     public void setEndTime(Date time){
         mEndTime = time;
     }
     
     /**
-     * ƒXƒeƒbƒv‚Ì{@link RequestJournal}‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã®{@link RequestJournal}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒL[
-     * @param finder RequestJournal‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
-     * @param obj RequestJournalƒIƒuƒWƒFƒNƒg
-     * @return RequestJournal‚ğŠi”[‚µ‚½{@link JournalRecord}
+     * @param key ã‚­ãƒ¼
+     * @param finder RequestJournalã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
+     * @param obj RequestJournalã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return RequestJournalã‚’æ ¼ç´ã—ãŸ{@link JournalRecord}
      */
     public JournalRecord setParamObj(
         String key,
@@ -178,12 +178,12 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
     }
     
     /**
-     * ƒXƒeƒbƒv‚ÌƒWƒƒ[ƒiƒ‹î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒL[
-     * @param finder ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}
-     * @param obj ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ‚ğŠi”[‚µ‚½{@link JournalRecord}
+     * @param key ã‚­ãƒ¼
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}
+     * @param obj ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’æ ¼ç´ã—ãŸ{@link JournalRecord}
      */
     public JournalRecord setInfoObj(
         String key,
@@ -198,22 +198,22 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
         return rec;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public String getKey(){
         return this.mKey;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public String getRequestId(){
         return this.mRequestId;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public Date getStartTime(){
         return this.mStartTime;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public Date getEndTime(){
         if(mEndTime == null){
             mEndTime = new Date();
@@ -221,7 +221,7 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
         return this.mEndTime;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public long getPerformance(){
         if(mEndTime == null){
             mEndTime = new Date();
@@ -229,7 +229,7 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
         return this.mEndTime.getTime() - this.mStartTime.getTime();
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public JournalRecord[] getParamAry(){
         JournalRecord[] ret = new JournalRecord[this.mRequestAry.size()];
         for(int cnt = 0 ;cnt < ret.length; cnt++){
@@ -239,10 +239,10 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
     }
     
     /**
-     * eƒXƒeƒbƒv‚ÆŒ»İ‚ÌƒXƒeƒbƒv‚Ì{@link JournalRecord}‚ğİ’è‚·‚éB<p>
+     * è¦ªã‚¹ãƒ†ãƒƒãƒ—ã¨ç¾åœ¨ã®ã‚¹ãƒ†ãƒƒãƒ—ã®{@link JournalRecord}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param stepRoot eƒXƒeƒbƒv
-     * @param curRoot Œ»İƒXƒeƒbƒv
+     * @param stepRoot è¦ªã‚¹ãƒ†ãƒƒãƒ—
+     * @param curRoot ç¾åœ¨ã‚¹ãƒ†ãƒƒãƒ—
      */
     public void setRoot(
         JournalRecordImpl stepRoot,
@@ -253,29 +253,29 @@ public class RequestJournalImpl implements RequestJournal, java.io.Serializable{
     }
     
     /**
-     * eƒXƒeƒbƒv‚Ì{@link JournalRecord}‚ğæ“¾‚·‚éB<p>
+     * è¦ªã‚¹ãƒ†ãƒƒãƒ—ã®{@link JournalRecord}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return eƒXƒeƒbƒv‚ÌJournalRecord
+     * @return è¦ªã‚¹ãƒ†ãƒƒãƒ—ã®JournalRecord
      */
     public JournalRecordImpl getStepRoot(){
         return this.mStepRoot;
     }
     
     /**
-     * Œ»İƒXƒeƒbƒv‚Ì{@link JournalRecord}‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã‚¹ãƒ†ãƒƒãƒ—ã®{@link JournalRecord}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İƒXƒeƒbƒv‚ÌJournalRecord
+     * @return ç¾åœ¨ã‚¹ãƒ†ãƒƒãƒ—ã®JournalRecord
      */
     public JournalRecordImpl getCurRoot(){
         return this.mCurrentRoot;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public boolean isRoot(){
         return getCurRoot() == null;
     }
     
-    // RequestJournal ‚ÌJavaDoc
+    // RequestJournal ã®JavaDoc
     public JournalRecord[] findParamArys(String key){
         List retAry = new ArrayList();
         for(Iterator iterator = this.mRequestAry.iterator(); iterator.hasNext(); ){

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.graph;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link MovingAverageFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MovingAverageFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -42,25 +42,25 @@ public interface MovingAverageFactoryServiceMBean
     extends ServiceBaseMBean {
 
     /**
-     * Œ³‚Æ‚È‚éƒVƒŠ[ƒY–¼‚ÉŒã’uŒ‚Æ‚µ‚Ä•t‰Á‚·‚é•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * å…ƒã¨ãªã‚‹ã‚·ãƒªãƒ¼ã‚ºåã«å¾Œç½®è©ã¨ã—ã¦ä»˜åŠ ã™ã‚‹æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names Œ³‚Æ‚È‚éƒVƒŠ[ƒY–¼‚ÉŒã’uŒ‚Æ‚µ‚Ä•t‰Á‚·‚é•¶š—ñ”z—ñ
+     * @param names å…ƒã¨ãªã‚‹ã‚·ãƒªãƒ¼ã‚ºåã«å¾Œç½®è©ã¨ã—ã¦ä»˜åŠ ã™ã‚‹æ–‡å­—åˆ—é…åˆ—
      */
     public void setSuffixs(String[] names);
     public String[] getSuffixs();
 
     /**
-     * ˆÚ“®•½‹ÏŒvZ‚ÌŠúŠÔ‚Ì”‚ğİ’è‚·‚éB<p>
+     * ç§»å‹•å¹³å‡è¨ˆç®—ã®æœŸé–“ã®æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param counts ˆÚ“®•½‹ÏŒvZ‚ÌŠúŠÔ‚Ì”
+     * @param counts ç§»å‹•å¹³å‡è¨ˆç®—ã®æœŸé–“ã®æ•°
      */
     public void setPeriodCounts(double[] counts);
     public double[] getPeriodCounts();
 
     /**
-     * ƒXƒLƒbƒv‚·‚éÅ‰‚ÌŠúŠÔ‚Ì”‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹æœ€åˆã®æœŸé–“ã®æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param skips ƒXƒLƒbƒv‚·‚éÅ‰‚ÌŠúŠÔ‚Ì”
+     * @param skips ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹æœ€åˆã®æœŸé–“ã®æ•°
      */
     public void setSkips(double[] skips);
     public double[] getSkips();

@@ -34,9 +34,9 @@ package jp.ossc.nimbus.service.mail;
 import jp.ossc.nimbus.core.*;
 //
 /**
- * ƒ[ƒ‹‘—MŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * ãƒ¡ãƒ¼ãƒ«é€ä¿¡ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/09 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/09 -ã€€H.Nakano
  */
 public interface SimpleMailSenderFactoryServiceMBean extends ServiceBaseMBean {
 	/**

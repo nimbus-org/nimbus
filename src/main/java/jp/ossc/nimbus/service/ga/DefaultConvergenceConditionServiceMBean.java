@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ga;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link DefaultConvergenceConditionService}‚МMBeanѓCѓ“ѓ^ѓtѓFЃ[ѓX<p>
+ * {@link DefaultConvergenceConditionService}гЃ®MBeanг‚¤гѓіг‚їгѓ•г‚§гѓјг‚№<p>
  * 
  * @author M.Takata
  * @see DefaultConvergenceConditionService
@@ -42,77 +42,77 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface DefaultConvergenceConditionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * Ћы‘©‚р’ъ‚Я‚й‚Ѕ‚Я‚МЌЕ‘еђў‘гђ”‚рђЭ’и‚·‚йЃB<p>
-     * ѓfѓtѓHѓ‹ѓg‚НЃA0‚ЕЋы‘©‚·‚й‚Ь‚Е’ъ‚Я‚И‚ўЃB<br>
+     * еЏЋжќџг‚’и«¦г‚Ѓг‚‹гЃџг‚ЃгЃ®жњЂе¤§дё–д»Јж•°г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * гѓ‡гѓ•г‚©гѓ«гѓ€гЃЇгЂЃ0гЃ§еЏЋжќџгЃ™г‚‹гЃѕгЃ§и«¦г‚ЃгЃЄгЃ„гЂ‚<br>
      *
-     * @param max ЌЕ‘еђў‘гђ”
+     * @param max жњЂе¤§дё–д»Јж•°
      */
     public void setMaxGenerationNum(int max);
     
     /**
-     * Ћы‘©‚р’ъ‚Я‚й‚Ѕ‚Я‚МЌЕ‘еђў‘гђ”‚рЋж“ѕ‚·‚йЃB<p>
+     * еЏЋжќџг‚’и«¦г‚Ѓг‚‹гЃџг‚ЃгЃ®жњЂе¤§дё–д»Јж•°г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return ЌЕ‘еђў‘гђ”
+     * @return жњЂе¤§дё–д»Јж•°
      */
     public int getMaxGenerationNum();
     
     /**
-     * “K‰ћ’l‚ЄЋы‘©‚·‚Ч‚«и‡’lЃiи‡’l‚НЉЬ‚ЮЃj‚рђЭ’и‚·‚йЃB<p>
-     * “K‰ћ’l‚Є‚±‚Ми‡’l‚Й“ћ’B‚µ‚Ѕ‚зЃAЋы‘©‚µ‚Ѕ‚Ж‚Э‚И‚·ЃB<br>
+     * йЃ©еїњеЂ¤гЃЊеЏЋжќџгЃ™гЃ№гЃЌй–ѕеЂ¤пј€й–ѕеЂ¤гЃЇеђ«г‚Ђпј‰г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * йЃ©еїњеЂ¤гЃЊгЃ“гЃ®й–ѕеЂ¤гЃ«е€°йЃ”гЃ—гЃџг‚‰гЂЃеЏЋжќџгЃ—гЃџгЃЁгЃїгЃЄгЃ™гЂ‚<br>
      *
-     * @param threshold и‡’l
+     * @param threshold й–ѕеЂ¤
      */
     public void setThreshold(Number threshold);
     
     /**
-     * “K‰ћ’l‚ЄЋы‘©‚·‚Ч‚«и‡’lЃiи‡’l‚НЉЬ‚ЮЃj‚рЋж“ѕ‚·‚йЃB<p>
+     * йЃ©еїњеЂ¤гЃЊеЏЋжќџгЃ™гЃ№гЃЌй–ѕеЂ¤пј€й–ѕеЂ¤гЃЇеђ«г‚Ђпј‰г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return и‡’l
+     * @return й–ѕеЂ¤
      */
     public Number getThreshold();
     
     /**
-     * Њ»ЌЭ‚Мђў‘г‚Ж‰Ѕђў‘г‘O‚М“K‰ћ’l‚р”дЉr‚·‚й‚©‚рђЭ’и‚·‚йЃB<p>
-     * ѓfѓtѓHѓ‹ѓg‚НЃA1‚Е1‚В‘O‚Мђў‘гЃB<br>
+     * зЏѕењЁгЃ®дё–д»ЈгЃЁдЅ•дё–д»Је‰ЌгЃ®йЃ©еїњеЂ¤г‚’жЇ”ијѓгЃ™г‚‹гЃ‹г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * гѓ‡гѓ•г‚©гѓ«гѓ€гЃЇгЂЃ1гЃ§1гЃ¤е‰ЌгЃ®дё–д»ЈгЂ‚<br>
      *
-     * @param index ђў‘гђ”
+     * @param index дё–д»Јж•°
      */
     public void setPreIndex(int index);
     
     /**
-     * Њ»ЌЭ‚Мђў‘г‚Ж‰Ѕђў‘г‘O‚М“K‰ћ’l‚р”дЉr‚·‚й‚©‚рЋж“ѕ‚·‚йЃB<p>
+     * зЏѕењЁгЃ®дё–д»ЈгЃЁдЅ•дё–д»Је‰ЌгЃ®йЃ©еїњеЂ¤г‚’жЇ”ијѓгЃ™г‚‹гЃ‹г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return ђў‘гђ”
+     * @return дё–д»Јж•°
      */
     public int getPreIndex();
     
     /**
-     * ‹–—eЊлЌ·‚рђЭ’и‚·‚йЃB<p>
-     * ”дЉr‘ОЏЫ‚М“K‰ћ’l‚ЖЊ»ЌЭ‚Мђў‘г‚М“K‰ћ’l‚ЄЃA‹–—eЊлЌ·€И‰є‚Й‚И‚Б‚ЅЏкЌ‡ЃAЋы‘©‚µ‚Ѕ‚Ж”»’f‚·‚йЃB<br>
+     * иЁ±е®№иЄ¤е·®г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * жЇ”ијѓеЇѕи±ЎгЃ®йЃ©еїњеЂ¤гЃЁзЏѕењЁгЃ®дё–д»ЈгЃ®йЃ©еїњеЂ¤гЃЊгЂЃиЁ±е®№иЄ¤е·®д»Ґдё‹гЃ«гЃЄгЃЈгЃџе ґеђ€гЂЃеЏЋжќџгЃ—гЃџгЃЁе€¤ж–­гЃ™г‚‹гЂ‚<br>
      *
-     * @param error ‹–—eЊлЌ·
+     * @param error иЁ±е®№иЄ¤е·®
      */
     public void setPermissibleError(Number error);
     
     /**
-     * ‹–—eЊлЌ·‚рЋж“ѕ‚·‚йЃB<p>
+     * иЁ±е®№иЄ¤е·®г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return ‹–—eЊлЌ·
+     * @return иЁ±е®№иЄ¤е·®
      */
     public Number getPermissibleError();
     
     /**
-     * ‘Љ‘О‹–—eЊлЌ·‚рђЭ’и‚·‚йЃB<p>
-     * |”дЉr‘ОЏЫ‚М“K‰ћ’l - Њ»ЌЭ‚Мђў‘г‚М“K‰ћ’l| / Њ»ЌЭ‚Мђў‘г‚М“K‰ћ’l ‚ЄЃA‹–—eЊлЌ·€И‰є‚Й‚И‚Б‚ЅЏкЌ‡ЃAЋы‘©‚µ‚Ѕ‚Ж”»’f‚·‚йЃB<br>
+     * з›ёеЇѕиЁ±е®№иЄ¤е·®г‚’иЁ­е®љгЃ™г‚‹гЂ‚<p>
+     * |жЇ”ијѓеЇѕи±ЎгЃ®йЃ©еїњеЂ¤ - зЏѕењЁгЃ®дё–д»ЈгЃ®йЃ©еїњеЂ¤| / зЏѕењЁгЃ®дё–д»ЈгЃ®йЃ©еїњеЂ¤ гЃЊгЂЃиЁ±е®№иЄ¤е·®д»Ґдё‹гЃ«гЃЄгЃЈгЃџе ґеђ€гЂЃеЏЋжќџгЃ—гЃџгЃЁе€¤ж–­гЃ™г‚‹гЂ‚<br>
      *
-     * @param error ‘Љ‘О‹–—eЊлЌ·
+     * @param error з›ёеЇѕиЁ±е®№иЄ¤е·®
      */
     public void setPermissibleRelativeError(float error);
     
     /**
-     * ‘Љ‘О‹–—eЊлЌ·‚рЋж“ѕ‚·‚йЃB<p>
+     * з›ёеЇѕиЁ±е®№иЄ¤е·®г‚’еЏ–еѕ—гЃ™г‚‹гЂ‚<p>
      *
-     * @return ‘Љ‘О‹–—eЊлЌ·
+     * @return з›ёеЇѕиЁ±е®№иЄ¤е·®
      */
     public float getPermissibleRelativeError();
 }

@@ -35,10 +35,10 @@ import java.util.*;
 import jp.ossc.nimbus.lang.*;
 //
 /**
- *	ƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒVƒ…‚·‚éƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ *	ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ã‚·ãƒ¥ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2003.01.01 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003.01.01 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface PropertiesFactory {
 	//

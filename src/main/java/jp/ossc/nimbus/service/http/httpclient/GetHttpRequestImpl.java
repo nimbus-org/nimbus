@@ -38,28 +38,28 @@ import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.*;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTP GETƒŠƒNƒGƒXƒgB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTP GETãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class GetHttpRequestImpl extends HttpRequestImpl{
     
     /**
-     * {@link GetMethod}‚ğ¶¬‚·‚éB<p>
+     * {@link GetMethod}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
      * @return GetMethod
-     * @exception Exception GetMethod‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception GetMethodã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected HttpMethodBase instanciateHttpMethod() throws Exception{
         return new GetMethod();
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğƒNƒGƒŠ‚Æ‚µ‚Äİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚¯ã‚¨ãƒªã¨ã—ã¦è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param params ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
-     * @exception Exception ƒNƒGƒŠ‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @exception Exception ã‚¯ã‚¨ãƒªã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initParameter(
         HttpMethodBase method,
@@ -96,11 +96,11 @@ public class GetHttpRequestImpl extends HttpRequestImpl{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception Exception UnsupportedOperationException‚ğ“Š‚°‚é
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception UnsupportedOperationExceptionã‚’æŠ•ã’ã‚‹
      */
     protected void initInputStream(
         HttpMethodBase method,

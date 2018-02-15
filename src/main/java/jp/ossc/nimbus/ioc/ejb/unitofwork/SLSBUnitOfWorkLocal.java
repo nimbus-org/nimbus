@@ -29,24 +29,24 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc.ejb.unitofwork;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.EJBLocalObject;
 import jp.ossc.nimbus.ioc.*;
 /**
- * UnitOfWork’PˆÊ‚ğÀs‚·‚éRiquiredNew‚ÌEJBƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
- * V‹K‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““à‚ÅƒRƒ}ƒ“ƒh‚ğÀs‚·‚é
+ * UnitOfWorkå˜ä½ã‚’å®Ÿè¡Œã™ã‚‹RiquiredNewã®EJBãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
+ * æ–°è¦ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å†…ã§ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface SLSBUnitOfWorkLocal extends EJBLocalObject {
 	/**
-	 * ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚ğÀs‚·‚é 
-	 * @param uow	ƒ†ƒjƒbƒgƒIƒuƒ[ƒNƒIƒuƒWƒFƒNƒg
-	 * @return	ƒ†ƒjƒbƒgƒIƒuƒ[ƒNƒIƒuƒWƒFƒNƒg
+	 * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚’å®Ÿè¡Œã™ã‚‹ 
+	 * @param uow	ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return	ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public UnitOfWork invokeUnitOfWork(UnitOfWork uow) ;
 }

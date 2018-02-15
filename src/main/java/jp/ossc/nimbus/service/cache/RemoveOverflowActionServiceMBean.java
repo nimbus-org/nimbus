@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link RemoveOverflowActionService}のMBeanインタフェース<p>
+ * {@link RemoveOverflowActionService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see RemoveOverflowActionService

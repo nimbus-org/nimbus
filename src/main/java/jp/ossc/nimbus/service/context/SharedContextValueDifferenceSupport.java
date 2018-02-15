@@ -32,40 +32,40 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ���L�R���e�L�X�g�l�������T�|�[�g�B<p>
- * ���L�R���e�L�X�g�̒l�Ƃ��č����X�V�\��Bean���T�|�[�g���ׂ��C���^�t�F�[�X�B<br>
+ * 共有コンテキスト値差分情報サポート。<p>
+ * 共有コンテキストの値として差分更新可能なBeanがサポートすべきインタフェース。<br>
  * 
  * @author M.Takata
  */
 public interface SharedContextValueDifferenceSupport{
     
     /**
-     * �X�V�o�[�W������ݒ肷��B<p>
+     * 更新バージョンを設定する。<p>
      *
-     * @param version �X�V�o�[�W����
+     * @param version 更新バージョン
      */
     public void setUpdateVersion(int version);
     
     /**
-     * �X�V�o�[�W�������擾����B<p>
+     * 更新バージョンを取得する。<p>
      *
-     * @return �X�V�o�[�W����
+     * @return 更新バージョン
      */
     public int getUpdateVersion();
     
     /**
-     * �w�肳�ꂽ���������󂯂čX�V����B<p>
+     * 指定された差分情報を受けて更新する。<p>
      *
-     * @param diff �������
-     * @return �S�čX�V���ꂽ�ꍇ�A1�B�X�V���ꂽ���̂ƁA�X�V����K�v���Ȃ��������̂����݂���ꍇ�A0�B����������ꂸ�ɁA�X�V�ł��Ȃ����̂����݂���ꍇ�A-1�B
-     * @exception SharedContextUpdateException �����̍X�V�Ɏ��s�����ꍇ
+     * @param diff 差分情報
+     * @return 全て更新された場合、1。更新されたものと、更新する必要がなかったものが存在する場合、0。整合性が取れずに、更新できないものが存在する場合、-1。
+     * @exception SharedContextUpdateException 差分の更新に失敗した場合
      */
     public int update(SharedContextValueDifference diff) throws SharedContextUpdateException;
     
     /**
-     * ���̃I�u�W�F�N�g�̕������쐬����B<p>
+     * このオブジェクトの複製を作成する。<p>
      *
-     * @return ���̃I�u�W�F�N�g�̕���
+     * @return このオブジェクトの複製
      */
     public Object clone();
 }

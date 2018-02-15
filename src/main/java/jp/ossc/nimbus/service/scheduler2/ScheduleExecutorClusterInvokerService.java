@@ -40,10 +40,10 @@ import jp.ossc.nimbus.service.proxy.RemoteServiceCallException;
 import jp.ossc.nimbus.service.proxy.invoker.*;
 
 /**
- * ScheduleExecutorƒNƒ‰ƒXƒ^InvokerƒT[ƒrƒXB<p>
- * •ªU‚³‚ê‚½{@link ScheduleExecutor}‚©‚çA“Á’è‚ÌScheduleExecutor‚ğŒÄ‚Ño‚·ƒNƒ‰ƒXƒ^InvokerƒT[ƒrƒX‚Å‚ ‚éB<br>
- * {@link Schedule#getExecutorKey()}‚ª“Á’è‚ÌÀsƒL[‚ğ•Ô‚·ê‡‚ÍA‚»‚ÌÀsƒL[‚ÉŠY“–‚·‚éScheduleExecutor‚ğ‘I‚ñ‚ÅŒÄ‚Ño‚·B<br>
- * null‚ğ•Ô‚·ê‡‚ÍA{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}‚ª‘I‘ğ‚µ‚½ScheduleExecutor‚ğŒÄ‚Ño‚·B<br>
+ * ScheduleExecutorã‚¯ãƒ©ã‚¹ã‚¿Invokerã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * åˆ†æ•£ã•ã‚ŒãŸ{@link ScheduleExecutor}ã‹ã‚‰ã€ç‰¹å®šã®ScheduleExecutorã‚’å‘¼ã³å‡ºã™ã‚¯ãƒ©ã‚¹ã‚¿Invokerã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * {@link Schedule#getExecutorKey()}ãŒç‰¹å®šã®å®Ÿè¡Œã‚­ãƒ¼ã‚’è¿”ã™å ´åˆã¯ã€ãã®å®Ÿè¡Œã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ScheduleExecutorã‚’é¸ã‚“ã§å‘¼ã³å‡ºã™ã€‚<br>
+ * nullã‚’è¿”ã™å ´åˆã¯ã€{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ãŒé¸æŠã—ãŸScheduleExecutorã‚’å‘¼ã³å‡ºã™ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -67,28 +67,28 @@ public class ScheduleExecutorClusterInvokerService extends ClusterInvokerService
     
     protected Map executeInvokerMap = Collections.synchronizedMap(new HashMap());
     
-    // ScheduleExecutorClusterInvokerServiceMBean‚ÌJavaDoc
+    // ScheduleExecutorClusterInvokerServiceMBeanã®JavaDoc
     public void setKey(String key){
         this.key = key;
     }
-    // ScheduleExecutorClusterInvokerServiceMBean‚ÌJavaDoc
+    // ScheduleExecutorClusterInvokerServiceMBeanã®JavaDoc
     public String getKey(){
         return key;
     }
     
-    // ScheduleExecutorClusterInvokerServiceMBean‚ÌJavaDoc
+    // ScheduleExecutorClusterInvokerServiceMBeanã®JavaDoc
     public void setType(String type){
         this.type = type;
     }
-    // ScheduleExecutorClusterInvokerServiceMBean‚ÌJavaDoc
+    // ScheduleExecutorClusterInvokerServiceMBeanã®JavaDoc
     public String getType(){
         return type;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         super.stopService();
@@ -96,11 +96,11 @@ public class ScheduleExecutorClusterInvokerService extends ClusterInvokerService
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½RMIƒIƒuƒWƒFƒNƒg‚ğŒÄ‚Ño‚·B<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸRMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‘¼ã³å‡ºã™ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context) throws Throwable{
         MethodInvocationContext mthodContext = (MethodInvocationContext)context;

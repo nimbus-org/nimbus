@@ -34,184 +34,184 @@ package jp.ossc.nimbus.service.graph;
 import java.util.Iterator;
 
 /**
- * ƒ`ƒƒ[ƒgğŒB<p>
+ * ãƒãƒ£ãƒ¼ãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface ChartCondition {
 
     /**
-     * ƒvƒƒbƒgğŒ‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param plotCondition ƒvƒƒbƒgğŒ
+     * @param plotCondition ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶
      */
     public void addPlotCondition(PlotCondition plotCondition);
 
     /**
-     * w’è‚³‚ê‚½ƒvƒƒbƒg–¼‚ÌƒvƒƒbƒgğŒ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒƒãƒˆåã®ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param plotName ƒvƒƒbƒg–¼
-     * @return ƒvƒƒbƒgğŒ”z—ñ
+     * @param plotName ãƒ—ãƒ­ãƒƒãƒˆå
+     * @return ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶é…åˆ—
      */
     public PlotCondition[] getPlotConditions(String plotName);
 
     /**
-     * ƒvƒƒbƒgğŒ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒbƒgğŒ”z—ñ
+     * @return ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶é…åˆ—
      */
     public PlotCondition[] getPlotConditions();
 
     /**
-     * ƒvƒƒbƒg–¼‚ÌƒCƒeƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆåã®ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒbƒg–¼‚ÌƒCƒeƒŒ[ƒ^
+     * @return ãƒ—ãƒ­ãƒƒãƒˆåã®ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿
      */
     public Iterator getPlotNames();
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹‚ğİ’è‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param title ƒ^ƒCƒgƒ‹
+     * @param title ã‚¿ã‚¤ãƒˆãƒ«
      */
     public void setTitle(String title);
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹‚ğæ“¾‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒgƒ‹
+     * @return ã‚¿ã‚¤ãƒˆãƒ«
      */
     public String getTitle();
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒg–¼‚ğİ’è‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒtƒHƒ“ƒg–¼
+     * @param name ãƒ•ã‚©ãƒ³ãƒˆå
      */
     public void setTitleFontName(String name);
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒg–¼‚ğæ“¾‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒHƒ“ƒg–¼
+     * @return ãƒ•ã‚©ãƒ³ãƒˆå
      */
     public String getTitleFontName();
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹‚ğİ’è‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param style ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
+     * @param style ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
      */
     public void setTitleFontStyle(int style);
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
+     * @return ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
      */
     public int getTitleFontStyle();
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size ƒtƒHƒ“ƒgƒTƒCƒY
+     * @param size ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
      */
     public void setTitleFontSize(int size);
 
     /**
-     * JFreeChart‚Ìƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * JFreeChartã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒHƒ“ƒgƒTƒCƒY
+     * @return ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
      */
     public int getTitleFontSize();
 
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒtƒHƒ“ƒg–¼
+     * @param name ãƒ•ã‚©ãƒ³ãƒˆå
      */
     public void setDefaultSubtitleFontName(String name);
 
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒHƒ“ƒg–¼
+     * @return ãƒ•ã‚©ãƒ³ãƒˆå
      */
     public String getDefaultSubtitleFontName();
 
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param style ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
+     * @param style ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
      */
     public void setDefaultSubtitleFontStyle(int style);
 
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
+     * @return ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
      */
     public int getDefaultSubtitleFontStyle();
 
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size ƒtƒHƒ“ƒgƒTƒCƒY
+     * @param size ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
      */
     public void setDefaultSubtitleFontSize(int size);
 
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒHƒ“ƒgƒTƒCƒY
+     * @return ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
      */
     public int getDefaultSubtitleFontSize();
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒg–¼‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒTƒuƒ^ƒCƒgƒ‹ƒCƒ“ƒfƒbƒNƒX
-     * @param name ƒtƒHƒ“ƒg–¼
+     * @param index ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param name ãƒ•ã‚©ãƒ³ãƒˆå
      */
     public void setSubtitleFontName(int index, String name);
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒg–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒTƒuƒ^ƒCƒgƒ‹ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒtƒHƒ“ƒg–¼
+     * @param index ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ•ã‚©ãƒ³ãƒˆå
      */
     public String getSubtitleFontName(int index);
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒTƒuƒ^ƒCƒgƒ‹ƒCƒ“ƒfƒbƒNƒX
-     * @param style ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
+     * @param index ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param style ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
      */
     public void setSubtitleFontStyle(int index, int style);
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒTƒuƒ^ƒCƒgƒ‹ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
+     * @param index ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
      */
     public int getSubtitleFontStyle(int index);
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒTƒuƒ^ƒCƒgƒ‹ƒCƒ“ƒfƒbƒNƒX
-     * @param size ƒtƒHƒ“ƒgƒTƒCƒY
+     * @param index ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param size ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
      */
     public void setSubtitleFontSize(int index, int size);
 
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒTƒuƒ^ƒCƒgƒ‹ƒtƒHƒ“ƒgƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒTƒuƒ^ƒCƒgƒ‹ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒtƒHƒ“ƒgƒTƒCƒY
+     * @param index ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
      */
     public int getSubtitleFontSize(int index);
 

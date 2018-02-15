@@ -44,7 +44,7 @@ import junit.extensions.TestSetup;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 �쐬: 2003/09/30 -�@H.Nakano
+ * @version  1.00 作成: 2003/09/30 -　H.Nakano
  */
 public class RecurciveSearchFileTest extends TestCase {
     private static final File rootDir = new File("target/temp/jp/ossc/nimbus/io/root");

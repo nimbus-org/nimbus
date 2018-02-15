@@ -52,7 +52,7 @@ import jp.ossc.nimbus.service.publish.MessageException;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * UDPƒvƒƒgƒRƒ‹—p‚ÌƒƒbƒZ[ƒWƒNƒ‰ƒXB<p>
+ * UDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

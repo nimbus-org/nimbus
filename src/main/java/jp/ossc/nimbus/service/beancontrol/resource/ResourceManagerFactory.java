@@ -29,18 +29,18 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol.resource;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 //
 /**
- * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒƒtƒ@ƒNƒgƒŠ[ƒCƒ“ƒ^[ƒtƒFƒCƒX 
+ * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/30 -ã€€H.Nakano
  */
 public interface ResourceManagerFactory {
 	/**
-	 * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ‚ğ¶¬‚·‚é
+	 * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’ç”Ÿæˆã™ã‚‹
 	 * @return	ResourceManager
 	 */
 	ResourceManager createResourceManager() ;

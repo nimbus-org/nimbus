@@ -41,9 +41,9 @@ import jp.ossc.nimbus.beans.PropertyFactory;
 import jp.ossc.nimbus.service.log.*;
 
 /**
- * ƒvƒƒpƒeƒBWritableRecordƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
- * {@link #setFormat(String)}‚Åİ’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg‚ÌƒL[‚ÉŠY“–‚·‚é’l‚ğ{@link #createRecord(Object)}‚Ìˆø”‚Åw’è‚³‚ê‚½”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg“à‚©‚çAƒvƒƒpƒeƒBƒAƒNƒZƒX‚µ‚Äæ“¾‚·‚éB<br>
- * ƒvƒƒpƒeƒBƒAƒNƒZƒX‚Æ‚ÍABean‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éƒAƒNƒZƒX‚Ì–‚ÅA—pˆÓ‚³‚ê‚Ä‚¢‚éƒAƒNƒZƒX•û–@‚ÍA{@link PropertyFactory}‚ğQÆB<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£WritableRecordãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * {@link #setFormat(String)}ã§è¨­å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã‚’{@link #createRecord(Object)}ã®å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå†…ã‹ã‚‰ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦å–å¾—ã™ã‚‹ã€‚<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¢ã‚¯ã‚»ã‚¹ã¨ã¯ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹ã®äº‹ã§ã€ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•ã¯ã€{@link PropertyFactory}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -53,7 +53,7 @@ public class PropertyWritableRecordFactoryService
     
     private static final long serialVersionUID = 6929876971079349458L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String PWRF_ = "PWRF_";
     private static final String PWRF_0 = PWRF_ + 0;
     private static final String PWRF_00 = PWRF_0 + 0;
@@ -72,37 +72,37 @@ public class PropertyWritableRecordFactoryService
     private Map iterateFormats;
     private Map iterateFormatMappings;
     
-    // PropertyWritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // PropertyWritableRecordFactoryServiceMBeanã®JavaDoc
     public void setFormatKeyMapping(Properties mapping){
         formatKeyMapping = mapping;
     }
-    // PropertyWritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // PropertyWritableRecordFactoryServiceMBeanã®JavaDoc
     public Properties getFormatKeyMapping(){
         return formatKeyMapping;
     }
     
-    // PropertyWritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // PropertyWritableRecordFactoryServiceMBeanã®JavaDoc
     public void setIterateFormatKeyMapping(String key, Properties mapping){
         iterateFormatKeyMappings.put(key, mapping);
     }
-    // PropertyWritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // PropertyWritableRecordFactoryServiceMBeanã®JavaDoc
     public Properties getIterateFormatKeyMapping(String key){
         return (Properties)iterateFormatKeyMappings.get(key);
     }
     
-    // PropertyWritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // PropertyWritableRecordFactoryServiceMBeanã®JavaDoc
     public void setIterateFormat(String key, String format){
         iterateFormats.put(key, format);
     }
-    // PropertyWritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // PropertyWritableRecordFactoryServiceMBeanã®JavaDoc
     public String getIterateFormat(String key){
         return (String)iterateFormats.get(key);
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         super.createService();
@@ -114,9 +114,9 @@ public class PropertyWritableRecordFactoryService
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         super.startService();
@@ -167,9 +167,9 @@ public class PropertyWritableRecordFactoryService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         writableRecordPropertyMapping.clear();
@@ -178,9 +178,9 @@ public class PropertyWritableRecordFactoryService
         super.stopService();
     }
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         writableRecordPropertyMapping = null;
@@ -192,10 +192,10 @@ public class PropertyWritableRecordFactoryService
     }
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param elements o—Í—v‘f
-     * @return ƒvƒƒpƒeƒB–¼‚ÌW‡
+     * @param elements å‡ºåŠ›è¦ç´ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆ
      */
     protected Set getElementKeys(Object elements){
         if(elements instanceof Map){
@@ -277,11 +277,11 @@ public class PropertyWritableRecordFactoryService
     }
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚©‚çAw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒvƒƒpƒeƒB–¼
-     * @param elements o—Í—v‘f
-     * @return o—Í—v‘f“à‚ÌƒvƒƒpƒeƒB’l
+     * @param key ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param elements å‡ºåŠ›è¦ç´ 
+     * @return å‡ºåŠ›è¦ç´ å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     protected Object getElementValue(String key, Object elements){
         return getElementValue(

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link ItemJournalEditorServiceBase}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ItemJournalEditorServiceBase}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ItemJournalEditorServiceBase
@@ -41,32 +41,32 @@ public interface ItemJournalEditorServiceBaseMBean
  extends ImmutableJournalEditorServiceBaseMBean{
     
     /**
-     * €–Ú–¼‚ğİ’è‚·‚éB<p>
+     * é …ç›®åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name €–Ú–¼
+     * @param name é …ç›®å
      * @see #getItemName()
      */
     public void setItemName(String name);
     
     /**
-     * €–Ú–¼‚ğæ“¾‚·‚éB<p>
+     * é …ç›®åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return €–Ú–¼
+     * @return é …ç›®å
      * @see #setItemName(String)
      */
     public String getItemName();
     
     /**
-     * €–Ú–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * é …ç›®åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputItemName(boolean isOutput);
     
     /**
-     * €–Ú–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * é …ç›®åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputItemName();
 }

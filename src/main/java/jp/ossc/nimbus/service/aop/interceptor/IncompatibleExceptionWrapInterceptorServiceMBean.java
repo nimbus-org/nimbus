@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link IncompatibleExceptionWrapInterceptorService}のMBeanインタフェース<p>
+ * {@link IncompatibleExceptionWrapInterceptorService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see IncompatibleExceptionWrapInterceptorService

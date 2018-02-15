@@ -49,21 +49,21 @@ public class WrappedCallableStatement extends WrappedPreparedStatement
     private static final String DISPLAY_PARAM_OUT = "@OUT@";
     
     /**
-     * w’è‚µ‚½CallableStatement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸCallableStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éCallableStatement
-     * @param sql SQL•¶š—ñ
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public WrappedCallableStatement(CallableStatement st, String sql){
         super(st, sql);
     }
     
     /**
-     * w’è‚µ‚½CallableStatement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸCallableStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌCallableStatement‚ğ¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éCallableStatement
-     * @param sql SQL•¶š—ñ
+     * @param con ã“ã®CallableStatementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public WrappedCallableStatement(
         Connection con,
@@ -95,13 +95,13 @@ public class WrappedCallableStatement extends WrappedPreparedStatement
             if(data == null){
                 argList.set(tmpIndex, new ParameterData(mode, sqlType, arg));
             }else{
-                //Šù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡
+                //æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
                 data.setParameterMode(mode);
                 if(data.getParameterMode() == PARAM_MODE_INOUT
                      && mode == PARAM_MODE_OUT){
-                    //æ‚ÉINƒpƒ‰ƒ[ƒ^İ’è‚ªİ’è‚³‚êA‚»‚ÌŒãOUTƒpƒ‰ƒ[ƒ^‚ğƒZƒbƒg‚·‚éƒP[ƒX
+                    //å…ˆã«INãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨­å®šãŒè¨­å®šã•ã‚Œã€ãã®å¾ŒOUTãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã‚±ãƒ¼ã‚¹
                 }else{
-                    //‚»‚Ì‘¼‚ÌƒP[ƒX‚Í’l‚ğã‘‚«
+                    //ãã®ä»–ã®ã‚±ãƒ¼ã‚¹ã¯å€¤ã‚’ä¸Šæ›¸ã
                     data.setParameterValue(arg);  
                 }
             }
@@ -155,10 +155,10 @@ public class WrappedCallableStatement extends WrappedPreparedStatement
                         );
                     }
                 }else{
-                    //ŠY“–€–Ú‚È‚µ
+                    //è©²å½“é …ç›®ãªã—
                 }
             }catch(IndexOutOfBoundsException e){
-                    //ŠY“–€–Ú‚È‚µ
+                    //è©²å½“é …ç›®ãªã—
             }
         }
         return tmpSql.toString();
@@ -676,12 +676,12 @@ public class WrappedCallableStatement extends WrappedPreparedStatement
         
         public void setParameterMode(int mode){
             if(this.mode != 0 && this.mode != mode){
-                ////this.mode‚ªIN,OUT‚Éİ’è‚³‚ê‚Ä‚¢‚ÄˆÙ‚È‚éƒ‚[ƒh‚ğƒZƒbƒg‚·‚éê‡
+                ////this.modeãŒIN,OUTã«è¨­å®šã•ã‚Œã¦ã„ã¦ç•°ãªã‚‹ãƒ¢ãƒ¼ãƒ‰ã‚’ã‚»ãƒƒãƒˆã™ã‚‹å ´åˆ
                 this.mode = PARAM_MODE_INOUT;
             }else if(this.mode == 0){
                 this.mode = mode;
             }else{
-                //this.mode == PARAM_MODE_INOUT‚ÌƒP[ƒX
+                //this.mode == PARAM_MODE_INOUTã®ã‚±ãƒ¼ã‚¹
             }
          }
         

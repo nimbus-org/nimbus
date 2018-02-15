@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS Queue ƒŒƒV[ƒoƒtƒ@ƒNƒgƒŠB<p>
- * JMS1.0‚Å‚ÍAQueueSession‚ÆTopicSession‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßAQueueSession‚©‚ç‚ÌQueueReceiver¶¬‚ğs‚¤B<br>
+ * JMS Queue ãƒ¬ã‚·ãƒ¼ãƒãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JMS1.0ã§ã¯ã€QueueSessionã¨TopicSessionã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€QueueSessionã‹ã‚‰ã®QueueReceiverç”Ÿæˆã‚’è¡Œã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -45,15 +45,15 @@ public class JMSQueueReceiverFactoryService
     private static final long serialVersionUID = -8866208706043342245L;
     
     /**
-     * QueueReceiver‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚Ì{@link QueueSession#createReceiver(Queue, String)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * ‘æ‚Rˆø”‚ÍAnull‚ğw’è‚·‚é‚ÆMessageSelector‘®«‚Ì’l‚ğ“K—p‚·‚éB<br>
+     * QueueReceiverã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã®{@link QueueSession#createReceiver(Queue, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * ç¬¬ï¼“å¼•æ•°ã¯ã€nullã‚’æŒ‡å®šã™ã‚‹ã¨MessageSelectorå±æ€§ã®å€¤ã‚’é©ç”¨ã™ã‚‹ã€‚<br>
      *
      * @param session QueueSession
-     * @param destination ”zMŒ³‚ÌQueue
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param destination é…ä¿¡å…ƒã®Queue
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      * @return QueueReceiver
-     * @exception JMSMessageConsumerCreateException QueueReceiver‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException QueueReceiverã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -83,15 +83,15 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * QueueReceiver‚ğ¶¬‚·‚éB<p>
-     * {@link #createConsumer(Session, Destination, String)}ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·‚Ì‚Æ“™‰¿‚Å‚ ‚éB<br>
+     * QueueReceiverã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #createConsumer(Session, Destination, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã€‚<br>
      *
      * @param session QueueSession
-     * @param destination ”zMŒ³‚ÌQueue
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal w’è‚µ‚Ä‚à–³Œø
+     * @param destination é…ä¿¡å…ƒã®Queue
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal æŒ‡å®šã—ã¦ã‚‚ç„¡åŠ¹
      * @return QueueReceiver
-     * @exception JMSMessageConsumerCreateException QueueReceiver‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException QueueReceiverã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #createConsumer(Session, Destination, String)
      */
     public MessageConsumer createConsumer(
@@ -104,11 +104,11 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(String name)
      throws JMSMessageConsumerCreateException{
@@ -116,12 +116,12 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Topic topic,
@@ -131,12 +131,12 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
      * @param session Session
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -146,13 +146,13 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
      * @param session Session
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -163,13 +163,13 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         String name,
@@ -180,14 +180,14 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Topic topic,
@@ -199,14 +199,14 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
      * @param session Session
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -218,15 +218,15 @@ public class JMSQueueReceiverFactoryService
     }
     
     /**
-     * ƒTƒ|[ƒg‚³‚ê‚È‚¢ƒƒ\ƒbƒh‚Å‚ ‚éB<p>
+     * ã‚µãƒãƒ¼ãƒˆã•ã‚Œãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<p>
      *
      * @param session Session
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,

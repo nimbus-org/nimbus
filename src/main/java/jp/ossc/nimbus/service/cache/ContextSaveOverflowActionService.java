@@ -39,8 +39,8 @@ import jp.ossc.nimbus.service.context.SharedContext;
 import jp.ossc.nimbus.service.context.DistributedSharedContext;
 
 /**
- * ƒRƒ“ƒeƒLƒXƒg‰i‘±‰»‚ ‚Ó‚ê“®ìƒT[ƒrƒXB<p>
- * ƒLƒƒƒbƒVƒ…‚©‚ç‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğƒRƒ“ƒeƒLƒXƒg‚Ì‰i‘±‰»‹@”\i{@link Context#save(Object)}j‚ğg‚Á‚Ä‰i‘±‰»‚µ‚ÄAíœ‚·‚é‚ ‚Ó‚ê“®ì‚Å‚ ‚éB<br>
+ * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ°¸ç¶šåŒ–ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®æ°¸ç¶šåŒ–æ©Ÿèƒ½ï¼ˆ{@link Context#save(Object)}ï¼‰ã‚’ä½¿ã£ã¦æ°¸ç¶šåŒ–ã—ã¦ã€å‰Šé™¤ã™ã‚‹ã‚ãµã‚Œå‹•ä½œã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -84,11 +84,11 @@ public class ContextSaveOverflowActionService extends ServiceBase
         }
     }
     
-    // OverflowAction‚ÌJavaDoc
+    // OverflowActionã®JavaDoc
     public void setOverflowController(OverflowController controller){
     }
     
-    // CacheRemoveListener‚ÌJavaDoc
+    // CacheRemoveListenerã®JavaDoc
     public void removed(CachedReference ref){
         if(ref == null){
             return;
@@ -117,11 +117,11 @@ public class ContextSaveOverflowActionService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ‰i‘±‰»‚µ‚ÄAƒLƒƒƒbƒVƒ…‚©‚çíœ‚·‚éB<p>
+     * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ°¸ç¶šåŒ–ã—ã¦ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param validator ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½OverflowValidator
-     * @param algorithm ‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚µ‚½OverflowAlgorithm
-     * @param ref ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param validator ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸOverflowValidator
+     * @param algorithm ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã—ãŸOverflowAlgorithm
+     * @param ref ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void action(
         OverflowValidator validator,
@@ -164,7 +164,7 @@ public class ContextSaveOverflowActionService extends ServiceBase
         }
     }
     
-    // OverflowAction‚ÌJavaDoc
+    // OverflowActionã®JavaDoc
     public void reset(){
     }
 }

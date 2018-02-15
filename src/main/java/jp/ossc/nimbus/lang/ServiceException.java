@@ -32,9 +32,9 @@
 package jp.ossc.nimbus.lang;
 
 /**
- * ƒT[ƒrƒX‚ªƒXƒ[‚·‚é—áŠO<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãŒã‚¹ãƒ­ãƒ¼ã™ã‚‹ä¾‹å¤–<br>
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/22 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/22 -ã€€H.Nakano
  */
 public class ServiceException extends BaseRuntimeException {
 	
@@ -42,17 +42,17 @@ public class ServiceException extends BaseRuntimeException {
     
     //
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
 	 */
   	public ServiceException() {
 		super() ;
   	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
-	 *	@param	cause 			ƒGƒ‰[Œ´ˆö—áŠO
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 *	@param	cause 			ã‚¨ãƒ©ãƒ¼åŸå› ä¾‹å¤–
 	 */
   	public ServiceException (	String errCode, 
   								String errMsg,	
@@ -61,20 +61,20 @@ public class ServiceException extends BaseRuntimeException {
   	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 */
   	public ServiceException (	String errCode, 
   								String errMsg ) {
 		super(errCode,errMsg) ;
   	}
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
-	 *	@param	cause 			ƒGƒ‰[Œ´ˆö—áŠO
-	 *  @param isRetry			ƒŠƒgƒ‰ƒC—v¿
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 *	@param	cause 			ã‚¨ãƒ©ãƒ¼åŸå› ä¾‹å¤–
+	 *  @param isRetry			ãƒªãƒˆãƒ©ã‚¤è¦è«‹
 	 */
   	public ServiceException (	String errCode, 
 	  							String errMsg,	
@@ -84,10 +84,10 @@ public class ServiceException extends BaseRuntimeException {
   	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
-	 *  @param isRetry			ƒŠƒgƒ‰ƒC—v¿
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 *  @param isRetry			ãƒªãƒˆãƒ©ã‚¤è¦è«‹
 	 */
   	public ServiceException (	String errCode, 
   								String errMsg,

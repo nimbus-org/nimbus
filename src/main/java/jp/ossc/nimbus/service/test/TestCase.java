@@ -34,118 +34,118 @@ package jp.ossc.nimbus.service.test;
 import java.util.Date;
 
 /**
- * ƒeƒXƒgƒP[ƒXB<p>
+ * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface TestCase {
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ªŠ‘®‚·‚éƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ãŒæ‰€å±ã™ã‚‹ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID
+     * @return ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ID
      */
     public String getScenarioGroupId();
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ªŠ‘®‚·‚éƒVƒiƒŠƒI‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ãŒæ‰€å±ã™ã‚‹ã‚·ãƒŠãƒªã‚ªã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒVƒiƒŠƒI‚ÌID
+     * @return ã‚·ãƒŠãƒªã‚ªã®ID
      */
     public String getScenarioId();
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒP[ƒX‚ÌID
+     * @return ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ID
      */
     public String getTestCaseId();
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌƒŠƒ\[ƒXî•ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒP[ƒX‚ÌƒŠƒ\[ƒXî•ñ
-     * @exception Exception ƒeƒXƒgƒP[ƒX‚ÌƒŠƒ\[ƒXî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @return ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TestCaseResource getTestCaseResource() throws Exception;
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌÀsƒXƒe[ƒ^ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒP[ƒX‚ÌÀsƒXƒe[ƒ^ƒX
+     * @return ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public Status getStatus();
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌƒŠƒ\[ƒXî•ñB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã€‚<p>
      * 
      * @author M.Ishida
-     * @see <a href="testcase_1_0.dtd">ƒeƒXƒgƒP[ƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+     * @see <a href="testcase_1_0.dtd">ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
      */
     public interface TestCaseResource extends ScheduledTestResource {
         
         /**
-         * –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğæ“¾‚·‚éB<p>
+         * äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @return äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public String[] getBeforeActionIds();
         
         /**
-         * ƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğæ“¾‚·‚éB<p>
+         * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public String[] getActionIds();
         
         /**
-         * –ŒãƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğæ“¾‚·‚éB<p>
+         * äº‹å¾Œã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return –ŒãƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @return äº‹å¾Œã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public String[] getAfterActionIds();
         
         /**
-         * ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğæ“¾‚·‚éB<p>
+         * æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @return æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public String[] getFinallyActionIds();
         
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌÀsƒXƒe[ƒ^ƒXB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã€‚<p>
      * 
      * @author M.Ishida
      */
     public interface Status extends StatusActionMnager {
         
         /**
-         * ó‘ÔF‰ŠúB<p>
+         * çŠ¶æ…‹ï¼šåˆæœŸã€‚<p>
          */
         public static final int INITIAL = 0;
         /**
-         * ó‘ÔFŠJnB<p>
+         * çŠ¶æ…‹ï¼šé–‹å§‹ã€‚<p>
          */
         public static final int STARTED = 1;
         /**
-         * ó‘ÔFI—¹B<p>
+         * çŠ¶æ…‹ï¼šçµ‚äº†ã€‚<p>
          */
         public static final int END = 2;
         /**
-         * ó‘ÔFæÁB<p>
+         * çŠ¶æ…‹ï¼šå–æ¶ˆã€‚<p>
          */
         public static final int CANCELED = 3;
         /**
-         * ó‘ÔFˆÙíB<p>
+         * çŠ¶æ…‹ï¼šç•°å¸¸ã€‚<p>
          */
         public static final int ERROR = 4;
         
         /**
-         * ó‘Ô‚ğæ“¾‚·‚éB<p>
+         * çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ó‘Ô
+         * @return çŠ¶æ…‹
          * @see #INITIAL
          * @see #STARTED
          * @see #END
@@ -155,16 +155,16 @@ public interface TestCase {
         public int getState();
         
         /**
-         * ó‘Ô•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * çŠ¶æ…‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ó‘Ô•¶š—ñ
+         * @return çŠ¶æ…‹æ–‡å­—åˆ—
          */
         public String getStateString();
         
         /**
-         * I—¹“ú‚ğæ“¾‚·‚éB<p>
+         * çµ‚äº†æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return I—¹“ú
+         * @return çµ‚äº†æ—¥æ™‚
          */
         public Date getEndTime();
     }

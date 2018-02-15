@@ -40,7 +40,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import junit.framework.TestCase;
 
 /**
- * GroupContextService‚ÌƒeƒXƒgƒP[ƒXB<p/>
+ * GroupContextServiceã®ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€‚<p/>
  * 
  * @version $Name$
  * @author T.Okada
@@ -65,7 +65,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#keySet()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#keySet()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testKeySet() {
         try {
@@ -88,7 +88,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#size()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#size()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testSize() {
         try {
@@ -105,7 +105,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#values()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#values()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testValues() {
         try {
@@ -122,7 +122,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#containsKey()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#containsKey()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testContainsKey() {
         try {
@@ -144,7 +144,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#containsValue()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#containsValue()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testContainsValue() {
         try {
@@ -166,7 +166,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#entrySet()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#entrySet()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testEntrySet() {
         try {
@@ -203,7 +203,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#get(:String)‚ğŒŸ¸‚·‚éB
+     * GroupContextService#get(:String)ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testGet() {
         try {
@@ -225,8 +225,8 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#put()‚ğŒŸ¸‚·‚éB
-     * put()‚Í”F‚ß‚ç‚ê‚¸AUnsupportedOperationException‚ª•Ô‚³‚ê‚éB
+     * GroupContextService#put()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
+     * put()ã¯èªã‚ã‚‰ã‚Œãšã€UnsupportedOperationExceptionãŒè¿”ã•ã‚Œã‚‹ã€‚
      */
     public void testPut() {
         boolean result = false;
@@ -244,7 +244,7 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#remove()‚ğŒŸ¸‚·‚éB
+     * GroupContextService#remove()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testRemove() {
         try {
@@ -263,8 +263,8 @@ public class GroupContextServiceTest extends TestCase {
     }
     
     /**
-     * GroupContextService#clear()‚ğŒŸ¸‚·‚éB
-     * ThreadContextService#clear()‚ÍƒŠƒ[ƒh‚ğs‚¤B
+     * GroupContextService#clear()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
+     * ThreadContextService#clear()ã¯ãƒªãƒ­ãƒ¼ãƒ‰ã‚’è¡Œã†ã€‚
      */
     public void testClear() {
         try {

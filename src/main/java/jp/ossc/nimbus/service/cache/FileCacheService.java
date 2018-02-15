@@ -38,8 +38,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğJVM‚Ìƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ‚É’¼—ñ‰»‚µ‚ÄƒLƒƒƒbƒVƒ…‚·‚éƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’JVMã®ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ç›´åˆ—åŒ–ã—ã¦ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -76,72 +76,72 @@ public class FileCacheService extends AbstractCacheService
     private ServiceName externalizerServiceName;
     private Externalizer externalizer;
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setOutputDirectory(String outputDirectory){
         this.outputDirectory = outputDirectory;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public String getOutputDirectory(){
         return outputDirectory;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setOutputPrefix(String prefix){
         this.prefix = prefix;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public String getOutputPrefix(){
         return prefix;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setOutputSuffix(String suffix){
         this.suffix = suffix;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public String getOutputSuffix(){
         return suffix;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setLoadOnStart(boolean isLoad){
         isLoadOnStart = isLoad;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public boolean isLoadOnStart(){
         return isLoadOnStart;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setCheckFileOnLoad(boolean isCheck){
         isCheckFileOnLoad = isCheck;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public boolean isCheckFileOnLoad(){
         return isCheckFileOnLoad;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setDeleteOnCheckFileError(boolean isDelete){
         isDeleteOnCheckFileError = isDelete;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public boolean isDeleteOnCheckFileError(){
         return isDeleteOnCheckFileError;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         externalizerServiceName = name;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         return externalizerServiceName;
     }
@@ -155,11 +155,11 @@ public class FileCacheService extends AbstractCacheService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‘¶‚·‚éƒtƒ@ƒCƒ‹‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‘¶‚·‚éƒtƒ@ƒCƒ‹
-     * @exception IOException ƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚È‚©‚Á‚½ê‡
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @exception IOException ãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ããªã‹ã£ãŸå ´åˆ
      */
     protected File createFile(Object obj) throws IOException{
         File file = null;
@@ -203,20 +203,20 @@ public class FileCacheService extends AbstractCacheService
         }
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setDeleteOnExitWithJVM(boolean isDeleteOnExit){
         isDeleteOnExitWithJVM = isDeleteOnExit;
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public boolean isDeleteOnExitWithJVM(){
         return isDeleteOnExitWithJVM;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(externalizerServiceName != null){
@@ -245,9 +245,9 @@ public class FileCacheService extends AbstractCacheService
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚ğs‚¤B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void load() throws Exception{
         File dir = directory;
@@ -311,10 +311,10 @@ public class FileCacheService extends AbstractCacheService
     }
     
     /**
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…‚Éw’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚ÌƒLƒƒƒbƒVƒ…QÆ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param file ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹
-     * @return ŠÜ‚Ü‚ê‚Ä‚¢‚éê‡true
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å«ã¾ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     protected boolean containsFile(File file){
         if(references == null || file == null){
@@ -334,11 +334,11 @@ public class FileCacheService extends AbstractCacheService
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
-     * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆ‚Ì¶¬‚É¸”s‚µ‚½ê‡‚ÍAnull‚ğ•Ô‚·B
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @return ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆ
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected CachedReference createCachedReference(Object obj){
         File file = null;

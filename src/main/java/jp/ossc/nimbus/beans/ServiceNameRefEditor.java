@@ -36,37 +36,37 @@ import java.beans.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ServiceNameRef}Œ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * "[ƒT[ƒrƒX‚ÌƒGƒCƒŠƒAƒX–¼]=[ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éƒ}ƒl[ƒWƒƒ–¼]#[ƒT[ƒrƒX–¼]"‚Ì•¶š—ñ‚ğ{@link ServiceNameRef}Œ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * "="‚Ì‰E•Ó‚Ì’l‚Ì•ÏŠ·‚ÍA{@link ServiceNameEditor}‚ÉˆÏ÷‚³‚ê‚éB‚»‚ÌÛA{@link #setServiceManagerName(String)}‚Åİ’è‚³‚ê‚½ƒ}ƒl[ƒWƒƒ–¼‚ªA{ServiceNameEditor#setServiceManagerName(String)}‚ÅServiceNameEditor‚Éİ’è‚³‚ê‚éB<br>
- * "${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * {@link ServiceNameRef}å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * "[ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹å]=[ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å]#[ã‚µãƒ¼ãƒ“ã‚¹å]"ã®æ–‡å­—åˆ—ã‚’{@link ServiceNameRef}å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * "="ã®å³è¾ºã®å€¤ã®å¤‰æ›ã¯ã€{@link ServiceNameEditor}ã«å§”è­²ã•ã‚Œã‚‹ã€‚ãã®éš›ã€{@link #setServiceManagerName(String)}ã§è¨­å®šã•ã‚ŒãŸãƒãƒãƒ¼ã‚¸ãƒ£åãŒã€{ServiceNameEditor#setServiceManagerName(String)}ã§ServiceNameEditorã«è¨­å®šã•ã‚Œã‚‹ã€‚<br>
+ * "${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —á1F<br>
+ * ä¾‹1ï¼š<br>
  * &nbsp;&nbsp;Ref=Manager#Service<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;new ServiceNameRef("Ref", new ServiceName("Manager", "Service"))<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —á2F<br>
+ * ä¾‹2ï¼š<br>
  * &nbsp;&nbsp;Ref=Service<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;new ServiceNameRef("Ref", new ServiceName("Service"))<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  * <br>
- * —á3F<br>
+ * ä¾‹3ï¼š<br>
  * &nbsp;&nbsp;Ref=#Service<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ªA{@link #setServiceManagerName(String)}‚Å"Manager"‚Æİ’è‚µ‚Ä‚ ‚ê‚ÎA<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒã€{@link #setServiceManagerName(String)}ã§"Manager"ã¨è¨­å®šã—ã¦ã‚ã‚Œã°ã€<br>
  * <br>
  * &nbsp;&nbsp;new ServiceNameRef("Ref", new ServiceName("Manager", "Service"))<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB{@link #setServiceManagerName(String)}‚Åƒ}ƒl[ƒWƒƒ–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚{@link #setServiceManagerName(String)}ã§ãƒãƒãƒ¼ã‚¸ãƒ£åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -78,18 +78,18 @@ public class ServiceNameRefEditor extends PropertyEditorSupport
     private String managerName;
     
     /**
-     * {@link ServiceManager}‚Ì–¼‘O‚ªÈ—ª‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX–¼•¶š—ñ‚ğ{@link ServiceNameRef}‚É•ÏŠ·‚·‚éê‡‚ÉAg—p‚·‚éServiceManager‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * {@link ServiceManager}ã®åå‰ãŒçœç•¥ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹åæ–‡å­—åˆ—ã‚’{@link ServiceNameRef}ã«å¤‰æ›ã™ã‚‹å ´åˆã«ã€ä½¿ç”¨ã™ã‚‹ServiceManagerã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServiceManager‚Ì–¼‘O
+     * @param name ServiceManagerã®åå‰
      */
     public void setServiceManagerName(String name){
         managerName = name;
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -116,9 +116,9 @@ public class ServiceNameRefEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final ServiceNameRef name = (ServiceNameRef)getValue();

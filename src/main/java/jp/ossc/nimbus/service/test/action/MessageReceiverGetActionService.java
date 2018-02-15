@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * {@link MessageReceiverListenActionService.MessageListener}‚ªóM‚µ‚½{@link jp.ossc.nimbus.service.publish.Message Message}‚ğæ“¾‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link MessageReceiverListenActionService.MessageListener}ãŒå—ä¿¡ã—ãŸ{@link jp.ossc.nimbus.service.publish.Message Message}ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  * @see MessageReceiverListenActionService
@@ -53,23 +53,23 @@ public class MessageReceiverGetActionService extends ServiceBase implements Test
     protected double expectedCost = 0d;
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅA{@link MessageReceiverListenActionService.MessageListener}‚ªóM‚µ‚½{@link jp.ossc.nimbus.service.publish.Message Message}‚ğæ“¾‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€{@link MessageReceiverListenActionService.MessageListener}ãŒå—ä¿¡ã—ãŸ{@link jp.ossc.nimbus.service.publish.Message Message}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * listenerId
      * getType
      * timeout
      * close
      * </pre>
-     * listenerId‚ÍAƒƒbƒZ[ƒW‚ğóM‚µ‚Ä‚¢‚é{@link MessageReceiverListenActionService}‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉA{@link MessageReceiverListenActionService.MessageListener}‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉA{@link MessageReceiverListenActionService.MessageListener}‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB<br>
-     * getType‚ÍA"message"‚Ü‚½‚Í"object"B"message"‚Ìê‡‚ÍA{@link jp.ossc.nimbus.service.publish.Message Message}‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB"object"‚Ìê‡‚ÍA{@link jp.ossc.nimbus.service.publish.Message#getObject() Message.getObject()}‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<br>
-     * timeout‚ÍAƒƒbƒZ[ƒW‚ÌóM‘Ò‚¿ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğw’è‚·‚éB<br>
-     * close‚ÍA{@link MessageReceiverListenActionService.MessageListener#close()}‚ğŒÄ‚Ño‚·‚©‚Ç‚¤‚©‚ğAtrue‚Ü‚½‚Ífalse‚Åw’è‚·‚éBw’è‚µ‚È‚¢ê‡‚ÍAƒNƒ[ƒY‚·‚éB<br>
+     * listenerIdã¯ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ã¦ã„ã‚‹{@link MessageReceiverListenActionService}ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€{@link MessageReceiverListenActionService.MessageListener}ã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€{@link MessageReceiverListenActionService.MessageListener}ã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * getTypeã¯ã€"message"ã¾ãŸã¯"object"ã€‚"message"ã®å ´åˆã¯ã€{@link jp.ossc.nimbus.service.publish.Message Message}ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚"object"ã®å ´åˆã¯ã€{@link jp.ossc.nimbus.service.publish.Message#getObject() Message.getObject()}ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * timeoutã¯ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡å¾…ã¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * closeã¯ã€{@link MessageReceiverListenActionService.MessageListener#close()}ã‚’å‘¼ã³å‡ºã™ã‹ã©ã†ã‹ã‚’ã€trueã¾ãŸã¯falseã§æŒ‡å®šã™ã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return {@link jp.ossc.nimbus.service.publish.Message Message}‚ÌƒŠƒXƒgA‚Ü‚½‚Í{@link jp.ossc.nimbus.service.publish.Message#getObject() Message.getObject()}‚ÌƒŠƒXƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return {@link jp.ossc.nimbus.service.publish.Message Message}ã®ãƒªã‚¹ãƒˆã€ã¾ãŸã¯{@link jp.ossc.nimbus.service.publish.Message#getObject() Message.getObject()}ã®ãƒªã‚¹ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

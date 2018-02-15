@@ -34,17 +34,17 @@ package jp.ossc.nimbus.service.connection;
 import java.sql.Connection;
 
 /**
- * ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
+ * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
 public interface ConnectionFactory{
     
     /**
-     * ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒlƒNƒVƒ‡ƒ“
-     * @exception ConnectionFactoryException ƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @return ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @exception ConnectionFactoryException ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Connection getConnection() throws ConnectionFactoryException;
 }

@@ -34,12 +34,12 @@ package jp.ossc.nimbus.service.loader;
 import junit.framework.TestCase;
 import jp.ossc.nimbus.core.*;
 import java.lang.reflect.Method;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 //
 /**
  *  
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/04 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/04 -ã€€H.Nakano
  */
 public class ClassLauncherTest extends TestCase {
 	/**

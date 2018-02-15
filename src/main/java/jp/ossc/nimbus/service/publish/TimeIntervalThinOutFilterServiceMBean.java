@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.publish;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link TimeIntervalThinOutFilterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TimeIntervalThinOutFilterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see TimeIntervalThinOutFilterService
@@ -42,17 +42,17 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface TimeIntervalThinOutFilterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ŠÔˆø‚«ŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * é–“å¼•ãé–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      * 
-     * @param interval ŠÔˆø‚«ŠÔŠu[ms]
+     * @param interval é–“å¼•ãé–“éš”[ms]
      */
     public void setThinOutInterval(long interval);
     
     /**
-     * ŠÔˆø‚«ŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * é–“å¼•ãé–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ŠÔˆø‚«ŠÔŠu[ms]
+     * @return é–“å¼•ãé–“éš”[ms]
      */
     public long getThinOutInterval();
 }

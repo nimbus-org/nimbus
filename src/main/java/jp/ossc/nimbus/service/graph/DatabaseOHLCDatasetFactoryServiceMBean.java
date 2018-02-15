@@ -34,237 +34,237 @@ package jp.ossc.nimbus.service.graph;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DatabaseOHLCDatasetFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseOHLCDatasetFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface DatabaseOHLCDatasetFactoryServiceMBean
  extends OHLCDatasetFactoryServiceMBean{
     
-    /** ƒfƒtƒHƒ‹ƒgƒtƒFƒbƒ`ƒTƒCƒY */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º */
     public static final int DEFAULT_FETCH_SIZE = 10000;
     
     /**
-     * “ú•t‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param columnName “ú•t‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName æ—¥ä»˜ã®ã‚«ãƒ©ãƒ å
      */
     public void setDateColumnName(String columnName);
     
     /**
-     * “ú•t‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ú•t‚ÌƒJƒ‰ƒ€–¼
+     * @return æ—¥ä»˜ã®ã‚«ãƒ©ãƒ å
      */
     public String getDateColumnName();
     
     /**
-     * ‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * æ™‚åˆ»ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param columnName ‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName æ™‚åˆ»ã®ã‚«ãƒ©ãƒ å
      */
     public void setTimeColumnName(String columnName);
     
     /**
-     * ‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * æ™‚åˆ»ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚ÌƒJƒ‰ƒ€–¼
+     * @return æ™‚åˆ»ã®ã‚«ãƒ©ãƒ å
      */
     public String getTimeColumnName();
     
     /**
-     * “ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param pattern “ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“
+     * @param pattern æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³
      */
     public void setDateFormatPattern(String pattern);
     
     /**
-     * “ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“
+     * @return æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³
      */
     public String getDateFormatPattern();
     
     /**
-     * n’l‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * å§‹å€¤ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param columnName n’l‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName å§‹å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public void setOpenPriceColumnName(String columnName);
     
     /**
-     * n’l‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * å§‹å€¤ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return n’l‚ÌƒJƒ‰ƒ€–¼
+     * @return å§‹å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public String getOpenPriceColumnName();
     
     /**
-     * ‚’l‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * é«˜å€¤ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param columnName ‚’l‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName é«˜å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public void setHighPriceColumnName(String columnName);
     
     /**
-     * ‚’l‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * é«˜å€¤ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚’l‚ÌƒJƒ‰ƒ€–¼
+     * @return é«˜å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public String getHighPriceColumnName();
     
     /**
-     * ˆÀ’l‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * å®‰å€¤ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param columnName ˆÀ’l‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName å®‰å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public void setLowPriceColumnName(String columnName);
     
     /**
-     * ˆÀ’l‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * å®‰å€¤ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆÀ’l‚ÌƒJƒ‰ƒ€–¼
+     * @return å®‰å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public String getLowPriceColumnName();
     
     /**
-     * I’l‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * çµ‚å€¤ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param columnName I’l‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName çµ‚å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public void setClosePriceColumnName(String columnName);
     
     /**
-     * I’l‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * çµ‚å€¤ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return I’l‚ÌƒJƒ‰ƒ€–¼
+     * @return çµ‚å€¤ã®ã‚«ãƒ©ãƒ å
      */
     public String getClosePriceColumnName();
     
     /**
-     * o—ˆ‚‚ÌƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * å‡ºæ¥é«˜ã®ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param columnName o—ˆ‚‚ÌƒJƒ‰ƒ€–¼
+     * @param columnName å‡ºæ¥é«˜ã®ã‚«ãƒ©ãƒ å
      */
     public void setVolumeColumnName(String columnName);
     
     /**
-     * o—ˆ‚‚ÌƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * å‡ºæ¥é«˜ã®ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—ˆ‚‚ÌƒJƒ‰ƒ€–¼
+     * @return å‡ºæ¥é«˜ã®ã‚«ãƒ©ãƒ å
      */
     public String getVolumeColumnName();
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDateFormatServiceName(ServiceName name);
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDateFormatServiceName();
     
     /**
-     * “ú•tƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setDateColumnIndex(int index);
     
     /**
-     * “ú•tƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getDateColumnIndex();
     
     /**
-     * ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * æ™‚åˆ»ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setTimeColumnIndex(int index);
     
     /**
-     * ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * æ™‚åˆ»ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */ 
     public int getTimeColumnIndex();
     
     /**
-     * n’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * å§‹å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setOpenPriceColumnIndex(int index);
     
     /**
-     * n’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * å§‹å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getOpenPriceColumnIndex();
     
     /**
-     * ‚’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * é«˜å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setHighPriceColumnIndex(int index);
     
     /**
-     * ‚’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * é«˜å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getHighPriceColumnIndex();
     
     /**
-     * ˆÀ’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * å®‰å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setLowPriceColumnIndex(int index);
     
     /**
-     * ˆÀ’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * å®‰å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getLowPriceColumnIndex();
     
     /**
-     * I’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * çµ‚å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setClosePriceColumnIndex(int index);
     
     /**
-     * I’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>w
+     * çµ‚å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>w
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getClostePriceColumnIndex();
     
     /**
-     * o—ˆ‚ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * å‡ºæ¥é«˜ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setVolumeColumnIndex(int index);
     
     /**
-     * o—ˆ‚ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * å‡ºæ¥é«˜ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getVolumeColumnIndex();
 }

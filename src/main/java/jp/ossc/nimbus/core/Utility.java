@@ -36,28 +36,28 @@ import java.io.File;
 import java.lang.reflect.Array;
 
 /**
- * Coreƒ†[ƒeƒBƒŠƒeƒBB<p>
+ * Coreãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã€‚<p>
  * 
  * @author M.Takata
  */
 public class Utility{
     /**
-     * ƒVƒXƒeƒ€ƒvƒƒpƒeƒBQÆŠJn•¶š—ñB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§é–‹å§‹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SYSTEM_PROPERTY_START = "${";
     /**
-     * ƒVƒXƒeƒ€ƒvƒƒpƒeƒBQÆI—¹•¶š—ñB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§çµ‚äº†æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SYSTEM_PROPERTY_END = "}";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ğƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Åw’è‚·‚é‚½‚ß‚ÌƒvƒƒpƒeƒB–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã‚’ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€‚<p>
      */
     private static final String DEFAULT_SERVICE_FILE_PROPERTY_KEY
          = "jp.ossc.nimbus.service.url";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«åã€‚<p>
      */
     private static final String DEFAULT_SERVICE_FILE
          = "nimbus-service.xml";
@@ -65,14 +65,14 @@ public class Utility{
     private static final String ARRAY_CLASS_SUFFIX = "[]";
     
     /**
-     * ƒT[ƒrƒX’è‹`URL‚ÌƒfƒtƒHƒ‹ƒg‚Ì’l‚ğæ“¾‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÌURL‚ÌŒˆ’è‚ÍAˆÈ‰º‚Ì‡˜‚Ås‚í‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©URLã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®URLã®æ±ºå®šã¯ã€ä»¥ä¸‹ã®é †åºã§è¡Œã‚ã‚Œã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒVƒXƒeƒ€ƒvƒƒpƒeƒBjp.ossc.nimbus.service.url‚Åw’è‚³‚ê‚½’l‚ğA{@link #convertServicePathToURL(String)}‚ÅURL‚É•ÏŠ·‚µ‚½’l</li>
-     *   <li>‚±‚ÌƒNƒ‰ƒX‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ªƒ[ƒh‚³‚ê‚½ƒNƒ‰ƒXƒpƒXã‚©‚çAnimbus-service.xml‚ğ{@link ClassLoader#getResource(String)}‚ÅƒŠƒ\[ƒX‚Æ‚µ‚Äæ“¾‚µ‚½URL</li>
+     *   <li>ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£jp.ossc.nimbus.service.urlã§æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ã€{@link #convertServicePathToURL(String)}ã§URLã«å¤‰æ›ã—ãŸå€¤</li>
+     *   <li>ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã‹ã‚‰ã€nimbus-service.xmlã‚’{@link ClassLoader#getResource(String)}ã§ãƒªã‚½ãƒ¼ã‚¹ã¨ã—ã¦å–å¾—ã—ãŸURL</li>
      * </ol>
      * 
-     * @return ƒfƒtƒHƒ‹ƒg‚ÌURL
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®URL
      */
     public static URL getDefaultServiceURL(){
         final String urlString = System.getProperty(
@@ -97,18 +97,18 @@ public class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX’è‹`‚ÌƒpƒX‚ğURL‚É•ÏŠ·‚·‚éB<p>
-     * ˆÈ‰º‚Ì‡‚ÅA•ÏŠ·‚ğs‚¤B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ‘ã‚¹ã‚’URLã«å¤‰æ›ã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®é †ã§ã€å¤‰æ›ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>w’è‚³‚ê‚½ƒpƒX‚ªnullA‚Ü‚½‚Í‹ó•¶š‚Ìê‡A{@link #getDefaultServiceURL()}‚Åæ“¾‚³‚ê‚éURL</li>
-     *   <li>w’è‚³‚ê‚½ƒpƒX‚ªƒ[ƒJƒ‹ƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä‘¶İ‚·‚éê‡Aƒ[ƒJƒ‹ƒpƒX‚ğURL‚É•ÏŠ·‚µ‚½URL</li>
-     *   <li>w’è‚³‚ê‚½ƒpƒX‚ª‚±‚ÌƒNƒ‰ƒX‚ğƒ[ƒh‚µ‚½ƒNƒ‰ƒXƒ[ƒ_‚ÌƒŠƒ\[ƒX‚Æ‚µ‚Ä‘¶İ‚·‚éê‡A‚»‚ÌURL</li>
-     *   <li>ã‹L‘S‚Ä‚É“–‚Ä‚Í‚Ü‚ç‚È‚¢ê‡A—áŠO‚ğthrow‚·‚éB</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒnullã€ã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã€{@link #getDefaultServiceURL()}ã§å–å¾—ã•ã‚Œã‚‹URL</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒãƒ­ãƒ¼ã‚«ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦å­˜åœ¨ã™ã‚‹å ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‘ã‚¹ã‚’URLã«å¤‰æ›ã—ãŸURL</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒã“ã®ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã®ãƒªã‚½ãƒ¼ã‚¹ã¨ã—ã¦å­˜åœ¨ã™ã‚‹å ´åˆã€ãã®URL</li>
+     *   <li>ä¸Šè¨˜å…¨ã¦ã«å½“ã¦ã¯ã¾ã‚‰ãªã„å ´åˆã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @param path ƒT[ƒrƒX’è‹`‚ÌƒpƒX
-     * @return ƒT[ƒrƒX’è‹`‚ÌURL
-     * @exception IllegalArgumentException w’è‚³‚ê‚½path‚ª•s³‚Èê‡
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ‘ã‚¹
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®URL
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸpathãŒä¸æ­£ãªå ´åˆ
      */
     public static URL convertServicePathToURL(String path)
      throws IllegalArgumentException{
@@ -127,7 +127,7 @@ public class Utility{
             try{
                 url = localFile.toURL();
             }catch(MalformedURLException e){
-                // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
             }
         }else{
             final ClassLoader classLoader
@@ -146,10 +146,10 @@ public class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     public static String replaceSystemProperty(String str){
         String result = str;
@@ -188,10 +188,10 @@ public class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     public static String replaceManagerProperty(
         ServiceManager manager,
@@ -234,10 +234,10 @@ public class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     public static String replaceManagerProperty(
         ManagerMetaData manager,
@@ -280,10 +280,10 @@ public class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒT[ƒrƒXƒ[ƒh\¬ƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒT[ƒrƒXƒ[ƒh\¬ƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     public static String replaceServiceLoderConfig(
         String str,
@@ -329,10 +329,10 @@ public class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒT[ƒoƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒT[ƒoƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     public static String replaceServerProperty(String str){
         String result = str;
@@ -371,13 +371,13 @@ public class Utility{
     }
     
     /**
-     * ŠÂ‹«•Ï”ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ç’°å¢ƒå¤‰æ•°ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * {@link System#getProperty(String)} &gt; {@link ServiceLoaderConfig#getProperty(String)} &gt; {@link ServiceManager#getProperty(String)} &gt; {@link ServiceManagerFactory#getProperty(String)}
      *
-     * @param name ƒvƒƒpƒeƒB–¼
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      * @param config ServiceLoaderConfig
      * @param manager ServiceManager
-     * @param metaData ƒƒ^ƒf[ƒ^
+     * @param metaData ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public static String getProperty(
         String name,
@@ -439,10 +439,10 @@ public class Utility{
     }
     
     /**
-     * •¶š—ñ‚©‚çƒNƒ‰ƒX‚É•ÏŠ·‚·‚éB<p>
+     * æ–‡å­—åˆ—ã‹ã‚‰ã‚¯ãƒ©ã‚¹ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param typeStr Š®‘SCüƒNƒ‰ƒX–¼
-     * @param isWrapp ƒvƒŠƒ~ƒeƒBƒuŒ^‚Ìƒ‰ƒbƒp‚É•ÏŠ·‚·‚é‚©‚Ìƒtƒ‰ƒO
+     * @param typeStr å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
+     * @param isWrapp ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–å‹ã®ãƒ©ãƒƒãƒ‘ã«å¤‰æ›ã™ã‚‹ã‹ã®ãƒ•ãƒ©ã‚°
      */
     public static Class convertStringToClass(
         String typeStr,

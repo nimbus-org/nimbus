@@ -35,7 +35,7 @@ import java.io.File;
 import java.util.Map;
 
 /**
- * ƒeƒ“ƒvƒŒ[ƒgƒGƒ“ƒWƒ“B<p>
+ * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚¨ãƒ³ã‚¸ãƒ³ã€‚<p>
  *
  * @author M.Takata
  */
@@ -50,12 +50,12 @@ public interface TemplateEngine{
     public void setTemplateFile(String name, File templateFile, String encoding);
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg‚Éƒf[ƒ^‚ğ“K—p‚µ‚ÄA•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã«ãƒ‡ãƒ¼ã‚¿ã‚’é©ç”¨ã—ã¦ã€å¤‰æ›çµæœã‚’è¿”ã™ã€‚<p>
      *
-     * @param name ƒeƒ“ƒvƒŒ[ƒg–¼
-     * @param dataMap ƒf[ƒ^ƒ}ƒbƒv
-     * @return •ÏŠ·Œ‹‰Ê
-     * @exception TemplateTransformException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆå
+     * @param dataMap ãƒ‡ãƒ¼ã‚¿ãƒãƒƒãƒ—
+     * @return å¤‰æ›çµæœ
+     * @exception TemplateTransformException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String transform(String name, Map dataMap) throws TemplateTransformException;
 }

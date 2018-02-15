@@ -50,8 +50,8 @@ import jp.ossc.nimbus.util.converter.StreamStringConverter;
 import jp.ossc.nimbus.util.converter.FormatConverter;
 
 /**
- * �I�u�W�F�N�g����t�@�C���֕ϊ�����e�X�g�A�N�V�����B<p>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * オブジェクトからファイルへ変換するテストアクション。<p>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  * 
  * @author M.Takata
  */
@@ -105,21 +105,21 @@ public class ObjectToFileConvertActionService extends ServiceBase implements Tes
     }
     
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁA�I�u�W�F�N�g���t�@�C���ɕϊ�����B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースの内容を読み込んで、オブジェクトをファイルに変換する。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * targetObjectId
      * outputFilePath
      * format
      * </pre>
-     * targetObjectId�́A�ϊ��ΏۂƂȂ�I�u�W�F�N�g���w�肷����̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA�ϊ��ΏۂƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA�ϊ��ΏۂƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B<br>
-     * outputFilePath�́A�t�@�C���̃p�X���w�肷��B�p�X�́A��΃p�X�܂��́A���΃p�X�Ŏw�肷��B��s���w�肵���ꍇ�́A�A�N�V����ID�Ɋg���q".obj"��t�^�����t�@�C�����ƂȂ�B<br>
-     * format�́A�ݒ肳��Ă���{@link FormatConverter}��{@link FormatConverter#setFormat(String) setFormat(format)}�ɓn���t�H�[�}�b�g��������w�肷��B�w�肵�Ȃ��ꍇ�́A�t�H�[�}�b�g�͐ݒ肵�Ȃ��B<br>
+     * targetObjectIdは、変換対象となるオブジェクトを指定するもので、同一テストケース中に、このTestActionより前に、変換対象となるオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、変換対象となるオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。<br>
+     * outputFilePathは、ファイルのパスを指定する。パスは、絶対パスまたは、相対パスで指定する。空行を指定した場合は、アクションIDに拡張子".obj"を付与したファイル名となる。<br>
+     * formatは、設定されている{@link FormatConverter}の{@link FormatConverter#setFormat(String) setFormat(format)}に渡すフォーマット文字列を指定する。指定しない場合は、フォーマットは設定しない。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return �ϊ���t�@�C��
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return 変換後ファイル
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
@@ -127,22 +127,22 @@ public class ObjectToFileConvertActionService extends ServiceBase implements Tes
     
     
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁA�I�u�W�F�N�g���t�@�C���ɕϊ�����B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースの内容を読み込んで、オブジェクトをファイルに変換する。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * targetObjectId
      * outputFilePath
      * format
      * </pre>
-     * targetObjectId�́A�ϊ��ΏۂƂȂ�I�u�W�F�N�g���w�肷����̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA�ϊ��ΏۂƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA�ϊ��ΏۂƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��BpreResult���g�p����ꍇ�́A��s���w�肷��B<br>
-     * outputFilePath�́A�t�@�C���̃p�X���w�肷��B�p�X�́A��΃p�X�܂��́A���΃p�X�Ŏw�肷��B��s���w�肵���ꍇ�́A�A�N�V����ID�Ɋg���q".obj"��t�^�����t�@�C�����ƂȂ�B<br>
-     * format�́A�ݒ肳��Ă���{@link FormatConverter}��{@link FormatConverter#setFormat(String) setFormat(format)}�ɓn���t�H�[�}�b�g��������w�肷��B�w�肵�Ȃ��ꍇ�́A�t�H�[�}�b�g�͐ݒ肵�Ȃ��B<br>
+     * targetObjectIdは、変換対象となるオブジェクトを指定するもので、同一テストケース中に、このTestActionより前に、変換対象となるオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、変換対象となるオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。preResultを使用する場合は、空行を指定する。<br>
+     * outputFilePathは、ファイルのパスを指定する。パスは、絶対パスまたは、相対パスで指定する。空行を指定した場合は、アクションIDに拡張子".obj"を付与したファイル名となる。<br>
+     * formatは、設定されている{@link FormatConverter}の{@link FormatConverter#setFormat(String) setFormat(format)}に渡すフォーマット文字列を指定する。指定しない場合は、フォーマットは設定しない。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param preResult �ϊ��ΏۂƂȂ�I�u�W�F�N�g
-     * @param resource ���\�[�X
-     * @return �ϊ���t�@�C��
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param preResult 変換対象となるオブジェクト
+     * @param resource リソース
+     * @return 変換後ファイル
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

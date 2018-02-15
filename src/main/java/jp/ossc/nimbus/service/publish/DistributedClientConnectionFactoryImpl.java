@@ -37,7 +37,7 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 
 /**
- * {@link ClientConnectionFactory}‚ğ•ªU‚·‚éClientConnectionFactoryƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link ClientConnectionFactory}ã‚’åˆ†æ•£ã™ã‚‹ClientConnectionFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

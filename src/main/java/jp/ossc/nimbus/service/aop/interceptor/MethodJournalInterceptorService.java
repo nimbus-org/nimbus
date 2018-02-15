@@ -42,10 +42,10 @@ import jp.ossc.nimbus.service.journal.editor.*;
 import jp.ossc.nimbus.service.journal.editorfinder.*;
 
 /**
- * ƒƒ\ƒbƒhƒWƒƒ[ƒiƒ‹ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ÌƒWƒƒ[ƒiƒ‹‚ğæ“¾‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éBƒWƒƒ[ƒiƒ‹‚Ìo—Í‚ÍA•Ê“rƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX‚Ì’è‹`‚ª•K—v‚Å‚ ‚éB<br>
- * ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Åo—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹î•ñ‚ÍAƒƒ\ƒbƒhŒÄ‚Ño‚µî•ñi{@link MethodCallJournalData}jAƒƒ\ƒbƒh–ß‚è’lî•ñi{@link MethodReturnJournalData}jAƒƒ\ƒbƒh—áŠOî•ñi{@link MethodThrowJournalData}j‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µƒWƒƒ[ƒiƒ‹‚ğƒRƒ“ƒ\[ƒ‹‚Éo—Í‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å–å¾—ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã¯ã€åˆ¥é€”ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©ãŒå¿…è¦ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—æƒ…å ±ï¼ˆ{@link MethodCallJournalData}ï¼‰ã€ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šå€¤æƒ…å ±ï¼ˆ{@link MethodReturnJournalData}ï¼‰ã€ãƒ¡ã‚½ãƒƒãƒ‰ä¾‹å¤–æƒ…å ±ï¼ˆ{@link MethodThrowJournalData}ï¼‰ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -58,7 +58,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.*;
  *             &lt;attribute name="JournalServiceName"&gt;#Journal&lt;/attribute&gt;
  *             &lt;depends&gt;Journal&lt;/depends&gt;
  *         &lt;/service&gt;
- * &lt;!-- ˆÈ‰º‚ÍƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX’è‹` --&gt;
+ * &lt;!-- ä»¥ä¸‹ã¯ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾© --&gt;
  *         &lt;service name="Journal"
  *                  code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService"&gt;
  *             &lt;attribute name="EditorFinderName"&gt;#JournalEditorFinder&lt;/attribute&gt;
@@ -170,148 +170,148 @@ public class MethodJournalInterceptorService extends ServiceBase
     
     protected ThreadLocal callStack;
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestIdKey(String key){
         requestIdKey = key;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public String getRequestIdKey(){
         return requestIdKey;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextName = name;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextName;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalName = name;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalName;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestEditorFinderServiceName(ServiceName name){
         requestEditorFinderName = name;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getRequestEditorFinderServiceName(){
         return requestEditorFinderName;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setMethodCallEditorFinderServiceName(ServiceName name){
         methodCallEditorFinderName = name;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getMethodCallEditorFinderServiceName(){
         return methodCallEditorFinderName;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setMethodReturnEditorFinderServiceName(ServiceName name){
         methodReturnEditorFinderName = name;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getMethodReturnEditorFinderServiceName(){
         return methodReturnEditorFinderName;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestJournalKey(String key){
         requestJournalKey = key;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public String getRequestJournalKey(){
         return requestJournalKey;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setMethodCallJournalKey(String key){
         methodCallJournalKey = key;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public String getMethodCallJournalKey(){
         return methodCallJournalKey;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setMethodReturnJournalKey(String key){
         methodReturnJournalKey = key;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public String getMethodReturnJournalKey(){
         return methodReturnJournalKey;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setBushingCallBlock(boolean isBlock){
         isBushingCallBlock = isBlock;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isBushingCallBlock(){
         return isBushingCallBlock;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setContextJournalMapping(String contextKey, String journalKey){
         contextJournalMap.put(contextKey, journalKey);
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public String getContextJournalMapping(String contextKey){
         return (String)contextJournalMap.get(contextKey);
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public Map getContextJournalMap(){
         return contextJournalMap;
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public void setInvocationContextJournalMapping(String attributeName, String journalKey){
         invocationContextJournalMap.put(attributeName, journalKey);
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public String getInvocationContextJournalMapping(String attributeName){
         return (String)invocationContextJournalMap.get(attributeName);
     }
     
-    // MethodJournalInterceptorServiceMBean‚ÌJavaDoc
+    // MethodJournalInterceptorServiceMBeanã®JavaDoc
     public Map getInvocationContextJournalMap(){
         return invocationContextJournalMap;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param journal Journal
      */
@@ -320,7 +320,7 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param editorFinder EditorFinder
      */
@@ -329,7 +329,7 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒ\ƒbƒh–ß‚è‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param editorFinder EditorFinder
      */
@@ -338,7 +338,7 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param editorFinder EditorFinder
      */
@@ -347,7 +347,7 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context}‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param context Context
      */
@@ -356,9 +356,9 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         contextJournalMap = new HashMap();
@@ -366,9 +366,9 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception w’è‚³‚ê‚½{@link Journal}A‹y‚Ñ{@link EditorFinder}A{@link Context}ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @exception Exception æŒ‡å®šã•ã‚ŒãŸ{@link Journal}ã€åŠã³{@link EditorFinder}ã€{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public void startService() throws Exception{
         if(journalName != null){
@@ -400,18 +400,18 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         callStack = null;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService(){
         journal = null;
@@ -423,13 +423,13 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µŠJn‚ÌƒWƒƒ[ƒiƒ‹‚ğo—Í‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µA–ß‚Á‚Ä‚«‚½‚Æ‚±‚ë‚ÅAƒƒ\ƒbƒhŒÄ‚Ño‚µI—¹‚ÌƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒWƒƒ[ƒiƒ‹o—Í‚ğs‚í‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—é–‹å§‹ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã£ã¦ããŸã¨ã“ã‚ã§ã€ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—çµ‚äº†ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã‚ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,
@@ -467,12 +467,12 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‘Oˆ—‚ğs‚¤B<p>
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ğŠJn‚·‚éB‚Ü‚½A{@link #setThreadContextServiceName(ServiceName)}‚ÅA{@link Context}ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link #setRequestIdKey(String)}‚Åİ’è‚³‚ê‚½ƒL[‚ÅContextƒT[ƒrƒX‚©‚çƒŠƒNƒGƒXƒgID‚ğæ“¾‚µ‚ÄAƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚Éİ’èi{@link Journal#setRequestId(String)}j‚·‚éB<br>
-     * {@link #setMethodCallJournalKey(String)}‚Åİ’è‚³‚ê‚½ƒL[‚ÅA{@link MethodCallJournalData}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Íi{@link Journal#addInfo(String, Object)}j‚·‚éB<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’é–‹å§‹ã™ã‚‹ã€‚ã¾ãŸã€{@link #setThreadContextServiceName(ServiceName)}ã§ã€{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link #setRequestIdKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã§Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã—ã¦ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã«è¨­å®šï¼ˆ{@link Journal#setRequestId(String)}ï¼‰ã™ã‚‹ã€‚<br>
+     * {@link #setMethodCallJournalKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã€{@link MethodCallJournalData}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ï¼ˆ{@link Journal#addInfo(String, Object)}ï¼‰ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @exception Throwable ‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @exception Throwable å‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void preNext(MethodInvocationContext context) throws Throwable{
         if(journal == null){
@@ -509,12 +509,12 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µ‚½Œãˆ—‚ğs‚¤B<p>
-     * {@link #setMethodReturnJournalKey(String)}‚Åİ’è‚³‚ê‚½ƒL[‚ÅA{@link MethodReturnJournalData}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Íi{@link Journal#addInfo(String, Object)}j‚·‚éB<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ãŸå¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #setMethodReturnJournalKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã€{@link MethodReturnJournalData}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ï¼ˆ{@link Journal#addInfo(String, Object)}ï¼‰ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param ret ŒÄ‚Ño‚µ‚Ì–ß‚è’l
-     * @exception Throwable Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param ret å‘¼ã³å‡ºã—ã®æˆ»ã‚Šå€¤
+     * @exception Throwable å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postNext(MethodInvocationContext context, Object ret)
      throws Throwable{
@@ -534,13 +534,13 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µ‚½‚ÉRuntimeException‚ª”­¶‚µ‚½ê‡‚ÌŒãˆ—‚ğs‚¤B<p>
-     * {@link #setMethodReturnJournalKey(String)}‚Åİ’è‚³‚ê‚½ƒL[‚ÅA{@link MethodThrowJournalData}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Íi{@link Journal#addInfo(String, Object)}j‚·‚éB<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«RuntimeExceptionãŒç™ºç”Ÿã—ãŸå ´åˆã®å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #setMethodReturnJournalKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã€{@link MethodThrowJournalData}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ï¼ˆ{@link Journal#addInfo(String, Object)}ï¼‰ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param e ŒÄ‚Ño‚µ‚É”­¶‚µ‚½RuntimeException
-     * @return ˆø”‚Åw’è‚³‚ê‚½RuntimeException
-     * @exception Throwable Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param e å‘¼ã³å‡ºã—æ™‚ã«ç™ºç”Ÿã—ãŸRuntimeException
+     * @return å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸRuntimeException
+     * @exception Throwable å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected RuntimeException throwRuntimeException(
         MethodInvocationContext context,
@@ -562,13 +562,13 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µ‚½‚ÉRuntimeExceptionˆÈŠO‚ÌException‚ª”­¶‚µ‚½ê‡‚ÌŒãˆ—‚ğs‚¤B<p>
-     * {@link #setMethodReturnJournalKey(String)}‚Åİ’è‚³‚ê‚½ƒL[‚ÅA{@link MethodThrowJournalData}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Íi{@link Journal#addInfo(String, Object)}j‚·‚éB<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«RuntimeExceptionä»¥å¤–ã®ExceptionãŒç™ºç”Ÿã—ãŸå ´åˆã®å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #setMethodReturnJournalKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã€{@link MethodThrowJournalData}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ï¼ˆ{@link Journal#addInfo(String, Object)}ï¼‰ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param e ŒÄ‚Ño‚µ‚É”­¶‚µ‚½Exception
-     * @return ˆø”‚Åw’è‚³‚ê‚½Exception
-     * @exception Throwable Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param e å‘¼ã³å‡ºã—æ™‚ã«ç™ºç”Ÿã—ãŸException
+     * @return å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸException
+     * @exception Throwable å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Exception throwException(
         MethodInvocationContext context,
@@ -590,13 +590,13 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µ‚½‚ÉError‚ª”­¶‚µ‚½ê‡‚ÌŒãˆ—‚ğs‚¤B<p>
-     * {@link #setMethodReturnJournalKey(String)}‚Åİ’è‚³‚ê‚½ƒL[‚ÅA{@link MethodThrowJournalData}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Íi{@link Journal#addInfo(String, Object)}j‚·‚éB<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ErrorãŒç™ºç”Ÿã—ãŸå ´åˆã®å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #setMethodReturnJournalKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã€{@link MethodThrowJournalData}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ï¼ˆ{@link Journal#addInfo(String, Object)}ï¼‰ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param error ŒÄ‚Ño‚µ‚É”­¶‚µ‚½Error
-     * @return ˆø”‚Åw’è‚³‚ê‚½Error
-     * @exception Throwable Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param error å‘¼ã³å‡ºã—æ™‚ã«ç™ºç”Ÿã—ãŸError
+     * @return å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸError
+     * @exception Throwable å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Error throwError(
         MethodInvocationContext context,
@@ -618,12 +618,12 @@ public class MethodJournalInterceptorService extends ServiceBase
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µ‚½Œã‚Ìfinallyß‚Å‚Ìˆ—‚ğs‚¤B<p>
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ğI—¹‚·‚éB<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ãŸå¾Œã®finallyç¯€ã§ã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’çµ‚äº†ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param ret ŒÄ‚Ño‚µ‚Ì–ß‚è’l
-     * @exception Throwable Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param ret å‘¼ã³å‡ºã—ã®æˆ»ã‚Šå€¤
+     * @exception Throwable å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void finallyNext(MethodInvocationContext context, Object ret)
      throws Throwable{

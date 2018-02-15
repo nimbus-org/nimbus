@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.test.ChainTestAction.TestActionProcess;
 
 /**
- * {@link ChainTestActionService}��MBean�C���^�t�F�[�X<p>
+ * {@link ChainTestActionService}のMBeanインタフェース<p>
  * 
  * @author M.Ishida
  * @see ChainTestActionService
@@ -44,28 +44,28 @@ import jp.ossc.nimbus.service.test.ChainTestAction.TestActionProcess;
 public interface ChainTestActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * �A��������e�X�g�A�N�V�����T�[�r�X�̃T�[�r�X���̔z����擾����B<p>
+     * 連鎖させるテストアクションサービスのサービス名の配列を取得する。<p>
      *
-     * @return �e�X�g�A�N�V�����T�[�r�X�̃T�[�r�X���̔z��
+     * @return テストアクションサービスのサービス名の配列
      */
     public ServiceName[] getActionServiceNames();
     
     /**
-     * �A��������e�X�g�A�N�V�����T�[�r�X�̃T�[�r�X���̔z���ݒ肷��B<p>
-     * �A���\�ȃe�X�g�A�N�V�����́A�ȉ��B<br>
+     * 連鎖させるテストアクションサービスのサービス名の配列を設定する。<p>
+     * 連鎖可能なテストアクションは、以下。<br>
      * <ul>
      *     <li>{@link TestAction}</li>
      *     <li>{@link TestActionProcess}</li>
      * </ul>
      *
-     * @param names �e�X�g�A�N�V�����T�[�r�X�̃T�[�r�X���̔z��
+     * @param names テストアクションサービスのサービス名の配列
      */
     public void setActionServiceNames(ServiceName[] serviceNames);
     
     /**
-     * ���̃A�N�V�����̃��\�[�X��`���쐬����ۂ̃f�t�H���g�̑z��R�X�g���擾����B<p>
+     * このアクションのリソース定義を作成する際のデフォルトの想定コストを取得する。<p>
      * 
-     * @return �A�����ꂽ�e�X�g�A�N�V�����̑z��R�X�g�̑��a
+     * @return 連鎖されたテストアクションの想定コストの総和
      */
     public double getExpectedCost();
 }

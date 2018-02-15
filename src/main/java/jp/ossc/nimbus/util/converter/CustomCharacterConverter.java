@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^B<p>
+ * ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,16 +44,16 @@ public class CustomCharacterConverter extends AbstractCharacterConverter
     protected char[][] convertChars;
     
     /**
-     * ‡•ûŒü•ÏŠ·‚·‚é‹ó‚ÌƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * é †æ–¹å‘å¤‰æ›ã™ã‚‹ç©ºã®ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CustomCharacterConverter(){
         this(POSITIVE_CONVERT);
     }
     
     /**
-     * ‹ó‚ÌƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      */
@@ -62,11 +62,11 @@ public class CustomCharacterConverter extends AbstractCharacterConverter
     }
     
     /**
-     * ƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromChars •ÏŠ·ŒãƒLƒƒƒ‰ƒNƒ^”z—ñ
-     * @param toChars •ÏŠ·‘ÎÛƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromChars å¤‰æ›å¾Œã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
+     * @param toChars å¤‰æ›å¯¾è±¡ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      */
@@ -76,10 +76,10 @@ public class CustomCharacterConverter extends AbstractCharacterConverter
     }
     
     /**
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param fromChars •ÏŠ·‘ÎÛƒLƒƒƒ‰ƒNƒ^”z—ñ
-     * @param toChars •ÏŠ·ŒãƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @param fromChars å¤‰æ›å¯¾è±¡ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
+     * @param toChars å¤‰æ›å¾Œã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      */
     public void setConvertChars(char[] fromChars, char[] toChars){
         if(toChars == null && fromChars == null){
@@ -97,9 +97,9 @@ public class CustomCharacterConverter extends AbstractCharacterConverter
     }
     
     /**
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @return å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      */
     protected char[][] getConvertChars(){
         return convertChars;

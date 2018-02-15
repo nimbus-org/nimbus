@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.queue;
 import jp.ossc.nimbus.beans.Property;
 
 /**
- * {@link InputPropertyDistributedQueueSelectorService}のMBeanインタフェース<p>
+ * {@link InputPropertyDistributedQueueSelectorService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see InputPropertyDistributedQueueSelectorService

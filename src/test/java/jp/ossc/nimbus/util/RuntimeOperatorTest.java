@@ -37,7 +37,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 �쐬: 2003/10/22 -�@H.Nakano
+ * @version  1.00 作成: 2003/10/22 -　H.Nakano
  */
 public class RuntimeOperatorTest extends TestCase {
 

@@ -51,7 +51,7 @@ import jp.ossc.nimbus.service.test.TestScenario;
 import jp.ossc.nimbus.service.test.TestScenarioGroup;
 
 /**
- * HTMLŒ`®‚ÅƒeƒXƒgŒ‹‰Ê‚ğƒŒƒ|[ƒg‚·‚éB
+ * HTMLå½¢å¼ã§ãƒ†ã‚¹ãƒˆçµæœã‚’ãƒ¬ãƒãƒ¼ãƒˆã™ã‚‹ã€‚
  * <p>
  *
  * @author M.Aono
@@ -115,21 +115,21 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
             pw.println("</tr>");
             pw.println("<tr bgcolor=\"#cccccc\">");
             pw.println("<th scope=\"col\">ID</th>");
-            pw.println("<th scope=\"col\">ÀsÒ</th>");
-            pw.println("<th scope=\"col\">ŠJnŠÔ</th>");
-            pw.println("<th scope=\"col\">Œ‹‰Ê</th>");
+            pw.println("<th scope=\"col\">å®Ÿè¡Œè€…</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹æ™‚é–“</th>");
+            pw.println("<th scope=\"col\">çµæœ</th>");
             pw.println("<th scope=\"col\">ID</th>");
-            pw.println("<th scope=\"col\">ÀsÒ</th>");
-            pw.println("<th scope=\"col\">ŠJnŠÔ</th>");
-            pw.println("<th scope=\"col\">I—¹ŠÔ</th>");
-            pw.println("<th scope=\"col\">ƒXƒe[ƒ^ƒX</th>");
-            pw.println("<th scope=\"col\">Œ‹‰Ê</th>");
+            pw.println("<th scope=\"col\">å®Ÿè¡Œè€…</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹æ™‚é–“</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†æ™‚é–“</th>");
+            pw.println("<th scope=\"col\">ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹</th>");
+            pw.println("<th scope=\"col\">çµæœ</th>");
             pw.println("<th scope=\"col\">ID</th>");
-            pw.println("<th scope=\"col\">ÀsÒ</th>");
-            pw.println("<th scope=\"col\">ŠJnŠÔ</th>");
-            pw.println("<th scope=\"col\">I—¹ŠÔ</th>");
-            pw.println("<th scope=\"col\">ƒXƒe[ƒ^ƒX</th>");
-            pw.println("<th scope=\"col\">Œ‹‰Ê</th>");
+            pw.println("<th scope=\"col\">å®Ÿè¡Œè€…</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹æ™‚é–“</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†æ™‚é–“</th>");
+            pw.println("<th scope=\"col\">ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹</th>");
+            pw.println("<th scope=\"col\">çµæœ</th>");
             pw.println("</tr>");
             for (int index = 0; index < groups.length; index++) {
                 if(groups[index].getStatus() == null){

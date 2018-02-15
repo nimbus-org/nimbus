@@ -36,7 +36,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link MethodCallJournalData}ƒIƒuƒWƒFƒNƒg‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * {@link MethodCallJournalData}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

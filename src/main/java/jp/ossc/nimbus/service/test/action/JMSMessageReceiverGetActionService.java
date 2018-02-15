@@ -51,8 +51,8 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * {@link JMSMessageReceiverListenActionService.MessageListener}‚ªóM‚µ‚½{@link java.jms.Message Message}‚ğæ“¾‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link JMSMessageReceiverListenActionService.MessageListener}ãŒå—ä¿¡ã—ãŸ{@link java.jms.Message Message}ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  *
  * @author Y.Nakashima
  * @see JMSMessageReceiverListenActionService
@@ -62,7 +62,7 @@ public class JMSMessageReceiverGetActionService extends ServiceBase implements T
     private static final long serialVersionUID = 6779163909892607718L;
     protected double expectedCost = 0d;
 
-    /* ƒfƒtƒHƒ‹ƒg‚ğŠO‚©‚çİ’è‚Å‚«‚é */
+    /* ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚’å¤–ã‹ã‚‰è¨­å®šã§ãã‚‹ */
     protected String defaultGetType = "message";
     protected long defaultTimeout = 10000;
     protected int defaultCount = 1;
@@ -85,8 +85,8 @@ public class JMSMessageReceiverGetActionService extends ServiceBase implements T
     }
 
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅA{@link JMSMessageReceiverListenActionService.MessageListener}‚ªóM‚µ‚½{@link ava.jms.Message Message}‚ğæ“¾‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€{@link JMSMessageReceiverListenActionService.MessageListener}ãŒå—ä¿¡ã—ãŸ{@link ava.jms.Message Message}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * listenerId
      * getType
@@ -94,21 +94,21 @@ public class JMSMessageReceiverGetActionService extends ServiceBase implements T
      * count
      * close
      * </pre>
-     * listenerId‚ÍAƒƒbƒZ[ƒW‚ğóM‚µ‚Ä‚¢‚é{@link JMSMessageReceiverListenActionService}‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉA{@link JMSMessageReceiverListenActionService.MessageListener}‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉA{@link JMSMessageReceiverListenActionService.MessageListener}‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB<br>
-     * getType‚ÍA"message","text","object"‚Ü‚½‚Í"map"BƒfƒtƒHƒ‹ƒgw’è‰Â”\BƒfƒtƒHƒ‹ƒg‚Í"message"B<br>
-     * getType–ˆ‚Ì•ÏŠ·‚ÍˆÈ‰º‚Ì’Ê‚è<br>
-     *   "message"‚Íjavax.jms.Message‚ğæ“¾‚µA‚»‚Ì‚Ü‚Ü•Ô‚·B<br>
-     *   "text"‚Íjavax.jms.TextMessage‚ğæ“¾‚µAString‚É•ÏŠ·‚µ‚Ä•Ô‚·<br>
-     *   "object"‚Íjavax.jms.ObjectMessage‚ğæ“¾‚µAObject‚É•ÏŠ·‚µ‚Ä•Ô‚·<br>
-     *   "map"‚Íjavax.jms.MapMessage‚ğæ“¾‚µAMap‚É•ÏŠ·‚µ‚Ä•Ô‚·<br>
-     * timeout‚ÍAƒƒbƒZ[ƒW‚ÌóM‘Ò‚¿ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğw’è‚·‚éBƒfƒtƒHƒ‹ƒgw’è‰Â”\BƒfƒtƒHƒ‹ƒg‚Í10,000[ms]<br>
-     * count‚ÍAæ“¾‚·‚éƒƒbƒZ[ƒW”‚ğw’è‚·‚éBƒfƒtƒHƒ‹ƒgw’è‰Â”\BƒfƒtƒHƒ‹ƒg‚Í1B<br>
-     * close‚ÍA{@link JMSMessageReceiverListenActionService.MessageListener#close()}‚ğŒÄ‚Ño‚·‚©‚Ç‚¤‚©‚ğAtrue‚Ü‚½‚Ífalse‚Åw’è‚·‚éBƒfƒtƒHƒ‹ƒgw’è‰Â”\BƒfƒtƒHƒ‹ƒg‚ÍtrueB<br>
+     * listenerIdã¯ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ã¦ã„ã‚‹{@link JMSMessageReceiverListenActionService}ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€{@link JMSMessageReceiverListenActionService.MessageListener}ã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€{@link JMSMessageReceiverListenActionService.MessageListener}ã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * getTypeã¯ã€"message","text","object"ã¾ãŸã¯"map"ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæŒ‡å®šå¯èƒ½ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯"message"ã€‚<br>
+     * getTypeæ¯ã®å¤‰æ›ã¯ä»¥ä¸‹ã®é€šã‚Š<br>
+     *   "message"ã¯javax.jms.Messageã‚’å–å¾—ã—ã€ãã®ã¾ã¾è¿”ã™ã€‚<br>
+     *   "text"ã¯javax.jms.TextMessageã‚’å–å¾—ã—ã€Stringã«å¤‰æ›ã—ã¦è¿”ã™<br>
+     *   "object"ã¯javax.jms.ObjectMessageã‚’å–å¾—ã—ã€Objectã«å¤‰æ›ã—ã¦è¿”ã™<br>
+     *   "map"ã¯javax.jms.MapMessageã‚’å–å¾—ã—ã€Mapã«å¤‰æ›ã—ã¦è¿”ã™<br>
+     * timeoutã¯ã€ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡å¾…ã¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæŒ‡å®šå¯èƒ½ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯10,000[ms]<br>
+     * countã¯ã€å–å¾—ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ•°ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæŒ‡å®šå¯èƒ½ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯1ã€‚<br>
+     * closeã¯ã€{@link JMSMessageReceiverListenActionService.MessageListener#close()}ã‚’å‘¼ã³å‡ºã™ã‹ã©ã†ã‹ã‚’ã€trueã¾ãŸã¯falseã§æŒ‡å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæŒ‡å®šå¯èƒ½ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return javax.jms.Message‚ğgetType–ˆ‚É•ÏŠ·‚µ‚½ƒŠƒXƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return javax.jms.Messageã‚’getTypeæ¯ã«å¤‰æ›ã—ãŸãƒªã‚¹ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
@@ -118,7 +118,7 @@ public class JMSMessageReceiverGetActionService extends ServiceBase implements T
         int count = 1;
         boolean isClose = true;
 
-        // resource‚Ìƒp[ƒX
+        // resourceã®ãƒ‘ãƒ¼ã‚¹
         try{
             final String listenerId = br.readLine();
             if(listenerId == null || listenerId.length() == 0){
@@ -146,7 +146,7 @@ public class JMSMessageReceiverGetActionService extends ServiceBase implements T
                 getType = defaultGetType;
             }
 
-            // stream‚Æbyte‚ÍƒTƒ|[ƒg‚µ‚È‚¢
+            // streamã¨byteã¯ã‚µãƒãƒ¼ãƒˆã—ãªã„
             if(!"message".equals(getType) && !"text".equals(getType) && !"map".equals(getType) && !"object".equals(getType)){
                 throw new UnsupportedOperationException("Illegal getType : " + getType);
             }
@@ -184,11 +184,11 @@ public class JMSMessageReceiverGetActionService extends ServiceBase implements T
             br = null;
         }
 
-        // Message‚ğæ“¾‚µAList‚É’Ç‰Á‚µ‚Ä•Ô‚·
-        // ˆÈ‰º‚Ì‚æ‚¤‚ÉgetType–ˆ‚É•Ô‚µ•û‚ğ•Ï‚¦‚é
-        //   text: TextMessage Ë List<String>
-        //   object: ObjectMessage Ë List<Object>
-        //   map: MapMessage Ë List<Map>
+        // Messageã‚’å–å¾—ã—ã€Listã«è¿½åŠ ã—ã¦è¿”ã™
+        // ä»¥ä¸‹ã®ã‚ˆã†ã«getTypeæ¯ã«è¿”ã—æ–¹ã‚’å¤‰ãˆã‚‹
+        //   text: TextMessage â‡’ List<String>
+        //   object: ObjectMessage â‡’ List<Object>
+        //   map: MapMessage â‡’ List<Map>
 
         List result = null;
         List msgList = null;

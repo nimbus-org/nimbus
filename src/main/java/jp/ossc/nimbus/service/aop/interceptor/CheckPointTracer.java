@@ -32,52 +32,52 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 /**
- * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒgƒgƒŒ[ƒT[B<p>
- * “Á’è‚ÌƒXƒŒƒbƒh‚ª’Ê‰ß‚µ‚½{@link CheckPoint}‚ÌƒgƒŒ[ƒX‚ğæ“¾‚·‚éB<br>
+ * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆãƒˆãƒ¬ãƒ¼ã‚µãƒ¼ã€‚<p>
+ * ç‰¹å®šã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒé€šéã—ãŸ{@link CheckPoint}ã®ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface CheckPointTracer{
     
     /**
-     * —LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enabled —LŒø‚É‚·‚éê‡‚ÍAtrue
+     * @param enabled æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabled(boolean enabled);
     
     /**
-     * —LŒø/–³Œø‚ğ”»’è‚·‚éB<p>
+     * æœ‰åŠ¹/ç„¡åŠ¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isEnabled();
     
     /**
-     * w’è‚³‚ê‚½ƒXƒŒƒbƒh‚ª’Ê‰ß‚µ‚½ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚ÌƒgƒŒ[ƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒé€šéã—ãŸãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã®ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param threadName ƒXƒŒƒbƒh–¼
-     * @return ’Ê‰ß‚µ‚½ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚Ì”z—ñ
+     * @param threadName ã‚¹ãƒ¬ãƒƒãƒ‰å
+     * @return é€šéã—ãŸãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã®é…åˆ—
      */
     public CheckPoint[] getCheckPointTrace(String threadName);
     
     /**
-     * w’è‚³‚ê‚½ƒXƒŒƒbƒh–¼‚ÌƒgƒŒ[ƒX‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒ¬ãƒƒãƒ‰åã®ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param threadName ƒXƒŒƒbƒh–¼
+     * @param threadName ã‚¹ãƒ¬ãƒƒãƒ‰å
      */
     public void clear(String threadName);
     
     /**
-     * ƒgƒŒ[ƒX‚ğíœ‚·‚éB<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clear();
     
     /**
-     * ’Ê‰ß‚µ‚½ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg‚ğ“o˜^‚·‚éB<p>
+     * é€šéã—ãŸãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param threadName ƒXƒŒƒbƒh–¼
-     * @param point ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg
+     * @param threadName ã‚¹ãƒ¬ãƒƒãƒ‰å
+     * @param point ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆ
      */
     public void passedCheckPoint(String threadName, CheckPoint point);
 }

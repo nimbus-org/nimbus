@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link LIFOOverflowAlgorithmService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link LIFOOverflowAlgorithmService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see LIFOOverflowAlgorithmService
@@ -43,14 +43,14 @@ public interface LIFOOverflowAlgorithmServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‘ÎÛ‚É‚È‚Á‚Ä‚¢‚éƒLƒƒƒbƒVƒ…”‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ å¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…”
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°
      */
     public int size();
 }

@@ -56,9 +56,9 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒgB<p>
- * ƒT[ƒoŠÔ‚ÅƒRƒ“ƒeƒLƒXƒgî•ñ‚ğ‹¤—L‚·‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
+ * ã‚µãƒ¼ãƒé–“ã§ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å…±æœ‰ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -465,9 +465,9 @@ public class SharedContextService extends DefaultContextService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         super.createService();
@@ -478,9 +478,9 @@ public class SharedContextService extends DefaultContextService
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(requestConnectionFactoryServiceName == null){
@@ -608,9 +608,9 @@ public class SharedContextService extends DefaultContextService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         unlockAll();
@@ -5378,7 +5378,7 @@ public class SharedContextService extends DefaultContextService
     }
     
     /**
-     * {@link SharedContext ‹¤—LƒRƒ“ƒeƒLƒXƒg}‚ÌŒŸõƒrƒ…[B<p>
+     * {@link SharedContext å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ}ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã€‚<p>
      *
      * @author M.Takata
      * @see SharedContext
@@ -5400,7 +5400,7 @@ public class SharedContextService extends DefaultContextService
         protected int operator = OPERATOR_AND;
         
         /**
-         * ƒrƒ…[‚ğ¶¬‚·‚éB<p>
+         * ãƒ“ãƒ¥ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public SharedContextViewImpl(){
         }

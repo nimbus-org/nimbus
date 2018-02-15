@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.codemaster;
 
 import java.util.Date;
@@ -39,78 +39,78 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * ãQÆ‚É‚æ‚éƒLƒƒƒbƒVƒ…‹@”\‚Â‚«ƒR[ƒhƒ}ƒXƒ^[ƒT[ƒrƒX<p>
- * ãQÆ‚ğg—p‚µ‚½ƒR[ƒhƒ}ƒXƒ^’ñ‹Ÿ‚ğs‚¤
+ * å¼±å‚ç…§ã«ã‚ˆã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ©Ÿèƒ½ã¤ãã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹<p>
+ * å¼±å‚ç…§ã‚’ä½¿ç”¨ã—ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æä¾›ã‚’è¡Œã†
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
  */
 public interface WeakReferenceCodeMasterServiceMBean extends ServiceBaseMBean {
     /**
-     * ƒR[ƒhƒ}ƒXƒ^[‚Ì–¼‘O‚ğİ’è‚·‚éB
-     * @param names ƒR[ƒhƒ}ƒXƒ^–¼”z—ñ
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚
+     * @param names ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿åé…åˆ—
      */
     public void setMasterNames(String[] names) ;
     /**
-     * ƒR[ƒhƒ}ƒXƒ^[‚Ì–¼‘O‚ğæ“¾B
-     * @return ƒR[ƒhƒ}ƒXƒ^–¼”z—ñ
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã®åå‰ã‚’å–å¾—ã€‚
+     * @return ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿åé…åˆ—
      */
     public String[] getMasterNames() ;
     /**
-     * BeanFlowInvokerƒtƒ@ƒNƒgƒŠ–¼İ’è
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX–¼
+     * BeanFlowInvokerãƒ•ã‚¡ã‚¯ãƒˆãƒªåè¨­å®š
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryName(ServiceName name);
     /**
-     * BeanFlowInvokerƒtƒ@ƒNƒgƒŠ–¼æ“¾
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX–¼
+     * BeanFlowInvokerãƒ•ã‚¡ã‚¯ãƒˆãƒªåå–å¾—
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryName();
     /**
-     * CacheService–¼İ’è
-     * @param name CacheService–¼
+     * CacheServiceåè¨­å®š
+     * @param name CacheServiceå
      */
     public void setCacheServiceName(ServiceName name);
     /**
-     * CacheService–¼æ“¾
-     * @return CacheService–¼
+     * CacheServiceåå–å¾—
+     * @return CacheServiceå
      */
     public ServiceName getCacheServiceName();
     /**
-     * ‘Sƒ}ƒXƒ^XV
-     * @param date Œn—ñ‚É“o˜^‚·‚éƒ}ƒXƒ^‚Ì
+     * å…¨ãƒã‚¹ã‚¿æ›´æ–°
+     * @param date æ™‚ç³»åˆ—ã«ç™»éŒ²ã™ã‚‹ãƒã‚¹ã‚¿ã®æ™‚åˆ»
      */
     public void codeMasterRefresh(Date date);
     /**
-     * ‘Sƒ}ƒXƒ^XV
-     * Œn—ñ‚É“o˜^‚³‚ê‚éƒ}ƒXƒ^‚Ì‚ÍŒ»İ‚Æ‚È‚é
+     * å…¨ãƒã‚¹ã‚¿æ›´æ–°
+     * æ™‚ç³»åˆ—ã«ç™»éŒ²ã•ã‚Œã‚‹ãƒã‚¹ã‚¿ã®æ™‚åˆ»ã¯ç¾åœ¨æ™‚åˆ»ã¨ãªã‚‹
      */
     public void codeMasterRefresh();
     /**
-     * w’èƒ}ƒXƒ^XV
-     * Œn—ñ‚É“o˜^‚³‚ê‚éƒ}ƒXƒ^‚Ì‚ÍŒ»İ‚Æ‚È‚é
-     * @param flowName XV‚·‚éƒ}ƒXƒ^–¼
+     * æŒ‡å®šãƒã‚¹ã‚¿æ›´æ–°
+     * æ™‚ç³»åˆ—ã«ç™»éŒ²ã•ã‚Œã‚‹ãƒã‚¹ã‚¿ã®æ™‚åˆ»ã¯ç¾åœ¨æ™‚åˆ»ã¨ãªã‚‹
+     * @param flowName æ›´æ–°ã™ã‚‹ãƒã‚¹ã‚¿å
      */
     public void codeMasterRefresh( String flowName );
     /**
-     * w’èƒ}ƒXƒ^XV
-     * @param beanflowName XV‚·‚éƒ}ƒXƒ^–¼
-     * @param date Œn—ñ‚É“o˜^‚·‚éƒ}ƒXƒ^‚Ì
+     * æŒ‡å®šãƒã‚¹ã‚¿æ›´æ–°
+     * @param beanflowName æ›´æ–°ã™ã‚‹ãƒã‚¹ã‚¿å
+     * @param date æ™‚ç³»åˆ—ã«ç™»éŒ²ã™ã‚‹ãƒã‚¹ã‚¿ã®æ™‚åˆ»
      */
     public void codeMasterRefresh(String beanflowName,Date date) ;
 
     /**
-     * ‘SƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚é‚ÉXV‚µ‚È‚¢ƒ}ƒXƒ^‚Ìƒ}ƒXƒ^–¼”z—ñ‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚Ìƒ}ƒXƒ^‚ª‘SƒR[ƒhƒ}ƒXƒ^XV‚Éæ“¾‚³‚ê‚éB<br>
+     * å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹æ™‚ã«æ›´æ–°ã—ãªã„ãƒã‚¹ã‚¿ã®ãƒã‚¹ã‚¿åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ãƒã‚¹ã‚¿ãŒå…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°æ™‚ã«å–å¾—ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param names ƒ}ƒXƒ^–¼”z—ñ
+     * @param names ãƒã‚¹ã‚¿åé…åˆ—
      */
     public void setNotUpdateAllMasterNames(String[] names);
 
     /**
-     * ‘SƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚é‚ÉXV‚µ‚È‚¢ƒ}ƒXƒ^‚Ìƒ}ƒXƒ^–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹æ™‚ã«æ›´æ–°ã—ãªã„ãƒã‚¹ã‚¿ã®ãƒã‚¹ã‚¿åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒ^–¼”z—ñ
+     * @return ãƒã‚¹ã‚¿åé…åˆ—
      */
     public String[] getNotUpdateAllMasterNames();
 }

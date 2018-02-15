@@ -36,10 +36,10 @@ import jp.ossc.nimbus.lang.*;
 //
 //
 /**
- *	byte”z—ñ‚ÌƒoƒCƒiƒŠƒf[ƒ^‚ğŠeŒ^‚Ì’l‚É•ÏŠ·‚·‚é
+ *	byteé…åˆ—ã®ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã‚’å„å‹ã®å€¤ã«å¤‰æ›ã™ã‚‹
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public class ByteConverterService extends ServiceBase
 								  implements ByteConverterServiceMBean,
@@ -47,10 +47,10 @@ public class ByteConverterService extends ServiceBase
 	
     private static final long serialVersionUID = 1999732515319288885L;
 	
-    /** ƒoƒCƒg•ÏŠ·ƒCƒ“ƒ^[ƒtƒFƒCƒX”z—ñ */
+    /** ãƒã‚¤ãƒˆå¤‰æ›ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹é…åˆ— */
 	protected ByteConverter[] mInterfaceAry = null ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
 	 */
 	public ByteConverterService(){
 		super() ;
@@ -58,10 +58,10 @@ public class ByteConverterService extends ServiceBase
 	}
 	//
 	/**
-	 * byte[] ‚©‚ç char ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ char ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	*/
 	public void setSameEndianClassName(String clsName) throws ServiceException {
 		Class clsObj = null ;
@@ -85,10 +85,10 @@ public class ByteConverterService extends ServiceBase
 		}
 	}
 	/**
-	 * byte[] ‚©‚ç char ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ char ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	*/
 	public String getSameEndianClassName(){
 		synchronized(mInterfaceAry){
@@ -101,10 +101,10 @@ public class ByteConverterService extends ServiceBase
 	}
 	//
 	/**
-	 * byte[] ‚©‚ç char ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ char ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	*/
 	public void setDifferentEndianClassName(String clsName) throws ServiceException{
 		Class clsObj = null ;
@@ -126,10 +126,10 @@ public class ByteConverterService extends ServiceBase
 		}
 	}
 	/**
-	 * byte[] ‚©‚ç char ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ char ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	*/
 	public String getDifferentEndianClassName(){
 		synchronized(mInterfaceAry){

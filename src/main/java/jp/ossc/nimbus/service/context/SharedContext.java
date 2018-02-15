@@ -40,604 +40,604 @@ import jp.ossc.nimbus.beans.BeanTableIndexKeyFactory;
 import jp.ossc.nimbus.service.interpreter.EvaluateException;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒgB<p>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface SharedContext extends Context{
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠl“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’ç²å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void lock(Object key) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠl“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’ç²å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void lock(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠl“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’ç²å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param ifAcquireable ƒƒbƒN‚ğ‘Ò‹@‚º‚¸‚ÉŠl“¾‰Â”\‚Èê‡‚Ì‚İŠl“¾‚·‚é‚ÍAtrueB‘Ò‹@‚µ‚Ä‚Å‚àŠl“¾‚·‚é‚ÍAfalse
-     * @param ifExist w’è‚³‚ê‚½ƒL[‚ª‘¶İ‚·‚éê‡‚Ì‚İƒƒbƒN‚ğŠl“¾‚·‚éê‡AtrueBƒL[‚ª‘¶İ‚µ‚È‚­‚Ä‚àƒƒbƒN‚ğæ“¾‚·‚éê‡‚ÍAfalse
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ifAcquireable‚ªtrue‚ÅAƒƒbƒN‚ªŠl“¾‚Å‚«‚È‚©‚Á‚½ê‡‚ÍAfalse
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param ifAcquireable ãƒ­ãƒƒã‚¯ã‚’å¾…æ©Ÿãœãšã«ç²å¾—å¯èƒ½ãªå ´åˆã®ã¿ç²å¾—ã™ã‚‹æ™‚ã¯ã€trueã€‚å¾…æ©Ÿã—ã¦ã§ã‚‚ç²å¾—ã™ã‚‹æ™‚ã¯ã€false
+     * @param ifExist æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚‹å ´åˆã®ã¿ãƒ­ãƒƒã‚¯ã‚’ç²å¾—ã™ã‚‹å ´åˆã€trueã€‚ã‚­ãƒ¼ãŒå­˜åœ¨ã—ãªãã¦ã‚‚ãƒ­ãƒƒã‚¯ã‚’å–å¾—ã™ã‚‹å ´åˆã¯ã€false
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ifAcquireableãŒtrueã§ã€ãƒ­ãƒƒã‚¯ãŒç²å¾—ã§ããªã‹ã£ãŸå ´åˆã¯ã€false
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public boolean lock(Object key, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠJ•ú‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒƒbƒNŠJ•ú‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @return ãƒ­ãƒƒã‚¯é–‹æ”¾ã§ããŸå ´åˆã¯ã€true
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean unlock(Object key) throws SharedContextSendException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠJ•ú‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param force ‹­§ƒtƒ‰ƒO
-     * @return ƒƒbƒNŠJ•ú‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param force å¼·åˆ¶ãƒ•ãƒ©ã‚°
+     * @return ãƒ­ãƒƒã‚¯é–‹æ”¾ã§ããŸå ´åˆã¯ã€true
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean unlock(Object key, boolean force) throws SharedContextSendException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğ•Û—L‚µ‚Ä‚¢‚éƒm[ƒh‚ÌID‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’ä¿æœ‰ã—ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒƒbƒN‚ğ•Û—L‚µ‚Ä‚¢‚éƒm[ƒh‚ÌID
+     * @param key ã‚­ãƒ¼
+     * @return ãƒ­ãƒƒã‚¯ã‚’ä¿æœ‰ã—ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ã®ID
      */
     public Object getLockOwner(Object key);
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğ‘Ò‚Á‚Ä‚é”‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’å¾…ã£ã¦ã‚‹æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒƒbƒN‚ğ‘Ò‚Á‚Ä‚é”
+     * @param key ã‚­ãƒ¼
+     * @return ãƒ­ãƒƒã‚¯ã‚’å¾…ã£ã¦ã‚‹æ•°
      */
     public int getLockWaitCount(Object key);
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½’l‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå€¤ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value ’l
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ŒÃ‚¢’l
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param value å€¤
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return å¤ã„å€¤
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Object put(Object key, Object value, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½’l‚ğƒ[ƒJƒ‹‚É’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå€¤ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã«è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value ’l
-     * @return ŒÃ‚¢’l
+     * @param key ã‚­ãƒ¼
+     * @param value å€¤
+     * @return å¤ã„å€¤
      */
     public Object putLocal(Object key, Object value);
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½’l‚ğ”ñ“¯Šú‚É’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå€¤ã‚’éåŒæœŸã«è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value ’l
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param value å€¤
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void putAsynch(Object key, Object value) throws SharedContextSendException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½·•ª‚ğXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void update(Object key, SharedContextValueDifference diff) throws SharedContextSendException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½·•ª‚ğXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void update(Object key, SharedContextValueDifference diff, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½·•ª‚ğƒ[ƒJƒ‹‚ÉXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã«æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @exception SharedContextUpdateException XV‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @exception SharedContextUpdateException æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateLocal(Object key, SharedContextValueDifference diff) throws SharedContextUpdateException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½·•ª‚Å”ñ“¯Šú‚ÉXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå·®åˆ†ã§éåŒæœŸã«æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateAsynch(Object key, SharedContextValueDifference diff) throws SharedContextSendException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ª‘¶İ‚·‚ê‚ÎAw’è‚µ‚½·•ª‚ğXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚Œã°ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateIfExists(Object key, SharedContextValueDifference diff) throws SharedContextSendException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ª‘¶İ‚·‚ê‚ÎAw’è‚µ‚½·•ª‚ğXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚Œã°ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void updateIfExists(Object key, SharedContextValueDifference diff, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ª‘¶İ‚·‚ê‚ÎAw’è‚µ‚½·•ª‚ğƒ[ƒJƒ‹‚ÉXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚Œã°ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã«æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @exception SharedContextUpdateException XV‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @exception SharedContextUpdateException æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateLocalIfExists(Object key, SharedContextValueDifference diff) throws SharedContextUpdateException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ª‘¶İ‚·‚ê‚ÎAw’è‚µ‚½·•ª‚Å”ñ“¯Šú‚ÉXV‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚Œã°ã€æŒ‡å®šã—ãŸå·®åˆ†ã§éåŒæœŸã«æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param diff ·•ª
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param diff å·®åˆ†
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateAsynchIfExists(Object key, SharedContextValueDifference diff) throws SharedContextSendException;
     
     /**
-     * w’è‚µ‚½ƒ}ƒbƒv‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒãƒ—ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param t ƒ}ƒbƒv
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param t ãƒãƒƒãƒ—
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void putAll(Map t, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒ}ƒbƒv‚ğƒ[ƒJƒ‹‚É’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒãƒ—ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã«è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param t ƒ}ƒbƒv
+     * @param t ãƒãƒƒãƒ—
      */
     public void putAllLocal(Map t);
     
     /**
-     * w’è‚µ‚½ƒ}ƒbƒv‚ğ”ñ“¯Šú‚Å’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒãƒ—ã‚’éåŒæœŸã§è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param t ƒ}ƒbƒv
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param t ãƒãƒƒãƒ—
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void putAllAsynch(Map t) throws SharedContextSendException;
     
     /**
-     * w’è‚µ‚½ƒL[‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ’l
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return å€¤
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Object get(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒL[‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @param withTransaction true‚Ìê‡Aƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğl—¶‚·‚é
-     * @return ’l
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @param withTransaction trueã®å ´åˆã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’è€ƒæ…®ã™ã‚‹
+     * @return å€¤
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Object get(Object key, long timeout, boolean withTransaction) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒL[‚Ìƒ[ƒJƒ‹’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã®ãƒ­ãƒ¼ã‚«ãƒ«å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ’l
+     * @param key ã‚­ãƒ¼
+     * @return å€¤
      */
     public Object getLocal(Object key);
     
     /**
-     * w’è‚µ‚½ƒL[‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return íœ‚µ‚½’l
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return å‰Šé™¤ã—ãŸå€¤
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Object remove(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚µ‚½ƒL[‚ğƒ[ƒJƒ‹‚©‚çíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return íœ‚µ‚½’l
+     * @param key ã‚­ãƒ¼
+     * @return å‰Šé™¤ã—ãŸå€¤
      */
     public Object removeLocal(Object key);
     
     /**
-     * w’è‚µ‚½ƒL[‚ğ”ñ“¯Šú‚Åíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã‚’éåŒæœŸã§å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void removeAsynch(Object key) throws SharedContextSendException;
     
     /**
-     * ‘S‚Äíœ‚·‚éB<p>
+     * å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒ[ƒJƒ‹‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearLocal();
     
     /**
-     * ‘S‚Ä”ñ“¯Šú‚Åíœ‚·‚éB<p>
+     * å…¨ã¦éåŒæœŸã§å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void clearAsynch() throws SharedContextSendException;
     
     /**
-     * ƒL[‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒL[‚ÌW‡
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚­ãƒ¼ã®é›†åˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Set keySet(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒ[ƒJƒ‹‚ÌƒL[‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚­ãƒ¼ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÌW‡
+     * @return ã‚­ãƒ¼ã®é›†åˆ
      */
     public Set keySetLocal();
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒL[‚ÌŒ”
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚­ãƒ¼ã®ä»¶æ•°
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public int size(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒ[ƒJƒ‹‚É“o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÌŒ”
+     * @return ã‚­ãƒ¼ã®ä»¶æ•°
      */
     public int sizeLocal();
     
     /**
-     * ‹ó‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * ç©ºã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‹ó
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @return trueã®å ´åˆã€ç©º
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean isEmpty() throws SharedContextSendException;
     
     /**
-     * ƒ[ƒJƒ‹‚ª‹ó‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ãŒç©ºã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‹ó
+     * @return trueã®å ´åˆã€ç©º
      */
     public boolean isEmptyLocal();
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éê‡true
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public boolean containsKey(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ªƒ[ƒJƒ‹‚É“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ãŒãƒ­ãƒ¼ã‚«ãƒ«ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éê‡true
+     * @param key ã‚­ãƒ¼
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean containsKeyLocal(Object key);
     
     /**
-     * w’è‚³‚ê‚½’l‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param value ’l
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éê‡true
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param value å€¤
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public boolean containsValue(Object value, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚³‚ê‚½’l‚ªƒ[ƒJƒ‹‚É“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒãƒ­ãƒ¼ã‚«ãƒ«ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param value ’l
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éê‡true
+     * @param value å€¤
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean containsValueLocal(Object value);
     
     /**
-     * ‚±‚ÌƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹‚Ì“à—e‚ğ‘S‚ÄŠÜ‚Şƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã®å†…å®¹ã‚’å…¨ã¦å«ã‚€ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹‚Ì“à—e‚ğ‘S‚ÄŠÜ‚Şƒ}ƒbƒv
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã®å†…å®¹ã‚’å…¨ã¦å«ã‚€ãƒãƒƒãƒ—
      */
     public Map allLocal();
     
     /**
-     * ‚±‚ÌƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹‚ÌƒGƒ“ƒgƒŠ[W‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚¨ãƒ³ãƒˆãƒªãƒ¼é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹‚ÌƒGƒ“ƒgƒŠ[W‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚¨ãƒ³ãƒˆãƒªãƒ¼é›†åˆ
      */
     public Set entrySetLocal();
     
     /**
-     * ‚±‚ÌƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹‚Ì’l‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã®å€¤ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒg‚Ìƒ[ƒJƒ‹‚Ì’l‚ÌW‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã®å€¤ã®é›†åˆ
      */
     public Collection valuesLocal();
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg“¯Šú‚ğs‚¤B<p>
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ìê‡‚ÍAƒ[ƒJƒ‹‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒNƒŠƒA‚·‚éB‚Ü‚½AƒT[ƒoƒ‚[ƒh‚Ååƒm[ƒh‚Ìê‡‚ÍA‘S‚Ä‚Ìƒm[ƒh‚É“¯Šú–½—ß‚ğo‚·B<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåŒæœŸã‚’è¡Œã†ã€‚<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã§ä¸»ãƒãƒ¼ãƒ‰ã®å ´åˆã¯ã€å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã«åŒæœŸå‘½ä»¤ã‚’å‡ºã™ã€‚<br>
      *
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void synchronize() throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg“¯Šú‚ğs‚¤B<p>
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ìê‡‚ÍAƒ[ƒJƒ‹‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒNƒŠƒA‚·‚éB‚Ü‚½AƒT[ƒoƒ‚[ƒh‚Ååƒm[ƒh‚Ìê‡‚ÍA‘S‚Ä‚Ìƒm[ƒh‚É“¯Šú–½—ß‚ğo‚·B<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåŒæœŸã‚’è¡Œã†ã€‚<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã§ä¸»ãƒãƒ¼ãƒ‰ã®å ´åˆã¯ã€å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã«åŒæœŸå‘½ä»¤ã‚’å‡ºã™ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void synchronize(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É“Ç‚İ‚İ‚ğˆË—Š‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«èª­ã¿è¾¼ã¿ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load(long timeout) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÌƒL[‚Ì“Ç‚İ‚İ‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É“Ç‚İ‚İ‚ğˆË—Š‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼ã®èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«èª­ã¿è¾¼ã¿ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void loadKey(long timeout) throws Exception;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÉŠY“–‚·‚é’l‚ÌƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É“Ç‚İ‚İ‚ğˆË—Š‚·‚éB<br>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«èª­ã¿è¾¼ã¿ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load(Object key, long timeout) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg•Û‘¶‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É•Û‘¶‚ğˆË—Š‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«ä¿å­˜ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg•Û‘¶‚É¸”s‚µ‚½ê‡
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save(long timeout) throws Exception;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÉŠY“–‚·‚é’l‚ÌƒRƒ“ƒeƒLƒXƒg•Û‘¶‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É•Û‘¶‚ğˆË—Š‚·‚éB<br>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«ä¿å­˜ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg•Û‘¶‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save(Object key, long timeout) throws Exception;
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg/ƒT[ƒoƒ‚[ƒh‚ğ”»’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ/ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh
+     * @return trueã®å ´åˆã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰
      */
     public boolean isClient();
     
     /**
-     * åƒm[ƒh‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return åƒm[ƒh‚Ìê‡true
+     * @return ä¸»ãƒãƒ¼ãƒ‰ã®å ´åˆtrue
      */
     public boolean isMain();
     
     /**
-     * ƒm[ƒhID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ¼ãƒ‰IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID
+     * @return ãƒãƒ¼ãƒ‰ID
      */
     public Object getId();
     
     /**
-     * åƒm[ƒh‚Ìƒm[ƒhID‚ğæ“¾‚·‚éB<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID
+     * @return ãƒãƒ¼ãƒ‰ID
      */
     public Object getMainId();
     
     /**
-     * ‘Sƒm[ƒh‚Ìƒm[ƒhID‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * å…¨ãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID‚ÌƒŠƒXƒg
+     * @return ãƒãƒ¼ãƒ‰IDã®ãƒªã‚¹ãƒˆ
      */
     public List getMemberIdList();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒm[ƒh‚Ìƒm[ƒhID‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID‚ÌW‡
+     * @return ãƒãƒ¼ãƒ‰IDã®é›†åˆ
      */
     public Set getClientMemberIdSet();
     
     /**
-     * ƒT[ƒoƒm[ƒh‚Ìƒm[ƒhID‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID‚ÌW‡
+     * @return ãƒãƒ¼ãƒ‰IDã®é›†åˆ
      */
     public Set getServerMemberIdSet();
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒgXVƒŠƒXƒi[‚ğ“o˜^‚·‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°ãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param listener ‹¤—LƒRƒ“ƒeƒLƒXƒgXVƒŠƒXƒi[
+     * @param listener å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°ãƒªã‚¹ãƒŠãƒ¼
      */
     public void addSharedContextUpdateListener(SharedContextUpdateListener listener);
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒgXVƒŠƒXƒi[‚ğíœ‚·‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°ãƒªã‚¹ãƒŠãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener ‹¤—LƒRƒ“ƒeƒLƒXƒgXVƒŠƒXƒi[
+     * @param listener å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°ãƒªã‚¹ãƒŠãƒ¼
      */
     public void removeSharedContextUpdateListener(SharedContextUpdateListener listener);
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒCƒ“ƒfƒbƒN‚É‚ÍA’Pˆê‚ÌƒvƒƒpƒeƒB‚Å\¬‚³‚ê‚é’PƒƒCƒ“ƒfƒbƒNƒX‚ÆA•¡”‚ÌƒvƒƒpƒeƒB‚Å\¬‚³‚ê‚é•¡‡ƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚·‚éB<br>
-     * •¡‡ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚µ‚½ê‡‚ÍA©“®“I‚É‚»‚Ì—v‘f‚Æ‚È‚é’PˆêƒvƒƒpƒeƒB‚Ì’PƒƒCƒ“ƒfƒbƒNƒX‚à“à•”“I‚É¶¬‚³‚ê‚éB<p>
-     * ’A‚µA©“®¶¬‚³‚ê‚½’PˆêƒCƒ“ƒfƒbƒNƒX‚ÍAƒCƒ“ƒfƒbƒNƒX–¼‚ğ‚½‚È‚¢‚½‚ßAƒCƒ“ƒfƒbƒNƒX–¼‚Å‚Íw’è‚Å‚«‚¸AƒvƒƒpƒeƒB–¼‚Åw’è‚µ‚Äg—p‚·‚éB<br>
-     * ƒCƒ“ƒfƒbƒNƒX‚Ìí—Ş‚É‚æ‚Á‚ÄAg—p‚Å‚«‚éŒŸõ‹@”\‚ªˆÙ‚È‚éB’PƒƒCƒ“ƒfƒbƒNƒX‚ÍAˆê’vŒŸõ‚Æ”ÍˆÍŒŸõ‚Ì—¼•û‚ª‰Â”\‚¾‚ªA•¡‡ƒCƒ“ƒfƒbƒNƒX‚ÍAˆê’vŒŸõ‚Ì‚İ‰Â”\‚Å‚ ‚éB<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã«ã¯ã€å˜ä¸€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚Œã‚‹å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã€è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚Œã‚‹è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã€‚<br>
+     * è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã—ãŸå ´åˆã¯ã€è‡ªå‹•çš„ã«ãã®è¦ç´ ã¨ãªã‚‹å˜ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚‚å†…éƒ¨çš„ã«ç”Ÿæˆã•ã‚Œã‚‹ã€‚<p>
+     * ä½†ã—ã€è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸå˜ä¸€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã‚’æŒãŸãªã„ãŸã‚ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã§ã¯æŒ‡å®šã§ããšã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æŒ‡å®šã—ã¦ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ç¨®é¡ã«ã‚ˆã£ã¦ã€ä½¿ç”¨ã§ãã‚‹æ¤œç´¢æ©Ÿèƒ½ãŒç•°ãªã‚‹ã€‚å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ä¸€è‡´æ¤œç´¢ã¨ç¯„å›²æ¤œç´¢ã®ä¸¡æ–¹ãŒå¯èƒ½ã ãŒã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ä¸€è‡´æ¤œç´¢ã®ã¿å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param props ƒCƒ“ƒfƒbƒNƒX‚ğ’£‚éBean‚ÌƒvƒƒpƒeƒB–¼”z—ñ
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param props ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
      */
     public void setIndex(String name, String[] props);
     
     /**
-     * ƒJƒXƒ^ƒ}ƒCƒY‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param keyFactory ƒCƒ“ƒfƒbƒNƒX‚ÌƒL[‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param keyFactory ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚­ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      * @see #setIndex(String, String[])
      */
     public void setIndex(String name, BeanTableIndexKeyFactory keyFactory);
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğíœ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
      */
     public void removeIndex(String name);
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğÄ‰ğÍ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å†è§£æã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void analyzeIndex(String name) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğÄ‰ğÍ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å†è§£æã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void analyzeIndex(String name, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ŒŸõ‚ğs‚¤ƒrƒ…[‚ğì¬‚·‚éB<p>
+     * æ¤œç´¢ã‚’è¡Œã†ãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
-     * @return ŒŸõƒrƒ…[
+     * @return æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
      */
     public SharedContextView createView();
     
     /**
-     * ƒNƒGƒŠ‚ğƒf[ƒ^ƒm[ƒh‚ÅƒCƒ“ƒ^[ƒvƒŠƒ^Às‚·‚éB<p>
-     * ƒNƒGƒŠ‚Ì•¶–@‚ÍA{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}‚ÌÀ‘•‚ÉˆË‘¶‚·‚éB<br>
-     * ƒNƒGƒŠ’†‚Å‚ÍAƒRƒ“ƒeƒLƒXƒg‚ğ•Ï”–¼"context"‚ÅQÆ‚Å‚«‚éB<br>
+     * ã‚¯ã‚¨ãƒªã‚’ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒ‰ã§ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã™ã‚‹ã€‚<p>
+     * ã‚¯ã‚¨ãƒªã®æ–‡æ³•ã¯ã€{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ã€‚<br>
+     * ã‚¯ã‚¨ãƒªä¸­ã§ã¯ã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å¤‰æ•°å"context"ã§å‚ç…§ã§ãã‚‹ã€‚<br>
      *
-     * @param query ƒNƒGƒŠ
-     * @param variables ƒNƒGƒŠ’†‚Åg—p‚·‚é•Ï”ƒ}ƒbƒv
-     * @return ÀsŒ‹‰Ê
-     * @exception EvaluateException ƒNƒGƒŠ‚ÌÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param query ã‚¯ã‚¨ãƒª
+     * @param variables ã‚¯ã‚¨ãƒªä¸­ã§ä½¿ç”¨ã™ã‚‹å¤‰æ•°ãƒãƒƒãƒ—
+     * @return å®Ÿè¡Œçµæœ
+     * @exception EvaluateException ã‚¯ã‚¨ãƒªã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Object executeInterpretQuery(String query, Map variables) throws EvaluateException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒNƒGƒŠ‚ğƒf[ƒ^ƒm[ƒh‚ÅƒCƒ“ƒ^[ƒvƒŠƒ^Às‚·‚éB<p>
+     * ã‚¯ã‚¨ãƒªã‚’ãƒ‡ãƒ¼ã‚¿ãƒãƒ¼ãƒ‰ã§ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param query ƒNƒGƒŠ
-     * @param variables ƒNƒGƒŠ’†‚Åg—p‚·‚é•Ï”ƒ}ƒbƒv
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @return ÀsŒ‹‰Ê
-     * @exception EvaluateException ƒNƒGƒŠ‚ÌÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param query ã‚¯ã‚¨ãƒª
+     * @param variables ã‚¯ã‚¨ãƒªä¸­ã§ä½¿ç”¨ã™ã‚‹å¤‰æ•°ãƒãƒƒãƒ—
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @return å®Ÿè¡Œçµæœ
+     * @exception EvaluateException ã‚¯ã‚¨ãƒªã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Object executeInterpretQuery(String query, Map variables, long timeout) throws EvaluateException, SharedContextSendException, SharedContextTimeoutException;
 }

@@ -39,7 +39,7 @@ import java.util.Map;
 import java.util.Calendar;
 
 /**
- * ResultSetƒ‰ƒbƒp[B<p>
+ * ResultSetãƒ©ãƒƒãƒ‘ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */

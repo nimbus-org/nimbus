@@ -38,7 +38,7 @@ import jp.ossc.nimbus.daemon.DaemonControl;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 �쐬: 2003/09/30 -�@H.Nakano
+ * @version  1.00 作成: 2003/09/30 -　H.Nakano
  */
 public class TestRunnable extends DaemonRunnableAdaptor {
 	int cnt = 0 ;

@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link WsPortFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB
+ * {@link WsPortFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida

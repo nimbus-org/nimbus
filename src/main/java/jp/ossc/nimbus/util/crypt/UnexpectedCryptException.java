@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.crypt;
 
 /**
- * —\Šú‚µ‚È‚¢–â‘è‚ª”­¶‚µ‚½–‚ğ¦‚·—áŠOƒNƒ‰ƒXB<p>
+ * äºˆæœŸã—ãªã„å•é¡ŒãŒç™ºç”Ÿã—ãŸäº‹ã‚’ç¤ºã™ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,14 +41,14 @@ public class UnexpectedCryptException extends RuntimeException{
     private static final long serialVersionUID = 1352889980389145461L;
 
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public UnexpectedCryptException(){
         super();
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public UnexpectedCryptException(Throwable cause){
         super(cause);

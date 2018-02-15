@@ -41,7 +41,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.log.Logger;
 
 /**
- * ƒfƒtƒHƒ‹ƒg—áŠOƒnƒ“ƒhƒ‰ƒT[ƒrƒXB
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida

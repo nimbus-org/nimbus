@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.core;
 
 /**
- * {@link Service}‚ğQÆ‚·‚é‚½‚ß‚ÌQÆ–¼B<p>
+ * {@link Service}ã‚’å‚ç…§ã™ã‚‹ãŸã‚ã®å‚ç…§åã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,20 +41,20 @@ public class ServiceNameRef implements java.io.Serializable, Comparable{
     private static final long serialVersionUID = 408293095266607083L;
 
     /**
-     * QÆ‚·‚é{@link Service}‚ÌÀƒT[ƒrƒX–¼B<p>
+     * å‚ç…§ã™ã‚‹{@link Service}ã®å®Ÿã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private final ServiceName realName;
     
     /**
-     * {@link Service}‚ÌQÆ–¼B<p>
+     * {@link Service}ã®å‚ç…§åã€‚<p>
      */
     private final String refName;
     
     /**
-     * {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O‚ÆService‚Ì–¼‘O‚ğw’è‚µ‚ÄAƒT[ƒrƒX‚Ì¯•Ê–¼ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã¨Serviceã®åå‰ã‚’æŒ‡å®šã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ã®è­˜åˆ¥åã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param refName Service‚ÌQÆ–¼
-     * @param realName QÆ‚·‚éService‚ÌÀƒT[ƒrƒX–¼B
+     * @param refName Serviceã®å‚ç…§å
+     * @param realName å‚ç…§ã™ã‚‹Serviceã®å®Ÿã‚µãƒ¼ãƒ“ã‚¹åã€‚
      */
     public ServiceNameRef(String refName, ServiceName realName){
         this.refName = refName;
@@ -62,27 +62,27 @@ public class ServiceNameRef implements java.io.Serializable, Comparable{
     }
     
     /**
-     * {@link Service}‚ÌQÆ–¼‚ğæ“¾‚·‚éB<p>
+     * {@link Service}ã®å‚ç…§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Service‚ÌQÆ–¼
+     * @return Serviceã®å‚ç…§å
      */
     public String getReferenceServiceName(){
         return refName;
     }
     
     /**
-     * {@link Service}‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * {@link Service}ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Service‚Ì–¼‘O
+     * @return Serviceã®åå‰
      */
     public ServiceName getServiceName(){
         return realName;
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğ•Ô‚·B<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’è¿”ã™ã€‚<p>
      *
-     * @return [{@link Service}‚ÌQÆ–¼]=[Service‚Ì–¼‘O]
+     * @return [{@link Service}ã®å‚ç…§å]=[Serviceã®åå‰]
      */
     public String toString(){
         StringBuilder buf = new StringBuilder();
@@ -97,11 +97,11 @@ public class ServiceNameRef implements java.io.Serializable, Comparable{
     }
     
     /**
-     * ˆø”‚Ìobj‚ª‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ“™‚µ‚¢‚©’²‚×‚éB<p>
-     * {@link Service}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì–¼‘O‚ÆService‚Ì–¼‘O‚Ì—¼•û‚ª“™‚µ‚¢ê‡‚Ì‚İtrue‚ğ•Ô‚·B<br>
+     * å¼•æ•°ã®objãŒã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ç­‰ã—ã„ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * {@link Service}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®åå‰ã¨Serviceã®åå‰ã®ä¸¡æ–¹ãŒç­‰ã—ã„å ´åˆã®ã¿trueã‚’è¿”ã™ã€‚<br>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return “™‚µ‚¢ê‡true
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç­‰ã—ã„å ´åˆtrue
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -132,9 +132,9 @@ public class ServiceNameRef implements java.io.Serializable, Comparable{
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return (refName != null ? refName.hashCode() : 0)
@@ -142,10 +142,10 @@ public class ServiceNameRef implements java.io.Serializable, Comparable{
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ì‡˜‚ğ”äŠr‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é †åºã‚’æ¯”è¼ƒã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÆ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚æ‚è¬‚³‚¢ê‡‚Í•‰‚Ì®”A“™‚µ‚¢ê‡‚Íƒ[ƒA‘å‚«‚¢ê‡‚Í³‚Ì®”‚ğ•Ô‚·B
+     * @param obj æ¯”è¼ƒå¯¾ç…§ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚ˆã‚Šå°ã•ã„å ´åˆã¯è² ã®æ•´æ•°ã€ç­‰ã—ã„å ´åˆã¯ã‚¼ãƒ­ã€å¤§ãã„å ´åˆã¯æ­£ã®æ•´æ•°ã‚’è¿”ã™ã€‚
      */
     public int compareTo(Object obj){
         if(obj instanceof ServiceNameRef){

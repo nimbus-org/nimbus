@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link CheckPointInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link CheckPointInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see CheckPointInterceptorService
@@ -42,24 +42,24 @@ import jp.ossc.nimbus.core.*;
 public interface CheckPointInterceptorServiceMBean extends ServiceBaseMBean, CheckPoint{
     
     /**
-     * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA‚±‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<br>
+     * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<br>
      *
-     * @param name ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒg–¼
+     * @param name ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆå
      */
     public void setCheckPointName(String name);
     
     /**
-     * {@link CheckPointTracer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link CheckPointTracer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name CheckPointTracerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CheckPointTracerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCheckPointTracerServiceName(ServiceName name);
     
     /**
-     * {@link CheckPointTracer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link CheckPointTracer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CheckPointTracerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CheckPointTracerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCheckPointTracerServiceName();
 }

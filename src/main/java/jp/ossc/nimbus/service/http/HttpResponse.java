@@ -35,79 +35,79 @@ import java.io.*;
 import java.util.*;
 
 /**
- * HTTPƒŒƒXƒ|ƒ“ƒXB<p>
+ * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface HttpResponse{
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒwƒbƒ_–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPãƒ˜ãƒƒãƒ€åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_–¼‚ÌW‡
+     * @return HTTPãƒ˜ãƒƒãƒ€åã®é›†åˆ
      */
     public Set getHeaderNameSet();
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
-     * “¯ˆêƒwƒbƒ_–¼‚Å•¡”‚Ì’l‚ª‚ ‚éê‡‚ÍAÅ‰‚Ì’lB<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒä¸€ãƒ˜ãƒƒãƒ€åã§è¤‡æ•°ã®å€¤ãŒã‚ã‚‹å ´åˆã¯ã€æœ€åˆã®å€¤ã€‚<br>
      *
-     * @return HTTPƒwƒbƒ_
+     * @return HTTPãƒ˜ãƒƒãƒ€
      */
     public String getHeader(String name);
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_”z—ñ
+     * @return HTTPãƒ˜ãƒƒãƒ€é…åˆ—
      */
     public String[] getHeaders(String name);
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncoding();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒXƒe[ƒ^ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒXƒe[ƒ^ƒX
+     * @return HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public int getStatusCode();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW
+     * @return HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getStatusMessage();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ 
      */
     public InputStream getInputStream() throws IOException;
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚©‚ç“Ç‚İ‚ñ‚¾‰“šƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰“šƒIƒuƒWƒFƒNƒg
+     * @return å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getObject();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒXƒgƒŠ[ƒ€‚©‚ç“Ç‚İ‚ñ‚¾‰“šƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bind ‰“šƒIƒuƒWƒFƒNƒg
-     * @return ‰“šƒIƒuƒWƒFƒNƒg
+     * @param bind å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getObject(Object bind);
     
     /**
-     * –¾¦“I‚ÉÚ‘±‚ğØ’f‚·‚éB<p>
+     * æ˜ç¤ºçš„ã«æ¥ç¶šã‚’åˆ‡æ–­ã™ã‚‹ã€‚<p>
      */
     public void close();
 }

@@ -29,21 +29,21 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.unitofwork;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.*;
 import java.rmi.*;
 
 /**
- * UnitOfWork‚ÌHOMEƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * UnitOfWorkã®HOMEã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface SLSBUnitOfWorkHome extends EJBHome {
 	/**
-	 * ƒŠƒ‚[ƒgƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğo—Í‚·‚é
+	 * ãƒªãƒ¢ãƒ¼ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
 	 * @return SLSBUnitOfWorkRemote
 	 * @throws RemoteException
 	 * @throws CreateException

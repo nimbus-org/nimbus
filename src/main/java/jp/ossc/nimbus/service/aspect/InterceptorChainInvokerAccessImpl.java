@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.lang.reflect.*;
 import java.util.*;
 import jp.ossc.nimbus.service.aspect.interfaces.*;
@@ -40,29 +40,29 @@ import jp.ossc.nimbus.service.aspect.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ÀsƒNƒ‰ƒX<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å®Ÿè¡Œã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class InterceptorChainInvokerAccessImpl
 	implements InterceptorChainInvoker, InterceptorChainInvokerAccess {
-	// ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg
+	// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆ
 	protected IntreceptorChainList mList = null;
-	// ƒŠƒXƒgƒCƒeƒŒ[ƒ^
+	// ãƒªã‚¹ãƒˆã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿
 	protected Iterator mIte = null;
-	// ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+	// ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	protected Object mCallBackObject = null;
-	// ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh
+	// ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰
 	protected Method mCallBackmethod = null;
 	protected Logger mLogger = null; 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public InterceptorChainInvokerAccessImpl(){
 		super();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.InterceptorChainInvokerAccess#setLogger(jp.ossc.nimbus.service.log.Logger)
 	 */
 	public void setLogger(Logger logger){
@@ -70,14 +70,14 @@ public class InterceptorChainInvokerAccessImpl
 	} 
 
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg•Ô‹p<br>
-	 * @return IntreceptorChainList			ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg‚ªŠÜ‚Ü‚ê‚éƒIƒuƒWƒFƒNƒg
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆè¿”å´<br>
+	 * @return IntreceptorChainList			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆãŒå«ã¾ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	protected IntreceptorChainList getInterceptorChainList(){
 		return this.mList;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.interfaces.InterceptorChainInvoker#invokeChain(java.lang.Object, java.lang.Object)
 	 */
 	public Object invokeChain(Object callBackObject, Object inputObj)
@@ -106,15 +106,15 @@ public class InterceptorChainInvokerAccessImpl
 		if(mLogger != null){
 			mLogger.write("AOP__00008");
 		}
-		// ƒR[ƒ‹ƒoƒbƒNƒIƒuƒWƒFƒNƒg‚ğ•Û
+		// ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒ
 		mCallBackObject = callBackObject;
-		// Iteratorì¬
+		// Iteratorä½œæˆ
 		if(mLogger != null){
 			mLogger.write("AOP__00009",mList.size());
 		}
 		mIte = mList.iterator();
 		
-		// ƒ`ƒFƒCƒ“Às
+		// ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œ
 		Object retObject = null ;
 		try{
 			retObject = invokeChain(inputObj);
@@ -138,7 +138,7 @@ public class InterceptorChainInvokerAccessImpl
 		
 		return retObject;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.interfaces.InterceptorChain#invokeChain(java.lang.Object)
 	 */
 	public Object invokeChain(Object inputObj) 
@@ -146,15 +146,15 @@ public class InterceptorChainInvokerAccessImpl
 				TargetCheckedException,
 				TargetUncheckedException{
 		Object retObject = null;
-		// ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒCƒeƒŒ[ƒ^‚©‚ç—L–³Šm”F
+		// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã‹ã‚‰æœ‰ç„¡ç¢ºèª
 		if(mIte.hasNext()){
-			// ƒRƒ“ƒ|[ƒlƒ“ƒg–¼(ƒCƒ“ƒ^[ƒZƒvƒ^–¼)‚ğæ“¾
+			// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå(ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å)ã‚’å–å¾—
 			final ServiceName name = (ServiceName)mIte.next();
-			// ƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚É‘Î‰‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ğæ“¾
+			// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã«å¯¾å¿œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å–å¾—
 			final Interceptor interceptor = UtilTool.getInterceptor(name);
-			// ƒCƒ“ƒ^[ƒZƒvƒ^ƒCƒ“ƒXƒ^ƒ“ƒX‚ªnull‚Ì‚Æ‚«
+			// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒnullã®ã¨ã
 			if(interceptor == null){
-				// —áŠO”­¶
+				// ä¾‹å¤–ç™ºç”Ÿ
 				throw new InterceptorException("interceptor[" + name + "] is null");
 			}
 			if(mLogger != null){
@@ -211,13 +211,13 @@ public class InterceptorChainInvokerAccessImpl
 					throw new TargetUncheckedException(cause) ;			
 				}
 			}catch(IllegalArgumentException e) {
-				// FrameworkException‚É“à•ï‚µƒXƒ[
+				// FrameworkExceptionã«å†…åŒ…ã—ã‚¹ãƒ­ãƒ¼
 				if(mLogger != null){
 					mLogger.write("AOP__00019",e);
 				}
 				throw new InterceptorException("root callback error",e);
 			}catch(IllegalAccessException e) {
-				// FrameworkException‚É“à•ï‚µƒXƒ[
+				// FrameworkExceptionã«å†…åŒ…ã—ã‚¹ãƒ­ãƒ¼
 				if(mLogger != null){
 					mLogger.write("AOP__00020",e);
 				}
@@ -232,23 +232,23 @@ public class InterceptorChainInvokerAccessImpl
 		return retObject;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.InterceptorChainInvokerAccess#setInterceptorChainList(jp.ossc.nimbus.service.aspect.IntreceptorChainList)
 	 */
 	public void setInterceptorChainList(IntreceptorChainList interceptorChainList) {
 		this.mList = interceptorChainList ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.InterceptorChainInvokerAccess#setCallBackmethod(java.lang.reflect.Method)
 	 */
 	public void setCallBackmethod(Method callBackmethod) {
 		this.mCallBackmethod = callBackmethod ;
 	}
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚Ìƒƒ\ƒbƒh‚ğ•Ô‹p<br>
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ŠÇ—ƒRƒ“ƒ|[ƒlƒ“ƒg‚©‚çŒÄ‚Ño‚³‚ê‚éB
-	 * @return Method					ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚Ìƒƒ\ƒbƒh
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿”å´<br>
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ç®¡ç†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
+	 * @return Method					ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	protected Method getCallBackmethod(){
 		return mCallBackmethod;

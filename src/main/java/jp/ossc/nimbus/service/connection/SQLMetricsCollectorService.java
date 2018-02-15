@@ -42,25 +42,25 @@ import jp.ossc.nimbus.service.writer.*;
 import jp.ossc.nimbus.service.aop.interceptor.MetricsInfo;
 
 /**
- * SQLƒƒgƒŠƒNƒXWŒvƒT[ƒrƒXB<p>
- * SQL‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄAƒƒgƒŠƒNƒX‚ğæ“¾‚·‚éƒT[ƒrƒX‚Å‚ ‚éB<br>
- * ‚±‚ÌƒT[ƒrƒX‚Åæ“¾‚Å‚«‚éƒƒgƒŠƒNƒXî•ñ‚ÍAˆÈ‰º‚Å‚ ‚éB<br>
+ * SQLãƒ¡ãƒˆãƒªã‚¯ã‚¹é›†è¨ˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * SQLã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§å–å¾—ã§ãã‚‹ãƒ¡ãƒˆãƒªã‚¯ã‚¹æƒ…å ±ã¯ã€ä»¥ä¸‹ã§ã‚ã‚‹ã€‚<br>
  * <ul>
  *     <li>SQL</li>
- *     <li>ŒÄ‚Ño‚µ‰ñ”i³í‰“šj</li>
- *     <li>ŒÄ‚Ño‚µ‰ñ”iException‰“šj</li>
- *     <li>ŒÄ‚Ño‚µ‰ñ”iError‰“šj</li>
- *     <li>ÅIŒÄ‚Ño‚µ</li>
- *     <li>ÅIException”­¶</li>
- *     <li>ÅIError”­¶</li>
- *     <li>Å‚ˆ—ŠÔ</li>
- *     <li>Å‚ˆ—ŠÔ</li>
- *     <li>Å’áˆ—ŠÔ</li>
- *     <li>Å’áˆ—ŠÔ</li>
- *     <li>•½‹Ïˆ—ŠÔ</li>
- *     <li>i•½‹Ïˆ—ŠÔ~ŒÄ‚Ño‚µ‰ñ”j‚Å•]‰¿‚³‚ê‚½‡ˆÊi~‡j</li>
+ *     <li>å‘¼ã³å‡ºã—å›æ•°ï¼ˆæ­£å¸¸å¿œç­”ï¼‰</li>
+ *     <li>å‘¼ã³å‡ºã—å›æ•°ï¼ˆExceptionå¿œç­”ï¼‰</li>
+ *     <li>å‘¼ã³å‡ºã—å›æ•°ï¼ˆErrorå¿œç­”ï¼‰</li>
+ *     <li>æœ€çµ‚å‘¼ã³å‡ºã—æ™‚åˆ»</li>
+ *     <li>æœ€çµ‚Exceptionç™ºç”Ÿæ™‚åˆ»</li>
+ *     <li>æœ€çµ‚Errorç™ºç”Ÿæ™‚åˆ»</li>
+ *     <li>æœ€é«˜å‡¦ç†æ™‚é–“</li>
+ *     <li>æœ€é«˜å‡¦ç†æ™‚é–“æ™‚åˆ»</li>
+ *     <li>æœ€ä½å‡¦ç†æ™‚é–“</li>
+ *     <li>æœ€ä½å‡¦ç†æ™‚é–“æ™‚åˆ»</li>
+ *     <li>å¹³å‡å‡¦ç†æ™‚é–“</li>
+ *     <li>ï¼ˆå¹³å‡å‡¦ç†æ™‚é–“Ã—å‘¼ã³å‡ºã—å›æ•°ï¼‰ã§è©•ä¾¡ã•ã‚ŒãŸé †ä½ï¼ˆé™é †ï¼‰</li>
  * </ul>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -115,34 +115,34 @@ public class SQLMetricsCollectorService extends ServiceBase
     private boolean isOutputAveragePerformance = true;
     private int maxMetricsSize = -1;
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setCalculateOnlyNormal(boolean isCalc){
         isCalculateOnlyNormal = isCalc;
     }
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isCalculateOnlyNormal(){
         return isCalculateOnlyNormal;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setDateFormat(String format){
         dateFormat = format;
     }
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public String getDateFormat(){
         return dateFormat;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public String displayMetricsInfo(){
         final MetricsInfo[] infos = (MetricsInfo[])metricsInfos.values()
             .toArray(new MetricsInfo[metricsInfos.size()]);
@@ -294,22 +294,22 @@ public class SQLMetricsCollectorService extends ServiceBase
         return buf.toString();
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void reset(){
         metricsInfos.clear();
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public MetricsInfo getMetricsInfo(String sql){
         return (MetricsInfo)metricsInfos.get(sql);
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputInterval(long interval){
         outputInterval = interval;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public long getOutputInterval(){
         return outputInterval;
     }
@@ -322,156 +322,156 @@ public class SQLMetricsCollectorService extends ServiceBase
         return isResetByOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setCategoryServiceName(ServiceName name){
         categoryServiceName = name;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public ServiceName getCategoryServiceName(){
         return categoryServiceName;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputTimestamp(boolean isOutput){
         isOutputTimestamp = isOutput;
     }
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputTimestamp(){
         return isOutputTimestamp;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputCount(boolean isOutput){
         isOutputCount = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputCount(){
         return isOutputCount;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputExceptionCount(boolean isOutput){
         isOutputExceptionCount = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputExceptionCount(){
         return isOutputExceptionCount;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputErrorCount(boolean isOutput){
         isOutputErrorCount = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputErrorCount(){
         return isOutputErrorCount;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputLastTime(boolean isOutput){
         isOutputLastTime = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputLastTime(){
         return isOutputLastTime;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputLastExceptionTime(boolean isOutput){
         isOutputLastExceptionTime = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputLastExceptionTime(){
         return isOutputLastExceptionTime;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputLastErrorTime(boolean isOutput){
         isOutputLastErrorTime = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputLastErrorTime(){
         return isOutputLastErrorTime;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputBestPerformance(boolean isOutput){
         isOutputBestPerformance = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformance(){
         return isOutputBestPerformance;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputBestPerformanceTime(boolean isOutput){
         isOutputBestPerformanceTime = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformanceTime(){
         return isOutputBestPerformanceTime;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputWorstPerformance(boolean isOutput){
         isOutputWorstPerformance = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformance(){
         return isOutputWorstPerformance;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputWorstPerformanceTime(boolean isOutput){
         isOutputWorstPerformanceTime = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformanceTime(){
         return isOutputWorstPerformanceTime;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setOutputAveragePerformance(boolean isOutput){
         isOutputAveragePerformance = isOutput;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public boolean isOutputAveragePerformance(){
         return isOutputAveragePerformance;
     }
     
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public void setMaxMetricsSize(int max){
         maxMetricsSize = max;
     }
-    // SQLMetricsCollectorServiceMBean‚ÌJavaDoc
+    // SQLMetricsCollectorServiceMBeanã®JavaDoc
     public int getMaxMetricsSize(){
         return maxMetricsSize;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         metricsInfos = new ConcurrentHashMap();
     }
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         metricsInfos.clear();
@@ -488,10 +488,10 @@ public class SQLMetricsCollectorService extends ServiceBase
         }
     }
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * æ“¾‚µ‚½ƒƒgƒŠƒNƒX‚ğA•W€o—Í‚Éo—Í‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * å–å¾—ã—ãŸãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’ã€æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã™ã‚‹ã€‚
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         System.out.println(displayMetricsInfo());
@@ -502,9 +502,9 @@ public class SQLMetricsCollectorService extends ServiceBase
         }
     }
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         metricsInfos = null;
@@ -541,45 +541,45 @@ public class SQLMetricsCollectorService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume() {
         return true;
     }
     
     /**
-     * o—ÍŠÔŠu‚¾‚¯ƒXƒŠ[ƒv‚·‚éB<p>
+     * å‡ºåŠ›é–“éš”ã ã‘ã‚¹ãƒªãƒ¼ãƒ—ã™ã‚‹ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @return null
      */
     public Object provide(DaemonControl ctrl){
@@ -591,10 +591,10 @@ public class SQLMetricsCollectorService extends ServiceBase
     }
     
     /**
-     * o—Íæ‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚ÎAB<p>
+     * å‡ºåŠ›å…ˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€ã€‚<p>
      *
      * @param dequeued null
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object dequeued, DaemonControl ctrl){
         Date timestamp = new Date();
@@ -606,7 +606,7 @@ public class SQLMetricsCollectorService extends ServiceBase
                 try{
                     metricsCategory.write(createRecord(timestamp, i + 1, infos[i]));
                 }catch(MessageWriteException e){
-                    // TODO ƒƒOo—Í
+                    // TODO ãƒ­ã‚°å‡ºåŠ›
                 }
             }
         }
@@ -699,7 +699,7 @@ public class SQLMetricsCollectorService extends ServiceBase
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void garbage(){
     }

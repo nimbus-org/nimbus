@@ -36,7 +36,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ReflectionJMSConnectionFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link ReflectionJMSConnectionFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see ReflectionJMSConnectionFactoryService
@@ -45,206 +45,206 @@ public interface ReflectionJMSConnectionFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * �����Đڑ����[�h�F�Đڑ����Ȃ��B<p>
+     * 自動再接続モード：再接続しない。<p>
      */
     public static int AUTO_RECONNECT_MODE_NON = 0;
     
     /**
-     * �����Đڑ����[�h�FJNDI�T�[�o�񕜌��m���ɍĐڑ�����B<p>
+     * 自動再接続モード：JNDIサーバ回復検知時に再接続する。<p>
      */
     public static int AUTO_RECONNECT_MODE_ON_RECOVER = ReconnectableConnection.RECONNECT_MODE_ON_RECOVER;
     
     /**
-     * �����Đڑ����[�h�FJNDI�T�[�o�_�E�����m���ɍĐڑ�����B<p>
+     * 自動再接続モード：JNDIサーバダウン検知時に再接続する。<p>
      */
     public static int AUTO_RECONNECT_MODE_ON_DEAD = ReconnectableConnection.RECONNECT_MODE_ON_DEAD;
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^��ݒ肷��B<p>
-     * �t�@�N�g���N���X��static���\�b�h���Ăԏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
+     * ConnectionFactoryを生成するファクトリクラスのコンストラクタを設定する。<p>
+     * ファクトリクラスのstaticメソッドを呼ぶ場合は、指定する必要はない。<br>
      * 
-     * @param c �t�@�N�g���N���X�̃R���X�g���N�^
+     * @param c ファクトリクラスのコンストラクタ
      */
     public void setFactoryConstructor(Constructor c);
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^���擾����B<p>
+     * ConnectionFactoryを生成するファクトリクラスのコンストラクタを取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃R���X�g���N�^
+     * @return ファクトリクラスのコンストラクタ
      */
     public Constructor getFactoryConstructor();
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^�̈�����ݒ肷��B<p>
+     * ConnectionFactoryを生成するファクトリクラスのコンストラクタの引数を設定する。<p>
      * 
-     * @param params �t�@�N�g���N���X�̃R���X�g���N�^�̈���
+     * @param params ファクトリクラスのコンストラクタの引数
      */
     public void setFactoryConstructorParameters(Object[] params);
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^�̈������擾����B<p>
+     * ConnectionFactoryを生成するファクトリクラスのコンストラクタの引数を取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃R���X�g���N�^�̈���
+     * @return ファクトリクラスのコンストラクタの引数
      */
     public Object[] getFactoryConstructorParameters();
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h��ݒ肷��B<p>
+     * ConnectionFactoryを生成するファクトリクラスのファクトリメソッドを設定する。<p>
      * 
-     * @param m �t�@�N�g���N���X�̃t�@�N�g�����\�b�h
+     * @param m ファクトリクラスのファクトリメソッド
      */
     public void setFactoryMethod(Method m);
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h���擾����B<p>
+     * ConnectionFactoryを生成するファクトリクラスのファクトリメソッドを取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃t�@�N�g�����\�b�h
+     * @return ファクトリクラスのファクトリメソッド
      */
     public Method getFactoryMethod();
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈�����ݒ肷��B<p>
+     * ConnectionFactoryを生成するファクトリクラスのファクトリメソッドの引数を設定する。<p>
      * 
-     * @param params �t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈���
+     * @param params ファクトリクラスのファクトリメソッドの引数
      */
     public void setFactoryMethodParameters(Object[] params);
     
     /**
-     * ConnectionFactory�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈������擾����B<p>
+     * ConnectionFactoryを生成するファクトリクラスのファクトリメソッドの引数を取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈���
+     * @return ファクトリクラスのファクトリメソッドの引数
      */
     public Object[] getFactoryMethodParameters();
     
     /**
-     * �t�@�N�g���̃C���X�^���X��ݒ肷��B<p>
+     * ファクトリのインスタンスを設定する。<p>
      *
-     * @param fac �t�@�N�g��
+     * @param fac ファクトリ
      */
     public void setFactory(Object fac);
     
     /**
-     * �t�@�N�g���̃C���X�^���X���擾����B<p>
+     * ファクトリのインスタンスを取得する。<p>
      *
-     * @return �t�@�N�g��
+     * @return ファクトリ
      */
     public Object getFactory();
     
     /**
-     * ConnectionFactory�N���X�̃R���X�g���N�^��ݒ肷��B<p>
-     * static���\�b�h���Ăԏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
+     * ConnectionFactoryクラスのコンストラクタを設定する。<p>
+     * staticメソッドを呼ぶ場合は、指定する必要はない。<br>
      * 
-     * @param c �R���X�g���N�^
+     * @param c コンストラクタ
      */
     public void setConnectionFactoryConstructor(Constructor c);
     
     /**
-     * ConnectionFactory�N���X�̃R���X�g���N�^���擾����B<p>
+     * ConnectionFactoryクラスのコンストラクタを取得する。<p>
      * 
-     * @return �R���X�g���N�^
+     * @return コンストラクタ
      */
     public Constructor getConnectionFactoryConstructor();
     
     /**
-     * ConnectionFactory�N���X�̃R���X�g���N�^�̈�����ݒ肷��B<p>
+     * ConnectionFactoryクラスのコンストラクタの引数を設定する。<p>
      * 
-     * @param params �R���X�g���N�^�̈���
+     * @param params コンストラクタの引数
      */
     public void setConnectionFactoryConstructorParameters(Object[] params);
     
     /**
-     * ConnectionFactory�N���X�̃R���X�g���N�^�̈������擾����B<p>
+     * ConnectionFactoryクラスのコンストラクタの引数を取得する。<p>
      * 
-     * @return �R���X�g���N�^�̈���
+     * @return コンストラクタの引数
      */
     public Object[] getConnectionFactoryConstructorParameters();
     
     /**
-     * JMS�R�l�N�V�����̃C���X�^���X���P�����������邩�ǂ�����ݒ肷��B<p>
-     * JMS�R�l�N�V�����́A�����I�Ȑڑ����\���I�u�W�F�N�g�ł��邽�߁A�ʏ�C���X�^���X�́A�P�����������Ďg�p���ׂ��ł���B<br>
-     * �f�t�H���g�́Atrue�B<br>
+     * JMSコネクションのインスタンスを１つだけ生成するかどうかを設定する。<p>
+     * JMSコネクションは、物理的な接続先を表すオブジェクトであるため、通常インスタンスは、１つだけ生成して使用すべきである。<br>
+     * デフォルトは、true。<br>
      *
-     * @param isSingle JMS�R�l�N�V�����̃C���X�^���X���P������������ꍇ��true
+     * @param isSingle JMSコネクションのインスタンスを１つだけ生成する場合はtrue
      */
     public void setSingleConnection(boolean isSingle);
     
     /**
-     * JMS�R�l�N�V�����̃C���X�^���X���P�����������邩�ǂ����𔻒肷��B<p>
+     * JMSコネクションのインスタンスを１つだけ生成するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�AJMS�R�l�N�V�����̃C���X�^���X���P������������
+     * @return trueの場合、JMSコネクションのインスタンスを１つだけ生成する
      */
     public boolean isSingleConnection();
     
     /**
-     * ��������JMS�R�l�N�V�������Ǘ����邩�ǂ�����ݒ肷��B<p>
-     * true��ݒ肵���ꍇ�A��������JMS�R�l�N�V�����́A���̃T�[�r�X�ɂ���ĕێ�����Ă���A�T�[�r�X�̒�~�Ƌ���JMS�R�l�N�V�����̏I���������s����B
-     * ���\�[�X�̊J���R���h�����߂̋@�\�ł���B<br>
-     * �A���ASingleConnection������true�ɐݒ肵�Ă���ꍇ�́A���̑�����true�ɂ��Ȃ��Ă����l�̏������s����B<br>
-     * �f�t�H���g�́Afalse�B<br>
+     * 生成したJMSコネクションを管理するかどうかを設定する。<p>
+     * trueを設定した場合、生成したJMSコネクションは、このサービスによって保持されており、サービスの停止と共にJMSコネクションの終了処理が行われる。
+     * リソースの開放漏れを防ぐための機能である。<br>
+     * 但し、SingleConnection属性をtrueに設定している場合は、この属性をtrueにしなくても同様の処理が行われる。<br>
+     * デフォルトは、false。<br>
      *
-     * @param isManaged ��������JMS�R�l�N�V�������Ǘ�����ꍇtrue
+     * @param isManaged 生成したJMSコネクションを管理する場合true
      */
     public void setConnectionManagement(boolean isManaged);
     
     /**
-     * ��������JMS�R�l�N�V�������Ǘ����邩�ǂ����𔻒肷��B<p>
+     * 生成したJMSコネクションを管理するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A��������JMS�R�l�N�V�������Ǘ�����
+     * @return trueの場合、生成したJMSコネクションを管理する
      */
     public boolean isConnectionManagement();
     
     /**
-     * Connection�𐶐����鎞��Connection�̊J�n���������邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * Connectionを生成する時にConnectionの開始処理をするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isStart Connection�̊J�n����������ꍇtrue
+     * @param isStart Connectionの開始処理をする場合true
      */
     public void setStartConnection(boolean isStart);
     
     /**
-     * Connection�̊J�n���������邩�ǂ����𔻒肷��B<p>
+     * Connectionの開始処理をするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�AConnection�̊J�n����������
+     * @return trueの場合、Connectionの開始処理をする
      */
     public boolean isStartConnection();
     
     /**
-     * JMS�ڑ����[�U����ݒ肷��B<p>
-     * J2EE�R���e�i����JMS�ڑ��ɑ΂��ăZ�L�����e�B�ݒ���s���Ă���ꍇ�ɁA�ݒ肷��B<br>
+     * JMS接続ユーザ名を設定する。<p>
+     * J2EEコンテナ側でJMS接続に対してセキュリティ設定を行っている場合に、設定する。<br>
      *
-     * @param name JMS�ڑ����[�U��
+     * @param name JMS接続ユーザ名
      */
     public void setUserName(String name);
     
     /**
-     * JMS�ڑ����[�U�����擾����B<p>
+     * JMS接続ユーザ名を取得する。<p>
      *
-     * @return JMS�ڑ����[�U��
+     * @return JMS接続ユーザ名
      */
     public String getUserName();
     
     /**
-     * JMS�ڑ��p�X���[�h��ݒ肷��B<p>
-     * J2EE�R���e�i����JMS�ڑ��ɑ΂��ăZ�L�����e�B�ݒ���s���Ă���ꍇ�ɁA�ݒ肷��B<br>
+     * JMS接続パスワードを設定する。<p>
+     * J2EEコンテナ側でJMS接続に対してセキュリティ設定を行っている場合に、設定する。<br>
      *
-     * @param passwd JMS�ڑ��p�X���[�h
+     * @param passwd JMS接続パスワード
      */
     public void setPassword(String passwd);
     
     /**
-     * JMS�ڑ��p�X���[�h���擾����B<p>
+     * JMS接続パスワードを取得する。<p>
      *
-     * @return JMS�ڑ��p�X���[�h
+     * @return JMS接続パスワード
      */
     public String getPassword();
     
     /**
-     * �����Đڑ����[�h��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #AUTO_RECONNECT_MODE_NON}�ŁA�Đڑ����Ȃ��B<br>
-     * �Đڑ����s�����[�h�ɐݒ肵���ꍇ�́AJMS�T�[�o�̐��������m���āA�����Đڑ����s���B<br>
-     * �܂����̏ꍇ�́A{@link #setKeepAliveCheckerServiceName(ServiceName)}�ŁAJMS�T�[�o�̐��������m����{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}�T�[�r�X��ݒ肵�Ȃ���΂Ȃ�Ȃ��B<br>
+     * 自動再接続モードを設定する。<p>
+     * デフォルトは、{@link #AUTO_RECONNECT_MODE_NON}で、再接続しない。<br>
+     * 再接続を行うモードに設定した場合は、JMSサーバの生死を検知して、自動再接続を行う。<br>
+     * またその場合は、{@link #setKeepAliveCheckerServiceName(ServiceName)}で、JMSサーバの生死を検知する{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}サービスを設定しなければならない。<br>
      *
-     * @param mode �����Đڑ����[�h
+     * @param mode 自動再接続モード
      * @see #AUTO_RECONNECT_MODE_NON
      * @see #AUTO_RECONNECT_MODE_ON_RECOVER
      * @see #AUTO_RECONNECT_MODE_ON_DEAD
@@ -253,68 +253,68 @@ public interface ReflectionJMSConnectionFactoryServiceMBean
     public void setAutoReconnectMode(int mode);
     
     /**
-     * �����Đڑ����[�h��ݒ肷��B<p>
+     * 自動再接続モードを設定する。<p>
      *
-     * @return �����Đڑ����[�h
+     * @return 自動再接続モード
      */
     public int getAutoReconnectMode();
     
     /**
-     * JMS�T�[�o�̐��������m����{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
+     * JMSサーバの生死を検知する{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}サービスのサービス名を設定する。<p>
      *
-     * @param name KeepAliveChecker�T�[�r�X�̃T�[�r�X��
+     * @param name KeepAliveCheckerサービスのサービス名
      */
     public void setKeepAliveCheckerServiceName(ServiceName name);
     
     /**
-     * JMS�T�[�o�̐��������m����{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * JMSサーバの生死を検知する{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}サービスのサービス名を取得する。<p>
      *
-     * @return KeepAliveChecker�T�[�r�X�̃T�[�r�X��
+     * @return KeepAliveCheckerサービスのサービス名
      */
     public ServiceName getKeepAliveCheckerServiceName();
     
     /**
-     * �����Đڑ����ɁA�ڑ��Ɏ��s�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID��ݒ肷��B<p>
-     * �f�t�H���g�́Anull�ŁA���O�o�͍͂s���Ȃ��B<br>
+     * 自動再接続時に、接続に失敗した場合に出力するログのメッセージIDを設定する。<p>
+     * デフォルトは、nullで、ログ出力は行われない。<br>
      * 
-     * @param id ���O�̃��b�Z�[�WID
+     * @param id ログのメッセージID
      */
     public void setAutoReconnectErrorLogMessageId(String id);
     
     /**
-     * �����Đڑ����ɁA�ڑ��Ɏ��s�����ꍇ�ɏo�͂��郍�O�̃��b�Z�[�WID���擾����B<p>
+     * 自動再接続時に、接続に失敗した場合に出力するログのメッセージIDを取得する。<p>
      * 
-     * @return ���O�̃��b�Z�[�WID
+     * @return ログのメッセージID
      */
     public String getAutoReconnectErrorLogMessageId();
     
     /**
-     * �����Đڑ����ɁA�ڑ��Ɏ��s�����ꍇ�Ƀ��g���C�������s���񐔂�ݒ肷��B<p>
-     * �f�t�H���g�́A0�Ń��g���C���Ȃ��B<br>
+     * 自動再接続時に、接続に失敗した場合にリトライ処理を行う回数を設定する。<p>
+     * デフォルトは、0でリトライしない。<br>
      *
-     * @param count ���g���C��
+     * @param count リトライ回数
      */
     public void setAutoReconnectMaxRetryCount(int count);
     
     /**
-     * �����Đڑ����ɁA�ڑ��Ɏ��s�����ꍇ�Ƀ��g���C�������s���񐔂��擾����B<p>
+     * 自動再接続時に、接続に失敗した場合にリトライ処理を行う回数を取得する。<p>
      *
-     * @return ���g���C��
+     * @return リトライ回数
      */
     public int getAutoReconnectMaxRetryCount();
     
     /**
-     * �����Đڑ����ɁA�ڑ��Ɏ��s�����ꍇ�Ƀ��g���C�������s���Ԋu[ms]��ݒ肷��B<p>
-     * �f�t�H���g�́A1000[ms]�B<br>
+     * 自動再接続時に、接続に失敗した場合にリトライ処理を行う間隔[ms]を設定する。<p>
+     * デフォルトは、1000[ms]。<br>
      *
-     * @param interval ���g���C�Ԋu
+     * @param interval リトライ間隔
      */
     public void setAutoReconnectRetryInterval(long interval);
     
     /**
-     * �����Đڑ����ɁA�ڑ��Ɏ��s�����ꍇ�Ƀ��g���C�������s���Ԋu[ms]���擾����B<p>
+     * 自動再接続時に、接続に失敗した場合にリトライ処理を行う間隔[ms]を取得する。<p>
      *
-     * @return ���g���C�Ԋu
+     * @return リトライ間隔
      */
     public long getAutoReconnectRetryInterval();
 }

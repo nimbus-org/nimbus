@@ -36,11 +36,11 @@ import java.util.*;
 import org.w3c.dom.*;
 
 /**
- * ƒRƒ“ƒXƒgƒ‰ƒNƒ^’è‹`&lt;constructor&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;constructor&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å®šç¾©&lt;constructor&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;constructor&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ConstructorMetaData extends MetaData
  implements Serializable{
@@ -48,132 +48,132 @@ public class ConstructorMetaData extends MetaData
     private static final long serialVersionUID = 1385893693509473372L;
     
     /**
-     * &lt;constructor&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;constructor&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String CONSTRUCTOR_TAG_NAME = "constructor";
     
     /**
-     * q—v‘f&lt;invoke&gt;‚ğ•\‚·ƒƒ^ƒf[ƒ^B<p>
+     * å­è¦ç´ &lt;invoke&gt;ã‚’è¡¨ã™ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      */
     protected InvokeMetaData invoke;
     
     /**
-     * q—v‘f&lt;static-invoke&gt;‚ğ•\‚·ƒƒ^ƒf[ƒ^B<p>
+     * å­è¦ç´ &lt;static-invoke&gt;ã‚’è¡¨ã™ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      */
     protected StaticInvokeMetaData staticInvoke;
     
     /**
-     * q—v‘f&lt;static-field=ref&gt;‚ğ•\‚·ƒƒ^ƒf[ƒ^B<p>
+     * å­è¦ç´ &lt;static-field=ref&gt;ã‚’è¡¨ã™ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      */
     protected StaticFieldRefMetaData staticFieldRef;
     
     /**
-     * q—v‘f&lt;argument&gt;‚ğŠi”[‚·‚éƒŠƒXƒgB<p>
+     * å­è¦ç´ &lt;argument&gt;ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected final List arguments = new ArrayList();
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ConstructorMetaData(ObjectMetaData parent){
         super(parent);
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·{@link InvokeMetaData}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link InvokeMetaData}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·InvokeMetaData
+     * @return å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™InvokeMetaData
      */
     public InvokeMetaData getInvoke(){
         return invoke;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·{@link InvokeMetaData}‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link InvokeMetaData}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data q—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·InvokeMetaData
+     * @param data å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™InvokeMetaData
      */
     public void setInvoke(InvokeMetaData data){
         invoke = data;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;static-invoke&gt;—v‘f‚ğ•\‚·{@link StaticInvokeMetaData}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;static-invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link StaticInvokeMetaData}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;static-invoke&gt;—v‘f‚ğ•\‚·StaticInvokeMetaData
+     * @return å­è¦ç´ &lt;static-invoke&gt;è¦ç´ ã‚’è¡¨ã™StaticInvokeMetaData
      */
     public StaticInvokeMetaData getStaticInvoke(){
         return staticInvoke;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;static-invoke&gt;—v‘f‚ğ•\‚·{@link StaticInvokeMetaData}‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;static-invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link StaticInvokeMetaData}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data q—v‘f&lt;static-invoke&gt;—v‘f‚ğ•\‚·StaticInvokeMetaData
+     * @param data å­è¦ç´ &lt;static-invoke&gt;è¦ç´ ã‚’è¡¨ã™StaticInvokeMetaData
      */
     public void setStaticInvoke(StaticInvokeMetaData data){
         staticInvoke = data;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;static-field-ref&gt;—v‘f‚ğ•\‚·{@link StaticInvokeMetaData}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;static-field-ref&gt;è¦ç´ ã‚’è¡¨ã™{@link StaticInvokeMetaData}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;static-field-ref&gt;—v‘f‚ğ•\‚·StaticFieldRefMetaData
+     * @return å­è¦ç´ &lt;static-field-ref&gt;è¦ç´ ã‚’è¡¨ã™StaticFieldRefMetaData
      */
     public StaticFieldRefMetaData getStaticFieldRef(){
         return staticFieldRef;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;static-field-ref&gt;—v‘f‚ğ•\‚·{@link StaticFieldRefMetaData}‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;static-field-ref&gt;è¦ç´ ã‚’è¡¨ã™{@link StaticFieldRefMetaData}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data q—v‘f&lt;static-field-ref&gt;—v‘f‚ğ•\‚·StaticFieldRefMetaData
+     * @param data å­è¦ç´ &lt;static-field-ref&gt;è¦ç´ ã‚’è¡¨ã™StaticFieldRefMetaData
      */
     public void setStaticFieldRef(StaticFieldRefMetaData data){
         staticFieldRef = data;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·ArgumentMetaData‚ÌW‡
+     * @return å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™ArgumentMetaDataã®é›†åˆ
      */
     public Collection getArguments(){
         return arguments;
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ğ’Ç‰Á‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param arg q—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·ArgumentMetaData
+     * @param arg å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™ArgumentMetaData
      */
     public void addArgument(ArgumentMetaData arg){
         arguments.add(arg);
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param arg q—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·ArgumentMetaData
+     * @param arg å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™ArgumentMetaData
      */
     public void removeArgument(ArgumentMetaData arg){
         arguments.remove(arg);
     }
     
     /**
-     * ‚±‚Ì&lt;constructor&gt;—v‘f‚Ìq—v‘f&lt;argument&gt;—v‘f‚ğ•\‚·{@link ArgumentMetaData}‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®&lt;constructor&gt;è¦ç´ ã®å­è¦ç´ &lt;argument&gt;è¦ç´ ã‚’è¡¨ã™{@link ArgumentMetaData}ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearArguments(){
         arguments.clear();
     }
     
     /**
-     * &lt;constructor&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;constructor&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;constructor&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;constructor&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;constructor&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;constructor&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);

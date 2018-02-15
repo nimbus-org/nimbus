@@ -32,122 +32,122 @@
 package jp.ossc.nimbus.service.publish;
 
 /**
- * ƒƒbƒZ[ƒW‘—óM—p‚ÌƒRƒlƒNƒVƒ‡ƒ“ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€å—ä¿¡ç”¨ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface RequestServerConnection extends ServerConnection{
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğ‘—M‚µ‚ÄA‰“šƒƒbƒZ[ƒW‚ğóM‚·‚éB<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã—ã¦ã€å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param replyCount •K—v‚È‰“šŒ”
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @return ‰“šƒƒbƒZ[ƒW”z—ñ
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
-     * @exception RequestTimeoutException ƒƒbƒZ[ƒW‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param replyCount å¿…è¦ãªå¿œç­”ä»¶æ•°
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @return å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…åˆ—
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RequestTimeoutException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Message[] request(Message message, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException;
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğ‘—M‚µ‚ÄA‰“šƒƒbƒZ[ƒW‚ğóM‚·‚éB<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã—ã¦ã€å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param responseSubject ‰“šƒTƒuƒWƒFƒNƒg
-     * @param responseKey ‰“šƒL[
-     * @param replyCount •K—v‚È‰“šŒ”
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @return ‰“šƒƒbƒZ[ƒW”z—ñ
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
-     * @exception RequestTimeoutException ƒƒbƒZ[ƒW‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param responseSubject å¿œç­”ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param responseKey å¿œç­”ã‚­ãƒ¼
+     * @param replyCount å¿…è¦ãªå¿œç­”ä»¶æ•°
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @return å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…åˆ—
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RequestTimeoutException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Message[] request(Message message, String responseSubject, String responseKey, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException;
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğ‘—M‚·‚éB<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param replyCount •K—v‚È‰“šŒ”
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @return —v‹’Ê”Ô
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
-     * @exception RequestTimeoutException ƒƒbƒZ[ƒW‚Ì‘—M‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param replyCount å¿…è¦ãªå¿œç­”ä»¶æ•°
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @return è¦æ±‚é€šç•ª
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RequestTimeoutException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public int sendRequest(Message message, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException;
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğ‘—M‚·‚éB<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param responseSubject ‰“šƒTƒuƒWƒFƒNƒg
-     * @param responseKey ‰“šƒL[
-     * @param replyCount •K—v‚È‰“šŒ”
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @return —v‹’Ê”Ô
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
-     * @exception RequestTimeoutException ƒƒbƒZ[ƒW‚Ì‘—M‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param responseSubject å¿œç­”ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param responseKey å¿œç­”ã‚­ãƒ¼
+     * @param replyCount å¿…è¦ãªå¿œç­”ä»¶æ•°
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @return è¦æ±‚é€šç•ª
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RequestTimeoutException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public int sendRequest(Message message, String responseSubject, String responseKey, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException;
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚ğóM‚·‚éB<br>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param sequence —v‹’Ê”Ô
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @return ‰“šƒƒbƒZ[ƒW”z—ñ
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
-     * @exception RequestTimeoutException ƒƒbƒZ[ƒW‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param sequence è¦æ±‚é€šç•ª
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @return å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…åˆ—
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RequestTimeoutException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Message[] getReply(int sequence, long timeout) throws MessageSendException, RequestTimeoutException;
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğ‘—M‚µ‚ÄA‰“šƒƒbƒZ[ƒW‚ğƒR[ƒ‹ƒoƒbƒNóM‚·‚éB<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã—ã¦ã€å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param replyCount •K—v‚È‰“šŒ”
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @param callback ‰“šƒƒbƒZ[ƒWóM—p‚ÌƒR[ƒ‹ƒoƒbƒN
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param replyCount å¿…è¦ãªå¿œç­”ä»¶æ•°
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @param callback å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ç”¨ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void request(Message message, int replyCount, long timeout, ResponseCallBack callback) throws MessageSendException;
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğ‘—M‚µ‚ÄA‰“šƒƒbƒZ[ƒW‚ğƒR[ƒ‹ƒoƒbƒNóM‚·‚éB<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã—ã¦ã€å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param responseSubject ‰“šƒTƒuƒWƒFƒNƒg
-     * @param responseKey ‰“šƒL[
-     * @param replyCount •K—v‚È‰“šŒ”
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @param callback ‰“šƒƒbƒZ[ƒWóM—p‚ÌƒR[ƒ‹ƒoƒbƒN
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param responseSubject å¿œç­”ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param responseKey å¿œç­”ã‚­ãƒ¼
+     * @param replyCount å¿…è¦ãªå¿œç­”ä»¶æ•°
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @param callback å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ç”¨ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void request(Message message, String responseSubject, String responseKey, int replyCount, long timeout, ResponseCallBack callback) throws MessageSendException;
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚ğ‘—M‚·‚éB<p>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚<p>
      *
-     * @param sourceId ‘—MŒ³ID
-     * @param sequence ’Ê”Ô
-     * @param message ‰“šƒƒbƒZ[ƒW
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
+     * @param sourceId é€ä¿¡å…ƒID
+     * @param sequence é€šç•ª
+     * @param message å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void response(Object sourceId, int sequence, Message message) throws MessageSendException;
     
     /**
-     * ‰“šƒƒbƒZ[ƒWóM—p‚ÌƒR[ƒ‹ƒoƒbƒNƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ç”¨ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
     public interface ResponseCallBack{
         
         /**
-         * ‰“š‚³‚ê‚½ƒƒbƒZ[ƒW‚ğóM‚·‚éB<p>
+         * å¿œç­”ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã€‚<p>
          *
-         * @param sourceId ‰“šŒ³ID
-         * @param message ‰“šƒƒbƒZ[ƒWBƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡A‚Ü‚½‚ÍƒƒbƒZ[ƒW‚ğ—v‹‚·‚é‘Šè‚ª‚¢‚È‚¢ê‡‚ÍAnull
-         * @param isLast ÅI‰“šƒƒbƒZ[ƒW‚Ìê‡‚Ítrue‚ğ•Ô‚·B‚Ü‚½Aƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡A‚Ü‚½‚ÍƒƒbƒZ[ƒW‚ğ—v‹‚·‚é‘Šè‚ª‚¢‚È‚¢ê‡‚àtrue
+         * @param sourceId å¿œç­”å…ƒID
+         * @param message å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€‚ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã€ã¾ãŸã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¦æ±‚ã™ã‚‹ç›¸æ‰‹ãŒã„ãªã„å ´åˆã¯ã€null
+         * @param isLast æœ€çµ‚å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å ´åˆã¯trueã‚’è¿”ã™ã€‚ã¾ãŸã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã€ã¾ãŸã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¦æ±‚ã™ã‚‹ç›¸æ‰‹ãŒã„ãªã„å ´åˆã‚‚true
          */
         public void onResponse(Object sourceId, Message message, boolean isLast);
     }

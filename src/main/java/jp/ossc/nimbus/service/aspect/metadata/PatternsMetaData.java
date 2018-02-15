@@ -29,16 +29,16 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.metadata;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.io.*;
 import java.util.*;
 import org.w3c.dom.*;
 import jp.ossc.nimbus.core.*;
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^ƒ}ƒbƒsƒ“ƒOƒX’è‹`&lt;patterns&gt;—v‘fƒƒ^ƒf[ƒ^B<br>
- * ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;patterns&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<br>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒãƒƒãƒ”ãƒ³ã‚°ã‚¹å®šç¾©&lt;patterns&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<br>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;patterns&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<br>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -48,30 +48,30 @@ public class PatternsMetaData extends MetaData implements Serializable {
     private static final long serialVersionUID = 6594049214635771499L;
     
     /**
-	 * &lt;InterceptorMappings&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<br>
+	 * &lt;InterceptorMappings&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<br>
 	 */
 	public static final String PATTERNS_TAG_NAME = "patterns";
 	/**
-	 * &lt;pattern&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ìƒ}ƒbƒv
+	 * &lt;pattern&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—
 	 */
 	private final List patternList = new ArrayList();
 	//
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public PatternsMetaData(MetaData parent){
 		super(parent);
 	}
 	/**
-	 * &lt;patterns&gt;—v‘f‚Ìq—v‘f‚Ì&lt;patter&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB
-	 *	@return List - &lt;pattern&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌƒŠƒXƒg
+	 * &lt;patterns&gt;è¦ç´ ã®å­è¦ç´ ã®&lt;patter&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
+	 *	@return List - &lt;pattern&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆ
 	 */
 	public List getPatternList(){
 		return patternList;
 	}
 	/**
-	 * &lt;patterns&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚é&lt;pattern&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ“o˜^‚·‚éB
-	 *	@param pattern - &lt;pattern&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+	 * &lt;patterns&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚Œã‚‹&lt;pattern&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç™»éŒ²ã™ã‚‹ã€‚
+	 *	@param pattern - &lt;pattern&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void addPattern(PatternMetaData pattern){
 		patternList.add(pattern);

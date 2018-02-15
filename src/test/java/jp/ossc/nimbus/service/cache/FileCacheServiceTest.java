@@ -38,7 +38,7 @@ import junit.framework.*;
 import jp.ossc.nimbus.io.RecurciveSearchFile;
 
 /**
- * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒT[ƒrƒXƒeƒXƒgB<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ãƒ†ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */

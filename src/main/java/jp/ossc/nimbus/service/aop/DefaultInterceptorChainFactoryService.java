@@ -44,9 +44,9 @@ import jp.ossc.nimbus.service.aop.interceptor.MetricsInfo;
 import jp.ossc.nimbus.service.cache.CacheMap;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * ƒL[•¶š—ñ‚É‡’v‚·‚é{@link InterceptorChain}‚ğæ“¾‚·‚éƒtƒ@ƒNƒgƒŠB<br>
- * ˆÈ‰º‚ÉA“Á’è‚ÌƒL[–ˆ‚ÉˆÙ‚È‚é{@link InterceptorChainList ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒŠƒXƒg}‚ğ‚Â{@link InterceptorChain ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“}‚ğæ“¾‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒtƒ@ƒNƒgƒŠ‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ã‚­ãƒ¼æ–‡å­—åˆ—ã«åˆè‡´ã™ã‚‹{@link InterceptorChain}ã‚’å–å¾—ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<br>
+ * ä»¥ä¸‹ã«ã€ç‰¹å®šã®ã‚­ãƒ¼æ¯ã«ç•°ãªã‚‹{@link InterceptorChainList ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãƒªã‚¹ãƒˆ}ã‚’æŒã¤{@link InterceptorChain ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³}ã‚’å–å¾—ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -110,223 +110,223 @@ public class DefaultInterceptorChainFactoryService extends ServiceBase
     private boolean isOutputWorstPerformanceTime = false;
     private boolean isOutputAveragePerformance = true;
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setInterceptorChainListMapping(Map mapping){
         interceptorChainListMapping = mapping;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public Map getInterceptorChainListMapping(){
         return interceptorChainListMapping;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setInterceptorMapping(Map mapping){
         interceptorMapping = mapping;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public Map getInterceptorMapping(){
         return interceptorMapping;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setDefaultInterceptorChainListServiceName(ServiceName name){
         defaultInterceptorChainListServiceName = name;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public ServiceName getDefaultInterceptorChainListServiceName(){
         return defaultInterceptorChainListServiceName;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setInvokerMapping(Map mapping){
         invokerMapping = mapping;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public Map getInvokerMapping(){
         return invokerMapping;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setDefaultInvokerServiceName(ServiceName name){
         defaultInvokerServiceName = name;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public ServiceName getDefaultInvokerServiceName(){
         return defaultInvokerServiceName;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setRegexEnabled(boolean isEnable){
         isRegexEnabled = isEnable;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isRegexEnabled(){
         return isRegexEnabled;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setRegexMatchFlag(int flag){
         regexMatchFlag = flag;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public int getRegexMatchFlag(){
         return regexMatchFlag;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setInterceptorChainCacheMapServiceName(ServiceName name){
         interceptorChainCacheMapServiceName = name;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public ServiceName getInterceptorChainCacheMapServiceName(){
         return interceptorChainCacheMapServiceName;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setUseThreadLocalInterceptorChain(boolean isUse){
         isUseThreadLocalInterceptorChain = isUse;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isUseThreadLocalInterceptorChain(){
         return isUseThreadLocalInterceptorChain;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setGetMetrics(boolean isGet){
         isGetMetrics = isGet;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isGetMetrics(){
         return isGetMetrics;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setCalculateOnlyNormal(boolean isCalc){
         isCalculateOnlyNormal = isCalc;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isCalculateOnlyNormal(){
         return isCalculateOnlyNormal;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputTimestamp(boolean isOutput){
         isOutputTimestamp = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputTimestamp(){
         return isOutputTimestamp;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputCount(boolean isOutput){
         isOutputCount = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputCount(){
         return isOutputCount;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputExceptionCount(boolean isOutput){
         isOutputExceptionCount = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputExceptionCount(){
         return isOutputExceptionCount;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputErrorCount(boolean isOutput){
         isOutputErrorCount = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputErrorCount(){
         return isOutputErrorCount;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputLastTime(boolean isOutput){
         isOutputLastTime = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputLastTime(){
         return isOutputLastTime;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputLastExceptionTime(boolean isOutput){
         isOutputLastExceptionTime = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputLastExceptionTime(){
         return isOutputLastExceptionTime;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputLastErrorTime(boolean isOutput){
         isOutputLastErrorTime = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputLastErrorTime(){
         return isOutputLastErrorTime;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputBestPerformance(boolean isOutput){
         isOutputBestPerformance = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformance(){
         return isOutputBestPerformance;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputBestPerformanceTime(boolean isOutput){
         isOutputBestPerformanceTime = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformanceTime(){
         return isOutputBestPerformanceTime;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputWorstPerformance(boolean isOutput){
         isOutputWorstPerformance = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformance(){
         return isOutputWorstPerformance;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputWorstPerformanceTime(boolean isOutput){
         isOutputWorstPerformanceTime = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformanceTime(){
         return isOutputWorstPerformanceTime;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setOutputAveragePerformance(boolean isOutput){
         isOutputAveragePerformance = isOutput;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public boolean isOutputAveragePerformance(){
         return isOutputAveragePerformance;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void setDateFormat(String format){
         dateFormat = format;
     }
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public String getDateFormat(){
         return dateFormat;
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public String displayMetricsInfo(){
         final MetricsInfo[] infos = (MetricsInfo[])metricsInfos.values()
             .toArray(new MetricsInfo[metricsInfos.size()]);
@@ -450,7 +450,7 @@ public class DefaultInterceptorChainFactoryService extends ServiceBase
         return buf.toString();
     }
     
-    // DefaultInterceptorChainFactoryServiceMBean‚ÌJavaDoc
+    // DefaultInterceptorChainFactoryServiceMBeanã®JavaDoc
     public void reset(){
         metricsInfos.clear();
     }
@@ -553,12 +553,12 @@ public class DefaultInterceptorChainFactoryService extends ServiceBase
     }
     
     /**
-     * ƒL[•¶š—ñ‚É‡’v‚·‚é{@link InterceptorChain}‚ğæ“¾‚·‚éB<p>
-     * {@link #isUseThreadLocalInterceptorChain()}‚ªtrue‚Ì‚ÍA{@link DefaultThreadLocalInterceptorChain}‚ğ•Ô‚·‚Ì‚ÅAƒXƒŒƒbƒh’PˆÊ‚Å‚ÌÄ—˜—p‚ª‰Â”\‚Å‚ ‚éB<br>
-     * ‚Ü‚½A{@link #setInterceptorChainCacheMapServiceName(ServiceName)}‚ğw’è‚µ‚Ä‚¢‚éê‡‚ÍA¶¬‚µ‚½InterceptorChain‚ğƒLƒƒƒbƒVƒ…‚µ‚Ä•Ô‚·B<br>
+     * ã‚­ãƒ¼æ–‡å­—åˆ—ã«åˆè‡´ã™ã‚‹{@link InterceptorChain}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #isUseThreadLocalInterceptorChain()}ãŒtrueã®æ™‚ã¯ã€{@link DefaultThreadLocalInterceptorChain}ã‚’è¿”ã™ã®ã§ã€ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã§ã®å†åˆ©ç”¨ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ã¾ãŸã€{@link #setInterceptorChainCacheMapServiceName(ServiceName)}ã‚’æŒ‡å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ç”Ÿæˆã—ãŸInterceptorChainã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param key ƒL[•¶š—ñ
-     * @return ƒL[•¶š—ñ‚É‡’v‚·‚éInterceptorChain
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @return ã‚­ãƒ¼æ–‡å­—åˆ—ã«åˆè‡´ã™ã‚‹InterceptorChain
      */
     public InterceptorChain getInterceptorChain(Object key){
         final String keyStr = key == null ? null : key.toString();

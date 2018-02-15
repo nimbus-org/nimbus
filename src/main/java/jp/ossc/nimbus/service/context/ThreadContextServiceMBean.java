@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.context;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link ThreadContextService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ThreadContextService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  * @see ThreadContextService
@@ -42,7 +42,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface ThreadContextServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ‘S‚Ä‚ÌƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚ğ‰Šú‰»‚·‚éB<p>
+     * å…¨ã¦ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void clearAllThreadContext();
 }
