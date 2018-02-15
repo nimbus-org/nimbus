@@ -485,6 +485,19 @@ public abstract class MetaData implements Serializable, Cloneable{
      * @return 要素の内容
      */
     public static String getElementContent(Element element, String defaultStr){
+        return getElementContent(element, false, defaultStr);
+    }
+    
+    /**
+     * 指定した要素の内容を取得する。<p>
+     * 内容が空の場合は、引数で指定されたdefaultStrを返す。<br>
+     *
+     * @param element 要素
+     * @param isComment コメントされた要素の内容を取得する場合、true
+     * @param defaultStr デフォルト値
+     * @return 要素の内容
+     */
+    public static String getElementContent(Element element, boolean isComment, String defaultStr){
         if(element == null){
             return defaultStr;
         }
@@ -495,14 +508,26 @@ public abstract class MetaData implements Serializable, Cloneable{
         }
         String result = "";
         for(int i = 0, max = children.getLength(); i < max; i++){
-            if(children.item(i).getNodeType() == Node.TEXT_NODE
-                 || children.item(i).getNodeType() == Node.CDATA_SECTION_NODE
-            ){
-                result += children.item(i).getNodeValue();
-            }else if(children.item(i).getNodeType() == Node.COMMENT_NODE){
-                // コメントは無視
+            Node currentNode = children.item(i);
+            if(isComment){
+                switch(currentNode.getNodeType()){
+                case Node.COMMENT_NODE:
+                    result += currentNode.getNodeValue();
+                    break;
+                default:
+                }
             }else{
-                result += children.item(i).getFirstChild();
+                switch(currentNode.getNodeType()){
+                case Node.COMMENT_NODE:
+                    // コメントは無視
+                    break;
+                case Node.TEXT_NODE:
+                case Node.CDATA_SECTION_NODE:
+                    result += currentNode.getNodeValue();
+                    break;
+                default:
+                    result += currentNode.getFirstChild();
+                }
             }
         }
         return trim(result);
