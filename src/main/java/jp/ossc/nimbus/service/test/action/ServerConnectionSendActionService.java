@@ -52,8 +52,8 @@ import jp.ossc.nimbus.service.publish.Message;
 import jp.ossc.nimbus.service.interpreter.Interpreter;
 
 /**
- * {@link ServerConnection}‚É{@link Message}‚ğ‘—M‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link ServerConnection}ã«{@link Message}ã‚’é€ä¿¡ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -107,46 +107,46 @@ public class ServerConnectionSendActionService extends ServiceBase implements Te
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅA{@link ServerConnection}‚É{@link Message}‚ğ‘—M‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€{@link ServerConnection}ã«{@link Message}ã‚’é€ä¿¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * subject,key
      * 
      * objectId
      * objectScript
      * </pre>
-     * subject‚ÍA{@link Message}‚Éİ’è‚·‚éƒTƒuƒWƒFƒNƒg‚ğw’è‚·‚éBkey‚ÍA{@link Message}‚Éİ’è‚·‚éƒL[‚ğw’è‚·‚éBƒTƒuƒWƒFƒNƒg‚ğ•¡”İ’è‚·‚éê‡‚ÍA‰üs‚µ‚Äw’è‚·‚éBƒTƒuƒWƒFƒNƒgw’è‚ÌI—¹‚É‚ÍA‹ós‚ğ‘}“ü‚·‚éB<br>
-     * objectId‚ÍA{@link Message}‚Éİ’è‚·‚éƒIƒuƒWƒFƒNƒg‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAƒIƒuƒWƒFƒNƒg‚ğTestAction‚ÌŒ‹‰Ê‚©‚çæ“¾‚µ‚È‚¢B<br>
-     * objectScript‚ÍA{@link Message}‚Éİ’è‚·‚éƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éƒXƒNƒŠƒvƒg‚ğw’è‚·‚éBƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}‚ª“n‚³‚ê‚éB<br>
+     * subjectã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚keyã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¤‡æ•°è¨­å®šã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã—ã¦æŒ‡å®šã™ã‚‹ã€‚ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®çµ‚äº†ã«ã¯ã€ç©ºè¡Œã‚’æŒ¿å…¥ã™ã‚‹ã€‚<br>
+     * objectIdã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’TestActionã®çµæœã‹ã‚‰å–å¾—ã—ãªã„ã€‚<br>
+     * objectScriptã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ‘—M‚µ‚½ƒƒbƒZ[ƒW
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return é€ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅA{@link ServerConnection}‚É{@link Message}‚ğ‘—M‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€{@link ServerConnection}ã«{@link Message}ã‚’é€ä¿¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * subject,key
      * 
      * objectId
      * objectScript
      * </pre>
-     * subject‚ÍA{@link Message}‚Éİ’è‚·‚éƒTƒuƒWƒFƒNƒg‚ğw’è‚·‚éBkey‚ÍA{@link Message}‚Éİ’è‚·‚éƒL[‚ğw’è‚·‚éBƒTƒuƒWƒFƒNƒg‚ğ•¡”İ’è‚·‚éê‡‚ÍA‰üs‚µ‚Äw’è‚·‚éBƒTƒuƒWƒFƒNƒgw’è‚ÌI—¹‚É‚ÍA‹ós‚ğ‘}“ü‚·‚éB<br>
-     * objectId‚ÍA{@link Message}‚Éİ’è‚·‚éƒIƒuƒWƒFƒNƒg‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAƒIƒuƒWƒFƒNƒg‚ğTestAction‚ÌŒ‹‰Ê‚©‚çæ“¾‚µ‚È‚¢B<br>
-     * objectScript‚ÍA{@link Message}‚Éİ’è‚·‚éƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éƒXƒNƒŠƒvƒg‚ğw’è‚·‚éBƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}A"preResult"‚ÅpreResult‚ª“n‚³‚ê‚éB<br>
-     * objectIdAobjectScript‚Ì—¼•û‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍApreResult‚ğg—p‚·‚éB<br>
+     * subjectã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚keyã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¤‡æ•°è¨­å®šã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã—ã¦æŒ‡å®šã™ã‚‹ã€‚ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®çµ‚äº†ã«ã¯ã€ç©ºè¡Œã‚’æŒ¿å…¥ã™ã‚‹ã€‚<br>
+     * objectIdã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’TestActionã®çµæœã‹ã‚‰å–å¾—ã—ãªã„ã€‚<br>
+     * objectScriptã¯ã€{@link Message}ã«è¨­å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ã€"preResult"ã§preResultãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
+     * objectIdã€objectScriptã®ä¸¡æ–¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€preResultã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param preResult XVƒNƒGƒŠ‚É‘Î‚·‚éˆø”ƒIƒuƒWƒFƒNƒg
-     * @param resource ƒŠƒ\[ƒX
-     * @return ‘—M‚µ‚½ƒƒbƒZ[ƒW
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param preResult æ›´æ–°ã‚¯ã‚¨ãƒªã«å¯¾ã™ã‚‹å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return é€ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

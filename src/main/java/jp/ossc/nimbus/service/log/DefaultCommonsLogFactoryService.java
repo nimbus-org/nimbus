@@ -41,18 +41,18 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.message.MessageRecordFactory;
 
 /**
- * {@link CommonsLogFactory}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒXB<p>
- * The Apache Jakarta Project‚ÌCommons Logging‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚Åo—Í‚µ‚½ƒƒO‚ğANimbus‚ÌƒƒO‚Æ‚µ‚Äo—Í‚·‚éƒT[ƒrƒX‚Å‚ ‚éB<br>
- * ‚Ü‚½A{@link LogService}‚ÌƒTƒuƒNƒ‰ƒX‚È‚Ì‚ÅANimbus‚Ì{@link Logger}ƒCƒ“ƒ^ƒtƒF[ƒXŒo—R‚ÌƒƒOo—Í‹@”\‚à‚ÂB<br>
- * Commons Logging‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚Åo—Í‚µ‚½ƒƒO‚ğANimbus‚ÌƒƒO‚Æ‚µ‚Äo—Í‚·‚éê‡‚ÍAƒT[ƒrƒX’è‹`‚Æ•Ê‚ÉA"commons-logging.properties"ƒtƒ@ƒCƒ‹‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­•K—v‚ª‚ ‚éB<br>
- * "commons-logging.properties"ƒtƒ@ƒCƒ‹‚ÉAˆÈ‰º‚Ìİ’è‚ğs‚¤B<br>
+ * {@link CommonsLogFactory}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * The Apache Jakarta Projectã®Commons Loggingã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§å‡ºåŠ›ã—ãŸãƒ­ã‚°ã‚’ã€Nimbusã®ãƒ­ã‚°ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã¾ãŸã€{@link LogService}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ãªã®ã§ã€Nimbusã®{@link Logger}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹çµŒç”±ã®ãƒ­ã‚°å‡ºåŠ›æ©Ÿèƒ½ã‚‚æŒã¤ã€‚<br>
+ * Commons Loggingã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§å‡ºåŠ›ã—ãŸãƒ­ã‚°ã‚’ã€Nimbusã®ãƒ­ã‚°ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã¨åˆ¥ã«ã€"commons-logging.properties"ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
+ * "commons-logging.properties"ãƒ•ã‚¡ã‚¤ãƒ«ã«ã€ä»¥ä¸‹ã®è¨­å®šã‚’è¡Œã†ã€‚<br>
  * <ul>
  * <li>org.apache.commons.logging.LogFactory<br>
- * LogFactoryƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ğw’è‚·‚éB‚±‚ÌƒT[ƒrƒX‚ğg—p‚·‚éê‡‚ÍAjp.ossc.nimbus.service.log.NimbusLogFactory‚ğw’è‚·‚éB </li>
+ * LogFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€jp.ossc.nimbus.service.log.NimbusLogFactoryã‚’æŒ‡å®šã™ã‚‹ã€‚ </li>
  * <li>jp.ossc.nimbus.service.log.NimbusLogFactory.DefaultLogFactory<br>
- * ‚±‚ÌƒT[ƒrƒX‚Ì‹N“®‘O‚â’â~Œã‚Ég—p‚·‚éLogFactoryƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ğw’è‚·‚éB‚±‚ÌƒvƒƒpƒeƒB‚Ìw’è‚ª‚È‚¢ê‡‚ÍAorg.apache.commons.logging.impl.LogFactoryImpl‚ğg—p‚·‚éB </li>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®èµ·å‹•å‰ã‚„åœæ­¢å¾Œã«ä½¿ç”¨ã™ã‚‹LogFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æŒ‡å®šãŒãªã„å ´åˆã¯ã€org.apache.commons.logging.impl.LogFactoryImplã‚’ä½¿ç”¨ã™ã‚‹ã€‚ </li>
  * <li>jp.ossc.nimbus.service.log.NimbusLogFactory.CommonsLogFactoryName<br>
- * ‚±‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚éBƒT[ƒrƒX–¼‚ÍA"ƒ}ƒl[ƒWƒƒ–¼#ƒT[ƒrƒX–¼"‚Åw’è‚·‚éB‚±‚ÌƒT[ƒrƒX‚ğ‹N“®‚·‚éƒXƒŒƒbƒh‚ÆAJakarta Commons Logging‚ÌLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğ—v‹‚·‚éƒXƒŒƒbƒh‚ÌƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_‚ªˆÙ‚È‚éê‡‚ÍA‚±‚ÌƒvƒƒpƒeƒB‚ğw’è‚·‚é•K—v‚ª‚ ‚éBƒNƒ‰ƒXƒ[ƒ_‚ª“¯‚¶ê‡‚ÍAw’è‚·‚é•K—v‚Í‚È‚¢B </li>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚µãƒ¼ãƒ“ã‚¹åã¯ã€"ãƒãƒãƒ¼ã‚¸ãƒ£å#ã‚µãƒ¼ãƒ“ã‚¹å"ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã¨ã€Jakarta Commons Loggingã®Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¦æ±‚ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒç•°ãªã‚‹å ´åˆã¯ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒåŒã˜å ´åˆã¯ã€æŒ‡å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚ </li>
  * </ul>
  * 
  * @author M.Takata
@@ -62,7 +62,7 @@ public class DefaultCommonsLogFactoryService extends LogService
     
     private static final long serialVersionUID = 7172007959847003109L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String DCLF_ = "DCLF_";
     private static final String DCLF_0 = DCLF_ + 0;
     private static final String DCLF_00 = DCLF_0 + 0;
@@ -71,118 +71,118 @@ public class DefaultCommonsLogFactoryService extends LogService
     private static final String DCLF_00001 = DCLF_0000 + 1;
     
     /**
-     * —LŒø‚ÈƒƒOƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒL[–¼ƒZƒbƒg
+     * æœ‰åŠ¹ãªãƒ­ã‚°ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã‚­ãƒ¼åã‚»ãƒƒãƒˆ
      */
     private Set enabledClientSet = new HashSet();
     
-    /** {@link #CATEGORY_COMMONS_TRACE}ƒJƒeƒSƒŠ‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #CATEGORY_COMMONS_TRACE}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isCommonsTraceEnabled = false;
     
-    /** {@link #CATEGORY_COMMONS_DEBUG}ƒJƒeƒSƒŠ‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #CATEGORY_COMMONS_DEBUG}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isCommonsDebugEnabled = false;
     
-    /** {@link #CATEGORY_COMMONS_INFO}ƒJƒeƒSƒŠ‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #CATEGORY_COMMONS_INFO}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isCommonsInfoEnabled = true;
     
-    /** {@link #CATEGORY_COMMONS_WARN}ƒJƒeƒSƒŠ‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #CATEGORY_COMMONS_WARN}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isCommonsWarnEnabled = true;
     
-    /** {@link #CATEGORY_COMMONS_ERROR}ƒJƒeƒSƒŠ‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #CATEGORY_COMMONS_ERROR}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isCommonsErrorEnabled = true;
     
-    /** {@link #CATEGORY_COMMONS_FATAL}ƒJƒeƒSƒŠ‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #CATEGORY_COMMONS_FATAL}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isCommonsFatalEnabled = true;
     
     /**
-     * {@link #CATEGORY_COMMONS_TRACE}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_TRACE}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsTraceMessageWriterServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_DEBUG}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_DEBUG}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsDebugMessageWriterServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_INFO}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_INFO}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsInfoMessageWriterServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_WARN}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_WARN}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsWarnMessageWriterServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_ERROR}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_ERROR}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsErrorMessageWriterServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_FATAL}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_FATAL}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsFatalMessageWriterServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_TRACE}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_TRACE}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsTraceRecordFactoryServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_DEBUG}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_DEBUG}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsDebugRecordFactoryServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_INFO}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_INFO}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsInfoRecordFactoryServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_WARN}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_WARN}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsWarnRecordFactoryServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_ERROR}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_ERROR}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsErrorRecordFactoryServiceName;
     
     /**
-     * {@link #CATEGORY_COMMONS_FATAL}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #CATEGORY_COMMONS_FATAL}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName commonsFatalRecordFactoryServiceName;
     
     /**
-     * {@link Log}ƒCƒ“ƒXƒ^ƒ“ƒXŠÇ—ƒ}ƒbƒvB<p>
+     * {@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç®¡ç†ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>Object</td><td>LogƒCƒ“ƒXƒ^ƒ“ƒX¯•Êî•ñ</td><td>Log</td><td>LogƒCƒ“ƒXƒ^ƒ“ƒX</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>Object</td><td>Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹è­˜åˆ¥æƒ…å ±</td><td>Log</td><td>Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</td></tr>
      * </table>
      */
     private Map logInstances;
     
     /**
-     * ‘®«ŠÇ—ƒ}ƒbƒvB<p>
+     * å±æ€§ç®¡ç†ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>Object</td><td>‘®«–¼</td><td>Object</td><td>‘®«’l</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>Object</td><td>å±æ€§å</td><td>Object</td><td>å±æ€§å€¤</td></tr>
      * </table>
      */
     private Map attributes;
     
     /**
-     * ¶¬ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>super.createService()ŒÄ‚Ño‚µB</li>
-     *   <li>LogƒCƒ“ƒXƒ^ƒ“ƒXŠÇ——pMap‚ğ¶¬‚·‚éB</li>
-     *   <li>‘®«ŠÇ——pMap‚ğ¶¬‚·‚éB</li>
+     *   <li>super.createService()å‘¼ã³å‡ºã—ã€‚</li>
+     *   <li>Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç®¡ç†ç”¨Mapã‚’ç”Ÿæˆã™ã‚‹ã€‚</li>
+     *   <li>å±æ€§ç®¡ç†ç”¨Mapã‚’ç”Ÿæˆã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         super.createService();
@@ -192,22 +192,22 @@ public class DefaultCommonsLogFactoryService extends LogService
     }
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>super.startService()ŒÄ‚Ño‚µB</li>
-     *   <li>CommonsƒƒOƒJƒeƒSƒŠ‚ğƒfƒtƒHƒ‹ƒgƒJƒeƒSƒŠ‚Æ‚µ‚Ä“o˜^‚·‚éB</li>
-     *   <li>ƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğ{@link DefaultCommonsLogFactoryServiceMBean#DEFAULT_FORMAT}‚É•ÏX‚·‚éB</li>
-     *   <li>{@link NimbusLogFactory#setCommonsLogFactory(CommonsLogFactory)}‚É©•ª©g‚ğİ’è‚·‚éB</li>
+     *   <li>super.startService()å‘¼ã³å‡ºã—ã€‚</li>
+     *   <li>Commonsãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚«ãƒ†ã‚´ãƒªã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’{@link DefaultCommonsLogFactoryServiceMBean#DEFAULT_FORMAT}ã«å¤‰æ›´ã™ã‚‹ã€‚</li>
+     *   <li>{@link NimbusLogFactory#setCommonsLogFactory(CommonsLogFactory)}ã«è‡ªåˆ†è‡ªèº«ã‚’è¨­å®šã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         defaultFormat = DefaultCommonsLogFactoryServiceMBean.DEFAULT_FORMAT;
         super.startService();
         
-        // NimbusLogFactory‚É“o˜^
+        // NimbusLogFactoryã«ç™»éŒ²
         final LogFactory logFactory = LogFactory.getFactory();
         if(logFactory instanceof NimbusLogFactory){
             ((NimbusLogFactory)logFactory).setCommonsLogFactory(this);
@@ -217,7 +217,7 @@ public class DefaultCommonsLogFactoryService extends LogService
     protected void initDefaultCategory() throws Exception{
         super.initDefaultCategory();
         
-        // CommonsƒƒOƒJƒeƒSƒŠ‚Ì“o˜^
+        // Commonsãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ç™»éŒ²
         addDefaultCategory(
             getDefaultMessageWriterService(),
             getDefaultWritableRecordFactoryService(),
@@ -287,12 +287,12 @@ public class DefaultCommonsLogFactoryService extends LogService
     }
     
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>super.stopService()ŒÄ‚Ño‚µB</li>
-     *   <li>{@link #release()}‚ğŒÄ‚Ño‚·B</li>
-     *   <li>{@link NimbusLogFactory#setCommonsLogFactory(CommonsLogFactory)}‚Énull‚ğİ’è‚·‚éB</li>
+     *   <li>super.stopService()å‘¼ã³å‡ºã—ã€‚</li>
+     *   <li>{@link #release()}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>{@link NimbusLogFactory#setCommonsLogFactory(CommonsLogFactory)}ã«nullã‚’è¨­å®šã™ã‚‹ã€‚</li>
      * </ol>
      */
     public void stopService(){
@@ -304,7 +304,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         }
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public Log getInstance(Class clazz) throws LogConfigurationException{
         if(logInstances == null){
             final MessageRecordFactory message = getMessageRecordFactory();
@@ -323,7 +323,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         return log;
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public Log getInstance(String name) throws LogConfigurationException{
         if(logInstances == null){
             final MessageRecordFactory message = getMessageRecordFactory();
@@ -342,14 +342,14 @@ public class DefaultCommonsLogFactoryService extends LogService
         return log;
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public void release(){
         if(logInstances != null){
             logInstances.clear();
         }
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public Object getAttribute(String name){
         if(attributes == null){
             return null;
@@ -357,7 +357,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         return attributes.get(name);
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public String[] getAttributeNames(){
         if(attributes == null){
             return new String[0];
@@ -366,7 +366,7 @@ public class DefaultCommonsLogFactoryService extends LogService
             .toArray(new String[attributes.size()]);
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public void removeAttribute(String name){
         if(attributes == null){
             return;
@@ -374,7 +374,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         attributes.remove(name);
     }
     
-    // CommonsLogFactory‚ÌJavaDoc
+    // CommonsLogFactoryã®JavaDoc
     public void setAttribute(String name, Object value){
         if(attributes == null){
             return;
@@ -383,11 +383,11 @@ public class DefaultCommonsLogFactoryService extends LogService
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[æ‚èo‚µŒã‚Ìˆ—‚ğs‚¤B<p>
-     * superŒÄ‚Ño‚µ‚ğs‚¢ˆ—‚ğe‚ÉˆÏ÷‚·‚éB<br>
-     * ‚»‚ÌŒãAdequeuedRecord‚©‚çæ‚èo‚µ‚½LogMessageRecord‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ªACommonsLogMessageRecord‚Å‚ ‚Á‚½ê‡A{@link #FORMAT_CLIENT_KEY}‚É‘Î‰‚·‚éƒNƒ‰ƒCƒAƒ“ƒg¯•Ê•¶š‚ğæ“¾‚µ‚ÄA{@link LogEnqueuedRecord#addWritableElement(Object, Object)}‚Å{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼å–ã‚Šå‡ºã—å¾Œã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * superå‘¼ã³å‡ºã—ã‚’è¡Œã„å‡¦ç†ã‚’è¦ªã«å§”è­²ã™ã‚‹ã€‚<br>
+     * ãã®å¾Œã€dequeuedRecordã‹ã‚‰å–ã‚Šå‡ºã—ãŸLogMessageRecordã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒã€CommonsLogMessageRecordã§ã‚ã£ãŸå ´åˆã€{@link #FORMAT_CLIENT_KEY}ã«å¯¾å¿œã™ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆè­˜åˆ¥æ–‡å­—ã‚’å–å¾—ã—ã¦ã€{@link LogEnqueuedRecord#addWritableElement(Object, Object)}ã§{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<br>
      *
-     * @param dequeuedRecord LogEnqueuedRecordƒIƒuƒWƒFƒNƒg
+     * @param dequeuedRecord LogEnqueuedRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void postDequeue(LogEnqueuedRecord dequeuedRecord){
         super.postDequeue(dequeuedRecord);
@@ -402,7 +402,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         }
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setEnabledClients(String[] clients){
         if(clients != null){
             enabledClientSet.clear();
@@ -448,12 +448,12 @@ public class DefaultCommonsLogFactoryService extends LogService
         return false;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public String[] getEnabledClients(){
         return (String[])enabledClientSet.toArray(new String[enabledClientSet.size()]);
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsTraceEnabled(boolean isEnabled){
         isCommonsTraceEnabled = isEnabled;
         setEnabled(
@@ -462,7 +462,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public boolean isCommonsTraceEnabled(){
         return isEnabled(
             CATEGORY_COMMONS_TRACE,
@@ -470,7 +470,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsDebugEnabled(boolean isEnabled){
         isCommonsDebugEnabled = isEnabled;
         setEnabled(
@@ -479,7 +479,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public boolean isCommonsDebugEnabled(){
         return isEnabled(
             CATEGORY_COMMONS_DEBUG,
@@ -487,7 +487,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsInfoEnabled(boolean isEnabled){
         isCommonsInfoEnabled = isEnabled;
         setEnabled(
@@ -496,7 +496,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public boolean isCommonsInfoEnabled(){
         return isEnabled(
             CATEGORY_COMMONS_INFO,
@@ -504,7 +504,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsWarnEnabled(boolean isEnabled){
         isCommonsWarnEnabled = isEnabled;
         setEnabled(
@@ -513,7 +513,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public boolean isCommonsWarnEnabled(){
         return isEnabled(
             CATEGORY_COMMONS_WARN,
@@ -521,7 +521,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsErrorEnabled(boolean isEnabled){
         isCommonsErrorEnabled = isEnabled;
         setEnabled(
@@ -530,7 +530,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public boolean isCommonsErrorEnabled(){
         return isEnabled(
             CATEGORY_COMMONS_ERROR,
@@ -538,7 +538,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsFatalEnabled(boolean isEnabled){
         isCommonsFatalEnabled = isEnabled;
         setEnabled(
@@ -547,7 +547,7 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public boolean isCommonsFatalEnabled(){
         return isEnabled(
             CATEGORY_COMMONS_FATAL,
@@ -555,134 +555,134 @@ public class DefaultCommonsLogFactoryService extends LogService
         );
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsTraceMessageWriterServiceName(ServiceName name){
         commonsTraceMessageWriterServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsTraceMessageWriterServiceName(){
         return commonsTraceMessageWriterServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsDebugMessageWriterServiceName(ServiceName name){
         commonsDebugMessageWriterServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsDebugMessageWriterServiceName(){
         return commonsDebugMessageWriterServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsInfoMessageWriterServiceName(ServiceName name){
         commonsInfoMessageWriterServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsInfoMessageWriterServiceName(){
         return commonsInfoMessageWriterServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsWarnMessageWriterServiceName(ServiceName name){
         commonsWarnMessageWriterServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsWarnMessageWriterServiceName(){
         return commonsWarnMessageWriterServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsErrorMessageWriterServiceName(ServiceName name){
         commonsErrorMessageWriterServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsErrorMessageWriterServiceName(){
         return commonsErrorMessageWriterServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsFatalMessageWriterServiceName(ServiceName name){
         commonsFatalMessageWriterServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsFatalMessageWriterServiceName(){
         return commonsFatalMessageWriterServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsTraceWritableRecordFactoryServiceName(
         ServiceName name
     ){
         commonsTraceRecordFactoryServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsTraceWritableRecordFactoryServiceName(){
         return commonsTraceRecordFactoryServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsDebugWritableRecordFactoryServiceName(
         ServiceName name
     ){
         commonsDebugRecordFactoryServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsDebugWritableRecordFactoryServiceName(){
         return commonsDebugRecordFactoryServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsInfoWritableRecordFactoryServiceName(
         ServiceName name
     ){
         commonsInfoRecordFactoryServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsInfoWritableRecordFactoryServiceName(){
         return commonsInfoRecordFactoryServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsWarnWritableRecordFactoryServiceName(
         ServiceName name
     ){
         commonsWarnRecordFactoryServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsWarnWritableRecordFactoryServiceName(){
         return commonsWarnRecordFactoryServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsErrorWritableRecordFactoryServiceName(
         ServiceName name
     ){
         commonsErrorRecordFactoryServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsErrorWritableRecordFactoryServiceName(){
         return commonsErrorRecordFactoryServiceName;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public void setCommonsFatalWritableRecordFactoryServiceName(
         ServiceName name
     ){
         commonsFatalRecordFactoryServiceName = name;
     }
     
-    // DefaultCommonsLogServiceMBean‚ÌJavaDoc
+    // DefaultCommonsLogServiceMBeanã®JavaDoc
     public ServiceName getCommonsFatalWritableRecordFactoryServiceName(){
         return commonsFatalRecordFactoryServiceName;
     }

@@ -32,25 +32,25 @@
 package jp.ossc.nimbus.core;
 
 /**
- * ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB&lt;manager-property&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;manager-property&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£&lt;manager-property&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;manager-property&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ManagerPropertyMetaData extends PropertyMetaData{
     
     private static final long serialVersionUID = -4870009806498328632L;
     
     /**
-     * &lt;manager&gt;—v‘f‚Ìq—v‘f&lt;manager-property&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;manager&gt;è¦ç´ ã®å­è¦ç´ &lt;manager-property&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String MANAGER_PROPERTY_TAG_NAME = "manager-property";
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ManagerPropertyMetaData(MetaData parent){
         super(parent);

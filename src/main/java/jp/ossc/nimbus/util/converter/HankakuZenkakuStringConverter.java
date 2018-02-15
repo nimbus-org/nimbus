@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ”¼Šp‘SŠp•¶š—ñƒRƒ“ƒo[ƒ^‚Ì’ŠÛƒNƒ‰ƒXB<p>
+ * åŠè§’å…¨è§’æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,16 +42,16 @@ public abstract class HankakuZenkakuStringConverter
     private static final long serialVersionUID = 2943964370458466319L;
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·í•Ê‚Ì•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ç¨®åˆ¥ã®æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public HankakuZenkakuStringConverter(){
         super(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚Ì•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #HANKAKU_TO_ZENKAKU
      * @see #ZENKAKU_TO_HANKAKU
      */
@@ -60,36 +60,36 @@ public abstract class HankakuZenkakuStringConverter
     }
     
     /**
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
-     * {@link #getHankakuZenkakuChars()}‚ğŒÄ‚Ño‚·B<br>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getHankakuZenkakuChars()}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @return •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @return å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      */
     protected final char[][] getConvertChars(){
         return getHankakuZenkakuChars();
     }
     
     /**
-     * •ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
-     * {@link #getHankakuZenkakuStrings()}‚ğŒÄ‚Ño‚·B<br>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getHankakuZenkakuStrings()}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @return •ÏŠ·•¶š—ñ”z—ñ
+     * @return å¤‰æ›æ–‡å­—åˆ—é…åˆ—
      */
     protected final String[][] getConvertStrings(){
         return getHankakuZenkakuStrings();
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @return åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      */
     protected abstract char[][] getHankakuZenkakuChars();
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp‘SŠp•ÏŠ·•¶š—ñ”z—ñ
+     * @return åŠè§’å…¨è§’å¤‰æ›æ–‡å­—åˆ—é…åˆ—
      */
     protected abstract String[][] getHankakuZenkakuStrings();
 }

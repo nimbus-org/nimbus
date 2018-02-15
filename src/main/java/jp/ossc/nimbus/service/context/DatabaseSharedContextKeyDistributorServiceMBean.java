@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DatabaseSharedContextKeyDistributorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseSharedContextKeyDistributorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DatabaseSharedContextKeyDistributorService
@@ -44,99 +44,99 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DatabaseSharedContextKeyDistributorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPersistentManagerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPersistentManagerServiceName();
     
     /**
-     * ƒL[‚ğŒŸõ‚·‚éŒŸõƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’æ¤œç´¢ã™ã‚‹æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setKeySelectQuery(String query);
     
     /**
-     * ƒL[‚ğŒŸõ‚·‚éŒŸõƒNƒGƒŠ‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’æ¤œç´¢ã™ã‚‹æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getKeySelectQuery();
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚çŒŸõ‚µ‚½ƒL[‚ğ“Ç‚İ‚ŞƒŒƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * PersistentManager‚ÉƒŒƒR[ƒh‚Éƒ[ƒh‚³‚¹‚½ŒãA“Á’è‚ÌƒvƒƒpƒeƒB‚ğæ‚è‚¾‚µ‚ÄƒL[‚Æ‚·‚éê‡‚ÍA{@link #setKeyPropertyName(String)}‚Æ‘g‚İ‡‚í‚¹‚Äİ’è‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ¤œç´¢ã—ãŸã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * PersistentManagerã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ãƒ­ãƒ¼ãƒ‰ã•ã›ãŸå¾Œã€ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–ã‚Šã ã—ã¦ã‚­ãƒ¼ã¨ã™ã‚‹å ´åˆã¯ã€{@link #setKeyPropertyName(String)}ã¨çµ„ã¿åˆã‚ã›ã¦è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param record “Ç‚İ‚İƒŒƒR[ƒh
+     * @param record èª­ã¿è¾¼ã¿ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public void setDatabaseRecord(Record record);
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚çŒŸõ‚µ‚½ƒL[‚ğ“Ç‚İ‚ŞƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ¤œç´¢ã—ãŸã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “Ç‚İ‚İƒŒƒR[ƒh
+     * @return èª­ã¿è¾¼ã¿ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record getDatabaseRecord();
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚çŒŸõ‚µ‚½ƒL[‚ğ“Ç‚İ‚ŞBean‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * PersistentManager‚É‚±‚ÌBean‚ğ’¼Úƒ[ƒh‚³‚¹‚éê‡‚ÍA‚±‚Ì‘®«‚Ì‚İİ’è‚·‚éB<br>
-     * PersistentManager‚ÉƒŒƒR[ƒh‚Éƒ[ƒh‚³‚¹‚½ŒãA“Á’è‚ÌƒvƒƒpƒeƒB‚ğƒŒƒR[ƒh‚©‚çæ“¾‚µ‚ÄA‚±‚ÌBean‚Éİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setKeyPropertyMapping(String, String)}‚Æ‘g‚İ‡‚í‚¹‚Äİ’è‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ¤œç´¢ã—ãŸã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€Beanã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * PersistentManagerã«ã“ã®Beanã‚’ç›´æ¥ãƒ­ãƒ¼ãƒ‰ã•ã›ã‚‹å ´åˆã¯ã€ã“ã®å±æ€§ã®ã¿è¨­å®šã™ã‚‹ã€‚<br>
+     * PersistentManagerã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ãƒ­ãƒ¼ãƒ‰ã•ã›ãŸå¾Œã€ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰å–å¾—ã—ã¦ã€ã“ã®Beanã«è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setKeyPropertyMapping(String, String)}ã¨çµ„ã¿åˆã‚ã›ã¦è¨­å®šã™ã‚‹ã€‚<br>
      * 
-     * @param clazz “Ç‚İ‚İBean‚ÌƒNƒ‰ƒX
+     * @param clazz èª­ã¿è¾¼ã¿Beanã®ã‚¯ãƒ©ã‚¹
      */
     public void setKeyClass(Class clazz);
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚çŒŸõ‚µ‚½ƒL[‚ğ“Ç‚İ‚ŞBean‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ¤œç´¢ã—ãŸã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€Beanã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “Ç‚İ‚İBean‚ÌƒNƒ‰ƒX
+     * @return èª­ã¿è¾¼ã¿Beanã®ã‚¯ãƒ©ã‚¹
      */
     public Class getKeyClass();
     
     /**
-     * ƒŒƒR[ƒh‚©‚çæ“¾‚·‚éƒL[‚ÌƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      * @see #setDatabaseRecord(Record)
      */
     public void setKeyPropertyName(String name);
     
     /**
-     * ƒŒƒR[ƒh‚©‚çæ“¾‚·‚éƒL[‚ÌƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getKeyPropertyName();
     
     
     /**
-     * ƒŒƒR[ƒh‚©‚çæ“¾‚µ‚ÄBean‚Éİ’è‚·‚éƒvƒƒpƒeƒB–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰å–å¾—ã—ã¦Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param getProperty ƒŒƒR[ƒh‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-     * @param setProperty Bean‚Éİ’è‚·‚éƒvƒƒpƒeƒB–¼
+     * @param getProperty ãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param setProperty Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      * @see #setKeyClass(Class)
      */
     public void setKeyPropertyMapping(String getProperty, String setProperty);

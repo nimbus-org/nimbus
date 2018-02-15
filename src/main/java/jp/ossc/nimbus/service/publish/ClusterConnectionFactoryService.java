@@ -44,7 +44,7 @@ import jp.ossc.nimbus.service.repository.Repository;
 import jp.ossc.nimbus.service.keepalive.ClusterService;
 
 /**
- * ƒNƒ‰ƒXƒ^ƒRƒlƒNƒVƒ‡ƒ“¶¬ƒT[ƒrƒXB<p>
+ * ã‚¯ãƒ©ã‚¹ã‚¿ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

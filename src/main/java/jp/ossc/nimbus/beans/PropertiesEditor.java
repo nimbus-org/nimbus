@@ -36,11 +36,11 @@ import java.beans.*;
 import java.io.*;
 
 /**
- * {@link Properties}Œ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹Œ`®‚Ì•¶š—ñ‚ğjava.util.PropertiesŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * Šî–{“I‚É‚ÍAƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚Ìd—l‚É]‚¤BˆÙ‚È‚é‚Ì‚ÍAŠes‚Ì‘OŒã‚Ì‹ó”’‚ªƒgƒŠƒ€‚³‚ê‚éB‹ó”’‚ÍAjava.lang.Character#isWhitespace(char)‚Å”»’è‚³‚ê‚éB‚Ü‚½A"&lt;!--"‚Æ"--&gt;"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍƒRƒƒ“ƒg‚Æ‰ğß‚³‚ê–³‹‚³‚ê‚éB‚Ü‚½A"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * {@link Properties}å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼ã®æ–‡å­—åˆ—ã‚’java.util.Propertieså‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * åŸºæœ¬çš„ã«ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã®ä»•æ§˜ã«å¾“ã†ã€‚ç•°ãªã‚‹ã®ã¯ã€å„è¡Œã®å‰å¾Œã®ç©ºç™½ãŒãƒˆãƒªãƒ ã•ã‚Œã‚‹ã€‚ç©ºç™½ã¯ã€java.lang.Character#isWhitespace(char)ã§åˆ¤å®šã•ã‚Œã‚‹ã€‚ã¾ãŸã€"&lt;!--"ã¨"--&gt;"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã‚³ãƒ¡ãƒ³ãƒˆã¨è§£é‡ˆã•ã‚Œç„¡è¦–ã•ã‚Œã‚‹ã€‚ã¾ãŸã€"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;A=a<br>
  * &nbsp;&nbsp;B=b<br>
  * &nbsp;&nbsp;C=c<br>
@@ -48,14 +48,14 @@ import java.io.*;
  * &nbsp;&nbsp;&lt;!--E=e<br>
  * &nbsp;&nbsp;F=f--&gt;<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;A=a<br>
  * &nbsp;&nbsp;B=b<br>
  * &nbsp;&nbsp;C=c<br>
  * &nbsp;&nbsp;D=d<br>
  * <br>
- * ‚Æ‘‚©‚ê‚½ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚Æ“¯—l‚ÉPropertiesƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã¨æ›¸ã‹ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒæ§˜ã«Propertiesã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -67,9 +67,9 @@ public class PropertiesEditor extends PropertyEditorSupport
     private static final String EMPTY = "";
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -106,13 +106,13 @@ public class PropertiesEditor extends PropertyEditorSupport
                 result.setProperty(name, value);
             }
         }catch(IOException e){
-            // ‹N‚«‚È‚¢‚Í‚¸
+            // èµ·ããªã„ã¯ãš
             e.printStackTrace();
         }finally{
             try{
                 br.close();
             }catch(IOException e){
-                // ‹N‚«‚È‚¢‚Í‚¸
+                // èµ·ããªã„ã¯ãš
                 e.printStackTrace();
             }
             sr.close();
@@ -121,9 +121,9 @@ public class PropertiesEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Properties prop = (Properties)getValue();

@@ -32,26 +32,26 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 /**
- * ƒXƒŒƒbƒh’PˆÊ‚Ì{@link jp.ossc.nimbus.service.context.Context Context}‚ÌƒL[’è”‚ğ’è‹`‚µ‚½ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã®{@link jp.ossc.nimbus.service.context.Context Context}ã®ã‚­ãƒ¼å®šæ•°ã‚’å®šç¾©ã—ãŸã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ThreadContextKey{
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ÌƒL[B<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String REQUEST_ID = "REQUEST_ID";
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚ÌƒL[B<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String CODEMASTER = "CODE_MASTER";
     /**
-     * ƒXƒŒƒbƒh–¼‚ÌƒL[B<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰åã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String THREAD_NAME = "THREAD_NAME";
     /**
-     * ƒXƒŒƒbƒhƒOƒ‹[ƒv–¼‚ÌƒL[B<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚°ãƒ«ãƒ¼ãƒ—åã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String THREAD_GROUP_NAME = "THREAD_GROUP_NAME";
 }

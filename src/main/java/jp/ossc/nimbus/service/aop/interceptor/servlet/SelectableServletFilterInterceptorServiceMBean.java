@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 /**
- * {@link SelectableServletFilterInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SelectableServletFilterInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see SelectableServletFilterInterceptorService
@@ -41,44 +41,44 @@ public interface SelectableServletFilterInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈURL‚Æ{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªURLã¨{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ‘I‘ğ‰Â”\‚ÈURL‚ÆInterceptorƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBURLi³‹K•\Œ»j=InterceptorƒT[ƒrƒX–¼
+     * @param mapping é¸æŠå¯èƒ½ãªURLã¨Interceptorã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚URLï¼ˆæ­£è¦è¡¨ç¾ï¼‰=Interceptorã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setURLAndInterceptorServiceNameMapping(String[] mapping);
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈURL‚Æ{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªURLã¨{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘I‘ğ‰Â”\‚ÈURL‚ÆInterceptorƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return é¸æŠå¯èƒ½ãªURLã¨Interceptorã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public String[] getURLAndInterceptorServiceNameMapping();
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈURI‚Æ{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªURIã¨{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ‘I‘ğ‰Â”\‚ÈURI‚ÆInterceptorƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBURIi³‹K•\Œ»j=InterceptorƒT[ƒrƒX–¼
+     * @param mapping é¸æŠå¯èƒ½ãªURIã¨Interceptorã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚URIï¼ˆæ­£è¦è¡¨ç¾ï¼‰=Interceptorã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setURIAndInterceptorServiceNameMapping(String[] mapping);
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈURI‚Æ{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªURIã¨{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘I‘ğ‰Â”\‚ÈURI‚ÆInterceptorƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return é¸æŠå¯èƒ½ãªURIã¨Interceptorã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public String[] getURIAndInterceptorServiceNameMapping();
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈƒT[ƒuƒŒƒbƒgƒpƒX‚Æ{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã¨{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ‘I‘ğ‰Â”\‚ÈƒT[ƒuƒŒƒbƒgƒpƒX‚ÆInterceptorƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒT[ƒuƒŒƒbƒgƒpƒXi³‹K•\Œ»j=InterceptorƒT[ƒrƒX–¼
+     * @param mapping é¸æŠå¯èƒ½ãªã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã¨Interceptorã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ï¼ˆæ­£è¦è¡¨ç¾ï¼‰=Interceptorã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPathAndInterceptorServiceNameMapping(String[] mapping);
     
     /**
-     * ‘I‘ğ‰Â”\‚ÈƒT[ƒuƒŒƒbƒgƒpƒX‚Æ{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãªã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã¨{@link jp.ossc.nimbus.service.aop.Interceptor Interceptor}ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘I‘ğ‰Â”\‚ÈƒT[ƒuƒŒƒbƒgƒpƒX‚ÆInterceptorƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return é¸æŠå¯èƒ½ãªã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã¨Interceptorã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public String[] getPathAndInterceptorServiceNameMapping();
 }

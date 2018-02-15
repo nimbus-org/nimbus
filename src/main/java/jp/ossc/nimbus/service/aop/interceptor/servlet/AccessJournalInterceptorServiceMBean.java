@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AccessJournalInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link AccessJournalInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see AccessJournalInterceptorService
@@ -43,331 +43,331 @@ public interface AccessJournalInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_ACCESS_JOURNAL_KEY = "Access";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒXƒŒƒbƒh–¼‚ÌƒL[’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚¹ãƒ¬ãƒƒãƒ‰åã®ã‚­ãƒ¼å€¤ã€‚<p>
      */
     public static final String THREAD_NAME_JOURNAL_KEY = "ThreadName";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒXƒŒƒbƒhID‚ÌƒL[’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚¹ãƒ¬ãƒƒãƒ‰IDã®ã‚­ãƒ¼å€¤ã€‚<p>
      */
     public static final String THREAD_ID_JOURNAL_KEY = "ThreadId";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_REQUEST_JOURNAL_KEY = "Request";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_RESPONSE_JOURNAL_KEY = "Response";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌServletRequest—v‘f‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ServletRequestè¦ç´ ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_SERVLET_REQUEST_JOURNAL_KEY
          = "ServletRequest";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌServletResponse—v‘f‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ServletResponseè¦ç´ ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_SERVLET_RESPONSE_JOURNAL_KEY
          = "ServletResponse";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌHttpSession—v‘f‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®HttpSessionè¦ç´ ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_HTTP_SESSION_JOURNAL_KEY
          = "HttpSession";
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ª‹L˜^’†‚Å‚ ‚é–‚ğ¦‚·ƒŠƒNƒGƒXƒg‘®«–¼B<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãŒè¨˜éŒ²ä¸­ã§ã‚ã‚‹äº‹ã‚’ç¤ºã™ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã€‚<p>
      */
     public static final String ACCESS_JOURNAL_RECORDED
          = AccessJournalInterceptorService.class.getName() + ".Recorded";
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚©‚çƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚éê‡‚ÌAƒŠƒNƒGƒXƒgID‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹å ´åˆã®ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_REQUEST_ID_KEY
          = ThreadContextKey.REQUEST_ID;
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_ACCESS_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_ACCESS_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key ƒ‹[ƒgƒXƒeƒbƒv‚ÌƒL[
+     * @param key ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      * @see #DEFAULT_ACCESS_JOURNAL_KEY
      */
     public void setAccessJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‹[ƒgƒXƒeƒbƒv‚ÌƒL[
+     * @return ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      */
     public String getAccessJournalKey();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_REQUEST_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_REQUEST_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key ƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ÌƒL[
+     * @param key ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      * @see #DEFAULT_REQUEST_JOURNAL_KEY
      */
     public void setRequestJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ÌƒL[
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      */
     public String getRequestJournalKey();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_RESPONSE_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_RESPONSE_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key ƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ÌƒL[
+     * @param key ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      * @see #DEFAULT_RESPONSE_JOURNAL_KEY
      */
     public void setResponseJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ÌƒL[
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚­ãƒ¼
      */
     public String getResponseJournalKey();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌServletRequest—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_SERVLET_REQUEST_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ServletRequestè¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_SERVLET_REQUEST_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key ServletRequest—v‘f‚ÌƒL[
+     * @param key ServletRequestè¦ç´ ã®ã‚­ãƒ¼
      * @see #DEFAULT_SERVLET_REQUEST_JOURNAL_KEY
      */
     public void setServletRequestJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌServletRequest—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ServletRequestè¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServletRequest—v‘f‚ÌƒL[
+     * @return ServletRequestè¦ç´ ã®ã‚­ãƒ¼
      */
     public String getServletRequestJournalKey();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌServletResponse—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_SERVLET_RESPONSE_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ServletResponseè¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_SERVLET_RESPONSE_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key ServletResponse—v‘f‚ÌƒL[
+     * @param key ServletResponseè¦ç´ ã®ã‚­ãƒ¼
      * @see #DEFAULT_SERVLET_RESPONSE_JOURNAL_KEY
      */
     public void setServletResponseJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌServletResponse—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ServletResponseè¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServletResponse—v‘f‚ÌƒL[
+     * @return ServletResponseè¦ç´ ã®ã‚­ãƒ¼
      */
     public String getServletResponseJournalKey();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌHttpSession—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_HTTP_SESSION_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®HttpSessionè¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_HTTP_SESSION_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key HttpSession—v‘f‚ÌƒL[
+     * @param key HttpSessionè¦ç´ ã®ã‚­ãƒ¼
      * @see #DEFAULT_HTTP_SESSION_JOURNAL_KEY
      */
     public void setHttpSessionJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌHttpSession—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®HttpSessionè¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HttpSession—v‘f‚ÌƒL[
+     * @return HttpSessionè¦ç´ ã®ã‚­ãƒ¼
      */
     public String getHttpSessionJournalKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒgƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setAccessEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getAccessEditorFinderServiceName();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŠƒNƒGƒXƒgƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRequestEditorFinderServiceName();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResponseEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌƒŒƒXƒ|ƒ“ƒXƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResponseEditorFinderServiceName();
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é‚½‚ß‚Ì{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹ãŸã‚ã®{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚©‚çƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚éê‡‚ÌAƒŠƒNƒGƒXƒgID‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_REQUEST_ID_KEY}B<br>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹å ´åˆã®ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_REQUEST_ID_KEY}ã€‚<br>
      *
-     * @param key ContextƒT[ƒrƒX‚ÉŠi”[‚³‚ê‚½ƒŠƒNƒGƒXƒgID‚ÌƒL[
+     * @param key Contextã‚µãƒ¼ãƒ“ã‚¹ã«æ ¼ç´ã•ã‚ŒãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼
      * @see #DEFAULT_REQUEST_ID_KEY
      */
     public void setRequestIDKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚©‚çƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚éê‡‚ÌAƒŠƒNƒGƒXƒgID‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹å ´åˆã®ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÉŠi”[‚³‚ê‚½ƒŠƒNƒGƒXƒgID‚ÌƒL[
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã«æ ¼ç´ã•ã‚ŒãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼
      */
     public String getRequestIDKey();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğƒ‰ƒbƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
-     * ƒŒƒXƒ|ƒ“ƒX‚ğƒ‰ƒbƒv‚·‚é‚ÆAƒŒƒXƒ|ƒ“ƒX‚ÌÚ×‚Èî•ñ‚ğ‹L˜^‚Å‚«‚éB<br>
-     * ‹L˜^‚Å‚«‚éî•ñ‚ÌÚ×‚ÍA{@link jp.ossc.nimbus.service.journal.editor.JournalServletResponseWrapper JournalServletResponseWrapper}‹y‚Ñ{@link jp.ossc.nimbus.service.journal.editor.JournalHttpServletResponseWrapper JournalHttpServletResponseWrapper}‚ğQÆB<br>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã¨ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®è©³ç´°ãªæƒ…å ±ã‚’è¨˜éŒ²ã§ãã‚‹ã€‚<br>
+     * è¨˜éŒ²ã§ãã‚‹æƒ…å ±ã®è©³ç´°ã¯ã€{@link jp.ossc.nimbus.service.journal.editor.JournalServletResponseWrapper JournalServletResponseWrapper}åŠã³{@link jp.ossc.nimbus.service.journal.editor.JournalHttpServletResponseWrapper JournalHttpServletResponseWrapper}ã‚’å‚ç…§ã€‚<br>
      *
-     * @param isWrap ƒ‰ƒbƒv‚·‚éê‡‚ÍAtrue
+     * @param isWrap ãƒ©ãƒƒãƒ—ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setResponseWrap(boolean isWrap);
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğƒ‰ƒbƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒ‰ƒbƒv‚·‚é
+     * @return trueã®å ´åˆã¯ã€ãƒ©ãƒƒãƒ—ã™ã‚‹
      */
     public boolean isResponseWrap();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğƒ‰ƒbƒv‚·‚éê‡‚ÉAƒŒƒXƒ|ƒ“ƒX‚Ö‚Ì‘‚«‚İ‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹å ´åˆã«ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã¸ã®æ›¸ãè¾¼ã¿ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isBuffered ƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚ÍAtrue
+     * @param isBuffered ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setResponseBufferedOutput(boolean isBuffered);
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğƒ‰ƒbƒv‚·‚éê‡‚ÉAƒŒƒXƒ|ƒ“ƒX‚Ö‚Ì‘‚«‚İ‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹å ´åˆã«ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã¸ã®æ›¸ãè¾¼ã¿ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é
+     * @return trueã®å ´åˆã¯ã€ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹
      */
     public boolean isResponseBufferedOutput();
     
     /**
-     * 1ƒŠƒNƒGƒXƒgˆ—’†‚É•¡”‰ñ’Ê‰ß‚µ‚½ê‡‚ÉA2‰ñ–ÚˆÈ~‚ÌƒWƒƒ[ƒiƒ‹‚ğ‹L˜^‚µ‚È‚¢‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * 1ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ä¸­ã«è¤‡æ•°å›é€šéã—ãŸå ´åˆã«ã€2å›ç›®ä»¥é™ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’è¨˜éŒ²ã—ãªã„ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isBlock ‹L˜^‚µ‚È‚¢ê‡‚ÍAtrue
+     * @param isBlock è¨˜éŒ²ã—ãªã„å ´åˆã¯ã€true
      */
     public void setBushingRequestBlock(boolean isBlock);
     
     /**
-     * 1ƒŠƒNƒGƒXƒgˆ—’†‚É•¡”‰ñ’Ê‰ß‚µ‚½ê‡‚ÉA2‰ñ–ÚˆÈ~‚ÌƒWƒƒ[ƒiƒ‹‚ğ‹L˜^‚µ‚È‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * 1ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ä¸­ã«è¤‡æ•°å›é€šéã—ãŸå ´åˆã«ã€2å›ç›®ä»¥é™ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’è¨˜éŒ²ã—ãªã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @return true‚Ìê‡‚ÍA‹L˜^‚µ‚È‚¢
+     * @return trueã®å ´åˆã¯ã€è¨˜éŒ²ã—ãªã„
      */
     public boolean isBushingRequestBlock();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒZƒbƒVƒ‡ƒ“‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæ™‚ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputRequestSession(boolean isOutput);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒZƒbƒVƒ‡ƒ“‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæ™‚ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡o—Í‚·‚é
+     * @return trueã®å ´åˆå‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputRequestSession();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌƒZƒbƒVƒ‡ƒ“‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹æ™‚ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputResponseSession(boolean isOutput);
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ÌƒZƒbƒVƒ‡ƒ“‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹æ™‚ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡o—Í‚·‚é
+     * @return trueã®å ´åˆå‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputResponseSession();
 }

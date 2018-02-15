@@ -87,7 +87,7 @@ public class PropertiesEditorTest extends TestCase{
         Properties prop = (Properties)editor.getValue();
         assertEquals(2, prop.size());
         assertEquals("1234", prop.getProperty("A"));
-        assertEquals("Ç†", prop.getProperty("B"));
+        assertEquals("„ÅÇ", prop.getProperty("B"));
     }
     
     public void testSetValue1() throws Exception {

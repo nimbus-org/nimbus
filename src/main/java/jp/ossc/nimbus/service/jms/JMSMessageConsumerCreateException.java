@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.jms;
 
 /**
- * JMS MessageConsumer‚Ì¶¬‚É¸”s‚µ‚½–‚ğ¦‚·—áŠOB<p>
+ * JMS MessageConsumerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸäº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,34 +42,34 @@ public class JMSMessageConsumerCreateException
     private static final long serialVersionUID = -2691590930101691113L;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public JMSMessageConsumerCreateException(){
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Â—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã¤ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public JMSMessageConsumerCreateException(String message){
         super(message);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Â—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã¤ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public JMSMessageConsumerCreateException(String message, Throwable cause){
         super(message, cause);
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Â—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã¤ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public JMSMessageConsumerCreateException(Throwable cause){
         super(cause);

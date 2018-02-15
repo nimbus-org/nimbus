@@ -32,49 +32,49 @@
 package jp.ossc.nimbus.service.ejb.transaction;
 
 /**
- * EJBƒRƒ“ƒeƒi“à‚Å‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒRƒ“ƒgƒ[ƒ‹ƒNƒ‰ƒX<p>
- * ‚±‚ÌƒNƒ‰ƒX‚ÍEJBƒRƒ“ƒeƒi“à‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ}ƒl[ƒWƒƒ‚ðŽg‚¢<br>
- * ƒOƒ[ƒoƒ‹ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒRƒ“ƒgƒ[ƒ‹‚ðs‚¤B
+ * EJBã‚³ãƒ³ãƒ†ãƒŠå†…ã§ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚¯ãƒ©ã‚¹<p>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã¯EJBã‚³ãƒ³ãƒ†ãƒŠå†…ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒžãƒãƒ¼ã‚¸ãƒ£ã‚’ä½¿ã„<br>
+ * ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚
  * @author   H.Nakano
- * @version  1.00 ì¬: 2003/11/28 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/28 -ã€€H.Nakano
  * @since	1.00
  * @see	javax.transaction.TransactionManager
  **/
 public interface TransactionControl {
 	/**
-	 * ƒOƒ[ƒoƒ‹ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ð’†’f‚·‚éB<p>
-	 * ‚·‚Å‚É’†’f’†ƒXƒe[ƒg‚Å‚ ‚éê‡‚Í–³Ž‹‚³‚ê‚éB
+	 * ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä¸­æ–­ã™ã‚‹ã€‚<p>
+	 * ã™ã§ã«ä¸­æ–­ä¸­ã‚¹ãƒ†ãƒ¼ãƒˆã§ã‚ã‚‹å ´åˆã¯ç„¡è¦–ã•ã‚Œã‚‹ã€‚
 	 */
 	public void suspend() ;
 	/**
-	 * ƒOƒ[ƒoƒ‹ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ðÄŠJ‚·‚éB<p>
+	 * ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’å†é–‹ã™ã‚‹ã€‚<p>
 	 */
 	public void resume() ;
 	/**
-	 * V‚µ‚¢ƒOƒ[ƒoƒ‹ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ðŠJŽn‚·‚éB<p>
-	 * ‚±‚Ìƒƒ\ƒbƒh‚ÍƒJƒŒƒ“ƒg‚ÌƒOƒ[ƒoƒ‹ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ð<br>
-	 * ƒTƒXƒyƒ“ƒh‚µ‚½ó‘Ô‚Å—LŒø‚É‚È‚éB
+	 * æ–°ã—ã„ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+	 * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚«ãƒ¬ãƒ³ãƒˆã®ã‚°ãƒ­ãƒ¼ãƒãƒ«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’<br>
+	 * ã‚µã‚¹ãƒšãƒ³ãƒ‰ã—ãŸçŠ¶æ…‹ã§æœ‰åŠ¹ã«ãªã‚‹ã€‚
 	 * @see #suspend()
 	 */
 	public void beginNewTransaction() ;
 	/**
-	 * ŠJŽn‚³‚ê‚Ä‚¢‚éV‚µ‚¢ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚É‚Â‚¢‚ÄƒRƒ~ƒbƒg‚·‚éB<P>
+	 * é–‹å§‹ã•ã‚Œã¦ã„ã‚‹æ–°ã—ã„ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«ã¤ã„ã¦ã‚³ãƒŸãƒƒãƒˆã™ã‚‹ã€‚<P>
 	 */
 	public void commitNewTransaction() ;
 	/**
-	 * ŠJŽn‚³‚ê‚Ä‚¢‚éV‚µ‚¢ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚É‚Â‚¢‚Äƒ[ƒ‹ƒoƒbƒN‚·‚éB<P>
+	 * é–‹å§‹ã•ã‚Œã¦ã„ã‚‹æ–°ã—ã„ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«ã¤ã„ã¦ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹ã€‚<P>
 	 */
 	public void rollBackNewTransaction() ;
 	public void terminateTransactioinControl();
 	/**
-	 * Œ»Ý‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìó‘Ô‚ðo—Í‚·‚éB<p>
-	 * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘Ô
+	 * ç¾åœ¨ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®çŠ¶æ…‹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
+	 * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹
 	 * @see	#INIT_STATE
 	 * @see	#SUSPEND_STATE
 	 **/
 	public int getState() ;
-	/** ‰Šúó‘Ô<p>*/
+	/** åˆæœŸçŠ¶æ…‹<p>*/
 	public static final int INIT_STATE = 0 ;
-	/** ƒTƒXƒyƒ“ƒhó‘Ô<p>*/
+	/** ã‚µã‚¹ãƒšãƒ³ãƒ‰çŠ¶æ…‹<p>*/
 	public static final int SUSPEND_STATE = 1 ;
 }

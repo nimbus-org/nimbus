@@ -29,36 +29,36 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.trace;
 
 /**
- * TraceƒT[ƒrƒXB<p>
+ * Traceã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author K.Nagai
  */
 public interface Tracer {
 	/**
-	 * ƒgƒŒ[ƒXæ“¾ŠJn—v‹ó•t
-	 * @param params ƒgƒŒ[ƒX‚·‚éƒpƒ‰ƒƒ^
+	 * ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—é–‹å§‹è¦æ±‚å—ä»˜
+	 * @param params ãƒˆãƒ¬ãƒ¼ã‚¹ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ã‚¿
 	 */
 	public void entry ( Object[] params );
 	/**
-	 * ƒgƒŒ[ƒXæ“¾I—¹—v‹ó•t
-	 * @param params ƒgƒŒ[ƒX‚·‚éƒpƒ‰ƒƒ^
+	 * ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—çµ‚äº†è¦æ±‚å—ä»˜
+	 * @param params ãƒˆãƒ¬ãƒ¼ã‚¹ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ã‚¿
 	 */
 	public void exit( Object[] params );
 	/**
-	 * ƒgƒŒ[ƒXƒŒƒxƒ‹‚ªPUBLICƒŒƒxƒ‹‚©‚Ç‚¤‚©
+	 * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ¬ãƒ™ãƒ«ãŒPUBLICãƒ¬ãƒ™ãƒ«ã‹ã©ã†ã‹
 	 */
 	public boolean isPublic();
 	/**
-	 * ƒgƒŒ[ƒXƒŒƒxƒ‹‚ªPROTECTEDƒŒƒxƒ‹‚©‚Ç‚¤‚©
+	 * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ¬ãƒ™ãƒ«ãŒPROTECTEDãƒ¬ãƒ™ãƒ«ã‹ã©ã†ã‹
 	 */
 	public boolean isProtected();
 	/**
-	 * ƒgƒŒ[ƒXƒŒƒxƒ‹‚ªPRIVATEƒŒƒxƒ‹‚©‚Ç‚¤‚©
+	 * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ¬ãƒ™ãƒ«ãŒPRIVATEãƒ¬ãƒ™ãƒ«ã‹ã©ã†ã‹
 	 */
 	public boolean isPrivate();
 }

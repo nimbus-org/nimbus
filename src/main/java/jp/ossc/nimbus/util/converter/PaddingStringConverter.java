@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * •¶š—ñƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^B<p>
+ * æ–‡å­—åˆ—ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,53 +42,53 @@ public class PaddingStringConverter
     private static final long serialVersionUID = -3962004369893317399L;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒpƒfƒBƒ“ƒO•¶šB<p>
-     * ”¼ŠpƒXƒy[ƒXB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—ã€‚<p>
+     * åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã€‚<br>
      */
     public static final char DEFAULT_PADDING_LITERAL = ' ';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒpƒfƒBƒ“ƒO•¶šB<p>
-     * {@link #DIRECTION_LEFT ¶‹l‚ß}B<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—ã€‚<p>
+     * {@link #DIRECTION_LEFT å·¦è©°ã‚}ã€‚<br>
      */
     public static final int DEFAULT_PADDING_DIRECTION = DIRECTION_LEFT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ƒpƒfƒBƒ“ƒO•¶šB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—ã€‚<p>
      */
     protected char paddingLiteral = DEFAULT_PADDING_LITERAL;
     
     /**
-     * ƒpƒfƒBƒ“ƒO’·B<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·ã€‚<p>
      */
     protected int paddingLength = -1;
     
     /**
-     * ƒpƒfƒBƒ“ƒO•ûŒüB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘ã€‚<p>
      */
     protected int paddingDirection = DEFAULT_PADDING_DIRECTION;
     
     /**
-     * ‘SŠp•¶š‚ğ’·‚³2‚Æ”‚¦‚é‚©‚Ìƒtƒ‰ƒOB<p>
+     * å…¨è§’æ–‡å­—ã‚’é•·ã•2ã¨æ•°ãˆã‚‹ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isCountTwiceByZenkaku;
     
     /**
-     * ƒpƒfƒBƒ“ƒO‚ğs‚¤•¶š—ñƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã†æ–‡å­—åˆ—ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PaddingStringConverter(){
         this(PADDING, DEFAULT_PADDING_LITERAL, -1, DEFAULT_PADDING_DIRECTION);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒfƒBƒ“ƒO•ÏŠ·‚ğs‚¤•¶š—ñƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¤‰æ›ã‚’è¡Œã†æ–‡å­—åˆ—ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param length ƒpƒfƒBƒ“ƒO’·
+     * @param length ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·
      * @see #PADDING
      */
     public PaddingStringConverter(int length){
@@ -96,11 +96,11 @@ public class PaddingStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒfƒBƒ“ƒO•ÏŠ·‚ğs‚¤•¶š—ñƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¤‰æ›ã‚’è¡Œã†æ–‡å­—åˆ—ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param length ƒpƒfƒBƒ“ƒO’·
-     * @param literal ƒpƒfƒBƒ“ƒO•¶š
-     * @param direction ƒpƒfƒBƒ“ƒO•ûŒü
+     * @param length ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·
+     * @param literal ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—
+     * @param direction ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘
      * @see #PADDING
      */
     public PaddingStringConverter(
@@ -112,10 +112,10 @@ public class PaddingStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½ƒp[ƒX•ÏŠ·‚ğs‚¤•¶š—ñƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ãƒ¼ã‚¹å¤‰æ›ã‚’è¡Œã†æ–‡å­—åˆ—ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param literal ƒpƒfƒBƒ“ƒO•¶š
-     * @param direction ƒpƒfƒBƒ“ƒO•ûŒü
+     * @param literal ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—
+     * @param direction ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘
      * @see #PARSE
      */
     public PaddingStringConverter(
@@ -126,12 +126,12 @@ public class PaddingStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚Ì•¶š—ñƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®æ–‡å­—åˆ—ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param literal ƒpƒfƒBƒ“ƒO•¶š
-     * @param length ƒpƒfƒBƒ“ƒO’·
-     * @param direction ƒpƒfƒBƒ“ƒO•ûŒü
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param literal ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—
+     * @param length ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·
+     * @param direction ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘
      * @see #PADDING
      * @see #PARSE
      */
@@ -147,7 +147,7 @@ public class PaddingStringConverter
         setPaddingDirection(direction);
     }
     
-    // ReversibleConverter‚ÌJavaDoc
+    // ReversibleConverterã®JavaDoc
     public void setConvertType(int type){
         switch(type){
         case PADDING:
@@ -162,44 +162,44 @@ public class PaddingStringConverter
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
         return convertType;
     }
     
-    // PaddingConverter‚ÌJavaDoc
+    // PaddingConverterã®JavaDoc
     public void setPaddingLiteral(char literal){
         paddingLiteral = literal;
     }
     
     /**
-     * ƒpƒfƒBƒ“ƒO•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒfƒBƒ“ƒO•¶š
+     * @return ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—
      */
     public char getPaddingLiteral(){
         return paddingLiteral;
     }
     
-    // PaddingConverter‚ÌJavaDoc
+    // PaddingConverterã®JavaDoc
     public void setPaddingLength(int length){
         paddingLength = length;
     }
     
     /**
-     * ƒpƒfƒBƒ“ƒO’·‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒfƒBƒ“ƒO’·
+     * @return ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·
      */
     public int getPaddingLength(){
         return paddingLength;
     }
     
-    // PaddingConverter‚ÌJavaDoc
+    // PaddingConverterã®JavaDoc
     public void setPaddingDirection(int direct){
         switch(direct){
         case DIRECTION_LEFT:
@@ -215,33 +215,33 @@ public class PaddingStringConverter
     }
     
     /**
-     * ƒpƒfƒBƒ“ƒO•ûŒü‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒfƒBƒ“ƒO•ûŒü
+     * @return ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘
      */
     public int getPaddingDirection(){
         return paddingDirection;
     }
     
     /**
-     * ‘SŠp•¶š‚ğ’·‚³2‚Æ”‚¦‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å…¨è§’æ–‡å­—ã‚’é•·ã•2ã¨æ•°ãˆã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘SŠp•¶š‚ğ’·‚³2‚Æ”‚¦‚é
+     * @return trueã®å ´åˆã€å…¨è§’æ–‡å­—ã‚’é•·ã•2ã¨æ•°ãˆã‚‹
      */
     public boolean isCountTwiceByZenkaku(){
         return isCountTwiceByZenkaku;
     }
     
     /**
-     * ‘SŠp•¶š‚ğ’·‚³2‚Æ”‚¦‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * å…¨è§’æ–‡å­—ã‚’é•·ã•2ã¨æ•°ãˆã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isTwice ‘SŠp•¶š‚ğ’·‚³2‚Æ”‚¦‚éê‡true
+     * @param isTwice å…¨è§’æ–‡å­—ã‚’é•·ã•2ã¨æ•°ãˆã‚‹å ´åˆtrue
      */
     public void setCountTwiceByZenkaku(boolean isTwice){
         isCountTwiceByZenkaku = isTwice;
     }
     
-    // Converter‚ÌJavaDoc
+    // Converterã®JavaDoc
     public Object convert(Object obj) throws ConvertException{
         return convert(
             obj == null ? (String)null : 
@@ -250,12 +250,12 @@ public class PaddingStringConverter
     }
     
     /**
-     * •¶š—ñ‚ğ•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·•¶š—ñ”z—ñ‚Æ•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<br>
+     * æ–‡å­—åˆ—ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã¨å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param str •ÏŠ·‘ÎÛ‚Ì•¶š—ñ 
-     * @return •ÏŠ·Œã‚Ì•¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®æ–‡å­—åˆ— 
+     * @return å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String convert(String str) throws ConvertException{
         switch(convertType){
@@ -289,11 +289,11 @@ public class PaddingStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğƒpƒfƒBƒ“ƒO‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒpƒfƒBƒ“ƒO‚³‚ê‚½•¶š—ñ
-     * @exception ConvertException ƒpƒfƒBƒ“ƒO‚É¸”s‚µ‚½ê‡
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @exception ConvertException ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String padding(String str) throws ConvertException{
         if(paddingLength <= 0
@@ -348,11 +348,11 @@ public class PaddingStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğƒp[ƒX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒp[ƒX‚³‚ê‚½•¶š—ñ
-     * @exception ConvertException ƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ‘ãƒ¼ã‚¹ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @exception ConvertException ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String parse(String str) throws ConvertException{
         final StringBuilder buf = new StringBuilder(str);

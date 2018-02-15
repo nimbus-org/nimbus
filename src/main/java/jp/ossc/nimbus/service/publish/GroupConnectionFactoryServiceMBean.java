@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link GroupConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link GroupConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see GroupConnectionFactoryService
@@ -46,61 +46,61 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface GroupConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚éJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link ClientConnectionFactory#DEFAULT_JNDI_NAME}B<br>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link ClientConnectionFactory#DEFAULT_JNDI_NAME}ã€‚<br>
      *
-     * @param name JNDI–¼
+     * @param name JNDIå
      * @see ClientConnectionFactory#DEFAULT_JNDI_NAME
      */
     public void setJndiName(String name);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚éJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JNDI–¼
+     * @return JNDIå
      */
     public String getJndiName();
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiRepositoryServiceName(ServiceName name);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiRepositoryServiceName();
     
     /**
-     * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ªŒÄ‚Ño‚µ‚ğóM‚·‚éƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA“½–¼ƒ|[ƒg‚ªg—p‚³‚ê‚éB<br>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‘¼ã³å‡ºã—ã‚’å—ä¿¡ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€åŒ¿åãƒãƒ¼ãƒˆãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setRMIPort(int port);
     
     /**
-     * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ªŒÄ‚Ño‚µ‚ğóM‚·‚éƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‘¼ã³å‡ºã—ã‚’å—ä¿¡ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getRMIPort();
     
     /**
-     * w’è‚³‚ê‚½ƒTƒuƒWƒFƒNƒg‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚Ä‚¢‚é{@link GroupConnectionFactoryService.SubjectMapping SubjectMapping}‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã¦ã„ã‚‹{@link GroupConnectionFactoryService.SubjectMapping SubjectMapping}ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return SubjectMapping‚ÌƒŠƒXƒg
+     * @return SubjectMappingã®ãƒªã‚¹ãƒˆ
      */
     public List getSubjectMappings(String subject);
     
     /**
-     * ƒTƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒL[‚ªƒTƒuƒWƒFƒNƒgA’l‚ªSubjectMapping‚ÌƒŠƒXƒg‚Æ‚È‚éƒ}ƒbƒv
+     * @return ã‚­ãƒ¼ãŒã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€å€¤ãŒSubjectMappingã®ãƒªã‚¹ãƒˆã¨ãªã‚‹ãƒãƒƒãƒ—
      */
     public Map getSubjectMappingMap();
 }

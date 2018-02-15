@@ -34,51 +34,51 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowCallScheduleTaskService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowCallScheduleTaskService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface BeanFlowCallScheduleTaskServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[–¼‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ‹Æ–±ƒtƒ[–¼
+     * @param name æ¥­å‹™ãƒ•ãƒ­ãƒ¼å
      */
     public void setBeanFlowName(String name);
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[–¼‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹Æ–±ƒtƒ[–¼
+     * @return æ¥­å‹™ãƒ•ãƒ­ãƒ¼å
      */
     public String getBeanFlowName();
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param in ‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg
+     * @param in æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setBeanFlowInput(Object in);
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg
+     * @return æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getBeanFlowInput();
 }

@@ -36,105 +36,105 @@ import jp.ossc.nimbus.service.beancontrol.BeanFlowCoverage;
 import jp.ossc.nimbus.service.beancontrol.BeanFlowAsynchInvokeCallback;
 
 /**
- * Beanƒtƒ[ÀsƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * Beanãƒ•ãƒ­ãƒ¼å®Ÿè¡Œã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface BeanFlowInvoker{
     
     /**
-     * Beanƒtƒ[‚ğÀs‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @param obj Beanƒtƒ[‚Ö‚Ìˆø”
-     * @return Beanƒtƒ[‚ÌÀsŒ‹‰Ê
-     * @exception Exception Beanƒtƒ[‚ÌÀs’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param obj Beanãƒ•ãƒ­ãƒ¼ã¸ã®å¼•æ•°
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œçµæœ
+     * @exception Exception Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invokeFlow(Object obj) throws Exception;
     
     /**
-     * Beanƒtƒ[‚ğÀs‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @param obj Beanƒtƒ[‚Ö‚Ìˆø”
-     * @param monitor ƒ‚ƒjƒ^[
-     * @return Beanƒtƒ[‚ÌÀsŒ‹‰Ê
-     * @exception Exception Beanƒtƒ[‚ÌÀs’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param obj Beanãƒ•ãƒ­ãƒ¼ã¸ã®å¼•æ•°
+     * @param monitor ãƒ¢ãƒ‹ã‚¿ãƒ¼
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œçµæœ
+     * @exception Exception Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invokeFlow(Object obj, BeanFlowMonitor monitor) throws Exception;
     
     /**
-     * Beanƒtƒ[‚ğ”ñ“¯ŠúÀs‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã‚’éåŒæœŸå®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @param obj Beanƒtƒ[‚Ö‚Ìˆø”
-     * @param monitor ƒ‚ƒjƒ^[
-     * @param isReply ‰“š‚ª•K—v‚Èê‡‚ÍAtrue
-     * @param maxAsynchWait Å‘å”ñ“¯ŠúÀs‘Ò‹@”
-     * @return Beanƒtƒ[‚ÌÀsƒRƒ“ƒeƒLƒXƒg
-     * @exception Exception Beanƒtƒ[‚Ì”ñ“¯ŠúÀsˆ—‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param obj Beanãƒ•ãƒ­ãƒ¼ã¸ã®å¼•æ•°
+     * @param monitor ãƒ¢ãƒ‹ã‚¿ãƒ¼
+     * @param isReply å¿œç­”ãŒå¿…è¦ãªå ´åˆã¯ã€true
+     * @param maxAsynchWait æœ€å¤§éåŒæœŸå®Ÿè¡Œå¾…æ©Ÿæ•°
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @exception Exception Beanãƒ•ãƒ­ãƒ¼ã®éåŒæœŸå®Ÿè¡Œå‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invokeAsynchFlow(Object obj, BeanFlowMonitor monitor, boolean isReply, int maxAsynchWait) throws Exception;
     
     /**
-     * Beanƒtƒ[‚Ì”ñ“¯ŠúÀs‚ÌŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã®éåŒæœŸå®Ÿè¡Œã®çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param context Beanƒtƒ[‚ÌÀsƒRƒ“ƒeƒLƒXƒg
-     * @param monitor ƒ‚ƒjƒ^[
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]B-1‚ğw’è‚µ‚½ê‡‚ÍA–³ŒÀ‘Ò‚¿
-     * @param isCancel ƒ^ƒCƒ€ƒAƒEƒg‚É”ñ“¯ŠúÀs‚ğƒLƒƒƒ“ƒZƒ‹‚·‚é‚©‚Ç‚¤‚©Btrue‚ğw’è‚µ‚½ê‡‚ÍAƒLƒƒƒ“ƒZƒ‹‚·‚é
-     * @return Beanƒtƒ[‚Ì”ñ“¯ŠúÀsŒ‹‰Ê
-     * @exception BeanFlowAsynchTimeoutException w’è‚³‚ê‚½ƒ^ƒCƒ€ƒAƒEƒg‚ğ‰ß‚¬‚Ä‚à‰“š‚ª‚È‚¢ê‡
-     * @exception Exception Beanƒtƒ[‚ÌÀs’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param monitor ãƒ¢ãƒ‹ã‚¿ãƒ¼
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã€‚-1ã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€ç„¡é™å¾…ã¡
+     * @param isCancel ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæ™‚ã«éåŒæœŸå®Ÿè¡Œã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹ã‹ã©ã†ã‹ã€‚trueã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®éåŒæœŸå®Ÿè¡Œçµæœ
+     * @exception BeanFlowAsynchTimeoutException æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’éãã¦ã‚‚å¿œç­”ãŒãªã„å ´åˆ
+     * @exception Exception Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object getAsynchReply(Object context, BeanFlowMonitor monitor, long timeout, boolean isCancel) throws BeanFlowAsynchTimeoutException, Exception;
     
     /**
-     * Beanƒtƒ[‚ğ”ñ“¯ŠúÀs‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã‚’éåŒæœŸå®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @param obj Beanƒtƒ[‚Ö‚Ìˆø”
-     * @param monitor ƒ‚ƒjƒ^[
-     * @param callback ƒR[ƒ‹ƒoƒbƒN
-     * @param maxAsynchWait Å‘å”ñ“¯ŠúÀs‘Ò‹@”
-     * @return Beanƒtƒ[‚ÌÀsƒRƒ“ƒeƒLƒXƒg
-     * @exception Exception Beanƒtƒ[‚Ì”ñ“¯ŠúÀsˆ—‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param obj Beanãƒ•ãƒ­ãƒ¼ã¸ã®å¼•æ•°
+     * @param monitor ãƒ¢ãƒ‹ã‚¿ãƒ¼
+     * @param callback ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+     * @param maxAsynchWait æœ€å¤§éåŒæœŸå®Ÿè¡Œå¾…æ©Ÿæ•°
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @exception Exception Beanãƒ•ãƒ­ãƒ¼ã®éåŒæœŸå®Ÿè¡Œå‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invokeAsynchFlow(Object obj, BeanFlowMonitor monitor, BeanFlowAsynchInvokeCallback callback, int maxAsynchWait) throws Exception;
     
     /**
-     * Beanƒtƒ[ŠÄ‹ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ç›£è¦–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌBeanƒtƒ[‚ğŠÄ‹‚·‚éƒIƒuƒWƒFƒNƒg
+     * @return ã“ã®Beanãƒ•ãƒ­ãƒ¼ã‚’ç›£è¦–ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public BeanFlowMonitor createMonitor();
     
     /**
-     * Beanƒtƒ[‚Ì–¼Ì‚ğæ“¾‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã®åç§°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Beanƒtƒ[‚Ì–¼Ì
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®åç§°
      */
     public String getFlowName();
     
     /**
-     * ã‘‚«Beanƒtƒ[–¼‚ğæ“¾‚·‚éB<p>
+     * ä¸Šæ›¸ãBeanãƒ•ãƒ­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ã‘‚«Beanƒtƒ[–¼‚Ì”z—ñ
+     * @return ä¸Šæ›¸ãBeanãƒ•ãƒ­ãƒ¼åã®é…åˆ—
      */
     public String[] getOverwrideFlowNames();
     
     /**
-     * ƒJƒoƒŒƒbƒW‚ğæ“¾‚·‚éB<p>
+     * ã‚«ãƒãƒ¬ãƒƒã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒJƒoƒŒƒbƒW
+     * @return ã‚«ãƒãƒ¬ãƒƒã‚¸
      */
     public BeanFlowCoverage getBeanFlowCoverage();
     
     /**
-     * Beanƒtƒ[‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒŠƒ\[ƒXƒpƒX‚ğæ“¾‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒªã‚½ãƒ¼ã‚¹ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒ\[ƒXƒpƒX
+     * @return ãƒªã‚½ãƒ¼ã‚¹ãƒ‘ã‚¹
      */
     public String getResourcePath();
     
     /**
-     * I—¹‚·‚éB<p>
+     * çµ‚äº†ã™ã‚‹ã€‚<p>
      */
     public void end();
 }

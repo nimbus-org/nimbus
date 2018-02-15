@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.writer;
 
 /**
- * WritableRecordƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * {@link MessageWriter}‚Ì“ü—Í‚Æ‚È‚é{@link WritableRecord}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
+ * WritableRecordãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * {@link MessageWriter}ã®å…¥åŠ›ã¨ãªã‚‹{@link WritableRecord}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author Y.Tokuda
  */
 public interface WritableRecordFactory {
     
     /**
-     * MessageWriterƒT[ƒrƒX‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ‚È‚éWritableRecord‚ğ¶¬‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğg‚Á‚ÄA{@link MessageWriter}‚Ì“ü—Í‚Æ‚È‚é{@link WritableRecord}‚ğ¶¬‚·‚éB“ü—ÍƒIƒuƒWƒFƒNƒg‚Ì—p“r‚ÍÀ‘•‚ÉˆË‘¶‚·‚éB<br>
+     * MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ãªã‚‹WritableRecordã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ã£ã¦ã€{@link MessageWriter}ã®å…¥åŠ›ã¨ãªã‚‹{@link WritableRecord}ã‚’ç”Ÿæˆã™ã‚‹ã€‚å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”¨é€”ã¯å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ã€‚<br>
      * 
-     * @param elements WritableRecord‚ğ¶¬‚·‚é‚½‚ß‚Ì“ü—Íî•ñ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg
-     * @return MessageWriterƒT[ƒrƒX‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ‚È‚éWritableRecord
+     * @param elements WritableRecordã‚’ç”Ÿæˆã™ã‚‹ãŸã‚ã®å…¥åŠ›æƒ…å ±ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ãªã‚‹WritableRecord
      */
     public WritableRecord createRecord(Object elements);
 }

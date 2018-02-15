@@ -11,162 +11,162 @@ import javax.servlet.http.HttpServletResponse;
 public class MockHttpServletResponse implements HttpServletResponse {
 
 	public void addCookie(Cookie arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void addDateHeader(String arg0, long arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void addHeader(String arg0, String arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void addIntHeader(String arg0, int arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public boolean containsHeader(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return false;
 	}
 
 	public String encodeRedirectURL(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public String encodeRedirectUrl(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public String encodeURL(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public String encodeUrl(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public void sendError(int arg0) throws IOException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void sendError(int arg0, String arg1) throws IOException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void sendRedirect(String arg0) throws IOException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setDateHeader(String arg0, long arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setHeader(String arg0, String arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setIntHeader(String arg0, int arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setStatus(int arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setStatus(int arg0, String arg1) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void flushBuffer() throws IOException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public int getBufferSize() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return 0;
 	}
 
 	public String getCharacterEncoding() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public String getContentType() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public Locale getLocale() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public ServletOutputStream getOutputStream() throws IOException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public PrintWriter getWriter() throws IOException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return null;
 	}
 
 	public boolean isCommitted() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		return true;
 	}
 
 	public void reset() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void resetBuffer() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setBufferSize(int arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setCharacterEncoding(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setContentLength(int arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setContentType(String arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	public void setLocale(Locale arg0) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 

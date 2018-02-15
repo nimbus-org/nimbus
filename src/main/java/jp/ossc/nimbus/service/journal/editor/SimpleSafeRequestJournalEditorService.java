@@ -29,16 +29,16 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.journal.editor;
 
 import jp.ossc.nimbus.service.journal.RequestJournal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * SimpleSafeRequestJournalEditorServiceƒNƒ‰ƒX<p>
- * ˆÀ‘S‚ÈJournalo—Í‚ğs‚¤ƒNƒ‰ƒX
+ * SimpleSafeRequestJournalEditorServiceã‚¯ãƒ©ã‚¹<p>
+ * å®‰å…¨ãªJournalå‡ºåŠ›ã‚’è¡Œã†ã‚¯ãƒ©ã‚¹
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0

@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.CSVReader;
 
 /**
- * {@link CSVFileOHLCDatasetFactoryService}ÇÃMBeanÉCÉìÉ^ÉtÉFÅ[ÉXÅB<p>
+ * {@link CSVFileOHLCDatasetFactoryService}„ÅÆMBean„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÄÇ<p>
  */
 public interface CSVFileOHLCDatasetFactoryServiceMBean
  extends OHLCDatasetFactoryServiceMBean{

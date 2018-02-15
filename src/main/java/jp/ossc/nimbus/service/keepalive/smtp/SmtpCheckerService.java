@@ -41,10 +41,10 @@ import jp.ossc.nimbus.service.keepalive.KeepAliveListener;
 
 //
 /**
- * SMTPƒT[ƒoƒ`ƒFƒbƒJ[ƒT[ƒrƒXB<p>
+ * SMTPã‚µãƒ¼ãƒãƒã‚§ãƒƒã‚«ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author H.Nakano
- * @version  1.00 ì¬: 2003/10/09 - H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/09 - H.Nakano
  */
 public class SmtpCheckerService extends ServiceBase
  implements SmtpCheckerServiceMBean, DaemonRunnable{
@@ -83,22 +83,22 @@ public class SmtpCheckerService extends ServiceBase
     protected List keepAliveListeners;
     
     /**
-     * JNDIƒT[ƒo‚Ì¶‘¶Šm”F‚ğ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * JNDIã‚µãƒ¼ãƒã®ç”Ÿå­˜ç¢ºèªã‚’ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isAliveCheckSMTPServer;
     
     /**
-     * SMTPƒT[ƒo‚Ì¶‘¶‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * SMTPã‚µãƒ¼ãƒã®ç”Ÿå­˜ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isAliveSMTPServer;
     
     /**
-     * SMTPƒT[ƒo‚Ì¶‘¶Šm”F‚ğ‚·‚éŠÔŠu[msec]B<p>
+     * SMTPã‚µãƒ¼ãƒã®ç”Ÿå­˜ç¢ºèªã‚’ã™ã‚‹é–“éš”[msec]ã€‚<p>
      */
     protected long aliveCheckSMTPServerInterval = 60000;
     
     /**
-     * {@link Daemon}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link Daemon}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Daemon daemon;
     
@@ -110,208 +110,208 @@ public class SmtpCheckerService extends ServiceBase
     
     protected String recoverSMTPServerLogMessageId = SMTP_SERVER_RECOVER_MSG_ID;
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setHostName(String hostName) throws UnknownHostException{
         mHostName = hostName;
         mIp = InetAddress.getByName(hostName);
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getHostName(){
         return mHostName;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setPort(int port){
         mPort = port;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public int getPort(){
         return mPort;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setConnectionTimeoutMillis(int milisec){
         mConnectionTimeOut = milisec;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public int getConnectionTimeoutMillis(){
         return mConnectionTimeOut;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setTimeoutMillis(int milisec){
         mTimeOut = milisec;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public int getTimeoutMillis(){
         return mTimeOut;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setEOFLogMessageId(String id){
         eofLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getEOFLogMessageId(){
         return eofLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setErrorStateLogMessageId(String id){
         errorStateLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getErrorStateLogMessageId(){
         return errorStateLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setNormalStateLogMessageId(String id){
         normalStateLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getNormalStateLogMessageId(){
         return normalStateLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setTimeoutLogMessageId(String id){
         timeoutLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getTimeoutLogMessageId(){
         return timeoutLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setProtocolErrorLogMessageId(String id){
         protocolErrorLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getProtocolErrorLogMessageId(){
         return protocolErrorLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setIOErrorLogMessageId(String id){
         ioErrorLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getIOErrorLogMessageId(){
         return ioErrorLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setOutputEOFLogMessage(boolean isOutput){
         isOutputEOFLogMessage = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isOutputEOFLogMessage(){
         return isOutputEOFLogMessage;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setOutputErrorStateLogMessage(boolean isOutput){
         isOutputErrorStateLogMessage = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isOutputErrorStateLogMessage(){
         return isOutputErrorStateLogMessage;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setOutputNormalStateLogMessage(boolean isOutput){
         isOutputNormalStateLogMessage = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isOutputNormalStateLogMessage(){
         return isOutputNormalStateLogMessage;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setOutputTimeoutLogMessage(boolean isOutput){
         isOutputTimeoutLogMessage = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isOutputTimeoutLogMessage(){
         return isOutputTimeoutLogMessage;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setOutputProtocolErrorLogMessage(boolean isOutput){
         isOutputProtocolErrorLogMessage = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isOutputProtocolErrorLogMessage(){
         return isOutputProtocolErrorLogMessage;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setOutputIOErrorLogMessage(boolean isOutput){
         isOutputIOErrorLogMessage = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isOutputIOErrorLogMessage(){
         return isOutputIOErrorLogMessage;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setLoggingDeadSMTPServer(boolean isOutput){
         isLoggingDeadSMTPServer = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isLoggingDeadSMTPServer(){
         return isLoggingDeadSMTPServer;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setLoggingRecoverSMTPServer(boolean isOutput){
         isLoggingRecoverSMTPServer = isOutput;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isLoggingRecoverSMTPServer(){
         return isLoggingRecoverSMTPServer;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setDeadSMTPServerLogMessageId(String id){
         deadSMTPServerLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getDeadSMTPServerLogMessageId(){
         return deadSMTPServerLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setRecoverSMTPServerLogMessageId(String id){
         recoverSMTPServerLogMessageId = id;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public String getRecoverSMTPServerLogMessageId(){
         return recoverSMTPServerLogMessageId;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setAliveCheckSMTPServer(boolean isCheck){
         isAliveCheckSMTPServer = isCheck;
         if(isCheck && getState() == STARTED && !daemon.isRunning()){
@@ -319,22 +319,22 @@ public class SmtpCheckerService extends ServiceBase
         }
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isAliveCheckSMTPServer(){
         return isAliveCheckSMTPServer;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public void setAliveCheckSMTPServerInterval(long interval){
         aliveCheckSMTPServerInterval = interval;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public long getAliveCheckSMTPServerInterval(){
         return aliveCheckSMTPServerInterval;
     }
     
-    // SmtpChekerServiceMBean‚ÌJavaDoc
+    // SmtpChekerServiceMBeanã®JavaDoc
     public boolean isAliveSMTPServer(){
         if(getState() != STARTED){
             return false;
@@ -345,12 +345,12 @@ public class SmtpCheckerService extends ServiceBase
         }
     }
     
-    // SmtpKeepAliveChecker‚ÌJavaDoc
+    // SmtpKeepAliveCheckerã®JavaDoc
     public String getHostIp(){
         return mIp == null ? null : mIp.getHostAddress();
     }
     
-    // SmtpKeepAliveChecker‚ÌJavaDoc
+    // SmtpKeepAliveCheckerã®JavaDoc
     public int getHostPort(){
         return mPort;
     }
@@ -366,14 +366,14 @@ public class SmtpCheckerService extends ServiceBase
         isAliveSMTPServer = isAlive();
         
         if(isAliveCheckSMTPServer){
-            // ƒf[ƒ‚ƒ“‹N“®
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
             daemon.start();
         }
     }
     
     public void stopService() throws Exception{
         
-        // ƒf[ƒ‚ƒ“’â~
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
         daemon.stop();
     }
     
@@ -381,7 +381,7 @@ public class SmtpCheckerService extends ServiceBase
         keepAliveListeners = null;
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public boolean isAlive(){
         return isAliveInternal() == null ? true : false;
     }
@@ -390,7 +390,7 @@ public class SmtpCheckerService extends ServiceBase
         Socket sock = null;
         try{
             final int len = 1024;
-            // ƒ\ƒPƒbƒg‚ğ¶¬‚µ‚Ä“Ç‚İ‘‚«‚ÌƒXƒgƒŠ[ƒ€‚ğƒI[ƒvƒ“
+            // ã‚½ã‚±ãƒƒãƒˆã‚’ç”Ÿæˆã—ã¦èª­ã¿æ›¸ãã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ã‚ªãƒ¼ãƒ—ãƒ³
             sock = new Socket();
             sock.connect(new InetSocketAddress(mIp, mPort), mConnectionTimeOut);
             BufferedInputStream in = new BufferedInputStream(
@@ -402,25 +402,25 @@ public class SmtpCheckerService extends ServiceBase
                 len
             );
             
-            // HELLO‘—M
+            // HELLOé€ä¿¡
             out.write(C_HELLOW.getBytes(), 0, C_HELLOW.getBytes().length);
             out.flush();
             
-            // ‰“š‚ğƒ^ƒCƒ€ƒAƒEƒg‘Ò‚¿‚É‚·‚éB
+            // å¿œç­”ã‚’ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå¾…ã¡ã«ã™ã‚‹ã€‚
             sock.setSoTimeout(mTimeOut);
             
-            // ‰“š‚ğ“Ç‚Ş
+            // å¿œç­”ã‚’èª­ã‚€
             byte[] resBuf = new byte[len];
             int readLen = in.read(resBuf, 0, len);
             
-            if(readLen == -1){    // ’â~’†
+            if(readLen == -1){    // åœæ­¢ä¸­
                 if(isOutputEOFLogMessage){
                     getLogger().write(eofLogMessageId, getSMTPServerInfo());
                 }
                 ret = "Response reading detect EOF.";
-            }else {                // ‰Ò“®’†
+            }else {                // ç¨¼å‹•ä¸­
                 String retCode = new String(resBuf, 0, readLen);
-                if(!retCode.startsWith(C_WRONG_SIGN)) {    // ’²qˆ«‚µ
+                if(!retCode.startsWith(C_WRONG_SIGN)) {    // èª¿å­æ‚ªã—
                     if(isOutputErrorStateLogMessage){
                         String[] wd = new String[2];
                         wd[0] = getSMTPServerInfo();
@@ -434,21 +434,21 @@ public class SmtpCheckerService extends ServiceBase
                     }
                 }
                 
-                // ƒ\ƒPƒbƒgØ’f
+                // ã‚½ã‚±ãƒƒãƒˆåˆ‡æ–­
                 out.write(C_QUITE.getBytes(), 0, C_QUITE.getBytes().length);
                 out.flush();
             }
-        }catch(InterruptedIOException e){ // ƒ^ƒCƒ€ƒAƒEƒg
+        }catch(InterruptedIOException e){ // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
             if(isOutputTimeoutLogMessage){
                 getLogger().write(timeoutLogMessageId, getSMTPServerInfo());
             }
             ret = e;
-        }catch(SocketException e){ // ƒvƒƒgƒRƒ‹ƒGƒ‰[
+        }catch(SocketException e){ // ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚¨ãƒ©ãƒ¼
             if(isOutputProtocolErrorLogMessage){
                 getLogger().write(protocolErrorLogMessageId, getSMTPServerInfo(), e);
             }
             ret = e;
-        }catch(IOException e){ // ƒ\ƒPƒbƒg“Ç‚İ‘‚«ƒGƒ‰[
+        }catch(IOException e){ // ã‚½ã‚±ãƒƒãƒˆèª­ã¿æ›¸ãã‚¨ãƒ©ãƒ¼
             if(isOutputIOErrorLogMessage){
                 getLogger().write(ioErrorLogMessageId, getSMTPServerInfo(), e);
             }
@@ -465,25 +465,25 @@ public class SmtpCheckerService extends ServiceBase
                 ret = ex;
             }
         }
-        // ƒ`ƒFƒbƒNŒ‹‰ÊXV
+        // ãƒã‚§ãƒƒã‚¯çµæœæ›´æ–°
         return ret;
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public void addKeepAliveListener(KeepAliveListener listener){
         synchronized(keepAliveListeners){
             keepAliveListeners.add(listener);
         }
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public void removeKeepAliveListener(KeepAliveListener listener){
         synchronized(keepAliveListeners){
             keepAliveListeners.remove(listener);
         }
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public void clearKeepAliveListener(){
         synchronized(keepAliveListeners){
             keepAliveListeners.clear();
@@ -491,46 +491,46 @@ public class SmtpCheckerService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart(){
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop(){
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend(){
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume(){
         return true;
     }
     
     /**
-     * ˆê’èŠÔsleep‚µ‚½ŒãAisAliveInternal()‚ğÀs‚µ‚ÄA‚»‚ÌŒ‹‰Ê‚ğ•Ô‚·B<p>
+     * ä¸€å®šæ™‚é–“sleepã—ãŸå¾Œã€isAliveInternal()ã‚’å®Ÿè¡Œã—ã¦ã€ãã®çµæœã‚’è¿”ã™ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-     * @return isAlive()‚ÌŒ‹‰Ê
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return isAlive()ã®çµæœ
      */
     public Object provide(DaemonControl ctrl){
         try{
@@ -542,12 +542,12 @@ public class SmtpCheckerService extends ServiceBase
     }
     
     /**
-     * ˆø”lookupedObj‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğÁ”ï‚·‚éB<p>
-     * isAliveSMTPServer‚ªtrue‚Ìó‘Ô‚ÅAlookupedObj != null ‚Ìê‡ASMTPƒT[ƒo‚ª€‚ñ‚¾|‚ÌƒGƒ‰[ƒƒO‚ğo—Í‚·‚éB<br>
-     * isAliveSMTPServer‚ªfalse‚Ìó‘Ô‚ÅAlookupedObj == null ‚Ìê‡ASMTPƒT[ƒo‚ª•œ‹A‚µ‚½|‚Ì’Ê’mƒƒO‚ğo—Í‚·‚éB<br>
+     * å¼•æ•°lookupedObjã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆè²»ã™ã‚‹ã€‚<p>
+     * isAliveSMTPServerãŒtrueã®çŠ¶æ…‹ã§ã€lookupedObj != null ã®å ´åˆã€SMTPã‚µãƒ¼ãƒãŒæ­»ã‚“ã æ—¨ã®ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * isAliveSMTPServerãŒfalseã®çŠ¶æ…‹ã§ã€lookupedObj == null ã®å ´åˆã€SMTPã‚µãƒ¼ãƒãŒå¾©å¸°ã—ãŸæ—¨ã®é€šçŸ¥ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lookupedObj isAlive()‚ÌŒ‹‰Ê
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param lookupedObj isAlive()ã®çµæœ
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object lookupedObj, DaemonControl ctrl){
         if(!isAliveCheckSMTPServer){
@@ -564,7 +564,7 @@ public class SmtpCheckerService extends ServiceBase
                         keepAliveListener.onDead(this);
                     }
                 }
-                // ƒGƒ‰[ƒƒOo—Í
+                // ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°å‡ºåŠ›
                 if(isLoggingDeadSMTPServer){
                     if(lookupedObj instanceof Throwable){
                         getLogger().write(
@@ -598,7 +598,7 @@ public class SmtpCheckerService extends ServiceBase
                     }
                 }
                 if(isLoggingRecoverSMTPServer){
-                    // ’Ê’mƒƒOo—Í
+                    // é€šçŸ¥ãƒ­ã‚°å‡ºåŠ›
                     getLogger().write(
                         recoverSMTPServerLogMessageId,
                         getSMTPServerInfo()
@@ -613,7 +613,7 @@ public class SmtpCheckerService extends ServiceBase
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void garbage(){
     }

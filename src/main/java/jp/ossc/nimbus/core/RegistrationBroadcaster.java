@@ -32,8 +32,8 @@
 package jp.ossc.nimbus.core;
 
 /**
- * “o˜^ó‘Ô‚ğŠÄ‹‚·‚éƒŠƒXƒi‚É’Ê’m‚ğs‚¤ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * “o˜^ó‘Ô‚ğŠÄ‹‚·‚é{@link RegistrationListener}‚ğ“o˜^‚Ü‚½‚Ííœ‚·‚éƒƒ\ƒbƒh‚ª’è‹`‚³‚ê‚Ä‚¢‚éB‚±‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•‚ÍA”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚ğŠÇ—‚µA‚»‚ÌƒIƒuƒWƒFƒNƒg‚ª“o˜^‚Ü‚½‚Ííœ‚³‚ê‚½ê‡‚ÉARegistrationListener‚É’Ê’m‚·‚éÓ”C‚ğ•‰‚¤B<br>
+ * ç™»éŒ²çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã‚’è¡Œã†ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ç™»éŒ²çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹{@link RegistrationListener}ã‚’ç™»éŒ²ã¾ãŸã¯å‰Šé™¤ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã€‚ã“ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã¯ã€ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç®¡ç†ã—ã€ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç™»éŒ²ã¾ãŸã¯å‰Šé™¤ã•ã‚ŒãŸå ´åˆã«ã€RegistrationListenerã«é€šçŸ¥ã™ã‚‹è²¬ä»»ã‚’è² ã†ã€‚<br>
  *
  * @author M.Takata
  * @see RegistrationListener
@@ -42,17 +42,17 @@ package jp.ossc.nimbus.core;
 public interface RegistrationBroadcaster{
     
     /**
-     * “o˜^ó‘Ô‚ğŠÄ‹‚·‚éƒŠƒXƒi‚ğ’Ç‰Á‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹ãƒªã‚¹ãƒŠã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param listener ’Ç‰Á‚µ‚½‚¢ƒŠƒXƒi
+     * @param listener è¿½åŠ ã—ãŸã„ãƒªã‚¹ãƒŠ
      * @see #removeRegistrationListener(RegistrationListener)
      */
     public void addRegistrationListener(RegistrationListener listener);
     
     /**
-     * “o˜^ó‘Ô‚ğŠÄ‹‚·‚éƒŠƒXƒi‚ğíœ‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹ãƒªã‚¹ãƒŠã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener íœ‚µ‚½‚¢ƒŠƒXƒi
+     * @param listener å‰Šé™¤ã—ãŸã„ãƒªã‚¹ãƒŠ
      * @see #addRegistrationListener(RegistrationListener)
      */
     public void removeRegistrationListener(RegistrationListener listener);

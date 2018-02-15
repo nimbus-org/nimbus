@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ga;
 import java.util.Random;
 
 /**
- * BooleanŒ^ˆâ“`qB<p>
+ * Booleanå‹éºä¼å­ã€‚<p>
  *
  * @author M.Takata
  */

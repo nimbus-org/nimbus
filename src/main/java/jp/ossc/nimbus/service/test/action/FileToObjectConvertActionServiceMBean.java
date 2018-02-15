@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link FileToObjectConvertActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link FileToObjectConvertActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see FileToObjectConvertActionService
@@ -43,72 +43,72 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface FileToObjectConvertActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setStreamConverterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getStreamConverterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.util.converter.FormatConverter FormatConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.util.converter.FormatConverter FormatConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name FormatConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name FormatConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setFormatConverterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.util.converter.FormatConverter FormatConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.util.converter.FormatConverter FormatConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return FormatConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return FormatConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getFormatConverterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterpreterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterpreterServiceName();
     
     /**
-     * •ÏŠ·‘ÎÛ‚Ìƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›å¯¾è±¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFileEncoding(String encoding);
     
     /**
-     * •ÏŠ·‘ÎÛ‚Ìƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›å¯¾è±¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFileEncoding();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link SerializedMemoryCacheService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SerializedMemoryCacheService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SerializedMemoryCacheService
@@ -43,74 +43,74 @@ public interface SerializedMemoryCacheServiceMBean
  extends AbstractCacheServiceMBean{
     
     /**
-     * ’¼—ñ‰»/”ñ’¼—ñ‰»‚ğs‚¤{@link jp.ossc.nimbus.service.io.Externalizer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ç›´åˆ—åŒ–/éç›´åˆ—åŒ–ã‚’è¡Œã†{@link jp.ossc.nimbus.service.io.Externalizer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ExternalizerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Externalizerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExternalizerServiceName(ServiceName name);
     
     /**
-     * ’¼—ñ‰»/”ñ’¼—ñ‰»‚ğs‚¤{@link jp.ossc.nimbus.service.io.Externalizer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç›´åˆ—åŒ–/éç›´åˆ—åŒ–ã‚’è¡Œã†{@link jp.ossc.nimbus.service.io.Externalizer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ExternalizerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Externalizerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getExternalizerServiceName();
     
     /**
-     * ‰i‘±‰»æ‚Æ‚È‚é{@link Cache}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name CacheƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Cacheã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPersistCacheServiceName(ServiceName name);
     
     /**
-     * ‰i‘±‰»æ‚Æ‚È‚é{@link Cache}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CacheƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Cacheã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPersistCacheServiceName();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉA‰i‘±‰»æ‚Æ‚È‚é{@link Cache}‚©‚çƒLƒƒƒbƒVƒ…ƒGƒ“ƒgƒŠ‚ğæ“¾‚µ‚ÄA‚±‚ÌƒLƒƒƒbƒVƒ…‚É“Ç‚İ‚İ‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å“Ç‚İ‚İ‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã‹ã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¨ãƒ³ãƒˆãƒªã‚’å–å¾—ã—ã¦ã€ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<br>
      *
-     * @param isLoad “Ç‚İ‚İ‚ğs‚¤ê‡‚Ítrue
+     * @param isLoad èª­ã¿è¾¼ã¿ã‚’è¡Œã†å ´åˆã¯true
      */
     public void setLoadOnStart(boolean isLoad);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉA‰i‘±‰»æ‚Æ‚È‚é{@link Cache}‚©‚çƒLƒƒƒbƒVƒ…ƒGƒ“ƒgƒŠ‚ğæ“¾‚µ‚ÄA‚±‚ÌƒLƒƒƒbƒVƒ…‚É“Ç‚İ‚İ‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã‹ã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¨ãƒ³ãƒˆãƒªã‚’å–å¾—ã—ã¦ã€ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A“Ç‚İ‚İ‚ğs‚¤
+     * @return trueã®å ´åˆã€èª­ã¿è¾¼ã¿ã‚’è¡Œã†
      */
     public boolean isLoadOnStart();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉA‰i‘±‰»æ‚Æ‚È‚é{@link Cache}‚ÉƒLƒƒƒbƒVƒ…ƒGƒ“ƒgƒŠ‚ğ•Û‘¶‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å•Û‘¶‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¨ãƒ³ãƒˆãƒªã‚’ä¿å­˜ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ä¿å­˜ã™ã‚‹ã€‚<br>
      *
-     * @param isSave •Û‘¶‚·‚éê‡‚Ítrue
+     * @param isSave ä¿å­˜ã™ã‚‹å ´åˆã¯true
      */
     public void setSaveOnStop(boolean isSave);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉA‰i‘±‰»æ‚Æ‚È‚é{@link Cache}‚ÉƒLƒƒƒbƒVƒ…ƒGƒ“ƒgƒŠ‚ğ•Û‘¶‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¨ãƒ³ãƒˆãƒªã‚’ä¿å­˜ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA•Û‘¶‚·‚é
+     * @return trueã®å ´åˆã¯ã€ä¿å­˜ã™ã‚‹
      */
     public boolean isSaveOnStop();
     
     /**
-     * ‰i‘±‰»æ‚Æ‚È‚é{@link Cache}‚©‚çƒLƒƒƒbƒVƒ…ƒGƒ“ƒgƒŠ‚ğæ“¾‚µ‚ÄA‚±‚ÌƒLƒƒƒbƒVƒ…‚É“Ç‚İ‚İ‚ğs‚¤B<p>
+     * æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã‹ã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¨ãƒ³ãƒˆãƒªã‚’å–å¾—ã—ã¦ã€ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception Exception èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load() throws Exception;
     
     /**
-     * ‰i‘±‰»æ‚Æ‚È‚é{@link Cache}‚ÉƒLƒƒƒbƒVƒ…ƒGƒ“ƒgƒŠ‚ğ•Û‘¶‚·‚éB<p>
+     * æ°¸ç¶šåŒ–å…ˆã¨ãªã‚‹{@link Cache}ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¨ãƒ³ãƒˆãƒªã‚’ä¿å­˜ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception •Û‘¶‚É¸”s‚µ‚½ê‡
+     * @exception Exception ä¿å­˜ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save() throws Exception;
 }

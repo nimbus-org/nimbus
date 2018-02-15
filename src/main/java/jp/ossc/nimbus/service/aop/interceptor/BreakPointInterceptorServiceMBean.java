@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.SynchronizeMonitor;
 
 /**
- * {@link BreakPointInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link BreakPointInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see BreakPointInterceptorService
@@ -43,59 +43,59 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 public interface BreakPointInterceptorServiceMBean extends ServiceBaseMBean, BreakPoint{
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ğ“üŒû‘¤‚Å“\‚é–‚ğ¦‚·’è”B<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’å…¥å£å´ã§è²¼ã‚‹äº‹ã‚’ç¤ºã™å®šæ•°ã€‚<p>
      */
     public static final int BREAK_POINT_IN = 1;
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ğoŒû‘¤‚Å“\‚é–‚ğ¦‚·’è”B<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’å‡ºå£å´ã§è²¼ã‚‹äº‹ã‚’ç¤ºã™å®šæ•°ã€‚<p>
      */
     public static final int BREAK_POINT_OUT = 2;
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ğ“\‚éêŠ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #BREAK_POINT_IN}B<br>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’è²¼ã‚‹å ´æ‰€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #BREAK_POINT_IN}ã€‚<br>
      *
-     * @param breakPoint ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ğ“\‚éêŠ
+     * @param breakPoint ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’è²¼ã‚‹å ´æ‰€
      * @see #BREAK_POINT_IN
      * @see #BREAK_POINT_OUT
      */
     public void setBreakPoint(int breakPoint);
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ğ“\‚éêŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’è²¼ã‚‹å ´æ‰€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ğ“\‚éêŠ
+     * @return ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã‚’è²¼ã‚‹å ´æ‰€
      */
     public int getBreakPoint();
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ÅAwait()‚·‚éÛ‚Ìƒ‚ƒjƒ^[‚ğİ’è‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§ã€wait()ã™ã‚‹éš›ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param monitor wait()‚Ìƒ‚ƒjƒ^[
+     * @param monitor wait()ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼
      */
     public void setMonitor(SynchronizeMonitor monitor);
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ÅAwait()‚·‚éÛ‚Ìƒ‚ƒjƒ^[‚ğæ“¾‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§ã€wait()ã™ã‚‹éš›ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return wait()‚Ìƒ‚ƒjƒ^[
+     * @return wait()ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼
      */
     public SynchronizeMonitor getMonitor();
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚·‚éÅ‘åŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å–³ŒÀ‚É‘Ò‚ÂB<br>
-     * Å‘åŠÔ‚Ü‚Å‘Ò‹@‚µ‚½Œã‚ÍA©“®“I‚ÉÄŠJ‚³‚ê‚éB<br>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã™ã‚‹æœ€å¤§æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ç„¡é™ã«å¾…ã¤ã€‚<br>
+     * æœ€å¤§æ™‚é–“ã¾ã§å¾…æ©Ÿã—ãŸå¾Œã¯ã€è‡ªå‹•çš„ã«å†é–‹ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param timeout ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚·‚éÅ‘åŠÔ[ms]
+     * @param timeout ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã™ã‚‹æœ€å¤§æ™‚é–“[ms]
      */
     public void setTimeout(long timeout);
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚·‚éÅ‘åŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã™ã‚‹æœ€å¤§æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚·‚éÅ‘åŠÔ[ms]
+     * @return ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã™ã‚‹æœ€å¤§æ™‚é–“[ms]
      */
     public long getTimeout();
 }

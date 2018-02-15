@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.sftp;
 
 /**
- * SFTPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
+ * SFTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */

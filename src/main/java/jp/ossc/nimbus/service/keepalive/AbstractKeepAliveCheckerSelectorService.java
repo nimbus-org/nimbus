@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 
 /**
- * {@link KeepAliveCheckerSelector}’ŠÛƒNƒ‰ƒXB<p>
+ * {@link KeepAliveCheckerSelector}æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -49,27 +49,27 @@ public abstract class AbstractKeepAliveCheckerSelectorService
     private static final long serialVersionUID = 1452664941582086362L;
     
     /**
-     * ‘I‘ğ‰Â”\‚È{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñB<p>
+     * é¸æŠå¯èƒ½ãª{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     protected ServiceName[] selectableCheckerServiceNames;
     
     /**
-     * ‘I‘ğ‰Â”\‚È{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ÌƒŠƒXƒgB<p>
+     * é¸æŠå¯èƒ½ãª{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List selectableCheckers;
     
     /**
-     * ’èŠú“I‚É{@link KeepAliveChecker}‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu[ms]B<p>
+     * å®šæœŸçš„ã«{@link KeepAliveChecker}ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”[ms]ã€‚<p>
      */
     protected long checkInterval = -1L;
     
     /**
-     * ¶‘¶‚µ‚Ä‚¢‚é{@link KeepAliveChecker}‚ÌƒT[ƒrƒX–¼‚Ü‚½‚ÍUID‚ÌƒŠƒXƒgB<p>
+     * ç”Ÿå­˜ã—ã¦ã„ã‚‹{@link KeepAliveChecker}ã®ã‚µãƒ¼ãƒ“ã‚¹åã¾ãŸã¯UIDã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List aliveCheckers;
     
     /**
-     * ’èŠú“I‚É{@link KeepAliveChecker}‚É¶‘¶Šm”F‚ğs‚¤ƒf[ƒ‚ƒ“ƒXƒŒƒbƒhB<p>
+     * å®šæœŸçš„ã«{@link KeepAliveChecker}ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã€‚<p>
      */
     protected Daemon daemon;
     
@@ -88,89 +88,89 @@ public abstract class AbstractKeepAliveCheckerSelectorService
     protected List clusterMembers;
     protected String clusterOptionKey;
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean ‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBean ã®JavaDoc
     public void setSelectableCheckerServiceNames(ServiceName[] names){
         selectableCheckerServiceNames = names;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean ‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBean ã®JavaDoc
     public ServiceName[] getSelectableCheckerServiceNames(){
         return selectableCheckerServiceNames;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean ‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBean ã®JavaDoc
     public void setCheckInterval(long millis){
         checkInterval = millis;
     }
-    // AbstractKeepAliveCheckerSelectorServiceMBean ‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBean ã®JavaDoc
     public long getCheckInterval(){
         return checkInterval;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setAliveLogMessageId(String id){
         aliveLogMessageId = id;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public String getAliveLogMessageId(){
         return aliveLogMessageId;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setDeadLogMessageId(String id){
         deadLogMessageId = id;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public String getDeadLogMessageId(){
         return deadLogMessageId;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setOutputAliveLogMessage(boolean isOutput){
         isOutputAliveLogMessage = isOutput;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public boolean isOutputAliveLogMessage(){
         return isOutputAliveLogMessage;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setOutputDeadLogMessage(boolean isOutput){
         isOutputDeadLogMessage = isOutput;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public boolean isOutputDeadLogMessage(){
         return isOutputDeadLogMessage;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setKeepOrder(boolean isKeep){
         isKeepOrder = isKeep;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public boolean isKeepOrder(){
         return isKeepOrder;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public void setClusterOptionKey(String key){
         clusterOptionKey = key;
     }
-    // AbstractKeepAliveCheckerSelectorServiceMBean‚ÌJavaDoc
+    // AbstractKeepAliveCheckerSelectorServiceMBeanã®JavaDoc
     public String getClusterOptionKey(){
         return clusterOptionKey;
     }
@@ -207,7 +207,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
             cluster = null;
         }
         if(daemon != null){
-            // ƒf[ƒ‚ƒ“’â~
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
             daemon.stop();
         }
         aliveCheckers.clear();
@@ -217,7 +217,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
         aliveCheckers = null;
     }
     
-    // KeepAliveCheckerSelector ‚ÌJavaDoc
+    // KeepAliveCheckerSelector ã®JavaDoc
     public KeepAliveChecker[] getSelectableCheckers(){
         if(checkInterval <= 0){
             updateChekerStates(false);
@@ -349,7 +349,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
         }
     }
     
-    // ClusterListener‚ÌJavaDoc
+    // ClusterListenerã®JavaDoc
     public void memberInit(Object myId, List members){
         List tmpMembers = new ArrayList(members);
         if(isKeepOrder){
@@ -359,7 +359,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
         updateChekerStates(true);
     }
     
-    // ClusterListener‚ÌJavaDoc
+    // ClusterListenerã®JavaDoc
     public void memberChange(List oldMembers, List newMembers){
         List addedMember = new ArrayList(newMembers);
         addedMember.removeAll(oldMembers);
@@ -385,34 +385,34 @@ public abstract class AbstractKeepAliveCheckerSelectorService
         clusterMembers = tmpMembers;
     }
     
-    // ClusterListener‚ÌJavaDoc
+    // ClusterListenerã®JavaDoc
     public void changeMain() throws Exception{}
     
-    // ClusterListener‚ÌJavaDoc
+    // ClusterListenerã®JavaDoc
     public void changeSub(){}
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStart(){
         updateChekerStates(true);
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStop(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onSuspend(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onResume(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public Object provide(DaemonControl ctrl) throws Exception{
         if(checkInterval >= 0){
             Thread.sleep(checkInterval);
@@ -422,12 +422,12 @@ public abstract class AbstractKeepAliveCheckerSelectorService
         return null;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public void consume(Object paramObj, DaemonControl ctrl) throws Exception{
         updateChekerStates(false);
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public void garbage(){
     }
     

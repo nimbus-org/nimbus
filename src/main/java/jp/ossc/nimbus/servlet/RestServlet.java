@@ -41,10 +41,10 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.rest.*;
 
 /**
- * RESTfulƒŠƒNƒGƒXƒg‚ğˆ—‚·‚éƒT[ƒuƒŒƒbƒgB<p>
- * RESTfulƒŠƒNƒGƒXƒg‚ğó‚¯•t‚¯‚ÄA{@link RestServer}‚ğŒÄ‚Ño‚·B<br>
+ * RESTfulãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å‡¦ç†ã™ã‚‹ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã€‚<p>
+ * RESTfulãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘ä»˜ã‘ã¦ã€{@link RestServer}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
  * <p>
- * ˆÈ‰º‚ÉAƒT[ƒuƒŒƒbƒg‚Ìweb.xml’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®web.xmlå®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;servlet&gt;
  *     &lt;servlet-name&gt;RestServlet&lt;/servlet-name&gt;
@@ -68,19 +68,19 @@ public class RestServlet extends HttpServlet{
     private static final long serialVersionUID = 2746072267952924971L;
     
     /**
-     * {@link RestServer}ƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * {@link RestServer}ã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_REST_SERVER_SERVICE_NAME = "RestServerServiceName";
     
     /**
-     * {@link RestServer}ƒT[ƒrƒXB<p>
+     * {@link RestServer}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected RestServer restServer;
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_REST_SERVER_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link RestServer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_REST_SERVER_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link RestServer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RestServerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return RestServerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getRestServerServiceName(){
         final ServletConfig config = getServletConfig();
@@ -103,10 +103,10 @@ public class RestServlet extends HttpServlet{
     }
     
     /**
-     * PUTƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
+     * PUTãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -122,10 +122,10 @@ public class RestServlet extends HttpServlet{
     }
     
     /**
-     * GETƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
+     * GETãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -141,10 +141,10 @@ public class RestServlet extends HttpServlet{
     }
     
     /**
-     * HEADƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
+     * HEADãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -160,10 +160,10 @@ public class RestServlet extends HttpServlet{
     }
     
     /**
-     * POSTƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
+     * POSTãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -179,10 +179,10 @@ public class RestServlet extends HttpServlet{
     }
     
     /**
-     * DELETEƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
+     * DELETEãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -198,10 +198,10 @@ public class RestServlet extends HttpServlet{
     }
     
     /**
-     * OPTIONSƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
+     * OPTIONSãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */

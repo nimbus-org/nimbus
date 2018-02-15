@@ -37,9 +37,9 @@ import java.io.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒLƒƒƒbƒVƒ…QÆB<p>
- * {@link CachedReference}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•‚Å‚ ‚éB<br>
- * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ‹­QÆ‚Å•Û‚·‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
+ * {@link CachedReference}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã§ã‚ã‚‹ã€‚<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼·å‚ç…§ã§ä¿æŒã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -49,60 +49,60 @@ public class DefaultCachedReference
     private static final long serialVersionUID = 5006344811694728118L;
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒgB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object cacheObj;
     
     /**
-     * ƒŠƒ“ƒNQÆƒŠƒXƒgB<p>
-     * {@link #addLinkedReference(LinkedReference)}‚Å’Ç‰Á‚³‚ê‚½{@link LinkedReference}‚ÌƒŠƒXƒgB<br>
+     * ãƒªãƒ³ã‚¯å‚ç…§ãƒªã‚¹ãƒˆã€‚<p>
+     * {@link #addLinkedReference(LinkedReference)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link LinkedReference}ã®ãƒªã‚¹ãƒˆã€‚<br>
      */
     protected transient Set linkedReferences;
     
     /**
-     * ƒLƒƒƒbƒVƒ…íœƒŠƒXƒi‚ÌƒŠƒXƒgB<p>
-     * {@link #addCacheRemoveListener(CacheRemoveListener)}‚Å’Ç‰Á‚³‚ê‚½{@link CacheRemoveListener}‚ÌƒŠƒXƒgB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠã®ãƒªã‚¹ãƒˆã€‚<p>
+     * {@link #addCacheRemoveListener(CacheRemoveListener)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link CacheRemoveListener}ã®ãƒªã‚¹ãƒˆã€‚<br>
      */
     protected transient Set removeListeners;
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚ÌƒŠƒXƒgB<p>
-     * {@link #addCacheAccessListener(CacheAccessListener)}‚Å’Ç‰Á‚³‚ê‚½{@link CacheAccessListener}‚ÌƒŠƒXƒgB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã®ãƒªã‚¹ãƒˆã€‚<p>
+     * {@link #addCacheAccessListener(CacheAccessListener)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link CacheAccessListener}ã®ãƒªã‚¹ãƒˆã€‚<br>
      */
     protected transient Set accessListeners;
     
     /**
-     * ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi‚ÌƒŠƒXƒgB<p>
-     * {@link #addCacheChangeListener(CacheChangeListener)}‚Å’Ç‰Á‚³‚ê‚½{@link CacheChangeListener}‚ÌƒŠƒXƒgB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠã®ãƒªã‚¹ãƒˆã€‚<p>
+     * {@link #addCacheChangeListener(CacheChangeListener)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link CacheChangeListener}ã®ãƒªã‚¹ãƒˆã€‚<br>
      */
     protected transient Set changeListeners;
     
     /**
-     * íœƒtƒ‰ƒOB<p>
-     * íœ‚³‚ê‚½ê‡‚ÍAtrueB
+     * å‰Šé™¤ãƒ•ãƒ©ã‚°ã€‚<p>
+     * å‰Šé™¤ã•ã‚ŒãŸå ´åˆã¯ã€trueã€‚
      */
     protected boolean isRemoved;
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public DefaultCachedReference(Object obj){
         cacheObj = obj;
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public Object get(){
         return get(null, true);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public Object get(Object source){
         return get(source, true);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public Object get(Object source, boolean notify){
         if(notify){
             notifyAccessed(source);
@@ -113,12 +113,12 @@ public class DefaultCachedReference
         return cacheObj;
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void set(Object obj) throws IllegalCachedReferenceException{
         set(null, obj);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void set(Object source, Object obj)
      throws IllegalCachedReferenceException{
         notifyChange(source, obj);
@@ -126,10 +126,10 @@ public class DefaultCachedReference
     }
     
     /**
-     * ƒŠƒ“ƒNQÆ‚©‚çƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * {@link #addLinkedReference(LinkedReference)}‚Å’Ç‰Á‚³‚ê‚½{@link LinkedReference}‚©‚çA{@link LinkedReference#get(CachedReference)}‚ÅƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB‚»‚Ì–ß‚è’l‚ªnull‚Ìê‡‚ÍAƒŠƒ“ƒNQÆƒŠƒXƒg‚ğ‡Ÿ’H‚Á‚ÄA“¯‚¶ˆ—‚ğŒJ‚è•Ô‚·B‘S‚Ä‚ÌƒŠƒ“ƒNQÆ‚Ì–ß‚è’l‚ªnull‚Ìê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * ãƒªãƒ³ã‚¯å‚ç…§ã‹ã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #addLinkedReference(LinkedReference)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link LinkedReference}ã‹ã‚‰ã€{@link LinkedReference#get(CachedReference)}ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚ãã®æˆ»ã‚Šå€¤ãŒnullã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯å‚ç…§ãƒªã‚¹ãƒˆã‚’é †æ¬¡è¾¿ã£ã¦ã€åŒã˜å‡¦ç†ã‚’ç¹°ã‚Šè¿”ã™ã€‚å…¨ã¦ã®ãƒªãƒ³ã‚¯å‚ç…§ã®æˆ»ã‚Šå€¤ãŒnullã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected Object getLinkedObject(){
         if(linkedReferences == null || linkedReferences.size() == 0){
@@ -145,12 +145,12 @@ public class DefaultCachedReference
         return null;
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void remove(){
         remove(null);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void remove(Object source){
         notifyRemoved(source);
         cacheObj = null;
@@ -160,16 +160,16 @@ public class DefaultCachedReference
         isRemoved = true;
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public boolean isRemoved(){
         return isRemoved;
     }
     
     /**
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…QÆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚½–‚ğƒLƒƒƒbƒVƒ…íœƒŠƒXƒi‚É’Ê’m‚·‚éB<p>
-     * ’A‚µA’Ê’mæ‚ÌƒLƒƒƒbƒVƒ…íœƒŠƒXƒi‚ªA’Ê’mŒ³ƒIƒuƒWƒFƒNƒg‚Æ“¯‚¶ƒCƒ“ƒXƒ^ƒ“ƒX‚Ìê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚ŒãŸäº‹ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€é€šçŸ¥å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠãŒã€é€šçŸ¥å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨åŒã˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source íœŒ³ƒIƒuƒWƒFƒNƒg
+     * @param source å‰Šé™¤å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void notifyRemoved(Object source){
         if(removeListeners == null || removeListeners.size() == 0){
@@ -186,10 +186,10 @@ public class DefaultCachedReference
     }
     
     /**
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…QÆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªƒAƒNƒZƒX‚³‚ê‚½–‚ğƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚É’Ê’m‚·‚éB<p>
-     * ’A‚µA’Ê’mæ‚ÌƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚ªA’Ê’mŒ³ƒIƒuƒWƒFƒNƒg‚Æ“¯‚¶ƒCƒ“ƒXƒ^ƒ“ƒX‚Ìê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¢ã‚¯ã‚»ã‚¹ã•ã‚ŒãŸäº‹ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€é€šçŸ¥å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠãŒã€é€šçŸ¥å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨åŒã˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source ƒAƒNƒZƒXŒ³ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚¢ã‚¯ã‚»ã‚¹å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void notifyAccessed(Object source){
         if(accessListeners == null || accessListeners.size() == 0){
@@ -206,11 +206,11 @@ public class DefaultCachedReference
     }
     
     /**
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…QÆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚½–‚ğƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi‚É’Ê’m‚·‚éB<p>
-     * ’A‚µA’Ê’mæ‚ÌƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi‚ªA’Ê’mŒ³ƒIƒuƒWƒFƒNƒg‚Æ“¯‚¶ƒCƒ“ƒXƒ^ƒ“ƒX‚Ìê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€é€šçŸ¥å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠãŒã€é€šçŸ¥å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨åŒã˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source •ÏXŒ³ƒIƒuƒWƒFƒNƒg
-     * @param obj •ÏXŒã‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param source å¤‰æ›´å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param obj å¤‰æ›´å¾Œã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void notifyChange(Object source, Object obj){
         if(changeListeners == null || changeListeners.size() == 0){
@@ -226,7 +226,7 @@ public class DefaultCachedReference
         }
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void addLinkedReference(LinkedReference ref){
         if(linkedReferences == null){
             linkedReferences = Collections.synchronizedSet(new HashSet());
@@ -234,7 +234,7 @@ public class DefaultCachedReference
         linkedReferences.add(ref);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void removeLinkedReference(LinkedReference ref){
         if(linkedReferences == null){
             return;
@@ -242,7 +242,7 @@ public class DefaultCachedReference
         linkedReferences.remove(ref);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void addCacheRemoveListener(CacheRemoveListener listener){
         if(removeListeners == null){
             removeListeners = Collections.synchronizedSet(new HashSet());
@@ -250,7 +250,7 @@ public class DefaultCachedReference
         removeListeners.add(listener);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void removeCacheRemoveListener(CacheRemoveListener listener){
         if(removeListeners == null){
             return;
@@ -258,7 +258,7 @@ public class DefaultCachedReference
         removeListeners.remove(listener);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void addCacheAccessListener(CacheAccessListener listener){
         if(accessListeners == null){
             accessListeners = Collections.synchronizedSet(new HashSet());
@@ -266,7 +266,7 @@ public class DefaultCachedReference
         accessListeners.add(listener);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void removeCacheAccessListener(CacheAccessListener listener){
         if(accessListeners == null){
             return;
@@ -274,7 +274,7 @@ public class DefaultCachedReference
         accessListeners.remove(listener);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void addCacheChangeListener(CacheChangeListener listener){
         if(changeListeners == null){
             changeListeners = Collections.synchronizedSet(new HashSet());
@@ -282,7 +282,7 @@ public class DefaultCachedReference
         changeListeners.add(listener);
     }
     
-    // CachedReference‚ÌJavaDoc
+    // CachedReferenceã®JavaDoc
     public void removeCacheChangeListener(CacheChangeListener listener){
         if(changeListeners == null){
             return;

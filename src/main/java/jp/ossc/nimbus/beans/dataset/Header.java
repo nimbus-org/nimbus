@@ -34,9 +34,9 @@ package jp.ossc.nimbus.beans.dataset;
 import java.io.*;
 
 /**
- * ƒwƒbƒ_[B<p>
- * ƒf[ƒ^ƒZƒbƒg‚Ìƒwƒbƒ_[‚ÅAƒwƒbƒ_[–¼‚ğ‚Á‚½{@link Record ƒŒƒR[ƒh}‚Å‚ ‚éB<br>
- * ƒŒƒR[ƒh‚Æ“¯—l‚ÉA•¡”‚ÌƒvƒƒpƒeƒB‚ğ‚ÂBean‚ÅAƒXƒL[ƒ}’è‹`‚É‚æ‚Á‚ÄA‚Ç‚Ì‚æ‚¤‚ÈBean‚É‚·‚é‚Ì‚©iƒvƒƒpƒeƒB–¼AŒ^‚È‚Çj‚ğ“®“I‚ÉŒˆ’è‚Å‚«‚éB<br>
+ * ãƒ˜ãƒƒãƒ€ãƒ¼ã€‚<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒ˜ãƒƒãƒ€ãƒ¼ã§ã€ãƒ˜ãƒƒãƒ€ãƒ¼åã‚’æŒã£ãŸ{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã§ã‚ã‚‹ã€‚<br>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨åŒæ§˜ã«ã€è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã¤Beanã§ã€ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«ã‚ˆã£ã¦ã€ã©ã®ã‚ˆã†ãªBeanã«ã™ã‚‹ã®ã‹ï¼ˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€å‹ãªã©ï¼‰ã‚’å‹•çš„ã«æ±ºå®šã§ãã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -45,31 +45,31 @@ public class Header extends Record{
     private static final long serialVersionUID = -2149254849180957920L;
     
     /**
-     * ƒwƒbƒ_[–¼B<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼åã€‚<p>
      */
     protected String name;
     
     /**
-     * –¢’è‹`‚Ìƒwƒbƒ_[‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public Header(){
     }
     
     /**
-     * –¢’è‹`‚Ìƒwƒbƒ_[‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
      */
     public Header(String name){
         this.name = name;
     }
     
     /**
-     * ƒwƒbƒ_[‚ğ¶¬‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Header(String name, String schema)
      throws PropertySchemaDefineException{
@@ -78,11 +78,11 @@ public class Header extends Record{
     }
     
     /**
-     * ƒwƒbƒ_[‚ğ¶¬‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param recordSchema ƒXƒL[ƒ}•¶š—ñ‚©‚ç¶¬‚³‚ê‚½ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param recordSchema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‹ã‚‰ç”Ÿæˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Header(String name, RecordSchema recordSchema){
         super(recordSchema);
@@ -90,18 +90,18 @@ public class Header extends Record{
     }
     
     /**
-     * ƒwƒbƒ_[–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_[–¼
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼å
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ƒwƒbƒ_[–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
      */
     public void setName(String name){
         this.name = name;

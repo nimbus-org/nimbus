@@ -34,8 +34,8 @@ package jp.ossc.nimbus.lang;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒT[ƒrƒX‚Ìó‘Ô‚ª•s³‚È–‚ğ¦‚·—áŠOB<p>
- * ƒT[ƒrƒX‚Ìó‘Ô‚ª•s³‚ÅAƒT[ƒrƒX‚ª’ñ‹Ÿ‚Å‚«‚È‚¢ê‡‚Éthrow‚³‚ê‚Ü‚·B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒä¸æ­£ãªäº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒä¸æ­£ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒæä¾›ã§ããªã„å ´åˆã«throwã•ã‚Œã¾ã™ã€‚<br>
  *
  * @author M.Takata
  */
@@ -44,24 +44,24 @@ public class IllegalServiceStateException extends RuntimeException{
     private static final long serialVersionUID = 1340027189376383082L;
     
     /**
-     * ƒ}ƒl[ƒWƒƒ–¼B<p>
+     * ãƒãƒãƒ¼ã‚¸ãƒ£åã€‚<p>
      */
     private final String managerName;
     
     /**
-     * ƒT[ƒrƒX–¼B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private final String serviceName;
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘ÔB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã€‚<p>
      */
     private final int serviceState;
     
     /**
-     * —áŠOƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * ä¾‹å¤–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param service ServiceƒIƒuƒWƒFƒNƒg
+     * @param service Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public IllegalServiceStateException(Service service){
         this(
@@ -72,10 +72,10 @@ public class IllegalServiceStateException extends RuntimeException{
     }
     
     /**
-     * —áŠOƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * ä¾‹å¤–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ServiceNameƒIƒuƒWƒFƒNƒg
-     * @param state ƒT[ƒrƒX‚Ìó‘Ô
+     * @param name ServiceNameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param state ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹
      */
     public IllegalServiceStateException(ServiceName name, int state){
         this(
@@ -86,11 +86,11 @@ public class IllegalServiceStateException extends RuntimeException{
     }
     
     /**
-     * —áŠOƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * ä¾‹å¤–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param manager ƒ}ƒl[ƒWƒƒ–¼
-     * @param service ƒT[ƒrƒX–¼
-     * @param state ƒT[ƒrƒX‚Ìó‘Ô
+     * @param manager ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param service ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param state ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹
      */
     public IllegalServiceStateException(
         String manager,
@@ -103,36 +103,36 @@ public class IllegalServiceStateException extends RuntimeException{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•s³‚ÈƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒä¸æ­£ãªã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒl[ƒWƒƒ–¼
+     * @return ãƒãƒãƒ¼ã‚¸ãƒ£å
      */
     public String getServiceManagerName(){
         return managerName;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•s³‚ÈƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒä¸æ­£ãªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public String getServiceName(){
         return serviceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•s³‚ÈƒT[ƒrƒX‚Ìó‘Ô‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒä¸æ­£ãªã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX‚Ìó‘Ô
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹
      */
     public int getServiceState(){
         return serviceState;
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒbƒZ[ƒW
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessage(){
         final StringBuilder buf = new StringBuilder();

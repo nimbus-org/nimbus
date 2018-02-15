@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link ExceptionHandlingInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ExceptionHandlingInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ExceptionHandlingInterceptorService
@@ -46,38 +46,38 @@ public interface ExceptionHandlingInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * —áŠOƒNƒ‰ƒX–¼‚Æ{@link ExceptionHandler}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * —áŠOƒNƒ‰ƒX‚Ì‚Âî•ñ‚É‘Î‚µ‚ÄAğŒ‚ğ•t‚¯‚½‚¢ê‡‚ÍA—áŠOƒNƒ‰ƒX–¼(ğŒ®)‚Ì‘®‚Åw’è‚Å‚«‚éB<br>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * —áŠO‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@exception."‚Æ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB<br>
-     * {@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@context."‚Æ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB<br>
-     * ‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã®æŒã¤æƒ…å ±ã«å¯¾ã—ã¦ã€æ¡ä»¶ã‚’ä»˜ã‘ãŸã„å ´åˆã¯ã€ä¾‹å¤–ã‚¯ãƒ©ã‚¹å(æ¡ä»¶å¼)ã®æ›¸å¼ã§æŒ‡å®šã§ãã‚‹ã€‚<br>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ä¾‹å¤–ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@exception."ã¨"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * {@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@context."ã¨"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      * <pre>
-     *  —áF"java.sql.SQLException(@exception.ErrorCode@ == 1013)"=Nimbus#SQLExceptionHandler
+     *  ä¾‹ï¼š"java.sql.SQLException(@exception.ErrorCode@ == 1013)"=Nimbus#SQLExceptionHandler
      * </pre>
      *
-     * @param map —áŠOƒNƒ‰ƒX–¼‚ÆExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOB—áŠOƒNƒ‰ƒX–¼=ExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param map ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ä¾‹å¤–ã‚¯ãƒ©ã‚¹å=ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExceptionAndHandlerMapping(Map map);
     
     /**
-     * —áŠOƒNƒ‰ƒX–¼‚Æ{@link ExceptionHandler}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —áŠOƒNƒ‰ƒX–¼‚ÆExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getExceptionAndHandlerMapping();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½{@link ExceptionHandler}ƒT[ƒrƒX‚ª‚È‚¢ê‡‚Ég—p‚³‚ê‚éExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸ{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ãŒãªã„å ´åˆã«ä½¿ç”¨ã•ã‚Œã‚‹ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultExceptionHandlerServiceName(ServiceName name);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½{@link ExceptionHandler}ƒT[ƒrƒX‚ª‚È‚¢ê‡‚Ég—p‚³‚ê‚éExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸ{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ãŒãªã„å ´åˆã«ä½¿ç”¨ã•ã‚Œã‚‹ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultExceptionHandlerServiceName();
 }

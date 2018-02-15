@@ -35,27 +35,27 @@ import javax.jms.*;
 import org.w3c.dom.*;
 
 /**
- *	ƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒgƒCƒ“ƒ^[ƒtƒFƒCƒX
- *  JMSƒ^ƒCƒv‚É‰‚¶‚½À‘•ƒNƒ‰ƒX‚ª‘¶İ‚·‚éB
+ *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
+ *  JMSã‚¿ã‚¤ãƒ—ã«å¿œã˜ãŸå®Ÿè£…ã‚¯ãƒ©ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/28| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/28ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface MessageFormat {
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ğString‰»‚·‚éƒƒ\ƒbƒh
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’StringåŒ–ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @return
 	 */
 	public String marshal(Message msg);
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ğ¶¬‚·‚éƒƒ\ƒbƒh
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @return
 	 */
 	public Message unMarshal(QueueSession session);
 	/**
-	 * XML’è‹`‚ğƒp[ƒX‚·‚éB
-	 * ‘æ1ˆø” Element
-	 * ‘æ2ˆø” ‘—óMí•Ê 
+	 * XMLå®šç¾©ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚
+	 * ç¬¬1å¼•æ•° Element
+	 * ç¬¬2å¼•æ•° é€å—ä¿¡ç¨®åˆ¥ 
 	 */
 	public void parse(Element elem);
 }

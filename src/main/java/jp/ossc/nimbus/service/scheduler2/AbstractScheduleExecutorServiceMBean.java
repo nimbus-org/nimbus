@@ -34,169 +34,169 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractScheduleExecutorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link AbstractScheduleExecutorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface AbstractScheduleExecutorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÀsŠJn‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œé–‹å§‹ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_RUN = "ASE__00001";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÀsI—¹‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œçµ‚äº†ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_END = "ASE__00002";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÀs‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_EXECUTE_ERROR = "ASE__00003";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÄƒXƒPƒWƒ…[ƒ‹‚ğs‚Á‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å†ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¡Œã£ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_RESCHEDULE = "ASE__00004";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÄƒXƒPƒWƒ…[ƒ‹‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å†ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_RESCHEDULE_ERROR = "ASE__00005";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒŠƒgƒ‰ƒCI—¹‚É“’B‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã«åˆ°é”ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_RETRY_END_ERROR = "ASE__00006";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§I—¹‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çµ‚äº†ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_ABORT = "ASE__00007";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ–³Œø‰»‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç„¡åŠ¹åŒ–ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_DISABLE = "ASE__00010";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô•ÏX‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_STATE_CHANGE_ERROR = "ASE__00008";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‘JˆÚ‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹é·ç§»ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_STATE_TRANS_ERROR = "ASE__00009";
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_EXECUTE = "Execute";
     
     /**
-     * “ü—Í‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * å…¥åŠ›ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_INPUT_SCHEDULE = "InputSchedule";
     
     /**
-     * o—Í‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * å‡ºåŠ›ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_OUTPUT_SCHEDULE = "OutputSchedule";
     
     /**
-     * —áŠO”­¶‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_EXCEPTION = "Exception";
     
     /**
-     * {@link ScheduleManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ScheduleManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ScheduleManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleManagerServiceName(ServiceName name);
     
     /**
-     * {@link ScheduleManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleManagerServiceName();
     
     /**
-     * ‚±‚ÌScheduleExecutor‚ğ“Á’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒT[ƒrƒX–¼B<br>
+     * ã“ã®ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹åã€‚<br>
      *
-     * @param key ƒL[
+     * @param key ã‚­ãƒ¼
      */
     public void setKey(String key);
     
     /**
-     * ‚±‚ÌScheduleExecutor‚ğ“Á’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getKey();
     
     /**
-     * ScheduleExecutor‚ªÀs‚µ“¾‚éƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş‚ğİ’è‚·‚éB<p>
+     * ScheduleExecutorãŒå®Ÿè¡Œã—å¾—ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş
+     * @param type ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡
      */
     public void setType(String type);
     
     /**
-     * ScheduleExecutor‚ªÀs‚µ“¾‚éƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş‚ğæ“¾‚·‚éB<p>
+     * ScheduleExecutorãŒå®Ÿè¡Œã—å¾—ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡
      */
     public String getType();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getJournalServiceName()
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setJournalServiceName(ServiceName)
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getEditorFinderServiceName()
      */
     public void setEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setEditorFinderServiceName(ServiceName)
      */
     public ServiceName getEditorFinderServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚Å”­”Ô‚µ‚½’Ê”Ô‚ğæ“¾‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã§ç™ºç•ªã—ãŸé€šç•ªã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
 }

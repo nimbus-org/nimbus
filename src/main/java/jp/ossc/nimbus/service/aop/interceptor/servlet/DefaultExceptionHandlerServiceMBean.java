@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultExceptionHandlerService}��MBean�C���^�t�F�[�X�B<p>
+ * {@link DefaultExceptionHandlerService}のMBeanインタフェース。<p>
  * 
  * @author M.Takata
  * @see DefaultExceptionHandlerService
@@ -46,229 +46,229 @@ public interface DefaultExceptionHandlerServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ����������O���W���[�i���ɏo�͂���ۂ̃W���[�i���L�[�̃f�t�H���g�l�B<p>
+     * 発生した例外をジャーナルに出力する際のジャーナルキーのデフォルト値。<p>
      */
     public static final String DEFAULT_EXCEPTION_JOURNAL_KEY = "Exception";
     
     /**
-     * ����������O���W���[�i���ɏo�͂���{@link jp.ossc.nimbus.service.journal.Journal Journal}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�W���[�i���o�͂��Ȃ��B<br>
+     * 発生した例外をジャーナルに出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスのサービス名を設定する。<p>
+     * 設定しない場合は、ジャーナル出力しない。<br>
      *
-     * @param name Journal�T�[�r�X�̃T�[�r�X��
+     * @param name Journalサービスのサービス名
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * ����������O���W���[�i���ɏo�͂���{@link jp.ossc.nimbus.service.journal.Journal Journal}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * 発生した例外をジャーナルに出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスのサービス名を取得する。<p>
      *
-     * @return Journal�T�[�r�X�̃T�[�r�X��
+     * @return Journalサービスのサービス名
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ����������O���W���[�i���ɏo�͂���ۂ̃W���[�i���̃L�[��ݒ肷��B<p>
-     * �f�t�H���g�ł́A{@link #DEFAULT_EXCEPTION_JOURNAL_KEY}�B<br>
+     * 発生した例外をジャーナルに出力する際のジャーナルのキーを設定する。<p>
+     * デフォルトでは、{@link #DEFAULT_EXCEPTION_JOURNAL_KEY}。<br>
      *
-     * @param key ����������O�̃W���[�i���L�[
+     * @param key 発生した例外のジャーナルキー
      */
     public void setExceptionJournalKey(String key);
     
     /**
-     * ����������O���W���[�i���ɏo�͂���ۂ̃W���[�i���̃L�[���擾����B<p>
+     * 発生した例外をジャーナルに出力する際のジャーナルのキーを取得する。<p>
      *
-     * @return ����������O�̃W���[�i���L�[
+     * @return 発生した例外のジャーナルキー
      */
     public String getExceptionJournalKey();
     
     /**
-     * ����������O���W���[�i���ɏo�͂���ۂ�{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�W���[�i���T�[�r�X�ɐݒ肳��Ă���EditorFinder���K�p�����B<br>
+     * 発生した例外をジャーナルに出力する際の{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}サービスのサービス名を設定する。<p>
+     * 設定しない場合は、ジャーナルサービスに設定されているEditorFinderが適用される。<br>
      *
-     * @param name EditorFinder�T�[�r�X�̃T�[�r�X��
+     * @param name EditorFinderサービスのサービス名
      */
     public void setExceptionEditorFinderServiceName(ServiceName name);
     
     /**
-     * ����������O���W���[�i���ɏo�͂���ۂ�{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * 発生した例外をジャーナルに出力する際の{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}サービスのサービス名を取得する。<p>
      *
-     * @return EditorFinder�T�[�r�X�̃T�[�r�X��
+     * @return EditorFinderサービスのサービス名
      */
     public ServiceName getExceptionEditorFinderServiceName();
     
     /**
-     * ����������O�����O�ɏo�͂���ۂ̃��b�Z�[�WID��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A���O�o�͂��Ȃ��B<br>
+     * 発生した例外をログに出力する際のメッセージIDを設定する。<p>
+     * 設定しない場合は、ログ出力しない。<br>
      *
-     * @param id ����������O�����O�ɏo�͂���ۂ̃��b�Z�[�WID
+     * @param id 発生した例外をログに出力する際のメッセージID
      */
     public void setLogMessageCode(String id);
     
     /**
-     * ����������O�����O�ɏo�͂���ۂ̃��b�Z�[�WID���擾����B<p>
+     * 発生した例外をログに出力する際のメッセージIDを取得する。<p>
      *
-     * @return ����������O�����O�ɏo�͂���ۂ̃��b�Z�[�WID
+     * @return 発生した例外をログに出力する際のメッセージID
      */
     public String getLogMessageCode();
     
     /**
-     * ����������O�����O�ɏo�͂���ۂ̖��ߍ��݃p�����[�^��ݒ肷��B<p>
+     * 発生した例外をログに出力する際の埋め込みパラメータを設定する。<p>
      *
-     * @param args ����������O�����O�ɏo�͂���ۂ̖��ߍ��݃p�����[�^
+     * @param args 発生した例外をログに出力する際の埋め込みパラメータ
      */
     public void setLogMessageArguments(String[] args);
     
     /**
-     * ����������O�����O�ɏo�͂���ۂ̖��ߍ��݃p�����[�^���擾����B<p>
+     * 発生した例外をログに出力する際の埋め込みパラメータを取得する。<p>
      *
-     * @return ����������O�����O�ɏo�͂���ۂ̖��ߍ��݃p�����[�^
+     * @return 発生した例外をログに出力する際の埋め込みパラメータ
      */
     public String[] getLogMessageArguments();
     
     /**
-     * ����������O�����O�ɏo�͂���ۂɁA��O�̃X�^�b�N�g���[�X�����O�ɏo�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�ł́Atrue�B<br>
+     * 発生した例外をログに出力する際に、例外のスタックトレースをログに出力するかどうかを設定する。<p>
+     * デフォルトでは、true。<br>
      *
-     * @param isOutput ��O�̃X�^�b�N�g���[�X�����O�ɏo�͂���ꍇtrue
+     * @param isOutput 例外のスタックトレースをログに出力する場合true
      */
     public void setOutputStackTraceLog(boolean isOutput);
     
     /**
-     * ����������O�����O�ɏo�͂���ۂɁA��O�̃X�^�b�N�g���[�X�����O�ɏo�͂��邩�ǂ����𔻒肷��B<p>
+     * 発生した例外をログに出力する際に、例外のスタックトレースをログに出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A��O�̃X�^�b�N�g���[�X�����O�ɏo�͂���
+     * @return trueの場合、例外のスタックトレースをログに出力する
      */
     public boolean isOutputStackTraceLog();
     
     /**
-     * HTTP���X�|���X�̃X�e�[�^�X��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�X�e�[�^�X�͕ύX���Ȃ��B<br>
+     * HTTPレスポンスのステータスを設定する。<p>
+     * 設定しない場合は、ステータスは変更しない。<br>
      *
-     * @param status HTTP���X�|���X�̃X�e�[�^�X
+     * @param status HTTPレスポンスのステータス
      */
     public void setHttpResponseStatus(int status);
     
     /**
-     * HTTP���X�|���X�̃X�e�[�^�X���擾����B<p>
+     * HTTPレスポンスのステータスを取得する。<p>
      *
-     * @return HTTP���X�|���X�̃X�e�[�^�X
+     * @return HTTPレスポンスのステータス
      */
     public int getHttpResponseStatus();
     
     /**
-     * HTTP���X�|���X�̃X�e�[�^�X���b�Z�[�W��ݒ肷��B<p>
-     * HTTP���X�|���X�̃X�e�[�^�X���ݒ肳��Ă��Ȃ��ꍇ�́A�����B<br>
+     * HTTPレスポンスのステータスメッセージを設定する。<p>
+     * HTTPレスポンスのステータスが設定されていない場合は、無効。<br>
      *
-     * @param message HTTP���X�|���X�̃X�e�[�^�X���b�Z�[�W
+     * @param message HTTPレスポンスのステータスメッセージ
      */
     public void setHttpResponseStatusMessage(String message);
     
     /**
-     * HTTP���X�|���X�̃X�e�[�^�X���b�Z�[�W���擾����B<p>
+     * HTTPレスポンスのステータスメッセージを取得する。<p>
      *
-     * @return HTTP���X�|���X�̃X�e�[�^�X���b�Z�[�W
+     * @return HTTPレスポンスのステータスメッセージ
      */
     public String getHttpResponseStatusMessage();
     
     /**
-     * �t�H���[�h����p�X��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A�t�H���[�h���Ȃ��B<br>
+     * フォワードするパスを設定する。<p>
+     * 設定しない場合は、フォワードしない。<br>
      *
-     * @param path �t�H���[�h����p�X
+     * @param path フォワードするパス
      */
     public void setForwardPath(String path);
     
     /**
-     * �t�H���[�h����p�X���擾����B<p>
+     * フォワードするパスを取得する。<p>
      *
-     * @return �t�H���[�h����p�X
+     * @return フォワードするパス
      */
     public String getForwardPath();
     
     /**
-     * ���_�C���N�g����p�X��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A���_�C���N�g���Ȃ��B<br>
+     * リダイレクトするパスを設定する。<p>
+     * 設定しない場合は、リダイレクトしない。<br>
      *
-     * @param path ���_�C���N�g����p�X
+     * @param path リダイレクトするパス
      */
     public void setRedirectPath(String path);
     
     /**
-     * ���_�C���N�g����p�X���擾����B<p>
+     * リダイレクトするパスを取得する。<p>
      *
-     * @return ���_�C���N�g����p�X
+     * @return リダイレクトするパス
      */
     public String getRedirectPath();
     
     /**
-     * ��O��throw���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * 例外をthrowするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isThrow throw����ꍇ�́Atrue
+     * @param isThrow throwする場合は、true
      */
     public void setThrowException(boolean isThrow);
     
     /**
-     * ��O��throw���邩�ǂ����𔻒肷��B<p>
+     * 例外をthrowするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́Athrow����
+     * @return trueの場合は、throwする
      */
     public boolean isThrowException();
     
     /**
-     * �����I�u�W�F�N�g�����N�G�X�g�����ɐݒ肷�鎞�Ɏg�p���鑮������ݒ肷��B<p>
-     * �f�t�H���g�l�́A{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}�B<br>
+     * 応答オブジェクトをリクエスト属性に設定する時に使用する属性名を設定する。<p>
+     * デフォルト値は、{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}。<br>
      *
-     * @param name ������
+     * @param name 属性名
      * @see StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME
      */
     public void setResponseObjectAttributeName(String name);
     
     /**
-     * �����I�u�W�F�N�g�����N�G�X�g�����ɐݒ肷�鎞�Ɏg�p���鑮�������擾����B<p>
+     * 応答オブジェクトをリクエスト属性に設定する時に使用する属性名を取得する。<p>
      *
-     * @return ������
+     * @return 属性名
      */
     public String getResponseObjectAttributeName();
     
     /**
-     * ���N�G�X�g�����ɐݒ肷�鉞���I�u�W�F�N�g��ݒ肷��B<p>
+     * リクエスト属性に設定する応答オブジェクトを設定する。<p>
      *
-     * @param obj �����I�u�W�F�N�g
+     * @param obj 応答オブジェクト
      */
     public void setResponseObject(Object obj);
     
     /**
-     * ���N�G�X�g�����ɐݒ肷�鉞���I�u�W�F�N�g���擾����B<p>
+     * リクエスト属性に設定する応答オブジェクトを取得する。<p>
      *
-     * @return �����I�u�W�F�N�g
+     * @return 応答オブジェクト
      */
     public Object getResponseObject();
     
     /**
-     * ���N�G�X�g�����ɐݒ肷�鉞���I�u�W�F�N�g�̃T�[�r�X����ݒ肷��B<p>
+     * リクエスト属性に設定する応答オブジェクトのサービス名を設定する。<p>
      *
-     * @param name �����I�u�W�F�N�g�̃T�[�r�X��
+     * @param name 応答オブジェクトのサービス名
      */
     public void setResponseObjectServiceName(ServiceName name);
     
     /**
-     * ���N�G�X�g�����ɐݒ肷�鉞���I�u�W�F�N�g�̃T�[�r�X�����擾����B<p>
+     * リクエスト属性に設定する応答オブジェクトのサービス名を取得する。<p>
      *
-     * @return �����I�u�W�F�N�g�̃T�[�r�X��
+     * @return 応答オブジェクトのサービス名
      */
     public ServiceName getResponseObjectServiceName();
     
     /**
-     * ��O����v���p�e�B�l���擾���ĉ����I�u�W�F�N�g�̃v���p�e�B�ɐݒ肷��}�b�s���O��ݒ肷��B<p>
+     * 例外からプロパティ値を取得して応答オブジェクトのプロパティに設定するマッピングを設定する。<p>
      *
-     * @param mapping ��O����擾����v���p�e�B=�����I�u�W�F�N�g�ɐݒ肷��v���p�e�B
+     * @param mapping 例外から取得するプロパティ=応答オブジェクトに設定するプロパティ
      */
     public void setExceptionAndResponseObjectPropertyMapping(Map mapping);
     
     /**
-     * ��O����v���p�e�B�l���擾���ĉ����I�u�W�F�N�g�̃v���p�e�B�ɐݒ肷��}�b�s���O���擾����B<p>
+     * 例外からプロパティ値を取得して応答オブジェクトのプロパティに設定するマッピングを取得する。<p>
      *
-     * @return ��O����擾����v���p�e�B=�����I�u�W�F�N�g�ɐݒ肷��v���p�e�B
+     * @return 例外から取得するプロパティ=応答オブジェクトに設定するプロパティ
      */
     public Map getExceptionAndResponseObjectPropertyMapping();
 }

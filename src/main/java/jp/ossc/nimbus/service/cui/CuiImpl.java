@@ -38,53 +38,53 @@ import jp.ossc.nimbus.lang.*;
 
 /**
  * @author y-tokuda
- * CuiOperatorƒCƒ“ƒ^[ƒtƒFƒCƒXÀ‘•ƒNƒ‰ƒX
- * CuiOperatorƒCƒ“ƒ^[ƒtƒFƒCƒX‚ÍCuiƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğŒp³‚µ‚Ä‚¢‚ÄA
- * ƒAƒvƒŠ‘¤‚É‚ÍACuiƒCƒ“ƒ^[ƒtƒFƒCƒX‚Æ‚µ‚Ä—˜—p‚³‚¹‚éB
- * CuiOperatorƒCƒ“ƒ^[ƒtƒFƒCƒX‚ÍAƒtƒ@ƒNƒgƒŠ[—pƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ * CuiOperatorã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹
+ * CuiOperatorã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã¯Cuiã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’ç¶™æ‰¿ã—ã¦ã„ã¦ã€
+ * ã‚¢ãƒ—ãƒªå´ã«ã¯ã€Cuiã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã¨ã—ã¦åˆ©ç”¨ã•ã›ã‚‹ã€‚
+ * CuiOperatorã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã¯ã€ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ç”¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  */
 public class CuiImpl extends ServiceBase implements ServiceBaseMBean,CuiOperator,CuiTagDefine{
 	
     private static final long serialVersionUID = 2060576109868585440L;
     
-    //ƒƒ“ƒo•Ï”
-	/** Step–¼‚ÆDataInputStepƒIƒuƒWƒFƒNƒg‚ğŠÖ˜A•t‚¯‚éƒnƒbƒVƒ… */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** Stepåã¨DataInputStepã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é–¢é€£ä»˜ã‘ã‚‹ãƒãƒƒã‚·ãƒ¥ */
 	private HashMap mStepHash = null;
-	/** Step‚Ì‡”Ô‚ğ•Û‚·‚éArrayList */
+	/** Stepã®é †ç•ªã‚’ä¿æŒã™ã‚‹ArrayList */
 	private ArrayList mStepArrayList = null;
-	/** “ü—ÍŒ‹‰Ê‚ğ•Û‚·‚é Hash */
+	/** å…¥åŠ›çµæœã‚’ä¿æŒã™ã‚‹ Hash */
 	private HashMap mResultHash = null;
 	/**
-	 * “ü—ÍŒ‹‰ÊƒnƒbƒVƒ…æ“¾
+	 * å…¥åŠ›çµæœãƒãƒƒã‚·ãƒ¥å–å¾—
 	 */
 	public HashMap getResult(){
 		return mResultHash;
 	}
 	 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 *
 	 */
 	public CuiImpl(){
-		//‰Šú‰»‚·‚éB
+		//åˆæœŸåŒ–ã™ã‚‹ã€‚
 		mStepHash = new HashMap();
 		mStepArrayList = new ArrayList();
 		mResultHash = new HashMap();
 	}
 	/**
-	 * ŠJn
+	 * é–‹å§‹
 	 */
 	public void startService(){
 		;
 	}
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Íó•tƒƒ\ƒbƒh
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å—ä»˜ãƒ¡ã‚½ãƒƒãƒ‰
 	 *
 	 */
 	public void invoke(){
-		//“ü—ÍŒ‹‰Ê‚ğ•Û‚·‚éƒnƒbƒVƒ…‚ÌƒNƒŠƒA
+		//å…¥åŠ›çµæœã‚’ä¿æŒã™ã‚‹ãƒãƒƒã‚·ãƒ¥ã®ã‚¯ãƒªã‚¢
 		mResultHash.clear();
-		//ArrayList‚ÌÅ‰‚ÌDataInputStep‚ğ‹N“®‚·‚éB
+		//ArrayListã®æœ€åˆã®DataInputStepã‚’èµ·å‹•ã™ã‚‹ã€‚
 		DataInputStep theFirst = (DataInputStep)mStepArrayList.get(0);
 		String key = null;
 		String nextStepKey = null;
@@ -92,12 +92,12 @@ public class CuiImpl extends ServiceBase implements ServiceBaseMBean,CuiOperator
 		mResultHash.put(theFirst.getName(),theFirst.getSelectedValue());
 		while(true){
 			if(key.equals(INTERRUPT)){
-				//’†’f
+				//ä¸­æ–­
 				mResultHash.clear();
 				break;
 			}
 			if(key.equals(REDO)){
-				//Å‰‚©‚ç‚â‚è’¼‚µ
+				//æœ€åˆã‹ã‚‰ã‚„ã‚Šç›´ã—
 				mResultHash.clear();
 				key = theFirst.invoke();
 				mResultHash.put(theFirst.getName(),theFirst.getSelectedValue());
@@ -109,7 +109,7 @@ public class CuiImpl extends ServiceBase implements ServiceBaseMBean,CuiOperator
 				throw new ServiceException("CUIFACTORYSERVICE040",key + "is not valid step name.");
 			}
 			nextStepKey = Step.invoke();
-			//ƒnƒbƒVƒ…‚É‘I‘ğ‚³‚ê‚½’l‚ğŠi”[
+			//ãƒãƒƒã‚·ãƒ¥ã«é¸æŠã•ã‚ŒãŸå€¤ã‚’æ ¼ç´
 			mResultHash.put(key,Step.getSelectedValue());
 			key = nextStepKey;
 			if(nextStepKey.equals(END)){
@@ -120,17 +120,17 @@ public class CuiImpl extends ServiceBase implements ServiceBaseMBean,CuiOperator
 		}
 	}
 	/**
-	 * ƒoƒbƒ`ˆ——pInvoke
+	 * ãƒãƒƒãƒå‡¦ç†ç”¨Invoke
 	 *
 	 */
 	public void invoke(ArrayList list){
-		//“ü—ÍŒ‹‰Ê‚ğ•Û‚·‚éƒnƒbƒVƒ…‚ÌƒNƒŠƒA
+		//å…¥åŠ›çµæœã‚’ä¿æŒã™ã‚‹ãƒãƒƒã‚·ãƒ¥ã®ã‚¯ãƒªã‚¢
 		mResultHash.clear();
-		//Å‰‚ÌDataInputStep‚ğæ‚é
+		//æœ€åˆã®DataInputStepã‚’å–ã‚‹
 		DataInputStep theFirst = (DataInputStep)mStepArrayList.get(0);
 		mResultHash.put(theFirst.getName(),list.get(0));
-		//Å‰‚ÌDataInputStep‚ÉA—^‚¦‚ç‚ê‚½“ü—Í’l‚ğ“ü‚êAŸ‚ÌDataInputStep‚ğ
-		//æ“¾‚·‚éƒL[‚ğ“¾‚éB
+		//æœ€åˆã®DataInputStepã«ã€ä¸ãˆã‚‰ã‚ŒãŸå…¥åŠ›å€¤ã‚’å…¥ã‚Œã€æ¬¡ã®DataInputStepã‚’
+		//å–å¾—ã™ã‚‹ã‚­ãƒ¼ã‚’å¾—ã‚‹ã€‚
 		String key = theFirst.invoke((String)list.get(0));
 		for(int rCnt=1;rCnt<mStepArrayList.size();rCnt++){
 			DataInputStep step = (DataInputStep)mStepHash.get(key);
@@ -142,7 +142,7 @@ public class CuiImpl extends ServiceBase implements ServiceBaseMBean,CuiOperator
 		}		
 	}
 	/**
-	 * DataInputStep‚ğ’Ç‰Á‚·‚éB
+	 * DataInputStepã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 */
 	public void addStep(String key,DataInputStep step){
 		mStepHash.put(key,step);

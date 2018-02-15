@@ -49,11 +49,11 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ���LQueue�T�[�r�X�B<p>
- * {@link jp.ossc.nimbus.service.context.SharedContext ���L�R���e�L�X�g}�ɃL���[�v�f���i�[���鎖�ŁA�L���[�𕡐���JVM�ŋ��L����{@link Queue}�T�[�r�X�����N���X�ł��B<br>
- * �L���[�v�f�����L�R���e�L�X�g�Ɋi�[����ۂ̃L�[�́A{����}+{�ʔ�}+{UID}�̃t�H�[�}�b�g�ŁA�����Ŏ������Ԃ����B���̃L�[�̈�Ӑ��́A�ʔԂ̌������[���Ɋm�ۂ��鎖�ŁA������S�ۂ����B<br>
- * �}���`�X���b�h�ŃL���[�v�f�𓊓�����ꍇ�A�L�[�̏����\�[�g�ɂ���ăL���[�v�f�̎擾�������肳��邽�߁A������o���̕ۏ؂͌����ɂ͍s���Ȃ��B<br>
- * �i�[�����L���[�v�f���A���[�J���̃��������ɕێ����Ȃ��N���C�A���g���[�h�i{@link #setClient(boolean) setClient(true)}�j���T�|�[�g���邪�A�N���C�A���g���[�h�̏ꍇ�́A�L���[�̎擾�@�\�̓T�|�[�g���Ȃ��B<br>
+ * 共有Queueサービス。<p>
+ * {@link jp.ossc.nimbus.service.context.SharedContext 共有コンテキスト}にキュー要素を格納する事で、キューを複数のJVMで共有する{@link Queue}サービス実装クラスです。<br>
+ * キュー要素を共有コンテキストに格納する際のキーは、{時刻}+{通番}+{UID}のフォーマットで、内部で自動発番される。このキーの一意性は、通番の桁数を充分に確保する事で、実質上担保される。<br>
+ * マルチスレッドでキュー要素を投入する場合、キーの昇順ソートによってキュー要素の取得順が決定されるため、先入れ先出しの保証は厳密には行われない。<br>
+ * 格納したキュー要素を、ローカルのメモリ中に保持しないクライアントモード（{@link #setClient(boolean) setClient(true)}）をサポートするが、クライアントモードの場合は、キューの取得機能はサポートしない。<br>
  *
  * @author M.Takata
  */
@@ -74,7 +74,7 @@ public class SharedQueueService extends SharedContextService
     protected final Object lock = "lock";
     
     /**
-     * �����I���t���O�B<p>
+     * 強制終了フラグ。<p>
      */
     protected volatile boolean fourceEndFlg = false;
     
@@ -262,7 +262,7 @@ public class SharedQueueService extends SharedContextService
         }
     }
     
-    // Queue��JavaDoc
+    // QueueのJavaDoc
     public Object get(long timeOutMs){
         return getQueueElement(timeOutMs, true);
     }
@@ -278,17 +278,17 @@ public class SharedQueueService extends SharedContextService
             }else{
                 peekMonitor.initMonitor();
             }
-            // �����I���łȂ��ꍇ
+            // 強制終了でない場合
             while(!fourceEndFlg){
-                // �L���[�ɗ��܂��Ă���ꍇ
+                // キューに溜まっている場合
                 if(size() > 0){
-                    // �Q�Ƃ��邾���̏ꍇ
-                    // �܂��́A���̃X���b�h����ԍŏ��ɑ҂��Ă����ꍇ
+                    // 参照するだけの場合
+                    // または、このスレッドが一番最初に待っていた場合
                     if(!isRemove
                         || !isSafeGetOrder
                         || getMonitor.isFirst()
                     ){
-                        // �L���[����擾����
+                        // キューから取得する
                         final Object ret = getQueueElement(isRemove);
                         if(ret == EMPTY){
                             continue;
@@ -296,8 +296,8 @@ public class SharedQueueService extends SharedContextService
                         if(isRemove){
                             getMonitor.releaseMonitor();
                             
-                            // �Q�Ƃł͂Ȃ��A�L���[�ɗ��܂��Ă��āA
-                            // ���ɑ҂��Ă���X���b�h������ꍇ
+                            // 参照ではなく、キューに溜まっていて、
+                            // 次に待っているスレッドがいる場合
                             if(size() > 0 && getMonitor.isWait()){
                                 if(isSafeGetOrder){
                                     getMonitor.notifyMonitor();
@@ -309,23 +309,23 @@ public class SharedQueueService extends SharedContextService
                         }
                         return ret;
                     }
-                    // �Q�Ƃł͂Ȃ��A���̃X���b�h�����O�ɑ҂��Ă����X���b�h������ꍇ
+                    // 参照ではなく、このスレッドよりも前に待っていたスレッドがいる場合
                     else if(getMonitor.isWait()){
-                        // ��ԍŏ��ɑ҂��Ă���X���b�h���N����
+                        // 一番最初に待っているスレッドを起こす
                         getMonitor.notifyMonitor();
                     }
                 }
                 
-                // �L���[�ɗ��܂��Ă��Ȃ��ꍇ
-                // �܂��́A���̃X���b�h�����O�ɑ҂��Ă����X���b�h������ꍇ
+                // キューに溜まっていない場合
+                // または、このスレッドよりも前に待っていたスレッドがいる場合
                 
-                // �����I���܂��̓^�C���A�E�g�̏ꍇ
+                // 強制終了またはタイムアウトの場合
                 if(fourceEndFlg || timeOutMs == 0 || (timeOutMs > 0 && timeOutMs <= processTime)){
                     break;
                 }
                 
-                // �^�C���A�E�g�w�肪����ꍇ�́A�^�C���A�E�g�܂�sleep����
-                // �^�C���A�E�g�w�肪�Ȃ��ꍇ�́AsleepTime��sleep���Ă݂�
+                // タイムアウト指定がある場合は、タイムアウトまでsleepする
+                // タイムアウト指定がない場合は、sleepTime分sleepしてみる
                 long proc = 0;
                 if(timeOutMs >= 0){
                     proc = System.currentTimeMillis();
@@ -353,7 +353,7 @@ public class SharedQueueService extends SharedContextService
                 }
             }
             
-            // �����I���̏ꍇ
+            // 強制終了の場合
             if(fourceEndFlg){
                 final Object ret = getQueueElement(isRemove);
                 if(ret == EMPTY){
@@ -361,7 +361,7 @@ public class SharedQueueService extends SharedContextService
                 }
                 return ret;
             }
-            // �^�C���A�E�g�̏ꍇ
+            // タイムアウトの場合
             else{
                 if(isRemove
                     && size() > 0

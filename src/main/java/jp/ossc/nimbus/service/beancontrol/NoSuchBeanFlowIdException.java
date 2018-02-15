@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol;
 
 /**
- * �w�肳�ꂽID�̃t���[���o�^����Ă��Ȃ�����������O�B<p>
+ * 指定されたIDのフローが登録されていない事を示す例外。<p>
  * 
  * @author M.Takata
  */
@@ -41,16 +41,16 @@ public class NoSuchBeanFlowIdException extends RuntimeException{
     private static final long serialVersionUID = 8964662504403757198L;
     
     /**
-     * ��̗�O�C���X�^���X�𐶐�����B<p>
+     * 空の例外インスタンスを生成する。<p>
      */
     public NoSuchBeanFlowIdException(){
         super();
     }
     
     /**
-     * �w�肳�ꂽID����������O�C���X�^���X�𐶐�����B<p>
+     * 指定されたIDを持った例外インスタンスを生成する。<p>
      *
-     * @param id �w�肳�ꂽID
+     * @param id 指定されたID
      */
     public NoSuchBeanFlowIdException(Object id){
         super(id == null ? null : id.toString());

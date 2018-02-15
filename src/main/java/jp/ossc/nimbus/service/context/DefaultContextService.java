@@ -35,9 +35,9 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒRƒ“ƒeƒLƒXƒgB<p>
- * ”CˆÓ‚Ì’è”’l‚â•Ï”’l‚È‚Ç‚ğAƒL[‚ÉŠÖ˜A•t‚¯‚ÄŠi”[‚µA’ñ‹Ÿ‚·‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
+ * ä»»æ„ã®å®šæ•°å€¤ã‚„å¤‰æ•°å€¤ãªã©ã‚’ã€ã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã¦æ ¼ç´ã—ã€æä¾›ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -64,7 +64,7 @@ public class DefaultContextService extends ServiceBase
     private static final long serialVersionUID = 920050666611019516L;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğŠi”[‚·‚éƒ}ƒbƒvB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map context;
     
@@ -122,10 +122,10 @@ public class DefaultContextService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ‰Šú‰»‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         context = createContext();
@@ -136,9 +136,9 @@ public class DefaultContextService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(contextStoreServiceName != null){
@@ -155,9 +155,9 @@ public class DefaultContextService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(isSaveOnStop){
@@ -168,10 +168,10 @@ public class DefaultContextService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         context = null;
@@ -226,7 +226,7 @@ public class DefaultContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object get(Object key) {
         Object val = context.get(key);
         if(val == null){
@@ -242,64 +242,64 @@ public class DefaultContextService extends ServiceBase
         return val;
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object put(Object key, Object value) {
         return context == null ? null : context.put(key,value);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object put(String key, String value) {
         return put((Object)key, (Object)value);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Set keySet(){
         return context == null ? null : context.keySet();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Collection values() {
         return context == null ? null : context.values();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object remove(Object key) {
         return context == null ? null : context.remove(key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public void clear() {
         if(context != null){
             context.clear() ;
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean isEmpty() {
         return context == null ? true : context.isEmpty();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean containsKey(Object key) {
         return context == null ? false : context.containsKey(key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean containsValue(Object value) {
         return context == null ? false : context.containsValue(value);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Set entrySet(){
         return context == null ? new HashSet() : context.entrySet();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public int size() {
         return context == null ? 0 : context.size();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public void putAll(Map t) {
         if(context != null){
             context.putAll(t);
@@ -307,25 +307,25 @@ public class DefaultContextService extends ServiceBase
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚Ì•¡»‚ğ•Û‚·‚éƒnƒbƒVƒ…ƒe[ƒuƒ‹‚ğ¶¬‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®è¤‡è£½ã‚’ä¿æŒã™ã‚‹ãƒãƒƒã‚·ãƒ¥ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚Ì•¡»‚ğ•Û‚·‚éƒnƒbƒVƒ…ƒe[ƒuƒ‹
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®è¤‡è£½ã‚’ä¿æŒã™ã‚‹ãƒãƒƒã‚·ãƒ¥ãƒ†ãƒ¼ãƒ–ãƒ«
      */
     public Hashtable cloneHash(){
         return context == null ? new Hashtable() : (Hashtable)new Hashtable(context);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object get(String key) {
         return get((Object)key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object remove(String key){
         return remove((Object)key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public String list() {
         StringBuilder buf = new StringBuilder();
         if(context != null){

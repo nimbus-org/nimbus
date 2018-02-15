@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol.interfaces;
 
 /**
- * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚µ‚½‹Æ–±ƒtƒ[‚Å’ÊM—áŠO‚ª”­¶‚µ‚½‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã—ãŸæ¥­å‹™ãƒ•ãƒ­ãƒ¼ã§é€šä¿¡ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸæ™‚ã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -43,16 +43,16 @@ public class BeanFlowRemoteException extends RuntimeException{
     private String flowName;
     
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BeanFlowRemoteException(){
         super();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[–¼‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼åã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flowName ƒtƒ[–¼
+     * @param flowName ãƒ•ãƒ­ãƒ¼å
      */
     public BeanFlowRemoteException(String flowName){
         super();
@@ -60,10 +60,10 @@ public class BeanFlowRemoteException extends RuntimeException{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[–¼‚ÆƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼åã¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flowName ƒtƒ[–¼
-     * @param message ƒƒbƒZ[ƒW
+     * @param flowName ãƒ•ãƒ­ãƒ¼å
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public BeanFlowRemoteException(String flowName, String message){
         super(message);
@@ -71,11 +71,11 @@ public class BeanFlowRemoteException extends RuntimeException{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[–¼‚ÆƒƒbƒZ[ƒWAŒ´ˆö—áŠO‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼åã¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€åŸå› ä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flowName ƒtƒ[–¼
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param flowName ãƒ•ãƒ­ãƒ¼å
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public BeanFlowRemoteException(String flowName, String message, Throwable cause){
         super(message, cause);

@@ -29,32 +29,32 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.facade;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.EJBObject;
 import java.rmi.RemoteException;
 import jp.ossc.nimbus.ioc.FacadeValue;
 /**
- * EJBƒtƒ@ƒT[ƒhRemoteƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
- * ƒRƒ}ƒ“ƒhƒpƒ^[ƒ“‚ğó‚¯•t‚¯‚éEJBƒtƒ@ƒT[ƒhƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰Remoteã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
+ * ã‚³ãƒãƒ³ãƒ‰ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å—ã‘ä»˜ã‘ã‚‹EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface SLSBFacadeRemote extends EJBObject {
 	/**
-	 * IoCƒRƒ“ƒeƒi‚ÌƒRƒ}ƒ“ƒhó•tƒtƒ@ƒT[ƒh
-	 * –{—ˆƒpƒ‰ƒ[ƒ^‚Æ‚µ‚ÄCommandsValue‚ğó‚¯æ‚é‚ª
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^[‚É‚æ‚è•ÏŠ·‚³‚ê‚éê‡‚ğl—¶‚µ‚Ä
-	 * ‚ä‚é‚¢Interface‚Æ‚µ‚Ä‚¢‚éB
+	 * IoCã‚³ãƒ³ãƒ†ãƒŠã®ã‚³ãƒãƒ³ãƒ‰å—ä»˜ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰
+	 * æœ¬æ¥ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦CommandsValueã‚’å—ã‘å–ã‚‹ãŒ
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã«ã‚ˆã‚Šå¤‰æ›ã•ã‚Œã‚‹å ´åˆã‚’è€ƒæ…®ã—ã¦
+	 * ã‚†ã‚‹ã„Interfaceã¨ã—ã¦ã„ã‚‹ã€‚
 	 * @param vallue
-	 * @return ÀsŒ‹‰Ê
+	 * @return å®Ÿè¡Œçµæœ
 	 * @throws RemoteException
 	 */
 	public Object invoke(Object vallue) throws RemoteException ;
 	/**
-	 * IoC‚Ìƒtƒ@ƒT[ƒhƒƒ\ƒbƒh
+	 * IoCã®ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param cv
 	 * @return FacadeValue
 	 * @throws RemoteException

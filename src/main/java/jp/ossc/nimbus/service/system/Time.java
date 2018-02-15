@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.system;
 
 /**
- * ƒVƒXƒeƒ€B<p>
+ * ã‚·ã‚¹ãƒ†ãƒ æ™‚åˆ»ã€‚<p>
  *
  * @author M.Takata
  */
 public interface Time{
     
     /**
-     * ƒ~ƒŠ•b‚Å•\‚³‚ê‚éŒ»İ‚ÌŠÔ‚ğ•Ô‚·B<p>
+     * ãƒŸãƒªç§’ã§è¡¨ã•ã‚Œã‚‹ç¾åœ¨ã®æ™‚é–“ã‚’è¿”ã™ã€‚<p>
      * 
-     * @return ƒ~ƒŠ•b‚Å•\‚³‚ê‚éŒ»İ‚ÌŠÔ
+     * @return ãƒŸãƒªç§’ã§è¡¨ã•ã‚Œã‚‹ç¾åœ¨ã®æ™‚é–“
      */
     public long currentTimeMillis();
 }

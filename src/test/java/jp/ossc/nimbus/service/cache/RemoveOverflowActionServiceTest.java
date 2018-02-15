@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import junit.framework.*;
 
 /**
- * �폜���ӂꓮ��T�[�r�X�e�X�g�B<p>
+ * 削除あふれ動作サービステスト。<p>
  *
  * @author M.Takata
  */

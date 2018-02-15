@@ -39,9 +39,9 @@ import jp.ossc.nimbus.service.keepalive.KeepAliveListener;
 import jp.ossc.nimbus.service.performance.ResourceUsage;
 
 /**
- * ƒT[ƒrƒXƒƒ\ƒbƒhƒŠƒtƒŒƒNƒVƒ‡ƒ“ŒÄ‚Ño‚µƒCƒ“ƒ{[ƒJB<p>
- * ƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚ğg‚Á‚ÄAw’è‚³‚ê‚½ƒT[ƒrƒX‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğs‚¤B<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å‘¼ã³å‡ºã—ã‚¤ãƒ³ãƒœãƒ¼ã‚«ã€‚<p>
+ * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -76,20 +76,20 @@ public class LocalClientMethodCallInvokerService extends ServiceBase
     private ServiceName resourceUsageServiceName;
     private ResourceUsage resourceUsage;
     
-    // LocalClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // LocalClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setLocalServiceName(ServiceName name){
         localServiceName = name;
     }
-    // LocalClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // LocalClientMethodCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getLocalServiceName(){
         return localServiceName;
     }
     
-    // LocalClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // LocalClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setResourceUsageServiceName(ServiceName name){
         resourceUsageServiceName = name;
     }
-    // LocalClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // LocalClientMethodCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getResourceUsageServiceName(){
         return resourceUsageServiceName;
     }
@@ -99,18 +99,18 @@ public class LocalClientMethodCallInvokerService extends ServiceBase
     }
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚Æ‚È‚éƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param localService ŒÄ‚Ño‚µ‘ÎÛ‚Æ‚È‚éƒT[ƒrƒX
+     * @param localService å‘¼ã³å‡ºã—å¯¾è±¡ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setLocalService(Object localService) {
         this.localService = localService;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(resourceUsage == null && resourceUsageServiceName != null){
@@ -120,13 +120,13 @@ public class LocalClientMethodCallInvokerService extends ServiceBase
     }
     
     /**
-     * ƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚ğg‚Á‚ÄAƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğs‚¤B<p>
-     * ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Ì{@link InvocationContext#getTargetObject()}‚Åæ“¾‚µ‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğƒ[ƒJƒ‹‚Ì{@link ServiceManager}‚©‚çæ“¾‚µ‚ÄAƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚Åƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğs‚¤B<br>
-     * InvocationContext.getTargetObject()‚ÅƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link #setLocalServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğæ“¾‚µ‚ÄAƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğs‚¤B<br>
+     * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã‚’ä½¿ã£ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<p>
+     * å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®{@link InvocationContext#getTargetObject()}ã§å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã®{@link ServiceManager}ã‹ã‚‰å–å¾—ã—ã¦ã€ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã§ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<br>
+     * InvocationContext.getTargetObject()ã§ã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„å ´åˆã¯ã€{@link #setLocalServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<br>
      * 
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final MethodInvocationContext methodContext
@@ -155,7 +155,7 @@ public class LocalClientMethodCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public boolean isAlive(){
         if(getState() != Service.STARTED){
             return false;
@@ -172,22 +172,22 @@ public class LocalClientMethodCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void addKeepAliveListener(KeepAliveListener listener){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void removeKeepAliveListener(KeepAliveListener listener){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void clearKeepAliveListener(){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Object getHostInfo() {
         try{
             return java.net.InetAddress.getLocalHost();
@@ -196,7 +196,7 @@ public class LocalClientMethodCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Comparable getResourceUsage(){
         return resourceUsage == null ? null : resourceUsage.getUsage();
     }

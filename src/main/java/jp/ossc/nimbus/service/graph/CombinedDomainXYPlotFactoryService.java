@@ -44,38 +44,38 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * CombinedDomainXYPlotƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * CombinedDomainXYPlotãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  */
 public class CombinedDomainXYPlotFactoryService extends XYPlotFactoryService
     implements CombinedDomainXYPlotFactoryServiceMBean, PlotFactory {
     
     private static final long serialVersionUID = -3926909470765921216L;
     
-    /** ƒvƒƒbƒg–¼ */
+    /** ãƒ—ãƒ­ãƒƒãƒˆå */
     private String name;
-    /** ƒTƒuƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ */
+    /** ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ— */
     private ServiceName[] subPlotFactoryServiceNames;
-    /** ‰¡²ƒT[ƒrƒX–¼‚Ì”z—ñ */
+    /** æ¨ªè»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ— */
     private ServiceName[] domainAxisServiceNames;
-    /** ƒTƒuƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒŠƒXƒg */
+    /** ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ãƒªã‚¹ãƒˆ */
     private List subPlotFactoryServices;
 
-    // CombinedDomainXYPlotFactoryServiceMBean‚ÌJavaDoc
+    // CombinedDomainXYPlotFactoryServiceMBeanã®JavaDoc
     public void setSubPlotFactoryServiceNames(ServiceName[] serviceNames) {
         subPlotFactoryServiceNames = serviceNames;
     }
 
-    // CombinedDomainXYPlotFactoryServiceMBean‚ÌJavaDoc
+    // CombinedDomainXYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getSubPlotFactoryServiceNames() {
         return subPlotFactoryServiceNames;
     }
 
-    // CombinedDomainXYPlotFactoryServiceMBean‚ÌJavaDoc
+    // CombinedDomainXYPlotFactoryServiceMBeanã®JavaDoc
     public void setDomainAxisServiceNames(ServiceName[] serviceNames) {
         domainAxisServiceNames = serviceNames;
     }
 
-    // CombinedDomainXYPlotFactoryServiceMBean‚ÌJavaDoc
+    // CombinedDomainXYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getDomainAxisServiceNames() {
         return domainAxisServiceNames;
     }
@@ -141,12 +141,12 @@ public class CombinedDomainXYPlotFactoryService extends XYPlotFactoryService
         CombinedDomainXYPlot combinedPlot =
             (CombinedDomainXYPlot) super.copyXYPlot();
         
-        // ƒTƒuƒvƒƒbƒg‚ÌŠÔŠu
+        // ã‚µãƒ–ãƒ—ãƒ­ãƒƒãƒˆã®é–“éš”
         combinedPlot.setGap(((CombinedDomainXYPlot) tmpPlot).getGap());
         return combinedPlot;
     }
 
-    // PlotFactory‚ÌJavaDoc
+    // PlotFactoryã®JavaDoc
     public Plot createPlot(PlotCondition[] plotConditions)
         throws PlotCreateException {
         CombinedDomainXYPlot combinedPlot = (CombinedDomainXYPlot) copyXYPlot();
@@ -173,7 +173,7 @@ public class CombinedDomainXYPlotFactoryService extends XYPlotFactoryService
                     (ValueAxis) ServiceManagerFactory.getServiceObject(domainAxisServiceNames[i]);
 
                 if (xyPlotCondition != null) {
-                    // ‰¡²ƒ‰ƒxƒ‹ƒtƒHƒ“ƒg
+                    // æ¨ªè»¸ãƒ©ãƒ™ãƒ«ãƒ•ã‚©ãƒ³ãƒˆ
                     if (xyPlotCondition.getDefaultDomainAxisLabelFontName() != null
                         || xyPlotCondition.getDefaultDomainAxisLabelFontStyle() != Integer.MIN_VALUE
                         || xyPlotCondition.getDefaultDomainAxisLabelFontSize() != Integer.MIN_VALUE
@@ -200,7 +200,7 @@ public class CombinedDomainXYPlotFactoryService extends XYPlotFactoryService
                         );
                     }
 
-                    // ‰¡²Tickƒ‰ƒxƒ‹ƒtƒHƒ“ƒg
+                    // æ¨ªè»¸Tickãƒ©ãƒ™ãƒ«ãƒ•ã‚©ãƒ³ãƒˆ
                     if (xyPlotCondition.getDefaultDomainAxisTickLabelFontName() != null
                         || xyPlotCondition.getDefaultDomainAxisTickLabelFontStyle() != Integer.MIN_VALUE
                         || xyPlotCondition.getDefaultDomainAxisTickLabelFontSize() != Integer.MIN_VALUE
@@ -233,7 +233,7 @@ public class CombinedDomainXYPlotFactoryService extends XYPlotFactoryService
         }
 
         if (getTickUnitAdjusters() != null) {
-            // –Ú·‚è’²ß
+            // ç›®ç››ã‚Šèª¿ç¯€
             TickUnitAdjuster[] adjusters = getTickUnitAdjusters();
             for(int i = 0; i < adjusters.length; i++){
                 adjusters[i].adjust(combinedPlot);
@@ -242,52 +242,52 @@ public class CombinedDomainXYPlotFactoryService extends XYPlotFactoryService
         return combinedPlot;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetFactoryServiceNames(ServiceName[] names) {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getDatasetFactoryServiceNames() {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetRendererServiceNames(Properties names) {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public Properties getDatasetRendererServiceNames() {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetDomainAxisNames(Properties names) {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public Properties getDatasetDomainAxisNames() {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetRangeAxisNames(Properties names) {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public Properties getDatasetRangeAxisNames() {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setRangeAxisServiceNames(ServiceName[] serviceNames) {
         throw new UnsupportedOperationException();
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getRangeAxisServiceNames() {
         throw new UnsupportedOperationException();
     }

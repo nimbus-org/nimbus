@@ -34,8 +34,8 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * “o˜^ó‘Ô‚ğ’Ê’m‚·‚éƒCƒxƒ“ƒgB<p>
- * {@link RegistrationBroadcaster}‚ªŠÇ—‚·‚éƒIƒuƒWƒFƒNƒg‚ªA“o˜^‚Ü‚½‚Ííœ‚³‚ê‚½–‚ğARegistrationBroadcaster‚É“o˜^‚³‚ê‚½{@link RegistrationListener}‚É’Ê’m‚·‚é‚½‚ß‚ÌƒCƒxƒ“ƒg‚Å‚ ‚éB<br>
+ * ç™»éŒ²çŠ¶æ…‹ã‚’é€šçŸ¥ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã€‚<p>
+ * {@link RegistrationBroadcaster}ãŒç®¡ç†ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã€ç™»éŒ²ã¾ãŸã¯å‰Šé™¤ã•ã‚ŒãŸäº‹ã‚’ã€RegistrationBroadcasterã«ç™»éŒ²ã•ã‚ŒãŸ{@link RegistrationListener}ã«é€šçŸ¥ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ™ãƒ³ãƒˆã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see RegistrationBroadcaster
@@ -46,18 +46,18 @@ public class RegistrationEvent extends EventObject{
     private static final long serialVersionUID = 4756863502680600441L;
     
     /**
-     * “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ‚ÂƒCƒxƒ“ƒg‚ğ¶¬‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒã¤ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param obj “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
+     * @param obj ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public RegistrationEvent(Object obj){
         super(obj);
     }
     
     /**
-     * “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
+     * @return ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getRegistration(){
         return source;

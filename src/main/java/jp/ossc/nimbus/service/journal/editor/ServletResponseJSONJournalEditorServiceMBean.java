@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link ServletResponseJSONJournalEditorService}のMBeanインタフェース<p>
+ * {@link ServletResponseJSONJournalEditorService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see ServletResponseJSONJournalEditorService

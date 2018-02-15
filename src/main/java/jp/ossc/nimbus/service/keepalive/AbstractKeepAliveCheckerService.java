@@ -40,7 +40,7 @@ import jp.ossc.nimbus.daemon.DaemonControl;
 import jp.ossc.nimbus.daemon.DaemonRunnable;
 
 /**
- * {@link KeepAliveChecker}ƒCƒ“ƒ^ƒtƒF[ƒX’ŠÛƒT[ƒrƒXB<p>
+ * {@link KeepAliveChecker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹æŠ½è±¡ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -50,14 +50,14 @@ public abstract class AbstractKeepAliveCheckerService extends ServiceBase
     private static final long serialVersionUID = 7701584736922165397L;
     
     /**
-     * ’èŠú“I‚É{@link KeepAliveChecker}‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu[ms]B<p>
+     * å®šæœŸçš„ã«{@link KeepAliveChecker}ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”[ms]ã€‚<p>
      */
     protected long checkInterval = -1L;
     
     protected long lastCheckTime = -1L;
     
     /**
-     * ’èŠú“I‚É¶‘¶Šm”F‚ğs‚¤ƒf[ƒ‚ƒ“ƒXƒŒƒbƒhB<p>
+     * å®šæœŸçš„ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã€‚<p>
      */
     protected Daemon keepAliveChecker;
     
@@ -149,7 +149,7 @@ public abstract class AbstractKeepAliveCheckerService extends ServiceBase
     
     public void postStopService() throws Exception{
         if(keepAliveChecker != null){
-            // ƒf[ƒ‚ƒ“’â~
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
             keepAliveChecker.stop();
             keepAliveChecker = null;
         }

@@ -72,7 +72,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * •ªU‹¤—LƒRƒ“ƒeƒLƒXƒgB<p>
+ * åˆ†æ•£å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
@@ -443,18 +443,18 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         indexMap = Collections.synchronizedMap(new HashMap());
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(sharedContextKeyDistributorServiceName == null){
@@ -597,9 +597,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(serverConnection != null){
@@ -626,10 +626,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         indexMap = null;
@@ -684,7 +684,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                 }
@@ -966,7 +966,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             }catch(Error e){
                                 throw e;
                             }catch(Throwable th){
-                                // ‹N‚«‚È‚¢‚Í‚¸
+                                // èµ·ããªã„ã¯ãš
                                 throw new SharedContextSendException(th);
                             }
                         }
@@ -1210,7 +1210,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                 }
@@ -1274,7 +1274,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                 }
@@ -1326,7 +1326,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                 }
@@ -1372,7 +1372,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                 }
@@ -1420,7 +1420,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                 }
@@ -1479,7 +1479,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                     result.add(asynchContext.getOutput());
@@ -1569,7 +1569,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                     result.addAll((Set)asynchContext.getOutput());
@@ -1632,7 +1632,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                     result += ((Integer)asynchContext.getOutput()).intValue();
@@ -1716,7 +1716,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(Error e){
                         throw e;
                     }catch(Throwable th){
-                        // ‹N‚«‚È‚¢‚Í‚¸
+                        // èµ·ããªã„ã¯ãš
                         throw new SharedContextSendException(th);
                     }
                     if(((Boolean)asynchContext.getOutput()).booleanValue()){
@@ -2932,7 +2932,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -2989,7 +2989,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3046,7 +3046,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3114,7 +3114,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3182,7 +3182,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3248,7 +3248,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3314,7 +3314,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3380,7 +3380,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3446,7 +3446,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3514,7 +3514,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3580,7 +3580,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3648,7 +3648,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3714,7 +3714,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3784,7 +3784,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3854,7 +3854,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3925,7 +3925,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -3993,7 +3993,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -4063,7 +4063,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -4131,7 +4131,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -4205,7 +4205,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }
@@ -4279,7 +4279,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         }catch(Error e){
                             throw e;
                         }catch(Throwable th){
-                            // ‹N‚«‚È‚¢‚Í‚¸
+                            // èµ·ããªã„ã¯ãš
                             throw new SharedContextSendException(th);
                         }
                     }

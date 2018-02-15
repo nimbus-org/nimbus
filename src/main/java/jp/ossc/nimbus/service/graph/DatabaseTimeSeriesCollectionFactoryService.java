@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.ConnectionFactoryException;
 
 /**
- * ƒf[ƒ^ƒx[ƒXTimeSeriesCollectionƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹TimeSeriesCollectionãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -63,169 +63,169 @@ public class DatabaseTimeSeriesCollectionFactoryService
     
     private static final long serialVersionUID = 62063250205247679L;
     
-    // ’è”
-    /** ƒZƒpƒŒ[ƒ^ [=] */
+    // å®šæ•°
+    /** ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ [=] */
     protected static final String SEPARATOR = "=";
     
-    /** ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒª */
     protected ConnectionFactory connFactory;
-    /** [ƒVƒŠ[ƒY–¼=SQL]‚Ì•¶š—ñ”z—ñ */
+    /** [ã‚·ãƒªãƒ¼ã‚ºå=SQL]ã®æ–‡å­—åˆ—é…åˆ— */
     protected String[] sqls;
-    /** ƒf[ƒ^ƒZƒbƒgğŒ‚ÌƒŠƒXƒg */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®ãƒªã‚¹ãƒˆ */
     protected List dsConditionList;
-    /** ƒL[‚ÉƒVƒŠ[ƒY–¼A’l‚ÉSQL‚Ìƒ}ƒbƒv */
+    /** ã‚­ãƒ¼ã«ã‚·ãƒªãƒ¼ã‚ºåã€å€¤ã«SQLã®ãƒãƒƒãƒ— */
     protected Map seriesSqlMap;
-    /** ƒtƒFƒbƒ`ƒTƒCƒY */
+    /** ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º */
     protected int fetchSize = DEFAULT_FETCH_SIZE;
     
-    /** ƒJƒ‰ƒ€–¼ : “ú•t */
+    /** ã‚«ãƒ©ãƒ å : æ—¥ä»˜ */
     protected String dateColumnName;
-    /** ƒJƒ‰ƒ€–¼ :  */
+    /** ã‚«ãƒ©ãƒ å : æ™‚åˆ» */
     protected String timeColumnName;
-    /** ƒJƒ‰ƒ€–¼ : ’l */
+    /** ã‚«ãƒ©ãƒ å : å€¤ */
     protected String valueColumnName;
     
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : “ú•t */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : æ—¥ä»˜ */
     protected int dateColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX :  */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : æ™‚åˆ» */
     protected int timeColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : ’l */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : å€¤ */
     protected int valueColumnIndex = -1;
     
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ */
     protected String dateFormatPattern;
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName dateFormatServiceName;
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionFactory(ConnectionFactory connFactory){
         this.connFactory = connFactory;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public ConnectionFactory getConnectionFactory(){
         return connFactory;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setSqls(String[] sqls){
         this.sqls = sqls;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String[] getSqls(){
         return sqls;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setFetchSize(int size){
         fetchSize = size;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public int getFetchSize(){
         return fetchSize;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setDateFormatPattern(String pattern){
         dateFormatPattern = pattern;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getDateFormatPattern(){
         return dateFormatPattern;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setDateFormatServiceName(ServiceName serviceName){
         dateFormatServiceName = serviceName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getDateFormatServiceName(){
         return dateFormatServiceName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setDateColumnName(String columnName){
         dateColumnName = columnName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getDateColumnName(){
         return dateColumnName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setDateColumnIndex(int index){
         dateColumnIndex = index;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public int getDateColumnIndex(){
         return dateColumnIndex;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setTimeColumnName(String columnName){
         timeColumnName = columnName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getTimeColumnName(){
         return timeColumnName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setTimeColumnIndex(int index){
         timeColumnIndex = index;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public int getTimeColumnIndex(){
         return timeColumnIndex;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setValueColumnName(String columnName){
         valueColumnName = columnName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getValueColumnName(){
         return valueColumnName;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setValueColumnIndex(int index){
         valueColumnIndex = index;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public int getValueColumnIndex(){
         return valueColumnIndex;
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void addDatasetCondition(DatasetCondition dsCondition){
         dsConditionList.add(dsCondition);
     }
     
-    // DatabaseTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public DatasetCondition[] getDatasetConditions(){
         return (DatasetCondition[]) dsConditionList.toArray(
             new DatasetCondition[dsConditionList.size()]
         );
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception{
         dsConditionList = new ArrayList();
         seriesSqlMap = new LinkedHashMap();
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception{
         
         if(connFactory == null){
@@ -250,7 +250,7 @@ public class DatabaseTimeSeriesCollectionFactoryService
             
             String seriesName = seriesSql.substring(0, index);
             String sql = seriesSql.substring(index + 1);
-            // ƒL[‚ÉƒVƒŠ[ƒY–¼, ’l‚ÉSQL
+            // ã‚­ãƒ¼ã«ã‚·ãƒªãƒ¼ã‚ºå, å€¤ã«SQL
             seriesSqlMap.put(seriesName, sql);
         }
         
@@ -272,12 +272,12 @@ public class DatabaseTimeSeriesCollectionFactoryService
         }
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void stopService() throws Exception{
         seriesSqlMap.clear();
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception{
         dsConditionList = null;
         seriesSqlMap = null;
@@ -293,12 +293,12 @@ public class DatabaseTimeSeriesCollectionFactoryService
             dateFormat = new SimpleDateFormat(dateFormatPattern);
         }
         
-        // ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—
         Connection conn = null;
         try{
             conn = connFactory.getConnection();
         }catch(ConnectionFactoryException e){
-            // ƒRƒlƒNƒVƒ‡ƒ“æ“¾¸”s
+            // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³å–å¾—å¤±æ•—
             throw new DatasetCreateException("Dataset [" + getName() + "]", e);
         }
         DatasetConnection connection = new DatabaseTimeSeriesDatasetConnection(
@@ -308,7 +308,7 @@ public class DatabaseTimeSeriesCollectionFactoryService
         
         Iterator itr = seriesSqlMap.keySet().iterator();
         while(itr.hasNext()){
-            // ƒVƒŠ[ƒY
+            // ã‚·ãƒªãƒ¼ã‚º
             String series = (String)itr.next();
             DatabaseTimeSeriesCursor cursor = new DatabaseTimeSeriesCursor(
                 series,
@@ -385,7 +385,7 @@ public class DatabaseTimeSeriesCollectionFactoryService
             if(condition instanceof DatabaseDatasetCondition){
                 DatabaseDatasetCondition dbDsCondition = (DatabaseDatasetCondition)condition;
                 try{
-                    // ƒpƒ‰ƒ[ƒ^ƒƒ^ƒf[ƒ^
+                    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
                     ParameterMetaData paramMetaData = pstmt.getParameterMetaData();
                     if(paramMetaData == null){
                         throw new DatasetCreateException(
@@ -393,7 +393,7 @@ public class DatabaseTimeSeriesCollectionFactoryService
                         );
                     }
                     
-                    // ’l‚ğPreparedStatement‚Éİ’è
+                    // å€¤ã‚’PreparedStatementã«è¨­å®š
                     for(int i = 0, imax = paramMetaData.getParameterCount(); i < imax; i++){
                         Object paramObj = dbDsCondition.getParamObject(i);
                         if(paramObj != null){
@@ -455,7 +455,7 @@ public class DatabaseTimeSeriesCollectionFactoryService
                     
                     date = dateFormat.parse(dateStr);
                     if(isTimeOnly){
-                        // ‚Ì‚İ‚¾‚Á‚½ê‡A“ú•t‚ğ¡“ú‚Éİ’è
+                        // æ™‚åˆ»ã®ã¿ã ã£ãŸå ´åˆã€æ—¥ä»˜ã‚’ä»Šæ—¥ã«è¨­å®š
                         Calendar cal = Calendar.getInstance();
                         int year = cal.get(Calendar.YEAR);
                         int month = cal.get(Calendar.MONTH);

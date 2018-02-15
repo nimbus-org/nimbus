@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.cache;
 import java.io.Serializable;
 
 /**
- * ƒƒ‚ƒŠƒLƒƒƒbƒVƒ…ƒtƒ@ƒNƒgƒŠB<p>
- * {@link MemoryCacheService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ¡ãƒ¢ãƒªã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link MemoryCacheService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see MemoryCacheService
@@ -46,10 +46,10 @@ public class MemoryCacheFactoryService
     private static final long serialVersionUID = -6087237803812241423L;
     
     /**
-     * {@link MemoryCacheService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link MemoryCacheService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return MemoryCacheServiceƒT[ƒrƒX
-     * @exception Exception MemoryCacheService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return MemoryCacheServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception MemoryCacheServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see MemoryCacheService
      */
     protected AbstractCacheService createAbstractCacheService()

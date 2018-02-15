@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.resource.jms;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMSSessionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JMSSessionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JMSSessionFactoryService
@@ -42,24 +42,24 @@ import jp.ossc.nimbus.core.*;
 public interface JMSSessionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSSessionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSSessionFactoryServiceName();
     
     /**
-     * MessageConsumer‚âJMSƒNƒ‰ƒCƒAƒ“ƒg‚ªƒƒbƒZ[ƒW‚ğóM‚µ‚½‚ÌACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * {@link #setAcknowledgeMode(int)}A{@link #setTransactionMode(boolean)}‚Ì—¼•û‚ğİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍA{@link jp.ossc.nimbus.service.jms.JMSSessionFactory}‚Ìİ’è‚É]‚¤B{@link #setTransactionMode(boolean)}‚¾‚¯İ’è‚µ‚½ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Å{@link javax.jms.Session#AUTO_ACKNOWLEDGE}B<br>
+     * MessageConsumerã‚„JMSã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ãŸæ™‚ã®ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setAcknowledgeMode(int)}ã€{@link #setTransactionMode(boolean)}ã®ä¸¡æ–¹ã‚’è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ã€{@link jp.ossc.nimbus.service.jms.JMSSessionFactory}ã®è¨­å®šã«å¾“ã†ã€‚{@link #setTransactionMode(boolean)}ã ã‘è¨­å®šã—ãŸå ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§{@link javax.jms.Session#AUTO_ACKNOWLEDGE}ã€‚<br>
      *
-     * @param mode ACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh•¶š—ñ
+     * @param mode ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰æ–‡å­—åˆ—
      * @see javax.jms.Session#AUTO_ACKNOWLEDGE
      * @see javax.jms.Session#CLIENT_ACKNOWLEDGE
      * @see javax.jms.Session#DUPS_OK_ACKNOWLEDGE
@@ -67,24 +67,24 @@ public interface JMSSessionFactoryServiceMBean extends ServiceBaseMBean{
     public void setAcknowledgeMode(int mode);
     
     /**
-     * MessageConsumer‚âJMSƒNƒ‰ƒCƒAƒ“ƒg‚ªƒƒbƒZ[ƒW‚ğóM‚µ‚½‚ÌACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * MessageConsumerã‚„JMSã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ãŸæ™‚ã®ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh•¶š—ñ
+     * @return ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public int getAcknowledgeMode();
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * {@link #setAcknowledgeMode(int)}A{@link #setTransactionMode(boolean)}‚Ì—¼•û‚ğİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍA{@link jp.ossc.nimbus.service.jms.JMSSessionFactory}‚Ìİ’è‚É]‚¤B{@link #setTransactionMode(boolean)}‚¾‚¯İ’è‚µ‚½ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÅfalseB<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setAcknowledgeMode(int)}ã€{@link #setTransactionMode(boolean)}ã®ä¸¡æ–¹ã‚’è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ã€{@link jp.ossc.nimbus.service.jms.JMSSessionFactory}ã®è¨­å®šã«å¾“ã†ã€‚{@link #setTransactionMode(boolean)}ã ã‘è¨­å®šã—ãŸå ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§falseã€‚<br>
      *
-     * @param isTransacted ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚éê‡Atrue
+     * @param isTransacted ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã€true
      */
     public void setTransactionMode(boolean isTransacted);
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚é
+     * @return trueã®å ´åˆã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹
      */
     public boolean getTransactionMode();
 }

@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link SelectableServletFilterInterceptorChainListService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SelectableServletFilterInterceptorChainListService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SelectableServletFilterInterceptorChainListService
@@ -45,106 +45,106 @@ public interface SelectableServletFilterInterceptorChainListServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * w’è‚µ‚½URL‚É‡’v‚µ‚½ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
-     * ƒŠƒNƒGƒXƒgURL‚ªw’è‚³‚ê‚½URL‚ÉŠY“–‚·‚éê‡‚ÉA‚»‚ÌURL‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½InterceptorChainListƒT[ƒrƒX‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸURLã«åˆè‡´ã—ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆURLãŒæŒ‡å®šã•ã‚ŒãŸURLã«è©²å½“ã™ã‚‹å ´åˆã«ã€ãã®URLã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param mapping URLi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBURL=ƒT[ƒrƒX–¼
+     * @param mapping URLï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚URL=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEnabledURLMapping(Map mapping);
     
     /**
-     * w’è‚µ‚½URL‚É‡’v‚µ‚½ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURLã«åˆè‡´ã—ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return URLi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return URLï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getEnabledURLMapping();
     
     /**
-     * w’è‚µ‚½URI‚É‡’v‚µ‚½ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
-     * ƒŠƒNƒGƒXƒgURI‚ªw’è‚³‚ê‚½URI‚ÉŠY“–‚·‚éê‡‚ÉA‚»‚ÌURI‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½InterceptorChainListƒT[ƒrƒX‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸURIã«åˆè‡´ã—ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆURIãŒæŒ‡å®šã•ã‚ŒãŸURIã«è©²å½“ã™ã‚‹å ´åˆã«ã€ãã®URIã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param mapping URIi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBURI=ƒT[ƒrƒX–¼
+     * @param mapping URIï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚URI=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEnabledURIMapping(Map mapping);
     
     /**
-     * w’è‚µ‚½URI‚É‡’v‚µ‚½ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURIã«åˆè‡´ã—ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return URIi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return URIï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getEnabledURIMapping();
     
     /**
-     * w’è‚µ‚½ƒŠƒNƒGƒXƒgƒT[ƒuƒŒƒbƒgƒpƒX‚É‡’v‚µ‚½ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
-     * ƒŠƒNƒGƒXƒgƒT[ƒuƒŒƒbƒgƒpƒX‚ªw’è‚³‚ê‚½ƒT[ƒuƒŒƒbƒgƒpƒX‚ÉŠY“–‚·‚éê‡‚ÉA‚»‚ÌƒT[ƒuƒŒƒbƒgƒpƒX‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½InterceptorChainListƒT[ƒrƒX‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«åˆè‡´ã—ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ãŒæŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«è©²å½“ã™ã‚‹å ´åˆã«ã€ãã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param mapping ƒT[ƒuƒŒƒbƒgƒpƒXi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒT[ƒuƒŒƒbƒgƒpƒX=ƒT[ƒrƒX–¼
+     * @param mapping ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEnabledPathMapping(Map mapping);
     
     /**
-     * w’è‚µ‚½ƒŠƒNƒGƒXƒgƒT[ƒuƒŒƒbƒgƒpƒX‚É‡’v‚µ‚½ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«åˆè‡´ã—ãŸå ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒuƒŒƒbƒgƒpƒXi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getEnabledPathMapping();
     
     /**
-     * w’è‚µ‚½URL‚É‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
-     * URL‚ªw’è‚³‚ê‚½URL‚ÉŠY“–‚µ‚È‚¢ê‡‚ÉA‚»‚ÌURL‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½InterceptorChainListƒT[ƒrƒX‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸURLã«åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * URLãŒæŒ‡å®šã•ã‚ŒãŸURLã«è©²å½“ã—ãªã„å ´åˆã«ã€ãã®URLã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param mapping URLi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBURL=ƒT[ƒrƒX–¼
+     * @param mapping URLï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚URL=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDisabledURLMapping(Map mapping);
     
     /**
-     * w’è‚µ‚½URL‚É‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURLã«åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return URLi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return URLï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getDisabledURLMapping();
     
     /**
-     * w’è‚µ‚½URI‚É‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
-     * URI‚ªw’è‚³‚ê‚½URI‚ÉŠY“–‚µ‚È‚¢ê‡‚ÉA‚»‚ÌURI‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½InterceptorChainListƒT[ƒrƒX‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸURIã«åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * URIãŒæŒ‡å®šã•ã‚ŒãŸURIã«è©²å½“ã—ãªã„å ´åˆã«ã€ãã®URIã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param mapping URIi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBURI=ƒT[ƒrƒX–¼
+     * @param mapping URIï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚URI=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDisabledURIMapping(Map mapping);
     
     /**
-     * w’è‚µ‚½URI‚É‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURIã«åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return URIi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return URIï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getDisabledURIMapping();
     
     /**
-     * w’è‚µ‚½ƒŠƒNƒGƒXƒgƒT[ƒuƒŒƒbƒgƒpƒX‚É‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
-     * ƒŠƒNƒGƒXƒgƒT[ƒuƒŒƒbƒgƒpƒX‚ªw’è‚³‚ê‚½ƒT[ƒuƒŒƒbƒgƒpƒX‚ÉŠY“–‚µ‚È‚¢ê‡‚ÉA‚»‚ÌƒT[ƒuƒŒƒbƒgƒpƒX‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½InterceptorChainListƒT[ƒrƒX‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ãŒæŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«è©²å½“ã—ãªã„å ´åˆã«ã€ãã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param mapping ƒT[ƒuƒŒƒbƒgƒpƒXi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒT[ƒuƒŒƒbƒgƒpƒX=ƒT[ƒrƒX–¼
+     * @param mapping ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDisabledPathMapping(Map mapping);
     
     /**
-     * w’è‚µ‚½ƒŠƒNƒGƒXƒgƒT[ƒuƒŒƒbƒgƒpƒX‚É‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚é{@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ã«åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒuƒŒƒbƒgƒpƒXi³‹K•\Œ»j‚ÆInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹ï¼ˆæ­£è¦è¡¨ç¾ï¼‰ã¨InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getDisabledPathMapping();
     
     /**
-     * ŠY“–‚·‚é{@link InterceptorChainList}‚ª‘¶İ‚µ‚È‚¢ê‡‚É‘I‘ğ‚³‚ê‚éInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * è©²å½“ã™ã‚‹{@link InterceptorChainList}ãŒå­˜åœ¨ã—ãªã„å ´åˆã«é¸æŠã•ã‚Œã‚‹InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultInterceptorChainListServiceName(ServiceName name);
     
     /**
-     * ŠY“–‚·‚é{@link InterceptorChainList}‚ª‘¶İ‚µ‚È‚¢ê‡‚É‘I‘ğ‚³‚ê‚éInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * è©²å½“ã™ã‚‹{@link InterceptorChainList}ãŒå­˜åœ¨ã—ãªã„å ´åˆã«é¸æŠã•ã‚Œã‚‹InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultInterceptorChainListServiceName();
 }

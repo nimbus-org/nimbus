@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author S.Teshima
- * @version 1.00 ì¬: 2008/01/28 - S.Teshima
+ * @version 1.00 ä½œæˆ: 2008/01/28 - S.Teshima
  */
 
 public class DataSetXMLConverterTest extends TestCase {
@@ -22,15 +22,15 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * DataSetXMLConverterƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * DataSetXMLConverterã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter()‚ğÀs‚·‚é</li>
+	 * <li>DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>convertType‚ÉDATASET_TO_XML‚ªİ’è‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>convertTypeã«DATASET_TO_XMLãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testDataSetXMLConverter() {
@@ -40,15 +40,15 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * •ÏŠ·í•Ê‚ğw’è‚µ‚ÄDataSetXMLConverterƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * å¤‰æ›ç¨®åˆ¥ã‚’æŒ‡å®šã—ã¦DataSetXMLConverterã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄADataSetXMLConverter#DataSetXMLConverter()‚ğÀs‚·‚é</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>convertType‚ÉXML_TO_DATASET‚ªİ’è‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>convertTypeã«XML_TO_DATASETãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testDataSetXMLConverterInt() {
@@ -58,16 +58,16 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * •ÏŠ·í•Ê‚ğİ’è‚·‚éƒeƒXƒgB
+	 * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄADataSetXMLConverter#DataSetXMLConverter()‚ğÀs‚·‚é</li>
-	 * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#setConvertType(int type)‚ğÀs‚·‚é</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#setConvertType(int type)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>convertType‚ÉDATASET_TO_XML‚ªİ’è‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>convertTypeã«DATASET_TO_XMLãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetConvertType() {
@@ -79,17 +79,17 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg–¼‚Æƒf[ƒ^ƒZƒbƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>DataSetADataSetXMLConverter‚ÌŠeƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>ƒf[ƒ^ƒZƒbƒg–¼‚É"ds"Aƒf[ƒ^ƒZƒbƒg‚É¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX–¼‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#setDataSet(String name, DataSet dataSet)‚ğÀs‚·‚é</li>
+	 * <li>DataSetã€DataSetXMLConverterã®å„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã«"ds"ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#setDataSet(String name, DataSet dataSet)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>dataSetMap‚Éw’è‚µ‚½’l‚ªİ’è‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>dataSetMapã«æŒ‡å®šã—ãŸå€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetDataSet() {
@@ -101,16 +101,16 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter()‚ğÀs‚·‚é</li>
-	 * <li>isOutput‚Étrue‚ğw’è‚µ‚ÄADataSetXMLConverter#setOutputSchema()‚ğÀs‚·‚é</li>
+	 * <li>DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>isOutputã«trueã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#setOutputSchema()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#isOutputSchema()‚ªtrue‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>DataSetXMLConverter#isOutputSchema()ãŒtrueã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetOutputSchema() {
@@ -121,16 +121,16 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter()‚ğÀs‚·‚é</li>
-	 * <li>path‚É"C:\XSL\Test.xsl"‚ğw’è‚µ‚ÄADataSetXMLConverter#setXSLFilePath(String path)‚ğÀs‚·‚é</li>
+	 * <li>DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>pathã«"C:\XSL\Test.xsl"ã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#setXSLFilePath(String path)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#getXSLFilePath()‚Å"C:\XSL\Test.xsl"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>DataSetXMLConverter#getXSLFilePath()ã§"C:\XSL\Test.xsl"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetXSLFilePath() {
@@ -141,16 +141,16 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * ƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter()‚ğÀs‚·‚é</li>
-	 * <li>•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚É"UTF-8"‚ğw’è‚µ‚ÄADataSetXMLConverter#DataSetXMLConverter()‚ğÀs‚·‚é</li>
+	 * <li>DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã«"UTF-8"ã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#getCharacterEncodingToStream()‚Å"UTF-8"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>DataSetXMLConverter#getCharacterEncodingToStream()ã§"UTF-8"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetCharacterEncodingToStream() {
@@ -161,16 +161,16 @@ public class DataSetXMLConverterTest extends TestCase {
 
 
 	/**
-	 * XML¨ƒf[ƒ^ƒZƒbƒgXML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éƒeƒXƒgB
+	 * XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆXMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter()‚ğÀs‚·‚é</li>
-	 * <li>•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚É"UTF-8"‚ğw’è‚µ‚ÄADataSetXMLConverter#setCharacterEncodingToObject()‚ğÀs‚·‚é</li>
+	 * <li>DataSetXMLConverter()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã«"UTF-8"ã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#setCharacterEncodingToObject()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#getCharacterEncodingToObject()‚Å"UTF-8"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>DataSetXMLConverter#getCharacterEncodingToObject()ã§"UTF-8"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetCharacterEncodingToObject() {
@@ -181,25 +181,25 @@ public class DataSetXMLConverterTest extends TestCase {
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "TestHeader"</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",<BR>
 	 *  "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=1;Format="yyyy-MM-DD"}",<BR>
 	 *  "@value@ != null"\n:B,java.lang.String,,,"</li>
-	 * <li>ƒvƒƒpƒeƒB‚`‚É"2008-01-28"‚ğw’è</li>
-	 * <li>ƒvƒƒpƒeƒB‚a‚É"TestValue"‚ğw’è</li>
-	 * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
-	 * <li>¶¬‚µ‚½ƒf[ƒ^ƒZƒbƒg‚ğw’è‚µ‚ÄADataSetXMLConverter#‚ğÀs‚·‚é</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"2008-01-28"ã‚’æŒ‡å®š</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"TestValue"ã‚’æŒ‡å®š</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ç”Ÿæˆã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#conv.convert()‚ÅŸ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
+	 * <li>DataSetXMLConverter#conv.convert()ã§æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -236,7 +236,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			String s;
 			StringBuffer sb = new StringBuffer();
-			//‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+			//æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
 			while ((s = br.readLine()) != null){
 				sb.append(s);
 			}
@@ -252,40 +252,40 @@ public class DataSetXMLConverterTest extends TestCase {
 									"<A>2008-01-28</A><B>TestValue</B></header></dataSet>"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "TestHeader"</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",<BR>
 	 *  "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",<BR>
 	 *  "@value@ != null"\n:B,java.lang.String,,,\n:C,java.lang.String,,,"</li>
-	 * <li>ƒvƒƒpƒeƒB‚`‚É"2008-01-28"‚ğw’è</li>
-	 * <li>ƒvƒƒpƒeƒB‚a‚ÉNull‚ğw’è</li>
-	 * <li>ƒvƒƒpƒeƒB‚b‚É"TestValue"‚ğw’è</li>
-	 * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
-	 * <li>¶¬‚µ‚½ƒf[ƒ^ƒZƒbƒg‚ğw’è‚µ‚ÄADataSetXMLConverter#‚ğÀs‚·‚é</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"2008-01-28"ã‚’æŒ‡å®š</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«Nullã‚’æŒ‡å®š</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼£ã«"TestValue"ã‚’æŒ‡å®š</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ç”Ÿæˆã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#conv.convert()‚ÅŸ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-	 * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)
+	 * <li>DataSetXMLConverter#conv.convert()ã§æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -324,7 +324,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			String s;
 			StringBuffer sb = new StringBuffer();
-			//‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+			//æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
 			while ((s = br.readLine()) != null){
 				sb.append(s);
 			}
@@ -340,13 +340,13 @@ public class DataSetXMLConverterTest extends TestCase {
 									"<A>2008-01-28</A><C>TestValue</C></header></dataSet>"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
@@ -354,23 +354,23 @@ public class DataSetXMLConverterTest extends TestCase {
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "TestHeader"</li>
 	 * <li>"LIST:HrList,\"HrList\""</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":A,java.lang.String\n:B,java.lang.String"</li>
-	 * <li>ƒvƒƒpƒeƒB‚`‚É"a"‚ğw’è</li>
-	 * <li>ƒvƒƒpƒeƒB‚a‚É"b"‚ğw’è</li>
-	 * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":A,java.lang.String\n:B,java.lang.String"</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"a"ã‚’æŒ‡å®š</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"b"ã‚’æŒ‡å®š</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#conv.convert()‚ÅŸ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-	 * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)
+	 * <li>DataSetXMLConverter#conv.convert()ã§æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -391,19 +391,19 @@ public class DataSetXMLConverterTest extends TestCase {
 	public void testConvertToXMLWithHeaderNestedRecordList() {
 		try {
 			DataSet dataset = new DataSet();
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("HrList", ":A,java.lang.String\n:B,java.lang.String");
 			
 			String hname = "TestHeader";
 			String schema = "LIST:HrList,HrList";
 			dataset.setHeaderSchema(hname, schema);
-            //Header‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //Headerã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList HrList = dataset.createNestedRecordList("HrList");
             Record nrec1 = HrList.createRecord();
             nrec1.setProperty("A", "a");
             nrec1.setProperty("B", "b");
             HrList.addRecord(nrec1);
-            //Header‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //Headerã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
             Header header = dataset.getHeader(hname);
             header.setProperty("HrList", HrList);
 			
@@ -414,7 +414,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			String s;
 			StringBuffer sb = new StringBuffer();
-			//‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+			//æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
 			while ((s = br.readLine()) != null){
 				sb.append(s);
 			}
@@ -428,13 +428,13 @@ public class DataSetXMLConverterTest extends TestCase {
                     "</header></dataSet>"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
@@ -442,42 +442,42 @@ public class DataSetXMLConverterTest extends TestCase {
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestHeader"</li>
      * <li>"LIST:HrList,HrList\n:C,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í"c"‚ğİ’è</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":A,java.lang.String\n:B,java.lang.String"</li>
-     * <li>ƒvƒƒpƒeƒB‚`‚É"a"‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒB‚a‚É"b"‚ğw’è</li>
-     * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯"c"ã‚’è¨­å®š</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":A,java.lang.String\n:B,java.lang.String"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"a"ã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"b"ã‚’æŒ‡å®š</li>
+     * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>DataSetXMLConverter#conv.convert()‚Å³‚µ‚¢‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-     * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)</li>
+     * <li>DataSetXMLConverter#conv.convert()ã§æ­£ã—ã„ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+     * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)</li>
      * </ul>
      */
     public void testConvertToXMLWithHeaderNestedRecordList2() {
         try {
             DataSet dataset = new DataSet();
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("HrList", ":A,java.lang.String\n:B,java.lang.String");
             
             String hname = "TestHeader";
             String schema = "LIST:HrList,HrList\n:C,java.lang.String";
             dataset.setHeaderSchema(hname, schema);
-            //Header‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //Headerã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList HrList = dataset.createNestedRecordList("HrList");
             Record nrec1 = HrList.createRecord();
             nrec1.setProperty("A", "a");
             nrec1.setProperty("B", "b");
             HrList.addRecord(nrec1);
-            //Header‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //Headerã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
             Header header = dataset.getHeader(hname);
             header.setProperty("HrList", HrList);
             header.setProperty("C", "c");
@@ -489,7 +489,7 @@ public class DataSetXMLConverterTest extends TestCase {
             
             String s;
             StringBuffer sb = new StringBuffer();
-            //‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+            //æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
             while ((s = br.readLine()) != null){
                 sb.append(s);
             }
@@ -503,13 +503,13 @@ public class DataSetXMLConverterTest extends TestCase {
             		"<C>c</C></header></dataSet>"));
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (IOException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
 
     }
@@ -517,42 +517,42 @@ public class DataSetXMLConverterTest extends TestCase {
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#RecordListSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#RecordListSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestRecList"</li>
      * <li>"LIST:RrList,HrList\n:C,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í"c"‚ğİ’è</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":A,java.lang.String\n:B,java.lang.String"</li>
-     * <li>ƒvƒƒpƒeƒB‚`‚É"a"‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒB‚a‚É"b"‚ğw’è</li>
-     * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯"c"ã‚’è¨­å®š</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":A,java.lang.String\n:B,java.lang.String"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"a"ã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"b"ã‚’æŒ‡å®š</li>
+     * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>DataSetXMLConverter#conv.convert()‚Å³‚µ‚¢‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-     * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)</li>
+     * <li>DataSetXMLConverter#conv.convert()ã§æ­£ã—ã„ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+     * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)</li>
      * </ul>
      */
     public void testConvertToXMLWithRecordListNestedRecordList() {
         try {
             DataSet dataset = new DataSet();
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("RrList", ":A,java.lang.String\n:B,java.lang.String");
             
             String name = "TestRecList";
             String schema = "LIST:RrList,RrList\n:C,java.lang.String";
             dataset.setRecordListSchema(name, schema);
-            //Record‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //Recordã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList RrList = dataset.createNestedRecordList("RrList");
             Record nrec1 = RrList.createRecord();
             nrec1.setProperty("A", "a");
             nrec1.setProperty("B", "b");
             RrList.addRecord(nrec1);
-            //ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
             Record rec = dataset.getRecordList(name).createRecord();
             rec.setProperty("RrList", RrList);
             rec.setProperty("C", "c");
@@ -565,7 +565,7 @@ public class DataSetXMLConverterTest extends TestCase {
             
             String s;
             StringBuffer sb = new StringBuffer();
-            //‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+            //æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
             while ((s = br.readLine()) != null){
                 sb.append(s);
             }
@@ -579,50 +579,50 @@ public class DataSetXMLConverterTest extends TestCase {
                     "</recordList></dataSet>"));
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (IOException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
 
     }
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestHeader"</li>
      * <li>"LIST:HrList,HrList\n:C,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í’l‚ğw’è‚µ‚È‚¢</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":A,java.lang.String\n:B,java.lang.String"</li>
-     * <li>ƒvƒƒpƒeƒB‚`‚É"a"‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒB‚a‚É’l‚ğw’è‚µ‚È‚¢</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#RecordListSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯å€¤ã‚’æŒ‡å®šã—ãªã„</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":A,java.lang.String\n:B,java.lang.String"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"a"ã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«å€¤ã‚’æŒ‡å®šã—ãªã„</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#RecordListSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestRecList"</li>
      * <li>"LIST:RrList,RrList\n:LC,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBLC‚É‚Í’l‚ğw’è‚µ‚È‚¢</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":LA,java.lang.String\n:LB,int"</li>
-     * <li>ƒvƒƒpƒeƒBL‚`‚É"’l‚ğw’è‚µ‚È‚¢</li>
-     * <li>ƒvƒƒpƒeƒBL‚a‚É1‚ğw’è</li>
-     * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£LCã«ã¯å€¤ã‚’æŒ‡å®šã—ãªã„</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":LA,java.lang.String\n:LB,int"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Lï¼¡ã«"å€¤ã‚’æŒ‡å®šã—ãªã„</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Lï¼¢ã«1ã‚’æŒ‡å®š</li>
+     * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>DataSetXMLConverter#conv.convert()‚Å³‚µ‚¢‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-     * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)</li>
+     * <li>DataSetXMLConverter#conv.convert()ã§æ­£ã—ã„ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+     * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)</li>
      * </ul>
      */
     public void testConvertToXMLWithHeaderAndRecordListNestedRecordList() {
         try {
             DataSet dataset = new DataSet();
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("HrList", ":A,java.lang.String\n:B,java.lang.String");
             dataset.setNestedRecordListSchema("RrList", ":LA,java.lang.String\n:LB,int");
             
@@ -631,22 +631,22 @@ public class DataSetXMLConverterTest extends TestCase {
             String rschema = "LIST:RrList,RrList\n:LC,java.lang.String";
             dataset.setSchema(name, hschema, rschema);
 
-            //Header‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //Headerã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList HrList = dataset.createNestedRecordList("HrList");
             Record nrec1 = HrList.createRecord();
             nrec1.setProperty("A", "a");
             HrList.addRecord(nrec1);
-            //Header‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //Headerã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
             Header header = dataset.getHeader(name);
             header.setProperty("HrList", HrList);
 
 
-            //ƒŒƒR[ƒh‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList RrList = dataset.createNestedRecordList("RrList");
             Record nrec2 = RrList.createRecord();
             nrec2.setProperty("LB", 1);
             RrList.addRecord(nrec2);
-            //RecordList‚ğæ“¾‚µ‚ÄƒŒƒR[ƒh‚ÉƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //RecordListã‚’å–å¾—ã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
 
             RecordList rlist = dataset.getRecordList(name);
             Record rec = rlist.createRecord();
@@ -660,7 +660,7 @@ public class DataSetXMLConverterTest extends TestCase {
             
             String s;
             StringBuffer sb = new StringBuffer();
-            //‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+            //æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
             while ((s = br.readLine()) != null){
                 sb.append(s);
             }
@@ -677,13 +677,13 @@ public class DataSetXMLConverterTest extends TestCase {
             		"</recordList></dataSet>"));
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (IOException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
 
     }
@@ -691,37 +691,37 @@ public class DataSetXMLConverterTest extends TestCase {
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestHeader"</li>
      * <li>"LIST:HrList,HrList\n:C,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í"c"‚ğİ’è</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":A,java.lang.String\n:B,java.lang.String"</li>
-     * <li>ƒvƒƒpƒeƒB‚`‚É"a"‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒB‚a‚É"b"‚ğw’è</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#RecordListSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯"c"ã‚’è¨­å®š</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":A,java.lang.String\n:B,java.lang.String"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"a"ã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"b"ã‚’æŒ‡å®š</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#RecordListSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestRecList"</li>
      * <li>"LIST:RrList,RrList\n:LC,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í"c"‚ğİ’è</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":LA,java.lang.String\n:LB,int"</li>
-     * <li>ƒvƒƒpƒeƒBL‚`‚É"la"‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒBL‚a‚É1‚ğw’è</li>
-     * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯"c"ã‚’è¨­å®š</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":LA,java.lang.String\n:LB,int"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Lï¼¡ã«"la"ã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Lï¼¢ã«1ã‚’æŒ‡å®š</li>
+     * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>DataSetXMLConverter#conv.convert()‚Å³‚µ‚¢‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-     * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)</li>
+     * <li>DataSetXMLConverter#conv.convert()ã§æ­£ã—ã„ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+     * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)</li>
      * </ul>
      */
     public void testConvertToXMLWithHeaderAndRecordListNestedRecordList2() {
         try {
             DataSet dataset = new DataSet();
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("HrList", ":A,java.lang.String\n:B,java.lang.String");
             dataset.setNestedRecordListSchema("RrList", ":LA,java.lang.String\n:LB,int");
             
@@ -730,25 +730,25 @@ public class DataSetXMLConverterTest extends TestCase {
             String rschema = "LIST:RrList,RrList\n:LC,java.lang.String";
             dataset.setSchema(name, hschema, rschema);
 
-            //Header‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //Headerã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList HrList = dataset.createNestedRecordList("HrList");
             Record nrec1 = HrList.createRecord();
             nrec1.setProperty("A", "a");
             nrec1.setProperty("B", "b");
             HrList.addRecord(nrec1);
-            //Header‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //Headerã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
             Header header = dataset.getHeader(name);
             header.setProperty("HrList", HrList);
             header.setProperty("C", "c");
 
 
-            //ƒŒƒR[ƒh‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             RecordList RrList = dataset.createNestedRecordList("RrList");
             Record nrec2 = RrList.createRecord();
             nrec2.setProperty("LA", "la");
             nrec2.setProperty("LB", 1);
             RrList.addRecord(nrec2);
-            //RecordList‚ğæ“¾‚µ‚ÄƒŒƒR[ƒh‚ÉƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //RecordListã‚’å–å¾—ã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
 
             RecordList rlist = dataset.getRecordList(name);
             Record rec = rlist.createRecord();
@@ -763,7 +763,7 @@ public class DataSetXMLConverterTest extends TestCase {
             
             String s;
             StringBuffer sb = new StringBuffer();
-            //‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+            //æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
             while ((s = br.readLine()) != null){
                 sb.append(s);
             }
@@ -781,54 +781,54 @@ public class DataSetXMLConverterTest extends TestCase {
             				"</recordList></dataSet>"));
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (IOException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
 
     }
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setHeaderSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setHeaderSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestHeader"</li>
      * <li>"LIST:HrList,HrList\n:C,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í"c"‚ğİ’è</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":A,java.lang.String\n:B,java.lang.String"</li>
-     * <li>ƒvƒƒpƒeƒBHrList2‚ÉƒŒƒR[ƒhƒŠƒXƒg‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒB‚a‚É"b"‚ğw’è</li>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#RecordListSchema(String name, String schema)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯"c"ã‚’è¨­å®š</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":A,java.lang.String\n:B,java.lang.String"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£HrList2ã«ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"b"ã‚’æŒ‡å®š</li>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#RecordListSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>name : "TestRecList"</li>
      * <li>"LIST:RrList,RrList\n:LC,java.lang.String"</li>
-     * <li>’¼‰º‚ÌƒvƒƒpƒeƒBC‚É‚Í"c"‚ğİ’è</li>
-     * <li>ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Í":LA,java.lang.String\n:LB,int"</li>
-     * <li>ƒvƒƒpƒeƒBLRrList2‚ÉRrList2‚ğw’è</li>
-     * <li>ƒvƒƒpƒeƒBL‚a‚É1‚ğw’è</li>
-     * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+     * <li>ç›´ä¸‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Cã«ã¯"c"ã‚’è¨­å®š</li>
+     * <li>ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã¯":LA,java.lang.String\n:LB,int"</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£LRrList2ã«RrList2ã‚’æŒ‡å®š</li>
+     * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Lï¼¢ã«1ã‚’æŒ‡å®š</li>
+     * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>DataSetXMLConverter#conv.convert()‚Å³‚µ‚¢‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
-     * (nullw’è‚ÌƒvƒƒpƒeƒB‚Ío—Í‚³‚ê‚È‚¢‚±‚Æ‚ğŠm”F‚·‚é)</li>
+     * <li>DataSetXMLConverter#conv.convert()ã§æ­£ã—ã„ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+     * (nullæŒ‡å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯å‡ºåŠ›ã•ã‚Œãªã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹)</li>
      * </ul>
      */
     public void testConvertToXMLWithHeaderAndRecordListNestedRecordList3() {
         try {
             DataSet dataset = new DataSet();
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ÉƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("HrList2", ":A,java.lang.String\n:B,int");
             dataset.setNestedRecordListSchema("RrList2", ":A,long\n:B,short");            
 
-            //ƒlƒXƒg‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚ğì‚é
+            //ãƒã‚¹ãƒˆã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œã‚‹
             dataset.setNestedRecordListSchema("HrList", "LIST:HrList2,HrList2\n:B,java.lang.String");
             dataset.setNestedRecordListSchema("RrList", "LIST:RrList2,RrList2\n:LB,int");            
             
@@ -837,29 +837,29 @@ public class DataSetXMLConverterTest extends TestCase {
             String rschema = "LIST:RrList,RrList\n:LC,java.lang.String";
             dataset.setSchema(name, hschema, rschema);
 
-            //Header‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //Headerã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             
-            //ƒlƒXƒg‚ÌƒlƒXƒg
+            //ãƒã‚¹ãƒˆã®ãƒã‚¹ãƒˆ
             RecordList HrList2 = dataset.createNestedRecordList("HrList2");
             Record nnrec1 = HrList2.createRecord();
             nnrec1.setProperty("A", "a");
             nnrec1.setProperty("B", 999);
             HrList2.addRecord(nnrec1);
 
-            //Header‚É’l‚ğİ’è
+            //Headerã«å€¤ã‚’è¨­å®š
             RecordList HrList = dataset.createNestedRecordList("HrList");
             Record nrec1 = HrList.createRecord();
             nrec1.setProperty("HrList2", HrList2);
             nrec1.setProperty("B", "b");
             HrList.addRecord(nrec1);
-            //Header‚ğæ“¾‚µ‚ÄƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //Headerã‚’å–å¾—ã—ã¦ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
             Header header = dataset.getHeader(name);
             header.setProperty("HrList", HrList);
             header.setProperty("C", "c");
 
-            //ƒŒƒR[ƒh‚Ì’l‚Æ‚µ‚Äİ’è‚·‚éƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ä’l‚ğİ’è
+            //ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®š
             
-            //ƒlƒXƒg‚ÌƒlƒXƒg
+            //ãƒã‚¹ãƒˆã®ãƒã‚¹ãƒˆ
             RecordList RrList2 = dataset.createNestedRecordList("RrList2");
             Record nnrec2 = RrList2.createRecord();
             nnrec2.setProperty("A", (long)111);
@@ -871,7 +871,7 @@ public class DataSetXMLConverterTest extends TestCase {
             nrec2.setProperty("RrList2", RrList2);
             nrec2.setProperty("LB", 1);
             RrList.addRecord(nrec2);
-            //RecordList‚ğæ“¾‚µ‚ÄƒŒƒR[ƒh‚ÉƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğ’l‚Éİ’è
+            //RecordListã‚’å–å¾—ã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å€¤ã«è¨­å®š
 
             RecordList rlist = dataset.getRecordList(name);
             Record rec = rlist.createRecord();
@@ -886,7 +886,7 @@ public class DataSetXMLConverterTest extends TestCase {
             
             String s;
             StringBuffer sb = new StringBuffer();
-            //‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+            //æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
             while ((s = br.readLine()) != null){
                 sb.append(s);
             }
@@ -909,38 +909,38 @@ public class DataSetXMLConverterTest extends TestCase {
             		"</recordList></dataSet>"));
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (IOException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
 
     }
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒf[ƒ^ƒZƒbƒg¨XML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Dataset#DataSet()‚Å‹ó‚ÌDataSet‚ğ¶¬‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄDataset#setRecordListSchema(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>Dataset#DataSet()ã§ç©ºã®DataSetã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Dataset#setRecordListSchema(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name : "TestRs"</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",<BR>
 	 *  "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=1;Format="yyyy-MM-DD"}",<BR>
 	 *  "@value@ != null"\n:B,java.lang.String,,,"</li>
-	 * <li>ƒvƒƒpƒeƒB‚`‚É"2008-01-28"‚ğw’è</li>
-	 * <li>ƒvƒƒpƒeƒB‚a‚É"TestValue"‚ğw’è</li>
-	 * <li>•ÏŠ·í•Ê‚ÉDATASET_TO_XML‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
-	 * <li>¶¬‚µ‚½ƒf[ƒ^ƒZƒbƒg‚ğw’è‚µ‚ÄADataSetXMLConverter#‚ğÀs‚·‚é</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¡ã«"2008-01-28"ã‚’æŒ‡å®š</li>
+	 * <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼¢ã«"TestValue"ã‚’æŒ‡å®š</li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«DATASET_TO_XMLã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ç”Ÿæˆã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>DataSetXMLConverter#conv.convert()‚ÅŸ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”FB<BR>
+	 * <li>DataSetXMLConverter#conv.convert()ã§æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -979,7 +979,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			String s;
 			StringBuffer sb = new StringBuffer();
-			//‰üs‚ğÈ‚¢‚½•¶š—ñ‚ğo—Í
+			//æ”¹è¡Œã‚’çœã„ãŸæ–‡å­—åˆ—ã‚’å‡ºåŠ›
 			while ((s = br.readLine()) != null){
 				sb.append(s);
 			}
@@ -995,29 +995,29 @@ public class DataSetXMLConverterTest extends TestCase {
 									"<record><A>2008-01-28</A><B>TestValue</B></record></recordList></dataSet>"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>ƒf[ƒ^ƒZƒbƒgˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg(•¶šŒ^)‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—å‹)ã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOConvertException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"Invalid input type : class java.lang.String"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–ConvertExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"Invalid input type : class java.lang.String"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testConvertToXMLInvalid() {
@@ -1025,7 +1025,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			DataSetXMLConverter conv = new DataSetXMLConverter(DataSetXMLConverter.DATASET_TO_XML);
 			conv.convert("ABC");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (ConvertException e) {
 			assertEquals("Invalid input type : class java.lang.String", e.getMessage());
 		}
@@ -1034,12 +1034,12 @@ public class DataSetXMLConverterTest extends TestCase {
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
+	 * <li>æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -1056,10 +1056,10 @@ public class DataSetXMLConverterTest extends TestCase {
 	 * <PRE>
 	 * </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-	 * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
+	 * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+	 * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
 	 * </ul>
 	 */
 	public void testConvertToDataSetFromInputStream() {
@@ -1087,21 +1087,21 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚Ş“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
+	 * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
 	 * <PRE>
      * <?xml version="1.0" encoding="UTF-8"?>
      * <dataSet>
@@ -1116,20 +1116,20 @@ public class DataSetXMLConverterTest extends TestCase {
      *         </nestedRecordList>
      *     </schema>
      *     <header name="TestHeader">
-     *         @<recordList name="HrList">
+     *         ã€€<recordList name="HrList">
      *             <A>a</A>
      *             <B>b</B>
-     *         @</recordList>
+     *         ã€€</recordList>
      *         <C>c</C>
      *     </header>
      * </dataSet>
 	 * <PRE>
 	 * </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-	 * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
+	 * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+	 * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
 	 * </ul>
 	 */
 	public void testConvertToDataSetFromInputStreamWithNestedRecordList() {
@@ -1150,7 +1150,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			assertEquals("TestHeader",dataset.getHeader("TestHeader").getName());
 			assertEquals("LIST:HrList,HrList\n:C,java.lang.String",dataset.getHeader("TestHeader").getSchema());
             assertEquals("c",dataset.getHeader("TestHeader").getProperty("C"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             RecordList rlist = (RecordList)dataset.getHeader("TestHeader").getProperty("HrList");
             assertEquals(":A,java.lang.String\n:B,java.lang.String", rlist.getSchema());
             Record rec = rlist.getRecord(0);
@@ -1159,21 +1159,21 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚Ş“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-     * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+     * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
      * <PRE>
      * <dataSet>
      *     <schema>
@@ -1200,10 +1200,10 @@ public class DataSetXMLConverterTest extends TestCase {
      * <PRE>
      * </li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-     * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
+     * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+     * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
      * </ul>
      */
     public void testConvertToDataSetFromInputStreamWithNestedRecordList2() {
@@ -1222,7 +1222,7 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("TestRecList",dataset.getRecordList("TestRecList").getName());
             assertEquals("LIST:RrList,RrList\n:C,java.lang.String",dataset.getRecordList("TestRecList").getSchema());
             assertEquals("c",dataset.getRecordList("TestRecList").getRecord(0).getProperty("C"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             RecordList rlist = (RecordList)dataset.getRecordList("TestRecList").getRecord(0).getProperty("RrList");
             assertEquals(":A,java.lang.String\n:B,java.lang.String", rlist.getSchema());
             Record rec = rlist.getRecord(0);
@@ -1231,21 +1231,21 @@ public class DataSetXMLConverterTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞHeaderARecordList‚ªİ’è‚³‚ê‚Ä‚¢‚é“à—e‚ÌXMLƒXƒgƒŠ[ƒ€<BR>
-     * ‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€Headerã€RecordListãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ <BR>
+     * ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
      * <PRE>
      * <dataSet>
      *  <schema>
@@ -1288,10 +1288,10 @@ public class DataSetXMLConverterTest extends TestCase {
      * <PRE>
      * </li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-     * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
+     * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+     * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
      * </ul>
      */
     public void testConvertToDataSeWithHeaderAndRecordListtFromInputStreamWithNestedRecordList() {
@@ -1314,7 +1314,7 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("test_hname",dataset.getHeader("test_hname").getName());
             assertEquals("LIST:HrList,HrList\n:C,java.lang.String",dataset.getHeader("test_hname").getSchema());
             assertEquals("c",dataset.getHeader("test_hname").getProperty("C"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             RecordList rlist = (RecordList)dataset.getHeader("test_hname").getProperty("HrList");
             assertEquals(":A,java.lang.String\n:B,java.lang.String", rlist.getSchema());
             Record rec = rlist.getRecord(0);
@@ -1324,7 +1324,7 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("test_rname",dataset.getRecordList("test_rname").getName());
             assertEquals("LIST:RrList,RrList\n:LC,java.lang.String",dataset.getRecordList("test_rname").getSchema());
             assertEquals("lc",dataset.getRecordList("test_rname").getRecord(0).getProperty("LC"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             rlist = (RecordList)dataset.getRecordList("test_rname").getRecord(0).getProperty("RrList");
             assertEquals(":LA,java.lang.String\n:LB,int", rlist.getSchema());
             rec = rlist.getRecord(0);
@@ -1333,23 +1333,23 @@ public class DataSetXMLConverterTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞHeaderARecordList‚ªİ’è‚³‚ê‚Ä‚¢‚é“à—e‚ÌXMLƒXƒgƒŠ[ƒ€<BR>
-     * ‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
-     * ˆê•”‚ÌƒvƒƒpƒeƒB‚Ì’l‚ğ–¢w’è‚É‚·‚é
+     * <li>æ¬¡ã®ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€Headerã€RecordListãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ <BR>
+     * ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
+     * ä¸€éƒ¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’æœªæŒ‡å®šã«ã™ã‚‹
      * <PRE>
      * <dataSet>
      *  <schema>
@@ -1391,11 +1391,11 @@ public class DataSetXMLConverterTest extends TestCase {
      * <PRE>
      * </li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-     * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-     * <li>’l‚ğw’è‚µ‚Ä‚¢‚È‚¢ƒvƒƒpƒeƒB‚É‚Â‚¢‚Ä‚Ínull‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+     * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+     * <li>å€¤ã‚’æŒ‡å®šã—ã¦ã„ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã¤ã„ã¦ã¯nullãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
      * </ul>
      */
     public void testConvertToDataSeWithHeaderAndRecordListtFromInputStreamWithNestedRecordList2() {
@@ -1418,7 +1418,7 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("test_hname",dataset.getHeader("test_hname").getName());
             assertEquals("LIST:HrList,HrList\n:C,java.lang.String",dataset.getHeader("test_hname").getSchema());
             assertNull(dataset.getHeader("test_hname").getProperty("C"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             RecordList rlist = (RecordList)dataset.getHeader("test_hname").getProperty("HrList");
             assertEquals(":A,java.lang.String\n:B,java.lang.String", rlist.getSchema());
             Record rec = rlist.getRecord(0);
@@ -1428,7 +1428,7 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("test_rname",dataset.getRecordList("test_rname").getName());
             assertEquals("LIST:RrList,RrList\n:LC,java.lang.String",dataset.getRecordList("test_rname").getSchema());
             assertEquals("lc",dataset.getRecordList("test_rname").getRecord(0).getProperty("LC"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             rlist = (RecordList)dataset.getRecordList("test_rname").getRecord(0).getProperty("RrList");
             assertEquals(":LA,java.lang.String\n:LB,int", rlist.getSchema());
             rec = rlist.getRecord(0);
@@ -1437,23 +1437,23 @@ public class DataSetXMLConverterTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚Ì‚QŠK‘wƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ğŠÜ‚ŞHeaderARecordList‚ªİ’è‚³‚ê‚Ä‚¢‚é“à—e‚ÌXMLƒXƒgƒŠ[ƒ€<BR>
-     * ‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄADataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
-     * ˆê•”‚ÌƒvƒƒpƒeƒB‚Ì’l‚ğ–¢w’è‚É‚·‚é
+     * <li>æ¬¡ã®ï¼’éšå±¤ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å«ã‚€Headerã€RecordListãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ <BR>
+     * ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
+     * ä¸€éƒ¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’æœªæŒ‡å®šã«ã™ã‚‹
      * <PRE>
      *  <dataSet>
      *      <schema>
@@ -1508,10 +1508,10 @@ public class DataSetXMLConverterTest extends TestCase {
      * <PRE>
      * </li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
-     * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB</li>
+     * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
+     * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚</li>
      * </ul>
      */
     public void testConvertToDataSeWithHeaderAndRecordListtFromInputStreamWithNestedRecordList3() {
@@ -1539,12 +1539,12 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("test_hname",dataset.getHeader("test_hname").getName());
             assertEquals("LIST:HrList,HrList\n:C,java.lang.String",dataset.getHeader("test_hname").getSchema());
             assertEquals("c",dataset.getHeader("test_hname").getProperty("C"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             RecordList rlist = (RecordList)dataset.getHeader("test_hname").getProperty("HrList");
             assertEquals("LIST:HrList2,HrList2\n:B,java.lang.String", rlist.getSchema());
             Record rec = rlist.getRecord(0);
             assertEquals("b", rec.getProperty("B"));
-            //‚QŠK‘w‰º‚ÌƒŒƒR[ƒhƒŠƒXƒgƒ`ƒFƒbƒN
+            //ï¼’éšå±¤ä¸‹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆãƒã‚§ãƒƒã‚¯
             RecordList nrlist = (RecordList)rec.getProperty("HrList2");
             assertEquals(":A,java.lang.String\n:B,int", nrlist.getSchema());
             Record nrec = nrlist.getRecord(0);
@@ -1554,13 +1554,13 @@ public class DataSetXMLConverterTest extends TestCase {
             assertEquals("test_rname",dataset.getRecordList("test_rname").getName());
             assertEquals("LIST:RrList,RrList\n:LC,java.lang.String",dataset.getRecordList("test_rname").getSchema());
             assertEquals("lc",dataset.getRecordList("test_rname").getRecord(0).getProperty("LC"));
-            //ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì“à—e‚ª³‚µ‚¢‚©ŒŸØ‚·‚é
+            //ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®å†…å®¹ãŒæ­£ã—ã„ã‹æ¤œè¨¼ã™ã‚‹
             rlist = (RecordList)dataset.getRecordList("test_rname").getRecord(0).getProperty("RrList");
             assertEquals("LIST:RrList2,RrList2\n:LB,int", rlist.getSchema());
             rec = rlist.getRecord(0);
             assertEquals(1, rec.getIntProperty("LB"));
 
-            //‚QŠK‘w‰º‚ÌƒŒƒR[ƒhƒŠƒXƒgƒ`ƒFƒbƒN
+            //ï¼’éšå±¤ä¸‹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆãƒã‚§ãƒƒã‚¯
             nrlist = (RecordList)rec.getProperty("RrList2");
             assertEquals(":A,long\n:B,short", nrlist.getSchema());
             nrec = nrlist.getRecord(0);
@@ -1569,10 +1569,10 @@ public class DataSetXMLConverterTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         } catch (ConvertException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
@@ -1580,12 +1580,12 @@ public class DataSetXMLConverterTest extends TestCase {
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
+	 * <li>æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -1602,10 +1602,10 @@ public class DataSetXMLConverterTest extends TestCase {
 	 * <PRE>
 	 * </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>æ“¾‚µ‚½DataSet‚ÌƒŒƒR[ƒhƒŠƒXƒgƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
-	 * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
+	 * <li>å–å¾—ã—ãŸDataSetã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
 	 * </ul>
 	 */
 	public void testConvertToDataSetFromInputStream2() {
@@ -1633,22 +1633,22 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚ÌXMLƒtƒ@ƒCƒ‹‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
+	 * <li>æ¬¡ã®å†…å®¹ã®XMLãƒ•ã‚¡ã‚¤ãƒ«ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -1665,10 +1665,10 @@ public class DataSetXMLConverterTest extends TestCase {
 	 * <PRE></li>
 	 * </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
-	 * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
+	 * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
 	 * </ul>
 	 */
 	public void testConvertToDataSetFromFile() {
@@ -1687,26 +1687,26 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>ƒf[ƒ^ƒZƒbƒgˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg(•¶šŒ^)‚ğw’è‚µ‚ÄADataSetXMLConverter#convertToStream(Object obj)‚ğÀs‚·‚é</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—å‹)ã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convertToStream(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOConvertException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"Invalid input type : class java.lang.String"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–ConvertExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"Invalid input type : class java.lang.String"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 * </ul>
 	 */
@@ -1715,7 +1715,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			DataSetXMLConverter conv = new DataSetXMLConverter(DataSetXMLConverter.XML_TO_DATASET);
 			conv.convert("ABC");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (ConvertException e) {
 			assertEquals("Invalid input type : class java.lang.String", e.getMessage());
 		}
@@ -1724,16 +1724,16 @@ public class DataSetXMLConverterTest extends TestCase {
 	
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>null‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR></li>
+	 * <li>nullã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR></li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>null‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”FB<BR>
+	 * <li>nullãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèªã€‚<BR>
 	 * </ul>
 	 */
 	public void testConvertToObjectNull() {
@@ -1743,22 +1743,22 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>•ÏŠ·í•Ê‚É999(•s³‚È’l)‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR></li>
+	 * <li>å¤‰æ›ç¨®åˆ¥ã«999(ä¸æ­£ãªå€¤)ã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR></li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOConvertException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"Invalid convert type : 999"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–ConvertExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"Invalid convert type : 999"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testConvertToObjectIvalid() {
@@ -1775,23 +1775,23 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			DataSetXMLConverter conv = new DataSetXMLConverter(999);
 			conv.convert(is);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (ConvertException e) {
 			assertEquals("Invalid convert type : 999", e.getMessage());
 		}
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>ƒf[ƒ^ƒZƒbƒgˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg(•¶šŒ^)‚ğw’è‚µ‚ÄADataSetXMLConverter#convertToStream(Object obj)‚ğÀs‚·‚é</li>
+	 * <li>ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—å‹)ã‚’æŒ‡å®šã—ã¦ã€DataSetXMLConverter#convertToStream(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOConvertException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"Invalid input type : class java.lang.String"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–ConvertExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"Invalid input type : class java.lang.String"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testConvertToStreamInvalid() {
@@ -1799,7 +1799,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 			DataSetXMLConverter conv = new DataSetXMLConverter(DataSetXMLConverter.DATASET_TO_XML);
 			conv.convertToStream("ABC");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (ConvertException e) {
 			assertEquals("Invalid input type : class java.lang.String", e.getMessage());
 		}
@@ -1807,12 +1807,12 @@ public class DataSetXMLConverterTest extends TestCase {
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convertToObject(Object obj)‚ğÀs‚·‚é<BR>
+	 * <li>æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convertToObject(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -1829,10 +1829,10 @@ public class DataSetXMLConverterTest extends TestCase {
 	 * <PRE></li>
 	 * </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
-	 * <li>æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
+	 * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * <li>å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
 	 * </ul>
 	 */
 	public void testconvertToObjectFromInputStream() {
@@ -1860,22 +1860,22 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	
 	/**
-	 * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğXML¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’XMLâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚ÌXMLƒXƒgƒŠ[ƒ€‚Æ•ÏŠ·í•Ê‚ÉXML_TO_DATASET‚ğw’è‚µ‚ÄA<BR>
-	 * DataSetXMLConverter#convert(Object obj)‚ğÀs‚·‚é<BR>
-	 * (ƒvƒƒpƒeƒBB‚Ì’l‚È‚µ)
+	 * <li>æ¬¡ã®å†…å®¹ã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨å¤‰æ›ç¨®åˆ¥ã«XML_TO_DATASETã‚’æŒ‡å®šã—ã¦ã€<BR>
+	 * DataSetXMLConverter#convert(Object obj)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
+	 * (ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Bã®å€¤ãªã—)
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -1893,11 +1893,11 @@ public class DataSetXMLConverterTest extends TestCase {
 	 * <PRE>
 	 * </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>æ“¾‚µ‚½DataSet‚Ìƒwƒbƒ_ƒXƒL[ƒ}‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
-	 * æ“¾‚µ‚½DataSet‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚ª•ÏŠ·Œ³‚Ì“à—e‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”FB<BR>
-	 * w’è‚µ‚È‚©‚Á‚½ƒvƒƒpƒeƒB‚Ì’l‚É‚Â‚¢‚Ä‚ÍnullƒIƒuƒWƒFƒNƒg‚É‚È‚é</li>
+	 * <li>å–å¾—ã—ãŸDataSetã®ãƒ˜ãƒƒãƒ€ã‚¹ã‚­ãƒ¼ãƒãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * å–å¾—ã—ãŸDataSetã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒå¤‰æ›å…ƒã®å†…å®¹ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã€‚<BR>
+	 * æŒ‡å®šã—ãªã‹ã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ã¤ã„ã¦ã¯nullã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãªã‚‹</li>
 	 * </ul>
 	 */
 	public void testConvertToDataSetFromInputStreamNull() {
@@ -1922,15 +1922,15 @@ public class DataSetXMLConverterTest extends TestCase {
 							"\"@value@ != null\"\n:B,java.lang.String,,,\n:C,java.lang.String,,,",dataset.getHeader("TestHeader").getSchema());
 			assertEquals("2008-01-28",dataset.getHeader("TestHeader").getFormatProperty("A"));
 			assertEquals("TestValue",dataset.getHeader("TestHeader").getProperty("C"));
-			//’l‚ğw’è‚µ‚Ä‚¢‚È‚¢B‚Ínull
+			//å€¤ã‚’æŒ‡å®šã—ã¦ã„ãªã„Bã¯null
 			assertNull(dataset.getHeader("TestHeader").getProperty("B"));
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
@@ -1945,7 +1945,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			dataset.setNestedRecordListSchema("ListC", ":F,java.util.Date");
 			conv.setDataSet("test", dataset);
 			
-			// ƒXƒL[ƒ}’è‹`‚É‘¶İ‚µ‚È‚¢ƒwƒbƒ_‚ª‚ ‚é
+			// ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å­˜åœ¨ã—ãªã„ãƒ˜ãƒƒãƒ€ãŒã‚ã‚‹
 			String inxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<dataSet name=\"test\">"
 				 + "<header name=\"Header1\"><A>a</A></header>"
 				 + "<header name=\"Header3\"><Z>z</Z></header>"
@@ -1971,7 +1971,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			assertEquals(new Integer(100), dataset.getHeader("Header2").getProperty("B"));
 			assertNull(dataset.getHeader("Header3"));
 			
-			// ƒXƒL[ƒ}’è‹`‚É‘¶İ‚µ‚È‚¢ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB‚ª‚ ‚é
+			// ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å­˜åœ¨ã—ãªã„ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒã‚ã‚‹
 			inxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<dataSet name=\"test\">"
 				 + "<header name=\"Header1\"><A>a</A><B>100</B></header>"
 				 + "<header name=\"Header2\"><B>100</B></header></dataSet>";
@@ -2000,7 +2000,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			}
 			assertEquals(new Integer(100), dataset.getHeader("Header2").getProperty("B"));
 			
-			// ƒXƒL[ƒ}’è‹`‚É‘¶İ‚µ‚È‚¢ƒŒƒR[ƒhƒŠƒXƒg‚ª‚ ‚é
+			// ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å­˜åœ¨ã—ãªã„ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆãŒã‚ã‚‹
 			inxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<dataSet name=\"test\">"
 				 + "<header name=\"Header1\"><A>a</A><B>100</B></header>"
 				 + "<recordList name=\"RecordList3\"><record><Z>z1</Z></record><record><Z>z2</Z></record></recordList>"
@@ -2029,7 +2029,7 @@ public class DataSetXMLConverterTest extends TestCase {
 			assertEquals("c2", dataset.getRecordList("RecordList1").getRecord(1).getProperty("C"));
 			assertNull(dataset.getRecordList("RecordList3"));
 			
-			// ƒXƒL[ƒ}’è‹`‚É‘¶İ‚µ‚È‚¢ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB‚ª‚ ‚é
+			// ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å­˜åœ¨ã—ãªã„ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒã‚ã‚‹
 			inxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<dataSet name=\"test\">"
 				 + "<header name=\"Header1\"><A>a</A><B>100</B></header>"
 				 + "<recordList name=\"RecordList1\"><record><C>c1</C><D>d</D></record><record><C>c2</C></record></recordList>"
@@ -2067,10 +2067,10 @@ public class DataSetXMLConverterTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	

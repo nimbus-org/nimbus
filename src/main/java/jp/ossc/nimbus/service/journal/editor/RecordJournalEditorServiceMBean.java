@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link RecordJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link RecordJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see RecordJournalEditorService
@@ -41,96 +41,96 @@ public interface RecordJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputRecordSchema(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputRecordSchema();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ª‚ÂƒvƒƒpƒeƒB‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputProperties(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ª‚ÂƒvƒƒpƒeƒB‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputProperties();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param str ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @param str å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #getSecretString()
      */
     public void setSecretString(String str);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @return å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #setSecretString(String)
      */
     public String getSecretString();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #getSecretString()
      */
     public void setSecretProperties(String[] names);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #setSecretProperties(String[])
      */
     public String[] getSecretProperties();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #getEnabledProperties()
      */
     public void setEnabledProperties(String[] names);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #setEnabledProperties(String[])
      */
     public String[] getEnabledProperties();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌƒvƒƒpƒeƒB‚ğCSVŒ`®‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’CSVå½¢å¼ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput CSVŒ`®‚Åo—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput CSVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      * @see #isOutputCSVProperties()
      */
     public void setOutputCSVProperties(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌƒvƒƒpƒeƒB‚ğCSVŒ`®‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’CSVå½¢å¼ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡ACSVŒ`®‚Åo—Í‚·‚é
+     * @return trueã®å ´åˆã€CSVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹
      * @see #setOutputCSVProperties(boolean)
      */
     public boolean isOutputCSVProperties();

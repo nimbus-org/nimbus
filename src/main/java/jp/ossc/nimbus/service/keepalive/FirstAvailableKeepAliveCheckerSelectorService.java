@@ -32,8 +32,8 @@
 package jp.ossc.nimbus.service.keepalive;
 
 /**
- * Å‰‚ÉŒ©‚Â‚©‚Á‚½—˜—p‰Â”\‚È{@link KeepAliveChecker}‚ğ‘I‘ğ‚·‚é{@link KeepAliveCheckerSelector}À‘•ƒNƒ‰ƒXB<p>
- * {@link #getSelectableCheckers()}‚Åæ“¾‚Å‚«‚é‘I‘ğ‰Â”\‚ÈKeepAliveChecker”z—ñ‚Ì‚¤‚¿AÅ‰‚ÌKeepAliveChecker‚ğ‘I‘ğ‚·‚éB<br>
+ * æœ€åˆã«è¦‹ã¤ã‹ã£ãŸåˆ©ç”¨å¯èƒ½ãª{@link KeepAliveChecker}ã‚’é¸æŠã™ã‚‹{@link KeepAliveCheckerSelector}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * {@link #getSelectableCheckers()}ã§å–å¾—ã§ãã‚‹é¸æŠå¯èƒ½ãªKeepAliveCheckeré…åˆ—ã®ã†ã¡ã€æœ€åˆã®KeepAliveCheckerã‚’é¸æŠã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -43,11 +43,11 @@ public class FirstAvailableKeepAliveCheckerSelectorService
     private static final long serialVersionUID = -5339173482952042987L;
     
     /**
-     * Å‰‚ÉŒ©‚Â‚©‚Á‚½—˜—p‰Â”\‚È{@link KeepAliveChecker}‚ğæ“¾‚·‚éB<p>
-     * {@link #getSelectableCheckers()}‚Åæ“¾‚Å‚«‚é‘I‘ğ‰Â”\‚ÈKeepAliveChecker”z—ñ‚Ì‚¤‚¿AÅ‰‚ÌKeepAliveChecker‚ğ‘I‘ğ‚·‚éB<br>
-     * {@link #getSelectableCheckers()}‚Åæ“¾‚Å‚«‚é‘I‘ğ‰Â”\‚ÈKeepAliveChecker”z—ñ‚ª’·‚³0‚Ì”z—ñ‚Ìê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æœ€åˆã«è¦‹ã¤ã‹ã£ãŸåˆ©ç”¨å¯èƒ½ãª{@link KeepAliveChecker}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getSelectableCheckers()}ã§å–å¾—ã§ãã‚‹é¸æŠå¯èƒ½ãªKeepAliveCheckeré…åˆ—ã®ã†ã¡ã€æœ€åˆã®KeepAliveCheckerã‚’é¸æŠã™ã‚‹ã€‚<br>
+     * {@link #getSelectableCheckers()}ã§å–å¾—ã§ãã‚‹é¸æŠå¯èƒ½ãªKeepAliveCheckeré…åˆ—ãŒé•·ã•0ã®é…åˆ—ã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      * 
-     * @return KeepAliveCheckerƒIƒuƒWƒFƒNƒg
+     * @return KeepAliveCheckerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public KeepAliveChecker selectChecker(){
         final KeepAliveChecker[] checkers = getSelectableCheckers();

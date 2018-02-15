@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.websocket;
 
 /**
- * WebSocket‚ğƒfƒvƒƒC‚·‚éÛ‚É•K—v‚ÈEndpoint‚ÆƒpƒX‚ğİ’è‚·‚é‚½‚ß‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ * WebSocketã‚’ãƒ‡ãƒ—ãƒ­ã‚¤ã™ã‚‹éš›ã«å¿…è¦ãªEndpointã¨ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -40,19 +40,19 @@ package jp.ossc.nimbus.service.websocket;
 public interface NimbusConfigurator {
 
     /**
-     * Endpoint‚É‘Î‚·‚éƒpƒX‚ğæ“¾‚·‚éB
+     * Endpointã«å¯¾ã™ã‚‹ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return Endpoint‚É‘Î‚·‚éƒpƒX
+     * @return Endpointã«å¯¾ã™ã‚‹ãƒ‘ã‚¹
      */
     public String getPath();
 
     /**
-     * EndpointƒNƒ‰ƒX‚ğæ“¾‚·‚éB
+     * Endpointã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return EndpointƒNƒ‰ƒX
-     * @throws ClassNotFoundException ƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚Ì—áŠO
+     * @return Endpointã‚¯ãƒ©ã‚¹
+     * @throws ClassNotFoundException ã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã®ä¾‹å¤–
      */
     public Class getEndpointClass() throws ClassNotFoundException;
 

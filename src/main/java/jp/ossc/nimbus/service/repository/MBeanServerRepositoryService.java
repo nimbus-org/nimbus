@@ -38,7 +38,7 @@ import javax.management.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * MBean‚ğJMXƒT[ƒo‚É“o˜^‚·‚é{@link Repository}ƒT[ƒrƒXB<p>
+ * MBeanã‚’JMXã‚µãƒ¼ãƒã«ç™»éŒ²ã™ã‚‹{@link Repository}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -60,60 +60,60 @@ public class MBeanServerRepositoryService extends ServiceBase
     private MBeanServer server;
     private boolean isCreateMBeanServer;
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public void setMBeanServerDomain(String domain){
         this.serverDomain = domain;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public String getMBeanServerDomain(){
         return serverDomain;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public void setMBeanServerDefaultDomain(String domain){
         this.serverDefaultDomain = domain;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public String getMBeanServerDefaultDomain(){
         return serverDefaultDomain;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public void setMBeanServerIndex(int index){
         this.serverIndex = index;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public int getMBeanServerIndex(){
         return serverIndex;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public void setObjectNameDomain(String domain){
         this.objectNameDomain = domain;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public String getObjectNameDomain(){
         return objectNameDomain;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public void setCreateMBeanServer(boolean isCreate){
         isCreateMBeanServer = isCreate;
     }
     
-    // MBeanServerRepositoryServiceMBean‚ÌJavaDoc
+    // MBeanServerRepositoryServiceMBeanã®JavaDoc
     public boolean isCreateMBeanServer(){
         return isCreateMBeanServer;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         List servers = MBeanServerFactory.findMBeanServer(serverDomain);
@@ -142,15 +142,15 @@ public class MBeanServerRepositoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         server = null;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public Object get(String name){
         final ObjectName mbeanName = (ObjectName)mbeanNames.get(name);
         if(mbeanName == null){
@@ -162,7 +162,7 @@ public class MBeanServerRepositoryService extends ServiceBase
         return mbeans.get(name);
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public boolean register(String name, Object obj){
         try{
             final ObjectName mbeanName = convertStringToObjectName(
@@ -191,18 +191,18 @@ public class MBeanServerRepositoryService extends ServiceBase
             e.printStackTrace();
             return false;
         }catch(MalformedObjectNameException e){
-            // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+            // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
             e.printStackTrace();
             return false;
 //        }catch(InstanceNotFoundException e){
-//            // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+//            // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
 //            e.printStackTrace();
 //            return false;
         }
         return true;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public boolean unregister(String name){
         final ObjectName mbeanName = (ObjectName)mbeanNames.get(name);
         if(mbeanName == null){
@@ -226,7 +226,7 @@ public class MBeanServerRepositoryService extends ServiceBase
         return true;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public boolean isRegistered(String name){
         final ObjectName mbeanName = (ObjectName)mbeanNames.get(name);
         if(mbeanName == null){
@@ -235,12 +235,12 @@ public class MBeanServerRepositoryService extends ServiceBase
         return server.isRegistered(mbeanName);
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public Set nameSet(){
         return new HashSet(mbeanNames.keySet());
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public Set registeredSet(){
         return new HashSet(mbeans.values());
     }

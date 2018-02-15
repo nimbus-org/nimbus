@@ -45,8 +45,8 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.PersistentManager;
 
 /**
- * ƒf[ƒ^ƒx[ƒX‚ğŒŸõ‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ¤œç´¢ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -98,21 +98,21 @@ public class DatabaseSearchActionService extends ServiceBase implements TestActi
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒf[ƒ^ƒx[ƒX‚ÉŒŸõƒNƒGƒŠ‚ğ”­s‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’ç™ºè¡Œã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * inputId
      * outputId
      * searchQuery
      * </pre>
-     * inputId‚ÍA{@link PersistentManager}‚É“n‚·ŒŸõƒNƒGƒŠ‚É‘Î‚·‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉA“ü—ÍƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉA“ü—ÍƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAnullB<br>
-     * outputId‚ÍA{@link PersistentManager}‚É“n‚·ŒŸõƒNƒGƒŠ‚É‘Î‚·‚éo—ÍƒIƒuƒWƒFƒNƒg‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAo—ÍƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAo—ÍƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAnullB<br>
-     * searchQuery‚ÍA{@link PersistentManager}‚É“n‚·ŒŸõƒNƒGƒŠ‚ğw’è‚·‚éB<br>
+     * inputIdã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ¤œç´¢ã‚¯ã‚¨ãƒªã«å¯¾ã™ã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€nullã€‚<br>
+     * outputIdã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ¤œç´¢ã‚¯ã‚¨ãƒªã«å¯¾ã™ã‚‹å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€nullã€‚<br>
+     * searchQueryã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ŒŸõŒ‹‰ÊƒIƒuƒWƒFƒNƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return æ¤œç´¢çµæœã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.soap;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link WsServiceFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link WsServiceFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  */

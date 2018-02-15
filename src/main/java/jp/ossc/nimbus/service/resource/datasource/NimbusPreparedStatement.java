@@ -30,7 +30,7 @@ package jp.ossc.nimbus.service.resource.datasource;
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 import java.io.InputStream;
 import java.io.Reader;
@@ -42,8 +42,8 @@ import java.util.*;
 
 
 /**
- * Nimbus‚ÌPreparedStatementƒNƒ‰ƒX<p>
- * PreparedStatement‚ğƒ‰ƒbƒv‚µ‚ÄƒWƒƒ[ƒiƒ‹‚Æ“ŒvƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚é
+ * Nimbusã®PreparedStatementã‚¯ãƒ©ã‚¹<p>
+ * PreparedStatementã‚’ãƒ©ãƒƒãƒ—ã—ã¦ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨çµ±è¨ˆã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -52,23 +52,23 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	
     private static final long serialVersionUID = 560537306692881035L;
     
-    /**Œ»İ‚Ìƒpƒ‰ƒƒ^ˆê——(clearParameter‚É‚ÄƒNƒŠƒA)*/
+    /**ç¾åœ¨ã®ãƒ‘ãƒ©ãƒ¡ã‚¿ä¸€è¦§(clearParameterã«ã¦ã‚¯ãƒªã‚¢)*/
 	
 	/**OriginalSQL*/
 	protected String   originalSql;
-	/**OriginalSQL‚ğƒZƒpƒŒƒ^H‚Å•ª—£‚µ‚½‚à‚Ì*/
+	/**OriginalSQLã‚’ã‚»ãƒ‘ãƒ¬ã‚¿ï¼Ÿã§åˆ†é›¢ã—ãŸã‚‚ã®*/
 	protected String[] originalSqlSeps;
-	/**ÅŒã”ö‚ÉH‚ª—ˆ‚é‚©‚Ç‚¤‚©*/
+	/**æœ€å¾Œå°¾ã«ï¼ŸãŒæ¥ã‚‹ã‹ã©ã†ã‹*/
 	protected boolean bEndIsQuestion;
-	/**Œ»İ‚Ìƒpƒ‰ƒƒ^ˆê——*/
+	/**ç¾åœ¨ã®ãƒ‘ãƒ©ãƒ¡ã‚¿ä¸€è¦§*/
 	protected HashMap mParameterMap = new HashMap();
 	/**PreparedStatement**/
 	protected PreparedStatement mStatement;
 
 	/**
-	 * SQL•¶æ“¾<p>
-	 * •Û‘¶‚³‚ê‚½ƒpƒ‰ƒƒ^‚ğ—p‚¢‚ÄŒ»İ‚Ìƒpƒ‰ƒƒ^‚ğæ“¾‚·‚é
-	 * @return@Œ»İ‚ÌSQL•¶
+	 * SQLæ–‡å–å¾—<p>
+	 * ä¿å­˜ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ã‚¿ã‚’ç”¨ã„ã¦ç¾åœ¨ã®ãƒ‘ãƒ©ãƒ¡ã‚¿ã‚’å–å¾—ã™ã‚‹
+	 * @returnã€€ç¾åœ¨ã®SQLæ–‡
 	 */
 	private String getCurrentSql(){
 	    final StringBuilder buff = new StringBuilder();
@@ -77,7 +77,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	        if( bEndIsQuestion || i != ( originalSqlSeps.length -1) ){
 	            buff.append("[");
 	            final Object ob = mParameterMap.get(new Integer(i+1));
-	            //Object‚ÌtoString“®ì‚É”C‚¹‚é
+	            //Objectã®toStringå‹•ä½œã«ä»»ã›ã‚‹
 	            buff.append(ob);
 	            buff.append("]");
 	        }
@@ -94,12 +94,12 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		boolean isStartQ=false;
 		boolean isEndQ=false;
 		int addItems=0;
-		//Å‰‚ªH‚Å‚Í‚¶‚Ü‚é‚©‚Ç‚¤‚©
+		//æœ€åˆãŒï¼Ÿã§ã¯ã˜ã¾ã‚‹ã‹ã©ã†ã‹
 		if( originalSql.indexOf("\\?") == 0  ){
 		    isStartQ = true;
 		    addItems ++;
 		}
-		//ÅŒã‚ªH‚ÅI‚í‚é‚©‚Ç‚¤‚©
+		//æœ€å¾ŒãŒï¼Ÿã§çµ‚ã‚ã‚‹ã‹ã©ã†ã‹
 		if( originalSql.lastIndexOf("\\?") +1 == this.originalSql.length() ){
 		    isEndQ = true;
 		    addItems ++;
@@ -107,20 +107,20 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		final String[] seps = originalSql.split("\\?");
 		originalSqlSeps   = new String[seps.length+addItems];
 		int currentIndex = 0;
-		//Å‰‚ÌH‚Ì•¶‚Ì‘O‚ğƒRƒs[
+		//æœ€åˆã®ï¼Ÿã®æ–‡ã®å‰ã‚’ã‚³ãƒ”ãƒ¼
 		if( isStartQ ) {
 		    System.arraycopy(new String[]{""},0,originalSqlSeps,currentIndex++,1);
 		}
-		//?‚Å•ª‚©‚ê‚½‚à‚Ì‚ğƒRƒs[
+		//?ã§åˆ†ã‹ã‚ŒãŸã‚‚ã®ã‚’ã‚³ãƒ”ãƒ¼
 	    System.arraycopy(seps,0,originalSqlSeps,currentIndex,seps.length);
 	    currentIndex += seps.length;
-		//ÅŒã‚ÌH‚Ì•¶‚ÌŒã‚ğ‚ğƒRƒs[
+		//æœ€å¾Œã®ï¼Ÿã®æ–‡ã®å¾Œã‚’ã‚’ã‚³ãƒ”ãƒ¼
 		if( isEndQ ) {
 		    System.arraycopy(new String[]{""},0,originalSqlSeps,currentIndex++,1);
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#executeUpdate()
 	 */
 	public int executeUpdate() throws SQLException {
@@ -129,7 +129,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	    String sqlID = null;
 	    if( journalService != null ){
 	        sqlID = getSequenceNo();
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        journalService.addInfo(sqlID,getCurrentSql(),journalLevel);
 	    }
 	    startTime = System.currentTimeMillis();
@@ -146,7 +146,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#addBatch()
 	 */
 	public void addBatch() throws SQLException {
@@ -156,7 +156,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#clearParameters()
 	 */
 	public void clearParameters() throws SQLException {
@@ -166,7 +166,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#execute()
 	 */
 	public boolean execute() throws SQLException {
@@ -175,7 +175,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	    String sqlID=null;
 	    if( journalService != null ){
 	        sqlID = getSequenceNo();
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        journalService.addInfo(sqlID,getCurrentSql(),journalLevel);
 	    }
 	    startTime = System.currentTimeMillis();
@@ -192,7 +192,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setByte(int, byte)
 	 */
 	public void setByte(int arg0, byte arg1) throws SQLException {
@@ -200,7 +200,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setByte(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setDouble(int, double)
 	 */
 	public void setDouble(int arg0, double arg1) throws SQLException {
@@ -208,7 +208,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setDouble(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setFloat(int, float)
 	 */
 	public void setFloat(int arg0, float arg1) throws SQLException {
@@ -216,7 +216,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setFloat(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setInt(int, int)
 	 */
 	public void setInt(int arg0, int arg1) throws SQLException {
@@ -224,7 +224,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setInt(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setNull(int, int)
 	 */
 	public void setNull(int arg0, int arg1) throws SQLException {
@@ -232,7 +232,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setNull(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setLong(int, long)
 	 */
 	public void setLong(int arg0, long arg1) throws SQLException {
@@ -240,7 +240,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setLong(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setShort(int, short)
 	 */
 	public void setShort(int arg0, short arg1) throws SQLException {
@@ -248,7 +248,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setShort(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setBoolean(int, boolean)
 	 */
 	public void setBoolean(int arg0, boolean arg1) throws SQLException {
@@ -256,7 +256,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setBoolean(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setBytes(int, byte[])
 	 */
 	public void setBytes(int arg0, byte[] arg1) throws SQLException {
@@ -264,7 +264,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setBytes(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setAsciiStream(int, java.io.InputStream, int)
 	 */
 	public void setAsciiStream(int arg0, InputStream arg1, int arg2)
@@ -273,7 +273,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setAsciiStream(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setBinaryStream(int, java.io.InputStream, int)
 	 */
 	public void setBinaryStream(int arg0, InputStream arg1, int arg2)
@@ -282,7 +282,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setBinaryStream(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setUnicodeStream(int, java.io.InputStream, int)
 	 */
 	public void setUnicodeStream(int arg0, InputStream arg1, int arg2)
@@ -291,7 +291,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setUnicodeStream(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setCharacterStream(int, java.io.Reader, int)
 	 */
 	public void setCharacterStream(int arg0, Reader arg1, int arg2)
@@ -299,14 +299,14 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setCharacterStream(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setObject(int, java.lang.Object)
 	 */
 	public void setObject(int arg0, Object arg1) throws SQLException {
 	    if( journalService != null )  mParameterMap.put(new Integer(arg0),arg1);
 		mStatement.setObject(arg0,arg1) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setObject(int, java.lang.Object)
 	 */
 	public void setObjectOrNull(int arg0, Object arg1,int dataType) throws SQLException {
@@ -317,7 +317,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setObject(int, java.lang.Object, int)
 	 */
 	public void setObject(int arg0, Object arg1, int arg2)
@@ -326,7 +326,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setObject(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setObject(int, java.lang.Object, int, int)
 	 */
 	public void setObject(int arg0, Object arg1, int arg2, int arg3)
@@ -335,7 +335,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setObject(arg0,arg1,arg2,arg3) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setNull(int, int, java.lang.String)
 	 */
 	public void setNull(int arg0, int arg1, String arg2) throws SQLException {
@@ -343,7 +343,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setNull(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setString(int, java.lang.String)
 	 */
 	public void setString(int arg0, String arg1) throws SQLException {
@@ -351,7 +351,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setString(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setBigDecimal(int, java.math.BigDecimal)
 	 */
 	public void setBigDecimal(int arg0, BigDecimal arg1) throws SQLException {
@@ -359,7 +359,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setBigDecimal(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setURL(int, java.net.URL)
 	 */
 	public void setURL(int arg0, URL arg1) throws SQLException {
@@ -367,7 +367,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setURL(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setArray(int, java.sql.Array)
 	 */
 	public void setArray(int arg0, Array arg1) throws SQLException {
@@ -375,7 +375,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setArray(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setBlob(int, java.sql.Blob)
 	 */
 	public void setBlob(int arg0, Blob arg1) throws SQLException {
@@ -383,7 +383,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setBlob(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setClob(int, java.sql.Clob)
 	 */
 	public void setClob(int arg0, Clob arg1) throws SQLException {
@@ -391,7 +391,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setClob(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setDate(int, java.sql.Date)
 	 */
 	public void setDate(int arg0, Date arg1) throws SQLException {
@@ -399,14 +399,14 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setDate(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#getParameterMetaData()
 	 */
 	public ParameterMetaData getParameterMetaData() throws SQLException {
 		return mStatement.getParameterMetaData();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setRef(int, java.sql.Ref)
 	 */
 	public void setRef(int arg0, Ref arg1) throws SQLException {
@@ -414,7 +414,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setRef(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#executeQuery()
 	 */
 	public ResultSet executeQuery() throws SQLException {
@@ -423,7 +423,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	    String sqlID = null ;
 	    if( journalService != null ){
 	        sqlID = getSequenceNo();
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        journalService.addInfo(sqlID,getCurrentSql(),journalLevel);
 	    }
 	    NimbusResultSet ret = null;
@@ -431,7 +431,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 	    try {
 			ResultSet tmp = mStatement.executeQuery() ;
 			ret = new NimbusResultSet(tmp) ;
-			//ŠÇ—‚É’Ç‰Á
+			//ç®¡ç†ã«è¿½åŠ 
 			this.mResultSetList.add(ret) ;
 	    } finally {
 	        endTime = System.currentTimeMillis();
@@ -445,14 +445,14 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#getMetaData()
 	 */
 	public ResultSetMetaData getMetaData() throws SQLException {
 		return mStatement.getMetaData();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setTime(int, java.sql.Time)
 	 */
 	public void setTime(int arg0, Time arg1) throws SQLException {
@@ -460,7 +460,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setTime(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setTimestamp(int, java.sql.Timestamp)
 	 */
 	public void setTimestamp(int arg0, Timestamp arg1) throws SQLException {
@@ -468,7 +468,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setTimestamp(arg0,arg1) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setDate(int, java.sql.Date, java.util.Calendar)
 	 */
 	public void setDate(int arg0, Date arg1, Calendar arg2)
@@ -477,7 +477,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setDate(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setTime(int, java.sql.Time, java.util.Calendar)
 	 */
 	public void setTime(int arg0, Time arg1, Calendar arg2)
@@ -486,7 +486,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setTime(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.PreparedStatement#setTimestamp(int, java.sql.Timestamp, java.util.Calendar)
 	 */
 	public void setTimestamp(int arg0, Timestamp arg1, Calendar arg2)
@@ -495,7 +495,7 @@ public class NimbusPreparedStatement extends NimbusStatement implements Prepared
 		mStatement.setTimestamp(arg0,arg1,arg2) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#cancel()
 	 */
 	public void cancel() throws SQLException {

@@ -32,24 +32,24 @@
 package jp.ossc.nimbus.core;
 
 /**
- * ƒT[ƒrƒX‚Ìó‘Ô‚ğŠÄ‹‚·‚éƒŠƒXƒi‚É’Ê’m‚ğs‚¤ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒT[ƒrƒX‚Ìó‘Ô‚ğŠÄ‹‚·‚é{@link ServiceStateListener}‚ğ“o˜^‚Ü‚½‚Ííœ‚·‚éƒƒ\ƒbƒh‚ª’è‹`‚³‚ê‚Ä‚¢‚éB‚±‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•‚ÍAƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½ê‡‚ÉAServiceStateListener‚É’Ê’m‚·‚éÓ”C‚ğ•‰‚¤B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã‚’è¡Œã†ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹{@link ServiceStateListener}ã‚’ç™»éŒ²ã¾ãŸã¯å‰Šé™¤ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã€‚ã“ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆã«ã€ServiceStateListenerã«é€šçŸ¥ã™ã‚‹è²¬ä»»ã‚’è² ã†ã€‚<br>
  *
  * @author M.Takata
  */
 public interface ServiceStateBroadcaster{
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void addServiceStateListener(ServiceStateListener listener);
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void removeServiceStateListener(ServiceStateListener listener);
 }

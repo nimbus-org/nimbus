@@ -39,7 +39,7 @@ import jp.ossc.nimbus.beans.dataset.*;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 
 /**
- * DataSerÌJSON(JavaScript Object Notation)ƒRƒ“ƒo[ƒ^B<p>
+ * DataSerâ‡”JSON(JavaScript Object Notation)ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -117,106 +117,106 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DATASET_TO_JSON = OBJECT_TO_STREAM;
     
     /**
-     * JSON¨ƒf[ƒ^ƒZƒbƒg‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * JSONâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int JSON_TO_DATASET = STREAM_TO_OBJECT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒgƒ}ƒbƒsƒ“ƒOB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      */
     protected Map dataSetMap = new HashMap();
     
     /**
-     * BeanFlowInvokerFactoryB<p>
+     * BeanFlowInvokerFactoryã€‚<p>
      */
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
     
     /**
-     * DataSet‚ğBeanFlow‚Åæ“¾‚·‚éê‡‚ÉAƒŠƒNƒGƒXƒg‚³‚ê‚½DataSet–¼‚Ì‘O‚É‚±‚Ì‘O’uŒ‚ğ•t‰Á‚µ‚ÄBeanFlow–¼‚ğŒˆ’è‚·‚éB<p>
+     * DataSetã‚’BeanFlowã§å–å¾—ã™ã‚‹å ´åˆã«ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã•ã‚ŒãŸDataSetåã®å‰ã«ã“ã®å‰ç½®è©ã‚’ä»˜åŠ ã—ã¦BeanFlowåã‚’æ±ºå®šã™ã‚‹ã€‚<p>
      */
     protected String dataSetFlowNamePrefix;
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚ğs‚¤Û‚ÉAJSON‚Éschema—v‘f‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ‚ ‚ç‚í‚·Btrue‚Ìê‡Ao—Í‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›ã‚’è¡Œã†éš›ã«ã€JSONã«schemaè¦ç´ ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’ã‚ã‚‰ã‚ã™ã€‚trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isOutputSchema = true;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToStream = "UTF-8";
     
     /**
-     * JSON¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * JSONâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToObject = "UTF-8";
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚É‘¶İ‚µ‚È‚¢—v‘f‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚·‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã«å­˜åœ¨ã—ãªã„è¦ç´ ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ã€‚<br>
      */
     protected boolean isIgnoreUnknownElement;
     
     /**
-     * ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
+     * ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      */
     protected boolean isOutputPropertyNameOfHeader = true;
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      */
     protected boolean isOutputPropertyNameOfRecordList = true;
     
     /**
-     * null’l‚ÌƒvƒƒpƒeƒB‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
+     * nullå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      */
     protected boolean isOutputNullProperty = true;
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚àJSONŒ`®‚Åo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAJSONŒ`®‚Å‚Ío—Í‚µ‚È‚¢B<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚‚JSONå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€JSONå½¢å¼ã§ã¯å‡ºåŠ›ã—ãªã„ã€‚<br>
      */
     protected boolean isOutputJSONSchema = false;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã€‚<br>
      */
     protected boolean isUnicodeEscape = true;
     
     /**
-     * ƒoƒCƒ“ƒh‚³‚ê‚½DataSet‚ğ•¡»‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å•¡»‚·‚éB<br>
+     * ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸDataSetã‚’è¤‡è£½ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§è¤‡è£½ã™ã‚‹ã€‚<br>
      */
     protected boolean isCloneBindingObject = true;
     
     protected boolean isOutputVTLTemplate = false;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DataSetJSONConverter(){
         this(DATASET_TO_JSON);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #DATASET_TO_JSON
      * @see #JSON_TO_DATASET
      */
@@ -225,9 +225,9 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #DATASET_TO_JSON
      * @see #JSON_TO_DATASET
@@ -237,9 +237,9 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -247,10 +247,10 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚Æƒf[ƒ^ƒZƒbƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * JSON¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚ğs‚¤Û‚ÉAJSON‚Éschema—v‘f‚ª‚È‚¢ê‡‚ÉAƒf[ƒ^ƒZƒbƒg–¼‚©‚çƒf[ƒ^ƒZƒbƒg‚ğ“Á’è‚·‚é‚Ì‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * JSONâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã‚’è¡Œã†éš›ã«ã€JSONã«schemaè¦ç´ ãŒãªã„å ´åˆã«ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç‰¹å®šã™ã‚‹ã®ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param dataSet ƒf[ƒ^ƒZƒbƒg
+     * @param dataSet ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     public void setDataSet(DataSet dataSet){
         if(dataSet.getName() == null){
@@ -260,11 +260,11 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚Æƒf[ƒ^ƒZƒbƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * JSON¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚ğs‚¤Û‚ÉAJSON‚Éschema—v‘f‚ª‚È‚¢ê‡‚ÉAƒf[ƒ^ƒZƒbƒg–¼‚©‚çƒf[ƒ^ƒZƒbƒg‚ğ“Á’è‚·‚é‚Ì‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * JSONâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã‚’è¡Œã†éš›ã«ã€JSONã«schemaè¦ç´ ãŒãªã„å ´åˆã«ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç‰¹å®šã™ã‚‹ã®ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param name ƒf[ƒ^ƒZƒbƒg–¼
-     * @param dataSet ƒf[ƒ^ƒZƒbƒg
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
+     * @param dataSet ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     public void setDataSet(String name, DataSet dataSet){
         if(dataSet.getName() == null){
@@ -274,7 +274,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * DataSet‚ğBeanFlow‚Åæ“¾‚·‚éê‡‚Ég—p‚·‚é{@link BeanFlowInvokerFactory}‚ğİ’è‚·‚éB<p>
+     * DataSetã‚’BeanFlowã§å–å¾—ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link BeanFlowInvokerFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory BeanFlowInvokerFactory
      */
@@ -283,152 +283,152 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * DataSet‚ğBeanFlow‚Åæ“¾‚·‚éê‡‚ÉAŒÄ‚Ño‚·BeanFlow–¼‚Æ‚µ‚ÄAƒŠƒNƒGƒXƒg‚³‚ê‚½DataSet–¼‚Ì‘O‚É•t‰Á‚·‚éƒvƒŒƒtƒBƒNƒX‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒvƒŒƒtƒBƒNƒX‚ğ•t‰Á‚µ‚È‚¢B<br>
+     * DataSetã‚’BeanFlowã§å–å¾—ã™ã‚‹å ´åˆã«ã€å‘¼ã³å‡ºã™BeanFlowåã¨ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã•ã‚ŒãŸDataSetåã®å‰ã«ä»˜åŠ ã™ã‚‹ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã‚’ä»˜åŠ ã—ãªã„ã€‚<br>
      *
-     * @param prefix ƒvƒŒƒtƒBƒNƒX
+     * @param prefix ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹
      */
     public void setDataSetFlowNamePrefix(String prefix){
         dataSetFlowNamePrefix = prefix;
     }
     
     /**
-     * DataSet‚ğBeanFlow‚Åæ“¾‚·‚éê‡‚ÉAŒÄ‚Ño‚·BeanFlow–¼‚Æ‚µ‚ÄAƒŠƒNƒGƒXƒg‚³‚ê‚½DataSet–¼‚Ì‘O‚É•t‰Á‚·‚éƒvƒŒƒtƒBƒNƒX‚ğæ“¾‚·‚éB<p>
+     * DataSetã‚’BeanFlowã§å–å¾—ã™ã‚‹å ´åˆã«ã€å‘¼ã³å‡ºã™BeanFlowåã¨ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã•ã‚ŒãŸDataSetåã®å‰ã«ä»˜åŠ ã™ã‚‹ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒŒƒtƒBƒNƒX
+     * @return ãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹
      */
     public String getDataSetFlowNamePrefix(){
         return dataSetFlowNamePrefix;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚ğs‚¤Û‚ÉAJSON‚Éschema—v‘f‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éBtrue‚Ìê‡Ao—Í‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›ã‚’è¡Œã†éš›ã«ã€JSONã«schemaè¦ç´ ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚éê‡‚Ítrue
+     * @param isOutput ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputSchema(boolean isOutput){
         isOutputSchema = isOutput;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputSchema(){
         return isOutputSchema;
     }
     
     /**
-     * ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
-     * false‚É‚·‚é‚ÆAƒwƒbƒ_‚ªJSON‚ÌƒIƒuƒWƒFƒNƒgŒ`®‚Å‚Í‚È‚­A”z—ñŒ`®‚Åo—Í‚³‚ê‚éB<br>
+     * ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * falseã«ã™ã‚‹ã¨ã€ãƒ˜ãƒƒãƒ€ãŒJSONã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå½¢å¼ã§ã¯ãªãã€é…åˆ—å½¢å¼ã§å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param isOutput ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputPropertyNameOfHeader(boolean isOutput){
         isOutputPropertyNameOfHeader = isOutput;
     }
     
     /**
-     * ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputPropertyNameOfHeader(){
         return isOutputPropertyNameOfHeader;
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
-     * false‚É‚·‚é‚ÆAƒŒƒR[ƒhƒŠƒXƒg‚ªJSON‚ÌƒIƒuƒWƒFƒNƒgŒ`®‚Å‚Í‚È‚­A”z—ñŒ`®‚Åo—Í‚³‚ê‚éB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * falseã«ã™ã‚‹ã¨ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆãŒJSONã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå½¢å¼ã§ã¯ãªãã€é…åˆ—å½¢å¼ã§å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param isOutput ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputPropertyNameOfRecordList(boolean isOutput){
         isOutputPropertyNameOfRecordList = isOutput;
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputPropertyNameOfRecordList(){
         return isOutputPropertyNameOfRecordList;
     }
     
     /**
-     * null’l‚ÌƒvƒƒpƒeƒB‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
+     * nullå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputNullProperty(boolean isOutput){
         isOutputNullProperty = isOutput;
     }
     
     /**
-     * null’l‚ÌƒvƒƒpƒeƒB‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * nullå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚éB
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public boolean isOutputNullProperty(){
         return isOutputNullProperty;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚ÅAVTL(Velocity Template Language) ‚ğŠÜ‚Şƒeƒ“ƒvƒŒ[ƒg‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAo—Í‚µ‚È‚¢B<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›ã§ã€VTL(Velocity Template Language) ã‚’å«ã‚€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputVTLTemplate(boolean isOutput){
         isOutputVTLTemplate = isOutput;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚ÅAVTL(Velocity Template Language) ‚ğŠÜ‚Şƒeƒ“ƒvƒŒ[ƒg‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›ã§ã€VTL(Velocity Template Language) ã‚’å«ã‚€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚éB
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public boolean isOutputVTLTemplate(){
         return isOutputVTLTemplate;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         characterEncodingToStream = encoding;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToStream(){
         return characterEncodingToStream;
     }
     
     /**
-     * JSON¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * JSONâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         characterEncodingToObject = encoding;
     }
     
     /**
-     * JSON¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * JSONâ†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToObject(){
         return characterEncodingToObject;
@@ -463,87 +463,87 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚É‘¶İ‚µ‚È‚¢—v‘f‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚È‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã«å­˜åœ¨ã—ãªã„è¦ç´ ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ãªã‚‹ã€‚<br>
      * 
-     * @param isIgnore true‚Ìê‡A–³‹‚·‚é
+     * @param isIgnore trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public void setIgnoreUnknownElement(boolean isIgnore){
         isIgnoreUnknownElement = isIgnore;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚É‘¶İ‚µ‚È‚¢—v‘f‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã«å­˜åœ¨ã—ãªã„è¦ç´ ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreUnknownElement(){
         return isIgnoreUnknownElement;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚àJSONŒ`®‚Åo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAJSONŒ`®‚Å‚Ío—Í‚µ‚È‚¢B<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚‚JSONå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€JSONå½¢å¼ã§ã¯å‡ºåŠ›ã—ãªã„ã€‚<br>
      * 
-     * @param isOutput JSONŒ`®‚Åo—Í‚·‚éê‡Atrue
+     * @param isOutput JSONå½¢å¼ã§å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputJSONSchema(boolean isOutput){
         isOutputJSONSchema = isOutput;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚àJSONŒ`®‚Åo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚‚JSONå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AJSONŒ`®‚Åo—Í‚·‚é
+     * @return trueã®å ´åˆã€JSONå½¢å¼ã§å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJSONSchema(){
         return isOutputJSONSchema;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒXƒP[ƒv‚·‚éê‡true
+     * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
      */
     public boolean isUnicodeEscape(){
         return isUnicodeEscape;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã€‚<br>
      *
-     * @param isEscape ƒGƒXƒP[ƒv‚·‚éê‡true
+     * @param isEscape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
      */
     public void setUnicodeEscape(boolean isEscape){
         isUnicodeEscape = isEscape;
     }
     
     /**
-     * ƒoƒCƒ“ƒh‚³‚ê‚½DataSet‚ğ•¡»‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å•¡»‚·‚éB<br>
+     * ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸDataSetã‚’è¤‡è£½ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§è¤‡è£½ã™ã‚‹ã€‚<br>
      * 
-     * @param isClone •¡»‚·‚éê‡true
+     * @param isClone è¤‡è£½ã™ã‚‹å ´åˆtrue
      */
     public void setCloneBindingObject(boolean isClone){
         isCloneBindingObject = isClone;
     }
     
     /**
-     * ƒoƒCƒ“ƒh‚³‚ê‚½DataSet‚ğ•¡»‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸDataSetã‚’è¤‡è£½ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A•¡»‚·‚é
+     * @return trueã®å ´åˆã€è¤‡è£½ã™ã‚‹
      */
     public boolean isCloneBindingObject(){
         return isCloneBindingObject;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -570,11 +570,11 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * {@link DataSet}‚©‚çJSONƒoƒCƒg”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * {@link DataSet}ã‹ã‚‰JSONãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
      * @param obj DataSet
-     * @return JSONƒoƒCƒg”z—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @return JSONãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         if(obj instanceof DataSet){
@@ -587,23 +587,23 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
-     * JSONƒXƒgƒŠ[ƒ€‚©‚ç{@link DataSet}‚É•ÏŠ·‚·‚éB<p>
+     * JSONã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰{@link DataSet}ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is JSONƒXƒgƒŠ[ƒ€
+     * @param is JSONã‚¹ãƒˆãƒªãƒ¼ãƒ 
      * @return DataSet
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         return toDataSet(is);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @param returnType •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-     * @throws ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param returnType å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @throws ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is, Object returnType)
      throws ConvertException{
@@ -669,13 +669,13 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             buf.append(OBJECT_ENCLOSURE_START);
             
             boolean isOutput = false;
-            // ƒXƒL[ƒ}o—Í
+            // ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
             if(isOutputSchema){
                 appendName(buf, NAME_SCHEMA);
                 buf.append(PROPERTY_SEPARATOR);
                 buf.append(OBJECT_ENCLOSURE_START);
                 
-                // ƒwƒbƒ_‚ÌƒXƒL[ƒ}o—Í
+                // ãƒ˜ãƒƒãƒ€ã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
                 final String[] headerNames = dataSet.getHeaderNames();
                 if(headerNames != null && headerNames.length > 0){
                     appendName(buf, NAME_HEADER);
@@ -706,7 +706,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     isOutput = true;
                 }
                 
-                // ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}o—Í
+                // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
                 String[] recListNames = dataSet.getRecordListNames();
                 if(recListNames != null && recListNames.length > 0){
                     if(isOutput){
@@ -741,7 +741,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     isOutput = true;
                 }
                 
-                // ƒlƒXƒgƒŒƒR[ƒh‚ÌƒXƒL[ƒ}o—Í
+                // ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
                 String[] recNames = dataSet.getNestedRecordSchemaNames();
                 if(recNames != null && recNames.length > 0){
                     if(isOutput){
@@ -772,7 +772,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     isOutput = true;
                 }
                 
-                // ƒlƒXƒgƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}o—Í
+                // ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒå‡ºåŠ›
                 recListNames = dataSet.getNestedRecordListSchemaNames();
                 if(recListNames != null && recListNames.length > 0){
                     if(isOutput){
@@ -806,7 +806,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 buf.append(OBJECT_ENCLOSURE_END);
             }
             
-            // ƒwƒbƒ_o—Í
+            // ãƒ˜ãƒƒãƒ€å‡ºåŠ›
             final String[] headerNames = dataSet.getHeaderNames();
             if(headerNames != null && headerNames.length > 0){
                 if(isOutput){
@@ -831,7 +831,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 isOutput = true;
             }
             
-            // ƒŒƒR[ƒhƒŠƒXƒgo—Í
+            // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå‡ºåŠ›
             String[] recListNames = dataSet.getRecordListNames();
             if(recListNames != null && recListNames.length > 0){
                 if(isOutput){
@@ -1362,7 +1362,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 }else{
                     ds = new DataSet(dsName);
                     
-                    // ƒXƒL[ƒ}‚ğ“Ç‚İ‚Ş
+                    // ã‚¹ã‚­ãƒ¼ãƒã‚’èª­ã¿è¾¼ã‚€
                     Object schemaObj = jsonObj.get(NAME_SCHEMA);
                     if(schemaObj == null
                         || !(schemaObj instanceof Map)
@@ -1467,7 +1467,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 ds = isCloneBindingObject ? ds.cloneSchema() : ds;
             }
             
-            // ƒwƒbƒ_‚ğ“Ç‚İ‚Ş
+            // ãƒ˜ãƒƒãƒ€ã‚’èª­ã¿è¾¼ã‚€
             final Object headerObj = jsonObj.get(NAME_HEADER);
             if(headerObj != null){
                 if(!(headerObj instanceof Map)){
@@ -1487,7 +1487,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 }
             }
             
-            // ƒŒƒR[ƒhƒŠƒXƒg‚ğ“Ç‚İ‚Ş
+            // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’èª­ã¿è¾¼ã‚€
             final Object recListObj = jsonObj.get(NAME_RECORD_LIST);
             if(recListObj != null){
                 if(!(recListObj instanceof Map)){
@@ -1924,15 +1924,15 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             final int length = unicodeStr.length();
             final StringBuilder buf = new StringBuilder(length);
             for(int i = 0; i < length;){
-                //•¶š—ñ‚ğØ‚èæ‚é
+                //æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šå–ã‚‹
                 char c = unicodeStr.charAt(i++);
-                //ƒGƒXƒP[ƒv‚È‚ç
+                //ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã‚‰
                 if(c == ESCAPE && (length - 1) > i){
                     c = unicodeStr.charAt(i++);
-                    //UNICODEƒ}[ƒN
+                    //UNICODEãƒãƒ¼ã‚¯
                     if(c == 'u'){
                         int value = 0;
-                        //‚S•¶š“Ç‚İ‚Ş
+                        //ï¼”æ–‡å­—èª­ã¿è¾¼ã‚€
                         for(int j=0;j<4;j++){
                             c = unicodeStr.charAt(i++);
                             switch(c){
@@ -1990,9 +1990,9 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             final StringBuilder buf = new StringBuilder(length);
             boolean isUnescape = false;
             for(int i = 0; i < length;){
-                //•¶š—ñ‚ğØ‚èæ‚é
+                //æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šå–ã‚‹
                 char c = str.charAt(i++);
-                //ƒGƒXƒP[ƒv‚È‚ç
+                //ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã‚‰
                 if(c == '\\' && length > i){
                     isUnescape = true;
                     c = str.charAt(i++);

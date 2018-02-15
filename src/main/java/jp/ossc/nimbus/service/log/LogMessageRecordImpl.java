@@ -41,46 +41,46 @@ import jp.ossc.nimbus.util.*;
 //
 //
 /**
- *	ŠeíƒƒO‚Ìo—ÍƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ‹K’è‚·‚éB<BR>
- *	ƒpƒtƒH[ƒ}ƒ“ƒXˆÛ‚Ì‚½‚ß‚ÌƒƒO‚ÌƒLƒ…[ŠÇ—‚ğs‚¤B<BR>
+ *	å„ç¨®ãƒ­ã‚°ã®å‡ºåŠ›ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’è¦å®šã™ã‚‹ã€‚<BR>
+ *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ç¶­æŒã®ãŸã‚ã®ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ç®¡ç†ã‚’è¡Œã†ã€‚<BR>
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public class LogMessageRecordImpl extends MessageRecordImpl
 								implements LogMessageRecord, MessageRecordOperator, java.io.Serializable{
 	
     private static final long serialVersionUID = 6861222398118645636L;
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾ 	##
-	/**	ƒƒOƒvƒ‰ƒCƒIƒŠƒeƒB			*/	
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ 	##
+	/**	ãƒ­ã‚°ãƒ—ãƒ©ã‚¤ã‚ªãƒªãƒ†ã‚£			*/	
 	protected int mMessagePriority = 0 ;
-	/**	ƒJƒeƒSƒŠ[					*/	
+	/**	ã‚«ãƒ†ã‚´ãƒªãƒ¼					*/	
 	protected CsvArrayList mCategory = null ;
 	protected boolean isPrintStackTrace = true;
 
-	//## ’è”’è‹` 	##
-	/**	ƒfƒtƒHƒ‹ƒgƒJƒeƒSƒŠ[			*/	
+	//## å®šæ•°å®šç¾© 	##
+	/**	ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚«ãƒ†ã‚´ãƒªãƒ¼			*/	
 	private static final String C_DFAUTL_CATEGORY = "debug" ;
-	/**	ƒfƒtƒHƒ‹ƒgƒJƒeƒSƒŠ[			*/	
+	/**	ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚«ãƒ†ã‚´ãƒªãƒ¼			*/	
 	private static final String C_DFAUTL_LOCALE = "default" ;
 	//
 	/**
-	 *	ƒƒOƒŒƒR[ƒh’è‹`•¶š‚©‚ç“à•”ƒƒ“ƒo[‚Öƒf[ƒ^‚ğƒ[ƒh‚·‚éB<br>
-	 *	@param		defString	’è‹`•¶š—ñ<BR>
+	 *	ãƒ­ã‚°ãƒ¬ã‚³ãƒ¼ãƒ‰å®šç¾©æ–‡å­—ã‹ã‚‰å†…éƒ¨ãƒ¡ãƒ³ãƒãƒ¼ã¸ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
+	 *	@param		defString	å®šç¾©æ–‡å­—åˆ—<BR>
 	 *	LOGCODE,LOGSTR,PRIORITY,CATEGORY0:CATEGORY1...n
-	 *	APL0001,ƒGƒ‰[”­¶(@1),100,root
+	 *	APL0001,ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿ(@1),100,root
 	 */
 	public void rec2Obj(String defString) throws MessageRecordParseException{
-		/** ƒCƒjƒVƒƒƒ‹Ï‚İ‚©”»’è */
+		/** ã‚¤ãƒ‹ã‚·ãƒ£ãƒ«æ¸ˆã¿ã‹åˆ¤å®š */
 		if(!mIsInitialized){
-			/** ƒfƒtƒ@ƒCƒ“•¶š•ªŠ„ */
+			/** ãƒ‡ãƒ•ã‚¡ã‚¤ãƒ³æ–‡å­—åˆ†å‰² */
 			CsvArrayList parser = new CsvArrayList();
 			parser.split(defString,",");
 			if(parser.size()<2){
 				throw new MessageRecordParseException("Message define error message is " + defString ) ;
 			}else{
-				// Šî–{ƒf[ƒ^Ši”[
+				// åŸºæœ¬ãƒ‡ãƒ¼ã‚¿æ ¼ç´
 				this.mMessageCode = parser.getStr(0);
 				this.mMessageHash.put(C_DFAUTL_LOCALE,parser.getStr(1)) ;
 			}
@@ -104,8 +104,8 @@ public class LogMessageRecordImpl extends MessageRecordImpl
 	    return isPrintStackTrace;
 	}
 	/**
-	 *	ƒvƒ‰ƒCƒIƒŠƒeƒB‚ğo—Í‚·‚éB<br>
-	 *	@return		int		ƒvƒ‰ƒCƒIƒŠƒeƒB[<BR>
+	 *	ãƒ—ãƒ©ã‚¤ã‚ªãƒªãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
+	 *	@return		int		ãƒ—ãƒ©ã‚¤ã‚ªãƒªãƒ†ã‚£ãƒ¼<BR>
 	 */
 	public int getPriority() {
 		return this.mMessagePriority ;
@@ -114,8 +114,8 @@ public class LogMessageRecordImpl extends MessageRecordImpl
 		this.mMessagePriority = priority;
 	}
 	/**
-	 *	ƒJƒeƒSƒŠ[‚ğæ“¾‚·‚éB<br>
-	 *	@return		CsvArrayList	ƒJƒeƒSƒŠ[ƒR[ƒh<BR>
+	 *	ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return		CsvArrayList	ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚³ãƒ¼ãƒ‰<BR>
 	 */
 	public List getCategories(){
         if(mCategory == null){
@@ -139,8 +139,8 @@ public class LogMessageRecordImpl extends MessageRecordImpl
 		}
 	}
 	/**
-	 *	İ’èÚ×•¶š—ñ‚ğæ“¾‚·‚éB<br>
-	 *	@return		String		ƒƒOƒR[ƒh<BR>
+	 *	è¨­å®šè©³ç´°æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return		String		ãƒ­ã‚°ã‚³ãƒ¼ãƒ‰<BR>
 	 *	LOGCODE;LOGSTR;COUNT;OCCUR TIME;PRIORITY;CATEGORY:CATEGORY
 	 */
 	public String toString(){

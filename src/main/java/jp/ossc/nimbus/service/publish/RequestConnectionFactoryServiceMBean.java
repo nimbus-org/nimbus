@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link RequestConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link RequestConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see RequestConnectionFactoryService
@@ -47,145 +47,145 @@ public interface RequestConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_READ_MESSAGE_ERROR        = "PRCF_00003";
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‹y‚Ñ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚Ég—p‚·‚é{@link ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸åŠã³å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«ä½¿ç”¨ã™ã‚‹{@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‹y‚Ñ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚Ég—p‚·‚é{@link ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸åŠã³å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«ä½¿ç”¨ã™ã‚‹{@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerConnectionFactoryServiceName();
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‹y‚Ñ‰“šƒƒbƒZ[ƒW‚ÌóM‚Ég—p‚·‚é{@link MessageReceiver}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸åŠã³å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡ã«ä½¿ç”¨ã™ã‚‹{@link MessageReceiver}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageReceiverƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MessageReceiverã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageReceiverServiceName(ServiceName name);
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‹y‚Ñ‰“šƒƒbƒZ[ƒW‚ÌóM‚Ég—p‚·‚é{@link MessageReceiver}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸åŠã³å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡ã«ä½¿ç”¨ã™ã‚‹{@link MessageReceiver}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageReceiverƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return MessageReceiverã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageReceiverServiceName();
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚ğ”ñ“¯Šú‚Ås‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å“¯Šú‘—M‚·‚éB<br>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã‚’éåŒæœŸã§è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§åŒæœŸé€ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param isAsynch ”ñ“¯Šú‘—M‚·‚éê‡‚ÍAtrue
+     * @param isAsynch éåŒæœŸé€ä¿¡ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setAsynchResponse(boolean isAsynch);
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚ğ”ñ“¯Šú‚Ås‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã‚’éåŒæœŸã§è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A”ñ“¯Šú‘—M‚·‚é
+     * @return trueã®å ´åˆã€éåŒæœŸé€ä¿¡ã™ã‚‹
      */
     public boolean isAsynchResponse();
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<br>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<br>
      *
-     * @param count ƒŠƒgƒ‰ƒC‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setResponseRetryCount(int count);
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğæ“¾‚·‚éB<p>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‰ñ”
+     * @return ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public int getResponseRetryCount();
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚ÌƒŠƒgƒ‰ƒCŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA50[ms]B<br>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã®ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€50[ms]ã€‚<br>
      *
-     * @param interval ƒŠƒgƒ‰ƒCŠÔŠu[ms]
+     * @param interval ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
      */
     public void setResponseRetryInterval(long interval);
     
     /**
-     * ‰“šƒƒbƒZ[ƒW‚Ì‘—M‚ÌƒŠƒgƒ‰ƒCŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã®ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCŠÔŠu[ms]
+     * @return ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
      */
     public long getResponseRetryInterval();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ì—v‹‚É‰“š‚·‚éÛ‚ÉA‘—MƒGƒ‰[‚ª”­¶‚µƒŠƒgƒ‰ƒC‚·‚éê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®è¦æ±‚ã«å¿œç­”ã™ã‚‹éš›ã«ã€é€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setResponseErrorRetryMessageId(String id);
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ì—v‹‚É‰“š‚·‚éÛ‚ÉA‘—MƒGƒ‰[‚ª”­¶‚µƒŠƒgƒ‰ƒC‚·‚éê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®è¦æ±‚ã«å¿œç­”ã™ã‚‹éš›ã«ã€é€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getResponseErrorRetryMessageId();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ì—v‹‚É‰“š‚·‚éÛ‚ÉA‘—MƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®è¦æ±‚ã«å¿œç­”ã™ã‚‹éš›ã«ã€é€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setResponseErrorMessageId(String id);
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ì—v‹‚É‰“š‚·‚éÛ‚ÉA‘—MƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®è¦æ±‚ã«å¿œç­”ã™ã‚‹éš›ã«ã€é€ä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getResponseErrorMessageId();
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setReadMessageErrorMessageId(String id);
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getReadMessageErrorMessageId();
     
     /**
-     * •½‹Ï‘—MŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * å¹³å‡é€ä¿¡æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹Ï‘—MŠÔ[ms]
+     * @return å¹³å‡é€ä¿¡æ™‚é–“[ms]
      */
     public double getAverageSendProcessTime();
     
     /**
-     * •½‹Ï‰“šŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * å¹³å‡å¿œç­”æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹Ï‰“šŠÔ[ms]
+     * @return å¹³å‡å¿œç­”æ™‚é–“[ms]
      */
     public double getAverageResponseProcessTime();
     
     /**
-     * •½‹ÏóMˆ—ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * å¹³å‡å—ä¿¡å‡¦ç†æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹ÏóMˆ—ŠÔ[ms]
+     * @return å¹³å‡å—ä¿¡å‡¦ç†æ™‚é–“[ms]
      */
     public double getAverageReceiveProcessTime();
     
     /**
-     * •½‹ÏóM‰“šŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * å¹³å‡å—ä¿¡å¿œç­”æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹ÏóM‰“šŠÔ[ms]
+     * @return å¹³å‡å—ä¿¡å¿œç­”æ™‚é–“[ms]
      */
     public double getAverageReceiveSendProcessTime();
 }

@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ServletRequestInitializeInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ServletRequestInitializeInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ServletRequestInitializeInterceptorService
@@ -45,89 +45,89 @@ public interface ServletRequestInitializeInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚©‚çƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚éƒRƒ“ƒeƒLƒXƒgƒL[‚Ì”z—ñ
+     * @param keys ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼ã®é…åˆ—
      */
     public void setContextKeys(String[] keys);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚©‚çƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚éƒRƒ“ƒeƒLƒXƒgƒL[‚Ì”z—ñ
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼ã®é…åˆ—
      */
     public String[] getContextKeys();
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚é‘®«–¼‚ÆƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹å±æ€§åã¨ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ‘®«–¼‚ÆƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO”z—ñB‘®«–¼=ƒT[ƒrƒX–¼
+     * @param names å±æ€§åã¨ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°é…åˆ—ã€‚å±æ€§å=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestAttributeServiceNames(ServiceNameRef[] names);
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚é‘®«–¼‚ÆƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹å±æ€§åã¨ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼‚ÆƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO”z—ñ
+     * @return å±æ€§åã¨ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°é…åˆ—
      */
     public ServiceNameRef[] getRequestAttributeServiceNames();
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚é‘®«–¼‚ÆƒIƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹å±æ€§åã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param attrs ‘®«–¼‚ÆƒIƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param attrs å±æ€§åã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setRequestAttributes(Map attrs);
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚é‘®«–¼‚ÆƒIƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹å±æ€§åã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼‚ÆƒIƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return å±æ€§åã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getRequestAttributes();
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚é‘®«–¼‚ÆƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹å±æ€§åã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
-     * @param attr ‘®«’l
+     * @param name å±æ€§å
+     * @param attr å±æ€§å€¤
      */
     public void setRequestAttribute(String name, Object attr);
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚éƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
-     * @return ‘®«’l
+     * @param name å±æ€§å
+     * @return å±æ€§å€¤
      */
     public Object getRequestAttribute(String name);
     
     /**
-     * {@link #setRequestAttributeServiceNames(ServiceNameRef[])}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÉA{@link ServiceNotFoundException}‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link #setRequestAttributeServiceNames(ServiceNameRef[])}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„å ´åˆã«ã€{@link ServiceNotFoundException}ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡throw‚·‚é
+     * @return trueã®å ´åˆthrowã™ã‚‹
      */
     public boolean isThrowServiceNotFoundException();
     
     /**
-     * {@link #setRequestAttributeServiceNames(ServiceNameRef[])}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÉA{@link ServiceNotFoundException}‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åthrow‚·‚éB<br>
+     * {@link #setRequestAttributeServiceNames(ServiceNameRef[])}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„å ´åˆã«ã€{@link ServiceNotFoundException}ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§throwã™ã‚‹ã€‚<br>
      *
-     * @param isThrow throw‚·‚éê‡‚ÍAtrue
+     * @param isThrow throwã™ã‚‹å ´åˆã¯ã€true
      */
     public void setThrowServiceNotFoundException(boolean isThrow);
 }

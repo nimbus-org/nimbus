@@ -34,30 +34,30 @@ package jp.ossc.nimbus.service.test;
 import java.util.Date;
 
 /**
- * Šî’êƒXƒe[ƒ^ƒXB<p>
+ * åŸºåº•ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface StatusBase {
     
     /**
-     * Àsƒ†[ƒUID‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Àsƒ†[ƒUID
+     * @return å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ID
      */
     public String getUserId();
     
     /**
-     * ÀsŠJn“ú‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œé–‹å§‹æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsŠJn“ú
+     * @return å®Ÿè¡Œé–‹å§‹æ—¥æ™‚
      */
     public Date getStartTime();
     
     /**
-     * ÀsŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsŒ‹‰ÊB¬Œ÷‚Ìê‡AtrueB¸”s‚Ìê‡Afalse
+     * @return å®Ÿè¡Œçµæœã€‚æˆåŠŸã®å ´åˆã€trueã€‚å¤±æ•—ã®å ´åˆã€false
      */
     public boolean getResult();
     

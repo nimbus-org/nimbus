@@ -42,22 +42,22 @@ import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * �C���^�[�Z�v�^�`�F�[���Ăяo���t�B���^�B<p>
- * �T�[�u���b�g�t�B���^����C���^�[�Z�v�^�`�F�[�����Ăяo���t�B���^�N���X�ł���B<br>
- * �A�v���P�[�V������Օ��i�Ƃ��āA�T�[�u���b�g�t�B���^���쐬���鎖�����΂��΂���B<br>
- * �������A�T�[�u���b�g�t�B���^��web.xml�Œ�`�ł�����͌����Ă���A�쐬�����T�[�u���b�g�t�B���^�ɁA�l�X�ȃp�����[�^��n������C���W�F�N�V���������肷�鎖������ł���B�܂��A�t�B���^��ʂ��p�X�̐ݒ���A�O����v�y�ь����v�̃p�X�w����x�����ł��Ȃ��B<br>
- * Nimbus�Ƃ̑g�ݍ��킹�Ƃ����Ӗ��ł́A�t�B���^�ƃT�[�r�X�̘A�g���e�Ղł͂Ȃ��B<br>
- * �����ŁA�T�[�u���b�g�t�B���^�̋@�\���C���^�[�Z�v�^�ɈϏ����鎖�ŁA�����̎�_��₦��悤�ɂ����B<br>
- * �A�v���P�[�V������ՊJ���҂́A�T�[�u���b�g�t�B���^���J������ς��ɁA�C���^�[�Z�v�^���J�����鎖�ŁA�O�q�̎�_�������J�����\�ɂȂ�B<br>
- * ���̃T�[�u���b�g�t�B���^�ɂ́A�ȉ��̏������p�����[�^������B<br>
+ * インターセプタチェーン呼び出しフィルタ。<p>
+ * サーブレットフィルタからインターセプタチェーンを呼び出すフィルタクラスである。<br>
+ * アプリケーション基盤部品として、サーブレットフィルタを作成する事がしばしばある。<br>
+ * しかし、サーブレットフィルタのweb.xmlで定義できる情報は限られており、作成したサーブレットフィルタに、様々なパラメータを渡したりインジェクションしたりする事が困難である。また、フィルタを通すパスの設定も、前方一致及び後方一致のパス指定程度しかできない。<br>
+ * Nimbusとの組み合わせという意味では、フィルタとサービスの連携が容易ではない。<br>
+ * そこで、サーブレットフィルタの機能をインターセプタに委譲する事で、これらの弱点を補えるようにした。<br>
+ * アプリケーション基盤開発者は、サーブレットフィルタを開発する変わりに、インターセプタを開発する事で、前述の弱点を補った開発が可能になる。<br>
+ * このサーブレットフィルタには、以下の初期化パラメータがある。<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th>#</th><th>�p�����[�^��</th><th>�l�̐���</th><th>�f�t�H���g</th></tr>
- *     <tr><td>1</td><td>InterceptorChainListServiceName</td><td>{@link InterceptorChainList}�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X����ݒ肷��B</td><td></td></tr>
- *     <tr><td>2</td><td>InterceptorChainFactoryServiceName</td><td>{@link InterceptorChainFactory}�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X����ݒ肷��B</td><td></td></tr>
- *     <tr><td>3</td><td>UseThreadLocalInterceptorChain</td><td>{@link DefaultThreadLocalInterceptorChain}���g�p���邩�ǂ�����ݒ肷��B<br>true���w�肵���ꍇ�A�g�p����B�f�t�H���g��true�B�A���AInterceptorChainFactoryServiceName���w�肵���ꍇ�́A{@link DefaultThreadLocalInterceptorChain}�͎g�p����Ȃ��B</td><td></td></tr>
+ *     <tr bgcolor="#cccccc"><th>#</th><th>パラメータ名</th><th>値の説明</th><th>デフォルト</th></tr>
+ *     <tr><td>1</td><td>InterceptorChainListServiceName</td><td>{@link InterceptorChainList}インタフェースを実装したサービスのサービス名を設定する。</td><td></td></tr>
+ *     <tr><td>2</td><td>InterceptorChainFactoryServiceName</td><td>{@link InterceptorChainFactory}インタフェースを実装したサービスのサービス名を設定する。</td><td></td></tr>
+ *     <tr><td>3</td><td>UseThreadLocalInterceptorChain</td><td>{@link DefaultThreadLocalInterceptorChain}を使用するかどうかを設定する。<br>trueを指定した場合、使用する。デフォルトはtrue。但し、InterceptorChainFactoryServiceNameを指定した場合は、{@link DefaultThreadLocalInterceptorChain}は使用されない。</td><td></td></tr>
  * </table>
  * <p>
- * �ȉ��ɁA�T�[�u���b�g�t�B���^��web.xml��`��������B<br>
+ * 以下に、サーブレットフィルタのweb.xml定義例を示す。<br>
  * <pre>
  * &lt;filter&gt;
  *     &lt;filter-name&gt;InterceptorChainCallFilter&lt;/filter-name&gt;
@@ -90,11 +90,11 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
     protected ServiceName interceptorChainFactoryServiceName;
     
     /**
-     * �t�B���^�̏��������s���B<p>
-     * �������p�����[�^�Ŏw�肳�ꂽ{@link InterceptorChainList}�T�[�r�X���擾���A{@link Invoker}�Ƃ��āA�������g��ݒ肷��B<br>
+     * フィルタの初期化を行う。<p>
+     * 初期化パラメータで指定された{@link InterceptorChainList}サービスを取得し、{@link Invoker}として、自分自身を設定する。<br>
      *
-     * @param filterConfig �t�B���^�\�����
-     * @exception ServletException �t�B���^�̏������Ɏ��s�����ꍇ
+     * @param filterConfig フィルタ構成情報
+     * @exception ServletException フィルタの初期化に失敗した場合
      */
     public void init(FilterConfig filterConfig) throws ServletException{
         final ServiceNameEditor editor = new ServiceNameEditor();
@@ -146,7 +146,7 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
     }
     
     /**
-     * �t�B���^�̔j���������s���B<p>
+     * フィルタの破棄処理を行う。<p>
      */
     public void destroy(){
         interceptorChain = null;
@@ -154,12 +154,12 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
     }
     
     /**
-     * �t�B���^�������s���B<p>
-     * �������p�����[�^�Ŏw�肳�ꂽ{@link InterceptorChainList}�T�[�r�X���Ăяo���B<br>
+     * フィルタ処理を行う。<p>
+     * 初期化パラメータで指定された{@link InterceptorChainList}サービスを呼び出す。<br>
      *
-     * @param request ���N�G�X�g���
-     * @param response ���X�|���X���
-     * @param chain �t�B���^�`�F�[��
+     * @param request リクエスト情報
+     * @param response レスポンス情報
+     * @param chain フィルタチェーン
      */
     public void doFilter(
         ServletRequest request,
@@ -230,11 +230,11 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
     }
     
     /**
-     * �t�B���^�`�F�[�����Ăяo���B<p>
+     * フィルタチェーンを呼び出す。<p>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ�A�܂��͂����ŔC�ӂ̗�O�����������ꍇ�B�A���A�{���Ăяo����鏈����throw���Ȃ�RuntimeException�ȊO�̗�O��throw���Ă��A�Ăяo�����ɂ͓`�d����Ȃ��B
+     * @param context 呼び出しのコンテキスト情報
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合、またはここで任意の例外が発生した場合。但し、本来呼び出される処理がthrowしないRuntimeException以外の例外をthrowしても、呼び出し元には伝播されない。
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final ServletFilterInvocationContext filterContext

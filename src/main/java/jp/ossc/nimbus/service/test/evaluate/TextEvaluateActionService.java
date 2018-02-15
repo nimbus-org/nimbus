@@ -53,9 +53,9 @@ import jp.ossc.nimbus.service.test.ChainEvaluateTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * ƒeƒLƒXƒg•]‰¿ƒAƒNƒVƒ‡ƒ“B<p>
- * ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“à—e‚ğ•]‰¿‚·‚éB<br>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ãƒ†ã‚­ã‚¹ãƒˆè©•ä¾¡ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’è©•ä¾¡ã™ã‚‹ã€‚<br>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -96,46 +96,46 @@ public class TextEvaluateActionService extends ServiceBase implements EvaluateTe
     }
     
     /**
-     * ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“à—e‚ğ•]‰¿‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’è©•ä¾¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * filePath
      * matchRegexPattern
      * matchType
      * resultFlag
      * </pre>
-     * filePath‚ÍAƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒBAƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒBAƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒBAƒT[ƒoƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
-     * matchRegexPattern‚ÍA‡’vğŒ‚ğ³‹K•\Œ»‚Åw’è‚·‚éB<br>
-     * matchType‚ÍA‘S‘Ìˆê’v‚ğ¦‚·"all"‚©A•”•ªˆê’v‚ğ¦‚·"part"B<br>
-     * resultFlag‚ÍAğŒ‚É‡’v‚µ‚½ê‡‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚ğAtrue‚Ü‚½‚Ífalse‚Åw’è‚·‚éB<p>
+     * filePathã¯ã€ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+     * matchRegexPatternã¯ã€åˆè‡´æ¡ä»¶ã‚’æ­£è¦è¡¨ç¾ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * matchTypeã¯ã€å…¨ä½“ä¸€è‡´ã‚’ç¤ºã™"all"ã‹ã€éƒ¨åˆ†ä¸€è‡´ã‚’ç¤ºã™"part"ã€‚<br>
+     * resultFlagã¯ã€æ¡ä»¶ã«åˆè‡´ã—ãŸå ´åˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã‚’ã€trueã¾ãŸã¯falseã§æŒ‡å®šã™ã‚‹ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ‡’v‚·‚éê‡‚ÍAtrue
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return åˆè‡´ã™ã‚‹å ´åˆã¯ã€true
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“à—e‚ğ•]‰¿‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’è©•ä¾¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * filePath
      * matchRegexPattern
      * matchType
      * resultFlag
      * </pre>
-     * filePath‚ÍAƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒBAƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒBAƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒBAƒT[ƒoƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍApreResult‚ğƒeƒLƒXƒg•¶š—ñ‚Æ‚µ‚Ä‰ğß‚·‚éB<br>
-     * matchRegexPattern‚ÍA‡’vğŒ‚ğ³‹K•\Œ»‚Åw’è‚·‚éB<br>
-     * matchType‚ÍA‘S‘Ìˆê’v‚ğ¦‚·"all"‚©A•”•ªˆê’v‚ğ¦‚·"part"B<br>
-     * resultFlag‚ÍAğŒ‚É‡’v‚µ‚½ê‡‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚ğAtrue‚Ü‚½‚Ífalse‚Åw’è‚·‚éB<p>
+     * filePathã¯ã€ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€preResultã‚’ãƒ†ã‚­ã‚¹ãƒˆæ–‡å­—åˆ—ã¨ã—ã¦è§£é‡ˆã™ã‚‹ã€‚<br>
+     * matchRegexPatternã¯ã€åˆè‡´æ¡ä»¶ã‚’æ­£è¦è¡¨ç¾ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * matchTypeã¯ã€å…¨ä½“ä¸€è‡´ã‚’ç¤ºã™"all"ã‹ã€éƒ¨åˆ†ä¸€è‡´ã‚’ç¤ºã™"part"ã€‚<br>
+     * resultFlagã¯ã€æ¡ä»¶ã«åˆè‡´ã—ãŸå ´åˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã‚’ã€trueã¾ãŸã¯falseã§æŒ‡å®šã™ã‚‹ã€‚<p>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ‡’v‚·‚éê‡‚ÍAtrue
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return åˆè‡´ã™ã‚‹å ´åˆã¯ã€true
      */
     public boolean execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
@@ -256,10 +256,10 @@ public class TextEvaluateActionService extends ServiceBase implements EvaluateTe
     
     protected String replaceProperty(String textValue){
         
-        // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceSystemProperty(textValue);
         
-        // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceLoader() != null){
             textValue = Utility.replaceServiceLoderConfig(
                 textValue,
@@ -267,7 +267,7 @@ public class TextEvaluateActionService extends ServiceBase implements EvaluateTe
             );
         }
         
-        // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceManager() != null){
             textValue = Utility.replaceManagerProperty(
                 getServiceManager(),
@@ -275,7 +275,7 @@ public class TextEvaluateActionService extends ServiceBase implements EvaluateTe
             );
         }
         
-        // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceServerProperty(textValue);
         
         return textValue;

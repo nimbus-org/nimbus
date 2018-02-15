@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒL[•t‚«’¼—ñ‰»ƒLƒƒƒbƒVƒ…QÆB<p>
+ * ã‚­ãƒ¼ä»˜ãç›´åˆ—åŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
  *
  * @author M.Takata
  */
@@ -49,12 +49,12 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     private transient Externalizer externalizer;
     
     /**
-     * w’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒL[AƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‚·‚éV‚µ‚¢ƒL[•t‚«ƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÍA’¼—ñ‰»‚µ‚Ä•Û‘¶‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒã™ã‚‹æ–°ã—ã„ã‚­ãƒ¼ä»˜ãã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ç›´åˆ—åŒ–ã—ã¦ä¿å­˜ã™ã‚‹ã€‚<br>
      * 
-     * @param key ƒLƒƒƒbƒVƒ…ƒL[
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ì’¼—ñ‰»‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç›´åˆ—åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SerializeKeyCachedReference(Object key, Object obj)
      throws IOException{
@@ -63,12 +63,12 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     }
     
     /**
-     * w’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒL[AƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‚·‚éV‚µ‚¢ƒL[•t‚«ƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÍA’¼—ñ‰»‚µ‚Ä•Û‘¶‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒã™ã‚‹æ–°ã—ã„ã‚­ãƒ¼ä»˜ãã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ç›´åˆ—åŒ–ã—ã¦ä¿å­˜ã™ã‚‹ã€‚<br>
      * 
-     * @param key ƒLƒƒƒbƒVƒ…ƒL[
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ì’¼—ñ‰»‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç›´åˆ—åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SerializeKeyCachedReference(Object key, Object obj, Externalizer ext)
      throws IOException{
@@ -78,10 +78,10 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğƒVƒŠƒAƒ‰ƒCƒY‚µ‚ÄŠi”[‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã¦æ ¼ç´ã™ã‚‹ã€‚<p>
      * 
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ’¼—ñ‰»‚É¸”s‚µ‚½ê‡
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ç›´åˆ—åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void serializeObject(Object obj)
      throws IOException{
@@ -97,12 +97,12 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğ•œŒ³‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¾©å…ƒã™ã‚‹ã€‚<p>
      * 
-     * @param bytes ’¼—ñ‰»ƒoƒCƒg”z—ñ
-     * @return •œŒ³ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì•œŒ³‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì•œŒ³Œ‹‰Ê‚ÌƒNƒ‰ƒX‚ª ‘¶İ‚µ‚È‚¢ê‡
+     * @param bytes ç›´åˆ—åŒ–ãƒã‚¤ãƒˆé…åˆ—
+     * @return å¾©å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®å¾©å…ƒã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®å¾©å…ƒçµæœã®ã‚¯ãƒ©ã‚¹ãŒ å­˜åœ¨ã—ãªã„å ´åˆ
      */
     protected Object deserializeObject(byte[] bytes)
      throws IOException, ClassNotFoundException{
@@ -118,22 +118,22 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     }
     
     /**
-     * ’¼—ñ‰»‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ç›´åˆ—åŒ–ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’¼—ñ‰»‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @return ç›´åˆ—åŒ–ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public byte[] getBytes(){
         return (byte[])super.get(null, false);
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚©‚ç•œŒ³‚µ‚Äæ“¾‚·‚éB<p>
-     * ‘æ“ñˆø”‚ªtrue‚Ìê‡‚ÍA{@link #addCacheAccessListener(CacheAccessListener)}‚Å“o˜^‚³‚ê‚½{@link CacheAccessListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheAccessListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
-     * ©g‚ª•Û‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªnull‚Å‚È‚¢ê‡‚ÍA‚»‚ê‚ğ•Ô‚·Bnull‚Ìê‡‚ÍA{@link #addLinkedReference(LinkedReference)}‚Å“o˜^‚³‚ê‚½{@link LinkedReference}‚©‚çæ“¾‚ğ‚İ‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å¾©å…ƒã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * ç¬¬äºŒå¼•æ•°ãŒtrueã®å ´åˆã¯ã€{@link #addCacheAccessListener(CacheAccessListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheAccessListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheAccessListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
+     * è‡ªèº«ãŒä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã§ãªã„å ´åˆã¯ã€ãã‚Œã‚’è¿”ã™ã€‚nullã®å ´åˆã¯ã€{@link #addLinkedReference(LinkedReference)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link LinkedReference}ã‹ã‚‰å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…‚ğæ“¾‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-     * @param notify ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚É’Ê’m‚·‚éê‡‚Ítrue
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param notify ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹å ´åˆã¯true
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(Object source, boolean notify){
         final Object obj = super.get(source, notify);
@@ -151,12 +151,12 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚Äƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚éB<p>
-     * {@link #addCacheChangeListener(CacheChangeListener)}‚Å“o˜^‚³‚ê‚½{@link CacheChangeListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheChangeListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹ã€‚<p>
+     * {@link #addCacheChangeListener(CacheChangeListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheChangeListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheChangeListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•ÏX‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-     * @param obj İ’è‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IllegalCachedReferenceException ƒLƒƒƒbƒVƒ…QÆ‚Ìó‘Ô‚ª•s³‚Èˆ×ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›´ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param obj è¨­å®šã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IllegalCachedReferenceException ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®çŠ¶æ…‹ãŒä¸æ­£ãªç‚ºã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void set(Object source, Object obj)
      throws IllegalCachedReferenceException{
@@ -173,10 +173,10 @@ public class SerializeKeyCachedReference extends DefaultKeyCachedReference
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‘¶‚µ‚½ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚ğíœ‚·‚éB<p>
-     * {@link #addCacheRemoveListener(CacheRemoveListener)}‚Å“o˜^‚³‚ê‚½{@link CacheRemoveListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheChangeListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿å­˜ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * {@link #addCacheRemoveListener(CacheRemoveListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheRemoveListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheChangeListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void remove(Object source){
         if(cacheObj != null){

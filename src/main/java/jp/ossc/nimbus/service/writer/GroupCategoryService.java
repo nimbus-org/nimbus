@@ -35,8 +35,8 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒOƒ‹[ƒvƒJƒeƒSƒŠƒT[ƒrƒXB<p>
- * o—Íæ‚ğ•ª—Ş‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ğƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠÀ‘•ƒNƒ‰ƒXB<br>
+ * ã‚°ãƒ«ãƒ¼ãƒ—ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * å‡ºåŠ›å…ˆã‚’åˆ†é¡ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -46,44 +46,44 @@ public class GroupCategoryService extends ServiceBase
     private static final long serialVersionUID = 1415083627215180479L;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * —LŒø‚Èê‡Atrue
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * æœ‰åŠ¹ãªå ´åˆã€true
      */
     protected boolean isEnabled = true;
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠ‚ÌƒT[ƒrƒX–¼”z—ñB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     protected ServiceName[] categoryServiceNames;
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠ‚ÌƒT[ƒrƒX”z—ñB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®ã‚µãƒ¼ãƒ“ã‚¹é…åˆ—ã€‚<p>
      */
     protected Category[] categories;
     
-    // GroupCategoryServiceMBean‚ÌJavaDoc
+    // GroupCategoryServiceMBeanã®JavaDoc
     public void setCategoryServiceNames(ServiceName[] names){
         categoryServiceNames = names;
     }
     
-    // GroupCategoryServiceMBean‚ÌJavaDoc
+    // GroupCategoryServiceMBeanã®JavaDoc
     public ServiceName[] getCategoryServiceNames(){
         return categoryServiceNames;
     }
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠ‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param categories ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠ‚Ì”z—ñ
+     * @param categories ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®é…åˆ—
      */
     public void setCategories(Category[] categories) {
         this.categories = categories;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(categoryServiceNames != null){
@@ -95,17 +95,17 @@ public class GroupCategoryService extends ServiceBase
         }
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void write(Object elements) throws MessageWriteException{
         if(!isEnabled()){
             return;

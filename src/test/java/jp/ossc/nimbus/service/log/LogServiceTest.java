@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.writer.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/13| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/13ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class LogServiceTest extends TestCase {
 
@@ -63,7 +63,7 @@ public class LogServiceTest extends TestCase {
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(LogServiceTest.class);
 	}
-	//’è‹`‚³‚ê‚Ä‚¢‚éƒR[ƒh‚Í³í‚Éo—Í	
+	//å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ¼ãƒ‰ã¯æ­£å¸¸ã«å‡ºåŠ›	
 	public void testDebug() throws Exception{
 		System.out.println("Debug test start.");
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogDebugService");	
@@ -73,7 +73,7 @@ public class LogServiceTest extends TestCase {
 		((LogService)logger).stop();
 		System.out.println("Debug test end.");
 	}
-	//’è‹`‚³‚ê‚Ä‚¢‚éƒR[ƒh‚Í³í‚Éo—Í	
+	//å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ¼ãƒ‰ã¯æ­£å¸¸ã«å‡ºåŠ›	
 	public void testWrite1() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
@@ -81,7 +81,7 @@ public class LogServiceTest extends TestCase {
 		((LogService)logger).stop();
 	}
 
-	//’è‹`‚³‚ê‚Ä‚¢‚È‚¢ƒR[ƒh‚Ío—Í‚µ‚È‚¢B
+	//å®šç¾©ã•ã‚Œã¦ã„ãªã„ã‚³ãƒ¼ãƒ‰ã¯å‡ºåŠ›ã—ãªã„ã€‚
 	public void testWrite2() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
@@ -90,34 +90,34 @@ public class LogServiceTest extends TestCase {
 		((LogService)logger).stop();
 	}
 
-	//–„‚ß‚İ•¶š‚ğ“ü‚ê‚é
+	//åŸ‹ã‚è¾¼ã¿æ–‡å­—ã‚’å…¥ã‚Œã‚‹
 	public void testWrite3() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
-		logger.write("TST000001","–„‚ß‚İ•¶š1");	
+		logger.write("TST000001","åŸ‹ã‚è¾¼ã¿æ–‡å­—1");	
 		((LogService)logger).stop();
 	}
 
-	//’è‹`‚³‚ê‚Ä‚¢‚È‚¢ƒR[ƒh‚Å‚ ‚ê‚ÎAo—Í‚µ‚È‚¢iˆø”‚QŒÂ‚Ìwrite‚É‚Â‚¢‚Äj
+	//å®šç¾©ã•ã‚Œã¦ã„ãªã„ã‚³ãƒ¼ãƒ‰ã§ã‚ã‚Œã°ã€å‡ºåŠ›ã—ãªã„ï¼ˆå¼•æ•°ï¼’å€‹ã®writeã«ã¤ã„ã¦ï¼‰
 	public void testWrite4() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
-		logger.write("TST111111","–„‚ß‚İ•¶š1");	
+		logger.write("TST111111","åŸ‹ã‚è¾¼ã¿æ–‡å­—1");	
 		((LogService)logger).stop();
 	}
 
-	//–„‚ß‚İ•¶š—ñ‚ğ•¡”w’è
+	//åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã‚’è¤‡æ•°æŒ‡å®š
 	public void testWrite5() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
-		String[] messages = {"–„‚ß‚İ•¶š1","–„‚ß‚İ•¶š2","–„‚ß‚İ•¶š3","–„‚ß‚İ•¶š4","–„‚ß‚İ•¶š5"};
+		String[] messages = {"åŸ‹ã‚è¾¼ã¿æ–‡å­—1","åŸ‹ã‚è¾¼ã¿æ–‡å­—2","åŸ‹ã‚è¾¼ã¿æ–‡å­—3","åŸ‹ã‚è¾¼ã¿æ–‡å­—4","åŸ‹ã‚è¾¼ã¿æ–‡å­—5"};
 		logger.write("TST000002",messages);	
-		//‚±‚¿‚ç‚Ío—Í‚³‚ê‚È‚¢Bi’è‹`‚³‚ê‚Ä‚¢‚È‚¢ƒR[ƒhj
+		//ã“ã¡ã‚‰ã¯å‡ºåŠ›ã•ã‚Œãªã„ã€‚ï¼ˆå®šç¾©ã•ã‚Œã¦ã„ãªã„ã‚³ãƒ¼ãƒ‰ï¼‰
 		logger.write("TST111111",messages);
 		((LogService)logger).stop();
 	}
 
-	//ƒGƒNƒZƒvƒVƒ‡ƒ“•t‚«
+	//ã‚¨ã‚¯ã‚»ãƒ—ã‚·ãƒ§ãƒ³ä»˜ã
 	public void testWrite6() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
@@ -131,11 +131,11 @@ public class LogServiceTest extends TestCase {
 		((LogService)logger).stop();
 	}
 
-	//ƒGƒNƒZƒvƒVƒ‡ƒ“‚Æ–„‚ß‚İ•¶š•t‚«
+	//ã‚¨ã‚¯ã‚»ãƒ—ã‚·ãƒ§ãƒ³ã¨åŸ‹ã‚è¾¼ã¿æ–‡å­—ä»˜ã
 	public void testWrite7() throws Exception{
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService");
 		((LogService)logger).start();
-		String[] messages = {"•¶š1","•¶š2","•¶š3","•¶š4","•¶š5"};
+		String[] messages = {"æ–‡å­—1","æ–‡å­—2","æ–‡å­—3","æ–‡å­—4","æ–‡å­—5"};
 		Object obj = null;
 		try{
 			obj.toString();
@@ -155,7 +155,7 @@ public class LogServiceTest extends TestCase {
 		((MessageRecordImpl)rec).rec2Obj("TST000001,ApplicationException_1_@0");
 		MessageRecordFactory fac = (MessageRecordFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageService");
 		((MessageRecordOperator)rec).setFactory(fac);
-		AppException appExp = new AppException("APP000001","ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒGƒNƒZƒvƒVƒ‡ƒ“",rec);
+		AppException appExp = new AppException("APP000001","ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚¨ã‚¯ã‚»ãƒ—ã‚·ãƒ§ãƒ³",rec);
 		
 		logger.write(appExp);
 		((LogService)logger).stop();
@@ -189,7 +189,7 @@ public class LogServiceTest extends TestCase {
 		logger.write("TST000010");
 		((LogService)logger).stop();
 	}
-	//Category‚ÌƒŒƒxƒ‹100B 100ˆÈ‰º‚Ío—Í‚µ‚È‚¢B
+	//Categoryã®ãƒ¬ãƒ™ãƒ«100ã€‚ 100ä»¥ä¸‹ã¯å‡ºåŠ›ã—ãªã„ã€‚
 	public void testWrite11() throws Exception{
 		System.out.println("testWrite10 start.");
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService2");
@@ -222,7 +222,7 @@ public class LogServiceTest extends TestCase {
 //			System.out.println("CATEGORY1's level is NOT  50. level is " + logServ.getLogLevelFrom("CATEGORY1"));
 //			throw new Exception();
 //		}
-		//’è‹`‚³‚ê‚Ä‚¢‚È‚¢ƒJƒeƒSƒŠ‚ğw’è‚µ‚½ê‡A-1‚ğ•Ô‚·B
+		//å®šç¾©ã•ã‚Œã¦ã„ãªã„ã‚«ãƒ†ã‚´ãƒªã‚’æŒ‡å®šã—ãŸå ´åˆã€-1ã‚’è¿”ã™ã€‚
 //		if(logServ.getPriorityRangeMin("SOMECATEGORY") == -1){
 //			System.out.println("SOMECATEGORY's level is -1");
 //		}
@@ -233,7 +233,7 @@ public class LogServiceTest extends TestCase {
 		System.out.println("testGetLogLevel end.");
 	}
 	
-	//Category‚ÌƒŒƒxƒ‹100B 100ˆÈ‰º‚Ío—Í‚µ‚È‚¢B
+	//Categoryã®ãƒ¬ãƒ™ãƒ«100ã€‚ 100ä»¥ä¸‹ã¯å‡ºåŠ›ã—ãªã„ã€‚
 	public void testChangeLogLevel() throws Exception{
 		System.out.println("testChangeLogLevel start.");
 		Logger logger = (Logger)ServiceManagerFactory.getServiceObject("TheManager","LogService3");
@@ -263,13 +263,13 @@ public class LogServiceTest extends TestCase {
 		logServ.stop();		
 	}
 	/**
-	 * SystemDebug‚ÌWriter‚ğ•ÏX‚·‚éB
+	 * SystemDebugã®Writerã‚’å¤‰æ›´ã™ã‚‹ã€‚
 	 * @throws Exception
 	 */
 	public void testDebugWriterChange() throws Exception{
 		System.out.println("testDebugWriterChange start.");
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForSystemMethodTest");
-		//Writer‚ğØ‚è‘Ö‚¦‚é‘O‚Éwrite‚·‚éB•W€o—Í‚É‚Å‚éB
+		//Writerã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹å‰ã«writeã™ã‚‹ã€‚æ¨™æº–å‡ºåŠ›ã«ã§ã‚‹ã€‚
 		logService.write("NIMBUS001");
 		logService.write("NIMBUS002");
 		logService.write("NIMBUS003");
@@ -277,21 +277,21 @@ public class LogServiceTest extends TestCase {
 		editor.setAsText("TheManager#SystemDebugWriter");
 		ServiceName writerName = (ServiceName)editor.getValue();
 		logService.setSystemDebugMessageWriterServiceName(writerName);
-		//’â~‚µ‚ÄAÄ‹N“®‚Å”½‰f‚³‚ê‚éB
+		//åœæ­¢ã—ã¦ã€å†èµ·å‹•ã§åæ˜ ã•ã‚Œã‚‹ã€‚
 		logService.stop();
 		logService.start();
-		logService.write("NIMBUS001");//Writer‚ğØ‚è‘Ö‚¦‚½‚Ì‚ÅAFile‚Éo—Í‚³‚ê‚éB
-		logService.write("NIMBUS002");//Writer‚ğØ‚è‘Ö‚¦‚½‚Ì‚ÅAFile‚Éo—Í‚³‚ê‚éB
-		logService.write("NIMBUS003");//Writer‚ÍØ‚è‘Ö‚¦‚Ä‚¢‚È‚¢‚Ì‚ÅA•W€o—Í‚Éo—Í‚³‚ê‚éB
+		logService.write("NIMBUS001");//Writerã‚’åˆ‡ã‚Šæ›¿ãˆãŸã®ã§ã€Fileã«å‡ºåŠ›ã•ã‚Œã‚‹ã€‚
+		logService.write("NIMBUS002");//Writerã‚’åˆ‡ã‚Šæ›¿ãˆãŸã®ã§ã€Fileã«å‡ºåŠ›ã•ã‚Œã‚‹ã€‚
+		logService.write("NIMBUS003");//Writerã¯åˆ‡ã‚Šæ›¿ãˆã¦ã„ãªã„ã®ã§ã€æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã•ã‚Œã‚‹ã€‚
 	}
 	/**
-	 * SystemInfo‚ÌWriter‚ğ•ÏX‚·‚éB
+	 * SystemInfoã®Writerã‚’å¤‰æ›´ã™ã‚‹ã€‚
 	 * @throws Exception
 	 */
 	public void testInfoWriterChange() throws Exception{
 		System.out.println("testInfoWriterChange start.");
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForSystemMethodTest");
-		//Writer‚ğØ‚è‘Ö‚¦‚é‘O‚Éwrite‚·‚éB•W€o—Í‚É‚Å‚éB
+		//Writerã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹å‰ã«writeã™ã‚‹ã€‚æ¨™æº–å‡ºåŠ›ã«ã§ã‚‹ã€‚
 		logService.write("NIMBUS001");
 		logService.write("NIMBUS002");
 		logService.write("NIMBUS003");
@@ -299,7 +299,7 @@ public class LogServiceTest extends TestCase {
 		editor.setAsText("TheManager#SystemInfoWriter");
 		ServiceName writerName = (ServiceName)editor.getValue();
 		logService.setSystemInfoMessageWriterServiceName(writerName);
-		//’â~‚µ‚ÄAÄ‹N“®‚Å”½‰f‚³‚ê‚éB
+		//åœæ­¢ã—ã¦ã€å†èµ·å‹•ã§åæ˜ ã•ã‚Œã‚‹ã€‚
 		logService.stop();
 		logService.start();
 		logService.write("NIMBUS001");
@@ -307,63 +307,63 @@ public class LogServiceTest extends TestCase {
 		logService.write("NIMBUS003");
 	}
 	/**
-	 * SystemWarn‚ÌWritableRecordFactory‚ğ•ÏX‚·‚éB
+	 * SystemWarnã®WritableRecordFactoryã‚’å¤‰æ›´ã™ã‚‹ã€‚
 	 * @throws Exception
 	 */
 	public void testWarnWritableRecordChange() throws Exception{
 		System.out.println("testWarnWritableRecordChange start.");
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForSystemMethodTest");
-		//WritableRecordFactory‚ğØ‚è‘Ö‚¦‚é‘O‚Éwrite‚·‚éB’Êí‚ÌƒtƒH[ƒ}ƒbƒg‚Åo—Í‚³‚ê‚éB
+		//WritableRecordFactoryã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹å‰ã«writeã™ã‚‹ã€‚é€šå¸¸ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§å‡ºåŠ›ã•ã‚Œã‚‹ã€‚
 		logService.write("NIMBUS005");
 		logService.write("NIMBUS006");
-		//WritableRecordFactory‚ğØ‚è‘Ö‚¦‚éB
+		//WritableRecordFactoryã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ã€‚
 		ServiceNameEditor editor = new ServiceNameEditor();
 		editor.setAsText("TheManager#LogWritableRecordFactorySystemWarn");
 		ServiceName factoryName = (ServiceName)editor.getValue();
 		logService.setSystemWarnWritableRecordFactoryServiceName(factoryName);
-		//’â~‚µ‚ÄAÄ‹N“®‚Å”½‰f‚³‚ê‚éB
+		//åœæ­¢ã—ã¦ã€å†èµ·å‹•ã§åæ˜ ã•ã‚Œã‚‹ã€‚
 		logService.stop();
 		logService.start();
 		logService.write("NIMBUS005");
 		logService.write("NIMBUS006");
-		//ƒLƒ…[‚Ì“à—e‚ğ“f‚©‚¹‚é‚½‚ß‚Éstop();
+		//ã‚­ãƒ¥ãƒ¼ã®å†…å®¹ã‚’åã‹ã›ã‚‹ãŸã‚ã«stop();
 		logService.stop();
 		logService.start();
 	}
 	
 	/**
-	 * Erroro—Í‚ğ—LŒø/–³Œø‚É‚·‚éB
+	 * Errorå‡ºåŠ›ã‚’æœ‰åŠ¹/ç„¡åŠ¹ã«ã™ã‚‹ã€‚
 	 * @throws Exception
 	 */
 	public void testSetSystemError() throws Exception{
 		System.out.println("testSetSystemError start.");
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForSystemMethodTest");
-		//SystemError‚Í—LŒø
+		//SystemErrorã¯æœ‰åŠ¹
 		logService.write("NIMBUS007");
 		logService.write("NIMBUS008");
 		System.out.println("setSystemError(false)");
-		//SystemError‚ğ–³Œø‚É‚·‚éB
+		//SystemErrorã‚’ç„¡åŠ¹ã«ã™ã‚‹ã€‚
 		logService.setSystemErrorEnabled(false);
-		//–³Œø‚É‚³‚ê‚½‚Ì‚ÅAo—Í‚³‚ê‚È‚¢B
+		//ç„¡åŠ¹ã«ã•ã‚ŒãŸã®ã§ã€å‡ºåŠ›ã•ã‚Œãªã„ã€‚
 		logService.write("NIMBUS007");
 		logService.write("NIMBUS008");
 		System.out.println("setSystemError(true)");
-		//SystemError‚ğ—LŒø‚É‚·‚éB
+		//SystemErrorã‚’æœ‰åŠ¹ã«ã™ã‚‹ã€‚
 		logService.setSystemErrorEnabled(true);
 		logService.write("NIMBUS007");
 		logService.write("NIMBUS008");
-		//ƒLƒ…[‚Ì“à—e‚ğ“f‚©‚¹‚é‚½‚ß‚Éstop();
+		//ã‚­ãƒ¥ãƒ¼ã®å†…å®¹ã‚’åã‹ã›ã‚‹ãŸã‚ã«stop();
 		logService.stop();
 		logService.start();
 		System.out.println("testSetSystemError End.");
-		//‡Œv4s•W€o—Í‚Éo—Í‚³‚ê‚ê‚Î‚æ‚¢Bƒ`ƒFƒbƒN‚Ì©“®‰»EÚ×‰»‚Í‰Û‘èB
+		//åˆè¨ˆ4è¡Œæ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã•ã‚Œã‚Œã°ã‚ˆã„ã€‚ãƒã‚§ãƒƒã‚¯ã®è‡ªå‹•åŒ–ãƒ»è©³ç´°åŒ–ã¯èª²é¡Œã€‚
 	}
 	/**
-	 * setDefaultMessageWriterServiceName(ServiceName)‚ÌƒeƒXƒg
+	 * setDefaultMessageWriterServiceName(ServiceName)ã®ãƒ†ã‚¹ãƒˆ
 	 */
 	public void testSetDefaultMessageWriterServiceName() throws Exception{
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForSetDefaultMessageWriterServiceTest");
-		/* ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒƒO‚ÌŠm”F iˆê‰j*/
+		/* ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã®ç¢ºèª ï¼ˆä¸€å¿œï¼‰*/
 		logService.write("TST000011");
 		logService.write("TST000012");
 		logService.write("TST000013");
@@ -374,18 +374,18 @@ public class LogServiceTest extends TestCase {
 		logService.write("TST000018");
 		logService.write("TST000019");
 		logService.write("TST000020");
-		/* debugƒƒ\ƒbƒh‚ÌŠm”F */
-		/* Default‚ÌMessageWriterService‚ğwriter3‚Éw’è‚µ‚Ä‚¢‚é‚Ì‚ÅAtemp/LogServiceTest3.log‚Éo—Í‚³‚ê‚é */
+		/* debugãƒ¡ã‚½ãƒƒãƒ‰ã®ç¢ºèª */
+		/* Defaultã®MessageWriterServiceã‚’writer3ã«æŒ‡å®šã—ã¦ã„ã‚‹ã®ã§ã€temp/LogServiceTest3.logã«å‡ºåŠ›ã•ã‚Œã‚‹ */
 		logService.setDebugEnabled(true);
 		logService.debug("This is Debug Message");
 	}
 	
 	public void testSetDefaultWritableRecordFactoryServiceName() throws Exception{
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForsetDefaultWritableRecordFactoryServiceName");
-		/* debugƒƒ\ƒbƒh‚ÌŠm”F */
-		/* Default‚ÌMessageWriterService‚ğwriter3‚Éw’è‚µ‚Ä‚¢‚é‚Ì‚ÅAtemp/LogServiceTest3.log‚Éo—Í‚³‚ê‚é */
-		/* Default‚ÌLogWritableRecordFactory‚ğLogWritableRecordFactoryDefaultChTst‚É‚µ‚Ä‚¢‚é‚Ì‚ÅA*/
-		/* ƒƒbƒZ[ƒW‚Ì‘O‚ÉA"LogWritableRecordFactoryDefaultChTst:"‚Æ•\¦‚³‚ê‚éB*/
+		/* debugãƒ¡ã‚½ãƒƒãƒ‰ã®ç¢ºèª */
+		/* Defaultã®MessageWriterServiceã‚’writer3ã«æŒ‡å®šã—ã¦ã„ã‚‹ã®ã§ã€temp/LogServiceTest3.logã«å‡ºåŠ›ã•ã‚Œã‚‹ */
+		/* Defaultã®LogWritableRecordFactoryã‚’LogWritableRecordFactoryDefaultChTstã«ã—ã¦ã„ã‚‹ã®ã§ã€*/
+		/* ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å‰ã«ã€"LogWritableRecordFactoryDefaultChTst:"ã¨è¡¨ç¤ºã•ã‚Œã‚‹ã€‚*/
 		logService.setDebugEnabled(true);
 		logService.debug("This is Debug Message");
 		logService.stop();
@@ -394,7 +394,7 @@ public class LogServiceTest extends TestCase {
 	
 	
 	public void testDestroyServiceNoMessageRecordServiceCase() throws Exception{
-		/* MessageRecordService‚Ìw’è‚ª‚È‚¢LogService‚ğæ“¾ */
+		/* MessageRecordServiceã®æŒ‡å®šãŒãªã„LogServiceã‚’å–å¾— */
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceNoMessageRecordService");
 		logService.stop();
 		logService.destroyService();
@@ -402,7 +402,7 @@ public class LogServiceTest extends TestCase {
 	
 	
 	public void testSetCategoryServices() throws Exception{
-		/* LogService‚ÍAsetDefaultMessageWriterService‚ÌƒeƒXƒg‚Ég‚Á‚½‚à‚Ì‚ğg‚¢‚Ü‚í‚· */
+		/* LogServiceã¯ã€setDefaultMessageWriterServiceã®ãƒ†ã‚¹ãƒˆã«ä½¿ã£ãŸã‚‚ã®ã‚’ä½¿ã„ã¾ã‚ã™ */
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForSetDefaultMessageWriterServiceTest");
 		
 		
@@ -421,9 +421,9 @@ public class LogServiceTest extends TestCase {
 
 	}
 	
-	/** getCategoryServices‚ÆAsetLabel‚ğƒeƒXƒg‚·‚é */
+	/** getCategoryServicesã¨ã€setLabelã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ */
 	public void testGetCategoryServices() throws Exception{
-		/* LogService‚ÍAsetDefaultWritableRecordFactoryServiceName‚ÌƒeƒXƒg‚Ég‚Á‚½‚à‚Ì‚ğg‚¢‚Ü‚í‚· */
+		/* LogServiceã¯ã€setDefaultWritableRecordFactoryServiceNameã®ãƒ†ã‚¹ãƒˆã«ä½¿ã£ãŸã‚‚ã®ã‚’ä½¿ã„ã¾ã‚ã™ */
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager","LogServiceForsetDefaultWritableRecordFactoryServiceName");
 		logService.setSystemDebugEnabled(true);
         LogCategory[] cats = logService.getCategoryServices();		
@@ -455,47 +455,47 @@ public class LogServiceTest extends TestCase {
 			}
 		}
 //		logService.setLabel("CATEGORY1",0,49,"HOGEHOGE");
-		/** Label‚Í"HOGEHOGE"‚É•ÏX‚³‚ê‚é */
+		/** Labelã¯"HOGEHOGE"ã«å¤‰æ›´ã•ã‚Œã‚‹ */
 		logService.write("TST000020");
-		/** ‚Â‚¢‚Å‚ÉAgetPriorityRangeMax()‚ÌˆÙíŒn‚ğ’Ê‚·ƒR[ƒh‚ğ‘‚¢‚Ä‚¨‚­ */
-//		int max = logService.getPriorityRangeMax("NONAMECATEGORY");/* ‚±‚ñ‚ÈƒJƒeƒSƒŠ‚Í‚È‚¢ */
+		/** ã¤ã„ã§ã«ã€getPriorityRangeMax()ã®ç•°å¸¸ç³»ã‚’é€šã™ã‚³ãƒ¼ãƒ‰ã‚’æ›¸ã„ã¦ãŠã */
+//		int max = logService.getPriorityRangeMax("NONAMECATEGORY");/* ã“ã‚“ãªã‚«ãƒ†ã‚´ãƒªã¯ãªã„ */
 //		assertEquals(-1,max);
-		/** ‚Â‚¢‚Å‚ÉAgetQueueService()‚Åqueue‚ªæ“¾‚Å‚«‚é‚©‚Ç‚¤‚©Šm”F */
+		/** ã¤ã„ã§ã«ã€getQueueService()ã§queueãŒå–å¾—ã§ãã‚‹ã‹ã©ã†ã‹ç¢ºèª */
 		assertNotNull(logService.getQueueService());
 		logService.stop();
 
 	}
 	
-	/** —lX‚Èˆø”‚Ìwriteƒƒ\ƒbƒh‚ğƒeƒXƒg‚·‚é */
+	/** æ§˜ã€…ãªå¼•æ•°ã®writeãƒ¡ã‚½ãƒƒãƒ‰ã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ */
 	public void testWriteMethods() throws Exception{
-		/* LogService‚ÍAsetDefaultMessageWriterService‚ÌƒeƒXƒg‚Ég‚Á‚½‚à‚Ì‚ğg‚¢‚Ü‚í‚· */
+		/* LogServiceã¯ã€setDefaultMessageWriterServiceã®ãƒ†ã‚¹ãƒˆã«ä½¿ã£ãŸã‚‚ã®ã‚’ä½¿ã„ã¾ã‚ã™ */
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager",
 																	"LogServiceForWriteMethodsTst");
-		/* ˆÈ‰ºALogServiceTest1.log‚Éo—Í‚³‚ê‚é */
+		/* ä»¥ä¸‹ã€LogServiceTest1.logã«å‡ºåŠ›ã•ã‚Œã‚‹ */
 		
-		/* byteˆø” */
+		/* byteå¼•æ•° */
 		byte x = 128 -1 ;
 		logService.write("TST000022",x);
-		/* shortˆø” */
+		/* shortå¼•æ•° */
 		short y = 256*256/2 -1;
 		logService.write("TST000022",y);
-		/* char ˆø” */
+		/* char å¼•æ•° */
 		char c = 'A';
 		logService.write("TST000022",c);
-		/* int ˆø”@*/
+		/* int å¼•æ•°ã€€*/
 		int z = Integer.MAX_VALUE;;
 		logService.write("TST000022",z);
-		/* long ˆø” */
+		/* long å¼•æ•° */
 		long zz = Long.MAX_VALUE;
 		logService.write("TST000022",zz);
-		/* float ˆø” */
+		/* float å¼•æ•° */
 		float f = 1.2345f;
 		logService.write("TST000022",f);
-		/* double ˆø” */
+		/* double å¼•æ•° */
 		double d = 2.3456;
 		logService.write("TST000022",d);
 		
-		/* ”z—ñˆø” ƒeƒXƒg ”z—ñ•Ï”€”õ */
+		/* é…åˆ—å¼•æ•° ãƒ†ã‚¹ãƒˆ é…åˆ—å¤‰æ•°æº–å‚™ */
 		byte x2 = (byte)(x - 1);
 		byte[] b_ary = {x,x2};
 		short y2 = (byte)(y - 1);
@@ -511,80 +511,80 @@ public class LogServiceTest extends TestCase {
 		double d2 = d - 1.0;
 		double[] d_ary = {d,d2};
 		
-		/* byte”z—ñˆø” */
+		/* byteé…åˆ—å¼•æ•° */
 		logService.write("TST000022",b_ary);
-		/* short”z—ñˆø” */
+		/* shorté…åˆ—å¼•æ•° */
 		logService.write("TST000022",s_ary);
-		/* char ”z—ñˆø” */
+		/* char é…åˆ—å¼•æ•° */
 		logService.write("TST000022",c_ary);
-		/* int ”z—ñˆø”@*/
+		/* int é…åˆ—å¼•æ•°ã€€*/
 		logService.write("TST000022",i_ary);
-		/* long ”z—ñˆø” */
+		/* long é…åˆ—å¼•æ•° */
 		logService.write("TST000022",l_ary);
-		/* float ”z—ñˆø” */
+		/* float é…åˆ—å¼•æ•° */
 		logService.write("TST000022",f_ary);
-		/* double ”z—ñˆø” */
+		/* double é…åˆ—å¼•æ•° */
 		logService.write("TST000022",d_ary);
 		
-		/* Exception •t‚« */
+		/* Exception ä»˜ã */
 		try{
 			String str = null;
 			str.length();
 		}
 		catch(Exception e){
 			logService.write("TST000023",e);
-			/* byteˆø” */
+			/* byteå¼•æ•° */
 			logService.write("TST000022",x,e);
-			/* shortˆø” */
+			/* shortå¼•æ•° */
 			logService.write("TST000022",y,e);
-			/* char ˆø” */
+			/* char å¼•æ•° */
 			logService.write("TST000022",c,e);
-			/* int ˆø”@*/
+			/* int å¼•æ•°ã€€*/
 			logService.write("TST000022",z,e);
-			/* long ˆø” */
+			/* long å¼•æ•° */
 			logService.write("TST000022",zz,e);
-			/* float ˆø” */
+			/* float å¼•æ•° */
 			logService.write("TST000022",f,e);
-			/* double ˆø” */
+			/* double å¼•æ•° */
 			logService.write("TST000022",d,e);
-			/* byte”z—ñˆø” */
+			/* byteé…åˆ—å¼•æ•° */
 			logService.write("TST000022",b_ary,e);
-			/* short”z—ñˆø” */
+			/* shorté…åˆ—å¼•æ•° */
 			logService.write("TST000022",s_ary,e);
-			/* char ”z—ñˆø” */
+			/* char é…åˆ—å¼•æ•° */
 			logService.write("TST000022",c_ary,e);
-			/* int ”z—ñˆø”@*/
+			/* int é…åˆ—å¼•æ•°ã€€*/
 			logService.write("TST000022",i_ary,e);
-			/* long ”z—ñˆø” */
+			/* long é…åˆ—å¼•æ•° */
 			logService.write("TST000022",l_ary,e);
-			/* float ”z—ñˆø” */
+			/* float é…åˆ—å¼•æ•° */
 			logService.write("TST000022",f_ary,e);
-			/* double ”z—ñˆø” */
+			/* double é…åˆ—å¼•æ•° */
 			logService.write("TST000022",d_ary,e);
 				
-			/* Message‚ªæ“¾‚Å‚«‚È‚©‚Á‚½ƒeƒXƒgƒP[ƒX‚ğƒJƒo[‚·‚éˆ×AˆÓ}‚µ‚Ä‘¶İ‚µ‚È‚¢ƒR[ƒh‚ğw’è */
+			/* MessageãŒå–å¾—ã§ããªã‹ã£ãŸãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚’ã‚«ãƒãƒ¼ã™ã‚‹ç‚ºã€æ„å›³ã—ã¦å­˜åœ¨ã—ãªã„ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®š */
 			logService.write("HOGEHOGE",e);
-			/* byteˆø” */
+			/* byteå¼•æ•° */
 			logService.write("HOGEHOGE",x,e);
-			/* shortˆø” */
+			/* shortå¼•æ•° */
 			logService.write("HOGEHOGE",y,e);
-			/* char ˆø” */
+			/* char å¼•æ•° */
 			logService.write("HOGEHOGE",c,e);
-			/* int ˆø”@*/
+			/* int å¼•æ•°ã€€*/
 			logService.write("HOGEHOGE",z,e);
-			/* long ˆø” */
+			/* long å¼•æ•° */
 			logService.write("HOGEHOGE",zz,e);
-			/* float ˆø” */
+			/* float å¼•æ•° */
 			logService.write("HOGEHOGE",f,e);
-			/* double ˆø” */
+			/* double å¼•æ•° */
 			logService.write("HOGEHOGE",d,e);
 		}
 		logService.stop();
 		logService.start();
 	}
-	/** MessageWriter‚ÌGetter‚ğƒeƒXƒg‚·‚é */
+	/** MessageWriterã®Getterã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ */
 	public void testMessageWriterGetter() throws Exception{
-		/* LogService‚ÍAsetDefaultMessageWriterService‚ÌƒeƒXƒg‚Ég‚Á‚½‚à‚Ì‚ğg‚¢‚Ü‚í‚· */
+		/* LogServiceã¯ã€setDefaultMessageWriterServiceã®ãƒ†ã‚¹ãƒˆã«ä½¿ã£ãŸã‚‚ã®ã‚’ä½¿ã„ã¾ã‚ã™ */
 		LogService logService = (LogService)ServiceManagerFactory.getServiceObject("TheManager",
 																	"LogServiceForWriteMethodsTst");
 		MessageWriter[] writer = null;

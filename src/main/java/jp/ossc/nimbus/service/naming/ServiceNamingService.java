@@ -37,15 +37,15 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒT[ƒrƒXƒl[ƒ~ƒ“ƒOƒT[ƒrƒXB<p>
- * w’è‚µ‚½–¼‘O‚É‘Î‰‚·‚é{@link Service}‚ğæ“¾‚·‚éƒl[ƒ~ƒ“ƒOƒT[ƒrƒXB<br>
- * w’è‚³‚ê‚½–¼‘O‚É‘Î‰‚·‚éƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì{@link ServiceManager#getService(String)}‚Åæ“¾‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B<br>
- * w’è‚³‚ê‚½–¼‘O‚É‘Î‰‚·‚éƒT[ƒrƒX‚ÌŒŸõ‚ÍAˆÈ‰º‚Ì‡˜‚Ås‚í‚ê‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒ¼ãƒŸãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * æŒ‡å®šã—ãŸåå‰ã«å¯¾å¿œã™ã‚‹{@link Service}ã‚’å–å¾—ã™ã‚‹ãƒãƒ¼ãƒŸãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚<br>
+ * æŒ‡å®šã•ã‚ŒãŸåå‰ã«å¯¾å¿œã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®{@link ServiceManager#getService(String)}ã§å–å¾—ã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚<br>
+ * æŒ‡å®šã•ã‚ŒãŸåå‰ã«å¯¾å¿œã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®æ¤œç´¢ã¯ã€ä»¥ä¸‹ã®é †åºã§è¡Œã‚ã‚Œã‚‹ã€‚<br>
  * <ol>
- *   <li>{@link #setServiceNameReferences(ServiceNameRef[])}‚Åİ’è‚³‚ê‚½QÆ–¼”z—ñ‚ÉAw’è‚µ‚½–¼‘O‚Æ“¯‚¶QÆ–¼‚ª‚ ‚ê‚ÎAQÆ–¼‚ª•\‚·ƒT[ƒrƒX‚ğæ“¾‚·‚éB</li>
- *   <li>{@link #setBootServicePath(String[])}‚Åİ’è‚³‚ê‚½{@link ServiceManager}‚Ì–¼‘O‚Ì”z—ñ‚©‚çAŠY“–‚·‚éServiceManager‚ğæ“¾‚µ‚ÄAw’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚ğŒŸõ‚·‚éB</li>
- *   <li>©•ª©g‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚ğæ“¾‚µ‚ÄAw’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚ğŒŸõ‚·‚éB</li>
- *   <li>{@link #setServicePath(String[])}‚Åİ’è‚³‚ê‚½{@link ServiceManager}‚Ì–¼‘O‚Ì”z—ñ‚©‚çAŠY“–‚·‚éServiceManager‚ğæ“¾‚µ‚ÄAw’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚ğŒŸõ‚·‚éB</li>
+ *   <li>{@link #setServiceNameReferences(ServiceNameRef[])}ã§è¨­å®šã•ã‚ŒãŸå‚ç…§åé…åˆ—ã«ã€æŒ‡å®šã—ãŸåå‰ã¨åŒã˜å‚ç…§åãŒã‚ã‚Œã°ã€å‚ç…§åãŒè¡¨ã™ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚</li>
+ *   <li>{@link #setBootServicePath(String[])}ã§è¨­å®šã•ã‚ŒãŸ{@link ServiceManager}ã®åå‰ã®é…åˆ—ã‹ã‚‰ã€è©²å½“ã™ã‚‹ServiceManagerã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’æ¤œç´¢ã™ã‚‹ã€‚</li>
+ *   <li>è‡ªåˆ†è‡ªèº«ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’æ¤œç´¢ã™ã‚‹ã€‚</li>
+ *   <li>{@link #setServicePath(String[])}ã§è¨­å®šã•ã‚ŒãŸ{@link ServiceManager}ã®åå‰ã®é…åˆ—ã‹ã‚‰ã€è©²å½“ã™ã‚‹ServiceManagerã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’æ¤œç´¢ã™ã‚‹ã€‚</li>
  * </ol>
  * 
  * @author M.Takata
@@ -60,27 +60,27 @@ public class ServiceNamingService extends ServiceBase
     private ServiceNameRef[] serviceNameRefs;
     private Map nameRefMap = new HashMap();
     
-    // ServiceNamingServiceMBean‚ÌJavaDoc
+    // ServiceNamingServiceMBeanã®JavaDoc
     public void setServicePath(String[] path){
         servicePath = path;
     }
     
-    // ServiceNamingServiceMBean‚ÌJavaDoc
+    // ServiceNamingServiceMBeanã®JavaDoc
     public String[] getServicePath(){
         return servicePath;
     }
     
-    // ServiceNamingServiceMBean‚ÌJavaDoc
+    // ServiceNamingServiceMBeanã®JavaDoc
     public void setBootServicePath(String[] path){
         bootServicePath = path;
     }
     
-    // ServiceNamingServiceMBean‚ÌJavaDoc
+    // ServiceNamingServiceMBeanã®JavaDoc
     public String[] getBootServicePath(){
         return bootServicePath;
     }
     
-    // ServiceNamingServiceMBean‚ÌJavaDoc
+    // ServiceNamingServiceMBeanã®JavaDoc
     public void setServiceNameReferences(ServiceNameRef[] refs){
         if(refs == null){
             return;
@@ -96,17 +96,17 @@ public class ServiceNamingService extends ServiceBase
         serviceNameRefs = refs;
     }
     
-    // ServiceNamingServiceMBean‚ÌJavaDoc
+    // ServiceNamingServiceMBeanã®JavaDoc
     public ServiceNameRef[] getServiceNameReferences(){
         return serviceNameRefs;
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚É‘Î‰‚·‚é{@link Service}‚ğæ“¾‚·‚éB<p>
-     * w’è‚³‚ê‚½–¼‘O‚É‘Î‰‚·‚éService‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡Anull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã«å¯¾å¿œã™ã‚‹{@link Service}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã«å¯¾å¿œã™ã‚‹ServiceãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param name –¼‘O
-     * @return w’è‚µ‚½–¼‘O‚É‘Î‰‚·‚éService
+     * @param name åå‰
+     * @return æŒ‡å®šã—ãŸåå‰ã«å¯¾å¿œã™ã‚‹Service
      */
     public Object find(String name){
         if(name == null){
@@ -140,10 +140,10 @@ public class ServiceNamingService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Å•Ô‚·ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§è¿”ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @param name ServiceName
-     * @return {@link ServiceName}‚É‘Î‰‚·‚éƒIƒuƒWƒFƒNƒg
+     * @return {@link ServiceName}ã«å¯¾å¿œã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected Object findObject(ServiceName name){
         try{
@@ -154,11 +154,11 @@ public class ServiceNamingService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Å•Ô‚·ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§è¿”ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param manager {@link ServiceManager}‚Ì–¼‘O
-     * @param name {@link Service}‚Ì–¼‘O
-     * @return ˆø”‚ÉŠY“–‚·‚éƒIƒuƒWƒFƒNƒg
+     * @param manager {@link ServiceManager}ã®åå‰
+     * @param name {@link Service}ã®åå‰
+     * @return å¼•æ•°ã«è©²å½“ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected Object findObject(String manager, String name){
         try{

@@ -38,7 +38,7 @@ import javax.servlet.ServletRequest;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ServletRequestƒIƒuƒWƒFƒNƒg‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * ServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -572,14 +572,14 @@ public class ServletRequestJournalEditorService extends BlockJournalEditorServic
         return buf;
     }
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.journal.editor.ServletRequestJournalEditorServiceMBean#isOutputRemoteHost()
 	 */
 	public boolean isOutputRemoteHost() {
 		return this.isOutputRemoteHost;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.journal.editor.ServletRequestJournalEditorServiceMBean#setOutputRemoteHost(boolean)
 	 */
 	public void setOutputRemoteHost(boolean isOutput) {

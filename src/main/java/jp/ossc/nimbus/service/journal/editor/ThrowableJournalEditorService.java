@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.journal.editor;
 
 import java.lang.reflect.*;
@@ -39,7 +39,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link Throwable}‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒWƒƒ[ƒiƒ‹ƒGƒfƒBƒ^B<p>
+ * {@link Throwable}ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @version $Name:  $
  * @author K.Nagai
@@ -59,14 +59,14 @@ public class ThrowableJournalEditorService extends
 
     private static final String TAB = "\t";
 
-    /** Œ´ˆö(Cause)‚ğ’Ç‚Á‚Äo—Í‚·‚é‚©‚Ç‚¤‚© */
+    /** åŸå› (Cause)ã‚’è¿½ã£ã¦å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ */
     private boolean isOutputCause = true;
 
     public void setOutputCause(boolean output) {
         isOutputCause = output;
     }
 
-    /** Œ´ˆö(Cause)‚ğ’Ç‚Á‚Äo—Í‚·‚éÛTAB‚ğ“ü‚ê‚é‚©‚Ç‚¤‚© */
+    /** åŸå› (Cause)ã‚’è¿½ã£ã¦å‡ºåŠ›ã™ã‚‹éš›TABã‚’å…¥ã‚Œã‚‹ã‹ã©ã†ã‹ */
     private boolean bOutputTab = true;
 
     public boolean getOutputCause() {
@@ -115,7 +115,7 @@ public class ThrowableJournalEditorService extends
         Throwable cause = null;
         String thClassName = th.getClass().getName();
         if(thClassName.equals(SERVLET_EXCEPTION_NAME)){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try{
                 cause = (Throwable)th.getClass()
                     .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -124,7 +124,7 @@ public class ThrowableJournalEditorService extends
             }catch(InvocationTargetException e){
             }
         }else if(thClassName.equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -139,7 +139,7 @@ public class ThrowableJournalEditorService extends
     }
 
     /**
-     * @return bOutputTab ‚ğ–ß‚µ‚Ü‚·B
+     * @return bOutputTab ã‚’æˆ»ã—ã¾ã™ã€‚
      */
     public boolean getOutputTab() {
         return bOutputTab;
@@ -147,7 +147,7 @@ public class ThrowableJournalEditorService extends
 
     /**
      * @param outputTab
-     *            bOutputTab ‚ğİ’èB
+     *            bOutputTab ã‚’è¨­å®šã€‚
      */
     public void setOutputTab(boolean outputTab) {
         bOutputTab = outputTab;

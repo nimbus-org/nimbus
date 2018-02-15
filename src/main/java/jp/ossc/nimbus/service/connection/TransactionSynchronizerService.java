@@ -61,7 +61,7 @@ import jp.ossc.nimbus.service.transaction.TransactionManagerFactory;
 import jp.ossc.nimbus.util.sql.TransactionLoggingConnection;
 
 /**
- * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““¯ŠúƒT[ƒrƒXB<p>
+ * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åŒæœŸã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

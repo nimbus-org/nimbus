@@ -39,7 +39,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link PortFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link PortFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -47,79 +47,79 @@ public interface PortFactoryServiceMBean
  extends ServiceBaseMBean {
     
     /**
-     * JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ–¼‚ğİ’è‚·‚éB<p>
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @return JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ–¼
+     * @return JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªå
      */
     public ServiceName getJaxRpcServiceFactoryName();
 
     /**
-     * JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ–¼‚ğİ’è‚·‚éB<p>
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param serviceName JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ–¼
+     * @param serviceName JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªå
      */
     public void setJaxRpcServiceFactoryName(ServiceName serviceName);
 
     /**
-     * ƒ|[ƒgƒGƒCƒŠƒAƒXƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒL[‚É[ƒ|[ƒgƒGƒCƒŠƒAƒX–¼]A’l‚É[ƒ|[ƒg–¼,ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼]‚ÌƒvƒƒpƒeƒB
+     * @return ã‚­ãƒ¼ã«[ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹å]ã€å€¤ã«[ãƒãƒ¼ãƒˆå,ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getPortAliasProp();
     
     /**
-     * ƒ|[ƒgƒGƒCƒŠƒAƒXƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param prop ƒL[‚É[ƒ|[ƒgƒGƒCƒŠƒAƒX–¼]A’l‚É[ƒ|[ƒg–¼,ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼]‚ÌƒvƒƒpƒeƒB
+     * @param prop ã‚­ãƒ¼ã«[ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹å]ã€å€¤ã«[ãƒãƒ¼ãƒˆå,ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setPortAliasProp(Properties prop);
     
     /**
-     * ƒnƒ“ƒhƒ‰î•ñ‚ÌƒŠƒXƒg‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±ã®ãƒªã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param infos ƒnƒ“ƒhƒ‰î•ñ‚ÌƒŠƒXƒg
+     * @param infos ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±ã®ãƒªã‚¹ãƒˆ
      */
     public void setHandlerInfos(List infos);
     
     /**
-     * ƒnƒ“ƒhƒ‰î•ñ‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param info ƒnƒ“ƒhƒ‰î•ñ
+     * @param info ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±
      */
     public void addHandlerInfo(HandlerInfo info);
     
     /**
-     * ƒnƒ“ƒhƒ‰î•ñ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒ“ƒhƒ‰î•ñ‚ÌƒŠƒXƒg
+     * @return ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±ã®ãƒªã‚¹ãƒˆ
      */
     public List getHandlerInfos();
     
     /**
-     * ƒnƒ“ƒhƒ‰î•ñ‚ğƒNƒŠƒA‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒ©æƒ…å ±ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearHandlerInfos();
     
     /**
-     * ƒXƒ^ƒu‚É‘Î‚µ‚Äİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒ–ã«å¯¾ã—ã¦è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setStubProperty(String name, Object value);
     
     /**
-     * ƒXƒ^ƒu‚É‘Î‚µ‚Äİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒ–ã«å¯¾ã—ã¦è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public Object getStubProperty(String name);
     
     /**
-     * ƒXƒ^ƒu‚É‘Î‚µ‚Äİ’è‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒ–ã«å¯¾ã—ã¦è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
      */
     public Map getStubPropertyMap();
 }

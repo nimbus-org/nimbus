@@ -39,35 +39,35 @@ import java.util.concurrent.ConcurrentHashMap;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒŒƒR[ƒhƒXƒL[ƒ}B<p>
- * {@link PropertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}}‚ÌW‡‚ÅA•¡”‚ÌƒvƒƒpƒeƒB‚ðŽ‚Á‚½Bean‚ÌƒXƒL[ƒ}‚ð•\Œ»‚·‚éB<br>
- * ƒŒƒR[ƒhƒXƒL[ƒ}‚ÍA{@link PropertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}}‚ÌW‡‚Å‚ ‚èA<br>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã€‚<p>
+ * {@link PropertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒž}ã®é›†åˆã§ã€è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ãŸBeanã®ã‚¹ã‚­ãƒ¼ãƒžã‚’è¡¨ç¾ã™ã‚‹ã€‚<br>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã¯ã€{@link PropertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒž}ã®é›†åˆã§ã‚ã‚Šã€<br>
  * <pre>
- *   ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX–¼:ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`
- *   ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX–¼:ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`
+ *   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹å:ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©
+ *   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹å:ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©
  *                   :
  * </pre>
- * ‚Æ‚¢‚¤‚æ‚¤‚ÉAƒvƒƒpƒeƒB‚Ì”‚¾‚¯‰üs‹æØ‚è‚Å’è‹`‚·‚éB<br>
- * ‚Ü‚½AƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX–¼‚ÍÈ—ª‰Â”\‚ÅAÈ—ª‚µ‚½ê‡‚ÍA{@link DefaultPropertySchema}‚ª“K—p‚³‚ê‚éB<br>
- * ‚Ü‚½AƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX‚ÉA{@link RecordListPropertySchema}‚ðŽw’è‚µ‚½‚¢ê‡‚ÍAƒGƒCƒŠƒAƒX–¼‚ðŽg‚Á‚Ä"LIST:...."‚Æ’è‹`‚Å‚«‚éB<br>
- * ‚Ü‚½AƒŒƒR[ƒhƒXƒL[ƒ}AƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ðŠÇ—‚µA“¯‚¶ƒXƒL[ƒ}’è‹`‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Í¶¬‚µ‚È‚¢‚æ‚¤‚É‚µ‚Ä‚¢‚éB<br>
+ * ã¨ã„ã†ã‚ˆã†ã«ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ•°ã ã‘æ”¹è¡ŒåŒºåˆ‡ã‚Šã§å®šç¾©ã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã¯çœç•¥å¯èƒ½ã§ã€çœç•¥ã—ãŸå ´åˆã¯ã€{@link DefaultPropertySchema}ãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
+ * ã¾ãŸã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã«ã€{@link RecordListPropertySchema}ã‚’æŒ‡å®šã—ãŸã„å ´åˆã¯ã€ã‚¨ã‚¤ãƒªã‚¢ã‚¹åã‚’ä½¿ã£ã¦"LIST:...."ã¨å®šç¾©ã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç®¡ç†ã—ã€åŒã˜ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ç”Ÿæˆã—ãªã„ã‚ˆã†ã«ã—ã¦ã„ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
 public class RecordSchema{
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX–¼‚ÌƒGƒCƒŠƒAƒX {@link RecordListPropertySchema}‚ÌƒGƒCƒŠƒAƒXB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ {@link RecordListPropertySchema}ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã€‚<p>
      */
     public static final String PROPERTY_SCHEMA_ALIAS_NAME_LIST = "LIST";
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX–¼‚ÌƒGƒCƒŠƒAƒX {@link RecordPropertySchema}‚ÌƒGƒCƒŠƒAƒXB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ {@link RecordPropertySchema}ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã€‚<p>
      */
     public static final String PROPERTY_SCHEMA_ALIAS_NAME_RECORD = "RECORD";
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŽÀ‘•ƒNƒ‰ƒX–¼‚ÌƒGƒCƒŠƒAƒX {@link XpathPropertySchema}‚ÌƒGƒCƒŠƒAƒXB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ {@link XpathPropertySchema}ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã€‚<p>
      */
     public static final String PROPERTY_SCHEMA_ALIAS_NAME_XPATH = "XPATH";
     
@@ -99,21 +99,21 @@ public class RecordSchema{
     }
     
     /**
-     * ƒXƒL[ƒ}•¶Žš—ñB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒžæ–‡å­—åˆ—ã€‚<p>
      */
     protected String schema;
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒXƒL[ƒ}‚ð¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RecordSchema(){
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ðŽæ“¾‚·‚éB<p>
-     * “¯‚¶ƒXƒL[ƒ}’è‹`‚ÌƒŒƒR[ƒhƒXƒL[ƒ}A‹y‚ÑƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ðV‚µ‚­¶¬‚µ‚È‚¢‚æ‚¤‚ÉA“à•”‚ÅŠÇ—‚µ‚Ä‚¢‚éB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒã˜ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã€åŠã³ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ–°ã—ãç”Ÿæˆã—ãªã„ã‚ˆã†ã«ã€å†…éƒ¨ã§ç®¡ç†ã—ã¦ã„ã‚‹ã€‚<br>
      *
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}•¶Žš—ñ
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžæ–‡å­—åˆ—
      */
     public static RecordSchema getInstance(String schema)
      throws PropertySchemaDefineException{
@@ -131,11 +131,11 @@ public class RecordSchema{
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ðŽæ“¾‚·‚éB<p>
-     * “¯‚¶ƒXƒL[ƒ}’è‹`‚ÌƒŒƒR[ƒhƒXƒL[ƒ}A‹y‚ÑƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ðV‚µ‚­¶¬‚µ‚È‚¢‚æ‚¤‚ÉA“à•”‚ÅŠÇ—‚µ‚Ä‚¢‚éB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒã˜ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã€åŠã³ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ–°ã—ãç”Ÿæˆã—ãªã„ã‚ˆã†ã«ã€å†…éƒ¨ã§ç®¡ç†ã—ã¦ã„ã‚‹ã€‚<br>
      *
-     * @param schemata ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}’è‹`‚ð•\‚·ƒvƒƒpƒeƒBƒXƒL[ƒ}”z—ñ
-     * @return ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param schemata ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžé…åˆ—
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒž
      */
     public static RecordSchema getInstance(PropertySchema[] schemata)
      throws PropertySchemaDefineException{
@@ -163,11 +163,11 @@ public class RecordSchema{
     }
     
     /**
-     * ƒXƒL[ƒ}•¶Žš—ñ‚ð’Ç‰Á‚µ‚½ƒŒƒR[ƒhƒXƒL[ƒ}‚ðŽæ“¾‚·‚éB<p>
-     * “¯‚¶ƒXƒL[ƒ}’è‹`‚ÌƒŒƒR[ƒhƒXƒL[ƒ}A‹y‚ÑƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ðV‚µ‚­¶¬‚µ‚È‚¢‚æ‚¤‚ÉA“à•”‚ÅŠÇ—‚µ‚Ä‚¢‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒžæ–‡å­—åˆ—ã‚’è¿½åŠ ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒã˜ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã€åŠã³ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ–°ã—ãç”Ÿæˆã—ãªã„ã‚ˆã†ã«ã€å†…éƒ¨ã§ç®¡ç†ã—ã¦ã„ã‚‹ã€‚<br>
      *
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}•¶Žš—ñ
-     * @return ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžæ–‡å­—åˆ—
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒž
      */
     public RecordSchema appendSchema(String schema)
      throws PropertySchemaDefineException{
@@ -191,10 +191,10 @@ public class RecordSchema{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}’è‹`‚ðÝ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}’è‹`‚ÉŽ¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setSchema(String schema) throws PropertySchemaDefineException{
         propertySchemaMap.clear();
@@ -234,18 +234,18 @@ public class RecordSchema{
                 primaryKeyProperties = (PropertySchema[])primaryKeyProps.toArray(new PropertySchema[primaryKeyProps.size()]);
             }
         }catch(IOException e){
-            // ‹N‚«‚È‚¢‚Í‚¸
+            // èµ·ããªã„ã¯ãš
             throw new PropertySchemaDefineException(schema, e);
         }
         this.schema = schema;
     }
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚ð¶¬‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @return ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚ÉŽ¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected PropertySchema createPropertySchema(String schema)
      throws PropertySchemaDefineException{
@@ -308,18 +308,18 @@ public class RecordSchema{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶Žš—ñ‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶Žš—ñ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžæ–‡å­—åˆ—
      */
     public String getSchema(){
         return schema;
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}’è‹`‚ðÝ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schemata ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}’è‹`‚ð•\‚·ƒvƒƒpƒeƒBƒXƒL[ƒ}”z—ñ
+     * @param schemata ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒžå®šç¾©ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžé…åˆ—
      */
     public void setPropertySchemata(PropertySchema[] schemata){
         propertySchemaMap.clear();
@@ -363,28 +363,28 @@ public class RecordSchema{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}”z—ñ‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒBƒXƒL[ƒ}”z—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžé…åˆ—
      */
     public PropertySchema[] getPropertySchemata(){
         return propertySchemata;
     }
     
     /**
-     * ƒvƒ‰ƒCƒ}ƒŠƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒXƒL[ƒ}”z—ñ‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ©ã‚¤ãƒžãƒªã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒBƒXƒL[ƒ}”z—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžé…åˆ—
      */
     public PropertySchema[] getPrimaryKeyPropertySchemata(){
         return primaryKeyProperties;
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒBƒX–¼‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒvƒƒpƒeƒBƒX–¼
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹å
      */
     public String getPropertyName(int index){
         if(index < 0 || index >= propertySchemata.length){
@@ -394,10 +394,10 @@ public class RecordSchema{
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒvƒƒpƒeƒBƒX–¼‚ÌƒCƒ“ƒfƒbƒNƒX‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹åã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒCƒ“ƒfƒbƒNƒX
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getPropertyIndex(String name){
         Integer index = (Integer)propertyNameIndexMap.get(name);
@@ -405,10 +405,10 @@ public class RecordSchema{
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒvƒƒpƒeƒBƒXƒL[ƒ}
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒž
      */
     public PropertySchema getPropertySchema(int index){
         if(index < 0 || index >= propertySchemata.length){
@@ -418,10 +418,10 @@ public class RecordSchema{
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒžã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒBƒXƒL[ƒ}
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒž
      */
     public PropertySchema getPropertySchema(String name){
         if(name == null){
@@ -431,18 +431,18 @@ public class RecordSchema{
     }
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì”‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB‚Ì”
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ•°
      */
     public int getPropertySize(){
         return propertySchemata.length;
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒXƒL[ƒ}‚Ì•¶Žš—ñ•\Œ»‚ðŽæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒžã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶Žš—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder();

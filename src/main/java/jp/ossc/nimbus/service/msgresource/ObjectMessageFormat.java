@@ -46,29 +46,29 @@ import jp.ossc.nimbus.service.byteconvert.*;
 import jp.ossc.nimbus.util.*;
 
 /**
- *	ObjectƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒg
+ *	Objectãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/08| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/08ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class ObjectMessageFormat
 	extends CommonMessageFormat
 	implements MessageResourceDefine {
     
-    //ƒƒ“ƒo•Ï”
-	/** ƒƒbƒZ[ƒWƒCƒ“ƒvƒbƒg */
-	//CommonMessageFormat‚Å’è‹`
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ãƒ—ãƒƒãƒˆ */
+	//CommonMessageFormatã§å®šç¾©
 	//private MessageInput mMessageInput;
-	/** ƒNƒ‰ƒX–¼ */
+	/** ã‚¯ãƒ©ã‚¹å */
 	private String mClassName;
-	/** ƒyƒCƒ[ƒh‚Ì‘®«•Û */
+	/** ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®å±æ€§ä¿æŒ */
 	private ArrayList mPayloadObjAttributes;
-	/** ƒƒ\ƒbƒhƒ}ƒbƒv */
+	/** ãƒ¡ã‚½ãƒƒãƒ‰ãƒãƒƒãƒ— */
 	private HashMap mMethodMap;
-	/** ƒZƒpƒŒ[ƒ^‚ÌEscape•¶š */
+	/** ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®Escapeæ–‡å­— */
 	private String mEscapeChar = null;
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.msgresource.MessageFormat#marshal(javax.jms.Message)
 	 */
 	public ObjectMessageFormat(ByteConverter converter){
@@ -80,11 +80,11 @@ public class ObjectMessageFormat
 		if(!(msg instanceof ObjectMessage)){
 			return null;
 		}
-		//ƒvƒƒpƒeƒB•”
+		//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨
 		StringBuilder ret = new StringBuilder("[property] ");
 		ret.append(dumpProperties(msg));
 		ret.append(" [payload] ");
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		Object obj = null;
 		ObjectMessage objMsg = (ObjectMessage)msg;
 		try{
@@ -97,7 +97,7 @@ public class ObjectMessageFormat
 		return ret.toString();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.msgresource.MessageFormat#unMarshal(javax.jms.QueueSession)
 	 */
 	 public Message unMarshal(QueueSession session) {
@@ -122,7 +122,7 @@ public class ObjectMessageFormat
 	 }
 	
 	protected void setPayload(Message msg,String recordStr){
-		//ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+		//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 		ObjectMessage objMsg = (ObjectMessage)msg;
 		Object obj = null;
 		Class clazz = null;
@@ -144,7 +144,7 @@ public class ObjectMessageFormat
 			throw new ServiceException("MESSAGERESOURCEFACTORY402",
 										"setPayload() failed. Instancing failed.",e);
 		}	
-		//ƒZƒbƒ^[‚ğ‹N“®
+		//ã‚»ãƒƒã‚¿ãƒ¼ã‚’èµ·å‹•
 		try{
 			//System.out.println("now invoke settter methods.");
 			invokeSetterMethods(clazz,obj,recordStr);
@@ -153,7 +153,7 @@ public class ObjectMessageFormat
 			throw new ServiceException("MESSAGERESOURCEFACTORY402",
 										"settter invocation failed.",e);
 		}	
-		//JMSObjectMessage‚ÉƒZƒbƒg
+		//JMSObjectMessageã«ã‚»ãƒƒãƒˆ
 		try{
 			objMsg.setObject((Serializable)obj);
 		}
@@ -172,7 +172,7 @@ public class ObjectMessageFormat
 			final String name = attr.getName();
 			String valStr = attr.getValue();
 			if(attr.useFile()){
-				//ƒtƒ@ƒCƒ‹w’è
+				//ãƒ•ã‚¡ã‚¤ãƒ«æŒ‡å®š
 				CsvArrayList elems = new CsvArrayList();
 				if(mEscapeChar != null){
 					elems.setEscapeString(mEscapeChar);
@@ -198,7 +198,7 @@ public class ObjectMessageFormat
 			Class[] paramTypes = method.getParameterTypes();
 			Object val = convertStringToObject(paramTypes[0],valStr);
 			if(method != null){
-				//ƒZƒbƒ^[‚ğinvoke
+				//ã‚»ãƒƒã‚¿ãƒ¼ã‚’invoke
 				method.invoke(obj,new Object[]{val});
 			}
 		}
@@ -225,11 +225,11 @@ public class ObjectMessageFormat
 		}
 		NodeList list = elem.getElementsByTagName(PAYLOAD_TAG_NAME);
 		if (list.getLength() != 1){
-			//ƒyƒCƒ[ƒh‚Ì’è‹`–³‚µ
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®å®šç¾©ç„¡ã—
 			throw new ServiceException("MESSAGERESOURCEFACTORY012","<" + PAYLOAD_TAG_NAME + "> must be specified at least one (and only one).");
 		}
 		Element payLoad = (Element)list.item(0);
-		//ƒNƒ‰ƒX–¼‚Ìæ“¾
+		//ã‚¯ãƒ©ã‚¹åã®å–å¾—
 		NodeList classNames= payLoad.getElementsByTagName(PAYLOAD_CLASS_NAME);
 		if( classNames.getLength() !=1 ){
 			throw new ServiceException("MESSAGERESOURCEFACTORY012",
@@ -245,18 +245,18 @@ public class ObjectMessageFormat
 			String val = null;
 			boolean useFile = false;
 			Element payloadAttribute = (Element)payLoadAttributes.item(rCnt);
-			//–¼‘O‚ğæ“¾
+			//åå‰ã‚’å–å¾—
 			name = MessageResourceUtil.getAttMustBeSpecified(payloadAttribute,PAYLOAD_ATTRIBUTE_NAME_ATT);
-			//’l‚ğæ“¾
+			//å€¤ã‚’å–å¾—
 			val = MessageResourceUtil.getValueMustbeSpecified(payloadAttribute);
-			//ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾
+			//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—
 			String resourceType = payloadAttribute.getAttribute(PAYLOAD_ATTRIBUTE_RESTYPE_ATT);
 			if(resourceType.equals(FILE_VAL)){
 				if(fileSpecifiedFlag){
 					useFile = true;
 				}
 				else{
-					//ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚é‚æ‚¤‚Éw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚éitem‚Í’è‹`‚Å‚«‚È‚¢
+					//ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹ã‚ˆã†ã«æŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹itemã¯å®šç¾©ã§ããªã„
 					throw new ServiceException("MESSAGERESOURCEFACTORY015","File not specified. But " 
 											+ PAYLOAD_ITEM_TYPE_ATT + " has " + FILE_VAL + "attribute.");
 				}
@@ -285,16 +285,16 @@ public class ObjectMessageFormat
 	}
 	
 	protected void recvPayloadParse(Element elem){
-		//‚È‚É‚à‚µ‚È‚¢
+		//ãªã«ã‚‚ã—ãªã„
 		;
 	}
 	private class PayloadAttribute{
-		//ƒƒ“ƒo•Ï”
+		//ãƒ¡ãƒ³ãƒå¤‰æ•°
 		private String mName;
 		private String mVal;
 		private boolean mUseFile;
 		/**
-		 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		 *	
 		 */
 		public PayloadAttribute(String name,String val,boolean useFile){
@@ -304,21 +304,21 @@ public class ObjectMessageFormat
 			
 		}
 		/** 
-		 * –¼‘O‚ÌƒQƒbƒ^[
+		 * åå‰ã®ã‚²ãƒƒã‚¿ãƒ¼
 		 *	
 		 */
 		public String getName(){
 			return mName;
 		}
 		/**
-		 * ’l‚ÌƒQƒbƒ^[
+		 * å€¤ã®ã‚²ãƒƒã‚¿ãƒ¼
 		 *	
 		 */
 		public String getValue(){
 			return mVal;
 		}
 		/**
-		 * ƒtƒ@ƒCƒ‹‚Ì’l‚ğQÆ‚·‚é‚©‚Ç‚¤‚©
+		 * ãƒ•ã‚¡ã‚¤ãƒ«ã®å€¤ã‚’å‚ç…§ã™ã‚‹ã‹ã©ã†ã‹
 		 *	
 		 */
 		public boolean useFile(){

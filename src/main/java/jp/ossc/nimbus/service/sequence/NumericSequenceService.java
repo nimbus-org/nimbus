@@ -39,7 +39,7 @@ import jp.ossc.nimbus.util.CsvArrayList;
 import jp.ossc.nimbus.util.StringOperator;
 
 /**
- * ”š”­”ÔƒT[ƒrƒXB<p>
+ * æ•°å­—ç™ºç•ªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
@@ -53,30 +53,30 @@ public class NumericSequenceService extends ServiceBase
     private static final String C_SEMICORON = ";" ;//$NON-NLS-1$
     private static final String C_NINE = "9" ;//$NON-NLS-1$
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾ ##
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
     
-    /** ƒV[ƒPƒ“ƒX”Ô† */
+    /** ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ç•ªå· */
     protected ArrayList mSequenceNo;
     
-    /** ƒtƒH[ƒ}ƒbƒg•¶š—ñ */
+    /** ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ— */
     protected String mFormat;
     
-    /** Å¬’l */
+    /** æœ€å°å€¤ */
     protected String mMin;
     
-    /** Å‘å’l */
+    /** æœ€å¤§å€¤ */
     protected String mMax;
     
-    /** ŠJn”Ô† */
+    /** é–‹å§‹æ™‚ç•ªå· */
     protected String mInitialNumber = "";
     
-    /** ŠJnƒtƒ‰ƒO(Å‰‚Ìincrement‚Ü‚Åtrue)*/
+    /** é–‹å§‹ãƒ•ãƒ©ã‚°(æœ€åˆã®incrementã¾ã§true)*/
     protected boolean mInitialFlag = true;
     
-    // NumericSequenceServiceMBean ‚ÌJavaDoc
+    // NumericSequenceServiceMBean ã®JavaDoc
     public void setFormat(String format){
         synchronized(this){
-            // format‚ğŒ…‹æØ‚è‚Å•ª‰ğ‚·‚é
+            // formatã‚’æ¡åŒºåˆ‡ã‚Šã§åˆ†è§£ã™ã‚‹
             CsvArrayList parser = new CsvArrayList(); 
             parser.split(format,C_SEMICORON);
             if(parser.size() != 2){
@@ -111,43 +111,43 @@ public class NumericSequenceService extends ServiceBase
         }
     }
     
-    // NumericSequenceServiceMBean ‚ÌJavaDoc
+    // NumericSequenceServiceMBean ã®JavaDoc
     public String getFormat(){
         return mFormat;
     }
     
-    // NumericSequenceServiceMBean ‚ÌJavaDoc
+    // NumericSequenceServiceMBean ã®JavaDoc
     public String getMinValue(){
         return mMin;
     }
     
-    // NumericSequenceServiceMBean ‚ÌJavaDoc
+    // NumericSequenceServiceMBean ã®JavaDoc
     public String getMaxValue(){
         return mMax;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         mSequenceNo = new ArrayList();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService(){
         synchronized(this){
-            // format‚ğŒ…‹æØ‚è‚Å•ª‰ğ‚·‚é
+            // formatã‚’æ¡åŒºåˆ‡ã‚Šã§åˆ†è§£ã™ã‚‹
             CsvArrayList parser = new CsvArrayList();
             parser.split(mFormat, C_SEMICORON);
-            // Œ…î•ñƒŠƒXƒg‚ğƒCƒ“ƒXƒ^ƒ“ƒVƒ“ƒO‚·‚é
+            // æ¡æƒ…å ±ãƒªã‚¹ãƒˆã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚·ãƒ³ã‚°ã™ã‚‹
             mSequenceNo = new ArrayList();
-            // ŠeŒ…î•ñ‚ğƒCƒ“ƒXƒ^ƒ“ƒVƒ“ƒO‚µ‚ÄƒŠƒXƒg‚ÉŠi”[‚·‚é
+            // å„æ¡æƒ…å ±ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚·ãƒ³ã‚°ã—ã¦ãƒªã‚¹ãƒˆã«æ ¼ç´ã™ã‚‹
             for(Iterator iterator = parser.iterator(); iterator.hasNext();){
                 String formatItem = (String)iterator.next();
                 final SequenceVariable item
@@ -160,40 +160,40 @@ public class NumericSequenceService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService(){
         mSequenceNo.clear();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService(){
         mSequenceNo = null;
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public String increment(){
         StringBuilder retStr = new StringBuilder();
         synchronized(this){
-            // Œ…”‚Ì[‚³‚ğæ“¾‚·‚é
+            // æ¡æ•°ã®æ·±ã•ã‚’å–å¾—ã™ã‚‹
             int maxCnt = mSequenceNo.size();
-            // ‚P‚¯‚½–Ú‚©‚çƒCƒ“ƒNƒŠƒƒ“ƒg‚ğŠJn‚·‚é
+            // ï¼‘ã‘ãŸç›®ã‹ã‚‰ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã‚’é–‹å§‹ã™ã‚‹
             for(int rCnt = --maxCnt; rCnt >= 0; rCnt--){
                 SequenceVariable item = (SequenceVariable)mSequenceNo.get(rCnt);
                 //increment
                 boolean isOverFlow = item.increment();
-                // ƒI[ƒo[ƒtƒ[‚µ‚È‚¢ê‡‚Í‚¯‚½ã‚ª‚è‚È‚µ
+                // ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã—ãªã„å ´åˆã¯ã‘ãŸä¸ŠãŒã‚Šãªã—
                 if(!isOverFlow){
                     break;
                 }
             }
-            // ƒJƒŒƒ“ƒg•¶š‚ğ‡¬‚µ”­”Ô•¶š‚ğ¶¬‚·‚é
+            // ã‚«ãƒ¬ãƒ³ãƒˆæ–‡å­—ã‚’åˆæˆã—ç™ºç•ªæ–‡å­—ã‚’ç”Ÿæˆã™ã‚‹
             boolean isFirst = false;
             for(Iterator iterator = mSequenceNo.iterator(); iterator.hasNext();){
                 SequenceVariable item = (SequenceVariable)iterator.next();
@@ -215,7 +215,7 @@ public class NumericSequenceService extends ServiceBase
                 reset();
                 retStr = new StringBuilder(increment());
             }
-            // ŠJnƒtƒ‰ƒO‚ªtrue‚Å‚ ‚ê‚ÎAŠJn”Ô†‚Æ‚µ‚Ä•Û‘¶
+            // é–‹å§‹ãƒ•ãƒ©ã‚°ãŒtrueã§ã‚ã‚Œã°ã€é–‹å§‹æ™‚ç•ªå·ã¨ã—ã¦ä¿å­˜
             if(mInitialFlag){
                 mInitialNumber = retStr.toString();
                 mInitialFlag = false;                                    
@@ -224,30 +224,30 @@ public class NumericSequenceService extends ServiceBase
         return retStr.toString();
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public void reset(){
         synchronized(this){
-            // ƒJƒŒƒ“ƒg•¶š‚ğ‡¬‚µ”­”Ô•¶š‚ğ¶¬‚·‚é
+            // ã‚«ãƒ¬ãƒ³ãƒˆæ–‡å­—ã‚’åˆæˆã—ç™ºç•ªæ–‡å­—ã‚’ç”Ÿæˆã™ã‚‹
             for(Iterator iterator = mSequenceNo.iterator(); iterator.hasNext();){
                 SequenceVariable item = (SequenceVariable)iterator.next();
                 item.clear();
             }
-            // ŠJnƒtƒ‰ƒO‚ğtrue‚É‚·‚éB
+            // é–‹å§‹ãƒ•ãƒ©ã‚°ã‚’trueã«ã™ã‚‹ã€‚
             mInitialFlag = true;
             mInitialNumber = "";
         }
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public String getInitial(){
         return mInitialNumber;
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public String getCurrent(){
         StringBuilder retStr = new StringBuilder();
         synchronized(this){
-            // ƒJƒŒƒ“ƒg•¶š‚ğ‡¬‚µ”­”Ô•¶š‚ğ¶¬‚·‚é
+            // ã‚«ãƒ¬ãƒ³ãƒˆæ–‡å­—ã‚’åˆæˆã—ç™ºç•ªæ–‡å­—ã‚’ç”Ÿæˆã™ã‚‹
             boolean isFirst = false ;
             for(Iterator iterator = mSequenceNo.iterator(); iterator.hasNext();){
                 SequenceVariable item = (SequenceVariable)iterator.next();

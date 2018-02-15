@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link RetryEvaluateTestActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link RetryEvaluateTestActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Ishida
  * @see RetryEvaluateTestActionService
@@ -42,77 +42,77 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface RetryEvaluateTestActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * •]‰¿‚ª¸”s‚¾‚Á‚½ê‡‚Ì“®ìí•ÊFƒŠƒgƒ‰ƒCB<p>
+     * è©•ä¾¡ãŒå¤±æ•—ã ã£ãŸå ´åˆã®å‹•ä½œç¨®åˆ¥ï¼šãƒªãƒˆãƒ©ã‚¤ã€‚<p>
      */
     public static final int NG_TYPE_RETRY = 1;
     
     /**
-     * •]‰¿‚ª¸”s‚¾‚Á‚½ê‡‚Ì“®ìí•ÊFI—¹B<p>
+     * è©•ä¾¡ãŒå¤±æ•—ã ã£ãŸå ´åˆã®å‹•ä½œç¨®åˆ¥ï¼šçµ‚äº†ã€‚<p>
      */
     public static final int NG_TYPE_RETURN = 2;
     
     /**
-     * •]‰¿‚ª¸”s‚¾‚Á‚½ê‡‚Ì“®ìí•ÊF–³‹B<p>
+     * è©•ä¾¡ãŒå¤±æ•—ã ã£ãŸå ´åˆã®å‹•ä½œç¨®åˆ¥ï¼šç„¡è¦–ã€‚<p>
      */
     public static final int NG_TYPE_IGNOR = 3;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒŠƒgƒ‰ƒCŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param interval ƒŠƒgƒ‰ƒCŠÔŠu[ms]
+     * @param interval ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
      */
     public void setDefaultInterval(long interval);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒŠƒgƒ‰ƒCŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCŠÔŠu[ms]
+     * @return ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
      */
     public long getDefaultInterval();
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param count ƒŠƒgƒ‰ƒC‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setDefaultRetryCount(int count);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‰ñ”
+     * @return ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public int getDefaultRetryCount();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚ÌƒŠƒgƒ‰ƒCŠJnˆÊ’u‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * ãƒªãƒˆãƒ©ã‚¤æ™‚ã®ãƒªãƒˆãƒ©ã‚¤é–‹å§‹ä½ç½®ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param index ƒŠƒgƒ‰ƒCŠJnˆÊ’u
+     * @param index ãƒªãƒˆãƒ©ã‚¤é–‹å§‹ä½ç½®
      */
     public void setRetryMarkIndex(int index);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚ÌƒŠƒgƒ‰ƒCŠJnˆÊ’u‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤æ™‚ã®ãƒªãƒˆãƒ©ã‚¤é–‹å§‹ä½ç½®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCŠJnˆÊ’u
+     * @return ãƒªãƒˆãƒ©ã‚¤é–‹å§‹ä½ç½®
      */
     public int getRetryMarkIndex();
     
     /**
-     * ˜A½‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ğ’Ç‰Á‚·‚éB<p>
+     * é€£é–ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param action ƒeƒXƒgƒAƒNƒVƒ‡ƒ“
+     * @param action ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      */
     public void addTestAction(TestAction action);
     
     /**
-     * ˜A½‚·‚é•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ğ’Ç‰Á‚·‚éB<p>
+     * é€£é–ã™ã‚‹è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param action •]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“
-     * @param type •]‰¿‚ª¸”s‚¾‚Á‚½ê‡‚Ì“®ìí•Ê
+     * @param action è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³
+     * @param type è©•ä¾¡ãŒå¤±æ•—ã ã£ãŸå ´åˆã®å‹•ä½œç¨®åˆ¥
      * @see #NG_TYPE_RETRY
      * @see #NG_TYPE_RETURN
      * @see #NG_TYPE_IGNORE
@@ -120,16 +120,16 @@ public interface RetryEvaluateTestActionServiceMBean extends ServiceBaseMBean{
     public void addEvaluateTestAction(EvaluateTestAction action, int type);
     
     /**
-     * ˜A½‚ÌÅŒã‚Ì•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * é€£é–ã®æœ€å¾Œã®è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param action •]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“
+     * @param action è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      */
     public void setEndEvaluateTestAction(EvaluateTestAction action);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˜A½‚³‚ê‚½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ì‘z’èƒRƒXƒg‚Ì‘˜a
+     * @return é€£é–ã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®æƒ³å®šã‚³ã‚¹ãƒˆã®ç·å’Œ
      */
     public double getExpectedCost();
     

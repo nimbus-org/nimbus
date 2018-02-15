@@ -29,94 +29,94 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// �p�b�P�[�W
+// パッケージ
 package jp.ossc.nimbus.service.debug;
-//�C���|�[�g
+//インポート
 
 /**
- * �f�o�b�O�N���X<p>
- * �f�o�b�O���o�͂��s��
+ * デバッグクラス<p>
+ * デバッグ情報出力を行う
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
  */
 public interface Debug {
     /**
-     * �f�o�b�O���o��(��O��)<p>
-     * �f�o�b�O�����o�͂���BisXXX���g�p���ďo�͉ۏ���
-     * �₢���킹��O�ɃR�[������ƃT�[�r�X��O�𔭐�����B
-     * @param str �G���[���b�Z�[�W
-     * @param e ��O 
-     * @throws isXXX�֐��g�p�O�ɂ��̊֐����R�[�������ۂ̗�O�B
+     * デバッグ情報出力(例外つき)<p>
+     * デバッグ情報を出力する。isXXXを使用して出力可否情報を
+     * 問い合わせる前にコールするとサービス例外を発生する。
+     * @param str エラーメッセージ
+     * @param e 例外 
+     * @throws isXXX関数使用前にこの関数をコールした際の例外。
      */
     public void write(String str,Throwable e);
     /**
-     * �f�o�b�O���o��<p>
-     * �f�o�b�O�����o�͂���BisXXX���g�p���ďo�͉ۏ���
-     * �₢���킹��O�ɃR�[������ƃT�[�r�X��O�𔭐�����B
-     * @param str �G���[���b�Z�[�W
-     * @throws  isXXX�֐��g�p�O�ɂ��̊֐����R�[�������ۂ̗�O�B
+     * デバッグ情報出力<p>
+     * デバッグ情報を出力する。isXXXを使用して出力可否情報を
+     * 問い合わせる前にコールするとサービス例外を発生する。
+     * @param str エラーメッセージ
+     * @throws  isXXX関数使用前にこの関数をコールした際の例外。
      */
     public void write(String str);
     
     /**
-     * �f�o�b�O���DUMP�o��<p>
-     * �f�o�b�O����DUMP���o�͂���BisXXX���g�p���ďo�͉ۏ���
-     * �₢���킹��O�ɃR�[������ƃT�[�r�X��O�𔭐�����B
-     * @param object �G���[���b�Z�[�W
-     * @throws  isXXX�֐��g�p�O�ɂ��̊֐����R�[�������ۂ̗�O�B
+     * デバッグ情報DUMP出力<p>
+     * デバッグ情報をDUMPし出力する。isXXXを使用して出力可否情報を
+     * 問い合わせる前にコールするとサービス例外を発生する。
+     * @param object エラーメッセージ
+     * @throws  isXXX関数使用前にこの関数をコールした際の例外。
      */
     public void dump(Object object);
     /**
-     * �f�o�b�O���DUMP�o��<p>
-     * �f�o�b�O����DUMP���o�͂���BisXXX���g�p���ďo�͉ۏ���
-     * �₢���킹��O�ɃR�[������ƃT�[�r�X��O�𔭐�����B
-     * @param objects �G���[���b�Z�[�W
-     * @throws  isXXX�֐��g�p�O�ɂ��̊֐����R�[�������ۂ̗�O�B
+     * デバッグ情報DUMP出力<p>
+     * デバッグ情報をDUMPし出力する。isXXXを使用して出力可否情報を
+     * 問い合わせる前にコールするとサービス例外を発生する。
+     * @param objects エラーメッセージ
+     * @throws  isXXX関数使用前にこの関数をコールした際の例外。
      */
     public void dump(Object[] objects);
     /**
-     * �f�o�b�O���DUMP�o��<p>
-     * �f�o�b�O����DUMP���o�͂���BisXXX���g�p���ďo�͉ۏ���
-     * �₢���킹��O�ɃR�[������ƃT�[�r�X��O�𔭐�����B
-     * @param msg �G���[���b�Z�[�W
-     * @param object �G���[���b�Z�[�W
-     * @throws  isXXX�֐��g�p�O�ɂ��̊֐����R�[�������ۂ̗�O�B
+     * デバッグ情報DUMP出力<p>
+     * デバッグ情報をDUMPし出力する。isXXXを使用して出力可否情報を
+     * 問い合わせる前にコールするとサービス例外を発生する。
+     * @param msg エラーメッセージ
+     * @param object エラーメッセージ
+     * @throws  isXXX関数使用前にこの関数をコールした際の例外。
      */
     public void dump(String msg,Object object);
     /**
-     * �f�o�b�O���DUMP�o��<p>
-     * �f�o�b�O����DUMP���o�͂���BisXXX���g�p���ďo�͉ۏ���
-     * �₢���킹��O�ɃR�[������ƃT�[�r�X��O�𔭐�����B
-     * @param msg �G���[���b�Z�[�W
-     * @param objects �G���[���b�Z�[�W
-     * @throws  isXXX�֐��g�p�O�ɂ��̊֐����R�[�������ۂ̗�O�B
+     * デバッグ情報DUMP出力<p>
+     * デバッグ情報をDUMPし出力する。isXXXを使用して出力可否情報を
+     * 問い合わせる前にコールするとサービス例外を発生する。
+     * @param msg エラーメッセージ
+     * @param objects エラーメッセージ
+     * @throws  isXXX関数使用前にこの関数をコールした際の例外。
      */
     public void dump(String msg,Object[] objects);
     
     /**
-     * �f�o�b�O���x�����o�͉�
-     * @return �f�o�b�O���x���̏����o�͂��邩
+     * デバッグレベル情報出力可否
+     * @return デバッグレベルの情報を出力するか
      */
     public boolean isDebug();
     /**
-     * �C���t�H�[���[�V�������x�����o�͉�
-     * @return �C���t�H�[���[�V�������x���̏����o�͂��邩
+     * インフォーメーションレベル情報出力可否
+     * @return インフォーメーションレベルの情報を出力するか
      */
     public boolean isInfo();
     /**
-     * �x�����x�����o�͉�
-     * @return �x�����x���̏����o�͂��邩
+     * 警告レベル情報出力可否
+     * @return 警告レベルの情報を出力するか
      */
     public boolean isWarn();
     /**
-     * �G���[���x�����o�͉�
-     * @return �G���[���x���̏����o�͂��邩
+     * エラーレベル情報出力可否
+     * @return エラーレベルの情報を出力するか
      */
     public boolean isError();
     /**
-     * �v���I�G���[���x�����o�͉�
-     * @return �v���I�G���[���x���̏����o�͂��邩
+     * 致命的エラーレベル情報出力可否
+     * @return 致命的エラーレベルの情報を出力するか
      */
     public boolean isFatalError();
 }

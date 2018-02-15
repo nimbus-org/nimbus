@@ -45,9 +45,9 @@ import jp.ossc.nimbus.service.keepalive.ClusterService;
 import jp.ossc.nimbus.service.system.Time;
 
 /**
- * ’ŠÛƒXƒPƒWƒ…[ƒ‰B<p>
- * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½ƒ^ƒXƒN‚ğÀs‚·‚éÓ”C‚ğ•‰‚¤B<br>
- * {@link ScheduleManager}‚©‚çÀs‚·‚×‚«{@link Schedule}‚ğæ“¾‚µ‚ÄA{@link ScheduleExecutor}‚ÉÀs‚ğˆË—Š‚·‚éB<br>
+ * æŠ½è±¡ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸã‚¿ã‚¹ã‚¯ã‚’å®Ÿè¡Œã™ã‚‹è²¬ä»»ã‚’è² ã†ã€‚<br>
+ * {@link ScheduleManager}ã‹ã‚‰å®Ÿè¡Œã™ã¹ã{@link Schedule}ã‚’å–å¾—ã—ã¦ã€{@link ScheduleExecutor}ã«å®Ÿè¡Œã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -57,8 +57,8 @@ public abstract class AbstractSchedulerService extends ServiceBase
     private static final long serialVersionUID = 6938915052580428501L;
     
     /**
-     * TransactionManager‚ÌJNDI–¼B<p>
-     * J2EE‚Ìd—l‚ÅA—\–ñ‚³‚ê‚Ä‚¢‚éJNDI–¼‚Å‚ ‚éB
+     * TransactionManagerã®JNDIåã€‚<p>
+     * J2EEã®ä»•æ§˜ã§ã€äºˆç´„ã•ã‚Œã¦ã„ã‚‹JNDIåã§ã‚ã‚‹ã€‚
      */
     protected static final String TRANSACTION_MANAGER_JNDI_NAME
          = "java:/TransactionManager";
@@ -92,118 +92,118 @@ public abstract class AbstractSchedulerService extends ServiceBase
     protected ServiceName timeServiceName;
     protected Time time;
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setScheduleTickerInterval(long interval){
         scheduleTickerInterval = interval;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public long getScheduleTickerInterval(){
         return scheduleTickerInterval;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setScheduleManagerServiceName(ServiceName name){
         scheduleManagerServiceName = name;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getScheduleManagerServiceName(){
         return scheduleManagerServiceName;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setScheduleExecutorServiceName(ServiceName name){
         scheduleExecutorServiceNames = name == null ? null : new ServiceName[]{name};
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getScheduleExecutorServiceName(){
         return scheduleExecutorServiceNames == null || scheduleExecutorServiceNames.length != 1 ? null : scheduleExecutorServiceNames[0];
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setScheduleExecutorServiceNames(ServiceName[] names){
         scheduleExecutorServiceNames = names;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName[] getScheduleExecutorServiceNames(){
         return scheduleExecutorServiceNames;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setTransactionControl(boolean isControl){
         isTransactionControl = isControl;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public boolean isTransactionControl(){
         return isTransactionControl;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setExecutorKey(String key){
         executorKey = key;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public String getExecutorKey(){
         return executorKey;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setTransactionManagerFactoryServiceName(ServiceName name){
         transactionManagerFactoryServiceName = name;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getTransactionManagerFactoryServiceName(){
         return transactionManagerFactoryServiceName;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public void setTimeServiceName(ServiceName name){
         timeServiceName = name;
     }
-    // AbstractSchedulerServiceMBean‚ÌJavaDoc
+    // AbstractSchedulerServiceMBeanã®JavaDoc
     public ServiceName getTimeServiceName(){
         return timeServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬‘Oˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preCreateService() throws Exception{
         super.preCreateService();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‘Oˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preStartService() throws Exception{
         super.preStartService();
@@ -258,9 +258,9 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnŒãˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnŒãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postStartService() throws Exception{
         scheduleManager.addScheduleControlListener(this);
@@ -286,9 +286,9 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‘Oˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preStopService() throws Exception{
         
@@ -309,9 +309,9 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~Œãˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postStopService() throws Exception{
         
@@ -319,9 +319,9 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüŒãˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüŒãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postDestroyService() throws Exception{
         
@@ -331,52 +331,52 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg’Ê”Ô‚ğİ’è‚·‚é{@link Context}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆé€šç•ªã‚’è¨­å®šã™ã‚‹{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param context ContextƒT[ƒrƒX
+     * @param context Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setThreadContext(Context context){
         threadContext = context;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg’Ê”Ô‚ğİ’è‚·‚é{@link Context}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆé€šç•ªã‚’è¨­å®šã™ã‚‹{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public Context getThreadContext(){
         return threadContext;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg’Ê”Ô‚ğ”­s‚·‚é{@link Sequence}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆé€šç•ªã‚’ç™ºè¡Œã™ã‚‹{@link Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param seq SequenceƒT[ƒrƒX
+     * @param seq Sequenceã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setSequence(Sequence seq){
         sequence = seq;
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg’Ê”Ô‚ğ”­s‚·‚é{@link Sequence}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆé€šç•ªã‚’ç™ºè¡Œã™ã‚‹{@link Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹
      */
     public Sequence getSequence(){
         return sequence;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public ScheduleManager getScheduleManager(){
         return scheduleManager;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public void setScheduleManager(ScheduleManager manager){
         scheduleManager = manager;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public ScheduleExecutor getScheduleExecutor(String type){
         if(scheduleExecutors.size() == 1){
             ScheduleExecutor executor = (ScheduleExecutor)scheduleExecutors.values().iterator().next();
@@ -386,29 +386,29 @@ public abstract class AbstractSchedulerService extends ServiceBase
         }
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public void setScheduleExecutor(ScheduleExecutor executor){
         scheduleExecutors.put(executor.getType(), executor);
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public Map getScheduleExecutors(){
         return scheduleExecutors;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public void startEntry(){
         if(scheduleTicker != null){
             scheduleTicker.resume();
         }
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public boolean isStartEntry(){
         return scheduleTicker == null ? false : scheduleTicker.isRunning() && !scheduleTicker.isSusupend();
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public void stopEntry(){
         if(scheduleTicker != null){
             scheduleTicker.suspend();
@@ -416,12 +416,12 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹§Œäó‘Ô‚ª•ÏX‚³‚ê‚½‚É’Ê’m‚³‚ê‚éB<p>
-     * Às’†‚ÌƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğ§Œä‚·‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã•ã‚Œã‚‹ã€‚<p>
+     * å®Ÿè¡Œä¸­ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’åˆ¶å¾¡ã™ã‚‹ã€‚<br>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param state •ÏX‚³‚ê‚½§Œäó‘Ô
-     * @exception ScheduleStateControlException Às’†ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param state å¤‰æ›´ã•ã‚ŒãŸåˆ¶å¾¡çŠ¶æ…‹
+     * @exception ScheduleStateControlException å®Ÿè¡Œä¸­ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void changedControlState(String id, int state)
      throws ScheduleStateControlException{
@@ -436,25 +436,25 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“Š“ü‚·‚éƒLƒ…[‚ªJTA‚ğƒTƒ|[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æŠ•å…¥ã™ã‚‹ã‚­ãƒ¥ãƒ¼ãŒJTAã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return JTA‚ğƒTƒ|[ƒg‚·‚éê‡‚ÍAtrue
+     * @return JTAã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€true
      */
     protected abstract boolean isTransactableQueue();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğƒLƒ…[‚É“Š“ü‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚­ãƒ¥ãƒ¼ã«æŠ•å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param request ƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒg
+     * @param request ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     protected abstract void entrySchedule(ScheduleRequest request)
      throws Throwable;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ{@link ScheduleExecutor}‚ÉÀsˆË—Š‚·‚éB<p>
-     * ‚Ü‚½A{@link ScheduleManager}‚ğg‚Á‚ÄAƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link ScheduleExecutor}ã«å®Ÿè¡Œä¾é ¼ã™ã‚‹ã€‚<p>
+     * ã¾ãŸã€{@link ScheduleManager}ã‚’ä½¿ã£ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<br>
      * 
-     * @param request ƒLƒ…[‚©‚çæ‚èo‚µ‚½ƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒg
+     * @param request ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     protected void dispatchSchedule(ScheduleRequest request){
         if(threadContext != null){
@@ -545,54 +545,54 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒeƒBƒbƒJ[B<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ’èŠú“I‚Éæ“¾‚µ‚ÄAÀsƒLƒ…[‚É“Š“ü‚·‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ã‚£ãƒƒã‚«ãƒ¼ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®šæœŸçš„ã«å–å¾—ã—ã¦ã€å®Ÿè¡Œã‚­ãƒ¥ãƒ¼ã«æŠ•å…¥ã™ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
     protected class ScheduleTicker implements DaemonRunnable{
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ˆê’èŠÔ‹ó‚¯‚éB<p>
+         * ä¸€å®šæ™‚é–“ç©ºã‘ã‚‹ã€‚<p>
          * 
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
          */
         public Object provide(DaemonControl ctrl) throws Throwable{
             ctrl.sleep(getScheduleTickerInterval(), true);
@@ -600,10 +600,10 @@ public abstract class AbstractSchedulerService extends ServiceBase
         }
         
         /**
-         * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğˆø”‚ÉQueueHandler‚ğŒÄ‚Ño‚·B<p>
+         * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã«QueueHandlerã‚’å‘¼ã³å‡ºã™ã€‚<p>
          *
-         * @param schedules ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param schedules ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object schedules, DaemonControl ctrl)
          throws Throwable{
@@ -793,14 +793,14 @@ public abstract class AbstractSchedulerService extends ServiceBase
         }
         
         /**
-         * ‰½‚à‚µ‚È‚¢B<p>
+         * ä½•ã‚‚ã—ãªã„ã€‚<p>
          */
         public void garbage(){
         }
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒgB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
      *
      * @author M.Takata
      */

@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DummyJndiFinderService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DummyJndiFinderService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DummyJndiFinderService
@@ -50,29 +50,29 @@ public interface DummyJndiFinderServiceMBean extends ServiceBaseMBean{
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * lookup‚Ég—p‚·‚éJNDIƒvƒŒƒtƒBƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹ó•¶šB<br>
+     * lookupæ™‚ã«ä½¿ç”¨ã™ã‚‹JNDIãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºæ–‡å­—ã€‚<br>
      *
-     * @param prefix JNDIƒvƒŒƒtƒBƒbƒNƒX
+     * @param prefix JNDIãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹
      */
     public void setPrefix(String prefix);
     
     /**
-     * lookup‚Ég—p‚·‚éJNDIƒvƒŒƒtƒBƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * lookupæ™‚ã«ä½¿ç”¨ã™ã‚‹JNDIãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JNDIƒvƒŒƒtƒBƒbƒNƒX
+     * @return JNDIãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹
      */
     public String getPrefix();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚µ‚½ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğ‘S‚ÄƒNƒŠƒA‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¨ã¦ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearCache();
     
     /**
-     * w’è‚µ‚½JNDI–¼‚Ì‚µ‚½ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚éB<p>
+     * æŒ‡å®šã—ãŸJNDIåã®ã—ãŸãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      * 
-     * @param jndiName ƒLƒƒƒbƒVƒ…‚©‚çíœ‚·‚éƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌJNDI–¼
+     * @param jndiName ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã™ã‚‹ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®JNDIå
      */
     public void clearCache(String jndiName);
 }

@@ -40,7 +40,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link MBeanWatcherService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MBeanWatcherService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -54,243 +54,243 @@ public interface MBeanWatcherServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_CHECK_FATAL     = "MBW__00006";
 
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * javax.management.MBeanServerConnectionã®JNDIåã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_JMX_RMI_ADAPTOR_NAME = "jmx/invoker/RMIAdaptor";
 
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
 
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
 
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_JMX_RMI_ADAPTOR_NAME}B<br>
+     * javax.management.MBeanServerConnectionã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_JMX_RMI_ADAPTOR_NAME}ã€‚<br>
      *
-     * @param name javax.management.MBeanServerConnection‚ÌJNDI–¼
+     * @param name javax.management.MBeanServerConnectionã®JNDIå
      */
     public void setRMIAdaptorName(String name);
 
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.management.MBeanServerConnection‚ÌJNDI–¼
+     * @return javax.management.MBeanServerConnectionã®JNDIå
      */
     public String getRMIAdaptorName();
 
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌƒT[ƒrƒXURL‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹URLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒXURL
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹URL
      */
     public void setServiceURL(String url);
 
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌƒT[ƒrƒXURL‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒXURL
+     * @return ã‚µãƒ¼ãƒ“ã‚¹URL
      */
     public String getServiceURL();
 
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌÚ‘±ŠÂ‹«•Ï”‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®æ¥ç¶šç’°å¢ƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param env Ú‘±ŠÂ‹«•Ï”
+     * @param env æ¥ç¶šç’°å¢ƒå¤‰æ•°
      */
     public void setJMXConnectorEnvironment(Map env);
 
     /**
-     * Ú‘±‚·‚éJMXƒT[ƒo‚ÌÚ‘±ŠÂ‹«•Ï”‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šã™ã‚‹JMXã‚µãƒ¼ãƒã®æ¥ç¶šç’°å¢ƒå¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Ú‘±ŠÂ‹«•Ï”
+     * @return æ¥ç¶šç’°å¢ƒå¤‰æ•°
      */
     public Map getJMXConnectorEnvironment();
 
     /**
-     * ŠÄ‹ŠÔŠu‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Í0‚ÅA’èŠú“I‚ÉŠÄ‹‚µ‚È‚¢B<br>
+     * ç›£è¦–é–“éš”ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯0ã§ã€å®šæœŸçš„ã«ç›£è¦–ã—ãªã„ã€‚<br>
      *
-     * @param interval ŠÄ‹ŠÔŠu[ms]
+     * @param interval ç›£è¦–é–“éš”[ms]
      */
     public void setInterval(long interval);
 
     /**
-     * ŠÄ‹ŠÔŠu‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–é–“éš”ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÄ‹ŠÔŠu[ms]
+     * @return ç›£è¦–é–“éš”[ms]
      */
     public long getInterval();
 
     /**
-     * ŠÄ‹Œ‹‰Ê‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍAŠÄ‹Œ‹‰Ê‚Ío—Í‚µ‚È‚¢B<br>
+     * ç›£è¦–çµæœã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ç›£è¦–çµæœã¯å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param name CategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCategoryServiceName(ServiceName name);
 
     /**
-     * ŠÄ‹Œ‹‰Ê‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–çµæœã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCategoryServiceName();
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉJMXÚ‘±‚ğŠm—§‚µ‚Ä‚¨‚­‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAŠÄ‹‚É–ˆ‰ñÚ‘±‚ğs‚¤BRMIAdaptorŒo—R‚Å‚ÌÚ‘±‚Ìê‡‚ÍA–³ŒøB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«JMXæ¥ç¶šã‚’ç¢ºç«‹ã—ã¦ãŠãã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ç›£è¦–æ™‚ã«æ¯å›æ¥ç¶šã‚’è¡Œã†ã€‚RMIAdaptorçµŒç”±ã§ã®æ¥ç¶šã®å ´åˆã¯ã€ç„¡åŠ¹ã€‚<br>
      *
-     * @param isConnect ƒT[ƒrƒX‚ÌŠJn‚ÉJMXÚ‘±‚ğŠm—§‚·‚éê‡‚ÍAtrue
+     * @param isConnect ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«JMXæ¥ç¶šã‚’ç¢ºç«‹ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setConnectOnStart(boolean isConnect);
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉJMXÚ‘±‚ğŠm—§‚µ‚Ä‚¨‚­‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«JMXæ¥ç¶šã‚’ç¢ºç«‹ã—ã¦ãŠãã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉJMXÚ‘±‚ğŠm—§‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«JMXæ¥ç¶šã‚’ç¢ºç«‹ã™ã‚‹
      */
     public boolean isConnectOnStart();
 
     /**
-     * ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚µ‚½Û‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #MSG_ID_GET_VALUE_ERROR}B<br>
+     * ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã—ãŸéš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #MSG_ID_GET_VALUE_ERROR}ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setGetValueErrorMessageId(String id);
 
     /**
-     * ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚µ‚½Û‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã—ãŸéš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getGetValueErrorMessageId();
 
     /**
-     * ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éÛ‚ÉJMXƒT[ƒo‚Ö‚ÌÚ‘±ƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #MSG_ID_CONNECT_ERROR}B<br>
+     * ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹éš›ã«JMXã‚µãƒ¼ãƒã¸ã®æ¥ç¶šã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #MSG_ID_CONNECT_ERROR}ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setConnectErrorMessageId(String id);
 
     /**
-     * ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éÛ‚ÉJMXƒT[ƒo‚Ö‚ÌÚ‘±ƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹éš›ã«JMXã‚µãƒ¼ãƒã¸ã®æ¥ç¶šã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getConnectErrorMessageId();
 
     /**
-     * ŠÄ‹Œ‹‰Ê‚ğo—Í‚·‚éÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #MSG_ID_WRITE_ERROR}B<br>
+     * ç›£è¦–çµæœã‚’å‡ºåŠ›ã™ã‚‹éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #MSG_ID_WRITE_ERROR}ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setWriteErrorMessageId(String id);
 
     /**
-     * ŠÄ‹Œ‹‰Ê‚ğo—Í‚·‚éÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–çµæœã‚’å‡ºåŠ›ã™ã‚‹éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getWriteErrorMessageId();
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAŠÄ‹‘ÎÛ‚ÍAˆêˆÓ‚ÈManaged BeanB<br>
+     * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ç›£è¦–å¯¾è±¡ã¯ã€ä¸€æ„ãªManaged Beanã€‚<br>
      *
-     * @param isSet ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤ê‡true
+     * @param isSet ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†å ´åˆtrue
      */
     public void setMBeanSet(boolean isSet);
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤
+     * @return trueã®å ´åˆã€ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†
      */
     public boolean isMBeanSet();
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #setMBeanSet(boolean) setMBeanSet(false)}‚Æİ’è‚µ‚Ä‚¢‚éê‡‚ÍAManaged Bean‚ğˆêˆÓ‚É“Á’è‚·‚éŠ®‘S–¼‚ğw’è‚·‚éB<br>
-     * {@link #setMBeanSet(boolean) setMBeanSet(true)}‚Æİ’è‚µ‚Ä‚¢‚éê‡‚ÍAManaged Bean‚ÌW‡‚ğ“Á’è‚·‚éƒIƒuƒWƒFƒNƒg–¼‚ğw’è‚·‚éB<br>
+     * ç›£è¦–å¯¾è±¡ã®Managed Beanã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setMBeanSet(boolean) setMBeanSet(false)}ã¨è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€Managed Beanã‚’ä¸€æ„ã«ç‰¹å®šã™ã‚‹å®Œå…¨åã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * {@link #setMBeanSet(boolean) setMBeanSet(true)}ã¨è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€Managed Beanã®é›†åˆã‚’ç‰¹å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param name Managed Bean‚Ì–¼‘O‚ğJMX‚ÌƒIƒuƒWƒFƒNƒg–¼Œ`®‚Åw’è‚·‚é
-     * @exception MalformedObjectNameException ƒIƒuƒWƒFƒNƒg–¼‚ª•s³‚Èê‡
+     * @param name Managed Beanã®åå‰ã‚’JMXã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåå½¢å¼ã§æŒ‡å®šã™ã‚‹
+     * @exception MalformedObjectNameException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåãŒä¸æ­£ãªå ´åˆ
      */
     public void setObjectName(String name) throws MalformedObjectNameException;
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–å¯¾è±¡ã®Managed Beanã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Managed Bean‚Ì–¼‘O‚ğJMX‚ÌƒIƒuƒWƒFƒNƒg–¼Œ`®‚Åw’è‚·‚é
+     * @return Managed Beanã®åå‰ã‚’JMXã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåå½¢å¼ã§æŒ‡å®šã™ã‚‹
      */
     public String getObjectName();
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ği‚è‚ŞğŒ®‚ğİ’è‚·‚éB<p>
-     * {@link #setMBeanSet(boolean) setMBeanSet(true)}‚Ìê‡‚Ì‚İ—LŒøB<br>
+     * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’çµã‚Šè¾¼ã‚€æ¡ä»¶å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setMBeanSet(boolean) setMBeanSet(true)}ã®å ´åˆã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param exp ğŒ®
+     * @param exp æ¡ä»¶å¼
      */
     public void setQueryExp(QueryExp exp);
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ği‚è‚ŞğŒ®‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’çµã‚Šè¾¼ã‚€æ¡ä»¶å¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ğŒ®
+     * @return æ¡ä»¶å¼
      */
     public QueryExp getQueryExp();
 
     /**
-     * ƒT[ƒrƒXŠJn‚ÉŠÄ‹‘ÎÛ‚ğReset‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ç›£è¦–å¯¾è±¡ã‚’Resetã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒXŠJn‚ÉŠÄ‹‘ÎÛ‚ğReset‚·‚é‚©
+     * @return ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ç›£è¦–å¯¾è±¡ã‚’Resetã™ã‚‹ã‹
      */
     public boolean isResetOnStart();
 
     /**
-     * ƒT[ƒrƒXŠJn‚ÉŠÄ‹‘ÎÛ‚ğReset‚·‚é‚©‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ç›£è¦–å¯¾è±¡ã‚’Resetã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isResetOnStart true‚Ìê‡AƒT[ƒrƒXŠJn‚ÉŠÄ‹‘ÎÛ‚ğReset‚·‚é
+     * @param isResetOnStart trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ç›£è¦–å¯¾è±¡ã‚’Resetã™ã‚‹
      */
     public void setResetOnStart(boolean isResetOnStart);
 
     /**
-     * ŠÄ‹‘ÎÛ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ç›£è¦–å¯¾è±¡ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link MBeanWatcherService.Target ŠÄ‹‘ÎÛ}‚ÌƒŠƒXƒg
+     * @return {@link MBeanWatcherService.Target ç›£è¦–å¯¾è±¡}ã®ãƒªã‚¹ãƒˆ
      */
     public List getTargetList();
 
     /**
-     * ŠÄ‹‚ğÀs‚·‚éB<p>
+     * ç›£è¦–ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ªŠÄ‹‘ÎÛƒL[A’l‚ªŠÄ‹‘ÎÛ‚Ì’l‚Æ‚È‚éŠÄ‹Œ‹‰Êƒ}ƒbƒv
-     * @exception Exception ŠÄ‹Às‚É¸”s‚µ‚½ê‡
+     * @return ã‚­ãƒ¼ãŒç›£è¦–å¯¾è±¡ã‚­ãƒ¼ã€å€¤ãŒç›£è¦–å¯¾è±¡ã®å€¤ã¨ãªã‚‹ç›£è¦–çµæœãƒãƒƒãƒ—
+     * @exception Exception ç›£è¦–å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Map watch() throws Exception;
 
     /**
-     * ŠÄ‹‚ğÀs‚µAŠÄ‹Œ‹‰Ê‚ğo—Í‚·‚éB<p>
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAŠÄ‹Œ‹‰Ê‚Ìo—Í‚Ís‚í‚ê‚È‚¢B<br>
+     * ç›£è¦–ã‚’å®Ÿè¡Œã—ã€ç›£è¦–çµæœã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç›£è¦–çµæœã®å‡ºåŠ›ã¯è¡Œã‚ã‚Œãªã„ã€‚<br>
      *
-     * @exception Exception ŠÄ‹Às‚Ü‚½‚ÍŠÄ‹Œ‹‰Ê‚Ìo—Í‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç›£è¦–å®Ÿè¡Œã¾ãŸã¯ç›£è¦–çµæœã®å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void write() throws Exception;
 
     /**
-     * ŠÄ‹ó‘Ô‚ğƒŠƒZƒbƒg‚·‚éB<p>
+     * ç›£è¦–çŠ¶æ…‹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
      */
     public void reset();
 }

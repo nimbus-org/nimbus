@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.queue;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link QueueHandlerContainerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link QueueHandlerContainerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see QueueHandlerContainerService
@@ -45,278 +45,278 @@ public interface QueueHandlerContainerServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_RETRY_OVER_ERROR_MESSAGE_ID = "QHC__00002";
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚·‚é{@link Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚·‚é{@link Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * {@link QueueHandler}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link QueueHandler}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name QueueHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueHandlerServiceName(ServiceName name);
     
     /**
-     * {@link QueueHandler}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link QueueHandler}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return QueueHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueHandlerServiceName();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚Ì”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<br>
      *
-     * @param size QueueHandlerƒXƒŒƒbƒh‚Ì”
+     * @param size QueueHandlerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public void setQueueHandlerSize(int size);
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerƒXƒŒƒbƒh‚Ì”
+     * @return QueueHandlerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public int getQueueHandlerSize();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link Queue#release()}‚ğŒÄ‚Ño‚µAQueue‚ğŠJ•ú‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB‚P‚Â‚ÌQueue‚ğ•¡”‚ÌƒRƒ“ƒeƒi‚ÅQÆ‚·‚éê‡‚ÍAfalse‚É‚·‚é‚×‚«‚Å‚ ‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link Queue#release()}ã‚’å‘¼ã³å‡ºã—ã€Queueã‚’é–‹æ”¾ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚ï¼‘ã¤ã®Queueã‚’è¤‡æ•°ã®ã‚³ãƒ³ãƒ†ãƒŠã§å‚ç…§ã™ã‚‹å ´åˆã¯ã€falseã«ã™ã‚‹ã¹ãã§ã‚ã‚‹ã€‚<br>
      *
-     * @param isRelease ŠJ•ú‚·‚éê‡‚Ítrue
+     * @param isRelease é–‹æ”¾ã™ã‚‹å ´åˆã¯true
      */
     public void setReleaseQueue(boolean isRelease);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link Queue#release()}‚ğŒÄ‚Ño‚µAQueue‚ğŠJ•ú‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link Queue#release()}ã‚’å‘¼ã³å‡ºã—ã€Queueã‚’é–‹æ”¾ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAŠJ•ú‚·‚é
+     * @return trueã®å ´åˆã¯ã€é–‹æ”¾ã™ã‚‹
      */
     public boolean isReleaseQueue();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éÅ‘åŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡‚ÍA{@link QueueHandler#handleDequeuedObject(Object)     }‚Énull‚ğ“n‚·B<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹æœ€å¤§æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã¯ã€{@link QueueHandler#handleDequeuedObject(Object)     }ã«nullã‚’æ¸¡ã™ã€‚<br>
      *
-     * @param timeout ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éÅ‘åŠÔ[ms]
+     * @param timeout ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹æœ€å¤§æ™‚é–“[ms]
      */
     public void setWaitTimeout(long timeout);
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éÅ‘åŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹æœ€å¤§æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éÅ‘åŠÔ[ms]
+     * @return ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹æœ€å¤§æ™‚é–“[ms]
      */
     public long getWaitTimeout();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚ÅƒŠƒgƒ‰ƒC‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ãƒªãƒˆãƒ©ã‚¤ã—ãªã„ã€‚<br>
      *
-     * @param count ƒŠƒgƒ‰ƒC‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setMaxRetryCount(int count);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‰ñ”
+     * @return ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public int getMaxRetryCount();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚éŠÔŠu‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1000[ms]B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1000[ms]ã€‚<br>
      *
-     * @param interval ƒŠƒgƒ‰ƒCŠÔŠu
+     * @param interval ãƒªãƒˆãƒ©ã‚¤é–“éš”
      */
     public void setRetryInterval(long interval);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚éŠÔŠu‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCŠÔŠu
+     * @return ãƒªãƒˆãƒ©ã‚¤é–“éš”
      */
     public long getRetryInterval();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½–‚ğ’Ê’m‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_HANDLING_ERROR_MESSAGE_ID}B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸäº‹ã‚’é€šçŸ¥ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_HANDLING_ERROR_MESSAGE_ID}ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setHandlingErrorMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½–‚ğ’Ê’m‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸäº‹ã‚’é€šçŸ¥ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getHandlingErrorMessageId();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µAƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½–‚ğ’Ê’m‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_RETRY_OVER_ERROR_MESSAGE_ID}B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸäº‹ã‚’é€šçŸ¥ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_RETRY_OVER_ERROR_MESSAGE_ID}ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setRetryOverErrorMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µAƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½–‚ğ’Ê’m‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸäº‹ã‚’é€šçŸ¥ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getRetryOverErrorMessageId();
     
     /**
-     * Œ»İƒnƒ“ƒhƒŠƒ“ƒO’†‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İƒnƒ“ƒhƒŠƒ“ƒO’†‚ÌƒXƒŒƒbƒh”
+     * @return ç¾åœ¨ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getActiveQueueHandlerSize();
     
     /**
-     * Œ»İ‘Ò‹@’†‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨å¾…æ©Ÿä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‘Ò‹@’†‚ÌƒXƒŒƒbƒh”
+     * @return ç¾åœ¨å¾…æ©Ÿä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getStandbyQueueHandlerSize();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isDaemon ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚éê‡‚ÍAtrue
+     * @param isDaemon ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDaemonQueueHandler(boolean isDaemon);
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é
+     * @return trueã®å ´åˆã€ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹
      */
     public boolean isDaemonQueueHandler();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Åİ’è‚µ‚È‚¢B<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§è¨­å®šã—ãªã„ã€‚<br>
      *
-     * @param newPriority ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ
+     * @param newPriority ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½
      */
     public void setQueueHandlerThreadPriority(int newPriority);
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½
      */
     public int getQueueHandlerThreadPriority();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link QueueHandler}ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‹@‚µ‚È‚¢‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å‘Ò‹@‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…æ©Ÿã—ãªã„ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å¾…æ©Ÿã™ã‚‹ã€‚
      *
-     * @param isNowait ‘Ò‹@‚µ‚È‚¢ê‡true
+     * @param isNowait å¾…æ©Ÿã—ãªã„å ´åˆtrue
      */
     public void setQueueHandlerNowaitOnStop(boolean isNowait);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link QueueHandler}ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‹@‚µ‚È‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…æ©Ÿã—ãªã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ‘Ò‹@‚µ‚È‚¢ê‡true
+     * @return å¾…æ©Ÿã—ãªã„å ´åˆtrue
      */
     public boolean isQueueHandlerNowaitOnStop();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link QueueHandler}ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‹@‚·‚éƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡‚ÍA‚»‚êˆÈ~‚ÌƒXƒŒƒbƒh‚ÌI—¹‚ÍA{@link jp.ossc.nimbus.daemon.Daemon#stopNoWait()}‚ğÀs‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚Í-1‚ÅA‘S‚Ä‚ÌƒXƒŒƒbƒh‚É‘Î‚µ‚Ä{@link jp.ossc.nimbus.daemon.Daemon#stop()}‚ğÀs‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…æ©Ÿã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã¯ã€ãã‚Œä»¥é™ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã¯ã€{@link jp.ossc.nimbus.daemon.Daemon#stopNoWait()}ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯-1ã§ã€å…¨ã¦ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã«å¯¾ã—ã¦{@link jp.ossc.nimbus.daemon.Daemon#stop()}ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setStopWaitTimeout(long timeout);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link QueueHandler}ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‹@‚·‚éƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…æ©Ÿã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getStopWaitTimeout();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link Queue}‚Ì‘|‚«o‚µ‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å‘|‚«o‚·B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link Queue}ã®æƒãå‡ºã—ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§æƒãå‡ºã™ã€‚
      *
-     * @param isGarbage ‘|‚«o‚·ê‡true
+     * @param isGarbage æƒãå‡ºã™å ´åˆtrue
      */
     public void setGarbageQueueOnStop(boolean isGarbage);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚É{@link Queue}‚Ì‘|‚«o‚µ‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«{@link Queue}ã®æƒãå‡ºã—ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘|‚«o‚·
+     * @return trueã®å ´åˆã€æƒãå‡ºã™
      */
     public boolean isGarbageQueueOnStop();
     
     /**
-     * {@link Queue}‚©‚çæ“¾‚µ‚½—v‘f‚ªnull‚Ìê‡‚É–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³‹‚µ‚È‚¢B<br>
+     * {@link Queue}ã‹ã‚‰å–å¾—ã—ãŸè¦ç´ ãŒnullã®å ´åˆã«ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param isIgnore –³‹‚·‚éê‡true
+     * @param isIgnore ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreNullElement(boolean isIgnore);
     
     /**
-     * {@link Queue}‚©‚çæ“¾‚µ‚½—v‘f‚ªnull‚Ìê‡‚É–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link Queue}ã‹ã‚‰å–å¾—ã—ãŸè¦ç´ ãŒnullã®å ´åˆã«ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreNullElement();
     
     /**
-     * ƒLƒ…[‚©‚çˆø‚«”²‚¢‚½Œã‚Ìˆ—ŠÔ‚Ì•½‹Ï‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å¼•ãæŠœã„ãŸå¾Œã®å‡¦ç†æ™‚é–“ã®å¹³å‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹Ïˆ—ŠÔ[ms]
+     * @return å¹³å‡å‡¦ç†æ™‚é–“[ms]
      */
     public long getAverageHandleProcessTime();
     
     /**
-     * ÄŠJ‚·‚éB<p>
+     * å†é–‹ã™ã‚‹ã€‚<p>
      */
     public void resume();
     
     /**
-     * ’†’f‚·‚éB<p>
+     * ä¸­æ–­ã™ã‚‹ã€‚<p>
      */
     public void suspend();
     
     /**
-     * ’†’f‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¸­æ–­ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ’†’f‚µ‚Ä‚¢‚éê‡Atrue
+     * @return ä¸­æ–­ã—ã¦ã„ã‚‹å ´åˆã€true
      */
     public boolean isSuspend();
     
     /**
-     * ƒLƒ…[‚É“Š“ü‚³‚ê‚½Œ”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã«æŠ•å…¥ã•ã‚ŒãŸä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒ…[“Š“üŒ”
+     * @return ã‚­ãƒ¥ãƒ¼æŠ•å…¥ä»¶æ•°
      */
     public long getCount();
     
     /**
-     * Œ»İ‚ÌƒLƒ…[‚Ì[‚³‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚­ãƒ¥ãƒ¼ã®æ·±ã•ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‚ÌƒLƒ…[‚Ì[‚³
+     * @return ç¾åœ¨ã®ã‚­ãƒ¥ãƒ¼ã®æ·±ã•
      */
     public long getDepth();
 }

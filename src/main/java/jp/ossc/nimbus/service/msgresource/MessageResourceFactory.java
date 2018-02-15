@@ -35,8 +35,8 @@ import jp.ossc.nimbus.service.cui.*;
 /**
  * @author y-tokuda
  *
- * Ç±ÇÃê∂ê¨Ç≥ÇÍÇΩÉRÉÅÉìÉgÇÃë}ì¸Ç≥ÇÍÇÈÉeÉìÉvÉåÅ[ÉgÇïœçXÇ∑ÇÈÇΩÇﬂ
- * ÉEÉBÉìÉhÉE > ê›íË > Java > ÉRÅ[Éhê∂ê¨ > ÉRÅ[ÉhÇ∆ÉRÉÅÉìÉg
+ * „Åì„ÅÆÁîüÊàê„Åï„Çå„Åü„Ç≥„É°„É≥„Éà„ÅÆÊåøÂÖ•„Åï„Çå„Çã„ÉÜ„É≥„Éó„É¨„Éº„Éà„ÇíÂ§âÊõ¥„Åô„Çã„Åü„ÇÅ
+ * „Ç¶„Ç£„É≥„Éâ„Ç¶ > Ë®≠ÂÆö > Java > „Ç≥„Éº„ÉâÁîüÊàê > „Ç≥„Éº„Éâ„Å®„Ç≥„É°„É≥„Éà
  */
 public interface MessageResourceFactory extends InputChecker,DisplayConstructer{
 	MessageResource findInstance(String code);

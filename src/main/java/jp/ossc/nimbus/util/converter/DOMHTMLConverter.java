@@ -42,8 +42,8 @@ import org.xml.sax.*;
 import org.cyberneko.html.parsers.DOMParser;
 
 /**
- * DOMÌHTMLƒRƒ“ƒo[ƒ^B<p>
- * NekoHTML‚ğg—p‚·‚éB<br>
+ * DOMâ‡”HTMLã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
+ * NekoHTMLã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -52,12 +52,12 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     private static final long serialVersionUID = -6085930913740530834L;
     
     /**
-     * DOM¨HTML‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * DOMâ†’HTMLã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DOM_TO_HTML = OBJECT_TO_STREAM;
     
     /**
-     * HTML¨DOM‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * HTMLâ†’DOMã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int HTML_TO_DOM = STREAM_TO_OBJECT;
     
@@ -140,47 +140,47 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
      }
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * DOM¨HTML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToStream;
     
     /**
-     * HTML¨DOM•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * HTMLâ†’DOMå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToObject;
     
     /**
-     * DOM¨HTML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒXB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã€‚<p>
      */
     protected String xslFilePath;
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA“¯Šú‚µ‚È‚¢B<br>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åŒæœŸã—ãªã„ã€‚<br>
      */
     protected boolean isSynchronizedDomParse;
     
     /**
-     * DOM¨HTML•ÏŠ·‚É—LŒø‚Èo—ÍƒvƒƒpƒeƒBB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«æœ‰åŠ¹ãªå‡ºåŠ›ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     protected Properties transformerOutputProperties;
     
     /**
-     * DOM¨HTML•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DOMHTMLConverter(){
         this(DOM_TO_HTML);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #DOM_TO_HTML
      * @see #HTML_TO_DOM
      */
@@ -189,9 +189,9 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #DOM_TO_HTML
      * @see #HTML_TO_DOM
@@ -201,9 +201,9 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -211,36 +211,36 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * DOM¨HTML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         characterEncodingToStream = encoding;
     }
     
     /**
-     * DOM¨HTML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToStream(){
         return characterEncodingToStream;
     }
     
     /**
-     * HTML¨DOM•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * HTMLâ†’DOMå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         characterEncodingToObject = encoding;
     }
     
     /**
-     * HTML¨DOM•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * HTMLâ†’DOMå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToObject(){
         return characterEncodingToObject;
@@ -275,47 +275,47 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * DOM¨HTML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path XSLƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setXSLFilePath(String path){
         xslFilePath = path;
     }
     
     /**
-     * DOM¨HTML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return XSLƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getXSLFilePath(){
         return xslFilePath;
     }
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA“¯Šú‚µ‚È‚¢B<br>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åŒæœŸã—ãªã„ã€‚<br>
      * 
-     * @param isSync “¯Šú‚·‚éê‡‚ÍAtrue
+     * @param isSync åŒæœŸã™ã‚‹å ´åˆã¯ã€true
      */
     public void setSynchronizedDomParse(boolean isSync){
         isSynchronizedDomParse = isSync;
     }
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A“¯Šú‚·‚é
+     * @return trueã®å ´åˆã€åŒæœŸã™ã‚‹
      */
     public boolean isSynchronizedDomParse(){
         return isSynchronizedDomParse;
     }
     
     /**
-     * DOM¨HTML•ÏŠ·‚É—LŒø‚Èo—ÍƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«æœ‰åŠ¹ãªå‡ºåŠ›ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      * @see javax.xml.transform.OutputKeys
      */
     public void setTransformerOutputProperty(String name, String value){
@@ -326,10 +326,10 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * DOM¨HTML•ÏŠ·‚É—LŒø‚Èo—ÍƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * DOMâ†’HTMLå¤‰æ›æ™‚ã«æœ‰åŠ¹ãªå‡ºåŠ›ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public String getTransformerOutputProperty(String name){
         if(transformerOutputProperties == null){
@@ -339,11 +339,11 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -370,11 +370,11 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * {@link Document}‚©‚çHTMLƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚éB<p>
+     * {@link Document}ã‹ã‚‰HTMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
      * @param obj DOM
-     * @return HTMLƒXƒgƒŠ[ƒ€
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @return HTMLã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public InputStream convertToStream(Object obj) throws ConvertException{
         if(obj instanceof Document){
@@ -387,11 +387,11 @@ public class DOMHTMLConverter implements StreamStringConverter, Serializable, Cl
     }
     
     /**
-     * HTMLƒXƒgƒŠ[ƒ€‚©‚ç{@link Document}‚É•ÏŠ·‚·‚éB<p>
+     * HTMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰{@link Document}ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is HTMLƒXƒgƒŠ[ƒ€
+     * @param is HTMLã‚¹ãƒˆãƒªãƒ¼ãƒ 
      * @return DOM
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         return toDOM(is);

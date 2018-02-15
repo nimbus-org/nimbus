@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * �L���b�V���폜���X�i�B<p>
- * �L���b�V���I�u�W�F�N�g���폜���ꂽ�������m���郊�X�i�B<br>
- * ���̃��X�i��o�^����{@link CachedReference}��{@link CachedReference#remove()}��A{@link CachedReference#remove(Object)}�ŁA�L���b�V���I�u�W�F�N�g���폜�����ƁA{@link #removed(CachedReference)}���Ăяo�����B<br>
+ * キャッシュ削除リスナ。<p>
+ * キャッシュオブジェクトが削除された事を検知するリスナ。<br>
+ * このリスナを登録した{@link CachedReference}の{@link CachedReference#remove()}や、{@link CachedReference#remove(Object)}で、キャッシュオブジェクトが削除されると、{@link #removed(CachedReference)}が呼び出される。<br>
  *
  * @author M.Takata
  */
 public interface CacheRemoveListener{
     
     /**
-     * {@link CachedReference}�̃L���b�V���I�u�W�F�N�g���폜���ꂽ�ꍇ�ɌĂяo�����B<p>
-     * {@link CachedReference#remove(Object)}���Ăяo���ꂽ�ꍇ�ɁA{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}�œo�^���ꂽCacheRemoveListener�́A���̃��\�b�h���Ăяo�����B<br>
+     * {@link CachedReference}のキャッシュオブジェクトが削除された場合に呼び出される。<p>
+     * {@link CachedReference#remove(Object)}が呼び出された場合に、{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}で登録されたCacheRemoveListenerの、このメソッドが呼び出される。<br>
      *
-     * @param ref �폜���ꂽ�L���b�V���I�u�W�F�N�g�̃L���b�V���Q��
+     * @param ref 削除されたキャッシュオブジェクトのキャッシュ参照
      */
     public void removed(CachedReference ref);
 }

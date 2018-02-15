@@ -34,152 +34,152 @@ package jp.ossc.nimbus.service.scp;
 import java.io.File;
 
 /**
- * SCP�N���C�A���g�B<p>
+ * SCPクライアント。<p>
  *
  * @author M.Takata
  */
 public interface SCPClient{
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param password �p�X���[�h
-     * @exception SCPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param password パスワード
+     * @exception SCPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, String password) throws SCPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param port �ڑ���T�[�o�̃|�[�g�ԍ�
-     * @param password �p�X���[�h
-     * @exception SCPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param port 接続先サーバのポート番号
+     * @param password パスワード
+     * @exception SCPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, int port, String password) throws SCPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param pemFile �閧���t�@�C��
-     * @param passphrase �p�X�t���[�Y
-     * @exception SCPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param pemFile 秘密鍵ファイル
+     * @param passphrase パスフレーズ
+     * @exception SCPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, File pemFile, String passphrase) throws SCPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param port �ڑ���T�[�o�̃|�[�g�ԍ�
-     * @param pemFile �閧���t�@�C��
-     * @param passphrase �p�X�t���[�Y
-     * @exception SCPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param port 接続先サーバのポート番号
+     * @param pemFile 秘密鍵ファイル
+     * @param passphrase パスフレーズ
+     * @exception SCPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, int port, File pemFile, String passphrase) throws SCPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����擾����B<p>
+     * サーバ側の指定されたファイルを取得する。<p>
      * 
-     * @param remote �擾����t�@�C���̃p�X
-     * @return �擾�����t�@�C��
-     * @exception SCPException �擾�Ɏ��s�����ꍇ
+     * @param remote 取得するファイルのパス
+     * @return 取得したファイル
+     * @exception SCPException 取得に失敗した場合
      */
     public File get(String remote) throws SCPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����A�w�肳�ꂽ���O�̃t�@�C���Ƃ��Ď擾����B<p>
+     * サーバ側の指定されたファイルを、指定された名前のファイルとして取得する。<p>
      * 
-     * @param remote �擾����t�@�C���̃p�X
-     * @param local �擾��̃t�@�C����
-     * @return �擾�����t�@�C��
-     * @exception SCPException �擾�Ɏ��s�����ꍇ
+     * @param remote 取得するファイルのパス
+     * @param local 取得後のファイル名
+     * @return 取得したファイル
+     * @exception SCPException 取得に失敗した場合
      */
     public File get(String remote, String local) throws SCPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�����̃t�@�C�����擾����B<p>
+     * サーバ側の指定された複数のファイルを取得する。<p>
      * 
-     * @param remote �擾����t�@�C���̃p�X
-     * @return �擾�����t�@�C��
-     * @exception SCPException �擾�Ɏ��s�����ꍇ
+     * @param remote 取得するファイルのパス
+     * @return 取得したファイル
+     * @exception SCPException 取得に失敗した場合
      */
     public File[] mget(String remote) throws SCPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�����̃t�@�C�����擾����B<p>
+     * サーバ側の指定された複数のファイルを取得する。<p>
      * 
-     * @param remote �擾����t�@�C���̃p�X
-     * @param localDir �擾��̃f�B���N�g����
-     * @return �擾�����t�@�C��
-     * @exception SCPException �擾�Ɏ��s�����ꍇ
+     * @param remote 取得するファイルのパス
+     * @param localDir 取得先のディレクトリ名
+     * @return 取得したファイル
+     * @exception SCPException 取得に失敗した場合
      */
     public File[] mget(String remote, String localDir) throws SCPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C����]������B<p>
+     * サーバ側に指定されたファイルを転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @exception SCPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @exception SCPException 転送に失敗した場合
      */
     public void put(String local) throws SCPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C�����A�w�肳�ꂽ�t�@�C�����œ]������B<p>
+     * サーバ側に指定されたファイルを、指定されたファイル名で転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @param remote �]����ł̃t�@�C����
-     * @exception SCPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @param remote 転送先でのファイル名
+     * @exception SCPException 転送に失敗した場合
      */
     public void put(String local, String remote) throws SCPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C�����A�w�肳�ꂽ�t�@�C�����œ]������B<p>
+     * サーバ側に指定されたファイルを、指定されたファイル名で転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @param remote �]����ł̃t�@�C����
-     * @param mode �]����ł̃t�@�C���̌����B�����S��
-     * @exception SCPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @param remote 転送先でのファイル名
+     * @param mode 転送先でのファイルの権限。数字４桁
+     * @exception SCPException 転送に失敗した場合
      */
     public void put(String local, String remote, String mode) throws SCPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�S�Ẵt�@�C����]������B<p>
+     * サーバ側に指定された全てのファイルを転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @exception SCPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @exception SCPException 転送に失敗した場合
      */
     public void mput(String local) throws SCPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C�����A�w�肳�ꂽ�t�@�C�����œ]������B<p>
+     * サーバ側に指定されたファイルを、指定されたファイル名で転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @param remoteDir �]����̃f�B���N�g����
-     * @exception SCPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @param remoteDir 転送先のディレクトリ名
+     * @exception SCPException 転送に失敗した場合
      */
     public void mput(String local, String remoteDir) throws SCPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C�����A�w�肳�ꂽ�t�@�C�����œ]������B<p>
+     * サーバ側に指定されたファイルを、指定されたファイル名で転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @param remoteDir �]����̃f�B���N�g����
-     * @param mode �]����ł̃t�@�C���̌����B�����S��
-     * @exception SCPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @param remoteDir 転送先のディレクトリ名
+     * @param mode 転送先でのファイルの権限。数字４桁
+     * @exception SCPException 転送に失敗した場合
      */
     public void mput(String local, String remoteDir, String mode) throws SCPException;
     
     /**
-     * �T�[�o�Ƃ̐ڑ���ؒf����B<p>
+     * サーバとの接続を切断する。<p>
      * 
-     * @exception SCPException �ؒf�Ɏ��s�����ꍇ
+     * @exception SCPException 切断に失敗した場合
      */
     public void close() throws SCPException;
 }

@@ -35,32 +35,32 @@ import jp.ossc.nimbus.lang.*;
 import java.util.*;
 import java.io.*;
 /**
- *  DataInputStepƒNƒ‰ƒX
- *	1ŒÂ‚ÌƒRƒ}ƒ“ƒh“ü—ÍStep‚É‘Î‰‚·‚éB
+ *  DataInputStepã‚¯ãƒ©ã‚¹
+ *	1å€‹ã®ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›Stepã«å¯¾å¿œã™ã‚‹ã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/29| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/29ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class DataInputStep 
 	implements CuiTagDefine{
-	//ƒƒ“ƒo•Ï”
-	/** –¼Ì */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** åç§° */
 	private String mMyName;
-	/** ƒƒjƒ…[•\¦‚¨‚æ‚Ñƒ`ƒFƒbƒNƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** ãƒ¡ãƒ‹ãƒ¥ãƒ¼è¡¨ç¤ºãŠã‚ˆã³ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private ArrayList mDisplayList = null;
-	/** ƒf[ƒ^ƒ`ƒFƒbƒNƒIƒuƒWƒFƒNƒg */
+	/** ãƒ‡ãƒ¼ã‚¿ãƒã‚§ãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
 	private InputChecker mChecker = null;
-	/** ‘JˆÚæƒnƒbƒVƒ… */
+	/** é·ç§»å…ˆãƒãƒƒã‚·ãƒ¥ */
 	private HashMap mWhereToGoHash = null;
-	/** ‚±‚ÌƒXƒeƒbƒv‚Å‘I‘ğ‚³‚ê‚½’l */
+	/** ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã§é¸æŠã•ã‚ŒãŸå€¤ */
 	private String mSelectedValue = null;
-	/** Ÿ‚ÌƒXƒeƒbƒv */
+	/** æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ— */
 	private String mNextStepName = null;
-	/** I—¹•\¦ƒƒbƒZ[ƒW */
+	/** çµ‚äº†æ™‚è¡¨ç¤ºãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
 	private String mEndMessage = "";
 	/**
 	 * 
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public DataInputStep(String name){
 		mMyName = name;
@@ -69,102 +69,102 @@ public class DataInputStep
 		mEndMessage = "";
 	}
 	/**
-	 * Às
-	 * Ÿ‚ÉÀs‚·‚éStep‚Ì–¼Ì‚ğ•Ô‚·
+	 * å®Ÿè¡Œ
+	 * æ¬¡ã«å®Ÿè¡Œã™ã‚‹Stepã®åç§°ã‚’è¿”ã™
 	 */
 	public String invoke() {
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 		while(true){
-			//‘I‘ğ’l‚ğ‰Šú‰»
+			//é¸æŠå€¤ã‚’åˆæœŸåŒ–
 			mSelectedValue = null;
-			//ƒƒjƒ…[•\¦
+			//ãƒ¡ãƒ‹ãƒ¥ãƒ¼è¡¨ç¤º
 			for(ListIterator iterator = this.mDisplayList.listIterator();iterator.hasNext();){
 				DisplayConstructer ds = (DisplayConstructer)iterator.next() ;
 				System.out.println(ds.display());
 			}
-			//“ü—Íó•t
+			//å…¥åŠ›å—ä»˜
 			String answer = null;
 			try{
 				answer = input.readLine();
 			}
 			catch(IOException e){
-				//readLine’†‚ÉException‚ª”­¶‚µ‚½‚ç‚à‚¤‚¢‚¿‚Ç“ü—Í‘Ò‚¿‚É‚·‚éB
+				//readLineä¸­ã«ExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã‚‚ã†ã„ã¡ã©å…¥åŠ›å¾…ã¡ã«ã™ã‚‹ã€‚
 				continue;
 			}
-			//’†’f‚à‚µ‚­‚ÍÅ‰‚©‚ç‚â‚è’¼‚µ‚ğw¦‚·‚é“ü—Í‚¾‚Á‚½‚çA‚»‚Ì‚Ü‚Üreturn
+			//ä¸­æ–­ã‚‚ã—ãã¯æœ€åˆã‹ã‚‰ã‚„ã‚Šç›´ã—ã‚’æŒ‡ç¤ºã™ã‚‹å…¥åŠ›ã ã£ãŸã‚‰ã€ãã®ã¾ã¾return
 			if (answer.equals(REDO) || answer.equals(INTERRUPT)){
 				return answer;
 			}
-			//“ü—Í’lƒ`ƒFƒbƒN	
+			//å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯	
 			mSelectedValue = mChecker.check(answer);
 			if (mSelectedValue == null){
-				//–³Œø‚È“ü—ÍB‚à‚¤ˆê“x
+				//ç„¡åŠ¹ãªå…¥åŠ›ã€‚ã‚‚ã†ä¸€åº¦
 				continue;
 			}
 			String distination = (String)mWhereToGoHash.get(mSelectedValue);
 			if(distination != null){
-				//‘I‘ğ’l‚É‰‚¶‚½Step‚É‘JˆÚ
+				//é¸æŠå€¤ã«å¿œã˜ãŸStepã«é·ç§»
 				return distination;
 			}else{
-				//Ÿ‚ÌƒXƒeƒbƒv‚É‘JˆÚ
+				//æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã«é·ç§»
 				return mNextStepName;
 			}
 		}
 	}
 	/**
-	 * ƒoƒbƒ`—pinvokeƒƒ\ƒbƒh
+	 * ãƒãƒƒãƒç”¨invokeãƒ¡ã‚½ãƒƒãƒ‰
 	 * 
 	 */
 	public String invoke(String in){
 		while(true){
-			//—LŒø‚È“ü—Í’l‚©ƒ`ƒFƒbƒN
+			//æœ‰åŠ¹ãªå…¥åŠ›å€¤ã‹ãƒã‚§ãƒƒã‚¯
 			mSelectedValue = mChecker.check(in);
 			if (mSelectedValue == null){
-				//ƒoƒbƒ`‚Å–³Œø‚È“ü—Í’l‚Å‚ ‚ê‚ÎAƒ‰ƒ“ƒ^ƒCƒ€ƒGƒ‰[
+				//ãƒãƒƒãƒã§ç„¡åŠ¹ãªå…¥åŠ›å€¤ã§ã‚ã‚Œã°ã€ãƒ©ãƒ³ã‚¿ã‚¤ãƒ ã‚¨ãƒ©ãƒ¼
 				throw new ServiceException();
 			}
 			String distination = (String)mWhereToGoHash.get(mSelectedValue);
 			if(distination != null){
-				//‘I‘ğ’l‚É‰‚¶‚½Step‚É‘JˆÚ
+				//é¸æŠå€¤ã«å¿œã˜ãŸStepã«é·ç§»
 				return distination;
 			}else{
-				//Ÿ‚ÌƒXƒeƒbƒv‚É‘JˆÚ
+				//æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã«é·ç§»
 				return mNextStepName;
 			}
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒXƒeƒbƒv‚Å‘I‘ğ‚³‚ê‚½’l‚ğ•Ô‚·
+	 * ã“ã®ã‚¹ãƒ†ãƒƒãƒ—ã§é¸æŠã•ã‚ŒãŸå€¤ã‚’è¿”ã™
 	 *				
 	 */
 	public String getSelectedValue(){
 		return mSelectedValue;
 	}
 	/**
-	 * DisplayƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚·‚éB
+	 * Displayã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * @param display
 	 */
 	public void addDisplay(DisplayConstructer display){
 		mDisplayList.add(display);
 	}
 	/**
-	 * ŸStep‚ğİ’è‚·‚éB
-	 * “ü—Í’l‚ğkey‚ÉAmWhereToGoƒnƒbƒVƒ…‚©‚ç’l‚ğæ“¾‚Å‚«‚È‚©‚Á‚½
-	 * ‚Æ‚«A‚±‚Ì•Ï”‚Éw’è‚³‚ê‚½Step‚É‘JˆÚ‚·‚é‚±‚Æ‚É‚È‚éB
+	 * æ¬¡Stepã‚’è¨­å®šã™ã‚‹ã€‚
+	 * å…¥åŠ›å€¤ã‚’keyã«ã€mWhereToGoãƒãƒƒã‚·ãƒ¥ã‹ã‚‰å€¤ã‚’å–å¾—ã§ããªã‹ã£ãŸ
+	 * ã¨ãã€ã“ã®å¤‰æ•°ã«æŒ‡å®šã•ã‚ŒãŸStepã«é·ç§»ã™ã‚‹ã“ã¨ã«ãªã‚‹ã€‚
 	 */
 	public void setNextStepName(String name){
 		mNextStepName = name;
 	}
 	/**
-	 * ŸStep–¼‚ğ•Ô‚·B
+	 * æ¬¡Stepåã‚’è¿”ã™ã€‚
 	 * @return
 	 */
 	public String getNextStepName(){
 		return mNextStepName;
 	}
 	/**
-	 * ‘JˆÚæƒnƒbƒVƒ…‚ğİ’è‚·‚éB
+	 * é·ç§»å…ˆãƒãƒƒã‚·ãƒ¥ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * @param condition
 	 * @param gotoStepName
 	 */
@@ -172,35 +172,35 @@ public class DataInputStep
 		mWhereToGoHash.put(condition,gotoStepName);
 	}
 	/**
-	 * I—¹ƒƒbƒZ[ƒW‚ğİ’è‚·‚éB
+	 * çµ‚äº†æ™‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹ã€‚
 	 *	
 	 */
 	public void setEndMessage(String msg){
 		mEndMessage = msg;
 	}
 	/**
-	 * I—¹ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB
+	 * çµ‚äº†æ™‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚
 	 * @return
 	 */
 	public String getEndMessage(){
 		return mEndMessage;
 	}
 	/**
-	 * ©•ª‚Ì–¼‘O‚ğ•Ô‚·
+	 * è‡ªåˆ†ã®åå‰ã‚’è¿”ã™
 	 * @return
 	 */
 	public String getName(){
 		return mMyName;
 	}
 	/**
-	 * “ü—Íƒ`ƒFƒbƒNƒIƒuƒWƒFƒNƒg‚ÌƒQƒbƒ^[
+	 * å…¥åŠ›ãƒã‚§ãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚²ãƒƒã‚¿ãƒ¼
 	 */
 	public InputChecker getChecker() {
 		return mChecker;
 	}
 
 	/**
-	 * “ü—Íƒ`ƒFƒbƒNƒIƒuƒWƒFƒNƒg‚ÌƒZƒbƒ^[
+	 * å…¥åŠ›ãƒã‚§ãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setChecker(InputChecker checker) {
 		mChecker = checker;

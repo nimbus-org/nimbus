@@ -34,31 +34,31 @@ package jp.ossc.nimbus.service.graph;
 import org.jfree.data.general.Dataset;
 
 /**
- * ƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠB<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface DatasetFactory {
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public String getName();
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒf[ƒ^ƒZƒbƒg–¼
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public void setName(String name);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param dsConditions ƒf[ƒ^ƒZƒbƒgğŒ”z—ñ
-     * @return ƒf[ƒ^ƒZƒbƒg
+     * @param dsConditions ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      * @exception DatasetCreateException
      */
     public Dataset createDataset(DatasetCondition[] dsConditions)

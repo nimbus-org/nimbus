@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * DELETEƒƒ\ƒbƒhRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * DELETEãƒ¡ã‚½ãƒƒãƒ‰RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class DeleteRestResponse extends BodyRestResponse{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DeleteRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * HTTPƒXƒe[ƒ^ƒX‚Ì‰Šú’l‚ÍAHttpServletResponse.SC_NO_CONTENTB<br>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®åˆæœŸå€¤ã¯ã€HttpServletResponse.SC_NO_CONTENTã€‚<br>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public DeleteRestResponse(HttpServletResponse response){
         super(response);
@@ -58,16 +58,16 @@ public class DeleteRestResponse extends BodyRestResponse{
     }
     
     /**
-     * íœ‚É¬Œ÷‚µ‚½|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_NO_CONTENT‚Éİ’è‚·‚éB<br>
+     * å‰Šé™¤ã«æˆåŠŸã—ãŸæ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_NO_CONTENTã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfDeleted(){
         setResult(HttpServletResponse.SC_NO_CONTENT);
     }
     
     /**
-     * íœ‘ÎÛ‚ª‘¶İ‚µ‚È‚¢|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_NOT_FOUND‚Éİ’è‚·‚éB<br>
+     * å‰Šé™¤å¯¾è±¡ãŒå­˜åœ¨ã—ãªã„æ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_NOT_FOUNDã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfNotFound(){
         setResult(HttpServletResponse.SC_NOT_FOUND);

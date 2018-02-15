@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^B<p>
+ * ã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -49,15 +49,15 @@ public class CustomConverter
     protected List converters;
 
     /**
-     * ‹ó‚ÌƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CustomConverter(){
     }
 
     /**
-     * ƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param convs ƒRƒ“ƒo[ƒ^”z—ñ
+     * @param convs ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
      */
     public CustomConverter(Converter[] convs){
         if(convs != null && convs.length != 0){
@@ -69,10 +69,10 @@ public class CustomConverter
     }
 
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚Ì‚¤‚¿‚ÅA{@link ReversibleConverter}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É•ÏŠ·í•Ê‚ğİ’è‚·‚éB<br>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã†ã¡ã§ã€{@link ReversibleConverter}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      */
     public void setConvertType(int type){
         if(converters != null){
@@ -85,9 +85,9 @@ public class CustomConverter
     }
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚©‚çƒXƒgƒŠ[ƒ€‚Ö•ÏŠ·‚·‚éÛ‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¸å¤‰æ›ã™ã‚‹éš›ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding ƒIƒuƒWƒFƒNƒg‚©‚çƒXƒgƒŠ[ƒ€‚Ö•ÏŠ·‚·‚éÛ‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¸å¤‰æ›ã™ã‚‹éš›ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         if(converters != null){
@@ -110,9 +110,9 @@ public class CustomConverter
     }
 
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éÛ‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹éš›ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding ƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éÛ‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹éš›ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         if(converters != null){
@@ -183,10 +183,10 @@ public class CustomConverter
     }
 
    /**
-     * ƒRƒ“ƒo[ƒ^‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param converter ƒRƒ“ƒo[ƒ^
-     * @return ©•ª©g‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param converter ã‚³ãƒ³ãƒãƒ¼ã‚¿
+     * @return è‡ªåˆ†è‡ªèº«ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     public Converter add(Converter converter){
         if(converters == null){
@@ -197,9 +197,9 @@ public class CustomConverter
     }
 
     /**
-     * ƒRƒ“ƒo[ƒ^‚ğíœ‚·‚éB<p>
+     * ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param converter ƒRƒ“ƒo[ƒ^
+     * @param converter ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public void remove(Converter converter){
         if(converters == null){
@@ -209,7 +209,7 @@ public class CustomConverter
     }
 
     /**
-     * ƒRƒ“ƒo[ƒ^‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         if(converters == null){
@@ -219,12 +219,12 @@ public class CustomConverter
     }
 
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚<br>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         Object tmp = obj;
@@ -237,12 +237,12 @@ public class CustomConverter
     }
 
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚<br>
      *
-     * @param str •ÏŠ·‘ÎÛ‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @return •ÏŠ·Œã‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @return å¤‰æ›å¾Œã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String convert(String str) throws ConvertException{
         Object tmp = str;
@@ -255,13 +255,13 @@ public class CustomConverter
     }
 
     /**
-     * w’è‚³‚ê‚½ƒLƒƒƒ‰ƒNƒ^‚ğ•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B<br>
-     * {@link CharacterConverter}ˆÈŠO‚ÌConverter‚Í–³‹‚³‚ê‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚<br>
+     * {@link CharacterConverter}ä»¥å¤–ã®Converterã¯ç„¡è¦–ã•ã‚Œã‚‹ã€‚
      *
-     * @param c •ÏŠ·‘ÎÛ‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @return •ÏŠ·Œã‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param c å¤‰æ›å¯¾è±¡ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @return å¤‰æ›å¾Œã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public char convert(char c) throws ConvertException{
         char tmp = c;
@@ -276,12 +276,12 @@ public class CustomConverter
     }
 
     /**
-     * w’è‚³‚ê‚½ƒLƒƒƒ‰ƒNƒ^‚ğ•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚<br>
      *
-     * @param c •ÏŠ·‘ÎÛ‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @return •ÏŠ·Œã‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param c å¤‰æ›å¯¾è±¡ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @return å¤‰æ›å¾Œã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Character convert(Character c) throws ConvertException{
         Object tmp = c;
@@ -294,13 +294,13 @@ public class CustomConverter
     }
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚©‚çƒXƒgƒŠ[ƒ€‚Ö•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B
-     * ’A‚µAÅŒã‚ÌƒRƒ“ƒo[ƒ^‚ÍA{@link StreamConverter}‚Æ‚İ‚È‚µ‚ÄA{@link StreamConverter#convertToStream(Object)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¸å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚
+     * ä½†ã—ã€æœ€å¾Œã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã¯ã€{@link StreamConverter}ã¨ã¿ãªã—ã¦ã€{@link StreamConverter#convertToStream(Object)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param obj ƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œ‹‰Ê‚ğ“Ç‚İæ‚é“ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›çµæœã‚’èª­ã¿å–ã‚‹å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public InputStream convertToStream(Object obj) throws ConvertException{
         Object tmp = obj;
@@ -316,13 +316,13 @@ public class CustomConverter
     }
 
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B
-     * ’A‚µAÅ‰‚ÌƒRƒ“ƒo[ƒ^‚ÍA{@link StreamConverter}‚Æ‚İ‚È‚µ‚ÄA{@link StreamConverter#convertToObject(InputStream)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚
+     * ä½†ã—ã€æœ€åˆã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã¯ã€{@link StreamConverter}ã¨ã¿ãªã—ã¦ã€{@link StreamConverter#convertToObject(InputStream)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @return ƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         Object tmp = is;
@@ -338,14 +338,14 @@ public class CustomConverter
     }
 
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒRƒ“ƒo[ƒ^‚É‡ŸA•ÏŠ·‚ğˆË—Š‚µ‚Ä•ÏŠ·Œ‹‰Ê‚ğ•Ô‚·B
-     * ’A‚µAÅ‰‚ÌƒRƒ“ƒo[ƒ^‚ÍA{@link StreamConverter}A‚Ü‚½‚Í{@link BindingStreamConverter}‚Æ‚İ‚È‚µ‚ÄA{@link StreamConverter#convertToObject(InputStream)}‚Ü‚½‚Í{@link BindingStreamConverter#convertToObject(InputStream, Object)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã«é †æ¬¡ã€å¤‰æ›ã‚’ä¾é ¼ã—ã¦å¤‰æ›çµæœã‚’è¿”ã™ã€‚
+     * ä½†ã—ã€æœ€åˆã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã¯ã€{@link StreamConverter}ã€ã¾ãŸã¯{@link BindingStreamConverter}ã¨ã¿ãªã—ã¦ã€{@link StreamConverter#convertToObject(InputStream)}ã¾ãŸã¯{@link BindingStreamConverter#convertToObject(InputStream, Object)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @param returnType •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ƒIƒuƒWƒFƒNƒg
-     * @throws ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param returnType å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @throws ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is, Object returnType) throws ConvertException{
         Object tmp = is;

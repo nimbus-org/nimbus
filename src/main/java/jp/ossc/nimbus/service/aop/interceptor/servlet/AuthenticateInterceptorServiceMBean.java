@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AuthenticateInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link AuthenticateInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see AuthenticateInterceptorService
@@ -45,188 +45,188 @@ public interface AuthenticateInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * ”FØî•ñ‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‹y‚ÑƒZƒbƒVƒ‡ƒ“‘®«‚Éİ’è‚·‚é‚Ég—p‚·‚é‘®«–¼‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * èªè¨¼æƒ…å ±ã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚åŠã³ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã«è¨­å®šã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_AUTH_INFO_ATTRIBUTE_NAME = AuthenticateInterceptorService.class.getName().replaceAll("\\.", "_") + "_AUTH_INFO";
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒŠƒNƒGƒXƒg‘®«‚©‚ç‚Ì‚İæ“¾‚·‚éB<br>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰ã®ã¿å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name ContextƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‚Ég—p‚·‚é‘®«–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’l‚ÍA{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}B<br>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯ã€{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}ã€‚<br>
      *
-     * @param name ‘®«–¼
+     * @param name å±æ€§å
      * @see StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME
      */
     public void setRequestObjectAttributeName(String name);
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‚Ég—p‚·‚é‘®«–¼‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼
+     * @return å±æ€§å
      */
     public String getRequestObjectAttributeName();
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğƒRƒ“ƒeƒLƒXƒg‚©‚çæ“¾‚·‚é‚Ég—p‚·‚éƒL[–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’l‚ÍA{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_CONTEXT_KEY}B<br>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯ã€{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_CONTEXT_KEY}ã€‚<br>
      *
-     * @param key ƒL[–¼
+     * @param key ã‚­ãƒ¼å
      * @see StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_CONTEXT_KEY
      */
     public void setRequestObjectContextKey(String key);
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğƒRƒ“ƒeƒLƒXƒg‚©‚çæ“¾‚·‚é‚Ég—p‚·‚éƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[–¼
+     * @return ã‚­ãƒ¼å
      */
     public String getRequestObjectContextKey();
     
     /**
-     * ”FØî•ñ‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‹y‚ÑƒZƒbƒVƒ‡ƒ“‘®«‚Éİ’è‚·‚é‚Ég—p‚·‚é‘®«–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’l‚ÍA{@link #DEFAULT_AUTH_INFO_ATTRIBUTE_NAME}B<br>
+     * èªè¨¼æƒ…å ±ã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚åŠã³ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã«è¨­å®šã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯ã€{@link #DEFAULT_AUTH_INFO_ATTRIBUTE_NAME}ã€‚<br>
      *
-     * @param name ‘®«–¼
+     * @param name å±æ€§å
      * @see #DEFAULT_AUTH_INFO_ATTRIBUTE_NAME
      */
     public void setAuthenticatedInfoAttributeName(String name);
     
     /**
-     * ”FØî•ñ‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‹y‚ÑƒZƒbƒVƒ‡ƒ“‘®«‚Éİ’è‚·‚é‚Ég—p‚·‚é‘®«–¼‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚åŠã³ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã«è¨­å®šã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼
+     * @return å±æ€§å
      */
     public String getAuthenticatedInfoAttributeName();
     
     /**
-     * ”FØî•ñ‚ğƒRƒ“ƒeƒLƒXƒg‚©‚çæ“¾‚·‚é‚Ég—p‚·‚éƒL[–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’l‚ÍA{@link #DEFAULT_AUTH_INFO_ATTRIBUTE_NAME}B<br>
+     * èªè¨¼æƒ…å ±ã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯ã€{@link #DEFAULT_AUTH_INFO_ATTRIBUTE_NAME}ã€‚<br>
      *
-     * @param key ƒL[–¼
+     * @param key ã‚­ãƒ¼å
      * @see #DEFAULT_AUTH_INFO_ATTRIBUTE_NAME
      */
     public void setAuthenticatedInfoContextKey(String key);
     
     /**
-     * ”FØî•ñ‚ğƒRƒ“ƒeƒLƒXƒg‚©‚çæ“¾‚·‚é‚Ég—p‚·‚éƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[–¼
+     * @return ã‚­ãƒ¼å
      */
     public String getAuthenticatedInfoContextKey();
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒg‚Æ”FØî•ñ‚ğ‚Ç‚¤”äŠr‚·‚é‚©‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨èªè¨¼æƒ…å ±ã‚’ã©ã†æ¯”è¼ƒã™ã‚‹ã‹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ”äŠr‘ÎÛ‚Æ‚È‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ”FØî•ñ‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒOB“ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB=”FØî•ñ‚ÌƒvƒƒpƒeƒB
+     * @param mapping æ¯”è¼ƒå¯¾è±¡ã¨ãªã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨èªè¨¼æƒ…å ±ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£=èªè¨¼æƒ…å ±ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setAuthenticatedInfoMapping(Map mapping);
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒg‚Æ”FØî•ñ‚ğ‚Ç‚¤”äŠr‚·‚é‚©‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨èªè¨¼æƒ…å ±ã‚’ã©ã†æ¯”è¼ƒã™ã‚‹ã‹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”äŠr‘ÎÛ‚Æ‚È‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ”FØî•ñ‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒO
+     * @return æ¯”è¼ƒå¯¾è±¡ã¨ãªã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨èªè¨¼æƒ…å ±ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getAuthenticatedInfoMapping();
     
     /**
-     * ”FØî•ñ‚ğ¶¬‚·‚éƒƒOƒCƒ“‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
-     * ƒƒOƒCƒ“‚ÌƒŠƒNƒGƒXƒgˆ—‚ğs‚¤ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Å”FØî•ñ‚ğ¶¬‚µA”FØƒŠƒNƒGƒXƒg‘®«(‘®«–¼‚Í{@link #getAuthenticatedInfoAttributeName()})‚Éİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * èªè¨¼æƒ…å ±ã‚’ç”Ÿæˆã™ã‚‹ãƒ­ã‚°ã‚¤ãƒ³ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§èªè¨¼æƒ…å ±ã‚’ç”Ÿæˆã—ã€èªè¨¼ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§(å±æ€§åã¯{@link #getAuthenticatedInfoAttributeName()})ã«è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param path ƒƒOƒCƒ“‚ÌƒpƒX
+     * @param path ãƒ­ã‚°ã‚¤ãƒ³ã®ãƒ‘ã‚¹
      */
     public void setLoginPath(String path);
     
     /**
-     * ”FØî•ñ‚ğ¶¬‚·‚éƒƒOƒCƒ“‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ç”Ÿæˆã™ã‚‹ãƒ­ã‚°ã‚¤ãƒ³ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒCƒ“‚ÌƒpƒX
+     * @return ãƒ­ã‚°ã‚¤ãƒ³ã®ãƒ‘ã‚¹
      */
     public String getLoginPath();
     
     /**
-     * ”FØî•ñ‚ğíœ‚·‚éƒƒOƒAƒEƒg‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path ƒƒOƒAƒEƒg‚ÌƒpƒX
+     * @param path ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒ‘ã‚¹
      */
     public void setLogoutPath(String path);
     
     /**
-     * ”FØî•ñ‚ğíœ‚·‚éƒƒOƒAƒEƒg‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒAƒEƒg‚ÌƒpƒX
+     * @return ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒ‘ã‚¹
      */
     public String getLogoutPath();
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚é{@link AuthenticateStore}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹{@link AuthenticateStore}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name AuthenticateStoreƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name AuthenticateStoreã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setAuthenticateStoreServiceName(ServiceName name);
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚é{@link AuthenticateStore}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹{@link AuthenticateStore}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return AuthenticateStoreƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return AuthenticateStoreã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getAuthenticateStoreServiceName();
     
     /**
-     * ƒƒOƒCƒ“‚ÉA{@link AuthenticateStore#create(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğƒXƒgƒA‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å”FØî•ñ‚ğƒXƒgƒA‚·‚éB<br>
+     * ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«ã€{@link AuthenticateStore#create(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹ã€‚<br>
      * 
-     * @param isCreate ”FØî•ñ‚ğƒXƒgƒA‚·‚éê‡true
+     * @param isCreate èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹å ´åˆtrue
      */
     public void setStoreCreate(boolean isCreate);
     
     /**
-     * ƒƒOƒCƒ“‚ÉA{@link AuthenticateStore#create(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğƒXƒgƒA‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«ã€{@link AuthenticateStore#create(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A”FØî•ñ‚ğƒXƒgƒA‚·‚é
+     * @return trueã®å ´åˆã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹
      */
     public boolean isStoreCreate();
     
     /**
-     * ƒƒOƒAƒEƒg‚ÉA{@link AuthenticateStore#destroy(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğƒXƒgƒA‚©‚çíœ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å”FØî•ñ‚ğƒXƒgƒA‚©‚çíœ‚·‚éB<br>
+     * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæ™‚ã«ã€{@link AuthenticateStore#destroy(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<br>
      * 
-     * @param isDestroy ”FØî•ñ‚ğƒXƒgƒA‚©‚çíœ‚·‚éê‡true
+     * @param isDestroy èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã‹ã‚‰å‰Šé™¤ã™ã‚‹å ´åˆtrue
      */
     public void setStoreDestroy(boolean isDestroy);
     
     /**
-     * ƒƒOƒAƒEƒg‚ÉA{@link AuthenticateStore#destroy(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğƒXƒgƒA‚©‚çíœ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆæ™‚ã«ã€{@link AuthenticateStore#destroy(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A”FØî•ñ‚ğƒXƒgƒA‚©‚çíœ‚·‚é
+     * @return trueã®å ´åˆã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã‹ã‚‰å‰Šé™¤ã™ã‚‹
      */
     public boolean isStoreDestroy();
     
     /**
-     * ƒƒOƒCƒ“¬Œ÷‚ÉAƒZƒbƒVƒ‡ƒ“‚ª‚·‚Å‚É‘¶İ‚·‚éê‡‚É‚»‚ÌƒZƒbƒVƒ‡ƒ“–³Œø‰»‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³Œø‰»‚µ‚È‚¢B<br>
+     * ãƒ­ã‚°ã‚¤ãƒ³æˆåŠŸæ™‚ã«ã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ãŒã™ã§ã«å­˜åœ¨ã™ã‚‹å ´åˆã«ãã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ç„¡åŠ¹åŒ–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡åŠ¹åŒ–ã—ãªã„ã€‚<br>
      * 
-     * @param isInvalidate ƒZƒbƒVƒ‡ƒ“‚ğ–³Œø‰»‚·‚éê‡true
+     * @param isInvalidate ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹å ´åˆtrue
      */
     public void setSessionInvalidate(boolean isInvalidate);
     
     /**
-     * ƒƒOƒCƒ“¬Œ÷‚ÉAƒZƒbƒVƒ‡ƒ“‚ª‚·‚Å‚É‘¶İ‚·‚éê‡‚É‚»‚ÌƒZƒbƒVƒ‡ƒ“–³Œø‰»‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³æˆåŠŸæ™‚ã«ã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ãŒã™ã§ã«å­˜åœ¨ã™ã‚‹å ´åˆã«ãã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ç„¡åŠ¹åŒ–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AƒZƒbƒVƒ‡ƒ“‚ğ–³Œø‰»‚·‚é
+     * @return trueã®å ´åˆã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹
      */
     public boolean isSessionInvalidate();
 }

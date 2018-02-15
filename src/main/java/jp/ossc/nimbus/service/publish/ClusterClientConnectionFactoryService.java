@@ -47,7 +47,7 @@ import jp.ossc.nimbus.service.keepalive.ClusterService;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
 
 /**
- * ƒNƒ‰ƒXƒ^ƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“¶¬ƒT[ƒrƒXB<p>
+ * ã‚¯ãƒ©ã‚¹ã‚¿ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

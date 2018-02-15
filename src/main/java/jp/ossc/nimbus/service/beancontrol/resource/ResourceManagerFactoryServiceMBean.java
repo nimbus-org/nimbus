@@ -29,26 +29,26 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol.resource;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 //
 /**
- * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ[ƒtƒ@ƒNƒgƒŠ[ŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒX 
+ * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/29 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/29 -ã€€H.Nakano
  */
 public interface ResourceManagerFactoryServiceMBean 
 	extends ServiceBaseMBean {
 	/**
-	 * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ‚ÌÀ‘•ƒNƒ‰ƒX–¼‚ğİ’è‚·‚é
-	 * @param clsName	À‘•ƒNƒ‰ƒX–¼
+	 * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹
+	 * @param clsName	å®Ÿè£…ã‚¯ãƒ©ã‚¹å
 	 */
 	public void setImplementsClassName(String clsName) ;	
 	/**
-	 * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ‚ÌÀ‘•ƒNƒ‰ƒX–¼‚ğo—Í‚·‚é
-	 * @return	ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒÀ‘•ƒNƒ‰ƒX–¼
+	 * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return	ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£å®Ÿè£…ã‚¯ãƒ©ã‚¹å
 	 */
 	public String getImplementsClassName() ;	
 }

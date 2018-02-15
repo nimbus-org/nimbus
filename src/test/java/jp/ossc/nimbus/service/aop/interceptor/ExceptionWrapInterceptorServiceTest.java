@@ -184,7 +184,7 @@ public class ExceptionWrapInterceptorServiceTest extends TestCase{
                 "java.lang.UnsupportedOperationException"
             );
             interceptor1.setWrapExceptionMapping(mapping);
-            interceptor1.setMessage("—áŠO‚ª”­¶‚µ‚Ü‚µ‚½Bƒ‰ƒbƒv‚µ‚Ü‚·B");
+            interceptor1.setMessage("ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚ãƒ©ãƒƒãƒ—ã—ã¾ã™ã€‚");
             ServiceManagerFactory.findManager("Test").startAllService();
             try{
                 new DefaultInterceptorChain(
@@ -203,7 +203,7 @@ public class ExceptionWrapInterceptorServiceTest extends TestCase{
                 ).invokeNext(new DefaultMethodInvocationContext());
                 fail();
             }catch(UnsupportedOperationException e){
-                assertEquals("—áŠO‚ª”­¶‚µ‚Ü‚µ‚½Bƒ‰ƒbƒv‚µ‚Ü‚·B", e.getMessage());
+                assertEquals("ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚ãƒ©ãƒƒãƒ—ã—ã¾ã™ã€‚", e.getMessage());
             }
         }finally{
             ServiceManagerFactory.findManager("Test").stopAllService();
@@ -239,7 +239,7 @@ public class ExceptionWrapInterceptorServiceTest extends TestCase{
             interceptor1.setWrapExceptionMapping(mapping);
             interceptor1.setMessageKey("WARN");
             interceptor1.setMessageArgs(
-                new String[]{"—áŠO‚ª”­¶‚µ‚Ü‚µ‚½Bƒ‰ƒbƒv‚µ‚Ü‚·B"}
+                new String[]{"ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚ãƒ©ãƒƒãƒ—ã—ã¾ã™ã€‚"}
             );
             ServiceManagerFactory.findManager("Test").startAllService();
             try{
@@ -259,7 +259,7 @@ public class ExceptionWrapInterceptorServiceTest extends TestCase{
                 ).invokeNext(new DefaultMethodInvocationContext());
                 fail();
             }catch(UnsupportedOperationException e){
-                assertEquals("—áŠO‚ª”­¶‚µ‚Ü‚µ‚½Bƒ‰ƒbƒv‚µ‚Ü‚·B", e.getMessage());
+                assertEquals("ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚ãƒ©ãƒƒãƒ—ã—ã¾ã™ã€‚", e.getMessage());
             }
         }finally{
             ServiceManagerFactory.findManager("Test").stopAllService();

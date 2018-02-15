@@ -36,25 +36,25 @@ import java.util.*;
 import java.beans.PropertyEditor;
 
 /**
- * ƒT[ƒrƒXƒ[ƒ_ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚İAƒT[ƒrƒX‚ğ“o˜^‚·‚éƒ[ƒ_‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
- * ‚±‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚·‚éƒT[ƒrƒXƒ[ƒ_‚ÍAƒT[ƒrƒX{@link Service}‚Æ‚µ‚ÄÀ‘•‚³‚êAƒT[ƒrƒX‚Ì¶¬A‹N“®‚Æ‹¤‚ÉAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã¿ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹ãƒ­ãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹{@link Service}ã¨ã—ã¦å®Ÿè£…ã•ã‚Œã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã€èµ·å‹•ã¨å…±ã«ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
  * <ol>
- *   <li>ƒT[ƒrƒX’è‹`‚Ì“Ç‚İ‚İ</li>
- *   <li>{@link ServiceManager}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬</li>
- *   <li>ServiceManager‚Ö‚ÌServiceLoader‚Ì“o˜^</li>
- *   <li>ŠeService‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬</li>
- *   <li>ŠeService‚Ìƒƒ^ƒf[ƒ^¶¬AŠÇ—</li>
- *   <li>ŠeService‚ÌˆË‘¶ŠÖŒW‚ÌŠÇ—</li>
- *   <li>ServiceManager‚Ö‚ÌŠeService‚Ì“o˜^</li>
- *   <li>ServiceManager‚ÌƒT[ƒrƒX‚Æ‚µ‚Ä‚ÌA¶¬A‹N“®</li>
+ *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®èª­ã¿è¾¼ã¿</li>
+ *   <li>{@link ServiceManager}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ</li>
+ *   <li>ServiceManagerã¸ã®ServiceLoaderã®ç™»éŒ²</li>
+ *   <li>å„Serviceã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ</li>
+ *   <li>å„Serviceã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ç”Ÿæˆã€ç®¡ç†</li>
+ *   <li>å„Serviceã®ä¾å­˜é–¢ä¿‚ã®ç®¡ç†</li>
+ *   <li>ServiceManagerã¸ã®å„Serviceã®ç™»éŒ²</li>
+ *   <li>ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ã®ã€ç”Ÿæˆã€èµ·å‹•</li>
  * </ol>
  * <p>
- * ƒT[ƒrƒXƒ[ƒ_‚Ì‹N“®‚É‚æ‚Á‚ÄAƒT[ƒrƒXŠî”Õ‚ª‹N“®‚µ‚ÄA‚»‚±‚É”z’u‚³‚ê‚éŠeƒT[ƒrƒX‚ªƒzƒXƒeƒBƒ“ƒO‚³‚ê‚éB]‚Á‚ÄAƒT[ƒrƒXƒ[ƒ_‚ÍAƒT[ƒrƒXŠî”Õ‚Ì‹N“_‚Æ‚È‚éB<br>
- * ƒT[ƒrƒXƒ[ƒ_‚Ì‹N“®•û–@‚ÍA‚Q‚Â—pˆÓ‚³‚ê‚Ä‚¢‚éB<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã®èµ·å‹•ã«ã‚ˆã£ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹åŸºç›¤ãŒèµ·å‹•ã—ã¦ã€ãã“ã«é…ç½®ã•ã‚Œã‚‹å„ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ›ã‚¹ãƒ†ã‚£ãƒ³ã‚°ã•ã‚Œã‚‹ã€‚å¾“ã£ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹åŸºç›¤ã®èµ·ç‚¹ã¨ãªã‚‹ã€‚<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã®èµ·å‹•æ–¹æ³•ã¯ã€ï¼’ã¤ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<p>
  * <ol>
- *   <li>{@link ServiceManagerFactory#loadManager}<br>ServiceManagerFactory.loadManager()‚ğŒÄ‚Ño‚·‚ÆAServiceLoader‚ª¶¬‚³‚êA{@link ServiceLoader#create()}A{@link ServiceLoader#start()}‚ªŒÄ‚Ño‚³‚ê‚éB<br>å‚ÉAƒNƒ‰ƒCƒAƒ“ƒgƒTƒCƒh‚Åg—p‚·‚éê‡‚É—p‚¢‚é‹N“®•û–@‚Å‚ ‚éB<br></li>
- *   <li>{@link DefaultServiceLoaderService}<br>DefaultServiceLoaderService‚ğJBoss‚ÌƒT[ƒrƒX‚Æ‚µ‚ÄAjboss-service.xml‚É’è‹`‚µ‚ÄAJBoss‚ÉƒfƒvƒƒC‚·‚éBDefaultServiceLoaderService‚Ì‹N“®A¶¬‚É”º‚¢AServiceLoader‚ª¶¬‚³‚êAServiceLoader.create()AServiceLoader.start()‚ªŒÄ‚Ño‚³‚ê‚éB<br>å‚ÉAƒT[ƒoƒTƒCƒh‚Åg—p‚·‚éê‡‚É—p‚¢‚é‹N“®•û–@‚Å‚ ‚éBDefaultServiceLoaderService‚ÍAJBoss‚ÌƒT[ƒrƒX‚Æ‚µ‚ÄƒfƒvƒƒC‰Â”\‚Å‚ ‚é‚ªAJBoss‚Ì’ñ‹Ÿ‚·‚éƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚é–ó‚Å‚Í‚È‚¢BJBossˆÈŠO‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo‚Å‚àAƒT[ƒrƒX‚Æ‚¢‚¤ŠT”O‚ª‚ ‚ê‚ÎADefaultServiceLoaderService‚ğƒ‰ƒbƒvA‚Ü‚½‚ÍDefaultServiceLoaderService‘Š“–‚ÌÀ‘•‚ğs‚¤–‚ÅAƒT[ƒrƒXƒ[ƒ_‚ğ‹N“®‚Å‚«‚éB<br></li>
+ *   <li>{@link ServiceManagerFactory#loadManager}<br>ServiceManagerFactory.loadManager()ã‚’å‘¼ã³å‡ºã™ã¨ã€ServiceLoaderãŒç”Ÿæˆã•ã‚Œã€{@link ServiceLoader#create()}ã€{@link ServiceLoader#start()}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>ä¸»ã«ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µã‚¤ãƒ‰ã§ä½¿ç”¨ã™ã‚‹å ´åˆã«ç”¨ã„ã‚‹èµ·å‹•æ–¹æ³•ã§ã‚ã‚‹ã€‚<br></li>
+ *   <li>{@link DefaultServiceLoaderService}<br>DefaultServiceLoaderServiceã‚’JBossã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ã€jboss-service.xmlã«å®šç¾©ã—ã¦ã€JBossã«ãƒ‡ãƒ—ãƒ­ã‚¤ã™ã‚‹ã€‚DefaultServiceLoaderServiceã®èµ·å‹•ã€ç”Ÿæˆã«ä¼´ã„ã€ServiceLoaderãŒç”Ÿæˆã•ã‚Œã€ServiceLoader.create()ã€ServiceLoader.start()ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>ä¸»ã«ã€ã‚µãƒ¼ãƒã‚µã‚¤ãƒ‰ã§ä½¿ç”¨ã™ã‚‹å ´åˆã«ç”¨ã„ã‚‹èµ·å‹•æ–¹æ³•ã§ã‚ã‚‹ã€‚DefaultServiceLoaderServiceã¯ã€JBossã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ãƒ‡ãƒ—ãƒ­ã‚¤å¯èƒ½ã§ã‚ã‚‹ãŒã€JBossã®æä¾›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹è¨³ã§ã¯ãªã„ã€‚JBossä»¥å¤–ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒã§ã‚‚ã€ã‚µãƒ¼ãƒ“ã‚¹ã¨ã„ã†æ¦‚å¿µãŒã‚ã‚Œã°ã€DefaultServiceLoaderServiceã‚’ãƒ©ãƒƒãƒ—ã€ã¾ãŸã¯DefaultServiceLoaderServiceç›¸å½“ã®å®Ÿè£…ã‚’è¡Œã†äº‹ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã‚’èµ·å‹•ã§ãã‚‹ã€‚<br></li>
  * </ol>
  * 
  * @author M.Takata
@@ -62,31 +62,31 @@ import java.beans.PropertyEditor;
  * @see ServiceManagerFactory
  * @see ServiceManager
  * @see Service
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public interface ServiceLoader extends Service{
     
     /**
-     * &lt;server&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
+     * &lt;server&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServerMetaData getServerMetaData();
     
     /**
-     * &lt;server&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;server&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^
+     * @param data ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setServerMetaData(ServerMetaData data);
     
     /**
-     * &lt;service&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * w’è‚µ‚½ƒT[ƒrƒX‚ªA‚±‚ÌƒT[ƒrƒXƒ[ƒ_‚ªƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É‘¶İ‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * &lt;service&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ãŒãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å­˜åœ¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param managerName ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX’è‹`&lt;service&gt;—v‘fƒƒ^ƒf[ƒ^
+     * @param managerName ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;service&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceMetaData getServiceMetaData(
         String managerName,
@@ -94,10 +94,10 @@ public interface ServiceLoader extends Service{
     );
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param managerName ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éServiceManager‚Ì–¼‘O
-     * @param serviceData ƒT[ƒrƒX’è‹`ƒƒ^ƒf[ƒ^
+     * @param managerName ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ServiceManagerã®åå‰
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setServiceMetaData(
         String managerName,
@@ -105,22 +105,22 @@ public interface ServiceLoader extends Service{
     );
     
     /**
-     * ‚±‚ÌƒT[ƒrƒXƒ[ƒ_‚ªƒ[ƒh‚µ‚½ServiceManager‚ÌW‡‚ğæ“¾‚·‚éB<p>
-     * ServiceManager‚ÍAƒT[ƒrƒX’è‹`‚Ì&lt;manager&gt;—v‘f‚É‘Î‰‚·‚éB<br>
-     * •¡”‚ÌƒT[ƒrƒX’è‹`‚ÉŒ×‚Á‚Ä’è‹`‚³‚ê‚½&lt;manager&gt;—v‘f‚É‘Î‰‚·‚éServiceManager‚ÍA‚Ç‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ƒT[ƒrƒXƒ[ƒ_‚©‚çæ“¾‚µ‚Ä‚àA“¯‚¶ƒCƒ“ƒXƒ^ƒ“ƒX‚ªæ“¾‚Å‚«‚éB<br>
-     * &lt;manager&gt;—v‘f‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‹ó‚ÌW‡‚ğ•Ô‚·B<br>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ãŒãƒ­ãƒ¼ãƒ‰ã—ãŸServiceManagerã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ServiceManagerã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®&lt;manager&gt;è¦ç´ ã«å¯¾å¿œã™ã‚‹ã€‚<br>
+     * è¤‡æ•°ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«è·¨ã£ã¦å®šç¾©ã•ã‚ŒãŸ&lt;manager&gt;è¦ç´ ã«å¯¾å¿œã™ã‚‹ServiceManagerã¯ã€ã©ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã‹ã‚‰å–å¾—ã—ã¦ã‚‚ã€åŒã˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚<br>
+     * &lt;manager&gt;è¦ç´ ãŒå®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç©ºã®é›†åˆã‚’è¿”ã™ã€‚<br>
      *
-     * @return ServiceManager‚ÌW‡
+     * @return ServiceManagerã®é›†åˆ
      */
     public Set getServiceManagers();
     
     /**
-     * &lt;service&gt;—v‘f‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚½&lt;depends&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
-     * w’è‚³‚ê‚½ServiceManager‚ªA‚±‚ÌƒT[ƒrƒXƒ[ƒ_‚É‚æ‚Á‚Äƒ[ƒh‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B‚Ü‚½Aw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ªA‚±‚ÌƒT[ƒrƒXƒ[ƒ_‚É‚æ‚Á‚Äƒ[ƒh‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B‚Ü‚½Aw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ğname‘®«‚Æ‚µ‚Ä‚Â&lt;service&gt;—v‘f‚ÉA&lt;depends&gt;—v‘f‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‹ó‚ÌƒŠƒXƒg‚ğ•Ô‚·B<br>
+     * &lt;service&gt;è¦ç´ ã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚ŒãŸ&lt;depends&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸServiceManagerãŒã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã«ã‚ˆã£ã¦ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ãŒã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã«ã‚ˆã£ã¦ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã‚’nameå±æ€§ã¨ã—ã¦æŒã¤&lt;service&gt;è¦ç´ ã«ã€&lt;depends&gt;è¦ç´ ãŒå®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç©ºã®ãƒªã‚¹ãƒˆã‚’è¿”ã™ã€‚<br>
      *
-     * @param managerName ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return {@link ServiceMetaData.DependsMetaData}‚ÌƒŠƒXƒg
+     * @param managerName ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return {@link ServiceMetaData.DependsMetaData}ã®ãƒªã‚¹ãƒˆ
      */
     public List getDepends(
         String managerName,
@@ -128,13 +128,13 @@ public interface ServiceLoader extends Service{
     );
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ&lt;depends&gt;—v‘f‚É‚Â&lt;service&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA‚±‚ÌƒT[ƒrƒXƒ[ƒ_‚Éƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚Ì‚İ‚ª‘ÎÛ‚Æ‚È‚éB<br>
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ&lt;depends&gt;—v‘f‚É‚ÂƒT[ƒrƒX‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‹ó‚ÌƒŠƒXƒg‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’&lt;depends&gt;è¦ç´ ã«æŒã¤&lt;service&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã«ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã¿ãŒå¯¾è±¡ã¨ãªã‚‹ã€‚<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’&lt;depends&gt;è¦ç´ ã«æŒã¤ã‚µãƒ¼ãƒ“ã‚¹ãŒå®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ç©ºã®ãƒªã‚¹ãƒˆã‚’è¿”ã™ã€‚<br>
      *
-     * @param managerName ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return {@link ServiceMetaData}‚ÌƒŠƒXƒg
+     * @param managerName ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return {@link ServiceMetaData}ã®ãƒªã‚¹ãƒˆ
      */
     public List getDependedServices(
         String managerName,
@@ -142,52 +142,52 @@ public interface ServiceLoader extends Service{
     );
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
-     * @exception IllegalArgumentException w’è‚³‚ê‚½URL‚ª—LŒø‚ÈURL‚Å‚È‚¢ê‡
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸURLãŒæœ‰åŠ¹ãªURLã§ãªã„å ´åˆ
      * @see #getServiceURL()
      */
     public void setServiceURL(URL url) throws IllegalArgumentException;
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
      * @see #setServiceURL(URL)
      */
     public URL getServiceURL();
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒpƒX‚ÍAˆÈ‰º‚Ìè‡‚ÅURL‚É•ÏX‚³‚ê‚ÄA{@link #setServiceURL(URL)}‚³‚ê‚éB<br>
-     * ƒpƒX¨URL•ÏŠ·‚ÍAˆÈ‰º‚Ì‡˜‚Ås‚í‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã¯ã€ä»¥ä¸‹ã®æ‰‹é †ã§URLã«å¤‰æ›´ã•ã‚Œã¦ã€{@link #setServiceURL(URL)}ã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ‘ã‚¹â†’URLå¤‰æ›ã¯ã€ä»¥ä¸‹ã®é †åºã§è¡Œã‚ã‚Œã‚‹ã€‚<br>
      * <ol>
-     *   <li>w’è‚³‚ê‚½ƒpƒX‚ªnullA‚Ü‚½‚Í‹ó•¶š‚Ìê‡AƒfƒtƒHƒ‹ƒgURLiŒãqj</li>
-     *   <li>w’è‚³‚ê‚½ƒpƒX‚ªƒ[ƒJƒ‹ƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä‘¶İ‚·‚éê‡Aƒ[ƒJƒ‹ƒpƒX‚ğURL‚É•ÏŠ·‚µ‚½URL</li>
-     *   <li>w’è‚³‚ê‚½ƒpƒX‚ª‚±‚ÌƒNƒ‰ƒX‚ğƒ[ƒh‚µ‚½ƒNƒ‰ƒXƒ[ƒ_‚ÌƒŠƒ\[ƒX‚Æ‚µ‚Ä‘¶İ‚·‚éê‡A‚»‚ÌURL</li>
-     *   <li>ã‹L‘S‚Ä‚É“–‚Ä‚Í‚Ü‚ç‚È‚¢ê‡A—áŠO‚ğthrow‚·‚éB</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒnullã€ã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆURLï¼ˆå¾Œè¿°ï¼‰</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒãƒ­ãƒ¼ã‚«ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦å­˜åœ¨ã™ã‚‹å ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‘ã‚¹ã‚’URLã«å¤‰æ›ã—ãŸURL</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒã“ã®ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã®ãƒªã‚½ãƒ¼ã‚¹ã¨ã—ã¦å­˜åœ¨ã™ã‚‹å ´åˆã€ãã®URL</li>
+     *   <li>ä¸Šè¨˜å…¨ã¦ã«å½“ã¦ã¯ã¾ã‚‰ãªã„å ´åˆã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚</li>
      * </ol>
-     * ƒfƒtƒHƒ‹ƒgURL‚ÌŒˆ’è‚ÍAˆÈ‰º‚Ì‡˜‚Ås‚í‚ê‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆURLã®æ±ºå®šã¯ã€ä»¥ä¸‹ã®é †åºã§è¡Œã‚ã‚Œã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒVƒXƒeƒ€ƒvƒƒpƒeƒBjp.ossc.nimbus.service.url‚Åw’è‚³‚ê‚½’l‚ğAã‹L‚ÌƒpƒX¨URL•ÏŠ·‚ÅURL‚É•ÏŠ·‚µ‚½’l</li>
-     *   <li>‚±‚ÌƒNƒ‰ƒX‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ªƒ[ƒh‚³‚ê‚½ƒNƒ‰ƒXƒpƒXã‚©‚çAnimbus-service.xml‚ğ{@link ClassLoader#getResource(String)}‚ÅƒŠƒ\[ƒX‚Æ‚µ‚Äæ“¾‚µ‚½URLB‚±‚ÌƒNƒ‰ƒX‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ªJarƒtƒ@ƒCƒ‹‚ÉŠi”[‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ÌJarƒtƒ@ƒCƒ‹‚Æ“¯‚¶ƒpƒXã‚Ìnimbus-service.xml‚ÌURL</li>
+     *   <li>ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£jp.ossc.nimbus.service.urlã§æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ã€ä¸Šè¨˜ã®ãƒ‘ã‚¹â†’URLå¤‰æ›ã§URLã«å¤‰æ›ã—ãŸå€¤</li>
+     *   <li>ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã‹ã‚‰ã€nimbus-service.xmlã‚’{@link ClassLoader#getResource(String)}ã§ãƒªã‚½ãƒ¼ã‚¹ã¨ã—ã¦å–å¾—ã—ãŸURLã€‚ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ãŒJarãƒ•ã‚¡ã‚¤ãƒ«ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®Jarãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜ãƒ‘ã‚¹ä¸Šã®nimbus-service.xmlã®URL</li>
      * </ol>
      *
-     * @param path ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒpƒX‚ª—LŒø‚ÈƒpƒX‚Å‚È‚¢ê‡
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ãŒæœ‰åŠ¹ãªãƒ‘ã‚¹ã§ãªã„å ´åˆ
      * @see #setServiceURL(URL)
      */ 
     public void setServicePath(String path) throws IllegalArgumentException;
     
     /**
-     * &lt;manager&gt;—v‘f‚ğ•\‚·{@link ServiceManager}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒNƒ‰ƒX–¼‚ÍAŠ®‘SCü–¼‚Åİ’è‚·‚éB<br>
-     * ‚Ü‚½Aİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌÀ‘•ƒNƒ‰ƒX‚ªg—p‚³‚ê‚éBƒfƒtƒHƒ‹ƒg‚ÍAjp.ossc.nimbus.core.ServiceManagerImpl‚Å‚ ‚éB<br>
+     * &lt;manager&gt;è¦ç´ ã‚’è¡¨ã™{@link ServiceManager}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹åã¯ã€å®Œå…¨ä¿®é£¾åã§è¨­å®šã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€jp.ossc.nimbus.core.ServiceManagerImplã§ã‚ã‚‹ã€‚<br>
      *
-     * @param className ServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX–¼
-     * @exception ClassNotFoundException w’è‚µ‚½ƒNƒ‰ƒX–¼‚ÌƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalArgumentException w’è‚µ‚½ƒNƒ‰ƒX–¼‚ÌƒNƒ‰ƒX‚ªServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ê‡
+     * @param className ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹å
+     * @exception ClassNotFoundException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹åã®ã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹åã®ã‚¯ãƒ©ã‚¹ãŒServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„å ´åˆ
      * @see #getServiceManagerClassName()
      * @see ServiceManager
      */
@@ -195,70 +195,70 @@ public interface ServiceLoader extends Service{
      throws ClassNotFoundException, IllegalArgumentException;
     
     /**
-     * &lt;manager&gt;—v‘f‚ğ•\‚·{@link ServiceManager}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * &lt;manager&gt;è¦ç´ ã‚’è¡¨ã™{@link ServiceManager}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX–¼
+     * @return ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹å
      * @see #setServiceManagerClassName(String)
      * @see ServiceManager
      */
     public String getServiceManagerClassName();
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX‚ğƒ[ƒh‚·‚éB<p>
-     * ’A‚µAˆø”‚Åw’è‚·‚éƒT[ƒrƒX‚ÍA‚±‚Ìƒ[ƒ_[‚ªƒfƒvƒƒC‚µ‚½ƒT[ƒrƒX‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€å¼•æ•°ã§æŒ‡å®šã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã¯ã€ã“ã®ãƒ­ãƒ¼ãƒ€ãƒ¼ãŒãƒ‡ãƒ—ãƒ­ã‚¤ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param managerName ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @exception DeploymentException ƒ[ƒh‚É¸”s‚µ‚½ê‡
+     * @param managerName ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @exception DeploymentException ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void loadService(String managerName, String serviceName)
      throws DeploymentException;
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX’è‹`&lt;service&gt;—v‘fƒƒ^ƒf[ƒ^‚ğƒfƒvƒƒC‚·‚éB<p>
-     * ’A‚µAˆø”‚Åw’è‚·‚éserviceData‚ÍA‚±‚Ìƒ[ƒ_[‚ªƒ[ƒh‚µ‚½ServiceManager‚É“o˜^‚³‚ê‚é‚à‚Ì‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;service&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ‡ãƒ—ãƒ­ã‚¤ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€å¼•æ•°ã§æŒ‡å®šã™ã‚‹serviceDataã¯ã€ã“ã®ãƒ­ãƒ¼ãƒ€ãƒ¼ãŒãƒ­ãƒ¼ãƒ‰ã—ãŸServiceManagerã«ç™»éŒ²ã•ã‚Œã‚‹ã‚‚ã®ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param serviceData ƒT[ƒrƒX’è‹`&lt;service&gt;—v‘fƒƒ^ƒf[ƒ^
-     * @exception DeploymentException ƒfƒvƒƒC‚É¸”s‚µ‚½ê‡
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;service&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @exception DeploymentException ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void deployService(ServiceMetaData serviceData)
      throws DeploymentException;
     
     /**
-     * w’è‚µ‚½Œ^‚ÌBean‘®«‚Ì•ÒW‚ğs‚¤PropertyEditor‚ğæ“¾‚·‚éB<p>
-     * ‘¶İ‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * æŒ‡å®šã—ãŸå‹ã®Beanå±æ€§ã®ç·¨é›†ã‚’è¡Œã†PropertyEditorã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å­˜åœ¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      * 
-     * @param type •ÒW‚ğs‚¤Bean‘®«‚ÌŒ^
-     * @return PropertyEditorƒIƒuƒWƒFƒNƒg
+     * @param type ç·¨é›†ã‚’è¡Œã†Beanå±æ€§ã®å‹
+     * @return PropertyEditorã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public PropertyEditor findEditor(Class type);
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ•]‰¿‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA•]‰¿‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€è©•ä¾¡ã—ãªã„ã€‚<br>
      *
-     * @param validate •]‰¿‚·‚éê‡trueB
+     * @param validate è©•ä¾¡ã™ã‚‹å ´åˆtrueã€‚
      */
     public void setValidate(boolean validate);
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ•]‰¿‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return •]‰¿‚·‚éê‡trueB
+     * @return è©•ä¾¡ã™ã‚‹å ´åˆtrueã€‚
      */
     public boolean isValidate();
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚Ég—p‚·‚é\¬î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä½¿ç”¨ã™ã‚‹æ§‹æˆæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param config ƒT[ƒrƒXƒ[ƒh\¬î•ñ
+     * @param config ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰æ§‹æˆæƒ…å ±
      */
     public void setConfig(ServiceLoaderConfig config);
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚Ég—p‚·‚é\¬î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä½¿ç”¨ã™ã‚‹æ§‹æˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒT[ƒrƒXƒ[ƒh\¬î•ñ
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰æ§‹æˆæƒ…å ±
      */
     public ServiceLoaderConfig getConfig();
 }

@@ -34,33 +34,33 @@ package jp.ossc.nimbus.service.jndi;
 import javax.naming.*;
 
 /**
- * Jndiƒtƒ@ƒCƒ“ƒ_[ƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * Jndiãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * 
  * @author Y.Tokuda
  */
 public interface JndiFinder{
     
     /**
-     * JNDI‚©‚çƒŠƒ\[ƒX‚ğƒ‹ƒbƒNƒAƒbƒv‚·‚éB<p>
+     * JNDIã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ«ãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã€‚<p>
      * 
-     * @param name JNDI–¼
+     * @param name JNDIå
      */
     public Object lookup(String name) throws NamingException;
     
     /**
-     * JNDI‚©‚çƒŠƒ\[ƒX‚ğƒ‹ƒbƒNƒAƒbƒv‚·‚éB<p>
+     * JNDIã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ«ãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã€‚<p>
      */
     public Object lookup() throws NamingException;
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚µ‚½ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğ‘S‚ÄƒNƒŠƒA‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¨ã¦ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearCache();
     
     /**
-     * w’è‚µ‚½JNDI–¼‚Ì‚µ‚½ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚éB<p>
+     * æŒ‡å®šã—ãŸJNDIåã®ã—ãŸãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      * 
-     * @param jndiName ƒLƒƒƒbƒVƒ…‚©‚çíœ‚·‚éƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌJNDI–¼
+     * @param jndiName ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã™ã‚‹ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®JNDIå
      */
     public void clearCache(String jndiName);
 }

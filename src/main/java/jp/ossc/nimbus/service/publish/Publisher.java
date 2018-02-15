@@ -36,20 +36,20 @@ import java.util.List;
 public interface Publisher {
     
     /**
-     * w’èƒT[ƒoƒ“ƒg‚ğæ“¾‚·‚é
+     * æŒ‡å®šã‚µãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
      * @param key
-     * @return ƒT[ƒoƒ“ƒg
+     * @return ã‚µãƒ¼ãƒãƒ³ãƒˆ
      */
     public Servant findServant(String key);
     
     /**
-     * ƒT[ƒoƒ“ƒg‚ğ“o˜^‚·‚éB
-     * @param svt ƒT[ƒoƒ“ƒg
+     * ã‚µãƒ¼ãƒãƒ³ãƒˆã‚’ç™»éŒ²ã™ã‚‹ã€‚
+     * @param svt ã‚µãƒ¼ãƒãƒ³ãƒˆ
      */
     public boolean entryServant(Servant svt);
     
     /**
-     * ƒT[ƒoƒ“ƒg‚ğíœ‚·‚éB
+     * ã‚µãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚
      * @param key
      */
     public boolean ejectServant(String key);

@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * ___ƒNƒ‰ƒX<p>
- * ___‘€ì‚ğs‚¤
+ * ___ã‚¯ãƒ©ã‚¹<p>
+ * ___æ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
@@ -43,22 +43,22 @@ package jp.ossc.nimbus.service.journal.editor;
 public interface SimpleSafeJournalRequestJournalEditorServiceWithSQLSettingMBean {
     /**
      * setSqlOutput
-     * SQLo—Í‰Â”Û‚Ìİ’è‚ğs‚¤
+     * SQLå‡ºåŠ›å¯å¦ã®è¨­å®šã‚’è¡Œã†
      */
     public void setOutputSql(boolean output);
     /**
      * setSqlOutput
-     * SQLo—Í‰Â”Û‚Ìİ’è‚ğæ“¾‚·‚é
+     * SQLå‡ºåŠ›å¯å¦ã®è¨­å®šã‚’å–å¾—ã™ã‚‹
      */
     public boolean getOutputSql();
     /**
      * setSqlOmittingSqlKeyFormat
-     * SQLƒŒƒR[ƒh‚Æ‚µ‚Ä”»’è‚³‚ê‚éƒtƒH[ƒ}ƒbƒg‚ğw’è‚·‚é
+     * SQLãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦åˆ¤å®šã•ã‚Œã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã™ã‚‹
      */
     public void setSqlOmittingSqlKeyFormat(String format);
     /**
      * getSqlOmittingSqlKeyFormat
-     * SQLƒŒƒR[ƒh‚Æ‚µ‚Ä”»’è‚³‚ê‚éƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚é
+     * SQLãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦åˆ¤å®šã•ã‚Œã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹
      */
     public String getSqlOmittingSqlKeyFormat();
 }

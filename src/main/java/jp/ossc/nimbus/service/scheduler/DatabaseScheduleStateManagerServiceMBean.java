@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DatabaseScheduleStateManagerService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseScheduleStateManagerService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

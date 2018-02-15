@@ -51,9 +51,9 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * WebSocket‚ğg‚Á‚½ƒƒbƒZ[ƒWƒnƒ“ƒhƒ‰ƒtƒ@ƒNƒgƒŠƒT[ƒrƒX’ŠÛƒNƒ‰ƒXB
+ * WebSocketã‚’ä½¿ã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ³ãƒ‰ãƒ©ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
- * Configurator‚É‚ÄASession–ˆ‚ÌHandler‚ğ¶¬‚·‚éÛ‚É–{ƒtƒ@ƒNƒgƒŠƒNƒ‰ƒX‚É‚ÄƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<br>
+ * Configuratorã«ã¦ã€Sessionæ¯ã®Handlerã‚’ç”Ÿæˆã™ã‚‹éš›ã«æœ¬ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¯ãƒ©ã‚¹ã«ã¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
  *
  * @author M.Ishida
  */
@@ -267,10 +267,10 @@ public abstract class AbstractMessageHandlerFactoryService extends ServiceFactor
     protected abstract Service createServiceInstance() throws Exception;
 
     /**
-     * Configurator‚É‚Ä¶¬‚³‚ê‚éMessageHandler’ŠÛƒNƒ‰ƒXB
+     * Configuratorã«ã¦ç”Ÿæˆã•ã‚Œã‚‹MessageHandleræŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚
      * <p>
-     * óM‚µ‚½ƒoƒCƒg”z—ñ‚ğ•¶š—ñ‚É•ÏŠ·‚µAŒã‘±ˆ—‚É“n‚·B<br>
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒWƒƒ[ƒiƒŠƒ“ƒO‚ğs‚¤B<br>
+     * å—ä¿¡ã—ãŸãƒã‚¤ãƒˆé…åˆ—ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã—ã€å¾Œç¶šå‡¦ç†ã«æ¸¡ã™ã€‚<br>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒªãƒ³ã‚°ã‚’è¡Œã†ã€‚<br>
      *
      * @author m-ishida
      */
@@ -332,7 +332,7 @@ public abstract class AbstractMessageHandlerFactoryService extends ServiceFactor
                 }
                 onMessageProcess(message);
             } catch (UnsupportedEncodingException e) {
-                // startService‚Åƒ`ƒFƒbƒN‚µ‚Ä‚¢‚é‚Ì‚Å‹N‚±‚ç‚È‚¢B
+                // startServiceã§ãƒã‚§ãƒƒã‚¯ã—ã¦ã„ã‚‹ã®ã§èµ·ã“ã‚‰ãªã„ã€‚
             } finally {
                 if (accessJournal != null) {
                     accessJournal.addInfo(requestMessageJournalKey, message);
@@ -342,37 +342,37 @@ public abstract class AbstractMessageHandlerFactoryService extends ServiceFactor
         }
 
         /**
-         * ƒZƒbƒVƒ‡ƒ“ƒI[ƒvƒ“‚ÌƒCƒxƒ“ƒgˆ—B
+         * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚ªãƒ¼ãƒ—ãƒ³æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†ã€‚
          * <p>
          *
-         * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+         * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
          * @param config EndpointConfig
          */
         protected abstract void onOpenProcess(Session session, EndpointConfig config);
 
         /**
-         * ƒZƒbƒVƒ‡ƒ“ƒNƒ[ƒY‚ÌƒCƒxƒ“ƒgˆ—B
+         * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¯ãƒ­ãƒ¼ã‚ºæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†ã€‚
          * <p>
          *
-         * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+         * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
          * @param closeReason CloseReason
          */
         protected abstract void onCloseProcess(Session session, CloseReason closeReason);
 
         /**
-         * ƒGƒ‰[”­¶‚ÌƒCƒxƒ“ƒgˆ—B
+         * ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†ã€‚
          * <p>
          *
-         * @param session WebSocketƒZƒbƒVƒ‡ƒ“
-         * @param thr ”­¶‚µ‚½—áŠO
+         * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
+         * @param thr ç™ºç”Ÿã—ãŸä¾‹å¤–
          */
         protected abstract void onErrorProcess(Session session, Throwable thr);
 
         /**
-         * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒƒbƒZ[ƒWóM‚ÌƒCƒxƒ“ƒgˆ—B
+         * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†ã€‚
          * <p>
          *
-         * @param message ƒƒZ[ƒW•¶š—ñ
+         * @param message ãƒ¡ã‚»ãƒ¼ã‚¸æ–‡å­—åˆ—
          */
         protected abstract void onMessageProcess(String message);
     }

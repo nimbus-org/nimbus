@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DateKeyConditionScheduleMakerService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DateKeyConditionScheduleMakerService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,32 +42,32 @@ public interface DateKeyConditionScheduleMakerServiceMBean
  extends DefaultScheduleMakerServiceMBean{
     
     /**
-     * “ú•tƒL[•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * “ú•tƒL[•¶š—ñ‚ÍA{@link jp.ossc.nimbus.service.scheduler.DateKey DateKey}‚Å‰ğß‚³‚ê‚éB<br>
+     * æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—ã¯ã€{@link jp.ossc.nimbus.service.scheduler.DateKey DateKey}ã§è§£é‡ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param key “ú•tƒL[•¶š—ñ
+     * @param key æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public void setDateKey(String key);
     
     /**
-     * “ú•tƒL[•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ú•tƒL[•¶š—ñ
+     * @return æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public String getDateKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.scheduler.DateEvaluator DateEvaluator}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * “ú•tŠg’£ƒL[‚ğg—p‚·‚éê‡‚Éİ’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.scheduler.DateEvaluator DateEvaluator}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ—¥ä»˜æ‹¡å¼µã‚­ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name DateEvaluatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name DateEvaluatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDateEvaluatorServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.scheduler.DateEvaluator DateEvaluator}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.scheduler.DateEvaluator DateEvaluator}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return DateEvaluatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return DateEvaluatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDateEvaluatorServiceName();
 }

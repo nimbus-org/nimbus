@@ -35,11 +35,11 @@ import java.io.*;
 import org.w3c.dom.*;
 
 /**
- * ƒvƒƒpƒeƒBƒGƒfƒBƒ^&lt;property-editor&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;property-editor&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¨ãƒ‡ã‚£ã‚¿&lt;property-editor&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;property-editor&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class PropertyEditorMetaData extends MetaData
  implements Serializable{
@@ -47,7 +47,7 @@ public class PropertyEditorMetaData extends MetaData
     private static final long serialVersionUID = -3886753647250989241L;
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String PROPERTY_EDITOR_TAG_NAME = "property-editor";
     
@@ -58,55 +58,55 @@ public class PropertyEditorMetaData extends MetaData
     protected String editor;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public PropertyEditorMetaData(MetaData parent){
         super(parent);
     }
     
     /**
-     * ‚±‚Ì&lt;property-editor&gt;—v‘f‚Ìtype‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;property-editor&gt;è¦ç´ ã®typeå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return type‘®«‚Ì’l
+     * @return typeå±æ€§ã®å€¤
      */
     public String getType(){
         return type;
     }
     
     /**
-     * ‚±‚Ì&lt;property-editor&gt;—v‘f‚Ìtype‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;property-editor&gt;è¦ç´ ã®typeå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param type type‘®«‚Ì’l
+     * @param type typeå±æ€§ã®å€¤
      */
     public void setType(String type){
         this.type = type;
     }
     
     /**
-     * ‚±‚Ì&lt;property-editor&gt;—v‘f‚Ì“à—e‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;property-editor&gt;è¦ç´ ã®å†…å®¹ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return PropertyEditor‚ÌƒNƒ‰ƒX–¼
+     * @return PropertyEditorã®ã‚¯ãƒ©ã‚¹å
      */
     public String getEditor(){
         return editor;
     }
     
     /**
-     * ‚±‚Ì&lt;property-editor&gt;—v‘f‚Ì“à—e‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;property-editor&gt;è¦ç´ ã®å†…å®¹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param editor PropertyEditor‚ÌƒNƒ‰ƒX–¼
+     * @param editor PropertyEditorã®ã‚¯ãƒ©ã‚¹å
      */
     public void setEditor(String editor){
         this.editor = editor;
     }
     
     /**
-     * &lt;property-editor&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;property-editor&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;property-editor&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;property-editor&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;property-editor&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;property-editor&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 /**
- * {@link SetCharacterEncodingInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SetCharacterEncodingInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see SetCharacterEncodingInterceptorService
@@ -41,31 +41,31 @@ public interface SetCharacterEncodingInterceptorServiceMBean
  extends ServletFilterInterceptorServiceMBean{
     
     /**
-     * •ÏŠ·Œã‚Ì•¶šƒR[ƒh‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›å¾Œã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒR[ƒh
+     * @param encoding æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public void setCharacterEncoding(String encoding);
     
     /**
-     * •ÏŠ·Œã‚Ì•¶šƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›å¾Œã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒR[ƒh
+     * @return æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public String getCharacterEncoding();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒNƒGƒŠ‚ğ•¶šƒR[ƒh•ÏŠ·‘ÎÛ‚É‚·‚é‚©‚Ç‚¤‚©İ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¯ã‚¨ãƒªã‚’æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›å¯¾è±¡ã«ã™ã‚‹ã‹ã©ã†ã‹è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isEncode •¶šƒR[ƒh•ÏŠ·‘ÎÛ‚É‚·‚éê‡Atrue
+     * @param isEncode æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›å¯¾è±¡ã«ã™ã‚‹å ´åˆã€true
      */
     public void setEncodeQuery(boolean isEncode);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒNƒGƒŠ‚ğ•¶šƒR[ƒh•ÏŠ·‘ÎÛ‚É‚·‚é‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¯ã‚¨ãƒªã‚’æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›å¯¾è±¡ã«ã™ã‚‹ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒR[ƒh•ÏŠ·‘ÎÛ‚É‚·‚éê‡Atrue
+     * @return æ–‡å­—ã‚³ãƒ¼ãƒ‰å¤‰æ›å¯¾è±¡ã«ã™ã‚‹å ´åˆã€true
      */
     public boolean isEncodeQuery();
 }

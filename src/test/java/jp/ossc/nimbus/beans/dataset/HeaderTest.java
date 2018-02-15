@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author S.Teshima
- * @version 1.00 ì¬: 2008/01/22 - S.Teshima
+ * @version 1.00 ä½œæˆ: 2008/01/22 - S.Teshima
  */
 
 public class HeaderTest extends TestCase {
@@ -19,19 +19,19 @@ public class HeaderTest extends TestCase {
 	}
 
 	/**
-	 * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚Ìƒwƒbƒ_‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ˜ãƒƒãƒ€ã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ìƒwƒbƒ_–¼‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄHeader(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ˜ãƒƒãƒ€åã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Header(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name: "Testheader"</li>
 	 * <li>schema: ":A,java.lang.String,,,"</li>
-	 * <li>cloneSchema()‚ğÀs‚µ‚ÄƒŒƒR[ƒh‚Ì•¡»‚ğ¶¬‚·‚é</li>
+	 * <li>cloneSchema()ã‚’å®Ÿè¡Œã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getName()‚ğÀs‚µ‚ÄAŒ³ƒwƒbƒ_[‚Æ•¡»ƒwƒbƒ_[‚Ì–¼‘Oî•ñ‚ª“™‚µ‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getSchema()‚ğÀs‚µ‚ÄAŒ³ƒwƒbƒ_[‚Æ•¡»ƒwƒbƒ_[‚ÌƒXƒL[ƒ}î•ñ‚ª“™‚µ‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>getName()ã‚’å®Ÿè¡Œã—ã¦ã€å…ƒãƒ˜ãƒƒãƒ€ãƒ¼ã¨è¤‡è£½ãƒ˜ãƒƒãƒ€ãƒ¼ã®åå‰æƒ…å ±ãŒç­‰ã—ã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getSchema()ã‚’å®Ÿè¡Œã—ã¦ã€å…ƒãƒ˜ãƒƒãƒ€ãƒ¼ã¨è¤‡è£½ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ãŒç­‰ã—ã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCloneSchema() {
@@ -48,19 +48,19 @@ public class HeaderTest extends TestCase {
 
 
 	/**
-	 * ƒwƒbƒ_–¼‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€åã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ìƒwƒbƒ_–¼‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄHeader(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ˜ãƒƒãƒ€åã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Header(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name: "Testheader"</li>
 	 * <li>schema: ":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ìƒwƒbƒ_–¼‚ğw’è‚µ‚ÄsetName(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ˜ãƒƒãƒ€åã‚’æŒ‡å®šã—ã¦setName(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name: "TestheaderNew"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getName()‚ğÀs‚µ‚ÄA–¼‘Oî•ñ‚ª"TestheaderNew"‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>getName()ã‚’å®Ÿè¡Œã—ã¦ã€åå‰æƒ…å ±ãŒ"TestheaderNew"ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetName() {

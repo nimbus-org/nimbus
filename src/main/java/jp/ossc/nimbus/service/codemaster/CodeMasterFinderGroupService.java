@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.lang.*;
 
 /**
- * {@link CodeMasterFinder}ƒOƒ‹[ƒsƒ“ƒOƒT[ƒrƒXB<p>
+ * {@link CodeMasterFinder}ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -50,21 +50,21 @@ public class CodeMasterFinderGroupService extends ServiceBase
     private CodeMasterFinder[] codeMasterFinderes;
     private String[] notUpdateAllMasterNames;
 
-    // CodeMasterFinderGroupServiceMBean‚ÌJavaDoc
+    // CodeMasterFinderGroupServiceMBeanã®JavaDoc
     public void setCodeMasterFinderServiceNames(ServiceName[] names){
         codeMasterFinderServiceNames = names;
     }
-    // CodeMasterFinderGroupServiceMBean‚ÌJavaDoc
+    // CodeMasterFinderGroupServiceMBeanã®JavaDoc
     public ServiceName[] getCodeMasterFinderServiceNames(){
         return codeMasterFinderServiceNames;
     }
 
-    // CodeMasterFinderGroupServiceMBean ‚ÌJavaDoc
+    // CodeMasterFinderGroupServiceMBean ã®JavaDoc
     public String[] getNotUpdateAllMasterNames() {
         return notUpdateAllMasterNames;
     }
 
-    // CodeMasterFinderGroupServiceMBean ‚ÌJavaDoc
+    // CodeMasterFinderGroupServiceMBean ã®JavaDoc
     public void setNotUpdateAllMasterNames(String[] names) {
         this.notUpdateAllMasterNames = names;
     }
@@ -86,7 +86,7 @@ public class CodeMasterFinderGroupService extends ServiceBase
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public Map getCodeMasters() throws ServiceException{
         final Map masters = new HashMap();
         for(int i = 0; i < codeMasterFinderes.length; i++){
@@ -95,7 +95,7 @@ public class CodeMasterFinderGroupService extends ServiceBase
         return masters;
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateAllCodeMasters() throws Exception{
         Set codeMasterNameSet = getCodeMasterNameSet();
         if(codeMasterNameSet != null){
@@ -110,7 +110,7 @@ public class CodeMasterFinderGroupService extends ServiceBase
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateCodeMaster(String key) throws Exception{
         for(int i = 0; i < codeMasterFinderes.length; i++){
             if(codeMasterFinderes[i].getCodeMasterNameSet().contains(key)){
@@ -119,7 +119,7 @@ public class CodeMasterFinderGroupService extends ServiceBase
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateCodeMaster(String key, Date updateTime) throws Exception{
         for(int i = 0; i < codeMasterFinderes.length; i++){
             if(codeMasterFinderes[i].getCodeMasterNameSet().contains(key)){
@@ -128,7 +128,7 @@ public class CodeMasterFinderGroupService extends ServiceBase
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateCodeMaster(String key, Object input, Date updateTime) throws Exception{
         for(int i = 0; i < codeMasterFinderes.length; i++){
             if(codeMasterFinderes[i].getCodeMasterNameSet().contains(key)){
@@ -137,7 +137,7 @@ public class CodeMasterFinderGroupService extends ServiceBase
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public Set getCodeMasterNameSet(){
         final Set result = new HashSet();
         if(codeMasterFinderes == null){

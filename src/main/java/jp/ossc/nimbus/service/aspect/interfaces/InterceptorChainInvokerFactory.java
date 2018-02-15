@@ -29,23 +29,23 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.interfaces;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ÀsƒNƒ‰ƒXƒtƒ@ƒNƒgƒŠ[ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å®Ÿè¡Œã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface InterceptorChainInvokerFactory {
 	/**
-	 * ƒL[‚É‘Î‰‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ÀsƒIƒuƒWƒFƒNƒg‚ğ•Ô‹p‚·‚é<br>
-	 * 1.ƒL[‚Éƒ}ƒbƒ`‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚ÌƒLƒƒƒbƒVƒ…‚ğæ“¾<br>
-	 * 2.ƒLƒƒƒbƒVƒ…‚ª‚È‚¢ê‡ƒpƒ^[ƒ“ƒ}ƒbƒ`ƒ“ƒO‚ğs‚¢ƒŠƒXƒg‚ğì¬ŒãAƒLƒƒƒbƒVƒ…‚ÉŠi”[<br>
-	 * 3.æ“¾‚µ‚½ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚©‚çƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ÀsƒIƒuƒWƒFƒNƒg‚ğì¬‚µ•Ô‹p<br>
-	 * @param @chainKey					ƒ`ƒF[ƒ“ì¬ƒL[
-	 * @return  InterceptorChainInvoker			ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ÀsƒIƒuƒWƒFƒNƒg
+	 * ã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”å´ã™ã‚‹<br>
+	 * 1.ã‚­ãƒ¼ã«ãƒãƒƒãƒã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—<br>
+	 * 2.ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒãªã„å ´åˆãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã„ãƒªã‚¹ãƒˆã‚’ä½œæˆå¾Œã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æ ¼ç´<br>
+	 * 3.å–å¾—ã—ãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã‹ã‚‰ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã—è¿”å´<br>
+	 * @param ã€€chainKey					ãƒã‚§ãƒ¼ãƒ³ä½œæˆã‚­ãƒ¼
+	 * @return  InterceptorChainInvoker			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public InterceptorChainInvoker createInterceptorInvoker(String chainKey) ;
 

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * ƒf[ƒ^ƒZƒbƒgğŒB<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -40,27 +40,27 @@ public class DatasetConditionImpl implements DatasetCondition, java.io.Serializa
     
     private static final long serialVersionUID = 3063319436932655269L;
     
-    /** ƒf[ƒ^ƒZƒbƒg–¼ */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå */
     private String name;
-    /** ƒVƒŠ[ƒY–¼ */
+    /** ã‚·ãƒªãƒ¼ã‚ºå */
     private String seriesName;
 
-    // DatasetCondition‚ÌJavaDoc
+    // DatasetConditionã®JavaDoc
     public void setName(String name) {
         this.name = name;
     }
 
-    // DatasetCondition‚ÌJavaDoc
+    // DatasetConditionã®JavaDoc
     public String getName() {
         return name;
     }
 
-    // DatasetCondition‚ÌJavaDoc
+    // DatasetConditionã®JavaDoc
     public void setSeriesName(String name) {
         seriesName = name;
     }
 
-    // DatasetCondition‚ÌJavaDoc
+    // DatasetConditionã®JavaDoc
     public String getSeriesName() {
         return seriesName;
     }

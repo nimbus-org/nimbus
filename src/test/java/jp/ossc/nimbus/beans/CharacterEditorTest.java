@@ -58,7 +58,7 @@ public class CharacterEditorTest extends TestCase{
     public void testSetAsText3() throws Exception {
         CharacterEditor editor = new CharacterEditor();
         editor.setAsText("\u3042");
-        assertEquals(new Character('Ç†'), editor.getValue());
+        assertEquals(new Character('„ÅÇ'), editor.getValue());
     }
     
     public void testSetAsText4() throws Exception {

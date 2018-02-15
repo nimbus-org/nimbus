@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * �Đڑ��\MessageConsumer�B<p>
+ * 再接続可能MessageConsumer。<p>
  *
  * @author M.Takata
  */

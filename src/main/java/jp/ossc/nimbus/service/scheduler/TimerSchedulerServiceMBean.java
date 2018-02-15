@@ -36,233 +36,233 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link TimerSchedulerService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link TimerSchedulerService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface TimerSchedulerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * TimerƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * Timerã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isDaemon ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚éê‡‚Ítrue
+     * @param isDaemon ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹å ´åˆã¯true
      */
     public void setDaemon(boolean isDaemon);
     
     /**
-     * TimerƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Timerã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒf[ƒ‚ƒ“ƒXƒŒƒbƒh
+     * @return trueã®å ´åˆã¯ã€ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰
      */
     public boolean isDaemon();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉƒXƒPƒWƒ…[ƒ‹‚ğŠJn‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍfalseB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹å§‹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚<p>
      *
-     * @param isSchedule ƒT[ƒrƒX‚ÌŠJn‚ÉƒXƒPƒWƒ…[ƒ‹‚ğŠJn‚·‚éê‡true
+     * @param isSchedule ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹å§‹ã™ã‚‹å ´åˆtrue
      */
     public void setScheduleOnStart(boolean isSchedule);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉƒXƒPƒWƒ…[ƒ‹‚ğŠJn‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹å§‹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉƒXƒPƒWƒ…[ƒ‹‚ğŠJn‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’é–‹å§‹ã™ã‚‹
      */
     public boolean isScheduleOnStart();
     
     /**
-     * {@link ScheduleFactory#getSchedules(Object)}‚Ìˆø”‚Åw’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒT[ƒrƒX‹N“®“_‚Ìjava.util.DateƒIƒuƒWƒFƒNƒg‚ğg—p‚·‚éB<br>
-     * ’A‚µA{@link ScheduleFactory}‚ğİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚Í–³Œø‚Å‚ ‚éB<br>
+     * {@link ScheduleFactory#getSchedules(Object)}ã®å¼•æ•°ã§æŒ‡å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹èµ·å‹•æ™‚ç‚¹ã®java.util.Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ä½†ã—ã€{@link ScheduleFactory}ã‚’è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ç„¡åŠ¹ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param key ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠ‚É“n‚·ƒL[
+     * @param key ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã«æ¸¡ã™ã‚­ãƒ¼
      */
     public void setScheduleFactoryKey(Object key);
     
     /**
-     * {@link ScheduleFactory#getSchedules(Object)}‚Ìˆø”‚Åw’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleFactory#getSchedules(Object)}ã®å¼•æ•°ã§æŒ‡å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠ‚É“n‚·ƒL[
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã«æ¸¡ã™ã‚­ãƒ¼
      */
     public Object getScheduleFactoryKey();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleFactoryServiceName(ServiceName name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleFactoryServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
      */
     public Schedule[] getSchedules();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setScheduleServiceNames(ServiceName[] names);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getScheduleServiceNames();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğŠÇ—‚·‚é{@link ScheduleStateManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleStateManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ScheduleStateManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleStateManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleStateManagerServiceName(ServiceName name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğŠÇ—‚·‚é{@link ScheduleStateManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleStateManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleStateManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleStateManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleStateManagerServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
      */
     public void addSchedule(TimerSchedule schedule);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @return ƒXƒPƒWƒ…[ƒ‹
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
      */
     public Schedule getSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÄ“Ç‚İ‚İ‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void reloadSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğíœ‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void removeSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğæ‚èÁ‚·B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–ã‚Šæ¶ˆã™ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void cancelSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ—LŒø‚É‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void validateSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ–³Œø‚É‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç„¡åŠ¹ã«ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void invalidateSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§“I‚ÉÀs‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çš„ã«å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
      */
     public void executeSchedule(String name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§“I‚É’x‰„Às‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çš„ã«é…å»¶å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @param delay ’x‰„ŠÔ
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @param delay é…å»¶æ™‚é–“
      */
     public void executeSchedule(String name, long delay);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‹­§“I‚ÉƒXƒPƒWƒ…[ƒ‹Às‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å¼·åˆ¶çš„ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param name ƒXƒPƒWƒ…[ƒ‹–¼
-     * @param time Às
+     * @param name ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å
+     * @param time å®Ÿè¡Œæ™‚åˆ»
      */
     public void executeSchedule(String name, Date time);
     
     /**
-     * Às’†‚ÌƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œä¸­ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Às’†‚ÌƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘OW‡
+     * @return å®Ÿè¡Œä¸­ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰é›†åˆ
      */
     public Collection runningScheduleNames();
     
     /**
-     * Às’†‚ÌƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œä¸­ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Às’†‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌW‡
+     * @return å®Ÿè¡Œä¸­ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é›†åˆ
      */
     public Collection runningSchedules();
     
     /**
-     * Š®—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * å®Œäº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Š®—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘OW‡
+     * @return å®Œäº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰é›†åˆ
      */
     public Collection closedScheduleNames();
     
     /**
-     * Š®—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * å®Œäº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Š®—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ÌW‡
+     * @return å®Œäº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é›†åˆ
      */
     public Collection closedSchedules();
     
     /**
-     * Œ»İ—LŒø‚ÈƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨æœ‰åŠ¹ãªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ—LŒø‚ÈƒXƒPƒWƒ…[ƒ‹‚ÌW‡
+     * @return ç¾åœ¨æœ‰åŠ¹ãªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é›†åˆ
      */
     public Collection validSchedules();
     
     /**
-     * Œ»İ—LŒø‚ÈƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨æœ‰åŠ¹ãªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ—LŒø‚ÈƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘OW‡
+     * @return ç¾åœ¨æœ‰åŠ¹ãªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰é›†åˆ
      */
     public Collection validScheduleNames();
     
     /**
-     * ƒGƒ‰[I—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼çµ‚äº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[I—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ÌW‡
+     * @return ã‚¨ãƒ©ãƒ¼çµ‚äº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é›†åˆ
      */
     public Collection errorSchedules();
     
     /**
-     * ƒGƒ‰[I—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼çµ‚äº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[I—¹‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚Ì–¼‘OW‡
+     * @return ã‚¨ãƒ©ãƒ¼çµ‚äº†ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åå‰é›†åˆ
      */
     public Collection errorScheduleNames();
 }

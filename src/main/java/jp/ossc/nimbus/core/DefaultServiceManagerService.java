@@ -42,8 +42,8 @@ import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.message.MessageRecordFactory;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒT[ƒrƒXƒ}ƒl[ƒWƒƒƒT[ƒrƒXB<p>
- * ƒT[ƒrƒX‚ğŠÇ—‚·‚é{@link ServiceManager}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•‚Å‚·B<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link ServiceManager}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã§ã™ã€‚<br>
  *
  * @author M.Takata
  */
@@ -53,7 +53,7 @@ public class DefaultServiceManagerService extends ServiceBase
     
     private static final long serialVersionUID = 4663655905756505766L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SVCM_ = "SVCM_";
     private static final String SVCM_0 = SVCM_ + 0;
     private static final String SVCM_00 = SVCM_0 + 0;
@@ -108,49 +108,49 @@ public class DefaultServiceManagerService extends ServiceBase
     private static final String SVCM_00047 = SVCM_000 + 47;
     
     /**
-     * ‚±‚ÌƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚éService‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ÌW‡B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹Serviceã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã®é›†åˆã€‚<p>
      */
     private final Set myLoaders = Collections.synchronizedSet(new HashSet());
     
     /**
-     * ‚±‚ÌƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚Ì{@link ManagerMetaData}‚ÌW‡B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã®{@link ManagerMetaData}ã®é›†åˆã€‚<p>
      */
     private final Set managerDatas = new HashSet();
     
     /**
-     * ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒBB<p>
+     * ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     private final Properties managerProperties = new Properties();
     
     /**
-     * ƒfƒvƒƒC‘Ò‹@’†‚ÌƒT[ƒrƒX‚Ìƒ}ƒbƒvB<p>
+     * ãƒ‡ãƒ—ãƒ­ã‚¤å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="3">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th colspan="2">“à—e</th></tr>
-     *   <tr rowspan="3"><td rowspan="3">String</td><td rowspan="3">ƒfƒvƒƒC‘Ò‹@’†‚ÌƒT[ƒrƒX–¼</td><td rowspan="3">java.util.Set</td><td colspan="2">ƒfƒvƒƒC‘Ò‹@’†‚ÌƒT[ƒrƒX‚ªA‘Ò‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌW‡</td></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>ServiceName</td><td>ƒT[ƒrƒX–¼</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="3">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th colspan="2">å†…å®¹</th></tr>
+     *   <tr rowspan="3"><td rowspan="3">String</td><td rowspan="3">ãƒ‡ãƒ—ãƒ­ã‚¤å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹å</td><td rowspan="3">java.util.Set</td><td colspan="2">ãƒ‡ãƒ—ãƒ­ã‚¤å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒã€å¾…ã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é›†åˆ</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>ServiceName</td><td>ã‚µãƒ¼ãƒ“ã‚¹å</td></tr>
      * </table>
      */
     private final Map waitingServices = new Hashtable();
     
     /**
-     * ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚Ìƒ}ƒbƒvB<p>
+     * ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX–¼</td><td>Throwable</td><td colspan="2">ƒfƒvƒƒC‚É¸”s‚µ‚½Œ´ˆö</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å</td><td>Throwable</td><td colspan="2">ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸåŸå› </td></tr>
      * </table>
      */
     private final Map failedServices = new Hashtable();
     
     /**
-     * ‚±‚±‚ÅŠÇ—‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚ğ“o˜^‚·‚é{@link Repository}
+     * ã“ã“ã§ç®¡ç†ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹{@link Repository}
      */
     private Repository repository = new DefaultRepository();
     
     /**
-     * ƒT[ƒrƒX‚Ì“o˜^æ{@link Repository}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒXB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆ{@link Repository}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -199,20 +199,20 @@ public class DefaultServiceManagerService extends ServiceBase
     };
     
     /**
-     * ‚±‚ÌServiceManager‚É“o˜^‚³‚ê‚½“o˜^ó‘ÔƒŠƒXƒi‚ÌƒŠƒXƒgB<p>
+     * ã“ã®ServiceManagerã«ç™»éŒ²ã•ã‚ŒãŸç™»éŒ²çŠ¶æ…‹ãƒªã‚¹ãƒŠã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     private List registrationListeners = new ArrayList();
     
     private Map attributePropCache = new HashMap();
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultServiceManagerService(){
         super();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Service getService(String name) throws ServiceNotFoundException{
         final Object obj = repository.get(name);
         if(obj == null){
@@ -227,7 +227,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return service;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Object getServiceObject(String name) throws ServiceNotFoundException{
         Object target = convertServiceToObject(getService(name));
         if(target != null && target instanceof FactoryService){
@@ -239,7 +239,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return target;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public ServiceStateBroadcaster getServiceStateBroadcaster(String name)
      throws ServiceNotFoundException{
         final Object obj = repository.get(name);
@@ -254,7 +254,7 @@ public class DefaultServiceManagerService extends ServiceBase
     }
 
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public ServiceMetaData getServiceMetaData(String name)
      throws ServiceNotFoundException{
         final Iterator loaders = getServiceLoaders().iterator();
@@ -269,12 +269,12 @@ public class DefaultServiceManagerService extends ServiceBase
         throw new ServiceNotFoundException(getServiceName(), name);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean registerService(String name, Object obj) throws Exception{
         return registerService(name, convertObjectToService(name, obj));
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean registerService(String name, Service service) throws Exception{
         final Logger logger = getLogger();
         
@@ -295,7 +295,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return result;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean registerService(ServiceMetaData serviceData)
      throws Exception{
         ServiceLoader loader = serviceData.getServiceLoader();
@@ -317,7 +317,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return false;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean unregisterService(String name){
         final Logger logger = getLogger();
         
@@ -339,22 +339,22 @@ public class DefaultServiceManagerService extends ServiceBase
         return result;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean isRegisteredService(String name){
         return repository.isRegistered(name); 
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set serviceNameSet(){
         return repository.nameSet();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set serviceSet(){
         return repository.registeredSet();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set serviceObjectSet(){
         final Iterator serviceNames = serviceNameSet().iterator();
         final Set result = new HashSet();
@@ -370,7 +370,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return result;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean setServiceRepository(
         final String manager,
         final String service
@@ -398,10 +398,10 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ“o˜^‚·‚é{@link Repository}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹{@link Repository}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param repositoryService RepositoryƒT[ƒrƒX
-     * @return RepositoryƒT[ƒrƒX‚Ìİ’è‚É¬Œ÷‚µ‚½ê‡true
+     * @param repositoryService Repositoryã‚µãƒ¼ãƒ“ã‚¹
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®è¨­å®šã«æˆåŠŸã—ãŸå ´åˆtrue
      */
     private boolean setServiceRepository(Service repositoryService){
         Repository newRep = null;
@@ -529,7 +529,7 @@ public class DefaultServiceManagerService extends ServiceBase
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean setServiceRepository(Repository newRep){
         final Logger logger = getLogger();
         synchronized(repository){
@@ -570,16 +570,16 @@ public class DefaultServiceManagerService extends ServiceBase
         return true;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Repository getServiceRepository(){
         return repository;
     }
     
     /**
-     * {@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚·‚éƒIƒuƒWƒFƒNƒg‚ğŠeƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
+     * {@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å„ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param service {@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚·‚éƒIƒuƒWƒFƒNƒg
-     * @return ŠeƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒT[ƒrƒXƒIƒuƒWƒFƒNƒg
+     * @param service {@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å„ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     private Object convertServiceToObject(Service service){
         Object target = service;
@@ -593,7 +593,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return target;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Service convertObjectToService(String name, Object obj){
         if(obj == null){
             return null;
@@ -620,7 +620,7 @@ public class DefaultServiceManagerService extends ServiceBase
         return service;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void addServiceLoader(ServiceLoader loader){
         if(!myLoaders.contains(loader)){
             synchronized(myLoaders){
@@ -633,26 +633,26 @@ public class DefaultServiceManagerService extends ServiceBase
             while(propKeys.hasNext()){
                 String propKey = (String)propKeys.next();
                 String prop = managerData.getProperty(propKey);
-                // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceSystemProperty(prop);
-                // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceServiceLoderConfig(
                     prop,
                     loader.getConfig()
                 );
-                // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceManagerProperty(
                     this,
                     prop
                 );
-                // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+                // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
                 prop = Utility.replaceServerProperty(prop);
                 managerProperties.setProperty(propKey, prop);
             }
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void removeServiceLoader(ServiceLoader loader){
         if(myLoaders.contains(loader)){
             synchronized(myLoaders){
@@ -669,37 +669,37 @@ public class DefaultServiceManagerService extends ServiceBase
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set getServiceLoaders(){
         synchronized(myLoaders){
             return new HashSet(myLoaders);
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set getManagerMetaDatas(){
         return managerDatas;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public String getProperty(String name){
         return managerProperties.getProperty(name);
     }
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚·‚é•K—v‚ª‚ ‚é‚©’²‚×‚éB<p>
-     * •K‚¸true‚ğ•Ô‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * å¿…ãštrueã‚’è¿”ã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX‚ğ¶¬‚·‚é•K—v‚ª‚ ‚éê‡trueA‚»‚¤‚Å‚È‚¢ê‡false
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆtrueã€ãã†ã§ãªã„å ´åˆfalse
      */
     protected boolean isNecessaryToCreate(){
         return true;
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì¶¬‘Oˆ—‚ğs‚¤B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void preCreateService() throws Exception{
         final Logger logger = getLogger();
@@ -749,11 +749,11 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚é•K—v‚ª‚ ‚é‚©’²‚×‚éB<p>
-     * ƒT[ƒrƒXó‘Ô‚ª{@link #DESTROYED}‚Ü‚½‚ÍA{@link #FAILED}‚ÅAƒT[ƒrƒX‚ğŠJn‚µ‚æ‚¤‚Æ‚µ‚½ê‡A—áŠO‚ğthrow‚·‚éB‚»‚êˆÈŠO‚ÍAtrue‚ğ•Ô‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #DESTROYED}ã¾ãŸã¯ã€{@link #FAILED}ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã—ã‚ˆã†ã¨ã—ãŸå ´åˆã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚ãã‚Œä»¥å¤–ã¯ã€trueã‚’è¿”ã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX‚ğŠJn‚·‚é•K—v‚ª‚ ‚éê‡trueA‚»‚¤‚Å‚È‚¢ê‡false
-     * @exception Exception ƒT[ƒrƒXó‘Ô‚ª{@link #DESTROYED}‚Ü‚½‚ÍA{@link #FAILED}‚ÅAƒT[ƒrƒX‚ğŠJn‚µ‚æ‚¤‚Æ‚µ‚½ê‡
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆtrueã€ãã†ã§ãªã„å ´åˆfalse
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãŒ{@link #DESTROYED}ã¾ãŸã¯ã€{@link #FAILED}ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã—ã‚ˆã†ã¨ã—ãŸå ´åˆ
      */
     protected boolean isNecessaryToStart() throws Exception{
         if(state == DESTROYED || state == FAILED){
@@ -769,9 +769,9 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì”jŠü‘Oˆ—‚ğs‚¤B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠü‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void preDestroyService() throws Exception{
         if(state != STOPPED){
@@ -787,9 +787,9 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì”jŠüŒãˆ—‚ğs‚¤B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüŒãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postDestroyService() throws Exception{
         if(getServiceName() != null){
@@ -803,29 +803,29 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚É‘Î‚µ‚ÄˆÈ‰º‚Ìˆ—‚ğ‡Ÿs‚¤B<br>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã«å¯¾ã—ã¦ä»¥ä¸‹ã®å‡¦ç†ã‚’é †æ¬¡è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒX‚Ì¶¬ˆ—i{@link Service#create()}j‚ğs‚¤B</li>
-     *   <li>ƒT[ƒrƒX‚Ì‘®«‚Ìİ’è‚ğs‚¤B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ï¼ˆ{@link Service#create()}ï¼‰ã‚’è¡Œã†ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§ã®è¨­å®šã‚’è¡Œã†ã€‚</li>
      * </ol>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
        createAllService();
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚ÌŠJnˆ—({@link Service#start()})‚ğs‚¤B<br>
-     * ƒT[ƒrƒX‚ÌŠJn‚É‚ÍAŠJn‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ªˆË‘¶‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ÌŠJn‚ª—Dæ‚³‚ê‚Äs‚í‚ê‚éB<br>
-     * ˆË‘¶ŠÖŒW‚Ì‚ ‚éƒT[ƒrƒX‚Ìƒ[ƒh‚ªŠ®—¹‚µ‚Ä‚¢‚È‚¢ê‡‚É‚ÍA‚»‚ÌƒT[ƒrƒX‚ªƒ[ƒh‚³‚êŠJn‚³‚ê‚é‚Ü‚ÅAˆË‘¶‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚ÌŠJn‚Í‘Ò‹@‚³‚ê‚éB<br>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†({@link Service#start()})ã‚’è¡Œã†ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã¯ã€é–‹å§‹ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒä¾å­˜ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ãŒå„ªå…ˆã•ã‚Œã¦è¡Œã‚ã‚Œã‚‹ã€‚<br>
+     * ä¾å­˜é–¢ä¿‚ã®ã‚ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ãŒå®Œäº†ã—ã¦ã„ãªã„å ´åˆã«ã¯ã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚Œé–‹å§‹ã•ã‚Œã‚‹ã¾ã§ã€ä¾å­˜ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã¯å¾…æ©Ÿã•ã‚Œã‚‹ã€‚<br>
      * <p>
-     * ‚Ü‚½A‚±‚Ìƒ}ƒl[ƒWƒƒ‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìserver—v‘f‚Ìq—v‘f‚ÉAmanager-repository—v‘fAlog—v‘fAmessage—v‘f‚ª’è‹`‚³‚ê‚Ä‚¢‚éê‡AServiceManagerFactory‚ÉLoggerAMessageRecordFactoryARepository‚Ìİ’è‚ğs‚¤B<br>
-     * “¯—l‚ÉA‚±‚Ìƒ}ƒl[ƒWƒƒ‚ª’è‹`‚³‚ê‚Ä‚¢‚émanager—v‘f‚Ìq—v‘f‚ÉArepository—v‘fAlog—v‘fAmessage—v‘f‚ª’è‹`‚³‚ê‚Ä‚¢‚éê‡A‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉLoggerAMessageRecordFactoryARepository‚Ìİ’è‚ğs‚¤B<br>
+     * ã¾ãŸã€ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®serverè¦ç´ ã®å­è¦ç´ ã«ã€manager-repositoryè¦ç´ ã€logè¦ç´ ã€messageè¦ç´ ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹å ´åˆã€ServiceManagerFactoryã«Loggerã€MessageRecordFactoryã€Repositoryã®è¨­å®šã‚’è¡Œã†ã€‚<br>
+     * åŒæ§˜ã«ã€ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹managerè¦ç´ ã®å­è¦ç´ ã«ã€repositoryè¦ç´ ã€logè¦ç´ ã€messageè¦ç´ ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹å ´åˆã€ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«Loggerã€MessageRecordFactoryã€Repositoryã®è¨­å®šã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         final Logger logger = getLogger();
@@ -847,11 +847,11 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚Ì’â~ˆ—i{@link Service#stop()}j‚ğs‚¤B<p>
-     * ƒT[ƒrƒX‚Ì’â~‚É‚ÍA’â~‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ªˆË‘¶‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚Ì’â~‚ª—Dæ‚³‚ê‚Äs‚í‚ê‚éB<br>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ï¼ˆ{@link Service#stop()}ï¼‰ã‚’è¡Œã†ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã¯ã€åœæ­¢ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒä¾å­˜ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ãŒå„ªå…ˆã•ã‚Œã¦è¡Œã‚ã‚Œã‚‹ã€‚<br>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         stopAllService();
@@ -870,169 +870,169 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         destroyAllService();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void createService(String name) throws Exception{
         createService(name, new HashSet());
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void createService(String name, Set completed)
      throws Exception{
         changeServiceState(name, CREATING, completed);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void createService(Set names){
         changeServiceState(names, CREATING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void createService(Service service, ServiceMetaData serviceData)
      throws Exception{
         changeServiceState(service, serviceData, CREATING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void createAllService(){
         changeAllServiceState(CREATING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void startService(String name) throws Exception{
         startService(name, new HashSet());
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void startService(String name, Set completed) throws Exception{
         changeServiceState(name, STARTING, completed);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void startService(Set names){
         changeServiceState(names, STARTING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void startService(Service service, ServiceMetaData serviceData)
      throws Exception{
         changeServiceState(service, serviceData, STARTING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void startAllService(){
         changeAllServiceState(STARTING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void restartService(String name) throws Exception{
         restartService(name, new HashSet());
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void restartService(String name, Set completed) throws Exception{
         stopService(name, completed);
         completed.clear();
         startService(name, completed);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void restartService(Set names){
         stopService(names);
         startService(names);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void restartService(Service service, ServiceMetaData serviceData)
      throws Exception{
         stopService(service, serviceData);
         startService(service, serviceData);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void restartAllService(){
         stopAllService();
         startAllService();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void stopService(String name){
         stopService(name, new HashSet());
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void stopService(String name, Set completed){
         final Logger logger = getLogger();
         try{
             changeServiceState(name, STOPPING, completed);
         }catch(Exception e){
-            //  ‹N‚±‚è“¾‚È‚¢
+            //  èµ·ã“ã‚Šå¾—ãªã„
             logger.write(SVCM_00035, e);
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void stopService(Set names){
         changeServiceState(names, STOPPING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void stopService(Service service, ServiceMetaData serviceData){
         try{
             changeServiceState(service, serviceData, STOPPING);
         }catch(Exception e){
-            //  ‹N‚±‚è“¾‚È‚¢
+            //  èµ·ã“ã‚Šå¾—ãªã„
             logger.write(SVCM_00035, e);
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void stopAllService(){
         changeAllServiceState(STOPPING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void destroyService(String name){
         destroyService(name, new HashSet());
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void destroyService(String name, Set completed){
         changeServiceState(name, DESTROYING, completed);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void destroyService(Set names){
         changeServiceState(names, DESTROYING);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void destroyService(Service service, ServiceMetaData serviceData){
         try{
             changeServiceState(service, serviceData, DESTROYING);
         }catch(Exception e){
-            //  ‹N‚±‚è“¾‚È‚¢
+            //  èµ·ã“ã‚Šå¾—ãªã„
             logger.write(SVCM_00035, e);
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void destroyAllService(){
         changeAllServiceState(DESTROYING);
     }
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚É“o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚Ìó‘Ô‚ğAw’è‚³‚ê‚½ó‘Ô‚ÌŠ®—¹Œ`‚Ìó‘Ô‚Ö‚Æ‘JˆÚ‚³‚¹‚éB<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ã€æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹ã®å®Œäº†å½¢ã®çŠ¶æ…‹ã¸ã¨é·ç§»ã•ã›ã‚‹ã€‚<p>
      *
-     * @param state ˆÚs‚µ‚½‚¢‘JˆÚó‘Ô
+     * @param state ç§»è¡Œã—ãŸã„é·ç§»çŠ¶æ…‹
      * @see #changeServiceState(String, int, Set)
      */
     protected void changeAllServiceState(int state){
@@ -1040,10 +1040,10 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒXW‡‚Ìó‘Ô‚ğAw’è‚³‚ê‚½ó‘Ô‚ÌŠ®—¹Œ`‚Ìó‘Ô‚Ö‚Æ‘JˆÚ‚³‚¹‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹é›†åˆã®çŠ¶æ…‹ã‚’ã€æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹ã®å®Œäº†å½¢ã®çŠ¶æ…‹ã¸ã¨é·ç§»ã•ã›ã‚‹ã€‚<p>
      *
-     * @param serviceNames ƒT[ƒrƒX–¼•¶š—ñ‚ÌW‡
-     * @param state ˆÚs‚µ‚½‚¢‘JˆÚó‘Ô
+     * @param serviceNames ã‚µãƒ¼ãƒ“ã‚¹åæ–‡å­—åˆ—ã®é›†åˆ
+     * @param state ç§»è¡Œã—ãŸã„é·ç§»çŠ¶æ…‹
      * @see #changeServiceState(String, int, Set)
      */
     protected void changeServiceState(Set serviceNames, int state){
@@ -1060,12 +1060,12 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚Ìó‘Ô‚ğAw’è‚³‚ê‚½ó‘Ô‚ÌŠ®—¹Œ`‚Ìó‘Ô‚Ö‚Æ‘JˆÚ‚³‚¹‚éB<p>
-     * state‚Éw’è‰Â”\‚Èó‘Ô‚ÍA{@link Service#CREATING}A{@link Service#STARTING}A{@link Service#STOPPING}A{@link Service#DESTROYING}‚Ì‚S‚Â‚Å‚ ‚éB‚»‚ê‚¼‚ê‚ğw’è‚µ‚Äó‘Ô•ÏX‚ğs‚Á‚½Œ‹‰Ê‚ÍA‚»‚ê‚¼‚ê{@link Service#CREATED}A{@link Service#STARTED}A{@link Service#STOPPED}A{@link Service#DESTROYED}‚Æ‚È‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ã€æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹ã®å®Œäº†å½¢ã®çŠ¶æ…‹ã¸ã¨é·ç§»ã•ã›ã‚‹ã€‚<p>
+     * stateã«æŒ‡å®šå¯èƒ½ãªçŠ¶æ…‹ã¯ã€{@link Service#CREATING}ã€{@link Service#STARTING}ã€{@link Service#STOPPING}ã€{@link Service#DESTROYING}ã®ï¼”ã¤ã§ã‚ã‚‹ã€‚ãã‚Œãã‚Œã‚’æŒ‡å®šã—ã¦çŠ¶æ…‹å¤‰æ›´ã‚’è¡Œã£ãŸçµæœã¯ã€ãã‚Œãã‚Œ{@link Service#CREATED}ã€{@link Service#STARTED}ã€{@link Service#STOPPED}ã€{@link Service#DESTROYED}ã¨ãªã‚‹ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param state ˆÚs‚µ‚½‚¢‘JˆÚó‘Ô
-     * @param completed ó‘Ô‘JˆÚ‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚èó‘Ô‘JˆÚ‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param state ç§»è¡Œã—ãŸã„é·ç§»çŠ¶æ…‹
+     * @param completed çŠ¶æ…‹é·ç§»ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚ŠçŠ¶æ…‹é·ç§»ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
      */
     protected void changeServiceState(
         String name,
@@ -1160,10 +1160,10 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX‚ğ‘Ò‹@’†‚ÌƒT[ƒrƒX‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param causeService ‘Ò‹@‚ÌŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @param waitService ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param causeService å¾…æ©Ÿã®åŸå› ã¨ãªã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param waitService å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     private void addWaitingServiceCause(
         ServiceName causeService,
@@ -1180,10 +1180,10 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX‚ğ‘Ò‹@’†‚ÌƒT[ƒrƒX‚©‚çíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param causeService ‘Ò‹@‚ÌŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @param waitService ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param causeService å¾…æ©Ÿã®åŸå› ã¨ãªã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param waitService å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     private void removeWaitingServiceCause(
         ServiceName causeService,
@@ -1201,7 +1201,7 @@ public class DefaultServiceManagerService extends ServiceBase
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set getWaitingCauses(String waitService){
         Set causes = null;
         if(waitingServices.containsKey(waitService)){
@@ -1210,26 +1210,26 @@ public class DefaultServiceManagerService extends ServiceBase
         return causes;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void clearWaitingServices(){
         waitingServices.clear();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean existWaitingService(){
         return waitingServices.size() != 0;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set getWaitingServices(){
         return new HashSet(waitingServices.keySet());
     }
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX‚ğ‹N“®¸”s‚É‚æ‚é‘Ò‹@’†‚ÌƒT[ƒrƒX‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•å¤±æ•—ã«ã‚ˆã‚‹å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param causeService ‘Ò‹@‚ÌŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @param waitService ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param causeService å¾…æ©Ÿã®åŸå› ã¨ãªã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param waitService å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     private void addFailedServiceCause(
         String failedService,
@@ -1239,10 +1239,10 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½ƒT[ƒrƒX‚ğ‹N“®¸”s‚É‚æ‚é‘Ò‹@’†‚ÌƒT[ƒrƒX‚©‚çíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•å¤±æ•—ã«ã‚ˆã‚‹å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param causeService ‘Ò‹@‚ÌŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @param waitService ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param causeService å¾…æ©Ÿã®åŸå› ã¨ãªã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param waitService å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     private void removeFailedServiceCause(
         String failedService
@@ -1253,7 +1253,7 @@ public class DefaultServiceManagerService extends ServiceBase
         failedServices.remove(failedService);
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Throwable getFailedCause(String failedService){
         Throwable cause = null;
         if(failedServices.containsKey(failedService)){
@@ -1262,29 +1262,29 @@ public class DefaultServiceManagerService extends ServiceBase
         return cause;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void clearFailedServices(){
         failedServices.clear();
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public boolean existFailedService(){
         return failedServices.size() != 0;
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public Set getFailedServices(){
         return new HashSet(failedServices.keySet());
     }
     
     /**
-     * ˆË‘¶‚·‚éƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ğ‘Ò‹@‚µ‚ÄAó‘Ô•ÏX‚³‚ê‚½ƒ^ƒCƒ~ƒ“ƒO‚Å‘ÎÛ‚ÌƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ªs‚í‚ê‚é‚æ‚¤‚É“o˜^‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ã‚’å¾…æ©Ÿã—ã¦ã€çŠ¶æ…‹å¤‰æ›´ã•ã‚ŒãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ãŒè¡Œã‚ã‚Œã‚‹ã‚ˆã†ã«ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param target ó‘Ô•ÏX‚ğŠÄ‹‚µ‚½‚¢ƒT[ƒrƒX
-     * @param manager ó‘Ô•ÏX‚ğ‘Ò‹@‚·‚éƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager
-     * @param waitService ó‘Ô•ÏX‚ğ‘Ò‹@‚·‚éƒT[ƒrƒX
-     * @param state ó‘Ô•ÏX‚ğ‘Ò‹@‚·‚éƒT[ƒrƒX‚ª‘JˆÚ‚µ‚½‚¢ó‘Ô
-     * @param completed ó‘Ô‘JˆÚ‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚èó‘Ô‘JˆÚ‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
+     * @param target çŠ¶æ…‹å¤‰æ›´ã‚’ç›£è¦–ã—ãŸã„ã‚µãƒ¼ãƒ“ã‚¹
+     * @param manager çŠ¶æ…‹å¤‰æ›´ã‚’å¾…æ©Ÿã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManager
+     * @param waitService çŠ¶æ…‹å¤‰æ›´ã‚’å¾…æ©Ÿã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹
+     * @param state çŠ¶æ…‹å¤‰æ›´ã‚’å¾…æ©Ÿã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒé·ç§»ã—ãŸã„çŠ¶æ…‹
+     * @param completed çŠ¶æ…‹é·ç§»ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚ŠçŠ¶æ…‹é·ç§»ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
      */
     private void waitServiceStateProcess(
         Service target,
@@ -1342,7 +1342,7 @@ public class DefaultServiceManagerService extends ServiceBase
                             manager.destroyService(waitService, completed);
                             break;
                         default:
-                            // ‹N‚±‚è“¾‚È‚¢
+                            // èµ·ã“ã‚Šå¾—ãªã„
                         }
                     }catch(Exception ex){
                         String messageId = null;
@@ -1356,7 +1356,7 @@ public class DefaultServiceManagerService extends ServiceBase
                         case STOPPING:
                         case DESTROYING:
                         default:
-                            // ‹N‚±‚è“¾‚È‚¢
+                            // èµ·ã“ã‚Šå¾—ãªã„
                             logger.write(SVCM_00035, ex);
                             return;
                         }
@@ -1440,13 +1440,13 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * ˆË‘¶‚·‚éƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚Ì“o˜^‚ğ‘Ò‹@‚µ‚ÄA“o˜^‚³‚ê‚½ƒ^ƒCƒ~ƒ“ƒO‚Åó‘Ô•ÏXŠÄ‹‘ÎÛ‚ÌƒT[ƒrƒX‚Ìó‘Ô‚ğƒ`ƒFƒbƒN‚µ‚ÄA‘ÎÛ‚ÌƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ªs‚í‚ê‚é‚æ‚¤‚É“o˜^‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã®ç™»éŒ²ã‚’å¾…æ©Ÿã—ã¦ã€ç™»éŒ²ã•ã‚ŒãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§çŠ¶æ…‹å¤‰æ›´ç›£è¦–å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ã€å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ãŒè¡Œã‚ã‚Œã‚‹ã‚ˆã†ã«ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param targetMng ServiceManagerFactory‚Ö‚Ì“o˜^‚ğŠÄ‹‚µ‚½‚¢ServiceManager‚Ì–¼‘O
-     * @param targetService ó‘Ô•ÏX‚ğŠÄ‹‚µ‚½‚¢ƒT[ƒrƒX‚Ì–¼‘O
-     * @param waitService ó‘Ô•ÏX‚ğ‘Ò‹@‚·‚éƒT[ƒrƒX
-     * @param completed ó‘Ô‘JˆÚ‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚èó‘Ô‘JˆÚ‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
-     * @param isInit ƒ[ƒh’†‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+     * @param targetMng ServiceManagerFactoryã¸ã®ç™»éŒ²ã‚’ç›£è¦–ã—ãŸã„ServiceManagerã®åå‰
+     * @param targetService çŠ¶æ…‹å¤‰æ›´ã‚’ç›£è¦–ã—ãŸã„ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @param waitService çŠ¶æ…‹å¤‰æ›´ã‚’å¾…æ©Ÿã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹
+     * @param completed çŠ¶æ…‹é·ç§»ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚ŠçŠ¶æ…‹é·ç§»ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
+     * @param isInit ãƒ­ãƒ¼ãƒ‰ä¸­ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
      */
     private void waitRegistrationManagerProcess(
         final String targetMng,
@@ -1674,7 +1674,7 @@ public class DefaultServiceManagerService extends ServiceBase
                     continue;
                 }
                 
-                // ‘ŠŒİˆË‘¶ƒ`ƒFƒbƒN
+                // ç›¸äº’ä¾å­˜ãƒã‚§ãƒƒã‚¯
                 if(isDepends(mng, dependsServiceName, manager, serviceName)){
                     logger.write(
                         SVCM_00036,
@@ -1826,7 +1826,7 @@ public class DefaultServiceManagerService extends ServiceBase
                         case DESTROYING:
                         case CREATING:
                         default:
-                            //  ‹N‚±‚è“¾‚È‚¢
+                            //  èµ·ã“ã‚Šå¾—ãªã„
                         }
                     }
                 }
@@ -2335,19 +2335,19 @@ public class DefaultServiceManagerService extends ServiceBase
     ) throws Exception{
         final Logger logger = getLogger();
         
-        // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceSystemProperty(textValue);
-        // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceServiceLoderConfig(
             textValue,
             objData.getServiceLoader().getConfig()
         );
-        // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceManagerProperty(
             this,
             textValue
         );
-        // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceServerProperty(textValue);
         if(type == null || Object.class.equals(type)){
             return textValue;
@@ -2574,7 +2574,7 @@ public class DefaultServiceManagerService extends ServiceBase
                 try{
                     callInvoke(target, objData, invokeData);
                 }catch(Exception e){
-                    // –³‹‚·‚é
+                    // ç„¡è¦–ã™ã‚‹
                 }
             }
         }
@@ -2592,7 +2592,7 @@ public class DefaultServiceManagerService extends ServiceBase
             try{
                 callInvoke(target, objData, (InvokeMetaData)invokes.next());
             }catch(Exception e){
-                // –³‹‚·‚é
+                // ç„¡è¦–ã™ã‚‹
             }
         }
     }
@@ -2937,9 +2937,9 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éRegistrationListener‚ğ’Ç‰Á‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹RegistrationListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param listener RegistrationListenerƒIƒuƒWƒFƒNƒg
+     * @param listener RegistrationListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void addRegistrationListener(RegistrationListener listener){
         if(!registrationListeners.contains(listener)){
@@ -2948,9 +2948,9 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éRegistrationListener‚ğíœ‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹RegistrationListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener RegistrationListenerƒIƒuƒWƒFƒNƒg
+     * @param listener RegistrationListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void removeRegistrationListener(
         RegistrationListener listener
@@ -2959,9 +2959,9 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * Service‚ª“o˜^‚³‚ê‚½–‚ğRegistrationListener‚É’Ê’m‚·‚éB<p>
+     * ServiceãŒç™»éŒ²ã•ã‚ŒãŸäº‹ã‚’RegistrationListenerã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      * 
-     * @param service “o˜^‚³‚ê‚½Service
+     * @param service ç™»éŒ²ã•ã‚ŒãŸService
      * @see RegistrationListener
      * @see RegistrationEvent
      */
@@ -2976,9 +2976,9 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     /**
-     * Service‚ªíœ‚³‚ê‚½–‚ğRegistrationListener‚É’Ê’m‚·‚éB<p>
+     * ServiceãŒå‰Šé™¤ã•ã‚ŒãŸäº‹ã‚’RegistrationListenerã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      * 
-     * @param service íœ‚³‚ê‚½Service
+     * @param service å‰Šé™¤ã•ã‚ŒãŸService
      * @see RegistrationListener
      * @see RegistrationEvent
      */
@@ -2992,7 +2992,7 @@ public class DefaultServiceManagerService extends ServiceBase
         }
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void addServiceStateListener(
         final String name,
         final ServiceStateListener listener
@@ -3022,7 +3022,7 @@ public class DefaultServiceManagerService extends ServiceBase
         );
     }
     
-    // ServiceManager‚ÌJavaDoc
+    // ServiceManagerã®JavaDoc
     public void removeServiceStateListener(
         String name,
         ServiceStateListener listener

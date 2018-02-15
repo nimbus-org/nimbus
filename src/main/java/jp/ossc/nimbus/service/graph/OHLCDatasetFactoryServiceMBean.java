@@ -34,44 +34,44 @@ package jp.ossc.nimbus.service.graph;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link OHLCDatasetFactoryService}��MBean�C���^�t�F�[�X�B<p>
+ * {@link OHLCDatasetFactoryService}のMBeanインタフェース。<p>
  *
  * @author M.Takata
  */
 public interface OHLCDatasetFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ������Ԗ���OHLC���W�v����ꍇ�ɁAOHLC�̎����Ƃ��āA���Ԃ̊J�n���Ԃ��̗p�����ʁB<p>
+     * ある期間毎にOHLCを集計する場合に、OHLCの時刻として、期間の開始時間を採用する種別。<p>
      */
     public static final int COLLATE_DATA_DATE_TYPE_START = 1;
     
     /**
-     * ������Ԗ���OHLC���W�v����ꍇ�ɁAOHLC�̎����Ƃ��āA���Ԃ̏I�����Ԃ��̗p�����ʁB<p>
+     * ある期間毎にOHLCを集計する場合に、OHLCの時刻として、期間の終了時間を採用する種別。<p>
      */
     public static final int COLLATE_DATA_DATE_TYPE_END = 2;
     
     /**
-     * �w�肳�ꂽ���ԃt�B�[���h�Ǝw�肳�ꂽ���Ԃ̒����ŁA�f�[�^���܂Ƃ߂���Ԃ�ݒ肷��B<p>
+     * 指定された期間フィールドと指定された期間の長さで、データをまとめる期間を設定する。<p>
      * 
-     * @param field ���ԃt�B�[���h
-     * @param period ���Ԃ̒���
+     * @param field 期間フィールド
+     * @param period 期間の長さ
      */
     public void setCollateDataPeriod(int field, int period);
     
     /**
-     * ������Ԗ���OHLC���W�v����ꍇ�ɁAOHLC�̎������ǂ̂悤�ɍ̗p���邩��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #COLLATE_DATA_DATE_TYPE_START}�B<br>
+     * ある期間毎にOHLCを集計する場合に、OHLCの時刻をどのように採用するかを設定する。<p>
+     * デフォルトは、{@link #COLLATE_DATA_DATE_TYPE_START}。<br>
      *
-     * @param type OHLC�̎����̗̍p���@
+     * @param type OHLCの時刻の採用方法
      * @see #COLLATE_DATA_DATE_TYPE_START
      * @see #COLLATE_DATA_DATE_TYPE_END
      */
     public void setCollateDataDateType(int type);
     
     /**
-     * ������Ԗ���OHLC���W�v����ꍇ�ɁAOHLC�̎������ǂ̂悤�ɍ̗p���邩���擾����B<p>
+     * ある期間毎にOHLCを集計する場合に、OHLCの時刻をどのように採用するかを取得する。<p>
      *
-     * @return OHLC�̎����̗̍p���@
+     * @return OHLCの時刻の採用方法
      */
     public int getCollateDataDateType();
 }

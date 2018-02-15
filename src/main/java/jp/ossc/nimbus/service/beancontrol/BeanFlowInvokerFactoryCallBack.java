@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.beans.PropertyEditor;
 
 import jp.ossc.nimbus.service.beancontrol.resource.*;
@@ -47,7 +47,7 @@ import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 import jp.ossc.nimbus.service.template.TemplateEngine;
 
 /**
- * BeanFlowInvoker‚ªg—p‚·‚éƒtƒ@ƒNƒgƒŠ[‚Ö‚ÌƒR[ƒ‹ƒoƒbƒN‹@”\‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * BeanFlowInvokerãŒä½¿ç”¨ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã¸ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯æ©Ÿèƒ½ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -55,39 +55,39 @@ import jp.ossc.nimbus.service.template.TemplateEngine;
  */
 public interface BeanFlowInvokerFactoryCallBack {
 	/**
-	 * ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ‚ğì¬‚·‚é
+	 * ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’ä½œæˆã™ã‚‹
 	 * @return	ResourceManager
 	 */
 	public ResourceManager createResourceManager() ;
 	/**
-	 * ƒƒK[‚ğo—Í‚·‚éB
+	 * ãƒ­ã‚¬ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @return	Logger	
 	 */
 	public Logger getLogger() ;
 	/**
-	 * ÀsI—¹“o˜^
+	 * å®Ÿè¡Œçµ‚äº†ç™»éŒ²
 	 * @param monitor
 	 */
 	public void removeExecFlow(BeanFlowMonitor monitor);
 	/**
-	 * Às‚·‚éƒtƒ[‚ğ“o˜^‚·‚é
+	 * å®Ÿè¡Œã™ã‚‹ãƒ•ãƒ­ãƒ¼ã‚’ç™»éŒ²ã™ã‚‹
 	 * @param monitor
 	 */
 	public void addExcecFlow(BeanFlowMonitor monitor) ;	
 	/**
-	 * ƒtƒ[“à‚ÌƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ğo—Í‚·‚é
+	 * ãƒ•ãƒ­ãƒ¼å†…ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
 	 * @return Context
 	 */
 	public Context getThreadContext() ;
 	/**
-	 * ƒWƒƒ[ƒTƒ‹ƒT[ƒrƒX‚ğo—Í‚·‚éB
+	 * ã‚¸ãƒ£ãƒ¼ã‚µãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @return	Journal
 	 * @see	jp.ossc.nimbus.service.journal.Journal
 	 */
 	public Journal getJournal(BeanFlowInvokerAccess invoker) ;
 	public EditorFinder getEditorFinder();
 	/**
-	 * propertyƒGƒfƒBƒ^‚ğŒŸõ‚·‚é
+	 * propertyã‚¨ãƒ‡ã‚£ã‚¿ã‚’æ¤œç´¢ã™ã‚‹
 	 * @param cls
 	 * @return PropertyEditor
 	 */

@@ -35,7 +35,7 @@ import java.util.Set;
 import java.util.Map;
 
 /**
- * {@link BeanTableIndex Bean�e�[�u���C���f�b�N�X}�̃C���f�b�N�X�L�[�̃t�@�N�g���B<p>
+ * {@link BeanTableIndex Beanテーブルインデックス}のインデックスキーのファクトリ。<p>
  *
  * @author M.Takata
  * @see BeanTableIndex
@@ -43,30 +43,30 @@ import java.util.Map;
 public interface BeanTableIndexKeyFactory{
     
     /**
-     * �C���f�b�N�X�ΏۂƂȂ�v���p�e�B���̏W�����擾����B<p>
-     * Bean�̃v���p�e�B��ҏW����ꍇ�́A�{���̃v���p�e�B���Ɣ��Ȃ��ʖ���Ԃ��K�v������B<br>
+     * インデックス対象となるプロパティ名の集合を取得する。<p>
+     * Beanのプロパティを編集する場合は、本来のプロパティ名と被らない別名を返す必要がある。<br>
      *
-     * @return �C���f�b�N�X�ΏۂƂȂ�v���p�e�B���̏W��
+     * @return インデックス対象となるプロパティ名の集合
      */
     public Set getPropertyNames();
     
     /**
-     * �w�肳�ꂽBean����C���f�b�N�X�L�[�𐶐�����B<p>
-     * �w�肳�ꂽBean����A{@link #getPropertyNames()}�ŕԂ��v���p�e�B�ɊY������l���擾�y�ѕҏW���āA�C���f�b�N�X�̃L�[�ƂȂ�I�u�W�F�N�g�𐶐�����B<br>
+     * 指定されたBeanからインデックスキーを生成する。<p>
+     * 指定されたBeanから、{@link #getPropertyNames()}で返すプロパティに該当する値を取得及び編集して、インデックスのキーとなるオブジェクトを生成する。<br>
      *
-     * @param element �e�[�u���̗v�f�ƂȂ�Bean
-     * @return �C���f�b�N�X�L�[
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
+     * @param element テーブルの要素となるBean
+     * @return インデックスキー
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
      */
     public Object createIndexKey(Object element) throws IndexPropertyAccessException;
     
     /**
-     * �w�肳�ꂽ�v���p�e�B���ƒl�̃}�b�v����C���f�b�N�X�L�[�𐶐�����B<p>
-     * �w�肳�ꂽ�v���p�e�B���ƒl�̃}�b�v����A{@link #getPropertyNames()}�ŕԂ��v���p�e�B�ɊY������l���擾�y�ѕҏW���āA�C���f�b�N�X�̃L�[�ƂȂ�I�u�W�F�N�g�𐶐�����B<br>
+     * 指定されたプロパティ名と値のマップからインデックスキーを生成する。<p>
+     * 指定されたプロパティ名と値のマップから、{@link #getPropertyNames()}で返すプロパティに該当する値を取得及び編集して、インデックスのキーとなるオブジェクトを生成する。<br>
      *
-     * @param props �v���p�e�B���ƒl�̃}�b�v
-     * @return �C���f�b�N�X�L�[
-     * @exception IllegalArgumentException �w�肳�ꂽ�v���p�e�B���ƒl�̃}�b�v�ɕK�v�ȃL�[���܂܂�Ă��Ȃ��ꍇ
+     * @param props プロパティ名と値のマップ
+     * @return インデックスキー
+     * @exception IllegalArgumentException 指定されたプロパティ名と値のマップに必要なキーが含まれていない場合
      */
     public Object createIndexKeyByProperties(Map props) throws IllegalArgumentException;
 }

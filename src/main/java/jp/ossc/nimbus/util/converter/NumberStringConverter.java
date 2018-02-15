@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ”šƒRƒ“ƒo[ƒ^B<p>
+ * æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * <table border=5>
- *     <tr><th>”¼Šp”š</th><th>‘SŠp”š</th></tr>
- *     <tr><td>0</td><td>‚O</td></tr>
- *     <tr><td>1</td><td>‚P</td></tr>
- *     <tr><td>2</td><td>‚Q</td></tr>
- *     <tr><td>3</td><td>‚R</td></tr>
- *     <tr><td>4</td><td>‚S</td></tr>
- *     <tr><td>5</td><td>‚T</td></tr>
- *     <tr><td>6</td><td>‚U</td></tr>
- *     <tr><td>7</td><td>‚V</td></tr>
- *     <tr><td>8</td><td>‚W</td></tr>
- *     <tr><td>9</td><td>‚X</td></tr>
+ *     <tr><th>åŠè§’æ•°å­—</th><th>å…¨è§’æ•°å­—</th></tr>
+ *     <tr><td>0</td><td>ï¼</td></tr>
+ *     <tr><td>1</td><td>ï¼‘</td></tr>
+ *     <tr><td>2</td><td>ï¼’</td></tr>
+ *     <tr><td>3</td><td>ï¼“</td></tr>
+ *     <tr><td>4</td><td>ï¼”</td></tr>
+ *     <tr><td>5</td><td>ï¼•</td></tr>
+ *     <tr><td>6</td><td>ï¼–</td></tr>
+ *     <tr><td>7</td><td>ï¼—</td></tr>
+ *     <tr><td>8</td><td>ï¼˜</td></tr>
+ *     <tr><td>9</td><td>ï¼™</td></tr>
  * </table>
  *
  * @author M.Takata
@@ -55,16 +55,16 @@ public class NumberStringConverter extends HankakuZenkakuStringConverter
     private static final long serialVersionUID = -5890416652278253970L;
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·í•Ê‚Ì”šƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ç¨®åˆ¥ã®æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public NumberStringConverter(){
         super(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * ”šƒRƒ“ƒo[ƒ^[‚ğ¶¬‚µ‚Ü‚·B
+     * æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see HankakuZenkakuStringConverter#HANKAKU_TO_ZENKAKU
      * @see HankakuZenkakuStringConverter#ZENKAKU_TO_HANKAKU
      */
@@ -73,7 +73,7 @@ public class NumberStringConverter extends HankakuZenkakuStringConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return {@link NumberCharacterConverter#CONV_CHARS}
      */
@@ -82,7 +82,7 @@ public class NumberStringConverter extends HankakuZenkakuStringConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return null
      */

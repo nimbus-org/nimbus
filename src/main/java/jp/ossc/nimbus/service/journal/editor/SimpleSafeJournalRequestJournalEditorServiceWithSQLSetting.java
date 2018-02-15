@@ -29,16 +29,16 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.journal.editor;
 
 import jp.ossc.nimbus.service.journal.JournalRecord;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ___ƒNƒ‰ƒX<p>
- * ___‘€ì‚ğs‚¤
+ * ___ã‚¯ãƒ©ã‚¹<p>
+ * ___æ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
@@ -50,9 +50,9 @@ public class SimpleSafeJournalRequestJournalEditorServiceWithSQLSetting extends
     
     private static final long serialVersionUID = -4112494655642853654L;
     
-    /** SQLo—Í‚ğs‚¤‚©”Û‚©*/
+    /** SQLå‡ºåŠ›ã‚’è¡Œã†ã‹å¦ã‹*/
     private boolean bOutputSql;
-    /** SQLo—Í‚ğs‚¤‚©”Û‚©*/
+    /** SQLå‡ºåŠ›ã‚’è¡Œã†ã‹å¦ã‹*/
     private String mSqlKeyFormat=null;
     
     public void startService() throws Exception{
@@ -67,14 +67,14 @@ public class SimpleSafeJournalRequestJournalEditorServiceWithSQLSetting extends
         super.stopService();
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.journal.editor.SimpleSafeJournalRequestJournalEditorServiceWithSQLSettingMBean#setSqlOutput()
      */
     public void setOutputSql(boolean output) {
         bOutputSql = output;       
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.journal.editor.SimpleSafeJournalRequestJournalEditorServiceWithSQLSettingMBean#getSqlOutput()
      */
     public boolean getOutputSql() {
@@ -99,7 +99,7 @@ public class SimpleSafeJournalRequestJournalEditorServiceWithSQLSetting extends
 
     /**
      * isSqlRecKey<p>
-     * SQL•¶‚ğŠÜ‚ŞƒL[‚Å‚ ‚é‚©‚ğ”»’è‚·‚é
+     * SQLæ–‡ã‚’å«ã‚€ã‚­ãƒ¼ã§ã‚ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹
      * @param recStr
      * @return
      */
@@ -109,14 +109,14 @@ public class SimpleSafeJournalRequestJournalEditorServiceWithSQLSetting extends
         return false;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.journal.editor.SimpleSafeJournalRequestJournalEditorServiceWithSQLSettingMBean#setSqlOmittingSqlFormat(java.lang.String)
      */
     public void setSqlOmittingSqlKeyFormat(String format) {
         mSqlKeyFormat = format;        
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.journal.editor.SimpleSafeJournalRequestJournalEditorServiceWithSQLSettingMBean#getSqlOmittingSqlFormat()
      */
     public String getSqlOmittingSqlKeyFormat() {

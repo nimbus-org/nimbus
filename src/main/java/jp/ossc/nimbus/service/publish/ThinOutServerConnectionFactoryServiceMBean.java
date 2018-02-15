@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link ThinOutServerConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ThinOutServerConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ThinOutServerConnectionFactoryService
@@ -43,60 +43,60 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface ThinOutServerConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerConnectionFactoryServiceName();
     
     /**
-     * {@link ThinOutFilter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link ThinOutFilter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ThinOutFilterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param name ThinOutFilterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setThinOutFilterServiceNames(ServiceName[] name);
     
     /**
-     * {@link ThinOutFilter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link ThinOutFilter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ThinOutFilterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ThinOutFilterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getThinOutFilterServiceNames();
     
     /**
-     * ŠÔˆø‚«‘ÎÛ‚Æ‚È‚Á‚½ƒƒbƒZ[ƒW‚ªÅŒã‚ÌƒƒbƒZ[ƒW‚¾‚Á‚½ê‡‚É‘—M‚·‚é‚½‚ß‚ÌŠÄ‹ŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * é–“å¼•ãå¯¾è±¡ã¨ãªã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæœ€å¾Œã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã ã£ãŸå ´åˆã«é€ä¿¡ã™ã‚‹ãŸã‚ã®ç›£è¦–é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      *
-     * @param interval ŠÄ‹ŠÔŠu[ms]
+     * @param interval ç›£è¦–é–“éš”[ms]
      */
     public void setThinOutTimeoutCheckInterval(long interval);
     
     /**
-     * ŠÔˆø‚«‘ÎÛ‚Æ‚È‚Á‚½ƒƒbƒZ[ƒW‚ªÅŒã‚ÌƒƒbƒZ[ƒW‚¾‚Á‚½ê‡‚É‘—M‚·‚é‚½‚ß‚ÌŠÄ‹ŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * é–“å¼•ãå¯¾è±¡ã¨ãªã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæœ€å¾Œã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã ã£ãŸå ´åˆã«é€ä¿¡ã™ã‚‹ãŸã‚ã®ç›£è¦–é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÄ‹ŠÔŠu[ms]
+     * @return ç›£è¦–é–“éš”[ms]
      */
     public long getThinOutTimeoutCheckInterval();
     
     /**
-     * ŠÔˆø‚«‘ÎÛ‚Æ‚È‚Á‚½ƒƒbƒZ[ƒW‚ªÅŒã‚ÌƒƒbƒZ[ƒW‚¾‚Á‚½ê‡‚É‘—M‚·‚é‚½‚ß‚ÌAŠÔˆø‚«ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA3•bB<br>
+     * é–“å¼•ãå¯¾è±¡ã¨ãªã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæœ€å¾Œã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã ã£ãŸå ´åˆã«é€ä¿¡ã™ã‚‹ãŸã‚ã®ã€é–“å¼•ãã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€3ç§’ã€‚<br>
      *
-     * @param timeout ŠÔˆø‚«ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout é–“å¼•ãã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setThinOutTimeout(long timeout);
     
     /**
-     * ŠÔˆø‚«‘ÎÛ‚Æ‚È‚Á‚½ƒƒbƒZ[ƒW‚ªÅŒã‚ÌƒƒbƒZ[ƒW‚¾‚Á‚½ê‡‚É‘—M‚·‚é‚½‚ß‚ÌAŠÔˆø‚«ƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * é–“å¼•ãå¯¾è±¡ã¨ãªã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæœ€å¾Œã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã ã£ãŸå ´åˆã«é€ä¿¡ã™ã‚‹ãŸã‚ã®ã€é–“å¼•ãã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÔˆø‚«ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return é–“å¼•ãã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getThinOutTimeout();
 }

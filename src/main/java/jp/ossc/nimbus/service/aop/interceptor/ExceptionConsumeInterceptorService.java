@@ -42,9 +42,9 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.log.*;
 
 /**
- * w’è—áŠO’×‚µƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚ÌŒ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½‚ÉAw’è‚³‚ê‚½—áŠO‚ğƒLƒƒƒbƒ`‚µAˆ¬‚è’×‚µ‚Ä–ß‚è’l‚ğ•Ô‚·ƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAw’è—áŠO’×‚µƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * æŒ‡å®šä¾‹å¤–æ½°ã—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã®çµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸæ™‚ã«ã€æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‚’ã‚­ãƒ£ãƒƒãƒã—ã€æ¡ã‚Šæ½°ã—ã¦æˆ»ã‚Šå€¤ã‚’è¿”ã™ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€æŒ‡å®šä¾‹å¤–æ½°ã—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -80,89 +80,89 @@ public class ExceptionConsumeInterceptorService extends ServiceBase
     private Object returnValue;
     private boolean isLoggingException;
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setExceptionClassNames(String[] classnames){
         exceptionClassNames = classnames;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public String[] getExceptionClassNames(){
         return exceptionClassNames;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setReturnValue(Object val){
         returnValue = val;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public Object getReturnValue(){
         return returnValue;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setLoggerServiceName(ServiceName name){
         logServiceName = name;
     }
 
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public ServiceName getLoggerServiceName(){
         return logServiceName;
     }
 
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setLoggerMessageCode(String key){
         logKey = key;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public String getLoggerMessageCode(){
         return logKey;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setLoggerMessageArgs(String[] args){
         logArgs = args;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public String[] getLoggerMessageArgs(){
         return logArgs;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setLoggerMessageLocale(Locale locale){
         logLocale = locale;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public Locale getLoggerMessageLocale(){
         return logLocale;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public void setLoggingException(boolean isLogging){
         isLoggingException = isLogging;
     }
     
-    // ExceptionConsumeInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionConsumeInterceptorServiceMBeanã®JavaDoc
     public boolean isLoggingException(){
         return isLoggingException;
     }
     
     /**
-     * Logger‚ğİ’è‚·‚éB<p>
+     * Loggerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param log ƒƒOƒT[ƒrƒX
+     * @param log ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setLoggerService(Logger log){
         this.log = log;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -188,13 +188,13 @@ public class ExceptionConsumeInterceptorService extends ServiceBase
     }
     
     /*
-     * İ’è‚³‚ê‚½—áŠO‚ğcatch‚µ‚Äˆ¬‚è‚Â‚Ô‚µ‚ÄAnull‚ğ•Ô‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B
+     * è¨­å®šã•ã‚ŒãŸä¾‹å¤–ã‚’catchã—ã¦æ¡ã‚Šã¤ã¶ã—ã¦ã€nullã‚’è¿”ã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable İ’è‚³‚ê‚½—áŠO
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable è¨­å®šã•ã‚ŒãŸä¾‹å¤–
      */
     public Object invoke(
         InvocationContext context,

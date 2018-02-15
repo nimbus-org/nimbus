@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.service.naming;
 
 /**
- * �l�[�~���O�T�[�r�X�C���^�t�F�[�X�B<p>
+ * ネーミングサービスインタフェース。<p>
  * 
  * @author M.Takata
  */
 public interface Naming{
     
     /**
-     * �w�肳�ꂽ���O�ɑΉ�����I�u�W�F�N�g���擾����B<p>
-     * �w�肳�ꂽ���O�ɑΉ�����I�u�W�F�N�g��������Ȃ��ꍇ�Anull��Ԃ��B<br>
+     * 指定された名前に対応するオブジェクトを取得する。<p>
+     * 指定された名前に対応するオブジェクトが見つからない場合、nullを返す。<br>
      *
-     * @param name ���O
-     * @return �w�肵�����O�ɑΉ�����I�u�W�F�N�g
+     * @param name 名前
+     * @return 指定した名前に対応するオブジェクト
      */
     public Object find(String name);
 }

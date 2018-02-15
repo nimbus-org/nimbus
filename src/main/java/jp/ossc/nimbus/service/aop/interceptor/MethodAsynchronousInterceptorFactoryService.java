@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodAsynchronousInterceptorService}‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * {@link MethodAsynchronousInterceptorService}ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -50,10 +50,10 @@ public class MethodAsynchronousInterceptorFactoryService
          = new MethodAsynchronousInterceptorService();
     
     /**
-     * {@link MethodAsynchronousInterceptorService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link MethodAsynchronousInterceptorService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return MethodAsynchronousInterceptorServiceƒT[ƒrƒX
-     * @exception Exception MethodAsynchronousInterceptorService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return MethodAsynchronousInterceptorServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception MethodAsynchronousInterceptorServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see MethodAsynchronousInterceptorService
      */
     protected Service createServiceInstance() throws Exception{
@@ -66,7 +66,7 @@ public class MethodAsynchronousInterceptorFactoryService
         return interceptor;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setRequestQueueServiceName(ServiceName name){
         template.setRequestQueueServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -78,12 +78,12 @@ public class MethodAsynchronousInterceptorFactoryService
         }
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public ServiceName getRequestQueueServiceName(){
         return template.getRequestQueueServiceName();
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setResponseQueueServiceName(ServiceName name){
         template.setResponseQueueServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -95,7 +95,7 @@ public class MethodAsynchronousInterceptorFactoryService
         }
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public ServiceName getResponseQueueServiceName(){
         return template.getResponseQueueServiceName();
     }

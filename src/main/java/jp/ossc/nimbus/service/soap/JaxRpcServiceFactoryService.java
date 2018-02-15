@@ -46,7 +46,7 @@ import jp.ossc.nimbus.core.ServiceMetaData;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 
 /**
- * JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒXB<p>
+ * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -55,56 +55,56 @@ public class JaxRpcServiceFactoryService extends ServiceBase
     
     private static final long serialVersionUID = -8319395042566600989L;
     
-    // ƒƒ“ƒo[•Ï”
-    /** ƒl[ƒ€ƒXƒy[ƒX */
+    // ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
+    /** ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹ */
     private String nameSpace;
-    /** JAX-RPCƒT[ƒrƒX–¼ */
+    /** JAX-RPCã‚µãƒ¼ãƒ“ã‚¹å */
     private String jaxRpcServiceName;
     /** WSDL URL */
     private URL wsdlURL;
-    /** JAX-RPCƒT[ƒrƒX */
+    /** JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ */
     private ServiceFactory jaxRpcFactory;
-    /** Œ^ƒ}ƒbƒsƒ“ƒO */
+    /** å‹ãƒãƒƒãƒ”ãƒ³ã‚° */
     private Map typeMappings;
     private String serviceFactoryClassName;
     private String wsdlPath;
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public URL getWsdlURL() {
         return wsdlURL;
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public void setWsdlURL(URL url) {
         wsdlURL = url;
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public String getWsdlPath() {
         return wsdlPath;
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public void setWsdlPath(String path) {
         wsdlPath = path;
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public void setJaxRpcServiceName(String jaxRpcServiceName) {
         this.jaxRpcServiceName = jaxRpcServiceName;
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public void setNameSpace(String nameSpace) {
         this.nameSpace = nameSpace;
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public void setTypeMapping(String encodingStyleURI, TypeMapping mapping){
         typeMappings.put(encodingStyleURI, mapping);
     }
     
-    // ServiceFactoryServiceMBean‚ÌJavaDoc
+    // ServiceFactoryServiceMBeanã®JavaDoc
     public TypeMapping getTypeMapping(String encodingStyleURI){
         return (TypeMapping)typeMappings.get(encodingStyleURI);
     }
@@ -122,11 +122,11 @@ public class JaxRpcServiceFactoryService extends ServiceBase
     
     public void startService() throws Exception {
         if (nameSpace == null) {
-            // ƒl[ƒ€ƒXƒy[ƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢B
+            // ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã€‚
             throw new IllegalArgumentException("nameSpace must be specified.");
         }
         if (jaxRpcServiceName == null) {
-            // JAX-RPCƒT[ƒrƒX–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢B
+            // JAX-RPCã‚µãƒ¼ãƒ“ã‚¹åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã€‚
             throw new IllegalArgumentException("jaxRpcServiceName must be specified.");
         }
         if(wsdlPath != null){
@@ -141,7 +141,7 @@ public class JaxRpcServiceFactoryService extends ServiceBase
                 try{
                     wsdlURL = localFile.toURL();
                 }catch(MalformedURLException e){
-                    // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                    // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
                 }
             }else{
                 File serviceDefDir = null;
@@ -167,7 +167,7 @@ public class JaxRpcServiceFactoryService extends ServiceBase
                     try{
                         wsdlURL = localFile.toURL();
                     }catch(MalformedURLException e){
-                        // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                        // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
                     }
                 }else{
                     
@@ -181,13 +181,13 @@ public class JaxRpcServiceFactoryService extends ServiceBase
             }
             
             if (wsdlURL == null) {
-                // WSDL‚ÌURL‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢B
+                // WSDLã®URLãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã€‚
                 throw new IllegalArgumentException("WsdlPath could not find. path=" + wsdlURL);
             }
         }
         
         if (wsdlURL == null) {
-            // WSDL‚ÌURL‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢B
+            // WSDLã®URLãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã€‚
             throw new IllegalArgumentException("wsdlURL must be specified.");
         }
         
@@ -195,7 +195,7 @@ public class JaxRpcServiceFactoryService extends ServiceBase
             System.setProperty(ServiceFactory.SERVICEFACTORY_PROPERTY, serviceFactoryClassName);
         }
         
-        // JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[ 
+        // JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ 
         jaxRpcFactory = ServiceFactory.newInstance();
         
         getService();
@@ -209,12 +209,12 @@ public class JaxRpcServiceFactoryService extends ServiceBase
         typeMappings = null;
     }
     
-    // ServiceFactory‚ÌJavaDoc
+    // ServiceFactoryã®JavaDoc
     public Service getService() throws JaxRpcServiceException {
         
         final QName serviceQN = new QName(nameSpace, jaxRpcServiceName);
         
-        // JAX-RPCƒT[ƒrƒX¶¬
+        // JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ç”Ÿæˆ
         Service jaxRpcService = null;
         try{
             jaxRpcService = jaxRpcFactory.createService(
@@ -243,12 +243,12 @@ public class JaxRpcServiceFactoryService extends ServiceBase
         return jaxRpcService;
     }
     
-    // ServiceFactory‚ÌJavaDoc
+    // ServiceFactoryã®JavaDoc
     public String getJaxRpcServiceName() {
         return jaxRpcServiceName;
     }
     
-    // ServiceFactory‚ÌJavaDoc
+    // ServiceFactoryã®JavaDoc
     public String getNameSpace() {
         return nameSpace;
     }

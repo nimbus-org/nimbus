@@ -55,7 +55,7 @@ import org.jfree.data.time.Week;
 import org.jfree.data.time.RegularTimePeriod;
 
 /**
- * TimeSeriesCollectionƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠB<p>
+ * TimeSeriesCollectionãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -64,121 +64,121 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     
     private static final long serialVersionUID = -2875237240430766743L;
     
-    /** ŠúŠÔ : ƒ~ƒŠ•b */
+    /** æœŸé–“ : ãƒŸãƒªç§’ */
     protected static final int PERIOD_MILLISECOND = 1;
-    /** ŠúŠÔ : Fixedƒ~ƒŠ•b */
+    /** æœŸé–“ : FixedãƒŸãƒªç§’ */
     protected static final int PERIOD_FIXEDMILLISECOND = 2;
-    /** ŠúŠÔ : •b */
+    /** æœŸé–“ : ç§’ */
     protected static final int PERIOD_SECOND = 3;
-    /** ŠúŠÔ : •ª */
+    /** æœŸé–“ : åˆ† */
     protected static final int PERIOD_MINUTE = 4;
-    /** ŠúŠÔ :  */
+    /** æœŸé–“ : æ™‚ */
     protected static final int PERIOD_HOUR = 5;
-    /** ŠúŠÔ : “ú */
+    /** æœŸé–“ : æ—¥ */
     protected static final int PERIOD_DAY = 6;
-    /** ŠúŠÔ : T */
+    /** æœŸé–“ : é€± */
     protected static final int PERIOD_WEEK = 7;
-    /** ŠúŠÔ : Œ */
+    /** æœŸé–“ : æœˆ */
     protected static final int PERIOD_MONTH = 8;
-    /** ŠúŠÔ : l”¼Šú */
+    /** æœŸé–“ : å››åŠæœŸ */
     protected static final int PERIOD_QUARTER = 9;
-    /** ŠúŠÔ : ”N */
+    /** æœŸé–“ : å¹´ */
     protected static final int PERIOD_YEAR = 10;
     
-    /** ƒf[ƒ^ƒZƒbƒg–¼ */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå */
     protected String dataSetName;
-    /** TimePeriodƒNƒ‰ƒXƒ}ƒbƒv */
+    /** TimePeriodã‚¯ãƒ©ã‚¹ãƒãƒƒãƒ— */
     protected Map timePeriodClassMap;
-    /** ˆ—ƒ^ƒCƒv */
+    /** å‡¦ç†ã‚¿ã‚¤ãƒ— */
     protected int collateDataType;
-    /** “¯’l‚ğ–³‹‚·‚é‚© */
+    /** åŒå€¤ã‚’ç„¡è¦–ã™ã‚‹ã‹ */
     protected boolean isIgnoreSameValue;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔƒtƒB[ƒ‹ƒh */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ */
     protected int collateDataField = Calendar.MILLISECOND;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚Ì’·‚³ */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã®é•·ã• */
     protected int collateDataPeriod = 1;
-    /** “ü—Íƒf[ƒ^‚ÌŠúŠÔƒtƒB[ƒ‹ƒh */
+    /** å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã®æœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ */
     protected int inputDataField = Calendar.MILLISECOND;
-    /** “ü—Íƒf[ƒ^‚ÌŠúŠÔ‚Ì’·‚³ */
+    /** å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã®æœŸé–“ã®é•·ã• */
     protected int inputDataPeriod = 1;
-    /** •ªŠ„‚·‚é‚© */
+    /** æ™‚åˆ†å‰²ã™ã‚‹ã‹ */
     protected boolean isAutoTimesharing;
-    /** ‚ÌÌ—p•û–@ */
+    /** æ™‚åˆ»ã®æ¡ç”¨æ–¹æ³• */
     protected int collateDataDateType = COLLATE_DATA_DATE_TYPE_START;
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setName(String name){
         dataSetName = name;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getName(){
         return dataSetName;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setTimePeriodClass(String seriesName, Class clazz){
         timePeriodClassMap.put(seriesName, clazz);
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public Class getTimePeriodClass(String seriesName){
         return (Class)timePeriodClassMap.get(seriesName);
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setCollateDataType(int type){
         collateDataType = type;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public int getCollateDataType(){
         return collateDataType;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public boolean isIgnoreSameValue(){
         return isIgnoreSameValue;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setIgnoreSameValue(boolean isIgnore){
         isIgnoreSameValue = isIgnore;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setCollateDataPeriod(int field, int period){
         collateDataField = field;
         collateDataPeriod = period;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setInputDataPeriod(int field, int period){
         inputDataField = field;
         inputDataPeriod = period;
     }
         
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setAutoTimesharing(boolean isAuto){
         isAutoTimesharing = isAuto;
     }
     
-    // TimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // TimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public boolean isAutoTimesharing(){
         return isAutoTimesharing;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setCollateDataDateType(int type){
         collateDataDateType = type;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getCollateDataDateType(){
         return collateDataDateType;
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void preCreateService() throws Exception{
         super.preCreateService();
         timePeriodClassMap = new HashMap();
@@ -187,22 +187,22 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     public void preStartService() throws Exception{
         super.preStartService();
         if(dataSetName == null || dataSetName.length() == 0){
-            // ƒT[ƒrƒX’è‹`‚Åİ’è‚³‚ê‚È‚©‚Á‚½ê‡
+            // ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆ
             dataSetName = getServiceName();
         }
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void postDestroyService() throws Exception{
         timePeriodClassMap = null;
         super.postDestroyService();
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param dsConditions ƒf[ƒ^ƒZƒbƒgğŒ”z—ñ
-     * @return ƒf[ƒ^ƒZƒbƒg
+     * @param dsConditions ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      * @exception DatasetCreateException
      */
     public Dataset createDataset(DatasetCondition[] dsConditions)
@@ -261,7 +261,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                 Date date = null;
                 boolean hasNext = cursor.next();
                 while(hasNext){
-                    // “¯’l‚ÌÅŒã‚Ìƒf[ƒ^‚ğ’Ç‰Á‚·‚éÛ‚Ég‚¤“ú•t
+                    // åŒå€¤ã®æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹éš›ã«ä½¿ã†æ—¥ä»˜
                     if(inOut.date == null || inOut.preDate == null){
                         inOut.preDate = inOut.date;
                     }else{
@@ -278,9 +278,9 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                         inOut.date = date;
                         
                         if(isAutoTimesharing){
-                            // ©“®•ªŠ„‚ğs‚¤
+                            // è‡ªå‹•æ™‚åˆ†å‰²ã‚’è¡Œã†
                             if(inOut.preDate != null && inOut.preDate.equals(date)){
-                                // “¯‚¶ŠÔ‚Ì’l‚ğ—­‚ß‚Ş
+                                // åŒã˜æ™‚é–“ã®å€¤ã‚’æºœã‚è¾¼ã‚€
                                 record.setDate(date);
                                 record.add(value);
                                 hasNext = cursor.next();
@@ -289,7 +289,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                 }
                             }else{
                                 record.setPeriodMillis(getPeriodMillis(workCal, inOut.lastDate, inputDataField, inputDataPeriod));
-                                // —­‚ß‚ñ‚¾“¯‚¶ŠÔ‚Ì’l‚ğTimeSeries‚É’Ç‰Á
+                                // æºœã‚è¾¼ã‚“ã åŒã˜æ™‚é–“ã®å€¤ã‚’TimeSeriesã«è¿½åŠ 
                                 inOut.date = inOut.preDate;
                                 double tmpValue = Double.NaN;
                                 while(record.hasNext()){
@@ -314,11 +314,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                     
                     if(!hasNext){
                         
-                        // collateDataType‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢(0)‚Í‚·‚Å‚É‚·‚×‚Ä‚Ì’l‚ª’Ç‰Á‚³‚ê‚Ä‚¢‚é‚Ì‚Åˆ—‚·‚é•K—v‚È‚µ
+                        // collateDataTypeãŒè¨­å®šã•ã‚Œã¦ã„ãªã„(0)æ™‚ã¯ã™ã§ã«ã™ã¹ã¦ã®å€¤ãŒè¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã®ã§å‡¦ç†ã™ã‚‹å¿…è¦ãªã—
                         if(collateDataType != 0){
                             if(isAutoTimesharing && record.size() != 0){
                                 record.setPeriodMillis(getPeriodMillis(workCal, inOut.lastDate, inputDataField, inputDataPeriod));
-                                // —­‚ß‚ñ‚¾“¯‚¶ŠÔ‚Ì’l‚ğTimeSeries‚É’Ç‰Á
+                                // æºœã‚è¾¼ã‚“ã åŒã˜æ™‚é–“ã®å€¤ã‚’TimeSeriesã«è¿½åŠ 
                                 inOut.date = inOut.preDate;
                                 double tmpValue = Double.NaN;
                                 while(record.hasNext()){
@@ -335,16 +335,16 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                 record.clear();
                                 inOut.date = date;
                             }else{
-                                // Œ»İ‚Ì’l‚ğ’Ç‰Á
+                                // ç¾åœ¨ã®å€¤ã‚’è¿½åŠ 
                                 addTimeSeries(date, value, workCal, timeSeries, periodType, false, inOut);
                             }
                         }
                         if(!wasNull){
-                            // ÅŒã‚ÌŠúŠÔ‚Ì’l‚ğ’Ç‰Á
+                            // æœ€å¾Œã®æœŸé–“ã®å€¤ã‚’è¿½åŠ 
                             addTimeSeries(date, value, workCal, timeSeries, periodType, true, inOut);
                         }
                     }else if(!wasNull){
-                        // Œ»İ‚Ì’l‚ğ’Ç‰Á
+                        // ç¾åœ¨ã®å€¤ã‚’è¿½åŠ 
                         addTimeSeries(date, value, workCal, timeSeries, periodType, false, inOut);
                     }
                 }
@@ -362,11 +362,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
      throws DatasetCreateException;
     
     /**
-     * ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚ÌŠJn[ms]‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã®é–‹å§‹[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param cal ƒJƒŒƒ“ƒ_[
-     * @param date “ú•t
-     * @return ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚ÌŠJn[ms]
+     * @param cal ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
+     * @param date æ—¥ä»˜
+     * @return å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã®é–‹å§‹[ms]
      */
     protected long getStartMillis(Calendar cal, Date date){
         cal.setTime(date);
@@ -410,15 +410,15 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * TimeSeries‚É’l‚ğ’Ç‰Á‚·‚éB<p>
+     * TimeSeriesã«å€¤ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param realDate DB‚Ì–{“–‚Ì“ú•t
-     * @param value Œ»İ‚Ì’l
-     * @param workCal ƒ[ƒN—pƒJƒŒƒ“ƒ_[
+     * @param realDate DBã®æœ¬å½“ã®æ—¥ä»˜
+     * @param value ç¾åœ¨ã®å€¤
+     * @param workCal ãƒ¯ãƒ¼ã‚¯ç”¨ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
      * @param timeSeries TimeSeries
-     * @param periodType ŠúŠÔ‚Ìƒ^ƒCƒv
-     * @param isFinish ÅŒã‚Ìƒƒ\ƒbƒhƒR[ƒ‹‚©‚Ç‚¤‚©
-     * @param inOut “üo—Í‚Åg‚¤ƒf[ƒ^‚ğ•Û‚µ‚Ä‚¢‚éƒNƒ‰ƒX
+     * @param periodType æœŸé–“ã®ã‚¿ã‚¤ãƒ—
+     * @param isFinish æœ€å¾Œã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚³ãƒ¼ãƒ«ã‹ã©ã†ã‹
+     * @param inOut å…¥å‡ºåŠ›ã§ä½¿ã†ãƒ‡ãƒ¼ã‚¿ã‚’ä¿æŒã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹
      */
     protected void addTimeSeries(
         Date realDate,
@@ -432,12 +432,12 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
         long period = -1L;
         if(collateDataType != 0){
             period = getPeriodMillis(workCal, inOut.date, collateDataField, collateDataPeriod);
-            // ’l‚ğ‚Ü‚Æ‚ß‚é‹æŠÔ‚ÌŠJn‚ğæ“¾
+            // å€¤ã‚’ã¾ã¨ã‚ã‚‹åŒºé–“ã®é–‹å§‹ã‚’å–å¾—
             long startMillis = getStartMillis(workCal, inOut.date);
             int lastIndex = 0;
             switch(collateDataType){
             case COLLATE_DATA_TYPE_START:
-                // ƒf[ƒ^‚Ì1Œ–Ú‚Í•K‚¸TimeSeries‚É’Ç‰Á‚³‚ê‚Ä‚¢‚é‚Ì‚ÅTimeSeries‚Ö‚Ì’Ç‰Áˆ—‚Í‚±‚Ì•ªŠò“à‚Å‚Ís‚í‚È‚¢
+                // ãƒ‡ãƒ¼ã‚¿ã®1ä»¶ç›®ã¯å¿…ãšTimeSeriesã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã®ã§TimeSeriesã¸ã®è¿½åŠ å‡¦ç†ã¯ã“ã®åˆ†å²å†…ã§ã¯è¡Œã‚ãªã„
                 if (inOut.lastStartMillis != -1 && inOut.lastStartMillis == startMillis && !isFinish){
                     if(Double.isNaN(inOut.validValue)){
                         inOut.validValue = value;
@@ -455,11 +455,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                     if (!Double.isNaN(inOut.validValue)){
                         lastIndex = timeSeries.getItemCount() - 1;
                         if(!isIgnoreSameValue || isFinish || inOut.lastValue != inOut.validValue){
-                            // “¯’l–³‹İ’è‚Å‚Í‚È‚¢AÅŒã‚Ì‹æŠÔA‚Ü‚½‚Í“¯’l–³‹İ’è‚Å“¯’l‚Å‚Í‚È‚¢
-                            // ‚·‚Å‚É1“_–Ú‚Í’Ç‰Á‚³‚ê‚Ä‚¢‚é‚Ì‚ÅA‚»‚Ì1“_–Ú‚ğXV‚·‚éB
+                            // åŒå€¤ç„¡è¦–è¨­å®šã§ã¯ãªã„ã€æœ€å¾Œã®åŒºé–“ã€ã¾ãŸã¯åŒå€¤ç„¡è¦–è¨­å®šã§åŒå€¤ã§ã¯ãªã„
+                            // ã™ã§ã«1ç‚¹ç›®ã¯è¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãã®1ç‚¹ç›®ã‚’æ›´æ–°ã™ã‚‹ã€‚
                             timeSeries.update(lastIndex, new Double(inOut.validValue));
                         }else{
-                            // “¯’l–³‹İ’è‚Å“¯’l
+                            // åŒå€¤ç„¡è¦–è¨­å®šã§åŒå€¤
                             timeSeries.delete(lastIndex, lastIndex);
                         }
                         inOut.validValue = Double.NaN;
@@ -501,15 +501,15 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                     inOut.lastValueForAll = value;
                     return;
                 }else{
-                    // ˆê”­–Ú‚Ü‚½‚Í‹æŠÔ•Ï‚í‚è‚Ü‚½‚ÍÅŒã‚Ìƒƒ\ƒbƒhƒR[ƒ‹‚Ìê‡
+                    // ä¸€ç™ºç›®ã¾ãŸã¯åŒºé–“å¤‰ã‚ã‚Šã¾ãŸã¯æœ€å¾Œã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚³ãƒ¼ãƒ«ã®å ´åˆ
                     if(inOut.sameDateValues != null && inOut.sameDateValues.size() > 0){
-                        // ƒCƒ“ƒ^[ƒoƒ‹‚ÌZo
-                        // ‹æŠÔ
-                        // @’Êí‚ÍZo‚µ‚½‹æŠÔ‚ğg—pB
-                        // @ÅŒã‚Ìƒf[ƒ^’Ç‰Á‚Ìê‡‚ÍAÅŒã‚Ì“ú•t‚©‚ç‹æŠÔ‚ÌŠJn“ú•t‚ğˆø‚¢‚½‚à‚Ì‚ğ‹æŠÔ‚Æg—p‚·‚éB(•\¦‚ÌÅŒã‚Ì“ú•t‚ğ–{•¨‚Ì“ú•t‚Åo‚·‚½‚ß)
-                        // Š„‚é‘¤‚Ì’l (“¯’lƒf[ƒ^ƒŠƒXƒg‚ÌƒTƒCƒY)
-                        // @’Êí‚Íu“¯’lƒf[ƒ^ƒŠƒXƒgƒTƒCƒYv‚Éu‚·‚Å‚É’Ç‰Á‚³‚ê‚Ä‚¢‚é1“_v‚ğ‘«‚·
-                        // @ÅŒã‚Ìƒf[ƒ^’Ç‰Á‚Ìê‡‚ÍA“¯’lƒf[ƒ^ƒŠƒXƒgƒTƒCƒY‚ğ‚»‚Ì‚Ü‚Üg‚¤
+                        // ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ã®ç®—å‡º
+                        // åŒºé–“
+                        // ã€€é€šå¸¸ã¯ç®—å‡ºã—ãŸåŒºé–“ã‚’ä½¿ç”¨ã€‚
+                        // ã€€æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ ã®å ´åˆã¯ã€æœ€å¾Œã®æ—¥ä»˜ã‹ã‚‰åŒºé–“ã®é–‹å§‹æ—¥ä»˜ã‚’å¼•ã„ãŸã‚‚ã®ã‚’åŒºé–“ã¨ä½¿ç”¨ã™ã‚‹ã€‚(è¡¨ç¤ºã®æœ€å¾Œã®æ—¥ä»˜ã‚’æœ¬ç‰©ã®æ—¥ä»˜ã§å‡ºã™ãŸã‚)
+                        // å‰²ã‚‹å´ã®å€¤ (åŒå€¤ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆã®ã‚µã‚¤ã‚º)
+                        // ã€€é€šå¸¸ã¯ã€ŒåŒå€¤ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã€ã«ã€Œã™ã§ã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹1ç‚¹ã€ã‚’è¶³ã™
+                        // ã€€æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ ã®å ´åˆã¯ã€åŒå€¤ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã‚’ãã®ã¾ã¾ä½¿ã†
                         long interval = (isFinish ? (inOut.date.getTime() - startMillis) : period) / (isFinish ? inOut.sameDateValues.size() : inOut.sameDateValues.size() + 1);
                         long additionalTime = inOut.lastStartMillis;
                         DoubleList.DoubleIterator vals = inOut.sameDateValues.iterator();
@@ -547,8 +547,8 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                         }
                         inOut.sameDateValues.clear();
                     }else if(isFinish && isIgnoreSameValue && inOut.existSameValue){
-                        // ÅŒã‚Ì‹æŠÔ‚Ìƒf[ƒ^‚ª1ƒŒƒR[ƒh‚Ì‚¾‚Á‚½‚Ì‚Å
-                        // ‚±‚±‚ÅÅŒã‚Ì’l‚ğ’Ç‰Á
+                        // æœ€å¾Œã®åŒºé–“ã®ãƒ‡ãƒ¼ã‚¿ãŒ1ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã ã£ãŸã®ã§
+                        // ã“ã“ã§æœ€å¾Œã®å€¤ã‚’è¿½åŠ 
                         addTimeSeries(
                             timeSeries,
                             inOut.date,
@@ -574,21 +574,21 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                 }else{
                     if ((inOut.sameDateValues != null && inOut.sameDateValues.size() > 0) || isFinish){
                         if(isFinish){
-                            // ÅŒã‚Ìƒf[ƒ^’Ç‰Áˆ—
+                            // æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ å‡¦ç†
                             if(inOut.sameDateValues != null && inOut.sameDateValues.size() != 0){
-                                // ÅŒã‚Ì’l’Ç‰Á
+                                // æœ€å¾Œã®å€¤è¿½åŠ 
                                 if(isIgnoreSameValue){
                                     DoubleList.DoubleIterator vals = inOut.sameDateValues.iterator();
                                     double tmpLastValue = inOut.lastValue;
                                     while(vals.hasNext()){
                                         double val = vals.next();
                                         if(!Double.isNaN(tmpLastValue) && tmpLastValue == val){
-                                            // “¯’l‚ğíœ(Ÿ‚Ìƒf[ƒ^‚ª‚È‚¢ê‡‚Ííœ‚µ‚È‚¢)
+                                            // åŒå€¤ã‚’å‰Šé™¤(æ¬¡ã®ãƒ‡ãƒ¼ã‚¿ãŒãªã„å ´åˆã¯å‰Šé™¤ã—ãªã„)
                                             if(vals.hasNext()){
                                                 vals.remove();
                                             }
                                         }else if(inOut.existSameValue){
-                                            // ’¼‹ß‚Ì’l‚ğ’Ç‰Á‚µ‚Ä‚¨‚­
+                                            // ç›´è¿‘ã®å€¤ã‚’è¿½åŠ ã—ã¦ãŠã
                                             addTimeSeries(
                                                 timeSeries,
                                                 inOut.preDate,
@@ -614,11 +614,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                     }
                                     double sumOrAverage = sum;
                                     if(collateDataType == COLLATE_DATA_TYPE_AVERAGE){
-                                        // ‚·‚Å‚É’Ç‰Á‚³‚ê‚Ä‚¢‚é1“_–Ú‚ğsameDateValuesƒTƒCƒY‚É‘«‚µ‚½’l‚Å•½‹Ï‚ğZo
+                                        // ã™ã§ã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹1ç‚¹ç›®ã‚’sameDateValuesã‚µã‚¤ã‚ºã«è¶³ã—ãŸå€¤ã§å¹³å‡ã‚’ç®—å‡º
                                         sumOrAverage = sum / (double)(inOut.sameDateValues.size() + 1);
                                     }
                                     if(!isIgnoreSameValue || !inOut.existSameValue){
-                                        // ‚·‚Å‚É’Ç‰Á‚³‚ê‚Ä‚¢‚é1“_–Ú‚ğZo‚µ‚½•½‹Ï’l‚ÅXV
+                                        // ã™ã§ã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹1ç‚¹ç›®ã‚’ç®—å‡ºã—ãŸå¹³å‡å€¤ã§æ›´æ–°
                                         timeSeries.update(lastIndex, new Double(sumOrAverage));
                                         inOut.lastValue = sumOrAverage;
                                     }else{
@@ -637,7 +637,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                     long additionalTime = inOut.lastStartMillis;
                                     int count = 0;
                                     DoubleList.DoubleIterator vals = inOut.sameDateValues.iterator();
-                                    // ‚Ü‚Æ‚ß‚éŠúŠÔˆÈ“à‚É‚µ‚©‚È‚©‚Á‚½’l‚ğ‚·‚×‚Ä’Ç‰Á
+                                    // ã¾ã¨ã‚ã‚‹æœŸé–“ä»¥å†…ã«ã—ã‹ãªã‹ã£ãŸå€¤ã‚’ã™ã¹ã¦è¿½åŠ 
                                     while(vals.hasNext() && count < (inOut.date.getTime() - startMillis)){
                                         additionalTime += interval;
                                         if(inOut.preDate == null){
@@ -659,8 +659,8 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                 }
                             }else{
                                 if(isIgnoreSameValue && inOut.existSameValue){
-                                    // “¯’l§Œä‚Éˆø‚Á‚©‚©‚Á‚Ä‚¢‚ÄAÅŒã‚Ìƒf[ƒ^‚ğ’Ç‰Á‚Å‚«‚Ä‚¢‚È‚¢‚Ì‚Å
-                                    // ‚±‚±‚Å’Ç‰Á‚·‚é
+                                    // åŒå€¤åˆ¶å¾¡ã«å¼•ã£ã‹ã‹ã£ã¦ã„ã¦ã€æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã§ãã¦ã„ãªã„ã®ã§
+                                    // ã“ã“ã§è¿½åŠ ã™ã‚‹
                                     addTimeSeries(
                                         timeSeries,
                                         inOut.preDate,
@@ -672,9 +672,9 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                     );
                                     inOut.existSameValue = false;
                                 }else{
-                                    // ÅŒã‚ÌƒŒƒR[ƒh’Ç‰Áˆ—
-                                    // ÅŒã‚Ì‹æŠÔ‚Ìƒf[ƒ^‚ª1ƒŒƒR[ƒh‚µ‚©‚È‚¢
-                                    // ‚·‚Å‚É’Ç‰Á‚³‚ê‚Ä‚¢‚éÅŒã‚Ì’l‚ğíœ
+                                    // æœ€å¾Œã®ãƒ¬ã‚³ãƒ¼ãƒ‰è¿½åŠ å‡¦ç†
+                                    // æœ€å¾Œã®åŒºé–“ã®ãƒ‡ãƒ¼ã‚¿ãŒ1ãƒ¬ã‚³ãƒ¼ãƒ‰ã—ã‹ãªã„
+                                    // ã™ã§ã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹æœ€å¾Œã®å€¤ã‚’å‰Šé™¤
                                     deleteLastTimeSeries(timeSeries);
                                     
                                     addTimeSeries(
@@ -689,7 +689,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                 }
                             }
                         }else if(inOut.sameDateValues != null && inOut.sameDateValues.size() > 0){
-                            // ÅŒã‚Ìƒf[ƒ^’Ç‰Á‚Å‚Í‚È‚¢ê‡
+                            // æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ ã§ã¯ãªã„å ´åˆ
                             DoubleList.DoubleIterator vals = inOut.sameDateValues.iterator();
                             lastIndex = timeSeries.getItemCount() - 1;
                             double sum = inOut.lastValue;
@@ -698,15 +698,15 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                             }
                             double sumOrAverage = sum;
                             if(collateDataType == COLLATE_DATA_TYPE_AVERAGE){
-                                // ‚·‚Å‚É‘Å‚½‚ê‚Ä‚¢‚é1“_–Ú‚ğsameDateValuesƒTƒCƒY‚É‘«‚µ‚½’l‚Å•½‹Ï‚ğŒvZ
+                                // ã™ã§ã«æ‰“ãŸã‚Œã¦ã„ã‚‹1ç‚¹ç›®ã‚’sameDateValuesã‚µã‚¤ã‚ºã«è¶³ã—ãŸå€¤ã§å¹³å‡ã‚’è¨ˆç®—
                                 sumOrAverage = sum / (double)(inOut.sameDateValues.size() + 1);
                             }
                             if(!isIgnoreSameValue || isFinish || inOut.lastValue != inOut.validValue){
-                                // “¯’l–³‹İ’è‚Å‚Í‚È‚¢AÅŒã‚Ì‹æŠÔA‚Ü‚½‚Í“¯’l–³‹İ’è‚Å“¯’l‚Å‚Í‚È‚¢
-                                // ‚·‚Å‚É1“_–Ú‚Í’Ç‰Á‚³‚ê‚Ä‚¢‚é‚Ì‚ÅA‚»‚Ì1“_–Ú‚ğXV‚·‚éB
+                                // åŒå€¤ç„¡è¦–è¨­å®šã§ã¯ãªã„ã€æœ€å¾Œã®åŒºé–“ã€ã¾ãŸã¯åŒå€¤ç„¡è¦–è¨­å®šã§åŒå€¤ã§ã¯ãªã„
+                                // ã™ã§ã«1ç‚¹ç›®ã¯è¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãã®1ç‚¹ç›®ã‚’æ›´æ–°ã™ã‚‹ã€‚
                                 timeSeries.update(lastIndex, new Double(sumOrAverage));
                             }else{
-                                // “¯’l–³‹İ’è‚Å“¯’l
+                                // åŒå€¤ç„¡è¦–è¨­å®šã§åŒå€¤
                                 timeSeries.delete(lastIndex, lastIndex);
                             }
                             inOut.sameDateValues.clear();
@@ -729,13 +729,13 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                 }else{
                     if ((inOut.ohlcList != null && inOut.ohlcList.size() > 0) || isFinish){
                         if(inOut.ohlcList != null && inOut.ohlcList.size() > 0){
-                            // ƒCƒ“ƒ^[ƒoƒ‹‚Í‹æŠÔ‚ğOHLCƒŠƒXƒg‚ÌƒTƒCƒY‚ÅŠ„‚é‚±‚Æ‚ÅZo‚·‚éB
-                            // ‹æŠÔ‚É‚Â‚¢‚Ä
-                            // @’Êí‚ÍZo‚µ‚½‹æŠÔ‚ğg—pB
-                            // @ÅŒã‚Ìƒf[ƒ^’Ç‰Á‚Ìê‡‚ÍAÅŒã‚Ì“ú•t‚©‚ç‹æŠÔ‚ÌŠJn“ú•t‚ğˆø‚¢‚½‚à‚Ì‚ğ‹æŠÔ‚Æg—p‚·‚éB(•\¦‚ÌÅŒã‚Ì“ú•t‚ğ–{•¨‚Ì“ú•t‚Åo‚·‚½‚ß)
-                            // OHLCƒŠƒXƒgƒTƒCƒY‚É‚Â‚¢‚Ä(Š„‚é‘¤‚Ì’l)
-                            // @’Êí‚ÍOHLCƒŠƒXƒgƒTƒCƒY‚ğ‚»‚Ì‚Ü‚Üg—p‚·‚éB
-                            // @ÅŒã‚Ìƒf[ƒ^’Ç‰Á‚Ìê‡‚ÍA‚·‚Å‚É1“_’Ç‰Á‚³‚ê‚Ä‚¢‚é‚Ì‚ÅOHLCƒŠƒXƒgƒTƒCƒY‚©‚ç1ˆø‚¢‚½’l‚ğg—p‚·‚éB
+                            // ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ã¯åŒºé–“ã‚’OHLCãƒªã‚¹ãƒˆã®ã‚µã‚¤ã‚ºã§å‰²ã‚‹ã“ã¨ã§ç®—å‡ºã™ã‚‹ã€‚
+                            // åŒºé–“ã«ã¤ã„ã¦
+                            // ã€€é€šå¸¸ã¯ç®—å‡ºã—ãŸåŒºé–“ã‚’ä½¿ç”¨ã€‚
+                            // ã€€æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ ã®å ´åˆã¯ã€æœ€å¾Œã®æ—¥ä»˜ã‹ã‚‰åŒºé–“ã®é–‹å§‹æ—¥ä»˜ã‚’å¼•ã„ãŸã‚‚ã®ã‚’åŒºé–“ã¨ä½¿ç”¨ã™ã‚‹ã€‚(è¡¨ç¤ºã®æœ€å¾Œã®æ—¥ä»˜ã‚’æœ¬ç‰©ã®æ—¥ä»˜ã§å‡ºã™ãŸã‚)
+                            // OHLCãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã«ã¤ã„ã¦(å‰²ã‚‹å´ã®å€¤)
+                            // ã€€é€šå¸¸ã¯OHLCãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã‚’ãã®ã¾ã¾ä½¿ç”¨ã™ã‚‹ã€‚
+                            // ã€€æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ ã®å ´åˆã¯ã€ã™ã§ã«1ç‚¹è¿½åŠ ã•ã‚Œã¦ã„ã‚‹ã®ã§OHLCãƒªã‚¹ãƒˆã‚µã‚¤ã‚ºã‹ã‚‰1å¼•ã„ãŸå€¤ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
                             long interval = (isFinish ? (inOut.date.getTime() - startMillis) : period) / (isFinish ? inOut.ohlcList.size() - 1 : inOut.ohlcList.size());
                             long additionalTime = inOut.lastStartMillis;
                             OHLCList.OHLCIterator vals = inOut.ohlcList.iterator();
@@ -763,10 +763,10 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                     }
                                 }else{
                                     if((isIgnoreSameValue && inOut.lastValue == tmpValue) && (vals.hasNext() || !isFinish)){
-                                        // u“¯’l–³‹İ’è‚ÅA’¼‘O‚É’Ç‰Á‚³‚ê‚½’l‚Æ¡‚Ì’l‚ª“¯’lv
-                                        // ‚©‚Âu¡‚Ì’l‚ªI’l‚Å‚Í‚È‚­A‚©‚ÂÅI‹æŠÔ‚Ìƒf[ƒ^’Ç‰Á‚Å‚Í‚È‚¢ê‡v
-                                        // (ÅŒã‚Ì‹æŠÔ‚Ìˆ—‚ÅA‚©‚ÂI’l‚Ìƒ‹[ƒv‚¾‚Á‚½ê‡‚ÍA•K‚¸ÅŒã‚Ì“_‚Æ‚µ‚Ä’l‚ğ
-                                        //  ’Ç‰Á‚µ‚È‚¢‚Æ‚¢‚¯‚È‚¢‚Ì‚Å‚±‚Ìˆ—‚É‚Í“ü‚ç‚È‚¢‚æ‚¤‚É‚µ‚Ä‚¢‚éB)
+                                        // ã€ŒåŒå€¤ç„¡è¦–è¨­å®šã§ã€ç›´å‰ã«è¿½åŠ ã•ã‚ŒãŸå€¤ã¨ä»Šã®å€¤ãŒåŒå€¤ã€
+                                        // ã‹ã¤ã€Œä»Šã®å€¤ãŒçµ‚å€¤ã§ã¯ãªãã€ã‹ã¤æœ€çµ‚åŒºé–“ã®ãƒ‡ãƒ¼ã‚¿è¿½åŠ ã§ã¯ãªã„å ´åˆã€
+                                        // (æœ€å¾Œã®åŒºé–“ã®å‡¦ç†ã§ã€ã‹ã¤çµ‚å€¤ã®ãƒ«ãƒ¼ãƒ—ã ã£ãŸå ´åˆã¯ã€å¿…ãšæœ€å¾Œã®ç‚¹ã¨ã—ã¦å€¤ã‚’
+                                        //  è¿½åŠ ã—ãªã„ã¨ã„ã‘ãªã„ã®ã§ã“ã®å‡¦ç†ã«ã¯å…¥ã‚‰ãªã„ã‚ˆã†ã«ã—ã¦ã„ã‚‹ã€‚)
                                         inOut.existSameValue = true;
                                         if(inOut.lastDate == null){
                                             inOut.lastDate = (Date)inOut.preDate.clone();
@@ -802,8 +802,8 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                             }
                         }else if(isFinish){
                             if(isIgnoreSameValue && inOut.existSameValue){
-                                // ÅŒã‚Ìƒf[ƒ^‚ÅA“¯’l–³‹İ’èA‚©‚Â“¯’l‚ª‘¶İ‚µ‚½ê‡‚Ì‚İÅŒã‚Ìƒf[ƒ^‚ğ’Ç‰Á‚·‚éB
-                                // (“¯’l‚ª‘¶İ‚µ‚È‚©‚Á‚½ê‡‚ÍA‚·‚Å‚ÉÅŒã‚Ìƒf[ƒ^‚Í’Ç‰Á‚³‚ê‚Ä‚¢‚é)
+                                // æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã§ã€åŒå€¤ç„¡è¦–è¨­å®šã€ã‹ã¤åŒå€¤ãŒå­˜åœ¨ã—ãŸå ´åˆã®ã¿æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹ã€‚
+                                // (åŒå€¤ãŒå­˜åœ¨ã—ãªã‹ã£ãŸå ´åˆã¯ã€ã™ã§ã«æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã¯è¿½åŠ ã•ã‚Œã¦ã„ã‚‹)
                                 addTimeSeries(
                                     timeSeries,
                                     inOut.date,
@@ -814,11 +814,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                                     false
                                 );
                             }else{
-                                // ÅŒã‚ÌƒŒƒR[ƒh’Ç‰Áˆ—
-                                // ÅŒã‚Ì‹æŠÔ‚Ìƒf[ƒ^‚ª1ƒŒƒR[ƒh‚µ‚©‚È‚¢
-                                // ‚·‚Å‚É’Ç‰Á‚³‚ê‚Ä‚¢‚éÅŒã‚Ì’l‚ğíœ
+                                // æœ€å¾Œã®ãƒ¬ã‚³ãƒ¼ãƒ‰è¿½åŠ å‡¦ç†
+                                // æœ€å¾Œã®åŒºé–“ã®ãƒ‡ãƒ¼ã‚¿ãŒ1ãƒ¬ã‚³ãƒ¼ãƒ‰ã—ã‹ãªã„
+                                // ã™ã§ã«è¿½åŠ ã•ã‚Œã¦ã„ã‚‹æœ€å¾Œã®å€¤ã‚’å‰Šé™¤
                                 deleteLastTimeSeries(timeSeries);
-                                // ÅŒã‚Ì1ƒŒƒR[ƒh‚Ì–{•¨‚ÌŠÔ‚Å’l‚ğ“o˜^
+                                // æœ€å¾Œã®1ãƒ¬ã‚³ãƒ¼ãƒ‰ã®æœ¬ç‰©ã®æ™‚é–“ã§å€¤ã‚’ç™»éŒ²
                                 addTimeSeries(
                                     timeSeries,
                                     realDate,
@@ -841,7 +841,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
             default:
             }
             
-            // ’¼‘O‚ÌŠJnŠÔ[ms]‚ğ¡‚ÌŠJnŠÔ[ms]‚Åã‘‚«
+            // ç›´å‰ã®é–‹å§‹æ™‚é–“[ms]ã‚’ä»Šã®é–‹å§‹æ™‚é–“[ms]ã§ä¸Šæ›¸ã
             inOut.lastStartMillis = startMillis;
         }
         
@@ -853,11 +853,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                 case COLLATE_DATA_TYPE_OHLC:
                     if(!Double.isNaN(inOut.lastValue)
                         && inOut.lastValue == value){
-                        // “¯’l‚ª2‚ÂˆÈã•À‚ñ‚¾
+                        // åŒå€¤ãŒ2ã¤ä»¥ä¸Šä¸¦ã‚“ã 
                         inOut.existSameValue = true;
                     }else{
                         if(inOut.existSameValue){
-                            // 2‚ÂˆÈã•À‚ñ‚¾“¯’l‚ÌÅŒã‚ğ’Ç‰Á
+                            // 2ã¤ä»¥ä¸Šä¸¦ã‚“ã åŒå€¤ã®æœ€å¾Œã‚’è¿½åŠ 
                             addTimeSeries(
                                 timeSeries,
                                 inOut.preDate,
@@ -870,7 +870,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                             inOut.existSameValue = false;
                         }
         
-                        // Œ»İ‚Ì’l‚ğ’Ç‰Á
+                        // ç¾åœ¨ã®å€¤ã‚’è¿½åŠ 
                         addTimeSeries(
                             timeSeries,
                             inOut.date,
@@ -885,7 +885,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                 case COLLATE_DATA_TYPE_END:
                 case COLLATE_DATA_TYPE_AVERAGE:
                 case COLLATE_DATA_TYPE_SUM:
-                    // Œ»İ‚Ì’l‚ğ’Ç‰Á
+                    // ç¾åœ¨ã®å€¤ã‚’è¿½åŠ 
                     addTimeSeries(
                         timeSeries,
                         inOut.date,
@@ -909,7 +909,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
                 );
             }
             
-            // ’¼‘O‚Ì“ú•t‚ğXV
+            // ç›´å‰ã®æ—¥ä»˜ã‚’æ›´æ–°
             if(inOut.preDate == null){
                 inOut.preDate = (Date)inOut.date.clone();
             }else{
@@ -919,13 +919,13 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * ŠúŠÔ‚Ì’·‚³[ms]‚ğæ“¾‚·‚éB<p>
+     * æœŸé–“ã®é•·ã•[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param cal ƒJƒŒƒ“ƒ_[
-     * @param date “ú•t
-     * @param field ŠúŠÔƒtƒB[ƒ‹ƒh
-     * @param period ŠúŠÔ‚Ì’·‚³
-     * @return ŠúŠÔ‚Ì’·‚³[ms]
+     * @param cal ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
+     * @param date æ—¥ä»˜
+     * @param field æœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+     * @param period æœŸé–“ã®é•·ã•
+     * @return æœŸé–“ã®é•·ã•[ms]
      */
     protected long getPeriodMillis(Calendar cal, Date date, int field, int period){
         switch(field){
@@ -952,10 +952,10 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * TimePeriodƒNƒ‰ƒX‚É‘Î‰‚·‚é’è”‚É•ÏŠ·‚·‚éB<p>
+     * TimePeriodã‚¯ãƒ©ã‚¹ã«å¯¾å¿œã™ã‚‹å®šæ•°ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      * 
-     * @param timePeriodClass TimePeriodƒNƒ‰ƒX
-     * @return TimePeriodƒNƒ‰ƒX‚É‘Î‰‚·‚é’è”
+     * @param timePeriodClass TimePeriodã‚¯ãƒ©ã‚¹
+     * @return TimePeriodã‚¯ãƒ©ã‚¹ã«å¯¾å¿œã™ã‚‹å®šæ•°
      */
     protected int convertPeriodType(Class timePeriodClass){
         if (timePeriodClass.equals(Millisecond.class)){
@@ -983,13 +983,13 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * TimeSeries‚É’l‚ğ’Ç‰Á‚·‚éB<p>
+     * TimeSeriesã«å€¤ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
      * @param series TimeSeries
-     * @param date “ú•t
-     * @param value ’l
-     * @param periodType TimePeriodƒ^ƒCƒv
-     * @param inOut ƒƒ\ƒbƒhƒR[ƒ‹‚Ì“üo—Í‚Å•K—v‚Èƒf[ƒ^‚ğ•Û‚µ‚½ƒNƒ‰ƒX
+     * @param date æ—¥ä»˜
+     * @param value å€¤
+     * @param periodType TimePeriodã‚¿ã‚¤ãƒ—
+     * @param inOut ãƒ¡ã‚½ãƒƒãƒ‰ã‚³ãƒ¼ãƒ«ã®å…¥å‡ºåŠ›ã§å¿…è¦ãªãƒ‡ãƒ¼ã‚¿ã‚’ä¿æŒã—ãŸã‚¯ãƒ©ã‚¹
      * @return TimeSeries
      */
     protected TimeSeries addTimeSeries(
@@ -1062,7 +1062,7 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * ÅŒã‚Ìƒf[ƒ^‚ğTimeSeries‚©‚çíœ‚·‚éB<p>
+     * æœ€å¾Œã®ãƒ‡ãƒ¼ã‚¿ã‚’TimeSeriesã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
      * @param series TimeSeries
      * @return TimeSeries
@@ -1099,15 +1099,15 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * “¯‚¶ŠÔ‚Ì’l‚ğ•Û‚·‚éƒNƒ‰ƒX
-     * 1‚Â‚ÌŠÔ(Date)‚Æ•¡”‚Ì’l(double)‚ğ•Û‚·‚é
+     * åŒã˜æ™‚é–“ã®å€¤ã‚’ä¿æŒã™ã‚‹ã‚¯ãƒ©ã‚¹
+     * 1ã¤ã®æ™‚é–“(Date)ã¨è¤‡æ•°ã®å€¤(double)ã‚’ä¿æŒã™ã‚‹
      */
     protected static class Record{
-        /** “ú•t */
+        /** æ—¥ä»˜ */
         protected Date date;
-        /** “¯‚¶“ú•t‚Ì’l(double)‚ÌƒŠƒXƒg */
+        /** åŒã˜æ—¥ä»˜ã®å€¤(double)ã®ãƒªã‚¹ãƒˆ */
         protected DoubleList doubleList = new DoubleList();
-        /** ‚Ü‚Æ‚ß‚éŠúŠÔ‚Ì’·‚³[ms] */
+        /** ã¾ã¨ã‚ã‚‹æœŸé–“ã®é•·ã•[ms] */
         protected long periodMillis = -1;
         
         public void add(double val){
@@ -1149,10 +1149,10 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * TimeSeries‚É’l‚ğ’Ç‰Á‚·‚éÛ‚É•K—v‚È’l‚ğ•Û‚·‚éƒNƒ‰ƒX<p>
+     * TimeSeriesã«å€¤ã‚’è¿½åŠ ã™ã‚‹éš›ã«å¿…è¦ãªå€¤ã‚’ä¿æŒã™ã‚‹ã‚¯ãƒ©ã‚¹<p>
      */
     protected static class Holder{
-        // “ü—ÍAo—Í‚Ì—¼•û‚Åg‚¤’l
+        // å…¥åŠ›ã€å‡ºåŠ›ã®ä¸¡æ–¹ã§ä½¿ã†å€¤
         public boolean existSameValue;
         public double validValue = Double.NaN;
         public DoubleList sameDateValues;
@@ -1161,11 +1161,11 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
         public boolean existSameValueForAll;
         public long lastStartMillis = -1;
         public Date date;
-        // ’¼‘O‚ÌƒŒƒR[ƒh‚Ì“ú•t(TimeSeries‚É’Ç‰Á‚³‚ê‚Ä‚àA’Ç‰Á‚³‚ê‚È‚­‚Ä‚àXV‚³‚ê‚é)
+        // ç›´å‰ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã®æ—¥ä»˜(TimeSeriesã«è¿½åŠ ã•ã‚Œã¦ã‚‚ã€è¿½åŠ ã•ã‚Œãªãã¦ã‚‚æ›´æ–°ã•ã‚Œã‚‹)
         public Date preDate;
-        // ’¼‘O‚É*’Ç‰Á‚³‚ê‚½*ƒŒƒR[ƒh‚Ì“ú•t
+        // ç›´å‰ã«*è¿½åŠ ã•ã‚ŒãŸ*ãƒ¬ã‚³ãƒ¼ãƒ‰ã®æ—¥ä»˜
         public Date lastDate;
-        // ’¼‘O‚É*’Ç‰Á‚³‚ê‚½*ƒŒƒR[ƒh‚Ì’l
+        // ç›´å‰ã«*è¿½åŠ ã•ã‚ŒãŸ*ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤
         public double lastValue = Double.NaN;
         
         public void clear(){
@@ -1184,12 +1184,12 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * double‚ÌƒŠƒXƒgB<p>
+     * doubleã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected static class DoubleList{
-        /** ‰ŠúƒTƒCƒY */
+        /** åˆæœŸã‚µã‚¤ã‚º */
         protected static final int INIT_SIZE = 10;
-        /** ‘‰Á—Ê */
+        /** å¢—åŠ é‡ */
         protected static final int CAPACITY_INCREMENT_SIZE = 10;
         protected double[] vals = new double[INIT_SIZE];
         protected int index;
@@ -1237,14 +1237,14 @@ public abstract class TimeSeriesCollectionFactoryService extends ServiceBase
     }
     
     /**
-     * OHLCƒŠƒXƒgB<p>
+     * OHLCãƒªã‚¹ãƒˆã€‚<p>
      */
     protected static class OHLCList{
         protected double open = Double.NaN;
         protected double high = Double.NaN;
         protected double low = Double.NaN;
         protected double close = Double.NaN;
-        /** ‚’l‚Ì‚Ù‚¤‚ªˆÀ’l‚æ‚èŠÔ‚ªæ‚© */
+        /** é«˜å€¤ã®ã»ã†ãŒå®‰å€¤ã‚ˆã‚Šæ™‚é–“ãŒå…ˆã‹ */
         protected boolean isHighLow = true;
         protected OHLCIterator ohlcIterator = new OHLCIterator();
         

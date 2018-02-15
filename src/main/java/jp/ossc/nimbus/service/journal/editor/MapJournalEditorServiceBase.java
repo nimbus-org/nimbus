@@ -40,7 +40,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.journal.JournalEditor;
 
 /**
- * ƒWƒƒ[ƒiƒ‹‚ğMapƒIƒuƒWƒFƒNƒg‚ÉƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^ƒT[ƒrƒX‚ÌŠî’êƒNƒ‰ƒXB<p>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’Mapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -49,29 +49,29 @@ public abstract class MapJournalEditorServiceBase extends ServiceBase
     
     private static final long serialVersionUID = 7133997016215000363L;
     
-    // JournalEditor‚ÌJavaDoc
+    // JournalEditorã®JavaDoc
     public Object toObject(EditorFinder finder, Object key, Object value){
         return toMap(finder, key, value);
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½‚ ‚éŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸã‚ã‚‹å‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public abstract Map toMap(EditorFinder finder, Object key, Object value);
     
     /**
-     * ƒGƒfƒBƒ^[‚ª•s–¾‚ÈƒIƒuƒWƒFƒNƒg‚ğ“KØ‚ÈƒGƒfƒBƒ^‚Å•ÒW‚·‚éB<p>
-     * finder‚ÅAvalue‚ÌŒ^‚É‘Î‰‚·‚éƒGƒfƒBƒ^‚ğæ“¾‚µ‚Ä•ÒW‚·‚éBƒGƒfƒBƒ^‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA{@link Object#toString()}‚Å•¶š—ñ‚É•ÏŠ·‚µ‚Ä•Ô‚·B<br>
+     * ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ãŒä¸æ˜ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é©åˆ‡ãªã‚¨ãƒ‡ã‚£ã‚¿ã§ç·¨é›†ã™ã‚‹ã€‚<p>
+     * finderã§ã€valueã®å‹ã«å¯¾å¿œã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å–å¾—ã—ã¦ç·¨é›†ã™ã‚‹ã€‚ã‚¨ãƒ‡ã‚£ã‚¿ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€{@link Object#toString()}ã§æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param obj ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @return ƒWƒƒ[ƒiƒ‹•¶š—ñ
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param obj ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—
      */
     protected Object makeObjectFormat(
         EditorFinder finder,

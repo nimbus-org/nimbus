@@ -49,7 +49,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒgƒCƒ“ƒfƒbƒNƒXB<p>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

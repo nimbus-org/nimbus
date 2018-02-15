@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.keepalive;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultClusterListenerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultClusterListenerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultClusterListenerService
@@ -42,31 +42,31 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultClusterListenerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ŠJn/’â~‚ğ§Œä‚·‚é‘ÎÛ‚Æ‚È‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * é–‹å§‹/åœæ­¢ã‚’åˆ¶å¾¡ã™ã‚‹å¯¾è±¡ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTargetServiceName(ServiceName name);
     
     /**
-     * ŠJn/’â~‚ğ§Œä‚·‚é‘ÎÛ‚Æ‚È‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * é–‹å§‹/åœæ­¢ã‚’åˆ¶å¾¡ã™ã‚‹å¯¾è±¡ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTargetServiceName();
     
     /**
-     * {@link ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚·‚é‚ÆAŠJn/’â~‚ğ§Œä‚·‚é‘ÎÛ‚Æ‚È‚éƒT[ƒrƒX‚ÌŠJn/’â~‚É˜A“®‚µ‚ÄAClusterService‚àŠJn/’â~‚·‚é‚æ‚¤‚É‚È‚éB<br>
+     * {@link ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã™ã‚‹ã¨ã€é–‹å§‹/åœæ­¢ã‚’åˆ¶å¾¡ã™ã‚‹å¯¾è±¡ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹/åœæ­¢ã«é€£å‹•ã—ã¦ã€ClusterServiceã‚‚é–‹å§‹/åœæ­¢ã™ã‚‹ã‚ˆã†ã«ãªã‚‹ã€‚<br>
      *
-     * @param name ClusterService‚ÌƒT[ƒrƒX–¼
+     * @param name ClusterServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ClusterService‚ÌƒT[ƒrƒX–¼
+     * @return ClusterServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
 }

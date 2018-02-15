@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.facade;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.rmi.RemoteException;
 import java.lang.reflect.Method;
 
@@ -51,8 +51,8 @@ import jp.ossc.nimbus.service.aop.InterceptorChainFactory;
 import jp.ossc.nimbus.service.aop.InterceptorChain;
 
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -61,16 +61,16 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
 	
     private static final long serialVersionUID = 3583637962924535281L;
     
-    /** ƒtƒ@ƒT[ƒhÀsƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒF[ƒXæ“¾ƒL[ */
+    /** ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰å®Ÿè¡Œãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å–å¾—ã‚­ãƒ¼ */
 	private static final String C_FACADE_HOME_JNDI_KEY = "java:comp/env/facadeJNDIKey";
 	private static final String C_INTERCEPTOR_SERVICE_NAME_JNDI_KEY = "java:comp/env/interceptorChainFactoryServiceNameJNDIKey"; 
 	private static final String C_INTERCEPTOR_CREATE_JNDI_KEY =       "java:comp/env/lookupKey"; 
-	/** ƒtƒ@ƒT[ƒhÀsƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒF[ƒX */
+	/** ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰å®Ÿè¡Œãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ */
 	private SLSBFacadeLocal mFacadeLocal ;
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^[ƒ`ƒFƒCƒ“Àsƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private InterceptorChainInvokerFactory mFactory = null; 
 	private InterceptorChainFactory chainFactory = null; 
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^[ƒL[ */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã‚­ãƒ¼ */
 	private String mInterceptorKey = null ;
 	private MessageDrivenContext mContext = null ; 
 	private static Method CALLBACK_METHOD;
@@ -82,7 +82,7 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
 	    }
 	}
 	/**
-	 * EJB‚ğì¬‚·‚éB
+	 * EJBã‚’ä½œæˆã™ã‚‹ã€‚
 	 * @throws RemoteException
 	 * @throws CreateException
 	 */
@@ -90,11 +90,11 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
 		try {
 			
 			InitialContext ctx = new InitialContext() ;
-			// FacadeLocalæ“¾
+			// FacadeLocalå–å¾—
 			String value = (String)ctx.lookup(C_FACADE_HOME_JNDI_KEY);
 			SLSBFacadeHomeLocal facadeHomeLocal = (SLSBFacadeHomeLocal)ctx.lookup(value) ;
 			mFacadeLocal = facadeHomeLocal.create() ;
-			// ƒCƒ“ƒ^[ƒZƒvƒ^[ƒtƒ@ƒNƒgƒŠæ“¾
+			// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªå–å¾—
 			value = (String)ctx.lookup(C_INTERCEPTOR_SERVICE_NAME_JNDI_KEY);
 			if(value == null || value.length()==0){
 				mFactory = null ;
@@ -123,7 +123,7 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
 		}
 	}
 	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.MessageDrivenBean#setMessageDrivenContext(javax.ejb.MessageDrivenContext)
 	 */
 	public void setMessageDrivenContext(MessageDrivenContext arg0)
@@ -135,17 +135,17 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
         return mContext;
     }
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.MessageDrivenBean#ejbRemove()
 	 */
 	public void ejbRemove() throws EJBException {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 
 	}
 
 	/**
-	 * ƒƒbƒZ[ƒWó•t‚ğs‚¢‚Ü‚·B
-	 * @param message “ü—ÍƒIƒuƒWƒFƒNƒg
+	 * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä»˜ã‚’è¡Œã„ã¾ã™ã€‚
+	 * @param message å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
 	 */
 	public void onMessage(Message message)  {
@@ -164,10 +164,10 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
 		}
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ’Ê‚µ‚ÄUnitOfWork‚ğÀs‚·‚éB
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^‚ªw’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î’¼ÚUnitOfWork‚ğÀs‚·‚éB
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é€šã—ã¦UnitOfWorkã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ç›´æ¥UnitOfWorkã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 	 * @param input
-	 * @return o—ÍƒIƒuƒWƒFƒNƒg
+	 * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws InterceptorException
 	 * @throws TargetCheckedException
 	 * @throws TargetUncheckedException
@@ -215,9 +215,9 @@ public class MDBFacadeBean implements MessageDrivenBean, MessageListener {
 		return ret;
 	}
 	/**
-	 * ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚ğÀs‚·‚é
-	 * @param uow		“ü—Íƒ†ƒjƒbƒgƒIƒuƒ[ƒN
-	 * @return	o—Íƒ†ƒjƒbƒgƒIƒuƒ[ƒN
+	 * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚’å®Ÿè¡Œã™ã‚‹
+	 * @param uow		å…¥åŠ›ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯
+	 * @return	å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯
 	 * @throws Throwable
 	 */
 	public  Object invokeUnitOfWorkBase(Object uow) throws Exception  {

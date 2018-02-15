@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link FacadeValueJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link FacadeValueJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see FacadeValueJournalEditorService
@@ -41,64 +41,64 @@ public interface FacadeValueJournalEditorServiceMBean
  extends UnitOfWorkJournalEditorServiceMBean{
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚ª‚Âƒwƒbƒ_‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ãŒæŒã¤ãƒ˜ãƒƒãƒ€ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputHeaders(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚ª‚Âƒwƒbƒ_‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ãŒæŒã¤ãƒ˜ãƒƒãƒ€ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputHeaders();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param str ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @param str å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #getSecretString()
      */
     public void setSecretString(String str);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @return å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #setSecretString(String)
      */
     public String getSecretString();
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒwƒbƒ_‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ’l‚ğ‰B‚·ƒwƒbƒ_‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’éš ã™ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—
      * @see #getSecretString()
      */
     public void setSecretHeaders(String[] names);
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒwƒbƒ_‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·ƒwƒbƒ_‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’éš ã™ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—
      * @see #setSecretHeaders(String[])
      */
     public String[] getSecretHeaders();
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğo—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ’l‚ğo—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—
      * @see #getEnabledHeaders()
      */
     public void setEnabledHeaders(String[] names);
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğo—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğo—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—
      * @see #setEnabledHeaders(String[])
      */
     public String[] getEnabledHeaders();

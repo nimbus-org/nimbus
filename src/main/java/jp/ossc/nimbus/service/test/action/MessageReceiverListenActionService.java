@@ -50,8 +50,8 @@ import jp.ossc.nimbus.service.publish.ClientConnection;
 import jp.ossc.nimbus.service.publish.Message;
 
 /**
- * {@link MessageReceiver}‚©‚ç{@link Message}‚ğóM‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link MessageReceiver}ã‹ã‚‰{@link Message}ã‚’å—ä¿¡ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -83,17 +83,17 @@ public class MessageReceiverListenActionService extends ServiceBase implements T
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅA{@link ClientConnection}‚É{@link MessageListener}‚ğ“o˜^‚µ‚ÄAóM“o˜^‚ğs‚¤B<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€{@link ClientConnection}ã«{@link MessageListener}ã‚’ç™»éŒ²ã—ã¦ã€å—ä¿¡ç™»éŒ²ã‚’è¡Œã†ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * subject,keys
      * </pre>
-     * subject‚ÍA{@link ClientConnection}‚ÉóM“o˜^‚·‚éƒTƒuƒWƒFƒNƒg‚ğw’è‚·‚éBkeys‚ÍA{@link ClientConnection}‚ÉóM“o˜^‚·‚éƒL[‚ğw’è‚·‚éB•¡”‚ÌƒL[‚ğw’è‚·‚éê‡‚ÍAƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éBƒTƒuƒWƒFƒNƒg‚ğ•¡”İ’è‚·‚éê‡‚ÍA‰üs‚µ‚Äw’è‚·‚éB<br>
+     * subjectã¯ã€{@link ClientConnection}ã«å—ä¿¡ç™»éŒ²ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚keysã¯ã€{@link ClientConnection}ã«å—ä¿¡ç™»éŒ²ã™ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹ã€‚è¤‡æ•°ã®ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¤‡æ•°è¨­å®šã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã—ã¦æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return “o˜^‚µ‚½{@link MessageListener}
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ç™»éŒ²ã—ãŸ{@link MessageListener}
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

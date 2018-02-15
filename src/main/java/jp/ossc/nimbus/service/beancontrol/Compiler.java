@@ -46,8 +46,8 @@ import jp.ossc.nimbus.service.log.LogService;
 import jp.ossc.nimbus.service.interpreter.Interpreter;
 
 /**
- * ‹Æ–±ƒtƒ[ƒRƒ“ƒpƒCƒ‰[B<p>
- * ‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚ğ–‘O‚ÉƒRƒ“ƒpƒCƒ‹‚µ‚ÄA•¶–@‚ğƒ`ƒFƒbƒN‚·‚éB<br>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ãƒ¼ã€‚<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’äº‹å‰ã«ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ã¦ã€æ–‡æ³•ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see DefaultBeanFlowInvokerFactoryService
@@ -61,33 +61,33 @@ public class Compiler{
     private Interpreter testInterpreter = null;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public Compiler(){
     }
     
     /**
-     * ƒRƒ“ƒpƒCƒ‰‚ğ¶¬‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param verbose ƒRƒ“ƒpƒCƒ‹‚ÌÚ×‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOBtrue‚Ìê‡AÚ×‚ğo—Í‚·‚éB
+     * @param verbose ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®è©³ç´°ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚trueã®å ´åˆã€è©³ç´°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public Compiler(boolean verbose){
         isVerbose = verbose;
     }
     
     /**
-     * ƒRƒ“ƒpƒCƒ‹‚ÌÚ×‚ğƒRƒ“ƒ\[ƒ‹‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®è©³ç´°ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param verbose ƒRƒ“ƒpƒCƒ‹‚ÌÚ×‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOBtrue‚Ìê‡AÚ×‚ğo—Í‚·‚éB
+     * @param verbose ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®è©³ç´°ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚trueã®å ´åˆã€è©³ç´°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public void setVerbose(boolean verbose){
         isVerbose = verbose;
     }
     
     /**
-     * ƒRƒ“ƒpƒCƒ‹‚ÌÚ×‚ğƒRƒ“ƒ\[ƒ‹‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®è©³ç´°ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒpƒCƒ‹‚ÌÚ×‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOBtrue‚Ìê‡AÚ×‚ğo—Í‚·‚éB
+     * @return ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã®è©³ç´°ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚trueã®å ´åˆã€è©³ç´°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public boolean isVerbose(){
         return isVerbose;
@@ -98,11 +98,11 @@ public class Compiler{
     }
     
     /**
-     * w’è‚µ‚½‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹ƒŠƒXƒg‚ÌŠeƒtƒ@ƒCƒ‹‚ğƒRƒ“ƒpƒCƒ‹‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆã®å„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã€‚<p>
      *
-     * @param definitions ‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹ƒŠƒXƒg
-     * @param clazz BeanFlowInvokerÀ‘•ƒNƒ‰ƒX
-     * @exception Exception ‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param definitions æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆ
+     * @param clazz BeanFlowInvokerå®Ÿè£…ã‚¯ãƒ©ã‚¹
+     * @exception Exception æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void compile(List definitions, Class clazz) throws Exception{
         List flowDirs = new ArrayList();
@@ -151,7 +151,7 @@ public class Compiler{
     }
     
     /**
-     * g—p•û–@‚ğ•W€o—Í‚É•\¦‚·‚éB<p>
+     * ä½¿ç”¨æ–¹æ³•ã‚’æ¨™æº–å‡ºåŠ›ã«è¡¨ç¤ºã™ã‚‹ã€‚<p>
      */
     private static void usage(){
         try{
@@ -163,18 +163,18 @@ public class Compiler{
         }
     }
     /**
-     * ƒŠƒ\[ƒX‚ğ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã‚’æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param name ƒŠƒ\[ƒX–¼
-     * @exception IOException ƒŠƒ\[ƒX‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param name ãƒªã‚½ãƒ¼ã‚¹å
+     * @exception IOException ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     private static String getResourceString(String name) throws IOException{
         
-        // ƒŠƒ\[ƒX‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾
+        // ãƒªã‚½ãƒ¼ã‚¹ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—
         InputStream is = Compiler.class.getClassLoader()
             .getResourceAsStream(name);
         
-        // ƒƒbƒZ[ƒW‚Ì“Ç‚İ‚İ
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿
         StringBuilder buf = new StringBuilder();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
@@ -196,10 +196,10 @@ public class Compiler{
     }
     
     /**
-     * ƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚é‰Â”\«‚Ì‚ ‚é•¶š—ñ‚ğƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹æ–‡å­—åˆ—ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str ƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚é‰Â”\«‚Ì‚ ‚é•¶š—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ
+     * @param str ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹æ–‡å­—åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—
      */
     private static String unicodeConvert(String str){
         char c;
@@ -276,40 +276,40 @@ public class Compiler{
     }
     
     /**
-     * ƒRƒ“ƒpƒCƒ‹ƒRƒ}ƒ“ƒh‚ğÀs‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * <pre>
-     * ƒRƒ}ƒ“ƒhg—p•û–@F
+     * ã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•ï¼š
      *   java jp.ossc.nimbus.service.beancontrol.Compiler [options] [beanflow files]
      * 
      * [options]
      * 
      *  [-v]
-     *    Às‚ÌÚ×‚ğ•\¦‚µ‚Ü‚·B
+     *    å®Ÿè¡Œã®è©³ç´°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
      * 
      *  [-class]
-     *    jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker‚ÌÀ‘•ƒNƒ‰ƒXB
+     *    jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚
      * 
      *  [-testInterpreterClass]
-     *    jp.ossc.nimbus.service.interpreter.Interpreter‚ÌÀ‘•ƒNƒ‰ƒXB
+     *    jp.ossc.nimbus.service.interpreter.Interpreterã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚
      * 
      *  [-help]
-     *    ƒwƒ‹ƒv‚ğ•\¦‚µ‚Ü‚·B
+     *    ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
      * 
      *  [beanflow files]
-     *    ƒRƒ“ƒpƒCƒ‹‚·‚é‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹A‚Ü‚½‚ÍƒfƒBƒŒƒNƒgƒŠ‚ğw’è‚µ‚Ü‚·B
-     *    ƒXƒy[ƒX‹æØ‚è‚Å•¡”w’è‰Â”\‚Å‚·B
+     *    ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã€ã¾ãŸã¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã—ã¾ã™ã€‚
+     *    ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯èƒ½ã§ã™ã€‚
      * 
-     * g—p—á : 
+     * ä½¿ç”¨ä¾‹ : 
      *    java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.service.beancontrol.Compiler beanflow-def.xml
      * </pre>
      *
-     * @param args ƒRƒ}ƒ“ƒhˆø”
-     * @exception Exception ƒRƒ“ƒpƒCƒ‹’†‚É–â‘è‚ª”­¶‚µ‚½ê‡
+     * @param args ã‚³ãƒãƒ³ãƒ‰å¼•æ•°
+     * @exception Exception ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ã«å•é¡ŒãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public static void main(String[] args) throws Exception{
         
         if(args.length != 0 && args[0].equals("-help")){
-            // g—p•û–@‚ğ•\¦‚·‚é
+            // ä½¿ç”¨æ–¹æ³•ã‚’è¡¨ç¤ºã™ã‚‹
             usage();
             return;
         }

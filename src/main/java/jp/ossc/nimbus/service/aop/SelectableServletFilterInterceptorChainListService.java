@@ -40,8 +40,8 @@ import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒT[ƒuƒŒƒbƒgƒtƒBƒ‹ƒ^‚ÌŒÄ‚Ño‚µî•ñ‚ğg‚Á‚ÄA{@link InterceptorChainList}‚ğU‚è•ª‚¯‚éInterceptorChainListƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉA“Á’è‚ÌƒpƒX–ˆ‚ÉˆÙ‚È‚é{@link InterceptorChainList ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒŠƒXƒg}‚ğ‘I‘ğ‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒŠƒXƒg‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ•ã‚£ãƒ«ã‚¿ã®å‘¼ã³å‡ºã—æƒ…å ±ã‚’ä½¿ã£ã¦ã€{@link InterceptorChainList}ã‚’æŒ¯ã‚Šåˆ†ã‘ã‚‹InterceptorChainListã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ç‰¹å®šã®ãƒ‘ã‚¹æ¯ã«ç•°ãªã‚‹{@link InterceptorChainList ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãƒªã‚¹ãƒˆ}ã‚’é¸æŠã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãƒªã‚¹ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -93,80 +93,80 @@ public class SelectableServletFilterInterceptorChainListService
     private ServiceName defaultInterceptorChainListServiceName;
     private InterceptorChainList defaultInterceptorChainList;
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setEnabledURLMapping(Map mapping){
         enabledURLMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public Map getEnabledURLMapping(){
         return enabledURLMapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setEnabledURIMapping(Map mapping){
         enabledURIMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public Map getEnabledURIMapping(){
         return enabledPathMapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setEnabledPathMapping(Map mapping){
         enabledPathMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public Map getEnabledPathMapping(){
         return enabledPathMapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setDisabledURLMapping(Map mapping){
         disabledURLMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public Map getDisabledURLMapping(){
         return disabledURLMapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setDisabledURIMapping(Map mapping){
         disabledURIMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public Map getDisabledURIMapping(){
         return disabledPathMapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setDisabledPathMapping(Map mapping){
         disabledPathMapping = mapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public Map getDisabledPathMapping(){
         return disabledPathMapping;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public void setDefaultInterceptorChainListServiceName(ServiceName name){
         defaultInterceptorChainListServiceName = name;
     }
     
-    // SelectableServletFilterInterceptorChainListServiceMBean‚ÌJavaDoc
+    // SelectableServletFilterInterceptorChainListServiceMBeanã®JavaDoc
     public ServiceName getDefaultInterceptorChainListServiceName(){
         return defaultInterceptorChainListServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         enabledURLChainMapping = new LinkedHashMap();
@@ -178,9 +178,9 @@ public class SelectableServletFilterInterceptorChainListService
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -219,9 +219,9 @@ public class SelectableServletFilterInterceptorChainListService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         enabledURLChainMapping.clear();
@@ -233,9 +233,9 @@ public class SelectableServletFilterInterceptorChainListService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         enabledURLChainMapping = null;
@@ -267,12 +267,12 @@ public class SelectableServletFilterInterceptorChainListService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgî•ñ‚ğ{@link ServletFilterInvocationContext}‚ÉƒLƒƒƒXƒg‚µ‚ÄAƒŠƒNƒGƒXƒg‚ÌƒpƒXî•ñ‚ğæ“¾‚µA‚»‚ÌƒpƒX‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½{@link InterceptorChainList}‚©‚çAƒCƒ“ƒ^[ƒZƒvƒ^‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸå‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’{@link ServletFilterInvocationContext}ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ‘ã‚¹æƒ…å ±ã‚’å–å¾—ã—ã€ãã®ãƒ‘ã‚¹ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸ{@link InterceptorChainList}ã‹ã‚‰ã€ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñB{@link ServletFilterInvocationContext}‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B
-     * @param index ƒCƒ“ƒ^[ƒZƒvƒ^‚Ìƒ`ƒF[ƒ“ã‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒCƒ“ƒ^[ƒZƒvƒ^Bw’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚{@link ServletFilterInvocationContext}ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚
+     * @param index ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒã‚§ãƒ¼ãƒ³ä¸Šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™
      */
     public Interceptor getInterceptor(InvocationContext context, int index){
         if(getState() != STARTED){

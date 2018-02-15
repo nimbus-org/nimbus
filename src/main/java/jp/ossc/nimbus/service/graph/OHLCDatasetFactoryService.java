@@ -43,7 +43,7 @@ import org.jfree.data.xy.DefaultOHLCDataset;
 import org.jfree.data.xy.OHLCDataItem;
 
 /**
- * OHLCƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * OHLCãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -52,37 +52,37 @@ public abstract class OHLCDatasetFactoryService extends ServiceBase
     
     private static final long serialVersionUID = -5683807188095075424L;
     
-    /** ƒf[ƒ^ƒZƒbƒg–¼ */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå */
     protected String dataSetName;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔƒtƒB[ƒ‹ƒh */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ */
     protected int collateDataField = Calendar.MILLISECOND;
-    /** ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚Ì’·‚³ */
+    /** å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã®é•·ã• */
     protected int collateDataPeriod = 1;
-    /** ‚ÌÌ—p•û–@ */
+    /** æ™‚åˆ»ã®æ¡ç”¨æ–¹æ³• */
     protected int collateDataDateType = COLLATE_DATA_DATE_TYPE_START;
     
-    // OHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // OHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setName(String name){
         dataSetName = name;
     }
     
-    // OHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // OHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getName(){
         return dataSetName;
     }
     
-    // OHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // OHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setCollateDataPeriod(int field, int period){
         collateDataField = field;
         collateDataPeriod = period;
     }
     
-    // OHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // OHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setCollateDataDateType(int type){
         collateDataDateType = type;
     }
     
-    // OHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // OHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getCollateDataDateType(){
         return collateDataDateType;
     }
@@ -90,16 +90,16 @@ public abstract class OHLCDatasetFactoryService extends ServiceBase
     public void preStartService() throws Exception{
         super.preStartService();
         if(dataSetName == null || dataSetName.length() == 0){
-            // ƒT[ƒrƒX’è‹`‚Åİ’è‚³‚ê‚È‚©‚Á‚½ê‡
+            // ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆ
             dataSetName = getServiceName();
         }
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param dsConditions ƒf[ƒ^ƒZƒbƒgğŒ”z—ñ
-     * @return ƒf[ƒ^ƒZƒbƒg
+     * @param dsConditions ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      * @exception DatasetCreateException
      */
     public Dataset createDataset(DatasetCondition[] dsConditions)
@@ -132,15 +132,15 @@ public abstract class OHLCDatasetFactoryService extends ServiceBase
             Calendar cal = Calendar.getInstance();
             long periodStartMillis = -1L;
             long prePeriodStartMillis = -1L;
-            // n’l
+            // å§‹å€¤
             double openPrice = Double.NaN;
-            // ‚’l
+            // é«˜å€¤
             double highPrice = Double.NaN;
-            // ˆÀ’l
+            // å®‰å€¤
             double lowPrice = Double.NaN;
-            // I’l
+            // çµ‚å€¤
             double closePrice = Double.NaN;
-            // o—ˆ‚
+            // å‡ºæ¥é«˜
             double volume = 0.0d;
             long period = 0L;
             switch(collateDataDateType){
@@ -179,7 +179,7 @@ public abstract class OHLCDatasetFactoryService extends ServiceBase
                 break;
             }
             while(cursor.next()){
-                // “ú•t
+                // æ—¥ä»˜
                 Date date = cursor.getDate();
                 if(date == null){
                     throw new DatasetCreateException("date is null.");
@@ -219,8 +219,8 @@ public abstract class OHLCDatasetFactoryService extends ServiceBase
                     prePeriodStartMillis = periodStartMillis;
                 }
                 
-                // n’lA‚’lAˆÀ’lAI’lAo—ˆ‚‚Ì‚Ç‚ê‚©‚Ì’l‚ª
-                // null‚¾‚Á‚½ê‡‚ÍA‚»‚ÌƒŒƒR[ƒh‚Í–³‹‚·‚éB
+                // å§‹å€¤ã€é«˜å€¤ã€å®‰å€¤ã€çµ‚å€¤ã€å‡ºæ¥é«˜ã®ã©ã‚Œã‹ã®å€¤ãŒ
+                // nullã ã£ãŸå ´åˆã¯ã€ãã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã¯ç„¡è¦–ã™ã‚‹ã€‚
                 double val = cursor.getOpenPrice();
                 if(!Double.isNaN(val) && cursor.wasNull()){
                     continue;
@@ -306,11 +306,11 @@ public abstract class OHLCDatasetFactoryService extends ServiceBase
      throws DatasetCreateException;
     
     /**
-     * ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚ÌŠJn[ms]‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã®é–‹å§‹[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param cal ƒJƒŒƒ“ƒ_[
-     * @param date “ú•t
-     * @return ’l‚ğ‚Ü‚Æ‚ß‚éŠúŠÔ‚ÌŠJn[ms]
+     * @param cal ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
+     * @param date æ—¥ä»˜
+     * @return å€¤ã‚’ã¾ã¨ã‚ã‚‹æœŸé–“ã®é–‹å§‹[ms]
      */
     protected long getStartMillis(Calendar cal, Date date){
         cal.setTime(date);

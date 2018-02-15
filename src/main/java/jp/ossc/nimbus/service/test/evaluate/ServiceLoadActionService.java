@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -59,22 +59,22 @@ public class ServiceLoadActionService extends ServiceBase implements EvaluateTes
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚ÄA–ß‚è’l‚ğ•Ô‚·B<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã€æˆ»ã‚Šå€¤ã‚’è¿”ã™ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * loadType
      * checkLoadManagerCompleted
      * serviceDefinitionPath
      * </pre>
-     * loadType‚ÍAƒ[ƒh‚Ìê‡ALOADBƒAƒ“ƒ[ƒh‚Ìê‡AUNLOAD‚ğw’è‚·‚éB<br>
-     * checkLoadManagerCompleted‚ÍAƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ŒãA{@link ServiceManagerFactory#checkLoadManagerCompleted}‚ğŒÄ‚Ño‚·‚©‚ğw’è‚·‚éBŒÄ‚Ño‚·ê‡AtrueBloadType‚ªUNLOAD‚Ìê‡‚ÍA‚±‚Ìs‚ğw’è‚·‚é•K—v‚Í‚È‚¢B<br>
-     * serviceDefinitionPath‚ÍAƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB•¡”‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚Ü‚½‚ÍƒAƒ“ƒ[ƒh‚·‚éê‡‚ÍA‰üs‚µ‚Äw’è‚·‚éBƒ[ƒh‚Ìê‡‚ÍAw’è‚³‚ê‚½‡‚Åƒ[ƒh‚·‚éBƒAƒ“ƒ[ƒh‚Ìê‡‚ÍAw’è‚³‚ê‚½‡‚Æ‹t‡‚ÅƒAƒ“ƒ[ƒh‚·‚éB<br>
+     * loadTypeã¯ã€ãƒ­ãƒ¼ãƒ‰ã®å ´åˆã€LOADã€‚ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®å ´åˆã€UNLOADã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * checkLoadManagerCompletedã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€{@link ServiceManagerFactory#checkLoadManagerCompleted}ã‚’å‘¼ã³å‡ºã™ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚å‘¼ã³å‡ºã™å ´åˆã€trueã€‚loadTypeãŒUNLOADã®å ´åˆã¯ã€ã“ã®è¡Œã‚’æŒ‡å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
+     * serviceDefinitionPathã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚è¤‡æ•°ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã¾ãŸã¯ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã—ã¦æŒ‡å®šã™ã‚‹ã€‚ãƒ­ãƒ¼ãƒ‰ã®å ´åˆã¯ã€æŒ‡å®šã•ã‚ŒãŸé †ã§ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®å ´åˆã¯ã€æŒ‡å®šã•ã‚ŒãŸé †ã¨é€†é †ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
      *
-     * @param context ƒeƒXƒgƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌID
-     * @param resource ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ö‚ÌƒŠƒ\[ƒX
-     * @return ÀsŒ‹‰Ê‚Ì•]‰¿B¬Œ÷‚µ‚½ê‡Atrue
-     * @exception Exception ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ID
+     * @param resource ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¸ã®ãƒªã‚½ãƒ¼ã‚¹
+     * @return å®Ÿè¡Œçµæœã®è©•ä¾¡ã€‚æˆåŠŸã—ãŸå ´åˆã€true
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

@@ -35,9 +35,9 @@ import java.lang.reflect.*;
 import java.io.*;
 
 /**
- * �T�[�r�X�v���L�V�t�@�N�g���B<p>
- * {@link ServiceManager}�ɓo�^�����T�[�r�X�́A{@link Service}�C���^�t�F�[�X���������ׂ��ł���B�������A�����̃��\�[�X�����̂܂܃T�[�r�X�Ƃ��Ďg�p�������ꍇ�AService�C���^�t�F�[�X���������Ă��Ȃ��B�܂��A�����̃��\�[�X���p�����ăT�[�r�X��V�K�ɍ쐬����ꍇ�́A{@link ServiceBase}���p�����鎖���ł��Ȃ��B���̂悤�ȏꍇ�ɁA�T�[�r�X�Ƃ��ēo�^�������C�ӂ̃I�u�W�F�N�g���AService�C���^�t�F�[�X�����������v���L�V�Ń��b�v���鎖�ŁA�T�[�r�X�Ƃ��Ďg�p�\�ɂ���B<br>
- * ���̃N���X�́A���̂悤�ȃT�[�r�X�̃v���L�V���쐬���邽�߂̃t�@�N�g���N���X�ł���B<br>
+ * サービスプロキシファクトリ。<p>
+ * {@link ServiceManager}に登録されるサービスは、{@link Service}インタフェースを実装すべきである。しかし、既存のリソースをそのままサービスとして使用したい場合、Serviceインタフェースを実装していない。また、既存のリソースを継承してサービスを新規に作成する場合は、{@link ServiceBase}を継承する事ができない。そのような場合に、サービスとして登録したい任意のオブジェクトを、Serviceインタフェースを実装したプロキシでラップする事で、サービスとして使用可能にする。<br>
+ * このクラスは、そのようなサービスのプロキシを作成するためのファクトリクラスである。<br>
  * 
  * @author M.Takata
  */
@@ -49,10 +49,10 @@ public class ServiceProxyFactory{
     }
     
     /**
-     * {@link ServiceBaseSupport}�C���^�t�F�[�X�����������N���X�����b�v����T�[�r�X�v���L�V���쐬����B<p>
+     * {@link ServiceBaseSupport}インタフェースを実装したクラスをラップするサービスプロキシを作成する。<p>
      *
-     * @param support {@link ServiceBaseSupport}�C���^�t�F�[�X�����������N���X�̃C���X�^���X
-     * @return �T�[�r�X�v���L�V
+     * @param support {@link ServiceBaseSupport}インタフェースを実装したクラスのインスタンス
+     * @return サービスプロキシ
      */
     public static ServiceBase createServiceBaseProxy(
         ServiceBaseSupport support
@@ -61,10 +61,10 @@ public class ServiceProxyFactory{
     }
     
     /**
-     * {@link Service}�A{@link ServiceBaseSupport}�C���^�t�F�[�X���������Ȃ��C�ӂ̃N���X�����b�v����T�[�r�X�v���L�V���쐬����B<p>
+     * {@link Service}、{@link ServiceBaseSupport}インタフェースを実装しない任意のクラスをラップするサービスプロキシを作成する。<p>
      *
-     * @param obj �T�[�r�X�łȂ��C�ӂ̃N���X�̃C���X�^���X
-     * @return �T�[�r�X�v���L�V
+     * @param obj サービスでない任意のクラスのインスタンス
+     * @return サービスプロキシ
      */
     public static ServiceBase createServiceBaseProxy(
         final Object obj

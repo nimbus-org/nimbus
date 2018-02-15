@@ -5,7 +5,7 @@ The DOCTYPE is:
       "-//Nimbus//DTD Nimbus DataSet generation 1.0//JA"
       "http://nimbus.sourceforge.jp/dtd/dataset_1_0.dtd">
 
-—á:
+ä¾‹:
     <dataSets>
         
         <property name="PACKAGE">jp.co.nri.beans</property>
@@ -39,146 +39,146 @@ The DOCTYPE is:
     </dataSets>
 -->
 
-<!-- dataSets—v‘f‚ÍAƒf[ƒ^ƒZƒbƒg¶¬’è‹`‚Ìƒ‹[ƒg—v‘f‚Å‚·B
+<!-- dataSetsè¦ç´ ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆç”Ÿæˆå®šç¾©ã®ãƒ«ãƒ¼ãƒˆè¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT dataSets (property* | record* | header* | recordList* | dataSet*)*>
 
-<!-- property—v‘f‚ÍA${ƒvƒƒpƒeƒB–¼}‚ÅŽQÆ‚Å‚«‚éŠÂ‹«•Ï”ƒvƒƒpƒeƒB‚ð’è‹`‚µ‚Ü‚·B
+<!-- propertyè¦ç´ ã¯ã€${ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}ã§å‚ç…§ã§ãã‚‹ç’°å¢ƒå¤‰æ•°ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ELEMENT property (#PCDATA)>
 
-<!-- name‘®«‚ÍA${ƒvƒƒpƒeƒB–¼}‚ÅŽQÆ‚Å‚«‚éŠÂ‹«•Ï”ƒvƒƒpƒeƒB–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€${ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}ã§å‚ç…§ã§ãã‚‹ç’°å¢ƒå¤‰æ•°ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST property name CDATA #REQUIRED>
 
-<!-- record—v‘f‚ÍAƒŒƒR[ƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- recordè¦ç´ ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT record (schema)>
 
-<!-- code‘®«‚ÍAƒŒƒR[ƒh‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST record code CDATA #REQUIRED>
 
-<!-- extends‘®«‚ÍAƒŒƒR[ƒh‚ÌeƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- extendså±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®è¦ªã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST record extends CDATA #IMPLIED>
 
-<!-- abstract‘®«‚ÍAƒŒƒR[ƒh‚ð’ŠÛƒNƒ‰ƒX‚É‚·‚é‚©‚Ç‚¤‚©‚ð’è‹`‚µ‚Ü‚·B
+<!-- abstractå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŠ½è±¡ã‚¯ãƒ©ã‚¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST record abstract (true|false) "false">
 
-<!-- header—v‘f‚ÍAƒwƒbƒ_‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- headerè¦ç´ ã¯ã€ãƒ˜ãƒƒãƒ€ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT header (schema?)>
 
-<!-- code‘®«‚ÍAƒwƒbƒ_‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ˜ãƒƒãƒ€ã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST header code CDATA #REQUIRED>
 
-<!-- extends‘®«‚ÍAƒwƒbƒ_‚ÌeƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- extendså±žæ€§ã¯ã€ãƒ˜ãƒƒãƒ€ã®è¦ªã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST header extends CDATA #IMPLIED>
 
-<!-- abstract‘®«‚ÍAƒwƒbƒ_‚ð’ŠÛƒNƒ‰ƒX‚É‚·‚é‚©‚Ç‚¤‚©‚ð’è‹`‚µ‚Ü‚·B
+<!-- abstractå±žæ€§ã¯ã€ãƒ˜ãƒƒãƒ€ã‚’æŠ½è±¡ã‚¯ãƒ©ã‚¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST header abstract (true|false) "false">
 
-<!-- name‘®«‚ÍAƒwƒbƒ_‚Ì–¼‘O‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€ãƒ˜ãƒƒãƒ€ã®åå‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST header name CDATA #IMPLIED>
 
-<!-- recordList—v‘f‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- recordListè¦ç´ ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT recordList (index*)>
 
-<!-- code‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST recordList code CDATA #REQUIRED>
 
-<!-- extends‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚ÌeƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- extendså±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®è¦ªã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST recordList extends CDATA #IMPLIED>
 
-<!-- abstract‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚ð’ŠÛƒNƒ‰ƒX‚É‚·‚é‚©‚Ç‚¤‚©‚ð’è‹`‚µ‚Ü‚·B
+<!-- abstractå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’æŠ½è±¡ã‚¯ãƒ©ã‚¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST recordList abstract (true|false) "false">
 
-<!-- recordCode‘®«‚ÍAƒŒƒR[ƒh‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- recordCodeå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST recordList recordCode CDATA #IMPLIED>
 
-<!-- name‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚Ì–¼‘O‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åå‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST recordList name CDATA #IMPLIED>
 
-<!-- synchronized‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚Ì“¯Šú‰»‚ð’è‹`‚µ‚Ü‚·B
+<!-- synchronizedå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åŒæœŸåŒ–ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST recordList synchronized (true|false) "true">
 
-<!-- index—v‘f‚ÍAŒŸõƒCƒ“ƒfƒbƒNƒX‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- indexè¦ç´ ã¯ã€æ¤œç´¢ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT index (#PCDATA)>
 
-<!-- name‘®«‚ÍAŒŸõƒCƒ“ƒfƒbƒNƒX‚Ì–¼‘O‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€æ¤œç´¢ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®åå‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST index name CDATA #REQUIRED>
 
-<!-- nestedRecord—v‘f‚ÍAƒlƒXƒg‚µ‚½ƒŒƒR[ƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- nestedRecordè¦ç´ ã¯ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT nestedRecord EMPTY>
 
-<!-- code‘®«‚ÍAƒŒƒR[ƒh‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST nestedRecord code CDATA #REQUIRED>
 
-<!-- name‘®«‚ÍAƒŒƒR[ƒh‚Ì–¼‘O‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®åå‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST nestedRecord name CDATA #REQUIRED>
 
-<!-- nestedRecordList—v‘f‚ÍAƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- nestedRecordListè¦ç´ ã¯ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT nestedRecordList EMPTY>
 
-<!-- code‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST nestedRecordList code CDATA #REQUIRED>
 
-<!-- name‘®«‚ÍAƒŒƒR[ƒhƒŠƒXƒg‚Ì–¼‘O‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åå‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST nestedRecordList name CDATA #REQUIRED>
 
-<!-- dataSet—v‘f‚ÍAƒf[ƒ^ƒZƒbƒg‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- dataSetè¦ç´ ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT dataSet (header* | recordList* | nestedRecord* |nestedRecordList*)*>
 
-<!-- code‘®«‚ÍAƒf[ƒ^ƒZƒbƒg‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST dataSet code CDATA #REQUIRED>
 
-<!-- extends‘®«‚ÍAƒf[ƒ^ƒZƒbƒg‚ÌeƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- extendså±žæ€§ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®è¦ªã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST dataSet extends CDATA #IMPLIED>
 
-<!-- abstract‘®«‚ÍAƒf[ƒ^ƒZƒbƒg‚ð’ŠÛƒNƒ‰ƒX‚É‚·‚é‚©‚Ç‚¤‚©‚ð’è‹`‚µ‚Ü‚·B
+<!-- abstractå±žæ€§ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’æŠ½è±¡ã‚¯ãƒ©ã‚¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST dataSet abstract (true|false) "false">
 
-<!-- name‘®«‚ÍAƒf[ƒ^ƒZƒbƒg‚Ì–¼‘O‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®åå‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST dataSet name CDATA #IMPLIED>
 
-<!-- synchronized‘®«‚ÍAƒf[ƒ^ƒZƒbƒg‚Ì“¯Šú‰»‚ð’è‹`‚µ‚Ü‚·B
+<!-- synchronizedå±žæ€§ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®åŒæœŸåŒ–ã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST dataSet synchronized (true|false) "true">
 
-<!-- schema—v‘f‚ÍAƒŒƒR[ƒh‚âƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚ð’è‹`‚µ‚Ü‚·B
+<!-- schemaè¦ç´ ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚„ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒžã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ELEMENT schema (#PCDATA)>
 
-<!-- type‘®«‚ÍAƒXƒL[ƒ}‚Ì’è‹`•û–@‚ð’è‹`‚µ‚Ü‚·B
-     ’Pƒ‚ÉŽw’è‚µ‚½ƒXƒL[ƒ}‚É‚µ‚½‚¢ê‡‚ÍAset
-     eƒNƒ‰ƒX‚ÌƒXƒL[ƒ}‚É•t‰Á‚µ‚½‚¢ê‡‚ÍAappend
-     eƒNƒ‰ƒX‚ÌƒXƒL[ƒ}‚ð’uŠ·‚µ‚½‚¢ê‡‚ÍAreplace
-     ƒfƒtƒHƒ‹ƒg‚ÍAset
+<!-- typeå±žæ€§ã¯ã€ã‚¹ã‚­ãƒ¼ãƒžã®å®šç¾©æ–¹æ³•ã‚’å®šç¾©ã—ã¾ã™ã€‚
+     å˜ç´”ã«æŒ‡å®šã—ãŸã‚¹ã‚­ãƒ¼ãƒžã«ã—ãŸã„å ´åˆã¯ã€set
+     è¦ªã‚¯ãƒ©ã‚¹ã®ã‚¹ã‚­ãƒ¼ãƒžã«ä»˜åŠ ã—ãŸã„å ´åˆã¯ã€append
+     è¦ªã‚¯ãƒ©ã‚¹ã®ã‚¹ã‚­ãƒ¼ãƒžã‚’ç½®æ›ã—ãŸã„å ´åˆã¯ã€replace
+     ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€set
 -->
 <!ATTLIST schema type (set|append|replace) "set">

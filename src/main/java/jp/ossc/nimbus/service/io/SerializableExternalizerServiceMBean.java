@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.io;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link SerializableExternalizerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SerializableExternalizerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SerializableExternalizerService
@@ -42,44 +42,44 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface SerializableExternalizerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ˆ³kƒ‚[ƒhF”ñˆ³kB<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šéåœ§ç¸®ã€‚<p>
      */
     public static final int COMPRESS_MODE_NONE = 0;
     
     /**
-     * ˆ³kƒ‚[ƒhFZLIBŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šZLIBå½¢å¼ã€‚<p>
      */
     public static final int COMPRESS_MODE_ZLIB = 1;
     
     /**
-     * ˆ³kƒ‚[ƒhFZIPŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šZIPå½¢å¼ã€‚<p>
      */
     public static final int COMPRESS_MODE_ZIP = 2;
     
     /**
-     * ˆ³kƒ‚[ƒhFGZIPŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šGZIPå½¢å¼ã€‚<p>
      */
     public static final int COMPRESS_MODE_GZIP = 3;
     
     /**
-     * ˆ³kƒ‚[ƒhFSNAPPYŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šSNAPPYå½¢å¼ã€‚<p>
      */
 
     public static final int COMPRESS_MODE_SNAPPY = 4;
 
     
     /**
-     * ˆ³kƒ‚[ƒhFLZ4Œ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šLZ4å½¢å¼ã€‚<p>
      */
 
     public static final int COMPRESS_MODE_LZ4 = 5;
 
     
     /**
-     * ˆ³kƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #COMPRESS_MODE_NONE ”ñˆ³k}B<br>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #COMPRESS_MODE_NONE éåœ§ç¸®}ã€‚<br>
      * 
-     * @param mode ˆ³kƒ‚[ƒh
+     * @param mode åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰
      * @see #COMPRESS_MODE_NONE
      * @see #COMPRESS_MODE_ZLIB
      * @see #COMPRESS_MODE_ZIP
@@ -90,195 +90,195 @@ public interface SerializableExternalizerServiceMBean extends ServiceBaseMBean{
     public void setCompressMode(int mode);
     
     /**
-     * ˆ³kƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kƒ‚[ƒh
+     * @return åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰
      */
     public int getCompressMode();
     
     /**
-     * ˆ³kƒŒƒxƒ‹‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link java.util.zip.Deflater#DEFAULT_COMPRESSION}B<br>
-     * ˆ³kƒ‚[ƒh‚ªA{@link #COMPRESS_MODE_ZLIB}A{@link #COMPRESS_MODE_ZIP}‚Ìê‡A—LŒøB<br>
+     * åœ§ç¸®ãƒ¬ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link java.util.zip.Deflater#DEFAULT_COMPRESSION}ã€‚<br>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ãŒã€{@link #COMPRESS_MODE_ZLIB}ã€{@link #COMPRESS_MODE_ZIP}ã®å ´åˆã€æœ‰åŠ¹ã€‚<br>
      * 
-     * @param level ˆ³kƒŒƒxƒ‹
+     * @param level åœ§ç¸®ãƒ¬ãƒ™ãƒ«
      */
     public void setCompressLevel(int level);
     
     /**
-     * ˆ³kƒŒƒxƒ‹‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kƒŒƒxƒ‹
+     * @return åœ§ç¸®ãƒ¬ãƒ™ãƒ«
      */
     public int getCompressLevel();
     
     /**
-     * ˆ³kƒƒ\ƒbƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link java.util.zip.ZipOutputStream#DEFLATED}B<br>
-     * ˆ³kƒ‚[ƒh‚ªA{@link #COMPRESS_MODE_ZIP}‚Ìê‡‚Ì‚İA—LŒøB<br>
+     * åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link java.util.zip.ZipOutputStream#DEFLATED}ã€‚<br>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ãŒã€{@link #COMPRESS_MODE_ZIP}ã®å ´åˆã®ã¿ã€æœ‰åŠ¹ã€‚<br>
      * 
-     * @param method ˆ³kƒƒ\ƒbƒh
+     * @param method åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public void setCompressMethod(int method);
     
     /**
-     * ˆ³kƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kƒƒ\ƒbƒh
+     * @return åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public int getCompressMethod();
     
     /**
-     * ˆ³kè‡’l‚ğİ’è‚·‚éB<p>
-     * ˆ³kè‡’l‚ğ’´‚¦‚éƒoƒCƒg’·‚Æ‚È‚éƒIƒuƒWƒFƒNƒg‚Ì‚İˆ³k‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Å‘S‚Äˆ³k‚·‚éB<br>
+     * åœ§ç¸®é–¾å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * åœ§ç¸®é–¾å€¤ã‚’è¶…ãˆã‚‹ãƒã‚¤ãƒˆé•·ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã¿åœ§ç¸®ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§å…¨ã¦åœ§ç¸®ã™ã‚‹ã€‚<br>
      *
-     * @param threshold ˆ³kè‡’l[byte]
+     * @param threshold åœ§ç¸®é–¾å€¤[byte]
      */
     public void setCompressThreshold(int threshold);
     
     /**
-     * ˆ³kè‡’l‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®é–¾å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kè‡’l[byte]
+     * @return åœ§ç¸®é–¾å€¤[byte]
      */
     public int getCompressThreshold();
     
     /**
-     * ˆ³k/‰ğ“€‚Ì“üo—Í‚Ìƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * åœ§ç¸®/è§£å‡æ™‚ã®å…¥å‡ºåŠ›ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param size ƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setBufferSize(int size);
     
     /**
-     * ˆ³k/‰ğ“€‚Ì“üo—Í‚Ìƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®/è§£å‡æ™‚ã®å…¥å‡ºåŠ›ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒoƒbƒtƒ@ƒTƒCƒY
+     * @return ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getBufferSize();
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡Aƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é
+     * @return trueã®å ´åˆã€ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹
      */
     public boolean isBufferedOutputStream();
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åƒoƒbƒtƒ@ƒŠƒ“ƒO‚µ‚È‚¢B
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã—ãªã„ã€‚
      * 
-     * @param isBuffered ƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡Atrue
+     * @param isBuffered ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã€true
      */
     public void setBufferedOutputStream(boolean isBuffered);
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚Ì‰Šúƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1024B
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1024ã€‚
      * 
-     * @param size ‰Šúƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setOutputStreamInitialBufferSize(int size);
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚Ì‰Šúƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‰Šúƒoƒbƒtƒ@ƒTƒCƒY
+     * @return åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getOutputStreamInitialBufferSize();
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚Ìƒoƒbƒtƒ@ƒTƒCƒYŠg’£”{—¦‚ğİ’è‚·‚éB<p>
-     * ƒoƒbƒtƒ@‚ªŒÍŠ‰‚µ‚Ä“à•”“I‚Éƒtƒ‰ƒbƒVƒ…‚·‚éÛ‚ÉA‚±‚Ì”{—¦‚Åƒoƒbƒtƒ@ƒTƒCƒY‚ğŠg’£‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA2B<br>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºæ‹¡å¼µå€ç‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒãƒƒãƒ•ã‚¡ãŒæ¯æ¸‡ã—ã¦å†…éƒ¨çš„ã«ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã«ã€ã“ã®å€ç‡ã§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æ‹¡å¼µã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€2ã€‚<br>
      * 
-     * @param ratio Šg’£”{—¦
+     * @param ratio æ‹¡å¼µå€ç‡
      */
     public void setOutputStreamBufferExpandRatio(float ratio);
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚Ìƒoƒbƒtƒ@ƒTƒCƒYŠg’£”{—¦‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºæ‹¡å¼µå€ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Šg’£”{—¦
+     * @return æ‹¡å¼µå€ç‡
      */
     public float getOutputStreamBufferExpandRatio();
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚ÌÅ‘åƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
-     * ƒoƒbƒtƒ@‚ªŒÍŠ‰‚µ‚Ä“à•”“I‚Éƒtƒ‰ƒbƒVƒ…‚·‚éÛ‚ÉAƒoƒbƒtƒ@ƒTƒCƒY‚ğŠg’£‚·‚é‚ªAÅ‘å‚Å‚±‚ÌƒTƒCƒY‚Ü‚ÅŠg’£‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA10240B<br>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®æœ€å¤§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒãƒƒãƒ•ã‚¡ãŒæ¯æ¸‡ã—ã¦å†…éƒ¨çš„ã«ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã«ã€ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æ‹¡å¼µã™ã‚‹ãŒã€æœ€å¤§ã§ã“ã®ã‚µã‚¤ã‚ºã¾ã§æ‹¡å¼µã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€10240ã€‚<br>
      * 
-     * @param size Å‘åƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size æœ€å¤§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setOutputStreamMaxBufferSize(int size);
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚ÌÅ‘åƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®æœ€å¤§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Å‘åƒoƒbƒtƒ@ƒTƒCƒY
+     * @return æœ€å¤§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getOutputStreamMaxBufferSize();
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡Aƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é
+     * @return trueã®å ´åˆã€ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹
      */
     public boolean isBufferedInputStream();
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åƒoƒbƒtƒ@ƒŠƒ“ƒO‚µ‚È‚¢B
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã—ãªã„ã€‚
      * 
-     * @param isBuffered ƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡Atrue
+     * @param isBuffered ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã€true
      */
     public void setBufferedInputStream(boolean isBuffered);
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚Ì‰Šúƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1024B
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1024ã€‚
      * 
-     * @param size ‰Šúƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setInputStreamInitialBufferSize(int size);
     
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡‚Ì‰Šúƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆã®åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‰Šúƒoƒbƒtƒ@ƒTƒCƒY
+     * @return åˆæœŸãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getInputStreamInitialBufferSize();
     
     /**
-     * {@link Externalizer#writeExternal(Object, java.io.OutputStream)}‚ªŒÄ‚Ño‚³‚ê‚½Û‚ÉAjava.io.OutputStream‚ğƒ‰ƒbƒv‚·‚éjava.io.ObjectOutput‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚ÅAw’è‚·‚éjava.io.ObjectOutput‚ÌÀ‘•ƒNƒ‰ƒX‚ÍAˆø”‚Éjava.io.OutputStream‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚Â•K—v‚ª‚ ‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAjava.io.ObjectOutputStream‚ªg—p‚³‚ê‚éB<br>
+     * {@link Externalizer#writeExternal(Object, java.io.OutputStream)}ãŒå‘¼ã³å‡ºã•ã‚ŒãŸéš›ã«ã€java.io.OutputStreamã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹java.io.ObjectOutputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§ã€æŒ‡å®šã™ã‚‹java.io.ObjectOutputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã€å¼•æ•°ã«java.io.OutputStreamã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒã¤å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€java.io.ObjectOutputStreamãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param clazz java.io.ObjectOutput‚ÌÀ‘•ƒNƒ‰ƒX
+     * @param clazz java.io.ObjectOutputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public void setObjectOutputClass(Class clazz);
     
     /**
-     * {@link Externalizer#writeExternal(Object, java.io.OutputStream)}‚ªŒÄ‚Ño‚³‚ê‚½Û‚ÉAjava.io.OutputStream‚ğƒ‰ƒbƒv‚·‚éjava.io.ObjectOutput‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * {@link Externalizer#writeExternal(Object, java.io.OutputStream)}ãŒå‘¼ã³å‡ºã•ã‚ŒãŸéš›ã«ã€java.io.OutputStreamã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹java.io.ObjectOutputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return java.io.ObjectOutput‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return java.io.ObjectOutputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getObjectOutputClass();
     
     /**
-     * {@link Externalizer#readExternal(java.io.InputStream)}‚ªŒÄ‚Ño‚³‚ê‚½Û‚ÉAjava.io.InputStream‚ğƒ‰ƒbƒv‚·‚éjava.io.ObjectInput‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚ÅAw’è‚·‚éjava.io.ObjectInput‚ÌÀ‘•ƒNƒ‰ƒX‚ÍAˆø”‚Éjava.io.InputStream‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚Â•K—v‚ª‚ ‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAjava.io.ObjectInputStream‚ªg—p‚³‚ê‚éB<br>
+     * {@link Externalizer#readExternal(java.io.InputStream)}ãŒå‘¼ã³å‡ºã•ã‚ŒãŸéš›ã«ã€java.io.InputStreamã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹java.io.ObjectInputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§ã€æŒ‡å®šã™ã‚‹java.io.ObjectInputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã€å¼•æ•°ã«java.io.InputStreamã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒã¤å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€java.io.ObjectInputStreamãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param clazz java.io.ObjectInput‚ÌÀ‘•ƒNƒ‰ƒX
+     * @param clazz java.io.ObjectInputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public void setObjectInputClass(Class clazz);
     
     /**
-     * {@link Externalizer#readExternal(java.io.InputStream)}‚ªŒÄ‚Ño‚³‚ê‚½Û‚ÉAjava.io.InputStream‚ğƒ‰ƒbƒv‚·‚éjava.io.ObjectInput‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * {@link Externalizer#readExternal(java.io.InputStream)}ãŒå‘¼ã³å‡ºã•ã‚ŒãŸéš›ã«ã€java.io.InputStreamã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹java.io.ObjectInputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return java.io.ObjectInput‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return java.io.ObjectInputã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getObjectInputClass();
 }

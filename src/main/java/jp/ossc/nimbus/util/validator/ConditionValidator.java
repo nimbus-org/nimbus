@@ -43,8 +43,8 @@ import org.apache.commons.jexl.JexlContext;
 import org.apache.commons.jexl.JexlHelper;
 
 /**
- * ğŒƒoƒŠƒf[ƒ^B<p>
- * The Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚µ‚½ğŒ®‚ÅŒŸØ‚·‚éB<br>
+ * æ¡ä»¶ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã—ãŸæ¡ä»¶å¼ã§æ¤œè¨¼ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -55,35 +55,35 @@ public class ConditionValidator implements Validator, Serializable{
     private Condition condition;
     
     /**
-     * ğŒ®‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚Ì•¶–@‚É]‚¤B<br>
-     * {@link #validate(Object obj)}‚Ìˆø”obj‚ğğŒ®“à‚ÅQÆ‚·‚é‚É‚ÍA"value"‚Æ‹Lq‚·‚éB<br>
-     * ‚Ü‚½Aobj‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍA"@ƒvƒƒpƒeƒB–¼@"‚Ì‚æ‚¤‚É‹Lq‚·‚éB<br>
-     * ‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
-     * —áFvalue != null && @length@ &gt; 3<br>
+     * æ¡ä»¶å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã®æ–‡æ³•ã«å¾“ã†ã€‚<br>
+     * {@link #validate(Object obj)}ã®å¼•æ•°objã‚’æ¡ä»¶å¼å†…ã§å‚ç…§ã™ã‚‹ã«ã¯ã€"value"ã¨è¨˜è¿°ã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€objã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€"@ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å@"ã®ã‚ˆã†ã«è¨˜è¿°ã™ã‚‹ã€‚<br>
+     * ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
+     * ä¾‹ï¼švalue != null && @length@ &gt; 3<br>
      *
-     * @param condition ğŒ®
-     * @exception ValidateException ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @exception ValidateException æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      */
     public void setCondition(String condition) throws ValidateException{
         this.condition = new Condition(condition);
     }
     
     /**
-     * ğŒ®‚ğæ“¾‚·‚éB<p>
+     * æ¡ä»¶å¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ğŒ®
+     * @return æ¡ä»¶å¼
      */
     public String getCondition(){
         return condition == null ? null : condition.toString();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªğŒ®‚É‡’v‚·‚é‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæ¡ä»¶å¼ã«åˆè‡´ã™ã‚‹ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(Object obj) throws ValidateException{
         return condition == null ? true : condition.evaluate(obj);
@@ -223,7 +223,7 @@ public class ConditionValidator implements Validator, Serializable{
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
             }
         }
     }

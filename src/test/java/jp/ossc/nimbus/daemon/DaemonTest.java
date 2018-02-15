@@ -37,7 +37,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/30 -ã€€H.Nakano
  */
 public class DaemonTest extends TestCase {
 
@@ -59,21 +59,21 @@ public class DaemonTest extends TestCase {
 		Daemon d = new Daemon(r) ;
 		d.start() ;
 		Thread.sleep(5000);
-		System.out.println("‚P‰ñsuspend") ;
+		System.out.println("ï¼‘å›suspend") ;
 		d.suspend() ;
 		Thread.sleep(5000);
-		System.out.println("‚P‰ñresume") ;
+		System.out.println("ï¼‘å›resume") ;
 		d.resume() ;
 		Thread.sleep(5000);
-		System.out.println("‚P‰ñ‚Æ‚ß‚é‚æ") ;
+		System.out.println("ï¼‘å›ã¨ã‚ã‚‹ã‚ˆ") ;
 		d.stop() ;
-		System.out.println("2‰ñ‚¤‚²‚©‚·‚æ") ;
+		System.out.println("2å›ã†ã”ã‹ã™ã‚ˆ") ;
 		d.start() ;
 		Thread.sleep(5000);
-		System.out.println("‚P‰ñsuspend") ;
+		System.out.println("ï¼‘å›suspend") ;
 		d.suspend() ;
 		Thread.sleep(5000);
-		System.out.println("‚Q‰ñ‚Æ‚ß‚é‚æ") ;
+		System.out.println("ï¼’å›ã¨ã‚ã‚‹ã‚ˆ") ;
 		d.stop() ;		
 	}
 	public void testStop() {

@@ -34,70 +34,70 @@ package jp.ossc.nimbus.service.test;
 import java.io.File;
 
 /**
- * ƒeƒXƒgƒRƒ“ƒeƒLƒXƒgB<p>
- * ƒeƒXƒg‚ğÀs‚µ‚Ä‚¢‚éÛ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğŠi”[‚·‚éB<br>
+ * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚’å®Ÿè¡Œã—ã¦ã„ã‚‹éš›ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */
 public interface TestContext{
     
     /**
-     * ƒeƒXƒgƒtƒF[ƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒtƒF[ƒY
+     * @return ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚º
      */
     public String getTestPhase();
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv
+     * @return ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—
      */
     public TestScenarioGroup getTestScenarioGroup();
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒVƒiƒŠƒI
+     * @return ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ª
      */
     public TestScenario getTestScenario();
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒP[ƒX
+     * @return ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹
      */
     public TestCase getTestCase();
     
     /**
-     * ÀsƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsƒfƒBƒŒƒNƒgƒŠ
+     * @return å®Ÿè¡Œãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getCurrentDirectory();
     
     /**
-     * “¯ˆêŠK‘w‰º‚Ìw’è‚µ‚½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * åŒä¸€éšå±¤ä¸‹ã®æŒ‡å®šã—ãŸãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param result ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Ê
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param result ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœ
      */
     public void setTestActionResult(String actionId, Object result);
     
     /**
-     * “¯ˆêŠK‘w‰º‚Ìw’è‚µ‚½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * åŒä¸€éšå±¤ä¸‹ã®æŒ‡å®šã—ãŸãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Ê
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœ
      */
     public Object getTestActionResult(String actionId);
     
     /**
-     * w’è‚µ‚½ƒeƒXƒgƒP[ƒX‰º‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸‹ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Ê
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœ
      */
     public Object getTestActionResult(String testcaseId, String actionId);
 }

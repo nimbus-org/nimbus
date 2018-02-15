@@ -46,7 +46,7 @@ import java.util.Iterator;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * RMIƒŠƒ|ƒWƒgƒŠƒT[ƒrƒXB<p>
+ * RMIãƒªãƒã‚¸ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

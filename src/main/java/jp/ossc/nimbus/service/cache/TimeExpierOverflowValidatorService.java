@@ -36,9 +36,9 @@ import java.util.*;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒLƒƒƒbƒVƒ…—LŒøŠÔ‚ ‚Ó‚êŒŸØƒT[ƒrƒXB<p>
- * ƒLƒƒƒbƒVƒ…—LŒøŠÔ‚Å‚ ‚Ó‚ê‚ğŒŸØ‚·‚éOverflowValidator‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒLƒƒƒbƒVƒ…‚µ‚Ä‚©‚ç10•b‚ğ’´‚¦‚é‚Æ‚ ‚Ó‚ê‚é‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æœ‰åŠ¹æ™‚é–“ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æœ‰åŠ¹æ™‚é–“ã§ã‚ãµã‚Œã‚’æ¤œè¨¼ã™ã‚‹OverflowValidatorã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã‹ã‚‰10ç§’ã‚’è¶…ãˆã‚‹ã¨ã‚ãµã‚Œã‚‹ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -65,79 +65,79 @@ public class TimeExpierOverflowValidatorService extends ServiceBase
     private static final long serialVersionUID = -5221705956555820688L;
     
     /**
-     * ƒLƒƒƒbƒVƒ…—LŒøŠúŠÔB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æœ‰åŠ¹æœŸé–“ã€‚<p>
      */
     private long expierTerm = -1;
     
     /**
-     * ƒLƒƒƒbƒVƒ…—LŒø‹æØ‚è
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æœ‰åŠ¹åŒºåˆ‡ã‚Š
      */
     private long period = -1;
 
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚Æ“o˜^ŠÔ‚ÌW‡B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¨ç™»éŒ²æ™‚é–“ã®é›†åˆã€‚<p>
      */
     private Map references;
     
-    // TimeExpierOverflowValidatorServiceMBean‚ÌJavaDoc
+    // TimeExpierOverflowValidatorServiceMBeanã®JavaDoc
     public int size(){
         return references == null ? 0 : references.size();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<br>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         references = Collections.synchronizedMap(new LinkedHashMap());
     }
 
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
-     * ‚±‚ÌƒT[ƒrƒX‚ğ—˜—p‰Â”\‚Èó‘Ô‚É‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨å¯èƒ½ãªçŠ¶æ…‹ã«ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception {
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * {@link #reset()}‚ğŒÄ‚Ño‚·B‚Ü‚½AƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #reset()}ã‚’å‘¼ã³å‡ºã™ã€‚ã¾ãŸã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         reset();
         references = null;
     }
     
-    // TimeExpierOverflowValidatorServiceMBean‚ÌJavaDoc
+    // TimeExpierOverflowValidatorServiceMBeanã®JavaDoc
     public void setExpierTerm(long millis) throws IllegalArgumentException{
         expierTerm = millis;
     }
     
-    // TimeExpierOverflowValidatorServiceMBean‚ÌJavaDoc
+    // TimeExpierOverflowValidatorServiceMBeanã®JavaDoc
     public long getExpierTerm(){
         return expierTerm;
     }
     
-    // TimeExpierOverflowValidatorServiceMBean‚ÌJavaDoc
+    // TimeExpierOverflowValidatorServiceMBeanã®JavaDoc
     public void setPeriod(long millis) throws IllegalArgumentException {
         period = millis;
     }
 
-    // TimeExpierOverflowValidatorServiceMBean‚ÌJavaDoc
+    // TimeExpierOverflowValidatorServiceMBeanã®JavaDoc
     public long getPeriod() {
         return period;
     }
 
     /**
-     * ƒLƒƒƒbƒVƒ…‚ª—LŒøŠÔ‚ğ‰ß‚¬‚Ä‚¢‚é‚©ŒŸØ‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒæœ‰åŠ¹æ™‚é–“ã‚’éãã¦ã„ã‚‹ã‹æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…‚ª—LŒøŠÔ‚ğ‰ß‚¬‚Ä‚¢‚éê‡A‰ß‚¬‚Ä‚¢‚éƒLƒƒƒbƒVƒ…‚Ì”‚ğ•Ô‚·B‰ß‚¬‚Ä‚¢‚È‚¢ê‡‚ÍA0‚ğ•Ô‚·
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒæœ‰åŠ¹æ™‚é–“ã‚’éãã¦ã„ã‚‹å ´åˆã€éãã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æ•°ã‚’è¿”ã™ã€‚éãã¦ã„ãªã„å ´åˆã¯ã€0ã‚’è¿”ã™
      */
     public int validate(){
         if(references == null || references.size() == 0){
@@ -157,27 +157,27 @@ public class TimeExpierOverflowValidatorService extends ServiceBase
 
             boolean validateExpierTime = true;
             if (expierTerm < 0) {
-                // —LŒøŠúŠÔ‚ÌŒŸØ‚Ís‚í‚È‚¢
+                // æœ‰åŠ¹æœŸé–“ã®æ¤œè¨¼ã¯è¡Œã‚ãªã„
                 validateExpierTime = false;
             }
             boolean validatePeriod = true;
             if (period <= 0) {
-                // —LŒø‹æØ‚è‚ÌŒŸØ‚Ís‚í‚È‚¢
+                // æœ‰åŠ¹åŒºåˆ‡ã‚Šã®æ¤œè¨¼ã¯è¡Œã‚ãªã„
                 validatePeriod = false;
             }
 
             int count = 0;
             for(; count < dates.length; count++){
-                // ƒLƒƒƒbƒVƒ…“o˜^[ms]
+                // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ç™»éŒ²æ™‚åˆ»[ms]
                 long refMillis = ((Date)dates[count]).getTime();
   
-                // —LŒøŠúŠÔ
+                // æœ‰åŠ¹æœŸé–“
                 if(validateExpierTime
                     && currentTime < refMillis + expierTerm){
                     validateExpierTime = false;
                 }
                 
-                // —LŒø‹æØ‚è
+                // æœ‰åŠ¹åŒºåˆ‡ã‚Š
                 if(validatePeriod
                     && currentTime < refMillis + (period - (refMillis - 9 * 60 * 60 * 1000) % period)){
                     validatePeriod = false;
@@ -193,7 +193,7 @@ public class TimeExpierOverflowValidatorService extends ServiceBase
         }
     }
 
-    // OverflowValidator‚ÌJavaDoc
+    // OverflowValidatorã®JavaDoc
     public void add(CachedReference ref){
         if(references == null || ref == null){
             return;
@@ -206,7 +206,7 @@ public class TimeExpierOverflowValidatorService extends ServiceBase
         }
     }
     
-    // OverflowValidator‚ÌJavaDoc
+    // OverflowValidatorã®JavaDoc
     public void remove(CachedReference ref){
         if(references == null || ref == null){
             return;
@@ -219,7 +219,7 @@ public class TimeExpierOverflowValidatorService extends ServiceBase
         }
     }
     
-    // OverflowValidator‚ÌJavaDoc
+    // OverflowValidatorã®JavaDoc
     public void reset(){
         if(references != null){
             synchronized(references){
@@ -234,10 +234,10 @@ public class TimeExpierOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * {@link #add(CachedReference)}‚Å’Ç‰Á‚³‚ê‚½{@link CachedReference}‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
-     * íœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ{@link #remove(CachedReference)}‚ÅA‚±‚ÌOverflowValidator‚©‚ç‚àíœ‚·‚éB<br>
+     * {@link #add(CachedReference)}ã§è¿½åŠ ã•ã‚ŒãŸ{@link CachedReference}ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚ŒãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
+     * å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’{@link #remove(CachedReference)}ã§ã€ã“ã®OverflowValidatorã‹ã‚‰ã‚‚å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref íœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
+     * @param ref å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         if(references == null){

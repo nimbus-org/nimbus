@@ -35,250 +35,250 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^B<p>
- * “ú•t‚ÌŠT”O‚ğ‚½‚È‚¢ƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒXƒ^î•ñ‚ğ‚ÂB<br>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã€‚<p>
+ * æ—¥ä»˜ã®æ¦‚å¿µã‚’æŒãŸãªã„ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚¹ã‚¿æƒ…å ±ã‚’æŒã¤ã€‚<br>
  *
  * @author M.Takata
  */
 public interface ScheduleMaster extends Cloneable{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
      */
     public String getId();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
      */
     public String[] getGroupIds();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½ƒ^ƒXƒN–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸã‚¿ã‚¹ã‚¯åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒXƒN–¼
+     * @return ã‚¿ã‚¹ã‚¯å
      */
     public String getTaskName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìí•Ê‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹í•Ê
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥
      */
     public String getScheduleType();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Íƒf[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—Íƒf[ƒ^
+     * @return å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
      */
     public Object getInput();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Íƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param input “ü—Íƒf[ƒ^
+     * @param input å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
      */
     public void setInput(Object input);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ŠJn‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é–‹å§‹æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠJn
+     * @return é–‹å§‹æ™‚åˆ»
      */
     public Date getStartTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ŠJn‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é–‹å§‹æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ŠJn
+     * @param time é–‹å§‹æ™‚åˆ»
      */
     public void setStartTime(Date time);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹I—¹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çµ‚äº†æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return I—¹
+     * @return çµ‚äº†æ™‚åˆ»
      */
     public Date getEndTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹I—¹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çµ‚äº†æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time I—¹
+     * @param time çµ‚äº†æ™‚åˆ»
      */
     public void setEndTime(Date time);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ŒJ‚è•Ô‚µÀsŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¹°ã‚Šè¿”ã—å®Ÿè¡Œé–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒJ‚è•Ô‚µÀsŠÔŠu
+     * @return ç¹°ã‚Šè¿”ã—å®Ÿè¡Œé–“éš”
      */
     public long getRepeatInterval();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ŒJ‚è•Ô‚µÀsŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¹°ã‚Šè¿”ã—å®Ÿè¡Œé–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param interval ŒJ‚è•Ô‚µÀsŠÔŠu
+     * @param interval ç¹°ã‚Šè¿”ã—å®Ÿè¡Œé–“éš”
      */
     public void setRepeatInterval(long interval);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCÀsŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCÀsŠÔŠu
+     * @return ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”
      */
     public long getRetryInterval();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCÀsŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param interval ƒŠƒgƒ‰ƒCÀsŠÔŠu
+     * @param interval ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”
      */
     public void setRetryInterval(long interval);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCI—¹
+     * @return ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
      */
     public Date getRetryEndTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒŠƒgƒ‰ƒCI—¹
+     * @param time ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
      */
     public void setRetryEndTime(Date time);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÅ‘å’x‰„ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æœ€å¤§é…å»¶æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹Å‘å’x‰„ŠÔ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æœ€å¤§é…å»¶æ™‚é–“
      */
     public long getMaxDelayTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÅ‘å’x‰„ŠÔ[ms]‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æœ€å¤§é…å»¶æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒPƒWƒ…[ƒ‹Å‘å’x‰„ŠÔ
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æœ€å¤§é…å»¶æ™‚é–“
      */
     public void setMaxDelayTime(long time);
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹‚ª—LŒø‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return —LŒø‚Èê‡true
+     * @return æœ‰åŠ¹ãªå ´åˆtrue
      */
     public boolean isEnabled();
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹‚ª—LŒø‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled true‚Ìê‡A—LŒø
+     * @param isEnabled trueã®å ´åˆã€æœ‰åŠ¹
      */
     public void setEnabled(boolean isEnabled);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDepends();
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param groupId ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDependsInGroup(String groupId);
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒvID‚ÆƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ‚Ìƒ}ƒbƒv
+     * @return ã‚°ãƒ«ãƒ¼ãƒ—IDã¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getDependsInGroupMap();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÆƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ÆƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚Ì”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDependsOnGroup();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒvID
-     * @return ˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚Ì”z—ñ
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getGroupDependsOnGroup(String groupId);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒvID‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚Ì”z—ñ‚Ìƒ}ƒbƒv
+     * @return ã‚°ãƒ«ãƒ¼ãƒ—IDã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã®é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getGroupDependsOnGroupMap();
     
     /**
-     * •ªUŠÂ‹«‚ÅÀs‚·‚é{@link ScheduleExecutor}‚ğw’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
+     * åˆ†æ•£ç’°å¢ƒã§å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’æŒ‡å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
+     * @param key ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
      */
     public void setExecutorKey(String key);
     
     /**
-     * •ªUŠÂ‹«‚ÅÀs‚·‚é{@link ScheduleExecutor}‚ğw’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£ç’°å¢ƒã§å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’æŒ‡å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
+     * @return ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
      */
     public String getExecutorKey();
     
     /**
-     * {@link ScheduleExecutor}‚Ìí—Ş‚ğİ’è‚·‚éB<p>
+     * {@link ScheduleExecutor}ã®ç¨®é¡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ScheduleExecutor‚Ìí—Ş
+     * @param type ScheduleExecutorã®ç¨®é¡
      */
     public void setExecutorType(String type);
     
     /**
-     * {@link ScheduleExecutor}‚Ìí—Ş‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleExecutor}ã®ç¨®é¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleExecutor‚Ìí—Ş
+     * @return ScheduleExecutorã®ç¨®é¡
      */
     public String getExecutorType();
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒeƒ“ƒvƒŒ[ƒg
+     * @return trueã®å ´åˆã€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
      */
     public boolean isTemplate();
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isTemplate ƒeƒ“ƒvƒŒ[ƒg‚Ìê‡Atrue
+     * @param isTemplate ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®å ´åˆã€true
      */
     public void setTemplate(boolean isTemplate);
     
     /**
-     * “ú•t‚ğ“K—p‚·‚éB<p>
+     * æ—¥ä»˜ã‚’é©ç”¨ã™ã‚‹ã€‚<p>
      *
-     * @param date “ú•t
+     * @param date æ—¥ä»˜
      */
     public void applyDate(Date date);
     
     /**
-     * •¡»‚ğì¬‚·‚éB<p>
+     * è¤‡è£½ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @return •¡»
+     * @return è¤‡è£½
      */
     public Object clone();
 }

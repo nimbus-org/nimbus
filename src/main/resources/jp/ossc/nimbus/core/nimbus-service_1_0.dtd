@@ -5,7 +5,7 @@ The DOCTYPE is:
       "-//Nimbus//DTD Nimbus 1.0//JA"
       "http://nimbus.sourceforge.jp/dtd/nimbus-service_1_0.dtd">
 
-ó·:
+‰æã:
    <server>
       
       <ref-url>nimbus-service2.xml</ref-url>
@@ -105,60 +105,60 @@ The DOCTYPE is:
 
 -->
 
-<!-- serveróvëfÇÕÅAÉãÅ[ÉgóvëfÇ≈Ç∑ÅB
+<!-- serverË¶ÅÁ¥†„ÅØ„ÄÅ„É´„Éº„ÉàË¶ÅÁ¥†„Åß„Åô„ÄÇ
 -->
 <!ELEMENT server (ref-url* | manager-repository? | property-editors? | default-log? | log? | message? | server-property* | manager* | ifdef*)*>
 
-<!-- ref-urlóvëfÇÕÅAÇ±ÇÃÉtÉ@ÉCÉãÇ™éQè∆Ç∑ÇÈservice.xmlÇÃURLÇéwíËÇ∑ÇÈóvëfÇ≈Ç∑ÅB
-dependsóvëfÇ‚ÅArepositoryóvëfÇ»Ç«Ç≈ÅAéQè∆Ç∑ÇÈServiceÇÃñºëOÇéwíËÇ∑ÇÈéñÇ™â¬î\
-Ç≈Ç∑Ç™ÅAëºservice.xmlì‡Ç…íËã`Ç≥ÇÍÇΩServiceÇéQè∆Ç∑ÇÈèÍçáÇ…ÅAñæé¶ìIÇ…éwíËÇçsÇ§
-éñÇ™Ç≈Ç´Ç‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇΩèÍçáÇ…ÇÕÅAÇ±ÇÃÉtÉ@ÉCÉãì‡Ç∆éQè∆Ç∑ÇÈÉtÉ@ÉCÉãì‡Ç∆Ç≈ÅAÉTÅ[ÉrÉXÇÃ
-àÀë∂ä÷åWÇÃÉ`ÉFÉbÉNÇçsÇ¢ÅAëäå›Ç…àÀë∂ÇµÇƒÇ¢ÇÈèÍçáÇ‚ÅAàÀë∂Ç∑ÇÈÉTÅ[ÉrÉXÇ™ë∂ç›ÇµÇ»
-Ç¢èÍçáÇ»Ç«ÇÕÅAó·äOÇthrowÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇ…ÇÕÅAëäå›Ç…àÀë∂Ç∑ÇÈÉTÅ[ÉrÉXÇÕÅAãNìÆÇ™ï€èÿÇ≥ÇÍÇ‹ÇπÇÒÅB
-Ç‹ÇΩÅAàÀë∂Ç∑ÇÈÉTÅ[ÉrÉXÇ™ë∂ç›ÇµÇ»Ç¢èÍçáÇÕÅAàÀë∂Ç∑ÇÈÉTÅ[ÉrÉXÇ™ãNìÆÇ≥ÇÍÇÈÇ‹Ç≈ÅA
-äYìñÉTÅ[ÉrÉXÇ™ãNìÆÇ≥ÇÍÇ‹ÇπÇÒÅB
-Ç±ÇÃóvëfÇÃì‡óeÇ…éwíËÇµÇΩï∂éöóÒÇÕÅAà»â∫ÇÃèáèòÇ≈åüçıÇ≥ÇÍÇ‹Ç∑ÅB
- (1)ê‚ëŒURL
- (2)Ç±ÇÃóvëfÇ™éwíËÇ≥ÇÍÇƒÇ¢ÇÈÉtÉ@ÉCÉãÇ©ÇÁÇÃëäëŒÉpÉX
- (3)ÉçÅ[ÉJÉãÉtÉ@ÉCÉãÉpÉX
- (4)nimbus.jarÇÉçÅ[ÉhÇµÇΩÉNÉâÉXÉçÅ[É_ÇÃÉäÉ\Å[ÉX
+<!-- ref-urlË¶ÅÁ¥†„ÅØ„ÄÅ„Åì„ÅÆ„Éï„Ç°„Ç§„É´„ÅåÂèÇÁÖß„Åô„Çãservice.xml„ÅÆURL„ÇíÊåáÂÆö„Åô„ÇãË¶ÅÁ¥†„Åß„Åô„ÄÇ
+dependsË¶ÅÁ¥†„ÇÑ„ÄÅrepositoryË¶ÅÁ¥†„Å™„Å©„Åß„ÄÅÂèÇÁÖß„Åô„ÇãService„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åô„Çã‰∫ã„ÅåÂèØËÉΩ
+„Åß„Åô„Åå„ÄÅ‰ªñservice.xmlÂÜÖ„Å´ÂÆöÁæ©„Åï„Çå„ÅüService„ÇíÂèÇÁÖß„Åô„ÇãÂ†¥Âêà„Å´„ÄÅÊòéÁ§∫ÁöÑ„Å´ÊåáÂÆö„ÇíË°å„ÅÜ
+‰∫ã„Åå„Åß„Åç„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„ÅüÂ†¥Âêà„Å´„ÅØ„ÄÅ„Åì„ÅÆ„Éï„Ç°„Ç§„É´ÂÜÖ„Å®ÂèÇÁÖß„Åô„Çã„Éï„Ç°„Ç§„É´ÂÜÖ„Å®„Åß„ÄÅ„Çµ„Éº„Éì„Çπ„ÅÆ
+‰æùÂ≠òÈñ¢‰øÇ„ÅÆ„ÉÅ„Çß„ÉÉ„ÇØ„ÇíË°å„ÅÑ„ÄÅÁõ∏‰∫í„Å´‰æùÂ≠ò„Åó„Å¶„ÅÑ„ÇãÂ†¥Âêà„ÇÑ„ÄÅ‰æùÂ≠ò„Åô„Çã„Çµ„Éº„Éì„Çπ„ÅåÂ≠òÂú®„Åó„Å™
+„ÅÑÂ†¥Âêà„Å™„Å©„ÅØ„ÄÅ‰æãÂ§ñ„Çíthrow„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„Å´„ÅØ„ÄÅÁõ∏‰∫í„Å´‰æùÂ≠ò„Åô„Çã„Çµ„Éº„Éì„Çπ„ÅØ„ÄÅËµ∑Âãï„Åå‰øùË®º„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
+„Åæ„Åü„ÄÅ‰æùÂ≠ò„Åô„Çã„Çµ„Éº„Éì„Çπ„ÅåÂ≠òÂú®„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅ‰æùÂ≠ò„Åô„Çã„Çµ„Éº„Éì„Çπ„ÅåËµ∑Âãï„Åï„Çå„Çã„Åæ„Åß„ÄÅ
+Ë©≤ÂΩì„Çµ„Éº„Éì„Çπ„ÅåËµ∑Âãï„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´ÊåáÂÆö„Åó„ÅüÊñáÂ≠óÂàó„ÅØ„ÄÅ‰ª•‰∏ã„ÅÆÈ†ÜÂ∫è„ÅßÊ§úÁ¥¢„Åï„Çå„Åæ„Åô„ÄÇ
+ (1)Áµ∂ÂØæURL
+ (2)„Åì„ÅÆË¶ÅÁ¥†„ÅåÊåáÂÆö„Åï„Çå„Å¶„ÅÑ„Çã„Éï„Ç°„Ç§„É´„Åã„Çâ„ÅÆÁõ∏ÂØæ„Éë„Çπ
+ (3)„É≠„Éº„Ç´„É´„Éï„Ç°„Ç§„É´„Éë„Çπ
+ (4)nimbus.jar„Çí„É≠„Éº„Éâ„Åó„Åü„ÇØ„É©„Çπ„É≠„Éº„ÉÄ„ÅÆ„É™„ÇΩ„Éº„Çπ
 -->
 <!ELEMENT ref-url (#PCDATA)>
 
-<!-- manager-repositoryóvëfÇÕÅAserveróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerFactoryÇ…ÅA
-manageróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerÇäiî[Ç∑ÇÈRepositoryÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- manager-repositoryË¶ÅÁ¥†„ÅØ„ÄÅserverË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManagerFactory„Å´„ÄÅ
+managerË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManager„ÇíÊ†ºÁ¥ç„Åô„ÇãRepository„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 
-Ç±ÇÃóvëfÇÃì‡óeÇ…ÅARepositoryÇÃñºëOÇéwíËÇµÇ‹Ç∑ÅB
-éwíËÇµÇ»Ç¢èÍçáÇ…ÇÕÅAÉfÉtÉHÉãÉgÇÃRepositoryÇ™égópÇ≥ÇÍÇ‹Ç∑ÅB
-ServiceManagerFactoryÇ…ÅAMapé¿ëïÇÃRepositoryÇ™ê∂ê¨Ç≥ÇÍÇ‹Ç∑ÅBÇ±ÇÃRepositoryÇÕÅA
-staticÇ»óÃàÊÇ≈ï€éùÇ≥ÇÍÇÈÇÃÇ≈ÅAVMì‡Ç…ÇPÇ¬ÇµÇ©ê›íËÇ≈Ç´Ç‹ÇπÇÒÅBëºservice.xmlì‡Ç…Ç‡
-Ç±ÇÃóvëfÇíËã`ÇµÇΩèÍçáÇ…ÇÕÅAÇ«ÇÃRepositoryÇ™ìKópÇ≥ÇÍÇÈÇ©ÇÕï€èÿÇ≥ÇÍÇ‹ÇπÇÒÅB
+„Åì„ÅÆË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅRepository„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+ÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„Å´„ÅØ„ÄÅ„Éá„Éï„Ç©„É´„Éà„ÅÆRepository„Åå‰ΩøÁî®„Åï„Çå„Åæ„Åô„ÄÇ
+ServiceManagerFactory„Å´„ÄÅMapÂÆüË£Ö„ÅÆRepository„ÅåÁîüÊàê„Åï„Çå„Åæ„Åô„ÄÇ„Åì„ÅÆRepository„ÅØ„ÄÅ
+static„Å™È†òÂüü„Åß‰øùÊåÅ„Åï„Çå„Çã„ÅÆ„Åß„ÄÅVMÂÜÖ„Å´Ôºë„Å§„Åó„ÅãË®≠ÂÆö„Åß„Åç„Åæ„Åõ„Çì„ÄÇ‰ªñservice.xmlÂÜÖ„Å´„ÇÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÂÆöÁæ©„Åó„ÅüÂ†¥Âêà„Å´„ÅØ„ÄÅ„Å©„ÅÆRepository„ÅåÈÅ©Áî®„Åï„Çå„Çã„Åã„ÅØ‰øùË®º„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
 
-ó·:
+‰æã:
    <manager-repository manager-name="Manager1">
       MBeanServerRepository
    </manager-repository>
 -->
 <!ELEMENT manager-repository (#PCDATA)>
 
-<!-- manager-nameëÆê´ÇÕÅAmanager-repositoryóvëfÇ≈íËã`Ç≥ÇÍÇÈRepositoryÇÃìoò^êÊÇ∆
-Ç»ÇÈServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃmanager-nameëÆê´Çè»ó™Ç∑ÇÈÇ∆ÅAnameëÆê´Çè»ó™ÇµÇΩmanageróvëfÇÃServiceManager
-Ç…ìoò^Ç≥ÇÍÇΩRepositoryÇ∆Ç›Ç»ÇµÇ‹Ç∑ÅB
+<!-- manager-nameÂ±ûÊÄß„ÅØ„ÄÅmanager-repositoryË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åï„Çå„ÇãRepository„ÅÆÁôªÈå≤ÂÖà„Å®
+„Å™„ÇãServiceManager„ÅÆÂêçÂâç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆmanager-nameÂ±ûÊÄß„ÇíÁúÅÁï•„Åô„Çã„Å®„ÄÅnameÂ±ûÊÄß„ÇíÁúÅÁï•„Åó„ÅümanagerË¶ÅÁ¥†„ÅÆServiceManager
+„Å´ÁôªÈå≤„Åï„Çå„ÅüRepository„Å®„Åø„Å™„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST manager-repository manager-name CDATA #IMPLIED>
 
-<!-- property-editorsóvëfÇÕÅAserviceóvëfÇÃéqóvëfattributeóvëfÇÃì‡óeÇÉTÅ[ÉrÉXÇ…ê›íËÇ∑ÇÈjava.beans.PropertyEditorÇíËã`Ç∑ÇÈproperty-editoróvëfÇÃèWçáÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- property-editorsË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†attributeË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Çí„Çµ„Éº„Éì„Çπ„Å´Ë®≠ÂÆö„Åô„Çãjava.beans.PropertyEditor„ÇíÂÆöÁæ©„Åô„Çãproperty-editorË¶ÅÁ¥†„ÅÆÈõÜÂêà„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT property-editors (property-editor+ | ifdef*)*>
 
-<!-- property-editoróvëfÇÕÅAserviceóvëfÇÃéqóvëfattributeóvëfÇÃì‡óeÇÉTÅ[ÉrÉXÇ…ê›íËÇ∑ÇÈjava.beans.PropertyEditorÇíËã`ÇµÇ‹Ç∑ÅB
-typeëÆê´Ç≈ÅAattributeóvëfÇÃtypeëÆê´Ç…ëŒâûÇ∑ÇÈÉNÉâÉXñºÇäÆëSèCè¸ÉNÉâÉXñºÇ≈éwíËÇµÇ‹Ç∑ÅB
-Ç‹ÇΩÅAì‡óeÇ…ÅAÇªÇÃå^ÇÃílÇï“èWÇ∑ÇÈjava.beans.PropertyEditorÇÃé¿ëïÉNÉâÉXÇäÆëSèCè¸ÉNÉâÉXñºÇ≈éwíËÇµÇ‹Ç∑ÅB
+<!-- property-editorË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†attributeË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Çí„Çµ„Éº„Éì„Çπ„Å´Ë®≠ÂÆö„Åô„Çãjava.beans.PropertyEditor„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+typeÂ±ûÊÄß„Åß„ÄÅattributeË¶ÅÁ¥†„ÅÆtypeÂ±ûÊÄß„Å´ÂØæÂøú„Åô„Çã„ÇØ„É©„ÇπÂêç„ÇíÂÆåÂÖ®‰øÆÈ£æ„ÇØ„É©„ÇπÂêç„ÅßÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+„Åæ„Åü„ÄÅÂÜÖÂÆπ„Å´„ÄÅ„Åù„ÅÆÂûã„ÅÆÂÄ§„ÇíÁ∑®ÈõÜ„Åô„Çãjava.beans.PropertyEditor„ÅÆÂÆüË£Ö„ÇØ„É©„Çπ„ÇíÂÆåÂÖ®‰øÆÈ£æ„ÇØ„É©„ÇπÂêç„ÅßÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <property-editors>
       <property-editor type="java.util.Properties">jp.ossc.nimbus.beans.PropertiesEditor</property-editor>
       <property-editor type="jp.ossc.nimbus.core.ServiceName">jp.ossc.nimbus.beans.ServiceNameEditor</property-editor>
@@ -166,120 +166,120 @@ typeëÆê´Ç≈ÅAattributeóvëfÇÃtypeëÆê´Ç…ëŒâûÇ∑ÇÈÉNÉâÉXñºÇäÆëSèCè¸ÉNÉâÉXñºÇ≈éwíËÇµÇ
 -->
 <!ELEMENT property-editor (#PCDATA)>
 
-<!-- typeëÆê´ÇÕÅAproperty-editoróvëfÇ≈íËã`Ç∑ÇÈjava.beans.PropertyEditorÇ™ï“èWÇ∑ÇÈBeanëÆê´ÇÃå^ÇéwíËÇµÇ‹Ç∑ÅB
+<!-- typeÂ±ûÊÄß„ÅØ„ÄÅproperty-editorË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„Çãjava.beans.PropertyEditor„ÅåÁ∑®ÈõÜ„Åô„ÇãBeanÂ±ûÊÄß„ÅÆÂûã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST property-editor type CDATA #REQUIRED>
 
-<!-- server-propertyóvëfÇÕÅAserviceóvëfÇÃéqóvëfattributeÇÃì‡óeÇ≈${ÉvÉçÉpÉeÉBñº}Ç≈éQè∆Ç≈Ç´ÇÈä¬ã´ïœêîÉvÉçÉpÉeÉBÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- server-propertyË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†attribute„ÅÆÂÜÖÂÆπ„Åß${„Éó„É≠„Éë„ÉÜ„Ç£Âêç}„ÅßÂèÇÁÖß„Åß„Åç„ÇãÁí∞Â¢ÉÂ§âÊï∞„Éó„É≠„Éë„ÉÜ„Ç£„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <server-property name="hoge">fuga</server-property>
 -->
 <!ELEMENT server-property (#PCDATA)>
 
-<!-- nameëÆê´ÇÕÅAserviceóvëfÇÃéqóvëfattributeÇÃì‡óeÇ≈${ÉvÉçÉpÉeÉBñº}Ç≈éQè∆Ç≈Ç´ÇÈä¬ã´ïœêîÉvÉçÉpÉeÉBñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†attribute„ÅÆÂÜÖÂÆπ„Åß${„Éó„É≠„Éë„ÉÜ„Ç£Âêç}„ÅßÂèÇÁÖß„Åß„Åç„ÇãÁí∞Â¢ÉÂ§âÊï∞„Éó„É≠„Éë„ÉÜ„Ç£Âêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST server-property name CDATA #REQUIRED>
 
-<!-- manageróvëfÇÕÅAServerManagerÇç\ê¨Ç∑ÇÈóvëfÇ≈Ç∑ÅB
+<!-- managerË¶ÅÁ¥†„ÅØ„ÄÅServerManager„ÇíÊßãÊàê„Åô„ÇãË¶ÅÁ¥†„Åß„Åô„ÄÇ
 -->
 <!ELEMENT manager (repository? | log? | message? | manager-property* | service* | ifdef*)*>
 
-<!-- nameëÆê´ÇÕÅAmanageróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
-ServiceManagerÇï°êîê∂ê¨Ç∑ÇÈèÍçáÇ…ÇÕÅAnameëÆê´Ç≈àÍà”ÇÃñºëOÇéwíËÇ∑ÇÈïKóvÇ™Ç†ÇË
-Ç‹Ç∑ÅBíAÇµÅAìØÇ∂ÉtÉ@ÉCÉãÇ‹ÇΩÇÕÅAï ÇÃÉtÉ@ÉCÉãÇ…ìØÇ∂nameëÆê´ÇéùÇ¡ÇΩmanageróvëfÇ
-éwíËÇ∑ÇÈéñÇ‡Ç≈Ç´Ç‹Ç∑ÅBÇªÇÃèÍçáÅAÇPÇ¬ÇÃServiceManagerÇ∆Ç›Ç»Ç≥ÇÍÇ‹Ç∑ÅB
-ServiceManagerÇï°êîê∂ê¨ÇµÇ»Ç¢èÍçáÇ…ÇÕÅAnameóvëfÇÕè»ó™â¬î\Ç≈Ç∑ÅBè»ó™ÇµÇΩèÍçáÅA
-ServiceManagerÇÃñºëOÇÕ"Nimbus"Ç∆Ç»ÇËÇ‹Ç∑Ç™ÅAñºëOéwíËÇ»ÇµÇ≈
-ServiceManagerFactory#findManager()Ç≈éÊìæÇ∑ÇÈéñÇ™Ç≈Ç´Ç‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅmanagerË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManager„ÅÆÂêçÂâç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+ServiceManager„ÇíË§áÊï∞ÁîüÊàê„Åô„ÇãÂ†¥Âêà„Å´„ÅØ„ÄÅnameÂ±ûÊÄß„Åß‰∏ÄÊÑè„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åô„ÇãÂøÖË¶Å„Åå„ÅÇ„Çä
+„Åæ„Åô„ÄÇ‰ΩÜ„Åó„ÄÅÂêå„Åò„Éï„Ç°„Ç§„É´„Åæ„Åü„ÅØ„ÄÅÂà•„ÅÆ„Éï„Ç°„Ç§„É´„Å´Âêå„ÅònameÂ±ûÊÄß„ÇíÊåÅ„Å£„ÅümanagerË¶ÅÁ¥†„Çí
+ÊåáÂÆö„Åô„Çã‰∫ã„ÇÇ„Åß„Åç„Åæ„Åô„ÄÇ„Åù„ÅÆÂ†¥Âêà„ÄÅÔºë„Å§„ÅÆServiceManager„Å®„Åø„Å™„Åï„Çå„Åæ„Åô„ÄÇ
+ServiceManager„ÇíË§áÊï∞ÁîüÊàê„Åó„Å™„ÅÑÂ†¥Âêà„Å´„ÅØ„ÄÅnameË¶ÅÁ¥†„ÅØÁúÅÁï•ÂèØËÉΩ„Åß„Åô„ÄÇÁúÅÁï•„Åó„ÅüÂ†¥Âêà„ÄÅ
+ServiceManager„ÅÆÂêçÂâç„ÅØ"Nimbus"„Å®„Å™„Çä„Åæ„Åô„Åå„ÄÅÂêçÂâçÊåáÂÆö„Å™„Åó„Åß
+ServiceManagerFactory#findManager()„ÅßÂèñÂæó„Åô„Çã‰∫ã„Åå„Åß„Åç„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST manager name ID #IMPLIED>
 
-<!-- shutdown-hookëÆê´ÇÕÅAmanageróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerÇ…ÅAShutdownHook
-Çê›íËÇ∑ÇÈÇ©Ç«Ç§Ç©ÇíËã`ÇµÇ‹Ç∑ÅB
-trueÇê›íËÇµÇΩèÍçáÇÕÅAJVMÇÃèIóπÇ∆ìØéûÇ…ÅAServiceManager#destroy()Ç™åƒÇ—èoÇ≥ÇÍÇƒ
-èIóπèàóùÇ™çsÇÌÇÍÇ‹Ç∑ÅB
-shutdown-hookóvëfÇÕè»ó™â¬î\Ç≈ÅAè»ó™ÇµÇΩèÍçáÇÕÅAfalseÅB
+<!-- shutdown-hookÂ±ûÊÄß„ÅØ„ÄÅmanagerË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManager„Å´„ÄÅShutdownHook
+„ÇíË®≠ÂÆö„Åô„Çã„Åã„Å©„ÅÜ„Åã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+true„ÇíË®≠ÂÆö„Åó„ÅüÂ†¥Âêà„ÅØ„ÄÅJVM„ÅÆÁµÇ‰∫Ü„Å®ÂêåÊôÇ„Å´„ÄÅServiceManager#destroy()„ÅåÂëº„Å≥Âá∫„Åï„Çå„Å¶
+ÁµÇ‰∫ÜÂá¶ÁêÜ„ÅåË°å„Çè„Çå„Åæ„Åô„ÄÇ
+shutdown-hookË¶ÅÁ¥†„ÅØÁúÅÁï•ÂèØËÉΩ„Åß„ÄÅÁúÅÁï•„Åó„ÅüÂ†¥Âêà„ÅØ„ÄÅfalse„ÄÇ
 -->
 <!ATTLIST manager shutdown-hook (true|false) "false">
 
-<!-- repositoryóvëfÇÕÅAserviceóvëfÇ…ÇÊÇ¡Çƒìoò^Ç∑ÇÈServiceÇäiî[Ç∑ÇÈRepositoryÇ
-íËã`ÇµÇ‹Ç∑ÅB
+<!-- repositoryË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„Å´„Çà„Å£„Å¶ÁôªÈå≤„Åô„ÇãService„ÇíÊ†ºÁ¥ç„Åô„ÇãRepository„Çí
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 
-repositoryóvëfÇÃì‡óeÇ…ÅARepositoryÇÃñºëOÇéwíËÇµÇ‹Ç∑ÅB
-éwíËÇµÇ»Ç¢èÍçáÇ…ÇÕÅAÉfÉtÉHÉãÉgÇÃRepositoryÇ™égópÇ≥ÇÍÅAäeServiceManageríPà Ç…ÅA
-Mapé¿ëïÇÃRepositoryÇ™ê∂ê¨Ç≥ÇÍÇ‹Ç∑ÅB
+repositoryË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅRepository„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+ÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„Å´„ÅØ„ÄÅ„Éá„Éï„Ç©„É´„Éà„ÅÆRepository„Åå‰ΩøÁî®„Åï„Çå„ÄÅÂêÑServiceManagerÂçò‰Ωç„Å´„ÄÅ
+MapÂÆüË£Ö„ÅÆRepository„ÅåÁîüÊàê„Åï„Çå„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <repository manager-name="Manager1">MBeanServerRepository</repository>
 -->
 <!ELEMENT repository (#PCDATA)>
 
-<!-- manager-nameëÆê´ÇÕÅArepositoryóvëfÇ≈íËã`Ç≥ÇÍÇÈRepositoryÇÃìoò^êÊÇ∆Ç»ÇÈ
-ServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃmanager-nameëÆê´Çè»ó™Ç∑ÇÈÇ∆ÅAÇ±ÇÃrepositoryóvëfÇÃêeóvëfÇÃmanageróvëfÇ™ï\Ç∑
-ServiceManagerÇ…ìoò^Ç≥ÇÍÇΩRepositoryÇ∆Ç›Ç»ÇµÇ‹Ç∑ÅB
+<!-- manager-nameÂ±ûÊÄß„ÅØ„ÄÅrepositoryË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åï„Çå„ÇãRepository„ÅÆÁôªÈå≤ÂÖà„Å®„Å™„Çã
+ServiceManager„ÅÆÂêçÂâç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆmanager-nameÂ±ûÊÄß„ÇíÁúÅÁï•„Åô„Çã„Å®„ÄÅ„Åì„ÅÆrepositoryË¶ÅÁ¥†„ÅÆË¶™Ë¶ÅÁ¥†„ÅÆmanagerË¶ÅÁ¥†„ÅåË°®„Åô
+ServiceManager„Å´ÁôªÈå≤„Åï„Çå„ÅüRepository„Å®„Åø„Å™„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST repository manager-name CDATA #IMPLIED>
 
-<!-- logóvëfÇÕÅAserveróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerFactoryÇ‚ÅAmanageróvëfÇ≈
-ç\ê¨Ç≥ÇÍÇÈServiceManagerÇ≈égópÇ∑ÇÈLoggerÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- logË¶ÅÁ¥†„ÅØ„ÄÅserverË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManagerFactory„ÇÑ„ÄÅmanagerË¶ÅÁ¥†„Åß
+ÊßãÊàê„Åï„Çå„ÇãServiceManager„Åß‰ΩøÁî®„Åô„ÇãLogger„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 
-Ç±ÇÃóvëfÇÃì‡óeÇ…ÅALoggerÇÃñºëOÇéwíËÇµÇ‹Ç∑ÅB
-éwíËÇµÇ»Ç¢èÍçáÇ…ÇÕÅAÉfÉtÉHÉãÉgÇÃLoggerÇ™égópÇ≥ÇÍÇ‹Ç∑ÅBÉfÉtÉHÉãÉgÇÃLoggerÇÕÅA
-ïWèÄèoóÕÇ÷ÇÃÉÅÉbÉZÅ[ÉWÇÃÇ›èoóÕÇ≈Ç´Ç‹Ç∑ÅB
+„Åì„ÅÆË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅLogger„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+ÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„Å´„ÅØ„ÄÅ„Éá„Éï„Ç©„É´„Éà„ÅÆLogger„Åå‰ΩøÁî®„Åï„Çå„Åæ„Åô„ÄÇ„Éá„Éï„Ç©„É´„Éà„ÅÆLogger„ÅØ„ÄÅ
+Ê®ôÊ∫ñÂá∫Âäõ„Å∏„ÅÆ„É°„ÉÉ„Çª„Éº„Ç∏„ÅÆ„ÅøÂá∫Âäõ„Åß„Åç„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <log manager-name="Manager1">
       FileLogger
    </log>
 -->
 <!ELEMENT log (#PCDATA)>
 
-<!-- manager-nameëÆê´ÇÕÅAlogóvëfÇÃì‡óeÇ≈íËã`Ç≥ÇÍÇÈLoggerÇÃìoò^êÊÇ∆Ç»ÇÈ
-ServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃmanager-nameëÆê´Çè»ó™Ç∑ÇÈÇ∆ÅAnameëÆê´Çè»ó™ÇµÇΩmanageróvëfÇÃServiceManager
-Ç…ìoò^Ç≥ÇÍÇΩLoggerÇ∆Ç›Ç»ÇµÇ‹Ç∑ÅB
+<!-- manager-nameÂ±ûÊÄß„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„ÅßÂÆöÁæ©„Åï„Çå„ÇãLogger„ÅÆÁôªÈå≤ÂÖà„Å®„Å™„Çã
+ServiceManager„ÅÆÂêçÂâç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆmanager-nameÂ±ûÊÄß„ÇíÁúÅÁï•„Åô„Çã„Å®„ÄÅnameÂ±ûÊÄß„ÇíÁúÅÁï•„Åó„ÅümanagerË¶ÅÁ¥†„ÅÆServiceManager
+„Å´ÁôªÈå≤„Åï„Çå„ÅüLogger„Å®„Åø„Å™„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST log manager-name CDATA #IMPLIED>
 
-<!-- messageóvëfÇÕÅAserveróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerFactoryÇ‚ÅAmanageróvëfÇ≈
-ç\ê¨Ç≥ÇÍÇÈServiceManagerÇ≈égópÇ∑ÇÈMessageRecordFactoryÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- messageË¶ÅÁ¥†„ÅØ„ÄÅserverË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManagerFactory„ÇÑ„ÄÅmanagerË¶ÅÁ¥†„Åß
+ÊßãÊàê„Åï„Çå„ÇãServiceManager„Åß‰ΩøÁî®„Åô„ÇãMessageRecordFactory„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 
-Ç±ÇÃóvëfÇÃì‡óeÇ…ÅAMessageRecordFactoryÇÃñºëOÇéwíËÇµÇ‹Ç∑ÅB
-éwíËÇµÇ»Ç¢èÍçáÇ…ÇÕÅAÉfÉtÉHÉãÉgÇÃMessageRecordFactoryÇ™égópÇ≥ÇÍÇ‹Ç∑ÅB
-ÉfÉtÉHÉãÉgÇÃMessageRecordFactoryÇÕÅAÉVÉXÉeÉÄÉÅÉbÉZÅ[ÉWÇÃÇ›éÊìæÇ≈Ç´Ç‹Ç∑ÅB
+„Åì„ÅÆË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅMessageRecordFactory„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+ÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„Å´„ÅØ„ÄÅ„Éá„Éï„Ç©„É´„Éà„ÅÆMessageRecordFactory„Åå‰ΩøÁî®„Åï„Çå„Åæ„Åô„ÄÇ
+„Éá„Éï„Ç©„É´„Éà„ÅÆMessageRecordFactory„ÅØ„ÄÅ„Ç∑„Çπ„ÉÜ„É†„É°„ÉÉ„Çª„Éº„Ç∏„ÅÆ„ÅøÂèñÂæó„Åß„Åç„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <message manager-name="Manager1">
       Message
    </message>
 -->
 <!ELEMENT message (#PCDATA)>
 
-<!-- manager-nameëÆê´ÇÕÅAmessageóvëfÇÃì‡óeÇ≈íËã`Ç≥ÇÍÇÈMessageRecordFactoryÇÃ
-ìoò^êÊÇ∆Ç»ÇÈServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃmanager-nameëÆê´Çè»ó™Ç∑ÇÈÇ∆ÅAnameëÆê´Çè»ó™ÇµÇΩmanageróvëfÇÃServiceManager
-Ç…ìoò^Ç≥ÇÍÇΩMessageRecordFactoryÇ∆Ç›Ç»ÇµÇ‹Ç∑ÅB
+<!-- manager-nameÂ±ûÊÄß„ÅØ„ÄÅmessageË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„ÅßÂÆöÁæ©„Åï„Çå„ÇãMessageRecordFactory„ÅÆ
+ÁôªÈå≤ÂÖà„Å®„Å™„ÇãServiceManager„ÅÆÂêçÂâç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆmanager-nameÂ±ûÊÄß„ÇíÁúÅÁï•„Åô„Çã„Å®„ÄÅnameÂ±ûÊÄß„ÇíÁúÅÁï•„Åó„ÅümanagerË¶ÅÁ¥†„ÅÆServiceManager
+„Å´ÁôªÈå≤„Åï„Çå„ÅüMessageRecordFactory„Å®„Åø„Å™„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST message manager-name CDATA #IMPLIED>
 
-<!-- manager-propertyóvëfÇÕÅAserviceóvëfÇÃéqóvëfattributeÇÃì‡óeÇ≈${ÉvÉçÉpÉeÉBñº}Ç≈éQè∆Ç≈Ç´ÇÈä¬ã´ïœêîÉvÉçÉpÉeÉBÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- manager-propertyË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†attribute„ÅÆÂÜÖÂÆπ„Åß${„Éó„É≠„Éë„ÉÜ„Ç£Âêç}„ÅßÂèÇÁÖß„Åß„Åç„ÇãÁí∞Â¢ÉÂ§âÊï∞„Éó„É≠„Éë„ÉÜ„Ç£„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <manager-property name="hoge">fuga</manager-property>
 -->
 <!ELEMENT manager-property (#PCDATA)>
 
-<!-- nameëÆê´ÇÕÅAserviceóvëfÇÃéqóvëfattributeÇÃì‡óeÇ≈${ÉvÉçÉpÉeÉBñº}Ç≈éQè∆Ç≈Ç´ÇÈä¬ã´ïœêîÉvÉçÉpÉeÉBñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†attribute„ÅÆÂÜÖÂÆπ„Åß${„Éó„É≠„Éë„ÉÜ„Ç£Âêç}„ÅßÂèÇÁÖß„Åß„Åç„ÇãÁí∞Â¢ÉÂ§âÊï∞„Éó„É≠„Éë„ÉÜ„Ç£Âêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST manager-property name CDATA #REQUIRED>
 
-<!-- default-logóvëfÇÕÅAÉTÅ[ÉrÉXäÓî’ëSëÃÇ≈égópÇ∑ÇÈÉfÉtÉHÉãÉgÇÃLoggerÇ≈
-èoóÕÇ≥ÇÍÇÈÉVÉXÉeÉÄÉçÉOÇÉçÉOÉåÉxÉãñàÇ…èoóÕÇÃê›íËÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇÕÅADebugÉçÉOà»äOÇÕèoóÕÇ≥ÇÍÇÈê›íËÇ∆Ç»ÇËÇ‹Ç∑ÅB
+<!-- default-logË¶ÅÁ¥†„ÅØ„ÄÅ„Çµ„Éº„Éì„ÇπÂü∫Áõ§ÂÖ®‰Ωì„Åß‰ΩøÁî®„Åô„Çã„Éá„Éï„Ç©„É´„Éà„ÅÆLogger„Åß
+Âá∫Âäõ„Åï„Çå„Çã„Ç∑„Çπ„ÉÜ„É†„É≠„Ç∞„Çí„É≠„Ç∞„É¨„Éô„É´ÊØé„Å´Âá∫Âäõ„ÅÆË®≠ÂÆö„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅDebug„É≠„Ç∞‰ª•Â§ñ„ÅØÂá∫Âäõ„Åï„Çå„ÇãË®≠ÂÆö„Å®„Å™„Çä„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <default-log>
       <debug output="true"/>
       <information output="true"/>
@@ -290,15 +290,15 @@ ServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
 -->
 <!ELEMENT default-log (debug?, information?, warning?, error?, fatal?)>
 
-<!-- debugóvëfÇÕÅAlogóvëfÇ≈ç\ê¨Ç≥ÇÍÇÈLoggerÇ≈èoóÕÇ≥ÇÍÇÈDebugÉçÉOÇÃèoóÕÇÃê›íËÇ
-íËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇÕÅADebugÉçÉOÇÕèoóÕÇ≥ÇÍÇ‹ÇπÇÒÅB
+<!-- debugË¶ÅÁ¥†„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãLogger„ÅßÂá∫Âäõ„Åï„Çå„ÇãDebug„É≠„Ç∞„ÅÆÂá∫Âäõ„ÅÆË®≠ÂÆö„Çí
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅDebug„É≠„Ç∞„ÅØÂá∫Âäõ„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
 -->
 <!ELEMENT debug EMPTY>
 
-<!-- outputëÆê´ÇÕÅAlogóvëfÇÃéqóvëfdebugÅAinformantionÅAwarningÅAerrorÅAfatalóvëf
-Ç≈íËã`Ç≥ÇÍÇÈLoggerÇÃèoóÕê›íËÇ≈ÅAÉçÉOèoóÕÇçsÇ§Ç©Ç«Ç§Ç©ÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃoutputëÆê´Çè»ó™Ç∑ÇÈÇ∆ÅAÉçÉOÇÕèoóÕÇ≥ÇÍÇ‹ÇπÇÒÅB
+<!-- outputÂ±ûÊÄß„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†debug„ÄÅinformantion„ÄÅwarning„ÄÅerror„ÄÅfatalË¶ÅÁ¥†
+„ÅßÂÆöÁæ©„Åï„Çå„ÇãLogger„ÅÆÂá∫ÂäõË®≠ÂÆö„Åß„ÄÅ„É≠„Ç∞Âá∫Âäõ„ÇíË°å„ÅÜ„Åã„Å©„ÅÜ„Åã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆoutputÂ±ûÊÄß„ÇíÁúÅÁï•„Åô„Çã„Å®„ÄÅ„É≠„Ç∞„ÅØÂá∫Âäõ„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
 -->
 <!ATTLIST debug output (true|false) "false">
 <!ATTLIST information output (true|false) "true">
@@ -306,258 +306,258 @@ ServiceManagerÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
 <!ATTLIST error output (true|false) "true">
 <!ATTLIST fatal output (true|false) "true">
 
-<!-- informationóvëfÇÕÅAlogóvëfÇ≈ç\ê¨Ç≥ÇÍÇÈLoggerÇ≈èoóÕÇ≥ÇÍÇÈInformationÉçÉOÇÃèoóÕ
-ÇÃê›íËÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇÕÅAInformationÉçÉOÇÕèoóÕÇ≥ÇÍÇ‹Ç∑ÅB
+<!-- informationË¶ÅÁ¥†„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãLogger„ÅßÂá∫Âäõ„Åï„Çå„ÇãInformation„É≠„Ç∞„ÅÆÂá∫Âäõ
+„ÅÆË®≠ÂÆö„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅInformation„É≠„Ç∞„ÅØÂá∫Âäõ„Åï„Çå„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT information EMPTY>
 
-<!-- warningóvëfÇÕÅAlogóvëfÇ≈ç\ê¨Ç≥ÇÍÇÈLoggerÇ≈èoóÕÇ≥ÇÍÇÈWarningÉçÉOÇÃèoóÕÇÃê›íËÇ
-íËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇÕÅAWarningÉçÉOÇÕèoóÕÇ≥ÇÍÇ‹Ç∑ÅB
+<!-- warningË¶ÅÁ¥†„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãLogger„ÅßÂá∫Âäõ„Åï„Çå„ÇãWarning„É≠„Ç∞„ÅÆÂá∫Âäõ„ÅÆË®≠ÂÆö„Çí
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅWarning„É≠„Ç∞„ÅØÂá∫Âäõ„Åï„Çå„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT warning EMPTY>
 
-<!-- erroróvëfÇÕÅAlogóvëfÇ≈ç\ê¨Ç≥ÇÍÇÈLoggerÇ≈èoóÕÇ≥ÇÍÇÈErrorÉçÉOÇÃèoóÕÇÃê›íËÇíËã`
-ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇÕÅAErrorÉçÉOÇÕèoóÕÇ≥ÇÍÇ‹Ç∑ÅB
+<!-- errorË¶ÅÁ¥†„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãLogger„ÅßÂá∫Âäõ„Åï„Çå„ÇãError„É≠„Ç∞„ÅÆÂá∫Âäõ„ÅÆË®≠ÂÆö„ÇíÂÆöÁæ©
+„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅError„É≠„Ç∞„ÅØÂá∫Âäõ„Åï„Çå„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT error EMPTY>
 
-<!-- fatalóvëfÇÕÅAlogóvëfÇ≈ç\ê¨Ç≥ÇÍÇÈLoggerÇ≈èoóÕÇ≥ÇÍÇÈFatalÉçÉOÇÃèoóÕÇÃê›íËÇíËã`
-ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇéwíËÇµÇ»Ç¢èÍçáÇÕÅAFatalÉçÉOÇÕèoóÕÇ≥ÇÍÇ‹Ç∑ÅB
+<!-- fatalË¶ÅÁ¥†„ÅØ„ÄÅlogË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãLogger„ÅßÂá∫Âäõ„Åï„Çå„ÇãFatal„É≠„Ç∞„ÅÆÂá∫Âäõ„ÅÆË®≠ÂÆö„ÇíÂÆöÁæ©
+„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅFatal„É≠„Ç∞„ÅØÂá∫Âäõ„Åï„Çå„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT fatal EMPTY>
 
-<!-- serviceóvëfÇÕÅAmanageróvëfÇ≈ç\ê¨Ç≥ÇÍÇÈServiceManagerÇ…ìoò^Ç∑ÇÈServiceÇ
-íËã`ÇµÇ‹Ç∑ÅB
+<!-- serviceË¶ÅÁ¥†„ÅØ„ÄÅmanagerË¶ÅÁ¥†„ÅßÊßãÊàê„Åï„Çå„ÇãServiceManager„Å´ÁôªÈå≤„Åô„ÇãService„Çí
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT service (constructor? | field* | attribute* | optional-config? | invoke* | depends* | ifdef*)*>
 
-<!-- codeëÆê´ÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇÃé¿ëïÉNÉâÉXñºÇäÆëSèCè¸ñºÇ≈íËã`Çµ
-Ç‹Ç∑ÅB
-Ç±Ç±Ç…íËã`Ç≈Ç´ÇÈÉNÉâÉXÇÕÅAäÓñ{ìIÇ…êßå¿ÇÕÇ†ÇËÇ‹ÇπÇÒÇ™ÅAÉNÉâÉXÇÃé¿ëïÇ…ÇÊÇ¡ÇƒÅA
-ìÆçÏìIÇ»êßå¿ÇÕî≠ê∂ÇµÇ‹Ç∑ÅBà»â∫Ç…ÅAêÑèßÇ∑ÇÈé¿ëïï˚ñ@ÇÃèáÇ≈ÅAê‡ñæÇµÇ‹Ç∑ÅB
-(1)jp.ossc.nimbus.core.ServiceBaseÇÃÉTÉuÉNÉâÉX
-  à¯êîÇ»ÇµÇÃÉRÉìÉXÉgÉâÉNÉ^Ç≈ê∂ê¨Ç≥ÇÍÇ‹Ç∑ÅB
-  ÉçÅ[ÉhéûÇ…ÅAServiceBaseSupport#createService()ÅAstartService()ÇåƒÇ—èoÇµÇ‹Ç∑ÅB
-  Ç‹ÇΩÅAServiceManager#create()ÅAstart()ÅAstop()ÅAdestroy()ÇåƒÇ—èoÇ∑Ç∆ÅA
-  ServiceManagerÇ…ìoò^Ç≥ÇÍÇƒÇ¢ÇÈServiceÇÃëŒâûÇ∑ÇÈÉÅÉ\ÉbÉhÇåƒÇ—èoÇµÇ‹Ç∑ÅB
-  ServiceBaseÇÕÅAJMXÇ…ëŒâûÇµÇƒÇ®ÇËjp.ossc.nimbus.core.ServiceBaseMBean
-  ÉCÉìÉ^ÉtÉFÅ[ÉXÇMBeanÉCÉìÉ^ÉtÉFÅ[ÉXÇ∆ÇµÇƒéùÇ¡ÇƒÇ‹Ç∑ÅB
-(2)jp.ossc.nimbus.core.FactoryServiceBaseÇÃÉTÉuÉNÉâÉX
-  FactoryServiceBaseÇÕÅAServiceBaseÇÃÉTÉuÉNÉâÉXÇ≈Ç†ÇÈÇΩÇﬂÅA(1)Ç…èÄãíÇµÇ‹Ç∑ÅB
-  íAÇµÅAServiceManager#getServiceObject(String)ÇåƒÇ—èoÇ≥ÇÍÇΩèÍçáÅAÇ±ÇÃÉNÉâÉXÇÃ
-  ÉCÉìÉXÉ^ÉìÉXÇÕï‘Ç≥Ç∏Ç…ÅAFactoryService#newInstance()Ç≈ê∂ê¨Ç≥ÇÍÇÈÉIÉuÉWÉFÉNÉg
-  Çï‘ÇµÇ‹Ç∑ÅB
-(3)jp.ossc.nimbus.core.ServiceBaseSupportÉCÉìÉ^ÉtÉFÅ[ÉXé¿ëïÉNÉâÉX
-  à¯êîÇ»ÇµÇÃÉRÉìÉXÉgÉâÉNÉ^Ç≈ê∂ê¨Ç≥ÇÍÇ‹Ç∑ÅB
-  ServiceBaseÇÇ±ÇÃé¿ëïÉNÉâÉXÇÃÉvÉçÉLÉVÇ∆ÇµÇƒê∂ê¨ÇµÇƒÅAServiceManagerÇ…ìoò^Ç≥ÇÍ
-  Ç‹Ç∑ÅB
-  ÉçÅ[ÉhéûÇ…ÅAService#createService()ÅAstartService()ÇåƒÇ—èoÇµÇ‹Ç∑ÅB
-  Ç‹ÇΩÅAServiceManager#create()ÅAstart()ÅAstop()ÅAdestroy()ÇåƒÇ—èoÇ∑Ç∆ÅA
-  ServiceManagerÇ…ìoò^Ç≥ÇÍÇƒÇ¢ÇÈServiceBaseÉvÉçÉLÉVÇí ÇµÇƒÅA
-  ServiceBaseSupport#createService()ÅAstartService()ÅAstopService()ÅA
-  destroyService()ÇåƒÇ—èoÇµÇ‹Ç∑ÅB
-  ÉvÉçÉLÉVÇ≈Ç†ÇÈServiceBaseÇ™ÅAJMXÇ…ëŒâûÇµÇƒÇ¢ÇÈÇΩÇﬂÅAServiceManagerÇ…ìoò^Ç≥ÇÍ
-  ÇÈÉIÉuÉWÉFÉNÉgÇÕÅAjp.ossc.nimbus.core.ServiceBaseMBeanÉCÉìÉ^ÉtÉFÅ[ÉXÇ
-  MBeanÉCÉìÉ^ÉtÉFÅ[ÉXÇ∆ÇµÇƒéùÇøÇ‹Ç∑ÅB
-  Ç‹ÇΩÅAFactoryServiceÉCÉìÉ^ÉtÉFÅ[ÉXÇ‡é¿ëïÇ∑ÇÍÇŒÅA(2)Ç…èÄãíÇµÇΩìÆçÏÇÇµÇ‹Ç∑ÅB
-(4)jp.ossc.nimbus.core.ServiceÉCÉìÉ^ÉtÉFÅ[ÉXé¿ëïÉNÉâÉX
-  à¯êîÇ»ÇµÇÃÉRÉìÉXÉgÉâÉNÉ^Ç≈ê∂ê¨Ç≥ÇÍÇ‹Ç∑ÅB
-  ÉçÅ[ÉhéûÇ…ÅAService#setServiceName()ÅAcreate()ÅAstart()ÇåƒÇ—èoÇµÇ‹Ç∑ÅB
-  Ç‹ÇΩÅAServiceManager#create()ÅAstart()ÅAstop()ÅAdestroy()ÇåƒÇ—èoÇ∑Ç∆ÅA
-  ServiceÇÃëŒâûÇ∑ÇÈÉÅÉ\ÉbÉhÇåƒÇ—èoÇµÇ‹Ç∑ÅB
-  Service#getState()Ç…ëŒÇ∑ÇÈé¿ëïÇÃê”îCÇïâÇ§ïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
-  JMXÇ…ÇÕÅAëŒâûÇµÇƒÇ¢Ç‹ÇπÇÒÅBëŒâûÇ∑ÇÈÇΩÇﬂÇ…ÇÕÅAì∆é©Ç…é¿ëïÇ∑ÇÈïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
-(5)è„ãLà»äOÇÃÉNÉâÉX
-  à¯êîÇ»ÇµÇÃÉRÉìÉXÉgÉâÉNÉ^Ç≈ê∂ê¨Ç≥ÇÍÇ‹Ç∑ÅB
-  ServiceÉCÉìÉ^ÉtÉFÅ[ÉXÇé¿ëïÇµÇƒÇ¢Ç»Ç¢èÍçáÇÕÅAServiceÇÃÉvÉçÉLÉVÇê∂ê¨ÇµÇƒÅA
-  ServiceManagerÇ…ìoò^Ç≥ÇÍÇ‹Ç∑ÅB
-  Service#create()ÅAstart()ÅAstop()ÅAdestroy()Ç∆ìØÇ∂ÉVÉOÉjÉ`ÉÉÇÃÉÅÉ\ÉbÉhÇéùÇ¡
-  ÇƒÇ¢ÇÈèÍçáÇÕÅA(1)Ç∆ìØÇ∂ìÆçÏÇÇµÇ‹Ç∑ÅB
-  ÇªÇÍà»äOÇÃèÍçáÇÕÅAServiceManager#create()ÇåƒÇ—èoÇ∑Ç∆ÅAServiceManagerÇ÷é©ï™é©
-  êgÇìoò^Ç∑ÇÈéñÇ∆ÅAServiceManager#destroy()ÇåƒÇ—èoÇ∑Ç∆ÅAServiceManagerÇ©ÇÁé©
-  ï™é©êgÇçÌèúÇ∑ÇÈÅBÇ‹ÇΩÅAService#getState()ÇÕÅACREATEDÅADESTROYEDà»äOÇÃèÛë‘ÇÕ
-  UNKNOWNÇ∆Ç»ÇËÇ‹Ç∑ÅB
+<!-- codeÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÅÆÂÆüË£Ö„ÇØ„É©„ÇπÂêç„ÇíÂÆåÂÖ®‰øÆÈ£æÂêç„ÅßÂÆöÁæ©„Åó
+„Åæ„Åô„ÄÇ
+„Åì„Åì„Å´ÂÆöÁæ©„Åß„Åç„Çã„ÇØ„É©„Çπ„ÅØ„ÄÅÂü∫Êú¨ÁöÑ„Å´Âà∂Èôê„ÅØ„ÅÇ„Çä„Åæ„Åõ„Çì„Åå„ÄÅ„ÇØ„É©„Çπ„ÅÆÂÆüË£Ö„Å´„Çà„Å£„Å¶„ÄÅ
+Âãï‰ΩúÁöÑ„Å™Âà∂Èôê„ÅØÁô∫Áîü„Åó„Åæ„Åô„ÄÇ‰ª•‰∏ã„Å´„ÄÅÊé®Â•®„Åô„ÇãÂÆüË£ÖÊñπÊ≥ï„ÅÆÈ†Ü„Åß„ÄÅË™¨Êòé„Åó„Åæ„Åô„ÄÇ
+(1)jp.ossc.nimbus.core.ServiceBase„ÅÆ„Çµ„Éñ„ÇØ„É©„Çπ
+  ÂºïÊï∞„Å™„Åó„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÅßÁîüÊàê„Åï„Çå„Åæ„Åô„ÄÇ
+  „É≠„Éº„ÉâÊôÇ„Å´„ÄÅServiceBaseSupport#createService()„ÄÅstartService()„ÇíÂëº„Å≥Âá∫„Åó„Åæ„Åô„ÄÇ
+  „Åæ„Åü„ÄÅServiceManager#create()„ÄÅstart()„ÄÅstop()„ÄÅdestroy()„ÇíÂëº„Å≥Âá∫„Åô„Å®„ÄÅ
+  ServiceManager„Å´ÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„ÇãService„ÅÆÂØæÂøú„Åô„Çã„É°„ÇΩ„ÉÉ„Éâ„ÇíÂëº„Å≥Âá∫„Åó„Åæ„Åô„ÄÇ
+  ServiceBase„ÅØ„ÄÅJMX„Å´ÂØæÂøú„Åó„Å¶„Åä„Çäjp.ossc.nimbus.core.ServiceBaseMBean
+  „Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÇíMBean„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„Å®„Åó„Å¶ÊåÅ„Å£„Å¶„Åæ„Åô„ÄÇ
+(2)jp.ossc.nimbus.core.FactoryServiceBase„ÅÆ„Çµ„Éñ„ÇØ„É©„Çπ
+  FactoryServiceBase„ÅØ„ÄÅServiceBase„ÅÆ„Çµ„Éñ„ÇØ„É©„Çπ„Åß„ÅÇ„Çã„Åü„ÇÅ„ÄÅ(1)„Å´Ê∫ñÊã†„Åó„Åæ„Åô„ÄÇ
+  ‰ΩÜ„Åó„ÄÅServiceManager#getServiceObject(String)„ÇíÂëº„Å≥Âá∫„Åï„Çå„ÅüÂ†¥Âêà„ÄÅ„Åì„ÅÆ„ÇØ„É©„Çπ„ÅÆ
+  „Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅØËøî„Åï„Åö„Å´„ÄÅFactoryService#newInstance()„ÅßÁîüÊàê„Åï„Çå„Çã„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà
+  „ÇíËøî„Åó„Åæ„Åô„ÄÇ
+(3)jp.ossc.nimbus.core.ServiceBaseSupport„Ç§„É≥„Çø„Éï„Çß„Éº„ÇπÂÆüË£Ö„ÇØ„É©„Çπ
+  ÂºïÊï∞„Å™„Åó„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÅßÁîüÊàê„Åï„Çå„Åæ„Åô„ÄÇ
+  ServiceBase„Çí„Åì„ÅÆÂÆüË£Ö„ÇØ„É©„Çπ„ÅÆ„Éó„É≠„Ç≠„Ç∑„Å®„Åó„Å¶ÁîüÊàê„Åó„Å¶„ÄÅServiceManager„Å´ÁôªÈå≤„Åï„Çå
+  „Åæ„Åô„ÄÇ
+  „É≠„Éº„ÉâÊôÇ„Å´„ÄÅService#createService()„ÄÅstartService()„ÇíÂëº„Å≥Âá∫„Åó„Åæ„Åô„ÄÇ
+  „Åæ„Åü„ÄÅServiceManager#create()„ÄÅstart()„ÄÅstop()„ÄÅdestroy()„ÇíÂëº„Å≥Âá∫„Åô„Å®„ÄÅ
+  ServiceManager„Å´ÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„ÇãServiceBase„Éó„É≠„Ç≠„Ç∑„ÇíÈÄö„Åó„Å¶„ÄÅ
+  ServiceBaseSupport#createService()„ÄÅstartService()„ÄÅstopService()„ÄÅ
+  destroyService()„ÇíÂëº„Å≥Âá∫„Åó„Åæ„Åô„ÄÇ
+  „Éó„É≠„Ç≠„Ç∑„Åß„ÅÇ„ÇãServiceBase„Åå„ÄÅJMX„Å´ÂØæÂøú„Åó„Å¶„ÅÑ„Çã„Åü„ÇÅ„ÄÅServiceManager„Å´ÁôªÈå≤„Åï„Çå
+  „Çã„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅØ„ÄÅjp.ossc.nimbus.core.ServiceBaseMBean„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„Çí
+  MBean„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„Å®„Åó„Å¶ÊåÅ„Å°„Åæ„Åô„ÄÇ
+  „Åæ„Åü„ÄÅFactoryService„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÇÇÂÆüË£Ö„Åô„Çå„Å∞„ÄÅ(2)„Å´Ê∫ñÊã†„Åó„ÅüÂãï‰Ωú„Çí„Åó„Åæ„Åô„ÄÇ
+(4)jp.ossc.nimbus.core.Service„Ç§„É≥„Çø„Éï„Çß„Éº„ÇπÂÆüË£Ö„ÇØ„É©„Çπ
+  ÂºïÊï∞„Å™„Åó„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÅßÁîüÊàê„Åï„Çå„Åæ„Åô„ÄÇ
+  „É≠„Éº„ÉâÊôÇ„Å´„ÄÅService#setServiceName()„ÄÅcreate()„ÄÅstart()„ÇíÂëº„Å≥Âá∫„Åó„Åæ„Åô„ÄÇ
+  „Åæ„Åü„ÄÅServiceManager#create()„ÄÅstart()„ÄÅstop()„ÄÅdestroy()„ÇíÂëº„Å≥Âá∫„Åô„Å®„ÄÅ
+  Service„ÅÆÂØæÂøú„Åô„Çã„É°„ÇΩ„ÉÉ„Éâ„ÇíÂëº„Å≥Âá∫„Åó„Åæ„Åô„ÄÇ
+  Service#getState()„Å´ÂØæ„Åô„ÇãÂÆüË£Ö„ÅÆË≤¨‰ªª„ÇíË≤†„ÅÜÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
+  JMX„Å´„ÅØ„ÄÅÂØæÂøú„Åó„Å¶„ÅÑ„Åæ„Åõ„Çì„ÄÇÂØæÂøú„Åô„Çã„Åü„ÇÅ„Å´„ÅØ„ÄÅÁã¨Ëá™„Å´ÂÆüË£Ö„Åô„ÇãÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
+(5)‰∏äË®ò‰ª•Â§ñ„ÅÆ„ÇØ„É©„Çπ
+  ÂºïÊï∞„Å™„Åó„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÅßÁîüÊàê„Åï„Çå„Åæ„Åô„ÄÇ
+  Service„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÇíÂÆüË£Ö„Åó„Å¶„ÅÑ„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅService„ÅÆ„Éó„É≠„Ç≠„Ç∑„ÇíÁîüÊàê„Åó„Å¶„ÄÅ
+  ServiceManager„Å´ÁôªÈå≤„Åï„Çå„Åæ„Åô„ÄÇ
+  Service#create()„ÄÅstart()„ÄÅstop()„ÄÅdestroy()„Å®Âêå„Åò„Ç∑„Ç∞„Éã„ÉÅ„É£„ÅÆ„É°„ÇΩ„ÉÉ„Éâ„ÇíÊåÅ„Å£
+  „Å¶„ÅÑ„ÇãÂ†¥Âêà„ÅØ„ÄÅ(1)„Å®Âêå„ÅòÂãï‰Ωú„Çí„Åó„Åæ„Åô„ÄÇ
+  „Åù„Çå‰ª•Â§ñ„ÅÆÂ†¥Âêà„ÅØ„ÄÅServiceManager#create()„ÇíÂëº„Å≥Âá∫„Åô„Å®„ÄÅServiceManager„Å∏Ëá™ÂàÜËá™
+  Ë∫´„ÇíÁôªÈå≤„Åô„Çã‰∫ã„Å®„ÄÅServiceManager#destroy()„ÇíÂëº„Å≥Âá∫„Åô„Å®„ÄÅServiceManager„Åã„ÇâËá™
+  ÂàÜËá™Ë∫´„ÇíÂâäÈô§„Åô„Çã„ÄÇ„Åæ„Åü„ÄÅService#getState()„ÅØ„ÄÅCREATED„ÄÅDESTROYED‰ª•Â§ñ„ÅÆÁä∂ÊÖã„ÅØ
+  UNKNOWN„Å®„Å™„Çä„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST service code CDATA #REQUIRED>
 
-<!-- nameëÆê´ÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇÃñºëOÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±Ç±Ç≈éwíËÇµÇΩñºëOÇÅAServiceManager#getService(String)ÇÃà¯êîÇ…éwíËÇ∑ÇÈéñÇ≈ÅA
-Ç±ÇÃServiceÇéÊìæÇ≈Ç´Ç‹Ç∑ÅB
-Ç‹ÇΩÅAServiceManager#getServiceObject(String)ÇåƒÇ‘Ç∆ÅAcodeëÆê´Ç≈éwíËÇµÇΩÉNÉâÉX
-ÇÃÉCÉìÉXÉ^ÉìÉXÇ™éÊìæÇ≈Ç´Ç‹Ç∑ÅBíAÇµÅAìoò^Ç∑ÇÈServiceÇ™FactoryServiceÉCÉìÉ^ÉtÉFÅ[
-ÉXÇé¿ëïÇµÇƒÇ¢ÇÈèÍçáÇÕÅAFactoryService#newInstance()Ç≈ê∂ê¨Ç≥ÇÍÇΩÉCÉìÉXÉ^ÉìÉXÇ™
-éÊìæÇ≥ÇÍÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÅÆÂêçÂâç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„Åì„ÅßÊåáÂÆö„Åó„ÅüÂêçÂâç„Çí„ÄÅServiceManager#getService(String)„ÅÆÂºïÊï∞„Å´ÊåáÂÆö„Åô„Çã‰∫ã„Åß„ÄÅ
+„Åì„ÅÆService„ÇíÂèñÂæó„Åß„Åç„Åæ„Åô„ÄÇ
+„Åæ„Åü„ÄÅServiceManager#getServiceObject(String)„ÇíÂëº„Å∂„Å®„ÄÅcodeÂ±ûÊÄß„ÅßÊåáÂÆö„Åó„Åü„ÇØ„É©„Çπ
+„ÅÆ„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅåÂèñÂæó„Åß„Åç„Åæ„Åô„ÄÇ‰ΩÜ„Åó„ÄÅÁôªÈå≤„Åô„ÇãService„ÅåFactoryService„Ç§„É≥„Çø„Éï„Çß„Éº
+„Çπ„ÇíÂÆüË£Ö„Åó„Å¶„ÅÑ„ÇãÂ†¥Âêà„ÅØ„ÄÅFactoryService#newInstance()„ÅßÁîüÊàê„Åï„Çå„Åü„Ç§„É≥„Çπ„Çø„É≥„Çπ„Åå
+ÂèñÂæó„Åï„Çå„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST service name CDATA #REQUIRED>
 
-<!-- initStateëÆê´ÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇÃèâä˙èÛë‘ÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- initStateÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÅÆÂàùÊúüÁä∂ÊÖã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST service initState (Created|Started) "Started">
 
-<!-- instanceëÆê´ÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇÃÉCÉìÉXÉ^ÉìÉXê∂ê¨éÌï Ç
-íËã`ÇµÇ‹Ç∑ÅB
-ÉfÉtÉHÉãÉgílÇÕÅAsingletonÇ≈ÅAÉCÉìÉXÉ^ÉìÉXÇÕÇPÇ¬ÇæÇØê∂ê¨Ç≥ÇÍìoò^Ç≥ÇÍÇ‹Ç∑ÅB
-factoryÇê›íËÇ∑ÇÈÇ∆ÅAServiceManager#getServiceObject(String)ÇåƒÇ—èoÇ∑ñàÇ…
-êVÇµÇ¢ÉCÉìÉXÉ^ÉìÉXÇê∂ê¨ÇµÇƒï‘ÇµÇ‹Ç∑ÅBÇ‹ÇΩÅAServiceManager#getService(String)
-ÇÃñﬂÇËílÇÕÅAFactoryServiceÇ…Ç»ÇËÇ‹Ç∑ÅB
-threadlocalÇê›íËÇ∑ÇÈÇ∆ÅAServiceManager#getServiceObject(String)ÇåƒÇ—èoÇ∑
-ÉXÉåÉbÉhñàÇ…ÅAÉCÉìÉXÉ^ÉìÉXÇê∂ê¨ÇµÇƒï‘ÇµÇ‹Ç∑ÅB
-Ç‹ÇΩÅAServiceManager#getService(String)ÇÃñﬂÇËílÇÕÅAFactoryServiceÇ…Ç»ÇËÇ‹Ç∑ÅB
-templateÇê›íËÇ∑ÇÈÇ∆ÅAÉTÅ[ÉrÉXíËã`ÇÃÉeÉìÉvÉåÅ[ÉgíËã`Ç∆Ç»ÇËÅAÇ±ÇÃíËã`é©ëÃÇ≈ÇÕÅA
-ÉTÅ[ÉrÉXÇÕìoò^Ç≥ÇÍÇ∏ÅAtemplateNameëÆê´Ç≈Ç±ÇÃíËã`ÇÉeÉìÉvÉåÅ[ÉgÇ∆ÇµÇƒéÊÇËçûÇﬁéñÇ™
-Ç≈Ç´Ç‹Ç∑ÅBíAÇµÅAÉeÉìÉvÉåÅ[ÉgÇ∆ÇµÇƒìKópÇ≥ÇÍÇÈÇÃÇÕÅAÇ±ÇÃóvëfÇÃëÆê´à»äOÇ≈Ç∑ÅB
+<!-- instanceÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÅÆ„Ç§„É≥„Çπ„Çø„É≥„ÇπÁîüÊàêÁ®ÆÂà•„Çí
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Éá„Éï„Ç©„É´„ÉàÂÄ§„ÅØ„ÄÅsingleton„Åß„ÄÅ„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅØÔºë„Å§„Å†„ÅëÁîüÊàê„Åï„ÇåÁôªÈå≤„Åï„Çå„Åæ„Åô„ÄÇ
+factory„ÇíË®≠ÂÆö„Åô„Çã„Å®„ÄÅServiceManager#getServiceObject(String)„ÇíÂëº„Å≥Âá∫„ÅôÊØé„Å´
+Êñ∞„Åó„ÅÑ„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÇíÁîüÊàê„Åó„Å¶Ëøî„Åó„Åæ„Åô„ÄÇ„Åæ„Åü„ÄÅServiceManager#getService(String)
+„ÅÆÊàª„ÇäÂÄ§„ÅØ„ÄÅFactoryService„Å´„Å™„Çä„Åæ„Åô„ÄÇ
+threadlocal„ÇíË®≠ÂÆö„Åô„Çã„Å®„ÄÅServiceManager#getServiceObject(String)„ÇíÂëº„Å≥Âá∫„Åô
+„Çπ„É¨„ÉÉ„ÉâÊØé„Å´„ÄÅ„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÇíÁîüÊàê„Åó„Å¶Ëøî„Åó„Åæ„Åô„ÄÇ
+„Åæ„Åü„ÄÅServiceManager#getService(String)„ÅÆÊàª„ÇäÂÄ§„ÅØ„ÄÅFactoryService„Å´„Å™„Çä„Åæ„Åô„ÄÇ
+template„ÇíË®≠ÂÆö„Åô„Çã„Å®„ÄÅ„Çµ„Éº„Éì„ÇπÂÆöÁæ©„ÅÆ„ÉÜ„É≥„Éó„É¨„Éº„ÉàÂÆöÁæ©„Å®„Å™„Çä„ÄÅ„Åì„ÅÆÂÆöÁæ©Ëá™‰Ωì„Åß„ÅØ„ÄÅ
+„Çµ„Éº„Éì„Çπ„ÅØÁôªÈå≤„Åï„Çå„Åö„ÄÅtemplateNameÂ±ûÊÄß„Åß„Åì„ÅÆÂÆöÁæ©„Çí„ÉÜ„É≥„Éó„É¨„Éº„Éà„Å®„Åó„Å¶Âèñ„ÇäËæº„ÇÄ‰∫ã„Åå
+„Åß„Åç„Åæ„Åô„ÄÇ‰ΩÜ„Åó„ÄÅ„ÉÜ„É≥„Éó„É¨„Éº„Éà„Å®„Åó„Å¶ÈÅ©Áî®„Åï„Çå„Çã„ÅÆ„ÅØ„ÄÅ„Åì„ÅÆË¶ÅÁ¥†„ÅÆÂ±ûÊÄß‰ª•Â§ñ„Åß„Åô„ÄÇ
 -->
 <!ATTLIST service instance (singleton|factory|threadlocal|template) "singleton">
 
-<!-- managementëÆê´ÇÕÅAserviceóvëfÇÃinstanceëÆê´Ç…factoryÇ‹ÇΩÇÕthreadlocalÇ
-éwíËÇµÇΩèÍçáÇ…ÅAê∂ê¨Ç≥ÇÍÇΩÉCÉìÉXÉ^ÉìÉXÇServiceManagerÇ…ìoò^Ç∑ÇÈÇ©Ç«Ç§Ç©Ç
-íËã`ÇµÇ‹Ç∑ÅB
-ÉfÉtÉHÉãÉgílÇÕÅAfalseÇ≈ÅAê∂ê¨Ç≥ÇÍÇΩÉCÉìÉXÉ^ÉìÉXÇÕServiceManagerÇ…ìoò^Ç≥ÇÍÇ‹ÇπÇÒÅB
-trueÇê›íËÇ∑ÇÈÇ∆ÅAê∂ê¨Ç≥ÇÍÇΩÉCÉìÉXÉ^ÉìÉXÇÕServiceManagerÇ…ìoò^Ç≥ÇÍÇ‹Ç∑ÅB
-ê∂ê¨Ç≥ÇÍÇΩÉCÉìÉXÉ^ÉìÉXÇÃÉTÅ[ÉrÉXñºÇÕÅAÇ±ÇÃserviceóvëfÇÃnameëÆê´ÇÃílÇ…ÅAí î‘Ç
-ïtÇØÇΩñºëOÇ…Ç»ÇËÇ‹Ç∑ÅB
+<!-- managementÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆinstanceÂ±ûÊÄß„Å´factory„Åæ„Åü„ÅØthreadlocal„Çí
+ÊåáÂÆö„Åó„ÅüÂ†¥Âêà„Å´„ÄÅÁîüÊàê„Åï„Çå„Åü„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÇíServiceManager„Å´ÁôªÈå≤„Åô„Çã„Åã„Å©„ÅÜ„Åã„Çí
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Éá„Éï„Ç©„É´„ÉàÂÄ§„ÅØ„ÄÅfalse„Åß„ÄÅÁîüÊàê„Åï„Çå„Åü„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅØServiceManager„Å´ÁôªÈå≤„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
+true„ÇíË®≠ÂÆö„Åô„Çã„Å®„ÄÅÁîüÊàê„Åï„Çå„Åü„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅØServiceManager„Å´ÁôªÈå≤„Åï„Çå„Åæ„Åô„ÄÇ
+ÁîüÊàê„Åï„Çå„Åü„Ç§„É≥„Çπ„Çø„É≥„Çπ„ÅÆ„Çµ„Éº„Éì„ÇπÂêç„ÅØ„ÄÅ„Åì„ÅÆserviceË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÅÆÂÄ§„Å´„ÄÅÈÄöÁï™„Çí
+‰ªò„Åë„ÅüÂêçÂâç„Å´„Å™„Çä„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST service management (true|false) "false">
 
-<!-- createTemplateëÆê´ÇÕÅAserviceóvëfÇÃinstanceëÆê´Ç…factoryÇ‹ÇΩÇÕthreadlocalÇ
-éwíËÇµÇΩèÍçáÇ…ÅAÉtÉ@ÉNÉgÉäÇÃäJénéûÇ…ÉtÉ@ÉNÉgÉäÇ™ê∂ê¨Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇê∂ê¨ÇµÇƒ
-Ç›ÇÈÇ©Ç«Ç§Ç©ÇíËã`ÇµÇ‹Ç∑ÅB
-ÉfÉtÉHÉãÉgílÇÕÅAtrueÇ≈ÅAÉtÉ@ÉNÉgÉäÇÃäJénéûÇ…ÉtÉ@ÉNÉgÉäÇ™ê∂ê¨Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇÃê∂ê¨ÇééÇ›Ç‹Ç∑ÅB
+<!-- createTemplateÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆinstanceÂ±ûÊÄß„Å´factory„Åæ„Åü„ÅØthreadlocal„Çí
+ÊåáÂÆö„Åó„ÅüÂ†¥Âêà„Å´„ÄÅ„Éï„Ç°„ÇØ„Éà„É™„ÅÆÈñãÂßãÊôÇ„Å´„Éï„Ç°„ÇØ„Éà„É™„ÅåÁîüÊàê„Åô„Çã„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÇíÁîüÊàê„Åó„Å¶
+„Åø„Çã„Åã„Å©„ÅÜ„Åã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Éá„Éï„Ç©„É´„ÉàÂÄ§„ÅØ„ÄÅtrue„Åß„ÄÅ„Éï„Ç°„ÇØ„Éà„É™„ÅÆÈñãÂßãÊôÇ„Å´„Éï„Ç°„ÇØ„Éà„É™„ÅåÁîüÊàê„Åô„Çã„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÁîüÊàê„ÇíË©¶„Åø„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST service createTemplate (true|false) "true">
 
-<!-- templateëÆê´ÇÕÅAÇ±ÇÃserviceóvëfÇ≈ÉeÉìÉvÉåÅ[ÉgÇ∆ÇµÇƒéQè∆Ç∑ÇÈserviceóvëfÇÃ
-ÉTÅ[ÉrÉXñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- templateÂ±ûÊÄß„ÅØ„ÄÅ„Åì„ÅÆserviceË¶ÅÁ¥†„Åß„ÉÜ„É≥„Éó„É¨„Éº„Éà„Å®„Åó„Å¶ÂèÇÁÖß„Åô„ÇãserviceË¶ÅÁ¥†„ÅÆ
+„Çµ„Éº„Éì„ÇπÂêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST service template CDATA #IMPLIED>
 
-<!-- constructoróvëfÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ‚objectóvëfÇ≈ê∂ê¨Ç∑ÇÈ
-ÉIÉuÉWÉFÉNÉgÇÃÉRÉìÉXÉgÉâÉNÉ^ëÆê´ÇíËã`ÇµÇ‹Ç∑ÅB
-constructoróvëfÇÃéqóvëfÇ…argumentóvëfÇéwíËÇµÇ‹Ç∑ÅBÉfÉtÉHÉãÉgÉRÉìÉXÉgÉâÉNÉ^à»äO
-ÇÃÉRÉìÉXÉgÉâÉNÉ^ÇéwíËÇµÇΩÇ¢èÍçáÇ…éwíËÇµÇ‹Ç∑ÅB
-ServiceÇ…ÇÕÅAäYìñÇ∑ÇÈÉRÉìÉXÉgÉâÉNÉ^Çé¿ëïÇµÇƒÇ®Ç≠ïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
+<!-- constructorË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÇÑobjectË¶ÅÁ¥†„ÅßÁîüÊàê„Åô„Çã
+„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„ÇøÂ±ûÊÄß„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+constructorË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†„Å´argumentË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ„Éá„Éï„Ç©„É´„Éà„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø‰ª•Â§ñ
+„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÇíÊåáÂÆö„Åó„Åü„ÅÑÂ†¥Âêà„Å´ÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+Service„Å´„ÅØ„ÄÅË©≤ÂΩì„Åô„Çã„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÇíÂÆüË£Ö„Åó„Å¶„Åä„ÅèÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT constructor (argument+ | invoke |static-invoke | static-field-ref)*>
 
-<!-- argumentóvëfÇÕÅAconstructoróvëfÇ≈éwíËÇ∑ÇÈÉRÉìÉXÉgÉâÉNÉ^ÇÃà¯êîÇíËã`ÇµÇ‹Ç∑ÅB
-argumentóvëfÇÃì‡óeÇ…ÅAà¯êîÇÃílÇéwíËÇµÇ‹Ç∑ÅB
-à¯êîÇ∆ÇµÇƒÅAÉTÅ[ÉrÉXÇéQè∆Ç∑ÇÈéûÇÕÅAservice-refóvëfÅBîCà”ÇÃÉIÉuÉWÉFÉNÉgÇéQè∆
-Ç∑ÇÈéûÇÕÅAobjectóvëfÇéwíËÇ≈Ç´Ç‹Ç∑Ç™ÅAÉTÅ[ÉrÉXÇÃÉRÉìÉXÉgÉâÉNÉ^ÇÃà¯êîÇ∆ÇµÇƒíËã`
-Ç∑ÇÈèÍçáÇ…ÇÕÅAservice-refóvëfÇÕéwíËÇ≈Ç´Ç‹ÇπÇÒÅB
+<!-- argumentË¶ÅÁ¥†„ÅØ„ÄÅconstructorË¶ÅÁ¥†„ÅßÊåáÂÆö„Åô„Çã„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÅÆÂºïÊï∞„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+argumentË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅÂºïÊï∞„ÅÆÂÄ§„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+ÂºïÊï∞„Å®„Åó„Å¶„ÄÅ„Çµ„Éº„Éì„Çπ„ÇíÂèÇÁÖß„Åô„ÇãÊôÇ„ÅØ„ÄÅservice-refË¶ÅÁ¥†„ÄÇ‰ªªÊÑè„ÅÆ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÇíÂèÇÁÖß
+„Åô„ÇãÊôÇ„ÅØ„ÄÅobjectË¶ÅÁ¥†„ÇíÊåáÂÆö„Åß„Åç„Åæ„Åô„Åå„ÄÅ„Çµ„Éº„Éì„Çπ„ÅÆ„Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÅÆÂºïÊï∞„Å®„Åó„Å¶ÂÆöÁæ©
+„Åô„ÇãÂ†¥Âêà„Å´„ÅØ„ÄÅservice-refË¶ÅÁ¥†„ÅØÊåáÂÆö„Åß„Åç„Åæ„Åõ„Çì„ÄÇ
 -->
 <!ELEMENT argument (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
 
-<!-- typeëÆê´ÇÕÅAargumentóvëfÇ≈íËã`Ç∑ÇÈà¯êîÇÃå^ÇéwíËÇµÇ‹Ç∑ÅB
-argumentóvëfÇÃéqóvëfÇ…service-refóvëfÇ‚objectóvëfÇíËã`Ç∑ÇÈèÍçáÇ≈ÅAà¯êîÇÃå^Ç™
-ÇªÇÍÇÁÇÃóvëfÇ™ï\Ç∑ÉIÉuÉWÉFÉNÉgÇÃå^Ç∆ìôÇµÇ¢èÍçáÇÕÅAè»ó™â¬î\Ç≈Ç∑ÅB
+<!-- typeÂ±ûÊÄß„ÅØ„ÄÅargumentË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„ÇãÂºïÊï∞„ÅÆÂûã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+argumentË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†„Å´service-refË¶ÅÁ¥†„ÇÑobjectË¶ÅÁ¥†„ÇíÂÆöÁæ©„Åô„ÇãÂ†¥Âêà„Åß„ÄÅÂºïÊï∞„ÅÆÂûã„Åå
+„Åù„Çå„Çâ„ÅÆË¶ÅÁ¥†„ÅåË°®„Åô„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÂûã„Å®Á≠â„Åó„ÅÑÂ†¥Âêà„ÅØ„ÄÅÁúÅÁï•ÂèØËÉΩ„Åß„Åô„ÄÇ
 -->
 <!ATTLIST argument type CDATA #IMPLIED>
 
-<!-- valueTypeëÆê´ÇÕÅAargumentóvëfÇ≈íËã`Ç∑ÇÈà¯êîÇÃé¿å^ÇéwíËÇµÇ‹Ç∑ÅB
-à¯êîÇÃå^Ç∆ê›íËÇµÇΩÇ¢ÉIÉuÉWÉFÉNÉgÇÃå^Ç™ë„ì¸å›ä∑ÇÃä÷åWÇ…Ç†ÇËÅAìôÇµÇ¢å^Ç≈ÇÕÇ»Ç¢
-èÍçáÇ…éwíËÇµÇ‹Ç∑ÅB
+<!-- valueTypeÂ±ûÊÄß„ÅØ„ÄÅargumentË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„ÇãÂºïÊï∞„ÅÆÂÆüÂûã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+ÂºïÊï∞„ÅÆÂûã„Å®Ë®≠ÂÆö„Åó„Åü„ÅÑ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÂûã„Åå‰ª£ÂÖ•‰∫íÊèõ„ÅÆÈñ¢‰øÇ„Å´„ÅÇ„Çä„ÄÅÁ≠â„Åó„ÅÑÂûã„Åß„ÅØ„Å™„ÅÑ
+Â†¥Âêà„Å´ÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST argument valueType CDATA #IMPLIED>
 
-<!-- nullValueëÆê´ÇÕÅAargumentóvëfÇ≈íËã`Ç∑ÇÈà¯êîÇÃílÇ™nullÇ≈Ç†ÇÈéñÇéwíËÇµÇ‹Ç∑ÅB
-argumentóvëfÇ™ï\Ç∑ílÇ™nullÇ≈Ç†ÇÈèÍçáÇ…ÅAtrueÇéwíËÇµÇ‹Ç∑ÅB
+<!-- nullValueÂ±ûÊÄß„ÅØ„ÄÅargumentË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„ÇãÂºïÊï∞„ÅÆÂÄ§„Åånull„Åß„ÅÇ„Çã‰∫ã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+argumentË¶ÅÁ¥†„ÅåË°®„ÅôÂÄ§„Åånull„Åß„ÅÇ„ÇãÂ†¥Âêà„Å´„ÄÅtrue„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST argument nullValue (true|false) "false">
 
-<!-- fieldóvëfÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇÃÉtÉBÅ[ÉãÉhëÆê´ÇíËã`ÇµÇ‹Ç∑ÅB
-fieldóvëfÇÃì‡óeÇ…ÅAílÇéwíËÇµÇ‹Ç∑ÅBÇ±Ç±Ç≈éwíËÇ≥ÇÍÇΩílÇÕÅA
-java.beans.PropertyEditorÇ…ÇÊÇ¡ÇƒServiceÇ…ê›íËÇ≥ÇÍÇ‹Ç∑ÅB
-ServiceÇ…ÇÕÅAÇ±ÇÃóvëfÇÃnameëÆê´Ç≈íËã`Ç∑ÇÈÉtÉBÅ[ÉãÉhëÆê´ñºÇ…äYìñÇ∑ÇÈÉtÉBÅ[ÉãÉh
-Çé¿ëïÇµÇƒÇ®Ç≠ïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
+<!-- fieldË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÅÆ„Éï„Ç£„Éº„É´„ÉâÂ±ûÊÄß„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+fieldË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅÂÄ§„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ„Åì„Åì„ÅßÊåáÂÆö„Åï„Çå„ÅüÂÄ§„ÅØ„ÄÅ
+java.beans.PropertyEditor„Å´„Çà„Å£„Å¶Service„Å´Ë®≠ÂÆö„Åï„Çå„Åæ„Åô„ÄÇ
+Service„Å´„ÅØ„ÄÅ„Åì„ÅÆË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åô„Çã„Éï„Ç£„Éº„É´„ÉâÂ±ûÊÄßÂêç„Å´Ë©≤ÂΩì„Åô„Çã„Éï„Ç£„Éº„É´„Éâ
+„ÇíÂÆüË£Ö„Åó„Å¶„Åä„ÅèÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT field (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
 
-<!-- nameëÆê´ÇÕÅAfieldóvëfÇ≈íËã`Ç∑ÇÈÉtÉBÅ[ÉãÉhëÆê´ÇÃëÆê´ñºÇéwíËÇµÇ‹Ç∑ÅB
-serviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÇÕÅAÇ±ÇÃóvëfÇÃnameëÆê´Ç≈íËã`Ç∑ÇÈÉtÉBÅ[ÉãÉhëÆê´ñº
-Ç…äYìñÇ∑ÇÈÉtÉBÅ[ÉãÉhÇé¿ëïÇµÇƒÇ®Ç≠ïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅfieldË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„Çã„Éï„Ç£„Éº„É´„ÉâÂ±ûÊÄß„ÅÆÂ±ûÊÄßÂêç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+serviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÅØ„ÄÅ„Åì„ÅÆË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åô„Çã„Éï„Ç£„Éº„É´„ÉâÂ±ûÊÄßÂêç
+„Å´Ë©≤ÂΩì„Åô„Çã„Éï„Ç£„Éº„É´„Éâ„ÇíÂÆüË£Ö„Åó„Å¶„Åä„ÅèÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST field name CDATA #REQUIRED>
 
-<!-- typeëÆê´ÇÕÅAfieldóvëfÇ≈íËã`Ç∑ÇÈÉtÉBÅ[ÉãÉhëÆê´ÇÃå^ÇéwíËÇµÇ‹Ç∑ÅB
-serviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÅAnameëÆê´Ç≈íËã`ÇµÇΩëÆê´ñºÇ…ëŒÇ∑ÇÈÉtÉBÅ[ÉãÉhÇÃå^
-Ç∆ì‡óeÇÃï∂éöóÒÇï“èWÇ∑ÇÈPropertyEditorÇ™ìoò^Ç≥ÇÍÇƒÇ¢ÇÈå^Ç™ìØÇ∂èÍçáÇÕÅA
-è»ó™â¬î\Ç≈Ç∑ÅB
-serviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÅAnameëÆê´Ç≈íËã`ÇµÇΩëÆê´ñºÇ…ëŒÇ∑ÇÈ
-ÉtÉBÅ[ÉãÉhÇÃå^Ç∆ë„ì¸å›ä∑ÇÃä÷åWÇ…Ç†ÇÈï ÇÃå^Ç≈ê›íËÇµÇΩÇ¢èÍçáÇÕÅAÇ±ÇÃëÆê´Ç≈ïKóvÇ»
-å^ÇíËã`ÇµÇ‹Ç∑ÅB
-éwíËÇµÇΩå^Ç…äYìñÇ∑ÇÈjava.beans.PropertyEditorÇ™ìoò^Ç≥ÇÍÇƒÇ¢Ç»Ç¢èÍçáÇÕÅA
-ílÇ™ê›íËÇ≥ÇÍÇ‹ÇπÇÒÅB
+<!-- typeÂ±ûÊÄß„ÅØ„ÄÅfieldË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„Çã„Éï„Ç£„Éº„É´„ÉâÂ±ûÊÄß„ÅÆÂûã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+serviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÄÅnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åó„ÅüÂ±ûÊÄßÂêç„Å´ÂØæ„Åô„Çã„Éï„Ç£„Éº„É´„Éâ„ÅÆÂûã
+„Å®ÂÜÖÂÆπ„ÅÆÊñáÂ≠óÂàó„ÇíÁ∑®ÈõÜ„Åô„ÇãPropertyEditor„ÅåÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„ÇãÂûã„ÅåÂêå„ÅòÂ†¥Âêà„ÅØ„ÄÅ
+ÁúÅÁï•ÂèØËÉΩ„Åß„Åô„ÄÇ
+serviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÄÅnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åó„ÅüÂ±ûÊÄßÂêç„Å´ÂØæ„Åô„Çã
+„Éï„Ç£„Éº„É´„Éâ„ÅÆÂûã„Å®‰ª£ÂÖ•‰∫íÊèõ„ÅÆÈñ¢‰øÇ„Å´„ÅÇ„ÇãÂà•„ÅÆÂûã„ÅßË®≠ÂÆö„Åó„Åü„ÅÑÂ†¥Âêà„ÅØ„ÄÅ„Åì„ÅÆÂ±ûÊÄß„ÅßÂøÖË¶Å„Å™
+Âûã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+ÊåáÂÆö„Åó„ÅüÂûã„Å´Ë©≤ÂΩì„Åô„Çãjava.beans.PropertyEditor„ÅåÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅ
+ÂÄ§„ÅåË®≠ÂÆö„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
 -->
 <!ATTLIST field type CDATA #IMPLIED>
 
-<!-- nullValueëÆê´ÇÕÅAfieldóvëfÇ≈íËã`Ç∑ÇÈÉtÉBÅ[ÉãÉhÇÃílÇ™nullÇ≈Ç†ÇÈéñÇéwíËÇµÇ‹Ç∑ÅB
-fieldóvëfÇ™ï\Ç∑ílÇ™nullÇ≈Ç†ÇÈèÍçáÇ…ÅAtrueÇéwíËÇµÇ‹Ç∑ÅB
+<!-- nullValueÂ±ûÊÄß„ÅØ„ÄÅfieldË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„Çã„Éï„Ç£„Éº„É´„Éâ„ÅÆÂÄ§„Åånull„Åß„ÅÇ„Çã‰∫ã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+fieldË¶ÅÁ¥†„ÅåË°®„ÅôÂÄ§„Åånull„Åß„ÅÇ„ÇãÂ†¥Âêà„Å´„ÄÅtrue„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST field nullValue (true|false) "false">
 
-<!-- attributeóvëfÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇÃBeanëÆê´ÇíËã`ÇµÇ‹Ç∑ÅB
-attributeóvëfÇÃì‡óeÇ…ÅAílÇéwíËÇµÇ‹Ç∑ÅBÇ±Ç±Ç≈éwíËÇ≥ÇÍÇΩílÇÕÅA
-java.beans.PropertyEditorÇ…ÇÊÇ¡ÇƒServiceÇ…ê›íËÇ≥ÇÍÇ‹Ç∑ÅB
-ServiceÇ…ÇÕÅAÇ±ÇÃóvëfÇÃnameëÆê´Ç≈íËã`Ç∑ÇÈëÆê´ñºÇ…äYìñÇ∑ÇÈsetterÇé¿ëïÇµÇƒÇ®Ç≠Ç©
-ÅAMapÉCÉìÉ^ÉtÉFÅ[ÉXÇé¿ëïÇµÇƒÇ®Ç≠ïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
+<!-- attributeË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÅÆBeanÂ±ûÊÄß„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+attributeË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅÂÄ§„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ„Åì„Åì„ÅßÊåáÂÆö„Åï„Çå„ÅüÂÄ§„ÅØ„ÄÅ
+java.beans.PropertyEditor„Å´„Çà„Å£„Å¶Service„Å´Ë®≠ÂÆö„Åï„Çå„Åæ„Åô„ÄÇ
+Service„Å´„ÅØ„ÄÅ„Åì„ÅÆË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åô„ÇãÂ±ûÊÄßÂêç„Å´Ë©≤ÂΩì„Åô„Çãsetter„ÇíÂÆüË£Ö„Åó„Å¶„Åä„Åè„Åã
+„ÄÅMap„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÇíÂÆüË£Ö„Åó„Å¶„Åä„ÅèÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT attribute (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
 
-<!-- nameëÆê´ÇÕÅAattributeóvëfÇ≈íËã`Ç∑ÇÈBeanëÆê´ÇÃëÆê´ñºÇéwíËÇµÇ‹Ç∑ÅB
-serviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÇÕÅAÇ±Ç±Ç≈íËã`Ç∑ÇÈëÆê´ñºÇÃëÆê´Ç…ëŒÇ∑ÇÈsetterÇ
-é¿ëïÇµÇƒÇ®Ç≠Ç©ÅAMapÉCÉìÉ^ÉtÉFÅ[ÉXÇé¿ëïÇ∑ÇÈïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅattributeË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„ÇãBeanÂ±ûÊÄß„ÅÆÂ±ûÊÄßÂêç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+serviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÅØ„ÄÅ„Åì„Åì„ÅßÂÆöÁæ©„Åô„ÇãÂ±ûÊÄßÂêç„ÅÆÂ±ûÊÄß„Å´ÂØæ„Åô„Çãsetter„Çí
+ÂÆüË£Ö„Åó„Å¶„Åä„Åè„Åã„ÄÅMap„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÇíÂÆüË£Ö„Åô„ÇãÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST attribute name CDATA #REQUIRED>
 
-<!-- typeëÆê´ÇÕÅAattributeóvëfÇ≈íËã`Ç∑ÇÈBeanëÆê´ÇÃå^ÇéwíËÇµÇ‹Ç∑ÅB
-serviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÅAnameëÆê´Ç≈íËã`ÇµÇΩëÆê´ñºÇ…ëŒÇ∑ÇÈsetterÇ™ópà”
-Ç≥ÇÍÇƒÇ¢ÇÈèÍçáÇÕÅAè»ó™â¬î\Ç≈Ç∑ÅBíAÇµÅADOMÇÃElementÇÇªÇÃÇ‹Ç‹ê›íËÇµÇΩÇ¢èÍçáÇÕÅA
-Ç±ÇÃëÆê´Ç…ÅA"org.w3c.dom.Element"ÇéwíËÇ∑ÇÈïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
-serviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÅAnameëÆê´Ç≈íËã`ÇµÇΩëÆê´ñºÇ…ëŒÇ∑ÇÈsetterÇ™ópà”
-Ç≥ÇÍÇƒÇ¢Ç»Ç¢èÍçáÇ≈ÅAMapÉCÉìÉ^ÉtÉFÅ[ÉXÇé¿ëïÇµÇƒÇ¢ÇÈèÍçáÇ…ÅAStringå^à»äOÇÃå^Ç≈
-ê›íËÇ∑ÇÈïKóvÇ™Ç†ÇÈèÍçáÇÕÅAÇ±ÇÃëÆê´Ç≈å^ÇíËã`ÇµÇ‹Ç∑ÅB
-Ç‹ÇΩÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ…ÅAnameëÆê´Ç≈íËã`ÇµÇΩëÆê´ñºÇ…ëŒÇ∑ÇÈsetterÇ™
-ópà”Ç≥ÇÍÇƒÇ¢ÇÈèÍçáÇ≈Ç‡ÅAÇªÇÃsetterÇÃà¯êîÇÃå^Ç∆ë„ì¸å›ä∑ÇÃä÷åWÇ…Ç†ÇÈï ÇÃå^Ç≈ê›íË
-ÇµÇΩÇ¢èÍçáÇ»Ç«Ç…Ç‡ÅAÇ±ÇÃëÆê´Ç≈ïKóvÇ»å^ÇíËã`ÇµÇ‹Ç∑ÅB
-éwíËÇµÇΩå^Ç…äYìñÇ∑ÇÈjava.beans.PropertyEditorÇ™ìoò^Ç≥ÇÍÇƒÇ¢Ç»Ç¢èÍçáÇÕÅA
-ílÇ™ê›íËÇ≥ÇÍÇ‹ÇπÇÒÅB
+<!-- typeÂ±ûÊÄß„ÅØ„ÄÅattributeË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„ÇãBeanÂ±ûÊÄß„ÅÆÂûã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+serviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÄÅnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åó„ÅüÂ±ûÊÄßÂêç„Å´ÂØæ„Åô„Çãsetter„ÅåÁî®ÊÑè
+„Åï„Çå„Å¶„ÅÑ„ÇãÂ†¥Âêà„ÅØ„ÄÅÁúÅÁï•ÂèØËÉΩ„Åß„Åô„ÄÇ‰ΩÜ„Åó„ÄÅDOM„ÅÆElement„Çí„Åù„ÅÆ„Åæ„ÅæË®≠ÂÆö„Åó„Åü„ÅÑÂ†¥Âêà„ÅØ„ÄÅ
+„Åì„ÅÆÂ±ûÊÄß„Å´„ÄÅ"org.w3c.dom.Element"„ÇíÊåáÂÆö„Åô„ÇãÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
+serviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÄÅnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åó„ÅüÂ±ûÊÄßÂêç„Å´ÂØæ„Åô„Çãsetter„ÅåÁî®ÊÑè
+„Åï„Çå„Å¶„ÅÑ„Å™„ÅÑÂ†¥Âêà„Åß„ÄÅMap„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÇíÂÆüË£Ö„Åó„Å¶„ÅÑ„ÇãÂ†¥Âêà„Å´„ÄÅStringÂûã‰ª•Â§ñ„ÅÆÂûã„Åß
+Ë®≠ÂÆö„Åô„ÇãÂøÖË¶Å„Åå„ÅÇ„ÇãÂ†¥Âêà„ÅØ„ÄÅ„Åì„ÅÆÂ±ûÊÄß„ÅßÂûã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åæ„Åü„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Å´„ÄÅnameÂ±ûÊÄß„ÅßÂÆöÁæ©„Åó„ÅüÂ±ûÊÄßÂêç„Å´ÂØæ„Åô„Çãsetter„Åå
+Áî®ÊÑè„Åï„Çå„Å¶„ÅÑ„ÇãÂ†¥Âêà„Åß„ÇÇ„ÄÅ„Åù„ÅÆsetter„ÅÆÂºïÊï∞„ÅÆÂûã„Å®‰ª£ÂÖ•‰∫íÊèõ„ÅÆÈñ¢‰øÇ„Å´„ÅÇ„ÇãÂà•„ÅÆÂûã„ÅßË®≠ÂÆö
+„Åó„Åü„ÅÑÂ†¥Âêà„Å™„Å©„Å´„ÇÇ„ÄÅ„Åì„ÅÆÂ±ûÊÄß„ÅßÂøÖË¶Å„Å™Âûã„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+ÊåáÂÆö„Åó„ÅüÂûã„Å´Ë©≤ÂΩì„Åô„Çãjava.beans.PropertyEditor„ÅåÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„Å™„ÅÑÂ†¥Âêà„ÅØ„ÄÅ
+ÂÄ§„ÅåË®≠ÂÆö„Åï„Çå„Åæ„Åõ„Çì„ÄÇ
 -->
 <!ATTLIST attribute type CDATA #IMPLIED>
 
-<!-- nullValueëÆê´ÇÕÅAattributeóvëfÇ≈íËã`Ç∑ÇÈëÆê´ÇÃílÇ™nullÇ≈Ç†ÇÈéñÇéwíËÇµÇ‹Ç∑ÅB
-attributeóvëfÇ™ï\Ç∑ílÇ™nullÇ≈Ç†ÇÈèÍçáÇ…ÅAtrueÇéwíËÇµÇ‹Ç∑ÅB
+<!-- nullValueÂ±ûÊÄß„ÅØ„ÄÅattributeË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„ÇãÂ±ûÊÄß„ÅÆÂÄ§„Åånull„Åß„ÅÇ„Çã‰∫ã„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+attributeË¶ÅÁ¥†„ÅåË°®„ÅôÂÄ§„Åånull„Åß„ÅÇ„ÇãÂ†¥Âêà„Å´„ÄÅtrue„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST attribute nullValue (true|false) "false">
 
-<!-- service-refóvëfÇÕÅAéQè∆Ç∑ÇÈServiceÇÃÉTÅ[ÉrÉXñºÇíËã`ÇµÇ‹Ç∑ÅB
-service-refóvëfÇÃì‡óeÇ…ÅAÉTÅ[ÉrÉXñºÇéwíËÇµÇ‹Ç∑ÅB
+<!-- service-refË¶ÅÁ¥†„ÅØ„ÄÅÂèÇÁÖß„Åô„ÇãService„ÅÆ„Çµ„Éº„Éì„ÇπÂêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+service-refË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅ„Çµ„Éº„Éì„ÇπÂêç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT service-ref (#PCDATA)>
 
-<!-- manager-nameëÆê´ÇÕÅAservice-refóvëfÇ≈íËã`Ç∑ÇÈÉTÅ[ÉrÉXÇ™ìoò^Ç≥ÇÍÇƒÇ¢ÇÈ
-manageróvëfÇÃnameëÆê´ÇéwíËÇ∑ÇÈÅB
-service-refóvëfÇÃêeóvëfÇÃmanagerÇÃéqóvëfÇ…ë∂ç›ÇµÇ»Ç¢serviceóvëf
-ÇéQè∆Ç∑ÇÈèÍçáÇ…ÅAÇªÇÃserviceóvëfÇÃêeóvëfÇ∆Ç»Ç¡ÇƒÇ¢ÇÈmanageróvëfÇÃnameëÆê´Çéw
-íËÇ∑ÇÈÅBìØÇ∂manageróvëfì‡ÇÃserviceóvëfÇéQè∆Ç∑ÇÈèÍçáÇ…ÇÕÅAè»ó™â¬î\Ç≈Ç†ÇÈÅB
+<!-- manager-nameÂ±ûÊÄß„ÅØ„ÄÅservice-refË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„Çã„Çµ„Éº„Éì„Çπ„ÅåÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„Çã
+managerË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÇíÊåáÂÆö„Åô„Çã„ÄÇ
+service-refË¶ÅÁ¥†„ÅÆË¶™Ë¶ÅÁ¥†„ÅÆmanager„ÅÆÂ≠êË¶ÅÁ¥†„Å´Â≠òÂú®„Åó„Å™„ÅÑserviceË¶ÅÁ¥†
+„ÇíÂèÇÁÖß„Åô„ÇãÂ†¥Âêà„Å´„ÄÅ„Åù„ÅÆserviceË¶ÅÁ¥†„ÅÆË¶™Ë¶ÅÁ¥†„Å®„Å™„Å£„Å¶„ÅÑ„ÇãmanagerË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÇíÊåá
+ÂÆö„Åô„Çã„ÄÇÂêå„ÅòmanagerË¶ÅÁ¥†ÂÜÖ„ÅÆserviceË¶ÅÁ¥†„ÇíÂèÇÁÖß„Åô„ÇãÂ†¥Âêà„Å´„ÅØ„ÄÅÁúÅÁï•ÂèØËÉΩ„Åß„ÅÇ„Çã„ÄÇ
 -->
 <!ATTLIST service-ref manager-name CDATA #IMPLIED>
 
-<!-- dependsóvëfÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ™ÅAàÀë∂ÇµÇƒÇ¢ÇÈServiceÇíËã`Çµ
-Ç‹Ç∑ÅB
-dependsóvëfÇÃì‡óeÇ…ÅAServiceÇÃñºëOÇéwíËÇµÇ‹Ç∑ÅB
-Ç‹ÇΩÅAserviceóvëfÇãLèqÇ∑ÇÈéñÇ‡Ç≈Ç´ÇÈÇÃÇ≈ÅAServiceÇÃíËã`Çíºê⁄èëÇ≠éñÇ‡Ç≈Ç´Ç‹Ç∑ÅB
-Ç±ÇÃóvëfÇ™éwíËÇ≥ÇÍÇƒÇ¢ÇÈèÍçáÇÕÅAàÀë∂Ç∑ÇÈServiceÇÃèÛë‘Ç…í«êèÇµÇƒãNìÆÇ≥ÇÍÇ‹Ç∑ÅB
-ëºServiceManagerÇÃServiceÇ…àÀë∂ÇµÇƒÇ¢ÇÈèÍçáÇ…ÇÕÅAÇªÇÃServiceÇ™ãNìÆÇ≥ÇÍÇÈÇ‹Ç≈ÅA
-ë“ã@ÇµÇ‹Ç∑ÅB
-Ç‹ÇΩÅAServiceÇÃí‚é~ãyÇ—îjä¸Ç≈ÇÕÅAàÀë∂Ç≥ÇÍÇƒÇ¢ÇÈServiceÇÃèÛë‘Ç…í«êèÇµÇ≈ÅAí‚é~ÅA
-ãyÇ—îjä¸Ç≥ÇÍÇ‹Ç∑ÅBëºServiceManagerÇÃServiceÇ…àÀë∂Ç≥ÇÍÇƒÇ¢ÇÈèÍçáÇ…ÇÕÅA
-ëºServiceManagerÇÃèÛë‘Ç…ä÷ÇÌÇÁÇ∏ÅAÇªÇÃServiceÇí‚é~ÅAãyÇ—îjä¸ÇµÇ‹Ç∑ÅB
+<!-- dependsË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„Åå„ÄÅ‰æùÂ≠ò„Åó„Å¶„ÅÑ„ÇãService„ÇíÂÆöÁæ©„Åó
+„Åæ„Åô„ÄÇ
+dependsË¶ÅÁ¥†„ÅÆÂÜÖÂÆπ„Å´„ÄÅService„ÅÆÂêçÂâç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+„Åæ„Åü„ÄÅserviceË¶ÅÁ¥†„ÇíË®òËø∞„Åô„Çã‰∫ã„ÇÇ„Åß„Åç„Çã„ÅÆ„Åß„ÄÅService„ÅÆÂÆöÁæ©„ÇíÁõ¥Êé•Êõ∏„Åè‰∫ã„ÇÇ„Åß„Åç„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÅåÊåáÂÆö„Åï„Çå„Å¶„ÅÑ„ÇãÂ†¥Âêà„ÅØ„ÄÅ‰æùÂ≠ò„Åô„ÇãService„ÅÆÁä∂ÊÖã„Å´ËøΩÈöè„Åó„Å¶Ëµ∑Âãï„Åï„Çå„Åæ„Åô„ÄÇ
+‰ªñServiceManager„ÅÆService„Å´‰æùÂ≠ò„Åó„Å¶„ÅÑ„ÇãÂ†¥Âêà„Å´„ÅØ„ÄÅ„Åù„ÅÆService„ÅåËµ∑Âãï„Åï„Çå„Çã„Åæ„Åß„ÄÅ
+ÂæÖÊ©ü„Åó„Åæ„Åô„ÄÇ
+„Åæ„Åü„ÄÅService„ÅÆÂÅúÊ≠¢Âèä„Å≥Á†¥Ê£Ñ„Åß„ÅØ„ÄÅ‰æùÂ≠ò„Åï„Çå„Å¶„ÅÑ„ÇãService„ÅÆÁä∂ÊÖã„Å´ËøΩÈöè„Åó„Åß„ÄÅÂÅúÊ≠¢„ÄÅ
+Âèä„Å≥Á†¥Ê£Ñ„Åï„Çå„Åæ„Åô„ÄÇ‰ªñServiceManager„ÅÆService„Å´‰æùÂ≠ò„Åï„Çå„Å¶„ÅÑ„ÇãÂ†¥Âêà„Å´„ÅØ„ÄÅ
+‰ªñServiceManager„ÅÆÁä∂ÊÖã„Å´Èñ¢„Çè„Çâ„Åö„ÄÅ„Åù„ÅÆService„ÇíÂÅúÊ≠¢„ÄÅÂèä„Å≥Á†¥Ê£Ñ„Åó„Åæ„Åô„ÄÇ
 
-ó·:
+‰æã:
    <service code="hoge.MyService" name="MyService">
       <depends>MyService2</depends>
    </service>
@@ -576,91 +576,91 @@ dependsóvëfÇÃì‡óeÇ…ÅAServiceÇÃñºëOÇéwíËÇµÇ‹Ç∑ÅB
 -->
 <!ELEMENT depends (#PCDATA | service)*>
 
-<!-- manager-nameëÆê´ÇÕÅAdependsóvëfÇ≈íËã`Ç∑ÇÈàÀë∂ÉTÅ[ÉrÉXÇ™ìoò^Ç≥ÇÍÇƒÇ¢ÇÈ
-manageróvëfÇÃnameëÆê´ÇéwíËÇ∑ÇÈÅB
-dependsóvëfÇÃêeóvëfÇÃserviceóvëfÇÃêeóvëfmanagerÇÃéqóvëfÇ…ë∂ç›ÇµÇ»Ç¢serviceóvëf
-ÇéQè∆Ç∑ÇÈèÍçáÇ…ÅAÇªÇÃserviceóvëfÇÃêeóvëfÇ∆Ç»Ç¡ÇƒÇ¢ÇÈmanageróvëfÇÃnameëÆê´Çéw
-íËÇ∑ÇÈÅBìØÇ∂manageróvëfì‡ÇÃserviceóvëfÇdependsÇ∑ÇÈèÍçáÇ…ÇÕÅAè»ó™â¬î\Ç≈Ç†ÇÈÅB
+<!-- manager-nameÂ±ûÊÄß„ÅØ„ÄÅdependsË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åô„Çã‰æùÂ≠ò„Çµ„Éº„Éì„Çπ„ÅåÁôªÈå≤„Åï„Çå„Å¶„ÅÑ„Çã
+managerË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÇíÊåáÂÆö„Åô„Çã„ÄÇ
+dependsË¶ÅÁ¥†„ÅÆË¶™Ë¶ÅÁ¥†„ÅÆserviceË¶ÅÁ¥†„ÅÆË¶™Ë¶ÅÁ¥†manager„ÅÆÂ≠êË¶ÅÁ¥†„Å´Â≠òÂú®„Åó„Å™„ÅÑserviceË¶ÅÁ¥†
+„ÇíÂèÇÁÖß„Åô„ÇãÂ†¥Âêà„Å´„ÄÅ„Åù„ÅÆserviceË¶ÅÁ¥†„ÅÆË¶™Ë¶ÅÁ¥†„Å®„Å™„Å£„Å¶„ÅÑ„ÇãmanagerË¶ÅÁ¥†„ÅÆnameÂ±ûÊÄß„ÇíÊåá
+ÂÆö„Åô„Çã„ÄÇÂêå„ÅòmanagerË¶ÅÁ¥†ÂÜÖ„ÅÆserviceË¶ÅÁ¥†„Çídepends„Åô„ÇãÂ†¥Âêà„Å´„ÅØ„ÄÅÁúÅÁï•ÂèØËÉΩ„Åß„ÅÇ„Çã„ÄÇ
 -->
 <!ATTLIST depends manager-name CDATA #IMPLIED>
 
-<!-- optional-configóvëfÇÕÅAÉÜÅ[ÉUÇ™îCà”ÇÃÉtÉHÅ[É}ÉbÉgÇ≈ServiceÇÃç\ê¨èÓïÒÇíËã`
-ÇµÇ‹Ç∑ÅB
-Ç±Ç±Ç≈ÅAê›íËÇµÇΩèÓïÒÇÕÅAServiceManager#getServiceMetaData(String)Ç≈éÊìæÇ≈Ç´ÇÈ
-ServiceMetaDataÇÃServiceMetaData#getOptionalConfig()Ç≈org.w3c.dom.ElementÇ™éÊìæ
-Ç≈Ç´Ç‹Ç∑ÅB
+<!-- optional-configË¶ÅÁ¥†„ÅØ„ÄÅ„É¶„Éº„Ç∂„Åå‰ªªÊÑè„ÅÆ„Éï„Ç©„Éº„Éû„ÉÉ„Éà„ÅßService„ÅÆÊßãÊàêÊÉÖÂ†±„ÇíÂÆöÁæ©
+„Åó„Åæ„Åô„ÄÇ
+„Åì„Åì„Åß„ÄÅË®≠ÂÆö„Åó„ÅüÊÉÖÂ†±„ÅØ„ÄÅServiceManager#getServiceMetaData(String)„ÅßÂèñÂæó„Åß„Åç„Çã
+ServiceMetaData„ÅÆServiceMetaData#getOptionalConfig()„Åßorg.w3c.dom.Element„ÅåÂèñÂæó
+„Åß„Åç„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT optional-config ANY>
 
-<!-- invokeóvëfÇÕÅAserviceóvëfÇ≈ìoò^Ç∑ÇÈServiceÇ‚objectóvëfÇ≈ê∂ê¨Ç∑ÇÈ
-ÉIÉuÉWÉFÉNÉgÇÃÉÅÉ\ÉbÉhé¿çsëÆê´ÇíËã`ÇµÇ‹Ç∑ÅB
-invokeóvëfÇÃéqóvëfÇ…argumentóvëfÇéwíËÇµÇ‹Ç∑ÅBà¯êîÇ†ÇËÇÃÉÅÉ\ÉbÉhÇé¿çsÇµÇΩÇ¢
-èÍçáÇ…éwíËÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇ™constructoróvëfÇ‹ÇΩÇÕtargetóvëfÇÃéqóvëfÇ∆ÇµÇƒåªÇÍÇÈèÍçáÇÃÇ›ÅAéqóvëfÇ…targetóvëfÇéùÇ¬éñÇ™Ç≈Ç´Ç‹Ç∑ÅBtargetóvëfÇ≈ÇÕÅAåƒÇ—èoÇµëŒè€ÇÃÉIÉuÉWÉFÉNÉgÇéwíËÇµÇ‹Ç∑ÅB
-ServiceÇ‚ÉIÉuÉWÉFÉNÉgÇ…ÇÕÅAäYìñÇ∑ÇÈÉÅÉ\ÉbÉhÇé¿ëïÇµÇƒÇ®Ç≠ïKóvÇ™Ç†ÇËÇ‹Ç∑ÅB
+<!-- invokeË¶ÅÁ¥†„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅßÁôªÈå≤„Åô„ÇãService„ÇÑobjectË¶ÅÁ¥†„ÅßÁîüÊàê„Åô„Çã
+„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆ„É°„ÇΩ„ÉÉ„ÉâÂÆüË°åÂ±ûÊÄß„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+invokeË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†„Å´argumentË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇÂºïÊï∞„ÅÇ„Çä„ÅÆ„É°„ÇΩ„ÉÉ„Éâ„ÇíÂÆüË°å„Åó„Åü„ÅÑ
+Â†¥Âêà„Å´ÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÅåconstructorË¶ÅÁ¥†„Åæ„Åü„ÅØtargetË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†„Å®„Åó„Å¶Áèæ„Çå„ÇãÂ†¥Âêà„ÅÆ„Åø„ÄÅÂ≠êË¶ÅÁ¥†„Å´targetË¶ÅÁ¥†„ÇíÊåÅ„Å§‰∫ã„Åå„Åß„Åç„Åæ„Åô„ÄÇtargetË¶ÅÁ¥†„Åß„ÅØ„ÄÅÂëº„Å≥Âá∫„ÅóÂØæË±°„ÅÆ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
+Service„ÇÑ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„Å´„ÅØ„ÄÅË©≤ÂΩì„Åô„Çã„É°„ÇΩ„ÉÉ„Éâ„ÇíÂÆüË£Ö„Åó„Å¶„Åä„ÅèÂøÖË¶Å„Åå„ÅÇ„Çä„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT invoke (target?, argument*)>
 
-<!-- nameëÆê´ÇÕÅAinvokeóvëfÇ≈é¿çsÇ∑ÇÈÉÅÉ\ÉbÉhñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅinvokeË¶ÅÁ¥†„ÅßÂÆüË°å„Åô„Çã„É°„ÇΩ„ÉÉ„ÉâÂêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST invoke name CDATA #REQUIRED>
 
-<!-- callStateëÆê´ÇÕÅAinvokeóvëfÇ≈é¿çsÇ∑ÇÈÉÅÉ\ÉbÉhÇ™é¿çsÇ≥ÇÍÇÈÉ^ÉCÉ~ÉìÉOÇíËã`ÇµÇ‹Ç∑ÅB
-íAÇµÅAÇ±ÇÃëÆê´ÇÕÅAserviceóvëfÇÃéqóvëfÇ∆ÇµÇƒíËã`ÇµÇΩinvokeóvëfÇ≈ÇÃÇ›óLå¯Ç≈Ç∑ÅB
+<!-- callStateÂ±ûÊÄß„ÅØ„ÄÅinvokeË¶ÅÁ¥†„ÅßÂÆüË°å„Åô„Çã„É°„ÇΩ„ÉÉ„Éâ„ÅåÂÆüË°å„Åï„Çå„Çã„Çø„Ç§„Éü„É≥„Ç∞„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+‰ΩÜ„Åó„ÄÅ„Åì„ÅÆÂ±ûÊÄß„ÅØ„ÄÅserviceË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†„Å®„Åó„Å¶ÂÆöÁæ©„Åó„ÅüinvokeË¶ÅÁ¥†„Åß„ÅÆ„ÅøÊúâÂäπ„Åß„Åô„ÄÇ
 -->
 <!ATTLIST invoke callState (Creating|Created|Starting|Started|Stopping|Stopped|Destorying|Destroyed) "Created">
 
-<!-- targetóvëfÇÕÅAinvokeóvëfÇ≈ÉÅÉ\ÉbÉhåƒÇ—èoÇµÇçsÇ§ëŒè€ÇÃÉIÉuÉWÉFÉNÉgÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- targetË¶ÅÁ¥†„ÅØ„ÄÅinvokeË¶ÅÁ¥†„Åß„É°„ÇΩ„ÉÉ„ÉâÂëº„Å≥Âá∫„Åó„ÇíË°å„ÅÜÂØæË±°„ÅÆ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT target (object | service-ref | invoke | static-invoke | static-field-ref)*>
 
-<!-- static-invokeóvëfÇÕÅAstaticÉÅÉ\ÉbÉhÇÃåƒÇ—èoÇµÇíËã`ÇµÇ‹Ç∑ÅB
-static-invokeóvëfÇÃéqóvëfÇ…argumentóvëfÇéwíËÇµÇ‹Ç∑ÅBà¯êîÇ†ÇËÇÃÉÅÉ\ÉbÉhÇé¿çsÇµÇΩÇ¢
-èÍçáÇ…éwíËÇµÇ‹Ç∑ÅB
+<!-- static-invokeË¶ÅÁ¥†„ÅØ„ÄÅstatic„É°„ÇΩ„ÉÉ„Éâ„ÅÆÂëº„Å≥Âá∫„Åó„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+static-invokeË¶ÅÁ¥†„ÅÆÂ≠êË¶ÅÁ¥†„Å´argumentË¶ÅÁ¥†„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇÂºïÊï∞„ÅÇ„Çä„ÅÆ„É°„ÇΩ„ÉÉ„Éâ„ÇíÂÆüË°å„Åó„Åü„ÅÑ
+Â†¥Âêà„Å´ÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT static-invoke (argument*)>
 
-<!-- codeëÆê´ÇÕÅAstatic-invokeóvëfÇ≈é¿çsÇ∑ÇÈstaticÉÅÉ\ÉbÉhÇ™êÈåæÇ≥ÇÍÇƒÇ¢ÇÈÉNÉâÉXñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- codeÂ±ûÊÄß„ÅØ„ÄÅstatic-invokeË¶ÅÁ¥†„ÅßÂÆüË°å„Åô„Çãstatic„É°„ÇΩ„ÉÉ„Éâ„ÅåÂÆ£Ë®Ä„Åï„Çå„Å¶„ÅÑ„Çã„ÇØ„É©„ÇπÂêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST static-invoke code CDATA #REQUIRED>
 
-<!-- nameëÆê´ÇÕÅAstatic-invokeóvëfÇ≈é¿çsÇ∑ÇÈstaticÉÅÉ\ÉbÉhñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅstatic-invokeË¶ÅÁ¥†„ÅßÂÆüË°å„Åô„Çãstatic„É°„ÇΩ„ÉÉ„ÉâÂêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST static-invoke name CDATA #REQUIRED>
 
-<!-- static-field-refóvëfÇÕÅAstaticÉtÉBÅ[ÉãÉhéQè∆ÇíËã`ÇµÇ‹Ç∑ÅB
-static-field-refóvëfÇÃcodeëÆê´Ç≈ÉNÉâÉXñºÇÅAnameëÆê´Ç≈ÉtÉBÅ[ÉãÉhñºÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- static-field-refË¶ÅÁ¥†„ÅØ„ÄÅstatic„Éï„Ç£„Éº„É´„ÉâÂèÇÁÖß„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+static-field-refË¶ÅÁ¥†„ÅÆcodeÂ±ûÊÄß„Åß„ÇØ„É©„ÇπÂêç„Çí„ÄÅnameÂ±ûÊÄß„Åß„Éï„Ç£„Éº„É´„ÉâÂêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT static-field-ref EMPTY>
 
-<!-- codeëÆê´ÇÕÅAstatic-field-refóvëfÇ≈éQè∆Ç∑ÇÈstaticÉtÉBÅ[ÉãÉhÇ™êÈåæÇ≥ÇÍÇƒÇ¢ÇÈÉNÉâÉXñºÇéwíËÇµÇ‹Ç∑ÅB
+<!-- codeÂ±ûÊÄß„ÅØ„ÄÅstatic-field-refË¶ÅÁ¥†„ÅßÂèÇÁÖß„Åô„Çãstatic„Éï„Ç£„Éº„É´„Éâ„ÅåÂÆ£Ë®Ä„Åï„Çå„Å¶„ÅÑ„Çã„ÇØ„É©„ÇπÂêç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST static-field-ref code CDATA #REQUIRED>
 
-<!-- nameëÆê´ÇÕÅAstatic-field-refóvëfÇ≈éQè∆Ç∑ÇÈstaticÉtÉBÅ[ÉãÉhñºÇéwíËÇµÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅstatic-field-refË¶ÅÁ¥†„ÅßÂèÇÁÖß„Åô„Çãstatic„Éï„Ç£„Éº„É´„ÉâÂêç„ÇíÊåáÂÆö„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST static-field-ref name CDATA #REQUIRED>
 
-<!-- objectóvëfÇÕÅAê∂ê¨Ç∑ÇÈîCà”ÇÃÉIÉuÉWÉFÉNÉgÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±ÇÃóvëfÇ≈íËã`Ç≥ÇÍÇΩÉIÉuÉWÉFÉNÉgÇÕÅAServiceManagerÇ…ÇÕìoò^Ç≥ÇÍÇ»Ç¢ì_Ç™ÅA
-serviceóvëfÇ∆ÇÕàŸÇ»ÇÈì_Ç≈Ç∑ÅB
+<!-- objectË¶ÅÁ¥†„ÅØ„ÄÅÁîüÊàê„Åô„Çã‰ªªÊÑè„ÅÆ„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„ÅÆË¶ÅÁ¥†„ÅßÂÆöÁæ©„Åï„Çå„Åü„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅØ„ÄÅServiceManager„Å´„ÅØÁôªÈå≤„Åï„Çå„Å™„ÅÑÁÇπ„Åå„ÄÅ
+serviceË¶ÅÁ¥†„Å®„ÅØÁï∞„Å™„ÇãÁÇπ„Åß„Åô„ÄÇ
 -->
 <!ELEMENT object (constructor? | field* | attribute* | invoke* | ifdef*)*>
 
-<!-- codeëÆê´ÇÕÅAobjectóvëfÇ≈ê∂ê¨Ç∑ÇÈÉIÉuÉWÉFÉNÉgÇÃé¿ëïÉNÉâÉXñºÇäÆëSèCè¸ñºÇ≈
-íËã`ÇµÇ‹Ç∑ÅB
+<!-- codeÂ±ûÊÄß„ÅØ„ÄÅobjectË¶ÅÁ¥†„ÅßÁîüÊàê„Åô„Çã„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÂÆüË£Ö„ÇØ„É©„ÇπÂêç„ÇíÂÆåÂÖ®‰øÆÈ£æÂêç„Åß
+ÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST object code CDATA #REQUIRED>
 
-<!-- ifdefóvëfÇÕÅAéqóvëfÇóLå¯Ç…Ç∑ÇÈèåèÇÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- ifdefË¶ÅÁ¥†„ÅØ„ÄÅÂ≠êË¶ÅÁ¥†„ÇíÊúâÂäπ„Å´„Åô„ÇãÊù°‰ª∂„Çí„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ELEMENT ifdef ANY>
 
-<!-- nameëÆê´ÇÕÅAèåèÇ∆Ç»ÇÈä¬ã´ïœêîñºÇíËã`ÇµÇ‹Ç∑ÅB
-Ç±Ç±Ç≈åæÇ§ä¬ã´ïœêîÇÕÅAJVMÇÃÉVÉXÉeÉÄÉvÉçÉpÉeÉBÅAserver-propertyóvëfÇ≈éwíËÇµÇΩïœêîÅAmanager-propertyóvëfÇ≈éwíËÇµÇΩïœêîÇéwÇµÇ‹Ç∑ÅB
+<!-- nameÂ±ûÊÄß„ÅØ„ÄÅÊù°‰ª∂„Å®„Å™„ÇãÁí∞Â¢ÉÂ§âÊï∞Âêç„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
+„Åì„Åì„ÅßË®Ä„ÅÜÁí∞Â¢ÉÂ§âÊï∞„ÅØ„ÄÅJVM„ÅÆ„Ç∑„Çπ„ÉÜ„É†„Éó„É≠„Éë„ÉÜ„Ç£„ÄÅserver-propertyË¶ÅÁ¥†„ÅßÊåáÂÆö„Åó„ÅüÂ§âÊï∞„ÄÅmanager-propertyË¶ÅÁ¥†„ÅßÊåáÂÆö„Åó„ÅüÂ§âÊï∞„ÇíÊåá„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST ifdef name CDATA #REQUIRED>
 
-<!-- valueëÆê´ÇÕÅAèåèÇ∆Ç»ÇÈä¬ã´ïœêîílÇíËã`ÇµÇ‹Ç∑ÅB
+<!-- valueÂ±ûÊÄß„ÅØ„ÄÅÊù°‰ª∂„Å®„Å™„ÇãÁí∞Â¢ÉÂ§âÊï∞ÂÄ§„ÇíÂÆöÁæ©„Åó„Åæ„Åô„ÄÇ
 -->
 <!ATTLIST ifdef value CDATA #REQUIRED>

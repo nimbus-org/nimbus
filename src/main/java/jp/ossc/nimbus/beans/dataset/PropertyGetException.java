@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.beans.dataset;
 
 /**
- * ƒvƒƒpƒeƒBæ“¾—áŠOB<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,30 +41,30 @@ public class PropertyGetException extends PropertySchemaException{
     private static final long serialVersionUID = 6578888793462598399L;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema æ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
+     * @param propertySchema å–å¾—ã—ã‚ˆã†ã¨ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
      */
     public PropertyGetException(PropertySchema propertySchema){
         super(propertySchema);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema æ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
-     * @param message ƒƒbƒZ[ƒW
+     * @param propertySchema å–å¾—ã—ã‚ˆã†ã¨ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public PropertyGetException(PropertySchema propertySchema, String message){
         super(propertySchema, message);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema æ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param propertySchema å–å¾—ã—ã‚ˆã†ã¨ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertyGetException(
         PropertySchema propertySchema,
@@ -75,10 +75,10 @@ public class PropertyGetException extends PropertySchemaException{
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema æ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param propertySchema å–å¾—ã—ã‚ˆã†ã¨ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertyGetException(PropertySchema propertySchema, Throwable cause){
         super(propertySchema, cause);

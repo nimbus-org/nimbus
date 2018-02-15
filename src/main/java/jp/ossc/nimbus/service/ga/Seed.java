@@ -32,40 +32,40 @@
 package jp.ossc.nimbus.service.ga;
 
 /**
- * ƒV[ƒhB<p>
+ * ã‚·ãƒ¼ãƒ‰ã€‚<p>
  *
  * @author M.Takata
  */
 public interface Seed{
     
     /**
-     * ˆâ“`î•ñ‚ğæ“¾‚·‚éB<p>
+     * éºä¼æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆâ“`î•ñ
+     * @return éºä¼æƒ…å ±
      */
     public Genom getGenom();
     
     /**
-     * “K‰’l‚ğZo‚·‚éB<p>
+     * é©å¿œå€¤ã‚’ç®—å‡ºã™ã‚‹ã€‚<p>
      *
-     * @param generation ¢‘ã
-     * @exception Exception “K‰’l‚ÌŒvZ‚É¸”s‚µ‚½ê‡
+     * @param generation ä¸–ä»£
+     * @exception Exception é©å¿œå€¤ã®è¨ˆç®—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void fit(Generation generation) throws Exception;
     
     /**
-     * “K‰’l‚ğæ“¾‚·‚éB<p>
+     * é©å¿œå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “K‰’l
+     * @return é©å¿œå€¤
      * @see #fit(Generation)
      */
     public Number getFitness();
     
     /**
-     * ‚±‚ÌƒV[ƒh‚Ì•¡»‚ğì¬‚·‚éB<p>
-     * •¡»‚³‚ê‚½ƒV[ƒh‚ÍA“K‰’l‚ÍƒNƒŠƒA‚³‚ê‚éB<br>
+     * ã“ã®ã‚·ãƒ¼ãƒ‰ã®è¤‡è£½ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * è¤‡è£½ã•ã‚ŒãŸã‚·ãƒ¼ãƒ‰ã¯ã€é©å¿œå€¤ã¯ã‚¯ãƒªã‚¢ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return •¡»‚³‚ê‚½ƒV[ƒh
+     * @return è¤‡è£½ã•ã‚ŒãŸã‚·ãƒ¼ãƒ‰
      */
     public Seed cloneSeed();
 }

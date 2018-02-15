@@ -54,7 +54,7 @@ import jp.ossc.nimbus.service.publish.MessageException;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * TCPƒvƒƒgƒRƒ‹—p‚ÌƒƒbƒZ[ƒWƒNƒ‰ƒXB<p>
+ * TCPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

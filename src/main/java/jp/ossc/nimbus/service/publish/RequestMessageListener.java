@@ -32,21 +32,21 @@
 package jp.ossc.nimbus.service.publish;
 
 /**
- * —v‹ƒƒbƒZ[ƒWƒŠƒXƒiƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚¹ãƒŠã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface RequestMessageListener extends MessageListener{
     
     /**
-     * —v‹ƒƒbƒZ[ƒW‚ğóM‚µ‚ÄA‰“šƒƒbƒZ[ƒW‚ğ•Ô‚·B<br>
+     * è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ã¦ã€å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿”ã™ã€‚<br>
      *
-     * @param sourceId ‘—MŒ³ID
-     * @param sequence ’Ê”Ô
-     * @param message —v‹ƒƒbƒZ[ƒW
-     * @param responseSubject ‰“šƒTƒuƒWƒFƒNƒg
-     * @param responseKey ‰“šƒL[
-     * @return ‰“šƒƒbƒZ[ƒW
+     * @param sourceId é€ä¿¡å…ƒID
+     * @param sequence é€šç•ª
+     * @param message è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param responseSubject å¿œç­”ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param responseKey å¿œç­”ã‚­ãƒ¼
+     * @return å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public Message onRequestMessage(Object sourceId, int sequence, Message message, String responseSubject, String responseKey);
 }

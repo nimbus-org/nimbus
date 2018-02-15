@@ -34,10 +34,10 @@ package jp.ossc.nimbus.service.keepalive.smtp;
 import jp.ossc.nimbus.service.keepalive.KeepAliveChecker;
 
 /**
- * SMTPƒT[ƒoƒ`ƒFƒbƒJ[ƒCƒ“ƒ^[ƒtƒFƒCƒXB<p>
+ * SMTPã‚µãƒ¼ãƒãƒã‚§ãƒƒã‚«ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚<p>
  *
  * @author H.Nakano
- * @version  1.00 ì¬: 2003/10/09 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/09 -ã€€H.Nakano
  */
 public interface SmtpKeepAliveChecker extends KeepAliveChecker{
     public String getHostIp();

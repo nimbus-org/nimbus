@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer;
 
 /**
- * ”z—ñƒIƒuƒWƒFƒNƒg‚ğ”CˆÓ‚ÌƒZƒpƒŒ[ƒ^‹æØ‚è‚Ì•¶š—ñ‚É•ÏŠ·‚·‚é{@link WritableElement}À‘•ƒNƒ‰ƒXB<p>
+ * é…åˆ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä»»æ„ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹{@link WritableElement}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,34 +41,34 @@ public class ArraySimpleElement extends SimpleElement {
     private static final long serialVersionUID = -569975982814446827L;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒZƒpƒŒ[ƒ^B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã€‚<p>
      */
     public static final String DEFAULT_SEPARATOR = ",";
     
     private String separator = DEFAULT_SEPARATOR;
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param sep ƒZƒpƒŒ[ƒ^
+     * @param sep ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setSeparator(String sep){
         separator = sep;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒZƒpƒŒ[ƒ^
+     * @return ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public String getSeparator(){
         return separator;
     }
     
     /**
-     * ‚±‚Ì—v‘f(”z—ñ)‚Ì’l‚ğ”CˆÓ‚ÌƒZƒpƒŒ[ƒ^‹æØ‚è‚Å—…—ñ‚µ‚½‚à‚Ì‚É‚µ‚Äæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ (é…åˆ—)ã®å€¤ã‚’ä»»æ„ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã§ç¾…åˆ—ã—ãŸã‚‚ã®ã«ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì—v‘f(”z—ñ)‚Ì’l‚ğ”CˆÓ‚ÌƒZƒpƒŒ[ƒ^‹æØ‚è‚Å—…—ñ‚µ‚½‚à‚Ì
+     * @return ã“ã®è¦ç´ (é…åˆ—)ã®å€¤ã‚’ä»»æ„ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã§ç¾…åˆ—ã—ãŸã‚‚ã®
      */
     public String toString(){
         if(mValue == null || !mValue.getClass().isArray()){
@@ -87,10 +87,10 @@ public class ArraySimpleElement extends SimpleElement {
     }
     
     /**
-     * ‚±‚Ì—v‘f(”z—ñ)‚Ì’l‚ğ”CˆÓ‚ÌƒZƒpƒŒ[ƒ^‹æØ‚è‚Å—…—ñ‚µ‚½‚à‚Ì‚É‚µ‚Äæ“¾‚·‚éB<p>
-     * {@link #toString()}‚Æ“¯‚¶’l‚ğ•Ô‚·B<br>
+     * ã“ã®è¦ç´ (é…åˆ—)ã®å€¤ã‚’ä»»æ„ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã§ç¾…åˆ—ã—ãŸã‚‚ã®ã«ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #toString()}ã¨åŒã˜å€¤ã‚’è¿”ã™ã€‚<br>
      * 
-     * @return ‚±‚Ì—v‘f(”z—ñ)‚Ì’l‚ğ”CˆÓ‚ÌƒZƒpƒŒ[ƒ^‹æØ‚è‚Å—…—ñ‚µ‚½‚à‚Ì
+     * @return ã“ã®è¦ç´ (é…åˆ—)ã®å€¤ã‚’ä»»æ„ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿åŒºåˆ‡ã‚Šã§ç¾…åˆ—ã—ãŸã‚‚ã®
      */
     public Object toObject(){
         return toString();

@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ”šƒRƒ“ƒo[ƒ^B<p>
+ * æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * <table border=5>
- *     <tr><th>”¼Šp”š</th><th>‘SŠp”š</th></tr>
- *     <tr><td>0</td><td>‚O</td></tr>
- *     <tr><td>1</td><td>‚P</td></tr>
- *     <tr><td>2</td><td>‚Q</td></tr>
- *     <tr><td>3</td><td>‚R</td></tr>
- *     <tr><td>4</td><td>‚S</td></tr>
- *     <tr><td>5</td><td>‚T</td></tr>
- *     <tr><td>6</td><td>‚U</td></tr>
- *     <tr><td>7</td><td>‚V</td></tr>
- *     <tr><td>8</td><td>‚W</td></tr>
- *     <tr><td>9</td><td>‚X</td></tr>
+ *     <tr><th>åŠè§’æ•°å­—</th><th>å…¨è§’æ•°å­—</th></tr>
+ *     <tr><td>0</td><td>ï¼</td></tr>
+ *     <tr><td>1</td><td>ï¼‘</td></tr>
+ *     <tr><td>2</td><td>ï¼’</td></tr>
+ *     <tr><td>3</td><td>ï¼“</td></tr>
+ *     <tr><td>4</td><td>ï¼”</td></tr>
+ *     <tr><td>5</td><td>ï¼•</td></tr>
+ *     <tr><td>6</td><td>ï¼–</td></tr>
+ *     <tr><td>7</td><td>ï¼—</td></tr>
+ *     <tr><td>8</td><td>ï¼˜</td></tr>
+ *     <tr><td>9</td><td>ï¼™</td></tr>
  * </table>
  *
  * @author M.Takata
@@ -55,32 +55,32 @@ public class NumberCharacterConverter extends HankakuZenkakuCharacterConverter
     private static final long serialVersionUID = 7420253969574101704L;
     
     /**
-     * [”¼Šp”š][‘SŠp”š] ‚Ì”z—ñB
+     * [åŠè§’æ•°å­—][å…¨è§’æ•°å­—] ã®é…åˆ—ã€‚
      */
     protected final static char CONV_CHARS[][] = {
-        {'\u0030','\uFF10'}, // ‚O
-        {'\u0031','\uFF11'}, // ‚P
-        {'\u0032','\uFF12'}, // ‚Q
-        {'\u0033','\uFF13'}, // ‚R
-        {'\u0034','\uFF14'}, // ‚S
-        {'\u0035','\uFF15'}, // ‚T
-        {'\u0036','\uFF16'}, // ‚U
-        {'\u0037','\uFF17'}, // ‚V
-        {'\u0038','\uFF18'}, // ‚W
-        {'\u0039','\uFF19'}  // ‚X
+        {'\u0030','\uFF10'}, // ï¼
+        {'\u0031','\uFF11'}, // ï¼‘
+        {'\u0032','\uFF12'}, // ï¼’
+        {'\u0033','\uFF13'}, // ï¼“
+        {'\u0034','\uFF14'}, // ï¼”
+        {'\u0035','\uFF15'}, // ï¼•
+        {'\u0036','\uFF16'}, // ï¼–
+        {'\u0037','\uFF17'}, // ï¼—
+        {'\u0038','\uFF18'}, // ï¼˜
+        {'\u0039','\uFF19'}  // ï¼™
     };
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·í•Ê‚Ì”šƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ç¨®åˆ¥ã®æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public NumberCharacterConverter(){
         super(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * ”šƒRƒ“ƒo[ƒ^[‚ğ¶¬‚µ‚Ü‚·B
+     * æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see HankakuZenkakuCharacterConverter#HANKAKU_TO_ZENKAKU
      * @see HankakuZenkakuCharacterConverter#ZENKAKU_TO_HANKAKU
      */
@@ -89,7 +89,7 @@ public class NumberCharacterConverter extends HankakuZenkakuCharacterConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return {@link #CONV_CHARS}
      */

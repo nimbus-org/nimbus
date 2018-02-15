@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * •¶š—ñ•ÒWƒRƒ“ƒo[ƒ^B<p>
+ * æ–‡å­—åˆ—ç·¨é›†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -49,27 +49,27 @@ public class StringEditConverter
     private boolean isIgnoreArrayIndexOutOfBounds;
     
     /**
-     * ƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param trim ƒgƒŠƒ€‚·‚éê‡true
+     * @param trim ãƒˆãƒªãƒ ã™ã‚‹å ´åˆtrue
      */
     public void setTrim(boolean trim){
         isTrim = trim;
     }
     
     /**
-     * ƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒgƒŠƒ€‚·‚é
+     * @return trueã®å ´åˆã€ãƒˆãƒªãƒ ã™ã‚‹
      */
     public boolean isTrim(){
         return isTrim;
     }
     
     /**
-     * ¬•¶š‚É•ÏŠ·‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * å°æ–‡å­—ã«å¤‰æ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param lower ¬•¶š‚É•ÏŠ·‚·‚éê‡true
+     * @param lower å°æ–‡å­—ã«å¤‰æ›ã™ã‚‹å ´åˆtrue
      */
     public void setToLowerCase(boolean lower){
         isToLowerCase = lower;
@@ -79,18 +79,18 @@ public class StringEditConverter
     }
     
     /**
-     * ¬•¶š‚É•ÏŠ·‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å°æ–‡å­—ã«å¤‰æ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A¬•¶š‚É•ÏŠ·‚·‚é
+     * @return trueã®å ´åˆã€å°æ–‡å­—ã«å¤‰æ›ã™ã‚‹
      */
     public boolean isToLowerCase(){
         return isToLowerCase;
     }
     
     /**
-     * ‘å•¶š‚É•ÏŠ·‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param upper ‘å•¶š‚É•ÏŠ·‚·‚éê‡true
+     * @param upper å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹å ´åˆtrue
      */
     public void setToUpperCase(boolean upper){
         isToUpperCase = upper;
@@ -100,81 +100,81 @@ public class StringEditConverter
     }
     
     /**
-     * ‘å•¶š‚É•ÏŠ·‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘å•¶š‚É•ÏŠ·‚·‚é
+     * @return trueã®å ´åˆã€å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹
      */
     public boolean isToUpperCase(){
         return isToUpperCase;
     }
     
     /**
-     * “ª•¶š‚ğ‘å•¶š‚É•ÏŠ·‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param capitalize “ª•¶š‚ğ‘å•¶š‚É•ÏŠ·‚·‚éê‡true
+     * @param capitalize é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹å ´åˆtrue
      */
     public void setToCapitalize(boolean capitalize){
         isToCapitalize = capitalize;
     }
     
     /**
-     * “ª•¶š‚ğ‘å•¶š‚É•ÏŠ·‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A“ª•¶š‚ğ‘å•¶š‚É•ÏŠ·‚·‚é
+     * @return trueã®å ´åˆã€é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«å¤‰æ›ã™ã‚‹
      */
     public boolean isToCapitalize(){
         return isToCapitalize;
     }
     
     /**
-     * •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌŠJnˆÊ’u‚ğİ’è‚·‚éB<p>
+     * éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®é–‹å§‹ä½ç½®ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌŠJnˆÊ’u
+     * @param index éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®é–‹å§‹ä½ç½®
      */
     public void setStartIndex(int index){
         startIndex = index;
     }
     
     /**
-     * •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌŠJnˆÊ’u‚ğæ“¾‚·‚éB<p>
+     * éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®é–‹å§‹ä½ç½®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌŠJnˆÊ’u
+     * @return éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®é–‹å§‹ä½ç½®
      */
     public int getStartIndex(){
         return startIndex;
     }
     
     /**
-     * •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌI—¹ˆÊ’u‚ğİ’è‚·‚éB<p>
+     * éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®çµ‚äº†ä½ç½®ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌI—¹ˆÊ’u
+     * @param index éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®çµ‚äº†ä½ç½®
      */
     public void setEndIndex(int index){
         endIndex = index;
     }
     
     /**
-     * •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌI—¹ˆÊ’u‚ğæ“¾‚·‚éB<p>
+     * éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®çµ‚äº†ä½ç½®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •”•ª•¶š—ñ‚É‚·‚é‚½‚ß‚ÌI—¹ˆÊ’u
+     * @return éƒ¨åˆ†æ–‡å­—åˆ—ã«ã™ã‚‹ãŸã‚ã®çµ‚äº†ä½ç½®
      */
     public int getEndIndex(){
         return endIndex;
     }
     
     /**
-     * w’è‚³‚ê‚½•”•ª•¶š—ñ‚É–‚½‚È‚¢ê‡‚ÉA—áŠO‚ğ”­¶‚³‚¹‚È‚¢‚æ‚¤‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸéƒ¨åˆ†æ–‡å­—åˆ—ã«æº€ãŸãªã„å ´åˆã«ã€ä¾‹å¤–ã‚’ç™ºç”Ÿã•ã›ãªã„ã‚ˆã†ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isIgnore —áŠO‚ğ”­¶‚³‚¹‚È‚¢‚æ‚¤‚É‚·‚éê‡true
+     * @param isIgnore ä¾‹å¤–ã‚’ç™ºç”Ÿã•ã›ãªã„ã‚ˆã†ã«ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreArrayIndexOutOfBounds(boolean isIgnore){
         isIgnoreArrayIndexOutOfBounds = isIgnore;
     }
     
     /**
-     * w’è‚³‚ê‚½•”•ª•¶š—ñ‚É–‚½‚È‚¢ê‡‚ÉA—áŠO‚ğ”­¶‚³‚¹‚È‚¢‚æ‚¤‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸéƒ¨åˆ†æ–‡å­—åˆ—ã«æº€ãŸãªã„å ´åˆã«ã€ä¾‹å¤–ã‚’ç™ºç”Ÿã•ã›ãªã„ã‚ˆã†ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return —áŠO‚ğ”­¶‚³‚¹‚È‚¢‚æ‚¤‚É‚·‚éê‡true
+     * @return ä¾‹å¤–ã‚’ç™ºç”Ÿã•ã›ãªã„ã‚ˆã†ã«ã™ã‚‹å ´åˆtrue
      */
     public boolean isIgnoreArrayIndexOutOfBounds(){
         return isIgnoreArrayIndexOutOfBounds;

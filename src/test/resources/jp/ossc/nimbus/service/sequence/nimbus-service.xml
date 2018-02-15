@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <server>
     <default-log>
@@ -10,7 +10,7 @@
     </default-log>
     <manager name="tstruts">
 <!--
-ƒT[ƒrƒX‚ðMBeanServer‚É“o˜^‚µ‚½‚¢ê‡‚ÉŽw’è‚·‚éB
+ã‚µãƒ¼ãƒ“ã‚¹ã‚’MBeanServerã«ç™»éŒ²ã—ãŸã„å ´åˆã«æŒ‡å®šã™ã‚‹ã€‚
 -->
         <service code="jp.ossc.nimbus.service.sequence.StringSequenceService" name="seq">
             <attribute name="format">

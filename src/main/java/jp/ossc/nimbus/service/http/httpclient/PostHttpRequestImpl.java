@@ -38,28 +38,28 @@ import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.*;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTP POSTƒŠƒNƒGƒXƒgB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTP POSTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class PostHttpRequestImpl extends HttpRequestImpl{
     
     /**
-     * {@link PostMethod}‚ğ¶¬‚·‚éB<p>
+     * {@link PostMethod}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
      * @return PostMethod
-     * @exception Exception PostMethod‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception PostMethodã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected HttpMethodBase instanciateHttpMethod() throws Exception{
         return new PostMethod();
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param params ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
-     * @exception Exception ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @exception Exception ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initParameter(
         HttpMethodBase method,
@@ -87,11 +87,11 @@ public class PostHttpRequestImpl extends HttpRequestImpl{
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚©‚ç“Ç‚İ‚ñ‚¾ƒf[ƒ^‚ğƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB‚Æ‚µ‚Äo—Í‚·‚éB<p>
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception Exception ƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒBo—Í‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initInputStream(
         HttpMethodBase method,

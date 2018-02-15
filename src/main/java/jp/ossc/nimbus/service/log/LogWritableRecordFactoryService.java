@@ -36,45 +36,45 @@ import jp.ossc.nimbus.service.writer.WritableElement;
 import jp.ossc.nimbus.service.writer.WritableRecordFactoryService;
 
 /**
- *	LogWritableRecordƒtƒ@ƒNƒgƒŠ
- *  postCreateElementƒƒ\ƒbƒh‚ğƒI[ƒo[ƒ‰ƒCƒh‚µA
- *  “ú•tŒ^‚ÌWritableElement‚É‘Î‚µ‚ÄAƒtƒH[ƒ}ƒbƒg
- *  •¶š—ñ‚ğİ’è‚·‚é‚æ‚¤‚É‚·‚éB“ú•tŒ^—v‘f‚ÌsetFormat(String)
- *  ƒƒ\ƒbƒh‚ğ’@‚­‚Ì‚ÅA“ú•tŒ^‚Ì—v‘f‚Æ‚µ‚ÄADateElement
- *  ˆÈŠO‚ÌƒNƒ‰ƒX‚ğg‚¤ê‡‚É‚ÍAsetFormat(String)ƒƒ\ƒbƒh‚ğÀ‘•
- *  ‚·‚é‚±‚ÆB
+ *	LogWritableRecordãƒ•ã‚¡ã‚¯ãƒˆãƒª
+ *  postCreateElementãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã€
+ *  æ—¥ä»˜å‹ã®WritableElementã«å¯¾ã—ã¦ã€ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
+ *  æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚æ—¥ä»˜å‹è¦ç´ ã®setFormat(String)
+ *  ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å©ãã®ã§ã€æ—¥ä»˜å‹ã®è¦ç´ ã¨ã—ã¦ã€DateElement
+ *  ä»¥å¤–ã®ã‚¯ãƒ©ã‚¹ã‚’ä½¿ã†å ´åˆã«ã¯ã€setFormat(String)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…
+ *  ã™ã‚‹ã“ã¨ã€‚
  * 
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/02| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/02ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class LogWritableRecordFactoryService extends WritableRecordFactoryService {
 	
     private static final long serialVersionUID = -4184045351990790021L;
     
-    //ƒƒ“ƒo•Ï”
-	/** “ú•tƒtƒH[ƒ}ƒbƒg•¶š—ñ */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ— */
 	private String mDateFormat;
-	/** postCreateElementƒƒ\ƒbƒh‚Ìˆ—‘ÎÛ‚Å‚ ‚é‚©i“ú•tŒ^‚©‚Ç‚¤‚©j¯•Ê‚·‚éƒL[ */
+	/** postCreateElementãƒ¡ã‚½ãƒƒãƒ‰ã®å‡¦ç†å¯¾è±¡ã§ã‚ã‚‹ã‹ï¼ˆæ—¥ä»˜å‹ã‹ã©ã†ã‹ï¼‰è­˜åˆ¥ã™ã‚‹ã‚­ãƒ¼ */
 	static final String DATE_KEY = LogServiceMBean.FORMAT_DATE_KEY;
 	/**
-	 * “ú•tƒtƒH[ƒ}ƒbƒg‚ÌƒZƒbƒ^[
+	 * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚»ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public void setDateFormat(String fmt){
 		mDateFormat = fmt;
 	}
 	/**
-	 * ƒtƒH[ƒ}ƒbƒg‚ÌƒZƒbƒ^[ <BR>
-	 * ƒL[ƒ[ƒh‚Í%‚ÅˆÍ‚ŞB<BR>
-	 * ƒL[ƒ[ƒh<BR>
-	 * “ú•t:D <BR>
-	 * ƒƒbƒZ[ƒWƒR[ƒh:CODE <BR>
-	 * —Dæ“x(DEBUG,INFO“™):PRIO <BR>
-	 * ƒƒbƒZ[ƒW:MSG <BR>
-	 * ƒAƒvƒŠƒP[ƒVƒ‡ƒ“w’è’Ê”Ô:SEQ <BR>
-	 * ƒJƒeƒSƒŠ:CAT <BR>
-	 * —á <BR>
+	 * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚»ãƒƒã‚¿ãƒ¼ <BR>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¯%ã§å›²ã‚€ã€‚<BR>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰<BR>
+	 * æ—¥ä»˜:D <BR>
+	 * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰:CODE <BR>
+	 * å„ªå…ˆåº¦(DEBUG,INFOç­‰):PRIO <BR>
+	 * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:MSG <BR>
+	 * ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æŒ‡å®šé€šç•ª:SEQ <BR>
+	 * ã‚«ãƒ†ã‚´ãƒª:CAT <BR>
+	 * ä¾‹ <BR>
 	 * "%D%,%CODE%,%PRIO%,%MSG%,%SEQ%,%CAT%"
 	 */
 	public void setFormat(String fmt){
@@ -92,13 +92,13 @@ public class LogWritableRecordFactoryService extends WritableRecordFactoryServic
 	}
 	
 	/**
-	 *  createElement‚Ì’¼Œã‚ÉƒR[ƒ‹‚³‚ê‚éƒƒ\ƒbƒh
-	 *  WritableRecordFactory‚Ì‹óÀ‘•‚ğƒI[ƒo[ƒ‰ƒCƒh
-	 *  “ú•tŒ^‚ª¶¬‚³‚ê‚½ê‡A“ú•tŒ^‚ÌsetFormat(String)ƒƒ\ƒbƒh‚ğÀs‚·‚éB
+	 *  createElementã®ç›´å¾Œã«ã‚³ãƒ¼ãƒ«ã•ã‚Œã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+	 *  WritableRecordFactoryã®ç©ºå®Ÿè£…ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	 *  æ—¥ä»˜å‹ãŒç”Ÿæˆã•ã‚ŒãŸå ´åˆã€æ—¥ä»˜å‹ã®setFormat(String)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 	 */
 	protected void postCreateElement(WritableElement elem){
 		if(mDateFormat != null && elem != null && DATE_KEY.equals(elem.getKey())){
-			//DateElementŒ^‚ÉƒLƒƒƒXƒg‚µ‚ÄAsetFormat‚·‚éB
+			//DateElementå‹ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦ã€setFormatã™ã‚‹ã€‚
 			((DateElement)elem).setFormat(mDateFormat);
 		}
 	}

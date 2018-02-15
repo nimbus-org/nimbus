@@ -38,9 +38,9 @@ import jp.ossc.nimbus.service.proxy.RemoteServerInvoker;
 import jp.ossc.nimbus.service.proxy.RemoteServiceCallException;
 
 /**
- * ƒŠƒ‚[ƒgƒNƒ‰ƒCƒAƒ“ƒgEJBŒÄ‚Ño‚µInvokerB<p>
- * EJBŒo—R‚ÅAƒŠƒ‚[ƒgƒT[ƒoã‚ÌƒT[ƒrƒX‚ğŒÄ‚Ño‚·‚½‚ß‚ÌInvoker‚Å‚ ‚éB<br>
- * ƒŠƒ‚[ƒgƒT[ƒo‘¤‚ÉA{@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ªƒfƒvƒƒC‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B]‚Á‚ÄA{@link jp.ossc.nimbus.service.proxy.RemoteServiceServerSessionBean RemoteServiceServerSessionBean}‚ğƒŠƒ‚[ƒgƒT[ƒo‘¤‚ÉAƒfƒvƒƒC‚µ‚Ä‚¨‚­B<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆEJBå‘¼ã³å‡ºã—Invokerã€‚<p>
+ * EJBçµŒç”±ã§ã€ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒä¸Šã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®Invokerã§ã‚ã‚‹ã€‚<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒå´ã«ã€{@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBãŒãƒ‡ãƒ—ãƒ­ã‚¤ã•ã‚Œã¦ã„ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚å¾“ã£ã¦ã€{@link jp.ossc.nimbus.service.proxy.RemoteServiceServerSessionBean RemoteServiceServerSessionBean}ã‚’ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒå´ã«ã€ãƒ‡ãƒ—ãƒ­ã‚¤ã—ã¦ãŠãã€‚<br>
  *
  * @author M.Takata
  */
@@ -55,46 +55,46 @@ public class RemoteClientEJBCallInvokerService extends ServiceBase
     private String jndiName;
     private ServiceName remoteServiceName;
     
-    // RemoteClientEJBCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientEJBCallInvokerServiceMBeanã®JavaDoc
     public void setEJBFactoryServiceName(ServiceName name){
         ejbFactoryServiceName = name;
     }
-    // RemoteClientEJBCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientEJBCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getEJBFactoryServiceName(){
         return ejbFactoryServiceName;
     }
     
-    // RemoteClientEJBCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientEJBCallInvokerServiceMBeanã®JavaDoc
     public void setRemoteServerEJBJndiName(String name){
         jndiName = name;
     }
-    // RemoteClientEJBCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientEJBCallInvokerServiceMBeanã®JavaDoc
     public String getRemoteServerEJBJndiName(){
         return jndiName;
     }
     
-    // RemoteClientEJBCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientEJBCallInvokerServiceMBeanã®JavaDoc
     public void setRemoteServiceName(ServiceName name){
         remoteServiceName = name;
     }
-    // RemoteClientEJBCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientEJBCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getRemoteServiceName(){
         return remoteServiceName;
     }
     
     /**
-     * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param ejbFactory EJBFactoryƒT[ƒrƒX
+     * @param ejbFactory EJBFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setEjbFactory(EJBFactory ejbFactory) {
         this.ejbFactory = ejbFactory;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(ejbFactoryServiceName != null){
@@ -115,11 +115,11 @@ public class RemoteClientEJBCallInvokerService extends ServiceBase
     }
     
     /**
-     * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ğŒÄ‚Ño‚·B<p>
+     * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBã‚’å‘¼ã³å‡ºã™ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final MethodInvocationContext methodContext

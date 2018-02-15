@@ -49,8 +49,8 @@ import jp.ossc.nimbus.util.net.ServerSocketFactory;
 import jp.ossc.nimbus.util.net.SocketFactory;
 
 /**
- * ƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒoƒT[ƒrƒXB<p>
- * TCPƒ\ƒPƒbƒg’ÊM‚ğs‚¢ƒŠƒNƒGƒXƒg‚ğó‚¯•t‚¯A{@link QueueHandlerContainer}‚É{@link RequestContext}‚ğ“Š“ü‚µ‚ÄAˆ—‚ğˆË—Š‚µA‰“š‚ğ•Ô‚·B<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * TCPã‚½ã‚±ãƒƒãƒˆé€šä¿¡ã‚’è¡Œã„ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘ä»˜ã‘ã€{@link QueueHandlerContainer}ã«{@link RequestContext}ã‚’æŠ•å…¥ã—ã¦ã€å‡¦ç†ã‚’ä¾é ¼ã—ã€å¿œç­”ã‚’è¿”ã™ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -85,92 +85,92 @@ public class DefaultServerService extends ServiceBase implements DefaultServerSe
     
     private Daemon dispatchDaemon;
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setHostName(String name){
         hostName = name;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public String getHostName(){
         return hostName;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setPort(int port){
         this.port = port;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public int getPort(){
         return port;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setReuseAddress(boolean isReuse){
         isReuseAddress = isReuse;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public boolean isReuseAddress(){
         return isReuseAddress;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setReceiveBufferSize(int size){
         receiveBufferSize = size;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public int getReceiveBufferSize(){
         return receiveBufferSize;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setSoTimeout(int timeout){
         soTimeout = timeout;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public int getSoTimeout(){
         return soTimeout;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setQueueHandlerContainerServiceName(ServiceName name){
         queueHandlerContainerServiceName = name;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public ServiceName getQueueHandlerContainerServiceName(){
         return queueHandlerContainerServiceName;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setServerSocketFactoryServiceName(ServiceName name){
         serverSocketFactoryServiceName = name;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public ServiceName getServerSocketFactoryServiceName(){
         return serverSocketFactoryServiceName;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setSocketFactoryServiceName(ServiceName name){
         socketFactoryServiceName = name;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public ServiceName getSocketFactoryServiceName(){
         return socketFactoryServiceName;
     }
     
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public void setHandleAccept(boolean isHandle){
         isHandleAccept = isHandle;
     }
-    // DefaultServerServiceMBean‚ÌJavaDoc
+    // DefaultServerServiceMBeanã®JavaDoc
     public boolean isHandleAccept(){
         return isHandleAccept;
     }

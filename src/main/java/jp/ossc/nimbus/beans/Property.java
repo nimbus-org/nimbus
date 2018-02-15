@@ -34,128 +34,128 @@ package jp.ossc.nimbus.beans;
 import java.lang.reflect.*;
 
 /**
- * Bean�̃v���p�e�B�ɔėp�I�ɃA�N�Z�X���邽�߂̃C���^�t�F�[�X�B<p>
+ * Beanのプロパティに汎用的にアクセスするためのインタフェース。<p>
  *
  * @author M.Takata
  */
 public interface Property{
     
     /**
-     * ���̃v���p�e�B���\���v���p�e�B�����擾����B<p>
+     * このプロパティが表すプロパティ名を取得する。<p>
      *
-     * @return �v���p�e�B��
+     * @return プロパティ名
      */
     public String getPropertyName();
     
     /**
-     * �w�肵���I�u�W�F�N�g�̃N���X����A���̃v���p�e�B���\���v���p�e�B�^���擾����B<p>
+     * 指定したオブジェクトのクラスから、このプロパティが表すプロパティ型を取得する。<p>
      *
-     * @param clazz �ΏۂƂȂ�Bean�̃N���X
-     * @return �v���p�e�B�^
-     * @exception NoSuchPropertyException �w�肳�ꂽBean���A���̃v���p�e�B���\���A�N�Z�X�\�ȃv���p�e�B�������Ă��Ȃ��ꍇ
-     * @exception InvocationTargetException �w�肳�ꂽBean�̃A�N�Z�T���Ăяo�������ʁA��O��throw���ꂽ�ꍇ
+     * @param clazz 対象となるBeanのクラス
+     * @return プロパティ型
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
     public Class getPropertyType(Class clazz) throws NoSuchPropertyException;
     
     /**
-     * �w�肵���I�u�W�F�N�g����A���̃v���p�e�B���\���v���p�e�B�^���擾����B<p>
+     * 指定したオブジェクトから、このプロパティが表すプロパティ型を取得する。<p>
      *
-     * @param obj �ΏۂƂȂ�Bean
-     * @return �v���p�e�B�^
-     * @exception NoSuchPropertyException �w�肳�ꂽBean���A���̃v���p�e�B���\���A�N�Z�X�\�ȃv���p�e�B�������Ă��Ȃ��ꍇ
-     * @exception InvocationTargetException �w�肳�ꂽBean�̃A�N�Z�T���Ăяo�������ʁA��O��throw���ꂽ�ꍇ
+     * @param obj 対象となるBean
+     * @return プロパティ型
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
     public Class getPropertyType(Object obj)
      throws NoSuchPropertyException, InvocationTargetException;
     
     /**
-     * �w�肵���I�u�W�F�N�g����A���̃v���p�e�B���\���v���p�e�B�l���擾����B<p>
+     * 指定したオブジェクトから、このプロパティが表すプロパティ値を取得する。<p>
      *
-     * @param obj �ΏۂƂȂ�Bean
-     * @return �v���p�e�B�l
-     * @exception NoSuchPropertyException �w�肳�ꂽBean���A���̃v���p�e�B���\���A�N�Z�X�\�ȃv���p�e�B�������Ă��Ȃ��ꍇ
-     * @exception InvocationTargetException �w�肳�ꂽBean�̃A�N�Z�T���Ăяo�������ʁA��O��throw���ꂽ�ꍇ
+     * @param obj 対象となるBean
+     * @return プロパティ値
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException;
     
     /**
-     * �w�肵���I�u�W�F�N�g�ɁA���̃v���p�e�B���\���v���p�e�B�l��ݒ肷��B<p>
+     * 指定したオブジェクトに、このプロパティが表すプロパティ値を設定する。<p>
      *
-     * @param obj �ΏۂƂȂ�Bean
-     * @param value �ݒ肷��v���p�e�B�l
-     * @exception NoSuchPropertyException �w�肳�ꂽBean���A���̃v���p�e�B���\���A�N�Z�X�\�ȃv���p�e�B�������Ă��Ȃ��ꍇ
-     * @exception InvocationTargetException �w�肳�ꂽBean�̃A�N�Z�T���Ăяo�������ʁA��O��throw���ꂽ�ꍇ
+     * @param obj 対象となるBean
+     * @param value 設定するプロパティ値
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
     public void setProperty(Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException;
     
     /**
-     * �w�肵���I�u�W�F�N�g�ɁA���̃v���p�e�B���\���v���p�e�B�l��ݒ肷��B<p>
+     * 指定したオブジェクトに、このプロパティが表すプロパティ値を設定する。<p>
      *
-     * @param obj �ΏۂƂȂ�Bean
-     * @param type �v���p�e�B�̌^
-     * @param value �ݒ肷��v���p�e�B�l
-     * @exception NoSuchPropertyException �w�肳�ꂽBean���A���̃v���p�e�B���\���A�N�Z�X�\�ȃv���p�e�B�������Ă��Ȃ��ꍇ
-     * @exception InvocationTargetException �w�肳�ꂽBean�̃A�N�Z�T���Ăяo�������ʁA��O��throw���ꂽ�ꍇ
+     * @param obj 対象となるBean
+     * @param type プロパティの型
+     * @param value 設定するプロパティ値
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
     public void setProperty(Object obj, Class type, Object value)
      throws NoSuchPropertyException, InvocationTargetException;
     
     /**
-     * �w�肵���v���p�e�B���������͂���B<p>
+     * 指定したプロパティ文字列を解析する。<p>
      *
-     * @param prop �v���p�e�B������
-     * @exception IllegalArgumentException �w�肳�ꂽ�v���p�e�B����������̃v���p�e�B�I�u�W�F�N�g����͂ł��Ȃ��ꍇ
+     * @param prop プロパティ文字列
+     * @exception IllegalArgumentException 指定されたプロパティ文字列をこのプロパティオブジェクトが解析できない場合
      */
     public void parse(String prop) throws IllegalArgumentException;
     
     /**
-     * �ǂݍ��݉\���ǂ������肷��B<p>
+     * 読み込み可能かどうか判定する。<p>
      *
-     * @param clazz �ΏۂƂȂ�Bean�̃N���X
-     * @return �ǂݍ��݉\�ȏꍇtrue
+     * @param clazz 対象となるBeanのクラス
+     * @return 読み込み可能な場合true
      */
     public boolean isReadable(Class clazz);
     
     /**
-     * �ǂݍ��݉\���ǂ������肷��B<p>
+     * 読み込み可能かどうか判定する。<p>
      *
-     * @param obj �ΏۂƂȂ�Bean
-     * @return �ǂݍ��݉\�ȏꍇtrue
+     * @param obj 対象となるBean
+     * @return 読み込み可能な場合true
      */
     public boolean isReadable(Object obj);
     
     /**
-     * �������݉\���ǂ������肷��B<p>
+     * 書き込み可能かどうか判定する。<p>
      *
-     * @param targetClass �ΏۂƂȂ�Bean�̃N���X
-     * @param clazz �ݒ肷��v���p�e�B�̌^
-     * @return �������݉\�ȏꍇtrue
+     * @param targetClass 対象となるBeanのクラス
+     * @param clazz 設定するプロパティの型
+     * @return 書き込み可能な場合true
      */
     public boolean isWritable(Class targetClass, Class clazz);
     
     /**
-     * �������݉\���ǂ������肷��B<p>
+     * 書き込み可能かどうか判定する。<p>
      *
-     * @param obj �ΏۂƂȂ�Bean
-     * @param clazz �ݒ肷��v���p�e�B�̌^
-     * @return �������݉\�ȏꍇtrue
+     * @param obj 対象となるBean
+     * @param clazz 設定するプロパティの型
+     * @return 書き込み可能な場合true
      */
     public boolean isWritable(Object obj, Class clazz);
     
     /**
-     * null�Q�Ƃ̃v���p�e�B���擾�g�p�Ƃ����ꍇ�ɁA��O��throw���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * null参照のプロパティを取得使用とした場合に、例外をthrowするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isIgnore null�Q�Ƃ̎��ɗ�O��throw���Ȃ��ꍇ��true
+     * @param isIgnore null参照の時に例外をthrowしない場合はtrue
      */
     public void setIgnoreNullProperty(boolean isIgnore);
     
     /**
-     * null�Q�Ƃ̃v���p�e�B���擾�g�p�Ƃ����ꍇ�ɁA��O��throw���邩�ǂ����𔻒肷��B<p>
+     * null参照のプロパティを取得使用とした場合に、例外をthrowするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�Anull�Q�Ƃ̎��ɗ�O��throw���Ȃ�
+     * @return trueの場合、null参照の時に例外をthrowしない
      */
     public boolean isIgnoreNullProperty();
 }

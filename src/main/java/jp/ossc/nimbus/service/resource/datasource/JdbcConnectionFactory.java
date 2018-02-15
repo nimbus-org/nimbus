@@ -31,21 +31,21 @@ package jp.ossc.nimbus.service.resource.datasource;
  * policies, either expressed or implied, of the Nimbus Project.
  */
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.sql.Connection;
 import java.sql.SQLException;
 import jp.ossc.nimbus.service.resource.ResourceFactory;
 
 /**
- * DBƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ[ƒCƒ“ƒ^ƒtƒFƒCƒX<p> 
+ * DBã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ã‚¤ã‚¹<p> 
  * @author   nagai
- * @version  1.00 ì¬: 2003/11/29 -@K.Nagai
+ * @version  1.00 ä½œæˆ: 2003/11/29 -ã€€K.Nagai
  */
 public interface JdbcConnectionFactory 
 	extends ResourceFactory {
 	/**
-	 * JDBCƒRƒlƒNƒVƒ‡ƒ“‚ğo—Í‚·‚éB
-	 * @return@JDBCƒRƒlƒNƒVƒ‡ƒ“
+	 * JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
 	 */
 	public Connection makeConnection(String key) throws SQLException  ;
 }

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.crypt;
 
 /**
- * ˆÃ†‰»ƒpƒ‰ƒ[ƒ^•¶š—ñ‚ª‰üâ‚‚³‚ê‚½–‚ğ¦‚·—áŠOƒNƒ‰ƒXB<p>
+ * æš—å·åŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æ–‡å­—åˆ—ãŒæ”¹ç«„ã•ã‚ŒãŸäº‹ã‚’ç¤ºã™ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,14 +41,14 @@ public class FalsifiedParameterException extends Exception{
     private static final long serialVersionUID = -5084422005563576092L;
 
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FalsifiedParameterException(){
         super();
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FalsifiedParameterException(Throwable cause){
         super(cause);

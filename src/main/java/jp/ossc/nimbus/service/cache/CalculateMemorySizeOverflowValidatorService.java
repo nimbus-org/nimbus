@@ -38,8 +38,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ŒvZƒƒ‚ƒŠƒTƒCƒY‚ ‚Ó‚êŒŸØƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒƒ‚ƒŠ‚Ìg—pƒTƒCƒY‚ªÅ‘åƒƒ‚ƒŠ‚Ì”¼•ª‚ğ’´‚¦‚é‚Æ—\‘z‚³‚ê‚½ê‡‚É‚ ‚Ó‚ê‚é‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * è¨ˆç®—ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨ã‚µã‚¤ã‚ºãŒæœ€å¤§ãƒ¡ãƒ¢ãƒªã®åŠåˆ†ã‚’è¶…ãˆã‚‹ã¨äºˆæƒ³ã•ã‚ŒãŸå ´åˆã«ã‚ãµã‚Œã‚‹ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -54,16 +54,16 @@ import jp.ossc.nimbus.beans.*;
  *     
  * &lt;/server&gt;
  * </pre>
- * {@link MemorySizeOverflowValidatorService}‚ÆˆÙ‚È‚é‚Ì‚ÍAJVM‚Ìƒq[ƒvƒTƒCƒY‚Å‚ ‚Ó‚êŒŸØ‚·‚é‚Ì‚Å‚Í‚È‚­AƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªg—p‚·‚éƒƒ‚ƒŠƒTƒCƒY‚Ì—˜_’l‚Å‚ ‚Ó‚êŒŸØ‚·‚é‚Æ‚±‚ë‚Å‚ ‚éB<br>
- * ƒIƒuƒWƒFƒNƒg‚ªg—p‚·‚éƒƒ‚ƒŠƒTƒCƒY‚Ì—˜_’l‚ÌŒvZ•û–@‚ÍAˆÈ‰º‚Ì’Ê‚è‚Å‚ ‚éB<br>
+ * {@link MemorySizeOverflowValidatorService}ã¨ç•°ãªã‚‹ã®ã¯ã€JVMã®ãƒ’ãƒ¼ãƒ—ã‚µã‚¤ã‚ºã§ã‚ãµã‚Œæ¤œè¨¼ã™ã‚‹ã®ã§ã¯ãªãã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒä½¿ç”¨ã™ã‚‹ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã®ç†è«–å€¤ã§ã‚ãµã‚Œæ¤œè¨¼ã™ã‚‹ã¨ã“ã‚ã§ã‚ã‚‹ã€‚<br>
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒä½¿ç”¨ã™ã‚‹ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã®ç†è«–å€¤ã®è¨ˆç®—æ–¹æ³•ã¯ã€ä»¥ä¸‹ã®é€šã‚Šã§ã‚ã‚‹ã€‚<br>
  * <ul>
- *   <li>{@link #setMemorySize(String, String)}‚Åw’è‚³‚ê‚½—˜_’l‚ª‚ ‚éê‡A‚»‚ê‚ğg—p‚·‚éB</li>
- *   <li>ƒNƒ‰ƒX‚ÉéŒ¾‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğA‚»‚ÌéŒ¾‚³‚ê‚Ä‚¢‚éƒNƒ‰ƒX‚Ìî•ñ‚ğg‚Á‚ÄƒTƒCƒY‚ğŒvZ‚µ‚Ä‰ÁZ‚·‚éB‚±‚ê‚ÍAƒtƒB[ƒ‹ƒhéŒ¾‚É•K—v‚Èƒƒ‚ƒŠ‚ğŒvZ‚·‚é‚¾‚¯‚È‚Ì‚ÅA‚»‚Ì•Ï”‚Ì’l©‘Ì‚Ìƒƒ‚ƒŠg—p—Ê‚ÍŒvZ‚³‚ê‚È‚¢B</li>
- *   <li>ƒIƒuƒWƒFƒNƒg‚ÉéŒ¾‚³‚ê‚Ä‚¢‚égetterƒƒ\ƒbƒh‚Åæ“¾‚Å‚«‚éprimitiveŒ^ˆÈŠO‚ÌƒIƒuƒWƒFƒNƒg‚ÌƒTƒCƒY‚ğŒvZ‚µ‚Ä‰ÁZ‚·‚éB{@link #setCalculateProperty(boolean)}‚Å‚±‚Ì‰ÁZ‚ÌON/OFF‚ğ§Œä‚Å‚«‚éBƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì’l©‘Ì‚Ìƒƒ‚ƒŠg—p—Ê‚ğ‰ÁZ‚·‚éB’A‚µAgetter‚ª‘¶İ‚µ‚È‚¢ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì’l©‘Ì‚Ìƒƒ‚ƒŠg—p—Ê‚Í‰ÁZ‚³‚ê‚È‚¢B</li>
- *   <li>”z—ñŒ^‚ÌƒIƒuƒWƒFƒNƒg‚ÍA”z—ñ’· * 4 + 12ƒoƒCƒg‚Æ‚µ‚ÄŒvZ‚·‚éB’A‚µAƒCƒ“ƒXƒ^ƒ“ƒX‚ÉƒAƒNƒZƒX‚Å‚«‚È‚¢ê‡‚ÍA”z—ñ’·‚Í0‚Æ‰¼’è‚·‚éB‚Ü‚½AƒCƒ“ƒXƒ^ƒ“ƒX‚ÉƒAƒNƒZƒX‚Å‚«‚éê‡‚ÍAŠe”z—ñ—v‘f‚ÌƒIƒuƒWƒFƒNƒg‚ÌƒTƒCƒY‚à‰ÁZ‚·‚éB</li>
- *   <li>java.util.CollectionŒ^‚âjava.util.MapŒ^‚ÌƒIƒuƒWƒFƒNƒg‚ÍAƒCƒ“ƒXƒ^ƒ“ƒX‚ÉƒAƒNƒZƒX‚Å‚«‚éê‡‚ÍŠe—v‘f‚ÌƒIƒuƒWƒFƒNƒg‚ÌƒTƒCƒY‚à‰ÁZ‚·‚éB</li>
+ *   <li>{@link #setMemorySize(String, String)}ã§æŒ‡å®šã•ã‚ŒãŸç†è«–å€¤ãŒã‚ã‚‹å ´åˆã€ãã‚Œã‚’ä½¿ç”¨ã™ã‚‹ã€‚</li>
+ *   <li>ã‚¯ãƒ©ã‚¹ã«å®£è¨€ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’ã€ãã®å®£è¨€ã•ã‚Œã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã®æƒ…å ±ã‚’ä½¿ã£ã¦ã‚µã‚¤ã‚ºã‚’è¨ˆç®—ã—ã¦åŠ ç®—ã™ã‚‹ã€‚ã“ã‚Œã¯ã€ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å®£è¨€ã«å¿…è¦ãªãƒ¡ãƒ¢ãƒªã‚’è¨ˆç®—ã™ã‚‹ã ã‘ãªã®ã§ã€ãã®å¤‰æ•°ã®å€¤è‡ªä½“ã®ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã¯è¨ˆç®—ã•ã‚Œãªã„ã€‚</li>
+ *   <li>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å®£è¨€ã•ã‚Œã¦ã„ã‚‹getterãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã§ãã‚‹primitiveå‹ä»¥å¤–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚µã‚¤ã‚ºã‚’è¨ˆç®—ã—ã¦åŠ ç®—ã™ã‚‹ã€‚{@link #setCalculateProperty(boolean)}ã§ã“ã®åŠ ç®—ã®ON/OFFã‚’åˆ¶å¾¡ã§ãã‚‹ã€‚ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å€¤è‡ªä½“ã®ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã‚’åŠ ç®—ã™ã‚‹ã€‚ä½†ã—ã€getterãŒå­˜åœ¨ã—ãªã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å€¤è‡ªä½“ã®ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã¯åŠ ç®—ã•ã‚Œãªã„ã€‚</li>
+ *   <li>é…åˆ—å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€é…åˆ—é•· * 4 + 12ãƒã‚¤ãƒˆã¨ã—ã¦è¨ˆç®—ã™ã‚‹ã€‚ä½†ã—ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ããªã„å ´åˆã¯ã€é…åˆ—é•·ã¯0ã¨ä»®å®šã™ã‚‹ã€‚ã¾ãŸã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹å ´åˆã¯ã€å„é…åˆ—è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚µã‚¤ã‚ºã‚‚åŠ ç®—ã™ã‚‹ã€‚</li>
+ *   <li>java.util.Collectionå‹ã‚„java.util.Mapå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹å ´åˆã¯å„è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚µã‚¤ã‚ºã‚‚åŠ ç®—ã™ã‚‹ã€‚</li>
  * </ul>
- * ƒƒ‚ƒŠ‚Ì—˜_’l‚ÍAƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚Å’²‚×‚é–‚ª‚Å‚«‚é”ÍˆÍ‚Ü‚Å‚µ‚©AŒvZ‚³‚ê‚È‚¢‚½‚ßA•K‚¸‚µ‚àÀƒƒ‚ƒŠg—p—Ê‚Æˆê’v‚µ‚È‚¢B‰X‚É‚µ‚ÄAÀƒƒ‚ƒŠg—p—Ê‚æ‚è‚à¬‚³‚È’l‚É‚È‚éB]‚Á‚ÄA‚±‚ÌƒT[ƒrƒX‚ğg—p‚·‚éê‡‚ÍAã‹L‚Ì—˜_’l‚Å‚Ç‚±‚Ü‚ÅÀƒƒ‚ƒŠg—p—Ê‚Æ‚Ì‚¸‚ê‚ª¶‚¶“¾‚é‚©‚ğ‘z’è‚·‚é•K—v‚ª‚ ‚éB<br>
+ * ãƒ¡ãƒ¢ãƒªã®ç†è«–å€¤ã¯ã€ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã§èª¿ã¹ã‚‹äº‹ãŒã§ãã‚‹ç¯„å›²ã¾ã§ã—ã‹ã€è¨ˆç®—ã•ã‚Œãªã„ãŸã‚ã€å¿…ãšã—ã‚‚å®Ÿãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã¨ä¸€è‡´ã—ãªã„ã€‚å¾€ã€…ã«ã—ã¦ã€å®Ÿãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã‚ˆã‚Šã‚‚å°ã•ãªå€¤ã«ãªã‚‹ã€‚å¾“ã£ã¦ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ä¸Šè¨˜ã®ç†è«–å€¤ã§ã©ã“ã¾ã§å®Ÿãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã¨ã®ãšã‚ŒãŒç”Ÿã˜å¾—ã‚‹ã‹ã‚’æƒ³å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -101,49 +101,49 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
         }
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setMaxMemorySize(String size)
      throws IllegalArgumentException{
         maxMemorySize = convertMemorySize(size);
         maxMemorySizeStr = size;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public String getMaxMemorySize(){
         return maxMemorySizeStr;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setCalculateProperty(boolean isCalculate){
         isCalculateProperty = isCalculate;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public boolean isCalculateProperty(){
         return isCalculateProperty;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setCalculateOnValidate(boolean isCalculate){
         isCalculateOnValidate = isCalculate;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public boolean isCalculateOnValidate(){
         return isCalculateOnValidate;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public int size(){
         return references == null ? 0 : references.size();
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public long getCurrentUsedMemorySize(){
         return currentUsedMemorySize;
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setMemorySize(String className, String size)
      throws ClassNotFoundException{
         final Class clazz = Class.forName(
@@ -155,7 +155,7 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
         memorySizeMap.put(clazz, new Long(val));
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public String getMemorySize(String className) throws ClassNotFoundException{
         if(memorySizeMap == null){
             return null;
@@ -169,16 +169,16 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
         return number == null ? null : String.valueOf(number.longValue());
     }
     
-    // CalculateMemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // CalculateMemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public Map getMemorySizeMap(){
         return memorySizeMap;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         references = Collections.synchronizedMap(new HashMap());
@@ -199,19 +199,19 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         tmpMemorySizeMap.clear();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌŠJ•ú‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®é–‹æ”¾ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         reset();
@@ -301,11 +301,11 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
             }
             long result = 0l;
             if(clazz.isInterface()){
-                // ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌŒ^‚ª•ª‚©‚ç‚È‚¢‚Ì‚Å’ú‚ß‚é
+                // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å‹ãŒåˆ†ã‹ã‚‰ãªã„ã®ã§è«¦ã‚ã‚‹
                 result = 8l;
             }else if(clazz.isArray()){
                 if(obj == null){
-                    // ”z—ñ‚ÌƒTƒCƒY‚ª•ª‚©‚ç‚È‚¢‚Ì‚Å’·‚³0‚Æ‚µ‚Ä’ú‚ß‚é
+                    // é…åˆ—ã®ã‚µã‚¤ã‚ºãŒåˆ†ã‹ã‚‰ãªã„ã®ã§é•·ã•0ã¨ã—ã¦è«¦ã‚ã‚‹
                     result = 12l;
                 }else{
                     final int length = Array.getLength(obj);
@@ -457,7 +457,7 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
             }
         }else{
             if(clazz.isArray()){
-                // ”z—ñ‚ÌƒTƒCƒY‚ª•ª‚©‚ç‚È‚¢‚Ì‚Å’·‚³0‚Æ‚µ‚Ä’ú‚ß‚é
+                // é…åˆ—ã®ã‚µã‚¤ã‚ºãŒåˆ†ã‹ã‚‰ãªã„ã®ã§é•·ã•0ã¨ã—ã¦è«¦ã‚ã‚‹
                 return 16l;
             }else{
                 return 4l;
@@ -466,10 +466,10 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ•Û‚·‚éB“¯‚ÉA{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ä¿æŒã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void add(CachedReference ref){
         if(references == null || ref == null){
@@ -492,10 +492,10 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğíœ‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ“à•”‚Å•Û‚µ‚Ä‚¢‚éê‡‚ÍA”jŠü‚·‚éB“¯‚ÉA{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‰ğœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å†…éƒ¨ã§ä¿æŒã—ã¦ã„ã‚‹å ´åˆã¯ã€ç ´æ£„ã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void remove(CachedReference ref){
         if(references == null || ref == null){
@@ -516,11 +516,11 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚Ìg—p—¦‚Å‚ ‚Ó‚êŒŸØ‚ğs‚¤B<p>
-     * ˆÈ‰º‚ÌŒvZ®‚ÅA‚ ‚Ó‚ê”‚ğŒvZ‚·‚éB’A‚µAŒvZŒ‹‰Ê‚ª•‰‚Ìê‡‚ÍA0‚Æ‚·‚éB<br>
-     * i—˜_g—pƒƒ‚ƒŠ - Å‘åƒƒ‚ƒŠj€i—˜_g—pƒƒ‚ƒŠ€ƒLƒƒƒbƒVƒ…ƒTƒCƒYj
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨ç‡ã§ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã†ã€‚<p>
+     * ä»¥ä¸‹ã®è¨ˆç®—å¼ã§ã€ã‚ãµã‚Œæ•°ã‚’è¨ˆç®—ã™ã‚‹ã€‚ä½†ã—ã€è¨ˆç®—çµæœãŒè² ã®å ´åˆã¯ã€0ã¨ã™ã‚‹ã€‚<br>
+     * ï¼ˆç†è«–ä½¿ç”¨ãƒ¡ãƒ¢ãƒª - æœ€å¤§ãƒ¡ãƒ¢ãƒªï¼‰Ã·ï¼ˆç†è«–ä½¿ç”¨ãƒ¡ãƒ¢ãƒªÃ·ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºï¼‰
      *
-     * @return ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½Œ‹‰Ê‚ ‚Ó‚ê‚ª”­¶‚·‚éê‡A‚ ‚Ó‚ê”‚ğ•Ô‚·B‚ ‚Ó‚ê‚È‚¢ê‡‚ÍA0‚ğ•Ô‚·
+     * @return ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸçµæœã‚ãµã‚ŒãŒç™ºç”Ÿã™ã‚‹å ´åˆã€ã‚ãµã‚Œæ•°ã‚’è¿”ã™ã€‚ã‚ãµã‚Œãªã„å ´åˆã¯ã€0ã‚’è¿”ã™
      */
     public int validate(){
         if(references == null || references.size() == 0){
@@ -556,8 +556,8 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚êŒŸØ‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ‘S‚Ä”jŠü‚·‚éB<br>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å…¨ã¦ç ´æ£„ã™ã‚‹ã€‚<br>
      */
     public void reset(){
         if(references != null){
@@ -567,10 +567,10 @@ public class CalculateMemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * {@link #remove(CachedReference)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * {@link #remove(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         remove(ref);

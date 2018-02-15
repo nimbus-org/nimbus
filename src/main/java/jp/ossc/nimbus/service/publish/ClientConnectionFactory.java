@@ -35,32 +35,32 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- * ƒƒbƒZ[ƒWóM—p‚ÌƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“¶¬ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒƒbƒZ[ƒWóM‚ğs‚¤{@link ClientConnection}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<br>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ç”¨ã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ã‚’è¡Œã†{@link ClientConnection}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<br>
  * 
  * @author M.Takata
  */
 public interface ClientConnectionFactory extends Remote{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌJNDI–¼B<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®JNDIåã€‚<br>
      */
     public static final String DEFAULT_JNDI_NAME = "publish/ClientConnectionFactory";
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<br>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      * 
-     * @return ƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“
-     * @exception ConnectionCreateException ƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception RemoteException ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚É¸”s‚µ‚½ê‡
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @exception ConnectionCreateException ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RemoteException ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public ClientConnection getClientConnection() throws ConnectionCreateException, RemoteException;
     
     /**
-     * Œ»İÚ‘±‚µ‚Ä‚¢‚éƒNƒ‰ƒCƒAƒ“ƒg”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨æ¥ç¶šã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒCƒAƒ“ƒg”
-     * @exception RemoteException ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚É¸”s‚µ‚½ê‡
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ•°
+     * @exception RemoteException ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int getClientCount() throws RemoteException;
 }

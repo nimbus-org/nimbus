@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.repository;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MBeanServerRepositoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MBeanServerRepositoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,77 +42,77 @@ public interface MBeanServerRepositoryServiceMBean
  extends ServiceBaseMBean, Repository{
     
     /**
-     * JMXƒT[ƒo‚ÌƒhƒƒCƒ“–¼‚ğİ’è‚·‚éB<p>
-     * javax.management.MBeanServerFactory.findMBeanServer(String)‚Ìˆø”‚Æ‚µ‚Äg—p‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * JMXã‚µãƒ¼ãƒã®ãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * javax.management.MBeanServerFactory.findMBeanServer(String)ã®å¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param domain JMXƒT[ƒo‚ÌƒhƒƒCƒ“–¼
+     * @param domain JMXã‚µãƒ¼ãƒã®ãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public void setMBeanServerDomain(String domain);
     
     /**
-     * JMXƒT[ƒo‚ÌƒhƒƒCƒ“–¼‚ğæ“¾‚·‚éB<p>
+     * JMXã‚µãƒ¼ãƒã®ãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMXƒT[ƒo‚ÌƒhƒƒCƒ“–¼
+     * @return JMXã‚µãƒ¼ãƒã®ãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public String getMBeanServerDomain();
     
     /**
-     * JMXƒT[ƒo‚ÌƒfƒtƒHƒ‹ƒgƒhƒƒCƒ“–¼‚ğİ’è‚·‚éB<p>
-     * javax.management.MBeanServer.getDefaultDomain()‚Æ”äŠr‚µ‚ÄAJMXƒT[ƒo‚ğ“Á’è‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * JMXã‚µãƒ¼ãƒã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * javax.management.MBeanServer.getDefaultDomain()ã¨æ¯”è¼ƒã—ã¦ã€JMXã‚µãƒ¼ãƒã‚’ç‰¹å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param domain JMXƒT[ƒo‚ÌƒfƒtƒHƒ‹ƒgƒhƒƒCƒ“–¼
+     * @param domain JMXã‚µãƒ¼ãƒã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public void setMBeanServerDefaultDomain(String domain);
     
     /**
-     * JMXƒT[ƒo‚ÌƒfƒtƒHƒ‹ƒgƒhƒƒCƒ“–¼‚ğæ“¾‚·‚éB<p>
+     * JMXã‚µãƒ¼ãƒã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMXƒT[ƒo‚ÌƒfƒtƒHƒ‹ƒgƒhƒƒCƒ“–¼
+     * @return JMXã‚µãƒ¼ãƒã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public String getMBeanServerDefaultDomain();
     
     /**
-     * JMXƒT[ƒoƒŠƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * javax.management.MBeanServerFactory.findMBeanServer(String)‚Ì–ß‚è’l‚Æ‚È‚éList‚ÌƒCƒ“ƒfƒbƒNƒX‚ğw’è‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * JMXã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * javax.management.MBeanServerFactory.findMBeanServer(String)ã®æˆ»ã‚Šå€¤ã¨ãªã‚‹Listã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param index JMXƒT[ƒoƒŠƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @param index JMXã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setMBeanServerIndex(int index);
     
     /**
-     * JMXƒT[ƒoƒŠƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * JMXã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMXƒT[ƒoƒŠƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @return JMXã‚µãƒ¼ãƒãƒªã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getMBeanServerIndex();
     
     /**
-     * MBean‚ğJMXƒT[ƒo‚É“o˜^‚·‚éÛ‚ÌƒhƒƒCƒ“–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‚±‚ÌƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼B<br>
+     * MBeanã‚’JMXã‚µãƒ¼ãƒã«ç™»éŒ²ã™ã‚‹éš›ã®ãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã€‚<br>
      *
-     * @param domain ƒhƒƒCƒ“–¼
+     * @param domain ãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public void setObjectNameDomain(String domain);
     
     /**
-     * MBean‚ğJMXƒT[ƒo‚É“o˜^‚·‚éÛ‚ÌƒhƒƒCƒ“–¼‚ğæ“¾‚·‚éB<p>
+     * MBeanã‚’JMXã‚µãƒ¼ãƒã«ç™»éŒ²ã™ã‚‹éš›ã®ãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒhƒƒCƒ“–¼
+     * @return ãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public String getObjectNameDomain();
     
     /**
-     * JMXƒT[ƒo‚ªŒ©‚Â‚©‚ç‚È‚¢‚ÉAJMXƒT[ƒo‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å¶¬‚µ‚È‚¢B<br>
+     * JMXã‚µãƒ¼ãƒãŒè¦‹ã¤ã‹ã‚‰ãªã„æ™‚ã«ã€JMXã‚µãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç”Ÿæˆã—ãªã„ã€‚<br>
      *
-     * @param isCreate ¶¬‚·‚éê‡‚ÍAtrue
+     * @param isCreate ç”Ÿæˆã™ã‚‹å ´åˆã¯ã€true
      */
     public void setCreateMBeanServer(boolean isCreate);
     
     /**
-     * JMXƒT[ƒo‚ªŒ©‚Â‚©‚ç‚È‚¢‚ÉAJMXƒT[ƒo‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * JMXã‚µãƒ¼ãƒãŒè¦‹ã¤ã‹ã‚‰ãªã„æ™‚ã«ã€JMXã‚µãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA¶¬‚·‚é
+     * @return trueã®å ´åˆã¯ã€ç”Ÿæˆã™ã‚‹
      */
     public boolean isCreateMBeanServer();
 }

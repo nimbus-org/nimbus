@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.proxy.invoker;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link RemoteClientEJBCallInvokerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link RemoteClientEJBCallInvokerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see RemoteClientEJBCallInvokerService
@@ -43,45 +43,45 @@ public interface RemoteClientEJBCallInvokerServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEJBFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getEJBFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ÌEJBHome‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBã®EJBHomeã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RemoteServerInvoker EJB‚ÌEJBHome‚ÌJNDI–¼
+     * @param name RemoteServerInvoker EJBã®EJBHomeã®JNDIå
      */
     public void setRemoteServerEJBJndiName(String name);
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½EJB‚ÌEJBHome‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸEJBã®EJBHomeã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RemoteServerInvoker EJB‚ÌEJBHome‚ÌJNDI–¼
+     * @return RemoteServerInvoker EJBã®EJBHomeã®JNDIå
      */
     public String getRemoteServerEJBJndiName();
     
     /**
-     * ŒÄ‚Ño‚µ‚½‚¢ƒŠƒ‚[ƒgƒT[ƒo‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÍA{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}‚ÅAŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚Æ‚µ‚Ä“`”d‚³‚ê‚éB<br>
+     * å‘¼ã³å‡ºã—ãŸã„ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã¯ã€{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}ã§ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ä¼æ’­ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name ŒÄ‚Ño‚µ‚½‚¢ƒŠƒ‚[ƒgƒT[ƒo‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name å‘¼ã³å‡ºã—ãŸã„ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRemoteServiceName(ServiceName name);
     
     /**
-     * ŒÄ‚Ño‚µ‚½‚¢ƒŠƒ‚[ƒgƒT[ƒo‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ãŸã„ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒÄ‚Ño‚µ‚½‚¢ƒŠƒ‚[ƒgƒT[ƒo‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return å‘¼ã³å‡ºã—ãŸã„ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRemoteServiceName();
 }

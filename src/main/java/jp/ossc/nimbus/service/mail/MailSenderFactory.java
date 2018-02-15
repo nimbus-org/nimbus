@@ -33,9 +33,9 @@ package jp.ossc.nimbus.service.mail;
 
 //
 /**
- * メールセンダーファクトリインターフェイス
+ * 繝｡繝ｼ繝ｫ繧ｻ繝ｳ繝繝ｼ繝輔ぃ繧ｯ繝医Μ繧､繝ｳ繧ｿ繝ｼ繝輔ぉ繧､繧ｹ
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 作成: 2003/10/09 -　H.Nakano
+ * @version  1.00 菴懈��: 2003/10/09 -縲H.Nakano
  */
 public interface MailSenderFactory {
 	public MailSender createMailSender() ;

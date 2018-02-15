@@ -32,147 +32,147 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ƒLƒƒƒbƒVƒ…QÆB<p>
- * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌQÆ‚ğ•Û‚·‚éƒIƒuƒWƒFƒNƒgB<br>
- * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌQÆ‚ª‚Ç‚Ì‚æ‚¤‚ÈŒ`‚Å•Û‚³‚ê‚é‚©‚ÍA‚±‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ÉˆË‘¶‚·‚éB<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§ã‚’ä¿æŒã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§ãŒã©ã®ã‚ˆã†ãªå½¢ã§ä¿æŒã•ã‚Œã‚‹ã‹ã¯ã€ã“ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã«ä¾å­˜ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface CachedReference{
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * {@link #get(Object, boolean) get(null, true)}‚ÅŒÄ‚Ño‚·‚Ì‚É“™‚µ‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #get(Object, boolean) get(null, true)}ã§å‘¼ã³å‡ºã™ã®ã«ç­‰ã—ã„ã€‚<br>
      *
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @see #get(Object, boolean)
      */
     public Object get();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * {@link #get(Object, boolean) get(source, true)}‚ÅŒÄ‚Ño‚·‚Ì‚É“™‚µ‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #get(Object, boolean) get(source, true)}ã§å‘¼ã³å‡ºã™ã®ã«ç­‰ã—ã„ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…‚ğæ“¾‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @see #get(Object, boolean)
      */
     public Object get(Object source);
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * ‘æ“ñˆø”‚ªtrue‚Ìê‡‚ÍA{@link #addCacheAccessListener(CacheAccessListener)}‚Å“o˜^‚³‚ê‚½{@link CacheAccessListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheAccessListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
-     * ©g‚ª•Û‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªnull‚Å‚È‚¢ê‡‚ÍA‚»‚ê‚ğ•Ô‚·Bnull‚Ìê‡‚ÍA{@link #addLinkedReference(LinkedReference)}‚Å“o˜^‚³‚ê‚½{@link LinkedReference}‚©‚çæ“¾‚ğ‚İ‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ç¬¬äºŒå¼•æ•°ãŒtrueã®å ´åˆã¯ã€{@link #addCacheAccessListener(CacheAccessListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheAccessListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheAccessListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
+     * è‡ªèº«ãŒä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã§ãªã„å ´åˆã¯ã€ãã‚Œã‚’è¿”ã™ã€‚nullã®å ´åˆã¯ã€{@link #addLinkedReference(LinkedReference)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link LinkedReference}ã‹ã‚‰å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…‚ğæ“¾‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-     * @param notify ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚É’Ê’m‚·‚éê‡‚Ítrue
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param notify ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹å ´åˆã¯true
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(Object source, boolean notify);
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-     * {@link #set(Object, Object) set(null, obj)}‚ÅŒÄ‚Ño‚·‚Ì‚É“™‚µ‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #set(Object, Object) set(null, obj)}ã§å‘¼ã³å‡ºã™ã®ã«ç­‰ã—ã„ã€‚<br>
      *
-     * @param obj İ’è‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IllegalCachedReferenceException ƒLƒƒƒbƒVƒ…QÆ‚Ìó‘Ô‚ª•s³‚Èˆ×ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param obj è¨­å®šã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IllegalCachedReferenceException ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®çŠ¶æ…‹ãŒä¸æ­£ãªç‚ºã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #set(Object, Object)
      */
     public void set(Object obj) throws IllegalCachedReferenceException;
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-     * {@link #addCacheChangeListener(CacheChangeListener)}‚Å“o˜^‚³‚ê‚½{@link CacheChangeListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheChangeListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #addCacheChangeListener(CacheChangeListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheChangeListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheChangeListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•ÏX‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-     * @param obj İ’è‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IllegalCachedReferenceException ƒLƒƒƒbƒVƒ…QÆ‚Ìó‘Ô‚ª•s³‚Èˆ×ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›´ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param obj è¨­å®šã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IllegalCachedReferenceException ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®çŠ¶æ…‹ãŒä¸æ­£ãªç‚ºã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void set(Object source, Object obj) throws IllegalCachedReferenceException;
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚éB<p>
-     * {@link #remove(Object) remove(null)}‚ÅŒÄ‚Ño‚·‚Ì‚É“™‚µ‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * {@link #remove(Object) remove(null)}ã§å‘¼ã³å‡ºã™ã®ã«ç­‰ã—ã„ã€‚<br>
      *
      * @see #remove(Object)
      */
     public void remove();
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚éB<p>
-     * {@link #addCacheRemoveListener(CacheRemoveListener)}‚Å“o˜^‚³‚ê‚½{@link CacheRemoveListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheChangeListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * {@link #addCacheRemoveListener(CacheRemoveListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheRemoveListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheChangeListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void remove(Object source);
     
     /**
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return íœ‚³‚ê‚Ä‚¢‚éê‡Atrue
+     * @return å‰Šé™¤ã•ã‚Œã¦ã„ã‚‹å ´åˆã€true
      */
     public boolean isRemoved();
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒŠƒ“ƒNQÆ‚ğ’Ç‰Á‚·‚éB<p>
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…QÆ‚ª•Û‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªA‰½‚ç‚©‚Ì——R‚Å{@link LinkedReference}‚É‘Ş”ğ‚³‚ênull‚É‚È‚Á‚Ä‚¢‚éê‡‚ÉA{@link #get()}“™‚ÅƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª—v‹‚³‚ê‚½ê‡‚ÉA‚±‚Ìƒƒ\ƒbƒh‚Å“o˜^‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒŠƒ“ƒNQÆ‚Ì{@link LinkedReference#get(CachedReference)}‚ªŒÄ‚Ño‚³‚ê‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒªãƒ³ã‚¯å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ãŒä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã€ä½•ã‚‰ã‹ã®ç†ç”±ã§{@link LinkedReference}ã«é€€é¿ã•ã‚Œnullã«ãªã£ã¦ã„ã‚‹å ´åˆã«ã€{@link #get()}ç­‰ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¦æ±‚ã•ã‚ŒãŸå ´åˆã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ç™»éŒ²ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒªãƒ³ã‚¯å‚ç…§ã®{@link LinkedReference#get(CachedReference)}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param link ƒLƒƒƒbƒVƒ…ƒŠƒ“ƒNQÆ
+     * @param link ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒªãƒ³ã‚¯å‚ç…§
      */
     public void addLinkedReference(LinkedReference link);
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒŠƒ“ƒNQÆ‚ğíœ‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒªãƒ³ã‚¯å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param link ƒLƒƒƒbƒVƒ…ƒŠƒ“ƒNQÆ
+     * @param link ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒªãƒ³ã‚¯å‚ç…§
      */
     public void removeLinkedReference(LinkedReference link);
     
     /**
-     * ƒLƒƒƒbƒVƒ…íœƒŠƒXƒi‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚½–‚ğŒŸ’m‚·‚éƒŠƒXƒi‚ğ“o˜^‚·‚éB<br>
-     * {@link #remove()}‚âA{@link #remove(Object)}‚ÅAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚é‚ÆA‚±‚Ìƒƒ\ƒbƒh‚Å“o˜^‚³‚ê‚½ƒLƒƒƒbƒVƒ…íœƒŠƒXƒi‚Ì{@link CacheRemoveListener#removed(CachedReference)}‚ªŒÄ‚Ño‚³‚ê‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚ŒãŸäº‹ã‚’æ¤œçŸ¥ã™ã‚‹ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
+     * {@link #remove()}ã‚„ã€{@link #remove(Object)}ã§ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚Œã‚‹ã¨ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ç™»éŒ²ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠã®{@link CacheRemoveListener#removed(CachedReference)}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param listener ƒLƒƒƒbƒVƒ…íœƒŠƒXƒi
+     * @param listener ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠ
      */
     public void addCacheRemoveListener(CacheRemoveListener listener);
     
     /**
-     * ƒLƒƒƒbƒVƒ…íœƒŠƒXƒi‚ğíœ‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param listener ƒLƒƒƒbƒVƒ…íœƒŠƒXƒi
+     * @param listener ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ãƒªã‚¹ãƒŠ
      */
     public void removeCacheRemoveListener(CacheRemoveListener listener);
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªƒAƒNƒZƒX‚³‚ê‚½–‚ğŒŸ’m‚·‚éƒŠƒXƒi‚ğ“o˜^‚·‚éB<br>
-     * {@link #get()}‚âA{@link #get(Object)}A{@link #get(Object, boolean) get(obj, true)}‚ÅAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªƒAƒNƒZƒX‚³‚ê‚é‚ÆA‚±‚Ìƒƒ\ƒbƒh‚Å“o˜^‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚Ì{@link CacheAccessListener#accessed(CachedReference)}‚ªŒÄ‚Ño‚³‚ê‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¢ã‚¯ã‚»ã‚¹ã•ã‚ŒãŸäº‹ã‚’æ¤œçŸ¥ã™ã‚‹ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
+     * {@link #get()}ã‚„ã€{@link #get(Object)}ã€{@link #get(Object, boolean) get(obj, true)}ã§ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¢ã‚¯ã‚»ã‚¹ã•ã‚Œã‚‹ã¨ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ç™»éŒ²ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã®{@link CacheAccessListener#accessed(CachedReference)}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param listener ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi
+     * @param listener ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠ
      */
     public void addCacheAccessListener(CacheAccessListener listener);
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚ğíœ‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param listener ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi
+     * @param listener ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠ
      */
     public void removeCacheAccessListener(CacheAccessListener listener);
     
     /**
-     * ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚½–‚ğŒŸ’m‚·‚éƒŠƒXƒi‚ğ“o˜^‚·‚éB<br>
-     * {@link #set(Object)}‚âA{@link #set(Object, Object)}‚ÅAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚é‚ÆA‚±‚Ìƒƒ\ƒbƒh‚Å“o˜^‚³‚ê‚½ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi‚Ì{@link CacheChangeListener#changed(CachedReference, Object)}‚ªŒÄ‚Ño‚³‚ê‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’æ¤œçŸ¥ã™ã‚‹ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
+     * {@link #set(Object)}ã‚„ã€{@link #set(Object, Object)}ã§ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚Œã‚‹ã¨ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ç™»éŒ²ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠã®{@link CacheChangeListener#changed(CachedReference, Object)}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param listener ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi
+     * @param listener ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠ
      */
     public void addCacheChangeListener(CacheChangeListener listener);
     
     /**
-     * ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi‚ğíœ‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param listener ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒi
+     * @param listener ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠ
      */
     public void removeCacheChangeListener(CacheChangeListener listener);
 }

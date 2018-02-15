@@ -34,67 +34,67 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS ƒƒbƒZ[ƒWƒvƒƒfƒ…[ƒTƒtƒ@ƒNƒgƒŠB<p>
+ * JMS ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ—ãƒ­ãƒ‡ãƒ¥ãƒ¼ã‚µãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  * 
  * @author M.Takata
  */
 public interface JMSMessageProducerFactory{
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éSession‚ğæ“¾‚·‚éB<p>
-     * createProducerƒƒ\ƒbƒh‚ÅAMessageProducer‚ğ¶¬‚·‚éÛ‚ÉAˆø”‚ÅSession‚ğw’è‚µ‚È‚©‚Á‚½ê‡‚ÍA‚±‚ÌSession‚ªg—p‚³‚ê‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Sessionã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * createProducerãƒ¡ã‚½ãƒƒãƒ‰ã§ã€MessageProducerã‚’ç”Ÿæˆã™ã‚‹éš›ã«ã€å¼•æ•°ã§Sessionã‚’æŒ‡å®šã—ãªã‹ã£ãŸå ´åˆã¯ã€ã“ã®SessionãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éSessionBSession‚ğ•Û‚µ‚Ä‚¢‚È‚¢ê‡‚ÍnullB
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Sessionã€‚Sessionã‚’ä¿æŒã—ã¦ã„ãªã„å ´åˆã¯nullã€‚
      */
     public Session getSession();
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªSession‚Ìæ“¾‚Ég—p‚·‚é{@link JMSSessionFactory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒSessionã®å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link JMSSessionFactory}ƒT[ƒrƒX
+     * @return {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹
      */
     public JMSSessionFactory getSessionFactory();
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éDestination‚ğæ“¾‚·‚éB<p>
-     * createProducerƒƒ\ƒbƒh‚ÅAMessageProducer‚ğ¶¬‚·‚éÛ‚ÉAˆø”‚ÅDestination‚ğw’è‚µ‚È‚©‚Á‚½ê‡‚ÍA‚±‚ÌDestination‚ªg—p‚³‚ê‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Destinationã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * createProducerãƒ¡ã‚½ãƒƒãƒ‰ã§ã€MessageProducerã‚’ç”Ÿæˆã™ã‚‹éš›ã«ã€å¼•æ•°ã§Destinationã‚’æŒ‡å®šã—ãªã‹ã£ãŸå ´åˆã¯ã€ã“ã®DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éDestinationBDestination‚ğ•Û‚µ‚Ä‚¢‚È‚¢ê‡‚ÍnullB
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹Destinationã€‚Destinationã‚’ä¿æŒã—ã¦ã„ãªã„å ´åˆã¯nullã€‚
      */
     public Destination getDestination();
     
     /**
-     * MessageProducer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createProducer(Destination)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageProducerCreateException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½Aˆø”‚ÌDestination‚ÍA{@link #getDestination()}‚Åæ“¾‚³‚ê‚éDestination‚ªg—p‚³‚ê‚éBgetDestination()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageProducerCreateException‚ğthrow‚·‚éB<br>
+     * MessageProducerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createProducer(Destination)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageProducerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€å¼•æ•°ã®Destinationã¯ã€{@link #getDestination()}ã§å–å¾—ã•ã‚Œã‚‹DestinationãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚getDestination()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageProducerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
      * @return MessageProducer
-     * @exception JMSMessageProducerCreateException MessageProducer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageProducerCreateException MessageProducerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageProducer createProducer()
      throws JMSMessageProducerCreateException;
     
     /**
-     * MessageProducer‚ğ¶¬‚·‚éB<p>
-     * {@link #getSession()}‚Åæ“¾‚³‚ê‚éSession‚©‚çA{@link Session#createProducer(Destination)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
-     * getSession()‚ªnull‚ğ•Ô‚·ê‡‚ÍAJMSMessageProducerCreateException‚ğthrow‚·‚éB<br>
+     * MessageProducerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getSession()}ã§å–å¾—ã•ã‚Œã‚‹Sessionã‹ã‚‰ã€{@link Session#createProducer(Destination)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * getSession()ãŒnullã‚’è¿”ã™å ´åˆã¯ã€JMSMessageProducerCreateExceptionã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param dest ˆ¶æ‚Æ‚È‚éDestination
+     * @param dest å®›å…ˆã¨ãªã‚‹Destination
      * @return MessageProducer
-     * @exception JMSMessageProducerCreateException MessageProducer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageProducerCreateException MessageProducerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageProducer createProducer(Destination dest)
      throws JMSMessageProducerCreateException;
     
     /**
-     * MessageProducer‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚©‚çA{@link Session#createProducer(Destination)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * MessageProducerã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã‹ã‚‰ã€{@link Session#createProducer(Destination)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session Session
-     * @param dest ˆ¶æ‚Æ‚È‚éDestination
+     * @param dest å®›å…ˆã¨ãªã‚‹Destination
      * @return MessageProducer
-     * @exception JMSMessageProducerCreateException MessageProducer‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageProducerCreateException MessageProducerã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageProducer createProducer(Session session, Destination dest)
      throws JMSMessageProducerCreateException;

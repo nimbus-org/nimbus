@@ -39,39 +39,39 @@ import jp.ossc.nimbus.util.*;
 import jp.ossc.nimbus.service.byteconvert.*;
 
 /**
- *	Bytes(Stream)ƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒg
+ *	Bytes(Stream)ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/28| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/28ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class BytesOrStreamMessageFormat extends CommonMessageFormat implements MessageFormat,MessageResourceDefine{
     
-    //ƒƒ“ƒo•Ï”
-	/** “d•¶ƒyƒCƒ[ƒh€–Ú‚Ìî•ñ */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** é›»æ–‡ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰é …ç›®ã®æƒ…å ± */
 	private ArrayList mPayLoadItems = null;
-	/** ƒƒbƒZ[ƒWƒCƒ“ƒvƒbƒg */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ãƒ—ãƒƒãƒˆ */
 	//private MessageInput mMessageInput = null;
-	/** ƒoƒCƒgƒRƒ“ƒo[ƒ^[ƒT[ƒrƒX */
+	/** ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
 	private ByteConverter mByteConverter = null;
-	/** ˆµ‚¤JMSƒƒbƒZ[ƒW‚Ìí•Ê (Bytes OR Stream */
+	/** æ‰±ã†JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç¨®åˆ¥ (Bytes OR Stream */
 	private String mMessageType = null;
-	//’è”éŒ¾
-	/** Œ^‚Æ’l‚ÌƒZƒpƒŒ[ƒ^i•\¦j */
+	//å®šæ•°å®£è¨€
+	/** å‹ã¨å€¤ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ï¼ˆè¡¨ç¤ºæ™‚ï¼‰ */
 	final String TYPE_VALUE_SEP = ":";
-	/** readBytes‚·‚é‚Ìbyte[]‚ÌƒTƒCƒY */
+	/** readBytesã™ã‚‹æ™‚ã®byte[]ã®ã‚µã‚¤ã‚º */
 	final int BUFLEN = 8192;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public BytesOrStreamMessageFormat(ByteConverter converter,String msgType){
 		super(converter);
-		//ƒoƒCƒgƒRƒ“ƒo[ƒ^ƒT[ƒrƒX‚Ìİ’è
+		//ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®è¨­å®š
 		mByteConverter = converter;
-		//ƒyƒCƒ[ƒh€–Ú•ÛArrayList‚Ì‰Šú‰»
+		//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰é …ç›®ä¿æŒArrayListã®åˆæœŸåŒ–
 		mPayLoadItems = new ArrayList();
-		//ƒvƒƒpƒeƒB€–Ú•ÛArrayList‚Ì‰Šú‰»
+		//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é …ç›®ä¿æŒArrayListã®åˆæœŸåŒ–
 		mPropertyItems = new ArrayList();
-		//ƒƒbƒZ[ƒWí•Ê Bytes OR Stream
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç¨®åˆ¥ Bytes OR Stream
 		if((msgType.equals("Bytes")) || (msgType.equals("Stream"))){
 			mMessageType = msgType;
 		}
@@ -80,7 +80,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}
 	}
 	/**
-	 *JMSƒƒbƒZ[ƒW‚ª•Û‚·‚éî•ñ‚ğString‰»‚·‚é
+	 *JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒä¿æŒã™ã‚‹æƒ…å ±ã‚’StringåŒ–ã™ã‚‹
 	 */
 	public String marshal(Message msg) {
 		if( (!(msg instanceof BytesMessage)) && (!(msg instanceof StreamMessage)) ){
@@ -88,12 +88,12 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}
 		byte[] readBytesBuffer = new byte[BUFLEN];
 		StringBuilder retMsg = new StringBuilder();
-		//ƒ‰ƒbƒp[JMSƒƒbƒZ[ƒW‚ğİ’è
+		//ãƒ©ãƒƒãƒ‘ãƒ¼JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®š
 		MessageWrapper msgWrapper = new MessageWrapper(msg);
 		try{
-			//ƒvƒƒpƒeƒB•”‚ğString‰»
+			//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã‚’StringåŒ–
 			retMsg.append(dumpProperties(msg));
-			//ƒyƒCƒ[ƒh•”‚ğString‰»
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨ã‚’StringåŒ–
 			Iterator Items = mPayLoadItems.iterator();
 			while(Items.hasNext()){
 				PayLoadItem item = (PayLoadItem)Items.next();
@@ -117,15 +117,15 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 						retMsg.append(TYPE_BYTES_STR);
 						retMsg.append(TYPE_VALUE_SEP);
 						int readNum = -1;
-						//ƒf[ƒ^‚ğ“Ç‚İ‚Ş					
+						//ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€					
 						while(true){
 							readNum = msgWrapper.readBytes(readBytesBuffer);
 							if(readNum == -1){
-								//‚±‚êˆÈãƒf[ƒ^‚Í‚È‚¢BI—¹
+								//ã“ã‚Œä»¥ä¸Šãƒ‡ãƒ¼ã‚¿ã¯ãªã„ã€‚çµ‚äº†
 								break;
 							}
 							else{
-								//ƒf[ƒ^‚ğ•¶š—ñ‰»‚·‚éB
+								//ãƒ‡ãƒ¼ã‚¿ã‚’æ–‡å­—åˆ—åŒ–ã™ã‚‹ã€‚
 								for(int rCnt=0;rCnt<readNum;rCnt++){
 									tmp = (int)readBytesBuffer[rCnt];
 									retMsg.append("0x");
@@ -133,12 +133,12 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 									retMsg.append(" ");
 								}
 								if(readNum == BUFLEN){
-									//‚à‚¤ˆê‰ñ“Ç‚İ‚Ş•K—v‚ ‚èB
+									//ã‚‚ã†ä¸€å›èª­ã¿è¾¼ã‚€å¿…è¦ã‚ã‚Šã€‚
 									
 								}
 								else{
-									//I—¹
-									break;//whileƒ‹[ƒv‚ğƒuƒŒ[ƒN
+									//çµ‚äº†
+									break;//whileãƒ«ãƒ¼ãƒ—ã‚’ãƒ–ãƒ¬ãƒ¼ã‚¯
 								}
 							}
 						}
@@ -195,7 +195,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 						break;
 					case TYPE_OBJECT:
 						retMsg.append(TYPE_OBJECT_STR);
-						//wrappedType‚É‰‚¶‚Ä
+						//wrappedTypeã«å¿œã˜ã¦
 						retMsg.append( "(" + getWrappedTypeStr(item.getWrappedType()) + ")" );
 						retMsg.append(TYPE_VALUE_SEP);
 						retMsg.append(msgWrapper.readObject());
@@ -211,7 +211,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		return retMsg.toString();
 	}
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ÌƒyƒCƒ[ƒhİ’è
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰è¨­å®š
 	 */
 	protected void setPayload(Message msg,String payload) {
 		MessageWrapper msgWrapper = new MessageWrapper(msg);
@@ -222,7 +222,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 				int type = item.getType();
 				String valueStr = null;
 				if(item.UseFile()){
-					//ƒyƒCƒ[ƒh•¶š—ñ(ƒJƒ“ƒ}‹æØ‚èj‚©‚ç’l‚ğ•\‚·•¶š—ñ‚ğæ“¾‚·‚éB
+					//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰æ–‡å­—åˆ—(ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šï¼‰ã‹ã‚‰å€¤ã‚’è¡¨ã™æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
 					CsvArrayList elems = new CsvArrayList();
 					elems.split(payload);
 					int index = -1;
@@ -235,10 +235,10 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 					}
 				}
 				else{
-					//‘¦’l
+					//å³å€¤
 					valueStr = item.getValue();
 				}
-				//Œ^‚É‰‚¶‚½writeƒƒ\ƒbƒh‚ğg‚¤
+				//å‹ã«å¿œã˜ãŸwriteãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ã†
 				switch(type){
 						case TYPE_BYTE:
 							byte[] tmp = mByteConverter.hex2byte(valueStr);
@@ -291,7 +291,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}
 	}
 	/**
-	 * JMSƒƒbƒZ[ƒW¶¬ƒƒ\ƒbƒh
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public Message unMarshal(QueueSession session) {
 		Message msg = null;
@@ -322,11 +322,11 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 	protected void recvPayloadParse(Element elem) {
 		NodeList list = elem.getElementsByTagName(PAYLOAD_TAG_NAME);
 		if (list.getLength() < 1){
-			//ƒyƒCƒ[ƒh‚Ì’è‹`–³‚µ
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®å®šç¾©ç„¡ã—
 			throw new ServiceException("MESSAGERESOURCEFACTORY011","Not Found " + 
 										"<" + PAYLOAD_TAG_NAME + ">");
 		}
-		//Å‰‚É’è‹`‚³‚ê‚Ä‚¢‚éƒyƒCƒ[ƒh‚ğg‚¤B‰¼‚É•¡”’è‹`‚³‚ê‚Ä‚¢‚Ä‚à–³‹‚·‚éB
+		//æœ€åˆã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚’ä½¿ã†ã€‚ä»®ã«è¤‡æ•°å®šç¾©ã•ã‚Œã¦ã„ã¦ã‚‚ç„¡è¦–ã™ã‚‹ã€‚
 		Element payLoad = (Element)list.item(0);
 		NodeList payLoadItems = payLoad.getElementsByTagName(PAYLOAD_ITEM);
 		for(int rCnt=0;rCnt<payLoadItems.getLength();rCnt++){
@@ -345,7 +345,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			}
 			int typeCode = getReadTypeCode(type,mMessageType);
 			if(typeCode < 0){
-				//—LŒø‚ÈŒ^w’è‚Å‚Í‚È‚¢B
+				//æœ‰åŠ¹ãªå‹æŒ‡å®šã§ã¯ãªã„ã€‚
 				throw new ServiceException("MESSAGERESOURCEFACTORY012","Invalid Type :" + type); 										
 			}
 			mPayLoadItems.add(new PayLoadItem(typeCode,wrappedTypeCode));	
@@ -354,11 +354,11 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 	protected void sendPayloadParse(Element elem,boolean fileSpecifiedFlag) {
 		NodeList list = elem.getElementsByTagName(PAYLOAD_TAG_NAME);
 		if (list.getLength() < 1){
-			//ƒyƒCƒ[ƒh‚Ì’è‹`–³‚µ
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®å®šç¾©ç„¡ã—
 			throw new ServiceException("MESSAGERESOURCEFACTORY012","Not Found " + 
 										"<" + PAYLOAD_TAG_NAME + ">");
 		}
-		//Å‰‚É’è‹`‚³‚ê‚Ä‚¢‚éƒyƒCƒ[ƒh‚ğg‚¤B‰¼‚É•¡”’è‹`‚³‚ê‚Ä‚¢‚Ä‚à–³‹‚·‚éB
+		//æœ€åˆã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚’ä½¿ã†ã€‚ä»®ã«è¤‡æ•°å®šç¾©ã•ã‚Œã¦ã„ã¦ã‚‚ç„¡è¦–ã™ã‚‹ã€‚
 		Element payLoad = (Element)list.item(0);
 		NodeList payLoadItems = payLoad.getElementsByTagName(PAYLOAD_ITEM);
 		for(int rCnt=0;rCnt<payLoadItems.getLength();rCnt++){
@@ -373,46 +373,46 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 				wrappedType = MessageResourceUtil.getAttMustBeSpecified(payLoadItem,PAYLOAD_ITEM_WRAPPED_TYPE_ATT);
 				wrappedTypeCode = getWrappedTypeCode(wrappedType,false);
 				if(wrappedTypeCode < 0){
-					//—LŒø‚ÈŒ^w’è‚Å‚Í‚È‚¢B
+					//æœ‰åŠ¹ãªå‹æŒ‡å®šã§ã¯ãªã„ã€‚
 					throw new ServiceException("MESSAGERESOURCEFACTORY012","Invalid Wrapped Type :" + wrappedType); 										
 				}
 			}
-			//’l‚ğæ“¾
+			//å€¤ã‚’å–å¾—
 			val = MessageResourceUtil.getValueMustbeSpecified(payLoadItem);
-			//ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾
+			//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—
 			String resourceType = payLoadItem.getAttribute(PAYLOAD_RES_TYPE_ATT);
 			if(resourceType.equals(FILE_VAL)){
 				if(fileSpecifiedFlag){
 					useFile = true;
 				}
 				else{
-					//ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚é‚æ‚¤‚Éw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚éitem‚Í’è‹`‚Å‚«‚È‚¢
+					//ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹ã‚ˆã†ã«æŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹itemã¯å®šç¾©ã§ããªã„
 					throw new ServiceException("MESSAGERESOURCEFACTORY015","File not specified. But " 
 											+ PAYLOAD_ITEM_TYPE_ATT + " has " + FILE_VAL + " attribute.");
 				}
 			}
 			int typeCode = getWriteTypeCode(type,mMessageType);
-			//Œ^’è‹`‘®«‚Ì’lƒ`ƒFƒbƒN
+			//å‹å®šç¾©å±æ€§ã®å€¤ãƒã‚§ãƒƒã‚¯
 			if(typeCode < 0){
-				//—LŒø‚ÈŒ^w’è‚Å‚Í‚È‚¢B
+				//æœ‰åŠ¹ãªå‹æŒ‡å®šã§ã¯ãªã„ã€‚
 				throw new ServiceException("MESSAGERESOURCEFACTORY012","Invalid Type :" + type); 										
 			}
 			mPayLoadItems.add(new PayLoadItem(typeCode,wrappedTypeCode,val,useFile));	
 		}
 	}	
 	private class PayLoadItem{
-		//ƒƒ“ƒo•Ï”
-		/** int,short,Object“™AŒ^î•ñ */
+		//ãƒ¡ãƒ³ãƒå¤‰æ•°
+		/** int,short,Objectç­‰ã€å‹æƒ…å ± */
 		int mType;
-		/** mType‚ªObject‚ÌAÀÛ‚ÌŒ^‚ğ‚±‚Ì•Ï”‚Éw’è‚·‚éB */
+		/** mTypeãŒObjectã®æ™‚ã€å®Ÿéš›ã®å‹ã‚’ã“ã®å¤‰æ•°ã«æŒ‡å®šã™ã‚‹ã€‚ */
 		int mWrappedType;
-		/** XML’è‹`ƒtƒ@ƒCƒ‹‚É‘¦’l‚ª‘‚¢‚Ä‚ ‚é‚Æ‚«A‚±‚Ì•Ï”‚É‘¦’l‚ğİ’è‚·‚éB */
+		/** XMLå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã«å³å€¤ãŒæ›¸ã„ã¦ã‚ã‚‹ã¨ãã€ã“ã®å¤‰æ•°ã«å³å€¤ã‚’è¨­å®šã™ã‚‹ã€‚ */
 		String mVal;
-		/** ƒŠƒ\[ƒXí•Ê "file"‚©"direct"*/
+		/** ãƒªã‚½ãƒ¼ã‚¹ç¨®åˆ¥ "file"ã‹"direct"*/
 		boolean mFileRefFlag;
 		/** 
-		 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-		 * ’l‚Ínull,ƒtƒ@ƒCƒ‹QÆƒtƒ‰ƒO‚Ífalse‚É‚·‚éB
+		 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+		 * å€¤ã¯null,ãƒ•ã‚¡ã‚¤ãƒ«å‚ç…§ãƒ•ãƒ©ã‚°ã¯falseã«ã™ã‚‹ã€‚
 		 */
 		public PayLoadItem(int type,int wrappedtype){
 			mType = type;
@@ -421,7 +421,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			mFileRefFlag = false;	
 		}
 		/**
-		 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		 *	
 		 */
 		public PayLoadItem(int type,int inctype,String val,boolean fileRefFlag){
@@ -430,32 +430,32 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			mVal = val;
 			mFileRefFlag = fileRefFlag;
 		}
-		/** Type‚ÌƒQƒbƒ^[ */
+		/** Typeã®ã‚²ãƒƒã‚¿ãƒ¼ */
 		public int getType(){
 			return mType;
 		}
-		/** ƒ‰ƒbƒv‚³‚ê‚Ä‚¢‚é Type‚ÌƒQƒbƒ^[ */
+		/** ãƒ©ãƒƒãƒ—ã•ã‚Œã¦ã„ã‚‹ Typeã®ã‚²ãƒƒã‚¿ãƒ¼ */
 		public int getWrappedType(){
 			return mWrappedType;
 		}
-		/** XMLƒtƒ@ƒCƒ‹‚É‹Lq‚³‚ê‚½‘¦’l‚ÌƒQƒbƒ^[ */
+		/** XMLãƒ•ã‚¡ã‚¤ãƒ«ã«è¨˜è¿°ã•ã‚ŒãŸå³å€¤ã®ã‚²ãƒƒã‚¿ãƒ¼ */
 		public String getValue(){
 			return mVal;
 		}
-		/** ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO */
+		/** ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚° */
 		public boolean UseFile(){
 			return mFileRefFlag;
 		}
 	}
 	/**
-	 * BytesMessage‚ÆStreamMessage‚Ìƒ‰ƒbƒp[
+	 * BytesMessageã¨StreamMessageã®ãƒ©ãƒƒãƒ‘ãƒ¼
 	 * 
 	 */
 	private class MessageWrapper{
-		//ƒƒ“ƒo•Ï”
+		//ãƒ¡ãƒ³ãƒå¤‰æ•°
 		Message mMessage;
 		/**
-		 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		 * @return
 		 */
 		public MessageWrapper(Message msg){
@@ -468,7 +468,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			}
 		}
 		/**
-		 * readByte‚Ìƒ‰ƒbƒp[
+		 * readByteã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public byte readByte() throws JMSException{
 			byte ret;
@@ -492,7 +492,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readBytes‚Ìƒ‰ƒbƒp[
+		 * readBytesã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */	
 		public int readBytes(byte[] value) throws JMSException{
 			int ret;
@@ -505,7 +505,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readBoolean‚Ìƒ‰ƒbƒp[
+		 * readBooleanã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public boolean readBoolean() throws JMSException{
 			boolean ret;
@@ -518,7 +518,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readChar‚Ìƒ‰ƒbƒp[
+		 * readCharã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public char readChar() throws JMSException{
 			char ret;
@@ -531,7 +531,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readShort‚Ìƒ‰ƒbƒp[
+		 * readShortã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public short readShort() throws JMSException{
 			short ret;
@@ -544,7 +544,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readUnsignedShort‚Ìƒ‰ƒbƒp[
+		 * readUnsignedShortã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public int readUnsignedShort() throws JMSException{
 			int ret;
@@ -558,7 +558,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readInt‚Ìƒ‰ƒbƒp[
+		 * readIntã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public int readInt() throws JMSException{
 			int ret;
@@ -571,7 +571,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readLong‚Ìƒ‰ƒbƒp[
+		 * readLongã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public long readLong() throws JMSException{
 			long ret;
@@ -584,7 +584,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readFloat‚Ìƒ‰ƒbƒp[
+		 * readFloatã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public float readFloat() throws JMSException{
 			float ret;
@@ -597,7 +597,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readDouble‚Ìƒ‰ƒbƒp[
+		 * readDoubleã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public double readDouble() throws JMSException{
 			double ret;
@@ -610,7 +610,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readUTF‚Ìƒ‰ƒbƒp[
+		 * readUTFã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public String readUTF() throws JMSException{
 			String ret;
@@ -624,7 +624,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			return ret;
 		}
 		/**
-		 * readString‚Ìƒ‰ƒbƒp[
+		 * readStringã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public String readString() throws JMSException{
 			String ret;
@@ -640,7 +640,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}
 		
 		/**
-		 * readObject‚Ìƒ‰ƒbƒp[
+		 * readObjectã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public Object readObject() throws JMSException{
 			Object ret;
@@ -656,7 +656,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}
 		
 		/**
-		 * writeByte‚Ìƒ‰ƒbƒp[
+		 * writeByteã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeByte(byte value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -668,7 +668,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeBytes‚Ìƒ‰ƒbƒp[
+		 * writeBytesã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeBytes(byte[] value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -679,7 +679,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			}
 		}	
 		/**
-		 * writeBoolean‚Ìƒ‰ƒbƒp[
+		 * writeBooleanã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeBoolean(boolean value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -690,7 +690,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			}
 		}	
 		/**
-		 * writeChar‚Ìƒ‰ƒbƒp[
+		 * writeCharã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeChar(char value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -702,7 +702,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeShort‚Ìƒ‰ƒbƒp[
+		 * writeShortã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeShort(short value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -714,7 +714,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeInt‚Ìƒ‰ƒbƒp[
+		 * writeIntã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeInt(int value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -726,7 +726,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeLong‚Ìƒ‰ƒbƒp[
+		 * writeLongã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeLong(long value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -738,7 +738,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeFloat‚Ìƒ‰ƒbƒp[
+		 * writeFloatã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeFloat(float value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -750,7 +750,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeDouble‚Ìƒ‰ƒbƒp[
+		 * writeDoubleã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeDouble(double value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -762,7 +762,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 		}	
 
 		/**
-		 * writeUTF‚Ìƒ‰ƒbƒp[
+		 * writeUTFã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeUTF(String value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -774,7 +774,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			}
 		}	
 		/**
-		 * writeString‚Ìƒ‰ƒbƒp[
+		 * writeStringã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeString(String value) throws JMSException{
 			if( mMessage instanceof BytesMessage){
@@ -786,7 +786,7 @@ public class BytesOrStreamMessageFormat extends CommonMessageFormat implements M
 			}
 		}	
 		/**
-		 * writeObject‚Ìƒ‰ƒbƒp[
+		 * writeObjectã®ãƒ©ãƒƒãƒ‘ãƒ¼
 		 */
 		public void writeObject(Object obj) throws JMSException{
 			if( mMessage instanceof BytesMessage){

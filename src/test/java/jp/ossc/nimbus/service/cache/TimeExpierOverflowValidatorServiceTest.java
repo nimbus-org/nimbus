@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import junit.framework.*;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ ‚Ó‚êŒŸØƒT[ƒrƒXƒeƒXƒgB<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ãƒ†ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
@@ -266,16 +266,16 @@ public class TimeExpierOverflowValidatorServiceTest extends TestCase{
             validator.reset();
             final CachedReference ref = new DefaultCachedReference("TEST");
             if ((millis % 1500) != 0) {
-                // Ÿ‚Ì—LŒø‹æØ‚è‚Ü‚ÅƒXƒŠ[ƒv
+                // æ¬¡ã®æœ‰åŠ¹åŒºåˆ‡ã‚Šã¾ã§ã‚¹ãƒªãƒ¼ãƒ—
                 Thread.sleep(1500 - (millis % 1500));
             }
 
             validator.add(ref);
-            // íœ‚³‚ê‚È‚¢
+            // å‰Šé™¤ã•ã‚Œãªã„
             assertEquals(0, validator.validate());
-            // Ÿ‚Ì—LŒø‹æØ‚è‚Ü‚ÅƒXƒŠ[ƒv
+            // æ¬¡ã®æœ‰åŠ¹åŒºåˆ‡ã‚Šã¾ã§ã‚¹ãƒªãƒ¼ãƒ—
             Thread.sleep(1500);
-            // Ÿ‚Ì—LŒø‹æØ‚è‚Åíœ
+            // æ¬¡ã®æœ‰åŠ¹åŒºåˆ‡ã‚Šã§å‰Šé™¤
             assertEquals(1, validator.validate());
         }
 
@@ -299,7 +299,7 @@ public class TimeExpierOverflowValidatorServiceTest extends TestCase{
         long start = System.currentTimeMillis();
         if ((start % period) != 0) {
             start = start + period - (start % period);
-            // Ÿ‚Ì—LŒø‹æØ‚è‚Ü‚ÅƒXƒŠ[ƒv
+            // æ¬¡ã®æœ‰åŠ¹åŒºåˆ‡ã‚Šã¾ã§ã‚¹ãƒªãƒ¼ãƒ—
             Thread.sleep(period - (start % period));
         }
         
@@ -311,7 +311,7 @@ public class TimeExpierOverflowValidatorServiceTest extends TestCase{
             Thread.sleep(start + (long)(period * 1.4) - current);
         }
         
-        // —LŒø‹æØ‚è‚Åíœ
+        // æœ‰åŠ¹åŒºåˆ‡ã‚Šã§å‰Šé™¤
         assertEquals(1, validator.validate());
         validator.add(new DefaultCachedReference("TEST2"));
         
@@ -326,7 +326,7 @@ public class TimeExpierOverflowValidatorServiceTest extends TestCase{
         if(start + (period * 2.5) > current){
             Thread.sleep(start + (long)(period * 2.5) - current);
         }
-        // —LŒø‹æØ‚è‚Å3Œíœ
+        // æœ‰åŠ¹åŒºåˆ‡ã‚Šã§3ä»¶å‰Šé™¤
         assertEquals(3, validator.validate());
     }
 
@@ -346,19 +346,19 @@ public class TimeExpierOverflowValidatorServiceTest extends TestCase{
         long start = System.currentTimeMillis();
         if ((start % period) != 0) {
             start = start + period - (start % period);
-            // Ÿ‚Ì—LŒø‹æØ‚è‚Ü‚ÅƒXƒŠ[ƒv
+            // æ¬¡ã®æœ‰åŠ¹åŒºåˆ‡ã‚Šã¾ã§ã‚¹ãƒªãƒ¼ãƒ—
             Thread.sleep(period - (start % period));
         }
         
         validator.add(ref);
         assertEquals(0, validator.validate());
         
-        // —LŒøŠúŠÔ‚Ü‚ÅƒXƒŠ[ƒv
+        // æœ‰åŠ¹æœŸé–“ã¾ã§ã‚¹ãƒªãƒ¼ãƒ—
         long current = System.currentTimeMillis();
         if(start + (expierTime * 1.5) > current){
             Thread.sleep(start + (long)(expierTime * 1.5) - current);
         }
-        // —LŒøŠúŠÔØ‚ê‚Åíœ
+        // æœ‰åŠ¹æœŸé–“åˆ‡ã‚Œã§å‰Šé™¤
         assertEquals(1, validator.validate());
         validator.add(new DefaultCachedReference("TEST2"));
         
@@ -370,7 +370,7 @@ public class TimeExpierOverflowValidatorServiceTest extends TestCase{
         
         current = System.currentTimeMillis();
         Thread.sleep((long)((period - (current - 9 * 60 * 60 * 1000) % period) * 1.5));
-        // —LŒø‹æØ‚è‚ğ’´‚¦‚½‚Ì‚Å‚·‚×‚Äíœ
+        // æœ‰åŠ¹åŒºåˆ‡ã‚Šã‚’è¶…ãˆãŸã®ã§ã™ã¹ã¦å‰Šé™¤
         assertEquals(3, validator.validate());
     }
 

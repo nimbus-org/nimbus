@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer.log4j;
 
 /**
- * {@link FileAppenderWriterService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link FileAppenderWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -40,59 +40,59 @@ public interface FileAppenderWriterServiceMBean
  extends WriterAppenderWriterServiceMBean{
     
     /**
-     * ƒtƒ@ƒCƒ‹’Ç‰Á‘‚«‚İƒ‚[ƒh‚ğİ’è‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«è¿½åŠ æ›¸ãè¾¼ã¿ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param append ’Ç‰Á‘‚«‚İ‚ğs‚¤ê‡true
+     * @param append è¿½åŠ æ›¸ãè¾¼ã¿ã‚’è¡Œã†å ´åˆtrue
      */
     public void setAppend(boolean append);
     
     /**
-     * ƒtƒ@ƒCƒ‹’Ç‰Á‘‚«‚İƒ‚[ƒh‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«è¿½åŠ æ›¸ãè¾¼ã¿ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A’Ç‰Á‘‚«‚İ‚ğs‚¤
+     * @return trueã®å ´åˆã€è¿½åŠ æ›¸ãè¾¼ã¿ã‚’è¡Œã†
      */
     public boolean isAppend();
     
     /**
-     * ƒtƒ@ƒCƒ‹‘‚«‚İ‚Åƒoƒbƒtƒ@ƒŠƒ“ƒO‚ğs‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãè¾¼ã¿ã§ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã‚’è¡Œã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param bufferedIO BufferedWriter‚ğg—p‚µ‚Äƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éê‡true
+     * @param bufferedIO BufferedWriterã‚’ä½¿ç”¨ã—ã¦ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹å ´åˆtrue
      */
     public void setBufferedIO(boolean bufferedIO);
     
     /**
-     * ƒoƒbƒtƒ@ƒŠƒ“ƒO‚µ‚Äƒtƒ@ƒCƒ‹‘‚«‚İ‚ğs‚¤‚©’²‚×‚éB<p>
+     * ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãè¾¼ã¿ã‚’è¡Œã†ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚é
+     * @return trueã®å ´åˆã€ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹
      */
     public boolean isBufferedIO();
     
     /**
-     * ƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
-     * {@link #isBufferedIO()}‚ªtrue‚Ìê‡A—LŒø‚É‚È‚éB<br>
+     * ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #isBufferedIO()}ãŒtrueã®å ´åˆã€æœ‰åŠ¹ã«ãªã‚‹ã€‚<br>
      *
-     * @param bufferSize ƒoƒbƒtƒ@ƒTƒCƒY
+     * @param bufferSize ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setBufferSize(int bufferSize);
     
     /**
-     * ƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒtƒ@ƒTƒCƒY
+     * @return ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getBufferSize();
     
     /**
-     * o—Íæ‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚·‚éB<p>
+     * å‡ºåŠ›å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
      *
-     * @param file o—Íæƒtƒ@ƒCƒ‹–¼
+     * @param file å‡ºåŠ›å…ˆãƒ•ã‚¡ã‚¤ãƒ«å
      */
     public void setFile(String file);
     
     /**
-     * o—Íæƒtƒ@ƒCƒ‹–¼‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›å…ˆãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Íæƒtƒ@ƒCƒ‹–¼
+     * @return å‡ºåŠ›å…ˆãƒ•ã‚¡ã‚¤ãƒ«å
      */
     public String getFile();
 }

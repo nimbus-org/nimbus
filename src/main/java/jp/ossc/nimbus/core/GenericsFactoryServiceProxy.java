@@ -39,7 +39,7 @@ import javax.management.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ”Ä—pƒtƒ@ƒNƒgƒŠƒT[ƒrƒXƒvƒƒLƒVB<p>
+ * æ±ç”¨ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ã‚­ã‚·ã€‚<p>
  *
  * @author M.Takata
  */
@@ -105,9 +105,9 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
                 method.getParameterTypes()
             );
             
-            // JRockit‚ÆSun JVM‚Ì“®ì‚Ìˆá‚¢‚ğ‹zû‚·‚é‚½‚ß‚ÌÀ‘•
-            // JRockit‚Å‚ÍAƒCƒ“ƒ^ƒtƒF[ƒX‚ÌClassƒIƒuƒWƒFƒNƒg‚ª
-            // ObjectƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX‚Æ‚¢‚¤ˆµ‚¢‚É‚È‚Á‚Ä‚¢‚é
+            // JRockitã¨Sun JVMã®å‹•ä½œã®é•ã„ã‚’å¸åã™ã‚‹ãŸã‚ã®å®Ÿè£…
+            // JRockitã§ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®Classã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒ
+            // Objectã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨ã„ã†æ‰±ã„ã«ãªã£ã¦ã„ã‚‹
             if(Object.class.equals(decMethod.getDeclaringClass())){
                 return false;
             }
@@ -288,7 +288,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         metaData = null;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public Object getAttribute(String attribute)
      throws AttributeNotFoundException, MBeanException, ReflectionException{
         final MBeanAttributeInfo attributeInfo
@@ -331,7 +331,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         throw new AttributeNotFoundException(attribute);
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public AttributeList getAttributes(String[] attributes){
         final AttributeList list = new AttributeList();
         for(int i = 0; i < attributes.length; i++){
@@ -350,7 +350,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         return list;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public void setAttribute(Attribute attribute)
      throws AttributeNotFoundException, InvalidAttributeValueException,
             MBeanException, ReflectionException{
@@ -449,7 +449,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         }
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public AttributeList setAttributes(AttributeList attributes){
         final AttributeList list = new AttributeList();
         for(int i = 0, max = attributes.size(); i < max; i++){
@@ -466,7 +466,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         return list;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public Object invoke(
         String actionName,
         Object[] params,
@@ -549,7 +549,7 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         return ret;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public MBeanInfo getMBeanInfo(){
         return mbeanInfo;
     }
@@ -573,17 +573,17 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * {@link ServiceManager#instanciateService(ServiceMetaData)}‚Å¶¬‚µ‚½ƒT[ƒrƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‘Î‚µ‚ÄAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link ServiceManager#instanciateService(ServiceMetaData)}ã§ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«å¯¾ã—ã¦ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link #isManagement()}‚ªtrue‚Ìê‡A¶¬‚µ‚½ƒT[ƒrƒX‚ÉƒT[ƒrƒX–¼‚ÆƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼‚ğİ’è‚·‚éB‚±‚ÌÛAƒT[ƒrƒX–¼‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ÌŒã‚ë‚É"$" + "ŠÇ—‚³‚ê‚Ä‚¢‚é¶¬‚µ‚½ƒT[ƒrƒX‚Ì’Ê‚µ”Ô†"‚ğ•t—^‚µ‚½‚à‚Ì‚Å‚ ‚éB‚Ü‚½AƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼‚Æ“¯‚¶‚Å‚ ‚éB</li>
-     *   <li>¶¬‚µ‚½ƒT[ƒrƒX‚Ì¶¬ˆ—i{@link Service#create()}jB</li>
-     *   <li>¶¬‚µ‚½ƒT[ƒrƒX‚ÌŠJnˆ—i{@link Service#start()}jB</li>
-     *   <li>¶¬‚µ‚½ƒT[ƒrƒX‚ª{@link ServiceBase}‚ğŒp³‚µ‚Ä‚¢‚éê‡‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Éİ’è‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.log.Logger Logger}‚Æ{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}‚ğA¶¬‚µ‚½ƒT[ƒrƒX‚É‚àİ’è‚·‚éB</li>
+     *   <li>{@link #isManagement()}ãŒtrueã®å ´åˆã€ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã«ã‚µãƒ¼ãƒ“ã‚¹åã¨ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£åã‚’è¨­å®šã™ã‚‹ã€‚ã“ã®éš›ã€ã‚µãƒ¼ãƒ“ã‚¹åã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®å¾Œã‚ã«"$" + "ç®¡ç†ã•ã‚Œã¦ã„ã‚‹ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®é€šã—ç•ªå·"ã‚’ä»˜ä¸ã—ãŸã‚‚ã®ã§ã‚ã‚‹ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£åã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£åã¨åŒã˜ã§ã‚ã‚‹ã€‚</li>
+     *   <li>ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ï¼ˆ{@link Service#create()}ï¼‰ã€‚</li>
+     *   <li>ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ï¼ˆ{@link Service#start()}ï¼‰ã€‚</li>
+     *   <li>ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã‚’ç¶™æ‰¿ã—ã¦ã„ã‚‹å ´åˆã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.log.Logger Logger}ã¨{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚’ã€ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã«ã‚‚è¨­å®šã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected final Object createInstance() throws Exception{
         return createInstance(false);
@@ -670,10 +670,10 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
     }
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAƒT[ƒrƒX‚ª{@link ServiceBase}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚ê‚ÎA{@link ServiceBase#setSystemLoggerServiceName(ServiceName)}‚ğŒÄ‚Ño‚·B<br>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚Œã°ã€{@link ServiceBase#setSystemLoggerServiceName(ServiceName)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemLoggerServiceName()
      */
     public void setSystemLoggerServiceName(ServiceName name){
@@ -691,10 +691,10 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
     }
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAƒT[ƒrƒX‚ª{@link ServiceBase}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚ê‚ÎA{@link ServiceBase#setSystemMessageRecordFactoryServiceName(ServiceName)}‚ğŒÄ‚Ño‚·B<br>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚Œã°ã€{@link ServiceBase#setSystemMessageRecordFactoryServiceName(ServiceName)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemMessageRecordFactoryServiceName()
      */
     public void setSystemMessageRecordFactoryServiceName(

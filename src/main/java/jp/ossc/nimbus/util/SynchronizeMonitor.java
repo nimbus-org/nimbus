@@ -32,122 +32,122 @@
 package jp.ossc.nimbus.util;
 
 /**
- * �������j�^�B<p>
+ * 同期モニタ。<p>
  * 
  * @author M.Takata
  */
 public interface SynchronizeMonitor{
     
     /**
-     * �Ăяo���X���b�h�ɑ΂��郂�j�^������������B<p>
-     * {@link #waitMonitor()}�A{@link #waitMonitor(long)}���Ăяo���O�ɁA���̃��\�b�h���ĂԕK�v������B<br>
+     * 呼び出しスレッドに対するモニタを初期化する。<p>
+     * {@link #waitMonitor()}、{@link #waitMonitor(long)}を呼び出す前に、このメソッドを呼ぶ必要がある。<br>
      *
-     * @return ���j�^������������O�ɒʒm����Ă����true
+     * @return モニタを初期化する前に通知されていればtrue
      */
     public boolean initMonitor();
     
     /**
-     * �w�肵���X���b�h�ɑ΂��郂�j�^������������B<p>
-     * �w�肵���X���b�h���A{@link #waitMonitor()}�A{@link #waitMonitor(long)}���Ăяo���O�ɁA���̃��\�b�h���ĂԕK�v������B<br>
+     * 指定したスレッドに対するモニタを初期化する。<p>
+     * 指定したスレッドが、{@link #waitMonitor()}、{@link #waitMonitor(long)}を呼び出す前に、このメソッドを呼ぶ必要がある。<br>
      *
-     * @param thread ���̃��j�^�ɑ΂��đҋ@����X���b�h
-     * @return ���j�^������������O�ɒʒm����Ă����true
+     * @param thread このモニタに対して待機するスレッド
+     * @return モニタを初期化する前に通知されていればtrue
      */
     public boolean initMonitor(Thread thread);
     
     /**
-     * �Ăяo���X���b�h�ɑ΂��郂�j�^���������B<p>
-     * ����X���b�h�ł��̃��j�^���ė��p����ꍇ�ɂ́A���̃��\�b�h���Ăяo���Ȃ��Ă��ǂ��B<br>
+     * 呼び出しスレッドに対するモニタを解放する。<p>
+     * 同一スレッドでこのモニタを再利用する場合には、このメソッドを呼び出さなくても良い。<br>
      */
     public void releaseMonitor();
     
     /**
-     * �S�Ẵ��j�^���������B<p>
+     * 全てのモニタを解放する。<p>
      */
     public void releaseAllMonitor();
     
     /**
-     * �ʒm������܂őҋ@����B<p>
-     * {@link #notifyMonitor()}�A{@link #notifyAllMonitor()}�ɂ���Ēʒm�����܂őҋ@����B<br>
+     * 通知が来るまで待機する。<p>
+     * {@link #notifyMonitor()}、{@link #notifyAllMonitor()}によって通知されるまで待機する。<br>
      *
-     * @exception InterruptedException ���肱�܂ꂽ�ꍇ
+     * @exception InterruptedException 割りこまれた場合
      */
     public void initAndWaitMonitor() throws InterruptedException;
     
     /**
-     * �ʒm�����邩�A�w�肳�ꂽ���Ԃ��o�߂���܂őҋ@����B<p>
-     * {@link #notifyMonitor()}�A{@link #notifyAllMonitor()}�ɂ���Ēʒm�����܂őҋ@����B<br>
+     * 通知が来るか、指定された時間が経過するまで待機する。<p>
+     * {@link #notifyMonitor()}、{@link #notifyAllMonitor()}によって通知されるまで待機する。<br>
      *
-     * @return �ʒm�ɂ���ċN�����ꂽ�ꍇtrue�B�^�C���A�E�g�����ꍇfalse
-     * @exception InterruptedException ���肱�܂ꂽ�ꍇ
+     * @return 通知によって起こされた場合true。タイムアウトした場合false
+     * @exception InterruptedException 割りこまれた場合
      */
     public boolean initAndWaitMonitor(long timeout) throws InterruptedException;
     
     /**
-     * �ʒm������܂őҋ@����B<p>
-     * {@link #notifyMonitor()}�A{@link #notifyAllMonitor()}�ɂ���Ēʒm�����܂őҋ@����B<br>
+     * 通知が来るまで待機する。<p>
+     * {@link #notifyMonitor()}、{@link #notifyAllMonitor()}によって通知されるまで待機する。<br>
      *
-     * @exception InterruptedException ���肱�܂ꂽ�ꍇ
+     * @exception InterruptedException 割りこまれた場合
      */
     public void waitMonitor() throws InterruptedException;
     
     /**
-     * �ʒm�����邩�A�w�肳�ꂽ���Ԃ��o�߂���܂őҋ@����B<p>
-     * {@link #notifyMonitor()}�A{@link #notifyAllMonitor()}�ɂ���Ēʒm�����܂őҋ@����B<br>
+     * 通知が来るか、指定された時間が経過するまで待機する。<p>
+     * {@link #notifyMonitor()}、{@link #notifyAllMonitor()}によって通知されるまで待機する。<br>
      *
-     * @return �ʒm�ɂ���ċN�����ꂽ�ꍇtrue�B�^�C���A�E�g�����ꍇfalse
-     * @exception InterruptedException ���肱�܂ꂽ�ꍇ
+     * @return 通知によって起こされた場合true。タイムアウトした場合false
+     * @exception InterruptedException 割りこまれた場合
      */
     public boolean waitMonitor(long timeout) throws InterruptedException;
     
     /**
-     * �ҋ@���Ă���ŏ��̃X���b�h�ɒʒm����B<p>
+     * 待機している最初のスレッドに通知する。<p>
      */
     public void notifyMonitor();
     
     /**
-     * �ҋ@���Ă���S�ẴX���b�h�ɒʒm����B<p>
+     * 待機している全てのスレッドに通知する。<p>
      */
     public void notifyAllMonitor();
     
     /**
-     * ���̃X���b�h���ʒm�ɂ���ċN�����ꂽ���ǂ����𔻒肷��B<p>
+     * このスレッドが通知によって起こされたかどうかを判定する。<p>
      * 
-     * @return �ʒm�ɂ���ċN�����ꂽ�ꍇ��true
+     * @return 通知によって起こされた場合はtrue
      */
     public boolean isNotify();
     
     /**
-     * �ŏ��ɑҋ@���Ă���X���b�h�����݂̃X���b�h���ǂ����𔻒肷��B<p>
+     * 最初に待機しているスレッドが現在のスレッドかどうかを判定する。<p>
      * 
-     * @return �ŏ��ɑҋ@���Ă���X���b�h�����݂̃X���b�h�ł���ꍇ��true
+     * @return 最初に待機しているスレッドが現在のスレッドである場合はtrue
      */
     public boolean isFirst();
     
     /**
-     * �ҋ@���Ă���X���b�h�����݂��邩�ǂ����𔻒肷��B<p>
+     * 待機しているスレッドが存在するかどうかを判定する。<p>
      * 
-     * @return �ҋ@���Ă���X���b�h�����݂���ꍇ��true
+     * @return 待機しているスレッドが存在する場合はtrue
      */
     public boolean isWait();
     
     /**
-     * �ҋ@���Ă���X���b�h�̐����擾����B<p>
+     * 待機しているスレッドの数を取得する。<p>
      * 
-     * @return �ҋ@���Ă���X���b�h�̐�
+     * @return 待機しているスレッドの数
      */
     public int getWaitCount();
     
     /**
-     * �ҋ@���Ă���X���b�h���擾����B<p>
+     * 待機しているスレッドを取得する。<p>
      * 
-     * @return �ҋ@���Ă���X���b�h�̔z��
+     * @return 待機しているスレッドの配列
      */
     public Thread[] getWaitThreads();
     
     /**
-     * �I������B<p>
-     * �ҋ@���Ă���S�ẴX���b�h�ɒʒm���A���̃��j�^�𖳌��ɂ���B<br>
+     * 終了する。<p>
+     * 待機している全てのスレッドに通知し、このモニタを無効にする。<br>
      */
     public void close();
 }

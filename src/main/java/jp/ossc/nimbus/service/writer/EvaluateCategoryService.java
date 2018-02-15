@@ -47,21 +47,21 @@ import org.apache.commons.jexl.JexlContext;
 import org.apache.commons.jexl.JexlHelper;
 
 /**
- * ğŒ•]‰¿ƒJƒeƒSƒŠƒT[ƒrƒX
+ * æ¡ä»¶è©•ä¾¡ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹
  * <p>
- * İ’è‚µ‚½ğŒ‚ğ–‚½‚·ê‡‚Éo—Í‚·‚éƒT[ƒrƒX
+ * è¨­å®šã—ãŸæ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«å‡ºåŠ›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹
  * <p>
- * <b>ğŒİ’è</b><br>
- * ğŒ‚ÍAJava‚ÌğŒ®‚Å‹L“ü‚Å‚«‚Ü‚·B
- * ‚ ‚éƒvƒƒpƒeƒB’l‚ğğŒ‚Ég—p‚µ‚½‚¢ê‡‚ÍAƒvƒƒpƒeƒB‚ğ@`@‚ÅˆÍ‚İ‚Ü‚·<br>
- * —áj
- * <li>200ˆÈã‚Ìê‡@&gt;= </li>
+ * <b>æ¡ä»¶è¨­å®š</b><br>
+ * æ¡ä»¶ã¯ã€Javaã®æ¡ä»¶å¼ã§è¨˜å…¥ã§ãã¾ã™ã€‚
+ * ã‚ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’æ¡ä»¶ã«ä½¿ç”¨ã—ãŸã„å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’@ï½@ã§å›²ã¿ã¾ã™<br>
+ * ä¾‹ï¼‰
+ * <li>200ä»¥ä¸Šã®å ´åˆã€€&gt;= </li>
  * <pre>@InfoAnalysis.JournalRecords.number@ &gt;= 200</pre>
- * <li>299ˆÈ‰º‚Ìê‡ &lt;= </li>
+ * <li>299ä»¥ä¸‹ã®å ´åˆ &lt;= </li>
  * <pre>@InfoAnalysis.JournalRecords.number@ &lt;= 299</pre>
- * <li>not null‚Ìê‡</li>
+ * <li>not nullã®å ´åˆ</li>
  * <pre>@InfoAnalysis.JournalRecords.str[0]@ != <code>null</code></pre>
- * <li>"F"‚Æ“¯‚¶ê‡ •¶š—ñ”äŠr‚·‚éÛ‚Í"=="‚ğg—p</li>
+ * <li>"F"ã¨åŒã˜å ´åˆ æ–‡å­—åˆ—æ¯”è¼ƒã™ã‚‹éš›ã¯"=="ã‚’ä½¿ç”¨</li>
  * <pre>@InfoAnalysis.JournalRecords.str@ == "F"</pre>
  * 
  * @author M.Kameda
@@ -75,20 +75,20 @@ public class EvaluateCategoryService extends SimpleCategoryService
     
     private List conditions;
     
-    // EvaluateCategoryServiceMBean‚ÌJavaDoc
+    // EvaluateCategoryServiceMBeanã®JavaDoc
     public void setWritableConditions(String conditions[]){
         writableConditions = conditions;
     }
     
-    // EvaluateCategoryServiceMBean‚ÌJavaDoc
+    // EvaluateCategoryServiceMBeanã®JavaDoc
     public String[] getWritableConditions(){
         return writableConditions;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         super.createService();
@@ -96,9 +96,9 @@ public class EvaluateCategoryService extends SimpleCategoryService
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         super.startService();
@@ -110,9 +110,9 @@ public class EvaluateCategoryService extends SimpleCategoryService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         conditions.clear();
@@ -120,9 +120,9 @@ public class EvaluateCategoryService extends SimpleCategoryService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         conditions = null;
@@ -130,10 +130,10 @@ public class EvaluateCategoryService extends SimpleCategoryService
     }
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚ğ•]‰¿‚µ‚ÄA•K—v‚È‚ç‚Î‚±‚ÌƒJƒeƒSƒŠ‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã‚’è©•ä¾¡ã—ã¦ã€å¿…è¦ãªã‚‰ã°ã“ã®ã‚«ãƒ†ã‚´ãƒªã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param elements WritableRecordFactory‚É“n‚·o—Í—v‘f
-     * @exception MessageWriteException o—Í‚É¸”s‚µ‚½ê‡
+     * @param elements WritableRecordFactoryã«æ¸¡ã™å‡ºåŠ›è¦ç´ 
+     * @exception MessageWriteException å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void write(Object elements) throws MessageWriteException {
         if(conditions.size() != 0){

@@ -37,8 +37,8 @@ import jp.ossc.nimbus.core.Service;
 import jp.ossc.nimbus.core.ServiceFactoryServiceBase;
 
 /**
- * LIFO‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒtƒ@ƒNƒgƒŠB<p>
- * {@link LIFOOverflowAlgorithmService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * LIFOã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link LIFOOverflowAlgorithmService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see LIFOOverflowAlgorithmService
@@ -50,17 +50,17 @@ public class LIFOOverflowAlgorithmFactoryService
     private static final long serialVersionUID = 1772189245609050856L;
     
     /**
-     * {@link LIFOOverflowAlgorithmService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link LIFOOverflowAlgorithmService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return LIFOOverflowAlgorithmServiceƒT[ƒrƒX
-     * @exception Exception LIFOOverflowAlgorithmService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return LIFOOverflowAlgorithmServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception LIFOOverflowAlgorithmServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see LIFOOverflowAlgorithmService
      */
     protected Service createServiceInstance() throws Exception{
         return new LIFOOverflowAlgorithmService();
     }
     
-    // LIFOOverflowAlgorithmFactoryServiceMBean‚ÌJavaDoc
+    // LIFOOverflowAlgorithmFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

@@ -38,7 +38,7 @@ import java.nio.*;
 import java.lang.reflect.*;
 
 /**
- * CSVŒ`®‚ÌReaderƒNƒ‰ƒXB<p>
+ * CSVå½¢å¼ã®Readerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.CSVReader;
@@ -61,24 +61,24 @@ import java.lang.reflect.*;
 public class CSVReader extends LineNumberReader{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒZƒpƒŒ[ƒ^B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã€‚<p>
      */
     public static final char DEFAULT_SEPARATOR = ',';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶šB<p>
-     * ƒGƒXƒP[ƒv•¶š‚ğƒGƒXƒP[ƒv‚µ‚½‚¢ê‡‚ÍAƒGƒXƒP[ƒv•¶š‚ğd‚Ë‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã€‚<p>
+     * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãŸã„å ´åˆã¯ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’é‡ã­ã‚‹ã€‚<br>
      */
     public static final char DEFAULT_SEPARATOR_ESCAPE = '\\';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌˆÍ‚İ•¶šB<p>
-     * ˆÍ‚İ•¶š‚ğƒGƒXƒP[ƒv‚µ‚½‚¢ê‡‚ÍAˆÍ‚İ•¶š‚ğd‚Ë‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å›²ã¿æ–‡å­—ã€‚<p>
+     * å›²ã¿æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãŸã„å ´åˆã¯ã€å›²ã¿æ–‡å­—ã‚’é‡ã­ã‚‹ã€‚<br>
      */
     public static final char DEFAULT_ENCLOSURE = '"';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‰üs•¶šB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ”¹è¡Œæ–‡å­—ã€‚<p>
      */
     public static final String LINE_SEPARATOR
          = System.getProperty("line.separator");
@@ -99,7 +99,7 @@ public class CSVReader extends LineNumberReader{
     protected ReaderWrapper readerWrapper;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CSVReader(){
         super(new ReaderWrapper());
@@ -107,9 +107,9 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
      */
     public CSVReader(Reader reader){
         super(new ReaderWrapper(reader));
@@ -117,9 +117,9 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVReader(int size){
         super(new ReaderWrapper(), size);
@@ -127,10 +127,10 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVReader(Reader reader, int size){
         super(new ReaderWrapper(reader), size);
@@ -138,7 +138,7 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * Reader‚ğİ’è‚·‚éB<p>
+     * Readerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param reader Reader
      */
@@ -147,197 +147,197 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ƒZƒpƒŒ[ƒ^
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setSeparator(char separator){
         this.separator = separator;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒpƒŒ[ƒ^
+     * @return ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public char getSeparator(){
          return separator;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶š‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param escape ƒGƒXƒP[ƒv•¶š
+     * @param escape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
      */
     public void setSeparatorEscape(char escape){
         separatorEscape = escape;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶š‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒXƒP[ƒv•¶š
+     * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
      */
     public char getSeparatorEscape(){
          return separatorEscape;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ğİ’è‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enclosure ˆÍ‚İ•¶š
+     * @param enclosure å›²ã¿æ–‡å­—
      */
     public void setEnclosure(char enclosure){
         this.enclosure = enclosure;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ğæ“¾‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆÍ‚İ•¶š
+     * @return å›²ã¿æ–‡å­—
      */
     public char getEnclosure(){
          return enclosure;
     }
     
     /**
-     * ‹ós‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ‹ós‚ğ–³‹‚·‚é‚æ‚¤‚Éİ’è‚µ‚½ê‡A‹ós‚Ís”‚Æ‚µ‚Ä‚àƒJƒEƒ“ƒg‚³‚ê‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³‹‚µ‚È‚¢B<br>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‚ˆã†ã«è¨­å®šã—ãŸå ´åˆã€ç©ºè¡Œã¯è¡Œæ•°ã¨ã—ã¦ã‚‚ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param isIgnore ‹ós‚ğ–³‹‚·‚éê‡true
+     * @param isIgnore ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreEmptyLine(boolean isIgnore){
         isIgnoreEmptyLine = isIgnore;
     }
     
     /**
-     * ‹ós‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‹ós‚ğ–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreEmptyLine(){
          return isIgnoreEmptyLine;
     }
     
     /**
-     * s‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³‹‚µ‚È‚¢B<br>
+     * è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param isIgnore s‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚éê‡true
+     * @param isIgnore è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreLineEndSeparator(boolean isIgnore){
         isIgnoreLineEndSeparator = isIgnore;
     }
     
     /**
-     * s‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡As‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚é
+     * @return trueã®å ´åˆã€è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreLineEndSeparator(){
          return isIgnoreLineEndSeparator;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ª—LŒø‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅˆÍ‚İ•¶š‚Í–³Œø‚µ‚È‚¢B<br>
+     * å›²ã¿æ–‡å­—ãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å›²ã¿æ–‡å­—ã¯ç„¡åŠ¹ã—ãªã„ã€‚<br>
      *
-     * @param isEnclosed ˆÍ‚İ•¶š‚ª—LŒø‚Èê‡true
+     * @param isEnclosed å›²ã¿æ–‡å­—ãŒæœ‰åŠ¹ãªå ´åˆtrue
      */
     public void setEnclosed(boolean isEnclosed){
         this.isEnclosed = isEnclosed;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ª—LŒø‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AˆÍ‚İ•¶š‚ª—LŒø
+     * @return trueã®å ´åˆã€å›²ã¿æ–‡å­—ãŒæœ‰åŠ¹
      */
     public boolean isEnclosed(){
          return isEnclosed;
     }
     
     /**
-     * ƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒgƒŠƒ€‚µ‚È‚¢B<br>
+     * ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒˆãƒªãƒ ã—ãªã„ã€‚<br>
      *
-     * @param isTrim ƒgƒŠƒ€‚·‚éê‡true
+     * @param isTrim ãƒˆãƒªãƒ ã™ã‚‹å ´åˆtrue
      */
     public void setTrim(boolean isTrim){
         this.isTrim = isTrim;
     }
     
     /**
-     * ƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒgƒŠƒ€‚·‚é
+     * @return trueã®å ´åˆã€ãƒˆãƒªãƒ ã™ã‚‹
      */
     public boolean isTrim(){
          return isTrim;
     }
     
     /**
-     * CSV—v‘f‚ğ“Ç‚İ‚ñ‚¾ê‡‚ÉAnull’lˆµ‚¢‚·‚é•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * CSVè¦ç´ ã‚’èª­ã¿è¾¼ã‚“ã å ´åˆã«ã€nullå€¤æ‰±ã„ã™ã‚‹æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param value •¶š—ñ
+     * @param value æ–‡å­—åˆ—
      */
     public void setNullValue(String value){
         nullValue = value;
     }
     
     /**
-     * CSV—v‘f‚ğ“Ç‚İ‚ñ‚¾ê‡‚ÉAnull’lˆµ‚¢‚·‚é•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * CSVè¦ç´ ã‚’èª­ã¿è¾¼ã‚“ã å ´åˆã«ã€nullå€¤æ‰±ã„ã™ã‚‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ
+     * @return æ–‡å­—åˆ—
      */
     public String getNullValue(){
         return nullValue;
     }
     
     /**
-     * ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param value ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ
+     * @param value ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—
      */
     public void setCommentPrefix(String value){
         commentPrefix = value;
     }
     
     /**
-     * ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒƒ“ƒgs‚Ì‘O’u•¶š—ñ
+     * @return ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã®å‰ç½®æ–‡å­—åˆ—
      */
     public String getCommentPrefix(){
         return commentPrefix;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ÅˆÍ‚Ü‚ê‚½CSV—v‘f‚Ìê‡‚ÉAƒGƒXƒP[ƒv‚³‚ê‚½‰üs‚ğƒAƒ“ƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒAƒ“ƒGƒXƒP[ƒv‚µ‚È‚¢B<br>
+     * å›²ã¿æ–‡å­—ã§å›²ã¾ã‚ŒãŸCSVè¦ç´ ã®å ´åˆã«ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸæ”¹è¡Œã‚’ã‚¢ãƒ³ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚¢ãƒ³ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã„ã€‚<br>
      * 
-     * @param isUnescape ƒAƒ“ƒGƒXƒP[ƒv‚·‚éê‡true
+     * @param isUnescape ã‚¢ãƒ³ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
      */
     public void setUnescapeLineSeparatorInEnclosure(boolean isUnescape){
         isUnescapeLineSeparatorInEnclosure = isUnescape;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ÅˆÍ‚Ü‚ê‚½CSV—v‘f‚Ìê‡‚ÉAƒGƒXƒP[ƒv‚³‚ê‚½‰üs‚ğƒAƒ“ƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã§å›²ã¾ã‚ŒãŸCSVè¦ç´ ã®å ´åˆã«ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸæ”¹è¡Œã‚’ã‚¢ãƒ³ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AƒAƒ“ƒGƒXƒP[ƒv‚·‚é
+     * @return trueã®å ´åˆã€ã‚¢ãƒ³ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹
      */
     public boolean isUnescapeLineSeparatorInEnclosure(){
         return isUnescapeLineSeparatorInEnclosure;
     }
     
     /**
-     * w’è‚³‚ê‚½s”•ªƒXƒLƒbƒv‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸè¡Œæ•°åˆ†ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ã€‚<p>
      *
-     * @param line ƒXƒLƒbƒv‚·‚és”
-     * @return ƒXƒLƒbƒv‚³‚ê‚½s”
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param line ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹è¡Œæ•°
+     * @return ã‚¹ã‚­ãƒƒãƒ—ã•ã‚ŒãŸè¡Œæ•°
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public long skipLine(long line) throws IOException{
         int result = 0;
@@ -350,13 +350,13 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * w’è‚³‚ê‚½CSVs”•ªƒXƒLƒbƒv‚·‚éB<p>
-     * {@link #isIgnoreEmptyLine()}‚ªtrue‚Ìê‡‚ÍA‹ós‚ÍƒXƒLƒbƒvs”‚ÌƒJƒEƒ“ƒg‚©‚çœ‚©‚ê‚éB<br>
-     * CSVs”‚ÅƒJƒEƒ“ƒg‚³‚ê‚é‚½‚ßAˆÍ‚İ•¶š‚ÅˆÍ‚ñ‚¾’†‚É‰üs‚ª‚ ‚Á‚Ä‚àA1s‚Æ‚µ‚ÄƒJƒEƒ“ƒg‚³‚ê‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸCSVè¡Œæ•°åˆ†ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ã€‚<p>
+     * {@link #isIgnoreEmptyLine()}ãŒtrueã®å ´åˆã¯ã€ç©ºè¡Œã¯ã‚¹ã‚­ãƒƒãƒ—è¡Œæ•°ã®ã‚«ã‚¦ãƒ³ãƒˆã‹ã‚‰é™¤ã‹ã‚Œã‚‹ã€‚<br>
+     * CSVè¡Œæ•°ã§ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œã‚‹ãŸã‚ã€å›²ã¿æ–‡å­—ã§å›²ã‚“ã ä¸­ã«æ”¹è¡ŒãŒã‚ã£ã¦ã‚‚ã€1è¡Œã¨ã—ã¦ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param line ƒXƒLƒbƒv‚·‚és”
-     * @return ƒXƒLƒbƒv‚³‚ê‚½s”
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param line ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹è¡Œæ•°
+     * @return ã‚¹ã‚­ãƒƒãƒ—ã•ã‚ŒãŸè¡Œæ•°
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public long skipCSVLine(long line) throws IOException{
         List csv = null;
@@ -371,10 +371,10 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * CSVs‚ğ1s“Ç‚İ‚ŞB<p>
+     * CSVè¡Œã‚’1è¡Œèª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return CSV—v‘f‚Ì•¶š—ñ”z—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @return CSVè¦ç´ ã®æ–‡å­—åˆ—é…åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public String[] readCSVLine() throws IOException{
         final List csv = readCSVLineList();
@@ -383,22 +383,22 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * CSVs‚ğ1s“Ç‚İ‚ŞB<p>
+     * CSVè¡Œã‚’1è¡Œèª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return CSV—v‘f‚Ì•¶š—ñƒŠƒXƒg
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @return CSVè¦ç´ ã®æ–‡å­—åˆ—ãƒªã‚¹ãƒˆ
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List readCSVLineList() throws IOException{
         return readCSVLineList(null);
     }
     
     /**
-     * CSVs‚ğ1s“Ç‚İ‚ŞB<p>
-     * CSV—v‘f‚Ì•¶š—ñ‚ğŠi”[‚·‚éƒŠƒXƒg‚ğÄ—˜—p‚·‚é‚½‚ß‚Ìƒƒ\ƒbƒh‚Å‚ ‚éB<br>
+     * CSVè¡Œã‚’1è¡Œèª­ã¿è¾¼ã‚€ã€‚<p>
+     * CSVè¦ç´ ã®æ–‡å­—åˆ—ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param csv CSV—v‘f‚Ì•¶š—ñ‚ğŠi”[‚·‚éƒŠƒXƒg
-     * @return CSV—v‘f‚Ì•¶š—ñƒŠƒXƒg
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param csv CSVè¦ç´ ã®æ–‡å­—åˆ—ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆ
+     * @return CSVè¦ç´ ã®æ–‡å­—åˆ—ãƒªã‚¹ãƒˆ
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List readCSVLineList(List csv) throws IOException{
         return toList(
@@ -587,11 +587,11 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğƒgƒŠƒ€‚·‚éB<p>
-     * ƒgƒŠƒ€‚ÍAw’è‚³‚ê‚½•¶š—ñ‚Ì‘OŒã‚Ì‹ó”’•¶ši{@link Character#isWhitespace(char)}‚ªtrue‚Æ‚È‚é•¶šj‚ğíœ‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã€‚<p>
+     * ãƒˆãƒªãƒ ã¯ã€æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®å‰å¾Œã®ç©ºç™½æ–‡å­—ï¼ˆ{@link Character#isWhitespace(char)}ãŒtrueã¨ãªã‚‹æ–‡å­—ï¼‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚
      * 
-     * @param buf •¶š—ñ
-     * @return ƒgƒŠƒ€‚³‚ê‚½•¶š—ñ
+     * @param buf æ–‡å­—åˆ—
+     * @return ãƒˆãƒªãƒ ã•ã‚ŒãŸæ–‡å­—åˆ—
      */
     protected static StringBuilder trim(StringBuilder buf){
         int index = 0;
@@ -653,7 +653,7 @@ public class CSVReader extends LineNumberReader{
                 isUnescapeLineSeparatorInEnclosure
             );
         }catch(IOException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             return new String[0];
         }
         return (String[])list.toArray(new String[list.size()]);
@@ -692,7 +692,7 @@ public class CSVReader extends LineNumberReader{
                 isUnescapeLineSeparatorInEnclosure
             );
         }catch(IOException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             return new String[0];
         }
         return (String[])list.toArray(new String[list.size()]);
@@ -736,7 +736,7 @@ public class CSVReader extends LineNumberReader{
                 isUnescapeLineSeparatorInEnclosure
             );
         }catch(IOException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             return result;
         }
         return result;
@@ -779,16 +779,16 @@ public class CSVReader extends LineNumberReader{
                 isUnescapeLineSeparatorInEnclosure
             );
         }catch(IOException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             return result;
         }
         return result;
     }
     
     /**
-     * {@link CSVReader.CSVElements}‚ÌŒJ‚è•Ô‚µ‚ğæ“¾‚·‚éB<p>
+     * {@link CSVReader.CSVElements}ã®ç¹°ã‚Šè¿”ã—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CSVElements‚ÌŒJ‚è•Ô‚µ
+     * @return CSVElementsã®ç¹°ã‚Šè¿”ã—
      */
     public CSVIterator iterator(){
         if(iterator == null){
@@ -798,7 +798,7 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * {@link CSVReader.CSVElements}‚ÌŒJ‚è•Ô‚µB<p>
+     * {@link CSVReader.CSVElements}ã®ç¹°ã‚Šè¿”ã—ã€‚<p>
      *
      * @author M.Takata
      */
@@ -809,10 +809,10 @@ public class CSVReader extends LineNumberReader{
         private CSVIterator(){}
         
         /**
-         * Ÿ‚ÌCSV—v‘f‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * æ¬¡ã®CSVè¦ç´ ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return Ÿ‚ÌCSV—v‘f‚ª‚ ‚éê‡‚Ítrue
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®CSVè¦ç´ ãŒã‚ã‚‹å ´åˆã¯true
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean hasNext() throws IOException{
             if(hasNext){
@@ -824,10 +824,10 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * Ÿ‚ÌCSV—v‘f‚ğæ“¾‚·‚éB<p>
+         * æ¬¡ã®CSVè¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Ÿ‚ÌCSV—v‘fBŸ‚ÌCSV—v‘f‚ª‚È‚¢ê‡‚Ínull
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®CSVè¦ç´ ã€‚æ¬¡ã®CSVè¦ç´ ãŒãªã„å ´åˆã¯null
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          * @see #nextElements()
          */
         public Object next() throws IOException{
@@ -835,11 +835,11 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * Ÿ‚ÌCSV—v‘f‚ğæ“¾‚·‚éB<p>
-         * ‚±‚±‚Åæ“¾‚³‚ê‚é{@link CSVReader.CSVElements}‚ÍA–ˆ‰ñÄ—˜—p‚³‚ê‚éB<br>
+         * æ¬¡ã®CSVè¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * ã“ã“ã§å–å¾—ã•ã‚Œã‚‹{@link CSVReader.CSVElements}ã¯ã€æ¯å›å†åˆ©ç”¨ã•ã‚Œã‚‹ã€‚<br>
          *
-         * @return Ÿ‚ÌCSV—v‘fBŸ‚ÌCSV—v‘f‚ª‚È‚¢ê‡‚Ínull
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®CSVè¦ç´ ã€‚æ¬¡ã®CSVè¦ç´ ãŒãªã„å ´åˆã¯null
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public CSVElements nextElements() throws IOException{
             if(!hasNext){
@@ -853,19 +853,19 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public CSVReader cloneReader(){
         return cloneReader(new CSVReader());
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clone –¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @return –¢Ú‘±‚Ì•¡»
+     * @param clone æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     protected CSVReader cloneReader(CSVReader clone){
         clone.separator = separator;
@@ -881,7 +881,7 @@ public class CSVReader extends LineNumberReader{
     }
     
     /**
-     * CSVŒ`®ƒf[ƒ^‚Ì1s‚ğ•\‚·CSV—v‘fB<p>
+     * CSVå½¢å¼ãƒ‡ãƒ¼ã‚¿ã®1è¡Œã‚’è¡¨ã™CSVè¦ç´ ã€‚<p>
      * 
      * @author M.Takata
      */
@@ -894,7 +894,7 @@ public class CSVReader extends LineNumberReader{
         private CSVElements(){}
         
         /**
-         * ‚±‚ÌCSV—v‘f‚ğƒNƒŠƒA‚·‚éB<p>
+         * ã“ã®CSVè¦ç´ ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
          */
         public void clear(){
             wasNull = false;
@@ -902,20 +902,20 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * æ“¾‚µ‚½’l‚ªnull‚¾‚Á‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-         * {@link #getInt(int)}‚È‚Ç‚ÌA”’lŒn‚Ìgetter‚Å’l‚ğæ“¾‚µ‚½ê‡A’l‚ªnull‚â‹ó•¶š‚¾‚Á‚½ê‡‚ÉA0‚ğ•Ô‚·B‚»‚ÌA’l‚ª0‚¾‚Á‚½‚Ì‚©null‚Ü‚½‚Í‹ó•¶š‚¾‚Á‚½‚Ì‚©‚ğ”»’f‚·‚é‚Ì‚Ég—p‚·‚éB<br>
+         * å–å¾—ã—ãŸå€¤ãŒnullã ã£ãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+         * {@link #getInt(int)}ãªã©ã®ã€æ•°å€¤ç³»ã®getterã§å€¤ã‚’å–å¾—ã—ãŸå ´åˆã€å€¤ãŒnullã‚„ç©ºæ–‡å­—ã ã£ãŸå ´åˆã«ã€0ã‚’è¿”ã™ã€‚ãã®æ™‚ã€å€¤ãŒ0ã ã£ãŸã®ã‹nullã¾ãŸã¯ç©ºæ–‡å­—ã ã£ãŸã®ã‹ã‚’åˆ¤æ–­ã™ã‚‹ã®ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
          *
-         * @return æ“¾‚µ‚½’l‚ªnull‚¾‚Á‚½ê‡true
+         * @return å–å¾—ã—ãŸå€¤ãŒnullã ã£ãŸå ´åˆtrue
          */
         public boolean wasNull(){
             return wasNull;
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ 
          */
         public Object get(int index){
             Object obj = super.get(index);
@@ -924,10 +924,10 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š—ñ
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—åˆ—
          */
         public String getString(int index){
             String str = (String)get(index);
@@ -936,24 +936,24 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg
-         * @exception NumberFormatException —v‘f‚ªƒoƒCƒg•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆ
+         * @exception NumberFormatException è¦ç´ ãŒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public byte getByte(int index) throws NumberFormatException{
             return getByte(index, 10);
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @param radix Šî”
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒoƒCƒg
-         * @exception NumberFormatException —v‘f‚ªƒoƒCƒg•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param radix åŸºæ•°
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒã‚¤ãƒˆ
+         * @exception NumberFormatException è¦ç´ ãŒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public byte getByte(int index, int radix) throws NumberFormatException{
             final String str = getString(index);
@@ -965,12 +965,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public short getShort(int index) throws NumberFormatException{
             final String str = getString(index);
@@ -982,12 +982,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
-         * ‚Ü‚½Aw’è‚³‚ê‚½—v‘f‚ªA•¡”•¶š‚©‚ç¬‚éê‡‚ÍA1•¶š–Ú‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
+         * ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒã€è¤‡æ•°æ–‡å­—ã‹ã‚‰æˆã‚‹å ´åˆã¯ã€1æ–‡å­—ç›®ã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f•¶š
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ–‡å­—
          */
         public char getChar(int index){
             final String str = getString(index);
@@ -999,12 +999,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public int getInt(int index) throws NumberFormatException{
             final String str = getString(index);
@@ -1016,12 +1016,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public long getLong(int index) throws NumberFormatException{
             final String str = getString(index);
@@ -1033,12 +1033,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public float getFloat(int index) throws NumberFormatException{
             final String str = getString(index);
@@ -1050,12 +1050,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍA0‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€0ã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public double getDouble(int index) throws NumberFormatException{
             final String str = getString(index);
@@ -1067,11 +1067,11 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍAfalse‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€falseã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘fƒtƒ‰ƒO
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ãƒ•ãƒ©ã‚°
          */
         public boolean getBoolean(int index){
             final String str = getString(index);
@@ -1083,12 +1083,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍAnull‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€nullã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public BigInteger getBigInteger(int index) throws NumberFormatException{
             final String str = getString(index);
@@ -1100,12 +1100,12 @@ public class CSVReader extends LineNumberReader{
         }
         
         /**
-         * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l‚ğæ“¾‚·‚éB<p>
-         * w’è‚³‚ê‚½—v‘f‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ìê‡‚ÍAnull‚ğ•Ô‚µA{@link #wasNull()}‚ªtrue‚ğ•Ô‚·B<br>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¦ç´ ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®å ´åˆã¯ã€nullã‚’è¿”ã—ã€{@link #wasNull()}ãŒtrueã‚’è¿”ã™ã€‚<br>
          *
-         * @param index ƒCƒ“ƒfƒbƒNƒX
-         * @return w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f”’l
-         * @exception NumberFormatException —v‘f‚ª”’l•¶š—ñ‚Å‚È‚¢ê‡
+         * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ æ•°å€¤
+         * @exception NumberFormatException è¦ç´ ãŒæ•°å€¤æ–‡å­—åˆ—ã§ãªã„å ´åˆ
          */
         public BigDecimal getBigDecimal(int index) throws NumberFormatException{
             final String str = getString(index);

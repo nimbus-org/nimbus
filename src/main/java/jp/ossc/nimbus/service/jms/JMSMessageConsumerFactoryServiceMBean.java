@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMSMessageConsumerFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JMSMessageConsumerFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JMSMessageConsumerFactoryService
@@ -43,108 +43,108 @@ public interface JMSMessageConsumerFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * {@link JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * SessionCreate‘®«‚ªtrue‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉA‚±‚±‚Åİ’è‚³‚ê‚½JMSSessionFactoryƒT[ƒrƒX‚ğg‚Á‚ÄASession‚ğ¶¬‚µ•Û‚·‚éB<br>
+     * {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SessionCreateå±æ€§ãŒtrueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€Sessionã‚’ç”Ÿæˆã—ä¿æŒã™ã‚‹ã€‚<br>
      *
-     * @param name JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSSessionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSSessionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚©‚çjavax.jms.Destination‚ğlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã‹ã‚‰javax.jms.Destinationã‚’lookupã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDestinationFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDestinationFinderServiceName();
     
     /**
-     * ”zMŒ³‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * DestinationFinderServiceName‘®«‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğg‚Á‚ÄA”zMŒ³‚Æ‚È‚éjavax.jms.Destination‚ğA‚±‚±‚Åİ’è‚³‚ê‚½JNDI–¼‚Ålookup‚·‚éB<br>
+     * é…ä¿¡å…ƒã¨ãªã‚‹javax.jms.Destinationã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * DestinationFinderServiceNameå±æ€§ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€é…ä¿¡å…ƒã¨ãªã‚‹javax.jms.Destinationã‚’ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJNDIåã§lookupã™ã‚‹ã€‚<br>
      *
-     * @param name ”zMŒ³‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼
+     * @param name é…ä¿¡å…ƒã¨ãªã‚‹javax.jms.Destinationã®JNDIå
      */
     public void setDestinationName(String name);
     
     /**
-     * ”zMŒ³‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * é…ä¿¡å…ƒã¨ãªã‚‹javax.jms.Destinationã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”zMŒ³‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼
+     * @return é…ä¿¡å…ƒã¨ãªã‚‹javax.jms.Destinationã®JNDIå
      */
     public String getDestinationName();
     
     /**
-     * óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnullB<br>
+     * å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã€‚<br>
      *
-     * @param selector ƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param selector ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      */
     public void setMessageSelector(String selector);
     
     /**
-     * óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      */
     public String getMessageSelector();
     
     /**
-     * ƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹‘”Û‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡ã‚’æ‹’å¦ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param isNoLocal Destination‚ªTopic‚ÅAtrue‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éBDestination‚ªQueue‚Ìê‡‚Ì“®ì‚Í‹K’è‚³‚ê‚Ä‚¢‚È‚¢B
+     * @param isNoLocal DestinationãŒTopicã§ã€trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚DestinationãŒQueueã®å ´åˆã®å‹•ä½œã¯è¦å®šã•ã‚Œã¦ã„ãªã„ã€‚
      */
     public void setNoLocal(boolean isNoLocal);
     
     /**
-     * ƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹‘”Û‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡ã‚’æ‹’å¦ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return Destination‚ªTopic‚ÅAtrue‚Ìê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éBDestination‚ªQueue‚Ìê‡‚Ì“®ì‚Í‹K’è‚³‚ê‚Ä‚¢‚È‚¢B
+     * @return DestinationãŒTopicã§ã€trueã®å ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚DestinationãŒQueueã®å ´åˆã®å‹•ä½œã¯è¦å®šã•ã‚Œã¦ã„ãªã„ã€‚
      */
     public boolean isNoLocal();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚ğİ’è‚·‚éê‡AJMSSessionFactoryServiceName‘®«‚ğİ’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã‚’è¨­å®šã™ã‚‹å ´åˆã€JMSSessionFactoryServiceNameå±æ€§ã‚’è¨­å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isCreate ƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚éê‡true
+     * @param isCreate ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹å ´åˆtrue
      */
     public void setSessionCreate(boolean isCreate);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹
      */
     public boolean isSessionCreate();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isClose ƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚éê‡true
+     * @param isClose ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹å ´åˆtrue
      */
     public void setCloseSession(boolean isClose);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹
      */
     public boolean isCloseSession();
 }

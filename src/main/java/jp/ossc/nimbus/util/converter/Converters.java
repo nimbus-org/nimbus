@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.converter;
 import java.io.*;
 
 /**
- * ƒRƒ“ƒo[ƒ^ƒ†[ƒeƒBƒŠƒeƒBB<p>
+ * ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -244,9 +244,9 @@ public class Converters{
     }
     
     /**
-     * ”¼Šp‰pš¨‘SŠp‰pšƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’è‹±å­—â†’å…¨è§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp‰pš¨‘SŠp‰pšƒRƒ“ƒo[ƒ^
+     * @return åŠè§’è‹±å­—â†’å…¨è§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetStringConverter
      */
     public static StringConverter getAlphabetHankakuFromZenkakuStringConverter(){
@@ -254,9 +254,9 @@ public class Converters{
     }
     
     /**
-     * ‘SŠp‰pš¨”¼Šp‰pšƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’è‹±å­—â†’åŠè§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp‰pš¨”¼Šp‰pšƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’è‹±å­—â†’åŠè§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetStringConverter
      */
     public static StringConverter getAlphabetZenkakuFromHankakuStringConverter(){
@@ -264,9 +264,9 @@ public class Converters{
     }
     
     /**
-     * ”¼ŠpƒJƒ^ƒJƒi¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼ŠpƒJƒ^ƒJƒi¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^
+     * @return åŠè§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaStringConverter
      */
     public static StringConverter getKatakanaHankakuFromZenkakuStringConverter(){
@@ -274,9 +274,9 @@ public class Converters{
     }
     
     /**
-     * ‘SŠpƒJƒ^ƒJƒi¨”¼ŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’åŠè§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠpƒJƒ^ƒJƒi¨”¼ŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’åŠè§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaStringConverter
      */
     public static StringConverter getKatakanaZenkakuFromHankakuStringConverter(){
@@ -284,9 +284,9 @@ public class Converters{
     }
     
     /**
-     * ”¼Šp”š¨‘SŠp”šƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’æ•°å­—â†’å…¨è§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp”š¨‘SŠp”šƒRƒ“ƒo[ƒ^
+     * @return åŠè§’æ•°å­—â†’å…¨è§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see NumberStringConverter
      */
     public static StringConverter getNumberHankakuFromZenkakuStringConverter(){
@@ -294,9 +294,9 @@ public class Converters{
     }
     
     /**
-     * ‘SŠp”š¨”¼Šp”šƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’æ•°å­—â†’åŠè§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp”š¨”¼Šp”šƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’æ•°å­—â†’åŠè§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see NumberStringConverter
      */
     public static StringConverter getNumberZenkakuFromHankakuStringConverter(){
@@ -304,9 +304,9 @@ public class Converters{
     }
     
     /**
-     * ”¼Šp‹L†¨‘SŠp‹L†ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’è¨˜å·â†’å…¨è§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp‹L†¨‘SŠp‹L†ƒRƒ“ƒo[ƒ^
+     * @return åŠè§’è¨˜å·â†’å…¨è§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see SymbolStringConverter
      */
     public static StringConverter getSymbolHankakuFromZenkakuStringConverter(){
@@ -314,9 +314,9 @@ public class Converters{
     }
     
     /**
-     * ‘SŠp‹L†¨”¼Šp‹L†ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’è¨˜å·â†’åŠè§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp‹L†¨”¼Šp‹L†ƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’è¨˜å·â†’åŠè§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see SymbolStringConverter
      */
     public static StringConverter getSymbolZenkakuFromHankakuStringConverter(){
@@ -324,9 +324,9 @@ public class Converters{
     }
     
     /**
-     * ‘SŠpƒJƒ^ƒJƒi¨‘SŠp‚Ğ‚ç‚ª‚ÈƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã²ã‚‰ãŒãªã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠpƒJƒ^ƒJƒi¨‘SŠp‚Ğ‚ç‚ª‚ÈƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã²ã‚‰ãŒãªã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaHiraganaStringConverter
      */
     public static StringConverter getKatakanaFromHiraganaStringConverter(){
@@ -334,9 +334,9 @@ public class Converters{
     }
     
     /**
-     * ‘SŠp‚Ğ‚ç‚ª‚È¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’ã²ã‚‰ãŒãªâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp‚Ğ‚ç‚ª‚È¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’ã²ã‚‰ãŒãªâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaHiraganaStringConverter
      */
     public static StringConverter getHiraganaFromKatakanaStringConverter(){
@@ -344,10 +344,10 @@ public class Converters{
     }
     
     /**
-     * ”¼Šp¨‘SŠpƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
-     * ‰pšAƒJƒ^ƒJƒiA”šA‹L†‚Ì”¼Šp¨‘SŠp•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB
+     * åŠè§’â†’å…¨è§’ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è‹±å­—ã€ã‚«ã‚¿ã‚«ãƒŠã€æ•°å­—ã€è¨˜å·ã®åŠè§’â†’å…¨è§’å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ”¼Šp¨‘SŠpƒRƒ“ƒo[ƒ^
+     * @return åŠè§’â†’å…¨è§’ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetStringConverter
      * @see KatakanaStringConverter
      * @see NumberStringConverter
@@ -358,10 +358,10 @@ public class Converters{
     }
     
     /**
-     * ‘SŠp¨”¼ŠpƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
-     * ‰pšAƒJƒ^ƒJƒiA”šA‹L†‚Ì‘SŠp¨”¼Šp•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB
+     * å…¨è§’â†’åŠè§’ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è‹±å­—ã€ã‚«ã‚¿ã‚«ãƒŠã€æ•°å­—ã€è¨˜å·ã®å…¨è§’â†’åŠè§’å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ‘SŠp¨”¼ŠpƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’â†’åŠè§’ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetStringConverter
      * @see KatakanaStringConverter
      * @see NumberStringConverter
@@ -372,100 +372,100 @@ public class Converters{
     }
     
     /**
-     * ”¼Šp‰pš¨‘SŠp‰pšƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’è‹±å­—â†’å…¨è§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp‰pš¨‘SŠp‰pšƒRƒ“ƒo[ƒ^
+     * @return åŠè§’è‹±å­—â†’å…¨è§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetCharacterConverter
      */
     public static CharacterConverter getAlphabetHankakuFromZenkakuCharacterConverter(){
         return ALPHABET_HANKAKU_TO_ZENKAKU_CHAR;
     }
     /**
-     * ‘SŠp‰pš¨”¼Šp‰pšƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’è‹±å­—â†’åŠè§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp‰pš¨”¼Šp‰pšƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’è‹±å­—â†’åŠè§’è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetCharacterConverter
      */
     public static CharacterConverter getAlphabetZenkakuFromHankakuCharacterConverter(){
         return ALPHABET_ZENKAKU_TO_HANKAKU_CHAR;
     }
     /**
-     * ”¼ŠpƒJƒ^ƒJƒi¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼ŠpƒJƒ^ƒJƒi¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^
+     * @return åŠè§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaCharacterConverter
      */
     public static CharacterConverter getKatakanaHankakuFromZenkakuCharacterConverter(){
         return KATAKANA_HANKAKU_TO_ZENKAKU_CHAR;
     }
     /**
-     * ‘SŠpƒJƒ^ƒJƒi¨”¼ŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’åŠè§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠpƒJƒ^ƒJƒi¨”¼ŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’åŠè§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaCharacterConverter
      */
     public static CharacterConverter getKatakanaZenkakuFromHankakuCharacterConverter(){
         return KATAKANA_ZENKAKU_TO_HANKAKU_CHAR;
     }
     /**
-     * ”¼Šp”š¨‘SŠp”šƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’æ•°å­—â†’å…¨è§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp”š¨‘SŠp”šƒRƒ“ƒo[ƒ^
+     * @return åŠè§’æ•°å­—â†’å…¨è§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see NumberCharacterConverter
      */
     public static CharacterConverter getNumberHankakuFromZenkakuCharacterConverter(){
         return NUMBER_HANKAKU_TO_ZENKAKU_CHAR;
     }
     /**
-     * ‘SŠp”š¨”¼Šp”šƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’æ•°å­—â†’åŠè§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp”š¨”¼Šp”šƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’æ•°å­—â†’åŠè§’æ•°å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see NumberCharacterConverter
      */
     public static CharacterConverter getNumberZenkakuFromHankakuCharacterConverter(){
         return NUMBER_ZENKAKU_TO_HANKAKU_CHAR;
     }
     /**
-     * ”¼Šp‹L†¨‘SŠp‹L†ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * åŠè§’è¨˜å·â†’å…¨è§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”¼Šp‹L†¨‘SŠp‹L†ƒRƒ“ƒo[ƒ^
+     * @return åŠè§’è¨˜å·â†’å…¨è§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see SymbolCharacterConverter
      */
     public static CharacterConverter getSymbolHankakuFromZenkakuCharacterConverter(){
         return SYMBOL_HANKAKU_TO_ZENKAKU_CHAR;
     }
     /**
-     * ‘SŠp‹L†¨”¼Šp‹L†ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’è¨˜å·â†’åŠè§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp‹L†¨”¼Šp‹L†ƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’è¨˜å·â†’åŠè§’è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see SymbolCharacterConverter
      */
     public static CharacterConverter getSymbolZenkakuFromHankakuCharacterConverter(){
         return SYMBOL_ZENKAKU_TO_HANKAKU_CHAR;
     }
     /**
-     * ‘SŠpƒJƒ^ƒJƒi¨‘SŠp‚Ğ‚ç‚ª‚ÈƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã²ã‚‰ãŒãªã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠpƒJƒ^ƒJƒi¨‘SŠp‚Ğ‚ç‚ª‚ÈƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’ã‚«ã‚¿ã‚«ãƒŠâ†’å…¨è§’ã²ã‚‰ãŒãªã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaHiraganaCharacterConverter
      */
     public static CharacterConverter getKatakanaFromHiraganaCharacterConverter(){
         return KATAKANA_TO_HIRAGANA_CHAR;
     }
     /**
-     * ‘SŠp‚Ğ‚ç‚ª‚È¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å…¨è§’ã²ã‚‰ãŒãªâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘SŠp‚Ğ‚ç‚ª‚È¨‘SŠpƒJƒ^ƒJƒiƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’ã²ã‚‰ãŒãªâ†’å…¨è§’ã‚«ã‚¿ã‚«ãƒŠã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see KatakanaHiraganaCharacterConverter
      */
     public static CharacterConverter getHiraganaFromKatakanaCharacterConverter(){
         return HIRAGANA_TO_KATAKANA_CHAR;
     }
     /**
-     * ”¼Šp¨‘SŠpƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
-     * ‰pšAƒJƒ^ƒJƒiA”šA‹L†‚Ì”¼Šp¨‘SŠp•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB
+     * åŠè§’â†’å…¨è§’ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è‹±å­—ã€ã‚«ã‚¿ã‚«ãƒŠã€æ•°å­—ã€è¨˜å·ã®åŠè§’â†’å…¨è§’å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ”¼Šp¨‘SŠpƒRƒ“ƒo[ƒ^
+     * @return åŠè§’â†’å…¨è§’ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetCharacterConverter
      * @see KatakanaCharacterConverter
      * @see NumberCharacterConverter
@@ -475,10 +475,10 @@ public class Converters{
         return HANKAKU_TO_ZENKAKU_CHAR;
     }
     /**
-     * ‘SŠp¨”¼ŠpƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
-     * ‰pšAƒJƒ^ƒJƒiA”šA‹L†‚Ì‘SŠp¨”¼Šp•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB
+     * å…¨è§’â†’åŠè§’ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è‹±å­—ã€ã‚«ã‚¿ã‚«ãƒŠã€æ•°å­—ã€è¨˜å·ã®å…¨è§’â†’åŠè§’å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ‘SŠp¨”¼ŠpƒRƒ“ƒo[ƒ^
+     * @return å…¨è§’â†’åŠè§’ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see AlphabetCharacterConverter
      * @see KatakanaCharacterConverter
      * @see NumberCharacterConverter
@@ -489,12 +489,12 @@ public class Converters{
     }
     
     /**
-     * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromStrs •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @return ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @return ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      * @see CustomStringConverter
@@ -508,12 +508,12 @@ public class Converters{
     }
     
     /**
-     * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromChars •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toChars •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @return ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromChars å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toChars å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @return ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      * @see CustomStringConverter
@@ -527,14 +527,14 @@ public class Converters{
     }
     
     /**
-     * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromStrs •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @param fromChars •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toChars •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @return ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @param fromChars å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toChars å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @return ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      * @see CustomStringConverter
@@ -556,50 +556,50 @@ public class Converters{
     }
     
     /**
-     * ‹ó‚ÌƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @return ‹ó‚ÌƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^
+     * @return ç©ºã®ã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public static CustomConverter newCustomConverter(){
         return new CustomConverter();
     }
     
     /**
-     * w’è‚µ‚½ƒRƒ“ƒo[ƒ^‚ğ˜AŒ‹‚µ‚½ƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’é€£çµã—ãŸã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param convs ƒRƒ“ƒo[ƒ^”z—ñ
-     * @return ƒJƒXƒ^ƒ€ƒRƒ“ƒo[ƒ^
+     * @param convs ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @return ã‚«ã‚¹ã‚¿ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public static CustomConverter newCustomConverter(Converter[] convs){
         return new CustomConverter(convs);
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ³‹K•\Œ»ƒRƒ“ƒo[ƒ^
+     * @return æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public static PatternStringConverter patternStringConverter(){
         return new PatternStringConverter();
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flags ƒ}ƒbƒ`ƒ“ƒOƒtƒ‰ƒO
-     * @return ³‹K•\Œ»ƒRƒ“ƒo[ƒ^
+     * @param flags ãƒãƒƒãƒãƒ³ã‚°ãƒ•ãƒ©ã‚°
+     * @return æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public static PatternStringConverter patternStringConverter(int flags){
         return new PatternStringConverter(flags);
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flags ƒ}ƒbƒ`ƒ“ƒOƒtƒ‰ƒO
-     * @param fromStrs •ÏŠ·‚·‚é³‹K•\Œ»•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @return ³‹K•\Œ»ƒRƒ“ƒo[ƒ^
+     * @param flags ãƒãƒƒãƒãƒ³ã‚°ãƒ•ãƒ©ã‚°
+     * @param fromStrs å¤‰æ›ã™ã‚‹æ­£è¦è¡¨ç¾æ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @return æ­£è¦è¡¨ç¾ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public static PatternStringConverter patternStringConverter(
         int flags,

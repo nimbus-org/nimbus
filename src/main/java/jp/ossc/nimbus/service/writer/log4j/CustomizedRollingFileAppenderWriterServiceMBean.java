@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer.log4j;
 
 /**
- * {@link CustomizedRollingFileAppenderWriterService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link CustomizedRollingFileAppenderWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -40,11 +40,11 @@ public interface CustomizedRollingFileAppenderWriterServiceMBean
  extends RollingFileAppenderWriterServiceMBean{
     
     /**
-     * o—Íæ‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚·‚éB<p>
-     * ƒtƒ@ƒCƒ‹–¼‚Ì’†‚É%INDEX%‚ğw’è‚·‚é‚ÆA‚»‚ÌêŠ‚ÉƒoƒbƒNƒAƒbƒvƒCƒ“ƒfƒbƒNƒX‚ğ‘}“ü‚µ‚Ü‚·B<br>
-     * %INDEX%‚ğw’è‚µ‚È‚¢ê‡‚ÍAƒtƒ@ƒCƒ‹–¼‚Ì––”ö‚ÉƒoƒbƒNƒAƒbƒvƒCƒ“ƒfƒbƒNƒX‚ª•t—^‚³‚ê‚Ü‚·B
+     * å‡ºåŠ›å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«åã®ä¸­ã«%INDEX%ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ãã®å ´æ‰€ã«ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚<br>
+     * %INDEX%ã‚’æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«åã®æœ«å°¾ã«ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒä»˜ä¸ã•ã‚Œã¾ã™ã€‚
      *
-     * @param file o—Íæƒtƒ@ƒCƒ‹–¼
+     * @param file å‡ºåŠ›å…ˆãƒ•ã‚¡ã‚¤ãƒ«å
      */
     public void setFile(String file);
 }

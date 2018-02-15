@@ -32,17 +32,17 @@
 package jp.ossc.nimbus.service.soap;
 
 /**
- * ƒ|[ƒgƒtƒ@ƒNƒgƒŠ[ƒCƒ“ƒ^ƒtƒF[ƒXB<p> 
+ * ãƒãƒ¼ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p> 
  *
  * @author M.Takata
  */
 public interface PortFactory {
 
     /**
-     * ƒ|[ƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ¼ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param portAlias ƒ|[ƒgƒGƒCƒŠƒAƒX–¼
-     * @return ƒvƒƒLƒV
+     * @param portAlias ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹å
+     * @return ãƒ—ãƒ­ã‚­ã‚·
      * @exception PortException
      */
     public Object getPort(String portAlias) throws PortException;

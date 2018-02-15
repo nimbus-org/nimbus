@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link OneWriteFileMessageWriterService}�T�[�r�X��MBean�C���^�t�F�[�X�B<p>
+ * {@link OneWriteFileMessageWriterService}サービスのMBeanインタフェース。<p>
  * 
  * @author M.Takata
  */
@@ -42,152 +42,152 @@ public interface OneWriteFileMessageWriterServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * �o�̓t�@�C���̕����G���R�[�f�B���O��ݒ肷��B<p>
+     * 出力ファイルの文字エンコーディングを設定する。<p>
      *
-     * @param encoding �����G���R�[�f�B���O
+     * @param encoding 文字エンコーディング
      */
     public void setEncoding(String encoding);
     
     /**
-     * �o�̓t�@�C���̕����G���R�[�f�B���O���擾����B<p>
+     * 出力ファイルの文字エンコーディングを取得する。<p>
      *
-     * @return �����G���R�[�f�B���O
+     * @return 文字エンコーディング
      */
     public String getEncoding();
     
     /**
-     * �o�͐�̃t�@�C�������w�肷��B<p>
+     * 出力先のファイル名を指定する。<p>
      *
-     * @param file �o�͐�t�@�C����
+     * @param file 出力先ファイル名
      */
     public void setFile(String file);
     
     /**
-     * �o�͐�t�@�C�������擾����B<p>
+     * 出力先ファイル名を取得する。<p>
      *
-     * @return �o�͐�t�@�C����
+     * @return 出力先ファイル名
      */
     public String getFile();
     
     /**
-     * �o�͐�t�@�C�����̃v���t�B�N�X��ݒ肷��B<p>
-     * �v���t�B�N�X�ɂ́A�Œ蕶���̑��ɁA%�ň͂񂾃L�[���w�肷�鎖���ł���B<br>
-     * �L�[�w�肳�ꂽ�l�́A�R���e�L�X�g�܂��͓��͂�WritableRecord����擾�����B<br>
+     * 出力先ファイル名のプレフィクスを設定する。<p>
+     * プレフィクスには、固定文字の他に、%で囲んだキーを指定する事ができる。<br>
+     * キー指定された値は、コンテキストまたは入力のWritableRecordから取得される。<br>
      *
-     * @param prefix �o�͐�t�@�C�����̃v���t�B�N�X
+     * @param prefix 出力先ファイル名のプレフィクス
      */
     public void setFilePrefix(String prefix);
     
     /**
-     * �o�͐�t�@�C�����̃v���t�B�N�X���擾����B<p>
+     * 出力先ファイル名のプレフィクスを取得する。<p>
      *
-     * @return �o�͐�t�@�C�����̃v���t�B�N�X
+     * @return 出力先ファイル名のプレフィクス
      */
     public String getFilePrefix();
     
     /**
-     * �o�͐�t�@�C�����̃|�X�g�t�B�N�X��ݒ肷��B<p>
-     * �|�X�g�t�B�N�X�ɂ́A�Œ蕶���̑��ɁA%�ň͂񂾃L�[���w�肷�鎖���ł���B<br>
-     * �L�[�w�肳�ꂽ�l�́A�R���e�L�X�g�܂��͓��͂�WritableRecord����擾�����B<br>
+     * 出力先ファイル名のポストフィクスを設定する。<p>
+     * ポストフィクスには、固定文字の他に、%で囲んだキーを指定する事ができる。<br>
+     * キー指定された値は、コンテキストまたは入力のWritableRecordから取得される。<br>
      *
-     * @param postfix �o�͐�t�@�C�����̃|�X�g�t�B�N�X
+     * @param postfix 出力先ファイル名のポストフィクス
      */
     public void setFilePostfix(String postfix);
     
     /**
-     * �o�͐�t�@�C�����̃|�X�g�t�B�N�X���擾����B<p>
+     * 出力先ファイル名のポストフィクスを取得する。<p>
      *
-     * @return �o�͐�t�@�C�����̃|�X�g�t�B�N�X
+     * @return 出力先ファイル名のポストフィクス
      */
     public String getFilePostfix();
     
     /**
-     * �t�@�C���ɒǋL���邩�ǂ�����ݒ肷��B<p>
+     * ファイルに追記するかどうかを設定する。<p>
      * 
-     * @param isAppend �t�@�C���ɒǋL����ꍇ�Atrue
+     * @param isAppend ファイルに追記する場合、true
      */
     public void setAppend(boolean isAppend);
     
     /**
-     * �t�@�C���ɒǋL���邩�ǂ������擾����B<p>
+     * ファイルに追記するかどうかを取得する。<p>
      * 
-     * @return true�̏ꍇ�A�t�@�C���ɒǋL����B
+     * @return trueの場合、ファイルに追記する。
      */
     public boolean isAppend();
     
     /**
-     * �t�@�C���̃w�b�_��ݒ肷��B<p>
-     * �t�@�C�������݂��Ȃ����A�܂��́A�ǉ������݂łȂ��ꍇ�ɏo�͂���B<br>
+     * ファイルのヘッダを設定する。<p>
+     * ファイルが存在しない時、または、追加書込みでない場合に出力する。<br>
      *
-     * @param header �w�b�_
+     * @param header ヘッダ
      */
     public void setHeader(String header);
     
     /**
-     * �t�@�C���̃w�b�_���擾����B<p>
+     * ファイルのヘッダを取得する。<p>
      *
-     * @return �w�b�_
+     * @return ヘッダ
      */
     public String getHeader();
     
     /**
      * 
-     * ����o�̓X�g���[������邩�ǂ�����ݒ肷��B<p>
-     * true���w�肵���ꍇ�A����X�g���[�����J����Bfalse���w�肵���ꍇ�́A�X�g���[���͊J���������ł���B<br>
-     * �A���A�L�[�w����܂ޏo�͐�t�@�C�����̃v���t�B�N�X�y�у|�X�g�t�B�N�X���w�肳��Ă���ꍇ�́A�t�@�C���������I�ɂȂ�\�������邽�߁Afalse�ɂ͂ł��Ȃ��B<br>
+     * 毎回出力ストリームを閉じるかどうかを設定する。<p>
+     * trueを指定した場合、毎回ストリームを開閉する。falseを指定した場合は、ストリームは開きっ放しである。<br>
+     * 但し、キー指定を含む出力先ファイル名のプレフィクス及びポストフィクスが指定されている場合は、ファイル名が動的になる可能性があるため、falseにはできない。<br>
      *
-     * @param isClose ����o�̓X�g���[�������ꍇ�Atrue
+     * @param isClose 毎回出力ストリームを閉じる場合、true
      */
     public void setEveryTimeCloseStream(boolean isClose);
     
     /**
-     * ����o�̓X�g���[������邩�ǂ����𔻒肷��B<p>
+     * 毎回出力ストリームを閉じるかどうかを判定する。<p>
      * 
-     * @return true�̏ꍇ�A����o�̓X�g���[�������
+     * @return trueの場合、毎回出力ストリームを閉じる
      */
     public boolean isEveryTimeCloseStream();
     
     /**
-     * �R���e�L�X�g�T�[�r�X����ݒ肷��B<p>
+     * コンテキストサービス名を設定する。<p>
      *
-     * @param name �R���e�L�X�g�T�[�r�X��
+     * @param name コンテキストサービス名
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * �R���e�L�X�g�T�[�r�X�����擾����B<p>
+     * コンテキストサービス名を取得する。<p>
      *
-     * @return �R���e�L�X�g�T�[�r�X��
+     * @return コンテキストサービス名
      */
     public ServiceName getContextServiceName();
     
     /**
-     * �t�@�C�����Ɏg�p����WritableElement���t�@�C���ɏo�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�ŏo�͂���B<br>
+     * ファイル名に使用したWritableElementをファイルに出力するかどうかを設定する。<p>
+     * デフォルトは、trueで出力する。<br>
      *
-     * @param isOutput �t�@�C�����Ɏg�p����WritableElement���t�@�C���ɏo�͂���ꍇtrue
+     * @param isOutput ファイル名に使用したWritableElementをファイルに出力する場合true
      */
     public void setOutputKey(boolean isOutput);
     
     /**
-     * �t�@�C�����Ɏg�p����WritableElement���t�@�C���ɏo�͂��邩�ǂ����𔻒肷��B<p>
+     * ファイル名に使用したWritableElementをファイルに出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�t�@�C�����Ɏg�p����WritableElement���t�@�C���ɏo�͂���
+     * @return trueの場合、ファイル名に使用したWritableElementをファイルに出力する
      */
     public boolean isOutputKey();
     
     /**
-     * �ǋL���邽�тɍŌ�ɏ������܂��Z�p���[�^��ݒ肷��B<p>
-     * �ǋL����ݒ�̏ꍇ�̂ݎg�p����܂��B
+     * 追記するたびに最後に書き込まれるセパレータを設定する。<p>
+     * 追記する設定の場合のみ使用されます。
      * 
-     * @param separator �Z�p���[�^
+     * @param separator セパレータ
      */
     public void setSeparator(String separator);
     
     /**
-     * �ǋL���邽�тɍŌ�ɏ������܂��Z�p���[�^���擾����B<p>
+     * 追記するたびに最後に書き込まれるセパレータを取得する。<p>
      * 
-     * @return �Z�p���[�^
+     * @return セパレータ
      */
     public String getSeparator();
 }

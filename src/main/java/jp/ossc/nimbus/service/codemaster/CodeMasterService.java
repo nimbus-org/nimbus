@@ -47,9 +47,9 @@ import jp.ossc.nimbus.service.publish.MessageReceiver;
 
 //
 /**
- * ƒR[ƒhƒ}ƒXƒ^[ŠÇ—ƒT[ƒrƒXƒNƒ‰ƒX
+ * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ç®¡ç†ã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹
  * @author     H.Nakano
- * @version  1.00 ì¬: 2004/05/06 
+ * @version  1.00 ä½œæˆ: 2004/05/06 
  */
 public class CodeMasterService extends ServiceBase
  implements CodeMasterServiceMBean, CodeMasterFinder, MessageListener, jp.ossc.nimbus.service.publish.MessageListener{
@@ -59,15 +59,15 @@ public class CodeMasterService extends ServiceBase
     public static final String UPDATE_TIME_KEY = "$updateTime";
     private static final String C_REQUEST_ID = "REQUEST_ID";
     private static final String C_USER_ID = "USER_ID";
-    /** ŒŸõXV“ú•tƒL[ */
+    /** æ¤œç´¢æ›´æ–°æ—¥ä»˜ã‚­ãƒ¼ */
     private static final String FIND_DATE_KEY = "date";
-    /** ƒ}ƒXƒ^[ƒf[ƒ^ƒIƒuƒWƒFƒNƒgƒL[ */
+    /** ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚­ãƒ¼ */
     private static final String MASTER_DATA_KEY = "data";
     private static final String KEY_SEPARATOR = ",";
     
-    /** FacadeCallerƒT[ƒrƒX–¼ */
+    /** FacadeCallerã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName facadeCallerServiceName;
-    /** FacadeCallerƒT[ƒrƒX */
+    /** FacadeCallerã‚µãƒ¼ãƒ“ã‚¹ */
     private FacadeCaller facadeCaller;
     
     private ServiceName beanFlowInvokerFactoryServiceName;
@@ -93,7 +93,7 @@ public class CodeMasterService extends ServiceBase
     private Set stateListeners;
     
     /**
-     * ƒ}ƒXƒ^[Ši”[—pHash
+     * ãƒã‚¹ã‚¿ãƒ¼æ ¼ç´ç”¨Hash
      */
     protected HashMap master;
     private ServiceName sequenceServiceName;
@@ -102,142 +102,142 @@ public class CodeMasterService extends ServiceBase
     private Set masterNameSet;
     private Properties notifyMasterNameMapping;
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setMasterNames(String[] names) {
         masterNames = names;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String[] getMasterNames() {
         return masterNames;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setNotifyMasterNameMapping(Properties mapping) {
         notifyMasterNameMapping = mapping;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public Properties getNotifyMasterNameMapping() {
         return notifyMasterNameMapping;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public ServiceName getFacadeCallerServiceName() {
         return facadeCallerServiceName;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setFacadeCallerServiceName(ServiceName name) {
         facadeCallerServiceName = name;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name){
         beanFlowInvokerFactoryServiceName = name;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public ServiceName getBeanFlowInvokerFactoryServiceName(){
         return beanFlowInvokerFactoryServiceName;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setJMSTopicSubscriberFactoryServiceName(ServiceName name){
         jmsTopicSubscriberFactoryServiceName = name;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public ServiceName getJMSTopicSubscriberFactoryServiceName(){
         return jmsTopicSubscriberFactoryServiceName;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setJMSTopicSubscriberFactoryServiceNames(ServiceName[] names){
         jmsTopicSubscriberFactoryServiceNames = names;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public ServiceName[] getJMSTopicSubscriberFactoryServiceNames(){
         return jmsTopicSubscriberFactoryServiceNames;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setSubjects(String[] subject){
         this.subjects = subject;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String[] getSubjects(){
         return subjects;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setMessageReceiverServiceName(ServiceName name){
         messageReceiverServiceName = name;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public ServiceName getMessageReceiverServiceName(){
         return messageReceiverServiceName;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setSequenceServiceName(ServiceName name) {
         sequenceServiceName = name;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String getUserId(){
         return userId;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setUserId(String id){
         userId = id;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setStartMasterNames(String[] names){
         startMasterNames = names;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String[] getStartMasterNames(){
         return startMasterNames;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setNotStartMasterNames(String[] names){
         notStartMasterNames = names;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String[] getNotStartMasterNames(){
         return notStartMasterNames;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String[] getNotUpdateAllMasterNames() {
         return notUpdateAllMasterNames;
     }
 
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setNotUpdateAllMasterNames(String[] names) {
         this.notUpdateAllMasterNames = names;
     }
 
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setStartMasterInputMap(Map map){
         startMasterInputMap = map;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public Map getStartMasterInputMap(){
         if(startMasterInputMap == null){
             startMasterInputMap = new LinkedHashMap();
@@ -245,35 +245,35 @@ public class CodeMasterService extends ServiceBase
         return startMasterInputMap;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setPersistDir(String dir){
         persistDir = dir;
     }
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String getPersistDir(){
         return persistDir;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setLoadOnStart(boolean isLoad){
         isLoadOnStart = isLoad;
     }
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public boolean isLoadOnStart(){
         return isLoadOnStart;
     }
     
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setSaveOnStop(boolean isSave){
         isSaveOnStop = isSave;
     }
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public boolean isSaveOnStop(){
         return isSaveOnStop;
     }
     
     /**
-     * FacadeCaller‚ğİ’è‚·‚éB
+     * FacadeCallerã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setFacadeCaller(FacadeCaller caller) {
         facadeCaller = caller;
@@ -284,21 +284,21 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * Sequence‚ğİ’è‚·‚éB
+     * Sequenceã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setSequence(Sequence sequence) {
         this.sequence = sequence;
     }
     
     /**
-     * JMSMessageConsumerFactory‚ğİ’è‚·‚éB
+     * JMSMessageConsumerFactoryã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setJMSMessageConsumerFactory(JMSMessageConsumerFactory factory){
         jmsTopicSubscriberFactory = factory;
     }
     
     /**
-     * JMSMessageConsumerFactory‚ğİ’è‚·‚éB
+     * JMSMessageConsumerFactoryã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setJMSMessageConsumerFactories(JMSMessageConsumerFactory[] factories){
         jmsTopicSubscriberFactories = factories;
@@ -391,7 +391,7 @@ public class CodeMasterService extends ServiceBase
         }
     }
     
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
      */
     public void stopService() throws Exception{
@@ -418,7 +418,7 @@ public class CodeMasterService extends ServiceBase
         }
     }
     
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#destroyService()
      */
     public void destroyService(){
@@ -568,7 +568,7 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     *  ƒgƒsƒbƒN‚ÌƒŠƒXƒi[“o˜^
+     *  ãƒˆãƒ”ãƒƒã‚¯ã®ãƒªã‚¹ãƒŠãƒ¼ç™»éŒ²
      */
     private void entryTopicListener(
         JMSMessageConsumerFactory subscriberFactory,
@@ -618,7 +618,7 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * MasterHash‚Ì‰Šú‰» 
+     * MasterHashã®åˆæœŸåŒ– 
      */
     private void initMasterHash() throws Exception {
         master.clear();
@@ -670,20 +670,20 @@ public class CodeMasterService extends ServiceBase
         }
     }
     
-    // CodeMasterFinder ‚ÌJavaDoc
+    // CodeMasterFinder ã®JavaDoc
     public Map getCodeMasters() throws ServiceException {
         HashMap map = new HashMap();
         Date nowDate = new Date();
         Set keys = this.master.keySet();
         Iterator ite = keys.iterator();
-        //‘SƒR[ƒhƒ}ƒXƒ^[‚ğƒL[Map‚ÉŠi”[
+        //å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã‚’ã‚­ãƒ¼Mapã«æ ¼ç´
         while(ite.hasNext()){
             String key = (String)ite.next();
             TimeManageMaster tmp = null;
             synchronized(this.master){
                 tmp = (TimeManageMaster)master.get(key);
             }
-            //Œ»İ‚Åƒ}ƒXƒ^[‚ğŒŸõ
+            //ç¾åœ¨æ™‚åˆ»ã§ãƒã‚¹ã‚¿ãƒ¼ã‚’æ¤œç´¢
             Object mst = tmp.getMaster(nowDate);
             map.put(key,mst);
         }
@@ -691,17 +691,17 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * ƒ}ƒXƒ^[•ÏXƒ^ƒCƒ~ƒ“ƒOóM
-     * Message ‚Í MapMessage‚Æ‚µA<br>
-     * name‚Ævalue‚Ì‘g‚İ‡‚í‚¹‚ÍA<br>
-     * "key" (String)  | [ƒ}ƒXƒ^[–¼] (String)<br>
-     * "date" (String) | [ƒf[ƒ^—LŒø“ú](long)<br>
-     * ‚Åİ’è‚·‚é‚±‚Æ<br>
-     * w’è‚µ‚½“ú•tˆÈ~‚Ì“ú•t‚ªŠù‚Éİ’è‚³‚ê‚Ä‚¢‚ê‚ÎAŠY“–‚·‚éƒ}ƒXƒ^ƒf[ƒ^‚ğ–³Œø‚É‚·‚é
+     * ãƒã‚¹ã‚¿ãƒ¼å¤‰æ›´ã‚¿ã‚¤ãƒŸãƒ³ã‚°å—ä¿¡
+     * Message ã¯ MapMessageã¨ã—ã€<br>
+     * nameã¨valueã®çµ„ã¿åˆã‚ã›ã¯ã€<br>
+     * "key" (String)  | [ãƒã‚¹ã‚¿ãƒ¼å] (String)<br>
+     * "date" (String) | [ãƒ‡ãƒ¼ã‚¿æœ‰åŠ¹æ—¥æ™‚](long)<br>
+     * ã§è¨­å®šã™ã‚‹ã“ã¨<br>
+     * æŒ‡å®šã—ãŸæ—¥ä»˜ä»¥é™ã®æ—¥ä»˜ãŒæ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€è©²å½“ã™ã‚‹ãƒã‚¹ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç„¡åŠ¹ã«ã™ã‚‹
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
     public void onMessage(Message msg){
-        //Message‚©‚çXVî•ñ‚ğæ“¾
+        //Messageã‹ã‚‰æ›´æ–°æƒ…å ±ã‚’å–å¾—
         if(!(msg instanceof MapMessage)){
             getLogger().write("CMS__00003", msg.getClass());
             return;
@@ -810,7 +810,7 @@ public class CodeMasterService extends ServiceBase
         }
     }
     
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateAllCodeMasters() throws Exception{
         Set codeMasterNameSet = getCodeMasterNameSet();
         if(codeMasterNameSet != null){
@@ -825,17 +825,17 @@ public class CodeMasterService extends ServiceBase
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateCodeMaster(String key) throws Exception{
         updateCodeMaster(key, null);
     }
     
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateCodeMaster(String key, Date updateTime) throws Exception{
         updateCodeMaster(key, null, updateTime);
     }
     
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public void updateCodeMaster(String key, Object input, Date updateTime) throws Exception{
         if(!masterNameSet.contains(key)){
             return;
@@ -850,18 +850,18 @@ public class CodeMasterService extends ServiceBase
         );
     }
     
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public Set getCodeMasterNameSet(){
         return masterNameSet == null
              ? new HashSet() : new HashSet(masterNameSet);
     }
     
     /**
-     * w’è‚³‚ê‚½•¡”‚ÌV‚µ‚¢ƒ}ƒXƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸè¤‡æ•°ã®æ–°ã—ã„ãƒã‚¹ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param keyInputMap ƒ}ƒXƒ^–¼‚Æ“ü—Í‚Ìƒ}ƒbƒv
-     * @return ƒ}ƒXƒ^–¼‚Æƒ}ƒXƒ^‚Ìƒ}ƒbƒv
-     * @exception Exception ƒ}ƒXƒ^‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param keyInputMap ãƒã‚¹ã‚¿åã¨å…¥åŠ›ã®ãƒãƒƒãƒ—
+     * @return ãƒã‚¹ã‚¿åã¨ãƒã‚¹ã‚¿ã®ãƒãƒƒãƒ—
+     * @exception Exception ãƒã‚¹ã‚¿ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Map createNewMasters(Map keyInputMap) throws Exception{
         if(facadeCaller != null){
@@ -874,11 +874,11 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¡”‚Ìƒ}ƒXƒ^‚ğæ“¾‚·‚éBeanFlowInvokerŒÄ‚Ño‚µ‚ğs‚¤B<p>
+     * æŒ‡å®šã•ã‚ŒãŸè¤‡æ•°ã®ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹BeanFlowInvokerå‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<p>
      *
-     * @param keyInputMap ƒ}ƒXƒ^–¼‚Æ“ü—Í‚Ìƒ}ƒbƒv
-     * @return ƒ}ƒXƒ^–¼‚Æƒ}ƒXƒ^‚Ìƒ}ƒbƒv
-     * @exception Exception ƒ}ƒXƒ^‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param keyInputMap ãƒã‚¹ã‚¿åã¨å…¥åŠ›ã®ãƒãƒƒãƒ—
+     * @return ãƒã‚¹ã‚¿åã¨ãƒã‚¹ã‚¿ã®ãƒãƒƒãƒ—
+     * @exception Exception ãƒã‚¹ã‚¿ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Map callBeanFlow(Map keyInputMap) throws Exception{
         final Map result = new LinkedHashMap();
@@ -897,11 +897,11 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¡”‚Ìƒ}ƒXƒ^‚ğæ“¾‚·‚éIOCŒÄ‚Ño‚µ‚ğs‚¤B<p>
+     * æŒ‡å®šã•ã‚ŒãŸè¤‡æ•°ã®ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹IOCå‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<p>
      *
-     * @param keyInputMap ƒ}ƒXƒ^–¼‚Æ“ü—Í‚Ìƒ}ƒbƒv
-     * @return ƒ}ƒXƒ^–¼‚Æƒ}ƒXƒ^‚Ìƒ}ƒbƒv
-     * @exception Exception ƒ}ƒXƒ^‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param keyInputMap ãƒã‚¹ã‚¿åã¨å…¥åŠ›ã®ãƒãƒƒãƒ—
+     * @return ãƒã‚¹ã‚¿åã¨ãƒã‚¹ã‚¿ã®ãƒãƒƒãƒ—
+     * @exception Exception ãƒã‚¹ã‚¿ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Map callIOC(Map keyInputMap) throws Exception{
         final FacadeValue value = FacadeValueAccess.createCommandsValue();
@@ -948,12 +948,12 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½V‚µ‚¢ƒ}ƒXƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–°ã—ã„ãƒã‚¹ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒ}ƒXƒ^–¼
-     * @param input ƒ}ƒXƒ^æ“¾‚Ì‚½‚ß‚Ì“ü—Í
-     * @return ƒ}ƒXƒ^
-     * @exception Exception ƒ}ƒXƒ^‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param key ãƒã‚¹ã‚¿å
+     * @param input ãƒã‚¹ã‚¿å–å¾—ã®ãŸã‚ã®å…¥åŠ›
+     * @return ãƒã‚¹ã‚¿
+     * @exception Exception ãƒã‚¹ã‚¿ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object createNewMaster(String key, Object input) throws Exception{
         if(facadeCaller != null){
@@ -966,12 +966,12 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒXƒ^‚ğæ“¾‚·‚éBeanFlowInvokerŒÄ‚Ño‚µ‚ğs‚¤B<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹BeanFlowInvokerå‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<p>
      *
-     * @param key ƒ}ƒXƒ^–¼
-     * @param input BeanFlowInvoker‚Ö‚Ì“ü—Í
-     * @return ƒ}ƒXƒ^
-     * @exception Exception ƒ}ƒXƒ^‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param key ãƒã‚¹ã‚¿å
+     * @param input BeanFlowInvokerã¸ã®å…¥åŠ›
+     * @return ãƒã‚¹ã‚¿
+     * @exception Exception ãƒã‚¹ã‚¿ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object callBeanFlow(String key, Object input) throws Exception{
         final BeanFlowInvoker invoker = beanFlowInvokerFactory.createFlow(key);
@@ -979,12 +979,12 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒXƒ^‚ğæ“¾‚·‚éIOCŒÄ‚Ño‚µ‚ğs‚¤B<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹IOCå‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<p>
      *
-     * @param key ƒ}ƒXƒ^–¼
-     * @param input IOCƒRƒ}ƒ“ƒh‚Ì“ü—Í
-     * @return ƒ}ƒXƒ^
-     * @exception Exception ƒ}ƒXƒ^‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param key ãƒã‚¹ã‚¿å
+     * @param input IOCã‚³ãƒãƒ³ãƒ‰ã®å…¥åŠ›
+     * @return ãƒã‚¹ã‚¿
+     * @exception Exception ãƒã‚¹ã‚¿ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object callIOC(String key, Object input) throws Exception{
         final FacadeValue value = FacadeValueAccess.createCommandsValue();
@@ -1017,11 +1017,11 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒXƒ^‚ğAw’è‚µ‚½ŠÔ‚ÉXV‚·‚é‚æ‚¤‚É“o˜^‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¹ã‚¿ã‚’ã€æŒ‡å®šã—ãŸæ™‚é–“ã«æ›´æ–°ã™ã‚‹ã‚ˆã†ã«ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒ}ƒXƒ^–¼
-     * @param mst ƒ}ƒXƒ^
-     * @param updateTime XVŠÔ
+     * @param key ãƒã‚¹ã‚¿å
+     * @param mst ãƒã‚¹ã‚¿
+     * @param updateTime æ›´æ–°æ™‚é–“
      */
     protected void updateNewMaster(
         String key,
@@ -1073,7 +1073,7 @@ public class CodeMasterService extends ServiceBase
     }
     
     /**
-     * ƒ}ƒXƒ^[Bean‚Ì‚Å‚ÌŠÇ—‚ğs‚¤ƒNƒ‰ƒX<p>
+     * ãƒã‚¹ã‚¿ãƒ¼Beanã®æ™‚åˆ»ã§ã®ç®¡ç†ã‚’è¡Œã†ã‚¯ãƒ©ã‚¹<p>
      * @version $Name:  $
      * @author H.Nakano
      * @since 1.0
@@ -1083,27 +1083,27 @@ public class CodeMasterService extends ServiceBase
         private String mFlowKey = null ;
         private ArrayList mTimeList = null ;
         /**
-         * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+         * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
          */
         public TimeManageMaster(){
             mTimeList = new ArrayList() ;
         }
         /**
-         * ƒ}ƒXƒ^[–¼İ’è
+         * ãƒã‚¹ã‚¿ãƒ¼åè¨­å®š
          * @param name
          */
         public void setMasterName(String name){
             mFlowKey = name ;
         }
         /**
-         * ƒ}ƒXƒ^[–¼æ“¾
+         * ãƒã‚¹ã‚¿ãƒ¼åå–å¾—
          * @return
          */
         public String getMasterName(){
             return mFlowKey ;
         }
         /**
-         * ƒ}ƒXƒ^[ƒf[ƒ^’Ç‰Á
+         * ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿è¿½åŠ 
          * @param time
          * @param master
          */
@@ -1134,7 +1134,7 @@ public class CodeMasterService extends ServiceBase
             }
         }
         /**
-         * w’è‚Å‚Ìƒ}ƒXƒ^[æ“¾
+         * æŒ‡å®šæ™‚åˆ»ã§ã®ãƒã‚¹ã‚¿ãƒ¼å–å¾—
          * @param time
          * @return
          */
@@ -1151,7 +1151,7 @@ public class CodeMasterService extends ServiceBase
             return ret ;
         }
         /**
-         * Œ»İ‚Å•s•K—v‚Èƒ}ƒXƒ^[‚ğ”jŠü
+         * ç¾åœ¨æ™‚åˆ»ã§ä¸å¿…è¦ãªãƒã‚¹ã‚¿ãƒ¼ã‚’ç ´æ£„
          */
         public void clear(){
             Date now = new Date() ;
@@ -1169,7 +1169,7 @@ public class CodeMasterService extends ServiceBase
             }
         }
         /**
-         * ƒNƒ[ƒ“
+         * ã‚¯ãƒ­ãƒ¼ãƒ³
          * @return
          */
         public TimeManageMaster cloneOwn(){

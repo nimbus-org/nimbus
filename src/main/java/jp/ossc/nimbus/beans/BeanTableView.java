@@ -50,7 +50,7 @@ import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.beans.dataset.RecordList;
 
 /**
- * {@link BeanTable Beanƒe[ƒuƒ‹}‚ÌŒŸõƒrƒ…[B<p>
+ * {@link BeanTable Beanãƒ†ãƒ¼ãƒ–ãƒ«}ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  * @see BeanTable
@@ -73,50 +73,50 @@ public class BeanTableView implements Cloneable{
     protected int operator = OPERATOR_AND;
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒXŠÇ—‚ğg‚Á‚ÄŒŸõ‚ğs‚¤ƒrƒ…[‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç®¡ç†ã‚’ä½¿ã£ã¦æ¤œç´¢ã‚’è¡Œã†ãƒ“ãƒ¥ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param manager ƒCƒ“ƒfƒbƒNƒXŠÇ—
+     * @param manager ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç®¡ç†
      */
     public BeanTableView(BeanTableIndexManager manager){
         indexManager = manager;
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõŒ‹‰Ê‚ÌBeanW‡
+     * @return æ¤œç´¢çµæœã®Beané›†åˆ
      */
     public Set getResultSet(){
         return resultSet == null ? indexManager.elements() : resultSet;
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beanãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõŒ‹‰Ê‚ÌBeanƒŠƒXƒg
+     * @return æ¤œç´¢çµæœã®Beanãƒªã‚¹ãƒˆ
      */
     public List getResultList(){
         return new ArrayList(resultSet == null ? indexManager.elements() : resultSet);
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚ğw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚Å¸‡ƒ\[ƒg‚µ‚Äæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‚’æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æ˜‡é †ã‚½ãƒ¼ãƒˆã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param propNames ƒ\[ƒg‚·‚éBean‚ÌƒvƒƒpƒeƒB–¼”z—ñ
-     * @return ŒŸõŒ‹‰Ê‚Ìƒ\[ƒgÏ‚İBeanƒŠƒXƒg
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param propNames ã‚½ãƒ¼ãƒˆã™ã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @return æ¤œç´¢çµæœã®ã‚½ãƒ¼ãƒˆæ¸ˆã¿Beanãƒªã‚¹ãƒˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List getResultList(String[] propNames) throws IndexPropertyAccessException{
         return getResultList(propNames, null);
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚ğw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB–¼‚Åw’è‚³‚ê‚½ƒ\[ƒg•ûŒü‚Éƒ\[ƒg‚µ‚Äæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‚’æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æŒ‡å®šã•ã‚ŒãŸã‚½ãƒ¼ãƒˆæ–¹å‘ã«ã‚½ãƒ¼ãƒˆã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param propNames ƒ\[ƒg‚·‚éBean‚ÌƒvƒƒpƒeƒB–¼”z—ñ
-     * @param isAsc propNames‚Åw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚Ìƒ\[ƒg•ûŒü‚ğ¦‚·”z—ñBtrue‚ğw’è‚·‚é‚Æ¸‡
-     * @return ŒŸõŒ‹‰Ê‚Ìƒ\[ƒgÏ‚İBeanƒŠƒXƒg
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param propNames ã‚½ãƒ¼ãƒˆã™ã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param isAsc propNamesã§æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’ç¤ºã™é…åˆ—ã€‚trueã‚’æŒ‡å®šã™ã‚‹ã¨æ˜‡é †
+     * @return æ¤œç´¢çµæœã®ã‚½ãƒ¼ãƒˆæ¸ˆã¿Beanãƒªã‚¹ãƒˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List getResultList(String[] propNames, boolean[] isAsc) throws IndexPropertyAccessException{
         List result = new ArrayList();
@@ -133,23 +133,23 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚©‚çw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ğd•¡íœ‚µ‚½’l‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‹ã‚‰æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é‡è¤‡å‰Šé™¤ã—ãŸå€¤ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return w’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ğd•¡íœ‚µ‚½’l‚ÌW‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é‡è¤‡å‰Šé™¤ã—ãŸå€¤ã®é›†åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Set getResultDistinctValueSet(String propName) throws IndexPropertyAccessException{
         return (Set)getResultDistinctValueCollection(propName, false, false);
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚©‚çw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ğd•¡íœ‚µ‚½’l‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‹ã‚‰æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é‡è¤‡å‰Šé™¤ã—ãŸå€¤ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @param isAsc propName‚Åw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚Ìƒ\[ƒg•ûŒü‚ğ¦‚·ƒtƒ‰ƒOBtrue‚ğw’è‚·‚é‚Æ¸‡
-     * @return w’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ğd•¡íœ‚µ‚½’l‚ÌƒŠƒXƒg
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param isAsc propNameã§æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚trueã‚’æŒ‡å®šã™ã‚‹ã¨æ˜‡é †
+     * @return æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’é‡è¤‡å‰Šé™¤ã—ãŸå€¤ã®ãƒªã‚¹ãƒˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public List getResultDistinctValueList(String propName, boolean isAsc) throws IndexPropertyAccessException{
         return (List)getResultDistinctValueCollection(propName, true, isAsc);
@@ -192,11 +192,11 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚©‚çw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ÌÅ‘å’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‹ã‚‰æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return w’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ÌÅ‘å’l
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æœ€å¤§å€¤
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object getResultMaxValue(String propName) throws IndexPropertyAccessException{
         List sortedList = getResultList(new String[]{propName}, new boolean[]{false});
@@ -222,11 +222,11 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ŒŸõŒ‹‰Ê‚ÌBeanW‡‚©‚çw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ÌÅ¬’l‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã®Beané›†åˆã‹ã‚‰æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return w’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB‚ÌÅ¬’l
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æœ€å°å€¤
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object getResultMinValue(String propName) throws IndexPropertyAccessException{
         List sortedList = getResultList(new String[]{propName}, new boolean[]{true});
@@ -265,10 +265,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ˜_—ÏiANDj‚É‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ì˜_—‰‰Zó‘Ô‚Å‚·B<br>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’è«–ç†ç©ï¼ˆANDï¼‰ã«ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è«–ç†æ¼”ç®—çŠ¶æ…‹ã§ã™ã€‚<br>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView and(){
         operator = OPERATOR_AND;
@@ -276,9 +276,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ˜_—˜aiORj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’è«–ç†å’Œï¼ˆORï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView or(){
         operator = OPERATOR_OR;
@@ -286,9 +286,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ”Û’è˜_—ÏiNANDj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’å¦å®šè«–ç†ç©ï¼ˆNANDï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView nand(){
         operator = OPERATOR_NAND;
@@ -296,9 +296,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ”Û’è˜_—˜aiNORj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’å¦å®šè«–ç†å’Œï¼ˆNORï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView nor(){
         operator = OPERATOR_NOR;
@@ -306,9 +306,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ”r‘¼“I˜_—˜aiXORj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’æ’ä»–çš„è«–ç†å’Œï¼ˆXORï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView xor(){
         operator = OPERATOR_XOR;
@@ -316,9 +316,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ”r‘¼“I”Û’è˜_—˜aiXNORj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’æ’ä»–çš„å¦å®šè«–ç†å’Œï¼ˆXNORï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView xnor(){
         operator = OPERATOR_XNOR;
@@ -326,9 +326,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ˜_—•ïŠÜiIMPj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’è«–ç†åŒ…å«ï¼ˆIMPï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView imp(){
         operator = OPERATOR_IMP;
@@ -336,9 +336,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ”Û’è˜_—•ïŠÜiNIMPj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’å¦å®šè«–ç†åŒ…å«ï¼ˆNIMPï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView nimp(){
         operator = OPERATOR_NIMP;
@@ -346,9 +346,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ‹t˜_—•ïŠÜiCIMPj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’é€†è«–ç†åŒ…å«ï¼ˆCIMPï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView cimp(){
         operator = OPERATOR_CIMP;
@@ -356,9 +356,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ˜_—‰‰Zó‘Ô‚ğ‹t”Û’è˜_—•ïŠÜiCNIMPj‚É‚·‚éB<p>
+     * è«–ç†æ¼”ç®—çŠ¶æ…‹ã‚’é€†å¦å®šè«–ç†åŒ…å«ï¼ˆCNIMPï¼‰ã«ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒrƒ…[
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView cnimp(){
         operator = OPERATOR_CNIMP;
@@ -427,9 +427,9 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Ì‹tW‡‚ğ‚Æ‚éB<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®é€†é›†åˆã‚’ã¨ã‚‹ã€‚<p>
      * 
-     * @return ‹tW‡‚ğ‚Æ‚Á‚½Œ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
+     * @return é€†é›†åˆã‚’ã¨ã£ãŸçµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView not(){
         Set all = indexManager.elements();
@@ -439,10 +439,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Éw’è‚³‚ê‚½ŒŸõƒrƒ…[‚ğAND˜AŒ‹‚·‚éB<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã«æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã‚’ANDé€£çµã™ã‚‹ã€‚<p>
      * 
-     * @param view ŒŸõƒrƒ…[
-     * @return ˜AŒ‹‚³‚ê‚½Œ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return é€£çµã•ã‚ŒãŸçµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView and(BeanTableView view){
         resultSet.retainAll(view.getResultSet());
@@ -450,10 +450,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Éw’è‚³‚ê‚½ŒŸõƒrƒ…[‚ğOR˜AŒ‹‚·‚éB<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã«æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã‚’ORé€£çµã™ã‚‹ã€‚<p>
      * 
-     * @param view ŒŸõƒrƒ…[
-     * @return ˜AŒ‹‚³‚ê‚½Œ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return é€£çµã•ã‚ŒãŸçµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView or(BeanTableView view){
         resultSet.addAll(view.getResultSet());
@@ -461,10 +461,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì”Û’è˜_—ÏiNANDj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®å¦å®šè«–ç†ç©ï¼ˆNANDï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView nand(BeanTableView view){
         resultSet.retainAll(view.getResultSet());
@@ -475,10 +475,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì”Û’è˜_—˜aiNORj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®å¦å®šè«–ç†å’Œï¼ˆNORï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView nor(BeanTableView view){
         resultSet.addAll(view.getResultSet());
@@ -489,10 +489,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì”r‘¼“I˜_—˜aiXORj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®æ’ä»–çš„è«–ç†å’Œï¼ˆXORï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView xor(BeanTableView view){
         Set andSet = new HashSet(resultSet);
@@ -503,10 +503,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì”Û’è”r‘¼“I˜_—˜aiXNORj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®å¦å®šæ’ä»–çš„è«–ç†å’Œï¼ˆXNORï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView xnor(BeanTableView view){
         Set tmpSet = new HashSet(resultSet);
@@ -520,10 +520,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì˜_—•ïŠÜiIMPj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®è«–ç†åŒ…å«ï¼ˆIMPï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView imp(BeanTableView view){
         Set all = indexManager.elements();
@@ -534,10 +534,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì”Û’è˜_—•ïŠÜiNIMPj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®å¦å®šè«–ç†åŒ…å«ï¼ˆNIMPï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView nimp(BeanTableView view){
         resultSet.removeAll(view.getResultSet());
@@ -545,10 +545,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì‹t˜_—•ïŠÜiCIMPj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®é€†è«–ç†åŒ…å«ï¼ˆCIMPï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView cimp(BeanTableView view){
         Set all = indexManager.elements();
@@ -559,10 +559,10 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * ‚±‚ÌŒŸõƒrƒ…[‚Æw’è‚³‚ê‚½ŒŸõƒrƒ…[‚Ì”Û’è‹t˜_—•ïŠÜiCNIMPj‚ğs‚¤B<p>
+     * ã“ã®æ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã¨æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ãƒ“ãƒ¥ãƒ¼ã®å¦å®šé€†è«–ç†åŒ…å«ï¼ˆCNIMPï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param view ŒŸõƒrƒ…[
-     * @return Œ‹‰Ê‚Æ‚È‚é‚±‚Ìƒrƒ…[
+     * @param view æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
+     * @return çµæœã¨ãªã‚‹ã“ã®ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView cnimp(BeanTableView view){
         Set targetSet = new HashSet(view.getResultSet());
@@ -572,13 +572,13 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚Ü‚½‚ÍƒvƒƒpƒeƒBW‡‚É‘Î‚·‚éƒCƒ“ƒfƒbƒNƒX‚ÌƒL[—v‘f‚ÌW‡‚ğŒŸõ‚·‚éB<p>
-     * ƒL[ŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚Æ•¡‡ƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä—LŒøB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¾ãŸã¯ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é›†åˆã«å¯¾ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚­ãƒ¼è¦ç´ ã®é›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ¼æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦æœ‰åŠ¹ã€‚<br>
      *
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propNames ƒvƒƒpƒeƒB–¼”z—ñ
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A‚Ü‚½‚Í•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propNames ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€ã¾ãŸã¯è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchKeyElement(String indexName, String[] propNames) throws IndexNotFoundException{
         if(resultSet == null){
@@ -593,13 +593,13 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªnull‚Æ‚È‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒnullã¨ãªã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A‚Ü‚½‚Í•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€ã¾ãŸã¯è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchNull(String indexName, String propName) throws IndexNotFoundException{
         if(resultSet == null){
@@ -614,13 +614,13 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ª”ñnull‚Æ‚È‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒénullã¨ãªã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A‚Ü‚½‚Í•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€ã¾ãŸã¯è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchNotNull(String indexName, String propName) throws IndexNotFoundException{
         if(resultSet == null){
@@ -635,15 +635,15 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚Æˆê’v‚·‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚Æ•¡‡ƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ä¸€è‡´ã™ã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦æœ‰åŠ¹ã€‚<br>
      *
-     * @param element ŒŸõƒL[‚Æ‚È‚éBean
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propNames ƒvƒƒpƒeƒB–¼”z—ñ
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param element æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹Bean
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propNames ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public BeanTableView searchByElement(
         Object element,
@@ -662,15 +662,15 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½•¡”‚ÌBean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚Æˆê’v‚·‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚Æ•¡‡ƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸè¤‡æ•°ã®Beanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ä¸€è‡´ã™ã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦æœ‰åŠ¹ã€‚<br>
      *
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propNames ƒvƒƒpƒeƒB–¼”z—ñ
-     * @param elements ŒŸõƒL[‚Æ‚È‚éBean”z—ñ
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propNames ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param elements æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹Beané…åˆ—
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public BeanTableView searchInElement(
         String indexName,
@@ -689,14 +689,14 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚Æˆê’v‚·‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã¨ä¸€è‡´ã™ã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param value ŒŸõƒL[‚Æ‚È‚é’l
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A‚Ü‚½‚Í•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param value æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹å€¤
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€ã¾ãŸã¯è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchBy(
         Object value,
@@ -715,14 +715,14 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½•¡”‚Ì’l‚Æˆê’v‚·‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸè¤‡æ•°ã®å€¤ã¨ä¸€è‡´ã™ã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @param values ŒŸõƒL[‚Æ‚È‚é’l”z—ñ
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A‚Ü‚½‚Í•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param values æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹å€¤é…åˆ—
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€ã¾ãŸã¯è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchIn(
         String indexName,
@@ -741,14 +741,14 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚Æˆê’v‚·‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚Æ•¡‡ƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã¨ä¸€è‡´ã™ã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦æœ‰åŠ¹ã€‚<br>
      *
-     * @param keys ŒŸõƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼‚Æ’l‚Ìƒ}ƒbƒsƒ“ƒO
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ªw’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÉŠÖ˜A‚µ‚È‚¢ê‡
+     * @param keys æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨å€¤ã®ãƒãƒƒãƒ”ãƒ³ã‚°
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒæŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«é–¢é€£ã—ãªã„å ´åˆ
      */
     public BeanTableView searchBy(
         Map keys,
@@ -766,14 +766,14 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½•¡”‚Ì’l‚Æˆê’v‚·‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ˆê’vŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚Æ•¡‡ƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸè¤‡æ•°ã®å€¤ã¨ä¸€è‡´ã™ã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ä¸€è‡´æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦æœ‰åŠ¹ã€‚<br>
      *
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param keys ŒŸõƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼‚Æ’l‚Ìƒ}ƒbƒsƒ“ƒO‚Ì”z—ñ
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ªw’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÉŠÖ˜A‚µ‚È‚¢ê‡
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param keys æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨å€¤ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã®é…åˆ—
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒæŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«é–¢é€£ã—ãªã„å ´åˆ
      */
     public BeanTableView searchIn(
         String indexName,
@@ -814,15 +814,15 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚æ‚è‘å‚«‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ˆã‚Šå¤§ãã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from è‡’l‚ğ‚ÂBean
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param from é–¾å€¤ã‚’æŒã¤Bean
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public BeanTableView searchFromElement(
         Object from,
@@ -842,16 +842,16 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚æ‚è‘å‚«‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ˆã‚Šå¤§ãã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from è‡’l‚ğ‚ÂBean
-     * @param inclusive ŒŸõŒ‹‰Ê‚Éè‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param from é–¾å€¤ã‚’æŒã¤Bean
+     * @param inclusive æ¤œç´¢çµæœã«é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
 
     public BeanTableView searchFromElement(
@@ -874,14 +874,14 @@ public class BeanTableView implements Cloneable{
 
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚æ‚è‘å‚«‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã‚ˆã‚Šå¤§ãã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from è‡’l
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param from é–¾å€¤
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchFrom(
         Object from,
@@ -901,15 +901,15 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚æ‚è‘å‚«‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã‚ˆã‚Šå¤§ãã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from è‡’l
-     * @param inclusive ŒŸõŒ‹‰Ê‚Éè‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param from é–¾å€¤
+     * @param inclusive æ¤œç´¢çµæœã«é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
 
     public BeanTableView searchFrom(
@@ -932,15 +932,15 @@ public class BeanTableView implements Cloneable{
 
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚æ‚è¬‚³‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ˆã‚Šå°ã•ã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param to è‡’l‚ğ‚ÂBean
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param to é–¾å€¤ã‚’æŒã¤Bean
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public BeanTableView searchToElement(
         Object to,
@@ -960,16 +960,16 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚æ‚è¬‚³‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ˆã‚Šå°ã•ã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param to è‡’l‚ğ‚ÂBean
-     * @param inclusive ŒŸõŒ‹‰Ê‚Éè‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param to é–¾å€¤ã‚’æŒã¤Bean
+     * @param inclusive æ¤œç´¢çµæœã«é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
 
     public BeanTableView searchToElement(
@@ -992,14 +992,14 @@ public class BeanTableView implements Cloneable{
 
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚æ‚è¬‚³‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã‚ˆã‚Šå°ã•ã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param to è‡’l
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param to é–¾å€¤
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchTo(
         Object to,
@@ -1019,15 +1019,15 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚æ‚è¬‚³‚¢BeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã‚ˆã‚Šå°ã•ã„Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param to è‡’l
-     * @param inclusive ŒŸõŒ‹‰Ê‚Éè‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param to é–¾å€¤
+     * @param inclusive æ¤œç´¢çµæœã«é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
 
     public BeanTableView searchTo(
@@ -1050,16 +1050,16 @@ public class BeanTableView implements Cloneable{
 
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚Ì”ÍˆÍ“à‚Æ‚È‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç¯„å›²å†…ã¨ãªã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from ”ÍˆÍ‚ÌÅ¬è‡’l‚ğ‚ÂBean
-     * @param to ”ÍˆÍ‚ÌÅ‘åè‡’l‚ğ‚ÂBean
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param from ç¯„å›²ã®æœ€å°é–¾å€¤ã‚’æŒã¤Bean
+     * @param to ç¯„å›²ã®æœ€å¤§é–¾å€¤ã‚’æŒã¤Bean
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public BeanTableView searchRangeElement(
         Object from,
@@ -1080,18 +1080,18 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½Bean‚ÌŠY“–‚·‚éƒvƒƒpƒeƒB‚Ì”ÍˆÍ“à‚Æ‚È‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸBeanã®è©²å½“ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç¯„å›²å†…ã¨ãªã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from ”ÍˆÍ‚ÌÅ¬è‡’l‚ğ‚ÂBean
-     * @param fromInclusive ŒŸõŒ‹‰Ê‚ÉÅ¬è‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param to ”ÍˆÍ‚ÌÅ‘åè‡’l‚ğ‚ÂBean
-     * @param toInclusive ŒŸõŒ‹‰Ê‚ÉÅ‘åè‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
-     * @exception IndexPropertyAccessException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param from ç¯„å›²ã®æœ€å°é–¾å€¤ã‚’æŒã¤Bean
+     * @param fromInclusive æ¤œç´¢çµæœã«æœ€å°é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param to ç¯„å›²ã®æœ€å¤§é–¾å€¤ã‚’æŒã¤Bean
+     * @param toInclusive æ¤œç´¢çµæœã«æœ€å¤§é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
+     * @exception IndexPropertyAccessException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
 
     public BeanTableView searchRangeElement(
@@ -1116,15 +1116,15 @@ public class BeanTableView implements Cloneable{
 
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚Ì”ÍˆÍ“à‚Æ‚È‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã®ç¯„å›²å†…ã¨ãªã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from ”ÍˆÍ‚ÌÅ¬è‡’l
-     * @param to ”ÍˆÍ‚ÌÅ‘åè‡’l
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param from ç¯„å›²ã®æœ€å°é–¾å€¤
+     * @param to ç¯„å›²ã®æœ€å¤§é–¾å€¤
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
     public BeanTableView searchRange(
         Object from, 
@@ -1145,17 +1145,17 @@ public class BeanTableView implements Cloneable{
     }
     
     /**
-     * “Á’è‚ÌƒvƒƒpƒeƒB‚ªw’è‚µ‚½’l‚Ì”ÍˆÍ“à‚Æ‚È‚éBeanW‡‚ğŒŸõ‚·‚éB<p>
-     * ”ÍˆÍŒŸõ‚Ìˆêí‚Å‚ ‚èA’PƒƒCƒ“ƒfƒbƒNƒX‚É‘Î‚µ‚Ä‚Ì‚İ—LŒøB<br>
+     * ç‰¹å®šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒ‡å®šã—ãŸå€¤ã®ç¯„å›²å†…ã¨ãªã‚‹Beané›†åˆã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ç¯„å›²æ¤œç´¢ã®ä¸€ç¨®ã§ã‚ã‚Šã€å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«å¯¾ã—ã¦ã®ã¿æœ‰åŠ¹ã€‚<br>
      *
-     * @param from ”ÍˆÍ‚ÌÅ¬è‡’l
-     * @param fromInclusive ŒŸõŒ‹‰Ê‚ÉÅ¬è‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param to ”ÍˆÍ‚ÌÅ‘åè‡’l
-     * @param toInclusive ŒŸõŒ‹‰Ê‚ÉÅ‘åè‡’l‚ğŠÜ‚Ş‚©‚Ç‚¤‚©BŠÜ‚Şê‡‚Ítrue
-     * @param indexName ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param propName ƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰Ê‚Ì‚±‚Ìƒrƒ…[
-     * @exception IndexNotFoundException ŠY“–‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢‚©A•¡‡ƒCƒ“ƒfƒbƒNƒX‚Ìê‡
+     * @param from ç¯„å›²ã®æœ€å°é–¾å€¤
+     * @param fromInclusive æ¤œç´¢çµæœã«æœ€å°é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param to ç¯„å›²ã®æœ€å¤§é–¾å€¤
+     * @param toInclusive æ¤œç´¢çµæœã«æœ€å¤§é–¾å€¤ã‚’å«ã‚€ã‹ã©ã†ã‹ã€‚å«ã‚€å ´åˆã¯true
+     * @param indexName ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param propName ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã®ã“ã®ãƒ“ãƒ¥ãƒ¼
+     * @exception IndexNotFoundException è©²å½“ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„ã‹ã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å ´åˆ
      */
 
     public BeanTableView searchRange(
@@ -1180,10 +1180,10 @@ public class BeanTableView implements Cloneable{
 
     
     /**
-     * ‚±‚Ìƒrƒ…[‚Ì•¡»‚ğì‚éB<p>
-     * •¡»‚Ì˜_—‰‰Zó‘Ô‚ÍAƒfƒtƒHƒ‹ƒg’l‚Æ‚È‚éB<br>
+     * ã“ã®ãƒ“ãƒ¥ãƒ¼ã®è¤‡è£½ã‚’ä½œã‚‹ã€‚<p>
+     * è¤‡è£½ã®è«–ç†æ¼”ç®—çŠ¶æ…‹ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¨ãªã‚‹ã€‚<br>
      *
-     * @return ‚±‚Ìƒrƒ…[‚Ì•¡»
+     * @return ã“ã®ãƒ“ãƒ¥ãƒ¼ã®è¤‡è£½
      */
     public Object clone(){
         BeanTableView clone = null;

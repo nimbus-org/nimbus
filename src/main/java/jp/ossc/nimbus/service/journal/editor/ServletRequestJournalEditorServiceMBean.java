@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link ServletRequestJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ServletRequestJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ServletRequestJournalEditorService

@@ -37,7 +37,7 @@ import java.util.List;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * List‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * Listã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

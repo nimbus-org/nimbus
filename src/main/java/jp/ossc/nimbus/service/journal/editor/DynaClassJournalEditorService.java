@@ -39,7 +39,7 @@ import org.apache.commons.beanutils.DynaProperty;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link DynaClass}‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * {@link DynaClass}ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

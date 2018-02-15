@@ -40,31 +40,31 @@ import java.util.Properties;
 import jp.ossc.nimbus.io.* ;
 //
 /**
-*	•W€‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚Ì•¶š‰»‚¯‚Ì–â‘è‚ğ‰ñ”ğ‚µ‚½<BR>
-*	“ú–{Œê‰Â”\‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚Å‚·B<BR>
-*	‚Ü‚½AStringAƒtƒ@ƒCƒ‹–¼w’è‚Ìload‚ª‰Â”\‚Å‚·B<BR>
+*	æ¨™æº–ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ–‡å­—åŒ–ã‘ã®å•é¡Œã‚’å›é¿ã—ãŸ<BR>
+*	æ—¥æœ¬èªå¯èƒ½ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚<BR>
+*	ã¾ãŸã€Stringã€ãƒ•ã‚¡ã‚¤ãƒ«åæŒ‡å®šã®loadãŒå¯èƒ½ã§ã™ã€‚<BR>
 *	@author		Hirotaka.Nakano
-*	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
-*				XVF
+*	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+*				æ›´æ–°ï¼š
 */
 public class EncodedProperties extends Properties {
 	
     private static final long serialVersionUID = -3138996569732225373L;
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾ ##
-	/** ƒVƒ“ƒNƒƒiƒCƒYƒIƒuƒWƒFƒNƒg	*/
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
+	/** ã‚·ãƒ³ã‚¯ãƒ­ãƒŠã‚¤ã‚ºã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ	*/
 	private Boolean	mSyncObj = new Boolean(true) ;
-	/** ƒGƒ“ƒR[ƒh•¶š—ñ			*/
+	/** ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—			*/
 	private String	mEncoding  ;
-	/** ƒvƒƒpƒeƒBƒGƒ“ƒR[ƒh	*/
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰	*/
 	static public final String ENCODE_PORP = "ISO-8859-1" ; //$NON-NLS-1$
-	/** ƒvƒƒpƒeƒBƒGƒ“ƒR[ƒh	*/
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰	*/
 	static public final String ENCODE_UTF8 = "UTF-8" ; //$NON-NLS-1$
 	static public final String EQUALS = "=" ; //$NON-NLS-1$
 	//
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
 	 */
 	public EncodedProperties() {
 		super();
@@ -72,8 +72,8 @@ public class EncodedProperties extends Properties {
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 *	@param	prop w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 *	@param	prop æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public EncodedProperties(Properties prop) {
 		super((Properties)prop);
@@ -81,8 +81,8 @@ public class EncodedProperties extends Properties {
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 *	@param encodeName ƒtƒ@ƒCƒ‹“Ç‚İ‚İƒGƒ“ƒR[ƒh
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 *	@param encodeName ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰
 	 */
 	public EncodedProperties(String encodeName) {
 		super();
@@ -91,9 +91,9 @@ public class EncodedProperties extends Properties {
 
 	//	
 	/**
-	 *	“ü—ÍƒXƒgƒŠ[ƒ€‚©‚çƒL[‚Æ—v‘f‚ª‘Î‚É‚È‚Á‚½ƒvƒƒpƒeƒBƒŠƒXƒg‚ğ“Ç‚İ‚İ‚Ü‚·<BR>
-	 *	‚±‚Ìƒ[ƒh‚Í•¶š‰»‚¯‚ğ‰ñ”ğ‚·‚é–‚ª‚Å‚«‚Ü‚·B
-	 *	@param	inStream “ü—ÍƒXƒgƒŠ[ƒ€
+	 *	å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚­ãƒ¼ã¨è¦ç´ ãŒå¯¾ã«ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’èª­ã¿è¾¼ã¿ã¾ã™<BR>
+	 *	ã“ã®ãƒ­ãƒ¼ãƒ‰ã¯æ–‡å­—åŒ–ã‘ã‚’å›é¿ã™ã‚‹äº‹ãŒã§ãã¾ã™ã€‚
+	 *	@param	inStream å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
 	 */
 	public void load(InputStream inStream) throws IOException {
 		synchronized(mSyncObj){
@@ -112,7 +112,7 @@ public class EncodedProperties extends Properties {
 	private void makeKey(String rec){
 		int index = rec.indexOf(EQUALS) ;
 		
-		// ƒRƒƒ“ƒgs
+		// ã‚³ãƒ¡ãƒ³ãƒˆè¡Œ
 		if(rec.indexOf("#") == 0 ||
 			rec.indexOf("!") == 0) {
 			return ;
@@ -131,7 +131,7 @@ public class EncodedProperties extends Properties {
 		UnicodeHexBufferedReader in = null;
 		in	= new UnicodeHexBufferedReader(new InputStreamReader(stream,this.getEncoding()));
 
-		/** ƒe[ƒuƒ‹ì¬ */
+		/** ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆ */
 		String rec = "";
 		String buf = "";
 		try{
@@ -161,9 +161,9 @@ public class EncodedProperties extends Properties {
 
 	//
 	/**
-	 *	w’èƒtƒ@ƒCƒ‹‚©‚çƒL[‚Æ—v‘f‚ª‘Î‚É‚È‚Á‚½ƒvƒƒpƒeƒBƒŠƒXƒg‚ğ“Ç‚İ‚İ‚Ü‚·<BR>
-	 *	‚±‚Ìƒ[ƒh‚Í•¶š‰»‚¯‚ğ‰ñ”ğ‚·‚é–‚ª‚Å‚«‚Ü‚·B
-	 *	@param	filePath	ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹ƒtƒ‹ƒpƒX
+	 *	æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚­ãƒ¼ã¨è¦ç´ ãŒå¯¾ã«ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’èª­ã¿è¾¼ã¿ã¾ã™<BR>
+	 *	ã“ã®ãƒ­ãƒ¼ãƒ‰ã¯æ–‡å­—åŒ–ã‘ã‚’å›é¿ã™ã‚‹äº‹ãŒã§ãã¾ã™ã€‚
+	 *	@param	filePath	ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ãƒ«ãƒ‘ã‚¹
 	 */
 	public void loadFromFile(String filePath) throws IOException {
 		synchronized(mSyncObj){
@@ -176,9 +176,9 @@ public class EncodedProperties extends Properties {
 	}
 	//
 	/**
-	 *	‘Š‘ÎƒvƒƒpƒeƒBw’è‚Å—v‘f‚ª‘Î‚É‚È‚Á‚½ƒvƒƒpƒeƒBƒŠƒXƒg‚ğ“Ç‚İ‚İ‚Ü‚·<BR>
-	 *	‚±‚Ìƒ[ƒh‚Í•¶š‰»‚¯‚ğ‰ñ”ğ‚·‚é–‚ª‚Å‚«‚Ü‚·B
-	 *	@param	propString ƒŠƒ\[ƒXƒoƒ“ƒhƒ‹‚ÌƒIƒuƒWƒFƒNƒgƒCƒ“ƒXƒ^ƒ“ƒX
+	 *	ç›¸å¯¾ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æŒ‡å®šã§è¦ç´ ãŒå¯¾ã«ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’èª­ã¿è¾¼ã¿ã¾ã™<BR>
+	 *	ã“ã®ãƒ­ãƒ¼ãƒ‰ã¯æ–‡å­—åŒ–ã‘ã‚’å›é¿ã™ã‚‹äº‹ãŒã§ãã¾ã™ã€‚
+	 *	@param	propString ãƒªã‚½ãƒ¼ã‚¹ãƒãƒ³ãƒ‰ãƒ«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	public void loadFromString(String propString) throws IOException {
 		synchronized(mSyncObj){
@@ -203,8 +203,8 @@ public class EncodedProperties extends Properties {
 	}
 	//
 	/**
-	 *	ƒGƒ“ƒR[ƒfƒBƒ“ƒOî•ño—Í<BR>
-	 *	@return	ƒGƒ“ƒR[ƒfƒBƒ“ƒO•¶š—ñ
+	 *	ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°æƒ…å ±å‡ºåŠ›<BR>
+	 *	@return	ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—åˆ—
 	 */
 	public String getEncoding()  {
 		return this.mEncoding ;
@@ -212,8 +212,8 @@ public class EncodedProperties extends Properties {
 	//
 	//
 	/**
-	 *	ƒGƒ“ƒR[ƒfƒBƒ“ƒOî•ñİ’è<BR>
-	 *	@param	encoding ƒGƒ“ƒR[ƒfƒBƒ“ƒO•¶š—ñ
+	 *	ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°æƒ…å ±è¨­å®š<BR>
+	 *	@param	encoding ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—åˆ—
 	 */
 	public void setEncoding(String encoding)  {
 		this.mEncoding = encoding ;

@@ -33,41 +33,41 @@ package jp.ossc.nimbus.service.cui;
 
 import jp.ossc.nimbus.core.*;
 /**
- *	ƒRƒ}ƒ“ƒh“ü—Íƒtƒ@ƒNƒgƒŠƒT[ƒrƒXMBean
+ *	ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹MBean
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/20| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/20ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 
 public interface CuiFactoryServiceMBean extends ServiceBaseMBean {
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠƒZƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚»ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public void setDefFileDir(String dir);
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹Šg’£qƒZƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã‚»ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public void setDefFileExtention(String ext);
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠƒQƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚²ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public String getDefFileDir();
 	/**
-	 * ƒRƒ}ƒ“ƒh“ü—Í’è‹`ƒtƒ@ƒCƒ‹Šg’£qƒQƒbƒ^[
+	 * ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã‚²ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public String getDefFileExtention();
 	/**
-	 * À‘•ƒNƒ‰ƒX–¼ƒZƒbƒ^[
+	 * å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚»ãƒƒã‚¿ãƒ¼
 	 * @param className
 	 * @return
 	 */
 	public void setImplementClassName(String className);
 	/**
-	 * À‘•ƒNƒ‰ƒX–¼ƒQƒbƒ^[
+	 * å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚²ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public String getImplementClassName();

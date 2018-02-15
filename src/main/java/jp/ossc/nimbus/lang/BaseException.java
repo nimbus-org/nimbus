@@ -34,9 +34,9 @@ package jp.ossc.nimbus.lang;
 import java.io.*;
 
 /**
- * Šî–{—áŠO<br>
+ * åŸºæœ¬ä¾‹å¤–<br>
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/22 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/22 -ã€€H.Nakano
  */
 public class BaseException extends Exception {
 	
@@ -49,7 +49,7 @@ public class BaseException extends Exception {
 	static private final String C_CAUSE = "Caused by: " ;  //$NON-NLS-1$
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
 	 */
 	public BaseException() {
 		super();
@@ -57,10 +57,10 @@ public class BaseException extends Exception {
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
-	 *	@param	cause 			ƒGƒ‰[Œ´ˆö—áŠO
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 *	@param	cause 			ã‚¨ãƒ©ãƒ¼åŸå› ä¾‹å¤–
 	 */
 	public BaseException(String errCode, 
 							String errMsg, 
@@ -71,20 +71,20 @@ public class BaseException extends Exception {
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 */
 	public BaseException(String errCode, String errMsg) {
 		super(errMsg);
 		mErrorCode = errCode;
 	}
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param	errCode 		ƒGƒ‰[ƒR[ƒh
-	 *	@param	errMsg 			ƒGƒ‰[ƒƒbƒZ[ƒW
-	 *	@param	cause 			ƒGƒ‰[Œ´ˆö—áŠO
-	 *	@param isRetry			ƒŠƒgƒ‰ƒC—v¿ƒtƒ‰ƒO
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param	errCode 		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 *	@param	errMsg 			ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 *	@param	cause 			ã‚¨ãƒ©ãƒ¼åŸå› ä¾‹å¤–
+	 *	@param isRetry			ãƒªãƒˆãƒ©ã‚¤è¦è«‹ãƒ•ãƒ©ã‚°
 	 */
 	public BaseException(String errCode,
 							String errMsg,
@@ -97,10 +97,10 @@ public class BaseException extends Exception {
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 * @param errCode		ƒGƒ‰[ƒR[ƒh
-	 * @param errMsg		ƒGƒ‰[ƒƒbƒZ[ƒW		
-	 * @param isRetry		ƒŠƒgƒ‰ƒC—v¿ƒtƒ‰ƒO
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 * @param errCode		ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
+	 * @param errMsg		ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸		
+	 * @param isRetry		ãƒªãƒˆãƒ©ã‚¤è¦è«‹ãƒ•ãƒ©ã‚°
 	 */
 	public BaseException(String errCode,
 						  String errMsg, 
@@ -111,23 +111,23 @@ public class BaseException extends Exception {
 	}
 	//
 	/**
-	 *	ƒŠƒgƒ‰ƒC—v¿ƒQƒbƒ^[<br>
-	 *	@return	boolean ƒŠƒgƒ‰ƒC—v¿
+	 *	ãƒªãƒˆãƒ©ã‚¤è¦è«‹ã‚²ãƒƒã‚¿ãƒ¼<br>
+	 *	@return	boolean ãƒªãƒˆãƒ©ã‚¤è¦è«‹
 	 */
 	public boolean IsRetry() {
 		return mIsRetry;
 	}
 	//
 	/**
-	 *	ƒGƒ‰[ƒR[ƒhƒQƒbƒ^[<br>
-	 *	@return	String ƒGƒ‰[ƒR[ƒh
+	 *	ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚²ãƒƒã‚¿ãƒ¼<br>
+	 *	@return	String ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
 	 */
 	public String getErrCode() {
 		return mErrorCode;
 	}
 	/**
 	 * Method getCause.<BR>
-	 * —áŠOŒ´ˆö‚ğo—Í‚·‚éB
+	 * ä¾‹å¤–åŸå› ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @return Exception
 	 */
 	public Throwable getCause() {
@@ -152,8 +152,8 @@ public class BaseException extends Exception {
 	}
 	//
 	/**
-	 *	Œ´ˆö—áŠOƒXƒ^ƒbƒNƒgƒŒ[ƒXƒQƒbƒ^[<br>
-	 *	@return	String ƒXƒ^ƒbƒNƒgƒŒ[ƒX
+	 *	åŸå› ä¾‹å¤–ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚²ãƒƒã‚¿ãƒ¼<br>
+	 *	@return	String ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹
 	 */
 	public String getStackTraceString() {
 		StringWriter sw = new StringWriter();
@@ -163,7 +163,7 @@ public class BaseException extends Exception {
 		String tmp = sw.toString();
 		return tmp;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.lang.Throwable#printStackTrace()
 	 */
 	public void printStackTrace() { 

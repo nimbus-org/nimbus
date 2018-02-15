@@ -48,8 +48,8 @@ import jp.ossc.nimbus.service.scheduler2.Schedule;
 import jp.ossc.nimbus.service.scheduler2.ScheduleManager;
 
 /**
- * {@link ScheduleMakeActionService}�ō쐬�����X�P�W���[���̏I����҂����킹��e�X�g�A�N�V�����B<p>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * {@link ScheduleMakeActionService}で作成したスケジュールの終了を待ち合わせるテストアクション。<p>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  * 
  * @author M.Takata
  */
@@ -93,49 +93,49 @@ public class ScheduleWaitActionService extends ServiceBase implements EvaluateTe
     }
     
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁA{@link ScheduleMakeActionService}�ō쐬�����X�P�W���[���̏I����҂����킹��B<p>
-     * �҂����킹�Ɏ��s�����ꍇ�́A��O��throw����B<br>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースの内容を読み込んで、{@link ScheduleMakeActionService}で作成したスケジュールの終了を待ち合わせる。<p>
+     * 待ち合わせに失敗した場合は、例外をthrowする。<br>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * waitScheduleId
      * timeout
      * waitStates
      * successStates
      * </pre>
-     * waitScheduleId�́A�X�P�W���[�����쐬����{@link ScheduleMakeActionService}�̃A�N�V����ID���w�肷��B<br>
-     * timeout�́A�X�P�W���[���̑҂����킹�^�C���A�E�g[ms]���w�肷��B<br>
-     * waitStates�́A�X�P�W���[����҂����킹����X�P�W���[����Ԃ��w�肷��B�����w�肷��ꍇ�́A�J���}��؂�Ŏw�肷��B�w��\�ȁA�X�P�W���[����Ԃ́AEND�AFAILED�ARETRY�B�w�肵�Ȃ��ꍇ�́AEND�AFAILED�ő҂����킹��B<br>
-     * successStates�́A�҂����킹����A�߂�l��true��Ԃ��X�P�W���[����Ԃ��w�肷��B�����w�肷��ꍇ�́A�J���}��؂�Ŏw�肷��B�w��\�ȁA�X�P�W���[����Ԃ́AEND�AFAILED�ARETRY�B�w�肵�Ȃ��ꍇ�́AEND�̏ꍇ�Atrue��Ԃ��B<br>
+     * waitScheduleIdは、スケジュールを作成した{@link ScheduleMakeActionService}のアクションIDを指定する。<br>
+     * timeoutは、スケジュールの待ち合わせタイムアウト[ms]を指定する。<br>
+     * waitStatesは、スケジュールを待ち合わせするスケジュール状態を指定する。複数指定する場合は、カンマ区切りで指定する。指定可能な、スケジュール状態は、END、FAILED、RETRY。指定しない場合は、END、FAILEDで待ち合わせる。<br>
+     * successStatesは、待ち合わせた後、戻り値でtrueを返すスケジュール状態を指定する。複数指定する場合は、カンマ区切りで指定する。指定可能な、スケジュール状態は、END、FAILED、RETRY。指定しない場合は、ENDの場合、trueを返す。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return �҂����킹����
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return 待ち合わせ結果
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁA{@link ScheduleMakeActionService}�ō쐬�����X�P�W���[���̏I����҂����킹��B<p>
-     * �҂����킹�Ɏ��s�����ꍇ�́A��O��throw����B<br>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースの内容を読み込んで、{@link ScheduleMakeActionService}で作成したスケジュールの終了を待ち合わせる。<p>
+     * 待ち合わせに失敗した場合は、例外をthrowする。<br>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * waitScheduleId
      * timeout
      * waitStates
      * successStates
      * </pre>
-     * waitScheduleId�́A�X�P�W���[�����쐬����{@link ScheduleMakeActionService}�̃A�N�V����ID���w�肷��B�w�肵�Ȃ��ꍇ�́ApreResult���g�p����B<br>
-     * timeout�́A�X�P�W���[���̑҂����킹�^�C���A�E�g[ms]���w�肷��B<br>
-     * waitStates�́A�X�P�W���[����҂����킹����X�P�W���[����Ԃ��w�肷��B�����w�肷��ꍇ�́A�J���}��؂�Ŏw�肷��B�w��\�ȁA�X�P�W���[����Ԃ́AEND�AFAILED�ARETRY�B�w�肵�Ȃ��ꍇ�́AEND�AFAILED�ő҂����킹��B<br>
-     * successStates�́A�҂����킹����A�߂�l��true��Ԃ��X�P�W���[����Ԃ��w�肷��B�����w�肷��ꍇ�́A�J���}��؂�Ŏw�肷��B�w��\�ȁA�X�P�W���[����Ԃ́AEND�AFAILED�ARETRY�B�w�肵�Ȃ��ꍇ�́AEND�̏ꍇ�Atrue��Ԃ��B<br>
+     * waitScheduleIdは、スケジュールを作成した{@link ScheduleMakeActionService}のアクションIDを指定する。指定しない場合は、preResultを使用する。<br>
+     * timeoutは、スケジュールの待ち合わせタイムアウト[ms]を指定する。<br>
+     * waitStatesは、スケジュールを待ち合わせするスケジュール状態を指定する。複数指定する場合は、カンマ区切りで指定する。指定可能な、スケジュール状態は、END、FAILED、RETRY。指定しない場合は、END、FAILEDで待ち合わせる。<br>
+     * successStatesは、待ち合わせた後、戻り値でtrueを返すスケジュール状態を指定する。複数指定する場合は、カンマ区切りで指定する。指定可能な、スケジュール状態は、END、FAILED、RETRY。指定しない場合は、ENDの場合、trueを返す。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param preResult ���O�̃A�N�V�����̌���
-     * @param resource ���\�[�X
-     * @return �҂����킹����
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param preResult 直前のアクションの結果
+     * @param resource リソース
+     * @return 待ち合わせ結果
      */
     public boolean execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

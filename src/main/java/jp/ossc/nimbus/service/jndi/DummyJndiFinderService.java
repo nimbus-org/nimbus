@@ -40,7 +40,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceNotFoundException;
 
 /**
- * ƒ_ƒ~[Jndiƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒXB<p>
+ * ãƒ€ãƒŸãƒ¼Jndiãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

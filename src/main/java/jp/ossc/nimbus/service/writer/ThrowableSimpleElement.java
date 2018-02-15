@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.writer;
 import java.lang.reflect.*;
 
 /**
- * —áŠO‹Lq—v‘fB<p>
- * İ’è‚³‚ê‚½—áŠO‚ğƒXƒ^ƒbƒNƒgƒŒ[ƒX•t‚«‚Åo—Í‚·‚é‹Lq—v‘fƒNƒ‰ƒX‚Å‚ ‚éB<br>
+ * ä¾‹å¤–è¨˜è¿°è¦ç´ ã€‚<p>
+ * è¨­å®šã•ã‚ŒãŸä¾‹å¤–ã‚’ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ä»˜ãã§å‡ºåŠ›ã™ã‚‹è¨˜è¿°è¦ç´ ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author K.Nagai
  */
@@ -56,72 +56,72 @@ public class ThrowableSimpleElement extends SimpleElement {
     private boolean isOutputTab = true;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ThrowableSimpleElement(){
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param value •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param value å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public ThrowableSimpleElement(Object value){
         super(value);
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param key ã‚­ãƒ¼
+     * @param value å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public ThrowableSimpleElement(Object key, Object value){
         super(key, value);
     }
     
     /**
-     * ‚±‚Ì—v‘f‚ª•Û‚·‚é—áŠO‚ÌŒ´ˆö‚Æ‚È‚é—áŠO‚ğ{@link #toString()}‚Åo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * ã“ã®è¦ç´ ãŒä¿æŒã™ã‚‹ä¾‹å¤–ã®åŸå› ã¨ãªã‚‹ä¾‹å¤–ã‚’{@link #toString()}ã§å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param output o—Í‚·‚éê‡true
+     * @param output å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputCause(boolean output){
         isOutputCause = output;
     }
     
     /**
-     * ‚±‚Ì—v‘f‚ª•Û‚·‚é—áŠO‚ÌŒ´ˆö‚Æ‚È‚é—áŠO‚ğ{@link #toString()}‚Åo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®è¦ç´ ãŒä¿æŒã™ã‚‹ä¾‹å¤–ã®åŸå› ã¨ãªã‚‹ä¾‹å¤–ã‚’{@link #toString()}ã§å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡o—Í‚·‚é
+     * @return trueã®å ´åˆå‡ºåŠ›ã™ã‚‹
      */
     public boolean getOutputCause() {
         return isOutputCause;
     }
     
     /**
-     * ƒXƒ^ƒbƒNƒgƒŒ[ƒX‚Ìo—Í‚Éƒ^ƒu‚ÅƒCƒ“ƒfƒ“ƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã®å‡ºåŠ›æ™‚ã«ã‚¿ãƒ–ã§ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param outputTab ƒ^ƒu‚ÅƒCƒ“ƒfƒ“ƒg‚·‚éê‡‚ÍAtrue
+     * @param outputTab ã‚¿ãƒ–ã§ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputTab(boolean outputTab) {
         isOutputTab = outputTab;
     }
     
     /**
-     * ƒXƒ^ƒbƒNƒgƒŒ[ƒX‚Ìo—Í‚Éƒ^ƒu‚ÅƒCƒ“ƒfƒ“ƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã®å‡ºåŠ›æ™‚ã«ã‚¿ãƒ–ã§ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒu‚ÅƒCƒ“ƒfƒ“ƒg‚·‚éê‡‚ÍAtrue
+     * @return ã‚¿ãƒ–ã§ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã™ã‚‹å ´åˆã¯ã€true
      */
     public boolean getOutputTab() {
         return isOutputTab;
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚âŒ´ˆö‚Æ‚È‚é—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX•¶š—ñ‚É‚µ‚Äæ“¾‚·‚éB<p>
+     * ã“ã®ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚„åŸå› ã¨ãªã‚‹ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹æ–‡å­—åˆ—ã«ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚âŒ´ˆö‚Æ‚È‚é—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX•¶š—ñ
+     * @return ã“ã®ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚„åŸå› ã¨ãªã‚‹ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹æ–‡å­—åˆ—
      */
     public String toString(){
         if(mValue == null){
@@ -167,7 +167,7 @@ public class ThrowableSimpleElement extends SimpleElement {
         Throwable cause = null;
         String thClassName = th.getClass().getName();
         if(thClassName.equals(SERVLET_EXCEPTION_NAME)){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try{
                 cause = (Throwable)th.getClass()
                     .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -176,7 +176,7 @@ public class ThrowableSimpleElement extends SimpleElement {
             }catch(InvocationTargetException e){
             }
         }else if(thClassName.equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -191,10 +191,10 @@ public class ThrowableSimpleElement extends SimpleElement {
     }
     
     /**
-     * ‚±‚Ì—v‘f‚ÌƒIƒuƒWƒFƒNƒg‚ğ‚»‚Ì‚Ü‚Üæ“¾‚·‚éB<p>
-     * {@link #getValue()}‚Æ“¯‚¶’l‚ğ•Ô‚·B<br>
+     * ã“ã®è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãã®ã¾ã¾å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getValue()}ã¨åŒã˜å€¤ã‚’è¿”ã™ã€‚<br>
      * 
-     * @return ‚±‚Ì—v‘f‚ÌƒIƒuƒWƒFƒNƒg
+     * @return ã“ã®è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object toObject(){
         return getValue();

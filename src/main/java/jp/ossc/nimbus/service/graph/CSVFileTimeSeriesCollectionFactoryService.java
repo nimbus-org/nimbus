@@ -51,7 +51,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.CSVReader;
 
 /**
- * CSVƒtƒ@ƒCƒ‹TimeSeriesCollectionƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * CSVãƒ•ã‚¡ã‚¤ãƒ«TimeSeriesCollectionãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -61,14 +61,14 @@ public class CSVFileTimeSeriesCollectionFactoryService
     
     private static final long serialVersionUID = 62063250205247679L;
     
-    /** [ƒVƒŠ[ƒY–¼=CSVFileInfo]‚Ìƒ}ƒbƒv */
+    /** [ã‚·ãƒªãƒ¼ã‚ºå=CSVFileInfo]ã®ãƒãƒƒãƒ— */
     protected Map seriesInfoMap;
-    /** ƒf[ƒ^ƒZƒbƒgğŒ‚ÌƒŠƒXƒg */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®ãƒªã‚¹ãƒˆ */
     protected List dsConditionList;
     
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ */
     protected String dateFormatPattern;
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName dateFormatServiceName;
     
     protected boolean isTimeOnly;
@@ -76,37 +76,37 @@ public class CSVFileTimeSeriesCollectionFactoryService
     protected CSVReader csvReader;
     protected String encoding;
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setCSVFileInfo(String seriesName, CSVFileInfo info){
         seriesInfoMap.put(seriesName, info);
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public CSVFileInfo getCSVFileInfo(String seriesName){
         return (CSVFileInfo)seriesInfoMap.get(seriesName);
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public Map getCSVFileInfoMap(){
         return seriesInfoMap;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setDateFormatPattern(String pattern){
         dateFormatPattern = pattern;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getDateFormatPattern(){
         return dateFormatPattern;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setDateFormatServiceName(ServiceName serviceName){
         dateFormatServiceName = serviceName;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getDateFormatServiceName(){
         return dateFormatServiceName;
     }
@@ -118,45 +118,45 @@ public class CSVFileTimeSeriesCollectionFactoryService
         return isTimeOnly;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setCSVReader(CSVReader reader){
         csvReader = reader;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public CSVReader getCSVReader(){
         return csvReader;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void setEncoding(String encoding){
         this.encoding = encoding;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public String getEncoding(){
         return encoding;
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public void addDatasetCondition(DatasetCondition dsCondition){
         dsConditionList.add(dsCondition);
     }
     
-    // CSVFileTimeSeriesCollectionFactoryServiceMBean‚ÌJavaDoc
+    // CSVFileTimeSeriesCollectionFactoryServiceMBeanã®JavaDoc
     public DatasetCondition[] getDatasetConditions(){
         return (DatasetCondition[]) dsConditionList.toArray(
             new DatasetCondition[dsConditionList.size()]
         );
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception{
         dsConditionList = new ArrayList();
         seriesInfoMap = new LinkedHashMap();
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception{
         
         if(seriesInfoMap.size() == 0){
@@ -170,7 +170,7 @@ public class CSVFileTimeSeriesCollectionFactoryService
         }
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception{
         dsConditionList = null;
         seriesInfoMap = null;
@@ -179,14 +179,14 @@ public class CSVFileTimeSeriesCollectionFactoryService
     protected DatasetConnection createConnection(DatasetCondition[] dsConditions)
      throws DatasetCreateException{
         
-        // ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—
         DatasetConnection connection = new DatasetConnection(
             getName()
         );
         
         Iterator itr = seriesInfoMap.keySet().iterator();
         while(itr.hasNext()){
-            // ƒVƒŠ[ƒY
+            // ã‚·ãƒªãƒ¼ã‚º
             String series = (String)itr.next();
             CSVFileTimeSeriesCursor cursor = new CSVFileTimeSeriesCursor(
                 series,
@@ -292,7 +292,7 @@ public class CSVFileTimeSeriesCollectionFactoryService
                 
                 date = dateFormat.parse(dateStr);
                 if(info.isTimeOnly || isTimeOnly){
-                    // ‚Ì‚İ‚¾‚Á‚½ê‡A“ú•t‚ğ¡“ú‚Éİ’è
+                    // æ™‚åˆ»ã®ã¿ã ã£ãŸå ´åˆã€æ—¥ä»˜ã‚’ä»Šæ—¥ã«è¨­å®š
                     Calendar cal = Calendar.getInstance();
                     int year = cal.get(Calendar.YEAR);
                     int month = cal.get(Calendar.MONTH);

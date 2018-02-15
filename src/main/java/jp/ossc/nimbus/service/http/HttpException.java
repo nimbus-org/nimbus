@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.http;
 
 /**
- * HTTP—áŠOB<p>
+ * HTTPä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class HttpException extends RuntimeException {
     private static final long serialVersionUID = 3007906097287638172L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public HttpException() {
         super();
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public HttpException(String message) {
         super(message);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŽŸå› 
      */
     public HttpException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param cause Œ´ˆö
+     * @param cause åŽŸå› 
      */
     public HttpException(Throwable cause) {
         super(cause);

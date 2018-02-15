@@ -44,7 +44,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * JCE(Java Cryptographic Extension)‚ğg—p‚µ‚ÄAˆÃ†‰»‹@”\‚ğ’ñ‹Ÿ‚·‚éƒT[ƒrƒX‚Å‚ ‚éB<p>
+ * JCE(Java Cryptographic Extension)ã‚’ä½¿ç”¨ã—ã¦ã€æš—å·åŒ–æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -78,181 +78,181 @@ public class  CipherCryptService extends ServiceBase
     protected String keyAlias;
     protected String keyPassword;
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setTransformation(String trans){
         transformation = trans;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getTransformation(){
         return transformation;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setKey(Key k){
         key = k;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public Key getKey(){
         return key;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setCipherProvider(Provider p){
         cipherProvider = p;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public Provider getCipherProvider(){
         return cipherProvider;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setCipherProviderName(String name){
         cipherProviderName = name;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getCipherProviderName(){
         return cipherProviderName;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setAlgorithmParameters(AlgorithmParameters params){
         algorithmParameters = params;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public AlgorithmParameters getAlgorithmParameters(){
         return algorithmParameters;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setAlgorithmParameterSpec(AlgorithmParameterSpec params){
         algorithmParameterSpec = params;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public AlgorithmParameterSpec getAlgorithmParameterSpec(){
         return algorithmParameterSpec;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setSecureRandom(SecureRandom random){
         secureRandom = random;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public SecureRandom getSecureRandom(){
         return secureRandom;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setEncoding(String enc){
         encoding = enc;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getEncoding(){
         return encoding;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setHashAlgorithm(String algorithm){
         hashAlgorithm = algorithm;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getHashAlgorithm(){
         return hashAlgorithm;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setMessageDigestProvider(Provider p){
         messageDigestProvider = p;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public Provider getMessageDigestProvider(){
         return messageDigestProvider;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setMessageDigestProviderName(String name){
         messageDigestProviderName = name;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getMessageDigestProviderName(){
         return messageDigestProviderName;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setConvertType(int type){
         convertType = type;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public int getConvertType(){
         return convertType;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setStorePath(String path){
         storePath = path;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getStorePath(){
         return storePath;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setStoreType(String type){
         storeType = type;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getStoreType(){
         return storeType;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setStoreProviderName(String name){
         storeProviderName = name;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getStoreProviderName(){
         return storeProviderName;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setStoreProvider(Provider provider){
         storeProvider = provider;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public Provider getStoreProvider(){
         return storeProvider;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setStorePassword(String password){
         storePassword = password;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getStorePassword(){
         return storePassword;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setKeyAlias(String alias){
         keyAlias = alias;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getKeyAlias(){
         return keyAlias;
     }
     
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public void setKeyPassword(String password){
         keyPassword = password;
     }
-    // CipherCryptServiceMBean ‚ÌJavaDoc
+    // CipherCryptServiceMBean ã®JavaDoc
     public String getKeyPassword(){
         return keyPassword;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(key == null && storePath != null){
@@ -287,10 +287,10 @@ public class  CipherCryptService extends ServiceBase
     }
     
     /**
-     * ƒL[ƒXƒgƒA‚©‚ç”é–§Œ®‚ğ“Ç‚İ‚ŞB<p>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã‹ã‚‰ç§˜å¯†éµã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return ”é–§Œ®
-     * @exception Exception ƒL[‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @return ç§˜å¯†éµ
+     * @exception Exception ã‚­ãƒ¼ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Key loadKey() throws Exception{
         InputStream is = null;
@@ -318,51 +318,51 @@ public class  CipherCryptService extends ServiceBase
         return store.getKey(keyAlias, keyPassword.toCharArray());
     }
     
-    // Crypt ‚ÌJavaDoc
+    // Crypt ã®JavaDoc
     public String doEncode(String str){
         try{
             return doEncodeInternal(str);
         }catch(NoSuchAlgorithmException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(NoSuchProviderException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(NoSuchPaddingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(InvalidKeyException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(InvalidAlgorithmParameterException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(IllegalBlockSizeException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(BadPaddingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }catch(UnsupportedEncodingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00001, e);
         }
         return str;
     }
     
     /**
-     * ˆÃ†‰»‚·‚éB<p>
+     * æš—å·åŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param str ˆÃ†‰»‘ÎÛ‚Ì•¶š—ñ
-     * @return ˆÃ†‰»Œã‚Ì•¶š—ñ
-     * @exception NoSuchAlgorithmException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchProviderException w’è‚³‚ê‚½ƒvƒƒoƒCƒ_‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPaddingException w’è‚³‚ê‚½ƒpƒfƒBƒ“ƒO‹@\‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception InvalidKeyException w’è‚³‚ê‚½Œ®‚ª–³Œø‚È•„†‰»A’·‚³‚ÌŒë‚èA–¢‰Šú‰»‚È‚Ç‚Ì–³Œø‚ÈŒ®‚Å‚ ‚éê‡
-     * @exception InvalidAlgorithmParameterException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ª–³Œø‚Ü‚½‚Í•s“KØ‚Èê‡
-     * @exception IllegalBlockSizeException ƒuƒƒbƒNˆÃ†‚É’ñ‹Ÿ‚³‚ê‚½ƒf[ƒ^‚Ì’·‚³‚ª³‚µ‚­‚È‚¢ê‡
-     * @exception BadPaddingException “Á’è‚ÌƒpƒfƒBƒ“ƒO‹@\‚ª“ü—Íƒf[ƒ^‚É‘Î‚µ‚Ä—\Šú‚³‚ê‚Ä‚¢‚é‚Ì‚Éƒf[ƒ^‚ª“KØ‚ÉƒpƒfƒBƒ“ƒO‚³‚ê‚È‚¢ê‡
-     * @exception UnsupportedEncodingException w’è‚³‚ê‚½•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ªƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @param str æš—å·åŒ–å¯¾è±¡ã®æ–‡å­—åˆ—
+     * @return æš—å·åŒ–å¾Œã®æ–‡å­—åˆ—
+     * @exception NoSuchAlgorithmException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchProviderException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPaddingException æŒ‡å®šã•ã‚ŒãŸãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ©Ÿæ§‹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception InvalidKeyException æŒ‡å®šã•ã‚ŒãŸéµãŒç„¡åŠ¹ãªç¬¦å·åŒ–ã€é•·ã•ã®èª¤ã‚Šã€æœªåˆæœŸåŒ–ãªã©ã®ç„¡åŠ¹ãªéµã§ã‚ã‚‹å ´åˆ
+     * @exception InvalidAlgorithmParameterException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒç„¡åŠ¹ã¾ãŸã¯ä¸é©åˆ‡ãªå ´åˆ
+     * @exception IllegalBlockSizeException ãƒ–ãƒ­ãƒƒã‚¯æš—å·ã«æä¾›ã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã®é•·ã•ãŒæ­£ã—ããªã„å ´åˆ
+     * @exception BadPaddingException ç‰¹å®šã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ©Ÿæ§‹ãŒå…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã«å¯¾ã—ã¦äºˆæœŸã•ã‚Œã¦ã„ã‚‹ã®ã«ãƒ‡ãƒ¼ã‚¿ãŒé©åˆ‡ã«ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã•ã‚Œãªã„å ´åˆ
+     * @exception UnsupportedEncodingException æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ãŒã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆ
      */
     protected String doEncodeInternal(String str)
      throws NoSuchAlgorithmException, NoSuchProviderException,
@@ -388,12 +388,12 @@ public class  CipherCryptService extends ServiceBase
     }
     
     /**
-     * javax.crypto.Cipher‚ğ¶¬‚·‚éB<p>
+     * javax.crypto.Cipherã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
      * @return javax.crypto.Cipher
-     * @exception NoSuchAlgorithmException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchProviderException w’è‚³‚ê‚½ƒvƒƒoƒCƒ_‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPaddingException w’è‚³‚ê‚½ƒpƒfƒBƒ“ƒO‹@\‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @exception NoSuchAlgorithmException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchProviderException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPaddingException æŒ‡å®šã•ã‚ŒãŸãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ©Ÿæ§‹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     protected Cipher createCipher()
      throws NoSuchAlgorithmException, NoSuchProviderException,
@@ -408,12 +408,12 @@ public class  CipherCryptService extends ServiceBase
     }
     
     /**
-     * javax.crypto.Cipher‚ğ‰Šú‰»‚·‚éB<p>
+     * javax.crypto.Cipherã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
      * @param c javax.crypto.Cipher
-     * @param opmode ‚±‚ÌˆÃ†‚Ì‘€ìƒ‚[ƒh 
-     * @exception InvalidKeyException w’è‚³‚ê‚½Œ®‚ª–³Œø‚È•„†‰»A’·‚³‚ÌŒë‚èA–¢‰Šú‰»‚È‚Ç‚Ì–³Œø‚ÈŒ®‚Å‚ ‚éê‡
-     * @exception InvalidAlgorithmParameterException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ª–³Œø‚Ü‚½‚Í•s“KØ‚Èê‡
+     * @param opmode ã“ã®æš—å·ã®æ“ä½œãƒ¢ãƒ¼ãƒ‰ 
+     * @exception InvalidKeyException æŒ‡å®šã•ã‚ŒãŸéµãŒç„¡åŠ¹ãªç¬¦å·åŒ–ã€é•·ã•ã®èª¤ã‚Šã€æœªåˆæœŸåŒ–ãªã©ã®ç„¡åŠ¹ãªéµã§ã‚ã‚‹å ´åˆ
+     * @exception InvalidAlgorithmParameterException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒç„¡åŠ¹ã¾ãŸã¯ä¸é©åˆ‡ãªå ´åˆ
      */
     protected void intiCipher(Cipher c, int opmode)
      throws InvalidKeyException, InvalidAlgorithmParameterException{
@@ -447,10 +447,10 @@ public class  CipherCryptService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒoƒCƒg”z—ñ‚ğ16i”‚Ì•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—ã‚’16é€²æ•°ã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param bytes ƒoƒCƒg”z—ñ
-     * @return 16i”•¶š—ñ
+     * @param bytes ãƒã‚¤ãƒˆé…åˆ—
+     * @return 16é€²æ•°æ–‡å­—åˆ—
      */
     protected static String toHexString(byte[] bytes){
         final StringBuilder buf = new StringBuilder();
@@ -466,51 +466,51 @@ public class  CipherCryptService extends ServiceBase
         return buf.toString();
     }
     
-    // Crypt ‚ÌJavaDoc
+    // Crypt ã®JavaDoc
     public String doDecode(String str){
         try{
             return doDecodeInternal(str);
         }catch(NoSuchAlgorithmException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(NoSuchProviderException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(NoSuchPaddingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(InvalidKeyException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(InvalidAlgorithmParameterException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(IllegalBlockSizeException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(BadPaddingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }catch(UnsupportedEncodingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00002, e);
         }
         return str;
     }
     
     /**
-     * •œ†‰»‚·‚éB<p>
+     * å¾©å·åŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param str •œ†‰»‘ÎÛ‚Ì•¶š—ñ
-     * @return •œ†‰»Œã‚Ì•¶š—ñ
-     * @exception NoSuchAlgorithmException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchProviderException w’è‚³‚ê‚½ƒvƒƒoƒCƒ_‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPaddingException w’è‚³‚ê‚½ƒpƒfƒBƒ“ƒO‹@\‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception InvalidKeyException w’è‚³‚ê‚½Œ®‚ª–³Œø‚È•„†‰»A’·‚³‚ÌŒë‚èA–¢‰Šú‰»‚È‚Ç‚Ì–³Œø‚ÈŒ®‚Å‚ ‚éê‡
-     * @exception InvalidAlgorithmParameterException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ª–³Œø‚Ü‚½‚Í•s“KØ‚Èê‡
-     * @exception IllegalBlockSizeException ƒuƒƒbƒNˆÃ†‚É’ñ‹Ÿ‚³‚ê‚½ƒf[ƒ^‚Ì’·‚³‚ª³‚µ‚­‚È‚¢ê‡
-     * @exception BadPaddingException “Á’è‚ÌƒpƒfƒBƒ“ƒO‹@\‚ª“ü—Íƒf[ƒ^‚É‘Î‚µ‚Ä—\Šú‚³‚ê‚Ä‚¢‚é‚Ì‚Éƒf[ƒ^‚ª“KØ‚ÉƒpƒfƒBƒ“ƒO‚³‚ê‚È‚¢ê‡
-     * @exception UnsupportedEncodingException w’è‚³‚ê‚½•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ªƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @param str å¾©å·åŒ–å¯¾è±¡ã®æ–‡å­—åˆ—
+     * @return å¾©å·åŒ–å¾Œã®æ–‡å­—åˆ—
+     * @exception NoSuchAlgorithmException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchProviderException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPaddingException æŒ‡å®šã•ã‚ŒãŸãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ©Ÿæ§‹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception InvalidKeyException æŒ‡å®šã•ã‚ŒãŸéµãŒç„¡åŠ¹ãªç¬¦å·åŒ–ã€é•·ã•ã®èª¤ã‚Šã€æœªåˆæœŸåŒ–ãªã©ã®ç„¡åŠ¹ãªéµã§ã‚ã‚‹å ´åˆ
+     * @exception InvalidAlgorithmParameterException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒç„¡åŠ¹ã¾ãŸã¯ä¸é©åˆ‡ãªå ´åˆ
+     * @exception IllegalBlockSizeException ãƒ–ãƒ­ãƒƒã‚¯æš—å·ã«æä¾›ã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã®é•·ã•ãŒæ­£ã—ããªã„å ´åˆ
+     * @exception BadPaddingException ç‰¹å®šã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ©Ÿæ§‹ãŒå…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã«å¯¾ã—ã¦äºˆæœŸã•ã‚Œã¦ã„ã‚‹ã®ã«ãƒ‡ãƒ¼ã‚¿ãŒé©åˆ‡ã«ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã•ã‚Œãªã„å ´åˆ
+     * @exception UnsupportedEncodingException æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ãŒã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆ
      */
     protected String doDecodeInternal(String str)
      throws NoSuchAlgorithmException, NoSuchProviderException,
@@ -530,10 +530,10 @@ public class  CipherCryptService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½16i”‚Ì•¶š—ñ‚ğƒoƒCƒg”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ16é€²æ•°ã®æ–‡å­—åˆ—ã‚’ãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param hex 16i”•¶š—ñ
-     * @return ƒoƒCƒg”z—ñ
+     * @param hex 16é€²æ•°æ–‡å­—åˆ—
+     * @return ãƒã‚¤ãƒˆé…åˆ—
      */
     protected static byte[] toBytes(String hex){
         final byte[] bytes = new byte[hex.length() / 2];
@@ -545,31 +545,31 @@ public class  CipherCryptService extends ServiceBase
         return bytes;
     }
     
-    // Crypt ‚ÌJavaDoc
+    // Crypt ã®JavaDoc
     public String doHash(String str){
         try{
             return doHashInternal(str);
         }catch(NoSuchProviderException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00003, e);
         }catch(NoSuchAlgorithmException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00003, e);
         }catch(UnsupportedEncodingException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             getLogger().write(CC___00003, e);
         }
         return str;
     }
     
     /**
-     * ƒnƒbƒVƒ…‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚<p>
      *
-     * @param str ƒnƒbƒVƒ…‘ÎÛ‚Ì•¶š—ñ
-     * @return ƒnƒbƒVƒ…Œã‚Ì•¶š—ñ
-     * @exception NoSuchAlgorithmException w’è‚³‚ê‚½ƒAƒ‹ƒSƒŠƒYƒ€‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchProviderException w’è‚³‚ê‚½ƒvƒƒoƒCƒ_‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception UnsupportedEncodingException w’è‚³‚ê‚½•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ªƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @param str ãƒãƒƒã‚·ãƒ¥å¯¾è±¡ã®æ–‡å­—åˆ—
+     * @return ãƒãƒƒã‚·ãƒ¥å¾Œã®æ–‡å­—åˆ—
+     * @exception NoSuchAlgorithmException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchProviderException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception UnsupportedEncodingException æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ãŒã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆ
      */
     protected String doHashInternal(String str)
      throws NoSuchProviderException, NoSuchAlgorithmException,
@@ -604,7 +604,7 @@ public class  CipherCryptService extends ServiceBase
         );
     }
     
-    // Converter‚ÌJavaDoc
+    // Converterã®JavaDoc
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
             return null;
@@ -615,7 +615,7 @@ public class  CipherCryptService extends ServiceBase
         }
     }
     
-    // StringConverter‚ÌJavaDoc
+    // StringConverterã®JavaDoc
     public String convert(String str) throws ConvertException{
         switch(convertType){
         case REVERSE_CONVERT:

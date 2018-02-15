@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’PƒƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠB<p>
+ * å˜ç´”ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -47,28 +47,28 @@ public class SimpleScheduleFactoryService extends ServiceBase
     protected Schedule[] schedules;
     protected ServiceName scheduleStateManagerServiceName;
     
-    // SimpleScheduleFactoryServiceMBean‚ÌJavaDoc
+    // SimpleScheduleFactoryServiceMBeanã®JavaDoc
     public void setScheduleServiceNames(ServiceName[] names){
         scheduleServiceNames = names;
     }
-    // SimpleScheduleFactoryServiceMBean‚ÌJavaDoc
+    // SimpleScheduleFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getScheduleServiceNames(){
         return scheduleServiceNames;
     }
     
-    // SimpleScheduleFactoryServiceMBean‚ÌJavaDoc
+    // SimpleScheduleFactoryServiceMBeanã®JavaDoc
     public void setScheduleStateManagerServiceName(ServiceName name){
         scheduleStateManagerServiceName = name;
     }
-    // SimpleScheduleFactoryServiceMBean‚ÌJavaDoc
+    // SimpleScheduleFactoryServiceMBeanã®JavaDoc
     public ServiceName getScheduleStateManagerServiceName(){
         return scheduleStateManagerServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(scheduleServiceNames != null){
@@ -97,10 +97,10 @@ public class SimpleScheduleFactoryService extends ServiceBase
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª•Û‚µ‚Ä‚¢‚éƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒä¿æŒã—ã¦ã„ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key g—p‚µ‚È‚¢
-     * @return ƒXƒPƒWƒ…[ƒ‹”z—ñ
+     * @param key ä½¿ç”¨ã—ãªã„
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é…åˆ—
      */
     public Schedule[] getSchedules(Object key){
         return schedules;

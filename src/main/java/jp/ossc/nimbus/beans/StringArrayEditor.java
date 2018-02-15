@@ -37,27 +37,27 @@ import java.io.*;
 import java.lang.reflect.*;
 
 /**
- * String�z��^��PropertyEditor�N���X�B<p>
- * �J���}��؂�̕������java.lang.String[]�^�̃I�u�W�F�N�g�ɕϊ�����B�J���}���Z�p���[�^�ł͂Ȃ�������Ƃ��Ďw�肵�����ꍇ�́A"��"�ŃG�X�P�[�v����B<br>
- * �ŏ��ƍŌ�̋󔒂Ɖ��s�O��̋󔒂̓g���������B
- * �󔒂́A{@link java.lang.Character#isWhitespace(char)}�Ŕ��肳���B
- * �A���A�󔒂𕶎���̑O��ɕt���������ꍇ�ɂ́A"�ň͂ނƃg��������Ȃ��B"�𕶎���̗��[�ɈӐ}�I�ɕt���������ꍇ�ɂ́A"���d�ɏd�˂ċL�q����B<br>
- * "&lt;!--"��"--&gt;"�Ɉ͂܂ꂽ������̓R�����g�Ɖ��߂��ꖳ�������B<br>
- * "${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
- * "${\t}"�A"${\n}"�A"${\r}"�A"${\f}"�́A�G�X�P�[�v�V�[�P���X�Ƃ��Ēu�������B<br>
- * "��u"����n�܂�U�����́A���j�R�[�h������Ƃ��Ēu�������B<br>
- * String�^��static�萔�����Q�Ƃ��鎖���ł���B<br>
+ * String配列型のPropertyEditorクラス。<p>
+ * カンマ区切りの文字列をjava.lang.String[]型のオブジェクトに変換する。カンマをセパレータではない文字列として指定したい場合は、"￥"でエスケープする。<br>
+ * 最初と最後の空白と改行前後の空白はトリムされる。
+ * 空白は、{@link java.lang.Character#isWhitespace(char)}で判定される。
+ * 但し、空白を文字列の前後に付加したい場合には、"で囲むとトリムされない。"を文字列の両端に意図的に付加したい場合には、"を二重に重ねて記述する。<br>
+ * "&lt;!--"と"--&gt;"に囲まれた文字列はコメントと解釈され無視される。<br>
+ * "${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
+ * "${\t}"、"${\n}"、"${\r}"、"${\f}"は、エスケープシーケンスとして置換される。<br>
+ * "￥u"から始まる６文字は、ユニコード文字列として置換される。<br>
+ * String型のstatic定数名を参照する事もできる。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;A,B, C  <br>
  * &nbsp;&nbsp;C, D,E ,&lt;!--F,<br>
  * &nbsp;&nbsp;G,--&gt;"H ",""I""<br>
  * <br>
- * &nbsp;�̂悤�ȕ�����<br>
+ * &nbsp;のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;new String[]{"A", "B", " CC", " D", "E ", "H ", "\"I\""}<br>
  * <br>
- * &nbsp;�̂悤�ɕϊ������B<br>
+ * &nbsp;のように変換される。<br>
  *
  * @author M.Takata
  */
@@ -67,9 +67,9 @@ public class StringArrayEditor extends PropertyEditorSupport
     private static final long serialVersionUID = 1849102862712070203L;
     
     /**
-     * �w�肳�ꂽ���������͂��ăv���p�e�B�l��ݒ肷��B<p>
+     * 指定された文字列を解析してプロパティ値を設定する。<p>
      *
-     * @param text ��͂���镶����
+     * @param text 解析される文字列
      */
     public void setAsText(String text){
         if(text == null){
@@ -169,13 +169,13 @@ public class StringArrayEditor extends PropertyEditorSupport
                 buf.setLength(0);
             }
         }catch(IOException e){
-            // �N���Ȃ��͂�
+            // 起きないはず
             e.printStackTrace();
         }finally{
             try{
                 br.close();
             }catch(IOException e){
-                // �N���Ȃ��͂�
+                // 起きないはず
                 e.printStackTrace();
             }
             sr.close();
@@ -216,9 +216,9 @@ public class StringArrayEditor extends PropertyEditorSupport
     }
     
     /**
-     * �v���p�e�B��������擾����B<p>
+     * プロパティ文字列を取得する。<p>
      *
-     * @return �v���p�e�B������
+     * @return プロパティ文字列
      */
     public String getAsText(){
         final String[] strArray = (String[])getValue();

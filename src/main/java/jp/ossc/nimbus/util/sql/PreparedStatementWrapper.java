@@ -40,7 +40,7 @@ import java.sql.*;
 import java.util.Calendar;
 
 /**
- * PreparedStatementƒ‰ƒbƒp[B<p>
+ * PreparedStatementãƒ©ãƒƒãƒ‘ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */
@@ -52,9 +52,9 @@ public class PreparedStatementWrapper extends StatementWrapper
     protected final String preparedSql;
     
     /**
-     * w’è‚µ‚½PreparedStatement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸPreparedStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éPreparedStatement
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatement
      */
     public PreparedStatementWrapper(PreparedStatement st){
         super(st);
@@ -62,10 +62,10 @@ public class PreparedStatementWrapper extends StatementWrapper
     }
     
     /**
-     * w’è‚µ‚½PreparedStatement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸPreparedStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌPreparedStatement‚ğ¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éPreparedStatement
+     * @param con ã“ã®PreparedStatementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatement
      */
     public PreparedStatementWrapper(Connection con, PreparedStatement st){
         super(con, st);
@@ -73,10 +73,10 @@ public class PreparedStatementWrapper extends StatementWrapper
     }
     
     /**
-     * w’è‚µ‚½PreparedStatement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸPreparedStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éPreparedStatement
-     * @param sql SQL•¶š—ñ
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public PreparedStatementWrapper(PreparedStatement st, String sql){
         super(st);
@@ -84,11 +84,11 @@ public class PreparedStatementWrapper extends StatementWrapper
     }
     
     /**
-     * w’è‚µ‚½PreparedStatement‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸPreparedStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌPreparedStatement‚ğ¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éPreparedStatement
-     * @param sql SQL•¶š—ñ
+     * @param con ã“ã®PreparedStatementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public PreparedStatementWrapper(
         Connection con,

@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg•R•t‚¯‚éƒRƒ“ƒo[ƒ^B<p>
+ * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç´ä»˜ã‘ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface BindingConverter extends Converter{
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param input •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @param output •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param input å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param output å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object input, Object output) throws ConvertException;
 }

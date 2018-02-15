@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.unitofwork;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.rmi.RemoteException;
 import java.lang.reflect.Method;
 
@@ -46,7 +46,7 @@ import jp.ossc.nimbus.service.aop.InvocationContext;
 import jp.ossc.nimbus.service.aop.DefaultMethodInvocationContext;
 
 /**
- * UnitOfWorkÀsEJBƒNƒ‰ƒX<p>
+ * UnitOfWorkå®Ÿè¡ŒEJBã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -72,7 +72,7 @@ public class SLSBUnitOfWorkBean extends EJBDriveDispatcher implements SessionBea
 		super() ;
 	}
 	/**
-	 * EJB‚ğì¬‚·‚éB
+	 * EJBã‚’ä½œæˆã™ã‚‹ã€‚
 	 * @throws javax.ejb.CreateException
 	 */
 	public void ejbCreate()
@@ -94,7 +94,7 @@ public class SLSBUnitOfWorkBean extends EJBDriveDispatcher implements SessionBea
 	}
 	
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#setSessionContext(javax.ejb.SessionContext)
 	 */
 	public void setSessionContext(SessionContext arg0)
@@ -102,25 +102,25 @@ public class SLSBUnitOfWorkBean extends EJBDriveDispatcher implements SessionBea
 		this.setContext(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbRemove()
 	 */
 	public void ejbRemove(){}
 	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbActivate()
 	 */
 	public void ejbActivate(){}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbPassivate()
 	 */
 	public void ejbPassivate() {}
 	
 	/**
-	 * UnitOfWorkÀsƒƒ\ƒbƒh
+	 * UnitOfWorkå®Ÿè¡Œãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param fv
-	 * @return@FacadeValue
+	 * @returnã€€FacadeValue
 	 * @throws RemoteException
 	 */
 	public UnitOfWork invokeUnitOfWork(UnitOfWork fv) {
@@ -131,8 +131,8 @@ public class SLSBUnitOfWorkBean extends EJBDriveDispatcher implements SessionBea
 			IOCException ee =  new IOCException("SLSBUnitOfWorkBean invokeUnitOfWork InterceptorError",e) ;
 			throw ee;
 		} catch (TargetCheckedException e) {
-			//‚±‚±‚É”ò‚ñ‚Å‚­‚é‚±‚Æ‚Í‚È‚¢B
-			//ƒRƒ}ƒ“ƒh‘w‚ÅƒLƒƒƒbƒ`‚³‚êˆ—Ï‚İ‚Ì‚Í‚¸B
+			//ã“ã“ã«é£›ã‚“ã§ãã‚‹ã“ã¨ã¯ãªã„ã€‚
+			//ã‚³ãƒãƒ³ãƒ‰å±¤ã§ã‚­ãƒ£ãƒƒãƒã•ã‚Œå‡¦ç†æ¸ˆã¿ã®ã¯ãšã€‚
 			IOCException ee =  new IOCException("SLSBUnitOfWorkBean invokeUnitOfWork CheckedError",e.getCause()) ;
 			throw ee ;
 		} catch (TargetUncheckedException e) {

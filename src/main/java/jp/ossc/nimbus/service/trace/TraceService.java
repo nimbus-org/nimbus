@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.trace;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
@@ -41,7 +41,7 @@ import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.log.Logger;
 /**
- * ŠÖ”‚Ì“üo—Í‚ğƒgƒŒ[ƒX‚·‚éƒT[ƒrƒXƒNƒ‰ƒX<p>
+ * é–¢æ•°ã®å…¥å‡ºåŠ›ã‚’ãƒˆãƒ¬ãƒ¼ã‚¹ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
@@ -50,58 +50,58 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
     
     private static final long serialVersionUID = 7534818369420794264L;
     
-	/**ƒfƒtƒHƒ‹ƒgƒZƒpƒŒƒ^*/
+	/**ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚»ãƒ‘ãƒ¬ã‚¿*/
 	private final static String DEFAULT_SEPARATOR= System.getProperty("line.separator");
-	/**ƒfƒtƒHƒ‹ƒgƒlƒXƒgƒŒƒxƒ‹*/
+	/**ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«*/
 	private final static int    DEFAULT_NESTED_LEVEL=2;
-	/**ó‘ÔŠÇ——pHashMap‚ÉŠÖ”d—ló‘Ô‚ğŠi”[‚·‚éˆ×‚ÌƒL[*/
+	/**çŠ¶æ…‹ç®¡ç†ç”¨HashMapã«é–¢æ•°ä»•æ§˜çŠ¶æ…‹ã‚’æ ¼ç´ã™ã‚‹ç‚ºã®ã‚­ãƒ¼*/
 	private final static String ENTRY_STATE_START="1";
-	/**@•¶š—ñ‚ğ’u‚«Š·‚¦‚é•¶š(ƒfƒtƒHƒ‹ƒg)*/
+	/**@æ–‡å­—åˆ—ã‚’ç½®ãæ›ãˆã‚‹æ–‡å­—(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)*/
 	private final static char ATMARK_REPLACE_CHAR='$';
 	
-	//ƒGƒ‰[ƒƒbƒZ[ƒW
+	//ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	/***/
 	private final static String ERROR_USE_OF_TRACE_MSG="entry/exit method must be called after using isXXX() trace-level check function.";
     /**
-     * ƒgƒŒ[ƒXƒŒƒxƒ‹B<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ¬ãƒ™ãƒ«ã€‚<p>
      */
 	private int traceLevel;
     /**
-     * ƒgƒŒ[ƒXƒpƒ‰ƒƒ^‚ÌƒZƒpƒŒƒ^B<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ‘ãƒ©ãƒ¡ã‚¿ã®ã‚»ãƒ‘ãƒ¬ã‚¿ã€‚<p>
      */
 	private String separator;
     /**
-     * ŒÄ‚Ño‚µŒ³æ“¾‚ÌƒlƒXƒgƒŒƒxƒ‹B<p>
+     * å‘¼ã³å‡ºã—å…ƒå–å¾—æ™‚ã®ãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«ã€‚<p>
      */
 	private int nestedLevel;
 
     /**
-     * {@link jp.ossc.nimbus.service.log.LogService LogService}ƒT[ƒrƒX–¼B<p>
+     * {@link jp.ossc.nimbus.service.log.LogService LogService}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
 	private ServiceName logServiceName;
 	
     /**
-     * {@link EditorFinder}ƒT[ƒrƒX–¼B<p>
+     * {@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
 	private ServiceName editorFinderServiceName;
 	
     /**
-     * {@link jp.ossc.nimbus.service.log.LogService LogService}ƒT[ƒrƒXÀ‘ÌB<p>
+     * {@link jp.ossc.nimbus.service.log.LogService LogService}ã‚µãƒ¼ãƒ“ã‚¹å®Ÿä½“ã€‚<p>
      */
 	private Logger mLogService;
 	
     /**
-     * {@link EditorFinder}ƒT[ƒrƒXÀ‘ÌB<p>
+     * {@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹å®Ÿä½“ã€‚<p>
      */
 	private EditorFinder mEditorFinderService;
 
 	/**
-	 * g—p‚µ‚½ó‘ÔŠÇ—
+	 * ä½¿ç”¨ã—ãŸçŠ¶æ…‹ç®¡ç†
 	 */
 	private static ThreadLocal thLocal = new ThreadLocal();
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 *
 	 */
 	public TraceService() {
@@ -110,49 +110,49 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 		traceLevel  = DISABLE_LEVEL;
 	}
 	
-	//#####ƒZƒbƒ^[EƒQƒbƒ^[#####
-	/* (”ñ Javadoc)
+	//#####ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ã‚²ãƒƒã‚¿ãƒ¼#####
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#getLogServiceName()
 	 */
 	public ServiceName getLogServiceName() {
 		return logServiceName;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setLogServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setLogServiceName(ServiceName name) {
 		logServiceName = name;		
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#getEditorFinderServiceName()
 	 */
 	public ServiceName getEditorFinderServiceName() {
 		return editorFinderServiceName;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setEditorFinderServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setEditorFinderServiceName(ServiceName name) {
 		editorFinderServiceName = name;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setTraceLevel(int)
 	 */
 	public void setTraceLevel(int level) {
 		traceLevel = level;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setNestedLevel(int)
 	 */
 	public void setNestedLevel(int level) {
 		this.nestedLevel = level;		
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setSeparator(java.lang.String)
 	 */
 	public void setSeparator(String sep) {
@@ -167,27 +167,27 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
         mLogService = logger;
     }
 
-    //#####ƒT[ƒrƒX‰Šú‰»`”jŠü#####
+    //#####ã‚µãƒ¼ãƒ“ã‚¹åˆæœŸåŒ–ï½ç ´æ£„#####
     /**
-     * ¶¬ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link Daemon}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB</li>
+     *   <li>{@link Daemon}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
 	public void createService() throws Exception {	    
 	}
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link jp.ossc.nimbus.service.log.LogService LogService}ƒT[ƒrƒX‚ğæ“¾B</li>
-     *   <li>{@link EditorFinder}ƒT[ƒrƒX‚ğæ“¾B</li>
+     *   <li>{@link jp.ossc.nimbus.service.log.LogService LogService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã€‚</li>
+     *   <li>{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
 	public void startService() throws Exception{
         if(logServiceName != null) {
@@ -204,26 +204,26 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 		}
 	}
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒXÀ‘Ì•Ï”‚ğ‰Šú‰»‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®Ÿä½“å¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
 	public void stopService() throws Exception {	
 		mLogService = null;
 		mEditorFinderService = null;
 	}
     /**
-     * ”jŠüˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒT[ƒrƒX‘®«‚ğ‰Šú‰»‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å±æ€§ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
 	public void destroyService() throws Exception {	
 		loggerServiceName = null;
@@ -231,20 +231,20 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 	}
 	
 	
-	//#####APŒü‚¯ƒƒ\ƒbƒh#####
+	//#####APå‘ã‘ãƒ¡ã‚½ãƒƒãƒ‰#####
 	/**
-     * ƒgƒŒ[ƒXæ“¾ŠJn—v‹ó•t‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—é–‹å§‹è¦æ±‚å—ä»˜ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>‘Î‰‚·‚éƒpƒ‰ƒƒ^‚ğString‚É•ÏŠ·‚·‚é</li>
-     *   <li>ŒÄ‚Ño‚µŒ³‚ÌŠÖ”‚Æƒ‰ƒCƒ“”Ô†‚ğæ“¾‚·‚é</li>
-     *   <li>ƒƒO‚É‘‚«o‚µ‚ğs‚¤</li>
+     *   <li>å¯¾å¿œã™ã‚‹ãƒ‘ãƒ©ãƒ¡ã‚¿ã‚’Stringã«å¤‰æ›ã™ã‚‹</li>
+     *   <li>å‘¼ã³å‡ºã—å…ƒã®é–¢æ•°ã¨ãƒ©ã‚¤ãƒ³ç•ªå·ã‚’å–å¾—ã™ã‚‹</li>
+     *   <li>ãƒ­ã‚°ã«æ›¸ãå‡ºã—ã‚’è¡Œã†</li>
      * </ol>
      * 
      */
 	public void entry(Object[] params){
-	    //ƒGƒ“ƒgƒŠŠJnƒtƒ‰ƒO‚ğ‹L˜^
-	    //XXX‚ªŒÄ‚Î‚ê‚é‘O‚ÉƒR[ƒ‹‚³‚ê‚½‚çException
+	    //ã‚¨ãƒ³ãƒˆãƒªé–‹å§‹ãƒ•ãƒ©ã‚°ã‚’è¨˜éŒ²
+	    //XXXãŒå‘¼ã°ã‚Œã‚‹å‰ã«ã‚³ãƒ¼ãƒ«ã•ã‚ŒãŸã‚‰Exception
 	    if( !isFlagSetted() ){
 	        throw new ServiceException("Tracer00001",ERROR_USE_OF_TRACE_MSG);
 	    }
@@ -254,17 +254,17 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 		mLogService.write(TRACE_ENTRY_KEY,new String[]{callerInfo,param});
 	}
 	/**
-     * ƒgƒŒ[ƒXæ“¾I—¹—v‹ó•t‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—çµ‚äº†è¦æ±‚å—ä»˜ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>‘Î‰‚·‚éƒpƒ‰ƒƒ^‚ğString‚É•ÏŠ·‚·‚é</li>
-     *   <li>ŒÄ‚Ño‚µŒ³‚ÌŠÖ”‚Æƒ‰ƒCƒ“”Ô†‚ğæ“¾‚·‚é</li>
-     *   <li>ƒƒO‚É‘‚«o‚µ‚ğs‚¤</li>
+     *   <li>å¯¾å¿œã™ã‚‹ãƒ‘ãƒ©ãƒ¡ã‚¿ã‚’Stringã«å¤‰æ›ã™ã‚‹</li>
+     *   <li>å‘¼ã³å‡ºã—å…ƒã®é–¢æ•°ã¨ãƒ©ã‚¤ãƒ³ç•ªå·ã‚’å–å¾—ã™ã‚‹</li>
+     *   <li>ãƒ­ã‚°ã«æ›¸ãå‡ºã—ã‚’è¡Œã†</li>
      * </ol>
      * 
      */
 	public void exit(Object[] params) {
-	    //XXX‚ªŒÄ‚Î‚ê‚é‘O‚ÉƒR[ƒ‹‚³‚ê‚½‚çException
+	    //XXXãŒå‘¼ã°ã‚Œã‚‹å‰ã«ã‚³ãƒ¼ãƒ«ã•ã‚ŒãŸã‚‰Exception
 	    if( !isFlagSetted() ){
 	        throw new ServiceException("Tracer00001",ERROR_USE_OF_TRACE_MSG);
 	    }
@@ -274,8 +274,8 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 		mLogService.write(TRACE_EXIT_KEY,new String[]{callerInfo,param});
 	}
 
-	//#####•\¦ƒŒƒxƒ‹–â‚¢‡‚í‚¹#####
-	/* (”ñ Javadoc)
+	//#####è¡¨ç¤ºãƒ¬ãƒ™ãƒ«å•ã„åˆã‚ã›#####
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.Tracer#isPublic()
 	 */
 	public boolean isPublic() {
@@ -284,7 +284,7 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 	    return b;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.Tracer#isProtected()
 	 */
 	public boolean isProtected() {
@@ -293,7 +293,7 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 	    return b;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.Tracer#isPrivate()
 	 */
 	public boolean isPrivate() {
@@ -301,37 +301,37 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 	    if( b ) setFlag();
 	    return b;
 	}
-	//#####“à•”ŠÇ——p#####
+	//#####å†…éƒ¨ç®¡ç†ç”¨#####
 	/**
 	 * clearFlag
-	 * ƒXƒŒƒbƒhƒ[ƒJƒ‹•Ï”‚É‹L˜^‚³‚ê‚½ƒtƒ‰ƒO‚ğƒNƒŠƒA‚·‚é
+	 * ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«å¤‰æ•°ã«è¨˜éŒ²ã•ã‚ŒãŸãƒ•ãƒ©ã‚°ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
 	 */
 	protected void clearFlag(){
 	    thLocal.set(null);
 	}
 	/**
 	 * isFlagCleared
-	 * @return ƒNƒŠƒAÏ‚İ
+	 * @return ã‚¯ãƒªã‚¢æ¸ˆã¿
 	 */
 	protected boolean isFlagSetted(){
 	    return thLocal.get() != null;
 	}
 	/**
-	 * ƒgƒŒ[ƒXƒGƒ“ƒgƒŠó‘Ô‚Å‚ ‚é‚±‚Æ‚ğİ’è‚·‚é
-	 *  Exit‚ÌÛ‚Éƒtƒ‰ƒO‚ªƒNƒŠƒA‚³‚ê‚Ä‚¢‚È‚¢‚ÆException‚ª”­¶‚·‚é
+	 * ãƒˆãƒ¬ãƒ¼ã‚¹ã‚¨ãƒ³ãƒˆãƒªçŠ¶æ…‹ã§ã‚ã‚‹ã“ã¨ã‚’è¨­å®šã™ã‚‹
+	 *  Exitã®éš›ã«ãƒ•ãƒ©ã‚°ãŒã‚¯ãƒªã‚¢ã•ã‚Œã¦ã„ãªã„ã¨ExceptionãŒç™ºç”Ÿã™ã‚‹
 	 */
 	protected void setFlag(){
 	    thLocal.set(ENTRY_STATE_START);
 	}
 	/**
-     * ŒÄ‚Ño‚µŒ³ŠÖ”–¼‚ÆƒXƒeƒbƒv”Ô†æ“¾B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * å‘¼ã³å‡ºã—å…ƒé–¢æ•°åã¨ã‚¹ãƒ†ãƒƒãƒ—ç•ªå·å–å¾—ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>—áŠO‚ğì¬</li>
-     *   <li>—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚Ì2s–Ú‚Ìî•ñ‚æ‚èAŒÄ‚Ño‚µŒ³ƒƒ\ƒbƒh–¼‚ÆƒXƒeƒbƒv”Ô†‚ğæ“¾</li>
+     *   <li>ä¾‹å¤–ã‚’ä½œæˆ</li>
+     *   <li>ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã®2è¡Œç›®ã®æƒ…å ±ã‚ˆã‚Šã€å‘¼ã³å‡ºã—å…ƒãƒ¡ã‚½ãƒƒãƒ‰åã¨ã‚¹ãƒ†ãƒƒãƒ—ç•ªå·ã‚’å–å¾—</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */	
 	private String getCallerInfo(){
 		String callerClass = null;
@@ -345,13 +345,13 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 		}
 		return callerClass;
 	}
-	//•\¦—pƒwƒ‹ƒpŠÖ”
+	//è¡¨ç¤ºç”¨ãƒ˜ãƒ«ãƒ‘é–¢æ•°
 	/**
-     * Object¨String•ÏŠ·‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * Objectâ†’Stringå¤‰æ›ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>‘Î‰‚·‚éƒGƒfƒBƒ^‚ğæ“¾‚·‚é</li>
-     *   <li>ŒÄ‚Ño‚µŒ³‚ÌŠÖ”‚Æƒ‰ƒCƒ“”Ô†‚ğæ“¾‚·‚é</li>
+     *   <li>å¯¾å¿œã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å–å¾—ã™ã‚‹</li>
+     *   <li>å‘¼ã³å‡ºã—å…ƒã®é–¢æ•°ã¨ãƒ©ã‚¤ãƒ³ç•ªå·ã‚’å–å¾—ã™ã‚‹</li>
       * </ol>
      * 
      */
@@ -365,10 +365,10 @@ public class TraceService extends ServiceBase implements TraceServiceMBean , Tra
 		for( int i = 0 ; i < params.length ; i++ ){
 			Object param = params[i];
 			if( param != null ) {
-				//‘Î‰‚·‚éƒGƒfƒBƒ^‚ğæ“¾‚µ‚Ä•¶š—ñ‚É•ÏŠ·‚·‚é
+				//å¯¾å¿œã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å–å¾—ã—ã¦æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
 				final JournalEditor editor = mEditorFinderService.findEditor(param.getClass());
 				String str =(String) editor.toObject(mEditorFinderService,null,param) ;
-				//@•ÏŠ·‚Éˆø‚Á‚©‚©‚ç‚È‚¢‚æ‚¤‚É$‚É•ÏŠ·‚·‚é
+				//@å¤‰æ›ã«å¼•ã£ã‹ã‹ã‚‰ãªã„ã‚ˆã†ã«$ã«å¤‰æ›ã™ã‚‹
 				if( str != null ) str.replace('@',ATMARK_REPLACE_CHAR);
 				buff.append(str);
 				if( i != params.length -1 )

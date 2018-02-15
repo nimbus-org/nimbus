@@ -34,69 +34,69 @@ package jp.ossc.nimbus.daemon;
 import jp.ossc.nimbus.util.*;
 
 /**
- * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒhB<p>
- * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌˆÀ‘S‚È§Œä‚ğ‚ß‚´‚µ‚½‚à‚Ì‚Å‚·B<br>
+ * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã€‚<p>
+ * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å®‰å…¨ãªåˆ¶å¾¡ã‚’ã‚ã–ã—ãŸã‚‚ã®ã§ã™ã€‚<br>
  *
  * @author H.Nakano
  */
 public class Daemon implements Runnable, DaemonControl{
     
-    //## ƒNƒ‰ƒXƒƒ“ƒo[•Ï”éŒ¾ ##
+    //## ã‚¯ãƒ©ã‚¹ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
     
     /**
-     * ƒf[ƒ‚ƒ“‰Ò“®’†”»’èƒtƒ‰ƒOB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ç¨¼å‹•ä¸­åˆ¤å®šãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected volatile boolean isRunning;
     
     /**
-     * ƒuƒƒbƒLƒ“ƒOó‘Ô”»’èƒtƒ‰ƒOB<p>
+     * ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°çŠ¶æ…‹åˆ¤å®šãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected volatile boolean isBlocking;
     
     /**
-     * ƒTƒXƒyƒ“ƒhó‘Ô”»’èƒtƒ‰ƒOB<p>
+     * ã‚µã‚¹ãƒšãƒ³ãƒ‰çŠ¶æ…‹åˆ¤å®šãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected volatile boolean isSusupend;
     protected SynchronizeMonitor susupendMonitor = new WaitSynchronizeMonitor();
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒhƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected transient Thread daemonThread;
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh–¼B<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰åã€‚<p>
      */
     protected String threadName;
     
     /**
-     * ƒf[ƒ‚ƒ“İ’èƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³è¨­å®šãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      */
     protected boolean isDaemon = true;
     
     /**
-     * ƒf[ƒ‚ƒ“ƒ‰ƒ“ƒiƒuƒ‹B<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãƒ©ãƒ³ãƒŠãƒ–ãƒ«ã€‚<p>
      */
     protected DaemonRunnable runnable;
     
     /**
-     * ƒKƒx[ƒW’†ƒtƒ‰ƒOB<p>
+     * ã‚¬ãƒ™ãƒ¼ã‚¸ä¸­ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isGarbaging;
     
     /**
-     * Á”ï’†ƒtƒ‰ƒOB<p>
+     * æ¶ˆè²»ä¸­ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isConsuming;
     
     /**
-     * ‹Ÿ‹‹’†ƒtƒ‰ƒOB<p>
+     * ä¾›çµ¦ä¸­ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isProviding;
     
     /**
-     * —Dæ‡ˆÊB<p>
+     * å„ªå…ˆé †ä½ã€‚<p>
      */
     protected int priority = -1;
     
@@ -105,16 +105,16 @@ public class Daemon implements Runnable, DaemonControl{
     protected long lastProvideTime = -1;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param run ƒf[ƒ‚ƒ“ˆ—‚ğÀs‚·‚éDaemonRunnable
+     * @param run ãƒ‡ãƒ¼ãƒ¢ãƒ³å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹DaemonRunnable
      */
     public Daemon(DaemonRunnable run){
         runnable = run;
     }
     
     /**
-     * {@link DaemonRunnable}‚ğæ“¾‚·‚éB<p>
+     * {@link DaemonRunnable}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
      * @return DaemonRunnable
      */
@@ -123,18 +123,18 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh
+     * @return ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰
      */
     public Thread getDaemonThread(){
         return daemonThread;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì–¼‘O
+     * @param name ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®åå‰
      */
     public void setName(String name){
         threadName = name;
@@ -144,18 +144,18 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì–¼‘O
+     * @return ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®åå‰
      */
     public String getName(){
         return threadName;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param newPriority ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ
+     * @param newPriority ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½
      */
     public void setPriority(int newPriority){
         priority = newPriority;
@@ -165,110 +165,110 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì—Dæ‡ˆÊ
+     * @return ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å„ªå…ˆé †ä½
      */
     public int getPriority(){
         return daemonThread == null ? priority : daemonThread.getPriority();
     }
     
     /**
-     * ˆê’â~’†‚©‚ç•œ‹A‚·‚é‚×‚«‚©‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA500[ms]B<br>
+     * ä¸€æ™‚åœæ­¢ä¸­ã‹ã‚‰å¾©å¸°ã™ã‚‹ã¹ãã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€500[ms]ã€‚<br>
      *
-     * @param interval ƒ`ƒFƒbƒNŠÔŠu[ms]
+     * @param interval ãƒã‚§ãƒƒã‚¯é–“éš”[ms]
      */
     public void setSuspendCheckInterval(long interval){
         suspendCheckInterval = interval;
     }
     
     /**
-     * ˆê’â~’†‚©‚ç•œ‹A‚·‚é‚×‚«‚©‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ä¸€æ™‚åœæ­¢ä¸­ã‹ã‚‰å¾©å¸°ã™ã‚‹ã¹ãã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒNŠÔŠu[ms]
+     * @return ãƒã‚§ãƒƒã‚¯é–“éš”[ms]
      */
     public long getSuspendCheckInterval(){
         return suspendCheckInterval;
     }
     
     /**
-     * ‰Ò“®ó‘Ô‚ğ”»’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A‰Ò“®’†
+     * @return trueã®å ´åˆã€ç¨¼å‹•ä¸­
      */
     public boolean isRunning(){
         return this.isRunning;
     }
     
     /**
-     * ‰Ò“®ó‘Ô‚ğİ’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param runFlg ‰Ò“®’†‚Éİ’è‚µ‚½‚¢ê‡true
+     * @param runFlg ç¨¼å‹•ä¸­ã«è¨­å®šã—ãŸã„å ´åˆtrue
      */
     public void setRunning(boolean runFlg){
         this.isRunning = runFlg;
     }
     
     /**
-     * ƒuƒƒbƒLƒ“ƒOó‘Ô‚ğ”»’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°çŠ¶æ…‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒuƒƒbƒN’†
+     * @return trueã®å ´åˆã€ãƒ–ãƒ­ãƒƒã‚¯ä¸­
      */
     public boolean isBlocking(){
         return this.isBlocking;
     }
     
     /**
-     * ƒuƒƒbƒLƒ“ƒOó‘Ô‚ğİ’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param blockFlg ƒuƒƒbƒN’†‚Éİ’è‚µ‚½‚¢ê‡true
+     * @param blockFlg ãƒ–ãƒ­ãƒƒã‚¯ä¸­ã«è¨­å®šã—ãŸã„å ´åˆtrue
      */
     public void setBlocking(boolean blockFlg){
         this.isBlocking = blockFlg;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒtƒ‰ƒO‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚
      *
-     * @param isDaemon ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚éê‡true
+     * @param isDaemon ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹å ´åˆtrue
      */
     public void setDaemon(boolean isDaemon){
         this.isDaemon = isDaemon;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒf[ƒ‚ƒ“ƒXƒŒƒbƒh
+     * @return trueã®å ´åˆã€ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰
      */
     public boolean isDaemon(){
         return isDaemon ;
     }
     
     /**
-     * ‹Ÿ‹‹’†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¾›çµ¦ä¸­ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ‹Ÿ‹‹’†‚Ìê‡true
+     * @return ä¾›çµ¦ä¸­ã®å ´åˆtrue
      */
     public boolean isProviding(){
         return isProviding;
     }
     
     /**
-     * Á”ï’†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ¶ˆè²»ä¸­ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return Á”ï’†‚Ìê‡true
+     * @return æ¶ˆè²»ä¸­ã®å ´åˆtrue
      */
     public boolean isConsuming(){
         return isConsuming;
     }
     
     /**
-     * ˆê’â~’†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¸€æ™‚åœæ­¢ä¸­ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ˆê’â~’†‚Ìê‡true
+     * @return ä¸€æ™‚åœæ­¢ä¸­ã®å ´åˆtrue
      */
     public boolean isSusupend(){
         return isSusupend;
@@ -289,36 +289,36 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ‚±‚Ìƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ìó‘Ô‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ìó‘Ô
+     * @return ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®çŠ¶æ…‹
      */
     public CsvArrayList getDeamonInfo(){
         final CsvArrayList parser = new CsvArrayList();
         
-        //ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh–¼
+        //ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰å
         parser.add(getName());
         
-        //ƒ‰ƒ“ƒjƒ“ƒOó‘Ô
+        //ãƒ©ãƒ³ãƒ‹ãƒ³ã‚°çŠ¶æ…‹
         parser.add(String.valueOf(isRunning()));
         
-        //ƒuƒƒbƒLƒ“ƒOó‘Ô
+        //ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°çŠ¶æ…‹
         parser.add(String.valueOf(isBlocking()));
         
         return parser;
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ğŠJn‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public synchronized void start(){
-        // ‚·‚Å‚ÉÀs’†‚È‚çƒŠƒ^[ƒ“
+        // ã™ã§ã«å®Ÿè¡Œä¸­ãªã‚‰ãƒªã‚¿ãƒ¼ãƒ³
         if(isRunning()){
             return;
         }else if(!runnable.onStart()){
             return;
         }
-        // V‚µ‚¢ƒXƒŒƒbƒh‚ğì¬‚·‚é
+        // æ–°ã—ã„ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ä½œæˆã™ã‚‹
         if(getName() == null || getName().length() == 0){
             daemonThread = new Thread(this);
         }else{
@@ -329,7 +329,7 @@ public class Daemon implements Runnable, DaemonControl{
             daemonThread.setPriority(priority);
         }
         
-        // Às’†ƒtƒ‰ƒOİ’è
+        // å®Ÿè¡Œä¸­ãƒ•ãƒ©ã‚°è¨­å®š
         setRunning(true);
         setBlocking(true);
         if(isSusupend){
@@ -340,22 +340,22 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ğ’â~‚·‚éB<p>
-     * ƒXƒŒƒbƒh‚ª’â~‚·‚é‚Ü‚ÅA60•b‚¾‚¯‘Ò‹@‚·‚éB
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ãŒåœæ­¢ã™ã‚‹ã¾ã§ã€60ç§’ã ã‘å¾…æ©Ÿã™ã‚‹ã€‚
      */
     public synchronized void stop(){
         stop(60000);
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ğ’â~‚·‚éB<p>
-     * ƒXƒŒƒbƒh‚ª’â~‚·‚é‚Ü‚ÅAw’è‚³‚ê‚½ŠÔ‚¾‚¯‘Ò‹@‚·‚éB
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ãŒåœæ­¢ã™ã‚‹ã¾ã§ã€æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ã ã‘å¾…æ©Ÿã™ã‚‹ã€‚
      *
-     * @param millis ‘Ò‹@ŠÔ[ms]
+     * @param millis å¾…æ©Ÿæ™‚é–“[ms]
      */
     public synchronized void stop(long millis){
         if(daemonThread == null){
-            // ƒf[ƒ‚ƒ“‚Í’â~’†
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³ã¯åœæ­¢ä¸­
             return;
         }else if(!runnable.onStop()){
             return;
@@ -380,14 +380,14 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ª’â~‚·‚é‚Ü‚Å‘Ò‚ÂB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ãŒåœæ­¢ã™ã‚‹ã¾ã§å¾…ã¤ã€‚<p>
      */
     public synchronized void stopWait(){
         stopWait(0);
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ª’â~‚·‚é‚Ü‚Å‘Ò‚ÂB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ãŒåœæ­¢ã™ã‚‹ã¾ã§å¾…ã¤ã€‚<p>
      */
     public synchronized void stopWait(long millis){
         long startTime = System.currentTimeMillis();
@@ -406,18 +406,18 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒXƒŒƒbƒh‚É’â~–½—ß‚ğo‚·B<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã«åœæ­¢å‘½ä»¤ã‚’å‡ºã™ã€‚<p>
      */
     public synchronized void stopNoWait(){
         stop(-1);
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ğˆê’â~‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ä¸€æ™‚åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public synchronized void suspend(){
         if(isSusupend){
-            // ƒf[ƒ‚ƒ“‚Í’â~’†
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³ã¯åœæ­¢ä¸­
             return;
         }else if(!runnable.onSuspend()){
             return;
@@ -429,11 +429,11 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒXƒŒƒbƒh‚ğÄŠJ‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å†é–‹ã™ã‚‹ã€‚<p>
      */
     public synchronized void resume(){
         if(!isSusupend){
-            // ƒf[ƒ‚ƒ“‚Í’â~’†
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³ã¯åœæ­¢ä¸­
             return;
         }else if(!runnable.onResume()){
             return;
@@ -443,17 +443,17 @@ public class Daemon implements Runnable, DaemonControl{
     }
     
     /**
-     * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ğÀs‚·‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      */
     public void run(){
         boolean breakFlg = false;
         Object waitObj = null;
         try{
-            //ƒ‹[ƒv‚ÍˆÈ‰º‚Ì‚Q‚Â‚Ì•Ï”‚ğ§Œä‚·‚é‚±‚ÆB
+            //ãƒ«ãƒ¼ãƒ—ã¯ä»¥ä¸‹ã®ï¼’ã¤ã®å¤‰æ•°ã‚’åˆ¶å¾¡ã™ã‚‹ã“ã¨ã€‚
             while(isRunning()){
                 setBlocking(true);
-                // ‰½‚ç‚©‚ÌƒAƒNƒVƒ‡ƒ“‚ğ‘Ò‚Âê‡‚ÍInterruptedException
-                // ‚ğƒLƒƒƒbƒ`‚·‚é‚±‚Æ
+                // ä½•ã‚‰ã‹ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å¾…ã¤å ´åˆã¯InterruptedException
+                // ã‚’ã‚­ãƒ£ãƒƒãƒã™ã‚‹ã“ã¨
                 while(isSusupend){
                     try{
                         susupendMonitor.waitMonitor(suspendCheckInterval);
@@ -499,7 +499,7 @@ public class Daemon implements Runnable, DaemonControl{
                     breakFlg = false;
                     continue;
                 }
-                // ‰“šˆ—
+                // å¿œç­”å‡¦ç†
                 isConsuming = true;
                 try{
                     runnable.consume(waitObj, this);
@@ -515,7 +515,7 @@ public class Daemon implements Runnable, DaemonControl{
                 isConsuming = false;
             }
         }finally{
-            // I—¹‚ÍƒLƒ…[‚Ìc‚è‚ğ‘‚«o‚·
+            // çµ‚äº†æ™‚ã¯ã‚­ãƒ¥ãƒ¼ã®æ®‹ã‚Šã‚’æ›¸ãå‡ºã™
             setRunning(false);
             isGarbaging = true;
             try{

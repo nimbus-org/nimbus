@@ -32,23 +32,23 @@
 package jp.ossc.nimbus.service.server;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒŠƒNƒGƒXƒgƒRƒ“ƒeƒLƒXƒgB<p>
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface RequestContext{
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒŠƒNƒGƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒg
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public Request getRequest();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚Ö‚ÌƒŒƒXƒ|ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒX
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public Response getResponse();
 }

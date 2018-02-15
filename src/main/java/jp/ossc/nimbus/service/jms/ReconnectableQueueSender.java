@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * �Đڑ��\QueueSender�B<p>
+ * 再接続可能QueueSender。<p>
  *
  * @author M.Takata
  */

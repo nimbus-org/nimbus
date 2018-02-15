@@ -39,7 +39,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.channels.SelectionKey;
 
 /**
- * クライアントに対応するサーバント。<p>
+ * 繧ｯ繝ｩ繧､繧｢繝ｳ繝医↓蟇ｾ蠢懊☆繧九し繝ｼ繝舌Φ繝医�<p>
  *
  * @author M.Takata
  */

@@ -50,7 +50,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * WebƒT[ƒrƒXƒWƒƒ[ƒiƒ‹ƒnƒ“ƒhƒ‰ƒT[ƒrƒXB
+ * Webã‚µãƒ¼ãƒ“ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida

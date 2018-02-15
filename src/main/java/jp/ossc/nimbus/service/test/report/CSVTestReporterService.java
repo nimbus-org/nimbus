@@ -55,7 +55,7 @@ import jp.ossc.nimbus.service.test.TestScenario;
 import jp.ossc.nimbus.service.test.TestCase;
 
 /**
- * CSVŒ`Ž®‚ÅƒeƒXƒgŒ‹‰Ê‚ðƒŒƒ|[ƒg‚·‚éB<p>
+ * CSVå½¢å¼ã§ãƒ†ã‚¹ãƒˆçµæžœã‚’ãƒ¬ãƒãƒ¼ãƒˆã™ã‚‹ã€‚<p>
  * 
  * @author M.Takata
  */

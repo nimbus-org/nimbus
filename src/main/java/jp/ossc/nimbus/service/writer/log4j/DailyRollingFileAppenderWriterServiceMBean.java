@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer.log4j;
 
 /**
- * {@link DailyRollingFileAppenderWriterService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DailyRollingFileAppenderWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -40,16 +40,16 @@ public interface DailyRollingFileAppenderWriterServiceMBean
  extends FileAppenderWriterServiceMBean{
     
     /**
-     * ƒtƒ@ƒCƒ‹–¼‚É•t—^‚·‚é“ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğİ’è‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«åã«ä»˜ä¸ã™ã‚‹æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param pattern ƒtƒ@ƒCƒ‹–¼‚É•t—^‚·‚é“ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“•¶š—ñ
+     * @param pattern ãƒ•ã‚¡ã‚¤ãƒ«åã«ä»˜ä¸ã™ã‚‹æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—
      */
     public void setDatePattern(String pattern);
     
     /**
-     * ƒtƒ@ƒCƒ‹–¼‚É•t—^‚·‚é“ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«åã«ä»˜ä¸ã™ã‚‹æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒ@ƒCƒ‹–¼‚É•t—^‚·‚é“ú•t‚ÌƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“•¶š—ñ
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«åã«ä»˜ä¸ã™ã‚‹æ—¥ä»˜ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—
      */
     public String getDatePattern();
 }

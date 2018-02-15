@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link MessageReceiverListenActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MessageReceiverListenActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  *
  * @author Y. Nakashima
  * @see MessageReceiverListenActionService
@@ -43,44 +43,44 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface JMSMessageReceiverListenActionServiceMBean extends ServiceBaseMBean{
 
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageReceiverƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MessageReceiverã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
 
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageReceiverƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return MessageReceiverã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
 
     /**
-     * {@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSMessageConsumerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSMessageConsumerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSMessageConsumerFactoryServiceName(ServiceName name);
 
     /**
-     * {@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSMessageConsumerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSMessageConsumerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSMessageConsumerFactoryServiceName();
 
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
 
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

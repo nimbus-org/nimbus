@@ -66,7 +66,7 @@ public class CharacterArrayEditorTest extends TestCase{
         editor.setAsText("\u3042");
         Object val = editor.getValue();
         assertEquals(1, Array.getLength(val));
-        assertEquals(new Character('Ç†'), Array.get(val, 0));
+        assertEquals(new Character('„ÅÇ'), Array.get(val, 0));
     }
     
     public void testSetAsText5() throws Exception {

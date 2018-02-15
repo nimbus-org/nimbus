@@ -56,11 +56,11 @@ import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒŠƒ‚[ƒgŒÄ‚Ño‚µƒT[ƒoƒT[ƒrƒXB<p>
- * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éB<br>
- * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ÍAƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‹@”\‚âAÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ•û–@‚ğƒJƒXƒ^ƒ}ƒCƒY‚·‚é‹@”\‚ğ‚ÂB<br>
- * ÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ‚ğs‚¤{@link Invoker}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒX‚ÍA{@link MethodReflectionCallInvokerService}‚ÅAŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Ì{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}‚Åæ“¾‚µ‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<br>
- * InvocationContext.getTargetObject()‚ÅƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link #setRemoteServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚µãƒ¼ãƒã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã€‚<br>
+ * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€æ©Ÿèƒ½ã‚„ã€å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—æ–¹æ³•ã‚’ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
+ * å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—ã‚’è¡Œã†{@link Invoker}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã€{@link MethodReflectionCallInvokerService}ã§ã€å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}ã§å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+ * InvocationContext.getTargetObject()ã§ã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„å ´åˆã¯ã€{@link #setRemoteServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<br>
  *
  * @author M.Takata
  */
@@ -93,29 +93,29 @@ public class RemoteServiceServerService extends ServiceBase
     private ServiceName externalizerServiceName;
     private Externalizer externalizer;
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRemoteServiceName(ServiceName name){
         remoteServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getRemoteServiceName(){
         return remoteServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setInterceptorChainListServiceName(ServiceName name){
         interceptorChainListServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getInterceptorChainListServiceName(){
         return interceptorChainListServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setInvokerServiceName(ServiceName name){
         invokerServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getInvokerServiceName(){
         return invokerServiceName;
     }
@@ -129,94 +129,94 @@ public class RemoteServiceServerService extends ServiceBase
         return interceptorChainFactoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setJndiName(String name){
         jndiName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public String getJndiName(){
         return jndiName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setJndiRepositoryServiceName(ServiceName name){
         jndiRepositoryServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getJndiRepositoryServiceName(){
         return jndiRepositoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRMIPort(int port){
         rmiPort = port;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public int getRMIPort(){
         return rmiPort;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setClusterOptionKey(String key){
         clusterOptionKey = key;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public String getClusterOptionKey(){
         return clusterOptionKey;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setClusterJoin(boolean isJoin){
         isClusterJoin = isJoin;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public boolean isClusterJoin(){
         return isClusterJoin;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setResourceUsageServiceName(ServiceName name){
         resourceUsageServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getResourceUsageServiceName(){
         return resourceUsageServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRMIClientSocketFactoryServiceName(ServiceName name){
         clientSocketFactoryServiceName = name;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getRMIClientSocketFactoryServiceName(){
         return clientSocketFactoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRMIServerSocketFactoryServiceName(ServiceName name){
         serverSocketFactoryServiceName = name;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getRMIServerSocketFactoryServiceName(){
         return serverSocketFactoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         externalizerServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         return externalizerServiceName;
     }
@@ -238,9 +238,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(resourceUsage == null && resourceUsageServiceName != null){
@@ -345,9 +345,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(defaultInvoker != null){
@@ -371,9 +371,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         if(defaultInvoker != null){
@@ -383,9 +383,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * {@link RemoteServerInvoker}À‘•ƒNƒ‰ƒXB<p>
-     * ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgA‚Ü‚½‚ÍA{@link RemoteServiceServerService#getRemoteServiceName()}‚ÅAŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚ğ“Á’è‚µ‚ÄAƒ[ƒJƒ‹‚Ì{@link ServiceManager}‚©‚çŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚ğæ“¾‚µ‚ÄAŒÄ‚Ño‚·B<br>
-     * ‚Ü‚½AƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‹@”\‚âAÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ•û–@‚ğƒJƒXƒ^ƒ}ƒCƒY‚·‚é‹@”\‚ğ‚ÂB<br>
+     * {@link RemoteServerInvoker}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+     * å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€ã¾ãŸã¯ã€{@link RemoteServiceServerService#getRemoteServiceName()}ã§ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç‰¹å®šã—ã¦ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®{@link ServiceManager}ã‹ã‚‰å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã€å‘¼ã³å‡ºã™ã€‚<br>
+     * ã¾ãŸã€ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€æ©Ÿèƒ½ã‚„ã€å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—æ–¹æ³•ã‚’ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
      *
      * @author M.Takata
      */
@@ -405,15 +405,15 @@ public class RemoteServiceServerService extends ServiceBase
         private Externalizer externalizer;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param interceptorChainFactory {@link InterceptorChainFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param remoteServiceName ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param port RMIƒ|[ƒg”Ô†
+         * @param interceptorChainFactory {@link InterceptorChainFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param remoteServiceName ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param port RMIãƒãƒ¼ãƒˆç•ªå·
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
          * @param log Logger
-         * @exception java.rmi.RemoteException ƒIƒuƒWƒFƒNƒg‚ÌƒGƒNƒXƒ|[ƒg‚ª¸”s‚µ‚½ê‡
+         * @exception java.rmi.RemoteException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆãŒå¤±æ•—ã—ãŸå ´åˆ
          */
         public RemoteServerInvokerImpl(
             InterceptorChainFactory interceptorChainFactory,
@@ -437,17 +437,17 @@ public class RemoteServiceServerService extends ServiceBase
         }
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param interceptorChainListServiceName {@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param invokerServiceName {@link Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param defaultInvoker ƒfƒtƒHƒ‹ƒg‚Ì{@link Invoker}ƒT[ƒrƒX
-         * @param remoteServiceName ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param port RMIƒ|[ƒg”Ô†
+         * @param interceptorChainListServiceName {@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param invokerServiceName {@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param defaultInvoker ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹
+         * @param remoteServiceName ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param port RMIãƒãƒ¼ãƒˆç•ªå·
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
          * @param log Logger
-         * @exception java.rmi.RemoteException ƒIƒuƒWƒFƒNƒg‚ÌƒGƒNƒXƒ|[ƒg‚ª¸”s‚µ‚½ê‡
+         * @exception java.rmi.RemoteException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆãŒå¤±æ•—ã—ãŸå ´åˆ
          */
         public RemoteServerInvokerImpl(
             ServiceName interceptorChainListServiceName,
@@ -473,14 +473,14 @@ public class RemoteServiceServerService extends ServiceBase
         }
         
         /**
-         * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<p>
-         * ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Ì{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}‚Åæ“¾‚µ‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğƒ[ƒJƒ‹‚Ì{@link ServiceManager}‚©‚çæ“¾‚µ‚ÄA{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}‚ÅAŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éB<br>
-         * InvocationContext.getTargetObject()‚ÅƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link RemoteServiceServerService#setRemoteServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğæ“¾‚µ‚ÄAŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éB<br>
-         * ‚»‚ÌŒãAƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Åw’è‚³‚ê‚½{@link InterceptorChainList}‚Æ{@link Invoker}‚ğ‚Á‚½A{@link InterceptorChain}‚ğ¶¬‚µ‚ÄAŒÄ‚Ño‚·B<br>
+         * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+         * å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}ã§å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã®{@link ServiceManager}ã‹ã‚‰å–å¾—ã—ã¦ã€{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}ã§ã€å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã€‚<br>
+         * InvocationContext.getTargetObject()ã§ã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„å ´åˆã¯ã€{@link RemoteServiceServerService#setRemoteServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã€å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã€‚<br>
+         * ãã®å¾Œã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã¨{@link Invoker}ã‚’æŒã£ãŸã€{@link InterceptorChain}ã‚’ç”Ÿæˆã—ã¦ã€å‘¼ã³å‡ºã™ã€‚<br>
          * 
-         * @param context ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg
-         * @return ƒT[ƒrƒX‚ÌŒÄ‚Ño‚µŒ‹‰Ê
-         * @exception Exception ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ‚É¸”s‚µ‚½ê‡
+         * @param context å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @return ã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—çµæœ
+         * @exception Exception ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object invoke(InvocationContext context) throws Exception{
             
@@ -620,7 +620,7 @@ public class RemoteServiceServerService extends ServiceBase
             this.externalizer = externalizer;
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Object invoke(InvocationContext context) throws Throwable{
             Object[] params = null;
             try{
@@ -651,7 +651,7 @@ public class RemoteServiceServerService extends ServiceBase
             }
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public boolean isAlive(){
             try{
                 return serverInvoker.isAlive(null);
@@ -664,27 +664,27 @@ public class RemoteServiceServerService extends ServiceBase
             }
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void addKeepAliveListener(KeepAliveListener listener){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void removeKeepAliveListener(KeepAliveListener listener){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void clearKeepAliveListener(){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Object getHostInfo() {
             return serverAddress;
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Comparable getResourceUsage(){
             try{
                 return serverInvoker.getResourceUsage();

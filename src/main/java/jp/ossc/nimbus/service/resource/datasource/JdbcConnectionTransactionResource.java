@@ -33,12 +33,12 @@ package jp.ossc.nimbus.service.resource.datasource;
 
 import jp.ossc.nimbus.service.resource.TransactionResource;
 import java.sql.*;
-// ÉCÉìÉ|Å[Ég
+// „Ç§„É≥„Éù„Éº„Éà
 //
 /**
  *  
  * @author   nakano
- * @version  1.00 çÏê¨: 2003/11/30 -Å@H.Nakano
+ * @version  1.00 ‰ΩúÊàê: 2003/11/30 -„ÄÄH.Nakano
  */
 public class JdbcConnectionTransactionResource
 	implements TransactionResource {
@@ -46,7 +46,7 @@ public class JdbcConnectionTransactionResource
 	public	JdbcConnectionTransactionResource(Connection con){
 		this.mCon = con ;
 	}
-	/* (îÒ Javadoc)
+	/* (Èùû Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.TransactionResource#commit()
 	 */
 	public void commit() throws Exception {
@@ -56,7 +56,7 @@ public class JdbcConnectionTransactionResource
 			}
 		}
 	}
-	/* (îÒ Javadoc)
+	/* (Èùû Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.TransactionResource#rollback()
 	 */
 	public void rollback() throws Exception {
@@ -64,7 +64,7 @@ public class JdbcConnectionTransactionResource
 			this.mCon.rollback() ;
 		}
 	}
-	/* (îÒ Javadoc)
+	/* (Èùû Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.TransactionResource#close()
 	 */
 	public void close() throws Exception {
@@ -78,7 +78,7 @@ public class JdbcConnectionTransactionResource
 			}
 		}
 	}
-	/* (îÒ Javadoc)
+	/* (Èùû Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.TransactionResource#getObject()
 	 */
 	public Object getObject() {

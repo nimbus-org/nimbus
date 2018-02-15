@@ -2,12 +2,12 @@
 // Copyright (C) 2002-2005 by Nomura Research Institute,Ltd.  All Rights Reserved.
 //
 /*****************************************************************************/
-/** XV—š—ğ																**/
+/** æ›´æ–°å±¥æ­´																**/
 /** 																		**/
 /*****************************************************************************/
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.msgresource;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.lang.*;
 import javax.jms.*;
 import javax.jms.QueueSession;
@@ -17,34 +17,34 @@ import jp.ossc.nimbus.service.byteconvert.*;
 import jp.ossc.nimbus.util.*;
 
 /**
- *	TextƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒg
+ *	Textãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/06| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/06ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class TextMessageFormat extends CommonMessageFormat
 	implements MessageFormat, MessageResourceDefine {
     
-    //ƒƒ“ƒo•Ï”
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
 	private String mNewLineDefinition = "\\n";
 	//private MessageInput mMessageInput = null;
-	/** “d•¶ƒyƒCƒ[ƒh‘¦’lî•ñ */
+	/** é›»æ–‡ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰å³å€¤æƒ…å ± */
 	private String mConstPayloadStr = null;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public TextMessageFormat(ByteConverter converter){
 		super(converter);
 	}
 
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ª•Û‚µ‚Ä‚¢‚é“à—e‚ğString‰»‚·‚éB
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒä¿æŒã—ã¦ã„ã‚‹å†…å®¹ã‚’StringåŒ–ã™ã‚‹ã€‚
 	 */
 	public String marshal(Message msg) {
 		if(!(msg instanceof TextMessage)){
 			return null;
 		}
-		//ƒvƒƒpƒeƒB•”
+		//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨
 		StringBuilder ret = new StringBuilder("[property]");
 		ret.append(dumpProperties(msg));
 		ret.append("[payload]");
@@ -59,7 +59,7 @@ public class TextMessageFormat extends CommonMessageFormat
 		return ret.toString();
 	}
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ğ¶¬‚·‚éB
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ã€‚
 	 */
 	public Message unMarshal(QueueSession session) {
 		TextMessage textMsg = null;
@@ -81,7 +81,7 @@ public class TextMessageFormat extends CommonMessageFormat
 		if((mConstPayloadStr != null) && (recordStr != null)){
 			recordStr = mConstPayloadStr + recordStr;
 		}
-		//‰üs•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚ê‚ÎA‰üsƒR[ƒh‚É’u‚«Š·‚¦‚éB
+		//æ”¹è¡Œæ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚Œã°ã€æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã«ç½®ãæ›ãˆã‚‹ã€‚
 		String lineSep = System.getProperty("line.separator");
 		String payloadStr = StringOperator.replaceString(recordStr,mNewLineDefinition,lineSep);
 		setPayload(textMsg,payloadStr);
@@ -102,25 +102,25 @@ public class TextMessageFormat extends CommonMessageFormat
 	}
 	 
 	 protected void sendPayloadParse(Element elem,boolean fileSpecifiedFlag) {
-	 	//ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ÉƒyƒCƒ[ƒh‚ğ‹Lq‚·‚é‚Æ‚«‚ÌA‰üs•¶š—ñ’è‹`‚ğ’T‚·
+	 	//ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚’è¨˜è¿°ã™ã‚‹ã¨ãã®ã€æ”¹è¡Œæ–‡å­—åˆ—å®šç¾©ã‚’æ¢ã™
 	 	NodeList newLineDefs = elem.getElementsByTagName("NEWLINEDEF_TAG_NAME");
 	 	if(newLineDefs.getLength() > 1){
 			throw new ServiceException("MESSAGERESOURCEFACTORY103","<" +NEWLINEDEF_TAG_NAME + ">" + 
 										"is can be exists only one.");
 	 	}
-	 	//‰üs•¶š—ñ’è‹`‚ª‚ ‚ê‚ÎA1‰ñ‚¾‚¯‚±‚Ìƒ‹[ƒv‚ª‰ñ‚éB
+	 	//æ”¹è¡Œæ–‡å­—åˆ—å®šç¾©ãŒã‚ã‚Œã°ã€1å›ã ã‘ã“ã®ãƒ«ãƒ¼ãƒ—ãŒå›ã‚‹ã€‚
 	 	for(int rCnt=0;rCnt<newLineDefs.getLength();rCnt++){
 	 		Element newLineDef = (Element)newLineDefs.item(rCnt);
 	 		mNewLineDefinition = MessageResourceUtil.getValue(newLineDef);
 	 	}
 		NodeList list = elem.getElementsByTagName(PAYLOAD_TAG_NAME);
 		if (list.getLength() > 1){
-			//ƒyƒCƒ[ƒhƒ^ƒO‚ª•¡”w’è‚³‚ê‚Ä‚¢‚½‚çException”­¶
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚¿ã‚°ãŒè¤‡æ•°æŒ‡å®šã•ã‚Œã¦ã„ãŸã‚‰Exceptionç™ºç”Ÿ
 			throw new ServiceException("MESSAGERESOURCEFACTORY102","<" +PAYLOAD_TAG_NAME + ">" + 
 										"is can be exists only one.");
 		}
 		for(int rCnt=0;rCnt<list.getLength();rCnt++){
-			//ƒyƒCƒ[ƒhƒ^ƒO‚ª‘¶İ‚·‚éê‡A‚±‚Ìƒ‹[ƒv‚Í1‰ñ‚¾‚¯Às‚³‚ê‚éB
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã‚¿ã‚°ãŒå­˜åœ¨ã™ã‚‹å ´åˆã€ã“ã®ãƒ«ãƒ¼ãƒ—ã¯1å›ã ã‘å®Ÿè¡Œã•ã‚Œã‚‹ã€‚
 			Element payLoad = (Element)list.item(rCnt);
 			NodeList payLoadItems = payLoad.getElementsByTagName(PAYLOAD_ITEM);
 			if (payLoadItems.getLength() > 1){
@@ -128,16 +128,16 @@ public class TextMessageFormat extends CommonMessageFormat
 										   "is can be exists only one.");
 			}
 			for(int rCount=0;rCount<payLoadItems.getLength();rCount++){
-				//ƒAƒCƒeƒ€ƒ^ƒO‚ª‘¶İ‚·‚éê‡A‚±‚Ìƒ‹[ƒv‚Í1‰ñ‚¾‚¯Às‚³‚ê‚éB
+				//ã‚¢ã‚¤ãƒ†ãƒ ã‚¿ã‚°ãŒå­˜åœ¨ã™ã‚‹å ´åˆã€ã“ã®ãƒ«ãƒ¼ãƒ—ã¯1å›ã ã‘å®Ÿè¡Œã•ã‚Œã‚‹ã€‚
 				Element payLoadItem = (Element)payLoadItems.item(rCount);
-				//’l‚ğæ“¾
+				//å€¤ã‚’å–å¾—
 				mConstPayloadStr = MessageResourceUtil.getValue(payLoadItem);
 			}
 		}
 	 }
 	 
 	 protected void recvPayloadParse(Element elem){
-	 	//TextMessage‚Ìê‡A•K—v‚È‚µBRecvDataƒGƒŒƒƒ“ƒg‚É‚È‚É‚©‹Lq‚³‚ê‚Ä‚¢‚Ä‚à–³‹‚³‚ê‚é
+	 	//TextMessageã®å ´åˆã€å¿…è¦ãªã—ã€‚RecvDataã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã«ãªã«ã‹è¨˜è¿°ã•ã‚Œã¦ã„ã¦ã‚‚ç„¡è¦–ã•ã‚Œã‚‹
 	 	; 	
 	 }
 	 

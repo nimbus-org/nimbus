@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ioccall;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link UnsynchFacadeCallerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link UnsynchFacadeCallerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

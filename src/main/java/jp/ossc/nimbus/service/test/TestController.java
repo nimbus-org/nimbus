@@ -34,255 +34,255 @@ package jp.ossc.nimbus.service.test;
 import java.io.File;
 
 /**
- * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰B<p>
+ * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã€‚<p>
  *
  * @author M.Ishida
  */
 public interface TestController extends TestEventListener {
 
     /**
-     * ƒeƒXƒgŒ‹‰Ê‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éÛ‚ÌƒŒƒXƒ|ƒ“ƒXƒ^ƒCƒv–³ˆ³k‚ğ¦‚·’è”B<p>
+     * ãƒ†ã‚¹ãƒˆçµæœã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹éš›ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¿ã‚¤ãƒ—ç„¡åœ§ç¸®ã‚’ç¤ºã™å®šæ•°ã€‚<p>
      */
     public static final int RESPONSE_FILE_TYPE_DEFAULT = 0;
 
     /**
-     * ƒeƒXƒgŒ‹‰Ê‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éÛ‚ÌƒŒƒXƒ|ƒ“ƒXƒ^ƒCƒvZIPˆ³k‚ğ¦‚·’è”B<p>
+     * ãƒ†ã‚¹ãƒˆçµæœã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹éš›ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¿ã‚¤ãƒ—ZIPåœ§ç¸®ã‚’ç¤ºã™å®šæ•°ã€‚<p>
      */
     public static final int RESPONSE_FILE_TYPE_ZIP = 1;
 
     /**
-     * ƒeƒXƒg‘ÎÛ‚Ì‚·‚×‚Ä‚Ì{@link jp.ossc.nimbus.service.test.TestScenarioGroup TestScenarioGroup}‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * ãƒ†ã‚¹ãƒˆå¯¾è±¡ã®ã™ã¹ã¦ã®{@link jp.ossc.nimbus.service.test.TestScenarioGroup TestScenarioGroup}ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return TestScenarioGroup‚Ì”z—ñ
-     * @throws Exception æ“¾—áŠO
+     * @return TestScenarioGroupã®é…åˆ—
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenarioGroup[] getScenarioGroups() throws Exception;
 
     /**
-     * ƒeƒXƒg‘ÎÛ‚Ì‚·‚×‚Ä‚ÌƒVƒiƒŠƒIƒOƒ‹[ƒvID‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * ãƒ†ã‚¹ãƒˆå¯¾è±¡ã®ã™ã¹ã¦ã®ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒVƒiƒŠƒIƒOƒ‹[ƒvID‚Ì”z—ñ
-     * @throws Exception æ“¾—áŠO
+     * @return ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã®é…åˆ—
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public String[] getScenarioGroupIds() throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ID‚Ì{@link jp.ossc.nimbus.service.test.TestScenarioGroup TestScenarioGroup}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸIDã®{@link jp.ossc.nimbus.service.test.TestScenarioGroup TestScenarioGroup}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
      * @return TestScenarioGroup
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenarioGroup getScenarioGroup(String scenarioGroupId) throws Exception;
 
     /**
-     * Œ»İÀs’†‚Ì{@link jp.ossc.nimbus.service.test.TestScenarioGroup TestScenarioGroup}‚ğæ“¾‚·‚éB
+     * ç¾åœ¨å®Ÿè¡Œä¸­ã®{@link jp.ossc.nimbus.service.test.TestScenarioGroup TestScenarioGroup}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
      * @return TestScenarioGroup
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenarioGroup getCurrentScenarioGroup() throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ID‚Ì{@link jp.ossc.nimbus.service.test.TestScenarioGroup.TestScenarioGroupResource TestScenarioGroupResource}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸIDã®{@link jp.ossc.nimbus.service.test.TestScenarioGroup.TestScenarioGroupResource TestScenarioGroupResource}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
      * @return TestScenarioGroupResource
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenarioGroup.TestScenarioGroupResource getTestScenarioGroupResource(String scenarioGroupId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ID‚Ì{@link jp.ossc.nimbus.service.test.TestScenarioGroup.Status Status}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸIDã®{@link jp.ossc.nimbus.service.test.TestScenarioGroup.Status Status}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
      * @return Status
      */
     public TestScenarioGroup.Status getTestScenarioGroupStatus(String scenarioGroupId);
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒv”z‰º‚Ì{@link jp.ossc.nimbus.service.test.TestScenario TestScenario}‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—é…ä¸‹ã®{@link jp.ossc.nimbus.service.test.TestScenario TestScenario}ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @return TestScenario‚Ì”z—ñ
-     * @throws Exception æ“¾—áŠO
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return TestScenarioã®é…åˆ—
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenario[] getScenarios(String scenarioGroupId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒv”z‰º‚ÌƒVƒiƒŠƒIID‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—é…ä¸‹ã®ã‚·ãƒŠãƒªã‚ªIDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @return ƒVƒiƒŠƒIID‚Ì”z—ñ
-     * @throws Exception æ“¾—áŠO
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚·ãƒŠãƒªã‚ªIDã®é…åˆ—
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public String[] getScenarioIds(String scenarioGroupId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIID‚Ì{@link jp.ossc.nimbus.service.test.TestScenario TestScenario}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã®{@link jp.ossc.nimbus.service.test.TestScenario TestScenario}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
      * @return TestScenario
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenario getScenario(String scenarioGroupId, String scenarioId) throws Exception;
 
     /**
-     * Œ»İÀs’†‚Ì{@link jp.ossc.nimbus.service.test.TestScenario TestScenario}‚ğæ“¾‚·‚éB
+     * ç¾åœ¨å®Ÿè¡Œä¸­ã®{@link jp.ossc.nimbus.service.test.TestScenario TestScenario}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
      * @return TestScenario
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenario getCurrentScenario() throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIID‚Ì{@link jp.ossc.nimbus.service.test.TestScenario.TestScenarioResource TestScenarioResource}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã®{@link jp.ossc.nimbus.service.test.TestScenario.TestScenarioResource TestScenarioResource}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
      * @return TestScenarioResource
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestScenario.TestScenarioResource getTestScenarioResource(String scenarioGroupId, String scenarioId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIID‚Ì{@link jp.ossc.nimbus.service.test.TestScenario.Status Status}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã®{@link jp.ossc.nimbus.service.test.TestScenario.Status Status}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
      * @return Status
      */
     public TestScenario.Status getTestScenarioStatus(String scenarioGroupId, String scenarioId);
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvAƒVƒiƒŠƒI”z‰º‚Ì{@link jp.ossc.nimbus.service.test.TestCase TestCase}‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€ã‚·ãƒŠãƒªã‚ªé…ä¸‹ã®{@link jp.ossc.nimbus.service.test.TestCase TestCase}ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @return TestCase‚Ì”z—ñ
-     * @throws Exception æ“¾—áŠO
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @return TestCaseã®é…åˆ—
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestCase[] getTestCases(String scenarioGroupId, String scenarioId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvAƒVƒiƒŠƒI”z‰º‚ÌƒeƒXƒgƒP[ƒXID‚Ì”z—ñ‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€ã‚·ãƒŠãƒªã‚ªé…ä¸‹ã®ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @return ƒeƒXƒgƒP[ƒXID‚Ì”z—ñ
-     * @throws Exception æ“¾—áŠO
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @return ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®é…åˆ—
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public String[] getTestCaseIds(String scenarioGroupId, String scenarioId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIIDAƒeƒXƒgƒP[ƒXID‚Ì{@link jp.ossc.nimbus.service.test.TestCase TestCase}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®{@link jp.ossc.nimbus.service.test.TestCase TestCase}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
      * @return TestCase
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestCase getTestCase(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception;
 
     /**
-     * Œ»İÀs’†‚Ì{@link jp.ossc.nimbus.service.test.TestCase TestCase}‚ğæ“¾‚·‚éB
+     * ç¾åœ¨å®Ÿè¡Œä¸­ã®{@link jp.ossc.nimbus.service.test.TestCase TestCase}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
      * @return TestCase
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestCase getCurrentTestCase() throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIIDAƒeƒXƒgƒP[ƒXID‚Ì{@link jp.ossc.nimbus.service.test.TestCase.TestCaseResource TestCaseResource}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®{@link jp.ossc.nimbus.service.test.TestCase.TestCaseResource TestCaseResource}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
      * @return TestCaseResource
-     * @throws Exception æ“¾—áŠO
+     * @throws Exception å–å¾—æ™‚ä¾‹å¤–
      */
     public TestCase.TestCaseResource getTestCaseResource(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIIDAƒeƒXƒgƒP[ƒXID‚Ì{@link jp.ossc.nimbus.service.test.TestCase.Status Status}‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®{@link jp.ossc.nimbus.service.test.TestCase.Status Status}ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
      * @return Status
      */
     public TestCase.Status getTestCaseStatus(String scenarioGroupId, String scenarioId, String testcaseId);
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIID‚ÌƒeƒXƒgŒ‹‰Ê‚ğw’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ‚Éƒ_ƒEƒ“ƒ[ƒh‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã®ãƒ†ã‚¹ãƒˆçµæœã‚’æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
      * <p>
      *
-     * @param dir ƒ_ƒEƒ“ƒ[ƒh‘ÎÛ‚ÌƒfƒBƒŒƒNƒgƒŠ
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param respnseFileType ƒŒƒXƒ|ƒ“ƒXƒ^ƒCƒv
-     * @return o—Íƒtƒ@ƒCƒ‹
-     * @throws Exception ƒ_ƒEƒ“ƒ[ƒh—áŠO
+     * @param dir ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param respnseFileType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¿ã‚¤ãƒ—
+     * @return å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
+     * @throws Exception ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ä¾‹å¤–
      */
     public File downloadScenarioResult(File dir, String scenarioGroupId, String scenarioId, int respnseFileType) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIIDAƒeƒXƒgƒP[ƒXID‚ÌƒeƒXƒgŒ‹‰Ê‚ğw’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ‚Éƒ_ƒEƒ“ƒ[ƒh‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®ãƒ†ã‚¹ãƒˆçµæœã‚’æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
      * <p>
      *
-     * @param dir ƒ_ƒEƒ“ƒ[ƒh‘ÎÛ‚ÌƒfƒBƒŒƒNƒgƒŠ
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
-     * @param respnseFileType ƒŒƒXƒ|ƒ“ƒXƒ^ƒCƒv
-     * @return o—Íƒtƒ@ƒCƒ‹
-     * @throws Exception ƒ_ƒEƒ“ƒ[ƒh—áŠO
+     * @param dir ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
+     * @param respnseFileType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¿ã‚¤ãƒ—
+     * @return å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«
+     * @throws Exception ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ä¾‹å¤–
      */
     public File downloadTestCaseResult(File dir, String scenarioGroupId, String scenarioId, String testcaseId, int respnseFileType) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvID‚ÌƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @throws Exception ƒ_ƒEƒ“ƒ[ƒh—áŠO
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @throws Exception ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ä¾‹å¤–
      */
     public void downloadTestScenarioGroupResource(String scenarioGroupId) throws Exception;
 
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒvIDAƒVƒiƒŠƒIID‚ÌƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã€ã‚·ãƒŠãƒªã‚ªIDã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
      * <p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @throws Exception ƒ_ƒEƒ“ƒ[ƒh—áŠO
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @throws Exception ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ä¾‹å¤–
      */
     public void downloadTestScenarioResource(String scenarioGroupId, String scenarioId) throws Exception;
 
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚Ìó‘Ô‚ğƒŠƒZƒbƒg‚·‚éB
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®çŠ¶æ…‹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚
      *
-     * @throws Exception ƒŠƒZƒbƒg‚Ì—áŠO
+     * @throws Exception ãƒªã‚»ãƒƒãƒˆæ™‚ã®ä¾‹å¤–
      */
     public void reset() throws Exception;
 

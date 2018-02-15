@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link ByteArrayJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ByteArrayJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ByteArrayJournalEditorService
@@ -41,31 +41,31 @@ public interface ByteArrayJournalEditorServiceMBean
  extends ImmutableJournalEditorServiceBaseMBean{
     
     /**
-     * 16i•¶š—ñ‚É•ÏŠ·‚·‚éƒ‚[ƒhB<p>
+     * 16é€²æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ãƒ¢ãƒ¼ãƒ‰ã€‚<p>
      */
     public static final String CONVERT_HEX = "HEX";
     
     /**
-     * 10i•¶š—ñ‚É•ÏŠ·‚·‚éƒ‚[ƒhB<p>
+     * 10é€²æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ãƒ¢ãƒ¼ãƒ‰ã€‚<p>
      */
     public static final String CONVERT_DECIMAL = "DECIMAL";
     
     /**
-     * 8i•¶š—ñ‚É•ÏŠ·‚·‚éƒ‚[ƒhB<p>
+     * 8é€²æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ãƒ¢ãƒ¼ãƒ‰ã€‚<p>
      */
     public static final String CONVERT_OCTAL = "OCTAL";
     
     /**
-     * ƒoƒCƒg’·•¶š—ñ‚É•ÏŠ·‚·‚éƒ‚[ƒhB<p>
+     * ãƒã‚¤ãƒˆé•·æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ãƒ¢ãƒ¼ãƒ‰ã€‚<p>
      */
     public static final String CONVERT_LENGTH = "LENGTH";
     
     /**
-     * •ÏŠ·ƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * 8iA10iA16iƒ‚[ƒh‹y‚ÑA•¶š—ñƒGƒ“ƒR[ƒh•ÏŠ·ƒ‚[ƒh‚ªw’è‚Å‚«‚éB<br>
-     * •¶š—ñƒGƒ“ƒR[ƒh•ÏŠ·‚ğw’è‚·‚éê‡‚ÍA•ÏŠ·‚·‚éƒGƒ“ƒR[ƒh‚ğA•ÏŠ·ƒ‚[ƒh‚Æ‚µ‚Äw’è‚·‚éB<br>
+     * å¤‰æ›ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * 8é€²ã€10é€²ã€16é€²ãƒ¢ãƒ¼ãƒ‰åŠã³ã€æ–‡å­—åˆ—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰å¤‰æ›ãƒ¢ãƒ¼ãƒ‰ãŒæŒ‡å®šã§ãã‚‹ã€‚<br>
+     * æ–‡å­—åˆ—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰å¤‰æ›ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€å¤‰æ›ã™ã‚‹ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’ã€å¤‰æ›ãƒ¢ãƒ¼ãƒ‰ã¨ã—ã¦æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param mode •ÏŠ·ƒ‚[ƒh
+     * @param mode å¤‰æ›ãƒ¢ãƒ¼ãƒ‰
      * @see #CONVERT_HEX
      * @see #CONVERT_DECIMAL
      * @see #CONVERT_OCTAL
@@ -74,9 +74,9 @@ public interface ByteArrayJournalEditorServiceMBean
     public void setConvertMode(String mode);
     
     /**
-     * •ÏŠ·ƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·ƒ‚[ƒh
+     * @return å¤‰æ›ãƒ¢ãƒ¼ãƒ‰
      */
     public String getConvertMode();
 }

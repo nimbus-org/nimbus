@@ -34,21 +34,21 @@ package jp.ossc.nimbus.beans;
 import java.beans.*;
 
 /**
- * charŒ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * •¶š—ñ‚ğcharŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * "${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
- * "${\t}"A"${\n}"A"${\r}"A"${\f}"‚ÍAƒGƒXƒP[ƒvƒV[ƒPƒ“ƒX‚Æ‚µ‚Ä’uŠ·‚³‚ê‚éB<br>
- * "0x"‚©‚çn‚Ü‚é•¶š—ñ‚ÍA16i•¶š‚Æ‚µ‚Ächar‚É•ÏŠ·‚³‚ê‚éB
- * "u"‚©‚çn‚Ü‚é•¶š—ñ‚ÍAƒ†ƒjƒR[ƒh•¶š‚Æ‚µ‚Ächar‚É•ÏŠ·‚³‚ê‚éB<br>
+ * charå‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * æ–‡å­—åˆ—ã‚’charå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * "${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * "${\t}"ã€"${\n}"ã€"${\r}"ã€"${\f}"ã¯ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã¨ã—ã¦ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * "0x"ã‹ã‚‰å§‹ã¾ã‚‹æ–‡å­—åˆ—ã¯ã€16é€²æ–‡å­—ã¨ã—ã¦charã«å¤‰æ›ã•ã‚Œã‚‹ã€‚
+ * "ï¿¥u"ã‹ã‚‰å§‹ã¾ã‚‹æ–‡å­—åˆ—ã¯ã€ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—ã¨ã—ã¦charã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;a<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;'a'<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -61,9 +61,9 @@ public class CharacterEditor extends PropertyEditorSupport
     private static final String UNICODE_PREFIX = "\\u";
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         String charStr = Utility.replaceSystemProperty(text);
@@ -90,9 +90,9 @@ public class CharacterEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         return String.valueOf(((Character)getValue()).charValue());

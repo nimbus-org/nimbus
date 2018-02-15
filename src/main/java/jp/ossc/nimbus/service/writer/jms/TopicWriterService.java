@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.writer.jms;
 import javax.jms.*;
 
 /**
- * JMS‚ÌTopic‚ÉMessage‚ğ‘‚«‚ŞMessageWriterƒT[ƒrƒXB<p>
- * JMS1.0‚Å‚ÍAQueueSender‚ÆTopicPublisher‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßATopicPublisher‚ğg‚Á‚ÄJMS‚Ö‚Ì‘‚«‚İ‚ğs‚¤B<br>
+ * JMSã®Topicã«Messageã‚’æ›¸ãè¾¼ã‚€MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * JMS1.0ã§ã¯ã€QueueSenderã¨TopicPublisherã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€TopicPublisherã‚’ä½¿ã£ã¦JMSã¸ã®æ›¸ãè¾¼ã¿ã‚’è¡Œã†ã€‚<br>
  *
  * @author M.Takata
  */

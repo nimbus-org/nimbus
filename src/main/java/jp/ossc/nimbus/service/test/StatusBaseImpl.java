@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test;
 import java.util.Date;
 
 /**
- * Šî’êƒXƒe[ƒ^ƒXƒNƒ‰ƒXB<p>
+ * åŸºåº•ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -45,18 +45,18 @@ public class StatusBaseImpl implements java.io.Serializable{
     private boolean result = true;
     
     /**
-     * w’è‚³‚ê‚½Àsƒ†[ƒU‚Å‚ÌƒXƒe[ƒ^ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ã§ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param userId Àsƒ†[ƒU
+     * @param userId å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶
      */
     public StatusBaseImpl(String userId) {
         this.userId = userId;
     }
     
     /**
-     * Àsƒ†[ƒUID‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param userId Àsƒ†[ƒUID
+     * @param userId å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ID
      */
     public void setUserId(String userId) {
         this.userId = userId;
@@ -67,9 +67,9 @@ public class StatusBaseImpl implements java.io.Serializable{
     }
     
     /**
-     * ÀsŠJn“ú‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œé–‹å§‹æ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param startTime ÀsŠJn“ú
+     * @param startTime å®Ÿè¡Œé–‹å§‹æ—¥æ™‚
      */
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
@@ -84,9 +84,9 @@ public class StatusBaseImpl implements java.io.Serializable{
     }
     
     /**
-     * ÀsŒ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œçµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param result ÀsŒ‹‰ÊBtrue‚Ìê‡A¬Œ÷Bfalse‚Ìê‡A¸”s
+     * @param result å®Ÿè¡Œçµæœã€‚trueã®å ´åˆã€æˆåŠŸã€‚falseã®å ´åˆã€å¤±æ•—
      */
     public void setResult(boolean result) {
         this.result = result;

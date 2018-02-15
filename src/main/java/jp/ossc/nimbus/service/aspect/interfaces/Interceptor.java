@@ -29,15 +29,15 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.interfaces;
 
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 //
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ƒ`ƒF[ƒ““à‚ÅÀs‚³‚ê‚éƒCƒ“ƒ^[ƒZƒvƒ^[©g‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒã‚§ãƒ¼ãƒ³å†…ã§å®Ÿè¡Œã•ã‚Œã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼è‡ªèº«ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,11 +45,11 @@ package jp.ossc.nimbus.service.aspect.interfaces;
  */
 public interface Interceptor{
 	/**
-	 * ƒ`ƒFƒCƒ“À‘•—pƒƒ\ƒbƒh<br>
-	 * À‘•‚·‚éê‡Aƒƒ\ƒbƒh“à‚Åƒ`ƒFƒCƒ“ƒƒ\ƒbƒh‚ğÀs‚·‚é•K—v‚ª‚ ‚éB<br>
-	 * @param inputObj			“ü—ÍƒIƒuƒWƒFƒNƒg
-	 * @param InterceptorChain	ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒIƒuƒWƒFƒNƒg
-	 * @return Object			EJBFacade•Ô‹p’l
+	 * ãƒã‚§ã‚¤ãƒ³å®Ÿè£…ç”¨ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 * å®Ÿè£…ã™ã‚‹å ´åˆã€ãƒ¡ã‚½ãƒƒãƒ‰å†…ã§ãƒã‚§ã‚¤ãƒ³ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+	 * @param inputObj			å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @param InterceptorChain	ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return Object			EJBFacadeè¿”å´å€¤
 	 * @exception InterceptorException		
 	 * @exception TargetCheckedException		
 	 * @exception	TargetUncheckedException

@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * �L���b�V���A�N�Z�X���X�i�B<p>
- * �L���b�V���I�u�W�F�N�g���A�N�Z�X���ꂽ�������m���郊�X�i�B<br>
- * ���̃��X�i��o�^����{@link CachedReference}��{@link CachedReference#get()}��A{@link CachedReference#get(Object)}�A{@link CachedReference#get(Object, boolean) CachedReference.get(obj, true)}�ŁA�L���b�V���I�u�W�F�N�g���A�N�Z�X�����ƁA{@link #accessed(CachedReference)}���Ăяo�����B<br>
+ * キャッシュアクセスリスナ。<p>
+ * キャッシュオブジェクトがアクセスされた事を検知するリスナ。<br>
+ * このリスナを登録した{@link CachedReference}の{@link CachedReference#get()}や、{@link CachedReference#get(Object)}、{@link CachedReference#get(Object, boolean) CachedReference.get(obj, true)}で、キャッシュオブジェクトがアクセスされると、{@link #accessed(CachedReference)}が呼び出される。<br>
  *
  * @author M.Takata
  */
 public interface CacheAccessListener{
     
     /**
-     * {@link CachedReference}�̃L���b�V���I�u�W�F�N�g���A�N�Z�X���ꂽ�ꍇ�ɌĂяo�����B<p>
-     * {@link CachedReference#get(Object)}��A{@link CachedReference#get(Object, boolean)}�̑�������true�ŌĂяo���ꂽ�ꍇ�ɁA{@link CachedReference#addCacheAccessListener(CacheAccessListener)}�œo�^���ꂽCacheAccessListener�́A���̃��\�b�h���Ăяo�����B<br>
+     * {@link CachedReference}のキャッシュオブジェクトがアクセスされた場合に呼び出される。<p>
+     * {@link CachedReference#get(Object)}や、{@link CachedReference#get(Object, boolean)}の第二引数がtrueで呼び出された場合に、{@link CachedReference#addCacheAccessListener(CacheAccessListener)}で登録されたCacheAccessListenerの、このメソッドが呼び出される。<br>
      *
-     * @param ref �A�N�Z�X���ꂽ�L���b�V���I�u�W�F�N�g�̃L���b�V���Q��
+     * @param ref アクセスされたキャッシュオブジェクトのキャッシュ参照
      */
     public void accessed(CachedReference ref);
 }

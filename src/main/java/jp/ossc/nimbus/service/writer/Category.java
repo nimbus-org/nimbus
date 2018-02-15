@@ -33,32 +33,32 @@
 package jp.ossc.nimbus.service.writer;
 
 /**
- * ƒJƒeƒSƒŠB<p>
- * o—Íæ‚ğ•ª—Ş‚·‚éƒJƒeƒSƒŠ‚ğ•\‚·ƒCƒ“ƒ^ƒtƒF[ƒXB<br>
+ * ã‚«ãƒ†ã‚´ãƒªã€‚<p>
+ * å‡ºåŠ›å…ˆã‚’åˆ†é¡ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚’è¡¨ã™ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface Category{
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©”»’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return —LŒø‚Èê‡‚Ítrue
+     * @return æœ‰åŠ¹ãªå ´åˆã¯true
      */
     public boolean isEnabled();
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©İ’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enable —LŒø‚Èê‡‚Ítrue
+     * @param enable æœ‰åŠ¹ãªå ´åˆã¯true
      */
     public void setEnabled(boolean enable);
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚ğA‚±‚ÌƒJƒeƒSƒŠ‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã‚’ã€ã“ã®ã‚«ãƒ†ã‚´ãƒªã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param elements WritableRecordFactory‚É“n‚·o—Í—v‘f
-     * @exception MessageWriteException o—Í‚É¸”s‚µ‚½ê‡
+     * @param elements WritableRecordFactoryã«æ¸¡ã™å‡ºåŠ›è¦ç´ 
+     * @exception MessageWriteException å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void write(Object elements) throws MessageWriteException;
 }

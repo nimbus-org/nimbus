@@ -29,17 +29,17 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.journal.editor;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.io.Serializable;
 import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒIƒuƒWƒFƒNƒg‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * “n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ğŒ©‚ÄA{@link EditorFinder}‚Éİ’è‚³‚ê‚½AŒ^‚ÆƒGƒfƒBƒ^‚Ìƒ}ƒbƒsƒ“ƒO‚ğg‚Á‚ÄAˆ—‚ğ‘¼‚ÌƒGƒfƒBƒ^‚ÉˆÏ÷‚µ‚ÄA‚»‚ÌŒã{@link Object#toString()}‚ğŒÄ‚ñ‚Å•¶š—ñ‚É‚µ‚ÄAƒWƒƒ[ƒiƒ‹‚ÌƒL[‚Æ•R•t‚¯‚ÄiƒL[=’l‚ÌŒ`®‚Åjo—Í‚·‚éB‚Ü‚½A“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ª”z—ñŒ^‚Ìê‡AŠe—v‘f‚É‘Î‚µ‚Ä“¯—l‚Ìˆ—‚ğs‚¢A','‚Å‹æØ‚Á‚½•¶š—ñ‚É˜AŒ‹‚·‚éB<br>
- * EditorFinder‚ÅƒGƒfƒBƒ^‚ğŒŸõ‚µ‚Ä‚àŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA{@link Object#toString()}‚ğŒÄ‚ñ‚Å•¶š—ñ‚É‚·‚éB<br>
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ã‚’è¦‹ã¦ã€{@link EditorFinder}ã«è¨­å®šã•ã‚ŒãŸã€å‹ã¨ã‚¨ãƒ‡ã‚£ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’ä½¿ã£ã¦ã€å‡¦ç†ã‚’ä»–ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«å§”è­²ã—ã¦ã€ãã®å¾Œ{@link Object#toString()}ã‚’å‘¼ã‚“ã§æ–‡å­—åˆ—ã«ã—ã¦ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼ã¨ç´ä»˜ã‘ã¦ï¼ˆã‚­ãƒ¼=å€¤ã®å½¢å¼ã§ï¼‰å‡ºåŠ›ã™ã‚‹ã€‚ã¾ãŸã€æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ãŒé…åˆ—å‹ã®å ´åˆã€å„è¦ç´ ã«å¯¾ã—ã¦åŒæ§˜ã®å‡¦ç†ã‚’è¡Œã„ã€','ã§åŒºåˆ‡ã£ãŸæ–‡å­—åˆ—ã«é€£çµã™ã‚‹ã€‚<br>
+ * EditorFinderã§ã‚¨ãƒ‡ã‚£ã‚¿ã‚’æ¤œç´¢ã—ã¦ã‚‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€{@link Object#toString()}ã‚’å‘¼ã‚“ã§æ–‡å­—åˆ—ã«ã™ã‚‹ã€‚<br>
  * 
  * @author H.Nakano
  */

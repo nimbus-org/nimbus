@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.rmi.RemoteException;
 
 import javax.ejb.CreateException;
@@ -61,26 +61,26 @@ import jp.ossc.nimbus.service.aop.InterceptorChain;
 import jp.ossc.nimbus.service.aop.InvocationContext;
 import jp.ossc.nimbus.service.log.Logger;
 /**
- * EJBÀsƒRƒ}ƒ“ƒhƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * EJBå®Ÿè¡Œã‚³ãƒãƒ³ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public abstract class EJBDriveDispatcher {
-	/** ƒZƒbƒVƒ‡ƒ“ƒRƒ“ƒeƒLƒXƒg */
+	/** ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ */
 	private SessionContext mContext = null ;
-	/** UnitOfWorkHomeƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** UnitOfWorkHomeã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private SLSBUnitOfWorkHomeLocal mUnitOfWorkInvokerHome = null;
-	/** UnitOfWorkƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** UnitOfWorkãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private SLSBUnitOfWorkLocal mUnitOfWorkInvokerRemote = null ;
-	/** CommandHOMEƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** CommandHOMEã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private SLSBCommandHomeLocal mCommandInvokerHome = null ;
-	/** Commandƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** Commandãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private SLSBCommandLocal mCommandInvokerRemote = null ;
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^[ƒ`ƒFƒCƒ“Àsƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒã‚§ã‚¤ãƒ³å®Ÿè¡Œãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ */
 	private InterceptorChainInvokerFactory mFactory = null; 
 	private InterceptorChainFactory chainFactory = null; 
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^[ƒL[ */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã‚­ãƒ¼ */
 	private String mInterceptorKey = null ;
 	/** Logger*/
 	private Logger mLogger = null ;
@@ -89,7 +89,7 @@ public abstract class EJBDriveDispatcher {
 	protected final String IOC__00003 = "IOC__00003" ;
 	
 	/**
-	 * EJBƒ[ƒJƒ‹‚ğæ“¾‚·‚éB
+	 * EJBãƒ­ãƒ¼ã‚«ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚
 	 * @param unitOfWorkKey
 	 * @param commandKey
 	 * @param intercetorFactrySvcName
@@ -117,13 +117,13 @@ public abstract class EJBDriveDispatcher {
 			ServiceName serviceName = UtilTool.convertServiceName(value);
 			this.mLogger = (Logger)ServiceManagerFactory.getService(serviceName);
 		}
-		// ƒ†ƒjƒbƒgƒIƒuƒ[ƒNLocalæ“¾
+		// ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯Localå–å¾—
 		value = (String)ctx.lookup(unitOfWorkKey);
 		mUnitOfWorkInvokerHome = (SLSBUnitOfWorkHomeLocal)ctx.lookup(value) ;
-		// ƒRƒ}ƒ“ƒhLocalæ“¾
+		// ã‚³ãƒãƒ³ãƒ‰Localå–å¾—
 		value = (String)ctx.lookup(commandKey);
 		mCommandInvokerHome = (SLSBCommandHomeLocal)ctx.lookup(value) ;
-		// ƒCƒ“ƒ^[ƒZƒvƒ^[ƒtƒ@ƒNƒgƒŠæ“¾
+		// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªå–å¾—
 		value = (String)ctx.lookup(intercetorFactrySvcName);
 		if(value == null || value.length()==0){
 			mFactory = null ;
@@ -145,17 +145,17 @@ public abstract class EJBDriveDispatcher {
 		}
 	}
 	/**
-	 * Logger‚ğo—Í‚·‚é
+	 * Loggerã‚’å‡ºåŠ›ã™ã‚‹
 	 * @return Logger
 	 */
 	protected Logger getLogger(){
 		return this.mLogger ;
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ’Ê‚µ‚ÄUnitOfWork‚ğÀs‚·‚éB
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^‚ªw’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î’¼ÚUnitOfWork‚ğÀs‚·‚éB
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é€šã—ã¦UnitOfWorkã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ç›´æ¥UnitOfWorkã‚’å®Ÿè¡Œã™ã‚‹ã€‚
 	 * @param input
-	 * @return o—ÍƒIƒuƒWƒFƒNƒg
+	 * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws InterceptorException
 	 * @throws TargetCheckedException
 	 * @throws TargetUncheckedException
@@ -206,15 +206,15 @@ public abstract class EJBDriveDispatcher {
 		return ret;
 	}
 	/**
-	 * ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚ğÀs‚·‚é
-	 * @param uow		“ü—Íƒ†ƒjƒbƒgƒIƒuƒ[ƒN
-	 * @return	o—Íƒ†ƒjƒbƒgƒIƒuƒ[ƒN
+	 * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚’å®Ÿè¡Œã™ã‚‹
+	 * @param uow		å…¥åŠ›ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯
+	 * @return	å‡ºåŠ›ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯
 	 * @throws Throwable
 	 */
 	public  UnitOfWork invokeUnitOfWorkBase(UnitOfWork uow) throws Exception  {
 		UnitOfWork retUow = FacadeValueAccess.createCommandsValue() ;
 		boolean cmdErrFlg = false;
-		//”z—ñ•ªÀs‚·‚é
+		//é…åˆ—åˆ†å®Ÿè¡Œã™ã‚‹
 		if(this.getLogger() != null){this.getLogger().write(IOC__00002) ;}
 		for(int rcnt= 0 ;rcnt < uow.size();rcnt++){
 			CommandBase tmp = uow.getCommand(rcnt) ;

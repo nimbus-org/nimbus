@@ -55,8 +55,8 @@ import javax.jms.MessageConsumer;
 import javax.jms.Session;
 
 /**
- * {@link javax.jms.MessageConsumer}‚©‚ç{@link java.jms.Message}‚ğóM‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link javax.jms.MessageConsumer}ã‹ã‚‰{@link java.jms.Message}ã‚’å—ä¿¡ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  *
  * @author Y.Nakashima
  */
@@ -142,20 +142,20 @@ public class JMSMessageReceiverListenActionService extends ServiceBase implement
     }
 
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅA{@link javax.jms.MessageConsumer}‚É{@link MessageListener}‚ğ“o˜^‚µ‚ÄAóM“o˜^‚ğs‚¤B<p>
-     * {@link javax.jms.Session}‚Íexecute‚ªŒÄ‚Î‚ê‚é‚½‚Ñ‚É¶¬‚³‚êA{@link MessageListener#close()}‚ªŒÄ‚Î‚ê‚é‚Æclose‚³‚ê‚éB
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€{@link javax.jms.MessageConsumer}ã«{@link MessageListener}ã‚’ç™»éŒ²ã—ã¦ã€å—ä¿¡ç™»éŒ²ã‚’è¡Œã†ã€‚<p>
+     * {@link javax.jms.Session}ã¯executeãŒå‘¼ã°ã‚Œã‚‹ãŸã³ã«ç”Ÿæˆã•ã‚Œã€{@link MessageListener#close()}ãŒå‘¼ã°ã‚Œã‚‹ã¨closeã•ã‚Œã‚‹ã€‚
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * destinationName
      * messageSelector
      * </pre>
-     * destinationName‚ÍA{@link javax.jms.MessageConsumer}‚ÉóM“o˜^‚·‚é”zMæ‚ğw’è‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍnullB<br>
-     * messageSelector‚ÍA{@link javax.jms.MessageConsumer}‚Éselector‚ğw’è‚µAóM‘I‘ğ‚·‚éBƒfƒtƒHƒ‹ƒgnullB<br>
+     * destinationNameã¯ã€{@link javax.jms.MessageConsumer}ã«å—ä¿¡ç™»éŒ²ã™ã‚‹é…ä¿¡å…ˆã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯nullã€‚<br>
+     * messageSelectorã¯ã€{@link javax.jms.MessageConsumer}ã«selectorã‚’æŒ‡å®šã—ã€å—ä¿¡é¸æŠã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆnullã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return “o˜^‚µ‚½{@link MessageListener}
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ç™»éŒ²ã—ãŸ{@link MessageListener}
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
@@ -183,7 +183,7 @@ public class JMSMessageReceiverListenActionService extends ServiceBase implement
             destination = jMSMessageConsumerFactory.getDestination();
         }
 
-        // ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ªÀs‚³‚ê‚é‚½‚Ñ‚Ésession‚ğ¶¬‚µAlistener‚ªclose‚·‚é‚Æsession‚àclose‚·‚é
+        // ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå®Ÿè¡Œã•ã‚Œã‚‹ãŸã³ã«sessionã‚’ç”Ÿæˆã—ã€listenerãŒcloseã™ã‚‹ã¨sessionã‚‚closeã™ã‚‹
         session = jMSMessageConsumerFactory.getSessionFactory().getSession();
 
         if(session == null) {

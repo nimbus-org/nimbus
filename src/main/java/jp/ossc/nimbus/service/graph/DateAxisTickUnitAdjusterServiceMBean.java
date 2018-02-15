@@ -34,22 +34,22 @@ package jp.ossc.nimbus.service.graph;
 import java.text.DateFormat;
 
 /**
- * {@link DateAxisTickUnitAdjusterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DateAxisTickUnitAdjusterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  */
 public interface DateAxisTickUnitAdjusterServiceMBean
     extends AbstractTickUnitAdjusterServiceMBean {
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param format “ú•tƒtƒH[ƒ}ƒbƒg
+     * @param format æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setFormat(DateFormat format);
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return “ú•tƒtƒH[ƒ}ƒbƒg
+     * @return æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public DateFormat getFormat();
     

@@ -32,17 +32,17 @@
 package jp.ossc.nimbus.core;
 
 /**
- * {@link Service}�C���^�t�F�[�X��implements���Ă��Ȃ��N���X���A�T�[�r�X�Ƃ��ēo�^���邽�߂Ƀ��b�v����v���L�V�N���X��implements���ׂ��C���^�t�F�[�X�ł��B<p>
- * {@link ServiceManager}�ɂ́A�v���L�V�N���X�ɕ��œo�^���܂����A���[�U����`�����T�[�r�X�C���^�t�F�[�X���g�p���邽�߂ɂ́A���b�v���ꂽ���g�̃N���X��񋟂���K�v������܂��B���̃C���^�t�F�[�X�ł́A���̃��b�v���ꂽ�N���X�̃C���X�^���X�����o�����߂̃��\�b�h���`���Ă��܂��B<br>
+ * {@link Service}インタフェースをimplementsしていないクラスを、サービスとして登録するためにラップするプロキシクラスがimplementsすべきインタフェースです。<p>
+ * {@link ServiceManager}には、プロキシクラスに包んで登録しますが、ユーザが定義したサービスインタフェースを使用するためには、ラップされた中身のクラスを提供する必要があります。このインタフェースでは、そのラップされたクラスのインスタンスを取り出すためのメソッドを定義しています。<br>
  * 
  * @author M.Takata
  */
 public interface ServiceProxy{
     
     /**
-     * ���b�v���ꂽ���g�̃I�u�W�F�N�g���擾���܂��B<p>
+     * ラップされた中身のオブジェクトを取得します。<p>
      *
-     * @return ���b�v���ꂽ�I�u�W�F�N�g
+     * @return ラップされたオブジェクト
      */
     public Object getTarget();
 }

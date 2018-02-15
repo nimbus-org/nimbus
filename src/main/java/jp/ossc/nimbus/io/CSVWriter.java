@@ -39,7 +39,7 @@ import jp.ossc.nimbus.util.converter.StringConverter;
 import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
- * CSVŒ`®‚ÌWriterƒNƒ‰ƒXB<p>
+ * CSVå½¢å¼ã®Writerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.CSVWriter;
@@ -63,24 +63,24 @@ import jp.ossc.nimbus.util.converter.ConvertException;
 public class CSVWriter extends BufferedWriter implements StringConverter{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒZƒpƒŒ[ƒ^B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã€‚<p>
      */
     public static final char DEFAULT_SEPARATOR = ',';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶šB<p>
-     * ƒGƒXƒP[ƒv•¶š‚ğƒGƒXƒP[ƒv‚µ‚½‚¢ê‡‚ÍAƒGƒXƒP[ƒv•¶š‚ğd‚Ë‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã€‚<p>
+     * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãŸã„å ´åˆã¯ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’é‡ã­ã‚‹ã€‚<br>
      */
     public static final char DEFAULT_SEPARATOR_ESCAPE = '\\';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌˆÍ‚İ•¶šB<p>
-     * ˆÍ‚İ•¶š‚ğƒGƒXƒP[ƒv‚µ‚½‚¢ê‡‚ÍAˆÍ‚İ•¶š‚ğd‚Ë‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å›²ã¿æ–‡å­—ã€‚<p>
+     * å›²ã¿æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãŸã„å ´åˆã¯ã€å›²ã¿æ–‡å­—ã‚’é‡ã­ã‚‹ã€‚<br>
      */
     public static final char DEFAULT_ENCLOSURE = '"';
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‰üs•¶šB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ”¹è¡Œæ–‡å­—ã€‚<p>
      */
     public static final String DEFAULT_LINE_SEPARATOR
          = System.getProperty("line.separator");
@@ -100,7 +100,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     protected WriterWrapper writerWrapper;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CSVWriter(){
         super(new WriterWrapper());
@@ -108,9 +108,9 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
      */
     public CSVWriter(Writer writer){
         super(new WriterWrapper(writer));
@@ -118,9 +118,9 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVWriter(int size){
         super(new WriterWrapper(), size);
@@ -128,10 +128,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVWriter(Writer writer, int size){
         super(new WriterWrapper(writer), size);
@@ -139,7 +139,7 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * Writer‚ğİ’è‚·‚éB<p>
+     * Writerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param writer Writer
      */
@@ -149,139 +149,139 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ƒZƒpƒŒ[ƒ^
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setSeparator(char separator){
         this.separator = separator;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒpƒŒ[ƒ^
+     * @return ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public char getSeparator(){
          return separator;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶š‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param escape ƒGƒXƒP[ƒv•¶š
+     * @param escape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
      */
     public void setSeparatorEscape(char escape){
         separatorEscape = escape;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶š‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒXƒP[ƒv•¶š
+     * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
      */
     public char getSeparatorEscape(){
          return separatorEscape;
     }
     
     /**
-     * ‰üsƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ‰üsƒZƒpƒŒ[ƒ^
+     * @param separator æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setLineSeparator(String separator){
         this.lineSeparator = separator;
     }
     
     /**
-     * ‰üsƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰üsƒZƒpƒŒ[ƒ^
+     * @return æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public String getLineSeparator(){
          return lineSeparator;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ğİ’è‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enclosure ˆÍ‚İ•¶š
+     * @param enclosure å›²ã¿æ–‡å­—
      */
     public void setEnclosure(char enclosure){
         this.enclosure = enclosure;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ğæ“¾‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆÍ‚İ•¶š
+     * @return å›²ã¿æ–‡å­—
      */
     public char getEnclosure(){
          return enclosure;
     }
     
     /**
-     * CSV‚Ì—v‘f‚ğˆÍ‚İ•¶š‚ÅˆÍ‚Ş‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅˆÍ‚Ü‚È‚¢B<br>
+     * CSVã®è¦ç´ ã‚’å›²ã¿æ–‡å­—ã§å›²ã‚€ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å›²ã¾ãªã„ã€‚<br>
      *
-     * @param isEnclose ˆÍ‚İ•¶š‚ÅˆÍ‚Şê‡true
+     * @param isEnclose å›²ã¿æ–‡å­—ã§å›²ã‚€å ´åˆtrue
      */
     public void setEnclose(boolean isEnclose){
         this.isEnclose = isEnclose;
     }
     
     /**
-     * CSV‚Ì—v‘f‚ğˆÍ‚İ•¶š‚ÅˆÍ‚Ş‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * CSVã®è¦ç´ ã‚’å›²ã¿æ–‡å­—ã§å›²ã‚€ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AˆÍ‚İ•¶š‚ÅˆÍ‚Ş
+     * @return trueã®å ´åˆã€å›²ã¿æ–‡å­—ã§å›²ã‚€
      */
     public boolean isEnclose(){
          return isEnclose;
     }
     
     /**
-     * null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍANullPointerException‚ª”­¶‚·‚éB<br>
+     * nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€NullPointerExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚<br>
      *
-     * @param value •¶š—ñ
+     * @param value æ–‡å­—åˆ—
      */
     public void setNullValue(String value){
         nullValue = value;
     }
     
     /**
-     * null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ
+     * @return æ–‡å­—åˆ—
      */
     public String getNullValue(){
         return nullValue;
     }
     
     /**
-     * CSV‚Ì—v‘f‚ğˆÍ‚İ•¶š‚ÅˆÍ‚Şê‡‚ÉA‰üs‚ğƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒGƒXƒP[ƒv‚µ‚È‚¢B<br>
+     * CSVã®è¦ç´ ã‚’å›²ã¿æ–‡å­—ã§å›²ã‚€å ´åˆã«ã€æ”¹è¡Œã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã„ã€‚<br>
      * 
-     * @param isEscape ƒGƒXƒP[ƒv‚·‚éê‡true
+     * @param isEscape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
      */
     public void setEscapeLineSeparatorInEnclosure(boolean isEscape){
         isEscapeLineSeparatorInEnclosure = isEscape;
     }
     
     /**
-     * CSV‚Ì—v‘f‚ğˆÍ‚İ•¶š‚ÅˆÍ‚Şê‡‚ÉA‰üs‚ğƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * CSVã®è¦ç´ ã‚’å›²ã¿æ–‡å­—ã§å›²ã‚€å ´åˆã«ã€æ”¹è¡Œã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AƒGƒXƒP[ƒv‚·‚é
+     * @return trueã®å ´åˆã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹
      */
     public boolean isEscapeLineSeparatorInEnclosure(){
         return isEscapeLineSeparatorInEnclosure;
     }
     
     /**
-     * s‹æØ‚è•¶š‚ğ‘‚«‚ŞB<p>
-     * s‹æØ‚è•¶š‚ÍA{@link #getLineSeparator()}‚ğg—p‚·‚éB<br>
+     * è¡ŒåŒºåˆ‡ã‚Šæ–‡å­—ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
+     * è¡ŒåŒºåˆ‡ã‚Šæ–‡å­—ã¯ã€{@link #getLineSeparator()}ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void newLine() throws IOException{
         super.write(lineSeparator);
@@ -289,11 +289,11 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f•¶š—ñ‚ğ‘‚«‚ŞB<p>
-     * ƒZƒpƒŒ[ƒ^‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÌƒGƒXƒP[ƒvAˆÍ‚İ•¶š‚Å‚ÌˆÍ‚İˆ—‚ğ©“®‚Ås‚¤B<br>
+     * CSVè¦ç´ æ–‡å­—åˆ—ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€å›²ã¿æ–‡å­—ã§ã®å›²ã¿å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      * 
-     * @param element CSV—v‘f•¶š—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ æ–‡å­—åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void writeElement(String element) throws IOException{
         if(isAppendElement){
@@ -310,10 +310,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(boolean element) throws IOException{
@@ -321,10 +321,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(byte element) throws IOException{
@@ -332,10 +332,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(char element) throws IOException{
@@ -343,10 +343,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(short element) throws IOException{
@@ -354,10 +354,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(int element) throws IOException{
@@ -365,10 +365,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(long element) throws IOException{
@@ -376,10 +376,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(float element) throws IOException{
@@ -387,10 +387,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(double element) throws IOException{
@@ -398,10 +398,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * CSV—v‘f‚ğ‘‚«‚ŞB<p>
+     * CSVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element CSV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element CSVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(Object element) throws IOException{
@@ -505,11 +505,11 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ”z—ñ‚ğCSV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
-     * ‰üs•¶š‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÌƒGƒXƒP[ƒvAˆÍ‚İ•¶š‚Å‚ÌˆÍ‚İˆ—‚ğ©“®‚Ås‚¤B<br>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—é…åˆ—ã‚’CSVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æ”¹è¡Œæ–‡å­—ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€å›²ã¿æ–‡å­—ã§ã®å›²ã¿å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      *
-     * @param elements CSVŒ`®‚Åo—Í‚·‚é•¶š—ñ”z—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param elements CSVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—é…åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void writeCSV(String[] elements) throws IOException{
         for(int i = 0; i < elements.length; i++){
@@ -519,10 +519,10 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½”z—ñ‚ğCSV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
+     * æŒ‡å®šã•ã‚ŒãŸé…åˆ—ã‚’CSVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param elements CSVŒ`®‚Åo—Í‚·‚é”z—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param elements CSVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹é…åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeCSV(String[])
      */
     public void writeCSV(Object[] elements) throws IOException{
@@ -533,11 +533,11 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŠƒXƒg‚ğCSV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
-     * ‰üs•¶š‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÌƒGƒXƒP[ƒvAˆÍ‚İ•¶š‚Å‚ÌˆÍ‚İˆ—‚ğ©“®‚Ås‚¤B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¹ãƒˆã‚’CSVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æ”¹è¡Œæ–‡å­—ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€å›²ã¿æ–‡å­—ã§ã®å›²ã¿å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      *
-     * @param elements CSVŒ`®‚Åo—Í‚·‚éƒŠƒXƒg
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param elements CSVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ãƒªã‚¹ãƒˆ
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void writeCSV(List elements) throws IOException{
         for(int i = 0, imax = elements.size(); i < imax; i++){
@@ -547,13 +547,13 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * •¶š—ñ”z—ñ‚ğw’è‚³‚ê‚½CSVŒ`®•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æ–‡å­—åˆ—é…åˆ—ã‚’æŒ‡å®šã•ã‚ŒãŸCSVå½¢å¼æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param separator ƒZƒpƒŒ[ƒ^
-     * @param escape ƒGƒXƒP[ƒv•¶š
-     * @param nullValue null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ
-     * @param elements CSV‚Ì—v‘f‚Æ‚È‚é•¶š—ñ”z—ñ
-     * @return CSVŒ`®•¶š—ñ
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
+     * @param escape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
+     * @param nullValue nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—
+     * @param elements CSVã®è¦ç´ ã¨ãªã‚‹æ–‡å­—åˆ—é…åˆ—
+     * @return CSVå½¢å¼æ–‡å­—åˆ—
      */
     public static String toCSV(
         String[] elements,
@@ -576,14 +576,14 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * •¶š—ñ”z—ñ‚ğw’è‚³‚ê‚½CSVŒ`®•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æ–‡å­—åˆ—é…åˆ—ã‚’æŒ‡å®šã•ã‚ŒãŸCSVå½¢å¼æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param elements CSV‚Ì—v‘f‚Æ‚È‚é•¶š—ñ”z—ñ
-     * @param separator ƒZƒpƒŒ[ƒ^
-     * @param enclosure ˆÍ‚İ•¶š
-     * @param nullValue null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ
-     * @param isEscapeLineSeparator ‰üs‚ğƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©BƒGƒXƒP[ƒv‚·‚éê‡true
-     * @return CSVŒ`®•¶š—ñ
+     * @param elements CSVã®è¦ç´ ã¨ãªã‚‹æ–‡å­—åˆ—é…åˆ—
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
+     * @param enclosure å›²ã¿æ–‡å­—
+     * @param nullValue nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—
+     * @param isEscapeLineSeparator æ”¹è¡Œã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã€‚ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
+     * @return CSVå½¢å¼æ–‡å­—åˆ—
      */
     public static String toEnclosedCSV(
         String[] elements,
@@ -607,13 +607,13 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * •¶š—ñƒŠƒXƒg‚ğw’è‚³‚ê‚½CSVŒ`®•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æ–‡å­—åˆ—ãƒªã‚¹ãƒˆã‚’æŒ‡å®šã•ã‚ŒãŸCSVå½¢å¼æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param elements CSV‚Ì—v‘f‚Æ‚È‚é•¶š—ñƒŠƒXƒg
-     * @param separator ƒZƒpƒŒ[ƒ^
-     * @param separatorEscape ƒGƒXƒP[ƒv•¶š
-     * @param nullValue null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ
-     * @return CSVŒ`®•¶š—ñ
+     * @param elements CSVã®è¦ç´ ã¨ãªã‚‹æ–‡å­—åˆ—ãƒªã‚¹ãƒˆ
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
+     * @param separatorEscape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
+     * @param nullValue nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—
+     * @return CSVå½¢å¼æ–‡å­—åˆ—
      */
     public static String toCSV(
         List elements,
@@ -641,14 +641,14 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * •¶š—ñƒŠƒXƒg‚ğw’è‚³‚ê‚½CSVŒ`®•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æ–‡å­—åˆ—ãƒªã‚¹ãƒˆã‚’æŒ‡å®šã•ã‚ŒãŸCSVå½¢å¼æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param elements CSV‚Ì—v‘f‚Æ‚È‚é•¶š—ñƒŠƒXƒg
-     * @param separator ƒZƒpƒŒ[ƒ^
-     * @param enclosure ˆÍ‚İ•¶š
-     * @param nullValue null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ
-     * @param isEscapeLineSeparator ‰üs‚ğƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©BƒGƒXƒP[ƒv‚·‚éê‡true
-     * @return CSVŒ`®•¶š—ñ
+     * @param elements CSVã®è¦ç´ ã¨ãªã‚‹æ–‡å­—åˆ—ãƒªã‚¹ãƒˆ
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
+     * @param enclosure å›²ã¿æ–‡å­—
+     * @param nullValue nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—
+     * @param isEscapeLineSeparator æ”¹è¡Œã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã€‚ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
+     * @return CSVå½¢å¼æ–‡å­—åˆ—
      */
     public static String toEnclosedCSV(
         List elements,
@@ -672,19 +672,19 @@ public class CSVWriter extends BufferedWriter implements StringConverter{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public CSVWriter cloneWriter(){
         return cloneWriter(new CSVWriter());
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clone –¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @return –¢Ú‘±‚Ì•¡»
+     * @param clone æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     protected CSVWriter cloneWriter(CSVWriter clone){
         clone.separator = separator;

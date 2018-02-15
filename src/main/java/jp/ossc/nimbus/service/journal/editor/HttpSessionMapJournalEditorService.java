@@ -38,21 +38,21 @@ import javax.servlet.http.HttpSession;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * HttpSessionƒIƒuƒWƒFƒNƒg‚ğMapƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * ‚±‚ÌƒGƒfƒBƒ^‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚½Map‚ÍAˆÈ‰º‚Ì\‘¢‚ğ‚ÂB<br>
+ * HttpSessionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Mapãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * ã“ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«ã‚ˆã£ã¦ç·¨é›†ã•ã‚ŒãŸMapã¯ã€ä»¥ä¸‹ã®æ§‹é€ ã‚’æŒã¤ã€‚<br>
  * <table broder="1">
- *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="5">’l</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th colspan="4">“à—e</th></tr>
- *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #ATTRIBUTES_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">‘®«‚Ìƒ}ƒbƒv</td></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>‘®«–¼</td><td>java.lang.Object</td><td>‘®«’l</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #ID_KEY}</td><td>java.lang.String</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“ID</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CREATION_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“‚ªì¬‚³‚ê‚½</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #LAST_ACCESSED_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½—v‹‚ğƒNƒ‰ƒCƒAƒ“ƒg‚ªÅŒã‚É‘—M‚µ‚½</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #MAX_INACTIVE_INTERVAL_KEY}</td><td>java.lang.Long</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“‚ğ•Û‚¿‘±‚¯‚éÅ‘å‚ÌŠÔŠÔŠu</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #IS_NEW_KEY}</td><td>java.lang.Boolean</td><td colspan="4">ƒZƒbƒVƒ‡ƒ“‚ÉQ‰Á‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="5">å€¤</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th colspan="4">å†…å®¹</th></tr>
+ *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #ATTRIBUTES_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">å±æ€§ã®ãƒãƒƒãƒ—</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>å±æ€§å</td><td>java.lang.Object</td><td>å±æ€§å€¤</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #ID_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³ID</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CREATION_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³ãŒä½œæˆã•ã‚ŒãŸæ™‚åˆ»</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #LAST_ACCESSED_TIME_KEY}</td><td>java.util.Date</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸè¦æ±‚ã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒæœ€å¾Œã«é€ä¿¡ã—ãŸæ™‚åˆ»</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #MAX_INACTIVE_INTERVAL_KEY}</td><td>java.lang.Long</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’ä¿ã¡ç¶šã‘ã‚‹æœ€å¤§ã®æ™‚é–“é–“éš”</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #IS_NEW_KEY}</td><td>java.lang.Boolean</td><td colspan="4">ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«å‚åŠ ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹</td></tr>
  * </table>
- * ’A‚µAo—Í‚µ‚È‚¢‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚à‚Ì‚âAŒ³‚ÌHttpSession‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚©‚Á‚½î•ñAJ2EE‚Ìƒo[ƒWƒ‡ƒ“‚É‚æ‚Á‚Äæ“¾‚Å‚«‚È‚¢î•ñ‚ÍŠÜ‚Ü‚ê‚È‚¢B<br>
+ * ä½†ã—ã€å‡ºåŠ›ã—ãªã„ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã‚„ã€å…ƒã®HttpSessionã«å«ã¾ã‚Œã¦ã„ãªã‹ã£ãŸæƒ…å ±ã€J2EEã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ã‚ˆã£ã¦å–å¾—ã§ããªã„æƒ…å ±ã¯å«ã¾ã‚Œãªã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -167,12 +167,12 @@ public class HttpSessionMapJournalEditorService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½HttpSessionŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸHttpSessionå‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public Map toMap(EditorFinder finder, Object key, Object value){
         final HttpSession session = (HttpSession)value;

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.resource.datasource;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JdbcConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JdbcConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JdbcConnectionFactoryService
@@ -42,16 +42,16 @@ import jp.ossc.nimbus.core.*;
 public interface JdbcConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
 }

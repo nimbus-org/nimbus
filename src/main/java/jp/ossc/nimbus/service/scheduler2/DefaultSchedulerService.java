@@ -35,8 +35,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.queue.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒXƒPƒWƒ…[ƒ‰B<p>
- * ƒXƒPƒWƒ…[ƒ‹‚ğ{@link Queue}‚É“Š“ü‚µ‚ÄAƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚Å‘Ò‚¿ó‚¯AƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link Queue}ã«æŠ•å…¥ã—ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã§å¾…ã¡å—ã‘ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -51,55 +51,55 @@ public class DefaultSchedulerService extends AbstractSchedulerService
     protected boolean isDaemonScheduleDispatcher = true;
     protected long stopWaitTimeout = -1;
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public void setScheduleDispatcherSize(int size){
         scheduleDispatcherSize = size;
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public int getScheduleDispatcherSize(){
         return scheduleDispatcherSize;
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public int getActiveScheduleDispatcherSize(){
         return queueHandlerContainer == null
             ? 0 : queueHandlerContainer.getActiveQueueHandlerSize();
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public void setDaemonScheduleDispatcher(boolean isDaemon){
         isDaemonScheduleDispatcher = isDaemon;
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public boolean isDaemonScheduleDispatcher(){
         return isDaemonScheduleDispatcher;
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public void setStopWaitTimeout(long timeout){
         stopWaitTimeout = timeout;
     }
     
-    // DefaultSchedulerServiceMBean‚ÌJavaDoc
+    // DefaultSchedulerServiceMBeanã®JavaDoc
     public long getStopWaitTimeout(){
         return stopWaitTimeout;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         queueHandlerContainer = new QueueHandlerContainerService();
@@ -107,9 +107,9 @@ public class DefaultSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -133,9 +133,9 @@ public class DefaultSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
@@ -143,9 +143,9 @@ public class DefaultSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         
@@ -154,25 +154,25 @@ public class DefaultSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“Š“ü‚·‚é{@link Queue}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æŠ•å…¥ã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue QueueƒT[ƒrƒX
+     * @param queue Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setQueue(Queue queue){
         this.requestQueue = queue;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“Š“ü‚·‚é{{@link Queue}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æŠ•å…¥ã™ã‚‹{{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     protected Queue getQueue(){
         return requestQueue;
     }
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“Q‰Á•s‰Â”\‚È‚Ì‚Åfalse‚ğ•Ô‚·B<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å‚åŠ ä¸å¯èƒ½ãªã®ã§falseã‚’è¿”ã™ã€‚<p>
      *
      * @return false
      */
@@ -181,27 +181,27 @@ public class DefaultSchedulerService extends AbstractSchedulerService
     }
     
     /**
-     * {@link Queue}‚ÉƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒg‚ğ“Š“ü‚·‚éB<p>
+     * {@link Queue}ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’æŠ•å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param request ƒXƒPƒWƒ…[ƒ‹ƒŠƒNƒGƒXƒg
-     * @exception Throwable “Š“ü‚É¸”s‚µ‚½ê‡
+     * @param request ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @exception Throwable æŠ•å…¥ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void entrySchedule(ScheduleRequest request) throws Throwable{
         queueHandlerContainer.getQueueService().push(request);
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒƒB<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ{@link ScheduleExecutor}‚ÉÀsˆË—Š‚·‚éB‚Ü‚½A{@link ScheduleManager}‚ğg‚Á‚ÄAƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒãƒ£ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link ScheduleExecutor}ã«å®Ÿè¡Œä¾é ¼ã™ã‚‹ã€‚ã¾ãŸã€{@link ScheduleManager}ã‚’ä½¿ã£ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<br>
      * 
      * @author M.Takata
      */
     protected class ScheduleDispatcher implements QueueHandler{
         
         /**
-         * {@link Queue}‚©‚çæ‚èo‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ğ{@link ScheduleExecutor}‚ÉÀsˆË—Š‚·‚éB<p>
+         * {@link Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’{@link ScheduleExecutor}ã«å®Ÿè¡Œä¾é ¼ã™ã‚‹ã€‚<p>
          *
-         * @param obj {@link Queue}‚©‚çæ‚èo‚µ‚½ƒXƒPƒWƒ…[ƒ‹
+         * @param obj {@link Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
          * @exception Throwable
          */
         public void handleDequeuedObject(Object obj) throws Throwable{

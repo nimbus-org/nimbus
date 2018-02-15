@@ -34,19 +34,19 @@ package jp.ossc.nimbus.beans;
 import java.util.*;
 
 /**
- * Property”z—ñŒ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * ƒJƒ“ƒ}‹æØ‚è‚Ì•¶š—ñ‚ğProperty[]Œ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * ‹ó”’‚ÍƒgƒŠƒ€‚³‚ê‚éB
- * ‹ó”’‚ÍA{@link java.lang.Character#isWhitespace(char)}‚Å”»’è‚³‚ê‚éB
- * ‚Ü‚½A"&lt;!--"‚Æ"--&gt;"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍƒRƒƒ“ƒg‚Æ‰ğß‚³‚ê–³‹‚³‚ê‚éB
- * ‚Ü‚½A"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * Propertyé…åˆ—å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã®æ–‡å­—åˆ—ã‚’Property[]å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * ç©ºç™½ã¯ãƒˆãƒªãƒ ã•ã‚Œã‚‹ã€‚
+ * ç©ºç™½ã¯ã€{@link java.lang.Character#isWhitespace(char)}ã§åˆ¤å®šã•ã‚Œã‚‹ã€‚
+ * ã¾ãŸã€"&lt;!--"ã¨"--&gt;"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã‚³ãƒ¡ãƒ³ãƒˆã¨è§£é‡ˆã•ã‚Œç„¡è¦–ã•ã‚Œã‚‹ã€‚
+ * ã¾ãŸã€"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;A,B, C  <br>
  * &nbsp;&nbsp;D, E,F ,&lt;!--G,<br>
  * &nbsp;&nbsp;H,--&gt;I<br>
  * <br>
- * &nbsp;‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * &nbsp;ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;new Property[]{<br>
  * &nbsp;&nbsp;&nbsp;&nbsp;PropertyFactory.createProperty("A"),<br>
@@ -57,7 +57,7 @@ import java.util.*;
  * &nbsp;&nbsp;&nbsp;&nbsp;PropertyFactory.createProperty("I")<br>
  * &nbsp;&nbsp;}<br>
  * <br>
- * &nbsp;‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * &nbsp;ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

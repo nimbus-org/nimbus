@@ -34,38 +34,38 @@ package jp.ossc.nimbus.servlet;
 import javax.servlet.http.*;
 
 /**
- * BeanFlowƒT[ƒuƒŒƒbƒg‚ÌÀsƒRƒ“ƒeƒLƒXƒgB<p>
- * {@link BeanFlowServlet}‚ªBeanFlow‚ğŒÄ‚Ño‚·‚Ìˆø”‚Æ‚È‚éƒIƒuƒWƒFƒNƒgB<p>
+ * BeanFlowã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
+ * {@link BeanFlowServlet}ãŒBeanFlowã‚’å‘¼ã³å‡ºã™æ™‚ã®å¼•æ•°ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class BeanFlowServletContext{
     
     /**
-     * HTTPƒŠƒNƒGƒXƒgB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
      */
     protected HttpServletRequest request;
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒXB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
      */
     protected HttpServletResponse response;
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒgB<p>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object input;
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒgB<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object output;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public BeanFlowServletContext(
         HttpServletRequest req,
@@ -76,11 +76,11 @@ public class BeanFlowServletContext{
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param input “ü—ÍƒIƒuƒWƒFƒNƒg
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param input å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public BeanFlowServletContext(
         HttpServletRequest req,
@@ -93,45 +93,45 @@ public class BeanFlowServletContext{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return HTTPƒŠƒNƒGƒXƒg
+     * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public HttpServletRequest getRequest(){
         return request;
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return HTTPƒŒƒXƒ|ƒ“ƒX
+     * @return HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public HttpServletResponse getResponse(){
         return response;
     }
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return “ü—ÍƒIƒuƒWƒFƒNƒg
+     * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getInput(){
         return input;
     }
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return o—ÍƒIƒuƒWƒFƒNƒg
+     * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getOutput(){
         return output;
     }
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param output o—ÍƒIƒuƒWƒFƒNƒg
+     * @param output å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setOutput(Object output){
         this.output = output;

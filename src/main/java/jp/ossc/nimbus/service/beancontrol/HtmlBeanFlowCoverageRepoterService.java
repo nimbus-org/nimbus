@@ -44,7 +44,7 @@ import jp.ossc.nimbus.util.converter.StringConverter;
 import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 
 /**
- * {@link BeanFlowCoverageRepoter}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒT[ƒrƒXB<p>
+ * {@link BeanFlowCoverageRepoter}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Aono
  */

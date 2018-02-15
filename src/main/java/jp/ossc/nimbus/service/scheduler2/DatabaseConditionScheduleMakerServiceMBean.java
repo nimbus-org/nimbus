@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DatabaseConditionScheduleMakerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseConditionScheduleMakerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,27 +42,27 @@ public interface DatabaseConditionScheduleMakerServiceMBean
  extends DefaultScheduleMakerServiceMBean{
     
     /**
-     * {jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚ğ”»’f‚·‚éSQL‚ğİ’è‚·‚éB<p>
-     * •K‚¸AƒXƒPƒWƒ…[ƒ‹ì¬“ú•t‚ğ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Ä‚¿AŒ‹‰Ê‚ªBooleanŒ^A”’lŒ^A•¶š—ñŒ^‚Ì‚¢‚¸‚ê‚©‚É‚È‚éSQL‚Æ‚·‚é–B<br>
-     * BooleanŒ^‚Ìê‡‚ÍAtrue‚Ìê‡AƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<br>
-     * ”’lŒ^‚Ìê‡‚ÍA0ˆÈŠO‚Ì’l‚Ìê‡AƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<br>
-     * •¶š—ñŒ^‚Ìê‡‚ÍA"0"ˆÈŠO‚Ì’l‚Ìê‡AƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã‚’åˆ¤æ–­ã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¿…ãšã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆæ—¥ä»˜ã‚’åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦æŒã¡ã€çµæœãŒBooleanå‹ã€æ•°å€¤å‹ã€æ–‡å­—åˆ—å‹ã®ã„ãšã‚Œã‹ã«ãªã‚‹SQLã¨ã™ã‚‹äº‹ã€‚<br>
+     * Booleanå‹ã®å ´åˆã¯ã€trueã®å ´åˆã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<br>
+     * æ•°å€¤å‹ã®å ´åˆã¯ã€0ä»¥å¤–ã®å€¤ã®å ´åˆã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<br>
+     * æ–‡å­—åˆ—å‹ã®å ´åˆã¯ã€"0"ä»¥å¤–ã®å€¤ã®å ´åˆã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<br>
      * <pre>
-     *  —áF‰c‹Æ“ú‚Å‚ ‚ê‚ÎƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éê‡
+     *  ä¾‹ï¼šå–¶æ¥­æ—¥ã§ã‚ã‚Œã°ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹å ´åˆ
      *   select count(1) from businessday_calendar where date = ?
      * </pre>
      *
@@ -71,24 +71,24 @@ public interface DatabaseConditionScheduleMakerServiceMBean
     public void setQuery(String query);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚ğ”»’f‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã‚’åˆ¤æ–­ã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return SQL
      */
     public String getQuery();
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * {@link #setQuery(String)}‚Åw’è‚µ‚½SQL“à‚É–„‚ß‚ŞƒXƒPƒWƒ…[ƒ‹ì¬“ú•t‚ğ•¶š—ñ‚Æ‚µ‚Ä“n‚µ‚½‚¢ê‡‚ÉA‚»‚Ì“ú•tƒtƒH[ƒ}ƒbƒg‚ğw’è‚·‚éB<br>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setQuery(String)}ã§æŒ‡å®šã—ãŸSQLå†…ã«åŸ‹ã‚è¾¼ã‚€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆæ—¥ä»˜ã‚’æ–‡å­—åˆ—ã¨ã—ã¦æ¸¡ã—ãŸã„å ´åˆã«ã€ãã®æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      * 
-     * @param format “ú•tƒtƒH[ƒ}ƒbƒg
+     * @param format æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setDateFormat(String format);
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return “ú•tƒtƒH[ƒ}ƒbƒg
+     * @return æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public String getDateFormat();
 }

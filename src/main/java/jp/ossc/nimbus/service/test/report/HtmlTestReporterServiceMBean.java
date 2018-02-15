@@ -37,7 +37,7 @@ import java.io.IOException;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link HtmlTestReporterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link HtmlTestReporterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  *
  * @author M.Aono
  * @see HtmlTestReporterService
@@ -47,18 +47,18 @@ public interface HtmlTestReporterServiceMBean extends ServiceBaseMBean{
     public void setOutputPath(File outputPath) throws IOException;
 
     /**
-     * ƒGƒ‰[‚ª”­¶‚µ‚½ƒVƒiƒŠƒIA‚Ü‚½‚ÍƒeƒXƒgƒP[ƒX‚Ì‚Ý‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚é‚©‚ðŽæ“¾‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ítrue‚ÅƒGƒ‰[‚ª”­¶‚µ‚½ƒVƒiƒŠƒIA‚Ü‚½‚ÍƒeƒXƒgƒP[ƒX‚Ì‚Ý‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚éB<br>
+     * ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚·ãƒŠãƒªã‚ªã€ã¾ãŸã¯ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚·ãƒŠãƒªã‚ªã€ã¾ãŸã¯ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
      *
-     * @return ƒGƒ‰[‚ª”­¶‚µ‚½ƒVƒiƒŠƒIA‚Ü‚½‚ÍƒeƒXƒgƒP[ƒX‚Ì‚Ý‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚é‚©
+     * @return ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚·ãƒŠãƒªã‚ªã€ã¾ãŸã¯ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‹
      */
     public boolean isDownloadErrorOnly();
 
     /**
-     * ƒGƒ‰[‚ª”­¶‚µ‚½ƒVƒiƒŠƒIA‚Ü‚½‚ÍƒeƒXƒgƒP[ƒX‚Ì‚Ý‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚é‚©‚ðÝ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ítrue‚ÅƒGƒ‰[‚ª”­¶‚µ‚½ƒVƒiƒŠƒIA‚Ü‚½‚ÍƒeƒXƒgƒP[ƒX‚Ì‚Ý‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚éB<br>
+     * ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚·ãƒŠãƒªã‚ªã€ã¾ãŸã¯ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚·ãƒŠãƒªã‚ªã€ã¾ãŸã¯ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
      *
-     * @param errorOnly ƒGƒ‰[‚ª”­¶‚µ‚½ƒVƒiƒŠƒIA‚Ü‚½‚ÍƒeƒXƒgƒP[ƒX‚Ì‚Ý‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚é‚©
+     * @param errorOnly ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚·ãƒŠãƒªã‚ªã€ã¾ãŸã¯ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‹
      */
     public void setDownloadErrorOnly(boolean errorOnly);
 }

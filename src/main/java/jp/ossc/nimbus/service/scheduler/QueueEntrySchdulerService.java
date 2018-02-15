@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.scheduler;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*; 
 import jp.ossc.nimbus.lang.*; 
 import jp.ossc.nimbus.daemon.*;
@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.log.*;
 import java.util.*;
 import jp.ossc.nimbus.service.sequence.*;
 /** 
- * ƒ^ƒCƒ€ƒXƒPƒWƒ…[ƒ‰[ƒNƒ‰ƒX<p>
- * ˆê’èŠÔ–ˆ‚É–â‚¢‡‚í‚¹‚ğã‚°‚Äw’è‚³‚ê‚½ƒRƒ}ƒ“ƒh‚ğQueue‚É“ü‚ê‚é
+ * ã‚¿ã‚¤ãƒ ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ãƒ¼ã‚¯ãƒ©ã‚¹<p>
+ * ä¸€å®šæ™‚é–“æ¯ã«å•ã„åˆã‚ã›ã‚’ä¸Šã’ã¦æŒ‡å®šã•ã‚ŒãŸã‚³ãƒãƒ³ãƒ‰ã‚’Queueã«å…¥ã‚Œã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -56,44 +56,44 @@ public class QueueEntrySchdulerService
     
     private static final String C_REQUEST_ID = "REQUEST_ID";
 	private static final String C_USER_ID = "USER_ID";
-	/** ƒXƒPƒWƒ…[ƒ‰ƒf[ƒ‚ƒ“ */	
+	/** ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ãƒ‡ãƒ¼ãƒ¢ãƒ³ */	
 	private Daemon mSchedulerDaemon = null ;
-	/** EJBƒtƒ@ƒT[ƒhƒR[ƒ‰[ƒT[ƒrƒX–¼ */	
+	/** EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ©ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å */	
 	private ServiceName mFacadeCallServiceName = null ;
-	/** EJBƒtƒ@ƒT[ƒhƒR[ƒ‰[ */	
+	/** EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ©ãƒ¼ */	
 	private FacadeCaller mFacadeCaller = null ;
-	/** ƒ^ƒCƒ}[			*/	
+	/** ã‚¿ã‚¤ãƒãƒ¼æ™‚åˆ»			*/	
 	private Date mTimerSecounds = new Date();
-	/** ƒVƒXƒeƒ€			*/	
+	/** ã‚·ã‚¹ãƒ†ãƒ æ™‚åˆ»			*/	
 	private Date mSystemSecounds = null ;
-	/**	ƒ^ƒCƒ}ƒCƒ“ƒ^[ƒoƒ‹		*/	
+	/**	ã‚¿ã‚¤ãƒã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«		*/	
 	private long mInterval = 60000;
-	/**	ƒƒK[ƒT[ƒrƒX–¼ */	
+	/**	ãƒ­ã‚¬ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å */	
 	private ServiceName mLoggerServiceName = null;
-	/**	ƒ^ƒCƒ}ƒCƒ“ƒ^[ƒoƒ‹		*/	
+	/**	ã‚¿ã‚¤ãƒã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«		*/	
 	private Logger mLogger = null;
-	/**	ƒ^ƒCƒ}ƒCƒ“ƒ^[ƒoƒ‹		*/	
+	/**	ã‚¿ã‚¤ãƒã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«		*/	
 	private String mFlowKey = null;	
-	/**	Œãˆ—Às‰Â			*/	
+	/**	å¾Œå‡¦ç†å®Ÿè¡Œå¯			*/	
 	private static final String C_CONSUME_OK = "1";
-	/**	Œãˆ—Às•s‰Â			*/	
+	/**	å¾Œå‡¦ç†å®Ÿè¡Œä¸å¯			*/	
 	private static final String C_CONSUME_NG = "0"; 
 	private ServiceName mSequenceServiceName = null;
 	private Sequence mSequence = null ;
 	private String mUserId = null ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public QueueEntrySchdulerService() {
 		super();
 	}
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public QueueEntrySchdulerService(ServiceBaseSupport support) {
 		super(support);
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService(){
@@ -113,7 +113,7 @@ public class QueueEntrySchdulerService
 		mSchedulerDaemon.setDaemon(true) ;
 		mSchedulerDaemon.start() ;		
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
 	 */
 	public void stopService(){
@@ -121,82 +121,82 @@ public class QueueEntrySchdulerService
 		mSchedulerDaemon = null ;
 		this.mFacadeCaller = null ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setFacadeServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setFacadeServiceName(ServiceName name) {
 		this.mFacadeCallServiceName = name ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#getFacadeServiceName()
 	 */
 	public ServiceName getFacadeServiceName() {
 		return this.mFacadeCallServiceName;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setInterval(long)
 	 */
 	public void setInterval(long msecs) {
 		this.mInterval = msecs ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#getInterval()
 	 */
 	public long getInterval() {
 		return this.mInterval;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setGetTaskFlowKey(java.lang.String)
 	 */
 	public void setGetTaskFlowKey(String name) {
 		this.mFlowKey = name ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setGetTaskFlowKey()
 	 */
 	public String getGetTaskFlowKey() {
 		return this.mFlowKey ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setLogServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setLogServiceName(ServiceName name) {
 		this.mLoggerServiceName = name ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onStop()
 	 */
 	public boolean onStop() {
 		return true;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onSuspend()
 	 */
 	public boolean onSuspend() {
 		return true;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onResume()
 	 */
 	public boolean onResume() {
 		return true;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#provide(jp.ossc.nimbus.daemon.DaemonControl)
 	 */
 	public Object provide(DaemonControl ctrl) throws Exception {
 		String procFlg = null ;
-		//ƒVƒXƒeƒ€‚ğXV‚·‚éB
+		//ã‚·ã‚¹ãƒ†ãƒ æ™‚åˆ»ã‚’æ›´æ–°ã™ã‚‹ã€‚
 		this.mSystemSecounds = new java.util.Date();
 		if(dateOver(mInterval)){
 			procFlg = C_CONSUME_NG;
@@ -218,9 +218,9 @@ public class QueueEntrySchdulerService
 	}
 	//
 	/**
-	 * w’èƒCƒ“ƒ^[ƒoƒ‹’PˆÊ‚Å”äŠr‚·‚é<BR>
+	 * æŒ‡å®šã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«å˜ä½ã§æ¯”è¼ƒã™ã‚‹<BR>
 	 * @param long interval
-	 * @return true ‚Ì‚Æ‚«w’èƒCƒ“ƒ^[ƒoƒ‹ŠÔŠu‚Å”äŠrŒ³‚P„”äŠrŒ³‚Q
+	 * @return true ã®ã¨ãæŒ‡å®šã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«é–“éš”ã§æ¯”è¼ƒå…ƒï¼‘ï¼æ¯”è¼ƒå…ƒï¼’
 	 */
 	private boolean dateOver(long interval){
 		boolean ret = false;
@@ -234,7 +234,7 @@ public class QueueEntrySchdulerService
 		return ret;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#consume(java.lang.Object, jp.ossc.nimbus.daemon.DaemonControl)
 	 */
 	public void consume(Object paramObj, DaemonControl ctrl) throws Exception {
@@ -250,7 +250,7 @@ public class QueueEntrySchdulerService
 				if(mLogger!= null){
 					mLogger.write("SCH0000200302");
 				}
-				// Exception‚É‚·‚®‚Éˆ—‚µ‚È‚¢‚æ‚¤‚Éæ‚ÉŠÔ‚ğ‰ÁZ‚µ‚Ä‚¨‚«‚Ü‚·
+				// Exceptionæ™‚ã«ã™ãã«å‡¦ç†ã—ãªã„ã‚ˆã†ã«å…ˆã«æ™‚é–“ã‚’åŠ ç®—ã—ã¦ãŠãã¾ã™
 				FacadeValue val = FacadeValueAccess.createCommandsValue() ; 
 				Command cmd = FacadeValueAccess.createCommand(this.mFlowKey,this.mTimerSecounds) ;
 				val.addCommand(cmd) ;
@@ -263,7 +263,7 @@ public class QueueEntrySchdulerService
 				FacadeValue ret = null ;
 				this.mTimerSecounds = new java.util.Date(this.mTimerSecounds.getTime() + mInterval);
 				ret = this.mFacadeCaller.syncFacadeCall(val) ;
-				// ‹N“®ŠÔ‚ÌƒXƒPƒWƒ…[ƒ‹ƒf[ƒ^‚ğ‘—M‚µ‚Ü‚·
+				// èµ·å‹•æ™‚é–“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ãƒ¼ã‚¿ã‚’é€ä¿¡ã—ã¾ã™
 				Command retcmd = (Command)ret.getCommand(0) ;
 				List ary = (List)retcmd.getOutputObject() ;				
 				val = FacadeValueAccess.createCommandsValue() ;
@@ -300,41 +300,41 @@ public class QueueEntrySchdulerService
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#garbage()
 	 */
 	public void garbage() {
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.daemon.DaemonRunnable#onStart()
 	 */
 	public boolean onStart() {
 		return true;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#getSequenceServiceName()
 	 */
 	public ServiceName getSequenceServiceName() {
 		return mSequenceServiceName;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#getUserId()
 	 */
 	public String getUserId() {
 		return mUserId;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setSequenceServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setSequenceServiceName(ServiceName name) {
 		mSequenceServiceName = name;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.scheduler.QueueEntrySchdulerServiceMBean#setUserId(java.lang.String)
 	 */
 	public void setUserId(String string) {

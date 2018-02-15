@@ -39,7 +39,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.keepalive.*;
 
 /**
- * ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚ğg‚Á‚Äjavax.jms.ConnectionFactory‚ÌÀ‘•ƒNƒ‰ƒX‚ğ¶¬‚µ‚ÄAjavax.jms.Connection‚ğæ“¾‚·‚é{@link JMSConnectionFactory}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒT[ƒrƒXB<p>
+ * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½¿ã£ã¦javax.jms.ConnectionFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¦ã€javax.jms.Connectionã‚’å–å¾—ã™ã‚‹{@link JMSConnectionFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

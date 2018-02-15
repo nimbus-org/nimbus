@@ -36,16 +36,16 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.validator.*;
 
 /**
- * VlidatorƒvƒƒpƒeƒBƒXƒL[ƒ}À‘•ƒNƒ‰ƒXB<p>
- * ‚±‚ÌƒNƒ‰ƒX‚É‚ÍAƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}î•ñ‚Æ‚µ‚ÄAˆÈ‰º‚Ìî•ñ‚ª’è‹`‚Å‚«‚éB<br>
+ * Vlidatorãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã«ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã¨ã—ã¦ã€ä»¥ä¸‹ã®æƒ…å ±ãŒå®šç¾©ã§ãã‚‹ã€‚<br>
  * <ul>
- *   <li>–¼‘O</li>
- *   <li>Œ^</li>
- *   <li>“ü—Í•ÏŠ·í—Ş</li>
- *   <li>o—Í•ÏŠ·í—Ş</li>
- *   <li>§–ñ</li>
+ *   <li>åå‰</li>
+ *   <li>å‹</li>
+ *   <li>å…¥åŠ›å¤‰æ›ç¨®é¡</li>
+ *   <li>å‡ºåŠ›å¤‰æ›ç¨®é¡</li>
+ *   <li>åˆ¶ç´„</li>
  * </ul>
- * §–ñ‚ÉA{@link Validator}ƒT[ƒrƒX–¼‚ğw’è‚·‚é–‚ÅAValidator‚ğg—p‚·‚éˆÈŠO‚ÍA{@link DefaultPropertySchema}‚Ìd—l‚É]‚¤B<br>
+ * åˆ¶ç´„ã«ã€{@link Validator}ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€Validatorã‚’ä½¿ç”¨ã™ã‚‹ä»¥å¤–ã¯ã€{@link DefaultPropertySchema}ã®ä»•æ§˜ã«å¾“ã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -56,25 +56,25 @@ public class ValidatorPropertySchema extends DefaultPropertySchema{
     protected ServiceName validatorServiceName;
     
     /**
-     * ‹ó‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ValidatorPropertySchema(){
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public ValidatorPropertySchema(String schema) throws PropertySchemaDefineException{
         super(schema);
     }
     
     /**
-     * §–ñ‚ğæ“¾‚·‚éB<p>
+     * åˆ¶ç´„ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return §–ñ
+     * @return åˆ¶ç´„
      */
     public String getConstrain(){
         return validatorServiceName == null
@@ -82,11 +82,11 @@ public class ValidatorPropertySchema extends DefaultPropertySchema{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì§–ñ‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åˆ¶ç´„ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseConstrain(String schema, String val)
      throws PropertySchemaDefineException{
@@ -106,7 +106,7 @@ public class ValidatorPropertySchema extends DefaultPropertySchema{
         }
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public boolean validate(Object val) throws PropertyValidateException{
         if(validatorServiceName == null){
             return true;
@@ -131,9 +131,9 @@ public class ValidatorPropertySchema extends DefaultPropertySchema{
     }
     
     /**
-     * ‚±‚ÌƒXƒL[ƒ}‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚­ãƒ¼ãƒã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder(getClass().getName());

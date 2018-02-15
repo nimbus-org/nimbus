@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.naming;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ServiceNamingService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ServiceNamingService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ServiceNamingService
@@ -42,60 +42,60 @@ import jp.ossc.nimbus.core.*;
 public interface ServiceNamingServiceMBean extends Service, Naming{
     
     /**
-     * {@link jp.ossc.nimbus.core.Service Service}‚ÌŒŸõƒpƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚·‚é•¶š—ñ”z—ñ‚É‚ÍA{@link jp.ossc.nimbus.core.ServiceManager ServiceManager}‚ğ•\‚·&lt;manager&gt;—v‘f‚Ì–¼‘O”z—ñ‚ğw’è‚·‚éB©•ª©g‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚©‚çService‚Ìæ“¾‚ğ‚İ‚½ŒãAw’è‚µ‚½–¼‘O”z—ñ‚Ì‡‚ÅAŠY“–‚·‚éServiceManager‚©‚çService‚Ìæ“¾‚ğ‚İ‚éB©•ª©g‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚æ‚è‚à—Dæ‚µ‚ÄŒŸõ‚µ‚½‚¢ServiceManager‚ª‚ ‚éê‡‚ÍA{@link #setBootServicePath(String[])}‚Åİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.core.Service Service}ã®æ¤œç´¢ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã™ã‚‹æ–‡å­—åˆ—é…åˆ—ã«ã¯ã€{@link jp.ossc.nimbus.core.ServiceManager ServiceManager}ã‚’è¡¨ã™&lt;manager&gt;è¦ç´ ã®åå‰é…åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚è‡ªåˆ†è‡ªèº«ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‹ã‚‰Serviceã®å–å¾—ã‚’è©¦ã¿ãŸå¾Œã€æŒ‡å®šã—ãŸåå‰é…åˆ—ã®é †ã§ã€è©²å½“ã™ã‚‹ServiceManagerã‹ã‚‰Serviceã®å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚è‡ªåˆ†è‡ªèº«ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‚ˆã‚Šã‚‚å„ªå…ˆã—ã¦æ¤œç´¢ã—ãŸã„ServiceManagerãŒã‚ã‚‹å ´åˆã¯ã€{@link #setBootServicePath(String[])}ã§è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param path &lt;manager&gt;—v‘f‚Ì–¼‘O”z—ñ
+     * @param path &lt;manager&gt;è¦ç´ ã®åå‰é…åˆ—
      * @see #getServicePath()
      * @see #setBootServicePath(String[])
      */
     public void setServicePath(String[] path);
     
     /**
-     * {@link jp.ossc.nimbus.core.Service Service}‚ÌŒŸõƒpƒX‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.core.Service Service}ã®æ¤œç´¢ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Service‚ÌŒŸõƒpƒX‚Æ‚È‚é&lt;manager&gt;—v‘f‚Ì–¼‘O”z—ñ
+     * @return Serviceã®æ¤œç´¢ãƒ‘ã‚¹ã¨ãªã‚‹&lt;manager&gt;è¦ç´ ã®åå‰é…åˆ—
      * @see #setServicePath(String[])
      */
     public String[] getServicePath();
     
     /**
-     * {@link jp.ossc.nimbus.core.Service Service}‚Ìƒu[ƒgŒŸõƒpƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚·‚é•¶š—ñ”z—ñ‚É‚ÍA{@link jp.ossc.nimbus.core.ServiceManager ServiceManager}‚ğ•\‚·&lt;manager&gt;—v‘f‚Ì–¼‘O”z—ñ‚ğw’è‚·‚éBw’è‚µ‚½–¼‘O”z—ñ‚Ì‡‚ÅAŠY“–‚·‚éServiceManager‚©‚çService‚Ìæ“¾‚ğ‚İ‚éB‚»‚ÌŒãA©•ª©g‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚©‚çService‚Ìæ“¾‚ğ‚İ‚éB©•ª©g‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚ÌŒã‚ÉŒŸõ‚µ‚½‚¢ServiceManager‚ª‚ ‚éê‡‚ÍA{@link #setServicePath(String[])}‚Åİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.core.Service Service}ã®ãƒ–ãƒ¼ãƒˆæ¤œç´¢ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã™ã‚‹æ–‡å­—åˆ—é…åˆ—ã«ã¯ã€{@link jp.ossc.nimbus.core.ServiceManager ServiceManager}ã‚’è¡¨ã™&lt;manager&gt;è¦ç´ ã®åå‰é…åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚æŒ‡å®šã—ãŸåå‰é…åˆ—ã®é †ã§ã€è©²å½“ã™ã‚‹ServiceManagerã‹ã‚‰Serviceã®å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚ãã®å¾Œã€è‡ªåˆ†è‡ªèº«ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‹ã‚‰Serviceã®å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚è‡ªåˆ†è‡ªèº«ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®å¾Œã«æ¤œç´¢ã—ãŸã„ServiceManagerãŒã‚ã‚‹å ´åˆã¯ã€{@link #setServicePath(String[])}ã§è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param path &lt;manager&gt;—v‘f‚Ì–¼‘O”z—ñ
+     * @param path &lt;manager&gt;è¦ç´ ã®åå‰é…åˆ—
      * @see #getBootServicePath()
      * @see #setServicePath(String[])
      */
     public void setBootServicePath(String[] path);
     
     /**
-     * {@link jp.ossc.nimbus.core.Service Service}‚Ìƒu[ƒgŒŸõƒpƒX‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.core.Service Service}ã®ãƒ–ãƒ¼ãƒˆæ¤œç´¢ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Service‚ÌŒŸõƒpƒX‚Æ‚È‚é&lt;manager&gt;—v‘f‚Ì–¼‘O”z—ñ
+     * @return Serviceã®æ¤œç´¢ãƒ‘ã‚¹ã¨ãªã‚‹&lt;manager&gt;è¦ç´ ã®åå‰é…åˆ—
      * @see #setBootServicePath(String[])
      */
     public String[] getBootServicePath();
     
     /**
-     * {@link jp.ossc.nimbus.core.Service Service}‚ğQÆ–¼‚ÅQÆ‚·‚é{@link ServiceNameRef}‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
-     * ServiceNameRef‚ğ&lt;attribute&gt;—v‘f‚Åw’è‚·‚é‚É‚ÍAˆÈ‰º‚ÌƒtƒH[ƒ}ƒbƒg‚Åw’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.core.Service Service}ã‚’å‚ç…§åã§å‚ç…§ã™ã‚‹{@link ServiceNameRef}ã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ServiceNameRefã‚’&lt;attribute&gt;è¦ç´ ã§æŒ‡å®šã™ã‚‹ã«ã¯ã€ä»¥ä¸‹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æŒ‡å®šã™ã‚‹ã€‚<br>
      * <pre>
-     * [QÆ–¼]=[&lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l]#[&lt;service&gt;—v‘f‚Ìname‘®«‚Ì’l]
+     * [å‚ç…§å]=[&lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤]#[&lt;service&gt;è¦ç´ ã®nameå±æ€§ã®å€¤]
      * </pre>
-     * '='‚Ì‰E‘¤‚Ì•¶š—ñ‚ÍAServiceName‚Ìw’è•û–@‚É€‹’‚·‚éB<br>
-     * X‚ÉA”z—ñ‚Ìw’è‚ÍA‰üs‚µ‚Äã‹L‚Ìw’è‚ğ•¡”s‚¤B<br>
-     * ‚±‚Ìw’è‚É‚æ‚Á‚ÄA{@link #find(String)}‚ÉQÆ–¼‚ğw’è‚·‚é–‚ÅA‘Î‰‚·‚éService‚ğæ“¾‚·‚é–‚ª‚Å‚«‚éB<br>
+     * '='ã®å³å´ã®æ–‡å­—åˆ—ã¯ã€ServiceNameã®æŒ‡å®šæ–¹æ³•ã«æº–æ‹ ã™ã‚‹ã€‚<br>
+     * æ›´ã«ã€é…åˆ—ã®æŒ‡å®šã¯ã€æ”¹è¡Œã—ã¦ä¸Šè¨˜ã®æŒ‡å®šã‚’è¤‡æ•°è¡Œã†ã€‚<br>
+     * ã“ã®æŒ‡å®šã«ã‚ˆã£ã¦ã€{@link #find(String)}ã«å‚ç…§åã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€å¯¾å¿œã™ã‚‹Serviceã‚’å–å¾—ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
      *
-     * @param refs ServiceNameRef‚Ì”z—ñ
+     * @param refs ServiceNameRefã®é…åˆ—
      * @see #getServiceNameReferences()
      */
     public void setServiceNameReferences(ServiceNameRef[] refs);
     
     /**
-     * {@link jp.ossc.nimbus.core.Service Service}‚ğQÆ–¼‚ÅQÆ‚·‚é{@link ServiceNameRef}‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.core.Service Service}ã‚’å‚ç…§åã§å‚ç…§ã™ã‚‹{@link ServiceNameRef}ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServiceNameRef‚Ì”z—ñ
+     * @return ServiceNameRefã®é…åˆ—
      * @see #setServiceNameReferences(ServiceNameRef[])
      */
     public ServiceNameRef[] getServiceNameReferences();

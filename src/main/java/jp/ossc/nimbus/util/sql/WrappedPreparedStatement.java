@@ -54,10 +54,10 @@ public class WrappedPreparedStatement extends WrappedStatement
     protected List argList;
     
     /**
-     * Žw’è‚µ‚½PreparedStatement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸPreparedStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éPreparedStatement
-     * @param sql SQL•¶Žš—ñ
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public WrappedPreparedStatement(PreparedStatement st, String sql){
         super(st);
@@ -65,11 +65,11 @@ public class WrappedPreparedStatement extends WrappedStatement
     }
     
     /**
-     * Žw’è‚µ‚½PreparedStatement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸPreparedStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌPreparedStatement‚ð¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éPreparedStatement
-     * @param sql SQL•¶Žš—ñ
+     * @param con ã“ã®PreparedStatementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public WrappedPreparedStatement(
         Connection con,

@@ -39,7 +39,7 @@ import javax.servlet.http.HttpServletRequest;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * BeanFlow‚Ìƒtƒ[–¼‚ğƒŠƒNƒGƒXƒgƒpƒX‚Æƒ}ƒbƒsƒ“ƒO‚µ‚Ä‘I‘ğ‚·‚éB<p>
+ * BeanFlowã®ãƒ•ãƒ­ãƒ¼åã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ãƒãƒƒãƒ”ãƒ³ã‚°ã—ã¦é¸æŠã™ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -53,29 +53,29 @@ public class MappingBeanFlowSelectorService extends DefaultBeanFlowSelectorServi
     protected int regexMatchFlag;
     protected Map regexMapping;
     
-    // MappingBeanFlowSelectorServiceMBean‚ÌJavaDoc
+    // MappingBeanFlowSelectorServiceMBeanã®JavaDoc
     public void setMapping(Properties mapping){
         this.mapping = mapping;
     }
-    // MappingBeanFlowSelectorServiceMBean‚ÌJavaDoc
+    // MappingBeanFlowSelectorServiceMBeanã®JavaDoc
     public Properties getMapping(){
         return mapping;
     }
     
-    // MappingBeanFlowSelectorServiceMBean‚ÌJavaDoc
+    // MappingBeanFlowSelectorServiceMBeanã®JavaDoc
     public void setRegexEnabled(boolean isEnable){
         isRegexEnabled = isEnable;
     }
-    // MappingBeanFlowSelectorServiceMBean‚ÌJavaDoc
+    // MappingBeanFlowSelectorServiceMBeanã®JavaDoc
     public boolean isRegexEnabled(){
         return isRegexEnabled;
     }
     
-    // MappingBeanFlowSelectorServiceMBean‚ÌJavaDoc
+    // MappingBeanFlowSelectorServiceMBeanã®JavaDoc
     public void setRegexMatchFlag(int flag){
         regexMatchFlag = flag;
     }
-    // MappingBeanFlowSelectorServiceMBean‚ÌJavaDoc
+    // MappingBeanFlowSelectorServiceMBeanã®JavaDoc
     public int getRegexMatchFlag(){
         return regexMatchFlag;
     }
@@ -96,10 +96,10 @@ public class MappingBeanFlowSelectorService extends DefaultBeanFlowSelectorServi
     }
     
     /**
-     * BeanFlow‚Ìƒtƒ[–¼‚ğ‘I‘ğ‚·‚éB<p>
+     * BeanFlowã®ãƒ•ãƒ­ãƒ¼åã‚’é¸æŠã™ã‚‹ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @return BeanFlow‚Ìƒtƒ[–¼
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @return BeanFlowã®ãƒ•ãƒ­ãƒ¼å
      */
     public String selectBeanFlow(HttpServletRequest req){
         

@@ -34,109 +34,109 @@ package jp.ossc.nimbus.service.scheduler;
 import java.util.*;
 
 /**
- * “ú•tƒL[B<p>
- * ˆÈ‰º‚Éw’è•û–@‚ğ¦‚·B<br>
- * ”Nw’è : YEAR@2006<br>
- * Œw’è : MONTH@8<br>
- * “úw’è : DAY@10<br>
- * Œ––“úw’è : DAY@END<br>
- * “úŠg’£w’è : DAY@”CˆÓ‚ÌƒL[•¶š—ñ<br>
- * Tw’è : WEEK@1<br>
- * Œ––Tw’è : WEEK@END<br>
- * —j“úw’è : WEEK@MONDAY<br>
- * NOTğŒFNOT DAY@10<br>
- * ORğŒFDAY@10 OR DAY@20<br>
- * ANDğŒFDAY@10 AND DAY@20<br>
- * •¡”ğŒF(DAY@10 AND DAY@20) OR WEEK@END<br>
+ * æ—¥ä»˜ã‚­ãƒ¼ã€‚<p>
+ * ä»¥ä¸‹ã«æŒ‡å®šæ–¹æ³•ã‚’ç¤ºã™ã€‚<br>
+ * å¹´æŒ‡å®š : YEAR@2006<br>
+ * æœˆæŒ‡å®š : MONTH@8<br>
+ * æ—¥æŒ‡å®š : DAY@10<br>
+ * æœˆæœ«æ—¥æŒ‡å®š : DAY@END<br>
+ * æ—¥æ‹¡å¼µæŒ‡å®š : DAY@ä»»æ„ã®ã‚­ãƒ¼æ–‡å­—åˆ—<br>
+ * é€±æŒ‡å®š : WEEK@1<br>
+ * æœˆæœ«é€±æŒ‡å®š : WEEK@END<br>
+ * æ›œæ—¥æŒ‡å®š : WEEK@MONDAY<br>
+ * NOTæ¡ä»¶ï¼šNOT DAY@10<br>
+ * ORæ¡ä»¶ï¼šDAY@10 OR DAY@20<br>
+ * ANDæ¡ä»¶ï¼šDAY@10 AND DAY@20<br>
+ * è¤‡æ•°æ¡ä»¶ï¼š(DAY@10 AND DAY@20) OR WEEK@END<br>
  * <p>
- * “úŠg’£w’è‚ğg—p‚·‚éê‡‚ÍA‚»‚ÌƒL[‚ğ‰ğß‚Å‚«‚é{@link DateEvaluator}À‘•ƒNƒ‰ƒX‚ğİ’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<be>
+ * æ—¥æ‹¡å¼µæŒ‡å®šã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚­ãƒ¼ã‚’è§£é‡ˆã§ãã‚‹{@link DateEvaluator}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<be>
  *
  * @author M.Takata
  */
 public class DateKey{
     
     /**
-     * Tw’èƒvƒŒƒtƒBƒNƒX•¶š—ñB<p>
+     * é€±æŒ‡å®šãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String WEEK_AT = "WEEK@";
     
     /**
-     * Tw’èƒL[•¶š—ñ Œ—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— æœˆæ›œæ—¥ã€‚<p>
      */
     public static final String MONDAY = "MONDAY";
     
     /**
-     * Tw’èƒL[•¶š—ñ ‰Î—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— ç«æ›œæ—¥ã€‚<p>
      */
     public static final String TUESDAY = "TUESDAY";
     
     /**
-     * Tw’èƒL[•¶š—ñ …—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— æ°´æ›œæ—¥ã€‚<p>
      */
     public static final String WEDNESDAY = "WEDNESDAY";
     
     /**
-     * Tw’èƒL[•¶š—ñ –Ø—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— æœ¨æ›œæ—¥ã€‚<p>
      */
     public static final String THURSDAY = "THURSDAY";
     
     /**
-     * Tw’èƒL[•¶š—ñ ‹à—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— é‡‘æ›œæ—¥ã€‚<p>
      */
     public static final String FRIDAY = "FRIDAY";
     
     /**
-     * Tw’èƒL[•¶š—ñ “y—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— åœŸæ›œæ—¥ã€‚<p>
      */
     public static final String SATURDAY = "SATURDAY";
     
     /**
-     * Tw’èƒL[•¶š—ñ “ú—j“úB<p>
+     * é€±æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ— æ—¥æ›œæ—¥ã€‚<p>
      */
     public static final String SUNDAY = "SUNDAY";
     
     /**
-     * ”Nw’èƒvƒŒƒtƒBƒNƒX•¶š—ñB<p>
+     * å¹´æŒ‡å®šãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String YEAR_AT = "YEAR@";
     
     /**
-     * Œw’èƒvƒŒƒtƒBƒNƒX•¶š—ñB<p>
+     * æœˆæŒ‡å®šãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String MONTH_AT = "MONTH@";
     
     /**
-     * “úw’èƒvƒŒƒtƒBƒNƒX•¶š—ñB<p>
+     * æ—¥æŒ‡å®šãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String DAY_AT = "DAY@";
     
     /**
-     * ––“ú‹y‚ÑŒ––üw’èƒL[•¶š—ñB<p>
+     * æœ«æ—¥åŠã³æœˆæœ«å‘¨æŒ‡å®šã‚­ãƒ¼æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String END = "END";
     
     /**
-     * AND‰‰Zq•¶š—ñB<p>
+     * ANDæ¼”ç®—å­æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String AND = "AND";
     
     /**
-     * OR‰‰Zq•¶š—ñB<p>
+     * ORæ¼”ç®—å­æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String OR = "OR";
     
     /**
-     * NOT‰‰Zq•¶š—ñB<p>
+     * NOTæ¼”ç®—å­æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String NOT = "NOT";
     
     /**
-     * ğŒƒIƒuƒWƒFƒNƒgB<p>
+     * æ¡ä»¶ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Condition condition;
     
     /**
-     * “ú•t•]‰¿ƒIƒuƒWƒFƒNƒgB<p>
+     * æ—¥ä»˜è©•ä¾¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected DateEvaluator evaluator;
     
@@ -149,19 +149,19 @@ public class DateKey{
     };
     
     /**
-     * w’è‚³‚ê‚½“ú•tƒL[•¶š—ñ‚ğ‰ğß‚·‚é“ú•tƒL[ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’è§£é‡ˆã™ã‚‹æ—¥ä»˜ã‚­ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key “ú•tƒL[•¶š—ñ
+     * @param key æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public DateKey(String key){
         condition = parse(key, 0);
     }
     
     /**
-     * w’è‚³‚ê‚½“ú•tƒL[•¶š—ñ‚ğ‰ğß‚·‚é“ú•tƒL[ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’è§£é‡ˆã™ã‚‹æ—¥ä»˜ã‚­ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key “ú•tƒL[•¶š—ñ
-     * @param evaluator “ú•t•]‰¿
+     * @param key æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param evaluator æ—¥ä»˜è©•ä¾¡
      */
     public DateKey(String key, DateEvaluator evaluator){
         this.evaluator = evaluator;
@@ -169,7 +169,7 @@ public class DateKey{
     }
     
     /**
-     * “ú•tŠg’£ƒL[‚ğ‚ğ•]‰¿‚·‚é{@link DateEvaluator}‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜æ‹¡å¼µã‚­ãƒ¼ã‚’ã‚’è©•ä¾¡ã™ã‚‹{@link DateEvaluator}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param evaluator DateEvaluator
      */
@@ -178,7 +178,7 @@ public class DateKey{
     }
     
     /**
-     * “ú•tŠg’£ƒL[‚ğ‚ğ•]‰¿‚·‚é{@link DateEvaluator}‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜æ‹¡å¼µã‚­ãƒ¼ã‚’ã‚’è©•ä¾¡ã™ã‚‹{@link DateEvaluator}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return DateEvaluator
      */
@@ -187,12 +187,12 @@ public class DateKey{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğw’è‚³‚ê‚½‹æØ‚è•¶š‚Å•ªŠ„‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’æŒ‡å®šã•ã‚ŒãŸåŒºåˆ‡ã‚Šæ–‡å­—ã§åˆ†å‰²ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @param delims ‹æØ‚è•¶š”z—ñ
-     * @param tokens •ªŠ„‚µ‚½ƒg[ƒNƒ“‚ğŠi”[‚·‚éƒŠƒXƒg
-     * @return •ªŠ„‚µ‚½ƒg[ƒNƒ“‚ğŠi”[‚µ‚½ƒŠƒXƒg
+     * @param str æ–‡å­—åˆ—
+     * @param delims åŒºåˆ‡ã‚Šæ–‡å­—é…åˆ—
+     * @param tokens åˆ†å‰²ã—ãŸãƒˆãƒ¼ã‚¯ãƒ³ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆ
+     * @return åˆ†å‰²ã—ãŸãƒˆãƒ¼ã‚¯ãƒ³ã‚’æ ¼ç´ã—ãŸãƒªã‚¹ãƒˆ
      */
     protected List parseTokens(String str, String[] delims, List tokens){
         int index = -1;
@@ -233,11 +233,11 @@ public class DateKey{
     }
     
     /**
-     * w’è‚³‚ê‚½“ú•tƒL[•¶š—ñ‚ğAƒp[ƒX‚µ‚ÄğŒ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’ã€ãƒ‘ãƒ¼ã‚¹ã—ã¦æ¡ä»¶ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param key “ú•tƒL[•¶š—ñ
-     * @param index ƒp[ƒX’†‚Ì•¶š—ñƒCƒ“ƒfƒbƒNƒX
-     * @return ƒp[ƒX‚³‚ê‚½ğŒ
+     * @param key æ—¥ä»˜ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param index ãƒ‘ãƒ¼ã‚¹ä¸­ã®æ–‡å­—åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ‘ãƒ¼ã‚¹ã•ã‚ŒãŸæ¡ä»¶
      */
     protected Condition parse(String key, int index){
         List tokenList = parseTokens(key, DELIMETERS, new ArrayList());
@@ -324,11 +324,11 @@ public class DateKey{
     }
     
     /**
-     * w’è‚³‚ê‚½“ú•t‚ªA‚±‚Ì“ú•tƒL[‚ÉŠY“–‚·‚é“ú•t‚Å‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ãŒã€ã“ã®æ—¥ä»˜ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹æ—¥ä»˜ã§ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param date “ú•t
-     * @return w’è‚³‚ê‚½“ú•t‚ªA‚±‚Ì“ú•tƒL[‚ÉŠY“–‚·‚é“ú•t‚Å‚ ‚éê‡‚Ítrue
-     * @exception Exception “ú•t‚Ì”»’è‚É¸”s‚µ‚½ê‡
+     * @param date æ—¥ä»˜
+     * @return æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ãŒã€ã“ã®æ—¥ä»˜ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹æ—¥ä»˜ã§ã‚ã‚‹å ´åˆã¯true
+     * @exception Exception æ—¥ä»˜ã®åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean equalsDate(Date date) throws Exception{
         Calendar cal = Calendar.getInstance();
@@ -337,7 +337,7 @@ public class DateKey{
     }
     
     /**
-     * ğŒB<p>
+     * æ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -348,7 +348,7 @@ public class DateKey{
     }
     
     /**
-     * Tw’èğŒB<p>
+     * é€±æŒ‡å®šæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -411,7 +411,7 @@ public class DateKey{
     }
     
     /**
-     * ”Nw’èğŒB<p>
+     * å¹´æŒ‡å®šæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -447,7 +447,7 @@ public class DateKey{
     }
     
     /**
-     * Œw’èğŒB<p>
+     * æœˆæŒ‡å®šæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -483,7 +483,7 @@ public class DateKey{
     }
     
     /**
-     * “úw’èğŒB<p>
+     * æ—¥æŒ‡å®šæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -534,7 +534,7 @@ public class DateKey{
     }
     
     /**
-     * ANDğŒB<p>
+     * ANDæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -570,7 +570,7 @@ public class DateKey{
     }
     
     /**
-     * ORğŒB<p>
+     * ORæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */
@@ -606,7 +606,7 @@ public class DateKey{
     }
     
     /**
-     * NOTğŒB<p>
+     * NOTæ¡ä»¶ã€‚<p>
      *
      * @author M.Takata
      */

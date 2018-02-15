@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.CsvArrayList;
 //
 /**
- * •¶š—ñ”­”ÔƒT[ƒrƒXB<p>
+ * æ–‡å­—åˆ—ç™ºç•ªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author H.Nakano
  */
@@ -49,89 +49,89 @@ public class StringSequenceService extends ServiceBase
     
     private static final String C_SEMICORON = ";" ;  //$NON-NLS-1$
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾ ##
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
     
-    /** ƒV[ƒPƒ“ƒX”Ô†  */
+    /** ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ç•ªå·  */
     protected ArrayList mSequenceNo;
     
-    /** ƒtƒH[ƒ}ƒbƒg•¶š—ñ */
+    /** ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ— */
     protected String mFormat;
     
-    /** ŠJn”Ô† */
+    /** é–‹å§‹æ™‚ç•ªå· */
     protected String mInitialNumber = "";
     
-    /** ŠJnƒtƒ‰ƒO */
+    /** é–‹å§‹ãƒ•ãƒ©ã‚° */
     protected boolean mInitialFlag = true;
     
-    /** ƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX–¼ */
+    /** ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName contextServiceName;
     
-    /** ‰i‘±‰»ƒtƒ@ƒCƒ‹–¼ */
+    /** æ°¸ç¶šåŒ–ãƒ•ã‚¡ã‚¤ãƒ«å */
     protected String persistFile;
     
-    /** ”­”Ô–ˆ‰i‘±‰»ƒtƒ‰ƒO */
+    /** ç™ºç•ªæ¯æ°¸ç¶šåŒ–ãƒ•ãƒ©ã‚° */
     protected boolean isPersistEveryTime;
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public void setFormat(String format){
         mFormat = format;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public String getFormat(){
         return mFormat;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public void setPersistFile(String file){
         persistFile = file;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public String getPersistFile(){
         return persistFile;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public void setPersistEveryTime(boolean isEveryTime){
         isPersistEveryTime = isEveryTime;
     }
     
-    // StringSequenceServiceMBean ‚ÌJavaDoc
+    // StringSequenceServiceMBean ã®JavaDoc
     public boolean isPersistEveryTime(){
         return isPersistEveryTime;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         mSequenceNo = new ArrayList();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
         mInitialFlag = true;
         mInitialNumber = "";
         
-        // format‚ğŒ…‹æØ‚è‚Å•ª‰ğ‚·‚é
+        // formatã‚’æ¡åŒºåˆ‡ã‚Šã§åˆ†è§£ã™ã‚‹
         CsvArrayList parser = new CsvArrayList();
         parser.split(mFormat, C_SEMICORON);
         
@@ -156,7 +156,7 @@ public class StringSequenceService extends ServiceBase
             }
         }
         
-        // ŠeŒ…î•ñ‚ğƒCƒ“ƒXƒ^ƒ“ƒVƒ“ƒO‚µ‚ÄƒŠƒXƒg‚ÉŠi”[‚·‚é
+        // å„æ¡æƒ…å ±ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚·ãƒ³ã‚°ã—ã¦ãƒªã‚¹ãƒˆã«æ ¼ç´ã™ã‚‹
         for(int i = 0, max = parser.size(); i < max; i++){
             String formatItem = (String)parser.get(i);
             String persistItem = null;
@@ -186,9 +186,9 @@ public class StringSequenceService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService(){
         if(persistFile != null){
@@ -198,39 +198,39 @@ public class StringSequenceService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService(){
         mSequenceNo = null;
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public String increment(){
         StringBuilder retStr = new StringBuilder();
         synchronized(this){
-            // Œ…”‚Ì[‚³‚ğæ“¾‚·‚é
+            // æ¡æ•°ã®æ·±ã•ã‚’å–å¾—ã™ã‚‹
             int maxCnt = mSequenceNo.size();
             
-            // ‚P‚¯‚½–Ú‚©‚çƒCƒ“ƒNƒŠƒƒ“ƒg‚ğŠJn‚·‚é
+            // ï¼‘ã‘ãŸç›®ã‹ã‚‰ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã‚’é–‹å§‹ã™ã‚‹
             for(int rCnt = --maxCnt; rCnt >= 0; rCnt--){
                 final SequenceVariable item
                      = (SequenceVariable)mSequenceNo.get(rCnt) ;
                 //increment
                 boolean isOverFlow = item.increment();
-                // ƒI[ƒo[ƒtƒ[‚µ‚È‚¢ê‡‚Í‚¯‚½ã‚ª‚è‚È‚µ
+                // ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã—ãªã„å ´åˆã¯ã‘ãŸä¸ŠãŒã‚Šãªã—
                 if(!isOverFlow){
                     break;
                 }
             }
-            // ƒJƒŒƒ“ƒg•¶š‚ğ‡¬‚µ”­”Ô•¶š‚ğ¶¬‚·‚é
+            // ã‚«ãƒ¬ãƒ³ãƒˆæ–‡å­—ã‚’åˆæˆã—ç™ºç•ªæ–‡å­—ã‚’ç”Ÿæˆã™ã‚‹
             for(Iterator iterator = mSequenceNo.iterator(); iterator.hasNext();){
                 SequenceVariable item = (SequenceVariable)iterator.next();
                 retStr.append(item.getCurrent());
             }
             if(mInitialFlag){
-                //ŠJn”Ô†‚ğ•Û‘¶
+                //é–‹å§‹ç•ªå·ã‚’ä¿å­˜
                 mInitialNumber = retStr.toString();
                 mInitialFlag = false;
             }
@@ -242,7 +242,7 @@ public class StringSequenceService extends ServiceBase
     }
     
     /**
-     * Œ»İ”­”Ô‚³‚ê‚Ä‚¢‚éÅŒã‚Ì”Ô†‚ğƒtƒ@ƒCƒ‹‚É‰i‘±‰»‚·‚éB<p>
+     * ç¾åœ¨ç™ºç•ªã•ã‚Œã¦ã„ã‚‹æœ€å¾Œã®ç•ªå·ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«æ°¸ç¶šåŒ–ã™ã‚‹ã€‚<p>
      */
     protected void persistSequence(){
         FileWriter fw = null;
@@ -268,26 +268,26 @@ public class StringSequenceService extends ServiceBase
         }
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public void reset(){
         synchronized(this){
-            /** ƒJƒŒƒ“ƒg•¶š‚ğ‡¬‚µ”­”Ô•¶š‚ğ¶¬‚·‚é */
+            /** ã‚«ãƒ¬ãƒ³ãƒˆæ–‡å­—ã‚’åˆæˆã—ç™ºç•ªæ–‡å­—ã‚’ç”Ÿæˆã™ã‚‹ */
             for(Iterator iterator = mSequenceNo.iterator(); iterator.hasNext();){
                 final SequenceVariable item = (SequenceVariable)iterator.next();
                 item.clear();
             }
-            //ŠJnƒtƒ‰ƒO‚ğtrue‚É‚·‚éB
+            //é–‹å§‹ãƒ•ãƒ©ã‚°ã‚’trueã«ã™ã‚‹ã€‚
             mInitialFlag = true;
             mInitialNumber = "";
         }
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public String getInitial(){
         return mInitialNumber;
     }
     
-    // Sequence‚ÌJavaDoc
+    // Sequenceã®JavaDoc
     public String getCurrent(){
         StringBuilder retStr = new StringBuilder();
         synchronized(this){

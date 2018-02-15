@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol;
 
 /**
- * Beanƒtƒ[ŠÄ‹B<p>
+ * Beanãƒ•ãƒ­ãƒ¼ç›£è¦–ã€‚<p>
  * 
  * @author M.Takata
  */

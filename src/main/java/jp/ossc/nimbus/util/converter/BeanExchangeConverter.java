@@ -54,7 +54,7 @@ import jp.ossc.nimbus.beans.dataset.PropertySchemaDefineException;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * BeanŒğŠ·ƒRƒ“ƒo[ƒ^B<p>
+ * Beanäº¤æ›ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -70,25 +70,25 @@ public class BeanExchangeConverter implements BindingConverter{
     private boolean isMakeSchema;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BeanExchangeConverter(){
     }
     
     /**
-     * w’è‚µ‚½ŒğŠ·ƒ}ƒbƒsƒ“ƒO‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸäº¤æ›ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param mapping ŒğŠ·‚·‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æo—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param mapping äº¤æ›ã™ã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public BeanExchangeConverter(Map mapping){
         setPropertyMappings(mapping);
     }
     
     /**
-     * w’è‚µ‚½ŒğŠ·ƒ}ƒbƒsƒ“ƒO‚Æo—ÍƒIƒuƒWƒFƒNƒg‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸäº¤æ›ãƒãƒƒãƒ”ãƒ³ã‚°ã¨å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param mapping ŒğŠ·‚·‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æo—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO
-     * @param output o—ÍƒIƒuƒWƒFƒNƒg
+     * @param mapping äº¤æ›ã™ã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°
+     * @param output å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public BeanExchangeConverter(Map mapping, Object output){
         setPropertyMappings(mapping);
@@ -96,28 +96,28 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param obj o—ÍƒIƒuƒWƒFƒNƒg
+     * @param obj å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setOutputObject(Object obj){
         output = obj;
     }
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return o—ÍƒIƒuƒWƒFƒNƒg
+     * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getOutputObject(){
         return output;
     }
     
     /**
-     * ŒğŠ·‚·‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æo—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * äº¤æ›ã™ã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param inputProperty “ü—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒB
-     * @param outputProperty ’l‚ªo—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒB
+     * @param inputProperty å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @param outputProperty å€¤ãŒå‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setPropertyMapping(String inputProperty, String outputProperty){
         if(propertyMapping == null){
@@ -139,10 +139,10 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * w’è‚µ‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éo—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param inputProperty ƒL[‚ª“ü—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒB
-     * @return o—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒB‚Ü‚½‚Í‚»‚ÌƒŠƒXƒg
+     * @param inputProperty ã‚­ãƒ¼ãŒå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¾ãŸã¯ãã®ãƒªã‚¹ãƒˆ
      */
     public Object getPropertyMapping(String inputProperty){
         if(propertyMapping == null){
@@ -152,66 +152,66 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * ŒğŠ·‚·‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æo—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * äº¤æ›ã™ã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ƒL[‚ª“ü—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒBA’l‚ªo—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒB‚Æ‚È‚éƒ}ƒbƒsƒ“ƒO
+     * @param mapping ã‚­ãƒ¼ãŒå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€å€¤ãŒå‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ãªã‚‹ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setPropertyMappings(Map mapping){
         propertyMapping = mapping;
     }
     
     /**
-     * ŒğŠ·‚·‚é“ü—ÍƒIƒuƒWƒFƒNƒg‚Æo—ÍƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * äº¤æ›ã™ã‚‹å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ª“ü—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒBA’l‚ªo—ÍƒIƒuƒWƒFƒNƒg‘¤‚ÌƒvƒƒpƒeƒB‚Æ‚È‚éƒ}ƒbƒsƒ“ƒO
+     * @return ã‚­ãƒ¼ãŒå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€å€¤ãŒå‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå´ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ãªã‚‹ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getPropertyMappings(){
         return propertyMapping;
     }
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ğ•¡»‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¤‡è£½ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isClone •¡»‚·‚éê‡Atrue
+     * @param isClone è¤‡è£½ã™ã‚‹å ´åˆã€true
      */
     public void setCloneOutput(boolean isClone){
         isCloneOutput = isClone;
     }
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ğ•¡»‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¤‡è£½ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A•¡»‚·‚é
+     * @return trueã®å ´åˆã€è¤‡è£½ã™ã‚‹
      */
     public boolean isCloneOutput(){
         return isCloneOutput;
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ApublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isFieldOnly(){
         return isFieldOnly;
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      *
-     * @param isFieldOnly publicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡‚ÍAtrue
+     * @param isFieldOnly publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setFieldOnly(boolean isFieldOnly){
         this.isFieldOnly = isFieldOnly;
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @return true‚Ìê‡ApublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @return trueã®å ´åˆã€publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isFieldOnly(Class type){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -219,11 +219,11 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param isFieldOnly publicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡‚ÍAtrue
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param isFieldOnly publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setFieldOnly(Class type, boolean isFieldOnly){
         if(propertyAccessTypeMap == null){
@@ -238,10 +238,10 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Éo—Í‚µ‚È‚¢ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«å‡ºåŠ›ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param names ƒvƒƒpƒeƒB–¼‚Ì”z—ñ
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param names ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é…åˆ—
      */
     public void setDisabledPropertyNames(Class type, String[] names){
         if(propertyAccessTypeMap == null){
@@ -267,10 +267,10 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Éo—Í‚·‚éƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param names ƒvƒƒpƒeƒB–¼‚Ì”z—ñ
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param names ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é…åˆ—
      */
     public void setEnabledPropertyNames(Class type, String[] names){
         if(propertyAccessTypeMap == null){
@@ -296,11 +296,11 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Éo—Í‚·‚éƒvƒƒpƒeƒB–¼‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return o—Í‚·‚éê‡true
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public boolean isEnabledPropertyName(Class type, String name){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -317,29 +317,29 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Apublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isAccessorOnly(){
         return isAccessorOnly;
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      *
-     * @param isAccessorOnly public‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡Atrue
+     * @param isAccessorOnly publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã€true
      */
     public void setAccessorOnly(boolean isAccessorOnly){
         this.isAccessorOnly = isAccessorOnly;
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @return true‚Ìê‡Apublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @return trueã®å ´åˆã€publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isAccessorOnly(Class type){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -347,11 +347,11 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param isAccessorOnly public‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡Atrue
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param isAccessorOnly publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã€true
      */
     public void setAccessorOnly(Class type, boolean isAccessorOnly){
         if(propertyAccessTypeMap == null){
@@ -366,42 +366,42 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚ªRecord‚ÅƒXƒL[ƒ}’è‹`‚ªs‚í‚ê‚Ä‚¢‚È‚¢ê‡‚ÉA•ÏŠ·‘ÎÛƒIƒuƒWƒFƒNƒg‚ÌŠeƒtƒB[ƒ‹ƒh‚ÌŒ^‚É‘¦‚µ‚½ƒXƒL[ƒ}’è‹`‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒRecordã§ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒè¡Œã‚ã‚Œã¦ã„ãªã„å ´åˆã«ã€å¤‰æ›å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å‹ã«å³ã—ãŸã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒXƒL[ƒ}‚ğì¬‚·‚é
+     * @return trueã®å ´åˆã€ã‚¹ã‚­ãƒ¼ãƒã‚’ä½œæˆã™ã‚‹
      */
     public boolean isMakeSchema(){
         return isMakeSchema;
     }
     
     /**
-     * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚ªRecord‚ÅƒXƒL[ƒ}’è‹`‚ªs‚í‚ê‚Ä‚¢‚È‚¢ê‡‚ÉA•ÏŠ·‘ÎÛƒIƒuƒWƒFƒNƒg‚ÌŠeƒtƒB[ƒ‹ƒh‚ÌŒ^‚É‘¦‚µ‚½ƒXƒL[ƒ}’è‹`‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse‚ÅAì¬‚µ‚È‚¢B<br>
+     * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒRecordã§ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒè¡Œã‚ã‚Œã¦ã„ãªã„å ´åˆã«ã€å¤‰æ›å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å‹ã«å³ã—ãŸã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã§ã€ä½œæˆã—ãªã„ã€‚<br>
      *
-     * @param isMake ƒXƒL[ƒ}‚ğì¬‚·‚éê‡Atrue
+     * @param isMake ã‚¹ã‚­ãƒ¼ãƒã‚’ä½œæˆã™ã‚‹å ´åˆã€true
      */
     public void setMakeSchema(boolean isMake){
         isMakeSchema = isMake;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         return convert(obj, output);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param input •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @param output •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param input å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param output å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object input, Object output) throws ConvertException{
         return convert(input, output, isCloneOutput);
@@ -591,7 +591,7 @@ public class BeanExchangeConverter implements BindingConverter{
                 try{
                     ((Record)output).setSchema(buf.toString());
                 }catch(PropertySchemaDefineException e){
-                    // ‹N‚±‚ç‚È‚¢
+                    // èµ·ã“ã‚‰ãªã„
                 }
             }
         }
@@ -651,24 +651,24 @@ public class BeanExchangeConverter implements BindingConverter{
     private class PropertyAccessType{
         
         /**
-         * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+         * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
          */
         public boolean isFieldOnly = false;
         
         /**
-         * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+         * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
          */
         public boolean isAccessorOnly = true;
         
         /**
-         * o—Í‚µ‚È‚¢ƒvƒƒpƒeƒB–¼‚ÌW‡B<p>
+         * å‡ºåŠ›ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆã€‚<p>
          */
         public Set disabledPropertyNames;
         
         /**
-         * o—Í‚·‚éƒvƒƒpƒeƒB–¼‚ÌW‡B<p>
+         * å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆã€‚<p>
          */
         public Set enabledPropertyNames;
     }

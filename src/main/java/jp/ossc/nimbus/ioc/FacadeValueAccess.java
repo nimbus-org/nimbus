@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc;
 
 /**
- * EJBƒpƒ‰ƒ[ƒ^‘€ìƒNƒ‰ƒX<p>
+ * EJBãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æ“ä½œã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0

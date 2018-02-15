@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodSynchronizeInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MethodSynchronizeInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MethodSynchronizeInterceptorService
@@ -42,30 +42,30 @@ import jp.ossc.nimbus.core.*;
 public interface MethodSynchronizeInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * VM’PˆÊ‚Å“¯Šú‚·‚é“¯ŠúƒXƒR[ƒvB<p>
+     * VMå˜ä½ã§åŒæœŸã™ã‚‹åŒæœŸã‚¹ã‚³ãƒ¼ãƒ—ã€‚<p>
      */
     public static final String SCOPE_VM = "VM";
     
     /**
-     * ƒNƒ‰ƒX’PˆÊ‚Å“¯Šú‚·‚é“¯ŠúƒXƒR[ƒvB<p>
+     * ã‚¯ãƒ©ã‚¹å˜ä½ã§åŒæœŸã™ã‚‹åŒæœŸã‚¹ã‚³ãƒ¼ãƒ—ã€‚<p>
      */
     public static final String SCOPE_CLASS = "CLASS";
     
     /**
-     * ƒƒ\ƒbƒh’PˆÊ‚Å“¯Šú‚·‚é“¯ŠúƒXƒR[ƒvB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å˜ä½ã§åŒæœŸã™ã‚‹åŒæœŸã‚¹ã‚³ãƒ¼ãƒ—ã€‚<p>
      */
     public static final String SCOPE_METHOD = "METHOD";
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX’PˆÊ‚Å“¯Šú‚·‚é“¯ŠúƒXƒR[ƒvB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å˜ä½ã§åŒæœŸã™ã‚‹åŒæœŸã‚¹ã‚³ãƒ¼ãƒ—ã€‚<p>
      */
     public static final String SCOPE_INSTANCE = "INSTANCE";
     
     /**
-     * “¯Šú‚ğæ‚éƒXƒR[ƒv‚ğİ’è‚·‚éB<p>
+     * åŒæœŸã‚’å–ã‚‹ã‚¹ã‚³ãƒ¼ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param scope “¯ŠúƒXƒR[ƒv
-     * @exception IllegalArgumentException w’è‚³‚ê‚½“¯ŠúƒXƒR[ƒv‚ª•s³‚Èê‡
+     * @param scope åŒæœŸã‚¹ã‚³ãƒ¼ãƒ—
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸåŒæœŸã‚¹ã‚³ãƒ¼ãƒ—ãŒä¸æ­£ãªå ´åˆ
      * @see #SCOPE_VM
      * @see #SCOPE_CLASS
      * @see #SCOPE_METHOD
@@ -74,9 +74,9 @@ public interface MethodSynchronizeInterceptorServiceMBean extends ServiceBaseMBe
     public void setScope(String scope) throws IllegalArgumentException;
     
     /**
-     * “¯Šú‚ğæ‚éƒXƒR[ƒv‚ğæ“¾‚·‚éB<p>
+     * åŒæœŸã‚’å–ã‚‹ã‚¹ã‚³ãƒ¼ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “¯ŠúƒXƒR[ƒv
+     * @return åŒæœŸã‚¹ã‚³ãƒ¼ãƒ—
      */
     public String getScope();
 }

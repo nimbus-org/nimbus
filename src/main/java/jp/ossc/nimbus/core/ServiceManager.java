@@ -37,10 +37,10 @@ import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.repository.*;
 import jp.ossc.nimbus.service.message.MessageRecordFactory;
 /**
- * ƒT[ƒrƒXŠÇ—ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * {@link Service}ƒCƒ“ƒXƒ^ƒ“ƒX‚É–¼‘O‚ğ•t‚¯‚ÄŠÇ—‚µA’ñ‹Ÿ‚·‚éƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
- * ƒT[ƒrƒX‚Ì“o˜^A“o˜^‰ğœAæ“¾‚È‚Ç‚ÌƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒƒ\ƒbƒh‚ÆAƒT[ƒrƒX‚Ì“o˜^æ‚Æ‚È‚é{@link Repository}‚ğİ’è‚·‚éƒƒ\ƒbƒh‚ğ‚ÂB<br>
- * ‚Ü‚½A{@link Service}‚ÌƒTƒuƒCƒ“ƒ^ƒtƒF[ƒX‚Æ‚È‚Á‚Ä‚¢‚é‚½‚ßAÀ‘•ƒNƒ‰ƒX‚ÍƒT[ƒrƒX‚Æ‚µ‚ÄÀ‘•‚³‚ê‚éBX‚ÉA{@link RegistrationBroadcaster}‚ÌƒTƒuƒCƒ“ƒ^ƒtƒF[ƒX‚Æ‚È‚Á‚Ä‚¨‚èAÀ‘•ƒNƒ‰ƒX‚ÍƒT[ƒrƒX‚Ì“o˜^E“o˜^‰ğœ‚ğ{@link RegistrationListener}‚É’Ê’m‚·‚éÓ”C‚ğ•‰‚¤B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * {@link Service}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«åå‰ã‚’ä»˜ã‘ã¦ç®¡ç†ã—ã€æä¾›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²ã€ç™»éŒ²è§£é™¤ã€å–å¾—ãªã©ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆã¨ãªã‚‹{@link Repository}ã‚’è¨­å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤ã€‚<br>
+ * ã¾ãŸã€{@link Service}ã®ã‚µãƒ–ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã¨ãªã£ã¦ã„ã‚‹ãŸã‚ã€å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦å®Ÿè£…ã•ã‚Œã‚‹ã€‚æ›´ã«ã€{@link RegistrationBroadcaster}ã®ã‚µãƒ–ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã¨ãªã£ã¦ãŠã‚Šã€å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ã‚’{@link RegistrationListener}ã«é€šçŸ¥ã™ã‚‹è²¬ä»»ã‚’è² ã†ã€‚<br>
  *
  * @author M.Takata
  */
@@ -48,481 +48,481 @@ public interface ServiceManager
  extends ServiceBaseMBean, RegistrationBroadcaster{
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒrƒX–¼B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     public static final String DEFAULT_NAME = "Nimbus";
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚Åæ“¾‚Å‚«‚éƒIƒuƒWƒFƒNƒg‚ÍAƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒCƒ“ƒ^ƒtƒF[ƒX‚ÉƒLƒƒƒXƒg‚Å‚«‚é‚Æ‚ÍŒÀ‚ç‚È‚¢B<br>
-     * ƒT[ƒrƒX‚Ì¶¬E‹N“®E’â~E”jŠü‚È‚Ç‚Ì‘€ì‚ğs‚¢‚½‚¢ê‡‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ÅƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã§ãã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã«ã‚­ãƒ£ã‚¹ãƒˆã§ãã‚‹ã¨ã¯é™ã‚‰ãªã„ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆãƒ»èµ·å‹•ãƒ»åœæ­¢ãƒ»ç ´æ£„ãªã©ã®æ“ä½œã‚’è¡Œã„ãŸã„å ´åˆã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX‚Ì–¼‘O
-     * @return ServiceƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @return Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public Service getService(String name) throws ServiceNotFoundException;
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚Åæ“¾‚Å‚«‚éƒIƒuƒWƒFƒNƒg‚ÍAƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒCƒ“ƒ^ƒtƒF[ƒX‚ÉƒLƒƒƒXƒg‚Å‚«‚é–‚ğ•ÛØ‚·‚éB<br>
-     * ƒT[ƒrƒX‚Ì¶¬E‹N“®E’â~E”jŠü‚È‚Ç‚Ì‘€ì‚ğs‚¢‚½‚¢ê‡‚ÍA{@link #getService(String)}‚ÅƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã§ãã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã«ã‚­ãƒ£ã‚¹ãƒˆã§ãã‚‹äº‹ã‚’ä¿è¨¼ã™ã‚‹ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆãƒ»èµ·å‹•ãƒ»åœæ­¢ãƒ»ç ´æ£„ãªã©ã®æ“ä½œã‚’è¡Œã„ãŸã„å ´åˆã¯ã€{@link #getService(String)}ã§ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX‚Ì–¼‘O
-     * @return ServiceƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @return Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public Object getServiceObject(String name) throws ServiceNotFoundException;
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ğ’Ê’m‚·‚é{@link ServiceStateBroadcaster}‚ğæ“¾‚·‚éB<p>
-     * “o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX‚ÌServiceStateBroadcaster‚Íæ“¾‚Å‚«‚È‚¢B<br>
-     * ‚Ü‚½A{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğ’¼ÚÀ‘•‚µ‚½ƒT[ƒrƒX‚ğ“o˜^‚µ‚½ê‡A‚»‚ÌƒNƒ‰ƒX‚ªServiceStateBroadcaster‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢‚Ææ“¾‚Å‚«‚È‚¢B<br>
+     * æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ã‚’é€šçŸ¥ã™ã‚‹{@link ServiceStateBroadcaster}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹ã®ServiceStateBroadcasterã¯å–å¾—ã§ããªã„ã€‚<br>
+     * ã¾ãŸã€{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ç›´æ¥å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã—ãŸå ´åˆã€ãã®ã‚¯ãƒ©ã‚¹ãŒServiceStateBroadcasterã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã¨å–å¾—ã§ããªã„ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX‚Ì–¼‘O
-     * @return ServiceStateBroadcasterƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @return ServiceStateBroadcasterã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public ServiceStateBroadcaster getServiceStateBroadcaster(String name)
      throws ServiceNotFoundException;
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒT[ƒrƒX‚Ì’è‹`î•ñ‚ğæ“¾‚·‚éB<p>
-     * {@link ServiceLoader}‚Åƒ[ƒh‚µ‚½ƒT[ƒrƒX‚Ì’è‹`î•ñ‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link ServiceLoader}ã§ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      * 
-     * @param name ƒT[ƒrƒX‚Ì–¼‘O
-     * @return ƒT[ƒrƒX’è‹`î•ñ
-     * @exception ServiceNotFoundException ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±
+     * @exception ServiceNotFoundException ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public ServiceMetaData getServiceMetaData(String name)
      throws ServiceNotFoundException;
     
     /**
-     * ƒT[ƒrƒX‚ğ“o˜^‚·‚éB<p>
-     * obj‚Éw’è‚·‚éƒIƒuƒWƒFƒNƒg‚ª{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg‚Éƒ‰ƒbƒv‚³‚ê‚Ä“o˜^‚³‚ê‚éB‚±‚ê‚É‚æ‚èA”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚ğƒT[ƒrƒX‚Æ“¯—l‚Éˆµ‚¤–‚ª‚Å‚«‚éB<br>
-     * ’A‚µAƒT[ƒrƒX‚ÌÀ‘•‚ÉˆË‘¶‚µ‚Ä“®ì“I‚È§ŒÀ‚Í”­¶‚·‚éBˆÈ‰º‚ÉAƒT[ƒrƒX‚Æ‚µ‚Ä“o˜^‚·‚éƒIƒuƒWƒFƒNƒg‚ğA„§‚·‚éÀ‘••û–@‚Ì‡‚ÅAà–¾‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
+     * objã«æŒ‡å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒ{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„å ´åˆã¯ã€Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãƒ©ãƒƒãƒ—ã•ã‚Œã¦ç™»éŒ²ã•ã‚Œã‚‹ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚µãƒ¼ãƒ“ã‚¹ã¨åŒæ§˜ã«æ‰±ã†äº‹ãŒã§ãã‚‹ã€‚<br>
+     * ä½†ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã«ä¾å­˜ã—ã¦å‹•ä½œçš„ãªåˆ¶é™ã¯ç™ºç”Ÿã™ã‚‹ã€‚ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€æ¨å¥¨ã™ã‚‹å®Ÿè£…æ–¹æ³•ã®é †ã§ã€èª¬æ˜ã™ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link ServiceBase}‚ÌƒTƒuƒNƒ‰ƒX<br>ˆø”‚È‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å¶¬‚³‚ê‚éBƒ[ƒh‚ÉA{@link ServiceBase#setServiceName(String)}A{@link ServiceBase#createService()}A{@link ServiceBase#startService()}‚ğŒÄ‚Ño‚·B‚Ü‚½A{@link ServiceManager#create()}A{@link ServiceManager#start()}A{@link ServiceManager#stop()}A{@link ServiceManager#destroy()}‚ğŒÄ‚Ño‚·‚ÆA“o˜^‚³‚ê‚Ä‚¢‚éService‚Ì‘Î‰‚·‚éƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·BServiceBase‚ÍAJMX‚É‘Î‰‚µ‚Ä‚¨‚è{@link ServiceBaseMBean}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğMBeanƒCƒ“ƒ^ƒtƒF[ƒX‚Æ‚µ‚Ä‚Á‚Ä‚¢‚éB</li>
-     *   <li>{@link FactoryServiceBase}‚ÌƒTƒuƒNƒ‰ƒX<br>FactoryServiceBase‚ÍAServiceBase‚ÌƒTƒuƒNƒ‰ƒX‚Å‚ ‚é‚½‚ßAã‹L‚ÌServiceBase‚ÌƒTƒuƒNƒ‰ƒX‚É€‹’‚·‚éB’A‚µA{@link ServiceManager#getServiceObject(String)}‚ğŒÄ‚Ño‚³‚ê‚½ê‡AFactoryServiceBase‚ÌÀ‘•ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Í•Ô‚³‚¸‚ÉA{@link FactoryService#newInstance()}‚Å¶¬‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B</li>
-     *  <li>{@link ServiceBaseSupport}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒX<br>ˆø”‚È‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å¶¬‚³‚êAServiceBaseƒNƒ‰ƒX‚Åƒ‰ƒbƒv‚³‚ê‚ÄAServiceManager‚É“o˜^‚³‚ê‚éBƒ[ƒh‚ÉA{@link ServiceBase#createService()}A{@link ServiceBase#startService()}‚ğŒÄ‚Ño‚·B‚Ü‚½AServiceManager.create()AServiceManager.start()AServiceManager.stop()AServiceManager.destroy()‚ğŒÄ‚Ño‚·‚ÆAServiceManager‚É“o˜^‚³‚ê‚Ä‚¢‚éServiceBaseƒIƒuƒWƒFƒNƒg‚ğ’Ê‚µ‚ÄA{@link ServiceBaseSupport#createService()}A{@link ServiceBaseSupport#startService()}A{@link ServiceBaseSupport#stopService()}A{@link ServiceBaseSupport#destroyService()}‚ğŒÄ‚Ño‚·Bƒ‰ƒbƒp[‚Å‚ ‚éServiceBase‚ªAJMX‚É‘Î‰‚µ‚Ä‚¢‚é‚½‚ßAServiceManager‚É“o˜^‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚ÍAServiceBaseMBeanƒCƒ“ƒ^ƒtƒF[ƒX‚ğMBeanƒCƒ“ƒ^ƒtƒF[ƒX‚Æ‚µ‚Ä‚ÂB‚Ü‚½A{@link FactoryService}ƒCƒ“ƒ^ƒtƒF[ƒX‚àÀ‘•‚·‚ê‚ÎAã‹L‚ÌFactoryServiceBase‚ÌƒTƒuƒNƒ‰ƒX‚É€‹’‚µ‚½“®ì‚ğ‚·‚éB</li>
-     *   <li>{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒX<br>ˆø”‚È‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å¶¬‚³‚ê‚éBƒ[ƒh‚ÉA{@link Service#setServiceName(String)}A{@link Service#create()}A{@link Service#start()}‚ğŒÄ‚Ño‚·B‚Ü‚½AServiceManager.create()AServiceManager.start()AServiceManager.stop()AServiceManager.destroy()‚ğŒÄ‚Ño‚·‚ÆAService‚Ì‘Î‰‚·‚éƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·B’A‚µA{@link Service#getState()}‚É‘Î‚·‚éÀ‘•‚ÌÓ”C‚ğ•‰‚¤•K—v‚ª‚ ‚éBJMX‚É‚ÍA‘Î‰‚µ‚Ä‚¢‚È‚¢‚Ì‚ÅA‘Î‰‚·‚é‚½‚ß‚É‚ÍA“Æ©‚ÉMBeanÀ‘•‚ğs‚¤•K—v‚ª‚ ‚éB</li>
-     *   <li>ã‹LˆÈŠO‚ÌƒNƒ‰ƒX<br>ˆø”‚È‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å¶¬‚³‚ê‚éBServiceBaseSupportƒCƒ“ƒ^ƒtƒF[ƒX‚Åƒ‰ƒbƒv‚³‚êAX‚ÉServiceBaseƒNƒ‰ƒX‚Éƒ‰ƒbƒv‚³‚ê‚ÄAServiceManager‚É“o˜^‚³‚ê‚éBService.create()AService.start()AService.stop()AService.destroy()‚Æ“¯‚¶ƒVƒOƒjƒ`ƒƒ‚Ìƒƒ\ƒbƒh‚ğ‚Á‚Ä‚¢‚éê‡‚ÍAã‹L‚ÌServiceBase‚ÌƒTƒuƒNƒ‰ƒX‚Æ“¯‚¶“®ì‚ğ‚·‚éB‚»‚êˆÈŠO‚Ìê‡‚ÍAServiceManager.create()‚ğŒÄ‚Ño‚·‚ÆAServiceManager‚Ö©•ª©g‚ğ“o˜^‚·‚é–‚ÆAServiceManager.destroy()‚ğŒÄ‚Ño‚·‚ÆAServiceManager‚©‚ç©•ª©g‚ğíœ‚·‚éB‚Ü‚½AService#getState()‚ÍA{@link Service#CREATED}A{@link Service#DESTROYED}ˆÈŠO‚Ìó‘Ô‚Í{@link Service#UNKNOWN}‚Æ‚È‚éB</li>
+     *   <li>{@link ServiceBase}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹<br>å¼•æ•°ãªã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ç”Ÿæˆã•ã‚Œã‚‹ã€‚ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã€{@link ServiceBase#setServiceName(String)}ã€{@link ServiceBase#createService()}ã€{@link ServiceBase#startService()}ã‚’å‘¼ã³å‡ºã™ã€‚ã¾ãŸã€{@link ServiceManager#create()}ã€{@link ServiceManager#start()}ã€{@link ServiceManager#stop()}ã€{@link ServiceManager#destroy()}ã‚’å‘¼ã³å‡ºã™ã¨ã€ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹Serviceã®å¯¾å¿œã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã€‚ServiceBaseã¯ã€JMXã«å¯¾å¿œã—ã¦ãŠã‚Š{@link ServiceBaseMBean}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã—ã¦æŒã£ã¦ã„ã‚‹ã€‚</li>
+     *   <li>{@link FactoryServiceBase}ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹<br>FactoryServiceBaseã¯ã€ServiceBaseã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ãŸã‚ã€ä¸Šè¨˜ã®ServiceBaseã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«æº–æ‹ ã™ã‚‹ã€‚ä½†ã—ã€{@link ServiceManager#getServiceObject(String)}ã‚’å‘¼ã³å‡ºã•ã‚ŒãŸå ´åˆã€FactoryServiceBaseã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯è¿”ã•ãšã«ã€{@link FactoryService#newInstance()}ã§ç”Ÿæˆã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚</li>
+     *  <li>{@link ServiceBaseSupport}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹<br>å¼•æ•°ãªã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ç”Ÿæˆã•ã‚Œã€ServiceBaseã‚¯ãƒ©ã‚¹ã§ãƒ©ãƒƒãƒ—ã•ã‚Œã¦ã€ServiceManagerã«ç™»éŒ²ã•ã‚Œã‚‹ã€‚ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã€{@link ServiceBase#createService()}ã€{@link ServiceBase#startService()}ã‚’å‘¼ã³å‡ºã™ã€‚ã¾ãŸã€ServiceManager.create()ã€ServiceManager.start()ã€ServiceManager.stop()ã€ServiceManager.destroy()ã‚’å‘¼ã³å‡ºã™ã¨ã€ServiceManagerã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceBaseã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é€šã—ã¦ã€{@link ServiceBaseSupport#createService()}ã€{@link ServiceBaseSupport#startService()}ã€{@link ServiceBaseSupport#stopService()}ã€{@link ServiceBaseSupport#destroyService()}ã‚’å‘¼ã³å‡ºã™ã€‚ãƒ©ãƒƒãƒ‘ãƒ¼ã§ã‚ã‚‹ServiceBaseãŒã€JMXã«å¯¾å¿œã—ã¦ã„ã‚‹ãŸã‚ã€ServiceManagerã«ç™»éŒ²ã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€ServiceBaseMBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã—ã¦æŒã¤ã€‚ã¾ãŸã€{@link FactoryService}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚‚å®Ÿè£…ã™ã‚Œã°ã€ä¸Šè¨˜ã®FactoryServiceBaseã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«æº–æ‹ ã—ãŸå‹•ä½œã‚’ã™ã‚‹ã€‚</li>
+     *   <li>{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹<br>å¼•æ•°ãªã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ç”Ÿæˆã•ã‚Œã‚‹ã€‚ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã€{@link Service#setServiceName(String)}ã€{@link Service#create()}ã€{@link Service#start()}ã‚’å‘¼ã³å‡ºã™ã€‚ã¾ãŸã€ServiceManager.create()ã€ServiceManager.start()ã€ServiceManager.stop()ã€ServiceManager.destroy()ã‚’å‘¼ã³å‡ºã™ã¨ã€Serviceã®å¯¾å¿œã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã€‚ä½†ã—ã€{@link Service#getState()}ã«å¯¾ã™ã‚‹å®Ÿè£…ã®è²¬ä»»ã‚’è² ã†å¿…è¦ãŒã‚ã‚‹ã€‚JMXã«ã¯ã€å¯¾å¿œã—ã¦ã„ãªã„ã®ã§ã€å¯¾å¿œã™ã‚‹ãŸã‚ã«ã¯ã€ç‹¬è‡ªã«MBeanå®Ÿè£…ã‚’è¡Œã†å¿…è¦ãŒã‚ã‚‹ã€‚</li>
+     *   <li>ä¸Šè¨˜ä»¥å¤–ã®ã‚¯ãƒ©ã‚¹<br>å¼•æ•°ãªã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ç”Ÿæˆã•ã‚Œã‚‹ã€‚ServiceBaseSupportã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ãƒ©ãƒƒãƒ—ã•ã‚Œã€æ›´ã«ServiceBaseã‚¯ãƒ©ã‚¹ã«ãƒ©ãƒƒãƒ—ã•ã‚Œã¦ã€ServiceManagerã«ç™»éŒ²ã•ã‚Œã‚‹ã€‚Service.create()ã€Service.start()ã€Service.stop()ã€Service.destroy()ã¨åŒã˜ã‚·ã‚°ãƒ‹ãƒãƒ£ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã£ã¦ã„ã‚‹å ´åˆã¯ã€ä¸Šè¨˜ã®ServiceBaseã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨åŒã˜å‹•ä½œã‚’ã™ã‚‹ã€‚ãã‚Œä»¥å¤–ã®å ´åˆã¯ã€ServiceManager.create()ã‚’å‘¼ã³å‡ºã™ã¨ã€ServiceManagerã¸è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹äº‹ã¨ã€ServiceManager.destroy()ã‚’å‘¼ã³å‡ºã™ã¨ã€ServiceManagerã‹ã‚‰è‡ªåˆ†è‡ªèº«ã‚’å‰Šé™¤ã™ã‚‹ã€‚ã¾ãŸã€Service#getState()ã¯ã€{@link Service#CREATED}ã€{@link Service#DESTROYED}ä»¥å¤–ã®çŠ¶æ…‹ã¯{@link Service#UNKNOWN}ã¨ãªã‚‹ã€‚</li>
      * </ol>
      *
-     * @param name ƒT[ƒrƒX‚Ì–¼‘O
-     * @param obj ƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg
-     * @exception Exception ƒT[ƒrƒX‚Ì“o˜^ˆ—‚É¸”s‚µ‚½ê‡
-     * @return “o˜^‚Å‚«‚½ê‡true
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @param obj ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @return ç™»éŒ²ã§ããŸå ´åˆtrue
      */
     public boolean registerService(String name, Object obj) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚Å“o˜^‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã§ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX‚Ì–¼‘O
-     * @param service ƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éƒT[ƒrƒXƒIƒuƒWƒFƒNƒg
-     * @exception Exception ƒT[ƒrƒX‚Ì“o˜^ˆ—‚É¸”s‚µ‚½ê‡
-     * @return “o˜^‚Å‚«‚½ê‡true
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
+     * @param service ã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @return ç™»éŒ²ã§ããŸå ´åˆtrue
      */
     public boolean registerService(String name, Service service) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX’è‹`ƒƒ^ƒf[ƒ^‚É]‚Á‚½ƒT[ƒrƒX‚ğAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÅƒT[ƒrƒX‚Æ‚µ‚Ä“o˜^‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã«å¾“ã£ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã§ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param serviceData ƒT[ƒrƒX’è‹`ƒƒ^ƒf[ƒ^
-     * @return “o˜^‚Å‚«‚½ê‡true
-     * @exception Exception ƒT[ƒrƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»‚É¸”s‚µ‚½ê‡
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @return ç™»éŒ²ã§ããŸå ´åˆtrue
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean registerService(ServiceMetaData serviceData) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğ“o˜^‰ğœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @return “o˜^‰ğœ‚Å‚«‚½ê‡true
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç™»éŒ²è§£é™¤ã§ããŸå ´åˆtrue
      */
     public boolean unregisterService(String name);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @return “o˜^‚³‚ê‚Ä‚¢‚½ê‡true
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆtrue
      */
     public boolean isRegisteredService(String name);
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX–¼‘O‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹åå‰ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX–¼‚ÌW‡
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆ
      */
     public Set serviceNameSet();
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é{@link Service}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link Service}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éService‚ÌW‡
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹Serviceã®é›†åˆ
      */
     public Set serviceSet();
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚éƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ÌW‡
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆ
      */
     public Set serviceObjectSet();
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÅŠÇ—‚·‚éƒT[ƒrƒX‚Ì“o˜^æ‚Ì{@link Repository}‚ğİ’è‚·‚éB<p>
-     * RepositoryƒT[ƒrƒX‚Ì’â~‚ÉA©“®“I‚ÉƒfƒtƒHƒ‹ƒg‚ÌƒŠƒ|ƒWƒgƒŠ‚ÉØ‚è‘Ö‚¦‚Ü‚·B<br>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã§ç®¡ç†ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆã®{@link Repository}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€è‡ªå‹•çš„ã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒªãƒã‚¸ãƒˆãƒªã«åˆ‡ã‚Šæ›¿ãˆã¾ã™ã€‚<br>
      *
-     * @param manager RepositoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param service RepositoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return “o˜^‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğw’è‚³‚ê‚½Repository‚É‘S‚Ä“o˜^‚µ’¼‚¹‚½ê‡Atrue
+     * @param manager Repositoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param service Repositoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç™»éŒ²ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’æŒ‡å®šã•ã‚ŒãŸRepositoryã«å…¨ã¦ç™»éŒ²ã—ç›´ã›ãŸå ´åˆã€true
      */
     public boolean setServiceRepository(String manager, String service);
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÅŠÇ—‚·‚éƒT[ƒrƒX‚Ì“o˜^æ‚Ì{@link Repository}‚ğİ’è‚·‚éB<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã§ç®¡ç†ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆã®{@link Repository}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param repository RepositoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg
-     * @return “o˜^‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğw’è‚³‚ê‚½Repository‚É‘S‚Ä“o˜^‚µ’¼‚¹‚½ê‡Atrue
+     * @param repository Repositoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç™»éŒ²ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’æŒ‡å®šã•ã‚ŒãŸRepositoryã«å…¨ã¦ç™»éŒ²ã—ç›´ã›ãŸå ´åˆã€true
      */
     public boolean setServiceRepository(Repository repository);
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
-     * obj‚Åw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªAServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚·‚éê‡‚É‚ÍA‚»‚Ì‚Ü‚Ü•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
+     * objã§æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã€Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã™ã‚‹å ´åˆã«ã¯ã€ãã®ã¾ã¾è¿”ã™ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param obj Service‚É•ÏŠ·‚µ‚½‚¢ƒIƒuƒWƒFƒNƒg
-     * @return ServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param obj Serviceã«å¤‰æ›ã—ãŸã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Service convertObjectToService(String name, Object obj);
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉŠÇ—‚³‚ê‚éƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğ“o˜^‚·‚éB<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param loader ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉŠÇ—‚³‚ê‚éƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½ServiceLoader
+     * @param loader ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
      */
     public void addServiceLoader(ServiceLoader loader);
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉŠÇ—‚³‚ê‚éƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğíœ‚·‚éB<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param loader ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉŠÇ—‚³‚ê‚éƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½ServiceLoader
+     * @param loader ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
      */
     public void removeServiceLoader(ServiceLoader loader);
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉŠÇ—‚³‚ê‚éƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ìƒ}ƒl[ƒWƒƒ‚ÉŠÇ—‚³‚ê‚éƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ÌW‡
+     * @return ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã«ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã®é›†åˆ
      */
     public Set getServiceLoaders();
     
     /**
-     * ‚±‚Ìƒ}ƒl[ƒWƒƒ‚Ì{@link ManagerMetaData}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã®{@link ManagerMetaData}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ìƒ}ƒl[ƒWƒƒ‚Ì{@link ManagerMetaData}‚ÌW‡
+     * @return ã“ã®ãƒãƒãƒ¼ã‚¸ãƒ£ã®{@link ManagerMetaData}ã®é›†åˆ
      */
     public Set getManagerMetaDatas();
     
     /**
-     * ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public String getProperty(String name);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param data ƒT[ƒrƒX’è‹`î•ñ
-     * @return ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½ƒT[ƒrƒX
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @param data ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±
+     * @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Service instanciateService(ServiceMetaData data) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param data ƒT[ƒrƒX’è‹`î•ñ
-     * @return ¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @param data ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±
+     * @return ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object createObject(ServiceMetaData data) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService(String name) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param completed ¶¬‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚è¶¬‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param completed ç”Ÿæˆã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚Šç”Ÿæˆã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService(String name, Set completed) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒXW‡‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹é›†åˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param names ƒT[ƒrƒX–¼‚ÌW‡
+     * @param names ã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆ
      */
     public void createService(Set names);
     
     /**
-     * w’è‚³‚ê‚½“o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
-     * ˆË‘¶ŠÖŒW‚Ì‰ğŒˆ‚Ís‚í‚È‚¢B
+     * æŒ‡å®šã•ã‚ŒãŸç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ä¾å­˜é–¢ä¿‚ã®è§£æ±ºã¯è¡Œã‚ãªã„ã€‚
      *
-     * @param service “o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX
-     * @param serviceData ƒT[ƒrƒX‚Ì’è‹`î•ñ
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @param service ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService(Service service, ServiceMetaData serviceData)
      throws Exception;
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
-     * ’A‚µAŠù‚É¶¬‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚ÍA¶¬‚³‚ê‚È‚¢B<br>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€æ—¢ã«ç”Ÿæˆã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã¯ã€ç”Ÿæˆã•ã‚Œãªã„ã€‚<br>
      */
     public void createAllService();
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService(String name) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param completed ŠJn‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚èŠJn‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param completed é–‹å§‹ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚Šé–‹å§‹ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService(String name, Set completed) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒXW‡‚ğŠJn‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹é›†åˆã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param names ƒT[ƒrƒX–¼‚ÌW‡
+     * @param names ã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆ
      */
     public void startService(Set names);
     
     /**
-     * w’è‚³‚ê‚½“o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
-     * ˆË‘¶ŠÖŒW‚Ì‰ğŒˆ‚Ís‚í‚È‚¢B
+     * æŒ‡å®šã•ã‚ŒãŸç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ä¾å­˜é–¢ä¿‚ã®è§£æ±ºã¯è¡Œã‚ãªã„ã€‚
      *
-     * @param service “o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX
-     * @param serviceData ƒT[ƒrƒX‚Ì’è‹`î•ñ
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @param service ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService(Service service, ServiceMetaData serviceData)
      throws Exception;
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚ğŠJn‚·‚éB<p>
-     * ’A‚µAŠù‚ÉŠJn‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚ÍAŠJn‚³‚ê‚È‚¢B<br>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€æ—¢ã«é–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã¯ã€é–‹å§‹ã•ã‚Œãªã„ã€‚<br>
      */
     public void startAllService();
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğÄŠJn‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å†é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @exception Exception ÄŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @exception Exception å†é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void restartService(String name) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğÄŠJn‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å†é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param completed ÄŠJn‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚èÄŠJn‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
-     * @exception Exception ÄŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param completed å†é–‹å§‹ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚Šå†é–‹å§‹ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
+     * @exception Exception å†é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void restartService(String name, Set completed) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒXW‡‚ğÄŠJn‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹é›†åˆã‚’å†é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param names ƒT[ƒrƒX–¼‚ÌW‡
+     * @param names ã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆ
      */
     public void restartService(Set names);
     
     /**
-     * w’è‚³‚ê‚½“o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX‚ğÄŠJn‚·‚éB<p>
-     * ˆË‘¶ŠÖŒW‚Ì‰ğŒˆ‚Ís‚í‚È‚¢B
+     * æŒ‡å®šã•ã‚ŒãŸç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹ã‚’å†é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ä¾å­˜é–¢ä¿‚ã®è§£æ±ºã¯è¡Œã‚ãªã„ã€‚
      *
-     * @param service “o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX
-     * @param serviceData ƒT[ƒrƒX‚Ì’è‹`î•ñ
-     * @exception Exception ƒT[ƒrƒX‚ÌÄŠJn‚É¸”s‚µ‚½ê‡
+     * @param service ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®å†é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void restartService(Service service, ServiceMetaData serviceData)
      throws Exception;
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚ğÄŠJn‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å†é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public void restartAllService();
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ’â~‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void stopService(String name);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ’â~‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param completed ’â~‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚è’â~‚³‚ê‚½ƒT[ƒrƒX‚ğŠÜ‚ŞB
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param completed åœæ­¢ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚Šåœæ­¢ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å«ã‚€ã€‚
      */
     public void stopService(String name, Set completed);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒXW‡‚ğ’â~‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹é›†åˆã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      *
-     * @param names ƒT[ƒrƒX–¼‚ÌW‡
+     * @param names ã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆ
      */
     public void stopService(Set names);
     
     /**
-     * w’è‚³‚ê‚½“o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX‚ğ’â~‚·‚éB<p>
-     * ˆË‘¶ŠÖŒW‚Ì‰ğŒˆ‚Ís‚í‚È‚¢B
+     * æŒ‡å®šã•ã‚ŒãŸç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
+     * ä¾å­˜é–¢ä¿‚ã®è§£æ±ºã¯è¡Œã‚ãªã„ã€‚
      *
-     * @param service “o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX
-     * @param serviceData ƒT[ƒrƒX‚Ì’è‹`î•ñ
+     * @param service ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±
      */
     public void stopService(Service service, ServiceMetaData serviceData);
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚ğ’â~‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stopAllService();
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ”jŠü‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void destroyService(String name);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğ”jŠü‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param completed ”jŠü‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌW‡BˆË‘¶ŠÖŒW‚É‚æ‚è”jŠü‚³‚ê‚½ƒT[ƒrƒX‚È‚Ç‚ğŠÜ‚ŞB
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param completed ç ´æ£„ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã€‚ä¾å­˜é–¢ä¿‚ã«ã‚ˆã‚Šç ´æ£„ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãªã©ã‚’å«ã‚€ã€‚
      */
     public void destroyService(String name, Set completed);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒXW‡‚ğ”jŠü‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹é›†åˆã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
      *
-     * @param names ƒT[ƒrƒX–¼‚ÌW‡
+     * @param names ã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆ
      */
     public void destroyService(Set names);
     
     /**
-     * w’è‚³‚ê‚½“o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX‚ğ”jŠü‚·‚éB<p>
-     * ˆË‘¶ŠÖŒW‚Ì‰ğŒˆ‚Ís‚í‚È‚¢B
+     * æŒ‡å®šã•ã‚ŒãŸç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
+     * ä¾å­˜é–¢ä¿‚ã®è§£æ±ºã¯è¡Œã‚ãªã„ã€‚
      *
-     * @param service “o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX
-     * @param serviceData ƒT[ƒrƒX‚Ì’è‹`î•ñ
+     * @param service ç™»éŒ²ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±
      */
     public void destroyService(Service service, ServiceMetaData serviceData);
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<p>
      */
     public void destroyAllService();
     
     /**
-     * w’è‚µ‚½ƒfƒvƒƒC‘Ò‹@’†‚ÌƒT[ƒrƒX‚ªA‘Ò‹@‚µ‚Ä‚¢‚éŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ‡ãƒ—ãƒ­ã‚¤å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒã€å¾…æ©Ÿã—ã¦ã„ã‚‹åŸå› ã¨ãªã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param waitService ‘Ò‹@’†‚ÌƒT[ƒrƒX–¼
-     * @return ‘Ò‹@‚µ‚Ä‚¢‚éŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚éƒT[ƒrƒX‚ÌW‡
+     * @param waitService å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return å¾…æ©Ÿã—ã¦ã„ã‚‹åŸå› ã¨ãªã£ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é›†åˆ
      */
     public Set getWaitingCauses(String waitService);
     
     /**
-     * ŠÇ—‚µ‚Ä‚¢‚é‘Ò‹@’†‚ÌƒT[ƒrƒX‚ğƒNƒŠƒA‚·‚éB<p>
+     * ç®¡ç†ã—ã¦ã„ã‚‹å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearWaitingServices();
     
     /**
-     * ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ª‘¶İ‚·‚é‚©’²‚×‚éB<p>
+     * å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ª‘¶İ‚·‚éê‡true
+     * @return å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå­˜åœ¨ã™ã‚‹å ´åˆtrue
      */
     public boolean existWaitingService();
     
     /**
-     * ‘Ò‹@’†‚ÌƒT[ƒrƒX‚Ì–¼‘O‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘Ò‹@’†‚ÌƒT[ƒrƒX‚Ì–¼‘O‚ÌW‡
+     * @return å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã®é›†åˆ
      */
     public Set getWaitingServices();
     
     /**
-     * w’è‚µ‚½ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚ªAƒfƒvƒƒC‚Å‚«‚È‚©‚Á‚½Œ´ˆö‚Æ‚È‚Á‚Ä‚¢‚é—áŠO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒã€ãƒ‡ãƒ—ãƒ­ã‚¤ã§ããªã‹ã£ãŸåŸå› ã¨ãªã£ã¦ã„ã‚‹ä¾‹å¤–ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param failedService ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX–¼
-     * @return ƒfƒvƒƒC‚Å‚«‚È‚©‚Á‚½Œ´ˆö‚Æ‚È‚Á‚Ä‚¢‚é—áŠO
+     * @param failedService ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ãƒ‡ãƒ—ãƒ­ã‚¤ã§ããªã‹ã£ãŸåŸå› ã¨ãªã£ã¦ã„ã‚‹ä¾‹å¤–
      */
     public Throwable getFailedCause(String failedService);
     
     /**
-     * ŠÇ—‚µ‚Ä‚¢‚éƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚ÌW‡‚ğƒNƒŠƒA‚·‚éB<p>
+     * ç®¡ç†ã—ã¦ã„ã‚‹ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®é›†åˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearFailedServices();
     
     /**
-     * ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚ª‘¶İ‚·‚é‚©’²‚×‚éB<p>
+     * ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚ª‘¶İ‚·‚éê‡true
+     * @return ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå­˜åœ¨ã™ã‚‹å ´åˆtrue
      */
     public boolean existFailedService();
     
     /**
-     * ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚Ì–¼‘O‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒvƒƒC‚É¸”s‚µ‚½ƒT[ƒrƒX‚Ì–¼‘O‚ÌW‡
+     * @return ãƒ‡ãƒ—ãƒ­ã‚¤ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã®é›†åˆ
      */
     public Set getFailedServices();
      
     /**
-     * “o˜^‚³‚ê‚½Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚ŒãŸServiceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^‚³‚ê‚½Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX
+     * @return ç™»éŒ²ã•ã‚ŒãŸServiceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹
      */
     public Logger getLogger();
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX
+     * @return Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹
      */
     public MessageRecordFactory getMessageRecordFactory();
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğ’Ç‰Á‚·‚éB<p>
-     * w’è‚µ‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡ARegistrationListener‚ğ“o˜^‚·‚éBƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é‚ÆAServiceStateListener‚ª“o˜^‚³‚ê‚éB<br>
-     * ‚Ü‚½Aw’è‚³‚ê‚½ƒT[ƒrƒX‚ª{@link ServiceStateBroadcaster}‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ê‡AServiceStateListener‚ğ“o˜^‚Å‚«‚È‚¢‚½‚ß‰½‚à‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã„å ´åˆã€RegistrationListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã¨ã€ServiceStateListenerãŒç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
+     * ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceStateBroadcaster}ã‚’å®Ÿè£…ã—ã¦ã„ãªã„å ´åˆã€ServiceStateListenerã‚’ç™»éŒ²ã§ããªã„ãŸã‚ä½•ã‚‚ã—ãªã„ã€‚<br>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void addServiceStateListener(
         String name,
@@ -530,10 +530,10 @@ public interface ServiceManager
     );
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void removeServiceStateListener(
         String name,

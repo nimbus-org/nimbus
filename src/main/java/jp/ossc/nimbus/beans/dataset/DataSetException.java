@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.beans.dataset;
 
 /**
- * ƒf[ƒ^ƒZƒbƒg—áŠOB<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,20 +41,20 @@ public class DataSetException extends RuntimeException{
     private static final long serialVersionUID = -4635866036484220540L;
     
     /**
-     * —áŠOƒƒbƒZ[ƒWB<p>
+     * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€‚<p>
      */
     protected String message;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DataSetException(){
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public DataSetException(String message){
         super(message);
@@ -62,10 +62,10 @@ public class DataSetException extends RuntimeException{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public DataSetException(String message, Throwable cause){
         super(message, cause);
@@ -73,9 +73,9 @@ public class DataSetException extends RuntimeException{
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public DataSetException(Throwable cause){
         super(cause);

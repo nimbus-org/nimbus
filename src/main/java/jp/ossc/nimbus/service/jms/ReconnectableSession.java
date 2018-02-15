@@ -39,7 +39,7 @@ import javax.jms.*;
 import javax.jms.Queue;
 
 /**
- * ÄÚ‘±‰Â”\ƒZƒbƒVƒ‡ƒ“B<p>
+ * å†æ¥ç¶šå¯èƒ½ã‚»ãƒƒã‚·ãƒ§ãƒ³ã€‚<p>
  *
  * @author M.Takata
  */

@@ -34,39 +34,39 @@ package jp.ossc.nimbus.service.resource.jmsqueue;
 import jp.ossc.nimbus.core.*;
 
 /**
- *  JMSƒLƒ…[ƒZƒbƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^[ƒtƒFƒCƒX	
+ *  JMSã‚­ãƒ¥ãƒ¼ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/24| y-tokuda<BR>
- *				XVF2006/03/31 M.Kameda
+ *	@version	1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š2006/03/31 M.Kameda
  */
 public interface JmsQueueSessionServiceMBean extends ServiceBaseMBean{
 	
-	/** ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ö‚ÌƒfƒtƒHƒ‹ƒgŠi”[ƒL[ */
+	/** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã¸ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæ ¼ç´ã‚­ãƒ¼ */
 	public static final String DEFAULT_CONNECTION_CACHE_KEY = "QueueConnection";
 	
 	/**
-	 * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼‚ÌƒZƒbƒ^[
+	 * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param name
 	 */
 	public void setJndiFinderServiceName(ServiceName name);
 	/**
-	 * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼‚ÌƒQƒbƒ^[
-	 * @return JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼
+	 * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getJndiFinderServiceName();
 	/**
-	 * QueueSession¶¬‚ÌAƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒZƒbƒ^[
+	 * QueueSessionç”Ÿæˆæ™‚ã®ã€ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param mode
 	 */
 	public void setTransanctionMode(boolean mode);
 	/**
-	 * QueueSession¶¬‚ÌAƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒQƒbƒ^[
-	 * @return ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh
+	 * QueueSessionç”Ÿæˆæ™‚ã®ã€ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰
 	 */
 	public boolean getTransanctionMode();
 	/**
-	 * Acknowledgeƒ‚[ƒh‚ÌƒZƒbƒ^[BˆÈ‰º3í—Ş‚Ì‚¢‚¸‚ê‚©‚ğİ’è‚·‚éB
-	 * i‚È‚É‚àw’è‚µ‚È‚¯‚ê‚ÎASession.AUTO_ACKNOWLEDGEj
+	 * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼ã€‚ä»¥ä¸‹3ç¨®é¡ã®ã„ãšã‚Œã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+	 * ï¼ˆãªã«ã‚‚æŒ‡å®šã—ãªã‘ã‚Œã°ã€Session.AUTO_ACKNOWLEDGEï¼‰
 	 * 1(=Session.AUTO_ACKNOWLEDGE)
 	 * 2(=Session.CLIENT_ACKNOWLEDGE)
 	 * 3(=Session.DUPS_OK_ACKNOWLEDGE)
@@ -74,82 +74,82 @@ public interface JmsQueueSessionServiceMBean extends ServiceBaseMBean{
 	 */
 	public void  setAcknowledgeMode(int mode);
 	/**
-	 * Acknowledgeƒ‚[ƒh‚ÌƒQƒbƒ^[
-	 * @return Acknowledgeƒ‚[ƒh
+	 * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return Acknowledgeãƒ¢ãƒ¼ãƒ‰
 	 */
 	public int getAcknowledgeMode();
 	/**
-	 * ƒZƒ}ƒtƒHƒT[ƒrƒX‚ÌƒZƒbƒ^[
+	 * ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setSemaphoreFactoryServiceName(ServiceName name);
 	/**
-	 * ƒZƒbƒVƒ‡ƒ“ƒLƒƒƒpƒVƒeƒB‚ÌƒZƒbƒ^[
+	 * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒ‘ã‚·ãƒ†ã‚£ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setCapacity(int cap);
     
     /**
-     * QueueConnection‚ğ¶¬‚·‚é‚Ìƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
+     * QueueConnectionã‚’ç”Ÿæˆã™ã‚‹æ™‚ã®ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒ†[ƒU–¼
+     * @param name ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String name);
     
     /**
-     * QueueConnection‚ğ¶¬‚·‚é‚Ìƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * QueueConnectionã‚’ç”Ÿæˆã™ã‚‹æ™‚ã®ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ†[ƒU–¼
+     * @return ãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
     
     /**
-     * QueueConnection‚ğ¶¬‚·‚é‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * QueueConnectionã‚’ç”Ÿæˆã™ã‚‹æ™‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password ƒpƒXƒ[ƒh
+     * @param password ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setPassword(String password);
     
     /**
-     * QueueConnection‚ğ¶¬‚·‚é‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * QueueConnectionã‚’ç”Ÿæˆã™ã‚‹æ™‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒXƒ[ƒh
+     * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getPassword();
     
     /**
-     * QueueConnectionFactory‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
+     * QueueConnectionFactoryã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueConnectionFactory‚ÌJNDI–¼
+     * @param name QueueConnectionFactoryã®JNDIå
      */
     public void setConnectionFactoryName(String name);
     
     /**
-     * QueueConnectionFactory‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * QueueConnectionFactoryã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueConnectionFactory‚ÌJNDI–¼
+     * @return QueueConnectionFactoryã®JNDIå
      */
     public String getConnectionFactoryName();
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“Ši”[ƒL[‚ğİ’è<p>
-     * ƒ}ƒbƒv‚ÉŠi”[‚·‚éˆ×‚Ìİ’èƒL[Bİ’è‚ª–³‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg(QueueConnection)‚ğÌ—pB
-     * @param key Ši”[ƒL[
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ ¼ç´ã‚­ãƒ¼ã‚’è¨­å®š<p>
+     * ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ç‚ºã®è¨­å®šã‚­ãƒ¼ã€‚è¨­å®šãŒç„¡ã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ(QueueConnection)ã‚’æ¡ç”¨ã€‚
+     * @param key æ ¼ç´ã‚­ãƒ¼
      */
     public void setConnectionCacheKey(String key);
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“Ši”[ƒL[‚ğæ“¾<p>
-     * ƒ}ƒbƒv‚ÉŠi”[‚·‚éˆ×‚Ìİ’èƒL[‚ğæ“¾B
-     * @return Ši”[ƒL[
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ ¼ç´ã‚­ãƒ¼ã‚’å–å¾—<p>
+     * ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ç‚ºã®è¨­å®šã‚­ãƒ¼ã‚’å–å¾—ã€‚
+     * @return æ ¼ç´ã‚­ãƒ¼
      */
     public String getConnectionCacheKey();
     
     /**
-     * ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è<p>
-     * @param name ƒT[ƒrƒX–¼
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®š<p>
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionCacheMapServiceName(ServiceName name);
     /**
-     * ƒRƒlƒNƒVƒ‡ƒ“ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾<p>
-     * @return ƒT[ƒrƒX–¼
+     * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—<p>
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionCacheMapServiceName();
 }

@@ -38,7 +38,7 @@ import javax.servlet.http.Cookie;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link HttpServletResponseSetInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link HttpServletResponseSetInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see HttpServletResponseSetInterceptorService
@@ -47,132 +47,132 @@ public interface HttpServletResponseSetInterceptorServiceMBean
  extends ServletResponseSetInterceptorServiceMBean{
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚Ìƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param headers HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv
+     * @param headers HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—
      */
     public void setSetHeaders(Map headers);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv
+     * @return HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—
      */
     public Map getSetHeaders();
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
-     * @param value HTTPƒwƒbƒ_
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
+     * @param value HTTPãƒ˜ãƒƒãƒ€
      */
     public void setSetHeader(String name, String value);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
-     * @return HTTPƒwƒbƒ_
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
+     * @return HTTPãƒ˜ãƒƒãƒ€
      */
     public String getSetHeader(String name);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğíœ‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
      */
     public void removeSetHeader(String name);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğ‘S‚Äíœ‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearSetHeaders();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚©‚çæ“¾‚µ‚½’l‚ğHTTPƒwƒbƒ_‚Æ‚µ‚ÄA{@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éÛ‚ÌAContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã‚’HTTPãƒ˜ãƒƒãƒ€ã¨ã—ã¦ã€{@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹éš›ã®ã€Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys ContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param keys Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setSetHeaderContextKeys(Properties keys);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚©‚çæ“¾‚µ‚½’l‚ğHTTPƒwƒbƒ_‚Æ‚µ‚ÄA{@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}‚Åİ’è‚·‚éÛ‚ÌAContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã‚’HTTPãƒ˜ãƒƒãƒ€ã¨ã—ã¦ã€{@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}ã§è¨­å®šã™ã‚‹éš›ã®ã€Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getSetHeaderContextKeys();
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
-     * @param value HTTPƒwƒbƒ_
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
+     * @param value HTTPãƒ˜ãƒƒãƒ€
      */
     public void setAddHeader(String name, String value);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_‚Ìƒ}ƒbƒv
+     * @return HTTPãƒ˜ãƒƒãƒ€ã®ãƒãƒƒãƒ—
      */
     public String[] getAddHeaders(String name);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğíœ‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
      */
     public void removeAddHeader(String name);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}‚Åİ’è‚·‚éHTTPƒwƒbƒ_‚ğ‘S‚Äíœ‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}ã§è¨­å®šã™ã‚‹HTTPãƒ˜ãƒƒãƒ€ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearAddHeaders();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚©‚çæ“¾‚µ‚½’l‚ğHTTPƒwƒbƒ_‚Æ‚µ‚ÄA{@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}‚Åİ’è‚·‚éÛ‚ÌAContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã‚’HTTPãƒ˜ãƒƒãƒ€ã¨ã—ã¦ã€{@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}ã§è¨­å®šã™ã‚‹éš›ã®ã€Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys ContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param keys Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setAddHeaderContextKeys(Properties keys);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚©‚çæ“¾‚µ‚½’l‚ğHTTPƒwƒbƒ_‚Æ‚µ‚ÄA{@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}‚Åİ’è‚·‚éÛ‚ÌAContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã‚’HTTPãƒ˜ãƒƒãƒ€ã¨ã—ã¦ã€{@link javax.servlet.http.HttpServletResponse#addHeader(String, String)}ã§è¨­å®šã™ã‚‹éš›ã®ã€Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒL[–¼‚ÆHTTPƒwƒbƒ_–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return Contextã‚­ãƒ¼åã¨HTTPãƒ˜ãƒƒãƒ€åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getAddHeaderContextKeys();
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addCookie(Cookie)}‚Åİ’è‚·‚éCookie‚ğ’Ç‰Á‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addCookie(Cookie)}ã§è¨­å®šã™ã‚‹Cookieã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
      * @param cookie Cookie
      */
     public void addCookie(Cookie cookie);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addCookie(Cookie)}‚Åİ’è‚·‚éCookie‚ğíœ‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addCookie(Cookie)}ã§è¨­å®šã™ã‚‹Cookieã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name Cookie‚Ì–¼‘O
+     * @param name Cookieã®åå‰
      */
     public void removeCookie(String name);
     
     /**
-     * {@link javax.servlet.http.HttpServletResponse#addCookie(Cookie)}‚Åİ’è‚·‚éCookie‚ğ‘S‚Äíœ‚·‚éB<p>
+     * {@link javax.servlet.http.HttpServletResponse#addCookie(Cookie)}ã§è¨­å®šã™ã‚‹Cookieã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearCookies();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚©‚çæ“¾‚µ‚½’l‚ğHTTPƒwƒbƒ_‚Æ‚µ‚Äİ’è‚·‚éÛ‚ÌAContextƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã‚’HTTPãƒ˜ãƒƒãƒ€ã¨ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€Contextã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}‚©‚çæ“¾‚µ‚½’l‚ğHTTPƒwƒbƒ_‚Æ‚µ‚Äİ’è‚·‚éÛ‚ÌAContextƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã‚’HTTPãƒ˜ãƒƒãƒ€ã¨ã—ã¦è¨­å®šã™ã‚‹éš›ã®ã€Contextã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
 }

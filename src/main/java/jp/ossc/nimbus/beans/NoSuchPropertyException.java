@@ -36,7 +36,7 @@ import java.io.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ª‘¶İ‚µ‚È‚¢–‚ğ¦‚·—áŠOB<p>
+ * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå­˜åœ¨ã—ãªã„äº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  * @see Property
@@ -46,31 +46,31 @@ public class NoSuchPropertyException extends Exception implements Serializable{
     private static final long serialVersionUID = 5772189868420840538L;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒgB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected transient Class clazz;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼B<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€‚<p>
      */
     protected final String property;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public NoSuchPropertyException(Class clazz, String property){
         this(clazz, property, (Throwable)null);
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼A”­¶Œ³—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ç™ºç”Ÿå…ƒä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
-     * @param th ”­¶Œ³—áŠO
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param th ç™ºç”Ÿå…ƒä¾‹å¤–
      */
     public NoSuchPropertyException(
         Class clazz,
@@ -86,11 +86,11 @@ public class NoSuchPropertyException extends Exception implements Serializable{
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼A”­¶Œ´ˆöƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ç™ºç”ŸåŸå› ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
-     * @param cause ”­¶Œ´ˆöƒƒbƒZ[ƒW
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param cause ç™ºç”ŸåŸå› ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public NoSuchPropertyException(
         Class clazz,
@@ -105,18 +105,18 @@ public class NoSuchPropertyException extends Exception implements Serializable{
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
+     * @return ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
      */
     public Class getTargetObjectClass(){
         return clazz;
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
+     * @return ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getProperty(){
         return property;

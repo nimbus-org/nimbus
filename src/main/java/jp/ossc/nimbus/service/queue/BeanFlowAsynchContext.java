@@ -38,7 +38,7 @@ import jp.ossc.nimbus.service.beancontrol.BeanFlowMonitor;
 import jp.ossc.nimbus.service.beancontrol.BeanFlowAsynchInvokeCallback;
 
 /**
- * BeanFlow非同期実行コンテキスト。<p>
+ * BeanFlow髱槫酔譛溷ｮ溯｡後さ繝ｳ繝�繧ｭ繧ｹ繝医�<p>
  *
  * @author M.Takata
  */

@@ -35,7 +35,7 @@ import java.io.*;
 import java.util.zip.*;
 
 /**
- * SerializableƒIƒuƒWƒFƒNƒgÌƒXƒgƒŠ[ƒ€ƒRƒ“ƒo[ƒ^B<p>
+ * Serializableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,26 +44,26 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     private static final long serialVersionUID = -4260884667278852436L;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ˆ³k‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * åœ§ç¸®ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isCompress;
     
     /**
-     * SerializableƒIƒuƒWƒFƒNƒg¨ƒXƒgƒŠ[ƒ€•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * Serializableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’ã‚¹ãƒˆãƒªãƒ¼ãƒ å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public SerializeStreamConverter(){
         this(OBJECT_TO_STREAM);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #OBJECT_TO_STREAM
      * @see #STREAM_TO_OBJECT
      */
@@ -72,9 +72,9 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #OBJECT_TO_STREAM
      * @see #STREAM_TO_OBJECT
@@ -84,9 +84,9 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -94,30 +94,30 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     }
     
     /**
-     * ˆ³k‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Ìê‡AGZIPˆ³k‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * åœ§ç¸®ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã®å ´åˆã€GZIPåœ§ç¸®ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param compress ˆ³k‚·‚éê‡true
+     * @param compress åœ§ç¸®ã™ã‚‹å ´åˆtrue
      */
     public void setCompress(boolean compress){
         isCompress = compress;
     }
     
     /**
-     * ˆ³k‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * åœ§ç¸®ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡Aˆ³k‚·‚é
+     * @return trueã®å ´åˆã€åœ§ç¸®ã™ã‚‹
      */
     public boolean isCompress(){
         return isCompress;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -141,11 +141,11 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     }
     
     /**
-     * SerializableƒIƒuƒWƒFƒNƒg‚©‚çƒoƒCƒg”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * Serializableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj SerializableƒIƒuƒWƒFƒNƒg
-     * @return ƒoƒCƒg”z—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj Serializableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -170,11 +170,11 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     }
     
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚çSerializableƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰Serializableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is ƒXƒgƒŠ[ƒ€
-     * @return SerializableƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return Serializableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         try{

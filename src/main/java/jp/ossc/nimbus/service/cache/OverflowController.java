@@ -32,22 +32,22 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ���ӂꐧ��B<p>
- * �L���b�V���̂��ӂꐧ��𒊏ۉ������C���^�t�F�[�X�ł���B<br>
+ * あふれ制御。<p>
+ * キャッシュのあふれ制御を抽象化したインタフェースである。<br>
  *
  * @author M.Takata
  */
 public interface OverflowController{
     
     /**
-     * ���ӂꐧ����s���B<p>
+     * あふれ制御を行う。<p>
      *
-     * @param ref �L���b�V���ɒǉ����ꂽ�L���b�V���Q��
+     * @param ref キャッシュに追加されたキャッシュ参照
      */
     public void control(CachedReference ref);
     
     /**
-     * ���ӂꐧ������s���邽�߂ɕێ����Ă����������������B<p>
+     * あふれ制御を実行するために保持している情報を初期化する。<p>
      */
     public void reset();
 }

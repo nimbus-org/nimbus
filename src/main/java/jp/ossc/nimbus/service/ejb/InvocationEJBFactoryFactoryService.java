@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒŠƒtƒŒƒNƒVƒ‡ƒ“EJBƒtƒ@ƒNƒgƒŠƒtƒ@ƒNƒgƒŠB<p>
- * {@link InvocationEJBFactoryService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link InvocationEJBFactoryService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see InvocationEJBFactoryService
@@ -51,10 +51,10 @@ public class InvocationEJBFactoryFactoryService
     protected InvocationEJBFactoryService template;
     
     /**
-     * {@link InvocationEJBFactoryService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link InvocationEJBFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return InvocationEJBFactoryƒT[ƒrƒX
-     * @exception Exception InvocationEJBFactory‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return InvocationEJBFactoryã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception InvocationEJBFactoryã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see InvocationEJBFactoryService
      */
     protected Service createServiceInstance() throws Exception{
@@ -73,7 +73,7 @@ public class InvocationEJBFactoryFactoryService
         return template;
     }
     
-    // InvocationEJBFactoryFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryFactoryMBeanã®JavaDoc
     public void setRemoteCacheMapServiceName(ServiceName serviceName){
         getTemplate().setRemoteCacheMapServiceName(serviceName);
         final Set instanceSet = getManagedInstanceSet();
@@ -85,12 +85,12 @@ public class InvocationEJBFactoryFactoryService
         }
     }
     
-    // InvocationEJBFactoryFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryFactoryMBeanã®JavaDoc
     public ServiceName getRemoteCacheMapServiceName(){
         return getTemplate().getRemoteCacheMapServiceName();
     }
     
-    // InvocationEJBFactoryFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryFactoryMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName serviceName){
         getTemplate().setJndiFinderServiceName(serviceName);
         final Set instanceSet = getManagedInstanceSet();
@@ -102,7 +102,7 @@ public class InvocationEJBFactoryFactoryService
         }
     }
     
-    // InvocationEJBFactoryFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryFactoryMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return getTemplate().getJndiFinderServiceName();
     }

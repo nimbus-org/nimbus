@@ -34,21 +34,21 @@ package jp.ossc.nimbus.service.test;
 import java.io.Reader;
 
 /**
- * •]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * ƒeƒXƒgÀs‚ğs‚¢A‚»‚ÌŒ‹‰Ê‚ğ•]‰¿‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+ * è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã‚’è¡Œã„ã€ãã®çµæœã‚’è©•ä¾¡ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */
 public interface EvaluateTestAction{
     
     /**
-     * ƒeƒXƒgÀs‚µ‚Ä‚»‚ÌŒ‹‰Ê‚ğ•]‰¿‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã—ã¦ãã®çµæœã‚’è©•ä¾¡ã™ã‚‹ã€‚<p>
      *
-     * @param context ƒeƒXƒgƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌID
-     * @param resource ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ö‚ÌƒŠƒ\[ƒX
-     * @return ÀsŒ‹‰Ê‚Ì•]‰¿B¬Œ÷‚µ‚½ê‡Atrue
-     * @exception Exception ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ID
+     * @param resource ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¸ã®ãƒªã‚½ãƒ¼ã‚¹
+     * @return å®Ÿè¡Œçµæœã®è©•ä¾¡ã€‚æˆåŠŸã—ãŸå ´åˆã€true
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception;
 }

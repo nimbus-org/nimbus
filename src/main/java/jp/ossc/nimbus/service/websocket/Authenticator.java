@@ -35,46 +35,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * WebSocket‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒŒƒxƒ‹‚Ì”FØ‚ğs‚¤ƒCƒ“ƒ^ƒtƒF[ƒXB
+ * WebSocketã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ¬ãƒ™ãƒ«ã®èªè¨¼ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
- * ƒŠƒNƒGƒXƒg/ƒŠƒvƒ‰ƒCŒ^‚Ì”FØŒãAWebSocket‚Å‚ÌÄ”FØ‚ğs‚¤B<br>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆ/ãƒªãƒ—ãƒ©ã‚¤å‹ã®èªè¨¼å¾Œã€WebSocketã§ã®å†èªè¨¼ã‚’è¡Œã†ã€‚<br>
  *
  * @author M.Ishida
  */
 public interface Authenticator {
 
     /**
-     * ƒƒOƒCƒ“ˆ—B
+     * ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç†ã€‚
      * <p>
-     * WebSocketAuthServlet‚©‚çŒÄ‚Ño‚³‚ê‚éB<br>
-     * ”FØŒ‹‰Ê‚ÌBean‚ÉWebSocketÚ‘±URLŠÖ˜Aî•ñ‚âƒ`ƒPƒbƒgî•ñ‚ªŠÜ‚Ü‚ê‚éB<br>
+     * WebSocketAuthServletã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
+     * èªè¨¼çµæœã®Beanã«WebSocketæ¥ç¶šURLé–¢é€£æƒ…å ±ã‚„ãƒã‚±ãƒƒãƒˆæƒ…å ±ãŒå«ã¾ã‚Œã‚‹ã€‚<br>
      *
      * @param req HttpServletRequest
      * @param res HttpServletResponse
-     * @return ”FØŒ‹‰Ê‚ÌBean
-     * @throws AuthenticateException ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return èªè¨¼çµæœã®Bean
+     * @throws AuthenticateException å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public AuthResult login(HttpServletRequest req, HttpServletResponse res) throws AuthenticateException;
 
     /**
-     * ƒnƒ“ƒhƒVƒFƒCƒN”FØˆ—B ƒƒOƒCƒ“”FØ‚É•Ô‹p‚µ‚½ƒ`ƒPƒbƒg‚ğó‚¯æ‚è•s³‚Èƒnƒ“ƒhƒVƒFƒCƒNƒŠƒNƒGƒXƒg‚Å‚Í‚È‚¢‚±‚Æ‚ğŒŸØ‚·‚éB
+     * ãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯èªè¨¼å‡¦ç†ã€‚ ãƒ­ã‚°ã‚¤ãƒ³èªè¨¼æ™‚ã«è¿”å´ã—ãŸãƒã‚±ãƒƒãƒˆã‚’å—ã‘å–ã‚Šä¸æ­£ãªãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯ãƒªã‚¯ã‚¨ã‚¹ãƒˆã§ã¯ãªã„ã“ã¨ã‚’æ¤œè¨¼ã™ã‚‹ã€‚
      * <p>
      *
-     * @param id ƒ†[ƒU‚ğ“Á’è‚·‚éID
-     * @param ticket WebSocket‚ÌHandshake”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñBƒƒOƒCƒ“ˆ—‚Ì•Ô‹p’l‚ÉŠÜ‚Ü‚ê‚éB
-     * @return ”FØŒ‹‰Ê
-     * @throws AuthenticateException ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param id ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ID
+     * @param ticket WebSocketã®Handshakeèªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±ã€‚ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç†ã®è¿”å´å€¤ã«å«ã¾ã‚Œã‚‹ã€‚
+     * @return èªè¨¼çµæœ
+     * @throws AuthenticateException å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean handshake(String id, String ticket) throws AuthenticateException;
 
     /**
-     * ƒƒOƒAƒEƒg‚·‚éB
+     * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã™ã‚‹ã€‚
      * <p>
      *
-     * @param id ƒ†[ƒU‚ğ“Á’è‚·‚éid
-     * @param ticket ”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñ
-     * @param isForce ‹­§AˆÙíI—¹‚Ìê‡‚ÍAtrue
-     * @throws AuthenticateException ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param id ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹id
+     * @param ticket èªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±
+     * @param isForce å¼·åˆ¶ã€ç•°å¸¸çµ‚äº†ã®å ´åˆã¯ã€true
+     * @throws AuthenticateException å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void logout(String id, String ticket, boolean isForce) throws AuthenticateException;
 

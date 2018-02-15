@@ -32,25 +32,25 @@
 package jp.ossc.nimbus.service.performance;
 
 /**
- * ˆ—ŠÔ‚ğ‹L˜^‚·‚éB<p>
+ * å‡¦ç†æ™‚é–“ã‚’è¨˜éŒ²ã™ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface PerformanceRecorder{
     
     /**
-     * ˆ—ŠÔ‚ğ‹L˜^‚·‚éB<p>
+     * å‡¦ç†æ™‚é–“ã‚’è¨˜éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param startTime ŠJnŠÔ
-     * @param endTime I—¹ŠÔ
+     * @param startTime é–‹å§‹æ™‚é–“
+     * @param endTime çµ‚äº†æ™‚é–“
      */
     public void record(long startTime, long endTime);
     
     /**
-     * ”’l‚ğ‹L˜^‚·‚éB<p>
+     * æ•°å€¤ã‚’è¨˜éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param timestamp 
-     * @param value ’l
+     * @param timestamp æ™‚åˆ»
+     * @param value å€¤
      */
     public void recordValue(long timestamp, long value);
 }

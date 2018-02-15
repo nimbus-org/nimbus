@@ -35,8 +35,8 @@ import java.util.*;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * ƒvƒƒpƒeƒBƒAƒNƒZƒXB<p>
- * ˆê“xg—p‚µ‚½{@link Property}‚ğƒLƒƒƒbƒVƒ…‚µ‚ÄÄ—˜—p‚·‚éB<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¢ã‚¯ã‚»ã‚¹ã€‚<p>
+ * ä¸€åº¦ä½¿ç”¨ã—ãŸ{@link Property}ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦å†åˆ©ç”¨ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -51,16 +51,16 @@ public class PropertyAccess{
     private static PropertyAccess instanceForIgnoreNullProperty;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PropertyAccess(){
     }
     
     /**
-     * ƒVƒ“ƒOƒ‹ƒgƒ“‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param isIgnoreNullProperty nullQÆ‚Ì‚É—áŠO‚ğthrow‚µ‚È‚¢ê‡‚Ítrue
-     * @return ƒVƒ“ƒOƒ‹ƒgƒ“‚ÈƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param isIgnoreNullProperty nullå‚ç…§ã®æ™‚ã«ä¾‹å¤–ã‚’throwã—ãªã„å ´åˆã¯true
+     * @return ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     public static synchronized PropertyAccess getInstance(boolean isIgnoreNullProperty){
         if(isIgnoreNullProperty){
@@ -84,10 +84,10 @@ public class PropertyAccess{
     }
     
     /**
-     * nullQÆ‚ÌƒvƒƒpƒeƒB‚ğæ“¾g—p‚Æ‚µ‚½ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * nullå‚ç…§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ä½¿ç”¨ã¨ã—ãŸå ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isIgnore nullQÆ‚Ì‚É—áŠO‚ğthrow‚µ‚È‚¢ê‡‚Ítrue
+     * @param isIgnore nullå‚ç…§ã®æ™‚ã«ä¾‹å¤–ã‚’throwã—ãªã„å ´åˆã¯true
      */
     public void setIgnoreNullProperty(boolean isIgnore){
         if(this == instance || this == instanceForIgnoreNullProperty){
@@ -97,48 +97,48 @@ public class PropertyAccess{
     }
     
     /**
-     * nullQÆ‚ÌƒvƒƒpƒeƒB‚ğæ“¾g—p‚Æ‚µ‚½ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * nullå‚ç…§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ä½¿ç”¨ã¨ã—ãŸå ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AnullQÆ‚Ì‚É—áŠO‚ğthrow‚µ‚È‚¢
+     * @return trueã®å ´åˆã€nullå‚ç…§ã®æ™‚ã«ä¾‹å¤–ã‚’throwã—ãªã„
      */
     public boolean isIgnoreNullProperty(){
         return isIgnoreNullProperty;
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìw’è‚µ‚½ƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param target ƒvƒƒpƒeƒB‚Ìæ“¾‘ÎÛ‚Æ‚È‚éBean
-     * @param prop ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒtƒH[ƒ}ƒbƒg‚ª³‚µ‚­‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªAw’è‚µ‚½ƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param target ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒæ­£ã—ããªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Object get(Object target, String prop) throws IllegalArgumentException, NoSuchPropertyException, InvocationTargetException{
         return getProperty(prop).getProperty(target);
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìw’è‚µ‚½ƒvƒƒpƒeƒB‚É’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param target ƒvƒƒpƒeƒB‚Ìİ’è‘ÎÛ‚Æ‚È‚éBean
-     * @param prop ƒvƒƒpƒeƒB–¼
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒtƒH[ƒ}ƒbƒg‚ª³‚µ‚­‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªAw’è‚µ‚½ƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param target ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šå¯¾è±¡ã¨ãªã‚‹Bean
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒæ­£ã—ããªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void set(Object target, String prop, Object value) throws IllegalArgumentException, NoSuchPropertyException, InvocationTargetException{
         getProperty(prop).setProperty(target, value);
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param prop ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒtƒH[ƒ}ƒbƒg‚ª³‚µ‚­‚È‚¢ê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒæ­£ã—ããªã„å ´åˆ
      */
     public Property getProperty(String prop) throws IllegalArgumentException{
         Property property = (Property)propertyCache.get(prop);
@@ -154,7 +154,7 @@ public class PropertyAccess{
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚µ‚Ä‚¢‚éƒvƒƒpƒeƒB‚ğƒNƒŠƒA‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         propertyCache.clear();

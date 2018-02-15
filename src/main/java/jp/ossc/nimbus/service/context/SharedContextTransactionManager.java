@@ -32,203 +32,203 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒg—p‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ŠÇ—ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç”¨ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface SharedContextTransactionManager{
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒƒbƒNƒ‚[ƒhF”ßŠÏƒƒbƒNB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒ­ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ï¼šæ‚²è¦³ãƒ­ãƒƒã‚¯ã€‚<p>
      */
     public static final int LOCK_MODE_PESSIMISTIC = 1;
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌƒƒbƒNƒ‚[ƒhFŠyŠÏƒƒbƒNB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒ­ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ï¼šæ¥½è¦³ãƒ­ãƒƒã‚¯ã€‚<p>
      */
     public static final int LOCK_MODE_OPTIMISTIC  = 2;
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğŠJn‚·‚éB<p>
-     * ƒƒbƒNƒ‚[ƒh‚ÍAİ’è‚ÉˆË‘¶‚·‚éB<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * ãƒ­ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ã¯ã€è¨­å®šã«ä¾å­˜ã™ã‚‹ã€‚<br>
      */
     public void begin();
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğŠJn‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param lockMode ƒƒbƒNƒ‚[ƒh
+     * @param lockMode ãƒ­ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰
      * @see #LOCK_MODE_PESSIMISTIC
      * @see #LOCK_MODE_OPTIMISTIC
      */
     public void begin(int lockMode);
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒRƒ~ƒbƒg‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚³ãƒŸãƒƒãƒˆã™ã‚‹ã€‚<p>
      * 
-     * @exception SharedContextTransactionException ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìˆ—‚É¸”s‚µ‚½ê‡
+     * @exception SharedContextTransactionException ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void commit() throws SharedContextTransactionException;
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒ[ƒ‹ƒoƒbƒN‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹ã€‚<p>
      * 
-     * @exception SharedContextTransactionException ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìˆ—‚É¸”s‚µ‚½ê‡
+     * @exception SharedContextTransactionException ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void rollback() throws SharedContextTransactionException;
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚µ‚È‚¢B<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setTransactionTimeout(long timeout);
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getTransactionTimeout();
     
     /**
-     * Œ»İ‚ÌƒXƒŒƒbƒh‚ªŠJn‚µ‚Ä‚¢‚éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒé–‹å§‹ã—ã¦ã„ã‚‹ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“Bƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnullB
+     * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã€‚
      */
     public SharedContextTransaction getTransaction();
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“B<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
      * 
      * @author M.Takata
      */
     public interface SharedContextTransaction{
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFŠJn‘OB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šé–‹å§‹å‰ã€‚<p>
          */
         public static final int STATE_BEFORE_BEGIN = 0;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFŠJnB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šé–‹å§‹ã€‚<p>
          */
         public static final int STATE_BEGIN      = 1;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒRƒ~ƒbƒgB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šã‚³ãƒŸãƒƒãƒˆã€‚<p>
          */
         public static final int STATE_COMMIT     = 2;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒ[ƒ‹ƒoƒbƒNB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€‚<p>
          */
         public static final int STATE_ROLLBACK   = 3;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒRƒ~ƒbƒgŠ®—¹B<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šã‚³ãƒŸãƒƒãƒˆå®Œäº†ã€‚<p>
          */
         public static final int STATE_COMMITTED  = 5;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒ[ƒ‹ƒoƒbƒNŠ®—¹B<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯å®Œäº†ã€‚<p>
          */
         public static final int STATE_ROLLBACKED = 6;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒ[ƒ‹ƒoƒbƒN¸”sB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯å¤±æ•—ã€‚<p>
          */
         public static final int STATE_ROLLBACK_FAILED = 7;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìó‘Ô‚ğæ“¾‚·‚éB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìó‘Ô
+         * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®çŠ¶æ…‹
          */
         public int getState();
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒRƒ~ƒbƒg‚·‚éB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚³ãƒŸãƒƒãƒˆã™ã‚‹ã€‚<p>
          * 
-         * @exception SharedContextTransactionException ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìˆ—‚É¸”s‚µ‚½ê‡
+         * @exception SharedContextTransactionException ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void commit() throws SharedContextTransactionException;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒ[ƒ‹ƒoƒbƒN‚·‚éB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹ã€‚<p>
          * 
-         * @exception SharedContextTransactionException ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ìˆ—‚É¸”s‚µ‚½ê‡
+         * @exception SharedContextTransactionException ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void rollback() throws SharedContextTransactionException;
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Éw’è‚³‚ê‚½ƒL[‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-         * @param key ƒL[
-         * @return “o˜^‚³‚ê‚Ä‚¢‚éê‡true
+         * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param key ã‚­ãƒ¼
+         * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
          */
         public boolean containsKey(SharedContext context, Object key);
         
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚É“o˜^‚³‚ê‚½ƒL[‚Ì’l‚ğæ“¾‚·‚éB<p>
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«ç™»éŒ²ã•ã‚ŒãŸã‚­ãƒ¼ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-         * @param key ƒL[
-         * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-         * @return ’l
-         * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-         * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+         * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param key ã‚­ãƒ¼
+         * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+         * @return å€¤
+         * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
          */
         public Object get(SharedContext context, Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
         
         /**
-         * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½’l‚ğ’Ç‰Á‚·‚é‚æ‚¤‚Éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğXV‚·‚éB<p>
+         * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå€¤ã‚’è¿½åŠ ã™ã‚‹ã‚ˆã†ã«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
          *
-         * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-         * @param key ƒL[
-         * @param value ’l
-         * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-         * @return ŒÃ‚¢’l
-         * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-         * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+         * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param key ã‚­ãƒ¼
+         * @param value å€¤
+         * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+         * @return å¤ã„å€¤
+         * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
          */
         public Object put(SharedContext context, Object key, Object value, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
         
         /**
-         * w’è‚µ‚½ƒL[‚ÅAw’è‚µ‚½·•ª‚ğXV‚·‚é‚æ‚¤‚Éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğXV‚·‚éB<p>
+         * æŒ‡å®šã—ãŸã‚­ãƒ¼ã§ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’æ›´æ–°ã™ã‚‹ã‚ˆã†ã«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
          *
-         * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-         * @param key ƒL[
-         * @param diff ·•ª
-         * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-         * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-         * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+         * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param key ã‚­ãƒ¼
+         * @param diff å·®åˆ†
+         * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+         * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
          */
         public void update(SharedContext context, Object key, SharedContextValueDifference diff, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
         
         /**
-         * w’è‚µ‚½ƒL[‚ª‘¶İ‚·‚ê‚ÎAw’è‚µ‚½·•ª‚ğXV‚·‚é‚æ‚¤‚Éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğXV‚·‚éB<p>
+         * æŒ‡å®šã—ãŸã‚­ãƒ¼ãŒå­˜åœ¨ã™ã‚Œã°ã€æŒ‡å®šã—ãŸå·®åˆ†ã‚’æ›´æ–°ã™ã‚‹ã‚ˆã†ã«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
          *
-         * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-         * @param key ƒL[
-         * @param diff ·•ª
-         * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-         * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-         * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+         * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param key ã‚­ãƒ¼
+         * @param diff å·®åˆ†
+         * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+         * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
          */
         public void updateIfExists(SharedContext context, Object key, SharedContextValueDifference diff, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
         
         /**
-         * w’è‚µ‚½ƒL[‚ğíœ‚·‚é‚æ‚¤‚Éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğXV‚·‚éB<p>
+         * æŒ‡å®šã—ãŸã‚­ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã‚ˆã†ã«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
          *
-         * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-         * @param key ƒL[
-         * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-         * @return íœ‚µ‚½’l
-         * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-         * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+         * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param key ã‚­ãƒ¼
+         * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+         * @return å‰Šé™¤ã—ãŸå€¤
+         * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
          */
         public Object remove(SharedContext context, Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     }

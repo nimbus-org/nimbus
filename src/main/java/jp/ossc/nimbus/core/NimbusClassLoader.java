@@ -38,13 +38,13 @@ import java.security.*;
 import java.security.cert.Certificate;
 
 /**
- * NimbusƒNƒ‰ƒXƒ[ƒ_B<p>
- * Nimbus‚ÌƒT[ƒrƒXƒNƒ‰ƒX‚Ìƒ[ƒh‚ğs‚¤ƒNƒ‰ƒXƒ[ƒ_‚Å‚ ‚éB<br>
- * ‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÍA{@link NimbusClassLoader#getInstance()}‚Åæ“¾‚·‚é‚±‚Æ‚ª‚Å‚«‚éB‚»‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÍƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_’PˆÊ‚É¶¬‚³‚ê‚éB¶¬‚³‚ê‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ÍAƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_‚ğƒL[‚ÉãQÆ‚Å•Û‚³‚ê‚é‚½‚ßAƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_‚ª”jŠü‚³‚ê‚é‚Æ©“®“I‚É”jŠü‚³‚ê‚éB<br>
+ * Nimbusã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã€‚<p>
+ * Nimbusã®ã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ã‚’è¡Œã†ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€{@link NimbusClassLoader#getInstance()}ã§å–å¾—ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚ãã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€å˜ä½ã«ç”Ÿæˆã•ã‚Œã‚‹ã€‚ç”Ÿæˆã•ã‚ŒãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã‚’ã‚­ãƒ¼ã«å¼±å‚ç…§ã§ä¿æŒã•ã‚Œã‚‹ãŸã‚ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒç ´æ£„ã•ã‚Œã‚‹ã¨è‡ªå‹•çš„ã«ç ´æ£„ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * ‚Ü‚½A‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚É‚ÍA{@link AspectTranslator}‚ğ“o˜^‚·‚é–‚ª‰Â”\‚Å‚ ‚éBAspectTranslator‚ª“o˜^‚³‚ê‚½ó‘Ô‚ÅAƒNƒ‰ƒX‚Ìƒ[ƒh‚ğˆË—Š‚³‚ê‚é‚ÆAAspectTranslator‚É‚æ‚éƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚Ì•ÏŠ·‚ªs‚í‚ê‚ÄAƒNƒ‰ƒX‚ªƒ[ƒh‚³‚ê‚éB<br>
- * ’A‚µAƒNƒ‰ƒX‚Ìƒ[ƒh‚ªs‚í‚ê‚é‚Ì‚ÍAƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚Ì•ÏŠ·‘ÎÛ‚É‚È‚Á‚Ä‚¢‚éƒNƒ‰ƒX‚¾‚¯‚ÅAƒ[ƒh‚³‚ê‚½ƒNƒ‰ƒX“à‚ÅQÆ‚³‚ê‚é•Ê‚ÌƒNƒ‰ƒX‚ÍAƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚Ì•ÏŠ·‘ÎÛ‚Å‚È‚¯‚ê‚ÎA‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Åƒ[ƒh‚ªs‚í‚ê‚È‚¢B<br>
- * ‚±‚ê‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo‚È‚Ç‚Ì•¡G‚ÈƒNƒ‰ƒXƒ[ƒ_\¬‚ğ‚ÂƒRƒ“ƒeƒi‚É‘Î‚·‚é”z—¶‚Å‚ ‚éBƒXƒ^ƒ“ƒhƒAƒ[ƒ“‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Å‚ÍA[@link #setLoadNotTransformClass(boolean) setLoadNotTransformClass(true)}‚ğŒÄ‚Ño‚·–‚ÅA•ÏŠ·‘ÎÛŠO‚ÌƒNƒ‰ƒX‚Ìƒ[ƒh‚àA‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Ås‚í‚ê‚é‚æ‚¤‚É‚È‚éB<br>
+ * ã¾ãŸã€ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã«ã¯ã€{@link AspectTranslator}ã‚’ç™»éŒ²ã™ã‚‹äº‹ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚AspectTranslatorãŒç™»éŒ²ã•ã‚ŒãŸçŠ¶æ…‹ã§ã€ã‚¯ãƒ©ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ã‚’ä¾é ¼ã•ã‚Œã‚‹ã¨ã€AspectTranslatorã«ã‚ˆã‚‹ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®å¤‰æ›ãŒè¡Œã‚ã‚Œã¦ã€ã‚¯ãƒ©ã‚¹ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹ã€‚<br>
+ * ä½†ã—ã€ã‚¯ãƒ©ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ãŒè¡Œã‚ã‚Œã‚‹ã®ã¯ã€ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®å¤‰æ›å¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã ã‘ã§ã€ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚¯ãƒ©ã‚¹å†…ã§å‚ç…§ã•ã‚Œã‚‹åˆ¥ã®ã‚¯ãƒ©ã‚¹ã¯ã€ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®å¤‰æ›å¯¾è±¡ã§ãªã‘ã‚Œã°ã€ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ãŒè¡Œã‚ã‚Œãªã„ã€‚<br>
+ * ã“ã‚Œã¯ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒãªã©ã®è¤‡é›‘ãªã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆã‚’æŒã¤ã‚³ãƒ³ãƒ†ãƒŠã«å¯¾ã™ã‚‹é…æ…®ã§ã‚ã‚‹ã€‚ã‚¹ã‚¿ãƒ³ãƒ‰ã‚¢ãƒ­ãƒ¼ãƒ³ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§ã¯ã€[@link #setLoadNotTransformClass(boolean) setLoadNotTransformClass(true)}ã‚’å‘¼ã³å‡ºã™äº‹ã§ã€å¤‰æ›å¯¾è±¡å¤–ã®ã‚¯ãƒ©ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ã‚‚ã€ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§è¡Œã‚ã‚Œã‚‹ã‚ˆã†ã«ãªã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see AspectTranslator
@@ -52,17 +52,17 @@ import java.security.cert.Certificate;
 public class NimbusClassLoader extends ClassLoader{
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_‚ÉŠÖ˜A•t‚¯‚ÄA‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Û‚·‚éãQÆƒ}ƒbƒvB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã«é–¢é€£ä»˜ã‘ã¦ã€ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä¿æŒã™ã‚‹å¼±å‚ç…§ãƒãƒƒãƒ—ã€‚<p>
      */
     protected static final Map classLoader = new WeakHashMap();
     
     /**
-     * VMƒŒƒxƒ‹‚Å“o˜^‚³‚ê‚½{@link AspectTranslator}‚ÌƒŠƒXƒgB<p>
+     * VMãƒ¬ãƒ™ãƒ«ã§ç™»éŒ²ã•ã‚ŒãŸ{@link AspectTranslator}ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected static final Map vmTranslators = new HashMap();
     
     /**
-     * ThreadContextƒŒƒxƒ‹‚Å“o˜^‚³‚ê‚½{@link AspectTranslator}‚ÌƒŠƒXƒgB<p>
+     * ThreadContextãƒ¬ãƒ™ãƒ«ã§ç™»éŒ²ã•ã‚ŒãŸ{@link AspectTranslator}ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected final Map translators = new HashMap();
     
@@ -70,19 +70,19 @@ public class NimbusClassLoader extends ClassLoader{
     private boolean isLoadNotTransformClass = false;
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒXƒ[ƒ_‚ğe‚É‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã‚’è¦ªã«æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param parent eƒNƒ‰ƒXƒ[ƒ_
+     * @param parent è¦ªã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€
      */
     protected NimbusClassLoader(ClassLoader parent){
         super(parent);
     }
     
     /**
-     * ƒNƒ‰ƒXƒ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚Åæ“¾‚³‚ê‚éƒNƒ‰ƒXƒ[ƒ_‚ÍAƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_‚ğe‚É‚ÂB<br>
+     * ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã•ã‚Œã‚‹ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã¯ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã‚’è¦ªã«æŒã¤ã€‚<br>
      * 
-     * @return ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXƒ[ƒ_‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½NimbusƒNƒ‰ƒXƒ[ƒ_‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸNimbusã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     public static synchronized NimbusClassLoader getInstance(){
         final ClassLoader contextLoader
@@ -100,9 +100,9 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * VMƒŒƒxƒ‹‚ÅƒNƒ‰ƒXƒ[ƒh‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹•ÏŠ·‚ğs‚¤AspectTranslator‚ğ“o˜^‚·‚éB<p>
+     * VMãƒ¬ãƒ™ãƒ«ã§ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«å¤‰æ›ã‚’è¡Œã†AspectTranslatorã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param translator “o˜^‚·‚éAspectTranslator
+     * @param translator ç™»éŒ²ã™ã‚‹AspectTranslator
      */
     public static void addVMAspectTranslator(AspectTranslator translator){
         synchronized(vmTranslators){
@@ -120,9 +120,9 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * VMƒŒƒxƒ‹‚ÅƒNƒ‰ƒXƒ[ƒh‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹•ÏŠ·‚ğs‚¤AspectTranslator‚ğ“o˜^‰ğœ‚·‚éB<p>
+     * VMãƒ¬ãƒ™ãƒ«ã§ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«å¤‰æ›ã‚’è¡Œã†AspectTranslatorã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<p>
      *
-     * @param translator “o˜^‰ğœ‚·‚éAspectTranslator
+     * @param translator ç™»éŒ²è§£é™¤ã™ã‚‹AspectTranslator
      */
     public static void removeVMAspectTranslator(AspectTranslator translator){
         synchronized(vmTranslators){
@@ -138,9 +138,9 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * VMƒŒƒxƒ‹‚Å“o˜^‚³‚ê‚Ä‚¢‚éAspectTranslator‚ğæ“¾‚·‚éB<p>
+     * VMãƒ¬ãƒ™ãƒ«ã§ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹AspectTranslatorã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return AspectTranslator‚Ì”z—ñ
+     * @return AspectTranslatorã®é…åˆ—
      */
     public static AspectTranslator[] getVMAspectTranslators(){
         synchronized(vmTranslators){
@@ -156,9 +156,9 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * ThreadContextƒŒƒxƒ‹‚ÅƒNƒ‰ƒXƒ[ƒh‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹•ÏŠ·‚ğs‚¤AspectTranslator‚ğ“o˜^‚·‚éB<p>
+     * ThreadContextãƒ¬ãƒ™ãƒ«ã§ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«å¤‰æ›ã‚’è¡Œã†AspectTranslatorã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param translator “o˜^‚·‚éAspectTranslator
+     * @param translator ç™»éŒ²ã™ã‚‹AspectTranslator
      */
     public void addAspectTranslator(AspectTranslator translator){
         synchronized(translators){
@@ -176,9 +176,9 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * ThreadContextƒŒƒxƒ‹‚ÅƒNƒ‰ƒXƒ[ƒh‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹•ÏŠ·‚ğs‚¤AspectTranslator‚ğ“o˜^‰ğœ‚·‚éB<p>
+     * ThreadContextãƒ¬ãƒ™ãƒ«ã§ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ‰æ™‚ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«å¤‰æ›ã‚’è¡Œã†AspectTranslatorã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<p>
      *
-     * @param translator “o˜^‰ğœ‚·‚éAspectTranslator
+     * @param translator ç™»éŒ²è§£é™¤ã™ã‚‹AspectTranslator
      */
     public void removeAspectTranslator(AspectTranslator translator){
         synchronized(translators){
@@ -194,9 +194,9 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * ThreadContextƒŒƒxƒ‹‚Å“o˜^‚³‚ê‚Ä‚¢‚éAspectTranslator‚ğæ“¾‚·‚éB<p>
+     * ThreadContextãƒ¬ãƒ™ãƒ«ã§ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹AspectTranslatorã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return AspectTranslator‚Ì”z—ñ
+     * @return AspectTranslatorã®é…åˆ—
      */
     public AspectTranslator[] getAspectTranslators(){
         synchronized(translators){
@@ -212,30 +212,30 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * {@link AspectTranslator}‚Ì•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚ğƒ[ƒh‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link AspectTranslator}ã®å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isLoad {@link AspectTranslator}‚Ì•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éê‡trueBƒfƒtƒHƒ‹ƒg‚Ífalse
+     * @param isLoad {@link AspectTranslator}ã®å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆtrueã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯false
      */
     public void setLoadNotTransformClass(boolean isLoad){
         isLoadNotTransformClass = isLoad;
     }
     
     /**
-     * {@link AspectTranslator}‚Ì•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚ğƒ[ƒh‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link AspectTranslator}ã®å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡{@link AspectTranslator}‚Ì•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚ğƒ[ƒh‚·‚é
+     * @return trueã®å ´åˆ{@link AspectTranslator}ã®å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
      */
     public boolean isLoadNotTransformClass(){
         return isLoadNotTransformClass;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ğ‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Åƒ[ƒh‚·‚éB<p>
-     * {@link #isLoadNotTransformClass()}‚Ì’l‚ÉŠÖ‚í‚ç‚¸A•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚à‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Å–¾¦“I‚Éƒ[ƒh‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * {@link #isLoadNotTransformClass()}ã®å€¤ã«é–¢ã‚ã‚‰ãšã€å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚‚ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§æ˜ç¤ºçš„ã«ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
      * 
-     * @param name ƒNƒ‰ƒX–¼
-     * @return ƒ[ƒh‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚¯ãƒ©ã‚¹å
+     * @return ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public synchronized Class loadClassLocally(String name)
      throws ClassNotFoundException{
@@ -243,13 +243,13 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ğ‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Åƒ[ƒh‚·‚éB<p>
-     * {@link #isLoadNotTransformClass()}‚Ì’l‚ÉŠÖ‚í‚ç‚¸A•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚à‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Å–¾¦“I‚Éƒ[ƒh‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * {@link #isLoadNotTransformClass()}ã®å€¤ã«é–¢ã‚ã‚‰ãšã€å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚‚ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§æ˜ç¤ºçš„ã«ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
      * 
-     * @param name ƒNƒ‰ƒX–¼
-     * @param resolve true ‚Ìê‡‚ÍAƒNƒ‰ƒX‚ğ‰ğßˆ—‚·‚é
-     * @return ƒ[ƒh‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚¯ãƒ©ã‚¹å
+     * @param resolve true ã®å ´åˆã¯ã€ã‚¯ãƒ©ã‚¹ã‚’è§£é‡ˆå‡¦ç†ã™ã‚‹
+     * @return ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public synchronized Class loadClassLocally(String name, boolean resolve)
      throws ClassNotFoundException{
@@ -257,13 +257,13 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB<p>
-     * “o˜^‚³‚ê‚½{@link AspectTranslator}‚Ì•ÏŠ·‘ÎÛ‚Æ‚È‚Á‚Ä‚¢‚éƒNƒ‰ƒX‚ÍA‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Åƒ[ƒh‚·‚éB‚»‚¤‚Å‚È‚¢ƒNƒ‰ƒX‚ÍAeƒNƒ‰ƒXƒ[ƒ_‚Å‚ ‚éƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒ[ƒ_‚ÉˆÏ÷‚·‚éB’A‚µA{@link #isLoadNotTransformClass()}‚Ì’l‚ªtrue‚Ìê‡‚ÍA•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚à‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Åƒ[ƒh‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * ç™»éŒ²ã•ã‚ŒãŸ{@link AspectTranslator}ã®å¤‰æ›å¯¾è±¡ã¨ãªã£ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚ãã†ã§ãªã„ã‚¯ãƒ©ã‚¹ã¯ã€è¦ªã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ã‚ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ­ãƒ¼ãƒ€ã«å§”è­²ã™ã‚‹ã€‚ä½†ã—ã€{@link #isLoadNotTransformClass()}ã®å€¤ãŒtrueã®å ´åˆã¯ã€å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚‚ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<br>
      * 
-     * @param name ƒNƒ‰ƒX–¼
-     * @param resolve true ‚Ìê‡‚ÍAƒNƒ‰ƒX‚ğ‰ğßˆ—‚·‚é
-     * @return ƒ[ƒh‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚¯ãƒ©ã‚¹å
+     * @param resolve true ã®å ´åˆã¯ã€ã‚¯ãƒ©ã‚¹ã‚’è§£é‡ˆå‡¦ç†ã™ã‚‹
+     * @return ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     protected synchronized Class loadClass(String name, boolean resolve)
      throws ClassNotFoundException{
@@ -271,13 +271,13 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ğƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒNƒ‰ƒX–¼
-     * @param resolve true ‚Ìê‡‚ÍAƒNƒ‰ƒX‚ğ‰ğßˆ—‚·‚é
-     * @param isLocally true‚Ìê‡‚ÍA{@link #isLoadNotTransformClass()}‚Ì’l‚ÉŠÖ‚í‚ç‚¸A•ÏŠ·‘ÎÛ‚Å‚È‚¢ƒNƒ‰ƒX‚à‚±‚ÌƒNƒ‰ƒXƒ[ƒ_‚Å–¾¦“I‚Éƒ[ƒh‚·‚é
-     * @return ƒ[ƒh‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param name ã‚¯ãƒ©ã‚¹å
+     * @param resolve true ã®å ´åˆã¯ã€ã‚¯ãƒ©ã‚¹ã‚’è§£é‡ˆå‡¦ç†ã™ã‚‹
+     * @param isLocally trueã®å ´åˆã¯ã€{@link #isLoadNotTransformClass()}ã®å€¤ã«é–¢ã‚ã‚‰ãšã€å¤‰æ›å¯¾è±¡ã§ãªã„ã‚¯ãƒ©ã‚¹ã‚‚ã“ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã§æ˜ç¤ºçš„ã«ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
+     * @return ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     protected synchronized Class loadClass(
         String name,
@@ -377,22 +377,22 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * ƒ[ƒh‘ÎÛ‚Æ‚È‚ç‚È‚¢ƒNƒ‰ƒX‚ğ”»’è‚·‚éB<p>
-     * ˆÈ‰º‚ÌƒNƒ‰ƒX‚ÍA”@‰½‚È‚éê‡‚à•ÏŠ·‘ÎÛ‚Æ‚È‚ç‚È‚¢B<br>
+     * ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã¨ãªã‚‰ãªã„ã‚¯ãƒ©ã‚¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ã‚¯ãƒ©ã‚¹ã¯ã€å¦‚ä½•ãªã‚‹å ´åˆã‚‚å¤‰æ›å¯¾è±¡ã¨ãªã‚‰ãªã„ã€‚<br>
      * <ul>
-     *   <li>"org.omg."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"org.w3c."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"org.xml.sax."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"sunw."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"sun."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"java."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"javax."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"com.sun."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
-     *   <li>"javassist."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
+     *   <li>"org.omg."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"org.w3c."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"org.xml.sax."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"sunw."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"sun."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"java."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"javax."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"com.sun."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
+     *   <li>"javassist."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
      * </ul>
      * 
-     * @param classname ƒNƒ‰ƒX–¼
-     * @return ƒ[ƒh‘ÎÛ‚Æ‚È‚ç‚È‚¢ƒNƒ‰ƒX‚Ìê‡Atrue
+     * @param classname ã‚¯ãƒ©ã‚¹å
+     * @return ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã¨ãªã‚‰ãªã„ã‚¯ãƒ©ã‚¹ã®å ´åˆã€true
      */
     public static boolean isNonLoadableClassName(String classname){
       return classname.startsWith("org.omg.")
@@ -408,24 +408,24 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * •ÏŠ·‘ÎÛ‚Æ‚È‚ç‚È‚¢ƒNƒ‰ƒX‚ğ”»’è‚·‚éB<p>
-     * ˆÈ‰º‚ÌƒNƒ‰ƒX‚ÍA”@‰½‚È‚éê‡‚à•ÏŠ·‘ÎÛ‚Æ‚È‚ç‚È‚¢B<br>
+     * å¤‰æ›å¯¾è±¡ã¨ãªã‚‰ãªã„ã‚¯ãƒ©ã‚¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ã‚¯ãƒ©ã‚¹ã¯ã€å¦‚ä½•ãªã‚‹å ´åˆã‚‚å¤‰æ›å¯¾è±¡ã¨ãªã‚‰ãªã„ã€‚<br>
      * <ul>
-     *   <li>"jp.ossc.nimbus.service.aop."‚©‚çn‚Ü‚éƒNƒ‰ƒX</li>
+     *   <li>"jp.ossc.nimbus.service.aop."ã‹ã‚‰å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹</li>
      * </ul>
      * 
-     * @param classname ƒNƒ‰ƒX–¼
-     * @return •ÏŠ·‘ÎÛ‚Æ‚È‚ç‚È‚¢ƒNƒ‰ƒX‚Ìê‡Atrue
+     * @param classname ã‚¯ãƒ©ã‚¹å
+     * @return å¤‰æ›å¯¾è±¡ã¨ãªã‚‰ãªã„ã‚¯ãƒ©ã‚¹ã®å ´åˆã€true
      */
     public static boolean isNonTranslatableClassName(String classname){
       return classname.startsWith("jp.ossc.nimbus.service.aop.");
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX–¼‚ÌƒpƒbƒP[ƒW‚ğ’è‹`‚·‚éB<p>
-     * ƒpƒbƒP[ƒW‚ªŠù‚É‘¶İ‚·‚éê‡‚É‚ÍA‰½‚à‚µ‚È‚¢B
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹åã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’å®šç¾©ã™ã‚‹ã€‚<p>
+     * ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãŒæ—¢ã«å­˜åœ¨ã™ã‚‹å ´åˆã«ã¯ã€ä½•ã‚‚ã—ãªã„ã€‚
      *
-     * @param className ƒNƒ‰ƒX–¼
+     * @param className ã‚¯ãƒ©ã‚¹å
      */
     protected void definePackage(String className){
         int index = className.lastIndexOf('.');
@@ -448,10 +448,10 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌURL‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param classname ƒNƒ‰ƒX–¼
-     * @return ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌURL
+     * @param classname ã‚¯ãƒ©ã‚¹å
+     * @return ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
      */
     protected URL getClassURL(String classname){
         final String classRsrcName = classname.replace('.', '/') + CLASS_EXTEND;
@@ -459,10 +459,10 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½URL‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌƒoƒCƒgƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸURLã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒˆã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param classURL ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌURL
-     * @return ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌƒoƒCƒgƒR[ƒhB“Ç‚İ‚ß‚È‚¢ê‡‚Ínull‚ğ•Ô‚·B
+     * @param classURL ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @return ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒˆã‚³ãƒ¼ãƒ‰ã€‚èª­ã¿è¾¼ã‚ãªã„å ´åˆã¯nullã‚’è¿”ã™ã€‚
      */
     protected byte[] loadByteCode(URL classURL){
         byte[] bytecode = null;
@@ -490,11 +490,11 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚Ì{@link CodeSource}‚ÌURL‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®{@link CodeSource}ã®URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param classname ƒNƒ‰ƒX
-     * @param classURL ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌURL
-     * @return CodeSource‚ÌˆÊ’u‚ğŒˆ‚ß‚éURL
+     * @param classname ã‚¯ãƒ©ã‚¹
+     * @param classURL ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @return CodeSourceã®ä½ç½®ã‚’æ±ºã‚ã‚‹URL
      */
     protected URL getCodeSourceURL(String classname, URL classURL){
         final String classRsrcName = classname.replace('.', '/') + CLASS_EXTEND;
@@ -512,10 +512,10 @@ public class NimbusClassLoader extends ClassLoader{
     }
     
     /**
-     * w’è‚³‚ê‚½URL‚Ì{@link CodeSource}‚É‘Î‰‚·‚é{@link PermissionCollection}‚ğ‚Á‚½{@link ProtectionDomain}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸURLã®{@link CodeSource}ã«å¯¾å¿œã™ã‚‹{@link PermissionCollection}ã‚’æŒã£ãŸ{@link ProtectionDomain}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param codesourceUrl CodeSource‚ÌˆÊ’u‚ğŒˆ‚ß‚éURL
-     * @return w’è‚³‚ê‚½URL‚ÌCodeSource‚É‘Î‰‚·‚éPermissionCollection
+     * @param codesourceUrl CodeSourceã®ä½ç½®ã‚’æ±ºã‚ã‚‹URL
+     * @return æŒ‡å®šã•ã‚ŒãŸURLã®CodeSourceã«å¯¾å¿œã™ã‚‹PermissionCollection
      */
     protected ProtectionDomain getProtectionDomain(URL codesourceUrl){
     	Certificate[] certificates = null;

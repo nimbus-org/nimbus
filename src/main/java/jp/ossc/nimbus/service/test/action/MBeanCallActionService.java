@@ -61,8 +61,8 @@ import jp.ossc.nimbus.service.test.TestContext;
 import jp.ossc.nimbus.service.test.ChainTestAction;
 
 /**
- * JMX‚ÅMBean‚ğŒÄ‚Ño‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * JMXã§MBeanã‚’å‘¼ã³å‡ºã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -115,8 +115,8 @@ public class MBeanCallActionService extends ServiceBase implements TestAction, C
     }
     
     /**
-     * JMX‚ÅMBean‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’l‚ğ•Ô‚·B<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * JMXã§MBeanã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤ã‚’è¿”ã™ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * targetType
      * target
@@ -124,35 +124,35 @@ public class MBeanCallActionService extends ServiceBase implements TestAction, C
      * argumentType
      * argument
      * </pre>
-     * targetType‚ÍAŒÄ‚Ño‚µ‘ÎÛ‚ÌMBean‚Ì“Á’è•û–@‚ÅA"objectName"A"objectNameQuery"A"interpreter"‚Ì‚¢‚¸‚ê‚©‚ğw’è‚·‚éB<br>
-     * target‚ÍAtargetType‚É‚æ‚Á‚ÄA‹Lq•û–@‚ªˆÙ‚È‚éB<br>
+     * targetTypeã¯ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®MBeanã®ç‰¹å®šæ–¹æ³•ã§ã€"objectName"ã€"objectNameQuery"ã€"interpreter"ã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * targetã¯ã€targetTypeã«ã‚ˆã£ã¦ã€è¨˜è¿°æ–¹æ³•ãŒç•°ãªã‚‹ã€‚<br>
      * <ul>
-     * <li>targetType‚ª"objectName"‚Ìê‡<br>new javax.management.ObjectName(String)‚Ìˆø”‚É‚ ‚½‚é•¶š—ñ‚ğw’è‚·‚éB‚±‚ÌObjectName‚ÅA1‚Â‚ÌMBean‚ğ“Á’è‚·‚éB</li>
-     * <li>targetType‚ª"objectNameQuery"‚Ìê‡<br>new javax.management.ObjectName(String)‚Ìˆø”‚É‚ ‚½‚é•¶š—ñ‚ğw’è‚·‚éB‚±‚ÌObjectName‚ÅA•¡”‚ÌMBean‚ğ’Šo‚·‚éB</li>
-     * <li>targetType‚ª"interpreter"‚Ìê‡<br>ŒÄ‚Ño‚µ‘ÎÛ‚ÌMBean‚ÌObjectName‚Ü‚½‚Í‚»‚ÌW‡‚ğæ“¾‚·‚éƒXƒNƒŠƒvƒg•¶š—ñ‚ğ‹Lq‚·‚éBƒXƒNƒŠƒvƒg•¶š—ñ‚ÍA{@link Interpreter#evaluate(String,java.util.Map)}‚Å•]‰¿‚³‚êA‚»‚Ì–ß‚è’l‚ªMBean‚Æ‚µ‚Äg—p‚³‚ê‚éBƒXƒNƒŠƒvƒg“à‚Å‚ÍA•Ï”"connection"‚ÅAMBeanServerConnection‚ğQÆ‚Å‚«‚éB‚Ü‚½A•Ï”"context"‚ÅATestContext‚ªQÆ‚Å‚«‚éBtarget‚ÌI—¹‚ÍA‹ós‚ğ“ü‚ê‚éB</li>
+     * <li>targetTypeãŒ"objectName"ã®å ´åˆ<br>new javax.management.ObjectName(String)ã®å¼•æ•°ã«ã‚ãŸã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®ObjectNameã§ã€1ã¤ã®MBeanã‚’ç‰¹å®šã™ã‚‹ã€‚</li>
+     * <li>targetTypeãŒ"objectNameQuery"ã®å ´åˆ<br>new javax.management.ObjectName(String)ã®å¼•æ•°ã«ã‚ãŸã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®ObjectNameã§ã€è¤‡æ•°ã®MBeanã‚’æŠ½å‡ºã™ã‚‹ã€‚</li>
+     * <li>targetTypeãŒ"interpreter"ã®å ´åˆ<br>å‘¼ã³å‡ºã—å¯¾è±¡ã®MBeanã®ObjectNameã¾ãŸã¯ãã®é›†åˆã‚’å–å¾—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã‚’è¨˜è¿°ã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã¯ã€{@link Interpreter#evaluate(String,java.util.Map)}ã§è©•ä¾¡ã•ã‚Œã€ãã®æˆ»ã‚Šå€¤ãŒMBeanã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã¯ã€å¤‰æ•°"connection"ã§ã€MBeanServerConnectionã‚’å‚ç…§ã§ãã‚‹ã€‚ã¾ãŸã€å¤‰æ•°"context"ã§ã€TestContextãŒå‚ç…§ã§ãã‚‹ã€‚targetã®çµ‚äº†ã¯ã€ç©ºè¡Œã‚’å…¥ã‚Œã‚‹ã€‚</li>
      * </ul>
-     * methodSigniture‚ÍAŒÄ‚Ño‚·ƒƒ\ƒbƒh‚ÌƒVƒOƒjƒ`ƒƒ‚ğw’è‚·‚éBƒVƒOƒjƒ`ƒƒ‚ÍAƒƒ\ƒbƒh–¼(ˆø”Œ^1,ˆø”Œ^2,c)‚Åw’è‚·‚éB<br>
-     * argumentType‚ÍAŒÄ‚Ño‚·ƒƒ\ƒbƒh‚Ìˆø”‚Ìw’è•û–@‚ÅA"id"A"value"A"interpreter"‚Ì‚¢‚¸‚ê‚©‚ğw’è‚·‚éB<br>
-     * argument‚ÍAargumentType‚É‚æ‚Á‚ÄA‹Lq•û–@‚ªˆÙ‚È‚éB<br>
+     * methodSignitureã¯ã€å‘¼ã³å‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚·ã‚°ãƒ‹ãƒãƒ£ã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚·ã‚°ãƒ‹ãƒãƒ£ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰å(å¼•æ•°å‹1,å¼•æ•°å‹2,â€¦)ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * argumentTypeã¯ã€å‘¼ã³å‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã®æŒ‡å®šæ–¹æ³•ã§ã€"id"ã€"value"ã€"interpreter"ã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * argumentã¯ã€argumentTypeã«ã‚ˆã£ã¦ã€è¨˜è¿°æ–¹æ³•ãŒç•°ãªã‚‹ã€‚<br>
      * <ul>
-     * <li>argumentType‚ª"id"‚Ìê‡<br>TestAction‚Ì–ß‚è’l‚ğˆø”‚Æ‚µ‚Äg—p‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB</li>
-     * <li>argumentType‚ª"value"‚Ìê‡<br>ˆø”‚ğ•¶š—ñ‚Åw’è‚·‚éBˆø”‚ª•¡”‘¶İ‚·‚éê‡‚ÍA‰üs‚·‚éBˆø”‚ªnull‚Å‚ ‚é–‚ğw’è‚·‚éê‡‚ÍA"null"‚Æw’è‚·‚éB</li>
-     * <li>argumentType‚ª"interpreter"‚Ìê‡<br>ˆø”‚ğ¶¬‚·‚éƒXƒNƒŠƒvƒg•¶š—ñ‚ğ‹Lq‚·‚éBƒXƒNƒŠƒvƒg•¶š—ñ‚ÍA{@link Interpreter#evaluate(String,java.util.Map)}‚Å•]‰¿‚³‚êA‚»‚Ì–ß‚è’l‚ªˆø”‚Æ‚µ‚Äg—p‚³‚ê‚éBƒXƒNƒŠƒvƒg“à‚Å‚ÍA•Ï”"context"‚ÅATestContext‚ªQÆ‚Å‚«‚éBƒXƒNƒŠƒvƒg‚ÌI—¹‚ÍA‹ósB</li>
+     * <li>argumentTypeãŒ"id"ã®å ´åˆ<br>TestActionã®æˆ»ã‚Šå€¤ã‚’å¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚</li>
+     * <li>argumentTypeãŒ"value"ã®å ´åˆ<br>å¼•æ•°ã‚’æ–‡å­—åˆ—ã§æŒ‡å®šã™ã‚‹ã€‚å¼•æ•°ãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã™ã‚‹ã€‚å¼•æ•°ãŒnullã§ã‚ã‚‹äº‹ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€"null"ã¨æŒ‡å®šã™ã‚‹ã€‚</li>
+     * <li>argumentTypeãŒ"interpreter"ã®å ´åˆ<br>å¼•æ•°ã‚’ç”Ÿæˆã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã‚’è¨˜è¿°ã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã¯ã€{@link Interpreter#evaluate(String,java.util.Map)}ã§è©•ä¾¡ã•ã‚Œã€ãã®æˆ»ã‚Šå€¤ãŒå¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã¯ã€å¤‰æ•°"context"ã§ã€TestContextãŒå‚ç…§ã§ãã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®çµ‚äº†ã¯ã€ç©ºè¡Œã€‚</li>
      * </ul>
-     * ˆø”‚ª•¡”‚ ‚éê‡‚ÍAargumentTypeAargument‚ğŒJ‚è•Ô‚·B<br>
+     * å¼•æ•°ãŒè¤‡æ•°ã‚ã‚‹å ´åˆã¯ã€argumentTypeã€argumentã‚’ç¹°ã‚Šè¿”ã™ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return JMX‚ÅMBean‚ğŒÄ‚Ño‚µ‚½–ß‚è’l
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return JMXã§MBeanã‚’å‘¼ã³å‡ºã—ãŸæˆ»ã‚Šå€¤
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * JMX‚ÅMBean‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’l‚ğ•Ô‚·B<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * JMXã§MBeanã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤ã‚’è¿”ã™ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * targetType
      * target
@@ -160,29 +160,29 @@ public class MBeanCallActionService extends ServiceBase implements TestAction, C
      * argumentType
      * argument
      * </pre>
-     * targetType‚ÍAŒÄ‚Ño‚µ‘ÎÛ‚ÌMBean‚Ì“Á’è•û–@‚ÅA"objectName"A"objectNameQuery"A"interpreter"‚Ì‚¢‚¸‚ê‚©‚ğw’è‚·‚éB<br>
-     * target‚ÍAtargetType‚É‚æ‚Á‚ÄA‹Lq•û–@‚ªˆÙ‚È‚éB<br>
+     * targetTypeã¯ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®MBeanã®ç‰¹å®šæ–¹æ³•ã§ã€"objectName"ã€"objectNameQuery"ã€"interpreter"ã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * targetã¯ã€targetTypeã«ã‚ˆã£ã¦ã€è¨˜è¿°æ–¹æ³•ãŒç•°ãªã‚‹ã€‚<br>
      * <ul>
-     * <li>targetType‚ª"objectName"‚Ìê‡<br>new javax.management.ObjectName(String)‚Ìˆø”‚É‚ ‚½‚é•¶š—ñ‚ğw’è‚·‚éB‚±‚ÌObjectName‚ÅA1‚Â‚ÌMBean‚ğ“Á’è‚·‚éB</li>
-     * <li>targetType‚ª"objectNameQuery"‚Ìê‡<br>new javax.management.ObjectName(String)‚Ìˆø”‚É‚ ‚½‚é•¶š—ñ‚ğw’è‚·‚éB‚±‚ÌObjectName‚ÅA•¡”‚ÌMBean‚ğ’Šo‚·‚éB</li>
-     * <li>targetType‚ª"interpreter"‚Ìê‡<br>ŒÄ‚Ño‚µ‘ÎÛ‚ÌMBean‚ÌObjectName‚Ü‚½‚Í‚»‚ÌW‡‚ğæ“¾‚·‚éƒXƒNƒŠƒvƒg•¶š—ñ‚ğ‹Lq‚·‚éBƒXƒNƒŠƒvƒg•¶š—ñ‚ÍA{@link Interpreter#evaluate(String,java.util.Map)}‚Å•]‰¿‚³‚êA‚»‚Ì–ß‚è’l‚ªMBean‚Æ‚µ‚Äg—p‚³‚ê‚éBƒXƒNƒŠƒvƒg“à‚Å‚ÍA•Ï”"connection"‚ÅAMBeanServerConnection‚ğQÆ‚Å‚«‚éB‚Ü‚½A•Ï”"context"‚ÅATestContext‚ªQÆ‚Å‚«‚éBtarget‚ÌI—¹‚ÍA‹ós‚ğ“ü‚ê‚éB</li>
+     * <li>targetTypeãŒ"objectName"ã®å ´åˆ<br>new javax.management.ObjectName(String)ã®å¼•æ•°ã«ã‚ãŸã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®ObjectNameã§ã€1ã¤ã®MBeanã‚’ç‰¹å®šã™ã‚‹ã€‚</li>
+     * <li>targetTypeãŒ"objectNameQuery"ã®å ´åˆ<br>new javax.management.ObjectName(String)ã®å¼•æ•°ã«ã‚ãŸã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã®ObjectNameã§ã€è¤‡æ•°ã®MBeanã‚’æŠ½å‡ºã™ã‚‹ã€‚</li>
+     * <li>targetTypeãŒ"interpreter"ã®å ´åˆ<br>å‘¼ã³å‡ºã—å¯¾è±¡ã®MBeanã®ObjectNameã¾ãŸã¯ãã®é›†åˆã‚’å–å¾—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã‚’è¨˜è¿°ã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã¯ã€{@link Interpreter#evaluate(String,java.util.Map)}ã§è©•ä¾¡ã•ã‚Œã€ãã®æˆ»ã‚Šå€¤ãŒMBeanã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã¯ã€å¤‰æ•°"connection"ã§ã€MBeanServerConnectionã‚’å‚ç…§ã§ãã‚‹ã€‚ã¾ãŸã€å¤‰æ•°"context"ã§ã€TestContextãŒå‚ç…§ã§ãã‚‹ã€‚targetã®çµ‚äº†ã¯ã€ç©ºè¡Œã‚’å…¥ã‚Œã‚‹ã€‚</li>
      * </ul>
-     * methodSigniture‚ÍAŒÄ‚Ño‚·ƒƒ\ƒbƒh‚ÌƒVƒOƒjƒ`ƒƒ‚ğw’è‚·‚éBƒVƒOƒjƒ`ƒƒ‚ÍAƒƒ\ƒbƒh–¼(ˆø”Œ^1,ˆø”Œ^2,c)‚Åw’è‚·‚éB<br>
-     * argumentType‚ÍAŒÄ‚Ño‚·ƒƒ\ƒbƒh‚Ìˆø”‚Ìw’è•û–@‚ÅA"id"A"value"A"chain"A"interpreter"‚Ì‚¢‚¸‚ê‚©‚ğw’è‚·‚éB<br>
-     * argument‚ÍAargumentType‚É‚æ‚Á‚ÄA‹Lq•û–@‚ªˆÙ‚È‚éB<br>
+     * methodSignitureã¯ã€å‘¼ã³å‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚·ã‚°ãƒ‹ãƒãƒ£ã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚·ã‚°ãƒ‹ãƒãƒ£ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰å(å¼•æ•°å‹1,å¼•æ•°å‹2,â€¦)ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * argumentTypeã¯ã€å‘¼ã³å‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã®æŒ‡å®šæ–¹æ³•ã§ã€"id"ã€"value"ã€"chain"ã€"interpreter"ã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * argumentã¯ã€argumentTypeã«ã‚ˆã£ã¦ã€è¨˜è¿°æ–¹æ³•ãŒç•°ãªã‚‹ã€‚<br>
      * <ul>
-     * <li>argumentType‚ª"id"‚Ìê‡<br>TestAction‚Ì–ß‚è’l‚ğˆø”‚Æ‚µ‚Äg—p‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB</li>
-     * <li>argumentType‚ª"value"‚Ìê‡<br>ˆø”‚ğ•¶š—ñ‚Åw’è‚·‚éBˆø”‚ª•¡”‘¶İ‚·‚éê‡‚ÍA‰üs‚·‚éBˆø”‚ªnull‚Å‚ ‚é–‚ğw’è‚·‚éê‡‚ÍA"null"‚Æw’è‚·‚éB</li>
-     * <li>argumentType‚ª"chain"‚Ìê‡<br>{@link ChainTestAction$TestActionProcess TestActionProcess}‚Æ‚µ‚ÄŒÄ‚Ño‚³‚êA‘OƒAƒNƒVƒ‡ƒ“‚©‚çˆø”‚ğó‚¯æ‚é–‚ğˆÓ–¡‚·‚éB‚±‚Ìê‡argument‚Ìs‚Íw’è‚·‚é•K—v‚ª‚È‚¢B</li>
-     * <li>argumentType‚ª"interpreter"‚Ìê‡<br>ˆø”‚ğ¶¬‚·‚éƒXƒNƒŠƒvƒg•¶š—ñ‚ğ‹Lq‚·‚éBƒXƒNƒŠƒvƒg•¶š—ñ‚ÍA{@link Interpreter#evaluate(String,java.util.Map)}‚Å•]‰¿‚³‚êA‚»‚Ì–ß‚è’l‚ªˆø”‚Æ‚µ‚Äg—p‚³‚ê‚éBƒXƒNƒŠƒvƒg“à‚Å‚ÍA•Ï”"context"‚ÅATestContext‚ªQÆ‚Å‚«‚éBƒXƒNƒŠƒvƒg‚ÌI—¹‚ÍA‹ósB</li>
+     * <li>argumentTypeãŒ"id"ã®å ´åˆ<br>TestActionã®æˆ»ã‚Šå€¤ã‚’å¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚</li>
+     * <li>argumentTypeãŒ"value"ã®å ´åˆ<br>å¼•æ•°ã‚’æ–‡å­—åˆ—ã§æŒ‡å®šã™ã‚‹ã€‚å¼•æ•°ãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã™ã‚‹ã€‚å¼•æ•°ãŒnullã§ã‚ã‚‹äº‹ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€"null"ã¨æŒ‡å®šã™ã‚‹ã€‚</li>
+     * <li>argumentTypeãŒ"chain"ã®å ´åˆ<br>{@link ChainTestAction$TestActionProcess TestActionProcess}ã¨ã—ã¦å‘¼ã³å‡ºã•ã‚Œã€å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‹ã‚‰å¼•æ•°ã‚’å—ã‘å–ã‚‹äº‹ã‚’æ„å‘³ã™ã‚‹ã€‚ã“ã®å ´åˆargumentã®è¡Œã¯æŒ‡å®šã™ã‚‹å¿…è¦ãŒãªã„ã€‚</li>
+     * <li>argumentTypeãŒ"interpreter"ã®å ´åˆ<br>å¼•æ•°ã‚’ç”Ÿæˆã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã‚’è¨˜è¿°ã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆæ–‡å­—åˆ—ã¯ã€{@link Interpreter#evaluate(String,java.util.Map)}ã§è©•ä¾¡ã•ã‚Œã€ãã®æˆ»ã‚Šå€¤ãŒå¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆå†…ã§ã¯ã€å¤‰æ•°"context"ã§ã€TestContextãŒå‚ç…§ã§ãã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®çµ‚äº†ã¯ã€ç©ºè¡Œã€‚</li>
      * </ul>
-     * ˆø”‚ª•¡”‚ ‚éê‡‚ÍAargumentTypeAargument‚ğŒJ‚è•Ô‚·B<br>
+     * å¼•æ•°ãŒè¤‡æ•°ã‚ã‚‹å ´åˆã¯ã€argumentTypeã€argumentã‚’ç¹°ã‚Šè¿”ã™ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param preResult 1‚Â‘O‚ÌƒAƒNƒVƒ‡ƒ“‚Ì–ß‚è’l
-     * @param resource ƒŠƒ\[ƒX
-     * @return JMX‚ÅMBean‚ğŒÄ‚Ño‚µ‚½–ß‚è’l
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param preResult 1ã¤å‰ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®æˆ»ã‚Šå€¤
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return JMXã§MBeanã‚’å‘¼ã³å‡ºã—ãŸæˆ»ã‚Šå€¤
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         JMXConnector connector = mbeanServerConnectionFactory.getJMXConnector();

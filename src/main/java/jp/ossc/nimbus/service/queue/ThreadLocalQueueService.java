@@ -36,7 +36,7 @@ import java.io.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒXƒŒƒbƒhƒ[ƒJƒ‹QueueƒT[ƒrƒXB<p>
+ * ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«Queueã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -67,7 +67,7 @@ public class ThreadLocalQueueService extends ServiceBase
     }
     
     public void startService() throws Exception{
-        // QueueFactoryƒT[ƒrƒX‚Ì¶¬‚Ü‚½‚Íæ“¾
+        // QueueFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã¾ãŸã¯å–å¾—
         if(queueFactoryServiceName != null) {
             queueFactory =(FactoryService)ServiceManagerFactory.getService(getQueueFactoryServiceName());
         }
@@ -86,8 +86,8 @@ public class ThreadLocalQueueService extends ServiceBase
     }
     
     public void stopService() throws Exception{
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(getQueueFactoryService() == getDefaultQueueFactoryService()){
             getDefaultQueueFactoryService().stop();
         }
@@ -95,8 +95,8 @@ public class ThreadLocalQueueService extends ServiceBase
     
     public void destroyService() throws Exception{
         
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(getQueueFactoryService() == getDefaultQueueFactoryService()
             && getDefaultQueueFactoryService() != null){
             getDefaultQueueFactoryService().destroy();

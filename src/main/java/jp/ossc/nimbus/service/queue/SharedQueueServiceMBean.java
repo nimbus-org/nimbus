@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.context.SharedContextServiceMBean;
 
 /**
- * {@link SharedQueueService}��MBean�C���^�t�F�[�X<p>
+ * {@link SharedQueueService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see SharedQueueService
@@ -45,170 +45,170 @@ import jp.ossc.nimbus.service.context.SharedContextServiceMBean;
 public interface SharedQueueServiceMBean extends SharedContextServiceMBean{
     
     /**
-     * �����Ŏg�p����{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}�̎����N���X��ݒ肷��B<p>
+     * 内部で使用する{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}の実装クラスを設定する。<p>
      *
-     * @param clazz SynchronizeMonitor�̎����N���X
+     * @param clazz SynchronizeMonitorの実装クラス
      */
     public void setSynchronizeMonitorClass(Class clazz);
     
     /**
-     * �����Ŏg�p����{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}�̎����N���X���擾����B<p>
+     * 内部で使用する{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}の実装クラスを取得する。<p>
      *
-     * @return SynchronizeMonitor�̎����N���X
+     * @return SynchronizeMonitorの実装クラス
      */
     public Class getSynchronizeMonitorClass();
     
     /**
-     * �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ�ݒ肷��B<p>
-     * �������L���[�҂��̐擪�łȂ��ꍇ��A�L���[�ɗ��܂��ĂȂ��ꍇ�́A�Ă�sleep����B<br>
-     * �f�t�H���g�́A10�b�B
+     * キューに対して無限取得待ちをするスレッドがsleepする時間を設定する。<p>
+     * 自分がキュー待ちの先頭でない場合や、キューに溜まってない場合は、再びsleepする。<br>
+     * デフォルトは、10秒。
      *
-     * @param millis �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @param millis キューに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public void setSleepTime(long millis);
     
     /**
-     * �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ��擾����B<p>
+     * キューに対して無限取得待ちをするスレッドがsleepする時間を取得する。<p>
      *
-     * @return �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @return キューに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public long getSleepTime();
     
     /**
-     * �L���[�̍ő�臒l��ݒ肷��B<p>
-     * �L���[�̐[�����ő�臒l�ɓ��B����ƁA�L���[�ւ̓����͑҂�����A�L���[����̈��������Ɠ��������B<br>
-     * �f�t�H���g�́A-1�ŁA�ő�臒l�Ȃ��̏�Ԃł���B<br>
+     * キューの最大閾値を設定する。<p>
+     * キューの深さが最大閾値に到達すると、キューへの投入は待たされ、キューからの引き抜きと同期される。<br>
+     * デフォルトは、-1で、最大閾値なしの状態である。<br>
      *
-     * @param size �L���[�̍ő�臒l
+     * @param size キューの最大閾値
      */
     public void setMaxThresholdSize(int size);
     
     /**
-     * �L���[�̍ő�臒l���擾����B<p>
+     * キューの最大閾値を取得する。<p>
      *
-     * @return �L���[�̍ő�臒l
+     * @return キューの最大閾値
      */
     public int getMaxThresholdSize();
     
     /**
-     * �L���[�v�f���擾���ɗ��������ǂ���ɓn������ۏ؂��邩�ǂ����𔻒肷��B<p>
+     * キュー要素を取得しに来た順序どおりに渡す事を保証するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�ۏ؂���
+     * @return trueの場合、保証する
      */
     public boolean isSafeGetOrder();
     
     /**
-     * �L���[�v�f���擾���ɗ��������ǂ���ɓn������ۏ؂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�ŕۏ؂��Ȃ��B<br>
+     * キュー要素を取得しに来た順序どおりに渡す事を保証するかどうかを設定する。<p>
+     * デフォルトは、falseで保証しない。<br>
      *
-     * @param isSafe �ۏ؂���ꍇ�Atrue
+     * @param isSafe 保証する場合、true
      */
     public void setSafeGetOrder(boolean isSafe);
     
     /**
-     * �L���[�v�f�����L�R���e�L�X�g�Ɋi�[����ۂ̃L�[�i{����}+{�ʔ�}+{UID}�j�̎����t�H�[�}�b�g��ݒ肷��B<p>
-     * �f�t�H���g�́A"yyyyMMddHHmmssSSS"�B<br>
+     * キュー要素を共有コンテキストに格納する際のキー（{時刻}+{通番}+{UID}）の時刻フォーマットを設定する。<p>
+     * デフォルトは、"yyyyMMddHHmmssSSS"。<br>
      *
-     * @param format �����t�H�[�}�b�g
+     * @param format 時刻フォーマット
      */
     public void setSequenceTimestampFormat(String format);
     
     /**
-     * �L���[�v�f�����L�R���e�L�X�g�Ɋi�[����ۂ̃L�[�i{����}+{�ʔ�}+{UID}�j�̎����t�H�[�}�b�g���擾����B<p>
+     * キュー要素を共有コンテキストに格納する際のキー（{時刻}+{通番}+{UID}）の時刻フォーマットを取得する。<p>
      *
-     * @return �����t�H�[�}�b�g
+     * @return 時刻フォーマット
      */
     public String getSequenceTimestampFormat();
     
     /**
-     * �L���[�v�f�����L�R���e�L�X�g�Ɋi�[����ۂ̃L�[�i{����}+{�ʔ�}+{UID}�j�̒ʔԌ�����ݒ肷��B<p>
-     * �f�t�H���g�́A5�B<br>
+     * キュー要素を共有コンテキストに格納する際のキー（{時刻}+{通番}+{UID}）の通番桁数を設定する。<p>
+     * デフォルトは、5。<br>
      *
-     * @param digit �ʔԌ���
+     * @param digit 通番桁数
      */
     public void setSequenceDigit(int digit);
     
     /**
-     * �L���[�v�f�����L�R���e�L�X�g�Ɋi�[����ۂ̃L�[�i{����}+{�ʔ�}+{UID}�j�̒ʔԌ������擾����B<p>
+     * キュー要素を共有コンテキストに格納する際のキー（{時刻}+{通番}+{UID}）の通番桁数を取得する。<p>
      *
-     * @return �ʔԌ���
+     * @return 通番桁数
      */
     public int getSequenceDigit();
     
     /**
-     * ����ɃL���[�̗v�f���擾���鎞�ɁA�擾�\�ȗv�f��T������[����ݒ肷��B<p>
-     * �f�t�H���g�́A2�B<br>
+     * 並列にキューの要素を取得する時に、取得可能な要素を探索する深さを設定する。<p>
+     * デフォルトは、2。<br>
      *
-     * @param size �T������[��
+     * @param size 探索する深さ
      */
     public void setSeekDepth(int size);
     
     /**
-     * ����ɃL���[�̗v�f���擾���鎞�ɁA�擾�\�ȗv�f��T������[�����擾����B<p>
+     * 並列にキューの要素を取得する時に、取得可能な要素を探索する深さを取得する。<p>
      *
-     * @return �T������[��
+     * @return 探索する深さ
      */
     public int getSeekDepth();
     
     /**
-     * �L���[�̌��݂̗v�f���X�g���擾����B<p>
-     * �����Ŏ擾���ꂽ�L���[�v�f�́A���̑���ł̓L���[����폜����Ȃ��B<br>
+     * キューの現在の要素リストを取得する。<p>
+     * ここで取得されたキュー要素は、この操作ではキューから削除されない。<br>
      *
-     * @return �L���[�̌��݂̗v�f���X�g
+     * @return キューの現在の要素リスト
      */
     public List elements();
     
     /**
-     * �L���[������������B <p>
+     * キューを初期化する。 <p>
      */
     public void clear();
     
     /**
-     * ����܂łɃL���[�Ɋi�[���ꂽ�����擾����B<p>
+     * これまでにキューに格納された数を取得する。<p>
      *
-     * @return ����܂łɃL���[�Ɋi�[���ꂽ��
+     * @return これまでにキューに格納された数
      */
     public long getCount();
     
     /**
-     * �O��₢���킹����L���[�Ɋi�[���ꂽ�����擾����B<p>
+     * 前回問い合わせからキューに格納された数を取得する。<p>
      *
-     * @return �O��₢���킹����L���[�Ɋi�[���ꂽ��
+     * @return 前回問い合わせからキューに格納された数
      */
     public long getCountDelta();
     
     /**
-     * �Ō�ɃL���[�Ɋi�[���ꂽ�������擾����B<p>
+     * 最後にキューに格納された時刻を取得する。<p>
      *
-     * @return �Ō�ɃL���[�Ɋi�[���ꂽ����
+     * @return 最後にキューに格納された時刻
      */
     public long getLastPushedTimeMillis();
     
     /**
-     * �Ō�ɃL���[�Ɋi�[���ꂽ�������擾����B<p>
+     * 最後にキューに格納された時刻を取得する。<p>
      *
-     * @return �Ō�ɃL���[�Ɋi�[���ꂽ����
+     * @return 最後にキューに格納された時刻
      */
     public Date getLastPushedTime();
     
     /**
-     * ���݂̃L���[�̐[�����擾����B<p>
+     * 現在のキューの深さを取得する。<p>
      *
-     * @return ���݂̃L���[�̐[��
+     * @return 現在のキューの深さ
      */
     public long getDepth();
     
     /**
-     * �O��₢���킹����̃L���[�̐[�����擾����B<p>
+     * 前回問い合わせからのキューの深さを取得する。<p>
      *
-     * @return �O��₢���킹����̃L���[�̐[��
+     * @return 前回問い合わせからのキューの深さ
      */
     public long getDepthDelta();
     
     /**
-     * �ő哞�B���̃L���[�̐[�����擾����B<p>
+     * 最大到達時のキューの深さを取得する。<p>
      *
-     * @return �ő哞�B���̃L���[�̐[��
+     * @return 最大到達時のキューの深さ
      */
     public long getMaxDepth();
 }

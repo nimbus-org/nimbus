@@ -41,9 +41,9 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * Bean‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * “n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ğŒ©‚ÄA{@link EditorFinder}‚Éİ’è‚³‚ê‚½AŒ^‚ÆƒGƒfƒBƒ^‚Ìƒ}ƒbƒsƒ“ƒO‚ğg‚Á‚ÄAˆ—‚ğ‘¼‚ÌƒGƒfƒBƒ^‚ÉˆÏ÷‚µ‚ÄA‚»‚ÌŒã{@link Object#toString()}‚ğŒÄ‚ñ‚Å•¶š—ñ‚É‚·‚éB‚Ü‚½A“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ª”z—ñŒ^‚Ìê‡AŠe—v‘f‚É‘Î‚µ‚Ä“¯—l‚Ìˆ—‚ğs‚¢A','‚Å‹æØ‚Á‚½•¶š—ñ‚É˜AŒ‹‚·‚éB<br>
- * EditorFinder‚ÅƒGƒfƒBƒ^‚ğŒŸõ‚µ‚Ä‚àŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA{@link Object#toString()}‚ğŒÄ‚ñ‚Å•¶š—ñ‚É‚·‚éB<br>
+ * Beanã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ã‚’è¦‹ã¦ã€{@link EditorFinder}ã«è¨­å®šã•ã‚ŒãŸã€å‹ã¨ã‚¨ãƒ‡ã‚£ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’ä½¿ã£ã¦ã€å‡¦ç†ã‚’ä»–ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«å§”è­²ã—ã¦ã€ãã®å¾Œ{@link Object#toString()}ã‚’å‘¼ã‚“ã§æ–‡å­—åˆ—ã«ã™ã‚‹ã€‚ã¾ãŸã€æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ãŒé…åˆ—å‹ã®å ´åˆã€å„è¦ç´ ã«å¯¾ã—ã¦åŒæ§˜ã®å‡¦ç†ã‚’è¡Œã„ã€','ã§åŒºåˆ‡ã£ãŸæ–‡å­—åˆ—ã«é€£çµã™ã‚‹ã€‚<br>
+ * EditorFinderã§ã‚¨ãƒ‡ã‚£ã‚¿ã‚’æ¤œç´¢ã—ã¦ã‚‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€{@link Object#toString()}ã‚’å‘¼ã‚“ã§æ–‡å­—åˆ—ã«ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -90,10 +90,10 @@ public class BeanJournalEditorService
     }
     
     /**
-     * •ÒW‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç·¨é›†æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @return true‚Ìê‡ApublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @return trueã®å ´åˆã€publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isFieldOnly(Class type){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -101,11 +101,11 @@ public class BeanJournalEditorService
     }
     
     /**
-     * •ÒW‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * ç·¨é›†æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param isFieldOnly publicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡‚ÍAtrue
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param isFieldOnly publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setFieldOnly(Class type, boolean isFieldOnly){
         if(propertyAccessTypeMap == null){
@@ -128,10 +128,10 @@ public class BeanJournalEditorService
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @return true‚Ìê‡Apublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @return trueã®å ´åˆã€publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isAccessorOnly(Class type){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -139,11 +139,11 @@ public class BeanJournalEditorService
     }
     
     /**
-     * •ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * å¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param isAccessorOnly public‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡Atrue
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param isAccessorOnly publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã€true
      */
     public void setAccessorOnly(Class type, boolean isAccessorOnly){
         if(propertyAccessTypeMap == null){

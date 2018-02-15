@@ -46,8 +46,8 @@ import jp.ossc.nimbus.service.proxy.RemoteServiceCallException;
 
 
 /**
- * JMXƒNƒ‰ƒCƒAƒ“ƒgRMIŒÄ‚Ño‚µInvokerB<p>
- * JNDI‚©‚çlookup‚µ‚½javax.management.MBeanServerConnection‚ğg‚Á‚ÄMBean‚ğŒÄ‚Ño‚·B
+ * JMXã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆRMIå‘¼ã³å‡ºã—Invokerã€‚<p>
+ * JNDIã‹ã‚‰lookupã—ãŸjavax.management.MBeanServerConnectionã‚’ä½¿ã£ã¦MBeanã‚’å‘¼ã³å‡ºã™ã€‚
  *
  * @author M.Takata
  */
@@ -75,102 +75,102 @@ public class JMXClientRMICallInvokerService extends ServiceBase
     protected String mBeanQuery;
     protected String objectNameRegex;
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setRMIAdaptorName(String name){
         rmiAdaptorName = name;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public String getRMIAdaptorName(){
         return rmiAdaptorName;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setServiceURL(String url){
         serviceURL = url;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public String getServiceURL(){
         return serviceURL;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setJMXConnectorEnvironment(Map env){
         jmxConnectorEnvironment = env;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public Map getJMXConnectorEnvironment(){
         return jmxConnectorEnvironment;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setObjectName(String name){
         objectNameStr = name;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public String getObjectName(){
         return objectNameStr;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setObjectNameDomain(String domain){
         objectNameDomain = domain;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public String getObjectNameDomain(){
         return objectNameDomain;
     }
     
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setObjectNameProperties(Properties prop){
         objectNameProperties = prop;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public Properties getObjectNameProperties(){
         return objectNameProperties;
     }
 
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setMBeanQuery(String query){
         mBeanQuery = query;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public String getMBeanQuery(){
         return mBeanQuery;
     }
 
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public void setObjectNameRegex(String regex){
         objectNameRegex = regex;
     }
-    // JMXClientRMICallInvokerServiceMBean‚ÌJavaDoc
+    // JMXClientRMICallInvokerServiceMBeanã®JavaDoc
     public String getObjectNameRegex(){
         return objectNameRegex;
     }
 
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param jndiFinder JndiFinderƒT[ƒrƒX
+     * @param jndiFinder JndiFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiFinder(JndiFinder jndiFinder) {
         this.jndiFinder = jndiFinder;
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(jndiFinderServiceName != null){
@@ -209,9 +209,9 @@ public class JMXClientRMICallInvokerService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(jmxConnector != null){
@@ -221,7 +221,7 @@ public class JMXClientRMICallInvokerService extends ServiceBase
     }
 
     /**
-     * İ’è‚³‚ê‚Ä‚¢‚é³‹K•\Œ»‚ğg‚Á‚ÄAObjectName‚ğŒŸõ‚·‚éB<p>
+     * è¨­å®šã•ã‚Œã¦ã„ã‚‹æ­£è¦è¡¨ç¾ã‚’ä½¿ã£ã¦ã€ObjectNameã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      * 
      * @return ObjectName
      * @exception IOException 
@@ -246,9 +246,9 @@ public class JMXClientRMICallInvokerService extends ServiceBase
     }
 
     /**
-     * İ’è‚³‚ê‚Ä‚¢‚équery‚ğg‚Á‚ÄAObjectName‚Ì”z—ñ‚ğ–â‚¢‡‚í‚¹‚éB<p>
+     * è¨­å®šã•ã‚Œã¦ã„ã‚‹queryã‚’ä½¿ã£ã¦ã€ObjectNameã®é…åˆ—ã‚’å•ã„åˆã‚ã›ã‚‹ã€‚<p>
      * 
-     * @return ObjectName‚Ì”z—ñ
+     * @return ObjectNameã®é…åˆ—
      * @exception NamingException 
      * @exception IOException 
      * @exception MalformedObjectNameException 
@@ -267,7 +267,7 @@ public class JMXClientRMICallInvokerService extends ServiceBase
     }
     
     /**
-     * ObjectName‚ğì¬‚·‚éB<p>
+     * ObjectNameã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
      * @return ObjectName
      * @exception Exception
@@ -287,12 +287,12 @@ public class JMXClientRMICallInvokerService extends ServiceBase
     }
 
     /**
-     * JMXŒo—R‚ÅMBean‚ğŒÄ‚Ño‚·B<p>
-     * JNDI‚©‚çjavax.management.MBeanServerConnection‚ğlookup‚µ‚ÄAMBean‚ÌŒÄ‚Ño‚µ‚ğs‚¤B<br>
+     * JMXçµŒç”±ã§MBeanã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * JNDIã‹ã‚‰javax.management.MBeanServerConnectionã‚’lookupã—ã¦ã€MBeanã®å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚±‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã“ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final MethodInvocationContext methodContext

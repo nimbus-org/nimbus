@@ -34,10 +34,10 @@ package jp.ossc.nimbus.service.cache;
 import java.io.*;
 
 /**
- * ƒL[•t‚«ƒLƒƒƒbƒVƒ…QÆB<p>
- * {@link KeyCachedReference}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•‚Å‚ ‚éB<br>
- * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ‹­QÆ‚Å•Û‚·‚éB<br>
- * {@link DefaultCachedReference}‚Ì‹@”\‚É‰Á‚¦‚ÄAƒLƒƒƒbƒVƒ…‚ÌƒL[î•ñ‚ğ•Û‚·‚éB<br>
+ * ã‚­ãƒ¼ä»˜ãã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
+ * {@link KeyCachedReference}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã§ã‚ã‚‹ã€‚<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼·å‚ç…§ã§ä¿æŒã™ã‚‹ã€‚<br>
+ * {@link DefaultCachedReference}ã®æ©Ÿèƒ½ã«åŠ ãˆã¦ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼æƒ…å ±ã‚’ä¿æŒã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -49,17 +49,17 @@ public class DefaultKeyCachedReference extends DefaultCachedReference
     protected Object cacheKey;
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚ÌƒL[‚ÆƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‚·‚éƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼ã¨ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒLƒƒƒbƒVƒ…‚ÌƒL[
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public DefaultKeyCachedReference(Object key, Object obj){
         super(obj);
         cacheKey = key;
     }
     
-    // KeyCachedReferenc‚ÌJavaDoc
+    // KeyCachedReferencã®JavaDoc
     public Object getKey(){
         return cacheKey;
     }

@@ -34,352 +34,352 @@ package jp.ossc.nimbus.service.message;
 import java.util.*;
 
 /**
- * ƒƒbƒZ[ƒWƒŒƒR[ƒhB<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã€‚<p>
  *
  * @author H.Nakano
  */
 public interface MessageRecord {
     
     /**
-     * ƒƒbƒZ[ƒWID‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒWID
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getMessageCode();
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, Object embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, byte embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, short embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, char embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, int embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, long embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, float embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, double embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, boolean embed);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, Object[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, byte[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, short[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, char[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, int[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, long[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, float[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, double[] embeds);
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lc ƒƒP[ƒ‹
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ì–„‚ßž‚ÝƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Locale lc, boolean[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage();
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Object embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(byte embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(short embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(char embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(int embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(long embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(float embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(double embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embed –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(boolean embed);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(Object[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(byte[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(short[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(char[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(int[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(long[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(float[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(double[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param embeds –„‚ßž‚Ýƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String makeMessage(boolean[] embeds);
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚Ìƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚Ìƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessageTemplate();
     
     /**
-     * Žw’è‚µ‚½ƒƒP[ƒ‹‚Ìƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW‚ðŽæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lc ƒƒP[ƒ‹
-     * @return Žw’è‚µ‚½ƒƒP[ƒ‹‚Ìƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW
+     * @param lc ãƒ­ã‚±ãƒ¼ãƒ«
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessageTemplate(Locale lc);
 }

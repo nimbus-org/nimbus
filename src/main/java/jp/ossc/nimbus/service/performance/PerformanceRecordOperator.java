@@ -34,25 +34,25 @@ package jp.ossc.nimbus.service.performance;
 
 //
 /**
- *	ŠeƒpƒtƒH[ƒ}ƒ“ƒX‚Ì“o˜^Ao—Í‚ðs‚¤B
+ *	å„ãƒ‘ãƒ•ã‚©ãƒ¼ãƒžãƒ³ã‚¹ã®ç™»éŒ²ã€å‡ºåŠ›ã‚’è¡Œã†ã€‚
  *	@author 	NRI Hirotaka.Nakano
- *				XVF
+ *				æ›´æ–°ï¼š
  */
 public interface PerformanceRecordOperator {
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXƒAƒbƒvƒƒ\ƒbƒh<BR>
-	 *	ƒR[ƒ‹‰ñ”‚ð‚t‚o‚·‚éB<BR>
-	 *	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚Æ‚Ì”äŠrA“o˜^ˆ—‚ðs‚¤B<BR>
-	 *	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒX‚Æ‚Ì”äŠrA“o˜^ˆ—‚ðs‚¤B<BR>
-	 *	ÅIƒR[ƒ‹“úŽž‚ð“o˜^‚·‚éB
-	 * @param msec ƒpƒtƒH[ƒ}ƒ“ƒXƒ^ƒCƒ€
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒžãƒ³ã‚¹ã‚¢ãƒƒãƒ—ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	ã‚³ãƒ¼ãƒ«å›žæ•°ã‚’ï¼µï¼°ã™ã‚‹ã€‚<BR>
+	 *	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒžãƒ³ã‚¹ã¨ã®æ¯”è¼ƒã€ç™»éŒ²å‡¦ç†ã‚’è¡Œã†ã€‚<BR>
+	 *	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒžãƒ³ã‚¹ã¨ã®æ¯”è¼ƒã€ç™»éŒ²å‡¦ç†ã‚’è¡Œã†ã€‚<BR>
+	 *	æœ€çµ‚ã‚³ãƒ¼ãƒ«æ—¥æ™‚ã‚’ç™»éŒ²ã™ã‚‹ã€‚
+	 * @param msec ãƒ‘ãƒ•ã‚©ãƒ¼ãƒžãƒ³ã‚¹ã‚¿ã‚¤ãƒ 
 	 */
 	public void entry (long msec);
 	//
 	/**
-	 *	ƒŠƒ\[ƒX‚h‚c‚ðo—Í‚·‚éB
-	 * @param id ƒŠƒ\[ƒXID
+	 *	ãƒªã‚½ãƒ¼ã‚¹ï¼©ï¼¤ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @param id ãƒªã‚½ãƒ¼ã‚¹ID
 	 */
 	public void setResourceId(String id) ;
 }

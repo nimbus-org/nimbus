@@ -32,9 +32,9 @@
 package jp.ossc.nimbus.core;
 
 /**
- * ƒT[ƒrƒXƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * {@link ServiceManager}‚Å§Œä‰Â”\‚ÈƒT[ƒrƒX‚ğ’è‹`‚·‚éƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚·B<br>
- * ‚±‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ğimplements‚µ‚½ƒNƒ‰ƒX‚ÍAServiceManager‚É‚æ‚Á‚ÄA¶¬i{@link #create()}jA‹N“®i{@link #start()}jA’â~i{@link #stop()}jA”pŠüi{@link #destroy()}j‚ÌŒ_‹@‚ğ§Œä‚·‚é–‚ª‰Â”\‚ÅA‚»‚Ì“®ì‚ğÀ‘•‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B‚Ü‚½A‚S‚Â‚Ì“®ì‚Ì§Œä‚É‚æ‚éAó‘Ô‚ÌŠÇ—‚ğÀ‘•‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * {@link ServiceManager}ã§åˆ¶å¾¡å¯èƒ½ãªã‚µãƒ¼ãƒ“ã‚¹ã‚’å®šç¾©ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã™ã€‚<br>
+ * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’implementsã—ãŸã‚¯ãƒ©ã‚¹ã¯ã€ServiceManagerã«ã‚ˆã£ã¦ã€ç”Ÿæˆï¼ˆ{@link #create()}ï¼‰ã€èµ·å‹•ï¼ˆ{@link #start()}ï¼‰ã€åœæ­¢ï¼ˆ{@link #stop()}ï¼‰ã€å»ƒæ£„ï¼ˆ{@link #destroy()}ï¼‰ã®å¥‘æ©Ÿã‚’åˆ¶å¾¡ã™ã‚‹äº‹ãŒå¯èƒ½ã§ã€ãã®å‹•ä½œã‚’å®Ÿè£…ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã¾ãŸã€ï¼”ã¤ã®å‹•ä½œã®åˆ¶å¾¡ã«ã‚ˆã‚‹ã€çŠ¶æ…‹ã®ç®¡ç†ã‚’å®Ÿè£…ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚<br>
  * 
  * @author M.Takata
  * @see ServiceManager
@@ -42,19 +42,19 @@ package jp.ossc.nimbus.core;
 public interface Service{
     
     /**
-     * ó‘Ô‚ğ•\‚·•¶š—ñ•\Œ»‚Ì”z—ñ‚Å‚·B<p>
+     * çŠ¶æ…‹ã‚’è¡¨ã™æ–‡å­—åˆ—è¡¨ç¾ã®é…åˆ—ã§ã™ã€‚<p>
      * <table border=1>
-     *   <tr><th>ó‘Ô</th><th>•¶š—ñ•\Œ»</th></tr>
-     *   <tr><td>¶¬’†F{@link #CREATING}</td><td>Creating</td></tr>
-     *   <tr><td>¶¬Š®—¹F{@link #CREATED}</td><td>Created</td></tr>
-     *   <tr><td>ŠJn’†F{@link #STARTING}</td><td>Starting</td></tr>
-     *   <tr><td>ŠJnŠ®—¹F{@link #STARTED}</td><td>Started</td></tr>
-     *   <tr><td>’â~’†F{@link #STOPPING}</td><td>Stopping</td></tr>
-     *   <tr><td>’â~Š®—¹F{@link #STOPPED}</td><td>Stopped</td></tr>
-     *   <tr><td>”jŠü’†F{@link #DESTROYING}</td><td>Destorying</td></tr>
-     *   <tr><td>”jŠüŠ®—¹F{@link #DESTROYED}</td><td>Destroyed</td></tr>
-     *   <tr><td>¸”sF{@link #FAILED}</td><td>Failed</td></tr>
-     *   <tr><td>•s–¾F{@link #UNKNOWN}</td><td>Unknown</td></tr>
+     *   <tr><th>çŠ¶æ…‹</th><th>æ–‡å­—åˆ—è¡¨ç¾</th></tr>
+     *   <tr><td>ç”Ÿæˆä¸­ï¼š{@link #CREATING}</td><td>Creating</td></tr>
+     *   <tr><td>ç”Ÿæˆå®Œäº†ï¼š{@link #CREATED}</td><td>Created</td></tr>
+     *   <tr><td>é–‹å§‹ä¸­ï¼š{@link #STARTING}</td><td>Starting</td></tr>
+     *   <tr><td>é–‹å§‹å®Œäº†ï¼š{@link #STARTED}</td><td>Started</td></tr>
+     *   <tr><td>åœæ­¢ä¸­ï¼š{@link #STOPPING}</td><td>Stopping</td></tr>
+     *   <tr><td>åœæ­¢å®Œäº†ï¼š{@link #STOPPED}</td><td>Stopped</td></tr>
+     *   <tr><td>ç ´æ£„ä¸­ï¼š{@link #DESTROYING}</td><td>Destorying</td></tr>
+     *   <tr><td>ç ´æ£„å®Œäº†ï¼š{@link #DESTROYED}</td><td>Destroyed</td></tr>
+     *   <tr><td>å¤±æ•—ï¼š{@link #FAILED}</td><td>Failed</td></tr>
+     *   <tr><td>ä¸æ˜ï¼š{@link #UNKNOWN}</td><td>Unknown</td></tr>
      * </table>
      */
     public static final String[] STATES = {
@@ -66,98 +66,98 @@ public interface Service{
     };
     
     /**
-     * ¶¬’†‚ğ•\‚·ó‘Ô’lB<p>
+     * ç”Ÿæˆä¸­ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int CREATING = 0;
     
     /**
-     * ¶¬Š®—¹‚ğ•\‚·ó‘Ô’lB<p>
+     * ç”Ÿæˆå®Œäº†ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int CREATED = 1;
     
     /**
-     * ŠJn’†‚ğ•\‚·ó‘Ô’lB<p>
+     * é–‹å§‹ä¸­ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int STARTING = 2;
     
     /**
-     * ŠJnŠ®—¹‚ğ•\‚·ó‘Ô’lB<p>
+     * é–‹å§‹å®Œäº†ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int STARTED  = 3;
     
     /**
-     * ’â~’†‚ğ•\‚·ó‘Ô’lB<p>
+     * åœæ­¢ä¸­ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int STOPPING = 4;
     
     /**
-     * ’â~Š®—¹‚ğ•\‚·ó‘Ô’lB<p>
+     * åœæ­¢å®Œäº†ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int STOPPED  = 5;
     
     /**
-     * ”jŠü’†‚ğ•\‚·ó‘Ô’lB<p>
+     * ç ´æ£„ä¸­ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int DESTROYING = 6;
     
     /**
-     * ”jŠüŠ®—¹‚ğ•\‚·ó‘Ô’lB<p>
+     * ç ´æ£„å®Œäº†ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int DESTROYED = 7;
     
     /**
-     * ¸”s‚ğ•\‚·ó‘Ô’lB<p>
+     * å¤±æ•—ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int FAILED  = 8;
     
     /**
-     * •s–¾‚ğ•\‚·ó‘Ô’lB<p>
+     * ä¸æ˜ã‚’è¡¨ã™çŠ¶æ…‹å€¤ã€‚<p>
      */
     public static final int UNKNOWN  = 9;
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì“o˜^æ‚Æ‚È‚é{@link ServiceManager}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚µ‚Ü‚·B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆã¨ãªã‚‹{@link ServiceManager}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã—ã¾ã™ã€‚<p>
      *
-     * @return ServiceManager‚ÌƒT[ƒrƒX–¼
+     * @return ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setServiceManagerName(String)
      */
     public String getServiceManagerName();
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì“o˜^æ‚Æ‚È‚é{@link ServiceManager}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚µ‚Ü‚·B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆã¨ãªã‚‹{@link ServiceManager}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã—ã¾ã™ã€‚<p>
      *
-     * @param name ServiceManager‚ÌƒT[ƒrƒX–¼
+     * @param name ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getServiceManagerName()
      */
     public void setServiceManagerName(String name);
     
     /**
-     * ƒT[ƒrƒX–¼‚ğİ’è‚µ‚Ü‚·B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã—ã¾ã™ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getServiceName()
      */
     public void setServiceName(String name);
     
     /**
-     * ƒT[ƒrƒX–¼‚ğæ“¾‚µ‚Ü‚·B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã—ã¾ã™ã€‚<p>
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setServiceName(String)
      */
     public String getServiceName();
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Ì“o˜^æ‚Æ‚È‚é{@link ServiceManager}‚ÌƒT[ƒrƒX–¼‚Æ‚±‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğŠÜ‚ñ‚¾{@link ServiceName}‚ğæ“¾‚µ‚Ü‚·B<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²å…ˆã¨ãªã‚‹{@link ServiceManager}ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å«ã‚“ã {@link ServiceName}ã‚’å–å¾—ã—ã¾ã™ã€‚<p>
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServiceNameObject();
     
     /**
-     * Œ»İ‚ÌƒT[ƒrƒXó‘Ô‚ğæ“¾‚µ‚Ü‚·B<p>
+     * ç¾åœ¨ã®ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã‚’å–å¾—ã—ã¾ã™ã€‚<p>
      *
-     * @return ó‘Ô‚ğ¦‚·’l
+     * @return çŠ¶æ…‹ã‚’ç¤ºã™å€¤
      * @see #CREATING
      * @see #CREATED
      * @see #STARTING
@@ -172,38 +172,38 @@ public interface Service{
     public int getState();
     
     /**
-     * Œ»İ‚ÌƒT[ƒrƒXó‘Ô‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚µ‚Ü‚·B<p>
+     * ç¾åœ¨ã®ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã—ã¾ã™ã€‚<p>
      *
-     * @return ƒT[ƒrƒXó‘Ô‚Ì•¶š—ñ•\Œ»
+     * @return ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ã®æ–‡å­—åˆ—è¡¨ç¾
      * @see #STATES
      */
     public String getStateString();
     
     /**
-     * ƒT[ƒrƒX‚ğ¶¬‚µ‚Ü‚·B<p>
-     * ‚±‚ÌƒT[ƒrƒX‚É•K—v‚ÈƒIƒuƒWƒFƒNƒg‚Ì¶¬‚È‚Ç‚Ì‰Šú‰»ˆ—‚ğs‚¢‚Ü‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«å¿…è¦ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆãªã©ã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void create() throws Exception;
     
     /**
-     * ƒT[ƒrƒX‚ğŠJn‚µ‚Ü‚·B<p>
-     * ‚±‚ÌƒT[ƒrƒX‚ğ—˜—p‰Â”\‚Èó‘Ô‚É‚µ‚Ü‚·B‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒã‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì‹@”\‚ğ—˜—p‚Å‚«‚é–‚ª•ÛØ‚³‚ê‚Ü‚·B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã—ã¾ã™ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨å¯èƒ½ãªçŠ¶æ…‹ã«ã—ã¾ã™ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹äº‹ãŒä¿è¨¼ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void start() throws Exception;
     
     /**
-     * ƒT[ƒrƒX‚ğ’â~‚µ‚Ü‚·B<p>
-     * ‚±‚ÌƒT[ƒrƒX‚ğ—˜—p•s‰Â”\‚Èó‘Ô‚É‚µ‚Ü‚·B‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒã‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì‹@”\‚ğ—˜—p‚Å‚«‚é–‚Í•ÛØ‚³‚ê‚Ü‚¹‚ñB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã—ã¾ã™ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ä¸å¯èƒ½ãªçŠ¶æ…‹ã«ã—ã¾ã™ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹äº‹ã¯ä¿è¨¼ã•ã‚Œã¾ã›ã‚“ã€‚<br>
      */
     public void stop();
     
     /**
-     * ƒT[ƒrƒX‚ğ”jŠü‚µ‚Ü‚·B<p>
-     * ‚±‚ÌƒT[ƒrƒX‚Åg—p‚·‚éƒŠƒ\[ƒX‚ğŠJ•ú‚µ‚Ü‚·B‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒã‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì‹@”\‚ğ—˜—p‚Å‚«‚é–‚Í•ÛØ‚³‚ê‚Ü‚¹‚ñB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã—ã¾ã™ã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§ä½¿ç”¨ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã—ã¾ã™ã€‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹äº‹ã¯ä¿è¨¼ã•ã‚Œã¾ã›ã‚“ã€‚<br>
      */
     public void destroy();
 }

@@ -40,7 +40,7 @@ import jp.ossc.nimbus.beans.dataset.PropertySetException;
 import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 
 /**
- * FLViFixed Length ValuejŒ`®‚ÌƒXƒgƒŠ[ƒ€‚ğ{@link Record}‚Æ‚µ‚Ä“Ç‚İ‚ŞReaderƒNƒ‰ƒXB<p>
+ * FLVï¼ˆFixed Length Valueï¼‰å½¢å¼ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’{@link Record}ã¨ã—ã¦èª­ã¿è¾¼ã‚€Readerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.FLVRecordReader;
@@ -73,48 +73,48 @@ public class FLVRecordReader extends FLVReader{
     private List workList;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FLVRecordReader(){
         super();
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVRecordReader(int[] fieldLen){
         super(fieldLen);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(int[] fieldLen, String encoding){
         super(fieldLen, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(fieldLen, convs, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(int[] fieldLen, String encoding, RecordSchema schema){
         super(fieldLen, encoding);
@@ -122,12 +122,12 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(int[] fieldLen, PaddingStringConverter[] convs, String encoding, RecordSchema schema){
         super(fieldLen, convs, encoding);
@@ -135,54 +135,54 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
      */
     public FLVRecordReader(Reader reader){
         super(reader);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVRecordReader(Reader reader, int[] fieldLen){
         super(reader, fieldLen);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(Reader reader, int[] fieldLen, String encoding){
         super(reader, fieldLen, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(Reader reader, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader, fieldLen, convs, encoding);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(Reader reader, int[] fieldLen, String encoding, RecordSchema schema){
         super(reader, fieldLen, encoding);
@@ -190,13 +190,13 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(Reader reader, int[] fieldLen, PaddingStringConverter[] convs, String encoding, RecordSchema schema){
         super(reader, fieldLen, convs, encoding);
@@ -204,54 +204,54 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVRecordReader(int size){
         super(size);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVRecordReader(int size, int[] fieldLen){
         super(size, fieldLen);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(int size, int[] fieldLen, String encoding){
         super(size, fieldLen, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(size, fieldLen, convs, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(int size, int[] fieldLen, String encoding, RecordSchema schema){
         super(size, fieldLen, encoding);
@@ -259,13 +259,13 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding, RecordSchema schema){
         super(size, fieldLen, convs, encoding);
@@ -273,59 +273,59 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVRecordReader(Reader reader, int size){
         super(reader, size);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
      */
     public FLVRecordReader(Reader reader, int size, int[] fieldLen){
         super(reader, size, fieldLen);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(Reader reader, int size, int[] fieldLen, String encoding){
         super(reader, size, fieldLen, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public FLVRecordReader(Reader reader, int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader, size, fieldLen, convs, encoding);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(Reader reader, int size, int[] fieldLen, String encoding, RecordSchema schema){
         super(reader, size, fieldLen, encoding);
@@ -333,14 +333,14 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
-     * @param fieldLen ƒtƒB[ƒ‹ƒh’·‚Ì”z—ñ
-     * @param convs ƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğ‰ğœ‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     * @param fieldLen ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰é•·ã®é…åˆ—
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è§£é™¤ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public FLVRecordReader(Reader reader, int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding, RecordSchema schema){
         super(reader, size, fieldLen, convs, encoding);
@@ -348,9 +348,9 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * “Ç‚İ‚ŞFLVŒ`®•¶š—ñ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * èª­ã¿è¾¼ã‚€FLVå½¢å¼æ–‡å­—åˆ—ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒL[ƒ}
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      * @see #readRecord()
      */
     public void setRecordSchema(RecordSchema schema){
@@ -359,20 +359,20 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * “Ç‚İ‚ŞFLVŒ`®•¶š—ñ‚ÌƒŒƒR[ƒhƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * èª­ã¿è¾¼ã‚€FLVå½¢å¼æ–‡å­—åˆ—ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒL[ƒ}
+     * @return ã‚¹ã‚­ãƒ¼ãƒ
      */
     public RecordSchema getRecordSchema(){
         return schema;
     }
     
     /**
-     * —\‚ßİ’è‚³‚ê‚½ƒŒƒR[ƒhƒXƒL[ƒ}‚ğg‚Á‚ÄAFLVs‚ğ1sAƒŒƒR[ƒh‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
+     * äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’ä½¿ã£ã¦ã€FLVè¡Œã‚’1è¡Œã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return FLV—v‘f‚ğŠi”[‚µ‚½ƒŒƒR[ƒh
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
-     * @exception PropertySetException FLVŒ`®‚Ì—v‘f•¶š—ñ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @return FLVè¦ç´ ã‚’æ ¼ç´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception PropertySetException FLVå½¢å¼ã®è¦ç´ æ–‡å­—åˆ—ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #setRecordSchema(RecordSchema)
      */
     public Record readRecord() throws IOException, PropertySetException{
@@ -380,13 +380,13 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * FLVs‚ğ1sAƒŒƒR[ƒh‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
-     * FLV—v‘f‚Ì’l‚ğŠi”[‚·‚éƒŒƒR[ƒh‚ğÄ—˜—p‚·‚é‚½‚ß‚Ìƒƒ\ƒbƒh‚Å‚ ‚éB<br>
+     * FLVè¡Œã‚’1è¡Œã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
+     * FLVè¦ç´ ã®å€¤ã‚’æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param record FLV—v‘f‚Ì’l‚ğŠi”[‚·‚éƒŒƒR[ƒh
-     * @return FLV—v‘f‚ğŠi”[‚µ‚½ƒŒƒR[ƒh
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
-     * @exception PropertySetException FLVŒ`®‚Ì—v‘f•¶š—ñ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param record FLVè¦ç´ ã®å€¤ã‚’æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @return FLVè¦ç´ ã‚’æ ¼ç´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception PropertySetException FLVå½¢å¼ã®è¦ç´ æ–‡å­—åˆ—ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Record readRecord(Record record) throws IOException, PropertySetException{
         if(workList == null){
@@ -409,19 +409,19 @@ public class FLVRecordReader extends FLVReader{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public FLVReader cloneReader(){
         return cloneReader(new FLVRecordReader());
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clone –¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @return –¢Ú‘±‚Ì•¡»
+     * @param clone æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     protected FLVReader cloneReader(FLVReader clone){
         clone = super.cloneReader(clone);

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol;
 
 /**
- * ‹Æ–±ƒtƒ[‚ÌƒXƒeƒbƒv‚Ì“¯ŽžŽÀs”‚ªƒI[ƒo[‚µ‚Ä‚¢‚éŽž‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã®ã‚¹ãƒ†ãƒƒãƒ—ã®åŒæ™‚å®Ÿè¡Œæ•°ãŒã‚ªãƒ¼ãƒãƒ¼ã—ã¦ã„ã‚‹æ™‚ã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,16 +41,16 @@ public class UnavailableStepException extends UnavailableFlowException{
     private static final long serialVersionUID = 4785946059394327643L;
     
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public UnavailableStepException(){
         super();
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ðŽ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public UnavailableStepException(String message){
         super(message);

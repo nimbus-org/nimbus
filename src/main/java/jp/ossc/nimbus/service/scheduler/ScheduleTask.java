@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.scheduler;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ƒ^ƒXƒNB<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚¿ã‚¹ã‚¯ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ScheduleTask{
     
     /**
-     * ƒ^ƒXƒN‚ğÀs‚·‚éB<p>
+     * ã‚¿ã‚¹ã‚¯ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @exception Exception ƒ^ƒXƒN‚ÌÀs‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚¿ã‚¹ã‚¯ã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void run() throws Exception;
 }

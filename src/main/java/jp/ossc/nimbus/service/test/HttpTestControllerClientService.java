@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.http.HttpRequest;
 import jp.ossc.nimbus.service.http.HttpResponse;
 
 /**
- * HTTPテストコントローラクライアント。
+ * HTTP繝�繧ｹ繝医さ繝ｳ繝医Ο繝ｼ繝ｩ繧ｯ繝ｩ繧､繧｢繝ｳ繝医�
  * <p>
  *
  * @author M.Takata

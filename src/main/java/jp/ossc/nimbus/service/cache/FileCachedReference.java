@@ -37,8 +37,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆB<p>
- * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚Äƒtƒ@ƒCƒ‹‚É•Û‚·‚éB<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿æŒã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -50,19 +50,19 @@ public class FileCachedReference extends DefaultCachedReference
     private transient Externalizer externalizer;
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚½ƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä•Û‚·‚éƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param file ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚½ƒtƒ@ƒCƒ‹
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«
      */
     public FileCachedReference(File file){
         super(file);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚½ƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä•Û‚·‚éƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param file ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚½ƒtƒ@ƒCƒ‹
-     * @param ext ’¼—ñ‰»‚ğs‚¤Externalizer
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«
+     * @param ext ç›´åˆ—åŒ–ã‚’è¡Œã†Externalizer
      */
     public FileCachedReference(File file, Externalizer ext){
         super(file);
@@ -70,11 +70,11 @@ public class FileCachedReference extends DefaultCachedReference
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚Éw’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚Ä•Û‚·‚éƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã«æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ã¦ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param file ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚·‚éƒtƒ@ƒCƒ‹
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ’¼—ñ‰»‚É¸”s‚µ‚½ê‡
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ç›´åˆ—åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public FileCachedReference(File file, Object obj) throws IOException{
         super(file);
@@ -82,12 +82,12 @@ public class FileCachedReference extends DefaultCachedReference
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚Éw’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚Ä•Û‚·‚éƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã«æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ã¦ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param file ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚·‚éƒtƒ@ƒCƒ‹
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @param ext ’¼—ñ‰»‚ğs‚¤Externalizer
-     * @exception IOException ’¼—ñ‰»‚É¸”s‚µ‚½ê‡
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param ext ç›´åˆ—åŒ–ã‚’è¡Œã†Externalizer
+     * @exception IOException ç›´åˆ—åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public FileCachedReference(File file, Object obj, Externalizer ext) throws IOException{
         super(file);
@@ -96,11 +96,11 @@ public class FileCachedReference extends DefaultCachedReference
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğw’èƒtƒ@ƒCƒ‹‚ÉƒVƒŠƒAƒ‰ƒCƒY‚µ‚ÄŠi”[‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã¦æ ¼ç´ã™ã‚‹ã€‚<p>
      * 
-     * @param file ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚·‚éƒtƒ@ƒCƒ‹
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ’¼—ñ‰»‚É¸”s‚µ‚½ê‡
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ç›´åˆ—åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void serializeObject(File file, Object obj)
      throws IOException{
@@ -135,23 +135,23 @@ public class FileCachedReference extends DefaultCachedReference
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğ•œŒ³‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¾©å…ƒã™ã‚‹ã€‚<p>
      * 
-     * @return •œŒ³ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì•œŒ³‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì•œŒ³Œ‹‰Ê‚ÌƒNƒ‰ƒX‚ª ‘¶İ‚µ‚È‚¢ê‡
+     * @return å¾©å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®å¾©å…ƒã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®å¾©å…ƒçµæœã®ã‚¯ãƒ©ã‚¹ãŒ å­˜åœ¨ã—ãªã„å ´åˆ
      */
     public Object deserializeObject() throws IOException, ClassNotFoundException{
         return deserializeObject(getFile());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚©‚çƒIƒuƒWƒFƒNƒg‚ğ•œŒ³‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¾©å…ƒã™ã‚‹ã€‚<p>
      * 
-     * @param file ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª’¼—ñ‰»‚³‚ê‚Ä‚¢‚éƒtƒ@ƒCƒ‹
-     * @return •œŒ³ƒIƒuƒWƒFƒNƒg
-     * @exception IOException ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì•œŒ³‚É¸”s‚µ‚½ê‡
-     * @exception ClassNotFoundException ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì•œŒ³Œ‹‰Ê‚ÌƒNƒ‰ƒX‚ª ‘¶İ‚µ‚È‚¢ê‡
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç›´åˆ—åŒ–ã•ã‚Œã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å¾©å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IOException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®å¾©å…ƒã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ClassNotFoundException ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®å¾©å…ƒçµæœã®ã‚¯ãƒ©ã‚¹ãŒ å­˜åœ¨ã—ãªã„å ´åˆ
      */
     protected Object deserializeObject(File file)
      throws IOException, ClassNotFoundException{
@@ -176,22 +176,22 @@ public class FileCachedReference extends DefaultCachedReference
     }
     
     /**
-     * ’¼—ñ‰»‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ìƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚éB<p>
+     * ç›´åˆ—åŒ–ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’¼—ñ‰»‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚Ìƒtƒ@ƒCƒ‹
+     * @return ç›´åˆ—åŒ–ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ•ã‚¡ã‚¤ãƒ«
      */
     public File getFile(){
         return (File)super.get(null, false);
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * ‘æ“ñˆø”‚ªtrue‚Ìê‡‚ÍA{@link #addCacheAccessListener(CacheAccessListener)}‚Å“o˜^‚³‚ê‚½{@link CacheAccessListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheAccessListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
-     * ©g‚ª•Û‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªnull‚Å‚È‚¢ê‡‚ÍAFileƒIƒuƒWƒFƒNƒg‚ÉƒLƒƒƒXƒg‚µ‚Ä{@link #deserializeObject(File)}‚ğŒÄ‚Ño‚µ‚Ä–{—ˆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•œŒ³‚µ‚Ä•Ô‚·B’A‚µA•œŒ³‚É¸”s‚µ‚½ê‡‚ÍAnull‚ğ•Ô‚·B©g‚ª•Û‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªnull‚Ìê‡‚ÍA{@link #addLinkedReference(LinkedReference)}‚Å“o˜^‚³‚ê‚½{@link LinkedReference}‚©‚çæ“¾‚ğ‚İ‚éBæ“¾‚Å‚«‚½ê‡‚ÍA“¯—l‚É•œŒ³‚µ‚Ä•Ô‚·Bæ“¾‚Å‚«‚È‚©‚Á‚½ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ç¬¬äºŒå¼•æ•°ãŒtrueã®å ´åˆã¯ã€{@link #addCacheAccessListener(CacheAccessListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheAccessListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheAccessListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
+     * è‡ªèº«ãŒä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã§ãªã„å ´åˆã¯ã€Fileã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦{@link #deserializeObject(File)}ã‚’å‘¼ã³å‡ºã—ã¦æœ¬æ¥ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¾©å…ƒã—ã¦è¿”ã™ã€‚ä½†ã—ã€å¾©å…ƒã«å¤±æ•—ã—ãŸå ´åˆã¯ã€nullã‚’è¿”ã™ã€‚è‡ªèº«ãŒä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã®å ´åˆã¯ã€{@link #addLinkedReference(LinkedReference)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link LinkedReference}ã‹ã‚‰å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚å–å¾—ã§ããŸå ´åˆã¯ã€åŒæ§˜ã«å¾©å…ƒã—ã¦è¿”ã™ã€‚å–å¾—ã§ããªã‹ã£ãŸå ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param source ƒLƒƒƒbƒVƒ…‚ğæ“¾‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-     * @param notify ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚É’Ê’m‚·‚éê‡‚Ítrue
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param notify ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹å ´åˆã¯true
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(Object source, boolean notify){
         final Object obj = super.get(source, notify);

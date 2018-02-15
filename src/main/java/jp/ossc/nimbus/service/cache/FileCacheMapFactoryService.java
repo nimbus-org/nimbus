@@ -37,8 +37,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒtƒ@ƒNƒgƒŠB<p>
- * {@link FileCacheMapService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link FileCacheMapService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see FileCacheMapService
@@ -55,10 +55,10 @@ public class FileCacheMapFactoryService
     }
     
     /**
-     * {@link FileCacheMapService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link FileCacheMapService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return FileCacheMapServiceƒT[ƒrƒX
-     * @exception Exception FileCacheMapService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return FileCacheMapServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception FileCacheMapServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see FileCacheMapService
      */
     protected Service createServiceInstance() throws Exception{
@@ -80,7 +80,7 @@ public class FileCacheMapFactoryService
         return cacheMap;
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public void setOutputDirectory(String path)
      throws IllegalArgumentException{
         final FileCacheMapService templateCacheMap
@@ -98,7 +98,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public String getOutputDirectory(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -108,7 +108,7 @@ public class FileCacheMapFactoryService
         return templateCacheMap.getOutputDirectory();
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public void setFileShared(boolean isShared){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -125,7 +125,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean isFileShared(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -135,7 +135,7 @@ public class FileCacheMapFactoryService
         return templateCacheMap.isFileShared();
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public void setOutputPrefix(String prefix){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -152,7 +152,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public String getOutputPrefix(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -162,7 +162,7 @@ public class FileCacheMapFactoryService
         return templateCacheMap.getOutputPrefix();
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public void setOutputSuffix(String suffix){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -179,7 +179,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public String getOutputSuffix(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -189,7 +189,7 @@ public class FileCacheMapFactoryService
         return templateCacheMap.getOutputSuffix();
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public void setLoadOnStart(boolean isLoad){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -206,7 +206,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean isLoadOnStart(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -216,7 +216,7 @@ public class FileCacheMapFactoryService
         return templateCacheMap.isLoadOnStart();
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public void setDeleteOnExitWithJVM(boolean isDeleteOnExit){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -233,7 +233,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean isDeleteOnExitWithJVM(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -243,7 +243,7 @@ public class FileCacheMapFactoryService
         return templateCacheMap.isDeleteOnExitWithJVM();
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();
@@ -260,7 +260,7 @@ public class FileCacheMapFactoryService
         }
     }
     
-    // FileCacheServiceMBean‚ÌJavaDoc
+    // FileCacheServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         final FileCacheMapService templateCacheMap
              = (FileCacheMapService)getTemplate();

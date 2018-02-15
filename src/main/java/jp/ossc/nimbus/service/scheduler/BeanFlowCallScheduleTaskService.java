@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 
 /**
- * BeanFlowŒÄ‚Ño‚µƒXƒPƒWƒ…[ƒ‹ƒ^ƒXƒNB<p>
+ * BeanFlowå‘¼ã³å‡ºã—ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚¿ã‚¹ã‚¯ã€‚<p>
  *
  * @author M.Takata
  */
@@ -45,56 +45,56 @@ public class BeanFlowCallScheduleTaskService extends ServiceBase
     private static final long serialVersionUID = 7633274480901701353L;
     
     /**
-     * {@link BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName beanFlowInvokerFactoryServiceName;
     
     /**
-     * {@link BeanFlowInvokerFactory}B<p>
+     * {@link BeanFlowInvokerFactory}ã€‚<p>
      */
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[–¼B<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼åã€‚<p>
      */
     protected String beanFlowName;
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[‚É“n‚·“ü—ÍƒIƒuƒWƒFƒNƒgB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã«æ¸¡ã™å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object beanFlowInput;
     
-    // BeanFlowCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // BeanFlowCallScheduleTaskServiceMBeanã®JavaDoc
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name){
         beanFlowInvokerFactoryServiceName = name;
     }
-    // BeanFlowCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // BeanFlowCallScheduleTaskServiceMBeanã®JavaDoc
     public ServiceName getBeanFlowInvokerFactoryServiceName(){
         return beanFlowInvokerFactoryServiceName;
     }
     
-    // BeanFlowCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // BeanFlowCallScheduleTaskServiceMBeanã®JavaDoc
     public void setBeanFlowName(String name){
         beanFlowName = name;
     }
-    // BeanFlowCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // BeanFlowCallScheduleTaskServiceMBeanã®JavaDoc
     public String getBeanFlowName(){
         return beanFlowName;
     }
     
-    // BeanFlowCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // BeanFlowCallScheduleTaskServiceMBeanã®JavaDoc
     public void setBeanFlowInput(Object in){
         beanFlowInput = in;
     }
-    // BeanFlowCallScheduleTaskServiceMBean‚ÌJavaDoc
+    // BeanFlowCallScheduleTaskServiceMBeanã®JavaDoc
     public Object getBeanFlowInput(){
         return beanFlowInput;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(beanFlowInvokerFactoryServiceName != null){
@@ -115,7 +115,7 @@ public class BeanFlowCallScheduleTaskService extends ServiceBase
     }
     
     /**
-     * {@link BeanFlowInvokerFactory}‚ğİ’è‚·‚éB<p>
+     * {@link BeanFlowInvokerFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory BeanFlowInvokerFactory
      */
@@ -123,7 +123,7 @@ public class BeanFlowCallScheduleTaskService extends ServiceBase
         beanFlowInvokerFactory = factory;
     }
     
-    // ScheduleTask‚ÌJavaDoc
+    // ScheduleTaskã®JavaDoc
     public void run() throws Exception{
         final BeanFlowInvoker flowInvoker = beanFlowInvokerFactory
             .createFlow(beanFlowName);

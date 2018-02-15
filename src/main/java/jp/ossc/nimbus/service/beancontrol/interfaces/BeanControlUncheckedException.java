@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol.interfaces;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 /**
- * BeanƒRƒ“ƒgƒ[ƒ‹‚Å”­¶‚·‚éƒVƒXƒeƒ€—áŠOƒNƒ‰ƒX
+ * Beanã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã§ç™ºç”Ÿã™ã‚‹ã‚·ã‚¹ãƒ†ãƒ ä¾‹å¤–ã‚¯ãƒ©ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,27 +45,27 @@ public class BeanControlUncheckedException
     private static final long serialVersionUID = -1007784740696824944L;
     
     /**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public BeanControlUncheckedException() {
 		super();
 	}
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 */
 	public BeanControlUncheckedException(String arg0) {
 		super(arg0);
 	}
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 */
 	public BeanControlUncheckedException(Throwable arg0) {
 		super(arg0);
 	}
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 * @param arg1
 	 */

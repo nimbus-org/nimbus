@@ -35,530 +35,530 @@ import jp.ossc.nimbus.core.*;
 import java.util.*;
 
 /**
- * {@link DefaultBeanFlowInvokerFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultBeanFlowInvokerFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface DefaultBeanFlowInvokerFactoryServiceMBean
  extends ServiceBaseMBean{
     
-    /** XVƒtƒH[ƒ}ƒbƒg•¶š—ñ */
+    /** æ›´æ–°æ™‚åˆ»ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ— */
     public static final String TIME_FORMAT = "yyyy.MM.dd hh:mm:ss";
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactory ResourceManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactory ResourceManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ResourceManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ResourceManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResourceManagerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactory ResourceManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactory ResourceManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ResourceManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ResourceManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResourceManagerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.log.Logger Logger}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log.Logger Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name LoggerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Loggerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setLogServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.log.Logger Logger}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log.Logger Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return LoggerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Loggerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getLogServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEditorFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getEditorFinderServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterpreterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterpreterServiceName();
     
     /**
-     * test‘®«•]‰¿—p‚Ì{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * testå±æ€§è©•ä¾¡ç”¨ã®{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTestInterpreterServiceName(ServiceName name);
     
     /**
-     * test‘®«•]‰¿—p‚Ì{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * testå±æ€§è©•ä¾¡ç”¨ã®{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTestInterpreterServiceName();
     
     /**
-     * expression—v‘f•]‰¿—p‚Ì{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * expressionè¦ç´ è©•ä¾¡ç”¨ã®{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExpressionInterpreterServiceName(ServiceName name);
     
     /**
-     * expression—v‘f•]‰¿—p‚Ì{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * expressionè¦ç´ è©•ä¾¡ç”¨ã®{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getExpressionInterpreterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.template.TemplateEngine TemplateEngine}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.template.TemplateEngine TemplateEngine}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name TemplateEngineƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name TemplateEngineã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTemplateEngineServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.template.TemplateEngine TemplateEngine}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.template.TemplateEngine TemplateEngine}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return TemplateEngineƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TemplateEngineã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTemplateEngineServiceName();
     
     /**
-     * Às’†‚ÌBeanFlow‚ğŠÇ—‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * å®Ÿè¡Œä¸­ã®BeanFlowã‚’ç®¡ç†ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isManage ŠÇ—‚·‚éê‡‚ÍAtrue
+     * @param isManage ç®¡ç†ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setManageExecBeanFlow(boolean isManage);
     
     /**
-     * Às’†‚ÌBeanFlow‚ğŠÇ—‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å®Ÿè¡Œä¸­ã®BeanFlowã‚’ç®¡ç†ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŠÇ—‚·‚é
+     * @return trueã®å ´åˆã€ç®¡ç†ã™ã‚‹
      */
     public boolean isManageExecBeanFlow();
     
     /**
-     * {@link BeanFlowInvokerAccess}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link BeanFlowInvokerAccessImpl}B<br>
+     * {@link BeanFlowInvokerAccess}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link BeanFlowInvokerAccessImpl}ã€‚<br>
      *
-     * @param clazz BeanFlowInvokerAccessƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX
+     * @param clazz BeanFlowInvokerAccessã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public void setBeanFlowInvokerAccessClass(Class clazz);
     
     /**
-     * {@link BeanFlowInvokerAccess}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerAccess}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerAccessƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return BeanFlowInvokerAccessã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getBeanFlowInvokerAccessClass();
     
     /**
-     * ƒtƒ[’è‹`XML‚ğADTD‚ÅŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’ã€DTDã§æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param validate ŒŸØ‚·‚éê‡Atrue
+     * @param validate æ¤œè¨¼ã™ã‚‹å ´åˆã€true
      */
     public void setValidate(boolean validate);
     
     /**
-     * ƒtƒ[’è‹`XML‚ğADTD‚ÅŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’ã€DTDã§æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒŸØ‚·‚é
+     * @return trueã®å ´åˆã€æ¤œè¨¼ã™ã‚‹
      */
     public boolean isValidate();
     
     /**
-     * {@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA{@link jp.ossc.nimbus.service.transaction.JndiTransactionManagerFactoryService JndiTransactionManagerFactoryService}‚ª“K—p‚³‚ê‚éB<br>
+     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link jp.ossc.nimbus.service.transaction.JndiTransactionManagerFactoryService JndiTransactionManagerFactoryService}ãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name TransactionManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name TransactionManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTransactionManagerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory TransactionManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TransactionManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TransactionManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTransactionManagerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeAsynchFlow(Object, jp.ossc.nimbus.service.beancontrol.BeanFlowMonitor, boolean, int)}‚ğƒTƒ|[ƒg‚µ‚È‚¢B<br>
+     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeAsynchFlow(Object, jp.ossc.nimbus.service.beancontrol.BeanFlowMonitor, boolean, int)}ã‚’ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param name QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setAsynchInvokeQueueHandlerContainerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getAsynchInvokeQueueHandlerContainerServiceName();
     
     /**
-     * ƒtƒ[’è‹`XML‚Ì‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã®å­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param dirPaths ƒtƒ[’è‹`XML‚Ì‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠƒpƒX”z—ñ
+     * @param dirPaths ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã®å­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹é…åˆ—
      */
     public void setDirPaths(String dirPaths[]);
     
     /**
-     * ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚Ì‘¶İ‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒX”z—ñ
+     * @return ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹é…åˆ—
      */
     public String[] getDirPaths();
     
     /**
-     * ƒtƒ[’è‹`XML‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param paths ƒtƒ[’è‹`XML‚Ì‘¶İ‚·‚éƒpƒX”z—ñ
+     * @param paths ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã®å­˜åœ¨ã™ã‚‹ãƒ‘ã‚¹é…åˆ—
      */
     public void setPaths(String paths[]);
     
     /**
-     * ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX”z—ñ
+     * @return ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹é…åˆ—
      */
     public String[] getPaths();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒO‚ğo—Í‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setAsynchInvokeErrorLogMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getAsynchInvokeErrorLogMessageId();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µA‹K’è‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒO‚ğo—Í‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€è¦å®šã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setAsynchInvokeRetryOverErrorLogMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µA‹K’è‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€è¦å®šã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getAsynchInvokeRetryOverErrorLogMessageId();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalPerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalPerformanceRecorderServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ğûW‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅûW‚µ‚È‚¢B<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã‚’åé›†ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§åé›†ã—ãªã„ã€‚<br>
      *
-     * @param isCollect ûW‚·‚éê‡true
+     * @param isCollect åé›†ã™ã‚‹å ´åˆtrue
      */
     public void setCollectJournalMetrics(boolean isCollect);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ğûW‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã‚’åé›†ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AûW‚·‚é
+     * @return trueã®å ´åˆã€åé›†ã™ã‚‹
      */
     public boolean isCollectJournalMetrics();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAo—Í‰ñ”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€å‡ºåŠ›å›æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsCount(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAo—Í‰ñ”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€å‡ºåŠ›å›æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsCount();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsLastTime(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅI‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€çµ‚æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsLastTime();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ¬ƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å°ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsBestSize(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ¬ƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å°ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsBestSize();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ¬ƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å°ã‚µã‚¤ã‚ºæ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsBestSizeTime(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ¬ƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å°ã‚µã‚¤ã‚ºæ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsBestSizeTime();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ‘åƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å¤§ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsWorstSize(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ‘åƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å¤§ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsWorstSize();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ‘åƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å¤§ã‚µã‚¤ã‚ºæ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsWorstSizeTime(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅAÅ‘åƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€æœ€å¤§ã‚µã‚¤ã‚ºæ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsWorstSizeTime();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅA•½‹ÏƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€å¹³å‡ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsAverageSize(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅA•½‹ÏƒTƒCƒY‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€å¹³å‡ã‚µã‚¤ã‚ºæ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsAverageSize();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅA“Œvî•ño—Í‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€çµ±è¨ˆæƒ…å ±å‡ºåŠ›æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputJournalMetricsTimestamp(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ÅA“Œvî•ño—Í‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã§ã€çµ±è¨ˆæƒ…å ±å‡ºåŠ›æ™‚åˆ»ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalMetricsTimestamp();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void resetJournalMetrics();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—ÍƒTƒCƒY‚Ì“Œvî•ñ‚ğ•\¦‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›ã‚µã‚¤ã‚ºã®çµ±è¨ˆæƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã€‚<p>
      *
-     * @return “Œvî•ñ•¶š—ñ
+     * @return çµ±è¨ˆæƒ…å ±æ–‡å­—åˆ—
      */
     public String displayJournalMetricsInfo();
     
     /**
-     * ƒtƒ[’è‹`XML‚ğÄ“Ç‚İ‚İ‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹ã€‚<p>
      */
     public void reload();
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[‚ğƒTƒXƒyƒ“ƒh‚·‚éB<p>
-     * ƒtƒ[ÀsƒCƒ“ƒXƒ^ƒ“ƒX‚Í•Ô‹p‚·‚é‚ªAÀs‚·‚é‚ÆƒTƒXƒyƒ“ƒhó‘Ô‚Å‘Ò‚½‚³‚ê‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼ã‚’ã‚µã‚¹ãƒšãƒ³ãƒ‰ã™ã‚‹ã€‚<p>
+     * ãƒ•ãƒ­ãƒ¼å®Ÿè¡Œã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯è¿”å´ã™ã‚‹ãŒã€å®Ÿè¡Œã™ã‚‹ã¨ã‚µã‚¹ãƒšãƒ³ãƒ‰çŠ¶æ…‹ã§å¾…ãŸã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param key ƒtƒ[ƒL[
+     * @param key ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
      */
     public void suspend(String key);
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[‚ğƒTƒXƒyƒ“ƒh‰ğœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼ã‚’ã‚µã‚¹ãƒšãƒ³ãƒ‰è§£é™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒtƒ[ƒL[
+     * @param key ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
      */
     public void resume(String key);
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[‚ğ‹­§I—¹‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼ã‚’å¼·åˆ¶çµ‚äº†ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒtƒ[ƒL[
+     * @param key ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
      */
     public void stop(String key);
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[‚ÌÀsƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾•s‰Â”\‚É‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼ã®å®Ÿè¡Œã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ä¸å¯èƒ½ã«ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒtƒ[ƒL[
+     * @param key ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
      */
     public void ignore(String key);
     
     /**
-     * –³Œø‘ÎÛ‚É‚µ‚½ƒtƒ[‚É‘Î‚µ‚Ä•œŒ³‚µ—LŒø‚É‚·‚éB<p>
+     * ç„¡åŠ¹å¯¾è±¡ã«ã—ãŸãƒ•ãƒ­ãƒ¼ã«å¯¾ã—ã¦å¾©å…ƒã—æœ‰åŠ¹ã«ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒtƒ[ƒL[
+     * @param key ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
      */
     public void unIgnore(String key);
     
     /**
-     * ƒTƒXƒyƒ“ƒh’†‚Ìƒtƒ[ƒL[‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚µã‚¹ãƒšãƒ³ãƒ‰ä¸­ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒTƒXƒyƒ“ƒh’†‚Ìƒtƒ[ƒL[‚ÌƒŠƒXƒg
+     * @return ã‚µã‚¹ãƒšãƒ³ãƒ‰ä¸­ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆ
      */
     public ArrayList getSuspendList();
     
     /**
-     * –³Œø‘ÎÛ‚É‚µ‚½ƒtƒ[ƒL[‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ç„¡åŠ¹å¯¾è±¡ã«ã—ãŸãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return –³Œø‘ÎÛ‚É‚µ‚½ƒtƒ[ƒL[‚ÌƒŠƒXƒg
+     * @return ç„¡åŠ¹å¯¾è±¡ã«ã—ãŸãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆ
      */
     public ArrayList getIgnoreList();
     
     /**
-     * Às’†ƒtƒ[‚Ìƒtƒ[ƒL[‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œä¸­ãƒ•ãƒ­ãƒ¼ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Às’†ƒtƒ[‚Ìƒtƒ[ƒL[‚ÌƒŠƒXƒg
+     * @return å®Ÿè¡Œä¸­ãƒ•ãƒ­ãƒ¼ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆ
      */
     public ArrayList getExecFlowList();
     
     /**
-     * ƒtƒ[’è‹`XML‚ğÄ“Ç‚İ‚İ‚·‚é‚ğİ’è‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param time ƒtƒ[’è‹`XML‚ğÄ“Ç‚İ‚İ‚·‚éByyyy.MM.dd hh:mm:ss
+     * @param time ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹æ™‚åˆ»ã€‚yyyy.MM.dd hh:mm:ss
      */
     public void setRefreshTime(String time);
     
     /**
-     * ƒtƒ[’è‹`XML‚ğ“Ç‚İ‚ñ‚¾ÅI‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’èª­ã¿è¾¼ã‚“ã æœ€çµ‚æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒ[’è‹`XML‚ğ“Ç‚İ‚ñ‚¾ÅIByyyy.MM.dd hh:mm:ss
+     * @return ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’èª­ã¿è¾¼ã‚“ã æœ€çµ‚æ™‚åˆ»ã€‚yyyy.MM.dd hh:mm:ss
      */
     public String getLastRrefreshTime();
     
     /**
-     * ƒtƒ[’è‹`XML‚ğŸ‰ñÄ“Ç‚İ‚İ‚·‚é‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’æ¬¡å›å†èª­ã¿è¾¼ã¿ã™ã‚‹æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒ[’è‹`XML‚ğŸ‰ñÄ“Ç‚İ‚İ‚·‚é
+     * @return ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’æ¬¡å›å†èª­ã¿è¾¼ã¿ã™ã‚‹æ™‚åˆ»
      */
     public String getNextRefreshTime();
 }

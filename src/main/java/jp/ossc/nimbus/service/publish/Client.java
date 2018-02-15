@@ -34,31 +34,31 @@ package jp.ossc.nimbus.service.publish;
 import java.util.Set;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒgƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  */
 public interface Client{
     
     /**
-     * Client‚Éİ’è‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ÌW‡‘Ì‚ğ•Ô‹p‚·‚éB<br>
+     * Clientã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆä½“ã‚’è¿”å´ã™ã‚‹ã€‚<br>
      *
-     * @return ƒTƒuƒWƒFƒNƒg‚ÌW‡‘Ì
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆä½“
      */
     public Set getSubjects();
     
     /**
-     * Client‚Éİ’è‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚É‘Î‚·‚éƒL[‚ÌW‡‘Ì‚ğ•Ô‹p‚·‚éB<br>
+     * Clientã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã®é›†åˆä½“ã‚’è¿”å´ã™ã‚‹ã€‚<br>
      *
-     * @param subject ƒTƒuƒWƒFƒNƒg
-     * @return ƒTƒuƒWƒFƒNƒg‚É‘Î‚·‚éƒL[‚ÌW‡‘Ì
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã®é›†åˆä½“
      */
     public Set getKeys(String subject);
     
     /**
-     * Client‚ğˆêˆÓ‚É¯•Ê‚·‚éƒIƒuƒWƒFƒNƒg‚ğ•Ô‹p‚·‚éB<br>
+     * Clientã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”å´ã™ã‚‹ã€‚<br>
      *
-     * @return Client‚ğˆêˆÓ‚É¯•Ê‚·‚éƒIƒuƒWƒFƒNƒg
+     * @return Clientã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getId();
 }

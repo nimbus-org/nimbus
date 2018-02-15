@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.converter;
 import java.io.*;
 
 /**
- * •¶š—ñÌƒXƒgƒŠ[ƒ€ƒRƒ“ƒo[ƒ^B<p>
+ * æ–‡å­—åˆ—â‡”ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -43,41 +43,41 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     private static final long serialVersionUID = -4431451590828201935L;
     
     /**
-     * •¶š—ñ¨ƒXƒgƒŠ[ƒ€‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ–‡å­—åˆ—â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STRING_TO_STREAM = OBJECT_TO_STREAM;
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨•¶š—ñ‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’æ–‡å­—åˆ—ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STREAM_TO_STRING = STREAM_TO_OBJECT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * •¶š—ñ¨ƒXƒgƒŠ[ƒ€•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * æ–‡å­—åˆ—â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToStream;
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨•¶š—ñ•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’æ–‡å­—åˆ—å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToObject;
     
     /**
-     * •¶š—ñ¨ƒXƒgƒŠ[ƒ€•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æ–‡å­—åˆ—â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public StringStreamConverter(){
         this(STRING_TO_STREAM);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #STRING_TO_STREAM
      * @see #STREAM_TO_STRING
      */
@@ -86,9 +86,9 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #STRING_TO_STREAM
      * @see #STREAM_TO_STRING
@@ -98,9 +98,9 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -108,36 +108,36 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     }
     
     /**
-     * •¶š—ñ¨ƒXƒgƒŠ[ƒ€•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * æ–‡å­—åˆ—â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         characterEncodingToStream = encoding;
     }
     
     /**
-     * •¶š—ñ¨ƒXƒgƒŠ[ƒ€•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—åˆ—â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToStream(){
         return characterEncodingToStream;
     }
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨•¶š—ñ•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’æ–‡å­—åˆ—å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         characterEncodingToObject = encoding;
     }
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨•¶š—ñ•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’æ–‡å­—åˆ—å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToObject(){
         return characterEncodingToObject;
@@ -172,11 +172,11 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -200,11 +200,11 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     }
     
     /**
-     * •¶š—ñ‚©‚çƒoƒCƒg”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æ–‡å­—åˆ—ã‹ã‚‰ãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •¶š—ñ
-     * @return ƒoƒCƒg”z—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj æ–‡å­—åˆ—
+     * @return ãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         byte[] bytes = null;
@@ -221,11 +221,11 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     }
     
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚ç•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is ƒXƒgƒŠ[ƒ€
-     * @return •¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         return toString(toBytes(is));

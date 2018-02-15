@@ -38,7 +38,7 @@ import jp.ossc.nimbus.beans.IndexPropertyAccessException;
 import jp.ossc.nimbus.beans.IndexNotFoundException;
 
 /**
- * {@link SharedContext ���L�R���e�L�X�g}�̌����r���[�B<p>
+ * {@link SharedContext 共有コンテキスト}の検索ビュー。<p>
  *
  * @author M.Takata
  * @see SharedContext
@@ -46,263 +46,263 @@ import jp.ossc.nimbus.beans.IndexNotFoundException;
 public interface SharedContextView{
     
     /**
-     * �������ʂ̃L�[�W�����擾����B<p>
+     * 検索結果のキー集合を取得する。<p>
      *
-     * @return �������ʂ̃L�[�W��
+     * @return 検索結果のキー集合
      */
     public Set getResultSet();
     
     /**
-     * �_�����Z��Ԃ�_���ρiAND�j�ɂ���B<p>
-     * �f�t�H���g�̘_�����Z��Ԃł��B<br>
+     * 論理演算状態を論理積（AND）にする。<p>
+     * デフォルトの論理演算状態です。<br>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView and();
     
     /**
-     * �_�����Z��Ԃ�_���a�iOR�j�ɂ���B<p>
+     * 論理演算状態を論理和（OR）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView or();
     
     /**
-     * �_�����Z��Ԃ�ے�_���ρiNAND�j�ɂ���B<p>
+     * 論理演算状態を否定論理積（NAND）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView nand();
     
     /**
-     * �_�����Z��Ԃ�ے�_���a�iNOR�j�ɂ���B<p>
+     * 論理演算状態を否定論理和（NOR）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView nor();
     
     /**
-     * �_�����Z��Ԃ�r���I�_���a�iXOR�j�ɂ���B<p>
+     * 論理演算状態を排他的論理和（XOR）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView xor();
     
     /**
-     * �_�����Z��Ԃ�r���I�ے�_���a�iXNOR�j�ɂ���B<p>
+     * 論理演算状態を排他的否定論理和（XNOR）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView xnor();
     
     /**
-     * �_�����Z��Ԃ�_����܁iIMP�j�ɂ���B<p>
+     * 論理演算状態を論理包含（IMP）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView imp();
     
     /**
-     * �_�����Z��Ԃ�ے�_����܁iNIMP�j�ɂ���B<p>
+     * 論理演算状態を否定論理包含（NIMP）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView nimp();
     
     /**
-     * �_�����Z��Ԃ��t�_����܁iCIMP�j�ɂ���B<p>
+     * 論理演算状態を逆論理包含（CIMP）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView cimp();
     
     /**
-     * �_�����Z��Ԃ��t�ے�_����܁iCNIMP�j�ɂ���B<p>
+     * 論理演算状態を逆否定論理包含（CNIMP）にする。<p>
      *
-     * @return ���̃r���[
+     * @return このビュー
      */
     public SharedContextView cnimp();
     
     /**
-     * ���̌����r���[�̋t�W�����Ƃ�B<p>
+     * この検索ビューの逆集合をとる。<p>
      * 
-     * @return �t�W�����Ƃ������ʂ̂��̃r���[
+     * @return 逆集合をとった結果のこのビュー
      */
     public SharedContextView not();
     
     /**
-     * ���̌����r���[�Ɏw�肳�ꂽ�����r���[��AND�A������B<p>
+     * この検索ビューに指定された検索ビューをAND連結する。<p>
      * 
-     * @param view �����r���[
-     * @return �A�����ꂽ���ʂ̂��̃r���[
+     * @param view 検索ビュー
+     * @return 連結された結果のこのビュー
      */
     public SharedContextView and(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ɏw�肳�ꂽ�����r���[��OR�A������B<p>
+     * この検索ビューに指定された検索ビューをOR連結する。<p>
      * 
-     * @param view �����r���[
-     * @return �A�����ꂽ���ʂ̂��̃r���[
+     * @param view 検索ビュー
+     * @return 連結された結果のこのビュー
      */
     public SharedContextView or(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̔ے�_���ρiNAND�j���s���B<p>
+     * この検索ビューと指定された検索ビューの否定論理積（NAND）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView nand(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̔ے�_���a�iNOR�j���s���B<p>
+     * この検索ビューと指定された検索ビューの否定論理和（NOR）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView nor(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̔r���I�_���a�iXOR�j���s���B<p>
+     * この検索ビューと指定された検索ビューの排他的論理和（XOR）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView xor(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̔ے�r���I�_���a�iXNOR�j���s���B<p>
+     * この検索ビューと指定された検索ビューの否定排他的論理和（XNOR）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView xnor(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̘_����܁iIMP�j���s���B<p>
+     * この検索ビューと指定された検索ビューの論理包含（IMP）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView imp(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̔ے�_����܁iNIMP�j���s���B<p>
+     * この検索ビューと指定された検索ビューの否定論理包含（NIMP）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView nimp(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̋t�_����܁iCIMP�j���s���B<p>
+     * この検索ビューと指定された検索ビューの逆論理包含（CIMP）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView cimp(SharedContextView view);
     
     /**
-     * ���̌����r���[�Ǝw�肳�ꂽ�����r���[�̔ے�t�_����܁iCNIMP�j���s���B<p>
+     * この検索ビューと指定された検索ビューの否定逆論理包含（CNIMP）を行う。<p>
      *
-     * @param view �����r���[
-     * @return ���ʂƂȂ邱�̃r���[
+     * @param view 検索ビュー
+     * @return 結果となるこのビュー
      */
     public SharedContextView cnimp(SharedContextView view);
     
     /**
-     * �w�肳�ꂽ�C���f�b�N�X�܂��̓v���p�e�B�W���ɑ΂���C���f�b�N�X�̃L�[�v�f�̏W������������B<p>
-     * �L�[�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 指定されたインデックスまたはプロパティ集合に対するインデックスのキー要素の集合を検索する。<p>
+     * キー検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param indexName �C���f�b�N�X��
-     * @param propNames �v���p�e�B���z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param indexName インデックス名
+     * @param propNames プロパティ名配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchKey(String indexName, String[] propNames) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * �w�肳�ꂽ�C���f�b�N�X�܂��̓v���p�e�B�W���ɑ΂���C���f�b�N�X�̃L�[�v�f�̏W������������B<p>
-     * �L�[�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 指定されたインデックスまたはプロパティ集合に対するインデックスのキー要素の集合を検索する。<p>
+     * キー検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param timeout ���C���A�E�g
-     * @param indexName �C���f�b�N�X��
-     * @param propNames �v���p�e�B���z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout ライムアウト
+     * @param indexName インデックス名
+     * @param propNames プロパティ名配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchKey(long timeout, String indexName, String[] propNames) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B��null�ƂȂ�Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティがnullとなるBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchNull(String indexName, String propName) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B��null�ƂȂ�Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティがnullとなるBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchNull(long timeout, String indexName, String propName) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B����null�ƂȂ�Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが非nullとなるBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchNotNull(String indexName, String propName) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B����null�ƂȂ�Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが非nullとなるBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchNotNull(long timeout, String indexName, String propName) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティと一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param value �����L�[�ƂȂ�Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propNames �v���p�e�B���z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param value 検索キーとなるBean
+     * @param indexName インデックス名
+     * @param propNames プロパティ名配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchBy(
         Object value,
@@ -311,18 +311,18 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティと一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param value �����L�[�ƂȂ�Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propNames �v���p�e�B���z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param value 検索キーとなるBean
+     * @param indexName インデックス名
+     * @param propNames プロパティ名配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchBy(
         long timeout,
@@ -332,17 +332,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��������Bean�̊Y������v���p�e�B�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定した複数のBeanの該当するプロパティと一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param indexName �C���f�b�N�X��
-     * @param propNames �v���p�e�B���z��
-     * @param values �����L�[�ƂȂ�Bean�z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param indexName インデックス名
+     * @param propNames プロパティ名配列
+     * @param values 検索キーとなるBean配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchIn(
         String indexName,
@@ -351,18 +351,18 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��������Bean�̊Y������v���p�e�B�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定した複数のBeanの該当するプロパティと一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param indexName �C���f�b�N�X��
-     * @param propNames �v���p�e�B���z��
-     * @param values �����L�[�ƂȂ�Bean�z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param indexName インデックス名
+     * @param propNames プロパティ名配列
+     * @param values 検索キーとなるBean配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchIn(
         long timeout,
@@ -372,16 +372,16 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param prop �����L�[�ƂȂ�l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param prop 検索キーとなる値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchByProperty(
         Object prop,
@@ -390,17 +390,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param prop �����L�[�ƂȂ�l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param prop 検索キーとなる値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchByProperty(
         long timeout,
@@ -410,16 +410,16 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵�������̒l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した複数の値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @param props �����L�[�ƂȂ�l�z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @param props 検索キーとなる値配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchInProperty(
         String indexName,
@@ -428,17 +428,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵�������̒l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した複数の値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @param props �����L�[�ƂȂ�l�z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�܂��͕����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @param props 検索キーとなる値配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、または複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchInProperty(
         long timeout,
@@ -448,16 +448,16 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定した値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param props �����L�[�ƂȂ�v���p�e�B���ƒl�̃}�b�s���O
-     * @param indexName �C���f�b�N�X��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IllegalArgumentException �w�肳�ꂽ�C���f�b�N�X���w�肳�ꂽ�v���p�e�B�Ɋ֘A���Ȃ��ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param props 検索キーとなるプロパティ名と値のマッピング
+     * @param indexName インデックス名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IllegalArgumentException 指定されたインデックスが指定されたプロパティに関連しない場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchByProperty(
         Map props,
@@ -465,17 +465,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IllegalArgumentException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定した値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param props �����L�[�ƂȂ�v���p�e�B���ƒl�̃}�b�s���O
-     * @param indexName �C���f�b�N�X��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IllegalArgumentException �w�肳�ꂽ�C���f�b�N�X���w�肳�ꂽ�v���p�e�B�Ɋ֘A���Ȃ��ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param props 検索キーとなるプロパティ名と値のマッピング
+     * @param indexName インデックス名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IllegalArgumentException 指定されたインデックスが指定されたプロパティに関連しない場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchByProperty(
         long timeout,
@@ -484,16 +484,16 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IllegalArgumentException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵�������̒l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定した複数の値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param indexName �C���f�b�N�X��
-     * @param props �����L�[�ƂȂ�v���p�e�B���ƒl�̃}�b�s���O�̔z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IllegalArgumentException �w�肳�ꂽ�C���f�b�N�X���w�肳�ꂽ�v���p�e�B�Ɋ֘A���Ȃ��ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param indexName インデックス名
+     * @param props 検索キーとなるプロパティ名と値のマッピングの配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IllegalArgumentException 指定されたインデックスが指定されたプロパティに関連しない場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchInProperty(
         String indexName,
@@ -501,17 +501,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IllegalArgumentException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵�������̒l�ƈ�v����Bean�W������������B<p>
-     * ��v�����̈��ł���A�P���C���f�b�N�X�ƕ����C���f�b�N�X�ɑ΂��ėL���B<br>
+     * 特定のプロパティが指定した複数の値と一致するBean集合を検索する。<p>
+     * 一致検索の一種であり、単純インデックスと複合インデックスに対して有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param indexName �C���f�b�N�X��
-     * @param props �����L�[�ƂȂ�v���p�e�B���ƒl�̃}�b�s���O�̔z��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ��ꍇ
-     * @exception IllegalArgumentException �w�肳�ꂽ�C���f�b�N�X���w�肳�ꂽ�v���p�e�B�Ɋ֘A���Ȃ��ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param indexName インデックス名
+     * @param props 検索キーとなるプロパティ名と値のマッピングの配列
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しない場合
+     * @exception IllegalArgumentException 指定されたインデックスが指定されたプロパティに関連しない場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchInProperty(
         long timeout,
@@ -520,17 +520,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IllegalArgumentException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromValue 臒l������Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromValue 閾値を持つBean
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchFrom(
         Object fromValue,
@@ -539,18 +539,18 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromValue 臒l������Bean
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromValue 閾値を持つBean
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchFrom(
@@ -562,18 +562,18 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param fromValue 臒l������Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param fromValue 閾値を持つBean
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchFrom(
         long timeout,
@@ -583,19 +583,19 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param fromValue 臒l������Bean
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param fromValue 閾値を持つBean
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchFrom(
@@ -608,16 +608,16 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵���l���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromProp 臒l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromProp 閾値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchFromProperty(
         Object fromProp,
@@ -626,17 +626,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromProp 臒l
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromProp 閾値
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchFromProperty(
@@ -648,17 +648,17 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵���l���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param fromProp 臒l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param fromProp 閾値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchFromProperty(
         long timeout,
@@ -668,18 +668,18 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l���傫��Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より大きいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param fromProp 臒l
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param fromProp 閾値
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchFromProperty(
@@ -692,17 +692,17 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param toValue 臒l������Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param toValue 閾値を持つBean
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchTo(
         Object toValue,
@@ -711,18 +711,18 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param toValue 臒l������Bean
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param toValue 閾値を持つBean
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchTo(
@@ -734,18 +734,18 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param toValue 臒l������Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param toValue 閾値を持つBean
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchTo(
         long timeout,
@@ -755,19 +755,19 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティより小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param toValue 臒l������Bean
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param toValue 閾値を持つBean
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchTo(
@@ -780,16 +780,16 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵���l��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param toProp 臒l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param toProp 閾値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchToProperty(
         Object toProp,
@@ -798,17 +798,17 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param toProp 臒l
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param toProp 閾値
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchToProperty(
@@ -820,17 +820,17 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵���l��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param toProp 臒l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param toProp 閾値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchToProperty(
         long timeout,
@@ -840,18 +840,18 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l��菬����Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値より小さいBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param toProp 臒l
-     * @param inclusive �������ʂ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param toProp 閾値
+     * @param inclusive 検索結果に閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchToProperty(
@@ -864,18 +864,18 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティの範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromValue �͈͂̍ŏ�臒l������Bean
-     * @param toValue �͈͂̍ő�臒l������Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromValue 範囲の最小閾値を持つBean
+     * @param toValue 範囲の最大閾値を持つBean
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchRange(
         Object fromValue,
@@ -885,20 +885,20 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティの範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromValue �͈͂̍ŏ�臒l������Bean
-     * @param fromInclusive �������ʂɍŏ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param toValue �͈͂̍ő�臒l������Bean
-     * @param toInclusive �������ʂɍő�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromValue 範囲の最小閾値を持つBean
+     * @param fromInclusive 検索結果に最小閾値を含むかどうか。含む場合はtrue
+     * @param toValue 範囲の最大閾値を持つBean
+     * @param toInclusive 検索結果に最大閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchRange(
@@ -912,19 +912,19 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティの範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param fromValue �͈͂̍ŏ�臒l������Bean
-     * @param toValue �͈͂̍ő�臒l������Bean
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param fromValue 範囲の最小閾値を持つBean
+     * @param toValue 範囲の最大閾値を持つBean
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchRange(
         long timeout,
@@ -935,21 +935,21 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵��Bean�̊Y������v���p�e�B�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定したBeanの該当するプロパティの範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param timeout �^�C���A�E�g
-     * @param fromValue �͈͂̍ŏ�臒l������Bean
-     * @param fromInclusive �������ʂɍŏ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param toValue �͈͂̍ő�臒l������Bean
-     * @param toInclusive �������ʂɍő�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception IndexPropertyAccessException �w�肳�ꂽ�v���p�e�B�̎擾�ŗ�O�����������ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param timeout タイムアウト
+     * @param fromValue 範囲の最小閾値を持つBean
+     * @param fromInclusive 検索結果に最小閾値を含むかどうか。含む場合はtrue
+     * @param toValue 範囲の最大閾値を持つBean
+     * @param toInclusive 検索結果に最大閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception IndexPropertyAccessException 指定されたプロパティの取得で例外が発生した場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchRange(
@@ -964,17 +964,17 @@ public interface SharedContextView{
 
     
     /**
-     * ����̃v���p�e�B���w�肵���l�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値の範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromProp �͈͂̍ŏ�臒l
-     * @param toProp �͈͂̍ő�臒l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromProp 範囲の最小閾値
+     * @param toProp 範囲の最大閾値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public SharedContextView searchRangeProperty(
         Object fromProp, 
@@ -984,72 +984,22 @@ public interface SharedContextView{
     ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ����̃v���p�e�B���w�肵���l�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
+     * 特定のプロパティが指定した値の範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @param fromProp �͈͂̍ŏ�臒l
-     * @param fromInclusive �������ʂɍŏ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param toProp �͈͂̍ő�臒l
-     * @param toInclusive �������ʂɍő�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
+     * @param fromProp 範囲の最小閾値
+     * @param fromInclusive 検索結果に最小閾値を含むかどうか。含む場合はtrue
+     * @param toProp 範囲の最大閾値
+     * @param toInclusive 検索結果に最大閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
 
     public SharedContextView searchRangeProperty(
-        Object fromProp, 
-        boolean fromInclusive,
-        Object toProp, 
-        boolean toInclusive,
-        String indexName,
-        String propName
-    ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
-
-    
-    /**
-     * ����̃v���p�e�B���w�肵���l�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
-     *
-     * @param timeout �^�C���A�E�g
-     * @param fromProp �͈͂̍ŏ�臒l
-     * @param toProp �͈͂̍ő�臒l
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
-     */
-    public SharedContextView searchRangeProperty(
-        long timeout,
-        Object fromProp, 
-        Object toProp, 
-        String indexName,
-        String propName
-    ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
-    
-    /**
-     * ����̃v���p�e�B���w�肵���l�͈͓̔��ƂȂ�Bean�W������������B<p>
-     * �͈͌����̈��ł���A�P���C���f�b�N�X�ɑ΂��Ă̂ݗL���B<br>
-     *
-     * @param timeout �^�C���A�E�g
-     * @param fromProp �͈͂̍ŏ�臒l
-     * @param fromInclusive �������ʂɍŏ�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param toProp �͈͂̍ő�臒l
-     * @param toInclusive �������ʂɍő�臒l���܂ނ��ǂ����B�܂ޏꍇ��true
-     * @param indexName �C���f�b�N�X��
-     * @param propName �v���p�e�B��
-     * @return �������ʂ̂��̃r���[
-     * @exception IndexNotFoundException �Y������C���f�b�N�X�����݂��Ȃ����A�����C���f�b�N�X�̏ꍇ
-     * @exception SharedContextSendException ���U�T�[�o�ւ̃��b�Z�[�W���M�Ɏ��s�����ꍇ
-     * @exception SharedContextTimeoutException ���U�T�[�o����̉����҂��Ń^�C���A�E�g�����ꍇ
-     */
-
-    public SharedContextView searchRangeProperty(
-        long timeout,
         Object fromProp, 
         boolean fromInclusive,
         Object toProp, 
@@ -1060,10 +1010,60 @@ public interface SharedContextView{
 
     
     /**
-     * ���̃r���[�̕��������B<p>
-     * �����̘_�����Z��Ԃ́A�f�t�H���g�l�ƂȂ�B<br>
+     * 特定のプロパティが指定した値の範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
      *
-     * @return ���̃r���[�̕���
+     * @param timeout タイムアウト
+     * @param fromProp 範囲の最小閾値
+     * @param toProp 範囲の最大閾値
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public SharedContextView searchRangeProperty(
+        long timeout,
+        Object fromProp, 
+        Object toProp, 
+        String indexName,
+        String propName
+    ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 特定のプロパティが指定した値の範囲内となるBean集合を検索する。<p>
+     * 範囲検索の一種であり、単純インデックスに対してのみ有効。<br>
+     *
+     * @param timeout タイムアウト
+     * @param fromProp 範囲の最小閾値
+     * @param fromInclusive 検索結果に最小閾値を含むかどうか。含む場合はtrue
+     * @param toProp 範囲の最大閾値
+     * @param toInclusive 検索結果に最大閾値を含むかどうか。含む場合はtrue
+     * @param indexName インデックス名
+     * @param propName プロパティ名
+     * @return 検索結果のこのビュー
+     * @exception IndexNotFoundException 該当するインデックスが存在しないか、複合インデックスの場合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+
+    public SharedContextView searchRangeProperty(
+        long timeout,
+        Object fromProp, 
+        boolean fromInclusive,
+        Object toProp, 
+        boolean toInclusive,
+        String indexName,
+        String propName
+    ) throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException;
+
+    
+    /**
+     * このビューの複製を作る。<p>
+     * 複製の論理演算状態は、デフォルト値となる。<br>
+     *
+     * @return このビューの複製
      */
     public Object clone();
 }

@@ -34,158 +34,158 @@ package jp.ossc.nimbus.service.message;
 import java.util.*;
 
 /**
- * ƒƒbƒZ[ƒWƒŒƒR[ƒh¶¬ƒCƒ“ƒ^[ƒtƒFƒCƒXB<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ç”Ÿæˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚<p>
  *
  * @author H.Nakano
  */
 public interface MessageRecordFactory {
     
     /**
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒWƒŒƒR[ƒh‚ğ“Ç‚İ‚ŞB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      * 
-     * @param lo ƒƒP[ƒ‹
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
      */
     public void findLocale(Locale lo);
     
     /**
-     * ƒƒbƒZ[ƒWID‚Ìˆê——‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¸€è¦§ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒWID‚Ìˆê——
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¸€è¦§
      */
     public String[] getMessageIds();
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒWƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @return ƒƒbƒZ[ƒWƒŒƒR[ƒh
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public MessageRecord findMessageRecord(String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
-     * ƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW‚É‚ÍA–„‚ß‚İƒƒbƒZ[ƒW‚ÌƒL[ƒ[ƒh‚à‚»‚Ì‚Ü‚ÜŠÜ‚Ü‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ã¯ã€åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚‚ãã®ã¾ã¾å«ã¾ã‚Œã‚‹ã€‚<br>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @return ƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findMessageTemplete(String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹ƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
-     * ƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW‚É‚ÍA–„‚ß‚İƒƒbƒZ[ƒW‚ÌƒL[ƒ[ƒh‚à‚»‚Ì‚Ü‚ÜŠÜ‚Ü‚ê‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ã¯ã€åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚‚ãã®ã¾ã¾å«ã¾ã‚Œã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @return w’èƒƒP[ƒ‹ƒeƒ“ƒvƒŒ[ƒgƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findMessageTemplete(Locale lo, String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @return ƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findMessage(String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @return w’èƒƒP[ƒ‹ƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findMessage(Locale lo, String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, Object[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, byte[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, short[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, char[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, int[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, long[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, float[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, double[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, boolean[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(
         Locale lo,
@@ -194,72 +194,72 @@ public interface MessageRecordFactory {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, byte[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, short[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, char[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, int[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, long[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, float[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(
         Locale lo,
@@ -268,12 +268,12 @@ public interface MessageRecordFactory {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(
         Locale lo,
@@ -282,173 +282,173 @@ public interface MessageRecordFactory {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, Object embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, byte embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, short embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, char embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, int embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, long embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, float embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, double embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return –„‚ß‚İƒƒbƒZ[ƒW
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(String messageId, boolean embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, Object embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, byte embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, short embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, char embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, int embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, long embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, float embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, double embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @return w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @return æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String findEmbedMessage(Locale lo, String messageId, boolean embed);
 }

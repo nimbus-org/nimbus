@@ -34,9 +34,9 @@ package jp.ossc.nimbus.service.loader;
 
 //
 /**
- * BLクラスのロードファクトリーのインターフェイス
+ * BL繧ｯ繝ｩ繧ｹ縺ｮ繝ｭ繝ｼ繝峨ヵ繧｡繧ｯ繝医Μ繝ｼ縺ｮ繧､繝ｳ繧ｿ繝ｼ繝輔ぉ繧､繧ｹ
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 作成: 2003/09/25 -　H.Nakano
+ * @version  1.00 菴懈��: 2003/09/25 -縲H.Nakano
  */
 public interface ClassLauncher {
 	/**

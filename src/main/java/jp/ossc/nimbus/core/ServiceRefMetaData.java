@@ -35,11 +35,11 @@ import java.io.*;
 import org.w3c.dom.*;
 
 /**
- * ƒT[ƒrƒXQÆ’è‹`&lt;service-ref&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;service-ref&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å‚ç…§å®šç¾©&lt;service-ref&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;service-ref&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ServiceRefMetaData extends ServiceNameMetaData
  implements Serializable{
@@ -47,45 +47,45 @@ public class ServiceRefMetaData extends ServiceNameMetaData
     private static final long serialVersionUID = -5823860625416503269L;
     
     /**
-     * &lt;service-ref&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;service-ref&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SERIVCE_REF_TAG_NAME = "service-ref";
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public ServiceRefMetaData(MetaData parent){
         this(parent, null);
     }
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
-     * @param manager ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é{@link ServiceManager}‚Ì–¼‘O
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @param manager ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹{@link ServiceManager}ã®åå‰
      */
     public ServiceRefMetaData(MetaData parent, String manager){
         this(parent, manager, null);
     }
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
-     * @param manager ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é{@link ServiceManager}‚Ì–¼‘O
-     * @param service ƒT[ƒrƒX‚Ì–¼‘O
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @param manager ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹{@link ServiceManager}ã®åå‰
+     * @param service ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      */
     public ServiceRefMetaData(MetaData parent, String manager, String service){
         super(parent, SERIVCE_REF_TAG_NAME, manager, service);
     }
     
     /**
-     * ƒT[ƒrƒX–¼‚ğ•\‚·—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¡¨ã™è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
      *
-     * @param element ƒT[ƒrƒX–¼‚ğ•\‚·—v‘f‚ÌElement
-     * @exception DeploymentException ƒT[ƒrƒX–¼‚ğ•\‚·—v‘f‚Ì‰ğÍ‚É¸”s‚µ‚½ê‡
+     * @param element ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¡¨ã™è¦ç´ ã®Element
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¡¨ã™è¦ç´ ã®è§£æã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         
@@ -99,9 +99,9 @@ public class ServiceRefMetaData extends ServiceNameMetaData
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuffer buf = new StringBuffer();

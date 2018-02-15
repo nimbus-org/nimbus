@@ -40,20 +40,20 @@ import jp.ossc.nimbus.util.converter.ReversibleConverter;
 import jp.ossc.nimbus.util.converter.StringConverter;
 
 /**
- * 16i•\Œ»‚Ìƒ†ƒjƒR[ƒh•¶š—ñ‚ğ“Ç‚İ‚ŞReaderƒNƒ‰ƒXB<p>
- * \u00df“™‚Ì16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚ğƒ†ƒjƒR[ƒh•¶š‚Æ‚µ‚Ä“Ç‚İ‚ŞB
+ * 16é€²è¡¨ç¾ã®ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€Readerã‚¯ãƒ©ã‚¹ã€‚<p>
+ * \u00dfç­‰ã®16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚
  *
  * @author H.Nakano
  */
 public class UnicodeHexBufferedReader extends BufferedReader implements StringConverter, ReversibleConverter{
     
     /**
-     * 16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ¨’Êí•¶š—ñ•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * 16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—â†’é€šå¸¸æ–‡å­—åˆ—å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int UNICODE_TO_STRING = POSITIVE_CONVERT;
     
     /**
-     * ’Êí•¶š—ñ¨16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * é€šå¸¸æ–‡å­—åˆ—â†’16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STRING_TO_UNICODE = REVERSE_CONVERT;
     
@@ -62,7 +62,7 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     private ReaderWrapper readerWrapper;
     
     /**
-     * w’è‚³‚ê‚½Reader‚ğƒ‰ƒbƒv‚µAƒfƒtƒHƒ‹ƒgƒTƒCƒY‚Ìƒoƒbƒtƒ@‚Åƒoƒbƒtƒ@ƒŠƒ“ƒO‚³‚ê‚½A16i•\Œ»ƒ†ƒjƒR[ƒh•¶šŒ^“ü—ÍƒXƒgƒŠ[ƒ€‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸReaderã‚’ãƒ©ãƒƒãƒ—ã—ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚µã‚¤ã‚ºã®ãƒãƒƒãƒ•ã‚¡ã§ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã•ã‚ŒãŸã€16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—å‹å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      */
     public UnicodeHexBufferedReader(){
         super(new ReaderWrapper());
@@ -70,9 +70,9 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * w’è‚³‚ê‚½Reader‚ğƒ‰ƒbƒv‚µAƒfƒtƒHƒ‹ƒgƒTƒCƒY‚Ìƒoƒbƒtƒ@‚Åƒoƒbƒtƒ@ƒŠƒ“ƒO‚³‚ê‚½A16i•\Œ»ƒ†ƒjƒR[ƒh•¶šŒ^“ü—ÍƒXƒgƒŠ[ƒ€‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸReaderã‚’ãƒ©ãƒƒãƒ—ã—ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚µã‚¤ã‚ºã®ãƒãƒƒãƒ•ã‚¡ã§ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã•ã‚ŒãŸã€16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—å‹å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader ƒ‰ƒbƒv‚·‚éReader
+     * @param reader ãƒ©ãƒƒãƒ—ã™ã‚‹Reader
      */
     public UnicodeHexBufferedReader(Reader reader){
         super(new ReaderWrapper(reader));
@@ -80,10 +80,10 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * w’è‚³‚ê‚½Reader‚ğƒ‰ƒbƒv‚µAw’è‚³‚ê‚½ƒTƒCƒY‚Ìƒoƒbƒtƒ@‚Åƒoƒbƒtƒ@ƒŠƒ“ƒO‚³‚ê‚½A16i•\Œ»ƒ†ƒjƒR[ƒh•¶šŒ^“ü—ÍƒXƒgƒŠ[ƒ€‚ğì¬‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸReaderã‚’ãƒ©ãƒƒãƒ—ã—ã€æŒ‡å®šã•ã‚ŒãŸã‚µã‚¤ã‚ºã®ãƒãƒƒãƒ•ã‚¡ã§ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã•ã‚ŒãŸã€16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—å‹å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ä½œæˆã™ã‚‹ã€‚
      *
-     * @param reader ƒ‰ƒbƒv‚·‚éReader
-     * @param size ƒoƒbƒtƒ@ƒTƒCƒY
+     * @param reader ãƒ©ãƒƒãƒ—ã™ã‚‹Reader
+     * @param size ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public UnicodeHexBufferedReader(Reader reader, int size){
         super(new ReaderWrapper(reader), size);
@@ -91,24 +91,24 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * Reader‚ğİ’è‚·‚éB<p>
+     * Readerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param reader Reader
-     * @exception IOException Šù‚ÉReader‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡
+     * @exception IOException æ—¢ã«ReaderãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
      */
     public void setReader(Reader reader) throws IOException{
         readerWrapper.setReader(reader);
     }
     
     /**
-     * 1 s‚Ì16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚ğ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
-     * 1 s‚ÌI’[‚ÍA‰üs ('\n') ‚©A•œ‹A ('\r')A‚Ü‚½‚Í•œs‚Æ‚»‚ê‚É‘±‚­‰üs‚Ì‚Ç‚ê‚©‚Å”F¯‚³‚ê‚éB<br>
+     * 1 è¡Œã®16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
+     * 1 è¡Œã®çµ‚ç«¯ã¯ã€æ”¹è¡Œ ('\n') ã‹ã€å¾©å¸° ('\r')ã€ã¾ãŸã¯å¾©è¡Œã¨ãã‚Œã«ç¶šãæ”¹è¡Œã®ã©ã‚Œã‹ã§èªè­˜ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return s‚Ì“à—e‚ğŠÜ‚Ş•¶š—ñA‚½‚¾‚µs‚ÌI’[•¶š‚ÍŠÜ‚ß‚È‚¢BƒXƒgƒŠ[ƒ€‚ÌI‚í‚è‚É’B‚µ‚Ä‚¢‚éê‡‚Í null
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @return è¡Œã®å†…å®¹ã‚’å«ã‚€æ–‡å­—åˆ—ã€ãŸã ã—è¡Œã®çµ‚ç«¯æ–‡å­—ã¯å«ã‚ãªã„ã€‚ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®çµ‚ã‚ã‚Šã«é”ã—ã¦ã„ã‚‹å ´åˆã¯ null
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public String readLine() throws IOException{
-        //ãˆÊƒNƒ‰ƒX‚Ìƒƒ\ƒbƒh‚Ås“Ç‚İ‚İ‚·‚éB
+        //ä¸Šä½ã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§è¡Œèª­ã¿è¾¼ã¿ã™ã‚‹ã€‚
         String str = super.readLine() ;
         if(str!=null){    
             str = convertString(str) ;
@@ -117,14 +117,14 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * 1 s‚Ì•¶š—ñ‚ğ16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
-     * 1 s‚ÌI’[‚ÍA‰üs ('\n') ‚©A•œ‹A ('\r')A‚Ü‚½‚Í•œs‚Æ‚»‚ê‚É‘±‚­‰üs‚Ì‚Ç‚ê‚©‚Å”F¯‚³‚ê‚éB<br>
+     * 1 è¡Œã®æ–‡å­—åˆ—ã‚’16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
+     * 1 è¡Œã®çµ‚ç«¯ã¯ã€æ”¹è¡Œ ('\n') ã‹ã€å¾©å¸° ('\r')ã€ã¾ãŸã¯å¾©è¡Œã¨ãã‚Œã«ç¶šãæ”¹è¡Œã®ã©ã‚Œã‹ã§èªè­˜ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @return s‚Ì“à—e‚ğŠÜ‚Ş•¶š—ñA‚½‚¾‚µs‚ÌI’[•¶š‚ÍŠÜ‚ß‚È‚¢BƒXƒgƒŠ[ƒ€‚ÌI‚í‚è‚É’B‚µ‚Ä‚¢‚éê‡‚Í null
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @return è¡Œã®å†…å®¹ã‚’å«ã‚€æ–‡å­—åˆ—ã€ãŸã ã—è¡Œã®çµ‚ç«¯æ–‡å­—ã¯å«ã‚ãªã„ã€‚ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®çµ‚ã‚ã‚Šã«é”ã—ã¦ã„ã‚‹å ´åˆã¯ null
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public String readLineInverse() throws IOException{
-        //ãˆÊƒNƒ‰ƒX‚Ìƒƒ\ƒbƒh‚Ås“Ç‚İ‚İ‚·‚éB
+        //ä¸Šä½ã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§è¡Œèª­ã¿è¾¼ã¿ã™ã‚‹ã€‚
         String str = super.readLine() ;
         if(str!=null){    
             str = convertUnicode(str) ;
@@ -133,10 +133,10 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param unicodeStr •¶š—ñ
-     * @return 16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ
+     * @param unicodeStr æ–‡å­—åˆ—
+     * @return 16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public static String convertUnicode(String unicodeStr){
         String str = null;
@@ -152,21 +152,21 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š‚ğ16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚’16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param unicodeChar •¶š
-     * @return 16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ
+     * @param unicodeChar æ–‡å­—
+     * @return 16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public static String convertUnicode(char unicodeChar){
         return convertUnicode(unicodeChar, new StringBuilder(6)).toString();
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š‚ğ16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚’16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param unicodeChar •¶š
-     * @param buf •¶š—ñƒoƒbƒtƒ@
-     * @return 16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ
+     * @param unicodeChar æ–‡å­—
+     * @param buf æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return 16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public static StringBuilder convertUnicode(char unicodeChar, StringBuilder buf){
         char c = unicodeChar;
@@ -175,10 +175,10 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
         int mask = 0xf000;
         int ret = 0x0000;
         for(int j = 0; j < 4; j++){
-            //ƒ}ƒXƒN‚ğ‚Sƒrƒbƒg‰EƒVƒtƒg‚·‚é
+            //ãƒã‚¹ã‚¯ã‚’ï¼”ãƒ“ãƒƒãƒˆå³ã‚·ãƒ•ãƒˆã™ã‚‹
             mask = 0xf000 >> (j*4);
             ret = c & mask;
-            //AND‚µ‚½‚à‚Ì‚ğ‚Sƒrƒbƒg¶ƒVƒtƒg‚·‚é
+            //ANDã—ãŸã‚‚ã®ã‚’ï¼”ãƒ“ãƒƒãƒˆå·¦ã‚·ãƒ•ãƒˆã™ã‚‹
             ret = ret << (j*4);
             switch(ret){
             case 0x0000:
@@ -236,10 +236,10 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * w’è‚³‚ê‚½16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ‚ğ•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param unicodeAry 16i•\Œ»ƒ†ƒjƒR[ƒh•¶š—ñ
-     * @return •¶š—ñ
+     * @param unicodeAry 16é€²è¡¨ç¾ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
+     * @return æ–‡å­—åˆ—
      */
     public static String convertString(String unicodeAry){
         String str = null;
@@ -248,15 +248,15 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
             int len = unicodeAry.length();
             StringBuilder buf = new StringBuilder(len);
             for(int i = 0;i<len;){
-                //•¶š—ñ‚ğØ‚èæ‚é
+                //æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šå–ã‚‹
                 c = unicodeAry.charAt(i++);
-                //ƒGƒXƒP[ƒv‚È‚ç
+                //ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã‚‰
                 if(c == '\\' && (len - 1) > i){
                     c = unicodeAry.charAt(i++);
-                    //UNICODEƒ}[ƒN
+                    //UNICODEãƒãƒ¼ã‚¯
                     if(c == 'u'){
                         int value = 0;
-                        //‚S•¶š“Ç‚İ‚Ş
+                        //ï¼”æ–‡å­—èª­ã¿è¾¼ã‚€
                         for(int j=0;j<4;j++){
                             c = unicodeAry.charAt(i++);
                             switch(c){
@@ -343,9 +343,9 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){

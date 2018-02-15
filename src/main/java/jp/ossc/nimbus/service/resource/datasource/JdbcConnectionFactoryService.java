@@ -36,7 +36,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.resource.*;
 
 /**
- * DBƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
+ * DBã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */

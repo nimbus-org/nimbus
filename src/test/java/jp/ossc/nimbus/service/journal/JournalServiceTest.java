@@ -40,8 +40,8 @@ import java.text.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/14| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/14ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class JournalServiceTest extends TestCase {
 
@@ -57,7 +57,7 @@ public class JournalServiceTest extends TestCase {
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(JournalServiceTest.class);
 	}
-	//’Pƒ‚ÈƒWƒƒ[ƒiƒ‹æ“¾
+	//å˜ç´”ãªã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—
 	public void testAddInfo1() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		System.out.println("testAddInfo1 start");
@@ -69,7 +69,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 	}
 
-	//’Pƒ‚ÈƒWƒƒ[ƒiƒ‹æ“¾iˆø”‚RŒÂE‘æ‚Rˆø”null)
+	//å˜ç´”ãªã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å–å¾—ï¼ˆå¼•æ•°ï¼“å€‹ãƒ»ç¬¬ï¼“å¼•æ•°null)
 	public void testAddInfo2() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		System.out.println("testAddInfo2 start");
@@ -83,7 +83,7 @@ public class JournalServiceTest extends TestCase {
 	}
 	
 
-	//StartJournaliˆø”‚RŒÂE‘æ‚Rˆø”w’èj
+	//StartJournalï¼ˆå¼•æ•°ï¼“å€‹ãƒ»ç¬¬ï¼“å¼•æ•°æŒ‡å®šï¼‰
 	public void testAddInfo3() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		System.out.println("testAddInfo3 start");
@@ -96,7 +96,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 	}
-	//ˆø”‚RŒÂE‘æ‚Pˆø”‚Énullw’è
+	//å¼•æ•°ï¼“å€‹ãƒ»ç¬¬ï¼‘å¼•æ•°ã«nullæŒ‡å®š
 	public void testAddInfo4() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		System.out.println("testAddInfo4 start");
@@ -109,7 +109,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 	}
-	//StartJournal˜A‘±ƒR[ƒ‹
+	//StartJournalé€£ç¶šã‚³ãƒ¼ãƒ«
 	public void testAddInfo5() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		System.out.println("testAddInfo5 start");
@@ -123,7 +123,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 	}
 	
-	//EndJournaliw’èjƒR[ƒ‹
+	//EndJournalï¼ˆæ™‚åˆ»æŒ‡å®šï¼‰ã‚³ãƒ¼ãƒ«
 	public void testAddInfo6() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		Journal journal = (Journal)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournal");
@@ -136,7 +136,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal(endTime);
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 	}
-	//StartJournal‚µ‚È‚¢‚ÅaddInfo
+	//StartJournalã—ãªã„ã§addInfo
 	public void testAddInfo7() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		
@@ -161,7 +161,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 	}
 	
-	//addInfo(String,Object,EditorFinder) startJournal‚µ‚È‚¢B
+	//addInfo(String,Object,EditorFinder) startJournalã—ãªã„ã€‚
 	public void testAddInfo9() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -174,7 +174,7 @@ public class JournalServiceTest extends TestCase {
 		//journal.endJournal();
 	}
 	
-	//addStartStep(String,Date,EditorFinder) startJournal‚µ‚È‚¢B
+	//addStartStep(String,Date,EditorFinder) startJournalã—ãªã„ã€‚
 	public void testAddStartStep1() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -187,7 +187,7 @@ public class JournalServiceTest extends TestCase {
 
 	}
 	
-	//addStartStep(String,Date,EditorFinder) ‚·‚é
+	//addStartStep(String,Date,EditorFinder) ã™ã‚‹
 	public void testAddStartStep2() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -201,7 +201,7 @@ public class JournalServiceTest extends TestCase {
 		
 	}
 	
-	//addEndStep() ‚·‚é
+	//addEndStep() ã™ã‚‹
 	public void testAddEndStep1() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -217,7 +217,7 @@ public class JournalServiceTest extends TestCase {
 		
 	}
 	
-	//addEndStep(Date) ‚·‚éBaddStartStep‚ÅStep‚ğ’Ç‰Á‚µ‚½‚Ì‚¿AaddEndStep‚ğƒR[ƒ‹
+	//addEndStep(Date) ã™ã‚‹ã€‚addStartStepã§Stepã‚’è¿½åŠ ã—ãŸã®ã¡ã€addEndStepã‚’ã‚³ãƒ¼ãƒ«
 	public void testAddEndStep2() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -233,14 +233,14 @@ public class JournalServiceTest extends TestCase {
 		
 	}
 	
-	//addEndStep(Date) ‚·‚éBaddStartStep‚ÅStep‚ğ’Ç‰Á‚¹‚¸AaddEndStep‚ğƒR[ƒ‹
+	//addEndStep(Date) ã™ã‚‹ã€‚addStartStepã§Stepã‚’è¿½åŠ ã›ãšã€addEndStepã‚’ã‚³ãƒ¼ãƒ«
 	public void testAddEndStep3() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		Journal journal = (Journal)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournal");
 		System.out.println("testAddEndStep1 start");
 		Date now = new Date();
 		journal.startJournal("start");
-		//ƒXƒeƒbƒv‚ğ’Ç‰Á‚µ‚È‚¢B
+		//ã‚¹ãƒ†ãƒƒãƒ—ã‚’è¿½åŠ ã—ãªã„ã€‚
 		//journal.addStartStep("start",now,finder);
 		journal.addInfo("testAddEndStep","testAddEndStep");
 		journal.addEndStep(now);
@@ -248,7 +248,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		
 	}
-	//‚±‚±‚©‚çæAƒuƒ‰ƒbƒNƒ{ƒbƒNƒX“IƒeƒXƒg
+	//ã“ã“ã‹ã‚‰å…ˆã€ãƒ–ãƒ©ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹çš„ãƒ†ã‚¹ãƒˆ
 	public void testOutputPattern1() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -279,7 +279,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
-	//addStartStep‚É‚æ‚é“ü‚êq
+	//addStartStepã«ã‚ˆã‚‹å…¥ã‚Œå­
 	public void testOutputPattern3() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -292,7 +292,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
-	//addStartStep‚É‚æ‚é“ü‚êq
+	//addStartStepã«ã‚ˆã‚‹å…¥ã‚Œå­
 	public void testOutputPattern4() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -309,7 +309,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
-	//addStartStep‚É‚æ‚é“ü‚êqi‚P’iEq‹Ÿ‚QŒÂj
+	//addStartStepã«ã‚ˆã‚‹å…¥ã‚Œå­ï¼ˆï¼‘æ®µãƒ»å­ä¾›ï¼’å€‹ï¼‰
 	public void testOutputPattern5() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -327,7 +327,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
 	
-	//addStartStep‚É‚æ‚é“ü‚êqi‚P’i–ÚEq‹Ÿ‚QŒÂ‚¤‚¿‚PŒÂ‚É‘·—v‘f‚ ‚èj
+	//addStartStepã«ã‚ˆã‚‹å…¥ã‚Œå­ï¼ˆï¼‘æ®µç›®ãƒ»å­ä¾›ï¼’å€‹ã†ã¡ï¼‘å€‹ã«å­«è¦ç´ ã‚ã‚Šï¼‰
 	public void testOutputPattern6() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -341,7 +341,7 @@ public class JournalServiceTest extends TestCase {
 		journal.addStartStep("start");
 		journal.addInfo("Pattern6_3rd_addInfo","Pattern6_3rd");
 		journal.addStartStep("start");
-		journal.addInfo("Pattern6_4th_addInfo","Pattern6_4th");//‘·—v‘f
+		journal.addInfo("Pattern6_4th_addInfo","Pattern6_4th");//å­«è¦ç´ 
 		journal.addEndStep();
 		journal.addEndStep();
 		//journal.endJournal();
@@ -349,7 +349,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
 	
-	//endJournal‚ÌƒR[ƒ‹‚ª‚P‰ñ‚½‚è‚È‚¢ƒP[ƒX
+	//endJournalã®ã‚³ãƒ¼ãƒ«ãŒï¼‘å›ãŸã‚Šãªã„ã‚±ãƒ¼ã‚¹
 	public void testOutputPattern7() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -366,7 +366,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
 	
-	//endJournal‚ÌƒR[ƒ‹‚ª‚P‰ñ‘½‚¢ƒP[ƒX
+	//endJournalã®ã‚³ãƒ¼ãƒ«ãŒï¼‘å›å¤šã„ã‚±ãƒ¼ã‚¹
 	public void testOutputPattern8() throws Exception{
 		try {
 			ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
@@ -390,7 +390,7 @@ public class JournalServiceTest extends TestCase {
 		}
 		
 	}
-	//addEndStep‚ÌƒR[ƒ‹‚ª1‰ñ‘½‚¢ƒP[ƒX
+	//addEndStepã®ã‚³ãƒ¼ãƒ«ãŒ1å›å¤šã„ã‚±ãƒ¼ã‚¹
 	public void testOutputPattern9() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -407,7 +407,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
 	
-	//setRequestId‚ÌƒeƒXƒg
+	//setRequestIdã®ãƒ†ã‚¹ãƒˆ
 	public void testOutputPattern10() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -425,7 +425,7 @@ public class JournalServiceTest extends TestCase {
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
 	
-	//setRequestId‚ÌƒeƒXƒgi’Ê”ÔƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡)
+	//setRequestIdã®ãƒ†ã‚¹ãƒˆï¼ˆé€šç•ªã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆ)
 	public void testOutputPattern11() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -442,7 +442,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
-	//setRequestId‚ÌƒeƒXƒgi’Ê”ÔƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡)
+	//setRequestIdã®ãƒ†ã‚¹ãƒˆï¼ˆé€šç•ªã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆ)
 	public void testOutputPattern12() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");
@@ -460,7 +460,7 @@ public class JournalServiceTest extends TestCase {
 		journal.endJournal();
 		ServiceManagerFactory.unloadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");		
 	}
-//	addStartStep‚É‚æ‚é“ü‚êqi‚P’i–ÚEq‹Ÿ‚QŒÂ‚¤‚¿‚PŒÂ‚É‘·—v‘f‚ ‚èj
+//	addStartStepã«ã‚ˆã‚‹å…¥ã‚Œå­ï¼ˆï¼‘æ®µç›®ãƒ»å­ä¾›ï¼’å€‹ã†ã¡ï¼‘å€‹ã«å­«è¦ç´ ã‚ã‚Šï¼‰
 	public void testOutputPattern13() throws Exception{
 		ServiceManagerFactory.loadManager("jp/ossc/nimbus/service/journal/nimbus-service.xml");
 		//EditorFinder finder = (EditorFinder)ServiceManagerFactory.getServiceObject("tstruts","BusinessJournalDefaultEditorFinder2");

@@ -38,7 +38,7 @@ import javax.naming.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * RMIƒIƒuƒWƒFƒNƒg‚ğJNDIƒT[ƒo‚ÉƒoƒCƒ“ƒh‚·‚é{@link Repository}ƒT[ƒrƒXB<p>
+ * RMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’JNDIã‚µãƒ¼ãƒã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link Repository}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -51,35 +51,35 @@ public class JNDIRepositoryService extends ServiceBase
     private Properties environment;
     private transient InitialContext context;
     
-    // JNDIRepositoryServiceMBean‚ÌJavaDoc
+    // JNDIRepositoryServiceMBeanã®JavaDoc
     public Properties getEnvironment(){
         return environment;
     }
     
-    // JNDIRepositoryServiceMBean‚ÌJavaDoc
+    // JNDIRepositoryServiceMBeanã®JavaDoc
     public void setEnvironment(Properties env){
         environment = env;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         context = getInitialContext();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         context = null;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public Object get(String name){
         if(registered.containsKey(name)){
             return registered.get(name);
@@ -91,7 +91,7 @@ public class JNDIRepositoryService extends ServiceBase
         return null;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public boolean register(String name, Object obj){
         boolean exists = false;
         try{
@@ -130,7 +130,7 @@ public class JNDIRepositoryService extends ServiceBase
         return true;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public boolean unregister(String name){
         registered.remove(name);
         try{
@@ -141,17 +141,17 @@ public class JNDIRepositoryService extends ServiceBase
         return true;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public boolean isRegistered(String name){
         return get(name) != null;
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public Set nameSet(){
         return new HashSet(registered.keySet());
     }
     
-    // Repository‚ÌJavaDoc
+    // Repositoryã®JavaDoc
     public Set registeredSet(){
         final Set result = new HashSet();
         final Iterator registeredNames = nameSet().iterator();

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 /**
- * ƒZƒ}ƒtƒHŠl“¾‚ÉŽ¸”s‚µ‚½Žž‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * ã‚»ãƒžãƒ•ã‚©ç²å¾—ã«å¤±æ•—ã—ãŸæ™‚ã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  * @see FlowControlInterceptorService
@@ -42,16 +42,16 @@ public class FailToObtainSemaphoreException extends RuntimeException{
     private static final long serialVersionUID = -3002405936519488363L;
     
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FailToObtainSemaphoreException(){
         super();
     }
     
     /**
-     * Žw’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ðŽ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public FailToObtainSemaphoreException(String message){
         super(message);

@@ -32,56 +32,56 @@
 package jp.ossc.nimbus.daemon;
 
 /**
- * ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌÀs‚ğ§Œä‚·‚éƒRƒ“ƒgƒ[ƒ‰B<p>
+ * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®å®Ÿè¡Œã‚’åˆ¶å¾¡ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface DaemonControl{
     
     /**
-     * ‰Ò“®ó‘Ô‚ğ”»’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A‰Ò“®’†
+     * @return trueã®å ´åˆã€ç¨¼å‹•ä¸­
      */
     public boolean isRunning();
     
     /**
-     * ‰Ò“®ó‘Ô‚ğİ’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param runFlg ‰Ò“®’†‚Éİ’è‚µ‚½‚¢ê‡true
+     * @param runFlg ç¨¼å‹•ä¸­ã«è¨­å®šã—ãŸã„å ´åˆtrue
      */
     public void setRunning(boolean runFlg);
     
     /**
-     * ƒuƒƒbƒLƒ“ƒOó‘Ô‚ğ”»’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°çŠ¶æ…‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AƒuƒƒbƒN’†
+     * @return trueã®å ´åˆã€ãƒ–ãƒ­ãƒƒã‚¯ä¸­
      */
     public boolean isBlocking();
     
     /**
-     * ƒuƒƒbƒLƒ“ƒOó‘Ô‚ğİ’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param blockFlg ƒuƒƒbƒN’†‚Éİ’è‚µ‚½‚¢ê‡true
+     * @param blockFlg ãƒ–ãƒ­ãƒƒã‚¯ä¸­ã«è¨­å®šã—ãŸã„å ´åˆtrue
      */
     public void setBlocking(boolean blockFlg);
     
     /**
-     * ƒXƒŒƒbƒh‚ğˆê’â~‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ä¸€æ™‚åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void suspend();
     
     /**
-     * ƒXƒŒƒbƒh‚ğÄŠJ‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å†é–‹ã™ã‚‹ã€‚<p>
      */
     public void resume();
     
     /**
-     * {@link DaemonRunnable#consume(Object,DaemonControl)}‚ª‘O‰ñŒÄ‚Ño‚³‚ê‚½‚©‚çAw’è‚³‚ê‚½ŠÔ‚¾‚¯sleep‚·‚éB<p>
+     * {@link DaemonRunnable#consume(Object,DaemonControl)}ãŒå‰å›å‘¼ã³å‡ºã•ã‚ŒãŸæ™‚åˆ»ã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ã ã‘sleepã™ã‚‹ã€‚<p>
      *
-     * @param interval ƒXƒŠ[ƒv‚·‚éŠÔ[ms]
-     * @param isFirstSleep ‰‰ñ‚Ésleep‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOBtrue‚Ìê‡‚ÍAsleep‚·‚é
-     * @exception InterruptedException ƒCƒ“ƒ^[ƒ‰ƒvƒg‚³‚ê‚½ê‡
+     * @param interval ã‚¹ãƒªãƒ¼ãƒ—ã™ã‚‹æ™‚é–“[ms]
+     * @param isFirstSleep åˆå›ã«sleepã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚trueã®å ´åˆã¯ã€sleepã™ã‚‹
+     * @exception InterruptedException ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ©ãƒ—ãƒˆã•ã‚ŒãŸå ´åˆ
      */
     public void sleep(long interval, boolean isFirstSleep) throws InterruptedException;
 }

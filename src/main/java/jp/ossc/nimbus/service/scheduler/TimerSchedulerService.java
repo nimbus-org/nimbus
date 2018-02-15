@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * java.util.Timer‚ğg‚Á‚½ƒXƒPƒWƒ…[ƒ‰ƒT[ƒrƒXB<p>
- * {@link ScheduleTask}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒ^ƒXƒN‚ğAjava.util.Timer‚ğg‚Á‚ÄƒXƒPƒWƒ…[ƒŠƒ“ƒO‚µ‚ÄÀs‚·‚éƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * java.util.Timerã‚’ä½¿ã£ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * {@link ScheduleTask}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¿ã‚¹ã‚¯ã‚’ã€java.util.Timerã‚’ä½¿ã£ã¦ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒªãƒ³ã‚°ã—ã¦å®Ÿè¡Œã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -57,62 +57,62 @@ public class TimerSchedulerService extends ServiceBase
     protected Object scheduleFactoryKey;
     protected ServiceName scheduleStateManagerServiceName;
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void setDaemon(boolean isDaemon){
         this.isDaemon = isDaemon;
     }
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public boolean isDaemon(){
         return isDaemon;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void setScheduleOnStart(boolean isSchedule){
         isScheduleOnStart = isSchedule;
     }
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public boolean isScheduleOnStart(){
         return isScheduleOnStart;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void setScheduleFactoryServiceName(ServiceName name){
         scheduleFactoryServiceName = name;
     }
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public ServiceName getScheduleFactoryServiceName(){
         return scheduleFactoryServiceName;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void setScheduleFactoryKey(Object key){
         scheduleFactoryKey = key;
     }
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Object getScheduleFactoryKey(){
         return scheduleFactoryKey;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void setScheduleStateManagerServiceName(ServiceName name){
         scheduleStateManagerServiceName = name;
     }
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public ServiceName getScheduleStateManagerServiceName(){
         return scheduleStateManagerServiceName;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void setScheduleServiceNames(ServiceName[] names){
         scheduleServiceNames = names;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public ServiceName[] getScheduleServiceNames(){
         return scheduleServiceNames;
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void addSchedule(TimerSchedule schedule){
         if(schedules.containsKey(schedule.getName())){
             removeSchedule(schedule.getName());
@@ -125,7 +125,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void reloadSchedule(String name){
         if(!schedules.containsKey(name)){
             return;
@@ -137,7 +137,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void removeSchedule(String name){
         if(!schedules.containsKey(name)){
             return;
@@ -148,7 +148,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void cancelSchedule(String name){
         if(!schedules.containsKey(name)){
             return;
@@ -159,7 +159,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void validateSchedule(String name){
         if(!schedules.containsKey(name)){
             return;
@@ -170,7 +170,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void invalidateSchedule(String name){
         if(!schedules.containsKey(name)){
             return;
@@ -181,7 +181,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void executeSchedule(String name){
         if(!schedules.containsKey(name)){
             return;
@@ -192,7 +192,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void executeSchedule(String name, long delay){
         if(!schedules.containsKey(name)){
             return;
@@ -203,7 +203,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public void executeSchedule(String name, Date time){
         if(!schedules.containsKey(name)){
             return;
@@ -214,7 +214,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection runningSchedules(){
         if(schedules == null){
             return new HashSet();
@@ -236,7 +236,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection runningScheduleNames(){
         if(schedules == null){
             return new HashSet();
@@ -258,7 +258,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection closedScheduleNames(){
         if(schedules == null){
             return new HashSet();
@@ -280,7 +280,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection closedSchedules(){
         if(schedules == null){
             return new HashSet();
@@ -302,7 +302,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection validScheduleNames(){
         if(schedules == null){
             return new HashSet();
@@ -324,7 +324,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection validSchedules(){
         if(schedules == null){
             return new HashSet();
@@ -346,7 +346,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection errorScheduleNames(){
         if(schedules == null){
             return new HashSet();
@@ -368,7 +368,7 @@ public class TimerSchedulerService extends ServiceBase
         return result.values();
     }
     
-    // TimerSchedulerServiceMBean‚ÌJavaDoc
+    // TimerSchedulerServiceMBeanã®JavaDoc
     public Collection errorSchedules(){
         if(schedules == null){
             return new HashSet();
@@ -391,18 +391,18 @@ public class TimerSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         schedules = new HashMap();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(isScheduleOnStart){
@@ -411,24 +411,24 @@ public class TimerSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         stopSchedule();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         schedules = null;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public synchronized void startSchedule(Object key){
         if(getState() < Service.CREATED
             && getState() > Service.STARTED){
@@ -460,7 +460,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public synchronized void stopSchedule(){
         if(timer != null){
             timer.cancel();
@@ -471,12 +471,12 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public synchronized void waitUntilScheduleClose(){
         waitUntilScheduleClose(0);
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public synchronized boolean waitUntilScheduleClose(long timeout){
         if(schedules == null || schedules.size() == 0){
             return true;
@@ -522,22 +522,22 @@ public class TimerSchedulerService extends ServiceBase
         return true;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public Schedule getSchedule(Object key, String name){
         return (Schedule)createScheduleMap(key).get(name);
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public Schedule[] getSchedules(Object key){
         return (Schedule[])createScheduleMap(key).values()
             .toArray(new TimerSchedule[schedules.size()]);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒbƒv‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒãƒƒãƒ—ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[
-     * @return w’è‚³‚ê‚½ƒL[‚ÉŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹–¼‚ÆƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param key ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åã¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     protected Map createScheduleMap(Object key){
         Map schedules = new TreeMap();
@@ -567,7 +567,7 @@ public class TimerSchedulerService extends ServiceBase
         return schedules;
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public Schedule getSchedule(String name){
         if(schedules == null){
             return null;
@@ -577,7 +577,7 @@ public class TimerSchedulerService extends ServiceBase
         }
     }
     
-    // Scheduler‚ÌJavaDoc
+    // Schedulerã®JavaDoc
     public Schedule[] getSchedules(){
         if(schedules == null){
             return new TimerSchedule[0];
@@ -587,18 +587,18 @@ public class TimerSchedulerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param factory ƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠ
+     * @param factory ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      */
     public void setScheduleFactory(ScheduleFactory factory){
         scheduleFactory = factory;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schedules ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+     * @param schedules ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
      */
     public void setSchedules(TimerSchedule[] schedules){
         attrSchedules = schedules;

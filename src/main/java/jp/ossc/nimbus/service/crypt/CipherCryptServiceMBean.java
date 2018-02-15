@@ -37,7 +37,7 @@ import java.security.*;
 import java.security.spec.*;
 
 /**
- * {@link CipherCryptService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link CipherCryptService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see CipherCryptService
@@ -45,298 +45,298 @@ import java.security.spec.*;
 public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì•ÏŠ·–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å¤‰æ›åã€‚<p>
      */
     public static final String DEFAULT_TRANSFORMATION = "DES/ECB/PKCS5Padding";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     public static final String DEFAULT_ENCODING = "ISO_8859-1";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒnƒbƒVƒ…ƒAƒ‹ƒSƒŠƒYƒ€–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒãƒƒã‚·ãƒ¥ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ åã€‚<p>
      */
     public static final String DEFAULT_HASH_ALGORITHM = "MD5";
     
     /**
-     * ˆÃ†‰»/•œ†‰»‚Ég—p‚·‚é•ÏŠ·–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_TRANSFORMATION}B<br>
+     * æš—å·åŒ–/å¾©å·åŒ–ã«ä½¿ç”¨ã™ã‚‹å¤‰æ›åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_TRANSFORMATION}ã€‚<br>
      *
-     * @param trans •ÏŠ·–¼
+     * @param trans å¤‰æ›å
      */
     public void setTransformation(String trans);
     
     /**
-     * ˆÃ†‰»/•œ†‰»‚Ég—p‚·‚é•ÏŠ·–¼‚ğæ“¾‚·‚éB<p>
+     * æš—å·åŒ–/å¾©å·åŒ–ã«ä½¿ç”¨ã™ã‚‹å¤‰æ›åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·–¼
+     * @return å¤‰æ›å
      */
     public String getTransformation();
     
     /**
-     * Œ®‚ğİ’è‚·‚éB<p>
+     * éµã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param k Œ®
+     * @param k éµ
      */
     public void setKey(Key k);
     
     /**
-     * Œ®‚ğæ“¾‚·‚éB<p>
+     * éµã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®
+     * @return éµ
      */
     public Key getKey();
     
     /**
-     * Œ®ƒXƒgƒA‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path ƒpƒX
+     * @param path ãƒ‘ã‚¹
      */
     public void setStorePath(String path);
     
     /**
-     * Œ®ƒXƒgƒA‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒX
+     * @return ãƒ‘ã‚¹
      */
     public String getStorePath();
     
     /**
-     * Œ®ƒXƒgƒA‚Ìí•Ê‚ğİ’è‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ã®ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type í•Ê
+     * @param type ç¨®åˆ¥
      */
     public void setStoreType(String type);
     
     /**
-     * Œ®ƒXƒgƒA‚Ìí•Ê‚ğæ“¾‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ã®ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return í•Ê
+     * @return ç¨®åˆ¥
      */
     public String getStoreType();
     
     /**
-     * Œ®ƒXƒgƒAƒvƒƒoƒCƒ_‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name Œ®ƒXƒgƒAƒvƒƒoƒCƒ_‚Ì–¼‘O
+     * @param name éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®åå‰
      */
     public void setStoreProviderName(String name);
     
     /**
-     * Œ®ƒXƒgƒAƒvƒƒoƒCƒ_‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®ƒXƒgƒAƒvƒƒoƒCƒ_‚Ì–¼‘O
+     * @return éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®åå‰
      */
     public String getStoreProviderName();
     
     /**
-     * Œ®ƒXƒgƒAƒvƒƒoƒCƒ_‚ğİ’è‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param provider Œ®ƒXƒgƒAƒvƒƒoƒCƒ_
+     * @param provider éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€
      */
     public void setStoreProvider(Provider provider);
     
     /**
-     * Œ®ƒXƒgƒAƒvƒƒoƒCƒ_‚ğæ“¾‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®ƒXƒgƒAƒvƒƒoƒCƒ_
+     * @return éµã‚¹ãƒˆã‚¢ãƒ—ãƒ­ãƒã‚¤ãƒ€
      */
     public Provider getStoreProvider();
     
     /**
-     * Œ®ƒXƒgƒA‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password Œ®ƒXƒgƒA‚ÌƒpƒXƒ[ƒh
+     * @param password éµã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setStorePassword(String password);
     
     /**
-     * Œ®ƒXƒgƒA‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * éµã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®ƒXƒgƒA‚ÌƒpƒXƒ[ƒh
+     * @return éµã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getStorePassword();
     
     /**
-     * Œ®‚ÌƒGƒCƒŠƒAƒX‚ğİ’è‚·‚éB<p>
+     * éµã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param alias Œ®‚ÌƒGƒCƒŠƒAƒX
+     * @param alias éµã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹
      */
     public void setKeyAlias(String alias);
     
     /**
-     * Œ®‚ÌƒGƒCƒŠƒAƒX‚ğæ“¾‚·‚éB<p>
+     * éµã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®‚ÌƒGƒCƒŠƒAƒX
+     * @return éµã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹
      */
     public String getKeyAlias();
     
     /**
-     * Œ®‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password Œ®‚ÌƒpƒXƒ[ƒh
+     * @param password éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setKeyPassword(String password);
     
     /**
-     * Œ®‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ®‚ÌƒpƒXƒ[ƒh
+     * @return éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getKeyPassword();
     
     /**
-     * javax.crypto.Cipher‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒvƒƒoƒCƒ_‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.Cipherã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param p ƒvƒƒoƒCƒ_
+     * @param p ãƒ—ãƒ­ãƒã‚¤ãƒ€
      */
     public void setCipherProvider(Provider p);
     
     /**
-     * javax.crypto.Cipher‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.Cipherã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒoƒCƒ_
+     * @return ãƒ—ãƒ­ãƒã‚¤ãƒ€
      */
     public Provider getCipherProvider();
     
     /**
-     * javax.crypto.Cipher‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒvƒƒoƒCƒ_‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.Cipherã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param name ƒvƒƒoƒCƒ_–¼
+     * @param name ãƒ—ãƒ­ãƒã‚¤ãƒ€å
      */
     public void setCipherProviderName(String name);
     
     /**
-     * javax.crypto.Cipher‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_–¼‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.Cipherã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒoƒCƒ_–¼
+     * @return ãƒ—ãƒ­ãƒã‚¤ãƒ€å
      */
     public String getCipherProviderName();
     
     /**
-     * javax.crypto.Cipher‚Ì‰Šú‰»‚Ég—p‚·‚éƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.Cipherã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param params ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^
+     * @param params ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setAlgorithmParameters(AlgorithmParameters params);
     
     /**
-     * javax.crypto.Cipher‚Ì‰Šú‰»‚Ég—p‚·‚éƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.Cipherã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^
+     * @return ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public AlgorithmParameters getAlgorithmParameters();
     
     /**
-     * javax.crypto.Cipher‚Ì‰Šú‰»‚Ég—p‚·‚éƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.Cipherã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param params ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^
+     * @param params ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setAlgorithmParameterSpec(AlgorithmParameterSpec params);
     
     /**
-     * javax.crypto.Cipher‚Ì‰Šú‰»‚Ég—p‚·‚éƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.Cipherã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒ‹ƒSƒŠƒYƒ€ƒpƒ‰ƒ[ƒ^
+     * @return ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public AlgorithmParameterSpec getAlgorithmParameterSpec();
     
     /**
-     * javax.crypto.Cipher‚Ì‰Šú‰»‚Ég—p‚·‚é—””­¶Œ¹‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Ì—””­¶Œ¹‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.Cipherã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹ä¹±æ•°ç™ºç”Ÿæºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ä¹±æ•°ç™ºç”ŸæºãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param random —””­¶Œ¹
+     * @param random ä¹±æ•°ç™ºç”Ÿæº
      */
     public void setSecureRandom(SecureRandom random);
     
     /**
-     * javax.crypto.Cipher‚Ì‰Šú‰»‚Ég—p‚·‚é—””­¶Œ¹‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.Cipherã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹ä¹±æ•°ç™ºç”Ÿæºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —””­¶Œ¹
+     * @return ä¹±æ•°ç™ºç”Ÿæº
      */
     public SecureRandom getSecureRandom();
     
     /**
-     * •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ˆÃ†‰»‚·‚éÛ‚É•¶š—ñ‚©‚çƒoƒCƒg”z—ñ‚Ö‚Ì•ÏŠ·‚Ég—p‚·‚éB‚Ü‚½A•¡‡‰»‚·‚éÛ‚ÉƒoƒCƒg”z—ñ‚©‚ç•¶š—ñ‚Ö‚Ì•ÏŠ·‚Ég—p‚·‚éB<br>
-     * ‚Ü‚½AƒnƒbƒVƒ…‚·‚éÛ‚É•¶š—ñ‚©‚çƒoƒCƒg”z—ñ‚Ö‚Ì•ÏŠ·‚Ég—p‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_ENCODING}B<br>
+     * æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æš—å·åŒ–ã™ã‚‹éš›ã«æ–‡å­—åˆ—ã‹ã‚‰ãƒã‚¤ãƒˆé…åˆ—ã¸ã®å¤‰æ›ã«ä½¿ç”¨ã™ã‚‹ã€‚ã¾ãŸã€è¤‡åˆåŒ–ã™ã‚‹éš›ã«ãƒã‚¤ãƒˆé…åˆ—ã‹ã‚‰æ–‡å­—åˆ—ã¸ã®å¤‰æ›ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€ãƒãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã«æ–‡å­—åˆ—ã‹ã‚‰ãƒã‚¤ãƒˆé…åˆ—ã¸ã®å¤‰æ›ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_ENCODING}ã€‚<br>
      *
-     * @param enc •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param enc æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setEncoding(String enc);
     
     /**
-     * •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getEncoding();
     
     /**
-     * ƒnƒbƒVƒ…‚ÌƒAƒ‹ƒSƒŠƒYƒ€–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_HASH_ALGORITHM}B<br>
+     * ãƒãƒƒã‚·ãƒ¥ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_HASH_ALGORITHM}ã€‚<br>
      * 
-     * @param algorithm ƒnƒbƒVƒ…‚ÌƒAƒ‹ƒSƒŠƒYƒ€–¼
+     * @param algorithm ãƒãƒƒã‚·ãƒ¥ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ å
      */
     public void setHashAlgorithm(String algorithm);
     
     /**
-     * ƒnƒbƒVƒ…‚ÌƒAƒ‹ƒSƒŠƒYƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒnƒbƒVƒ…‚ÌƒAƒ‹ƒSƒŠƒYƒ€–¼
+     * @return ãƒãƒƒã‚·ãƒ¥ã®ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ å
      */
     public String getHashAlgorithm();
     
     /**
-     * javax.crypto.MessageDigest‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒvƒƒoƒCƒ_‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.MessageDigestã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param p ƒvƒƒoƒCƒ_
+     * @param p ãƒ—ãƒ­ãƒã‚¤ãƒ€
      */
     public void setMessageDigestProvider(Provider p);
     
     /**
-     * javax.crypto.MessageDigest‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.MessageDigestã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒoƒCƒ_
+     * @return ãƒ—ãƒ­ãƒã‚¤ãƒ€
      */
     public Provider getMessageDigestProvider();
     
     /**
-     * javax.crypto.MessageDigest‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒvƒƒoƒCƒ_‚ªg—p‚³‚ê‚Ü‚·B<br>
+     * javax.crypto.MessageDigestã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ãŒä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<br>
      *
-     * @param name ƒvƒƒoƒCƒ_–¼
+     * @param name ãƒ—ãƒ­ãƒã‚¤ãƒ€å
      */
     public void setMessageDigestProviderName(String name);
     
     /**
-     * javax.crypto.MessageDigest‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒoƒCƒ_–¼‚ğæ“¾‚·‚éB<p>
+     * javax.crypto.MessageDigestã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒoƒCƒ_–¼
+     * @return ãƒ—ãƒ­ãƒã‚¤ãƒ€å
      */
     public String getMessageDigestProviderName();
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
-     * {@link jp.ossc.nimbus.util.converter.ReversibleConverter ReversibleConverter}‚Æ‚µ‚Äg—p‚·‚éê‡‚Éİ’è‚·‚éB<br>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.util.converter.ReversibleConverter ReversibleConverter}ã¨ã—ã¦ä½¿ç”¨ã™ã‚‹å ´åˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param type •ÏŠ·í•Ê
-     * @see jp.ossc.nimbus.util.converter.ReversibleConverter#POSITIVE_CONVERT ˆÃ†‰»
-     * @see jp.ossc.nimbus.util.converter.ReversibleConverter#REVERSE_CONVERT •¡‡‰»
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @see jp.ossc.nimbus.util.converter.ReversibleConverter#POSITIVE_CONVERT æš—å·åŒ–
+     * @see jp.ossc.nimbus.util.converter.ReversibleConverter#REVERSE_CONVERT è¤‡åˆåŒ–
      */
     public void setConvertType(int type);
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      */
     public int getConvertType();
 }

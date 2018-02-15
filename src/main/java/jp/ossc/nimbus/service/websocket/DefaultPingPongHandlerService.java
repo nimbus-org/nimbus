@@ -58,7 +58,7 @@ import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 import jp.ossc.nimbus.service.queue.QueueHandlerContainerService;
 
 /**
- * Ping/PongƒƒbƒZ[ƒW‚Ì‘—óM‚ğs‚¤ƒT[ƒrƒX‚ÌFactoryƒT[ƒrƒXƒNƒ‰ƒXB
+ * Ping/Pongãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€å—ä¿¡ã‚’è¡Œã†ã‚µãƒ¼ãƒ“ã‚¹ã®Factoryã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -259,9 +259,9 @@ public class DefaultPingPongHandlerService extends ServiceFactoryServiceBase imp
     }
 
     /**
-     * Session‚ğPing/PongŠÇ—‘ÎÛ‚É’Ç‰Á‚·‚éB
+     * Sessionã‚’Ping/Pongç®¡ç†å¯¾è±¡ã«è¿½åŠ ã™ã‚‹ã€‚
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
      */
     protected void regist(Session session) {
         synchronized (lock) {
@@ -270,9 +270,9 @@ public class DefaultPingPongHandlerService extends ServiceFactoryServiceBase imp
     }
 
     /**
-     * Session‚ğPing/PongŠÇ—‘ÎÛ‚©‚çœŠO‚·‚éB
+     * Sessionã‚’Ping/Pongç®¡ç†å¯¾è±¡ã‹ã‚‰é™¤å¤–ã™ã‚‹ã€‚
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
      */
     protected void unregist(Session session) {
         synchronized (lock) {
@@ -294,7 +294,7 @@ public class DefaultPingPongHandlerService extends ServiceFactoryServiceBase imp
     public class DefaultKeepAliveHandlerService extends ServiceBase implements SessionMessageHandler, MessageHandler.Whole<PongMessage> {
 
         /**
-         * Websocket‚ÌSessionB
+         * Websocketã®Sessionã€‚
          * <p>
          */
         protected Session session;
@@ -325,7 +325,7 @@ public class DefaultPingPongHandlerService extends ServiceFactoryServiceBase imp
     }
 
     /**
-     * PingƒƒbƒZ[ƒW‚ğ”zM‚·‚éÛ‚Ég—p‚·‚éQueueHandlerƒNƒ‰ƒXB
+     * Pingãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é…ä¿¡ã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹QueueHandlerã‚¯ãƒ©ã‚¹ã€‚
      */
     protected class PingSendQueueHandler implements QueueHandler {
         @Override

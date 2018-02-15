@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMSSessionFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link JMSSessionFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see JMSSessionFactoryService
@@ -43,120 +43,120 @@ public interface JMSSessionFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * AcknowledgeMode�����̐ݒ�l ����ACK���[�h�B<p>
+     * AcknowledgeMode属性の設定値 自動ACKモード。<p>
      */
     public static final String AUTO_ACKNOWLEDGE = "AUTO_ACKNOWLEDGE";
     
     /**
-     * AcknowledgeMode�����̐ݒ�l �N���C�A���gACK���[�h�B<p>
+     * AcknowledgeMode属性の設定値 クライアントACKモード。<p>
      */
     public static final String CLIENT_ACKNOWLEDGE = "CLIENT_ACKNOWLEDGE";
     
     /**
-     * AcknowledgeMode�����̐ݒ�l �d�������e����ACK���[�h�B<p>
+     * AcknowledgeMode属性の設定値 重複を許容するACKモード。<p>
      */
     public static final String DUPS_OK_ACKNOWLEDGE = "DUPS_OK_ACKNOWLEDGE";
     
     /**
-     * ��������JMS�Z�b�V�������Ǘ����邩�ǂ�����ݒ肷��B<p>
-     * true��ݒ肵���ꍇ�A��������JMS�Z�b�V�����́A���̃T�[�r�X�ɂ���ĕێ�����Ă���A�T�[�r�X�̒�~�Ƌ���JMS�Z�b�V�����̏I���������s����B
-     * ���\�[�X�̊J���R���h�����߂̋@�\�ł���B<br>
-     * �f�t�H���g�́Afalse�B<br>
+     * 生成したJMSセッションを管理するかどうかを設定する。<p>
+     * trueを設定した場合、生成したJMSセッションは、このサービスによって保持されており、サービスの停止と共にJMSセッションの終了処理が行われる。
+     * リソースの開放漏れを防ぐための機能である。<br>
+     * デフォルトは、false。<br>
      *
-     * @param isManaged ��������JMS�Z�b�V�������Ǘ�����ꍇtrue
+     * @param isManaged 生成したJMSセッションを管理する場合true
      */
     public void setSessionManagement(boolean isManaged);
     
     /**
-     * ��������JMS�Z�b�V�������Ǘ����邩�ǂ����𔻒肷��B<p>
+     * 生成したJMSセッションを管理するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A��������JMS�Z�b�V�������Ǘ�����
+     * @return trueの場合、生成したJMSセッションを管理する
      */
     public boolean isSessionManagement();
     
     /**
-     * {@link JMSConnectionFactory}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * ConnectionCreate������true�̏ꍇ�A�T�[�r�X�̊J�n���ɁA�����Őݒ肳�ꂽJMSConnectionFactory�T�[�r�X���g���āAConnection�𐶐����ێ�����B<br>
+     * {@link JMSConnectionFactory}サービスのサービス名を設定する。<p>
+     * ConnectionCreate属性がtrueの場合、サービスの開始時に、ここで設定されたJMSConnectionFactoryサービスを使って、Connectionを生成し保持する。<br>
      *
-     * @param name JMSConnectionFactory�T�[�r�X�̃T�[�r�X��
+     * @param name JMSConnectionFactoryサービスのサービス名
      */
     public void setJMSConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link JMSConnectionFactory}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * {@link JMSConnectionFactory}サービスのサービス名を取得する。<p>
      *
-     * @return JMSConnectionFactory�T�[�r�X�̃T�[�r�X��
+     * @return JMSConnectionFactoryサービスのサービス名
      */
     public ServiceName getJMSConnectionFactoryServiceName();
     
     /**
-     * �T�[�r�X�̊J�n����Connection�𐶐����ĕێ����邩�ǂ�����ݒ肷��B<p>
-     * true��ݒ肷��ꍇ�AJMSConnectionFactoryServiceName������ݒ肵�Ȃ���΂Ȃ�Ȃ��B<br>
-     * �f�t�H���g�́Atrue�B<br>
+     * サービスの開始時にConnectionを生成して保持するかどうかを設定する。<p>
+     * trueを設定する場合、JMSConnectionFactoryServiceName属性を設定しなければならない。<br>
+     * デフォルトは、true。<br>
      *
-     * @param isCreate �T�[�r�X�̊J�n����Connection�𐶐����ĕێ�����ꍇtrue
+     * @param isCreate サービスの開始時にConnectionを生成して保持する場合true
      */
     public void setConnectionCreate(boolean isCreate);
     
     /**
-     * �T�[�r�X�̊J�n����Connection�𐶐����ĕێ����邩�ǂ����𔻒肷��B<p>
+     * サービスの開始時にConnectionを生成して保持するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�T�[�r�X�̊J�n����Connection�𐶐����ĕێ�����
+     * @return trueの場合、サービスの開始時にConnectionを生成して保持する
      */
     public boolean isConnectionCreate();
     
     /**
-     * Connection�̊J�n���������邩�ǂ�����ݒ肷��B<p>
-     * Connection��ێ�����ꍇ�́A�T�[�r�X�̊J�n���ɊJ�n���������邩�ǂ�����ݒ肷��B<br>
-     * Connection��ێ����Ȃ��ꍇ�́ASession�𐶐����鎞�ɊJ�n���������邩�ǂ�����ݒ肷��B<br>
-     * �f�t�H���g�́Afalse�B<br>
+     * Connectionの開始処理をするかどうかを設定する。<p>
+     * Connectionを保持する場合は、サービスの開始時に開始処理をするかどうかを設定する。<br>
+     * Connectionを保持しない場合は、Sessionを生成する時に開始処理をするかどうかを設定する。<br>
+     * デフォルトは、false。<br>
      *
-     * @param isStart Connection�̊J�n����������ꍇtrue
+     * @param isStart Connectionの開始処理をする場合true
      */
     public void setStartConnection(boolean isStart);
     
     /**
-     * Connection�̊J�n���������邩�ǂ����𔻒肷��B<p>
+     * Connectionの開始処理をするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�AConnection�̊J�n����������
+     * @return trueの場合、Connectionの開始処理をする
      */
     public boolean isStartConnection();
     
     /**
-     * �T�[�r�X�̒�~���ɕێ����Ă���Connection�̒�~���������邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの停止時に保持しているConnectionの停止処理をするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isStop �T�[�r�X�̒�~���ɕێ����Ă���Connection�̒�~����������ꍇtrue
+     * @param isStop サービスの停止時に保持しているConnectionの停止処理をする場合true
      */
     public void setStopConnection(boolean isStop);
     
     /**
-     * �T�[�r�X�̒�~���ɕێ����Ă���Connection�̒�~���������邩�ǂ����𔻒肷��B<p>
+     * サービスの停止時に保持しているConnectionの停止処理をするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�T�[�r�X�̒�~���ɕێ����Ă���Connection�̒�~����������
+     * @return trueの場合、サービスの停止時に保持しているConnectionの停止処理をする
      */
     public boolean isStopConnection();
     
     /**
-     * �T�[�r�X�̒�~���ɕێ����Ă���Connection�̃N���[�Y���������邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの停止時に保持しているConnectionのクローズ処理をするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isClose �T�[�r�X�̒�~���ɕێ����Ă���Connection�̃N���[�Y����������ꍇtrue
+     * @param isClose サービスの停止時に保持しているConnectionのクローズ処理をする場合true
      */
     public void setCloseConnection(boolean isClose);
     
     /**
-     * �T�[�r�X�̒�~���ɕێ����Ă���Connection�̃N���[�Y���������邩�ǂ����𔻒肷��B<p>
+     * サービスの停止時に保持しているConnectionのクローズ処理をするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�T�[�r�X�̒�~���ɕێ����Ă���Connection�̃N���[�Y����������
+     * @return trueの場合、サービスの停止時に保持しているConnectionのクローズ処理をする
      */
     public boolean isCloseConnection();
     
     /**
-     * MessageConsumer��JMS�N���C�A���g�����b�Z�[�W����M��������ACK�̕Ԃ����̃��[�h��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link #AUTO_ACKNOWLEDGE}�B<br>
+     * MessageConsumerやJMSクライアントがメッセージを受信した時のACKの返し方のモードを設定する。<p>
+     * デフォルトは、{@link #AUTO_ACKNOWLEDGE}。<br>
      *
-     * @param mode ACK�̕Ԃ����̃��[�h������
+     * @param mode ACKの返し方のモード文字列
      * @see #AUTO_ACKNOWLEDGE
      * @see #CLIENT_ACKNOWLEDGE
      * @see #DUPS_OK_ACKNOWLEDGE
@@ -164,24 +164,24 @@ public interface JMSSessionFactoryServiceMBean
     public void setAcknowledgeMode(String mode);
     
     /**
-     * MessageConsumer��JMS�N���C�A���g�����b�Z�[�W����M��������ACK�̕Ԃ����̃��[�h���擾����B<p>
+     * MessageConsumerやJMSクライアントがメッセージを受信した時のACKの返し方のモードを取得する。<p>
      *
-     * @return ACK�̕Ԃ����̃��[�h������
+     * @return ACKの返し方のモード文字列
      */
     public String getAcknowledgeMode();
     
     /**
-     * �g�����U�N�V�������T�|�[�g���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * トランザクションをサポートするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isTransacted �g�����U�N�V�������T�|�[�g����ꍇ�Atrue
+     * @param isTransacted トランザクションをサポートする場合、true
      */
     public void setTransactionMode(boolean isTransacted);
     
     /**
-     * �g�����U�N�V�������T�|�[�g���邩�ǂ����𔻒肷��B<p>
+     * トランザクションをサポートするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�g�����U�N�V�������T�|�[�g����
+     * @return trueの場合、トランザクションをサポートする
      */
     public boolean getTransactionMode();
 }

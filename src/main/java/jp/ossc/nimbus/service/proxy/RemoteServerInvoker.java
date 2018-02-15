@@ -37,33 +37,33 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * �����[�g�Ăяo���T�[�oInvoker�B<p>
- * �����[�g�T�[�o���ŁA�T�[�r�X�̃v���L�V�ƂȂ郊���[�g�I�u�W�F�N�g���������ׂ��C���^�t�F�[�X�ł���B<br>
+ * リモート呼び出しサーバInvoker。<p>
+ * リモートサーバ側で、サービスのプロキシとなるリモートオブジェクトが実装すべきインタフェースである。<br>
  *
  * @author M.Takata
  */
 public interface RemoteServerInvoker extends Remote{
     
     /**
-     * �����[�g�T�[�o���̃v���L�V�������s���B<p>
+     * リモートサーバ側のプロキシ処理を行う。<p>
      * 
-     * @param context �Ăяo���R���e�L�X�g
-     * @return �T�[�r�X�̌Ăяo������
-     * @exception Exception �v���L�V�����Ɏ��s�����ꍇ
+     * @param context 呼び出しコンテキスト
+     * @return サービスの呼び出し結果
+     * @exception Exception プロキシ処理に失敗した場合
      */
     public Object invoke(InvocationContext context) throws Exception;
     
     /**
-     * �w�肳�ꂽ�T�[�r�X���������Ă��邩�ǂ����𔻒肷��B<p>
+     * 指定されたサービスが生存しているかどうかを判定する。<p>
      * 
-     * @return �������Ă���ꍇtrue
+     * @return 生存している場合true
      */
     public boolean isAlive(ServiceName name) throws Exception;
     
     /**
-     * �p�t�H�[�}���X�Ɋւ�郊�\�[�X�̗��p�ʂ��擾����B<p>
+     * パフォーマンスに関わるリソースの利用量を取得する。<p>
      *
-     * @return ���\�[�X���p��
+     * @return リソース利用量
      */
     public Comparable getResourceUsage() throws java.rmi.RemoteException;
 }

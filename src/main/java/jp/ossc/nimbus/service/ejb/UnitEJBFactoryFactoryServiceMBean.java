@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.ejb;
 
 /**
- * {@link UnitEJBFactoryFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link UnitEJBFactoryFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see UnitEJBFactoryFactoryService
@@ -41,87 +41,87 @@ public interface UnitEJBFactoryFactoryServiceMBean
  extends InvocationEJBFactoryFactoryServiceMBean{
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðŽæ“¾‚·‚éB<p>
-     * Ý’è‚³‚ê‚Ä‚È‚¢ê‡‚ÍAjavax.ejb.EJBHome‚ð•Ô‚·B
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ãªã„å ´åˆã¯ã€javax.ejb.EJBHomeã‚’è¿”ã™ã€‚
      *
-     * @return EJBHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @return EJBHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #setHomeType(String)
      */
     public String getHomeType();
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðÝ’è‚·‚éB<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className EJBHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @param className EJBHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #getHomeType()
      */
     public void setHomeType(String className);
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBLocalHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðŽæ“¾‚·‚éB<p>
-     * Ý’è‚³‚ê‚Ä‚È‚¢ê‡‚ÍAjavax.ejb.EJBLocalHome‚ð•Ô‚·B
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBLocalHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ãªã„å ´åˆã¯ã€javax.ejb.EJBLocalHomeã‚’è¿”ã™ã€‚
      *
-     * @return EJBLocalHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @return EJBLocalHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #setLocalHomeType(String)
      */
     public String getLocalHomeType();
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBLocalHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðÝ’è‚·‚éB<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBLocalHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className EJBLocalHome‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @param className EJBLocalHomeã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #getLocalHomeType()
      */
     public void setLocalHomeType(String className);
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðŽæ“¾‚·‚éB<p>
-     * Ý’è‚³‚ê‚Ä‚È‚¢ê‡‚ÍAjavax.ejb.EJBObject‚ð•Ô‚·B
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ãªã„å ´åˆã¯ã€javax.ejb.EJBObjectã‚’è¿”ã™ã€‚
      *
-     * @return EJBObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @return EJBObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #setRemoteType(String)
      */
     public String getRemoteType();
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðÝ’è‚·‚éB<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className EJBObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @param className EJBObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #getRemoteType()
      */
     public void setRemoteType(String className);
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBLocalObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðŽæ“¾‚·‚éB<p>
-     * Ý’è‚³‚ê‚Ä‚È‚¢ê‡‚ÍAjavax.ejb.EJBLocalObject‚ð•Ô‚·B
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBLocalObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ãªã„å ´åˆã¯ã€javax.ejb.EJBLocalObjectã‚’è¿”ã™ã€‚
      *
-     * @return EJBObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @return EJBObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #setLocalType(String)
      */
     public String getLocalType();
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBLocalObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ðÝ’è‚·‚éB<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBLocalObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className EJBLocalObject‚ÌŠ®‘SCüƒNƒ‰ƒX–¼
+     * @param className EJBLocalObjectã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å
      * @see #getLocalType()
      */
     public void setLocalType(String className);
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBHome‹y‚ÑEJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚É“n‚·ˆø”‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ð•¶Žš—ñ”z—ñ‚Æ‚µ‚ÄŽæ“¾‚·‚éB<p>
-     * Ý’è‚³‚ê‚Ä‚È‚¢ê‡‚ÍAnull‚ð•Ô‚·B
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBHomeåŠã³EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã™å¼•æ•°ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’æ–‡å­—åˆ—é…åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @return EJBHome‹y‚ÑEJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚É“n‚·ˆø”‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚Ì•¶Žš—ñ”z—ñ
+     * @return EJBHomeåŠã³EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã™å¼•æ•°ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã®æ–‡å­—åˆ—é…åˆ—
      * @see #setCreateMethodParamTypes(String[])
      */
     public String[] getCreateMethodParamTypes();
     
     /**
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éEJB‚ÌEJBHome‹y‚ÑEJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚É“n‚·ˆø”‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚ð•¶Žš—ñ”z—ñ‚Æ‚µ‚ÄÝ’è‚·‚éB<p>
-     * ˆø”‚ª‚È‚¢ê‡‚ÍAÝ’è‚·‚é•K—v‚Í‚È‚¢B
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹EJBã®EJBHomeåŠã³EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã™å¼•æ•°ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã‚’æ–‡å­—åˆ—é…åˆ—ã¨ã—ã¦è¨­å®šã™ã‚‹ã€‚<p>
+     * å¼•æ•°ãŒãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚
      *
-     * @param params EJBHome‹y‚ÑEJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚É“n‚·ˆø”‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚Ì•¶Žš—ñ”z—ñ
+     * @param params EJBHomeåŠã³EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã™å¼•æ•°ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã®æ–‡å­—åˆ—é…åˆ—
      * @see #getCreateMethodParamTypes()
      */
     public void setCreateMethodParamTypes(String[] params);

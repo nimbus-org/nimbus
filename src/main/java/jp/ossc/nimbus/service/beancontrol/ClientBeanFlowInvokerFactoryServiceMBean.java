@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.beancontrol;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ClientBeanFlowInvokerFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ClientBeanFlowInvokerFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ClientBeanFlowInvokerFactoryService
@@ -44,89 +44,89 @@ public interface ClientBeanFlowInvokerFactoryServiceMBean extends ServiceBaseMBe
     public static final String MSG_ID_ASYNCH_INVOKE_ERROR = "CBFI_00001";
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link BeanFlowInvokerServer}‚ğƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚©‚çæ“¾‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link BeanFlowInvokerServer}ã‚’ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã‹ã‚‰å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @param key ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @return ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}‚Ì‘æ‚Rˆø”‚Éw’è‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}ã®ç¬¬ï¼“å¼•æ•°ã«æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}‚Ì‘æ‚Rˆø”‚Éw’è‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}ã®ç¬¬ï¼“å¼•æ•°ã«æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}‚Ì‘æ‚Rˆø”‚Éw’è‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğˆø‚«“n‚·B<br>
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}ã®ç¬¬ï¼“å¼•æ•°ã«æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å¼•ãæ¸¡ã™ã€‚<br>
      *
-     * @param keys ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[
+     * @param keys ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼
      */
     public void setContextKeys(String[] keys);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}‚Ì‘æ‚Rˆø”‚Éw’è‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}ã®ç¬¬ï¼“å¼•æ•°ã«æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼
      */
     public String[] getContextKeys();
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setAsynchInvokeQueueHandlerContainerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getAsynchInvokeQueueHandlerContainerServiceName();
     
     /**
-     * ”ñ“¯ŠúÀs‚Ì—v‹‚É¸”s‚µ‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #MSG_ID_ASYNCH_INVOKE_ERROR}B<br>
+     * éåŒæœŸå®Ÿè¡Œã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #MSG_ID_ASYNCH_INVOKE_ERROR}ã€‚<br>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setAsynchInvokeErrorMessageId(String id);
     
     /**
-     * ”ñ“¯ŠúÀs‚Ì—v‹‚É¸”s‚µ‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<br>
+     * éåŒæœŸå®Ÿè¡Œã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getAsynchInvokeErrorMessageId();
 }

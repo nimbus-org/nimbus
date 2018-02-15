@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^B<p>
+ * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,16 +44,16 @@ public class CustomStringConverter extends AbstractStringConverter{
     protected String[][] convertStrings;
     
     /**
-     * ‡•ûŒü•ÏŠ·‚·‚é‹ó‚ÌƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * é †æ–¹å‘å¤‰æ›ã™ã‚‹ç©ºã®ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CustomStringConverter(){
         this(POSITIVE_CONVERT);
     }
     
     /**
-     * ‹ó‚ÌƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      */
@@ -62,11 +62,11 @@ public class CustomStringConverter extends AbstractStringConverter{
     }
     
     /**
-     * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromStrs •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      */
@@ -76,11 +76,11 @@ public class CustomStringConverter extends AbstractStringConverter{
     }
     
     /**
-     * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromChars •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toChars •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromChars å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toChars å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      */
@@ -90,13 +90,13 @@ public class CustomStringConverter extends AbstractStringConverter{
     }
     
     /**
-     * ƒJƒXƒ^ƒ€•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param fromStrs •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @param fromChars •ÏŠ·Œã•¶š—ñ”z—ñ
-     * @param toChars •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param fromStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @param fromChars å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
+     * @param toChars å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
      * @see ReversibleConverter#POSITIVE_CONVERT
      * @see ReversibleConverter#REVERSE_CONVERT
      */
@@ -113,10 +113,10 @@ public class CustomStringConverter extends AbstractStringConverter{
     }
     
     /**
-     * •ÏŠ·•¶š—ñ”z—ñ‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param fromStrs •ÏŠ·‘ÎÛ•¶š—ñ”z—ñ
-     * @param toStrs •ÏŠ·Œã•¶š—ñ”z—ñ
+     * @param fromStrs å¤‰æ›å¯¾è±¡æ–‡å­—åˆ—é…åˆ—
+     * @param toStrs å¤‰æ›å¾Œæ–‡å­—åˆ—é…åˆ—
      */
     public void setConvertStrings(String[] fromStrs, String[] toStrs){
         if(toStrs == null && fromStrs == null){
@@ -137,10 +137,10 @@ public class CustomStringConverter extends AbstractStringConverter{
     }
     
     /**
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param fromChars •ÏŠ·‘ÎÛ•¶š”z—ñ
-     * @param toChars •ÏŠ·Œã•¶š”z—ñ
+     * @param fromChars å¤‰æ›å¯¾è±¡æ–‡å­—é…åˆ—
+     * @param toChars å¤‰æ›å¾Œæ–‡å­—é…åˆ—
      */
     public void setConvertChars(char[] fromChars, char[] toChars){
         if(toChars == null && fromChars == null){
@@ -158,18 +158,18 @@ public class CustomStringConverter extends AbstractStringConverter{
     }
     
     /**
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @return å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      */
     protected char[][] getConvertChars(){
         return convertChars;
     }
     
     /**
-     * •ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·•¶š—ñ”z—ñ
+     * @return å¤‰æ›æ–‡å­—åˆ—é…åˆ—
      */
     protected String[][] getConvertStrings(){
         return convertStrings;

@@ -44,7 +44,7 @@ import javax.mail.internet.*;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/09 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/09 -ã€€H.Nakano
  */
 public class SimpleMailSenderFactoryService
 	extends ServiceBase
@@ -54,11 +54,11 @@ public class SimpleMailSenderFactoryService
 	
     private static final long serialVersionUID = 8050150448734670282L;
     
-    //## ‘®«			##
-	// ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌéŒ¾
-	/** ƒ‰ƒEƒ“ƒhƒƒrƒ“		*/	
+    //## å±æ€§			##
+	// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å®£è¨€
+	/** ãƒ©ã‚¦ãƒ³ãƒ‰ãƒ­ãƒ“ãƒ³		*/	
 	protected boolean mIsRoundrobin = false;
-	/** ‘—MƒT[ƒoƒŠƒXƒg		*/	
+	/** é€ä¿¡ã‚µãƒ¼ãƒãƒªã‚¹ãƒˆ		*/	
 	protected Set mCheckerNameHash ;
 	/** Return-Path			*/	
 	protected String mReturnPath = null;
@@ -72,30 +72,30 @@ public class SimpleMailSenderFactoryService
 	protected String mTransferEncoding = null;
 	/** Content-Tyep		*/	
 	protected String mContentType = null;
-	/** ƒGƒ“ƒR[ƒfƒBƒ“ƒO		*/	
+	/** ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°		*/	
 	protected String mEncoding = null;
-	/** ‘—M—}~ƒ‚[ƒh		*/	
+	/** é€ä¿¡æŠ‘æ­¢ãƒ¢ãƒ¼ãƒ‰		*/	
 	protected boolean mNotSendAnywhere = false;
-	/** ‘—M—}~ƒ‚[ƒh		*/	
+	/** é€ä¿¡æŠ‘æ­¢ãƒ¢ãƒ¼ãƒ‰		*/	
 	protected String mSendingTo = null;
-	/** Å‘åƒŠƒgƒ‰ƒC‰ñ”		*/	
+	/** æœ€å¤§ãƒªãƒˆãƒ©ã‚¤å›æ•°		*/	
 	protected volatile int mRetryMax = 10;
-	/** ƒŠƒgƒ‰ƒCŠÔŠu(ƒ~ƒŠ•b)	*/	
+	/** ãƒªãƒˆãƒ©ã‚¤é–“éš”(ãƒŸãƒªç§’)	*/	
 	protected volatile long mRetryInterval = 500;
-	/** ƒRƒlƒNƒVƒ‡ƒ“ƒ^ƒCƒ€ƒAƒEƒg(ƒ~ƒŠ•b)	*/	
+	/** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ(ãƒŸãƒªç§’)	*/	
 	protected String mConnectionTimeOut = null;
-	/** ‘—Mƒ^ƒCƒ€ƒAƒEƒg(ƒ~ƒŠ•b)	*/	
+	/** é€ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ(ãƒŸãƒªç§’)	*/	
 	protected String mSendTimeOut = null;
-	/** KeepAliveServer–¼			*/	
+	/** KeepAliveServerå			*/	
 	protected ServiceName mKeepAliveServiceName = null; 
-	/** ƒ[ƒ‹ƒZƒ“ƒ_ƒNƒ‰ƒX–¼			*/	
+	/** ãƒ¡ãƒ¼ãƒ«ã‚»ãƒ³ãƒ€ã‚¯ãƒ©ã‚¹å			*/	
 	protected String mClassName = null; 
-	/** •¶š—ñ•ÏŠ·ƒŠƒXƒg@*/
+	/** æ–‡å­—åˆ—å¤‰æ›ãƒªã‚¹ãƒˆã€€*/
 	protected String mConvertString = null ; 
 	protected List mConvertStringList = null ;
 	protected ServiceName mLoggerName = null; 
 	protected Logger mLogger = null; 
-	/** ƒL[ƒvƒAƒ‰ƒCƒuƒT[ƒrƒX */
+	/** ã‚­ãƒ¼ãƒ—ã‚¢ãƒ©ã‚¤ãƒ–ã‚µãƒ¼ãƒ“ã‚¹ */
 	QueryKeepAlive mKeepAlive = null ;
 	static protected final String C_HOST_PROP_KRY = "mail.smtp.host" ; //$NON-NLS-1$
 	static protected final String C_CAMMA = "," ; //$NON-NLS-1$
@@ -123,7 +123,7 @@ public class SimpleMailSenderFactoryService
 			mReturnPath = returnPath ;
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.mail.SimpleMailSenderFactoryServiceMBean#setMailSenderClassName(java.lang.String)
 	 */
 	public void setMailSenderClassName(String clsName) {
@@ -131,14 +131,14 @@ public class SimpleMailSenderFactoryService
 	}
 
     /**
-     * Logger‚ğİ’è‚·‚éB
+     * Loggerã‚’è¨­å®šã™ã‚‹ã€‚
      */
 	public void setLogger(Logger logger) {
         mLogger = logger;
     }
     
     /**
-     * QueryKeepAlive‚ğİ’è‚·‚éB
+     * QueryKeepAliveã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setKeepAlive(QueryKeepAlive keepAlive) {
         mKeepAlive = keepAlive;
@@ -375,7 +375,7 @@ public class SimpleMailSenderFactoryService
 			if (mRetryMax < retryCount) {
 				break ;
 			}
-			//ƒT[ƒoƒŠƒXƒgæ“¾
+			//ã‚µãƒ¼ãƒãƒªã‚¹ãƒˆå–å¾—
 			List serverList = null ;
 			synchronized(this.mCheckerNameHash){
 				if(this.mIsRoundrobin){
@@ -393,7 +393,7 @@ public class SimpleMailSenderFactoryService
 				}	
 			}
 			for (int cnt = 0; cnt < serverList.size(); cnt++) {
-				// ‘—MƒT[ƒoî•ñæ“¾
+				// é€ä¿¡ã‚µãƒ¼ãƒæƒ…å ±å–å¾—
                 SmtpKeepAliveChecker info = null;
                 Object value = serverList.get(cnt);
                 if (value instanceof ServiceName) {
@@ -402,7 +402,7 @@ public class SimpleMailSenderFactoryService
                 }else if(value instanceof SmtpKeepAliveChecker) {
                     info = (SmtpKeepAliveChecker)value;
                 }
-				// ‘—M
+				// é€ä¿¡
 				try{
 					ret = send(info,op);
 				}catch(MessagingException e){
@@ -446,7 +446,7 @@ public class SimpleMailSenderFactoryService
 	}
 	//
 	/**
-	 *	ˆ¶æ•¶š—ñ‚ğ‚Pˆ¶æ–ˆ‚Ì”z—ñ‚É‚µ‚Ä•Ô‚·B
+	 *	å®›å…ˆæ–‡å­—åˆ—ã‚’ï¼‘å®›å…ˆæ¯ã®é…åˆ—ã«ã—ã¦è¿”ã™ã€‚
 	 */
 	protected String[] toArrayOfTo(String toStr) {
 		ArrayList list = new ArrayList();
@@ -470,10 +470,10 @@ public class SimpleMailSenderFactoryService
 	}
 	//
 	/**
-	 *	‘—M
+	 *	é€ä¿¡
 	 */
 	protected boolean send(SmtpKeepAliveChecker info,MailSenderOperator op) throws MessagingException {
-		// ƒZƒbƒVƒ‡ƒ“æ“¾
+		// ã‚»ãƒƒã‚·ãƒ§ãƒ³å–å¾—
 		String host = info.getHostIp();
 		Properties props = new Properties();
 		props.put(C_HOST_PROP_KRY, host);
@@ -484,12 +484,12 @@ public class SimpleMailSenderFactoryService
 			props.put(C_SENDTIMEOUT_PROP_KEY, this.mSendTimeOut);
 		}
 		Session session = Session.getInstance(props);
-		// ƒƒbƒZ[ƒWì¬
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä½œæˆ
 		MimeMessage msg = new MimeMessage(session);
 		try {
 			CsvArrayList ps = new CsvArrayList();
 			int num = ps.split(op.getFrom(),C_SEMICOLON) ;
-			// ‘—MæE‘—MŒ³
+			// é€ä¿¡å…ˆãƒ»é€ä¿¡å…ƒ
 			if (!mNotSendAnywhere) {		
 				if(num<2){
 					msg.setFrom(new InternetAddress(op.getFrom()));
@@ -504,12 +504,12 @@ public class SimpleMailSenderFactoryService
 				msg.setFrom(new InternetAddress(this.mSendingTo));
 				msg.addRecipient(Message.RecipientType.TO, new InternetAddress(mSendingTo));
 			}
-			// Œ–¼E–{•¶
+			// ä»¶åãƒ»æœ¬æ–‡
 			msg.setSubject(op.getSubject(),mEncoding);
 			String body = convBody(op.getBody());
 			msg.setText(body,mEncoding);
 
-			// ƒwƒbƒ_[î•ñ
+			// ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±
 			Address[] replyTo = new Address[1];
 			replyTo[0] = new InternetAddress(mReplyTo);
 			msg.setReplyTo(replyTo);
@@ -519,7 +519,7 @@ public class SimpleMailSenderFactoryService
 			msg.setHeader(C_HEADER_CONTENT_TYPE, contentType);
 			msg.setHeader(C_HEADER_TRANCEFER_ENCODE, mTransferEncoding);
 			msg.setSentDate(new Date()) ;
-			//MimeVersion‚Í”CˆÓ€–Ú
+			//MimeVersionã¯ä»»æ„é …ç›®
 			if(mMimeVersion != null){
 				msg.addHeader(C_HEADER_MIME_VERSION, mMimeVersion);
 			}
@@ -534,7 +534,7 @@ public class SimpleMailSenderFactoryService
 			}
 			throw new ServiceException("MAILSENDER201","MailSend Environment invalid " ,ex); //$NON-NLS-1$ //$NON-NLS-2$
 		}
-		// ‘—M
+		// é€ä¿¡
 		Transport.send(msg);
 		if(this.mLogger != null){
 			this.mLogger.write("MAIL000005") ;
@@ -567,13 +567,13 @@ public class SimpleMailSenderFactoryService
 		ret.setFactory(this) ;
 		return (MailSender)ret ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.mail.SimpleMailSenderFactoryServiceMBean#setConvertString(java.lang.String)
 	 */
 	public void setConvertString(String cnvStr) {
 		mConvertString = cnvStr ; 
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.mail.SimpleMailSenderFactoryServiceMBean#setLoggerServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setLoggerServiceName(ServiceName name) {

@@ -37,7 +37,7 @@ import java.io.IOException;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link MSProjectTestReporterService}のMBeanインタフェース<p>
+ * {@link MSProjectTestReporterService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see MSProjectTestReporterService

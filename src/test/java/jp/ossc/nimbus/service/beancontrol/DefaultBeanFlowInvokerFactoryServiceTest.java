@@ -37,7 +37,7 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 import junit.framework.TestCase;
 
 /**
- * DefaultBeanFlowInvokerFactoryService‚ÌƒeƒXƒgƒP[ƒXB<p/>
+ * DefaultBeanFlowInvokerFactoryServiceã®ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€‚<p/>
  * 
  * @version $Name$
  * @author T.Okada
@@ -64,7 +64,7 @@ public class DefaultBeanFlowInvokerFactoryServiceTest extends TestCase {
     }
     
     /**
-     * DefaultBeanFlowInvokerFactoryService#createFlow()‚ğŒŸ¸‚·‚éB
+     * DefaultBeanFlowInvokerFactoryService#createFlow()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
      */
     public void testCreateFlow() {
         try {
@@ -82,8 +82,8 @@ public class DefaultBeanFlowInvokerFactoryServiceTest extends TestCase {
     }
     
     /**
-     * DefaultBeanFlowInvokerFactoryService#createFlow()‚ğŒŸ¸‚·‚éB
-     * DIŒ`®‚É‚æ‚éƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚ŞB
+     * DefaultBeanFlowInvokerFactoryService#createFlow()ã‚’æ¤œæŸ»ã™ã‚‹ã€‚
+     * DIå½¢å¼ã«ã‚ˆã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã‚€ã€‚
      */
     public void testCreateFlow_DI() {
         try {

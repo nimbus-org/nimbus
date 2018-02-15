@@ -33,29 +33,29 @@
 package jp.ossc.nimbus.util;
 
 /**
-*	VB–½—ßƒGƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg
+*	VBå‘½ä»¤ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 *	@author		Hirotaka.Nakano
-*	@version	1.00 ì¬F2001.04.04 | H.Nakano<BR>
-*				XVF
+*	@version	1.00 ä½œæˆï¼š2001.04.04 ï¼ H.Nakano<BR>
+*				æ›´æ–°ï¼š
 */
 public class RuntimeOperator {
 	public static final int C_NOAP = -10000 ;
 	public static final String C_SPACE = " " ; //$NON-NLS-1$
 	/**
-	 *	I—¹‘Ò‚¿EXECƒƒ\ƒbƒh<br>
-	 *	@return		int					ÀsŒ‹‰Ê
-	 *	@param		cmdLine				ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“•¶š—ñ
+	 *	çµ‚äº†å¾…ã¡EXECãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	@return		int					å®Ÿè¡Œçµæœ
+	 *	@param		cmdLine				ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³æ–‡å­—åˆ—
 	 */
 	public static int shellWait(String cmdLine){
-		//## ƒ[ƒJƒ‹éŒ¾ ##
+		//## ãƒ­ãƒ¼ã‚«ãƒ«å®£è¨€ ##
 		int	intRet;
 		Process procVM = null;
 		Runtime rtEnv = Runtime.getRuntime();
-		//== ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“•¶š”z—ñ‰» ==
+		//== ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³æ–‡å­—é…åˆ—åŒ– ==
 		CsvArrayList perse = new CsvArrayList() ;
 		perse.split(cmdLine,C_SPACE) ;
 		String[] commands = perse.toStringAry();
-		//## ExeÀs ##
+		//## Exeå®Ÿè¡Œ ##
 		try {
 			procVM = rtEnv.exec(commands);
 			intRet	= procVM.waitFor();
@@ -66,18 +66,18 @@ public class RuntimeOperator {
 	}
 	//
 	/**
-	 *	‘¦I—¹EXECƒƒ\ƒbƒh<br>
-	 *	@return		boolean				true ³íI—¹ false ˆÙíI—¹
-	 *	@param		cmdLine				ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“•¶š—ñ
+	 *	å³æ™‚çµ‚äº†EXECãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	@return		boolean				true æ­£å¸¸çµ‚äº† false ç•°å¸¸çµ‚äº†
+	 *	@param		cmdLine				ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³æ–‡å­—åˆ—
 	 */
 	public static boolean shell(String cmdLine){
-		//## ƒ[ƒJƒ‹éŒ¾ ##
+		//## ãƒ­ãƒ¼ã‚«ãƒ«å®£è¨€ ##
 		Runtime rtEnv = Runtime.getRuntime();
-		//== ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“•¶š”z—ñ‰» ==
+		//== ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³æ–‡å­—é…åˆ—åŒ– ==
 		CsvArrayList perse = new CsvArrayList() ;
 		perse.split(cmdLine,C_SPACE) ;
 		String[] commands = perse.toStringAry();
-		//## ExeÀs ##
+		//## Exeå®Ÿè¡Œ ##
 		try {
 			rtEnv.exec(commands);
 		} catch(Exception e) {

@@ -32,62 +32,62 @@
 package jp.ossc.nimbus.service.aop;
 
 /**
- * �C���^�[�Z�v�^�`�F�[���B<p>
- * {@link #invokeNext(InvocationContext)}���Ăяo�����ŁA{@link InterceptorChainList}�ɓo�^���ꂽ{@link Interceptor}�������Ăяo���B<br>
- * �܂��A�S�Ă�Interceptor���Ăяo���ƁA�{���̌Ăяo������Ăяo��{@link Invoker}���Ăяo���B<br>
+ * インターセプタチェーン。<p>
+ * {@link #invokeNext(InvocationContext)}を呼び出す事で、{@link InterceptorChainList}に登録された{@link Interceptor}を順次呼び出す。<br>
+ * また、全てのInterceptorを呼び出すと、本来の呼び出し先を呼び出す{@link Invoker}を呼び出す。<br>
  *
  * @author M.Takata
  */
 public interface InterceptorChain{
     
     /**
-     * ���̃C���^�[�Z�v�^���Ăяo���B�Ō�̃C���^�Z�v�^���Ăяo������́A�{���̌Ăяo������Ăяo��{@link Invoker}���Ăяo���B<p>
+     * 次のインターセプタを呼び出す。最後のインタセプタを呼び出した後は、本来の呼び出し先を呼び出す{@link Invoker}を呼び出す。<p>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ
+     * @param context 呼び出しのコンテキスト情報
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合
      */
     public Object invokeNext(InvocationContext context) throws Throwable;
     
     /**
-     * ���݂̃C���^�[�Z�v�^�̂��̃C���^�[�Z�v�^�`�F�[����̃C���f�b�N�X���擾����B<p>
+     * 現在のインターセプタのこのインターセプタチェーン上のインデックスを取得する。<p>
      *
-     * @return ���݂̃C���^�[�Z�v�^�̂��̃C���^�[�Z�v�^�`�F�[����̃C���f�b�N�X
+     * @return 現在のインターセプタのこのインターセプタチェーン上のインデックス
      */
     public int getCurrentInterceptorIndex();
     
     /**
-     * ���݂̃C���^�[�Z�v�^�̂��̃C���^�[�Z�v�^�`�F�[����̃C���f�b�N�X��ݒ肷��B<p>
+     * 現在のインターセプタのこのインターセプタチェーン上のインデックスを設定する。<p>
      *
-     * @param index ���݂̃C���^�[�Z�v�^�̂��̃C���^�[�Z�v�^�`�F�[����̃C���f�b�N�X
+     * @param index 現在のインターセプタのこのインターセプタチェーン上のインデックス
      */
     public void setCurrentInterceptorIndex(int index);
     
     /**
-     * ���̃C���^�[�Z�v�^�`�F�[�������C���^�[�Z�v�^�̃��X�g���擾����B<p>
+     * このインターセプタチェーンが持つインターセプタのリストを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^�`�F�[�������C���^�[�Z�v�^�̃��X�g
+     * @return このインターセプタチェーンが持つインターセプタのリスト
      */
     public InterceptorChainList getInterceptorChainList();
     
     /**
-     * �Ō�̌Ăяo�����s��Invoker���擾����B<p>
+     * 最後の呼び出しを行うInvokerを取得する。<p>
      *
-     * @return �Ō�̌Ăяo�����s��Invoker
+     * @return 最後の呼び出しを行うInvoker
      */
     public Invoker getInvoker();
     
     /**
-     * �Ō�̌Ăяo�����s��Invoker��ݒ肷��B<p>
+     * 最後の呼び出しを行うInvokerを設定する。<p>
      *
-     * @param invoker �Ō�̌Ăяo�����s��Invoker
+     * @param invoker 最後の呼び出しを行うInvoker
      */
     public void setInvoker(Invoker invoker);
     
     /**
-     * ���̃C���X�^���X�̕��������B<p>
+     * このインスタンスの複製を作る。<p>
      *
-     * @return ����
+     * @return 複製
      */
     public InterceptorChain cloneChain();
 }

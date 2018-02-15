@@ -36,9 +36,9 @@ import java.util.*;
 import org.w3c.dom.*;
 
 /**
- * ƒT[ƒrƒX’è‹`ƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`‚ÌŠe—v‘f‚Ìƒƒ^ƒf[ƒ^‚ÌŠî’êƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * ƒT[ƒrƒX’è‹`‚ÌŠe—v‘f‚ÌŠî–{“I‹@”\‚ÆAXML‚ğƒp[ƒX‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒƒ\ƒbƒh‚ğ‚ÂB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®å„è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®å„è¦ç´ ã®åŸºæœ¬çš„æ©Ÿèƒ½ã¨ã€XMLã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -51,7 +51,7 @@ public abstract class MetaData implements Serializable, Cloneable{
     private static final String INDENT_STRING = "    ";
     
     /**
-     * ‚±‚Ìƒƒ^ƒf[ƒ^‚Ìe—v‘f‚Æ‚È‚éƒƒ^ƒf[ƒ^B<p>
+     * ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®è¦ªè¦ç´ ã¨ãªã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getParent()
      */
@@ -62,52 +62,52 @@ public abstract class MetaData implements Serializable, Cloneable{
     private IfDefMetaData ifdefData;
     
     /**
-     * e—v‘f‚ğ‚½‚È‚¢ƒƒ^ƒf[ƒ^‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã‚’æŒãŸãªã„ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public MetaData(){
     }
     
     /**
-     * e—v‘f‚ğ‚Âƒƒ^ƒf[ƒ^‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã‚’æŒã¤ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public MetaData(MetaData parent){
         this.parent = parent;
     }
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * e—v‘f‚ğ‚½‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¦ªè¦ç´ ã‚’æŒãŸãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      * 
-     * @return e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @return è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public MetaData getParent(){
         return parent;
     }
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setParent(MetaData parent){
         this.parent = parent;
     }
     
     /**
-     * ‚±‚Ì—v‘f‚É‘Î‚·‚éƒRƒƒ“ƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®è¦ç´ ã«å¯¾ã™ã‚‹ã‚³ãƒ¡ãƒ³ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param comment ƒRƒƒ“ƒg
+     * @param comment ã‚³ãƒ¡ãƒ³ãƒˆ
      */
     public void setComment(String comment){
         this.comment = comment;
     }
     
     /**
-     * ‚±‚Ì—v‘f‚É‘Î‚·‚éƒRƒƒ“ƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ ã«å¯¾ã™ã‚‹ã‚³ãƒ¡ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒƒ“ƒg
+     * @return ã‚³ãƒ¡ãƒ³ãƒˆ
      */
     public String getComment(){
         return comment;
@@ -122,19 +122,19 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * ‚±‚Ìƒƒ^ƒf[ƒ^‚ª•\‚·—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒè¡¨ã™è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element ‚±‚Ìƒƒ^ƒf[ƒ^‚ª•\‚·—v‘f‚ÌElement
-     * @exception DeploymentException —v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒè¡¨ã™è¦ç´ ã®Element
+     * @exception DeploymentException è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         comment = getElementComment(element);
     }
     
     /**
-     * ‚±‚Ìƒƒ^ƒf[ƒ^‚ª•\‚·—v‘f‚ğXMLŒ`®‚Åo—Í‚·‚éB<p>
+     * ã“ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ãŒè¡¨ã™è¦ç´ ã‚’XMLå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @return XMLŒ`®•¶š—ñ
+     * @return XMLå½¢å¼æ–‡å­—åˆ—
      */
     public StringBuilder toXML(StringBuilder buf){
         return buf;
@@ -161,31 +161,31 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñƒoƒbƒtƒ@‚ÉŠi”[‚³‚ê‚Ä‚¢‚é•¶š—ñ‚ğ1ƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹æ–‡å­—åˆ—ã‚’1ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param buf •¶š—ñƒoƒbƒtƒ@
-     * @return •¶š—ñƒoƒbƒtƒ@
+     * @param buf æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected StringBuilder addIndent(StringBuilder buf){
         return setIndent(buf, 1);
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ1ƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’1ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return •¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return æ–‡å­—åˆ—
      */
     protected String addIndent(String str){
         return setIndent(str, 1);
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñƒoƒbƒtƒ@‚ÉŠi”[‚³‚ê‚Ä‚¢‚é•¶š—ñ‚ğw’èƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param buf •¶š—ñƒoƒbƒtƒ@
-     * @param indent ƒCƒ“ƒfƒ“ƒg”
-     * @return •¶š—ñƒoƒbƒtƒ@
+     * @param buf æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @param indent ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ•°
+     * @return æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected StringBuilder setIndent(StringBuilder buf, int indent){
         final String str = buf.toString();
@@ -194,11 +194,11 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğw’èƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @param indent ƒCƒ“ƒfƒ“ƒg”
-     * @return •¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @param indent ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ•°
+     * @return æ–‡å­—åˆ—
      */
     protected String setIndent(String str, int indent){
         if(str == null){
@@ -226,13 +226,13 @@ public abstract class MetaData implements Serializable, Cloneable{
                 }
             }
         }catch(IOException e){
-            // ‹N‚«‚È‚¢‚Í‚¸
+            // èµ·ããªã„ã¯ãš
             e.printStackTrace();
         }finally{
             try{
                 br.close();
             }catch(IOException e){
-                // ‹N‚«‚È‚¢‚Í‚¸
+                // èµ·ããªã„ã¯ãš
                 e.printStackTrace();
             }
             sr.close();
@@ -241,11 +241,11 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAq—v‘f‚ÌŒJ‚è•Ô‚µˆ—‚ğ‚·‚é”½•œq‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½ŒŸõ‘ÎÛ‚Ìelement‚ªnull‚Ìê‡‚ÍAnull‚ğ•Ô‚·B‚Ü‚½Aq—v‘f‚ªAŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAŒJ‚è•Ô‚µ—v‘f‚ğ‚½‚È‚¢”½•œq‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€å­è¦ç´ ã®ç¹°ã‚Šè¿”ã—å‡¦ç†ã‚’ã™ã‚‹åå¾©å­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢å¯¾è±¡ã®elementãŒnullã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚ã¾ãŸã€å­è¦ç´ ãŒã€è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€ç¹°ã‚Šè¿”ã—è¦ç´ ã‚’æŒãŸãªã„åå¾©å­ã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @return q—v‘f‚ÌŒJ‚è•Ô‚µˆ—‚ğ‚·‚é”½•œq
+     * @param element è¦ç´ 
+     * @return å­è¦ç´ ã®ç¹°ã‚Šè¿”ã—å‡¦ç†ã‚’ã™ã‚‹åå¾©å­
      */
     public static Iterator getChildren(Element element){
         if(element == null){
@@ -265,12 +265,12 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ìq—v‘f‚ÌŒJ‚è•Ô‚µˆ—‚ğ‚·‚é”½•œq‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½ŒŸõ‘ÎÛ‚Ìelement‚ªnull‚Ìê‡‚ÍAnull‚ğ•Ô‚·B‚Ü‚½Aw’è‚³‚ê‚½ŒŸõ‚·‚é—v‘f–¼tagName‚ªAŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAŒJ‚è•Ô‚µ—v‘f‚ğ‚½‚È‚¢”½•œq‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ ã®ç¹°ã‚Šè¿”ã—å‡¦ç†ã‚’ã™ã‚‹åå¾©å­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢å¯¾è±¡ã®elementãŒnullã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢ã™ã‚‹è¦ç´ åtagNameãŒã€è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€ç¹°ã‚Šè¿”ã—è¦ç´ ã‚’æŒãŸãªã„åå¾©å­ã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagName —v‘f–¼
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f‚ÌŒJ‚è•Ô‚µˆ—‚ğ‚·‚é”½•œq
+     * @param element è¦ç´ 
+     * @param tagName è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ ã®ç¹°ã‚Šè¿”ã—å‡¦ç†ã‚’ã™ã‚‹åå¾©å­
      */
     public static Iterator getChildrenByTagName(
         Element element,
@@ -294,12 +294,12 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘OˆÈŠO‚Ìq—v‘f‚ÌŒJ‚è•Ô‚µˆ—‚ğ‚·‚é”½•œq‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½ŒŸõ‘ÎÛ‚Ìelement‚ªnull‚Ìê‡‚ÍAnull‚ğ•Ô‚·B‚Ü‚½Aw’è‚³‚ê‚½—v‘f–¼tagNameˆÈŠO‚Ì—v‘f‚ªAŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAŒJ‚è•Ô‚µ—v‘f‚ğ‚½‚È‚¢”½•œq‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ä»¥å¤–ã®å­è¦ç´ ã®ç¹°ã‚Šè¿”ã—å‡¦ç†ã‚’ã™ã‚‹åå¾©å­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸæ¤œç´¢å¯¾è±¡ã®elementãŒnullã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸè¦ç´ åtagNameä»¥å¤–ã®è¦ç´ ãŒã€è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€ç¹°ã‚Šè¿”ã—è¦ç´ ã‚’æŒãŸãªã„åå¾©å­ã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagNames œŠO‚·‚é—v‘f–¼
-     * @return w’è‚µ‚½–¼‘OˆÈŠO‚Ìq—v‘f‚ÌŒJ‚è•Ô‚µˆ—‚ğ‚·‚é”½•œq
+     * @param element è¦ç´ 
+     * @param tagNames é™¤å¤–ã™ã‚‹è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ä»¥å¤–ã®å­è¦ç´ ã®ç¹°ã‚Šè¿”ã—å‡¦ç†ã‚’ã™ã‚‹åå¾©å­
      */
     public static Iterator getChildrenWithoutTagName(
         Element element,
@@ -331,12 +331,12 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çA”CˆÓ‚Ì–¼‘O‚Ì—Bˆê•K{‚Ìq—v‘f‚ğæ“¾‚·‚éB<p>
-     * q—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB‚Ü‚½A’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚à—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€ä»»æ„ã®åå‰ã®å”¯ä¸€å¿…é ˆã®å­è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å­è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚ã¾ãŸã€å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã‚‚ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @return ”CˆÓ‚Ì—Bˆê‚Ìq—v‘f
-     * @exception DeploymentException q—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éA‚Ü‚½‚Í’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @param element è¦ç´ 
+     * @return ä»»æ„ã®å”¯ä¸€ã®å­è¦ç´ 
+     * @exception DeploymentException å­è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹ã€ã¾ãŸã¯å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆ
      */
     public static Element getUniqueChild(Element element)
      throws DeploymentException{
@@ -362,13 +362,13 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì—Bˆê•K{‚Ìq—v‘f‚ğæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB‚Ü‚½A’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚à—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å”¯ä¸€å¿…é ˆã®å­è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚ã¾ãŸã€å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã‚‚ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagName —v‘f–¼
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f
-     * @exception DeploymentException æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éA‚Ü‚½‚Í’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @param element è¦ç´ 
+     * @param tagName è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ 
+     * @exception DeploymentException å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹ã€ã¾ãŸã¯å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆ
      */
     public static Element getUniqueChild(Element element, String tagName)
      throws DeploymentException{
@@ -390,12 +390,12 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çA”CˆÓ‚Ì–¼‘O‚Ì—Bˆê‚Ìq—v‘f‚ğæ“¾‚·‚éB<p>
-     * q—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€ä»»æ„ã®åå‰ã®å”¯ä¸€ã®å­è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å­è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @return ”CˆÓ‚Ì—Bˆê‚Ìq—v‘f
-     * @exception DeploymentException q—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡
+     * @param element è¦ç´ 
+     * @return ä»»æ„ã®å”¯ä¸€ã®å­è¦ç´ 
+     * @exception DeploymentException å­è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆ
      */
     public static Element getOptionalChild(Element element)
      throws DeploymentException{
@@ -416,15 +416,15 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì—Bˆê‚Ìq—v‘f‚ğæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
-     * w’è‚µ‚½–¼‘O‚Ì—v‘f‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
-     * {@link #getOptionalChild(Element, String, Element)}‚ğAgetOptionalChild(element, tagName, null)‚ÅŒÄ‚Ño‚·‚Ì‚Æ“™‰¿‚Å‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å”¯ä¸€ã®å­è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * æŒ‡å®šã—ãŸåå‰ã®è¦ç´ ãŒå®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
+     * {@link #getOptionalChild(Element, String, Element)}ã‚’ã€getOptionalChild(element, tagName, null)ã§å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagName —v‘f–¼
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f
-     * @exception DeploymentException æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡
+     * @param element è¦ç´ 
+     * @param tagName è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ 
+     * @exception DeploymentException å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆ
      * @see #getOptionalChild(Element, String, Element)
      */
     public static Element getOptionalChild(Element element, String tagName)
@@ -433,15 +433,15 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì—Bˆê‚Ìq—v‘f‚ğæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
-     * w’è‚µ‚½–¼‘O‚Ì—v‘f‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAˆø”‚Åw’è‚³‚ê‚½defaultElement‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å”¯ä¸€ã®å­è¦ç´ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * æŒ‡å®šã—ãŸåå‰ã®è¦ç´ ãŒå®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸdefaultElementã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagName —v‘f–¼
-     * @param defaultElement ƒfƒtƒHƒ‹ƒg’l
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f
-     * @exception DeploymentException æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡
+     * @param element è¦ç´ 
+     * @param tagName è¦ç´ å
+     * @param defaultElement ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ 
+     * @exception DeploymentException å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆ
      */
     public static Element getOptionalChild(
         Element element,
@@ -464,12 +464,12 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚Ì“à—e‚ğæ“¾‚·‚éB<p>
-     * “à—e‚ª‹ó‚Ìê‡‚ÍA‹ó•¶š‚ğ•Ô‚·B<br>
-     * {@link #getElementContent(Element, String)}‚ğAgetElementContent(element,  null)‚ÅŒÄ‚Ño‚·‚Ì‚Æ“™‰¿‚Å‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã®å†…å®¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å†…å®¹ãŒç©ºã®å ´åˆã¯ã€ç©ºæ–‡å­—ã‚’è¿”ã™ã€‚<br>
+     * {@link #getElementContent(Element, String)}ã‚’ã€getElementContent(element,  null)ã§å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @return —v‘f‚Ì“à—e
+     * @param element è¦ç´ 
+     * @return è¦ç´ ã®å†…å®¹
      * @see #getElementContent(Element, String)
      */
     public static String getElementContent(Element element){
@@ -477,25 +477,25 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚Ì“à—e‚ğæ“¾‚·‚éB<p>
-     * “à—e‚ª‹ó‚Ìê‡‚ÍAˆø”‚Åw’è‚³‚ê‚½defaultStr‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã®å†…å®¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å†…å®¹ãŒç©ºã®å ´åˆã¯ã€å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸdefaultStrã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param defaultStr ƒfƒtƒHƒ‹ƒg’l
-     * @return —v‘f‚Ì“à—e
+     * @param element è¦ç´ 
+     * @param defaultStr ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
+     * @return è¦ç´ ã®å†…å®¹
      */
     public static String getElementContent(Element element, String defaultStr){
         return getElementContent(element, false, defaultStr);
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚Ì“à—e‚ğæ“¾‚·‚éB<p>
-     * “à—e‚ª‹ó‚Ìê‡‚ÍAˆø”‚Åw’è‚³‚ê‚½defaultStr‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã®å†…å®¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å†…å®¹ãŒç©ºã®å ´åˆã¯ã€å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸdefaultStrã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param isComment ƒRƒƒ“ƒg‚³‚ê‚½—v‘f‚Ì“à—e‚ğæ“¾‚·‚éê‡Atrue
-     * @param defaultStr ƒfƒtƒHƒ‹ƒg’l
-     * @return —v‘f‚Ì“à—e
+     * @param element è¦ç´ 
+     * @param isComment ã‚³ãƒ¡ãƒ³ãƒˆã•ã‚ŒãŸè¦ç´ ã®å†…å®¹ã‚’å–å¾—ã™ã‚‹å ´åˆã€true
+     * @param defaultStr ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
+     * @return è¦ç´ ã®å†…å®¹
      */
     public static String getElementContent(Element element, boolean isComment, String defaultStr){
         if(element == null){
@@ -519,7 +519,7 @@ public abstract class MetaData implements Serializable, Cloneable{
             }else{
                 switch(currentNode.getNodeType()){
                 case Node.COMMENT_NODE:
-                    // ƒRƒƒ“ƒg‚Í–³‹
+                    // ã‚³ãƒ¡ãƒ³ãƒˆã¯ç„¡è¦–
                     break;
                 case Node.TEXT_NODE:
                 case Node.CDATA_SECTION_NODE:
@@ -534,11 +534,11 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚ÌƒRƒƒ“ƒg‚ğæ“¾‚·‚éB<p>
-     * ƒRƒƒ“ƒg‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ¡ãƒ³ãƒˆãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @return —v‘f‚ÌƒRƒƒ“ƒg
+     * @param element è¦ç´ 
+     * @return è¦ç´ ã®ã‚³ãƒ¡ãƒ³ãƒˆ
      */
     public static String getElementComment(Element element){
         Node currentNode = element;
@@ -615,14 +615,14 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì—Bˆê•K{‚Ìq—v‘f‚ğæ“¾‚µA‚»‚Ì“à—e‚ğæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB‚Ü‚½A’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡‚à—áŠO‚ğthrow‚·‚éB<br>
-     * {@link #getUniqueChild(Element, String)}‚Åæ“¾‚µ‚½Element‚ğˆø”‚É‚µ‚ÄA{@link #getElementContent(Element)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“™‰¿‚Å‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å”¯ä¸€å¿…é ˆã®å­è¦ç´ ã‚’å–å¾—ã—ã€ãã®å†…å®¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚ã¾ãŸã€å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆã‚‚ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * {@link #getUniqueChild(Element, String)}ã§å–å¾—ã—ãŸElementã‚’å¼•æ•°ã«ã—ã¦ã€{@link #getElementContent(Element)}ã‚’å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagName —v‘f–¼
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f‚Ì“à—e
-     * @exception DeploymentException æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éA‚Ü‚½‚Í’è‹`‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @param element è¦ç´ 
+     * @param tagName è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ ã®å†…å®¹
+     * @exception DeploymentException å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹ã€ã¾ãŸã¯å®šç¾©ã•ã‚Œã¦ã„ãªã„å ´åˆ
      * @see #getUniqueChild(Element, String)
      * @see #getElementContent(Element)
      */
@@ -632,14 +632,14 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì—Bˆê‚Ìq—v‘f‚ğæ“¾‚µA‚»‚Ì“à—e‚ğæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
-     * {@link #getOptionalChild(Element, String)}‚Åæ“¾‚µ‚½Element‚ğˆø”‚É‚µ‚ÄA{@link #getElementContent(Element)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“™‰¿‚Å‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å”¯ä¸€ã®å­è¦ç´ ã‚’å–å¾—ã—ã€ãã®å†…å®¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * {@link #getOptionalChild(Element, String)}ã§å–å¾—ã—ãŸElementã‚’å¼•æ•°ã«ã—ã¦ã€{@link #getElementContent(Element)}ã‚’å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param tagName —v‘f–¼
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f‚Ì“à—e
-     * @exception DeploymentException æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡
+     * @param element è¦ç´ 
+     * @param tagName è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ ã®å†…å®¹
+     * @exception DeploymentException å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆ
      * @see #getOptionalChild(Element, String)
      * @see #getElementContent(Element)
      */
@@ -651,14 +651,14 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì—Bˆê‚Ìq—v‘f‚ğæ“¾‚µA‚»‚Ì“à—e‚ğboolean’l‚Æ‚µ‚Äæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
-     * “à—e‚Ì•¶š—ñ‚ªA"true"‚Ü‚½‚Í"yes"i‘å•¶š¬•¶š–³‹j‚Ìê‡Atrue‚Æ‚È‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å”¯ä¸€ã®å­è¦ç´ ã‚’å–å¾—ã—ã€ãã®å†…å®¹ã‚’booleanå€¤ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * å†…å®¹ã®æ–‡å­—åˆ—ãŒã€"true"ã¾ãŸã¯"yes"ï¼ˆå¤§æ–‡å­—å°æ–‡å­—ç„¡è¦–ï¼‰ã®å ´åˆã€trueã¨ãªã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param name —v‘f–¼
-     * @return w’è‚µ‚½–¼‘O‚Ìq—v‘f‚Ì“à—e‚ğboolean‚É•ÏŠ·‚µ‚½’l
-     * @exception DeploymentException æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡
+     * @param element è¦ç´ 
+     * @param name è¦ç´ å
+     * @return æŒ‡å®šã—ãŸåå‰ã®å­è¦ç´ ã®å†…å®¹ã‚’booleanã«å¤‰æ›ã—ãŸå€¤
+     * @exception DeploymentException å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆ
      */
      public static boolean getOptionalChildBooleanContent(
         Element element,
@@ -675,13 +675,13 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì•K{‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
-     * w’è‚µ‚½‘®«–¼‚Ì‘®«‚ª‘¶İ‚µ‚È‚¢ê‡A—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å¿…é ˆå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸå±æ€§åã®å±æ€§ãŒå­˜åœ¨ã—ãªã„å ´åˆã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param name ‘®«–¼
-     * @return ‘®«‚Ì’l
-     * @exception DeploymentException æ“¾‚µ‚½‚¢‘®«‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param element è¦ç´ 
+     * @param name å±æ€§å
+     * @return å±æ€§ã®å€¤
+     * @exception DeploymentException å–å¾—ã—ãŸã„å±æ€§ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     public static String getUniqueAttribute(Element element, String name)
      throws DeploymentException{
@@ -696,13 +696,13 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
-     * w’è‚µ‚½‘®«–¼‚Ì‘®«‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
-     * {@link #getOptionalAttribute(Element, String, String)}‚ğAgetOptionalAttribute(element, name, null)‚ÅŒÄ‚Ño‚·‚Ì‚Æ“™‰¿‚Å‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸå±æ€§åã®å±æ€§ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
+     * {@link #getOptionalAttribute(Element, String, String)}ã‚’ã€getOptionalAttribute(element, name, null)ã§å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param element —v‘f
-     * @param name ‘®«–¼
-     * @return ‘®«‚Ì’l
+     * @param element è¦ç´ 
+     * @param name å±æ€§å
+     * @return å±æ€§ã®å€¤
      * @see #getOptionalAttribute(Element, String, String)
      */
     public static String getOptionalAttribute(Element element, String name){
@@ -710,13 +710,13 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
-     * w’è‚µ‚½‘®«–¼‚Ì‘®«‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAˆø”‚Åw’è‚³‚ê‚½defaultStr‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸå±æ€§åã®å±æ€§ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸdefaultStrã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param name ‘®«–¼
-     * @param defaultStr ƒfƒtƒHƒ‹ƒg’l
-     * @return ‘®«‚Ì’l
+     * @param element è¦ç´ 
+     * @param name å±æ€§å
+     * @param defaultStr ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
+     * @return å±æ€§ã®å€¤
      */
     public static String getOptionalAttribute(
         Element element,
@@ -732,14 +732,14 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì‘®«‚Ì’l‚ğæ“¾‚µA‚»‚Ì“à—e‚ğboolean’l‚Æ‚µ‚Äæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
-     * “à—e‚Ì•¶š—ñ‚ªA"true"‚Ü‚½‚Í"yes"i‘å•¶š¬•¶š–³‹j‚Ìê‡Atrue‚Æ‚È‚éB<br>
-     * w’è‚µ‚½‘®«–¼‚Ì‘®«‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAfalse‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å±æ€§ã®å€¤ã‚’å–å¾—ã—ã€ãã®å†…å®¹ã‚’booleanå€¤ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * å†…å®¹ã®æ–‡å­—åˆ—ãŒã€"true"ã¾ãŸã¯"yes"ï¼ˆå¤§æ–‡å­—å°æ–‡å­—ç„¡è¦–ï¼‰ã®å ´åˆã€trueã¨ãªã‚‹ã€‚<br>
+     * æŒ‡å®šã—ãŸå±æ€§åã®å±æ€§ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€falseã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param name ‘®«–¼
-     * @return ‘®«‚Ì’l
+     * @param element è¦ç´ 
+     * @param name å±æ€§å
+     * @return å±æ€§ã®å€¤
      * @see #getOptionalAttribute(Element, String, String)
      */
     public static boolean getOptionalBooleanAttribute(
@@ -755,15 +755,15 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½—v‘f‚©‚çAw’è‚µ‚½–¼‘O‚Ì‘®«‚Ì’l‚ğæ“¾‚µA‚»‚Ì“à—e‚ğboolean’l‚Æ‚µ‚Äæ“¾‚·‚éB<p>
-     * æ“¾‚µ‚½‚¢—v‘f‚ª•¡”’è‹`‚µ‚Ä‚ ‚éê‡‚ÍA—áŠO‚ğthrow‚·‚éB<br>
-     * “à—e‚Ì•¶š—ñ‚ªA"true"‚Ü‚½‚Í"yes"i‘å•¶š¬•¶š–³‹j‚Ìê‡Atrue‚Æ‚È‚éB<br>
-     * w’è‚µ‚½‘®«–¼‚Ì‘®«‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAˆø”‚Åw’è‚³‚ê‚½defaultVal‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸè¦ç´ ã‹ã‚‰ã€æŒ‡å®šã—ãŸåå‰ã®å±æ€§ã®å€¤ã‚’å–å¾—ã—ã€ãã®å†…å®¹ã‚’booleanå€¤ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * å–å¾—ã—ãŸã„è¦ç´ ãŒè¤‡æ•°å®šç¾©ã—ã¦ã‚ã‚‹å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * å†…å®¹ã®æ–‡å­—åˆ—ãŒã€"true"ã¾ãŸã¯"yes"ï¼ˆå¤§æ–‡å­—å°æ–‡å­—ç„¡è¦–ï¼‰ã®å ´åˆã€trueã¨ãªã‚‹ã€‚<br>
+     * æŒ‡å®šã—ãŸå±æ€§åã®å±æ€§ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸdefaultValã‚’è¿”ã™ã€‚<br>
      *
-     * @param element —v‘f
-     * @param name ‘®«–¼
-     * @param defaultVal ƒfƒtƒHƒ‹ƒg’l
-     * @return ‘®«‚Ì’l
+     * @param element è¦ç´ 
+     * @param name å±æ€§å
+     * @param defaultVal ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
+     * @return å±æ€§ã®å€¤
      * @see #getOptionalAttribute(Element, String, String)
      */
     public static boolean getOptionalBooleanAttribute(
@@ -780,9 +780,9 @@ public abstract class MetaData implements Serializable, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¡»
+     * @return ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®è¤‡è£½
      */
     public Object clone(){
         Object clone = null;

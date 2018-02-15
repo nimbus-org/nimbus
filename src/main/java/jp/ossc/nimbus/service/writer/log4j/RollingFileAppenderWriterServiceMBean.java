@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer.log4j;
 
 /**
- * {@link RollingFileAppenderWriterService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link RollingFileAppenderWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -40,30 +40,30 @@ public interface RollingFileAppenderWriterServiceMBean
  extends FileAppenderWriterServiceMBean{
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌÅ‘åƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param maxFileSize ƒtƒ@ƒCƒ‹‚ÌÅ‘åƒTƒCƒY
+     * @param maxFileSize ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚º
      */
     public void setMaximumFileSize(long maxFileSize);
     
     /**
-     * ƒtƒ@ƒCƒ‹‚ÌÅ‘åƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒ@ƒCƒ‹‚ÌÅ‘åƒTƒCƒY
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚º
      */
     public long getMaximumFileSize();
     
     /**
-     * ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌÅ‘å”‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param maxBackups ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌÅ‘å”
+     * @param maxBackups ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§æ•°
      */
     public void setMaxBackupIndex(int maxBackups);
     
     /**
-     * ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌÅ‘å”‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌÅ‘å”
+     * @return ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§æ•°
      */
     public int getMaxBackupIndex();
 }

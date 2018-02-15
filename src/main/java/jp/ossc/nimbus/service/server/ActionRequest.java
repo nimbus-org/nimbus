@@ -41,11 +41,11 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒAƒNƒVƒ‡ƒ“w’èƒŠƒNƒGƒXƒgB<p>
- * “d•¶‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³æŒ‡å®šãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
+ * é›»æ–‡ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€
  * <pre>
- * [ƒAƒNƒVƒ‡ƒ“–¼•¶š—ñ]
- * [”CˆÓ‚Ìƒf[ƒ^]
+ * [ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åæ–‡å­—åˆ—]
+ * [ä»»æ„ã®ãƒ‡ãƒ¼ã‚¿]
  * </pre>
  *
  * @author M.Takata
@@ -86,9 +86,9 @@ public class ActionRequest extends Request{
     }
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒNƒVƒ‡ƒ“
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
      */
     public String getAction(){
         return action;

@@ -45,9 +45,9 @@ import jp.ossc.nimbus.service.repository.Repository;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒŠƒ‚[ƒgƒNƒ‰ƒCƒAƒ“ƒgƒƒ\ƒbƒhŒÄ‚Ño‚µInvokerB<p>
- * RMIŒo—R‚ÅAƒŠƒ‚[ƒgƒT[ƒoã‚ÌƒT[ƒrƒX‚ğŒÄ‚Ño‚·‚½‚ß‚ÌInvoker‚Å‚ ‚éB<br>
- * ƒŠƒ‚[ƒg‚ÌJNDIƒT[ƒo‚ÉA{@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½RMIƒIƒuƒWƒFƒNƒg‚ªƒoƒCƒ“ƒh‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B]‚Á‚ÄA{@link jp.ossc.nimbus.service.proxy.RemoteServiceServerService RemoteServiceServerService}‚ğƒŠƒ‚[ƒgƒT[ƒo‘¤‚ÉA’è‹`‚µ‚Ä‚¨‚­B<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—Invokerã€‚<p>
+ * RMIçµŒç”±ã§ã€ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒä¸Šã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®Invokerã§ã‚ã‚‹ã€‚<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆã®JNDIã‚µãƒ¼ãƒã«ã€{@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸRMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒãƒã‚¤ãƒ³ãƒ‰ã•ã‚Œã¦ã„ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚å¾“ã£ã¦ã€{@link jp.ossc.nimbus.service.proxy.RemoteServiceServerService RemoteServiceServerService}ã‚’ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒå´ã«ã€å®šç¾©ã—ã¦ãŠãã€‚<br>
  *
  * @author M.Takata
  */
@@ -67,64 +67,64 @@ public class RemoteClientMethodCallInvokerService extends ServiceBase
     private ServiceName externalizerServiceName;
     private Externalizer externalizer;
     
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
     
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setJndiRepositoryServiceName(ServiceName name){
         jndiRepositoryServiceName = name;
     }
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getJndiRepositoryServiceName(){
         return jndiRepositoryServiceName;
     }
     
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setRemoteServerJndiName(String name){
         jndiName = name;
     }
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public String getRemoteServerJndiName(){
         return jndiName;
     }
     
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setRemoteServiceName(ServiceName name){
         remoteServiceName = name;
     }
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getRemoteServiceName(){
         return remoteServiceName;
     }
     
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         externalizerServiceName = name;
     }
-    // RemoteClientMethodCallInvokerServiceMBean‚ÌJavaDoc
+    // RemoteClientMethodCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         return externalizerServiceName;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½RMIƒIƒuƒWƒFƒNƒg‚ğlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸRMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param jndiFinder JndiFinderƒT[ƒrƒX
+     * @param jndiFinder JndiFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiFinder(JndiFinder jndiFinder) {
         this.jndiFinder = jndiFinder;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½RMIƒIƒuƒWƒFƒNƒg‚ğlookup‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.RemoteServerInvoker RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸRMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’lookupã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param jndiRepository RepositoryƒT[ƒrƒX
+     * @param jndiRepository Repositoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiRepository(Repository jndiRepository) {
         this.jndiRepository = jndiRepository;
@@ -135,9 +135,9 @@ public class RemoteClientMethodCallInvokerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(jndiFinderServiceName != null){
@@ -161,11 +161,11 @@ public class RemoteClientMethodCallInvokerService extends ServiceBase
     }
     
     /**
-     * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½RMIƒIƒuƒWƒFƒNƒg‚ğŒÄ‚Ño‚·B<p>
+     * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸRMIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‘¼ã³å‡ºã™ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final MethodInvocationContext methodContext
@@ -223,7 +223,7 @@ public class RemoteClientMethodCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public boolean isAlive(){
         try{
             return lookupRemoteServerInvoker(remoteServiceName)
@@ -233,22 +233,22 @@ public class RemoteClientMethodCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void addKeepAliveListener(KeepAliveListener listener){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void removeKeepAliveListener(KeepAliveListener listener){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void clearKeepAliveListener(){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Object getHostInfo() {
         Object contextObj = null;
         if(jndiFinder != null){
@@ -281,7 +281,7 @@ public class RemoteClientMethodCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Comparable getResourceUsage(){
         try{
             return lookupRemoteServerInvoker(remoteServiceName).getResourceUsage();

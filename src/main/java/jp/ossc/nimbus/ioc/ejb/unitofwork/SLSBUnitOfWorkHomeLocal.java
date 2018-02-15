@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.unitofwork;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.*;
 /**
- * ƒ†ƒjƒbƒgƒIƒuƒ[ƒNÀsEJB‚ÌHOMEƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯å®Ÿè¡ŒEJBã®HOMEã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -42,7 +42,7 @@ import javax.ejb.*;
  */
 public interface SLSBUnitOfWorkHomeLocal extends EJBLocalHome {
 	/**
-	 * SLSBUnitOfWorkLocalƒŠƒ‚[ƒgƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğo—Í‚·‚é
+	 * SLSBUnitOfWorkLocalãƒªãƒ¢ãƒ¼ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
 	 * @return	SLSBUnitOfWorkLocal
 	 * @throws EJBException
 	 * @throws CreateException

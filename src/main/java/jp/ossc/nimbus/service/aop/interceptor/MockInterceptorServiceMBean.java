@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MockInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MockInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MockInterceptorService
@@ -42,30 +42,30 @@ import jp.ossc.nimbus.core.*;
 public interface MockInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒ‚ƒbƒN‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.MockFactory MockFactory}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.MockFactory MockFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MockFactoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MockFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMockFactoryServiceName(ServiceName name);
     
     /**
-     * ƒ‚ƒbƒN‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.MockFactory MockFactory}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.MockFactory MockFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MockFactoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return MockFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMockFactoryServiceName();
     
     /**
-     * ƒ‚ƒbƒNƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¢ãƒƒã‚¯ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒ‚ƒbƒNƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ¢ãƒƒã‚¯ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMockServiceName(ServiceName name);
     
     /**
-     * ƒ‚ƒbƒNƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¢ãƒƒã‚¯ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‚ƒbƒNƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ¢ãƒƒã‚¯ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMockServiceName();
 }

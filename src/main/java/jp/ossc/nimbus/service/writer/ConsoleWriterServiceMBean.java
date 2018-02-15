@@ -34,36 +34,36 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link ConsoleWriterService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ConsoleWriterService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author y-tokuda
  */
 public interface ConsoleWriterServiceMBean extends ServiceBaseMBean {
     
     /**
-     * •W€o—Í‚Ö‚Ìo—Í‚ğ•\‚·’lB<p>
-     * ƒfƒtƒHƒ‹ƒgB
+     * æ¨™æº–å‡ºåŠ›ã¸ã®å‡ºåŠ›ã‚’è¡¨ã™å€¤ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã€‚
      */
     public static final String OUTPUT_STDOUT = "STDOUT";
     
     /**
-     * •W€ƒGƒ‰[o—Í‚Ö‚Ìo—Í‚ğ•\‚·’lB<p>
+     * æ¨™æº–ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã¸ã®å‡ºåŠ›ã‚’è¡¨ã™å€¤ã€‚<p>
      */
     public static final String OUTPUT_STDERR = "STDERR";
     
     /**
-     * o—Íæ‚ğİ’è‚·‚éB<p>
-     * •W€ƒGƒ‰[o—Í‚ğg—p‚·‚é‚Æ‚«A"STDERR"‚ğw’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚Í•W€o—ÍB
+     * å‡ºåŠ›å…ˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¨™æº–ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã‚’ä½¿ç”¨ã™ã‚‹ã¨ãã€"STDERR"ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯æ¨™æº–å‡ºåŠ›ã€‚
      *
-     * @param out o—Íæ•¶š—ñ
+     * @param out å‡ºåŠ›å…ˆæ–‡å­—åˆ—
      */
     public void setOutput(String out);
     
     /**
-     * o—Íæ‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›å…ˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Íæ•¶š—ñ
+     * @return å‡ºåŠ›å…ˆæ–‡å­—åˆ—
      */
     public String getOutput();
 }

@@ -37,7 +37,7 @@ import java.io.File;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link FTPClientFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link FTPClientFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see FTPClientFactoryService
@@ -45,225 +45,225 @@ import jp.ossc.nimbus.core.*;
 public interface FTPClientFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * SOƒ^ƒCƒ€ƒ^ƒEƒg‚ğİ’è‚·‚éB<p>
+     * SOã‚¿ã‚¤ãƒ ã‚¿ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒ^ƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¿ã‚¦ãƒˆ[ms]
      */
     public void setSoTimeout(int timeout);
     
     /**
-     * SOƒ^ƒCƒ€ƒ^ƒEƒg‚ğæ“¾‚·‚éB<p>
+     * SOã‚¿ã‚¤ãƒ ã‚¿ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒ^ƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¿ã‚¦ãƒˆ[ms]
      */
     public int getSoTimeout();
     
     /**
-     * SOƒŠƒ“ƒK[‚Ì’x‰„ŠÔ‚ğİ’è‚·‚éB<p>
+     * SOãƒªãƒ³ã‚¬ãƒ¼ã®é…å»¶æ™‚é–“ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ’x‰„ŠÔ[ms]
+     * @param time é…å»¶æ™‚é–“[ms]
      */
     public void setSoLinger(int time);
     
     /**
-     * SOƒŠƒ“ƒK[‚Ì’x‰„ŠÔ‚ğæ“¾‚·‚éB<p>
+     * SOãƒªãƒ³ã‚¬ãƒ¼ã®é…å»¶æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’x‰„ŠÔ[ms]
+     * @return é…å»¶æ™‚é–“[ms]
      */
     public int getSoLinger();
     
     /**
-     * TCP_NODELAY‚Ì—LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * TCP_NODELAYã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param noDelay —LŒø‚É‚·‚éê‡true
+     * @param noDelay æœ‰åŠ¹ã«ã™ã‚‹å ´åˆtrue
      */
     public void setTcpNoDelay(boolean noDelay);
     
     /**
-     * TCP_NODELAY‚Ì—LŒø/–³Œø‚ğ”»’è‚·‚éB<p>
+     * TCP_NODELAYã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isTcpNoDelay();
     
     /**
-     * Ú‘±æƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚µ‚½ê‡A{@link FTPClientFactoryService#createFTPClient()}‚Å¶¬‚µ‚½{@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚ÍAÚ‘±Ï‚Æ‚È‚éB<br>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã—ãŸå ´åˆã€{@link FTPClientFactoryService#createFTPClient()}ã§ç”Ÿæˆã—ãŸ{@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã¯ã€æ¥ç¶šæ¸ˆã¨ãªã‚‹ã€‚<br>
      *
-     * @param addr ƒzƒXƒg–¼
+     * @param addr ãƒ›ã‚¹ãƒˆå
      */
     public void setHostName(String addr);
     
     /**
-     * Ú‘±æƒT[ƒo‚ÌƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * Ú‘±æƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setPort(int port);
     
     /**
-     * Ú‘±æƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getPort();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚ÌƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param addr ƒAƒhƒŒƒX
+     * @param addr ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public void setBindAddress(String addr);
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚ÌƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒhƒŒƒX
+     * @return ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getBindAddress();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setLocalPort(int port);
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getLocalPort();
     
     /**
-     * ƒƒOƒCƒ“‚·‚éƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚µ‚½ê‡A{@link FTPClientFactoryService#createFTPClient()}‚Å¶¬‚µ‚½{@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚ÍAƒƒOƒCƒ“Ï‚Æ‚È‚éB<br>
+     * ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã—ãŸå ´åˆã€{@link FTPClientFactoryService#createFTPClient()}ã§ç”Ÿæˆã—ãŸ{@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã¯ã€ãƒ­ã‚°ã‚¤ãƒ³æ¸ˆã¨ãªã‚‹ã€‚<br>
      *
-     * @param name ƒ†[ƒU–¼
+     * @param name ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String name);
     
     /**
-     * ƒƒOƒCƒ“‚·‚éƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ†[ƒU–¼
+     * @return ãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
     
     /**
-     * ƒƒOƒCƒ“‚·‚éƒ†[ƒU‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password ƒpƒXƒ[ƒh
+     * @param password ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setPassword(String password);
     
     /**
-     * ƒƒOƒCƒ“‚·‚éƒ†[ƒU‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒXƒ[ƒh
+     * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getPassword();
     
     /**
-     * ƒƒOƒCƒ“’¼Œã‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"user.home"‚Ì¦‚·ƒfƒBƒŒƒNƒgƒŠ‚Æ‚È‚éB<br>
+     * ãƒ­ã‚°ã‚¤ãƒ³ç›´å¾Œã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"user.home"ã®ç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¨ãªã‚‹ã€‚<br>
      * 
-     * @param dir ƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setHomeDirectory(File dir);
     
     /**
-     * ƒƒOƒCƒ“’¼Œã‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ç›´å¾Œã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getHomeDirectory();
     
     /**
-     * Java‚Ì³‹K•\Œ»‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Éİ’è‚µ‚½ê‡A{@link jp.ossc.nimbus.service.ftp.FTPClient#mput(String) mput(String)}A{@link jp.ossc.nimbus.service.ftp.FTPClient#mget(String) mget(String)}A{@link jp.ossc.nimbus.service.ftp.FTPClient#mdelete(String) mdelete(String)}‚É‚¨‚¯‚éƒtƒ@ƒCƒ‹–¼‚Ìw’è‚ÅAJava‚Ì³‹K•\Œ»‚ğg—p‚Å‚«‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒƒCƒ‹ƒhƒJ[ƒhw’è‚Ì‚İ—LŒøB<br>
+     * Javaã®æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã«è¨­å®šã—ãŸå ´åˆã€{@link jp.ossc.nimbus.service.ftp.FTPClient#mput(String) mput(String)}ã€{@link jp.ossc.nimbus.service.ftp.FTPClient#mget(String) mget(String)}ã€{@link jp.ossc.nimbus.service.ftp.FTPClient#mdelete(String) mdelete(String)}ã«ãŠã‘ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«åã®æŒ‡å®šã§ã€Javaã®æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã§ãã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰æŒ‡å®šã®ã¿æœ‰åŠ¹ã€‚<br>
      * 
-     * @param isEnabled g—p‚·‚éê‡‚ÍAtrue
+     * @param isEnabled ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setJavaRegexEnabled(boolean isEnabled);
     
     /**
-     * Java‚Ì³‹K•\Œ»‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã®æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡Ag—p‚·‚é
+     * @return trueã®å ´åˆã€ä½¿ç”¨ã™ã‚‹
      */
     public boolean isJavaRegexEnabled();
     
     /**
-     * ƒpƒbƒVƒuFTP‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒƒã‚·ãƒ–FTPã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isPassive ƒpƒbƒVƒuFTP‚É‚·‚éê‡true
+     * @param isPassive ãƒ‘ãƒƒã‚·ãƒ–FTPã«ã™ã‚‹å ´åˆtrue
      */
     public void setPassive(boolean isPassive);
     
     /**
-     * ƒpƒbƒVƒuFTP‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‘ãƒƒã‚·ãƒ–FTPã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒpƒbƒVƒuFTP
+     * @return trueã®å ´åˆã€ãƒ‘ãƒƒã‚·ãƒ–FTP
      */
     public boolean isPassive();
     
     /**
-     * Ú‘±‚ÌÅ‘åƒŠƒgƒ‰ƒC‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚ÅƒŠƒgƒ‰ƒC‚µ‚È‚¢B<br>
+     * æ¥ç¶šæ™‚ã®æœ€å¤§ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ãƒªãƒˆãƒ©ã‚¤ã—ãªã„ã€‚<br>
      *
-     * @param count Å‘åƒŠƒgƒ‰ƒC‰ñ”
+     * @param count æœ€å¤§ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setConnectMaxRetryCount(int count);
     
     /**
-     * Ú‘±‚ÌÅ‘åƒŠƒgƒ‰ƒC‰ñ”‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šæ™‚ã®æœ€å¤§ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å‘åƒŠƒgƒ‰ƒC‰ñ”
+     * @return æœ€å¤§ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public int getConnectMaxRetryCount();
     
     /**
-     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setFTPClientProperty(String name, Object value);
     
     /**
-     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚Ìw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã®æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getFTPClientProperty(String name);
     
     /**
-     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚Ìw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB’l‚ğíœ‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã®æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void removeFTPClientProperty(String name);
     
     /**
-     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğƒNƒŠƒA‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearFTPClientProperties();
     
     /**
-     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ftp.FTPClient FTPClient}ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return FTPClient‚Éİ’è‚·‚éƒvƒƒpƒeƒBW‡
+     * @return FTPClientã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é›†åˆ
      */
     public Map getFTPClientProperties();
 }

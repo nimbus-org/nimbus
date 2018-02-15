@@ -36,10 +36,10 @@ import jp.ossc.nimbus.lang.*;
 //
 //
 /**
- *	ƒoƒCƒgƒRƒ“ƒo[ƒ^JMXƒCƒ“ƒ^[ƒtƒFƒCƒX
+ *	ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿JMXã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface ByteConverterServiceMBean extends ServiceBaseMBean	{
 	//

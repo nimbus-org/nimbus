@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS TopicƒZƒbƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * JMS1.0‚Å‚ÍAQueue‚ÆTopic‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßATopicê—p‚ÌƒZƒbƒVƒ‡ƒ“¶¬‚ðs‚¤B<br>
+ * JMS Topicã‚»ãƒƒã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JMS1.0ã§ã¯ã€Queueã¨Topicã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€Topicå°‚ç”¨ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ç”Ÿæˆã‚’è¡Œã†ã€‚<br>
  * 
  * @author M.Takata
  */

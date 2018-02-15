@@ -64,19 +64,19 @@ public class WrappedStatement extends StatementWrapper{
     protected int maxJournalBatchSize = -1;
     
     /**
-     * Žw’è‚µ‚½Statement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éStatement
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹Statement
      */
     public WrappedStatement(Statement st){
         super(st);
     }
     
     /**
-     * Žw’è‚µ‚½Statement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌStatement‚ð¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éStatement
+     * @param con ã“ã®Statementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹Statement
      */
     public WrappedStatement(Connection con, Statement st){
         super(con, st);

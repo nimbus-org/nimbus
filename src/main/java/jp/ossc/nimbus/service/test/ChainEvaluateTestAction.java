@@ -34,41 +34,41 @@ package jp.ossc.nimbus.service.test;
 import java.io.Reader;
 
 /**
- * ˜A½•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ð˜A½‚³‚¹‚ÄŽÀs‚µ‚ÄAÅI“I‚ÉŽÀsŒ‹‰Ê‚ð•]‰¿‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+ * é€£éŽ–è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€£éŽ–ã•ã›ã¦å®Ÿè¡Œã—ã¦ã€æœ€çµ‚çš„ã«å®Ÿè¡Œçµæžœã‚’è©•ä¾¡ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */
 public interface ChainEvaluateTestAction {
     
     /**
-     * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ð˜A½‚³‚¹‚ÄŽÀs‚µ‚ÄAÅI“I‚ÉŽÀsŒ‹‰Ê‚ð•]‰¿‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€£éŽ–ã•ã›ã¦å®Ÿè¡Œã—ã¦ã€æœ€çµ‚çš„ã«å®Ÿè¡Œçµæžœã‚’è©•ä¾¡ã™ã‚‹ã€‚<p>
      *
-     * @param context ƒeƒXƒgƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌID
-     * @param resources ˜A½‚³‚¹‚Ä‚¢‚éŠeƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ö‚ÌƒŠƒ\[ƒX”z—ñ
-     * @return ÅI“I‚ÈŽÀsŒ‹‰Ê‚Ì•]‰¿B¬Œ÷‚µ‚½ê‡Atrue
-     * @exception Exception ˜A½‚³‚¹‚½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌŽÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ID
+     * @param resources é€£éŽ–ã•ã›ã¦ã„ã‚‹å„ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¸ã®ãƒªã‚½ãƒ¼ã‚¹é…åˆ—
+     * @return æœ€çµ‚çš„ãªå®Ÿè¡Œçµæžœã®è©•ä¾¡ã€‚æˆåŠŸã—ãŸå ´åˆã€true
+     * @exception Exception é€£éŽ–ã•ã›ãŸãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean execute(TestContext context, String actionId, Reader[] resources) throws Exception;
     
     /**
-     * ˜A½•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒvƒƒZƒXB<p>
-     * ˜A½‚³‚ê‚Ä‚¢‚é‚P‚Â‘O‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌŒ‹‰Ê‚ð—˜—p‚µ‚ÄAƒeƒXƒgŽÀs‚µ‚Ä‚»‚ÌŒ‹‰Ê‚ð•]‰¿‚·‚é˜A½ê—p‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+     * é€£éŽ–è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ­ã‚»ã‚¹ã€‚<p>
+     * é€£éŽ–ã•ã‚Œã¦ã„ã‚‹ï¼‘ã¤å‰ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®çµæžœã‚’åˆ©ç”¨ã—ã¦ã€ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã—ã¦ãã®çµæžœã‚’è©•ä¾¡ã™ã‚‹é€£éŽ–å°‚ç”¨ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
      * 
      * @author M.ishida
      */
     public interface EvaluateTestActionProcess{
         
         /**
-         * ˜A½‚³‚ê‚Ä‚¢‚é‚P‚Â‘O‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌŒ‹‰Ê‚ð—˜—p‚µ‚ÄAƒeƒXƒgŽÀs‚µ‚Ä‚»‚ÌŒ‹‰Ê‚ð•]‰¿‚·‚éB<p>
+         * é€£éŽ–ã•ã‚Œã¦ã„ã‚‹ï¼‘ã¤å‰ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®çµæžœã‚’åˆ©ç”¨ã—ã¦ã€ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã—ã¦ãã®çµæžœã‚’è©•ä¾¡ã™ã‚‹ã€‚<p>
          *
-         * @param context ƒeƒXƒgƒRƒ“ƒeƒLƒXƒg
-         * @param actionId ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌID
-         * @param preResult ˜A½‚³‚ê‚Ä‚¢‚é‚P‚Â‘O‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌŒ‹‰Ê
-         * @param resource ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ö‚ÌƒŠƒ\[ƒX
-         * @return ŽÀsŒ‹‰Ê‚Ì•]‰¿B¬Œ÷‚µ‚½ê‡Atrue
-         * @exception Exception ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌŽÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+         * @param context ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @param actionId ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ID
+         * @param preResult é€£éŽ–ã•ã‚Œã¦ã„ã‚‹ï¼‘ã¤å‰ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®çµæžœ
+         * @param resource ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¸ã®ãƒªã‚½ãƒ¼ã‚¹
+         * @return å®Ÿè¡Œçµæžœã®è©•ä¾¡ã€‚æˆåŠŸã—ãŸå ´åˆã€true
+         * @exception Exception ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
          */
         public boolean execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception;
     }

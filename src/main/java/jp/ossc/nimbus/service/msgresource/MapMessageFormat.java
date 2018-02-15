@@ -39,31 +39,31 @@ import org.w3c.dom.*;
 import java.util.*;
 import jp.ossc.nimbus.util.*;
 /**
- *	MapƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒg
- *  JMS MapMessage‚ÌString‰»AMapMessageƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬‚ğs‚¤B
+ *	Mapãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
+ *  JMS MapMessageã®StringåŒ–ã€MapMessageã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”Ÿæˆã‚’è¡Œã†ã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/07| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/07ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MapMessageFormat
 	extends CommonMessageFormat
 	implements MessageFormat, MessageResourceDefine {
-	//ƒƒ“ƒo•Ï”
-	/** ƒƒbƒZ[ƒWƒCƒ“ƒvƒbƒg */
-	//CommonMessageFormat‚Å’è‹`‚·‚éB
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ãƒ—ãƒƒãƒˆ */
+	//CommonMessageFormatã§å®šç¾©ã™ã‚‹ã€‚
 	//private MessageInput mMessageInput = null; 
-	/** ƒyƒCƒ[ƒhî•ñ•Û */
+	/** ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰æƒ…å ±ä¿æŒ */
 	private ArrayList mPayloadItems;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public MapMessageFormat(ByteConverter converter){
 		super(converter);
 		mPayloadItems = new ArrayList();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.msgresource.MessageFormat#marshal(javax.jms.Message)
 	 */
 	public String marshal(Message msg) {
@@ -71,11 +71,11 @@ public class MapMessageFormat
 			return null;
 		}	
 		StringBuilder ret = new StringBuilder("[property]");
-		//ƒvƒƒpƒeƒB•”‚ğString‰»
+		//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã‚’StringåŒ–
 		ret.append(dumpProperties(msg));
-		//‹æØ‚è‚ğ“ü‚ê‚é
+		//åŒºåˆ‡ã‚Šã‚’å…¥ã‚Œã‚‹
 		ret.append("[payload]");
-		//ƒyƒCƒ[ƒh•”‚ğString‰»
+		//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨ã‚’StringåŒ–
 		try{
 			MapMessage mapMsg = (MapMessage)msg;
 			Enumeration names = mapMsg.getMapNames();
@@ -95,7 +95,7 @@ public class MapMessageFormat
 	}
 
 	/**
-	 * JMSƒƒbƒZ[ƒW¶¬ƒƒ\ƒbƒh
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public Message unMarshal(QueueSession session) {
 		MapMessage mapMsg = null;
@@ -119,7 +119,7 @@ public class MapMessageFormat
 	}
 
 	protected void recvPayloadParse(Element elem){
-		//‚È‚É‚à‚µ‚È‚¢
+		//ãªã«ã‚‚ã—ãªã„
 		;
 	}
 	
@@ -128,11 +128,11 @@ public class MapMessageFormat
 	}
 	
 	/**
-	 * JMS MAPƒƒbƒZ[ƒW‚ÌƒyƒCƒ[ƒhİ’è
-	 * MAPƒƒbƒZ[ƒW‚ÌƒyƒCƒ[ƒh•”‚Ì€–Ú(item)‚ÍAƒvƒƒpƒeƒB‚Ìitem‚Æ“¯‚¶Œ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚éB
+	 * JMS MAPãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰è¨­å®š
+	 * MAPãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨ã®é …ç›®(item)ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®itemã¨åŒã˜å‹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚‹ã€‚
 	 */
 	protected void setPayload(MapMessage msg,String payloadStr) {
-		//ƒyƒCƒ[ƒh‚ÌString","‚Åsplit‚µ‚ÄA‚ğProperties‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‹l‚ß‚é
+		//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®String","ã§splitã—ã¦ã€ã‚’Propertiesã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«è©°ã‚ã‚‹
 		Properties payloadProp = new Properties();
 		CsvArrayList payloadArrayList = new CsvArrayList();
 		payloadArrayList.split(payloadStr);
@@ -160,14 +160,14 @@ public class MapMessageFormat
 				String valueStr = null;
 				String name = item.getName();
 				if(item.useFile()){
-					//MessageInput‚©‚çæ“¾‚µ‚½PropertiesƒIƒuƒWƒFƒNƒg‚©‚ç’l‚ğˆø‚«o‚·
+					//MessageInputã‹ã‚‰å–å¾—ã—ãŸPropertiesã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰å€¤ã‚’å¼•ãå‡ºã™
 					valueStr = (String)payloadProp.get(name);
 				}
 				else{
-					//‘¦’l
+					//å³å€¤
 					valueStr = item.getVal();
 				}
-				//Œ^‚É‰‚¶‚½ƒvƒƒpƒeƒB•”‚ÌƒZƒbƒ^[‚ğg‚¤B
+				//å‹ã«å¿œã˜ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã®ã‚»ãƒƒã‚¿ãƒ¼ã‚’ä½¿ã†ã€‚
 				switch(type){
 					case TYPE_BYTE:
 						byte[] tmp = mByteConverter.hex2byte(valueStr);

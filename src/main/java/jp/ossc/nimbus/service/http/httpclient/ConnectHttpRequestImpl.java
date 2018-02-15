@@ -37,7 +37,7 @@ import java.util.*;
 import org.apache.commons.httpclient.*;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTP CONNECTƒŠƒNƒGƒXƒgB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTP CONNECTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
@@ -50,10 +50,10 @@ public class ConnectHttpRequestImpl extends HttpRequestImpl{
     }
     
     /**
-     * {@link ConnectMethod}‚ğ¶¬‚·‚éB<p>
+     * {@link ConnectMethod}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
      * @return ConnectMethod
-     * @exception Exception ConnectMethod‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception ConnectMethodã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected HttpMethodBase instanciateHttpMethod() throws Exception{
         return new ConnectMethod(hostConfig){
@@ -65,11 +65,11 @@ public class ConnectHttpRequestImpl extends HttpRequestImpl{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param params ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
-     * @exception Exception UnsupportedOperationException‚ğ“Š‚°‚é
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @exception Exception UnsupportedOperationExceptionã‚’æŠ•ã’ã‚‹
      */
     protected void initParameter(
         HttpMethodBase method,
@@ -79,11 +79,11 @@ public class ConnectHttpRequestImpl extends HttpRequestImpl{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception Exception UnsupportedOperationException‚ğ“Š‚°‚é
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception UnsupportedOperationExceptionã‚’æŠ•ã’ã‚‹
      */
     protected void initInputStream(
         HttpMethodBase method,

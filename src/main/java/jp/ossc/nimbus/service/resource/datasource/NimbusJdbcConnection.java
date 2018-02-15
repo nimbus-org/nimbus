@@ -30,7 +30,7 @@ package jp.ossc.nimbus.service.resource.datasource;
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.sql.*;
 import java.util.*;
 
@@ -38,52 +38,52 @@ import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.performance.PerformanceStatistics;
 import jp.ossc.nimbus.service.sequence.Sequence;
 /**
- * ƒRƒlƒNƒVƒ‡ƒ“ƒ‰ƒbƒp[ƒNƒ‰ƒX<p>
- * Close‚É©•ª‚Ìì¬‚µ‚½Stetement‚àÓ”C‚ğ‚à‚Á‚ÄƒNƒ[ƒY‚·‚éB
+ * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹<p>
+ * Closeæ™‚ã«è‡ªåˆ†ã®ä½œæˆã—ãŸStetementã‚‚è²¬ä»»ã‚’ã‚‚ã£ã¦ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class NimbusJdbcConnection implements Connection {
-	/**JournalServiceƒIƒuƒWƒFƒNƒg*/
+	/**JournalServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ*/
 	private Journal journalService;
-	/**Performance“ŒvƒIƒuƒWƒFƒNƒg*/
+	/**Performanceçµ±è¨ˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ*/
 	private PerformanceStatistics performanceService;
-	/**ƒV[ƒPƒ“ƒXƒT[ƒrƒXƒIƒuƒWƒFƒNƒg*/
+	/**ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ*/
 	private Sequence sequenceService;
-	/**ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹**/
+	/**ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«**/
 	private int journalLevel;
 	
 	/**
 	 * setJournalService
-	 * @param journal ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX
+	 * @param journal ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹
 	 * */
 	public void setJournalService(Journal journal){
 		journalService = journal;
 	}
 	/**
 	 * setPerformanceService
-	 * @param perform ƒpƒtƒH[ƒ}ƒ“ƒXæ“¾ƒT[ƒrƒX
+	 * @param perform ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹å–å¾—ã‚µãƒ¼ãƒ“ã‚¹
 	 * */
 	public void setPerformanceService(PerformanceStatistics perform){
 		performanceService = perform;
 	}
 	   /**
-     * @param sequenceService sequenceService ‚ğİ’èB
+     * @param sequenceService sequenceService ã‚’è¨­å®šã€‚
      */
     public void setSequenceService(Sequence sequenceService) {
         this.sequenceService = sequenceService;
     }
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹‚ğİ’è
-     * @param level ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«ã‚’è¨­å®š
+     * @param level ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«
      */    
     public void setJournalLevel(int level){
         this.journalLevel = level;
     }
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹‚ğæ“¾
-     * @return ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«
      */    
     public int getJournalLevel(){
         return journalLevel;
@@ -93,45 +93,45 @@ public class NimbusJdbcConnection implements Connection {
         mIsFakeClose = isFake ;
     }
     private boolean mIsFakeClose = false ;
-    /**ƒRƒlƒNƒVƒ‡ƒ“À‘Ì*/    
+    /**ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³å®Ÿä½“*/    
 	private Connection mConn = null ;
-	/**ƒXƒe[ƒgƒƒ“ƒg‚ğ•Û‚µ‚Ä‚¨‚­ˆ×”z—ñ*/
+	/**ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ä¿æŒã—ã¦ãŠãç‚ºé…åˆ—*/
 	private ArrayList mStatementList = new ArrayList() ;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public NimbusJdbcConnection(Connection conn ) {
 		super();
 		this.mConn = conn ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getHoldability()
 	 */
 	public int getHoldability() throws SQLException {
 		return mConn.getHoldability() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getTransactionIsolation()
 	 */
 	public int getTransactionIsolation() throws SQLException {
 		return mConn.getTransactionIsolation();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#clearWarnings()
 	 */
 	public void clearWarnings() throws SQLException {
 		mConn.clearWarnings() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#close()
 	 */
 	public void trueClose() throws SQLException { 
-	    //‘S‚Ä‚ÌƒXƒe[ƒgƒƒ“ƒg‚ğClose
+	    //å…¨ã¦ã®ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’Close
 		for(int cnt=0 ;cnt<this.mStatementList.size();cnt++){
 			Statement st = (Statement)this.mStatementList.get(cnt) ;
 			st.close() ;
@@ -139,7 +139,7 @@ public class NimbusJdbcConnection implements Connection {
 		mStatementList.clear() ;
 		mConn.close() ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#close()
 	 */
 	public void close() throws SQLException { 
@@ -148,62 +148,62 @@ public class NimbusJdbcConnection implements Connection {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#commit()
 	 */
 	public void commit() throws SQLException {
 		this.mConn.commit() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#rollback()
 	 */
 	public void rollback() throws SQLException {
 		this.mConn.rollback() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getAutoCommit()
 	 */
 	public boolean getAutoCommit() throws SQLException {
 		return mConn.getAutoCommit() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#isClosed()
 	 */
 	public boolean isClosed() throws SQLException {
 		return mConn.isClosed() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#isReadOnly()
 	 */
 	public boolean isReadOnly() throws SQLException {
 		return this.mConn.isReadOnly() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setHoldability(int)
 	 */
 	public void setHoldability(int arg0) throws SQLException {
 		mConn.setHoldability(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setTransactionIsolation(int)
 	 */
 	public void setTransactionIsolation(int arg0) throws SQLException {
 		mConn.setTransactionIsolation(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setAutoCommit(boolean)
 	 */
 	public void setTrueAutoCommit(boolean arg0) throws SQLException {
 	    mConn.setAutoCommit(arg0) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setAutoCommit(boolean)
 	 */
 	public void setAutoCommit(boolean arg0) throws SQLException {
@@ -212,176 +212,176 @@ public class NimbusJdbcConnection implements Connection {
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setReadOnly(boolean)
 	 */
 	public void setReadOnly(boolean arg0) throws SQLException {
 		mConn.setReadOnly(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getCatalog()
 	 */
 	public String getCatalog() throws SQLException {
 		return mConn.getCatalog();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setCatalog(java.lang.String)
 	 */
 	public void setCatalog(String arg0) throws SQLException {
 		mConn.setCatalog(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getMetaData()
 	 */
 	public DatabaseMetaData getMetaData() throws SQLException {
 		return mConn.getMetaData() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getWarnings()
 	 */
 	public SQLWarning getWarnings() throws SQLException {
 		return mConn.getWarnings() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setSavepoint()
 	 */
 	public Savepoint setSavepoint() throws SQLException {
 		return mConn.setSavepoint() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#releaseSavepoint(java.sql.Savepoint)
 	 */
 	public void releaseSavepoint(Savepoint arg0) throws SQLException {
 		mConn.releaseSavepoint(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#rollback(java.sql.Savepoint)
 	 */
 	public void rollback(Savepoint arg0) throws SQLException {
 		this.mConn.rollback(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#createStatement()
 	 */
 	public Statement createStatement() throws SQLException {
 		Statement tmp = mConn.createStatement() ; 	
 		NimbusStatement ret = new NimbusStatement(tmp) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#createStatement(int, int)
 	 */
 	public Statement createStatement(int arg0, int arg1) throws SQLException {
 		Statement tmp = mConn.createStatement(arg0,arg1) ; 	
 		NimbusStatement ret = new NimbusStatement(tmp) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if( journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#createStatement(int, int, int)
 	 */
 	public Statement createStatement(int arg0, int arg1, int arg2)
 		throws SQLException {
 		Statement tmp = mConn.createStatement(arg0,arg1,arg2) ; 	
 		NimbusStatement ret = new NimbusStatement(tmp) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#getTypeMap()
 	 */
 	public Map getTypeMap() throws SQLException {
 		return mConn.getTypeMap() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setTypeMap(java.util.Map)
 	 */
 	public void setTypeMap(Map arg0) throws SQLException {
 		mConn.setTypeMap(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#nativeSQL(java.lang.String)
 	 */
 	public String nativeSQL(String arg0) throws SQLException {
 		return mConn.nativeSQL(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareCall(java.lang.String)
 	 */
 	public CallableStatement prepareCall(String arg0) throws SQLException {
 		CallableStatement tmp = mConn.prepareCall(arg0) ; 	
 		NimbusCallableStatement ret = new NimbusCallableStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareCall(java.lang.String, int, int)
 	 */
 	public CallableStatement prepareCall(String arg0, int arg1, int arg2)
 		throws SQLException {
 			CallableStatement tmp = mConn.prepareCall(arg0,arg1,arg2) ; 	
 			NimbusCallableStatement ret = new NimbusCallableStatement(tmp,arg0) ;
-			//Performance/JournalƒT[ƒrƒXİ’è
+			//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 			if(journalService!= null){
 			    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 			}
 			if( performanceService != null ){
 			    ret.setPerformanceService(performanceService);		    
 			}
-			//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+			//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 			this.mStatementList.add(ret) ;
 			return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareCall(java.lang.String, int, int, int)
 	 */
 	public CallableStatement prepareCall(
@@ -392,77 +392,77 @@ public class NimbusJdbcConnection implements Connection {
 		throws SQLException {
 		CallableStatement tmp = mConn.prepareCall(arg0,arg1,arg2,arg3) ; 	
 		NimbusCallableStatement ret = new NimbusCallableStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareStatement(java.lang.String)
 	 */
 	public PreparedStatement prepareStatement(String arg0)
 		throws SQLException {
 		PreparedStatement tmp = mConn.prepareStatement(arg0) ; 	
 		NimbusPreparedStatement ret = new NimbusPreparedStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareStatement(java.lang.String, int)
 	 */
 	public PreparedStatement prepareStatement(String arg0, int arg1)
 		throws SQLException {
 		PreparedStatement tmp = mConn.prepareStatement(arg0,arg1) ; 	
 		NimbusPreparedStatement ret = new NimbusPreparedStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareStatement(java.lang.String, int, int)
 	 */
 	public PreparedStatement prepareStatement(String arg0, int arg1, int arg2)
 		throws SQLException {
 		PreparedStatement tmp = mConn.prepareStatement(arg0,arg1,arg2) ; 	
 		NimbusPreparedStatement ret = new NimbusPreparedStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareStatement(java.lang.String, int, int, int)
 	 */
 	public PreparedStatement prepareStatement(
@@ -473,59 +473,59 @@ public class NimbusJdbcConnection implements Connection {
 		throws SQLException {
 		PreparedStatement tmp = mConn.prepareStatement(arg0,arg1,arg2,arg3) ; 	
 		NimbusPreparedStatement ret = new NimbusPreparedStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareStatement(java.lang.String, int[])
 	 */
 	public PreparedStatement prepareStatement(String arg0, int[] arg1)
 		throws SQLException {
 		PreparedStatement tmp = mConn.prepareStatement(arg0,arg1) ; 	
 		NimbusPreparedStatement ret = new NimbusPreparedStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);		    
 		}
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#setSavepoint(java.lang.String)
 	 */
 	public Savepoint setSavepoint(String arg0) throws SQLException {
 		return mConn.setSavepoint(arg0);
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Connection#prepareStatement(java.lang.String, java.lang.String[])
 	 */
 	public PreparedStatement prepareStatement(String arg0, String[] arg1)
 		throws SQLException {
 		PreparedStatement tmp = mConn.prepareStatement(arg0,arg1) ; 	
 		NimbusPreparedStatement ret = new NimbusPreparedStatement(tmp,arg0) ;
-		//Performance/JournalƒT[ƒrƒXİ’è
+		//Performance/Journalã‚µãƒ¼ãƒ“ã‚¹è¨­å®š
 		if(journalService!= null){
 		    ret.setJournalService(journalService,sequenceService,journalLevel);
 		}		
 		if( performanceService != null ){
 		    ret.setPerformanceService(performanceService);		    
 		}
-		//‘¼‚É“n‚µ‚½ƒXƒe[ƒgƒƒ“ƒg‚ğŠÇ—
+		//ä»–ã«æ¸¡ã—ãŸã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã‚’ç®¡ç†
 		this.mStatementList.add(ret) ;
 		return ret ;
 	}

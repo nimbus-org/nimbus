@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractCacheMapFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link AbstractCacheMapFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see AbstractCacheMapFactoryService
@@ -45,107 +45,107 @@ public interface AbstractCacheMapFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z���ݒ肷��B<p>
+     * あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列を設定する。<p>
      *
-     * @param names ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z��
+     * @param names あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列
      */
     public void setOverflowControllerServiceNames(ServiceName[] names);
     
     /**
-     * ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z����擾����B<p>
+     * あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列を取得する。<p>
      *
-     * @return ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z��
+     * @return あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列
      */
     public ServiceName[] getOverflowControllerServiceNames();
     
     /**
-     * �T�[�r�X�̒�~���ɃL���b�V�����N���A���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの停止時にキャッシュをクリアするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isClear �T�[�r�X�̒�~���ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @param isClear サービスの停止時にキャッシュをクリアする場合は、true
      */
     public void setClearOnStop(boolean isClear);
     
     /**
-     * �T�[�r�X�̒�~���ɃL���b�V�����N���A���邩�ǂ����𒲂ׂ�B<p>
+     * サービスの停止時にキャッシュをクリアするかどうかを調べる。<p>
      *
-     * @return �T�[�r�X�̒�~���ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @return サービスの停止時にキャッシュをクリアする場合は、true
      */
     public boolean isClearOnStop();
     
     /**
-     * �T�[�r�X�̔j�����ɃL���b�V�����N���A���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * サービスの破棄時にキャッシュをクリアするかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isClear �T�[�r�X�̔j�����ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @param isClear サービスの破棄時にキャッシュをクリアする場合は、true
      */
     public void setClearOnDestroy(boolean isClear);
     
     /**
-     * �T�[�r�X�̔j�����ɃL���b�V�����N���A���邩�ǂ����𒲂ׂ�B<p>
+     * サービスの破棄時にキャッシュをクリアするかどうかを調べる。<p>
      *
-     * @return �T�[�r�X�̔j�����ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @return サービスの破棄時にキャッシュをクリアする場合は、true
      */
     public boolean isClearOnDestroy();
     
     /**
-     * �Ǘ��Ώۂ̃L���b�V���̒��Ɏw�肳�ꂽ�L�[���܂ރL���b�V�������݂��邩�ǂ����𒲂ׂ�B<p>
+     * 管理対象のキャッシュの中に指定されたキーを含むキャッシュが存在するかどうかを調べる。<p>
      *
-     * @param key �L���b�V���̃L�[
-     * @return �Ǘ��Ώۂ̃L���b�V���̒��Ɏw�肳�ꂽ�L�[���܂ރL���b�V�������݂���ꍇ�́Atrue
+     * @param key キャッシュのキー
+     * @return 管理対象のキャッシュの中に指定されたキーを含むキャッシュが存在する場合は、true
      */
     public boolean containsKey(Object key);
     
     /**
-     * �Ǘ��Ώۂ̃L���b�V���̒��Ɏw�肳�ꂽ�l���܂ރL���b�V�������݂��邩�ǂ����𒲂ׂ�B<p>
+     * 管理対象のキャッシュの中に指定された値を含むキャッシュが存在するかどうかを調べる。<p>
      *
-     * @param value �L���b�V���̒l
-     * @return �Ǘ��Ώۂ̃L���b�V���̒��Ɏw�肳�ꂽ�l���܂ރL���b�V�������݂���ꍇ�́Atrue
+     * @param value キャッシュの値
+     * @return 管理対象のキャッシュの中に指定された値を含むキャッシュが存在する場合は、true
      */
     public boolean containsValue(Object value);
     
     /**
-     * �Ǘ��Ώۂ̃L���b�V���̒�����w�肳�ꂽ�L�[�̃L���b�V���Q�Ƃ��擾����B<p>
-     * �w�肳�ꂽ�L�[���L���b�V������Ǘ��ΏۃL���b�V�������݂���ꍇ�A���̍ŏ��Ɍ��������L���b�V�����ێ�����L���b�V���Q�Ƃ�Ԃ��B�w�肳�ꂽ�L�[���L���b�V������Ǘ��ΏۃL���b�V�������݂��Ȃ��ꍇ�Anull��Ԃ��B<br>
+     * 管理対象のキャッシュの中から指定されたキーのキャッシュ参照を取得する。<p>
+     * 指定されたキーをキャッシュする管理対象キャッシュが存在する場合、その最初に見つかったキャッシュが保持するキャッシュ参照を返す。指定されたキーをキャッシュする管理対象キャッシュが存在しない場合、nullを返す。<br>
      *
-     * @param key �L���b�V���̃L�[
-     * @return �L�[�ɑΉ�����L���b�V���Q�Ƃ̈��
+     * @param key キャッシュのキー
+     * @return キーに対応するキャッシュ参照の一つ
      */
     public KeyCachedReference getCachedReference(Object key);
     
     /**
-     * �Ǘ��Ώۂ̃L���b�V���̒�����w�肳�ꂽ�L�[�̃L���b�V���l���擾����B<p>
-     * �w�肳�ꂽ�L�[���L���b�V������Ǘ��ΏۃL���b�V�������݂���ꍇ�A���̍ŏ��Ɍ��������L���b�V�����ێ�����L���b�V���l��Ԃ��B�w�肳�ꂽ�L�[���L���b�V������Ǘ��ΏۃL���b�V�������݂��Ȃ��ꍇ�Anull��Ԃ��B<br>
+     * 管理対象のキャッシュの中から指定されたキーのキャッシュ値を取得する。<p>
+     * 指定されたキーをキャッシュする管理対象キャッシュが存在する場合、その最初に見つかったキャッシュが保持するキャッシュ値を返す。指定されたキーをキャッシュする管理対象キャッシュが存在しない場合、nullを返す。<br>
      *
-     * @param key �L���b�V���̃L�[
-     * @return �L�[�ɑΉ�����L���b�V���l�̈��
+     * @param key キャッシュのキー
+     * @return キーに対応するキャッシュ値の一つ
      */
     public Object get(Object key);
     
     /**
-     * �w�肳�ꂽ�I�u�W�F�N�g���w�肳�ꂽ�L�[�Ɗ֘A�t���āA�Ǘ��Ώۂ̑S�ẴL���b�V���ɃL���b�V������B<p>
+     * 指定されたオブジェクトを指定されたキーと関連付けて、管理対象の全てのキャッシュにキャッシュする。<p>
      *
-     * @param key �L���b�V���̃L�[
-     * @param value �L���b�V���l
+     * @param key キャッシュのキー
+     * @param value キャッシュ値
      */
     public void put(Object key, Object value);
     
     /**
-     * �w�肳�ꂽ�}�b�v���A�Ǘ��Ώۂ̑S�ẴL���b�V���ɃL���b�V������B<p>
+     * 指定されたマップを、管理対象の全てのキャッシュにキャッシュする。<p>
      *
-     * @param map �L���b�V������L�[�ƒl�̃}�b�v
+     * @param map キャッシュするキーと値のマップ
      */
     public void putAll(Map map);
     
     /**
-     * �w�肳�ꂽ�L�[�ɊY������L���b�V���l���A�Ǘ��Ώۂ̑S�ẴL���b�V������폜����B<p>
+     * 指定されたキーに該当するキャッシュ値を、管理対象の全てのキャッシュから削除する。<p>
      *
-     * @param key �L���b�V���̃L�[
+     * @param key キャッシュのキー
      */
     public void remove(Object key);
     
     /**
-     * �S�ẴL���b�V���l���A�Ǘ��Ώۂ̑S�ẴL���b�V������폜����B<p>
+     * 全てのキャッシュ値を、管理対象の全てのキャッシュから削除する。<p>
      */
     public void clear();
 }

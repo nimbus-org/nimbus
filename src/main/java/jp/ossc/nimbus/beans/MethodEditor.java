@@ -36,18 +36,18 @@ import java.util.*;
 import java.lang.reflect.Method;
 
 /**
- * {@link java.lang.reflect.Method}Œ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * ƒƒ\ƒbƒh•¶š—ñ‚ğjava.lang.reflect.MethodŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * "${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * {@link java.lang.reflect.Method}å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰æ–‡å­—åˆ—ã‚’java.lang.reflect.Methodå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * "${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;java.util.HashMap#put(java.lang.Object,java.lang.Object)<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;java.util.HashMap.class.getMethod("put", new Class[]{java.lang.Object.class, java.lang.Object.class})<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -57,9 +57,9 @@ public class MethodEditor extends PropertyEditorSupport
     private static final long serialVersionUID = 5524131172598421268L;
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -115,9 +115,9 @@ public class MethodEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Method method = (Method)getValue();

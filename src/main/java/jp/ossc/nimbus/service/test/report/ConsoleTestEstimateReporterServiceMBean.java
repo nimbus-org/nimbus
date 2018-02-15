@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test.report;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link ConsoleTestEstimateReporterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ConsoleTestEstimateReporterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Aono
  * @see ConsoleTestEstimateReporterService
@@ -42,16 +42,16 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface ConsoleTestEstimateReporterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒRƒXƒgŒvZ‚Ì•ª•ê‚ğİ’è‚·‚éB<p>
+     * ã‚³ã‚¹ãƒˆè¨ˆç®—æ™‚ã®åˆ†æ¯ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒXƒgŒvZ‚Ì•ª•ê
+     * @return ã‚³ã‚¹ãƒˆè¨ˆç®—æ™‚ã®åˆ†æ¯
      */
     public double getRate();
     
     /**
-     * ƒRƒXƒgŒvZ‚Ì•ª•ê‚ğİ’è‚·‚éB<p>
+     * ã‚³ã‚¹ãƒˆè¨ˆç®—æ™‚ã®åˆ†æ¯ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param rate ƒRƒXƒgŒvZ‚Ì•ª•ê
+     * @param rate ã‚³ã‚¹ãƒˆè¨ˆç®—æ™‚ã®åˆ†æ¯
      */
     public void setRate(double rate);
 }

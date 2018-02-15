@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc.ejb.command;
 
 import java.rmi.RemoteException;
@@ -54,7 +54,7 @@ import jp.ossc.nimbus.service.aop.InterceptorChain;
 import jp.ossc.nimbus.service.aop.DefaultMethodInvocationContext;
 
 /**
- * ƒXƒe[ƒgƒŒƒXƒZƒbƒVƒ‡ƒ“Bean‚ÌƒRƒ}ƒ“ƒhƒNƒ‰ƒXB<p>
+ * ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¬ã‚¹ã‚»ãƒƒã‚·ãƒ§ãƒ³Beanã®ã‚³ãƒãƒ³ãƒ‰ã‚¯ãƒ©ã‚¹ã€‚<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -76,7 +76,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 	}
 
 	/**
-	 * EJB‚ğì¬‚·‚éB
+	 * EJBã‚’ä½œæˆã™ã‚‹ã€‚
 	 * @throws javax.ejb.CreateException
 	 */
 	public void ejbCreate() 
@@ -85,7 +85,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 		InitialContext ctx = null;
 		try {
 			ctx = new InitialContext() ;
-			//ƒƒO‚Ìæ“¾
+			//ãƒ­ã‚°ã®å–å¾—
 			String value = null;
 			//Logger
 			try{
@@ -97,7 +97,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 				serviceName = UtilTool.convertServiceName(value);
 				logger = (Logger)ServiceManagerFactory.getService(serviceName);	
 			}
-			//ƒCƒ“ƒ^[ƒZƒvƒ`ƒFƒCƒ“ƒ^ƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒX‚Ìæ“¾
+			//ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ãƒã‚§ã‚¤ãƒ³ã‚¿ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—
 			InterceptorChainInvokerFactory iciFactory = null;
 			InterceptorChainFactory icFactory = null;
 			value = (String)ctx.lookup(C_INTERCEPTOR_SERVICE_NAME_JNDI_KEY);
@@ -110,7 +110,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
     			    icFactory = (InterceptorChainFactory)factory;
     			}
 			}
-			// Beanƒtƒ[ƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒX‚Ìæ“¾
+			// Beanãƒ•ãƒ­ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—
 			value = (String)ctx.lookup(C_BEAN_FLOW_SERVICE_NAME_JNDI_KEY);
 			serviceName = UtilTool.convertServiceName(value);
 			BeanFlowInvokerFactory bfFactory = (BeanFlowInvokerFactory)ServiceManagerFactory.getService(serviceName);
@@ -125,15 +125,15 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 	}
 
 	/**
-	 * ƒRƒ}ƒ“ƒh‚ğÀs‚·‚éB
-	 * @param cmd ƒRƒ}ƒ“ƒh
-	 * @return ÀsŒã‚ÌƒRƒ}ƒ“ƒh
+	 * ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+	 * @param cmd ã‚³ãƒãƒ³ãƒ‰
+	 * @return å®Ÿè¡Œå¾Œã®ã‚³ãƒãƒ³ãƒ‰
 	 */
 	public Command invokeCommand(Command cmd) {
 		if(this.getLogger() != null){
 			this.getLogger().write("IOC__00006");
 		}
-		// ƒCƒ“ƒ^[ƒZƒvƒ^‚ÅÀs‚µ‚½Û‚É‚à“¯‚¶ƒtƒ[ƒL[‚ÅÀs‚³‚¹‚é‚½‚ß•Û‚µ‚Ä‚¨‚­B
+		// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§å®Ÿè¡Œã—ãŸéš›ã«ã‚‚åŒã˜ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã§å®Ÿè¡Œã•ã›ã‚‹ãŸã‚ä¿æŒã—ã¦ãŠãã€‚
 		String key = cmd.getFlowKey();
 		InterceptorChainInvoker ici = null ;
 		InterceptorChain ic = null ;
@@ -144,7 +144,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 		}
 		Object ret = null ;
 		if(ici==null && ic == null){
-			// ’¼ÚÀs
+			// ç›´æ¥å®Ÿè¡Œ
 			if(this.getLogger() !=null ){
 				this.getLogger().write("IOC__00007");
 			}
@@ -161,7 +161,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 			}
 			
 		}else if(ici != null){
-			// ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ’Ê‚µ‚ÄÀs
+			// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é€šã—ã¦å®Ÿè¡Œ
 			try {
 				if(this.getLogger()!= null){
 					this.getLogger().write("IOC__00008");
@@ -195,7 +195,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 				throw new IOCException("SLSBCommandBean invokeCommand Unrecognize Exception",e) ;
 			}
 		}else{
-			// ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ’Ê‚µ‚ÄÀs
+			// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é€šã—ã¦å®Ÿè¡Œ
 			try {
 				if(this.getLogger()!= null){
 					this.getLogger().write("IOC__00008");
@@ -233,7 +233,7 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 	    );
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#setSessionContext(javax.ejb.SessionContext)
 	 */
 	public void setSessionContext(SessionContext arg0)
@@ -241,19 +241,19 @@ public class SLSBCommandBean extends BeanFlowClient implements SessionBean {
 
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbRemove()
 	 */
 	public void ejbRemove() throws EJBException, RemoteException {
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbActivate()
 	 */
 	public void ejbActivate() throws EJBException, RemoteException {
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbPassivate()
 	 */
 	public void ejbPassivate() throws EJBException, RemoteException {

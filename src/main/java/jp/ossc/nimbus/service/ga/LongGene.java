@@ -38,74 +38,74 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * LongŒ^ˆâ“`qB<p>
+ * Longå‹éºä¼å­ã€‚<p>
  *
  * @author M.Takata
  */
 public class LongGene extends AbstractGene{
     
     /**
-     * Œğ³í•ÊFˆê“_Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šä¸€ç‚¹äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_SINGLE_POINT  = 1;
     
     /**
-     * Œğ³í•ÊF“ñ“_Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šäºŒç‚¹äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_TWO_POINT     = 2;
     
     /**
-     * Œğ³í•ÊFˆê—lŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šä¸€æ§˜äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_UNIFORM_POINT = 3;
     
     /**
-     * Œğ³í•ÊF‘SŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šå…¨äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_ALL_POINT     = 4;
     
     /**
-     * Œğ³í•ÊF•½‹ÏŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šå¹³å‡äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_AVERAGE       = 5;
     
     /**
-     * Œğ³í•ÊF”ÍˆÍ—”Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šç¯„å›²ä¹±æ•°äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_RANDOM_RANGE  = 6;
     
     /**
-     * •ÏˆÙí•ÊF’Pˆê•ÏˆÙB<p>
+     * å¤‰ç•°ç¨®åˆ¥ï¼šå˜ä¸€å¤‰ç•°ã€‚<p>
      */
     public static final int MUTATE_SINGLE  = 1;
     
     /**
-     * •ÏˆÙí•ÊFˆê—l•ÏˆÙB<p>
+     * å¤‰ç•°ç¨®åˆ¥ï¼šä¸€æ§˜å¤‰ç•°ã€‚<p>
      */
     public static final int MUTATE_UNIFORM  = 2;
     
     /**
-     * Å‘å’lB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍALong.MAX_VALUEB<br>
+     * æœ€å¤§å€¤ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€Long.MAX_VALUEã€‚<br>
      */
     protected long maxValue = Long.MAX_VALUE;
     
     /**
-     * Å¬’lB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍALong.MIN_VALUEB<br>
+     * æœ€å°å€¤ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€Long.MIN_VALUEã€‚<br>
      */
     protected long minValue = Long.MIN_VALUE;
     
     /**
-     * ”ÍˆÍ—”Œğ³‚Ìê‡‚ÌA”ÍˆÍ‚Ì—V‚ÑB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0.0B<br>
+     * ç¯„å›²ä¹±æ•°äº¤å‰ã®å ´åˆã®ã€ç¯„å›²ã®éŠã³ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0.0ã€‚<br>
      */
     protected float randomRangeMargin = 0.0f;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * Œğ³í•Ê‚ÍAƒfƒtƒHƒ‹ƒg‚ÅA{@link #CROSSOVER_RANDOM_RANGE ”ÍˆÍ—”Œğ³}B
-     * •ÏˆÙí•Ê‚ÍAƒfƒtƒHƒ‹ƒg‚ÅA{@link #MUTATE_UNIFORM ˆê—l•ÏˆÙ}B
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * äº¤å‰ç¨®åˆ¥ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã€{@link #CROSSOVER_RANDOM_RANGE ç¯„å›²ä¹±æ•°äº¤å‰}ã€‚
+     * å¤‰ç•°ç¨®åˆ¥ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã€{@link #MUTATE_UNIFORM ä¸€æ§˜å¤‰ç•°}ã€‚
      */
     public LongGene(){
         crossoverType = CROSSOVER_RANDOM_RANGE;
@@ -113,56 +113,56 @@ public class LongGene extends AbstractGene{
     }
     
     /**
-     * Å‘å’l‚ğİ’è‚·‚éB<p>
+     * æœ€å¤§å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param max Å‘å’l
+     * @param max æœ€å¤§å€¤
      */
     public void setMaxValue(long max){
         maxValue = max;
     }
     
     /**
-     * Å‘å’l‚ğæ“¾‚·‚éB<p>
+     * æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å‘å’l
+     * @return æœ€å¤§å€¤
      */
     public long getMaxValue(){
         return maxValue;
     }
     
     /**
-     * Å¬’l‚ğİ’è‚·‚éB<p>
+     * æœ€å°å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param min Å¬’l
+     * @param min æœ€å°å€¤
      */
     public void setMinValue(long min){
         minValue = min;
     }
     
     /**
-     * Å¬’l‚ğæ“¾‚·‚éB<p>
+     * æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å¬’l
+     * @return æœ€å°å€¤
      */
     public long getMinValue(){
         return minValue;
     }
     
     /**
-     * ”ÍˆÍ—”Œğ³‚Ìê‡‚ÌA”ÍˆÍ‚Ì—V‚Ñ‚ğİ’è‚·‚éB<p>
-     * æ‚è‚¤‚é”ÍˆÍ‚É‘Î‚µ‚ÄAw’è‚µ‚½Š„‡‚¾‚¯—V‚Ñ‚ğİ‚¯‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å—V‚Ñ‚È‚µB<br>
+     * ç¯„å›²ä¹±æ•°äº¤å‰ã®å ´åˆã®ã€ç¯„å›²ã®éŠã³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å–ã‚Šã†ã‚‹ç¯„å›²ã«å¯¾ã—ã¦ã€æŒ‡å®šã—ãŸå‰²åˆã ã‘éŠã³ã‚’è¨­ã‘ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§éŠã³ãªã—ã€‚<br>
      * 
-     * @param margin ”ÍˆÍ‚Ì—V‚Ñ
+     * @param margin ç¯„å›²ã®éŠã³
      */
     public void setRandomRangeMargin(float margin){
         randomRangeMargin = margin;
     }
     
     /**
-     * ”ÍˆÍ—”Œğ³‚Ìê‡‚ÌA”ÍˆÍ‚Ì—V‚Ñ‚ğæ“¾‚·‚éB<p>
+     * ç¯„å›²ä¹±æ•°äº¤å‰ã®å ´åˆã®ã€ç¯„å›²ã®éŠã³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ”ÍˆÍ‚Ì—V‚Ñ
+     * @return ç¯„å›²ã®éŠã³
      */
     public float getRandomRangeMargin(){
         return randomRangeMargin;

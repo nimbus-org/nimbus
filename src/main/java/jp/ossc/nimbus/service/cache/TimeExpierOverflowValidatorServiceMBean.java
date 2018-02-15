@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link TimeExpierOverflowValidatorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TimeExpierOverflowValidatorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see TimeExpierOverflowValidatorService
@@ -43,51 +43,51 @@ public interface TimeExpierOverflowValidatorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ì—LŒøŠúŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * —LŒø‚È’l‚Ì”ÍˆÍ‚ÍA0ˆÈãBƒfƒtƒHƒ‹ƒg‚Í0‚ÅAˆì‚ê‚È‚¢B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹æœŸé–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æœ‰åŠ¹ãªå€¤ã®ç¯„å›²ã¯ã€0ä»¥ä¸Šã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯0ã§ã€æº¢ã‚Œãªã„ã€‚<br>
      *
-     * @param millis ƒLƒƒƒbƒVƒ…‚Ì—LŒøŠúŠÔ[ms]
+     * @param millis ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹æœŸé–“[ms]
      */
     public void setExpierTerm(long millis) throws IllegalArgumentException;
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ì—LŒøŠúŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹æœŸé–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…‚Ì—LŒøŠúŠÔ[ms]
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹æœŸé–“[ms]
      */
     public long getExpierTerm();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ì—LŒø‹æØ‚è[ms]‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹åŒºåˆ‡ã‚Š[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param millis ƒLƒƒƒbƒVƒ…‚Ì—LŒø‹æØ‚è[ms]
+     * @param millis ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹åŒºåˆ‡ã‚Š[ms]
      * @throws IllegalArgumentException
      */
     public void setPeriod(long millis) throws IllegalArgumentException;
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ì—LŒø‹æØ‚è[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹åŒºåˆ‡ã‚Š[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒLƒƒƒbƒVƒ…‚Ì—LŒø‹æØ‚è[ms]
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ‰åŠ¹åŒºåˆ‡ã‚Š[ms]
      */
     public long getPeriod();
 
     /**
-     * ƒLƒƒƒbƒVƒ…”‚ğŒŸØ‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’æ¤œè¨¼ã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
     
     /**
-     * ‚ ‚Ó‚êŒŸØ‚ğs‚¤B<p>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã†ã€‚<p>
      *
-     * @return ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½Œ‹‰Ê‚ ‚Ó‚ê‚ª”­¶‚·‚éê‡A‚ ‚Ó‚ê”‚ğ•Ô‚·B‚ ‚Ó‚ê‚È‚¢ê‡‚ÍA0‚ğ•Ô‚·
+     * @return ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸçµæœã‚ãµã‚ŒãŒç™ºç”Ÿã™ã‚‹å ´åˆã€ã‚ãµã‚Œæ•°ã‚’è¿”ã™ã€‚ã‚ãµã‚Œãªã„å ´åˆã¯ã€0ã‚’è¿”ã™
      */
     public int validate();
     
     /**
-     * ‚ ‚Ó‚êŒŸØ‘ÎÛ‚É‚È‚Á‚Ä‚¢‚éƒLƒƒƒbƒVƒ…”‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œæ¤œè¨¼å¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…”
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°
      */
     public int size();
 }

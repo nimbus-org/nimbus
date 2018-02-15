@@ -42,7 +42,7 @@ import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * DynaClassƒIƒuƒWƒFƒNƒg‚ğCSVŒ`®‚ÅƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * DynaClassã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’CSVå½¢å¼ã§ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

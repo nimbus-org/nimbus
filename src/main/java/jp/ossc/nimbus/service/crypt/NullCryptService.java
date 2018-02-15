@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.crypt;
 
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ‰½‚à‚µ‚È‚¢ˆÃ†‰»ƒT[ƒrƒXB<p>
+ * ä½•ã‚‚ã—ãªã„æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author A.Kokubu
  */
@@ -45,30 +45,30 @@ public class NullCryptService extends ServiceBase
     private static final long serialVersionUID = -4920171488896939493L;
     
     /**
-     * ˆÃ†‰»‘ÎÛ‚Ì•¶š—ñ‚ğ‚»‚Ì‚Ü‚Ü•Ô‚·B<p>
+     * æš—å·åŒ–å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’ãã®ã¾ã¾è¿”ã™ã€‚<p>
      * 
-     * @param str ˆÃ†‰»‘ÎÛ•¶š—ñ
-     * @return ˆÃ†‰»•¶š—ñ
+     * @param str æš—å·åŒ–å¯¾è±¡æ–‡å­—åˆ—
+     * @return æš—å·åŒ–æ–‡å­—åˆ—
      */
     public String doEncode(String str) {
         return str;
     }
     
     /**
-     * •œ†‰»‘ÎÛ‚Ì•¶š—ñ‚ğ‚»‚Ì‚Ü‚Ü•Ô‚·B<p>
+     * å¾©å·åŒ–å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’ãã®ã¾ã¾è¿”ã™ã€‚<p>
      * 
-     * @param str •œ†‰»‘ÎÛ•¶š—ñ
-     * @return •œ†‰»•¶š—ñ
+     * @param str å¾©å·åŒ–å¯¾è±¡æ–‡å­—åˆ—
+     * @return å¾©å·åŒ–æ–‡å­—åˆ—
      */
     public String doDecode(String str) {
         return str;
     }
     
     /**
-     * ƒnƒbƒVƒ…‘ÎÛ‚Ì•¶š—ñ‚ğ‚»‚Ì‚Ü‚Ü•Ô‚·B<p>
+     * ãƒãƒƒã‚·ãƒ¥å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’ãã®ã¾ã¾è¿”ã™ã€‚<p>
      * 
-     * @param str ƒnƒbƒVƒ…‘ÎÛ•¶š—ñ
-     * @return ƒnƒbƒVƒ…•¶š—ñ
+     * @param str ãƒãƒƒã‚·ãƒ¥å¯¾è±¡æ–‡å­—åˆ—
+     * @return ãƒãƒƒã‚·ãƒ¥æ–‡å­—åˆ—
      */
     public String doHash(String str) {
         return str;

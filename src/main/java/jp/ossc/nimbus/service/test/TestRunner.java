@@ -44,15 +44,15 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 
 /**
- * ƒeƒXƒgÀsB
+ * ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã€‚
  * <p>
- * ƒeƒXƒgƒtƒŒ[ƒ€ƒ[ƒN‚ğ’è‹`‚µ‚½ƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚İƒT[ƒrƒX‚ğ‹N“®‚µAƒeƒXƒgÀs’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İA‚»‚Ì“à—e‚É]‚Á‚Ä
- * {@link TestController}‚ÉAƒVƒiƒŠƒIƒOƒ‹[ƒvAƒVƒiƒŠƒIAƒeƒXƒgƒP[ƒX‚ÌŠJnAI—¹‚ğˆË—Š‚·‚éB‚Ü‚½AƒeƒXƒgI—¹Œã‚ÉA
- * {@link TestReporter}‚ÉˆË—Š‚µ‚ÄƒŒƒ|[ƒg‚ğo—Í‚·‚éB<br>
+ * ãƒ†ã‚¹ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’å®šç¾©ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã¿ã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•ã—ã€ãƒ†ã‚¹ãƒˆå®Ÿè¡Œå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€ãã®å†…å®¹ã«å¾“ã£ã¦
+ * {@link TestController}ã«ã€ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã€ã‚·ãƒŠãƒªã‚ªã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®é–‹å§‹ã€çµ‚äº†ã‚’ä¾é ¼ã™ã‚‹ã€‚ã¾ãŸã€ãƒ†ã‚¹ãƒˆçµ‚äº†å¾Œã«ã€
+ * {@link TestReporter}ã«ä¾é ¼ã—ã¦ãƒ¬ãƒãƒ¼ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
- * @see <a href="TestRunnerUsage.txt">ƒeƒXƒgÀsƒRƒ}ƒ“ƒhg—p•û–@</a>
- * @see <a href="testrunner_1_0.dtd">ƒeƒXƒgÀs’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="TestRunnerUsage.txt">ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•</a>
+ * @see <a href="testrunner_1_0.dtd">ãƒ†ã‚¹ãƒˆå®Ÿè¡Œå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class TestRunner {
     
@@ -71,18 +71,18 @@ public class TestRunner {
     }
     
     /**
-     * ƒŠƒ\[ƒX‚ğ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB
+     * ãƒªã‚½ãƒ¼ã‚¹ã‚’æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚
      * <p>
      *
-     * @param name ƒŠƒ\[ƒX–¼
-     * @exception IOException ƒŠƒ\[ƒX‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param name ãƒªã‚½ãƒ¼ã‚¹å
+     * @exception IOException ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     private static String getResourceString(String name) throws IOException {
         
-        // ƒŠƒ\[ƒX‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾
+        // ãƒªã‚½ãƒ¼ã‚¹ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—
         InputStream is = ServiceManagerFactory.class.getClassLoader().getResourceAsStream(name);
         
-        // ƒƒbƒZ[ƒW‚Ì“Ç‚İ‚İ
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿
         StringBuilder buf = new StringBuilder();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
@@ -479,7 +479,7 @@ public class TestRunner {
                     continue;
                 }
             }
-            // ƒŒƒ|[ƒg
+            // ãƒ¬ãƒãƒ¼ãƒˆ
             if(testReporterList != null){
                 for(int i = 0; i < testReporterList.size(); i++){
                     ((TestReporter)testReporterList.get(i)).report(testController);

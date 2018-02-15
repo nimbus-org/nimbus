@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.codemaster.map;
 
 import java.util.HashMap;
@@ -39,9 +39,9 @@ import java.util.Map;
 import jp.ossc.nimbus.service.cache.CachedReference;
 
 /**
- * CacheReference‚ÌŠÇ—MAPƒNƒ‰ƒX<p>
- * CacheReference‚ÌŠÇ—MAP
- * Value‚ÍCacheReferenceˆÈŠO‚Í–³‹‚³‚ê‚é
+ * CacheReferenceã®ç®¡ç†MAPã‚¯ãƒ©ã‚¹<p>
+ * CacheReferenceã®ç®¡ç†MAP
+ * Valueã¯CacheReferenceä»¥å¤–ã¯ç„¡è¦–ã•ã‚Œã‚‹
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
@@ -50,22 +50,22 @@ public class CacheMap extends HashMap {
     
     private static final long serialVersionUID = -7287733115980283710L;
     
-    //‰Šú—e—Ê(100ƒ}ƒXƒ^“o˜^‚ğ‘z’è)
+    //åˆæœŸå®¹é‡(100ãƒã‚¹ã‚¿ç™»éŒ²ã‚’æƒ³å®š)
     public final static int   CODEMASTERS_INITIAL_CAPACITY=134;
-    //ƒ[ƒhƒtƒ@ƒNƒ^
+    //ãƒ­ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ã‚¿
     public final static float CODEMASTERS_LOAD_FACTOR     =0.75f;
     /**
-     * ƒLƒƒƒbƒVƒ…MAP
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥MAP
      */
     public CacheMap() {
         super(CODEMASTERS_INITIAL_CAPACITY,CODEMASTERS_LOAD_FACTOR);
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see java.util.Map#containsValue(java.lang.Object)
      */
     public boolean containsValue(Object value) {
-        //ƒŠƒtƒ@ƒŒƒ“ƒX”äŠr‚Ì‚İ
+        //ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹æ¯”è¼ƒã®ã¿
         if( value == null ){ return false; }
         if( value instanceof CachedReference ){
             return super.containsValue((CachedReference)value);
@@ -73,7 +73,7 @@ public class CacheMap extends HashMap {
         return false;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see java.util.Map#putAll(java.util.Map)
      */
     public void putAll(Map map) {
@@ -83,23 +83,23 @@ public class CacheMap extends HashMap {
             final Object value = map.get(key);
             if( key == null ){ return; }
             if( key instanceof CachedReference ){
-                //‚»‚Ì‚Ü‚Ü“o˜^
+                //ãã®ã¾ã¾ç™»éŒ²
                 super.put(key,value);
             } 
         }
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see java.util.Map#get(java.lang.Object)
      */
     public Object get(Object arg0) {
         final CachedReference ref = (CachedReference) super.get(arg0);
-        //ÀQÆ‰»‚µ‚Ä•Ô‹p
+        //å®Ÿå‚ç…§åŒ–ã—ã¦è¿”å´
         if( ref == null ) return null;
         return ref.get();
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see java.util.Map#put(java.lang.Object, java.lang.Object)
      */
     public Object put(Object key, Object value) {

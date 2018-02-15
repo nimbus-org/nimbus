@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer;
 import java.util.*;
 
 /**
- * ŒJ‚è•Ô‚µ‹Lq—v‘fB<p>
+ * ç¹°ã‚Šè¿”ã—è¨˜è¿°è¦ç´ ã€‚<p>
  *
  * @author M.Takata
  */
@@ -47,44 +47,44 @@ public class IterateWritableElement implements WritableElement, java.io.Serializ
     protected List elements;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public IterateWritableElement(){
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
+     * @param key ã‚­ãƒ¼
      */
     public IterateWritableElement(Object key){
         this.key = key;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public void setKey(Object key){
         this.key = key;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public Object getKey(){
         return key == null ? this : key;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public void setValue(Object val){
         elements = (List)val;
     }
     
-    // WritableElement‚ÌJavaDoc
+    // WritableElementã®JavaDoc
     public Object getValue(){
         return elements;
     }
     
     /**
-     * —v‘f‚ğ’Ç‰Á‚·‚éB<p>
+     * è¦ç´ ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param elem —v‘f
+     * @param elem è¦ç´ 
      */
     public void addElement(WritableElement elem){
         if(elements == null){
@@ -94,18 +94,18 @@ public class IterateWritableElement implements WritableElement, java.io.Serializ
     }
     
     /**
-     * —v‘f‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * è¦ç´ ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableElement‚ÌList
+     * @return WritableElementã®List
      */
     public List getElements(){
         return elements;
     }
     
     /**
-     * ‚±‚Ì—v‘f‚ª‚ÂŒJ‚è•Ô‚µ—v‘f‚Ì’l‚ğ‚»‚Ì‚Ü‚Ü•¶š—ñ‚É‚µ‚ÄAŒJ‚è•Ô‚µ•ª˜AŒ‹‚µ‚Äæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ ãŒæŒã¤ç¹°ã‚Šè¿”ã—è¦ç´ ã®å€¤ã‚’ãã®ã¾ã¾æ–‡å­—åˆ—ã«ã—ã¦ã€ç¹°ã‚Šè¿”ã—åˆ†é€£çµã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶š—ñ
+     * @return æ–‡å­—åˆ—
      */
     public String toString(){
         if(elements == null || elements.size() == 0){
@@ -119,9 +119,9 @@ public class IterateWritableElement implements WritableElement, java.io.Serializ
     }
     
     /**
-     * ‚±‚Ì—v‘f‚ª‚ÂŒJ‚è•Ô‚µ—v‘f‚ÌƒIƒuƒWƒFƒNƒg‚ğƒŠƒXƒg‚É‹l‚ß‚Äæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ ãŒæŒã¤ç¹°ã‚Šè¿”ã—è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒªã‚¹ãƒˆã«è©°ã‚ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì—v‘f‚ª‚ÂŒJ‚è•Ô‚µ—v‘f‚ÌƒIƒuƒWƒFƒNƒg‚ğ‹l‚ß‚½ƒŠƒXƒg
+     * @return ã“ã®è¦ç´ ãŒæŒã¤ç¹°ã‚Šè¿”ã—è¦ç´ ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è©°ã‚ãŸãƒªã‚¹ãƒˆ
      */
     public Object toObject(){
         if(elements == null || elements.size() == 0){

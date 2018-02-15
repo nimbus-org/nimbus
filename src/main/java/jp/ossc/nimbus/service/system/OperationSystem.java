@@ -32,118 +32,118 @@
 package jp.ossc.nimbus.service.system;
 
 /**
- * ƒIƒyƒŒ[ƒVƒ‡ƒ“ƒVƒXƒeƒ€B<p>
+ * ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚·ã‚¹ãƒ†ãƒ ã€‚<p>
  *
  * @author M.Takata
  */
 public interface OperationSystem{
     
     /**
-     * ƒIƒyƒŒ[ƒVƒ‡ƒ“ƒVƒXƒeƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚·ã‚¹ãƒ†ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒyƒŒ[ƒVƒ‡ƒ“ƒVƒXƒeƒ€–¼
+     * @return ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚·ã‚¹ãƒ†ãƒ å
      */
     public String getName();
     
     /**
-     * CPU”‚ğæ“¾‚·‚éB<p>
+     * CPUæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CPU”
+     * @return CPUæ•°
      */
     public int getCpuNumbers();
     
     /**
-     * CPU‚ÌƒNƒƒbƒN”‚ğæ“¾‚·‚éB<p>
+     * CPUã®ã‚¯ãƒ­ãƒƒã‚¯æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CPUƒNƒƒbƒN”
+     * @return CPUã‚¯ãƒ­ãƒƒã‚¯æ•°
      */
     public long getCpuFrequency();
     
     /**
-     * ƒIƒyƒŒ[ƒVƒ‡ƒ“ƒVƒXƒeƒ€‚ª‹N“®‚µ‚Ä‚©‚ç‚ÌŒo‰ßŠÔ[s]‚ğæ“¾‚·‚éB<p>
+     * ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚·ã‚¹ãƒ†ãƒ ãŒèµ·å‹•ã—ã¦ã‹ã‚‰ã®çµŒéæ™‚é–“[s]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒyƒŒ[ƒVƒ‡ƒ“ƒVƒXƒeƒ€‚ª‹N“®‚µ‚Ä‚©‚ç‚ÌŒo‰ßŠÔ[s]
+     * @return ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚·ã‚¹ãƒ†ãƒ ãŒèµ·å‹•ã—ã¦ã‹ã‚‰ã®çµŒéæ™‚é–“[s]
      */
     public long getUptimeInSeconds();
     
     /**
-     * CPU‚Ìg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * CPUã®ä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CPUg—pŠÔ
+     * @return CPUä½¿ç”¨æ™‚é–“
      */
     public CpuTimes getCpuTimes();
     
     /**
-     * ‘O‰ñCPUg—pŠÔ‚ğæ“¾‚µ‚½‚©‚ç‚Ì·•ªCPUg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * å‰å›CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã—ãŸæ™‚ã‹ã‚‰ã®å·®åˆ†CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ·•ªCPUg—pŠÔ
+     * @return å·®åˆ†CPUä½¿ç”¨æ™‚é–“
      */
     public CpuTimes getCpuTimesDelta();
     
     /**
-     * ˆø”‚Åw’è‚µ‚½CPUg—pŠÔ‚©‚ç‚Ì·•ªCPUg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã—ãŸCPUä½¿ç”¨æ™‚é–“ã‹ã‚‰ã®å·®åˆ†CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ·•ªCPUg—pŠÔ
+     * @return å·®åˆ†CPUä½¿ç”¨æ™‚é–“
      */
     public CpuTimes getCpuTimesDelta(CpuTimes prev);
     
     /**
-     * •¨—ƒƒ‚ƒŠ‚Ìg—pó‹µ‚ğæ“¾‚·‚éB<p>
+     * ç‰©ç†ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨çŠ¶æ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¨—ƒƒ‚ƒŠg—pó‹µ
+     * @return ç‰©ç†ãƒ¡ãƒ¢ãƒªä½¿ç”¨çŠ¶æ³
      */
     public MemoryInfo getPhysicalMemoryInfo();
     
     /**
-     * ƒXƒƒbƒvƒƒ‚ƒŠ‚Ìg—pó‹µ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ¯ãƒƒãƒ—ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨çŠ¶æ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒƒbƒvƒƒ‚ƒŠg—pó‹µ
+     * @return ã‚¹ãƒ¯ãƒƒãƒ—ãƒ¡ãƒ¢ãƒªä½¿ç”¨çŠ¶æ³
      */
     public MemoryInfo getSwapMemoryInfo();
     
     /**
-     * ‚±‚ÌJavaƒvƒƒZƒX‚ÌƒvƒƒZƒXID‚ğæ“¾‚·‚éB<p>
+     * ã“ã®Javaãƒ—ãƒ­ã‚»ã‚¹ã®ãƒ—ãƒ­ã‚»ã‚¹IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒZƒXID
+     * @return ãƒ—ãƒ­ã‚»ã‚¹ID
      */
     public int getPid();
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒZƒX‚ğI—¹‚³‚¹‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ã‚»ã‚¹ã‚’çµ‚äº†ã•ã›ã‚‹ã€‚<p>
      *
-     * @param pid ƒvƒƒZƒXID
-     * @return ƒvƒƒZƒX‚ª‘¶İ‚µ‚È‚¢ê‡false
+     * @param pid ãƒ—ãƒ­ã‚»ã‚¹ID
+     * @return ãƒ—ãƒ­ã‚»ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆfalse
      */
     public boolean kill(int pid);
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒZƒX‚Ìî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ã‚»ã‚¹ã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param pid ƒvƒƒZƒXID
-     * @return ƒvƒƒZƒXî•ñ
+     * @param pid ãƒ—ãƒ­ã‚»ã‚¹ID
+     * @return ãƒ—ãƒ­ã‚»ã‚¹æƒ…å ±
      */
     public ProcessInfo getProcessInfo(int pid);
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒZƒX‚ğI—¹‚³‚¹‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ã‚»ã‚¹ã‚’çµ‚äº†ã•ã›ã‚‹ã€‚<p>
      *
-     * @param command ƒRƒ}ƒ“ƒh‚Ì³‹K•\Œ»
-     * @return ƒvƒƒZƒX‚ª‘¶İ‚µ‚È‚¢ê‡false
+     * @param command ã‚³ãƒãƒ³ãƒ‰ã®æ­£è¦è¡¨ç¾
+     * @return ãƒ—ãƒ­ã‚»ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆfalse
      */
     public boolean kill(String command);
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒZƒX‚Ìî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ã‚»ã‚¹ã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param command ƒRƒ}ƒ“ƒh‚Ì³‹K•\Œ»
-     * @return ƒvƒƒZƒXî•ñ
+     * @param command ã‚³ãƒãƒ³ãƒ‰ã®æ­£è¦è¡¨ç¾
+     * @return ãƒ—ãƒ­ã‚»ã‚¹æƒ…å ±
      */
     public ProcessInfo getProcessInfo(String command);
     
     /**
-     * ‘S‚Ä‚ÌƒvƒƒZƒX‚Ìî•ñ‚ğæ“¾‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ—ãƒ­ã‚»ã‚¹ã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒZƒXî•ñ‚Ì”z—ñ
+     * @return ãƒ—ãƒ­ã‚»ã‚¹æƒ…å ±ã®é…åˆ—
      */
     public ProcessInfo[] getProcessInfos();
 }

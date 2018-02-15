@@ -36,7 +36,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectInput;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒTƒuƒWƒFƒNƒg“o˜^—v‹ƒƒbƒZ[ƒWƒNƒ‰ƒXB<p>
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆç™»éŒ²è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

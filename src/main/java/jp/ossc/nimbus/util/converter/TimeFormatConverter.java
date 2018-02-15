@@ -35,7 +35,7 @@ import java.util.Date;
 import java.sql.Time;
 
 /**
- * ƒ^ƒCƒ€ƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^B<p>
+ * ã‚¿ã‚¤ãƒ ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,16 +45,16 @@ public class TimeFormatConverter extends DateFormatConverter
     private static final long serialVersionUID = -5574663877130540939L;
 
     /**
-     * ƒtƒH[ƒ}ƒbƒg"yyyy/MM/dd HH:mm:ss.SSS"‚Å“ú•t¨•¶š—ñ•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ"yyyy/MM/dd HH:mm:ss.SSS"ã§æ—¥ä»˜â†’æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public TimeFormatConverter(){
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param format ”’lƒtƒH[ƒ}ƒbƒg
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param format æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      * @see #DATE_TO_STRING
      * @see #STRING_TO_DATE
      */
@@ -63,11 +63,11 @@ public class TimeFormatConverter extends DateFormatConverter
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         

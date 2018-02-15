@@ -34,81 +34,81 @@ package jp.ossc.nimbus.service.test;
 import java.util.Date;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹î•ñ‚ğ‚Á‚½ƒeƒXƒgƒŠƒ\[ƒXB<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æƒ…å ±ã‚’æŒã£ãŸãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface ScheduledTestResource extends TestResourceBase {
     
     /**
-     * ì¬Ò‚ğæ“¾‚·‚éB<p>
+     * ä½œæˆè€…ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ì¬Ò
+     * @return ä½œæˆè€…
      */
     public String getCreator();
     
     /**
-     * ì¬ŠJn—\’è“ú‚ğæ“¾‚·‚éB<p>
+     * ä½œæˆé–‹å§‹äºˆå®šæ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ì¬ŠJn—\’è“ú
+     * @return ä½œæˆé–‹å§‹äºˆå®šæ—¥æ™‚
      */
     public Date getScheduledCreateStartDate();
     
     /**
-     * ì¬I—¹—\’è“ú‚ğæ“¾‚·‚éB<p>
+     * ä½œæˆçµ‚äº†äºˆå®šæ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ì¬I—¹—\’è“ú
+     * @return ä½œæˆçµ‚äº†äºˆå®šæ—¥æ™‚
      */
     public Date getScheduledCreateEndDate();
     
     /**
-     * —\’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * äºˆå®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —\’èƒRƒXƒg
+     * @return äºˆå®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
     
     /**
-     * ì¬ŠJn“ú‚ğæ“¾‚·‚éB<p>
+     * ä½œæˆé–‹å§‹æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ì¬ŠJn“ú
+     * @return ä½œæˆé–‹å§‹æ—¥æ™‚
      */
     public Date getCreateStartDate();
     
     /**
-     * ì¬I—¹“ú‚ğæ“¾‚·‚éB<p>
+     * ä½œæˆçµ‚äº†æ—¥æ™‚ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ì¬I—¹“ú
+     * @return ä½œæˆçµ‚äº†æ—¥æ™‚
      */
     public Date getCreateEndDate();
     
     /**
-     * ƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒXƒg
+     * @return ã‚³ã‚¹ãƒˆ
      */
     public double getCost();
     
     /**
-     * i’»—¦‚ğæ“¾‚·‚éB<p>
+     * é€²æ—ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return i’»—¦
+     * @return é€²æ—ç‡
      */
     public double getProgress();
     
     /**
-     * w’è‚³‚ê‚½ƒAƒNƒVƒ‡ƒ“‚Ì—\’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®äºˆå®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return —\’èƒRƒXƒg
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return äºˆå®šã‚³ã‚¹ãƒˆ
      */
     public double getActionExpectedCost(String actionId);
     
     /**
-     * w’è‚³‚ê‚½ƒAƒNƒVƒ‡ƒ“‚ÌƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ƒRƒXƒg
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return ã‚³ã‚¹ãƒˆ
      */
     public double getActionCost(String actionId);
 }

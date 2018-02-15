@@ -54,7 +54,7 @@ import jp.ossc.nimbus.lang.*;
 import jp.ossc.nimbus.service.queue.DefaultQueueService;
 
 /**
- * Nimbus IOC ŒÄ‚Ño‚µƒT[ƒrƒXB<p>
+ * Nimbus IOC å‘¼ã³å‡ºã—ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @version $Name:  $
  * @author H.Nakano
@@ -65,202 +65,202 @@ public class DefaultFacadeCallService extends ServiceBase
     
     private static final long serialVersionUID = 7904330719854132378L;
     
-    /** FacadeEJBFactoryƒT[ƒrƒX–¼ */
+    /** FacadeEJBFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mEJBFactoryServiceName;
     
-    /** FacadeEJBFactoryƒT[ƒrƒX */
+    /** FacadeEJBFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private EJBFactory mEjbFactory;
     
-    /** FacadeEJB–¼ */
+    /** FacadeEJBå */
     private String facadeEjbName = "";
     
-    /** UnitOfWorkEJBFactoryƒT[ƒrƒX–¼ */
+    /** UnitOfWorkEJBFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mUnitOfWorkEJBFactoryServiceName;
     
-    /** UnitOfWorkEJBFactoryƒT[ƒrƒX */
+    /** UnitOfWorkEJBFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private EJBFactory mUnitOfWorkEjbFactory;
     
-    /** UnitOfWorkEJB–¼ */
+    /** UnitOfWorkEJBå */
     private String unitOfWorkEjbName = "";
     
-    /** CommandEJBFactoryƒT[ƒrƒX–¼ */
+    /** CommandEJBFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mCommandEJBFactoryServiceName;
     
-    /** CommandEJBFactoryƒT[ƒrƒX */
+    /** CommandEJBFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private EJBFactory mCommandEjbFactory;
     
-    /** CommandEJB–¼ */
+    /** CommandEJBå */
     private String commandEjbName = "";
     
-    /** QueueƒT[ƒrƒX–¼ */
+    /** Queueã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName queueServiceName;
     
-    /** QueueƒT[ƒrƒX */
+    /** Queueã‚µãƒ¼ãƒ“ã‚¹ */
     private jp.ossc.nimbus.service.queue.Queue requestQueue;
     
-    /** QueueJNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼ */
+    /** QueueJNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mJndiFinderServiceName;
     
-    /** QueueJNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX */
+    /** QueueJNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
     private JndiFinder mJndiFinder;
     
-    /** Queue–¼ */
+    /** Queueå */
     private String mQueueName;
     
-    /** QueueResourceFactoryƒT[ƒrƒX–¼ */
+    /** QueueResourceFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mResourceFactoryServiceName;
     
-    /** QueueResourceFactoryƒT[ƒrƒX */
+    /** QueueResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private ResourceFactory mResourceFactory;
     
-    /** JMSƒƒbƒZ[ƒW”zMƒ‚[ƒh•¶š—ñ */
+    /** JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ãƒ¢ãƒ¼ãƒ‰æ–‡å­—åˆ— */
     private String deliveryModeStr = DELIVERY_MODE_PERSISTENT;
     
-    /** JMSƒƒbƒZ[ƒW”zMƒ‚[ƒh */
+    /** JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ */
     private int deliveryMode = Message.DEFAULT_DELIVERY_MODE;
     
-    /** JMSƒƒbƒZ[ƒW—Dæ‡ˆÊ */
+    /** JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½ */
     private int priority = Message.DEFAULT_PRIORITY;
     
-    /** JMSƒƒbƒZ[ƒWõ–½ */
+    /** JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½ */
     private long timeToLive = Message.DEFAULT_TIME_TO_LIVE;
     
     private ServiceName threadContextServiceName;
     private String[] threadContextKeys;
     
-    /** ”ñ“¯ŠúIOCŒÄ‚Ño‚µ—p‚ÌJMS Message‚Éİ’è‚·‚éƒvƒƒpƒeƒB */
+    /** éåŒæœŸIOCå‘¼ã³å‡ºã—ç”¨ã®JMS Messageã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ */
     private Map jmsMessageProperties;
     
-    /** FacadeValue‚Ìƒwƒbƒ_‚©‚çJMS Message‚ÌƒvƒƒpƒeƒB‚Éİ’è‚·‚éƒwƒbƒ_–¼”z—ñ */
+    /** FacadeValueã®ãƒ˜ãƒƒãƒ€ã‹ã‚‰JMS Messageã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è¨­å®šã™ã‚‹ãƒ˜ãƒƒãƒ€åé…åˆ— */
     private String[] headerNamesForJMSMessageProperty;
     
-    /** ”ñ“¯ŠúIOCŒÄ‚Ño‚µ—p‚ÌJMS Message‚Éİ’è‚·‚éJMSí•Ê */
+    /** éåŒæœŸIOCå‘¼ã³å‡ºã—ç”¨ã®JMS Messageã«è¨­å®šã™ã‚‹JMSç¨®åˆ¥ */
     private String jmsType;
     
-    /** ”ñ“¯ŠúIOCŒÄ‚Ño‚µ—p‚ÌJMS Message‚Éİ’è‚·‚é—LŒøŠúŠÔ */
+    /** éåŒæœŸIOCå‘¼ã³å‡ºã—ç”¨ã®JMS Messageã«è¨­å®šã™ã‚‹æœ‰åŠ¹æœŸé–“ */
     private long jmsExpiration = -1;
     
     private boolean isLocal;
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setEjbFactoryServieName(ServiceName name){
         mEJBFactoryServiceName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getEjbFactoryServieName(){
         return mEJBFactoryServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setFacadeEjbName(String name){
         facadeEjbName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String getFacadeEjbName(){
         return facadeEjbName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setUnitOfWorkEjbFactoryServieName(ServiceName name){
         mUnitOfWorkEJBFactoryServiceName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getUnitOfWorkEjbFactoryServieName(){
         return mUnitOfWorkEJBFactoryServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setUnitOfWorkEjbName(String name){
         unitOfWorkEjbName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String getUnitOfWorkEjbName(){
         return unitOfWorkEjbName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setCommandEjbFactoryServieName(ServiceName name){
         mCommandEJBFactoryServiceName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getCommandEjbFactoryServieName(){
         return mCommandEJBFactoryServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setCommandEjbName(String name){
         commandEjbName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String getCommandEjbName(){
         return commandEjbName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setQueueFinderServiceName(ServiceName name){
         mJndiFinderServiceName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getQueueFinderServiceName(){
         return mJndiFinderServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setQueueName(String queueName){
          this.mQueueName = queueName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String getQueueName(){
         return this.mQueueName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setQueueSessionFactoryServiceName(ServiceName name){
         mResourceFactoryServiceName = name;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getQueueSessionFactoryServiceName(){
         return mResourceFactoryServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setThreadContextKeys(String[] keys){
         threadContextKeys = keys;
     }
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String[] getThreadContextKeys(){
         return threadContextKeys;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setDeliveryMode(String mode){
         if(DELIVERY_MODE_PERSISTENT.equals(mode)){
             deliveryMode = DeliveryMode.PERSISTENT;
@@ -272,127 +272,127 @@ public class DefaultFacadeCallService extends ServiceBase
         deliveryModeStr = mode;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String getDeliveryMode(){
         return deliveryModeStr;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setPriority(int priority){
         this.priority = priority;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public int getPriority(){
         return priority;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setTimeToLive(long millis){
         timeToLive = millis;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public long getTimeToLive(){
         return timeToLive;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setJMSMessageProperty(String name, Object value){
         jmsMessageProperties.put(name, value);
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public Object getJMSMessageProperty(String name){
         return jmsMessageProperties.get(name);
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public Map getJMSMessageProperties(){
         return jmsMessageProperties;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setHeaderNamesForJMSMessageProperty(String[] names){
         headerNamesForJMSMessageProperty = names;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String[] getHeaderNamesForJMSMessageProperty(){
         return headerNamesForJMSMessageProperty;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setJMSType(String type){
         jmsType = type;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public String getJMSType(){
         return jmsType;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setJMSExpiration(long expiration){
         jmsExpiration = expiration;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public long getJMSExpiration(){
         return jmsExpiration;
     }
     
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public void setLocal(boolean isLocal){
         this.isLocal = isLocal;
     }
-    // DefaultFacadeCallServiceMBean‚ÌJavaDoc
+    // DefaultFacadeCallServiceMBeanã®JavaDoc
     public boolean isLocal(){
         return isLocal;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         jmsMessageProperties = new HashMap();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
-        // Facade EJB‚ÌEJBFactoryƒT[ƒrƒX‚ğæ“¾
+        // Facade EJBã®EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
         if(mEJBFactoryServiceName != null){
             mEjbFactory = (EJBFactory)ServiceManagerFactory
                 .getServiceObject(mEJBFactoryServiceName);
         }
-        // UnitOfWork EJB‚ÌEJBFactoryƒT[ƒrƒX‚ğæ“¾
+        // UnitOfWork EJBã®EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
         if(mUnitOfWorkEJBFactoryServiceName != null){
             mUnitOfWorkEjbFactory = (EJBFactory)ServiceManagerFactory
                 .getServiceObject(mUnitOfWorkEJBFactoryServiceName);
         }
-        // Command EJB‚ÌEJBFactoryƒT[ƒrƒX‚ğæ“¾
+        // Command EJBã®EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
         if(mCommandEJBFactoryServiceName != null){
             mCommandEjbFactory = (EJBFactory)ServiceManagerFactory
                 .getServiceObject(mCommandEJBFactoryServiceName);
         }
-        // QueueƒT[ƒrƒX‚ğæ“¾
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
         if(queueServiceName != null){
             requestQueue = (jp.ossc.nimbus.service.queue.Queue)
                 ServiceManagerFactory
                     .getServiceObject(queueServiceName);
         }
-        // QueueƒZƒbƒVƒ‡ƒ“ResourceFactoryƒT[ƒrƒX‚ğæ“¾
+        // Queueã‚»ãƒƒã‚·ãƒ§ãƒ³ResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
         if(mResourceFactoryServiceName != null){
             mResourceFactory = (ResourceFactory)ServiceManagerFactory
                 .getServiceObject(mResourceFactoryServiceName);
         }
-        // JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒXæ“¾
+        // JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å–å¾—
         if(mJndiFinderServiceName != null){
             mJndiFinder = (JndiFinder)ServiceManagerFactory
                 .getServiceObject(mJndiFinderServiceName);
@@ -412,60 +412,60 @@ public class DefaultFacadeCallService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         jmsMessageProperties = null;
     }
     
     /**
-     * Facade EJB‚ğæ“¾‚·‚éEJBFactory‚ğİ’è‚·‚éB<p>
+     * Facade EJBã‚’å–å¾—ã™ã‚‹EJBFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param ejbFactory Facade EJB‚ğæ“¾‚·‚éEJBFactory
+     * @param ejbFactory Facade EJBã‚’å–å¾—ã™ã‚‹EJBFactory
      */
     public void setEJBFactory(EJBFactory ejbFactory){
         mEjbFactory = ejbFactory;
     }
     
     /**
-     * UnitOfWork EJB‚ğæ“¾‚·‚éEJBFactory‚ğİ’è‚·‚éB<p>
+     * UnitOfWork EJBã‚’å–å¾—ã™ã‚‹EJBFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param unitOfWorkEjbFactory UnitOfWork EJB‚ğæ“¾‚·‚éEJBFactory
+     * @param unitOfWorkEjbFactory UnitOfWork EJBã‚’å–å¾—ã™ã‚‹EJBFactory
      */
     public void setUnitOfWorkEjbFactory(EJBFactory unitOfWorkEjbFactory){
         mUnitOfWorkEjbFactory = unitOfWorkEjbFactory;
     }
     
     /**
-     * Command EJB‚ğæ“¾‚·‚éEJBFactory‚ğİ’è‚·‚éB<p>
+     * Command EJBã‚’å–å¾—ã™ã‚‹EJBFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param commandEjbFactory Command EJB‚ğæ“¾‚·‚éEJBFactory
+     * @param commandEjbFactory Command EJBã‚’å–å¾—ã™ã‚‹EJBFactory
      */
     public void setCommandEJBFactory(EJBFactory commandEjbFactory){
         mCommandEjbFactory = commandEjbFactory;
     }
     
     /**
-     * JMS Queue‚ğlookup‚·‚éJndiFinder‚ğİ’è‚·‚éB<p>
+     * JMS Queueã‚’lookupã™ã‚‹JndiFinderã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param jndiFinder JMS Queue‚ğlookup‚·‚éJndiFinder
+     * @param jndiFinder JMS Queueã‚’lookupã™ã‚‹JndiFinder
      */
     public void setJndiFinder(JndiFinder jndiFinder){
         mJndiFinder = jndiFinder;
     }
     
     /**
-     * JMS QueueSession‚ğ¶¬‚·‚éResourceFactory‚ğİ’è‚·‚éB<p>
+     * JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹ResourceFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param resourceFactory JMS QueueSession‚ğ¶¬‚·‚éResourceFactory
+     * @param resourceFactory JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹ResourceFactory
      */
     public void setResourceFactory(ResourceFactory resourceFactory){
         mResourceFactory = resourceFactory;
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public Command syncCommandCall(Command value){
         if(mCommandEjbFactory == null){
             throw new UnsupportedOperationException();
@@ -518,7 +518,7 @@ public class DefaultFacadeCallService extends ServiceBase
         return ret;
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public UnitOfWork syncUnitOfWorkCall(UnitOfWork value){
         if(mUnitOfWorkEjbFactory == null){
             throw new UnsupportedOperationException();
@@ -571,7 +571,7 @@ public class DefaultFacadeCallService extends ServiceBase
         return ret;
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public FacadeValue syncFacadeCall(FacadeValue value){
         if(mEjbFactory == null){
             throw new UnsupportedOperationException();
@@ -613,7 +613,7 @@ public class DefaultFacadeCallService extends ServiceBase
                 );
             }
             setHeaderFromThreadContext(value);
-            //ƒ}ƒXƒ^[ƒIƒuƒWƒFƒNƒg‚ğEJB‚ÉˆË—Š‚µ‚Äæ“¾
+            //ãƒã‚¹ã‚¿ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’EJBã«ä¾é ¼ã—ã¦å–å¾—
             ret = localObj.invokeFacade(value);
         }else{
             SLSBFacadeRemote remoteObj = null;
@@ -651,7 +651,7 @@ public class DefaultFacadeCallService extends ServiceBase
                 );
             }
             setHeaderFromThreadContext(value);
-            //ƒ}ƒXƒ^[ƒIƒuƒWƒFƒNƒg‚ğEJB‚ÉˆË—Š‚µ‚Äæ“¾
+            //ãƒã‚¹ã‚¿ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’EJBã«ä¾é ¼ã—ã¦å–å¾—
             try{
                 ret = remoteObj.invokeFacade(value);
             }catch(RemoteException e1){
@@ -684,12 +684,12 @@ public class DefaultFacadeCallService extends ServiceBase
         }
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public FacadeValue[] syncParallelFacadeCall(FacadeValue[] values){
         return syncParallelFacadeCall(values, 0);
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public FacadeValue[] syncParallelFacadeCall(
         FacadeValue[] values,
         long timeout
@@ -860,7 +860,7 @@ public class DefaultFacadeCallService extends ServiceBase
         return result;
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public void unsyncFacadeCall(FacadeValue value){
         if((mResourceFactory == null || mJndiFinder == null)
             && requestQueue == null
@@ -932,7 +932,7 @@ public class DefaultFacadeCallService extends ServiceBase
         requestQueue.push(new UnsyncRequest(this, value));
     }
     
-    // FacadeCaller‚ÌJavaDoc
+    // FacadeCallerã®JavaDoc
     public void unsyncFacadeCall(FacadeValue[] values){
         for(int i = 0; i < values.length; i++){
             unsyncFacadeCall(values[i]);

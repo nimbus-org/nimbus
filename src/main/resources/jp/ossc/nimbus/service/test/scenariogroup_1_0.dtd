@@ -5,11 +5,11 @@ The DOCTYPE is:
       "-//Nimbus//DTD Nimbus ScenarioGroup Resource 1.0//JA"
       "http://nimbus.sourceforge.jp/dtd/scenariogroup_1_0.dtd">
 
-��:
-    <scenarioGroup creator="���[�U�P" expectedCost="60" scheduledCreateStartDate="2016/12/12 09:00" scheduledCreateEndDate="2016/12/12 10:00"
+例:
+    <scenarioGroup creator="ユーザ１" expectedCost="60" scheduledCreateStartDate="2016/12/12 09:00" scheduledCreateEndDate="2016/12/12 10:00"
                                     createStartDate="2016/12/12 10:00" createEndDate="2016/12/12 12:00" progress="30" cost="60">
-        <title>�V�i���I�O���[�v�P</title>
-        <description>�V�i���I�O���[�v�P�̐����ł��B</description>
+        <title>シナリオグループ１</title>
+        <description>シナリオグループ１の説明です。</description>
         <phase>
             <include>
                 phase1,phase2
@@ -19,8 +19,8 @@ The DOCTYPE is:
             </exclude>
         </phase>
         <action id="001" type="before" serviceName="Nimbus#TestAction1" expectedCost="30" cost="30">
-            <title>�V�i���I�O���[�v�P�̃e�X�g�A�N�V���P</title>
-            <description>�V�i���I�O���[�v�P�̃e�X�g�A�N�V���P�̐����ł��B</description>
+            <title>シナリオグループ１のテストアクショ１</title>
+            <description>シナリオグループ１のテストアクショ１の説明です。</description>
             <phase>
                 <include>
                     phase1
@@ -31,8 +31,8 @@ The DOCTYPE is:
             </resources>
         </action>
         <action id="002" type="before" serviceName="Nimbus#TestAction2" expectedCost="30" cost="20">
-            <title>�V�i���I�O���[�v�P�̃e�X�g�A�N�V���Q</title>
-            <description>�V�i���I�O���[�v�P�̃e�X�g�A�N�V���Q�̐����ł��B</description>
+            <title>シナリオグループ１のテストアクショ２</title>
+            <description>シナリオグループ１のテストアクショ２の説明です。</description>
             <phase>
                 <exclude>
                     phase1
@@ -46,113 +46,113 @@ The DOCTYPE is:
     </scenarioGroup>
 -->
 
-<!-- scenarioGroup�v�f�́A�V�i���I�O���[�v�Ŏg�p����e�X�g���\�[�X�Q���`���郋�[�g�v�f�ł��B
+<!-- scenarioGroup要素は、シナリオグループで使用するテストリソース群を定義するルート要素です。
 -->
 <!ELEMENT scenarioGroup (title?|description?|phase?|category*|action*)*>
 
-<!-- title�v�f�́A�e�X�g�̓��e�Ɋւ���^�C�g�����`���܂��B
+<!-- title要素は、テストの内容に関するタイトルを定義します。
 -->
 <!ELEMENT title (#PCDATA)>
 
-<!-- description�v�f�́A�e�X�g�̓��e�Ɋւ�����������`���܂��B
+<!-- description要素は、テストの内容に関する説明文を定義します。
 -->
 <!ELEMENT description (#PCDATA)>
 
-<!-- phase�v�f�́A�Ώۂ̃t�F�[�Y���`���郋�[�g�v�f�ł��B
+<!-- phase要素は、対象のフェーズを定義するルート要素です。
 -->
 <!ELEMENT phase (include?|exclude?)*>
 
-<!-- category�v�f�́A�Ώۂ���������J�e�S�����`����v�f�ł��B
+<!-- category要素は、対象が所属するカテゴリを定義する要素です。
 -->
 <!ELEMENT category EMPTY>
 
-<!-- name�����́A�J�e�S���̖��O���`���܂��B
+<!-- name属性は、カテゴリの名前を定義します。
 -->
 <!ATTLIST category name CDATA #REQUIRED>
 
-<!-- value�����́A�J�e�S���̒l���`���܂��B
+<!-- value属性は、カテゴリの値を定義します。
 -->
 <!ATTLIST category value CDATA #REQUIRED>
 
-<!-- include�v�f�́A���s����t�F�[�Y���w�肷��v�f�ł��B
+<!-- include要素は、実行するフェーズを指定する要素です。
 -->
 <!ELEMENT include (#PCDATA)>
 
-<!-- exclude�v�f�́A���s���Ȃ��t�F�[�Y���w�肷��v�f�ł��B
+<!-- exclude要素は、実行しないフェーズを指定する要素です。
 -->
 <!ELEMENT exclude (#PCDATA)>
 
-<!-- creator�����́AscenarioGroup�̃��\�[�X�̍쐬�҂��`���܂��B
+<!-- creator属性は、scenarioGroupのリソースの作成者を定義します。
 -->
 <!ATTLIST scenarioGroup creator CDATA #IMPLIED>
 
-<!-- scheduledCreateStartDate�����́AscenarioGroup�̃��\�[�X�̍쐬�J�n�\���(yyyy/MM/dd HH:mm)���`���܂��B
+<!-- scheduledCreateStartDate属性は、scenarioGroupのリソースの作成開始予定日(yyyy/MM/dd HH:mm)を定義します。
 -->
 <!ATTLIST scenarioGroup scheduledCreateStartDate CDATA #IMPLIED>
 
-<!-- scheduledCreateEndDate�����́AscenarioGroup�̃��\�[�X�̍쐬�I���\���(yyyy/MM/dd HH:mm)���`���܂��B
+<!-- scheduledCreateEndDate属性は、scenarioGroupのリソースの作成終了予定日(yyyy/MM/dd HH:mm)を定義します。
 -->
 <!ATTLIST scenarioGroup scheduledCreateEndDate CDATA #IMPLIED>
 
-<!-- createStartDate�����́AscenarioGroup�̃��\�[�X�̍쐬�J��(yyyy/MM/dd HH:mm)���`���܂��B
+<!-- createStartDate属性は、scenarioGroupのリソースの作成開日(yyyy/MM/dd HH:mm)を定義します。
 -->
 <!ATTLIST scenarioGroup createStartDate CDATA #IMPLIED>
 
-<!-- createEndDate�����́AscenarioGroup�̃��\�[�X�̍쐬�I����(yyyy/MM/dd HH:mm)���`���܂��B
+<!-- createEndDate属性は、scenarioGroupのリソースの作成終了日(yyyy/MM/dd HH:mm)を定義します。
 -->
 <!ATTLIST scenarioGroup createEndDate CDATA #IMPLIED>
 
-<!-- expectedCost�����́A���\�[�X��`���쐬���邽�߂̗\��H�����`���܂��B
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
 -->
 <!ATTLIST scenarioGroup expectedCost CDATA #IMPLIED>
 
-<!-- cost�����́A���\�[�X��`���쐬�������эH�����`���܂��B
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
 -->
 <!ATTLIST scenarioGroup cost CDATA #IMPLIED>
 
-<!-- progress�����́A���\�[�X��`�̍쐬�i�������`���܂��B
+<!-- progress属性は、リソース定義の作成進捗率を定義します。
 -->
 <!ATTLIST scenarioGroup progress CDATA #IMPLIED>
 
-<!-- action�v�f�́A�e�X�g�Ɏg�p���郊�\�[�X�������`���܂��B
+<!-- action要素は、テストに使用するリソース属性を定義します。
 -->
 <!ELEMENT action (title?|description?|phase?|resources?)*>
 
-<!-- id�����́A���\�[�X��ID���`���܂��B
+<!-- id属性は、リソースのIDを定義します。
 -->
 <!ATTLIST action id CDATA #REQUIRED>
 
-<!-- type�����́A���\�[�X�̎��s�^�C�v���`���܂��B
-before�͊J�n���Ɏ��s����܂��B
-finally�̓G���[�������ł��Ō�ɕK�����s����܂��B
+<!-- type属性は、リソースの実行タイプを定義します。
+beforeは開始時に実行されます。
+finallyはエラー発生時でも最後に必ず実行されます。
 -->
 <!ATTLIST action type (before|finally) #REQUIRED>
 
-<!-- serviceName�����́A���s����A�N�V�����̃T�[�r�X�����`���܂��B
+<!-- serviceName属性は、実行するアクションのサービス名を定義します。
 -->
 <!ATTLIST action serviceName CDATA #REQUIRED>
 
-<!-- expectedCost�����́A���\�[�X��`���쐬���邽�߂̗\��H�����`���܂��B
+<!-- expectedCost属性は、リソース定義を作成するための予定工数を定義します。
 -->
 <!ATTLIST action expectedCost CDATA #IMPLIED>
 
-<!-- cost�����́A���\�[�X��`���쐬�������эH�����`���܂��B
+<!-- cost属性は、リソース定義を作成した実績工数を定義します。
 -->
 <!ATTLIST action cost CDATA #IMPLIED>
 
-<!-- resources�v�f�́A�A�N�V���������s����ۂɎg�p���郊�\�[�X�̏W�����`���܂��B
+<!-- resources要素は、アクションを実行する際に使用するリソースの集合を定義します。
 -->
 <!ELEMENT resources (resource+)>
 
-<!-- resource�v�f�́A�A�N�V���������s����ۂɎg�p���郊�\�[�X���`���܂��B
-name�������w�肵�āA���\�[�X�t�@�C�����w�肷�邩�A���e�Ń��\�[�X��������w�肵�܂��B
+<!-- resource要素は、アクションを実行する際に使用するリソースを定義します。
+name属性を指定して、リソースファイルを指定するか、内容でリソース文字列を指定します。
 -->
 <!ELEMENT resource (#PCDATA)*>
 
-<!-- name�����́A���\�[�X�t�@�C���̃t�@�C�������`���܂��B
+<!-- name属性は、リソースファイルのファイル名を定義します。
 -->
 <!ATTLIST resource name CDATA #IMPLIED>
 
-<!-- encoding�����́A���\�[�X�t�@�C���̕����R�[�h���`���܂��B
+<!-- encoding属性は、リソースファイルの文字コードを定義します。
 -->
 <!ATTLIST resource encoding CDATA #IMPLIED>

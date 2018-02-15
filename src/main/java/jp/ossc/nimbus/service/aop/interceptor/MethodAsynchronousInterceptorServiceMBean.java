@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodAsynchronousInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MethodAsynchronousInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MethodAsynchronousInterceptorService
@@ -42,113 +42,113 @@ import jp.ossc.nimbus.core.*;
 public interface MethodAsynchronousInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÅA{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}‚ğ¶¬‚µAg—p‚·‚éB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã€{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}ã‚’ç”Ÿæˆã—ã€ä½¿ç”¨ã™ã‚‹ã€‚
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestQueueServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRequestQueueServiceName();
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğˆê’èŠÔ‘Ò‚Âê‡‚Ìƒ^ƒCƒ€ƒAƒEƒg’l[ms]‚ğİ’è‚·‚éB<p>
+     * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’ä¸€å®šæ™‚é–“å¾…ã¤å ´åˆã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå€¤[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setResponseTimeout(long timeout);
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğˆê’èŠÔ‘Ò‚Âê‡‚Ìƒ^ƒCƒ€ƒAƒEƒg’l[ms]‚ğæ“¾‚·‚éB<p>
+     * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’ä¸€å®šæ™‚é–“å¾…ã¤å ´åˆã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå€¤[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getResponseTimeout();
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğˆê’èŠÔ‘Ò‚Á‚ÄA–ß‚è‚ª•Ô‚Á‚Ä‚±‚È‚©‚Á‚½ê‡‚É—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’ä¸€å®šæ™‚é–“å¾…ã£ã¦ã€æˆ»ã‚ŠãŒè¿”ã£ã¦ã“ãªã‹ã£ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      * 
-     * @param isThrow ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğˆê’èŠÔ‘Ò‚Á‚Ä–ß‚è‚ª•Ô‚Á‚Ä‚±‚È‚©‚Á‚½ê‡‚É—áŠO‚ğthrow‚·‚éê‡true
+     * @param isThrow éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’ä¸€å®šæ™‚é–“å¾…ã£ã¦æˆ»ã‚ŠãŒè¿”ã£ã¦ã“ãªã‹ã£ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆtrue
      */
     public void setFailToWaitResponseTimeout(boolean isThrow);
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğˆê’èŠÔ‘Ò‚Á‚ÄA–ß‚è‚ª•Ô‚Á‚Ä‚±‚È‚©‚Á‚½ê‡‚É—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’ä¸€å®šæ™‚é–“å¾…ã£ã¦ã€æˆ»ã‚ŠãŒè¿”ã£ã¦ã“ãªã‹ã£ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğˆê’èŠÔ‘Ò‚Á‚Ä–ß‚è‚ª•Ô‚Á‚Ä‚±‚È‚©‚Á‚½ê‡‚É—áŠO‚ğthrow‚·‚éê‡true
+     * @return éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’ä¸€å®šæ™‚é–“å¾…ã£ã¦æˆ»ã‚ŠãŒè¿”ã£ã¦ã“ãªã‹ã£ãŸå ´åˆã«ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆtrue
      */
     public boolean isFailToWaitResponseTimeout();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link #setResponseTimeout(long)}‚Å—LŒø‚Èƒ^ƒCƒ€ƒAƒEƒg’l‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Å{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}‚ğ¶¬‚µAg—p‚·‚éBƒ^ƒCƒ€ƒAƒEƒg’l‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Å‚ÍƒŒƒXƒ|ƒ“ƒXƒLƒ…[‚Í‚È‚µ‚ÅAƒŒƒXƒ|ƒ“ƒX‚ÍÌ‚Ä‚ç‚ê‚éB<br>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setResponseTimeout(long)}ã§æœ‰åŠ¹ãªã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}ã‚’ç”Ÿæˆã—ã€ä½¿ç”¨ã™ã‚‹ã€‚ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå€¤ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚­ãƒ¥ãƒ¼ã¯ãªã—ã§ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã¯æ¨ã¦ã‚‰ã‚Œã‚‹ã€‚<br>
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResponseQueueServiceName(ServiceName name);
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResponseQueueServiceName();
     
     /**
-     * ”ñ“¯Šúˆ—‚ğs‚¤ƒXƒŒƒbƒh”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B
+     * éåŒæœŸå‡¦ç†ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚
      *
-     * @param size ƒXƒŒƒbƒh”
+     * @param size ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public void setInvokerThreadSize(int size);
     
     /**
-     * ”ñ“¯Šúˆ—‚ğs‚¤ƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * éåŒæœŸå‡¦ç†ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒŒƒbƒh”
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getInvokerThreadSize();
     
     /**
-     * ”ñ“¯Šúˆ—‚ğs‚¤ƒXƒŒƒbƒh‚ªƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * éåŒæœŸå‡¦ç†ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰ãŒãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param isDaemon ƒf[ƒ‚ƒ“‚Ìê‡true
+     * @param isDaemon ãƒ‡ãƒ¼ãƒ¢ãƒ³ã®å ´åˆtrue
      */
     public void setInvokerThreadDaemon(boolean isDaemon);
     
     /**
-     * ”ñ“¯Šúˆ—‚ğs‚¤ƒXƒŒƒbƒh‚ªƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * éåŒæœŸå‡¦ç†ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰ãŒãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ƒf[ƒ‚ƒ“
+     * @return trueã®å ´åˆãƒ‡ãƒ¼ãƒ¢ãƒ³
      */
     public boolean isInvokerThreadDaemon();
     
     /**
-     * ”ñ“¯Šúˆ—‚ğÀs’†‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * éåŒæœŸå‡¦ç†ã‚’å®Ÿè¡Œä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”ñ“¯Šúˆ—‚ğÀs’†‚ÌƒXƒŒƒbƒh”
+     * @return éåŒæœŸå‡¦ç†ã‚’å®Ÿè¡Œä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getActiveInvokerThreadSize();
     
     /**
-     * ŒÄ‚Ño‚µƒXƒŒƒbƒh‚Ì–ß‚è’l‚Æ‚µ‚ÄA‰“šƒLƒ…[‚Ì–ß‚è’l‚ğ•Ô‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * å‘¼ã³å‡ºã—ã‚¹ãƒ¬ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¨ã—ã¦ã€å¿œç­”ã‚­ãƒ¥ãƒ¼ã®æˆ»ã‚Šå€¤ã‚’è¿”ã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isReturn –ß‚è’l‚ğ•Ô‚·ê‡true
+     * @param isReturn æˆ»ã‚Šå€¤ã‚’è¿”ã™å ´åˆtrue
      */
     public void setReturnResponse(boolean isReturn);
     
     /**
-     * ŒÄ‚Ño‚µƒXƒŒƒbƒh‚Ì–ß‚è’l‚Æ‚µ‚ÄA‰“šƒLƒ…[‚Ì–ß‚è’l‚ğ•Ô‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚¹ãƒ¬ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¨ã—ã¦ã€å¿œç­”ã‚­ãƒ¥ãƒ¼ã®æˆ»ã‚Šå€¤ã‚’è¿”ã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A–ß‚è’l‚ğ•Ô‚·
+     * @return trueã®å ´åˆã€æˆ»ã‚Šå€¤ã‚’è¿”ã™
      */
     public boolean isReturnResponse();
 }

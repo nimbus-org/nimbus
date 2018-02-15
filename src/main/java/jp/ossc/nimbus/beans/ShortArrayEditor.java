@@ -34,25 +34,25 @@ package jp.ossc.nimbus.beans;
 import java.util.*;
 
 /**
- * short�z��^��PropertyEditor�N���X�B<p>
- * �J���}��؂�̕������short[]�^�̃I�u�W�F�N�g�ɕϊ�����B<br>
- * �󔒂̓g���������B
- * �󔒂́A{@link java.lang.Character#isWhitespace(char)}�Ŕ��肳���B
- * "&lt;!--"��"--&gt;"�Ɉ͂܂ꂽ������̓R�����g�Ɖ��߂��ꖳ�������B
- * "${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
- * short�^��static�萔�����Q�Ƃ��鎖���ł���B<br>
- * �܂��A����l�Ƃ��āAMAX_VALUE�AMIN_VALUE���T�|�[�g����B<br>
+ * short配列型のPropertyEditorクラス。<p>
+ * カンマ区切りの文字列をshort[]型のオブジェクトに変換する。<br>
+ * 空白はトリムされる。
+ * 空白は、{@link java.lang.Character#isWhitespace(char)}で判定される。
+ * "&lt;!--"と"--&gt;"に囲まれた文字列はコメントと解釈され無視される。
+ * "${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
+ * short型のstatic定数名を参照する事もできる。<br>
+ * また、特殊値として、MAX_VALUE、MIN_VALUEをサポートする。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;1,2, 3  <br>
  * &nbsp;&nbsp;4, 5,6 ,&lt;!--7,<br>
  * &nbsp;&nbsp;8,--&gt;9<br>
  * <br>
- * &nbsp;�̂悤�ȕ�����<br>
+ * &nbsp;のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;new short[]{1, 2, 34, 5, 6, 9}<br>
  * <br>
- * &nbsp;�̂悤�ɕϊ������B<br>
+ * &nbsp;のように変換される。<br>
  *
  * @author M.Takata
  */

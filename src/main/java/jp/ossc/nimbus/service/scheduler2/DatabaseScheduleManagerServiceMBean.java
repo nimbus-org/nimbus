@@ -36,548 +36,548 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DatabaseScheduleManagerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseScheduleManagerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ÌŠÄ‹‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã®ç›£è¦–ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_CONTROL_STATE_CHECK_ERROR = "DSM__00001";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ^ƒCƒ€ƒI[ƒo[ŠÄ‹‚É¸”s‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ç›£è¦–ã«å¤±æ•—ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_TIMEOVER_CHECK_ERROR = "DSM__00002";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ^ƒCƒ€ƒI[ƒo[ŠÄ‹‚Åƒ^ƒCƒ€ƒI[ƒo[‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ğ”­Œ©‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ç›£è¦–ã§ã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç™ºè¦‹ã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     public static final String MSG_ID_TIMEOVER_ERROR = "DSM__00003";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚Ì“ú•tƒJƒ‰ƒ€‚Ì“ú•tƒtƒH[ƒ}ƒbƒg‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ—¥ä»˜ã‚«ãƒ©ãƒ ã®æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_DATE_FORMAT = "yyyyMMdd";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‹y‚ÑƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒJƒ‰ƒ€‚ÌƒtƒH[ƒ}ƒbƒg‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«åŠã³ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ™‚åˆ»ã‚«ãƒ©ãƒ ã®æ™‚åˆ»ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_TIME_FORMAT = "HHmmssSSS";
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹í•Ê‚Æ{@link ScheduleMaker}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã¨{@link ScheduleMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ƒXƒPƒWƒ…[ƒ‹í•Ê‚ÆScheduleMakerƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒOBƒXƒPƒWƒ…[ƒ‹í•Ê=ScheduleMakerƒT[ƒrƒX–¼
+     * @param mapping ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã¨ScheduleMakerã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥=ScheduleMakerã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleMakerTypeMapping(Properties mapping);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹í•Ê‚Æ{@link ScheduleMaker}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã¨{@link ScheduleMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹í•Ê‚ÆScheduleMakerƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã¨ScheduleMakerã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getScheduleMakerTypeMapping();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹í•Ê‚Æ{@link ScheduleMaker}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚É³‹K•\Œ»‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åg—p‚µ‚È‚¢B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã¨{@link ScheduleMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã«æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ä½¿ç”¨ã—ãªã„ã€‚<br>
      *
-     * @param isEnable ³‹K•\Œ»‚ğg—p‚·‚éê‡‚ÍAtrue
+     * @param isEnable æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setScheduleMakerTypeRegexEnabled(boolean isEnable);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹í•Ê‚Æ{@link ScheduleMaker}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚É³‹K•\Œ»‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã¨{@link ScheduleMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã«æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA³‹K•\Œ»‚ğg—p‚·‚é
+     * @return trueã®å ´åˆã¯ã€æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹
      */
     public boolean isScheduleMakerTypeRegexEnabled();
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link ScheduleMaker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA{@link DefaultScheduleMakerService}‚ª“K—p‚³‚ê‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link ScheduleMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€{@link DefaultScheduleMakerService}ãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name ScheduleMakerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleMakerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultScheduleMakerServiceName(ServiceName name);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link ScheduleMaker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link ScheduleMaker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleMakerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleMakerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultScheduleMakerServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.system.Time Time}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.system.Time Time}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name TimeƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Timeã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTimeServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.system.Time Time}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.system.Time Time}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TimeƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Timeã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTimeServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚Ì“ú•tƒJƒ‰ƒ€‚Ì“ú•tƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATE_FORMAT}B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ—¥ä»˜ã‚«ãƒ©ãƒ ã®æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATE_FORMAT}ã€‚<br>
      * 
-     * @param format “ú•tƒtƒH[ƒ}ƒbƒg
+     * @param format æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setDateFormat(String format);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚Ì“ú•tƒJƒ‰ƒ€‚Ì“ú•tƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ—¥ä»˜ã‚«ãƒ©ãƒ ã®æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return “ú•tƒtƒH[ƒ}ƒbƒg
+     * @return æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public String getDateFormat();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‹y‚ÑƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒJƒ‰ƒ€‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_TIME_FORMAT}B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«åŠã³ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ™‚åˆ»ã‚«ãƒ©ãƒ ã®æ™‚åˆ»ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_TIME_FORMAT}ã€‚<br>
      * 
-     * @param format ƒtƒH[ƒ}ƒbƒg
+     * @param format æ™‚åˆ»ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setTimeFormat(String format);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‹y‚ÑƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒJƒ‰ƒ€‚ÌƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«åŠã³ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ™‚åˆ»ã‚«ãƒ©ãƒ ã®æ™‚åˆ»ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒH[ƒ}ƒbƒg
+     * @return æ™‚åˆ»ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public String getTimeFormat();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‹y‚ÑƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌXVƒ†[ƒUIDƒJƒ‰ƒ€‚Ì’l‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒ[ƒJƒ‹ƒzƒXƒg–¼B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«åŠã³ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã‚«ãƒ©ãƒ ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆåã€‚<br>
      * 
-     * @param id XVƒ†[ƒUID
+     * @param id æ›´æ–°ãƒ¦ãƒ¼ã‚¶ID
      */
     public void setUpdateUserId(String id);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‹y‚ÑƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌXVƒ†[ƒUIDƒJƒ‰ƒ€‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«åŠã³ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ›´æ–°ãƒ¦ãƒ¼ã‚¶IDã‚«ãƒ©ãƒ ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return XVƒ†[ƒUID
+     * @return æ›´æ–°ãƒ¦ãƒ¼ã‚¶ID
      */
     public String getUpdateUserId();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleMasterTableSchema getScheduleMasterTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleMasterTableSchema(DatabaseScheduleManagerService.ScheduleMasterTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleGroupMasterTableSchema getScheduleGroupMasterTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleGroupMasterTableSchema(DatabaseScheduleManagerService.ScheduleGroupMasterTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleDependsMasterTableSchema getScheduleDependsMasterTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleDependsMasterTableSchema(DatabaseScheduleManagerService.ScheduleDependsMasterTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleGroupDependsMasterTableSchema getScheduleGroupDependsMasterTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒ}ƒXƒ^ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleGroupDependsMasterTableSchema(DatabaseScheduleManagerService.ScheduleGroupDependsMasterTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleTableSchema getScheduleTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleTableSchema(DatabaseScheduleManagerService.ScheduleTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleGroupTableSchema getScheduleGroupTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleGroupTableSchema(DatabaseScheduleManagerService.ScheduleGroupTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleDependsTableSchema getScheduleDependsTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleDependsTableSchema(DatabaseScheduleManagerService.ScheduleDependsTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public DatabaseScheduleManagerService.ScheduleGroupDependsTableSchema getScheduleGroupDependsTableSchema();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶ŠÖŒWƒe[ƒuƒ‹‚ÌƒXƒL[ƒ}î•ñ
+     * @param schema ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜é–¢ä¿‚ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public void setScheduleGroupDependsTableSchema(DatabaseScheduleManagerService.ScheduleGroupDependsTableSchema schema);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ID‚ğ”­”Ô‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’ç™ºç•ªã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param query SQL
      */
     public void setNextScheduleIdSelectQuery(String query);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ID‚ğ”­”Ô‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’ç™ºç•ªã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return SQL
      */
     public String getNextScheduleIdSelectQuery();
     
     /**
-     * §Œäó‘Ô‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * åˆ¶å¾¡çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      *
-     * @param interval ŠÔŠu[ms]
+     * @param interval é–“éš”[ms]
      */
     public void setControlStateCheckInterval(long interval);
     
     /**
-     * §Œäó‘Ô‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğ”»’è‚·‚éB<p>
+     * åˆ¶å¾¡çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ŠÔŠu[ms]
+     * @return é–“éš”[ms]
      */
     public long getControlStateCheckInterval();
     
     /**
-     * Å‘å’x‰„ŠÔ‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * æœ€å¤§é…å»¶æ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      *
-     * @param interval ŠÔŠu[ms]
+     * @param interval é–“éš”[ms]
      */
     public void setTimeoverCheckInterval(long interval);
     
     /**
-     * Å‘å’x‰„ŠÔ‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğ”»’è‚·‚éB<p>
+     * æœ€å¤§é…å»¶æ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ŠÔŠu[ms]
+     * @return é–“éš”[ms]
      */
     public long getTimeoverCheckInterval();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉƒVƒXƒeƒ€“ú•t‚ğg‚Á‚ÄAƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã‚·ã‚¹ãƒ†ãƒ æ—¥ä»˜ã‚’ä½¿ã£ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isMake ì¬‚·‚éê‡Atrue
+     * @param isMake ä½œæˆã™ã‚‹å ´åˆã€true
      */
     public void setMakeScheduleOnStart(boolean isMake);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉƒVƒXƒeƒ€“ú•t‚ğg‚Á‚ÄAƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã‚·ã‚¹ãƒ†ãƒ æ—¥ä»˜ã‚’ä½¿ã£ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aì¬‚·‚é
+     * @return trueã®å ´åˆã€ä½œæˆã™ã‚‹
      */
     public boolean isMakeScheduleOnStart();
     
     /**
-     * {@link #findExecutableSchedules(Date,String[])}ŒÄ‚Ño‚µ‚ÉAŠY“–ƒXƒPƒWƒ…[ƒ‹‚ÌƒŒƒR[ƒh‚ğƒƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒƒbƒN‚µ‚È‚¢B<br>
+     * {@link #findExecutableSchedules(Date,String[])}å‘¼ã³å‡ºã—æ™‚ã«ã€è©²å½“ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒ­ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒ­ãƒƒã‚¯ã—ãªã„ã€‚<br>
      *
-     * @param isLock ƒƒbƒN‚·‚éê‡true
+     * @param isLock ãƒ­ãƒƒã‚¯ã™ã‚‹å ´åˆtrue
      */
     public void setLockForFindExecutable(boolean isLock);
     
     /**
-     * {@link #findExecutableSchedules(Date,String[])}ŒÄ‚Ño‚µ‚ÉAŠY“–ƒXƒPƒWƒ…[ƒ‹‚ÌƒŒƒR[ƒh‚ğƒƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link #findExecutableSchedules(Date,String[])}å‘¼ã³å‡ºã—æ™‚ã«ã€è©²å½“ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒ­ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒN‚·‚éê‡true
+     * @return ãƒ­ãƒƒã‚¯ã™ã‚‹å ´åˆtrue
      */
     public boolean isLockForFindExecutable();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚½ê‡AƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ª{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=true‚Æ‚È‚Á‚Ä‚¢‚éê‡‚Ì‚İA§Œäó‘Ô‚Ìƒ`ƒFƒbƒN‹y‚ÑAÅ‘å’x‰„ŠÔ‚Ìƒ`ƒFƒbƒN‚ğs‚¤B<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãŸå ´åˆã€ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=trueã¨ãªã£ã¦ã„ã‚‹å ´åˆã®ã¿ã€åˆ¶å¾¡çŠ¶æ…‹ã®ãƒã‚§ãƒƒã‚¯åŠã³ã€æœ€å¤§é…å»¶æ™‚é–“ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚<br>
      *
-     * @param name ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ID‚ğ”­”Ô‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’ç™ºç•ªã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ID‚ğ”­”Ô‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’ç™ºç•ªã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * “à•”‚Åg—p‚·‚éSQL‚Å•¶š—ñ˜AŒ‹‚ÉCONCATŠÖ”‚ğg‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA"||"‚Å˜AŒ‹‚·‚éB<br>
+     * å†…éƒ¨ã§ä½¿ç”¨ã™ã‚‹SQLã§æ–‡å­—åˆ—é€£çµã«CONCATé–¢æ•°ã‚’ä½¿ã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€"||"ã§é€£çµã™ã‚‹ã€‚<br>
      *
-     * @param isUse CONCATŠÖ”‚ğg‚¤ê‡true
+     * @param isUse CONCATé–¢æ•°ã‚’ä½¿ã†å ´åˆtrue
      */
     public void setUseConcatFunction(boolean isUse);
     
     /**
-     * “à•”‚Åg—p‚·‚éSQL‚Å•¶š—ñ˜AŒ‹‚ÉCONCATŠÖ”‚ğg‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å†…éƒ¨ã§ä½¿ç”¨ã™ã‚‹SQLã§æ–‡å­—åˆ—é€£çµã«CONCATé–¢æ•°ã‚’ä½¿ã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ACONCATŠÖ”‚ğg‚¤
+     * @return trueã®å ´åˆã€CONCATé–¢æ•°ã‚’ä½¿ã†
      */
     public boolean isUseConcatFunction();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚ÌJSONƒtƒH[ƒ}ƒbƒg‚ğƒTƒ|[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚Í’P‚È‚é•¶š—ñ‚Æ‚µ‚Äˆµ‚¤B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã®JSONãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã¯å˜ãªã‚‹æ–‡å­—åˆ—ã¨ã—ã¦æ‰±ã†ã€‚<br>
      *
-     * @param isJson ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚ÌJSONƒtƒH[ƒ}ƒbƒg‚ğƒTƒ|[ƒg‚·‚éê‡true
+     * @param isJson ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã®JSONãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆtrue
      */
     public void setJSONInput(boolean isJson);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚ÌJSONƒtƒH[ƒ}ƒbƒg‚ğƒTƒ|[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã®JSONãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚ÌJSONƒtƒH[ƒ}ƒbƒg‚ğƒTƒ|[ƒg‚·‚é
+     * @return trueã®å ´åˆã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã®JSONãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹
      */
     public boolean isJSONInput();
     
     /**
-     * w’è‚³‚ê‚½“ú•t‚ÌƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param date “ú•t
-     * @return ì¬‚µ‚½ƒXƒPƒWƒ…[ƒ‹‚ÌƒŠƒXƒg
-     * @throws ScheduleMakeException ƒXƒPƒWƒ…[ƒ‹ì¬‚É¸”s‚µ‚½ê‡
+     * @param date æ—¥ä»˜
+     * @return ä½œæˆã—ãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒªã‚¹ãƒˆ
+     * @throws ScheduleMakeException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List makeSchedule(Date date) throws ScheduleMakeException;
     
     /**
-     * ‘S‚Ä‚ÌƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğŒŸõ‚·‚éB<p>
+     * å…¨ã¦ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findAllScheduleMasters() throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param groupId ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findScheduleMasters(String groupId) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public ScheduleMaster findScheduleMaster(String id) throws ScheduleManageException;
     
     /**
-     * ‘S‚Ä‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * å…¨ã¦ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findAllSchedules() throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹‚ÌID
-     * @return ƒXƒPƒWƒ…[ƒ‹
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Schedule findSchedule(String id) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ƒOƒ‹[ƒvID‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚°ãƒ«ãƒ¼ãƒ—IDã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findSchedules(String groupId) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒXƒ^ID‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¹ã‚¿IDã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param masterId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
-     * @param masterGroupId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param masterId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
+     * @param masterGroupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findSchedules(String masterId, String masterGroupId) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔ‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param from ŠúŠÔ‚ÌŠJn“ú
-     * @param to ŠúŠÔ‚ÌI—¹“ú
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param from æœŸé–“ã®é–‹å§‹æ—¥æ™‚
+     * @param to æœŸé–“ã®çµ‚äº†æ—¥æ™‚
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findSchedules(Date from, Date to) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ó‘Ô‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param states ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì”z—ñ
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param states ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®é…åˆ—
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findSchedules(int[] states) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔAw’è‚³‚ê‚½ó‘Ô‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã€æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param from ŠúŠÔ‚ÌŠJn“ú
-     * @param to ŠúŠÔ‚ÌI—¹“ú
-     * @param states ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì”z—ñ
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param from æœŸé–“ã®é–‹å§‹æ—¥æ™‚
+     * @param to æœŸé–“ã®çµ‚äº†æ—¥æ™‚
+     * @param states ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®é…åˆ—
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findSchedules(Date from, Date to, int[] states) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔAó‘ÔAƒ}ƒXƒ^IDAƒ}ƒXƒ^ƒOƒ‹[ƒvID‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã€çŠ¶æ…‹ã€ãƒã‚¹ã‚¿IDã€ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param from ŠúŠÔ‚ÌŠJn“ú
-     * @param to ŠúŠÔ‚ÌI—¹“ú
-     * @param states ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì”z—ñ
-     * @param masterId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
-     * @param masterGroupId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param from æœŸé–“ã®é–‹å§‹æ—¥æ™‚
+     * @param to æœŸé–“ã®çµ‚äº†æ—¥æ™‚
+     * @param states ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®é…åˆ—
+     * @param masterId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
+     * @param masterGroupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½“ú‚ÆÀsí•Ê‚ÅÀs‰Â”\‚ÈƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥æ™‚ã¨å®Ÿè¡Œç¨®åˆ¥ã§å®Ÿè¡Œå¯èƒ½ãªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param date “ú
-     * @param executorTypes Àsí•Ê”z—ñ
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param date æ—¥æ™‚
+     * @param executorTypes å®Ÿè¡Œç¨®åˆ¥é…åˆ—
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findExecutableSchedules(Date date, String[] executorTypes) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ÀsƒL[‚ÆÀsí•ÊA“ú‚ÅÀs‰Â”\‚ÈƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡Œã‚­ãƒ¼ã¨å®Ÿè¡Œç¨®åˆ¥ã€æ—¥æ™‚ã§å®Ÿè¡Œå¯èƒ½ãªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param date “ú
-     * @param executorTypes Àsí•Ê”z—ñ
-     * @param executorKey ÀsƒL[
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param date æ—¥æ™‚
+     * @param executorTypes å®Ÿè¡Œç¨®åˆ¥é…åˆ—
+     * @param executorKey å®Ÿè¡Œã‚­ãƒ¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“o˜^‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param masterId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID
-     * @param time ƒXƒPƒWƒ…[ƒ‹
-     * @param taskName ƒ^ƒXƒN–¼
-     * @param input “ü—Íƒf[ƒ^
-     * @param depends ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID‚Ì”z—ñ
-     * @param executorKey ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
-     * @param executorType ScheduleExecutor‚Ìí—Ş
-     * @param retryInterval ƒŠƒgƒ‰ƒCŠÔŠu[ms]
-     * @param retryEndTime ƒŠƒgƒ‰ƒCI—¹
-     * @param maxDelayTime Å‘å’x‰„ŠÔ[ms]
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ì“o˜^‚É¸”s‚µ‚½ê‡
+     * @param masterId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ID
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ™‚åˆ»
+     * @param taskName ã‚¿ã‚¹ã‚¯å
+     * @param input å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
+     * @param depends ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿IDã®é…åˆ—
+     * @param executorKey ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
+     * @param executorType ScheduleExecutorã®ç¨®é¡
+     * @param retryInterval ãƒªãƒˆãƒ©ã‚¤é–“éš”[ms]
+     * @param retryEndTime ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
+     * @param maxDelayTime æœ€å¤§é…å»¶æ™‚é–“[ms]
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void addSchedule(
         String masterId,
@@ -593,199 +593,199 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     ) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ•ÏX‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ™‚åˆ»ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹‚ÌID
-     * @param time 
-     * @param output ÀsŒ‹‰Ê
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ªXV‚³‚ê‚½ê‡true
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ID
+     * @param time æ™‚åˆ»
+     * @param output å®Ÿè¡Œçµæœ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæ›´æ–°ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean reschedule(String id, Date time, Object output) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğíœ‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹‚ÌID
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ªíœ‚³‚ê‚½ê‡true
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ìíœ‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå‰Šé™¤ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean removeSchedule(String id) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğíœ‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param masterId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
-     * @param masterGroupId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ªíœ‚³‚ê‚½ê‡true
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ìíœ‚É¸”s‚µ‚½ê‡
+     * @param masterId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
+     * @param masterGroupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå‰Šé™¤ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean removeScheduleByMasterId(String masterId, String masterGroupId) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½“ú•t‚ÌƒXƒPƒWƒ…[ƒ‹‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param date “ú•t
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ªíœ‚³‚ê‚½ê‡true
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ìíœ‚É¸”s‚µ‚½ê‡
+     * @param date æ—¥ä»˜
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå‰Šé™¤ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean removeSchedule(Date date) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔAó‘ÔAƒ}ƒXƒ^ID‚ÌƒXƒPƒWƒ…[ƒ‹‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã€çŠ¶æ…‹ã€ãƒã‚¹ã‚¿IDã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param from ŠúŠÔ‚ÌŠJn“ú
-     * @param to ŠúŠÔ‚ÌI—¹“ú
-     * @param states ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì”z—ñ
-     * @param masterId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
-     * @param masterGroupId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ìíœ‚É¸”s‚µ‚½ê‡
+     * @param from æœŸé–“ã®é–‹å§‹æ—¥æ™‚
+     * @param to æœŸé–“ã®çµ‚äº†æ—¥æ™‚
+     * @param states ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®é…åˆ—
+     * @param masterId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
+     * @param masterGroupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean removeSchedule(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚é{@link ScheduleExecutor}‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹‚ÌID
-     * @param key ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ID
+     * @param key ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setExecutorKey(String id, String key) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹‚ÌID
-     * @param time ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ID
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRetryEndTime(String id, Date time) throws ScheduleManageException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÅ‘å’x‰„ŠÔ[ms]‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æœ€å¤§é…å»¶æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹‚ÌID
-     * @param time ƒXƒPƒWƒ…[ƒ‹Å‘å’x‰„ŠÔ[ms]
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ID
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æœ€å¤§é…å»¶æ™‚é–“[ms]
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setMaxDelayTime(String id, long time) throws ScheduleManageException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @return ó‘Ô
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @return çŠ¶æ…‹
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int getState(String id) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @return §Œäó‘Ô
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹§Œäó‘Ô‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @return åˆ¶å¾¡çŠ¶æ…‹
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡çŠ¶æ…‹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int getControlState(String id) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param state ó‘Ô
-     * @return ó‘Ô‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param state çŠ¶æ…‹
+     * @return çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean changeState(String id, int state) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param oldState Œ»İ‚Ìó‘Ô
-     * @param newState •ÏXŒã‚Ìó‘Ô
-     * @return ó‘Ô‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param oldState ç¾åœ¨ã®çŠ¶æ…‹
+     * @param newState å¤‰æ›´å¾Œã®çŠ¶æ…‹
+     * @return çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean changeState(String id, int oldState, int newState) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param state ó‘Ô
-     * @param output ÀsŒ‹‰Ê
-     * @return ó‘Ô‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param state çŠ¶æ…‹
+     * @param output å®Ÿè¡Œçµæœ
+     * @return çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean changeState(String id, int state, Object output) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param oldState Œ»İ‚Ìó‘Ô
-     * @param newState •ÏXŒã‚Ìó‘Ô
-     * @param output ÀsŒ‹‰Ê
-     * @return ó‘Ô‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param oldState ç¾åœ¨ã®çŠ¶æ…‹
+     * @param newState å¤‰æ›´å¾Œã®çŠ¶æ…‹
+     * @param output å®Ÿè¡Œçµæœ
+     * @return çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean changeState(String id, int oldState, int newState, Object output) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param state §Œäó‘Ô
-     * @return §Œäó‘Ô‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹§Œäó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param state åˆ¶å¾¡çŠ¶æ…‹
+     * @return åˆ¶å¾¡çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean changeControlState(String id, int state) throws ScheduleStateControlException;
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğ•ÏX‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param oldState Œ»İ‚Ìó‘Ô
-     * @param newState •ÏXŒã‚Ìó‘Ô
-     * @return §Œäó‘Ô‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹§Œäó‘Ô‚Ì•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param oldState ç¾åœ¨ã®çŠ¶æ…‹
+     * @param newState å¤‰æ›´å¾Œã®çŠ¶æ…‹
+     * @return åˆ¶å¾¡çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean changeControlState(String id, int oldState, int newState) throws ScheduleStateControlException;
     
     /**
-     * §Œäó‘Ô‚Ìƒ`ƒFƒbƒN‚ğŠJn‚·‚éB<p>
+     * åˆ¶å¾¡çŠ¶æ…‹ã®ãƒã‚§ãƒƒã‚¯ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public void startControlStateCheck();
     
     /**
-     * §Œäó‘Ô‚Ìƒ`ƒFƒbƒN‚ªŠJn‚³‚ê‚Ä‚¢‚é‚©”»’è‚·‚éB<p>
+     * åˆ¶å¾¡çŠ¶æ…‹ã®ãƒã‚§ãƒƒã‚¯ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return §Œäó‘Ô‚Ìƒ`ƒFƒbƒN‚ªŠJn‚³‚ê‚Ä‚¢‚éê‡true
+     * @return åˆ¶å¾¡çŠ¶æ…‹ã®ãƒã‚§ãƒƒã‚¯ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean isStartControlStateCheck();
     
     /**
-     * §Œäó‘Ô‚Ìƒ`ƒFƒbƒN‚ğ’â~‚·‚éB<p>
+     * åˆ¶å¾¡çŠ¶æ…‹ã®ãƒã‚§ãƒƒã‚¯ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stopControlStateCheck();
     
     /**
-     * Å‘å’x‰„ŠÔ‚Ìƒ`ƒFƒbƒN‚ğŠJn‚·‚éB<p>
+     * æœ€å¤§é…å»¶æ™‚é–“ã®ãƒã‚§ãƒƒã‚¯ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public void startTimeoverCheck();
     
     /**
-     * Å‘å’x‰„ŠÔ‚Ìƒ`ƒFƒbƒN‚ªŠJn‚³‚ê‚Ä‚¢‚é‚©”»’è‚·‚éB<p>
+     * æœ€å¤§é…å»¶æ™‚é–“ã®ãƒã‚§ãƒƒã‚¯ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return Å‘å’x‰„ŠÔ‚Ìƒ`ƒFƒbƒN‚ªŠJn‚³‚ê‚Ä‚¢‚éê‡true
+     * @return æœ€å¤§é…å»¶æ™‚é–“ã®ãƒã‚§ãƒƒã‚¯ãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean isStartTimeoverCheck();
     
     /**
-     * Å‘å’x‰„ŠÔ‚Ìƒ`ƒFƒbƒN‚ğ’â~‚·‚éB<p>
+     * æœ€å¤§é…å»¶æ™‚é–“ã®ãƒã‚§ãƒƒã‚¯ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stopTimeoverCheck();
 }

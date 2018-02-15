@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer.log4j;
 import org.apache.log4j.*;
 
 /**
- * Log4J‚ÌConsoleAppender‚ğg‚Á‚½MessageWriterƒT[ƒrƒXB<p>
+ * Log4Jã®ConsoleAppenderã‚’ä½¿ã£ãŸMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -46,35 +46,35 @@ public class ConsoleAppenderWriterService extends WriterAppenderWriterService
     private String target;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ConsoleAppenderWriterService(){
         super();
     }
     
-    // ConsoleAppenderWriterServiceMBean‚ÌJavaDoc
+    // ConsoleAppenderWriterServiceMBeanã®JavaDoc
     public void setOutTarget(String target){
         this.target = target;
     }
     
-    // ConsoleAppenderWriterServiceMBean‚ÌJavaDoc
+    // ConsoleAppenderWriterServiceMBeanã®JavaDoc
     public String getOutTarget(){
         return target;
     }
     
     /**
-     * ConsoleAppenderƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ConsoleAppenderã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ConsoleAppender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception ConsoleAppenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected WriterAppender createWriterAppender() throws Exception{
         return new ConsoleAppender();
     }
     
     /**
-     * ConsoleAppender‚ğ‰Šú‰»‚·‚éB<p>
+     * ConsoleAppenderã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ConsoleAppender‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception Exception ConsoleAppenderã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initWriterAppender(WriterAppender appender) throws Exception{
         super.initWriterAppender(appender);

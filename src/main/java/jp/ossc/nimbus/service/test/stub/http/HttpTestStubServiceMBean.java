@@ -38,7 +38,7 @@ import jp.ossc.nimbus.service.http.proxy.HttpProcessServiceBaseMBean;
 import jp.ossc.nimbus.service.test.TestStub;
 
 /**
- * {@link HttpTestStubService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link HttpTestStubService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see HttpTestStubService
@@ -46,180 +46,180 @@ import jp.ossc.nimbus.service.test.TestStub;
 public interface HttpTestStubServiceMBean extends HttpProcessServiceBaseMBean, TestStub{
     
     /**
-     * ƒXƒ^ƒuID‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒ–IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒ^ƒuID
+     * @param id ã‚¹ã‚¿ãƒ–ID
      */
     public void setId(String id);
     
     /**
-     * ƒXƒ^ƒuID‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒ–IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒ^ƒuID
+     * @return ã‚¹ã‚¿ãƒ–ID
      */
     public String getId();
     
     /**
-     * ƒŠƒ\[ƒXƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFileEncoding(String encoding);
     
     /**
-     * ƒŠƒ\[ƒXƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFileEncoding();
     
     /**
-     * {@link jp.ossc.nimbus.service.test.StubResourceManager StubResourceManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.test.StubResourceManager StubResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name StubResourceManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StubResourceManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setStubResourceManagerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.test.StubResourceManager StubResourceManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.test.StubResourceManager StubResourceManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StubResourceManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StubResourceManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getStubResourceManagerServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterpreterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterpreterServiceName();
     
     /**
-     * StubResourceManager‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µ‚½ƒŠƒ\[ƒXƒtƒ@ƒCƒ‹‚ğ”z’u‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌêŠ‚ÉƒXƒ^ƒuID‚ÅƒfƒBƒŒƒNƒgƒŠ‚ğ”z’u‚·‚éB<br>
+     * StubResourceManagerã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é…ç½®ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´æ‰€ã«ã‚¹ã‚¿ãƒ–IDã§ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’é…ç½®ã™ã‚‹ã€‚<br>
      *
-     * @param dir ƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setResourceDirectory(File dir);
     
     /**
-     * StubResourceManager‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µ‚½ƒŠƒ\[ƒXƒtƒ@ƒCƒ‹‚ğ”z’u‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * StubResourceManagerã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é…ç½®ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getResourceDirectory();
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚Éw’è‚·‚éHTTPƒo[ƒWƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«æŒ‡å®šã™ã‚‹HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param version HTTPƒo[ƒWƒ‡ƒ“
+     * @param version HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public void setHttpVersion(String version);
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚Éw’è‚·‚éHTTPƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«æŒ‡å®šã™ã‚‹HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒo[ƒWƒ‡ƒ“
+     * @return HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public String getHttpVersion();
     
     /**
-     * ‹¤’Ê‚Åİ’è‚·‚éHTTPƒŒƒXƒ|ƒ“ƒXƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * å…±é€šã§è¨­å®šã™ã‚‹HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @param values ƒwƒbƒ_’l‚Ì”z—ñ
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @param values ãƒ˜ãƒƒãƒ€å€¤ã®é…åˆ—
      */
     public void setHttpHeaders(String name, String[] values);
     
     /**
-     * ‹¤’Ê‚Åİ’è‚·‚éHTTPƒŒƒXƒ|ƒ“ƒXƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * å…±é€šã§è¨­å®šã™ã‚‹HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @return ƒwƒbƒ_’l‚Ì”z—ñ
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @return ãƒ˜ãƒƒãƒ€å€¤ã®é…åˆ—
      */
     public String[] getHttpHeaders(String name);
     
     /**
-     * ‹¤’Ê‚Åİ’è‚·‚éHTTPƒŒƒXƒ|ƒ“ƒXƒwƒbƒ_•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * å…±é€šã§è¨­å®šã™ã‚‹HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_•¶š—ñ
+     * @return HTTPãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—
      */
     public String getHttpHeader();
     
     /**
-     * ƒoƒCƒiƒŠ‚Åw’è‚·‚éƒŒƒXƒ|ƒ“ƒXƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğİ’è‚·‚éB<p>
+     * ãƒã‚¤ãƒŠãƒªã§æŒ‡å®šã™ã‚‹ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param exts Šg’£q‚Ì”z—ñ
+     * @param exts æ‹¡å¼µå­ã®é…åˆ—
      */
     public void setBinaryFileExtensions(String[] exts);
     
     /**
-     * ƒoƒCƒiƒŠ‚Åw’è‚·‚éƒŒƒXƒ|ƒ“ƒXƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¤ãƒŠãƒªã§æŒ‡å®šã™ã‚‹ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Šg’£q‚Ì”z—ñ
+     * @return æ‹¡å¼µå­ã®é…åˆ—
      */
     public String[] getBinaryFileExtensions();
     
     /**
-     * “¯‚¶ƒŠƒNƒGƒXƒg‚ÌŒJ‚è•Ô‚µ‚ğ‹–‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * åŒã˜ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ç¹°ã‚Šè¿”ã—ã‚’è¨±ã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‹–‚·
+     * @return trueã®å ´åˆã€è¨±ã™
      */
     public boolean isAllowRepeatRequest();
     /**
-     * “¯‚¶ƒŠƒNƒGƒXƒg‚ÌŒJ‚è•Ô‚µ‚ğ‹–‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * åŒã˜ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ç¹°ã‚Šè¿”ã—ã‚’è¨±ã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isAllow ‹–‚·ê‡Atrue
+     * @param isAllow è¨±ã™å ´åˆã€true
      */
     public void setAllowRepeatRequest(boolean isAllow);
     
     /**
-     * ƒ}ƒ‹ƒ`ƒXƒŒƒbƒhˆ—‚ğˆÀ‘S‚És‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å‡¦ç†ã‚’å®‰å…¨ã«è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AˆÀ‘S‚És‚¤
+     * @return trueã®å ´åˆã€å®‰å…¨ã«è¡Œã†
      */
     public boolean isSafeMultithread();
     /**
-     * ƒ}ƒ‹ƒ`ƒXƒŒƒbƒhˆ—‚ğˆÀ‘S‚És‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰å‡¦ç†ã‚’å®‰å…¨ã«è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isSafe ˆÀ‘S‚És‚¤ê‡Atrue
+     * @param isSafe å®‰å…¨ã«è¡Œã†å ´åˆã€true
      */
     public void setSafeMultithread(boolean isSafe);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A•Û‘¶‚·‚é
+     * @return trueã®å ´åˆã€ä¿å­˜ã™ã‚‹
      */
     public boolean isSaveRequestFile();
     /**
-     * ƒŠƒNƒGƒXƒg‚ğƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isSave •Û‘¶‚·‚éê‡Atrue
+     * @param isSave ä¿å­˜ã™ã‚‹å ´åˆã€true
      */
     public void setSaveRequestFile(boolean isSave);
     
     /**
-     * “Ç‚İ‚ñ‚¾ƒŒƒXƒ|ƒ“ƒX‚ğƒLƒƒƒbƒVƒ…‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * èª­ã¿è¾¼ã‚“ã ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒLƒƒƒbƒVƒ…‚·‚é
+     * @return trueã®å ´åˆã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹
      */
     public boolean isCacheResponse();
     
     /**
-     * “Ç‚İ‚ñ‚¾ƒŒƒXƒ|ƒ“ƒX‚ğƒLƒƒƒbƒVƒ…‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒLƒƒƒbƒVƒ…‚µ‚È‚¢B<br>
+     * èª­ã¿è¾¼ã‚“ã ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãªã„ã€‚<br>
      *
-     * @param isCache ƒLƒƒƒbƒVƒ…‚·‚éê‡Atrue
+     * @param isCache ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹å ´åˆã€true
      */
     public void setCacheResponse(boolean isCache);
 }

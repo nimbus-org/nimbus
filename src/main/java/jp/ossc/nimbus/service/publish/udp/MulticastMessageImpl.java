@@ -39,7 +39,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * ƒ}ƒ‹ƒ`ƒLƒƒƒXƒgUDPƒvƒƒgƒRƒ‹—p‚ÌƒƒbƒZ[ƒWƒNƒ‰ƒXB<p>
+ * ãƒãƒ«ãƒã‚­ãƒ£ã‚¹ãƒˆUDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

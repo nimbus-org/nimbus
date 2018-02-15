@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.writer;
 
 /**
- * ���b�Z�[�W�̏o�͂��s���C���^�t�F�[�X�B<p>
- * �������ƃL�[�ƒl�̃}�b�s���O�̂Q�̊T�O������{@link WritableRecord}���A�o�͔}�̂ɏo�͂���@�\�𒊏ۉ������C���^�t�F�[�X�ł���B<br>
- * �ǂ��ɂǂ̂悤�ɏo�͂��邩�́A�����Ɉˑ�����B<br>
+ * メッセージの出力を行うインタフェース。<p>
+ * 順序性とキーと値のマッピングの２つの概念を持つ{@link WritableRecord}を、出力媒体に出力する機能を抽象化したインタフェースである。<br>
+ * どこにどのように出力するかは、実装に依存する。<br>
  * 
  * @author Y.tokuda
  */
 public interface MessageWriter{
     
     /**
-     * �w�肳�ꂽ���R�[�h���o�͂���B<p>
+     * 指定されたレコードを出力する。<p>
      *
-     * @param rec �o�͂��郌�R�[�h
-     * @exception MessageWriteException �o�͂Ɏ��s�����ꍇ
+     * @param rec 出力するレコード
+     * @exception MessageWriteException 出力に失敗した場合
      */
     public void write(WritableRecord rec) throws MessageWriteException;
 }

@@ -35,8 +35,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * ContextŒ…”ŠÇ—ƒNƒ‰ƒXB<p>
- * {@link Context}ƒT[ƒrƒX‚©‚ç’l‚ğæ“¾‚µ‚ÄŒ»İ’l‚Æ‚·‚éB
+ * Contextæ¡æ•°ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ç¾åœ¨å€¤ã¨ã™ã‚‹ã€‚
  * 
  * @author M.Takata
  */
@@ -52,10 +52,10 @@ public class ContextSequenceVariable
     private ServiceName contextServiceName;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param key ƒRƒ“ƒeƒLƒXƒgƒL[B%ƒRƒ“ƒeƒLƒXƒgƒL[%‚Åw’è‚·‚é
-     * @param context {@link Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param key ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼ã€‚%ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼%ã§æŒ‡å®šã™ã‚‹
+     * @param context {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ContextSequenceVariable(
         String key,
@@ -66,25 +66,25 @@ public class ContextSequenceVariable
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      *
-     * @return •K‚¸true
+     * @return å¿…ãštrue
      */
     public boolean increment(){
         return true;
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void clear(){
     }
     
     /**
-     * Œ»İ’l‚ğæ“¾‚·‚éB<p>
-     * {@link Context}ƒT[ƒrƒX‚©‚ç’l‚ğæ“¾‚µ‚ÄŒ»İ’l‚Æ‚·‚éB
+     * ç¾åœ¨å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ç¾åœ¨å€¤ã¨ã™ã‚‹ã€‚
      *
-     * @return Œ»İ’l
+     * @return ç¾åœ¨å€¤
      */
     public String getCurrent(){
         if(contextServiceName == null){

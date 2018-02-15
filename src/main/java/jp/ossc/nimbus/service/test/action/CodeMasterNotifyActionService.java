@@ -54,8 +54,8 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}‚ÉXV’Ê’m‚ğ‘—M‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã«æ›´æ–°é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -156,23 +156,23 @@ public class CodeMasterNotifyActionService extends ServiceBase implements TestAc
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}‚ÉXV’Ê’m‚ğ‘—M‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã«æ›´æ–°é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * masterName
      * dateId
      * dataId
      * dataAndDataBindScript
      * </pre>
-     * masterName‚ÍAXV’Ê’m‚Ì‘ÎÛ‚Æ‚È‚éƒ}ƒXƒ^–¼‚ğw’è‚·‚éB<br>
-     * dateId‚ÍA{@link CodeMasterNotifyBean}‚Éİ’è‚·‚éXV“ú‚ÌDateƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAXV“ú‚ÌDateƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAXV“ú‚ÌDateƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAXV“ú‚ÌDateƒIƒuƒWƒFƒNƒg‚ğTestAction‚ÌŒ‹‰Ê‚©‚çæ“¾‚µ‚È‚¢B<br>
-     * dataId‚ÍA{@link CodeMasterNotifyBean}‚Éİ’è‚·‚éXVˆø”‚ÌƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAXVˆø”‚ÌƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAXVˆø”‚ÌƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAXVˆø”‚ÌƒIƒuƒWƒFƒNƒg‚ğTestAction‚ÌŒ‹‰Ê‚©‚çæ“¾‚µ‚È‚¢B<br>
-     * dataAndDataBindScript‚ÍA{@link CodeMasterNotifyBean}‚Éİ’è‚·‚éXV“ú‚ÆXVˆø”‚ğİ’è‚·‚éƒXƒNƒŠƒvƒg‚ğw’è‚·‚éBƒXƒNƒŠƒvƒg‚ÍA{@link Interpreter#evaluate(String,Map)}‚Å•]‰¿‚³‚êAˆø”‚Ì•Ï”ƒ}ƒbƒv‚É‚ÍA"context"‚Å{@link TestContext}A"notifyBean"‚Å{@link CodeMasterNotifyBean}‚ª“n‚³‚ê‚éB<br>
+     * masterNameã¯ã€æ›´æ–°é€šçŸ¥ã®å¯¾è±¡ã¨ãªã‚‹ãƒã‚¹ã‚¿åã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * dateIdã¯ã€{@link CodeMasterNotifyBean}ã«è¨­å®šã™ã‚‹æ›´æ–°æ—¥æ™‚ã®Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€æ›´æ–°æ—¥æ™‚ã®Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€æ›´æ–°æ—¥æ™‚ã®Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€æ›´æ–°æ—¥æ™‚ã®Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’TestActionã®çµæœã‹ã‚‰å–å¾—ã—ãªã„ã€‚<br>
+     * dataIdã¯ã€{@link CodeMasterNotifyBean}ã«è¨­å®šã™ã‚‹æ›´æ–°å¼•æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€æ›´æ–°å¼•æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€æ›´æ–°å¼•æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€æ›´æ–°å¼•æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’TestActionã®çµæœã‹ã‚‰å–å¾—ã—ãªã„ã€‚<br>
+     * dataAndDataBindScriptã¯ã€{@link CodeMasterNotifyBean}ã«è¨­å®šã™ã‚‹æ›´æ–°æ—¥æ™‚ã¨æ›´æ–°å¼•æ•°ã‚’è¨­å®šã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€{@link Interpreter#evaluate(String,Map)}ã§è©•ä¾¡ã•ã‚Œã€å¼•æ•°ã®å¤‰æ•°ãƒãƒƒãƒ—ã«ã¯ã€"context"ã§{@link TestContext}ã€"notifyBean"ã§{@link CodeMasterNotifyBean}ãŒæ¸¡ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ‘—M‚Ég—p‚µ‚½{@link CodeMasterNotifyBean}
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return é€ä¿¡ã«ä½¿ç”¨ã—ãŸ{@link CodeMasterNotifyBean}
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

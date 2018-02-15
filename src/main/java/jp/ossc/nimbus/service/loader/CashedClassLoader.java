@@ -45,21 +45,21 @@ import jp.ossc.nimbus.lang.ServiceException;
 import jp.ossc.nimbus.util.StringOperator;
 //
 /*
- *	ClassCashƒIƒuƒWƒFƒNƒg
+ *	ClassCashã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
  *	@author		NRI Hirotaka Nakano
- *	@version	ì¬F2003.01.01 | H.Nakano<BR>
+ *	@version	ä½œæˆï¼š2003.01.01 ï¼ H.Nakano<BR>
  */
 public  class CashedClassLoader  {
-	//##	ƒƒ“ƒo[•Ï”éŒ¾		##
-	/**	ƒNƒ‰ƒXƒ[ƒ_[		*/	
+	//##	ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€		##
+	/**	ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãƒ¼		*/	
 	protected URLClassLoader mClassLoader = null ;
-	/** ƒNƒ‰ƒXƒ^ƒ“ƒLƒ“ƒOHASH	*/	
+	/** ã‚¯ãƒ©ã‚¹ã‚¿ãƒ³ã‚­ãƒ³ã‚°HASH	*/	
 	protected	Hashtable	mClassHash;
-	/** ƒNƒ‰ƒXƒpƒXURL”z—ñ */
+	/** ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹URLé…åˆ— */
 	protected URL[] mUrls ;
-	/** e‚ÌƒNƒ‰ƒXƒ[ƒ_[ƒCƒ“ƒXƒ^ƒ“ƒX */
+	/** è¦ªã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ */
 	protected ClassLoader mParent ;
-	//##	’è”éŒ¾			##
+	//##	å®šæ•°å®£è¨€			##
 	static private final String C_JAR_EXTEND = ".JAR" ; //$NON-NLS-1$
 	static private final String C_BK_SRASH = "\\" ; //$NON-NLS-1$
 	static private final String C_SRASH = "/" ; //$NON-NLS-1$
@@ -68,7 +68,7 @@ public  class CashedClassLoader  {
 	//
 	//
 	/*
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public	CashedClassLoader(URL[] urls, ClassLoader parent){
 		mClassLoader = new URLClassLoader(urls,parent); 
@@ -79,7 +79,7 @@ public  class CashedClassLoader  {
 	}
 	//
 	/**
-	 * ‘¦‚ÉƒLƒƒƒbƒVƒ…‚ğ“ü‚ê‘Ö‚¦‚é.
+	 * å³æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å…¥ã‚Œæ›¿ãˆã‚‹.
 	 */
 	protected void refresh(){
 		mClassHash.clear() ;
@@ -87,17 +87,17 @@ public  class CashedClassLoader  {
 			URL item = mUrls[cnt] ;
 			String upper = item.getFile().toUpperCase() ;
 			if(upper.endsWith(C_JAR_EXTEND)){
-				//JARƒtƒ@ƒCƒ‹“àŒŸõ
+				//JARãƒ•ã‚¡ã‚¤ãƒ«å†…æ¤œç´¢
 				setupJarPropList(item) ;
 			}else{
-				//ƒfƒBƒŒƒNƒgƒŠ“àŒŸõ
+				//ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…æ¤œç´¢
 				setupDirPropList(item) ;
 			}
 		}
 	
 	}
 	/**
-	 * Jarƒtƒ@ƒCƒ‹‚©‚çƒNƒ‰ƒX–¼‚Ì’Šo‚ğs‚¤.
+	 * Jarãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚¯ãƒ©ã‚¹åã®æŠ½å‡ºã‚’è¡Œã†.
 	 * @param item
 	 */
 	protected void setupJarPropList(URL item){
@@ -114,7 +114,7 @@ public  class CashedClassLoader  {
 			if(name.endsWith(C_CLASS_EXT)){
 				name = StringOperator.replaceString(name,C_SRASH,C_DOT) ;
 				//name = name.substring(1,name.length()-C_CLASS_EXT.length()) ;
-				name = name.substring(0,name.length()-C_CLASS_EXT.length()) ;//2003.11.13 Hirokado 1¨0•ÏX
+				name = name.substring(0,name.length()-C_CLASS_EXT.length()) ;//2003.11.13 Hirokado 1â†’0å¤‰æ›´
 				Class cls = null;
 				try {
 					cls = this.loadClass(name);
@@ -128,7 +128,7 @@ public  class CashedClassLoader  {
 	}
 	//
 	/**
-	 * Method ƒfƒBƒŒƒNƒgƒŠw’è‚ÅƒNƒ‰ƒX–¼‚ğ’Šo‚·‚é.
+	 * Method ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæŒ‡å®šã§ã‚¯ãƒ©ã‚¹åã‚’æŠ½å‡ºã™ã‚‹.
 	 * @param item
 	 */
 	protected void setupDirPropList(URL item){
@@ -142,7 +142,7 @@ public  class CashedClassLoader  {
 		for(int cnt=0;cnt<list.length;cnt++){
 			String path = list[cnt].getAbsolutePath() ;
 			//int pos = item.getFile().length();
-			int pos = item.getFile().length() - 1;//2003.11.13 Hirokado -1’Ç‰Á
+			int pos = item.getFile().length() - 1;//2003.11.13 Hirokado -1è¿½åŠ 
 			path = path.substring(pos,path.length()-C_CLASS_EXT.length()) ;
 			path = StringOperator.replaceString(path,C_SRASH,C_DOT) ;
 			Class cls = null;
@@ -163,7 +163,7 @@ public  class CashedClassLoader  {
 		synchronized(mClassHash){
 		 	cl = (Class )mClassHash.get(clsName);
 			if(cl == null) {
-				//systemclass ‚©”»’è‚·‚éB
+				//systemclass ã‹åˆ¤å®šã™ã‚‹ã€‚
 				cl = this.mClassLoader.loadClass(clsName) ;
 				if(cl==null){
 					throw new ClassNotFoundException(clsName);

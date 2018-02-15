@@ -32,17 +32,17 @@
 package jp.ossc.nimbus.service.test;
 
 /**
- * ƒeƒXƒgƒtƒF[ƒYÀsB<p>
+ * ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚ºå®Ÿè¡Œã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface TestPhaseExecutable {
     
     /**
-     * w’è‚³‚ê‚½ƒeƒXƒgƒtƒF[ƒY‚ÅÀs‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚ºã§å®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @param phase ƒeƒXƒgƒtƒF[ƒY
-     * @return true‚Ìê‡AÀs‚·‚é
+     * @param phase ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚º
+     * @return trueã®å ´åˆã€å®Ÿè¡Œã™ã‚‹
      */
     public boolean isExecutable(String phase);
     

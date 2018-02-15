@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.proxy;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link RemoteClientService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link RemoteClientService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see RemoteClientService
@@ -42,104 +42,104 @@ import jp.ossc.nimbus.core.*;
 public interface RemoteClientServiceMBean extends FactoryServiceBaseMBean{
     
     /**
-     * ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒCƒ“ƒ^ƒtƒF[ƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒCƒ“ƒ^ƒtƒF[ƒX–¼
+     * @param className ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å
      */
     public void setRemoteInterfaceClassName(String className);
     
     /**
-     * ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒCƒ“ƒ^ƒtƒF[ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒCƒ“ƒ^ƒtƒF[ƒX–¼
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å
      */
     public String getRemoteInterfaceClassName();
     
     /**
-     * ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÍA{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}‚ÅAŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚Æ‚µ‚Ä“`”d‚³‚ê‚éB<br>
+     * ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã¯ã€{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}ã§ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ä¼æ’­ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRemoteServiceName(ServiceName name);
     
     /**
-     * ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRemoteServiceName();
     
     /**
-     * ƒvƒƒLƒV‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ü‚È‚¢ê‡‚ÍAİ’è‚µ‚È‚­‚Ä‚à—Ç‚¢B<br>
+     * ãƒ—ãƒ­ã‚­ã‚·ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã¾ãªã„å ´åˆã¯ã€è¨­å®šã—ãªãã¦ã‚‚è‰¯ã„ã€‚<br>
      *
-     * @param name InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainListServiceName(ServiceName name);
     
     /**
-     * ƒvƒƒLƒV‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainListServiceName();
     
     /**
-     * ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ğŒÄ‚Ño‚·{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInvokerServiceName(ServiceName name);
     
     /**
-     * ƒvƒƒLƒV‚·‚éƒT[ƒrƒX‚ğŒÄ‚Ño‚·{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInvokerServiceName();
     
     /**
-     * ƒvƒƒLƒV‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainFactoryServiceName(ServiceName name);
     
     /**
-     * ƒvƒƒLƒV‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainFactoryServiceName();
     
     /**
-     * ƒvƒƒLƒV‚ğ–ˆ‰ñ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ—ãƒ­ã‚­ã‚·ã‚’æ¯å›ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param isCreate –ˆ‰ñ¶¬‚·‚éê‡true
+     * @param isCreate æ¯å›ç”Ÿæˆã™ã‚‹å ´åˆtrue
      */
     public void setCreateNewProxy(boolean isCreate);
     
     /**
-     * ƒvƒƒLƒV‚ğ–ˆ‰ñ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã‚’æ¯å›ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A–ˆ‰ñ¶¬‚·‚é
+     * @return trueã®å ´åˆã€æ¯å›ç”Ÿæˆã™ã‚‹
      */
     public boolean isCreateNewProxy();
     
     /**
-     * ƒvƒƒLƒV‚É•R•t‚¯‚ÄƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ—ãƒ­ã‚­ã‚·ã«ç´ä»˜ã‘ã¦ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param isCreate •R•t‚¯‚éê‡true
+     * @param isCreate ç´ä»˜ã‘ã‚‹å ´åˆtrue
      */
     public void setCreateInterceptorChainByProxy(boolean isCreate);
     
     /**
-     * ƒvƒƒLƒV‚É•R•t‚¯‚ÄƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã«ç´ä»˜ã‘ã¦ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A•R•t‚¯‚é
+     * @return trueã®å ´åˆã€ç´ä»˜ã‘ã‚‹
      */
     public boolean isCreateInterceptorChainByProxy();
 }

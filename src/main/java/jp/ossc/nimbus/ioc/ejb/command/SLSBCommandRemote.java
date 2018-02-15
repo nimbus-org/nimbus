@@ -29,24 +29,24 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.command;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.*;
 import java.rmi.*;
 import jp.ossc.nimbus.ioc.*;
 
 /**
- * CommandÀsƒŠƒ‚[ƒgƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * Commandå®Ÿè¡Œãƒªãƒ¢ãƒ¼ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface SLSBCommandRemote extends EJBObject {
 	/**
-	 * CommandÀsƒƒ\ƒbƒh
-	 * @param cmd “ü—ÍƒIƒuƒWƒFƒNƒg
-	 * @return@Command o—ÍƒIƒuƒWƒFƒNƒg
+	 * Commandå®Ÿè¡Œãƒ¡ã‚½ãƒƒãƒ‰
+	 * @param cmd å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @returnã€€Command å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws RemoteException
 	 */
 	public Command invokeCommand(Command cmd) throws RemoteException ; 

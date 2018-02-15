@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * GETƒƒ\ƒbƒhRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * GETãƒ¡ã‚½ãƒƒãƒ‰RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class GetRestResponse extends BodyRestResponse{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public GetRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * HTTPƒXƒe[ƒ^ƒX‚Ì‰Šú’l‚ÍAHttpServletResponse.SC_OKB<br>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®åˆæœŸå€¤ã¯ã€HttpServletResponse.SC_OKã€‚<br>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public GetRestResponse(HttpServletResponse response){
         super(response);

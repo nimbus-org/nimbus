@@ -49,9 +49,9 @@ import jp.ossc.nimbus.service.test.EvaluateTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * ƒeƒLƒXƒg”äŠr•]‰¿ƒAƒNƒVƒ‡ƒ“B<p>
- * ‚Q‚Â‚ÌƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ğ”äŠr‚µ‚ÄA“à—e‚ª“™‰¿‚©‚Ç‚¤‚©•]‰¿‚·‚éB<br>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ãƒ†ã‚­ã‚¹ãƒˆæ¯”è¼ƒè©•ä¾¡ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ï¼’ã¤ã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¯”è¼ƒã—ã¦ã€å†…å®¹ãŒç­‰ä¾¡ã‹ã©ã†ã‹è©•ä¾¡ã™ã‚‹ã€‚<br>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -119,21 +119,21 @@ public class TextCompareEvaluateActionService extends ServiceBase implements Eva
     }
     
     /**
-     * ‚Q‚Â‚ÌƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ğ”äŠr‚µ‚ÄA“à—e‚ª“™‰¿‚©‚Ç‚¤‚©•]‰¿‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ï¼’ã¤ã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¯”è¼ƒã—ã¦ã€å†…å®¹ãŒç­‰ä¾¡ã‹ã©ã†ã‹è©•ä¾¡ã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * srcFilePath
      * dstFilePath
      * ignoreRegexPattern
      * </pre>
-     * srcFilePath‚ÍA”äŠrŒ³‚ÌƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB<br>
-     * dstFilePath‚ÍA”äŠræ‚ÌƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éB‚±‚±‚Åw’è‚µ‚½ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍA”äŠr‚ğs‚í‚¸‚Étrue‚ğ•Ô‚·B<br>
-     * ignoreRegexPattern‚ÍA”äŠr‚É–³‹‚·‚é“à—e‚ğ³‹K•\Œ»‚Åw’è‚·‚éB•¡”w’è‚·‚éê‡‚ÍA‰üs‚µ‚Äw’è‚·‚éB‚±‚Ì³‹K•\Œ»‚Éˆê’v‚·‚é“à—e‚ÍA‹ó•¶š‚É’uŠ·‚µ‚Ä”äŠr‚·‚éB<br>
+     * srcFilePathã¯ã€æ¯”è¼ƒå…ƒã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+     * dstFilePathã¯ã€æ¯”è¼ƒå…ˆã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€æ¯”è¼ƒã‚’è¡Œã‚ãšã«trueã‚’è¿”ã™ã€‚<br>
+     * ignoreRegexPatternã¯ã€æ¯”è¼ƒæ™‚ã«ç„¡è¦–ã™ã‚‹å†…å®¹ã‚’æ­£è¦è¡¨ç¾ã§æŒ‡å®šã™ã‚‹ã€‚è¤‡æ•°æŒ‡å®šã™ã‚‹å ´åˆã¯ã€æ”¹è¡Œã—ã¦æŒ‡å®šã™ã‚‹ã€‚ã“ã®æ­£è¦è¡¨ç¾ã«ä¸€è‡´ã™ã‚‹å†…å®¹ã¯ã€ç©ºæ–‡å­—ã«ç½®æ›ã—ã¦æ¯”è¼ƒã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ”äŠrŒ‹‰Ê‚ª“™‚µ‚¢ê‡‚ÍAtrue
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return æ¯”è¼ƒçµæœãŒç­‰ã—ã„å ´åˆã¯ã€true
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

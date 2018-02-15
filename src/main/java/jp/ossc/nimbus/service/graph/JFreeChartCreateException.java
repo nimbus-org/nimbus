@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * JFreeChart¶¬—áŠOƒNƒ‰ƒXB<p>
+ * JFreeChartç”Ÿæˆæ™‚ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -41,35 +41,35 @@ public class JFreeChartCreateException extends Exception {
     private static final long serialVersionUID = -2331082772313273041L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public JFreeChartCreateException() {
         super();
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public JFreeChartCreateException(String message) {
         super(message);
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› 
      */
     public JFreeChartCreateException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param cause Œ´ˆö
+     * @param cause åŸå› 
      */
     public JFreeChartCreateException(Throwable cause) {
         super(cause);

@@ -41,18 +41,18 @@ import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTP ƒ}ƒ‹ƒ`ƒp[ƒgPOSTƒŠƒNƒGƒXƒgB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTP ãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆPOSTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class MultipartPostHttpRequestImpl extends PostHttpRequestImpl{
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param params ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
-     * @exception Exception ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @exception Exception ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initParameter(
         HttpMethodBase method,
@@ -83,11 +83,11 @@ public class MultipartPostHttpRequestImpl extends PostHttpRequestImpl{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception Exception UnsupportedOperationException‚ğ“Š‚°‚é
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception UnsupportedOperationExceptionã‚’æŠ•ã’ã‚‹
      */
     protected void initInputStream(
         HttpMethodBase method,

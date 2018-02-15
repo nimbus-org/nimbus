@@ -30,16 +30,16 @@ public class HttpResponseImplTest extends TestCase {
 	 
 
 	/**
-	 * HttpResponseImpl‚ÌŠeƒvƒƒpƒeƒB‚ğİ’èAæ“¾‚·‚éƒeƒXƒgB
+	 * HttpResponseImplã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã€å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>HttpResponseImplƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>Šegetterƒƒ\ƒbƒh‚ğÀs</li>
+	 * <li>HttpResponseImplã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>å„getterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹Bİ’è‚µ‚½’l‚ª³‚µ‚­æ“¾‚Å‚«‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚è¨­å®šã—ãŸå€¤ãŒæ­£ã—ãå–å¾—ã§ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetterGetter() {
@@ -62,18 +62,18 @@ public class HttpResponseImplTest extends TestCase {
 
 
 	/**
-	 * HTTPƒƒ\ƒbƒh‚ğİ’è‚·‚éƒeƒXƒgB
+	 * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µAHttpClientFactoryServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>HttpRequestImpl#createRequest(˜_—ƒAƒNƒVƒ‡ƒ“–¼)‚ğÀs‚µAHttpRequest‚ğ¶¬</li>
-	 * <li>¶¬‚µ‚½HttpRequest‚ğw’è‚µ‚ÄAHttpClientImpl#createHttpMethod()‚ğÀs</li>
-	 * <li>¶¬‚µ‚½Method‚ğw’è‚µ‚ÄAHttpResponseImpl#setHttpMethod()‚ğÀs</li>
+	 * <li>å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã€HttpClientFactoryServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>HttpRequestImpl#createRequest(è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å)ã‚’å®Ÿè¡Œã—ã€HttpRequestã‚’ç”Ÿæˆ</li>
+	 * <li>ç”Ÿæˆã—ãŸHttpRequestã‚’æŒ‡å®šã—ã¦ã€HttpClientImpl#createHttpMethod()ã‚’å®Ÿè¡Œ</li>
+	 * <li>ç”Ÿæˆã—ãŸMethodã‚’æŒ‡å®šã—ã¦ã€HttpResponseImpl#setHttpMethod()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetHttpMethod() {
@@ -98,7 +98,7 @@ public class HttpResponseImplTest extends TestCase {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-clientTest.xml");
@@ -109,20 +109,20 @@ public class HttpResponseImplTest extends TestCase {
 	
 	
 	/**
-	 * ƒwƒbƒ_[î•ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µAHttpClientFactoryServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>HttpRequestImpl#createRequest(˜_—ƒAƒNƒVƒ‡ƒ“–¼)‚ğÀs‚µAHttpRequest‚ğ¶¬</li>
-	 * <li>HttpRequestImpl#executeRequest()‚ğÀs‚µAHttpResponse‚ğ¶¬</li>
-	 * <li>ƒŒƒXƒ|ƒ“ƒX‚Ìƒwƒbƒ_[‚ÉContent-Type=text/html;charset=Shift_JIS‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é</li>
-	 * <li>HttpResponseImpl#getHeadermap()‚ğÀs‚µ‚Ämap‚ğ¶¬</li>
-	 * <li>HttpResponseImpl#getHeader(),getHeaders()‚ğÀs</li>
+	 * <li>å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã€HttpClientFactoryServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>HttpRequestImpl#createRequest(è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å)ã‚’å®Ÿè¡Œã—ã€HttpRequestã‚’ç”Ÿæˆ</li>
+	 * <li>HttpRequestImpl#executeRequest()ã‚’å®Ÿè¡Œã—ã€HttpResponseã‚’ç”Ÿæˆ</li>
+	 * <li>ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒ˜ãƒƒãƒ€ãƒ¼ã«Content-Type=text/html;charset=Shift_JISãŒå«ã¾ã‚Œã¦ã„ã‚‹</li>
+	 * <li>HttpResponseImpl#getHeadermap()ã‚’å®Ÿè¡Œã—ã¦mapã‚’ç”Ÿæˆ</li>
+	 * <li>HttpResponseImpl#getHeader(),getHeaders()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>HttpResponseImpl#getHeader(),getHeaders()‚ª³‚µ‚¢Œ‹‰Ê‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>HttpResponseImpl#getHeader(),getHeaders()ãŒæ­£ã—ã„çµæœãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetHeaderMap() {
@@ -158,7 +158,7 @@ public class HttpResponseImplTest extends TestCase {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-clientTest.xml");
@@ -167,19 +167,19 @@ public class HttpResponseImplTest extends TestCase {
 	}
 	
 	/**
-	 * ƒwƒbƒ_[î•ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µAHttpClientFactoryServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>HttpRequestImpl#createRequest(˜_—ƒAƒNƒVƒ‡ƒ“–¼)‚ğÀs‚µAHttpRequest‚ğ¶¬</li>
-	 * <li>HttpRequestImpl#executeRequest()‚ğÀs‚µAHttpResponse‚ğ¶¬</li>
-	 * <li>ƒŒƒXƒ|ƒ“ƒX‚Ìƒwƒbƒ_[‚ÉContent-Type=text/html;charset=Shift_JIS‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é</li>
-	 * <li>HttpResponseImpl#getHeader(),getHeaders()‚ğÀs</li>
+	 * <li>å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã€HttpClientFactoryServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>HttpRequestImpl#createRequest(è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å)ã‚’å®Ÿè¡Œã—ã€HttpRequestã‚’ç”Ÿæˆ</li>
+	 * <li>HttpRequestImpl#executeRequest()ã‚’å®Ÿè¡Œã—ã€HttpResponseã‚’ç”Ÿæˆ</li>
+	 * <li>ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒ˜ãƒƒãƒ€ãƒ¼ã«Content-Type=text/html;charset=Shift_JISãŒå«ã¾ã‚Œã¦ã„ã‚‹</li>
+	 * <li>HttpResponseImpl#getHeader(),getHeaders()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>HttpResponseImpl#getHeader(),getHeaders()‚ª³‚µ‚¢Œ‹‰Ê‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>HttpResponseImpl#getHeader(),getHeaders()ãŒæ­£ã—ã„çµæœãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetHeaderMapNull() {
@@ -214,7 +214,7 @@ public class HttpResponseImplTest extends TestCase {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-clientTest.xml");
@@ -223,17 +223,17 @@ public class HttpResponseImplTest extends TestCase {
 	}
 
 	/**
-	 * HttpResponse‚Ìƒwƒbƒ_[–¼‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * HttpResponseã®ãƒ˜ãƒƒãƒ€ãƒ¼åã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄHttpResponse#headerMap‚ğ¶¬</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦HttpResponse#headerMapã‚’ç”Ÿæˆ</li>
 	 * <li>name=ContentType,value={"application/xml"}</li>
-	 * <li>HttpResponse#getHeaderNameSet‚ğÀs</li>
+	 * <li>HttpResponse#getHeaderNameSetã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>w’è‚µ‚½“à—e‚ª•Ô‚è’l‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æŒ‡å®šã—ãŸå†…å®¹ãŒè¿”ã‚Šå€¤ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetHeader() {
@@ -256,19 +256,19 @@ public class HttpResponseImplTest extends TestCase {
 			assertEquals(System.in, res.getInputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 
 
 	/**
-	 * HttpResponse‚ÌƒXƒgƒŠ[ƒ€‚ğİ’èAæ“¾‚·‚éƒeƒXƒgB
+	 * HttpResponseã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®šã€å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>XMLƒXƒgƒŠ[ƒ€ƒf[ƒ^‚ğƒf[ƒ^ƒZƒbƒg‚É•ÏŠ·‚µ‚Äæ“¾‚·‚é</li>
-	 * <li>Ÿ‚Ì“à—e‚ğDataSetXMLConverter‚Å•ÏŠ·‚·‚é<BR>	
+	 * <li>XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å¤‰æ›ã—ã¦å–å¾—ã™ã‚‹</li>
+	 * <li>æ¬¡ã®å†…å®¹ã‚’DataSetXMLConverterã§å¤‰æ›ã™ã‚‹<BR>	
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -283,18 +283,18 @@ public class HttpResponseImplTest extends TestCase {
 	 *   </schema>
 	 *    <header name="TestHeader"><A>2008-01-28</A><B>TestValue</B></header></dataSet>
 	 * <PRE></li>	 
-	 * <li>ã‹L‚ÌƒXƒgƒŠ[ƒ€ƒf[ƒ^‚ÆƒRƒ“ƒo[ƒ^‚ğƒvƒƒpƒeƒB‚Éİ’è‚µ‚ÄA<BR>
-	 * HttpResponse#getObject‚ğÀs</li>
+	 * <li>ä¸Šè¨˜ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿ã¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è¨­å®šã—ã¦ã€<BR>
+	 * HttpResponse#getObjectã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³‚µ‚¢’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£ã—ã„å€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetObject() {
 		try {
 			HttpResponseImpl res = new HttpResponseImpl();
-			//CharacterEncoding‚ğİ’è‚µ‚Ä‚¨‚­
+			//CharacterEncodingã‚’è¨­å®šã—ã¦ãŠã
 			res.headerMap = new HashMap();
 
 			String[] vals = new String[] { "application/xml;charset=Shift_JIS" };
@@ -308,7 +308,7 @@ public class HttpResponseImplTest extends TestCase {
 							"\"@value@ != null\"\n:B,java.lang.String,,," +
 							"</header></schema><header name=\"TestHeader\">" +
 							"<A>2008-01-28</A><B>TestValue</B></header></dataSet>";
-			//“ü—ÍƒXƒgƒŠ[ƒ€‚ÆƒRƒ“ƒo[ƒ^[‚ğƒvƒƒpƒeƒB‚ÉƒZƒbƒg
+			//å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚»ãƒƒãƒˆ
 			InputStream is = new ByteArrayInputStream(inxml.getBytes());
 			res.setInputStream(is);
 			DataSetXMLConverter conv = new DataSetXMLConverter(DataSetXMLConverter.XML_TO_DATASET);
@@ -327,21 +327,21 @@ public class HttpResponseImplTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * HttpResponse‚ÌƒXƒgƒŠ[ƒ€‚ğİ’èAæ“¾‚·‚éƒeƒXƒgB
+	 * HttpResponseã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®šã€å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>XMLƒXƒgƒŠ[ƒ€ƒf[ƒ^‚ğƒf[ƒ^ƒZƒbƒg‚É•ÏŠ·‚µ‚Äæ“¾‚·‚é</li>
-	 * <li>Ÿ‚Ì“à—e‚ğDataSetXMLConverter‚Å•ÏŠ·‚·‚é<BR>	
+	 * <li>XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å¤‰æ›ã—ã¦å–å¾—ã™ã‚‹</li>
+	 * <li>æ¬¡ã®å†…å®¹ã‚’DataSetXMLConverterã§å¤‰æ›ã™ã‚‹<BR>	
 	 * <PRE>
 	 * <?xml version="1.0" encoding="UTF-8"?>
 	 *  <dataSet>
@@ -356,23 +356,23 @@ public class HttpResponseImplTest extends TestCase {
 	 *   </schema>
 	 *    <header name="TestHeader"><A>2008-01-28</A><B>TestValue</B></header></dataSet>
 	 * <PRE></li>	 
-	 * <li>ã‹L‚ÌƒXƒgƒŠ[ƒ€ƒf[ƒ^‚ÆƒRƒ“ƒo[ƒ^‚ğƒvƒƒpƒeƒB‚Éİ’è‚µ‚ÄA<BR>
-	 * HttpResponse#getObject‚ğÀs</li>
+	 * <li>ä¸Šè¨˜ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿ã¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è¨­å®šã—ã¦ã€<BR>
+	 * HttpResponse#getObjectã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³‚µ‚¢’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£ã—ã„å€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetObjectByServiceName() {
 		try {
-			//ƒRƒ“ƒo[ƒ^ƒT[ƒrƒX‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh
+			//ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰
 			if (!ServiceManagerFactory
 					.loadManager("jp/ossc/nimbus/service/http/httpclient/service-conv.xml")) {
 				System.exit(-1);
 			}
 			HttpResponseImpl res = new HttpResponseImpl();
-			//CharacterEncoding‚ğİ’è‚µ‚Ä‚¨‚­
+			//CharacterEncodingã‚’è¨­å®šã—ã¦ãŠã
 			res.headerMap = new HashMap();
 
 			String[] vals = new String[] { "application/xml;charset=Shift_JIS" };
@@ -386,7 +386,7 @@ public class HttpResponseImplTest extends TestCase {
 							"\"@value@ != null\"\n:B,java.lang.String,,," +
 							"</header></schema><header name=\"TestHeader\">" +
 							"<A>2008-01-28</A><B>TestValue</B></header></dataSet>";
-			//“ü—ÍƒXƒgƒŠ[ƒ€‚ÆƒRƒ“ƒo[ƒ^[ƒT[ƒrƒX–¼‚ğƒvƒƒpƒeƒB‚ÉƒZƒbƒg
+			//å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚»ãƒƒãƒˆ
 			InputStream is = new ByteArrayInputStream(inxml.getBytes());
 			res.setInputStream(is);
 			ServiceName name = new ServiceName("DataSetXMLConverter");
@@ -405,10 +405,10 @@ public class HttpResponseImplTest extends TestCase {
 			
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (ConvertException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 		ServiceManagerFactory
 				.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-conv.xml");
@@ -417,17 +417,17 @@ public class HttpResponseImplTest extends TestCase {
 
 
 	/**
-	 * ƒwƒbƒ_[‚ÌCharacterEncoding‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã®CharacterEncodingã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄHttpResponse#headerMap‚ğ¶¬</li>
-	 * <li>name=ContentType,value={"application/xml"}(•¶šƒZƒbƒgw’è‚È‚µ)</li>
-	 * <li>HttpResponse#getCharacterEncoding‚ğÀs</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦HttpResponse#headerMapã‚’ç”Ÿæˆ</li>
+	 * <li>name=ContentType,value={"application/xml"}(æ–‡å­—ã‚»ãƒƒãƒˆæŒ‡å®šãªã—)</li>
+	 * <li>HttpResponse#getCharacterEncodingã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>"ISO8859_1"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>"ISO8859_1"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetCharacterEncodingNoCharSet() {
@@ -441,17 +441,17 @@ public class HttpResponseImplTest extends TestCase {
 	}
 
 	/**
-	 * ƒwƒbƒ_[‚ÌCharacterEncoding‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã®CharacterEncodingã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄHttpResponse#headerMap‚ğ¶¬</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦HttpResponse#headerMapã‚’ç”Ÿæˆ</li>
 	 * <li>name=ContentType,value={"application/xml;charset=Shift_JIS"}</li>
-	 * <li>HttpResponse#getCharacterEncoding‚ğÀs</li>
+	 * <li>HttpResponse#getCharacterEncodingã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>"Shift_JIS"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>"Shift_JIS"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetCharacterEncoding() {

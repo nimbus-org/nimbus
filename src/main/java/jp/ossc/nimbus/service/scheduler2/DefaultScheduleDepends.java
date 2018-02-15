@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.scheduler2;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒXƒPƒWƒ…[ƒ‹ˆË‘¶B<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,16 +42,16 @@ public class DefaultScheduleDepends implements ScheduleDepends, java.io.Serializ
     protected boolean isIgnoreError;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultScheduleDepends(){
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param id ˆË‘¶‚·‚éƒ}ƒXƒ^ID
-     * @param isIgnore ƒGƒ‰[‚Ìê‡A–³‹‚·‚é‚©‚Ç‚¤‚©
+     * @param id ä¾å­˜ã™ã‚‹ãƒã‚¹ã‚¿ID
+     * @param isIgnore ã‚¨ãƒ©ãƒ¼ã®å ´åˆã€ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹
      */
     public DefaultScheduleDepends(String id, boolean isIgnore){
         masterId = id;
@@ -63,9 +63,9 @@ public class DefaultScheduleDepends implements ScheduleDepends, java.io.Serializ
     }
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒXƒ^ID‚ğİ’è‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚¹ã‚¿IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒXƒ^ID
+     * @param id ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚¹ã‚¿ID
      */
     public void setMasterId(String id){
         masterId = id;
@@ -76,9 +76,9 @@ public class DefaultScheduleDepends implements ScheduleDepends, java.io.Serializ
     }
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ªƒGƒ‰[‚Ìê‡A–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã‚¨ãƒ©ãƒ¼ã®å ´åˆã€ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isIgnore –³‹‚·‚éê‡Atrue
+     * @param isIgnore ç„¡è¦–ã™ã‚‹å ´åˆã€true
      */
     public void setIgnoreError(boolean isIgnore){
         isIgnoreError = isIgnore;

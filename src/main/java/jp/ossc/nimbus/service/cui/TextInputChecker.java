@@ -34,37 +34,37 @@ package jp.ossc.nimbus.service.cui;
 import jp.ossc.nimbus.util.*;
 
 /**
- *	InputCheckerƒCƒ“ƒ^[ƒtƒFƒCƒXÀ‘•ƒNƒ‰ƒX
- *  XMLƒtƒ@ƒCƒ‹‚É‘¦’l‚Å“ü—Í—LŒø’l‚ª‚©‚©‚ê‚Ä‚¢‚éê‡
- * iinputƒ^ƒO‚Ìtype‘®«‚ªA"text"‚Ì‚Æ‚«¶¬‚³‚ê‚éB
+ *	InputCheckerã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹
+ *  XMLãƒ•ã‚¡ã‚¤ãƒ«ã«å³å€¤ã§å…¥åŠ›æœ‰åŠ¹å€¤ãŒã‹ã‹ã‚Œã¦ã„ã‚‹å ´åˆ
+ * ï¼ˆinputã‚¿ã‚°ã®typeå±æ€§ãŒã€"text"ã®ã¨ãç”Ÿæˆã•ã‚Œã‚‹ã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/31| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/31ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class TextInputChecker implements InputChecker {
-	//ƒƒ“ƒo•Ï”
-	/** “ü—Í‰Â”\’l */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** å…¥åŠ›å¯èƒ½å€¤ */
 	private CsvArrayList mValidValues = null;
-	/** “ü—Í‰Â”\”ÍˆÍÅ‘å */
+	/** å…¥åŠ›å¯èƒ½ç¯„å›²æœ€å¤§ */
 	private int mValidValueMax;
-	/** “ü—Í‰Â”\”ÍˆÍÅ¬ */
+	/** å…¥åŠ›å¯èƒ½ç¯„å›²æœ€å° */
 	private int mValidValueMin;
-	/** ”ÍˆÍw’èƒ‚[ƒh */
+	/** ç¯„å›²æŒ‡å®šãƒ¢ãƒ¼ãƒ‰ */
 	private boolean mMaxMinDefMode = false;
-	/** ”ÍˆÍw’è‚ğs‚¤ÛAÅ‘å’l‚ÆÅ¬’l‚ÌŠÔ‚É“ü‚ê‚é•¶š—ñ */
+	/** ç¯„å›²æŒ‡å®šã‚’è¡Œã†éš›ã€æœ€å¤§å€¤ã¨æœ€å°å€¤ã®é–“ã«å…¥ã‚Œã‚‹æ–‡å­—åˆ— */
 	private String mFromToStr = "-";
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public TextInputChecker(){
 		mValidValues = new CsvArrayList();
 	}
 	/**
-	 * “ü—Í’lƒ`ƒFƒbƒNƒƒ\ƒbƒh
+	 * å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public String check(String input) {
 		if(mMaxMinDefMode){
-			//Å‘å’lEÅ¬’l‚ªw’è‚³‚ê‚Ä‚¢‚éƒ‚[ƒh
+			//æœ€å¤§å€¤ãƒ»æœ€å°å€¤ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒ¢ãƒ¼ãƒ‰
 			int tmp;
 			try{
 				tmp = Integer.parseInt(input);
@@ -78,7 +78,7 @@ public class TextInputChecker implements InputChecker {
 			return null;
 		}
 		else{
-			//—LŒø‚È’l‚ªŒÂX‚É—^‚¦‚ç‚ê‚Ä‚¢‚éƒ‚[ƒh
+			//æœ‰åŠ¹ãªå€¤ãŒå€‹ã€…ã«ä¸ãˆã‚‰ã‚Œã¦ã„ã‚‹ãƒ¢ãƒ¼ãƒ‰
 			if (mValidValues.contains(input)){
 				//for debug
 				return input;
@@ -87,28 +87,28 @@ public class TextInputChecker implements InputChecker {
 		}
 	}
 	/**
-	 * —LŒø‚È“ü—Í’l‚ÌƒZƒbƒ^[
-	 * @param inputdef iXML’è‹`ƒtƒ@ƒCƒ‹’†‚Ì<input>ƒ^ƒO‚Ì’†gj
+	 * æœ‰åŠ¹ãªå…¥åŠ›å€¤ã®ã‚»ãƒƒã‚¿ãƒ¼
+	 * @param inputdef ï¼ˆXMLå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ä¸­ã®<input>ã‚¿ã‚°ã®ä¸­èº«ï¼‰
 	 */
 	public void setValidInput(String inputdef) throws NumberFormatException{
 		mMaxMinDefMode = isMaxMinTypeDefinition(inputdef);
 		if(!mMaxMinDefMode){
-			//ƒJƒ“ƒ}‚Å‹æØ‚Á‚Ä“ü—Í‰Â”\’l‚ÌƒŠƒXƒg‚ÉŠi”[
+			//ã‚«ãƒ³ãƒã§åŒºåˆ‡ã£ã¦å…¥åŠ›å¯èƒ½å€¤ã®ãƒªã‚¹ãƒˆã«æ ¼ç´
 			mValidValues.split(inputdef);
 		}
 		
 	}
 	/**
-	 * —LŒø‚È“ü—Í’l‚ğ’è‹`‚·‚é•¶š—ñ‚ªAÅ‘å’lAÅ¬’l‚ğw’è‚µ‚Ä‚¢‚é
-	 * ƒ^ƒCƒv‚©‚Ç‚¤‚©A”»’è‚·‚éBÅ‘å’lAÅ¬’l‚ğw’è‚µ‚Ä‚¢‚éƒ^ƒCƒv‚Å
-	 * ‚ ‚ê‚ÎAƒƒ“ƒo•Ï”‚ÉÅ‘å’lAÅ¬’l‚ğŠi”[‚·‚éB
+	 * æœ‰åŠ¹ãªå…¥åŠ›å€¤ã‚’å®šç¾©ã™ã‚‹æ–‡å­—åˆ—ãŒã€æœ€å¤§å€¤ã€æœ€å°å€¤ã‚’æŒ‡å®šã—ã¦ã„ã‚‹
+	 * ã‚¿ã‚¤ãƒ—ã‹ã©ã†ã‹ã€åˆ¤å®šã™ã‚‹ã€‚æœ€å¤§å€¤ã€æœ€å°å€¤ã‚’æŒ‡å®šã—ã¦ã„ã‚‹ã‚¿ã‚¤ãƒ—ã§
+	 * ã‚ã‚Œã°ã€ãƒ¡ãƒ³ãƒå¤‰æ•°ã«æœ€å¤§å€¤ã€æœ€å°å€¤ã‚’æ ¼ç´ã™ã‚‹ã€‚
 	 * 
 	 */
 	protected boolean isMaxMinTypeDefinition(String def) throws NumberFormatException{
-		//TODOÀ‘•‚·‚é
+		//TODOå®Ÿè£…ã™ã‚‹
 		int separatePos = -1;
 		if( (separatePos = def.indexOf(mFromToStr)) < 0 ){
-			//Å‘å’lAÅ¬’l‚ğ‹æØ‚é•¶š‚ªŒ©‚Â‚©‚ç‚È‚¯‚ê‚Îfalse‚ğ•Ô‚·
+			//æœ€å¤§å€¤ã€æœ€å°å€¤ã‚’åŒºåˆ‡ã‚‹æ–‡å­—ãŒè¦‹ã¤ã‹ã‚‰ãªã‘ã‚Œã°falseã‚’è¿”ã™
 			return false;
 		}
 		String minStr = def.substring(0,separatePos);
@@ -118,7 +118,7 @@ public class TextInputChecker implements InputChecker {
 		return true;
 	}
 	/**
-	 * Å‘å’lEÅ¬’l‚ÌŠÔ‚É“ü‚é•¶š—ñ‚ÌƒZƒbƒ^[
+	 * æœ€å¤§å€¤ãƒ»æœ€å°å€¤ã®é–“ã«å…¥ã‚‹æ–‡å­—åˆ—ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param fromto
 	 */
 	public void setFromToString(String fromto){

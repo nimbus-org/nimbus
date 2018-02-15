@@ -34,8 +34,8 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * ƒT[ƒrƒXƒtƒ@ƒNƒgƒŠƒT[ƒrƒXŠî’êƒNƒ‰ƒXB<p>
- * {@link FactoryService}‚Ì’†‚Å‚àAƒT[ƒrƒX‚ğ¶¬‚·‚éFactoryService‚ğÀ‘•‚·‚éÛ‚ÌŠî’êƒNƒ‰ƒX‚Å‚ ‚éB<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * {@link FactoryService}ã®ä¸­ã§ã‚‚ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹FactoryServiceã‚’å®Ÿè£…ã™ã‚‹éš›ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -44,7 +44,7 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     private static final long serialVersionUID = 3957308112143950640L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public ServiceFactoryServiceBase(){
         super();
@@ -58,17 +58,17 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * {@link #createServiceInstance()}‚Å¶¬‚µ‚½ƒT[ƒrƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É‘Î‚µ‚ÄAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #createServiceInstance()}ã§ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«å¯¾ã—ã¦ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link #isManagement()}‚ªtrue‚Ìê‡A¶¬‚µ‚½ƒT[ƒrƒX‚ÉƒT[ƒrƒX–¼‚ÆƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼‚ğİ’è‚·‚éB‚±‚ÌÛAƒT[ƒrƒX–¼‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ÌŒã‚ë‚É"$" + "ŠÇ—‚³‚ê‚Ä‚¢‚é¶¬‚µ‚½ƒT[ƒrƒX‚Ì’Ê‚µ”Ô†"‚ğ•t—^‚µ‚½‚à‚Ì‚Å‚ ‚éB‚Ü‚½AƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒXƒ}ƒl[ƒWƒƒ–¼‚Æ“¯‚¶‚Å‚ ‚éB</li>
-     *   <li>¶¬‚µ‚½ƒT[ƒrƒX‚Ì¶¬ˆ—i{@link Service#create()}jB</li>
-     *   <li>¶¬‚µ‚½ƒT[ƒrƒX‚ÌŠJnˆ—i{@link Service#start()}jB</li>
-     *   <li>¶¬‚µ‚½ƒT[ƒrƒX‚ª{@link ServiceBase}‚ğŒp³‚µ‚Ä‚¢‚éê‡‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Éİ’è‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.log.Logger Logger}‚Æ{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}‚ğA¶¬‚µ‚½ƒT[ƒrƒX‚É‚àİ’è‚·‚éB</li>
+     *   <li>{@link #isManagement()}ãŒtrueã®å ´åˆã€ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã«ã‚µãƒ¼ãƒ“ã‚¹åã¨ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£åã‚’è¨­å®šã™ã‚‹ã€‚ã“ã®éš›ã€ã‚µãƒ¼ãƒ“ã‚¹åã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®å¾Œã‚ã«"$" + "ç®¡ç†ã•ã‚Œã¦ã„ã‚‹ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®é€šã—ç•ªå·"ã‚’ä»˜ä¸ã—ãŸã‚‚ã®ã§ã‚ã‚‹ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£åã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£åã¨åŒã˜ã§ã‚ã‚‹ã€‚</li>
+     *   <li>ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ï¼ˆ{@link Service#create()}ï¼‰ã€‚</li>
+     *   <li>ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ï¼ˆ{@link Service#start()}ï¼‰ã€‚</li>
+     *   <li>ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã‚’ç¶™æ‰¿ã—ã¦ã„ã‚‹å ´åˆã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.log.Logger Logger}ã¨{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚’ã€ç”Ÿæˆã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã«ã‚‚è¨­å®šã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected final Object createInstance() throws Exception{
         return createInstance(false);
@@ -126,18 +126,18 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒT[ƒrƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒT[ƒrƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected abstract Service createServiceInstance() throws Exception;
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ÌŠJnŒãˆ—‚ğs‚¤B<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAŠJn‚³‚¹‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®é–‹å§‹å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€é–‹å§‹ã•ã›ã‚‹ã€‚<br>
      * 
-     * @exception Exception ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postStartService() throws Exception{
         
@@ -154,10 +154,10 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Ì’â~Œãˆ—‚ğs‚¤B<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µA’â~‚³‚¹‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®åœæ­¢å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€åœæ­¢ã•ã›ã‚‹ã€‚<br>
      * 
-     * @exception Exception ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postStopService() throws Exception{
         final Set managedInstances = getManagedInstanceSet();
@@ -172,10 +172,10 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Ì”jŠüŒãˆ—‚ğs‚¤B<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µA”jŠü‚³‚¹‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ç ´æ£„å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ç ´æ£„ã•ã›ã‚‹ã€‚<br>
      * 
-     * @exception Exception ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void postDestroyService() throws Exception{
         final Set managedInstances = getManagedInstanceSet();
@@ -190,10 +190,10 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     }
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAƒT[ƒrƒX‚ª{@link ServiceBase}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚ê‚ÎA{@link ServiceBase#setSystemLoggerServiceName(ServiceName)}‚ğŒÄ‚Ño‚·B<br>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚Œã°ã€{@link ServiceBase#setSystemLoggerServiceName(ServiceName)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemLoggerServiceName()
      */
     public void setSystemLoggerServiceName(ServiceName name){
@@ -211,10 +211,10 @@ public abstract class ServiceFactoryServiceBase extends FactoryServiceBase{
     }
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAƒT[ƒrƒX‚ª{@link ServiceBase}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚ê‚ÎA{@link ServiceBase#setSystemMessageRecordFactoryServiceName(ServiceName)}‚ğŒÄ‚Ño‚·B<br>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚Œã°ã€{@link ServiceBase#setSystemMessageRecordFactoryServiceName(ServiceName)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemMessageRecordFactoryServiceName()
      */
     public void setSystemMessageRecordFactoryServiceName(

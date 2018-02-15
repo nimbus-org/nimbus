@@ -36,7 +36,7 @@ import jp.ossc.nimbus.service.jndi.JndiFinder;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * {@link DataSourceConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DataSourceConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DataSourceConnectionFactoryService
@@ -45,78 +45,78 @@ public interface DataSourceConnectionFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * {@link Context}ã‚Ìƒf[ƒ^ƒ\[ƒX–¼‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * {@link Context}ä¸Šã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_DATASOURCE_NAME_KEY = DataSourceConnectionFactoryService.class.getName().replaceAll("\\.", "_") + "_DataSourceName";
     
     /**
-     * ƒf[ƒ^ƒ\[ƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒf[ƒ^ƒ\[ƒX–¼
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹å
      */
     public void setName(String name);
     
     /**
-     * ƒf[ƒ^ƒ\[ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒ\[ƒX–¼
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹å
      */
     public String getName();
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JndiFinderƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * {@link Context}ã‚Ìƒf[ƒ^ƒ\[ƒX–¼‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATASOURCE_NAME_KEY}B<br>
+     * {@link Context}ä¸Šã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATASOURCE_NAME_KEY}ã€‚<br>
      *
-     * @param key Contextã‚Ìƒf[ƒ^ƒ\[ƒX–¼‚ÌƒL[
+     * @param key Contextä¸Šã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ã‚­ãƒ¼
      */
     public void setDataSourceNameKey(String key);
     
     /**
-     * {@link Context}ã‚Ìƒf[ƒ^ƒ\[ƒX–¼‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link Context}ä¸Šã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Contextã‚Ìƒf[ƒ^ƒ\[ƒX–¼‚ÌƒL[
+     * @return Contextä¸Šã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ã‚­ãƒ¼
      */
     public String getDataSourceNameKey();
     
     /**
-     * javax.sql.DataSourceƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * javax.sql.DataSourceã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name DataSourceƒT[ƒrƒX–¼
+     * @param name DataSourceã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDataSourceServiceName(ServiceName name);
     
     /**
-     * javax.sql.DataSourceƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * javax.sql.DataSourceã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return DataSourceƒT[ƒrƒX–¼
+     * @return DataSourceã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDataSourceServiceName();
 }

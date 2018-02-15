@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.server;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowInvokerCallQueueHandlerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowInvokerCallQueueHandlerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see BeanFlowInvokerCallQueueHandlerService
@@ -42,27 +42,27 @@ import jp.ossc.nimbus.core.*;
 public interface BeanFlowInvokerCallQueueHandlerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì—v‹ƒIƒuƒWƒFƒNƒgBeanFlow–¼‚Ì‘O’uŒB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆBeanFlowåã®å‰ç½®è©ã€‚<p>
      */
     public static final String DEFAULT_REQUEST_OBJECT_FLOW_NAME_PREFIX = "request/";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒAƒNƒVƒ‡ƒ“BeanFlow–¼‚Ì‘O’uŒB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowåã®å‰ç½®è©ã€‚<p>
      */
     public static final String DEFAULT_ACTION_FLOW_NAME_PREFIX = "action/";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌŒ‹‰ÊƒXƒe[ƒ^ƒX:³íB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®çµæœã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹:æ­£å¸¸ã€‚<p>
      */
     public static final int DEFAULT_STATUS_NORMAL = 200;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌŒ‹‰ÊƒXƒe[ƒ^ƒX:ƒtƒ[‚ªŒ©‚Â‚©‚ç‚È‚¢B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®çµæœã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹:ãƒ•ãƒ­ãƒ¼ãŒè¦‹ã¤ã‹ã‚‰ãªã„ã€‚<p>
      */
     public static final int DEFAULT_STATUS_NOT_FOUND = 404;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌŒ‹‰ÊƒXƒe[ƒ^ƒX:ˆÙíB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®çµæœã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹:ç•°å¸¸ã€‚<p>
      */
     public static final int DEFAULT_STATUS_ERROR = 500;
     
@@ -79,179 +79,179 @@ public interface BeanFlowInvokerCallQueueHandlerServiceMBean extends ServiceBase
     public static final String JOURNAL_RESPONSE_OBJECT = "ResponseObject";
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * {@link Request ƒŠƒNƒGƒXƒg}‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğ—v‹ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link Request ãƒªã‚¯ã‚¨ã‚¹ãƒˆ}ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestStreamConverterServiceName(ServiceName name);
     
     /**
-     * {@link Request ƒŠƒNƒGƒXƒg}‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğ—v‹ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link Request ãƒªã‚¯ã‚¨ã‚¹ãƒˆ}ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRequestStreamConverterServiceName();
     
     /**
-     * ‰“šƒIƒuƒWƒFƒNƒg‚ğ{@link Response ƒŒƒXƒ|ƒ“ƒX}‚Ö‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link Response ãƒ¬ã‚¹ãƒãƒ³ã‚¹}ã¸ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResponseStreamConverterServiceName(ServiceName name);
     
     /**
-     * ‰“šƒIƒuƒWƒFƒNƒg‚ğ{@link Response ƒŒƒXƒ|ƒ“ƒX}‚Ö‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å¿œç­”ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link Response ãƒ¬ã‚¹ãƒãƒ³ã‚¹}ã¸ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResponseStreamConverterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğİ’è‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¨­å®šã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğİ’è‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¨­å®šã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg¶¬ƒtƒ[–¼‚Ì‘O’uŒ‚ğİ’è‚·‚éB<p>
-     * {@link #setRequestStreamConverterServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ª{@link jp.ossc.nimbus.util.converter.BindingStreamConverter BindingStreamConverter}‚¾‚Á‚½ê‡‚ÉA•ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é‚½‚ß‚É‹Æ–±ƒtƒ[‚ğŒÄ‚Ño‚·B‚»‚ÌÛ‚ÌAƒtƒ[–¼‚ª‚±‚±‚Åİ’è‚µ‚½‘O’uŒ+{@link Request#getAction() ƒAƒNƒVƒ‡ƒ“}‚Æ‚È‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_REQUEST_OBJECT_FLOW_NAME_PREFIX}B
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆãƒ•ãƒ­ãƒ¼åã®å‰ç½®è©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setRequestStreamConverterServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link jp.ossc.nimbus.util.converter.BindingStreamConverter BindingStreamConverter}ã ã£ãŸå ´åˆã«ã€å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ãŸã‚ã«æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã‚’å‘¼ã³å‡ºã™ã€‚ãã®éš›ã®ã€ãƒ•ãƒ­ãƒ¼åãŒã“ã“ã§è¨­å®šã—ãŸå‰ç½®è©+{@link Request#getAction() ã‚¢ã‚¯ã‚·ãƒ§ãƒ³}ã¨ãªã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_REQUEST_OBJECT_FLOW_NAME_PREFIX}ã€‚
      *
-     * @param prefix ‘O’uŒ
+     * @param prefix å‰ç½®è©
      */
     public void setRequestObjectFlowNamePrefix(String prefix);
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg¶¬ƒtƒ[–¼‚Ì‘O’uŒ‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆãƒ•ãƒ­ãƒ¼åã®å‰ç½®è©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘O’uŒ
+     * @return å‰ç½®è©
      */
     public String getRequestObjectFlowNamePrefix();
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ì‘O’uŒ‚ğİ’è‚·‚éB<p>
-     * {@link Request#getAction() ƒAƒNƒVƒ‡ƒ“}‚Åw’è‚³‚ê‚½‹Æ–±ƒtƒ[‚ğŒÄ‚Ño‚·Û‚ÉAƒtƒ[–¼‚ª‚±‚±‚Åİ’è‚µ‚½‘O’uŒ+{@link Request#getAction() ƒAƒNƒVƒ‡ƒ“}‚Æ‚È‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_ACTION_FLOW_NAME_PREFIX}B
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®å‰ç½®è©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link Request#getAction() ã‚¢ã‚¯ã‚·ãƒ§ãƒ³}ã§æŒ‡å®šã•ã‚ŒãŸæ¥­å‹™ãƒ•ãƒ­ãƒ¼ã‚’å‘¼ã³å‡ºã™éš›ã«ã€ãƒ•ãƒ­ãƒ¼åãŒã“ã“ã§è¨­å®šã—ãŸå‰ç½®è©+{@link Request#getAction() ã‚¢ã‚¯ã‚·ãƒ§ãƒ³}ã¨ãªã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_ACTION_FLOW_NAME_PREFIX}ã€‚
      *
-     * @param prefix ‘O’uŒ
+     * @param prefix å‰ç½®è©
      */
     public void setActionFlowNamePrefix(String prefix);
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ì‘O’uŒ‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®å‰ç½®è©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘O’uŒ
+     * @return å‰ç½®è©
      */
     public String getActionFlowNamePrefix();
     
     /**
-     * ³í‰“š‚ÌƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_STATUS_NORMAL}B
+     * æ­£å¸¸å¿œç­”æ™‚ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_STATUS_NORMAL}ã€‚
      *
-     * @param status ƒXƒe[ƒ^ƒX’l
+     * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setNormalStatus(int status);
     
     /**
-     * ³í‰“š‚ÌƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * æ­£å¸¸å¿œç­”æ™‚ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒe[ƒ^ƒX’l
+     * @return ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getNormalStatus();
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ÉŠY“–‚·‚éƒtƒ[‚ªŒ©‚Â‚©‚ç‚È‚¢‚ÌƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_STATUS_NOT_FOUND}B
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã«è©²å½“ã™ã‚‹ãƒ•ãƒ­ãƒ¼ãŒè¦‹ã¤ã‹ã‚‰ãªã„æ™‚ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_STATUS_NOT_FOUND}ã€‚
      *
-     * @param status ƒXƒe[ƒ^ƒX’l
+     * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setNotFoundStatus(int status);
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ÉŠY“–‚·‚éƒtƒ[‚ªŒ©‚Â‚©‚ç‚È‚¢‚ÌƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã«è©²å½“ã™ã‚‹ãƒ•ãƒ­ãƒ¼ãŒè¦‹ã¤ã‹ã‚‰ãªã„æ™‚ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒe[ƒ^ƒX’l
+     * @return ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getNotFoundStatus();
     
     /**
-     * —áŠO‚ª”­¶‚µ‚½‚ÌƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_STATUS_ERROR}B
+     * ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸæ™‚ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_STATUS_ERROR}ã€‚
      *
-     * @param status ƒXƒe[ƒ^ƒX’l
+     * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setErrorStatus(int status);
     
     /**
-     * —áŠO‚ª”­¶‚µ‚½‚ÌƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸæ™‚ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒe[ƒ^ƒX’l
+     * @return ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getErrorStatus();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒO‚ğo—Í‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setErrorLogMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getErrorLogMessageId();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µA‹K’è‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒO‚ğo—Í‚µ‚È‚¢B<br>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€è¦å®šã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setRetryOverErrorLogMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO’†‚ÉƒGƒ‰[‚ª”­¶‚µA‹K’è‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€è¦å®šã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getRetryOverErrorLogMessageId();
 }

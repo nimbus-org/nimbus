@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import java.io.*;
 import java.net.*;
@@ -45,8 +45,8 @@ import org.xml.sax.SAXException;
 import jp.ossc.nimbus.service.aspect.util.*;
 import jp.ossc.nimbus.service.log.*;
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ƒ`ƒF[ƒ“ƒCƒ“ƒ{[ƒJ[ƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒXƒNƒ‰ƒX<p>
- * InterceptorChainInvoker‚ğ¶¬‚·‚é
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒã‚§ãƒ¼ãƒ³ã‚¤ãƒ³ãƒœãƒ¼ã‚«ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹<p>
+ * InterceptorChainInvokerã‚’ç”Ÿæˆã™ã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -58,36 +58,36 @@ public class DefaultInterceptorChainInvokerFactoryService
 	
     private static final long serialVersionUID = 6716744038966389661L;
     
-    /** ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒgƒLƒƒƒbƒVƒ…‚Ìƒ}ƒbƒv */
+    /** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ãƒãƒƒãƒ— */
 	private Map mInterceptListCacheMap = Collections.synchronizedMap(new HashMap());
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒŠƒXƒg */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒªã‚¹ãƒˆ */
 	private List mInterceptConfigList = new ArrayList();
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹–¼ */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«å */
 	private String[] mInterceptConfigFileNames = null;
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰ */
 	private Method mMethod = null;
-	/** ƒR[ƒ‹ƒoƒbƒNƒNƒ‰ƒX–¼ */
+	/** ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚¯ãƒ©ã‚¹å */
 	private String mCallbackClassName = null;
-	/** ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼ */
+	/** ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰å */
 	private String mCallbackMethodName = null;
-	/** ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒhƒpƒ‰[ƒƒ^ƒNƒ‰ƒX–¼”z—ñ **/
+	/** ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰ãƒ‘ãƒ©ãƒ¼ãƒ¡ã‚¿ã‚¯ãƒ©ã‚¹åé…åˆ— **/
 	private String[] mCallbackMethodParamClassNames = null;
-	/** InterceptorInvokerƒNƒ‰ƒX–¼ */
+	/** InterceptorInvokerã‚¯ãƒ©ã‚¹å */
 	private String mInterceptorInvokerClassName = "jp.ossc.nimbus.service.aspect.InterceptorChainInvokerAccessImpl";
-	/**	InterceptorInvokerƒNƒ‰ƒX */
+	/**	InterceptorInvokerã‚¯ãƒ©ã‚¹ */
 	private Class mInterceptorPerfomerCls = null ;
-	/**	Logger ƒT[ƒrƒX–¼ */
+	/**	Logger ã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mLoggerName = null ;
-	/**	Logger ƒT[ƒrƒX */
+	/**	Logger ã‚µãƒ¼ãƒ“ã‚¹ */
 	private Logger mLogger = null ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public DefaultInterceptorChainInvokerFactoryService() {
 		super();
 	}
-	/* (”ñ Javadoc)
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‹N“®<br>
+	/* (é Javadoc)
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®èµ·å‹•<br>
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	//
@@ -108,7 +108,7 @@ public class DefaultInterceptorChainInvokerFactoryService
 			throw new InvalidConfigurationException(e) ;
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#setLoggerServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setLoggerServiceName(ServiceName name) {
@@ -116,7 +116,7 @@ public class DefaultInterceptorChainInvokerFactoryService
 	}
 
 	/**
-	 * ƒƒ\ƒbƒh–¼‚ğ‰ğŒˆ‚·‚éB<br>
+	 * ãƒ¡ã‚½ãƒƒãƒ‰åã‚’è§£æ±ºã™ã‚‹ã€‚<br>
 	 */
 	private void completeMethod() throws InvalidConfigurationException{
 		if(this.mLogger != null){
@@ -128,12 +128,12 @@ public class DefaultInterceptorChainInvokerFactoryService
 		if(this.mLogger != null){
 			this.mLogger.write("AOP__00002",mCallbackMethodName) ;
 		}
-		//ƒ‹[ƒgÀsƒƒ\ƒbƒhæ“¾
+		//ãƒ«ãƒ¼ãƒˆå®Ÿè¡Œãƒ¡ã‚½ãƒƒãƒ‰å–å¾—
 		if(mCallbackMethodName == null || mCallbackMethodName.length() == 0){
 			throw new InvalidConfigurationException("CallbackMethodName is null");
 		}
 		try{
-			//ƒ‹[ƒgÀsƒNƒ‰ƒXæ“¾
+			//ãƒ«ãƒ¼ãƒˆå®Ÿè¡Œã‚¯ãƒ©ã‚¹å–å¾—
 			final Class clazz = findClazz(mCallbackClassName);
 			Class[] params = null;
 			if(mCallbackMethodParamClassNames != null && mCallbackMethodParamClassNames.length != 0){
@@ -162,9 +162,9 @@ public class DefaultInterceptorChainInvokerFactoryService
 		}
 	}
 	/**
-	 * w’è‚µ‚½ƒNƒ‰ƒX–¼‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚é<br>
-	 * @param  String				ƒNƒ‰ƒX–¼
-	 * @return Class				ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
+	 * æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹åã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹<br>
+	 * @param  String				ã‚¯ãƒ©ã‚¹å
+	 * @return Class				ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	private Class findClazz(String className) throws InvalidConfigurationException{
 		Class clazz = null;
@@ -181,83 +181,83 @@ public class DefaultInterceptorChainInvokerFactoryService
 	}
 
     /**
-     * Logger‚ğİ’è‚·‚éB
+     * Loggerã‚’è¨­å®šã™ã‚‹ã€‚
      */
 	public void setLogger(Logger logger) {
 		mLogger = logger;
 	}
 	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#setInterceptorConfigFileNames(java.lang.String[])
 	 */
 	public void setInterceptorConfigFileNames(String[] fileNames) {
 		this.mInterceptConfigFileNames = fileNames ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#getInterceptorConfigFileNames()
 	 */
 	public String[] getInterceptorConfigFileNames() {
 		return this.mInterceptConfigFileNames ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#setCallbackClassName(java.lang.String)
 	 */
 	public void setCallbackClassName(String callbackClassName) {
 		this.mCallbackClassName = callbackClassName ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#getCallbackClassName()
 	 */
 	public String getCallbackClassName() {
 		return this.mCallbackClassName;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#setCallbackMethodName(java.lang.String)
 	 */
 	public void setCallbackMethodName(String callbackMethodName) {
 		this.mCallbackMethodName = callbackMethodName ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#getCallbackMethodName()
 	 */
 	public String getCallbackMethodName() {
 		return this.mCallbackMethodName ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#setCallbackMethodParamClassNames(java.lang.String[])
 	 */
 	public void setCallbackMethodParamClassNames(String[] callbackMethodParamClassNames) {
 		this.mCallbackMethodParamClassNames  = callbackMethodParamClassNames ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#getCallbackMethodParamClassNames()
 	 */
 	public String[] getCallbackMethodParamClassNames() {
 		return this.mCallbackMethodParamClassNames ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#setInterceptorInvokerClassName(java.lang.String)
 	 */
 	public void setInterceptorInvokerClassName(String interceptorInvokerClassName) {
 		this.mInterceptorInvokerClassName = interceptorInvokerClassName ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#getInterceptorInvokerClassName()
 	 */
 	public String getInterceptorInvokerClassName() {
 		return this.mInterceptorInvokerClassName;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.DefaultInterceptorChainInvokerFactoryServiceMBean#loadConfig()
 	 */
 	public void loadConfig() 
@@ -309,9 +309,9 @@ public class DefaultInterceptorChainInvokerFactoryService
 		  }
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş<br>
-	 * @param List							’è‹`‚ğŠi”[‚·‚éƒŠƒXƒg
-	 * @param InterceptorMappingsMetaData	XMLƒƒ^ƒf[ƒ^
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€<br>
+	 * @param List							å®šç¾©ã‚’æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆ
+	 * @param InterceptorMappingsMetaData	XMLãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
 	 * @exception IOException
 	 * @exception ParserConfigurationException
 	 * @exception SAXException
@@ -322,7 +322,7 @@ public class DefaultInterceptorChainInvokerFactoryService
 	  throws IOException, ParserConfigurationException, SAXException, DeploymentException{
 		final List immdList = imsmd.getInterceptorMappingList();
 		if(immdList == null || immdList.size() == 0){
-			// ³íI—¹
+			// æ­£å¸¸çµ‚äº†
 			return;
 		}
 		for(int icnt = 0; icnt < immdList.size(); icnt++){
@@ -330,30 +330,30 @@ public class DefaultInterceptorChainInvokerFactoryService
 			final InterceptorMappingMetaData immd = (InterceptorMappingMetaData)immdList.get(icnt);
 			final InterceptorNameMetaData inmd = immd.getInterceptorName();
 			if(inmd == null){
-				// ƒtƒŒ[ƒ€ƒ[ƒN—áŠO‚ğƒXƒ[
+				// ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ä¾‹å¤–ã‚’ã‚¹ãƒ­ãƒ¼
 				throw new DeploymentException("<interceptor-name> is not found");
 			}
 			final String interceptorNameStr = inmd.getInterceptorName();
 			final ServiceName interceptorName = UtilTool.convertServiceName(interceptorNameStr);
 			if(interceptorName == null){
-				// ƒtƒŒ[ƒ€ƒ[ƒN—áŠO‚ğƒXƒ[
+				// ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ä¾‹å¤–ã‚’ã‚¹ãƒ­ãƒ¼
 				throw new DeploymentException("<interceptor-name>[CONTENTS]</interceptor-name> is not found");
 			}
-			// ŠY“–‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‚È‚¢ê‡
+			// è©²å½“ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒãªã„å ´åˆ
 			if(UtilTool.getInterceptor(interceptorName) == null){
 				throw new DeploymentException("<interceptor-name>[CONTENTS]</interceptor-name> is missing");
 			}
 			ic.setInterceptorServiceName(interceptorName);
 			final PatternsMetaData psmd = immd.getPatterns();
-			// ƒpƒ^[ƒ“s‚ª‚È‚¢ê‡
+			// ãƒ‘ã‚¿ãƒ¼ãƒ³sãŒãªã„å ´åˆ
 			if(psmd == null){
-				// ƒtƒŒ[ƒ€ƒ[ƒN—áŠO‚ğƒXƒ[
+				// ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ä¾‹å¤–ã‚’ã‚¹ãƒ­ãƒ¼
 				throw new DeploymentException("<patterns>[CONTENTS]</patterns> is not found");
 			}
 			final List ptList = psmd.getPatternList();
-			// ƒpƒ^[ƒ“‚ª‚È‚¢ê‡
+			// ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒãªã„å ´åˆ
 			if(ptList == null || ptList.size() == 0){
-				// ƒtƒŒ[ƒ€ƒ[ƒN—áŠO‚ğƒXƒ[
+				// ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ä¾‹å¤–ã‚’ã‚¹ãƒ­ãƒ¼
 				throw new DeploymentException("<pattern>[CONTENTS]</pattern> is not found");
 			}
 			final String[] patterns = new String[ptList.size()];
@@ -362,33 +362,33 @@ public class DefaultInterceptorChainInvokerFactoryService
 				patterns[jcnt] = pmd.getPattern();
 			}
 			ic.setPatterns(patterns);
-			// ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`‚ğŠi”[
+			// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ã‚’æ ¼ç´
 			list.add(ic);
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.aspect.InterceptorChainInvokerFactory#createInterceptorInvoker(java.lang.String)
 	 */
 	public InterceptorChainInvoker createInterceptorInvoker(String chainKey) {
 		IntreceptorChainList list = null;
-		// ƒGƒCƒŠƒAƒX‚É‘Î‰‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚ªƒLƒƒƒbƒVƒ…‚É‚ ‚é‚©
+		// ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã«å¯¾å¿œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆãŒã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ã‚ã‚‹ã‹
 		if(mInterceptListCacheMap.containsKey(chainKey)){
-			// ‘¶İ‚µ‚½ê‡‚ÍƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚©‚çƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚ğæ“¾
+			// å­˜åœ¨ã—ãŸå ´åˆã¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‹ã‚‰ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã‚’å–å¾—
 			list = (IntreceptorChainList)mInterceptListCacheMap.get(chainKey);
 		}else{
-			// ‘¶İ‚µ‚È‚¢ê‡
-			// ƒGƒCƒŠƒAƒX‚¨‚æ‚ÑƒT[ƒrƒX‚©‚çƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒgì¬
+			// å­˜åœ¨ã—ãªã„å ´åˆ
+			// ã‚¨ã‚¤ãƒªã‚¢ã‚¹ãŠã‚ˆã³ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆä½œæˆ
 			list = findMatchedInterceptorChainList(chainKey);
-			// ì¬‚µ‚½ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚ğƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚ÉŠi”[
+			// ä½œæˆã—ãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã«æ ¼ç´
 			mInterceptListCacheMap.put(chainKey, list);
 		}
-		// ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚©‚çƒCƒ“ƒ^[ƒZƒvƒ^ÀsƒIƒuƒWƒFƒNƒg(ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“)‚ğì¬
+		// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã‹ã‚‰ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®Ÿè¡Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³)ã‚’ä½œæˆ
 		final InterceptorChainInvokerAccess ich =  createInterceptorInvokerAccess(list);
 		return ich;
 	}
 	/**
-	 * ƒpƒtƒH[ƒ}[‚ğì¬‚·‚é
+	 * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ¼ã‚’ä½œæˆã™ã‚‹
 	 * @param list	IntreceptorChainList
 	 * @return	InterceptorChainInvokerAccess
 	 */
@@ -397,9 +397,9 @@ public class DefaultInterceptorChainInvokerFactoryService
 		try{
 			object = (InterceptorChainInvokerAccess)this.mInterceptorPerfomerCls.newInstance();
 		}catch(InstantiationException ex){
-			//createServie‚ÅÀŒ±‚·‚İ
+			//createServieã§å®Ÿé¨“ã™ã¿
 		}catch(IllegalAccessException ex){
-			//createServie‚ÅÀŒ±‚·‚İ
+			//createServieã§å®Ÿé¨“ã™ã¿
 		}
 		object.setLogger(this.mLogger) ;
 		object.setInterceptorChainList(list) ;
@@ -408,20 +408,20 @@ public class DefaultInterceptorChainInvokerFactoryService
 	}
 
 	/**
-	 * ƒGƒCƒŠƒAƒX‚É‘Î‰‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg‚ğì¬‚µ•Ô‹p<br>
-	 * @param  String					ƒGƒCƒŠƒAƒX
-	 * @return IntreceptorChainList			ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg
+	 * ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã«å¯¾å¿œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆã‚’ä½œæˆã—è¿”å´<br>
+	 * @param  String					ã‚¨ã‚¤ãƒªã‚¢ã‚¹
+	 * @return IntreceptorChainList			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆ
 	 */
 	private IntreceptorChainList findMatchedInterceptorChainList(String key){
-		// ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒgì¬
+		// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆä½œæˆ
 		final IntreceptorChainList list = new IntreceptorChainList();
-		// ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒŠƒXƒg‚ğ‡ŸQÆ
+		// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒªã‚¹ãƒˆã‚’é †æ¬¡å‚ç…§
 		for(final Iterator ite = mInterceptConfigList.iterator(); ite.hasNext();){
-			// ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`‚ğæ“¾
+			// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ã‚’å–å¾—
 			final InterceptorPaternConfig interceptConfig = (InterceptorPaternConfig)ite.next();
-			// ƒpƒ^[ƒ“ƒ}ƒbƒ`ƒ“ƒOŠm”F
+			// ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒãƒ³ã‚°ç¢ºèª
 			if(interceptConfig.isMatch(key)){
-				// ƒ}ƒbƒ`‚µ‚½ê‡ƒCƒ“ƒ^[ƒZƒvƒ^‚ğƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒg‚ÉŠi”[
+				// ãƒãƒƒãƒã—ãŸå ´åˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆã«æ ¼ç´
 				if(this.mLogger != null){
 					String ary[] = new String[2] ;
 					ary[0] = key ;

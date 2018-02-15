@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.converter;
 import java.math.*;
 
 /**
- * ”’lƒLƒƒƒXƒgƒRƒ“ƒo[ƒ^B<p>
+ * æ•°å€¤ã‚­ãƒ£ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -50,11 +50,11 @@ public class NumberCastConverter implements Converter{
     }
     
     /**
-     * •ÏŠ·Œã‚Ì–ß‚è’l‚ÌŒ^‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍADoubleB<br>
-     * ƒTƒ|[ƒg‚·‚éŒ^‚ÍABigDecimalABigIntegerADoubleAFloatALongAIntegerAShortAByte‹y‚Ñ”’lƒvƒŠƒ~ƒeƒBƒuŒ^B<br>
+     * å¤‰æ›å¾Œã®æˆ»ã‚Šå€¤ã®å‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€Doubleã€‚<br>
+     * ã‚µãƒãƒ¼ãƒˆã™ã‚‹å‹ã¯ã€BigDecimalã€BigIntegerã€Doubleã€Floatã€Longã€Integerã€Shortã€ByteåŠã³æ•°å€¤ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–å‹ã€‚<br>
      * 
-     * @param type –ß‚è’l‚ÌŒ^
+     * @param type æˆ»ã‚Šå€¤ã®å‹
      */
     public void setReturnType(Class type){
         if(type != null
@@ -91,21 +91,21 @@ public class NumberCastConverter implements Converter{
     }
     
     /**
-     * •ÏŠ·Œã‚Ì–ß‚è’l‚ÌŒ^‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›å¾Œã®æˆ»ã‚Šå€¤ã®å‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return –ß‚è’l‚ÌŒ^
+     * @return æˆ»ã‚Šå€¤ã®å‹
      */
     public Class getReturnType(){
         return returnType;
     }
     
     /**
-     * w’è‚³‚ê‚½Number‹y‚Ñ”š‚ğİ’è‚³‚ê‚½Œ^‚ÉƒLƒƒƒXƒg‚·‚éB<p>
-     * ƒTƒ|[ƒg‚µ‚È‚¢Œ^‚ÌƒIƒuƒWƒFƒNƒg‚ª“n‚³‚ê‚é‚ÆA‚»‚Ì‚Ü‚Ü•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸNumberåŠã³æ•°å­—ã‚’è¨­å®šã•ã‚ŒãŸå‹ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæ¸¡ã•ã‚Œã‚‹ã¨ã€ãã®ã¾ã¾è¿”ã™ã€‚<br>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){

@@ -36,60 +36,60 @@ import jp.ossc.nimbus.lang.*;
 /**
  * @author y-tokuda
  *
- * ‚±‚Ì¶¬‚³‚ê‚½ƒRƒƒ“ƒg‚Ì‘}“ü‚³‚ê‚éƒeƒ“ƒvƒŒ[ƒg‚ğ•ÏX‚·‚é‚½‚ß
- * ƒEƒBƒ“ƒhƒE > İ’è > Java > ƒR[ƒh¶¬ > ƒR[ƒh‚ÆƒRƒƒ“ƒg
+ * ã“ã®ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¡ãƒ³ãƒˆã®æŒ¿å…¥ã•ã‚Œã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å¤‰æ›´ã™ã‚‹ãŸã‚
+ * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ > è¨­å®š > Java > ã‚³ãƒ¼ãƒ‰ç”Ÿæˆ > ã‚³ãƒ¼ãƒ‰ã¨ã‚³ãƒ¡ãƒ³ãƒˆ
  */
 public class MessageResourceImpl implements MessageResourceOperator {
-	//ƒƒ“ƒo•Ï”
-	/** BLƒtƒ[•ÛƒnƒbƒVƒ… */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** BLãƒ•ãƒ­ãƒ¼ä¿æŒãƒãƒƒã‚·ãƒ¥ */
 	private HashMap mBlFlowHash = null;
-	/** ‘—M—pƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒg */
+	/** é€ä¿¡ç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ */
 	private MessageFormat mSendMessageFormat = null;
-	/** óM—pƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒg */
+	/** å—ä¿¡ç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ */
 	private MessageFormat mRecvMessageFormat = null;
-	/** Display—p•¶š—ñ */
+	/** Displayç”¨æ–‡å­—åˆ— */
 	private String mDisplayStr = null;
-	/** Key‘®« */
+	/** Keyå±æ€§ */
 	private String mKey = null;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public MessageResourceImpl(){
 		mBlFlowHash = new HashMap();
 	}
 	/**
-	 * BLƒtƒ[ƒL[‚ğæ“¾‚·‚éB
+	 * BLãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚
 	 */
 	public String getBLFlow(String pat) {
 		return (String)mBlFlowHash.get(pat);
 	}
 	/**
-	 * display—p•¶š—ñ‚ğİ’è‚·‚éB
+	 * displayç”¨æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚
 	 */
 	public void setDisplayMessage(String msg){
 		mDisplayStr = msg;
 	}
 	/**
-	 * Key‘®«‚ğİ’è‚·‚éB
+	 * Keyå±æ€§ã‚’è¨­å®šã™ã‚‹ã€‚
 	 */
 	public void setKey(String key){
 		mKey = key;
 	}
 	/**
-	 * display—p•¶š—ñ‚ğæ“¾‚·‚éB
+	 * displayç”¨æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚
 	 */
 	public String display(){
 		return mDisplayStr;
 	}
 	/**
-	 * Key‘®«‚ğæ“¾‚·‚éB
+	 * Keyå±æ€§ã‚’å–å¾—ã™ã‚‹ã€‚
 	 */
 	public String getKey(){
 		return mKey;
 	}
 	
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ğ¶¬‚·‚éB
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ã€‚
 	 */ 
 	public Message makeMessage(QueueSession session) {
 		return mSendMessageFormat.unMarshal(session);
@@ -100,11 +100,11 @@ public class MessageResourceImpl implements MessageResourceOperator {
 		if(kind.equals("send")){
 			try{
 				if( (msg instanceof BytesMessage) ){
-					//‘—M“d•¶‚Íreset‚µ‚È‚¢‚Æ“Ç‚ß‚È‚¢
+					//é€ä¿¡é›»æ–‡ã¯resetã—ãªã„ã¨èª­ã‚ãªã„
 					((BytesMessage)msg).reset();
 				}
 				else if(msg instanceof StreamMessage){
-					//‘—M“d•¶‚Íreset‚µ‚È‚¢‚Æ“Ç‚ß‚È‚¢
+					//é€ä¿¡é›»æ–‡ã¯resetã—ãªã„ã¨èª­ã‚ãªã„
 					((StreamMessage)msg).reset();
 				}
 			}
@@ -121,7 +121,7 @@ public class MessageResourceImpl implements MessageResourceOperator {
 	}
 	
 	/**
-	 * BLFlowƒL[‚ğ’Ç‰Á‚·‚éB
+	 * BLFlowã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚
 	 * @param key
 	 * @param value
 	 */
@@ -130,7 +130,7 @@ public class MessageResourceImpl implements MessageResourceOperator {
 	}
 	
 	/**
-	 * ‘—M—pƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒgİ’èƒƒ\ƒbƒh
+	 * é€ä¿¡ç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆè¨­å®šãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param messageFormat
 	 * @param kind
 	 */

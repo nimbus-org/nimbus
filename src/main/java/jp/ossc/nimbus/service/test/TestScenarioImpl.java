@@ -39,7 +39,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * ƒeƒXƒgƒVƒiƒŠƒIƒNƒ‰ƒXB<p>
+ * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -54,10 +54,10 @@ public class TestScenarioImpl implements TestScenario, Serializable {
     private TestScenarioResource resource;
     
     /**
-     * w’è‚³‚ê‚½ƒeƒXƒgƒVƒiƒŠƒI‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
      */
     public TestScenarioImpl(String scenarioGroupId, String scenarioId) {
         this.scenarioGroupId = scenarioGroupId;
@@ -65,27 +65,27 @@ public class TestScenarioImpl implements TestScenario, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰
+     * @return ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
      */
     public TestController getController() {
         return controller;
     }
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param controller ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰
+     * @param controller ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
      */
     public void setController(TestController controller) {
         this.controller = controller;
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ªŠ‘®‚·‚éƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªãŒæ‰€å±ã™ã‚‹ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ID
      */
     public void setScenarioGroupId(String scenarioGroupId) {
         this.scenarioGroupId = scenarioGroupId;
@@ -96,9 +96,9 @@ public class TestScenarioImpl implements TestScenario, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ÌID‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param scenarioId ƒVƒiƒŠƒI‚ÌID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªã®ID
      */
     public void setScenarioId(String scenarioId) {
         this.scenarioId = scenarioId;
@@ -119,7 +119,7 @@ public class TestScenarioImpl implements TestScenario, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ÌƒŠƒ\[ƒXî•ñ‚ğíœ‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearResource(){
         resource = null;
@@ -133,7 +133,7 @@ public class TestScenarioImpl implements TestScenario, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ÌƒŠƒ\[ƒXî•ñƒNƒ‰ƒXB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚¯ãƒ©ã‚¹ã€‚<p>
      * 
      * @author M.Ishida
      */
@@ -151,7 +151,7 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         private Set testCaseCostSet;
         
         /**
-         * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public TestScenarioResourceImpl() {
             super();
@@ -164,9 +164,9 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         }
         
         /**
-         * –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setBeforeActionIds(String[] actionIds) {
             beforeActionIds = actionIds;
@@ -177,9 +177,9 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         }
         
         /**
-         * –ŒãƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * äº‹å¾Œã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds –ŒãƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds äº‹å¾Œã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setAfterActionIds(String[] actionIds) {
             afterActionIds = actionIds;
@@ -190,9 +190,9 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         }
         
         /**
-         * ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setFinallyActionIds(String[] actionIds) {
             finallyActionIds = actionIds;
@@ -203,9 +203,9 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         }
         
         /**
-         * Às—\’èÒ‚ğİ’è‚·‚éB<p>
+         * å®Ÿè¡Œäºˆå®šè€…ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param scheduledExcutor Às—\’èÒ
+         * @param scheduledExcutor å®Ÿè¡Œäºˆå®šè€…
          */
         public void setScheduledExcutor(String scheduledExcutor) {
             this.scheduledExcutor = scheduledExcutor;
@@ -216,27 +216,27 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         }
         
         /**
-         * Às—\’è“ú‚ğİ’è‚·‚éB<p>
+         * å®Ÿè¡Œäºˆå®šæ—¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param scheduledExcuteDate Às—\’è“ú
+         * @param scheduledExcuteDate å®Ÿè¡Œäºˆå®šæ—¥
          */
         public void setScheduledExcuteDate(Date scheduledExcuteDate) {
             this.scheduledExcuteDate = scheduledExcuteDate;
         }
         
         /**
-         * ƒeƒXƒgƒP[ƒX‚Ì—\‘ªƒRƒXƒg‚ğ’Ç‰Á‚·‚éB<p>
+         * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®äºˆæ¸¬ã‚³ã‚¹ãƒˆã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
          *
-         * @param cost —\‘ªƒRƒXƒg
+         * @param cost äºˆæ¸¬ã‚³ã‚¹ãƒˆ
          */
         public void addTestCaseExpectedCost(double cost) {
             testCaseExpectedCostSet.add(new Double(cost));
         }
         
         /**
-         * ƒeƒXƒgƒP[ƒX‚ÌƒRƒXƒg‚ğ’Ç‰Á‚·‚éB<p>
+         * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ã‚³ã‚¹ãƒˆã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
          *
-         * @param cost ƒRƒXƒg
+         * @param cost ã‚³ã‚¹ãƒˆ
          */
         public void addTestCaseCost(double cost) {
             testCaseCostSet.add(new Double(cost));
@@ -284,7 +284,7 @@ public class TestScenarioImpl implements TestScenario, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ÌÀsƒXƒe[ƒ^ƒXƒNƒ‰ƒXB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
      * 
      * @author M.Ishida
      */
@@ -296,18 +296,18 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         private Date endTime;
         
         /**
-         * w’è‚³‚ê‚½Àsƒ†[ƒU‚Å‚ÌƒXƒe[ƒ^ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ã§ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param userId Àsƒ†[ƒU
+         * @param userId å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶
          */
         public StatusImpl(String userId) {
             super(userId);
         }
         
         /**
-         * ó‘Ô‚ğİ’è‚·‚éB<p>
+         * çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param state ó‘Ô
+         * @param state çŠ¶æ…‹
          * @see #INITIAL
          * @see #STARTED
          * @see #END
@@ -347,9 +347,9 @@ public class TestScenarioImpl implements TestScenario, Serializable {
         }
         
         /**
-         * I—¹“ú‚ğİ’è‚·‚éB<p>
+         * çµ‚äº†æ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param time I—¹“ú
+         * @param time çµ‚äº†æ—¥æ™‚
          */
         public void setEndTime(Date endTime) {
             this.endTime = endTime;
