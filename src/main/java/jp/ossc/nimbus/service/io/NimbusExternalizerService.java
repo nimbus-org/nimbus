@@ -48,6 +48,8 @@ import java.security.AccessController;
 public class NimbusExternalizerService extends SerializableExternalizerService
  implements Externalizer, Serializable{
     
+    private static final long serialVersionUID = 8609142347326523361L;
+    
     private static final int CHAR_BUF_SIZE = 256;
     
     private transient ConcurrentMap metaClassMap;
