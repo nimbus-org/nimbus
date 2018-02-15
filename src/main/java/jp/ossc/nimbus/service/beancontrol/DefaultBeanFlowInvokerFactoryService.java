@@ -147,6 +147,10 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
 
     private Interpreter testInterpreter;
 
+    private ServiceName expressionInterpreterServiceName;
+
+    private Interpreter expressionInterpreter;
+
     private ServiceName templateEngineServiceName;
 
     private TemplateEngine templateEngine;
@@ -260,6 +264,16 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
     public ServiceName getTestInterpreterServiceName(){
         return testInterpreterServiceName;
+    }
+
+    // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
+    public void setExpressionInterpreterServiceName(ServiceName name){
+        expressionInterpreterServiceName = name;
+    }
+
+    // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
+    public ServiceName getExpressionInterpreterServiceName(){
+        return expressionInterpreterServiceName;
     }
 
     // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
@@ -637,6 +651,10 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
             testInterpreter = (Interpreter)ServiceManagerFactory.getServiceObject(testInterpreterServiceName);
         }
 
+        if(expressionInterpreterServiceName != null){
+            expressionInterpreter = (Interpreter)ServiceManagerFactory.getServiceObject(expressionInterpreterServiceName);
+        }
+
         if(templateEngineServiceName != null){
             templateEngine = (TemplateEngine)ServiceManagerFactory.getServiceObject(templateEngineServiceName);
         }
@@ -797,7 +815,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         return blFlowConfig;
     }
 
-    private String replaceProperty(String textValue){
+    public String replaceProperty(String textValue){
 
         // システムプロパティの置換
         textValue = Utility.replaceSystemProperty(textValue);
@@ -1098,6 +1116,10 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     public Interpreter getTestInterpreter(){
         return testInterpreter;
     }
+    
+    public Interpreter getExpressionInterpreter(){
+        return expressionInterpreter == null ? getTestInterpreter() : expressionInterpreter;
+    }
 
     // BeanFlowInvokerFactoryCallBackのJavaDoc
     public TemplateEngine getTemplateEngine(){
@@ -1120,6 +1142,15 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
      */
     public void setTestInterpreter(Interpreter interpreter) {
         this.testInterpreter = interpreter;
+    }
+
+    /**
+     * expression評価用の{@link Interpreter}を設定する。<p>
+     *
+     * @param interpreter Interpreter
+     */
+    public void setExpressionInterpreter(Interpreter interpreter) {
+        this.expressionInterpreter = interpreter;
     }
 
     // BeanFlowInvokerFactoryCallBackのJavaDoc

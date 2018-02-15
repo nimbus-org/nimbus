@@ -144,6 +144,20 @@ public interface DefaultBeanFlowInvokerFactoryServiceMBean
     public ServiceName getTestInterpreterServiceName();
     
     /**
+     * expression要素評価用の{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
+     * 
+     * @param name Interpreterサービスのサービス名
+     */
+    public void setExpressionInterpreterServiceName(ServiceName name);
+    
+    /**
+     * expression要素評価用の{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を取得する。<p>
+     * 
+     * @return Interpreterサービスのサービス名
+     */
+    public ServiceName getExpressionInterpreterServiceName();
+    
+    /**
      * {@link jp.ossc.nimbus.service.template.TemplateEngine TemplateEngine}サービスのサービス名を設定する。<p>
      * 
      * @param name TemplateEngineサービスのサービス名
