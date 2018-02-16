@@ -41,12 +41,14 @@ import java.lang.reflect.*;
 import java.security.AccessController;
 
 /**
- * Nimbus’¼—ñ‰»ƒT[ƒrƒXB<p>
+ * Nimbusç›´åˆ—åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public class NimbusExternalizerService extends SerializableExternalizerService
  implements Externalizer, Serializable{
+    
+    private static final long serialVersionUID = 8609142347326523361L;
     
     private static final int CHAR_BUF_SIZE = 256;
     
@@ -620,7 +622,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 throw new IOException("Proxy is not supported. " + clazz.getName());
             }
             Class superClass = clazz.getSuperclass();
-            if(superClass != null){
+            if(superClass != null && Serializable.class.isAssignableFrom(superClass)){
                 superMetaClass = externalizer.findMetaClass(superClass);
             }
             if(Externalizable.class.isAssignableFrom(clazz)){
@@ -733,6 +735,26 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }else if(isExternalizable){
                         ((Externalizable)obj).writeExternal(oos);
                     }else{
+                        List classList = null;
+                        MetaClass metaClass = this;
+                        while(metaClass.superMetaClass != null){
+                            if(classList == null){
+                                classList = new ArrayList();
+                            }
+                            classList.add(metaClass.superMetaClass);
+                            metaClass = metaClass.superMetaClass;
+                        }
+                        if(classList != null){
+                            for(int i = classList.size(); --i >= 0;){
+                                metaClass = (MetaClass)classList.get(i);
+                                if(metaClass.writeObjectMethod != null){
+                                    metaClass.invokeWriteObject(obj, oos);
+                                }else{
+                                    metaClass.defaultWriteObject(obj, oos);
+                                }
+                            }
+                        }
+                        
                         if(writeObjectMethod != null){
                             invokeWriteObject(obj, oos);
                         }else{
@@ -749,9 +771,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void defaultWriteObject(Object obj, NimbusObjectOutputStream oos) throws IOException{
             if(fieldReflector == null){
                 return;
-            }
-            if(superMetaClass != null){
-                superMetaClass.defaultWriteObject(obj, oos);
             }
             fieldReflector.writeFields(obj, oos);
         }
@@ -799,13 +818,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             if(fieldReflector == null){
                 return;
             }
-            if(superMetaClass != null){
-                superMetaClass.defaultReadObject(obj, ois);
-            }
             fieldReflector.readFields(obj, ois);
         }
         public Object readObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
             final int referenceId = ois.readInt();
+            ois.registerReference(referenceId, obj);
             if(clazz.isArray()){
                 final Class componentType = clazz.getComponentType();
                 if(componentType.isPrimitive()){
@@ -862,6 +879,25 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 }else if(isExternalizable){
                     ((Externalizable)obj).readExternal(ois);
                 }else{
+                    List classList = null;
+                    MetaClass metaClass = this;
+                    while(metaClass.superMetaClass != null){
+                        if(classList == null){
+                            classList = new ArrayList();
+                        }
+                        classList.add(metaClass.superMetaClass);
+                        metaClass = metaClass.superMetaClass;
+                    }
+                    if(classList != null){
+                        for(int i = classList.size(); --i >= 0;){
+                            metaClass = (MetaClass)classList.get(i);
+                            if(metaClass.readObjectMethod != null){
+                                metaClass.invokeReadObject(obj, ois);
+                            }else{
+                                metaClass.defaultReadObject(obj, ois);
+                            }
+                        }
+                    }
                     if(readObjectMethod != null){
                         invokeReadObject(obj, ois);
                     }else{
@@ -869,7 +905,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }
                 }
             }
-            ois.registerReference(referenceId, obj);
             return obj;
         }
         
@@ -1304,30 +1339,25 @@ public class NimbusExternalizerService extends SerializableExternalizerService
     
     private static class ReferenceTable{
         protected int size;
-        protected int threshold;
-        protected final float loadFactor;
         protected int[] ids;
         protected int[] counts;
         protected int[] next;
         protected Object[] objs;
         
         public ReferenceTable(){
-            this(10, 2.0f);
+            this(10);
         }
         
-        public ReferenceTable(int initialCapacity, float loadFactor){
-            this.loadFactor = loadFactor;
+        public ReferenceTable(int initialCapacity){
             ids = new int[initialCapacity];
             counts = new int[initialCapacity];
             next = new int[initialCapacity];
             objs = new Object[initialCapacity];
-            threshold = (int) (initialCapacity * loadFactor);
-            clear();
         }
         
         public int assign(Object obj){
             int id = lookup(obj);
-            if(id != -1){
+            if(id != 0){
                 counts[id - 1]++;
                 return -id;
             }
@@ -1339,26 +1369,19 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         
         public int lookup(Object obj){
             if(size == 0){
-                return -1;
+                return 0;
             }
             int index = hash(obj) % ids.length;
-            for(int id = ids[index]; id >= 0; id = next[id]){
-                if(compareObject(objs[id], obj)){
-                    return id + 1;
+            for(int id = ids[index]; id > 0; id = next[id - 1]){
+                if(compareObject(objs[id - 1], obj)){
+                    return id;
                 }
             }
-            return -1;
+            return 0;
         }
         
         public int getCount(int id){
             return counts[id - 1];
-        }
-        
-        public void clear(){
-            Arrays.fill(ids, -1);
-            Arrays.fill(counts, 1);
-            Arrays.fill(objs, 0, size, null);
-            size = 0;
         }
         
         public int size(){
@@ -1394,25 +1417,36 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             if(id - 1 >= next.length){
                 growEntries();
             }
-            if(id - 1 >= threshold){
+            if(id - 1 >= ids.length){
                 growIds();
             }
             objs[id - 1] = obj;
             next[id - 1] = ids[index];
-            ids[index] = id - 1;
+            ids[index] = id;
         }
         
         protected void growIds(){
-            ids = new int[(ids.length << 1) + 1];
-            threshold = (int) (ids.length * loadFactor);
-            Arrays.fill(ids, -1);
-            for(int i = 0; i < size; i++){
-                insert(objs[i], i + 1);
+            if(ids.length == Integer.MAX_VALUE){
+                throw new OutOfMemoryError("Ids can not grow.");
+            }
+            int newLength = ids.length << 1;
+            if(newLength < ids.length){
+                newLength = Integer.MAX_VALUE;
+            }
+            ids = new int[newLength];
+            for(int i = 1; i <= size; i++){
+                insert(objs[i - 1], i);
             }
         }
         
         protected void growEntries(){
-            int newLength = (next.length << 1) + 1;
+            if(next.length == Integer.MAX_VALUE){
+                throw new OutOfMemoryError("Entries can not grow.");
+            }
+            int newLength = ids.length << 1;
+            if(newLength < ids.length){
+                newLength = Integer.MAX_VALUE;
+            }
             int[] newNext = new int[newLength];
             System.arraycopy(next, 0, newNext, 0, size);
             next = newNext;
