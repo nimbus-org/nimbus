@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.journal.editor;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 /**
- * OBjectŒ^ƒGƒfƒBƒ^ƒT[ƒrƒXMBeanƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * OBjectå‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0

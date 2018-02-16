@@ -34,37 +34,37 @@ package jp.ossc.nimbus.service.aop;
 import java.lang.reflect.*;
 
 /**
- * ���\�b�h�Ăяo���̃R���e�L�X�g���B<p>
+ * メソッド呼び出しのコンテキスト情報。<p>
  *
  * @author M.Takata
  */
 public interface MethodInvocationContext extends InvocationContext{
     
     /**
-     * �C���^�[�Z�v�g���ꂽ�Ăяo���Ώۂ̃��\�b�h�I�u�W�F�N�g���擾����B<p>
+     * インターセプトされた呼び出し対象のメソッドオブジェクトを取得する。<p>
      *
-     * @return �C���^�[�Z�v�g���ꂽ�Ăяo���Ώۂ̃��\�b�h�I�u�W�F�N�g
+     * @return インターセプトされた呼び出し対象のメソッドオブジェクト
      */
     public Method getTargetMethod();
     
     /**
-     * �C���^�[�Z�v�g���ꂽ�Ăяo���Ώۂ̃��\�b�h�I�u�W�F�N�g��ݒ肷��B<p>
+     * インターセプトされた呼び出し対象のメソッドオブジェクトを設定する。<p>
      *
-     * @param method �C���^�[�Z�v�g���ꂽ�Ăяo���Ώۂ̃��\�b�h�I�u�W�F�N�g
+     * @param method インターセプトされた呼び出し対象のメソッドオブジェクト
      */
     public void setTargetMethod(Method method);
     
     /**
-     * ���\�b�h�̈����I�u�W�F�N�g���擾����B<p>
+     * メソッドの引数オブジェクトを取得する。<p>
      *
-     * @return ���\�b�h�̈����I�u�W�F�N�g�̔z��
+     * @return メソッドの引数オブジェクトの配列
      */
     public Object[] getParameters();
     
     /**
-     * ���\�b�h�̈����I�u�W�F�N�g��ݒ肷��B<p>
+     * メソッドの引数オブジェクトを設定する。<p>
      *
-     * @param params ���\�b�h�̈����I�u�W�F�N�g�̔z��
+     * @param params メソッドの引数オブジェクトの配列
      */
     public void setParameters(Object[] params);
 }

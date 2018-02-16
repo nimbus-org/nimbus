@@ -2,18 +2,18 @@
 // Copyright (C) 2002-2005 by Nomura Research Institute,Ltd.  All Rights Reserved.
 //
 /*****************************************************************************/
-/** XV—š—ğ																**/
+/** æ›´æ–°å±¥æ­´																**/
 /** 																		**/
 /*****************************************************************************/
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.msgresource;
 
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/28| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/28ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface MessageResourceDefine {
 	public static final String MESSAGE_TAG_NAME = "Message";

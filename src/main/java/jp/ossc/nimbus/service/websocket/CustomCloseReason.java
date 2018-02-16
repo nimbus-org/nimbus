@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.websocket;
 import javax.websocket.CloseReason;
 
 /**
- * {@link CloseReason}‚ÌŠg’£ƒNƒ‰ƒX
+ * {@link CloseReason}ã®æ‹¡å¼µã‚¯ãƒ©ã‚¹
  *
  * @author m-ishida
  *
@@ -47,10 +47,10 @@ public class CustomCloseReason extends CloseReason {
 
     public enum CloseCodes implements CloseReason.CloseCode {
 
-        MAX_CLIENT_SIZE_OVER(4000), // Å‘åƒNƒ‰ƒCƒAƒ“ƒg”ƒI[ƒo[
-        HANDSHAKE_AUTH_FAILED(4001), // ƒnƒ“ƒhƒVƒFƒCƒN”FØƒGƒ‰[
-        SERVER_ACCESS_DENIED(4002), // ƒT[ƒoƒAƒNƒZƒX‹‘”Û
-        SYSTEM_FORCED_DISCONNECTION(4999), ;// ƒVƒXƒeƒ€‹­§Ø’f
+        MAX_CLIENT_SIZE_OVER(4000), // æœ€å¤§ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ•°ã‚ªãƒ¼ãƒãƒ¼
+        HANDSHAKE_AUTH_FAILED(4001), // ãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯èªè¨¼ã‚¨ãƒ©ãƒ¼
+        SERVER_ACCESS_DENIED(4002), // ã‚µãƒ¼ãƒã‚¢ã‚¯ã‚»ã‚¹æ‹’å¦
+        SYSTEM_FORCED_DISCONNECTION(4999), ;// ã‚·ã‚¹ãƒ†ãƒ å¼·åˆ¶åˆ‡æ–­
 
         private int code;
 

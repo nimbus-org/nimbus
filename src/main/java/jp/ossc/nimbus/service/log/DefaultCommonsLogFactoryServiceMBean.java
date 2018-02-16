@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.log;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultCommonsLogFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultCommonsLogFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -85,12 +85,12 @@ public interface DefaultCommonsLogFactoryServiceMBean extends LogServiceMBean{
     public static final String LABEL_COMMONS_FATAL = "FATAL";
     
     /**
-     * ƒƒOƒT[ƒrƒX‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚ğ¯•Ê‚·‚éƒL[‚ğ•\‚·o—ÍƒtƒH[ƒ}ƒbƒg‚ÌƒL[B<p> 
+     * ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚’è­˜åˆ¥ã™ã‚‹ã‚­ãƒ¼ã‚’è¡¨ã™å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ã€‚<p> 
      */
     public static final String FORMAT_CLIENT_KEY = "CLIENT";
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      * "%DATE%,%CLIENT%,%PRIORITY%,%MESSAGE%"
      */
     public static final String DEFAULT_FORMAT
@@ -98,280 +98,280 @@ public interface DefaultCommonsLogFactoryServiceMBean extends LogServiceMBean{
           + FORMAT_PRIORITY_KEY + "%,%" + FORMAT_MESSAGE_KEY + '%';
     
     /**
-     * w’è‚³‚ê‚½ƒƒOƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌƒƒO‚¾‚¯‚ğo—Í‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®ãƒ­ã‚°ã ã‘ã‚’å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clients {@link org.apache.commons.logging.LogFactory#getLog(String)}‚Ìˆø”‚Ì•¶š—ñA‚Ü‚½‚Í{@link org.apache.commons.logging.LogFactory#getLog(Class)}‚Ìˆø”‚ÌƒNƒ‰ƒX‚ÌƒpƒbƒP[ƒW–¼‚ğœ‚¢‚½ƒNƒ‰ƒX–¼
+     * @param clients {@link org.apache.commons.logging.LogFactory#getLog(String)}ã®å¼•æ•°ã®æ–‡å­—åˆ—ã€ã¾ãŸã¯{@link org.apache.commons.logging.LogFactory#getLog(Class)}ã®å¼•æ•°ã®ã‚¯ãƒ©ã‚¹ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã‚’é™¤ã„ãŸã‚¯ãƒ©ã‚¹å
      */
     public void setEnabledClients(String[] clients);
     
     /**
-     * —LŒø‚ÈƒƒOƒNƒ‰ƒCƒAƒ“ƒg‚ÌƒL[–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æœ‰åŠ¹ãªãƒ­ã‚°ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ã‚­ãƒ¼åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —LŒø‚ÈƒƒOƒNƒ‰ƒCƒAƒ“ƒg‚ÌƒL[–¼”z—ñ
+     * @return æœ‰åŠ¹ãªãƒ­ã‚°ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ã‚­ãƒ¼åé…åˆ—
      */
     public String[] getEnabledClients();
     
     /**
-     * {@link org.apache.commons.logging.Log#trace(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#trace(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setCommonsTraceEnabled(boolean isEnabled);
     
     /**
-     * {@link org.apache.commons.logging.Log#trace(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link org.apache.commons.logging.Log#trace(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isCommonsTraceEnabled();
     
     /**
-     * {@link org.apache.commons.logging.Log#debug(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#debug(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setCommonsDebugEnabled(boolean isEnabled);
     
     /**
-     * {@link org.apache.commons.logging.Log#debug(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link org.apache.commons.logging.Log#debug(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isCommonsDebugEnabled();
     
     /**
-     * {@link org.apache.commons.logging.Log#info(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#info(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setCommonsInfoEnabled(boolean isEnabled);
     
     /**
-     * {@link org.apache.commons.logging.Log#info(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link org.apache.commons.logging.Log#info(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isCommonsInfoEnabled();
     
     /**
-     * {@link org.apache.commons.logging.Log#warn(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#warn(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setCommonsWarnEnabled(boolean isEnabled);
     
     /**
-     * {@link org.apache.commons.logging.Log#warn(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link org.apache.commons.logging.Log#warn(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isCommonsWarnEnabled();
     
     /**
-     * {@link org.apache.commons.logging.Log#error(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#error(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setCommonsErrorEnabled(boolean isEnabled);
     
     /**
-     * {@link org.apache.commons.logging.Log#error(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link org.apache.commons.logging.Log#error(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isCommonsErrorEnabled();
     
     /**
-     * {@link org.apache.commons.logging.Log#fatal(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#fatal(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setCommonsFatalEnabled(boolean isEnabled);
     
     /**
-     * {@link org.apache.commons.logging.Log#fatal(Object)}‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link org.apache.commons.logging.Log#fatal(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isCommonsFatalEnabled();
     
     /**
-     * {@link org.apache.commons.logging.Log#trace(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#trace(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsTraceMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link org.apache.commons.logging.Log#trace(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#trace(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsTraceMessageWriterServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#debug(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#debug(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsDebugMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link org.apache.commons.logging.Log#debug(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#debug(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsDebugMessageWriterServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#info(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#info(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsInfoMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link org.apache.commons.logging.Log#info(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#info(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsInfoMessageWriterServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#warn(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#warn(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsWarnMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link org.apache.commons.logging.Log#warn(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#warn(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsWarnMessageWriterServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#error(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#error(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsErrorMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link org.apache.commons.logging.Log#error(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#error(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsErrorMessageWriterServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#fatal(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#fatal(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsFatalMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link org.apache.commons.logging.Log#fatal(Object)}‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#fatal(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsFatalMessageWriterServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#trace(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#trace(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsTraceWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link org.apache.commons.logging.Log#trace(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#trace(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsTraceWritableRecordFactoryServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#debug(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#debug(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsDebugWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link org.apache.commons.logging.Log#debug(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#debug(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsDebugWritableRecordFactoryServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#info(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#info(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsInfoWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link org.apache.commons.logging.Log#info(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#info(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsInfoWritableRecordFactoryServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#warn(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#warn(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsWarnWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link org.apache.commons.logging.Log#warn(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#warn(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsWarnWritableRecordFactoryServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#error(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#error(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsErrorWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link org.apache.commons.logging.Log#error(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#error(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsErrorWritableRecordFactoryServiceName();
     
     /**
-     * {@link org.apache.commons.logging.Log#fatal(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#fatal(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommonsFatalWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link org.apache.commons.logging.Log#fatal(Object)}‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.logging.Log#fatal(Object)}ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommonsFatalWritableRecordFactoryServiceName();
 }

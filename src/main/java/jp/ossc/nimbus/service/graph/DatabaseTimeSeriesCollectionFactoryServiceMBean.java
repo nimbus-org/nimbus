@@ -34,123 +34,123 @@ package jp.ossc.nimbus.service.graph;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DatabaseTimeSeriesCollectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseTimeSeriesCollectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  */
 public interface DatabaseTimeSeriesCollectionFactoryServiceMBean
  extends TimeSeriesCollectionFactoryServiceMBean{
     
-    /** ƒfƒtƒHƒ‹ƒgƒtƒFƒbƒ`ƒTƒCƒY */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º */
     public static final int DEFAULT_FETCH_SIZE = 10000;
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param pattern “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“
+     * @param pattern æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³
      */
     public void setDateFormatPattern(String pattern);
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“
+     * @return æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³
      */
     public String getDateFormatPattern();
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDateFormatServiceName(ServiceName name);
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDateFormatServiceName();
     
     /**
-     * “ú•tƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param columnName “ú•tƒJƒ‰ƒ€–¼
+     * @param columnName æ—¥ä»˜ã‚«ãƒ©ãƒ å
      */
     public void setDateColumnName(String columnName);
     
     /**
-     * “ú•tƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return “ú•tƒJƒ‰ƒ€–¼
+     * @return æ—¥ä»˜ã‚«ãƒ©ãƒ å
      */
     public String getDateColumnName();
     
     /**
-     * ƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * æ™‚åˆ»ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param columnName ƒJƒ‰ƒ€–¼
+     * @param columnName æ™‚åˆ»ã‚«ãƒ©ãƒ å
      */
     public void setTimeColumnName(String columnName);
     
     /**
-     * ƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * æ™‚åˆ»ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€–¼
+     * @return æ™‚åˆ»ã‚«ãƒ©ãƒ å
      */
     public String getTimeColumnName();
     
     /**
-     * ’lƒJƒ‰ƒ€–¼‚ğİ’è‚·‚éB<p>
+     * å€¤ã‚«ãƒ©ãƒ åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param columnName ’lƒJƒ‰ƒ€–¼
+     * @param columnName å€¤ã‚«ãƒ©ãƒ å
      */
     public void setValueColumnName(String columnName);
     
     /**
-     * ’lƒJƒ‰ƒ€–¼‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚«ãƒ©ãƒ åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ’lƒJƒ‰ƒ€–¼
+     * @return å€¤ã‚«ãƒ©ãƒ å
      */
     public String getValueColumnName();
     
     /**
-     * “ú•tƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * æ—¥ä»˜ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setDateColumnIndex(int index);
     
     /**
-     * “ú•tƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getDateColumnIndex();
     
     /**
-     * ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * æ™‚åˆ»ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setTimeColumnIndex(int index);
     
     /**
-     * ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * æ™‚åˆ»ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getTimeColumnIndex();
     
     /**
-     * ’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param index ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setValueColumnIndex(int index);
     
     /**
-     * ’lƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getValueColumnIndex();
 }

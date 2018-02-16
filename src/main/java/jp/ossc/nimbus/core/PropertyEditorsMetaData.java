@@ -36,11 +36,11 @@ import java.util.*;
 import org.w3c.dom.*;
 
 /**
- * ƒvƒƒpƒeƒBƒGƒfƒBƒ^ŒQ&lt;property-editors&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;property-editors&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¨ãƒ‡ã‚£ã‚¿ç¾¤&lt;property-editors&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;property-editors&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class PropertyEditorsMetaData extends MetaData
  implements Serializable{
@@ -48,7 +48,7 @@ public class PropertyEditorsMetaData extends MetaData
     private static final long serialVersionUID = -5406841425716158865L;
     
     /**
-     * &lt;server&gt;—v‘f‚Ìq—v‘f&lt;property-editors&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;server&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editors&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String PROPERTY_EDITORS_TAG_NAME = "property-editors";
     
@@ -57,19 +57,19 @@ public class PropertyEditorsMetaData extends MetaData
     private List ifDefMetaDataList;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public PropertyEditorsMetaData(MetaData parent){
         super(parent);
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param type PropertyEditor‚ªƒTƒ|[ƒg‚·‚éƒNƒ‰ƒX–¼
-     * @return PropertyEditor‚ÌƒNƒ‰ƒX–¼
+     * @param type PropertyEditorãŒã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚¯ãƒ©ã‚¹å
+     * @return PropertyEditorã®ã‚¯ãƒ©ã‚¹å
      */
     public String getPropertyEditor(String type){
         PropertyEditorMetaData propData = (PropertyEditorMetaData)propertyEditors.get(type);
@@ -77,10 +77,10 @@ public class PropertyEditorsMetaData extends MetaData
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param type PropertyEditor‚ªƒTƒ|[ƒg‚·‚éƒNƒ‰ƒX–¼
-     * @param editor PropertyEditor‚ÌƒNƒ‰ƒX–¼
+     * @param type PropertyEditorãŒã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚¯ãƒ©ã‚¹å
+     * @param editor PropertyEditorã®ã‚¯ãƒ©ã‚¹å
      */
     public void setPropertyEditor(String type, String editor){
         PropertyEditorMetaData propData = (PropertyEditorMetaData)propertyEditors.get(type);
@@ -95,54 +95,54 @@ public class PropertyEditorsMetaData extends MetaData
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param type PropertyEditor‚ªƒTƒ|[ƒg‚·‚éƒNƒ‰ƒX–¼
+     * @param type PropertyEditorãŒã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚¯ãƒ©ã‚¹å
      */
     public void removePropertyEditor(String type){
         propertyEditors.remove(type);
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearPropertyEditors(){
         propertyEditors.clear();
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param type PropertyEditor‚ªƒTƒ|[ƒg‚·‚éƒNƒ‰ƒX–¼
-     * @return &lt;property-editor&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param type PropertyEditorãŒã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚¯ãƒ©ã‚¹å
+     * @return &lt;property-editor&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public PropertyEditorMetaData getPropertyEditorMetaData(String type){
         return (PropertyEditorMetaData)propertyEditors.get(type);
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param propEditorData &lt;property-editor&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param propEditorData &lt;property-editor&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setPropertyEditorMetaData(PropertyEditorMetaData propEditorData){
         propertyEditors.put(propEditorData.getType(), propEditorData);
     }
     
     /**
-     * ‚±‚Ì&lt;property-editors&gt;—v‘f‚Ìq—v‘f&lt;property-editor&gt;‚Ìtype‘®«‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;property-editors&gt;è¦ç´ ã®å­è¦ç´ &lt;property-editor&gt;ã®typeå±æ€§ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return q—v‘f&lt;property-editor&gt;‚Ìtype‘®«‚ÌW‡
+     * @return å­è¦ç´ &lt;property-editor&gt;ã®typeå±æ€§ã®é›†åˆ
      */
     public Set getPropertyEditorTypes(){
         return propertyEditors.keySet();
     }
     
     /**
-     * &lt;property-editors&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;property-editors&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;property-editors&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;property-editors&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;property-editors&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;property-editors&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);

@@ -34,174 +34,174 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DatabaseTimerScheduleFactoryService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DatabaseTimerScheduleFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface DatabaseTimerScheduleFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğæ“¾‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğæ“¾‚·‚éSQL
+     * @param query ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹SQL
      */
     public void setScheduleMasterQuery(String query);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğæ“¾‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğæ“¾‚·‚éSQL
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹SQL
      */
     public String getScheduleMasterQuery();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[‚Æ‚ÍA{@link ScheduleFactory#getSchedules(Object)}‚Ìˆø”‚Æ‚È‚éƒL[•¶š—ñ‚Å‚ ‚éB<br>
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[‚ª•K—v‚È‚¢ê‡‚ÍAw’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼ã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼ã¨ã¯ã€{@link ScheduleFactory#getSchedules(Object)}ã®å¼•æ•°ã¨ãªã‚‹ã‚­ãƒ¼æ–‡å­—åˆ—ã§ã‚ã‚‹ã€‚<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼ãŒå¿…è¦ãªã„å ´åˆã¯ã€æŒ‡å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleKeyQueryIndex(int index);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒL[‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚­ãƒ¼ã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleKeyQueryIndex();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡AƒXƒPƒWƒ…[ƒ‹–¼‚ÍA‚±‚ÌƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚É’Ê”Ô‚ğU‚Á‚½‚à‚Ì‚É‚È‚éB<br>
-     * ‚Ü‚½Aİ’è‚µ‚½ê‡‚ÍA‚»‚Ì—ñ‚Ì’l‚ªNULL‚É‚È‚é–‚Í‹–—e‚µ‚È‚¢B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã«é€šç•ªã‚’æŒ¯ã£ãŸã‚‚ã®ã«ãªã‚‹ã€‚<br>
+     * ã¾ãŸã€è¨­å®šã—ãŸå ´åˆã¯ã€ãã®åˆ—ã®å€¤ãŒNULLã«ãªã‚‹äº‹ã¯è¨±å®¹ã—ãªã„ã€‚<br>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleNameQueryIndex(int index);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleNameQueryIndex();
     
     /**
-     * {@link ScheduleTask}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * Às‚·‚éƒ^ƒXƒN‚ÍA”CˆÓ‚ÌScheduleTaskƒT[ƒrƒXABeanFlowŒÄ‚Ño‚µƒ^ƒXƒNAIOCŒÄ‚Ño‚µƒ^ƒXƒN‚Ì3í—Ş‚ğƒTƒ|[ƒg‚µ‚Ä‚¨‚èA‚±‚Ì‘®«‚ÍA”CˆÓ‚ÌScheduleTaskƒT[ƒrƒX‚ğg—p‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚ ‚éB<br>
+     * {@link ScheduleTask}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å®Ÿè¡Œã™ã‚‹ã‚¿ã‚¹ã‚¯ã¯ã€ä»»æ„ã®ScheduleTaskã‚µãƒ¼ãƒ“ã‚¹ã€BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã€IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã®3ç¨®é¡ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ãŠã‚Šã€ã“ã®å±æ€§ã¯ã€ä»»æ„ã®ScheduleTaskã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleTaskServiceNameQueryIndex(int index);
     
     /**
-     * {@link ScheduleTask}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleTask}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleTaskServiceNameQueryIndex();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * Às‚·‚éƒ^ƒXƒN‚ÍA”CˆÓ‚ÌScheduleTaskƒT[ƒrƒXABeanFlowŒÄ‚Ño‚µƒ^ƒXƒNAIOCŒÄ‚Ño‚µƒ^ƒXƒN‚Ì3í—Ş‚ğƒTƒ|[ƒg‚µ‚Ä‚¨‚èA‚±‚Ì‘®«‚ÍABeanFlowŒÄ‚Ño‚µƒ^ƒXƒN‚ğg—p‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å®Ÿè¡Œã™ã‚‹ã‚¿ã‚¹ã‚¯ã¯ã€ä»»æ„ã®ScheduleTaskã‚µãƒ¼ãƒ“ã‚¹ã€BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã€IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã®3ç¨®é¡ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ãŠã‚Šã€ã“ã®å±æ€§ã¯ã€BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleBeanFlowInvokerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * Às‚·‚éƒ^ƒXƒN‚ÍA”CˆÓ‚ÌScheduleTaskƒT[ƒrƒXABeanFlowŒÄ‚Ño‚µƒ^ƒXƒNAIOCŒÄ‚Ño‚µƒ^ƒXƒN‚Ì3í—Ş‚ğƒTƒ|[ƒg‚µ‚Ä‚¨‚èA‚±‚Ì‘®«‚ÍABeanFlowŒÄ‚Ño‚µƒ^ƒXƒN‚ğg—p‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å®Ÿè¡Œã™ã‚‹ã‚¿ã‚¹ã‚¯ã¯ã€ä»»æ„ã®ScheduleTaskã‚µãƒ¼ãƒ“ã‚¹ã€BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã€IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã®3ç¨®é¡ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ãŠã‚Šã€ã“ã®å±æ€§ã¯ã€BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleBeanFlowInvokerFactoryServiceNameQueryIndex(int index);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleBeanFlowInvokerFactoryServiceNameQueryIndex();
     
     /**
-     * BeanFlowŒÄ‚Ño‚µƒ^ƒXƒN‚ÅŒÄ‚Ño‚·BeanFlow–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * BeanFlowŒÄ‚Ño‚µƒ^ƒXƒN‚ğg—p‚·‚éê‡‚ÍA•K‚¸w’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
+     * BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã§å‘¼ã³å‡ºã™BeanFlowåã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€å¿…ãšæŒ‡å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleBeanFlowNameQueryIndex(int index);
     
     /**
-     * BeanFlowŒÄ‚Ño‚µƒ^ƒXƒN‚ÅŒÄ‚Ño‚·BeanFlow–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã§å‘¼ã³å‡ºã™BeanFlowåã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleBeanFlowNameQueryIndex();
     
     /**
-     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * Às‚·‚éƒ^ƒXƒN‚ÍA”CˆÓ‚ÌScheduleTaskƒT[ƒrƒXABeanFlowŒÄ‚Ño‚µƒ^ƒXƒNAIOCŒÄ‚Ño‚µƒ^ƒXƒN‚Ì3í—Ş‚ğƒTƒ|[ƒg‚µ‚Ä‚¨‚èA‚±‚Ì‘®«‚ÍAIOCŒÄ‚Ño‚µƒ^ƒXƒN‚ğg—p‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å®Ÿè¡Œã™ã‚‹ã‚¿ã‚¹ã‚¯ã¯ã€ä»»æ„ã®ScheduleTaskã‚µãƒ¼ãƒ“ã‚¹ã€BeanFlowå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã€IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã®3ç¨®é¡ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ãŠã‚Šã€ã“ã®å±æ€§ã¯ã€IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param name FacadeCallerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name FacadeCallerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setScheduleFacadeCallerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return FacadeCallerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return FacadeCallerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getScheduleFacadeCallerServiceName();
     
     /**
-     * IOCŒÄ‚Ño‚µƒ^ƒXƒN‚Åg—p‚·‚é{@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã§ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleFacadeCallerServiceNameQueryIndex(int index);
     
     /**
-     * IOCŒÄ‚Ño‚µƒ^ƒXƒN‚Åg—p‚·‚é{@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã§ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleFacadeCallerServiceNameQueryIndex();
     
     /**
-     * IOCŒÄ‚Ño‚µƒ^ƒXƒN‚ÅŒÄ‚Ño‚·BeanFlow–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * IOCŒÄ‚Ño‚µƒ^ƒXƒN‚ğg—p‚·‚éê‡‚ÍA•K‚¸w’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ‚Ü‚½A•¡”‚ÌBeanFlow‚ğŒÄ‚Ño‚·ê‡‚ÍAƒJƒ“ƒ}‹æØ‚è‚ÅBeanFlow–¼‚ğw’è‚·‚éB<br>
+     * IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã§å‘¼ã³å‡ºã™BeanFlowåã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€å¿…ãšæŒ‡å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ã¾ãŸã€è¤‡æ•°ã®BeanFlowã‚’å‘¼ã³å‡ºã™å ´åˆã¯ã€ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§BeanFlowåã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param index —ñƒCƒ“ƒfƒbƒNƒX
+     * @param index åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setScheduleBeanFlowNamesQueryIndex(int index);
     
     /**
-     * IOCŒÄ‚Ño‚µƒ^ƒXƒN‚ÅŒÄ‚Ño‚·BeanFlow–¼‚Æ‚È‚éƒf[ƒ^‚Ì—ñƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * IOCå‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯ã§å‘¼ã³å‡ºã™BeanFlowåã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñƒCƒ“ƒfƒbƒNƒX
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getScheduleBeanFlowNamesQueryIndex();
     

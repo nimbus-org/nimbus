@@ -43,8 +43,8 @@ import jp.ossc.nimbus.service.test.ChainTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * �I�u�W�F�N�g�̃v���p�e�B�l��ݒ肷��e�X�g�A�N�V�����B<p>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * オブジェクトのプロパティ値を設定するテストアクション。<p>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  * 
  * @author M.Takata
  */
@@ -53,21 +53,21 @@ public class PropertySetActionService extends ServiceBase implements TestAction,
     protected double expectedCost = 0d;
     
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁA�I�u�W�F�N�g�Ƀv���p�e�B�l��ݒ肷��B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースの内容を読み込んで、オブジェクトにプロパティ値を設定する。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * property
      * targetObjectId
      * valueObjectId
      * </pre>
-     * property�́A�ݒ肷��v���p�e�B��������w�肷��B�v���p�e�B������́A{@link PropertyFactory#createProperty(String)}�ŉ��߂����B<br>
-     * targetObjectId�́A�v���p�e�B�̐ݒ�ΏۂƂȂ�I�u�W�F�N�g���w�肷����̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA�v���p�e�B�̐ݒ�ΏۂƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA�v���p�e�B�̐ݒ�ΏۂƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B<br>
-     * valueObjectId�́A�v���p�e�B�ɐݒ肷��l�ƂȂ�I�u�W�F�N�g���w�肷����̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA�v���p�e�B�ɐݒ肷��l�ƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA�v���p�e�B�ɐݒ肷��l�ƂȂ�I�u�W�F�N�g��߂��e�X�g�A�N�V���������݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B<br>
+     * propertyは、設定するプロパティ文字列を指定する。プロパティ文字列は、{@link PropertyFactory#createProperty(String)}で解釈される。<br>
+     * targetObjectIdは、プロパティの設定対象となるオブジェクトを指定するもので、同一テストケース中に、このTestActionより前に、プロパティの設定対象となるオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、プロパティの設定対象となるオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。<br>
+     * valueObjectIdは、プロパティに設定する値となるオブジェクトを指定するもので、同一テストケース中に、このTestActionより前に、プロパティに設定する値となるオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、プロパティに設定する値となるオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return �ݒ�Ώۂ̃I�u�W�F�N�g
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return 設定対象のオブジェクト
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

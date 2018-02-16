@@ -34,54 +34,54 @@ package jp.ossc.nimbus.core;
 import java.util.Set;
 
 /**
- * {@link DefaultServiceLoaderService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultServiceLoaderService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultServiceLoaderService
  */
 public interface DefaultServiceLoaderServiceMBean extends ServiceBaseMBean, ServiceLoader{
     /**
-     * ƒT[ƒrƒX’è‹`XMLƒtƒ@ƒCƒ‹‚ğDTD‚ÅŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAŒŸØ‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’DTDã§æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€æ¤œè¨¼ã—ãªã„ã€‚<br>
      *
-     * @param validate ŒŸØ‚·‚éê‡trueB
+     * @param validate æ¤œè¨¼ã™ã‚‹å ´åˆtrueã€‚
      */
     public void setValidate(boolean validate);
     
     /**
-     * ƒT[ƒrƒX’è‹`XMLƒtƒ@ƒCƒ‹‚ğDTD‚ÅŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’DTDã§æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return ŒŸØ‚·‚éê‡trueB
+     * @return æ¤œè¨¼ã™ã‚‹å ´åˆtrueã€‚
      */
     public boolean isValidate();
     
     /**
-     * ‚±‚±‚Ü‚Å‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚ÉŠJn‚Å‚«‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğtrue‚É‚µ‚Ä‚¨‚­‚ÆA‚±‚ÌServiceLoader‚Ì‹N“®Š®—¹‚ÉA{@link ServiceManagerFactory#checkLoadManagerCompleted()}‚ğŒÄ‚Ño‚·B
+     * ã“ã“ã¾ã§ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«é–‹å§‹ã§ãã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’trueã«ã—ã¦ãŠãã¨ã€ã“ã®ServiceLoaderã®èµ·å‹•å®Œäº†æ™‚ã«ã€{@link ServiceManagerFactory#checkLoadManagerCompleted()}ã‚’å‘¼ã³å‡ºã™ã€‚
      *
-     * @param isCheck ƒ`ƒFƒbƒN‚·‚éê‡true
+     * @param isCheck ãƒã‚§ãƒƒã‚¯ã™ã‚‹å ´åˆtrue
      */
     public void setCheckLoadManagerCompleted(boolean isCheck);
     
     /**
-     * ‚±‚±‚Ü‚Å‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚ÉŠJn‚Å‚«‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * ã“ã“ã¾ã§ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«é–‹å§‹ã§ãã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒN‚·‚éê‡true
+     * @return ãƒã‚§ãƒƒã‚¯ã™ã‚‹å ´åˆtrue
      */
     public boolean isCheckLoadManagerCompleted();
     
     /**
-     * w’è‚µ‚½ƒ}ƒl[ƒWƒƒ‚ÌƒT[ƒrƒX‚ª‘S‚Ä³í‚ÉŠJn‚Å‚«‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚·‚é‚ÆA‚±‚ÌServiceLoader‚Ì‹N“®Š®—¹‚ÉA{@link ServiceManagerFactory#checkLoadManagerCompletedBy(Set)}‚ğŒÄ‚Ño‚·B
+     * æŒ‡å®šã—ãŸãƒãƒãƒ¼ã‚¸ãƒ£ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«é–‹å§‹ã§ãã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ã“ã®ServiceLoaderã®èµ·å‹•å®Œäº†æ™‚ã«ã€{@link ServiceManagerFactory#checkLoadManagerCompletedBy(Set)}ã‚’å‘¼ã³å‡ºã™ã€‚
      *
-     * @param managerNames ƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼‚ÌW‡
+     * @param managerNames ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã®é›†åˆ
      */
     public void setCheckLoadManagerCompletedBy(String[] managerNames);
     
     /**
-     * ƒT[ƒrƒX‚ª‘S‚Ä³í‚ÉŠJn‚Å‚«‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«é–‹å§‹ã§ãã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼‚ÌW‡
+     * @return ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã®é›†åˆ
      */
     public String[] getCheckLoadManagerCompletedBy();
 }

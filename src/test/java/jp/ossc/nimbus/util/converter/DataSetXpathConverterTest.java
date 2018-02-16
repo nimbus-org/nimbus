@@ -43,19 +43,19 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
- * {@link DataSetXpathConverter}ƒeƒXƒgƒP[ƒXB
+ * {@link DataSetXpathConverter}ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã€‚
  * <p>
- *   •K{ŠÂ‹«F
+ *   å¿…é ˆç’°å¢ƒï¼š
  *   <ul>
- *      <li>JDK 5.0 ˆÈ~</li>
+ *      <li>JDK 5.0 ä»¥é™</li>
  *      <li>
- *          ‚Ü‚½‚ÍAJDK 1.4 + ˆÈ‰º‚Ìendorsedƒ‚ƒWƒ…[ƒ‹F
+ *          ã¾ãŸã¯ã€JDK 1.4 + ä»¥ä¸‹ã®endorsedãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼š
  *          <ul>
  *              <li>Xerces 2.9</li>
  *              <li>Xalan 2.7</li>
  *              <li>Xalan Serializer 2.7</li>
  *          </ul>
- *          ‚±‚Ìê‡AƒeƒXƒgƒ‰ƒ“ƒi‚ÌJVM‹N“®ƒIƒvƒVƒ‡ƒ“‚É-Djava.endorsed.dirs‚ğİ’è‚·‚é•K—v‚ ‚è
+ *          ã“ã®å ´åˆã€ãƒ†ã‚¹ãƒˆãƒ©ãƒ³ãƒŠã®JVMèµ·å‹•ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«-Djava.endorsed.dirsã‚’è¨­å®šã™ã‚‹å¿…è¦ã‚ã‚Š
  *          -Djava.endorsed.dirs=lib/endorsed
  *      </li>
  *   </ul>
@@ -69,7 +69,7 @@ public class DataSetXpathConverterTest extends TestCase {
     public void testConvertToObject() {
         DataSet inputDataSet = new DataSetXPathConverterTestDataSet();
         
-        // ‰Šúƒf[ƒ^İ’è
+        // åˆæœŸãƒ‡ãƒ¼ã‚¿è¨­å®š
         Header inputHeader = inputDataSet.getHeader();
         inputHeader.setProperty(DataSetXPathConverterTestDataSet.PROPERTY0, "PROP0");
         inputHeader.setParseProperty(DataSetXPathConverterTestDataSet.PROPERTY1, "PROP1");
@@ -80,21 +80,21 @@ public class DataSetXpathConverterTest extends TestCase {
         Header header = dataSet.getHeader();
         RecordList recordList = dataSet.getRecordList();
         
-        // ‰Šúƒf[ƒ^æ“¾
+        // åˆæœŸãƒ‡ãƒ¼ã‚¿å–å¾—
         Assert.assertEquals("PROP0", header.get(DataSetXPathConverterTestDataSet.PROPERTY0));
-        // ‘®«æ“¾
+        // å±æ€§å–å¾—
         Assert.assertEquals("ATTR", header.get(DataSetXPathConverterTestDataSet.PROPERTY1));
-        // ‘®«’l‚É‚æ‚éw’èƒm[ƒhæ“¾
-        Assert.assertEquals("ƒeƒLƒXƒg2-3", header.get(DataSetXPathConverterTestDataSet.PROPERTY2));
-        // ƒm[ƒhƒCƒ“ƒfƒbƒNƒX‚É‚æ‚éw’èƒm[ƒhæ“¾
+        // å±æ€§å€¤ã«ã‚ˆã‚‹æŒ‡å®šãƒãƒ¼ãƒ‰å–å¾—
+        Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ2-3", header.get(DataSetXPathConverterTestDataSet.PROPERTY2));
+        // ãƒãƒ¼ãƒ‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«ã‚ˆã‚‹æŒ‡å®šãƒãƒ¼ãƒ‰å–å¾—
         Assert.assertEquals("ATTR1", header.get(DataSetXPathConverterTestDataSet.PROPERTY3));
         
-        // qƒm[ƒhæ“¾
+        // å­ãƒãƒ¼ãƒ‰å–å¾—
         for(int i=0; i<recordList.size(); i++) {
             Record record = (Record)recordList.get(i);
-            Assert.assertEquals("ƒeƒLƒXƒg"+(i+1)+"-1", record.get(DataSetXPathConverterTestDataSet.PROPERTY4));
-            Assert.assertEquals("ƒeƒLƒXƒg"+(i+1)+"-2", record.get(DataSetXPathConverterTestDataSet.PROPERTY5));
-            Assert.assertEquals("ƒeƒLƒXƒg"+(i+1)+"-3", record.get(DataSetXPathConverterTestDataSet.PROPERTY6));
+            Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ"+(i+1)+"-1", record.get(DataSetXPathConverterTestDataSet.PROPERTY4));
+            Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ"+(i+1)+"-2", record.get(DataSetXPathConverterTestDataSet.PROPERTY5));
+            Assert.assertEquals("ãƒ†ã‚­ã‚¹ãƒˆ"+(i+1)+"-3", record.get(DataSetXPathConverterTestDataSet.PROPERTY6));
         }
     }
     

@@ -38,15 +38,15 @@ import javax.servlet.ServletResponse;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * JouralServletResponseWrapperƒIƒuƒWƒFƒNƒg‚ğMapƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * ‚±‚ÌƒGƒfƒBƒ^‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚½Map‚ÍA{@link ServletResponseMapJournalEditorService}‚Ì‚ÂMap\‘¢‚É‰Á‚¦‚ÄAˆÈ‰º‚Ì\‘¢‚ğ‚ÂB<br>
+ * JouralServletResponseWrapperã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Mapãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * ã“ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«ã‚ˆã£ã¦ç·¨é›†ã•ã‚ŒãŸMapã¯ã€{@link ServletResponseMapJournalEditorService}ã®æŒã¤Mapæ§‹é€ ã«åŠ ãˆã¦ã€ä»¥ä¸‹ã®æ§‹é€ ã‚’æŒã¤ã€‚<br>
  * <table broder="1">
- *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CONTENT_LENGTH_KEY}</td><td>java.lang.Integer</td><td>ƒRƒ“ƒeƒ“ƒg’·</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CONTENT_KEY}</td><td>java.lang.String</td><td>ƒRƒ“ƒeƒ“ƒg</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CONTENT_LENGTH_KEY}</td><td>java.lang.Integer</td><td>ã‚³ãƒ³ãƒ†ãƒ³ãƒˆé•·</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CONTENT_KEY}</td><td>java.lang.String</td><td>ã‚³ãƒ³ãƒ†ãƒ³ãƒˆ</td></tr>
  * </table>
- * ’A‚µAo—Í‚µ‚È‚¢‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚à‚Ì‚âAŒ³‚ÌJournalServletResponseWrapper‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚©‚Á‚½î•ñAJ2EE‚Ìƒo[ƒWƒ‡ƒ“‚É‚æ‚Á‚Äæ“¾‚Å‚«‚È‚¢î•ñ‚ÍŠÜ‚Ü‚ê‚È‚¢B<br>
+ * ä½†ã—ã€å‡ºåŠ›ã—ãªã„ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã‚„ã€å…ƒã®JournalServletResponseWrapperã«å«ã¾ã‚Œã¦ã„ãªã‹ã£ãŸæƒ…å ±ã€J2EEã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ã‚ˆã£ã¦å–å¾—ã§ããªã„æƒ…å ±ã¯å«ã¾ã‚Œãªã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -76,12 +76,12 @@ public class ServletResponseWrapperMapJournalEditorService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½JournalServletResponseWrapperŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸJournalServletResponseWrapperå‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public Map toMap(EditorFinder finder, Object key, Object value){
         final ServletResponse response = (ServletResponse)value;

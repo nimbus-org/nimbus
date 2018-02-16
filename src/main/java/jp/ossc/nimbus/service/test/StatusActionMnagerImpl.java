@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ƒAƒNƒVƒ‡ƒ“‚ÌŒ‹‰Ê‚ğŠÇ—‚·‚éƒXƒe[ƒ^ƒXƒNƒ‰ƒXB<p>
+ * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®çµæœã‚’ç®¡ç†ã™ã‚‹ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -48,9 +48,9 @@ public class StatusActionMnagerImpl extends StatusBaseImpl implements StatusActi
     private List testActionContextList;
     
     /**
-     * w’è‚³‚ê‚½Àsƒ†[ƒU‚Å‚ÌƒXƒe[ƒ^ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ã§ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param userId Àsƒ†[ƒU
+     * @param userId å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶
      */
     public StatusActionMnagerImpl(String userId){
         super(userId);
@@ -58,9 +58,9 @@ public class StatusActionMnagerImpl extends StatusBaseImpl implements StatusActi
     }
     
     /**
-     * Œ»İ‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğİ’è‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
      */
     public void setCurrentActionId(String actionId) {
         currentActionId = actionId;
@@ -71,9 +71,9 @@ public class StatusActionMnagerImpl extends StatusBaseImpl implements StatusActi
     }
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ğÀs‚µ‚½Œ‹‰ÊA”­¶‚µ‚½—áŠO‚ğİ’è‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã—ãŸçµæœã€ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param throwable ƒAƒNƒVƒ‡ƒ“‚ğÀs‚µ‚½Œ‹‰ÊA”­¶‚µ‚½—áŠO
+     * @param throwable ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã—ãŸçµæœã€ç™ºç”Ÿã—ãŸä¾‹å¤–
      */
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
@@ -106,7 +106,7 @@ public class StatusActionMnagerImpl extends StatusBaseImpl implements StatusActi
     }
     
     /**
-     * {@link TestActionContext}‚ğ’Ç‰Á‚·‚éB<p>
+     * {@link TestActionContext}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
      * @param context TestActionContext
      */

@@ -41,16 +41,16 @@ import jp.ossc.nimbus.service.message.*;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ƒT[ƒrƒXŠÇ—ƒtƒ@ƒNƒgƒŠB<p>
- * {@link ServiceLoader}‚ÉƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚ğ—v‹‚µ‚ÄAƒT[ƒrƒX‚ğŠÇ—‚·‚é
- * {@link ServiceManager}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ‚Å‚ ‚éB<br>
- * ¶¬‚µ‚½ServiceManager‚ÍA{@link Repository}‚ÅŠÇ—‚µA–¼‘O‚ÅƒAƒNƒZƒX‚Å‚«‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ç®¡ç†ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link ServiceLoader}ã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã‚’è¦æ±‚ã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç®¡ç†ã™ã‚‹
+ * {@link ServiceManager}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ã‚ã‚‹ã€‚<br>
+ * ç”Ÿæˆã—ãŸServiceManagerã¯ã€{@link Repository}ã§ç®¡ç†ã—ã€åå‰ã§ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã€‚<br>
  * <p>
- * ‚Ü‚½AServiceManager‚É‘Î‚µ‚ÄA‚»‚Ì–¼‘O‚ÅServiceManager‚ÌŠe‘€ì‚Éstatic‚ÉA
- * ƒAƒNƒZƒX‚·‚éƒ‰ƒbƒp[“I‚È‹@”\‚à‚ÂB<br>
+ * ã¾ãŸã€ServiceManagerã«å¯¾ã—ã¦ã€ãã®åå‰ã§ServiceManagerã®å„æ“ä½œã«staticã«ã€
+ * ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãƒ©ãƒƒãƒ‘ãƒ¼çš„ãªæ©Ÿèƒ½ã‚‚æŒã¤ã€‚<br>
  *
  * @author M.Takata
- * @see <a href="ServiceManagerFactoryUsage.txt">ƒT[ƒrƒXŠÇ—ƒtƒ@ƒNƒgƒŠƒRƒ}ƒ“ƒhg—p•û–@</a>
+ * @see <a href="ServiceManagerFactoryUsage.txt">ã‚µãƒ¼ãƒ“ã‚¹ç®¡ç†ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•</a>
  */
 public class ServiceManagerFactory implements Serializable{
     
@@ -60,16 +60,16 @@ public class ServiceManagerFactory implements Serializable{
          = "jp/ossc/nimbus/core/ServiceManagerFactoryUsage.txt";
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒƒOo—Í‚ğs‚¤{@link LogService}ƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link LogService}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     static final LogService DEFAULT_LOGGER;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒƒbƒZ[ƒW¶¬‚ğs‚¤{@link MessageRecordFactoryService}ƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆã‚’è¡Œã†{@link MessageRecordFactoryService}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     static final MessageRecordFactoryService DEFAULT_MESSAGE;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SVCMF = "SVCMF";
     private static final String SVCMF0 = SVCMF + 0;
     private static final String SVCMF00 = SVCMF0 + 0;
@@ -108,62 +108,62 @@ public class ServiceManagerFactory implements Serializable{
     private static final String SVCMF00031 = SVCMF000 + 31;
     
     /**
-     * {@link ServiceLoader}‚ÌÀ‘•ƒNƒ‰ƒX‚ğw’è‚·‚éƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚ÌƒL[B<p>
+     * {@link ServiceLoader}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ã€‚<p>
      */
     private static final String LOADER_IMPL_CLASS_KEY
          = "jp.ossc.nimbus.core.loader";
     
     /**
-     * {@link ServiceManager}‚ÌÀ‘•ƒNƒ‰ƒX‚ğw’è‚·‚éƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚ÌƒL[B<p>
+     * {@link ServiceManager}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼ã€‚<p>
      */
     private static final String MANAGER_IMPL_CLASS_KEY
          = "jp.ossc.nimbus.core.manager";
     
     /**
-     * ƒƒOo—Í‚ğs‚¤{@link Logger}‚Ìƒ‰ƒbƒp[ƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link Logger}ã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private static LoggerWrapper logger;
     
     /**
-     * ƒƒbƒZ[ƒW¶¬‚ğs‚¤{@link MessageRecordFactory}‚Ìƒ‰ƒbƒp[ƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆã‚’è¡Œã†{@link MessageRecordFactory}ã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private static MessageRecordFactoryWrapper message;
     
     /**
-     * ‰üs•¶šB<p>
+     * æ”¹è¡Œæ–‡å­—ã€‚<p>
      */
     private static final String LINE_SEPARAOTR
          = System.getProperty("line.separator");
     
     /**
-     * ‘Ò‹@’†‚ÌƒT[ƒrƒX‚ÌŒ´ˆö‚Æ‚È‚éƒT[ƒrƒX‚ğ•\¦‚·‚éÛ‚ÌÚ“ª«•¶š—ñB<p>
+     * å¾…æ©Ÿä¸­ã®ã‚µãƒ¼ãƒ“ã‚¹ã®åŸå› ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹éš›ã®æ¥é ­è¾æ–‡å­—åˆ—ã€‚<p>
      */
     private static final String CAUSE_SERVICES = " causes ";
     
     /**
-     * ‹N“®‚É¸”s‚µ‚½ƒT[ƒrƒX‚ÌŒ´ˆö‚Æ‚È‚é—áŠO‚ğ•\¦‚·‚éÛ‚ÌÚ“ª«•¶š—ñB<p>
+     * èµ·å‹•ã«å¤±æ•—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®åŸå› ã¨ãªã‚‹ä¾‹å¤–ã‚’è¡¨ç¤ºã™ã‚‹éš›ã®æ¥é ­è¾æ–‡å­—åˆ—ã€‚<p>
      */
     private static final String CAUSE_THROWABLE = " cause ";
     
     /**
-     * ServiceLoader‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒXB<p>
+     * ServiceLoaderã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static final Class DEFAULT_SERVICE_LOADER_CLASS
          = DefaultServiceLoaderService.class;
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğŠÇ—‚·‚éƒ}ƒbƒvB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’ç®¡ç†ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>java.net.URL</td><td>ƒT[ƒrƒX’è‹`‚ÌURL</td><td>ServiceLoader</td><td>ƒL[‚ÌURL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>java.net.URL</td><td>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®URL</td><td>ServiceLoader</td><td>ã‚­ãƒ¼ã®URLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}</td></tr>
      * </table>
      */
     private static final Map loaders = Collections.synchronizedMap(new HashMap());
     
     /**
-     * {@link ServiceManager}‚ğŠÇ—‚·‚é{@link Repository}B<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAMapÀ‘•‚ÌRepositotyB<br>
+     * {@link ServiceManager}ã‚’ç®¡ç†ã™ã‚‹{@link Repository}ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€Mapå®Ÿè£…ã®Repositotyã€‚<br>
      */
     private static Repository repository = new DefaultRepository();
     
@@ -201,17 +201,17 @@ public class ServiceManagerFactory implements Serializable{
     };
     
     /**
-     * ‚±‚ÌServiceManagerFactory‚É“o˜^‚³‚ê‚½“o˜^ó‘ÔƒŠƒXƒi‚ÌƒŠƒXƒgB<p>
+     * ã“ã®ServiceManagerFactoryã«ç™»éŒ²ã•ã‚ŒãŸç™»éŒ²çŠ¶æ…‹ãƒªã‚¹ãƒŠã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     private static List registrationListeners = new ArrayList();
     
     /**
-     * {@link ServiceLoader}À‘•ƒNƒ‰ƒXB<p>
+     * {@link ServiceLoader}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static Class loaderClass = DEFAULT_SERVICE_LOADER_CLASS;
     
     /**
-     * {@link ServiceManager}À‘•ƒNƒ‰ƒXB<p>
+     * {@link ServiceManager}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static Class managerClass;
     
@@ -243,53 +243,53 @@ public class ServiceManagerFactory implements Serializable{
     private static Properties properties = new Properties();
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     private ServiceManagerFactory(){
         super();
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * {@link #loadManager(URL)}‚ğˆø”null‚ÅŒÄ‚Ño‚·B<br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚æ‚Á‚Äƒ[ƒh‚³‚ê‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÍA{@link Utility#getDefaultServiceURL()}‚Åæ“¾‚³‚ê‚éURL‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Å‚ ‚éB
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * {@link #loadManager(URL)}ã‚’å¼•æ•°nullã§å‘¼ã³å‡ºã™ã€‚<br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã‚ˆã£ã¦ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€{@link Utility#getDefaultServiceURL()}ã§å–å¾—ã•ã‚Œã‚‹URLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚ã‚‹ã€‚
      * 
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(){
         return loadManager((URL)null);
     }
     
     /**
-     * w’è‚µ‚½ƒpƒX‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * w’è‚µ‚½ƒpƒX‚ÍA{@link Utility#convertServicePathToURL(String)}‚ÅURL‚É•ÏŠ·‚³‚êA{@link #loadManager(URL)}‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã¯ã€{@link Utility#convertServicePathToURL(String)}ã§URLã«å¤‰æ›ã•ã‚Œã€{@link #loadManager(URL)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param path ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
-     * @exception IllegalArgumentException w’è‚µ‚½ƒpƒX‚ª•s³‚Èê‡A‚Ü‚½‚Í‘¶İ‚µ‚È‚¢ê‡
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸãƒ‘ã‚¹ãŒä¸æ­£ãªå ´åˆã€ã¾ãŸã¯å­˜åœ¨ã—ãªã„å ´åˆ
      */
     public static synchronized boolean loadManager(String path){
         return loadManager(path, false, false);
     }
     
     /**
-     * w’è‚µ‚½URL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * {@link #loadManager(URL, boolean)}‚ğAloadManager(url, false)‚ÅŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã—ãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * {@link #loadManager(URL, boolean)}ã‚’ã€loadManager(url, false)ã§å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param url ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(URL url){
         return loadManager(url, false);
     }
     
     /**
-     * w’è‚µ‚½ƒpƒX‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * w’è‚µ‚½ƒpƒX‚ÍA{@link Utility#convertServicePathToURL(String)}‚ÅURL‚É•ÏŠ·‚³‚êA{@link #loadManager(URL, boolean)}‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã¯ã€{@link Utility#convertServicePathToURL(String)}ã§URLã«å¤‰æ›ã•ã‚Œã€{@link #loadManager(URL, boolean)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param path ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
-     * @param isReload Šù‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚ğÄƒ[ƒh‚·‚éê‡‚É‚ÍAtrue
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+     * @param isReload æ—¢ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’å†ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã«ã¯ã€true
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(
         String path,
@@ -303,25 +303,25 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½URL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * {@link #loadManager(URL, boolean, boolean)}‚ğAloadManager(url, isReload, false)‚ÅŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã—ãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * {@link #loadManager(URL, boolean, boolean)}ã‚’ã€loadManager(url, isReload, false)ã§å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param url ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
-     * @param isReload Šù‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚ğÄƒ[ƒh‚·‚éê‡‚É‚ÍAtrue
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @param isReload æ—¢ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’å†ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã«ã¯ã€true
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(URL url, boolean isReload){
         return loadManager(url, isReload, false);
     }
     
     /**
-     * w’è‚µ‚½ƒpƒX‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * w’è‚µ‚½ƒpƒX‚ÍA{@link Utility#convertServicePathToURL(String)}‚ÅURL‚É•ÏŠ·‚³‚êA{@link #loadManager(URL, boolean, boolean)}‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã¯ã€{@link Utility#convertServicePathToURL(String)}ã§URLã«å¤‰æ›ã•ã‚Œã€{@link #loadManager(URL, boolean, boolean)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param path ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
-     * @param isReload Šù‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚ğÄƒ[ƒh‚·‚éê‡‚É‚ÍAtrue
-     * @param isValidate ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ•]‰¿‚·‚é‚©‚Ç‚¤‚©B•]‰¿‚·‚éê‡‚Ítrue
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+     * @param isReload æ—¢ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’å†ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã«ã¯ã€true
+     * @param isValidate ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã€‚è©•ä¾¡ã™ã‚‹å ´åˆã¯true
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(
         String path,
@@ -343,14 +343,14 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒpƒX‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
-     * w’è‚µ‚½ƒpƒX‚ÍA{@link Utility#convertServicePathToURL(String)}‚ÅURL‚É•ÏŠ·‚³‚êA{@link #loadManager(URL, boolean, boolean)}‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã¯ã€{@link Utility#convertServicePathToURL(String)}ã§URLã«å¤‰æ›ã•ã‚Œã€{@link #loadManager(URL, boolean, boolean)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param path ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
-     * @param config ƒT[ƒrƒXƒ[ƒ_\¬î•ñ
-     * @param isReload Šù‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚ğÄƒ[ƒh‚·‚éê‡‚É‚ÍAtrue
-     * @param isValidate ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ•]‰¿‚·‚é‚©‚Ç‚¤‚©B•]‰¿‚·‚éê‡‚Ítrue
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+     * @param config ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆæƒ…å ±
+     * @param isReload æ—¢ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’å†ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã«ã¯ã€true
+     * @param isValidate ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã€‚è©•ä¾¡ã™ã‚‹å ´åˆã¯true
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(
         String path,
@@ -373,12 +373,12 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½URL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
-     * @param isReload Šù‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚ğÄƒ[ƒh‚·‚éê‡‚É‚ÍAtrue
-     * @param isValidate ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ•]‰¿‚·‚é‚©‚Ç‚¤‚©B•]‰¿‚·‚éê‡‚Ítrue
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @param isReload æ—¢ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’å†ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã«ã¯ã€true
+     * @param isValidate ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã€‚è©•ä¾¡ã™ã‚‹å ´åˆã¯true
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(
         URL url,
@@ -389,13 +389,13 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½URL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
-     * @param config ƒT[ƒrƒXƒ[ƒ_\¬î•ñ
-     * @param isReload Šù‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚ğÄƒ[ƒh‚·‚éê‡‚É‚ÍAtrue
-     * @param isValidate ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ•]‰¿‚·‚é‚©‚Ç‚¤‚©B•]‰¿‚·‚éê‡‚Ítrue
-     * @return ƒ[ƒh‚É¬Œ÷‚µ‚½ê‡trueB’A‚µA‚±‚±‚ÅŒ¾‚¤¬Œ÷‚ÍA•K‚¸‚µ‚àƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚É‹N“®‚µ‚½–‚ğ•ÛØ‚·‚é‚à‚Ì‚Å‚ÍA‚ ‚è‚Ü‚¹‚ñBƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‚Ég—p‚·‚éServiceLoader‚ª³í‚É‹N“®‚³‚ê‚½–‚ğ¦‚µ‚Ü‚·B
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @param config ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆæƒ…å ±
+     * @param isReload æ—¢ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’å†ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã«ã¯ã€true
+     * @param isValidate ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã€‚è©•ä¾¡ã™ã‚‹å ´åˆã¯true
+     * @return ãƒ­ãƒ¼ãƒ‰ã«æˆåŠŸã—ãŸå ´åˆtrueã€‚ä½†ã—ã€ã“ã“ã§è¨€ã†æˆåŠŸã¯ã€å¿…ãšã—ã‚‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«èµ·å‹•ã—ãŸäº‹ã‚’ä¿è¨¼ã™ã‚‹ã‚‚ã®ã§ã¯ã€ã‚ã‚Šã¾ã›ã‚“ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰ã«ä½¿ç”¨ã™ã‚‹ServiceLoaderãŒæ­£å¸¸ã«èµ·å‹•ã•ã‚ŒãŸäº‹ã‚’ç¤ºã—ã¾ã™ã€‚
      */
     public static synchronized boolean loadManager(
         URL url,
@@ -499,21 +499,21 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒrƒX’è‹`‚ğƒAƒ“ƒ[ƒh‚·‚éB<p>
-     * {@link #unloadManager(URL)}‚ğˆø”null‚ÅŒÄ‚Ño‚·B<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * {@link #unloadManager(URL)}ã‚’å¼•æ•°nullã§å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @return ƒT[ƒrƒX’è‹`‚ÌƒAƒ“ƒ[ƒhˆ—‚ğs‚Á‚½ê‡true
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰å‡¦ç†ã‚’è¡Œã£ãŸå ´åˆtrue
      */
     public static synchronized boolean unloadManager(){
         return unloadManager((URL)null);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚ÌƒT[ƒrƒX’è‹`‚ğƒAƒ“ƒ[ƒh‚·‚éB<p>
-     * w’è‚µ‚½ƒpƒX‚ÍA{@link Utility#convertServicePathToURL(String)}‚ÅURL‚É•ÏŠ·‚³‚êA{@link #unloadManager(URL)}‚ğŒÄ‚Ño‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ã¯ã€{@link Utility#convertServicePathToURL(String)}ã§URLã«å¤‰æ›ã•ã‚Œã€{@link #unloadManager(URL)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param path ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
-     * @return ƒT[ƒrƒX’è‹`‚ÌƒAƒ“ƒ[ƒhˆ—‚ğs‚Á‚½ê‡true
+     * @param path ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰å‡¦ç†ã‚’è¡Œã£ãŸå ´åˆtrue
      */
     public static synchronized boolean unloadManager(String path){
         URL url = null;
@@ -523,7 +523,7 @@ public class ServiceManagerFactory implements Serializable{
             try{
                 url = new File(path).toURL();
             }catch(MalformedURLException ee){
-                // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
                 return false;
             }
         }
@@ -531,10 +531,10 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒpƒX‚ÌƒT[ƒrƒX’è‹`‚ğƒAƒ“ƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL
-     * @return ƒT[ƒrƒX’è‹`‚ÌƒAƒ“ƒ[ƒhˆ—‚ğs‚Á‚½ê‡true
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URL
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰å‡¦ç†ã‚’è¡Œã£ãŸå ´åˆtrue
      */
     public static synchronized boolean unloadManager(URL url){
         
@@ -563,19 +563,19 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
-     * @return ‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚éê‡true
+     * ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * @return å…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public static boolean checkLoadManagerCompleted(){
         return checkLoadManagerCompleted(null);
     }
     
     /**
-     * ƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
-     * ‹N“®‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX–¼‚ğ{@link ServiceName}‚Æ‚µ‚ÄAnotStarted‚ÉŠi”[‚µ‚Ä•Ô‚·B<br>
+     * ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * èµ·å‹•ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹åã‚’{@link ServiceName}ã¨ã—ã¦ã€notStartedã«æ ¼ç´ã—ã¦è¿”ã™ã€‚<br>
      * 
-     * @param notStarted ‹N“®‚Å‚«‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ÌW‡‚ğŠi”[‚·‚éƒZƒbƒg
-     * @return ‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚éê‡true
+     * @param notStarted èµ·å‹•ã§ããªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã‚’æ ¼ç´ã™ã‚‹ã‚»ãƒƒãƒˆ
+     * @return å…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public static boolean checkLoadManagerCompleted(Set notStarted){
         
@@ -659,21 +659,21 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
-     * @param managerNames ƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼‚ÌW‡
-     * @return ‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚éê‡true
+     * ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * @param managerNames ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã®é›†åˆ
+     * @return å…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public static boolean checkLoadManagerCompletedBy(Set managerNames){
         return checkLoadManagerCompletedBy(managerNames, null);
     }
     
     /**
-     * ƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
-     * ‹N“®‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX–¼‚ğ{@link ServiceName}‚Æ‚µ‚ÄAnotStarted‚ÉŠi”[‚µ‚Ä•Ô‚·B<br>
+     * ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * èµ·å‹•ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹åã‚’{@link ServiceName}ã¨ã—ã¦ã€notStartedã«æ ¼ç´ã—ã¦è¿”ã™ã€‚<br>
      * 
-     * @param managerNames ƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼‚ÌW‡
-     * @param notStarted ‹N“®‚Å‚«‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ÌW‡‚ğŠi”[‚·‚éƒZƒbƒg
-     * @return ‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚éê‡true
+     * @param managerNames ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã®é›†åˆ
+     * @param notStarted èµ·å‹•ã§ããªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã‚’æ ¼ç´ã™ã‚‹ã‚»ãƒƒãƒˆ
+     * @return å…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public static boolean checkLoadManagerCompletedBy(
         Set managerNames,
@@ -765,21 +765,21 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
-     * @param managerName ƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼
-     * @return ‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚éê‡true
+     * ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * @param managerName ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @return å…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public static boolean checkLoadManagerCompletedBy(String managerName){
         return checkLoadManagerCompletedBy(managerName, null);
     }
     
     /**
-     * ƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚É’è‹`‚³‚ê‚½ƒT[ƒrƒX‚ª‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
-     * ‹N“®‚³‚ê‚Ä‚¢‚È‚¢ƒT[ƒrƒX–¼‚ğ{@link ServiceName}‚Æ‚µ‚ÄAnotStarted‚ÉŠi”[‚µ‚Ä•Ô‚·B<br>
+     * ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
+     * èµ·å‹•ã•ã‚Œã¦ã„ãªã„ã‚µãƒ¼ãƒ“ã‚¹åã‚’{@link ServiceName}ã¨ã—ã¦ã€notStartedã«æ ¼ç´ã—ã¦è¿”ã™ã€‚<br>
      * 
-     * @param managerName ƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param notStarted ‹N“®‚Å‚«‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ÌW‡‚ğŠi”[‚·‚éƒZƒbƒg
-     * @return ‘S‚Ä‹N“®‚³‚ê‚Ä‚¢‚éê‡true
+     * @param managerName ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param notStarted èµ·å‹•ã§ããªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã®é›†åˆã‚’æ ¼ç´ã™ã‚‹ã‚»ãƒƒãƒˆ
+     * @return å…¨ã¦èµ·å‹•ã•ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     public static boolean checkLoadManagerCompletedBy(
         String managerName,
@@ -851,9 +851,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒ[ƒh‚³‚ê‚½‘S‚Ä‚ÌServiceManager‚ğ’T‚·B<p>
+     * ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸå…¨ã¦ã®ServiceManagerã‚’æ¢ã™ã€‚<p>
      *
-     * @return ƒ[ƒh‚³‚ê‚½‘S‚Ä‚ÌServiceManager‚Ì”z—ñB‚P‚Â‚àƒ[ƒh‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA’·‚³‚O‚Ì”z—ñ‚ğ•Ô‚·B
+     * @return ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸå…¨ã¦ã®ServiceManagerã®é…åˆ—ã€‚ï¼‘ã¤ã‚‚ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€é•·ã•ï¼ã®é…åˆ—ã‚’è¿”ã™ã€‚
      */
     public static ServiceManager[] findManagers(){
         final Set managerSet = repository.registeredSet();
@@ -863,20 +863,20 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ğ‚ÂServiceManager‚ğ’T‚·B<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ÍA{@link ServiceManager#DEFAULT_NAME}‚Å‚ ‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã‚’æŒã¤ServiceManagerã‚’æ¢ã™ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã¯ã€{@link ServiceManager#DEFAULT_NAME}ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ğ‚ÂServiceManagerBŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã‚’æŒã¤ServiceManagerã€‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     public static ServiceManager findManager(){
         return findManager(ServiceManager.DEFAULT_NAME);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ğ‚ÂServiceManager‚ğ’T‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã‚’æŒã¤ServiceManagerã‚’æ¢ã™ã€‚<p>
      *
-     * @param name ServiceManager‚Ì–¼‘O
-     * @return w’è‚³‚ê‚½–¼‘O‚ğ‚ÂServiceManagerBŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @param name ServiceManagerã®åå‰
+     * @return æŒ‡å®šã•ã‚ŒãŸåå‰ã‚’æŒã¤ServiceManagerã€‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     public static ServiceManager findManager(String name){
         if(name == null){
@@ -886,11 +886,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ğ“o˜^‚·‚éB<p>
-     * ServiceManager‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒX‚Å‚ ‚é{@link DefaultServiceManagerService}‚ğg—p‚·‚éB<br>
+     * ServiceManagerã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
+     * ServiceManagerã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹{@link DefaultServiceManagerService}ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param name ServiceManager‚Ì“o˜^–¼
-     * @return “o˜^‚Å‚«‚½ê‡true
+     * @param name ServiceManagerã®ç™»éŒ²å
+     * @return ç™»éŒ²ã§ããŸå ´åˆtrue
      * @see #registerManager(String, ServiceManager)
      */
     public static boolean registerManager(String name){
@@ -905,7 +905,7 @@ public class ServiceManagerFactory implements Serializable{
             loader.create();
             loader.start();
         }catch(Exception e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             loader.destroy();
             return false;
         }
@@ -913,14 +913,14 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ğ“o˜^‚·‚éB<p>
-     * ã‘‚«“o˜^‚Å‚«‚é‚©‚Ç‚¤‚©‚ÍAServiceManager‚ÌŠÇ—‚É—p‚¢‚é{@link Repository}‚ÌÀ‘•‚ÉˆË‘¶‚·‚éBƒfƒtƒHƒ‹ƒg‚ÌRepository‚ÍAã‘‚«“o˜^‚Í‹–‰Â‚µ‚È‚¢B<br>
+     * ServiceManagerã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
+     * ä¸Šæ›¸ãç™»éŒ²ã§ãã‚‹ã‹ã©ã†ã‹ã¯ã€ServiceManagerã®ç®¡ç†ã«ç”¨ã„ã‚‹{@link Repository}ã®å®Ÿè£…ã«ä¾å­˜ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Repositoryã¯ã€ä¸Šæ›¸ãç™»éŒ²ã¯è¨±å¯ã—ãªã„ã€‚<br>
      * <p>
-     * “o˜^‚Å‚«‚½ê‡‚ÍA{@link #processRegisterd(ServiceManager)}‚ğŒÄ‚Ño‚µ‚ÄA“o˜^‚³‚ê‚Ä‚¢‚é{@link RegistrationListener}‚É“o˜^‚ğ’Ê’m‚·‚éB<br>
+     * ç™»éŒ²ã§ããŸå ´åˆã¯ã€{@link #processRegisterd(ServiceManager)}ã‚’å‘¼ã³å‡ºã—ã¦ã€ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link RegistrationListener}ã«ç™»éŒ²ã‚’é€šçŸ¥ã™ã‚‹ã€‚<br>
      *
-     * @param name ServiceManager‚Ì“o˜^–¼
-     * @param manager “o˜^‚·‚éServiceManagerƒIƒuƒWƒFƒNƒg
-     * @return “o˜^‚Å‚«‚½ê‡true
+     * @param name ServiceManagerã®ç™»éŒ²å
+     * @param manager ç™»éŒ²ã™ã‚‹ServiceManagerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç™»éŒ²ã§ããŸå ´åˆtrue
      */
     public static boolean registerManager(String name, ServiceManager manager){
         logger.write(SVCMF00015, new Object[]{name, manager});
@@ -937,11 +937,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ğ‚ÂServiceManager‚Ì“o˜^‚ğ‰ğœ‚·‚éB<p>
-     * “o˜^‚ğ‰ğœ‚Å‚«‚½ê‡‚ÍA{@link #processUnregisterd(ServiceManager)}‚ğŒÄ‚Ño‚µ‚ÄA“o˜^‚³‚ê‚Ä‚¢‚é{@link RegistrationListener}‚É“o˜^‰ğœ‚ğ’Ê’m‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã‚’æŒã¤ServiceManagerã®ç™»éŒ²ã‚’è§£é™¤ã™ã‚‹ã€‚<p>
+     * ç™»éŒ²ã‚’è§£é™¤ã§ããŸå ´åˆã¯ã€{@link #processUnregisterd(ServiceManager)}ã‚’å‘¼ã³å‡ºã—ã¦ã€ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link RegistrationListener}ã«ç™»éŒ²è§£é™¤ã‚’é€šçŸ¥ã™ã‚‹ã€‚<br>
      *
-     * @param name ServiceManager‚Ì“o˜^–¼
-     * @return “o˜^‚ğ‰ğœ‚Å‚«‚½ê‡true
+     * @param name ServiceManagerã®ç™»éŒ²å
+     * @return ç™»éŒ²ã‚’è§£é™¤ã§ããŸå ´åˆtrue
      */
     public static boolean unregisterManager(String name){
         logger.write(SVCMF00018, name);
@@ -959,25 +959,25 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚Ìƒ}ƒl[ƒWƒƒ‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒãƒãƒ¼ã‚¸ãƒ£ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param name ƒ}ƒl[ƒWƒƒ–¼
-     * @return “o˜^‚³‚ê‚Ä‚¢‚½ê‡true
+     * @param name ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆtrue
      */
     public static boolean isRegisteredManager(String name){
         return repository.isRegistered(name); 
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
-     * ServiceLoader‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ÍA{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚­‚Ä‚àAServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒ‰ƒbƒp[‚Å‚­‚é‚Ü‚ê‚Ä“o˜^‚³‚ê‚éB<br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚ÍA‚»‚Ì“Á«‚ğ¶‚©‚µAServiceLoader‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ğServiceƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Äæ“¾‚·‚éƒƒ\ƒbƒh‚Å‚ ‚éB<br>
-     * ’ÊíAƒT[ƒrƒX‚Ì‹N“®A’â~‚È‚Ç‚Ìˆ—‚ğs‚¢‚½‚¢ê‡‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ÅƒT[ƒrƒX‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ServiceLoaderã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã¯ã€{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªãã¦ã‚‚ã€Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸãƒ©ãƒƒãƒ‘ãƒ¼ã§ãã‚‹ã¾ã‚Œã¦ç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€ãã®ç‰¹æ€§ã‚’ç”Ÿã‹ã—ã€ServiceLoaderã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<br>
+     * é€šå¸¸ã€ã‚µãƒ¼ãƒ“ã‚¹ã®èµ·å‹•ã€åœæ­¢ãªã©ã®å‡¦ç†ã‚’è¡Œã„ãŸã„å ´åˆã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public static Service getService(String managerName, String serviceName)
      throws ServiceNotFoundException{
@@ -989,11 +989,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      * @see #getService(String, String)
      */
     public static Service getService(ServiceName serviceName)
@@ -1008,11 +1008,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      * @see #getService(String, String)
      */
     public static Service getService(String serviceName)
@@ -1028,12 +1028,12 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚Ì’è‹`î•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX’è‹`î•ñ
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public static ServiceMetaData getServiceMetaData(
         String managerName,
@@ -1047,11 +1047,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚Ì’è‹`î•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX’è‹`î•ñ
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public static ServiceMetaData getServiceMetaData(ServiceName serviceName)
      throws ServiceNotFoundException{
@@ -1065,11 +1065,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX’è‹`î•ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX’è‹`î•ñ
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©æƒ…å ±
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public static ServiceMetaData getServiceMetaData(
         String serviceName
@@ -1085,15 +1085,15 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-     * ServiceLoader‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ÍA{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚­‚Ä‚àAServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒ‰ƒbƒp[‚Å‚­‚é‚Ü‚ê‚Ä“o˜^‚³‚ê‚éB<br>
-     * {@link #getService(String, String)}ƒƒ\ƒbƒh‚Å‚ÍAServiceLoader‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ğServiceƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Äæ“¾‚·‚é‚ªA‚±‚Ìƒƒ\ƒbƒh‚ÍAServiceLoader‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚»‚Ì‚à‚Ì‚ğæ“¾‚·‚éB<br>
-     * ’ÊíAƒT[ƒrƒX‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“Œü‚¯‚Ì‹@”\‚ğg—p‚·‚éê‡‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ÅƒT[ƒrƒX‚ğæ“¾‚µ‚ÄA•K—v‚ÈƒCƒ“ƒ^ƒtƒF[ƒX‚ÉƒLƒƒƒXƒg‚µ‚Äg—p‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ServiceLoaderã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã¯ã€{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªãã¦ã‚‚ã€Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸãƒ©ãƒƒãƒ‘ãƒ¼ã§ãã‚‹ã¾ã‚Œã¦ç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
+     * {@link #getService(String, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ã¯ã€ServiceLoaderã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦å–å¾—ã™ã‚‹ãŒã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€ServiceLoaderã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãã®ã‚‚ã®ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * é€šå¸¸ã€ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å‘ã‘ã®æ©Ÿèƒ½ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã€å¿…è¦ãªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒX
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public static Object getServiceObject(
         String managerName,
@@ -1107,11 +1107,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      * @see #getServiceObject(String, String)
      */
     public static Object getServiceObject(ServiceName serviceName)
@@ -1126,11 +1126,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      * @see #getServiceObject(String, String)
      */
     public static Object getServiceObject(
@@ -1147,13 +1147,13 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ğ’Ê’m‚·‚éServiceStateBroadcaster‚ğæ“¾‚·‚éB<p>
-     * ServiceLoader‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ÍAServiceStateBroadcaster‚ğÀ‘•‚µ‚Ä‚¢‚Ä‚à—Ç‚¢Bw’è‚³‚ê‚½ƒT[ƒrƒX‚ªServiceStateBroadcaster‚ğÀ‘•‚µ‚Ä‚¢‚éê‡‚ÍA‚»‚ê‚ğ•Ô‚·BÀ‘•‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ã‚’é€šçŸ¥ã™ã‚‹ServiceStateBroadcasterã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ServiceLoaderã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã¯ã€ServiceStateBroadcasterã‚’å®Ÿè£…ã—ã¦ã„ã¦ã‚‚è‰¯ã„ã€‚æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒServiceStateBroadcasterã‚’å®Ÿè£…ã—ã¦ã„ã‚‹å ´åˆã¯ã€ãã‚Œã‚’è¿”ã™ã€‚å®Ÿè£…ã—ã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ServiceStateBroadcasterƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ServiceStateBroadcasterã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public static ServiceStateBroadcaster getServiceStateBroadcaster(
         String managerName,
@@ -1167,11 +1167,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ğ’Ê’m‚·‚éServiceStateBroadcaster‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ã‚’é€šçŸ¥ã™ã‚‹ServiceStateBroadcasterã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ServiceStateBroadcasterƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ServiceStateBroadcasterã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      * @see #getServiceStateBroadcaster(String, String)
      */
     public static ServiceStateBroadcaster getServiceStateBroadcaster(
@@ -1187,11 +1187,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ğ’Ê’m‚·‚éServiceStateBroadcaster‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®åå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ã‚’é€šçŸ¥ã™ã‚‹ServiceStateBroadcasterã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return ServiceStateBroadcasterƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ServiceStateBroadcasterã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      * @see #getServiceStateBroadcaster(String, String)
      */
     public static ServiceStateBroadcaster getServiceStateBroadcaster(
@@ -1208,12 +1208,12 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX’è‹`ƒƒ^ƒf[ƒ^‚É]‚Á‚½ƒT[ƒrƒX‚ğAw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ÉAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÅƒT[ƒrƒX‚Æ‚µ‚Ä“o˜^‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã«å¾“ã£ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã«ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã§ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceData ƒT[ƒrƒX’è‹`ƒƒ^ƒf[ƒ^
-     * @return “o˜^‚Å‚«‚½ê‡‚ÍAtrueBw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ª‘¶İ‚µ‚È‚¢ê‡‚âAServiceManager‚ª“o˜^‚É¸”s‚µ‚½ê‡‚ÍAfalse‚ğ•Ô‚·B
-     * @exception Exception ƒT[ƒrƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»‚É¸”s‚µ‚½ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @return ç™»éŒ²ã§ããŸå ´åˆã¯ã€trueã€‚æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€ServiceManagerãŒç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆã¯ã€falseã‚’è¿”ã™ã€‚
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static boolean registerService(
         String managerName,
@@ -1227,14 +1227,14 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğAw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ÉAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÅƒT[ƒrƒX‚Æ‚µ‚Ä“o˜^‚·‚éB<p>
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªServiceƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒ‰ƒbƒp[‚Å‚­‚é‚Ü‚ê‚Ä“o˜^‚³‚ê‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã«ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã§ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒServiceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã—ã¦ã„ãªã„å ´åˆã¯ã€Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸãƒ©ãƒƒãƒ‘ãƒ¼ã§ãã‚‹ã¾ã‚Œã¦ç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param obj ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg
-     * @return “o˜^‚Å‚«‚½ê‡‚ÍAtrueBw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ª‘¶İ‚µ‚È‚¢ê‡‚âAServiceManager‚ª“o˜^‚É¸”s‚µ‚½ê‡‚ÍAfalse‚ğ•Ô‚·B
-     * @exception Exception ƒT[ƒrƒX‚Ì“o˜^‚É¸”s‚µ‚½ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param obj ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç™»éŒ²ã§ããŸå ´åˆã¯ã€trueã€‚æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€ServiceManagerãŒç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆã¯ã€falseã‚’è¿”ã™ã€‚
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static boolean registerService(
         String managerName,
@@ -1249,13 +1249,13 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ğAw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ÉAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚Å“o˜^‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã«ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã§ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param service ƒT[ƒrƒX
-     * @return “o˜^‚Å‚«‚½ê‡‚ÍAtrueBw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ª‘¶İ‚µ‚È‚¢ê‡‚âAServiceManager‚ª“o˜^‚É¸”s‚µ‚½ê‡‚ÍAfalse‚ğ•Ô‚·B
-     * @exception Exception ƒT[ƒrƒX‚Ì“o˜^‚É¸”s‚µ‚½ê‡
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param service ã‚µãƒ¼ãƒ“ã‚¹
+     * @return ç™»éŒ²ã§ããŸå ´åˆã¯ã€trueã€‚æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€ServiceManagerãŒç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆã¯ã€falseã‚’è¿”ã™ã€‚
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static boolean registerService(
         String managerName,
@@ -1271,11 +1271,11 @@ public class ServiceManagerFactory implements Serializable{
     
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚©‚çAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚Ì“o˜^‚ğ‰ğœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç™»éŒ²ã‚’è§£é™¤ã™ã‚‹ã€‚<p>
      *
-     * @param managerName ServiceManager‚Ì–¼‘O
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return “o˜^‰ğœ‚Å‚«‚½ê‡‚ÍAtrueB‚Ü‚½Aw’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ª‘¶İ‚µ‚È‚¢ê‡‚àtrueBServiceManager‚ª“o˜^‚Ì‰ğœ‚É¸”s‚µ‚½ê‡‚ÍAfalse‚ğ•Ô‚·B
+     * @param managerName ServiceManagerã®åå‰
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç™»éŒ²è§£é™¤ã§ããŸå ´åˆã¯ã€trueã€‚ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerãŒå­˜åœ¨ã—ãªã„å ´åˆã‚‚trueã€‚ServiceManagerãŒç™»éŒ²ã®è§£é™¤ã«å¤±æ•—ã—ãŸå ´åˆã¯ã€falseã‚’è¿”ã™ã€‚
      */
     public static boolean unregisterService(
         String managerName,
@@ -1289,11 +1289,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌServiceManager‚ÉAw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ServiceManagerã«ã€æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param managerName ƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return “o˜^‚³‚ê‚Ä‚¢‚½ê‡true
+     * @param managerName ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆtrue
      */
     public static boolean isRegisteredService(
         String managerName,
@@ -1307,10 +1307,10 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @return “o˜^‚³‚ê‚Ä‚¢‚½ê‡true
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆtrue
      */
     public static boolean isRegisteredService(ServiceName serviceName){
         if(serviceName == null){
@@ -1326,11 +1326,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepositoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * Œ»İ‚ÌRepository‚É“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚ğA‘S‚ÄV‚µ‚¢Repository‚É“o˜^‚Å‚«‚½ê‡‚Ì‚İARepository‚ğ•ÏX‚·‚éBˆê‚Â‚Å‚àA“o˜^‚É¸”s‚µ‚½ServiceManager‚ª‘¶İ‚·‚éê‡‚É‚ÍAŒ³‚Ìó‘Ô‚É–ß‚·B<br>
+     * ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ç¾åœ¨ã®Repositoryã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‚’ã€å…¨ã¦æ–°ã—ã„Repositoryã«ç™»éŒ²ã§ããŸå ´åˆã®ã¿ã€Repositoryã‚’å¤‰æ›´ã™ã‚‹ã€‚ä¸€ã¤ã§ã‚‚ã€ç™»éŒ²ã«å¤±æ•—ã—ãŸServiceManagerãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã¯ã€å…ƒã®çŠ¶æ…‹ã«æˆ»ã™ã€‚<br>
      *
-     * @param name ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return Repository‚Ì“ü‚ê‘Ö‚¦‚É¬Œ÷‚µ‚½ê‡true
+     * @param name ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return Repositoryã®å…¥ã‚Œæ›¿ãˆã«æˆåŠŸã—ãŸå ´åˆtrue
      */
     public static boolean setManagerRepository(ServiceName name){
         return setManagerRepository(
@@ -1340,12 +1340,12 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepositoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * Œ»İ‚ÌRepository‚É“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚ğA‘S‚ÄV‚µ‚¢Repository‚É“o˜^‚Å‚«‚½ê‡‚Ì‚İARepository‚ğ•ÏX‚·‚éBˆê‚Â‚Å‚àA“o˜^‚É¸”s‚µ‚½ServiceManager‚ª‘¶İ‚·‚éê‡‚É‚ÍAŒ³‚Ìó‘Ô‚É–ß‚·B<br>
+     * ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ç¾åœ¨ã®Repositoryã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‚’ã€å…¨ã¦æ–°ã—ã„Repositoryã«ç™»éŒ²ã§ããŸå ´åˆã®ã¿ã€Repositoryã‚’å¤‰æ›´ã™ã‚‹ã€‚ä¸€ã¤ã§ã‚‚ã€ç™»éŒ²ã«å¤±æ•—ã—ãŸServiceManagerãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã¯ã€å…ƒã®çŠ¶æ…‹ã«æˆ»ã™ã€‚<br>
      *
-     * @param manager ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepositoryƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éƒ}ƒl[ƒWƒƒ–¼
-     * @param service ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return Repository‚Ì“ü‚ê‘Ö‚¦‚É¬Œ÷‚µ‚½ê‡true
+     * @param manager ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param service ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return Repositoryã®å…¥ã‚Œæ›¿ãˆã«æˆåŠŸã—ãŸå ´åˆtrue
      */
     public static boolean setManagerRepository(
         final String manager,
@@ -1382,11 +1382,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepository‚ğİ’è‚·‚éB<p>
-     * Œ»İ‚ÌRepository‚É“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚ğA‘S‚ÄV‚µ‚¢Repository‚É“o˜^‚Å‚«‚½ê‡‚Ì‚İARepository‚ğ•ÏX‚·‚éBˆê‚Â‚Å‚àA“o˜^‚É¸”s‚µ‚½ServiceManager‚ª‘¶İ‚·‚éê‡‚É‚ÍAŒ³‚Ìó‘Ô‚É–ß‚·B<br>
+     * ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ç¾åœ¨ã®Repositoryã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã‚’ã€å…¨ã¦æ–°ã—ã„Repositoryã«ç™»éŒ²ã§ããŸå ´åˆã®ã¿ã€Repositoryã‚’å¤‰æ›´ã™ã‚‹ã€‚ä¸€ã¤ã§ã‚‚ã€ç™»éŒ²ã«å¤±æ•—ã—ãŸServiceManagerãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã¯ã€å…ƒã®çŠ¶æ…‹ã«æˆ»ã™ã€‚<br>
      *
-     * @param newRep ServiceManager‚ÌŠÇ—‚Ég—p‚·‚éRepositoryƒIƒuƒWƒFƒNƒg
-     * @return Repository‚Ì“ü‚ê‘Ö‚¦‚É¬Œ÷‚µ‚½ê‡true
+     * @param newRep ServiceManagerã®ç®¡ç†ã«ä½¿ç”¨ã™ã‚‹Repositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return Repositoryã®å…¥ã‚Œæ›¿ãˆã«æˆåŠŸã—ãŸå ´åˆtrue
      */
     public static boolean setManagerRepository(Repository newRep){
         logger.write(SVCMF00021, newRep);
@@ -1433,9 +1433,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ServiceLoader‚ğ“o˜^‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoaderã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      * 
-     * @param loader “o˜^‚·‚éServiceLoaderƒIƒuƒWƒFƒNƒg
+     * @param loader ç™»éŒ²ã™ã‚‹ServiceLoaderã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void registerLoader(ServiceLoader loader){
         final URL url = loader.getServiceURL();
@@ -1450,9 +1450,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ServiceLoader‚Ì“o˜^‚ğ‰ğœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoaderã®ç™»éŒ²ã‚’è§£é™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param loader “o˜^‚ğ‰ğœ‚·‚éServiceLoaderƒIƒuƒWƒFƒNƒg
+     * @param loader ç™»éŒ²ã‚’è§£é™¤ã™ã‚‹ServiceLoaderã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void unregisterLoader(ServiceLoader loader){
         loaders.remove(loader.getServiceURL());
@@ -1464,29 +1464,29 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½URL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ServiceLaoder‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLaoderã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param url ƒT[ƒrƒX’è‹`‚ÌURL
-     * @return w’è‚³‚ê‚½URL‚ÌƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ServiceLaoderB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®URL
+     * @return æŒ‡å®šã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLaoderã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     public static ServiceLoader getLoader(URL url){
         return (ServiceLoader)loaders.get(url);
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½‘S‚Ä‚ÌServiceLaoder‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸå…¨ã¦ã®ServiceLaoderã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX’è‹`‚ğƒ[ƒh‚µ‚½ServiceLaoder‚ÌW‡B‘¶İ‚µ‚È‚¢ê‡‚ÍA‹ó‚ÌW‡‚ğ•Ô‚·B
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLaoderã®é›†åˆã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€ç©ºã®é›†åˆã‚’è¿”ã™ã€‚
      */
     public static Collection getLoaders(){
         return new HashSet(loaders.values());
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éServiceLoaderƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * ’A‚µAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"jp.ossc.nimbus.core.loader"‚Åw’è‚µ‚½ServiceLoaderƒNƒ‰ƒX‚Ì•û‚ª—Dæ‚³‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ServiceLoaderã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"jp.ossc.nimbus.core.loader"ã§æŒ‡å®šã—ãŸServiceLoaderã‚¯ãƒ©ã‚¹ã®æ–¹ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param loader ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éServiceLoaderƒNƒ‰ƒX
+     * @param loader ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ServiceLoaderã‚¯ãƒ©ã‚¹
      */
     public static void setServiceLoaderClass(Class loader)
      throws IllegalArgumentException{
@@ -1503,19 +1503,19 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éServiceLoaderƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ServiceLoaderã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éServiceLoaderƒNƒ‰ƒX
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ServiceLoaderã‚¯ãƒ©ã‚¹
      */
     public static Class getServiceLoaderClass(){
         return loaderClass;
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éServiceManagerƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * ’A‚µAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"jp.ossc.nimbus.core.manager"‚Åw’è‚µ‚½ServiceManagerƒNƒ‰ƒX‚Ì•û‚ª—Dæ‚³‚ê‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹ServiceManagerã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"jp.ossc.nimbus.core.manager"ã§æŒ‡å®šã—ãŸServiceManagerã‚¯ãƒ©ã‚¹ã®æ–¹ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param manager ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éServiceManagerƒNƒ‰ƒX
+     * @param manager ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹ServiceManagerã‚¯ãƒ©ã‚¹
      */
     public static void setServiceManagerClass(Class manager)
      throws IllegalArgumentException{
@@ -1532,37 +1532,37 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éServiceManagerƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ServiceManagerã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Å¶¬‚·‚éServiceManagerƒNƒ‰ƒX
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ç”Ÿæˆã™ã‚‹ServiceManagerã‚¯ãƒ©ã‚¹
      */
     public static Class getServiceManagerClass(){
         return managerClass;
     }
     
     /**
-     * ƒƒOo—Í‚ğs‚¤Logger‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†Loggerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return LoggerƒIƒuƒWƒFƒNƒg
+     * @return Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static Logger getLogger(){
         return logger;
     }
     
     /**
-     * ƒƒOo—Í‚ğs‚¤LoggerƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†Loggerã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public static void setLogger(ServiceName name){
         setLogger(name.getServiceManagerName(), name.getServiceName());
     }
     
     /**
-     * ƒƒOo—Í‚ğs‚¤LoggerƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†Loggerã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param manager LoggerƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param service LoggerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param manager Loggerã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param service Loggerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public static void setLogger(final String manager, final String service){
         if(isRegisteredService(manager, service)
@@ -1595,18 +1595,18 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒƒbƒZ[ƒW¶¬‚ğs‚¤MessageRecordFactory‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆã‚’è¡Œã†MessageRecordFactoryã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageRecordFactoryƒIƒuƒWƒFƒNƒg
+     * @return MessageRecordFactoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static MessageRecordFactory getMessageRecordFactory(){
         return message;
     }
     
     /**
-     * ƒƒbƒZ[ƒW¶¬‚ğs‚¤MessageRecordFactoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆã‚’è¡Œã†MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageRecordFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public static void setMessageRecordFactory(ServiceName name){
         setMessageRecordFactory(
@@ -1616,10 +1616,10 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒƒbƒZ[ƒW¶¬‚ğs‚¤MessageRecordFactoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆã‚’è¡Œã†MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param manager MessageRecordFactoryƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚éServiceManager‚Ì–¼‘O
-     * @param service MessageRecordFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param manager MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ServiceManagerã®åå‰
+     * @param service MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public static void setMessageRecordFactory(
         final String manager,
@@ -1659,9 +1659,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éRegistrationListener‚ğ’Ç‰Á‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹RegistrationListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param listener RegistrationListenerƒIƒuƒWƒFƒNƒg
+     * @param listener RegistrationListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void addRegistrationListener(RegistrationListener listener){
         if(!registrationListeners.contains(listener)){
@@ -1670,9 +1670,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * “o˜^ó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éRegistrationListener‚ğíœ‚·‚éB<p>
+     * ç™»éŒ²çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹RegistrationListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener RegistrationListenerƒIƒuƒWƒFƒNƒg
+     * @param listener RegistrationListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void removeRegistrationListener(
         RegistrationListener listener
@@ -1681,9 +1681,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ª“o˜^‚³‚ê‚½–‚ğRegistrationListener‚É’Ê’m‚·‚éB<p>
+     * ServiceManagerãŒç™»éŒ²ã•ã‚ŒãŸäº‹ã‚’RegistrationListenerã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      * 
-     * @param manager “o˜^‚³‚ê‚½ServiceManager
+     * @param manager ç™»éŒ²ã•ã‚ŒãŸServiceManager
      * @see RegistrationListener
      * @see RegistrationEvent
      */
@@ -1698,9 +1698,9 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ServiceManager‚ªíœ‚³‚ê‚½–‚ğRegistrationListener‚É’Ê’m‚·‚éB<p>
+     * ServiceManagerãŒå‰Šé™¤ã•ã‚ŒãŸäº‹ã‚’RegistrationListenerã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      * 
-     * @param manager íœ‚³‚ê‚½ServiceManager
+     * @param manager å‰Šé™¤ã•ã‚ŒãŸServiceManager
      * @see RegistrationListener
      * @see RegistrationEvent
      */
@@ -1715,12 +1715,12 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğ’Ç‰Á‚·‚éB<p>
-     * w’è‚µ‚½{@link ServiceManager}‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡ARegistrationListener‚ğ“o˜^‚·‚éBServiceManager‚ª“o˜^‚³‚ê‚é‚ÆA{@link ServiceManager#addServiceStateListener(String, ServiceStateListener)}‚ÅAServiceStateListener‚ª“o˜^‚³‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸ{@link ServiceManager}ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã„å ´åˆã€RegistrationListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚ServiceManagerãŒç™»éŒ²ã•ã‚Œã‚‹ã¨ã€{@link ServiceManager#addServiceStateListener(String, ServiceStateListener)}ã§ã€ServiceStateListenerãŒç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param managerName ƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param managerName ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void addServiceStateListener(
         final String managerName,
@@ -1750,11 +1750,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğ’Ç‰Á‚·‚éB<p>
-     * w’è‚µ‚½{@link ServiceManager}‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡ARegistrationListener‚ğ“o˜^‚·‚éBServiceManager‚ª“o˜^‚³‚ê‚é‚ÆA{@link ServiceManager#addServiceStateListener(String, ServiceStateListener)}‚ÅAServiceStateListener‚ª“o˜^‚³‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸ{@link ServiceManager}ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã„å ´åˆã€RegistrationListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚ServiceManagerãŒç™»éŒ²ã•ã‚Œã‚‹ã¨ã€{@link ServiceManager#addServiceStateListener(String, ServiceStateListener)}ã§ã€ServiceStateListenerãŒç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void addServiceStateListener(
         ServiceName serviceName,
@@ -1768,11 +1768,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link ServiceManager}‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡ARegistrationListener‚ğ“o˜^‚·‚éBƒfƒtƒHƒ‹ƒg‚ÌServiceManager‚ª“o˜^‚³‚ê‚é‚ÆA{@link ServiceManager#addServiceStateListener(String, ServiceStateListener)}‚ÅAServiceStateListener‚ª“o˜^‚³‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link ServiceManager}ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã„å ´åˆã€RegistrationListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ServiceManagerãŒç™»éŒ²ã•ã‚Œã‚‹ã¨ã€{@link ServiceManager#addServiceStateListener(String, ServiceStateListener)}ã§ã€ServiceStateListenerãŒç™»éŒ²ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void addServiceStateListener(
         final String serviceName,
@@ -1802,11 +1802,11 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param managerName ƒ}ƒl[ƒWƒƒ–¼
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param managerName ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void removeServiceStateListener(
         String managerName,
@@ -1820,10 +1820,10 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void removeServiceStateListener(
         ServiceName serviceName,
@@ -1837,10 +1837,10 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğŠÄ‹‚·‚éServiceStateListener‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ç›£è¦–ã™ã‚‹ServiceStateListenerã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒT[ƒrƒX–¼
-     * @param listener ServiceStateListenerƒIƒuƒWƒFƒNƒg
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param listener ServiceStateListenerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void removeServiceStateListener(
         String serviceName,
@@ -1853,27 +1853,27 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒT[ƒoƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒT[ƒoƒvƒƒpƒeƒB
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public static String getProperty(String name){
         return properties.getProperty(name);
     }
     
     /**
-     * ƒT[ƒoƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒT[ƒoƒvƒƒpƒeƒB
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public static void setProperty(String name, String value){
         properties.setProperty(name, value);
     }
     
     /**
-     * g—p•û–@‚ğ•W€o—Í‚É•\¦‚·‚éB<p>
+     * ä½¿ç”¨æ–¹æ³•ã‚’æ¨™æº–å‡ºåŠ›ã«è¡¨ç¤ºã™ã‚‹ã€‚<p>
      */
     private static void usage(){
         try{
@@ -1885,18 +1885,18 @@ public class ServiceManagerFactory implements Serializable{
         }
     }
     /**
-     * ƒŠƒ\[ƒX‚ğ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã‚’æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param name ƒŠƒ\[ƒX–¼
-     * @exception IOException ƒŠƒ\[ƒX‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param name ãƒªã‚½ãƒ¼ã‚¹å
+     * @exception IOException ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     private static String getResourceString(String name) throws IOException{
         
-        // ƒŠƒ\[ƒX‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾
+        // ãƒªã‚½ãƒ¼ã‚¹ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—
         InputStream is = ServiceManagerFactory.class.getClassLoader()
             .getResourceAsStream(name);
         
-        // ƒƒbƒZ[ƒW‚Ì“Ç‚İ‚İ
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿
         StringBuilder buf = new StringBuilder();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
@@ -1918,10 +1918,10 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚é‰Â”\«‚Ì‚ ‚é•¶š—ñ‚ğƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹æ–‡å­—åˆ—ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str ƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚é‰Â”\«‚Ì‚ ‚é•¶š—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ
+     * @param str ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹æ–‡å­—åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—
      */
     private static String unicodeConvert(String str){
         char c;
@@ -1998,31 +1998,31 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * ƒRƒ“ƒpƒCƒ‹ƒRƒ}ƒ“ƒh‚ğÀs‚·‚éB<p>
+     * ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * <pre>
-     * ƒRƒ}ƒ“ƒhg—p•û–@F
+     * ã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•ï¼š
      *  java jp.ossc.nimbus.core.ServiceManagerFactory [options] [paths]
      * 
      * [options]
      * 
      *  [-validate]
-     *   ƒT[ƒrƒX’è‹`‚ğDTD‚ÅŒŸØ‚·‚éB
+     *   ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’DTDã§æ¤œè¨¼ã™ã‚‹ã€‚
      * 
      *  [-server]
-     *   ƒƒCƒ“ƒXƒŒƒbƒh‚ğ‘Ò‹@‚³‚¹‚ÄAƒT[ƒo‚Æ‚µ‚Ä“®‚©‚·B
+     *   ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å¾…æ©Ÿã•ã›ã¦ã€ã‚µãƒ¼ãƒã¨ã—ã¦å‹•ã‹ã™ã€‚
      * 
      *  [-help]
-     *   ƒwƒ‹ƒv‚ğ•\¦‚µ‚Ü‚·B
+     *   ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
      * 
      * [paths]
-     *  ƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     *  ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      * 
-     * g—p—á : 
+     * ä½¿ç”¨ä¾‹ : 
      *    java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.core.ServiceManagerFactory service-definition.xml
      * </pre>
      *
-     * @param args ƒRƒ}ƒ“ƒhˆø”
-     * @exception Exception ƒRƒ“ƒpƒCƒ‹’†‚É–â‘è‚ª”­¶‚µ‚½ê‡
+     * @param args ã‚³ãƒãƒ³ãƒ‰å¼•æ•°
+     * @exception Exception ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ä¸­ã«å•é¡ŒãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public static void main(String[] args) throws Exception{
         

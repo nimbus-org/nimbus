@@ -36,7 +36,7 @@ import java.io.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢–‚ğ¦‚·—áŠOB<p>
+ * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„äº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  * @see SimpleProperty
@@ -47,21 +47,21 @@ public class NoSuchReadablePropertyException
     private static final long serialVersionUID = -2143568154656653214L;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public NoSuchReadablePropertyException(Class clazz, String property){
         super(clazz, property);
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼A”­¶Œ´ˆöƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ç™ºç”ŸåŸå› ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
-     * @param cause ”­¶Œ´ˆöƒƒbƒZ[ƒW
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param cause ç™ºç”ŸåŸå› ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public NoSuchReadablePropertyException(
         Class clazz,

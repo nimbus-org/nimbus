@@ -36,7 +36,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodMappingInterceptorService}��MBean�C���^�t�F�[�X<p>
+ * {@link MethodMappingInterceptorService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see MethodMappingInterceptorService
@@ -44,52 +44,52 @@ import jp.ossc.nimbus.core.*;
 public interface MethodMappingInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ���\�b�h�ƃC���^�[�Z�v�^�T�[�r�X���̃}�b�s���O��ݒ肷��B<p>
-     * �w�肳�ꂽ���\�b�h���Ăяo���ꂽ�ꍇ�ɁA�Ή�����C���^�[�Z�v�^�T�[�r�X���Ăяo���悤�ɐݒ肷��B<br>
-     * �N���X��#���\�b�h��(�����^,�����^,�c)=�C���^�[�Z�v�^�T�[�r�X��<br>
-     * �N���X���A���\�b�h���A�����^�ɂ́A���K�\�����w�肷�鎖���ł���B�܂��A��������v���邩��r���Ȃ��ꍇ�́A*���w�肷��B<br>
-     * ��v����}�b�s���O����������ꍇ�̓���͕ۏ؂��Ȃ��B<br>
+     * メソッドとインターセプタサービス名のマッピングを設定する。<p>
+     * 指定されたメソッドが呼び出された場合に、対応するインターセプタサービスを呼び出すように設定する。<br>
+     * クラス名#メソッド名(引数型,引数型,…)=インターセプタサービス名<br>
+     * クラス名、メソッド名、引数型には、正規表現を指定する事ができる。また、引数が一致するか比較しない場合は、*を指定する。<br>
+     * 一致するマッピングが複数ある場合の動作は保証しない。<br>
      *
-     * @param mapping ���\�b�h�ƃC���^�[�Z�v�^�T�[�r�X���̃}�b�s���O
+     * @param mapping メソッドとインターセプタサービス名のマッピング
      */
     public void setTargetMethodMapping(Properties mapping);
     
     /**
-     * ���\�b�h�ƃC���^�[�Z�v�^�T�[�r�X���̃}�b�s���O���擾����B<p>
+     * メソッドとインターセプタサービス名のマッピングを取得する。<p>
      *
-     * @return ���\�b�h�ƃC���^�[�Z�v�^�T�[�r�X���̃}�b�s���O
+     * @return メソッドとインターセプタサービス名のマッピング
      */
     public Properties getTargetMethodMapping();
     
     /**
-     * ���\�b�h�ƃR���e�L�X�g�L�[���̃}�b�s���O��ݒ肷��B<p>
-     * �w�肳�ꂽ���\�b�h���Ăяo���ꂽ�ꍇ�ɁA�Ή�����R���e�L�X�g�L�[���̒l���R���e�L�X�g����擾���ĕԂ��悤�ɐݒ肷��B<br>
-     * �N���X��#���\�b�h��(�����^,�����^,�c)=�R���e�L�X�g�L�[��<br>
-     * �N���X���A���\�b�h���A�����^�ɂ́A���K�\�����w�肷�鎖���ł���B�܂��A��������v���邩��r���Ȃ��ꍇ�́A*���w�肷��B<br>
-     * ��v����}�b�s���O����������ꍇ�̓���͕ۏ؂��Ȃ��B<br>
+     * メソッドとコンテキストキー名のマッピングを設定する。<p>
+     * 指定されたメソッドが呼び出された場合に、対応するコンテキストキー名の値をコンテキストから取得して返すように設定する。<br>
+     * クラス名#メソッド名(引数型,引数型,…)=コンテキストキー名<br>
+     * クラス名、メソッド名、引数型には、正規表現を指定する事ができる。また、引数が一致するか比較しない場合は、*を指定する。<br>
+     * 一致するマッピングが複数ある場合の動作は保証しない。<br>
      *
-     * @param mapping ���\�b�h�ƃR���e�L�X�g�L�[���̃}�b�s���O
+     * @param mapping メソッドとコンテキストキー名のマッピング
      */
     public void setTargetMethodReturnMapping(Properties mapping);
     
     /**
-     * ���\�b�h�ƃR���e�L�X�g�L�[���̃}�b�s���O���擾����B<p>
+     * メソッドとコンテキストキー名のマッピングを取得する。<p>
      *
-     * @return ���\�b�h�ƃR���e�L�X�g�L�[���̃}�b�s���O
+     * @return メソッドとコンテキストキー名のマッピング
      */
     public Properties getTargetMethodReturnMapping();
     
     /**
-     * �R���e�L�X�g�T�[�r�X����ݒ肷��B<p>
+     * コンテキストサービス名を設定する。<p>
      *
-     * @param name �R���e�L�X�g�T�[�r�X��
+     * @param name コンテキストサービス名
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * �R���e�L�X�g�T�[�r�X�����擾����B<p>
+     * コンテキストサービス名を取得する。<p>
      *
-     * @return �R���e�L�X�g�T�[�r�X��
+     * @return コンテキストサービス名
      */
     public ServiceName getContextServiceName();
 }

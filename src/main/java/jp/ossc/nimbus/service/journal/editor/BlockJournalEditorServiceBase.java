@@ -36,7 +36,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒuƒƒbƒN‚ğ‚Á‚½ƒWƒƒ[ƒiƒ‹‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^ƒT[ƒrƒX‚ÌŠî’êƒNƒ‰ƒXB<p>
+ * ãƒ–ãƒ­ãƒƒã‚¯ã‚’æŒã£ãŸã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -119,13 +119,13 @@ public abstract class BlockJournalEditorServiceBase
     }
     
     /**
-     * ƒuƒƒbƒN‚ÌŠJn‚É•t—^‚·‚é•¶š—ñ‚ğ•ÒW‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒwƒbƒ_‚ÆƒuƒƒbƒNŠJnƒZƒpƒŒ[ƒ^‚ğo—Í‚·‚éB<br>
+     * ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹ã«ä»˜ä¸ã™ã‚‹æ–‡å­—åˆ—ã‚’ç·¨é›†ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ãƒ˜ãƒƒãƒ€ã¨ãƒ–ãƒ­ãƒƒã‚¯é–‹å§‹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param value ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected void startBlock(
         EditorFinder finder,
@@ -140,14 +140,14 @@ public abstract class BlockJournalEditorServiceBase
     }
     
     /**
-     * ƒuƒƒbƒN“à‚Ì“à—e‚ğ•ÒW‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹óÀ‘•‚È‚Ì‚ÅAƒTƒuƒNƒ‰ƒX‚ÅƒI[ƒo[ƒ‰ƒCƒh‚µ‚Äˆ—‚ğ’Ç‰Á‚·‚é‚±‚ÆB<br>
+     * ãƒ–ãƒ­ãƒƒã‚¯å†…ã®å†…å®¹ã‚’ç·¨é›†ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºå®Ÿè£…ãªã®ã§ã€ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param value ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
-     * @return ƒuƒƒbƒN‚Ìo—Í‚ªs‚í‚ê‚½‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB‰½‚ç‚©‚Ìƒf[ƒ^‚ªo—Í‚³‚ê‚½ê‡true
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return ãƒ–ãƒ­ãƒƒã‚¯ã®å‡ºåŠ›ãŒè¡Œã‚ã‚ŒãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚ä½•ã‚‰ã‹ã®ãƒ‡ãƒ¼ã‚¿ãŒå‡ºåŠ›ã•ã‚ŒãŸå ´åˆtrue
      */
     protected boolean processBlock(
         EditorFinder finder,
@@ -159,13 +159,13 @@ public abstract class BlockJournalEditorServiceBase
     }
     
     /**
-     * ƒuƒƒbƒN‚ÌI—¹‚É•t—^‚·‚é•¶š—ñ‚ğ•ÒW‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒwƒbƒ_‚ÆƒuƒƒbƒNI—¹ƒZƒpƒŒ[ƒ^‚ğo—Í‚·‚éB<br>
+     * ãƒ–ãƒ­ãƒƒã‚¯ã®çµ‚äº†ã«ä»˜ä¸ã™ã‚‹æ–‡å­—åˆ—ã‚’ç·¨é›†ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ãƒ˜ãƒƒãƒ€ã¨ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº†ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param value ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected void endBlock(
         EditorFinder finder,

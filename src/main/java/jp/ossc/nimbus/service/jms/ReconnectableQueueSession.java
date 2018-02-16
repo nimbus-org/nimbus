@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * ÄÚ‘±‰Â”\QueueƒZƒbƒVƒ‡ƒ“B<p>
+ * å†æ¥ç¶šå¯èƒ½Queueã‚»ãƒƒã‚·ãƒ§ãƒ³ã€‚<p>
  *
  * @author M.Takata
  */

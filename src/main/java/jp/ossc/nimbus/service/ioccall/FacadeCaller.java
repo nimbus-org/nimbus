@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ioccall;
 import jp.ossc.nimbus.ioc.*;
 
 /**
- * NimbusIOC‚ÌFacade‚ðƒR[ƒ‹‚·‚éƒCƒ“ƒ^[ƒtƒFƒCƒXB<p>
+ * NimbusIOCã®Facadeã‚’ã‚³ãƒ¼ãƒ«ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚<p>
  *
  * @version $Name:  $
  * @author H.Nakano
@@ -43,48 +43,48 @@ import jp.ossc.nimbus.ioc.*;
 public interface FacadeCaller {
     
     /**
-     * “¯Šú“I‚ÈNimbusIOC‚ÌƒRƒ}ƒ“ƒh‘wEJBƒR[ƒ‹‚ðs‚¤B<p>
+     * åŒæœŸçš„ãªNimbusIOCã®ã‚³ãƒžãƒ³ãƒ‰å±¤EJBã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param value “ü—ÍƒRƒ}ƒ“ƒh
-     * @return ƒRƒ}ƒ“ƒhŽÀsŒ‹‰Ê
+     * @param value å…¥åŠ›ã‚³ãƒžãƒ³ãƒ‰
+     * @return ã‚³ãƒžãƒ³ãƒ‰å®Ÿè¡Œçµæžœ
      */
     public Command syncCommandCall(Command value);
     
     /**
-     * “¯Šú“I‚ÈNimbusIOC‚Ìƒ†ƒjƒbƒgƒIƒuƒ[ƒN‘wEJBƒR[ƒ‹‚ðs‚¤B<p>
-     * •¡”‚ÌƒRƒ}ƒ“ƒh‚ð‚P‚Â‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““à‚Åˆ—‚µ‚½‚¢ê‡‚ÉŽg—p‚·‚éB<br>
+     * åŒæœŸçš„ãªNimbusIOCã®ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯å±¤EJBã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
+     * è¤‡æ•°ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’ï¼‘ã¤ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å†…ã§å‡¦ç†ã—ãŸã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param value “ü—ÍƒRƒ}ƒ“ƒhW‡
-     * @return ƒRƒ}ƒ“ƒhŽÀsŒ‹‰ÊW‡
+     * @param value å…¥åŠ›ã‚³ãƒžãƒ³ãƒ‰é›†åˆ
+     * @return ã‚³ãƒžãƒ³ãƒ‰å®Ÿè¡Œçµæžœé›†åˆ
      */
     public UnitOfWork syncUnitOfWorkCall(UnitOfWork value);
     
     /**
-     * “¯Šú“I‚ÈNimbusIOC‚ÌEJBƒtƒ@ƒT[ƒhƒR[ƒ‹‚ðs‚¤B<p>
-     * •¡”‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ð‡ŽŸˆ—‚µ‚½‚¢ê‡‚ÉŽg—p‚·‚éB<br>
+     * åŒæœŸçš„ãªNimbusIOCã®EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
+     * è¤‡æ•°ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’é †æ¬¡å‡¦ç†ã—ãŸã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param value “ü—Íƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡
-     * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ŽÀsŒ‹‰ÊW‡
+     * @param value å…¥åŠ›ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆ
+     * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å®Ÿè¡Œçµæžœé›†åˆ
      */
     public FacadeValue syncFacadeCall(FacadeValue value);
     
     /**
-     * “¯Šú“I‚ÈNimbusIOC‚ÌEJBƒtƒ@ƒT[ƒhƒR[ƒ‹‚ðs‚¤B<p>
-     * •¡”‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡‚ð•½sˆ—‚µ‚½‚¢ê‡‚ÉŽg—p‚·‚éB<br>
+     * åŒæœŸçš„ãªNimbusIOCã®EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
+     * è¤‡æ•°ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆã‚’å¹³è¡Œå‡¦ç†ã—ãŸã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param values “ü—Íƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡”z—ñ
-     * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ŽÀsŒ‹‰ÊW‡”z—ñ
+     * @param values å…¥åŠ›ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆé…åˆ—
+     * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å®Ÿè¡Œçµæžœé›†åˆé…åˆ—
      */
     public FacadeValue[] syncParallelFacadeCall(FacadeValue[] values);
     
     /**
-     * “¯Šú“I‚ÈNimbusIOC‚ÌEJBƒtƒ@ƒT[ƒhƒR[ƒ‹‚ðs‚¤B<p>
-     * •¡”‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡‚ð•½sˆ—‚µ‚½‚¢ê‡‚ÉŽg—p‚·‚éB<br>
-     * ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½‰ž“š‚ÍA–ß‚è‚Ì”z—ñ—v‘f‚Énull‚ðŠi”[‚·‚éB<br>
+     * åŒæœŸçš„ãªNimbusIOCã®EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
+     * è¤‡æ•°ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆã‚’å¹³è¡Œå‡¦ç†ã—ãŸã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå¿œç­”ã¯ã€æˆ»ã‚Šã®é…åˆ—è¦ç´ ã«nullã‚’æ ¼ç´ã™ã‚‹ã€‚<br>
      * 
-     * @param values “ü—Íƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡”z—ñ
-     * @param timeout “ü—Íƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‰ž“šƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ŽÀsŒ‹‰ÊW‡”z—ñ
+     * @param values å…¥åŠ›ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆé…åˆ—
+     * @param timeout å…¥åŠ›ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å¿œç­”ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å®Ÿè¡Œçµæžœé›†åˆé…åˆ—
      */
     public FacadeValue[] syncParallelFacadeCall(
         FacadeValue[] values,
@@ -92,18 +92,18 @@ public interface FacadeCaller {
     );
     
     /**
-     * ”ñ“¯Šú‚ÌNimbusIOC‚ÌEJBƒtƒ@ƒT[ƒhƒR[ƒ‹‚ðs‚¤B<p>
-     * •¡”‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ð”ñ“¯Šúˆ—‚µ‚½‚¢ê‡‚ÉŽg—p‚·‚éB<br>
+     * éžåŒæœŸã®NimbusIOCã®EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
+     * è¤‡æ•°ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’éžåŒæœŸå‡¦ç†ã—ãŸã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param value “ü—Íƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡
+     * @param value å…¥åŠ›ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆ
      */
     public void unsyncFacadeCall(FacadeValue value);
     
     /**
-     * ”ñ“¯Šú‚ÌNimbusIOC‚ÌEJBƒtƒ@ƒT[ƒhƒR[ƒ‹‚ðs‚¤B<p>
-     * •¡”‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡‚ð”ñ“¯Šúˆ—‚µ‚½‚¢ê‡‚ÉŽg—p‚·‚éB<br>
+     * éžåŒæœŸã®NimbusIOCã®EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ«ã‚’è¡Œã†ã€‚<p>
+     * è¤‡æ•°ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆã‚’éžåŒæœŸå‡¦ç†ã—ãŸã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param values “ü—Íƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“W‡”z—ñ
+     * @param values å…¥åŠ›ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³é›†åˆé…åˆ—
      */
     public void unsyncFacadeCall(FacadeValue[] values);
 }

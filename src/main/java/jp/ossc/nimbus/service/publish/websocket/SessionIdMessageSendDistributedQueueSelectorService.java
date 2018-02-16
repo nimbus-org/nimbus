@@ -6,7 +6,7 @@ import jp.ossc.nimbus.service.publish.websocket.AbstractPublishMessageDispatcher
 import jp.ossc.nimbus.service.queue.AbstractDistributedQueueSelectorService;
 
 /**
- * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌDistributeQueueHandlerContainer‚ÌSelectorƒT[ƒrƒXB
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®DistributeQueueHandlerContainerã®Selectorã‚µãƒ¼ãƒ“ã‚¹ã€‚
  *
  * @author M.Ishida
  *

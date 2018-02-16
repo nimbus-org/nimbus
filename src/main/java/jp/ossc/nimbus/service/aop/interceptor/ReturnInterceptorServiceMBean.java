@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ReturnInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ReturnInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ReturnInterceptorService
@@ -43,108 +43,108 @@ public interface ReturnInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * —LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enabled —LŒø‚É‚·‚éê‡‚ÍAtrue
+     * @param enabled æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabled(boolean enabled);
     
     /**
-     * —LŒø/–³Œø‚ğ”»’è‚·‚éB<p>
+     * æœ‰åŠ¹/ç„¡åŠ¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isEnabled();
     
     /**
-     * ŒÄ‚Ño‚µî•ñ{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚É‘Î‚·‚éğŒ‚Æ–ß‚è’l‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * InvocationContext‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * å‘¼ã³å‡ºã—æƒ…å ±{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã«å¯¾ã™ã‚‹æ¡ä»¶ã¨æˆ»ã‚Šå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * InvocationContextã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param value –ß‚è’l
+     * @param condition æ¡ä»¶å¼
+     * @param value æˆ»ã‚Šå€¤
      */
     public void setReturnValue(String condition, Object value);
     
     /**
-     * ŒÄ‚Ño‚µî•ñ{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚É‘Î‚·‚éğŒ‚É‘Î‰‚·‚é–ß‚è’l‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æƒ…å ±{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã«å¯¾ã™ã‚‹æ¡ä»¶ã«å¯¾å¿œã™ã‚‹æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param condition ğŒ®
-     * @return –ß‚è’l
+     * @param condition æ¡ä»¶å¼
+     * @return æˆ»ã‚Šå€¤
      */
     public Object getReturnValue(String condition);
     
     /**
-     * –ß‚è’l‚ğİ’è‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param value –ß‚è’l
+     * @param value æˆ»ã‚Šå€¤
      */
     public void setReturnValue(Object value);
     
     /**
-     * –ß‚è’l‚ğæ“¾‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return –ß‚è’l
+     * @return æˆ»ã‚Šå€¤
      */
     public Object getReturnValue();
     
     /**
-     * ŒÄ‚Ño‚µî•ñ{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚É‘Î‚·‚éğŒ‚Æ–ß‚èƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * InvocationContext‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * å‘¼ã³å‡ºã—æƒ…å ±{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã«å¯¾ã™ã‚‹æ¡ä»¶ã¨æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * InvocationContextã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param name –ß‚èƒT[ƒrƒX–¼
+     * @param condition æ¡ä»¶å¼
+     * @param name æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setReturnServiceName(String condition, ServiceName name);
     
     /**
-     * ŒÄ‚Ño‚µî•ñ{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚É‘Î‚·‚éğŒ‚É‘Î‰‚·‚é–ß‚èƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æƒ…å ±{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã«å¯¾ã™ã‚‹æ¡ä»¶ã«å¯¾å¿œã™ã‚‹æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param condition ğŒ®
-     * @return –ß‚èƒT[ƒrƒX–¼
+     * @param condition æ¡ä»¶å¼
+     * @return æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getReturnServiceName(String condition);
     
     /**
-     * –ß‚èƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name –ß‚èƒT[ƒrƒX–¼
+     * @param name æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setReturnServiceName(ServiceName name);
     
     /**
-     * –ß‚èƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return –ß‚èƒT[ƒrƒX–¼
+     * @return æˆ»ã‚Šã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getReturnServiceName();
     
     /**
-     * –ß‚è’l‚ğƒ‰ƒbƒv‚·‚éÛ‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğİ’è‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹éš›ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒCƒ“ƒ^[ƒtƒF[ƒX
+     * @param clazz ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
      */
     public void setReturnInterfaceClass(Class clazz);
     
     /**
-     * –ß‚è’l‚ğƒ‰ƒbƒv‚·‚éÛ‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğæ“¾‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹éš›ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒ^[ƒtƒF[ƒX
+     * @return ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
      */
     public Class getReturnInterfaceClass();
     
     /**
-     * –ß‚è’l‚ğƒ‰ƒbƒv‚µ‚½ƒvƒƒLƒV‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’ãƒ©ãƒƒãƒ—ã—ãŸãƒ—ãƒ­ã‚­ã‚·ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainListServiceName(ServiceName name);
     
     /**
-     * –ß‚è’l‚ğƒ‰ƒbƒv‚µ‚½ƒvƒƒLƒV‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’ãƒ©ãƒƒãƒ—ã—ãŸãƒ—ãƒ­ã‚­ã‚·ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainListServiceName();
 }

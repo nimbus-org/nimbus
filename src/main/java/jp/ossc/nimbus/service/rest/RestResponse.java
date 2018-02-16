@@ -36,60 +36,60 @@ import java.io.IOException;
 import javax.servlet.http.*;
 
 /**
- * RESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class RestResponse{
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒXB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
      */
     protected HttpServletResponse response;
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object responseObject;
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒXB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     protected Class responseObjectClass;
     
     /**
-     * HTTPƒXƒe[ƒ^ƒXB<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã€‚<p>
      */
     protected int status = HttpServletResponse.SC_OK;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public RestResponse(HttpServletResponse response){
         this.response = response;
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒŒƒXƒ|ƒ“ƒX
+     * @return HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public HttpServletResponse getResponse(){
         return response;
     }
     
     /**
-     * ˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param status HTTPƒXƒe[ƒ^ƒX
+     * @param status HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public void setResult(int status){
         response.setStatus(status);
@@ -97,10 +97,10 @@ public class RestResponse{
     }
     
     /**
-     * ˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param status HTTPƒXƒe[ƒ^ƒX
-     * @param message ƒƒbƒZ[ƒW
+     * @param status HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void setResult(int status, String message) throws IOException{
         response.sendError(status, message);
@@ -108,38 +108,38 @@ public class RestResponse{
     }
     
     /**
-     * ˆ—Œ‹‰Ê‚ÌHTTPƒXƒe[ƒ^ƒX‚ğæ“¾‚·‚éB<p>
+     * å‡¦ç†çµæœã®HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒXƒe[ƒ^ƒX
+     * @return HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public int getResultStatus(){
         return status;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
+     * @param clazz ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
      */
     protected void setResponseObjectClass(Class clazz){
         responseObjectClass = clazz;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
      */
     public Class getResponseObjectClass(){
         return responseObjectClass;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
-     * @exception InstantiationException ¶¬‚É¸”s‚µ‚½ê‡
-     * @exception IllegalAccessException ˆø”‚È‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÉƒAƒNƒZƒX‚Å‚«‚È‚¢ê‡
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception InstantiationException ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IllegalAccessException å¼•æ•°ãªã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ããªã„å ´åˆ
      */
     public Object createResponseObject() throws InstantiationException, IllegalAccessException{
         responseObject = responseObjectClass == null ? null : responseObjectClass.newInstance();
@@ -147,10 +147,10 @@ public class RestResponse{
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param responseObj ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
-     * @exception IllegalArgumentException w’è‚µ‚½ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌŒ^‚ª•s³‚Èê‡
+     * @param responseObj ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹ãŒä¸æ­£ãªå ´åˆ
      */
     public void setResponseObject(Object responseObj) throws IllegalArgumentException{
         if(responseObj != null && responseObjectClass != null && !responseObjectClass.equals(responseObj.getClass())){
@@ -160,9 +160,9 @@ public class RestResponse{
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getResponseObject(){
         return responseObject;

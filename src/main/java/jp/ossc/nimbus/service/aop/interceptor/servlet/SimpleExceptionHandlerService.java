@@ -42,8 +42,8 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.log.Logger;
 
 /**
- * ŠÈˆÕ—áŠOƒnƒ“ƒhƒ‰ƒT[ƒrƒXB<p>
- * ƒƒOo—Í‚ÆƒWƒƒ[ƒiƒ‹o—Í‚ğs‚¤ŠÈˆÕ‚È—áŠOƒnƒ“ƒhƒ‰‚Å‚ ‚éB<br>
+ * ç°¡æ˜“ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ­ã‚°å‡ºåŠ›ã¨ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã†ç°¡æ˜“ãªä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -60,55 +60,55 @@ public class SimpleExceptionHandlerService extends ServiceBase
     protected ServiceName exceptionEditorFinderServiceName;
     protected EditorFinder exceptionEditorFinder;
     
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
     
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public void setLogMessageCode(String code){
         logMessageCode = code;
     }
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public String getLogMessageCode(){
         return logMessageCode;
     }
     
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public void setOutputStackTraceLog(boolean isOutput){
         isOutputStackTraceLog = isOutput;
     }
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public boolean isOutputStackTraceLog(){
         return isOutputStackTraceLog;
     }
     
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public void setExceptionJournalKey(String key){
         exceptionJournalKey = key;
     }
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public String getExceptionJournalKey(){
         return exceptionJournalKey;
     }
     
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public void setExceptionEditorFinderServiceName(ServiceName name){
         exceptionEditorFinderServiceName = name;
     }
-    // SimpleExceptionHandlerServiceMBean‚ÌJavaDoc
+    // SimpleExceptionHandlerServiceMBeanã®JavaDoc
     public ServiceName getExceptionEditorFinderServiceName(){
         return exceptionEditorFinderServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(journalServiceName != null){

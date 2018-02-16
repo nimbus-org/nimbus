@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.keepalive;
 import jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker;
 
 /**
- * ƒŠƒ\[ƒX—˜—p—Ê‚ª­‚È‚¢{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker}‚ğ‘I‘ğ‚·‚é{@link KeepAliveCheckerSelector}À‘•ƒNƒ‰ƒXB<p>
- * {@link #getSelectableCheckers()}‚Åæ“¾‚Å‚«‚é‘I‘ğ‰Â”\‚ÈKeepAliveCheckInvoker”z—ñ‚Ì‚¤‚¿AƒŠƒ\[ƒX—˜—p—Ê‚ªÅ‚à­‚È‚¢KeepAliveCheckInvoker‚ğ‘I‘ğ‚·‚éB<br>
+ * ãƒªã‚½ãƒ¼ã‚¹åˆ©ç”¨é‡ãŒå°‘ãªã„{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker}ã‚’é¸æŠã™ã‚‹{@link KeepAliveCheckerSelector}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * {@link #getSelectableCheckers()}ã§å–å¾—ã§ãã‚‹é¸æŠå¯èƒ½ãªKeepAliveCheckInvokeré…åˆ—ã®ã†ã¡ã€ãƒªã‚½ãƒ¼ã‚¹åˆ©ç”¨é‡ãŒæœ€ã‚‚å°‘ãªã„KeepAliveCheckInvokerã‚’é¸æŠã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -45,11 +45,11 @@ public class ResourceAvailableKeepAliveCheckerSelectorService
     private static final long serialVersionUID = -7867927352931765806L;
 
     /**
-     * ƒŠƒ\[ƒX—˜—p—Ê‚ªÅ‚à­‚È‚¢{@link KeepAliveCheckInvoker}‚ğæ“¾‚·‚éB<p>
-     * {@link #getSelectableCheckers()}‚Åæ“¾‚Å‚«‚é‘I‘ğ‰Â”\‚ÈKeepAliveCheckInvoker”z—ñ‚Ì‚¤‚¿AƒŠƒ\[ƒX—˜—p—Ê‚ªÅ‚à­‚È‚¢KeepAliveCheckInvoker‚ğ‘I‘ğ‚·‚éB<br>
-     * {@link #getSelectableCheckers()}‚Åæ“¾‚Å‚«‚é‘I‘ğ‰Â”\‚ÈKeepAliveCheckInvoker”z—ñ‚ª’·‚³0‚Ì”z—ñ‚Ìê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * ãƒªã‚½ãƒ¼ã‚¹åˆ©ç”¨é‡ãŒæœ€ã‚‚å°‘ãªã„{@link KeepAliveCheckInvoker}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getSelectableCheckers()}ã§å–å¾—ã§ãã‚‹é¸æŠå¯èƒ½ãªKeepAliveCheckInvokeré…åˆ—ã®ã†ã¡ã€ãƒªã‚½ãƒ¼ã‚¹åˆ©ç”¨é‡ãŒæœ€ã‚‚å°‘ãªã„KeepAliveCheckInvokerã‚’é¸æŠã™ã‚‹ã€‚<br>
+     * {@link #getSelectableCheckers()}ã§å–å¾—ã§ãã‚‹é¸æŠå¯èƒ½ãªKeepAliveCheckInvokeré…åˆ—ãŒé•·ã•0ã®é…åˆ—ã®å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      * 
-     * @return KeepAliveCheckInvokerƒIƒuƒWƒFƒNƒg
+     * @return KeepAliveCheckInvokerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public KeepAliveChecker selectChecker(){
         final KeepAliveChecker[] checkers = getSelectableCheckers();

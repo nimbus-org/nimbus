@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.websocket.AbstractMessageHandlerFactoryServiceMBean;
 
 /**
- * {@link AbstractPublishMessageHandlerFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link AbstractPublishMessageHandlerFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -43,45 +43,45 @@ import jp.ossc.nimbus.service.websocket.AbstractMessageHandlerFactoryServiceMBea
 public interface AbstractPublishMessageHandlerFactoryServiceMBean extends AbstractMessageHandlerFactoryServiceMBean {
 
     /**
-     * ƒƒbƒZ[ƒW‚ÌW”zM‚ğŠÇ—‚·‚éMessageDispatcher‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é›†é…ä¿¡ã‚’ç®¡ç†ã™ã‚‹MessageDispatcherã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageDispatcherServiceName();
 
     /**
-     * ƒƒbƒZ[ƒW‚ÌW”zM‚ğŠÇ—‚·‚éMessageDispatcher‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é›†é…ä¿¡ã‚’ç®¡ç†ã™ã‚‹MessageDispatcherã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param name ƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageDispatcherServiceName(ServiceName name);
 
     /**
-     * ƒf[ƒ^‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éÅ‘åŠÔ‚ğæ“¾‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹æœ€å¤§æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒoƒbƒtƒ@ƒŠƒ“ƒOÅ‘åŠÔ
+     * @return ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°æœ€å¤§æ™‚é–“
      */
     public long getBufferingMaxTime();
 
     /**
-     * ƒf[ƒ^‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éÅ‘åŠÔ‚ğİ’è‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹æœ€å¤§æ™‚é–“ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param time ƒoƒbƒtƒ@ƒŠƒ“ƒOÅ‘åŠÔ
+     * @param time ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°æœ€å¤§æ™‚é–“
      */
     public void setBufferingMaxTime(long time);
 
 
     /**
-     * ƒf[ƒ^‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éÅ‘å”‚ğæ“¾‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹æœ€å¤§æ•°ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒoƒbƒtƒ@ƒŠƒ“ƒOÅ‘å”
+     * @return ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°æœ€å¤§æ•°
      */
     public int getBufferingMaxSize();
 
     /**
-     * ƒf[ƒ^‚ğƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éÅ‘å”‚ğİ’è‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹æœ€å¤§æ•°ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param size ƒoƒbƒtƒ@ƒŠƒ“ƒOÅ‘å”
+     * @param size ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°æœ€å¤§æ•°
      */
     public void setBufferingMaxSize(int size);
 }

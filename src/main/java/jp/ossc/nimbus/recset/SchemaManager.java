@@ -32,23 +32,23 @@
 package jp.ossc.nimbus.recset;
 import java.util.*;
 /**
- * ƒXƒL[ƒ}ŠÇ—ƒNƒ‰ƒX<p>
- * ƒXƒL[ƒ}‚ÌW‡‚ğŠÇ—‚·‚éB
+ * ã‚¹ã‚­ãƒ¼ãƒç®¡ç†ã‚¯ãƒ©ã‚¹<p>
+ * ã‚¹ã‚­ãƒ¼ãƒã®é›†åˆã‚’ç®¡ç†ã™ã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class SchemaManager {
 	
-	/** ƒXƒL[ƒ}ŠÇ——pHashtable */
+	/** ã‚¹ã‚­ãƒ¼ãƒç®¡ç†ç”¨Hashtable */
 	static private Hashtable mSchemaHash = new Hashtable();
 	
-	/** XVƒXƒL[ƒ}ŠÇ——pHashtable */
+	/** æ›´æ–°ã‚¹ã‚­ãƒ¼ãƒç®¡ç†ç”¨Hashtable */
 	static private Hashtable mGoneSchemaHash = new Hashtable();
 	
 	/**
-	 * w’è‚³‚ê‚½ƒXƒL[ƒ}•¶š—ñ‚ÌRowSchema‚ğ‰“š‚µ‚Ü‚·B
-	 * @param schema ƒXƒL[ƒ}•¶š—ñ
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã®RowSchemaã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
 	 * @return RowSchema  
 	 */
 	static public RowSchema findRowSchema(String schema) {
@@ -63,9 +63,9 @@ public class SchemaManager {
 	}
 	
 	/**
-	 * w’è‚³‚ê‚½RowSchema‚ÌXV—pRowSchema‚ğ‰“š‚µ‚Ü‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸRowSchemaã®æ›´æ–°ç”¨RowSchemaã‚’å¿œç­”ã—ã¾ã™ã€‚
 	 * @param schema RowSchema
-	 * @return XV—pRowSchema
+	 * @return æ›´æ–°ç”¨RowSchema
 	 */
 	static public RowSchema findGoneRowSchema(RowSchema schema) {
 			RowSchema ret = (RowSchema) mGoneSchemaHash.get(schema);

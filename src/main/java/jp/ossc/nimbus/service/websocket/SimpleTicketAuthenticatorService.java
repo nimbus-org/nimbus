@@ -50,7 +50,7 @@ import jp.ossc.nimbus.util.crypt.OverLimitExpiresException;
 import jp.ossc.nimbus.util.crypt.UnexpectedCryptException;
 
 /**
- * ŠÈˆÕ”FØƒT[ƒrƒXB
+ * ç°¡æ˜“èªè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -189,13 +189,13 @@ public class SimpleTicketAuthenticatorService extends ServiceBase implements Sim
 
     public AuthResult login(HttpServletRequest req, HttpServletResponse res) throws AuthenticateException {
 
-        // Œ‹‰ÊƒIƒuƒWƒFƒNƒg
+        // çµæœã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
         AuthResult result = new AuthResult();
 
         String id = req.getParameter(idKey);
         result.setId(id);
         String ticket = req.getParameter(ticketKey);
-        // ID,ƒ`ƒPƒbƒg‚ªnull‚Ìê‡‚ÍNG
+        // ID,ãƒã‚±ãƒƒãƒˆãŒnullã®å ´åˆã¯NG
         if (id == null) {
             throw new AuthenticateException("id is null");
         }
@@ -221,7 +221,7 @@ public class SimpleTicketAuthenticatorService extends ServiceBase implements Sim
 
     public boolean handshake(String id, String ticket) throws AuthenticateException {
         try {
-            // ID,ƒ`ƒPƒbƒg‚ªnull‚Ìê‡‚ÍNG
+            // ID,ãƒã‚±ãƒƒãƒˆãŒnullã®å ´åˆã¯NG
             if (id == null) {
                 throw new AuthenticateException("id is null");
             }

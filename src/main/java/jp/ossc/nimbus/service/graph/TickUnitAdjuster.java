@@ -34,12 +34,12 @@ package jp.ossc.nimbus.service.graph;
 import org.jfree.chart.plot.XYPlot;
 
 /**
- * ²‚Ì–Ú·‚è’²ßB<p>
+ * è»¸ã®ç›®ç››ã‚Šèª¿ç¯€ã€‚<p>
  */
 public interface TickUnitAdjuster {
 
     /**
-     * ²‚Ì–Ú·‚è‚ğ’²ß‚·‚éB<p>
+     * è»¸ã®ç›®ç››ã‚Šã‚’èª¿ç¯€ã™ã‚‹ã€‚<p>
      *
      * @param xyPlot XYPlot
      */

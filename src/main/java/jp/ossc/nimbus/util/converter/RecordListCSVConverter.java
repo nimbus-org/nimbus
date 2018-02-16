@@ -38,53 +38,53 @@ import jp.ossc.nimbus.io.*;
 import jp.ossc.nimbus.beans.dataset.*;
 
 /**
- * ƒŒƒR[ƒhƒŠƒXƒgÌCSVƒRƒ“ƒo[ƒ^B<p>
- * ’A‚µAƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÍAƒTƒ|[ƒg‚µ‚È‚¢B<br>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
+ * ä½†ã—ã€ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã¯ã€ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<br>
  * 
  * @author M.Takata
  */
 public class RecordListCSVConverter implements BindingStreamConverter, StreamStringConverter, Cloneable{
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg¨CSV‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ†’CSVã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int RECORDLIST_TO_CSV = OBJECT_TO_STREAM;
     
     /**
-     * CSV¨ƒŒƒR[ƒhƒŠƒXƒg‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * CSVâ†’ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int CSV_TO_RECORDLIST = STREAM_TO_OBJECT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg¨CSV•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ†’CSVå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToStream;
     
     /**
-     * CSV¨ƒŒƒR[ƒhƒŠƒXƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * CSVâ†’ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToObject;
     
     /**
-     * ƒXƒL[ƒ}’è‹`‚ ‚è‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒŒƒR[ƒhƒŠƒXƒgÌCSV•ÏŠ·‚ğs‚¤Û‚ÉACSV‚ÉƒXƒL[ƒ}’è‹`‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ‚ ‚ç‚í‚·Btrue‚Ìê‡AƒXƒL[ƒ}’è‹`‚ ‚èBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã‚ã‚Šã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVå¤‰æ›ã‚’è¡Œã†éš›ã«ã€CSVã«ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ã‚ã‚‰ã‚ã™ã€‚trueã®å ´åˆã€ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã‚ã‚Šã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isExistsSchema;
     
     /**
-     * CSVƒwƒbƒ_‚ ‚è‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒŒƒR[ƒhƒŠƒXƒgÌCSV•ÏŠ·‚ğs‚¤Û‚ÉACSV‚Éƒwƒbƒ_‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ‚ ‚ç‚í‚·Btrue‚Ìê‡Aƒwƒbƒ_‚ ‚èBƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * CSVãƒ˜ãƒƒãƒ€ã‚ã‚Šã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVå¤‰æ›ã‚’è¡Œã†éš›ã«ã€CSVã«ãƒ˜ãƒƒãƒ€ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ã‚ã‚‰ã‚ã™ã€‚trueã®å ´åˆã€ãƒ˜ãƒƒãƒ€ã‚ã‚Šã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isExistsHeader;
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚É‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚·‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã«å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ã€‚<br>
      */
     protected boolean isIgnoreUnknownProperty;
     
@@ -101,16 +101,16 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     protected CSVWriter csvWriter;
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg¨CSV•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ†’CSVå¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RecordListCSVConverter(){
         this(RECORDLIST_TO_CSV);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #RECORDLIST_TO_CSV
      * @see #CSV_TO_RECORDLIST
      */
@@ -119,9 +119,9 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #RECORDLIST_TO_CSV
      * @see #CSV_TO_RECORDLIST
      */
@@ -130,9 +130,9 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -140,36 +140,36 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg¨CSV•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ†’CSVå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         characterEncodingToStream = encoding;
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg¨CSV•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ†’CSVå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToStream(){
         return characterEncodingToStream;
     }
     
     /**
-     * CSV¨ƒŒƒR[ƒhƒŠƒXƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * CSVâ†’ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         characterEncodingToObject = encoding;
     }
     
     /**
-     * CSV¨ƒŒƒR[ƒhƒŠƒXƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * CSVâ†’ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToObject(){
         return characterEncodingToObject;
@@ -204,213 +204,213 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒgÌCSV•ÏŠ·‚ğs‚¤Û‚ÉACSV‚ÉƒXƒL[ƒ}’è‹`‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVå¤‰æ›ã‚’è¡Œã†éš›ã«ã€CSVã«ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isExists ƒXƒL[ƒ}’è‹`‚ª‚ ‚éê‡‚Ítrue
+     * @param isExists ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒã‚ã‚‹å ´åˆã¯true
      */
     public void setExistsSchema(boolean isExists){
         isExistsSchema = isExists;
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒgÌCSV•ÏŠ·‚ğs‚¤Û‚ÉACSV‚ÉƒXƒL[ƒ}’è‹`‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVå¤‰æ›ã‚’è¡Œã†éš›ã«ã€CSVã«ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ƒXƒL[ƒ}’è‹`‚ª‚ ‚é
+     * @return trueã®å ´åˆã‚¹ã‚­ãƒ¼ãƒå®šç¾©ãŒã‚ã‚‹
      */
     public boolean isExistsSchema(){
         return isExistsSchema;
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒgÌCSV•ÏŠ·‚ğs‚¤Û‚ÉACSV‚Éƒwƒbƒ_‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVå¤‰æ›ã‚’è¡Œã†éš›ã«ã€CSVã«ãƒ˜ãƒƒãƒ€ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isExists ƒwƒbƒ_‚ª‚ ‚éê‡‚Ítrue
+     * @param isExists ãƒ˜ãƒƒãƒ€ãŒã‚ã‚‹å ´åˆã¯true
      */
     public void setExistsHeader(boolean isExists){
         isExistsHeader = isExists;
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒgÌCSV•ÏŠ·‚ğs‚¤Û‚ÉACSV‚Éƒwƒbƒ_‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆâ‡”CSVå¤‰æ›ã‚’è¡Œã†éš›ã«ã€CSVã«ãƒ˜ãƒƒãƒ€ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ƒwƒbƒ_‚ª‚ ‚é
+     * @return trueã®å ´åˆãƒ˜ãƒƒãƒ€ãŒã‚ã‚‹
      */
     public boolean isExistsHeader(){
         return isExistsHeader;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚É‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚È‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã«å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ãªã‚‹ã€‚<br>
      * 
-     * @param isIgnore true‚Ìê‡A–³‹‚·‚é
+     * @param isIgnore trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public void setIgnoreUnknownProperty(boolean isIgnore){
         isIgnoreUnknownProperty = isIgnore;
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚É‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã«å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreUnknownProperty(){
         return isIgnoreUnknownProperty;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ƒZƒpƒŒ[ƒ^
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setSeparator(char separator){
         this.separator = separator;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒpƒŒ[ƒ^
+     * @return ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public char getSeparator(){
          return separator;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶š‚ğİ’è‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param escape ƒGƒXƒP[ƒv•¶š
+     * @param escape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
      */
     public void setSeparatorEscape(char escape){
         separatorEscape = escape;
     }
     
     /**
-     * ƒZƒpƒŒ[ƒ^‚ÌƒGƒXƒP[ƒv•¶š‚ğæ“¾‚·‚éB<p>
+     * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒXƒP[ƒv•¶š
+     * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—
      */
     public char getSeparatorEscape(){
          return separatorEscape;
     }
     
     /**
-     * ‰üsƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ‰üsƒZƒpƒŒ[ƒ^
+     * @param separator æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setLineSeparator(String separator){
         this.lineSeparator = separator;
     }
     
     /**
-     * ‰üsƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰üsƒZƒpƒŒ[ƒ^
+     * @return æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public String getLineSeparator(){
          return lineSeparator;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ğİ’è‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enclosure ˆÍ‚İ•¶š
+     * @param enclosure å›²ã¿æ–‡å­—
      */
     public void setEnclosure(char enclosure){
         this.enclosure = enclosure;
     }
     
     /**
-     * ˆÍ‚İ•¶š‚ğæ“¾‚·‚éB<p>
+     * å›²ã¿æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆÍ‚İ•¶š
+     * @return å›²ã¿æ–‡å­—
      */
     public char getEnclosure(){
          return enclosure;
     }
     
     /**
-     * CSV‚Ì—v‘f‚ğˆÍ‚İ•¶š‚ÅˆÍ‚Ş‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅˆÍ‚Ü‚È‚¢B<br>
+     * CSVã®è¦ç´ ã‚’å›²ã¿æ–‡å­—ã§å›²ã‚€ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å›²ã¾ãªã„ã€‚<br>
      *
-     * @param isEnclose ˆÍ‚İ•¶š‚ÅˆÍ‚Şê‡true
+     * @param isEnclose å›²ã¿æ–‡å­—ã§å›²ã‚€å ´åˆtrue
      */
     public void setEnclose(boolean isEnclose){
         this.isEnclose = isEnclose;
     }
     
     /**
-     * CSV‚Ì—v‘f‚ğˆÍ‚İ•¶š‚ÅˆÍ‚Ş‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * CSVã®è¦ç´ ã‚’å›²ã¿æ–‡å­—ã§å›²ã‚€ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AˆÍ‚İ•¶š‚ÅˆÍ‚Ş
+     * @return trueã®å ´åˆã€å›²ã¿æ–‡å­—ã§å›²ã‚€
      */
     public boolean isEnclose(){
          return isEnclose;
     }
     
     /**
-     * null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍANullPointerException‚ª”­¶‚·‚éB<br>
+     * nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€NullPointerExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚<br>
      *
-     * @param value •¶š—ñ
+     * @param value æ–‡å­—åˆ—
      */
     public void setNullValue(String value){
         nullValue = value;
     }
     
     /**
-     * null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ
+     * @return æ–‡å­—åˆ—
      */
     public String getNullValue(){
         return nullValue;
     }
     
     /**
-     * ‹ós‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ‹ós‚ğ–³‹‚·‚é‚æ‚¤‚Éİ’è‚µ‚½ê‡A‹ós‚Ís”‚Æ‚µ‚Ä‚àƒJƒEƒ“ƒg‚³‚ê‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³‹‚µ‚È‚¢B<br>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‚ˆã†ã«è¨­å®šã—ãŸå ´åˆã€ç©ºè¡Œã¯è¡Œæ•°ã¨ã—ã¦ã‚‚ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param isIgnore ‹ós‚ğ–³‹‚·‚éê‡true
+     * @param isIgnore ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreEmptyLine(boolean isIgnore){
         isIgnoreEmptyLine = isIgnore;
     }
     
     /**
-     * ‹ós‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‹ós‚ğ–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç©ºè¡Œã‚’ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreEmptyLine(){
          return isIgnoreEmptyLine;
     }
     
     /**
-     * s‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å–³‹‚µ‚È‚¢B<br>
+     * è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param isIgnore s‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚éê‡true
+     * @param isIgnore è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹å ´åˆtrue
      */
     public void setIgnoreLineEndSeparator(boolean isIgnore){
         isIgnoreLineEndSeparator = isIgnore;
     }
     
     /**
-     * s‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡As‚ÌÅŒã‚ÌƒZƒpƒŒ[ƒ^‚ğ–³‹‚·‚é
+     * @return trueã®å ´åˆã€è¡Œã®æœ€å¾Œã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreLineEndSeparator(){
          return isIgnoreLineEndSeparator;
     }
     
     /**
-     * CSVƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ŞÛ‚Ég—p‚·‚é{@link CSVReader}‚ğİ’è‚·‚éB<p>
+     * CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€éš›ã«ä½¿ç”¨ã™ã‚‹{@link CSVReader}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param reader CSVReader
      */
@@ -419,7 +419,7 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * CSVƒtƒ@ƒCƒ‹‚ğ‘‚«‚ŞÛ‚Ég—p‚·‚é{@link CSVWriter}‚ğİ’è‚·‚éB<p>
+     * CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãè¾¼ã‚€éš›ã«ä½¿ç”¨ã™ã‚‹{@link CSVWriter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param writer CSVWriter
      */
@@ -428,11 +428,11 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -459,11 +459,11 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚©‚çCSVƒXƒgƒŠ[ƒ€‚Ö•ÏŠ·‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‹ã‚‰CSVã‚¹ãƒˆãƒªãƒ¼ãƒ ã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒŒƒR[ƒhƒŠƒXƒg
-     * @return •ÏŠ·Œ‹‰Ê‚ğ“Ç‚İæ‚é“ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @return å¤‰æ›çµæœã‚’èª­ã¿å–ã‚‹å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public InputStream convertToStream(Object obj) throws ConvertException{
         if(obj instanceof Record){
@@ -541,11 +541,11 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * CSVƒXƒgƒŠ[ƒ€‚©‚çƒŒƒR[ƒhƒŠƒXƒg‚Ö•ÏŠ·‚·‚éB<p>
+     * CSVã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         return toRecordList(is);
@@ -671,12 +671,12 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ö•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      * 
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @param returnType •ÏŠ·‘ÎÛ‚ÌƒŒƒR[ƒhƒŠƒXƒg
-     * @return •ÏŠ·‚³‚ê‚½ƒŒƒR[ƒhƒŠƒXƒg
-     * @throws ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param returnType å¤‰æ›å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @return å¤‰æ›ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @throws ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is, Object returnType)
      throws ConvertException{

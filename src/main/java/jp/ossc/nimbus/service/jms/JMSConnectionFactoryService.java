@@ -40,10 +40,10 @@ import jp.ossc.nimbus.service.cache.*;
 import jp.ossc.nimbus.service.keepalive.*;
 
 /**
- * JMSƒRƒlƒNƒVƒ‡ƒ“ƒZƒbƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * javax.jms.ConnectionFactory‚ğƒ‰ƒbƒv‚µAJMSƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬‚ğŠÈ—ª‰»‚·‚éB<br>
- * ‚Ü‚½A¶¬‚³‚ê‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ÌŠJ•ú˜R‚ê‚ğ–h~‚µ‚½‚èAJMSƒT[ƒo‚Ìƒ_ƒEƒ“‚ÉA•…‚Á‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ğÄÚ‘±‚·‚é‹@”\‚ğ‚ÂB<br>
- * Queue‚ÆTopi‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“‡‚³‚ê‚½JMS 1.1‚É‘Î‰‚µ‚Ä‚¢‚Ü‚·BJMS 1.1ˆÈ‘O‚Ìƒo[ƒWƒ‡ƒ“‚Åg—p‚·‚éê‡‚É‚ÍAƒTƒuƒNƒ‰ƒX‚Ì{@link JMSQueueConnectionFactoryService}‚âA{@link JMSTopicConnectionFactoryService}‚ğg—p‚µ‚Ä‰º‚³‚¢B<br>
+ * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚»ãƒƒã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * javax.jms.ConnectionFactoryã‚’ãƒ©ãƒƒãƒ—ã—ã€JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã‚’ç°¡ç•¥åŒ–ã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€ç”Ÿæˆã•ã‚ŒãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®é–‹æ”¾æ¼ã‚Œã‚’é˜²æ­¢ã—ãŸã‚Šã€JMSã‚µãƒ¼ãƒã®ãƒ€ã‚¦ãƒ³æ™‚ã«ã€è…ã£ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å†æ¥ç¶šã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
+ * Queueã¨Topiã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±åˆã•ã‚ŒãŸJMS 1.1ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚JMS 1.1ä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ä½¿ç”¨ã™ã‚‹å ´åˆã«ã¯ã€ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®{@link JMSQueueConnectionFactoryService}ã‚„ã€{@link JMSTopicConnectionFactoryService}ã‚’ä½¿ç”¨ã—ã¦ä¸‹ã•ã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -78,175 +78,175 @@ public class JMSConnectionFactoryService extends ServiceBase
     protected int autoReconnectMaxRetryCount;
     protected long autoReconnectRetryInterval = 1000;
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionManagement(boolean isManaged){
         isConnectionManagement = isManaged;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public boolean isConnectionManagement(){
         return isConnectionManagement;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setSingleConnection(boolean isSingle){
         isSingleConnection = isSingle;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public boolean isSingleConnection(){
         return isSingleConnection;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionFactoryName(String name){
         connectionFactoryName = name;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public String getConnectionFactoryName(){
         return connectionFactoryName;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setUserName(String name){
         userName = name;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public String getUserName(){
         return userName;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setPassword(String passwd){
         password = passwd;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public String getPassword(){
         return password;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionKey(String key){
         connectionKey = key;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public String getConnectionKey(){
         return connectionKey;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionCacheMapServiceName(ServiceName name){
         connectionCacheMapServiceName = name;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getConnectionCacheMapServiceName(){
         return connectionCacheMapServiceName;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setAutoReconnectMode(int mode){
         autoReconnectMode = mode;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public int getAutoReconnectMode(){
         return autoReconnectMode;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setJndiKeepAliveCheckerServiceName(ServiceName name){
         jndiKeepAliveCheckerServiceName = name;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getJndiKeepAliveCheckerServiceName(){
         return jndiKeepAliveCheckerServiceName;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setAutoReconnectErrorLogMessageId(String id){
         autoReconnectErrorLogMessageId = id;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public String getAutoReconnectErrorLogMessageId(){
         return autoReconnectErrorLogMessageId;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setStartConnection(boolean isStart){
         isStartConnection = isStart;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public boolean isStartConnection(){
         return isStartConnection;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setAutoReconnectMaxRetryCount(int count){
         autoReconnectMaxRetryCount = count;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public int getAutoReconnectMaxRetryCount(){
         return autoReconnectMaxRetryCount;
     }
     
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public void setAutoReconnectRetryInterval(long interval){
         autoReconnectRetryInterval = interval;
     }
-    // JMSConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JMSConnectionFactoryServiceMBeanã®JavaDoc
     public long getAutoReconnectRetryInterval(){
         return autoReconnectRetryInterval;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½KeepAliveCheckerƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚Ì¶‘¶Šm”F‚ğs‚¤B<br>
+     * {@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸKeepAliveCheckerã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã®ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†ã€‚<br>
      *
-     * @param checker KeepAliveCheckerƒT[ƒrƒX
+     * @param checker KeepAliveCheckerã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiKeepAliveChecker(KeepAliveChecker checker) {
         this.jndiKeepAliveChecker = checker;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚©‚çjavax.jms.Destination‚ğlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã‹ã‚‰javax.jms.Destinationã‚’lookupã™ã‚‹ã€‚<br>
      *
-     * @param jndiFinder JndiFinderƒT[ƒrƒX
+     * @param jndiFinder JndiFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiFinder(JndiFinder jndiFinder) {
         this.jndiFinder = jndiFinder;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½CacheMapƒT[ƒrƒX‚ğg‚Á‚ÄA¶¬‚µ‚½Connection‚ğƒLƒƒƒbƒVƒ…‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸCacheMapã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€ç”Ÿæˆã—ãŸConnectionã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚<br>
      *
-     * @param connectionCache CacheMapƒT[ƒrƒX
+     * @param connectionCache CacheMapã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setCacheMap(CacheMap connectionCache) {
         this.connectionCache = connectionCache;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         connections = new HashSet();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(jndiFinderServiceName != null) {
@@ -283,9 +283,9 @@ public class JMSConnectionFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         connectionFactory = null;
@@ -321,21 +321,21 @@ public class JMSConnectionFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         connections = null;
     }
     
-    // JMSConnectionFactory‚ÌJavaDoc
+    // JMSConnectionFactoryã®JavaDoc
     public synchronized Connection getConnection()
      throws JMSConnectionCreateException{
          return getConnection(userName, password);
     }
     
-    // JMSConnectionFactory‚ÌJavaDoc
+    // JMSConnectionFactoryã®JavaDoc
     public synchronized Connection getConnection(String user, String pwd)
      throws JMSConnectionCreateException{
         if(connectionFactory == null){
@@ -431,10 +431,10 @@ public class JMSConnectionFactoryService extends ServiceBase
     }
     
     /**
-     * Connection‚ğƒLƒƒƒbƒVƒ…‚µ‚Ä‚¢‚é‚ÉAƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½Connection‚ğclose‚·‚éB<br>
+     * Connectionã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸConnectionã‚’closeã™ã‚‹ã€‚<br>
      *
-     * @param ref íœ‚³‚ê‚éƒLƒƒƒbƒVƒ…QÆ
+     * @param ref å‰Šé™¤ã•ã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         final Connection con = (Connection)ref.get();

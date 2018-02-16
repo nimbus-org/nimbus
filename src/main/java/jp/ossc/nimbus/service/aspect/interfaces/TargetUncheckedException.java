@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.aspect.interfaces;
 
 /**
- * ƒ‹[ƒgÀsƒƒ\ƒbƒhƒVƒXƒeƒ€—áŠO<p>
+ * ãƒ«ãƒ¼ãƒˆå®Ÿè¡Œãƒ¡ã‚½ãƒƒãƒ‰ã‚·ã‚¹ãƒ†ãƒ ä¾‹å¤–<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -44,31 +44,31 @@ public class TargetUncheckedException extends Exception {
     private static final long serialVersionUID = 9159492912284342111L;
     
     /**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public TargetUncheckedException() {
 		super();
 	}
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
-	 * @param arg0	—áŠOƒƒbƒZ[ƒW
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
+	 * @param arg0	ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 */
 	public TargetUncheckedException(String arg0) {
 		super(arg0);
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
-	 * @param arg0	ª–{—áŠO
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
+	 * @param arg0	æ ¹æœ¬ä¾‹å¤–
 	 */
 	public TargetUncheckedException(Throwable arg0) {
 		super(arg0);
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
-	 * @param arg0	—áŠOƒƒbƒZ[ƒW
-	 * @param arg1	ª–{—áŠO
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
+	 * @param arg0	ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 * @param arg1	æ ¹æœ¬ä¾‹å¤–
 	 */
 	public TargetUncheckedException(String arg0, Throwable arg1) {
 		super(arg0, arg1);

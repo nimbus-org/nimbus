@@ -33,46 +33,46 @@ package jp.ossc.nimbus.service.properties;
 import jp.ossc.nimbus.core.* ;
 //
 /**
- *	ƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒVƒ…‚·‚éƒtƒ@ƒNƒgƒŠŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ *	ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ã‚·ãƒ¥ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  *	@author	Hirotaka.Nakano
- *	@version	1.00 ì¬F2003.01.01 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003.01.01 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface ResourceBundlePropertiesFactoryServiceMBean extends ServiceBaseMBean {
 	//
 	static final public String TIME_FORMAT = "yyyy.MM.dd hh:mm:ss" ; //$NON-NLS-1$
 	//
 	/**
-	 *	ƒvƒƒpƒeƒB‚ÌƒNƒ‰ƒXƒpƒX‚ğİ’è‚·‚é<BR>
-	 *	@param	classPath w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@param	classPath æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public void setClassPath(String classPath) ;
 	/**
-	 * ƒvƒƒpƒeƒB‚ÌƒNƒ‰ƒXƒpƒX‚ğo—Í‚·‚éB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @return String
 	 */
 	public String getClassPath() ;
 	//
 	/**
-	 *	‰Šú‰»ˆ—<BR>
-	 *	@param	time w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	åˆæœŸåŒ–å‡¦ç†<BR>
+	 *	@param	time æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public void setRefreshPlanTime(String time) ;
 	//
 	/**
-	 *	‰Šú‰»ˆ—<BR>
+	 *	åˆæœŸåŒ–å‡¦ç†<BR>
 	 */
 	public void refreshNow();
 	//
 	/**
-	 *	‰Šú‰»ˆ—<BR>
-	 *	@return w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	åˆæœŸåŒ–å‡¦ç†<BR>
+	 *	@return æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public String getRefreshedTime();
 	//
 	/**
-	 *	‰Šú‰»ˆ—<BR>
-	 *	@return w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	åˆæœŸåŒ–å‡¦ç†<BR>
+	 *	@return æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public String getRefreshPlanTime();
 	/**

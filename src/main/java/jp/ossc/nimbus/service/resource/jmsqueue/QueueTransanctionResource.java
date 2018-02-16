@@ -39,20 +39,20 @@ import jp.ossc.nimbus.service.semaphore.*;
 /**
  *    
  *    @author    y-tokuda
- *    @version    1.00 ì¬F2003/10/24| y-tokuda<BR>
- *                XVF
+ *    @version    1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *                æ›´æ–°ï¼š
  */
 public class QueueTransanctionResource implements TransactionResource {
-    //ƒƒ“ƒo•Ï”
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
     /** QueueSession */
     private QueueSession mSession = null;
     /** QueueConnection */
     private QueueConnection mQueueConnection = null;
-    /** ƒZƒ}ƒtƒH */
+    /** ã‚»ãƒãƒ•ã‚© */
     private Semaphore mSemaphore;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */    
     QueueTransanctionResource(QueueSession session,QueueConnection conn,Semaphore sem){
         mSession = session;
@@ -61,7 +61,7 @@ public class QueueTransanctionResource implements TransactionResource {
     }
 
     /**
-     * ƒRƒ~ƒbƒgBJMSException‚ª”­¶‚µ‚½‚çAServiceException‚ğƒXƒ[‚·‚éB
+     * ã‚³ãƒŸãƒƒãƒˆã€‚JMSExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã€ServiceExceptionã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹ã€‚
      */
     public void commit() throws JMSException  {
         if(mSession.getTransacted()){
@@ -70,7 +70,7 @@ public class QueueTransanctionResource implements TransactionResource {
     }
 
     /**
-     * ƒ[ƒ‹ƒoƒbƒNBJMSException‚ª”­¶‚µ‚½‚çAServiceException‚ğƒXƒ[‚·‚éB
+     * ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€‚JMSExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã€ServiceExceptionã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹ã€‚
      */
     public void rollback() throws JMSException {
         if(mSession.getTransacted()){
@@ -79,7 +79,7 @@ public class QueueTransanctionResource implements TransactionResource {
     }
 
     /**
-     * ƒNƒ[ƒYBJMSException‚ª”­¶‚µ‚½‚çAServiceException‚ğƒXƒ[‚·‚éB
+     * ã‚¯ãƒ­ãƒ¼ã‚ºã€‚JMSExceptionãŒç™ºç”Ÿã—ãŸã‚‰ã€ServiceExceptionã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹ã€‚
      */
     public void close() throws JMSException {
         try{
@@ -91,15 +91,15 @@ public class QueueTransanctionResource implements TransactionResource {
         }
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.jmsresource.TransanctionObject#getObject()
      */
     public Object getObject() {
-        // TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+        // TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
         return mSession;
     }
     /**
-     * QueueConnectionæ“¾ƒƒ\ƒbƒh
+     * QueueConnectionå–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
      * @return QueueConnection
      */
     public QueueConnection getConnectionObject(){

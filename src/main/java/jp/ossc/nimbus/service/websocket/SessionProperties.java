@@ -36,7 +36,7 @@ import java.util.Map;
 import javax.websocket.Session;
 
 /**
- * WebSocket‚ÌƒZƒbƒVƒ‡ƒ“ã‚Éî•ñ‚ğ•Û‚·‚é‚½‚ß‚ÌƒNƒ‰ƒXB
+ * WebSocketã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ä¸Šã«æƒ…å ±ã‚’ä¿æŒã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -44,7 +44,7 @@ import javax.websocket.Session;
 public class SessionProperties implements java.io.Serializable {
 
     /**
-     * Session‚ÌUserProperties‚ÉSessionPropertyƒIƒuƒWƒFƒNƒg‚ğŠi”[‚·‚éÛ‚ÌƒL[
+     * Sessionã®UserPropertiesã«SessionPropertyã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ ¼ç´ã™ã‚‹éš›ã®ã‚­ãƒ¼
      */
     public static final String SESSION_PROPERTY_KEY = "SessionProperty";
 
@@ -173,23 +173,23 @@ public class SessionProperties implements java.io.Serializable {
     }
 
     /**
-     * SessionProperty‚ğSession‚ÌUserProperties‚ÉŠi”[‚·‚éB
+     * SessionPropertyã‚’Sessionã®UserPropertiesã«æ ¼ç´ã™ã‚‹ã€‚
      * <p>
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
-     * @param prop SessionPropertyƒIƒuƒWƒFƒNƒg
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @param prop SessionPropertyã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static void put(Session session, SessionProperties prop) {
         session.getUserProperties().put(SessionProperties.SESSION_PROPERTY_KEY, prop);
     }
 
     /**
-     * Session‚ÌUserProperties‚©‚çSessionProperty‚ğæ“¾‚·‚éB
+     * Sessionã®UserPropertiesã‹ã‚‰SessionPropertyã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
      *
-     * @return SessionPropertyƒIƒuƒWƒFƒNƒg
+     * @return SessionPropertyã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public static SessionProperties getSessionProperty(Session session) {
         if(session == null || session.getUserProperties() == null){

@@ -39,7 +39,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 
 /**
- * ƒfƒtƒHƒ‹ƒg‚Ìˆâ“`“IƒAƒ‹ƒSƒŠƒYƒ€À‘•ƒT[ƒrƒXB<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®éºä¼çš„ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

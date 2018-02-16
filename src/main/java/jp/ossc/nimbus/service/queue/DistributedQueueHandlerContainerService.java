@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 
 /**
- * •ªUQueueHandlerƒRƒ“ƒeƒiƒT[ƒrƒXB<p>
+ * åˆ†æ•£QueueHandlerã‚³ãƒ³ãƒ†ãƒŠã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -63,16 +63,16 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     protected boolean isSuspend;
     protected boolean isIgnoreNullElement;
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setDistributedQueueSelectorServiceName(ServiceName name){
         distributedQueueSelectorServiceName = name;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public ServiceName getDistributedQueueSelectorServiceName(){
         return distributedQueueSelectorServiceName;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setQueueHandlerServiceName(ServiceName name){
         if(queueHandlerServiceName == null){
             queueHandlerServiceName = name;
@@ -85,80 +85,80 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
             queueHandlerServiceName = name;
         }
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public ServiceName getQueueHandlerServiceName(){
         return queueHandlerServiceName;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setReleaseQueue(boolean isRelease){
         isReleaseQueue = isRelease;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public boolean isReleaseQueue(){
         return isReleaseQueue;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setWaitTimeout(long timeout){
         waitTimeout = timeout;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public long getWaitTimeout(){
         return waitTimeout;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setMaxRetryCount(int count){
         maxRetryCount = count;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public int getMaxRetryCount(){
         return maxRetryCount;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setRetryInterval(long interval){
         retryInterval = interval;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setHandlingErrorMessageId(String id){
         handlingErrorMessageId = id;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public String getHandlingErrorMessageId(){
         return handlingErrorMessageId;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setRetryOverErrorMessageId(String id){
         retryOverErrorMessageId = id;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public String getRetryOverErrorMessageId(){
         return retryOverErrorMessageId;
     }
     
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setIgnoreNullElement(boolean isIgnore){
         isIgnoreNullElement = isIgnore;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public boolean isIgnoreNullElement(){
         return isIgnoreNullElement;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public int getQueueHandlerSize(){
         return invokers == null ? 0 : invokers.length;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public int getActiveQueueHandlerSize(){
         int count = 0;
         if(invokers == null){
@@ -180,7 +180,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
         return count;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public int getStandbyQueueHandlerSize(){
         int count = 0;
         if(invokers == null){
@@ -202,26 +202,26 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
         return count;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setDaemonQueueHandler(boolean isDaemon){
         isDaemonQueueHandler = isDaemon;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public boolean isDaemonQueueHandler(){
         return isDaemonQueueHandler;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public void setQueueHandlerThreadPriority(int newPriority){
         queueHandlerThreadPriority = newPriority;
     }
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public int getQueueHandlerThreadPriority(){
         return queueHandlerThreadPriority;
     }
 
-    // DistributedQueueHandlerContainerService‚ÌJavaDoc
+    // DistributedQueueHandlerContainerServiceã®JavaDoc
     public long getAverageHandleProcessTime(){
         long time = 0;
         if(invokers == null){
@@ -250,9 +250,9 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(distributedQueueSelectorServiceName != null){
@@ -262,7 +262,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
         if(distributedQueueSelector == null){
             throw new IllegalArgumentException("DistributedQueueSelector is null.");
         }
-        // ƒLƒ…[ó•tŠJn
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜é–‹å§‹
         accept();
 
         final Queue[] queues = distributedQueueSelector.getQueues();
@@ -288,14 +288,14 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
 
         if(daemons != null){
-            // ƒf[ƒ‚ƒ“’â~
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
             for(int i = 0; i < daemons.length; i++){
                 daemons[i].stop();
                 daemons[i] = null;
@@ -303,7 +303,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
             }
         }
 
-        // ƒLƒ…[ó•t’â~
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜åœæ­¢
         if(isReleaseQueue){
             release();
         }
@@ -341,7 +341,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * QueueHandler‚ğİ’è‚·‚éB<p>
+     * QueueHandlerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param handler QueueHandler
      */
@@ -366,7 +366,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * QueueHandler‚ğæ“¾‚·‚éB<p>
+     * QueueHandlerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return QueueHandler
      */
@@ -403,51 +403,51 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
         }
 
         /**
-         * Às’†‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
+         * å®Ÿè¡Œä¸­ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         public boolean isActive;
 
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
 
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
 
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
 
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          *
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
 
         /**
-         * ƒLƒ…[‚©‚ç‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
          *
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return “ü—ÍƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object provide(DaemonControl ctrl){
             if(handler == null){
@@ -460,10 +460,10 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
         }
 
         /**
-         * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğˆø”‚ÉQueueHandler‚ğŒÄ‚Ño‚·B<p>
+         * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã«QueueHandlerã‚’å‘¼ã³å‡ºã™ã€‚<p>
          *
-         * @param dequeued ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param dequeued ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object dequeued, DaemonControl ctrl){
             if(handler == null){
@@ -539,7 +539,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
         }
 
         /**
-         * ƒLƒ…[‚Ì’†g‚ğ“f‚«o‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã®ä¸­èº«ã‚’åãå‡ºã™ã€‚<p>
          */
         public void garbage(){
             if(queue != null){
@@ -552,9 +552,9 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
 
 
     /**
-     * “KØ‚È•ªUƒLƒ…[‚Ì‚P‚Â‚Éƒf[ƒ^‚ğ“Š“ü‚·‚éB<p>
+     * é©åˆ‡ãªåˆ†æ•£ã‚­ãƒ¥ãƒ¼ã®ï¼‘ã¤ã«ãƒ‡ãƒ¼ã‚¿ã‚’æŠ•å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param item “Š“üƒIƒuƒWƒFƒNƒg
+     * @param item æŠ•å…¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public synchronized void push(Object item){
         final Queue queue = distributedQueueSelector.selectQueue(item);
@@ -562,11 +562,11 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * “KØ‚È•ªUƒLƒ…[‚Ì‚P‚Â‚Éƒf[ƒ^‚ğ“Š“ü‚·‚éB<p>
+     * é©åˆ‡ãªåˆ†æ•£ã‚­ãƒ¥ãƒ¼ã®ï¼‘ã¤ã«ãƒ‡ãƒ¼ã‚¿ã‚’æŠ•å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param item “Š“üƒIƒuƒWƒFƒNƒg
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡false
+     * @param item æŠ•å…¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆfalse
      */
     public synchronized boolean push(Object item, long timeout){
         final Queue queue = distributedQueueSelector.selectQueue(item);
@@ -574,59 +574,59 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ƒLƒ…[‚©‚çƒf[ƒ^‚ğæ‚èo‚·B<p>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šå‡ºã™ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      *
-     * @return ƒLƒ…[æ“¾ƒIƒuƒWƒFƒNƒg
+     * @return ã‚­ãƒ¥ãƒ¼å–å¾—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(){
         throw new UnsupportedOperationException();
     }
 
     /**
-     * ƒLƒ…[‚©‚çƒf[ƒ^‚ğæ‚èo‚·B<p>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šå‡ºã™ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      *
-     * @param timeOutMs ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒLƒ…[æ“¾ƒIƒuƒWƒFƒNƒg
+     * @param timeOutMs ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚­ãƒ¥ãƒ¼å–å¾—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(long timeOutMs){
         throw new UnsupportedOperationException();
     }
 
     /**
-     * ƒLƒ…[‚©‚çƒf[ƒ^‚ğ“Ç‚ŞB<p>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã‚€ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      *
-     * @return ƒLƒ…[æ“¾ƒIƒuƒWƒFƒNƒg
+     * @return ã‚­ãƒ¥ãƒ¼å–å¾—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object peek(){
         throw new UnsupportedOperationException();
     }
 
     /**
-     * ƒLƒ…[‚©‚çƒf[ƒ^‚ğ“Ç‚ŞB<br>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã‚€ã€‚<br>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      *
-     * @param timeOutMs ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒLƒ…[æ“¾ƒIƒuƒWƒFƒNƒg
+     * @param timeOutMs ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚­ãƒ¥ãƒ¼å–å¾—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object peek(long timeOutMs){
         throw new UnsupportedOperationException();
     }
 
     /**
-     * ƒLƒ…[‚©‚çw’è‚µ‚½ƒf[ƒ^‚ğíœ‚·‚éB<p>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰æŒ‡å®šã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      *
-     * @param item íœ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param item å‰Šé™¤å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object remove(Object item){
         throw new UnsupportedOperationException();
     }
 
     /**
-     * ‘S‚Ä‚Ì•ªUƒLƒ…[‚ğ‰Šú‰»‚·‚éB<p>
+     * å…¨ã¦ã®åˆ†æ•£ã‚­ãƒ¥ãƒ¼ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         final Queue[] queues = distributedQueueSelector.getQueues();
@@ -638,9 +638,9 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ‘S‚Ä‚Ì•ªUƒLƒ…[‚Ì‡ŒvƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * å…¨ã¦ã®åˆ†æ•£ã‚­ãƒ¥ãƒ¼ã®åˆè¨ˆã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒ…[Ši”[Œ”
+     * @return ã‚­ãƒ¥ãƒ¼æ ¼ç´ä»¶æ•°
      */
     public int size(){
         int size = 0;
@@ -654,9 +654,9 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ‘S‚Ä‚Ì•ªUƒLƒ…[‚É“Š“ü‚³‚ê‚½Œ”‚ğæ“¾‚·‚éB<p>
+     * å…¨ã¦ã®åˆ†æ•£ã‚­ãƒ¥ãƒ¼ã«æŠ•å…¥ã•ã‚ŒãŸä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒ…[“Š“üŒ”
+     * @return ã‚­ãƒ¥ãƒ¼æŠ•å…¥ä»¶æ•°
      */
     public long getCount(){
         long count = 0;
@@ -692,8 +692,8 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ‘S‚Ä‚Ì•ªUƒLƒ…[‚ÌƒLƒ…[æ“¾‘Ò‚¿‚ğŠJn‚·‚éB<p>
-     * {@link #release()}ŒÄo‚µŒã‚ÉAƒLƒ…[æ“¾‘Ò‚¿‚ğó‚¯•t‚¯‚é‚æ‚¤‚É‚·‚éB
+     * å…¨ã¦ã®åˆ†æ•£ã‚­ãƒ¥ãƒ¼ã®ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
+     * {@link #release()}å‘¼å‡ºã—å¾Œã«ã€ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’å—ã‘ä»˜ã‘ã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚
      */
     public void accept(){
         final Queue[] queues = distributedQueueSelector.getQueues();
@@ -705,7 +705,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     /**
-     * ‘S‚Ä‚Ì•ªUƒLƒ…[‚ÌƒLƒ…[æ“¾‘Ò‚¿‚ğŠJ•ú‚µAƒLƒ…[æ“¾‘Ò‚¿‚ğó‚¯•t‚¯‚È‚¢‚æ‚¤‚É‚·‚éB<p>
+     * å…¨ã¦ã®åˆ†æ•£ã‚­ãƒ¥ãƒ¼ã®ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’é–‹æ”¾ã—ã€ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’å—ã‘ä»˜ã‘ãªã„ã‚ˆã†ã«ã™ã‚‹ã€‚<p>
      */
     public void release(){
         final Queue[] queues = distributedQueueSelector.getQueues();

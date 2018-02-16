@@ -37,15 +37,15 @@ import jp.ossc.nimbus.beans.dataset.*;
 import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
- * {@link RecordList}Œ^ƒR[ƒhƒ}ƒXƒ^•ÏŠ·B<p>
- * {@link RecordList}Œ^‚ÌƒR[ƒhƒ}ƒXƒ^‚ğg‚Á‚ÄA’l‚Ì•ÏŠ·‚ğs‚¤{@link CodeMasterConverter}À‘•ƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * •ÏŠ·•û–@‚ÍAˆÈ‰º‚Ìƒpƒ^[ƒ“‚ª‚ ‚éB<br>
+ * {@link RecordList}å‹ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿å¤‰æ›ã€‚<p>
+ * {@link RecordList}å‹ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’ä½¿ã£ã¦ã€å€¤ã®å¤‰æ›ã‚’è¡Œã†{@link CodeMasterConverter}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * å¤‰æ›æ–¹æ³•ã¯ã€ä»¥ä¸‹ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ãŒã‚ã‚‹ã€‚<br>
  * <ul>
- *   <li>ˆø”‚Åw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒvƒ‰ƒCƒ}ƒŠƒL[‚Æ‚µ‚ÄARecordList‚©‚ç{@link RecordList#searchByPrimaryKey(Record) ƒvƒ‰ƒCƒ}ƒŠƒL[ŒŸõ}‚ğs‚¢ARercord‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordListCodeMasterConverter.Key}‚ğw’è‚µ‚ÄARecordList‚©‚ç{@link RecordList#searchByPrimaryKey(Record) ƒvƒ‰ƒCƒ}ƒŠƒL[ŒŸõ}‚ğs‚¢ARercord‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordListCodeMasterConverter.DynamicKey}‚ğw’è‚µ‚ÄARecordList‚©‚ç{@link RecordList#stockKeySearch(String, Record) ’~ÏŒ^ƒL[ŒŸõ}‚ğs‚¢ARercord‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordListCodeMasterConverter.DynamicCondition}‚ğw’è‚µ‚ÄARecordList‚©‚ç{@link RecordList#stockSearch(String) ’~ÏŒ^ğŒŒŸõ}‚ğs‚¢ARercord‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚É•ÏŠ·‚·‚éB</li>
- *   <li>ˆø”‚É{@link RecordListCodeMasterConverter.DynamicConditionReal}‚ğw’è‚µ‚ÄARecordList‚©‚ç{@link RecordList#realSearch(String, Map) ƒŠƒAƒ‹Œ^ğŒŒŸõ}‚ğs‚¢ARercord‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚É•ÏŠ·‚·‚éB</li>
+ *   <li>å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã—ã¦ã€RecordListã‹ã‚‰{@link RecordList#searchByPrimaryKey(Record) ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ¤œç´¢}ã‚’è¡Œã„ã€Rercordã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordListCodeMasterConverter.Key}ã‚’æŒ‡å®šã—ã¦ã€RecordListã‹ã‚‰{@link RecordList#searchByPrimaryKey(Record) ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ¤œç´¢}ã‚’è¡Œã„ã€Rercordã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordListCodeMasterConverter.DynamicKey}ã‚’æŒ‡å®šã—ã¦ã€RecordListã‹ã‚‰{@link RecordList#stockKeySearch(String, Record) è“„ç©å‹ã‚­ãƒ¼æ¤œç´¢}ã‚’è¡Œã„ã€Rercordã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordListCodeMasterConverter.DynamicCondition}ã‚’æŒ‡å®šã—ã¦ã€RecordListã‹ã‚‰{@link RecordList#stockSearch(String) è“„ç©å‹æ¡ä»¶æ¤œç´¢}ã‚’è¡Œã„ã€Rercordã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹ã€‚</li>
+ *   <li>å¼•æ•°ã«{@link RecordListCodeMasterConverter.DynamicConditionReal}ã‚’æŒ‡å®šã—ã¦ã€RecordListã‹ã‚‰{@link RecordList#realSearch(String, Map) ãƒªã‚¢ãƒ«å‹æ¡ä»¶æ¤œç´¢}ã‚’è¡Œã„ã€Rercordã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹ã€‚</li>
  * </ul>
  *
  * @author M.Takata

@@ -35,58 +35,58 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import java.util.*;
 
 /**
- * {@link WritableRecordFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link WritableRecordFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author Y.Tokuda
  */
 public interface WritableRecordFactoryServiceMBean extends ServiceBaseMBean {
     
     /**
-     * {@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[‚É‘Î‚·‚éWritableElementÀ‘•ƒNƒ‰ƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğw’è‚·‚éB<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚Åw’è‚³‚ê‚È‚©‚Á‚½ƒL[‚É‘Î‚µ‚Ä‚ÍA{@link SimpleElement}‚ªƒ}ƒbƒsƒ“ƒO‚³‚ê‚éB<br>
+     * {@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã«å¯¾ã™ã‚‹WritableElementå®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§æŒ‡å®šã•ã‚Œãªã‹ã£ãŸã‚­ãƒ¼ã«å¯¾ã—ã¦ã¯ã€{@link SimpleElement}ãŒãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param prop ƒL[‚ÆWritableElementÀ‘•ƒNƒ‰ƒX‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param prop ã‚­ãƒ¼ã¨WritableElementå®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setImplementClasses(Properties prop);
     
     /**
-     * {@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[‚É‘Î‚·‚éWritableElementÀ‘•ƒNƒ‰ƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * {@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã«å¯¾ã™ã‚‹WritableElementå®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒL[‚ÆWritableElementÀ‘•ƒNƒ‰ƒX‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚­ãƒ¼ã¨WritableElementå®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getImplementClasses();
     
     /**
-     * {@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[‚É‘Î‚·‚éWritableElementÀ‘•ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğw’è‚·‚éB<p>
-     * ˆê“x‚Ì{@link WritableRecordFactory#createRecord(Object)}‚ÅA“¯ˆê‚ÌƒL[‚ª•¡”‰ñoŒ»‚·‚éê‡‚âAƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‚ÅŒÄ‚Ño‚·ê‡‚ÍA‚ ‚éƒL[‚É‘Î‚·‚éWritableElementƒCƒ“ƒXƒ^ƒ“ƒX‚ÍA‚»‚Ì“s“x¶¬‚³‚ê‚é•K—v‚ª‚ ‚é‚Ì‚ÅA{@link jp.ossc.nimbus.core.FactoryService FactoryService}‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ğg—p‚·‚é‚©Aservice—v‘f‚Ìinstance‘®«‚Åfactory‚ğw’è‚·‚é‚±‚ÆB<br>
-     * ‚±‚Ìƒƒ\ƒbƒh‚Åw’è‚³‚ê‚È‚©‚Á‚½ƒL[‚É‘Î‚µ‚Ä‚ÍA{@link SimpleElement}‚ªƒ}ƒbƒsƒ“ƒO‚³‚ê‚éB<br>
+     * {@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã«å¯¾ã™ã‚‹WritableElementå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * ä¸€åº¦ã®{@link WritableRecordFactory#createRecord(Object)}ã§ã€åŒä¸€ã®ã‚­ãƒ¼ãŒè¤‡æ•°å›å‡ºç¾ã™ã‚‹å ´åˆã‚„ã€ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰ã§å‘¼ã³å‡ºã™å ´åˆã¯ã€ã‚ã‚‹ã‚­ãƒ¼ã«å¯¾ã™ã‚‹WritableElementã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€ãã®éƒ½åº¦ç”Ÿæˆã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚‹ã®ã§ã€{@link jp.ossc.nimbus.core.FactoryService FactoryService}ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã€serviceè¦ç´ ã®instanceå±æ€§ã§factoryã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã€‚<br>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§æŒ‡å®šã•ã‚Œãªã‹ã£ãŸã‚­ãƒ¼ã«å¯¾ã—ã¦ã¯ã€{@link SimpleElement}ãŒãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param prop ƒL[‚ÆWritableElementÀ‘•ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param prop ã‚­ãƒ¼ã¨WritableElementå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setImplementServiceNames(Properties prop);
     
     /**
-     * {@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[‚É‘Î‚·‚éWritableElementÀ‘•ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * {@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã«å¯¾ã™ã‚‹WritableElementå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒL[‚ÆWritableElementÀ‘•ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚­ãƒ¼ã¨WritableElementå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getImplementServiceNames();
     
     /**
-     * {@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚Ì’l‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒtƒH[ƒ}ƒbƒg‚É‚ÍA{@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[‚ÆA”CˆÓ‚Ì•¶š—ñ‚ğg—p‚Å‚«‚éBƒL[‚ÍA"%"‚ÅˆÍ‚ŞB"%"‚ğƒL[‚ÌƒZƒpƒŒ[ƒ^ˆÈŠO‚Ì•¶š‚Æ‚µ‚Äg‚¢‚½‚¢ê‡‚ÍA"\"‚ğ‘O‚É•t‚¯‚ÄƒGƒXƒP[ƒv‚·‚éB"\"‚ğƒGƒXƒP[ƒv•¶šˆÈŠO‚Æ‚µ‚Äg‚¢‚½‚¢ê‡‚ÍA"\"‚ğ2‰ñd‚Ë‚éB<br>
+     * {@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®å€¤ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã¯ã€{@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã¨ã€ä»»æ„ã®æ–‡å­—åˆ—ã‚’ä½¿ç”¨ã§ãã‚‹ã€‚ã‚­ãƒ¼ã¯ã€"%"ã§å›²ã‚€ã€‚"%"ã‚’ã‚­ãƒ¼ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ä»¥å¤–ã®æ–‡å­—ã¨ã—ã¦ä½¿ã„ãŸã„å ´åˆã¯ã€"\"ã‚’å‰ã«ä»˜ã‘ã¦ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã€‚"\"ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ä»¥å¤–ã¨ã—ã¦ä½¿ã„ãŸã„å ´åˆã¯ã€"\"ã‚’2å›é‡ã­ã‚‹ã€‚<br>
      * <pre>
-     *  —áF%DATE%,%MESSAGE%
+     *  ä¾‹ï¼š%DATE%,%MESSAGE%
      * </pre>
      *
-     * @param fmt ƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @param fmt ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public void setFormat(String fmt);
     
     /**
-     * {@link WritableRecordFactory#createRecord(Object)}‚Åw’è‚³‚ê‚½ƒ}ƒbƒv‚Ì’l‚ÌƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * {@link WritableRecordFactory#createRecord(Object)}ã§æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®å€¤ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public String getFormat();
 }

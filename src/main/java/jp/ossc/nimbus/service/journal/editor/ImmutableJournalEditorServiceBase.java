@@ -38,7 +38,7 @@ import jp.ossc.nimbus.service.journal.*;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒWƒƒ[ƒiƒ‹‚ğ•s•Ï‚È•¶š—ñ‚ÉƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^ƒT[ƒrƒX‚ÌŠî’êƒNƒ‰ƒXB<p>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ä¸å¤‰ãªæ–‡å­—åˆ—ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -48,37 +48,37 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     private static final long serialVersionUID = 481914013077689219L;
 
     /**
-     * ‹ó•¶šƒŠƒeƒ‰ƒ‹B<p>
+     * ç©ºæ–‡å­—ãƒªãƒ†ãƒ©ãƒ«ã€‚<p>
      */
     protected static final String EMPTY_STRING = "";
     
     /**
-     * "null"•¶šƒŠƒeƒ‰ƒ‹B<p>
+     * "null"æ–‡å­—ãƒªãƒ†ãƒ©ãƒ«ã€‚<p>
      */
     protected static final String NULL_STRING = "null";
     
     /**
-     * Back Space•¶šB<p>
+     * Back Spaceæ–‡å­—ã€‚<p>
      */
     protected static final char BACK_SPACE = '\b';
     
     /**
-     * Carriage Return•¶šB<p>
+     * Carriage Returnæ–‡å­—ã€‚<p>
      */
     protected static final char CARRIAGE_RETURN  = '\r';
     
     /**
-     * Line Feed•¶šB<p>
+     * Line Feedæ–‡å­—ã€‚<p>
      */
     protected static final char LINE_FEED  = '\n';
     
     /**
-     * Form Feed•¶šB<p>
+     * Form Feedæ–‡å­—ã€‚<p>
      */
     protected static final char FORM_FEED  = '\f';
     
     /**
-     * Horizontal Tab•¶šB<p>
+     * Horizontal Tabæ–‡å­—ã€‚<p>
      */
     protected static final char HORIZONTAL_TAB = '\t';
     
@@ -92,52 +92,52 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     private boolean isOutputKey = false;
     private boolean isOutputIndent = true;
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public void setOutputKey(boolean isOutput){
         isOutputKey = isOutput;
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public boolean isOutputKey(){
         return isOutputKey;
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public void setOutputIndent(boolean isOutput){
         isOutputIndent = isOutput;
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public boolean isOutputIndent(){
         return isOutputIndent;
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public void setLineSeparator(String separator){
         lineSeparator = convertEscapeLiteral(separator);
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public String getLineSeparator(){
         return lineSeparator;
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public void setIndent(String indent){
         this.indent = indent;
     }
     
-    // ImmutableJournalEditorServiceBaseMBean‚ÌJavaDoc
+    // ImmutableJournalEditorServiceBaseMBeanã®JavaDoc
     public String getIndent(){
         return indent;
     }
     
-    // JournalEditor‚ÌJavaDoc
+    // JournalEditorã®JavaDoc
     public Object toObject(EditorFinder finder, Object key, Object value){
         return toString(finder, key, value);
     }
     
-    // ImmutableJournalEditor‚ÌJavaDoc
+    // ImmutableJournalEditorã®JavaDoc
     public String toString(EditorFinder finder, Object key, Object value){
         final StringBuilder buf = new StringBuilder();
         if(isOutputKey()){
@@ -147,14 +147,14 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒWƒƒ[ƒiƒ‹•¶š—ñ‚É•ÒW‚·‚éB<p>
-     * ƒTƒuƒNƒ‰ƒX‚ÅAƒI[ƒo[ƒ‰ƒCƒh‚µ‚ÄÀ‘•‚·‚éBƒfƒtƒHƒ‹ƒg‚Å‚ÍAbuf‚©‚ç‚»‚Ì‚Ü‚Ü•¶š—ñ‚ğæ“¾‚µ‚Ä•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã€ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã—ã¦å®Ÿè£…ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€bufã‹ã‚‰ãã®ã¾ã¾æ–‡å­—åˆ—ã‚’å–å¾—ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param value ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
-     * @return ƒWƒƒ[ƒiƒ‹•¶š—ñ
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—
      */
     protected String toString(
         EditorFinder finder,
@@ -166,14 +166,14 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * ƒL[•¶š—ñ‚ğƒtƒH[ƒ}ƒbƒg‚µ‚ÄA•¶š—ñƒoƒbƒtƒ@‚Ìæ“ª‚É•t—^‚·‚éB<p>
-     * ‚±‚±‚Å‚ÍA"[key]"‚ÌƒtƒH[ƒ}ƒbƒg‚Æ‚µ‚ÄÀ‘•‚³‚ê‚Ä‚¢‚éB’A‚µAkey‚ªnull‚Ìê‡‚ÍAo—Í‚µ‚È‚¢B<br>
+     * ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦ã€æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã®å…ˆé ­ã«ä»˜ä¸ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§ã¯ã€"[key]"ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¨ã—ã¦å®Ÿè£…ã•ã‚Œã¦ã„ã‚‹ã€‚ä½†ã—ã€keyãŒnullã®å ´åˆã¯ã€å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param obj ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
-     * @return ƒWƒƒ[ƒiƒ‹•¶š—ñ
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param obj ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—
      */
     protected StringBuilder makeKeyFormat(
         EditorFinder finder,
@@ -188,14 +188,14 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * ƒGƒfƒBƒ^[‚ª•s–¾‚ÈƒIƒuƒWƒFƒNƒg‚ğ“KØ‚ÈƒGƒfƒBƒ^‚Å•ÒW‚·‚éB<p>
-     * finder‚ÅAvalue‚ÌŒ^‚É‘Î‰‚·‚éƒGƒfƒBƒ^‚ğæ“¾‚µ‚Ä•ÒW‚·‚éBƒGƒfƒBƒ^‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA{@link Object#toString()}‚Å•¶š—ñ‚É•ÏŠ·‚µ‚Ä•Ô‚·B<br>
+     * ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ãŒä¸æ˜ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é©åˆ‡ãªã‚¨ãƒ‡ã‚£ã‚¿ã§ç·¨é›†ã™ã‚‹ã€‚<p>
+     * finderã§ã€valueã®å‹ã«å¯¾å¿œã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å–å¾—ã—ã¦ç·¨é›†ã™ã‚‹ã€‚ã‚¨ãƒ‡ã‚£ã‚¿ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€{@link Object#toString()}ã§æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
-     * @param key ƒL[•¶š—ñ
-     * @param obj ƒWƒƒ[ƒiƒ‹ƒIƒuƒWƒFƒNƒg
-     * @param buf ƒWƒƒ[ƒiƒ‹•¶š—ñŠi”[—p‚Ì•¶š—ñƒoƒbƒtƒ@
-     * @return ƒWƒƒ[ƒiƒ‹•¶š—ñ
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
+     * @param key ã‚­ãƒ¼æ–‡å­—åˆ—
+     * @param obj ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param buf ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—æ ¼ç´ç”¨ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æ–‡å­—åˆ—
      */
     protected StringBuilder makeObjectFormat(
         EditorFinder finder,
@@ -216,10 +216,10 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñƒoƒbƒtƒ@‚ÉŠi”[‚³‚ê‚Ä‚¢‚é•¶š—ñ‚ğ1ƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹æ–‡å­—åˆ—ã‚’1ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param buf •¶š—ñƒoƒbƒtƒ@
-     * @return •¶š—ñƒoƒbƒtƒ@
+     * @param buf æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @return æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected StringBuilder addIndent(StringBuilder buf){
         if(!isOutputIndent){
@@ -229,10 +229,10 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ1ƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’1ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return •¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return æ–‡å­—åˆ—
      */
     protected String addIndent(String str){
         if(!isOutputIndent){
@@ -242,11 +242,11 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñƒoƒbƒtƒ@‚ÉŠi”[‚³‚ê‚Ä‚¢‚é•¶š—ñ‚ğw’èƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param buf •¶š—ñƒoƒbƒtƒ@
-     * @param indent ƒCƒ“ƒfƒ“ƒg”
-     * @return •¶š—ñƒoƒbƒtƒ@
+     * @param buf æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
+     * @param indent ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ•°
+     * @return æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡
      */
     protected StringBuilder setIndent(StringBuilder buf, int indent){
         if(!isOutputIndent){
@@ -258,11 +258,11 @@ public abstract class ImmutableJournalEditorServiceBase extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğw’èƒCƒ“ƒfƒ“ƒgš‰º‚°‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆå­—ä¸‹ã’ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @param indent ƒCƒ“ƒfƒ“ƒg”
-     * @return •¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @param indent ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ•°
+     * @return æ–‡å­—åˆ—
      */
     protected String setIndent(String str, int indent){
         if(str == null){

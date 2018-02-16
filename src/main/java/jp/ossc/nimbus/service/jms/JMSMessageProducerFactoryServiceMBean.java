@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMSMessageProducerFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JMSMessageProducerFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JMSMessageProducerFactoryService
@@ -43,123 +43,123 @@ public interface JMSMessageProducerFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * {@link JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * SessionCreate‘®«‚ªtrue‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉA‚±‚±‚Åİ’è‚³‚ê‚½JMSSessionFactoryƒT[ƒrƒX‚ğg‚Á‚ÄASession‚ğ¶¬‚µ•Û‚·‚éB<br>
+     * {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SessionCreateå±æ€§ãŒtrueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€Sessionã‚’ç”Ÿæˆã—ä¿æŒã™ã‚‹ã€‚<br>
      *
-     * @param name JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSSessionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSSessionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚©‚çjavax.jms.Destination‚ğlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã‹ã‚‰javax.jms.Destinationã‚’lookupã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDestinationFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDestinationFinderServiceName();
     
     /**
-     * ˆ¶æ‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * DestinationFinderServiceName‘®«‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğg‚Á‚ÄAˆ¶æ‚Æ‚È‚éjavax.jms.Destination‚ğA‚±‚±‚Åİ’è‚³‚ê‚½JNDI–¼‚Ålookup‚·‚éB<br>
+     * å®›å…ˆã¨ãªã‚‹javax.jms.Destinationã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * DestinationFinderServiceNameå±æ€§ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€å®›å…ˆã¨ãªã‚‹javax.jms.Destinationã‚’ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJNDIåã§lookupã™ã‚‹ã€‚<br>
      *
-     * @param name ˆ¶æ‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼
+     * @param name å®›å…ˆã¨ãªã‚‹javax.jms.Destinationã®JNDIå
      */
     public void setDestinationName(String name);
     
     /**
-     * ˆ¶æ‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * å®›å…ˆã¨ãªã‚‹javax.jms.Destinationã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ¶æ‚Æ‚È‚éjavax.jms.Destination‚ÌJNDI–¼
+     * @return å®›å…ˆã¨ãªã‚‹javax.jms.Destinationã®JNDIå
      */
     public String getDestinationName();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚ğİ’è‚·‚éê‡AJMSSessionFactoryServiceName‘®«‚ğİ’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã‚’è¨­å®šã™ã‚‹å ´åˆã€JMSSessionFactoryServiceNameå±æ€§ã‚’è¨­å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isCreate ƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚éê‡true
+     * @param isCreate ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹å ´åˆtrue
      */
     public void setSessionCreate(boolean isCreate);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉSession‚ğ¶¬‚µ‚Ä•Û‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«Sessionã‚’ç”Ÿæˆã—ã¦ä¿æŒã™ã‚‹
      */
     public boolean isSessionCreate();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isClose ƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚éê‡true
+     * @param isClose ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹å ´åˆtrue
      */
     public void setCloseSession(boolean isClose);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚Ì’â~‚ÉSession‚ğƒNƒ[ƒY‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«Sessionã‚’ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹
      */
     public boolean isCloseSession();
     
     /**
-     * JMS‚Ìˆ¶æ‚É‘—M‚·‚é‚Ì”zMƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link javax.jms.Message#DEFAULT_DELIVERY_MODE}B<br>
+     * JMSã®å®›å…ˆã«é€ä¿¡ã™ã‚‹æ™‚ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link javax.jms.Message#DEFAULT_DELIVERY_MODE}ã€‚<br>
      *
-     * @param mode ”zMƒ‚[ƒh
+     * @param mode é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      */
     public void setDeliveryMode(int mode);
     
     /**
-     * JMS‚Ìˆ¶æ‚É‘—M‚·‚é‚Ì”zMƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * JMSã®å®›å…ˆã«é€ä¿¡ã™ã‚‹æ™‚ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”zMƒ‚[ƒh
+     * @return é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      */
     public int getDeliveryMode();
     
     /**
-     * JMS‚Ìˆ¶æ‚É‘—M‚·‚é‚Ì—Dæ‡ˆÊ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link javax.jms.Message#DEFAULT_PRIORITY}B<br>
+     * JMSã®å®›å…ˆã«é€ä¿¡ã™ã‚‹æ™‚ã®å„ªå…ˆé †ä½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link javax.jms.Message#DEFAULT_PRIORITY}ã€‚<br>
      *
-     * @param priority —Dæ‡ˆÊ
+     * @param priority å„ªå…ˆé †ä½
      */
     public void setPriority(int priority);
     
     /**
-     * JMS‚Ìˆ¶æ‚É‘—M‚·‚é‚Ì—Dæ‡ˆÊ‚ğæ“¾‚·‚éB<p>
+     * JMSã®å®›å…ˆã«é€ä¿¡ã™ã‚‹æ™‚ã®å„ªå…ˆé †ä½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —Dæ‡ˆÊ
+     * @return å„ªå…ˆé †ä½
      */
     public int getPriority();
     
     /**
-     * JMS‚Ìˆ¶æ‚É‘—M‚·‚é‚Ì¶‘¶ŠúŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link javax.jms.Message#DEFAULT_TIME_TO_LIVE}B<br>
+     * JMSã®å®›å…ˆã«é€ä¿¡ã™ã‚‹æ™‚ã®ç”Ÿå­˜æœŸé–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link javax.jms.Message#DEFAULT_TIME_TO_LIVE}ã€‚<br>
      *
-     * @param millis ¶‘¶ŠúŠÔ[ms]
+     * @param millis ç”Ÿå­˜æœŸé–“[ms]
      */
     public void setTimeToLive(long millis);
     
     /**
-     * JMS‚Ìˆ¶æ‚É‘—M‚·‚é‚Ì¶‘¶ŠúŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * JMSã®å®›å…ˆã«é€ä¿¡ã™ã‚‹æ™‚ã®ç”Ÿå­˜æœŸé–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ¶‘¶ŠúŠÔ[ms]
+     * @return ç”Ÿå­˜æœŸé–“[ms]
      */
     public long getTimeToLive();
 }

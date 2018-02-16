@@ -36,7 +36,7 @@ import java.util.List;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractKeepAliveCheckerSelectorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link AbstractKeepAliveCheckerSelectorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see AbstractKeepAliveCheckerSelectorService
@@ -48,141 +48,141 @@ public interface AbstractKeepAliveCheckerSelectorServiceMBean
     public static final String DEFAULT_DEAD_LOG_MSG_ID = "KACS_00002";
     
     /**
-     * ‘I‘ğ‰Â”\‚È{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğİ’è‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãª{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ‘I‘ğ‰Â”\‚È{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names é¸æŠå¯èƒ½ãª{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setSelectableCheckerServiceNames(ServiceName[] names);
     
     /**
-     * ‘I‘ğ‰Â”\‚È{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * é¸æŠå¯èƒ½ãª{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘I‘ğ‰Â”\‚È{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return é¸æŠå¯èƒ½ãª{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getSelectableCheckerServiceNames();
     
     /**
-     * ’èŠú“I‚É{@link KeepAliveChecker}‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍA–ˆ‰ñ–â‚¢‡‚í‚¹‚ğs‚¤B’A‚µA{@link #setClusterServiceName(ServiceName)}‚ğw’è‚µ‚Ä‚¢‚éê‡‚ÍA–³ŒøB<br>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA–ˆ‰ñ–â‚¢‡‚í‚¹‚ğs‚¤B<br>
+     * å®šæœŸçš„ã«{@link KeepAliveChecker}ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€æ¯å›å•ã„åˆã‚ã›ã‚’è¡Œã†ã€‚ä½†ã—ã€{@link #setClusterServiceName(ServiceName)}ã‚’æŒ‡å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ç„¡åŠ¹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€æ¯å›å•ã„åˆã‚ã›ã‚’è¡Œã†ã€‚<br>
      *
-     * @param millis KeepAliveChecker‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu
+     * @param millis KeepAliveCheckerã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”
      */
     public void setCheckInterval(long millis);
     
     /**
-     * ’èŠú“I‚É{@link KeepAliveChecker}‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * å®šæœŸçš„ã«{@link KeepAliveChecker}ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return KeepAliveChecker‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu
+     * @return KeepAliveCheckerã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”
      */
     public long getCheckInterval();
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setAliveLogMessageId(String id);
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getAliveLogMessageId();
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setDeadLogMessageId(String id);
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getDeadLogMessageId();
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputAliveLogMessage(boolean isOutput);
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputAliveLogMessage();
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputDeadLogMessage(boolean isOutput);
     
     /**
-     * {@link KeepAliveChecker}‚Ì‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link KeepAliveChecker}ã®ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputDeadLogMessage();
     
     /**
-     * {@link KeepAliveCheckerSelector#getSelectableCheckers()}‚Å•Ô‚³‚ê‚é{@link KeepAliveChecker}‚Ì‡˜‚ğ•Û‚Â‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA‡˜‚ğ•Û‚½‚È‚¢B‰Ò“®¨’â~¨‰Ò“®‚Æ‚È‚Á‚½ê‡Aˆê”ÔÅŒã‚É•À‚×‚ç‚ê‚éB<br>
+     * {@link KeepAliveCheckerSelector#getSelectableCheckers()}ã§è¿”ã•ã‚Œã‚‹{@link KeepAliveChecker}ã®é †åºã‚’ä¿ã¤ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€é †åºã‚’ä¿ãŸãªã„ã€‚ç¨¼å‹•â†’åœæ­¢â†’ç¨¼å‹•ã¨ãªã£ãŸå ´åˆã€ä¸€ç•ªæœ€å¾Œã«ä¸¦ã¹ã‚‰ã‚Œã‚‹ã€‚<br>
      * 
-     * @param isKeep ‡˜‚ğ•Û‚½‚¹‚½‚¢ê‡‚ÍAtrue
+     * @param isKeep é †åºã‚’ä¿ãŸã›ãŸã„å ´åˆã¯ã€true
      */
     public void setKeepOrder(boolean isKeep);
     
     /**
-     * {@link KeepAliveCheckerSelector#getSelectableCheckers()}‚Å•Ô‚³‚ê‚é{@link KeepAliveChecker}‚Ì‡˜‚ğ•Û‚Â‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link KeepAliveCheckerSelector#getSelectableCheckers()}ã§è¿”ã•ã‚Œã‚‹{@link KeepAliveChecker}ã®é †åºã‚’ä¿ã¤ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍA‡˜‚ğ•Û‚Â
+     * @return trueã®å ´åˆã¯ã€é †åºã‚’ä¿ã¤
      */
     public boolean isKeepOrder();
     
     /**
-     * {@link ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚½ê‡‚ÍA{@link KeepAliveChecker}‚ğƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚©‚çæ“¾‚·‚éB<br>
+     * {@link ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãŸå ´åˆã¯ã€{@link KeepAliveChecker}ã‚’ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã‹ã‚‰å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğİ’è‚·‚éB<p>
+     * {@link ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @param key ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @return ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public String getClusterOptionKey();
     
     /**
-     * Œ»İ‘I‘ğ‰Â”\‚È¶‘¶‚µ‚Ä‚¢‚é{@link KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼ƒŠƒXƒg‚ğæ“¾‚·‚éB<br>
+     * ç¾åœ¨é¸æŠå¯èƒ½ãªç”Ÿå­˜ã—ã¦ã„ã‚‹{@link KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return KeepAliveCheckerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼ƒŠƒXƒg
+     * @return KeepAliveCheckerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åãƒªã‚¹ãƒˆ
      */
     public List getAliveCheckers();
 }

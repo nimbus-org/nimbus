@@ -31,7 +31,7 @@ package jp.ossc.nimbus.service.resource.datasource;
  * policies, either expressed or implied, of the Nimbus Project.
  */
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,30 +45,30 @@ import jp.ossc.nimbus.service.performance.PerformanceStatistics;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * ’ŠÛNimbusStatementƒNƒ‰ƒX<p>
- * NimbusStatement‹¤’Ê‚Å‚©‚ÂStatement‚Ìƒ‰ƒbƒv“®ì
- * NimbusStatment‹¤’Ê‚ÌNimbus“®ì‚ğs‚¤Šî‘b‚Æ‚È‚é
- * ’ŠÛƒNƒ‰ƒX
+ * æŠ½è±¡NimbusStatementã‚¯ãƒ©ã‚¹<p>
+ * NimbusStatementå…±é€šã§ã‹ã¤Statementã®ãƒ©ãƒƒãƒ—å‹•ä½œ
+ * NimbusStatmentå…±é€šã®Nimbuså‹•ä½œã‚’è¡Œã†åŸºç¤ã¨ãªã‚‹
+ * æŠ½è±¡ã‚¯ãƒ©ã‚¹
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
  */
 public class AbstNimbusStatement {
- 	/**JournalServiceƒIƒuƒWƒFƒNƒg*/
+ 	/**JournalServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ*/
 	protected Journal journalService;
-	/**Performance“ŒvƒIƒuƒWƒFƒNƒg*/
+	/**Performanceçµ±è¨ˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ*/
 	protected PerformanceStatistics performanceService;
-	/**SequenceƒT[ƒrƒX*/
+	/**Sequenceã‚µãƒ¼ãƒ“ã‚¹*/
 	protected Sequence seqenceService;
-	/**ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹**/
+	/**ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«**/
 	protected int journalLevel;
-	/**ƒXƒe[ƒgƒƒ“ƒg**/
+	/**ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ**/
 	protected Statement mStatement;
-	/**ƒ†[ƒU[‚Éˆø‚«“n‚µ‚½ResultSet**/
+	/**ãƒ¦ãƒ¼ã‚¶ãƒ¼ã«å¼•ãæ¸¡ã—ãŸResultSet**/
 	protected ArrayList mResultSetList = new ArrayList() ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	 * @param stmt ƒXƒe[ƒgƒƒ“ƒg
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	 * @param stmt ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ
 	 */
 	public AbstNimbusStatement(Statement stmt){
 	    this.mStatement = stmt;
@@ -76,9 +76,9 @@ public class AbstNimbusStatement {
 	
 	/**
 	 * setJournalService
-	 * @param journal ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX
-	 * @param seq ’Ê”ÔƒT[ƒrƒX
-	 * @param level o—ÍƒŒƒxƒ‹
+	 * @param journal ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹
+	 * @param seq é€šç•ªã‚µãƒ¼ãƒ“ã‚¹
+	 * @param level å‡ºåŠ›ãƒ¬ãƒ™ãƒ«
 	 * */
 	public void setJournalService(Journal journal,Sequence seq,int level){
 	    journalService = journal;
@@ -86,15 +86,15 @@ public class AbstNimbusStatement {
         this.journalLevel = level;
 	}
 	/**
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹‚ğæ“¾
-     * @return ƒWƒƒ[ƒiƒ‹ƒŒƒxƒ‹
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ãƒ™ãƒ«
      */    
     public int getJournalLevel(){
         return journalLevel;
     }
 	/**
 	 * setPerformanceService
-	 * @param perform ƒpƒtƒH[ƒ}ƒ“ƒXæ“¾ƒT[ƒrƒX
+	 * @param perform ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹å–å¾—ã‚µãƒ¼ãƒ“ã‚¹
 	 * */
 	public void setPerformanceService(PerformanceStatistics perform){
 		performanceService = perform;
@@ -107,111 +107,111 @@ public class AbstNimbusStatement {
 	    return ( seqenceService.increment() ); 
 	}
  
-	//###ˆÈ‰º‹¤’Êƒ‰ƒbƒpŠÖ”
-	/* (”ñ Javadoc)
+	//###ä»¥ä¸‹å…±é€šãƒ©ãƒƒãƒ‘é–¢æ•°
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getConnection()
 	 */
 	public Connection getConnection() throws SQLException {
 		return this.mStatement.getConnection();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getFetchDirection()
 	 */
 	public int getFetchDirection() throws SQLException {
 		return mStatement.getFetchDirection();
 	}	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getFetchSize()
 	 */
 	public int getFetchSize() throws SQLException {
 		return this.mStatement.getFetchSize();
 
 	}	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getMaxFieldSize()
 	 */
 	public int getMaxFieldSize() throws SQLException {
 		return mStatement.getMaxFieldSize();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getMaxRows()
 	 */
 	public int getMaxRows() throws SQLException {
 		return mStatement.getMaxRows();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getWarnings()
 	 */
 	public SQLWarning getWarnings() throws SQLException {
 		return this.mStatement.getWarnings();
 	}	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getResultSetConcurrency()
 	 */
 	public int getResultSetConcurrency() throws SQLException {
 		return mStatement.getResultSetConcurrency();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getResultSetHoldability()
 	 */
 	public int getResultSetHoldability() throws SQLException {
 		return mStatement.getResultSetHoldability();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getQueryTimeout()
 	 */
 	public int getQueryTimeout() throws SQLException {
 		return mStatement.getQueryTimeout();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getUpdateCount()
 	 */
 	public int getUpdateCount() throws SQLException {
 		return mStatement.getUpdateCount();
 	}	
 	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#setFetchDirection(int)
 	 */
 	public void setFetchDirection(int arg0) throws SQLException {
 		this.mStatement.setFetchDirection(arg0);
-	}/* (”ñ Javadoc)
+	}/* (é Javadoc)
 	 * @see java.sql.Statement#setFetchSize(int)
 	 */
 	public void setFetchSize(int arg0) throws SQLException {
 		mStatement.setFetchSize(arg0) ;
 	}	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#setMaxFieldSize(int)
 	 */
 	public void setMaxFieldSize(int arg0) throws SQLException {
 		mStatement.setMaxFieldSize(arg0) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#setMaxRows(int)
 	 */
 	public void setMaxRows(int arg0) throws SQLException {
 		mStatement.setMaxRows(arg0) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#clearWarnings()
 	 */
 	public void clearWarnings() throws SQLException {
 		mStatement.clearWarnings() ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#setQueryTimeout(int)
 	 */
 	public void setQueryTimeout(int arg0) throws SQLException {
 		mStatement.setQueryTimeout(arg0) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getMoreResults()
 	 */
 	public boolean getMoreResults() throws SQLException {
 		return this.mStatement.getMoreResults() ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getMoreResults(int)
 	 */
 	public boolean getMoreResults(int arg0) throws SQLException {
@@ -219,42 +219,42 @@ public class AbstNimbusStatement {
 	}	
 
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#setEscapeProcessing(boolean)
 	 */
 	public void setEscapeProcessing(boolean arg0) throws SQLException {
 		this.mStatement.setEscapeProcessing(arg0);
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#setCursorName(java.lang.String)
 	 */
 	public void setCursorName(String arg0) throws SQLException {
 		this.mStatement.setCursorName(arg0);
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getGeneratedKeys()
 	 */
 	public ResultSet getGeneratedKeys() throws SQLException {
 		ResultSet tmp = mStatement.getGeneratedKeys() ;
 		NimbusResultSet set = new NimbusResultSet(tmp) ;
-		//ŠÇ—‚É’Ç‰Á
+		//ç®¡ç†ã«è¿½åŠ 
 		this.mResultSetList.add(set) ;
 		return set;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getResultSet()
 	 */
 	public ResultSet getResultSet() throws SQLException {
 		ResultSet tmp = mStatement.getResultSet() ;
 		NimbusResultSet set = new NimbusResultSet(tmp) ;
-		//ŠÇ—‚É’Ç‰Á
+		//ç®¡ç†ã«è¿½åŠ 
 		this.mResultSetList.add(set) ;
 		return set;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#getResultSetType()
 	 */
 	public int getResultSetType() throws SQLException {

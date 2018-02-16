@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * HEADƒƒ\ƒbƒhRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * HEADãƒ¡ã‚½ãƒƒãƒ‰RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class HeadRestResponse extends RestResponse{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public HeadRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * HTTPƒXƒe[ƒ^ƒX‚Ì‰Šú’l‚ÍAHttpServletResponse.SC_OKB<br>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®åˆæœŸå€¤ã¯ã€HttpServletResponse.SC_OKã€‚<br>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public HeadRestResponse(HttpServletResponse response){
         super(response);
@@ -58,34 +58,34 @@ public class HeadRestResponse extends RestResponse{
     }
     
     /**
-     * –¢ƒTƒ|[ƒgB<p>
+     * æœªã‚µãƒãƒ¼ãƒˆã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public Object createResponseObject() throws InstantiationException, IllegalAccessException{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * –¢ƒTƒ|[ƒgB<p>
+     * æœªã‚µãƒãƒ¼ãƒˆã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void setResponseObject(Object responseObj) throws IllegalArgumentException{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒŠƒ\[ƒX‚ª‘¶İ‚·‚é|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_OK‚Éİ’è‚·‚éB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã™ã‚‹æ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_OKã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfFound(){
         setResult(HttpServletResponse.SC_OK);
     }
     
     /**
-     * ƒŠƒ\[ƒX‚ª‘¶İ‚µ‚È‚¢|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_NO_CONTENT‚Éİ’è‚·‚éB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã—ãªã„æ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_NO_CONTENTã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfNotFound(){
         setResult(HttpServletResponse.SC_NO_CONTENT);

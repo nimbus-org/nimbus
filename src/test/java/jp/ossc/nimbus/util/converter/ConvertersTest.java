@@ -47,89 +47,89 @@ public class ConvertersTest extends TestCase{
     public void testAlphabetHankakuFromZenkakuStringConverter() throws Exception {
         Converter conv = Converters.getAlphabetHankakuFromZenkakuStringConverter();
         final String from = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        final String to = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y";
+        final String to = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º";
         assertEquals(to, conv.convert(from));
     }
     
     public void testAlphabetZenkakuFromHankakuStringConverter() throws Exception {
         Converter conv = Converters.getAlphabetZenkakuFromHankakuStringConverter();
-        final String from = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y";
+        final String from = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º";
         final String to = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         assertEquals(to, conv.convert(from));
     }
     
     public void testKatakanaHankakuFromZenkakuStringConverter() throws Exception {
         Converter conv = Converters.getKatakanaHankakuFromZenkakuStringConverter();
-        final String from = "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß³Ş¶Ş·Ş¸Ş¹ŞºŞ»Ş¼Ş½Ş¾Ş¿ŞÀŞÁŞÂŞÃŞÄŞÊŞËŞÌŞÍŞÎŞÊßËßÌßÍßÎß";
-        final String to = "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JKƒ”ƒKƒMƒOƒQƒSƒUƒWƒYƒ[ƒ]ƒ_ƒaƒdƒfƒhƒoƒrƒuƒxƒ{ƒpƒsƒvƒyƒ|";
+        final String from = "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿï½³ï¾ï½¶ï¾ï½·ï¾ï½¸ï¾ï½¹ï¾ï½ºï¾ï½»ï¾ï½¼ï¾ï½½ï¾ï½¾ï¾ï½¿ï¾ï¾€ï¾ï¾ï¾ï¾‚ï¾ï¾ƒï¾ï¾„ï¾ï¾Šï¾ï¾‹ï¾ï¾Œï¾ï¾ï¾ï¾ï¾ï¾Šï¾Ÿï¾‹ï¾Ÿï¾Œï¾Ÿï¾ï¾Ÿï¾ï¾Ÿ";
+        final String to = "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œãƒ´ã‚¬ã‚®ã‚°ã‚²ã‚´ã‚¶ã‚¸ã‚ºã‚¼ã‚¾ãƒ€ãƒ‚ãƒ…ãƒ‡ãƒ‰ãƒãƒ“ãƒ–ãƒ™ãƒœãƒ‘ãƒ”ãƒ—ãƒšãƒ";
         assertEquals(to, conv.convert(from));
     }
     
     public void testKatakanaZenkakuFromHankakuStringConverter() throws Exception {
         Converter conv = Converters.getKatakanaZenkakuFromHankakuStringConverter();
-        final String from = "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JKƒ”ƒKƒMƒOƒQƒSƒUƒWƒYƒ[ƒ]ƒ_ƒaƒdƒfƒhƒoƒrƒuƒxƒ{ƒpƒsƒvƒyƒ|";
-        final String to = "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß³Ş¶Ş·Ş¸Ş¹ŞºŞ»Ş¼Ş½Ş¾Ş¿ŞÀŞÁŞÂŞÃŞÄŞÊŞËŞÌŞÍŞÎŞÊßËßÌßÍßÎß";
+        final String from = "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œãƒ´ã‚¬ã‚®ã‚°ã‚²ã‚´ã‚¶ã‚¸ã‚ºã‚¼ã‚¾ãƒ€ãƒ‚ãƒ…ãƒ‡ãƒ‰ãƒãƒ“ãƒ–ãƒ™ãƒœãƒ‘ãƒ”ãƒ—ãƒšãƒ";
+        final String to = "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿï½³ï¾ï½¶ï¾ï½·ï¾ï½¸ï¾ï½¹ï¾ï½ºï¾ï½»ï¾ï½¼ï¾ï½½ï¾ï½¾ï¾ï½¿ï¾ï¾€ï¾ï¾ï¾ï¾‚ï¾ï¾ƒï¾ï¾„ï¾ï¾Šï¾ï¾‹ï¾ï¾Œï¾ï¾ï¾ï¾ï¾ï¾Šï¾Ÿï¾‹ï¾Ÿï¾Œï¾Ÿï¾ï¾Ÿï¾ï¾Ÿ";
         assertEquals(to, conv.convert(from));
     }
     public void testNumberHankakuFromZenkakuStringConverter() throws Exception {
         Converter conv = Converters.getNumberHankakuFromZenkakuStringConverter();
         final String from = "0123456789";
-        final String to = "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X";
+        final String to = "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™";
         assertEquals(to, conv.convert(from));
     }
     public void testNumberZenkakuFromHankakuStringConverter() throws Exception {
         Converter conv = Converters.getNumberZenkakuFromHankakuStringConverter();
-        final String from = "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X";
+        final String from = "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™";
         final String to = "0123456789";
         assertEquals(to, conv.convert(from));
     }
     public void testSymbolHankakuFromZenkakuStringConverter() throws Exception {
         Converter conv = Converters.getSymbolHankakuFromZenkakuStringConverter();
         final String from = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-        final String to = "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`";
+        final String to = "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½";
         assertEquals(to, conv.convert(from));
     }
     public void testSymbolZenkakuFromHankakuStringConverter() throws Exception {
         Converter conv = Converters.getSymbolZenkakuFromHankakuStringConverter();
-        final String from = "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`";
+        final String from = "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½";
         final String to = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
         
         assertEquals(to, conv.convert(from));
     }
     public void testKatakanaFromHiraganaStringConverter() throws Exception {
         Converter conv = Converters.getKatakanaFromHiraganaStringConverter();
-        final String from = "ƒAƒ@ƒCƒBƒEƒDƒGƒFƒIƒHƒJƒKƒLƒMƒNƒOƒPƒQƒRƒSƒTƒUƒVƒWƒXƒYƒZƒ[ƒ\ƒ]ƒ^ƒ_ƒ`ƒaƒbƒcƒdƒeƒfƒgƒhƒiƒjƒkƒlƒmƒnƒoƒpƒqƒrƒsƒtƒuƒvƒwƒxƒyƒzƒ{ƒ|ƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒƒƒ†ƒ…ƒˆƒ‡ƒ‰ƒŠƒ‹ƒŒƒƒƒƒƒ‘ƒ’ƒ“RS";
-        final String to = "‚ ‚Ÿ‚¢‚¡‚¤‚£‚¦‚¥‚¨‚§‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±‚²‚³‚´‚µ‚¶‚·‚¸‚¹‚º‚»‚¼‚½‚¾‚¿‚À‚Á‚Â‚Ã‚Ä‚Å‚Æ‚Ç‚È‚É‚Ê‚Ë‚Ì‚Í‚Î‚Ï‚Ğ‚Ñ‚Ò‚Ó‚Ô‚Õ‚Ö‚×‚Ø‚Ù‚Ú‚Û‚Ü‚İ‚Ş‚ß‚à‚â‚á‚ä‚ã‚æ‚å‚ç‚è‚é‚ê‚ë‚ì‚í‚î‚ï‚ğ‚ñTU";
+        final String from = "ã‚¢ã‚¡ã‚¤ã‚£ã‚¦ã‚¥ã‚¨ã‚§ã‚ªã‚©ã‚«ã‚¬ã‚­ã‚®ã‚¯ã‚°ã‚±ã‚²ã‚³ã‚´ã‚µã‚¶ã‚·ã‚¸ã‚¹ã‚ºã‚»ã‚¼ã‚½ã‚¾ã‚¿ãƒ€ãƒãƒ‚ãƒƒãƒ„ãƒ…ãƒ†ãƒ‡ãƒˆãƒ‰ãƒŠãƒ‹ãƒŒãƒãƒãƒãƒãƒ‘ãƒ’ãƒ“ãƒ”ãƒ•ãƒ–ãƒ—ãƒ˜ãƒ™ãƒšãƒ›ãƒœãƒãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ£ãƒ¦ãƒ¥ãƒ¨ãƒ§ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ®ãƒ¯ãƒ°ãƒ±ãƒ²ãƒ³ãƒ½ãƒ¾";
+        final String to = "ã‚ãã„ãƒã†ã…ãˆã‡ãŠã‰ã‹ãŒããããã‘ã’ã“ã”ã•ã–ã—ã˜ã™ãšã›ãœãããŸã ã¡ã¢ã£ã¤ã¥ã¦ã§ã¨ã©ãªã«ã¬ã­ã®ã¯ã°ã±ã²ã³ã´ãµã¶ã·ã¸ã¹ãºã»ã¼ã½ã¾ã¿ã‚€ã‚ã‚‚ã‚„ã‚ƒã‚†ã‚…ã‚ˆã‚‡ã‚‰ã‚Šã‚‹ã‚Œã‚ã‚ã‚ã‚ã‚‘ã‚’ã‚“ã‚ã‚";
         assertEquals(to, conv.convert(from));
     }
     public void testHiraganaFromKatakanaStringConverter() throws Exception {
         Converter conv = Converters.getHiraganaFromKatakanaStringConverter();
-        final String from = "‚ ‚Ÿ‚¢‚¡‚¤‚£‚¦‚¥‚¨‚§‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±‚²‚³‚´‚µ‚¶‚·‚¸‚¹‚º‚»‚¼‚½‚¾‚¿‚À‚Á‚Â‚Ã‚Ä‚Å‚Æ‚Ç‚È‚É‚Ê‚Ë‚Ì‚Í‚Î‚Ï‚Ğ‚Ñ‚Ò‚Ó‚Ô‚Õ‚Ö‚×‚Ø‚Ù‚Ú‚Û‚Ü‚İ‚Ş‚ß‚à‚â‚á‚ä‚ã‚æ‚å‚ç‚è‚é‚ê‚ë‚ì‚í‚î‚ï‚ğ‚ñTU";
-        final String to = "ƒAƒ@ƒCƒBƒEƒDƒGƒFƒIƒHƒJƒKƒLƒMƒNƒOƒPƒQƒRƒSƒTƒUƒVƒWƒXƒYƒZƒ[ƒ\ƒ]ƒ^ƒ_ƒ`ƒaƒbƒcƒdƒeƒfƒgƒhƒiƒjƒkƒlƒmƒnƒoƒpƒqƒrƒsƒtƒuƒvƒwƒxƒyƒzƒ{ƒ|ƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒƒƒ†ƒ…ƒˆƒ‡ƒ‰ƒŠƒ‹ƒŒƒƒƒƒƒ‘ƒ’ƒ“RS";
+        final String from = "ã‚ãã„ãƒã†ã…ãˆã‡ãŠã‰ã‹ãŒããããã‘ã’ã“ã”ã•ã–ã—ã˜ã™ãšã›ãœãããŸã ã¡ã¢ã£ã¤ã¥ã¦ã§ã¨ã©ãªã«ã¬ã­ã®ã¯ã°ã±ã²ã³ã´ãµã¶ã·ã¸ã¹ãºã»ã¼ã½ã¾ã¿ã‚€ã‚ã‚‚ã‚„ã‚ƒã‚†ã‚…ã‚ˆã‚‡ã‚‰ã‚Šã‚‹ã‚Œã‚ã‚ã‚ã‚ã‚‘ã‚’ã‚“ã‚ã‚";
+        final String to = "ã‚¢ã‚¡ã‚¤ã‚£ã‚¦ã‚¥ã‚¨ã‚§ã‚ªã‚©ã‚«ã‚¬ã‚­ã‚®ã‚¯ã‚°ã‚±ã‚²ã‚³ã‚´ã‚µã‚¶ã‚·ã‚¸ã‚¹ã‚ºã‚»ã‚¼ã‚½ã‚¾ã‚¿ãƒ€ãƒãƒ‚ãƒƒãƒ„ãƒ…ãƒ†ãƒ‡ãƒˆãƒ‰ãƒŠãƒ‹ãƒŒãƒãƒãƒãƒãƒ‘ãƒ’ãƒ“ãƒ”ãƒ•ãƒ–ãƒ—ãƒ˜ãƒ™ãƒšãƒ›ãƒœãƒãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ£ãƒ¦ãƒ¥ãƒ¨ãƒ§ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ®ãƒ¯ãƒ°ãƒ±ãƒ²ãƒ³ãƒ½ãƒ¾";
         assertEquals(to, conv.convert(from));
     }
     public void testHankakuFromZenkakuStringConverter() throws Exception {
         Converter conv = Converters.getHankakuFromZenkakuStringConverter();
         final String from = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			+ "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß³Ş¶Ş·Ş¸Ş¹ŞºŞ»Ş¼Ş½Ş¾Ş¿ŞÀŞÁŞÂŞÃŞÄŞÊŞËŞÌŞÍŞÎŞÊßËßÌßÍßÎß"
+			+ "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿï½³ï¾ï½¶ï¾ï½·ï¾ï½¸ï¾ï½¹ï¾ï½ºï¾ï½»ï¾ï½¼ï¾ï½½ï¾ï½¾ï¾ï½¿ï¾ï¾€ï¾ï¾ï¾ï¾‚ï¾ï¾ƒï¾ï¾„ï¾ï¾Šï¾ï¾‹ï¾ï¾Œï¾ï¾ï¾ï¾ï¾ï¾Šï¾Ÿï¾‹ï¾Ÿï¾Œï¾Ÿï¾ï¾Ÿï¾ï¾Ÿ"
 			+"0123456789"
 			+" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-        final String to = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y"
-			+ "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JKƒ”ƒKƒMƒOƒQƒSƒUƒWƒYƒ[ƒ]ƒ_ƒaƒdƒfƒhƒoƒrƒuƒxƒ{ƒpƒsƒvƒyƒ|"
-			+ "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X"
-			+ "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`";
+        final String to = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º"
+			+ "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œãƒ´ã‚¬ã‚®ã‚°ã‚²ã‚´ã‚¶ã‚¸ã‚ºã‚¼ã‚¾ãƒ€ãƒ‚ãƒ…ãƒ‡ãƒ‰ãƒãƒ“ãƒ–ãƒ™ãƒœãƒ‘ãƒ”ãƒ—ãƒšãƒ"
+			+ "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™"
+			+ "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½";
         assertEquals(to, conv.convert(from));
     }
     public void testZenkakuFromHankakuStringConverter() throws Exception {
         Converter conv = Converters.getZenkakuFromHankakuStringConverter();
-        final String from = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y"
-			+ "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JKƒ”ƒKƒMƒOƒQƒSƒUƒWƒYƒ[ƒ]ƒ_ƒaƒdƒfƒhƒoƒrƒuƒxƒ{ƒpƒsƒvƒyƒ|"
-			+ "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X"
-			+ "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`";
+        final String from = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º"
+			+ "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œãƒ´ã‚¬ã‚®ã‚°ã‚²ã‚´ã‚¶ã‚¸ã‚ºã‚¼ã‚¾ãƒ€ãƒ‚ãƒ…ãƒ‡ãƒ‰ãƒãƒ“ãƒ–ãƒ™ãƒœãƒ‘ãƒ”ãƒ—ãƒšãƒ"
+			+ "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™"
+			+ "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½";
         
         final String to = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			+ "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß³Ş¶Ş·Ş¸Ş¹ŞºŞ»Ş¼Ş½Ş¾Ş¿ŞÀŞÁŞÂŞÃŞÄŞÊŞËŞÌŞÍŞÎŞÊßËßÌßÍßÎß"
+			+ "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿï½³ï¾ï½¶ï¾ï½·ï¾ï½¸ï¾ï½¹ï¾ï½ºï¾ï½»ï¾ï½¼ï¾ï½½ï¾ï½¾ï¾ï½¿ï¾ï¾€ï¾ï¾ï¾ï¾‚ï¾ï¾ƒï¾ï¾„ï¾ï¾Šï¾ï¾‹ï¾ï¾Œï¾ï¾ï¾ï¾ï¾ï¾Šï¾Ÿï¾‹ï¾Ÿï¾Œï¾Ÿï¾ï¾Ÿï¾ï¾Ÿ"
 			+"0123456789"
 			+" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
@@ -139,7 +139,7 @@ public class ConvertersTest extends TestCase{
 
     	Converter conv = Converters.newCustomConverter();
     	
-        final String from = "aA‚`±ƒA‚ 1‚P#”";
+        final String from = "aAï¼¡ï½±ã‚¢ã‚1ï¼‘#ï¼ƒ";
         final String to = from;
         
         assertEquals(to, conv.convert(from));
@@ -156,51 +156,51 @@ public class ConvertersTest extends TestCase{
 				Converters.getNumberZenkakuFromHankakuStringConverter(),
 				Converters.getSymbolZenkakuFromHankakuStringConverter()};
 
-    	// ‘S‚Ä‚Ì•¶š‚ğ”¼Šp¨‘SŠp
+    	// å…¨ã¦ã®æ–‡å­—ã‚’åŠè§’â†’å…¨è§’
 		Converter convHankakuFromZenkaku = Converters.newCustomConverter(convsHankakuFromZenkaku);
-    	// ‘S‚Ä‚Ì•¶š‚ğ‘SŠp¨”¼Šp
+    	// å…¨ã¦ã®æ–‡å­—ã‚’å…¨è§’â†’åŠè§’
 		Converter convZenkakuFromHankaku = Converters.newCustomConverter(convsZenkakuFromHankaku);
         
-        final String from = "aA‚`±ƒA‚ 1‚P#”";
-        final String toHankakuFromZenkaku = "‚‚`‚`ƒAƒA‚ ‚P‚P””";
-        final String toZenkakuFromHankaku = "aAA±±‚ 11##";
+        final String from = "aAï¼¡ï½±ã‚¢ã‚1ï¼‘#ï¼ƒ";
+        final String toHankakuFromZenkaku = "ï½ï¼¡ï¼¡ã‚¢ã‚¢ã‚ï¼‘ï¼‘ï¼ƒï¼ƒ";
+        final String toZenkakuFromHankaku = "aAAï½±ï½±ã‚11##";
         
         assertEquals(toHankakuFromZenkaku, convHankakuFromZenkaku.convert(from));
         assertEquals(toZenkakuFromHankaku, convZenkakuFromHankaku.convert(from));
     }
 
     public void testNewCustomStringConverter1() throws Exception {
-    	char[] fromChar = {'a','A','‚`','±','ƒA','‚ ','1','‚P','#','”'};
-    	char[] toChar = {'‚Q','ƒC','—','‚w', 'y', '#','¶','Z','‚´','9'}; 
+    	char[] fromChar = {'a','A','ï¼¡','ï½±','ã‚¢','ã‚','1','ï¼‘','#','ï¼ƒ'};
+    	char[] toChar = {'ï¼’','ã‚¤','ï¼ ','ï¼¸', 'y', '#','ï½¶','Z','ã–','9'}; 
 
     	Converter conv = Converters.newCustomStringConverter(ReversibleConverter.POSITIVE_CONVERT,fromChar,toChar);
         
-        final String from = "±a1#‚`ƒA”A‚ ‚P";
-        final String to = "‚w‚Q¶‚´—y9ƒC#Z";
+        final String from = "ï½±a1#ï¼¡ã‚¢ï¼ƒAã‚ï¼‘";
+        final String to = "ï¼¸ï¼’ï½¶ã–ï¼ y9ã‚¤#Z";
         
         assertEquals(to, conv.convert(from));
     }
     public void testNewCustomStringConverter2() throws Exception {
-    	String[] fromStr = {"<", "8‚X", "Üƒ’‚ñ", "oP‚p‚’"};
-    	String[] toStr = {"0‚P", "‚w‚x‚y", "‚Q‚R", "45‚U78‚X"};
+    	String[] fromStr = {"<", "8ï¼™", "ï¾œãƒ²ã‚“", "oPï¼±ï½’"};
+    	String[] toStr = {"0ï¼‘", "ï¼¸ï¼¹ï¼º", "ï¼’ï¼“", "45ï¼–78ï¼™"};
 
     	Converter conv = Converters.newCustomStringConverter(ReversibleConverter.POSITIVE_CONVERT,fromStr,toStr);
         
-        final String from = "=Üƒ’‚ñ=Üƒ’=oP‚p‚’=P‚p‚’=8‚X=‚X=<<<";
-        final String to = "=‚Q‚R=Üƒ’=45‚U78‚X=P‚p‚’=‚w‚x‚y=‚X=0‚P0‚P0‚P";
+        final String from = "=ï¾œãƒ²ã‚“=ï¾œãƒ²=oPï¼±ï½’=Pï¼±ï½’=8ï¼™=ï¼™=<<<";
+        final String to = "=ï¼’ï¼“=ï¾œãƒ²=45ï¼–78ï¼™=Pï¼±ï½’=ï¼¸ï¼¹ï¼º=ï¼™=0ï¼‘0ï¼‘0ï¼‘";
         
        assertEquals(to, conv.convert(from));
     }
     public void testNewCustomStringConverter3() throws Exception {
-    	String[] fromStr = {"<", "8‚X", "Üƒ’‚ñ", "oP‚p‚’"};
-    	String[] toStr = {"0‚P", "‚w‚x‚y", "‚Q‚R", "45‚U78‚X"};
-    	char[] fromChar = {'a','A','‚`','±','ƒA','‚ ','1','‚P','#','”'};
-    	char[] toChar = {'‚Q','ƒC','—','‚w', 'y', '#','¶','Z','‚´','9'}; 
+    	String[] fromStr = {"<", "8ï¼™", "ï¾œãƒ²ã‚“", "oPï¼±ï½’"};
+    	String[] toStr = {"0ï¼‘", "ï¼¸ï¼¹ï¼º", "ï¼’ï¼“", "45ï¼–78ï¼™"};
+    	char[] fromChar = {'a','A','ï¼¡','ï½±','ã‚¢','ã‚','1','ï¼‘','#','ï¼ƒ'};
+    	char[] toChar = {'ï¼’','ã‚¤','ï¼ ','ï¼¸', 'y', '#','ï½¶','Z','ã–','9'}; 
 
     	Converter conv = Converters.newCustomStringConverter(ReversibleConverter.POSITIVE_CONVERT,fromStr,toStr,fromChar,toChar);
         
-        final String from = "±a1#‚`ƒA”A‚ ‚P=Üƒ’‚ñ=Üƒ’=oP‚p‚’=P‚p‚’=8‚X=‚X=<<<";
-        final String to = "‚w‚Q¶‚´—y9ƒC#Z=‚Q‚R=Üƒ’=45‚U78‚X=P‚p‚’=‚w‚x‚y=‚X=0Z0Z0Z";
+        final String from = "ï½±a1#ï¼¡ã‚¢ï¼ƒAã‚ï¼‘=ï¾œãƒ²ã‚“=ï¾œãƒ²=oPï¼±ï½’=Pï¼±ï½’=8ï¼™=ï¼™=<<<";
+        final String to = "ï¼¸ï¼’ï½¶ã–ï¼ y9ã‚¤#Z=ï¼’ï¼“=ï¾œãƒ²=45ï¼–78ï¼™=Pï¼±ï½’=ï¼¸ï¼¹ï¼º=ï¼™=0Z0Z0Z";
         
         assertEquals(to, conv.convert(from));
     }
@@ -231,14 +231,14 @@ public class ConvertersTest extends TestCase{
     public void testAlphabetHankakuFromZenkakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getAlphabetHankakuFromZenkakuCharacterConverter();
         final char[] from = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-        final char[] to = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y".toCharArray();
+        final char[] to = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
         }
     }
     public void testAlphabetZenkakuFromHankakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getAlphabetZenkakuFromHankakuCharacterConverter();
-    	final char[] from = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y".toCharArray();
+    	final char[] from = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º".toCharArray();
     	final char[] to = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
@@ -247,8 +247,8 @@ public class ConvertersTest extends TestCase{
     
     public void testKatakanaHankakuFromZenkakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getKatakanaHankakuFromZenkakuCharacterConverter();
-    	final char[] from = "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß".toCharArray(); 
-    	final char[] to = "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JK".toCharArray();
+    	final char[] from = "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿ".toCharArray(); 
+    	final char[] to = "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œ".toCharArray();
     	
     	for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
@@ -257,8 +257,8 @@ public class ConvertersTest extends TestCase{
     
     public void testKatakanaZenkakuFromHankakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getKatakanaZenkakuFromHankakuCharacterConverter();
-    	final char[] from = "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JK".toCharArray();
-    	final char[] to = "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß".toCharArray(); 
+    	final char[] from = "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œ".toCharArray();
+    	final char[] to = "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿ".toCharArray(); 
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
         }
@@ -266,14 +266,14 @@ public class ConvertersTest extends TestCase{
     public void testNumberHankakuFromZenkakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getNumberHankakuFromZenkakuCharacterConverter();
     	final char[] from = "0123456789".toCharArray();
-    	final char[] to = "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X".toCharArray();
+    	final char[] to = "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
         }
     }
     public void testNumberZenkakuFromHankakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getNumberZenkakuFromHankakuCharacterConverter();
-    	final char[] from = "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X".toCharArray();
+    	final char[] from = "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™".toCharArray();
     	final char[] to = "0123456789".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
@@ -282,14 +282,14 @@ public class ConvertersTest extends TestCase{
     public void testSymbolHankakuFromZenkakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getSymbolHankakuFromZenkakuCharacterConverter();
     	final char[] from = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".toCharArray();
-    	final char[] to = "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`".toCharArray();
+    	final char[] to = "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
         }
     }
     public void testSymbolZenkakuFromHankakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getSymbolZenkakuFromHankakuCharacterConverter();
-    	final char[] from = "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`".toCharArray();
+    	final char[] from = "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½".toCharArray();
     	final char[] to = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".toCharArray();
         
         for(int i=0;i<from.length;i++){
@@ -298,16 +298,16 @@ public class ConvertersTest extends TestCase{
     }
     public void testKatakanaFromHiraganaCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getKatakanaFromHiraganaCharacterConverter();
-    	final char[] from = "ƒAƒ@ƒCƒBƒEƒDƒGƒFƒIƒHƒJƒKƒLƒMƒNƒOƒPƒQƒRƒSƒTƒUƒVƒWƒXƒYƒZƒ[ƒ\ƒ]ƒ^ƒ_ƒ`ƒaƒbƒcƒdƒeƒfƒgƒhƒiƒjƒkƒlƒmƒnƒoƒpƒqƒrƒsƒtƒuƒvƒwƒxƒyƒzƒ{ƒ|ƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒƒƒ†ƒ…ƒˆƒ‡ƒ‰ƒŠƒ‹ƒŒƒƒƒƒƒ‘ƒ’ƒ“RS".toCharArray();
-    	final char[] to = "‚ ‚Ÿ‚¢‚¡‚¤‚£‚¦‚¥‚¨‚§‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±‚²‚³‚´‚µ‚¶‚·‚¸‚¹‚º‚»‚¼‚½‚¾‚¿‚À‚Á‚Â‚Ã‚Ä‚Å‚Æ‚Ç‚È‚É‚Ê‚Ë‚Ì‚Í‚Î‚Ï‚Ğ‚Ñ‚Ò‚Ó‚Ô‚Õ‚Ö‚×‚Ø‚Ù‚Ú‚Û‚Ü‚İ‚Ş‚ß‚à‚â‚á‚ä‚ã‚æ‚å‚ç‚è‚é‚ê‚ë‚ì‚í‚î‚ï‚ğ‚ñTU".toCharArray();
+    	final char[] from = "ã‚¢ã‚¡ã‚¤ã‚£ã‚¦ã‚¥ã‚¨ã‚§ã‚ªã‚©ã‚«ã‚¬ã‚­ã‚®ã‚¯ã‚°ã‚±ã‚²ã‚³ã‚´ã‚µã‚¶ã‚·ã‚¸ã‚¹ã‚ºã‚»ã‚¼ã‚½ã‚¾ã‚¿ãƒ€ãƒãƒ‚ãƒƒãƒ„ãƒ…ãƒ†ãƒ‡ãƒˆãƒ‰ãƒŠãƒ‹ãƒŒãƒãƒãƒãƒãƒ‘ãƒ’ãƒ“ãƒ”ãƒ•ãƒ–ãƒ—ãƒ˜ãƒ™ãƒšãƒ›ãƒœãƒãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ£ãƒ¦ãƒ¥ãƒ¨ãƒ§ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ®ãƒ¯ãƒ°ãƒ±ãƒ²ãƒ³ãƒ½ãƒ¾".toCharArray();
+    	final char[] to = "ã‚ãã„ãƒã†ã…ãˆã‡ãŠã‰ã‹ãŒããããã‘ã’ã“ã”ã•ã–ã—ã˜ã™ãšã›ãœãããŸã ã¡ã¢ã£ã¤ã¥ã¦ã§ã¨ã©ãªã«ã¬ã­ã®ã¯ã°ã±ã²ã³ã´ãµã¶ã·ã¸ã¹ãºã»ã¼ã½ã¾ã¿ã‚€ã‚ã‚‚ã‚„ã‚ƒã‚†ã‚…ã‚ˆã‚‡ã‚‰ã‚Šã‚‹ã‚Œã‚ã‚ã‚ã‚ã‚‘ã‚’ã‚“ã‚ã‚".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
         }
     }
     public void testHiraganaFromKatakanaCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getHiraganaFromKatakanaCharacterConverter();
-    	final char[] from = "‚ ‚Ÿ‚¢‚¡‚¤‚£‚¦‚¥‚¨‚§‚©‚ª‚«‚¬‚­‚®‚¯‚°‚±‚²‚³‚´‚µ‚¶‚·‚¸‚¹‚º‚»‚¼‚½‚¾‚¿‚À‚Á‚Â‚Ã‚Ä‚Å‚Æ‚Ç‚È‚É‚Ê‚Ë‚Ì‚Í‚Î‚Ï‚Ğ‚Ñ‚Ò‚Ó‚Ô‚Õ‚Ö‚×‚Ø‚Ù‚Ú‚Û‚Ü‚İ‚Ş‚ß‚à‚â‚á‚ä‚ã‚æ‚å‚ç‚è‚é‚ê‚ë‚ì‚í‚î‚ï‚ğ‚ñTU".toCharArray();
-    	final char[] to = "ƒAƒ@ƒCƒBƒEƒDƒGƒFƒIƒHƒJƒKƒLƒMƒNƒOƒPƒQƒRƒSƒTƒUƒVƒWƒXƒYƒZƒ[ƒ\ƒ]ƒ^ƒ_ƒ`ƒaƒbƒcƒdƒeƒfƒgƒhƒiƒjƒkƒlƒmƒnƒoƒpƒqƒrƒsƒtƒuƒvƒwƒxƒyƒzƒ{ƒ|ƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒƒƒ†ƒ…ƒˆƒ‡ƒ‰ƒŠƒ‹ƒŒƒƒƒƒƒ‘ƒ’ƒ“RS".toCharArray();
+    	final char[] from = "ã‚ãã„ãƒã†ã…ãˆã‡ãŠã‰ã‹ãŒããããã‘ã’ã“ã”ã•ã–ã—ã˜ã™ãšã›ãœãããŸã ã¡ã¢ã£ã¤ã¥ã¦ã§ã¨ã©ãªã«ã¬ã­ã®ã¯ã°ã±ã²ã³ã´ãµã¶ã·ã¸ã¹ãºã»ã¼ã½ã¾ã¿ã‚€ã‚ã‚‚ã‚„ã‚ƒã‚†ã‚…ã‚ˆã‚‡ã‚‰ã‚Šã‚‹ã‚Œã‚ã‚ã‚ã‚ã‚‘ã‚’ã‚“ã‚ã‚".toCharArray();
+    	final char[] to = "ã‚¢ã‚¡ã‚¤ã‚£ã‚¦ã‚¥ã‚¨ã‚§ã‚ªã‚©ã‚«ã‚¬ã‚­ã‚®ã‚¯ã‚°ã‚±ã‚²ã‚³ã‚´ã‚µã‚¶ã‚·ã‚¸ã‚¹ã‚ºã‚»ã‚¼ã‚½ã‚¾ã‚¿ãƒ€ãƒãƒ‚ãƒƒãƒ„ãƒ…ãƒ†ãƒ‡ãƒˆãƒ‰ãƒŠãƒ‹ãƒŒãƒãƒãƒãƒãƒ‘ãƒ’ãƒ“ãƒ”ãƒ•ãƒ–ãƒ—ãƒ˜ãƒ™ãƒšãƒ›ãƒœãƒãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ£ãƒ¦ãƒ¥ãƒ¨ãƒ§ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ®ãƒ¯ãƒ°ãƒ±ãƒ²ãƒ³ãƒ½ãƒ¾".toCharArray();
         for(int i=0;i<from.length;i++){
             assertEquals(to[i], conv.convert(from[i]));
         }
@@ -315,14 +315,14 @@ public class ConvertersTest extends TestCase{
     public void testHankakuFromZenkakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getHankakuFromZenkakuCharacterConverter();
     	final String fromStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			+ "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß" 
+			+ "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿ" 
 			+"0123456789"
 			+" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-    	final String toStr = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y"
-			+ "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JK" 
-			+ "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X"
-			+ "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`";
+    	final String toStr = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º"
+			+ "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œ" 
+			+ "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™"
+			+ "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½";
     	final char[] from = fromStr.toCharArray();
     	final char[] to = toStr.toCharArray();
 
@@ -332,13 +332,13 @@ public class ConvertersTest extends TestCase{
     }
     public void testZenkakuFromHankakuCharacterConverter() throws Exception {
     	CharacterConverter conv = Converters.getZenkakuFromHankakuCharacterConverter();
-    	final String fromStr = "‚‚‚‚ƒ‚„‚…‚†‚‡‚ˆ‚‰‚Š‚‹‚Œ‚‚‚‚‚‘‚’‚“‚”‚•‚–‚—‚˜‚™‚š‚`‚a‚b‚c‚d‚e‚f‚g‚h‚i‚j‚k‚l‚m‚n‚o‚p‚q‚r‚s‚t‚u‚v‚w‚x‚y"
-			+ "BuvAEƒ’ƒ@ƒBƒDƒFƒHƒƒƒ…ƒ‡ƒb[ƒAƒCƒEƒGƒIƒJƒLƒNƒPƒRƒTƒVƒXƒZƒ\ƒ^ƒ`ƒcƒeƒgƒiƒjƒkƒlƒmƒnƒqƒtƒwƒzƒ}ƒ~ƒ€ƒƒ‚ƒ„ƒ†ƒˆƒ‰ƒŠƒ‹ƒŒƒƒƒ“JK" 
-			+ "‚O‚P‚Q‚R‚S‚T‚U‚V‚W‚X"
-			+ "@Ih”“•fij–{C|D^FGƒ„H—mnOQeobp`";
+    	final String fromStr = "ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½šï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º"
+			+ "ã€‚ã€Œã€ã€ãƒ»ãƒ²ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒ£ãƒ¥ãƒ§ãƒƒãƒ¼ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ³ã‚›ã‚œ" 
+			+ "ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™"
+			+ "ã€€ï¼â€ï¼ƒï¼„ï¼…ï¼†â€™ï¼ˆï¼‰ï¼Šï¼‹ï¼Œï¼ï¼ï¼ï¼šï¼›ï¼œï¼ï¼ï¼Ÿï¼ ï¼»ï¿¥ï¼½ï¼¾ï¼¿â€˜ï½›ï½œï½ï½";
         
     	final String toStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			+ "¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞß" 
+			+ "ï½¡ï½¢ï½£ï½¤ï½¥ï½¦ï½§ï½¨ï½©ï½ªï½«ï½¬ï½­ï½®ï½¯ï½°ï½±ï½²ï½³ï½´ï½µï½¶ï½·ï½¸ï½¹ï½ºï½»ï½¼ï½½ï½¾ï½¿ï¾€ï¾ï¾‚ï¾ƒï¾„ï¾…ï¾†ï¾‡ï¾ˆï¾‰ï¾Šï¾‹ï¾Œï¾ï¾ï¾ï¾ï¾‘ï¾’ï¾“ï¾”ï¾•ï¾–ï¾—ï¾˜ï¾™ï¾šï¾›ï¾œï¾ï¾ï¾Ÿ" 
 			+"0123456789"
 			+" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 

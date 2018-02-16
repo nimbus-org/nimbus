@@ -32,26 +32,26 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface FormatConverter extends ReversibleConverter{
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚©‚ç•¶š—ñ‚Ö‚Ì•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰æ–‡å­—åˆ—ã¸ã®å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int OBJECT_TO_STRING = POSITIVE_CONVERT;
     
     /**
-     * •¶š—ñ‚©‚çƒIƒuƒWƒFƒNƒg‚Ö‚Ì•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ–‡å­—åˆ—ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STRING_TO_OBJECT = REVERSE_CONVERT;
     
     /**
-     * •ÏŠ·ƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param format •ÏŠ·ƒtƒH[ƒ}ƒbƒg
+     * @param format å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setFormat(String format);
 }

@@ -49,7 +49,7 @@ import jp.ossc.nimbus.service.beancontrol.BeanFlowMonitorImpl;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * BeanFlowé¿çsQueueHandlerÉTÅ[ÉrÉXÅB<p>
+ * BeanFlowÂÆüË°åQueueHandler„Çµ„Éº„Éì„Çπ„ÄÇ<p>
  *
  * @author M.Takata
  */
@@ -244,7 +244,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         }
     }
 
-    // QueueHandlerÇÃJavaDoc
+    // QueueHandler„ÅÆJavaDoc
     public void handleDequeuedObject(Object obj) throws Throwable{
         Object input = obj;
         AsynchContext asynchCtx = null;
@@ -333,7 +333,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         }
     }
 
-    // QueueHandlerÇÃJavaDoc
+    // QueueHandler„ÅÆJavaDoc
     public boolean handleError(Object obj, Throwable th) throws Throwable{
         try{
             if(errorLogMessageId != null){
@@ -352,7 +352,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         }
     }
 
-    // QueueHandlerÇÃJavaDoc
+    // QueueHandler„ÅÆJavaDoc
     public void handleRetryOver(Object obj, Throwable th) throws Throwable{
         try{
             if(obj instanceof AsynchContext){
@@ -536,7 +536,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // ãNÇ±ÇÁÇ»Ç¢ÇÕÇ∏
+                // Ëµ∑„Åì„Çâ„Å™„ÅÑ„ÅØ„Åö
             }
         }
     }

@@ -37,17 +37,17 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 
 
 	/**
-	 * StreamExchangeInterceptorServiceTest‚ÌŠeƒvƒƒpƒeƒB‚ğİ’èAæ“¾‚·‚éƒeƒXƒgB
+	 * StreamExchangeInterceptorServiceTestã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã€å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>StreamExchangeInterceptorServiceTestƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>Šesetterƒƒ\ƒbƒh‚ğÀs</li>
-	 * <li>Šegetterƒƒ\ƒbƒh‚ğÀs</li>
+	 * <li>StreamExchangeInterceptorServiceTestã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>å„setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œ</li>
+	 * <li>å„getterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹Bİ’è‚µ‚½’l‚ª³‚µ‚­æ“¾‚Å‚«‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚è¨­å®šã—ãŸå€¤ãŒæ­£ã—ãå–å¾—ã§ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetterGetter() {
@@ -148,11 +148,11 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 	}
 
 	/**
-	 * ƒT[ƒrƒXŠJnAI—¹‚·‚éƒeƒXƒgB
+	 * ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹ã€çµ‚äº†ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒT[ƒrƒX‚ğ’è‹`‚µ‚½’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µ‚ÄƒT[ƒrƒX‚ğŠJn‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®šç¾©ã—ãŸå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹</li>
 	 * <li>requestStreamConverterService</li>
 	 * <li>responseStreamConverterService</li>
 	 * <li>threadContextService</li>
@@ -166,9 +166,9 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 	 * <li>responseObjectEditorFinderService</li>
 	 * <li>exceptionEditorFinderService</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚</li>
 	 * </ul>
 	 */
 	public void testStartService() {
@@ -188,7 +188,7 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/aop/interceptor/servlet/service-definitionTest.xml");
@@ -196,15 +196,15 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 	}
 
 	/**
-	 * ƒT[ƒrƒXŠJnAI—¹‚·‚éƒeƒXƒgB
+	 * ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹ã€çµ‚äº†ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>ƒRƒ“ƒo[ƒ^‚ÌƒT[ƒrƒX‚ğ’è‹`‚µ‚Ä‚¢‚È‚¢’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µ‚ÄƒT[ƒrƒX‚ğŠJn‚·‚é</li>
+	 * <li>ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®šç¾©ã—ã¦ã„ãªã„å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚·‚éB—áŠOIllegalArgumentException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã™ã‚‹ã€‚ä¾‹å¤–IllegalArgumentExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 //	public void testStartServiceInvalid() {
@@ -217,7 +217,7 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 //			= (StreamExchangeInterceptorService) ServiceManagerFactory
 //					.getServiceObject("StreamExchangeInterceptor");
 //			ic.startService();
-//			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+//			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 //
 //		} catch (IllegalArgumentException e) {
 //		} catch (Exception e) {
@@ -229,21 +229,21 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 
 
 	/**
-	 * Converter‚ğg‚Á‚ÄƒXƒgƒŠ[ƒ€‚Æ“Á’èƒIƒuƒWƒFƒNƒg‚ÌŒğŠ·‚ğs‚¤ƒeƒXƒgB
+	 * Converterã‚’ä½¿ã£ã¦ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ç‰¹å®šã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®äº¤æ›ã‚’è¡Œã†ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒT[ƒrƒX‚ğ’è‹`‚µ‚½’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µ‚ÄƒT[ƒrƒX‚ğŠJn‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å®šç¾©ã—ãŸå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã‚µãƒ¼ãƒ“ã‚¹ã‚’é–‹å§‹ã™ã‚‹</li>
 	 * <li>requestStreamConverterService</li>
 	 * <li>responseStreamConverterService</li>
-	 * <li>ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬</li>
-	 * <li>ServletRequest‚ÌInputStreamƒpƒ‰ƒ[ƒ^‚É•ÏŠ·Œ³XMLƒXƒgƒŠ[ƒ€‚ğİ’è</li>
-	 * <li>ã‹LƒCƒ“ƒXƒ^ƒ“ƒX‚ğg‚Á‚ÄƒRƒ“ƒeƒLƒXƒgƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µA<BR>
-	 * invokeFilter(context, chain)‚ğÀs‚·‚é</li>
+	 * <li>ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ</li>
+	 * <li>ServletRequestã®InputStreamãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å¤‰æ›å…ƒXMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š</li>
+	 * <li>ä¸Šè¨˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½¿ã£ã¦ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã€<BR>
+	 * invokeFilter(context, chain)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>HttpServletRequest‚Éİ’è‚³‚ê‚Ä‚¢‚é•ÏŠ·Œ³‚ÌXMLƒXƒgƒŠ[ƒ€‚ª³‚µ‚­•ÏŠ·‚·‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>HttpServletRequestã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å¤‰æ›å…ƒã®XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒæ­£ã—ãå¤‰æ›ã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testInvokeFilter() {
@@ -257,30 +257,30 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 					.getServiceObject("StreamExchangeInterceptor");
 			ic.startService();
 			
-			//ServletRequest‚ÌInputStreamƒpƒ‰ƒ[ƒ^‚É•ÏŠ·Œ³XMLƒXƒgƒŠ[ƒ€‚ğİ’è
+			//ServletRequestã®InputStreamãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å¤‰æ›å…ƒXMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š
 			String inxml = "<?xml version=\"1.0\" encoding=\"Shift_JIS\"?>\n" +
 			"<dataSet><schema><header name=\"TestHeader\">" +
 			":name,java.lang.String,,,\n:password,java.lang.String,,,"  +
 							"</header></schema><header name=\"TestHeader\">" +
 							"<name>TestName</name><password>TestPassWord</password></header></dataSet>";
-			//ServletinputStream‚ÌƒZƒbƒg
+			//ServletinputStreamã®ã‚»ãƒƒãƒˆ
 			MockServletInputStream is = new MockServletInputStream(inxml.getBytes());
-			//ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬
+			//ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ
 			MockHttpServletRequest req = new MockHttpServletRequest(is);			
 			ServletResponse res = new MockHttpServletResponse();
 			MockFilterChain chain = new MockFilterChain();
-			//ƒGƒ“ƒR[ƒfƒBƒ“ƒOƒZƒbƒg
+			//ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚»ãƒƒãƒˆ
 			req.setCharacterEncoding("Shift_JIS");
-			//ƒRƒ“ƒeƒLƒXƒgì¬			
+			//ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä½œæˆ			
 			ServletFilterInvocationContext context = 
 				new ServletFilterInvocationContext((ServletRequest)req,res,(javax.servlet.FilterChain)chain);
 
-			//ƒCƒ“ƒ^ƒZƒvƒ^ƒCƒ“ƒXƒ^ƒ“ƒX¶¬
+			//ã‚¤ãƒ³ã‚¿ã‚»ãƒ—ã‚¿ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ
 			DefaultInterceptorChain ichain = new DefaultInterceptorChain();
-			//“ü—ÍƒXƒgƒŠ[ƒ€‚Í”ñˆ³k
+			//å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¯éåœ§ç¸®
 			ic.setRequestStreamInflate(false);
 			ic.invokeFilter(context, (InterceptorChain)ichain);
-			//•ÏŠ·Œã‚Ìƒf[ƒ^ŒŸØ
+			//å¤‰æ›å¾Œã®ãƒ‡ãƒ¼ã‚¿æ¤œè¨¼
 			DataSet ds = (DataSet)req.getAttribute(ic.requestObjectAttributeName);
 			assertEquals("TestName", ds.getHeader("TestHeader").getProperty("name"));
 			assertEquals("TestPassWord", ds.getHeader("TestHeader").getProperty("password"));
@@ -291,7 +291,7 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/aop/interceptor/servlet/service-definitionTest.xml");
@@ -301,25 +301,25 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 
 
 	/**
-	 * “ü—ÍƒXƒgƒŠ[ƒ€‚Ìˆ³k‚ğ‰ğœ‚·‚éƒeƒXƒgB
+	 * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®åœ§ç¸®ã‚’è§£é™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>HttpServletRequestƒIƒuƒWƒFƒNƒg‚Æˆ³kƒf[ƒ^‚ÌƒXƒgƒŠ[ƒ€‚ğw’è‚µ‚Ä<BR>
-	 * decompress(HttpServletRequest request, InputStream is) ‚ğÀs‚·‚é</li>
+	 * <li>HttpServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨åœ§ç¸®ãƒ‡ãƒ¼ã‚¿ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’æŒ‡å®šã—ã¦<BR>
+	 * decompress(HttpServletRequest request, InputStream is) ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³í‚É‰ğ“€‚ªs‚í‚ê‚½‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>æ­£å¸¸ã«è§£å‡ãŒè¡Œã‚ã‚ŒãŸã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testDecompress() {
 		try{
 		StreamExchangeInterceptorService ic = new StreamExchangeInterceptorService();
-		//ServletRequest/Response‚Ìƒ‚ƒbƒN‚ğ¶¬
+		//ServletRequest/Responseã®ãƒ¢ãƒƒã‚¯ã‚’ç”Ÿæˆ
 		MockHttpServletRequest req = new MockHttpServletRequest();			
-		//ƒGƒ“ƒR[ƒfƒBƒ“ƒOƒZƒbƒg
-		//ˆ³kƒf[ƒ^‚ÌƒXƒgƒŠ[ƒ€¶¬(HttpRequestImpl#compress()‚Åˆ³kƒf[ƒ^ƒXƒgƒŠ[ƒ€‚ğì¬)
+		//ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚»ãƒƒãƒˆ
+		//åœ§ç¸®ãƒ‡ãƒ¼ã‚¿ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ç”Ÿæˆ(HttpRequestImpl#compress()ã§åœ§ç¸®ãƒ‡ãƒ¼ã‚¿ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ä½œæˆ)
 		String inxml = "<?xml version=\"1.0\" encoding=\"Shift_JIS\"?>\n" +
 		"<dataSet><schema><header name=\"TestHeader\">" +
 		":name,java.lang.String,,,\n:password,java.lang.String,,,"  +
@@ -335,18 +335,18 @@ public class StreamExchangeInterceptorServiceTest extends TestCase {
 		
 		}catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğˆ³k‚·‚éB<p>
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’åœ§ç¸®ã™ã‚‹ã€‚<p>
      */
     protected InputStream compress(byte[] inputBytes) throws IOException {
-        // ƒwƒbƒ_[[Content-Encoding]‚Ì’l‚ğæ“¾
+        // ãƒ˜ãƒƒãƒ€ãƒ¼[Content-Encoding]ã®å€¤ã‚’å–å¾—
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         OutputStream os = baos;
-        // gzipˆ³k
+        // gzipåœ§ç¸®
         os = new GZIPOutputStream(os);
         os.write(inputBytes, 0, inputBytes.length);
         os.flush();

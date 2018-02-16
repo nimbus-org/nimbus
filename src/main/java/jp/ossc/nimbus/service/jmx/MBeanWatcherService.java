@@ -89,7 +89,7 @@ import jp.ossc.nimbus.service.writer.MessageWriteException;
 import jp.ossc.nimbus.util.converter.Converter;
 
 /**
- * MBean‚ğŠÄ‹‚·‚éƒT[ƒrƒXB<p>
+ * MBeanã‚’ç›£è¦–ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -121,132 +121,132 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     private boolean isConnectError;
     private PropertyAccess propertyAccess;
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setRMIAdaptorName(String name){
         rmiAdaptorName = name;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public String getRMIAdaptorName(){
         return rmiAdaptorName;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setServiceURL(String url){
         serviceURL = url;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public String getServiceURL(){
         return serviceURL;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setJMXConnectorEnvironment(Map env){
         jmxConnectorEnvironment = env;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public Map getJMXConnectorEnvironment(){
         return jmxConnectorEnvironment;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setInterval(long interval){
         this.interval = interval;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public long getInterval(){
         return interval;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setCategoryServiceName(ServiceName name){
         categoryServiceName = name;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public ServiceName getCategoryServiceName(){
         return categoryServiceName;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setConnectOnStart(boolean isConnect){
         isConnectOnStart = isConnect;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public boolean isConnectOnStart(){
         return isConnectOnStart;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setGetValueErrorMessageId(String id){
         getValueErrorMessageId = id;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public String getGetValueErrorMessageId(){
         return getValueErrorMessageId;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setConnectErrorMessageId(String id){
         connectErrorMessageId = id;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public String getConnectErrorMessageId(){
         return connectErrorMessageId;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setWriteErrorMessageId(String id){
         writeErrorMessageId = id;
     }
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public String getWriteErrorMessageId(){
         return writeErrorMessageId;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setMBeanSet(boolean isSet){
         isMBeanSet = isSet;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public boolean isMBeanSet(){
         return isMBeanSet;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setObjectName(String name) throws MalformedObjectNameException{
         objectName = new ObjectName(name);
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public String getObjectName(){
         return objectName == null ? null : objectName.toString();
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setQueryExp(QueryExp exp){
         queryExp = exp;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public QueryExp getQueryExp(){
         return queryExp;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public boolean isResetOnStart(){
         return isResetOnStart;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void setResetOnStart(boolean isResetOnStart){
         this.isResetOnStart = isResetOnStart;
     }
@@ -258,12 +258,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         targetList.add(target);
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public List getTargetList(){
         return targetList;
     }
 
-    // MBeanWatcherServiceMBean‚ÌJavaDoc
+    // MBeanWatcherServiceMBeanã®JavaDoc
     public void reset(){
         for(int i = 0, imax = targetList.size(); i < imax; i++){
             Target target = (Target)targetList.get(i);
@@ -496,7 +496,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ŠÄ‹‘ÎÛB<p>
+     * ç›£è¦–å¯¾è±¡ã€‚<p>
      *
      * @author M.Takata
      */
@@ -511,25 +511,25 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected String contextKey;
 
         /**
-         * {@link MBeanWatcherService}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+         * {@link MBeanWatcherService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name MBeanWatcherService‚ÌƒT[ƒrƒX–¼
+         * @param name MBeanWatcherServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         protected void setWatcherServiceName(ServiceName name){
             this.watcherServiceName = name;
         }
 
         /**
-         * {@link MBeanWatcherService}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+         * {@link MBeanWatcherService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return MBeanWatcherService‚ÌƒT[ƒrƒX–¼
+         * @return MBeanWatcherServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         protected ServiceName getWatcherServiceName(){
             return watcherServiceName;
         }
 
         /**
-         * {@link MBeanWatcherService}‚ğİ’è‚·‚éB<p>
+         * {@link MBeanWatcherService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
          * @param watcher MBeanWatcherService
          */
@@ -538,7 +538,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link MBeanWatcherService}‚ğæ“¾‚·‚éB<p>
+         * {@link MBeanWatcherService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
          * @return MBeanWatcherService
          */
@@ -547,7 +547,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link Logger}‚ğİ’è‚·‚éB<p>
+         * {@link Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
          * @param logger Logger
          */
@@ -556,7 +556,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link Logger}‚ğæ“¾‚·‚éB<p>
+         * {@link Logger}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
          * @return Logger
          */
@@ -565,57 +565,57 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * o—Í‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+         * å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒL[
+         * @return ã‚­ãƒ¼
          */
         public String getKey(){
             return key;
         }
 
         /**
-         * o—Í‚·‚éÛ‚ÌƒL[‚ğİ’è‚·‚éB<p>
+         * å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param key ƒL[
+         * @param key ã‚­ãƒ¼
          */
         public void setKey(String key){
             this.key = key;
         }
 
         /**
-         * ƒRƒ“ƒeƒLƒXƒg‚Éo—Í‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+         * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒL[
+         * @return ã‚­ãƒ¼
          */
         public String getContextKey(){
             return contextKey;
         }
 
         /**
-         * ƒRƒ“ƒeƒLƒXƒg‚Éo—Í‚·‚éÛ‚ÌƒL[‚ğİ’è‚·‚éB<p>
+         * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param key ƒL[
+         * @param key ã‚­ãƒ¼
          */
         public void setContextKey(String key){
             contextKey = key;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public abstract Object getValue(MBeanServerConnection connection) throws Exception;
 
         /**
-         * ’l‚ğBigDecimal‚É•ÏŠ·‚·‚éB<p>
+         * å€¤ã‚’BigDecimalã«å¤‰æ›ã™ã‚‹ã€‚<p>
          *
-         * @param value ’l
-         * @param isNullToZero ’l‚ªnull‚¾‚Á‚½ê‡‚Éƒ[ƒ‚Æ‚İ‚È‚·ê‡‚ÍAtrueBfalse‚Ìê‡‚ÍA’l‚ªnull‚Ìê‡Anull‚ğ•Ô‚·B
-         * @return •ÏŠ·‚³‚ê‚½BigDecimal’l
-         * @exception NumberFormatException •ÏŠ·‚É¸”s‚µ‚½ê‡
+         * @param value å€¤
+         * @param isNullToZero å€¤ãŒnullã ã£ãŸå ´åˆã«ã‚¼ãƒ­ã¨ã¿ãªã™å ´åˆã¯ã€trueã€‚falseã®å ´åˆã¯ã€å€¤ãŒnullã®å ´åˆã€nullã‚’è¿”ã™ã€‚
+         * @return å¤‰æ›ã•ã‚ŒãŸBigDecimalå€¤
+         * @exception NumberFormatException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected static BigDecimal toBigDecimal(Object value, boolean isNullToZero) throws NumberFormatException{
             BigDecimal result = null;
@@ -636,27 +636,27 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
          */
         public void reset(){
         }
 
         /**
-         * ŠJn‚·‚éB<p>
+         * é–‹å§‹ã™ã‚‹ã€‚<p>
          */
         public void start(){
         }
 
         /**
-         * I—¹‚·‚éB<p>
+         * çµ‚äº†ã™ã‚‹ã€‚<p>
          */
         public void stop(){
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -668,8 +668,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ^ƒCƒ€ƒXƒ^ƒ“ƒvB<p>
-     * ŠÄ‹‚Ìƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğæ“¾‚·‚éB<br>
+     * ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã€‚<p>
+     * ç›£è¦–æ™‚ã®ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -678,49 +678,49 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 3632167440398869434L;
 
         /**
-         * ƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+         * ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
          */
         public static final String DEFAULT_KEY = "Timestamp";
 
         private String format;
 
         /**
-         * ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğ•¶š—ñ‚É•ÒW‚·‚éê‡‚ÌƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+         * ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹å ´åˆã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒtƒH[ƒ}ƒbƒg
+         * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
          */
         public String getFormat(){
             return format;
         }
 
         /**
-         * ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğ•¶š—ñ‚É•ÒW‚·‚éê‡‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚Í‚È‚µ‚ÅAƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚Æ‚µ‚Äjava.util.DateƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B<br>
+         * ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹å ´åˆã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ãªã—ã§ã€ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã¨ã—ã¦java.util.Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚<br>
          *
-         * @param format ƒtƒH[ƒ}ƒbƒg
+         * @param format ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
          */
         public void setFormat(String format){
             this.format = format;
         }
 
         /**
-         * o—Í‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
-         * {@link #setKey(String)}‚Åİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍA{@link #DEFAULT_KEY}‚ğ•Ô‚·B<br>
+         * å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * {@link #setKey(String)}ã§è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ã€{@link #DEFAULT_KEY}ã‚’è¿”ã™ã€‚<br>
          *
-         * @return ƒL[
+         * @return ã‚­ãƒ¼
          */
         public String getKey(){
             return super.getKey() != null ? super.getKey() : DEFAULT_KEY;
         }
 
         /**
-         * ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ğæ“¾‚·‚éB<p>
-         * {@link #setFormat(String)}‚ÅƒtƒH[ƒ}ƒbƒg‚ğw’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAŒÄ‚Ño‚µ“_‚Å‚Ìjava.util.DateƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B<br>
-         * {@link #setFormat(String)}‚ÅƒtƒH[ƒ}ƒbƒg‚ğw’è‚µ‚Ä‚¢‚éê‡‚ÍAŒÄ‚Ño‚µ“_‚Å‚Ìjava.util.DateƒIƒuƒWƒFƒNƒg‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Ä•¶š—ñ‚ğ•Ô‚·B<br>
+         * ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * {@link #setFormat(String)}ã§ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã—ã¦ã„ãªã„å ´åˆã¯ã€å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ã®java.util.Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚<br>
+         * {@link #setFormat(String)}ã§ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ã®java.util.Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦æ–‡å­—åˆ—ã‚’è¿”ã™ã€‚<br>
          *
-         * @param connection JMXÚ‘±
-         * @return ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv
-         * @exception Exception ƒtƒH[ƒ}ƒbƒg‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—
+         * @exception Exception ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             Object value = format == null ? (Object)new Date() : (Object)new SimpleDateFormat(format).format(new Date());
@@ -731,9 +731,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -745,8 +745,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‘ÎÛB<p>
-     * ƒRƒ“ƒeƒLƒXƒg‚©‚ç’l‚ğæ“¾‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå¯¾è±¡ã€‚<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -755,20 +755,20 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 566760345569101974L;
 
         /**
-         * ƒRƒ“ƒeƒLƒXƒg‚©‚ç’l‚ğæ“¾‚·‚éB<p>
+         * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ƒRƒ“ƒeƒLƒXƒg‚©‚çæ“¾‚µ‚½’l
-         * @exception Exception ƒtƒH[ƒ}ƒbƒg‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å–å¾—ã—ãŸå€¤
+         * @exception Exception ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             return watcher.getContextValue(contextKey);
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -780,8 +780,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * MBeanWatcher‘ÎÛB<p>
-     * MBeanWatcher‚©‚ç’l‚ğæ“¾‚·‚éB<br>
+     * MBeanWatcherå¯¾è±¡ã€‚<p>
+     * MBeanWatcherã‹ã‚‰å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -810,11 +810,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * MBeanWatcher‚©‚ç’l‚ğæ“¾‚·‚éB<p>
+         * MBeanWatcherã‹ã‚‰å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return MBeanWatcher‚©‚çæ“¾‚µ‚½’l
-         * @exception Exception ƒtƒH[ƒ}ƒbƒg‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return MBeanWatcherã‹ã‚‰å–å¾—ã—ãŸå€¤
+         * @exception Exception ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             MBeanWatcherService watcherService = mBeanWatcherService;
@@ -829,9 +829,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -843,8 +843,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Managed BeanŠÄ‹‘ÎÛB<p>
-     * Managed Bean‚ğŠÄ‹‘ÎÛ‚Æ‚·‚éŠÄ‹‘ÎÛŠî’êƒNƒ‰ƒXB<br>
+     * Managed Beanç›£è¦–å¯¾è±¡ã€‚<p>
+     * Managed Beanã‚’ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹ç›£è¦–å¯¾è±¡åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -855,71 +855,71 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected QueryExp queryExp;
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAŠÄ‹‘ÎÛ‚ÍAˆêˆÓ‚ÈManaged BeanB<br>
+         * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ç›£è¦–å¯¾è±¡ã¯ã€ä¸€æ„ãªManaged Beanã€‚<br>
          *
-         * @param isSet ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤ê‡true
+         * @param isSet ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†å ´åˆtrue
          */
         public void setMBeanSet(boolean isSet){
             isMBeanSet = isSet;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡AŠÄ‹‘ÎÛ‚ÌManaged Bean‚ğW‡‚Æ‚µ‚Äˆµ‚¤
+         * @return trueã®å ´åˆã€ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’é›†åˆã¨ã—ã¦æ‰±ã†
          */
         public boolean isMBeanSet(){
             return isMBeanSet;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-         * {@link #setMBeanSet(boolean) setMBeanSet(false)}‚Æİ’è‚µ‚Ä‚¢‚éê‡‚ÍAManaged Bean‚ğˆêˆÓ‚É“Á’è‚·‚éŠ®‘S–¼‚ğw’è‚·‚éB<br>
-         * {@link #setMBeanSet(boolean) setMBeanSet(true)}‚Æİ’è‚µ‚Ä‚¢‚éê‡‚ÍAManaged Bean‚ÌW‡‚ğ“Á’è‚·‚éƒIƒuƒWƒFƒNƒg–¼‚ğw’è‚·‚éB<br>
+         * ç›£è¦–å¯¾è±¡ã®Managed Beanã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * {@link #setMBeanSet(boolean) setMBeanSet(false)}ã¨è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€Managed Beanã‚’ä¸€æ„ã«ç‰¹å®šã™ã‚‹å®Œå…¨åã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
+         * {@link #setMBeanSet(boolean) setMBeanSet(true)}ã¨è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€Managed Beanã®é›†åˆã‚’ç‰¹å®šã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
          *
-         * @param name Managed Bean‚Ì–¼‘O‚ğJMX‚ÌƒIƒuƒWƒFƒNƒg–¼Œ`®‚Åw’è‚·‚é
-         * @exception MalformedObjectNameException ƒIƒuƒWƒFƒNƒg–¼‚ª•s³‚Èê‡
+         * @param name Managed Beanã®åå‰ã‚’JMXã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåå½¢å¼ã§æŒ‡å®šã™ã‚‹
+         * @exception MalformedObjectNameException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåãŒä¸æ­£ãªå ´åˆ
          */
         public void setObjectName(String name) throws MalformedObjectNameException{
             this.objectName = new ObjectName(name);
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã®Managed Beanã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Managed Bean‚Ì–¼‘O‚ğJMX‚ÌƒIƒuƒWƒFƒNƒg–¼Œ`®‚Åw’è‚·‚é
+         * @return Managed Beanã®åå‰ã‚’JMXã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåå½¢å¼ã§æŒ‡å®šã™ã‚‹
          */
         public String getObjectName(){
             return objectName == null ? null : objectName.toString();
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ği‚è‚ŞğŒ®‚ğİ’è‚·‚éB<p>
-         * {@link #setMBeanSet(boolean) setMBeanSet(true)}‚Ìê‡‚Ì‚İ—LŒøB<br>
+         * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’çµã‚Šè¾¼ã‚€æ¡ä»¶å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * {@link #setMBeanSet(boolean) setMBeanSet(true)}ã®å ´åˆã®ã¿æœ‰åŠ¹ã€‚<br>
          *
-         * @param exp ğŒ®
+         * @param exp æ¡ä»¶å¼
          */
         public void setQueryExp(QueryExp exp){
             queryExp = exp;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ği‚è‚ŞğŒ®‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã®Managed Beanã‚’çµã‚Šè¾¼ã‚€æ¡ä»¶å¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ğŒ®
+         * @return æ¡ä»¶å¼
          */
         public QueryExp getQueryExp(){
             return queryExp;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ª‚ÂŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éB<p>
-         * ŠÄ‹‘ÎÛ‚ÌManaged Bean‚ªW‡‚Ìê‡AƒL[‚ªƒIƒuƒWƒFƒNƒg–¼A’l‚ªŠÄ‹‘ÎÛ‚Ì’l‚Æ‚È‚éƒ}ƒbƒv‚ğ•Ô‚·B<br>
+         * ç›£è¦–å¯¾è±¡ã®Managed BeanãŒæŒã¤ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * ç›£è¦–å¯¾è±¡ã®Managed BeanãŒé›†åˆã®å ´åˆã€ã‚­ãƒ¼ãŒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã€å€¤ãŒç›£è¦–å¯¾è±¡ã®å€¤ã¨ãªã‚‹ãƒãƒƒãƒ—ã‚’è¿”ã™ã€‚<br>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             boolean tmpIsMBeanSet = isMBeanSet;
@@ -952,19 +952,19 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg–¼‚ÌManaged Bean‚ª‚ÂŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®Managed BeanãŒæŒã¤ç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @param objectName ƒIƒuƒWƒFƒNƒg–¼
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @param objectName ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected abstract Object getValue(MBeanServerConnection connection, ObjectName objectName) throws Exception;
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -986,7 +986,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Managed Bean‚Ì‘®«‚ğŠÄ‹‘ÎÛ‚Æ‚·‚é{@link MBeanWatcherService.MBeanTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * Managed Beanã®å±æ€§ã‚’ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹{@link MBeanWatcherService.MBeanTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -996,49 +996,49 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private String name;
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚Ì‘®«–¼‚ğİ’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®å±æ€§åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ‘®«–¼
+         * @param name å±æ€§å
          */
         public void setName(String name){
             this.name = name;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚Ì‘®«–¼‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®å±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ‘®«–¼
+         * @return å±æ€§å
          */
         public String getName(){
             return name;
         }
 
         /**
-         * o—Í‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
-         * {@link #setKey(String)}‚Åİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAƒIƒuƒWƒFƒNƒg–¼#‘®«–¼‚ğ•Ô‚·B<br>
+         * å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * {@link #setKey(String)}ã§è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå#å±æ€§åã‚’è¿”ã™ã€‚<br>
          *
-         * @return ƒL[
+         * @return ã‚­ãƒ¼
          */
         public String getKey(){
             return super.getKey() != null ? super.getKey() : getObjectName() + '#' + getName();
         }
 
         /**
-         * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg–¼‚ÌManaged Bean‚ª‚ÂŠÄ‹‘ÎÛ‚Ì‘®«’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®Managed BeanãŒæŒã¤ç›£è¦–å¯¾è±¡ã®å±æ€§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @param objectName ƒIƒuƒWƒFƒNƒg–¼
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @param objectName ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection, ObjectName objectName) throws Exception{
             return connection.getAttribute(objectName, name);
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -1050,7 +1050,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Managed Bean‚Ì•¡”‚Ì‘®«‚ğŠÄ‹‘ÎÛ‚Æ‚·‚é{@link MBeanWatcherService.MBeanTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * Managed Beanã®è¤‡æ•°ã®å±æ€§ã‚’ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹{@link MBeanWatcherService.MBeanTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1060,30 +1060,30 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private String[] names;
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚Ì‘®«–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®å±æ€§åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param names ‘®«–¼‚Ì”z—ñ
+         * @param names å±æ€§åã®é…åˆ—
          */
         public void setNames(String[] names){
             this.names = names;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚Ì‘®«–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®å±æ€§åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ‘®«–¼‚Ì”z—ñ
+         * @return å±æ€§åã®é…åˆ—
          */
         public String[] getNames(){
             return names;
         }
 
         /**
-         * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg–¼‚ÌManaged Bean‚ª‚ÂAŠÄ‹‘ÎÛ‚Ì‘®«–¼‚Æ‚»‚Ì’l‚ÌMap‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®Managed BeanãŒæŒã¤ã€ç›£è¦–å¯¾è±¡ã®å±æ€§åã¨ãã®å€¤ã®Mapã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @param objectName ƒIƒuƒWƒFƒNƒg–¼
-         * @return ŠÄ‹‘ÎÛ‚Ì‘®«–¼‚Æ‚»‚Ì’l‚ÌMap
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @param objectName ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+         * @return ç›£è¦–å¯¾è±¡ã®å±æ€§åã¨ãã®å€¤ã®Map
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection, ObjectName objectName) throws Exception{
             List list = connection.getAttributes(objectName, names);
@@ -1098,9 +1098,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -1124,7 +1124,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Managed Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğŠÄ‹‘ÎÛ‚Æ‚·‚é{@link MBeanWatcherService.MBeanTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹{@link MBeanWatcherService.MBeanTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1135,45 +1135,45 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private String[] signiture;
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“–¼‚ğİ’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ƒIƒyƒŒ[ƒVƒ‡ƒ“–¼
+         * @param name ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å
          */
         public void setName(String name){
             this.name = name;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“–¼‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³åã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒIƒyƒŒ[ƒVƒ‡ƒ“–¼
+         * @return ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å
          */
         public String getName(){
             return name;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÌƒVƒOƒjƒ`ƒƒ‚ğİ’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚·ã‚°ãƒ‹ãƒãƒ£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param sgn ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÌƒVƒOƒjƒ`ƒƒ
+         * @param sgn ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚·ã‚°ãƒ‹ãƒãƒ£
          */
         public void setSigniture(String[] sgn){
             signiture = sgn;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÌƒVƒOƒjƒ`ƒƒ‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚·ã‚°ãƒ‹ãƒãƒ£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÌƒVƒOƒjƒ`ƒƒ
+         * @return ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚·ã‚°ãƒ‹ãƒãƒ£
          */
         public String[] getSigniture(){
             return signiture;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”‚ğİ’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param params ƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”‚Ì”z—ñ
+         * @param params ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°ã®é…åˆ—
          */
         public void setParameters(Object[] params){
             if(this.params == null){
@@ -1185,9 +1185,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”‚ğ’Ç‰Á‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
          *
-         * @param param ƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”
+         * @param param ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°
          */
         public void addParameter(Object param){
             if(params == null){
@@ -1197,40 +1197,40 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Æ‚·‚éManaged Bean‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”ƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã¨ã™ã‚‹Managed Beanã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ìˆø”ƒŠƒXƒg
+         * @return ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®å¼•æ•°ãƒªã‚¹ãƒˆ
          */
         public List getParameterList(){
             return params;
         }
 
         /**
-         * o—Í‚·‚éÛ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
-         * {@link #setKey(String)}‚Åİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAƒIƒuƒWƒFƒNƒg–¼#ƒIƒyƒŒ[ƒVƒ‡ƒ“–¼([ƒpƒ‰ƒ[ƒ^1,ƒpƒ‰ƒ[ƒ^2,....])‚ğ•Ô‚·B<br>
+         * å‡ºåŠ›ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * {@link #setKey(String)}ã§è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå#ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å([ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿1,ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿2,....])ã‚’è¿”ã™ã€‚<br>
          *
-         * @return ƒL[
+         * @return ã‚­ãƒ¼
          */
         public String getKey(){
             return super.getKey() != null ? super.getKey() : getObjectName() + '#' + getName() + '(' + (params == null ? "" : params.toString()) + ')';
         }
 
         /**
-         * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg–¼‚ÌManaged Bean‚ª‚ÂŠÄ‹‘ÎÛ‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ì–ß‚è’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®Managed BeanãŒæŒã¤ç›£è¦–å¯¾è±¡ã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @param objectName ƒIƒuƒWƒFƒNƒg–¼
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @param objectName ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection, ObjectName objectName) throws Exception{
             return connection.invoke(objectName, name, params == null ? null : params.toArray(), signiture);
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -1243,8 +1243,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒvŠÄ‹‘ÎÛB<p>
-     * ŠÄ‹‘ÎÛ‚ğƒ‰ƒbƒv‚µ‚Ä“Á’è‚Ìˆ—‚ğ•t‰Á‚·‚éŠÄ‹‘ÎÛŠî’êƒNƒ‰ƒXB<br>
+     * ãƒ©ãƒƒãƒ—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ç›£è¦–å¯¾è±¡ã‚’ãƒ©ãƒƒãƒ—ã—ã¦ç‰¹å®šã®å‡¦ç†ã‚’ä»˜åŠ ã™ã‚‹ç›£è¦–å¯¾è±¡åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -1254,10 +1254,10 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected Target target;
 
         /**
-         * {@link MBeanWatcherService}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‚É‚àMBeanWatcherService‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<br>
+         * {@link MBeanWatcherService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡ã«ã‚‚MBeanWatcherServiceã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
-         * @param name MBeanWatcherService‚ÌƒT[ƒrƒX–¼
+         * @param name MBeanWatcherServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public void setWatcherServiceName(ServiceName name){
             super.setWatcherServiceName(name);
@@ -1265,8 +1265,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link MBeanWatcherService}‚ğİ’è‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‚É‚àMBeanWatcherService‚ğİ’è‚·‚éB<br>
+         * {@link MBeanWatcherService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡ã«ã‚‚MBeanWatcherServiceã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
          * @param watcher MBeanWatcherService
          */
@@ -1276,8 +1276,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link Logger}‚ğİ’è‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‚É‚àLogger‚ğİ’è‚·‚éB<br>
+         * {@link Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡ã«ã‚‚Loggerã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
          * @param logger Logger
          */
@@ -1287,26 +1287,26 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒ‰ƒbƒv‚·‚éŠÄ‹‘ÎÛ{@link Logger}‚ğİ’è‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã™ã‚‹ç›£è¦–å¯¾è±¡{@link Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param target ŠÄ‹‘ÎÛ
+         * @param target ç›£è¦–å¯¾è±¡
          */
         public void setTarget(Target target){
             this.target = target;
         }
 
         /**
-         * ƒ‰ƒbƒv‚·‚éŠÄ‹‘ÎÛ{@link Logger}‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã™ã‚‹ç›£è¦–å¯¾è±¡{@link Logger}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ŠÄ‹‘ÎÛ
+         * @return ç›£è¦–å¯¾è±¡
          */
         public Target getTarget(){
             return target;
         }
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‚àƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡ã‚‚ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          */
         public void reset(){
             super.reset();
@@ -1314,8 +1314,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ŠJn‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‚àŠJn‚·‚éB<br>
+         * é–‹å§‹ã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡ã‚‚é–‹å§‹ã™ã‚‹ã€‚<br>
          */
         public void start(){
             super.start();
@@ -1323,8 +1323,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * I—¹‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‚àI—¹‚·‚éB<br>
+         * çµ‚äº†ã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡ã‚‚çµ‚äº†ã™ã‚‹ã€‚<br>
          */
         public void stop(){
             target.stop();
@@ -1332,9 +1332,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -1346,7 +1346,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğƒ`ƒFƒbƒN‚·‚é{@link MBeanWatcherService.WrapTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹{@link MBeanWatcherService.WrapTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -1358,46 +1358,46 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private List checkConditions = new ArrayList();
 
         /**
-         * ŠÄ‹‘ÎÛ‚ª”’lŒ^‚Ånull‚Ìê‡‚ÉAƒ[ƒ‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åƒ[ƒ‚Æ‚İ‚È‚³‚È‚¢B<br>
+         * ç›£è¦–å¯¾è±¡ãŒæ•°å€¤å‹ã§nullã®å ´åˆã«ã€ã‚¼ãƒ­ã¨ã¿ãªã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚¼ãƒ­ã¨ã¿ãªã•ãªã„ã€‚<br>
          *
-         * @param isNullToZero ƒ[ƒ‚Æ‚İ‚È‚·ê‡Atrue
+         * @param isNullToZero ã‚¼ãƒ­ã¨ã¿ãªã™å ´åˆã€true
          */
         public void setNullToZero(boolean isNullToZero){
             this.isNullToZero = isNullToZero;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚ª”’lŒ^‚Ånull‚Ìê‡‚ÉAƒ[ƒ‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ãŒæ•°å€¤å‹ã§nullã®å ´åˆã«ã€ã‚¼ãƒ­ã¨ã¿ãªã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡Aƒ[ƒ‚Æ‚İ‚È‚·
+         * @return trueã®å ´åˆã€ã‚¼ãƒ­ã¨ã¿ãªã™
          */
         public boolean isNullToZero(){
             return isNullToZero;
         }
 
         /**
-         * ƒ`ƒFƒbƒNƒGƒ‰[‚ÌƒƒO‚ğo—Í‚·‚é{@link Logger}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-         * w’è‚µ‚È‚¢ê‡‚ÍA‚±‚ÌƒT[ƒrƒX‚Ì{@link ServiceBase#getLogger()}‚Åæ“¾‚³‚ê‚éLogger‚ÅƒƒOo—Í‚ğs‚¤B<br>
+         * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹{@link Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®{@link ServiceBase#getLogger()}ã§å–å¾—ã•ã‚Œã‚‹Loggerã§ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã€‚<br>
          *
-         * @param name LoggerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+         * @param name Loggerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public void setLoggerServiceName(ServiceName name){
             loggerServiceName = name;
         }
 
         /**
-         * ƒ`ƒFƒbƒNƒGƒ‰[‚ÌƒƒO‚ğo—Í‚·‚é{@link Logger}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+         * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹{@link Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return LoggerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+         * @return Loggerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public ServiceName getLoggerServiceName(){
             return loggerServiceName;
         }
 
         /**
-         * {@link Logger}‚ğæ“¾‚·‚éB<p>
-         * {@link #setLoggerServiceName(ServiceName)}‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ÌLogger‚ğ•Ô‚·B<br>
+         * {@link Logger}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * {@link #setLoggerServiceName(ServiceName)}ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®Loggerã‚’è¿”ã™ã€‚<br>
          *
          * @return Logger
          */
@@ -1410,31 +1410,31 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒ`ƒFƒbƒN‚·‚éğŒ‚ğ’Ç‰Á‚·‚éB<p>
-         * ’Ç‰Á‚³‚ê‚½‡”Ô‚Éƒ`ƒFƒbƒN‚ğ‚µ‚ÄAƒ`ƒFƒbƒNƒGƒ‰[‚É‚È‚é‚ÆŒã‘±‚ÌğŒ‚Íƒ`ƒFƒbƒN‚¹‚¸‚ÉƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ¡ä»¶ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+         * è¿½åŠ ã•ã‚ŒãŸé †ç•ªã«ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ã€ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã¨å¾Œç¶šã®æ¡ä»¶ã¯ãƒã‚§ãƒƒã‚¯ã›ãšã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          *
-         * @param condition ƒ`ƒFƒbƒNğŒ
+         * @param condition ãƒã‚§ãƒƒã‚¯æ¡ä»¶
          */
         public void addCheckCondition(Condition condition){
             checkConditions.add(condition);
         }
 
         /**
-         * ƒ`ƒFƒbƒN‚·‚éğŒ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+         * ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ¡ä»¶ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ`ƒFƒbƒNğŒ‚ÌƒŠƒXƒg
+         * @return ãƒã‚§ãƒƒã‚¯æ¡ä»¶ã®ãƒªã‚¹ãƒˆ
          */
         public List getCheckConditionList(){
             return checkConditions;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚Ì–ß‚è’l‚ğæ“¾‚µAƒ`ƒFƒbƒN‚ğs‚Á‚Äƒ`ƒFƒbƒNƒGƒ‰[‚Ìê‡‚ÍƒƒO‚ğo—Í‚·‚éB<p>
-         * ƒ`ƒFƒbƒN‚·‚éğŒ‚ğ’Ç‰Á‚³‚ê‚½‡”Ô‚Éƒ`ƒFƒbƒN‚µ‚ÄAƒ`ƒFƒbƒNƒGƒ‰[‚É‚È‚é‚ÆŒã‘±‚ÌğŒ‚Íƒ`ƒFƒbƒN‚¹‚¸‚ÉƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã®æˆ»ã‚Šå€¤ã‚’å–å¾—ã—ã€ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã£ã¦ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
+         * ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ¡ä»¶ã‚’è¿½åŠ ã•ã‚ŒãŸé †ç•ªã«ãƒã‚§ãƒƒã‚¯ã—ã¦ã€ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ã¨å¾Œç¶šã®æ¡ä»¶ã¯ãƒã‚§ãƒƒã‚¯ã›ãšã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             Object value = target.getValue(connection);
@@ -1458,8 +1458,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‹y‚ÑAŠÄ‹‘ÎÛ‚Ìƒ`ƒFƒbƒNƒGƒ‰[ó‘Ô‚àƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡åŠã³ã€ç›£è¦–å¯¾è±¡ã®ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼çŠ¶æ…‹ã‚‚ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          */
         public void reset(){
             super.reset();
@@ -1470,9 +1470,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -1494,7 +1494,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒ`ƒFƒbƒNğŒB<br>
+         * ãƒã‚§ãƒƒã‚¯æ¡ä»¶ã€‚<br>
          *
          * @author M.Takata
          */
@@ -1517,7 +1517,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             private MBeanWatcherService watcher;
 
             /**
-             * {@link MBeanWatcherService}‚ğİ’è‚·‚éB<p>
+             * {@link MBeanWatcherService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
              *
              * @param watcher MBeanWatcherService
              */
@@ -1534,54 +1534,54 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ŠÄ‹‘ÎÛ‚ğƒ`ƒFƒbƒN‚·‚éğŒ®‚ğİ’è‚·‚éB<p>
-             * ğŒ®‚ÍA{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}‚ğw’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚Å•]‰¿‚·‚éB<br>
-             * ŠÄ‹‘ÎÛ’l‚ğ•\‚·"value"ƒL[ƒ[ƒh‚ğŠÜ‚ßAŠÄ‹‘ÎÛ’l‚ğ•]‰¿‚µ‚Äboolean‚ğ•Ô‚·®‚Æ‚·‚éB<br>
-             * ğŒ®‚Ì•]‰¿‚ªtrue‚É‚È‚é‚ÆAƒ`ƒFƒbƒNƒGƒ‰[‚Æ‚İ‚È‚³‚ê‚éB<br>
+             * ç›£è¦–å¯¾è±¡ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ¡ä»¶å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+             * æ¡ä»¶å¼ã¯ã€{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚’æŒ‡å®šã—ã¦ã„ãªã„å ´åˆã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã§è©•ä¾¡ã™ã‚‹ã€‚<br>
+             * ç›£è¦–å¯¾è±¡å€¤ã‚’è¡¨ã™"value"ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’å«ã‚ã€ç›£è¦–å¯¾è±¡å€¤ã‚’è©•ä¾¡ã—ã¦booleanã‚’è¿”ã™å¼ã¨ã™ã‚‹ã€‚<br>
+             * æ¡ä»¶å¼ã®è©•ä¾¡ãŒtrueã«ãªã‚‹ã¨ã€ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã¨ã¿ãªã•ã‚Œã‚‹ã€‚<br>
              *
-             * @param expression ğŒ®
+             * @param expression æ¡ä»¶å¼
              */
             public void setCheckExpression(String expression){
                 this.expression = expression;
             }
 
             /**
-             * ŠÄ‹‘ÎÛ‚ğƒ`ƒFƒbƒN‚·‚éğŒ®‚ğæ“¾‚·‚éB<p>
+             * ç›£è¦–å¯¾è±¡ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ¡ä»¶å¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ğŒ®
+             * @return æ¡ä»¶å¼
              */
             public String getCheckExpression(){
                 return expression;
             }
 
             /**
-             * ƒ`ƒFƒbƒNƒGƒ‰[‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-             * {@link #setLogMessageIdByErrorCount(int, String) setLogMessageIdByErrorCount(1, id)}‚ÅŒÄ‚Ño‚·‚Ì‚Æ“™‰¿B<br>
+             * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+             * {@link #setLogMessageIdByErrorCount(int, String) setLogMessageIdByErrorCount(1, id)}ã§å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã€‚<br>
              *
-             * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+             * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
              */
             public void setLogMessageId(String id){
                 setLogMessageIdByErrorCount(1, id);
             }
 
             /**
-             * ƒ`ƒFƒbƒNƒGƒ‰[‚ªw’è‚µ‚½‰ñ”˜A‘±‚µ‚Ä”­¶‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-             * ƒ`ƒFƒbƒNƒGƒ‰[‚Ì‰ñ”‚ÍAƒ`ƒFƒbƒNƒGƒ‰[‚ª˜A‘±‚µ‚Ä”­¶‚µ‚È‚©‚Á‚½ê‡‚ÆAw’è‚³‚ê‚½ƒ`ƒFƒbƒNƒGƒ‰[‰ñ”‚ÌÅ‘å‚Ì’l‚Ì‰ñ”‚Ü‚Å‘‚¦‚é‚ÆƒŠƒZƒbƒg‚³‚ê‚éB<br>
-             * ƒƒOo—Í‚ÌÛ‚É‚ÍAƒT[ƒrƒX–¼AƒL[AğŒ®AŠÄ‹‘ÎÛ‚Ì’lA˜A‘±‚µ‚Ä”­¶‚µ‚½ƒ`ƒFƒbƒNƒGƒ‰[‚Ì‰ñ”‚ğƒƒOo—Í‚Ìˆø”‚Æ‚µ‚Ä“n‚·B<br>
-             * ”Ä—p‚ÌƒƒOƒƒbƒZ[ƒWID‚Æ‚µ‚ÄA{@link #MSG_ID_CHECK_WARN}A{@link #MSG_ID_CHECK_ERROR}A{@link #MSG_ID_CHECK_FATAL}‚ğ—pˆÓ‚µ‚Ä‚¢‚éB<br>
+             * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒæŒ‡å®šã—ãŸå›æ•°é€£ç¶šã—ã¦ç™ºç”Ÿã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã®å›æ•°ã¯ã€ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒé€£ç¶šã—ã¦ç™ºç”Ÿã—ãªã‹ã£ãŸå ´åˆã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼å›æ•°ã®æœ€å¤§ã®å€¤ã®å›æ•°ã¾ã§å¢—ãˆã‚‹ã¨ãƒªã‚»ãƒƒãƒˆã•ã‚Œã‚‹ã€‚<br>
+             * ãƒ­ã‚°å‡ºåŠ›ã®éš›ã«ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹åã€ã‚­ãƒ¼ã€æ¡ä»¶å¼ã€ç›£è¦–å¯¾è±¡ã®å€¤ã€é€£ç¶šã—ã¦ç™ºç”Ÿã—ãŸãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã®å›æ•°ã‚’ãƒ­ã‚°å‡ºåŠ›ã®å¼•æ•°ã¨ã—ã¦æ¸¡ã™ã€‚<br>
+             * æ±ç”¨ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã¨ã—ã¦ã€{@link #MSG_ID_CHECK_WARN}ã€{@link #MSG_ID_CHECK_ERROR}ã€{@link #MSG_ID_CHECK_FATAL}ã‚’ç”¨æ„ã—ã¦ã„ã‚‹ã€‚<br>
              *
-             * @param errorCount ƒ`ƒFƒbƒNƒGƒ‰[‰ñ”
-             * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+             * @param errorCount ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼å›æ•°
+             * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
              */
             public void setLogMessageIdByErrorCount(int errorCount, String id){
                 idMap.put(new Integer(errorCount), id);
             }
 
             /**
-             * ƒ`ƒFƒbƒN‚ğÀs‚·‚é‚ğİ’è‚·‚éB<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚’å®Ÿè¡Œã™ã‚‹æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
              *
-             * @param times HH:mm:ss‚Ü‚½‚ÍAHH:mm:ss.SSS‚Ì•¶š—ñ”z—ñ
-             * @exception ParseException w’è‚³‚ê‚½•¶š—ñ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+             * @param times HH:mm:ssã¾ãŸã¯ã€HH:mm:ss.SSSã®æ™‚åˆ»æ–‡å­—åˆ—é…åˆ—
+             * @exception ParseException æŒ‡å®šã•ã‚ŒãŸæ™‚åˆ»æ–‡å­—åˆ—ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
              */
             public void setCheckTimes(String[] times) throws ParseException{
                 if(times == null || times.length == 0){
@@ -1597,9 +1597,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ƒ`ƒFƒbƒN‚ğÀs‚·‚é‚ğæ“¾‚·‚éB<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚’å®Ÿè¡Œã™ã‚‹æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return HH:mm:ss‚Ü‚½‚ÍAHH:mm:ss.SSS‚Ì•¶š—ñ”z—ñ
+             * @return HH:mm:ssã¾ãŸã¯ã€HH:mm:ss.SSSã®æ™‚åˆ»æ–‡å­—åˆ—é…åˆ—
              */
             public String[] getCheckTimes(){
                 if(checkTimes == null){
@@ -1613,10 +1613,10 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ƒ`ƒFƒbƒN‚ğÀs‚·‚éŠúŠÔ‚ğİ’è‚·‚éB<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚’å®Ÿè¡Œã™ã‚‹æœŸé–“ã‚’è¨­å®šã™ã‚‹ã€‚<p>
              *
-             * @param terms HH:mm:ss‚Ü‚½‚ÍAHH:mm:ss.SSS‚Ì•¶š—ñ‚ğ-‚Å˜AŒ‹‚µ‚½ŠJn-I—¹‚Ì•¶š—ñ”z—ñBI—¹‚ÍŠúŠÔ‚ÉŠÜ‚Ü‚ê‚È‚¢B
-             * @exception ParseException w’è‚³‚ê‚½•¶š—ñ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+             * @param terms HH:mm:ssã¾ãŸã¯ã€HH:mm:ss.SSSã®æ™‚åˆ»æ–‡å­—åˆ—ã‚’-ã§é€£çµã—ãŸé–‹å§‹æ™‚åˆ»-çµ‚äº†æ™‚åˆ»ã®æ–‡å­—åˆ—é…åˆ—ã€‚çµ‚äº†æ™‚åˆ»ã¯æœŸé–“ã«å«ã¾ã‚Œãªã„ã€‚
+             * @exception ParseException æŒ‡å®šã•ã‚ŒãŸæ™‚åˆ»æ–‡å­—åˆ—ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
              */
             public void setCheckTerms(String[] terms) throws ParseException{
                 if(terms == null || terms.length == 0){
@@ -1632,9 +1632,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ƒ`ƒFƒbƒN‚ğÀs‚·‚éŠúŠÔ‚ğæ“¾‚·‚éB<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚’å®Ÿè¡Œã™ã‚‹æœŸé–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return HH:mm:ss‚Ü‚½‚ÍAHH:mm:ss.SSS‚Ì•¶š—ñ‚ğ-‚Å˜AŒ‹‚µ‚½ŠJn-I—¹‚Ì•¶š—ñ”z—ñBI—¹‚ÍŠúŠÔ‚ÉŠÜ‚Ü‚ê‚È‚¢B
+             * @return HH:mm:ssã¾ãŸã¯ã€HH:mm:ss.SSSã®æ™‚åˆ»æ–‡å­—åˆ—ã‚’-ã§é€£çµã—ãŸé–‹å§‹æ™‚åˆ»-çµ‚äº†æ™‚åˆ»ã®æ–‡å­—åˆ—é…åˆ—ã€‚çµ‚äº†æ™‚åˆ»ã¯æœŸé–“ã«å«ã¾ã‚Œãªã„ã€‚
              */
             public String[] getCheckTerms(){
                 if(checkTerms == null){
@@ -1648,32 +1648,32 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ƒ`ƒFƒbƒNƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉÅ‰‚Ìˆê‰ñ‚Ì‚İƒƒOo—Í‚·‚é‚©‚ğİ’è‚·‚éB<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«æœ€åˆã®ä¸€å›ã®ã¿ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
              *
-             * @param isOnce ƒ`ƒFƒbƒNƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉÅ‰‚Ìˆê‰ñ‚Ì‚İƒƒOo—Í‚·‚é‚©
+             * @param isOnce ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«æœ€åˆã®ä¸€å›ã®ã¿ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹
              */
             public void setOnceOutputLog(boolean isOnce) {
                 isOnceOutputLog = isOnce;
             }
 
             /**
-             * ƒ`ƒFƒbƒNƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉÅ‰‚Ìˆê‰ñ‚Ì‚İƒƒOo—Í‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+             * ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«æœ€åˆã®ä¸€å›ã®ã¿ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ƒ`ƒFƒbƒNƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉÅ‰‚Ìˆê‰ñ‚Ì‚İƒƒOo—Í‚·‚é‚©
+             * @return ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«æœ€åˆã®ä¸€å›ã®ã¿ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹
              */
             public boolean isOnceOutputLog() {
                 return isOnceOutputLog;
             }
 
             /**
-             * w’è‚³‚ê‚½’l‚Ìƒ`ƒFƒbƒN‚ğs‚Á‚Äƒ`ƒFƒbƒNƒGƒ‰[‚ª”­¶‚·‚é‚ÆƒƒO‚ğo—Í‚·‚éB<p>
+             * æŒ‡å®šã•ã‚ŒãŸå€¤ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã£ã¦ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹ã¨ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
              *
-             * @param value ƒ`ƒFƒbƒN‘ÎÛ‚Ì’l
-             * @param logger ƒƒOo—Í‚ğs‚¤Logger
-             * @param watcherServiceName ŠÄ‹ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-             * @param key ŠÄ‹‘ÎÛ‚ÌƒL[
-             * @return ƒ`ƒFƒbƒNŒ‹‰ÊBƒ`ƒFƒbƒNƒGƒ‰[‚Ìê‡‚Ífalse
-             * @exception Exception ƒ`ƒFƒbƒNˆ—‚É¸”s‚µ‚½ê‡
+             * @param value ãƒã‚§ãƒƒã‚¯å¯¾è±¡ã®å€¤
+             * @param logger ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†Logger
+             * @param watcherServiceName ç›£è¦–ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+             * @param key ç›£è¦–å¯¾è±¡ã®ã‚­ãƒ¼
+             * @return ãƒã‚§ãƒƒã‚¯çµæœã€‚ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯false
+             * @exception Exception ãƒã‚§ãƒƒã‚¯å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
              */
             protected boolean check(Object value, Logger logger, ServiceName watcherServiceName, String key) throws Exception{
                 if(errorCount == -1){
@@ -1776,16 +1776,16 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ŠÄ‹‘ÎÛ‚Ìƒ`ƒFƒbƒNƒGƒ‰[‰ñ”‚ğƒŠƒZƒbƒg‚·‚éB<br>
+             * ç›£è¦–å¯¾è±¡ã®ãƒã‚§ãƒƒã‚¯ã‚¨ãƒ©ãƒ¼å›æ•°ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
              */
             protected void reset(){
                 errorCount = 0;
             }
 
             /**
-             * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+             * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return •¶š—ñ•\Œ»
+             * @return æ–‡å­—åˆ—è¡¨ç¾
              */
             public String toString(){
                 StringBuilder buf = new StringBuilder();
@@ -1972,8 +1972,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * •ÒWŠÄ‹‘ÎÛB<p>
-     * ŠÄ‹‘ÎÛ‚ğƒ‰ƒbƒv‚µ‚ÄAŠÄ‹‘ÎÛ‚Ì’l‚É•ÒWˆ—‚ğs‚¤ŠÄ‹‘ÎÛŠî’êƒNƒ‰ƒXB<br>
+     * ç·¨é›†ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ç›£è¦–å¯¾è±¡ã‚’ãƒ©ãƒƒãƒ—ã—ã¦ã€ç›£è¦–å¯¾è±¡ã®å€¤ã«ç·¨é›†å‡¦ç†ã‚’è¡Œã†ç›£è¦–å¯¾è±¡åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -1984,30 +1984,30 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected boolean isElementEdit;
 
         /**
-         * ŠÄ‹‘ÎÛ‚Ì’l‚ªW‡‚â”z—ñ‚Ìê‡‚ÉA‚»‚ÌŠe—v‘f‚É‘Î‚µ‚Ä•ÒW‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å—v‘f‚É‘Î‚·‚é•ÒW‚Ís‚í‚È‚¢B<br>
+         * ç›£è¦–å¯¾è±¡ã®å€¤ãŒé›†åˆã‚„é…åˆ—ã®å ´åˆã«ã€ãã®å„è¦ç´ ã«å¯¾ã—ã¦ç·¨é›†ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§è¦ç´ ã«å¯¾ã™ã‚‹ç·¨é›†ã¯è¡Œã‚ãªã„ã€‚<br>
          *
-         * @param isElement Še—v‘f‚É‘Î‚µ‚Ä•ÒW‚ğs‚¤ê‡true
+         * @param isElement å„è¦ç´ ã«å¯¾ã—ã¦ç·¨é›†ã‚’è¡Œã†å ´åˆtrue
          */
         public void setElementEdit(boolean isElement){
             isElementEdit = isElement;
         }
 
         /**
-         * ŠÄ‹‘ÎÛ‚Ì’l‚ªW‡‚â”z—ñ‚Ìê‡‚ÉA‚»‚ÌŠe—v‘f‚É‘Î‚µ‚Ä•ÒW‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã®å€¤ãŒé›†åˆã‚„é…åˆ—ã®å ´åˆã«ã€ãã®å„è¦ç´ ã«å¯¾ã—ã¦ç·¨é›†ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡AŠe—v‘f‚É‘Î‚µ‚Ä•ÒW‚ğs‚¤
+         * @return trueã®å ´åˆã€å„è¦ç´ ã«å¯¾ã—ã¦ç·¨é›†ã‚’è¡Œã†
          */
         public boolean isElementEdit(){
             return isElementEdit;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ•ÒW‚µ‚Äæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’ç·¨é›†ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             Object value = target.getValue(connection);
@@ -2041,18 +2041,18 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * w’è‚³‚ê‚½’l‚ğ•ÒW‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ç·¨é›†ã™ã‚‹ã€‚<p>
          *
-         * @param value •ÒW‘ÎÛ‚Ì’l
-         * @return •ÒWŒ‹‰Ê‚Ì’l
-         * @exception Exception •ÒWˆ—‚É¸”s‚µ‚½ê‡
+         * @param value ç·¨é›†å¯¾è±¡ã®å€¤
+         * @return ç·¨é›†çµæœã®å€¤
+         * @exception Exception ç·¨é›†å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected abstract Object edit(Object value) throws Exception;
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2064,7 +2064,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}‚Å•ÒW‚·‚é{@link MBeanWatcherService.EditTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã§ç·¨é›†ã™ã‚‹{@link MBeanWatcherService.EditTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2086,21 +2086,21 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * •ÒW®‚ğİ’è‚·‚éB<p>
-         * ŠÄ‹‘ÎÛ’l‚ğ•\‚·"value"ƒL[ƒ[ƒh‚ğŠÜ‚ßAŠÄ‹‘ÎÛ’l‚ğ•ÒW‚µ‚Ä•Ô‚·®‚Æ‚·‚éB<br>
+         * ç·¨é›†å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ç›£è¦–å¯¾è±¡å€¤ã‚’è¡¨ã™"value"ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’å«ã‚ã€ç›£è¦–å¯¾è±¡å€¤ã‚’ç·¨é›†ã—ã¦è¿”ã™å¼ã¨ã™ã‚‹ã€‚<br>
          *
-         * @param expression •ÒW®
+         * @param expression ç·¨é›†å¼
          */
         public void setExpression(String expression){
             this.expression = expression;
         }
 
         /**
-         * w’è‚³‚ê‚½’l‚ğ•ÒW‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ç·¨é›†ã™ã‚‹ã€‚<p>
          *
-         * @param value •ÒW‘ÎÛ‚Ì’l
-         * @return •ÒWŒ‹‰Ê‚Ì’l
-         * @exception Exception •ÒWˆ—‚É¸”s‚µ‚½ê‡
+         * @param value ç·¨é›†å¯¾è±¡ã®å€¤
+         * @return ç·¨é›†çµæœã®å€¤
+         * @exception Exception ç·¨é›†å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object edit(Object value) throws Exception{
             jp.ossc.nimbus.service.interpreter.Interpreter itr = interpreter;
@@ -2114,9 +2114,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2128,7 +2128,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚é{@link MBeanWatcherService.EditTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹{@link MBeanWatcherService.EditTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2139,9 +2139,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private boolean isIgnoreNullProperty;
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚©‚çæ“¾‚µ‚½‚¢ƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‹ã‚‰å–å¾—ã—ãŸã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param property ƒvƒƒpƒeƒB
+         * @param property ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setProperty(jp.ossc.nimbus.beans.Property property){
             property.setIgnoreNullProperty(isIgnoreNullProperty);
@@ -2149,19 +2149,19 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚©‚çæ“¾‚µ‚½‚¢ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‹ã‚‰å–å¾—ã—ãŸã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒvƒƒpƒeƒB
+         * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public jp.ossc.nimbus.beans.Property getProperty(){
             return property;
         }
 
         /**
-         * nullQÆ‚ÌƒvƒƒpƒeƒB‚ğæ“¾g—p‚Æ‚µ‚½ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+         * nullå‚ç…§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ä½¿ç”¨ã¨ã—ãŸå ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
          *
-         * @param isIgnore nullQÆ‚Ì‚É—áŠO‚ğthrow‚µ‚È‚¢ê‡‚Ítrue
+         * @param isIgnore nullå‚ç…§ã®æ™‚ã«ä¾‹å¤–ã‚’throwã—ãªã„å ´åˆã¯true
          */
         public void setIgnoreNullProperty(boolean isIgnore){
             isIgnoreNullProperty = isIgnore;
@@ -2171,29 +2171,29 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * nullQÆ‚ÌƒvƒƒpƒeƒB‚ğæ“¾g—p‚Æ‚µ‚½ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * nullå‚ç…§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ä½¿ç”¨ã¨ã—ãŸå ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡AnullQÆ‚Ì‚É—áŠO‚ğthrow‚µ‚È‚¢
+         * @return trueã®å ´åˆã€nullå‚ç…§ã®æ™‚ã«ä¾‹å¤–ã‚’throwã—ãªã„
          */
         public boolean isIgnoreNullProperty(){
             return isIgnoreNullProperty;
         }
 
         /**
-         * w’è‚³‚ê‚½’l‚©‚çİ’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ã‹ã‚‰è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param value •ÒW‘ÎÛ‚Ì’l
-         * @return •ÒWŒ‹‰Ê‚Ì’l
-         * @exception Exception •ÒWˆ—‚É¸”s‚µ‚½ê‡
+         * @param value ç·¨é›†å¯¾è±¡ã®å€¤
+         * @return ç·¨é›†çµæœã®å€¤
+         * @exception Exception ç·¨é›†å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object edit(Object value) throws Exception{
             return property.getProperty(value);
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2206,7 +2206,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ{@link Converter}‚Å•ÏŠ·‚·‚é{@link MBeanWatcherService.EditTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’{@link Converter}ã§å¤‰æ›ã™ã‚‹{@link MBeanWatcherService.EditTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2217,7 +2217,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private Converter converter;
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ•ÏŠ·‚·‚é{@link Converter}‚ğİ’è‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å¤‰æ›ã™ã‚‹{@link Converter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
          * @param converter Converter
          */
@@ -2226,7 +2226,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ•ÏŠ·‚·‚é{@link Converter}‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å¤‰æ›ã™ã‚‹{@link Converter}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
          * @return Converter
          */
@@ -2235,29 +2235,29 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ•ÏŠ·‚·‚é{@link Converter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å¤‰æ›ã™ã‚‹{@link Converter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+         * @param name Converterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public void setConverterServiceName(ServiceName name){
             converterServiceName = name;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğ•ÏŠ·‚·‚é{@link Converter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å¤‰æ›ã™ã‚‹{@link Converter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+         * @return Converterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public ServiceName getConverterServiceName(){
             return converterServiceName;
         }
 
         /**
-         * w’è‚³‚ê‚½’l‚ğİ’è‚³‚ê‚½{@link Converter}‚Å•ÏŠ·‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’è¨­å®šã•ã‚ŒãŸ{@link Converter}ã§å¤‰æ›ã™ã‚‹ã€‚<p>
          *
-         * @param value •ÒW‘ÎÛ‚Ì’l
-         * @return •ÒWŒ‹‰Ê‚Ì’l
-         * @exception Exception •ÒWˆ—‚É¸”s‚µ‚½ê‡
+         * @param value ç·¨é›†å¯¾è±¡ã®å€¤
+         * @return ç·¨é›†çµæœã®å€¤
+         * @exception Exception ç·¨é›†å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object edit(Object value) throws Exception{
             Converter conv = converter;
@@ -2268,9 +2268,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2283,7 +2283,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚Æ‘O‰ñ‚Ì’l‚Ì•Ï‰»‚ğæ“¾‚·‚é{@link MBeanWatcherService.WrapTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã¨å‰å›ã®å€¤ã®å¤‰åŒ–ã‚’å–å¾—ã™ã‚‹{@link MBeanWatcherService.WrapTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2294,30 +2294,30 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private Object lastValue;
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ª”’lŒ^‚Ånull‚Ìê‡‚ÉAƒ[ƒ‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åƒ[ƒ‚Æ‚İ‚È‚³‚È‚¢B<br>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ãŒæ•°å€¤å‹ã§nullã®å ´åˆã«ã€ã‚¼ãƒ­ã¨ã¿ãªã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚¼ãƒ­ã¨ã¿ãªã•ãªã„ã€‚<br>
          *
-         * @param isNullToZero ƒ[ƒ‚Æ‚İ‚È‚·ê‡Atrue
+         * @param isNullToZero ã‚¼ãƒ­ã¨ã¿ãªã™å ´åˆã€true
          */
         public void setNullToZero(boolean isNullToZero){
             this.isNullToZero = isNullToZero;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ª”’lŒ^‚Ånull‚Ìê‡‚ÉAƒ[ƒ‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ãŒæ•°å€¤å‹ã§nullã®å ´åˆã«ã€ã‚¼ãƒ­ã¨ã¿ãªã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡Aƒ[ƒ‚Æ‚İ‚È‚·
+         * @return trueã®å ´åˆã€ã‚¼ãƒ­ã¨ã¿ãªã™
          */
         public boolean isNullToZero(){
             return isNullToZero;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚©‚ç‘O‰ñ‚Ì’l‚ğˆø‚¢‚½‘O‰ñ·‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‹ã‚‰å‰å›ã®å€¤ã‚’å¼•ã„ãŸå‰å›å·®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             Object value = target.getValue(connection);
@@ -2377,8 +2377,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‹y‚ÑA‘O‰ñ‚Ì’l‚àƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡åŠã³ã€å‰å›ã®å€¤ã‚‚ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          */
         public void reset(){
             super.reset();
@@ -2386,9 +2386,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2399,7 +2399,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
     }
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚ÌW‡‚Æ‘O‰ñ‚ÌW‡‚Ì•Ï‰»‚ğæ“¾‚·‚é{@link MBeanWatcherService.WrapTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®é›†åˆã¨å‰å›ã®é›†åˆã®å¤‰åŒ–ã‚’å–å¾—ã™ã‚‹{@link MBeanWatcherService.WrapTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2410,21 +2410,21 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private boolean isChangeAdd = true;
 
         /**
-         * ‘•ª/Œ¸•ª‚Ì‚Ç‚¿‚ç‚ğæ“¾‚·‚é‚©İ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å‘•ª‚ğæ“¾‚·‚éB<br>
+         * å¢—åˆ†/æ¸›åˆ†ã®ã©ã¡ã‚‰ã‚’å–å¾—ã™ã‚‹ã‹è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å¢—åˆ†ã‚’å–å¾—ã™ã‚‹ã€‚<br>
          *
-         * @param isAdd true‚Ìê‡‚ÍA‘•ªBfalse‚Ìê‡‚ÍAŒ¸•ª‚ğæ“¾‚·‚éB
+         * @param isAdd trueã®å ´åˆã¯ã€å¢—åˆ†ã€‚falseã®å ´åˆã¯ã€æ¸›åˆ†ã‚’å–å¾—ã™ã‚‹ã€‚
          */
         public void setChangeAdd(boolean isAdd){
             isChangeAdd = isAdd;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚©‚ç‘O‰ñ‚Ì’l‚ğˆø‚¢‚½‘O‰ñ·‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‹ã‚‰å‰å›ã®å€¤ã‚’å¼•ã„ãŸå‰å›å·®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             Collection value = (Collection)target.getValue(connection);
@@ -2451,8 +2451,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‹y‚ÑA‘O‰ñ‚Ì’l‚àƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡åŠã³ã€å‰å›ã®å€¤ã‚‚ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          */
         public void reset(){
             super.reset();
@@ -2460,9 +2460,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2474,7 +2474,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğˆê’èŠÔŠu‚Åæ“¾‚µA‚»‚ÌW‡‚ğæ“¾‚·‚é{@link MBeanWatcherService.WrapTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’ä¸€å®šé–“éš”ã§å–å¾—ã—ã€ãã®é›†åˆã‚’å–å¾—ã™ã‚‹{@link MBeanWatcherService.WrapTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2488,49 +2488,49 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private JMXConnectorNotificationListener listener;
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA1000[ms]B<br>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1000[ms]ã€‚<br>
          *
-         * @param millis ’l‚ğæ“¾‚·‚éŠÔŠu[ms]
+         * @param millis å€¤ã‚’å–å¾—ã™ã‚‹é–“éš”[ms]
          */
         public void setInterval(long millis){
             interval = millis;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ’l‚ğæ“¾‚·‚éŠÔŠu[ms]
+         * @return å€¤ã‚’å–å¾—ã™ã‚‹é–“éš”[ms]
          */
         public long getInterval(){
             return interval;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éŒ”‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA60ŒB<br>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹ä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€60ä»¶ã€‚<br>
          *
-         * @param cnt ’l‚ğæ“¾‚·‚éŒ”
+         * @param cnt å€¤ã‚’å–å¾—ã™ã‚‹ä»¶æ•°
          */
         public void setCount(int cnt){
             count = cnt;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğæ“¾‚·‚éŒ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’å–å¾—ã™ã‚‹ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ’l‚ğæ“¾‚·‚éŒ”
+         * @return å€¤ã‚’å–å¾—ã™ã‚‹ä»¶æ•°
          */
         public int getCount(){
             return count;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ğˆê’èŠÔŠu‚Åæ“¾‚µA‚»‚ÌW‡‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã‚’ä¸€å®šé–“éš”ã§å–å¾—ã—ã€ãã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             List value = null;
@@ -2544,8 +2544,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ŠJn‚·‚éB<p>
-         * ’l‚Ìæ“¾‚ğŠJn‚·‚éB<br>
+         * é–‹å§‹ã™ã‚‹ã€‚<p>
+         * å€¤ã®å–å¾—ã‚’é–‹å§‹ã™ã‚‹ã€‚<br>
          */
         public void start(){
             super.start();
@@ -2562,8 +2562,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * I—¹‚·‚éB<p>
-         * ’l‚Ìæ“¾‚ğ’â~‚·‚éB<br>
+         * çµ‚äº†ã™ã‚‹ã€‚<p>
+         * å€¤ã®å–å¾—ã‚’åœæ­¢ã™ã‚‹ã€‚<br>
          */
         public void stop(){
             if(listener != null && watcher.connector != null){
@@ -2582,8 +2582,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‹y‚ÑAæ“¾‚µ‚½’l‚àƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡åŠã³ã€å–å¾—ã—ãŸå€¤ã‚‚ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          */
         public void reset(){
             super.reset();
@@ -2647,9 +2647,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public void garbage(){}
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2661,8 +2661,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * “ñ€‰‰ZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚ğƒ‰ƒbƒv‚µ‚ÄA‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ğg‚Á‚Ä“ñ€‰‰Zˆ—‚ğs‚¤ŠÄ‹‘ÎÛŠî’êƒNƒ‰ƒXB<br>
+     * äºŒé …æ¼”ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã‚’ãƒ©ãƒƒãƒ—ã—ã¦ã€ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã‚’ä½¿ã£ã¦äºŒé …æ¼”ç®—å‡¦ç†ã‚’è¡Œã†ç›£è¦–å¯¾è±¡åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -2673,10 +2673,10 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected boolean isNullToZero;
 
         /**
-         * {@link MBeanWatcherService}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-         * ‘æ‚Q€‚ÌŠÄ‹‘ÎÛ‚É‚àMBeanWatcherService‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<br>
+         * {@link MBeanWatcherService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ç¬¬ï¼’é …ã®ç›£è¦–å¯¾è±¡ã«ã‚‚MBeanWatcherServiceã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
-         * @param name MBeanWatcherService‚ÌƒT[ƒrƒX–¼
+         * @param name MBeanWatcherServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
          */
         public void setWatcherServiceName(ServiceName name){
             super.setWatcherServiceName(name);
@@ -2684,8 +2684,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link MBeanWatcherService}‚ğİ’è‚·‚éB<p>
-         * ‘æ‚Q€‚ÌŠÄ‹‘ÎÛ‚É‚àMBeanWatcherService‚ğİ’è‚·‚éB<br>
+         * {@link MBeanWatcherService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ç¬¬ï¼’é …ã®ç›£è¦–å¯¾è±¡ã«ã‚‚MBeanWatcherServiceã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
          * @param watcher MBeanWatcherService
          */
@@ -2695,8 +2695,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * {@link Logger}‚ğİ’è‚·‚éB<p>
-         * ‘æ‚Q€‚ÌŠÄ‹‘ÎÛ‚É‚àLogger‚ğİ’è‚·‚éB<br>
+         * {@link Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ç¬¬ï¼’é …ã®ç›£è¦–å¯¾è±¡ã«ã‚‚Loggerã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
          * @param logger Logger
          */
@@ -2706,48 +2706,48 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * “ñ€‰‰Z‚Ì‘æ“ñ€‚Æ‚È‚éŠÄ‹‘ÎÛ‚ğİ’è‚·‚éB<p>
+         * äºŒé …æ¼”ç®—ã®ç¬¬äºŒé …ã¨ãªã‚‹ç›£è¦–å¯¾è±¡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param target ‘æ“ñ€‚Æ‚È‚éŠÄ‹‘ÎÛ
+         * @param target ç¬¬äºŒé …ã¨ãªã‚‹ç›£è¦–å¯¾è±¡
          */
         public void setSecondTarget(Target target){
             secondTarget = target;
         }
 
         /**
-         * “ñ€‰‰Z‚Ì‘æ“ñ€‚Æ‚È‚éŠÄ‹‘ÎÛ‚ğæ“¾‚·‚éB<p>
+         * äºŒé …æ¼”ç®—ã®ç¬¬äºŒé …ã¨ãªã‚‹ç›£è¦–å¯¾è±¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ‘æ“ñ€‚Æ‚È‚éŠÄ‹‘ÎÛ
+         * @return ç¬¬äºŒé …ã¨ãªã‚‹ç›£è¦–å¯¾è±¡
          */
         public Target getSecondTarget(){
             return secondTarget;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ª”’lŒ^‚Ånull‚Ìê‡‚ÉAƒ[ƒ‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åƒ[ƒ‚Æ‚İ‚È‚³‚È‚¢B<br>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ãŒæ•°å€¤å‹ã§nullã®å ´åˆã«ã€ã‚¼ãƒ­ã¨ã¿ãªã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚¼ãƒ­ã¨ã¿ãªã•ãªã„ã€‚<br>
          *
-         * @param isNullToZero ƒ[ƒ‚Æ‚İ‚È‚·ê‡Atrue
+         * @param isNullToZero ã‚¼ãƒ­ã¨ã¿ãªã™å ´åˆã€true
          */
         public void setNullToZero(boolean isNullToZero){
             this.isNullToZero = isNullToZero;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚ª”’lŒ^‚Ånull‚Ìê‡‚ÉAƒ[ƒ‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ãŒæ•°å€¤å‹ã§nullã®å ´åˆã«ã€ã‚¼ãƒ­ã¨ã¿ãªã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡Aƒ[ƒ‚Æ‚İ‚È‚·
+         * @return trueã®å ´åˆã€ã‚¼ãƒ­ã¨ã¿ãªã™
          */
         public boolean isNullToZero(){
             return isNullToZero;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚©‚ç“ñ€‰‰Z‚ğs‚Á‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã‹ã‚‰äºŒé …æ¼”ç®—ã‚’è¡Œã£ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             BigDecimal first = Target.toBigDecimal(target.getValue(connection), isNullToZero);
@@ -2763,18 +2763,18 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * “ñ€‰‰Z‚ğs‚¤B<p>
+         * äºŒé …æ¼”ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected abstract BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception;
 
         /**
-         * ƒŠƒZƒbƒg‚·‚éB<p>
-         * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éŠÄ‹‘ÎÛ‹y‚ÑA‘æ‚Q€‚ÌŠÄ‹‘ÎÛ‚àƒŠƒZƒbƒg‚·‚éB<br>
+         * ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
+         * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ç›£è¦–å¯¾è±¡åŠã³ã€ç¬¬ï¼’é …ã®ç›£è¦–å¯¾è±¡ã‚‚ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
          */
         public void reset(){
             super.reset();
@@ -2782,9 +2782,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -2797,8 +2797,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ‰ÁZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ğ‰ÁZ‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * åŠ ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã‚’åŠ ç®—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -2807,12 +2807,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -5086486388715849637L;
 
         /**
-         * ‰ÁZ‚ğs‚¤B<p>
+         * åŠ ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             return first.add(second);
@@ -2820,8 +2820,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Œ¸ZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ğŒ¸Z‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * æ¸›ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã‚’æ¸›ç®—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -2830,12 +2830,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -2343694151274725683L;
 
         /**
-         * Œ¸Z‚ğs‚¤B<p>
+         * æ¸›ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             return first.subtract(second);
@@ -2843,8 +2843,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * æZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ğæZ‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * ä¹—ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã‚’ä¹—ç®—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -2853,12 +2853,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -5651446587284471517L;
 
         /**
-         * æZ‚ğs‚¤B<p>
+         * ä¹—ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             return first.multiply(second);
@@ -2866,8 +2866,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * œZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ğœZ‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * é™¤ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã‚’é™¤ç®—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -2880,76 +2880,76 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private boolean isReturnZeroOnZeroDivide = false;
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚éŠÛ‚ßƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA{@link BigDecimal#ROUND_HALF_EVEN}B<br>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link BigDecimal#ROUND_HALF_EVEN}ã€‚<br>
          *
-         * @param mode ŠÛ‚ßƒ‚[ƒh
+         * @param mode ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
          */
         public void setRoundingMode(int mode){
             this.roundingMode = mode;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚éŠÛ‚ßƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ŠÛ‚ßƒ‚[ƒh
+         * @return ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
          */
         public int getRoundingMode(){
             return roundingMode;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚é¬”“_ˆÈ‰ºŒ…”‚ğİ’è‚·‚éB<p>
-         * w’è‚µ‚È‚¢ê‡‚ÍA‘æˆê€‚ÌŒ…”‚ÉˆË‘¶‚·‚éB<br>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ç¬¬ä¸€é …ã®æ¡æ•°ã«ä¾å­˜ã™ã‚‹ã€‚<br>
          *
-         * @param scale ¬”“_ˆÈ‰ºŒ…”
+         * @param scale å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°
          */
         public void setScale(int scale){
             this.scale = scale;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚é¬”“_ˆÈ‰ºŒ…”‚ğæ“¾‚·‚éB<p>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ¬”“_ˆÈ‰ºŒ…”
+         * @return å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°
          */
         public int getScale(){
             return scale;
         }
 
         /**
-         * ƒ[ƒœZ‚Æ‚È‚éê‡‚ÉAnull‚ğ•Ô‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒ[ƒœZ‚É‚Í—áŠO‚ª”­¶‚·‚éB<br>
+         * ã‚¼ãƒ­é™¤ç®—ã¨ãªã‚‹å ´åˆã«ã€nullã‚’è¿”ã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚¼ãƒ­é™¤ç®—æ™‚ã«ã¯ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ã€‚<br>
          *
-         * @param isReturnNull null‚ğ•Ô‚·ê‡true
+         * @param isReturnNull nullã‚’è¿”ã™å ´åˆtrue
          */
         public void setReturnNullOnZeroDivide(boolean isReturnNull){
             this.isReturnNullOnZeroDivide = isReturnNull;
         }
 
         /**
-         * ƒ[ƒœZ‚Æ‚È‚éê‡‚ÉAnull‚ğ•Ô‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ã‚¼ãƒ­é™¤ç®—ã¨ãªã‚‹å ´åˆã«ã€nullã‚’è¿”ã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡Anull‚ğ•Ô‚·
+         * @return trueã®å ´åˆã€nullã‚’è¿”ã™
          */
         public boolean isReturnNullOnZeroDivide(){
             return isReturnNullOnZeroDivide;
         }
 
         /**
-         * ƒ[ƒœZ‚Æ‚È‚éê‡‚ÉA0‚ğ•Ô‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒ[ƒœZ‚É‚Í—áŠO‚ª”­¶‚·‚éB<br>
+         * ã‚¼ãƒ­é™¤ç®—ã¨ãªã‚‹å ´åˆã«ã€0ã‚’è¿”ã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚¼ãƒ­é™¤ç®—æ™‚ã«ã¯ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ã€‚<br>
          *
-         * @param isReturnZero 0‚ğ•Ô‚·ê‡true
+         * @param isReturnZero 0ã‚’è¿”ã™å ´åˆtrue
          */
         public void setReturnZeroOnZeroDivide(boolean isReturnZero){
             this.isReturnZeroOnZeroDivide = isReturnZero;
         }
 
         /**
-         * ƒ[ƒœZ‚Æ‚È‚éê‡‚ÉA0‚ğ•Ô‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ã‚¼ãƒ­é™¤ç®—ã¨ãªã‚‹å ´åˆã«ã€0ã‚’è¿”ã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡A0‚ğ•Ô‚·
+         * @return trueã®å ´åˆã€0ã‚’è¿”ã™
          */
         public boolean isReturnZeroOnZeroDivide(){
             return isReturnZeroOnZeroDivide;
@@ -2957,12 +2957,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
 
         /**
-         * œZ‚ğs‚¤B<p>
+         * é™¤ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             if(ZERO.equals(second)){
@@ -2977,8 +2977,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * •S•ª—¦ŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚Ì•S•ª—¦‚ğŒvZ‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * ç™¾åˆ†ç‡ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã®ç™¾åˆ†ç‡ã‚’è¨ˆç®—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -2987,12 +2987,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -828285523729092762L;
 
         /**
-         * •S•ª—¦ŒvZ‚ğs‚¤B<p>
+         * ç™¾åˆ†ç‡è¨ˆç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             BigDecimal divided = super.calculate(first, second);
@@ -3004,8 +3004,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Å‘å’l“ñ€‰‰ZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ÌÅ‘å’l‚ğæ“¾‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * æœ€å¤§å€¤äºŒé …æ¼”ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -3014,12 +3014,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 7889957820603303173L;
 
         /**
-         * Å‘å’l‚ğ•Ô‚·B<p>
+         * æœ€å¤§å€¤ã‚’è¿”ã™ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             return first.max(second);
@@ -3027,8 +3027,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Å¬’l“ñ€‰‰ZŠÄ‹‘ÎÛB<p>
-     * ‚Q‚Â‚ÌŠÄ‹‘ÎÛ‚Ì’l‚ÌÅ¬’l‚ğæ“¾‚·‚é{@link MBeanWatcherService.BinaryOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * æœ€å°å€¤äºŒé …æ¼”ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ï¼’ã¤ã®ç›£è¦–å¯¾è±¡ã®å€¤ã®æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹{@link MBeanWatcherService.BinaryOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -3037,12 +3037,12 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -4042120812950659730L;
 
         /**
-         * Å¬’l‚ğ•Ô‚·B<p>
+         * æœ€å°å€¤ã‚’è¿”ã™ã€‚<p>
          *
-         * @param first ‘æˆê€
-         * @param second ‘æ“ñ€
-         * @return ‰‰ZŒ‹‰Ê
-         * @exception Exception ‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param first ç¬¬ä¸€é …
+         * @param second ç¬¬äºŒé …
+         * @return æ¼”ç®—çµæœ
+         * @exception Exception æ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal first, BigDecimal second) throws Exception{
             return first.min(second);
@@ -3050,8 +3050,8 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * W‡‰‰ZŠÄ‹‘ÎÛB<p>
-     * ŠÄ‹‘ÎÛ‚ğƒ‰ƒbƒv‚µ‚ÄAŠÄ‹‘ÎÛ‚Ì’l‚É‘Î‚µ‚ÄW‡‰‰Z‚ğs‚¤ŠÄ‹‘ÎÛŠî’êƒNƒ‰ƒXB<br>
+     * é›†åˆæ¼”ç®—ç›£è¦–å¯¾è±¡ã€‚<p>
+     * ç›£è¦–å¯¾è±¡ã‚’ãƒ©ãƒƒãƒ—ã—ã¦ã€ç›£è¦–å¯¾è±¡ã®å€¤ã«å¯¾ã—ã¦é›†åˆæ¼”ç®—ã‚’è¡Œã†ç›£è¦–å¯¾è±¡åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -3060,20 +3060,20 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -7200261696645994257L;
 
         /**
-         * ŠÄ‹‘ÎÛ‚Ì’l‚ªW‡‚â”z—ñ‚Ìê‡‚ÉA‚»‚ÌŠe—v‘f‚É‘Î‚µ‚Ä•ÒW‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ç›£è¦–å¯¾è±¡ã®å€¤ãŒé›†åˆã‚„é…åˆ—ã®å ´åˆã«ã€ãã®å„è¦ç´ ã«å¯¾ã—ã¦ç·¨é›†ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return •K‚¸true‚ğ•Ô‚·
+         * @return å¿…ãštrueã‚’è¿”ã™
          */
         public boolean isElementEdit(){
             return true;
         }
 
         /**
-         * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’l‚É‘Î‚µ‚ÄW‡‰‰Z‚ğs‚Á‚½Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
+         * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤ã«å¯¾ã—ã¦é›†åˆæ¼”ç®—ã‚’è¡Œã£ãŸçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param connection JMXÚ‘±
-         * @return ŠÄ‹‘ÎÛ‚Ì’l
-         * @exception Exception ŠÄ‹‘ÎÛ‚Ì’l‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+         * @param connection JMXæ¥ç¶š
+         * @return ç›£è¦–å¯¾è±¡ã®å€¤
+         * @exception Exception ç›£è¦–å¯¾è±¡ã®å€¤ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
             Object value = target.getValue(connection);
@@ -3116,11 +3116,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * w’è‚³‚ê‚½’l‚É‘Î‚µ‚ÄW‡‰‰Z‚ğs‚¤B<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ã«å¯¾ã—ã¦é›†åˆæ¼”ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param value •ÒW‘ÎÛ‚Ì’l
-         * @return •ÒWŒ‹‰Ê‚Ì’l
-         * @exception Exception •ÒWˆ—‚É¸”s‚µ‚½ê‡
+         * @param value ç·¨é›†å¯¾è±¡ã®å€¤
+         * @return ç·¨é›†çµæœã®å€¤
+         * @exception Exception ç·¨é›†å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected Object edit(Object value) throws Exception{
             List list = (List)value;
@@ -3128,18 +3128,18 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * w’è‚³‚ê‚½’l‚É‘Î‚µ‚ÄW‡‰‰Z‚ğs‚¤B<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ã«å¯¾ã—ã¦é›†åˆæ¼”ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected abstract BigDecimal calculate(BigDecimal[] numbers) throws Exception;
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -3151,7 +3151,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ‘˜aW‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ç·å’Œé›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3160,11 +3160,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 2277773295544965565L;
 
         /**
-         * W‡‚Ì‘˜a‚ğs‚¤B<p>
+         * é›†åˆã®ç·å’Œã‚’è¡Œã†ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             BigDecimal result = new BigDecimal(0.0d);
@@ -3176,7 +3176,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ’†‰›’lW‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * ä¸­å¤®å€¤é›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3188,49 +3188,49 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private int scale = -1;
 
         /**
-         * 2’l‚Ì•½‹Ï‚ğ‹‚ß‚éÛ‚ÌœZŒ‹‰Ê‚É“K—p‚·‚éŠÛ‚ßƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA{@link BigDecimal#ROUND_HALF_EVEN}B<br>
+         * 2å€¤ã®å¹³å‡ã‚’æ±‚ã‚ã‚‹éš›ã®é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link BigDecimal#ROUND_HALF_EVEN}ã€‚<br>
          *
-         * @param mode ŠÛ‚ßƒ‚[ƒh
+         * @param mode ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
          */
         public void setRoundingMode(int mode){
             this.roundingMode = mode;
         }
 
         /**
-         * 2’l‚Ì•½‹Ï‚ğ‹‚ß‚éÛ‚ÌœZŒ‹‰Ê‚É“K—p‚·‚éŠÛ‚ßƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+         * 2å€¤ã®å¹³å‡ã‚’æ±‚ã‚ã‚‹éš›ã®é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ŠÛ‚ßƒ‚[ƒh
+         * @return ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
          */
         public int getRoundingMode(){
             return roundingMode;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚é¬”“_ˆÈ‰ºŒ…”‚ğİ’è‚·‚éB<p>
-         * w’è‚µ‚È‚¢ê‡‚ÍA‘æˆê€‚ÌŒ…”‚ÉˆË‘¶‚·‚éB<br>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ç¬¬ä¸€é …ã®æ¡æ•°ã«ä¾å­˜ã™ã‚‹ã€‚<br>
          *
-         * @param scale ¬”“_ˆÈ‰ºŒ…”
+         * @param scale å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°
          */
         public void setScale(int scale){
             this.scale = scale;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚é¬”“_ˆÈ‰ºŒ…”‚ğæ“¾‚·‚éB<p>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ¬”“_ˆÈ‰ºŒ…”
+         * @return å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°
          */
         public int getScale(){
             return scale;
         }
 
         /**
-         * W‡‚Ì’†‰›’l‚ğŒvZ‚·‚éB<p>
+         * é›†åˆã®ä¸­å¤®å€¤ã‚’è¨ˆç®—ã™ã‚‹ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             Arrays.sort(numbers);
@@ -3251,7 +3251,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * •½‹ÏW‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * å¹³å‡é›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3262,49 +3262,49 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected int scale = -1;
 
         /**
-         * •½‹Ï‚ğ‹‚ß‚éÛ‚ÌœZŒ‹‰Ê‚É“K—p‚·‚éŠÛ‚ßƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA{@link BigDecimal#ROUND_HALF_EVEN}B<br>
+         * å¹³å‡ã‚’æ±‚ã‚ã‚‹éš›ã®é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link BigDecimal#ROUND_HALF_EVEN}ã€‚<br>
          *
-         * @param mode ŠÛ‚ßƒ‚[ƒh
+         * @param mode ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
          */
         public void setRoundingMode(int mode){
             this.roundingMode = mode;
         }
 
         /**
-         * •½‹Ï‚ğ‹‚ß‚éÛ‚ÌœZŒ‹‰Ê‚É“K—p‚·‚éŠÛ‚ßƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+         * å¹³å‡ã‚’æ±‚ã‚ã‚‹éš›ã®é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ŠÛ‚ßƒ‚[ƒh
+         * @return ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
          */
         public int getRoundingMode(){
             return roundingMode;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚é¬”“_ˆÈ‰ºŒ…”‚ğİ’è‚·‚éB<p>
-         * w’è‚µ‚È‚¢ê‡‚ÍA‘æˆê€‚ÌŒ…”‚ÉˆË‘¶‚·‚éB<br>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ç¬¬ä¸€é …ã®æ¡æ•°ã«ä¾å­˜ã™ã‚‹ã€‚<br>
          *
-         * @param scale ¬”“_ˆÈ‰ºŒ…”
+         * @param scale å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°
          */
         public void setScale(int scale){
             this.scale = scale;
         }
 
         /**
-         * œZŒ‹‰Ê‚É“K—p‚·‚é¬”“_ˆÈ‰ºŒ…”‚ğæ“¾‚·‚éB<p>
+         * é™¤ç®—çµæœã«é©ç”¨ã™ã‚‹å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ¬”“_ˆÈ‰ºŒ…”
+         * @return å°æ•°ç‚¹ä»¥ä¸‹æ¡æ•°
          */
         public int getScale(){
             return scale;
         }
 
         /**
-         * W‡‚Ì•½‹Ï’l‚ğæ“¾‚·‚éB<p>
+         * é›†åˆã®å¹³å‡å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             if(scale >= 0){
@@ -3315,9 +3315,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
@@ -3329,7 +3329,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * •ªUW‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * åˆ†æ•£é›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3338,11 +3338,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -6250730592729577578L;
 
         /**
-         * W‡‚Ì•ªU’l‚ğæ“¾‚·‚éB<p>
+         * é›†åˆã®åˆ†æ•£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             BigDecimal average = super.calculate(numbers);
@@ -3365,7 +3365,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * •W€•Î·W‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * æ¨™æº–åå·®é›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3374,11 +3374,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 1484688589485075232L;
 
         /**
-         * W‡‚Ì•W€•Î·’l‚ğæ“¾‚·‚éB<p>
+         * é›†åˆã®æ¨™æº–åå·®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             BigDecimal variance = super.calculate(numbers);
@@ -3414,7 +3414,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Å‘åW‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * æœ€å¤§é›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3423,11 +3423,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 3152818165408079349L;
 
         /**
-         * W‡‚ÌÅ‘å’l‚ğæ“¾‚·‚éB<p>
+         * é›†åˆã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             BigDecimal result = null;
@@ -3443,7 +3443,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * Å¬W‡‰‰Z‚ğs‚¤{@link MBeanWatcherService.SetOperation}‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * æœ€å°é›†åˆæ¼”ç®—ã‚’è¡Œã†{@link MBeanWatcherService.SetOperation}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -3452,11 +3452,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = -8356445551875453616L;
 
         /**
-         * W‡‚ÌÅ¬’l‚ğæ“¾‚·‚éB<p>
+         * é›†åˆã®æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param numbers W‡‰‰Z‚Ì‘ÎÛ‚Æ‚È‚é”’lW‡
-         * @return W‡‰‰Z‚Ì’l
-         * @exception Exception W‡‰‰Z‚É¸”s‚µ‚½ê‡
+         * @param numbers é›†åˆæ¼”ç®—ã®å¯¾è±¡ã¨ãªã‚‹æ•°å€¤é›†åˆ
+         * @return é›†åˆæ¼”ç®—ã®å€¤
+         * @exception Exception é›†åˆæ¼”ç®—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected BigDecimal calculate(BigDecimal[] numbers) throws Exception{
             BigDecimal result = null;
@@ -3472,7 +3472,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     /**
-     * ƒ‰ƒbƒv‚µ‚½ŠÄ‹‘ÎÛ‚Ì’læ“¾ˆ—‚Å—áŠO‚ª”­¶‚µ‚½ê‡‚É•Ô‹p’l‚ğ•ÏX‚·‚é{@link MBeanWatcherService.WrapTarget}‚ÌÀ‘•ƒNƒ‰ƒXB<br>
+     * ãƒ©ãƒƒãƒ—ã—ãŸç›£è¦–å¯¾è±¡ã®å€¤å–å¾—å‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«è¿”å´å€¤ã‚’å¤‰æ›´ã™ã‚‹{@link MBeanWatcherService.WrapTarget}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
      *
      * @author M.Ishida
      */
@@ -3481,21 +3481,21 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private List exceptionConditions = new ArrayList();
 
         /**
-         * —áŠO”­¶‚É•Ô‹p’l‚ğ•ÒW‚·‚éğŒ‚ğ’Ç‰Á‚·‚éB
+         * ä¾‹å¤–ç™ºç”Ÿæ™‚ã«è¿”å´å€¤ã‚’ç·¨é›†ã™ã‚‹æ¡ä»¶ã‚’è¿½åŠ ã™ã‚‹ã€‚
          * <p>
-         * ’Ç‰Á‚³‚ê‚½‡”Ô‚É—áŠO‚Ìƒ`ƒFƒbƒN‚ğ‚µ‚ÄA—áŠO‚ªˆê’v‚·‚é‚ÆŒã‘±‚ÌğŒ‚Íƒ`ƒFƒbƒN‚¹‚¸‚ÉI—¹‚·‚éB<br>
+         * è¿½åŠ ã•ã‚ŒãŸé †ç•ªã«ä¾‹å¤–ã®ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ã€ä¾‹å¤–ãŒä¸€è‡´ã™ã‚‹ã¨å¾Œç¶šã®æ¡ä»¶ã¯ãƒã‚§ãƒƒã‚¯ã›ãšã«çµ‚äº†ã™ã‚‹ã€‚<br>
          *
-         * @param condition ƒ`ƒFƒbƒNğŒ
+         * @param condition ãƒã‚§ãƒƒã‚¯æ¡ä»¶
          */
         public void addExceptionCondition(Condition condition) {
             exceptionConditions.add(condition);
         }
 
         /**
-         * ƒ`ƒFƒbƒN‚·‚éğŒ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB
+         * ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ¡ä»¶ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
          * <p>
          *
-         * @return ƒ`ƒFƒbƒNğŒ‚ÌƒŠƒXƒg
+         * @return ãƒã‚§ãƒƒã‚¯æ¡ä»¶ã®ãƒªã‚¹ãƒˆ
          */
         public List getExceptionConditionList() {
             return exceptionConditions;
@@ -3529,10 +3529,10 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB
+         * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚
          * <p>
          *
-         * @return •¶š—ñ•\Œ»
+         * @return æ–‡å­—åˆ—è¡¨ç¾
          */
         public String toString() {
             StringBuilder buf = new StringBuilder(super.toString());
@@ -3543,10 +3543,10 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
-         * —áŠOğŒB<br>
+         * ä¾‹å¤–æ¡ä»¶ã€‚<br>
          *
-         * ŠÄ‹‘ÎÛ‚Ì’læ“¾‚É—áŠO‚ª”­¶‚µ‚½ê‡‚É•Ô‹p’l‚ğ•ÒW‚·‚éğŒ<br>
-         * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚ÉA—áŠO©‘Ì‚ğ•Ô‹p‚·‚éA—áŠO‚ÌƒƒbƒZ[ƒW‚ğ•Ô‹p‚·‚éAnull‚ğ•Ô‹p‚·‚éA“Á’è‚ÌObject‚ğ•Ô‹p‚·‚éAInterpreter‚ğÀs‚·‚é‚Ì‚¢‚¸‚ê‚©‚ğs‚¤B
+         * ç›£è¦–å¯¾è±¡ã®å€¤å–å¾—æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«è¿”å´å€¤ã‚’ç·¨é›†ã™ã‚‹æ¡ä»¶<br>
+         * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«ã€ä¾‹å¤–è‡ªä½“ã‚’è¿”å´ã™ã‚‹ã€ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿”å´ã™ã‚‹ã€nullã‚’è¿”å´ã™ã‚‹ã€ç‰¹å®šã®Objectã‚’è¿”å´ã™ã‚‹ã€Interpreterã‚’å®Ÿè¡Œã™ã‚‹ã®ã„ãšã‚Œã‹ã‚’è¡Œã†ã€‚
          *
          * @author M.Ishida
          */
@@ -3564,78 +3564,78 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             private ServiceName interpreterServiceName;
 
             /**
-             * ”­¶‘ÎÛ‚Ì—áŠO‚ğİ’è‚·‚éB<p>
+             * ç™ºç”Ÿå¯¾è±¡ã®ä¾‹å¤–ã‚’è¨­å®šã™ã‚‹ã€‚<p>
              *
-             * @param exception ”­¶‘ÎÛ‚Ì—áŠO
+             * @param exception ç™ºç”Ÿå¯¾è±¡ã®ä¾‹å¤–
              */
             public void setTargetException(Exception exception) {
                 targetException = exception;
             }
 
             /**
-             * ”­¶‘ÎÛ‚Ì—áŠO‚ğæ“¾‚·‚éB<p>
+             * ç™ºç”Ÿå¯¾è±¡ã®ä¾‹å¤–ã‚’å–å¾—ã™ã‚‹ã€‚<p>
              *
-             * @return ”­¶‘ÎÛ‚Ì—áŠO
+             * @return ç™ºç”Ÿå¯¾è±¡ã®ä¾‹å¤–
              */
             public Exception getTargetException() {
                 return targetException;
             }
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚É—áŠOƒƒbƒZ[ƒW‚ğ•Ô‹p‚·‚é‚©‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿”å´ã™ã‚‹ã‹ã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param isReturnExceptionMessage true‚Ìê‡A—áŠOƒƒbƒZ[ƒW‚ğ•Ô‹p‚·‚é
+             * @param isReturnExceptionMessage trueã®å ´åˆã€ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿”å´ã™ã‚‹
              */
             public void setReturnExceptionMessage(boolean isReturnExceptionMessage) {
                 this.isReturnExceptionMessage = isReturnExceptionMessage;
             }
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚É—áŠO©‘Ì‚ğ•Ô‹p‚·‚é‚©‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«ä¾‹å¤–è‡ªä½“ã‚’è¿”å´ã™ã‚‹ã‹ã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param isReturnException true‚Ìê‡A—áŠO©‘Ì‚ğ•Ô‹p‚·‚é
+             * @param isReturnException trueã®å ´åˆã€ä¾‹å¤–è‡ªä½“ã‚’è¿”å´ã™ã‚‹
              */
             public void setReturnException(boolean isReturnException) {
                 this.isReturnException = isReturnException;
             }
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚Énull‚ğ•Ô‹p‚·‚é‚©‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«nullã‚’è¿”å´ã™ã‚‹ã‹ã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param isReturnNull true‚Ìê‡Anull‚ğ•Ô‹p‚·‚é
+             * @param isReturnNull trueã®å ´åˆã€nullã‚’è¿”å´ã™ã‚‹
              */
             public void setReturnNull(boolean isReturnNull) {
                 this.isReturnNull = isReturnNull;
             }
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚É•Ô‹p‚·‚éObject‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«è¿”å´ã™ã‚‹Objectã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param returnObject •Ô‹p‚·‚éObject
+             * @param returnObject è¿”å´ã™ã‚‹Object
              */
             public void setReturnObject(Object returnObject) {
                 this.returnObject = returnObject;
             }
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚ÉÀs‚·‚éInterpreter®‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«å®Ÿè¡Œã™ã‚‹Interpreterå¼ã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param returnObject •Ô‹p‚·‚éObject
+             * @param returnObject è¿”å´ã™ã‚‹Object
              */
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚ÉÀs‚·‚éInterpreter®‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«å®Ÿè¡Œã™ã‚‹Interpreterå¼ã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param expression Interpreter®
+             * @param expression Interpreterå¼
              */
             public void setExpression(String expression) {
                 this.expression = expression;
             }
 
             /**
-             * ‘ÎÛ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚ÉÀs‚·‚éInterpreter‚ÌƒT[ƒrƒX–¼‚Ìİ’è‚ğs‚¤B<p>
+             * å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«å®Ÿè¡Œã™ã‚‹Interpreterã®ã‚µãƒ¼ãƒ“ã‚¹åã®è¨­å®šã‚’è¡Œã†ã€‚<p>
              *
-             * @param serviceName Interpreter‚ÌƒT[ƒrƒX–¼
+             * @param serviceName Interpreterã®ã‚µãƒ¼ãƒ“ã‚¹å
              */
             public void setInterpreterServiceName(ServiceName serviceName) {
                 interpreterServiceName = serviceName;
@@ -3672,10 +3672,10 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }
 
             /**
-             * ‚±‚ÌŠÄ‹‘ÎÛ‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB
+             * ã“ã®ç›£è¦–å¯¾è±¡ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚
              * <p>
              *
-             * @return •¶š—ñ•\Œ»
+             * @return æ–‡å­—åˆ—è¡¨ç¾
              */
             public String toString() {
                 StringBuilder buf = new StringBuilder();

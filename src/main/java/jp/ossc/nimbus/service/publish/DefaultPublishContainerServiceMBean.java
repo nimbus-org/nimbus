@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.publish;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultPublishContainerService}のMBeanインタフェース<p>
+ * {@link DefaultPublishContainerService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see DefaultPublishContainerService

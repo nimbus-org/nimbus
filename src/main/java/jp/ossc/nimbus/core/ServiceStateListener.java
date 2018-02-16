@@ -34,10 +34,10 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * ƒT[ƒrƒX‚Ìó‘Ô‚ğŠÄ‹‚·‚éƒŠƒXƒiƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * {@link ServiceStateBroadcaster}‚ÉA‚±‚ÌƒŠƒXƒi‚ğ“o˜^‚·‚é–‚ÅAServiceStateBroadcaster‚ÅŠÇ—‚³‚ê‚éƒT[ƒrƒX‚Ìó‘Ô‚ğŠÄ‹‚·‚é–‚ª‚Å‚«‚éB<br>
- * ŠÄ‹‚Å‚«‚éó‘Ô‚ÍA{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚É’è‹`‚³‚ê‚½Šeó‘Ô‚ÅA{@link #stateChanged(ServiceStateChangeEvent)}‚Å’Ê’m‚³‚ê‚éB<br>
- * ‚Ü‚½A’Ê’m‚µ‚Ä—~‚µ‚¢ó‘Ô‚ğ{@link #isEnabledState(int)}‚Åw’è‚·‚é–‚à‚Å‚«‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹ãƒªã‚¹ãƒŠã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * {@link ServiceStateBroadcaster}ã«ã€ã“ã®ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹äº‹ã§ã€ServiceStateBroadcasterã§ç®¡ç†ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ç›£è¦–ã§ãã‚‹çŠ¶æ…‹ã¯ã€{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã«å®šç¾©ã•ã‚ŒãŸå„çŠ¶æ…‹ã§ã€{@link #stateChanged(ServiceStateChangeEvent)}ã§é€šçŸ¥ã•ã‚Œã‚‹ã€‚<br>
+ * ã¾ãŸã€é€šçŸ¥ã—ã¦æ¬²ã—ã„çŠ¶æ…‹ã‚’{@link #isEnabledState(int)}ã§æŒ‡å®šã™ã‚‹äº‹ã‚‚ã§ãã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see ServiceStateBroadcaster
@@ -46,16 +46,16 @@ import java.util.*;
 public interface ServiceStateListener extends EventListener{
     
     /**
-     * ƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param e ƒT[ƒrƒXó‘Ô•ÏXƒCƒxƒ“ƒg
+     * @param e ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹å¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆ
      */
     public void stateChanged(ServiceStateChangeEvent e) throws Exception;
     
     /**
-     * ’Ê’m‚³‚ê‚é‚×‚«ƒT[ƒrƒX‚Ìó‘Ô•ÏX‚ğ’²‚×‚éB<p>
+     * é€šçŸ¥ã•ã‚Œã‚‹ã¹ãã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹å¤‰æ›´ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param state ƒT[ƒrƒX‚Ìó‘Ô
+     * @param state ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹
      */
     public boolean isEnabledState(int state);
 }

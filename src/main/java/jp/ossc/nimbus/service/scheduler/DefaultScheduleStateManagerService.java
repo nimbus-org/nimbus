@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.cache.*;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ó‘ÔŠÇ—‚ğs‚¤ƒT[ƒrƒXB<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ç®¡ç†ã‚’è¡Œã†ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -75,7 +75,7 @@ public class DefaultScheduleStateManagerService extends ServiceBase
         return stateManageMap;
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public void changeState(String name, int state){
         if(stateManageMap == null){
             return;
@@ -83,7 +83,7 @@ public class DefaultScheduleStateManagerService extends ServiceBase
         stateManageMap.put(name, new Integer(state));
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public int getState(String name){
         if(stateManageMap == null){
             return STATE_UNKNOWN;
@@ -95,7 +95,7 @@ public class DefaultScheduleStateManagerService extends ServiceBase
         }
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public void clearState(String name){
         if(stateManageMap == null){
             return;
@@ -103,7 +103,7 @@ public class DefaultScheduleStateManagerService extends ServiceBase
         stateManageMap.remove(name);
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public void clearAllStates(){
         if(stateManageMap == null){
             return;

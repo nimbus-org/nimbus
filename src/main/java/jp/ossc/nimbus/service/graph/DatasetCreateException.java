@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * ƒf[ƒ^ƒZƒbƒg¶¬—áŠOƒNƒ‰ƒXB<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆç”Ÿæˆæ™‚ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -41,35 +41,35 @@ public class DatasetCreateException extends Exception {
     private static final long serialVersionUID = 6015709987496696806L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public DatasetCreateException() {
         super();
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public DatasetCreateException(String message) {
         super(message);
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› 
      */
     public DatasetCreateException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param cause Œ´ˆö
+     * @param cause åŸå› 
      */
     public DatasetCreateException(Throwable cause) {
         super(cause);

@@ -40,7 +40,7 @@ import java.math.BigDecimal;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒV[ƒh’‡lB<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚·ãƒ¼ãƒ‰ä»²äººã€‚<p>
  *
  * @author M.Takata
  */

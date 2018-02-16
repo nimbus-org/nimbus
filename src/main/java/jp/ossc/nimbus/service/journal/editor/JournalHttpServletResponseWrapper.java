@@ -41,7 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
 /**
- * HttpServletResponse‚ÌÚ×‚ÈƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é‚½‚ß‚ÌHttpServletResponseWrapperB<p>
+ * HttpServletResponseã®è©³ç´°ãªã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ãŸã‚ã®HttpServletResponseWrapperã€‚<p>
  *
  * @author M.Takata
  */

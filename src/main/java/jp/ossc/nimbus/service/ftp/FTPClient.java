@@ -34,37 +34,37 @@ package jp.ossc.nimbus.service.ftp;
 import java.io.File;
 
 /**
- * FTP�N���C�A���g�B<p>
+ * FTPクライアント。<p>
  *
  * @author M.Takata
  */
 public interface FTPClient{
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @exception FTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param host 接続先サーバのホスト名
+     * @exception FTPException サーバとの接続に失敗した場合
      */
     public void connect(String host) throws FTPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param port �ڑ���T�[�o�̃|�[�g�ԍ�
-     * @exception FTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param host 接続先サーバのホスト名
+     * @param port 接続先サーバのポート番号
+     * @exception FTPException サーバとの接続に失敗した場合
      */
     public void connect(String host, int port) throws FTPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param port �ڑ���T�[�o�̃|�[�g�ԍ�
-     * @param localAddr �N���C�A���g�̃A�h���X
-     * @param localPort �N���C�A���g�̃|�[�g�ԍ�
-     * @exception FTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param host 接続先サーバのホスト名
+     * @param port 接続先サーバのポート番号
+     * @param localAddr クライアントのアドレス
+     * @param localPort クライアントのポート番号
+     * @exception FTPException サーバとの接続に失敗した場合
      */
     public void connect(
         String host,
@@ -74,204 +74,204 @@ public interface FTPClient{
     ) throws FTPException;
     
     /**
-     * ���O�C������B<p>
+     * ログインする。<p>
      *
-     * @param user ���[�U��
-     * @param password �p�X���[�h
-     * @exception FTPException ���O�C���Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param password パスワード
+     * @exception FTPException ログインに失敗した場合
      */
     public void login(String user, String password) throws FTPException;
     
     /**
-     * ���O�A�E�g����B<p>
+     * ログアウトする。<p>
      * 
-     * @exception FTPException ���O�A�E�g�Ɏ��s�����ꍇ
+     * @exception FTPException ログアウトに失敗した場合
      */
     public void logout() throws FTPException;
     
     /**
-     * �T�[�o�̃t�@�C�����ꗗ���擾����B<p>
+     * サーバのファイル名一覧を取得する。<p>
      * 
-     * @return �t�@�C�����̔z��
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @return ファイル名の配列
+     * @exception FTPException 取得に失敗した場合
      */
     public String[] ls() throws FTPException;
     
     /**
-     * �T�[�o�̎w�肳�ꂽ�f�B���N�g�����̃t�@�C�����ꗗ���擾����B<p>
+     * サーバの指定されたディレクトリ内のファイル名一覧を取得する。<p>
      * 
-     * @return �t�@�C�����̔z��
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @return ファイル名の配列
+     * @exception FTPException 取得に失敗した場合
      */
     public String[] ls(String path) throws FTPException;
     
     /**
-     * �T�[�o���ł̃J�����g�f�B���N�g�����擾����B<p>
+     * サーバ側でのカレントディレクトリを取得する。<p>
      * 
-     * @return �J�����g�f�B���N�g���̃p�X
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @return カレントディレクトリのパス
+     * @exception FTPException 取得に失敗した場合
      */
     public String pwd() throws FTPException;
     
     /**
-     * �N���C�A���g���ł̃J�����g�f�B���N�g�����擾����B<p>
+     * クライアント側でのカレントディレクトリを取得する。<p>
      * 
-     * @return �J�����g�f�B���N�g��
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @return カレントディレクトリ
+     * @exception FTPException 取得に失敗した場合
      */
     public File lpwd() throws FTPException;
     
     /**
-     * �T�[�o���ł̃J�����g�f�B���N�g�����w�肳�ꂽ�p�X�Ɉړ�����B<p>
+     * サーバ側でのカレントディレクトリを指定されたパスに移動する。<p>
      * 
-     * @param path �ړ���̃p�X
-     * @exception FTPException �ړ��Ɏ��s�����ꍇ
+     * @param path 移動先のパス
+     * @exception FTPException 移動に失敗した場合
      */
     public void cd(String path) throws FTPException;
     
     /**
-     * �N���C�A���g���ł̃J�����g�f�B���N�g�����w�肳�ꂽ�p�X�Ɉړ�����B<p>
+     * クライアント側でのカレントディレクトリを指定されたパスに移動する。<p>
      * 
-     * @param path �ړ���̃p�X
-     * @exception FTPException �ړ��Ɏ��s�����ꍇ
+     * @param path 移動先のパス
+     * @exception FTPException 移動に失敗した場合
      */
     public void lcd(String path) throws FTPException;
     
     /**
-     * �T�[�o���Ŏw�肳�ꂽ�f�B���N�g�����쐬����B<p>
+     * サーバ側で指定されたディレクトリを作成する。<p>
      * 
-     * @param dir �쐬����f�B���N�g���̃p�X
-     * @exception FTPException �쐬�Ɏ��s�����ꍇ
+     * @param dir 作成するディレクトリのパス
+     * @exception FTPException 作成に失敗した場合
      */
     public void mkdir(String dir) throws FTPException;
     
     /**
-     * �T�[�o���Ŏw�肳�ꂽ�t�@�C���̃t�@�C������ύX����B<p>
+     * サーバ側で指定されたファイルのファイル名を変更する。<p>
      * 
-     * @param from �ύX�Ώۂ̃t�@�C���̃p�X
-     * @param to �ύX��̃t�@�C����
-     * @exception FTPException �ύX�Ɏ��s�����ꍇ
+     * @param from 変更対象のファイルのパス
+     * @param to 変更後のファイル名
+     * @exception FTPException 変更に失敗した場合
      */
     public void rename(String from, String to) throws FTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����擾����B<p>
+     * サーバ側の指定されたファイルを取得する。<p>
      * 
-     * @param path �擾����t�@�C���̃p�X
-     * @return �擾�����t�@�C��
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @param path 取得するファイルのパス
+     * @return 取得したファイル
+     * @exception FTPException 取得に失敗した場合
      */
     public File get(String path) throws FTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����A�w�肳�ꂽ���O�̃t�@�C���Ƃ��Ď擾����B<p>
+     * サーバ側の指定されたファイルを、指定された名前のファイルとして取得する。<p>
      * 
-     * @param remote �擾����t�@�C���̃p�X
-     * @param local �擾��̃t�@�C����
-     * @return �擾�����t�@�C��
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @param remote 取得するファイルのパス
+     * @param local 取得後のファイル名
+     * @return 取得したファイル
+     * @exception FTPException 取得に失敗した場合
      */
     public File get(String remote, String local) throws FTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�S�Ẵt�@�C�����擾����B<p>
+     * サーバ側の指定された全てのファイルを取得する。<p>
      * 
-     * @param path �擾����t�@�C���̃p�X
-     * @return �擾�����t�@�C���z��
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @param path 取得するファイルのパス
+     * @return 取得したファイル配列
+     * @exception FTPException 取得に失敗した場合
      */
     public File[] mget(String path) throws FTPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C����]������B<p>
+     * サーバ側に指定されたファイルを転送する。<p>
      * 
-     * @param path �]������t�@�C���̃p�X
-     * @exception FTPException �]���Ɏ��s�����ꍇ
+     * @param path 転送するファイルのパス
+     * @exception FTPException 転送に失敗した場合
      */
     public void put(String path) throws FTPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C�����A�w�肳�ꂽ�t�@�C�����œ]������B<p>
+     * サーバ側に指定されたファイルを、指定されたファイル名で転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @param remote �]����ł̃t�@�C����
-     * @exception FTPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @param remote 転送先でのファイル名
+     * @exception FTPException 転送に失敗した場合
      */
     public void put(String local, String remote) throws FTPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�S�Ẵt�@�C����]������B<p>
+     * サーバ側に指定された全てのファイルを転送する。<p>
      * 
-     * @param path �]������t�@�C���̃p�X
-     * @exception FTPException �]���Ɏ��s�����ꍇ
+     * @param path 転送するファイルのパス
+     * @exception FTPException 転送に失敗した場合
      */
     public void mput(String path) throws FTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����폜����B<p>
+     * サーバ側の指定されたファイルを削除する。<p>
      * 
-     * @param path �폜����t�@�C���̃p�X
-     * @exception FTPException �폜�Ɏ��s�����ꍇ
+     * @param path 削除するファイルのパス
+     * @exception FTPException 削除に失敗した場合
      */
     public void delete(String path) throws FTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�S�Ẵt�@�C�����폜����B<p>
+     * サーバ側の指定された全てのファイルを削除する。<p>
      * 
-     * @param path �폜����t�@�C���̃p�X
-     * @exception FTPException �폜�Ɏ��s�����ꍇ
+     * @param path 削除するファイルのパス
+     * @exception FTPException 削除に失敗した場合
      */
     public void mdelete(String path) throws FTPException;
     
     /**
-     * �]�����[�h��ASCII�ɕύX����B<p>
+     * 転送モードをASCIIに変更する。<p>
      * 
-     * @exception FTPException �ύX�Ɏ��s�����ꍇ
+     * @exception FTPException 変更に失敗した場合
      */
     public void ascii() throws FTPException;
     
     /**
-     * �]�����[�h���o�C�i���ɕύX����B<p>
+     * 転送モードをバイナリに変更する。<p>
      * 
-     * @exception FTPException �ύX�Ɏ��s�����ꍇ
+     * @exception FTPException 変更に失敗した場合
      */
     public void binary() throws FTPException;
     
     /**
-     * �]�����[�h���w�肳�ꂽ���[�h�ɕύX����B<p>
-     * �����Ŏw�肷��]�����[�h�́A�����ˑ��B<br>
+     * 転送モードを指定されたモードに変更する。<p>
+     * ここで指定する転送モードは、実装依存。<br>
      *
-     * @param type �]�����[�h
-     * @exception FTPException �ύX�Ɏ��s�����ꍇ
+     * @param type 転送モード
+     * @exception FTPException 変更に失敗した場合
      */
     public void setTransferType(int type) throws FTPException;
     
     /**
-     * ���݂̓]�����[�h���擾����B<p>
+     * 現在の転送モードを取得する。<p>
      *
-     * @return �]�����[�h
-     * @exception FTPException �擾�Ɏ��s�����ꍇ
+     * @return 転送モード
+     * @exception FTPException 取得に失敗した場合
      */
     public int getTransferType() throws FTPException;
     
     /**
-     * �A�N�e�B�uFTP�ɐ؂�ւ���B<p>
+     * アクティブFTPに切り替える。<p>
      * 
-     * @exception FTPException �ύX�Ɏ��s�����ꍇ
+     * @exception FTPException 変更に失敗した場合
      */
     public void active() throws FTPException;
     
     /**
-     * �p�b�V�uFTP�ɐ؂�ւ���B<p>
+     * パッシブFTPに切り替える。<p>
      * 
-     * @exception FTPException �ύX�Ɏ��s�����ꍇ
+     * @exception FTPException 変更に失敗した場合
      */
     public void passive() throws FTPException;
     
     /**
-     * �T�[�o�Ƃ̐ڑ���ؒf����B<p>
+     * サーバとの接続を切断する。<p>
      * 
-     * @exception FTPException �ؒf�Ɏ��s�����ꍇ
+     * @exception FTPException 切断に失敗した場合
      */
     public void close() throws FTPException;
 }

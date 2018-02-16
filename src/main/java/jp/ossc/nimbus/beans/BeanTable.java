@@ -44,8 +44,8 @@ import java.util.RandomAccess;
 import java.io.Serializable;
 
 /**
- * Beanƒe[ƒuƒ‹B<p>
- * Bean‚ğƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ÉABean‚ÌƒvƒƒpƒeƒB‚ğƒJƒ‰ƒ€‚ÉŒ©—§‚ÄAƒCƒ“ƒfƒbƒNƒX‚ğ’£‚èAŒŸõ‚ğs‚¦‚é‚æ‚¤‚É‚µ‚½ƒŠƒXƒg‚Å‚·B<br>
+ * Beanãƒ†ãƒ¼ãƒ–ãƒ«ã€‚<p>
+ * Beanã‚’ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã«ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚«ãƒ©ãƒ ã«è¦‹ç«‹ã¦ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚Šã€æ¤œç´¢ã‚’è¡Œãˆã‚‹ã‚ˆã†ã«ã—ãŸãƒªã‚¹ãƒˆã§ã™ã€‚<br>
  * <pre>
  * class User{
  *     private String firstName;
@@ -75,13 +75,13 @@ import java.io.Serializable;
  * 
  * BeanTable table = new BeanTable(User.class);
  * 
- * // UserƒNƒ‰ƒX‚ÌƒvƒƒpƒeƒB"lastName"‚Æ"sex"‚É‘Î‚µ‚ÄƒCƒ“ƒfƒbƒNƒX‚ğ’£‚é
+ * // Userã‚¯ãƒ©ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"lastName"ã¨"sex"ã«å¯¾ã—ã¦ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚‹
  * table.setIndex("INDEX_LASTNAME_SEX", "lastName", "sex");
  * 
- * // UserƒNƒ‰ƒX‚ÌƒvƒƒpƒeƒB"age"‚É‘Î‚µ‚ÄƒCƒ“ƒfƒbƒNƒX‚ğ’£‚é
+ * // Userã‚¯ãƒ©ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"age"ã«å¯¾ã—ã¦ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚‹
  * table.setIndex("INDEX_AGE", "age");
  * 
- * // ƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é
+ * // ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹
  * table.add(new User("kotarou", "fuga", "male", 50));
  * table.add(new User("satoko", "fuga", "female", 49));
  * table.add(new User("tarou", "hoge", "male", 30));
@@ -90,19 +90,19 @@ import java.io.Serializable;
  * table.add(new User("mika", "hoge", "female", 10));
  * table.add(new User("ichirou, "hoge"", "male", 5));
  * 
- * // ŒŸõ—p‚Ìƒrƒ…[‚ğì¬‚·‚é
+ * // æ¤œç´¢ç”¨ã®ãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆã™ã‚‹
  * BeanTableView view = table.createView();
  * 
- * // ŒŸõƒL[‚ğ¶¬‚·‚é
+ * // æ¤œç´¢ã‚­ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹
  * User key = new User();
  * key.setLastName("hoge");
  * key.setSex("female");
  * key.setAge(20);
  * 
- * // "lastName"‚Æ"sex"‚Ì‡’v‚ğğŒ‚ÉŒŸõ
- * // X‚É"age"‚ª20ˆÈã‚ÅŒŸõ
- * // ‚»‚ÌŒ‹‰Ê‚ğ"age"‚Æ"sex"‚Å~‡ƒ\[ƒg‚µ‚Äæ“¾‚·‚é
- * // ƒCƒ“ƒfƒbƒNƒX‚Ìw’è‚ÍAƒCƒ“ƒfƒbƒNƒX–¼‚Ü‚½‚ÍƒvƒƒpƒeƒB–¼‚Åw’è‚·‚é
+ * // "lastName"ã¨"sex"ã®åˆè‡´ã‚’æ¡ä»¶ã«æ¤œç´¢
+ * // æ›´ã«"age"ãŒ20ä»¥ä¸Šã§æ¤œç´¢
+ * // ãã®çµæœã‚’"age"ã¨"sex"ã§é™é †ã‚½ãƒ¼ãƒˆã—ã¦å–å¾—ã™ã‚‹
+ * // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®æŒ‡å®šã¯ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã¾ãŸã¯ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æŒ‡å®šã™ã‚‹
  * List resultSet = view.searchByElement(key, "INDEX_LASTNAME_SEX")
  *                            .searchFromElement(key, true, null, "age")
  *                            .getResultList(new String[]{"age", "sex"}, new boolean{false, false});
@@ -121,20 +121,20 @@ public class BeanTable implements List, RandomAccess, Serializable, Cloneable{
     protected Comparator sortedComparator;
     
     /**
-     * w’è‚³‚ê‚½BeanƒNƒ‰ƒX‚ğŠi”[‚·‚éƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
-     * “¯Šú‰»‚³‚ê‚È‚¢B<br>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã‚¯ãƒ©ã‚¹ã‚’æ ¼ç´ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * åŒæœŸåŒ–ã•ã‚Œãªã„ã€‚<br>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public BeanTable(Class elementClass){
         this(elementClass, false);
     }
     
     /**
-     * w’è‚³‚ê‚½BeanƒNƒ‰ƒX‚ğŠi”[‚·‚éƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã‚¯ãƒ©ã‚¹ã‚’æ ¼ç´ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param isSynchronized “¯Šú‰»‚·‚é‚©‚Ç‚¤‚©B“¯Šú‰»‚·‚éê‡‚ÍAtrue
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param isSynchronized åŒæœŸåŒ–ã™ã‚‹ã‹ã©ã†ã‹ã€‚åŒæœŸåŒ–ã™ã‚‹å ´åˆã¯ã€true
      */
     public BeanTable(Class elementClass, boolean isSynchronized){
         indexManager = new BeanTableIndexManager(elementClass, isSynchronized);
@@ -143,22 +143,22 @@ public class BeanTable implements List, RandomAccess, Serializable, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½BeanƒNƒ‰ƒX‚ğŠi”[‚·‚éƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
-     * “¯Šú‰»‚³‚ê‚È‚¢B<br>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã‚¯ãƒ©ã‚¹ã‚’æ ¼ç´ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * åŒæœŸåŒ–ã•ã‚Œãªã„ã€‚<br>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param c ‰ŠúƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌW‡
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param c åˆæœŸãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®é›†åˆ
      */
     public BeanTable(Class elementClass, Collection c){
         this(elementClass, c, false);
     }
     
     /**
-     * w’è‚³‚ê‚½BeanƒNƒ‰ƒX‚ğŠi”[‚·‚éƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã‚¯ãƒ©ã‚¹ã‚’æ ¼ç´ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param c ‰ŠúƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌW‡
-     * @param isSynchronized “¯Šú‰»‚·‚é‚©‚Ç‚¤‚©B“¯Šú‰»‚·‚éê‡‚ÍAtrue
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param c åˆæœŸãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®é›†åˆ
+     * @param isSynchronized åŒæœŸåŒ–ã™ã‚‹ã‹ã©ã†ã‹ã€‚åŒæœŸåŒ–ã™ã‚‹å ´åˆã¯ã€true
      */
     public BeanTable(Class elementClass, Collection c, boolean isSynchronized){
         this(elementClass, isSynchronized);
@@ -166,22 +166,22 @@ public class BeanTable implements List, RandomAccess, Serializable, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½BeanƒNƒ‰ƒX‚ğŠi”[‚·‚éƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
-     * “¯Šú‰»‚³‚ê‚È‚¢B<br>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã‚¯ãƒ©ã‚¹ã‚’æ ¼ç´ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * åŒæœŸåŒ–ã•ã‚Œãªã„ã€‚<br>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param initialCapacity ‰Šú—e—Ê
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param initialCapacity åˆæœŸå®¹é‡
      */
     public BeanTable(Class elementClass, int initialCapacity){
         this(elementClass, initialCapacity, false);
     }
     
     /**
-     * w’è‚³‚ê‚½BeanƒNƒ‰ƒX‚ğŠi”[‚·‚éƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã‚¯ãƒ©ã‚¹ã‚’æ ¼ç´ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param initialCapacity ‰Šú—e—Ê
-     * @param isSynchronized “¯Šú‰»‚·‚é‚©‚Ç‚¤‚©B“¯Šú‰»‚·‚éê‡‚ÍAtrue
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param initialCapacity åˆæœŸå®¹é‡
+     * @param isSynchronized åŒæœŸåŒ–ã™ã‚‹ã‹ã©ã†ã‹ã€‚åŒæœŸåŒ–ã™ã‚‹å ´åˆã¯ã€true
      */
     public BeanTable(Class elementClass, int initialCapacity, boolean isSynchronized){
         indexManager = new BeanTableIndexManager(elementClass, isSynchronized);
@@ -190,34 +190,34 @@ public class BeanTable implements List, RandomAccess, Serializable, Cloneable{
     }
     
     /**
-     * ƒe[ƒuƒ‹‚ÉŠi”[‚·‚éƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Class getElementClass(){
         return indexManager.getElementClass();
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒCƒ“ƒfƒbƒN‚É‚ÍA’Pˆê‚ÌƒvƒƒpƒeƒB‚Å\¬‚³‚ê‚é’PƒƒCƒ“ƒfƒbƒNƒX‚ÆA•¡”‚ÌƒvƒƒpƒeƒB‚Å\¬‚³‚ê‚é•¡‡ƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚·‚éB<br>
-     * •¡‡ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚µ‚½ê‡‚ÍA©“®“I‚É‚»‚Ì—v‘f‚Æ‚È‚é’PˆêƒvƒƒpƒeƒB‚Ì’PƒƒCƒ“ƒfƒbƒNƒX‚à“à•”“I‚É¶¬‚³‚ê‚éB<p>
-     * ’A‚µA©“®¶¬‚³‚ê‚½’PˆêƒCƒ“ƒfƒbƒNƒX‚ÍAƒCƒ“ƒfƒbƒNƒX–¼‚ğ‚½‚È‚¢‚½‚ßAƒCƒ“ƒfƒbƒNƒX–¼‚Å‚Íw’è‚Å‚«‚¸AƒvƒƒpƒeƒB–¼‚Åw’è‚µ‚Äg—p‚·‚éB<br>
-     * ƒCƒ“ƒfƒbƒNƒX‚Ìí—Ş‚É‚æ‚Á‚ÄAg—p‚Å‚«‚éŒŸõ‹@”\‚ªˆÙ‚È‚éB’PƒƒCƒ“ƒfƒbƒNƒX‚ÍAˆê’vŒŸõ‚Æ”ÍˆÍŒŸõ‚Ì—¼•û‚ª‰Â”\‚¾‚ªA•¡‡ƒCƒ“ƒfƒbƒNƒX‚ÍAˆê’vŒŸõ‚Ì‚İ‰Â”\‚Å‚ ‚éB<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã«ã¯ã€å˜ä¸€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚Œã‚‹å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã€è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚Œã‚‹è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã€‚<br>
+     * è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã—ãŸå ´åˆã¯ã€è‡ªå‹•çš„ã«ãã®è¦ç´ ã¨ãªã‚‹å˜ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚‚å†…éƒ¨çš„ã«ç”Ÿæˆã•ã‚Œã‚‹ã€‚<p>
+     * ä½†ã—ã€è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸå˜ä¸€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã‚’æŒãŸãªã„ãŸã‚ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã§ã¯æŒ‡å®šã§ããšã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æŒ‡å®šã—ã¦ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ç¨®é¡ã«ã‚ˆã£ã¦ã€ä½¿ç”¨ã§ãã‚‹æ¤œç´¢æ©Ÿèƒ½ãŒç•°ãªã‚‹ã€‚å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ä¸€è‡´æ¤œç´¢ã¨ç¯„å›²æ¤œç´¢ã®ä¸¡æ–¹ãŒå¯èƒ½ã ãŒã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ä¸€è‡´æ¤œç´¢ã®ã¿å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param props ƒCƒ“ƒfƒbƒNƒX‚ğ’£‚éBean‚ÌƒvƒƒpƒeƒB–¼”z—ñ
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªBean‚É‘¶İ‚µ‚È‚¢ê‡
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param props ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒBeanã«å­˜åœ¨ã—ãªã„å ´åˆ
      */
     public void setIndex(String name, String[] props) throws NoSuchPropertyException{
         indexManager.setIndex(name, props);
     }
     
     /**
-     * ƒJƒXƒ^ƒ}ƒCƒY‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param keyFactory ƒCƒ“ƒfƒbƒNƒX‚ÌƒL[‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param keyFactory ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚­ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      * @see #setIndex(String, String[])
      */
     public void setIndex(String name, BeanTableIndexKeyFactory keyFactory){
@@ -225,16 +225,16 @@ public class BeanTable implements List, RandomAccess, Serializable, Cloneable{
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğíœ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
      */
     public void removeIndex(String name){
         indexManager.removeIndex(name);
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğÄ‰ğÍ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å†è§£æã™ã‚‹ã€‚<p>
      */
     public void analyzeIndex(){
         indexManager.clear();
@@ -242,41 +242,41 @@ public class BeanTable implements List, RandomAccess, Serializable, Cloneable{
     }
     
     /**
-     * ŒŸõ‚ğs‚¤ƒrƒ…[‚ğì¬‚·‚éB<p>
+     * æ¤œç´¢ã‚’è¡Œã†ãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
-     * @return ŒŸõƒrƒ…[
+     * @return æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView createView(){
         return new BeanTableView(indexManager);
     }
     
     /**
-     * ‚±‚Ìƒe[ƒuƒ‹©‘Ì‚ğw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB–¼‚Å¸‡ƒ\[ƒg‚·‚éB<p>
+     * ã“ã®ãƒ†ãƒ¼ãƒ–ãƒ«è‡ªä½“ã‚’æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param propNames ƒ\[ƒg‚·‚éBean‚ÌƒvƒƒpƒeƒB–¼”z—ñ
+     * @param propNames ã‚½ãƒ¼ãƒˆã™ã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
      */
     public void sort(String[] propNames){
         sort(propNames, null);
     }
     
     /**
-     * ‚±‚Ìƒe[ƒuƒ‹©‘Ì‚ğw’è‚µ‚½Bean‚ÌƒvƒƒpƒeƒB–¼‚Åw’è‚³‚ê‚½ƒ\[ƒg•ûŒü‚Éƒ\[ƒg‚·‚éB<p>
+     * ã“ã®ãƒ†ãƒ¼ãƒ–ãƒ«è‡ªä½“ã‚’æŒ‡å®šã—ãŸBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æŒ‡å®šã•ã‚ŒãŸã‚½ãƒ¼ãƒˆæ–¹å‘ã«ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param propNames ƒ\[ƒg‚·‚éBean‚ÌƒvƒƒpƒeƒB–¼”z—ñ
-     * @param isAsc propNames‚Åw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚Ìƒ\[ƒg•ûŒü‚ğ¦‚·”z—ñBtrue‚ğw’è‚·‚é‚Æ¸‡
+     * @param propNames ã‚½ãƒ¼ãƒˆã™ã‚‹Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param isAsc propNamesã§æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’ç¤ºã™é…åˆ—ã€‚trueã‚’æŒ‡å®šã™ã‚‹ã¨æ˜‡é †
      */
     public void sort(String[] propNames, boolean[] isAsc){
         sortedComparator = BeanTableView.sort(getElementClass(), list, propNames, isAsc);
     }
     
     /**
-     * ƒoƒCƒiƒŠƒT[ƒ`ƒAƒ‹ƒSƒŠƒYƒ€‚ğg—p‚µ‚ÄAw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğŒŸõ‚µ‚Ü‚·B<p>
-     * ƒŠƒXƒg‚ÍA‚±‚ÌŒÄ‚Ño‚µ‚Ì‘O‚ÉA{@link #sort(String[])}ƒƒ\ƒbƒh‚ğg—p‚µ‚ÄAƒ\[ƒg‚µ‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñB
-     * ƒŠƒXƒg‚ªƒ\[ƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡AŒ‹‰Ê‚Í’è‹`‚³‚ê‚Ü‚¹‚ñB
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ“™‚µ‚¢—v‘f‚ªƒŠƒXƒg‚É•¡”‚ ‚éê‡A‚Ç‚ê‚ªŒ©‚Â‚©‚é‚©‚Í•ÛØ‚³‚ê‚Ü‚¹‚ñB
+     * ãƒã‚¤ãƒŠãƒªã‚µãƒ¼ãƒã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’ä½¿ç”¨ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¤œç´¢ã—ã¾ã™ã€‚<p>
+     * ãƒªã‚¹ãƒˆã¯ã€ã“ã®å‘¼ã³å‡ºã—ã®å‰ã«ã€{@link #sort(String[])}ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¦ã€ã‚½ãƒ¼ãƒˆã—ãªã‘ã‚Œã°ã„ã‘ã¾ã›ã‚“ã€‚
+     * ãƒªã‚¹ãƒˆãŒã‚½ãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆã€çµæœã¯å®šç¾©ã•ã‚Œã¾ã›ã‚“ã€‚
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ç­‰ã—ã„è¦ç´ ãŒãƒªã‚¹ãƒˆã«è¤‡æ•°ã‚ã‚‹å ´åˆã€ã©ã‚ŒãŒè¦‹ã¤ã‹ã‚‹ã‹ã¯ä¿è¨¼ã•ã‚Œã¾ã›ã‚“ã€‚
      *
-     * @param key ŒŸõ‚³‚ê‚éƒL[—v‘f
-     * @return ƒŠƒXƒg“à‚ÉŒŸõƒL[‚ª‚ ‚éê‡‚ÍŒŸõƒL[‚ÌƒCƒ“ƒfƒbƒNƒXB‚»‚êˆÈŠO‚Ìê‡‚Í (-(‘}“üƒ|ƒCƒ“ƒg) - 1)B‘}“üƒ|ƒCƒ“ƒg‚ÍA‚»‚ÌƒL[‚ªƒŠƒXƒg‚É‘}“ü‚³‚ê‚éƒ|ƒCƒ“ƒg‚Æ‚µ‚Ä’è‹`‚³‚ê‚éB‚Â‚Ü‚èA‚»‚ÌƒL[‚æ‚è‚à‘å‚«‚ÈÅ‰‚Ì—v‘f‚ÌƒCƒ“ƒfƒbƒNƒXBƒŠƒXƒg“à‚Ì‚·‚×‚Ä‚Ì—v‘f‚ªw’è‚³‚ê‚½ƒL[‚æ‚è‚à¬‚³‚¢ê‡‚Í size()B‚±‚ê‚É‚æ‚èAƒL[‚ªŒ©‚Â‚©‚Á‚½ê‡‚É‚Ì‚İ–ß‚è’l‚ª >= 0 ‚É‚È‚é‚±‚Æ‚ª•ÛØ‚³‚ê‚éB
+     * @param key æ¤œç´¢ã•ã‚Œã‚‹ã‚­ãƒ¼è¦ç´ 
+     * @return ãƒªã‚¹ãƒˆå†…ã«æ¤œç´¢ã‚­ãƒ¼ãŒã‚ã‚‹å ´åˆã¯æ¤œç´¢ã‚­ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ãã‚Œä»¥å¤–ã®å ´åˆã¯ (-(æŒ¿å…¥ãƒã‚¤ãƒ³ãƒˆ) - 1)ã€‚æŒ¿å…¥ãƒã‚¤ãƒ³ãƒˆã¯ã€ãã®ã‚­ãƒ¼ãŒãƒªã‚¹ãƒˆã«æŒ¿å…¥ã•ã‚Œã‚‹ãƒã‚¤ãƒ³ãƒˆã¨ã—ã¦å®šç¾©ã•ã‚Œã‚‹ã€‚ã¤ã¾ã‚Šã€ãã®ã‚­ãƒ¼ã‚ˆã‚Šã‚‚å¤§ããªæœ€åˆã®è¦ç´ ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ãƒªã‚¹ãƒˆå†…ã®ã™ã¹ã¦ã®è¦ç´ ãŒæŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã‚ˆã‚Šã‚‚å°ã•ã„å ´åˆã¯ size()ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ã‚­ãƒ¼ãŒè¦‹ã¤ã‹ã£ãŸå ´åˆã«ã®ã¿æˆ»ã‚Šå€¤ãŒ >= 0 ã«ãªã‚‹ã“ã¨ãŒä¿è¨¼ã•ã‚Œã‚‹ã€‚
      */
     public int binarySearch(Object key){
         return Collections.binarySearch(list, key, sortedComparator);

@@ -32,20 +32,20 @@
 package jp.ossc.nimbus.service.byteconvert;
 
 /**
- *	ƒoƒCƒgƒRƒ“ƒo[ƒ^ƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^[ƒtƒFƒCƒX
+ *	ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface ByteConverterFactory	{
-	/** “¯‚¶ƒGƒ“ƒfƒBƒAƒ“‚ÌƒRƒ“ƒo[ƒ^[æ“¾w’è */
+	/** åŒã˜ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼å–å¾—æŒ‡å®š */
 	public final static int SAME_ENDIAN = 0;
-	/** ˆá‚¤ƒGƒ“ƒfƒBƒAƒ“‚ÌƒRƒ“ƒo[ƒ^[æ“¾w’è */
+	/** é•ã†ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼å–å¾—æŒ‡å®š */
 	public final static int DIFFERENT_ENDIAN = 1;
 	/**
-	 *	ƒoƒCƒgƒRƒ“ƒo[ƒ^‚ğo—Í‚·‚éB
-	 *	@param		type				16iƒ_ƒ“ƒv
-	 *	@return		ByteConverter		ƒoƒCƒg”z—ñ
+	 *	ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@param		type				16é€²ãƒ€ãƒ³ãƒ—
+	 *	@return		ByteConverter		ãƒã‚¤ãƒˆé…åˆ—
 	 */
 	public ByteConverter findConverter(int type);
 	//

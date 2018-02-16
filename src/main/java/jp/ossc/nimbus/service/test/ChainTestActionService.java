@@ -39,8 +39,8 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link ChainTestAction ˜A½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“}À‘•ƒT[ƒrƒXB<p>
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ğ˜A½‚³‚¹‚ÄÀs‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+ * {@link ChainTestAction é€£é–ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³}å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€£é–ã•ã›ã¦å®Ÿè¡Œã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */

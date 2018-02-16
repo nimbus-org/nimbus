@@ -36,7 +36,7 @@ import java.util.Set;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link MessageForwardingService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MessageForwardingService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  * @see MessageForwardingService
@@ -47,90 +47,90 @@ public interface MessageForwardingServiceMBean extends MessageReceiverServiceMBe
     public static final String MSG_ID_FORWARD_ERROR         = "PMFS_00002";
     
     /**
-     * “]‘—æ‚©‚ç—v‹‚³‚ê‚½ˆ—‚ğ“]‘—Œ³‚É‘—M‚Å‚«‚È‚©‚Á‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * è»¢é€å…ˆã‹ã‚‰è¦æ±‚ã•ã‚ŒãŸå‡¦ç†ã‚’è»¢é€å…ƒã«é€ä¿¡ã§ããªã‹ã£ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getSendErrorMessageId();
     
     /**
-     * “]‘—æ‚©‚ç—v‹‚³‚ê‚½ˆ—‚ğ“]‘—Œ³‚É‘—M‚Å‚«‚È‚©‚Á‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * è»¢é€å…ˆã‹ã‚‰è¦æ±‚ã•ã‚ŒãŸå‡¦ç†ã‚’è»¢é€å…ƒã«é€ä¿¡ã§ããªã‹ã£ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setSendErrorMessageId(String id);
     
     /**
-     * “]‘—Œ³‚©‚ç‚Ì”zM‚ğ“]‘—æ‚É‘—M‚Å‚«‚È‚©‚Á‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * è»¢é€å…ƒã‹ã‚‰ã®é…ä¿¡ã‚’è»¢é€å…ˆã«é€ä¿¡ã§ããªã‹ã£ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getForwardErrorMessageId();
     
     /**
-     * “]‘—Œ³‚©‚ç‚Ì”zM‚ğ“]‘—æ‚É‘—M‚Å‚«‚È‚©‚Á‚½ê‡‚Éo—Í‚·‚éƒƒOƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * è»¢é€å…ƒã‹ã‚‰ã®é…ä¿¡ã‚’è»¢é€å…ˆã«é€ä¿¡ã§ããªã‹ã£ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒOƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setForwardErrorMessageId(String id);
     
     /**
-     * “]‘—æ‚Ì{@link ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * è»¢é€å…ˆã®{@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerConnectionFactoryServiceName();
     
     /**
-     * “]‘—æ‚Ì{@link ServerConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * è»¢é€å…ˆã®{@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServerConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * “]‘—æ‚É”ñ“¯Šú‘—M‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Ìê‡A“]‘—æ‚Ì{@link ServerConnection}‚Ì{@link ServerConnection#sendAsynch(Message)}‚Å‘—M‚·‚éB<br>
-     * false‚Ìê‡A“]‘—æ‚ÌServerConnection‚Ì{@link ServerConnection#send(Message)}‚Å‘—M‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å“¯Šú‘—MB<br>
+     * è»¢é€å…ˆã«éåŒæœŸé€ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã®å ´åˆã€è»¢é€å…ˆã®{@link ServerConnection}ã®{@link ServerConnection#sendAsynch(Message)}ã§é€ä¿¡ã™ã‚‹ã€‚<br>
+     * falseã®å ´åˆã€è»¢é€å…ˆã®ServerConnectionã®{@link ServerConnection#send(Message)}ã§é€ä¿¡ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§åŒæœŸé€ä¿¡ã€‚<br>
      * 
-     * @param isAsynch ”ñ“¯Šú‘—M‚·‚éê‡true
+     * @param isAsynch éåŒæœŸé€ä¿¡ã™ã‚‹å ´åˆtrue
      */
     public void setAsynchSend(boolean isAsynch);
     
     /**
-     * “]‘—æ‚É”ñ“¯Šú‘—M‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * è»¢é€å…ˆã«éåŒæœŸé€ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A”ñ“¯Šú‘—M‚·‚é
+     * @return trueã®å ´åˆã€éåŒæœŸé€ä¿¡ã™ã‚‹
      */
     public boolean isAsynchSend();
     
     /**
-     * “]‘—‚·‚éƒTƒuƒWƒFƒNƒg‚ğ“o˜^‚·‚éB<p>
+     * è»¢é€ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param subject ƒTƒuƒWƒFƒNƒg
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void addSubject(String subject);
     
     /**
-     * “]‘—‚·‚éƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğ“o˜^‚·‚éB<p>
+     * è»¢é€ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param subject ƒTƒuƒWƒFƒNƒg
-     * @param keys ƒL[‚Ì”z—ñ
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param keys ã‚­ãƒ¼ã®é…åˆ—
      */
     public void addSubject(String subject, String[] keys);
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ÌW‡
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆ
      */
     public Set getSubjects();
     
     /**
-     * w’è‚µ‚½ƒTƒuƒWƒFƒNƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌW‡
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®é›†åˆ
      */
     public Set getKeys(String subject);
 }

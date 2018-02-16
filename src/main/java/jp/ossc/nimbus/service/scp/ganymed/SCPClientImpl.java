@@ -51,8 +51,8 @@ import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.scp.SCPException;
 
 /**
- * SCPƒNƒ‰ƒCƒAƒ“ƒgB<p>
- * <a href="http://www.ganymed.ethz.ch/ssh2/">Ganymed SSH-2 for Java</a>‚ÌSCPƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚µ‚½{@link SCPClient}À‘•ƒNƒ‰ƒX‚Å‚ ‚éB<br>
+ * SCPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã€‚<p>
+ * <a href="http://www.ganymed.ethz.ch/ssh2/">Ganymed SSH-2 for Java</a>ã®SCPãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸ{@link SCPClient}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
   *
  * @author M.Takata
  */

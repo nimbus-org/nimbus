@@ -32,89 +32,89 @@
 package jp.ossc.nimbus.service.queue;
 
 /**
- * QueueHandlerƒRƒ“ƒeƒiB<p>
+ * QueueHandlerã‚³ãƒ³ãƒ†ãƒŠã€‚<p>
  * 
  * @author M.Takata
  */
 public interface QueueHandlerContainer extends Queue{
     
     /**
-     * QueueHandler‚ğİ’è‚·‚éB<p>
+     * QueueHandlerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param handler QueueHandler
      */
     public void setQueueHandler(QueueHandler handler);
     
     /**
-     * QueueHandler‚ğæ“¾‚·‚éB<p>
+     * QueueHandlerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return QueueHandler
      */
     public QueueHandler getQueueHandler();
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½–‚ğ’Ê’m‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸäº‹ã‚’é€šçŸ¥ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setHandlingErrorMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µAƒŠƒgƒ‰ƒC‰ñ”‚ğ‰z‚¦‚½–‚ğ’Ê’m‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã€ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’è¶ŠãˆãŸäº‹ã‚’é€šçŸ¥ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setRetryOverErrorMessageId(String id);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param count ƒŠƒgƒ‰ƒC‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setMaxRetryCount(int count);
     
     /**
-     * ƒnƒ“ƒhƒŠƒ“ƒO‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚éŠÔŠu‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param interval ƒŠƒgƒ‰ƒCŠÔŠu
+     * @param interval ãƒªãƒˆãƒ©ã‚¤é–“éš”
      */
     public void setRetryInterval(long interval);
     
     /**
-     * ŠJn‚·‚éB<p>
+     * é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public void start() throws Exception;
     
     /**
-     * ’â~‚·‚éB<p>
+     * åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stop();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚é{@link QueueHandler}ƒXƒŒƒbƒh‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹{@link QueueHandler}ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerƒXƒŒƒbƒh‚Ì”
+     * @return QueueHandlerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public int getQueueHandlerSize();
     
     /**
-     * Œ»İƒnƒ“ƒhƒŠƒ“ƒO’†‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İƒnƒ“ƒhƒŠƒ“ƒO’†‚ÌƒXƒŒƒbƒh”
+     * @return ç¾åœ¨ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getActiveQueueHandlerSize();
     
     /**
-     * Œ»İ‘Ò‹@’†‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨å¾…æ©Ÿä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‘Ò‹@’†‚ÌƒXƒŒƒbƒh”
+     * @return ç¾åœ¨å¾…æ©Ÿä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getStandbyQueueHandlerSize();
     
     /**
-     * ƒLƒ…[‚©‚çˆø‚«”²‚¢‚½Œã‚Ìˆ—ŠÔ‚Ì•½‹Ï‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å¼•ãæŠœã„ãŸå¾Œã®å‡¦ç†æ™‚é–“ã®å¹³å‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹Ïˆ—ŠÔ[ms]
+     * @return å¹³å‡å‡¦ç†æ™‚é–“[ms]
      */
     public long getAverageHandleProcessTime();
 }

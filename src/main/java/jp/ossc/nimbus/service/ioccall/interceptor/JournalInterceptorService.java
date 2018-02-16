@@ -43,7 +43,7 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * IOCƒWƒƒ[ƒiƒ‹ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
+ * IOCã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -76,130 +76,130 @@ public class JournalInterceptorService extends ServiceBase
     protected String exceptionJournalKey = DEFAULT_EXCEPTION_JOURNAL_KEY;
     protected String requestIdKey = DEFAULT_REQUEST_ID_KEY;
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setStepEditorFinderServiceName(ServiceName name){
         stepEditorFinderServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getStepEditorFinderServiceName(){
         return stepEditorFinderServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setInputEditorFinderServiceName(ServiceName name){
         inputEditorFinderServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getInputEditorFinderServiceName(){
         return inputEditorFinderServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setOutputEditorFinderServiceName(ServiceName name){
         outputEditorFinderServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getOutputEditorFinderServiceName(){
         return outputEditorFinderServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setExceptionEditorFinderServiceName(ServiceName name){
         exceptionEditorFinderServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getExceptionEditorFinderServiceName(){
         return exceptionEditorFinderServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestIDKey(String key){
         requestIdKey = key;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public String getRequestIDKey(){
         return requestIdKey;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setStepJournalKey(String key){
         stepJournalKey = key;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public String getStepJournalKey(){
         return stepJournalKey;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setInputJournalKey(String key){
         inputJournalKey = key;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public String getInputJournalKey(){
         return inputJournalKey;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setOutputJournalKey(String key){
         outputJournalKey = key;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public String getOutputJournalKey(){
         return outputJournalKey;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public void setExceptionJournalKey(String key){
         exceptionJournalKey = key;
     }
     
-    // JournalInterceptorServiceMBean‚ÌJavaDoc
+    // JournalInterceptorServiceMBeanã®JavaDoc
     public String getExceptionJournalKey(){
         return exceptionJournalKey;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(journalServiceName == null){

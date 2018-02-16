@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test.evaluate;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link TextEvaluateActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TextEvaluateActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see TextEvaluateActionService
@@ -42,44 +42,44 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface TextEvaluateActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ‘ÎÛƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFileEncoding(String encoding);
     
     /**
-     * ‘ÎÛƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFileEncoding();
     
     /**
-     * ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO‚ğİ’è‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param flags ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param flags æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public void setMatchFlags(int[] flags);
     
     /**
-     * ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @return æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public int[] getMatchFlags();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

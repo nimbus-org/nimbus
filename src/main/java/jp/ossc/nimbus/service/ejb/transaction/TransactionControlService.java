@@ -40,9 +40,9 @@ import javax.naming.NamingException;
 import javax.transaction.*;
 //
 /**
- * EJBƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ}ƒl[ƒWƒƒ[ƒRƒ“ƒgƒ[ƒ‹ƒNƒ‰ƒX<p>
+ * EJBãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚¯ãƒ©ã‚¹<p>
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/28 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/28 -ã€€H.Nakano
  */
 public class TransactionControlService
 	extends ServiceBase
@@ -50,32 +50,32 @@ public class TransactionControlService
 	
     private static final long serialVersionUID = -6413299874051386643L;
     
-    /** TransactionManageræ“¾ƒ‚[ƒh */
+    /** TransactionManagerå–å¾—ãƒ¢ãƒ¼ãƒ‰ */
 	private boolean mIsJNDIMode = true ;
-	/** JNDIƒT[ƒrƒX–¼ */
+	/** JNDIã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mJNDIServiceName = null ;
-	/** JNDIƒT[ƒrƒX */
+	/** JNDIã‚µãƒ¼ãƒ“ã‚¹ */
 	private JndiFinder mJNDIFinder = null ;
-	/** TransactionManagerFactoryƒNƒ‰ƒX–¼ */
+	/** TransactionManagerFactoryã‚¯ãƒ©ã‚¹å */
 	private String mTransactionManagerFactoryClassName = null ;
-	/** TransactionManagerFactoryƒNƒ‰ƒX */
+	/** TransactionManagerFactoryã‚¯ãƒ©ã‚¹ */
 	private Class mTmFactoryClass = null ;
-	/** TransactionManageræ“¾ƒƒ\ƒbƒh–¼ */
+	/** TransactionManagerå–å¾—ãƒ¡ã‚½ãƒƒãƒ‰å */
 	private String mGetTransactionManagerMethodName = null ;
-	/** TransactionManageræ“¾ƒƒ\ƒbƒh */
+	/** TransactionManagerå–å¾—ãƒ¡ã‚½ãƒƒãƒ‰ */
 	private Method mGetTmFactoryMethod = null ;
-	/** TransactionStateŠÇ—ƒXƒŒƒbƒhƒ[ƒJƒ‹ */
+	/** TransactionStateç®¡ç†ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ« */
 	private ThreadLocal mTransactionLocal = null ;
-	/** TransactionManagerŠÇ—ƒXƒŒƒbƒhƒ[ƒJƒ‹ */
+	/** TransactionManagerç®¡ç†ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ« */
 	private ThreadLocal mTransactionManagerLocal = null ;
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#createService()
 	 */
 	public void createService(){
 		mTransactionLocal = new ThreadLocal() ;
 		mTransactionManagerLocal = new ThreadLocal() ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService(){
@@ -112,7 +112,7 @@ public class TransactionControlService
 			}
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.Service#getState()
 	 */
 	public int getState() {
@@ -125,13 +125,13 @@ public class TransactionControlService
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControl#suspend()
 	 */
 	public void suspend() {
 		TransactionState state = (TransactionState)this.mTransactionLocal.get() ;
 		TransactionManager tm = null ;
-		//‰‰ñƒTƒXƒyƒ“ƒh
+		//åˆå›ã‚µã‚¹ãƒšãƒ³ãƒ‰æ™‚
 		if(state == null ){
 			state = new TransactionState();
 			tm = this.getTransactionManager() ;
@@ -142,13 +142,13 @@ public class TransactionControlService
 			}
 			this.mTransactionLocal.set(state) ;
 			this.mTransactionManagerLocal.set(tm) ;
-		//ƒlƒXƒgƒTƒXƒyƒ“ƒh
+		//ãƒã‚¹ãƒˆã‚µã‚¹ãƒšãƒ³ãƒ‰æ™‚
 		}else{
 			TransactionState addState = new TransactionState();
 			addState.setParentState(state) ;
 			tm = (TransactionManager)mTransactionManagerLocal.get() ;
 			state = getCurrentTransactionState(state) ;
-			//V‚µ‚¢ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªŠJn‚µ‚Ä‚ ‚éê‡‚Ì‚İ
+			//æ–°ã—ã„ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒé–‹å§‹ã—ã¦ã‚ã‚‹å ´åˆã®ã¿
 			if(state.getState() == INIT_STATE ){
 				try {
 					changeSuspend(addState,tm) ;
@@ -157,7 +157,7 @@ public class TransactionControlService
 				}
 				state.setChildState(addState) ;
 			}else{
-				//ˆÙí‚ÈŒÄ‚Ño‚µ
+				//ç•°å¸¸ãªå‘¼ã³å‡ºã—
 				throw new ServiceException("TransactionControl703","Transaction suspend state invalid") ; //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
@@ -222,14 +222,14 @@ public class TransactionControlService
 		return tm ;
 		
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControl#resume()
 	 */
 	public void resume() {
 		TransactionState state = (TransactionState)this.mTransactionLocal.get() ;
 		if(state !=null){
 			state = this.getCurrentTransactionState(state) ;
-			//SUSPENDó‘Ô‚Ìê‡‚Ì‚İ”½‰
+			//SUSPENDçŠ¶æ…‹ã®å ´åˆã®ã¿åå¿œ
 			if(state.getState() == SUSPEND_STATE){
 				TransactionManager tm = (TransactionManager)mTransactionManagerLocal.get() ;
 				Transaction tran = state.getCurrentTransaction() ;
@@ -243,7 +243,7 @@ public class TransactionControlService
 				} catch (SystemException e) {
 					throw new ServiceException("TransactionControl302","TransactionManager resume Error SystemException" ,e) ; //$NON-NLS-1$ //$NON-NLS-2$
 				}
-				//ŠÇ—•”‚Ì\‘¢‚ğİ’è
+				//ç®¡ç†éƒ¨ã®æ§‹é€ ã‚’è¨­å®š
 				TransactionState parentState = state.getParentState() ;
 				if(parentState == null){
 					terminateTransactioinControl() ;
@@ -257,7 +257,7 @@ public class TransactionControlService
 			throw new ServiceException("TransactionControl304","Transaction state none") ; //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControl#beginNewTransaction()
 	 */
 	public void beginNewTransaction() {
@@ -295,7 +295,7 @@ public class TransactionControlService
 			throw new ServiceException("TransactionControl404","New Transaction state invalid") ;  //$NON-NLS-1$//$NON-NLS-2$
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControl#commitNewTransaction()
 	 */
 	public void commitNewTransaction() {
@@ -342,7 +342,7 @@ public class TransactionControlService
 			throw new ServiceException("TransactionControl517","TransactionManager Commit Error state invalid" ) ;  //$NON-NLS-1$//$NON-NLS-2$
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControl#rollBackNewTransaction()
 	 */
 	public void rollBackNewTransaction() {
@@ -379,25 +379,25 @@ public class TransactionControlService
 			throw new ServiceException("TransactionControl615","Transaction eollbacl Error State Invalid") ;  //$NON-NLS-1$//$NON-NLS-2$
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControlServiceMBean#setJNDIMode(boolean)
 	 */
 	public void setJNDIMode(boolean isJNDIMode) {
 		this.mIsJNDIMode = isJNDIMode ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControlServiceMBean#setJNDIServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setJNDIServiceName(ServiceName name) {
 		this.mJNDIServiceName = name ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControlServiceMBean#setTransactionFactoryClassName(java.lang.String)
 	 */
 	public void setTransactionManagerFactoryClassName(String clsName) {
 		this.mTransactionManagerFactoryClassName = clsName ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.ejb.transaction.TransactionControlServiceMBean#setGetTransactinManagerMethodName(java.lang.String)
 	 */
 	public void setGetTransactinManagerMethodName(String methodName) {
@@ -405,7 +405,7 @@ public class TransactionControlService
 	}
     
     /**
-     * JndiFinder‚ğİ’è‚·‚éB
+     * JndiFinderã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setJndiFinder(JndiFinder finder) {
         mJNDIFinder = finder;
@@ -413,9 +413,9 @@ public class TransactionControlService
     
 	//
 	/**
-	 * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔŠÇ—\‘¢‘ÌƒNƒ‰ƒX 
+	 * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ç®¡ç†æ§‹é€ ä½“ã‚¯ãƒ©ã‚¹ 
 	 * @author   nakano
-	 * @version  1.00 ì¬: 2003/11/29 -@H.Nakano
+	 * @version  1.00 ä½œæˆ: 2003/11/29 -ã€€H.Nakano
 	 */
 	private class TransactionState {
 		private int mState = SUSPEND_STATE ;

@@ -34,12 +34,12 @@ package jp.ossc.nimbus.util;
 import java.util.Properties;
 //
 /**
- *	•W€‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚Ì•¶š‰»‚¯‚Ì–â‘è‚ğ‰ñ”ğ‚µ‚½<BR>
- *	“ú–{Œê‰Â”\‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚Å‚·B<BR>
- *	‚Ü‚½prop0...propn‚ÌƒL[‚Ìê‡”z—ñ‚Æ‚µ‚Äo—Í‚Å‚«‚Ü‚·B<BR>
+ *	æ¨™æº–ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ–‡å­—åŒ–ã‘ã®å•é¡Œã‚’å›é¿ã—ãŸ<BR>
+ *	æ—¥æœ¬èªå¯èƒ½ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚<BR>
+ *	ã¾ãŸprop0...propnã®ã‚­ãƒ¼ã®å ´åˆé…åˆ—ã¨ã—ã¦å‡ºåŠ›ã§ãã¾ã™ã€‚<BR>
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public class ArrayProperties extends EncodedProperties {
 	
@@ -48,40 +48,40 @@ public class ArrayProperties extends EncodedProperties {
     //
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
 	 */
 	public ArrayProperties() {
 		super();
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 *	@param	prop w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 *	@param	prop æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public ArrayProperties(EncodedProperties prop) {
 		super((EncodedProperties)prop);
 	}
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 *	@param	prop w’è‚³‚ê‚½ƒfƒtƒHƒ‹ƒg’l‚ğ‚Â‹ó‚ÌƒvƒƒpƒeƒBƒŠƒXƒg‚ğì¬‚µ‚Ü‚·B
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 *	@param	prop æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’æŒã¤ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒªã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 	 */
 	public ArrayProperties(Properties prop) {
 		super(prop);
 	}
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 *	@param encodeName ƒtƒ@ƒCƒ‹“Ç‚İ‚İƒGƒ“ƒR[ƒh
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 *	@param encodeName ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰
 	 */
 	public ArrayProperties(String encodeName) {
 		super(encodeName);
 	}
 	//
 	/**
-	 *	ƒL[w’è”z—ñƒvƒƒpƒeƒBæ“¾<BR>
-	 *	ƒL[‚É“Y‚¦”š‚ª‚ ‚ê‚Î“Y‚¦š‚È‚µ‚ÌƒL[‚Å”z—ñ‚ğ•Ô‚·B
-	 *	@param	key			ƒL[
-	 *	@return	”z—ñƒIƒuƒWƒFƒNƒg
+	 *	ã‚­ãƒ¼æŒ‡å®šé…åˆ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—<BR>
+	 *	ã‚­ãƒ¼ã«æ·»ãˆæ•°å­—ãŒã‚ã‚Œã°æ·»ãˆå­—ãªã—ã®ã‚­ãƒ¼ã§é…åˆ—ã‚’è¿”ã™ã€‚
+	 *	@param	key			ã‚­ãƒ¼
+	 *	@return	é…åˆ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public CsvArrayList getAryProperty(String key) {
 		CsvArrayList retObj = new CsvArrayList();

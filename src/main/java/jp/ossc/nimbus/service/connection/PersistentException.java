@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.connection;
 
 /**
- * ‰i‘±‰»§Œä‚É¸”s‚µ‚½ê‡‚É”­¶‚·‚é—áŠOB<p>
+ * æ°¸ç¶šåŒ–åˆ¶å¾¡ã«å¤±æ•—ã—ãŸå ´åˆã«ç™ºç”Ÿã™ã‚‹ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class PersistentException extends Exception{
     private static final long serialVersionUID = -6007941224854237738L;
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public PersistentException(){
         super();
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public PersistentException(String message){
         super(message);
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PersistentException(Throwable cause){
         super(cause);
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ÆA‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã€ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PersistentException(
         String message,

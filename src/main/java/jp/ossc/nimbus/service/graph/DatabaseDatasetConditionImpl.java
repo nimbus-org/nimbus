@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ƒf[ƒ^ƒx[ƒXƒf[ƒ^ƒZƒbƒgğŒB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -45,29 +45,29 @@ public class DatabaseDatasetConditionImpl
     
     private static final long serialVersionUID = -8957077437577164368L;
     
-    /** PreparedStatement‚Éİ’è‚·‚é’lƒŠƒXƒg */
+    /** PreparedStatementã«è¨­å®šã™ã‚‹å€¤ãƒªã‚¹ãƒˆ */
     private Map params = null;
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<p>
      */
     public DatabaseDatasetConditionImpl() {
     }
 
-    // DatabaseDatasetCondition‚ÌJavaDoc
+    // DatabaseDatasetConditionã®JavaDoc
     public void setParamObject(int index, Object param) {
         if (params == null) {
             params = new HashMap();
         }
         if (index < 0) {
-            // “o˜^•s‰Â
+            // ç™»éŒ²ä¸å¯
             throw new IllegalArgumentException("illegal index. > " + index);
         }
         
         params.put(new Integer(index), param);
     }
 
-    // DatabaseDatasetCondition‚ÌJavaDoc
+    // DatabaseDatasetConditionã®JavaDoc
     public Object getParamObject(int index) {
         if (params == null) {
             return null;

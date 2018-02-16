@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * ___ƒNƒ‰ƒX<p>
- * ___‘€ì‚ğs‚¤
+ * ___ã‚¯ãƒ©ã‚¹<p>
+ * ___æ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0

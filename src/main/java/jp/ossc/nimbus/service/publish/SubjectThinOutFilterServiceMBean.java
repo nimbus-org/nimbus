@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.publish;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link SubjectThinOutFilterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SubjectThinOutFilterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SubjectThinOutFilterService
@@ -42,30 +42,30 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface SubjectThinOutFilterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒtƒBƒ‹ƒ^‚·‚éƒTƒuƒWƒFƒNƒg–¼”z—ñ‚ðÝ’è‚·‚éB<p>
+     * ãƒ•ã‚£ãƒ«ã‚¿ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param subjects ƒTƒuƒWƒFƒNƒg–¼”z—ñ
+     * @param subjects ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—
      */
     public void setFilterSubjects(String[] subjects);
     
     /**
-     * ƒtƒBƒ‹ƒ^‚·‚éƒTƒuƒWƒFƒNƒg–¼”z—ñ‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ•ã‚£ãƒ«ã‚¿ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒTƒuƒWƒFƒNƒg–¼”z—ñ
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—
      */
     public String[] getFilterSubjects();
     
     /**
-     * ƒtƒBƒ‹ƒ^‚µ‚È‚¢ƒTƒuƒWƒFƒNƒg–¼”z—ñ‚ðÝ’è‚·‚éB<p>
+     * ãƒ•ã‚£ãƒ«ã‚¿ã—ãªã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param subjects ƒTƒuƒWƒFƒNƒg–¼”z—ñ
+     * @param subjects ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—
      */
     public void setNotFilterSubjects(String[] subjects);
     
     /**
-     * ƒtƒBƒ‹ƒ^‚µ‚È‚¢ƒTƒuƒWƒFƒNƒg–¼”z—ñ‚ðŽæ“¾‚·‚éB<p>
+     * ãƒ•ã‚£ãƒ«ã‚¿ã—ãªã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒTƒuƒWƒFƒNƒg–¼”z—ñ
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆåé…åˆ—
      */
     public String[] getNotFilterSubjects();
 }

@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’ŠÛ•ªUQueueƒZƒŒƒNƒ^[B<p>
+ * æŠ½è±¡åˆ†æ•£Queueã‚»ãƒ¬ã‚¯ã‚¿ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */

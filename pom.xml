@@ -56,7 +56,7 @@
         <compile.target>1.6</compile.target>
         <maven.compiler.source>${compile.target}</maven.compiler.source>
         <maven.compiler.target>${compile.target}</maven.compiler.target>
-        <project.build.sourceEncoding>Windows-31J</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <dryRun>true</dryRun>
         <github.site.skip>true</github.site.skip>
         <!-- WebSocket enabled for Nimbus -->
@@ -438,6 +438,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
                     <configuration>
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <compilerArguments>

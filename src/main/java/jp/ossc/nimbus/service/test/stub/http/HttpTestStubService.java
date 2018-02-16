@@ -67,12 +67,12 @@ import jp.ossc.nimbus.service.test.StubResourceManager;
 import jp.ossc.nimbus.service.test.TestStub;
 
 /**
- * HTTP�e�X�g�X�^�u�B<p>
- * {@link jp.ossc.nimbus.service.http.proxy.ProxyServerService ProxyServerService}�ɁA{@link jp.ossc.nimbus.service.http.proxy.Process Process}�T�[�r�X�Ƃ��Đݒ肷�鎖�Ŏg�p����B<br>
- * �V�i���I�J�n�̒ʒm���󂯂�ƁA{@link StubResourceManager}����A�V�i���I�P�ʂŃX�^�u�̃��\�[�X���_�E�����[�h���A�z�u����B<br>
- * �e�X�g�P�[�X�J�n�̒ʒm���󂯂�ƁA�e�X�g�P�[�XID��ێ����AHTTP���N�G�X�g�ɔ�����B<br>
- * HTTP���N�G�X�g���󂯂�ƁA���̃e�X�g�P�[�X���̃��\�[�X�t�@�C������A���N�G�X�g�ɍ��v����t�@�C������肵�āA���̓��e�ɏ]����HTTP���X�|���X����������B�܂��A������HTTP���N�G�X�g�̓��e�����N�G�X�g�t�@�C���Ƃ��ďo�͂���B<br>
- * ���\�[�X�t�@�C���̃t�H�[�}�b�g�́A�ȉ��B<br>
+ * HTTPテストスタブ。<p>
+ * {@link jp.ossc.nimbus.service.http.proxy.ProxyServerService ProxyServerService}に、{@link jp.ossc.nimbus.service.http.proxy.Process Process}サービスとして設定する事で使用する。<br>
+ * シナリオ開始の通知を受けると、{@link StubResourceManager}から、シナリオ単位でスタブのリソースをダウンロードし、配置する。<br>
+ * テストケース開始の通知を受けると、テストケースIDを保持し、HTTPリクエストに備える。<br>
+ * HTTPリクエストを受けると、そのテストケース内のリソースファイルから、リクエストに合致するファイルを特定して、その内容に従ってHTTPレスポンスを応答する。また、同時にHTTPリクエストの内容をリクエストファイルとして出力する。<br>
+ * リソースファイルのフォーマットは、以下。<br>
  * <pre>
  * urlPattern
  * queryPattern|bodyPattern
@@ -86,31 +86,31 @@ import jp.ossc.nimbus.service.test.TestStub;
  * bodyType
  * body
  * </pre>
- * urlPattern�́A���N�G�X�g���ꂽURL�ƃ}�b�`���O����URL�̐��K�\�����w�肷��B<br>
- * queryPattern�́A���N�G�X�g���ꂽ�N�G���̓��e�ƃ}�b�`���O���鐳�K�\�����w�肷��B�N�G���Ń}�b�`���O������K�v���Ȃ��ꍇ�́A�󕶎����w�肷��B<br>
- * bodyPattern�́A���N�G�X�g���ꂽ�{�f�B�̓��e�ƃ}�b�`���O���鐳�K�\�����w�肷��B�{�f�B�Ń}�b�`���O������K�v���Ȃ��ꍇ�́A�󕶎����w�肷��B<br>
- * urlPattern�́A���N�G�X�g���ꂽURL�ƃ}�b�`���O����URL�̐��K�\�����w�肷��B<br>
- * status�́A��������HTTP�X�e�[�^�X���w�肷��B����ɑ����ăJ���}�ŋ�؂�A�������郁�b�Z�[�W��message�Ŏw�肷��B���̍s�ɁA�󕶎����w�肷��ƁA200��������B�܂��Amessage���s�v�ȏꍇ�́Astatus�̂ݎw�肷��B<br>
- * headerName�́AHTTP�w�b�_�����w�肷��B����ɑ�����":"������ŁA�w�b�_�l��headerValue�Ƃ��Ďw�肷��B���̍s�́A�����w�肪�\�Ȃ��߁A�I�����������߂ɁA��s���P�s�����B�w�b�_���s�v�ȏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
- * sleep�́A�������Ԃ𒲐����邽�߂ɁA�w�肳�ꂽ�~���b�̊ԃX���[�v����ꍇ�ɁA�w�肷��B�K�v���Ȃ��ꍇ�́A���̍s�͕K�v�Ȃ��B<br>
- * interpreter:start��interpreter:end�̍s�ŋ���ŁA��������{�f�B��ҏW����X�N���v�g��script�Ɏw��ł���Bscript�́A{@link Interpreter#evaluate(String,Map)}�ŕ]������A�����̕ϐ��}�b�v�ɂ́A"request"��{@link HttpRequest}���A"response"�Ń{�f�B�����񂪓n�����B�X�N���v�g���w�肷��K�v���Ȃ��ꍇ�́A���̍s�͕K�v�Ȃ��B<br>
- * bodyType�́A"text"�A"binary"�̂����ꂩ���w�肷��BHTTP�{�f�B���K�v�Ȃ��ꍇ�́A���̍s�ȉ��͕K�v�Ȃ��B<br>
- * body�́AbodyType�ɂ���āA�L�q���@���قȂ�B<br>
+ * urlPatternは、リクエストされたURLとマッチングするURLの正規表現を指定する。<br>
+ * queryPatternは、リクエストされたクエリの内容とマッチングする正規表現を指定する。クエリでマッチングさせる必要がない場合は、空文字を指定する。<br>
+ * bodyPatternは、リクエストされたボディの内容とマッチングする正規表現を指定する。ボディでマッチングさせる必要がない場合は、空文字を指定する。<br>
+ * urlPatternは、リクエストされたURLとマッチングするURLの正規表現を指定する。<br>
+ * statusは、応答するHTTPステータスを指定する。それに続いてカンマで区切り、応答するメッセージをmessageで指定する。この行に、空文字を指定すると、200応答する。また、messageが不要な場合は、statusのみ指定する。<br>
+ * headerNameは、HTTPヘッダ名を指定する。それに続いて":"を挟んで、ヘッダ値をheaderValueとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。ヘッダが不要な場合は、指定する必要はない。<br>
+ * sleepは、応答時間を調整するために、指定されたミリ秒の間スリープする場合に、指定する。必要がない場合は、この行は必要ない。<br>
+ * interpreter:startとinterpreter:endの行で挟んで、応答するボディを編集するスクリプトをscriptに指定できる。scriptは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"request"で{@link HttpRequest}が、"response"でボディ文字列が渡される。スクリプトを指定する必要がない場合は、この行は必要ない。<br>
+ * bodyTypeは、"text"、"binary"のいずれかを指定する。HTTPボディが必要ない場合は、この行以下は必要ない。<br>
+ * bodyは、bodyTypeによって、記述方法が異なる。<br>
  * <ul>
- * <li>bodyType��"text"�̏ꍇ<br>�C�ӂ̕�����Ŏw�肷��B</li>
- * <li>bodyType��"binary"�̏ꍇ<br>�o�C�i���t�@�C���̃t�@�C�������w�肷��B</li>
+ * <li>bodyTypeが"text"の場合<br>任意の文字列で指定する。</li>
+ * <li>bodyTypeが"binary"の場合<br>バイナリファイルのファイル名を指定する。</li>
  * </ul>
  * <p>
- * ��M����HTTP���N�G�X�g���o�͂���t�@�C���́A�w�b�_�t�@�C���ƃ{�f�B�t�@�C���̂Q�ł���B<br>
- * �w�b�_�t�@�C���́A���\�[�X�t�@�C���̃t�@�C�����Ɋg���q".h.req"��t�������t�@�C�����ɂȂ�B<br>
- * �w�b�_�t�@�C���̃t�H�[�}�b�g�́A�ȉ��B<br>
+ * 受信したHTTPリクエストを出力するファイルは、ヘッダファイルとボディファイルの２つである。<br>
+ * ヘッダファイルは、リソースファイルのファイル名に拡張子".h.req"を付加したファイル名になる。<br>
+ * ヘッダファイルのフォーマットは、以下。<br>
  * <pre>
  * method url version
  * headerName:headerValue
  * </pre>
  * <p>
- * �{�f�B�t�@�C���́A���\�[�X�t�@�C���̃t�@�C�����Ɋg���q".b.req"��t�������t�@�C�����ɂȂ�B<br>
- * �{�f�B�t�@�C���́AHTTP�{�f�B�����̂܂܏o�͂���B<br>
+ * ボディファイルは、リソースファイルのファイル名に拡張子".b.req"を付加したファイル名になる。<br>
+ * ボディファイルは、HTTPボディをそのまま出力する。<br>
  *
  * @author M.Takata
  */

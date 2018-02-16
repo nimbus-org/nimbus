@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.recset;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.sql.Types;
 /**
- * —ñƒXƒL[ƒ}ƒNƒ‰ƒX<p>
- * —ñƒXƒL[ƒ}î•ñ‚ğŠÇ—‚·‚éB
+ * åˆ—ã‚¹ã‚­ãƒ¼ãƒã‚¯ãƒ©ã‚¹<p>
+ * åˆ—ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’ç®¡ç†ã™ã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -44,34 +44,34 @@ public class FieldSchema implements java.io.Serializable{
 	
     private static final long serialVersionUID = 750474574072043812L;
     
-    /** ƒf[ƒ^Œ^w’è•¶š’è”@VARCHAR@*/
+    /** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€VARCHARã€€*/
 	public static final String C_FIELD_TYPE_VARCHAR = "VARCHAR" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@CHAR@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€CHARã€€*/
 	public static final String C_FIELD_TYPE_CHAR = "CHAR" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@NUMBER@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€NUMBERã€€*/
 	public static final String C_FIELD_TYPE_LONG = "LONG" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@NUMBER@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€NUMBERã€€*/
 	public static final String C_FIELD_TYPE_INT = "INT" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@NUMBER@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€NUMBERã€€*/
 	public static final String C_FIELD_TYPE_FLOAT = "FLOAT" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@NUMBER@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€NUMBERã€€*/
 	public static final String C_FIELD_TYPE_DOUBLE = "DOUBLE" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@DATE@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€DATEã€€*/
 	public static final String C_FIELD_TYPE_DATE = "DATE" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@TIMESTAMP@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€TIMESTAMPã€€*/
 	public static final String C_FIELD_TYPE_TIMESTAMP = "TIMESTAMP" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@BLOB@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€BLOBã€€*/
 	public static final String C_FIELD_TYPE_BLOB = "BLOB" ;
-	/** ƒf[ƒ^Œ^w’è•¶š’è”@CLOB@*/
+	/** ãƒ‡ãƒ¼ã‚¿å‹æŒ‡å®šæ–‡å­—å®šæ•°ã€€CLOBã€€*/
 	public static final String C_FIELD_TYPE_CLOB = "CLOB" ;
 	
-    /** ƒtƒB[ƒ‹ƒhKEY’è” */
-	static public final int C_KEY_UNIQUE = 0;			// ƒ†ƒj[ƒN—ñƒL[
-	static public final int C_KEY_ROW_VERSION = 1;		// Rowƒo[ƒWƒ‡ƒ“—ñƒL[
-	static public final int C_KEY_READ = 2; 			// QÆ—ñƒL[
-	static public final int C_KEY_UPDATE = 3;			// XV—ñƒL[
-	static public final int C_KEY_DUMMY = 4;			// ƒ_ƒ~[—ñƒL[
-	/** —ñŒ^’è” */
+    /** ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰KEYå®šæ•° */
+	static public final int C_KEY_UNIQUE = 0;			// ãƒ¦ãƒ‹ãƒ¼ã‚¯åˆ—ã‚­ãƒ¼
+	static public final int C_KEY_ROW_VERSION = 1;		// Rowãƒãƒ¼ã‚¸ãƒ§ãƒ³åˆ—ã‚­ãƒ¼
+	static public final int C_KEY_READ = 2; 			// å‚ç…§åˆ—ã‚­ãƒ¼
+	static public final int C_KEY_UPDATE = 3;			// æ›´æ–°åˆ—ã‚­ãƒ¼
+	static public final int C_KEY_DUMMY = 4;			// ãƒ€ãƒŸãƒ¼åˆ—ã‚­ãƒ¼
+	/** åˆ—å‹å®šæ•° */
 	static public final int C_TYPE_NONE = -1;
 	static public final int C_TYPE_INT = 1;
 	static public final int C_TYPE_LONG = 8;
@@ -83,81 +83,81 @@ public class FieldSchema implements java.io.Serializable{
 	static public final int C_TYPE_TIMESTAMP = 9;
 	static public final int C_TYPE_BLOB = 10;
 	static public final int C_TYPE_CLOB = 11;
-	/** Ì¨°ÙÄŞ–¼ */
+	/** ï¾Œï½¨ï½°ï¾™ï¾„ï¾å */
 	private String mFieldName = null;
-	/** SQL•¨—–¼ */
+	/** SQLç‰©ç†å */
 	private String mPysicalName = null ;
-	/** •Ï”Œ^ */
+	/** å¤‰æ•°å‹ */
 	private int mFieldType = C_TYPE_NONE;
-	/** •Ï”’· */
+	/** å¤‰æ•°é•· */
 	private int mFieldLength =-1;
-	/** —ñ‡ˆÊINDEX */
+	/** åˆ—é †ä½INDEX */
 	private int mIndex =-1;
-	/** —ñ‡ˆÊINDEX */
+	/** åˆ—é †ä½INDEX */
 	private boolean mIsCrypt = false;
-	/** —ñ‡ˆÊINDEX */
+	/** åˆ—é †ä½INDEX */
 	private int mSqlType = -1;
-	/** ƒtƒB[ƒ‹ƒhKEY */
+	/** ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰KEY */
 	private int mFieldKey = -1;
 	/**
-	 * —ñ’·‚ğo—Í‚·‚éB
-	 * @return —ñ’·
+	 * åˆ—é•·ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return åˆ—é•·
 	 */
 	public int getFieldLength(){
 		return mFieldLength;
 	}
 	/**
-	 * —ñ–¼‚ğo—Í‚·‚éB
-	 * @return —ñ–¼
+	 * åˆ—åã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return åˆ—å
 	 */
 	public String getFieldName(){
 		return mFieldName;
 	}
 	/**
-	 * —ñ–¼‚ğo—Í‚·‚éB
-	 * @return —ñ–¼
+	 * åˆ—åã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return åˆ—å
 	 */
 	public String getPysicalName(){
 		return mPysicalName;
 	}
 	/**
-	 * —ñŒ^‚ğo—Í‚·‚éB
-	 * @return@—ñŒ^
+	 * åˆ—å‹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€åˆ—å‹
 	 */
 	public int getFieldType(){
 		return mFieldType;
 	}
 	/**
-	 * —ñ‚ÌƒL[‘®«‚ğo—Í‚·‚éB
-	 * @return —ñ‚ÌƒL[‘®«
+	 * åˆ—ã®ã‚­ãƒ¼å±æ€§ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return åˆ—ã®ã‚­ãƒ¼å±æ€§
 	 */
 	public int getFieldKey(){
 		return mFieldKey;
 	}
 	/**
-	 * s“àINDEX‚ğo—Í‚·‚éB
-	 * @return s“àINDEX
+	 * è¡Œå†…INDEXã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return è¡Œå†…INDEX
 	 */
 	public int getIndex(){
 		return mIndex;
 	}
 	/**
-	 * ˆÃ†‰»—L–³‚ğo—Í‚·‚éB
-	 * @return ˆÃ†‰»—L–³
+	 * æš—å·åŒ–æœ‰ç„¡ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @return æš—å·åŒ–æœ‰ç„¡
 	 */
 	public boolean isCrypt(){
 		return mIsCrypt && (mFieldType == C_TYPE_STRING || mFieldType == C_TYPE_CHAR);
 	}
 	/**
-	 * ƒ†ƒj[ƒN—ñ‚©o—Í‚·‚éB
-	 * @return@ƒ†ƒj[ƒN—ñ‘ÎÛboolean
+	 * ãƒ¦ãƒ‹ãƒ¼ã‚¯åˆ—ã‹å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€ãƒ¦ãƒ‹ãƒ¼ã‚¯åˆ—å¯¾è±¡boolean
 	 */
 	public boolean isUniqueKey(){
 		return (mFieldKey == C_KEY_UNIQUE);
 	}
 	/**
-	 * XV‘ÎÛ]‘®—ñ‚©o—Í‚·‚éB
-	 * @return@ƒ†ƒj[ƒN—ñ‘ÎÛboolean
+	 * æ›´æ–°å¯¾è±¡å¾“å±åˆ—ã‹å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€ãƒ¦ãƒ‹ãƒ¼ã‚¯åˆ—å¯¾è±¡boolean
 	 */
 	public boolean isUpdateField(){
 		return ((mFieldKey == C_KEY_UNIQUE) ||
@@ -165,15 +165,15 @@ public class FieldSchema implements java.io.Serializable{
 				(mFieldKey == C_KEY_UPDATE));
 	}
 	/**
-	 * Rowƒo[ƒWƒ‡ƒ“—ñ‚©o—Í‚·‚éB
-	 * @return@ƒ†ƒj[ƒN—ñ‘ÎÛboolean
+	 * Rowãƒãƒ¼ã‚¸ãƒ§ãƒ³åˆ—ã‹å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€ãƒ¦ãƒ‹ãƒ¼ã‚¯åˆ—å¯¾è±¡boolean
 	 */
 	public boolean isRowVersionField(){
 		return (mFieldKey == C_KEY_ROW_VERSION);
 	}
 	/**
-	 * Field’·‚ğİ’è‚·‚éB
-	 * @param l@Field’·
+	 * Fieldé•·ã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param lã€€Fieldé•·
 	 */
 	public void setFieldLength(int l){
 		if(mFieldLength == -1){
@@ -181,8 +181,8 @@ public class FieldSchema implements java.io.Serializable{
 		}
 	}
 	/**
-	 * —ñ–¼‚ğİ’è‚·‚éB
-	 * @param name@—ñ–¼
+	 * åˆ—åã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param nameã€€åˆ—å
 	 */
 	public void setFieldName(String name){
 		if(mFieldName == null){
@@ -196,7 +196,7 @@ public class FieldSchema implements java.io.Serializable{
 		}
 	}
 	/**
-	 * —ñƒ^ƒCƒv‚ğİ’è‚·‚éB
+	 * åˆ—ã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * @param type
 	 */
 	public void setFieldType(int type){
@@ -241,7 +241,7 @@ public class FieldSchema implements java.io.Serializable{
 		mFieldType = type;
 	}
 	/**
-	 * —ñƒL[‚ğİ’è‚·‚éB
+	 * åˆ—ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * @param key
 	 */
 	public void setFieldKey(int key){
@@ -259,7 +259,7 @@ public class FieldSchema implements java.io.Serializable{
 		}
 	}
 	/**
-	 * —ñ”Ô†‚ğİ’è‚·‚éB
+	 * åˆ—ç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚
 	 * @param l
 	 */
 	public void setIndex(int l){
@@ -268,8 +268,8 @@ public class FieldSchema implements java.io.Serializable{
 		}
 	}
 	/**
-	 * ˆÃ†‰»—L–³‚ğİ’è‚·‚éB
-	 * @param val ˆÃ†‰»—L–³
+	 * æš—å·åŒ–æœ‰ç„¡ã‚’è¨­å®šã™ã‚‹ã€‚
+	 * @param val æš—å·åŒ–æœ‰ç„¡
 	 */
 	public void setCrypt(boolean val){
 		mIsCrypt = val;

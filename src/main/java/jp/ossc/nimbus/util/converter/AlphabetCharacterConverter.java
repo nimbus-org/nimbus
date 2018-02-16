@@ -32,61 +32,61 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * âpéöÉRÉìÉoÅ[É^ÅB<p>
+ * Ëã±Â≠ó„Ç≥„É≥„Éê„Éº„Çø„ÄÇ<p>
  * <table border=5>
- *     <tr><th>îºäpâpéö</th><th>ëSäpâpéö</th></tr>
- *     <tr><td>a</td><td>ÇÅ</td></tr>
- *     <tr><td>b</td><td>ÇÇ</td></tr>
- *     <tr><td>c</td><td>ÇÉ</td></tr>
- *     <tr><td>d</td><td>ÇÑ</td></tr>
- *     <tr><td>e</td><td>ÇÖ</td></tr>
- *     <tr><td>f</td><td>ÇÜ</td></tr>
- *     <tr><td>g</td><td>Çá</td></tr>
- *     <tr><td>h</td><td>Çà</td></tr>
- *     <tr><td>i</td><td>Çâ</td></tr>
- *     <tr><td>j</td><td>Çä</td></tr>
- *     <tr><td>k</td><td>Çã</td></tr>
- *     <tr><td>l</td><td>Çå</td></tr>
- *     <tr><td>m</td><td>Çç</td></tr>
- *     <tr><td>n</td><td>Çé</td></tr>
- *     <tr><td>o</td><td>Çè</td></tr>
- *     <tr><td>p</td><td>Çê</td></tr>
- *     <tr><td>q</td><td>Çë</td></tr>
- *     <tr><td>r</td><td>Çí</td></tr>
- *     <tr><td>s</td><td>Çì</td></tr>
- *     <tr><td>t</td><td>Çî</td></tr>
- *     <tr><td>u</td><td>Çï</td></tr>
- *     <tr><td>v</td><td>Çñ</td></tr>
- *     <tr><td>w</td><td>Çó</td></tr>
- *     <tr><td>x</td><td>Çò</td></tr>
- *     <tr><td>y</td><td>Çô</td></tr>
- *     <tr><td>z</td><td>Çö</td></tr>
- *     <tr><td>A</td><td>Ç`</td></tr>
- *     <tr><td>B</td><td>Ça</td></tr>
- *     <tr><td>C</td><td>Çb</td></tr>
- *     <tr><td>D</td><td>Çc</td></tr>
- *     <tr><td>E</td><td>Çd</td></tr>
- *     <tr><td>F</td><td>Çe</td></tr>
- *     <tr><td>G</td><td>Çf</td></tr>
- *     <tr><td>H</td><td>Çg</td></tr>
- *     <tr><td>I</td><td>Çh</td></tr>
- *     <tr><td>J</td><td>Çi</td></tr>
- *     <tr><td>K</td><td>Çj</td></tr>
- *     <tr><td>L</td><td>Çk</td></tr>
- *     <tr><td>M</td><td>Çl</td></tr>
- *     <tr><td>N</td><td>Çm</td></tr>
- *     <tr><td>O</td><td>Çn</td></tr>
- *     <tr><td>P</td><td>Ço</td></tr>
- *     <tr><td>Q</td><td>Çp</td></tr>
- *     <tr><td>R</td><td>Çq</td></tr>
- *     <tr><td>S</td><td>Çr</td></tr>
- *     <tr><td>T</td><td>Çs</td></tr>
- *     <tr><td>U</td><td>Çt</td></tr>
- *     <tr><td>V</td><td>Çu</td></tr>
- *     <tr><td>W</td><td>Çv</td></tr>
- *     <tr><td>X</td><td>Çw</td></tr>
- *     <tr><td>Y</td><td>Çx</td></tr>
- *     <tr><td>Z</td><td>Çy</td></tr>
+ *     <tr><th>ÂçäËßíËã±Â≠ó</th><th>ÂÖ®ËßíËã±Â≠ó</th></tr>
+ *     <tr><td>a</td><td>ÔΩÅ</td></tr>
+ *     <tr><td>b</td><td>ÔΩÇ</td></tr>
+ *     <tr><td>c</td><td>ÔΩÉ</td></tr>
+ *     <tr><td>d</td><td>ÔΩÑ</td></tr>
+ *     <tr><td>e</td><td>ÔΩÖ</td></tr>
+ *     <tr><td>f</td><td>ÔΩÜ</td></tr>
+ *     <tr><td>g</td><td>ÔΩá</td></tr>
+ *     <tr><td>h</td><td>ÔΩà</td></tr>
+ *     <tr><td>i</td><td>ÔΩâ</td></tr>
+ *     <tr><td>j</td><td>ÔΩä</td></tr>
+ *     <tr><td>k</td><td>ÔΩã</td></tr>
+ *     <tr><td>l</td><td>ÔΩå</td></tr>
+ *     <tr><td>m</td><td>ÔΩç</td></tr>
+ *     <tr><td>n</td><td>ÔΩé</td></tr>
+ *     <tr><td>o</td><td>ÔΩè</td></tr>
+ *     <tr><td>p</td><td>ÔΩê</td></tr>
+ *     <tr><td>q</td><td>ÔΩë</td></tr>
+ *     <tr><td>r</td><td>ÔΩí</td></tr>
+ *     <tr><td>s</td><td>ÔΩì</td></tr>
+ *     <tr><td>t</td><td>ÔΩî</td></tr>
+ *     <tr><td>u</td><td>ÔΩï</td></tr>
+ *     <tr><td>v</td><td>ÔΩñ</td></tr>
+ *     <tr><td>w</td><td>ÔΩó</td></tr>
+ *     <tr><td>x</td><td>ÔΩò</td></tr>
+ *     <tr><td>y</td><td>ÔΩô</td></tr>
+ *     <tr><td>z</td><td>ÔΩö</td></tr>
+ *     <tr><td>A</td><td>Ôº°</td></tr>
+ *     <tr><td>B</td><td>Ôº¢</td></tr>
+ *     <tr><td>C</td><td>Ôº£</td></tr>
+ *     <tr><td>D</td><td>Ôº§</td></tr>
+ *     <tr><td>E</td><td>Ôº•</td></tr>
+ *     <tr><td>F</td><td>Ôº¶</td></tr>
+ *     <tr><td>G</td><td>Ôºß</td></tr>
+ *     <tr><td>H</td><td>Ôº®</td></tr>
+ *     <tr><td>I</td><td>Ôº©</td></tr>
+ *     <tr><td>J</td><td>Ôº™</td></tr>
+ *     <tr><td>K</td><td>Ôº´</td></tr>
+ *     <tr><td>L</td><td>Ôº¨</td></tr>
+ *     <tr><td>M</td><td>Ôº≠</td></tr>
+ *     <tr><td>N</td><td>ÔºÆ</td></tr>
+ *     <tr><td>O</td><td>ÔºØ</td></tr>
+ *     <tr><td>P</td><td>Ôº∞</td></tr>
+ *     <tr><td>Q</td><td>Ôº±</td></tr>
+ *     <tr><td>R</td><td>Ôº≤</td></tr>
+ *     <tr><td>S</td><td>Ôº≥</td></tr>
+ *     <tr><td>T</td><td>Ôº¥</td></tr>
+ *     <tr><td>U</td><td>Ôºµ</td></tr>
+ *     <tr><td>V</td><td>Ôº∂</td></tr>
+ *     <tr><td>W</td><td>Ôº∑</td></tr>
+ *     <tr><td>X</td><td>Ôº∏</td></tr>
+ *     <tr><td>Y</td><td>Ôºπ</td></tr>
+ *     <tr><td>Z</td><td>Ôº∫</td></tr>
  * </table>
  * 
  * @author   M.Takata
@@ -97,74 +97,74 @@ public class AlphabetCharacterConverter
     private static final long serialVersionUID = 669952771398308661L;
     
     /**
-     * [îºäpâpéö][ëSäpâpéö] ÇÃîzóÒÅB<p>
+     * [ÂçäËßíËã±Â≠ó][ÂÖ®ËßíËã±Â≠ó] „ÅÆÈÖçÂàó„ÄÇ<p>
      */
     protected static final char CONV_CHARS[][] = {
-        {'\u0061','\uff41'}, // 'a','ÇÅ'
-        {'\u0062','\uff42'}, // 'b','ÇÇ'
-        {'\u0063','\uff43'}, // 'c','ÇÉ'
-        {'\u0064','\uff44'}, // 'd','ÇÑ'
-        {'\u0065','\uff45'}, // 'e','ÇÖ'
-        {'\u0066','\uff46'}, // 'f','ÇÜ'
-        {'\u0067','\uff47'}, // 'g','Çá'
-        {'\u0068','\uff48'}, // 'h','Çà'
-        {'\u0069','\uff49'}, // 'i','Çâ'
-        {'\u006a','\uff4a'}, // 'j','Çä'
-        {'\u006b','\uff4b'}, // 'k','Çã'
-        {'\u006c','\uff4c'}, // 'l','Çå'
-        {'\u006d','\uff4d'}, // 'm','Çç'
-        {'\u006e','\uff4e'}, // 'n','Çé'
-        {'\u006f','\uff4f'}, // 'o','Çè'
-        {'\u0070','\uff50'}, // 'p','Çê'
-        {'\u0071','\uff51'}, // 'q','Çë'
-        {'\u0072','\uff52'}, // 'r','Çí'
-        {'\u0073','\uff53'}, // 's','Çì'
-        {'\u0074','\uff54'}, // 't','Çî'
-        {'\u0075','\uff55'}, // 'u','Çï'
-        {'\u0076','\uff56'}, // 'v','Çñ'
-        {'\u0077','\uff57'}, // 'w','Çó'
-        {'\u0078','\uff58'}, // 'x','Çò'
-        {'\u0079','\uff59'}, // 'y','Çô'
-        {'\u007a','\uff5a'}, // 'z','Çö'
-        {'\u0041','\uff21'}, // 'A','Ç`'
-        {'\u0042','\uff22'}, // 'B','Ça'
-        {'\u0043','\uff23'}, // 'C','Çb'
-        {'\u0044','\uff24'}, // 'D','Çc'
-        {'\u0045','\uff25'}, // 'E','Çd'
-        {'\u0046','\uff26'}, // 'F','Çe'
-        {'\u0047','\uff27'}, // 'G','Çf'
-        {'\u0048','\uff28'}, // 'H','Çg'
-        {'\u0049','\uff29'}, // 'I','Çh'
-        {'\u004a','\uff2a'}, // 'J','Çi'
-        {'\u004b','\uff2b'}, // 'K','Çj'
-        {'\u004c','\uff2c'}, // 'L','Çk'
-        {'\u004d','\uff2d'}, // 'M','Çl'
-        {'\u004e','\uff2e'}, // 'N','Çm'
-        {'\u004f','\uff2f'}, // 'O','Çn'
-        {'\u0050','\uff30'}, // 'P','Ço'
-        {'\u0051','\uff31'}, // 'Q','Çp'
-        {'\u0052','\uff32'}, // 'R','Çq'
-        {'\u0053','\uff33'}, // 'S','Çr'
-        {'\u0054','\uff34'}, // 'T','Çs'
-        {'\u0055','\uff35'}, // 'U','Çt'
-        {'\u0056','\uff36'}, // 'V','Çu'
-        {'\u0057','\uff37'}, // 'W','Çv'
-        {'\u0058','\uff38'}, // 'X','Çw'
-        {'\u0059','\uff39'}, // 'Y','Çx'
-        {'\u005a','\uff3a'}  // 'Z','Çy'
+        {'\u0061','\uff41'}, // 'a','ÔΩÅ'
+        {'\u0062','\uff42'}, // 'b','ÔΩÇ'
+        {'\u0063','\uff43'}, // 'c','ÔΩÉ'
+        {'\u0064','\uff44'}, // 'd','ÔΩÑ'
+        {'\u0065','\uff45'}, // 'e','ÔΩÖ'
+        {'\u0066','\uff46'}, // 'f','ÔΩÜ'
+        {'\u0067','\uff47'}, // 'g','ÔΩá'
+        {'\u0068','\uff48'}, // 'h','ÔΩà'
+        {'\u0069','\uff49'}, // 'i','ÔΩâ'
+        {'\u006a','\uff4a'}, // 'j','ÔΩä'
+        {'\u006b','\uff4b'}, // 'k','ÔΩã'
+        {'\u006c','\uff4c'}, // 'l','ÔΩå'
+        {'\u006d','\uff4d'}, // 'm','ÔΩç'
+        {'\u006e','\uff4e'}, // 'n','ÔΩé'
+        {'\u006f','\uff4f'}, // 'o','ÔΩè'
+        {'\u0070','\uff50'}, // 'p','ÔΩê'
+        {'\u0071','\uff51'}, // 'q','ÔΩë'
+        {'\u0072','\uff52'}, // 'r','ÔΩí'
+        {'\u0073','\uff53'}, // 's','ÔΩì'
+        {'\u0074','\uff54'}, // 't','ÔΩî'
+        {'\u0075','\uff55'}, // 'u','ÔΩï'
+        {'\u0076','\uff56'}, // 'v','ÔΩñ'
+        {'\u0077','\uff57'}, // 'w','ÔΩó'
+        {'\u0078','\uff58'}, // 'x','ÔΩò'
+        {'\u0079','\uff59'}, // 'y','ÔΩô'
+        {'\u007a','\uff5a'}, // 'z','ÔΩö'
+        {'\u0041','\uff21'}, // 'A','Ôº°'
+        {'\u0042','\uff22'}, // 'B','Ôº¢'
+        {'\u0043','\uff23'}, // 'C','Ôº£'
+        {'\u0044','\uff24'}, // 'D','Ôº§'
+        {'\u0045','\uff25'}, // 'E','Ôº•'
+        {'\u0046','\uff26'}, // 'F','Ôº¶'
+        {'\u0047','\uff27'}, // 'G','Ôºß'
+        {'\u0048','\uff28'}, // 'H','Ôº®'
+        {'\u0049','\uff29'}, // 'I','Ôº©'
+        {'\u004a','\uff2a'}, // 'J','Ôº™'
+        {'\u004b','\uff2b'}, // 'K','Ôº´'
+        {'\u004c','\uff2c'}, // 'L','Ôº¨'
+        {'\u004d','\uff2d'}, // 'M','Ôº≠'
+        {'\u004e','\uff2e'}, // 'N','ÔºÆ'
+        {'\u004f','\uff2f'}, // 'O','ÔºØ'
+        {'\u0050','\uff30'}, // 'P','Ôº∞'
+        {'\u0051','\uff31'}, // 'Q','Ôº±'
+        {'\u0052','\uff32'}, // 'R','Ôº≤'
+        {'\u0053','\uff33'}, // 'S','Ôº≥'
+        {'\u0054','\uff34'}, // 'T','Ôº¥'
+        {'\u0055','\uff35'}, // 'U','Ôºµ'
+        {'\u0056','\uff36'}, // 'V','Ôº∂'
+        {'\u0057','\uff37'}, // 'W','Ôº∑'
+        {'\u0058','\uff38'}, // 'X','Ôº∏'
+        {'\u0059','\uff39'}, // 'Y','Ôºπ'
+        {'\u005a','\uff3a'}  // 'Z','Ôº∫'
     };
     
     /**
-     * îºäpÅ®ëSäpïœä∑ÇÃâpéöÉRÉìÉoÅ[É^Çê∂ê¨Ç∑ÇÈÅB<p>
+     * ÂçäËßí‚ÜíÂÖ®ËßíÂ§âÊèõ„ÅÆËã±Â≠ó„Ç≥„É≥„Éê„Éº„Çø„ÇíÁîüÊàê„Åô„Çã„ÄÇ<p>
      */
     public AlphabetCharacterConverter(){
         this(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * éwíËÇ≥ÇÍÇΩïœä∑éÌï ÇÃâpéöÉRÉìÉoÅ[É^Å[Çê∂ê¨Ç∑ÇÈÅB<p>
+     * ÊåáÂÆö„Åï„Çå„ÅüÂ§âÊèõÁ®ÆÂà•„ÅÆËã±Â≠ó„Ç≥„É≥„Éê„Éº„Çø„Éº„ÇíÁîüÊàê„Åô„Çã„ÄÇ<p>
      *
-     * @param type ïœä∑éÌï 
+     * @param type Â§âÊèõÁ®ÆÂà•
      * @see #HANKAKU_TO_ZENKAKU
      * @see #ZENKAKU_TO_HANKAKU
      */
@@ -173,7 +173,7 @@ public class AlphabetCharacterConverter
     }
     
     /**
-     * îºäpëSäpïœä∑ÉLÉÉÉâÉNÉ^îzóÒÇéÊìæÇ∑ÇÈÅB<p>
+     * ÂçäËßíÂÖ®ËßíÂ§âÊèõ„Ç≠„É£„É©„ÇØ„ÇøÈÖçÂàó„ÇíÂèñÂæó„Åô„Çã„ÄÇ<p>
      *
      * @return {@link #CONV_CHARS}
      */

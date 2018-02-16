@@ -43,7 +43,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * ƒ|[ƒgƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒXB<p>
+ * ãƒãƒ¼ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -52,27 +52,27 @@ public class PortFactoryService extends ServiceBase
     
     private static final long serialVersionUID = 7074638390846720787L;
     
-    // ’è”
-    /** ƒ|[ƒgƒGƒCƒŠƒAƒXƒvƒƒpƒeƒB‹æØ‚è•¶š */
+    // å®šæ•°
+    /** ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åŒºåˆ‡ã‚Šæ–‡å­— */
     private static final String SEPARATOR = ",";
-    /** ƒ|[ƒg–¼ */
+    /** ãƒãƒ¼ãƒˆå */
     private static final int PORT_NAME = 0;
-    /** ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼ */
+    /** ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å */
     private static final int ENDPOINT_INTERFACE_NAME = 1;
     
-    // ƒƒ“ƒo[•Ï”
-    /** JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[–¼ */
+    // ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
+    /** JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼å */
     private ServiceName jaxRpcServiceFactoryName;
-    /** ƒl[ƒ€ƒXƒy[ƒX */
+    /** ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹ */
     private String nameSpace;
-    /** JaxRpcƒT[ƒrƒX */
+    /** JaxRpcã‚µãƒ¼ãƒ“ã‚¹ */
     private Service jaxRpcService;
     private List handlerInfos;
     private Map stubProperties;
     
     /**
-     * ƒ|[ƒgƒGƒCƒŠƒAƒXƒvƒƒpƒeƒB
-     * ƒL[‚É[ƒ|[ƒgƒGƒCƒŠƒAƒX–¼]A’l‚É[ƒ|[ƒg–¼,ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼]‚ÌƒvƒƒpƒeƒB
+     * ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+     * ã‚­ãƒ¼ã«[ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹å]ã€å€¤ã«[ãƒãƒ¼ãƒˆå,ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     private Properties portAliasProp;
     
@@ -83,20 +83,20 @@ public class PortFactoryService extends ServiceBase
     
     public void startService() throws Exception {
         if (jaxRpcServiceFactoryName == null) {
-            // JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢
+            // JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„
             throw new IllegalArgumentException("jaxRpcServiceFactoryName must be specified.");
         }
         if (portAliasProp == null) {
-            // ƒ|[ƒgƒGƒCƒŠƒAƒX–¼ƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢
+            // ãƒãƒ¼ãƒˆã‚¨ã‚¤ãƒªã‚¢ã‚¹åãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„
             throw new IllegalArgumentException("portAliasProp must be specified.");
         }
         
-        // JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[‚ğæ“¾
+        // JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚’å–å¾—
         JaxRpcServiceFactory jaxRpcServiceFactory =
             (JaxRpcServiceFactory)ServiceManagerFactory.getServiceObject(jaxRpcServiceFactoryName);
-        // ƒl[ƒ€ƒXƒy[ƒX
+        // ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹
         nameSpace = jaxRpcServiceFactory.getNameSpace();
-        // JAX-RPCƒT[ƒrƒX
+        // JAX-RPCã‚µãƒ¼ãƒ“ã‚¹
         jaxRpcService = jaxRpcServiceFactory.getService();
     }
     
@@ -110,11 +110,11 @@ public class PortFactoryService extends ServiceBase
         stubProperties = null;
     }
     
-    // PortFactory‚ÌJavaDoc
+    // PortFactoryã®JavaDoc
     public Object getPort(String portAlias) throws PortException {
-        // [ƒ|[ƒg–¼,ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼]‚ğæ“¾
+        // [ãƒãƒ¼ãƒˆå,ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å]ã‚’å–å¾—
         String portNameClassName = portAliasProp.getProperty(portAlias);
-        // [ƒ|[ƒg–¼]‚Æ[ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX–¼]‚É•ªŠ„
+        // [ãƒãƒ¼ãƒˆå]ã¨[ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹å]ã«åˆ†å‰²
         String[] names = portNameClassName.split(SEPARATOR);
         
         if (names.length < 2) {
@@ -124,7 +124,7 @@ public class PortFactoryService extends ServiceBase
         }
         
         try {
-            // ƒT[ƒrƒXƒGƒ“ƒhƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒtƒF[ƒX
+            // ã‚µãƒ¼ãƒ“ã‚¹ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
             Class endpointInterface = Class.forName(names[ENDPOINT_INTERFACE_NAME]);
             QName portQN = new QName(nameSpace, names[PORT_NAME]);
             if(handlerInfos != null && handlerInfos.size() != 0){
@@ -148,59 +148,59 @@ public class PortFactoryService extends ServiceBase
         }
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public void setHandlerInfos(List infos){
         handlerInfos = infos;
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public void addHandlerInfo(HandlerInfo info){
         if(handlerInfos != null){
             handlerInfos.add(info);
         }
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public List getHandlerInfos(){
         return handlerInfos;
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public void clearHandlerInfos(){
         if(handlerInfos != null){
             handlerInfos.clear();
         }
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public Properties getPortAliasProp() {
         return portAliasProp;
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public void setPortAliasProp(Properties prop) {
         portAliasProp = prop;
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public ServiceName getJaxRpcServiceFactoryName() {
         return jaxRpcServiceFactoryName;
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public void setJaxRpcServiceFactoryName(ServiceName serviceName) {
         jaxRpcServiceFactoryName = serviceName;
     }
     
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public void setStubProperty(String name, Object value){
         stubProperties.put(name, value);
     }
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public Object getStubProperty(String name){
         return stubProperties == null ? null : stubProperties.get(name);
     }
-    // PortFactoryServiceMBean‚ÌJavaDoc
+    // PortFactoryServiceMBeanã®JavaDoc
     public Map getStubPropertyMap(){
         return stubProperties;
     }

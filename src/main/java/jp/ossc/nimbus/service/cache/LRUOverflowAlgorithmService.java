@@ -37,8 +37,8 @@ import java.io.*;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * Least Recently Used ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉALRU‚Å‚ ‚Ó‚ê‘ÎÛ‚Æ‚È‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğŒˆ’è‚·‚é‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * Least Recently Used ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€LRUã§ã‚ãµã‚Œå¯¾è±¡ã¨ãªã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ±ºå®šã™ã‚‹ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -67,22 +67,22 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     private long overflowCount;
     private long overflowCachedTime;
     
-    // LRUOverflowAlgorithmServiceMBean‚ÌJavaDoc
+    // LRUOverflowAlgorithmServiceMBeanã®JavaDoc
     public int size(){
         return referenceMap == null ? 0 : referenceMap.size();
     }
     
-    // LRUOverflowAlgorithmServiceMBean‚ÌJavaDoc
+    // LRUOverflowAlgorithmServiceMBeanã®JavaDoc
     public long getOverflowCount(){
         return overflowCount;
     }
     
-    // LRUOverflowAlgorithmServiceMBean‚ÌJavaDoc
+    // LRUOverflowAlgorithmServiceMBeanã®JavaDoc
     public long getAverageOverflowCachedTime(){
         return overflowCount == 0 ? 0l : (overflowCachedTime / overflowCount);
     }
     
-    // LRUOverflowAlgorithmServiceMBean‚ÌJavaDoc
+    // LRUOverflowAlgorithmServiceMBeanã®JavaDoc
     public String displayReferenceTimes(){
         if(referenceMap == null){
             return "";
@@ -108,13 +108,13 @@ public class LRUOverflowAlgorithmService extends ServiceBase
                 for(int i = 0; i < point; i++){
                     pw.print('*');
                 }
-                pw.print('@');
+                pw.print('ã€€');
                 pw.print(Long.toString(interval));
                 pw.print('(');
                 pw.print(Long.toString(cachedTime));
                 pw.print(')');
                 if(ref instanceof KeyCachedReference){
-                    pw.print('@');
+                    pw.print('ã€€');
                     pw.print(((KeyCachedReference)ref).getKey());
                 }
                 pw.println("<br>");
@@ -124,10 +124,10 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         referenceMap = Collections.synchronizedMap(new HashMap());
@@ -135,10 +135,10 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌŠJ•ú‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®é–‹æ”¾ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         reset();
@@ -147,10 +147,10 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ•Û‚·‚éB“¯‚ÉA{@link CachedReference#addCacheAccessListener(CacheAccessListener)}‚ÅA{@link CacheAccessListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‚·‚éB‚Ü‚½A{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ä¿æŒã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#addCacheAccessListener(CacheAccessListener)}ã§ã€{@link CacheAccessListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚ã¾ãŸã€{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void add(CachedReference ref){
         if(referenceMap == null || ref == null){
@@ -168,10 +168,10 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğíœ‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ“à•”‚Å•Û‚µ‚Ä‚¢‚éê‡‚ÍA”jŠü‚·‚éB“¯‚ÉA{@link CachedReference#removeCacheAccessListener(CacheAccessListener)}‚ÅA{@link CacheAccessListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‰ğœ‚·‚éB‚Ü‚½A{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‰ğœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å†…éƒ¨ã§ä¿æŒã—ã¦ã„ã‚‹å ´åˆã¯ã€ç ´æ£„ã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#removeCacheAccessListener(CacheAccessListener)}ã§ã€{@link CacheAccessListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚ã¾ãŸã€{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void remove(CachedReference ref){
         if(referenceMap == null || ref == null){
@@ -188,10 +188,10 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * QÆ‚³‚ê‚Ä‚È‚¢ŠÔ‚ªÅ‚à’·‚¢ƒLƒƒƒbƒVƒ…QÆ‚ğ‚ ‚Ó‚ê‚³‚¹‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’†‚©‚çAQÆ‚³‚ê‚Ä‚È‚¢ŠÔ‚ªÅ‚à’·‚¢ƒLƒƒƒbƒVƒ…QÆ‚ğA‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚Æ‚µ‚Ä•Ô‚·B<br>
+     * å‚ç…§ã•ã‚Œã¦ãªã„æ™‚é–“ãŒæœ€ã‚‚é•·ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã‚ãµã‚Œã•ã›ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ä¸­ã‹ã‚‰ã€å‚ç…§ã•ã‚Œã¦ãªã„æ™‚é–“ãŒæœ€ã‚‚é•·ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã€ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¨ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @return QÆ‚³‚ê‚Ä‚È‚¢ŠÔ‚ªÅ‚à’·‚¢ƒLƒƒƒbƒVƒ…QÆ
+     * @return å‚ç…§ã•ã‚Œã¦ãªã„æ™‚é–“ãŒæœ€ã‚‚é•·ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public CachedReference overflow(){
         if(referenceMap == null){
@@ -211,11 +211,11 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * QÆ‚³‚ê‚Ä‚È‚¢ŠÔ‚ªÅ‚à’·‚¢ƒLƒƒƒbƒVƒ…QÆ‚ğ‚ ‚Ó‚ê‚³‚¹‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’†‚©‚çAQÆ‚³‚ê‚Ä‚È‚¢ŠÔ‚ªÅ‚à’·‚¢ƒLƒƒƒbƒVƒ…QÆ‚ğA‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚Æ‚µ‚Ä•Ô‚·B<br>
+     * å‚ç…§ã•ã‚Œã¦ãªã„æ™‚é–“ãŒæœ€ã‚‚é•·ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã‚ãµã‚Œã•ã›ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ä¸­ã‹ã‚‰ã€å‚ç…§ã•ã‚Œã¦ãªã„æ™‚é–“ãŒæœ€ã‚‚é•·ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã€ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¨ã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param size ‚ ‚Ó‚ê”
-     * @return QÆ‚³‚ê‚Ä‚È‚¢ŠÔ‚ªÅ‚à’·‚¢ƒLƒƒƒbƒVƒ…QÆ
+     * @param size ã‚ãµã‚Œæ•°
+     * @return å‚ç…§ã•ã‚Œã¦ãªã„æ™‚é–“ãŒæœ€ã‚‚é•·ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public CachedReference[] overflow(int size){
         if(referenceMap == null || referenceMap.size() == 0){
@@ -237,8 +237,8 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ‘S‚Ä”jŠü‚·‚éB<br>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å…¨ã¦ç ´æ£„ã™ã‚‹ã€‚<br>
      */
     public void reset(){
         synchronized(referenceMap){
@@ -252,20 +252,20 @@ public class LRUOverflowAlgorithmService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * {@link #remove(CachedReference)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * {@link #remove(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         remove(ref);
     }
     
     /**
-     * QÆ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * “à•”‚Å•Û‚µ‚Ä‚¢‚éƒLƒƒƒbƒVƒ…QÆ‚ÌƒŠƒXƒg‚ÉŠÜ‚Ü‚ê‚éê‡‚ÍAÅŒã”ö‚ÉˆÚ“®‚³‚¹‚éB<br>
+     * å‚ç…§ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * å†…éƒ¨ã§ä¿æŒã—ã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ãƒªã‚¹ãƒˆã«å«ã¾ã‚Œã‚‹å ´åˆã¯ã€æœ€å¾Œå°¾ã«ç§»å‹•ã•ã›ã‚‹ã€‚<br>
      *
-     * @param ref QÆ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref å‚ç…§ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void accessed(CachedReference ref){
         if(referenceMap == null){

@@ -37,7 +37,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * QueueHandlerƒRƒ“ƒeƒiƒT[ƒrƒXB<p>
+ * QueueHandlerã‚³ãƒ³ãƒ†ãƒŠã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -70,16 +70,16 @@ public class QueueHandlerContainerService extends ServiceBase
     protected boolean isIgnoreNullElement;
     protected long stopWaitTimeout = -1;
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setQueueHandlerServiceName(ServiceName name){
         if(queueHandlerServiceName == null){
             queueHandlerServiceName = name;
@@ -92,93 +92,93 @@ public class QueueHandlerContainerService extends ServiceBase
             queueHandlerServiceName = name;
         }
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public ServiceName getQueueHandlerServiceName(){
         return queueHandlerServiceName;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setQueueHandlerSize(int size){
         queueHandlerSize = size;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public int getQueueHandlerSize(){
         return queueHandlerSize;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setReleaseQueue(boolean isRelease){
         isReleaseQueue = isRelease;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public boolean isReleaseQueue(){
         return isReleaseQueue;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setWaitTimeout(long timeout){
         waitTimeout = timeout;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public long getWaitTimeout(){
         return waitTimeout;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setMaxRetryCount(int count){
         maxRetryCount = count;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public int getMaxRetryCount(){
         return maxRetryCount;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setRetryInterval(long interval){
         retryInterval = interval;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setHandlingErrorMessageId(String id){
         handlingErrorMessageId = id;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public String getHandlingErrorMessageId(){
         return handlingErrorMessageId;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setRetryOverErrorMessageId(String id){
         retryOverErrorMessageId = id;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public String getRetryOverErrorMessageId(){
         return retryOverErrorMessageId;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setGarbageQueueOnStop(boolean isGarbage){
         isGarbageQueueOnStop = isGarbage;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public boolean isGarbageQueueOnStop(){
         return isGarbageQueueOnStop;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setIgnoreNullElement(boolean isIgnore){
         isIgnoreNullElement = isIgnore;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public boolean isIgnoreNullElement(){
         return isIgnoreNullElement;
     }
     
-    // QueueHandlerContainer‚ÌJavaDoc
+    // QueueHandlerContainerã®JavaDoc
     public int getActiveQueueHandlerSize(){
         if(invokers == null){
             return 0;
@@ -192,7 +192,7 @@ public class QueueHandlerContainerService extends ServiceBase
         return count;
     }
     
-    // QueueHandlerContainer‚ÌJavaDoc
+    // QueueHandlerContainerã®JavaDoc
     public int getStandbyQueueHandlerSize(){
         if(invokers == null){
             return 0;
@@ -206,46 +206,46 @@ public class QueueHandlerContainerService extends ServiceBase
         return count;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setDaemonQueueHandler(boolean isDaemon){
         isDaemonQueueHandler = isDaemon;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public boolean isDaemonQueueHandler(){
         return isDaemonQueueHandler;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setQueueHandlerThreadPriority(int newPriority){
         queueHandlerThreadPriority = newPriority;
     }
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public int getQueueHandlerThreadPriority(){
         return queueHandlerThreadPriority;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setQueueHandlerNowaitOnStop(boolean isNowait){
         isQueueHandlerNowaitOnStop = isNowait;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public boolean isQueueHandlerNowaitOnStop(){
         return isQueueHandlerNowaitOnStop;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public void setStopWaitTimeout(long timeout){
         stopWaitTimeout = timeout;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public long getStopWaitTimeout(){
         return stopWaitTimeout;
     }
     
-    // QueueHandlerContainerServiceMBean‚ÌJavaDoc
+    // QueueHandlerContainerServiceMBeanã®JavaDoc
     public long getAverageHandleProcessTime(){
         if(invokers == null){
             return 0;
@@ -261,9 +261,9 @@ public class QueueHandlerContainerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception QueueƒT[ƒrƒX‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception Exception Queueã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(getQueueServiceName() != null){
@@ -282,10 +282,10 @@ public class QueueHandlerContainerService extends ServiceBase
                 throw new IllegalArgumentException("QueueHandler is null.");
             }
         }else if(queueHandlerSize > 0){
-            // ƒLƒ…[ó•tŠJn
+            // ã‚­ãƒ¥ãƒ¼å—ä»˜é–‹å§‹
             getQueueService().accept();
             
-            // ƒf[ƒ‚ƒ“‹N“®
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
             if(queueHandlerSize < 0){
                 throw new IllegalArgumentException("queueHandlerSize < 0.");
             }
@@ -310,14 +310,14 @@ public class QueueHandlerContainerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
         if(daemons != null){
-            // ƒf[ƒ‚ƒ“’â~
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
             final long startTime = System.currentTimeMillis();
             for(int i = 0; i < daemons.length; i++){
                 if(isQueueHandlerNowaitOnStop){
@@ -337,7 +337,7 @@ public class QueueHandlerContainerService extends ServiceBase
             }
         }
         
-        // ƒLƒ…[ó•t’â~
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜åœæ­¢
         if(getQueueService() != null && isReleaseQueue){
             getQueueService().release();
         }
@@ -347,25 +347,25 @@ public class QueueHandlerContainerService extends ServiceBase
     }
     
     /**
-     * ŒÄ‚Ño‚µ‚ğ”ñ“¯Šú‚É‚·‚é‚½‚ß‚Ì{@link Queue}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚’éåŒæœŸã«ã™ã‚‹ãŸã‚ã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue QueueƒT[ƒrƒX
+     * @param queue Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setQueueService(Queue queue){
         this.requestQueue = queue;
     }
     
     /**
-     * ŒÄ‚Ño‚µ‚ğ”ñ“¯Šú‚É‚·‚é‚½‚ß‚Ì{@link Queue}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚’éåŒæœŸã«ã™ã‚‹ãŸã‚ã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public Queue getQueueService(){
         return requestQueue;
     }
     
     /**
-     * QueueHandler‚ğİ’è‚·‚éB<p>
+     * QueueHandlerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param handler QueueHandler
      */
@@ -383,7 +383,7 @@ public class QueueHandlerContainerService extends ServiceBase
     }
     
     /**
-     * QueueHandler‚ğæ“¾‚·‚éB<p>
+     * QueueHandlerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return QueueHandler
      */
@@ -418,21 +418,21 @@ public class QueueHandlerContainerService extends ServiceBase
     }
     
     /**
-     * ƒLƒ…[‚©‚çƒf[ƒ^‚ğæ‚èo‚·B<p>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šå‡ºã™ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      * 
-     * @return ƒLƒ…[æ“¾ƒIƒuƒWƒFƒNƒg
+     * @return ã‚­ãƒ¥ãƒ¼å–å¾—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(){
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒLƒ…[‚©‚çƒf[ƒ^‚ğæ‚èo‚·B<p>
-     * ƒTƒ|[ƒg‚µ‚Ü‚¹‚ñB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šå‡ºã™ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ã¾ã›ã‚“ã€‚<br>
      * 
-     * @param timeOutMs ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @return ƒLƒ…[æ“¾ƒIƒuƒWƒFƒNƒg
+     * @param timeOutMs ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @return ã‚­ãƒ¥ãƒ¼å–å¾—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(long timeOutMs){
         throw new UnsupportedOperationException();
@@ -637,7 +637,7 @@ public class QueueHandlerContainerService extends ServiceBase
         protected QueueHandler handler;
         
         /**
-         * Às’†‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
+         * å®Ÿè¡Œä¸­ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         public boolean isActive;
         
@@ -653,46 +653,46 @@ public class QueueHandlerContainerService extends ServiceBase
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ƒLƒ…[‚©‚ç‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
          * 
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return “ü—ÍƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object provide(DaemonControl ctrl){
             if(handler == null){
@@ -705,10 +705,10 @@ public class QueueHandlerContainerService extends ServiceBase
         }
         
         /**
-         * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğˆø”‚ÉQueueHandler‚ğŒÄ‚Ño‚·B<p>
+         * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã«QueueHandlerã‚’å‘¼ã³å‡ºã™ã€‚<p>
          *
-         * @param dequeued ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param dequeued ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object dequeued, DaemonControl ctrl){
             if(dequeued == null && isIgnoreNullElement){
@@ -724,7 +724,7 @@ public class QueueHandlerContainerService extends ServiceBase
         }
         
         /**
-         * ƒLƒ…[‚Ì’†g‚ğ“f‚«o‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã®ä¸­èº«ã‚’åãå‡ºã™ã€‚<p>
          */
         public void garbage(){
             if(getQueueService() != null && isGarbageQueueOnStop){

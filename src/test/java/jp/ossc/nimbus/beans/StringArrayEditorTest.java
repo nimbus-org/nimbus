@@ -95,7 +95,7 @@ public class StringArrayEditorTest extends TestCase{
         editor.setAsText("\\u3042aa,${test.StringArrayEditor.value}");
         Object val = editor.getValue();
         assertEquals(2, Array.getLength(val));
-        assertEquals("Ç†aa", Array.get(val, 0));
+        assertEquals("„ÅÇaa", Array.get(val, 0));
         assertEquals("abc", Array.get(val, 1));
     }
     

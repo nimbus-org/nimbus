@@ -37,7 +37,7 @@ import java.util.Set;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowInvokerServerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link BeanFlowInvokerServerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see BeanFlowInvokerServerService
@@ -47,255 +47,255 @@ public interface BeanFlowInvokerServerServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_JNDI_NAME = "nimbus/BeanFlowInvokerServer";
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeFlow(Object, BeanFlowMonitor)}‚ÌŒÄ‚Ño‚µ‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeFlow(Object, BeanFlowMonitor)}ã®å‘¼ã³å‡ºã—ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeFlow(Object, BeanFlowMonitor)}‚ÌŒÄ‚Ño‚µ‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeFlow(Object, BeanFlowMonitor)}ã®å‘¼ã³å‡ºã—ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}‚Ì‘æ‚Rˆø”‚Åw’è‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ‚è‚±‚Ş{@link jp.ossc.nimbus.service.context.Context Context}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}ã®ç¬¬ï¼“å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–ã‚Šã“ã‚€{@link jp.ossc.nimbus.service.context.Context Context}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}‚Ì‘æ‚Rˆø”‚Åw’è‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ‚è‚±‚Ş{@link jp.ossc.nimbus.service.context.Context Context}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}ã®ç¬¬ï¼“å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–ã‚Šã“ã‚€{@link jp.ossc.nimbus.service.context.Context Context}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA{@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#getResourceUsage() getResourceUsage()}‚Ì–ß‚è’l‚ÍA{@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#getCurrentFlowCount() getCurrentFlowCount()}‚Æ“¯‚¶B<br>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#getResourceUsage() getResourceUsage()}ã®æˆ»ã‚Šå€¤ã¯ã€{@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#getCurrentFlowCount() getCurrentFlowCount()}ã¨åŒã˜ã€‚<br>
      *
-     * @param name ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResourceUsageServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResourceUsageServiceName();
     
     /**
-     * {@link BeanFlowInvokerServer}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_JNDI_NAME}B<br>
+     * {@link BeanFlowInvokerServer}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_JNDI_NAME}ã€‚<br>
      *
-     * @param name BeanFlowInvokerServer‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼
+     * @param name BeanFlowInvokerServerã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIå
      */
     public void setJndiName(String name);
     
     /**
-     * {@link BeanFlowInvokerServer}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerServer}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerServer‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼
+     * @return BeanFlowInvokerServerã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIå
      */
     public String getJndiName();
     
     /**
-     * {@link BeanFlowInvokerServer}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link BeanFlowInvokerServer}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiRepositoryServiceName(ServiceName name);
     
     /**
-     * {@link BeanFlowInvokerServer}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerServer}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiRepositoryServiceName();
     
     /**
-     * {@link BeanFlowInvokerServer}‚É‘Î‚µ‚ÄRMIŒÄ‚Ño‚µ‚ğ‚·‚é‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å”CˆÓ‚Ìƒ|[ƒg‚ªg—p‚³‚ê‚éB<br>
+     * {@link BeanFlowInvokerServer}ã«å¯¾ã—ã¦RMIå‘¼ã³å‡ºã—ã‚’ã™ã‚‹æ™‚ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ä»»æ„ã®ãƒãƒ¼ãƒˆãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setRMIPort(int port);
     
     /**
-     * {@link BeanFlowInvokerServer}‚É‘Î‚µ‚ÄRMIŒÄ‚Ño‚µ‚ğ‚·‚é‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerServer}ã«å¯¾ã—ã¦RMIå‘¼ã³å‡ºã—ã‚’ã™ã‚‹æ™‚ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getRMIPort();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚½ê‡‚ÍAƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“‚É{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ğİ’è‚·‚é–‚ÅAƒNƒ‰ƒXƒ^ƒT[ƒrƒXŒo—R‚Å‚ÌƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚ğƒTƒ|[ƒg‚·‚éB<br>
-     * ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^‚Ö‚ÌQ‰Á‚ÍA‚±‚ÌƒT[ƒrƒX‚Ìó‘Ô‚Æ˜A“®‚·‚é•K—v‚ª‚ ‚é‚½‚ßA{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}‚É‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãŸå ´åˆã¯ã€ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã‚’è¨­å®šã™ã‚‹äº‹ã§ã€ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹çµŒç”±ã§ã®ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚<br>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿ã¸ã®å‚åŠ ã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã¨é€£å‹•ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ãŸã‚ã€{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}ã«ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param name ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @param key ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @return ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^Q‰Á‚ğ§Œä‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å§Œä‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿å‚åŠ ã‚’åˆ¶å¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§åˆ¶å¾¡ã™ã‚‹ã€‚<br>
      *
-     * @param isJoin §Œä‚·‚éê‡Atrue
+     * @param isJoin åˆ¶å¾¡ã™ã‚‹å ´åˆã€true
      */
     public void setClusterJoin(boolean isJoin);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^Q‰Á‚ğ§Œä‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿å‚åŠ ã‚’åˆ¶å¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A§Œä‚·‚é
+     * @return trueã®å ´åˆã€åˆ¶å¾¡ã™ã‚‹
      */
     public boolean isClusterJoin();
     
     /**
-     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}‚Å¶¬‚³‚ê‚éÀsID‚ÉŠÜ‚Ü‚ê‚éƒ^ƒCƒ€ƒXƒ^ƒ“ƒvƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA"HHmmssSSS"‚È‚Ì‚ÅA24ŠÔˆÈã‘±‚­ˆ—‚ª‘¶İ‚·‚éê‡‚ÍAÀsID‚ÌˆêˆÓ«‚ª•Û‚½‚ê‚È‚­‚È‚éB<br>
+     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}ã§ç”Ÿæˆã•ã‚Œã‚‹å®Ÿè¡ŒIDã«å«ã¾ã‚Œã‚‹ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€"HHmmssSSS"ãªã®ã§ã€24æ™‚é–“ä»¥ä¸Šç¶šãå‡¦ç†ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€å®Ÿè¡ŒIDã®ä¸€æ„æ€§ãŒä¿ãŸã‚Œãªããªã‚‹ã€‚<br>
      *
-     * @param format ƒ^ƒCƒ€ƒXƒ^ƒ“ƒvƒtƒH[ƒ}ƒbƒg
+     * @param format ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setSequenceTimestampFormat(String format);
     
     /**
-     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}‚Å¶¬‚³‚ê‚éÀsID‚ÉŠÜ‚Ü‚ê‚é’PˆÊŠÔ‚Ìƒ^ƒCƒ€ƒXƒ^ƒ“ƒvƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}ã§ç”Ÿæˆã•ã‚Œã‚‹å®Ÿè¡ŒIDã«å«ã¾ã‚Œã‚‹å˜ä½æ™‚é–“ã®ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒXƒ^ƒ“ƒvƒtƒH[ƒ}ƒbƒg
+     * @return ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public String getSequenceTimestampFormat();
     
     /**
-     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}‚Å¶¬‚³‚ê‚éÀsID‚ÉŠÜ‚Ü‚ê‚é’PˆÊŠÔ‚ ‚½‚è‚Ì’Ê”ÔŒ…”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA’PˆÊŠÔ‚ªƒ~ƒŠ•b‚ÅA’Ê”ÔŒ…”‚ª3‚È‚Ì‚ÅA1ƒ~ƒŠ•b‚ ‚½‚è999ŒˆÈã‚Ìˆ—‚ª”­¶‚·‚éê‡‚ÍAÀsID‚ÌˆêˆÓ«‚ª•Û‚½‚ê‚È‚­‚È‚éB<br>
+     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}ã§ç”Ÿæˆã•ã‚Œã‚‹å®Ÿè¡ŒIDã«å«ã¾ã‚Œã‚‹å˜ä½æ™‚é–“ã‚ãŸã‚Šã®é€šç•ªæ¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€å˜ä½æ™‚é–“ãŒãƒŸãƒªç§’ã§ã€é€šç•ªæ¡æ•°ãŒ3ãªã®ã§ã€1ãƒŸãƒªç§’ã‚ãŸã‚Š999ä»¶ä»¥ä¸Šã®å‡¦ç†ãŒç™ºç”Ÿã™ã‚‹å ´åˆã¯ã€å®Ÿè¡ŒIDã®ä¸€æ„æ€§ãŒä¿ãŸã‚Œãªããªã‚‹ã€‚<br>
      *
-     * @param digit ’Ê”ÔŒ…”
+     * @param digit é€šç•ªæ¡æ•°
      */
     public void setSequenceDigit(int digit);
     
     /**
-     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}‚Å¶¬‚³‚ê‚éÀsID‚ÉŠÜ‚Ü‚ê‚é’PˆÊŠÔ‚ ‚½‚è‚Ì’Ê”ÔŒ…”‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerServer#createFlow(String, String, boolean)}ã§ç”Ÿæˆã•ã‚Œã‚‹å®Ÿè¡ŒIDã«å«ã¾ã‚Œã‚‹å˜ä½æ™‚é–“ã‚ãŸã‚Šã®é€šç•ªæ¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’Ê”ÔŒ…”
+     * @return é€šç•ªæ¡æ•°
      */
     public int getSequenceDigit();
     
     /**
-     * ‚±‚ÌƒT[ƒo‚ªƒŠƒNƒGƒXƒgó•t‰Â”\‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒãŒãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜å¯èƒ½ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgó•t‰Â”\‚Èê‡true
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜å¯èƒ½ãªå ´åˆtrue
      */
     public boolean isAcceptable();
     
     /**
-     * ‚±‚ÌƒT[ƒo‚ªƒŠƒNƒGƒXƒgó•t‰Â”\‚©‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒãŒãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜å¯èƒ½ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isAcceptable true‚Ìê‡AƒŠƒNƒGƒXƒgó•t‰Â”\
+     * @param isAcceptable trueã®å ´åˆã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå—ä»˜å¯èƒ½
      */
     public void setAcceptable(boolean isAcceptable);
     
     /**
-     * Œ»İ¶¬‚³‚ê‚Ä‚¢‚éBeanFlow‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ç”Ÿæˆã•ã‚Œã¦ã„ã‚‹BeanFlowã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ¶¬‚³‚ê‚Ä‚¢‚éBeanFlow‚Ì”
+     * @return ç¾åœ¨ç”Ÿæˆã•ã‚Œã¦ã„ã‚‹BeanFlowã®æ•°
      */
     public int getCurrentFlowCount();
     
     /**
-     * Œ»İ¶¬‚³‚ê‚Ä‚¢‚éBeanFlow‚ÌÀsID‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ç”Ÿæˆã•ã‚Œã¦ã„ã‚‹BeanFlowã®å®Ÿè¡ŒIDã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsID‚ÌW‡
+     * @return å®Ÿè¡ŒIDã®é›†åˆ
      */
     public Set getCurrentFlowIdSet();
     
     /**
-     * w’è‚³‚ê‚½ÀsID‚ÌBeanFlow‚ÌÀsŠJn‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡ŒIDã®BeanFlowã®å®Ÿè¡Œé–‹å§‹æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsŠJn
+     * @return å®Ÿè¡Œé–‹å§‹æ™‚åˆ»
      */
     public Date getFlowStartTime(String id);
     
     /**
-     * w’è‚³‚ê‚½ÀsID‚ÌBeanFlow‚Ìˆ—ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡ŒIDã®BeanFlowã®å‡¦ç†æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ—ŠÔ
+     * @return å‡¦ç†æ™‚é–“
      */
     public long getFlowCurrentProcessTime(String id);
     
     /**
-     * java.rmi.server.RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * java.rmi.server.RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRMIClientSocketFactoryServiceName(ServiceName name);
     
     /**
-     * java.rmi.server.RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * java.rmi.server.RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRMIClientSocketFactoryServiceName();
     
     /**
-     * java.rmi.server.RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * java.rmi.server.RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRMIServerSocketFactoryServiceName(ServiceName name);
     
     /**
-     * java.rmi.server.RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * java.rmi.server.RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRMIServerSocketFactoryServiceName();
     
     /**
-     * ƒŠƒ\[ƒX‚Ìg—p—Ê‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ä½¿ç”¨é‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒ\[ƒX‚Ìg—p—Ê
+     * @return ãƒªã‚½ãƒ¼ã‚¹ã®ä½¿ç”¨é‡
      */
     public Comparable getResourceUsage();
 }

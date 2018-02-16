@@ -32,64 +32,64 @@
 package jp.ossc.nimbus.service.rest;
 
 /**
- * RESTƒT[ƒoB<p>
- * RESTƒŠƒNƒGƒXƒg‚ğˆ—‚µ‚ÄARESTƒŒƒXƒ|ƒ“ƒX‚Éˆ—Œ‹‰Ê‚ğŠi”[‚·‚éB<br>
+ * RESTã‚µãƒ¼ãƒã€‚<p>
+ * RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å‡¦ç†ã—ã¦ã€RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«å‡¦ç†çµæœã‚’æ ¼ç´ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface RestServer{
     
     /**
-     * POSTƒƒ\ƒbƒh‚ÌRESTƒŠƒNƒGƒXƒg‚Ìˆ—‚ğs‚¤B<p>
+     * POSTãƒ¡ã‚½ãƒƒãƒ‰ã®RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
-     * @exception Throwable ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Throwable å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void processPost(PostRestRequest request, PostRestResponse response) throws Throwable;
     
     /**
-     * GETƒƒ\ƒbƒh‚ÌRESTƒŠƒNƒGƒXƒg‚Ìˆ—‚ğs‚¤B<p>
+     * GETãƒ¡ã‚½ãƒƒãƒ‰ã®RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
-     * @exception Throwable ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Throwable å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void processGet(GetRestRequest request, GetRestResponse response) throws Throwable;
     
     /**
-     * HEADƒƒ\ƒbƒh‚ÌRESTƒŠƒNƒGƒXƒg‚Ìˆ—‚ğs‚¤B<p>
+     * HEADãƒ¡ã‚½ãƒƒãƒ‰ã®RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
-     * @exception Throwable ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Throwable å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void processHead(HeadRestRequest request, HeadRestResponse response) throws Throwable;
     
     /**
-     * PUTƒƒ\ƒbƒh‚ÌRESTƒŠƒNƒGƒXƒg‚Ìˆ—‚ğs‚¤B<p>
+     * PUTãƒ¡ã‚½ãƒƒãƒ‰ã®RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
-     * @exception Throwable ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Throwable å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void processPut(PutRestRequest request, PutRestResponse response) throws Throwable;
     
     /**
-     * DELETEƒƒ\ƒbƒh‚ÌRESTƒŠƒNƒGƒXƒg‚Ìˆ—‚ğs‚¤B<p>
+     * DELETEãƒ¡ã‚½ãƒƒãƒ‰ã®RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
-     * @exception Throwable ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Throwable å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void processDelete(DeleteRestRequest request, DeleteRestResponse response) throws Throwable;
     
     /**
-     * OPTIONSƒƒ\ƒbƒh‚ÌRESTƒŠƒNƒGƒXƒg‚Ìˆ—‚ğs‚¤B<p>
+     * OPTIONSãƒ¡ã‚½ãƒƒãƒ‰ã®RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
-     * @exception Throwable ˆ—’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Throwable å‡¦ç†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void processOptions(OptionsRestRequest request, OptionsRestResponse response) throws Throwable;
 }

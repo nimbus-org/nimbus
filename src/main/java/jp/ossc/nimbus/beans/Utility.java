@@ -36,29 +36,29 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.core.NimbusClassLoader;
 
 /**
- * BeansƒpƒbƒP[ƒWƒ†[ƒeƒBƒŠƒeƒBB<p>
+ * Beansãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã€‚<p>
  *
  * @author M.Takata
  */
 class Utility{
     
     /**
-     * ƒVƒXƒeƒ€ƒvƒƒpƒeƒBQÆŠJn•¶š—ñB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§é–‹å§‹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SYSTEM_PROPERTY_START = "${";
     
     /**
-     * ƒVƒXƒeƒ€ƒvƒƒpƒeƒBQÆI—¹•¶š—ñB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§çµ‚äº†æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String SYSTEM_PROPERTY_END = "}";
     
     /**
-     * XMLƒRƒƒ“ƒgƒAƒEƒgŠJn•¶š—ñB<p>
+     * XMLã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆé–‹å§‹æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String COMENT_START = "<!--";
     
     /**
-     * XMLƒRƒƒ“ƒgƒAƒEƒgI—¹•¶š—ñB<p>
+     * XMLã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆçµ‚äº†æ–‡å­—åˆ—ã€‚<p>
      */
     public static final String COMENT_END = "-->";
     
@@ -75,11 +75,11 @@ class Utility{
     private static final String ESCAPE_PRINT = "\f";
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğƒgƒŠƒ€‚·‚éB<p>
-     * ƒgƒŠƒ€‚ÍAw’è‚³‚ê‚½•¶š—ñ‚Ì‘OŒã‚Ì‹ó”’•¶ši{@link Character#isWhitespace(char)}‚ªtrue‚Æ‚È‚é•¶šj‚ğíœ‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã€‚<p>
+     * ãƒˆãƒªãƒ ã¯ã€æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®å‰å¾Œã®ç©ºç™½æ–‡å­—ï¼ˆ{@link Character#isWhitespace(char)}ãŒtrueã¨ãªã‚‹æ–‡å­—ï¼‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚
      * 
-     * @param str •¶š—ñ
-     * @return ƒgƒŠƒ€‚³‚ê‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒˆãƒªãƒ ã•ã‚ŒãŸæ–‡å­—åˆ—
      */
     public static String trim(String str){
         String result = str;
@@ -101,10 +101,10 @@ class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌXMLƒRƒƒ“ƒgƒAƒEƒg•”•ª‚ğœ‹‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®XMLã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆéƒ¨åˆ†ã‚’é™¤å»ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return XMLƒRƒƒ“ƒgƒAƒEƒg•”•ª‚ğœ‹‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return XMLã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆéƒ¨åˆ†ã‚’é™¤å»ã—ãŸæ–‡å­—åˆ—
      */
     public static String xmlComentOut(String str){
         String result = str;
@@ -125,11 +125,11 @@ class Utility{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
-     * ’A‚µA"${\t}"A"${\n}"A"${\r}"A"${\f}"‚ÍAƒGƒXƒP[ƒvƒV[ƒPƒ“ƒX‚Æ‚µ‚Ä’uŠ·‚³‚ê‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€"${\t}"ã€"${\n}"ã€"${\r}"ã€"${\f}"ã¯ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã¨ã—ã¦ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     public static String replaceSystemProperty(String str){
         String result = str;

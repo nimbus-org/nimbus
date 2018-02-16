@@ -35,46 +35,46 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ƒAƒNƒVƒ‡ƒ“‚ÌŒ‹‰Ê‚ğŠÇ—‚·‚éƒXƒe[ƒ^ƒXB<p>
+ * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®çµæœã‚’ç®¡ç†ã™ã‚‹ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface StatusActionMnager extends StatusBase{
     
     /**
-     * Œ»İ‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒAƒNƒVƒ‡ƒ“ID
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
      */
     public String getCurrentActionId();
     
     /**
-     * w’è‚µ‚½ƒAƒNƒVƒ‡ƒ“ID‚ÌÀsŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã®å®Ÿè¡Œçµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ÀsŒ‹‰ÊB¬Œ÷‚Ìê‡AtrueB¸”s‚Ìê‡Afalse
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return å®Ÿè¡Œçµæœã€‚æˆåŠŸã®å ´åˆã€trueã€‚å¤±æ•—ã®å ´åˆã€false
      */
     public boolean getActionResult(String actionId);
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ÌÀsŒ‹‰Êƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œçµæœãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ƒAƒNƒVƒ‡ƒ“ID‚ÆÀsŒ‹‰Ê‚Ìƒ}ƒbƒv
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã¨å®Ÿè¡Œçµæœã®ãƒãƒƒãƒ—
      */
     public Map getActionResultMap();
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“‚ğÀs‚µ‚½Œ‹‰ÊA”­¶‚µ‚½—áŠO‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã—ãŸçµæœã€ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒNƒVƒ‡ƒ“‚ğÀs‚µ‚½Œ‹‰ÊA”­¶‚µ‚½—áŠO
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã—ãŸçµæœã€ç™ºç”Ÿã—ãŸä¾‹å¤–
      */
     public Throwable getThrowable();
     
     /**
-     * {@link TestActionContext}‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * {@link TestActionContext}ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TestActionContext‚ÌƒŠƒXƒg
+     * @return TestActionContextã®ãƒªã‚¹ãƒˆ
      */
     public List getTestActionContexts();
     

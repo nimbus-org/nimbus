@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 
 /**
- * ŠÔˆø‚«‚ğs‚¤ƒƒbƒZ[ƒW‘—M—p‚ÌƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“¶¬ƒT[ƒrƒXB<p>
+ * é–“å¼•ãã‚’è¡Œã†ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ç”¨ã®ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

@@ -37,8 +37,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 
 /**
- * ƒƒbƒZ[ƒW‘—MƒRƒ“ƒeƒiƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ðs‚¤
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã‚³ãƒ³ãƒ†ãƒŠã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -311,27 +311,27 @@ public class DefaultPublishContainerService extends ServiceBase
     
     private class MessageHandler implements DaemonRunnable{
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onStart(){
             return true;
         }
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onStop(){
             return true;
         }
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onSuspend(){
             return true;
         }
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onResume(){
             return true;
         }
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public Object provide(DaemonControl ctrl) throws Throwable{
             if(queue == null){
                 return null;
@@ -339,12 +339,12 @@ public class DefaultPublishContainerService extends ServiceBase
             return queue.get(publishTimeout);
         }
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public void consume(Object paramObj, DaemonControl ctrl){
             internalHandleMessage(paramObj);
         }
         
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public void garbage(){
             if(queue != null){
                 while(queue.size() > 0){

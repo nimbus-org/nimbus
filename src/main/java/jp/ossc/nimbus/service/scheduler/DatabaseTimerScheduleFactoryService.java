@@ -49,7 +49,7 @@ import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.queue.Queue;
 
 /**
- * ƒf[ƒ^ƒx[ƒXƒXƒPƒWƒ…[ƒ‹ƒtƒ@ƒNƒgƒŠB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */

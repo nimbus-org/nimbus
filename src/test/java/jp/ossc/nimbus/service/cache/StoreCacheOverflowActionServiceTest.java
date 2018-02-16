@@ -36,7 +36,7 @@ import junit.framework.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * �X�g�A�L���b�V�����ӂꓮ��T�[�r�X�e�X�g�B<p>
+ * ストアキャッシュあふれ動作サービステスト。<p>
  *
  * @author M.Takata
  */

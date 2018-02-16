@@ -34,46 +34,46 @@ package jp.ossc.nimbus.service.journal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒhƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒWƒƒ[ƒiƒ‹î•ñ‚ğŠi”[‚·‚éƒIƒuƒWƒFƒNƒg‚Å‚ ‚éB<br>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ã€‚<br>
  * 
  * @author   H.Nakano
  */
 public interface JournalRecord {
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
      */
     public String getKey();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚éJournalEditor
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹JournalEditor
      */
     public JournalEditor getJournalEditor();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚µ‚½Œ‹‰Ê‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã—ãŸçµæœã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚µ‚½Œ‹‰Ê‚ÌƒIƒuƒWƒFƒNƒg
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã—ãŸçµæœã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object toObject();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğw’è‚³‚ê‚½{@link JournalEditor}‚Å•ÒW‚µ‚½Œ‹‰Ê‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’æŒ‡å®šã•ã‚ŒãŸ{@link JournalEditor}ã§ç·¨é›†ã—ãŸçµæœã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param finder ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚éJournalEditor
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚µ‚½Œ‹‰Ê‚ÌƒIƒuƒWƒFƒNƒg
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹JournalEditor
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã—ãŸçµæœã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object toObject(EditorFinder finder);
     
     /**
-     * ‚±‚ÌƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ªƒXƒeƒbƒv‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒã‚¹ãƒ†ãƒƒãƒ—ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ƒXƒeƒbƒv‚Ìê‡true
+     * @return ã‚¹ãƒ†ãƒƒãƒ—ã®å ´åˆtrue
      */
     public boolean isStep();
 }

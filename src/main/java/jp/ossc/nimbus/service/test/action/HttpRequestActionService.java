@@ -60,9 +60,9 @@ import jp.ossc.nimbus.service.test.ChainTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
- * HTTP���N�G�X�g�e�X�g�A�N�V�����B<p>
- * HTTP���N�G�X�g�𑗐M���āAHTTP���X�|���X���t�@�C���ɏo�͂���B<br>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * HTTPリクエストテストアクション。<p>
+ * HTTPリクエストを送信して、HTTPレスポンスをファイルに出力する。<br>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  * 
  * @author M.Takata
  */
@@ -110,8 +110,8 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
     }
     
     /**
-     * HTTP���N�G�X�g�𑗐M���āAHTTP���X�|���X���t�@�C���ɏo�͂���B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * HTTPリクエストを送信して、HTTPレスポンスをファイルに出力する。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * clientId
      * actionName
@@ -122,50 +122,50 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
      * bodyType
      * body
      * </pre>
-     * clientId�́A{@link HttpClient}�I�u�W�F�N�g���ė��p����ꍇ�Ɏw�肷����̂ŁA����e�X�g�P�[�X���ɁA����TestAction���O�ɁA���̃N���X��TestAction�����݂���ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���ɁA����TestAction���O�ɁA���̃N���X��TestAction�����݂���ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B�ė��p�̕K�v���Ȃ��ꍇ�́A�󕶎����w�肷��B<br>
-     * actionName�́A{@link HttpClientFactory#createRequest(String)}�̈����Ɏw�肷��A�N�V���������w�肷��B<br>
-     * replaceValueId�́A���N�G�X�g�w�b�_�y�у{�f�B�ɑ΂���u�����s���l��TestAction�̌��ʂ���擾���邽�߂Ɏw�肷����̂ŁA����e�X�g�P�[�X����TestAction�̌��ʂ��擾����ꍇ�́A���̃A�N�V����ID���w�肷��B�܂��A����V�i���I���̑��̃e�X�g�P�[�X��TestAction�̌��ʂ��擾����ꍇ�́A�e�X�g�P�[�XID�ƃA�N�V����ID���J���}��؂�Ŏw�肷��B����ɑ�����"-&gt;"������ŁA�u���Ώۂ̕������replaceKey�Ƃ��Ďw�肷��B���̍s�́A�����w�肪�\�Ȃ��߁A�I�����������߂ɁA��s���P�s�����B�u�����s�v�ȏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
-     * headerName�́AHTTP�w�b�_�����w�肷��B����ɑ�����":"������ŁA�w�b�_�l��headerValue�Ƃ��Ďw�肷��B���̍s�́A�����w�肪�\�Ȃ��߁A�I�����������߂ɁA��s���P�s�����B�w�b�_���s�v�ȏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
-     * bodyType�́A"parameter"�A"text"�A"binary"�A"object"�A"multipart"�̂����ꂩ���w�肷��BHTTP�{�f�B���K�v�Ȃ��ꍇ�́A���̍s�ȉ��͕K�v�Ȃ��B<br>
-     * body�́AbodyType�ɂ���āA�L�q���@���قȂ�B<br>
+     * clientIdは、{@link HttpClient}オブジェクトを再利用する場合に指定するもので、同一テストケース中に、このTestActionより前に、このクラスのTestActionが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、このクラスのTestActionが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。再利用の必要がない場合は、空文字を指定する。<br>
+     * actionNameは、{@link HttpClientFactory#createRequest(String)}の引数に指定するアクション名を指定する。<br>
+     * replaceValueIdは、リクエストヘッダ及びボディに対する置換を行う値をTestActionの結果から取得するために指定するもので、同一テストケース中のTestActionの結果を取得する場合は、そのアクションIDを指定する。また、同一シナリオ中の他のテストケースのTestActionの結果を取得する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。それに続いて"-&gt;"を挟んで、置換対象の文字列をreplaceKeyとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。置換が不要な場合は、指定する必要はない。<br>
+     * headerNameは、HTTPヘッダ名を指定する。それに続いて":"を挟んで、ヘッダ値をheaderValueとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。ヘッダが不要な場合は、指定する必要はない。<br>
+     * bodyTypeは、"parameter"、"text"、"binary"、"object"、"multipart"のいずれかを指定する。HTTPボディが必要ない場合は、この行以下は必要ない。<br>
+     * bodyは、bodyTypeによって、記述方法が異なる。<br>
      * <ul>
-     * <li>bodyType��"parameter"�̏ꍇ<br>�p�����[�^��name=value�Ŏw�肷��B��������ꍇ�́A���s���Ďw�肷��B</li>
-     * <li>bodyType��"text"�̏ꍇ<br>�C�ӂ̕�����Ŏw�肷��B</li>
-     * <li>bodyType��"binary"�̏ꍇ<br>�o�C�i���t�@�C���̃p�X���w�肷��B�p�X�́A��΃p�X�܂��́A���΃p�X�Ŏw�肷��B</li>
-     * <li>bodyType��"object"�̏ꍇ<br>{@link HttpRequest#setObject(Object)}�ɐݒ肷��I�u�W�F�N�g�𐶐�����X�N���v�g��������w�肷��B�X�N���v�g������́A{@link Interpreter#evaluate(String)}�ŕ]������A���̖߂�l���I�u�W�F�N�g�Ƃ��Ďg�p�����B</li>
-     * <li>bodyType��"multipart"�̏ꍇ<br>�p�����[�^�̏ꍇ�Aname=value�Ŏw�肷��B�t�@�C���̏ꍇ�Afile:name=filePath,fileName,contentType�Ŏw�肷��BfileName,contentType�͏ȗ��\�B��������ꍇ�́A���s���Ďw�肷��B</li>
+     * <li>bodyTypeが"parameter"の場合<br>パラメータをname=valueで指定する。複数ある場合は、改行して指定する。</li>
+     * <li>bodyTypeが"text"の場合<br>任意の文字列で指定する。</li>
+     * <li>bodyTypeが"binary"の場合<br>バイナリファイルのパスを指定する。パスは、絶対パスまたは、相対パスで指定する。</li>
+     * <li>bodyTypeが"object"の場合<br>{@link HttpRequest#setObject(Object)}に設定するオブジェクトを生成するスクリプト文字列を指定する。スクリプト文字列は、{@link Interpreter#evaluate(String)}で評価され、その戻り値がオブジェクトとして使用される。</li>
+     * <li>bodyTypeが"multipart"の場合<br>パラメータの場合、name=valueで指定する。ファイルの場合、file:name=filePath,fileName,contentTypeで指定する。fileName,contentTypeは省略可能。複数ある場合は、改行して指定する。</li>
      * </ul>
      * <p>
-     * HTTP���X�|���X���o�͂���t�@�C���́A�w�b�_�t�@�C���ƃ{�f�B�t�@�C���̂Q�ł���B<br>
-     * �w�b�_�t�@�C���́A�A�N�V����ID�Ɋg���q".h.rsp"��t�������t�@�C�����ɂȂ�B<br>
-     * �w�b�_�t�@�C���̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * HTTPレスポンスを出力するファイルは、ヘッダファイルとボディファイルの２つである。<br>
+     * ヘッダファイルは、アクションIDに拡張子".h.rsp"を付加したファイル名になる。<br>
+     * ヘッダファイルのフォーマットは、以下。<br>
      * <pre>
      * HTTP status
      * HTTP message
      * headerName:headerValue
      * </pre>
      * <p>
-     * �{�f�B�t�@�C���́A�A�N�V����ID�Ɋg���q".b.rsp"��t�������t�@�C�����ɂȂ�B<br>
-     * �{�f�B�t�@�C���́AHTTP�{�f�B�����̂܂܏o�͂���B<br>
+     * ボディファイルは、アクションIDに拡張子".b.rsp"を付加したファイル名になる。<br>
+     * ボディファイルは、HTTPボディをそのまま出力する。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return Map�B�L�["client"�ŁAHttpClient�I�u�W�F�N�g�B�L�["response"�ŁAHttpResponse�B
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return Map。キー"client"で、HttpClientオブジェクト。キー"response"で、HttpResponse。
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * HTTP���N�G�X�g�𑗐M���āAHTTP���X�|���X���t�@�C���ɏo�͂���B<p>
+     * HTTPリクエストを送信して、HTTPレスポンスをファイルに出力する。<p>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param preResult 1�O�̃A�N�V�����̖߂�l
-     * @param resource ���\�[�X
-     * @return JMX��MBean���Ăяo�����߂�l
-     * @return Map�B�L�["client"�ŁAHttpClient�I�u�W�F�N�g�B�L�["response"�ŁAHttpResponse�B
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param preResult 1つ前のアクションの戻り値
+     * @param resource リソース
+     * @return JMXでMBeanを呼び出した戻り値
+     * @return Map。キー"client"で、HttpClientオブジェクト。キー"response"で、HttpResponse。
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

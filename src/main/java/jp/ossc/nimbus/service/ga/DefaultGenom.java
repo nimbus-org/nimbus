@@ -41,56 +41,56 @@ import java.io.ObjectInput;
 import java.io.IOException;
 
 /**
- * ƒfƒtƒHƒ‹ƒgˆâ“`î•ñB<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆéºä¼æƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public class DefaultGenom implements Genom, Cloneable, Externalizable{
     
     /**
-     * Œğ³í•ÊFˆê“_Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šä¸€ç‚¹äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_SINGLE_POINT  = 1;
     
     /**
-     * Œğ³í•ÊF“ñ“_Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šäºŒç‚¹äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_TWO_POINT     = 2;
     
     /**
-     * Œğ³í•ÊFˆê—lŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šä¸€æ§˜äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_UNIFORM_POINT = 3;
     
     /**
-     * Œğ³í•ÊF‘SŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šå…¨äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_ALL_POINT     = 4;
     
     /**
-     * Œğ³í•ÊB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #CROSSOVER_UNIFORM_POINT ˆê—lŒğ³}B<br>
+     * äº¤å‰ç¨®åˆ¥ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #CROSSOVER_UNIFORM_POINT ä¸€æ§˜äº¤å‰}ã€‚<br>
      */
     protected int crossoverType = CROSSOVER_UNIFORM_POINT;
     
     /**
-     * ˆâ“`qƒ}ƒbƒvB<p>
+     * éºä¼å­ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map geneMap;
     
     /**
-     * Œğ³í•Ê‚ğİ’è‚·‚éB<p>
+     * äº¤å‰ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type Œğ³í•Ê
+     * @param type äº¤å‰ç¨®åˆ¥
      */
     public void setCrossoverType(int type){
         crossoverType = type;
     }
     
     /**
-     * Œğ³í•Ê‚ğæ“¾‚·‚éB<p>
+     * äº¤å‰ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œğ³í•Ê
+     * @return äº¤å‰ç¨®åˆ¥
      */
     public int getCrossoverType(){
         return crossoverType;
@@ -101,10 +101,10 @@ public class DefaultGenom implements Genom, Cloneable, Externalizable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ìˆâ“`q‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®éºä¼å­ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ˆâ“`q‚Ì–¼‘O
-     * @param gene ˆâ“`q
+     * @param name éºä¼å­ã®åå‰
+     * @param gene éºä¼å­
      */
     public void setGene(String name, Gene gene){
         if(geneMap == null){
@@ -117,9 +117,9 @@ public class DefaultGenom implements Genom, Cloneable, Externalizable{
     }
     
     /**
-     * ˆâ“`q‚ğ’Ç‰Á‚·‚éB<p>
+     * éºä¼å­ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param gene ˆâ“`q
+     * @param gene éºä¼å­
      */
     public void addGene(Gene gene){
         if(geneMap == null){

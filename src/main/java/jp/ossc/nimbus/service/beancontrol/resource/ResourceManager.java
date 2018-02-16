@@ -29,33 +29,33 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol.resource;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 /**
- * BLƒtƒ[“à‚Åˆµ‚¤ƒŠƒ\[ƒX‚ğŠÇ—‚·‚éB<p>
+ * BLãƒ•ãƒ­ãƒ¼å†…ã§æ‰±ã†ãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹ã€‚<p>
  * addResource<br>
  * getResource<br>
  * commitResource,rollBackResource<br>
  * commitAllResources,rollbbackAllResources<br>
- * ‚Ì‡”Ô‚Åg—p‚·‚éB 
+ * ã®é †ç•ªã§ä½¿ç”¨ã™ã‚‹ã€‚ 
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface ResourceManager {
 	/**
-	 * ResourceManager‚ªŠÇ—‚·‚éƒŠƒ\[ƒX‚ğŠJ•ú‚·‚éB
+	 * ResourceManagerãŒç®¡ç†ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã€‚
 	 */
 	public void terminateResourceManager() ;
 	/**
-	 * ƒŠƒ\[ƒX‚ğŠm•Û‚·‚é
-	 * @param key			ƒŠƒ\[ƒX–¼ÌƒL[
-	 * @param resourceKey	ƒŠƒ\[ƒX“Á’èƒL[
-	 * @param serviceName	ƒŠƒ\[ƒX’ñ‹ŸƒT[ƒrƒX–¼
-	 * @param isTrnControl	ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒRƒ“ƒgƒ[ƒ‹‚·‚é‚©
-	 * @param isTrnClose	ŠJ•ú‚ÉƒNƒ[ƒY‚·‚é‚©
+	 * ãƒªã‚½ãƒ¼ã‚¹ã‚’ç¢ºä¿ã™ã‚‹
+	 * @param key			ãƒªã‚½ãƒ¼ã‚¹åç§°ã‚­ãƒ¼
+	 * @param resourceKey	ãƒªã‚½ãƒ¼ã‚¹ç‰¹å®šã‚­ãƒ¼
+	 * @param serviceName	ãƒªã‚½ãƒ¼ã‚¹æä¾›ã‚µãƒ¼ãƒ“ã‚¹å
+	 * @param isTrnControl	ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã™ã‚‹ã‹
+	 * @param isTrnClose	é–‹æ”¾æ™‚ã«ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹
 	 */
 	public void addResource(String key,
 							String resourceKey,
@@ -63,29 +63,29 @@ public interface ResourceManager {
 							boolean isTrnControl,
 							boolean isTrnClose) ;
 	/**
-	 * ƒŠƒ\[ƒX‚ğƒRƒ~ƒbƒg‚·‚é
-	 * @param key		ƒŠƒ\[ƒX–¼ÌƒL[
-	 * @param isClose	ƒŠƒ\[ƒXƒRƒ~ƒbƒgŒãƒNƒ[ƒY‚·‚é‚©
+	 * ãƒªã‚½ãƒ¼ã‚¹ã‚’ã‚³ãƒŸãƒƒãƒˆã™ã‚‹
+	 * @param key		ãƒªã‚½ãƒ¼ã‚¹åç§°ã‚­ãƒ¼
+	 * @param isClose	ãƒªã‚½ãƒ¼ã‚¹ã‚³ãƒŸãƒƒãƒˆå¾Œã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹
 	 */
 	public void commitResource(String key,boolean isClose) ;		
 	/**
-	 * ƒŠƒ\[ƒX‚ğƒ[ƒ‹ƒoƒbƒN‚·‚é
-	 * @param key		ƒŠƒ\[ƒX–¼ÌƒL[
-	 * @param isClose	ƒŠƒ\[ƒXƒRƒ~ƒbƒgŒãƒNƒ[ƒY‚·‚é‚©
+	 * ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹
+	 * @param key		ãƒªã‚½ãƒ¼ã‚¹åç§°ã‚­ãƒ¼
+	 * @param isClose	ãƒªã‚½ãƒ¼ã‚¹ã‚³ãƒŸãƒƒãƒˆå¾Œã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã‹
 	 */
 	public void rollBackResource(String key,boolean isClose) ;		
 	/**
-	 * ‚·‚×‚Ä‚ÌƒŠƒ\[ƒX‚ğƒRƒ~ƒbƒg‚·‚é
+	 * ã™ã¹ã¦ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ã‚³ãƒŸãƒƒãƒˆã™ã‚‹
 	 */
 	public void commitAllResources() ;
 	/**
-	 * ‚·‚×‚Ä‚ÌƒŠƒ\[ƒX‚ğƒ[ƒ‹ƒoƒbƒN‚·‚é
+	 * ã™ã¹ã¦ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹
 	 */
 	public void rollbbackAllResources() ;
 	/**
-	 * ƒŠƒ\[ƒX‚ğo—Í‚·‚é
-	 * @param key	ƒŠƒ\[ƒX–¼Ì
-	 * @return	ƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg
+	 * ãƒªã‚½ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @param key	ãƒªã‚½ãƒ¼ã‚¹åç§°
+	 * @return	ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public Object getResource(String key) ;
 }

@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -48,37 +48,37 @@ public class UnitOfWorkImpl
     
     private ArrayList mCommandAry ;
 	/**
-	* ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	* ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	*/
 	public UnitOfWorkImpl() {
 		super();
 		mCommandAry = new ArrayList() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#isCommand()
 	 */
 	public boolean isCommand() {
 		return false;
 	}
 	/*
-	 * ƒRƒ}ƒ“ƒh”z—ñ‚ÌƒTƒCƒY‚ğo—Í‚·‚éB
-	 * @return@ƒRƒ}ƒ“ƒhƒTƒCƒY
+	 * ã‚³ãƒãƒ³ãƒ‰é…åˆ—ã®ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€ã‚³ãƒãƒ³ãƒ‰ã‚µã‚¤ã‚º
 	 */
 	public int size(){
 		return this.mCommandAry.size() ;
 	}
 	/*
-	 * ƒRƒ}ƒ“ƒh”z—ñ‚ÉŠi”[‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğo—Í‚·‚éB
-	 * @param index@”z—ñ”Ô†
-	 * @return@CommandBaseƒCƒ“ƒ^[ƒtƒFƒCƒX
+	 * ã‚³ãƒãƒ³ãƒ‰é…åˆ—ã«æ ¼ç´ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€CommandBaseã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
 	 * @see CommandBase
 	 */
 	public CommandBase getCommand(int index){
 		return (CommandBase)this.mCommandAry.get(index) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#getExceptionCount()
 	 */
 	public int getExceptionCount() {
@@ -90,7 +90,7 @@ public class UnitOfWorkImpl
             }
 			if(tmp.isCommand()){
 				ret += tmp.getExceptionCount() ;
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			}else{
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -105,7 +105,7 @@ public class UnitOfWorkImpl
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#getExceptions()
 	 */
 	public Throwable[] getExceptions() {
@@ -120,7 +120,7 @@ public class UnitOfWorkImpl
 				for(int ecnt= 0; ecnt<exp.length;ecnt++){
 					list.add(exp[ecnt]) ;
 				}
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			}else{
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -142,7 +142,7 @@ public class UnitOfWorkImpl
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#findErrorCommand(java.lang.Exception)
 	 */
 	public Command findErrorCommand(Throwable e) {
@@ -157,7 +157,7 @@ public class UnitOfWorkImpl
 				if(ret != null){
 					break ;		
 				}
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			}else{
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -173,7 +173,7 @@ public class UnitOfWorkImpl
 		}
 		return ret ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#commandSize()
 	 */
 	public int commandSize() {
@@ -185,7 +185,7 @@ public class UnitOfWorkImpl
             }
 			if(tmp.isCommand()){
 				ret += tmp.commandSize() ;
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			}else{
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -196,7 +196,7 @@ public class UnitOfWorkImpl
 		return ret ;		
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#commandExecuteSize()
 	 */
 	public int commandExecuteSize() {
@@ -208,7 +208,7 @@ public class UnitOfWorkImpl
             }
 			if(tmp.isCommand()){
 				ret += tmp.commandExecuteSize();
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			}else{
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -219,7 +219,7 @@ public class UnitOfWorkImpl
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#getStatus()
 	 */
 	public int getStatus() {
@@ -231,7 +231,7 @@ public class UnitOfWorkImpl
             }
 			if(tmp.isCommand()){
 				status = tmp.getStatus() ;
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			}else{
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -251,7 +251,7 @@ public class UnitOfWorkImpl
 		return status ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#unitOfWorkSize()
 	 */
 	public int unitOfWorkSize() {
@@ -261,7 +261,7 @@ public class UnitOfWorkImpl
             if(tmp == null){
                 continue;
             }
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			if(!tmp.isCommand()){
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){
@@ -272,21 +272,21 @@ public class UnitOfWorkImpl
 		return ret ;
 	}
 	/*
-	 * ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚ğ’Ç‰Á‚·‚é
-	 * @param uow@ƒ†ƒjƒbƒgƒIƒuƒ[ƒNƒIƒuƒWƒFƒNƒg
+	 * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚’è¿½åŠ ã™ã‚‹
+	 * @param uowã€€ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public void addUnitOfWork(UnitOfWork uow){
 		mCommandAry.add(uow) ;
 	}
 	/*
-	 * ƒRƒ}ƒ“ƒh‚ğ’Ç‰Á‚·‚é
-	 * @param cmd@ƒRƒ}ƒ“ƒhƒIƒuƒWƒFƒNƒg@
+	 * ã‚³ãƒãƒ³ãƒ‰ã‚’è¿½åŠ ã™ã‚‹
+	 * @param cmdã€€ã‚³ãƒãƒ³ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€€
 	 */
 	public void addCommand(Command cmd){
 		this.mCommandAry.add(cmd);		
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#unitOfWorkExecuteSize()
 	 */
 	public int unitOfWorkExecuteSize() {
@@ -296,7 +296,7 @@ public class UnitOfWorkImpl
             if(tmp == null){
                 continue;
             }
-			// ƒŠƒJ[ƒVƒuƒR[ƒ‹
+			// ãƒªã‚«ãƒ¼ã‚·ãƒ–ã‚³ãƒ¼ãƒ«
 			if(!tmp.isCommand()){
 				UnitOfWorkImpl uow = (UnitOfWorkImpl)tmp ;
 				for(int ccnt = 0;ccnt<uow.size();ccnt++){

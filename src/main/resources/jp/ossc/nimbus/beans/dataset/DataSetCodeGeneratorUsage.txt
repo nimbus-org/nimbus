@@ -1,29 +1,29 @@
-�R�}���h�g�p���@�F
+コマンド使用方法：
  java jp.ossc.nimbus.beans.dataset.DataSetCodeGenerator [options] [definition files]
 
 [options]
 
  [-validate true|false]
-  ��`�t�@�C����XML�o���f�[�V�������s�����ǂ������w�肵�܂��B
-  ���̃I�v�V�����̎w�肪�Ȃ��ꍇ�́A�o���f�[�V�������s���܂��B
+  定義ファイルのXMLバリデーションを行うかどうかを指定します。
+  このオプションの指定がない場合は、バリデーションを行います。
 
  [-encoding encoding]
-  ��������\�[�X�t�@�C���̕����R�[�h���w�肵�܂��B
-  ���̃I�v�V�����̎w�肪�Ȃ��ꍇ�́AOS�̕����R�[�h�Ɉˑ����܂��B
+  生成するソースファイルの文字コードを指定します。
+  このオプションの指定がない場合は、OSの文字コードに依存します。
 
  [-d directory]
-  �o�͐�̃f�B���N�g�����w�肵�܂��B
-  ���̃I�v�V�����̎w�肪�Ȃ��ꍇ�́A���s���̃J�����g�ɏo�͂��܂��B
+  出力先のディレクトリを指定します。
+  このオプションの指定がない場合は、実行時のカレントに出力します。
 
  [-v]
-  ���s�̏ڍׂ�\�����܂��B
+  実行の詳細を表示します。
 
  [-help]
-  �w���v��\�����܂��B
+  ヘルプを表示します。
 
 [definition files]
- ��`�t�@�C�������w�肵�܂��B
- �X�y�[�X��؂�ŕ����w��\�ł��B
+ 定義ファイル名を指定します。
+ スペース区切りで複数指定可能です。
 
-�g�p�� : 
+使用例 : 
    java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.beans.dataset.DataSetCodeGenerator dataset-definition.xml

@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link GroupClientConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link GroupClientConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see GroupClientConnectionFactoryService
@@ -46,30 +46,30 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface GroupClientConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚é{@link ClientConnectionFactory}‚ğlookup‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹{@link ClientConnectionFactory}ã‚’lookupã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiRepositoryServiceName(ServiceName name);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚é{@link ClientConnectionFactory}‚ğlookup‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹{@link ClientConnectionFactory}ã‚’lookupã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiRepositoryServiceName();
     
     /**
-     * w’è‚³‚ê‚½ƒTƒuƒWƒFƒNƒg‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚Ä‚¢‚é{@link GroupClientConnectionFactoryService.SubjectMapping SubjectMapping}‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã¦ã„ã‚‹{@link GroupClientConnectionFactoryService.SubjectMapping SubjectMapping}ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return SubjectMapping‚ÌƒŠƒXƒg
+     * @return SubjectMappingã®ãƒªã‚¹ãƒˆ
      */
     public List getSubjectMappings(String subject);
     
     /**
-     * ƒTƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒL[‚ªƒTƒuƒWƒFƒNƒgA’l‚ªSubjectMapping‚ÌƒŠƒXƒg‚Æ‚È‚éƒ}ƒbƒv
+     * @return ã‚­ãƒ¼ãŒã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€å€¤ãŒSubjectMappingã®ãƒªã‚¹ãƒˆã¨ãªã‚‹ãƒãƒƒãƒ—
      */
     public Map getSubjectMappingMap();
 }

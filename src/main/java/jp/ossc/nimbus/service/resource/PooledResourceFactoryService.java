@@ -40,8 +40,8 @@ import org.apache.commons.pool.impl.GenericObjectPool;
 import jp.ossc.nimbus.core.*;
 
 /**
- * Jakarta Commons Pool‚ğg‚Á‚ÄAƒŠƒ\[ƒX‚ğƒv[ƒ‹‚·‚éResourceFactoryƒT[ƒrƒXB<p>
- * ‘®«‚Åİ’è‚³‚ê‚½{@link org.apache.commons.pool.PoolableObjectFactory}‚ğg‚Á‚ÄAƒv[ƒ‹‚·‚éƒŠƒ\[ƒX‚ğ¶¬‚µ‚ÄA{@link org.apache.commons.pool.impl.GenericObjectPool}‚Éƒv[ƒ‹‚·‚éB<br>
+ * Jakarta Commons Poolã‚’ä½¿ã£ã¦ã€ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ—ãƒ¼ãƒ«ã™ã‚‹ResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * å±æ€§ã§è¨­å®šã•ã‚ŒãŸ{@link org.apache.commons.pool.PoolableObjectFactory}ã‚’ä½¿ã£ã¦ã€ãƒ—ãƒ¼ãƒ«ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’ç”Ÿæˆã—ã¦ã€{@link org.apache.commons.pool.impl.GenericObjectPool}ã«ãƒ—ãƒ¼ãƒ«ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

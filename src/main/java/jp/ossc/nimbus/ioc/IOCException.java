@@ -29,11 +29,11 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 /**
- * EJBƒ[ƒ‹ƒoƒbƒN—áŠOƒNƒ‰ƒX<p>
+ * EJBãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ä¾‹å¤–ã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -43,14 +43,14 @@ public class IOCException extends RuntimeException {
     private static final long serialVersionUID = 3047491184473387245L;
     
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public IOCException() {
 		super();
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 */
 	public IOCException(String arg0) {
@@ -58,7 +58,7 @@ public class IOCException extends RuntimeException {
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 */
 	public IOCException(Throwable arg0) {
@@ -66,7 +66,7 @@ public class IOCException extends RuntimeException {
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 * @param arg1
 	 */

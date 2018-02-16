@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop;
 import java.util.*;
 
 /**
- * {@link InvocationContext}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link InvocationContext}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,41 +44,41 @@ public class DefaultInvocationContext
     private static final long serialVersionUID = 1037169899298916029L;
     
     /**
-     * ŒÄ‚Ño‚·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒgB<p>
+     * å‘¼ã³å‡ºã™å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object targetObject;
     
     /**
-     * ‘®«‚ğŠi”[‚·‚éƒ}ƒbƒvB<p>
+     * å±æ€§ã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map attributes;
     
     /**
-     * ‹ó‚ÌŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultInvocationContext(){
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌŒÄ‚Ño‚µ‚É‘Î‚·‚éŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‘¼ã³å‡ºã—ã«å¯¾ã™ã‚‹å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param target ŒÄ‚Ño‚·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param target å‘¼ã³å‡ºã™å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public DefaultInvocationContext(Object target){
         targetObject = target;
     }
     
-    // InvocationContext‚ÌJavaDoc
+    // InvocationContextã®JavaDoc
     public Object getTargetObject(){
         return targetObject;
     }
     
-    // InvocationContext‚ÌJavaDoc
+    // InvocationContextã®JavaDoc
     public void setTargetObject(Object target){
         targetObject = target;
     }
     
-    // InvocationContext‚ÌJavaDoc
+    // InvocationContextã®JavaDoc
     public void setAttribute(String name, Object value){
         if(attributes == null){
             attributes = new HashMap();
@@ -86,7 +86,7 @@ public class DefaultInvocationContext
         attributes.put(name, value);
     }
     
-    // InvocationContext‚ÌJavaDoc
+    // InvocationContextã®JavaDoc
     public Object getAttribute(String name){
         if(attributes == null){
             return null;
@@ -94,7 +94,7 @@ public class DefaultInvocationContext
         return attributes.get(name);
     }
     
-    // InvocationContext‚ÌJavaDoc
+    // InvocationContextã®JavaDoc
     public String[] getAttributeNames(){
         if(attributes == null){
             return new String[0];

@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link TcpNetProxyControlActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link TcpNetProxyControlActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -44,76 +44,76 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface TcpNetProxyControlActionServiceMBean extends ServiceBaseMBean {
 
     /**
-     * TcpNetProxy‚ğopen‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’openã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_OPEN = "open";
 
     /**
-     * TcpNetProxy‚ğclose‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’closeã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_CLOSE = "close";
 
     /**
-     * TcpNetProxy‚ğreopen‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’reopenã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_REOPEN = "reopen";
 
     /**
-     * TcpNetProxy‚ğfreeze‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’freezeã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_FREEZE = "freeze";
 
     /**
-     * TcpNetProxy‚ğunfreeze‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’unfreezeã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_UNFREEZE = "unfreeze";
 
     /**
-     * TcpNetProxy‚ğcloseAllPairs‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’closeAllPairsã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_CLOSE_ALL_PAIRS = "closeAllPairs";
 
     /**
-     * TcpNetProxy‚ğfreezeAllPairs‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’freezeAllPairsã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_FREEZE_ALL_PAIRS = "freezeAllPairs";
 
     /**
-     * TcpNetProxy‚ğunfreezeAllPairs‚·‚é‚½‚ß‚Ì’è”
+     * TcpNetProxyã‚’unfreezeAllPairsã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_UNFREEZE_ALL_PAIRS = "unfreezeAllPairs";
 
     /**
      * {@link jp.ossc.nimbus.service.test.proxy.TcpNetProxy TcpNetProxy}
-     * ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name TcpNetProxyƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name TcpNetProxyã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTcpNetProxyServiceName(ServiceName name);
 
     /**
      * {@link jp.ossc.nimbus.service.test.proxy.TcpNetProxy TcpNetProxy}
-     * ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return TcpNetProxyƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TcpNetProxyã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTcpNetProxyServiceName();
 
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
 
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

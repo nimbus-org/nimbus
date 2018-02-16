@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.cui;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/29| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/29ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class CuiParseException extends Exception {
     
@@ -46,7 +46,7 @@ public class CuiParseException extends Exception {
 	 */
 	public CuiParseException() {
 		super();
-		// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼ãƒ»ã‚¹ã‚¿ãƒ–
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class CuiParseException extends Exception {
 	 */
 	public CuiParseException(String s) {
 		super(s);
-		// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼ãƒ»ã‚¹ã‚¿ãƒ–
 	}
 
 }

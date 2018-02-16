@@ -37,11 +37,11 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.util.*;
 
 /**
- * KeepAliveCheckerŠÄ‹ƒT[ƒrƒXB<p>
- * •¡”ƒT[ƒo‚ğŠÄ‹‚µ‚ÄA¶‚«‚Ä‚¢‚éƒT[ƒo‚ğ—Dæ“x‡‚¨‚æ‚Ñƒ‰ƒEƒ“ƒhƒƒrƒ“‡‚É¶‘¶Šm”F‚·‚éB<br>
+ * KeepAliveCheckerç›£è¦–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * è¤‡æ•°ã‚µãƒ¼ãƒã‚’ç›£è¦–ã—ã¦ã€ç”Ÿãã¦ã„ã‚‹ã‚µãƒ¼ãƒã‚’å„ªå…ˆåº¦é †ãŠã‚ˆã³ãƒ©ã‚¦ãƒ³ãƒ‰ãƒ­ãƒ“ãƒ³é †ã«ç”Ÿå­˜ç¢ºèªã™ã‚‹ã€‚<br>
  * 
  * @author H.Nakano
- * @version  1.00 ì¬: 2003/10/08 - H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/08 - H.Nakano
  */
 public class KeepAliveDaemonService extends ServiceBase
  implements KeepAliveDaemonServiceMBean, DaemonRunnable {
@@ -55,18 +55,18 @@ public class KeepAliveDaemonService extends ServiceBase
     private static final String C_ALIVEKEY = "KEEPALIVE001" ; //$NON-NLS-1$
     private static final String C_DEADKEY = "KEEPALIVE002" ; //$NON-NLS-1$
     
-    //## ƒNƒ‰ƒX•Ï”éŒ¾ ##
-    /** ‘—MƒT[ƒo‰Ò“®ó‘Ôˆê—— */
+    //## ã‚¯ãƒ©ã‚¹å¤‰æ•°å®£è¨€ ##
+    /** é€ä¿¡ã‚µãƒ¼ãƒç¨¼å‹•çŠ¶æ…‹ä¸€è¦§ */
     protected Hashtable mServerTbl = new Hashtable();
-    /** “¯Šú—pƒIƒuƒWƒFƒNƒg */
+    /** åŒæœŸç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     protected Boolean mSyncObj = new Boolean(true);
-    /** ƒT[ƒoƒ`ƒFƒbƒJ[ƒŠƒXƒg */
+    /** ã‚µãƒ¼ãƒãƒã‚§ãƒƒã‚«ãƒ¼ãƒªã‚¹ãƒˆ */
     protected List mCheckerList = new ArrayList();
-    /** ƒ`ƒFƒbƒNƒCƒ“ƒ^[ƒoƒ‹ */
+    /** ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ« */
     protected volatile long mInterval;
-    /** ƒf[ƒ‚ƒ“ƒNƒ‰ƒXƒCƒ“ƒXƒ^ƒ“ƒX */
+    /** ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¯ãƒ©ã‚¹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ */
     protected Daemon mDaemon;
-    /** ƒ‰ƒEƒ“ƒhƒƒrƒ“ƒJƒEƒ“ƒ^[ */
+    /** ãƒ©ã‚¦ãƒ³ãƒ‰ãƒ­ãƒ“ãƒ³ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ */
     protected volatile int mRoundRobin;
     protected String aliveLogMessageId = C_ALIVEKEY;
     protected String deadLogMessageId = C_DEADKEY;
@@ -90,7 +90,7 @@ public class KeepAliveDaemonService extends ServiceBase
         mDaemon = null;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public void setChekerServiceNames(ServiceName[] serviceNames){
         synchronized(mSyncObj){
             mCheckerList.clear();
@@ -100,22 +100,22 @@ public class KeepAliveDaemonService extends ServiceBase
         }
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public ServiceName[] getChekerServiceNames(){
         return (ServiceName[])mCheckerList.toArray(new ServiceName[mCheckerList.size()]);
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public void setIntervalTimeMillis(long miliseconds){
         mInterval = miliseconds ;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public long getIntervalTimeMillis(){
         return mInterval;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public String[] getStatusString(){
         CsvArrayList ret = new CsvArrayList();
         Map keepAlive = getKeepAliveMap();
@@ -134,110 +134,110 @@ public class KeepAliveDaemonService extends ServiceBase
         return ret.toStringAry();
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public void setAliveLogMessageId(String id){
         aliveLogMessageId = id;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public String getAliveLogMessageId(){
         return aliveLogMessageId;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public void setDeadLogMessageId(String id){
         deadLogMessageId = id;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public String getDeadLogMessageId(){
         return deadLogMessageId;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public void setOutputAliveLogMessage(boolean isOutput){
         isOutputAliveLogMessage = isOutput;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public boolean isOutputAliveLogMessage(){
         return isOutputAliveLogMessage;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public void setOutputDeadLogMessage(boolean isOutput){
         isOutputDeadLogMessage = isOutput;
     }
     
-    // KeepAliveDaemonServiceMBean‚ÌJavaDoc
+    // KeepAliveDaemonServiceMBeanã®JavaDoc
     public boolean isOutputDeadLogMessage(){
         return isOutputDeadLogMessage;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStart(){
         
         for(Iterator iterator = mCheckerList.iterator();iterator.hasNext();){
             ServiceName name = (ServiceName)iterator.next();
             KeepAliveChecker kac =(KeepAliveChecker)ServiceManagerFactory.getServiceObject(name);
-            //ƒRƒ“ƒjƒ`ƒn‚Á‚Ä‚¢‚Á‚Ä‚İ‚é
+            //ã‚³ãƒ³ãƒ‹ãƒãƒã£ã¦ã„ã£ã¦ã¿ã‚‹
             boolean bret = kac.isAlive();
-            //Œ‹‰Ê‚ğƒAƒbƒvƒf[ƒg‚µ‚Æ‚­
+            //çµæœã‚’ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã—ã¨ã
             updateTblStructure(name, bret);
         }
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStop(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onSuspend(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onResume(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public Object provide(DaemonControl ctrl) throws Exception{
         Thread.sleep(mInterval);
         return null;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public void consume(Object paramObj, DaemonControl ctrl) throws Exception{
         onStart();
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public void garbage(){
     }
     
     //
     /**
-     * ‘—MƒT[ƒoˆê——‚ğXV‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½‘—MƒT[ƒo‚Ì‰Ò“®ó‘Ô‚ğ‘—MƒT[ƒoˆê——‚ÉXV‚·‚éB
+     * é€ä¿¡ã‚µãƒ¼ãƒä¸€è¦§ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸé€ä¿¡ã‚µãƒ¼ãƒã®ç¨¼å‹•çŠ¶æ…‹ã‚’é€ä¿¡ã‚µãƒ¼ãƒä¸€è¦§ã«æ›´æ–°ã™ã‚‹ã€‚
      *
-     * @param msid ƒT[ƒo–¼
-     * @param keepAlive ‰Ò“®ó‘Ô
+     * @param msid ã‚µãƒ¼ãƒå
+     * @param keepAlive ç¨¼å‹•çŠ¶æ…‹
      */
     protected void updateTblStructure(Object msid, boolean keepAlive){
         synchronized(mSyncObj){
             Boolean bret = (Boolean)mServerTbl.get(msid);
             if(bret != null){
                 if(!bret.booleanValue() && keepAlive){
-                    //•œŠˆII
+                    //å¾©æ´»ï¼ï¼
                     if(isOutputAliveLogMessage){
                         getLogger().write(aliveLogMessageId, msid);
                     }
                 }
                 if(bret.booleanValue() && !keepAlive){
-                    //’â~
+                    //åœæ­¢
                     if(isOutputDeadLogMessage){
                         getLogger().write(deadLogMessageId, msid);
                     }
@@ -247,14 +247,14 @@ public class KeepAliveDaemonService extends ServiceBase
         }
     }
     
-    // QueryKeepAlive‚ÌJavaDoc
+    // QueryKeepAliveã®JavaDoc
     public Map getKeepAliveMap(){
         synchronized(mSyncObj){
             return (Map)mServerTbl.clone();
         }
     }
     
-    // QueryKeepAlive‚ÌJavaDoc
+    // QueryKeepAliveã®JavaDoc
     public void updateTbl(Object msid, boolean keepAlive) {
         synchronized(mSyncObj) {
             Boolean bret = (Boolean)mServerTbl.get(msid);
@@ -264,7 +264,7 @@ public class KeepAliveDaemonService extends ServiceBase
         }
     }
     
-    // QueryKeepAlive‚ÌJavaDoc
+    // QueryKeepAliveã®JavaDoc
     public List getPriolityAry(){
         CsvArrayList ret = new CsvArrayList();
         synchronized(mSyncObj){
@@ -279,7 +279,7 @@ public class KeepAliveDaemonService extends ServiceBase
         return ret;
     }
     
-    // QueryKeepAlive‚ÌJavaDoc
+    // QueryKeepAliveã®JavaDoc
     public List getPriolityAry(Set available){
         synchronized(mSyncObj){
             List ret = getPriolityAry();
@@ -293,7 +293,7 @@ public class KeepAliveDaemonService extends ServiceBase
         }
     }
     
-    // QueryKeepAlive‚ÌJavaDoc
+    // QueryKeepAliveã®JavaDoc
     public List getRoundrobinAry() {
         CsvArrayList ret = new CsvArrayList() ;
         synchronized(mSyncObj) {
@@ -319,7 +319,7 @@ public class KeepAliveDaemonService extends ServiceBase
         return ret;
     }
     
-    // QueryKeepAlive‚ÌJavaDoc
+    // QueryKeepAliveã®JavaDoc
     public List getRoundrobinAry(Set available) {
         synchronized(mSyncObj) {
             List ret = getRoundrobinAry();

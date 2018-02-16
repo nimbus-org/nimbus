@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.codemaster;
 import java.util.*;
 
 /**
- * ƒR[ƒhƒ}ƒXƒ^XVƒL[B<p>
+ * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,17 +43,17 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     private static final long serialVersionUID = -4013884085932487915L;
     
     /**
-     * XVƒ^ƒCƒv ’Ç‰ÁB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ— è¿½åŠ ã€‚<p>
      */
     public static final int UPDATE_TYPE_ADD = 1;
     
     /**
-     * XVƒ^ƒCƒv •ÏXB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ— å¤‰æ›´ã€‚<p>
      */
     public static final int UPDATE_TYPE_UPDATE = 2;
     
     /**
-     * XVƒ^ƒCƒv íœB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ— å‰Šé™¤ã€‚<p>
      */
     public static final int UPDATE_TYPE_REMOVE = 3;
     
@@ -62,9 +62,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     private Object input;
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒL[‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚­ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public Object getKey(int index){
         if(index < 0 || keyMap == null || keyMap.size() <= index){
@@ -76,9 +76,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒL[‚Ì–¼‘O
+     * @param name ã‚­ãƒ¼ã®åå‰
      */
     public Object getKey(String name){
         if(keyMap == null){
@@ -88,9 +88,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚Ì”z—ñ
+     * @return ã‚­ãƒ¼ã®é…åˆ—
      */
     public Object[] getKeyArray(){
         if(keyMap == null || keyMap.size() == 0){
@@ -100,9 +100,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÌƒŠƒXƒg
+     * @return ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆ
      */
     public List getKeyList(){
         if(keyMap == null || keyMap.size() == 0){
@@ -112,9 +112,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[–¼‚ÆƒL[‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼åã¨ã‚­ãƒ¼ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[–¼‚ÆƒL[‚Ìƒ}ƒbƒv
+     * @return ã‚­ãƒ¼åã¨ã‚­ãƒ¼ã®ãƒãƒƒãƒ—
      */
     public Map getKeyMap(){
         if(keyMap == null || keyMap.size() == 0){
@@ -124,18 +124,18 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚Ì”
+     * @return ã‚­ãƒ¼ã®æ•°
      */
     public int getKeySize(){
         return keyMap == null ? 0 : keyMap.size();
     }
     
     /**
-     * ƒL[‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys ƒL[‚Ì”z—ñ
+     * @param keys ã‚­ãƒ¼ã®é…åˆ—
      */
     public void setKeyArray(Object[] keys){
         if(keys == null || keys.length == 0){
@@ -153,9 +153,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚ÌƒŠƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys ƒL[‚ÌƒŠƒXƒg
+     * @param keys ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆ
      */
     public void setKeyList(List keys){
         if(keys == null || keys.size() == 0){
@@ -173,9 +173,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[–¼‚ÆƒL[‚Ìƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼åã¨ã‚­ãƒ¼ã®ãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keyMap ƒL[–¼‚ÆƒL[‚Ìƒ}ƒbƒv
+     * @param keyMap ã‚­ãƒ¼åã¨ã‚­ãƒ¼ã®ãƒãƒƒãƒ—
      */
     public void setKeyMap(Map keyMap){
         if(keyMap == null){
@@ -191,9 +191,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
+     * @param key ã‚­ãƒ¼
      */
     public void addKey(Object key){
         if(keyMap == null){
@@ -203,9 +203,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚ğíœ‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒL[‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚­ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void removeKey(int index){
         if(keyMap == null || keyMap.size() <= index){
@@ -217,10 +217,10 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[–¼‚ğ‚Á‚½ƒL[‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚­ãƒ¼åã‚’æŒã£ãŸã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒL[‚Ì–¼‘O
-     * @param key ƒL[
+     * @param name ã‚­ãƒ¼ã®åå‰
+     * @param key ã‚­ãƒ¼
      */
     public void addKey(String name, Object key){
         if(keyMap == null){
@@ -230,9 +230,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒL[‚ğíœ‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒL[‚Ì–¼‘O
+     * @param name ã‚­ãƒ¼ã®åå‰
      */
     public void removeKey(String name){
         if(keyMap == null){
@@ -242,75 +242,75 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * XVƒ^ƒCƒv‚ğ’Ç‰Á‚É‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ã‚’è¿½åŠ ã«ã™ã‚‹ã€‚<p>
      */
     public void add(){
         updateType = UPDATE_TYPE_ADD;
     }
     
     /**
-     * XVƒ^ƒCƒv‚ğ•ÏX‚É‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ã‚’å¤‰æ›´ã«ã™ã‚‹ã€‚<p>
      */
     public void update(){
         updateType = UPDATE_TYPE_UPDATE;
     }
     
     /**
-     * XVƒ^ƒCƒv‚ğíœ‚É‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ã‚’å‰Šé™¤ã«ã™ã‚‹ã€‚<p>
      */
     public void remove(){
         updateType = UPDATE_TYPE_REMOVE;
     }
     
     /**
-     * XVƒ^ƒCƒv‚ª’Ç‰Á‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ãŒè¿½åŠ ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return XVƒ^ƒCƒv‚ª’Ç‰Á‚È‚çtrue
+     * @return æ›´æ–°ã‚¿ã‚¤ãƒ—ãŒè¿½åŠ ãªã‚‰true
      */
     public boolean isAdd(){
         return updateType == UPDATE_TYPE_ADD;
     }
     
     /**
-     * XVƒ^ƒCƒv‚ª•ÏX‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ãŒå¤‰æ›´ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return XVƒ^ƒCƒv‚ª•ÏX‚È‚çtrue
+     * @return æ›´æ–°ã‚¿ã‚¤ãƒ—ãŒå¤‰æ›´ãªã‚‰true
      */
     public boolean isUpdate(){
         return updateType == UPDATE_TYPE_UPDATE;
     }
     
     /**
-     * XVƒ^ƒCƒv‚ªíœ‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ãŒå‰Šé™¤ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return XVƒ^ƒCƒv‚ªíœ‚È‚çtrue
+     * @return æ›´æ–°ã‚¿ã‚¤ãƒ—ãŒå‰Šé™¤ãªã‚‰true
      */
     public boolean isRemove(){
         return updateType == UPDATE_TYPE_REMOVE;
     }
     
     /**
-     * XVˆ——p‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * æ›´æ–°å‡¦ç†ç”¨ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param in “ü—ÍƒIƒuƒWƒFƒNƒg
+     * @param in å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setInput(Object in){
         input = in;
     }
     
     /**
-     * XVˆ——p‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * æ›´æ–°å‡¦ç†ç”¨ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍƒIƒuƒWƒFƒNƒg
+     * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getInput(){
         return input;
     }
     
     /**
-     * XVƒ^ƒCƒv‚ğİ’è‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type XVƒ^ƒCƒv
+     * @param type æ›´æ–°ã‚¿ã‚¤ãƒ—
      * @see #UPDATE_TYPE_ADD
      * @see #UPDATE_TYPE_UPDATE
      * @see #UPDATE_TYPE_REMOVE
@@ -320,9 +320,9 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * XVƒ^ƒCƒv‚ğæ“¾‚·‚éB<p>
+     * æ›´æ–°ã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return XVƒ^ƒCƒv
+     * @return æ›´æ–°ã‚¿ã‚¤ãƒ—
      * @see #UPDATE_TYPE_ADD
      * @see #UPDATE_TYPE_UPDATE
      * @see #UPDATE_TYPE_REMOVE
@@ -332,7 +332,7 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Ì“à—e‚ğƒNƒŠƒA‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å†…å®¹ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         if(keyMap != null){
@@ -343,10 +343,10 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‚·‚éƒIƒuƒWƒFƒNƒg
-     * @return “™‚µ‚¢ê‡‚Ítrue
+     * @param obj æ¯”è¼ƒã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç­‰ã—ã„å ´åˆã¯true
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -367,18 +367,18 @@ public class CodeMasterUpdateKey implements java.io.Serializable{
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ÌƒnƒbƒVƒ…ƒR[ƒh’l‚ğ•Ô‚·B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰å€¤ã‚’è¿”ã™ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…ƒR[ƒh
+     * @return ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰
      */
     public int hashCode(){
         return keyMap == null ? 0 : keyMap.hashCode();
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚Ì•¶š—ñ•\Œ»‚ğ•Ô‚·B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ–‡å­—åˆ—è¡¨ç¾ã‚’è¿”ã™ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder(super.toString());

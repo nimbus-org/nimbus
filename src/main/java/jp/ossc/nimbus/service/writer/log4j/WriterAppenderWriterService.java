@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.writer.*;
 
 /**
- * Log4J‚ÌWriterAppender‚ğg‚Á‚½MessageWriterƒT[ƒrƒXB<p>
+ * Log4Jã®WriterAppenderã‚’ä½¿ã£ãŸMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -54,17 +54,17 @@ public class WriterAppenderWriterService extends ServiceBase
     private boolean isSynchronized;
     
     /**
-     * LoggingEvent‚ÌƒL[‚Æ‚È‚éLoggerƒIƒuƒWƒFƒNƒgB<p>
+     * LoggingEventã®ã‚­ãƒ¼ã¨ãªã‚‹Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Logger logger;
     
     /**
-     * ƒtƒ@ƒCƒ‹o—Í‚ğs‚¤ WriterAppender ƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã‚’è¡Œã† WriterAppender ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected WriterAppender appender;
     
     /**
-     * ƒtƒ@ƒCƒ‹o—Í‚ÌƒŒƒCƒAƒEƒg‚ğŒˆ‚ß‚éLayoutƒIƒuƒWƒFƒNƒgB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã®ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’æ±ºã‚ã‚‹Layoutã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Layout layout = new Layout(){
         private final StringBuilder sbuf = new StringBuilder(128);
@@ -88,65 +88,65 @@ public class WriterAppenderWriterService extends ServiceBase
     };
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public WriterAppenderWriterService(){
         super();
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public void setImmediateFlush(boolean flush){
         isImmediateFlush = flush;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public boolean isImmediateFlush(){
         return isImmediateFlush;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public void setEncoding(String encoding){
         this.encoding = encoding;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public String getEncoding(){
         return encoding;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public void setHeader(String header){
         this.header = header;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public String getHeader(){
         return header;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public void setFooter(String footer){
         this.footer = footer;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public String getFooter(){
         return footer;
     }
     
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public boolean isSynchronized(){
         return isSynchronized;
     }
-    // WriterAppenderWriterServiceMBean‚ÌJavaDoc
+    // WriterAppenderWriterServiceMBeanã®JavaDoc
     public void setSynchronized(boolean isSynch){
         isSynchronized = isSynch;
     }
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         logger = createLogger();
@@ -156,7 +156,7 @@ public class WriterAppenderWriterService extends ServiceBase
     }
     
     /**
-     * LoggerƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * Loggerã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     protected Logger createLogger(){
         return Logger.getLogger(
@@ -165,18 +165,18 @@ public class WriterAppenderWriterService extends ServiceBase
     }
     
     /**
-     * WriterAppenderƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * WriterAppenderã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @exception Exception WriterAppender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception WriterAppenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected WriterAppender createWriterAppender() throws Exception{
         return new WriterAppender();
     }
     
     /**
-     * WriterAppender‚ğ‰Šú‰»‚·‚éB<p>
+     * WriterAppenderã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception WriterAppender‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception Exception WriterAppenderã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initWriterAppender(WriterAppender appender) throws Exception{
         appender.setLayout(layout);
@@ -187,7 +187,7 @@ public class WriterAppenderWriterService extends ServiceBase
     }
     
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      */
     public void stopService(){
         appender.close();
@@ -195,15 +195,15 @@ public class WriterAppenderWriterService extends ServiceBase
     }
     
     /**
-     * o—Íƒtƒ@ƒCƒ‹‚ÌƒŒƒCƒAƒEƒg‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param layout ƒŒƒCƒAƒEƒg
+     * @param layout ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ
      */
     public void setLayout(Layout layout){
         this.layout = layout;
     }
     
-    // MessageWriter‚ÌJavaDoc
+    // MessageWriterã®JavaDoc
     public void write(WritableRecord rec){
         if(isSynchronized){
             synchronized(this){

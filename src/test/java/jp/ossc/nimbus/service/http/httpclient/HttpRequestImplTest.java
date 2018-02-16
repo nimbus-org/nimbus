@@ -28,31 +28,31 @@ public class HttpRequestImplTest extends TestCase {
 
 
 	/**
-	 * HttpRequest‚Éƒwƒbƒ_î•ñ‚ğİ’è‚·‚éƒeƒXƒgB
+	 * HttpRequestã«ãƒ˜ãƒƒãƒ€æƒ…å ±ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µAHttpClientFactoryServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>RequestContentTypeFapplication/xml</li>
-	 * <li>RequestCharacterEncodingFShift_JIS</li>
-	 * <li>RequestStreamConverterServiceNameF#DataSetXMLConverter</li>
-	 * <li>ResponseStreamConverterServiceNameF#ResponseStreamConverter</li>
-	 * <li>ResponseHeadersFContentType=application/xml</li>
-	 * <li>ProxyF#localhost:8280</li>
-	 * <li>˜_—ƒAƒNƒVƒ‡ƒ“–¼"login"‚ÌƒŠƒNƒGƒXƒgî•ñ‚ğ’è‹`</li>
-	 * <li>HttpClientFactoryService#createHttpClient()‚ğÀs‚µAHttpClient‚ğ¶¬</li>
-	 * <li>HttpRequestImpl#createRequest(˜_—ƒAƒNƒVƒ‡ƒ“–¼)‚ğÀs‚µAHttpRequest‚ğ¶¬</li>
-	 * <li>‘—M‚·‚éƒf[ƒ^ƒZƒbƒg‚ğŸ‚Ì“à—e‚Å¶¬‚µAHttpRequest#setObject()‚ÅƒZƒbƒg<BR>
-	 * ƒXƒL[ƒ}F:name,java.lang.String,,,\n:age,int,,,<BR>
-	 * ’l@@@Fname=hoge,age=25 </li>
-	 * <li>¶¬‚µ‚½HttpRequest‚É‘Î‚µ‚ÄsetContentType()‚ğÀs‚µAContentTypeƒwƒbƒ_î•ñİ’è</li>
-	 * <li>¶¬‚µ‚½HttpRequest‚É‘Î‚µ‚ÄsetHeader(),addHeader()‚ğÀs‚µƒwƒbƒ_î•ñİ’è</li>
-	 * <li>¶¬‚µ‚½HttpRequest‚ğw’è‚µ‚ÄAHttpClientImpl#executeRequest(request)‚ğÀs</li>
+	 * <li>æ¬¡ã®å†…å®¹ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã€HttpClientFactoryServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RequestContentTypeï¼šapplication/xml</li>
+	 * <li>RequestCharacterEncodingï¼šShift_JIS</li>
+	 * <li>RequestStreamConverterServiceNameï¼š#DataSetXMLConverter</li>
+	 * <li>ResponseStreamConverterServiceNameï¼š#ResponseStreamConverter</li>
+	 * <li>ResponseHeadersï¼šContentType=application/xml</li>
+	 * <li>Proxyï¼š#localhost:8280</li>
+	 * <li>è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å"login"ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’å®šç¾©</li>
+	 * <li>HttpClientFactoryService#createHttpClient()ã‚’å®Ÿè¡Œã—ã€HttpClientã‚’ç”Ÿæˆ</li>
+	 * <li>HttpRequestImpl#createRequest(è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å)ã‚’å®Ÿè¡Œã—ã€HttpRequestã‚’ç”Ÿæˆ</li>
+	 * <li>é€ä¿¡ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’æ¬¡ã®å†…å®¹ã§ç”Ÿæˆã—ã€HttpRequest#setObject()ã§ã‚»ãƒƒãƒˆ<BR>
+	 * ã‚¹ã‚­ãƒ¼ãƒï¼š:name,java.lang.String,,,\n:age,int,,,<BR>
+	 * å€¤ã€€ã€€ã€€ï¼šname=hoge,age=25 </li>
+	 * <li>ç”Ÿæˆã—ãŸHttpRequestã«å¯¾ã—ã¦setContentType()ã‚’å®Ÿè¡Œã—ã€ContentTypeãƒ˜ãƒƒãƒ€æƒ…å ±è¨­å®š</li>
+	 * <li>ç”Ÿæˆã—ãŸHttpRequestã«å¯¾ã—ã¦setHeader(),addHeader()ã‚’å®Ÿè¡Œã—ãƒ˜ãƒƒãƒ€æƒ…å ±è¨­å®š</li>
+	 * <li>ç”Ÿæˆã—ãŸHttpRequestã‚’æŒ‡å®šã—ã¦ã€HttpClientImpl#executeRequest(request)ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>setContentType()‚Åİ’è‚µ‚½ƒwƒbƒ_î•ñ‚ª—Dæ‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>ssetHeader(),addHeader()İ’è‚µ‚½ƒwƒbƒ_î•ñ‚ª”½‰f‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>setContentType()ã§è¨­å®šã—ãŸãƒ˜ãƒƒãƒ€æƒ…å ±ãŒå„ªå…ˆã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ssetHeader(),addHeader()è¨­å®šã—ãŸãƒ˜ãƒƒãƒ€æƒ…å ±ãŒåæ˜ ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRequestSetHeader() {
@@ -78,12 +78,12 @@ public class HttpRequestImplTest extends TestCase {
 	        HttpRequestImpl request = (HttpRequestImpl)factory.createRequest("login");
 //	        request.setObject(requestDs);
 	        
-	        //ƒwƒbƒ_î•ñİ’è
+	        //ãƒ˜ãƒƒãƒ€æƒ…å ±è¨­å®š
 	        request.setContentType("text/html");
 	        request.addHeader("Accept","text/html");
 	        request.addHeader("Accept","text/html");
 	        request.setHeader("Accept-Language","jp");
-	        //settr,getter‚Ì“®ìŠm”F
+	        //settr,getterã®å‹•ä½œç¢ºèª
 	        request.setHttpVersion("1.1");
 	        assertEquals("1.1", request.getHttpVersion());
 	        request.setDoAuthentication(true);
@@ -100,8 +100,8 @@ public class HttpRequestImplTest extends TestCase {
 
 			client.executeRequest(request);
 			
-			/*ProxyƒeƒXƒg—pƒvƒƒOƒ‰ƒ€(jp.ossc.nimbus.service.http.proxy.TestHttpProcessService)
-			 * ‚Ìo—Íƒtƒ@ƒCƒ‹‚Ì“à—e‚ğŠm”F‚µAHTTPƒŠƒNƒGƒXƒgƒf[ƒ^‚ğŒŸØ
+			/*Proxyãƒ†ã‚¹ãƒˆç”¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ (jp.ossc.nimbus.service.http.proxy.TestHttpProcessService)
+			 * ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’ç¢ºèªã—ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’æ¤œè¨¼
 			 */
 			
 			BufferedReader br = new BufferedReader(
@@ -109,7 +109,7 @@ public class HttpRequestImplTest extends TestCase {
 			
 			String s;
 			StringBuffer sb = new StringBuffer();
-			//Requestƒwƒbƒ_‚ÌŒŸØ
+			//Requestãƒ˜ãƒƒãƒ€ã®æ¤œè¨¼
 			while((s = br.readLine()) != null){
 				if(s.startsWith("Content-Type:")){
 					assertTrue(s.endsWith("text/html;charset=Shift_JIS"));
@@ -123,18 +123,18 @@ public class HttpRequestImplTest extends TestCase {
 				sb.append(s);				
 			}
 			br.close();
-			//DataSet“à—e‚ÌŒŸØ
+			//DataSetå†…å®¹ã®æ¤œè¨¼
 			assertTrue(sb.toString().endsWith("sectionCode=022&account=059641&password=059641"));
 
 		} catch (HttpRequestCreateException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-clientTest2.xml");
@@ -143,26 +143,26 @@ public class HttpRequestImplTest extends TestCase {
 
 
 	/**
-	 * HttpRequest‚Éƒpƒ‰ƒ[ƒ^î•ñA“ü—ÍƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚éƒeƒXƒgB
+	 * HttpRequestã«ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±ã€å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µAHttpClientFactoryServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>RequestContentTypeFapplication/xml</li>
-	 * <li>RequestCharacterEncodingFShift_JIS</li>
-	 * <li>RequestStreamConverterServiceNameF#DataSetXMLConverter</li>
-	 * <li>ResponseStreamConverterServiceNameF#ResponseStreamConverter</li>
-	 * <li>ResponseHeadersFContentType=application/xml</li>
-	 * <li>ProxyF#localhost:8280</li>
-	 * <li>˜_—ƒAƒNƒVƒ‡ƒ“–¼"login"‚ÌƒŠƒNƒGƒXƒgî•ñ‚ğ’è‹`</li>
-	 * <li>HttpClientFactoryService#createHttpClient()‚ğÀs‚µAHttpClient‚ğ¶¬</li>
-	 * <li>HttpRequestImpl#createRequest(˜_—ƒAƒNƒVƒ‡ƒ“–¼)‚ğÀs‚µAHttpRequest‚ğ¶¬</li>
-	 * <li>‘—M‚·‚éƒf[ƒ^ƒZƒbƒg‚ğXML“ü—ÍƒXƒgƒŠ[ƒ€‚Å¶¬‚µAHttpRequest#setInputStream()‚ÅƒZƒbƒg<BR>
-	 * <li>¶¬‚µ‚½HttpRequest‚É‘Î‚µ‚ÄsetParameter(),setParameter()‚ğÀs‚µAƒpƒ‰ƒ[ƒ^î•ñİ’è</li>
+	 * <li>æ¬¡ã®å†…å®¹ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã€HttpClientFactoryServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RequestContentTypeï¼šapplication/xml</li>
+	 * <li>RequestCharacterEncodingï¼šShift_JIS</li>
+	 * <li>RequestStreamConverterServiceNameï¼š#DataSetXMLConverter</li>
+	 * <li>ResponseStreamConverterServiceNameï¼š#ResponseStreamConverter</li>
+	 * <li>ResponseHeadersï¼šContentType=application/xml</li>
+	 * <li>Proxyï¼š#localhost:8280</li>
+	 * <li>è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å"login"ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’å®šç¾©</li>
+	 * <li>HttpClientFactoryService#createHttpClient()ã‚’å®Ÿè¡Œã—ã€HttpClientã‚’ç”Ÿæˆ</li>
+	 * <li>HttpRequestImpl#createRequest(è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å)ã‚’å®Ÿè¡Œã—ã€HttpRequestã‚’ç”Ÿæˆ</li>
+	 * <li>é€ä¿¡ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’XMLå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§ç”Ÿæˆã—ã€HttpRequest#setInputStream()ã§ã‚»ãƒƒãƒˆ<BR>
+	 * <li>ç”Ÿæˆã—ãŸHttpRequestã«å¯¾ã—ã¦setParameter(),setParameter()ã‚’å®Ÿè¡Œã—ã€ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±è¨­å®š</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>İ’è‚µ‚½ƒpƒ‰ƒ[ƒ^î•ñA“ü—ÍƒXƒgƒŠ[ƒ€‚ª³‚µ‚­”½‰f‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>è¨­å®šã—ãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±ã€å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒæ­£ã—ãåæ˜ ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRequestSetParamQuely() {
@@ -175,14 +175,14 @@ public class HttpRequestImplTest extends TestCase {
 					.getServiceObject("HttpClientFactory");
 			HttpClientImpl client = (HttpClientImpl) factory.createHttpClient();
 
-	        //“ü—ÍƒXƒgƒŠ[ƒ€‚ğİ’è
+	        //å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®š
 			String inxml = "TEST1234567890";
 			InputStream is = new ByteArrayInputStream(inxml.getBytes());
 	        
 	        HttpRequestImpl request = (HttpRequestImpl)factory.createRequest("login");
 	        request.setInputStream(is);
 	        
-	        //ƒpƒ‰ƒ[ƒ^î•ñİ’è
+	        //ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±è¨­å®š
 	        request.setContentType("text/html");
 	        request.setParameter("nameA","valueA");
 	        request.setParameter("nameA","valueB");
@@ -190,7 +190,7 @@ public class HttpRequestImplTest extends TestCase {
 	        String[] vals = new String[]{"valueB1","valueB2"};
 	        request.setParameters("nameB", vals);
 	        
-	        //ƒpƒ‰ƒ[ƒ^î•ñŠm”F
+	        //ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±ç¢ºèª
 	        assertEquals("valueA", request.getParameter("nameA"));
 	        String[] getvals = request.getParameters("nameB");
 	        assertEquals(vals[0], getvals[0]);
@@ -200,9 +200,9 @@ public class HttpRequestImplTest extends TestCase {
 
 			client.executeRequest(request);
 			
-	        //“ü—ÍƒXƒgƒŠ[ƒ€‚ª³‚µ‚­‘—M‚³‚ê‚½‚©‚ÌŠm”F
-			/*ProxyƒeƒXƒg—pƒvƒƒOƒ‰ƒ€(jp.ossc.nimbus.service.http.proxy.TestHttpProcessService)
-			 * ‚Ìo—Íƒtƒ@ƒCƒ‹‚Ì“à—e‚ğŠm”F‚µAHTTPƒŠƒNƒGƒXƒgƒf[ƒ^‚ğŒŸØ
+	        //å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒæ­£ã—ãé€ä¿¡ã•ã‚ŒãŸã‹ã®ç¢ºèª
+			/*Proxyãƒ†ã‚¹ãƒˆç”¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ (jp.ossc.nimbus.service.http.proxy.TestHttpProcessService)
+			 * ã®å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’ç¢ºèªã—ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’æ¤œè¨¼
 			 */
 			
 			BufferedReader br = new BufferedReader(
@@ -210,7 +210,7 @@ public class HttpRequestImplTest extends TestCase {
 			
 			String s;
 			StringBuffer sb = new StringBuffer();
-			//Requestƒwƒbƒ_‚ÌŒŸØ
+			//Requestãƒ˜ãƒƒãƒ€ã®æ¤œè¨¼
 			while((s = br.readLine()) != null){
 				sb.append(s);				
 			}
@@ -219,13 +219,13 @@ public class HttpRequestImplTest extends TestCase {
 
 		} catch (HttpRequestCreateException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-clientTest2.xml");

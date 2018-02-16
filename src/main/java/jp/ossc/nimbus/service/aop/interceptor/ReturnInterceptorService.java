@@ -46,8 +46,8 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.aop.invoker.MethodReflectionCallInvokerService;
 
 /**
- * ���^�[���C���^�[�Z�v�^�B<p>
- * �ȉ��ɁA�Ăяo���ꂽ���\�b�h�̑�P������"hoge"�������ꍇ��100��Ԃ��A"fuga"�������ꍇ��200��Ԃ����^�[���C���^�[�Z�v�^�̃T�[�r�X��`��������B<br>
+ * リターンインターセプタ。<p>
+ * 以下に、呼び出されたメソッドの第１引数が"hoge"だった場合は100を返し、"fuga"だった場合は200を返すリターンインターセプタのサービス定義例を示す。<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -193,13 +193,13 @@ public class ReturnInterceptorService extends ServiceBase
     }
     
     /**
-     * �Y������I�u�W�F�N�g��Ԃ��B<p>
-     * �T�[�r�X���J�n����Ă��Ȃ��ꍇ�́A���̃C���^�[�Z�v�^���Ăяo���B<br>
+     * 該当するオブジェクトを返す。<p>
+     * サービスが開始されていない場合は、次のインターセプタを呼び出す。<br>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @param chain ���̃C���^�[�Z�v�^���Ăяo�����߂̃`�F�[��
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ�A�܂��͂��̃C���^�[�Z�v�^�ŔC�ӂ̗�O�����������ꍇ�B�A���A�{���Ăяo����鏈����throw���Ȃ�RuntimeException�ȊO�̗�O��throw���Ă��A�Ăяo�����ɂ͓`�d����Ȃ��B
+     * @param context 呼び出しのコンテキスト情報
+     * @param chain 次のインターセプタを呼び出すためのチェーン
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合、またはこのインターセプタで任意の例外が発生した場合。但し、本来呼び出される処理がthrowしないRuntimeException以外の例外をthrowしても、呼び出し元には伝播されない。
      */
     public Object invoke(
         InvocationContext context,
@@ -349,7 +349,7 @@ public class ReturnInterceptorService extends ServiceBase
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // �N����Ȃ��͂�
+                // 起こらないはず
             }
         }
     }

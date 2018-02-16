@@ -42,7 +42,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * •ªUQueueB<p>
+ * åˆ†æ•£Queueã€‚<p>
  * 
  * @author M.Takata
  */
@@ -65,7 +65,7 @@ public class DistributedQueueService extends ServiceBase
     protected SynchronizeMonitor peekMonitor = new WaitSynchronizeMonitor();
     
     /**
-     * ‹­§I—¹ƒtƒ‰ƒOB<p>
+     * å¼·åˆ¶çµ‚äº†ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected volatile boolean fourceEndFlg = false;
     
@@ -78,55 +78,55 @@ public class DistributedQueueService extends ServiceBase
     protected Class synchronizeMonitorClass = WaitSynchronizeMonitor.class;
     protected Random random = new Random();
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public void setSynchronizeMonitorClass(Class clazz){
         synchronizeMonitorClass = clazz;
     }
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public Class getSynchronizeMonitorClass(){
         return synchronizeMonitorClass;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public void setDistributedQueueSelectorServiceName(ServiceName name){
         distributedQueueSelectorServiceName = name;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public ServiceName getDistributedQueueSelectorServiceName(){
         return distributedQueueSelectorServiceName;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public void setSleepTime(long millis){
         sleepTime = millis;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public long getSleepTime(){
         return sleepTime;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public void setMaxThresholdSize(int size){
         maxThresholdSize = size;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public int getMaxThresholdSize(){
         return maxThresholdSize;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public boolean isSafeGetOrder(){
         return isSafeGetOrder;
     }
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public void setSafeGetOrder(boolean isSafe){
         isSafeGetOrder = isSafe;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public long getCount(){
         return count;
     }
@@ -143,29 +143,29 @@ public class DistributedQueueService extends ServiceBase
         return result;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public long getCountDelta(){
         long delta = countDelta;
         countDelta = 0;
         return delta;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public long getLastPushedTimeMillis(){
         return lastPushedTime;
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public Date getLastPushedTime(){
         return new Date(lastPushedTime);
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public long getDepth(){
         return size();
     }
     
-    // DistributedQueueServiceMBean‚ÌJavaDoc
+    // DistributedQueueServiceMBeanã®JavaDoc
     public long getDepthDelta(){
         long depth = size();
         
@@ -312,12 +312,12 @@ public class DistributedQueueService extends ServiceBase
                 peekMonitor.initMonitor();
             }
             Queue queue = null;
-            // ‹­§I—¹‚Å‚È‚¢ê‡
+            // å¼·åˆ¶çµ‚äº†ã§ãªã„å ´åˆ
             while(!fourceEndFlg){
-                // ƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚éê‡
+                // ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ã‚‹å ´åˆ
                 if(size() > 0){
-                    // QÆ‚·‚é‚¾‚¯‚Ìê‡
-                    // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚ªˆê”ÔÅ‰‚É‘Ò‚Á‚Ä‚¢‚½ê‡
+                    // å‚ç…§ã™ã‚‹ã ã‘ã®å ´åˆ
+                    // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒä¸€ç•ªæœ€åˆã«å¾…ã£ã¦ã„ãŸå ´åˆ
                     if(!isRemove
                         || !isSafeGetOrder
                         || getMonitor.isFirst()
@@ -333,8 +333,8 @@ public class DistributedQueueService extends ServiceBase
                             getMonitor.releaseMonitor();
                         }
                         
-                        // QÆ‚Å‚Í‚È‚­AƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚ÄA
-                        // Ÿ‚É‘Ò‚Á‚Ä‚¢‚éƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                        // å‚ç…§ã§ã¯ãªãã€ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ã¦ã€
+                        // æ¬¡ã«å¾…ã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                         if(isRemove && size() > 0 && getMonitor.isWait()){
                             if(isSafeGetOrder){
                                 getMonitor.notifyMonitor();
@@ -349,23 +349,23 @@ public class DistributedQueueService extends ServiceBase
                         }
                         return ret;
                     }
-                    // QÆ‚Å‚Í‚È‚­A‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                    // å‚ç…§ã§ã¯ãªãã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                     else if(getMonitor.isWait()){
-                        // ˆê”ÔÅ‰‚É‘Ò‚Á‚Ä‚¢‚éƒXƒŒƒbƒh‚ğ‹N‚±‚·
+                        // ä¸€ç•ªæœ€åˆã«å¾…ã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·ã“ã™
                         getMonitor.notifyMonitor();
                     }
                 }
                 
-                // ƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚È‚¢ê‡
-                // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                // ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ãªã„å ´åˆ
+                // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                 
-                // ‹­§I—¹‚Ü‚½‚Íƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+                // å¼·åˆ¶çµ‚äº†ã¾ãŸã¯ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
                 if(fourceEndFlg || timeOutMs == 0 || (timeOutMs > 0 && timeOutMs <= processTime)){
                     break;
                 }
                 
-                // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚ ‚éê‡‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚Ü‚Åsleep‚·‚é
-                // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚È‚¢ê‡‚ÍAsleepTime•ªsleep‚µ‚Ä‚İ‚é
+                // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒã‚ã‚‹å ´åˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¾ã§sleepã™ã‚‹
+                // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒãªã„å ´åˆã¯ã€sleepTimeåˆ†sleepã—ã¦ã¿ã‚‹
                 long proc = 0;
                 if(timeOutMs >= 0){
                     proc = System.currentTimeMillis();
@@ -393,7 +393,7 @@ public class DistributedQueueService extends ServiceBase
                 }
             }
             
-            // ‹­§I—¹‚Ìê‡
+            // å¼·åˆ¶çµ‚äº†ã®å ´åˆ
             if(fourceEndFlg){
                 queue = getGetQueue();
                 if(queue == null){
@@ -404,7 +404,7 @@ public class DistributedQueueService extends ServiceBase
                     return queue.peek(timeOutMs);
                 }
             }
-            // ƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+            // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
             else{
                 if(isRemove
                     && size() > 0

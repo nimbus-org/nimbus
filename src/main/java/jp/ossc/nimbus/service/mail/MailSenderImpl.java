@@ -35,20 +35,20 @@ import jp.ossc.nimbus.core.*;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/09 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/09 -ã€€H.Nakano
  */
 public class MailSenderImpl 
 	implements MailSender,MailSenderOperator, java.io.Serializable {
 	
     private static final long serialVersionUID = -778867525711484959L;
     
-    /** ‘—Mæ				*/	
+    /** é€ä¿¡å…ˆ				*/	
 	protected String mTo = null;
-	/** ‘—MŒ³				*/	
+	/** é€ä¿¡å…ƒ				*/	
 	protected String mFrom = null;
-	/** Œ–¼				*/	
+	/** ä»¶å				*/	
 	protected String mSubject = null;
-	/** –{•¶				*/	
+	/** æœ¬æ–‡				*/	
 	protected String mBody = null;
 	protected SenderFactoryCallBack mFc ;	
 	protected ServiceName mServerName ;
@@ -87,35 +87,35 @@ public class MailSenderImpl
 		this.mBody = body ;		
 	}
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì‘—Mæ‚ğİ’è‚·‚é<BR>
-	 *	@return		ˆ¶æ
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡å…ˆã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return		å®›å…ˆ
 	 */
 	public String getTo(){
 		return this.mTo ;
 	}
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì‘—MŒ³‚ğİ’è‚·‚é<BR>
-	 *	@return	·ol
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡å…ƒã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return	å·®å‡ºäºº
 	 */
 	public String getFrom(){
 		return this.mFrom;
 	}
 	/**
-	 *	ƒƒbƒZ[ƒW‚ÌŒ–¼‚ğİ’è‚·‚é<BR>
-	 *	@return	Œ–¼
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä»¶åã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return	ä»¶å
 	 */
 	public String getSubject(){
 		return this.mSubject ;
 	}
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì–{•¶‚ğİ’è‚·‚é<BR>
-	 *	@return	–{•¶
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return	æœ¬æ–‡
 	 */
 	public String getBody(){
 		return this.mBody;
 	}
 	/**
-	 *	ƒ[ƒ‹ƒT[ƒo–¼‚ğo—Í‚·‚éB<BR>
+	 *	ãƒ¡ãƒ¼ãƒ«ã‚µãƒ¼ãƒåã‚’å‡ºåŠ›ã™ã‚‹ã€‚<BR>
 	 *	@param	fc 
 	 */
 	public void setFactory(SenderFactoryCallBack fc) {

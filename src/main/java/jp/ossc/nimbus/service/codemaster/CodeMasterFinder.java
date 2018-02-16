@@ -34,57 +34,57 @@ package jp.ossc.nimbus.service.codemaster;
 import jp.ossc.nimbus.lang.ServiceException;
 import java.util.*;
 /**
- * ƒR[ƒhƒ}ƒXƒ^[æ“¾ƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼å–å¾—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface CodeMasterFinder {
 	/**
-	 * Œ»İ“_‚Å‚ÌƒR[ƒhƒ}ƒXƒ^[ƒIƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒv‚ğ•Ô‹p‚·‚é
-	 * @return	ƒR[ƒhƒ}ƒXƒ^[‚Ì“ü‚Á‚½Map
+	 * ç¾åœ¨æ™‚ç‚¹ã§ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ—ã‚’è¿”å´ã™ã‚‹
+	 * @return	ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã®å…¥ã£ãŸMap
 	 * @throws ServiceException
 	 */
 	public Map getCodeMasters() throws ServiceException;
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚é‘SƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ƒR[ƒhƒ}ƒXƒ^‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateAllCodeMasters() throws Exception;
 
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^–¼
-     * @exception Exception ƒR[ƒhƒ}ƒXƒ^‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿å
+     * @exception Exception ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateCodeMaster(String key) throws Exception;
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^–¼
-     * @param updateTime XVBnull‚ğw’è‚µ‚½ê‡‚ÍA‘¦XV
-     * @exception Exception ƒR[ƒhƒ}ƒXƒ^‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿å
+     * @param updateTime æ›´æ–°æ™‚åˆ»ã€‚nullã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€å³æ™‚æ›´æ–°
+     * @exception Exception ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateCodeMaster(String key, Date updateTime) throws Exception;
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^–¼
-     * @param input XV‚É•K—v‚È“ü—ÍBnull‚à‰Â
-     * @param updateTime XVBnull‚ğw’è‚µ‚½ê‡‚ÍA‘¦XV
-     * @exception Exception ƒR[ƒhƒ}ƒXƒ^‚ÌXV‚É¸”s‚µ‚½ê‡
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿å
+     * @param input æ›´æ–°ã«å¿…è¦ãªå…¥åŠ›ã€‚nullã‚‚å¯
+     * @param updateTime æ›´æ–°æ™‚åˆ»ã€‚nullã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€å³æ™‚æ›´æ–°
+     * @exception Exception ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®æ›´æ–°ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void updateCodeMaster(String key, Object input, Date updateTime) throws Exception;
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒR[ƒhƒ}ƒXƒ^–¼‚ÌW‡
+     * @return ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿åã®é›†åˆ
      */
     public Set getCodeMasterNameSet();
 }

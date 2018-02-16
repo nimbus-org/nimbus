@@ -40,10 +40,10 @@ import jp.ossc.nimbus.lang.*;
 import jp.ossc.nimbus.service.cache.*;
 
 /**
- *	JMSTopicƒZƒbƒVƒ‡ƒ“ƒT[ƒrƒX
+ *	JMSTopicã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/24| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class JmsTopicSessionService
 	extends ServiceBase
@@ -51,10 +51,10 @@ public class JmsTopicSessionService
 	
     private static final long serialVersionUID = -4615328544007250967L;
     
-    //ƒƒ“ƒo•Ï”
-	/** JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼ */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mJndiFinderServiceName = null;
-	/** JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX */
+	/** JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
 	private JndiFinder mJndiFinderService = null;
 	/** AcknowledgeMode */
 	private int mAckMode = Session.AUTO_ACKNOWLEDGE;
@@ -62,7 +62,7 @@ public class JmsTopicSessionService
 	private TopicConnectionFactory mtFactory = null;
 	/** TopicConnection */
 	private TopicConnection mtConn = null;
-	/** ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh */
+	/** ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ */
 	private boolean mTransanctionMode = false;
 	private String connectionFactoryName = "";
 	
@@ -71,20 +71,20 @@ public class JmsTopicSessionService
 	private ServiceName connectionCacheMapServiceName;
 	private CacheMap connectionCache;
     
-    /** Ú‘±ƒ†[ƒU[–¼ */
+    /** æ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼å */
     private String mUserName = null;
-    /** Ú‘±ƒ†[ƒU[–¼ */
+    /** æ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼å */
     private String mPassword = null;
 	
 	/**
-	 * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX‚ÌƒZƒbƒ^[
+	 * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param name
 	 */	
 	public void setJndiFinderServiceName(ServiceName name){
 		mJndiFinderServiceName = name;
 	}
 	/**
-	 * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼‚ÌƒQƒbƒ^[
+	 * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚²ãƒƒã‚¿ãƒ¼
 	 */
 	public ServiceName getJndiFinderServiceName(){
 		return mJndiFinderServiceName;
@@ -112,12 +112,12 @@ public class JmsTopicSessionService
     }
 	
 	/**
-	 * ¶¬
+	 * ç”Ÿæˆ
 	 */	
 	public void createService(){
 	}
 	/**
-	 * ŠJn
+	 * é–‹å§‹
 	 */
 	public void startService() throws Exception{
         if(mJndiFinderServiceName != null) {
@@ -131,7 +131,7 @@ public class JmsTopicSessionService
 			mtFactory = (TopicConnectionFactory)mJndiFinderService.lookup(connectionFactoryName);
 		}
 		catch(NamingException e){
-			//lookup‚É¸”s
+			//lookupã«å¤±æ•—
 			throw new ServiceException("00013","Fail to lookup.",e);  //$NON-NLS-1$//$NON-NLS-2$
 		}
 		if(connectionCacheMapServiceName != null){
@@ -147,7 +147,7 @@ public class JmsTopicSessionService
 		}
 	}
 	/**
-	 * ’â~
+	 * åœæ­¢
 	 */
 	public void stopService(){
 	    if(connectionCache != null){
@@ -156,7 +156,7 @@ public class JmsTopicSessionService
 	    }
 	}
 	/**
-	 * ”jŠü
+	 * ç ´æ£„
 	 *
 	 */
 	public void destory(){
@@ -164,7 +164,7 @@ public class JmsTopicSessionService
 	}
 
 	/**
-	 * TopicSession¶¬ƒƒ\ƒbƒh
+	 * TopicSessionç”Ÿæˆãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param key
 	 * @return TransactionObject
 	 */
@@ -198,7 +198,7 @@ public class JmsTopicSessionService
 			try{
 				mtFactory = (TopicConnectionFactory)mJndiFinderService.lookup(connectionFactoryName);
 			}catch(NamingException e2){
-				//lookup‚É¸”s
+				//lookupã«å¤±æ•—
 				throw new ServiceException("00013","Fail to lookup key = "+ connectionFactoryName,e2);  //$NON-NLS-1$//$NON-NLS-2$
 			}
 			if(mtConn == null && connectionCache != null){
@@ -221,48 +221,48 @@ public class JmsTopicSessionService
 			}
 			tSession = con.createTopicSession(mTransanctionMode,mAckMode);
 		}
-		//TopicTransanctionObject‚ğnew‚·‚éB
+		//TopicTransanctionObjectã‚’newã™ã‚‹ã€‚
 		TopicTransanctionResource tranObj = new TopicTransanctionResource(con, tSession);
 		return tranObj;
 	}
 	/**
-	 * Acknowledgeƒ‚[ƒh‚ÌƒZƒbƒ^[
+	 * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setAcknowledgeMode(int mode){
 		if ((mode != Session.AUTO_ACKNOWLEDGE) &&
 			(mode != Session.CLIENT_ACKNOWLEDGE) &&
 			(mode != Session.DUPS_OK_ACKNOWLEDGE)){
-			//—LŒø‚Å‚È‚¢’l‚ªİ’è‚³‚ê‚½ê‡‚È‚É‚à‚µ‚È‚¢B
-			//Œ‹‰Ê‚Æ‚µ‚ÄƒfƒtƒHƒ‹ƒg‚ÌSession.AUTO_ACKNOWLEDGE‚Æ‚È‚éB
+			//æœ‰åŠ¹ã§ãªã„å€¤ãŒè¨­å®šã•ã‚ŒãŸå ´åˆãªã«ã‚‚ã—ãªã„ã€‚
+			//çµæœã¨ã—ã¦ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Session.AUTO_ACKNOWLEDGEã¨ãªã‚‹ã€‚
 		}
 		else{
 			mAckMode = mode;
 		}
 	}
 	/**
-	 * Acknowledgeƒ‚[ƒh‚ÌƒQƒbƒ^[
+	 * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 */
 	public int getAcknowledgeMode(){
 		return mAckMode;
 	}
 	/**
-	 * ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒZƒbƒ^[
+	 * ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setTransanctionMode(boolean mode){
 		mTransanctionMode = mode;
 	}
 	/**
-	 * ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒQƒbƒ^[
+	 * ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 */
 	public boolean getTransanctionMode(){
 		return mTransanctionMode;
 	}
     
     /**
-     * Connection‚ğƒLƒƒƒbƒVƒ…‚µ‚Ä‚¢‚é‚ÉAƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½Connection‚ğclose‚·‚éB<br>
+     * Connectionã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸConnectionã‚’closeã™ã‚‹ã€‚<br>
      *
-     * @param ref íœ‚³‚ê‚éƒLƒƒƒbƒVƒ…QÆ
+     * @param ref å‰Šé™¤ã•ã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         final Connection con = (Connection)ref.get();
@@ -274,29 +274,29 @@ public class JmsTopicSessionService
         }
     }
     /**
-     * JMSÚ‘±‚ÌƒpƒXƒ[ƒh‚ğ–ß‚·
-     * @return mPassword ‚ğ–ß‚µ‚Ü‚·B
+     * JMSæ¥ç¶šæ™‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æˆ»ã™
+     * @return mPassword ã‚’æˆ»ã—ã¾ã™ã€‚
      */
     public String getPassword() {
         return mPassword;
     }
     /**
-     * JMSÚ‘±‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚é
-     * @param password İ’è‚·‚é mPasswordB
+     * JMSæ¥ç¶šæ™‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹
+     * @param password è¨­å®šã™ã‚‹ mPasswordã€‚
      */
     public void setPassword(String password) {
         mPassword = password;
     }
     /**
-     * JMSÚ‘±‚Ìƒ†[ƒU[–¼‚ğ–ß‚·
-     * @return mUserName ‚ğ–ß‚µ‚Ü‚·B
+     * JMSæ¥ç¶šæ™‚ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’æˆ»ã™
+     * @return mUserName ã‚’æˆ»ã—ã¾ã™ã€‚
      */
     public String getUserName() {
         return mUserName;
     }
     /**
-     * JMSÚ‘±‚Ìƒ†[ƒU[–¼‚ğİ’è‚·‚é
-     * @param userName İ’è‚·‚é mUserNameB
+     * JMSæ¥ç¶šæ™‚ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’è¨­å®šã™ã‚‹
+     * @param userName è¨­å®šã™ã‚‹ mUserNameã€‚
      */
     public void setUserName(String userName) {
         mUserName = userName;

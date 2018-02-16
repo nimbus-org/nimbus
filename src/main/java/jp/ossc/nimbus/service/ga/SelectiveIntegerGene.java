@@ -38,42 +38,42 @@ import java.io.ObjectInput;
 import java.io.IOException;
 
 /**
- * ‘I‘ğ“IIntegerŒ^ˆâ“`qB<p>
+ * é¸æŠçš„Integerå‹éºä¼å­ã€‚<p>
  *
  * @author M.Takata
  */
 public class SelectiveIntegerGene extends AbstractGene{
     
     /**
-     * Œğ³í•ÊF•½‹ÏŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šå¹³å‡äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_AVERAGE       = 1;
     
     /**
-     * Œğ³í•ÊF”ÍˆÍ—”Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šç¯„å›²ä¹±æ•°äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_RANDOM_RANGE  = 2;
     
     /**
-     * •ÏˆÙí•ÊFˆê—l•ÏˆÙB<p>
+     * å¤‰ç•°ç¨®åˆ¥ï¼šä¸€æ§˜å¤‰ç•°ã€‚<p>
      */
     public static final int MUTATE_UNIFORM  = 1;
     
     /**
-     * ‘I‘ğ‘ÎÛ‚Æ‚È‚é”’l”z—ñB<p>
+     * é¸æŠå¯¾è±¡ã¨ãªã‚‹æ•°å€¤é…åˆ—ã€‚<p>
      */
     protected int[] selectiveValues;
     
     /**
-     * ”ÍˆÍ—”Œğ³‚Ìê‡‚ÌA”ÍˆÍ‚Ì—V‚ÑB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0.0B<br>
+     * ç¯„å›²ä¹±æ•°äº¤å‰ã®å ´åˆã®ã€ç¯„å›²ã®éŠã³ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0.0ã€‚<br>
      */
     protected float randomRangeMargin = 0.0f;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * Œğ³í•Ê‚ÍAƒfƒtƒHƒ‹ƒg‚ÅA{@link #CROSSOVER_RANDOM_RANGE ”ÍˆÍ—”Œğ³}B
-     * •ÏˆÙí•Ê‚ÍAƒfƒtƒHƒ‹ƒg‚ÅA{@link #MUTATE_UNIFORM ˆê—l•ÏˆÙ}B
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * äº¤å‰ç¨®åˆ¥ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã€{@link #CROSSOVER_RANDOM_RANGE ç¯„å›²ä¹±æ•°äº¤å‰}ã€‚
+     * å¤‰ç•°ç¨®åˆ¥ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã€{@link #MUTATE_UNIFORM ä¸€æ§˜å¤‰ç•°}ã€‚
      */
     public SelectiveIntegerGene(){
         crossoverType = CROSSOVER_RANDOM_RANGE;
@@ -81,9 +81,9 @@ public class SelectiveIntegerGene extends AbstractGene{
     }
     
     /**
-     * ‘I‘ğ‘ÎÛ‚Æ‚È‚é”’l”z—ñ‚ğİ’è‚·‚éB<p>
+     * é¸æŠå¯¾è±¡ã¨ãªã‚‹æ•°å€¤é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param values ‘I‘ğ‘ÎÛ‚Æ‚È‚é”’l”z—ñ
+     * @param values é¸æŠå¯¾è±¡ã¨ãªã‚‹æ•°å€¤é…åˆ—
      */
     public void setSelectiveValues(int[] values){
         selectiveValues = values;
@@ -91,29 +91,29 @@ public class SelectiveIntegerGene extends AbstractGene{
     }
     
     /**
-     * ‘I‘ğ‘ÎÛ‚Æ‚È‚é”’l”z—ñ‚ğæ“¾‚·‚éB<p>
+     * é¸æŠå¯¾è±¡ã¨ãªã‚‹æ•°å€¤é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘I‘ğ‘ÎÛ‚Æ‚È‚é”’l”z—ñ
+     * @return é¸æŠå¯¾è±¡ã¨ãªã‚‹æ•°å€¤é…åˆ—
      */
     public int[] getSelectiveValues(){
         return selectiveValues;
     }
     
     /**
-     * ”ÍˆÍ—”Œğ³‚Ìê‡‚ÌA”ÍˆÍ‚Ì—V‚Ñ‚ğİ’è‚·‚éB<p>
-     * æ‚è‚¤‚é”ÍˆÍ‚É‘Î‚µ‚ÄAw’è‚µ‚½Š„‡‚¾‚¯—V‚Ñ‚ğİ‚¯‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å—V‚Ñ‚È‚µB<br>
+     * ç¯„å›²ä¹±æ•°äº¤å‰ã®å ´åˆã®ã€ç¯„å›²ã®éŠã³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å–ã‚Šã†ã‚‹ç¯„å›²ã«å¯¾ã—ã¦ã€æŒ‡å®šã—ãŸå‰²åˆã ã‘éŠã³ã‚’è¨­ã‘ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§éŠã³ãªã—ã€‚<br>
      * 
-     * @param margin ”ÍˆÍ‚Ì—V‚Ñ
+     * @param margin ç¯„å›²ã®éŠã³
      */
     public void setRandomRangeMargin(float margin){
         randomRangeMargin = margin;
     }
     
     /**
-     * ”ÍˆÍ—”Œğ³‚Ìê‡‚ÌA”ÍˆÍ‚Ì—V‚Ñ‚ğæ“¾‚·‚éB<p>
+     * ç¯„å›²ä¹±æ•°äº¤å‰ã®å ´åˆã®ã€ç¯„å›²ã®éŠã³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ”ÍˆÍ‚Ì—V‚Ñ
+     * @return ç¯„å›²ã®éŠã³
      */
     public float getRandomRangeMargin(){
         return randomRangeMargin;

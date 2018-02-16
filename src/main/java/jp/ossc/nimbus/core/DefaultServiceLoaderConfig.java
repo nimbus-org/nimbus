@@ -34,29 +34,29 @@ package jp.ossc.nimbus.core;
 import java.util.Properties;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒT[ƒrƒXƒ[ƒ_\¬î•ñB<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆæƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public class DefaultServiceLoaderConfig implements ServiceLoaderConfig{
     
     /**
-     * ƒT[ƒrƒXƒ[ƒh‚Ég—p‚·‚éƒvƒƒpƒeƒBB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä½¿ç”¨ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     protected final Properties properties = new Properties();
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultServiceLoaderConfig(){
     }
     
-    // ServiceLoaderConfig‚ÌJavaDoc
+    // ServiceLoaderConfigã®JavaDoc
     public String getProperty(String name){
         return properties.getProperty(name);
     }
     
-    // ServiceLoaderConfig‚ÌJavaDoc
+    // ServiceLoaderConfigã®JavaDoc
     public void setProperty(String name, String prop){
         properties.setProperty(name, prop);
     }

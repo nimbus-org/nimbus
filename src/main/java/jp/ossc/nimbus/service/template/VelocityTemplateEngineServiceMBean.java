@@ -37,7 +37,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link VelocityTemplateEngineService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link VelocityTemplateEngineService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see VelocityTemplateEngineService
@@ -45,45 +45,45 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface VelocityTemplateEngineServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA"."B<br>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€"."ã€‚<br>
      *
-     * @param dir ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setTemplateFileRootDirectory(File dir);
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getTemplateFileRootDirectory();
     
     /**
-     * Velocity‚Ì‰Šú‰»ƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * Velocityã®åˆæœŸåŒ–ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ‰Šú‰»ƒvƒƒpƒeƒB
+     * @param props åˆæœŸåŒ–ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setProperties(Properties props);
     
     /**
-     * Velocity‚Ì‰Šú‰»ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * Velocityã®åˆæœŸåŒ–ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰Šú‰»ƒvƒƒpƒeƒB
+     * @return åˆæœŸåŒ–ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getProperties();
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì•¶šƒR[ƒh‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒR[ƒh
+     * @param encoding æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public void setCharacterEncoding(String encoding);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì•¶šƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒR[ƒh
+     * @return æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public String getCharacterEncoding();
 }

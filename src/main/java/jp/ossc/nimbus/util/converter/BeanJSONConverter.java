@@ -43,7 +43,7 @@ import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * JavaƒIƒuƒWƒFƒNƒgÌJSON(JavaScript Object Notation)ƒRƒ“ƒo[ƒ^B<p>
+ * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSON(JavaScript Object Notation)ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -112,150 +112,150 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int OBJECT_TO_JSON = OBJECT_TO_STREAM;
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int JSON_TO_OBJECT = STREAM_TO_OBJECT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToStream;
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToObject;
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚Ég—p‚·‚éPropertyAccessB<p>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹PropertyAccessã€‚<p>
      */
     protected PropertyAccess propertyAccess = new PropertyAccess();
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚É‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚·‚éB<br>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ã€‚<br>
      */
     protected boolean isIgnoreUnknownProperty;
     
     /**
-     * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒoƒCƒ“ƒh‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒNƒ[ƒ“‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¯ãƒ­ãƒ¼ãƒ³ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isCloneBindingObject;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉAJSON‚Éo—Í‚µ‚È‚¢ƒNƒ‰ƒX–¼‚ÌW‡B<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€JSONã«å‡ºåŠ›ã—ãªã„ã‚¯ãƒ©ã‚¹åã®é›†åˆã€‚<p>
      */
     protected Set disableClassNameSet;
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÉA“ü—Í‚ªJSONP‚Å‚ ‚é–‚ğ‘z’è‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ã€å…¥åŠ›ãŒJSONPã§ã‚ã‚‹äº‹ã‚’æƒ³å®šã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isJSONP;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA{@link DataSet#getHeader()}‚Ü‚½‚Í{@link DataSet#getRecordList()}‚ğ‘ÎÛ‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€{@link DataSet#getHeader()}ã¾ãŸã¯{@link DataSet#getRecordList()}ã‚’å¯¾è±¡ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isWrappedDataSet;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉABean‚ÌƒvƒƒpƒeƒB–¼‚Ì“ª•¶š‚ğ‘å•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isCapitalizeBeanProperty;
     
     /**
-     * •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ‘å•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å¤§æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isToUpperCase;
     
     /**
-     * •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ¬•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å°æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isToLowerCase;
     
     /**
-     * null’l‚ÌƒvƒƒpƒeƒB‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
+     * nullå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      */
     protected boolean isOutputNullProperty = true;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å®Œ`‚µ‚È‚¢B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æ•´å½¢ã—ãªã„ã€‚<br>
      */
     protected boolean isFormat = false;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚Ég—p‚·‚é‰üsƒR[ƒhB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì"line.separator"B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®"line.separator"ã€‚<br>
      */
     protected String lineSeparator = System.getProperty("line.separator");
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚Ég—p‚·‚éƒCƒ“ƒfƒ“ƒg•¶š—ñB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒ^ƒu•¶šB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚¿ãƒ–æ–‡å­—ã€‚<br>
      */
     protected String indentString = "\t";
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚éB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã€‚<br>
      */
     protected boolean isUnicodeEscape = true;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      */
     protected boolean isFieldOnly = false;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      */
     protected boolean isAccessorOnly = true;
     
     /**
-     * JSONÌJavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÉA’l‚ÌŒ^‚É‰‚¶‚Ä•ÏŠ·‚ğs‚¤{@link Converter}‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * JSONâ‡”Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ã€å€¤ã®å‹ã«å¿œã˜ã¦å¤‰æ›ã‚’è¡Œã†{@link Converter}ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      */
     protected ClassMappingTree parseConverterMap;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA’l‚ÌŒ^‚É‰‚¶‚Ä•ÏŠ·‚ğs‚¤{@link Converter}‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€å€¤ã®å‹ã«å¿œã˜ã¦å¤‰æ›ã‚’è¡Œã†{@link Converter}ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      */
     protected ClassMappingTree formatConverterMap;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉAƒvƒƒpƒeƒB‚É‚Ç‚Ì‚æ‚¤‚ÉƒAƒNƒZƒX‚·‚é‚©‚ğ¦‚·{@link PropertyAccessType}‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã©ã®ã‚ˆã†ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‹ã‚’ç¤ºã™{@link PropertyAccessType}ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      */
     protected ClassMappingTree propertyAccessTypeMap;
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BeanJSONConverter(){
         this(OBJECT_TO_JSON);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #OBJECT_TO_JSON
      * @see #JSON_TO_OBJECT
      */
@@ -270,9 +270,9 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #OBJECT_TO_JSON
      * @see #JSON_TO_OBJECT
@@ -282,9 +282,9 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -292,36 +292,36 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         characterEncodingToStream = encoding;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToStream(){
         return characterEncodingToStream;
     }
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         characterEncodingToObject = encoding;
     }
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToObject(){
         return characterEncodingToObject;
@@ -356,57 +356,57 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚É‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚È‚éB<br>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ãªã‚‹ã€‚<br>
      * 
-     * @param isIgnore true‚Ìê‡A–³‹‚·‚é
+     * @param isIgnore trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public void setIgnoreUnknownProperty(boolean isIgnore){
         isIgnoreUnknownProperty = isIgnore;
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚É‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreUnknownProperty(){
         return isIgnoreUnknownProperty;
     }
     
     /**
-     * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒoƒCƒ“ƒh‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒNƒ[ƒ“‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒoƒCƒ“ƒh‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÍACloneable‚ğÀ‘•‚µApublic‚Èclone()ƒƒ\ƒbƒh‚ğ‚Â•K—v‚ª‚ ‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¯ãƒ­ãƒ¼ãƒ³ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€Cloneableã‚’å®Ÿè£…ã—ã€publicãªclone()ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param isClone ƒNƒ[ƒ“‚·‚éê‡‚ÍAtrue
+     * @param isClone ã‚¯ãƒ­ãƒ¼ãƒ³ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setCloneBindingObject(boolean isClone){
         isCloneBindingObject = isClone;
     }
     
     /**
-     * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒoƒCƒ“ƒh‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒNƒ[ƒ“‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒã‚¤ãƒ³ãƒ‰ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¯ãƒ­ãƒ¼ãƒ³ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAƒNƒ[ƒ“‚·‚é
+     * @return trueã®å ´åˆã¯ã€ã‚¯ãƒ­ãƒ¼ãƒ³ã™ã‚‹
      */
     public boolean isCloneBindingObject(){
         return isCloneBindingObject;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉAJSON‚Éo—Í‚µ‚È‚¢ƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼‚ğ“o˜^‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€JSONã«å‡ºåŠ›ã—ãªã„ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param className ƒNƒ‰ƒX–¼
+     * @param className ã‚¯ãƒ©ã‚¹å
      */
     public void addDisableClassName(String className){
         disableClassNameSet.add(className);
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉAJSON‚Éo—Í‚µ‚È‚¢ƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼”z—ñ‚ğ“o˜^‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€JSONã«å‡ºåŠ›ã—ãªã„ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åé…åˆ—ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param classNames ƒNƒ‰ƒX–¼”z—ñ
+     * @param classNames ã‚¯ãƒ©ã‚¹åé…åˆ—
      */
     public void addDisableClassNames(String[] classNames){
         for(int i = 0; i < classNames.length; i++){
@@ -415,76 +415,76 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉAJSON‚Éo—Í‚µ‚È‚¢ƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€JSONã«å‡ºåŠ›ã—ãªã„ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒX–¼‚ÌW‡
+     * @return ã‚¯ãƒ©ã‚¹åã®é›†åˆ
      */
     public Set getDisableClassNameSet(){
         return disableClassNameSet;
     }
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÉA“ü—Í‚ªJSONP‚Å‚ ‚é–‚ğ‘z’è‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
-     * true‚Éİ’è‚·‚é‚ÆA“ü—Í‚ª"ƒR[ƒ‹ƒoƒbƒNŠÖ”–¼(JSON)"‚Æ‚È‚Á‚Ä‚¢‚é‚Æ‚İ‚È‚µAJSON‚Ì•”•ª‚Ì‚İ‚ğ“Ç‚İæ‚éB<br>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ã€å…¥åŠ›ãŒJSONPã§ã‚ã‚‹äº‹ã‚’æƒ³å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
+     * trueã«è¨­å®šã™ã‚‹ã¨ã€å…¥åŠ›ãŒ"ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°å(JSON)"ã¨ãªã£ã¦ã„ã‚‹ã¨ã¿ãªã—ã€JSONã®éƒ¨åˆ†ã®ã¿ã‚’èª­ã¿å–ã‚‹ã€‚<br>
      *
-     * @param isJSONP JSONP‚Ìê‡Atrue
+     * @param isJSONP JSONPã®å ´åˆã€true
      */
     public void setJSONP(boolean isJSONP){
         this.isJSONP = isJSONP;
     }
     
     /**
-     * JSON¨JavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÉA“ü—Í‚ªJSONP‚Å‚ ‚é–‚ğ‘z’è‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * JSONâ†’Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ã€å…¥åŠ›ãŒJSONPã§ã‚ã‚‹äº‹ã‚’æƒ³å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AJSONP
+     * @return trueã®å ´åˆã€JSONP
      */
     public boolean isJSONP(){
         return isJSONP;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA{@link DataSet#getHeader()}‚Ü‚½‚Í{@link DataSet#getRecordList()}‚ğ‘ÎÛ‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€{@link DataSet#getHeader()}ã¾ãŸã¯{@link DataSet#getRecordList()}ã‚’å¯¾è±¡ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isWrapped JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA{@link DataSet#getHeader()}‚Ü‚½‚Í{@link DataSet#getRecordList()}‚ğ‘ÎÛ‚É‚·‚éê‡Atrue
+     * @param isWrapped Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€{@link DataSet#getHeader()}ã¾ãŸã¯{@link DataSet#getRecordList()}ã‚’å¯¾è±¡ã«ã™ã‚‹å ´åˆã€true
      */
     public void setWrappedDataSet(boolean isWrapped){
         isWrappedDataSet = isWrapped;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA{@link DataSet#getHeader()}‚Ü‚½‚Í{@link DataSet#getRecordList()}‚ğ‘ÎÛ‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€{@link DataSet#getHeader()}ã¾ãŸã¯{@link DataSet#getRecordList()}ã‚’å¯¾è±¡ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AJavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA{@link DataSet#getHeader()}‚Ü‚½‚Í{@link DataSet#getRecordList()}‚ğ‘ÎÛ‚É‚·‚é
+     * @return trueã®å ´åˆã€Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€{@link DataSet#getHeader()}ã¾ãŸã¯{@link DataSet#getRecordList()}ã‚’å¯¾è±¡ã«ã™ã‚‹
      */
     public boolean isWrappedDataSet(){
         return isWrappedDataSet;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉABean‚ÌƒvƒƒpƒeƒB–¼‚Ì“ª•¶š‚ğ‘å•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param isCapitalize JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉABean‚ÌƒvƒƒpƒeƒB–¼‚Ì“ª•¶š‚ğ‘å•¶š‚É‚·‚éê‡Atrue
+     * @param isCapitalize Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«ã™ã‚‹å ´åˆã€true
      */
     public void setCapitalizeBeanProperty(boolean isCapitalize){
         isCapitalizeBeanProperty = isCapitalize;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉABean‚ÌƒvƒƒpƒeƒB–¼‚Ì“ª•¶š‚ğ‘å•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AJavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚·‚éÛ‚ÉABean‚ÌƒvƒƒpƒeƒB–¼‚Ì“ª•¶š‚ğ‘å•¶š‚É‚·‚é
+     * @return trueã®å ´åˆã€Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›ã™ã‚‹éš›ã«ã€Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é ­æ–‡å­—ã‚’å¤§æ–‡å­—ã«ã™ã‚‹
      */
     public boolean isCapitalizeBeanProperty(){
         return isCapitalizeBeanProperty;
     }
     
     /**
-     * •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ‘å•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å¤§æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param toUpperCase •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ‘å•¶š‚É‚·‚éê‡Atrue
+     * @param toUpperCase å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å¤§æ–‡å­—ã«ã™ã‚‹å ´åˆã€true
      */
     public void setToUpperCase(boolean toUpperCase){
         isToUpperCase = toUpperCase;
@@ -494,19 +494,19 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ‘å•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å¤§æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A•ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ‘å•¶š‚É‚·‚é
+     * @return trueã®å ´åˆã€å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å¤§æ–‡å­—ã«ã™ã‚‹
      */
     public boolean isToUpperCase(){
         return isToUpperCase;
     }
     
     /**
-     * •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ¬•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å°æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param toLowerCase •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ¬•¶š‚É‚·‚éê‡Atrue
+     * @param toLowerCase å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å°æ–‡å­—ã«ã™ã‚‹å ´åˆã€true
      */
     public void setToLowerCase(boolean toLowerCase){
         isToLowerCase = toLowerCase;
@@ -516,49 +516,49 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * •ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ¬•¶š‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å°æ–‡å­—ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A•ÏŠ·‚·‚éÛ‚ÉAJSON‚ÌƒL[‚âBean‚ÌƒvƒƒpƒeƒB–¼‚ğ¬•¶š‚É‚·‚é
+     * @return trueã®å ´åˆã€å¤‰æ›ã™ã‚‹éš›ã«ã€JSONã®ã‚­ãƒ¼ã‚„Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å°æ–‡å­—ã«ã™ã‚‹
      */
     public boolean isToLowerCase(){
         return isToLowerCase;
     }
     
     /**
-     * null’l‚ÌƒvƒƒpƒeƒB‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
+     * nullå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputNullProperty(boolean isOutput){
         isOutputNullProperty = isOutput;
     }
     
     /**
-     * null’l‚ÌƒvƒƒpƒeƒB‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * nullå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚éB
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹ã€‚
      */
     public boolean isOutputNullProperty(){
         return isOutputNullProperty;
     }
     
     /**
-     * JSONÌJavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÉA’l‚ÌŒ^‚É‰‚¶‚Äw’è‚³‚ê‚½{@link Converter}‚Å•ÏŠ·‚ğs‚¤‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * JSONâ‡”Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ã€å€¤ã®å‹ã«å¿œã˜ã¦æŒ‡å®šã•ã‚ŒãŸ{@link Converter}ã§å¤‰æ›ã‚’è¡Œã†ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className ’l‚ÌƒNƒ‰ƒX–¼
-     * @param converter ’l‚ğ•ÏŠ·‚·‚éConverter
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param className å€¤ã®ã‚¯ãƒ©ã‚¹å
+     * @param converter å€¤ã‚’å¤‰æ›ã™ã‚‹Converter
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     public void setParseConverter(String className, Converter converter) throws ClassNotFoundException{
         setParseConverter(Utility.convertStringToClass(className), converter);
     }
     
     /**
-     * JSONÌJavaƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÉA’l‚ÌŒ^‚É‰‚¶‚Äw’è‚³‚ê‚½{@link Converter}‚Å•ÏŠ·‚ğs‚¤‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * JSONâ‡”Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›æ™‚ã«ã€å€¤ã®å‹ã«å¿œã˜ã¦æŒ‡å®šã•ã‚ŒãŸ{@link Converter}ã§å¤‰æ›ã‚’è¡Œã†ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ’l‚ÌŒ^
-     * @param converter ’l‚ğ•ÏŠ·‚·‚éConverter
+     * @param type å€¤ã®å‹
+     * @param converter å€¤ã‚’å¤‰æ›ã™ã‚‹Converter
      */
     public void setParseConverter(Class type, Converter converter){
         if(parseConverterMap == null){
@@ -568,21 +568,21 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA’l‚ÌŒ^‚É‰‚¶‚Äw’è‚³‚ê‚½{@link Converter}‚Å•ÏŠ·‚ğs‚¤‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€å€¤ã®å‹ã«å¿œã˜ã¦æŒ‡å®šã•ã‚ŒãŸ{@link Converter}ã§å¤‰æ›ã‚’è¡Œã†ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className ’l‚ÌƒNƒ‰ƒX–¼
-     * @param converter ’l‚ğ•ÏŠ·‚·‚éConverter
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param className å€¤ã®ã‚¯ãƒ©ã‚¹å
+     * @param converter å€¤ã‚’å¤‰æ›ã™ã‚‹Converter
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     public void setFormatConverter(String className, Converter converter) throws ClassNotFoundException{
         setFormatConverter(Utility.convertStringToClass(className), converter);
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒgÌJSON•ÏŠ·‚ÉA’l‚ÌŒ^‚É‰‚¶‚Äw’è‚³‚ê‚½{@link Converter}‚Å•ÏŠ·‚ğs‚¤‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ‡”JSONå¤‰æ›æ™‚ã«ã€å€¤ã®å‹ã«å¿œã˜ã¦æŒ‡å®šã•ã‚ŒãŸ{@link Converter}ã§å¤‰æ›ã‚’è¡Œã†ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ’l‚ÌŒ^
-     * @param converter ’l‚ğ•ÏŠ·‚·‚éConverter
+     * @param type å€¤ã®å‹
+     * @param converter å€¤ã‚’å¤‰æ›ã™ã‚‹Converter
      */
     public void setFormatConverter(Class type, Converter converter){
         if(formatConverterMap == null){
@@ -592,106 +592,106 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A®Œ`‚·‚é
+     * @return trueã®å ´åˆã€æ•´å½¢ã™ã‚‹
      */
     public boolean isFormat(){
         return isFormat;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å®Œ`‚µ‚È‚¢B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æ•´å½¢ã—ãªã„ã€‚<br>
      *
-     * @param isFormat ®Œ`‚·‚éê‡true
+     * @param isFormat æ•´å½¢ã™ã‚‹å ´åˆtrue
      */
     public void setFormat(boolean isFormat){
         this.isFormat = isFormat;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚Ég—p‚·‚é‰üsƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‰üsƒR[ƒh•¶š—ñ
+     * @return æ”¹è¡Œã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public String getLineSeparator(){
         return lineSeparator;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚Ég—p‚·‚é‰üsƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì"line.separator"B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®"line.separator"ã€‚<br>
      * 
-     * @param ls ‰üsƒR[ƒh•¶š—ñ
+     * @param ls æ”¹è¡Œã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public void setLineSeparator(String ls){
         lineSeparator = ls;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚Ég—p‚·‚éƒCƒ“ƒfƒ“ƒg•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒfƒ“ƒg•¶š—ñ
+     * @return ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—
      */
     public String getIndent(){
         return indentString;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚Ég—p‚·‚éƒCƒ“ƒfƒ“ƒg•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒ^ƒu•¶šB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚¿ãƒ–æ–‡å­—ã€‚<br>
      *
-     * @param indent ƒCƒ“ƒfƒ“ƒg•¶š—ñ
+     * @param indent ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—
      */
     public void setIndent(String indent){
         indentString = indent;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒXƒP[ƒv‚·‚éê‡true
+     * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
      */
     public boolean isUnicodeEscape(){
         return isUnicodeEscape;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚É®Œ`‚µ‚½•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éê‡‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚éB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«æ•´å½¢ã—ãŸæ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹å ´åˆã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã€‚<br>
      *
-     * @param isEscape ƒGƒXƒP[ƒv‚·‚éê‡true
+     * @param isEscape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹å ´åˆtrue
      */
     public void setUnicodeEscape(boolean isEscape){
         isUnicodeEscape = isEscape;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ApublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isFieldOnly(){
         return isFieldOnly;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      *
-     * @param isFieldOnly publicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡‚ÍAtrue
+     * @param isFieldOnly publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setFieldOnly(boolean isFieldOnly){
         this.isFieldOnly = isFieldOnly;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param isFieldOnly publicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡‚ÍAtrue
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param isFieldOnly publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setFieldOnly(Class type, boolean isFieldOnly){
         if(propertyAccessTypeMap == null){
@@ -706,10 +706,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @return true‚Ìê‡ApublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @return trueã®å ´åˆã€publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isFieldOnly(Class type){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -717,30 +717,30 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      *
-     * @param isAccessorOnly public‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡Atrue
+     * @param isAccessorOnly publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã€true
      */
     public void setAccessorOnly(boolean isAccessorOnly){
         this.isAccessorOnly = isAccessorOnly;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Apublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isAccessorOnly(){
         return isAccessorOnly;
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param isAccessorOnly public‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚éê‡Atrue
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param isAccessorOnly publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹å ´åˆã€true
      */
     public void setAccessorOnly(Class type, boolean isAccessorOnly){
         if(propertyAccessTypeMap == null){
@@ -755,10 +755,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @return true‚Ìê‡Apublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @return trueã®å ´åˆã€publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isAccessorOnly(Class type){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -766,10 +766,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Éo—Í‚µ‚È‚¢ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«å‡ºåŠ›ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param names ƒvƒƒpƒeƒB–¼‚Ì”z—ñ
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param names ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é…åˆ—
      */
     public void setDisabledPropertyNames(Class type, String[] names){
         if(propertyAccessTypeMap == null){
@@ -795,10 +795,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Éo—Í‚·‚éƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param names ƒvƒƒpƒeƒB–¼‚Ì”z—ñ
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param names ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é…åˆ—
      */
     public void setEnabledPropertyNames(Class type, String[] names){
         if(propertyAccessTypeMap == null){
@@ -824,11 +824,11 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚Éo—Í‚·‚éƒvƒƒpƒeƒB–¼‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return o—Í‚·‚éê‡true
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public boolean isEnabledPropertyName(Class type, String name){
         PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
@@ -845,11 +845,11 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -876,34 +876,34 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚©‚çJSONƒoƒCƒg”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰JSONãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒIƒuƒWƒFƒNƒg
-     * @return JSONƒoƒCƒg”z—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return JSONãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         return toJSON(obj);
     }
     
     /**
-     * JSONƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
+     * JSONã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is JSONƒXƒgƒŠ[ƒ€
-     * @return ƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is JSONã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         return toObject(is);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @param returnType •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-     * @throws ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param returnType å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @throws ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is, Object returnType)
      throws ConvertException{
@@ -2222,15 +2222,15 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             final int length = unicodeStr.length();
             final StringBuilder buf = new StringBuilder(length);
             for(int i = 0; i < length;){
-                //•¶š—ñ‚ğØ‚èæ‚é
+                //æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šå–ã‚‹
                 char c = unicodeStr.charAt(i++);
-                //ƒGƒXƒP[ƒv‚È‚ç
+                //ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã‚‰
                 if(c == ESCAPE && (length - 1) > i){
                     c = unicodeStr.charAt(i++);
-                    //UNICODEƒ}[ƒN
+                    //UNICODEãƒãƒ¼ã‚¯
                     if(c == 'u'){
                         int value = 0;
-                        //‚S•¶š“Ç‚İ‚Ş
+                        //ï¼”æ–‡å­—èª­ã¿è¾¼ã‚€
                         for(int j=0;j<4;j++){
                             c = unicodeStr.charAt(i++);
                             switch(c){
@@ -2288,9 +2288,9 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             final StringBuilder buf = new StringBuilder(length);
             boolean isUnescape = false;
             for(int i = 0; i < length;){
-                //•¶š—ñ‚ğØ‚èæ‚é
+                //æ–‡å­—åˆ—ã‚’åˆ‡ã‚Šå–ã‚‹
                 char c = str.charAt(i++);
-                //ƒGƒXƒP[ƒv‚È‚ç
+                //ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãªã‚‰
                 if(c == '\\' && length > i){
                     isUnescape = true;
                     c = str.charAt(i++);
@@ -2336,24 +2336,24 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     protected class PropertyAccessType{
         
         /**
-         * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚ÌpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅpublicƒtƒB[ƒ‹ƒh‚Ì‚İ‚ğ‘ÎÛ‚É‚Í‚µ‚È‚¢B<br>
+         * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§publicãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ã¿ã‚’å¯¾è±¡ã«ã¯ã—ãªã„ã€‚<br>
          */
         public boolean isFieldOnly = false;
         
         /**
-         * JavaƒIƒuƒWƒFƒNƒg¨JSON•ÏŠ·‚ÉJavaƒIƒuƒWƒFƒNƒg‚Ìpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚Æ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åpublic‚Ègetter‚Ì‚İ‚ğ‘ÎÛ‚É‚·‚éB<br>
+         * Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’JSONå¤‰æ›æ™‚ã«Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®publicãªgetterã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§publicãªgetterã®ã¿ã‚’å¯¾è±¡ã«ã™ã‚‹ã€‚<br>
          */
         public boolean isAccessorOnly = true;
         
         /**
-         * o—Í‚µ‚È‚¢ƒvƒƒpƒeƒB–¼‚ÌW‡B<p>
+         * å‡ºåŠ›ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆã€‚<p>
          */
         public Set disabledPropertyNames;
         
         /**
-         * o—Í‚·‚éƒvƒƒpƒeƒB–¼‚ÌW‡B<p>
+         * å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®é›†åˆã€‚<p>
          */
         public Set enabledPropertyNames;
     }

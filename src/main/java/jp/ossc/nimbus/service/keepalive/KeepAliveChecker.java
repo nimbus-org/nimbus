@@ -32,43 +32,43 @@
 package jp.ossc.nimbus.service.keepalive;
 
 /**
- * ƒT[ƒo‚Ì‰Ò“®ó‘Ô‚ğƒ`ƒFƒbƒN‚·‚éƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚µãƒ¼ãƒã®ç¨¼å‹•çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
- * @version  1.00 ì¬: 2003/10/08 - H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/08 - H.Nakano
  */
 public interface KeepAliveChecker {
     
     /**
-     * ƒT[ƒo‚Ì‰Ò“®ó‘Ô‚ğƒ`ƒFƒbƒN‚·‚éB<p>
+     * ã‚µãƒ¼ãƒã®ç¨¼å‹•çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @return ‰Ò“®ó‘Ôitrue:‘–s’†Afalse:’â~’†j
+     * @return ç¨¼å‹•çŠ¶æ…‹ï¼ˆtrue:èµ°è¡Œä¸­ã€false:åœæ­¢ä¸­ï¼‰
      */
     public boolean isAlive();
     
     /**
-     * ‰Ò“®ó‘ÔŠÄ‹ƒŠƒXƒi‚ğ“o˜^‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ç›£è¦–ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param listener ‰Ò“®ó‘ÔŠÄ‹ƒŠƒXƒi
+     * @param listener ç¨¼å‹•çŠ¶æ…‹ç›£è¦–ãƒªã‚¹ãƒŠ
      */
     public void addKeepAliveListener(KeepAliveListener listener);
     
     /**
-     * ‰Ò“®ó‘ÔŠÄ‹ƒŠƒXƒi‚ğ“o˜^‰ğœ‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ç›£è¦–ãƒªã‚¹ãƒŠã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<p>
      *
-     * @param listener ‰Ò“®ó‘ÔŠÄ‹ƒŠƒXƒi
+     * @param listener ç¨¼å‹•çŠ¶æ…‹ç›£è¦–ãƒªã‚¹ãƒŠ
      */
     public void removeKeepAliveListener(KeepAliveListener listener);
     
     /**
-     * ‰Ò“®ó‘ÔŠÄ‹ƒŠƒXƒi‚ğ‘S‚Ä“o˜^‰ğœ‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ç›£è¦–ãƒªã‚¹ãƒŠã‚’å…¨ã¦ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<p>
      */
     public void clearKeepAliveListener();
     
     /**
-     * ‰Ò“­’†‚ÌƒzƒXƒgî•ñ‚ğæ“¾‚·‚é<p>
+     * ç¨¼åƒä¸­ã®ãƒ›ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹<p>
      * 
-     * @return ƒzƒXƒgî•ñƒIƒuƒWƒFƒNƒg
+     * @return ãƒ›ã‚¹ãƒˆæƒ…å ±ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getHostInfo() throws Exception;
 }

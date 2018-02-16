@@ -35,7 +35,7 @@ import jp.ossc.nimbus.service.aop.Invoker;
 import jp.ossc.nimbus.service.keepalive.KeepAliveChecker;
 
 /**
- * €ŠˆŠÄ‹‹@”\•t‚«InvokerƒT[ƒrƒXB<p>
+ * æ­»æ´»ç›£è¦–æ©Ÿèƒ½ä»˜ãInvokerã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

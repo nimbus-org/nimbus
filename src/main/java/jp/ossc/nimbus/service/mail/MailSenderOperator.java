@@ -34,33 +34,33 @@ package jp.ossc.nimbus.service.mail;
 
 //
 /**
- * ƒ[ƒ‹ƒZƒ“ƒ_
+ * ãƒ¡ãƒ¼ãƒ«ã‚»ãƒ³ãƒ€
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/09 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/09 -ã€€H.Nakano
  */
 public interface MailSenderOperator {
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì‘—Mæ‚ğİ’è‚·‚é<BR>
-	 *	@return		ˆ¶æ
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡å…ˆã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return		å®›å…ˆ
 	 */
 	public String getTo();
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì‘—MŒ³‚ğİ’è‚·‚é<BR>
-	 *	@return	·ol
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡å…ƒã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return	å·®å‡ºäºº
 	 */
 	public String getFrom();
 	/**
-	 *	ƒƒbƒZ[ƒW‚ÌŒ–¼‚ğİ’è‚·‚é<BR>
-	 *	@return	Œ–¼
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä»¶åã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return	ä»¶å
 	 */
 	public String getSubject();
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì–{•¶‚ğİ’è‚·‚é<BR>
-	 *	@return	–{•¶
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@return	æœ¬æ–‡
 	 */
 	public String getBody();
 	/**
-	 *	ƒ[ƒ‹ƒT[ƒo–¼‚ğo—Í‚·‚éB<BR>
+	 *	ãƒ¡ãƒ¼ãƒ«ã‚µãƒ¼ãƒåã‚’å‡ºåŠ›ã™ã‚‹ã€‚<BR>
 	 *	@param	fc
 	 */
 	public void setFactory(SenderFactoryCallBack fc) ;

@@ -36,210 +36,210 @@ import jp.ossc.nimbus.recset.RecordSet;
 import jp.ossc.nimbus.beans.dataset.RecordList;
 
 /**
- * {@link MasterValidatorService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MasterValidatorService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface MasterValidatorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link #setBindData(int, String)}‚ÌƒoƒCƒ“ƒh•Ï”‚ğw’è‚·‚éÛ‚ÌŒŸØ’l©‘Ì‚ğŒ»‚·ƒL[–¼B<br>
+     * {@link #setBindData(int, String)}ã®ãƒã‚¤ãƒ³ãƒ‰å¤‰æ•°ã‚’æŒ‡å®šã™ã‚‹éš›ã®æ¤œè¨¼å€¤è‡ªä½“ã‚’ç¾ã™ã‚­ãƒ¼åã€‚<br>
      */
     public static final String BIND_DATA_VALUE_KEY = "VALUE";
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPersistentManagerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPersistentManagerServiceName();
     
     /**
-     * ƒNƒGƒŠ•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager#loadQuery(java.sql.Connection, String, Object, Object) PersistentManager.loadQuery()}ƒƒ\ƒbƒh‚Ì‘æ“ñˆø”query‚Ég—p‚·‚éB<br>
+     * ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager#loadQuery(java.sql.Connection, String, Object, Object) PersistentManager.loadQuery()}ãƒ¡ã‚½ãƒƒãƒ‰ã®ç¬¬äºŒå¼•æ•°queryã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param query ƒNƒGƒŠ•¶š—ñ
+     * @param query ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—
      */
     public void setQuery(String query);
     
     /**
-     * ƒNƒGƒŠ•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒGƒŠ•¶š—ñ
+     * @return ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—
      */
     public String getQuery();
     
     /**
-     * ƒ}ƒXƒ^‚ÌŒŸõ‚Ég—p‚·‚éƒŒƒR[ƒhƒZƒbƒg‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ìİ’è‚ğs‚Á‚½ê‡‚ÍAŒŸØ‚Ì“s“xƒf[ƒ^ƒx[ƒX‚ğŒŸõ‚·‚éB]‚Á‚ÄAƒ}ƒXƒ^‚ÌXV•p“x‚ª‚‚¢ê‡‚ÉA“K‚µ‚Ä‚¢‚éB<br>
+     * ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«ä½¿ç”¨ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®è¨­å®šã‚’è¡Œã£ãŸå ´åˆã¯ã€æ¤œè¨¼ã®éƒ½åº¦ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ¤œç´¢ã™ã‚‹ã€‚å¾“ã£ã¦ã€ãƒã‚¹ã‚¿ã®æ›´æ–°é »åº¦ãŒé«˜ã„å ´åˆã«ã€é©ã—ã¦ã„ã‚‹ã€‚<br>
      * <p>
-     * ŒŸõ‚ÌÛ‚ÉAƒRƒlƒNƒVƒ‡ƒ“‚ª•K—v‚È‚½‚ßA{@link #setConnectionFactoryServiceName(ServiceName)}‚ğİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * æ¤œç´¢ã®éš›ã«ã€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãŒå¿…è¦ãªãŸã‚ã€{@link #setConnectionFactoryServiceName(ServiceName)}ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      * <p>
-     * ‚Ü‚½Aƒ}ƒXƒ^‚ÌŒŸõğŒ‚ÉAŒŸØ‚·‚é’l‚ğŠÜ‚ß‚é•K—v‚ª‚ ‚é‚½‚ßA{@link RecordSet#setWhere(String)}“™‚ğg‚Á‚ÄAŒŸØ‚·‚é’l‚ğ–„‚ß‚ŞğŒ‹å‚ğİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
-     * ğŒ‹å‚ÍA–„‚ß‚İğŒ‹å‚Æ‚È‚é‚×‚«‚ÅA–„‚ß‚İğŒ‹å‚Ì‰½”Ô–Ú‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÉŒŸØ‚·‚é’l‚Ü‚½‚ÍŒŸØ‚·‚é’l‚ÌƒvƒƒpƒeƒB‚ğ–„‚ß‚Ş‚©‚ğ{@link #setBindData(int, String)}‚Åİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * ã¾ãŸã€ãƒã‚¹ã‚¿ã®æ¤œç´¢æ¡ä»¶ã«ã€æ¤œè¨¼ã™ã‚‹å€¤ã‚’å«ã‚ã‚‹å¿…è¦ãŒã‚ã‚‹ãŸã‚ã€{@link RecordSet#setWhere(String)}ç­‰ã‚’ä½¿ã£ã¦ã€æ¤œè¨¼ã™ã‚‹å€¤ã‚’åŸ‹ã‚è¾¼ã‚€æ¡ä»¶å¥ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * æ¡ä»¶å¥ã¯ã€åŸ‹ã‚è¾¼ã¿æ¡ä»¶å¥ã¨ãªã‚‹ã¹ãã§ã€åŸ‹ã‚è¾¼ã¿æ¡ä»¶å¥ã®ä½•ç•ªç›®ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯æ¤œè¨¼ã™ã‚‹å€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’åŸ‹ã‚è¾¼ã‚€ã‹ã‚’{@link #setBindData(int, String)}ã§è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param recset ƒ}ƒXƒ^‚ÌŒŸõ‚Ég—p‚·‚éƒŒƒR[ƒhƒZƒbƒg
+     * @param recset ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«ä½¿ç”¨ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
      */
     public void setRecordSet(RecordSet recset);
     
     /**
-     * ƒ}ƒXƒ^‚ÌŒŸõ‚Ég—p‚·‚éƒŒƒR[ƒhƒZƒbƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«ä½¿ç”¨ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒ^‚ÌŒŸõ‚Ég—p‚·‚éƒŒƒR[ƒhƒZƒbƒg
+     * @return ãƒã‚¹ã‚¿ã®æ¤œç´¢ã«ä½¿ç”¨ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
      */
     public RecordSet getRecordSet();
     
     /**
-     * ŒŸØ‚·‚é’l‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚ğAƒ}ƒXƒ^‚ÌŒŸõğŒ‹å‚Ì‰½”Ô–Ú‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚Æ‚·‚é‚©‚ğİ’è‚·‚éB<p>
-     * ŒŸØ‚·‚é’l‚ÍA{@link #BIND_DATA_VALUE_KEY}‚ÅQÆ‚·‚éB<br>
-     * ŒŸØ‚·‚é’l‚ÌƒvƒƒpƒeƒB‚ÍA{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¢AQÆ‰Â”\‚Å‚ ‚éB<br>
-     * —áFVALUE.hoge<br>
+     * æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã€ãƒã‚¹ã‚¿ã®æ¤œç´¢æ¡ä»¶å¥ã®ä½•ç•ªç›®ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¤œè¨¼ã™ã‚‹å€¤ã¯ã€{@link #BIND_DATA_VALUE_KEY}ã§å‚ç…§ã™ã‚‹ã€‚<br>
+     * æ¤œè¨¼ã™ã‚‹å€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯ã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã„ã€å‚ç…§å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ä¾‹ï¼šVALUE.hoge<br>
      *
-     * @param index –„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @param valueKey ŒŸØ‚·‚é’l‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚ğ•\‚·ƒL[•¶š—ñ
+     * @param index åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param valueKey æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ã™ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public void setBindData(int index, String valueKey);
     
     /**
-     * ƒ}ƒXƒ^‚ÌŒŸõğŒ‹å‚Ìw’è‚³‚ê‚½–„‚ß‚İƒpƒ‰ƒ[ƒ^ƒCƒ“ƒfƒbƒNƒX‚ÉA‚Ç‚Ì‚æ‚¤‚È’l‚ğƒoƒCƒ“ƒh‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ã‚¿ã®æ¤œç´¢æ¡ä»¶å¥ã®æŒ‡å®šã•ã‚ŒãŸåŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«ã€ã©ã®ã‚ˆã†ãªå€¤ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index –„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @return ŒŸØ‚·‚é’l‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚ğ•\‚·ƒL[•¶š—ñ
+     * @param index åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ã™ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public String getBindData(int index);
     
     /**
-     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒR[ƒhƒ}ƒXƒ^‚ªƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgã‚Éİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÉA’¼ÚCodeMasterFinder‚ğg‚Á‚ÄƒR[ƒhƒ}ƒXƒ^‚ğæ“¾‚µA{@link #setCodeMasterName(String)}‚Åİ’è‚³‚ê‚½–¼‘O‚Ìƒ}ƒXƒ^RecordSet‚ğg‚Á‚ÄARecordSet“à‚ğ“®“IŒŸõ‚µ‚ÄŒŸØ‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãŒã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¸Šã«è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ã€ç›´æ¥CodeMasterFinderã‚’ä½¿ã£ã¦ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’å–å¾—ã—ã€{@link #setCodeMasterName(String)}ã§è¨­å®šã•ã‚ŒãŸåå‰ã®ãƒã‚¹ã‚¿RecordSetã‚’ä½¿ã£ã¦ã€RecordSetå†…ã‚’å‹•çš„æ¤œç´¢ã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚<br>
      *
-     * @param name CodeMasterFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CodeMasterFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCodeMasterFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CodeMasterFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CodeMasterFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCodeMasterFinderServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * {@link #setCodeMasterThreadContextKey(String)}‚Åİ’è‚³‚ê‚½ƒL[–¼‚ÅA‚±‚ÌƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚©‚çƒR[ƒhƒ}ƒXƒ^‚ğæ“¾‚µA{@link #setCodeMasterName(String)}‚Åİ’è‚³‚ê‚½–¼‘O‚Ìƒ}ƒXƒ^RecordSet‚ğg‚Á‚ÄARecordSet“à‚ğ“®“IŒŸõ‚µ‚ÄŒŸØ‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setCodeMasterThreadContextKey(String)}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼åã§ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’å–å¾—ã—ã€{@link #setCodeMasterName(String)}ã§è¨­å®šã•ã‚ŒãŸåå‰ã®ãƒã‚¹ã‚¿RecordSetã‚’ä½¿ã£ã¦ã€RecordSetå†…ã‚’å‹•çš„æ¤œç´¢ã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚<br>
      *
-     * @param name ThreadContextService‚ÌƒT[ƒrƒX–¼
+     * @param name ThreadContextServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ThreadContextService‚ÌƒT[ƒrƒX–¼
+     * @return ThreadContextServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚©‚çƒR[ƒhƒ}ƒXƒ^‚ğæ“¾‚·‚éÛ‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey#CODEMASTER}B<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹éš›ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey#CODEMASTER}ã€‚<br>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^ƒL[–¼
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼å
      */
     public void setCodeMasterThreadContextKey(String key);
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚©‚çƒR[ƒhƒ}ƒXƒ^‚ğæ“¾‚·‚éÛ‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’å–å¾—ã™ã‚‹éš›ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒR[ƒhƒ}ƒXƒ^ƒL[–¼
+     * @return ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼å
      */
     public String getCodeMasterThreadContextKey();
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚©‚çƒ}ƒXƒ^RecordSet‚ğæ“¾‚·‚éÛ‚Ìƒ}ƒXƒ^–¼‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‹ã‚‰ãƒã‚¹ã‚¿RecordSetã‚’å–å¾—ã™ã‚‹éš›ã®ãƒã‚¹ã‚¿åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒ}ƒXƒ^–¼
+     * @param name ãƒã‚¹ã‚¿å
      */
     public void setCodeMasterName(String name);
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚©‚çƒ}ƒXƒ^RecordSet‚ğæ“¾‚·‚éÛ‚Ìƒ}ƒXƒ^–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‹ã‚‰ãƒã‚¹ã‚¿RecordSetã‚’å–å¾—ã™ã‚‹éš›ã®ãƒã‚¹ã‚¿åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒ^–¼
+     * @return ãƒã‚¹ã‚¿å
      */
     public String getCodeMasterName();
     
     /**
-     * ƒ}ƒXƒ^RecordSet‚Ì“®“IŒŸõğŒ‚ğİ’è‚·‚éB<p>
-     * “®“IŒŸõğŒ‚ÍA–„‚ß‚İğŒ‚Æ‚È‚é‚×‚«‚ÅA–„‚ß‚İğŒ‚Ì‚Ç‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÉŒŸØ‚·‚é’l‚Ü‚½‚ÍŒŸØ‚·‚é’l‚ÌƒvƒƒpƒeƒB‚ğ–„‚ß‚Ş‚©‚ğ{@link #setBindDataMap(String, String)}‚Åİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
-     * —áFCOLUMN1 &gt; VALUE<br>
-     * “®“IŒŸõğŒ‚Ì‘®‚ÍA{@link RecordSet#searchDynamicConditionReal(String, java.util.Map)}‚ğQÆB<br>
+     * ãƒã‚¹ã‚¿RecordSetã®å‹•çš„æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å‹•çš„æ¤œç´¢æ¡ä»¶ã¯ã€åŸ‹ã‚è¾¼ã¿æ¡ä»¶ã¨ãªã‚‹ã¹ãã§ã€åŸ‹ã‚è¾¼ã¿æ¡ä»¶ã®ã©ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯æ¤œè¨¼ã™ã‚‹å€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’åŸ‹ã‚è¾¼ã‚€ã‹ã‚’{@link #setBindDataMap(String, String)}ã§è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * ä¾‹ï¼šCOLUMN1 &gt; VALUE<br>
+     * å‹•çš„æ¤œç´¢æ¡ä»¶ã®æ›¸å¼ã¯ã€{@link RecordSet#searchDynamicConditionReal(String, java.util.Map)}ã‚’å‚ç…§ã€‚<br>
      *
-     * @param condition “®“IŒŸõğŒ
-     * @deprecated •Ê‚Ìƒƒ\ƒbƒh‚É’u‚«Š·‚¦‚ç‚ê‚Ü‚µ‚½ {@link #setSearchCondition(String)}
+     * @param condition å‹•çš„æ¤œç´¢æ¡ä»¶
+     * @deprecated åˆ¥ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ç½®ãæ›ãˆã‚‰ã‚Œã¾ã—ãŸ {@link #setSearchCondition(String)}
      */
     public void setRecordSetSearchCondition(String condition);
     
     /**
-     * ƒ}ƒXƒ^RecordSet‚Ì“®“IŒŸõğŒ‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ã‚¿RecordSetã®å‹•çš„æ¤œç´¢æ¡ä»¶ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “®“IŒŸõğŒ
-     * @deprecated •Ê‚Ìƒƒ\ƒbƒh‚É’u‚«Š·‚¦‚ç‚ê‚Ü‚µ‚½ {@link #getSearchCondition()}
+     * @return å‹•çš„æ¤œç´¢æ¡ä»¶
+     * @deprecated åˆ¥ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ç½®ãæ›ãˆã‚‰ã‚Œã¾ã—ãŸ {@link #getSearchCondition()}
      */
     public String getRecordSetSearchCondition();
     
     /**
-     * ƒ}ƒXƒ^RecordSet‚Ü‚½‚ÍRecordList‚Ì“®“IŒŸõğŒ‚ğİ’è‚·‚éB<p>
-     * “®“IŒŸõğŒ‚ÍA–„‚ß‚İğŒ‚Æ‚È‚é‚×‚«‚ÅA–„‚ß‚İğŒ‚Ì‚Ç‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÉŒŸØ‚·‚é’l‚Ü‚½‚ÍŒŸØ‚·‚é’l‚ÌƒvƒƒpƒeƒB‚ğ–„‚ß‚Ş‚©‚ğ{@link #setBindDataMap(String, String)}‚Åİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
-     * —áFCOLUMN1 &gt; VALUE<br>
-     * “®“IŒŸõğŒ‚Ì‘®‚ÍA{@link RecordSet#searchDynamicConditionReal(String, java.util.Map)}A{@link RecordList#realSearch(String, java.util.Map)}‚ğQÆB<br>
+     * ãƒã‚¹ã‚¿RecordSetã¾ãŸã¯RecordListã®å‹•çš„æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å‹•çš„æ¤œç´¢æ¡ä»¶ã¯ã€åŸ‹ã‚è¾¼ã¿æ¡ä»¶ã¨ãªã‚‹ã¹ãã§ã€åŸ‹ã‚è¾¼ã¿æ¡ä»¶ã®ã©ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯æ¤œè¨¼ã™ã‚‹å€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’åŸ‹ã‚è¾¼ã‚€ã‹ã‚’{@link #setBindDataMap(String, String)}ã§è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+     * ä¾‹ï¼šCOLUMN1 &gt; VALUE<br>
+     * å‹•çš„æ¤œç´¢æ¡ä»¶ã®æ›¸å¼ã¯ã€{@link RecordSet#searchDynamicConditionReal(String, java.util.Map)}ã€{@link RecordList#realSearch(String, java.util.Map)}ã‚’å‚ç…§ã€‚<br>
      *
-     * @param condition “®“IŒŸõğŒ
+     * @param condition å‹•çš„æ¤œç´¢æ¡ä»¶
      */
     public void setSearchCondition(String condition);
     
     /**
-     * ƒ}ƒXƒ^RecordSet‚Ü‚½‚ÍRecordList‚Ì“®“IŒŸõğŒ‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ã‚¿RecordSetã¾ãŸã¯RecordListã®å‹•çš„æ¤œç´¢æ¡ä»¶ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “®“IŒŸõğŒ
+     * @return å‹•çš„æ¤œç´¢æ¡ä»¶
      */
     public String getSearchCondition();
     
     /**
-     * ŒŸØ‚·‚é’l‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚ğAƒ}ƒXƒ^RecordSet‚Ì“®“IŒŸõğŒ‚Ì‚Ç‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚Æ‚·‚é‚©‚ğİ’è‚·‚éB<p>
-     * ŒŸØ‚·‚é’l‚ÍA{@link #BIND_DATA_VALUE_KEY}‚ÅQÆ‚·‚éB<br>
-     * ŒŸØ‚·‚é’l‚ÌƒvƒƒpƒeƒB‚ÍA{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¢AQÆ‰Â”\‚Å‚ ‚éB<br>
-     * —áFVALUE.hoge<br>
+     * æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã€ãƒã‚¹ã‚¿RecordSetã®å‹•çš„æ¤œç´¢æ¡ä»¶ã®ã©ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¤œè¨¼ã™ã‚‹å€¤ã¯ã€{@link #BIND_DATA_VALUE_KEY}ã§å‚ç…§ã™ã‚‹ã€‚<br>
+     * æ¤œè¨¼ã™ã‚‹å€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯ã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã„ã€å‚ç…§å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ä¾‹ï¼šVALUE.hoge<br>
      *
-     * @param name –„‚ß‚İƒpƒ‰ƒ[ƒ^–¼
-     * @param valueKey ŒŸØ‚·‚é’l‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚ğ•\‚·ƒL[•¶š—ñ
+     * @param name åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param valueKey æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ã™ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public void setBindDataMap(String name, String valueKey);
     
     /**
-     * ƒ}ƒXƒ^RecordSet‚Ì“®“IŒŸõğŒ‚Ìw’è‚³‚ê‚½–„‚ß‚İƒpƒ‰ƒ[ƒ^–¼‚ÉA‚Ç‚Ì‚æ‚¤‚È’l‚ğƒoƒCƒ“ƒh‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ã‚¿RecordSetã®å‹•çš„æ¤œç´¢æ¡ä»¶ã®æŒ‡å®šã•ã‚ŒãŸåŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã«ã€ã©ã®ã‚ˆã†ãªå€¤ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name –„‚ß‚İƒpƒ‰ƒ[ƒ^–¼
-     * @return ŒŸØ‚·‚é’l‚Ü‚½‚Í‚»‚ÌƒvƒƒpƒeƒB‚ğ•\‚·ƒL[•¶š—ñ
+     * @param name åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @return æ¤œè¨¼ã™ã‚‹å€¤ã¾ãŸã¯ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ã™ã‚­ãƒ¼æ–‡å­—åˆ—
      */
     public String getBindDataMap(String name);
 }

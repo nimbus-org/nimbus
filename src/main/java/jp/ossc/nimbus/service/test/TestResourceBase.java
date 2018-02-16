@@ -34,50 +34,50 @@ package jp.ossc.nimbus.service.test;
 import java.util.Map;
 
 /**
- * Šî’êƒeƒXƒgƒŠƒ\[ƒXB<p>
+ * åŸºåº•ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
 public interface TestResourceBase extends TestPhaseExecutable {
     
     /**
-     * ƒGƒ‰[‚ÌŒp‘±í•ÊFƒfƒtƒHƒ‹ƒgB<p>
+     * ã‚¨ãƒ©ãƒ¼æ™‚ã®ç¶™ç¶šç¨®åˆ¥ï¼šãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã€‚<p>
      */
     public static int CONTINUE_TYPE_DEFAULT = -1;
     /**
-     * ƒGƒ‰[‚ÌŒp‘±í•ÊFŒp‘±‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼æ™‚ã®ç¶™ç¶šç¨®åˆ¥ï¼šç¶™ç¶šã™ã‚‹ã€‚<p>
      */
     public static int CONTINUE_TYPE_TRUE = 1;
     /**
-     * ƒGƒ‰[‚ÌŒp‘±í•ÊFŒp‘±‚µ‚È‚¢B<p>
+     * ã‚¨ãƒ©ãƒ¼æ™‚ã®ç¶™ç¶šç¨®åˆ¥ï¼šç¶™ç¶šã—ãªã„ã€‚<p>
      */
     public static int CONTINUE_TYPE_FALSE = 0;
     
     /**
-     * ƒ^ƒCƒgƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒgƒ‹
+     * @return ã‚¿ã‚¤ãƒˆãƒ«
      */
     public String getTitle();
     
     /**
-     * à–¾‚ğæ“¾‚·‚éB<p>
+     * èª¬æ˜ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return à–¾
+     * @return èª¬æ˜
      */
     public String getDescription();
     
     /**
-     * ƒJƒeƒSƒŠ‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚«ãƒ†ã‚´ãƒªã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒJƒeƒSƒŠ–¼‚ÆƒJƒeƒSƒŠ’l‚Ìƒ}ƒbƒv
+     * @return ã‚«ãƒ†ã‚´ãƒªåã¨ã‚«ãƒ†ã‚´ãƒªå€¤ã®ãƒãƒƒãƒ—
      */
     public Map getCategoryMap();
     
     /**
-     * ƒGƒ‰[‚ÌŒp‘±í•Ê‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼æ™‚ã®ç¶™ç¶šç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * return ƒGƒ‰[‚ÌŒp‘±í•Ê
+     * return ã‚¨ãƒ©ãƒ¼æ™‚ã®ç¶™ç¶šç¨®åˆ¥
      * @see #CONTINUE_TYPE_DEFAULT
      * @see #CONTINUE_TYPE_TRUE
      * @see #CONTINUE_TYPE_FALSE
@@ -85,18 +85,18 @@ public interface TestResourceBase extends TestPhaseExecutable {
     public int getErrorContinue();
     
     /**
-     * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒgƒ‹‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒgƒ‹
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒˆãƒ«
      */
     public String getActionTitle(String actionId);
     
     /**
-     * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìà–¾‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®èª¬æ˜ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @return ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìà–¾
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @return ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®èª¬æ˜
      */
     public String getActionDescription(String actionId);
 }

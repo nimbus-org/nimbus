@@ -32,24 +32,24 @@
 package jp.ossc.nimbus.service.http;
 
 /**
- * REST HTTPƒŠƒNƒGƒXƒgB<p>
+ * REST HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface RESTHttpRequest extends HttpRequest{
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éƒŠƒ\[ƒX‚ğ“Á’è‚·‚éƒL[‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒŠƒ\[ƒX‚ğ“Á’è‚·‚éƒL[
+     * @param key ãƒªã‚½ãƒ¼ã‚¹ã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
      */
     public void addKey(String key);
     
     /**
-     * ƒŠƒNƒGƒXƒgURL’†‚ÌƒŠƒNƒGƒXƒg‚·‚éƒŠƒ\[ƒX‚ğ“Á’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆURLä¸­ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒL[–¼
-     * @param value ’l
+     * @param name ã‚­ãƒ¼å
+     * @param value å€¤
      */
     public void setKey(String name, String value);
 }

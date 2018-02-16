@@ -29,46 +29,46 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 import java.util.regex.*;
 
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[–ˆ‚ÌƒL[ƒpƒ^[ƒ“‚ğŠÇ—‚·‚éƒNƒ‰ƒX<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼æ¯ã®ã‚­ãƒ¼ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class InterceptorPaternConfig {
-	// ƒCƒ“ƒ^[ƒZƒvƒ^–¼
+	// ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å
 	protected ServiceName mInterceptorServiceName = null;
-	// ƒpƒ^[ƒ“”z—ñ
+	// ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—
 	protected Pattern[] mPatterns = null;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
 	 */
 	public InterceptorPaternConfig(){
 		super();
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^–¼‚ğŠi”[‚·‚é<br>
-	 * @param interceptorServiceName		ƒCƒ“ƒ^[ƒZƒvƒ^–¼
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿åã‚’æ ¼ç´ã™ã‚‹<br>
+	 * @param interceptorServiceName		ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å
 	 */
 	public void setInterceptorServiceName(ServiceName interceptorServiceName){
 		mInterceptorServiceName = interceptorServiceName;
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^–¼‚ğ•Ô‹p‚·‚é<br>
-	 * @return interceptorServiceName		ƒCƒ“ƒ^[ƒZƒvƒ^–¼
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿åã‚’è¿”å´ã™ã‚‹<br>
+	 * @return interceptorServiceName		ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å
 	 */
 	public ServiceName getInterceptorServiceName(){
 		return mInterceptorServiceName;
 	}
 	/**
-	 * ƒpƒ^[ƒ“•¶š—ñ”z—ñ‚ğƒRƒ“ƒpƒCƒ‹‚µƒpƒ^[ƒ“”z—ñ‚ğì¬‚·‚ébr>
-	 * @param String[]		ƒpƒ^[ƒ“•¶š—ñ”z—ñ
+	 * ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—é…åˆ—ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã‚’ä½œæˆã™ã‚‹br>
+	 * @param String[]		ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—é…åˆ—
 	 */
 	public void setPatterns(String[] patternStrings){
 		mPatterns = null;
@@ -81,42 +81,42 @@ public class InterceptorPaternConfig {
 		}
 	}
 	/**
-	 * ƒpƒ^[ƒ“”z—ñ‚ğŠi”[‚·‚é<br>
-	 * @param Pattern[]		ƒpƒ^[ƒ“”z—ñ
+	 * ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã‚’æ ¼ç´ã™ã‚‹<br>
+	 * @param Pattern[]		ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—
 	 */
 	public void setPatterns(Pattern[] patterns){
 		mPatterns = patterns;
 	}
 	/**
-	 * ƒpƒ^[ƒ“”z—ñ‚ğ•Ô‹p‚·‚é<br>
-	 * @return Pattern[]		ƒpƒ^[ƒ“”z—ñ
+	 * ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã‚’è¿”å´ã™ã‚‹<br>
+	 * @return Pattern[]		ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—
 	 */
 	public Pattern[] getPatterns(){
 		return mPatterns;
 	}
 	/**
-	 * ˆø”‚Åó‚¯æ‚Á‚½•¶š—ñ‚Æƒpƒ^[ƒ“”z—ñ‚Ìƒpƒ^[ƒ“ƒ}ƒbƒ`ƒ“ƒO‚ğs‚¢A<br>
-	 * ˆê‚Â‚Å‚àƒ}ƒbƒ`‚µ‚½ê‡true‚ğ•Ô‹p<br>
-	 * @param String			•¶š—ñ(ƒGƒCƒŠƒAƒX)
-	 * @return boolean			true:ƒ}ƒbƒ`‚µ‚½/false:ƒ}ƒbƒ`‚µ‚È‚©‚Á‚½
+	 * å¼•æ•°ã§å—ã‘å–ã£ãŸæ–‡å­—åˆ—ã¨ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã„ã€<br>
+	 * ä¸€ã¤ã§ã‚‚ãƒãƒƒãƒã—ãŸå ´åˆtrueã‚’è¿”å´<br>
+	 * @param String			æ–‡å­—åˆ—(ã‚¨ã‚¤ãƒªã‚¢ã‚¹)
+	 * @return boolean			true:ãƒãƒƒãƒã—ãŸ/false:ãƒãƒƒãƒã—ãªã‹ã£ãŸ
 	 */
 	public boolean isMatch(String inString){
-		// ƒpƒ^[ƒ“”z—ñ‚ªnull‚Ìê‡
+		// ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ãŒnullã®å ´åˆ
 		if(mPatterns == null){
-			// •sˆê’v‚Å•Ô‹p
+			// ä¸ä¸€è‡´ã§è¿”å´
 			return false;
 		}
-		// ƒpƒ^[ƒ“”z—ñ‚Åƒ‹[ƒv
+		// ãƒ‘ã‚¿ãƒ¼ãƒ³é…åˆ—ã§ãƒ«ãƒ¼ãƒ—
 		for(int icnt = 0; icnt < mPatterns.length; icnt++){
-			// ƒpƒ^[ƒ“‚²‚Æ‚Éƒ}ƒbƒ`ƒƒ‚ğì¬
+			// ãƒ‘ã‚¿ãƒ¼ãƒ³ã”ã¨ã«ãƒãƒƒãƒãƒ£ã‚’ä½œæˆ
 			final Matcher matcher = mPatterns[icnt].matcher(inString);
-			// ƒpƒ^[ƒ“ƒ}ƒbƒ`ƒ“ƒO‚Åƒ}ƒbƒ`‚µ‚½ê‡
+			// ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒãƒ³ã‚°ã§ãƒãƒƒãƒã—ãŸå ´åˆ
 			if(matcher.matches()){
-				// ˆê’v‚Å•Ô‹p
+				// ä¸€è‡´ã§è¿”å´
 				return true;
 			}
 		}
-		// ƒpƒ^[ƒ“ƒ}ƒbƒ`ƒ“ƒO‚Åƒ}ƒbƒ`‚µ‚È‚©‚Á‚½ˆ×•sˆê’v‚Å•Ô‹p
+		// ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒãƒƒãƒãƒ³ã‚°ã§ãƒãƒƒãƒã—ãªã‹ã£ãŸç‚ºä¸ä¸€è‡´ã§è¿”å´
 		return false;
 	}
 

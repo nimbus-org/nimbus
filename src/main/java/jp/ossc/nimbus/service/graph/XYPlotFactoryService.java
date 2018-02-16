@@ -56,7 +56,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * XYƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * XYãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -65,111 +65,111 @@ public class XYPlotFactoryService extends ServiceBase
     
     private static final long serialVersionUID = 7687375902291200266L;
     
-    /** ƒvƒƒbƒg–¼ */
+    /** ãƒ—ãƒ­ãƒƒãƒˆå */
     private String name;
-    /** ƒf[ƒ^ƒZƒbƒgƒT[ƒrƒX–¼‚Ì”z—ñ */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ— */
     private ServiceName[] dsFactoryServiceNames;
-    /** ƒL[‚Éƒf[ƒ^ƒZƒbƒg–¼A’l‚Éƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠ‚Ìƒ}ƒbƒv */
+    /** ã‚­ãƒ¼ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã€å€¤ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ãƒãƒƒãƒ— */
     private Map dsFactoryMap;
 
-    /** ‰¡²ƒT[ƒrƒX–¼‚Ì”z—ñ */
+    /** æ¨ªè»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ— */
     private ServiceName[] domainAxisServiceNames;
-    /** c²ƒT[ƒrƒX–¼‚Ì”z—ñ */
+    /** ç¸¦è»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ— */
     private ServiceName[] rangeAxisServiceNames;
-    /** ƒL[‚É‰¡²A’l‚É‰¡²ƒCƒ“ƒfƒbƒNƒX */
+    /** ã‚­ãƒ¼ã«æ¨ªè»¸ã€å€¤ã«æ¨ªè»¸ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ */
     private Map domainAxisIndexMap;
-    /** ƒL[‚Éc²A’l‚Éc²ƒCƒ“ƒfƒbƒNƒX */
+    /** ã‚­ãƒ¼ã«ç¸¦è»¸ã€å€¤ã«ç¸¦è»¸ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ */
     private Map rangeAxisIndexMap;
-    /** –Ú·‚è’²ß */
+    /** ç›®ç››ã‚Šèª¿ç¯€ */
     protected TickUnitAdjuster[] adjusters;
-    /** –Ú·‚è’²ßƒT[ƒrƒX–¼ */
+    /** ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName[] tickUnitAdjusterServiceNames;
 
-    /** ƒeƒ“ƒvƒŒ[ƒg—pƒvƒƒbƒg */
+    /** ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ãƒ—ãƒ­ãƒƒãƒˆ */
     protected XYPlot tmpPlot;
-    /** ƒvƒƒpƒeƒB : ƒf[ƒ^ƒZƒbƒg–¼=ƒŒƒ“ƒ_ƒ‰[–¼ */
+    /** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ : ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼å */
     private Properties dsRendererNames;
-    /** ƒvƒƒpƒeƒB : ƒf[ƒ^ƒZƒbƒg–¼=‰¡²–¼ */
+    /** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ : ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=æ¨ªè»¸å */
     private Properties dsDomainAxisNames;
-    /** ƒvƒƒpƒeƒB : ƒf[ƒ^ƒZƒbƒg–¼=c²–¼ */
+    /** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ : ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ç¸¦è»¸å */
     private Properties dsRangeAxisNames;
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetFactoryServiceNames(ServiceName[] names) {
         dsFactoryServiceNames = names;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getDatasetFactoryServiceNames() {
         return dsFactoryServiceNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetRendererServiceNames(Properties names) {
         dsRendererNames = names;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public Properties getDatasetRendererServiceNames() {
         return dsRendererNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetDomainAxisNames(Properties names) {
         dsDomainAxisNames = names;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public Properties getDatasetDomainAxisNames() {
         return dsDomainAxisNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDatasetRangeAxisNames(Properties names) {
         dsRangeAxisNames = names;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public Properties getDatasetRangeAxisNames() {
         return dsRangeAxisNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setDomainAxisServiceNames(ServiceName[] serviceNames) {
         domainAxisServiceNames = serviceNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getDomainAxisServiceNames() {
         return domainAxisServiceNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setRangeAxisServiceNames(ServiceName[] serviceNames) {
         rangeAxisServiceNames = serviceNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getRangeAxisServiceNames() {
         return rangeAxisServiceNames;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setTickUnitAdjusters(TickUnitAdjuster[] adjusters) {
         this.adjusters = adjusters;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public TickUnitAdjuster[] getTickUnitAdjusters() {
         return adjusters;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public void setTickUnitAdjusterServiceNames(ServiceName[] names){
         tickUnitAdjusterServiceNames = names;
     }
 
-    // XYPlotFactoryServiceMBean‚ÌJavaDoc
+    // XYPlotFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getTickUnitAdjusterNames(){
         return tickUnitAdjusterServiceNames;
     }
@@ -178,7 +178,7 @@ public class XYPlotFactoryService extends ServiceBase
         dsFactoryMap.put(factory.getName(), factory);
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception {
         dsFactoryMap = new LinkedHashMap();
         domainAxisIndexMap = new HashMap();
@@ -192,16 +192,16 @@ public class XYPlotFactoryService extends ServiceBase
                   );
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception {
         if (name == null || name.length() == 0) {
-            // ƒT[ƒrƒX’è‹`‚Åİ’è‚³‚ê‚È‚©‚Á‚½ê‡
+            // ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆ
             name = getServiceName();
         }
 
         if (dsFactoryServiceNames != null && dsFactoryServiceNames.length != 0) {
             for (int i = 0; i < dsFactoryServiceNames.length; i++) {
-                // ‚±‚Ìƒvƒƒbƒg‚ÉŠÖ˜A‚·‚éƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ğæ“¾
+                // ã“ã®ãƒ—ãƒ­ãƒƒãƒˆã«é–¢é€£ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
                 DatasetFactory dsFactory =
                     (DatasetFactory) ServiceManagerFactory.getServiceObject(dsFactoryServiceNames[i]);
 
@@ -210,7 +210,7 @@ public class XYPlotFactoryService extends ServiceBase
                         "DatasetFactory[" + dsFactoryServiceNames[i].getServiceName() + "] is null."
                     );
                 } else {
-                    // ƒL[‚Éƒf[ƒ^ƒZƒbƒg–¼A’l‚Éƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠ
+                    // ã‚­ãƒ¼ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã€å€¤ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒª
                     dsFactoryMap.put(dsFactory.getName(), dsFactory);
                 }
             }
@@ -222,7 +222,7 @@ public class XYPlotFactoryService extends ServiceBase
         }
 
 
-        // ‰¡²
+        // æ¨ªè»¸
         if (domainAxisServiceNames != null && domainAxisServiceNames.length > 0) {
             for (int i = 0; i < domainAxisServiceNames.length; i++) {
                 domainAxisIndexMap.put(
@@ -231,7 +231,7 @@ public class XYPlotFactoryService extends ServiceBase
             }
         }
 
-        // c²
+        // ç¸¦è»¸
         if (rangeAxisServiceNames != null && rangeAxisServiceNames.length > 0) {
             for (int i = 0; i < rangeAxisServiceNames.length; i++) {
                 rangeAxisIndexMap.put(
@@ -250,13 +250,13 @@ public class XYPlotFactoryService extends ServiceBase
         }
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void stopService() throws Exception {
         domainAxisIndexMap.clear();
         rangeAxisIndexMap.clear();
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception {
         dsFactoryMap = null;
         domainAxisIndexMap = null;
@@ -275,9 +275,9 @@ public class XYPlotFactoryService extends ServiceBase
     }
 
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg—pƒvƒƒbƒg‚©‚ç’l‚ğƒRƒs[‚µ‚½ƒvƒƒbƒg‚ğì¬‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ãƒ—ãƒ­ãƒƒãƒˆã‹ã‚‰å€¤ã‚’ã‚³ãƒ”ãƒ¼ã—ãŸãƒ—ãƒ­ãƒƒãƒˆã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @return XYƒvƒƒbƒg
+     * @return XYãƒ—ãƒ­ãƒƒãƒˆ
      */
     protected XYPlot copyXYPlot() {
         XYPlot xyPlot = newXYPlot();
@@ -325,7 +325,7 @@ public class XYPlotFactoryService extends ServiceBase
         xyPlot.setQuadrantOrigin(tmpPlot.getQuadrantOrigin());
 
         for (int i = 0; i < 4; i++) {
-            // QuadrantPaint‚ÍƒTƒCƒY4‚Ì”z—ñ‚Å•Û‚³‚ê‚Ä‚¢‚Ü‚·B
+            // QuadrantPaintã¯ã‚µã‚¤ã‚º4ã®é…åˆ—ã§ä¿æŒã•ã‚Œã¦ã„ã¾ã™ã€‚
             xyPlot.setQuadrantPaint(i, tmpPlot.getQuadrantPaint(i));
         }
 
@@ -360,10 +360,10 @@ public class XYPlotFactoryService extends ServiceBase
     }
 
     /**
-     * •¡”‚ÌƒvƒƒbƒgğŒ‚©‚çAƒvƒƒbƒg–¼‚ªˆê’v‚·‚é‚à‚Ì‚ğ1‚Â‚ÌƒvƒƒbƒgğŒ‚Éƒ}[ƒW‚·‚éB<p>
+     * è¤‡æ•°ã®ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã‹ã‚‰ã€ãƒ—ãƒ­ãƒƒãƒˆåãŒä¸€è‡´ã™ã‚‹ã‚‚ã®ã‚’1ã¤ã®ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã«ãƒãƒ¼ã‚¸ã™ã‚‹ã€‚<p>
      *
-     * @param plotConditions ƒvƒƒbƒgğŒ‚Ì”z—ñ
-     * @return 1‚Â‚Éƒ}[ƒW‚µ‚½ƒvƒƒbƒgğŒ
+     * @param plotConditions ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã®é…åˆ—
+     * @return 1ã¤ã«ãƒãƒ¼ã‚¸ã—ãŸãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶
      */
     protected XYPlotConditionImpl mergeXYPlotCondition(PlotCondition[] plotConditions) {
         if (plotConditions == null || plotConditions.length == 0) {
@@ -514,11 +514,11 @@ public class XYPlotFactoryService extends ServiceBase
         return xyPlotCondition;
     }
 
-    // PlotFactory‚ÌJavaDoc
+    // PlotFactoryã®JavaDoc
     public Plot createPlot(PlotCondition[] plotConditions)
         throws PlotCreateException {
 
-        // •¡”‚ÌƒvƒƒbƒgğŒ‚ğ1‚Â‚Éƒ}[ƒW
+        // è¤‡æ•°ã®ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã‚’1ã¤ã«ãƒãƒ¼ã‚¸
         XYPlotConditionImpl xyPlotCondition = mergeXYPlotCondition(plotConditions);
         if (xyPlotCondition == null) {
             return new XYPlot(
@@ -529,18 +529,18 @@ public class XYPlotFactoryService extends ServiceBase
                     );
         }
 
-        // ƒeƒ“ƒvƒŒ[ƒg‚Ìƒvƒƒbƒg‚©‚ç’l‚ğƒRƒs[‚µ‚½ƒvƒƒbƒgì¬
+        // ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ãƒ—ãƒ­ãƒƒãƒˆã‹ã‚‰å€¤ã‚’ã‚³ãƒ”ãƒ¼ã—ãŸãƒ—ãƒ­ãƒƒãƒˆä½œæˆ
         XYPlot xyPlot = copyXYPlot();
-        // ƒf[ƒ^ƒZƒbƒgƒŠƒXƒg
+        // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒªã‚¹ãƒˆ
         List dsFactoryList = new ArrayList();
-        // —LŒø‚Èƒf[ƒ^ƒZƒbƒg–¼‚ğæ“¾
+        // æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’å–å¾—
         String[] enableDsNames = xyPlotCondition.getEnableDatasetNames();
-        // İ’è‡‚Ìƒf[ƒ^ƒZƒbƒg–¼‚ğæ“¾
+        // è¨­å®šé †ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’å–å¾—
         String[] dsNamesOrder = xyPlotCondition.getDatasetNameOrder();
-        // ƒf[ƒ^ƒZƒbƒgğŒ‚Éİ’è‚³‚ê‚½‚Æ‚«‚Ì‚İ“K—p
+        // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã«è¨­å®šã•ã‚ŒãŸã¨ãã®ã¿é©ç”¨
         if (dsNamesOrder != null && dsNamesOrder.length > 0) {
             for (int j = 0; j < dsNamesOrder.length; j++) {
-                // ƒf[ƒ^ƒZƒbƒg–¼
+                // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
                 String dsName = dsNamesOrder[j];
                 boolean isEnabled = false;
                 if(enableDsNames != null && enableDsNames.length > 0) {
@@ -553,7 +553,7 @@ public class XYPlotFactoryService extends ServiceBase
 
                     if (isEnabled) {
                         if (dsFactoryMap.containsKey(dsName)) {
-                            // —LŒø‚Èƒf[ƒ^ƒZƒbƒg
+                            // æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
                             dsFactoryList.add(dsFactoryMap.get(dsName));
                         }
                     }
@@ -562,8 +562,8 @@ public class XYPlotFactoryService extends ServiceBase
             }
         } else {
             /*
-             * ƒf[ƒ^ƒZƒbƒgğŒ‚Éƒf[ƒ^ƒZƒbƒg‡˜A—LŒøƒf[ƒ^ƒZƒbƒg–¼‚ª
-             * İ’è‚³‚ê‚È‚©‚Á‚½ê‡‚ÍAƒT[ƒrƒX’è‹`‚Ì‡˜‚Åƒf[ƒ^ƒZƒbƒg‚ğİ’è
+             * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆé †åºã€æœ‰åŠ¹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåãŒ
+             * è¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®é †åºã§ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¨­å®š
              */
             dsFactoryList.addAll(dsFactoryMap.values());
         }
@@ -580,19 +580,19 @@ public class XYPlotFactoryService extends ServiceBase
             try {
                 ds = dsFactory.createDataset(dsConditions);
             } catch (DatasetCreateException e) {
-                // ƒf[ƒ^ƒZƒbƒg¶¬¸”s
+                // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆç”Ÿæˆå¤±æ•—
                 throw new PlotCreateException(e);
             }
 
-            // ƒT[ƒrƒX–¼ƒGƒfƒBƒ^
+            // ã‚µãƒ¼ãƒ“ã‚¹åã‚¨ãƒ‡ã‚£ã‚¿
             ServiceNameEditor editor = new ServiceNameEditor();
             editor.setServiceManagerName(getServiceManagerName());
-            // ƒf[ƒ^ƒZƒbƒg‚Ìƒ‹[ƒv
+            // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒ«ãƒ¼ãƒ—
             if (ds != null && (ds instanceof XYDataset)) {
-                // ƒf[ƒ^ƒZƒbƒg
+                // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
                 xyPlot.setDataset(j, (XYDataset) ds);
 
-                // ‚±‚Ìƒf[ƒ^ƒZƒbƒg‚ªŠ‘®‚·‚é‰¡²–¼
+                // ã“ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãŒæ‰€å±ã™ã‚‹æ¨ªè»¸å
                 if (dsDomainAxisNames != null && dsDomainAxisNames.size() > 0) {
                     String domainAxisName = dsDomainAxisNames.getProperty(dsName);
                     if (domainAxisName != null
@@ -603,7 +603,7 @@ public class XYPlotFactoryService extends ServiceBase
                     }
                 }
 
-                // ‚±‚Ìƒf[ƒ^ƒZƒbƒg‚ªŠ‘®‚·‚éc²–¼
+                // ã“ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãŒæ‰€å±ã™ã‚‹ç¸¦è»¸å
                 if (dsRangeAxisNames != null && dsRangeAxisNames.size() > 0) {
                     String rangeAxisName = dsRangeAxisNames.getProperty(dsName);
                     if (rangeAxisName != null && rangeAxisIndexMap.containsKey(rangeAxisName)) {
@@ -612,7 +612,7 @@ public class XYPlotFactoryService extends ServiceBase
                     }
                 }
 
-                // ƒŒƒ“ƒ_ƒ‰[
+                // ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼
                 XYItemRenderer renderer = null;
                 if (dsRendererNames != null && dsRendererNames.size() > 0) {
                     String rendererNameStr = dsRendererNames.getProperty(dsName);
@@ -630,13 +630,13 @@ public class XYPlotFactoryService extends ServiceBase
             }
         }
 
-        // ‰¡²
+        // æ¨ªè»¸
         if (domainAxisServiceNames != null && domainAxisServiceNames.length > 0) {
             for (int j = 0; j < domainAxisServiceNames.length; j++) {
                 ValueAxis domainAxis =
                     (ValueAxis) ServiceManagerFactory.getServiceObject(domainAxisServiceNames[j]);
 
-                // ‰¡²ƒ‰ƒxƒ‹ƒtƒHƒ“ƒg
+                // æ¨ªè»¸ãƒ©ãƒ™ãƒ«ãƒ•ã‚©ãƒ³ãƒˆ
                 if (xyPlotCondition.getDefaultDomainAxisLabelFontName() != null
                     || xyPlotCondition.getDefaultDomainAxisLabelFontStyle() != Integer.MIN_VALUE
                     || xyPlotCondition.getDefaultDomainAxisLabelFontSize() != Integer.MIN_VALUE
@@ -663,7 +663,7 @@ public class XYPlotFactoryService extends ServiceBase
                     );
                 }
 
-                // ‰¡²Tickƒ‰ƒxƒ‹ƒtƒHƒ“ƒg
+                // æ¨ªè»¸Tickãƒ©ãƒ™ãƒ«ãƒ•ã‚©ãƒ³ãƒˆ
                 if (xyPlotCondition.getDefaultDomainAxisTickLabelFontName() != null
                     || xyPlotCondition.getDefaultDomainAxisTickLabelFontStyle() != Integer.MIN_VALUE
                     || xyPlotCondition.getDefaultDomainAxisTickLabelFontSize() != Integer.MIN_VALUE
@@ -694,13 +694,13 @@ public class XYPlotFactoryService extends ServiceBase
             }
         }
 
-        // c²
+        // ç¸¦è»¸
         if (rangeAxisServiceNames != null && rangeAxisServiceNames.length > 0) {
             for (int j = 0; j < rangeAxisServiceNames.length; j++) {
                 ValueAxis rangeAxis =
                     (ValueAxis) ServiceManagerFactory.getServiceObject(rangeAxisServiceNames[j]);
 
-                // c²ƒ‰ƒxƒ‹ƒtƒHƒ“ƒg
+                // ç¸¦è»¸ãƒ©ãƒ™ãƒ«ãƒ•ã‚©ãƒ³ãƒˆ
                 if (xyPlotCondition.getDefaultRangeAxisLabelFontName() != null
                     || xyPlotCondition.getDefaultRangeAxisLabelFontStyle() != Integer.MIN_VALUE
                     || xyPlotCondition.getDefaultRangeAxisLabelFontSize() !=  Integer.MIN_VALUE
@@ -727,7 +727,7 @@ public class XYPlotFactoryService extends ServiceBase
                     );
                 }
 
-                // c²Tickƒ‰ƒxƒ‹ƒtƒHƒ“ƒg
+                // ç¸¦è»¸Tickãƒ©ãƒ™ãƒ«ãƒ•ã‚©ãƒ³ãƒˆ
                 if (xyPlotCondition.getDefaultRangeAxisTickLabelFontName() != null
                     || xyPlotCondition.getDefaultRangeAxisTickLabelFontStyle() != Integer.MIN_VALUE
                     || xyPlotCondition.getDefaultRangeAxisTickLabelFontSize() != Integer.MIN_VALUE
@@ -754,7 +754,7 @@ public class XYPlotFactoryService extends ServiceBase
                     );
                 }
 
-                // c²‚Ì‰Â‹ó‘Ôİ’è
+                // ç¸¦è»¸ã®å¯è¦–çŠ¶æ…‹è¨­å®š
                 if (xyPlotCondition.isRangeAxisVisible(j) != null) {
                     rangeAxis.setVisible(
                         xyPlotCondition.isRangeAxisVisible(j).booleanValue()
@@ -766,7 +766,7 @@ public class XYPlotFactoryService extends ServiceBase
         }
 
         if (adjusters != null) {
-            // –Ú·‚è’²ß
+            // ç›®ç››ã‚Šèª¿ç¯€
             for(int i = 0; i < adjusters.length; i++){
                 adjusters[i].adjust(xyPlot);
             }
@@ -775,14 +775,14 @@ public class XYPlotFactoryService extends ServiceBase
     }
 
     /**
-     * w’è‚³‚ê‚½ƒtƒHƒ“ƒg‚Æ
-     * w’è‚³‚ê‚½[ƒtƒHƒ“ƒg–¼AƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹AƒtƒHƒ“ƒgƒTƒCƒY]‚ğƒ}[ƒW‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ³ãƒˆã¨
+     * æŒ‡å®šã•ã‚ŒãŸ[ãƒ•ã‚©ãƒ³ãƒˆåã€ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«ã€ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º]ã‚’ãƒãƒ¼ã‚¸ã™ã‚‹ã€‚<p>
      *
-     * @param orgFont ƒtƒHƒ“ƒg
-     * @param fontName ƒtƒHƒ“ƒg–¼
-     * @param fontStyle ƒtƒHƒ“ƒgƒXƒ^ƒCƒ‹
-     * @param fontSize ƒtƒHƒ“ƒgƒTƒCƒY
-     * @return ƒ}[ƒW‚µ‚½ƒtƒHƒ“ƒg
+     * @param orgFont ãƒ•ã‚©ãƒ³ãƒˆ
+     * @param fontName ãƒ•ã‚©ãƒ³ãƒˆå
+     * @param fontStyle ãƒ•ã‚©ãƒ³ãƒˆã‚¹ã‚¿ã‚¤ãƒ«
+     * @param fontSize ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
+     * @return ãƒãƒ¼ã‚¸ã—ãŸãƒ•ã‚©ãƒ³ãƒˆ
      */
     protected Font mergeFont(
         Font orgFont,
@@ -809,17 +809,17 @@ public class XYPlotFactoryService extends ServiceBase
         return new Font(newName, newStyle, newSize);
     }
 
-    // PlotFactory‚ÌJavaDoc
+    // PlotFactoryã®JavaDoc
     public Plot getPlot() {
         return tmpPlot;
     }
 
-    // PlotFactory‚ÌJavaDoc
+    // PlotFactoryã®JavaDoc
     public void setName(String name) {
         this.name = name;
     }
 
-    // PlotFactory‚ÌJavaDoc
+    // PlotFactoryã®JavaDoc
     public String getName() {
         return name;
     }

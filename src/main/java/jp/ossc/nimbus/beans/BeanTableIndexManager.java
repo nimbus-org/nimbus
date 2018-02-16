@@ -43,7 +43,7 @@ import java.io.ObjectInput;
 import java.io.IOException;
 
 /**
- * {@link BeanTableIndex Beanƒe[ƒuƒ‹ƒCƒ“ƒfƒbƒNƒX}‚ÌŠÇ—ƒNƒ‰ƒXB<p>
+ * {@link BeanTableIndex Beanãƒ†ãƒ¼ãƒ–ãƒ«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹}ã®ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -94,7 +94,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
                 setIndexInternal(name, index, true);
             }
         }catch(NoSuchPropertyException e){
-            // ‹N‚±‚ç‚È‚¢
+            // èµ·ã“ã‚‰ãªã„
         }
     }
     protected void setIndexInternal(String name, BeanTableIndex index, boolean containsDummyProp) throws NoSuchPropertyException{
@@ -930,7 +930,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
                 setIndexInternal(index.getName(), index, true);
             }
         }catch(NoSuchPropertyException e){
-            // ”­¶‚µ‚È‚¢‚Í‚¸
+            // ç™ºç”Ÿã—ãªã„ã¯ãš
         }
         if(readValue){
             valueSet = (HashSet)in.readObject();
@@ -957,7 +957,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
                 clone.setIndexInternal((String)entry.getKey(), ((BeanTableIndex)entry.getValue()).cloneEmpty(isSynchronized), true);
             }
         }catch(NoSuchPropertyException e){
-            // ”­¶‚µ‚È‚¢‚Í‚¸
+            // ç™ºç”Ÿã—ãªã„ã¯ãš
         }
         clone.valueSet = new HashSet();
         return clone;

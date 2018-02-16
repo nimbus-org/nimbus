@@ -55,21 +55,21 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
 
 /**
- * ƒT[ƒuƒŒƒbƒgƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^¨DataSetƒRƒ“ƒo[ƒ^B<p>
- * {@link javax.servlet.ServletRequest#getParameterValues(String)}‚Åæ“¾‚Å‚«‚éƒpƒ‰ƒ[ƒ^‚ğ{@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚Ì{@link jp.ossc.nimbus.beans.dataset.Header Header}‚âA{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚Ì‚Â{@link Record Record}‚ÌƒvƒƒpƒeƒB‚Éİ’è‚µ‚ÄADataSetƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÅAƒf[ƒ^ƒZƒbƒg–¼‚Æƒf[ƒ^ƒZƒbƒg‚É‚Ç‚Ì‚æ‚¤‚É’l‚ğİ’è‚·‚é‚©‚ÌƒvƒƒpƒeƒB•\Œ»‚ğw’è‚·‚é–‚ÅAƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÆDataSet‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğs‚¤B<br>
+ * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿â†’DataSetã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
+ * {@link javax.servlet.ServletRequest#getParameterValues(String)}ã§å–å¾—ã§ãã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’{@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ã®{@link jp.ossc.nimbus.beans.dataset.Header Header}ã‚„ã€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã®æŒã¤{@link Record Record}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è¨­å®šã—ã¦ã€DataSetã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã§ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«ã©ã®ã‚ˆã†ã«å€¤ã‚’è¨­å®šã™ã‚‹ã‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¡¨ç¾ã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨DataSetã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¡Œã†ã€‚<br>
  * <p>
- * DataSet‚ÍA{@link #setDataSet(String, jp.ossc.nimbus.beans.dataset.DataSet) setDataSet(String, DataSet)}‚Å—\‚ß‚±‚ÌConverter©g‚É“o˜^‚µ‚Ä‚¨‚­B‚±‚Ìê‡A‘æ1ˆø”‚ªƒf[ƒ^ƒZƒbƒg–¼‚Æ‚È‚éB<br>
- * ‚Ü‚½‚ÍA{@link #setBeanFlowInvokerFactory(BeanFlowInvokerFactory)}‚Åİ’è‚µ‚½BeanFlowInvokerFactory‚ÉADataSet‚ğ–ß‚è’l‚Æ‚·‚éBeanFlow‚ğ’è‹`‚µ‚Ä‚¨‚­B‚±‚Ìê‡ABeanFlow–¼‚ªƒf[ƒ^ƒZƒbƒg–¼‚Æ‚È‚éB<br>
+ * DataSetã¯ã€{@link #setDataSet(String, jp.ossc.nimbus.beans.dataset.DataSet) setDataSet(String, DataSet)}ã§äºˆã‚ã“ã®Converterè‡ªèº«ã«ç™»éŒ²ã—ã¦ãŠãã€‚ã“ã®å ´åˆã€ç¬¬1å¼•æ•°ãŒãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãªã‚‹ã€‚<br>
+ * ã¾ãŸã¯ã€{@link #setBeanFlowInvokerFactory(BeanFlowInvokerFactory)}ã§è¨­å®šã—ãŸBeanFlowInvokerFactoryã«ã€DataSetã‚’æˆ»ã‚Šå€¤ã¨ã™ã‚‹BeanFlowã‚’å®šç¾©ã—ã¦ãŠãã€‚ã“ã®å ´åˆã€BeanFlowåãŒãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãªã‚‹ã€‚<br>
  * <p>
- * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìw’è•û–@‚ÍAˆÈ‰º‚Ì’Ê‚èB‚Ü‚½AƒvƒƒpƒeƒB•\Œ»‚ÍA{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚ğQÆB<br>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æŒ‡å®šæ–¹æ³•ã¯ã€ä»¥ä¸‹ã®é€šã‚Šã€‚ã¾ãŸã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¡¨ç¾ã¯ã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã‚’å‚ç…§ã€‚<br>
  * <table border="1">
  *   <tr>
- *     <td>ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÆHeader‚Ìƒ}ƒbƒsƒ“ƒO•û–@</td>
+ *     <td>ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨Headerã®ãƒãƒƒãƒ”ãƒ³ã‚°æ–¹æ³•</td>
  *     <td>&lt;input name="ds1:Header(h1).prop1" type="text" value="a"&gt;</td>
  *   </tr>
  *   <tr>
- *     <td rowspan="2">ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ÆRecordList‚Ìƒ}ƒbƒsƒ“ƒO•û–@</td>
+ *     <td rowspan="2">ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨RecordListã®ãƒãƒƒãƒ”ãƒ³ã‚°æ–¹æ³•</td>
  *     <td>&lt;input name="ds1:RecordList(l1).prop1" type="text" value="a"&gt;<br>&lt;input name="ds1:RecordList(l1).prop1" type="text" value="a"&gt;</td>
  *   </tr>
  *   <tr>
@@ -77,7 +77,7 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
  *   </tr>
  * </table>
  * <p>
- * ‚Ü‚½Aƒf[ƒ^ƒZƒbƒg–¼‚Ìw’è‚ÍA‘S‚Ä‚ÌƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğ“¯‚¶DataSet‚ÉŠi”[‚·‚éê‡‚ÍˆêŠ‡‚Åw’è‚·‚é–‚à‚Å‚«AˆÈ‰º‚Ì‚æ‚¤‚É‚·‚éB<br>
+ * ã¾ãŸã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®æŒ‡å®šã¯ã€å…¨ã¦ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’åŒã˜DataSetã«æ ¼ç´ã™ã‚‹å ´åˆã¯ä¸€æ‹¬ã§æŒ‡å®šã™ã‚‹äº‹ã‚‚ã§ãã€ä»¥ä¸‹ã®ã‚ˆã†ã«ã™ã‚‹ã€‚<br>
  * <pre>
  *   &lt;input type="hidden" name="ds" value="ds1"&gt;
  *   &lt;input name=":Header(h1).prop1" type="text" value="a"&gt;
@@ -95,48 +95,48 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public static final String DEFAULT_DATASET_PREFIX = "dataset";
     
     /**
-     * ƒf[ƒ^ƒZƒbƒgƒ}ƒbƒsƒ“ƒOB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      */
     protected Map dataSetMap = new HashMap();
     
     /**
-     * BeanFlowInvokerFactoryB<p>
+     * BeanFlowInvokerFactoryã€‚<p>
      */
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
     
     /**
-     * Property‚ğƒLƒƒƒbƒVƒ…‚·‚éMapB<p>
+     * Propertyã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹Mapã€‚<p>
      */
     protected ConcurrentMap propertyCache = new ConcurrentHashMap();
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğŒˆ’è‚·‚éƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’æ±ºå®šã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected String dataSetParameterName = DEFAULT_DATASET_PARAMETER_NAME;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚Ì‹æØ‚èqB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®åŒºåˆ‡ã‚Šå­ã€‚<p>
      */
     protected String datasetDelimiter = DEFAULT_DATASET_DELIMITER;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğƒpƒX‚©‚çŒˆ’è‚·‚éê‡‚ÉAƒpƒX‚É•t‰Á‚·‚é‘O’uŒB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATASET_PREFIX}B<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’ãƒ‘ã‚¹ã‹ã‚‰æ±ºå®šã™ã‚‹å ´åˆã«ã€ãƒ‘ã‚¹ã«ä»˜åŠ ã™ã‚‹å‰ç½®è©ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATASET_PREFIX}ã€‚<br>
      */
     protected String dataSetPathPrefix = DEFAULT_DATASET_PREFIX;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚É‘¶İ‚µ‚È‚¢ƒpƒ‰ƒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å­˜åœ¨ã—ãªã„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ã€‚<br>
      */
     protected boolean isIgnoreUnknownParameter;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚Æƒf[ƒ^ƒZƒbƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ƒT[ƒuƒŒƒbƒgƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^¨ƒf[ƒ^ƒZƒbƒg•ÏŠ·‚ğs‚¤Û‚ÉAƒf[ƒ^ƒZƒbƒg–¼‚©‚çƒf[ƒ^ƒZƒbƒg‚ğ“Á’è‚·‚é‚Ì‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã¨ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿â†’ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå¤‰æ›ã‚’è¡Œã†éš›ã«ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç‰¹å®šã™ã‚‹ã®ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param name ƒf[ƒ^ƒZƒbƒg–¼
-     * @param dataSet ƒf[ƒ^ƒZƒbƒg
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
+     * @param dataSet ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     public void setDataSet(String name, DataSet dataSet){
         if(dataSet.getName() == null){
@@ -146,7 +146,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     }
     
     /**
-     * DataSet‚ğBeanFlow‚Åæ“¾‚·‚éê‡‚Ég—p‚·‚é{@link BeanFlowInvokerFactory}‚ğİ’è‚·‚éB<p>
+     * DataSetã‚’BeanFlowã§å–å¾—ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link BeanFlowInvokerFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory BeanFlowInvokerFactory
      */
@@ -155,87 +155,87 @@ public class DataSetServletRequestParameterConverter implements Converter{
     }
     
     /**
-     * DataSet–¼‚ğˆêŠ‡‚Åw’è‚·‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATASET_PARAMETER_NAME}B<br>
+     * DataSetåã‚’ä¸€æ‹¬ã§æŒ‡å®šã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATASET_PARAMETER_NAME}ã€‚<br>
      *
-     * @param name DataSet–¼‚ğˆêŠ‡‚Åw’è‚·‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
+     * @param name DataSetåã‚’ä¸€æ‹¬ã§æŒ‡å®šã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
      */
     public void setDataSetParameterName(String name){
         dataSetParameterName = name;
     }
     
     /**
-     * DataSet–¼‚ğˆêŠ‡‚Åw’è‚·‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼‚ğæ“¾‚·‚éB<p>
+     * DataSetåã‚’ä¸€æ‹¬ã§æŒ‡å®šã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return DataSet–¼‚ğˆêŠ‡‚Åw’è‚·‚éƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
+     * @return DataSetåã‚’ä¸€æ‹¬ã§æŒ‡å®šã™ã‚‹ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
      */
     public String getDataSetParameterName(){
         return dataSetParameterName;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚Ì‹æØ‚èq‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATASET_DELIMITER}B<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®åŒºåˆ‡ã‚Šå­ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATASET_DELIMITER}ã€‚<br>
      *
-     * @param delim ƒf[ƒ^ƒZƒbƒg–¼‚Ì‹æØ‚èq
+     * @param delim ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®åŒºåˆ‡ã‚Šå­
      */
     public void setDataSetDelimiter(String delim){
         datasetDelimiter = delim;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚Ì‹æØ‚èq‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®åŒºåˆ‡ã‚Šå­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼‚Ì‹æØ‚èq
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®åŒºåˆ‡ã‚Šå­
      */
     public String getDataSetDelimiter(){
         return datasetDelimiter;
     }
     
     /**
-     * DataSet–¼‚ğƒpƒX‚©‚çŒˆ’è‚·‚éê‡‚Ì‘O’uŒ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATASET_PREFIX}B<br>
+     * DataSetåã‚’ãƒ‘ã‚¹ã‹ã‚‰æ±ºå®šã™ã‚‹å ´åˆã®å‰ç½®è©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATASET_PREFIX}ã€‚<br>
      *
-     * @param prefix DataSet–¼‚ğƒpƒX‚©‚çŒˆ’è‚·‚éê‡‚Ì‘O’uŒ
+     * @param prefix DataSetåã‚’ãƒ‘ã‚¹ã‹ã‚‰æ±ºå®šã™ã‚‹å ´åˆã®å‰ç½®è©
      */
     public void setDataSetPathPrefix(String prefix){
         dataSetPathPrefix = prefix;
     }
     
     /**
-     * DataSet–¼‚ğƒpƒX‚©‚çŒˆ’è‚·‚éê‡‚Ì‘O’uŒ‚ğæ“¾‚·‚éB<p>
+     * DataSetåã‚’ãƒ‘ã‚¹ã‹ã‚‰æ±ºå®šã™ã‚‹å ´åˆã®å‰ç½®è©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return DataSet–¼‚ğƒpƒX‚©‚çŒˆ’è‚·‚éê‡‚Ì‘O’uŒ
+     * @return DataSetåã‚’ãƒ‘ã‚¹ã‹ã‚‰æ±ºå®šã™ã‚‹å ´åˆã®å‰ç½®è©
      */
     public String getDataSetPathPrefix(){
         return dataSetPathPrefix;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚É‘¶İ‚µ‚È‚¢ƒpƒ‰ƒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA•ÏŠ·ƒGƒ‰[‚Æ‚È‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å­˜åœ¨ã—ãªã„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€å¤‰æ›ã‚¨ãƒ©ãƒ¼ã¨ãªã‚‹ã€‚<br>
      * 
-     * @param isIgnore true‚Ìê‡A–³‹‚·‚é
+     * @param isIgnore trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public void setIgnoreUnknownParameter(boolean isIgnore){
         isIgnoreUnknownParameter = isIgnore;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚É‘¶İ‚µ‚È‚¢ƒpƒ‰ƒ[ƒ^‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã«å­˜åœ¨ã—ãªã„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreUnknownParameter(){
         return isIgnoreUnknownParameter;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(!(obj instanceof ServletRequest)){
@@ -349,7 +349,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
                                     vals
                                 );
                             }else{
-                                // ‚ ‚è‚¦‚È‚¢
+                                // ã‚ã‚Šãˆãªã„
                                 prop.setProperty(
                                     ds,
                                     vals[vals.length - 1]

@@ -35,25 +35,25 @@ import javax.jms.*;
 /**
  * @author y-tokuda
  *
- * ‚±‚Ì¶¬‚³‚ê‚½ƒRƒƒ“ƒg‚Ì‘}“ü‚³‚ê‚éƒeƒ“ƒvƒŒ[ƒg‚ğ•ÏX‚·‚é‚½‚ß
- * ƒEƒBƒ“ƒhƒE > İ’è > Java > ƒR[ƒh¶¬ > ƒR[ƒh‚ÆƒRƒƒ“ƒg
+ * ã“ã®ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¡ãƒ³ãƒˆã®æŒ¿å…¥ã•ã‚Œã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å¤‰æ›´ã™ã‚‹ãŸã‚
+ * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ > è¨­å®š > Java > ã‚³ãƒ¼ãƒ‰ç”Ÿæˆ > ã‚³ãƒ¼ãƒ‰ã¨ã‚³ãƒ¡ãƒ³ãƒˆ
  */
 public interface MessageResource {
 	/**
-	 * BLƒtƒ[iƒL[jæ“¾ƒƒ\ƒbƒh
+	 * BLãƒ•ãƒ­ãƒ¼ï¼ˆã‚­ãƒ¼ï¼‰å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public String getBLFlow(String pat);
 	/**
-	 * JMSƒƒbƒZ[ƒW¶¬ƒƒ\ƒbƒh
-	 * @return@Message
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”Ÿæˆãƒ¡ã‚½ãƒƒãƒ‰
+	 * @returnã€€Message
 	 */
 	public Message makeMessage(QueueSession session);
 	/**
-	 * JMS Message‚ğString‰»‚·‚éƒƒ\ƒbƒh
-	 * ‘æ2ˆø”‚É‘—MEóM‚Ìí•Ê‚ğ“ü‚ê‚é
-	 * ‘—M‚Ìê‡ "send"
-	 * óM‚Ìê‡ "recv"
-	 * ‚Æ‚·‚éB
+	 * JMS Messageã‚’StringåŒ–ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+	 * ç¬¬2å¼•æ•°ã«é€ä¿¡ãƒ»å—ä¿¡ã®ç¨®åˆ¥ã‚’å…¥ã‚Œã‚‹
+	 * é€ä¿¡ã®å ´åˆ "send"
+	 * å—ä¿¡ã®å ´åˆ "recv"
+	 * ã¨ã™ã‚‹ã€‚
 	 */
 	public String toString(Message msg,String kind);
 }

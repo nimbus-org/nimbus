@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.daemon;
 
 /**
- * �f�[�����X���b�h�Ŏ��s�����鏈�����������邽�߂̃C���^�t�F�[�X�B<p>
+ * デーモンスレッドで実行させる処理を実装するためのインタフェース。<p>
  *
  * @author H.Nakano
  * @see Daemon
@@ -40,53 +40,53 @@ package jp.ossc.nimbus.daemon;
 public interface DaemonRunnable{
     
     /**
-     * �f�[�����X���b�h���J�n���悤�Ƃ��鎞�Ɏ��s���鏈�����s���B<p>
+     * デーモンスレッドが開始しようとする時に実行する処理を行う。<p>
      *
-     * @return true�̏ꍇ�A�f�[�����X���b�h���J�n����Bfalse�̏ꍇ�A�f�[�����X���b�h�͊J�n���Ȃ��B
+     * @return trueの場合、デーモンスレッドが開始する。falseの場合、デーモンスレッドは開始しない。
      */
     public boolean onStart() ;
     
     /**
-     * �f�[�����X���b�h����~���悤�Ƃ��鎞�Ɏ��s���鏈�����s���B<p>
+     * デーモンスレッドが停止しようとする時に実行する処理を行う。<p>
      *
-     * @return true�̏ꍇ�A�f�[�����X���b�h����~����Bfalse�̏ꍇ�A�f�[�����X���b�h�͒�~���Ȃ��B
+     * @return trueの場合、デーモンスレッドが停止する。falseの場合、デーモンスレッドは停止しない。
      */
     public boolean onStop();
     
     /**
-     * �f�[�����X���b�h���ꎞ��~���悤�Ƃ��鎞�Ɏ��s���鏈�����s���B<p>
+     * デーモンスレッドが一時停止しようとする時に実行する処理を行う。<p>
      *
-     * @return true�̏ꍇ�A�f�[�����X���b�h���ꎞ��~����Bfalse�̏ꍇ�A�f�[�����X���b�h�͈ꎞ��~���Ȃ��B
+     * @return trueの場合、デーモンスレッドが一時停止する。falseの場合、デーモンスレッドは一時停止しない。
      */
     public boolean onSuspend();
     
     /**
-     * �f�[�����X���b�h���ĊJ���悤�Ƃ��鎞�Ɏ��s���鏈�����s���B<p>
+     * デーモンスレッドが再開しようとする時に実行する処理を行う。<p>
      *
-     * @return true�̏ꍇ�A�f�[�����X���b�h���ĊJ����Bfalse�̏ꍇ�A�f�[�����X���b�h�͍ĊJ���Ȃ��B
+     * @return trueの場合、デーモンスレッドが再開する。falseの場合、デーモンスレッドは再開しない。
      */
     public boolean onResume();
     
     /**
-     * �f�[�����X���b�h�ŏ�������C�ӂ̃I�u�W�F�N�g����������B<p>
+     * デーモンスレッドで処理する任意のオブジェクトを供給する。<p>
      * 
-     * @param ctrl �f�[�����X���b�h�̎��s�𐧌䂷��DaemonControl
-     * @return �C�ӂ̃I�u�W�F�N�g
-     * @exception Throwable �I�u�W�F�N�g�̋����ɂ����Ė�肪���������ꍇ
+     * @param ctrl デーモンスレッドの実行を制御するDaemonControl
+     * @return 任意のオブジェクト
+     * @exception Throwable オブジェクトの供給において問題が発生した場合
      */
     public Object provide(DaemonControl ctrl) throws Throwable;
     
     /**
-     * {@link #provide(DaemonControl)}�ɂ���ċ������ꂽ�C�ӂ̃I�u�W�F�N�g�������B<p>
+     * {@link #provide(DaemonControl)}によって供給された任意のオブジェクトを消費する。<p>
      * 
-     * @param paramObj �������ꂽ�C�ӂ̃I�u�W�F�N�g
-     * @param ctrl �f�[�����X���b�h�̎��s�𐧌䂷��DaemonControl
-     * @exception Throwable �I�u�W�F�N�g�̏���ɂ����Ė�肪���������ꍇ
+     * @param paramObj 供給された任意のオブジェクト
+     * @param ctrl デーモンスレッドの実行を制御するDaemonControl
+     * @exception Throwable オブジェクトの消費において問題が発生した場合
      */
     public void consume(Object paramObj, DaemonControl ctrl) throws Throwable;
     
     /**
-     * �f�[�����X���b�h����~���鎞�ɃK�x�[�W�������s���B<p>
+     * デーモンスレッドが停止する時にガベージ処理を行う。<p>
      */
     public void garbage();
 }

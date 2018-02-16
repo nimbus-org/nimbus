@@ -34,67 +34,67 @@ package jp.ossc.nimbus.service.test;
 import java.io.File;
 
 /**
- * ƒeƒXƒgƒŠƒ\[ƒXŠÇ—B<p>
+ * ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ç®¡ç†ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface TestResourceManager{
     
     /**
-     * ƒŠƒ\[ƒX‚ğƒŠƒ|ƒWƒgƒŠ‚©‚çƒ`ƒFƒbƒNƒAƒEƒg‚·‚éB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒªãƒã‚¸ãƒˆãƒªã‹ã‚‰ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ƒ`ƒFƒbƒNƒAƒEƒg‚É¸”s‚µ‚½ê‡
+     * @exception Exception ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void checkOut() throws Exception;
     
     /**
-     * ƒVƒiƒŠƒIƒOƒ‹[ƒvID‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒVƒiƒŠƒIƒOƒ‹[ƒvID‚Ì”z—ñ
+     * @return ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—IDã®é…åˆ—
      */
     public String[] getScenarioGroupIds() throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒv“à‚ÌƒVƒiƒŠƒIID‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—å†…ã®ã‚·ãƒŠãƒªã‚ªIDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @return ƒVƒiƒŠƒIID‚Ì”z—ñ
+     * @param groupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚·ãƒŠãƒªã‚ªIDã®é…åˆ—
      */
     public String[] getScenarioIds(String groupId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒI“à‚ÌƒeƒXƒgƒP[ƒXID‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªå†…ã®ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @return ƒeƒXƒgƒP[ƒXID‚Ì”z—ñ
+     * @param groupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @return ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã®é…åˆ—
      */
     public String[] getTestCaseIds(String groupId, String scenarioId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒeƒXƒgƒP[ƒX“à‚ÌƒXƒ^ƒuID‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹å†…ã®ã‚¹ã‚¿ãƒ–IDã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
-     * @return ƒXƒ^ƒuID‚Ì”z—ñ
+     * @param groupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
+     * @return ã‚¹ã‚¿ãƒ–IDã®é…åˆ—
      */
     public String[] getStubIds(String groupId, String scenarioId, String testcaseId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param dir ƒ_ƒEƒ“ƒ[ƒhæ‚ÌƒfƒBƒŒƒNƒgƒŠ
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
+     * @param dir ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å…ˆã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
      */
     public void downloadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½ƒVƒiƒŠƒI‚ÌƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚·ãƒŠãƒªã‚ªã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param dir ƒ_ƒEƒ“ƒ[ƒhæ‚ÌƒfƒBƒŒƒNƒgƒŠ
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
+     * @param dir ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å…ˆã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
      */
     public void downloadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception;
     

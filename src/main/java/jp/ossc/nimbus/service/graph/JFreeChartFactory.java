@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.graph;
 import org.jfree.chart.JFreeChart;
 
 /**
- * JFreeChartƒtƒ@ƒNƒgƒŠB<p>
+ * JFreeChartãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface JFreeChartFactory {
 
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg—p‚ÌJFreeChart‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ã®JFreeChartã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒ“ƒvƒŒ[ƒg—p‚ÌJFreeChart
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”¨ã®JFreeChart
      */
     public JFreeChart getJFreeChart();
 
     /**
-     * JFreeChart‚ğ¶¬‚·‚éB<p>
+     * JFreeChartã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param chartCondition ƒ`ƒƒ[ƒgğŒ
+     * @param chartCondition ãƒãƒ£ãƒ¼ãƒˆæ¡ä»¶
      * @return JFreeChart
      * @exception JFreeChartCreateException
      */

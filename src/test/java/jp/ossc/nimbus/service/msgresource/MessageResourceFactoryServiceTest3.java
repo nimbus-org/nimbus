@@ -41,10 +41,10 @@ import javax.jms.Queue;
 import java.util.*;
 
 /**
- *	MapMessageFormat‚ğƒeƒXƒg‚·‚éB<BR>
+ *	MapMessageFormatã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ã€‚<BR>
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/17| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/17ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MessageResourceFactoryServiceTest3 extends TestCase {
 	private static final String serviceDefFilename = 
@@ -79,11 +79,11 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public MessageResourceFactoryServiceTest3(String arg0) {
 		super(arg0);
 		ServiceManagerFactory.loadManager(serviceDefFilename);
-		//ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅAQueueSession,Sender‚Ì¶¬‚Ü‚Ås‚¤
+		//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã€QueueSession,Senderã®ç”Ÿæˆã¾ã§è¡Œã†
 		
 		mMessageResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		try{
 			QueueTransanctionResource tranRes = (QueueTransanctionResource)jmsQueSession.makeResource(mQueueConnectionFactoryName);
 			mSession = (QueueSession)tranRes.getObject();
@@ -93,10 +93,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 		}
 		
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		try{
 			mQueue = (Queue)finder.lookup(QueueName);
-			//QueueSenderì¬
+			//QueueSenderä½œæˆ
 			mSender = mSession.createSender(mQueue);
 		}
 		catch(Exception e){
@@ -111,10 +111,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageByte() throws Exception {
 		System.out.println("MapMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("36");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//byte ‚Ì 0x33 = 51 ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//byte ã® 0x33 = 51 ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		byte val = msg.getByte("map_payload1");
 		byte expected = 51;
 		if( val == expected ){
@@ -131,10 +131,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageBytes() throws Exception {
 		System.out.println("MapMessage. set Payload Bytes.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("37");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//byte[] 0x30,0x31,0x32,0x33,0x34,0x35 ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//byte[] 0x30,0x31,0x32,0x33,0x34,0x35 ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		byte[] buf = null;
 		buf = msg.getBytes("map_payload1");
 		byte expected = 48;
@@ -152,10 +152,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageBoolean() throws Exception {
 		System.out.println("MapMessage. set Payload Boolean.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("38");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//boolean ‚Ì false ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//boolean ã® false ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		boolean val = msg.getBoolean("map_payload1");
 		if(val == false){
 			write("OK");
@@ -169,17 +169,17 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageChar() throws Exception {
 		System.out.println("MapMessage. set Payload Char.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("40");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//char‚Ì"“Á"‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//charã®"ç‰¹"ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		char val = msg.getChar("map_payload1");
-		if(val == '“Á'){
+		if(val == 'ç‰¹'){
 			write("OK");
 		}
 		else{
 			write("NG It's not Expected value " + val + ".");
-			write("Expected val is “Á");
+			write("Expected val is ç‰¹");
 			throw new Exception();
 		}
 	}
@@ -187,10 +187,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageInt() throws Exception {
 		System.out.println("MapMessage. set Payload Int.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("41");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//int‚Ì99999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//intã®99999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		int val = msg.getInt("map_payload1");
 		if(val == 99999){
 			write("OK");
@@ -206,10 +206,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageShort() throws Exception {
 		System.out.println("MapMessage. set Payload Short.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("39");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//Short‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//Shortã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		short val = msg.getShort("map_payload1");
 		if(val == 999){
 			write("OK");
@@ -222,11 +222,11 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageLong() throws Exception {
 		System.out.println("MapMessage. set Payload Long.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("42");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 
-		//long‚Ì99999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//longã®99999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		long val = msg.getLong("map_payload1");
 		if(val == 99999){
 			write("OK");
@@ -242,10 +242,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageFloat() throws Exception {
 		System.out.println("MapMessage. set Payload Float.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("43");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//float‚Ì1.2345F‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸
+		//floatã®1.2345FãŒå…¥ã£ã¦ã„ã‚‹ã¯ãš
 		float val = msg.getFloat("map_payload1");
 		float expectedVal = 5.4321F;
 		if(val == expectedVal){
@@ -260,10 +260,10 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageDouble() throws Exception {
 		System.out.println("MapMessage. set Payload Double.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("44");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//double‚Ì6.5432‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸
+		//doubleã®6.5432ãŒå…¥ã£ã¦ã„ã‚‹ã¯ãš
 		double val = msg.getDouble("map_payload1");
 		double expectedVal = 6.5432;
 		if(val == expectedVal){
@@ -282,11 +282,11 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageString() throws Exception {
 		System.out.println("StreamMessage. set Payload String.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("45");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 
-		//"Hello World"‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//"Hello World"ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		String val = msg.getString("map_payload1");
 		if(val.equals("Hello World")){
 			write("OK");
@@ -300,7 +300,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageObject() throws Exception {
 		System.out.println("MapMessage. set Payload Object.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("46");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		//
@@ -317,7 +317,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessagePropertyTestPurpose() throws Exception {
 		System.out.println("MapMessage. set Payload Object(Property setting test).");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("51");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		//
@@ -329,7 +329,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 		else{
 			throw new Exception();
 		}
-		boolean boolval = msg.getBooleanProperty("prop2");//false‚Ì‚Í‚¸
+		boolean boolval = msg.getBooleanProperty("prop2");//falseã®ã¯ãš
 		if(boolval == false){
 			write("Boolean propety O.K.");
 		}
@@ -398,7 +398,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageObjectTestPropertyPurpose2() throws Exception {
 		System.out.println("MapMessage. set Payload Object(Property Setting Test. Use file.) .");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("52");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		//
@@ -411,7 +411,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageMultiPayloadItem() throws Exception {
 		System.out.println("MapMessage. set Multi Payload Item");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("53");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		//
@@ -425,7 +425,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageMultiPayloadItemFromFile() throws Exception {
 		System.out.println("MapMessage. set Multi Payload Item From File");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("54");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		//
@@ -441,7 +441,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageMultiPayloadItemFromFileNoPayload() throws Exception {
 		System.out.println("MapMessage. set Multi Payload Item From File No Payload");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("55");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 		
@@ -450,13 +450,13 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 	public void testSendMapMessageMultiPayloadItemAllWrappedType() throws Exception {
 		System.out.println("MapMessage. set Multi Payload Item From File No Payload");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("56");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		MapMessage msg = (MapMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
 	}
 	
 	public void testRecvMapMessage() throws Exception {
-		//“d•¶‚ğóM‚·‚éB
+		//é›»æ–‡ã‚’å—ä¿¡ã™ã‚‹ã€‚
 		JmsQueueSession jmsQueueSession = 
 				(JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		QueueTransanctionResource tranRes = 
@@ -466,7 +466,7 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 		QueueReceiver receiver = recvSession.createReceiver(mQueue);
 		MessageResource msgResource = null;
 		MapMessage msg = null;
-		//óMŠJn
+		//å—ä¿¡é–‹å§‹
 		recvConnection.start();
 		//Byte
 		msg = (MapMessage)receiver.receive();
@@ -512,11 +512,11 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 		msg = (MapMessage)receiver.receive();
 		msgResource = mMessageResourceFactory.findInstance("46");
 		msgResource.toString(msg,"recv");
-		//Object(propertyİ’è9)
+		//Object(propertyè¨­å®š9)
 		msg = (MapMessage)receiver.receive();
 		msgResource = mMessageResourceFactory.findInstance("51");
 		msgResource.toString(msg,"recv");
-		//Object(propertyİ’è‚ğƒtƒ@ƒCƒ‹‚©‚ç)
+		//Object(propertyè¨­å®šã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰)
 		msg = (MapMessage)receiver.receive();
 		msgResource = mMessageResourceFactory.findInstance("52");
 		System.out.println(msgResource.toString(msg,"recv"));
@@ -532,12 +532,12 @@ public class MessageResourceFactoryServiceTest3 extends TestCase {
 		msg = (MapMessage)receiver.receive();
 		msgResource = mMessageResourceFactory.findInstance("55");
 		System.out.println(msgResource.toString(msg,"recv"));
-		//Object(wrappe‚³‚ê‚Ä‚¢‚é‚Ì‚ÍAByte,byte[],Boolean,Character,Short,Integer,Long,Float,Double,String
+		//Object(wrappeã•ã‚Œã¦ã„ã‚‹ã®ã¯ã€Byte,byte[],Boolean,Character,Short,Integer,Long,Float,Double,String
 		msg = (MapMessage)receiver.receive();
 		msgResource = mMessageResourceFactory.findInstance("56");
 		System.out.println(msgResource.toString(msg,"recv"));
 		
-		//I—¹
+		//çµ‚äº†
 		recvConnection.close();
 		
 		

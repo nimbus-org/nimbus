@@ -46,7 +46,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * —áŠOƒnƒ“ƒhƒ‰ƒ}ƒbƒsƒ“ƒOƒT[ƒrƒXB
+ * ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ãƒãƒƒãƒ”ãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -107,11 +107,11 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
     }
 
     /**
-     * w’è‚³‚ê‚½—áŠO‚Ìƒnƒ“ƒhƒ‰ƒNƒ‰ƒX‚ğƒ}ƒbƒv‚©‚çŒ©‚Â‚¯‚Ä•Ô‚·B
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒ©ã‚¯ãƒ©ã‚¹ã‚’ãƒãƒƒãƒ—ã‹ã‚‰è¦‹ã¤ã‘ã¦è¿”ã™ã€‚
      * <p>
      *
-     * @param th —áŠO(ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğŠÜ‚ñ‚Å‚¢‚é)
-     * @return —áŠOƒnƒ“ƒhƒ‰
+     * @param th ä¾‹å¤–(ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å«ã‚“ã§ã„ã‚‹)
+     * @return ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©
      */
     protected ExceptionHandler getTargetExceptionHandlerCause(Throwable th) {
         ExceptionHandler handler = (ExceptionHandler) getTargetHandlerCause(exceptionMapForHandler, th);
@@ -119,18 +119,18 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
     }
 
     /**
-     * w’è‚³‚ê‚½—áŠO‚Ìƒnƒ“ƒhƒ‰‚ğƒ}ƒbƒv‚©‚çŒ©‚Â‚¯‚Ä•Ô‚·B
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒ©ã‚’ãƒãƒƒãƒ—ã‹ã‚‰è¦‹ã¤ã‘ã¦è¿”ã™ã€‚
      * <p>
      *
-     * @param handlers ƒnƒ“ƒhƒ‰‚Ìƒ}ƒbƒv
-     * @param th —áŠO(ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğŠÜ‚ñ‚Å‚¢‚é)
-     * @return —áŠOƒnƒ“ƒhƒ‰
+     * @param handlers ãƒãƒ³ãƒ‰ãƒ©ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–(ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å«ã‚“ã§ã„ã‚‹)
+     * @return ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©
      */
     protected Object getTargetHandlerCause(ClassMappingTree handlers, Throwable th) {
         if (handlers == null) {
             return null;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚é—áŠOƒnƒ“ƒhƒ‰‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚’å–å¾—
         Object handler = handlers.getValue(th.getClass());
         if (handler != null) {
             return handler;
@@ -140,18 +140,18 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
     }
 
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çAƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğæ‚èo‚·B
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰ã€ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å–ã‚Šå‡ºã™ã€‚
      * <p>
      *
-     * @param handlers ƒnƒ“ƒhƒ‰‚Ìƒ}ƒbƒv
-     * @param th —áŠO
-     * @return ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO
+     * @param handlers ãƒãƒ³ãƒ‰ãƒ©ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–
+     * @return ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–
      */
     protected Throwable getTargetException(ClassMappingTree handlers, Throwable th) {
         if (handlers == null) {
             return th;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚é—áŠOƒnƒ“ƒhƒ‰‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚’å–å¾—
         Object handler = handlers.getValue(th.getClass());
         if (handler != null) {
             return th;
@@ -162,12 +162,12 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
     }
 
     /**
-     * w’è‚³‚ê‚½—áŠO‚ª–³‹‘ÎÛ‚©‚Ç‚¤‚©‚ğ”»’f‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ãŒç„¡è¦–å¯¾è±¡ã‹ã©ã†ã‹ã‚’åˆ¤æ–­ã™ã‚‹ã€‚
      * <p>
      *
-     * @param ignoreExceptions –³‹‘ÎÛ‚Ì—áŠOSet
-     * @param th —áŠO
-     * @return –³‹‘ÎÛŒ‹‰Ê
+     * @param ignoreExceptions ç„¡è¦–å¯¾è±¡ã®ä¾‹å¤–Set
+     * @param th ä¾‹å¤–
+     * @return ç„¡è¦–å¯¾è±¡çµæœ
      */
     protected boolean isIgnoreException(Set ignoreExceptions, Throwable th) {
         if (ignoreExceptions == null || ignoreExceptions.isEmpty()) {
@@ -183,17 +183,17 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
     }
 
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çŒ´ˆö‚ğæ“¾‚·‚éB
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰åŸå› ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @param th —áŠO
-     * @return Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @return åŸå› 
      */
     protected Throwable getCause(Throwable th) {
         Throwable cause = null;
         String thClassName = th.getClass().getName();
         if (thClassName.equals(SERVLET_EXCEPTION_NAME)) {
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try {
                 cause = (Throwable) th.getClass().getMethod(GET_ROOT_CAUSE_METHOD, (Class[]) null)
                         .invoke(th, (Object[]) null);
@@ -202,7 +202,7 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
             } catch (InvocationTargetException e) {
             }
         } else if (thClassName.equals(JMS_EXCEPTION_NAME)) {
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try {
                 cause = (Exception) th.getClass().getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[]) null)
                         .invoke(th, (Object[]) null);
@@ -217,16 +217,16 @@ public class ExceptionHandlerMappingService extends ServiceBase implements Excep
     }
 
     /**
-     * —áŠO‚ğƒnƒ“ƒhƒŠƒ“ƒO‚·‚éB
+     * ä¾‹å¤–ã‚’ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã™ã‚‹ã€‚
      * <p>
      *
-     * @param th —áŠO
-     * @param session —áŠO‚ª”­¶‚µ‚½Session
+     * @param th ä¾‹å¤–
+     * @param session ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸSession
      */
     public void handleException(Session session, Throwable th) throws Throwable {
         ExceptionHandler handler = getTargetExceptionHandlerCause(th);
         if (handler != null) {
-            // ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO
+            // ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–
             Throwable targetTh = getTargetException(exceptionMapForHandler, th);
             if (targetTh == null) {
                 targetTh = th;

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultInterceptorChainListService}��MBean�C���^�t�F�[�X<p>
+ * {@link DefaultInterceptorChainListService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see DefaultInterceptorChainListService
@@ -42,16 +42,16 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultInterceptorChainListServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ���̃��X�g�ɒǉ�����{@link Interceptor}�T�[�r�X�̖��O��ݒ肷��B<p>
+     * このリストに追加する{@link Interceptor}サービスの名前を設定する。<p>
      *
-     * @param serviceNames ���̃��X�g�ɒǉ�����{@link Interceptor}�T�[�r�X�̖��O�z��
+     * @param serviceNames このリストに追加する{@link Interceptor}サービスの名前配列
      */
     public void setInterceptorServiceNames(ServiceName[] serviceNames);
     
     /**
-     * ���̃��X�g�ɒǉ�����Ă���{@link Interceptor}�T�[�r�X�̖��O���擾����B<p>
+     * このリストに追加されている{@link Interceptor}サービスの名前を取得する。<p>
      *
-     * @return ���̃��X�g�ɒǉ�����Ă���{@link Interceptor}�T�[�r�X�̖��O�z��
+     * @return このリストに追加されている{@link Interceptor}サービスの名前配列
      */
     public ServiceName[] getInterceptorServiceNames();
 }

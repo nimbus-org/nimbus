@@ -39,7 +39,7 @@ import javax.management.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ”Ä—pƒT[ƒrƒXƒvƒƒLƒVB<p>
+ * æ±ç”¨ã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ã‚­ã‚·ã€‚<p>
  *
  * @author M.Takata
  */
@@ -104,9 +104,9 @@ public class GenericsServiceProxy extends ServiceBase
                 method.getParameterTypes()
             );
             
-            // JRockit‚ÆSun JVM‚Ì“®ì‚Ìˆá‚¢‚ğ‹zû‚·‚é‚½‚ß‚ÌÀ‘•
-            // JRockit‚Å‚ÍAƒCƒ“ƒ^ƒtƒF[ƒX‚ÌClassƒIƒuƒWƒFƒNƒg‚ª
-            // ObjectƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX‚Æ‚¢‚¤ˆµ‚¢‚É‚È‚Á‚Ä‚¢‚é
+            // JRockitã¨Sun JVMã®å‹•ä½œã®é•ã„ã‚’å¸åã™ã‚‹ãŸã‚ã®å®Ÿè£…
+            // JRockitã§ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®Classã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒ
+            // Objectã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨ã„ã†æ‰±ã„ã«ãªã£ã¦ã„ã‚‹
             if(Object.class.equals(decMethod.getDeclaringClass())){
                 return false;
             }
@@ -228,7 +228,7 @@ public class GenericsServiceProxy extends ServiceBase
         );
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public Object getAttribute(String attribute)
      throws AttributeNotFoundException, MBeanException, ReflectionException{
         final MBeanAttributeInfo attributeInfo
@@ -261,7 +261,7 @@ public class GenericsServiceProxy extends ServiceBase
         throw new AttributeNotFoundException(attribute);
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public AttributeList getAttributes(String[] attributes){
         final AttributeList list = new AttributeList();
         for(int i = 0; i < attributes.length; i++){
@@ -280,7 +280,7 @@ public class GenericsServiceProxy extends ServiceBase
         return list;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public void setAttribute(Attribute attribute)
      throws AttributeNotFoundException, InvalidAttributeValueException,
             MBeanException, ReflectionException{
@@ -315,7 +315,7 @@ public class GenericsServiceProxy extends ServiceBase
         }
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public AttributeList setAttributes(AttributeList attributes){
         final AttributeList list = new AttributeList();
         for(int i = 0, max = attributes.size(); i < max; i++){
@@ -332,7 +332,7 @@ public class GenericsServiceProxy extends ServiceBase
         return list;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public Object invoke(
         String actionName,
         Object[] params,
@@ -382,7 +382,7 @@ public class GenericsServiceProxy extends ServiceBase
         return ret;
     }
     
-    // DynamicMBean‚ÌJavaDoc
+    // DynamicMBeanã®JavaDoc
     public MBeanInfo getMBeanInfo(){
         return mbeanInfo;
     }

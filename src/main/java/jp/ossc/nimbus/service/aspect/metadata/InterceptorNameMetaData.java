@@ -29,52 +29,52 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.metadata;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.io.*;
 import org.w3c.dom.*;
 import jp.ossc.nimbus.core.*;
 /**
- * ƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`&lt;interceptor-name&gt;—v‘fƒƒ^ƒf[ƒ^B<br>
- * ƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;interceptor-name&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB
+ * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©&lt;interceptor-name&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<br>
+ * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;interceptor-name&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚
  * @author H.Nakano
  * @version $Name:  $
  * @since 1.0
- * @see <a href="doc-files/interceptor.dtd.txt">ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="doc-files/interceptor.dtd.txt">ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class InterceptorNameMetaData extends MetaData implements Serializable {
 	
     private static final long serialVersionUID = 3537538730775599354L;
     
     /**
-	 * &lt;interceptor-name&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB
+	 * &lt;interceptor-name&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚
 	 */
 	public static final String INTERCEPTOR_NAME_TAG_NAME = "interceptor-name";
 	/**
-	 * &lt;interceptor-name&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B
+	 * &lt;interceptor-name&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚
 	 * @see #getInterceptorName()
 	 */
 	private String interceptorName;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public InterceptorNameMetaData(MetaData parent){
 		super(parent);
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^–¼‚ğ•\‚·—v‘f‚Ì“à—e‚Åw’è‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^–¼‚ğæ“¾‚·‚éB<br>
-	 * “à—e‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
-	 * @return ƒCƒ“ƒ^[ƒZƒvƒ^–¼‚ğ•\‚·—v‘f‚Ì“à—e
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿åã‚’è¡¨ã™è¦ç´ ã®å†…å®¹ã§æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿åã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 * å†…å®¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
+	 * @return ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿åã‚’è¡¨ã™è¦ç´ ã®å†…å®¹
 	 */
 	public String getInterceptorName(){
 		return interceptorName;
 	}
 	/**
-	 * &lt;interceptor-name&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<br>
+	 * &lt;interceptor-name&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<br>
 	 *
-	 * @param element &lt;interceptor-name&gt;—v‘f‚ÌElement
-	 * @exception DeploymentException &lt;interceptor-name&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+	 * @param element &lt;interceptor-name&gt;è¦ç´ ã®Element
+	 * @exception DeploymentException &lt;interceptor-name&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
 	 */
 	public void importXML(Element element) throws DeploymentException{
 		super.importXML(element);

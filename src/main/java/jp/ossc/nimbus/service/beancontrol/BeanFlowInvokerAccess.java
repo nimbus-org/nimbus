@@ -36,7 +36,7 @@ import org.w3c.dom.*;
 import java.util.* ;
 
 /**
- * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}‚ª{@link BeanFlowInvoker}‚ğ¶¬A‘€ì‚·‚é‚½‚ß‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ãŒ{@link BeanFlowInvoker}ã‚’ç”Ÿæˆã€æ“ä½œã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author H.Nakano
  */
@@ -45,11 +45,11 @@ public interface BeanFlowInvokerAccess extends BeanFlowInvoker{
     public void setResourcePath(String resource);
     
     /**
-     * DOMƒf[ƒ^‚ğƒp[ƒX‚µ‚ÄABeanƒtƒ[‚ğ\’z‚·‚éB<p>
+     * DOMãƒ‡ãƒ¼ã‚¿ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€Beanãƒ•ãƒ­ãƒ¼ã‚’æ§‹ç¯‰ã™ã‚‹ã€‚<p>
      * 
-     * @param item DOMƒf[ƒ^
-     * @param callback {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}‚ÌƒR[ƒ‹ƒoƒbƒN
-     * @param encoding •¶šƒR[ƒh
+     * @param item DOMãƒ‡ãƒ¼ã‚¿
+     * @param callback {@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+     * @param encoding æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public void fillInstance(
         Element item,
@@ -58,9 +58,9 @@ public interface BeanFlowInvokerAccess extends BeanFlowInvoker{
     );
     
     /**
-     * Beanƒtƒ[‚Ì•Ê–¼ƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã®åˆ¥åãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Beanƒtƒ[‚Ì•Ê–¼ƒŠƒXƒg
+     * @return Beanãƒ•ãƒ­ãƒ¼ã®åˆ¥åãƒªã‚¹ãƒˆ
      */
     public List getAiliasFlowNames();
 

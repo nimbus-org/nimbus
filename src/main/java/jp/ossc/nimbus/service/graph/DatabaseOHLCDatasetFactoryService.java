@@ -50,7 +50,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.ConnectionFactoryException;
 
 /**
- * OHLCƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * OHLCãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -59,257 +59,257 @@ public class DatabaseOHLCDatasetFactoryService extends OHLCDatasetFactoryService
     
     private static final long serialVersionUID = -3149613092108949933L;
     
-    /** ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒª */
     protected ConnectionFactory connFactory;
-    /** ƒVƒŠ[ƒY–¼ */
+    /** ã‚·ãƒªãƒ¼ã‚ºå */
     protected String seriesName;
-    /** SQL‚Ì•¶š—ñ */
+    /** SQLã®æ–‡å­—åˆ— */
     protected String sql;
-    /** ƒf[ƒ^ƒZƒbƒgğŒ‚ÌƒŠƒXƒg */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®ãƒªã‚¹ãƒˆ */
     protected List dsConditionList;
-    /** ƒtƒFƒbƒ`ƒTƒCƒY */
+    /** ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º */
     protected int fetchSize = DEFAULT_FETCH_SIZE;
     
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒpƒ^[ƒ“ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ */
     protected String dateFormatPattern;
-    /** “ú•tƒtƒH[ƒ}ƒbƒgƒT[ƒrƒX–¼ */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName dateFormatServiceName;
-    /** ƒJƒ‰ƒ€–¼ : “ú•t */
+    /** ã‚«ãƒ©ãƒ å : æ—¥ä»˜ */
     protected String dateColumnName;
-    /** ƒJƒ‰ƒ€–¼ :  */
+    /** ã‚«ãƒ©ãƒ å : æ™‚åˆ» */
     protected String timeColumnName;
-    /** ƒJƒ‰ƒ€–¼ : n’l */
+    /** ã‚«ãƒ©ãƒ å : å§‹å€¤ */
     protected String openPriceColumnName;
-    /** ƒJƒ‰ƒ€–¼ : ‚’l */
+    /** ã‚«ãƒ©ãƒ å : é«˜å€¤ */
     protected String highPriceColumnName;
-    /** ƒJƒ‰ƒ€–¼ : ˆÀ’l */
+    /** ã‚«ãƒ©ãƒ å : å®‰å€¤ */
     protected String lowPriceColumnName;
-    /** ƒJƒ‰ƒ€–¼ : I’l */
+    /** ã‚«ãƒ©ãƒ å : çµ‚å€¤ */
     protected String closePriceColumnName;
-    /** ƒJƒ‰ƒ€–¼ : o—ˆ‚ */
+    /** ã‚«ãƒ©ãƒ å : å‡ºæ¥é«˜ */
     protected String volumeColumnName;
     
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : “ú•t */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : æ—¥ä»˜ */
     protected int dateColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX :  */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : æ™‚åˆ» */
     protected int timeColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : n’l */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : å§‹å€¤ */
     protected int openPriceColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : ‚’l */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : é«˜å€¤ */
     protected int highPriceColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : ˆÀ’l */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : å®‰å€¤ */
     protected int lowPriceColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : I’l */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : çµ‚å€¤ */
     protected int closePriceColumnIndex = -1;
-    /** ƒJƒ‰ƒ€ƒCƒ“ƒfƒbƒNƒX : o—ˆ‚ */
+    /** ã‚«ãƒ©ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ : å‡ºæ¥é«˜ */
     protected int volumeColumnIndex = -1;
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setConnectionFactory(ConnectionFactory connFactory){
         this.connFactory = connFactory;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public ConnectionFactory getConnectionFactory(){
         return connFactory;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setSeriesName(String name){
         seriesName = name;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getSeriesName(){
         return seriesName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setSql(String sql){
         this.sql = sql;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getSql(){
         return sql;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setFetchSize(int size){
         fetchSize = size;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getFetchSize(){
         return fetchSize;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setDateFormatPattern(String pattern){
         dateFormatPattern = pattern;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getDateFormatPattern(){
         return dateFormatPattern;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setDateFormatServiceName(ServiceName serviceName){
         dateFormatServiceName = serviceName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public ServiceName getDateFormatServiceName(){
         return dateFormatServiceName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setDateColumnName(String columnName){
         dateColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getDateColumnName(){
         return dateColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setTimeColumnName(String columnName){
         timeColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getTimeColumnName(){
         return timeColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setOpenPriceColumnName(String columnName){
         openPriceColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getOpenPriceColumnName(){
         return openPriceColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setHighPriceColumnName(String columnName){
         highPriceColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getHighPriceColumnName(){
         return highPriceColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setLowPriceColumnName(String columnName){
         lowPriceColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getLowPriceColumnName(){
         return lowPriceColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setClosePriceColumnName(String columnName){
         closePriceColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getClosePriceColumnName(){
         return closePriceColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setVolumeColumnName(String columnName){
         volumeColumnName = columnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public String getVolumeColumnName(){
         return volumeColumnName;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setDateColumnIndex(int index){
         dateColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getDateColumnIndex(){
         return dateColumnIndex;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setTimeColumnIndex(int index){
         timeColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getTimeColumnIndex(){
         return timeColumnIndex;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setOpenPriceColumnIndex(int index){
         openPriceColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getOpenPriceColumnIndex(){
         return openPriceColumnIndex;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setHighPriceColumnIndex(int index){
         highPriceColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getHighPriceColumnIndex(){
         return highPriceColumnIndex;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setLowPriceColumnIndex(int index){
         lowPriceColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getLowPriceColumnIndex(){
         return lowPriceColumnIndex;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setClosePriceColumnIndex(int index){
         closePriceColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getClostePriceColumnIndex(){
         return closePriceColumnIndex ;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public void setVolumeColumnIndex(int index){
         volumeColumnIndex = index;
     }
     
-    // DatabaseOHLCDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseOHLCDatasetFactoryServiceMBeanã®JavaDoc
     public int getVolumeColumnIndex(){
         return volumeColumnIndex;
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception{
         dsConditionList = new ArrayList();
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception{
         
         if(connFactory == null){
@@ -356,7 +356,7 @@ public class DatabaseOHLCDatasetFactoryService extends OHLCDatasetFactoryService
         }
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception{
         dsConditionList = null;
     }
@@ -371,12 +371,12 @@ public class DatabaseOHLCDatasetFactoryService extends OHLCDatasetFactoryService
             dateFormat = new SimpleDateFormat(dateFormatPattern);
         }
         
-        // ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—
         Connection conn = null;
         try{
             conn = connFactory.getConnection();
         }catch(ConnectionFactoryException e){
-            // ƒRƒlƒNƒVƒ‡ƒ“æ“¾¸”s
+            // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³å–å¾—å¤±æ•—
             throw new DatasetCreateException("Dataset [" + getName() + "]", e);
         }
         DatasetConnection connection = new DatabaseOHLCDatasetConnection(
@@ -458,7 +458,7 @@ public class DatabaseOHLCDatasetFactoryService extends OHLCDatasetFactoryService
             if(condition instanceof DatabaseDatasetCondition){
                 DatabaseDatasetCondition dbDsCondition = (DatabaseDatasetCondition)condition;
                 try{
-                    // ƒpƒ‰ƒ[ƒ^ƒƒ^ƒf[ƒ^
+                    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
                     ParameterMetaData paramMetaData = pstmt.getParameterMetaData();
                     if(paramMetaData == null){
                         throw new DatasetCreateException(
@@ -466,7 +466,7 @@ public class DatabaseOHLCDatasetFactoryService extends OHLCDatasetFactoryService
                         );
                     }
                     
-                    // ’l‚ğPreparedStatement‚Éİ’è
+                    // å€¤ã‚’PreparedStatementã«è¨­å®š
                     for(int i = 0, imax = paramMetaData.getParameterCount(); i < imax; i++){
                         Object paramObj = dbDsCondition.getParamObject(i);
                         if(paramObj != null){
@@ -528,7 +528,7 @@ public class DatabaseOHLCDatasetFactoryService extends OHLCDatasetFactoryService
                     
                     date = dateFormat.parse(dateStr);
                     if(isTimeOnly){
-                        // ‚Ì‚İ‚¾‚Á‚½ê‡A“ú•t‚ğ¡“ú‚Éİ’è
+                        // æ™‚åˆ»ã®ã¿ã ã£ãŸå ´åˆã€æ—¥ä»˜ã‚’ä»Šæ—¥ã«è¨­å®š
                         Calendar cal = Calendar.getInstance();
                         int year = cal.get(Calendar.YEAR);
                         int month = cal.get(Calendar.MONTH);

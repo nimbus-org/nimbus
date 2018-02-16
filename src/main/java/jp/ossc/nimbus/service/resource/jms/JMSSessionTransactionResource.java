@@ -36,7 +36,7 @@ import javax.jms.*;
 import jp.ossc.nimbus.service.resource.*;
 
 /**
- * JMSƒZƒbƒVƒ‡ƒ“{@link TransactionResource}ƒNƒ‰ƒXB<p>
+ * JMSã‚»ãƒƒã‚·ãƒ§ãƒ³{@link TransactionResource}ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -47,7 +47,7 @@ public class JMSSessionTransactionResource implements TransactionResource{
     private Connection connection;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚
      */
     public JMSSessionTransactionResource(Connection conn, Session session){
         this.connection = conn;

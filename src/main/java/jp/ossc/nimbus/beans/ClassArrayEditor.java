@@ -34,21 +34,21 @@ package jp.ossc.nimbus.beans;
 import java.util.*;
 
 /**
- * {@link Class}”z—ñŒ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * ƒJƒ“ƒ}‹æØ‚è‚ÌƒNƒ‰ƒX–¼•¶š—ñ‚ğjava.lang.Class”z—ñŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * ‹ó”’‚ÍƒgƒŠƒ€‚³‚ê‚éB
- * ‹ó”’‚ÍA{@link java.lang.Character#isWhitespace(char)}‚Å”»’è‚³‚ê‚éB
- * ‚Ü‚½A"&lt;!--"‚Æ"--&gt;"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍƒRƒƒ“ƒg‚Æ‰ğß‚³‚ê–³‹‚³‚ê‚éB
- * ‚Ü‚½A"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * {@link Class}é…åˆ—å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã®ã‚¯ãƒ©ã‚¹åæ–‡å­—åˆ—ã‚’java.lang.Classé…åˆ—å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * ç©ºç™½ã¯ãƒˆãƒªãƒ ã•ã‚Œã‚‹ã€‚
+ * ç©ºç™½ã¯ã€{@link java.lang.Character#isWhitespace(char)}ã§åˆ¤å®šã•ã‚Œã‚‹ã€‚
+ * ã¾ãŸã€"&lt;!--"ã¨"--&gt;"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã‚³ãƒ¡ãƒ³ãƒˆã¨è§£é‡ˆã•ã‚Œç„¡è¦–ã•ã‚Œã‚‹ã€‚
+ * ã¾ãŸã€"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;java.lang.Integer,java.lang.Boolean<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;new Class[]{Class.forName("java.lang.Integer", true, NimbusClassLoader.getInstance()), Class.forName("java.lang.Boolean", true, NimbusClassLoader.getInstance())}<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -72,9 +72,9 @@ public class ClassArrayEditor extends ArrayEditor
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Class[] classArray = (Class[])getValue();

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link HeaderJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link HeaderJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see HeaderJournalEditorService
@@ -41,17 +41,17 @@ public interface HeaderJournalEditorServiceMBean
  extends RecordJournalEditorServiceMBean{
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Header Header}‚ª‚Âƒwƒbƒ_–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Header Header}ãŒæŒã¤ãƒ˜ãƒƒãƒ€åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputHeaderName(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.Header Header}‚ª‚Âƒwƒbƒ_–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.Header Header}ãŒæŒã¤ãƒ˜ãƒƒãƒ€åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputHeaderName();
 }

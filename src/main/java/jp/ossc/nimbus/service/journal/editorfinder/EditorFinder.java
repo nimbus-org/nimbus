@@ -34,12 +34,12 @@ package jp.ossc.nimbus.service.journal.editorfinder;
 import jp.ossc.nimbus.service.journal.*;
 
 
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 //
 /**
- * ƒGƒfƒBƒ^ƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒXƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * ã‚¨ãƒ‡ã‚£ã‚¿ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/15 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/15 -ã€€H.Nakano
  */
 public interface EditorFinder {
 	

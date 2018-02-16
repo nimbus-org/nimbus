@@ -39,12 +39,12 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.log.Logger;
 
 /**
- * ƒfƒtƒHƒ‹ƒg—áŠOƒnƒ“ƒhƒ‰ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚Ì—áŠOˆ—‹@”\‚ðŽ‚Á‚Ä‚¢‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã®ä¾‹å¤–å‡¦ç†æ©Ÿèƒ½ã‚’æŒã£ã¦ã„ã‚‹ã€‚<br>
  * <ul>
- *     <li>—áŠO‚ðƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éB</li>
- *     <li>ƒƒO‚ðo—Í‚·‚éB</li>
- *     <li>—áŠO‚ðthrow‚·‚éA‚Ü‚½‚Íthrow‚µ‚È‚¢B</li>
+ *     <li>ä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚</li>
+ *     <li>ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚</li>
+ *     <li>ä¾‹å¤–ã‚’throwã™ã‚‹ã€ã¾ãŸã¯throwã—ãªã„ã€‚</li>
  * </ul>
  *
  * @author M.Takata

@@ -64,7 +64,7 @@ import jp.ossc.nimbus.service.queue.QueueHandler;
 import jp.ossc.nimbus.service.queue.QueueHandlerContainerService;
 
 /**
- * ƒf[ƒ^ƒx[ƒXƒRƒ“ƒeƒLƒXƒgƒXƒgƒAB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¹ãƒˆã‚¢ã€‚<p>
  *
  * @author M.Takata
  */
@@ -163,7 +163,7 @@ public class DatabaseContextStoreService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ^ƒx[ƒXƒ}ƒbƒsƒ“ƒOB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      * 
      * @author M.Takata
      */
@@ -211,108 +211,108 @@ public class DatabaseContextStoreService extends ServiceBase
         protected boolean isSynchronizedRecordList = true;
         
         /**
-         * ƒL[‚ªƒ†ƒj[ƒNƒL[‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚Ítrue‚ÅAƒL[‚Íƒ†ƒj[ƒNB<br>
+         * ã‚­ãƒ¼ãŒãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã§ã€ã‚­ãƒ¼ã¯ãƒ¦ãƒ‹ãƒ¼ã‚¯ã€‚<br>
          *
-         * @param isUnique ƒL[‚ªƒ†ƒj[ƒNƒL[‚Ìê‡‚ÍAtrue
+         * @param isUnique ã‚­ãƒ¼ãŒãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ã®å ´åˆã¯ã€true
          */
         public void setUniqueKey(boolean isUnique){
             isUniqueKey = isUnique;
         }
         
         /**
-         * “Ç‚İ‚İ‚Ég—p‚·‚éŒŸõƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã¿ã«ä½¿ç”¨ã™ã‚‹æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setSelectQuery(String query){
             selectQuery = query;
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ì•À—ñ“Ç‚İ‚İ‚ÌÛ‚Ég—p‚·‚éƒL[‚ğŒŸõ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®ä¸¦åˆ—èª­ã¿è¾¼ã¿ã®éš›ã«ä½¿ç”¨ã™ã‚‹ã‚­ãƒ¼ã‚’æ¤œç´¢ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setKeySelectQuery(String query){
             keySelectQuery = query;
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ì•À—ñ“Ç‚İ‚İ‚ÌÛ‚ÉƒL[‚ªğŒ‹å‚Æ‚È‚éŒŸõƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®ä¸¦åˆ—èª­ã¿è¾¼ã¿ã®éš›ã«ã‚­ãƒ¼ãŒæ¡ä»¶å¥ã¨ãªã‚‹æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setParallelSelectQuery(String query){
             parallelSelectQuery = query;
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ì“Ç‚İ‚İ‚ÌÛ‚ÉAƒL[‚ğw’è‚µ‚ÄŒŸõ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®èª­ã¿è¾¼ã¿ã®éš›ã«ã€ã‚­ãƒ¼ã‚’æŒ‡å®šã—ã¦æ¤œç´¢ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setSelectWhereQuery(String query){
             selectWhereQuery = query;
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ì•À—ñ“Ç‚İ‚İ‚ÌÛ‚Ì•À—ñ“x‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®ä¸¦åˆ—èª­ã¿è¾¼ã¿ã®éš›ã®ä¸¦åˆ—åº¦ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param size •À—ñ“x
+         * @param size ä¸¦åˆ—åº¦
          */
         public void setParallelSize(int size){
             parallelSize = size;
         }
         
         /**
-         * •Û‘¶‚ÌÛ‚Ég—p‚·‚é‘}“üƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ä¿å­˜ã®éš›ã«ä½¿ç”¨ã™ã‚‹æŒ¿å…¥ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setInsertQuery(String query){
             insertQuery = query;
         }
         
         /**
-         * •Û‘¶‚ÌÛ‚É•Û‘¶‚·‚éƒL[‚ğ“Á’è‚·‚éŒŸõƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ä¿å­˜ã®éš›ã«ä¿å­˜ã™ã‚‹ã‚­ãƒ¼ã‚’ç‰¹å®šã™ã‚‹æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setInsertKeySelectQuery(String query){
             insertKeySelectQuery = query;
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ì•Û‘¶‚ÌÛ‚ÉXV‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®ä¿å­˜ã®éš›ã«æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setUpdateQuery(String query){
             updateQuery = query;
         }
         
         /**
-         * íœ‚ÌÛ‚Ég—p‚·‚éíœƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * å‰Šé™¤ã®éš›ã«ä½¿ç”¨ã™ã‚‹å‰Šé™¤ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setDeleteQuery(String query){
             deleteQuery = query;
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ì•Û‘¶‚ÌÛ‚Éíœ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®ä¿å­˜ã®éš›ã«å‰Šé™¤ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setDeleteWhereQuery(String query){
             deleteWhereQuery = query;
         }
         
         /**
-         * ƒL[‚Ìƒ[ƒh‚ÉPersistentManager‚É“n‚·RecordƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-         * Bean‚É’¼Úƒ}ƒbƒsƒ“ƒO‚·‚éê‡‚É‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+         * ã‚­ãƒ¼ã®ãƒ­ãƒ¼ãƒ‰æ™‚ã«PersistentManagerã«æ¸¡ã™Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * Beanã«ç›´æ¥ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹å ´åˆã«ã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
          * 
          * @param record 
          */
@@ -321,8 +321,8 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * PersistentManager‚É“n‚·RecordƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-         * Bean‚É’¼Úƒ}ƒbƒsƒ“ƒO‚·‚éê‡‚É‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+         * PersistentManagerã«æ¸¡ã™Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * Beanã«ç›´æ¥ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹å ´åˆã«ã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
          * 
          * @param record 
          */
@@ -334,8 +334,8 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * PersistentManager‚É“n‚·Record‚ğ¶¬‚·‚éRecordListƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-         * Bean‚É’¼Úƒ}ƒbƒsƒ“ƒO‚·‚éê‡‚É‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+         * PersistentManagerã«æ¸¡ã™Recordã‚’ç”Ÿæˆã™ã‚‹RecordListã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * Beanã«ç›´æ¥ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹å ´åˆã«ã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
          * 
          * @param list 
          */
@@ -345,38 +345,38 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * “Ç‚İ‚ñ‚¾Record‚©‚çƒL[‚Æ‚µ‚Äæ‚è‚¾‚·ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚“ã Recordã‹ã‚‰ã‚­ãƒ¼ã¨ã—ã¦å–ã‚Šã ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ƒvƒƒpƒeƒB–¼
+         * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
          */
         public void setKeyLoadPropertyName(String name){
             keyLoadPropertyName = name;
         }
         
         /**
-         * ƒL[‚ğRecord‚ÌƒvƒƒpƒeƒB‚Öİ’è‚·‚é‚½‚ß‚ÌƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼ã‚’Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¸è¨­å®šã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name ƒvƒƒpƒeƒB–¼
+         * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
          */
         public void setKeySavePropertyName(String name){
             keySavePropertyName = name;
         }
         
         /**
-         * ƒL[‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-         * İ’è‚µ‚È‚¢ê‡‚ÍAƒL[‚ÍRecord‚©‚ç{@link #setKeyLoadPropertyName(String)}‚Åİ’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚Åæ“¾‚µ‚½ƒIƒuƒWƒFƒNƒg‚Æ‚È‚éB<br>
+         * ã‚­ãƒ¼ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚­ãƒ¼ã¯Recordã‹ã‚‰{@link #setKeyLoadPropertyName(String)}ã§è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§å–å¾—ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ãªã‚‹ã€‚<br>
          * 
-         * @param clazz ƒL[‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX
+         * @param clazz ã‚­ãƒ¼ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹
          */
         public void setKeyClass(Class clazz){
             keyClass = clazz;
         }
         
         /**
-         * “Ç‚İ‚ñ‚¾Record‚©‚çƒL[‚ÌBean‚Ö‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚“ã Recordã‹ã‚‰ã‚­ãƒ¼ã®Beanã¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param getProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB
-         * @param setProperty Bean‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param getProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+         * @param setProperty Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setKeyLoadPropertyMapping(String getProperty, String setProperty){
             if(keyLoadPropertyMappings == null){
@@ -386,10 +386,10 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * ƒL[‚ÌBean‚©‚ç’l‚ğæ“¾‚µ‚ÄARecord‚ÌƒvƒƒpƒeƒB‚Öİ’è‚·‚é‚½‚ß‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼ã®Beanã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ã€Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¸è¨­å®šã™ã‚‹ãŸã‚ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param getProperty Bean‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB
-         * @param setProperty Record‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param getProperty Beanã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+         * @param setProperty Recordã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setKeySavePropertyMapping(String getProperty, String setProperty){
             if(keySavePropertyMappings == null){
@@ -399,28 +399,28 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * “Ç‚İ‚İŒ‹‰Ê‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-         * İ’è‚µ‚È‚¢ê‡‚ÍA“Ç‚İ‚İŒ‹‰Ê‚ÍRecord‚Æ‚È‚éB<br>
+         * èª­ã¿è¾¼ã¿çµæœã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * è¨­å®šã—ãªã„å ´åˆã¯ã€èª­ã¿è¾¼ã¿çµæœã¯Recordã¨ãªã‚‹ã€‚<br>
          * 
-         * @param clazz “Ç‚İ‚İŒ‹‰Ê‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX
+         * @param clazz èª­ã¿è¾¼ã¿çµæœã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹
          */
         public void setValueClass(Class clazz){
             valueClass = clazz;
         }
         
         /**
-         * “Ç‚İ‚İŒ‹‰Ê‚Æ‚È‚éRecord‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã¿çµæœã¨ãªã‚‹Recordã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param record “Ç‚İ‚İŒ‹‰Ê‚Æ‚È‚éRecord
+         * @param record èª­ã¿è¾¼ã¿çµæœã¨ãªã‚‹Record
          */
         public void setValueRecord(Record record){
             valueRecord = record;
         }
         
         /**
-         * “Ç‚İ‚İŒ‹‰Ê‚Æ‚È‚éRecordList‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã¿çµæœã¨ãªã‚‹RecordListã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param list “Ç‚İ‚İŒ‹‰Ê‚Æ‚È‚éRecordList
+         * @param list èª­ã¿è¾¼ã¿çµæœã¨ãªã‚‹RecordList
          */
         public void setValueRecordList(RecordList list){
             valueRecordList = list;
@@ -428,21 +428,21 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * “Ç‚İ‚ñ‚¾Record‚©‚çBean‚Ö‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚“ã Recordã‹ã‚‰Beanã¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-         * @param setProperty Bean‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param setProperty Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setLoadPropertyMapping(String recordProperty, String setProperty){
             setLoadPropertyMapping(recordProperty, recordProperty, setProperty);
         }
         
         /**
-         * “Ç‚İ‚ñ‚¾Record‚©‚çBean‚Ö‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚“ã Recordã‹ã‚‰Beanã¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚ÌƒvƒƒpƒeƒB–¼
-         * @param getProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB
-         * @param setProperty Bean‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param getProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+         * @param setProperty Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setLoadPropertyMapping(String recordProperty, String getProperty, String setProperty){
             if(loadPropertyMappings == null){
@@ -462,21 +462,21 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * Bean‚©‚ç’l‚ğæ“¾‚µ‚ÄARecord‚ÌƒvƒƒpƒeƒB‚Öİ’è‚·‚é‚½‚ß‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * Beanã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ã€Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¸è¨­å®šã™ã‚‹ãŸã‚ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-         * @param setProperty Record‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param setProperty Recordã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setSavePropertyMapping(String recordProperty, String setProperty){
             setSavePropertyMapping(recordProperty, recordProperty, setProperty);
         }
         
         /**
-         * Bean‚©‚ç’l‚ğæ“¾‚µ‚ÄARecord‚ÌƒvƒƒpƒeƒB‚Öİ’è‚·‚é‚½‚ß‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * Beanã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ã€Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¸è¨­å®šã™ã‚‹ãŸã‚ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚ÌƒvƒƒpƒeƒB–¼
-         * @param getProperty Bean‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB
-         * @param setProperty Record‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param getProperty Beanã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+         * @param setProperty Recordã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setSavePropertyMapping(String recordProperty, String getProperty, String setProperty){
             if(savePropertyMappings == null){
@@ -496,7 +496,7 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * ƒŠƒŒ[ƒVƒ‡ƒ“ƒe[ƒuƒ‹‚ğ•R•t‚¯‚é‚½‚ß‚Ì{@link DatabaseContextStoreService.DatabaseSubMapping}‚ğİ’è‚·‚éB<p>
+         * ãƒªãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ç´ä»˜ã‘ã‚‹ãŸã‚ã®{@link DatabaseContextStoreService.DatabaseSubMapping}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
          * @param mapping 
          */
@@ -508,77 +508,77 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * “Ç‚İ‚ŞÛ‚ÌƒtƒFƒbƒ`ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚€éš›ã®ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param fetchSize ƒtƒFƒbƒ`ƒTƒCƒY
+         * @param fetchSize ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º
          */
         public void setFetchSize(int fetchSize){
             this.fetchSize = fetchSize;
         }
         
         /**
-         * ƒL[‚ğ“Ç‚İ‚ŞÛ‚ÌƒtƒFƒbƒ`ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼ã‚’èª­ã¿è¾¼ã‚€éš›ã®ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param fetchSize ƒtƒFƒbƒ`ƒTƒCƒY
+         * @param fetchSize ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º
          */
         public void setKeyFetchSize(int fetchSize){
             this.keyFetchSize = fetchSize;
         }
         
         /**
-         * {@link DatabaseContextStoreService.DatabaseSubMapping}‚ª“o˜^‚³‚ê‚Ä‚¢‚éê‡‚ÉAqƒJ[ƒ\ƒ‹‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+         * {@link DatabaseContextStoreService.DatabaseSubMapping}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã«ã€å­ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
          *
-         * @param isUse g—p‚·‚éê‡true
+         * @param isUse ä½¿ç”¨ã™ã‚‹å ´åˆtrue
          */
         public void setUseSubCursor(boolean isUse){
             isUseSubCursor = isUse;
         }
         
         /**
-         * {@link DatabaseContextStoreService.DatabaseSubMapping}‚ª“o˜^‚³‚ê‚Ä‚¢‚éê‡‚ÉAqƒJ[ƒ\ƒ‹‚É‘Î‚µ‚Ä•Ê‚ÌJDBCƒRƒlƒNƒVƒ‡ƒ“‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+         * {@link DatabaseContextStoreService.DatabaseSubMapping}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã«ã€å­ã‚«ãƒ¼ã‚½ãƒ«ã«å¯¾ã—ã¦åˆ¥ã®JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
          *
-         * @param isUse g—p‚·‚éê‡true
+         * @param isUse ä½¿ç”¨ã™ã‚‹å ´åˆtrue
          */
         public void setUseSubConnection(boolean isUse){
             isUseSubConnection = isUse;
         }
         
         /**
-         * •Û‘¶‚·‚éÛ‚Ìƒoƒbƒ`ÀsŒ”‚ğİ’è‚·‚éB<p>
+         * ä¿å­˜ã™ã‚‹éš›ã®ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param count ƒoƒbƒ`ÀsŒ”
+         * @param count ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
          */
         public void setBatchPersistCount(int count){
             batchPersistCount = count;
         }
         
         /**
-         * ƒoƒbƒ`Às‚Å•Û‘¶‚·‚éÛ‚ÉAƒoƒbƒ`Às‚ÉƒRƒ~ƒbƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+         * ãƒãƒƒãƒå®Ÿè¡Œã§ä¿å­˜ã™ã‚‹éš›ã«ã€ãƒãƒƒãƒå®Ÿè¡Œæ™‚ã«ã‚³ãƒŸãƒƒãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param isCommit ƒoƒbƒ`Às‚ÉƒRƒ~ƒbƒg‚·‚éê‡true
+         * @param isCommit ãƒãƒƒãƒå®Ÿè¡Œæ™‚ã«ã‚³ãƒŸãƒƒãƒˆã™ã‚‹å ´åˆtrue
          */
         public void setBatchCommitOnPersist(boolean isCommit){
             isBatchCommitOnPersist = isCommit;
         }
         
         /**
-         * {@link #setUniqueKey(boolean) setUniqueKey(false)}‚Ìê‡‚ÉA’l‚ÌƒŠƒXƒg‚ğƒ\[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åƒ\[ƒg‚µ‚È‚¢B<br>
+         * {@link #setUniqueKey(boolean) setUniqueKey(false)}ã®å ´åˆã«ã€å€¤ã®ãƒªã‚¹ãƒˆã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚½ãƒ¼ãƒˆã—ãªã„ã€‚<br>
          *
-         * @param isSort ƒ\[ƒg‚·‚éê‡Atrue
+         * @param isSort ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã€true
          */
         public void setValueSort(boolean isSort){
             this.isSort = isSort;
         }
         
         /**
-         * {@link #setUniqueKey(boolean) setUniqueKey(false)}‚Ìê‡‚ÉA’l‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğƒ\[ƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * İ’è‚µ‚È‚¢ê‡Aƒ\[ƒg‚µ‚È‚¢B<br>
+         * {@link #setUniqueKey(boolean) setUniqueKey(false)}ã®å ´åˆã«ã€å€¤ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * è¨­å®šã—ãªã„å ´åˆã€ã‚½ãƒ¼ãƒˆã—ãªã„ã€‚<br>
          *
-         * @param propNames ƒ\[ƒg‚·‚éƒvƒƒpƒeƒB–¼
-         * @param isAsc ¸‡‚Ìê‡Atrue
+         * @param propNames ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param isAsc æ˜‡é †ã®å ´åˆã€true
          */
         public void setValueRecordListSort(String[] propNames, boolean[] isAsc){
             isSort = true;
@@ -587,9 +587,9 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * “à•”‚Å¶¬‚·‚éRecordList‚Ì“¯Šú‰»‚ğİ’è‚·‚éB<p>
+         * å†…éƒ¨ã§ç”Ÿæˆã™ã‚‹RecordListã®åŒæœŸåŒ–ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param isSynch “¯Šú‰»‚·‚éê‡true
+         * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
          */
         public void setSynchronizedRecordList(boolean isSynch){
             isSynchronizedRecordList = isSynch;
@@ -1412,27 +1412,27 @@ public class DatabaseContextStoreService extends ServiceBase
         protected PropertyAccess propertyAccess;
         
         /**
-         * “Ç‚İ‚İ‚Ég—p‚·‚éŒŸõƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã¿ã«ä½¿ç”¨ã™ã‚‹æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setSelectQuery(String query){
             selectQuery = query;
         }
         
         /**
-         * eƒŒƒR[ƒh’PˆÊ‚Å‚Ì“Ç‚İ‚İ‚ÌÛ‚Ég—p‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * è¦ªãƒ¬ã‚³ãƒ¼ãƒ‰å˜ä½ã§ã®èª­ã¿è¾¼ã¿ã®éš›ã«ä½¿ç”¨ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setSelectWhereQuery(String query){
             selectWhereQuery = query;
         }
         
         /**
-         * •Û‘¶‚ÌÛ‚Ég—p‚·‚é‘}“üƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ä¿å­˜ã®éš›ã«ä½¿ç”¨ã™ã‚‹æŒ¿å…¥ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setInsertQuery(String query){
             insertQuery = query;
@@ -1442,9 +1442,9 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * íœ‚ÌÛ‚Ég—p‚·‚éíœƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * å‰Šé™¤ã®éš›ã«ä½¿ç”¨ã™ã‚‹å‰Šé™¤ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setDeleteQuery(String query){
             deleteQuery = query;
@@ -1454,9 +1454,9 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * ƒL[’PˆÊ‚Å‚Ìíœ‚ÌÛ‚Ég—p‚·‚éíœƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+         * ã‚­ãƒ¼å˜ä½ã§ã®å‰Šé™¤ã®éš›ã«ä½¿ç”¨ã™ã‚‹å‰Šé™¤ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param query ƒNƒGƒŠ
+         * @param query ã‚¯ã‚¨ãƒª
          */
         public void setDeleteWhereQuery(String query){
             deleteWhereQuery = query;
@@ -1466,8 +1466,8 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * PersistentManager‚É“n‚·RecordƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-         * Bean‚É’¼Úƒ}ƒbƒsƒ“ƒO‚·‚éê‡‚É‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+         * PersistentManagerã«æ¸¡ã™Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * Beanã«ç›´æ¥ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹å ´åˆã«ã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
          * 
          * @param record 
          */
@@ -1476,21 +1476,21 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * “Ç‚İ‚ñ‚¾Record‚©‚çBean‚Ö‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚“ã Recordã‹ã‚‰Beanã¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-         * @param setProperty Bean‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param setProperty Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setLoadPropertyMapping(String recordProperty, String setProperty){
             setLoadPropertyMapping(recordProperty, recordProperty, setProperty);
         }
         
         /**
-         * “Ç‚İ‚ñ‚¾Record‚©‚çBean‚Ö‚ÌƒvƒƒpƒeƒBƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * èª­ã¿è¾¼ã‚“ã Recordã‹ã‚‰Beanã¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-         * @param getProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB
-         * @param setProperty Bean‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param getProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+         * @param setProperty Beanã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setLoadPropertyMapping(String recordProperty, String getProperty, String setProperty){
             if(loadPropertyMappings == null){
@@ -1512,21 +1512,21 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
-         * Bean‚©‚ç’l‚ğæ“¾‚µ‚ÄARecord‚ÌƒvƒƒpƒeƒB‚Öİ’è‚·‚é‚½‚ß‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * Beanã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ã€Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¸è¨­å®šã™ã‚‹ãŸã‚ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-         * @param setProperty Record‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param setProperty Recordã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setSavePropertyMapping(String recordProperty, String setProperty){
             setSavePropertyMapping(recordProperty, recordProperty, setProperty);
         }
         
         /**
-         * Bean‚©‚ç’l‚ğæ“¾‚µ‚ÄARecord‚ÌƒvƒƒpƒeƒB‚Öİ’è‚·‚é‚½‚ß‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+         * Beanã‹ã‚‰å€¤ã‚’å–å¾—ã—ã¦ã€Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¸è¨­å®šã™ã‚‹ãŸã‚ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param recordProperty Record‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB–¼
-         * @param getProperty Bean‚©‚çæ“¾‚·‚éƒvƒƒpƒeƒB
-         * @param setProperty Record‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+         * @param recordProperty Recordã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+         * @param getProperty Beanã‹ã‚‰å–å¾—ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+         * @param setProperty Recordã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
          */
         public void setSavePropertyMapping(String recordProperty, String getProperty, String setProperty){
             if(savePropertyMappings == null){

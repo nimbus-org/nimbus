@@ -36,10 +36,10 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒOƒ‹[ƒvƒRƒ“ƒeƒLƒXƒgB<p>
- * •¡”‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒOƒ‹[ƒsƒ“ƒO‚µ‚ÄA‚P‚Â‚ÌƒRƒ“ƒeƒLƒXƒg‚Æ‚µ‚ÄAƒRƒ“ƒeƒLƒXƒgî•ñ‚ªæ“¾‚Å‚«‚é‚æ‚¤‚É‚·‚éB<br>
- * ƒRƒ“ƒeƒLƒXƒgî•ñ‚Ì’Ç‰Á‚ÍƒTƒ|[ƒg‚µ‚È‚¢B<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
+ * è¤‡æ•°ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã—ã¦ã€ï¼‘ã¤ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¨ã—ã¦ã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒå–å¾—ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚<br>
+ * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®è¿½åŠ ã¯ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -78,30 +78,30 @@ public class GroupContextService extends ServiceBase
     private static final long serialVersionUID = -5282880238704983055L;
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX–¼”z—ñB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     protected ServiceName[] contextServiceNames;
     
     protected Context[] contexts;
     
-    // GroupContextServiceMBean‚ÌJavaDoc
+    // GroupContextServiceMBeanã®JavaDoc
     public void setContextServiceNames(ServiceName[] names){
         contextServiceNames = names;
     }
     
-    // GroupContextServiceMBean‚ÌJavaDoc
+    // GroupContextServiceMBeanã®JavaDoc
     public ServiceName[] getContextServiceNames(){
         return contextServiceNames;
     }
     
     /**
-     * Context‚ğİ’è‚·‚éB
+     * Contextã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setContexts(Context[] contexts) {
         this.contexts = contexts;
     }
 
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object get(Object key){
         Context context = null;
         if(contextServiceNames != null){
@@ -129,11 +129,11 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<br>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param key ƒL[
-     * @param value ƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚Ä‚¢‚½ƒRƒ“ƒeƒLƒXƒgî•ñB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
+     * @param key ã‚­ãƒ¼
+     * @param value ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚Œã¦ã„ãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
      * @exception UnsupportedOperationException
      */
     public Object put(Object key, Object value){
@@ -141,10 +141,10 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[W‡‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA‚±‚ÌƒL[W‡‚ÍA•ÏX•s‰Â‚Å‚ ‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ã‚­ãƒ¼é›†åˆã¯ã€å¤‰æ›´ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[W‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼é›†åˆ
      */
     public Set keySet(){
         final Set result = new HashSet();
@@ -167,10 +167,10 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌW‡‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA‚±‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌW‡‚ÍA•ÏX•s‰Â‚Å‚ ‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®é›†åˆã¯ã€å¤‰æ›´ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌW‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®é›†åˆ
      */
     public Collection values() {
         final Map result = new HashMap();
@@ -193,10 +193,10 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ‘S‚Ä‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA‚±‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ÍA•ÏX•s‰Â‚Å‚ ‚éB<br>
+     * å…¨ã¦ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã¯ã€å¤‰æ›´ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
      */
     public Map all(){
         final Map result = new HashMap();
@@ -219,11 +219,11 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğíœ‚·‚éB<p>
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚é‘S‚Ä‚ÌƒRƒ“ƒeƒLƒXƒg‚©‚çíœ‚µAÅŒã‚Éíœ‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹å…¨ã¦ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã—ã€æœ€å¾Œã«å‰Šé™¤ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚<br>
      *
-     * @param key ƒL[
-     * @return íœ‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñBíœ‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‚È‚¢ê‡‚ÍAnull
+     * @param key ã‚­ãƒ¼
+     * @return å‰Šé™¤ã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚å‰Šé™¤ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒãªã„å ´åˆã¯ã€null
      */
     public Object remove(Object key) {
         Object result = null;
@@ -250,7 +250,7 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚é‘S‚Ä‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğíœ‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹å…¨ã¦ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         if(contextServiceNames != null){
@@ -270,7 +270,7 @@ public class GroupContextService extends ServiceBase
         }
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean isEmpty(){
         if(contextServiceNames != null){
             for(int i = 0; i < contextServiceNames.length; i++){
@@ -294,7 +294,7 @@ public class GroupContextService extends ServiceBase
         return true;
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean containsKey(Object key){
         if(contextServiceNames != null){
             for(int i = 0; i < contextServiceNames.length; i++){
@@ -318,7 +318,7 @@ public class GroupContextService extends ServiceBase
         return false;
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public boolean containsValue(Object value) {
         if(contextServiceNames != null){
             for(int i = 0; i < contextServiceNames.length; i++){
@@ -343,10 +343,10 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒGƒ“ƒgƒŠW‡‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒGƒ“ƒgƒŠW‡‚É‘Î‚·‚é•ÏX‚Í•s‰Â‚Å‚ ‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚¨ãƒ³ãƒˆãƒªé›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚¨ãƒ³ãƒˆãƒªé›†åˆã«å¯¾ã™ã‚‹å¤‰æ›´ã¯ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒGƒ“ƒgƒŠW‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚¨ãƒ³ãƒˆãƒªé›†åˆ
      */
     public Set entrySet(){
         final Map result = new HashMap();
@@ -380,7 +380,7 @@ public class GroupContextService extends ServiceBase
         return Collections.unmodifiableSet(new HashSet(result.values()));
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public int size(){
         int size = 0;
         if(contextServiceNames != null){
@@ -402,26 +402,26 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param t ƒRƒ“ƒeƒLƒXƒgî•ñ‚Æ‚µ‚Äİ’è‚·‚éƒ}ƒbƒv
+     * @param t ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒãƒƒãƒ—
      * @exception UnsupportedOperationException
      */
     public void putAll(Map t){
         throw new UnsupportedOperationException();
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object get(String key){
         return get((Object)key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public Object remove(String key) {
         return remove((Object)key);
     }
     
-    // Context‚ÌJavaDoc
+    // Contextã®JavaDoc
     public String list(){
         final StringBuilder buf = new StringBuilder();
         synchronized(this){
@@ -437,47 +437,47 @@ public class GroupContextService extends ServiceBase
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void load() throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void loadKey() throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param key ƒL[
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @param key ã‚­ãƒ¼
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void load(Object key) throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void save() throws Exception{
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param key ƒL[
-     * @exception UnsupportedOperationException •K‚¸throw‚·‚é
+     * @param key ã‚­ãƒ¼
+     * @exception UnsupportedOperationException å¿…ãšthrowã™ã‚‹
      */
     public void save(Object key) throws Exception{
         throw new UnsupportedOperationException();

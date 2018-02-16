@@ -43,9 +43,9 @@ import jp.ossc.nimbus.service.test.TestContext;
 import jp.ossc.nimbus.service.test.proxy.TcpNetProxy;
 
 /**
- * TcpNetProxy‚ğ‘€ì‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B
+ * TcpNetProxyã‚’æ“ä½œã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚
  * <p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  *
  * @author M.Ishida
  */
@@ -75,20 +75,20 @@ public class TcpNetProxyControlActionService extends ServiceBase implements Test
     }
 
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅATcpNetProxy‚É‘Î‚µ‚Äw’è‚³‚ê‚½ƒIƒyƒŒ[ƒVƒ‡ƒ“‚ğÀs‚·‚éB
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€TcpNetProxyã«å¯¾ã—ã¦æŒ‡å®šã•ã‚ŒãŸã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
      * <p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      *
      * <pre>
      * operation
      * </pre>
      *
-     * operation‚ÍAopen,close,reopen,freeze,unfreeze,closeAllPairs,freezeAllPairs,unfreezeAllPairs‚Ì‚¢‚¸‚ê‚©‚ğw’è‚·‚éB<br>
+     * operationã¯ã€open,close,reopen,freeze,unfreeze,closeAllPairs,freezeAllPairs,unfreezeAllPairsã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ¶¬‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ÌƒŠƒXƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ç”Ÿæˆã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒªã‚¹ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception {
         BufferedReader br = new BufferedReader(resource);

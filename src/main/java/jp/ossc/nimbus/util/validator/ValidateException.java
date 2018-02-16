@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.validator;
 
 /**
- * ŒŸØ—áŠOB<p>
+ * æ¤œè¨¼ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class ValidateException extends RuntimeException{
     private static final long serialVersionUID = -2018465727016571248L;
     
     /**
-     * ‹ó‚ÌŒŸØ—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®æ¤œè¨¼ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ValidateException(){
         super();
     }
     
     /**
-     * ƒƒbƒZ[ƒW•t‚«‚ÌŒŸØ—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä»˜ãã®æ¤œè¨¼ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public ValidateException(String message){
         super(message);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚é—áŠO•t‚«‚ÌŒŸØ—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã‚‹ä¾‹å¤–ä»˜ãã®æ¤œè¨¼ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚é—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã‚‹ä¾‹å¤–
      */
     public ValidateException(String message, Throwable cause){
         super(message, cause);
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚é—áŠO•t‚«‚ÌŒŸØ—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã‚‹ä¾‹å¤–ä»˜ãã®æ¤œè¨¼ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚é—áŠO
+     * @param cause åŸå› ã¨ãªã‚‹ä¾‹å¤–
      */
     public ValidateException(Throwable cause){
         super(cause);

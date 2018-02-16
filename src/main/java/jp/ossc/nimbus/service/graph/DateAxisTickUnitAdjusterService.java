@@ -42,7 +42,7 @@ import org.jfree.chart.plot.ValueAxisPlot;
 import org.jfree.data.Range;
 
 /**
- * DateAxis‚Ì–Ú·‚è’²ßƒT[ƒrƒXB<p>
+ * DateAxisã®ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  */
 public class DateAxisTickUnitAdjusterService
     extends AbstractTickUnitAdjusterService
@@ -50,12 +50,12 @@ public class DateAxisTickUnitAdjusterService
     
     private static final long serialVersionUID = -334490159198149599L;
     
-    /** “ú•tƒtƒH[ƒ}ƒbƒg */
+    /** æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ */
     private DateFormat format;
     
     private double zeroLength = DateAxis.DEFAULT_AUTO_RANGE_MINIMUM_SIZE_IN_MILLISECONDS;
 
-    // AbstractTickUnitAdjusterService‚ÌJavaDoc
+    // AbstractTickUnitAdjusterServiceã®JavaDoc
     protected void adjust(ValueAxis axis) {
         if (!(axis instanceof DateAxis)) {
             throw new IllegalArgumentException(
@@ -119,30 +119,30 @@ public class DateAxisTickUnitAdjusterService
         }
 
         double length = dateAxis.getRange().getLength();
-        // ƒ~ƒŠ•bˆÈŠO‚ÍŒvZ
+        // ãƒŸãƒªç§’ä»¥å¤–ã¯è¨ˆç®—
         switch(unit) {
         case DateTickUnit.SECOND:
-            // •b
+            // ç§’
             length = length / 1000d;
             break;
         case DateTickUnit.MINUTE:
-            // •ª
+            // åˆ†
             length = length / (60d * 1000d);
             break;
         case DateTickUnit.HOUR:
-            // 
+            // æ™‚
             length = length / (60d * 60d * 1000d);
             break;
         case DateTickUnit.DAY:
-            // “ú
+            // æ—¥
             length = length / (24d * 60d * 60d * 1000d);
             break;
         case DateTickUnit.MONTH:
-            // Œ
+            // æœˆ
             length = length / (28d * 24d * 60d * 60d * 1000d);
             break;
         case DateTickUnit.YEAR:
-            // ”N
+            // å¹´
             length = length / (365d * 24d * 60d * 60d * 1000d);
             break;
         default:
@@ -151,7 +151,7 @@ public class DateAxisTickUnitAdjusterService
 
         double unitCount = length / displayGraduationCount;
         if (unitCount <= 0d) {
-            // 1‚¸‚Â•\¦
+            // 1ãšã¤è¡¨ç¤º
             unitCount = 1d;
         } else {
             unitCount = adjustUnitCountByCommonDivisor(axis, unitCount);
@@ -166,7 +166,7 @@ public class DateAxisTickUnitAdjusterService
         
         int newUnitCount = (int) Math.ceil(unitCount);
 
-        // V‚µ‚¢TickUnit‚ğİ’è
+        // æ–°ã—ã„TickUnitã‚’è¨­å®š
         dateAxis.setTickUnit(
             new DateTickUnit(
                 unit,
@@ -176,22 +176,22 @@ public class DateAxisTickUnitAdjusterService
         );
     }
 
-    // DateAxisTickUnitAdjusterServiceMBean‚ÌJavaDoc
+    // DateAxisTickUnitAdjusterServiceMBeanã®JavaDoc
     public void setFormat(DateFormat format) {
         this.format = format;
     }
 
-    // DateAxisTickUnitAdjusterServiceMBean‚ÌJavaDoc
+    // DateAxisTickUnitAdjusterServiceMBeanã®JavaDoc
     public DateFormat getFormat() {
         return format;
     }
     
-    // DateAxisTickUnitAdjusterServiceMBean‚ÌJavaDoc
+    // DateAxisTickUnitAdjusterServiceMBeanã®JavaDoc
     public void setZeroLength(double count){
         zeroLength = count;
     }
     
-    // DateAxisTickUnitAdjusterServiceMBean‚ÌJavaDoc
+    // DateAxisTickUnitAdjusterServiceMBeanã®JavaDoc
     public double getZeroLength(){
         return zeroLength;
     }

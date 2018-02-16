@@ -42,7 +42,7 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.lang.*;
 
 /**
- * ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒXB<p>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
@@ -52,107 +52,107 @@ public class ThreadManagedJournalService
     
     private static final long serialVersionUID = 435149061357609295L;
     
-    //’è”’è‹`
+    //å®šæ•°å®šç¾©
     private static final String C_NOP = ""; //$NON-NLS-1$
     private String mWrKeyName = "JOURNAL";  //$NON-NLS-1$
     
-    //ƒƒ“ƒo[•Ï”
-    /** ƒGƒfƒBƒ^[ƒT[ƒrƒXƒ}ƒl[ƒWƒƒ[–¼ */
+    //ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
+    /** ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼å */
     private ServiceName mEditorFinderName;
     
-    /** ƒGƒfƒBƒ^[ƒT[ƒrƒXƒ}ƒl[ƒWƒƒ[ */
+    /** ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ */
     private EditorFinder mEditorFinder;
     
-    /** ƒV[ƒNƒGƒ“ƒXƒT[ƒrƒX–¼ */
+    /** ã‚·ãƒ¼ã‚¯ã‚¨ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mSequenceServiceName;
     
-    /** ƒV[ƒNƒGƒ“ƒX */
+    /** ã‚·ãƒ¼ã‚¯ã‚¨ãƒ³ã‚¹ */
     private Sequence mSequence;
     
-    /** ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒgƒXƒŒƒbƒhƒ[ƒJƒ‹ */
+    /** ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ« */
     private ThreadLocal mRequestLocal;
     
-    /** ƒJƒŒƒ“ƒgƒXƒeƒbƒvƒXƒŒƒbƒhƒ[ƒJƒ‹ */
+    /** ã‚«ãƒ¬ãƒ³ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ« */
     private ThreadLocal mCurrentLocal;
     
-    /** ƒJƒŒƒ“ƒgƒXƒeƒbƒvƒXƒŒƒbƒhƒ[ƒJƒ‹ */
+    /** ã‚«ãƒ¬ãƒ³ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ« */
     private ThreadLocal mStepLocal;
     
-    /** QueueƒT[ƒrƒX–¼ */
+    /** Queueã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mQueueServiceName;
     
     /** Queue */
     private Queue mQueue;
     
     /**
-     * {@link #getQueueServiceName()}‚ªnull‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ì{@link Queue}ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚·‚é{@link DefaultQueueService}ƒT[ƒrƒXB<p>
+     * {@link #getQueueServiceName()}ãŒnullã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã™ã‚‹{@link DefaultQueueService}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private DefaultQueueService defaultQueue;
     
     /**
-     * ƒJƒeƒSƒŠƒT[ƒrƒX–¼”z—ñB<p>
+     * ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     private ServiceName[] categoryNames;
     
     /**
-     * ƒJƒeƒSƒŠƒT[ƒrƒXƒŠƒXƒgB<p>
+     * ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ãƒªã‚¹ãƒˆã€‚<p>
      */
     private List categories;
     
     private int writeDaemonSize = 1;
     
-    /** DaemonƒIƒuƒWƒFƒNƒg */
+    /** Daemonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     private Daemon[] mDaemon ;
     private int mJournalLevel;
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<br>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
-        //ƒXƒŒƒbƒhƒ[ƒJƒ‹ì¬
+        //ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«ä½œæˆ
         mRequestLocal = new ThreadLocal();
         mCurrentLocal = new ThreadLocal();
         mStepLocal = new ThreadLocal();
     }
     
     /**
-     * EditorFinder‚ğİ’è‚·‚éB
+     * EditorFinderã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setEditorFinder(EditorFinder editorFinder) {
         mEditorFinder = editorFinder;
     }
     
     /**
-     * Queue‚ğİ’è‚·‚éB
+     * Queueã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setQueue(Queue queue) {
         mQueue = queue;
     }
     
     /**
-     * Sequence‚ğİ’è‚·‚éB
+     * Sequenceã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setSequence(Sequence sequence) {
         mSequence = sequence;
     }
     
     /**
-     * Category‚ğİ’è‚·‚éB
+     * Categoryã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCategories(List categories) {
         this.categories = categories;
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
-        //ƒT[ƒrƒXæ“¾
+        //ã‚µãƒ¼ãƒ“ã‚¹å–å¾—
         mEditorFinder = (EditorFinder)ServiceManagerFactory.getServiceObject(
             mEditorFinderName
         );
@@ -181,7 +181,7 @@ public class ThreadManagedJournalService
                 .getServiceObject(mQueueServiceName);
         }
         
-        // ƒJƒeƒSƒŠ‚Ì“o˜^
+        // ã‚«ãƒ†ã‚´ãƒªã®ç™»éŒ²
         if(categories == null) {
             categories = new ArrayList();
             final ServiceName[] categoryNames = getCategoryServiceNames();
@@ -195,7 +195,7 @@ public class ThreadManagedJournalService
             }
         }
         
-        // ƒLƒ…[æ“¾‘Ò‚¿‚ğŠJn‚·‚é
+        // ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’é–‹å§‹ã™ã‚‹
         mQueue.accept();
         
         if(mQueue instanceof QueueHandlerContainer){
@@ -212,9 +212,9 @@ public class ThreadManagedJournalService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService(){
         
@@ -228,11 +228,11 @@ public class ThreadManagedJournalService
             ((QueueHandlerContainer)mQueue).stop();
         }
         
-        // ƒLƒ…[æ“¾‘Ò‚¿‚ğŠJ•ú‚·‚é
+        // ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’é–‹æ”¾ã™ã‚‹
         mQueue.release();
         
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(mQueue == getDefaultQueueService()){
             getDefaultQueueService().stop();
             mQueue = null;
@@ -244,21 +244,21 @@ public class ThreadManagedJournalService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService(){
         mRequestLocal = null;
         mCurrentLocal = null;
         mStepLocal = null;
         
-        //ƒT[ƒrƒXæ“¾
+        //ã‚µãƒ¼ãƒ“ã‚¹å–å¾—
         mEditorFinder = null;
         mSequence = null ;
         
-        // QueueFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // QueueFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(mQueue == getDefaultQueueService()){
             getDefaultQueueService().destroy();
             setDefaultQueueService(null);
@@ -270,13 +270,13 @@ public class ThreadManagedJournalService
         categories = null;
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public String getRequestId(){
         if(mCurrentLocal == null){
             return null;
         }
         
-        //RootƒŠƒNƒGƒXƒg‚ÌƒŠƒNƒGƒXƒgID‚ğæ“¾1
+        //Rootãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—1
         JournalRecordImpl jr = (JournalRecordImpl)mCurrentLocal.get();
         if(jr != null){
             RequestJournal rj = (RequestJournal)jr.getObject();
@@ -285,12 +285,12 @@ public class ThreadManagedJournalService
         return null;
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void setRequestId(String requestID){
         if(mCurrentLocal == null){
             return;
         }
-        //RootƒŠƒNƒGƒXƒg‚ÌƒŠƒNƒGƒXƒgID‚ğİ’è
+        //Rootãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¨­å®š
         JournalRecordImpl jr = (JournalRecordImpl)mCurrentLocal.get();
         if(jr != null){
             RequestJournalImpl rj = (RequestJournalImpl)jr.getObject();
@@ -298,12 +298,12 @@ public class ThreadManagedJournalService
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void startJournal(String key){
         startJournal(key, new Date(), null);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void startJournal(
         String key ,
         Date startTime,
@@ -316,12 +316,12 @@ public class ThreadManagedJournalService
         if(jr == null){
             
             String id = "";
-            // ’Ê”ÔƒT[ƒrƒX‚ª—˜—p‚Å‚«‚é‚È‚ç‚ÎA
-            // ’Ê”ÔƒT[ƒrƒX‚ğ—˜—p‚µ‚ÄƒCƒ“ƒNƒŠƒƒ“ƒg
+            // é€šç•ªã‚µãƒ¼ãƒ“ã‚¹ãŒåˆ©ç”¨ã§ãã‚‹ãªã‚‰ã°ã€
+            // é€šç•ªã‚µãƒ¼ãƒ“ã‚¹ã‚’åˆ©ç”¨ã—ã¦ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
             if(mSequence != null){
                 id = mSequence.increment();
             }
-            //V‹KƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg‚ğì¬
+            //æ–°è¦ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆ
             RequestJournalImpl rj = new RequestJournalImpl(false);
             rj.setStartTime(startTime);
             rj.setKey(key);
@@ -359,18 +359,18 @@ public class ThreadManagedJournalService
                 key = C_NOP;
             }
             JournalRecord newRec = curStep.setParamObj(key,finder,newStep);
-            //ƒJƒŒƒ“ƒgƒXƒeƒbƒv•ÏX
+            //ã‚«ãƒ¬ãƒ³ãƒˆã‚¹ãƒ†ãƒƒãƒ—å¤‰æ›´
             mCurrentLocal.set(newRec);
             mStepLocal.set(newRec);
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void startJournal(String key, Date startTime){
         startJournal(key, startTime, null);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void startJournal(String key, EditorFinder finder){
         startJournal(key, new Date(), finder);
     }
@@ -379,15 +379,15 @@ public class ThreadManagedJournalService
         return mRequestLocal.get() != null;
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void endJournal(){
         endJournal(new Date());
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğƒLƒ…[‚É‘‚«‚ŞB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ã‚­ãƒ¥ãƒ¼ã«æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param jr ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh
+     * @param jr ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     protected void writeJarnal(JournalRecordImpl jr){
         if(getState() != STARTED){
@@ -396,7 +396,7 @@ public class ThreadManagedJournalService
         mQueue.push(jr);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void endJournal(Date endTime){
         if(getState() != STARTED){
             return;
@@ -409,7 +409,7 @@ public class ThreadManagedJournalService
                 "startJournal() and endJournal must be used in a pair."
             );
         }
-        //ˆ—’†‚ÌƒXƒeƒbƒv‚ğI—¹ŠÔ“o˜^
+        //å‡¦ç†ä¸­ã®ã‚¹ãƒ†ãƒƒãƒ—ã‚’çµ‚äº†æ™‚é–“ç™»éŒ²
         while(true){
             if(stepRec != null && curRec == stepRec){
                 break ;
@@ -418,7 +418,7 @@ public class ThreadManagedJournalService
             step.setEndTime(endTime);
             stepRec = step.getStepRoot();
         }
-        //ƒŠƒNƒGƒXƒgƒIƒuƒWƒFƒNƒg‚ğƒGƒfƒBƒ^[‚É“n‚·B
+        //ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã«æ¸¡ã™ã€‚
         RequestJournalImpl curStep = (RequestJournalImpl) curRec.getObject();
         curStep.setEndTime(endTime);
         JournalRecordImpl rootRec = curStep.getCurRoot();
@@ -434,21 +434,21 @@ public class ThreadManagedJournalService
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addInfo(String key, Object value,int level){
-        //İ’è‚³‚ê‚½JournalLevelˆÈ‰º‚Ì‚à‚Ì‚Ío‚³‚È‚¢
+        //è¨­å®šã•ã‚ŒãŸJournalLevelä»¥ä¸‹ã®ã‚‚ã®ã¯å‡ºã•ãªã„
         if( level < this.getJournalLevel()){
             return;
         }
         addInfo(key,value);
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public int getJournalLevel(){
         return mJournalLevel;
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addInfo(String key, Object value){
         if(getState() != STARTED){
             return;
@@ -460,7 +460,7 @@ public class ThreadManagedJournalService
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addInfo(String key,Object value,EditorFinder finder){
         if(getState() != STARTED){
             return;
@@ -474,7 +474,7 @@ public class ThreadManagedJournalService
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addInfo(
         String key,
         Object value,
@@ -484,7 +484,7 @@ public class ThreadManagedJournalService
         if(getState() != STARTED){
             return;
         }
-        //İ’è‚³‚ê‚½JournalLevelˆÈ‰º‚Ì‚à‚Ì‚Ío‚³‚È‚¢
+        //è¨­å®šã•ã‚ŒãŸJournalLevelä»¥ä¸‹ã®ã‚‚ã®ã¯å‡ºã•ãªã„
         if(level < this.getJournalLevel()){
             return;
         }
@@ -502,12 +502,12 @@ public class ThreadManagedJournalService
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addStartStep(String key){
         addStartStep(key, new Date(), null);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addStartStep(
         String key,
         EditorFinder finder
@@ -515,12 +515,12 @@ public class ThreadManagedJournalService
         addStartStep(key, new Date(), finder);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addStartStep(String key, Date startTime){
         addStartStep(key, startTime, null);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addStartStep(
         String key,
         Date startTime,
@@ -548,32 +548,32 @@ public class ThreadManagedJournalService
             }
             JournalRecord newRec = curStep.setParamObj(key,finder,newStep);
             
-            //ƒJƒŒƒ“ƒgƒXƒeƒbƒv•ÏX
+            //ã‚«ãƒ¬ãƒ³ãƒˆã‚¹ãƒ†ãƒƒãƒ—å¤‰æ›´
             mStepLocal.set(newRec);
             mCurrentLocal.set(newRec);
         }
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addEndStep(){
         addEndStep(new Date());
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public void addEndStep(Date endTime){
         if(getState() != STARTED){
             return;
         }
         JournalRecordImpl curRec = (JournalRecordImpl)mStepLocal.get();
         if(curRec != null){
-            //startJournal‚Å’Ç‰Á‚µ‚½ƒXƒeƒbƒv‚Í–³Œø
+            //startJournalã§è¿½åŠ ã—ãŸã‚¹ãƒ†ãƒƒãƒ—ã¯ç„¡åŠ¹
             if(curRec.isStep() == false){
                 return ;
             }
             RequestJournalImpl curStep
                  = (RequestJournalImpl)curRec.getObject();
             curStep.setEndTime(endTime);
-            //ƒJƒŒƒ“ƒgƒXƒeƒbƒv‚ğPOP
+            //ã‚«ãƒ¬ãƒ³ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’POP
             JournalRecordImpl root = curStep.getCurRoot();
             if(root != null){
                     mCurrentLocal.set(root);
@@ -585,26 +585,26 @@ public class ThreadManagedJournalService
         }
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onStop(){
         return true;
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onSuspend(){
         return true;
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onResume(){
         return true;
     }
     
     /**
-     * ƒLƒ…[‚©‚çƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ğæ‚èo‚·B<p>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–ã‚Šå‡ºã™ã€‚<p>
      *
-     * @param ctrl ƒf[ƒ‚ƒ“§ŒäƒIƒuƒWƒFƒNƒg
-     * @return ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh
+     * @param ctrl ãƒ‡ãƒ¼ãƒ¢ãƒ³åˆ¶å¾¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Object provide(DaemonControl ctrl){
         if(mQueue == null){
@@ -614,10 +614,10 @@ public class ThreadManagedJournalService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ğ•ÒW‚µ‚ÄƒJƒeƒSƒŠ‚É‘‚«‚ŞB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç·¨é›†ã—ã¦ã‚«ãƒ†ã‚´ãƒªã«æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param paramObj ƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh
-     * @param ctrl ƒf[ƒ‚ƒ“§ŒäƒIƒuƒWƒFƒNƒg
+     * @param paramObj ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param ctrl ãƒ‡ãƒ¼ãƒ¢ãƒ³åˆ¶å¾¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object paramObj, DaemonControl ctrl){
         if(paramObj == null){
@@ -635,7 +635,7 @@ public class ThreadManagedJournalService
                     try{
                         category.write(elements);
                     }catch(MessageWriteException e){
-                        // –³‹‚·‚é
+                        // ç„¡è¦–ã™ã‚‹
                     }
                 }
             }
@@ -643,12 +643,12 @@ public class ThreadManagedJournalService
     }
     
     /**
-     * ƒLƒ…[‚©‚ç‘S‚Ä‚ÌƒWƒƒ[ƒiƒ‹ƒŒƒR[ƒh‚ğæ‚èo‚µ‚ÄAÁ”ï‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å…¨ã¦ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–ã‚Šå‡ºã—ã¦ã€æ¶ˆè²»ã™ã‚‹ã€‚<p>
      */
     public void garbage(){
-        // ƒLƒ…[‚ª‚ ‚ê‚ÎƒLƒ…[‚Ìc‚èŒ”•ªƒƒO‚ğ‘‚«o‚·
+        // ã‚­ãƒ¥ãƒ¼ãŒã‚ã‚Œã°ã‚­ãƒ¥ãƒ¼ã®æ®‹ã‚Šä»¶æ•°åˆ†ãƒ­ã‚°ã‚’æ›¸ãå‡ºã™
         if(mQueue != null){
-            //ƒLƒ…[‚Ì“à—e‚ª‚È‚­‚È‚é‚Ü‚Å
+            //ã‚­ãƒ¥ãƒ¼ã®å†…å®¹ãŒãªããªã‚‹ã¾ã§
             while(mQueue.size() > 0){
                 Object obj = mQueue.get(0);
                 try{
@@ -659,11 +659,11 @@ public class ThreadManagedJournalService
         }
     }
     
-    // DaemonRunnable ‚ÌJavaDoc
+    // DaemonRunnable ã®JavaDoc
     public boolean onStart(){
         return true;
     }
-    // QueueHandler ‚ÌJavaDoc
+    // QueueHandler ã®JavaDoc
     public void handleDequeuedObject(Object obj) throws Throwable{
         if(obj == null){
             return;
@@ -671,26 +671,26 @@ public class ThreadManagedJournalService
         consume(obj, null);
     }
     
-    // QueueHandler ‚ÌJavaDoc
+    // QueueHandler ã®JavaDoc
     public boolean handleError(Object obj, Throwable th) throws Throwable{
         return true;
     }
     
-    // QueueHandler ‚ÌJavaDoc
+    // QueueHandler ã®JavaDoc
     public void handleRetryOver(Object obj, Throwable th) throws Throwable{
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public void setEditorFinderName(ServiceName name){
         mEditorFinderName = name;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public ServiceName getEditorFinderName(){
         return mEditorFinderName;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         mSequenceServiceName = name;
     }
@@ -699,74 +699,74 @@ public class ThreadManagedJournalService
         return mSequenceServiceName;
     }
     
-    // ThreadManagedJournalServiceMBean‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBeanã®JavaDoc
     public void setCategoryServiceNames(ServiceName[] names){
         categoryNames = names;
     }
     
-    // ThreadManagedJournalServiceMBean‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBeanã®JavaDoc
     public ServiceName[] getCategoryServiceNames(){
         return categoryNames;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         mQueueServiceName = name;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public ServiceName getQueueServiceName(){
         return mQueueServiceName;
     }
     
     /**
-     * QueueƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link DefaultQueueService}‚ğæ“¾‚·‚éB<p>
-     * ‚±‚ÌDefaultQueueService‚ÍA–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚³‚ê‚éB‚Ü‚½A{@link #setQueueServiceName(ServiceName)}‚ÅQueue‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAnull‚ğ•Ô‚·ê‡‚ª‚ ‚éB<br>
+     * Queueã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link DefaultQueueService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®DefaultQueueServiceã¯ã€ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã•ã‚Œã‚‹ã€‚ã¾ãŸã€{@link #setQueueServiceName(ServiceName)}ã§QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€nullã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã€‚<br>
      *
-     * @return DefaultQueueServiceƒIƒuƒWƒFƒNƒgB¶¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ínull‚ğ•Ô‚·B
+     * @return DefaultQueueServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ç”Ÿæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯nullã‚’è¿”ã™ã€‚
      */
     protected DefaultQueueService getDefaultQueueService(){
         return defaultQueue;
     }
     
     /**
-     * QueueƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link DefaultQueueService}‚ğİ’è‚·‚éB<p>
+     * Queueã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link DefaultQueueService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue DefaultQueueServiceƒIƒuƒWƒFƒNƒg
+     * @param queue DefaultQueueServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setDefaultQueueService(DefaultQueueService queue){
         defaultQueue = queue;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public String getWritableElementKey(){
         return mWrKeyName;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public void setWritableElementKey(String string){
         mWrKeyName = string;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public void setJournalLevel(int level){
         mJournalLevel = level;
     }
     
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public void setWriteDaemonSize(int size){
         writeDaemonSize = size;
     }
-    // ThreadManagedJournalServiceMBean ‚ÌJavaDoc
+    // ThreadManagedJournalServiceMBean ã®JavaDoc
     public int getWriteDaemonSize(){
         return writeDaemonSize;
     }
     
     /**
-     * Œ»İ‚ÌƒWƒƒ[ƒiƒ‹o—Í•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param finderServiceName ƒWƒƒ[ƒiƒ‹‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @return Œ»İ‚ÌƒWƒƒ[ƒiƒ‹o—Í•¶š—ñ
+     * @param finderServiceName ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @return ç¾åœ¨ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›æ–‡å­—åˆ—
      */
     public String getCurrentJournalString(ServiceName finderServiceName){
         EditorFinder finder = (EditorFinder)ServiceManagerFactory
@@ -774,7 +774,7 @@ public class ThreadManagedJournalService
         return getCurrentJournalString(finder);
     }
     
-    // Journal ‚ÌJavaDoc
+    // Journal ã®JavaDoc
     public String getCurrentJournalString(EditorFinder finder){
         JournalRecordImpl curRec = (JournalRecordImpl)mCurrentLocal.get();
         if(curRec == null){

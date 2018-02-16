@@ -40,7 +40,7 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 import jp.ossc.nimbus.service.beancontrol.interfaces.InvalidConfigurationException;
 
 /**
- * {@link BeanFlowInvokerFactory}ÉOÉãÅ[ÉsÉìÉOÉTÅ[ÉrÉXÅB<p>
+ * {@link BeanFlowInvokerFactory}„Ç∞„É´„Éº„Éî„É≥„Ç∞„Çµ„Éº„Éì„Çπ„ÄÇ<p>
  * 
  * @author M.Takata
  */
@@ -52,11 +52,11 @@ public class BeanFlowInvokerFactoryGroupService extends ServiceBase
     private ServiceName[] beanFlowInvokerFactoryServiceNames;
     private BeanFlowInvokerFactory[] beanFlowInvokerFactories;
     
-    // BeanFlowInvokerFactoryGroupServiceMBeanÇÃJavaDoc
+    // BeanFlowInvokerFactoryGroupServiceMBean„ÅÆJavaDoc
     public void setBeanFlowInvokerFactoryServiceNames(ServiceName[] names){
         beanFlowInvokerFactoryServiceNames = names;
     }
-    // BeanFlowInvokerFactoryGroupServiceMBeanÇÃJavaDoc
+    // BeanFlowInvokerFactoryGroupServiceMBean„ÅÆJavaDoc
     public ServiceName[] getBeanFlowInvokerFactoryServiceNames(){
         return beanFlowInvokerFactoryServiceNames;
     }
@@ -78,7 +78,7 @@ public class BeanFlowInvokerFactoryGroupService extends ServiceBase
         }
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public BeanFlowInvoker createFlow(String key){
         for(int i = 0; i < beanFlowInvokerFactories.length; i++){
             if(beanFlowInvokerFactories[i].getBeanFlowKeySet().contains(key)){
@@ -88,7 +88,7 @@ public class BeanFlowInvokerFactoryGroupService extends ServiceBase
         throw new InvalidConfigurationException(key + " no mapped FLOW");
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public BeanFlowInvoker createFlow(String key, String caller, boolean isOverwride){
         for(int i = 0; i < beanFlowInvokerFactories.length; i++){
             if(beanFlowInvokerFactories[i].getBeanFlowKeySet().contains(key)){
@@ -98,7 +98,7 @@ public class BeanFlowInvokerFactoryGroupService extends ServiceBase
         throw new InvalidConfigurationException(key + " no mapped FLOW");
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public Set getBeanFlowKeySet(){
         final Set result = new HashSet();
         if(beanFlowInvokerFactories == null){
@@ -110,7 +110,7 @@ public class BeanFlowInvokerFactoryGroupService extends ServiceBase
         return result;
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public boolean containsFlow(String key){
         for(int i = 0; i < beanFlowInvokerFactories.length; i++){
             if(beanFlowInvokerFactories[i].containsFlow(key)){

@@ -47,7 +47,7 @@ import java.util.Collections;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒEƒBƒ“ƒhƒEƒNƒ‰ƒXB<p>
+ * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

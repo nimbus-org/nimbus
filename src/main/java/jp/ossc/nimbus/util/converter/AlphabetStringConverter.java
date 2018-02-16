@@ -32,61 +32,61 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ‰pšƒRƒ“ƒo[ƒ^B<p>
+ * è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * <table border=5>
- *     <tr><th>”¼Šp‰pš</th><th>‘SŠp‰pš</th></tr>
- *     <tr><td>a</td><td>‚</td></tr>
- *     <tr><td>b</td><td>‚‚</td></tr>
- *     <tr><td>c</td><td>‚ƒ</td></tr>
- *     <tr><td>d</td><td>‚„</td></tr>
- *     <tr><td>e</td><td>‚…</td></tr>
- *     <tr><td>f</td><td>‚†</td></tr>
- *     <tr><td>g</td><td>‚‡</td></tr>
- *     <tr><td>h</td><td>‚ˆ</td></tr>
- *     <tr><td>i</td><td>‚‰</td></tr>
- *     <tr><td>j</td><td>‚Š</td></tr>
- *     <tr><td>k</td><td>‚‹</td></tr>
- *     <tr><td>l</td><td>‚Œ</td></tr>
- *     <tr><td>m</td><td>‚</td></tr>
- *     <tr><td>n</td><td>‚</td></tr>
- *     <tr><td>o</td><td>‚</td></tr>
- *     <tr><td>p</td><td>‚</td></tr>
- *     <tr><td>q</td><td>‚‘</td></tr>
- *     <tr><td>r</td><td>‚’</td></tr>
- *     <tr><td>s</td><td>‚“</td></tr>
- *     <tr><td>t</td><td>‚”</td></tr>
- *     <tr><td>u</td><td>‚•</td></tr>
- *     <tr><td>v</td><td>‚–</td></tr>
- *     <tr><td>w</td><td>‚—</td></tr>
- *     <tr><td>x</td><td>‚˜</td></tr>
- *     <tr><td>y</td><td>‚™</td></tr>
- *     <tr><td>z</td><td>‚š</td></tr>
- *     <tr><td>A</td><td>‚`</td></tr>
- *     <tr><td>B</td><td>‚a</td></tr>
- *     <tr><td>C</td><td>‚b</td></tr>
- *     <tr><td>D</td><td>‚c</td></tr>
- *     <tr><td>E</td><td>‚d</td></tr>
- *     <tr><td>F</td><td>‚e</td></tr>
- *     <tr><td>G</td><td>‚f</td></tr>
- *     <tr><td>H</td><td>‚g</td></tr>
- *     <tr><td>I</td><td>‚h</td></tr>
- *     <tr><td>J</td><td>‚i</td></tr>
- *     <tr><td>K</td><td>‚j</td></tr>
- *     <tr><td>L</td><td>‚k</td></tr>
- *     <tr><td>M</td><td>‚l</td></tr>
- *     <tr><td>N</td><td>‚m</td></tr>
- *     <tr><td>O</td><td>‚n</td></tr>
- *     <tr><td>P</td><td>‚o</td></tr>
- *     <tr><td>Q</td><td>‚p</td></tr>
- *     <tr><td>R</td><td>‚q</td></tr>
- *     <tr><td>S</td><td>‚r</td></tr>
- *     <tr><td>T</td><td>‚s</td></tr>
- *     <tr><td>U</td><td>‚t</td></tr>
- *     <tr><td>V</td><td>‚u</td></tr>
- *     <tr><td>W</td><td>‚v</td></tr>
- *     <tr><td>X</td><td>‚w</td></tr>
- *     <tr><td>Y</td><td>‚x</td></tr>
- *     <tr><td>Z</td><td>‚y</td></tr>
+ *     <tr><th>åŠè§’è‹±å­—</th><th>å…¨è§’è‹±å­—</th></tr>
+ *     <tr><td>a</td><td>ï½</td></tr>
+ *     <tr><td>b</td><td>ï½‚</td></tr>
+ *     <tr><td>c</td><td>ï½ƒ</td></tr>
+ *     <tr><td>d</td><td>ï½„</td></tr>
+ *     <tr><td>e</td><td>ï½…</td></tr>
+ *     <tr><td>f</td><td>ï½†</td></tr>
+ *     <tr><td>g</td><td>ï½‡</td></tr>
+ *     <tr><td>h</td><td>ï½ˆ</td></tr>
+ *     <tr><td>i</td><td>ï½‰</td></tr>
+ *     <tr><td>j</td><td>ï½Š</td></tr>
+ *     <tr><td>k</td><td>ï½‹</td></tr>
+ *     <tr><td>l</td><td>ï½Œ</td></tr>
+ *     <tr><td>m</td><td>ï½</td></tr>
+ *     <tr><td>n</td><td>ï½</td></tr>
+ *     <tr><td>o</td><td>ï½</td></tr>
+ *     <tr><td>p</td><td>ï½</td></tr>
+ *     <tr><td>q</td><td>ï½‘</td></tr>
+ *     <tr><td>r</td><td>ï½’</td></tr>
+ *     <tr><td>s</td><td>ï½“</td></tr>
+ *     <tr><td>t</td><td>ï½”</td></tr>
+ *     <tr><td>u</td><td>ï½•</td></tr>
+ *     <tr><td>v</td><td>ï½–</td></tr>
+ *     <tr><td>w</td><td>ï½—</td></tr>
+ *     <tr><td>x</td><td>ï½˜</td></tr>
+ *     <tr><td>y</td><td>ï½™</td></tr>
+ *     <tr><td>z</td><td>ï½š</td></tr>
+ *     <tr><td>A</td><td>ï¼¡</td></tr>
+ *     <tr><td>B</td><td>ï¼¢</td></tr>
+ *     <tr><td>C</td><td>ï¼£</td></tr>
+ *     <tr><td>D</td><td>ï¼¤</td></tr>
+ *     <tr><td>E</td><td>ï¼¥</td></tr>
+ *     <tr><td>F</td><td>ï¼¦</td></tr>
+ *     <tr><td>G</td><td>ï¼§</td></tr>
+ *     <tr><td>H</td><td>ï¼¨</td></tr>
+ *     <tr><td>I</td><td>ï¼©</td></tr>
+ *     <tr><td>J</td><td>ï¼ª</td></tr>
+ *     <tr><td>K</td><td>ï¼«</td></tr>
+ *     <tr><td>L</td><td>ï¼¬</td></tr>
+ *     <tr><td>M</td><td>ï¼­</td></tr>
+ *     <tr><td>N</td><td>ï¼®</td></tr>
+ *     <tr><td>O</td><td>ï¼¯</td></tr>
+ *     <tr><td>P</td><td>ï¼°</td></tr>
+ *     <tr><td>Q</td><td>ï¼±</td></tr>
+ *     <tr><td>R</td><td>ï¼²</td></tr>
+ *     <tr><td>S</td><td>ï¼³</td></tr>
+ *     <tr><td>T</td><td>ï¼´</td></tr>
+ *     <tr><td>U</td><td>ï¼µ</td></tr>
+ *     <tr><td>V</td><td>ï¼¶</td></tr>
+ *     <tr><td>W</td><td>ï¼·</td></tr>
+ *     <tr><td>X</td><td>ï¼¸</td></tr>
+ *     <tr><td>Y</td><td>ï¼¹</td></tr>
+ *     <tr><td>Z</td><td>ï¼º</td></tr>
  * </table>
  * 
  * @author   M.Takata
@@ -97,16 +97,16 @@ public class AlphabetStringConverter extends HankakuZenkakuStringConverter
     private static final long serialVersionUID = 2583585212364793389L;
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·‚Ì‰pšƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ã®è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public AlphabetStringConverter(){
         this(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚Ì‰pšƒRƒ“ƒo[ƒ^[‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®è‹±å­—ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #HANKAKU_TO_ZENKAKU
      * @see #ZENKAKU_TO_HANKAKU
      */
@@ -115,7 +115,7 @@ public class AlphabetStringConverter extends HankakuZenkakuStringConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return {@link AlphabetCharacterConverter#CONV_CHARS}
      */
@@ -124,7 +124,7 @@ public class AlphabetStringConverter extends HankakuZenkakuStringConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return null
      */

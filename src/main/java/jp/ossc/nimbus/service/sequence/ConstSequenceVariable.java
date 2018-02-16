@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.sequence;
 
 /**
- * ŒÅ’èŒ…”ŠÇ—ƒNƒ‰ƒXB<p>
+ * å›ºå®šæ¡æ•°ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,25 +44,25 @@ public class ConstSequenceVariable
     private String constValue;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      * 
-     * @param format ŒÅ’è•¶š—ñ
+     * @param format å›ºå®šæ–‡å­—åˆ—
      */
     public ConstSequenceVariable(String format){
         constValue = format;
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      *
-     * @return •K‚¸true
+     * @return å¿…ãštrue
      */
     public boolean increment(){
         return true;
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void clear(){
     }

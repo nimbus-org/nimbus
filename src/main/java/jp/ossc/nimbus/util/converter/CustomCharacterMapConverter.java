@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒ}ƒbƒvƒRƒ“ƒo[ƒ^B<p>
+ * ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒãƒƒãƒ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -47,17 +47,17 @@ public class CustomCharacterMapConverter
     protected boolean isTarget = true;
     
     /**
-     * ‹ó‚ÌƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒ}ƒbƒvƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒãƒƒãƒ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CustomCharacterMapConverter(){
     }
     
     /**
-     * ƒJƒXƒ^ƒ€ƒLƒƒƒ‰ƒNƒ^ƒ}ƒbƒvƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒ ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒãƒƒãƒ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param chars ‘ÎÛ•¶š”z—ñ
-     * @param toChar •ÏŠ·ŒãƒLƒƒƒ‰ƒNƒ^
-     * @param isTarget chars‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚éê‡trueBcharsˆÈŠO‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚éê‡false
+     * @param chars å¯¾è±¡æ–‡å­—é…åˆ—
+     * @param toChar å¤‰æ›å¾Œã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @param isTarget charsã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹å ´åˆtrueã€‚charsä»¥å¤–ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹å ´åˆfalse
      */
     public CustomCharacterMapConverter(char[] chars, char toChar, boolean isTarget){
         setCharMap(chars);
@@ -66,9 +66,9 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * ‘ÎÛƒ}ƒbƒv•¶š”z—ñ‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ãƒãƒƒãƒ—æ–‡å­—é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param chars ‘ÎÛ•¶š”z—ñ
+     * @param chars å¯¾è±¡æ–‡å­—é…åˆ—
      */
     public void setCharMap(char[] chars){
         if(charMapArray == null){
@@ -88,9 +88,9 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * ‘ÎÛƒ}ƒbƒv•¶š”z—ñ‚ğ’Ç‰Á‚·‚éB<p>
+     * å¯¾è±¡ãƒãƒƒãƒ—æ–‡å­—é…åˆ—ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param chars ‘ÎÛ•¶š”z—ñ
+     * @param chars å¯¾è±¡æ–‡å­—é…åˆ—
      */
     public void addCharMap(char[] chars){
         if(chars == null || chars.length == 0){
@@ -105,9 +105,9 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * ‘ÎÛƒ}ƒbƒv•¶š‚ğ’Ç‰Á‚·‚éB<p>
+     * å¯¾è±¡ãƒãƒƒãƒ—æ–‡å­—ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param c ‘ÎÛ•¶š
+     * @param c å¯¾è±¡æ–‡å­—
      */
     public void addChar(char c){
         if(charMapArray == null){
@@ -117,10 +117,10 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * ‘ÎÛ”ÍˆÍ•¶š‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ç¯„å›²æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param from ‘ÎÛ”ÍˆÍŠJn•¶š
-     * @param to ‘ÎÛ”ÍˆÍI—¹•¶š
+     * @param from å¯¾è±¡ç¯„å›²é–‹å§‹æ–‡å­—
+     * @param to å¯¾è±¡ç¯„å›²çµ‚äº†æ–‡å­—
      */
     public void setCharRange(char from, char to){
         if(from > to){
@@ -139,10 +139,10 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * ‘ÎÛ”ÍˆÍ•¶š‚ğ’Ç‰Á‚·‚éB<p>
+     * å¯¾è±¡ç¯„å›²æ–‡å­—ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param from ‘ÎÛ”ÍˆÍŠJn•¶š
-     * @param to ‘ÎÛ”ÍˆÍI—¹•¶š
+     * @param from å¯¾è±¡ç¯„å›²é–‹å§‹æ–‡å­—
+     * @param to å¯¾è±¡ç¯„å›²çµ‚äº†æ–‡å­—
      */
     public void addCharRange(char from, char to){
         if(from > to){
@@ -157,10 +157,10 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * •ÏŠ·Œã•¶š‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA'?'B
+     * å¤‰æ›å¾Œæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€'?'ã€‚
      *
-     * @param c •ÏŠ·Œã•¶š
+     * @param c å¤‰æ›å¾Œæ–‡å­—
      */
     public void setToChar(char c){
         this.toChar = c;
@@ -168,28 +168,28 @@ public class CustomCharacterMapConverter
     }
     
     /**
-     * •ÏŠ·Œã•¶š‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›å¾Œæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·Œã•¶š
+     * @return å¤‰æ›å¾Œæ–‡å­—
      */
     public char getToChar(){
         return toChar;
     }
     
     /**
-     * ‘ÎÛ”ÍˆÍ‚Ì•¶š‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚é‚©A‘ÎÛ”ÍˆÍ‚Ì•¶šˆÈŠO‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚é‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * å¯¾è±¡ç¯„å›²ã®æ–‡å­—ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹ã‹ã€å¯¾è±¡ç¯„å›²ã®æ–‡å­—ä»¥å¤–ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param isTarget ‘ÎÛ”ÍˆÍ‚Ì•¶š‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚éê‡trueB‘ÎÛ”ÍˆÍ‚Ì•¶šˆÈŠO‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚éê‡false
+     * @param isTarget å¯¾è±¡ç¯„å›²ã®æ–‡å­—ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹å ´åˆtrueã€‚å¯¾è±¡ç¯„å›²ã®æ–‡å­—ä»¥å¤–ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹å ´åˆfalse
      */
     public void setTarget(boolean isTarget){
         this.isTarget = isTarget;
     }
     
     /**
-     * ‘ÎÛ”ÍˆÍ‚Ì•¶š‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚é‚©A‘ÎÛ”ÍˆÍ‚Ì•¶šˆÈŠO‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚é‚©‚ğ”»’è‚·‚éB<p>
+     * å¯¾è±¡ç¯„å›²ã®æ–‡å­—ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹ã‹ã€å¯¾è±¡ç¯„å›²ã®æ–‡å­—ä»¥å¤–ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘ÎÛ”ÍˆÍ‚Ì•¶š‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚éBfalse‚Ìê‡A‘ÎÛ”ÍˆÍ‚Ì•¶šˆÈŠO‚ğ•ÏŠ·‘ÎÛ‚Æ‚·‚é
+     * @return trueã®å ´åˆã€å¯¾è±¡ç¯„å›²ã®æ–‡å­—ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹ã€‚falseã®å ´åˆã€å¯¾è±¡ç¯„å›²ã®æ–‡å­—ä»¥å¤–ã‚’å¤‰æ›å¯¾è±¡ã¨ã™ã‚‹
      */
     public boolean isTarget(){
         return isTarget;

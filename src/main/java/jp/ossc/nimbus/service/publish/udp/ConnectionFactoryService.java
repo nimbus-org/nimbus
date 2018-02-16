@@ -64,7 +64,7 @@ import jp.ossc.nimbus.service.publish.ConnectionCreateException;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * UDPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnectionFactory}‹y‚Ñ{@link ServerConnectionFactory}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒT[ƒrƒXB<p>
+ * UDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnectionFactory}åŠã³{@link ServerConnectionFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

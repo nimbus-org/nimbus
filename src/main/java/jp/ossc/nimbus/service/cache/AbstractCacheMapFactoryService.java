@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’ŠÛƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒtƒ@ƒNƒgƒŠB<p>
- * {@link AbstractCacheMapService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * æŠ½è±¡ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link AbstractCacheMapService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see AbstractCacheMapService
@@ -51,19 +51,19 @@ public abstract class AbstractCacheMapFactoryService
     private AbstractCacheMapService template;;
     
     /**
-     * AbstractCacheMapService‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * AbstractCacheMapServiceã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return AbstractCacheMapService‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception AbstractCacheMapService‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return AbstractCacheMapServiceã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception AbstractCacheMapServiceã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected abstract AbstractCacheMapService createAbstractCacheMapService()
      throws Exception;
     
     /**
-     * {@link AbstractCacheMapService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link AbstractCacheMapService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return AbstractCacheMapServiceƒT[ƒrƒX
-     * @exception Exception AbstractCacheMapService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return AbstractCacheMapServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception AbstractCacheMapServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see AbstractCacheMapService
      */
     protected Service createServiceInstance() throws Exception{
@@ -84,7 +84,7 @@ public abstract class AbstractCacheMapFactoryService
         return cacheMap;
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void setOverflowControllerServiceNames(ServiceName[] names){
         final AbstractCacheMapService templateCacheMap = getTemplate();
         if(templateCacheMap == null){
@@ -100,7 +100,7 @@ public abstract class AbstractCacheMapFactoryService
         }
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getOverflowControllerServiceNames(){
         final AbstractCacheMapService templateCacheMap = getTemplate();
         if(templateCacheMap == null){
@@ -109,7 +109,7 @@ public abstract class AbstractCacheMapFactoryService
         return templateCacheMap.getOverflowControllerServiceNames();
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void setClearOnStop(boolean isClear){
         final AbstractCacheMapService templateCacheMap = getTemplate();
         if(templateCacheMap == null){
@@ -125,7 +125,7 @@ public abstract class AbstractCacheMapFactoryService
         }
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean isClearOnStop(){
         final AbstractCacheMapService templateCacheMap = getTemplate();
         if(templateCacheMap == null){
@@ -134,7 +134,7 @@ public abstract class AbstractCacheMapFactoryService
         return templateCacheMap.isClearOnStop();
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void setClearOnDestroy(boolean isClear){
         final AbstractCacheMapService templateCacheMap = getTemplate();
         if(templateCacheMap == null){
@@ -150,7 +150,7 @@ public abstract class AbstractCacheMapFactoryService
         }
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean isClearOnDestroy(){
         final AbstractCacheMapService templateCacheMap = getTemplate();
         if(templateCacheMap == null){
@@ -159,7 +159,7 @@ public abstract class AbstractCacheMapFactoryService
         return templateCacheMap.isClearOnDestroy();
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean containsKey(Object key){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -173,7 +173,7 @@ public abstract class AbstractCacheMapFactoryService
         return false;
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public boolean containsValue(Object value){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -187,7 +187,7 @@ public abstract class AbstractCacheMapFactoryService
         return false;
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public KeyCachedReference getCachedReference(Object key){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -201,7 +201,7 @@ public abstract class AbstractCacheMapFactoryService
         return null;
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public Object get(Object key){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -215,7 +215,7 @@ public abstract class AbstractCacheMapFactoryService
         return null;
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void put(Object key, Object value){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -226,7 +226,7 @@ public abstract class AbstractCacheMapFactoryService
         }
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void putAll(Map map){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -237,7 +237,7 @@ public abstract class AbstractCacheMapFactoryService
         }
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void remove(Object key){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -250,7 +250,7 @@ public abstract class AbstractCacheMapFactoryService
         }
     }
     
-    // AbstractCacheMapFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapFactoryServiceMBeanã®JavaDoc
     public void clear(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -262,10 +262,10 @@ public abstract class AbstractCacheMapFactoryService
     }
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éAbstractCacheMapService‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
-     * ‚±‚±‚Åæ“¾‚³‚ê‚éƒeƒ“ƒvƒŒ[ƒg‚Ì¶¬‚É‚ÍA{@link #createAbstractCacheMapService()}‚ªg—p‚³‚ê‚éB¶¬‚É¸”s‚µ‚½ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹AbstractCacheMapServiceã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§å–å¾—ã•ã‚Œã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ç”Ÿæˆã«ã¯ã€{@link #createAbstractCacheMapService()}ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éAbstractCacheMapService‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹AbstractCacheMapServiceã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     protected synchronized AbstractCacheMapService getTemplate(){
         if(template == null){

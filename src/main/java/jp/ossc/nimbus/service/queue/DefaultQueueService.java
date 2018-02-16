@@ -41,7 +41,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ƒfƒtƒHƒ‹ƒgQueueƒT[ƒrƒXB<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆQueueã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -53,27 +53,27 @@ public class DefaultQueueService extends ServiceBase
     protected static final EmptyElement EMPTY = new EmptyElement();
     
     /**
-     * ƒLƒ…[—v‘fŠi”[ƒŠƒXƒgB<p>
+     * ã‚­ãƒ¥ãƒ¼è¦ç´ æ ¼ç´ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List queueElements;
     
     /**
-     * ƒLƒ…[‚Ì‰Šú—e—ÊB<p>
+     * ã‚­ãƒ¥ãƒ¼ã®åˆæœŸå®¹é‡ã€‚<p>
      */
     protected int initialCapacity = -1;
     
     /**
-     * ƒLƒ…[‚Ì—e—Ê‘‰Á”B<p>
+     * ã‚­ãƒ¥ãƒ¼ã®å®¹é‡å¢—åŠ æ•°ã€‚<p>
      */
     protected int capacityIncrement = -1;
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX–¼B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName cacheServiceName;
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒT[ƒrƒXB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected Cache cache;
     
@@ -86,7 +86,7 @@ public class DefaultQueueService extends ServiceBase
     protected SynchronizeMonitor peekMonitor = new WaitSynchronizeMonitor();
     
     /**
-     * ‹­§I—¹ƒtƒ‰ƒOB<p>
+     * å¼·åˆ¶çµ‚äº†ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected volatile boolean fourceEndFlg = false;
     
@@ -98,70 +98,70 @@ public class DefaultQueueService extends ServiceBase
     protected boolean isSafeGetOrder = true;
     protected Class synchronizeMonitorClass = WaitSynchronizeMonitor.class;
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setSynchronizeMonitorClass(Class clazz){
         synchronizeMonitorClass = clazz;
     }
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public Class getSynchronizeMonitorClass(){
         return synchronizeMonitorClass;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setInitialCapacity(int initial){
         initialCapacity = initial;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public int getInitialCapacity(){
         return initialCapacity;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setCapacityIncrement(int increment){
         capacityIncrement = increment;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public int getCapacityIncrement(){
         return capacityIncrement;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setCacheServiceName(ServiceName name){
         cacheServiceName = name;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public ServiceName getCacheServiceName(){
         return cacheServiceName;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setSleepTime(long millis){
         sleepTime = millis;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getSleepTime(){
         return sleepTime;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setMaxThresholdSize(int size){
         maxThresholdSize = size;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public int getMaxThresholdSize(){
         return maxThresholdSize;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public boolean isSafeGetOrder(){
         return isSafeGetOrder;
     }
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public void setSafeGetOrder(boolean isSafe){
         isSafeGetOrder = isSafe;
     }
@@ -207,11 +207,11 @@ public class DefaultQueueService extends ServiceBase
         cache = null;
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public void push(Object item){
         push(item, -1l);
     }
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public boolean push(Object item, long timeout){
         return pushElement(item, timeout);
     }
@@ -273,7 +273,7 @@ public class DefaultQueueService extends ServiceBase
         return true;
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public Object get(long timeOutMs){
         return getQueueElement(timeOutMs, true);
     }
@@ -286,17 +286,17 @@ public class DefaultQueueService extends ServiceBase
             }else{
                 peekMonitor.initMonitor();
             }
-            // ‹­§I—¹‚Å‚È‚¢ê‡
+            // å¼·åˆ¶çµ‚äº†ã§ãªã„å ´åˆ
             while(!fourceEndFlg){
-                // ƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚éê‡
+                // ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ã‚‹å ´åˆ
                 if(size() > 0){
-                    // QÆ‚·‚é‚¾‚¯‚Ìê‡
-                    // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚ªˆê”ÔÅ‰‚É‘Ò‚Á‚Ä‚¢‚½ê‡
+                    // å‚ç…§ã™ã‚‹ã ã‘ã®å ´åˆ
+                    // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒä¸€ç•ªæœ€åˆã«å¾…ã£ã¦ã„ãŸå ´åˆ
                     if(!isRemove
                         || !isSafeGetOrder
                         || getMonitor.isFirst()
                     ){
-                        // ƒLƒ…[‚©‚çæ“¾‚·‚é
+                        // ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–å¾—ã™ã‚‹
                         final Object ret = getQueueElement(isRemove);
                         if(ret == EMPTY){
                             continue;
@@ -305,8 +305,8 @@ public class DefaultQueueService extends ServiceBase
                             getMonitor.releaseMonitor();
                         }
                         
-                        // QÆ‚Å‚Í‚È‚­AƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚ÄA
-                        // Ÿ‚É‘Ò‚Á‚Ä‚¢‚éƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                        // å‚ç…§ã§ã¯ãªãã€ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ã¦ã€
+                        // æ¬¡ã«å¾…ã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                         if(isRemove && size() > 0 && getMonitor.isWait()){
                             if(isSafeGetOrder){
                                 getMonitor.notifyMonitor();
@@ -321,23 +321,23 @@ public class DefaultQueueService extends ServiceBase
                         }
                         return ret;
                     }
-                    // QÆ‚Å‚Í‚È‚­A‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                    // å‚ç…§ã§ã¯ãªãã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                     else if(getMonitor.isWait()){
-                        // ˆê”ÔÅ‰‚É‘Ò‚Á‚Ä‚¢‚éƒXƒŒƒbƒh‚ğ‹N‚±‚·
+                        // ä¸€ç•ªæœ€åˆã«å¾…ã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·ã“ã™
                         getMonitor.notifyMonitor();
                     }
                 }
                 
-                // ƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚È‚¢ê‡
-                // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                // ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ãªã„å ´åˆ
+                // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                 
-                // ‹­§I—¹‚Ü‚½‚Íƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+                // å¼·åˆ¶çµ‚äº†ã¾ãŸã¯ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
                 if(fourceEndFlg || timeOutMs == 0 || (timeOutMs > 0 && timeOutMs <= processTime)){
                     break;
                 }
                 
-                // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚ ‚éê‡‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚Ü‚Åsleep‚·‚é
-                // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚È‚¢ê‡‚ÍAsleepTime•ªsleep‚µ‚Ä‚İ‚é
+                // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒã‚ã‚‹å ´åˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¾ã§sleepã™ã‚‹
+                // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒãªã„å ´åˆã¯ã€sleepTimeåˆ†sleepã—ã¦ã¿ã‚‹
                 long proc = 0;
                 if(timeOutMs >= 0){
                     proc = System.currentTimeMillis();
@@ -365,7 +365,7 @@ public class DefaultQueueService extends ServiceBase
                 }
             }
             
-            // ‹­§I—¹‚Ìê‡
+            // å¼·åˆ¶çµ‚äº†ã®å ´åˆ
             if(fourceEndFlg){
                 final Object ret = getQueueElement(isRemove);
                 if(ret == EMPTY){
@@ -373,7 +373,7 @@ public class DefaultQueueService extends ServiceBase
                 }
                 return ret;
             }
-            // ƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+            // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
             else{
                 if(isRemove
                     && size() > 0
@@ -434,22 +434,22 @@ public class DefaultQueueService extends ServiceBase
         }
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public Object get(){
         return get(-1);
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public Object peek(long timeOutMs){
         return getQueueElement(timeOutMs, false);
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public Object peek(){
         return peek(-1);
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public Object remove(Object item){
         
         Object removed = null;
@@ -484,7 +484,7 @@ public class DefaultQueueService extends ServiceBase
         return removed;
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public void clear(){
         if(cache == null){
             queueElements.clear();
@@ -501,19 +501,19 @@ public class DefaultQueueService extends ServiceBase
         }
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public int size(){
         if(queueElements == null){
             return 0;
         }
         return queueElements.size();
     }
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public void accept(){
         fourceEndFlg = false;
     }
     
-    // Queue‚ÌJavaDoc
+    // Queueã®JavaDoc
     public void release(){
         fourceEndFlg = true;
         while(getMonitor.isWait()){
@@ -532,7 +532,7 @@ public class DefaultQueueService extends ServiceBase
         return getMonitor.getWaitCount();
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public List elements(){
         if(queueElements == null){
             return new ArrayList();
@@ -547,34 +547,34 @@ public class DefaultQueueService extends ServiceBase
         queueElements.remove(ref);
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getCount(){
         return count;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getCountDelta(){
         long delta = countDelta;
         countDelta = 0;
         return delta;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getLastPushedTimeMillis(){
         return lastPushedTime;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public Date getLastPushedTime(){
         return new Date(lastPushedTime);
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getDepth(){
         return size();
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getDepthDelta(){
         long depth = size();
         
@@ -583,7 +583,7 @@ public class DefaultQueueService extends ServiceBase
         return delta;
     }
     
-    // DefaultQueueServiceMBean‚ÌJavaDoc
+    // DefaultQueueServiceMBeanã®JavaDoc
     public long getMaxDepth(){
         return maxDepth;
     }

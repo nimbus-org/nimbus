@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultSchedulerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultSchedulerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,69 +42,69 @@ public interface DefaultSchedulerServiceMBean
  extends AbstractSchedulerServiceMBean{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“Š“ü‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æŠ•å…¥ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ“Š“ü‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æŠ•å…¥ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚Ì”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<br>
      *
-     * @param size ƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚Ì”
+     * @param size ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public void setScheduleDispatcherSize(int size);
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚Ì”
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public int getScheduleDispatcherSize();
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isDaemon ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚éê‡‚ÍAtrue
+     * @param isDaemon ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDaemonScheduleDispatcher(boolean isDaemon);
     
     /**
-     * ƒLƒ…[‚ğ‘Ò‚¿ó‚¯‚éƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚­ãƒ¥ãƒ¼ã‚’å¾…ã¡å—ã‘ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é
+     * @return trueã®å ´åˆã€ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹
      */
     public boolean isDaemonScheduleDispatcher();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‹@‚·‚éƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡‚ÍA‚»‚êˆÈ~‚ÌƒXƒŒƒbƒh‚ÌI—¹‚ÍA{@link jp.ossc.nimbus.daemon.Daemon#stopNoWait()}‚ğÀs‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚Í-1‚ÅA‘S‚Ä‚ÌƒXƒŒƒbƒh‚É‘Î‚µ‚Ä{@link jp.ossc.nimbus.daemon.Daemon#stop()}‚ğÀs‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…æ©Ÿã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã¯ã€ãã‚Œä»¥é™ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã¯ã€{@link jp.ossc.nimbus.daemon.Daemon#stopNoWait()}ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯-1ã§ã€å…¨ã¦ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã«å¯¾ã—ã¦{@link jp.ossc.nimbus.daemon.Daemon#stop()}ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setStopWaitTimeout(long timeout);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉƒXƒPƒWƒ…[ƒ‹ƒfƒBƒXƒpƒbƒ`ƒXƒŒƒbƒh‚ÌI—¹‚ğ‘Ò‹@‚·‚éƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†ã‚’å¾…æ©Ÿã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getStopWaitTimeout();
     
     /**
-     * Œ»İƒXƒPƒWƒ…[ƒ‹Às’†‚ÌƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İƒXƒPƒWƒ…[ƒ‹Às’†‚ÌƒXƒŒƒbƒh”
+     * @return ç¾åœ¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getActiveScheduleDispatcherSize();
 }

@@ -46,7 +46,7 @@ import jp.ossc.nimbus.beans.IndexPropertyAccessException;
 import jp.ossc.nimbus.beans.IndexNotFoundException;
 
 /**
- * {@link SharedContextIndex ‹¤—LƒRƒ“ƒeƒLƒXƒgƒCƒ“ƒfƒbƒNƒX}‚ÌŠÇ—ƒNƒ‰ƒXB<p>
+ * {@link SharedContextIndex å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹}ã®ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

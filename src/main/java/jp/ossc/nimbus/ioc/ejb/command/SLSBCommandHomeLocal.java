@@ -29,20 +29,20 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.command;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.*;
 
 /**
- * CommandÀs—p‚ÌƒƒJ[ƒ‹ƒz[ƒ€ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * Commandå®Ÿè¡Œç”¨ã®ãƒ­ã‚«ãƒ¼ãƒ«ãƒ›ãƒ¼ãƒ ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface SLSBCommandHomeLocal extends EJBLocalHome {
 	/**
-	 * SLSBCommandLocal‚ğì¬‚·‚é
+	 * SLSBCommandLocalã‚’ä½œæˆã™ã‚‹
 	 * @return	SLSBCommandLocal
 	 * @throws CreateException
 	 */

@@ -40,14 +40,14 @@ import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.aop.InvocationContext;
 
 /**
- * ƒfƒtƒHƒ‹ƒg—áŠOƒnƒ“ƒhƒ‰ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚Ì—áŠOˆ—‹@”\‚ðŽ‚Á‚Ä‚¢‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã®ä¾‹å¤–å‡¦ç†æ©Ÿèƒ½ã‚’æŒã£ã¦ã„ã‚‹ã€‚<br>
  * <ul>
- *     <li>—áŠO‚ðƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éB</li>
- *     <li>ƒƒO‚ðo—Í‚·‚éB</li>
- *     <li>—áŠO‚ðthrow‚·‚éA‚Ü‚½‚Íthrow‚µ‚È‚¢B</li>
+ *     <li>ä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚</li>
+ *     <li>ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚</li>
+ *     <li>ä¾‹å¤–ã‚’throwã™ã‚‹ã€ã¾ãŸã¯throwã—ãªã„ã€‚</li>
  * </ul>
- * ˆÈ‰º‚ÉA”­¶‚µ‚½—áŠO‚ÌƒƒO‚ðo—Í‚µA”­¶‚µ‚½—áŠO‚ðthrow‚·‚éƒfƒtƒHƒ‹ƒg—áŠOƒnƒ“ƒhƒ‰‚ÌƒT[ƒrƒX’è‹`—á‚ðŽ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ç™ºç”Ÿã—ãŸä¾‹å¤–ã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ã€ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’throwã™ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -74,7 +74,7 @@ public class DefaultExceptionHandlerService extends ServiceBase
     private static final long serialVersionUID = 4504118845207660393L;
 
     /**
-     * ”­¶‚µ‚½—áŠO‚ðƒtƒHƒ[ƒhæ‚É’m‚ç‚¹‚é‚½‚ß‚ÉƒŠƒNƒGƒXƒg‘®«‚É—áŠO‚ðÝ’è‚·‚éŽž‚Ì‘®«–¼B<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰å…ˆã«çŸ¥ã‚‰ã›ã‚‹ãŸã‚ã«ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±žæ€§ã«ä¾‹å¤–ã‚’è¨­å®šã™ã‚‹æ™‚ã®å±žæ€§åã€‚<p>
      */
     public static final String REQUEST_ATTIBUTE_EXCEPTION_KEY = DefaultExceptionHandlerService.class.getName().replace('.', '_') + "_EXCEPTION";
     

@@ -32,53 +32,53 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * �X�g���[���𕶎���Ƃ��ĉ��߂��ăI�u�W�F�N�g�Ƃ̑��ݕϊ����s���R���o�[�^�̃C���^�t�F�[�X�B<p>
+ * ストリームを文字列として解釈してオブジェクトとの相互変換を行うコンバータのインタフェース。<p>
  * 
  * @author M.Takata
  */
 public interface StreamStringConverter extends StreamConverter{
     
     /**
-     * �I�u�W�F�N�g����X�g���[���֕ϊ�����ۂ̕����G���R�[�f�B���O��ݒ肷��B<p>
+     * オブジェクトからストリームへ変換する際の文字エンコーディングを設定する。<p>
      *
-     * @param encoding �I�u�W�F�N�g����X�g���[���֕ϊ�����ۂ̕����G���R�[�f�B���O
+     * @param encoding オブジェクトからストリームへ変換する際の文字エンコーディング
      */
     public void setCharacterEncodingToStream(String encoding);
     
     /**
-     * �I�u�W�F�N�g����X�g���[���֕ϊ�����ۂ̕����G���R�[�f�B���O���擾����B<p>
+     * オブジェクトからストリームへ変換する際の文字エンコーディングを取得する。<p>
      *
-     * @return �I�u�W�F�N�g����X�g���[���֕ϊ�����ۂ̕����G���R�[�f�B���O
+     * @return オブジェクトからストリームへ変換する際の文字エンコーディング
      */
     public String getCharacterEncodingToStream();
     
     /**
-     * �X�g���[������I�u�W�F�N�g�֕ϊ�����ۂ̕����G���R�[�f�B���O��ݒ肷��B<p>
+     * ストリームからオブジェクトへ変換する際の文字エンコーディングを設定する。<p>
      *
-     * @param encoding �X�g���[������I�u�W�F�N�g�֕ϊ�����ۂ̕����G���R�[�f�B���O
+     * @param encoding ストリームからオブジェクトへ変換する際の文字エンコーディング
      */
     public void setCharacterEncodingToObject(String encoding);
     
     /**
-     * �X�g���[������I�u�W�F�N�g�֕ϊ�����ۂ̕����G���R�[�f�B���O���擾����B<p>
+     * ストリームからオブジェクトへ変換する際の文字エンコーディングを取得する。<p>
      *
-     * @return �X�g���[������I�u�W�F�N�g�֕ϊ�����ۂ̕����G���R�[�f�B���O
+     * @return ストリームからオブジェクトへ変換する際の文字エンコーディング
      */
     public String getCharacterEncodingToObject();
     
     /**
-     * �I�u�W�F�N�g����X�g���[���֕ϊ�����ۂ̕����G���R�[�f�B���O��ݒ肵���������쐬����B<p>
+     * オブジェクトからストリームへ変換する際の文字エンコーディングを設定した複製を作成する。<p>
      *
-     * @param encoding �I�u�W�F�N�g����X�g���[���֕ϊ�����ۂ̕����G���R�[�f�B���O
-     * @return �����B�A���A�w�肵��encoding���ݒ肳��Ă���G���R�[�f�B���O�Ɠ������ꍇ�ɂ́A�������Ȃ��B
+     * @param encoding オブジェクトからストリームへ変換する際の文字エンコーディング
+     * @return 複製。但し、指定したencodingが設定されているエンコーディングと等しい場合には、複製しない。
      */
     public StreamStringConverter cloneCharacterEncodingToStream(String encoding);
     
     /**
-     * �X�g���[������I�u�W�F�N�g�֕ϊ�����ۂ̕����G���R�[�f�B���O��ݒ肵���������쐬����B�B<p>
+     * ストリームからオブジェクトへ変換する際の文字エンコーディングを設定した複製を作成する。。<p>
      *
-     * @param encoding �X�g���[������I�u�W�F�N�g�֕ϊ�����ۂ̕����G���R�[�f�B���O
-     * @return �����B�A���A�w�肵��encoding���ݒ肳��Ă���G���R�[�f�B���O�Ɠ������ꍇ�ɂ́A�������Ȃ��B
+     * @param encoding ストリームからオブジェクトへ変換する際の文字エンコーディング
+     * @return 複製。但し、指定したencodingが設定されているエンコーディングと等しい場合には、複製しない。
      */
     public StreamStringConverter cloneCharacterEncodingToObject(String encoding);
 }

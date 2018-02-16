@@ -34,27 +34,27 @@ package jp.ossc.nimbus.service.msgresource;
 
 
 /**
- *	ƒvƒƒpƒeƒB€–Ú
+ *	ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é …ç›®
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/05| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/05ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class PropItem {
 	
-	//ƒƒ“ƒo•Ï”
-	/** –¼‘O */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** åå‰ */
 	private String mName = null;
-	/** Œ^ */
+	/** å‹ */
 	private int mType = -1;
-	/** Œ^‚ªObject‚Ìê‡AŠÜ‚Ü‚ê‚éŒ^ */
+	/** å‹ãŒObjectã®å ´åˆã€å«ã¾ã‚Œã‚‹å‹ */
 	private int mWrappedType = -1;
-	/** ’l */
+	/** å€¤ */
 	private String mVal = null;
-	/** ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚é‚©”Û‚© */
+	/** ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹ã‹å¦ã‹ */
 	private boolean mUseFileFlag = false;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 *	
 	 */
 	public PropItem(String name,int type,int wrappedType ){
@@ -65,7 +65,7 @@ public class PropItem {
 		mUseFileFlag = false;
 	}
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 *	
 	 */
 	public PropItem(String name,int type,int wrappedType,String val,boolean useFileFlag){
@@ -76,35 +76,35 @@ public class PropItem {
 		mUseFileFlag = useFileFlag;
 	}
 	/**
-	 * Name‚ÌƒQƒbƒ^[
+	 * Nameã®ã‚²ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public String getName(){
 		return mName;
 	}
 	/**
-	 * Type‚ÌƒQƒbƒ^[
+	 * Typeã®ã‚²ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public int getType(){
 		return mType;
 	}
 	/**
-	 * WrappedType‚ÌƒQƒbƒ^[
+	 * WrappedTypeã®ã‚²ãƒƒã‚¿ãƒ¼
 	 * @return
 	 */
 	public int getWrappedType(){
 		return mWrappedType;
 	}
 	/**
-	 * ’l‚ÌƒQƒbƒ^[
+	 * å€¤ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public String getVal(){
 		return mVal;
 	}
 	/**
-	 * ƒtƒ@ƒCƒ‹‚ğg—p‚·‚é‚©”Û‚©æ“¾‚·‚éB
+	 * ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹ã‹å¦ã‹å–å¾—ã™ã‚‹ã€‚
 	 */
 	public boolean useFile(){
 		return mUseFileFlag;

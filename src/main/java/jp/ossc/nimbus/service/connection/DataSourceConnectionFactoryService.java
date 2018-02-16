@@ -40,9 +40,9 @@ import jp.ossc.nimbus.service.jndi.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * ƒf[ƒ^ƒ\[ƒXƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * JNDI‚©‚çAw’è‚³‚ê‚½ƒf[ƒ^ƒ\[ƒX–¼‚Ìƒf[ƒ^ƒ\[ƒX‚ğæ“¾‚µ‚ÄAƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JNDIã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã—ã¦ã€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -80,90 +80,90 @@ public class DataSourceConnectionFactoryService extends ServiceBase
     private static final long serialVersionUID = -5837939620922806932L;
     
     /**
-     * ƒf[ƒ^ƒ\[ƒX–¼B<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã€‚<p>
      */
     private String dataSourceName;
     
     /**
-     * {@link JndiFinder}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link JndiFinder}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private JndiFinder jndiFinder;
     
     /**
-     * {@link JndiFinder}ƒT[ƒrƒX–¼B<p>
+     * {@link JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName jndiFinderName;
     
     /**
-     * {@link Context}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link Context}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private Context context;
     
     /**
-     * {@link Context}ƒT[ƒrƒX–¼B<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName contextName;
     
     /**
-     * {@link Context}ã‚Ìƒf[ƒ^ƒ\[ƒX–¼‚ÌƒL[B<p>
+     * {@link Context}ä¸Šã®ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åã®ã‚­ãƒ¼ã€‚<p>
      */
     private String dataSourceNameKey = DEFAULT_DATASOURCE_NAME_KEY;
     
     /**
-     * ƒf[ƒ^ƒ\[ƒXƒT[ƒrƒX–¼B<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName dataSourceServiceName;
     
     /**
-     * ƒf[ƒ^ƒ\[ƒXB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã€‚<p>
      */
     private DataSource dataSource;
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public void setName(String name){
         dataSourceName = name;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public String getName(){
         return dataSourceName;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderName = name;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderName;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextName = name;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextName;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public void setDataSourceNameKey(String key){
         dataSourceNameKey = key;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public String getDataSourceNameKey(){
         return dataSourceNameKey;
     }
     
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public void setDataSourceServiceName(ServiceName name){
         dataSourceServiceName = name;
     }
-    // DataSourceConnectionFactoryServiceMBean‚ÌJavaDoc
+    // DataSourceConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getDataSourceServiceName(){
         return dataSourceServiceName;
     }
@@ -190,11 +190,11 @@ public class DataSourceConnectionFactoryService extends ServiceBase
     }
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
-     * {@link JndiFinder}ƒT[ƒrƒX–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í—áŠO‚ğthrow‚·‚éB<br>
-     * ƒf[ƒ^ƒ\[ƒX–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í—áŠO‚ğthrow‚·‚éB<br>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -227,7 +227,7 @@ public class DataSourceConnectionFactoryService extends ServiceBase
         }
     }
     
-    // ConnectionFactory‚ÌJavaDoc
+    // ConnectionFactoryã®JavaDoc
     public Connection getConnection() throws ConnectionFactoryException{
         Connection con = null;
         DataSource ds = dataSource;

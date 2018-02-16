@@ -47,8 +47,8 @@ import jp.ossc.nimbus.beans.dataset.PropertySetException;
 import jp.ossc.nimbus.beans.dataset.PropertyGetException;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒg—p‚ÌƒŒƒR[ƒhB<p>
- * ·•ªXV‚ğƒTƒ|[ƒg‚·‚éB<br>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆç”¨ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã€‚<p>
+ * å·®åˆ†æ›´æ–°ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -59,26 +59,26 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
     protected int updateVersion;
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public SharedContextRecord(){
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecord(String schema) throws PropertySchemaDefineException{
         super(schema);
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param recordSchema ƒXƒL[ƒ}•¶š—ñ‚©‚ç¶¬‚³‚ê‚½ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param recordSchema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‹ã‚‰ç”Ÿæˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextRecord(RecordSchema recordSchema){
         super(recordSchema);
@@ -119,14 +119,14 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, Object val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         RecordSchema recordSchema = getRecordSchema();
@@ -141,14 +141,14 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, Object val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         if(getRecordList() == null){
@@ -175,238 +175,238 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, boolean val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, val ? Boolean.TRUE : Boolean.FALSE, diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, boolean val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, val ? Boolean.TRUE : Boolean.FALSE, diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, byte val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Byte(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, byte val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Byte(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, char val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Character(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, char val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Character(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, short val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Short(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, short val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Short(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, int val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Integer(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, int val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Integer(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, long val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Long(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, long val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Long(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, float val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Float(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, float val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Float(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(String name, double val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(name, new Double(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateProperty(int index, double val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         return updateProperty(index, new Double(val), diff);
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚ÄXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateParseProperty(String name, Object val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         RecordSchema recordSchema = getRecordSchema();
@@ -421,14 +421,14 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚ÄXV‚µ‚½ê‡‚Ì·•ªî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦æ›´æ–°ã—ãŸå ´åˆã®å·®åˆ†æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @param diff ·•ª
-     * @return ·•ª
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextUpdateException ·•ªî•ñ‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @param diff å·®åˆ†
+     * @return å·®åˆ†
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextUpdateException å·®åˆ†æƒ…å ±ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public SharedContextValueDifference updateParseProperty(int index, Object val, SharedContextValueDifference diff) throws PropertySetException, SharedContextUpdateException{
         RecordSchema recordSchema = getRecordSchema();
@@ -486,7 +486,7 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
     }
     
     /**
-     * ƒŒƒR[ƒh·•ªî•ñB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰å·®åˆ†æƒ…å ±ã€‚<p>
      *
      * @author M.Takata
      */
@@ -502,13 +502,13 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         }
         
         /**
-         * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌXV‚ğŠi”[‚·‚éB<p>
-         * Œ»İ‚ÌƒvƒƒpƒeƒB‚Ì’l‚Æ·•ª‚ª‚È‚¢ê‡‚ÍA–³‹‚³‚ê‚éB<br>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ›´æ–°ã‚’æ ¼ç´ã™ã‚‹ã€‚<p>
+         * ç¾åœ¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã¨å·®åˆ†ãŒãªã„å ´åˆã¯ã€ç„¡è¦–ã•ã‚Œã‚‹ã€‚<br>
          *
-         * @param record XV‘ÎÛ‚ÌƒŒƒR[ƒh
-         * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @param value XV‚·‚é’l
-         * @exception SharedContextUpdateException XV‚ÌŠi”[‚É¸”s‚µ‚½ê‡
+         * @param record æ›´æ–°å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰
+         * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @param value æ›´æ–°ã™ã‚‹å€¤
+         * @exception SharedContextUpdateException æ›´æ–°ã®æ ¼ç´ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void updateProperty(SharedContextRecord record, int index, Object value) throws SharedContextUpdateException{
             Integer key = new Integer(index);
@@ -532,11 +532,11 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         }
         
         /**
-         * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ÉXV‚ğ”½‰f‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã«æ›´æ–°ã‚’åæ˜ ã™ã‚‹ã€‚<p>
          *
-         * @param record XV‘ÎÛ‚ÌƒŒƒR[ƒh
-         * @return XV‚³‚ê‚½ê‡A1BXV‚·‚é•K—v‚ª‚È‚©‚Á‚½ê‡A0B®‡«‚ªæ‚ê‚¸‚ÉAXV‚Å‚«‚È‚¢ê‡A-1B
-         * @exception SharedContextUpdateException XV‚Ì”½‰f‚É¸”s‚µ‚½ê‡
+         * @param record æ›´æ–°å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰
+         * @return æ›´æ–°ã•ã‚ŒãŸå ´åˆã€1ã€‚æ›´æ–°ã™ã‚‹å¿…è¦ãŒãªã‹ã£ãŸå ´åˆã€0ã€‚æ•´åˆæ€§ãŒå–ã‚Œãšã«ã€æ›´æ–°ã§ããªã„å ´åˆã€-1ã€‚
+         * @exception SharedContextUpdateException æ›´æ–°ã®åæ˜ ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public int updateRecord(SharedContextRecord record) throws SharedContextUpdateException{
             if(updateValueMap != null && updateValueMap.size() != 0){
@@ -559,9 +559,9 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         }
         
         /**
-         * XV‚Ì‚ ‚Á‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+         * æ›´æ–°ã®ã‚ã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒCƒ“ƒfƒbƒNƒX‚Ì”z—ñBXV‚ª‚È‚¢ê‡‚ÍAnull
+         * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®é…åˆ—ã€‚æ›´æ–°ãŒãªã„å ´åˆã¯ã€null
          */
         public int[] getUpdatePropertyIndexs(){
             if(updateValueMap == null || updateValueMap.size() == 0){
@@ -576,19 +576,19 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         }
         
         /**
-         * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌXV‚³‚ê‚½’l‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ›´æ–°ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @return ƒvƒƒpƒeƒB‚Ì’lBXV‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull
+         * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã€‚æ›´æ–°ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€null
          */
         public Object getUpdateProperty(int index){
             return updateValueMap == null ? null : updateValueMap.get(new Integer(index));
         }
         
         /**
-         * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌXV‚ğíœ‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ›´æ–°ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
          *
-         * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
+         * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
          */
         public void removeUpdateProperty(int index){
             if(updateValueMap != null){
@@ -597,19 +597,19 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         }
         
         /**
-         * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªXV‚³‚ê‚½‚©‚ğ”»’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæ›´æ–°ã•ã‚ŒãŸã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
-         * @return XV‚³‚ê‚½ê‡‚ÍAtrue
+         * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+         * @return æ›´æ–°ã•ã‚ŒãŸå ´åˆã¯ã€true
          */
         public boolean isUpdate(int index){
             return updateValueMap == null ? false : updateValueMap.containsKey(new Integer(index));
         }
         
         /**
-         * XV‚³‚ê‚½‚©‚ğ”»’è‚·‚éB<p>
+         * æ›´æ–°ã•ã‚ŒãŸã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return XV‚³‚ê‚½ê‡‚ÍAtrue
+         * @return æ›´æ–°ã•ã‚ŒãŸå ´åˆã¯ã€true
          */
         public boolean isUpdate(){
             return updateValueMap != null && updateValueMap.size() != 0;

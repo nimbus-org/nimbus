@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link TraceLoggingInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link TraceLoggingInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see TraceLoggingInterceptorService
@@ -45,283 +45,283 @@ public interface TraceLoggingInterceptorServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_TRACE_RESPONSE_MESSAGE_ID = "TLIS_00002";
     
     /**
-     * ƒgƒŒ[ƒXƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚
      *
-     * @param enable ƒgƒŒ[ƒXƒƒOo—Í‚ğs‚¤ê‡true
+     * @param enable ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†å ´åˆtrue
      * @see #isEnabled()
      */
     public void setEnabled(boolean enable);
     
     /**
-     * ƒgƒŒ[ƒXƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒgƒŒ[ƒXƒƒOo—Í‚ğs‚¤ê‡true
+     * @return ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†å ´åˆtrue
      * @see #setEnabled(boolean)
      */
     public boolean isEnabled();
     
     /**
-     * ŒÄ‚Ño‚µ‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id o—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setRequestMessageId(String id);
     
     /**
-     * ŒÄ‚Ño‚µ‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getRequestMessageId();
     
     /**
-     * ‰“š‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id o—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setResponseMessageId(String id);
     
     /**
-     * ‰“š‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * å¿œç­”æ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getResponseMessageId();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * å‘¼ã³å‡ºã—æ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputRequestLog(boolean isOutput);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputRequestLog();
     
     /**
-     * ‰“š‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å¿œç­”æ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputResponseLog(boolean isOutput);
     
     /**
-     * ‰“š‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputResponseLog();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µ‘ÎÛ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—å¯¾è±¡ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputTarget(boolean isOutput);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µ‘ÎÛ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—å¯¾è±¡ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputTarget();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µ‘ÎÛ‚©‚çƒvƒƒpƒeƒB‚ğw’è‚µ‚Äo—Í‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—å¯¾è±¡ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props o—Í‚·‚é‘ÎÛ‚ÌƒvƒƒpƒeƒB”z—ñ
+     * @param props å‡ºåŠ›ã™ã‚‹å¯¾è±¡ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é…åˆ—
      */
     public void setOutputTargetProperties(String[] props);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µ‘ÎÛ‚©‚çƒvƒƒpƒeƒB‚ğw’è‚µ‚Äo—Í‚·‚é‚æ‚¤‚Éæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—å¯¾è±¡ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚é‘ÎÛ‚ÌƒvƒƒpƒeƒB”z—ñ
+     * @return å‡ºåŠ›ã™ã‚‹å¯¾è±¡ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é…åˆ—
      */
     public String[] getOutputTargetProperties();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒh‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputMethod(boolean isOutput);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒh‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputMethod();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputParameter(boolean isOutput);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputParameter();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚©‚çƒvƒƒpƒeƒB‚ğw’è‚µ‚Äo—Í‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props o—Í‚·‚éƒƒ\ƒbƒhˆø”‚ÌƒvƒƒpƒeƒB”z—ñ
+     * @param props å‡ºåŠ›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é…åˆ—
      */
     public void setOutputParameterProperties(String[] props);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚©‚çƒvƒƒpƒeƒB‚ğw’è‚µ‚Äo—Í‚·‚é‚æ‚¤‚Éæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éƒƒ\ƒbƒhˆø”‚ÌƒvƒƒpƒeƒB”z—ñ
+     * @return å‡ºåŠ›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é…åˆ—
      */
     public String[] getOutputParameterProperties();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒXƒ^ƒbƒN‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ã‚¹ã‚¿ãƒƒã‚¯ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputCallStackTrace(boolean isOutput);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputCallStackTrace();
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚Å–ß‚è’l‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§æˆ»ã‚Šå€¤ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputReturn(boolean isOutput);
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚Å–ß‚è’l‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§æˆ»ã‚Šå€¤ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputReturn();
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚Åˆ—ŠÔ[ms]‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‡¦ç†æ™‚é–“[ms]ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputPerformance(boolean isOutput);
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚Åˆ—ŠÔ[ms]‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‡¦ç†æ™‚é–“[ms]ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputPerformance();
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µ‘ÎÛ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—å¯¾è±¡ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputTargetOnResponse(boolean isOutput);
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µ‘ÎÛ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—å¯¾è±¡ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputTargetOnResponse();
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒh‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputMethodOnResponse(boolean isOutput);
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒh‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputMethodOnResponse();
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputParameterOnResponse(boolean isOutput);
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚ÅŒÄ‚Ño‚µƒƒ\ƒbƒhˆø”‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputParameterOnResponse();
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚Å–ß‚è’l‚©‚çƒvƒƒpƒeƒB‚ğw’è‚µ‚Äo—Í‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props o—Í‚·‚é–ß‚è’l‚ÌƒvƒƒpƒeƒB”z—ñ
+     * @param props å‡ºåŠ›ã™ã‚‹æˆ»ã‚Šå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é…åˆ—
      */
     public void setOutputReturnProperties(String[] props);
     
     /**
-     * ŒÄ‚Ño‚µ‚ÌƒƒOo—Í‚Å–ß‚è’l‚©‚çƒvƒƒpƒeƒB‚ğw’è‚µ‚Äo—Í‚·‚é‚æ‚¤‚Éæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚é–ß‚è’l‚ÌƒvƒƒpƒeƒB”z—ñ
+     * @return å‡ºåŠ›ã™ã‚‹æˆ»ã‚Šå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é…åˆ—
      */
     public String[] getOutputReturnProperties();
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚Å”­¶‚µ‚½—áŠO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡true
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputThrowable(boolean isOutput);
     
     /**
-     * ‰“š‚ÌƒƒOo—Í‚Å”­¶‚µ‚½—áŠO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¿œç­”æ™‚ã®ãƒ­ã‚°å‡ºåŠ›ã§ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean  isOutputThrowable();
     
     /**
-     * ƒgƒŒ[ƒXƒƒO‚É•t—^‚·‚é˜A”Ô‚ğ”­”Ô‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°ã«ä»˜ä¸ã™ã‚‹é€£ç•ªã‚’ç™ºç•ªã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * ƒgƒŒ[ƒXƒƒO‚É•t—^‚·‚é˜A”Ô‚ğ”­”Ô‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°ã«ä»˜ä¸ã™ã‚‹é€£ç•ªã‚’ç™ºç•ªã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
 }

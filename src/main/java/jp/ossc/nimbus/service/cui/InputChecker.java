@@ -34,13 +34,13 @@ package jp.ossc.nimbus.service.cui;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/31| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/31ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface InputChecker {
 	/**
-	 * “ü—Í‘I‘ğ‚É‘Î‚µ‚Äƒ`ƒFƒbƒN‚ğ‚©‚¯‚éB
-	 * ‚±‚ÌƒGƒ‰[‚Å‡‚Á‚½ê‡‚ÍNULL‚ğƒŠƒ^[ƒ“‚·‚éB
+	 * å…¥åŠ›é¸æŠã«å¯¾ã—ã¦ãƒã‚§ãƒƒã‚¯ã‚’ã‹ã‘ã‚‹ã€‚
+	 * ã“ã®æ™‚ã‚¨ãƒ©ãƒ¼ã§åˆã£ãŸå ´åˆã¯NULLã‚’ãƒªã‚¿ãƒ¼ãƒ³ã™ã‚‹ã€‚
 	 * @param input
 	 * @return 
 	 */

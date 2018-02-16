@@ -34,118 +34,118 @@ package jp.ossc.nimbus.service.cache;
 import java.util.*;
 
 /**
- * �L���b�V���}�b�v�B<p>
- * {@link Map}�C���^�t�F�[�X�����������L���b�V���B<br>
+ * キャッシュマップ。<p>
+ * {@link Map}インタフェースを実装したキャッシュ。<br>
  *
  * @author M.Takata
  */
 public interface CacheMap extends Map{
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�L���b�V���Q�Ƃ��擾����B<p>
+     * 指定されたキーに関連付けられたキャッシュ参照を取得する。<p>
      *
-     * @param key �L���b�V���̃L�[
-     * @return �L���b�V���Q��
+     * @param key キャッシュのキー
+     * @return キャッシュ参照
      */
     public KeyCachedReference getCachedReference(Object key);
     
     /**
-     * �S�ẴL���b�V�����폜����B<p>
+     * 全てのキャッシュを削除する。<p>
      */
     public void clear();
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�L���b�V���I�u�W�F�N�g�����݂��邩���ׂ�B<p>
+     * 指定されたキーに関連付けられたキャッシュオブジェクトが存在するか調べる。<p>
      *
-     * @param key �L���b�V���I�u�W�F�N�g�Ɋ֘A�t�����L�[
-     * @return �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�L���b�V���I�u�W�F�N�g�����݂���ꍇtrue
+     * @param key キャッシュオブジェクトに関連付けたキー
+     * @return 指定されたキーに関連付けられたキャッシュオブジェクトが存在する場合true
      */
     public boolean containsKey(Object key);
     
     /**
-     * �w�肳�ꂽ�L���b�V���I�u�W�F�N�g�����݂��邩���ׂ�B<p>
+     * 指定されたキャッシュオブジェクトが存在するか調べる。<p>
      *
-     * @param value �L���b�V���I�u�W�F�N�g
-     * @return �w�肳�ꂽ�L���b�V���I�u�W�F�N�g�����݂���ꍇtrue
+     * @param value キャッシュオブジェクト
+     * @return 指定されたキャッシュオブジェクトが存在する場合true
      */
     public boolean containsValue(Object value);
     
     /**
-     * �L���b�V���}�b�v�Ɋ܂܂�Ă���G���g���̏W�����擾����B<p>
-     * ���̏W���̓L���b�V���}�b�v�ƘA�����Ă���̂ŁA�L���b�V���}�b�v�ɑ΂���ύX�͏W���ɔ��f����A�܂��A�W���ɑ΂���ύX�̓L���b�V���}�b�v�ɔ��f�����B<br>
-     * ���̏W���ɑ΂��锽���̏������ɃL���b�V���}�b�v���ύX���ꂽ�ꍇ�́A�����̌��ʂ͕ۏ؂���Ȃ��B<br>
-     * ���̏W���́AIterator.remove�ASet.remove�AremoveAll�AretainAll�A����� clear �̊e�I�y���[�V�������g���ăL���b�V���}�b�v����Ή�����}�b�s���O���폜����v�f�폜�������T�|�[�g����B
-     * add �I�y���[�V������ addAll �I�y���[�V�����́A���̏W���ł̓T�|�[�g����Ă��Ȃ��B<br>
+     * キャッシュマップに含まれているエントリの集合を取得する。<p>
+     * この集合はキャッシュマップと連動しているので、キャッシュマップに対する変更は集合に反映され、また、集合に対する変更はキャッシュマップに反映される。<br>
+     * この集合に対する反復の処理中にキャッシュマップが変更された場合は、反復の結果は保証されない。<br>
+     * この集合は、Iterator.remove、Set.remove、removeAll、retainAll、および clear の各オペレーションを使ってキャッシュマップから対応するマッピングを削除する要素削除処理をサポートする。
+     * add オペレーションと addAll オペレーションは、この集合ではサポートされていない。<br>
      *
-     * @return �L���b�V���}�b�v���ɕێ�����Ă���G���g���̏W��
+     * @return キャッシュマップ内に保持されているエントリの集合
      */
     public Set entrySet();
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�L���b�V���I�u�W�F�N�g���擾����B<p>
+     * 指定されたキーに関連付けられたキャッシュオブジェクトを取得する。<p>
      *
-     * @param key �L���b�V���I�u�W�F�N�g�Ɋ֘A�t�����L�[
-     * @return �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�L���b�V���I�u�W�F�N�g�B���݂��Ȃ��ꍇ��null
+     * @param key キャッシュオブジェクトに関連付けたキー
+     * @return 指定されたキーに関連付けられたキャッシュオブジェクト。存在しない場合はnull
      */
     public Object get(Object key);
     
     /**
-     * �L���b�V���}�b�v���󂩂ǂ������ׂ�B<p>
+     * キャッシュマップが空かどうか調べる。<p>
      *
-     * @return �L���b�V���}�b�v����̏ꍇ��true
+     * @return キャッシュマップが空の場合はtrue
      */
     public boolean isEmpty();
     
     /**
-     * �L���b�V���}�b�v�Ɋ܂܂�Ă���L�[�̏W�����擾����B<p>
-     * ���̏W���̓L���b�V���}�b�v�ƘA�����Ă���̂ŁA�L���b�V���}�b�v�ɑ΂���ύX�͏W���ɔ��f����A�܂��A�W���ɑ΂���ύX�̓L���b�V���}�b�v�ɔ��f�����B<br>
-     * ���̏W���ɑ΂��锽���̏������ɃL���b�V���}�b�v���ύX���ꂽ�ꍇ�́A�����̌��ʂ͕ۏ؂���Ȃ��B<br>
-     * ���̏W���́AIterator.remove�ASet.remove�AremoveAll�AretainAll�A����� clear �̊e�I�y���[�V�������g���ăL���b�V���}�b�v����Ή�����}�b�s���O���폜����v�f�폜�������T�|�[�g����B<br>
-     * add �I�y���[�V������ addAll �I�y���[�V�����́A���̏W���ł̓T�|�[�g����Ă��Ȃ��B<br>
+     * キャッシュマップに含まれているキーの集合を取得する。<p>
+     * この集合はキャッシュマップと連動しているので、キャッシュマップに対する変更は集合に反映され、また、集合に対する変更はキャッシュマップに反映される。<br>
+     * この集合に対する反復の処理中にキャッシュマップが変更された場合は、反復の結果は保証されない。<br>
+     * この集合は、Iterator.remove、Set.remove、removeAll、retainAll、および clear の各オペレーションを使ってキャッシュマップから対応するマッピングを削除する要素削除処理をサポートする。<br>
+     * add オペレーションと addAll オペレーションは、この集合ではサポートされていない。<br>
      * 
-     * @return �L���b�V���}�b�v�Ɋ܂܂�Ă���L�[�̏W��
+     * @return キャッシュマップに含まれているキーの集合
      */
     public Set keySet();
     
     /**
-     * �w�肳�ꂽ�L���b�V���I�u�W�F�N�g���w�肳�ꂽ�L�[�Ɋ֘A�t���ăL���b�V������B<p>
+     * 指定されたキャッシュオブジェクトを指定されたキーに関連付けてキャッシュする。<p>
      *
-     * @param key �L���b�V���I�u�W�F�N�g�Ɋ֘A�t����L�[
-     * @param value �L���b�V���I�u�W�F�N�g
-     * @return �w�肳�ꂽ�L�[�Ɋ֘A�t�����Ă����Â��L���b�V���I�u�W�F�N�g�B�Â��L���b�V���I�u�W�F�N�g�����݂��Ȃ��ꍇ��null
+     * @param key キャッシュオブジェクトに関連付けるキー
+     * @param value キャッシュオブジェクト
+     * @return 指定されたキーに関連付けられていた古いキャッシュオブジェクト。古いキャッシュオブジェクトが存在しない場合はnull
      */
     public Object put(Object key, Object value);
     
     /**
-     * �w�肳�ꂽ�}�b�v�̂��ׂẴ}�b�s���O�����̃L���b�V���}�b�v�ɃR�s�[����B<p>
+     * 指定されたマップのすべてのマッピングをこのキャッシュマップにコピーする。<p>
      * 
-     * @param map ���̃L���b�V���}�b�v�Ɋi�[�����}�b�s���O
+     * @param map このキャッシュマップに格納されるマッピング
      */
     public void putAll(java.util.Map map);
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�L���b�V���I�u�W�F�N�g���폜����B<p>
+     * 指定されたキーに関連付けられたキャッシュオブジェクトを削除する。<p>
      *
-     * @param key �L���b�V���I�u�W�F�N�g�Ɋ֘A�t�����L�[
-     * @return �폜�����L���b�V���I�u�W�F�N�g�B�Y������L���b�V���I�u�W�F�N�g�����݂��Ȃ��ꍇ��null
+     * @param key キャッシュオブジェクトに関連付けたキー
+     * @return 削除したキャッシュオブジェクト。該当するキャッシュオブジェクトが存在しない場合はnull
      */
     public Object remove(Object key);
     
     /**
-     * �L���b�V������Ă���I�u�W�F�N�g�̐����擾����B<p>
+     * キャッシュされているオブジェクトの数を取得する。<p>
      *
-     * @return �L���b�V������Ă���I�u�W�F�N�g�̐�
+     * @return キャッシュされているオブジェクトの数
      */
     public int size();
     
     /**
-     * �L���b�V���}�b�v�Ɋ܂܂�Ă���L���b�V���I�u�W�F�N�g�̏W�����擾����B<p>
-     * ���̏W���̓L���b�V���}�b�v�ƘA�����Ă���̂ŁA�L���b�V���}�b�v�ɑ΂���ύX�͏W���ɔ��f����A�܂��A�W���ɑ΂���ύX�̓L���b�V���}�b�v�ɔ��f�����B<br>
-     * ���̏W���ɑ΂��锽���̏������ɃL���b�V���}�b�v���ύX���ꂽ�ꍇ�A�����̌��ʂ͕ۏ؂���Ȃ��B<br>
-     * ���̏W���́AIterator.remove�ACollection.remove�AremoveAll�AretainAll�A����� clear �̊e�I�y���[�V�������g���ăL���b�V���}�b�v����Ή�����}�b�s���O���폜����v�f�폜�������T�|�[�g����B<br>
-     * add �I�y���[�V������ addAll �I�y���[�V�����́A���̏W���ł̓T�|�[�g����Ă��Ȃ��B<br>
+     * キャッシュマップに含まれているキャッシュオブジェクトの集合を取得する。<p>
+     * この集合はキャッシュマップと連動しているので、キャッシュマップに対する変更は集合に反映され、また、集合に対する変更はキャッシュマップに反映される。<br>
+     * この集合に対する反復の処理中にキャッシュマップが変更された場合、反復の結果は保証されない。<br>
+     * この集合は、Iterator.remove、Collection.remove、removeAll、retainAll、および clear の各オペレーションを使ってキャッシュマップから対応するマッピングを削除する要素削除処理をサポートする。<br>
+     * add オペレーションと addAll オペレーションは、この集合ではサポートされていない。<br>
      *
-     * @return �L���b�V���}�b�v���ɕێ�����Ă���L���b�V���I�u�W�F�N�g�̏W��
+     * @return キャッシュマップ内に保持されているキャッシュオブジェクトの集合
      */
     public Collection values();
 }

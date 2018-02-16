@@ -35,33 +35,33 @@ import java.util.*;
 import java.lang.reflect.*;
 
 /**
- * ”Ä—p“I‚Èƒf[ƒ^W‡‚ğ•\‚·BeanB<p>
- * •¡”‚Ì{@link Header ƒwƒbƒ_[}‚ÆA•¡”‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ–¼‘O‚Æ•R•t‚¯‚ÄŠÇ—‚·‚éB<br>
- * ƒwƒbƒ_[‚Í•¡”‚ÌƒvƒƒpƒeƒB‚ğ‚ÂBean‚ÅAƒŒƒR[ƒhƒŠƒXƒg‚ÍAƒwƒbƒ_[‚Æ“¯—l‚É•¡”‚ÌƒvƒƒpƒeƒB‚ğ‚Â{@link Record ƒŒƒR[ƒh}‚Æ‚¢‚¤Bean‚ğƒŠƒXƒg‰»‚µ‚½Bean‚Å‚ ‚éB<br>
- * ƒwƒbƒ_[A‹y‚ÑƒŒƒR[ƒhƒŠƒXƒg‚ÌƒŒƒR[ƒh‚ÍA‚Ç‚Ì‚æ‚¤‚ÈBean‚É‚·‚é‚Ì‚©iƒvƒƒpƒeƒB–¼AŒ^‚È‚Çj‚ğƒŒƒR[ƒhƒXƒL[ƒ}‚Å’è‹`‚µ‚ÄA“®“I‚ÈBean‚ğì‚é–‚ª‚Å‚«‚éB<br>
- * {@link RecordSchema ƒŒƒR[ƒhƒXƒL[ƒ}}‚ÍA{@link PropertySchema ƒvƒƒpƒeƒBƒXƒL[ƒ}}‚ÌW‡‚Å‚ ‚èA<br>
+ * æ±ç”¨çš„ãªãƒ‡ãƒ¼ã‚¿é›†åˆã‚’è¡¨ã™Beanã€‚<p>
+ * è¤‡æ•°ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã¨ã€è¤‡æ•°ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’åå‰ã¨ç´ä»˜ã‘ã¦ç®¡ç†ã™ã‚‹ã€‚<br>
+ * ãƒ˜ãƒƒãƒ€ãƒ¼ã¯è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã¤Beanã§ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã¯ã€ãƒ˜ãƒƒãƒ€ãƒ¼ã¨åŒæ§˜ã«è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã¤{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã¨ã„ã†Beanã‚’ãƒªã‚¹ãƒˆåŒ–ã—ãŸBeanã§ã‚ã‚‹ã€‚<br>
+ * ãƒ˜ãƒƒãƒ€ãƒ¼ã€åŠã³ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã¯ã€ã©ã®ã‚ˆã†ãªBeanã«ã™ã‚‹ã®ã‹ï¼ˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€å‹ãªã©ï¼‰ã‚’ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã§å®šç¾©ã—ã¦ã€å‹•çš„ãªBeanã‚’ä½œã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * {@link RecordSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ}ã¯ã€{@link PropertySchema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒ}ã®é›†åˆã§ã‚ã‚Šã€<br>
  * <pre>
- *   ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌÀ‘•ƒNƒ‰ƒX–¼:ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`
- *   ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌÀ‘•ƒNƒ‰ƒX–¼:ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`
+ *   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å®Ÿè£…ã‚¯ãƒ©ã‚¹å:ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
+ *   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å®Ÿè£…ã‚¯ãƒ©ã‚¹å:ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
  *                   :
  * </pre>
- * ‚Æ‚¢‚¤‚æ‚¤‚ÉAƒvƒƒpƒeƒB‚Ì”‚¾‚¯‰üs‹æØ‚è‚Å’è‹`‚·‚éB<br>
- * ‚Ü‚½AƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌÀ‘•ƒNƒ‰ƒX–¼‚ÍÈ—ª‰Â”\‚ÅAÈ—ª‚µ‚½ê‡‚ÍA{@link DefaultPropertySchema}‚ª“K—p‚³‚ê‚éB<br>
- * ˆÈ‰º‚ÉƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ¦‚·B<br>
+ * ã¨ã„ã†ã‚ˆã†ã«ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ•°ã ã‘æ”¹è¡ŒåŒºåˆ‡ã‚Šã§å®šç¾©ã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã¯çœç•¥å¯èƒ½ã§ã€çœç•¥ã—ãŸå ´åˆã¯ã€{@link DefaultPropertySchema}ãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  *     import jp.ossc.nimbus.beans.dataset.*;
  *     
- *     // ƒf[ƒ^ƒZƒbƒg‚ğ¶¬
+ *     // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆ
  *     DataSet dataSet = new DataSet("sample");
  *     
- *     // ƒf[ƒ^ƒZƒbƒg‚ÌƒXƒL[ƒ}‚ğˆÈ‰º‚Ì‚æ‚¤‚É’è‹`‚·‚é
- *     // ƒwƒbƒ_F
- *     //   ƒvƒƒpƒeƒB–¼  Œ^
+ *     // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã‚’ä»¥ä¸‹ã®ã‚ˆã†ã«å®šç¾©ã™ã‚‹
+ *     // ãƒ˜ãƒƒãƒ€ï¼š
+ *     //   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å  å‹
  *     //        A        java.lang.String
  *     //        B        long
  *     // 
- *     // ƒŒƒR[ƒhƒŠƒXƒgF
- *     //   ƒvƒƒpƒeƒB–¼  Œ^
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆï¼š
+ *     //   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å  å‹
  *     //        C        int
  *     //        D        java.lang.String
  *     //        E        java.lang.String
@@ -73,20 +73,20 @@ import java.lang.reflect.*;
  *             + ":E,java.lang.String"
  *     );
  *     
- *     // ƒwƒbƒ_‚ğæ“¾‚µ‚Ä’l‚ğİ’è‚·‚é
+ *     // ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã—ã¦å€¤ã‚’è¨­å®šã™ã‚‹
  *     Header header = dataSet.getHeader();
  *     header.setProperty("A", "hoge");
  *     header.setProperty("B", 100l);
  *     
- *     // ƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚·‚é
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹
  *     RecordList recordList = dataSet.getRecordList();
- *     // ƒŒƒR[ƒh1‚ğ¶¬‚µ‚ÄA’l‚ğİ’è‚·‚é
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰1ã‚’ç”Ÿæˆã—ã¦ã€å€¤ã‚’è¨­å®šã™ã‚‹
  *     Record record1 = recordList.createRecord();
  *     record1.setProperty("C", 1);
  *     record1.setProperty("D", "hoge1");
  *     record1.setProperty("E", "fuga1");
  *     recordList.addRecord(record1);
- *     // ƒŒƒR[ƒh2‚ğ¶¬‚µ‚ÄA’l‚ğİ’è‚·‚é
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰2ã‚’ç”Ÿæˆã—ã¦ã€å€¤ã‚’è¨­å®šã™ã‚‹
  *     Record record2 = recordList.createRecord();
  *     record2.setProperty("C", 2);
  *     record2.setProperty("D", "hoge2");
@@ -101,82 +101,82 @@ public class DataSet implements java.io.Serializable, Cloneable{
     private static final long serialVersionUID = 452460154073106633L;
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚Ì–¼‘OB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®åå‰ã€‚<p>
      */
     protected String name;
     
     /**
-     * ƒwƒbƒ_[‚Ìƒ}ƒbƒvB<p>
-     * ƒL[‚Íƒwƒbƒ_[–¼A’l‚Í{@link Header ƒwƒbƒ_[}
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ˜ãƒƒãƒ€ãƒ¼åã€å€¤ã¯{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}
      */
     protected Map headerMap;
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼A’l‚Í{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€å€¤ã¯{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}
      */
     protected Map recordListMap;
     
     /**
-     * ƒlƒXƒg‚³‚ê‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚Ìƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼A’l‚Í{@link RecordSchema ƒŒƒR[ƒhƒXƒL[ƒ}}
+     * ãƒã‚¹ãƒˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã®ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€å€¤ã¯{@link RecordSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ}
      */
     protected transient Map nestedRecordListMap;
     
     /**
-     * ƒlƒXƒg‚³‚ê‚½ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒNƒ‰ƒX‚Ìƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼A’l‚ÍƒNƒ‰ƒX
+     * ãƒã‚¹ãƒˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¯ãƒ©ã‚¹ã®ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€å€¤ã¯ã‚¯ãƒ©ã‚¹
      */
     protected transient Map nestedRecordListClassMap;
     
     /**
-     * ƒlƒXƒg‚³‚ê‚½ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}‚Ìƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒŒƒR[ƒh–¼A’l‚Í{@link RecordSchema ƒŒƒR[ƒhƒXƒL[ƒ}}
+     * ãƒã‚¹ãƒˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒã®ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰åã€å€¤ã¯{@link RecordSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ}
      */
     protected transient Map nestedRecordMap;
     
     /**
-     * ƒlƒXƒg‚³‚ê‚½ƒŒƒR[ƒh‚ÌƒNƒ‰ƒX‚Ìƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒŒƒR[ƒh–¼A’l‚ÍƒNƒ‰ƒX
+     * ãƒã‚¹ãƒˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹ã®ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰åã€å€¤ã¯ã‚¯ãƒ©ã‚¹
      */
     protected transient Map nestedRecordClassMap;
     
     /**
-     * “¯Šú‰»‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * åŒæœŸåŒ–ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isSynchronized = true;
     
     /**
-     * ‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DataSet(){
         this(true);
     }
     
     /**
-     * ‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
      */
     public DataSet(boolean isSynch){
         isSynchronized = isSynch;
     }
     
     /**
-     * –¼‘O•t‚«‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * åå‰ä»˜ãã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name –¼‘O
+     * @param name åå‰
      */
     public DataSet(String name){
         this(name, true);
     }
     
     /**
-     * –¼‘O•t‚«‚Ìƒf[ƒ^ƒZƒbƒg‚ğ¶¬‚·‚éB<p>
+     * åå‰ä»˜ãã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name –¼‘O
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
+     * @param name åå‰
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
      */
     public DataSet(String name, boolean isSynch){
         this.name = name;
@@ -184,29 +184,29 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒf[ƒ^ƒZƒbƒg–¼
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
-     * {@link #setHeaderSchema(String, String) setHeaderSchema(null, schema)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setHeaderSchema(String, String) setHeaderSchema(null, schema)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setHeaderSchema(String schema)
      throws PropertySchemaDefineException{
@@ -214,12 +214,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param schema ƒXƒL[ƒ}
-     * @return ƒwƒbƒ_[
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Header createHeader(String name, String schema)
      throws PropertySchemaDefineException{
@@ -227,12 +227,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param schema ƒXƒL[ƒ}
-     * @return ƒwƒbƒ_[
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Header createHeader(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
@@ -240,11 +240,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setHeaderSchema(String name, String schema)
      throws PropertySchemaDefineException{
@@ -255,20 +255,20 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
-     * {@link #setHeaderSchema(String, RecordSchema) setHeaderSchema(null, schema)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setHeaderSchema(String, RecordSchema) setHeaderSchema(null, schema)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param schema ƒXƒL[ƒ}
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setHeaderSchema(RecordSchema schema){
         setHeaderSchema(null, schema);
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param schema ƒXƒL[ƒ}
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setHeaderSchema(String name, RecordSchema schema){
         if(headerMap == null){
@@ -278,11 +278,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚ğw’è‚µ‚½ƒNƒ‰ƒX‚Åİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã§è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param clazz ƒwƒbƒ_[ƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param clazz ãƒ˜ãƒƒãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setHeaderClass(String name, Class clazz)
      throws PropertySchemaDefineException{
@@ -314,21 +314,21 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚ğw’è‚µ‚½ƒNƒ‰ƒX‚Åİ’è‚·‚éB<p>
-     * {@link #setHeaderClass(String, Class) setHeaderClass(null, clazz)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã§è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setHeaderClass(String, Class) setHeaderClass(null, clazz)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param clazz ƒwƒbƒ_[ƒNƒ‰ƒX
+     * @param clazz ãƒ˜ãƒƒãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
      */
     public void setHeaderClass(Class clazz){
         setHeaderClass(null, clazz);
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
-     * {@link #setRecordListSchema(String, String) setRecordListSchema(null, schema)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setRecordListSchema(String, String) setRecordListSchema(null, schema)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRecordListSchema(String schema)
      throws PropertySchemaDefineException{
@@ -336,12 +336,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param schema ƒXƒL[ƒ}
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected RecordList createRecordList(String name, String schema)
      throws PropertySchemaDefineException{
@@ -349,12 +349,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param schema ƒXƒL[ƒ}
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected RecordList createRecordList(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
@@ -362,11 +362,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRecordListSchema(String name, String schema)
      throws PropertySchemaDefineException{
@@ -381,20 +381,20 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
-     * {@link #setRecordListSchema(String, RecordSchema) setRecordListSchema(null, schema)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setRecordListSchema(String, RecordSchema) setRecordListSchema(null, schema)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param schema ƒXƒL[ƒ}
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setRecordListSchema(RecordSchema schema){
         setRecordListSchema(null, schema);
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param schema ƒXƒL[ƒ}
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setRecordListSchema(String name, RecordSchema schema){
         
@@ -408,11 +408,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setNestedRecordListSchema(String name, String schema)
      throws PropertySchemaDefineException{
@@ -428,11 +428,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param clazz ƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param clazz ã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setNestedRecordListClass(String name, Class clazz)
      throws PropertySchemaDefineException{
@@ -474,11 +474,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğw’è‚µ‚½ƒNƒ‰ƒX‚Åİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã§è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param clazz ƒŒƒR[ƒhƒŠƒXƒgƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRecordListClass(String name, Class clazz)
      throws PropertySchemaDefineException{
@@ -510,20 +510,20 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğw’è‚µ‚½ƒNƒ‰ƒX‚Åİ’è‚·‚éB<p>
-     * {@link #setRecordListClass(String, Class) setRecordListClass(null, clazz)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã§è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setRecordListClass(String, Class) setRecordListClass(null, clazz)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param clazz ƒŒƒR[ƒhƒŠƒXƒgƒNƒ‰ƒX
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚¯ãƒ©ã‚¹
      */
     public void setRecordListClass(Class clazz){
         setRecordListClass(null, clazz);
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param schema ƒXƒL[ƒ}
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setNestedRecordListSchema(String name, RecordSchema schema){
         
@@ -537,10 +537,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @return ƒXƒL[ƒ}
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @return ã‚¹ã‚­ãƒ¼ãƒ
      */
     public RecordSchema getNestedRecordListSchema(String name)
      throws PropertySchemaDefineException{
@@ -552,27 +552,27 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—
      */
     public String[] getNestedRecordListSchemaNames(){
         return nestedRecordListMap == null ? new String[0] : (String[])nestedRecordListMap.keySet().toArray(new String[nestedRecordListMap.size()]);
     }
     
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ì”
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®æ•°
      */
     public int getNestedRecordListSchemaSize(){
         return nestedRecordListMap == null ? 0 : nestedRecordListMap.size();
     }
     
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒvBƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼A’l‚ÍƒXƒL[ƒ}•¶š—ñ
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€å€¤ã¯ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public Map getNestedRecordListSchemaMap(){
         if(nestedRecordListMap == null){
@@ -582,11 +582,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link Record ƒŒƒR[ƒh}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setNestedRecordSchema(String name, String schema)
      throws PropertySchemaDefineException{
@@ -602,10 +602,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link Record ƒŒƒR[ƒh}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setNestedRecordSchema(String name, RecordSchema schema){
         
@@ -619,11 +619,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link Record ƒŒƒR[ƒh}‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param clazz ƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param clazz ã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setNestedRecordClass(String name, Class clazz)
      throws PropertySchemaDefineException{
@@ -654,10 +654,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link Record ƒŒƒR[ƒh}‚ÌƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @return ƒXƒL[ƒ}
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @return ã‚¹ã‚­ãƒ¼ãƒ
      */
     public RecordSchema getNestedRecordSchema(String name)
      throws PropertySchemaDefineException{
@@ -669,27 +669,27 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒlƒXƒg‚µ‚½ƒŒƒR[ƒh–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒh–¼”z—ñ
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰åé…åˆ—
      */
     public String[] getNestedRecordSchemaNames(){
         return nestedRecordMap == null ? new String[0] : (String[])nestedRecordMap.keySet().toArray(new String[nestedRecordMap.size()]);
     }
     
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒh‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒh‚Ì”
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®æ•°
      */
     public int getNestedRecordSchemaSize(){
         return nestedRecordMap == null ? 0 : nestedRecordMap.size();
     }
     
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒh‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒh‚Ìƒ}ƒbƒvBƒL[‚ÍƒŒƒR[ƒh–¼A’l‚ÍƒXƒL[ƒ}•¶š—ñ
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰åã€å€¤ã¯ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public Map getNestedRecordSchemaMap(){
         if(nestedRecordMap == null){
@@ -699,12 +699,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚Æ{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
-     * {@link #setHeaderSchema(String, String) setHeaderSchema(null, schema)}‚Æ{@link #setRecordListSchema(String, String) setRecordListSchema(null, schema)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã¨{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setHeaderSchema(String, String) setHeaderSchema(null, schema)}ã¨{@link #setRecordListSchema(String, String) setRecordListSchema(null, schema)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param headerSchema ƒwƒbƒ_[‚ÌƒXƒL[ƒ}
-     * @param recordListSchema ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param headerSchema ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param recordListSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setSchema(String headerSchema, String recordListSchema)
      throws PropertySchemaDefineException{
@@ -712,11 +712,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚Æ{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã¨{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼‹y‚ÑƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param headerSchema ƒwƒbƒ_[‚ÌƒXƒL[ƒ}
-     * @param recordListSchema ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼ååŠã³ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param headerSchema ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param recordListSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setSchema(
         String name,
@@ -732,23 +732,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚Æ{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
-     * {@link #setHeaderSchema(String, RecordSchema) setHeaderSchema(null, schema)}‚Æ{@link #setRecordListSchema(String, RecordSchema) setRecordListSchema(null, schema)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã¨{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setHeaderSchema(String, RecordSchema) setHeaderSchema(null, schema)}ã¨{@link #setRecordListSchema(String, RecordSchema) setRecordListSchema(null, schema)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param headerSchema ƒwƒbƒ_[‚ÌƒXƒL[ƒ}
-     * @param recordListSchema ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}
+     * @param headerSchema ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param recordListSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setSchema(RecordSchema headerSchema, RecordSchema recordListSchema){
         setSchema(null, headerSchema, recordListSchema);
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚Æ{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã¨{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼‹y‚ÑƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @param headerSchema ƒwƒbƒ_[‚ÌƒXƒL[ƒ}
-     * @param recordListSchema ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼ååŠã³ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @param headerSchema ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param recordListSchema ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setSchema(
         String name,
@@ -764,47 +764,47 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚ğæ“¾‚·‚éB<p>
-     * {@link #getHeader(String) getHeader(null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getHeader(String) getHeader(null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @return ƒwƒbƒ_[
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼
      */
     public Header getHeader(){
         return getHeader(null);
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link Header ƒwƒbƒ_[}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @return ƒwƒbƒ_[
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼
      */
     public Header getHeader(String name){
         return headerMap == null ? null : (Header)headerMap.get(name);
     }
     
     /**
-     * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒwƒbƒ_[–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒ˜ãƒƒãƒ€ãƒ¼åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_[–¼”z—ñ
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼åé…åˆ—
      */
     public String[] getHeaderNames(){
         return headerMap == null ? new String[0] : (String[])headerMap.keySet().toArray(new String[headerMap.size()]);
     }
     
     /**
-     * ƒwƒbƒ_[‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_[‚Ì”
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼ã®æ•°
      */
     public int getHeaderSize(){
         return headerMap == null ? 0 : headerMap.size();
     }
     
     /**
-     * ƒwƒbƒ_[‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_[‚Ìƒ}ƒbƒvBƒL[‚Íƒwƒbƒ_[–¼A’l‚Í{@link Header ƒwƒbƒ_[}
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ã¯ãƒ˜ãƒƒãƒ€ãƒ¼åã€å€¤ã¯{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}
      */
     public Map getHeaderMap(){
         if(headerMap == null){
@@ -814,10 +814,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ƒwƒbƒ_[‚ğİ’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @param header ƒwƒbƒ_[
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @param header ãƒ˜ãƒƒãƒ€ãƒ¼
      */
     public void setHeader(String name, Header header){
         if(headerMap == null){
@@ -830,9 +830,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ƒwƒbƒ_[‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param header ƒwƒbƒ_[
+     * @param header ãƒ˜ãƒƒãƒ€ãƒ¼
      */
     public void addHeader(Header header){
         if(headerMap == null){
@@ -842,47 +842,47 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğæ“¾‚·‚éB<p>
-     * {@link #getRecordList(String) getRecordList(null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * åå‰ã‚’æŒãŸãªã„{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #getRecordList(String) getRecordList(null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public RecordList getRecordList(){
         return getRecordList(null);
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public RecordList getRecordList(String name){
         return recordListMap == null ? null : (RecordList)recordListMap.get(name);
     }
     
     /**
-     * ’è‹`‚³‚ê‚½‡‚É•À‚ñ‚¾ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å®šç¾©ã•ã‚ŒãŸé †ã«ä¸¦ã‚“ã ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒŠƒXƒg–¼”z—ñ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåé…åˆ—
      */
     public String[] getRecordListNames(){
         return recordListMap == null ? new String[0] : (String[])recordListMap.keySet().toArray(new String[recordListMap.size()]);
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒŠƒXƒg‚Ì”
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®æ•°
      */
     public int getRecordListSize(){
         return recordListMap == null ? 0 : recordListMap.size();
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒŠƒXƒg‚Ìƒ}ƒbƒvBƒL[‚ÍƒŒƒR[ƒhƒŠƒXƒg–¼A’l‚Í{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ã¯ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€å€¤ã¯{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}
      */
     public Map getRecordListMap(){
         if(recordListMap == null){
@@ -892,9 +892,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param recList ƒŒƒR[ƒhƒŠƒXƒg
+     * @param recList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public void addRecordList(RecordList recList){
         if(recordListMap == null){
@@ -904,10 +904,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒhƒŠƒXƒg–¼
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public RecordList createNestedRecordList(String name){
         if(nestedRecordListMap == null
@@ -936,10 +936,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌƒlƒXƒg‚µ‚½{@link Record ƒŒƒR[ƒh}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®ãƒã‚¹ãƒˆã—ãŸ{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @return ƒŒƒR[ƒh
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record createNestedRecord(String name){
         if(nestedRecordMap == null
@@ -961,8 +961,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğƒNƒŠƒA‚·‚éB<p>
-     * ƒwƒbƒ_[‚Ìƒf[ƒ^‚ÆƒŒƒR[ƒhƒŠƒXƒg‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿ã¨ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      */
     public void clear(){
         if(headerMap != null && headerMap.size() != 0){
@@ -988,11 +988,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link Header ƒwƒbƒ_[}‚ğŒŸØ‚·‚éB<p>
+     * åå‰ã‚’æŒãŸãªã„{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateHeader() throws PropertyGetException, PropertyValidateException{
         Header header = getHeader();
@@ -1003,12 +1003,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½{@link Header ƒwƒbƒ_[}‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateHeader(String name) throws PropertyGetException, PropertyValidateException{
         Header header = getHeader(name);
@@ -1019,11 +1019,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ‘S‚Ä‚Ì{@link Header ƒwƒbƒ_[}‚ğŒŸØ‚·‚éB<p>
+     * å…¨ã¦ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateHeaders() throws PropertyGetException, PropertyValidateException{
         if(headerMap == null || headerMap.size() == 0){
@@ -1040,11 +1040,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * –¼‘O‚ğ‚½‚È‚¢{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğŒŸØ‚·‚éB<p>
+     * åå‰ã‚’æŒãŸãªã„{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateRecordList() throws PropertyGetException, PropertyValidateException{
         RecordList recordList = getRecordList();
@@ -1055,12 +1055,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_[–¼
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name ãƒ˜ãƒƒãƒ€ãƒ¼å
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateRecordList(String name) throws PropertyGetException, PropertyValidateException{
         RecordList recordList = getRecordList(name);
@@ -1071,11 +1071,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ‘S‚Ä‚Ì{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğŒŸØ‚·‚éB<p>
+     * å…¨ã¦ã®{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateRecordLists() throws PropertyGetException, PropertyValidateException{
         if(recordListMap == null || recordListMap.size() == 0){
@@ -1092,11 +1092,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ‘S‚Ä‚Ì{@link Header ƒwƒbƒ_[}‹y‚Ñ{@link RecordList ƒŒƒR[ƒhƒŠƒXƒg}‚ğŒŸØ‚·‚éB<p>
+     * å…¨ã¦ã®{@link Header ãƒ˜ãƒƒãƒ€ãƒ¼}åŠã³{@link RecordList ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ}ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validate() throws PropertyGetException, PropertyValidateException{
         if(!validateHeaders()){
@@ -1109,37 +1109,37 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½ƒf[ƒ^ƒZƒbƒg
+     * @return è¤‡è£½ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     public Object clone(){
         return cloneDataSet();
     }
     
     /**
-     * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚Ìƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éB<p>
+     * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½‹ó‚Ìƒf[ƒ^ƒZƒbƒg
+     * @return è¤‡è£½ã—ãŸç©ºã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     public DataSet cloneSchema(){
         return cloneDataSet(false);
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½ƒf[ƒ^ƒZƒbƒg
+     * @return è¤‡è£½ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     public DataSet cloneDataSet(){
         return cloneDataSet(true);
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğ•¡»‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @param hasData ƒf[ƒ^‚à•¡»‚·‚éê‡true
-     * @return •¡»‚µ‚½ƒf[ƒ^ƒZƒbƒg
+     * @param hasData ãƒ‡ãƒ¼ã‚¿ã‚‚è¤‡è£½ã™ã‚‹å ´åˆtrue
+     * @return è¤‡è£½ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      */
     protected DataSet cloneDataSet(boolean hasData){
         DataSet dataSet = null;
@@ -1209,9 +1209,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * ‚±‚Ìƒf[ƒ^ƒZƒbƒg‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         return super.toString() + "{name=" + name + '}';

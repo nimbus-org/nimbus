@@ -32,29 +32,29 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface CharacterConverter extends Converter{
     
     /**
-     * ƒLƒƒƒ‰ƒNƒ^‚ğ•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<br>
+     * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param c •ÏŠ·‘ÎÛ‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @return •ÏŠ·Œã‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param c å¤‰æ›å¯¾è±¡ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @return å¤‰æ›å¾Œã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public char convert(char c) throws ConvertException;
     
     /**
-     * ƒLƒƒƒ‰ƒNƒ^‚ğ•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<br>
+     * ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param c •ÏŠ·‘ÎÛ‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @return •ÏŠ·Œã‚ÌƒLƒƒƒ‰ƒNƒ^
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param c å¤‰æ›å¯¾è±¡ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @return å¤‰æ›å¾Œã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Character convert(Character c) throws ConvertException;
 }

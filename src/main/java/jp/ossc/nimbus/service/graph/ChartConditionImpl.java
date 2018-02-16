@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * É`ÉÉÅ[ÉgèåèÅB<p>
+ * „ÉÅ„É£„Éº„ÉàÊù°‰ª∂„ÄÇ<p>
  *
  * @author k2-taniguchi
  */
@@ -47,7 +47,7 @@ public class ChartConditionImpl
     
     private static final long serialVersionUID = 3418497509927014515L;
     
-    /** ÉvÉçÉbÉgèåèÉäÉXÉg */
+    /** „Éó„É≠„ÉÉ„ÉàÊù°‰ª∂„É™„Çπ„Éà */
     private Map plotConditionMap;
     private List plotConditionList;
     private String title;
@@ -62,12 +62,12 @@ public class ChartConditionImpl
     private Map subtitleFontSizeMap;
 
     /**
-     * ÉRÉìÉXÉgÉâÉNÉ^ÅB<p>
+     * „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÄÇ<p>
      */
     public ChartConditionImpl() {
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void addPlotCondition(PlotCondition plotCondition) {
         if(plotConditionMap == null){
             plotConditionMap = new HashMap();
@@ -86,7 +86,7 @@ public class ChartConditionImpl
         plotConditionList.add(plotCondition);
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public PlotCondition[] getPlotConditions(String plotName) {
         if(plotConditionMap == null){
             return new PlotCondition[0];
@@ -99,7 +99,7 @@ public class ChartConditionImpl
         return new PlotCondition[0];
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public PlotCondition[] getPlotConditions() {
         if(plotConditionList == null){
             return new PlotCondition[0];
@@ -108,82 +108,82 @@ public class ChartConditionImpl
             .toArray(new PlotCondition[plotConditionList.size()]);
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public Iterator getPlotNames() {
         return plotConditionMap.keySet().iterator();
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setTitle(String title) {
         this.title = title;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public String getTitle() {
         return title;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setTitleFontName(String name) {
         titleFontName = name;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public String getTitleFontName() {
         return titleFontName;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setTitleFontStyle(int style) {
         titleFontStyle = style;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public int getTitleFontStyle() {
         return titleFontStyle;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setTitleFontSize(int size) {
         titleFontSize = size;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public int getTitleFontSize() {
         return titleFontSize;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setDefaultSubtitleFontName(String name) {
         defaultSubtitleFontName = name;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public String getDefaultSubtitleFontName() {
         return defaultSubtitleFontName;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setDefaultSubtitleFontStyle(int style) {
         defaultSubtitleFontStyle = style;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public int getDefaultSubtitleFontStyle() {
         return defaultSubtitleFontStyle;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setDefaultSubtitleFontSize(int size) {
         defaultSubtitleFontSize = size;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public int getDefaultSubtitleFontSize() {
         return defaultSubtitleFontSize;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setSubtitleFontName(int index, String name) {
         if (subtitleFontNameMap == null) {
             subtitleFontNameMap = new HashMap();
@@ -191,7 +191,7 @@ public class ChartConditionImpl
         subtitleFontNameMap.put(new Integer(index), name);
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public String getSubtitleFontName(int index) {
         if(subtitleFontNameMap == null){
             return null;
@@ -203,7 +203,7 @@ public class ChartConditionImpl
         return null;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setSubtitleFontStyle(int index, int style) {
         if (subtitleFontStyleMap == null) {
             subtitleFontStyleMap = new HashMap();
@@ -211,7 +211,7 @@ public class ChartConditionImpl
         subtitleFontStyleMap.put(new Integer(index), new Integer(style));
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public int getSubtitleFontStyle(int index) {
         if(subtitleFontStyleMap == null){
             return Integer.MIN_VALUE;
@@ -223,7 +223,7 @@ public class ChartConditionImpl
         return Integer.MIN_VALUE;
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public void setSubtitleFontSize(int index, int size) {
         if (subtitleFontSizeMap == null) {
             subtitleFontSizeMap = new HashMap();
@@ -231,7 +231,7 @@ public class ChartConditionImpl
         subtitleFontSizeMap.put(new Integer(index), new Integer(size));
     }
 
-    // ChartConditionÇÃJavaDoc
+    // ChartCondition„ÅÆJavaDoc
     public int getSubtitleFontSize(int index) {
         if(subtitleFontSizeMap == null){
             return Integer.MIN_VALUE;

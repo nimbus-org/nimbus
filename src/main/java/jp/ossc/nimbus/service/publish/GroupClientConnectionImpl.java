@@ -46,7 +46,7 @@ import java.net.UnknownHostException;
 import jp.ossc.nimbus.util.net.GlobalUID;
 
 /**
- * {@link ClientConnection}‚ğƒOƒ‹[ƒsƒ“ƒO‚·‚éClientConnectionƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link ClientConnection}ã‚’ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ClientConnectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

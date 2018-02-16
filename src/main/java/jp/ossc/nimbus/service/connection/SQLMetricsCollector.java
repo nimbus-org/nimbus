@@ -32,33 +32,33 @@
 package jp.ossc.nimbus.service.connection;
 
 /**
- * SQLƒƒgƒŠƒNƒXWŒvƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * SQLãƒ¡ãƒˆãƒªã‚¯ã‚¹é›†è¨ˆã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface SQLMetricsCollector{
     
     /**
-     * SQL‚ğ³íÀs‚µ‚½‚Ìˆ—ŠÔ[ms]‚ğ“o˜^‚·‚éB<p>
+     * SQLã‚’æ­£å¸¸å®Ÿè¡Œã—ãŸæ™‚ã®å‡¦ç†æ™‚é–“[ms]ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
      * @param sql SQL
-     * @param performance ˆ—ŠÔ[ms]
+     * @param performance å‡¦ç†æ™‚é–“[ms]
      */
     public void register(String sql, long performance);
     
     /**
-     * SQL‚ğÀs‚µ‚½‚É—áŠO‚ª”­¶‚µ‚½ê‡‚Ìˆ—ŠÔ[ms]‚ğ“o˜^‚·‚éB<p>
+     * SQLã‚’å®Ÿè¡Œã—ãŸæ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã®å‡¦ç†æ™‚é–“[ms]ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
      * @param sql SQL
-     * @param performance ˆ—ŠÔ[ms]
+     * @param performance å‡¦ç†æ™‚é–“[ms]
      */
     public void registerException(String sql, long performance);
     
     /**
-     * SQL‚ğÀs‚µ‚½‚ÉƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚Ìˆ—ŠÔ[ms]‚ğ“o˜^‚·‚éB<p>
+     * SQLã‚’å®Ÿè¡Œã—ãŸæ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã®å‡¦ç†æ™‚é–“[ms]ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
      * @param sql SQL
-     * @param performance ˆ—ŠÔ[ms]
+     * @param performance å‡¦ç†æ™‚é–“[ms]
      */
     public void registerError(String sql, long performance);
 }

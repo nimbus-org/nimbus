@@ -36,7 +36,7 @@ import jp.ossc.nimbus.service.writer.log4j.FileAppenderWriterService;
 import org.apache.log4j.*;
 
 /**
- * Log4J‚ÌRollingFileAppender‚ğg‚Á‚½MessageWriterƒT[ƒrƒXB<p>
+ * Log4Jã®RollingFileAppenderã‚’ä½¿ã£ãŸMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,51 +45,51 @@ public class RollingFileAppenderWriterService extends FileAppenderWriterService
     
     private static final long serialVersionUID = 360683732716933676L;
     
-    /**ƒ[ƒe[ƒVƒ‡ƒ“‚ÌƒgƒŠƒK[‚Æ‚È‚éƒtƒ@ƒCƒ‹ƒTƒCƒY*/
+    /**ãƒ­ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒˆãƒªã‚¬ãƒ¼ã¨ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚º*/
     private long maxFileSize = -1;
-    /**Å‘åŠÇ——š—ğ”*/
+    /**æœ€å¤§ç®¡ç†å±¥æ­´æ•°*/
     private int maxBackups = -1;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RollingFileAppenderWriterService(){
         super();
     }
     
-    // RollingFileAppenderWriterServiceMBean‚ÌJavaDoc
+    // RollingFileAppenderWriterServiceMBeanã®JavaDoc
     public void setMaximumFileSize(long maxFileSize){
         this.maxFileSize = maxFileSize;
     }
     
-    // RollingFileAppenderWriterServiceMBean‚ÌJavaDoc
+    // RollingFileAppenderWriterServiceMBeanã®JavaDoc
     public long getMaximumFileSize(){
         return maxFileSize;
     }
     
-    // RollingFileAppenderWriterServiceMBean‚ÌJavaDoc
+    // RollingFileAppenderWriterServiceMBeanã®JavaDoc
     public void setMaxBackupIndex(int maxBackups){
         this.maxBackups = maxBackups;
     }
     
-    // RollingFileAppenderWriterServiceMBean‚ÌJavaDoc
+    // RollingFileAppenderWriterServiceMBeanã®JavaDoc
     public int getMaxBackupIndex(){
         return maxBackups;
     }
     
     /**
-     * RollingFileAppenderƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µ‚ÄAƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì{@link #appender}‚ğ‰Šú‰»‚·‚éB<p>
+     * RollingFileAppenderã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¦ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®{@link #appender}ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception RollingFileAppender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception RollingFileAppenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected WriterAppender createWriterAppender() throws Exception{
         return new RollingFileAppender();
     }
     
     /**
-     * RollingFileAppender‚ğ‰Šú‰»‚·‚éB<p>
+     * RollingFileAppenderã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception RollingFileAppender‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception Exception RollingFileAppenderã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initWriterAppender(WriterAppender appender) throws Exception{
         super.initWriterAppender(appender);

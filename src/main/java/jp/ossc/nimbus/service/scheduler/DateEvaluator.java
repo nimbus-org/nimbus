@@ -34,21 +34,21 @@ package jp.ossc.nimbus.service.scheduler;
 import java.util.Calendar;
 
 /**
- * ���t�]���B<p>
- * {@link DateKey}�œ��t��]������ۂɁADAY@���g�����ĔC�ӂ̃L�[���w�肷�鎖���\�ł���B<br>
- * ���̏ꍇ�ɁA�g�����ꂽ�L�[�ɑ΂�����t�̓������]�����s���N���X���������ׂ��C���^�t�F�[�X�ł���B<br>
+ * 日付評価。<p>
+ * {@link DateKey}で日付を評価する際に、DAY@を拡張して任意のキーを指定する事が可能である。<br>
+ * その場合に、拡張されたキーに対する日付の等価性評価を行うクラスが実装すべきインタフェースである。<br>
  *
  * @author M.Takata
  */
 public interface DateEvaluator{
     
     /**
-     * �w�肳�ꂽ���t���A�w�肳�ꂽ�L�[�̓��t�ł��邩�ǂ����𔻒肷��B<p>
+     * 指定された日付が、指定されたキーの日付であるかどうかを判定する。<p>
      *
-     * @param key �L�[
-     * @param cal ���t���ݒ肳�ꂽ�J�����_�[
-     * @return �w�肳�ꂽ���t���A�w�肳�ꂽ�L�[�̓��t�ł���ꍇ��true
-     * @exception Exception ���t�̔���Ɏ��s�����ꍇ
+     * @param key キー
+     * @param cal 日付が設定されたカレンダー
+     * @return 指定された日付が、指定されたキーの日付である場合はtrue
+     * @exception Exception 日付の判定に失敗した場合
      */
     public boolean equalsDate(String key, Calendar cal) throws Exception;
 }

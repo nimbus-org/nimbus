@@ -42,12 +42,12 @@ import jp.ossc.nimbus.service.cache.*;
 import jp.ossc.nimbus.service.keepalive.*;
 
 /**
- * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒgƒLƒƒƒbƒVƒ…•t‚«JndiFinderƒT[ƒrƒXB<p>
- * JNDI‚ÌIntialContext‚Ì‰Šú‰»ƒvƒƒpƒeƒB‚ğ‘®«‚Æ‚µ‚Äİ’è‚Å‚«‚éB<br>
- * ‚Ü‚½A{@link jp.ossc.nimbus.service.cache.CacheMap ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv}ƒT[ƒrƒX‚ğ‘®«‚Æ‚µ‚Äİ’è‚·‚é‚ÆA‚±‚ÌJndiFinder‚Ålookup‚µ‚½ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒbƒVƒ…‚·‚é–‚ª‚Å‚«‚éB<br>
- * ‚³‚ç‚ÉAlookup‚Ì’ÊMƒGƒ‰[‚ÌƒŠƒgƒ‰ƒC‚âAJNDIƒT[ƒo‚Ì’èŠú“I‚È¶‘¶ƒ`ƒFƒbƒN‚È‚Ç‚Ì‹@”\‚ğ‚ÂB<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ä»˜ãJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * JNDIã®IntialContextã®åˆæœŸåŒ–ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å±æ€§ã¨ã—ã¦è¨­å®šã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€{@link jp.ossc.nimbus.service.cache.CacheMap ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å±æ€§ã¨ã—ã¦è¨­å®šã™ã‚‹ã¨ã€ã“ã®JndiFinderã§lookupã—ãŸãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã•ã‚‰ã«ã€lookupæ™‚ã®é€šä¿¡ã‚¨ãƒ©ãƒ¼ã®ãƒªãƒˆãƒ©ã‚¤ã‚„ã€JNDIã‚µãƒ¼ãƒã®å®šæœŸçš„ãªç”Ÿå­˜ãƒã‚§ãƒƒã‚¯ãªã©ã®æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
  * <p>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -79,80 +79,80 @@ public class CachedJndiFinderService extends ServiceBase
     private static final long serialVersionUID = 2361330897642105726L;
     
     /**
-     * JNDI Lookup‚ÌÚ“ª«‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * JNDI Lookupæ™‚ã®æ¥é ­è¾ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     private static final String C_NONE = ""; //$NON-NLS-1$
     
     /**
-     * JNDIƒT[ƒo¶‘¶Šm”F—p‚ÌJNDI–¼B<p>
+     * JNDIã‚µãƒ¼ãƒç”Ÿå­˜ç¢ºèªç”¨ã®JNDIåã€‚<p>
      */
     private static final String ROOT_CONTEXT = "/";
     
     /**
-     * JNDI IntialContextŠÂ‹«ƒvƒƒpƒeƒBB<p>
+     * JNDI IntialContextç’°å¢ƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     private Properties contextEnv;
     
     /**
-     * JNDIƒRƒ“ƒeƒLƒXƒgB<p>
+     * JNDIã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
      */
     private InitialContext initialCtx;
     
     /**
-     * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒgƒLƒƒƒbƒVƒ…ƒT[ƒrƒX–¼B<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName remoteObjCacheServiceName;
     
     /**
-     * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒgƒLƒƒƒbƒVƒ…ƒT[ƒrƒXB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private CacheMap remoteObjCache;
     
     /**
-     * JNDIƒvƒŒƒtƒBƒNƒXB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Í‹ó•¶šB<br>
+     * JNDIãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ç©ºæ–‡å­—ã€‚<br>
      */
     private String jndiPrefix = C_NONE;
     
     /**
-     * lookupƒGƒ‰[‚ÌƒŠƒgƒ‰ƒC‰ñ”B<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒŠƒgƒ‰ƒC‚È‚µB<br>
+     * lookupã‚¨ãƒ©ãƒ¼æ™‚ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ãƒªãƒˆãƒ©ã‚¤ãªã—ã€‚<br>
      */
     private int lookupRetryCount = 0;
     
     /**
-     * lookupƒGƒ‰[‚ÌƒŠƒgƒ‰ƒCŠÔŠu [msec]B<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * lookupã‚¨ãƒ©ãƒ¼æ™‚ã®ãƒªãƒˆãƒ©ã‚¤é–“éš” [msec]ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      */
     private long retryInterval = 1000;
     
     /**
-     * ƒŠƒgƒ‰ƒC‘ÎÛ‚Ì—áŠOƒNƒ‰ƒX–¼”z—ñB<p>
+     * ãƒªãƒˆãƒ©ã‚¤å¯¾è±¡ã®ä¾‹å¤–ã‚¯ãƒ©ã‚¹åé…åˆ—ã€‚<p>
      */
     private String[] retryExceptionClassNames = DEFAULT_RETRY_EXCXEPTION_NAME;
     
     /**
-     * ƒŠƒgƒ‰ƒC‘ÎÛ‚Ì—áŠOƒNƒ‰ƒX”z—ñB<p>
+     * ãƒªãƒˆãƒ©ã‚¤å¯¾è±¡ã®ä¾‹å¤–ã‚¯ãƒ©ã‚¹é…åˆ—ã€‚<p>
      */
     private Class[] retryExceptionClasses;
     
     /**
-     * JNDIƒT[ƒo‚Ì¶‘¶Šm”F‚ğ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * JNDIã‚µãƒ¼ãƒã®ç”Ÿå­˜ç¢ºèªã‚’ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     private boolean isAliveCheckJNDIServer;
     
     /**
-     * JNDIƒT[ƒo‚Ì¶‘¶‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * JNDIã‚µãƒ¼ãƒã®ç”Ÿå­˜ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     private boolean isAliveJNDIServer;
     
     /**
-     * JNDIƒT[ƒo‚Ì¶‘¶Šm”F‚ğ‚·‚éŠÔŠu[msec]B<p>
+     * JNDIã‚µãƒ¼ãƒã®ç”Ÿå­˜ç¢ºèªã‚’ã™ã‚‹é–“éš”[msec]ã€‚<p>
      */
     private long aliveCheckJNDIServerInterval = 60000;
     
     /**
-     * {@link Daemon}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link Daemon}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private Daemon daemon;
     
@@ -167,9 +167,9 @@ public class CachedJndiFinderService extends ServiceBase
     private List keepAliveListeners;
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         daemon = new Daemon(this);
@@ -178,16 +178,16 @@ public class CachedJndiFinderService extends ServiceBase
     }
     
     /**
-     * CacheMap‚ğİ’è‚·‚éB
+     * CacheMapã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCacheMap(CacheMap remoteObjCache) {
         this.remoteObjCache = remoteObjCache;
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -204,7 +204,7 @@ public class CachedJndiFinderService extends ServiceBase
             }
         }
         
-        //ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚Ìæ“¾
+        //ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—
         if(remoteObjCacheServiceName != null){
             remoteObjCache = (CacheMap)ServiceManagerFactory
                 .getServiceObject(remoteObjCacheServiceName);
@@ -219,28 +219,28 @@ public class CachedJndiFinderService extends ServiceBase
         isAliveJNDIServer = true;
         
         if(isAliveCheckJNDIServer){
-            // ƒf[ƒ‚ƒ“‹N“®
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
             daemon.start();
         }
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
-        // ƒf[ƒ‚ƒ“’â~
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
         daemon.stop();
         
         initialCtx.close();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destory() throws Exception{
         initialCtx = null;
@@ -252,7 +252,7 @@ public class CachedJndiFinderService extends ServiceBase
         keepAliveListeners = null;
     }
     
-    // JndiFinder‚ÌJavaDoc
+    // JndiFinderã®JavaDoc
     public Object lookup() throws NamingException{
         return lookup(C_NONE);
     }
@@ -268,12 +268,12 @@ public class CachedJndiFinderService extends ServiceBase
         return false;
     }
     
-    // JndiFinder‚ÌJavaDoc
+    // JndiFinderã®JavaDoc
     public Object lookup(String name) throws NamingException{
         Object result = null;
         String key = jndiPrefix + name;
         
-        //ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚é‚È‚çAƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚©‚ç’T‚·
+        //ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ãªã‚‰ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰æ¢ã™
         if(remoteObjCache != null){
             result = remoteObjCache.get(key);
             if(result != null){
@@ -283,8 +283,8 @@ public class CachedJndiFinderService extends ServiceBase
         
         result = lookupInternal(key);
         
-        // lookup‚ÅƒRƒ“ƒeƒLƒXƒg‚ğæ“¾‚Å‚«AŠ‚ÂƒLƒƒƒbƒVƒ…ƒ‚[ƒh‚Å‚ ‚ê‚ÎA
-        // æ“¾‚µ‚½Context‚ğƒLƒƒƒbƒVƒ…
+        // lookupã§ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã§ãã€ä¸”ã¤ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ¢ãƒ¼ãƒ‰ã§ã‚ã‚Œã°ã€
+        // å–å¾—ã—ãŸContextã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥
         if(result != null && remoteObjCache != null){
             remoteObjCache.put(key, result);
         }
@@ -298,7 +298,7 @@ public class CachedJndiFinderService extends ServiceBase
         try{
             result = initialCtx.lookup(key);
         }catch(NamingException e){
-            //ŠÔ‚ğ‚¨‚¢‚ÄƒŠƒgƒ‰ƒC‚·‚éB
+            //æ™‚é–“ã‚’ãŠã„ã¦ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã€‚
             if(lookupRetryCount <= 0 || !isRetryException(e)){
                 throw e;
             }
@@ -306,7 +306,7 @@ public class CachedJndiFinderService extends ServiceBase
         
         if(result == null){
             for(int rcont = 0; rcont < lookupRetryCount; rcont++){
-                //ƒŠƒgƒ‰ƒCŠÔsleep
+                //ãƒªãƒˆãƒ©ã‚¤æ™‚é–“sleep
                 try{
                     Thread.sleep(retryInterval);
                 }catch(InterruptedException e){}
@@ -315,7 +315,7 @@ public class CachedJndiFinderService extends ServiceBase
                     result = initialCtx.lookup(key);
                     break;
                 }catch(NamingException e){
-                    //ŠÔ‚ğ‚¨‚¢‚ÄƒŠƒgƒ‰ƒC‚·‚éB
+                    //æ™‚é–“ã‚’ãŠã„ã¦ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã€‚
                     if(rcont == lookupRetryCount - 1
                          || !isRetryException(e)){
                         throw e;
@@ -327,21 +327,21 @@ public class CachedJndiFinderService extends ServiceBase
         return result; 
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public void addKeepAliveListener(KeepAliveListener listener){
         synchronized(keepAliveListeners){
             keepAliveListeners.add(listener);
         }
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public void removeKeepAliveListener(KeepAliveListener listener){
         synchronized(keepAliveListeners){
             keepAliveListeners.remove(listener);
         }
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public void clearKeepAliveListener(){
         synchronized(keepAliveListeners){
             keepAliveListeners.clear();
@@ -349,46 +349,46 @@ public class CachedJndiFinderService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart(){
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop(){
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend(){
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume(){
         return true;
     }
     
     /**
-     * ˆê’èŠÔsleepŒã‚Éƒ‹[ƒgƒRƒ“ƒeƒLƒXƒg‚ğlookup‚µ‚Ä•Ô‚·B<p>
+     * ä¸€å®šæ™‚é–“sleepå¾Œã«ãƒ«ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’lookupã—ã¦è¿”ã™ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-     * @return ƒ‹[ƒgƒRƒ“ƒeƒLƒXƒgƒIƒuƒWƒFƒNƒg‚Ü‚½‚ÍNamingException
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ãƒ«ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¾ãŸã¯NamingException
      */
     public Object provide(DaemonControl ctrl){
         try{
@@ -408,12 +408,12 @@ public class CachedJndiFinderService extends ServiceBase
     }
     
     /**
-     * ˆø”lookupedObj‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğÁ”ï‚·‚éB<p>
-     * isAliveJNDIServer‚ªtrue‚Ìó‘Ô‚ÅAˆø”lookupedObj‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªNamingException‚Ìê‡AJNDIƒT[ƒo‚ª€‚ñ‚¾|‚ÌƒGƒ‰[ƒƒO‚ğo—Í‚·‚éB<br>
-     * isAliveJNDIServer‚ªfalse‚Ìó‘Ô‚ÅAˆø”lookupedObj‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªNamingException‚Å‚È‚¢ê‡AJNDIƒT[ƒo‚ª•œ‹A‚µ‚½|‚Ì’Ê’mƒƒO‚ğo—Í‚·‚éB<br>
+     * å¼•æ•°lookupedObjã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆè²»ã™ã‚‹ã€‚<p>
+     * isAliveJNDIServerãŒtrueã®çŠ¶æ…‹ã§ã€å¼•æ•°lookupedObjã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒNamingExceptionã®å ´åˆã€JNDIã‚µãƒ¼ãƒãŒæ­»ã‚“ã æ—¨ã®ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * isAliveJNDIServerãŒfalseã®çŠ¶æ…‹ã§ã€å¼•æ•°lookupedObjã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒNamingExceptionã§ãªã„å ´åˆã€JNDIã‚µãƒ¼ãƒãŒå¾©å¸°ã—ãŸæ—¨ã®é€šçŸ¥ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lookupedObj ƒ‹[ƒgƒRƒ“ƒeƒLƒXƒgƒIƒuƒWƒFƒNƒg
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param lookupedObj ãƒ«ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object lookupedObj, DaemonControl ctrl){
         if(!isAliveCheckJNDIServer){
@@ -431,7 +431,7 @@ public class CachedJndiFinderService extends ServiceBase
                         keepAliveListener.onDead(this);
                     }
                 }
-                // ƒGƒ‰[ƒƒOo—Í
+                // ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°å‡ºåŠ›
                 if(isLoggingDeadJNDIServer){
                     getLogger().write(
                         deadJNDIServerLogMessageId,
@@ -452,7 +452,7 @@ public class CachedJndiFinderService extends ServiceBase
                     }
                 }
                 if(isLoggingRecoverJNDIServer){
-                    // ’Ê’mƒƒOo—Í
+                    // é€šçŸ¥ãƒ­ã‚°å‡ºåŠ›
                     getLogger().write(
                         recoverJNDIServerLogMessageId,
                         getJNDIServerInfo()
@@ -475,17 +475,17 @@ public class CachedJndiFinderService extends ServiceBase
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void garbage(){
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setEnvironment(Properties prop){
         contextEnv = prop;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public Properties getEnvironment() throws NamingException{
         if(contextEnv != null){
             return contextEnv;
@@ -497,57 +497,57 @@ public class CachedJndiFinderService extends ServiceBase
         return null;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setCacheMapServiceName(ServiceName name){
         remoteObjCacheServiceName = name;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public ServiceName getCacheMapServiceName(){
         return remoteObjCacheServiceName;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setPrefix(String prefix){
         jndiPrefix = prefix;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public String getPrefix(){
         return jndiPrefix;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setRetryCount(int num){
         lookupRetryCount = num;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public int getRetryCount(){
         return lookupRetryCount;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setRetryInterval(long interval){
         retryInterval = interval;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setRetryExceptionClassNames(String[] classNames){
         retryExceptionClassNames = classNames;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public String[] getRetryExceptionClassNames(){
         return retryExceptionClassNames;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setAliveCheckJNDIServer(boolean isCheck){
         isAliveCheckJNDIServer = isCheck;
         if(isCheck && getState() == STARTED && !daemon.isRunning()){
@@ -555,22 +555,22 @@ public class CachedJndiFinderService extends ServiceBase
         }
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public boolean isAliveCheckJNDIServer(){
         return isAliveCheckJNDIServer;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setAliveCheckJNDIServerInterval(long interval){
         aliveCheckJNDIServerInterval = interval;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public long getAliveCheckJNDIServerInterval(){
         return aliveCheckJNDIServerInterval;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public boolean isAliveJNDIServer(){
         if(getState() != STARTED){
             return false;
@@ -586,12 +586,12 @@ public class CachedJndiFinderService extends ServiceBase
         }
     }
     
-    // KeepAliveChecker‚ÌJavaDoc
+    // KeepAliveCheckerã®JavaDoc
     public boolean isAlive(){
         return isAliveJNDIServer();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Object getHostInfo() {
         try{
             return initialCtx == null || initialCtx.getEnvironment() == null ? null : initialCtx.getEnvironment().get(Context.PROVIDER_URL);
@@ -600,61 +600,61 @@ public class CachedJndiFinderService extends ServiceBase
         }
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setLoggingDeadJNDIServer(boolean isOutput){
         isLoggingDeadJNDIServer = isOutput;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public boolean isLoggingDeadJNDIServer(){
         return isLoggingDeadJNDIServer;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setLoggingRecoverJNDIServer(boolean isOutput){
         isLoggingRecoverJNDIServer = isOutput;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public boolean isLoggingRecoverJNDIServer(){
         return isLoggingRecoverJNDIServer;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setDeadJNDIServerLogMessageId(String id){
         deadJNDIServerLogMessageId = id;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public String getDeadJNDIServerLogMessageId(){
         return deadJNDIServerLogMessageId;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void setRecoverJNDIServerLogMessageId(String id){
         recoverJNDIServerLogMessageId = id;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public String getRecoverJNDIServerLogMessageId(){
         return recoverJNDIServerLogMessageId;
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void clearCache(){
         if(remoteObjCache != null){
             remoteObjCache.clear();
         }
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public void clearCache(String name){
         if(remoteObjCache != null){
             remoteObjCache.remove(name);
         }
     }
     
-    // CachedJndiFinderServiceMBean‚ÌJavaDoc
+    // CachedJndiFinderServiceMBeanã®JavaDoc
     public String listContext() throws NamingException{
         if(initialCtx == null){
             return null;
@@ -662,7 +662,7 @@ public class CachedJndiFinderService extends ServiceBase
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         pw.println("<pre>");
-        listContext(pw, initialCtx, "@");
+        listContext(pw, initialCtx, "ã€€");
         pw.println("</pre>");
         return sw.toString();
     }
@@ -673,10 +673,10 @@ public class CachedJndiFinderService extends ServiceBase
             Binding item = (Binding)list.next();
             String className = item.getClassName();
             String name = item.getName();
-            pw.println(indent + className + "@" + name);
+            pw.println(indent + className + "ã€€" + name);
             Object o = item.getObject();
             if(o instanceof javax.naming.Context){
-                listContext(pw, (Context)o, indent + "@");
+                listContext(pw, (Context)o, indent + "ã€€");
             }
         }
     }

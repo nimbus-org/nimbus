@@ -32,26 +32,26 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ‰Â‹tƒRƒ“ƒo[ƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * å¯é€†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface ReversibleConverter extends Converter{
     
     /**
-     * ‡•ûŒü•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * é †æ–¹å‘å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int POSITIVE_CONVERT = 1;
     
     /**
-     * ‹t•ûŒü•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * é€†æ–¹å‘å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int REVERSE_CONVERT = 2;
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #POSITIVE_CONVERT
      * @see #REVERSE_CONVERT
      */

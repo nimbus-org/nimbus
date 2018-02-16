@@ -36,7 +36,7 @@ import jp.ossc.nimbus.service.keepalive.AbstractKeepAliveCheckerServiceMBean;
 import jp.ossc.nimbus.service.system.HostResolver;
 
 /**
- * {@link WebSocketKeepAliveCheckerService}のMBeanインタフェース
+ * {@link WebSocketKeepAliveCheckerService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ
  * <p>
  *
  * @author M.Ishida

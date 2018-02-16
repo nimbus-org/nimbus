@@ -34,9 +34,9 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * íœ‚ ‚Ó‚ê“®ìƒT[ƒrƒXB<p>
- * ƒLƒƒƒbƒVƒ…‚©‚ç‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚é‚ ‚Ó‚ê“®ì‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAíœ‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * å‰Šé™¤ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã‚ãµã‚Œå‹•ä½œã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€å‰Šé™¤ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -60,16 +60,16 @@ public class RemoveOverflowActionService extends ServiceBase
     
     private static final long serialVersionUID = -2957032692475860024L;
     
-    // OverflowAction‚ÌJavaDoc
+    // OverflowActionã®JavaDoc
     public void setOverflowController(OverflowController controller){
     }
     
     /**
-     * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒbƒVƒ…‚©‚çíœ‚·‚éB<p>
+     * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param validator ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½OverflowValidator
-     * @param algorithm ‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚µ‚½OverflowAlgorithm
-     * @param ref ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param validator ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸOverflowValidator
+     * @param algorithm ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã—ãŸOverflowAlgorithm
+     * @param ref ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void action(
         OverflowValidator validator,
@@ -87,7 +87,7 @@ public class RemoveOverflowActionService extends ServiceBase
         }
     }
     
-    // OverflowAction‚ÌJavaDoc
+    // OverflowActionã®JavaDoc
     public void reset(){
     }
 }

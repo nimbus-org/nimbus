@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.publish.tcp;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚ÌØ’f—v‹ƒƒbƒZ[ƒWƒNƒ‰ƒXB<p>
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®åˆ‡æ–­è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

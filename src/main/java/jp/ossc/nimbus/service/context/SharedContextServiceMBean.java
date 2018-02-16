@@ -37,7 +37,7 @@ import java.util.List;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link SharedContextService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SharedContextService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see SharedContextService
@@ -45,494 +45,494 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒTƒuƒWƒFƒNƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     public static final String DEFAULT_SUBJECT = "SharedContext";
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚ÌƒTƒuƒWƒFƒNƒgŒã’uŒB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¾Œç½®è©ã€‚<p>
      */
     public static final String CLIENT_SUBJECT_SUFFIX = ".Client";
     
     /**
-     * {@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name RequestConnectionFactoryServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name RequestConnectionFactoryServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return RequestConnectionFactoryServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return RequestConnectionFactoryServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRequestConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ClusterServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ClusterServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ClusterServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ClusterServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ì{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğCacheMap‚ÉŠi”[‚µ‚Äƒf[ƒ^‚Ì‚ ‚Ó‚ê§Œä‚ğs‚¤ê‡Aİ’è‚·‚éB<br>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰æ™‚ã®{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’CacheMapã«æ ¼ç´ã—ã¦ãƒ‡ãƒ¼ã‚¿ã®ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†å ´åˆã€è¨­å®šã™ã‚‹ã€‚<br>
      * 
-     * @param name CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClientCacheMapServiceName(ServiceName name);
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ì{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰æ™‚ã®{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClientCacheMapServiceName();
     
     /**
-     * ƒT[ƒoƒ‚[ƒh‚Ì{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğCacheMap‚ÉŠi”[‚·‚éê‡Aİ’è‚·‚éB<br>
+     * ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰æ™‚ã®{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’CacheMapã«æ ¼ç´ã™ã‚‹å ´åˆã€è¨­å®šã™ã‚‹ã€‚<br>
      * 
-     * @param name CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerCacheMapServiceName(ServiceName name);
     
     /**
-     * ƒT[ƒoƒ‚[ƒh‚Ì{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰æ™‚ã®{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerCacheMapServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğƒTƒ|[ƒg‚·‚éê‡‚ÉAƒNƒGƒŠ‚ğ‰ğß‚·‚éInterpreter‚ğİ’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã«ã€ã‚¯ã‚¨ãƒªã‚’è§£é‡ˆã™ã‚‹Interpreterã‚’è¨­å®šã™ã‚‹ã€‚<br>
      * 
-     * @param name InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterpreterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return InterpreterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Interpreterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterpreterServiceName();
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğs‚¤Û‚ÉAƒNƒGƒŠ’†‚Åg—p‚·‚éƒRƒ“ƒeƒLƒXƒg‚Ì•Ï”–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA"context"B<br>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’è¡Œã†éš›ã«ã€ã‚¯ã‚¨ãƒªä¸­ã§ä½¿ç”¨ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å¤‰æ•°åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€"context"ã€‚<br>
      * 
-     * @param name ƒNƒGƒŠ’†‚Åg—p‚·‚éƒRƒ“ƒeƒLƒXƒg‚Ì•Ï”–¼
+     * @param name ã‚¯ã‚¨ãƒªä¸­ã§ä½¿ç”¨ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å¤‰æ•°å
      */
     public void setInterpretContextVariableName(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğs‚¤Û‚ÉAƒNƒGƒŠ’†‚Åg—p‚·‚éƒRƒ“ƒeƒLƒXƒg‚Ì•Ï”–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’è¡Œã†éš›ã«ã€ã‚¯ã‚¨ãƒªä¸­ã§ä½¿ç”¨ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å¤‰æ•°åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒNƒGƒŠ’†‚Åg—p‚·‚éƒRƒ“ƒeƒLƒXƒg‚Ì•Ï”–¼
+     * @return ã‚¯ã‚¨ãƒªä¸­ã§ä½¿ç”¨ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å¤‰æ•°å
      */
     public String getInterpretContextVariableName();
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğs‚¤ƒXƒŒƒbƒh”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å—v‹óMƒXƒŒƒbƒh‚Å‚»‚Ì‚Ü‚Üˆ—‚·‚éB<br>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§è¦æ±‚å—ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ã§ãã®ã¾ã¾å‡¦ç†ã™ã‚‹ã€‚<br>
      *
-     * @param size ƒCƒ“ƒ^[ƒvƒŠƒ^ÀsƒXƒŒƒbƒh”
+     * @param size ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public void setExecuteThreadSize(int size);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğs‚¤ƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒ^[ƒvƒŠƒ^ÀsƒXƒŒƒbƒh”
+     * @return ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getExecuteThreadSize();
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às”ñ“¯Šúˆ——p‚Ì{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğƒTƒ|[ƒg‚·‚éê‡‚ÉAƒCƒ“ƒ^[ƒvƒŠƒ^Às‚ğ”ñ“¯Šú‚É‚µ‚½ê‡‚Ì—v‹ƒLƒ…[‚ğİ’è‚·‚éBw’è‚µ‚È‚¢ê‡‚ÍA“à•”ƒLƒ…[‚ªg—p‚³‚ê‚éB<br>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡ŒéåŒæœŸå‡¦ç†ç”¨ã®{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã«ã€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡Œã‚’éåŒæœŸã«ã—ãŸå ´åˆã®è¦æ±‚ã‚­ãƒ¥ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€å†…éƒ¨ã‚­ãƒ¥ãƒ¼ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      * 
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExecuteQueueServiceName(ServiceName name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^Às”ñ“¯Šúˆ——p‚Ì{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿å®Ÿè¡ŒéåŒæœŸå‡¦ç†ç”¨ã®{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getExecuteQueueServiceName();
     
     /**
-     * {@link SharedContextTransactionManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“Às‚ğƒTƒ|[ƒg‚·‚éê‡‚Éİ’è‚·‚éBw’è‚µ‚È‚¢ê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÉQ‰Á‚µ‚È‚¢B<br>
+     * {@link SharedContextTransactionManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å®Ÿè¡Œã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã«è¨­å®šã™ã‚‹ã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«å‚åŠ ã—ãªã„ã€‚<br>
      * 
-     * @param name SharedContextTransactionManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name SharedContextTransactionManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSharedContextTransactionManagerServiceName(ServiceName name);
     
     /**
-     * {@link SharedContextTransactionManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link SharedContextTransactionManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return SharedContextTransactionManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return SharedContextTransactionManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSharedContextTransactionManagerServiceName();
     
     /**
-     * ƒTƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_SUBJECT}B
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_SUBJECT}ã€‚
      *
-     * @param subject ƒTƒuƒWƒFƒNƒg
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setSubject(String subject);
     
     /**
-     * ƒTƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒTƒuƒWƒFƒNƒg
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public String getSubject();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg/ƒT[ƒoƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒT[ƒoƒ‚[ƒhB<br>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ/ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã€‚<br>
      *
-     * @param isClient ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ìê‡Atrue
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param isClient ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã€true
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void setClient(boolean isClient) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg/ƒT[ƒoƒ‚[ƒh‚ğ”»’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ/ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh
+     * @return trueã®å ´åˆã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰
      */
     public boolean isClient();
     
     /**
-     * “¯Šú‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA5000[ms]B<br>
+     * åŒæœŸæ™‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€5000[ms]ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setSynchronizeTimeout(long timeout);
     
     /**
-     * “¯Šú‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * åŒæœŸæ™‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getSynchronizeTimeout();
     
     /**
-     * ƒ^ƒCƒ€ƒAƒEƒg‚ğw’è‚µ‚È‚¢ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½ê‡‚É“K—p‚³‚ê‚éƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1000[ms]B<br>
+     * ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’æŒ‡å®šã—ãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸå ´åˆã«é©ç”¨ã•ã‚Œã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1000[ms]ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setDefaultTimeout(long timeout);
     
     /**
-     * ƒ^ƒCƒ€ƒAƒEƒg‚ğw’è‚µ‚È‚¢ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½ê‡‚É“K—p‚³‚ê‚éƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’æŒ‡å®šã—ãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸå ´åˆã«é©ç”¨ã•ã‚Œã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getDefaultTimeout();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚É‘¼‚ÌƒRƒ“ƒeƒLƒXƒg‚Æ‚Ìƒf[ƒ^“¯Šú‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åƒf[ƒ^“¯Šú‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ä»–ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¨ã®ãƒ‡ãƒ¼ã‚¿åŒæœŸã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒ‡ãƒ¼ã‚¿åŒæœŸã™ã‚‹ã€‚<br>
      *
-     * @param isSynch ƒf[ƒ^“¯Šú‚·‚éê‡Atrue
+     * @param isSynch ãƒ‡ãƒ¼ã‚¿åŒæœŸã™ã‚‹å ´åˆã€true
      */
     public void setSynchronizeOnStart(boolean isSynch);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚É‘¼‚ÌƒRƒ“ƒeƒLƒXƒg‚Æ‚Ìƒf[ƒ^“¯Šú‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ä»–ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã¨ã®ãƒ‡ãƒ¼ã‚¿åŒæœŸã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return trueê‡Aƒf[ƒ^“¯Šú‚·‚é
+     * @return trueå ´åˆã€ãƒ‡ãƒ¼ã‚¿åŒæœŸã™ã‚‹
      */
     public boolean isSynchronizeOnStart();
     
     /**
-     * å‚Æ‚È‚éƒm[ƒh‚Ì‚İ‚ªƒRƒ“ƒeƒLƒXƒg‚Ì•Û‘¶‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒhˆÈŠO‚Ì‘S‚Ä‚Ìƒm[ƒh‚ª•Û‘¶‚·‚éB<br>
+     * ä¸»ã¨ãªã‚‹ãƒãƒ¼ãƒ‰ã®ã¿ãŒã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä¿å­˜ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ä»¥å¤–ã®å…¨ã¦ã®ãƒãƒ¼ãƒ‰ãŒä¿å­˜ã™ã‚‹ã€‚<br>
      *
-     * @param isSave å‚Æ‚È‚éƒm[ƒh‚Ì‚İ‚ªƒRƒ“ƒeƒLƒXƒg‚Ì•Û‘¶‚ğs‚¤ê‡Atrue
+     * @param isSave ä¸»ã¨ãªã‚‹ãƒãƒ¼ãƒ‰ã®ã¿ãŒã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä¿å­˜ã‚’è¡Œã†å ´åˆã€true
      */
     public void setSaveOnlyMain(boolean isSave);
     
     /**
-     * å‚Æ‚È‚éƒm[ƒh‚Ì‚İ‚ªƒRƒ“ƒeƒLƒXƒg‚Ì•Û‘¶‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¸»ã¨ãªã‚‹ãƒãƒ¼ãƒ‰ã®ã¿ãŒã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä¿å­˜ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aå‚Æ‚È‚éƒm[ƒh‚Ì‚İ‚ªƒRƒ“ƒeƒLƒXƒg‚Ì•Û‘¶‚ğs‚¤
+     * @return trueã®å ´åˆã€ä¸»ã¨ãªã‚‹ãƒãƒ¼ãƒ‰ã®ã¿ãŒã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä¿å­˜ã‚’è¡Œã†
      */
     public boolean isSaveOnlyMain();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚É‘¶İ‚·‚éƒm[ƒh‚ª‘S‚ÄÚ‘±‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒƒCƒ“ƒm[ƒh‚ÌÚ‘±‚Ì‚İ‘Ò‹@‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«å­˜åœ¨ã™ã‚‹ãƒãƒ¼ãƒ‰ãŒå…¨ã¦æ¥ç¶šã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ãƒ¡ã‚¤ãƒ³ãƒãƒ¼ãƒ‰ã®æ¥ç¶šã®ã¿å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @param isWait ƒT[ƒrƒX‚ÌŠJn‚É‘¶İ‚·‚éƒm[ƒh‚ª‘S‚ÄÚ‘±‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚éê‡Atrue
+     * @param isWait ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«å­˜åœ¨ã™ã‚‹ãƒãƒ¼ãƒ‰ãŒå…¨ã¦æ¥ç¶šã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹å ´åˆã€true
      */
     public void setWaitConnectAllOnStart(boolean isWait);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚É‘¶İ‚·‚éƒm[ƒh‚ª‘S‚ÄÚ‘±‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«å­˜åœ¨ã™ã‚‹ãƒãƒ¼ãƒ‰ãŒå…¨ã¦æ¥ç¶šã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚É‘¶İ‚·‚éƒm[ƒh‚ª‘S‚ÄÚ‘±‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚é
+     * @return trueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«å­˜åœ¨ã™ã‚‹ãƒãƒ¼ãƒ‰ãŒå…¨ã¦æ¥ç¶šã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹
      */
     public boolean isWaitConnectAllOnStart();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉA‘Šèƒm[ƒh‚ªÚ‘±‚·‚é‚Ì‚ğ‘Ò‹@‚·‚éŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA60•bB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ç›¸æ‰‹ãƒãƒ¼ãƒ‰ãŒæ¥ç¶šã™ã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€60ç§’ã€‚<br>
      *
-     * @param timeout ‘Šèƒm[ƒh‚ªÚ‘±‚·‚é‚Ì‚ğ‘Ò‹@‚·‚éŠÔ[ms]
+     * @param timeout ç›¸æ‰‹ãƒãƒ¼ãƒ‰ãŒæ¥ç¶šã™ã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹æ™‚é–“[ms]
      */
     public void setWaitConnectTimeout(long timeout);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉA‘Šèƒm[ƒh‚ªÚ‘±‚·‚é‚Ì‚ğ‘Ò‹@‚·‚éŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ç›¸æ‰‹ãƒãƒ¼ãƒ‰ãŒæ¥ç¶šã™ã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘Šèƒm[ƒh‚ªÚ‘±‚·‚é‚Ì‚ğ‘Ò‹@‚·‚éŠÔ[ms]
+     * @return ç›¸æ‰‹ãƒãƒ¼ãƒ‰ãŒæ¥ç¶šã™ã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹æ™‚é–“[ms]
      */
     public long getWaitConnectTimeout();
     
     /**
-     * {@link SharedContextUpdateListener}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link SharedContextUpdateListener}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param names SharedContextUpdateListenerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names SharedContextUpdateListenerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setSharedContextUpdateListenerServiceNames(ServiceName[] names);
     
     /**
-     * {@link SharedContextUpdateListener}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link SharedContextUpdateListener}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return SharedContextUpdateListenerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return SharedContextUpdateListenerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getSharedContextUpdateListenerServiceNames();
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
-     * ƒRƒ“ƒeƒLƒXƒg’lƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚ğƒL[‚Æ‚µ‚ÄƒCƒ“ƒfƒbƒNƒX‚ğ’£‚èAƒRƒ“ƒeƒLƒXƒg’l‚É‘Î‚µ‚Ä‚ÌŒŸõ‚ğs‚¦‚é‚æ‚¤‚É‚·‚éB<br>
-     * ‚±‚±‚Åİ’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ğg‚Á‚ÄA{@link SharedContext#createView()}‚ÅŒŸõ‚ª‰Â”\‚É‚È‚éB<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå€¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚­ãƒ¼ã¨ã—ã¦ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚Šã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå€¤ã«å¯¾ã—ã¦ã®æ¤œç´¢ã‚’è¡Œãˆã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚<br>
+     * ã“ã“ã§è¨­å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ä½¿ã£ã¦ã€{@link SharedContext#createView()}ã§æ¤œç´¢ãŒå¯èƒ½ã«ãªã‚‹ã€‚<br>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param keyProps ƒCƒ“ƒfƒbƒNƒX‚ÌƒL[‚Æ‚·‚éƒRƒ“ƒeƒLƒXƒg’lƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB–¼”z—ñ
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param keyProps ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚­ãƒ¼ã¨ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå€¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
      * @see SharedContext#createView()
      */
     public void setIndex(String name, String[] keyProps);
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
      */
     public void removeIndex(String name);
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ğ’£‚è‚È‚¨‚·B<p>
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚ŠãªãŠã™ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
      */
     public void analyzeIndex(String name);
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg“¯Šú‚ğs‚¤B<p>
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ìê‡‚ÍAƒ[ƒJƒ‹‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒNƒŠƒA‚·‚éB‚Ü‚½AƒT[ƒoƒ‚[ƒh‚Ååƒm[ƒh‚Ìê‡‚ÍA‘S‚Ä‚Ìƒm[ƒh‚É“¯Šú–½—ß‚ğo‚·B<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåŒæœŸã‚’è¡Œã†ã€‚<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã§ä¸»ãƒãƒ¼ãƒ‰ã®å ´åˆã¯ã€å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã«åŒæœŸå‘½ä»¤ã‚’å‡ºã™ã€‚<br>
      *
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void synchronize() throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg“¯Šú‚ğs‚¤B<p>
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚Ìê‡‚ÍAƒ[ƒJƒ‹‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒNƒŠƒA‚·‚éB‚Ü‚½AƒT[ƒoƒ‚[ƒh‚Ååƒm[ƒh‚Ìê‡‚ÍA‘S‚Ä‚Ìƒm[ƒh‚É“¯Šú–½—ß‚ğo‚·B<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåŒæœŸã‚’è¡Œã†ã€‚<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚ã¾ãŸã€ã‚µãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã§ä¸»ãƒãƒ¼ãƒ‰ã®å ´åˆã¯ã€å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã«åŒæœŸå‘½ä»¤ã‚’å‡ºã™ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void synchronize(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠJ•ú‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒƒbƒNŠJ•ú‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @return ãƒ­ãƒƒã‚¯é–‹æ”¾ã§ããŸå ´åˆã¯ã€true
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean unlock(Object key) throws SharedContextSendException;
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒƒbƒN‚ğŠJ•ú‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ãƒ­ãƒƒã‚¯ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param force ‹­§ƒtƒ‰ƒO
-     * @return ƒƒbƒNŠJ•ú‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param force å¼·åˆ¶ãƒ•ãƒ©ã‚°
+     * @return ãƒ­ãƒƒã‚¯é–‹æ”¾ã§ããŸå ´åˆã¯ã€true
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean unlock(Object key, boolean force) throws SharedContextSendException;
     
     /**
-     * ƒL[‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÌW‡
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @return ã‚­ãƒ¼ã®é›†åˆ
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public Set keySet() throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * “o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+     * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÌŒ”
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @return ã‚­ãƒ¼ã®ä»¶æ•°
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public int size() throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ƒ[ƒJƒ‹‚É“o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÌŒ”
+     * @return ã‚­ãƒ¼ã®ä»¶æ•°
      */
     public int sizeLocal();
     
     /**
-     * ‘S‚Äíœ‚·‚éB<p>
+     * å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void clear() throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ‘S‚Äíœ‚·‚éB<p>
+     * å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
-     * @exception SharedContextTimeoutException •ªUƒT[ƒo‚©‚ç‚Ì‰“š‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SharedContextTimeoutException åˆ†æ•£ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
      */
     public void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
-     * ‘S‚Ä”ñ“¯Šú‚Åíœ‚·‚éB<p>
+     * å…¨ã¦éåŒæœŸã§å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @exception SharedContextSendException •ªUƒT[ƒo‚Ö‚ÌƒƒbƒZ[ƒW‘—M‚É¸”s‚µ‚½ê‡
+     * @exception SharedContextSendException åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void clearAsynch() throws SharedContextSendException;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É“Ç‚İ‚İ‚ğˆË—Š‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«èª­ã¿è¾¼ã¿ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load(long timeout) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg‚ÌƒL[‚Ì“Ç‚İ‚İ‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É“Ç‚İ‚İ‚ğˆË—Š‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚­ãƒ¼ã®èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«èª­ã¿è¾¼ã¿ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void loadKey(long timeout) throws Exception;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÉŠY“–‚·‚é’l‚ÌƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É“Ç‚İ‚İ‚ğˆË—Š‚·‚éB<br>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«èª­ã¿è¾¼ã¿ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆèª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void load(Object key, long timeout) throws Exception;
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒg•Û‘¶‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É•Û‘¶‚ğˆË—Š‚·‚éB’A‚µA{@link #setSaveOnlyMain(boolean) setSaveOnlyMain(false)}‚Ìê‡‚ÍAƒNƒ‰ƒCƒAƒ“ƒgˆÈŠO‚Í‘S‚Ä•Û‘¶‚·‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«ä¿å­˜ã‚’ä¾é ¼ã™ã‚‹ã€‚ä½†ã—ã€{@link #setSaveOnlyMain(boolean) setSaveOnlyMain(false)}ã®å ´åˆã¯ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆä»¥å¤–ã¯å…¨ã¦ä¿å­˜ã™ã‚‹ã€‚<br>
      *
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg•Û‘¶‚É¸”s‚µ‚½ê‡
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save(long timeout) throws Exception;
     
     /**
-     * w’è‚µ‚½ƒL[‚ÉŠY“–‚·‚é’l‚ÌƒRƒ“ƒeƒLƒXƒg•Û‘¶‚ğs‚¤B<p>
-     * åƒm[ƒh‚Å‚È‚¢ê‡Aåƒm[ƒh‚É•Û‘¶‚ğˆË—Š‚·‚éB’A‚µA{@link #setSaveOnlyMain(boolean) setSaveOnlyMain(false)}‚Ìê‡‚ÍAƒNƒ‰ƒCƒAƒ“ƒgˆÈŠO‚Í‘S‚Ä•Û‘¶‚·‚éB<br>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã‚’è¡Œã†ã€‚<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã§ãªã„å ´åˆã€ä¸»ãƒãƒ¼ãƒ‰ã«ä¿å­˜ã‚’ä¾é ¼ã™ã‚‹ã€‚ä½†ã—ã€{@link #setSaveOnlyMain(boolean) setSaveOnlyMain(false)}ã®å ´åˆã¯ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆä»¥å¤–ã¯å…¨ã¦ä¿å­˜ã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @param timeout •ªUƒT[ƒo‚Ö‚Ì’ÊMƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ƒRƒ“ƒeƒLƒXƒg•Û‘¶‚É¸”s‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param timeout åˆ†æ•£ã‚µãƒ¼ãƒã¸ã®é€šä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆä¿å­˜ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void save(Object key, long timeout) throws Exception;
     
     /**
-     * åƒm[ƒh‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return åƒm[ƒh‚Ìê‡true
+     * @return ä¸»ãƒãƒ¼ãƒ‰ã®å ´åˆtrue
      */
     public boolean isMain();
     
     /**
-     * ƒm[ƒhID‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ¼ãƒ‰IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID
+     * @return ãƒãƒ¼ãƒ‰ID
      */
     public Object getId();
     
     /**
-     * åƒm[ƒh‚Ìƒm[ƒhID‚ğæ“¾‚·‚éB<p>
+     * ä¸»ãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID
+     * @return ãƒãƒ¼ãƒ‰ID
      */
     public Object getMainId();
     
     /**
-     * ‘Sƒm[ƒh‚Ìƒm[ƒhID‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * å…¨ãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID‚ÌƒŠƒXƒg
+     * @return ãƒãƒ¼ãƒ‰IDã®ãƒªã‚¹ãƒˆ
      */
     public List getMemberIdList();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒgƒm[ƒh‚Ìƒm[ƒhID‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID‚ÌW‡
+     * @return ãƒãƒ¼ãƒ‰IDã®é›†åˆ
      */
     public Set getClientMemberIdSet();
     
     /**
-     * ƒT[ƒoƒm[ƒh‚Ìƒm[ƒhID‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãƒãƒ¼ãƒ‰ã®ãƒãƒ¼ãƒ‰IDã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒm[ƒhID‚ÌW‡
+     * @return ãƒãƒ¼ãƒ‰IDã®é›†åˆ
      */
     public Set getServerMemberIdSet();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ìƒqƒbƒg—¦‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ãƒ’ãƒƒãƒˆç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒqƒbƒg—¦
+     * @return ãƒ’ãƒƒãƒˆç‡
      */
     public float getCacheHitRatio();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ìƒqƒbƒg—¦‚ğƒŠƒZƒbƒg‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ãƒ’ãƒƒãƒˆç‡ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
      */
     public void resetCacheHitRatio();
 }

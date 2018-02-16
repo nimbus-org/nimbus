@@ -32,37 +32,37 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * ƒf[ƒ^ƒZƒbƒgğŒB<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface DatasetCondition {
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒf[ƒ^ƒZƒbƒg–¼
+     * @param name ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public void setName(String name);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public String getName();
 
     /**
-     * ƒVƒŠ[ƒY–¼‚ğİ’è‚·‚éB<p>
+     * ã‚·ãƒªãƒ¼ã‚ºåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒVƒŠ[ƒY–¼
+     * @param name ã‚·ãƒªãƒ¼ã‚ºå
      */
     public void setSeriesName(String name);
 
     /**
-     * ƒVƒŠ[ƒY–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚·ãƒªãƒ¼ã‚ºåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒVƒŠ[ƒY–¼
+     * @return ã‚·ãƒªãƒ¼ã‚ºå
      */
     public String getSeriesName();
 

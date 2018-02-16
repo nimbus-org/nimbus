@@ -34,99 +34,99 @@ package jp.ossc.nimbus.service.cache;
 import java.util.*;
 
 /**
- * �L���b�V���B<p>
+ * キャッシュ。<p>
  *
  * @author M.Takata
  */
 public interface Cache{
     
     /**
-     * �w�肳�ꂽ�I�u�W�F�N�g���L���b�V������B<p>
+     * 指定されたオブジェクトをキャッシュする。<p>
      *
-     * @param obj �L���b�V������I�u�W�F�N�g
-     * @return �L���b�V���Q��
+     * @param obj キャッシュするオブジェクト
+     * @return キャッシュ参照
      */
     public CachedReference add(Object obj);
     
     /**
-     * �L���b�V������Ă���I�u�W�F�N�g�̃L���b�V���Q�Ƃ̔����q���擾����B<p>
+     * キャッシュされているオブジェクトのキャッシュ参照の反復子を取得する。<p>
      *
-     * @return �L���b�V���Q�Ƃ̔����q
+     * @return キャッシュ参照の反復子
      */
     public Iterator iterator();
     
     /**
-     * �w�肳�ꂽ�L���b�V���Q�Ƃ��܂ނ��ǂ����𒲂ׂ�B<p>
+     * 指定されたキャッシュ参照を含むかどうかを調べる。<p>
      * 
-     * @param ref �L���b�V���Q��
-     * @return �w�肳�ꂽ�L���b�V���Q�Ƃ��܂ޏꍇtrue
+     * @param ref キャッシュ参照
+     * @return 指定されたキャッシュ参照を含む場合true
      */
     public boolean contains(CachedReference ref);
     
     /**
-     * �w�肳�ꂽ�L���b�V���Q�Ƃ̏W����S�Ċ܂ނ��ǂ����𒲂ׂ�B<p>
+     * 指定されたキャッシュ参照の集合を全て含むかどうかを調べる。<p>
      * 
-     * @param c �L���b�V���Q�Ƃ̏W��
-     * @return �w�肳�ꂽ�L���b�V���Q�Ƃ̏W����S�Ċ܂ޏꍇtrue
+     * @param c キャッシュ参照の集合
+     * @return 指定されたキャッシュ参照の集合を全て含む場合true
      */
     public boolean containsAll(Collection c);
     
     /**
-     * �L���b�V�����󂩂ǂ������ׂ�B<p>
+     * キャッシュが空かどうか調べる。<p>
      *
-     * @return �L���b�V������̏ꍇtrue
+     * @return キャッシュが空の場合true
      */
     public boolean isEmpty();
     
     /**
-     * �w�肳�ꂽ�L���b�V���Q�Ƃ������L���b�V���I�u�W�F�N�g���폜����B<p>
+     * 指定されたキャッシュ参照が示すキャッシュオブジェクトを削除する。<p>
      *
-     * @param ref �L���b�V���Q��
-     * @return �w�肳�ꂽ�L���b�V���Q�Ƃ������L���b�V���I�u�W�F�N�g���폜���鎖�ŁA���̃L���b�V���̓��e���ύX���ꂽ�ꍇtrue
+     * @param ref キャッシュ参照
+     * @return 指定されたキャッシュ参照が示すキャッシュオブジェクトを削除する事で、このキャッシュの内容が変更された場合true
      */
     public boolean remove(CachedReference ref);
     
     /**
-     * �w�肳�ꂽ�L���b�V���Q�Ƃ̏W���������L���b�V���I�u�W�F�N�g���폜����B<p>
+     * 指定されたキャッシュ参照の集合が示すキャッシュオブジェクトを削除する。<p>
      *
-     * @param c �L���b�V���Q�Ƃ̏W��
-     * @return �w�肳�ꂽ�L���b�V���Q�Ƃ̏W���������L���b�V���I�u�W�F�N�g���폜���鎖�ŁA���̃L���b�V���̓��e���ύX���ꂽ�ꍇtrue
+     * @param c キャッシュ参照の集合
+     * @return 指定されたキャッシュ参照の集合が示すキャッシュオブジェクトを削除する事で、このキャッシュの内容が変更された場合true
      */
     public boolean removeAll(Collection c);
     
     /**
-     * �w�肳�ꂽ�L���b�V���Q�Ƃ̏W���������L���b�V���I�u�W�F�N�g�ȊO���폜����B<p>
+     * 指定されたキャッシュ参照の集合が示すキャッシュオブジェクト以外を削除する。<p>
      *
-     * @param c �L���b�V���Q�Ƃ̏W��
-     * @return �w�肳�ꂽ�L���b�V���Q�Ƃ̏W���������L���b�V���I�u�W�F�N�g�ȊO���폜���鎖�ŁA���̃L���b�V���̓��e���ύX���ꂽ�ꍇtrue
+     * @param c キャッシュ参照の集合
+     * @return 指定されたキャッシュ参照の集合が示すキャッシュオブジェクト以外を削除する事で、このキャッシュの内容が変更された場合true
      */
     public boolean retainAll(Collection c);
     
     /**
-     * �L���b�V������Ă���I�u�W�F�N�g�̐����擾����B<p>
+     * キャッシュされているオブジェクトの数を取得する。<p>
      *
-     * @return �L���b�V������Ă���I�u�W�F�N�g�̐�
+     * @return キャッシュされているオブジェクトの数
      */
     public int size();
     
     /**
-     * �L���b�V������Ă���I�u�W�F�N�g��S�ăL���b�V������폜����B<p>
+     * キャッシュされているオブジェクトを全てキャッシュから削除する。<p>
      */
     public void clear();
     
     /**
-     * �L���b�V������Ă���L���b�V���Q�Ƃ̔z����擾����B<p>
+     * キャッシュされているキャッシュ参照の配列を取得する。<p>
      *
-     * @return �L���b�V���Q�Ƃ̔z��
+     * @return キャッシュ参照の配列
      */
     public CachedReference[] toArray();
     
     /**
-     * �L���b�V������Ă���L���b�V���Q�Ƃ̔z����擾����B<p>
-     * �����Ŏw�肳�ꂽ�L���b�V���Q�Ɣz��̒������A���̃��\�b�h�̌Ăяo���̌��ʕԂ����L���b�V���Q�Ɣz��̒����ȉ��̏ꍇ�́A�����Ŏw�肳�ꂽ�L���b�V���Q�Ɣz��Ɍ��ʂ��i�[���ĕԂ��B�����łȂ��ꍇ�́A�V�����L���b�V���Q�Ɣz��𐶐����āA���ʂ��i�[���ĕԂ��B<br>
+     * キャッシュされているキャッシュ参照の配列を取得する。<p>
+     * 引数で指定されたキャッシュ参照配列の長さが、このメソッドの呼び出しの結果返されるキャッシュ参照配列の長さ以下の場合は、引数で指定されたキャッシュ参照配列に結果を格納して返す。そうでない場合は、新しいキャッシュ参照配列を生成して、結果を格納して返す。<br>
      *
-     * @param refs �L���b�V���Q�Ƃ̔z��
-     * @return �L���b�V���Q�Ƃ̔z��
+     * @param refs キャッシュ参照の配列
+     * @return キャッシュ参照の配列
      */
     public CachedReference[] toArray(CachedReference[] refs);
 }

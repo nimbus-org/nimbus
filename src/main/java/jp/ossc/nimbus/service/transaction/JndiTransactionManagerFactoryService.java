@@ -38,7 +38,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.jndi.JndiFinder;
 
 /**
- * TransactionManager‚ğJNDI‚©‚çæ“¾‚·‚éTransactionManagerƒtƒ@ƒNƒgƒŠB<p>
+ * TransactionManagerã‚’JNDIã‹ã‚‰å–å¾—ã™ã‚‹TransactionManagerãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -54,22 +54,22 @@ public class JndiTransactionManagerFactoryService
     private JndiFinder jndiFinder;
     private TransactionManager transactionManager;
     
-    // JndiTransactionManagerFactoryServiceMBean‚ÌJavaDoc
+    // JndiTransactionManagerFactoryServiceMBeanã®JavaDoc
     public void setTransactionManagerName(String name){
         transactionManagerName = name;
     }
     
-    // JndiTransactionManagerFactoryServiceMBean‚ÌJavaDoc
+    // JndiTransactionManagerFactoryServiceMBeanã®JavaDoc
     public String getTransactionManagerName(){
         return transactionManagerName;
     }
     
-    // JndiTransactionManagerFactoryServiceMBean‚ÌJavaDoc
+    // JndiTransactionManagerFactoryServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
     
-    // JndiTransactionManagerFactoryServiceMBean‚ÌJavaDoc
+    // JndiTransactionManagerFactoryServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
@@ -81,10 +81,10 @@ public class JndiTransactionManagerFactoryService
     }
     
     /**
-     * TransactionManager‚ğæ“¾‚·‚éB<p>
+     * TransactionManagerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return TransactionManager
-     * @exception TransactionManagerFactoryException TransactionManager‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception TransactionManagerFactoryException TransactionManagerã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TransactionManager getTransactionManager() throws TransactionManagerFactoryException{
         if(transactionManager == null){

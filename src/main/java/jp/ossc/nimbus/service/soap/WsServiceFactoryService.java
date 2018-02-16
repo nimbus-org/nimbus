@@ -45,7 +45,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceMetaData;
 
 /**
- * WebƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒXB
+ * Webã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -115,7 +115,7 @@ public class WsServiceFactoryService extends ServiceBase implements WsServiceFac
                 try {
                     wsdlURL = localFile.toURI().toURL();
                 } catch (MalformedURLException e) {
-                    // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                    // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
                 }
             } else {
                 File serviceDefDir = null;
@@ -139,7 +139,7 @@ public class WsServiceFactoryService extends ServiceBase implements WsServiceFac
                     try {
                         wsdlURL = localFile.toURI().toURL();
                     } catch (MalformedURLException e) {
-                        // ‚±‚Ì—áŠO‚Í”­¶‚µ‚È‚¢‚Í‚¸
+                        // ã“ã®ä¾‹å¤–ã¯ç™ºç”Ÿã—ãªã„ã¯ãš
                     }
                 } else {
                     final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();

@@ -32,58 +32,58 @@
 package jp.ossc.nimbus.service.scheduler2;
 
 /**
- * {@link CommandScheduleExecutorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link CommandScheduleExecutorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface CommandScheduleExecutorServiceMBean extends AbstractScheduleExecutorServiceMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒXƒPƒWƒ…[ƒ‹Àsí•ÊB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œç¨®åˆ¥ã€‚<p>
      */
     public static final String DEFAULT_EXECUTOR_TYPE = "COMMAND";
     
     /**
-     * ì‹ÆƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍAJavaVM‚Ìì‹ÆƒfƒBƒŒƒNƒgƒŠB<br>
+     * ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€JavaVMã®ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚<br>
      *
-     * @param path ì‹ÆƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX
+     * @param path ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹
      */
     public void setWorkDirectory(String path);
     
     /**
-     * ì‹ÆƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ì‹ÆƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX
+     * @return ä½œæ¥­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹
      */
     public String getWorkDirectory();
     
     /**
-     * ŠÂ‹«•Ï”‚ğİ’è‚·‚éB<p>
+     * ç’°å¢ƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param env ŠÂ‹«•Ï”‚Ì”z—ñ
+     * @param env ç’°å¢ƒå¤‰æ•°ã®é…åˆ—
      */
     public void setEnvironmentVariables(String[] env);
     
     /**
-     * ŠÂ‹«•Ï”‚ğæ“¾‚·‚éB<p>
+     * ç’°å¢ƒå¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÂ‹«•Ï”‚Ì”z—ñ
+     * @return ç’°å¢ƒå¤‰æ•°ã®é…åˆ—
      */
     public String[] getEnvironmentVariables();
     
     /**
-     * ƒvƒƒZƒX‚ÌI—¹‘Ò‚¿‚ğ‚·‚éê‡‚ÉAƒvƒƒZƒX‚ªI—¹‚µ‚½‚©‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1•bB<br>
+     * ãƒ—ãƒ­ã‚»ã‚¹ã®çµ‚äº†å¾…ã¡ã‚’ã™ã‚‹å ´åˆã«ã€ãƒ—ãƒ­ã‚»ã‚¹ãŒçµ‚äº†ã—ãŸã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ç§’ã€‚<br>
      *
-     * @param interval ƒ`ƒFƒbƒNŠÔŠu[ms]
+     * @param interval ãƒã‚§ãƒƒã‚¯é–“éš”[ms]
      */
     public void setCheckInterval(long interval);
     
     /**
-     * ƒvƒƒZƒX‚ÌI—¹‘Ò‚¿‚ğ‚·‚éê‡‚ÉAƒvƒƒZƒX‚ªI—¹‚µ‚½‚©‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚»ã‚¹ã®çµ‚äº†å¾…ã¡ã‚’ã™ã‚‹å ´åˆã«ã€ãƒ—ãƒ­ã‚»ã‚¹ãŒçµ‚äº†ã—ãŸã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒNŠÔŠu[ms]
+     * @return ãƒã‚§ãƒƒã‚¯é–“éš”[ms]
      */
     public long getCheckInterval();
 }

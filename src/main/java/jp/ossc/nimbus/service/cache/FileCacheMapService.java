@@ -38,8 +38,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğJVM‚Ìƒeƒ“ƒ|ƒ‰ƒŠƒfƒBƒŒƒNƒgƒŠ‚É’¼—ñ‰»‚µ‚ÄƒLƒƒƒbƒVƒ…‚·‚éƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’JVMã®ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ç›´åˆ—åŒ–ã—ã¦ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -62,7 +62,7 @@ public class FileCacheMapService extends AbstractCacheMapService
     
     private static final long serialVersionUID = 4620703085265406262L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String FCM__ = "FCM__";
     private static final String FCM__0 = FCM__ + 0;
     private static final String FCM__00 = FCM__0 + 0;
@@ -86,7 +86,7 @@ public class FileCacheMapService extends AbstractCacheMapService
     private ServiceName externalizerServiceName;
     private Externalizer externalizer;
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setOutputDirectory(String path)
      throws IllegalArgumentException{
         if(path != null){
@@ -109,67 +109,67 @@ public class FileCacheMapService extends AbstractCacheMapService
         }
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public String getOutputDirectory(){
         return outputDirectory;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setFileShared(boolean isShared){
         isFileShared = isShared;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public boolean isFileShared(){
         return isFileShared;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setOutputPrefix(String prefix){
         this.prefix = prefix;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public String getOutputPrefix(){
         return prefix;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setOutputSuffix(String suffix){
         this.suffix = suffix;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public String getOutputSuffix(){
         return suffix;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setLoadOnStart(boolean isLoad){
         isLoadOnStart = isLoad;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public boolean isLoadOnStart(){
         return isLoadOnStart;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setDeleteOnLoadError(boolean isDelete){
         isDeleteOnLoadError = isDelete;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public boolean isDeleteOnLoadError(){
         return isDeleteOnLoadError;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         externalizerServiceName = name;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         return externalizerServiceName;
     }
@@ -183,11 +183,11 @@ public class FileCacheMapService extends AbstractCacheMapService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‘¶‚·‚éƒtƒ@ƒCƒ‹‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒLƒƒƒbƒVƒ…‚ÌƒL[
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•Û‘¶‚·‚éƒtƒ@ƒCƒ‹
-     * @exception IOException ƒtƒ@ƒCƒ‹‚ªì¬‚Å‚«‚È‚©‚Á‚½ê‡
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+     * @exception IOException ãƒ•ã‚¡ã‚¤ãƒ«ãŒä½œæˆã§ããªã‹ã£ãŸå ´åˆ
      */
     protected File createFile(Object key) throws IOException{
         File file = null;
@@ -231,20 +231,20 @@ public class FileCacheMapService extends AbstractCacheMapService
         }
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public void setDeleteOnExitWithJVM(boolean isDeleteOnExit){
         isDeleteOnExitWithJVM = isDeleteOnExit;
     }
     
-    // FileCacheMapServiceMBean‚ÌJavaDoc
+    // FileCacheMapServiceMBeanã®JavaDoc
     public boolean isDeleteOnExitWithJVM(){
         return isDeleteOnExitWithJVM;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(externalizerServiceName != null){
@@ -256,9 +256,9 @@ public class FileCacheMapService extends AbstractCacheMapService
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚ğs‚¤B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void load() throws Exception{
         if(isLoading || references == null){
@@ -329,10 +329,10 @@ public class FileCacheMapService extends AbstractCacheMapService
     }
     
     /**
-     * ‚±‚ÌƒLƒƒƒbƒVƒ…‚Éw’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹‚ÌƒLƒƒƒbƒVƒ…QÆ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * ã“ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param file ƒLƒƒƒbƒVƒ…ƒtƒ@ƒCƒ‹
-     * @return ŠÜ‚Ü‚ê‚Ä‚¢‚éê‡true
+     * @param file ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¤ãƒ«
+     * @return å«ã¾ã‚Œã¦ã„ã‚‹å ´åˆtrue
      */
     protected boolean containsFile(File file){
         if(references == null || file == null){
@@ -353,12 +353,12 @@ public class FileCacheMapService extends AbstractCacheMapService
     }
     
     /**
-     * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
-     * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆ‚Ì¶¬‚É¸”s‚µ‚½ê‡‚ÍAnull‚ğ•Ô‚·B
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param key ƒLƒƒƒbƒVƒ…ƒL[
-     * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-     * @return ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…QÆ
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected KeyCachedReference createKeyCachedReference(
         Object key,
@@ -382,7 +382,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         }
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public int size(){
         if(references == null){
             return 0;
@@ -397,7 +397,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.size();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public boolean isEmpty(){
         if(references == null){
             return true;
@@ -412,7 +412,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.isEmpty();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public boolean containsKey(Object key){
         if(references == null){
             return false;
@@ -427,7 +427,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.containsKey(key);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public boolean containsValue(Object value){
         if(references == null){
             return false;
@@ -442,7 +442,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.containsValue(value);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Object get(Object key){
         if(references == null){
             return null;
@@ -458,10 +458,10 @@ public class FileCacheMapService extends AbstractCacheMapService
     }
     
     /**
-     * w’è‚µ‚½ƒL[‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒLƒƒƒbƒVƒ…‚ÌƒL[
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected void put(Object key, KeyCachedReference ref){
         if(references == null){
@@ -477,7 +477,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         super.put(key, ref);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Object remove(Object key){
         if(references == null){
             return null;
@@ -492,7 +492,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.remove(key);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public void putAll(Map map){
         if(references == null || map == null || map.size() == 0){
             return;
@@ -507,7 +507,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         super.putAll(map);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public void clear(){
         if(references == null || references.size() == 0){
             return;
@@ -522,7 +522,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         super.clear();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Set keySet(){
         if(isFileShared()){
             try{
@@ -534,7 +534,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.keySet();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Collection values(){
         if(isFileShared()){
             try{
@@ -546,7 +546,7 @@ public class FileCacheMapService extends AbstractCacheMapService
         return super.values();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Set entrySet(){
         if(isFileShared()){
             try{

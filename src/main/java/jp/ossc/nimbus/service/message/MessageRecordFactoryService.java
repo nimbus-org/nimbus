@@ -42,8 +42,8 @@ import jp.ossc.nimbus.util.*;
 import jp.ossc.nimbus.io.*;
 
 /**
- * ƒƒbƒZ[ƒWƒŒƒR[ƒh¶¬ƒT[ƒrƒXB<p>
- * ƒƒbƒZ[ƒWƒŒƒR[ƒh‚Ìƒtƒ@ƒCƒ‹‚©‚ç‚Ì“Ç‚İ‚İ‹y‚ÑŠO•”’ñ‹Ÿ‚ğs‚¤B<br>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ç”Ÿæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã®èª­ã¿è¾¼ã¿åŠã³å¤–éƒ¨æä¾›ã‚’è¡Œã†ã€‚<br>
  *
  * @author H.Nakano
  */
@@ -61,39 +61,39 @@ public class MessageRecordFactoryService extends ServiceBase
     private static final String C_FOUND_DEF = "1";
     private static final String C_NOT_FOUND_DEF = "0";
     
-    /** ƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠ */
+    /** ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª */
     protected CsvArrayList mDir = new CsvArrayList();
-    /** ƒŒƒR[ƒhƒLƒƒƒbƒVƒ…HASH */
+    /** ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥HASH */
     protected HashMap mMessageMap;
-    /** ƒtƒ@ƒCƒ‹Šg’£q */
+    /** ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ */
     protected String mExtention = "def";
-    /** ƒƒbƒZ[ƒWƒŒƒR[ƒhƒNƒ‰ƒX */
+    /** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹ */
     protected Class mMessageRecordClass = MessageRecordImpl.class;
-    /** ƒƒbƒZ[ƒWƒR[ƒhƒNƒ‰ƒX–¼ */
+    /** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹å */
     protected String mMessageRecordClassName
          = MessageRecordImpl.class.getName();
-    /** ”é–§ˆ—ƒtƒ‰ƒO */
+    /** ç§˜å¯†å‡¦ç†ãƒ•ãƒ©ã‚° */
     protected boolean mIsSecret;
-    /** ”é–§•¶š */
+    /** ç§˜å¯†æ–‡å­— */
     protected String secretString;
-    /** ƒƒP[ƒ‹•¶š”z—ñ */
+    /** ãƒ­ã‚±ãƒ¼ãƒ«æ–‡å­—é…åˆ— */
     protected String[] mLocales = new String[0];
-    /** ŒŸõÏ‚İƒƒP[ƒ‹ƒ}ƒbƒv */
+    /** æ¤œç´¢æ¸ˆã¿ãƒ­ã‚±ãƒ¼ãƒ«ãƒãƒƒãƒ— */
     protected HashSet mSerchedLocale;
-    /** ŒŸõÏ‚İƒpƒXƒ}ƒbƒv */
+    /** æ¤œç´¢æ¸ˆã¿ãƒ‘ã‚¹ãƒãƒƒãƒ— */
     protected HashMap mSerchedPath;
-    /** ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹–¼ƒŠƒXƒg */
+    /** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«åãƒªã‚¹ãƒˆ */
     protected CsvArrayList mDefFileNames = new CsvArrayList();
     protected boolean isAllowOverrideMessage;
     protected boolean isLoadNimbusMessageFile = true;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public MessageRecordFactoryService(){
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setMessageDirPaths(String[] paths){
         mDir.clear();
         if(paths != null){
@@ -103,12 +103,12 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public String[] getMessageDirPaths(){
         return (String[])mDir.toArray(new String[mDir.size()]);
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void addMessageDirPaths(String path) throws Exception{
         final CsvArrayList tmpAry = new CsvArrayList();
         tmpAry.split(path, C_PATH_DELIMETER);
@@ -125,7 +125,7 @@ public class MessageRecordFactoryService extends ServiceBase
                 }
             }
             if(!bFlg){
-                // ƒtƒ@ƒCƒ‹ƒŠƒXƒgì¬
+                // ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆä½œæˆ
                 mDir.add(defFilePath);
                 File errDefDir = new File(defFilePath);
                 setMessageDef(errDefDir);
@@ -134,17 +134,17 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setExtentionOfMessageFile(String extention){
         mExtention = extention;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public String getExtentionOfMessageFile(){
         return mExtention;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setMessageRecordClassName(String className)
      throws ServiceException{
         mMessageRecordClassName = className;
@@ -164,42 +164,42 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public String getMessageRecordClassName(){
         return mMessageRecordClass.getName();
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setSecretMode(boolean flg){
         mIsSecret = flg;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public boolean isSecretMode(){
         return mIsSecret;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setSecretString(String secret){
         secretString = secret;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public String getSecretString(){
         return secretString;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setLocaleStrings(String[] locales){
         mLocales = locales;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public String[] getLocaleStrings(){
         return mLocales;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void addMessageFiles(String files) throws Exception {
         CsvArrayList tmp = new CsvArrayList();
         tmp.split(files, C_PATH_DELIMETER);
@@ -219,7 +219,7 @@ public class MessageRecordFactoryService extends ServiceBase
                 URL url = Thread.currentThread().getContextClassLoader()
                     .getResource(fileName + '.' + mExtention);
                 if(url != null && url.openStream() != null){
-                    // ƒe[ƒuƒ‹ì¬
+                    // ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆ
                     readStream(url.openStream(), null);
                     for(int j = 0; j < mLocales.length; j++){
                         loadDefFileFromResource(mLocales[j], fileName);
@@ -229,7 +229,7 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setMessageFiles(String[] files){
         mDefFileNames.clear();
         if(files != null){
@@ -239,19 +239,19 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public String[] getMessageFiles(){
         return (String[])mDefFileNames.toArray(
             new String[mDefFileNames.size()]
         );
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void setAllowOverrideMessage(boolean isAllow){
         isAllowOverrideMessage = isAllow;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public boolean isAllowOverrideMessage(){
         return isAllowOverrideMessage;
     }
@@ -264,9 +264,9 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         mMessageMap = new HashMap();
@@ -275,22 +275,22 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
-        // ƒfƒBƒŒƒNƒgƒŠw’è‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh
+        // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæŒ‡å®šã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰
         for(Iterator iterator = mDir.iterator();iterator.hasNext();){
             final String defFilePath = (String)iterator.next();
             final File errDefDir = new File(defFilePath);
             
-            // ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚é
+            // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
             setMessageDef(errDefDir);
             
-            // İ’è‚³‚ê‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚é
+            // è¨­å®šã•ã‚ŒãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
             searchMessageDef(errDefDir);
         }
         
@@ -298,16 +298,16 @@ public class MessageRecordFactoryService extends ServiceBase
             mDefFileNames.add(C_DFAULT_DEF);
         }
         
-        // ƒtƒ@ƒCƒ‹w’è‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh
+        // ãƒ•ã‚¡ã‚¤ãƒ«æŒ‡å®šã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰
         for(Iterator iterator = mDefFileNames.iterator(); iterator.hasNext();){
             final String fileName = (String)iterator.next();
             final URL url = Thread.currentThread().getContextClassLoader()
                 .getResource(fileName + '.' + mExtention);
             if(url != null){
-                // ƒfƒtƒHƒ‹ƒgƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚é
+                // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
                 readStream(url.openStream(), null);
                 
-                // İ’è‚³‚ê‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚é
+                // è¨­å®šã•ã‚ŒãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
                 for(int j = 0; j < mLocales.length; j++){
                     loadDefFileFromResource(mLocales[j], fileName);
                 }
@@ -315,9 +315,9 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         mMessageMap.clear();
@@ -329,9 +329,9 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         mMessageMap = null;
@@ -340,12 +340,12 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒfƒBƒŒƒNƒgƒŠw’è‚ÌResourceBundle“Ç‚İ‚İ‚ğs‚¤B<p>
+     * ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæŒ‡å®šæ™‚ã®ResourceBundleèª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param lo ƒƒP[ƒ‹
-     * @param dirPath ƒfƒBƒŒƒNƒgƒŠƒpƒX
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param dirPath ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     private void loadDirByLocale(Locale lo, String dirPath)
      throws IOException, MessageRecordParseException{
@@ -461,12 +461,12 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒNƒ‰ƒXƒpƒX“à‚©‚çw’èDEFƒtƒ@ƒCƒ‹‚ÌResourceBundle“Ç‚İ‚İ‚ğs‚¤B<p>
+     * ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹å†…ã‹ã‚‰æŒ‡å®šDEFãƒ•ã‚¡ã‚¤ãƒ«ã®ResourceBundleèª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param lo ƒƒP[ƒ‹
-     * @param defFileName w’èƒtƒ@ƒCƒ‹–¼
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param defFileName æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«å
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     private void loadClassPathByLocale(Locale lo, String defFileName)
      throws IOException, MessageRecordParseException{
@@ -546,13 +546,13 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğƒŠƒ\[ƒX‚Æ‚µ‚Ä“Ç‚İ‚ñ‚ÅŠi”[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒªã‚½ãƒ¼ã‚¹ã¨ã—ã¦èª­ã¿è¾¼ã‚“ã§æ ¼ç´ã™ã‚‹ã€‚<p>
      *
-     * @param loString ƒƒP[ƒ‹•¶š—ñ
-     * @param defName ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹–¼
-     * @return Œ©‚Â‚©‚Á‚½‚çtrue
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param loString ãƒ­ã‚±ãƒ¼ãƒ«æ–‡å­—åˆ—
+     * @param defName ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«å
+     * @return è¦‹ã¤ã‹ã£ãŸã‚‰true
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     private boolean loadDefFileFromResource(String loString, String defName)
      throws IOException, MessageRecordParseException{
@@ -577,9 +577,9 @@ public class MessageRecordFactoryService extends ServiceBase
     
     
     /**
-     * w’èƒƒP[ƒ‹‚É‘Î‚·‚éƒf[ƒ^‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ã«å¯¾ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
      */
     public void findLocale(Locale lo){
         synchronized(mSerchedLocale){
@@ -615,11 +615,11 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ”z‰º‚©‚çAİ’è‚³‚ê‚½ƒƒP[ƒ‹‚ÌƒƒP[ƒ‹–¼ƒfƒBƒŒƒNƒgƒŠ‚ğŒŸõ‚µ‚ÄA‚»‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚ÅŠi”[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã‹ã‚‰ã€è¨­å®šã•ã‚ŒãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ­ã‚±ãƒ¼ãƒ«åãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æ¤œç´¢ã—ã¦ã€ãã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§æ ¼ç´ã™ã‚‹ã€‚<p>
      * 
-     * @param dirRoot ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğŠi”[‚µ‚½ƒfƒBƒŒƒNƒgƒŠ
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param dirRoot ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ ¼ç´ã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void searchMessageDef(File dirRoot)
      throws IOException, MessageRecordParseException{
@@ -643,11 +643,11 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚ÅA‚±‚ÌƒT[ƒrƒX‚ÉŠi”[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«æ ¼ç´ã™ã‚‹ã€‚<p>
      * 
-     * @param dirRoot ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ªŠi”[‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param dirRoot ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãŒæ ¼ç´ã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void setMessageDef(File dirRoot)
      throws IOException, MessageRecordParseException{
@@ -656,7 +656,7 @@ public class MessageRecordFactoryService extends ServiceBase
         if(defFileList!=null){
             for(int rCnt = 0; rCnt < defFileList.length; rCnt++){
                 if(defFileList[rCnt].isFile()){
-                    // ƒtƒ@ƒCƒ‹OPEN
+                    // ãƒ•ã‚¡ã‚¤ãƒ«OPEN
                     FileInputStream stream = null;
                     try{
                         stream = new FileInputStream(defFileList[rCnt]);
@@ -670,12 +670,12 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ”z‰º‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚ÅA‚±‚ÌƒT[ƒrƒX‚ÉŠi”[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«æ ¼ç´ã™ã‚‹ã€‚<p>
      * 
-     * @param dir ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ªŠi”[‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ
-     * @return ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚¾ê‡true
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param dir ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãŒæ ¼ç´ã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã å ´åˆtrue
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean addMessageDef(File dir)
      throws IOException, MessageRecordParseException{
@@ -687,7 +687,7 @@ public class MessageRecordFactoryService extends ServiceBase
                 if(defFileList[rCnt].isDirectory()){
                     continue;
                 }
-                // ƒtƒ@ƒCƒ‹OPEN
+                // ãƒ•ã‚¡ã‚¤ãƒ«OPEN
                 FileInputStream stream = null ;
                 try{
                     stream = new FileInputStream(defFileList[rCnt]);
@@ -705,24 +705,24 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½“ü—ÍƒXƒgƒŠ[ƒ€‚ÌƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚ğAw’è‚³‚ê‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`‚Æ‚µ‚Ä“Ç‚İ‚ñ‚ÅAŠi”[‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ã¨ã—ã¦èª­ã¿è¾¼ã‚“ã§ã€æ ¼ç´ã™ã‚‹ã€‚<p>
      *
-     * @param stream ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“ü—ÍƒXƒgƒŠ[ƒ€
-     * @param locale ƒƒP[ƒ‹•¶š—ñ
-     * @exception IOException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param stream ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param locale ãƒ­ã‚±ãƒ¼ãƒ«æ–‡å­—åˆ—
+     * @exception IOException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     private void readStream(InputStream stream, String locale)
      throws IOException, MessageRecordParseException{
         final UnicodeHexBufferedReader in = new UnicodeHexBufferedReader(
             new InputStreamReader(stream)
         );
-        // ƒe[ƒuƒ‹ì¬
+        // ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆ
         String record = null;
         try{
             while((record = in.readLine()) != null){
                 if(record.length() == 0 || record.charAt(0) == '#'){
-                    // ƒRƒƒ“ƒgsA–³Œøs‚Í“Ç‚İ”ò‚Î‚µ
+                    // ã‚³ãƒ¡ãƒ³ãƒˆè¡Œã€ç„¡åŠ¹è¡Œã¯èª­ã¿é£›ã°ã—
                     continue;
                 }
                 if(locale == null){
@@ -738,13 +738,13 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW’è‹`ƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param record ƒƒbƒZ[ƒW’è‹`ƒŒƒR[ƒh
-     * @param locale ƒƒP[ƒ‹
+     * @param record ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param locale ãƒ­ã‚±ãƒ¼ãƒ«
      */
     protected void addDefRec(String record, String locale){
-        //Messae Recordì¬
+        //Messae Recordä½œæˆ
         CsvArrayList ps = new CsvArrayList();
         ps.split(record, C_RECORD_DELIMETER);
         if(ps.size() < 2){
@@ -765,13 +765,13 @@ public class MessageRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒƒbƒZ[ƒW’è‹`ƒŒƒR[ƒh‚ğ“o˜^‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param record ƒƒbƒZ[ƒW’è‹`ƒŒƒR[ƒh
-     * @exception MessageRecordParseException ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param record ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception MessageRecordParseException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void putDefRec(String record) throws MessageRecordParseException{
-        //Messae Recordì¬
+        //Messae Recordä½œæˆ
         MessageRecordOperator messageRec = null;
         try{
             messageRec = (MessageRecordOperator)mMessageRecordClass
@@ -794,7 +794,7 @@ public class MessageRecordFactoryService extends ServiceBase
         messageRec.rec2Obj(record);
         messageRec.setFactory(this);
         MessageRecord rec = (MessageRecord)messageRec;
-        //ŠÇ—HASH“Š“ü
+        //ç®¡ç†HASHæŠ•å…¥
         final MessageRecordOperator tmpRec
              = (MessageRecordOperator)mMessageMap.get(rec.getMessageCode());
         if(tmpRec == null){
@@ -809,7 +809,7 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public ArrayList getMessgaeList(){
         MessageRecordOperator rec = null;
         ArrayList retAry = new ArrayList();
@@ -823,7 +823,7 @@ public class MessageRecordFactoryService extends ServiceBase
         return retAry;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public ArrayList getUsedMessgaeList() {
         MessageRecordOperator container;
         ArrayList retAry = new ArrayList();
@@ -839,7 +839,7 @@ public class MessageRecordFactoryService extends ServiceBase
         return retAry;
     }
     
-    // MessageRecordFactoryServiceMBean‚ÌJavaDoc
+    // MessageRecordFactoryServiceMBeanã®JavaDoc
     public void initUsedCount(){
         MessageRecordOperator container;
         synchronized(mMessageMap){
@@ -851,14 +851,14 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String[] getMessageIds(){
         synchronized(mMessageMap){
             return (String[])mMessageMap.keySet().toArray(new String[mMessageMap.size()]);
         }
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public MessageRecord findMessageRecord(String key){
         MessageRecord eif;
         synchronized(mMessageMap){
@@ -872,241 +872,241 @@ public class MessageRecordFactoryService extends ServiceBase
         return eif;
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessageTemplete(Locale lo, String key){
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.getMessageTemplate(lo);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessageTemplete(String key){
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.getMessageTemplate();
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessage(Locale lo,String key) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessage(String key) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage();
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,Object[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,byte[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,short[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,char[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,int[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,long[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,float[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,double[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,boolean[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,Object[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,byte[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,short[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,char[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,int[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,long[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,float[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,double[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,boolean[] embeds) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embeds);
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,Object embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,byte embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,short embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,char embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,int embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,long embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,float embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,double embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,boolean embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(lo,embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,Object embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,byte embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
    public String findEmbedMessage(String key,short embed) {
        MessageRecord rec = this.findMessageRecord(key);
        return rec == null ? null : rec.makeMessage(embed) ;    
    }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,char embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
      public String findEmbedMessage(String key,int embed) {
          MessageRecord rec = this.findMessageRecord(key);
          return rec == null ? null : rec.makeMessage(embed) ;    
      }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,long embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,float embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,double embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    
     }
     
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,boolean embed) {
         MessageRecord rec = this.findMessageRecord(key);
         return rec == null ? null : rec.makeMessage(embed) ;    

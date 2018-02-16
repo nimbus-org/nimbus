@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒfƒtƒHƒ‹ƒgû‘©ğŒB<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåæŸæ¡ä»¶ã€‚<p>
  *
  * @author M.Takata
  */
@@ -216,7 +216,7 @@ public class DefaultConvergenceConditionService extends ServiceBase implements C
     }
     
     /**
-     * û‘©ğŒŒ‹‰ÊB<p>
+     * åæŸæ¡ä»¶çµæœã€‚<p>
      *
      * @author M.Takata
      */

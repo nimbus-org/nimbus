@@ -35,20 +35,20 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import java.io.*;
 /**
-*	CSV•¶š—ñŒğŠ·ƒIƒuƒWƒFƒNƒg
+*	CSVæ–‡å­—åˆ—äº¤æ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 *	@author		Hirotaka.Nakano
-*	@version	1.00 ì¬F2001.04.04 | H.Nakano<BR>
-*				XVF
+*	@version	1.00 ä½œæˆï¼š2001.04.04 ï¼ H.Nakano<BR>
+*				æ›´æ–°ï¼š
 */
 public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	
     private static final long serialVersionUID = -2858942004554521568L;
     
-    //## ƒNƒ‰ƒXƒƒ“ƒo[•Ï”éŒ¾ ##
-	/** CSV‹æØ‚è•¶š			*/		private String mSeptData ;
-	/** ƒGƒXƒP[ƒv•¶š’è”		*/		private String mEscapeString ;
-	/** “¯Šú—pƒIƒuƒWƒFƒNƒg		*/		private Object mObjSync ;
-	/** ÅIƒfƒ~ƒŠƒ^[•t‰Á‹æ•ª	*/		private boolean mAddDemiliter ;
+    //## ã‚¯ãƒ©ã‚¹ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
+	/** CSVåŒºåˆ‡ã‚Šæ–‡å­—			*/		private String mSeptData ;
+	/** ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—å®šæ•°		*/		private String mEscapeString ;
+	/** åŒæœŸç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ		*/		private Object mObjSync ;
+	/** æœ€çµ‚ãƒ‡ãƒŸãƒªã‚¿ãƒ¼ä»˜åŠ åŒºåˆ†	*/		private boolean mAddDemiliter ;
 	static public final String ESP_STR = "\u001C"; //$NON-NLS-1$
 	static protected final String C_LINESEPT = "line.separator" ; //$NON-NLS-1$
 	static protected final String C_COMMMA = "," ; //$NON-NLS-1$
@@ -60,8 +60,8 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	//
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	ãˆÊƒNƒ‰ƒX‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^[ƒR[ƒ‹
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	ä¸Šä½ã‚¯ãƒ©ã‚¹ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼ã‚³ãƒ¼ãƒ«
 	 */
 	public CsvArrayList() {
 		super() ;
@@ -72,8 +72,8 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	ÅI‹æØ‚è•¶š•t‰Áƒtƒ‰ƒOƒZƒbƒ^[
-	 *	@param		flgAddDelimita	ÅI‹æØ‚è•¶š•t‰Áƒtƒ‰ƒO
+	 *	æœ€çµ‚åŒºåˆ‡ã‚Šæ–‡å­—ä»˜åŠ ãƒ•ãƒ©ã‚°ã‚»ãƒƒã‚¿ãƒ¼
+	 *	@param		flgAddDelimita	æœ€çµ‚åŒºåˆ‡ã‚Šæ–‡å­—ä»˜åŠ ãƒ•ãƒ©ã‚°
 	 */
 	public void setAddDelimitaFlg(boolean flgAddDelimita )	 {
 		synchronized(mObjSync){
@@ -82,48 +82,48 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	ECP•¶šƒZƒbƒ^[<BR>
-	 *	ƒZƒpƒŒ[ƒ^•¶š‚ğƒGƒXƒP[ƒv‚·‚é•¶š‚ğİ’è‚·‚é<br>
-	 *	İ’è‚È‚µ‚Ìê‡‚Í\•¶š‚É‚È‚Á‚Ä‚¢‚éB
-	 *	@param		strEscape	ƒGƒXƒP[ƒv•¶š—ñ
+	 *	ECPæ–‡å­—ã‚»ãƒƒã‚¿ãƒ¼<BR>
+	 *	ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹æ–‡å­—ã‚’è¨­å®šã™ã‚‹<br>
+	 *	è¨­å®šãªã—ã®å ´åˆã¯\æ–‡å­—ã«ãªã£ã¦ã„ã‚‹ã€‚
+	 *	@param		strEscape	ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—
 	 */
 	public void setEscapeString(String strEscape )	 {
 		synchronized(mObjSync){
-			// ƒGƒXƒP[ƒv•¶šİ’è
+			// ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—è¨­å®š
 			mEscapeString = strEscape ;
 		}
 	}
 	//
 	/**
-	 *	•ªŠ„ƒvƒ‰ƒCƒx[ƒgƒƒ\ƒbƒh<br>
-	 *	ƒVƒ“ƒNƒ‚ÍãˆÊpublicƒƒ\ƒbƒh‚Å‚©‚¯‚é–
-	 *	@param		strInData	•ªŠ„‘ÎÛ•¶š—ñ
-	 *	@return		•ªŠ„€–Ú”
+	 *	åˆ†å‰²ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	ã‚·ãƒ³ã‚¯ãƒ­ã¯ä¸Šä½publicãƒ¡ã‚½ãƒƒãƒ‰ã§ã‹ã‘ã‚‹äº‹
+	 *	@param		strInData	åˆ†å‰²å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		åˆ†å‰²é …ç›®æ•°
 	 */
 	private int _splitString(String strInData )	 {
 		int lngFindNum ;
 		int lngMindNum ;
 		StringBuilder subStr1 ;
 		StringBuilder subStr2 ;
-		// “ü—Í•Ü?‰Š
-		//== o—Í”z—ñ‰Šú‰» ==
+		// å…¥åŠ›èˆ—?ç‚
+		//== å‡ºåŠ›é…åˆ—åˆæœŸåŒ– ==
 		super.clear() ;
 		if (strInData != null && strInData.length()!=0){
-			//## ‹æØ‚è•¶šŒŸõ ##
+			//## åŒºåˆ‡ã‚Šæ–‡å­—æ¤œç´¢ ##
 			lngMindNum = 0 ;
 			subStr1 = new StringBuilder(C_NONE) ;
 			subStr2 = new StringBuilder(StringOperator.replaceString(strInData,mEscapeString + mEscapeString,ESP_STR)) ;
-			//== ÅIƒfƒ~ƒŠƒ^[•¶šíœ ==
+			//== æœ€çµ‚ãƒ‡ãƒŸãƒªã‚¿ãƒ¼æ–‡å­—å‰Šé™¤ ==
 			if(mAddDemiliter){
 				if(subStr2.substring(subStr2.length()-mSeptData.length()).equals(mSeptData)){
 					subStr2 = new StringBuilder(subStr2.substring(0,subStr2.length()-mSeptData.length()));
 				}
 			}
 			while(true){
-				//== •¶š—ñŒŸõ ==
+				//== æ–‡å­—åˆ—æ¤œç´¢ ==
 				lngFindNum = subStr2.toString().indexOf(mSeptData) ;
 				lngMindNum += lngFindNum ;
-				//== ŒŸõ•¶š‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡ ==
+				//== æ¤œç´¢æ–‡å­—ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ ==
 				if (lngFindNum == -1) {
 					if(subStr1.length()>0){ 
 						super.add(subStr1.toString()) ;
@@ -131,11 +131,11 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 						super.add(subStr2.toString()) ;
 					}
 					break;
-				//== ŒŸõ•¶š‚ªŒ©‚Â‚©‚Á‚½ê‡ ==
+				//== æ¤œç´¢æ–‡å­—ãŒè¦‹ã¤ã‹ã£ãŸå ´åˆ ==
 				}else {
-					// 2•¶š–ÚˆÈ~‚É”­Œ©‚µ‚½ê‡
+					// 2æ–‡å­—ç›®ä»¥é™ã«ç™ºè¦‹ã—ãŸå ´åˆ
 					if(lngFindNum >= 0){
-						//## ESC•¶š‘Î‰ ##
+						//## ESCæ–‡å­—å¯¾å¿œ ##
 						if(lngFindNum > 0 && subStr2.substring(lngFindNum-1,lngFindNum).equals(mEscapeString)){
 							subStr1 = new StringBuilder(subStr1.append(subStr2.substring(0,lngFindNum-1).toString()).toString());
 							subStr1.append(mSeptData);
@@ -151,11 +151,11 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 							subStr1.append(subStr2.substring(0,lngFindNum)) ;
 						}
 
-					// 1•¶š–Ú‚É”­Œ©‚µ‚½ê‡
+					// 1æ–‡å­—ç›®ã«ç™ºè¦‹ã—ãŸå ´åˆ
 					} else {
 						subStr1 = new StringBuilder(C_NONE);
 					}
-					// Ÿ‚ÌŒŸõˆÊ’u‚Ü‚ÅƒV[ƒN‚·‚éB
+					// æ¬¡ã®æ¤œç´¢ä½ç½®ã¾ã§ã‚·ãƒ¼ã‚¯ã™ã‚‹ã€‚
 					String tmp = StringOperator.replaceString(subStr1.toString(),ESP_STR, mEscapeString) ;
 					super.add(tmp) ;
 					lngMindNum= 0 ;
@@ -164,20 +164,20 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 				}
 			}
 		}
-		//## •ªŠ„Œ”‚ğ•Ô‚· ##
+		//## åˆ†å‰²ä»¶æ•°ã‚’è¿”ã™ ##
 		return super.size();
 	}
 	//
 	/**
-	 *	•ªŠ„ƒƒ\ƒbƒh<br>
-	 *	";"•¶š‚ÌƒZƒpƒŒ[ƒg‚ğs‚¤B
-	 *	@param		strInData	•ªŠ„‘ÎÛ•¶š—ñ
-	 *	@return		•ªŠ„€–Ú”
+	 *	åˆ†å‰²ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	";"æ–‡å­—ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ãƒˆã‚’è¡Œã†ã€‚
+	 *	@param		strInData	åˆ†å‰²å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		åˆ†å‰²é …ç›®æ•°
 	 */
 	public int split(String strInData) {
 		int ret = 0;
 		synchronized(mObjSync){
-			// ƒfƒtƒHƒ‹ƒgØ‚è•¶š‚Å•ªŠ„ /
+			// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåˆ‡ã‚Šæ–‡å­—ã§åˆ†å‰² /
 			mSeptData = C_COMMMA ;
 			ret = this._splitString(strInData) ;
 		}
@@ -185,15 +185,15 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•ªŠ„ƒƒ\ƒbƒh<br>
-	 *	‰üs•¶š‚ÌƒZƒpƒŒ[ƒg‚ğs‚¤B
-	 *	@param		strInData	•ªŠ„‘ÎÛ•¶š—ñ
-	 *	@return		•ªŠ„€–Ú”
+	 *	åˆ†å‰²ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	æ”¹è¡Œæ–‡å­—ã®ã‚»ãƒ‘ãƒ¬ãƒ¼ãƒˆã‚’è¡Œã†ã€‚
+	 *	@param		strInData	åˆ†å‰²å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		åˆ†å‰²é …ç›®æ•°
 	 */
 	public int splitCL(String strInData) {
 		int ret = 0;
 		synchronized(mObjSync){
-			// ’}–©c‹æØ‚è•¶š‚Å•ªŠ„ /
+			// ç­‘æ¹Šæ‹‚åŒºåˆ‡ã‚Šæ–‡å­—ã§åˆ†å‰² /
 			if(strInData.indexOf(CRLF) != -1){
 			    mSeptData = CRLF;
 			}else if(strInData.indexOf(LF) != -1){
@@ -211,10 +211,10 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•ªŠ„ƒƒ\ƒbƒhiw’è‹æØ‚èj
-	 *	@param		strInData	•ªŠ„‘ÎÛ•¶š—ñ
-	 *	@param		strSept		ƒZƒpƒŒ[ƒ^•¶š—ñ
-	 *	@return		•ªŠ„€–Ú”
+	 *	åˆ†å‰²ãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆæŒ‡å®šåŒºåˆ‡ã‚Šï¼‰
+	 *	@param		strInData	åˆ†å‰²å¯¾è±¡æ–‡å­—åˆ—
+	 *	@param		strSept		ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
+	 *	@return		åˆ†å‰²é …ç›®æ•°
 	 */
 	public int split(String strInData,String strSept) {
 		int ret = 0 ;
@@ -226,10 +226,10 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•ªŠ„ƒƒ\ƒbƒhiƒGƒNƒZƒ‹CSVŒ`®j<br>
-	 *	ƒGƒNƒZƒ‹CSVŒ`®‚Ì•ªŠ„‚ğs‚¤
-	 *	@param		strInData	ƒGƒNƒZƒ‹CSVŒ`®‚Ì•¶š—ñ
-	 *	@return		•ªŠ„€–Ú”
+	 *	åˆ†å‰²ãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆã‚¨ã‚¯ã‚»ãƒ«CSVå½¢å¼ï¼‰<br>
+	 *	ã‚¨ã‚¯ã‚»ãƒ«CSVå½¢å¼ã®åˆ†å‰²ã‚’è¡Œã†
+	 *	@param		strInData	ã‚¨ã‚¯ã‚»ãƒ«CSVå½¢å¼ã®æ–‡å­—åˆ—
+	 *	@return		åˆ†å‰²é …ç›®æ•°
 	 */
 	public int splitExcelFile(String strInData) throws IOException {
 		clear();
@@ -242,11 +242,11 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•¶š—ñæ“¾ƒƒ\ƒbƒh<br>
-	 *	ƒGƒNƒZƒ‹CSVŒ`®‚Ì•¶š—ñ‚©‚çƒZƒpƒŒ[ƒ^‚Å‹æØ‚ç‚ê‚½•¶š—ñ‚ğæ“¾‚·‚é
-	 *	@param		strInData	ƒGƒNƒZƒ‹CSVŒ`®‚Ì•¶š—ñ
-	 *	@param		index			Œ»İ‚Ìindex
-	 *	@return		Œ»İ‚Ìindex
+	 *	æ–‡å­—åˆ—å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	ã‚¨ã‚¯ã‚»ãƒ«CSVå½¢å¼ã®æ–‡å­—åˆ—ã‹ã‚‰ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã§åŒºåˆ‡ã‚‰ã‚ŒãŸæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹
+	 *	@param		strInData	ã‚¨ã‚¯ã‚»ãƒ«CSVå½¢å¼ã®æ–‡å­—åˆ—
+	 *	@param		index			ç¾åœ¨ã®index
+	 *	@return		ç¾åœ¨ã®index
 	 */
 	protected int getData(String strInData, int index) {
 		if (index > strInData.length()) {
@@ -280,11 +280,11 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	ƒGƒXƒP[ƒv•¶š—ñ‚Ìæ“¾ƒƒ\ƒbƒh<br>
-	 *	ƒGƒXƒP[ƒv•¶š‚ªg—p‚³‚ê‚½•¶š—ñ‚ğæ“¾‚·‚é
-	 *	@return	int			Œ»İ‚Ìindex
-	 *	@param		strInData	ƒGƒNƒZƒ‹CSVŒ`®‚Ì•¶š—ñ
-	 *	@param		int			Œ»İ‚Ìindex
+	 *	ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã®å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—ãŒä½¿ç”¨ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹
+	 *	@return	int			ç¾åœ¨ã®index
+	 *	@param		strInData	ã‚¨ã‚¯ã‚»ãƒ«CSVå½¢å¼ã®æ–‡å­—åˆ—
+	 *	@param		int			ç¾åœ¨ã®index
 	 */
 	private int _getQuotedData(String strInData, int index) {
 		StringBuilder buf = new StringBuilder();
@@ -319,9 +319,9 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 
 	//
 	/**
-	 *	‡¬ƒƒ\ƒbƒhiƒvƒ‰ƒCƒx[ƒgj<br>
-	 *	ƒVƒ“ƒNƒ‚ÍãˆÊpublicƒƒ\ƒbƒh‚Å‚©‚¯‚é–
-	 *	@return		String		‡¬•¶š—ñ
+	 *	åˆæˆãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰<br>
+	 *	ã‚·ãƒ³ã‚¯ãƒ­ã¯ä¸Šä½publicãƒ¡ã‚½ãƒƒãƒ‰ã§ã‹ã‘ã‚‹äº‹
+	 *	@return		String		åˆæˆæ–‡å­—åˆ—
 	 */
 	private String _joinString() {
 		StringBuilder mngBuf = new StringBuilder() ;
@@ -331,7 +331,7 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 			tmpBuf = StringOperator.replaceString(tmpBuf,mSeptData,mEscapeString + mSeptData);
 			mngBuf.append(tmpBuf).append(mSeptData) ;
 		}
-		//ÅIƒfƒ~ƒŠƒ^[íœ
+		//æœ€çµ‚ãƒ‡ãƒŸãƒªã‚¿ãƒ¼å‰Šé™¤
 		if(mAddDemiliter==false){
 			if( mngBuf.length() > mSeptData.length()){
 				mngBuf = new StringBuilder(mngBuf.toString().substring(0,mngBuf.length() - mSeptData.length())) ;
@@ -341,34 +341,34 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	‡¬ƒƒ\ƒbƒh<BR>
-	 *	";"‚ğƒfƒ~ƒŠƒ^[•¶š‚É‚µ‚Ä‡¬•¶š—ñ‚ğì¬‚·‚éB
-	 *	@return		String		‡¬•¶š—ñ
+	 *	åˆæˆãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	";"ã‚’ãƒ‡ãƒŸãƒªã‚¿ãƒ¼æ–‡å­—ã«ã—ã¦åˆæˆæ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹ã€‚
+	 *	@return		String		åˆæˆæ–‡å­—åˆ—
 	 */
 	public String join() {
 		synchronized(mObjSync){
-			/** ’}–©c‹æØ‚è•¶š‚Å•ªŠ„ **/
+			/** ç­‘æ¹Šæ‹‚åŒºåˆ‡ã‚Šæ–‡å­—ã§åˆ†å‰² **/
 			mSeptData = C_COMMMA ;
 			return _joinString() ;
 		}
 	}
 	//
 	/**
-	 *	‡¬ƒƒ\ƒbƒh<BR>
-	 *	‰üsƒR[ƒh‚ğƒfƒ~ƒŠƒ^[•¶š‚É‚µ‚Ä‡¬•¶š—ñ‚ğì¬‚·‚éB
-	 *	@return		String		‡¬•¶š—ñ
+	 *	åˆæˆãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’ãƒ‡ãƒŸãƒªã‚¿ãƒ¼æ–‡å­—ã«ã—ã¦åˆæˆæ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹ã€‚
+	 *	@return		String		åˆæˆæ–‡å­—åˆ—
 	 */
 	public String joinCL() {
-		/** ’}–©c‹æØ‚è•¶š‚Å•ªŠ„ **/
+		/** ç­‘æ¹Šæ‹‚åŒºåˆ‡ã‚Šæ–‡å­—ã§åˆ†å‰² **/
 		mSeptData = System.getProperty(C_LINESEPT) ;
 		return _joinString() ;
 	}
 	//
 	/**
-	 *	‡¬ƒƒ\ƒbƒhiw’è‹æØ‚èj
-	 *	w’èˆø”‚ğƒfƒ~ƒŠƒ^[•¶š‚É‚µ‚Ä‡¬•¶š—ñ‚ğì¬‚·‚éB
-	 *	@return		String		‡¬•¶š—ñ
-	 *	@param		strSept		ƒfƒ~ƒŠƒ^[•¶š—ñ
+	 *	åˆæˆãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆæŒ‡å®šåŒºåˆ‡ã‚Šï¼‰
+	 *	æŒ‡å®šå¼•æ•°ã‚’ãƒ‡ãƒŸãƒªã‚¿ãƒ¼æ–‡å­—ã«ã—ã¦åˆæˆæ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹ã€‚
+	 *	@return		String		åˆæˆæ–‡å­—åˆ—
+	 *	@param		strSept		ãƒ‡ãƒŸãƒªã‚¿ãƒ¼æ–‡å­—åˆ—
 	 */
 	public String join(String strSept) {
 		mSeptData = strSept ;
@@ -376,8 +376,8 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•¶š”z—ñì¬ƒƒ\ƒbƒh
-	 *	@return		String[]		‡¬•¶š—ñ
+	 *	æ–‡å­—é…åˆ—ä½œæˆãƒ¡ã‚½ãƒƒãƒ‰
+	 *	@return		String[]		åˆæˆæ–‡å­—åˆ—
 	 */
 	public String[] toStringAry() {
 		String result[] = null;
@@ -393,8 +393,8 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•¶š”z—ñİ’èƒƒ\ƒbƒh
-	 *	@param		inStrAry		“ü—Í•¶š”z—ñ
+	 *	æ–‡å­—é…åˆ—è¨­å®šãƒ¡ã‚½ãƒƒãƒ‰
+	 *	@param		inStrAry		å…¥åŠ›æ–‡å­—é…åˆ—
 	 */
 	public void setStringAry(String inStrAry[]) {
 		if(inStrAry != null){
@@ -405,9 +405,9 @@ public class CsvArrayList extends ArrayList implements java.io.Serializable{
 	}
 	//
 	/**
-	 *	•¶š—ñæ“¾ƒƒ\ƒbƒh
-	 *	@param		index		”z—ñ”Ô†
-	 *	@return		INDXw’è•¶š—ñ
+	 *	æ–‡å­—åˆ—å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
+	 *	@param		index		é…åˆ—ç•ªå·
+	 *	@return		INDXæŒ‡å®šæ–‡å­—åˆ—
 	 */
 	public String getStr(int index) {
 		String result ;

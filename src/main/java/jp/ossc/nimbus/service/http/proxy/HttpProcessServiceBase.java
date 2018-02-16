@@ -41,7 +41,7 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.util.converter.BASE64StringConverter;
 
 /**
- * HTTPƒvƒƒLƒV‚ÌƒŠƒNƒGƒXƒgˆ—‚ğs‚¤’ŠÛƒNƒ‰ƒXB<p>
+ * HTTPãƒ—ãƒ­ã‚­ã‚·ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -64,66 +64,66 @@ public abstract class HttpProcessServiceBase extends ServiceBase
     protected String proxyUser;
     protected String proxyPassword;
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setRequestStreamInflate(boolean isInflate){
         isRequestStreamInflate = isInflate;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public boolean isRequestStreamInflate(){
         return isRequestStreamInflate;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setTunnelSocketFactoryServiceName(ServiceName name){
         tunnelSocketFactoryServiceName = name;
     }
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public ServiceName getTunnelSocketFactoryServiceName(){
         return tunnelSocketFactoryServiceName;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setTunnelBufferSize(int size){
         tunnelBufferSize = size;
     }
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public int getTunnelBufferSize(){
         return tunnelBufferSize;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public String getProxyHost(){
         return proxyHost;
     }
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setProxyHost(String host){
         proxyHost = host;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public int getProxyPort(){
         return proxyPort;
     }
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setProxyPort(int port){
         proxyPort = port;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public String getProxyUser(){
         return proxyUser;
     }
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setProxyUser(String user){
         proxyUser = user;
     }
     
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public String getProxyPassword(){
         return proxyPassword;
     }
-    // HttpProcessServiceBaseMBean ‚ÌJavaDoc
+    // HttpProcessServiceBaseMBean ã®JavaDoc
     public void setProxyPassword(String password){
         proxyPassword = password;
     }
@@ -138,7 +138,7 @@ public abstract class HttpProcessServiceBase extends ServiceBase
         }
     }
     
-    // Process‚ÌJavaDoc
+    // Processã®JavaDoc
     public void doProcess(Socket socket) throws Exception{
         InputStream is = socket.getInputStream();
         OutputStream os = socket.getOutputStream();
@@ -255,11 +255,11 @@ public abstract class HttpProcessServiceBase extends ServiceBase
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚ÌƒvƒƒLƒVˆ—‚ğs‚¤B<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ—ãƒ­ã‚­ã‚·å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
-     * @exception Exception HTTPƒŠƒNƒGƒXƒg‚Ìˆ—‚É¸”s‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception Exception HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public abstract void doProcess(
         HttpRequest request,

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.http.proxy;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ProxyServerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ProxyServerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ProxyServerService
@@ -42,109 +42,109 @@ import jp.ossc.nimbus.core.*;
 public interface ProxyServerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘Ò‚¿ó‚¯ƒ|[ƒg”Ô†B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å¾…ã¡å—ã‘ãƒãƒ¼ãƒˆç•ªå·ã€‚<p>
      */
     public static final int DEFAULT_PORT = 8080;
     
     /**
-     * {@link Process}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link Process}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ProcessƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Processã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setProcessServiceName(ServiceName name);
     
     /**
-     * {@link Process}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link Process}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ProcessƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Processã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getProcessServiceName();
     
     /**
-     * {@link javax.net.ServerSocketFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link javax.net.ServerSocketFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerSocketFactoryServiceName(ServiceName name);
     
     /**
-     * {@link javax.net.ServerSocketFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link javax.net.ServerSocketFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerSocketFactoryServiceName();
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒg‚ÌƒoƒCƒ“ƒhƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã®ãƒã‚¤ãƒ³ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address ƒoƒCƒ“ƒhƒAƒhƒŒƒX
+     * @param address ãƒã‚¤ãƒ³ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public void setBindAddress(String address);
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒg‚ÌƒoƒCƒ“ƒhƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã®ãƒã‚¤ãƒ³ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒCƒ“ƒhƒAƒhƒŒƒX
+     * @return ãƒã‚¤ãƒ³ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getBindAddress();
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒg‚ÌƒoƒbƒNƒƒO‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã®ãƒãƒƒã‚¯ãƒ­ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param backlog ƒoƒbƒNƒƒO
+     * @param backlog ãƒãƒƒã‚¯ãƒ­ã‚°
      */
     public void setBacklog(int backlog);
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒg‚ÌƒoƒbƒNƒƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã®ãƒãƒƒã‚¯ãƒ­ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒNƒƒO
+     * @return ãƒãƒƒã‚¯ãƒ­ã‚°
      */
     public int getBacklog();
     
     /**
-     * ‚±‚ÌƒvƒƒLƒV‚Ì‘Ò‚¿ó‚¯ƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_PORT}B<br>
+     * ã“ã®ãƒ—ãƒ­ã‚­ã‚·ã®å¾…ã¡å—ã‘ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_PORT}ã€‚<br>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setPort(int port);
     
     /**
-     * ‚±‚ÌƒvƒƒLƒV‚Ì‘Ò‚¿ó‚¯ƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ã‚­ã‚·ã®å¾…ã¡å—ã‘ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getPort();
     
     /**
-     * ƒ\ƒPƒbƒg‚Ì“Ç‚İ‚İƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚µ‚È‚¢B<br>
+     * ã‚½ã‚±ãƒƒãƒˆã®èª­ã¿è¾¼ã¿ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param millis “Ç‚İ‚İƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param millis èª­ã¿è¾¼ã¿ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setSoTimeout(int millis);
     
     /**
-     * ƒ\ƒPƒbƒg‚Ì“Ç‚İ‚İƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚½ã‚±ãƒƒãƒˆã®èª­ã¿è¾¼ã¿ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “Ç‚İ‚İƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return èª­ã¿è¾¼ã¿ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getSoTimeout();
     
     /**
-     * ƒŠƒNƒGƒXƒgˆ—ƒXƒŒƒbƒh”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<br>
      *
-     * @param count ƒXƒŒƒbƒh”
+     * @param count ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public void setMaxProcessCount(int count);
     
     /**
-     * ƒŠƒNƒGƒXƒgˆ—ƒXƒŒƒbƒh”‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒŒƒbƒh”
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
      */
     public int getMaxProcessCount();
 }

@@ -34,26 +34,26 @@ package jp.ossc.nimbus.service.cui;
 
 
 /**
- *	ƒeƒLƒXƒgƒfƒBƒXƒvƒŒƒCƒNƒ‰ƒX
- *	XML’è‹`ƒtƒ@ƒCƒ‹‚ÉA•\¦ƒƒjƒ…[‚¨‚æ‚Ñ‘I‘ğ‰Â”\’l‚ª‘¦’l‚Å‹Lq‚³‚ê‚Ä
- *@‚¢‚éê‡‚ÉA‚±‚ÌƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬‚³‚ê‚éB
+ *	ãƒ†ã‚­ã‚¹ãƒˆãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¹
+ *	XMLå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã«ã€è¡¨ç¤ºãƒ¡ãƒ‹ãƒ¥ãƒ¼ãŠã‚ˆã³é¸æŠå¯èƒ½å€¤ãŒå³å€¤ã§è¨˜è¿°ã•ã‚Œã¦
+ *ã€€ã„ã‚‹å ´åˆã«ã€ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆã•ã‚Œã‚‹ã€‚
  *
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/29| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/29ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class TextDisplay implements DisplayConstructer {
-	//ƒƒ“ƒo•Ï”
-	/** ƒfƒBƒXƒvƒŒƒCƒƒjƒ…[ */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 	private String mMenuString = "";
 	/**
-	 * •\¦ƒƒ\ƒbƒh
+	 * è¡¨ç¤ºãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public String display() {
 		return mMenuString ;
 	}
 	/**
-	 * •\¦—pString‚ÌƒZƒbƒ^[
+	 * è¡¨ç¤ºç”¨Stringã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param menu
 	 */
 	public void setDisplayMenu(String menu){

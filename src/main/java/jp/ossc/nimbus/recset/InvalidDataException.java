@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.recset;
 
 /**
- * ƒf[ƒ^•s³‚ğ•\‚·—áŠO<p>
- * ƒf[ƒ^‚ª•s³‚Èê‡(ƒTƒCƒYƒI[ƒo[AƒL[d•¡‚È‚Ç)‚ÉƒXƒ[‚³‚ê‚Ü‚·B
+ * ãƒ‡ãƒ¼ã‚¿ä¸æ­£ã‚’è¡¨ã™ä¾‹å¤–<p>
+ * ãƒ‡ãƒ¼ã‚¿ãŒä¸æ­£ãªå ´åˆ(ã‚µã‚¤ã‚ºã‚ªãƒ¼ãƒãƒ¼ã€ã‚­ãƒ¼é‡è¤‡ãªã©)ã«ã‚¹ãƒ­ãƒ¼ã•ã‚Œã¾ã™ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,15 +45,15 @@ public class InvalidDataException extends RuntimeException {
     private static final long serialVersionUID = -6532196478303226656L;
     
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public InvalidDataException() {
 		super();
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	 * @param message Ú×ƒƒbƒZ[ƒW
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	 * @param message è©³ç´°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 */
 	public InvalidDataException(String message) {
 		super(message);

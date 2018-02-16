@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.keepalive;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractKeepAliveCheckerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link AbstractKeepAliveCheckerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see AbstractKeepAliveCheckerService
@@ -45,91 +45,91 @@ public interface AbstractKeepAliveCheckerServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_DEAD_LOG_MSG_ID = "KACS_00002";
     
     /**
-     * ’èŠú“I‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍA–ˆ‰ñ–â‚¢‡‚í‚¹‚ğs‚¤B<br>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA–ˆ‰ñ–â‚¢‡‚í‚¹‚ğs‚¤B<br>
+     * å®šæœŸçš„ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€æ¯å›å•ã„åˆã‚ã›ã‚’è¡Œã†ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€æ¯å›å•ã„åˆã‚ã›ã‚’è¡Œã†ã€‚<br>
      *
-     * @param millis KeepAliveChecker‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu
+     * @param millis KeepAliveCheckerã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”
      */
     public void setCheckInterval(long millis);
     
     /**
-     * ’èŠú“I‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * å®šæœŸçš„ã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return KeepAliveChecker‚É¶‘¶Šm”F‚ğs‚¤ŠÔŠu
+     * @return KeepAliveCheckerã«ç”Ÿå­˜ç¢ºèªã‚’è¡Œã†é–“éš”
      */
     public long getCheckInterval();
     
     /**
-     * ‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setAliveLogMessageId(String id);
     
     /**
-     * ‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getAliveLogMessageId();
     
     /**
-     * ‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setDeadLogMessageId(String id);
     
     /**
-     * ‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getDeadLogMessageId();
     
     /**
-     * ‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputAliveLogMessage(boolean isOutput);
     
     /**
-     * ‰Ò“®ó‘Ô‚ª’â~ó‘Ô‚©‚ç‘–só‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒåœæ­¢çŠ¶æ…‹ã‹ã‚‰èµ°è¡ŒçŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputAliveLogMessage();
     
     /**
-     * ‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputDeadLogMessage(boolean isOutput);
     
     /**
-     * ‰Ò“®ó‘Ô‚ª‘–só‘Ô‚©‚ç’â~ó‘Ô‚É•Ï‰»‚µ‚½‚ÉƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç¨¼å‹•çŠ¶æ…‹ãŒèµ°è¡ŒçŠ¶æ…‹ã‹ã‚‰åœæ­¢çŠ¶æ…‹ã«å¤‰åŒ–ã—ãŸæ™‚ã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputDeadLogMessage();
     
     /**
-     * ƒT[ƒo‚Ì‰Ò“®ó‘Ô‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒã®ç¨¼å‹•çŠ¶æ…‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ‰Ò“®ó‘Ôitrue:‘–s’†Afalse:’â~’†j
+     * @return ç¨¼å‹•çŠ¶æ…‹ï¼ˆtrue:èµ°è¡Œä¸­ã€false:åœæ­¢ä¸­ï¼‰
      */
     public boolean isAlive();
     
     /**
-     * ƒT[ƒo‚Ì‰Ò“®ó‘Ô‚ğƒ`ƒFƒbƒN‚·‚éB<p>
+     * ã‚µãƒ¼ãƒã®ç¨¼å‹•çŠ¶æ…‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @return ‰Ò“®ó‘Ôitrue:‘–s’†Afalse:’â~’†j
-     * @exception Exception ƒ`ƒFƒbƒN‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ç¨¼å‹•çŠ¶æ…‹ï¼ˆtrue:èµ°è¡Œä¸­ã€false:åœæ­¢ä¸­ï¼‰
+     * @exception Exception ãƒã‚§ãƒƒã‚¯æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean checkAlive() throws Exception;
 }

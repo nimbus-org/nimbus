@@ -40,30 +40,30 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.LogConfigurationException;
 
 /**
- * Nimbus—p‚ÌJakarta Commons Logging‚ÌLogFactoryŠg’£ƒNƒ‰ƒXB<p>
- * ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹"commons-logging.properties"‚ÉA
+ * Nimbusç”¨ã®Jakarta Commons Loggingã®LogFactoryæ‹¡å¼µã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«"commons-logging.properties"ã«ã€
  * <pre>
  * org.apache.commons.logging.LogFactory=jp.ossc.nimbus.service.log.NimbusLogFactory
  * </pre>
- * ‚ğw’è‚·‚é–‚ÅA{@link LogFactory}‚ÌÀ‘•ƒNƒ‰ƒX‚Æ‚µ‚ÄA‚±‚ÌƒNƒ‰ƒX‚ªg—p‰Â”\‚É‚È‚éB‚Ü‚½AƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Å‚à“¯—l‚Ìw’è‚ª‰Â”\‚Å‚ ‚éB<br>
+ * ã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€{@link LogFactory}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¨ã—ã¦ã€ã“ã®ã‚¯ãƒ©ã‚¹ãŒä½¿ç”¨å¯èƒ½ã«ãªã‚‹ã€‚ã¾ãŸã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã‚‚åŒæ§˜ã®æŒ‡å®šãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
  * <p>
- * ‚±‚ÌƒƒOƒtƒ@ƒNƒgƒŠ‚ÍA{@link CommonsLogFactory}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ğg—p‚µ‚Ä{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<br>
- * ‚»‚Ì‚½‚ßACommonsLogFactoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ğ’è‹`‚µ‚ÄA‚»‚Ì’è‹`‚ğƒ[ƒh‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éBCommonsLogFactoryƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ªƒ[ƒh‚³‚ê‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚ÍA‹N“®‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Ì{@link LogFactory}‚ğg—p‚µ‚ÄLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<br>
- * ƒfƒtƒHƒ‹ƒg‚ÌLogFactory‚ÍAorg.apache.commons.logging.impl.LogFactoryImpl‚ğg—p‚·‚éB’A‚µAƒfƒtƒHƒ‹ƒg‚ÌLogFactory‚ğ•ÏX‚·‚é–‚ª‰Â”\‚ÅAƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹"commons-logging.properties"‚ÉA
+ * ã“ã®ãƒ­ã‚°ãƒ•ã‚¡ã‚¯ãƒˆãƒªã¯ã€{@link CommonsLogFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã—ã¦{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
+ * ãã®ãŸã‚ã€CommonsLogFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å®šç¾©ã—ã¦ã€ãã®å®šç¾©ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚CommonsLogFactoryã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯ã€èµ·å‹•ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link LogFactory}ã‚’ä½¿ç”¨ã—ã¦Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®LogFactoryã¯ã€org.apache.commons.logging.impl.LogFactoryImplã‚’ä½¿ç”¨ã™ã‚‹ã€‚ä½†ã—ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®LogFactoryã‚’å¤‰æ›´ã™ã‚‹äº‹ãŒå¯èƒ½ã§ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«"commons-logging.properties"ã«ã€
  * <pre>
  * jp.ossc.nimbus.service.log.NimbusLogFactory.DefaultLogFactory=org.apache.commons.logging.impl.Log4jFactory
  * </pre>
- * ‚Ì‚æ‚¤‚Éw’è‚·‚é–‚ÅA•ÏX‚Å‚«‚éB‚Ü‚½AƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Å‚à“¯—l‚Ìw’è‚ª‰Â”\‚Å‚ ‚éB<br>
+ * ã®ã‚ˆã†ã«æŒ‡å®šã™ã‚‹äº‹ã§ã€å¤‰æ›´ã§ãã‚‹ã€‚ã¾ãŸã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã‚‚åŒæ§˜ã®æŒ‡å®šãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
  * <p>
- * {@link CommonsLogFactory}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚Æ‚µ‚ÄA{@link DefaultCommonsLogFactoryService}‚ª’ñ‹Ÿ‚³‚ê‚Ä‚¢‚éB<br>
- * DefaultCommonsLogFactoryService‚ÍA‹N“®‚É{@link LogFactory#getFactory()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µA{@link #setCommonsLogFactory(CommonsLogFactory)}‚Å©•ª©g‚ğ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Éİ’è‚·‚éB‚»‚Ì‚½‚ßA‘Oq‚µ‚½"org.apache.commons.logging.LogFactory"ƒvƒƒpƒeƒB‚Ìİ’è‚ÆADefaultCommonsLogFactoryService‚ÌƒT[ƒrƒX’è‹`‚Ì‚İ‚ÅAg—p‰Â”\‚Å‚ ‚éB<br>
- * ’A‚µALogFactory.getFactory()‚Åæ“¾‚Å‚«‚éLogFactoryƒCƒ“ƒXƒ^ƒ“ƒX‚ÍAŒÄ‚Ño‚µƒXƒŒƒbƒh‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒNƒ‰ƒXƒ[ƒ_’PˆÊ‚Åæ“¾‚³‚ê‚éB‚»‚Ì‚½‚ßADefaultCommonsLogFactoryService‚Ìƒ[ƒh‚ğs‚¤ƒXƒŒƒbƒh‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒNƒ‰ƒXƒ[ƒ_‚ÆA{@link LogFactory#getLog(String)}‚ğŒÄ‚Ño‚·ƒXƒŒƒbƒh‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒNƒ‰ƒXƒ[ƒ_‚ªˆÙ‚È‚éê‡‚ÍAã‹L‚Ìİ’è‚Ì‚İ‚Å‚ÍA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªDefaultCommonsLogFactoryService‚ÌQÆ‚ğ“¾‚é–‚ª‚Å‚«‚È‚¢B<br>
+ * {@link CommonsLogFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ã€{@link DefaultCommonsLogFactoryService}ãŒæä¾›ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
+ * DefaultCommonsLogFactoryServiceã¯ã€èµ·å‹•æ™‚ã«{@link LogFactory#getFactory()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã€{@link #setCommonsLogFactory(CommonsLogFactory)}ã§è‡ªåˆ†è‡ªèº«ã‚’ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã«è¨­å®šã™ã‚‹ã€‚ãã®ãŸã‚ã€å‰è¿°ã—ãŸ"org.apache.commons.logging.LogFactory"ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã¨ã€DefaultCommonsLogFactoryServiceã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ã¿ã§ã€ä½¿ç”¨å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+ * ä½†ã—ã€LogFactory.getFactory()ã§å–å¾—ã§ãã‚‹LogFactoryã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€å‘¼ã³å‡ºã—ã‚¹ãƒ¬ãƒƒãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€å˜ä½ã§å–å¾—ã•ã‚Œã‚‹ã€‚ãã®ãŸã‚ã€DefaultCommonsLogFactoryServiceã®ãƒ­ãƒ¼ãƒ‰ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã¨ã€{@link LogFactory#getLog(String)}ã‚’å‘¼ã³å‡ºã™ã‚¹ãƒ¬ãƒƒãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒç•°ãªã‚‹å ´åˆã¯ã€ä¸Šè¨˜ã®è¨­å®šã®ã¿ã§ã¯ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒDefaultCommonsLogFactoryServiceã®å‚ç…§ã‚’å¾—ã‚‹äº‹ãŒã§ããªã„ã€‚<br>
  * <p>
- * {@link LogFactory#getLog(Class)}A{@link LogFactory#getLog(String)}‚ğŒÄ‚Ño‚·ƒXƒŒƒbƒh‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒNƒ‰ƒXƒ[ƒ_‚ÆACommonsLogFactory‚ÌÀ‘•ƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½ƒXƒŒƒbƒh‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒNƒ‰ƒXƒ[ƒ_‚ªˆÙ‚È‚éê‡‚ÍAƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹"commons-logging.properties"‚ÉA
+ * {@link LogFactory#getLog(Class)}ã€{@link LogFactory#getLog(String)}ã‚’å‘¼ã³å‡ºã™ã‚¹ãƒ¬ãƒƒãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã¨ã€CommonsLogFactoryã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒç•°ãªã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«"commons-logging.properties"ã«ã€
  * <pre>
  * jp.ossc.nimbus.service.log.NimbusLogFactory.CommonsLogFactoryName=Nimbus#CommonsLog
  * </pre>
- * ‚Ì‚æ‚¤‚ÉACommonsLogFactory‚ÌÀ‘•ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é•K—v‚ª‚ ‚éB<br>
+ * ã®ã‚ˆã†ã«ã€CommonsLogFactoryã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see CommonsLogFactory
@@ -73,60 +73,60 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     private static final long serialVersionUID = -3343921992875545571L;
     
     /**
-     * {@link CommonsLogFactory}‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢‚Ég—p‚·‚é{@link LogFactory}‚ÌÀ‘•ƒNƒ‰ƒX–¼‚ğw’è‚·‚éƒvƒƒpƒeƒB–¼B<p>
-     * ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹"commons-logging.properties"‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ğw’è‚·‚éB‚Ü‚½‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Åw’è‚·‚éB<br>
+     * {@link CommonsLogFactory}ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„æ™‚ã«ä½¿ç”¨ã™ã‚‹{@link LogFactory}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€‚<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«"commons-logging.properties"ã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã™ã‚‹ã€‚<br>
      */
     public static final String DEFAULT_FACTORY_PROPERTY =
         "jp.ossc.nimbus.service.log.NimbusLogFactory.DefaultLogFactory";
     
     /**
-     * {@link CommonsLogFactory}‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚éƒvƒƒpƒeƒB–¼B<p>
-     * ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹"commons-logging.properties"‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ğw’è‚·‚éB‚Ü‚½‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Åw’è‚·‚éB<br>
-     * {@link LogFactory#getLog(Class)}A{@link LogFactory#getLog(String)}‚ğŒÄ‚Ño‚µ‚½ƒXƒŒƒbƒh‚ÌƒNƒ‰ƒXƒ[ƒ_‚ÆACommonsLogFactory‚ÌÀ‘•ƒT[ƒrƒX‚ğƒ[ƒh‚µ‚½ƒXƒŒƒbƒh‚ÌƒNƒ‰ƒXƒ[ƒ_‚ªˆÙ‚È‚éê‡‚ÍA‚±‚ÌƒvƒƒpƒeƒB‚ğw’è‚·‚é•K—v‚ª‚ ‚éB—¼Ò‚ÌƒNƒ‰ƒXƒ[ƒ_‚ª“™‚µ‚¢ê‡‚ÍA‚±‚ÌƒvƒƒpƒeƒB‚ğw’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * {@link CommonsLogFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€‚<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«"commons-logging.properties"ã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * {@link LogFactory#getLog(Class)}ã€{@link LogFactory#getLog(String)}ã‚’å‘¼ã³å‡ºã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã¨ã€CommonsLogFactoryã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒç•°ãªã‚‹å ´åˆã¯ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚ä¸¡è€…ã®ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ãŒç­‰ã—ã„å ´åˆã¯ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      */
     public static final String FACTORY_NAME_PROPERTY =
         "jp.ossc.nimbus.service.log.NimbusLogFactory.CommonsLogFactoryName";
     
     /**
-     * {@link #DEFAULT_FACTORY_PROPERTY}‚Ìw’è‚ª‚È‚¢ê‡‚ÉA¶¬‚³‚ê‚é{@link LogFactory}‚ÌÀ‘•ƒNƒ‰ƒX–¼B<p>
+     * {@link #DEFAULT_FACTORY_PROPERTY}ã®æŒ‡å®šãŒãªã„å ´åˆã«ã€ç”Ÿæˆã•ã‚Œã‚‹{@link LogFactory}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã€‚<p>
      */
     public static final String DEFAULT_FACTORY_DEFAULT =
         "org.apache.commons.logging.impl.LogFactoryImpl";
     
     /**
-     * {@link Log}‚ğ¶¬‚·‚é{@link CommonsLogFactory}B<p>
+     * {@link Log}ã‚’ç”Ÿæˆã™ã‚‹{@link CommonsLogFactory}ã€‚<p>
      */
     private CommonsLogFactory logFactory;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link LogFactory}B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link LogFactory}ã€‚<p>
      */
     private LogFactory deafultLogFactory;
     
     /**
-     * ‘®«ŠÇ—ƒ}ƒbƒvB<p>
+     * å±æ€§ç®¡ç†ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>Object</td><td>‘®«–¼</td><td>Object</td><td>‘®«’l</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>Object</td><td>å±æ€§å</td><td>Object</td><td>å±æ€§å€¤</td></tr>
      * </table>
      */
     private Map attributes = new HashMap();
     
     /**
-     * {@link Log}ƒCƒ“ƒXƒ^ƒ“ƒXŠÇ—ƒ}ƒbƒvB<p>
+     * {@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç®¡ç†ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>Object</td><td>LogƒCƒ“ƒXƒ^ƒ“ƒX¯•Êî•ñ</td><td>Log</td><td>LogƒCƒ“ƒXƒ^ƒ“ƒX</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>Object</td><td>Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹è­˜åˆ¥æƒ…å ±</td><td>Log</td><td>Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</td></tr>
      * </table>
      */
     private Map logInstances = new HashMap();
     
     /**
-     * {@link CommonsLogFactory}‚ğİ’è‚·‚éB<p>
+     * {@link CommonsLogFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param factory CommonsLogFactoryƒIƒuƒWƒFƒNƒg
+     * @param factory CommonsLogFactoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setCommonsLogFactory(CommonsLogFactory factory){
         if(logFactory != null && logFactory == factory){
@@ -158,10 +158,10 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚É‘Î‰‚·‚éLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒL[î•ñ
-     * @return LogƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param key ã‚­ãƒ¼æƒ…å ±
+     * @return Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     private Log getInstance(final Object key){
         if(logInstances.containsKey(key)){
@@ -236,11 +236,11 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * CommonsLogFactoryƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éServiceManager‚ªAServiceManagerFactory‚É“o˜^‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚µ‚ÄACommonsLogFactoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ƒT[ƒrƒX–¼targetMng‚ÌServiceManager‚ªServiceManagerFactory‚É“o˜^‚³‚ê‚é‚ÆAƒT[ƒrƒX–¼targetService‚ÌƒT[ƒrƒX‚ğæ“¾‚µ‚Ä‚İ‚éBæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link #waitRegistrationService(ServiceManager, String)}‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚éBæ“¾‚Å‚«‚éê‡‚ÍA{@link #waitStartService(Service)}‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX‚ªŠJn‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚éB<br>
+     * CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ServiceManagerãŒã€ServiceManagerFactoryã«ç™»éŒ²ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã—ã¦ã€CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åtargetMngã®ServiceManagerãŒServiceManagerFactoryã«ç™»éŒ²ã•ã‚Œã‚‹ã¨ã€ã‚µãƒ¼ãƒ“ã‚¹åtargetServiceã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã¿ã‚‹ã€‚å–å¾—ã§ããªã„å ´åˆã¯ã€{@link #waitRegistrationService(ServiceManager, String)}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹ã€‚å–å¾—ã§ãã‚‹å ´åˆã¯ã€{@link #waitStartService(Service)}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @param targetMng CommonsLogFactoryƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éServiceManager‚ÌƒT[ƒrƒX–¼
-     * @param targetService CommonsLogFactory‚ÌƒT[ƒrƒX–¼
+     * @param targetMng CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ServiceManagerã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param targetService CommonsLogFactoryã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     private void waitRegistrationManager(
         final String targetMng,
@@ -275,12 +275,12 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * CommonsLogFactoryƒT[ƒrƒX‚ªServiceManager‚É“o˜^‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚µ‚ÄACommonsLogFactoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ƒT[ƒrƒX–¼targetService‚ÌCommonsLogFactory‚ªServiceManager‚É“o˜^‚³‚ê‚é‚ÆA{@link #waitStartService(Service)}‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX‚ªŠJn‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚éB<br>
+     * CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒServiceManagerã«ç™»éŒ²ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã—ã¦ã€CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åtargetServiceã®CommonsLogFactoryãŒServiceManagerã«ç™»éŒ²ã•ã‚Œã‚‹ã¨ã€{@link #waitStartService(Service)}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @param targetMng CommonsLogFactoryƒT[ƒrƒX‚ª“o˜^‚³‚ê‚éServiceManager
-     * @param targetService CommonsLogFactory‚ÌƒT[ƒrƒX–¼
-     * @param log LogWrapperƒIƒuƒWƒFƒNƒg
+     * @param targetMng CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹ServiceManager
+     * @param targetService CommonsLogFactoryã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param log LogWrapperã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     private void waitRegistrationService(
         final ServiceManager targetMng,
@@ -304,11 +304,11 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * CommonsLogFactoryƒT[ƒrƒX‚ªŠJn‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚µ‚ÄACommonsLogFactoryƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ƒT[ƒrƒXservice‚ªŠJn‚³‚ê‚é‚ÆA{@link #setCommonsLogFactory(CommonsLogFactory)}‚ğŒÄ‚Ño‚µ‚ÄACommonsLogFactory‚ÌQÆ‚ğİ’è‚·‚éB<br>
-     * ‚Ü‚½AƒT[ƒrƒXservice‚ª’â~‚³‚ê‚é‚ÆA{@link #setCommonsLogFactory(CommonsLogFactory)}‚ğŒÄ‚Ño‚µ‚ÄACommonsLogFactory‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã—ã¦ã€CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹serviceãŒé–‹å§‹ã•ã‚Œã‚‹ã¨ã€{@link #setCommonsLogFactory(CommonsLogFactory)}ã‚’å‘¼ã³å‡ºã—ã¦ã€CommonsLogFactoryã®å‚ç…§ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€ã‚µãƒ¼ãƒ“ã‚¹serviceãŒåœæ­¢ã•ã‚Œã‚‹ã¨ã€{@link #setCommonsLogFactory(CommonsLogFactory)}ã‚’å‘¼ã³å‡ºã—ã¦ã€CommonsLogFactoryã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @param targetService CommonsLogFactoryƒT[ƒrƒX
+     * @param targetService CommonsLogFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     private void waitStartService(final Service service){
         Service targetService = null;
@@ -371,16 +371,16 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
                     service.getServiceName()
                 );
             }catch(ServiceNotFoundException ex){
-                // ‹N‚±‚è“¾‚È‚¢
+                // èµ·ã“ã‚Šå¾—ãªã„
             }
             setCommonsLogFactory(factory);
         }
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌLogFactory‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®LogFactoryã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒtƒHƒ‹ƒg‚ÌLogFactory
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®LogFactory
      */
     private LogFactory createDefaultLogFactory()
      throws LogConfigurationException {
@@ -424,29 +424,29 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * ˆø”‚Åw’è‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz æ“¾‚·‚éLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¯•Ê‚·‚éƒL[‚Æ‚È‚éƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ˆø”‚Åw’è‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception LogConfigurationException LogƒCƒ“ƒXƒ^ƒ“ƒX‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param clazz å–å¾—ã™ã‚‹Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è­˜åˆ¥ã™ã‚‹ã‚­ãƒ¼ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¼•æ•°ã§æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception LogConfigurationException Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Log getInstance(Class clazz) throws LogConfigurationException{
         return getInstance((Object)clazz);
     }
     
     /**
-     * ˆø”‚Åw’è‚µ‚½–¼‘O‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã—ãŸåå‰ã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name æ“¾‚·‚éLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¯•Ê‚·‚é–¼‘O
-     * @return ˆø”‚Åw’è‚µ‚½–¼‘O‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception LogConfigurationException LogƒCƒ“ƒXƒ^ƒ“ƒX‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param name å–å¾—ã™ã‚‹Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @return å¼•æ•°ã§æŒ‡å®šã—ãŸåå‰ã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception LogConfigurationException Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Log getInstance(String name) throws LogConfigurationException{
         return getInstance((Object)name);
     }
     
     /**
-     * ì¬‚µ‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠJ•ú‚·‚éB<p>
+     * ä½œæˆã—ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
      */
     public void release(){
         logInstances.clear();
@@ -456,11 +456,11 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * ‘®«’l‚ğæ“¾‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
-     * @return ‘®«’l
+     * @param name å±æ€§å
+     * @return å±æ€§å€¤
      * @see #getAttributeNames()
      * @see #removeAttribute(String)
      * @see #setAttribute(String, Object)
@@ -473,10 +473,10 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * ‘®«–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼‚Ì”z—ñ
+     * @return å±æ€§åã®é…åˆ—
      * @see #getAttribute(String)
      * @see #removeAttribute(String)
      * @see #setAttribute(String, Object)
@@ -490,10 +490,10 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * ‘®«‚ğíœ‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
+     * @param name å±æ€§å
      * @see #getAttribute(String)
      * @see #getAttributeNames()
      * @see #setAttribute(String, Object)
@@ -506,11 +506,11 @@ public class NimbusLogFactory extends LogFactory implements java.io.Serializable
     }
     
     /**
-     * ‘®«‚ğİ’è‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
-     * @param value ‘®«’l
+     * @param name å±æ€§å
+     * @param value å±æ€§å€¤
      * @see #getAttribute(String)
      * @see #getAttributeNames()
      * @see #removeAttribute(String)

@@ -35,41 +35,41 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogConfigurationException;
 
 /**
- * Jakarta Commons Logging—p‚ÌƒƒOƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * Jakarta Commons Loggingç”¨ã®ãƒ­ã‚°ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface CommonsLogFactory{
     
     /**
-     * ˆø”‚Åw’è‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz æ“¾‚·‚éLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¯•Ê‚·‚éƒL[‚Æ‚È‚éƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ˆø”‚Åw’è‚µ‚½ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception LogConfigurationException LogƒCƒ“ƒXƒ^ƒ“ƒX‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param clazz å–å¾—ã™ã‚‹Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è­˜åˆ¥ã™ã‚‹ã‚­ãƒ¼ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¼•æ•°ã§æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception LogConfigurationException Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Log getInstance(Class clazz) throws LogConfigurationException;
     
     /**
-     * ˆø”‚Åw’è‚µ‚½–¼‘O‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã—ãŸåå‰ã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name æ“¾‚·‚éLogƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¯•Ê‚·‚é–¼‘O
-     * @return ˆø”‚Åw’è‚µ‚½–¼‘O‚ÉŠÖ˜A•t‚¢‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception LogConfigurationException LogƒCƒ“ƒXƒ^ƒ“ƒX‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param name å–å¾—ã™ã‚‹Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @return å¼•æ•°ã§æŒ‡å®šã—ãŸåå‰ã«é–¢é€£ä»˜ã„ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception LogConfigurationException Logã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Log getInstance(String name) throws LogConfigurationException;
     
     /**
-     * ì¬‚µ‚½{@link Log}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠJ•ú‚·‚éB<p>
+     * ä½œæˆã—ãŸ{@link Log}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
      */
     public void release();
     
     /**
-     * ‘®«’l‚ğæ“¾‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
-     * @return ‘®«’l
+     * @param name å±æ€§å
+     * @return å±æ€§å€¤
      * @see #getAttributeNames()
      * @see #removeAttribute(String)
      * @see #setAttribute(String, Object)
@@ -77,10 +77,10 @@ public interface CommonsLogFactory{
     public Object getAttribute(String name);
     
     /**
-     * ‘®«–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼‚Ì”z—ñ
+     * @return å±æ€§åã®é…åˆ—
      * @see #getAttribute(String)
      * @see #removeAttribute(String)
      * @see #setAttribute(String, Object)
@@ -88,10 +88,10 @@ public interface CommonsLogFactory{
     public String[] getAttributeNames();
     
     /**
-     * ‘®«‚ğíœ‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
+     * @param name å±æ€§å
      * @see #getAttribute(String)
      * @see #getAttributeNames()
      * @see #setAttribute(String, Object)
@@ -99,11 +99,11 @@ public interface CommonsLogFactory{
     public void removeAttribute(String name);
     
     /**
-     * ‘®«‚ğİ’è‚·‚éB<p>
-     * "commons-logging.properties"‚Åİ’è‚µ‚½ƒvƒƒpƒeƒB‚ª‘®«‚Æ‚µ‚ÄŠi”[‚³‚ê‚éB<p>
+     * å±æ€§ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * "commons-logging.properties"ã§è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå±æ€§ã¨ã—ã¦æ ¼ç´ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param name ‘®«–¼
-     * @param value ‘®«’l
+     * @param name å±æ€§å
+     * @param value å±æ€§å€¤
      * @see #getAttribute(String)
      * @see #getAttributeNames()
      * @see #removeAttribute(String)

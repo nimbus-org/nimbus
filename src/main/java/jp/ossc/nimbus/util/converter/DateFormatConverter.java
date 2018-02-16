@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.converter;
 import java.text.*;
 
 /**
- * “ú•tƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^B<p>
+ * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -44,42 +44,42 @@ public class DateFormatConverter
     private static final long serialVersionUID = -1183874197480695923L;
     
     /**
-     * “ú•t¨•¶š—ñ‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ—¥ä»˜â†’æ–‡å­—åˆ—ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DATE_TO_STRING = OBJECT_TO_STRING;
     
     /**
-     * •¶š—ñ¨“ú•t‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ–‡å­—åˆ—â†’æ—¥ä»˜ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STRING_TO_DATE = STRING_TO_OBJECT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * ƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      */
     protected String format;
     
     /**
-     * “n‚³‚ê‚½Date‚ªnull‚Ìê‡‚É•Ô‚·•¶š—ñB<p>
+     * æ¸¡ã•ã‚ŒãŸDateãŒnullã®å ´åˆã«è¿”ã™æ–‡å­—åˆ—ã€‚<p>
      */
     protected String nullString = "";
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg"yyyy/MM/dd HH:mm:ss.SSS"‚Å“ú•t¨•¶š—ñ•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ"yyyy/MM/dd HH:mm:ss.SSS"ã§æ—¥ä»˜â†’æ–‡å­—åˆ—å¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DateFormatConverter(){
         this(DATE_TO_STRING, "yyyy/MM/dd HH:mm:ss.SSS");
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
-     * @param format ”’lƒtƒH[ƒ}ƒbƒg
+     * @param type å¤‰æ›ç¨®åˆ¥
+     * @param format æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      * @see #DATE_TO_STRING
      * @see #STRING_TO_DATE
      */
@@ -90,9 +90,9 @@ public class DateFormatConverter
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #DATE_TO_STRING
      * @see #STRING_TO_DATE
@@ -102,9 +102,9 @@ public class DateFormatConverter
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -112,18 +112,18 @@ public class DateFormatConverter
     }
     
     /**
-     * •ÏŠ·ƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param format {@link SimpleDateFormat}‚Ì•ÏŠ·ƒtƒH[ƒ}ƒbƒg
+     * @param format {@link SimpleDateFormat}ã®å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setFormat(String format){
         this.format = format;
     }
     
     /**
-     * •ÏŠ·ƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·ƒtƒH[ƒ}ƒbƒg
+     * @return å¤‰æ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      * @see #setFormat(String)
      */
     public String getFormat(){
@@ -131,30 +131,30 @@ public class DateFormatConverter
     }
     
     /**
-     * “n‚³‚ê‚½Date‚ªnull‚Ìê‡‚É•Ô‚·•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹ó•¶šB<br>
+     * æ¸¡ã•ã‚ŒãŸDateãŒnullã®å ´åˆã«è¿”ã™æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºæ–‡å­—ã€‚<br>
      *
-     * @param str “n‚³‚ê‚½Date‚ªnull‚Ìê‡‚É•Ô‚·•¶š—ñ
+     * @param str æ¸¡ã•ã‚ŒãŸDateãŒnullã®å ´åˆã«è¿”ã™æ–‡å­—åˆ—
      */
     public void setNullString(String str){
         nullString = str;
     }
     
     /**
-     * “n‚³‚ê‚½Date‚ªnull‚Ìê‡‚É•Ô‚·•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * æ¸¡ã•ã‚ŒãŸDateãŒnullã®å ´åˆã«è¿”ã™æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “n‚³‚ê‚½Date‚ªnull‚Ìê‡‚É•Ô‚·•¶š—ñ
+     * @return æ¸¡ã•ã‚ŒãŸDateãŒnullã®å ´åˆã«è¿”ã™æ–‡å­—åˆ—
      */
     public String getNullString(){
         return nullString;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         

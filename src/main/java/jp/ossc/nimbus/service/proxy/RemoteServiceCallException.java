@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.proxy;
 
 /**
- * ƒŠƒ‚[ƒgƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ‚É¸”s‚µ‚½ê‡‚Ì—áŠOB<p>
+ * ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆã®ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class RemoteServiceCallException extends RuntimeException{
     private static final long serialVersionUID = 3483083424081488039L;
     
     /**
-     * —áŠO‚ğ¶¬‚·‚éB<p>
+     * ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RemoteServiceCallException(){
         super();
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public RemoteServiceCallException(String message){
         super(message);
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public RemoteServiceCallException(Throwable cause){
         super(cause);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public RemoteServiceCallException(String message, Throwable cause){
         super(message, cause);

@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.performance.PerformanceRecorder;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½{@link HttpClientFactory}ƒT[ƒrƒXB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸ{@link HttpClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -103,97 +103,97 @@ public class HttpClientFactoryService extends ServiceBase
     protected long idleConnectionCheckInterval;
     protected IdleConnectionTimeoutThread idleConnectionTimeoutThread;
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setConnectionTimeout(int millis){
         connectionTimeout = millis;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getConnectionTimeout(){
         return connectionTimeout;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setLinger(int millis){
         linger = millis;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getLinger(){
         return linger;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setReceiveBufferSize(int size){
         receiveBufferSize = size;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getReceiveBufferSize(){
         return receiveBufferSize;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setSendBufferSize(int size){
         sendBufferSize = size;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getSendBufferSize(){
         return sendBufferSize;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setSoTimeout(int millis){
         soTimeout = millis;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getSoTimeout(){
         return soTimeout;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public String getRequestContentType(){
         return requestContentType;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setRequestContentType(String type){
         requestContentType = type;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public String getRequestCharacterEncoding(){
         return requestCharacterEncoding;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setRequestCharacterEncoding(String encoding){
         requestCharacterEncoding = encoding;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public String getHttpVersion(){
         return httpVersion;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setHttpVersion(String version){
         httpVersion = version;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setRequestHeaders(String name, String[] values){
         requestHeaders.put(name, values);
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public String[] getRequestHeaders(String name){
         return (String[])requestHeaders.get(name);
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setProxy(String proxy){
         if(proxy == null){
             proxyHost = null;
@@ -214,12 +214,12 @@ public class HttpClientFactoryService extends ServiceBase
         this.proxy = proxy;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public String getProxy(){
         return proxy;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setLocalAddress(String address) throws UnknownHostException{
         if(address == null){
             localAddress = null;
@@ -230,142 +230,142 @@ public class HttpClientFactoryService extends ServiceBase
         }
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public String getLocalAddress(){
         return localAddressStr;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setHttpClientParam(String name, Object value){
        httpClientParamMap.put(name, value);
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public Object getHttpClientParam(String name){
         return httpClientParamMap.get(name);
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public Map getHttpClientParamMap(){
         return httpClientParamMap;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setRequestDeflateLength(int length){
         requestDeflateLength = length;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getRequestDeflateLength(){
         return requestDeflateLength;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setRequestStreamConverterServiceName(ServiceName name){
         requestStreamConverterServiceName = name;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getRequestStreamConverterServiceName(){
         return requestStreamConverterServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setResponseStreamConverterServiceName(ServiceName name){
         responseStreamConverterServiceName = name;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getResponseStreamConverterServiceName(){
         return responseStreamConverterServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setSemaphoreServiceName(ServiceName name){
         semaphoreServiceName = name;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getSemaphoreServiceName(){
         return semaphoreServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setPerformanceRecorderServiceName(ServiceName name){
         performanceRecorderServiceName = name;
     }
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public ServiceName getPerformanceRecorderServiceName(){
         return performanceRecorderServiceName;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setHttpConnectionManagerClass(Class clazz){
         httpConnectionManagerClass = clazz;
     }
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public Class getHttpConnectionManagerClass(){
         return httpConnectionManagerClass;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalResponseObject(){
         return isOutputJournalResponseObject;
     }
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalResponseObject(boolean isOutput){
         isOutputJournalResponseObject = isOutput;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setIdleConnectionTimeout(long timeout){
         idleConnectionTimeout = timeout;
     }
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public long getIdleConnectionTimeout(){
         return idleConnectionTimeout;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public void setIdleConnectionCheckInterval(long interval){
         idleConnectionCheckInterval = interval;
     }
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public long getIdleConnectionCheckInterval(){
         return idleConnectionCheckInterval;
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getConnectionsInPool(){
         if(httpConnectionManager != null && (httpConnectionManager instanceof MultiThreadedHttpConnectionManager)){
             return ((MultiThreadedHttpConnectionManager)httpConnectionManager).getConnectionsInPool();
@@ -374,7 +374,7 @@ public class HttpClientFactoryService extends ServiceBase
         }
     }
     
-    // HttpClientFactoryServiceMBean‚ÌJavaDoc
+    // HttpClientFactoryServiceMBeanã®JavaDoc
     public int getConnectionsInUse(){
         if(httpConnectionManager != null && (httpConnectionManager instanceof MultiThreadedHttpConnectionManager)){
             return ((MultiThreadedHttpConnectionManager)httpConnectionManager).getConnectionsInUse();
@@ -384,8 +384,8 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğİ’è‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
      * @param converter StreamConverter
      */
@@ -394,7 +394,7 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return StreamConverter
      */
@@ -403,8 +403,8 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğİ’è‚·‚éB<p>
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
      * @param converter StreamConverter
      */
@@ -413,7 +413,7 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return StreamConverter
      */
@@ -422,10 +422,10 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     *  ƒŠƒNƒGƒXƒg‚ğˆêˆÓ‚É¯•Ê‚·‚é˜_—ƒAƒNƒVƒ‡ƒ“–¼‚ÆHTTPƒŠƒNƒGƒXƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     *  ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åã¨HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param action ƒAƒNƒVƒ‡ƒ“–¼
-     * @param request HTTPƒŠƒNƒGƒXƒg
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public void setRequest(String action, HttpRequestImpl request){
         if(actionRequestMap == null){
@@ -436,10 +436,10 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     *  w’è‚³‚ê‚½˜_—ƒAƒNƒVƒ‡ƒ“–¼‚ÉŠY“–‚·‚éHTTPƒŠƒNƒGƒXƒg‚ğæ“¾‚·‚éB<p>
+     *  æŒ‡å®šã•ã‚ŒãŸè«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åã«è©²å½“ã™ã‚‹HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param action ƒAƒNƒVƒ‡ƒ“–¼
-     * @return HTTPƒŠƒNƒGƒXƒg
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
+     * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public HttpRequestImpl getRequest(String action){
         if(actionRequestMap == null){
@@ -449,11 +449,11 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     *  ƒŠƒNƒGƒXƒg‚ğˆêˆÓ‚É¯•Ê‚·‚é˜_—ƒAƒNƒVƒ‡ƒ“–¼‚ÆHTTPƒŒƒXƒ|ƒ“ƒX‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚Ì{@link HttpResponseImpl}‚ªg—p‚³‚ê‚éB<br>
+     *  ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åã¨HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link HttpResponseImpl}ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param action ƒAƒNƒVƒ‡ƒ“–¼
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public void setResponse(String action, HttpResponseImpl response){
         if(actionResponseMap == null){
@@ -463,10 +463,10 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     *  w’è‚³‚ê‚½˜_—ƒAƒNƒVƒ‡ƒ“–¼‚ÉŠY“–‚·‚éHTTPƒŒƒXƒ|ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     *  æŒ‡å®šã•ã‚ŒãŸè«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åã«è©²å½“ã™ã‚‹HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param action ƒAƒNƒVƒ‡ƒ“–¼
-     * @return HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param action ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
+     * @return HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public HttpResponseImpl getResponse(String action){
         if(actionResponseMap == null){
@@ -476,29 +476,29 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * ”FØî•ñ‚ğİ’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param authscope ”FØ‚ÌƒXƒR[ƒv
-     * @param credentials ”FØî•ñ
+     * @param authscope èªè¨¼ã®ã‚¹ã‚³ãƒ¼ãƒ—
+     * @param credentials èªè¨¼æƒ…å ±
      */
     public void setCredentials(AuthScope authscope, Credentials credentials){
         credentialsMap.put(authscope, credentials);
     }
     
     /**
-     * ƒvƒƒLƒV”FØî•ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·èªè¨¼æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param authscope ”FØ‚ÌƒXƒR[ƒv
-     * @param credentials ”FØî•ñ
+     * @param authscope èªè¨¼ã®ã‚¹ã‚³ãƒ¼ãƒ—
+     * @param credentials èªè¨¼æƒ…å ±
      */
     public void setProxyCredentials(AuthScope authscope, Credentials credentials){
         proxyCredentialsMap.put(authscope, credentials);
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(journalServiceName != null){
@@ -542,9 +542,9 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(semaphore != null){
@@ -564,7 +564,7 @@ public class HttpClientFactoryService extends ServiceBase
         }
     }
     
-    // HttpClientFactory‚ÌJavaDoc
+    // HttpClientFactoryã®JavaDoc
     public HttpRequest createRequest(String action)
      throws HttpRequestCreateException{
         HttpRequestImpl request = (HttpRequestImpl)actionRequestMap.get(action);
@@ -618,7 +618,7 @@ public class HttpClientFactoryService extends ServiceBase
         }
     }
     
-    // HttpClientFactory‚ÌJavaDoc
+    // HttpClientFactoryã®JavaDoc
     public jp.ossc.nimbus.service.http.HttpClient createHttpClient()
      throws HttpException{
         if(semaphore == null){
@@ -643,7 +643,7 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     /**
-     * Jakarta HttpClient‚ğg‚Á‚½{@link jp.ossc.nimbus.service.http.HttpClient HttpClient}À‘•ƒNƒ‰ƒXB<p>
+     * Jakarta HttpClientã‚’ä½¿ã£ãŸ{@link jp.ossc.nimbus.service.http.HttpClient HttpClient}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -654,7 +654,7 @@ public class HttpClientFactoryService extends ServiceBase
         protected HttpMethodBase method;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public HttpClientImpl(){
             
@@ -713,7 +713,7 @@ public class HttpClientFactoryService extends ServiceBase
             }
         }
         
-        // HttpClient‚ÌJavaDoc
+        // HttpClientã®JavaDoc
         public void addCookie(javax.servlet.http.Cookie cookie){
             if(client == null){
                 return;
@@ -735,7 +735,7 @@ public class HttpClientFactoryService extends ServiceBase
             client.getState().addCookie(result);
         }
         
-        // HttpClient‚ÌJavaDoc
+        // HttpClientã®JavaDoc
         public javax.servlet.http.Cookie[] getCookies(){
             if(client == null){
                 return new javax.servlet.http.Cookie[0];
@@ -752,7 +752,7 @@ public class HttpClientFactoryService extends ServiceBase
             return result;
         }
         
-        // HttpClient‚ÌJavaDoc
+        // HttpClientã®JavaDoc
         public HttpResponse executeRequest(HttpRequest request)
          throws HttpException{
             if(client == null){
@@ -951,7 +951,7 @@ public class HttpClientFactoryService extends ServiceBase
             }
         }
         
-        // HttpClient‚ÌJavaDoc
+        // HttpClientã®JavaDoc
         public void close() throws HttpException{
             if(semaphore != null){
                 semaphore.freeResource();
@@ -972,9 +972,9 @@ public class HttpClientFactoryService extends ServiceBase
         }
         
         /**
-         * Jakarta HttpClient‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+         * Jakarta HttpClientã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Jakarta HttpClient‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+         * @return Jakarta HttpClientã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
          */
         public HttpClient getHttpClient(){
             return client;

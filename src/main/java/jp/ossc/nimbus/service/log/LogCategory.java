@@ -36,41 +36,41 @@ import jp.ossc.nimbus.service.writer.Category;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 
 /**
- * ƒƒOƒJƒeƒSƒŠB<p>
- * ƒƒOo—Íæ‚ğ•ª—Ş‚·‚éƒJƒeƒSƒŠ‚ğ•\‚·ƒCƒ“ƒ^ƒtƒF[ƒXB<br>
+ * ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã€‚<p>
+ * ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’åˆ†é¡ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚’è¡¨ã™ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface LogCategory extends Category{
     
     /**
-     * ƒJƒeƒSƒŠ–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚«ãƒ†ã‚´ãƒªåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒJƒeƒSƒŠ–¼
+     * @return ã‚«ãƒ†ã‚´ãƒªå
      */
     public String getCategoryName();
     
     /**
-     * w’è‚³‚ê‚½ƒƒO‚Ì—Dæ‡ˆÊ‚ª‚±‚ÌƒJƒeƒSƒŠ‚Ì—Dæ‡ˆÊ”ÍˆÍ“à‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã®å„ªå…ˆé †ä½ãŒã“ã®ã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆé †ä½ç¯„å›²å†…ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param priority ƒƒO‚Ì—Dæ‡ˆÊ
-     * @return ‚±‚ÌƒJƒeƒSƒŠ‚Ì—Dæ‡ˆÊ”ÍˆÍ“à‚Å‚ ‚éê‡‚Ítrue
+     * @param priority ãƒ­ã‚°ã®å„ªå…ˆé †ä½
+     * @return ã“ã®ã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆé †ä½ç¯„å›²å†…ã§ã‚ã‚‹å ´åˆã¯true
      */
     public boolean isValidPriorityRange(int priority);
     
     /**
-     * w’è‚³‚ê‚½ƒƒO‚Ì—Dæ‡ˆÊ‚É‘Î‰‚·‚éƒ‰ƒxƒ‹‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã®å„ªå…ˆé †ä½ã«å¯¾å¿œã™ã‚‹ãƒ©ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param priority ƒƒO‚Ì—Dæ‡ˆÊ
-     * @return ƒ‰ƒxƒ‹•¶š—ñ
+     * @param priority ãƒ­ã‚°ã®å„ªå…ˆé †ä½
+     * @return ãƒ©ãƒ™ãƒ«æ–‡å­—åˆ—
      */
     public String getLabel(int priority);
     
     /**
-     * w’è‚³‚ê‚½ƒƒOo—Í—v‘f‚Ìƒ}ƒbƒsƒ“ƒO‚ğA‚±‚ÌƒJƒeƒSƒŠ‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°å‡ºåŠ›è¦ç´ ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’ã€ã“ã®ã‚«ãƒ†ã‚´ãƒªã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param priority ƒƒO‚Ì—Dæ‡ˆÊ
-     * @param elements WritableRecordFactory‚É“n‚·ƒƒOo—Í—v‘f‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param priority ãƒ­ã‚°ã®å„ªå…ˆé †ä½
+     * @param elements WritableRecordFactoryã«æ¸¡ã™ãƒ­ã‚°å‡ºåŠ›è¦ç´ ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void write(int priority, java.util.Map elements) throws MessageWriteException;
 }

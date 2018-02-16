@@ -38,7 +38,7 @@ import java.util.List;
 import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 
 /**
- * FLVŒ`®‚ÌWriterƒNƒ‰ƒXB<p>
+ * FLVå½¢å¼ã®Writerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.FLVWriter;
@@ -68,7 +68,7 @@ import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 public class FLVWriter extends BufferedWriter{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‰üs•¶šB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ”¹è¡Œæ–‡å­—ã€‚<p>
      */
     public static final String DEFAULT_LINE_SEPARATOR
          = System.getProperty("line.separator");
@@ -81,26 +81,26 @@ public class FLVWriter extends BufferedWriter{
     protected WriterWrapper writerWrapper;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FLVWriter(){
         this(new WriterWrapper());
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
      */
     public FLVWriter(Writer writer){
         this(writer, null);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param convs ƒtƒB[ƒ‹ƒh‚ğƒpƒfƒBƒ“ƒO‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
      */
     public FLVWriter(Writer writer, PaddingStringConverter[] convs){
         super(writer instanceof WriterWrapper ? writer : new WriterWrapper(writer));
@@ -109,30 +109,30 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVWriter(int size){
         this(new WriterWrapper(), size);
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVWriter(Writer writer, int size){
         this(writer, null, size);
     }
     
     /**
-     * w’è‚³‚ê‚½‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param writer ‘‚«‚İæ‚ÌWriter
-     * @param convs ƒtƒB[ƒ‹ƒh‚ğƒpƒfƒBƒ“ƒO‚·‚éƒRƒ“ƒo[ƒ^”z—ñ
-     * @param size ‘‚«‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param writer æ›¸ãè¾¼ã¿å…ˆã®Writer
+     * @param convs ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ã‚¿é…åˆ—
+     * @param size æ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public FLVWriter(Writer writer, PaddingStringConverter[] convs, int size){
         super(writer instanceof WriterWrapper ? writer : new WriterWrapper(writer), size);
@@ -141,7 +141,7 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * Writer‚ğİ’è‚·‚éB<p>
+     * Writerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param writer Writer
      */
@@ -152,65 +152,65 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * ŠeƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğİ’è‚·‚éB<p>
+     * å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param convs ƒpƒfƒBƒ“ƒO‚ğs‚¤ƒRƒ“ƒo[ƒ^‚Ì”z—ñ
+     * @param convs ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®é…åˆ—
      */
     public void setFieldPaddingStringConverter(PaddingStringConverter[] convs){
         converters = convs;
     }
     
     /**
-     * ŠeƒtƒB[ƒ‹ƒh‚ÌƒpƒfƒBƒ“ƒO‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒfƒBƒ“ƒO‚ğs‚¤ƒRƒ“ƒo[ƒ^‚Ì”z—ñ
+     * @return ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®é…åˆ—
      */
     public PaddingStringConverter[] getFieldPaddingStringConverter(){
         return converters;
     }
     
     /**
-     * ‰üsƒZƒpƒŒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ‰üsƒZƒpƒŒ[ƒ^
+     * @param separator æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public void setLineSeparator(String separator){
         this.lineSeparator = separator;
     }
     
     /**
-     * ‰üsƒZƒpƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰üsƒZƒpƒŒ[ƒ^
+     * @return æ”¹è¡Œã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿
      */
     public String getLineSeparator(){
          return lineSeparator;
     }
     
     /**
-     * null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍANullPointerException‚ª”­¶‚·‚éB<br>
+     * nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€NullPointerExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚<br>
      *
-     * @param value •¶š—ñ
+     * @param value æ–‡å­—åˆ—
      */
     public void setNullValue(String value){
         nullValue = value;
     }
     
     /**
-     * null‚ğCSV—v‘f‚Æ‚µ‚Ä‘‚«‚à‚¤‚Æ‚µ‚½ê‡‚ÉAo—Í‚·‚é•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * nullã‚’CSVè¦ç´ ã¨ã—ã¦æ›¸ãè¾¼ã‚‚ã†ã¨ã—ãŸå ´åˆã«ã€å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ
+     * @return æ–‡å­—åˆ—
      */
     public String getNullValue(){
         return nullValue;
     }
     
     /**
-     * s‹æØ‚è•¶š‚ğ‘‚«‚ŞB<p>
-     * s‹æØ‚è•¶š‚ÍA{@link #getLineSeparator()}‚ğg—p‚·‚éB<br>
+     * è¡ŒåŒºåˆ‡ã‚Šæ–‡å­—ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
+     * è¡ŒåŒºåˆ‡ã‚Šæ–‡å­—ã¯ã€{@link #getLineSeparator()}ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void newLine() throws IOException{
         super.write(lineSeparator);
@@ -219,11 +219,11 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f•¶š—ñ‚ğ‘‚«‚ŞB<p>
-     * ƒpƒfƒBƒ“ƒOˆ—‚ğ©“®‚Ås‚¤B<br>
+     * FLVè¦ç´ æ–‡å­—åˆ—ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      * 
-     * @param element FLV—v‘f•¶š—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ æ–‡å­—åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void writeElement(String element) throws IOException{
         if(converters != null && converters.length != 0 && converters[fieldIndex] != null){
@@ -235,10 +235,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(boolean element) throws IOException{
@@ -246,10 +246,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(byte element) throws IOException{
@@ -257,10 +257,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(char element) throws IOException{
@@ -268,10 +268,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(short element) throws IOException{
@@ -279,10 +279,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(int element) throws IOException{
@@ -290,10 +290,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(long element) throws IOException{
@@ -301,10 +301,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(float element) throws IOException{
@@ -312,10 +312,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(double element) throws IOException{
@@ -323,10 +323,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * FLV—v‘f‚ğ‘‚«‚ŞB<p>
+     * FLVè¦ç´ ã‚’æ›¸ãè¾¼ã‚€ã€‚<p>
      * 
-     * @param element FLV—v‘f
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param element FLVè¦ç´ 
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeElement(String)
      */
     public void writeElement(Object element) throws IOException{
@@ -334,11 +334,11 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ”z—ñ‚ğFLV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
-     * ‰üs•¶š‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÌƒGƒXƒP[ƒvAˆÍ‚İ•¶š‚Å‚ÌˆÍ‚İˆ—‚ğ©“®‚Ås‚¤B<br>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—é…åˆ—ã‚’FLVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æ”¹è¡Œæ–‡å­—ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€å›²ã¿æ–‡å­—ã§ã®å›²ã¿å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      *
-     * @param elements FLVŒ`®‚Åo—Í‚·‚é•¶š—ñ”z—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param elements FLVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—é…åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void writeFLV(String[] elements) throws IOException{
         for(int i = 0; i < elements.length; i++){
@@ -348,10 +348,10 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * w’è‚³‚ê‚½”z—ñ‚ğFLV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
+     * æŒ‡å®šã•ã‚ŒãŸé…åˆ—ã‚’FLVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param elements FLVŒ`®‚Åo—Í‚·‚é”z—ñ
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param elements FLVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹é…åˆ—
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #writeFLV(String[])
      */
     public void writeFLV(Object[] elements) throws IOException{
@@ -362,11 +362,11 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŠƒXƒg‚ğFLV‚Æ‚µ‚Ä‘‚«‚ŞB<p>
-     * ‰üs•¶š‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^‚Ì’Ç‰ÁAƒZƒpƒŒ[ƒ^•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÌƒGƒXƒP[ƒvAˆÍ‚İ•¶š‚Å‚ÌˆÍ‚İˆ—‚ğ©“®‚Ås‚¤B<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¹ãƒˆã‚’FLVã¨ã—ã¦æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æ”¹è¡Œæ–‡å­—ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®è¿½åŠ ã€ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€å›²ã¿æ–‡å­—ã§ã®å›²ã¿å‡¦ç†ã‚’è‡ªå‹•ã§è¡Œã†ã€‚<br>
      *
-     * @param elements FLVŒ`®‚Åo—Í‚·‚éƒŠƒXƒg
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
+     * @param elements FLVå½¢å¼ã§å‡ºåŠ›ã™ã‚‹ãƒªã‚¹ãƒˆ
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void writeFLV(List elements) throws IOException{
         for(int i = 0, imax = elements.size(); i < imax; i++){
@@ -376,19 +376,19 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public FLVWriter cloneWriter(){
         return cloneWriter(new FLVWriter());
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clone –¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @return –¢Ú‘±‚Ì•¡»
+     * @param clone æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     protected FLVWriter cloneWriter(FLVWriter clone){
         clone.lineSeparator = lineSeparator;

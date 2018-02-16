@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.soap;
 
 /**
- * WSƒT[ƒrƒXŠÖ˜A—áŠOƒNƒ‰ƒXB<p>
+ * WSã‚µãƒ¼ãƒ“ã‚¹é–¢é€£ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  */
@@ -41,35 +41,35 @@ public class WsServiceException extends Exception {
     private static final long serialVersionUID = 8920265046972837041L;
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public WsServiceException() {
         super();
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public WsServiceException(String message) {
         super(message);
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› 
      */
     public WsServiceException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      *
-     * @param cause Œ´ˆö
+     * @param cause åŸå› 
      */
     public WsServiceException(Throwable cause) {
         super(cause);

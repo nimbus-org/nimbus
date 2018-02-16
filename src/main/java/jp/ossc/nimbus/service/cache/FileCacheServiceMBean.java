@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link FileCacheService}��MBean�C���^�t�F�[�X<p>
+ * {@link FileCacheService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see FileCacheService
@@ -42,126 +42,126 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface FileCacheServiceMBean extends AbstractCacheServiceMBean{
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̃t�@�C�����̃f�t�H���g�T�t�B�b�N�X�B<p>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際のファイル名のデフォルトサフィックス。<p>
      */
     public static final String DEFAULT_SUFFIX = ".obj";
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̏o�͐�f�B���N�g����ݒ肷��B<p>
-     * �o�͐�f�B���N�g�����w�肳��Ă��Ȃ��ꍇ�́AJVM�̃e���|�����f�B���N�g�����g�p����B<br>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際の出力先ディレクトリを設定する。<p>
+     * 出力先ディレクトリが指定されていない場合は、JVMのテンポラリディレクトリを使用する。<br>
      *
-     * @param path �o�̓f�B���N�g���p�X
+     * @param path 出力ディレクトリパス
      */
     public void setOutputDirectory(String path);
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̏o�͐�f�B���N�g�����擾����B<p>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際の出力先ディレクトリを取得する。<p>
      *
-     * @return �o�̓f�B���N�g���p�X
+     * @return 出力ディレクトリパス
      */
     public String getOutputDirectory();
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̃t�@�C�����̃v���t�B�N�X��ݒ肷��B<p>
-     * ���̏o�̓t�@�C���v���t�B�N�X���w�肳��Ă��Ȃ��ꍇ�́A�L���b�V������I�u�W�F�N�g��toString()���g�p�����B<br>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際のファイル名のプレフィクスを設定する。<p>
+     * この出力ファイルプレフィクスが指定されていない場合は、キャッシュするオブジェクトのtoString()が使用される。<br>
      *
-     * @param prefix �o�̓t�@�C���v���t�B�N�X
+     * @param prefix 出力ファイルプレフィクス
      */
     public void setOutputPrefix(String prefix);
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̃t�@�C�����̃v���t�B�N�X���擾����B<p>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際のファイル名のプレフィクスを取得する。<p>
      *
-     * @return �o�̓t�@�C���v���t�B�N�X
+     * @return 出力ファイルプレフィクス
      */
     public String getOutputPrefix();
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̃t�@�C�����̃T�t�B�b�N�X��ݒ肷��B<p>
-     * ���̏o�̓t�@�C���T�t�B�b�N�X���w�肳��Ă��Ȃ��ꍇ�́A".obj"���g�p�����B<br>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際のファイル名のサフィックスを設定する。<p>
+     * この出力ファイルサフィックスが指定されていない場合は、".obj"が使用される。<br>
      *
-     * @param suffix �o�̓t�@�C���T�t�B�b�N�X
+     * @param suffix 出力ファイルサフィックス
      */
     public void setOutputSuffix(String suffix);
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂���ۂ̃t�@�C�����̃v���t�B�N�X���擾����B<p>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力する際のファイル名のプレフィクスを取得する。<p>
      *
-     * @return �o�̓t�@�C���v���t�B�N�X
+     * @return 出力ファイルプレフィクス
      */
     public String getOutputSuffix();
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂����L���b�V���t�@�C�����T�[�r�X�̊J�n���Ƀ��[�h���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�ŁA�T�[�r�X�̊J�n���Ƀ��[�h���Ȃ��B<br>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力したキャッシュファイルをサービスの開始時にロードするかどうかを設定する。<p>
+     * デフォルトは、falseで、サービスの開始時にロードしない。<br>
      *
-     * @param isLoad �T�[�r�X�̊J�n���Ƀ��[�h����ꍇtrue
+     * @param isLoad サービスの開始時にロードする場合true
      */
     public void setLoadOnStart(boolean isLoad);
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂����L���b�V���t�@�C�����T�[�r�X�̊J�n���Ƀ��[�h���邩�ǂ����𔻒肷��B<p>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力したキャッシュファイルをサービスの開始時にロードするかどうかを判定する。<p>
      *
-     * @return �T�[�r�X�̊J�n���Ƀ��[�h����ꍇtrue
+     * @return サービスの開始時にロードする場合true
      */
     public boolean isLoadOnStart();
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂����L���b�V���t�@�C����JVM�̏I�����ɍ폜���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�ŁAJVM�I�����ɍ폜����B<br>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力したキャッシュファイルをJVMの終了時に削除するかどうかを設定する。<p>
+     * デフォルトは、trueで、JVM終了時に削除する。<br>
      *
-     * @param isDeleteOnExit �폜����ꍇtrue
+     * @param isDeleteOnExit 削除する場合true
      */
     public void setDeleteOnExitWithJVM(boolean isDeleteOnExit);
     
     /**
-     * �L���b�V�������I�u�W�F�N�g���V���A���C�Y���ăt�@�C���Ƃ��ďo�͂����L���b�V���t�@�C����JVM�̏I�����ɍ폜���邩�ǂ����𔻒肷��B<p>
+     * キャッシュしたオブジェクトをシリアライズしてファイルとして出力したキャッシュファイルをJVMの終了時に削除するかどうかを判定する。<p>
      *
-     * @return �폜����ꍇtrue
+     * @return 削除する場合true
      */
     public boolean isDeleteOnExitWithJVM();
     
     /**
-     * �L���b�V���t�@�C���̃��[�h���ɁA�t�@�C�������[�h�ł��鎖�����؂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�ŁA���؂��Ȃ��B<br>
+     * キャッシュファイルのロード時に、ファイルがロードできる事を検証するかどうかを設定する。<p>
+     * デフォルトは、falseで、検証しない。<br>
      *
-     * @param isCheck ���؂���ꍇtrue
+     * @param isCheck 検証する場合true
      */
     public void setCheckFileOnLoad(boolean isCheck);
     
     /**
-     * �L���b�V���t�@�C���̃��[�h���ɁA�t�@�C�������[�h�ł��鎖�����؂��邩�ǂ����𔻒肷��B<p>
+     * キャッシュファイルのロード時に、ファイルがロードできる事を検証するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���؂���
+     * @return trueの場合、検証する
      */
     public boolean isCheckFileOnLoad();
     
     /**
-     * �t�@�C�������[�h�ł��鎖�����؂������ʎ��s�����ꍇ�ɁA�Y���t�@�C�����폜���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�ŁA�폜���Ȃ��B<br>
+     * ファイルがロードできる事を検証した結果失敗した場合に、該当ファイルを削除するかどうかを設定する。<p>
+     * デフォルトは、falseで、削除しない。<br>
      *
-     * @param isDelete �폜����ꍇtrue
+     * @param isDelete 削除する場合true
      */
     public void setDeleteOnCheckFileError(boolean isDelete);
     
     /**
-     * �t�@�C�������[�h�ł��鎖�����؂������ʎ��s�����ꍇ�ɁA�Y���t�@�C�����폜���邩�ǂ����𔻒肷��B<p>
+     * ファイルがロードできる事を検証した結果失敗した場合に、該当ファイルを削除するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�폜����
+     * @return trueの場合、削除する
      */
     public boolean isDeleteOnCheckFileError();
     
     /**
-     * �t�@�C���ɒ��񉻂���ۂɒ��񉻂��s��{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
+     * ファイルに直列化する際に直列化を行う{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}サービスのサービス名を設定する。<p>
      *
-     * @param name Externalizer�T�[�r�X�̃T�[�r�X��
+     * @param name Externalizerサービスのサービス名
      */
     public void setExternalizerServiceName(ServiceName name);
     
     /**
-     * �t�@�C���ɒ��񉻂���ۂɒ��񉻂��s��{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * ファイルに直列化する際に直列化を行う{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}サービスのサービス名を取得する。<p>
      *
-     * @return Externalizer�T�[�r�X�̃T�[�r�X��
+     * @return Externalizerサービスのサービス名
      */
     public ServiceName getExternalizerServiceName();
 }

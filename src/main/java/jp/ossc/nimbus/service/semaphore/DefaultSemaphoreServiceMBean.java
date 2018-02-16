@@ -34,166 +34,166 @@ package jp.ossc.nimbus.service.semaphore;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link DefaultSemaphoreService}��MBean�C���^�[�t�F�C�X�B<p>
+ * {@link DefaultSemaphoreService}のMBeanインターフェイス。<p>
  * 
  * @author H.Nakano
  */
 public interface DefaultSemaphoreServiceMBean extends ServiceBaseMBean{
     
     /**
-     * �Z�}�t�H�����N���X����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link MemorySemaphore}�B
+     * セマフォ実装クラス名を設定する。<p>
+     * デフォルトは、{@link MemorySemaphore}。
      *
-     * @param name �Z�}�t�H�����N���X��
+     * @param name セマフォ実装クラス名
      */
     public void setSemaphoreClassName(String name);
     
     /**
-     * �Z�}�t�H�����N���X�����擾����B<p>
+     * セマフォ実装クラス名を取得する。<p>
      *
-     * @return �Z�}�t�H�����N���X��
+     * @return セマフォ実装クラス名
      */
     public String getSemaphoreClassName();
     
     /**
-     * �Z�}�t�H�̃��\�[�X������Ԃ��B<p>
+     * セマフォのリソース総数を返す。<p>
      *
-     * @return ���\�[�X����
+     * @return リソース総数
      */
     public int getResourceCapacity() ;
     
     /**
-     * �Z�}�t�H�̃��\�[�X������ݒ肷��B<p>
+     * セマフォのリソース総数を設定する。<p>
      *
-     * @param capa ���\�[�X����
+     * @param capa リソース総数
      */
     public void setResourceCapacity(int capa) ;
     
     /**
-     * �Z�}�t�H�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ�ݒ肷��B<p>
-     * �������Z�}�t�H�҂��̐擪�łȂ��ꍇ�́A�Ă�sleep����B<br>
+     * セマフォに対して無限取得待ちをするスレッドがsleepする時間を設定する。<p>
+     * 自分がセマフォ待ちの先頭でない場合は、再びsleepする。<br>
      *
-     * @param millis �Z�}�t�H�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @param millis セマフォに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public void setSleepTime(long millis);
     
     /**
-     * �Z�}�t�H�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ��擾����B<p>
+     * セマフォに対して無限取得待ちをするスレッドがsleepする時間を取得する。<p>
      *
-     * @return �Z�}�t�H�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @return セマフォに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public long getSleepTime();
     
     /**
-     * ���\�[�X���󂢂Ă��邩����I�Ƀ`�F�b�N���鎞�ԊԊu[ms]��ݒ肷��B<p>
-     * ���\�[�X���󂢂Ă��đ҂��Ă���X���b�h������ꍇ�́A���̃X���b�h���N�����B<br>
-     * �f�t�H���g�́A�`�F�b�N���Ȃ��B
+     * リソースが空いているか定期的にチェックする時間間隔[ms]を設定する。<p>
+     * リソースが空いていて待っているスレッドがいる場合は、そのスレッドを起こす。<br>
+     * デフォルトは、チェックしない。
      *
-     * @param millis ���\�[�X���󂢂Ă��邩����I�Ƀ`�F�b�N���鎞�ԊԊu[ms]
+     * @param millis リソースが空いているか定期的にチェックする時間間隔[ms]
      */
     public void setCheckInterval(long millis);
     
     /**
-     * ���\�[�X���󂢂Ă��邩����I�Ƀ`�F�b�N���鎞�ԊԊu[ms]���擾����B<p>
+     * リソースが空いているか定期的にチェックする時間間隔[ms]を取得する。<p>
      *
-     * @return ���\�[�X���󂢂Ă��邩����I�Ƀ`�F�b�N���鎞�ԊԊu[ms]
+     * @return リソースが空いているか定期的にチェックする時間間隔[ms]
      */
     public long getCheckInterval();
     
     /**
-     * �Z�}�t�H�l���܂ł̍ő�҂�����[ms]���擾����B<p>
+     * セマフォ獲得までの最大待ち時間[ms]を取得する。<p>
      *
-     * @return �ő�҂�����[ms]
+     * @return 最大待ち時間[ms]
      */
     public long getTimeoutMillis();
     
     /**
-     * �Z�}�t�H�l���܂ł̍ő�҂�����[ms]��ݒ肷��B<p>
+     * セマフォ獲得までの最大待ち時間[ms]を設定する。<p>
      *
-     * @param timeout �ő�҂�����[ms]
+     * @param timeout 最大待ち時間[ms]
      */
     public void setTimeoutMillis(long timeout);
     
     /**
-     * �Z�}�t�H�l���҂��̍ő吔���擾����B<p>
+     * セマフォ獲得待ちの最大数を取得する。<p>
      *
-     * @return �ő哯���l���҂���
+     * @return 最大同時獲得待ち数
      */
     public int getMaxWaitCount();
     
     /**
-     * �Z�}�t�H�l���҂��̍ő吔��ݒ肷��B<p>
+     * セマフォ獲得待ちの最大数を設定する。<p>
      *
-     * @param count �ő哯���l���҂���
+     * @param count 最大同時獲得待ち数
      */
     public void setMaxWaitCount(int count);
     
     /**
-     * �Z�}�t�H�l����̋����Z�}�t�H�J������[ms]���擾����B<p>
+     * セマフォ獲得後の強制セマフォ開放時間[ms]を取得する。<p>
      *
-     * @return �����Z�}�t�H�J������
+     * @return 強制セマフォ開放時間
      */
     public long getForceFreeTimeoutMillis();
     
     /**
-     * �Z�}�t�H�l����̋����Z�}�t�H�J������[ms]��ݒ肷��B<p>
+     * セマフォ獲得後の強制セマフォ開放時間[ms]を設定する。<p>
      *
-     * @param timeout �����Z�}�t�H�J������
+     * @param timeout 強制セマフォ開放時間
      */
     public void setForceFreeTimeoutMillis(long timeout);
     
     /**
-     * ���[�\�[�X�̎擾�Ɖ���̃X���b�h���֘A�t���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g��true�ŁA���\�[�X���擾�����X���b�h����̉�������󂯕t���Ȃ��B<br>
-     * �܂��Afalse�ɂ����ꍇ�́A��������^�C���A�E�g�͖����ƂȂ�B<br>
+     * リーソースの取得と解放のスレッドを関連付けるかどうかを設定する。<p>
+     * デフォルトはtrueで、リソースを取得したスレッドからの解放しか受け付けない。<br>
+     * また、falseにした場合は、強制解放タイムアウトは無効となる。<br>
      *
-     * @param isBinding ���\�[�X���擾�����X���b�h����̉�������󂯕t���Ȃ��悤�ɂ���ꍇ�́Atrue
+     * @param isBinding リソースを取得したスレッドからの解放しか受け付けないようにする場合は、true
      */
     public void setThreadBinding(boolean isBinding);
     
     /**
-     * ���[�\�[�X�̎擾�Ɖ���̃X���b�h���֘A�t���邩�ǂ����𔻒肷��B<p>
+     * リーソースの取得と解放のスレッドを関連付けるかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́A���\�[�X���擾�����X���b�h����̉�������󂯕t���Ȃ�
+     * @return trueの場合は、リソースを取得したスレッドからの解放しか受け付けない
      */
     public boolean isThreadBinding();
     
     /**
-     * �Z�}�t�H�̎c�胊�\�[�X����Ԃ��B<p>
+     * セマフォの残りリソース数を返す。<p>
      *
-     * @return ���\�[�X��
+     * @return リソース数
      */
     public int getResourceRemain();
     
     /**
-     * �Z�}�t�H�擾�҂������Ă��鐔���擾����B<p>
+     * セマフォ取得待ちをしている数を取得する。<p>
      * 
-     * @return �Z�}�t�H�擾�҂������Ă��鐔
+     * @return セマフォ取得待ちをしている数
      */
     public int getWaitingCount();
     
     /**
-     * �Z�}�t�H�l���҂��X���b�h���J�����A�Z�}�t�H�l���҂����󂯕t���Ȃ��悤�ɂ���B<p>
+     * セマフォ獲得待ちスレッドを開放し、セマフォ獲得待ちを受け付けないようにする。<p>
      */
     public void release();
     
     /**
-     * �Z�}�t�H�l���҂��̎�t���J�n����B<p>
-     * {@link #release()}�ďo����ɁA�Z�}�t�H�l���҂����󂯕t����悤�ɂ���B
+     * セマフォ獲得待ちの受付を開始する。<p>
+     * {@link #release()}呼出し後に、セマフォ獲得待ちを受け付けるようにする。
      */
     public void accept();
     
     /**
-     * �Z�}�t�H�̍ő�g�p���т��擾����B<p>
+     * セマフォの最大使用実績を取得する。<p>
      *
-     * @return �ő�g�p����
+     * @return 最大使用実績
      */
     public int getMaxUsedResource();
     
     /**
-     * �Z�}�t�H�̍ő�҂������т��擾����B<p>
+     * セマフォの最大待ち数実績を取得する。<p>
      *
-     * @return �ő�҂�������
+     * @return 最大待ち数実績
      */
     public int getMaxWaitedCount();
 }

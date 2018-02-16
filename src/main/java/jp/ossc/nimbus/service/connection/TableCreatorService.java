@@ -44,9 +44,9 @@ import jp.ossc.nimbus.util.*;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * ƒe[ƒuƒ‹¶¬ƒT[ƒrƒXB<p>
- * Ý’è’Ê‚è‚ÉAƒe[ƒuƒ‹‚ÌCREATEAINSERTADELETEADROP“™‚ðs‚¤B<br>
- * ‚Ü‚½Aƒe[ƒuƒ‹‚ðƒtƒ@ƒCƒ‹‚ÖƒoƒbƒNƒAƒbƒv‚µ‚½‚èAƒtƒ@ƒCƒ‹‚©‚çƒe[ƒuƒ‹‚É•œŒ³‚µ‚½‚è‚·‚éŽ–‚à‚Å‚«‚éB<br>
+ * ãƒ†ãƒ¼ãƒ–ãƒ«ç”Ÿæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * è¨­å®šé€šã‚Šã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®CREATEã€INSERTã€DELETEã€DROPç­‰ã‚’è¡Œã†ã€‚<br>
+ * ã¾ãŸã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã¸ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã—ãŸã‚Šã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ†ãƒ¼ãƒ–ãƒ«ã«å¾©å…ƒã—ãŸã‚Šã™ã‚‹äº‹ã‚‚ã§ãã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

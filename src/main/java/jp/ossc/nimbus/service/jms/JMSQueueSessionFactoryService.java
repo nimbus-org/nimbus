@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS QueueƒZƒbƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * JMS1.0‚Å‚ÍAQueue‚ÆTopic‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßAQueueê—p‚ÌƒZƒbƒVƒ‡ƒ“¶¬‚ğs‚¤B<br>
+ * JMS Queueã‚»ãƒƒã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JMS1.0ã§ã¯ã€Queueã¨Topicã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€Queueå°‚ç”¨ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ç”Ÿæˆã‚’è¡Œã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -44,14 +44,14 @@ public class JMSQueueSessionFactoryService extends JMSSessionFactoryService{
     private static final long serialVersionUID = -4113317724617492287L;
     
     /**
-     * JMS QueueƒZƒbƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚Åw’è‚³‚ê‚½QueueConnection‚©‚çA{@link QueueConnection#createQueueSession(boolean, int)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * JMS Queueã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸQueueConnectionã‹ã‚‰ã€{@link QueueConnection#createQueueSession(boolean, int)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param con QueueConnection
-     * @param transactionMode ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒTƒ|[ƒg‚·‚éê‡Atrue
-     * @param ackMode MessageConsumer‚âJMSƒNƒ‰ƒCƒAƒ“ƒg‚ªƒƒbƒZ[ƒW‚ğóM‚µ‚½‚ÌACK‚Ì•Ô‚µ•û‚Ìƒ‚[ƒh
-     * @return JMS QueueƒZƒbƒVƒ‡ƒ“
-     * @exception JMSSessionCreateException JMS QueueƒZƒbƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param transactionMode ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã€true
+     * @param ackMode MessageConsumerã‚„JMSã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ãŸæ™‚ã®ACKã®è¿”ã—æ–¹ã®ãƒ¢ãƒ¼ãƒ‰
+     * @return JMS Queueã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @exception JMSSessionCreateException JMS Queueã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Session getSession(
         Connection con,

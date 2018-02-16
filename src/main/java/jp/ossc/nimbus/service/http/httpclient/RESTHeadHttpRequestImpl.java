@@ -37,17 +37,17 @@ import java.util.regex.Matcher;
 import jp.ossc.nimbus.service.http.RESTHttpRequest;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½RESTful‚ÈHTTP HEADƒŠƒNƒGƒXƒgB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸRESTfulãªHTTP HEADãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class RESTHeadHttpRequestImpl extends HeadHttpRequestImpl implements RESTHttpRequest{
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éƒŠƒ\[ƒX‚ğ“Á’è‚·‚éƒL[‚ğ’Ç‰Á‚·‚éB<p>
-     * URL‚É"/"‹æØ‚è‚Åw’è‚³‚ê‚ÄƒL[‚ğ’Ç‰Á‚·‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * URLã«"/"åŒºåˆ‡ã‚Šã§æŒ‡å®šã•ã‚Œã¦ã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<br>
      *
-     * @param key ƒŠƒ\[ƒX‚ğ“Á’è‚·‚éƒL[
+     * @param key ãƒªã‚½ãƒ¼ã‚¹ã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
      */
     public void addKey(String key){
         StringBuilder buf = new StringBuilder(url);

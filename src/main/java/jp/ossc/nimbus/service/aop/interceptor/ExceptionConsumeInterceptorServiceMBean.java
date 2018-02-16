@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ExceptionConsumeInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ExceptionConsumeInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author N.Saisho
  * @see ExceptionConsumeInterceptorService
@@ -42,100 +42,100 @@ import jp.ossc.nimbus.core.*;
 public interface ExceptionConsumeInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒLƒƒƒbƒ`‚·‚é—áŠOƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒãƒã™ã‚‹ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param classnames uƒLƒƒƒbƒ`‚·‚é—áŠOƒNƒ‰ƒXv‚ğİ’è‚·‚éB
+     * @param classnames ã€Œã‚­ãƒ£ãƒƒãƒã™ã‚‹ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€ã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setExceptionClassNames(String[] classnames);
     
     /**
-     * ƒLƒƒƒbƒ`‚·‚é—áŠOƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒãƒã™ã‚‹ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒ`‚·‚é—áŠOƒNƒ‰ƒX–¼”z—ñ
+     * @return ã‚­ãƒ£ãƒƒãƒã™ã‚‹ä¾‹å¤–ã‚¯ãƒ©ã‚¹åé…åˆ—
      */
     public String[] getExceptionClassNames();
     
     /**
-     * –ß‚è’l‚ª‚ ‚éƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì—áŠO‚ğˆ¬‚è‚Â‚Ô‚µ‚½‚É•Ô‚·–ß‚è’l‚ğİ’è‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ãŒã‚ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ä¾‹å¤–ã‚’æ¡ã‚Šã¤ã¶ã—ãŸæ™‚ã«è¿”ã™æˆ»ã‚Šå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param val –ß‚è’l
+     * @param val æˆ»ã‚Šå€¤
      */
     public void setReturnValue(Object val);
     
     /**
-     * –ß‚è’l‚ª‚ ‚éƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì—áŠO‚ğˆ¬‚è‚Â‚Ô‚µ‚½‚É•Ô‚·–ß‚è’l‚ğæ“¾‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ãŒã‚ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ä¾‹å¤–ã‚’æ¡ã‚Šã¤ã¶ã—ãŸæ™‚ã«è¿”ã™æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return –ß‚è’l
+     * @return æˆ»ã‚Šå€¤
      */
     public Object getReturnValue();
     
     /**
-     * logƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * logãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name LogƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Logã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setLoggerServiceName(ServiceName name);
     
     /**
-     * logƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * logãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return LogƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Logã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getLoggerServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚Åo—Í‚·‚éƒƒOƒƒbƒZ[ƒW‚ÌƒR[ƒh‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã§å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒƒOƒƒbƒZ[ƒW‚ÌƒR[ƒh
+     * @param key ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚³ãƒ¼ãƒ‰
      */
     public void setLoggerMessageCode(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚Åo—Í‚·‚éƒƒOƒƒbƒZ[ƒW‚ÌƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã§å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return key ƒƒOƒƒbƒZ[ƒW‚ÌƒR[ƒh
+     * @return key ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚³ãƒ¼ãƒ‰
      */
     public String getLoggerMessageCode();
     
     /**
-     * {@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚Åo—Í‚·‚éƒƒOƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã§å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param args ƒƒOƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š—ñ”z—ñ
+     * @param args ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—é…åˆ—
      */
     public void setLoggerMessageArgs(String[] args);
     
     /**
-     * {@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚Åo—Í‚·‚éƒƒOƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã§å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š—ñ”z—ñ
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—é…åˆ—
      */
     public String[] getLoggerMessageArgs();
     
     /**
-     * {@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚Åo—Í‚·‚éƒƒOƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã§å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param locale ƒƒOƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
+     * @param locale ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
      */
     public void setLoggerMessageLocale(java.util.Locale locale);
     
     /**
-     * {@link jp.ossc.nimbus.service.log Logger}ƒT[ƒrƒX‚Åo—Í‚·‚éƒƒOƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.log Logger}ã‚µãƒ¼ãƒ“ã‚¹ã§å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒOƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
+     * @return ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
      */
     public java.util.Locale getLoggerMessageLocale();
     
     /**
-     * ˆ¬‚è‚Â‚Ô‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * æ¡ã‚Šã¤ã¶ã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isLogging —áŠO‚ğƒƒO‚Éo—Í‚·‚éê‡‚ÍAtrue
+     * @param isLogging ä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setLoggingException(boolean isLogging);
     
     /**
-     * ˆ¬‚è‚Â‚Ô‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ¡ã‚Šã¤ã¶ã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—áŠO‚ğƒƒO‚Éo—Í‚·‚é
+     * @return trueã®å ´åˆã€ä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹
      */
     public boolean isLoggingException();
 }

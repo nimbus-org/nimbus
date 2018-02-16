@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.crypt;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link NullCryptService}のMBeanインタフェース<p>
+ * {@link NullCryptService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author A.Kokubu
  * @see NullCryptService

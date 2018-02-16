@@ -32,103 +32,103 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒgXVƒŠƒXƒi[B<p>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°ãƒªã‚¹ãƒŠãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */
 public interface SharedContextUpdateListener{
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚É’Ç‰Á‚³‚ê‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¿½åŠ ã•ã‚Œã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param isLocal ƒ[ƒJƒ‹‚©‚ç‚Ì’Ç‰Á‚Ìê‡AtrueBƒŠƒ‚[ƒg‚©‚ç‚Ì’Ç‰Á‚Ìê‡AfalseB
-     * @param key ’Ç‰Á‚³‚ê‚éƒL[
-     * @param value ’Ç‰Á‚³‚ê‚é’l
-     * @return ‹¤—LƒRƒ“ƒeƒLƒXƒg‚É’Ç‰Á‚³‚¹‚È‚¢ê‡‚ÍAfalse
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param isLocal ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®è¿½åŠ ã®å ´åˆã€trueã€‚ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®è¿½åŠ ã®å ´åˆã€falseã€‚
+     * @param key è¿½åŠ ã•ã‚Œã‚‹ã‚­ãƒ¼
+     * @param value è¿½åŠ ã•ã‚Œã‚‹å€¤
+     * @return å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¿½åŠ ã•ã›ãªã„å ´åˆã¯ã€false
      */
     public boolean onPutBefore(SharedContext context, boolean isLocal, Object key, Object value);
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚É’Ç‰Á‚³‚ê‚½Œã‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¿½åŠ ã•ã‚ŒãŸå¾Œã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param isLocal ƒ[ƒJƒ‹‚©‚ç‚Ì’Ç‰Á‚Ìê‡AtrueBƒŠƒ‚[ƒg‚©‚ç‚Ì’Ç‰Á‚Ìê‡AfalseB
-     * @param key ’Ç‰Á‚³‚ê‚½ƒL[
-     * @param value ’Ç‰Á‚³‚ê‚½’l
-     * @param old ˆÈ‘O‚Ì’lB’A‚µAƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚È‚Ç‚ÅA‚»‚±‚É’l‚ª‘¶İ‚µ‚È‚¢ê‡‚Ínull
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param isLocal ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®è¿½åŠ ã®å ´åˆã€trueã€‚ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®è¿½åŠ ã®å ´åˆã€falseã€‚
+     * @param key è¿½åŠ ã•ã‚ŒãŸã‚­ãƒ¼
+     * @param value è¿½åŠ ã•ã‚ŒãŸå€¤
+     * @param old ä»¥å‰ã®å€¤ã€‚ä½†ã—ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ãªã©ã§ã€ãã“ã«å€¤ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯null
      */
     public void onPutAfter(SharedContext context, boolean isLocal, Object key, Object value, Object old);
     
     /**
-     * “¯Šú‚É‚æ‚Á‚Ä‹¤—LƒRƒ“ƒeƒLƒXƒg‚É’Ç‰Á‚³‚ê‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * åŒæœŸã«ã‚ˆã£ã¦å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¿½åŠ ã•ã‚Œã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param key ’Ç‰Á‚³‚ê‚éƒL[
-     * @param value ’Ç‰Á‚³‚ê‚é’l
-     * @return ‹¤—LƒRƒ“ƒeƒLƒXƒg‚É’Ç‰Á‚³‚¹‚È‚¢ê‡‚ÍAfalse
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param key è¿½åŠ ã•ã‚Œã‚‹ã‚­ãƒ¼
+     * @param value è¿½åŠ ã•ã‚Œã‚‹å€¤
+     * @return å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¿½åŠ ã•ã›ãªã„å ´åˆã¯ã€false
      */
     public boolean onPutSynchronize(SharedContext context, Object key, Object value);
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÉXV‚³‚ê‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«æ›´æ–°ã•ã‚Œã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param isLocal ƒ[ƒJƒ‹‚©‚ç‚ÌXV‚Ìê‡AtrueBƒŠƒ‚[ƒg‚©‚ç‚ÌXV‚Ìê‡AfalseB
-     * @param key XV‚³‚ê‚éƒL[
-     * @param diff XV‚³‚ê‚é·•ª
-     * @return ‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÉXV‚³‚¹‚È‚¢ê‡‚ÍAfalse
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param isLocal ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®æ›´æ–°ã®å ´åˆã€trueã€‚ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®æ›´æ–°ã®å ´åˆã€falseã€‚
+     * @param key æ›´æ–°ã•ã‚Œã‚‹ã‚­ãƒ¼
+     * @param diff æ›´æ–°ã•ã‚Œã‚‹å·®åˆ†
+     * @return å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«æ›´æ–°ã•ã›ãªã„å ´åˆã¯ã€false
      */
     public boolean onUpdateBefore(SharedContext context, boolean isLocal, Object key, SharedContextValueDifference diff);
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚ÉXV‚³‚ê‚½Œã‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«æ›´æ–°ã•ã‚ŒãŸå¾Œã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param isLocal ƒ[ƒJƒ‹‚©‚ç‚ÌXV‚Ìê‡AtrueBƒŠƒ‚[ƒg‚©‚ç‚ÌXV‚Ìê‡AfalseB
-     * @param key XV‚³‚ê‚½ƒL[
-     * @param diff XV‚³‚ê‚½·•ª
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param isLocal ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®æ›´æ–°ã®å ´åˆã€trueã€‚ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®æ›´æ–°ã®å ´åˆã€falseã€‚
+     * @param key æ›´æ–°ã•ã‚ŒãŸã‚­ãƒ¼
+     * @param diff æ›´æ–°ã•ã‚ŒãŸå·®åˆ†
      */
     public void onUpdateAfter(SharedContext context, boolean isLocal, Object key, SharedContextValueDifference diff);
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚©‚çíœ‚³‚ê‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã•ã‚Œã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param isLocal ƒ[ƒJƒ‹‚©‚ç‚Ìíœ‚Ìê‡AtrueBƒŠƒ‚[ƒg‚©‚ç‚Ìíœ‚Ìê‡AfalseB
-     * @param key íœ‚³‚ê‚éƒL[
-     * @return ‹¤—LƒRƒ“ƒeƒLƒXƒg‚©‚çíœ‚³‚¹‚È‚¢ê‡‚ÍAfalse
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param isLocal ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®å‰Šé™¤ã®å ´åˆã€trueã€‚ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®å‰Šé™¤ã®å ´åˆã€falseã€‚
+     * @param key å‰Šé™¤ã•ã‚Œã‚‹ã‚­ãƒ¼
+     * @return å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã•ã›ãªã„å ´åˆã¯ã€false
      */
     public boolean onRemoveBefore(SharedContext context, boolean isLocal, Object key);
     
     /**
-     * ‹¤—LƒRƒ“ƒeƒLƒXƒg‚©‚çíœ‚³‚ê‚½Œã‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸå¾Œã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
-     * @param isLocal ƒ[ƒJƒ‹‚©‚ç‚Ìíœ‚Ìê‡AtrueBƒŠƒ‚[ƒg‚©‚ç‚Ìíœ‚Ìê‡AfalseB
-     * @param key íœ‚³‚ê‚½ƒL[
-     * @param removed íœ‚³‚ê‚½’lB’A‚µAƒNƒ‰ƒCƒAƒ“ƒgƒ‚[ƒh‚È‚Ç‚ÅA‚»‚±‚É’l‚ª‘¶İ‚µ‚È‚¢ê‡‚Ínull
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param isLocal ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®å‰Šé™¤ã®å ´åˆã€trueã€‚ãƒªãƒ¢ãƒ¼ãƒˆã‹ã‚‰ã®å‰Šé™¤ã®å ´åˆã€falseã€‚
+     * @param key å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ¼
+     * @param removed å‰Šé™¤ã•ã‚ŒãŸå€¤ã€‚ä½†ã—ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ãªã©ã§ã€ãã“ã«å€¤ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯null
      */
     public void onRemoveAfter(SharedContext context, boolean isLocal, Object key, Object removed);
     
     /**
-     * “¯Šú‚É‚æ‚Á‚Ä‹¤—LƒRƒ“ƒeƒLƒXƒg‚ªƒNƒŠƒA‚³‚ê‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * åŒæœŸã«ã‚ˆã£ã¦å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãŒã‚¯ãƒªã‚¢ã•ã‚Œã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
      */
     public void onClearSynchronize(SharedContext context);
     
     /**
-     * ƒƒ“ƒo‚Ì•ÏX‚É‚æ‚Á‚Äåƒm[ƒh‚Æ‚È‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ¡ãƒ³ãƒã®å¤‰æ›´ã«ã‚ˆã£ã¦ä¸»ãƒãƒ¼ãƒ‰ã¨ãªã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
      */
     public void onChangeMain(SharedContext context);
     
     /**
-     * ƒƒ“ƒo‚Ì•ÏX‚É‚æ‚Á‚Ä]ƒm[ƒh‚Æ‚È‚é‘O‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ¡ãƒ³ãƒã®å¤‰æ›´ã«ã‚ˆã£ã¦å¾“ãƒãƒ¼ãƒ‰ã¨ãªã‚‹å‰ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param context ‹¤—LƒRƒ“ƒeƒLƒXƒg
+     * @param context å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
      */
     public void onChangeSub(SharedContext context);
 }

@@ -41,7 +41,7 @@ import jp.ossc.nimbus.daemon.DaemonControl;
 import jp.ossc.nimbus.daemon.DaemonRunnable;
 
 /**
- * ŠÔˆø‚«‘—M‚ğs‚¤{@link ServerConnection}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * é–“å¼•ãé€ä¿¡ã‚’è¡Œã†{@link ServerConnection}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

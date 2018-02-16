@@ -41,26 +41,26 @@ import java.lang.reflect.InvocationTargetException;
 import jp.ossc.nimbus.service.journal.*;
 
 /**
- * ‹Æ–±ƒtƒ[ÀsƒNƒ‰ƒXB<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®Ÿè¡Œã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author H.Nakano
  */
 public class BeanFlowInvokerAccessImpl 
     implements BeanFlowInvokerAccess {
-    //## ƒNƒ‰ƒXƒƒ“ƒo[•Ï”éŒ¾ ##
-    /**    Flow–¼                                */    
+    //## ã‚¯ãƒ©ã‚¹ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
+    /**    Flowå                                */    
     protected String mFlowName = null;
-    /**    ƒƒbƒZ[ƒW”z—ñ                        */    
+    /**    ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…åˆ—                        */    
     protected ArrayList mAiliasAry = null;
-    /**    ƒŠƒ\[ƒX”z—ñ                        */    
+    /**    ãƒªã‚½ãƒ¼ã‚¹é…åˆ—                        */    
     protected HashMap mResourceHash = null;
-    /**    JOBƒXƒeƒbƒv                            */    
+    /**    JOBã‚¹ãƒ†ãƒƒãƒ—                            */    
     protected ArrayList    mJobSteps = null;
-    /**    ƒR[ƒ‹ƒoƒbƒNƒIƒuƒWƒFƒNƒg                */    
+    /**    ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ                */    
     protected BeanFlowInvokerFactoryCallBack mCallBack = null;
     protected String resourcePath;
     protected Journal journal;
-    /** XML TAG ’è”’è‹` */
+    /** XML TAG å®šæ•°å®šç¾© */
     private static final String C_NAME = "name" ;
     private static final String C_AILIAS = "alias" ;
     private static final String C_RESOURCE = "resource" ;
@@ -76,27 +76,27 @@ public class BeanFlowInvokerAccessImpl
     
     //
     /**
-     *    ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
+     *    ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
      */
     public BeanFlowInvokerAccessImpl(){
         mJobSteps = new ArrayList() ;
         mAiliasAry = new ArrayList() ;
         mResourceHash = new HashMap() ;
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerAccess#fillInstance(org.w3c.dom.Element, jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerFactoryCallBack)
      */
     public void fillInstance(Element item,BeanFlowInvokerFactoryCallBack callBack, String encoding)  {
         mCallBack = callBack ;
-        //Flow–¼æ“¾
+        //Flowåå–å¾—
         mFlowName = item.getAttribute(C_NAME);
-        // AiliasƒGƒŒƒƒ“ƒg‚ğæ“¾
+        // Ailiasã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
         NodeList ailiasList = item.getElementsByTagName(C_AILIAS);
         for(int rCnt=0;rCnt<ailiasList.getLength();rCnt++){
             Element ailiasElement = (Element)ailiasList.item(rCnt);
             mAiliasAry.add(ailiasElement.getAttribute(C_NAME)) ;
         }
-        //ƒŠƒ\[ƒXî•ñæ“¾
+        //ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±å–å¾—
         NodeList resourceList = item.getElementsByTagName(C_RESOURCE);
         for(int rCnt=0;rCnt<resourceList.getLength();rCnt++){
             Element resourceElement = (Element)resourceList.item(rCnt);
@@ -132,7 +132,7 @@ public class BeanFlowInvokerAccessImpl
             tmp.setTranClose(isTranClose);
             mResourceHash.put(key,tmp) ;
         }
-        //Stepî•ñæ“¾
+        //Stepæƒ…å ±å–å¾—
         NodeList stepList = item.getElementsByTagName(C_STEP);
         for(int rCnt=0;rCnt<stepList.getLength();rCnt++){
             Element stepElement = (Element)stepList.item(rCnt);
@@ -150,13 +150,13 @@ public class BeanFlowInvokerAccessImpl
         return resourcePath;
     }
     
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerAccess#getFlowName()
      */
     public String getFlowName(){
         return this.mFlowName ;
     }    
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerAccess#getAiliasFlowNames()
      */
     public List getAiliasFlowNames(){
@@ -179,7 +179,7 @@ public class BeanFlowInvokerAccessImpl
         return journal;
     }
     
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker#invokeFlow(java.lang.Object)
      */
     public Object invokeFlow(Object input) throws Exception {
@@ -190,7 +190,7 @@ public class BeanFlowInvokerAccessImpl
         if(monitor == null){
             monitor = new BeanFlowMonitorImpl();
         }
-        // ƒŠƒ\[ƒXì¬
+        // ãƒªã‚½ãƒ¼ã‚¹ä½œæˆ
         Object output = null ;
         String newName = new String(this.mFlowName) ;
         ((BeanFlowMonitorImpl)monitor).setFlowName(newName);
@@ -221,9 +221,9 @@ public class BeanFlowInvokerAccessImpl
             }
             try{
                 if (mJobSteps != null){
-                    // “o˜^JOBƒXƒeƒbƒv‚ğÀs‚·‚éB
+                    // ç™»éŒ²JOBã‚¹ãƒ†ãƒƒãƒ—ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
                     for(int i = 0, max = mJobSteps.size(); i < max; i++){
-                        // ƒWƒ‡ƒuƒXƒeƒbƒvæ“¾
+                        // ã‚¸ãƒ§ãƒ–ã‚¹ãƒ†ãƒƒãƒ—å–å¾—
                         JobStep jobStepObj = (JobStep)mJobSteps.get(i);
                         Object tmp = jobStepObj.invokeStep(input,
                                                             execBeanMap,
@@ -263,10 +263,10 @@ public class BeanFlowInvokerAccessImpl
     }
     
     /**
-     *    JOBÀsŒã‚ÌŒãˆ—B<br>
-     * @param e    Às—áŠO
+     *    JOBå®Ÿè¡Œå¾Œã®å¾Œå‡¦ç†ã€‚<br>
+     * @param e    å®Ÿè¡Œä¾‹å¤–
      * @param rm    ResourceManager
-     * @param name    BeanFlowƒL[
+     * @param name    BeanFlowã‚­ãƒ¼
      */
     protected void endJob(Throwable e,ResourceManager rm,BeanFlowMonitor monitor,String name){
         ((BeanFlowMonitorImpl)monitor).end();
@@ -300,7 +300,7 @@ public class BeanFlowInvokerAccessImpl
     }
     
     /**
-     * ƒŠƒ\[ƒXî•ñŠÇ—ƒNƒ‰ƒX<p>
+     * ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ç®¡ç†ã‚¯ãƒ©ã‚¹<p>
      * @version $Name:  $
      * @author H.Nakano
      * @since 1.0
@@ -312,15 +312,15 @@ public class BeanFlowInvokerAccessImpl
         public boolean isTranControl = false ;
         public boolean isTranClose = true;
         /**
-         * ƒŠƒ\[ƒXID‚ğo—Í‚·‚é
-         * @return@ƒŠƒ\[ƒXƒL[–¼
+         * ãƒªã‚½ãƒ¼ã‚¹IDã‚’å‡ºåŠ›ã™ã‚‹
+         * @returnã€€ãƒªã‚½ãƒ¼ã‚¹ã‚­ãƒ¼å
          */
         public String getFindKey() {
             return findKey;
         }
 
         /**
-         * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒRƒ“ƒgƒ[ƒ‹‘ÎÛ‚©o—Í‚·‚éB
+         * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«å¯¾è±¡ã‹å‡ºåŠ›ã™ã‚‹ã€‚
          * @return boolean
          */
         public boolean isTranControl() {
@@ -332,28 +332,28 @@ public class BeanFlowInvokerAccessImpl
         }
 
         /**
-         * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+         * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
          */
         public String getKey() {
             return key;
         }
 
         /**
-         * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+         * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
          */
         public ServiceName getServiceName() {
             return serviceName;
         }
 
         /**
-         * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+         * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
          */
         public void setFindKey(String string) {
             findKey = string;
         }
 
         /**
-         * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+         * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
          */
         public void setTranControl(boolean b) {
             isTranControl = b;
@@ -364,14 +364,14 @@ public class BeanFlowInvokerAccessImpl
         }
 
         /**
-         * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+         * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
          */
         public void setKey(String string) {
             key = string;
         }
 
         /**
-         * w’èƒtƒ@ƒCƒ‹‚ÉƒRƒs[‚·‚éB
+         * æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
          */
         public void setServiceName(ServiceName name) {
             serviceName = name;

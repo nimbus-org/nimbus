@@ -42,8 +42,8 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeUtility;
 
 /**
- * BASE64•¶š—ñƒRƒ“ƒo[ƒ^B<p>
- * javax.mail.internet.MimeUtility‚ğg‚Á‚ÄBASE64ƒGƒ“ƒR[ƒh‚ğs‚¤B<br>
+ * BASE64æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
+ * javax.mail.internet.MimeUtilityã‚’ä½¿ã£ã¦BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã†ã€‚<br>
  *
  * @author M.Takata
  */
@@ -52,56 +52,56 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     private static final long serialVersionUID = 1193510073044683299L;
 
     /**
-     * BASE64‚Ö‚ÌƒGƒ“ƒR[ƒh•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * BASE64ã¸ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int ENCODE = POSITIVE_CONVERT;
     
     /**
-     * BASE64‚©‚ç‚ÌƒfƒR[ƒh•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * BASE64ã‹ã‚‰ã®ãƒ‡ã‚³ãƒ¼ãƒ‰å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DECODE = REVERSE_CONVERT;
     
     /**
-     * •¶š—ñ¨ƒGƒ“ƒR[ƒh¨ƒXƒgƒŠ[ƒ€‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ–‡å­—åˆ—â†’ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int ENCODE_STRING_TO_STREAM = 3;
     
     /**
-     * •¶š—ñ¨ƒfƒR[ƒh¨ƒXƒgƒŠ[ƒ€‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * æ–‡å­—åˆ—â†’ãƒ‡ã‚³ãƒ¼ãƒ‰â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DECODE_STRING_TO_STREAM = 4;
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨ƒGƒ“ƒR[ƒh¨•¶š—ñ‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰â†’æ–‡å­—åˆ—ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int ENCODE_STREAM_TO_STRING = 5;
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨ƒfƒR[ƒh¨•¶š—ñ‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’ãƒ‡ã‚³ãƒ¼ãƒ‰â†’æ–‡å­—åˆ—ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DECODE_STREAM_TO_STRING = 6;
     
     private int convertType = ENCODE;
     
     /**
-     * •ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     private String characterEncoding;
     
     /**
-     * •¶š—ñ¨ƒXƒgƒŠ[ƒ€•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * æ–‡å­—åˆ—â†’ã‚¹ãƒˆãƒªãƒ¼ãƒ å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     private String characterEncodingToStream;
     
     /**
-     * ƒXƒgƒŠ[ƒ€¨•¶š—ñ•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ â†’æ–‡å­—åˆ—å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     private String characterEncodingToObject;
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #ENCODE
      * @see #DECODE
      * @see #ENCODE_STRING_TO_STREAM
@@ -114,9 +114,9 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #ENCODE
      * @see #DECODE
      * @see #ENCODE_STRING_TO_STREAM
@@ -129,18 +129,18 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     }
     
     /**
-     * •ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncoding(String encoding){
         characterEncoding = encoding;
     }
     
     /**
-     * •ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncoding(){
         return characterEncoding;
@@ -208,23 +208,23 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğBASE64ƒGƒ“ƒR[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return BASE64ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶š—ñ
-     * @exception ConvertException ƒGƒ“ƒR[ƒh‚É¸”s‚µ‚½ê‡
+     * @param str æ–‡å­—åˆ—
+     * @return BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @exception ConvertException ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String encode(String str) throws ConvertException{
         return encode(str, characterEncoding);
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğAw’è‚³‚ê‚½•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ÅƒoƒCƒg”z—ñ‚É•ÏŠ·‚µ‚ÄBASE64ƒGƒ“ƒR[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã€æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã§ãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã—ã¦BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @return BASE64ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶š—ñ
-     * @exception ConvertException ƒGƒ“ƒR[ƒh‚É¸”s‚µ‚½ê‡
+     * @param str æ–‡å­—åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @return BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @exception ConvertException ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static String encode(String str, String encoding) throws ConvertException{
         byte[] bytes = null;
@@ -241,11 +241,11 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     }
     
     /**
-     * w’è‚³‚ê‚½ƒoƒCƒg”z—ñ‚ğBASE64ƒGƒ“ƒR[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—ã‚’BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param bytes ƒoƒCƒg”z—ñ
-     * @return BASE64ƒGƒ“ƒR[ƒh‚³‚ê‚½ƒoƒCƒg”z—ñ
-     * @exception ConvertException ƒGƒ“ƒR[ƒh‚É¸”s‚µ‚½ê‡
+     * @param bytes ãƒã‚¤ãƒˆé…åˆ—
+     * @return BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static byte[] encodeBytes(byte[] bytes) throws ConvertException{
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -268,23 +268,23 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     }
     
     /**
-     * w’è‚³‚ê‚½BASE64•¶š—ñ‚ğƒfƒR[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBASE64æ–‡å­—åˆ—ã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param str BASE64ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶š—ñ
-     * @return ƒfƒR[ƒh‚³‚ê‚½•¶š—ñ
-     * @exception ConvertException ƒfƒR[ƒh‚É¸”s‚µ‚½ê‡
+     * @param str BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @return ãƒ‡ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @exception ConvertException ãƒ‡ã‚³ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String decode(String str) throws ConvertException{
         return decode(str, characterEncoding);
     }
     
     /**
-     * w’è‚³‚ê‚½BASE64•¶š—ñ‚ğƒfƒR[ƒh‚µAw’è‚³‚ê‚½•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBASE64æ–‡å­—åˆ—ã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã—ã€æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str BASE64•¶š—ñ
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
-     * @return ƒfƒR[ƒh‚³‚ê‚½•¶š—ñ
-     * @exception ConvertException ƒfƒR[ƒh‚É¸”s‚µ‚½ê‡
+     * @param str BASE64æ–‡å­—åˆ—
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+     * @return ãƒ‡ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
+     * @exception ConvertException ãƒ‡ã‚³ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static String decode(String str, String encoding) throws ConvertException{
         byte[] bytes = decodeBytes(str.getBytes());
@@ -300,11 +300,11 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
     }
     
     /**
-     * w’è‚³‚ê‚½BASE64ƒoƒCƒg”z—ñ‚ğƒfƒR[ƒh‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBASE64ãƒã‚¤ãƒˆé…åˆ—ã‚’ãƒ‡ã‚³ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
      *
-     * @param bytes BASE64ƒoƒCƒg”z—ñ
-     * @return ƒfƒR[ƒh‚³‚ê‚½ƒoƒCƒg”z—ñ
-     * @exception ConvertException ƒfƒR[ƒh‚É¸”s‚µ‚½ê‡
+     * @param bytes BASE64ãƒã‚¤ãƒˆé…åˆ—
+     * @return ãƒ‡ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException ãƒ‡ã‚³ãƒ¼ãƒ‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public static byte[] decodeBytes(byte[] bytes) throws ConvertException{
         final ByteArrayInputStream bais = new ByteArrayInputStream(bytes);

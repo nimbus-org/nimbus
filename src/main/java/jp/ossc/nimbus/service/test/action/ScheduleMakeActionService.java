@@ -46,8 +46,8 @@ import jp.ossc.nimbus.service.scheduler2.DefaultScheduleMaster;
 import jp.ossc.nimbus.service.scheduler2.ScheduleManager;
 
 /**
- * {@link ScheduleManager}‚ğg‚Á‚ÄAƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * {@link ScheduleManager}ã‚’ä½¿ã£ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -76,17 +76,17 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAw’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚©‚çAŒ»İ‚ÅŠJn‚·‚éƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‹ã‚‰ã€ç¾åœ¨æ™‚åˆ»ã§é–‹å§‹ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * masterId
      * </pre>
-     * masterId‚ÍAì¬‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒXƒ^ID‚ğw’è‚·‚éB<br>
+     * masterIdã¯ã€ä½œæˆã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚¹ã‚¿IDã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return ¶¬‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ÌƒŠƒXƒg
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return ç”Ÿæˆã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒªã‚¹ãƒˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

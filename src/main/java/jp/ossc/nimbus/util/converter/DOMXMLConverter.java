@@ -43,7 +43,7 @@ import org.xml.sax.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * DOMÌXMLƒRƒ“ƒo[ƒ^B<p>
+ * DOMâ‡”XMLã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -55,71 +55,71 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     private static final Class[] METHOD_ARGS_SET_XML_VERSION = new Class[]{String.class};
     
     /**
-     * DOM¨XML‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * DOMâ†’XMLã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DOM_TO_XML = OBJECT_TO_STREAM;
     
     /**
-     * XML¨DOM‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * XMLâ†’DOMã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int XML_TO_DOM = STREAM_TO_OBJECT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * DOM¨XML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒXB<p>
+     * DOMâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã€‚<p>
      */
     protected String xslFilePath;
     
     /**
-     * DOM¨XML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * DOMâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToStream;
     
     /**
-     * XML¨DOM•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒOB<p>
+     * XMLâ†’DOMå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã€‚<p>
      */
     protected String characterEncodingToObject;
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA“¯Šú‚µ‚È‚¢B<br>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åŒæœŸã—ãªã„ã€‚<br>
      */
     protected boolean isSynchronizedDomParse;
     
     /**
-     * DocumentBuilderFactory‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * DocumentBuilderFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     protected String documentBuilderFactoryClass;
     
     /**
-     * DOM¨XML•ÏŠ·‚ğs‚¤Û‚Éo—Í‚·‚éXML‚Ìƒo[ƒWƒ‡ƒ“B<p>
+     * DOMâ†’XMLå¤‰æ›ã‚’è¡Œã†éš›ã«å‡ºåŠ›ã™ã‚‹XMLã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã€‚<p>
      */
     protected String xmlVersion;
     
     /**
-     * DOM¨XML•ÏŠ·‚ğs‚¤ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * DOMâ†’XMLå¤‰æ›ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DOMXMLConverter(){
         this(DOM_TO_XML);
     }
     
     /**
-     * DocumentBuilderFactory‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * DocumentBuilderFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz DocumentBuilderFactory‚ÌÀ‘•ƒNƒ‰ƒX
+     * @param clazz DocumentBuilderFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public void setDocumentBuilderFactoryClassName(String clazz){
         documentBuilderFactoryClass = clazz;
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚ÌƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #DOM_TO_XML
      * @see #XML_TO_DOM
      */
@@ -128,9 +128,9 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #DOM_TO_XML
      * @see #XML_TO_DOM
@@ -140,9 +140,9 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -150,54 +150,54 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * DOM¨XML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * DOMâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path XSLƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setXSLFilePath(String path){
         xslFilePath = path;
     }
     
     /**
-     * DOM¨XML•ÏŠ·‚Ég—p‚·‚éXSLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * DOMâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return XSLƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return XSLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getXSLFilePath(){
         return xslFilePath;
     }
     
     /**
-     * DOM¨XML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * DOMâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToStream(String encoding){
         characterEncodingToStream = encoding;
     }
     
     /**
-     * DOM¨XML•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * DOMâ†’XMLå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToStream(){
         return characterEncodingToStream;
     }
     
     /**
-     * XML¨DOM•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * XMLâ†’DOMå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncodingToObject(String encoding){
         characterEncodingToObject = encoding;
     }
     
     /**
-     * XML¨DOM•ÏŠ·‚Ég—p‚·‚é•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * XMLâ†’DOMå¤‰æ›æ™‚ã«ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncodingToObject(){
         return characterEncodingToObject;
@@ -232,29 +232,29 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA“¯Šú‚µ‚È‚¢B<br>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åŒæœŸã—ãªã„ã€‚<br>
      * 
-     * @param isSync “¯Šú‚·‚éê‡‚ÍAtrue
+     * @param isSync åŒæœŸã™ã‚‹å ´åˆã¯ã€true
      */
     public void setSynchronizedDomParse(boolean isSync){
         isSynchronizedDomParse = isSync;
     }
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A“¯Šú‚·‚é
+     * @return trueã®å ´åˆã€åŒæœŸã™ã‚‹
      */
     public boolean isSynchronizedDomParse(){
         return isSynchronizedDomParse;
     }
     
     /**
-     * DOM¨XML•ÏŠ·‚ğs‚¤Û‚Éo—Í‚·‚éXML‚Ìƒo[ƒWƒ‡ƒ“‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒp[ƒT[‚ÌƒfƒtƒHƒ‹ƒg’l‚É]‚¤B<br>
+     * DOMâ†’XMLå¤‰æ›ã‚’è¡Œã†éš›ã«å‡ºåŠ›ã™ã‚‹XMLã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ‘ãƒ¼ã‚µãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã«å¾“ã†ã€‚<br>
      *
-     * @param version XML‚Ìƒo[ƒWƒ‡ƒ“
+     * @param version XMLã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public void setXmlVersion(String version) throws IllegalArgumentException{
         try{
@@ -266,20 +266,20 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * DOM¨XML•ÏŠ·‚ğs‚¤Û‚Éo—Í‚·‚éXML‚Ìƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * DOMâ†’XMLå¤‰æ›ã‚’è¡Œã†éš›ã«å‡ºåŠ›ã™ã‚‹XMLã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return XML‚Ìƒo[ƒWƒ‡ƒ“
+     * @return XMLã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public String getXmlVersion(){
         return xmlVersion;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
@@ -306,11 +306,11 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * org.w3c.dom.Document‚©‚çXMLƒoƒCƒg”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * org.w3c.dom.Documentã‹ã‚‰XMLãƒã‚¤ãƒˆé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
      * @param obj org.w3c.dom.Document
-     * @return XMLƒoƒCƒg”z—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @return XMLãƒã‚¤ãƒˆé…åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         if(obj instanceof Document){
@@ -323,11 +323,11 @@ public class DOMXMLConverter extends BufferedStreamConverter implements StreamSt
     }
     
     /**
-     * XMLƒXƒgƒŠ[ƒ€‚©‚çorg.w3c.dom.Document‚É•ÏŠ·‚·‚éB<p>
+     * XMLã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰org.w3c.dom.Documentã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is XMLƒXƒgƒŠ[ƒ€
+     * @param is XMLã‚¹ãƒˆãƒªãƒ¼ãƒ 
      * @return org.w3c.dom.Document
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException{
         return toDOM(is);

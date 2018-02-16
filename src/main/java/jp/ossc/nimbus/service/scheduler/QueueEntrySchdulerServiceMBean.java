@@ -29,73 +29,73 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.scheduler;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 /**
- * ƒ^ƒCƒ€ƒXƒPƒWƒ…[ƒ‰[ƒNƒ‰ƒX<p>
- * ˆê’èŠÔ–ˆ‚É–â‚¢‡‚í‚¹‚ğã‚°‚Äw’è‚³‚ê‚½ƒRƒ}ƒ“ƒh‚ğQueue‚É“ü‚ê‚é
+ * ã‚¿ã‚¤ãƒ ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ãƒ¼ã‚¯ãƒ©ã‚¹<p>
+ * ä¸€å®šæ™‚é–“æ¯ã«å•ã„åˆã‚ã›ã‚’ä¸Šã’ã¦æŒ‡å®šã•ã‚ŒãŸã‚³ãƒãƒ³ãƒ‰ã‚’Queueã«å…¥ã‚Œã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface QueueEntrySchdulerServiceMBean extends ServiceBaseMBean {
 	/**
-	 * FacadeŒÄ‚Ño‚µƒT[ƒrƒX–¼İ’è
+	 * Facadeå‘¼ã³å‡ºã—ã‚µãƒ¼ãƒ“ã‚¹åè¨­å®š
 	 * @param name
 	 */
 	public void setFacadeServiceName(ServiceName name) ;
 	/**
-	 * FacadeŒÄ‚Ño‚µƒT[ƒrƒX–¼o—Í
+	 * Facadeå‘¼ã³å‡ºã—ã‚µãƒ¼ãƒ“ã‚¹åå‡ºåŠ›
 	 * @return ServiceName
 	 */
 	public ServiceName getFacadeServiceName() ;
 	/**
-	 * –â‚¢‡‚í‚¹ƒCƒ“ƒ^[ƒoƒ‹İ’è
-	 * @param msecs ƒ~ƒŠ•b
+	 * å•ã„åˆã‚ã›ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«è¨­å®š
+	 * @param msecs ãƒŸãƒªç§’
 	 */
 	public void setInterval(long msecs) ;
 	/**
-	 * –â‚¢‡‚í‚¹ƒCƒ“ƒ^[ƒoƒ‹o—Í
-	 * @return long ƒ~ƒŠ•b
+	 * å•ã„åˆã‚ã›ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«å‡ºåŠ›
+	 * @return long ãƒŸãƒªç§’
 	 */
 	public long getInterval() ;
 	/**
-	 * –â‚¢‡‚í‚¹ƒT[ƒrƒX–¼İ’è
+	 * å•ã„åˆã‚ã›ã‚µãƒ¼ãƒ“ã‚¹åè¨­å®š
 	 * @param name
 	 */
 	public void setGetTaskFlowKey(String name) ;
 	/**
-	 * –â‚¢‡‚í‚¹ƒT[ƒrƒX–¼o—Í
-	 * @return –â‚¢‡‚í‚¹ƒT[ƒrƒX–¼
+	 * å•ã„åˆã‚ã›ã‚µãƒ¼ãƒ“ã‚¹åå‡ºåŠ›
+	 * @return å•ã„åˆã‚ã›ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public String getGetTaskFlowKey() ;
 	/**
-	 * ƒƒOƒT[ƒrƒX–¼ƒZƒbƒ^[
+	 * ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹åã‚»ãƒƒã‚¿ãƒ¼
 	 * @param name
 	 */
 	public void setLogServiceName(ServiceName name) ;
 	/**
-	 * ƒV[ƒPƒ“ƒXƒT[ƒrƒX–¼o—Í
-	 * @return@ƒV[ƒPƒ“ƒXƒT[ƒrƒX–¼
+	 * ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹åå‡ºåŠ›
+	 * @returnã€€ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getSequenceServiceName() ;
 
 	/**
-	 * ƒ†[ƒUIDƒQƒbƒ^[
-	 * @return ƒ†[ƒUID
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚²ãƒƒã‚¿ãƒ¼
+	 * @return ãƒ¦ãƒ¼ã‚¶ID
 	 */
 	public String getUserId() ;
 
 	/**
-	 * ƒV[ƒPƒ“ƒXƒT[ƒrƒX–¼ƒZ‚Áƒ^[
+	 * ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹åã‚»ã£ã‚¿ãƒ¼
 	 * @param name
 	 */
 	public void setSequenceServiceName(ServiceName name);
 
 	/**
-	 * ƒ†[ƒUIDƒQƒbƒ^[
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚²ãƒƒã‚¿ãƒ¼
 	 * @param string
 	 */
 	public void setUserId(String string) ;

@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS Topic ƒpƒuƒŠƒbƒVƒƒƒtƒ@ƒNƒgƒŠB<p>
- * JMS1.0‚Å‚ÍAQueueSession‚ÆTopicSession‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßATopicSession‚©‚ç‚ÌTopicPublisher¶¬‚ğs‚¤B<br>
+ * JMS Topic ãƒ‘ãƒ–ãƒªãƒƒã‚·ãƒ£ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JMS1.0ã§ã¯ã€QueueSessionã¨TopicSessionã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€TopicSessionã‹ã‚‰ã®TopicPublisherç”Ÿæˆã‚’è¡Œã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -45,13 +45,13 @@ public class JMSTopicPublisherFactoryService
     private static final long serialVersionUID = 1024878767143611449L;
     
     /**
-     * TopicPublisher‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½TopicSession‚©‚çA{@link TopicSession#createPublisher(Topic)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * TopicPublisherã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸTopicSessionã‹ã‚‰ã€{@link TopicSession#createPublisher(Topic)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session TopicSession
-     * @param dest ˆ¶æ‚Æ‚È‚éQueue
+     * @param dest å®›å…ˆã¨ãªã‚‹Queue
      * @return TopicPublisher
-     * @exception JMSMessageProducerCreateException TopicPublisher‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageProducerCreateException TopicPublisherã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageProducer createProducer(Session session, Destination dest)
      throws JMSMessageProducerCreateException{

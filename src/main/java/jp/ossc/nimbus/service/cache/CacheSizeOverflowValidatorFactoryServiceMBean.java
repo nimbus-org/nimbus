@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.FactoryServiceBaseMBean;
 
 /**
- * {@link CacheSizeOverflowValidatorFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link CacheSizeOverflowValidatorFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see CacheSizeOverflowValidatorFactoryService
@@ -43,22 +43,22 @@ public interface CacheSizeOverflowValidatorFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * •Û‚·‚éƒLƒƒƒbƒVƒ…‚ÌÅ‘å”‚ğİ’è‚·‚éB<p>
-     * —LŒø‚È’l‚Ì”ÍˆÍ‚ÍA0ˆÈãBƒfƒtƒHƒ‹ƒg‚Í0‚ÅAˆì‚ê‚È‚¢B<br>
+     * ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ€å¤§æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æœ‰åŠ¹ãªå€¤ã®ç¯„å›²ã¯ã€0ä»¥ä¸Šã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯0ã§ã€æº¢ã‚Œãªã„ã€‚<br>
      *
-     * @param size •Û‚·‚éƒLƒƒƒbƒVƒ…‚ÌÅ‘å”
+     * @param size ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ€å¤§æ•°
      */
     public void setMaxSize(int size) throws IllegalArgumentException;
     
     /**
-     * •Û‚·‚éƒLƒƒƒbƒVƒ…‚ÌÅ‘å”‚ğæ“¾‚·‚éB<p>
+     * ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ€å¤§æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •Û‚·‚éƒLƒƒƒbƒVƒ…‚ÌÅ‘å”
+     * @return ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ€å¤§æ•°
      */
     public int getMaxSize();
     
     /**
-     * ƒLƒƒƒbƒVƒ…”‚ğŒŸØ‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’æ¤œè¨¼ã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
 }

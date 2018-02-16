@@ -39,9 +39,9 @@ import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.io.CSVReader;
 
 /**
- * �R�}���h�X�P�W���[�����s�B<p>
- * ���s���˗����ꂽ�^�X�N���R�}���h�Ƃ��Ď��s����B<br>
- * �X�P�W���[���̓��͂̃t�H�[�}�b�g�́A�ȉ��B<br>
+ * コマンドスケジュール実行。<p>
+ * 実行を依頼されたタスクをコマンドとして実行する。<br>
+ * スケジュールの入力のフォーマットは、以下。<br>
  * <pre>
  * commands
  * environments
@@ -51,21 +51,21 @@ import jp.ossc.nimbus.io.CSVReader;
  * logFile
  * waitPattern
  * </pre>
- * commands�́A�R�}���h�y�ш�����CSV�`���Ŏw�肷��BCSV�`���̍Ō�̗v�f�ɁA"&"���w�肷��ƁA�v���Z�X�̏I����ҋ@���Ȃ��B�܂��A�R�}���h�́A�X�P�W���[���̃^�X�N�����w�肳��Ă���ꍇ�́A��������s����R�}���h�Ƃ݂Ȃ��B<br>
- * environments�́A�R�}���h���s���ɓK�p������ϐ���ϐ���=�l�Ŏw�肷��B�����w�肷��ꍇ�́A���s���Ďw�肷��B�I���́A��s���w�肷��B<br>
- * workDir�́A�R�}���h�̍�ƃf�B���N�g�����w�肷��B<br>
- * timeout�́A�R�}���h�̏I���҂��^�C���A�E�g���w�肷��B�w�肵�Ȃ��ꍇ�́A�I���҂����Ȃ��B<br>
- * logFile�́A�R�}���h�̏I���҂����A���O�t�@�C���̏o�͂ōs���ꍇ�́A���O�t�@�C���p�X���w�肷��B�܂��A�t�@�C���̕����R�[�h���w�肷��ꍇ�́A�J���}��؂�Ŏw�肷��B���O�t�@�C�����w�肵�Ȃ��ꍇ�́A�v���Z�X�̏I���҂����s���B<br>
- * waitPattern�́A�R�}���h�̏I���҂����A���O�t�@�C���̏o�͓��e�ōs���ꍇ�́A�o�͓��e�̐��K�\�����w�肷��B���̐��K�\���Ɉ�v����o�͂�����ꂽ�ꍇ�ɁA�I���҂����I����B�w�肵�Ȃ��ꍇ�́A���O�t�@�C���̍쐬�҂����s���B<br>
- * �܂��A�X�P�W���[���̓��͂�JSON�`���ɂ���ꍇ�̃t�H�[�}�b�g�́A�ȉ��B<br>
+ * commandsは、コマンド及び引数をCSV形式で指定する。CSV形式の最後の要素に、"&"を指定すると、プロセスの終了を待機しない。また、コマンドは、スケジュールのタスク名が指定されている場合は、それを実行するコマンドとみなす。<br>
+ * environmentsは、コマンド実行時に適用する環境変数を変数名=値で指定する。複数指定する場合は、改行して指定する。終了は、空行を指定する。<br>
+ * workDirは、コマンドの作業ディレクトリを指定する。<br>
+ * timeoutは、コマンドの終了待ちタイムアウトを指定する。指定しない場合は、終了待ちしない。<br>
+ * logFileは、コマンドの終了待ちを、ログファイルの出力で行う場合の、ログファイルパスを指定する。また、ファイルの文字コードを指定する場合は、カンマ区切りで指定する。ログファイルを指定しない場合は、プロセスの終了待ちを行う。<br>
+ * waitPatternは、コマンドの終了待ちを、ログファイルの出力内容で行う場合の、出力内容の正規表現を指定する。この正規表現に一致する出力が見られた場合に、終了待ちを終える。指定しない場合は、ログファイルの作成待ちを行う。<br>
+ * また、スケジュールの入力をJSON形式にする場合のフォーマットは、以下。<br>
  * <pre>
  * {
- *     "commands":["�R�}���h�܂��͈���","�R�}���h�܂��͈���",...],
- *     "environments":{"�ϐ���":"�l","�ϐ���":"�l",...},
- *     "workDir":"�R�}���h�̍�ƃf�B���N�g��",
+ *     "commands":["コマンドまたは引数","コマンドまたは引数",...],
+ *     "environments":{"変数名":"値","変数名":"値",...},
+ *     "workDir":"コマンドの作業ディレクトリ",
  *     "timeout":1000,
- *     "logFile":{"file":"���O�t�@�C���p�X", "encoding":"�t�@�C���̕����R�[�h"},
- *     "waitPattern":"�o�͓��e�̐��K�\��"
+ *     "logFile":{"file":"ログファイルパス", "encoding":"ファイルの文字コード"},
+ *     "waitPattern":"出力内容の正規表現"
  * }
  * </pre>
  *
@@ -177,7 +177,7 @@ public class CommandScheduleExecutorService
                 commands = tmpCommands;
             }
             
-            //���ϐ�
+            //環境変数
             Map tmpEnv = new LinkedHashMap();
             tmpEnv.putAll(System.getenv());
             if(environmentVariables != null){
@@ -215,7 +215,7 @@ public class CommandScheduleExecutorService
                 }
             }
             
-            //��ƃf�B���N�g��
+            //作業ディレクトリ
             File workDir = workDirectoryPath == null ? null : new File(workDirectoryPath);
             String workDirStr = null;
             if(input instanceof String){
@@ -229,7 +229,7 @@ public class CommandScheduleExecutorService
                 workDir = new File(replaceProperty(workDirStr));
             }
             
-            //�^�C���A�E�g
+            //タイムアウト
             long waitTime = -1;
             if(input instanceof String){
                 if((line = br.readLine()) != null && line.length() != 0){
@@ -242,7 +242,7 @@ public class CommandScheduleExecutorService
                 }
             }
             
-            //���O�t�@�C��
+            //ログファイル
             String fileEncoding = null;
             File logFile = null;
             if(input instanceof String){
@@ -266,7 +266,7 @@ public class CommandScheduleExecutorService
                 }
             }
             
-            //�I���҂����K�\��
+            //終了待ち正規表現
             String waitPatternStr = null;
             Pattern waitPattern = null;
             if(input instanceof String){
@@ -307,7 +307,7 @@ public class CommandScheduleExecutorService
                         }else{
                             stdReadThread.join();
                             errReadThread.join();
-                            exitCode = waitRunnable.exitCode.intValue(); //�߂�l
+                            exitCode = waitRunnable.exitCode.intValue(); //戻り値
                         }
                         stdReadThread = null;
                         errReadThread = null;
@@ -392,10 +392,10 @@ public class CommandScheduleExecutorService
     
     protected String replaceProperty(String textValue){
         
-        // �V�X�e���v���p�e�B�̒u��
+        // システムプロパティの置換
         textValue = Utility.replaceSystemProperty(textValue);
         
-        // �T�[�r�X���[�_�\���v���p�e�B�̒u��
+        // サービスローダ構成プロパティの置換
         if(getServiceLoader() != null){
             textValue = Utility.replaceServiceLoderConfig(
                 textValue,
@@ -403,7 +403,7 @@ public class CommandScheduleExecutorService
             );
         }
         
-        // �}�l�[�W���v���p�e�B�̒u��
+        // マネージャプロパティの置換
         if(getServiceManager() != null){
             textValue = Utility.replaceManagerProperty(
                 getServiceManager(),
@@ -411,7 +411,7 @@ public class CommandScheduleExecutorService
             );
         }
         
-        // �T�[�o�v���p�e�B�̒u��
+        // サーバプロパティの置換
         textValue = Utility.replaceServerProperty(textValue);
         
         return textValue;

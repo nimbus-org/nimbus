@@ -44,9 +44,9 @@ import jp.ossc.nimbus.service.aop.invoker.*;
 import jp.ossc.nimbus.service.performance.ResourceUsage;
 
 /**
- * �����[�g�T�[�r�X�T�[�oEJB�����N���X�B<p>
- * �����[�g�T�[�r�X��Facade�ƂȂ�Stateless Session Bean�̎����N���X�ł���B<br>
- * ����EJB�����N���X���g�p����ꍇ�AEJB�̃f�v���C�����g�L�q�qejb-jar.xml��&lt;ejb-class&gt;�v�f�ɁA���̃N���X�̃N���X�����w�肷��K�v������B<br>
+ * リモートサービスサーバEJB実装クラス。<p>
+ * リモートサービスのFacadeとなるStateless Session Beanの実装クラスである。<br>
+ * このEJB実装クラスを使用する場合、EJBのデプロイメント記述子ejb-jar.xmlの&lt;ejb-class&gt;要素に、このクラスのクラス名を指定する必要がある。<br>
  * <pre>
  *   &lt;ejb-jar&gt;
  *     &lt;enterprise-beans&gt;
@@ -66,87 +66,87 @@ public class RemoteServiceServerSessionBean implements SessionBean{
     private static final long serialVersionUID = -1629897916230733253L;
     
     /**
-     * EJB�̊��ϐ���JNDI����lookup����ׂ�JNDI�R���e�L�X�g���B<p>
+     * EJBの環境変数をJNDIからlookupする為のJNDIコンテキスト名。<p>
      */
     private static final String JAVA_ENV_KEY = "java:comp/env";
     
     /**
-     * &lt;env-entry&gt;�v�f�̎q�v�f&lt;env-entry-name&gt;�Ŏw�肷�郊���[�g�T�[�r�X���̃L�[���B<p>
+     * &lt;env-entry&gt;要素の子要素&lt;env-entry-name&gt;で指定するリモートサービス名のキー名。<p>
      */
     public static final String REMOTE_SERVICE_NAME_ENV_KEY = "remote-service-name";
     
     /**
-     * &lt;env-entry&gt;�v�f�̎q�v�f&lt;env-entry-name&gt;�Ŏw�肷��InterceptorChainList�T�[�r�X���̃L�[���B<p>
+     * &lt;env-entry&gt;要素の子要素&lt;env-entry-name&gt;で指定するInterceptorChainListサービス名のキー名。<p>
      */
     public static final String INTERCEPTOR_CHAIN_LIST_SERVICE_NAME_ENV_KEY = "interceptor-chain-list-service-name";
     
     /**
-     * &lt;env-entry&gt;�v�f�̎q�v�f&lt;env-entry-name&gt;�Ŏw�肷��InterceptorChainFactory�T�[�r�X���̃L�[���B<p>
+     * &lt;env-entry&gt;要素の子要素&lt;env-entry-name&gt;で指定するInterceptorChainFactoryサービス名のキー名。<p>
      */
     public static final String INTERCEPTOR_CHAIN_FACTORY_SERVICE_NAME_ENV_KEY = "interceptor-chain-factory-service-name";
     
     /**
-     * &lt;env-entry&gt;�v�f�̎q�v�f&lt;env-entry-name&gt;�Ŏw�肷��Invoker�T�[�r�X���̃L�[���B<p>
+     * &lt;env-entry&gt;要素の子要素&lt;env-entry-name&gt;で指定するInvokerサービス名のキー名。<p>
      */
     public static final String INVOKER_SERVICE_NAME_ENV_KEY = "invoker-service-name";
     
     /**
-     * &lt;env-entry&gt;�v�f�̎q�v�f&lt;env-entry-name&gt;�Ŏw�肷��ResourceUsage�T�[�r�X���̃L�[���B<p>
+     * &lt;env-entry&gt;要素の子要素&lt;env-entry-name&gt;で指定するResourceUsageサービス名のキー名。<p>
      */
     public static final String RESOURCE_USAGE_SERVICE_NAME_ENV_KEY = "resource-usage-service-name";
     
     /**
-     * &lt;env-entry&gt;�v�f�̎q�v�f&lt;env-entry-name&gt;�Ŏw�肷�郊���[�g�T�[�r�X��`�t�@�C���p�X�̃L�[���B<p>
+     * &lt;env-entry&gt;要素の子要素&lt;env-entry-name&gt;で指定するリモートサービス定義ファイルパスのキー名。<p>
      */
     public static final String SERVICE_PATH_ENV_KEY = "service-path";
     
     /**
-     * SessionContext �I�u�W�F�N�g�B<p>
+     * SessionContext オブジェクト。<p>
      */
     private SessionContext sessionContext;
     
     /**
-     * �����[�g�T�[�r�X���B<p>
+     * リモートサービス名。<p>
      */
     private ServiceName remoteServiceName;
     
     /**
-     * InterceptorChainList�T�[�r�X���B<p>
+     * InterceptorChainListサービス名。<p>
      */
     private ServiceName interceptorChainListServiceName;
     
     /**
-     * InterceptorChainFactory�T�[�r�X���B<p>
+     * InterceptorChainFactoryサービス名。<p>
      */
     private ServiceName interceptorChainFactoryServiceName;
     
     /**
-     * Invoker�T�[�r�X���B<p>
+     * Invokerサービス名。<p>
      */
     private ServiceName invokerServiceName;
     
     /**
-     * ResourceUsage�T�[�r�X���B<p>
+     * ResourceUsageサービス名。<p>
      */
     private ServiceName resourceUsageServiceName;
     
     /**
-     * �����[�g�T�[�r�X��`�t�@�C���p�X�B<p>
+     * リモートサービス定義ファイルパス。<p>
      */
     private String servicePath;
     
     private MethodReflectionCallInvokerService defaultInvoker;
     
     /**
-     * �����[�g�Ăяo�������T�[�r�X���Ăяo���B<p>
-     * �Ăяo���R���e�L�X�g��{@link InvocationContext#getTargetObject()}�Ŏ擾�����T�[�r�X���̃T�[�r�X�����[�J����{@link ServiceManager}����擾���āA{@link InvocationContext#setTargetObject(Object)}�ŁA�Ăяo���R���e�L�X�g�ɐݒ肷��B<br>
-     * InvocationContext.getTargetObject()�ŃT�[�r�X�����擾�ł��Ȃ��ꍇ�́A&lt;env-entry&gt; "remote-service-name"�Őݒ肳�ꂽ�T�[�r�X���̃T�[�r�X���擾���āA�Ăяo���R���e�L�X�g�ɐݒ肷��B<br>
-     * ���̌�A&lt;env-entry&gt; "interceptor-chain-list-service-name"��"invoker-service-name"�Ŏw�肳�ꂽ{@link InterceptorChainList}��{@link Invoker}���������A{@link InterceptorChain}�𐶐����āA�Ăяo���B<br>
+     * リモート呼び出しされるサービスを呼び出す。<p>
+     * 呼び出しコンテキストの{@link InvocationContext#getTargetObject()}で取得したサービス名のサービスをローカルの{@link ServiceManager}から取得して、{@link InvocationContext#setTargetObject(Object)}で、呼び出しコンテキストに設定する。<br>
+     * InvocationContext.getTargetObject()でサービス名が取得できない場合は、&lt;env-entry&gt; "remote-service-name"で設定されたサービス名のサービスを取得して、呼び出しコンテキストに設定する。<br>
+     * その後、&lt;env-entry&gt; "interceptor-chain-list-service-name"と"invoker-service-name"で指定された{@link InterceptorChainList}と{@link Invoker}を持った、{@link InterceptorChain}を生成して、呼び出す。<br>
      * 
-     * @param context �Ăяo���R���e�L�X�g
-     * @return �T�[�r�X�̌Ăяo������
-     * @exception java.rmi.RemoteException �����[�g�Ăяo�������T�[�r�X�̌Ăяo���Ɏ��s�����ꍇ
-     * @exception Exception �����[�g�Ăяo�������T�[�r�X�̌Ăяo���Ɏ��s�����ꍇ
+     * @param context 呼び出しコンテキスト
+     * @return サービスの呼び出し結果
+     * @exception java.rmi.RemoteException リモート呼び出しされるサービスの呼び出しに失敗した場合
+     * @exception Exception リモート呼び出しされるサービスの呼び出しに失敗した場合
      */
     public Object invoke(InvocationContext context)
      throws Exception, java.rmi.RemoteException{
@@ -230,11 +230,11 @@ public class RemoteServiceServerSessionBean implements SessionBean{
     }
     
     /**
-     * �֘A�t����ꂽSessionContext��ݒ肷��B<p>
+     * 関連付けられたSessionContextを設定する。<p>
      * 
-     * @param context SessionContext�I�u�W�F�N�g
-     * @exception EJBException �V�X�e�����x���̃G���[�������ŏ�Q�����������ꍇ
-     * @exception RemoteException ���̗�O�́AEJB 1.0�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean �ɉ��ʌ݊������������邽�߂Ƀ��\�b�h�̃V�O�j�`���[�ɒ�`����Ă���BEJB 1.1�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������BEJB2.0�ȍ~�̎d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������
+     * @param context SessionContextオブジェクト
+     * @exception EJBException システムレベルのエラーが原因で障害が発生した場合
+     * @exception RemoteException この例外は、EJB 1.0仕様向けに書かれたエンタープライズBean に下位互換性を持たせるためにメソッドのシグニチャーに定義されている。EJB 1.1仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある。EJB2.0以降の仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある
      * @see #getSessionContext()
      */
     public void setSessionContext(final SessionContext context)
@@ -243,9 +243,9 @@ public class RemoteServiceServerSessionBean implements SessionBean{
     }
     
     /**
-     * �֘A�t����ꂽSessionContext���擾����B<p>
+     * 関連付けられたSessionContextを取得する。<p>
      * 
-     * @return SessionContext�I�u�W�F�N�g
+     * @return SessionContextオブジェクト
      * @see #setSessionContext(SessionContext)
      */
     public SessionContext getSessionContext(){
@@ -256,55 +256,55 @@ public class RemoteServiceServerSessionBean implements SessionBean{
     }
     
     /**
-     * �֘A�t����ꂽEJBContext���擾����B<p>
+     * 関連付けられたEJBContextを取得する。<p>
      * 
-     * @return EJBContext�I�u�W�F�N�g
+     * @return EJBContextオブジェクト
      */
     public EJBContext getEJBContext(){
         return getSessionContext();
     }
     
     /**
-     * ����EJB�̃����[�g�Q�Ƃł���EJBObject�I�u�W�F�N�g���擾����B<p>
+     * このEJBのリモート参照であるEJBObjectオブジェクトを取得する。<p>
      * 
-     * @return EJBObject�I�u�W�F�N�g
+     * @return EJBObjectオブジェクト
      */
     public EJBObject getEJBObject() {
         return getSessionContext().getEJBObject();
     }
     
     /**
-     * activate���\�b�h�́A�C���X�^���X���u�񊈐����v��Ԃ��犈������ԂɂȂ�Ƃ��ɌĂяo�����B<p>
-     * ���̃C���X�^���X�ł́A�ȑO��ejbPassivate()���\�b�h�ŉ���������\�[�X�����ׂĎ擾����K�v������B<br>
+     * activateメソッドは、インスタンスが「非活性化」状態から活性化状態になるときに呼び出される。<p>
+     * このインスタンスでは、以前にejbPassivate()メソッドで解放したリソースをすべて取得する必要がある。<br>
      * <p>
-     * ���̃��\�b�h�́A�g�����U�N�V�����R���e�L�X�g���g�p���Ȃ��ŌĂяo�����B
+     * このメソッドは、トランザクションコンテキストを使用しないで呼び出される。
      *
-     * @exception EJBException �V�X�e�����x���̃G���[�������ŏ�Q�����������ꍇ
-     * @exception RemoteException ���̗�O�́AEJB 1.0�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean �ɉ��ʌ݊������������邽�߂Ƀ��\�b�h�̃V�O�j�`���[�ɒ�`����Ă���BEJB 1.1�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������BEJB2.0�ȍ~�̎d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������
+     * @exception EJBException システムレベルのエラーが原因で障害が発生した場合
+     * @exception RemoteException この例外は、EJB 1.0仕様向けに書かれたエンタープライズBean に下位互換性を持たせるためにメソッドのシグニチャーに定義されている。EJB 1.1仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある。EJB2.0以降の仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある
      */
     public void ejbActivate() throws EJBException, RemoteException{}
     
     /**
-     * passivate���\�b�h�́A�C���X�^���X���u�񊈐����v��ԂɂȂ�O�ɌĂяo�����B<p>
-     * ���̃C���X�^���X�ł́A���Ƃ�ejbActivate()���\�b�h�Ŏ擾���Ȃ������Ƃ��ł��郊�\�[�X�����ׂĉ������K�v������B<br>
+     * passivateメソッドは、インスタンスが「非活性化」状態になる前に呼び出される。<p>
+     * このインスタンスでは、あとでejbActivate()メソッドで取得しなおすことができるリソースをすべて解放する必要がある。<br>
      * <p>
-     * passivate���\�b�h������������A���̃C���X�^���X�́A�R���e�i��Java Serialization�v���g�R�����g���ăC���X�^���X�̏�Ԃ��O�������A�ۊǂ��Ă������ԂɂȂ�Ȃ���΂Ȃ�܂���B<br>
+     * passivateメソッドが完了したら、このインスタンスは、コンテナがJava Serializationプロトコルを使ってインスタンスの状態を外部化し、保管しておける状態にならなければなりません。<br>
      * <p>
-     * ���̃��\�b�h�́A�g�����U�N�V�����R���e�L�X�g���g�p���Ȃ��ŌĂяo����܂��B<br>
+     * このメソッドは、トランザクションコンテキストを使用しないで呼び出されます。<br>
      * 
-     * @exception EJBException �V�X�e�����x���̃G���[�������ŏ�Q�����������ꍇ
-     * @exception RemoteException ���̗�O�́AEJB 1.0�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean �ɉ��ʌ݊������������邽�߂Ƀ��\�b�h�̃V�O�j�`���[�ɒ�`����Ă���BEJB 1.1�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������BEJB2.0�ȍ~�̎d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������
+     * @exception EJBException システムレベルのエラーが原因で障害が発生した場合
+     * @exception RemoteException この例外は、EJB 1.0仕様向けに書かれたエンタープライズBean に下位互換性を持たせるためにメソッドのシグニチャーに定義されている。EJB 1.1仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある。EJB2.0以降の仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある
      */
     public void ejbPassivate() throws EJBException, RemoteException{}
     
     /**
-     * �R���e�i�ł́A�Z�b�V�����I�u�W�F�N�g�̗L�����Ԃ��I��点��O�ɁA���̃��\�b�h���Ăяo���܂��B<p>
-     * ���̏����́A�N���C�A���g���폜�I�y���[�V�������Ăяo�������ʂƂ��āA�܂��̓R���e�i���^�C���A�E�g��ɃZ�b�V�����I�u�W�F�N�g���I��������Ƃ��ɍs���܂��B<br>
+     * コンテナでは、セッションオブジェクトの有効期間を終わらせる前に、このメソッドを呼び出します。<p>
+     * この処理は、クライアントが削除オペレーションを呼び出した結果として、またはコンテナがタイムアウト後にセッションオブジェクトを終了させるときに行われます。<br>
      * <p>
-     * ���̃��\�b�h�́A�g�����U�N�V�����R���e�L�X�g���g�p���Ȃ��ŌĂяo����܂��B<br>
+     * このメソッドは、トランザクションコンテキストを使用しないで呼び出されます。<br>
      * 
-     * @exception EJBException �V�X�e�����x���̃G���[�������ŏ�Q�����������ꍇ
-     * @exception RemoteException ���̗�O�́AEJB 1.0�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean �ɉ��ʌ݊������������邽�߂Ƀ��\�b�h�̃V�O�j�`���[�ɒ�`����Ă���BEJB 1.1�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������BEJB2.0�ȍ~�̎d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������
+     * @exception EJBException システムレベルのエラーが原因で障害が発生した場合
+     * @exception RemoteException この例外は、EJB 1.0仕様向けに書かれたエンタープライズBean に下位互換性を持たせるためにメソッドのシグニチャーに定義されている。EJB 1.1仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある。EJB2.0以降の仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある
      */
     public void ejbRemove() throws EJBException, RemoteException{
         if(defaultInvoker != null){
@@ -321,13 +321,13 @@ public class RemoteServiceServerSessionBean implements SessionBean{
     }
     
     /**
-     * �R���e�i�ł́A�Z�b�V�����I�u�W�F�N�g�̗L�����Ԃ��J�n������O�ɁA���̃��\�b�h���Ăяo���܂��B<p>
-     * ���̏����́A�N���C�A���g�������I�y���[�V�������Ăяo�������ʂƂ��čs���܂��B<br>
+     * コンテナでは、セッションオブジェクトの有効期間を開始させる前に、このメソッドを呼び出します。<p>
+     * この処理は、クライアントが生成オペレーションを呼び出した結果として行われます。<br>
      * <p>
-     * ���̃��\�b�h�́A�g�����U�N�V�����R���e�L�X�g���g�p���Ȃ��ŌĂяo����܂��B<br>
+     * このメソッドは、トランザクションコンテキストを使用しないで呼び出されます。<br>
      * 
-     * @exception EJBException �V�X�e�����x���̃G���[�������ŏ�Q�����������ꍇ
-     * @exception RemoteException ���̗�O�́AEJB 1.0�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean �ɉ��ʌ݊������������邽�߂Ƀ��\�b�h�̃V�O�j�`���[�ɒ�`����Ă���BEJB 1.1�d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������BEJB2.0�ȍ~�̎d�l�����ɏ����ꂽ�G���^�[�v���C�YBean�́A���̗�O�̑����javax.ejb.EJBException���X���[����K�v������
+     * @exception EJBException システムレベルのエラーが原因で障害が発生した場合
+     * @exception RemoteException この例外は、EJB 1.0仕様向けに書かれたエンタープライズBean に下位互換性を持たせるためにメソッドのシグニチャーに定義されている。EJB 1.1仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある。EJB2.0以降の仕様向けに書かれたエンタープライズBeanは、この例外の代わりにjavax.ejb.EJBExceptionをスローする必要がある
      */
     public void ejbCreate() throws EJBException, RemoteException{
         final ServiceNameEditor editor = new ServiceNameEditor();
@@ -386,10 +386,10 @@ public class RemoteServiceServerSessionBean implements SessionBean{
     }
     
     /**
-     * EJB�̊��ϐ���JNDI����lookup���āA�擾����B<p>
+     * EJBの環境変数をJNDIからlookupして、取得する。<p>
      *
-     * @param name ���ϐ���
-     * @return ���ϐ��B������Ȃ��ꍇ�́Anull��Ԃ��B
+     * @param name 環境変数名
+     * @return 環境変数。見つからない場合は、nullを返す。
      */
     private static String getEnvProperty(String name){
         String value = null;

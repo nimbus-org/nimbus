@@ -37,7 +37,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.service.message.*;
 
 /**
- * {@link MessageRecordFactory}ƒ‰ƒbƒpB<p>
+ * {@link MessageRecordFactory}ãƒ©ãƒƒãƒ‘ã€‚<p>
  *
  * @author M.Takata
  */
@@ -145,7 +145,7 @@ class MessageRecordFactoryWrapper
         }
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public MessageRecord findMessageRecord(String key){
         if(currentMessage != null){
             return currentMessage.findMessageRecord(key);
@@ -153,14 +153,14 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public void findLocale(Locale locale){
         if(currentMessage != null){
             currentMessage.findLocale(locale);
         }
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessageTemplete(String key){
         if(currentMessage != null){
             return currentMessage.findMessageTemplete(key);
@@ -168,7 +168,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessageTemplete(Locale lo,String key){
         if(currentMessage != null){
             return currentMessage.findMessageTemplete(lo, key);
@@ -176,7 +176,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessage(String key){
         if(currentMessage != null){
             return currentMessage.findMessage(key);
@@ -184,7 +184,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findMessage(Locale lo,String key){
         if(currentMessage != null){
             return currentMessage.findMessage(lo, key);
@@ -192,7 +192,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,Object[] embeds){
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -200,7 +200,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, byte[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -208,7 +208,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, short[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -216,7 +216,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, char[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -224,7 +224,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, int[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -232,7 +232,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, long[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -240,7 +240,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, float[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -248,7 +248,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, double[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -256,7 +256,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, boolean[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embeds);
@@ -264,7 +264,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,Object[] embeds){
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -272,7 +272,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, byte[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -280,7 +280,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, short[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -288,7 +288,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, char[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -296,7 +296,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, int[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -304,7 +304,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, long[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -312,7 +312,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, float[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -320,7 +320,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, double[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -328,7 +328,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, boolean[] embeds) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embeds);
@@ -336,7 +336,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key,Object embed){
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -344,7 +344,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, byte embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -352,7 +352,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, short embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -360,7 +360,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, char embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -368,7 +368,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, int embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -376,7 +376,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, long embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -384,7 +384,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, float embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -392,7 +392,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, double embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -400,7 +400,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(String key, boolean embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(key, embed);
@@ -408,7 +408,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo,String key,Object embed){
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -416,7 +416,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, byte embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -424,7 +424,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, short embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -432,7 +432,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, char embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -440,7 +440,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, int embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -448,7 +448,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, long embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -456,7 +456,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, float embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -464,7 +464,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, double embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -472,7 +472,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String findEmbedMessage(Locale lo, String key, boolean embed) {
         if(currentMessage != null){
             return currentMessage.findEmbedMessage(lo, key, embed);
@@ -480,7 +480,7 @@ class MessageRecordFactoryWrapper
         return null;
     }
 
-    // MessageRecordFactory‚ÌJavaDoc
+    // MessageRecordFactoryã®JavaDoc
     public String[] getMessageIds() {
         if(currentMessage != null){
             return currentMessage.getMessageIds();

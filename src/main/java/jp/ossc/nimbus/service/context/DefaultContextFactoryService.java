@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒRƒ“ƒeƒLƒXƒgƒtƒ@ƒNƒgƒŠB<p>
- * {@link DefaultContextService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link DefaultContextService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see DefaultContextService
@@ -51,10 +51,10 @@ public class DefaultContextFactoryService
     private final DefaultContextService template = new DefaultContextService();
     
     /**
-     * {@link DefaultContextService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link DefaultContextService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return DefaultContextServiceƒT[ƒrƒX
-     * @exception Exception DefaultContextService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return DefaultContextServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception DefaultContextServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see DefaultContextService
      */
     protected Service createServiceInstance() throws Exception{
@@ -63,7 +63,7 @@ public class DefaultContextFactoryService
         return context;
     }
     
-    // DefaultContextFactoryServiceMBean‚ÌJavaDoc
+    // DefaultContextFactoryServiceMBeanã®JavaDoc
     public void put(Object key, Object value){
         template.put(key, value);
         final Set instanceSet = getManagedInstanceSet();
@@ -75,7 +75,7 @@ public class DefaultContextFactoryService
         }
     }
     
-    // DefaultContextFactoryServiceMBean‚ÌJavaDoc
+    // DefaultContextFactoryServiceMBeanã®JavaDoc
     public void put(String key, String value){
         put(key, value);
     }

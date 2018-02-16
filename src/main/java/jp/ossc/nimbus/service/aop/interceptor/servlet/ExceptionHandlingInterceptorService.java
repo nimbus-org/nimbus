@@ -48,8 +48,8 @@ import org.apache.commons.jexl.JexlContext;
 import org.apache.commons.jexl.JexlHelper;
 
 /**
- * —áŠOˆ—ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ˆÈ‰º‚ÉANullPointerException‚ª”­¶‚µ‚½ê‡‚ÍAWARNƒƒO‚ğo—Í‚µwarn.jsp‚É“]‘—‚µAIllegalArgumentException‚ª”­¶‚µ‚½ê‡‚ÍAERRORƒƒO‚ğo—Í‚µerror.jsp‚É“]‘—‚µA‚»‚êˆÈŠO‚Ì—áŠO‚ª”­¶‚µ‚½ê‡‚ÍAFATALƒƒO‚ğo—Í‚µHTTPƒXƒe[ƒ^ƒX‚Ì500‚ğ•Ô‚·—áŠOˆ—ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä¾‹å¤–å‡¦ç†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ä»¥ä¸‹ã«ã€NullPointerExceptionãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€WARNãƒ­ã‚°ã‚’å‡ºåŠ›ã—warn.jspã«è»¢é€ã—ã€IllegalArgumentExceptionãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€ERRORãƒ­ã‚°ã‚’å‡ºåŠ›ã—error.jspã«è»¢é€ã—ã€ãã‚Œä»¥å¤–ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€FATALãƒ­ã‚°ã‚’å‡ºåŠ›ã—HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®500ã‚’è¿”ã™ä¾‹å¤–å‡¦ç†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -111,30 +111,30 @@ public class ExceptionHandlingInterceptorService
     protected ServiceName defaultExceptionHandlerServiceName;
     protected ExceptionHandler defaultExceptionHandler;
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public void setExceptionAndHandlerMapping(Map map){
         exceptionAndHandlerMapping = map;
     }
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public Map getExceptionAndHandlerMapping(){
         return exceptionAndHandlerMapping;
     }
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public void setDefaultExceptionHandlerServiceName(ServiceName name){
         defaultExceptionHandlerServiceName = name;
     }
     
-    // ExceptionHandlingInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionHandlingInterceptorServiceMBeanã®JavaDoc
     public ServiceName getDefaultExceptionHandlerServiceName(){
         return defaultExceptionHandlerServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(exceptionAndHandlerMapping != null){
@@ -191,13 +191,13 @@ public class ExceptionHandlingInterceptorService
     }
     
     /**
-     * Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µAƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ª”­¶‚·‚é‚Æ—áŠOˆ—‚ğs‚¤JSP‚ÉƒtƒHƒ[ƒh‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ã€ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ã¨ä¾‹å¤–å‡¦ç†ã‚’è¡Œã†JSPã«ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,
@@ -217,7 +217,7 @@ public class ExceptionHandlingInterceptorService
                     response
                 );
                 if(handler != null){
-                    // ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO
+                    // ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–
                     Throwable targetTh = getTargetException(
                         exceptionMapForHandler,
                         th,
@@ -241,12 +241,12 @@ public class ExceptionHandlingInterceptorService
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚Ìƒnƒ“ƒhƒ‰ƒNƒ‰ƒX‚ğƒ}ƒbƒv‚©‚çŒ©‚Â‚¯‚Ä•Ô‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒ©ã‚¯ãƒ©ã‚¹ã‚’ãƒãƒƒãƒ—ã‹ã‚‰è¦‹ã¤ã‘ã¦è¿”ã™ã€‚<p>
      *
-     * @param th —áŠO(ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğŠÜ‚ñ‚Å‚¢‚é)
-     * @param request ƒŠƒNƒGƒXƒg
-     * @param response ƒŒƒXƒ|ƒ“ƒX
-     * @return —áŠOƒnƒ“ƒhƒ‰
+     * @param th ä¾‹å¤–(ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å«ã‚“ã§ã„ã‚‹)
+     * @param request ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response ãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @return ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©
      */
     protected ExceptionHandler getTargetExceptionHandlerCause(
         Throwable th,
@@ -263,13 +263,13 @@ public class ExceptionHandlingInterceptorService
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚Ìƒnƒ“ƒhƒ‰‚ğƒ}ƒbƒv‚©‚çŒ©‚Â‚¯‚Ä•Ô‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒ©ã‚’ãƒãƒƒãƒ—ã‹ã‚‰è¦‹ã¤ã‘ã¦è¿”ã™ã€‚<p>
      *
-     * @param handlerMap ƒnƒ“ƒhƒ‰‚Ìƒ}ƒbƒv
-     * @param th —áŠO(ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğŠÜ‚ñ‚Å‚¢‚é)
-     * @param request ƒŠƒNƒGƒXƒg
-     * @param response ƒŒƒXƒ|ƒ“ƒX
-     * @return —áŠOƒnƒ“ƒhƒ‰
+     * @param handlerMap ãƒãƒ³ãƒ‰ãƒ©ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–(ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å«ã‚“ã§ã„ã‚‹)
+     * @param request ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response ãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @return ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©
      */
     protected ExceptionHandler getTargetHandlerCause(
         ClassMappingTree handlerMap,
@@ -280,7 +280,7 @@ public class ExceptionHandlingInterceptorService
         if(handlerMap == null){
             return null;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚é—áŠOƒnƒ“ƒhƒ‰‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚’å–å¾—
         List handlers = handlerMap.getValueList(th.getClass());
         if(handlers != null){
             for(int i = 0, imax = handlers.size(); i < imax; i++){
@@ -304,13 +304,13 @@ public class ExceptionHandlingInterceptorService
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çAƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO‚ğæ‚èo‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰ã€ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–ã‚’å–ã‚Šå‡ºã™ã€‚<p>
      * 
-     * @param handlerMap ƒnƒ“ƒhƒ‰‚Ìƒ}ƒbƒv
-     * @param th —áŠO
-     * @param request ƒŠƒNƒGƒXƒg
-     * @param response ƒŒƒXƒ|ƒ“ƒX
-     * @return ƒnƒ“ƒhƒŠƒ“ƒO‘ÎÛ‚Ì—áŠO
+     * @param handlerMap ãƒãƒ³ãƒ‰ãƒ©ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–
+     * @param request ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response ãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @return ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å¯¾è±¡ã®ä¾‹å¤–
      */
     protected Throwable getTargetException(
         ClassMappingTree handlerMap,
@@ -321,7 +321,7 @@ public class ExceptionHandlingInterceptorService
         if(handlerMap == null){
             return th;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚é—áŠOƒnƒ“ƒhƒ‰‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚’å–å¾—
         List handlers = handlerMap.getValueList(th.getClass());
         if(handlers != null){
             for(int i = 0, imax = handlers.size(); i < imax; i++){
@@ -351,18 +351,18 @@ public class ExceptionHandlingInterceptorService
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çŒ´ˆö‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰åŸå› ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
-     * @return Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @return åŸå› 
      */
     protected Throwable getCause(Throwable th){
         Throwable cause = null;
         if(th instanceof ServletException){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             cause = ((ServletException)th).getRootCause();
         }else if(th.getClass().getName().equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -494,7 +494,7 @@ public class ExceptionHandlingInterceptorService
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
             }
         }
     }

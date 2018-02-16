@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ƒL[•t‚«ƒLƒƒƒbƒVƒ…QÆƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚­ãƒ¼ä»˜ãã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface KeyCachedReference extends CachedReference{
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚ÌƒL[î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…‚ÌƒL[
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
      */
     public Object getKey();
 }

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.queue;
 
 /**
- * •ªUQueueƒZƒŒƒNƒ^[B<p>
+ * åˆ†æ•£Queueã‚»ãƒ¬ã‚¯ã‚¿ãƒ¼ã€‚<p>
  * 
  * @author M.Takata
  */

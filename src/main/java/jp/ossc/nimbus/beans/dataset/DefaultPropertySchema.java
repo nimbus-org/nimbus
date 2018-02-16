@@ -52,48 +52,48 @@ import jp.ossc.nimbus.io.CSVReader;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒg‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}À‘•ƒNƒ‰ƒXB<p>
- * ‚±‚ÌƒNƒ‰ƒX‚É‚ÍAƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}î•ñ‚Æ‚µ‚ÄAˆÈ‰º‚Ìî•ñ‚ª’è‹`‚Å‚«‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã«ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã¨ã—ã¦ã€ä»¥ä¸‹ã®æƒ…å ±ãŒå®šç¾©ã§ãã‚‹ã€‚<br>
  * <ul>
- *   <li>–¼‘O</li>
- *   <li>Œ^</li>
- *   <li>“ü—Í•ÏŠ·í—Ş</li>
- *   <li>o—Í•ÏŠ·í—Ş</li>
- *   <li>§–ñ</li>
- *   <li>åƒL[ƒtƒ‰ƒO</li>
+ *   <li>åå‰</li>
+ *   <li>å‹</li>
+ *   <li>å…¥åŠ›å¤‰æ›ç¨®é¡</li>
+ *   <li>å‡ºåŠ›å¤‰æ›ç¨®é¡</li>
+ *   <li>åˆ¶ç´„</li>
+ *   <li>ä¸»ã‚­ãƒ¼ãƒ•ãƒ©ã‚°</li>
  * </ul>
- * ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€<br>
  * <pre>
- *    –¼‘O,Œ^,“ü—Í•ÏŠ·í—Ş,o—Í•ÏŠ·í—Ş,§–ñ
+ *    åå‰,å‹,å…¥åŠ›å¤‰æ›ç¨®é¡,å‡ºåŠ›å¤‰æ›ç¨®é¡,åˆ¶ç´„
  * </pre>
- * ‚Æ‚È‚Á‚Ä‚¨‚èA–¼‘OˆÈŠO‚ÍÈ—ª‰Â”\‚Å‚ ‚éB’A‚µA“r’†‚Ì€–Ú‚ğÈ—ª‚·‚éê‡‚ÍA‹æØ‚èq‚Å‚ ‚éƒJƒ“ƒ}‚Í•K—v‚Å‚ ‚éB<br>
+ * ã¨ãªã£ã¦ãŠã‚Šã€åå‰ä»¥å¤–ã¯çœç•¥å¯èƒ½ã§ã‚ã‚‹ã€‚ä½†ã—ã€é€”ä¸­ã®é …ç›®ã‚’çœç•¥ã™ã‚‹å ´åˆã¯ã€åŒºåˆ‡ã‚Šå­ã§ã‚ã‚‹ã‚«ãƒ³ãƒã¯å¿…è¦ã§ã‚ã‚‹ã€‚<br>
  * <p>
- * Ÿ‚ÉAŠe€–Ú‚ÌÚ×‚ğà–¾‚·‚éB<br>
+ * æ¬¡ã«ã€å„é …ç›®ã®è©³ç´°ã‚’èª¬æ˜ã™ã‚‹ã€‚<br>
  * <p>
- * –¼‘O‚ÍAƒvƒƒpƒeƒB‚Ì–¼‘O‚ğˆÓ–¡‚µA{@link Record ƒŒƒR[ƒh}‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éÛ‚ÌƒL[‚Æ‚È‚éB<br>
+ * åå‰ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰ã‚’æ„å‘³ã—ã€{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹éš›ã®ã‚­ãƒ¼ã¨ãªã‚‹ã€‚<br>
  * <p>
- * Œ^‚ÍAƒvƒƒpƒeƒB‚ÌŒ^‚ğˆÓ–¡‚µAJava‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚Åw’è‚·‚éB<br>
+ * å‹ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚’æ„å‘³ã—ã€Javaã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã§æŒ‡å®šã™ã‚‹ã€‚<br>
  * <p>
- * •ÏŠ·í—Ş‚ÍA{@link Record#setParseProperty(String, Object)}‚Å“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒvƒƒpƒeƒB‚ÌŒ^‚É•ÏŠ·‚µ’l‚ğİ’è‚µ‚½‚èA{@link Record#getFormatProperty(String)}‚ÅƒvƒƒpƒeƒB‚ğ•ÏŠ·‚µ‰½‚ç‚©‚ÌƒtƒH[ƒ}ƒbƒg‚µ‚½’l‚ğæ“¾‚·‚é‚½‚ß‚Ì‚à‚Ì‚Å‚ ‚éB<br>
- * •ÏŠ·‚É‚ÍA{@link Converter ƒRƒ“ƒo[ƒ^}‚ğg—p‚·‚é‚½‚ßAƒRƒ“ƒo[ƒ^‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚Ü‚½‚ÍAƒT[ƒrƒX–¼‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚éB<br>
- * ‚Ü‚½AƒRƒ“ƒo[ƒ^‚ÌƒNƒ‰ƒX–¼‚ğw’è‚·‚éê‡‚ÍAƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚ÂƒRƒ“ƒo[ƒ^‚Å‚ ‚é•K—v‚ª‚ ‚éBX‚ÉAƒRƒ“ƒo[ƒ^ƒNƒ‰ƒX‚É‘Î‚µ‚Ä‚ÍAƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚éB<br>
- * ƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚Ìw’è‚ÍA<br>
+ * å¤‰æ›ç¨®é¡ã¯ã€{@link Record#setParseProperty(String, Object)}ã§å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã«å¤‰æ›ã—å€¤ã‚’è¨­å®šã—ãŸã‚Šã€{@link Record#getFormatProperty(String)}ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å¤‰æ›ã—ä½•ã‚‰ã‹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ãŸå€¤ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã§ã‚ã‚‹ã€‚<br>
+ * å¤‰æ›ã«ã¯ã€{@link Converter ã‚³ãƒ³ãƒãƒ¼ã‚¿}ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã€ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã¾ãŸã¯ã€ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒã¤ã‚³ãƒ³ãƒãƒ¼ã‚¿ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚æ›´ã«ã€ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚¯ãƒ©ã‚¹ã«å¯¾ã—ã¦ã¯ã€ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚<br>
+ * ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æŒ‡å®šã¯ã€<br>
  * <pre>
- *   "ƒRƒ“ƒo[ƒ^‚ÌŠ®‘SCüƒNƒ‰ƒX–¼{ƒvƒƒpƒeƒB1=’l;ƒvƒƒpƒeƒB2="’l,’l";ƒvƒƒpƒeƒB3:’l‚ÌŒ^=’l;c}"
+ *   "ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£1=å€¤;ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£2="å€¤,å€¤";ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£3:å€¤ã®å‹=å€¤;â€¦}"
  * </pre>
- * ‚Æ‚¢‚¤‚æ‚¤‚És‚¤B<br>
- * ‚Ü‚½AƒRƒ“ƒo[ƒ^‚ÌƒNƒ‰ƒX–¼‚ğw’è‚·‚éê‡‚ÅA•¡”‚ÌƒRƒ“ƒo[ƒ^‚ğ‘g‚İ‡‚í‚¹‚½‚¢ê‡‚ÍA<br>
+ * ã¨ã„ã†ã‚ˆã†ã«è¡Œã†ã€‚<br>
+ * ã¾ãŸã€ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã™ã‚‹å ´åˆã§ã€è¤‡æ•°ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’çµ„ã¿åˆã‚ã›ãŸã„å ´åˆã¯ã€<br>
  * <pre>
- *   "ƒRƒ“ƒo[ƒ^‚ÌŠ®‘SCüƒNƒ‰ƒX–¼{ƒvƒƒpƒeƒB1=’l;ƒvƒƒpƒeƒB2="’l,’l";c}+ƒRƒ“ƒo[ƒ^‚ÌŠ®‘SCüƒNƒ‰ƒX–¼{ƒvƒƒpƒeƒB1=’l;ƒvƒƒpƒeƒB2="’l,’l";c}"
+ *   "ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£1=å€¤;ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£2="å€¤,å€¤";â€¦}+ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹å{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£1=å€¤;ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£2="å€¤,å€¤";â€¦}"
  * </pre>
- * ‚Æ‚¢‚¤‚æ‚¤‚ÉAƒRƒ“ƒo[ƒ^‚Ì’è‹`‚ğ"+"‚Å˜AŒ‹‚·‚éB<br>
+ * ã¨ã„ã†ã‚ˆã†ã«ã€ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®å®šç¾©ã‚’"+"ã§é€£çµã™ã‚‹ã€‚<br>
  * <p>
- * §–ñ‚ÍAƒvƒƒpƒeƒB‚É’l‚ğİ’è‚·‚éÛ‚ÌA’l‚É‘Î‚·‚é§–ñ®‚ğ’è‹`‚·‚éB<br>
- * §–ñ®‚ÍA“™†A•s“™†A˜_—‰‰ZAl‘¥‰‰Z‚È‚Ç‚ª‰Â”\‚Å‚ ‚é‚ªA®‚ÌŒ‹‰Ê‚Íboolean‚Æ‚È‚é‚æ‚¤‚É‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B®Œ¾Œê‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚Ìd—l‚É]‚¤B<br>
- * ’l‚ÍA"@value@"‚Æ‚¢‚¤•¶š‚Å•\Œ»‚·‚éB—á‚¦‚ÎANOT NULL§–ñ‚ğŠ|‚¯‚½‚¯‚ê‚ÎA"@value@ != null"‚Æ‚¢‚¤§–ñ®‚É‚È‚éB<br>
- * ‚Ü‚½’l‚É‘Î‚µ‚ÄAƒvƒƒpƒeƒBƒAƒNƒZƒX‚·‚é–‚ª‰Â”\‚Å‚ ‚éB—á‚¦‚ÎAStringŒ^‚ÌƒvƒƒpƒeƒB‚É’·‚³‚TˆÈã‚Æ‚¢‚¤§–ñ‚ğŠ|‚¯‚½‚¯‚ê‚ÎA"@value.length@ >= 5"‚Æ‚¢‚¤§–ñ®‚É‚È‚éBƒvƒƒpƒeƒBƒAƒNƒZƒX‚ÍA{@link PropertyFactory ƒvƒƒpƒeƒBƒtƒ@ƒNƒgƒŠ}‚Ìd—l‚É]‚¤B<br>
+ * åˆ¶ç´„ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’è¨­å®šã™ã‚‹éš›ã®ã€å€¤ã«å¯¾ã™ã‚‹åˆ¶ç´„å¼ã‚’å®šç¾©ã™ã‚‹ã€‚<br>
+ * åˆ¶ç´„å¼ã¯ã€ç­‰å·ã€ä¸ç­‰å·ã€è«–ç†æ¼”ç®—ã€å››å‰‡æ¼”ç®—ãªã©ãŒå¯èƒ½ã§ã‚ã‚‹ãŒã€å¼ã®çµæœã¯booleanã¨ãªã‚‹ã‚ˆã†ã«ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚å¼è¨€èªã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã®ä»•æ§˜ã«å¾“ã†ã€‚<br>
+ * å€¤ã¯ã€"@value@"ã¨ã„ã†æ–‡å­—ã§è¡¨ç¾ã™ã‚‹ã€‚ä¾‹ãˆã°ã€NOT NULLåˆ¶ç´„ã‚’æ›ã‘ãŸã‘ã‚Œã°ã€"@value@ != null"ã¨ã„ã†åˆ¶ç´„å¼ã«ãªã‚‹ã€‚<br>
+ * ã¾ãŸå€¤ã«å¯¾ã—ã¦ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹äº‹ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚ä¾‹ãˆã°ã€Stringå‹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«é•·ã•ï¼•ä»¥ä¸Šã¨ã„ã†åˆ¶ç´„ã‚’æ›ã‘ãŸã‘ã‚Œã°ã€"@value.length@ >= 5"ã¨ã„ã†åˆ¶ç´„å¼ã«ãªã‚‹ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¢ã‚¯ã‚»ã‚¹ã¯ã€{@link PropertyFactory ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¯ãƒˆãƒª}ã®ä»•æ§˜ã«å¾“ã†ã€‚<br>
  * <p>
- * åƒL[ƒtƒ‰ƒO‚ÍA{@link RecordList}‚ÌƒXƒL[ƒ}î•ñ‚Æ‚µ‚Äg—p‚·‚éê‡‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ªåƒL[‚Å‚ ‚é–‚ğw’è‚·‚é‚à‚Ì‚ÅAåƒL[‚Èê‡‚ÍA"1"‚Åw’è‚·‚éB<br>
+ * ä¸»ã‚­ãƒ¼ãƒ•ãƒ©ã‚°ã¯ã€{@link RecordList}ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã¨ã—ã¦ä½¿ç”¨ã™ã‚‹å ´åˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒä¸»ã‚­ãƒ¼ã§ã‚ã‚‹äº‹ã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€ä¸»ã‚­ãƒ¼ãªå ´åˆã¯ã€"1"ã§æŒ‡å®šã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -102,84 +102,84 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     private static final long serialVersionUID = -7076284202113630114L;
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒBW‡‚Ì‹æØ‚èÚ“ª«B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é›†åˆã®åŒºåˆ‡ã‚Šæ¥é ­è¾ã€‚<p>
      */
     protected static final String CLASS_PROPERTY_PREFIX = "{";
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒBW‡‚Ì‹æØ‚èÚ”ö«B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é›†åˆã®åŒºåˆ‡ã‚Šæ¥å°¾è¾ã€‚<p>
      */
     protected static final String CLASS_PROPERTY_SUFFIX = "}";
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ÌŠÇ——pƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒIƒuƒWƒFƒNƒg•¶š—ñA’l‚ÍƒIƒuƒWƒFƒNƒgB<br>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç®¡ç†ç”¨ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ–‡å­—åˆ—ã€å€¤ã¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<br>
      */
     protected static final ConcurrentMap objectManager = new ConcurrentHashMap();
     
     /**
-     * ƒXƒL[ƒ}•¶š—ñB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã€‚<p>
      */
     protected String schema;
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì–¼‘OB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰ã€‚<p>
      */
     protected String name;
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã€‚<p>
      */
     protected Class type;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ÌƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
      */
     protected transient Converter formatConverter;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ÌƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^ƒT[ƒrƒX–¼B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName formatConverterName;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚Ìƒp[ƒXƒRƒ“ƒo[ƒ^B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®ãƒ‘ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
      */
     protected transient Converter parseConverter;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚Ìƒp[ƒXƒRƒ“ƒo[ƒ^ƒT[ƒrƒX–¼B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®ãƒ‘ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName parseConverterName;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚Ìİ’è§–ñB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®è¨­å®šåˆ¶ç´„ã€‚<p>
      */
     protected transient Constrain constrainExpression;
     
     /**
-     * åƒL[‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * åƒL[‚Ìê‡‚Ítrue‚ÅAƒfƒtƒHƒ‹ƒg‚ÍfalseB<br>
+     * ä¸»ã‚­ãƒ¼ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ä¸»ã‚­ãƒ¼ã®å ´åˆã¯trueã§ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã€‚<br>
      */
     protected boolean isPrimaryKey;
     
     /**
-     * ‹ó‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultPropertySchema(){
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public DefaultPropertySchema(String schema) throws PropertySchemaDefineException{
         setSchema(schema);
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public void setSchema(String schema) throws PropertySchemaDefineException{
         if(schema == null || schema.length() == 0){
             throw new PropertySchemaDefineException(
@@ -191,17 +191,17 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         this.schema = schema;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public String getSchema(){
         return schema;
     }
     
     /**
-     * CSV•¶š—ñ‚ğƒp[ƒX‚·‚éB<p>
-     * ,‚ğ‹æØ‚è•¶šA\‚ğ1•¶šƒGƒXƒP[ƒvA""‚ÅˆÍ‚Ş‚ÆƒuƒƒbƒNƒGƒXƒP[ƒv‚Æ‚µ‚ÄAƒp[ƒX‚·‚éB<br>
+     * CSVæ–‡å­—åˆ—ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
+     * ,ã‚’åŒºåˆ‡ã‚Šæ–‡å­—ã€\ã‚’1æ–‡å­—ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€""ã§å›²ã‚€ã¨ãƒ–ãƒ­ãƒƒã‚¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¨ã—ã¦ã€ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<br>
      *
-     * @param text CSV•¶š—ñ
-     * @return ƒZƒpƒŒ[ƒg‚³‚ê‚½•¶š—ñ‚ÌƒŠƒXƒg
+     * @param text CSVæ–‡å­—åˆ—
+     * @return ã‚»ãƒ‘ãƒ¬ãƒ¼ãƒˆã•ã‚ŒãŸæ–‡å­—åˆ—ã®ãƒªã‚¹ãƒˆ
      */
     protected static List parseCSV(String text){
         return CSVReader.toList(
@@ -220,11 +220,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŠe€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å„é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param schemata ƒXƒL[ƒ}€–Ú‚ÌƒŠƒXƒg
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param schemata ã‚¹ã‚­ãƒ¼ãƒé …ç›®ã®ãƒªã‚¹ãƒˆ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseSchemata(String schema, List schemata)
      throws PropertySchemaDefineException{
@@ -237,12 +237,12 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŠe€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å„é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param index ƒXƒL[ƒ}€–Ú‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param index ã‚¹ã‚­ãƒ¼ãƒé …ç›®ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseSchema(String schema, int index, String val)
      throws PropertySchemaDefineException{
@@ -269,11 +269,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì–¼‘O‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åå‰ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseName(String schema, String val)
      throws PropertySchemaDefineException{
@@ -281,11 +281,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŒ^‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‹ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseType(String schema, String val)
      throws PropertySchemaDefineException{
@@ -303,11 +303,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì“ü—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å…¥åŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseParseConverter(String schema, String val)
      throws PropertySchemaDefineException{
@@ -322,11 +322,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ìo—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‡ºåŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseFormatConverter(String schema, String val)
      throws PropertySchemaDefineException{
@@ -341,13 +341,13 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒIƒuƒWƒFƒNƒg•¶š—ñ‚ğƒp[ƒX‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ–‡å­—åˆ—ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒIƒuƒWƒFƒNƒg•¶š—ñ
-     * @return ƒIƒuƒWƒFƒNƒg
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX–¼‚ÌƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ–‡å­—åˆ—
+     * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹åã®ã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object parseObject(String schema, String val)
      throws ClassNotFoundException, PropertySchemaDefineException{
@@ -480,12 +480,12 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @return {@link Converter ƒRƒ“ƒo[ƒ^}‚Ü‚½‚ÍƒRƒ“ƒo[ƒ^‚Ì{@link ServiceName ƒT[ƒrƒX–¼}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @return {@link Converter ã‚³ãƒ³ãƒãƒ¼ã‚¿}ã¾ãŸã¯ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®{@link ServiceName ã‚µãƒ¼ãƒ“ã‚¹å}
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Object parseConverter(String schema, String val)
      throws PropertySchemaDefineException{
@@ -547,11 +547,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì§–ñ‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åˆ¶ç´„ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseConstrain(String schema, String val)
      throws PropertySchemaDefineException{
@@ -569,23 +569,23 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌåƒL[‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®ä¸»ã‚­ãƒ¼ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parsePrimaryKey(String schema, String val)
      throws PropertySchemaDefineException{
         isPrimaryKey = val != null && "1".equals(val) ? true : false;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public String getName(){
         return name;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Class getType(){
         return type;
     }
@@ -595,9 +595,9 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒp[ƒX—p‚ÌƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ¼ã‚¹ç”¨ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒo[ƒ^
+     * @return ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public Converter getParseConverter(){
         if(parseConverter != null){
@@ -611,9 +611,9 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg—p‚ÌƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç”¨ã®ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒo[ƒ^
+     * @return ã‚³ãƒ³ãƒãƒ¼ã‚¿
      */
     public Converter getFormatConverter(){
         if(formatConverter != null){
@@ -627,26 +627,26 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * §–ñ‚ğæ“¾‚·‚éB<p>
+     * åˆ¶ç´„ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return §–ñ
+     * @return åˆ¶ç´„
      */
     public String getConstrain(){
         return constrainExpression == null
              ? null : constrainExpression.constrain;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object set(Object val) throws PropertySetException{
         return checkSchema(val);
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object get(Object val) throws PropertyGetException{
         return val;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object format(Object val) throws PropertyGetException{
         Object result = val;
         Converter converter = null;
@@ -682,7 +682,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         return result;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object parse(Object val) throws PropertySetException{
         Object result = val;
         Converter converter = null;
@@ -773,11 +773,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚É“K‡‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«é©åˆã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySchemaCheckException ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚É“K‡‚µ‚Ä‚¢‚È‚¢ê‡
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySchemaCheckException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«é©åˆã—ã¦ã„ãªã„å ´åˆ
      */
     protected Object checkSchema(Object val) throws PropertySchemaCheckException{
         val = checkType(val);
@@ -785,11 +785,11 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚ÌŒ^‚É“K‡‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®å‹ã«é©åˆã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySchemaCheckException ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚É“K‡‚µ‚Ä‚¢‚È‚¢ê‡
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySchemaCheckException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«é©åˆã—ã¦ã„ãªã„å ´åˆ
      */
     protected Object checkType(Object val) throws PropertySchemaCheckException{
         if(type == null || val == null){
@@ -980,7 +980,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         }
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public boolean validate(Object val) throws PropertyValidateException{
         if(constrainExpression == null){
             return true;
@@ -999,9 +999,9 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * ‚±‚ÌƒXƒL[ƒ}‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚­ãƒ¼ãƒã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder(getClass().getName());
@@ -1033,46 +1033,46 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     /**
-     * §–ñB<p>
+     * åˆ¶ç´„ã€‚<p>
      *
      * @author M.Takata
      */
     protected static class Constrain{
         
         /**
-         * §–ñ®’†‚ÌƒvƒƒpƒeƒB’l‚ğ•\‚·•¶šB<p>
+         * åˆ¶ç´„å¼ä¸­ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¡¨ã™æ–‡å­—ã€‚<p>
          */
         protected static final String CONSTRAIN_TARGET_KEY = "value";
         /**
-         * §–ñ®’†‚ÌƒvƒƒpƒeƒB’l‚ğ•\‚·•¶šB<p>
+         * åˆ¶ç´„å¼ä¸­ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¡¨ã™æ–‡å­—ã€‚<p>
          */
         protected static final String CONSTRAIN_DELIMITER = "@";
         
         /**
-         * §–ñB<p>
+         * åˆ¶ç´„ã€‚<p>
          */
         public final String constrain;
         
         /**
-         * §–ñ®’†‚ÌƒL[‚ÌƒŠƒXƒgB<p>
+         * åˆ¶ç´„å¼ä¸­ã®ã‚­ãƒ¼ã®ãƒªã‚¹ãƒˆã€‚<p>
          */
         protected final List keyList = new ArrayList();
         
         /**
-         * §–ñ®’†‚ÌƒL[‚ÌƒvƒƒpƒeƒB‚ÌƒŠƒXƒgB<p>
+         * åˆ¶ç´„å¼ä¸­ã®ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒªã‚¹ãƒˆã€‚<p>
          */
         protected final List properties = new ArrayList();
         
         /**
-         * §–ñ®B<p>
+         * åˆ¶ç´„å¼ã€‚<p>
          */
         protected Expression expression;
         
         /**
-         * §–ñ‚ğ¶¬‚·‚éB<p>
+         * åˆ¶ç´„ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param constrain §–ñ®•¶š—ñ
-         * @exception Exception §–ñ®•¶š—ñ‚Ì‰ğß‚É¸”s‚µ‚½ê‡
+         * @param constrain åˆ¶ç´„å¼æ–‡å­—åˆ—
+         * @exception Exception åˆ¶ç´„å¼æ–‡å­—åˆ—ã®è§£é‡ˆã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Constrain(String constrain) throws Exception{
             this.constrain = constrain;
@@ -1125,23 +1125,23 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         }
         
         /**
-         * w’è‚³‚ê‚½’l‚ª§–ñ‚É“K‡‚µ‚Ä‚¢‚é‚©•]‰¿‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒåˆ¶ç´„ã«é©åˆã—ã¦ã„ã‚‹ã‹è©•ä¾¡ã™ã‚‹ã€‚<p>
          *
-         * @param object §–ñ‘ÎÛ‚Ì’l
-         * @return §–ñ‚É“K‡‚µ‚Ä‚¢‚éê‡true
-         * @exception Exception •]‰¿‚É¸”s‚µ‚½ê‡
+         * @param object åˆ¶ç´„å¯¾è±¡ã®å€¤
+         * @return åˆ¶ç´„ã«é©åˆã—ã¦ã„ã‚‹å ´åˆtrue
+         * @exception Exception è©•ä¾¡ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean evaluate(Object object) throws Exception{
             return evaluate(object, false);
         }
         
         /**
-         * w’è‚³‚ê‚½’l‚ª§–ñ‚É“K‡‚µ‚Ä‚¢‚é‚©•]‰¿‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå€¤ãŒåˆ¶ç´„ã«é©åˆã—ã¦ã„ã‚‹ã‹è©•ä¾¡ã™ã‚‹ã€‚<p>
          *
-         * @param object §–ñ‘ÎÛ‚Ì’l
-         * @param isTest §–ñ®‚ÌŒ‹‰Ê‚ÌŒ^‚ª§–ñ‘ÎÛ‚Ì’l‚ÉˆË‘¶‚·‚éê‡A§–ñ®Œ‹‰Ê‚ªboolean‚Æ‚È‚é–‚ğ•Ûá‚Å‚«‚È‚¢‚Ì‚ÅAŒ^ƒ`ƒFƒbƒN‚ğs‚í‚È‚¢‚æ‚¤‚É‚·‚éƒtƒ‰ƒO
-         * @return §–ñ‚É“K‡‚µ‚Ä‚¢‚éê‡true
-         * @exception Exception •]‰¿‚É¸”s‚µ‚½ê‡
+         * @param object åˆ¶ç´„å¯¾è±¡ã®å€¤
+         * @param isTest åˆ¶ç´„å¼ã®çµæœã®å‹ãŒåˆ¶ç´„å¯¾è±¡ã®å€¤ã«ä¾å­˜ã™ã‚‹å ´åˆã€åˆ¶ç´„å¼çµæœãŒbooleanã¨ãªã‚‹äº‹ã‚’ä¿éšœã§ããªã„ã®ã§ã€å‹ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã‚ãªã„ã‚ˆã†ã«ã™ã‚‹ãƒ•ãƒ©ã‚°
+         * @return åˆ¶ç´„ã«é©åˆã—ã¦ã„ã‚‹å ´åˆtrue
+         * @exception Exception è©•ä¾¡ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         protected boolean evaluate(Object object, boolean isTest) throws Exception{
             JexlContext jexlContext = JexlHelper.createContext();

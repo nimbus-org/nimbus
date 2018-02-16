@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * {@link ServerConnection}‚ğ•ªU‚·‚éServerConnectionƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link ServerConnection}ã‚’åˆ†æ•£ã™ã‚‹ServerConnectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

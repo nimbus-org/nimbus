@@ -63,7 +63,7 @@ import jp.ossc.nimbus.service.performance.PerformanceRecorder;
 import jp.ossc.nimbus.util.SynchronizeMonitor;
 
 /**
- * {@link BeanFlowInvokerFactory}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒT[ƒrƒXB<p>
+ * {@link BeanFlowInvokerFactory}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author H.Nakano
  */
@@ -79,64 +79,64 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     private static final Comparator COMP = new MetricsInfoComparator();
     private static final String LINE_SEP = System.getProperty("line.separator");
 
-    /** ƒTƒXƒyƒ“ƒhƒtƒ[ŠÇ—Map */
+    /** ã‚µã‚¹ãƒšãƒ³ãƒ‰ãƒ•ãƒ­ãƒ¼ç®¡ç†Map */
     private Map mSuspendKeyMap;
 
-    /** –³Œøƒtƒ[ŠÇ—Map */
+    /** ç„¡åŠ¹ãƒ•ãƒ­ãƒ¼ç®¡ç†Map */
     private Map mIgnoreKeyMap;
 
-    /** Às’†ƒtƒ[ŠÇ—Map */
+    /** å®Ÿè¡Œä¸­ãƒ•ãƒ­ãƒ¼ç®¡ç†Map */
     private List mExecFlowList;
 
-    /** ƒtƒ[ŠÇ—Map */
+    /** ãƒ•ãƒ­ãƒ¼ç®¡ç†Map */
     private Map mFlowConfigMap;
 
-    /** ƒtƒ[•Ê–¼ŠÇ—Map */
+    /** ãƒ•ãƒ­ãƒ¼åˆ¥åç®¡ç†Map */
     private Map mAliasFlowConfigMap;
 
-    /** ƒtƒ[ƒfƒBƒŒƒNƒgƒŠƒpƒX”z—ñ */
+    /** ãƒ•ãƒ­ãƒ¼ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹é…åˆ— */
     private String mDirPath[];
 
-    /** ƒtƒ[ƒpƒX”z—ñ */
+    /** ãƒ•ãƒ­ãƒ¼ãƒ‘ã‚¹é…åˆ— */
     private String mPath[];
 
-    /** ThreadContextƒT[ƒrƒX–¼ */
+    /** ThreadContextã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mThreadContextServiceName;
 
-    /** ThreadContextƒT[ƒrƒX */
+    /** ThreadContextã‚µãƒ¼ãƒ“ã‚¹ */
     private Context mThreadContext;
 
-    /** ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX–¼ */
+    /** ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mJournalServiceName;
 
-    /** ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX */
+    /** ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ */
     private Journal mJournal;
 
-    /** ResourceManagerFactoryƒT[ƒrƒX–¼ */
+    /** ResourceManagerFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mResourceManagerFactoryServiceName;
 
-    /** ƒfƒtƒHƒ‹ƒgResourceManagerFactoryƒT[ƒrƒX */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆResourceManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private ResourceManagerFactoryService defaultRmFactory;
 
-    /** ResourceManagerFactoryƒT[ƒrƒX */
+    /** ResourceManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private ResourceManagerFactory mRmFactory;
 
-    /** ƒƒOƒT[ƒrƒX–¼ */
+    /** ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mLogServiceName;
 
-    /** ƒƒK[ƒT[ƒrƒX */
+    /** ãƒ­ã‚¬ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
     private Logger mLogger;
 
-    /** “ü‚ê‘Ö‚¦—\’è */
+    /** å…¥ã‚Œæ›¿ãˆäºˆå®šæ™‚åˆ» */
     protected Date mRefreshPlanTime;
 
-    /** “ü‚ê‘Ö‚¦ÀÑ */
+    /** å…¥ã‚Œæ›¿ãˆå®Ÿç¸¾æ™‚åˆ» */
     protected Date mRefreshedTime;
 
-    /** EditorFinderƒT[ƒrƒX–¼ */
+    /** EditorFinderã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName editorFinderServiceName;
 
-    /** EditorFinderƒT[ƒrƒX */
+    /** EditorFinderã‚µãƒ¼ãƒ“ã‚¹ */
     private EditorFinder editorFinder;
 
     private ServiceName interpreterServiceName;
@@ -155,22 +155,22 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
 
     private TemplateEngine templateEngine;
 
-    /** Ä“Ç‚İ‚İ’†ƒtƒ‰ƒO */
+    /** å†èª­ã¿è¾¼ã¿ä¸­ãƒ•ãƒ©ã‚° */
     private boolean reloading = false;
 
-    /** Àsƒtƒ[ŠÇ—ƒtƒ‰ƒO */
+    /** å®Ÿè¡Œãƒ•ãƒ­ãƒ¼ç®¡ç†ãƒ•ãƒ©ã‚° */
     private boolean isManageExecBeanFlow = true;
 
-    /** BeanFlowInvokerAccessÀ‘•ƒNƒ‰ƒX */
+    /** BeanFlowInvokerAccesså®Ÿè£…ã‚¯ãƒ©ã‚¹ */
     private Class beanFlowInvokerAccessClass = BeanFlowInvokerAccessImpl.class;
 
-    /** ƒtƒ[’è‹`XMLŒŸØƒtƒ‰ƒO */
+    /** ãƒ•ãƒ­ãƒ¼å®šç¾©XMLæ¤œè¨¼ãƒ•ãƒ©ã‚° */
     private boolean isValidate;
 
-    /** InterceptorChainFactoryƒT[ƒrƒX–¼ */
+    /** InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName interceptorChainFactoryServiceName;
 
-    /** InterceptorChainFactoryƒT[ƒrƒX */
+    /** InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ */
     private InterceptorChainFactory interceptorChainFactory;
 
     private ServiceName transactionManagerFactoryServiceName;
@@ -196,283 +196,283 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     private boolean isOutputJournalMetricsTimestamp = false;
     private Map journalMetricsInfos;
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setValidate(boolean validate){
         isValidate = validate;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isValidate(){
         return isValidate;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setManageExecBeanFlow(boolean isManage){
         isManageExecBeanFlow = isManage;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isManageExecBeanFlow(){
         return isManageExecBeanFlow;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setResourceManagerFactoryServiceName(ServiceName name){
         this.mResourceManagerFactoryServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getResourceManagerFactoryServiceName(){
         return mResourceManagerFactoryServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setLogServiceName(ServiceName name){
         this.mLogServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getLogServiceName(){
         return mLogServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setEditorFinderServiceName(ServiceName name){
         this.editorFinderServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getEditorFinderServiceName(){
         return this.editorFinderServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setInterpreterServiceName(ServiceName name){
         interpreterServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getInterpreterServiceName(){
         return interpreterServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setTestInterpreterServiceName(ServiceName name){
         testInterpreterServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getTestInterpreterServiceName(){
         return testInterpreterServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setExpressionInterpreterServiceName(ServiceName name){
         expressionInterpreterServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getExpressionInterpreterServiceName(){
         return expressionInterpreterServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setTemplateEngineServiceName(ServiceName name){
         templateEngineServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getTemplateEngineServiceName(){
         return templateEngineServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setDirPaths(String[] dirPaths){
         mDirPath = dirPaths ;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String[] getDirPaths(){
             return mDirPath;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setPaths(String[] paths){
         mPath = paths ;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String[] getPaths(){
             return mPath;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         this.mJournalServiceName = name ;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return mJournalServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name) {
         this.mThreadContextServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return mThreadContextServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setInterceptorChainFactoryServiceName(ServiceName name){
         interceptorChainFactoryServiceName = name;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getInterceptorChainFactoryServiceName(){
         return interceptorChainFactoryServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setBeanFlowInvokerAccessClass(Class clazz){
         beanFlowInvokerAccessClass = clazz;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public Class getBeanFlowInvokerAccessClass(){
         return beanFlowInvokerAccessClass;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setTransactionManagerFactoryServiceName(ServiceName name){
         transactionManagerFactoryServiceName = name;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getTransactionManagerFactoryServiceName(){
         return transactionManagerFactoryServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setAsynchInvokeQueueHandlerContainerServiceName(ServiceName name){
         asynchInvokeQueueHandlerContainerServiceName = name;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getAsynchInvokeQueueHandlerContainerServiceName(){
         return asynchInvokeQueueHandlerContainerServiceName;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String getAsynchInvokeErrorLogMessageId(){
         return asynchInvokeErrorLogMessageId;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setAsynchInvokeErrorLogMessageId(String id){
         asynchInvokeErrorLogMessageId = id;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String getAsynchInvokeRetryOverErrorLogMessageId(){
         return asynchInvokeRetryOverErrorLogMessageId;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setAsynchInvokeRetryOverErrorLogMessageId(String id){
         asynchInvokeRetryOverErrorLogMessageId = id;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setJournalPerformanceRecorderServiceName(ServiceName name){
         journalPerformanceRecorderServiceName = name;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ServiceName getJournalPerformanceRecorderServiceName(){
         return journalPerformanceRecorderServiceName;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setCollectJournalMetrics(boolean isCollect){
         isCollectJournalMetrics = isCollect;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isCollectJournalMetrics(){
         return isCollectJournalMetrics;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsCount(boolean isOutput){
         isOutputJournalMetricsCount = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsCount(){
         return isOutputJournalMetricsCount;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsLastTime(boolean isOutput){
         isOutputJournalMetricsLastTime = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsLastTime(){
         return isOutputJournalMetricsLastTime;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsBestSize(boolean isOutput){
         isOutputJournalMetricsBestSize = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsBestSize(){
         return isOutputJournalMetricsBestSize;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsBestSizeTime(boolean isOutput){
         isOutputJournalMetricsBestSizeTime = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsBestSizeTime(){
         return isOutputJournalMetricsBestSizeTime;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsWorstSize(boolean isOutput){
         isOutputJournalMetricsWorstSize = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsWorstSize(){
         return isOutputJournalMetricsWorstSize;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsWorstSizeTime(boolean isOutput){
         isOutputJournalMetricsWorstSizeTime = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsWorstSizeTime(){
         return isOutputJournalMetricsWorstSizeTime;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsAverageSize(boolean isOutput){
         isOutputJournalMetricsAverageSize = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsAverageSize(){
         return isOutputJournalMetricsAverageSize;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setOutputJournalMetricsTimestamp(boolean isOutput){
         isOutputJournalMetricsTimestamp = isOutput;
     }
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public boolean isOutputJournalMetricsTimestamp(){
         return isOutputJournalMetricsTimestamp;
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void resetJournalMetrics(){
         if(journalMetricsInfos != null){
             synchronized(journalMetricsInfos){
@@ -481,7 +481,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
     
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String displayJournalMetricsInfo(){
         if(journalMetricsInfos == null){
             return null;
@@ -573,7 +573,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      */
     public void createService(){
         mFlowConfigMap = new HashMap();
@@ -584,9 +584,9 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         final SimpleDateFormat ft = new SimpleDateFormat(TIME_FORMAT);
@@ -688,9 +688,9 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(isCollectJournalMetrics){
@@ -720,7 +720,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      */
     public void destroyService(){
         mDirPath = null;
@@ -736,7 +736,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         editorFinder = null;
     }
 
-    // BeanFlowInvokerFactory‚ÌJavaDoc
+    // BeanFlowInvokerFactoryã®JavaDoc
     public BeanFlowInvoker createFlow(String key) {
         return createFlow(key, null, true);
     }
@@ -751,13 +751,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         BeanFlowInvoker blFlowConfig = createFlowInternal(key, caller, isOverwride);
         key = blFlowConfig.getFlowName();
 
-        //–³ŒøƒƒbƒZ|ƒW‚Ìê‡
+        //ç„¡åŠ¹ãƒ¡ãƒƒã‚»ï¼ã‚¸ã®å ´åˆ
         Object ignore = mIgnoreKeyMap.get(key);
         if(ignore != null){
             return null;
         }
 
-        //ƒTƒXƒyƒ“ƒhƒƒbƒZ[ƒW‚Ìê‡
+        //ã‚µã‚¹ãƒšãƒ³ãƒ‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å ´åˆ
         SynchronizeMonitor suspend = (SynchronizeMonitor)mSuspendKeyMap.get(key);
         if(suspend != null){
             try{
@@ -817,10 +817,10 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
 
     public String replaceProperty(String textValue){
 
-        // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceSystemProperty(textValue);
 
-        // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceLoader() != null){
             textValue = Utility.replaceServiceLoderConfig(
                 textValue,
@@ -829,12 +829,12 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
 
 
-        // ƒRƒ“ƒeƒLƒXƒgƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = replaceContextProperty(
             textValue
         );
 
-        // ƒ}ƒl[ƒWƒƒƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         if(getServiceManager() != null){
             textValue = Utility.replaceManagerProperty(
                 getServiceManager(),
@@ -842,17 +842,17 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
             );
         }
 
-        // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+        // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
         textValue = Utility.replaceServerProperty(textValue);
 
         return textValue;
     }
 
     /**
-     * w’è‚³‚ê‚½•¶š—ñ“à‚ÌƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒRƒ“ƒeƒLƒXƒgƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •¶š—ñ
-     * @return ƒvƒƒpƒeƒBQÆ•¶š—ñ‚ğƒRƒ“ƒeƒLƒXƒgƒvƒƒpƒeƒB‚Ì’l‚É’uŠ·‚µ‚½•¶š—ñ
+     * @param str æ–‡å­—åˆ—
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‚ç…§æ–‡å­—åˆ—ã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã«ç½®æ›ã—ãŸæ–‡å­—åˆ—
      */
     private String replaceContextProperty(
         String str
@@ -899,7 +899,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         return result;
     }
 
-    // BeanFlowInvokerFactory‚ÌJavaDoc
+    // BeanFlowInvokerFactoryã®JavaDoc
     public Set getBeanFlowKeySet(){
         final Set result = new HashSet();
         result.addAll(mFlowConfigMap.keySet());
@@ -907,13 +907,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         return result;
     }
 
-    // BeanFlowInvokerFactory‚ÌJavaDoc
+    // BeanFlowInvokerFactoryã®JavaDoc
     public boolean containsFlow(String key){
         return mFlowConfigMap.containsKey(key) || mAliasFlowConfigMap.containsKey(key);
     }
 
     /**
-     * ƒtƒ[ŠÇ—Map‚ğƒNƒŠƒA‚·‚éB<p>
+     * ãƒ•ãƒ­ãƒ¼ç®¡ç†Mapã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     protected void clear(){
         mFlowConfigMap.clear();
@@ -921,12 +921,12 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * ƒtƒ[’è‹`XML‚ğ“Ç‚İ‚ŞB<p>
+     * ãƒ•ãƒ­ãƒ¼å®šç¾©XMLã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param xmlfile ƒtƒ[’è‹`XMLƒtƒ@ƒCƒ‹
+     * @param xmlfile ãƒ•ãƒ­ãƒ¼å®šç¾©XMLãƒ•ã‚¡ã‚¤ãƒ«
      */
     protected void loadXMLDefinition(File xmlfile, Map flowConfigMap, Map aliasFlowConfigMap){
-        //rootƒGƒŒƒƒ“ƒg‚ğæ“¾
+        //rootã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
         Document root = null;
         try{
             root = getRoot(xmlfile);
@@ -951,9 +951,9 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }catch(NoSuchMethodException e){
         }
         
-        // MessageƒGƒŒƒƒ“ƒg‚ğæ“¾
+        // Messageã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
         NodeList flowList = root.getDocumentElement().getElementsByTagName(FLOW_TAG_NAME);
-        // ’è‹`‚³‚ê‚Ä‚¢‚éƒƒbƒZ[ƒW‚Ì”ƒ‹[ƒv‚·‚éB
+        // å®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æ•°ãƒ«ãƒ¼ãƒ—ã™ã‚‹ã€‚
         for(int rCnt = 0; rCnt < flowList.getLength(); rCnt++){
             Element flowElement = (Element)flowList.item(rCnt);
             BeanFlowInvokerAccess op = null;
@@ -986,26 +986,26 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * ƒ‹[ƒgƒGƒŒƒƒ“ƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ«ãƒ¼ãƒˆã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param xmlfile XMLƒtƒ@ƒCƒ‹
-     * @return ƒ‹[ƒgƒGƒŒƒƒ“ƒg
+     * @param xmlfile XMLãƒ•ã‚¡ã‚¤ãƒ«
+     * @return ãƒ«ãƒ¼ãƒˆã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
      * @exception ParserConfigurationException
      * @exception SAXException
      * @exception IOException
      */
     protected Document getRoot(File xmlfile)
      throws ParserConfigurationException, SAXException, IOException{
-        // ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[ƒtƒ@ƒNƒgƒŠ‚ğ¶¬
+        // ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’ç”Ÿæˆ
         DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
         dbfactory.setValidating(isValidate());
-        // ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[‚ğ¶¬
+        // ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ã‚’ç”Ÿæˆ
         DocumentBuilder builder = dbfactory.newDocumentBuilder();
         final NimbusEntityResolver resolver = new NimbusEntityResolver();
         builder.setEntityResolver(resolver);
         final MyErrorHandler handler = new MyErrorHandler(xmlfile);
         builder.setErrorHandler(handler);
-        // ƒp[ƒX‚ğÀs‚µ‚ÄDocumentƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        // ãƒ‘ãƒ¼ã‚¹ã‚’å®Ÿè¡Œã—ã¦Documentã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
         Document doc = builder.parse(xmlfile);
         
         if(handler.isError()){
@@ -1013,17 +1013,17 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
                 "Bean flow definition parse error." + xmlfile
             );
         }
-        // ƒ‹[ƒg—v‘f‚ğæ“¾
+        // ãƒ«ãƒ¼ãƒˆè¦ç´ ã‚’å–å¾—
         return doc;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public ResourceManager createResourceManager() {
         return mRmFactory.createResourceManager() ;
     }
 
     /**
-     * {@link ResourceManagerFactory}‚ğİ’è‚·‚éB<p>
+     * {@link ResourceManagerFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param rmFactory ResourceManagerFactory
      */
@@ -1031,13 +1031,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         mRmFactory = rmFactory;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public Journal getJournal(BeanFlowInvokerAccess invoker){
         return mJournal == null ? null : (isCollectJournalMetrics || journalPerformanceRecorder != null ? new JournalWrapper(invoker) : mJournal);
     }
 
     /**
-     * {@link Journal}‚ğİ’è‚·‚éB<p>
+     * {@link Journal}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param journal Journal
      */
@@ -1045,13 +1045,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         mJournal = journal;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public Logger getLogger(){
         return mLogger;
     }
 
     /**
-     * {@link Logger}‚ğİ’è‚·‚éB<p>
+     * {@link Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param logger Logger
      */
@@ -1059,13 +1059,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         mLogger = logger;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public Context getThreadContext(){
         return mThreadContext;
     }
 
     /**
-     * {@link Context}‚ğİ’è‚·‚éB<p>
+     * {@link Context}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param threadContext Context
      */
@@ -1073,13 +1073,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         mThreadContext = threadContext;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public EditorFinder getEditorFinder(){
         return editorFinder;
     }
 
     /**
-     * {@link EditorFinder}‚ğİ’è‚·‚éB<p>
+     * {@link EditorFinder}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param editorFinder EditorFinder
      */
@@ -1087,32 +1087,32 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         this.editorFinder = editorFinder;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public void addExcecFlow(BeanFlowMonitor monitor){
         synchronized(mExecFlowList){
             mExecFlowList.add(monitor);
         }
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public void removeExecFlow(BeanFlowMonitor monitor){
         synchronized(this.mExecFlowList){
             mExecFlowList.remove(monitor);
         }
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public PropertyEditor findPropEditor(Class cls) {
         jp.ossc.nimbus.core.ServiceLoader loader = super.getServiceLoader();
         return loader != null ? loader.findEditor(cls) : NimbusPropertyEditorManager.findEditor(cls);
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public Interpreter getInterpreter(){
         return interpreter;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public Interpreter getTestInterpreter(){
         return testInterpreter;
     }
@@ -1121,13 +1121,13 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         return expressionInterpreter == null ? getTestInterpreter() : expressionInterpreter;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public TemplateEngine getTemplateEngine(){
         return templateEngine;
     }
 
     /**
-     * {@link Interpreter}‚ğİ’è‚·‚éB<p>
+     * {@link Interpreter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param interpreter Interpreter
      */
@@ -1136,7 +1136,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * test•]‰¿—p‚Ì{@link Interpreter}‚ğİ’è‚·‚éB<p>
+     * testè©•ä¾¡ç”¨ã®{@link Interpreter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param interpreter Interpreter
      */
@@ -1145,7 +1145,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     /**
-     * expression•]‰¿—p‚Ì{@link Interpreter}‚ğİ’è‚·‚éB<p>
+     * expressionè©•ä¾¡ç”¨ã®{@link Interpreter}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param interpreter Interpreter
      */
@@ -1153,7 +1153,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         this.expressionInterpreter = interpreter;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public TransactionManagerFactory getTransactionManagerFactory(){
         return transactionManagerFactory;
     }
@@ -1161,7 +1161,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         transactionManagerFactory = factory;
     }
 
-    // BeanFlowInvokerFactoryCallBack‚ÌJavaDoc
+    // BeanFlowInvokerFactoryCallBackã®JavaDoc
     public QueueHandlerContainer getAsynchInvokeQueueHandlerContainer(){
         return asynchInvokeQueueHandlerContainer;
     }
@@ -1169,7 +1169,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
          asynchInvokeQueueHandlerContainer = container;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void reload(){
 
         if(reloading){
@@ -1195,7 +1195,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
                 }
             }
 
-            // ƒfƒBƒŒƒNƒgƒŠ”z‰º‚Ìƒtƒ@ƒCƒ‹ƒŠƒXƒgæ“¾iŠg’£qƒtƒBƒ‹ƒ^w’èj
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆå–å¾—ï¼ˆæ‹¡å¼µå­ãƒ•ã‚£ãƒ«ã‚¿æŒ‡å®šï¼‰
             if(mDirPath != null){
                 for(int rcnt = 0 ; rcnt < mDirPath.length;rcnt++){
                     String tmpName = mDirPath[rcnt];
@@ -1208,7 +1208,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
                     );
                     if(files != null){
                         for(int fcount = 0 ; fcount < files.length; fcount++){
-                            // XMLƒtƒ@ƒCƒ‹‚Ìƒp[ƒXˆ—
+                            // XMLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹å‡¦ç†
                             loadXMLDefinition(files[fcount], flowConfigMap, aliasFlowConfigMap);
                         }
                     }
@@ -1216,7 +1216,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
             }
             if(mPath != null){
                 for(int i = 0 ; i < mPath.length; i++){
-                    // XMLƒtƒ@ƒCƒ‹‚Ìƒp[ƒXˆ—
+                    // XMLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ãƒ¼ã‚¹å‡¦ç†
                     loadXMLDefinition(new File(mPath[i]), flowConfigMap, aliasFlowConfigMap);
                 }
             }
@@ -1238,7 +1238,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void setRefreshTime(String time){
         SimpleDateFormat ft = new SimpleDateFormat(TIME_FORMAT);
         synchronized(this){
@@ -1250,19 +1250,19 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String getLastRrefreshTime(){
         SimpleDateFormat ft = new SimpleDateFormat(TIME_FORMAT);
         return ft.format(mRefreshedTime);
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public String getNextRefreshTime(){
         SimpleDateFormat ft = new SimpleDateFormat(TIME_FORMAT);
         return ft.format(this.mRefreshPlanTime);
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void suspend(String key){
         synchronized(mSuspendKeyMap){
             Object ret = mSuspendKeyMap.get(key);
@@ -1281,7 +1281,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void resume(String key){
         synchronized(mSuspendKeyMap){
             SynchronizeMonitor ret = (SynchronizeMonitor)mSuspendKeyMap.get(key);
@@ -1300,7 +1300,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void stop(String key){
         synchronized(mExecFlowList){
             for(int i = 0; i < mExecFlowList.size(); i++){
@@ -1312,7 +1312,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void ignore(String msgKey){
         synchronized(mIgnoreKeyMap){
             Object ret = mIgnoreKeyMap.get(msgKey);
@@ -1323,7 +1323,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public void unIgnore(String key){
         synchronized(mIgnoreKeyMap){
             Object ret = mIgnoreKeyMap.get(key);
@@ -1333,7 +1333,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ArrayList getSuspendList(){
         ArrayList ret = new CsvArrayList();
         synchronized(mSuspendKeyMap){
@@ -1346,7 +1346,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         return ret;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ArrayList getIgnoreList(){
         ArrayList ret = new CsvArrayList();
         synchronized(mIgnoreKeyMap){
@@ -1359,7 +1359,7 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
         return ret;
     }
 
-    // DefaultBeanFlowInvokerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultBeanFlowInvokerFactoryServiceMBeanã®JavaDoc
     public ArrayList getExecFlowList(){
         ArrayList ret = new CsvArrayList();
         synchronized(mExecFlowList){

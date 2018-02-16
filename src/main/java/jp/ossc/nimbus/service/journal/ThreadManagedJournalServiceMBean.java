@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.journal;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ThreadManagedJournalService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ThreadManagedJournalService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  * @see ThreadManagedJournalService
@@ -42,80 +42,80 @@ import jp.ossc.nimbus.core.*;
 public interface ThreadManagedJournalServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÒW‚·‚é{@link JournalEditor}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinder‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEditorFinderName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÒW‚·‚é{@link JournalEditor}‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinder‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getEditorFinderName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ì’Ê”Ô‚ğ•¥‚¢o‚·{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®é€šç•ªã‚’æ‰•ã„å‡ºã™{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ì’Ê”Ô‚ğ•¥‚¢o‚·{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®é€šç•ªã‚’æ‰•ã„å‡ºã™{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğ”ñ“¯Šú‚Éo—Í‚·‚é‚½‚ß‚ÌƒLƒ…[‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’éåŒæœŸã«å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ã‚­ãƒ¥ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğ”ñ“¯Šú‚Éo—Í‚·‚é‚½‚ß‚ÌƒLƒ…[‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’éåŒæœŸã«å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ã‚­ãƒ¥ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—Íî•ñ‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚É’Ç‰Á‚·‚é‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›æƒ…å ±ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã«è¿½åŠ ã™ã‚‹æ™‚ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒWƒƒ[ƒiƒ‹‚Ìo—Íî•ñ‚ğWritableRecord‚É’Ç‰Á‚·‚é‚ÌƒL[–¼
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›æƒ…å ±ã‚’WritableRecordã«è¿½åŠ ã™ã‚‹æ™‚ã®ã‚­ãƒ¼å
      */
     public void setWritableElementKey(String key);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìo—Íî•ñ‚ğ{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚É’Ç‰Á‚·‚é‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›æƒ…å ±ã‚’{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã«è¿½åŠ ã™ã‚‹æ™‚ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒWƒƒ[ƒiƒ‹‚Ìo—Íî•ñ‚ğWritableRecord‚É’Ç‰Á‚·‚é‚ÌƒL[–¼
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®å‡ºåŠ›æƒ…å ±ã‚’WritableRecordã«è¿½åŠ ã™ã‚‹æ™‚ã®ã‚­ãƒ¼å
      */
     public String getWritableElementKey();
     
     /**
-     * o—Í‚·‚éƒWƒƒ[ƒiƒ‹‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param names CategoryƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param names Categoryã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setCategoryServiceNames(ServiceName[] names);
     
     /**
-     * o—Í‚·‚éƒWƒƒ[ƒiƒ‹‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return CategoryƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return Categoryã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getCategoryServiceNames();
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Å’è‹`‚³‚ê‚½ƒŒƒxƒ‹ˆÈã‚ÌƒWƒƒ[ƒiƒ‹‚Ì‚İo—Í‚·‚éB
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§å®šç¾©ã•ã‚ŒãŸãƒ¬ãƒ™ãƒ«ä»¥ä¸Šã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã¿å‡ºåŠ›ã™ã‚‹ã€‚
      * 
-     * @param level o—ÍƒŒƒxƒ‹
+     * @param level å‡ºåŠ›ãƒ¬ãƒ™ãƒ«
      * @see Journal#JOURNAL_LEVEL_DEBUG
      * @see Journal#JOURNAL_LEVEL_INFO
      * @see Journal#JOURNAL_LEVEL_WARN
@@ -125,9 +125,9 @@ public interface ThreadManagedJournalServiceMBean extends ServiceBaseMBean{
     public void setJournalLevel(int level);
     
     /**
-     * Journalo—ÍƒŒƒxƒ‹‚ğæ“¾‚·‚éB<p>
+     * Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Journalo—ÍƒŒƒxƒ‹
+     * @return Journalå‡ºåŠ›ãƒ¬ãƒ™ãƒ«
      */
     public int getJournalLevel();
     

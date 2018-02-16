@@ -32,25 +32,25 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * ƒf[ƒ^ƒx[ƒXƒf[ƒ^ƒZƒbƒgğŒB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface DatabaseDatasetCondition extends DatasetCondition {
     
     /**
-     * ƒvƒŠƒyƒAƒhƒXƒe[ƒgƒƒ“ƒg‚Åg‚¤’l‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒªãƒšã‚¢ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã§ä½¿ã†å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @return ’l
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return å€¤
      */
     public Object getParamObject(int index);
     
     /**
-     * ƒvƒŠƒyƒAƒhƒXƒe[ƒgƒƒ“ƒg‚Åg‚¤’l‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒªãƒšã‚¢ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã§ä½¿ã†å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @param param ’l
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param param å€¤
      */
     public void setParamObject(int index, Object param);
 }

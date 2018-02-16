@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.util.converter.FormatConverter;
 
 /**
- * {@link FormatConvertJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB
+ * {@link FormatConvertJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -44,28 +44,28 @@ import jp.ossc.nimbus.util.converter.FormatConverter;
 public interface FormatConvertJournalEditorServiceMBean extends ImmutableJournalEditorServiceBaseMBean {
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğ•¶š—ñ‚É•ÒW‚·‚éFormatConverter‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹FormatConverterã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return FormatConverter‚ÌƒT[ƒrƒX–¼
+     * @return FormatConverterã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getFormatConverterServiceName();
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğ•¶š—ñ‚É•ÒW‚·‚éFormatConverter‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹FormatConverterã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name FormatConverter‚ÌƒT[ƒrƒX–¼
+     * @param name FormatConverterã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setFormatConverterServiceName(ServiceName name);
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğ•¶š—ñ‚É•ÒW‚·‚éFormatConverte‚ğæ“¾‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹FormatConverteã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return FormatConverte
      */
     public FormatConverter getFormatConverter();
 
     /**
-     * ƒIƒuƒWƒFƒNƒg‚ğ•¶š—ñ‚É•ÒW‚·‚éFormatConverte‚ğİ’è‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹FormatConverteã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param converter FormatConverte
      */

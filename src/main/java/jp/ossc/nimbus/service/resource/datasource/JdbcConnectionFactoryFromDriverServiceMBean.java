@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 /**
  *  
  * @author   nakano
- * @version  1.00 �쐬: 2003/12/01 -�@H.Nakano
+ * @version  1.00 作成: 2003/12/01 -　H.Nakano
  */
 public interface JdbcConnectionFactoryFromDriverServiceMBean
 	extends ServiceBaseMBean {

@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link XYPlotFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link XYPlotFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -44,114 +44,114 @@ public interface XYPlotFactoryServiceMBean
     extends ServiceBaseMBean {
 
     /**
-     * [ƒf[ƒ^ƒZƒbƒg–¼=ƒŒƒ“ƒ_ƒ‰[–¼]‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names [ƒf[ƒ^ƒZƒbƒg–¼=ƒŒƒ“ƒ_ƒ‰[–¼]‚ÌƒvƒƒpƒeƒB
+     * @param names [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setDatasetRendererServiceNames(Properties names);
 
     /**
-     * [ƒf[ƒ^ƒZƒbƒg–¼=ƒŒƒ“ƒ_ƒ‰[–¼]‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return [ƒf[ƒ^ƒZƒbƒg–¼=ƒŒƒ“ƒ_ƒ‰[ƒT[ƒrƒX–¼]‚ÌƒvƒƒpƒeƒB
+     * @return [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getDatasetRendererServiceNames();
 
     /**
-     * [ƒf[ƒ^ƒZƒbƒg–¼=‰¡²–¼]‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=æ¨ªè»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names [ƒf[ƒ^ƒZƒbƒg–¼=‰¡²–¼]‚ÌƒvƒƒpƒeƒB
+     * @param names [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=æ¨ªè»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setDatasetDomainAxisNames(Properties names);
 
     /**
-     * [ƒf[ƒ^ƒZƒbƒg–¼=‰¡²–¼]‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=æ¨ªè»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return [ƒf[ƒ^ƒZƒbƒg–¼=‰¡²–¼]‚ÌƒvƒƒpƒeƒB
+     * @return [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=æ¨ªè»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getDatasetDomainAxisNames();
 
     /**
-     * [ƒf[ƒ^ƒZƒbƒg–¼=c²–¼]‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ç¸¦è»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names [ƒf[ƒ^ƒZƒbƒg–¼=c²–¼]‚ÌƒvƒƒpƒeƒB
+     * @param names [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ç¸¦è»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setDatasetRangeAxisNames(Properties names);
 
     /**
-     * [ƒf[ƒ^ƒZƒbƒg–¼=c²–¼]‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ç¸¦è»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return [ƒf[ƒ^ƒZƒbƒg–¼=c²–¼]‚ÌƒvƒƒpƒeƒB
+     * @return [ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå=ç¸¦è»¸å]ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getDatasetRangeAxisNames();
 
     /**
-     * ƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param names ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setDatasetFactoryServiceNames(ServiceName[] names);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getDatasetFactoryServiceNames();
 
     /**
-     * ‰¡²ƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * æ¨ªè»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param serviceNames ‰¡²ƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param serviceNames æ¨ªè»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setDomainAxisServiceNames(ServiceName[] serviceNames);
 
     /**
-     * ‰¡²ƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æ¨ªè»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰¡²ƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return æ¨ªè»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getDomainAxisServiceNames();
 
     /**
-     * c²ƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * ç¸¦è»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param serviceNames c²ƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param serviceNames ç¸¦è»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setRangeAxisServiceNames(ServiceName[] serviceNames);
 
     /**
-     * c²ƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ç¸¦è»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return c²ƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return ç¸¦è»¸ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getRangeAxisServiceNames();
 
     /**
-     * –Ú·‚è’²ßƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param adjusters –Ú·‚è’²ßƒT[ƒrƒX
+     * @param adjusters ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setTickUnitAdjusters(TickUnitAdjuster[] adjusters);
 
     /**
-     * –Ú·‚è’²ßƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return –Ú·‚è’²ßƒT[ƒrƒX
+     * @return ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹
      */
     public TickUnitAdjuster[] getTickUnitAdjusters();
 
     /**
-     * –Ú·‚è’²ßƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names –Ú·‚è’²ßƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param names ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTickUnitAdjusterServiceNames(ServiceName[] names);
 
     /**
-     * –Ú·‚è’²ßƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return –Ú·‚è’²ßƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName[] getTickUnitAdjusterNames();
 

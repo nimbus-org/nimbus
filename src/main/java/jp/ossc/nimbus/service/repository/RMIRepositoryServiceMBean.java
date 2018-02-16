@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.repository;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link RMIRepositoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link RMIRepositoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,47 +42,47 @@ public interface RMIRepositoryServiceMBean
  extends ServiceBaseMBean, Repository{
     
     /**
-     * RMIƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍAƒ[ƒJƒ‹ƒzƒXƒgB<br>
+     * RMIã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã€‚<br>
      *
-     * @param host ƒzƒXƒg–¼
+     * @param host ãƒ›ã‚¹ãƒˆå
      */
     public void setHostName(String host);
     
     /**
-     * RMIƒT[ƒo‚ÌƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * RMIã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * RMIƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA1099B<br>
+     * RMIã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€1099ã€‚<br>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setPort(int port);
     
     /**
-     * RMIƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * RMIã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getPort();
     
     /**
-     * ƒ[ƒJƒ‹‚ÉRMIƒT[ƒo‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã«RMIã‚µãƒ¼ãƒã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aì¬‚·‚é
+     * @return trueã®å ´åˆã€ä½œæˆã™ã‚‹
      */
     public boolean isCreateRegistry();
     
     /**
-     * ƒ[ƒJƒ‹‚ÉRMIƒT[ƒo‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åì¬‚µ‚È‚¢B<br>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã«RMIã‚µãƒ¼ãƒã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ä½œæˆã—ãªã„ã€‚<br>
      *
-     * @param isCreate ì¬‚·‚éê‡Atrue
+     * @param isCreate ä½œæˆã™ã‚‹å ´åˆã€true
      */
     public void setCreateRegistry(boolean isCreate);
 }

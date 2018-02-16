@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.recset;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import java.sql.*;
 import java.io.*;
@@ -45,8 +45,8 @@ import jp.ossc.nimbus.service.codemaster.PartUpdateRecords;
 import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
 
 /**
- * ƒŒƒR[ƒhŠÇ—ƒNƒ‰ƒXB<p>
- * ƒf[ƒ^ƒx[ƒXƒŒƒR[ƒh‚ÌŠÇ—‚ğs‚¤B
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ç®¡ç†ã‚’è¡Œã†ã€‚
  * 
  * @version $Name:  $
  * @author H.Nakano
@@ -57,11 +57,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     private static final long serialVersionUID = -7457366126244404177L;
     
     /**
-     * ƒXƒL[ƒ}’è‹`‚É—p‚¢‚é‰üs•¶šB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«ç”¨ã„ã‚‹æ”¹è¡Œæ–‡å­—ã€‚<p>
      */
     public  static final String C_SEPARATOR = System.getProperty("line.separator");
     
-    /** SQL ƒXƒe[ƒgƒƒ“ƒg•¶š—ñ’è” */
+    /** SQL ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆæ–‡å­—åˆ—å®šæ•° */
     private static final String C_SET_TOKEN = " SET ";
     private static final String C_UPDATE_TOKEN = "UPDATE ";
     private static final String C_QUESTION_TOKEN = "?";
@@ -81,78 +81,78 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     private static final String C_DISTINCT_TOKEN = " DISTINCT ";
     private static final String C_BLANK_TOKEN = " ";
     
-    /** ˆÃ†‰»ƒT[ƒrƒX */
+    /** æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹ */
     protected Crypt mCrypt;
     
     
-    /** sƒXƒL[ƒ} */
+    /** è¡Œã‚¹ã‚­ãƒ¼ãƒ */
     protected RowSchema mSchema;
     
-    /** sƒf[ƒ^‚ÌƒŠƒXƒg */
+    /** è¡Œãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆ */
     protected ArrayList mRows;
     
-    /** sƒf[ƒ^‚ğƒL[‚ÅŠÇ—‚µ‚Ä‚¢‚éHashMap*/
+    /** è¡Œãƒ‡ãƒ¼ã‚¿ã‚’ã‚­ãƒ¼ã§ç®¡ç†ã—ã¦ã„ã‚‹HashMap*/
     protected HashMap mHash;
     
-    /** ƒe[ƒuƒ‹–¼•¶š—ñ */
+    /** ãƒ†ãƒ¼ãƒ–ãƒ«åæ–‡å­—åˆ— */
     protected String mTableNames;
     
-    /** ƒe[ƒuƒ‹–¼•¶š—ñ */
+    /** ãƒ†ãƒ¼ãƒ–ãƒ«åæ–‡å­—åˆ— */
     protected String mUpdateTableNames;
     
-    /** ƒ\[ƒg•¶š—ñ */
+    /** ã‚½ãƒ¼ãƒˆæ–‡å­—åˆ— */
     protected String mOrder;
     
-    /** WEHRE‹å•¶š—ñ */
+    /** WEHREå¥æ–‡å­—åˆ— */
     protected StringBuffer where;
     
-    /** PreparedStatement‚É–„‚ß‚Şƒf[ƒ^‚ğ•Û‚·‚éƒŠƒXƒg */
+    /** PreparedStatementã«åŸ‹ã‚è¾¼ã‚€ãƒ‡ãƒ¼ã‚¿ã‚’ä¿æŒã™ã‚‹ãƒªã‚¹ãƒˆ */
     protected List bindDatas;
     
-    /** ƒRƒlƒNƒVƒ‡ƒ“ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ */
     protected transient Connection mCon ;
     
-    /** ƒƒK[ƒIƒuƒWƒFƒNƒg */
+    /** ãƒ­ã‚¬ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
     protected Logger mLogger ;
     
-    /** ÀsSQL‚ğƒƒOo—Í‚·‚é‚½‚ß‚ÌƒƒOƒƒbƒZ[ƒWƒR[ƒh */
+    /** å®Ÿè¡ŒSQLã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰ */
     protected String mMessageCode ;
     
     /**
-     * DISTINCTw’èƒtƒ‰ƒOB<p>
-     * ‰Šú’l‚Ífalse
+     * DISTINCTæŒ‡å®šãƒ•ãƒ©ã‚°ã€‚<p>
+     * åˆæœŸå€¤ã¯false
      */
     protected boolean mDistinctFlg = false;
     
     /**
-     * XV‹y‚Ñíœ‚ÉAXV‹y‚Ñíœ‚µ‚æ‚¤‚Æ‚µ‚½Œ”‚ÆÀÛ‚ÉXV‹y‚Ñíœ‚µ‚½Œ”‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚Ì®‡«‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒgAtrueB<br>
+     * æ›´æ–°åŠã³å‰Šé™¤æ™‚ã«ã€æ›´æ–°åŠã³å‰Šé™¤ã—ã‚ˆã†ã¨ã—ãŸä»¶æ•°ã¨å®Ÿéš›ã«æ›´æ–°åŠã³å‰Šé™¤ã—ãŸä»¶æ•°ãŒç­‰ã—ã„ã‹ã©ã†ã‹ã®æ•´åˆæ€§ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã€trueã€‚<br>
      */
     protected boolean isEnabledRowVersionCheck = true;
     
     /**
-     * “®“IğŒŒŸõ‚ğŠÇ—‚·‚éƒ}ƒbƒvB<p>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’ç®¡ç†ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map dynamicSearchConditionMap;
     
     /**
-     * “®“IğŒŒŸõŒ‹‰Ê‚ğ•Û‚·‚éƒ}ƒbƒvB<p>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢çµæœã‚’ä¿æŒã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map dynamicSearchConditionResultMap;
     
     /**
-     * “®“IƒL[ŒŸõ‚ğŠÇ—‚·‚éƒ}ƒbƒvB<p>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã‚’ç®¡ç†ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map dynamicSearchKeyMap;
     
     /**
-     * “®“IƒL[ŒŸõŒ‹‰Ê‚ğ•Û‚·‚éƒ}ƒbƒvB<p>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢çµæœã‚’ä¿æŒã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map dynamicSearchMap;
     
     /**
-     * ƒoƒbƒ`Às‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      */
     protected boolean isBatchExecute = true;
     
@@ -161,7 +161,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     protected boolean[] partUpdateIsAsc;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RecordSet(){
         mRows = new ArrayList();
@@ -169,64 +169,64 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒƒO‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒOo—Í‚³‚ê‚È‚¢B<br>
+     * ãƒ­ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°å‡ºåŠ›ã•ã‚Œãªã„ã€‚<br>
      * 
-     * @param lg ƒƒO
+     * @param lg ãƒ­ã‚°
      */
     public void setLogger(Logger lg){
         mLogger = lg;
     }
     
     /**
-     * ÀsSQL‚ğƒƒOo—Í‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒOo—Í‚³‚ê‚È‚¢B<br>
+     * å®Ÿè¡ŒSQLã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°å‡ºåŠ›ã•ã‚Œãªã„ã€‚<br>
      *
-     * @param code ƒƒbƒZ[ƒWƒR[ƒh
+     * @param code ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰
      */
     public void setMessageCode(String code){
         mMessageCode = code;
     }
     
     /**
-     * XV‹y‚Ñíœ‚ÉAXV‹y‚Ñíœ‚µ‚æ‚¤‚Æ‚µ‚½Œ”‚ÆAÀÛ‚ÉXV‹y‚Ñíœ‚µ‚½Œ”‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚Ì®‡«‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒgAtrueB<br>
-     * true‚ğİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link #updateRecords()}‚ğŒÄ‚Ño‚µ‚½‚Éƒ`ƒFƒbƒN‚É‚Ğ‚Á‚©‚©‚é‚ÆA{@link RowVersionException}‚ªthrow‚³‚ê‚éB<br>
+     * æ›´æ–°åŠã³å‰Šé™¤æ™‚ã«ã€æ›´æ–°åŠã³å‰Šé™¤ã—ã‚ˆã†ã¨ã—ãŸä»¶æ•°ã¨ã€å®Ÿéš›ã«æ›´æ–°åŠã³å‰Šé™¤ã—ãŸä»¶æ•°ãŒç­‰ã—ã„ã‹ã©ã†ã‹ã®æ•´åˆæ€§ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã€trueã€‚<br>
+     * trueã‚’è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link #updateRecords()}ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ãƒã‚§ãƒƒã‚¯ã«ã²ã£ã‹ã‹ã‚‹ã¨ã€{@link RowVersionException}ãŒthrowã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param isEnabled ƒ`ƒFƒbƒN‚·‚éê‡‚ÍAtrue
+     * @param isEnabled ãƒã‚§ãƒƒã‚¯ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabledRowVersionCheck(boolean isEnabled){
         isEnabledRowVersionCheck = isEnabled;
     }
     
     /**
-     * XV‹y‚Ñíœ‚ÉAXV‹y‚Ñíœ‚µ‚æ‚¤‚Æ‚µ‚½Œ”‚ÆAÀÛ‚ÉXV‹y‚Ñíœ‚µ‚½Œ”‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚Ì®‡«‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ›´æ–°åŠã³å‰Šé™¤æ™‚ã«ã€æ›´æ–°åŠã³å‰Šé™¤ã—ã‚ˆã†ã¨ã—ãŸä»¶æ•°ã¨ã€å®Ÿéš›ã«æ›´æ–°åŠã³å‰Šé™¤ã—ãŸä»¶æ•°ãŒç­‰ã—ã„ã‹ã©ã†ã‹ã®æ•´åˆæ€§ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒ`ƒFƒbƒN‚·‚é
+     * @return trueã®å ´åˆã¯ã€ãƒã‚§ãƒƒã‚¯ã™ã‚‹
      */
     public boolean isEnabledRowVersionCheck(){
         return isEnabledRowVersionCheck;
     }
     
     /**
-     * ƒXƒL[ƒ}‚Ì‰Šú‰»ˆ—‚ğs‚¤B<p>
-     * ƒXƒL[ƒ}•¶š—ñ‚ÍA<br>
-     * —ñ–¼,Œ^,’·‚³,ƒŒƒR[ƒhí•Ê,ˆÃ†‰»ƒtƒ‰ƒO<br>
-     * ‚ğ‰üsƒR[ƒh‚Å‹æØ‚Á‚½•¶š—ñ‚Æ‚·‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã¯ã€<br>
+     * åˆ—å,å‹,é•·ã•,ãƒ¬ã‚³ãƒ¼ãƒ‰ç¨®åˆ¥,æš—å·åŒ–ãƒ•ãƒ©ã‚°<br>
+     * ã‚’æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã§åŒºåˆ‡ã£ãŸæ–‡å­—åˆ—ã¨ã™ã‚‹ã€‚<br>
      * 
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public void initSchema(String schema){
         mSchema = SchemaManager.findRowSchema(schema);
     }
     
     /**
-     * ƒXƒL[ƒ}‚Ì‰Šú‰»ˆ—‚ğs‚¤B<p>
-     * ƒtƒB[ƒ‹ƒhƒXƒL[ƒ}•¶š—ñ‚ÍA<br>
-     * —ñ–¼,Œ^,’·‚³,ƒŒƒR[ƒhí•Ê,ˆÃ†‰»ƒtƒ‰ƒO<br>
-     * ‚Æ‚µA‚»‚Ì”z—ñ‚ğw’è‚·‚éB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã¯ã€<br>
+     * åˆ—å,å‹,é•·ã•,ãƒ¬ã‚³ãƒ¼ãƒ‰ç¨®åˆ¥,æš—å·åŒ–ãƒ•ãƒ©ã‚°<br>
+     * ã¨ã—ã€ãã®é…åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
      * 
-     * @param filedSchemata ƒtƒB[ƒ‹ƒhƒXƒL[ƒ}•¶š—ñ‚Ì”z—ñ
+     * @param filedSchemata ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã®é…åˆ—
      */
     public void initFieldSchemata(String[] filedSchemata){
         StringBuilder buf = new StringBuilder();
@@ -240,113 +240,113 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒL[ƒ}î•ñ
+     * @return ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±
      */
     public RowSchema getRowSchema(){
         return mSchema;
     }
     
     /**
-     * ŒŸõ‚·‚éƒe[ƒuƒ‹–¼‚ğİ’è‚·‚éB<p>
-     * SELECT‚Ì‘ÎÛƒe[ƒuƒ‹‚Æ‚È‚éB<br>
+     * æ¤œç´¢ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SELECTæ™‚ã®å¯¾è±¡ãƒ†ãƒ¼ãƒ–ãƒ«ã¨ãªã‚‹ã€‚<br>
      * 
-     * @param tableStr ‚P‚Â‚Ü‚½‚ÍƒJƒ“ƒ}‚Å‹æØ‚ç‚ê‚½•¡”‚Ìƒe[ƒuƒ‹–¼
+     * @param tableStr ï¼‘ã¤ã¾ãŸã¯ã‚«ãƒ³ãƒã§åŒºåˆ‡ã‚‰ã‚ŒãŸè¤‡æ•°ã®ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public void setFromTable(String tableStr){
         mTableNames = tableStr;
     }
     
     /**
-     * XV‚·‚éƒe[ƒuƒ‹–¼‚ğİ’è‚·‚éB<p>
-     * INSERTADELETEAUPDATE‚Ì‘ÎÛƒe[ƒuƒ‹‚Æ‚È‚éB<br>
-     * w’è‚µ‚È‚¢ê‡‚ÌINSERTADELETEAUPDATE‚Ì‘ÎÛƒe[ƒuƒ‹‚ÍA{@link #setFromTable(String)}‚Åw’è‚³‚ê‚½ƒe[ƒuƒ‹‚Æ‚İ‚È‚·B<br>
+     * æ›´æ–°ã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * INSERTã€DELETEã€UPDATEæ™‚ã®å¯¾è±¡ãƒ†ãƒ¼ãƒ–ãƒ«ã¨ãªã‚‹ã€‚<br>
+     * æŒ‡å®šã—ãªã„å ´åˆã®INSERTã€DELETEã€UPDATEæ™‚ã®å¯¾è±¡ãƒ†ãƒ¼ãƒ–ãƒ«ã¯ã€{@link #setFromTable(String)}ã§æŒ‡å®šã•ã‚ŒãŸãƒ†ãƒ¼ãƒ–ãƒ«ã¨ã¿ãªã™ã€‚<br>
      * 
-     * @param tableStr ‚P‚Â‚Ü‚½‚ÍƒJƒ“ƒ}‚Å‹æØ‚ç‚ê‚½•¡”‚Ìƒe[ƒuƒ‹–¼
+     * @param tableStr ï¼‘ã¤ã¾ãŸã¯ã‚«ãƒ³ãƒã§åŒºåˆ‡ã‚‰ã‚ŒãŸè¤‡æ•°ã®ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public void setUpdateTable(String tableStr){
         mUpdateTableNames = tableStr;
     }
     
     /**
-     * ORDER BY‹å‚ğİ’è‚·‚éB<p>
+     * ORDER BYå¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param order ‚P‚Â‚Ü‚½‚ÍƒJƒ“ƒ}‚Å‹æØ‚ç‚ê‚½•¡”‚Ì—ñ–¼
+     * @param order ï¼‘ã¤ã¾ãŸã¯ã‚«ãƒ³ãƒã§åŒºåˆ‡ã‚‰ã‚ŒãŸè¤‡æ•°ã®åˆ—å
      */
     public void setOrderbyStr(String order){
         mOrder = order;
     }
     
     /**
-     * JDBCƒRƒlƒNƒVƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param con JDBCƒRƒlƒNƒVƒ‡ƒ“
+     * @param con JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public void setConnection(Connection con){
         mCon = con;
     }
     
     /**
-     * JDBCƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return JDBCƒRƒlƒNƒVƒ‡ƒ“
+     * @return JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public Connection getConnection(){
         return mCon;
     }
     
     /**
-     * SELECTADISTINCTw’è‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * SELECTæ™‚ã€DISTINCTæŒ‡å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param flg DISTINCTw’è‚·‚éê‡‚ÍAtrue
+     * @param flg DISTINCTæŒ‡å®šã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDistinctFlg(boolean flg){
         mDistinctFlg = flg;
     }
     
     /**
-     * ˆÃ†‰»ƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * æš—å·åŒ–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param crypt ˆÃ†‰»ƒIƒuƒWƒFƒNƒg
+     * @param crypt æš—å·åŒ–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setCrypt(Crypt crypt){
         mCrypt = crypt;
     }
     
     /**
-     * ˆÃ†‰»ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * æš—å·åŒ–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆÃ†‰»ƒIƒuƒWƒFƒNƒg
+     * @return æš—å·åŒ–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Crypt getCrypt(){
         return mCrypt;
     }
     
     /**
-     * ƒoƒbƒ`Às‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isBatch ƒoƒbƒ`Às‚·‚éê‡‚ÍAtrue
+     * @param isBatch ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹å ´åˆã¯ã€true
      */
     public void setBatchExecute(boolean isBatch){
         isBatchExecute = isBatch;
     }
     
     /**
-     * ƒoƒbƒ`Às‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒoƒbƒ`Às‚·‚é
+     * @return trueã®å ´åˆã€ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹
      */
     public boolean isBatchExecute(){
         return isBatchExecute;
     }
     
     /**
-     * —ñ–¼”z—ñ‚©‚ç—ñƒCƒ“ƒfƒbƒNƒX”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * åˆ—åé…åˆ—ã‹ã‚‰åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param colNames —ñ–¼”z—ñ
-     * @return —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param colNames åˆ—åé…åˆ—
+     * @return åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      */
     private int[] convertFromColNamesToColIndexes(String[] colNames){
         if(colNames == null || colNames.length == 0){
@@ -367,12 +367,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IğŒŒŸõğŒ‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(null, condition, (int[])null, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchCondition(String, String)}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(null, condition, (int[])null, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchCondition(String, String)}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public void setDynamicSearchCondition(String condition) throws Exception{
@@ -380,13 +380,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IğŒŒŸõğŒiƒ\[ƒg—ñw’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, String[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchCondition(String, String, String[])}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, String[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchCondition(String, String, String[])}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, String[], boolean[])
      */
     public void setDynamicSearchCondition(String condition, String[] orderBy) throws Exception{
@@ -394,13 +394,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IğŒŒŸõğŒiƒ\[ƒg—ñw’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchCondition(String, String, int[])}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchCondition(String, String, int[])}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public void setDynamicSearchCondition(String condition, int[] orderBy) throws Exception{
@@ -408,14 +408,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IğŒŒŸõğŒiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, String[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, isAsc)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchCondition(String, String, String[], boolean[])}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, String[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, isAsc)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchCondition(String, String, String[], boolean[])}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, String[], boolean[])
      */
     public void setDynamicSearchCondition(String condition, String[] orderBy, boolean[] isAsc) throws Exception{
@@ -423,14 +423,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IğŒŒŸõğŒiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, isAsc)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchCondition(String, String, int[], boolean[])}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(null, condition, orderBy, isAsc)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchCondition(String, String, int[], boolean[])}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public void setDynamicSearchCondition(String condition, int[] orderBy, boolean[] isAsc) throws Exception{
@@ -438,12 +438,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IğŒŒŸõğŒ‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(name, condition, (int[])null, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(name, condition, (int[])null, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param name ğŒ–¼
-     * @param condition ğŒ®
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param name æ¡ä»¶å
+     * @param condition æ¡ä»¶å¼
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public void setDynamicSearchCondition(String name, String condition)
@@ -452,13 +452,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IğŒŒŸõğŒiƒ\[ƒg—ñw’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, String[], boolean[]) setDynamicSearchCondition(name, condition, orderBy, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, String[], boolean[]) setDynamicSearchCondition(name, condition, orderBy, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param name ğŒ–¼
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param name æ¡ä»¶å
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, String[], boolean[])
      */
     public void setDynamicSearchCondition(String name, String condition, String[] orderBy)
@@ -472,13 +472,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IğŒŒŸõğŒiƒ\[ƒg—ñw’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(name, condition, orderBy, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchCondition(String, String, int[], boolean[]) setDynamicSearchCondition(name, condition, orderBy, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param name ğŒ–¼
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param name æ¡ä»¶å
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public void setDynamicSearchCondition(String name, String condition, int[] orderBy)
@@ -492,13 +492,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IğŒŒŸõğŒiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğİ’è‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param name æ¡ä»¶å
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public void setDynamicSearchCondition(String name, String condition, String[] orderBy, boolean[] isAsc)
@@ -512,25 +512,25 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IğŒŒŸõğŒiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * “®“IğŒŒŸõ‚Æ‚ÍARecordSet‚É’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çAğŒ®‚É‡’v‚·‚éƒŒƒR[ƒh‚ğŒŸõ‚·‚é‹@”\‚Å‚ ‚éB<br>
-     * ‚Ü‚½A“®“IğŒŒŸõ‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚éÛ‚ÉŒŸõ‚·‚é’~ÏŒ^ŒŸõ‚ÆA’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çƒŠƒAƒ‹‚ÉŒŸõ‚·‚éƒŠƒAƒ‹Œ^ŒŸõ‚ª‚ ‚éB<br>
-     * ‚±‚ÌƒZƒbƒ^[‚ÍA’~ÏŒ^ŒŸõ‚Ì‚½‚ß‚ÌğŒİ’è‚ğs‚¤‚à‚Ì‚ÅAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚Éİ’è‚µ‚Ä‚¨‚©‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ’~ÏŒ^ŒŸõ‚Ì—˜“_‚ÍA’~Ï‚É“¯‚ÉŒŸõ‚ªs‚í‚ê‚é‚½‚ßAÀÛ‚ÌŒŸõ‚É‚ÍA‚ ‚ç‚©‚¶‚ßŒŸõ‚³‚ê‚½Œ‹‰Ê‚ğæ‚èo‚·‚¾‚¯‚Å‚ ‚é‚½‚ßA‚‘¬‚ÈŒŸõ‚ª‰Â”\‚É‚È‚é–‚Å‚ ‚éB’A‚µA’~Ï‚ÉŒŸõ‚ğs‚¤‚Ì‚ÅA’~Ï‚ÆŒŸõ‚ğ“¯‚És‚¤ê‡‚ÍA‚»‚ÌŒø‰Ê‚Í‚È‚¢B<br>
-     * ‹t‚ÉŒ‡“_‚ÍAğŒ‚ğ‚ ‚ç‚©‚¶‚ßİ’è‚·‚é•K—v‚ª‚ ‚é‚½‚ßAğŒ‚ª“®“I‚É•Ï‚í‚éê‡‚ÍA‘Î‰‚Å‚«‚È‚¢B‚»‚Ì‚æ‚¤‚Èê‡‚ÍAƒŠƒAƒ‹Œ^ŒŸõ({@link #searchDynamicConditionReal(String, int[], boolean[], Map)})‚ğg—p‚·‚éB<br>
-     * ‚±‚ÌƒZƒbƒ^[‚É‘Î‰‚·‚é’~ÏŒ^ŒŸõ‚ÍA{@link #searchDynamicCondition(String)}‚Ås‚¤B<br>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢ã¨ã¯ã€RecordSetã«è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ã€æ¡ä»¶å¼ã«åˆè‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹æ©Ÿèƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ã¾ãŸã€å‹•çš„æ¡ä»¶æ¤œç´¢ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹éš›ã«æ¤œç´¢ã™ã‚‹è“„ç©å‹æ¤œç´¢ã¨ã€è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ãƒªã‚¢ãƒ«ã«æ¤œç´¢ã™ã‚‹ãƒªã‚¢ãƒ«å‹æ¤œç´¢ãŒã‚ã‚‹ã€‚<br>
+     * ã“ã®ã‚»ãƒƒã‚¿ãƒ¼ã¯ã€è“„ç©å‹æ¤œç´¢ã®ãŸã‚ã®æ¡ä»¶è¨­å®šã‚’è¡Œã†ã‚‚ã®ã§ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«è¨­å®šã—ã¦ãŠã‹ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * è“„ç©å‹æ¤œç´¢ã®åˆ©ç‚¹ã¯ã€è“„ç©æ™‚ã«åŒæ™‚ã«æ¤œç´¢ãŒè¡Œã‚ã‚Œã‚‹ãŸã‚ã€å®Ÿéš›ã®æ¤œç´¢æ™‚ã«ã¯ã€ã‚ã‚‰ã‹ã˜ã‚æ¤œç´¢ã•ã‚ŒãŸçµæœã‚’å–ã‚Šå‡ºã™ã ã‘ã§ã‚ã‚‹ãŸã‚ã€é«˜é€Ÿãªæ¤œç´¢ãŒå¯èƒ½ã«ãªã‚‹äº‹ã§ã‚ã‚‹ã€‚ä½†ã—ã€è“„ç©æ™‚ã«æ¤œç´¢ã‚’è¡Œã†ã®ã§ã€è“„ç©ã¨æ¤œç´¢ã‚’åŒæ™‚ã«è¡Œã†å ´åˆã¯ã€ãã®åŠ¹æœã¯ãªã„ã€‚<br>
+     * é€†ã«æ¬ ç‚¹ã¯ã€æ¡ä»¶ã‚’ã‚ã‚‰ã‹ã˜ã‚è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ãŸã‚ã€æ¡ä»¶ãŒå‹•çš„ã«å¤‰ã‚ã‚‹å ´åˆã¯ã€å¯¾å¿œã§ããªã„ã€‚ãã®ã‚ˆã†ãªå ´åˆã¯ã€ãƒªã‚¢ãƒ«å‹æ¤œç´¢({@link #searchDynamicConditionReal(String, int[], boolean[], Map)})ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã“ã®ã‚»ãƒƒã‚¿ãƒ¼ã«å¯¾å¿œã™ã‚‹è“„ç©å‹æ¤œç´¢ã¯ã€{@link #searchDynamicCondition(String)}ã§è¡Œã†ã€‚<br>
      * <p>
-     * ğŒ®‚ÍA<a href="http://jakarta.apache.org/commons/jexl/">Jakarta Commons Jexl</a>‚Ì®Œ¾Œê‚ğg—p‚·‚éB<br>
-     * ’~ÏŒ^ŒŸõ‚Å‚ÍAƒŒƒR[ƒh‚Ì—ñ‚Ì’l‚ğA—ñ–¼‚ğw’è‚·‚é–‚ÅA®’†‚ÅQÆ‚·‚é–‚ª‚Å‚«‚éB<br>
+     * æ¡ä»¶å¼ã¯ã€<a href="http://jakarta.apache.org/commons/jexl/">Jakarta Commons Jexl</a>ã®å¼è¨€èªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * è“„ç©å‹æ¤œç´¢ã§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®åˆ—ã®å€¤ã‚’ã€åˆ—åã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€å¼ä¸­ã§å‚ç…§ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
      * <pre>
-     *  —áFA == '1' and B &gt;= 3
+     *  ä¾‹ï¼šA == '1' and B &gt;= 3
      * </pre>
      *
-     * @param name ğŒ–¼
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param name æ¡ä»¶å
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicCondition(String)
      */
     public void setDynamicSearchCondition(String name, String condition, int[] orderBy, boolean[] isAsc)
@@ -604,11 +604,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒ\[ƒg•t‚«ƒ}ƒbƒv‚ğ¶¬‚·‚éB<p>
+     * ã‚½ãƒ¼ãƒˆä»˜ããƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ƒ\[ƒg•t‚«ƒ}ƒbƒv
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return ã‚½ãƒ¼ãƒˆä»˜ããƒãƒƒãƒ—
      */
     private Map createOrderByMap(int[] orderBy, boolean[] isAsc){
         final Comparator comp = createOrderByComparator(orderBy, isAsc);
@@ -620,11 +620,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒ\[ƒg—p‚ÌComparator‚ğ¶¬‚·‚éB<p>
+     * ã‚½ãƒ¼ãƒˆç”¨ã®Comparatorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ƒ\[ƒg—p‚ÌComparator
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return ã‚½ãƒ¼ãƒˆç”¨ã®Comparator
      */
     private Comparator createOrderByComparator(int[] orderBy, boolean[] isAsc){
         Comparator comp = null;
@@ -635,11 +635,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
 
     /**
-     * “®“IƒL[ŒŸõğŒ‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchKey(String, String[]) setDynamicSearchKey(null, colNames)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IƒL[ŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchKey(String, String[])}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchKey(String, String[]) setDynamicSearchKey(null, colNames)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchKey(String, String[])}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param colNames —ñ–¼”z—ñ
+     * @param colNames åˆ—åé…åˆ—
      * @see #setDynamicSearchKey(String, String[])
      */
     public void setDynamicSearchKey(String[] colNames){
@@ -647,11 +647,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IƒL[ŒŸõğŒ‚ğİ’è‚·‚éB<p>
-     * {@link #setDynamicSearchKey(String, int[]) setDynamicSearchKey(null, colNames)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
-     * •¡”‚Ì“®“IƒL[ŒŸõğŒ‚ğİ’è‚µ‚½‚¢ê‡‚ÍA{@link #setDynamicSearchKey(String, int[])}‚ÅAğŒ–¼‚ğw’è‚µ‚ÄAğŒ‚ğİ’è‚·‚éB<br>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setDynamicSearchKey(String, int[]) setDynamicSearchKey(null, colNames)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
+     * è¤‡æ•°ã®å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ãŸã„å ´åˆã¯ã€{@link #setDynamicSearchKey(String, int[])}ã§ã€æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param colIndexes —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param colIndexes åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      * @see #setDynamicSearchKey(String, int[])
      */
     public void setDynamicSearchKey(int[] colIndexes){
@@ -659,10 +659,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõğŒ‚ğİ’è‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param colNames —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param name æ¡ä»¶å
+     * @param colNames åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      * @see #setDynamicSearchKey(String, int[])
      */
     public void setDynamicSearchKey(String name, String[] colNames){
@@ -670,10 +670,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõğŒ‚ğİ’è‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param colIndexes —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param name æ¡ä»¶å
+     * @param colIndexes åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      * @see #setDynamicSearchKey(String, int[], int[])
      */
     public void setDynamicSearchKey(String name, int[] colIndexes){
@@ -681,11 +681,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõğŒiƒ\[ƒg—ñw’èj‚ğİ’è‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param colNames —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
+     * @param name æ¡ä»¶å
+     * @param colNames åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
      * @see #setDynamicSearchKey(String, String[], String[], boolean[])
      */
     public void setDynamicSearchKey(String name, String[] colNames, String[] orderBy){
@@ -698,11 +698,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõğŒiƒ\[ƒg—ñw’èj‚ğİ’è‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param colIndexes —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param name æ¡ä»¶å
+     * @param colIndexes åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      * @see #setDynamicSearchKey(String, int[], int[], boolean[])
      */
     public void setDynamicSearchKey(String name, int[] colIndexes, int[] orderBy){
@@ -715,12 +715,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõğŒiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğİ’è‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param colNames —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
+     * @param name æ¡ä»¶å
+     * @param colNames åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
      * @see #setDynamicSearchKey(String, int[], int[], boolean[])
      */
     public void setDynamicSearchKey(
@@ -738,15 +738,15 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõğŒiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğİ’è‚·‚éB<p>
-     * “®“IƒL[ŒŸõ‚Æ‚ÍARecordSet‚É’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çAw’è‚³‚ê‚½—ñi•¡”‰Âj‚Ì’l‚ª‡’v‚·‚éƒŒƒR[ƒh‚ğŒŸõ‚·‚é‹@”\‚Å‚ ‚éB<br>
-     * ‚Ü‚½A“®“IƒL[ŒŸõ‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚éÛ‚ÉŒŸõ‚ğs‚¤‚½‚ßAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚ÉğŒ‚ğİ’è‚µ‚Ä‚¨‚©‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ‚±‚ÌƒZƒbƒ^[‚É‘Î‰‚·‚éŒŸõ‚ÍA{@link #searchDynamicKey(String, RowData)}‚Ås‚¤B<br>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢æ¡ä»¶ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã¨ã¯ã€RecordSetã«è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸåˆ—ï¼ˆè¤‡æ•°å¯ï¼‰ã®å€¤ãŒåˆè‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹æ©Ÿèƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ã¾ãŸã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹éš›ã«æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«æ¡ä»¶ã‚’è¨­å®šã—ã¦ãŠã‹ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ã“ã®ã‚»ãƒƒã‚¿ãƒ¼ã«å¯¾å¿œã™ã‚‹æ¤œç´¢ã¯ã€{@link #searchDynamicKey(String, RowData)}ã§è¡Œã†ã€‚<br>
      *
-     * @param name ğŒ–¼
-     * @param colIndexes —ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
+     * @param name æ¡ä»¶å
+     * @param colIndexes åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
      * @see #searchDynamicKey(String, RowData)
      */
     public void setDynamicSearchKey(
@@ -768,35 +768,35 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * V‹KƒŒƒR[ƒh‚ğì¬‚·‚éB<p>
-     * ‚±‚ÌRecordSet‚ÌƒXƒL[ƒ}î•ñ‚ğŒ³‚ÉV‚µ‚¢RowData‚ğì¬‚·‚éB<br>
-     * ì¬‚³‚ê‚½RowData‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÍA{@link RowData#E_Record_TypeIgnore}‚Å‚ ‚éB<br>
+     * æ–°è¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * ã“ã®RecordSetã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å…ƒã«æ–°ã—ã„RowDataã‚’ä½œæˆã™ã‚‹ã€‚<br>
+     * ä½œæˆã•ã‚ŒãŸRowDataã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã¯ã€{@link RowData#E_Record_TypeIgnore}ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @return V‚µ‚¢RowData
+     * @return æ–°ã—ã„RowData
      */
     public RowData createNewRecord(){
         return new RowData(mSchema);
     }
     
     /**
-     * WHEREğŒ‹å‚ğİ’è‚·‚éB<p>
-     * WHEREğŒ‹å‚ÍA"WHERE"‚©‚çn‚Ü‚é•¶š—ñ‚ğw’è‚·‚é–B
+     * WHEREæ¡ä»¶å¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * WHEREæ¡ä»¶å¥ã¯ã€"WHERE"ã‹ã‚‰å§‹ã¾ã‚‹æ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹äº‹ã€‚
      *
-     * @param where WHEREğŒ‹å
+     * @param where WHEREæ¡ä»¶å¥
      */
     public void setWhere(String where){
         this.where = new StringBuffer(where);
     }
     
     /**
-     * ŒŸõ‚·‚éƒvƒ‰ƒCƒ}ƒŠƒL[î•ñ‚ğŠi”[‚µ‚½ƒŒƒR[ƒh‚©‚çWHERE‹å‚ğ¶¬‚µAİ’è‚·‚éB<p>
-     * ƒvƒ‰ƒCƒ}ƒŠƒL[‚Æ‚È‚é—ñ–¼‚ªA‚ÆB‚ÅA‚»‚Ì’l‚ª'1'‚Æ'2'‚Æ‚È‚éRowData‚ğw’è‚µ‚½ê‡A<br>
+     * æ¤œç´¢ã™ã‚‹ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æƒ…å ±ã‚’æ ¼ç´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰WHEREå¥ã‚’ç”Ÿæˆã—ã€è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ãªã‚‹åˆ—åãŒAã¨Bã§ã€ãã®å€¤ãŒ'1'ã¨'2'ã¨ãªã‚‹RowDataã‚’æŒ‡å®šã—ãŸå ´åˆã€<br>
      * <pre>
      *   WHERE A='1' AND B='2'
      * </pre>
-     * ‚Æ‚¢‚¤WHEREğŒ‹å‚ªİ’è‚³‚ê‚éB
+     * ã¨ã„ã†WHEREæ¡ä»¶å¥ãŒè¨­å®šã•ã‚Œã‚‹ã€‚
      *
-     * @param row ƒŒƒR[ƒh
+     * @param row ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public void setWhere(RowData row){
         if(row != null){
@@ -805,14 +805,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ŒŸõ‚·‚éƒvƒ‰ƒCƒ}ƒŠƒL[î•ñ‚ğŠi”[‚µ‚½ƒŒƒR[ƒh”z—ñ‚©‚çWHERE‹å‚ğ¶¬‚µAİ’è‚µ‚Ü‚·B<p>
-     * ƒvƒ‰ƒCƒ}ƒŠƒL[‚Æ‚È‚é—ñ–¼‚ªA‚ÆB‚ÅA‚»‚Ì’l‚ª'1'‚Æ'2'‚Æ‚È‚éRowData‚Æ‚»‚Ì’l‚ª'2'‚Æ'3'‚Æ‚È‚éRowData‚Ì”z—ñ‚ğw’è‚µ‚½ê‡A<br>
+     * æ¤œç´¢ã™ã‚‹ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æƒ…å ±ã‚’æ ¼ç´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰é…åˆ—ã‹ã‚‰WHEREå¥ã‚’ç”Ÿæˆã—ã€è¨­å®šã—ã¾ã™ã€‚<p>
+     * ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ãªã‚‹åˆ—åãŒAã¨Bã§ã€ãã®å€¤ãŒ'1'ã¨'2'ã¨ãªã‚‹RowDataã¨ãã®å€¤ãŒ'2'ã¨'3'ã¨ãªã‚‹RowDataã®é…åˆ—ã‚’æŒ‡å®šã—ãŸå ´åˆã€<br>
      * <pre>
      *   WHERE (A='1' AND B='2') OR (A='3' AND B='4')
      * </pre>
-     * ‚Æ‚¢‚¤WHEREğŒ‹å‚ªİ’è‚³‚ê‚éB
+     * ã¨ã„ã†WHEREæ¡ä»¶å¥ãŒè¨­å®šã•ã‚Œã‚‹ã€‚
      *
-     * @param rows ƒŒƒR[ƒh”z—ñ
+     * @param rows ãƒ¬ã‚³ãƒ¼ãƒ‰é…åˆ—
      */
     public void setWhere(RowData[] rows){
         if(rows == null || rows.length == 0){
@@ -826,14 +826,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^XVƒL[‚©‚çWHERE‹å‚ğ¶¬‚µAİ’è‚µ‚Ü‚·B<p>
-     * ƒL[‚ªA‚ÆB‚ÅA‚»‚Ì’l‚ª'1'‚Æ'2'‚Æ‚È‚éCodeMasterUpdateKey‚ğw’è‚µ‚½ê‡A<br>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼ã‹ã‚‰WHEREå¥ã‚’ç”Ÿæˆã—ã€è¨­å®šã—ã¾ã™ã€‚<p>
+     * ã‚­ãƒ¼ãŒAã¨Bã§ã€ãã®å€¤ãŒ'1'ã¨'2'ã¨ãªã‚‹CodeMasterUpdateKeyã‚’æŒ‡å®šã—ãŸå ´åˆã€<br>
      * <pre>
      *   WHERE A='1' AND B='2'
      * </pre>
-     * ‚Æ‚¢‚¤WHEREğŒ‹å‚ªİ’è‚³‚ê‚éB
+     * ã¨ã„ã†WHEREæ¡ä»¶å¥ãŒè¨­å®šã•ã‚Œã‚‹ã€‚
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^XVƒL[
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼
      */
     public void setWhere(CodeMasterUpdateKey key){
         if(key == null || key.isRemove()){
@@ -858,14 +858,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^XVƒL[”z—ñ‚©‚çWHERE‹å‚ğ¶¬‚µAİ’è‚µ‚Ü‚·B<p>
-     * ƒL[‚ªA‚ÆB‚ÅA‚»‚Ì’l‚ª'1'‚Æ'2'‚Æ‚È‚éCodeMasterUpdateKey‚Æ‚»‚Ì’l‚ª'2'‚Æ'3'‚Æ‚È‚éCodeMasterUpdateKey‚Ì”z—ñ‚ğw’è‚µ‚½ê‡A<br>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼é…åˆ—ã‹ã‚‰WHEREå¥ã‚’ç”Ÿæˆã—ã€è¨­å®šã—ã¾ã™ã€‚<p>
+     * ã‚­ãƒ¼ãŒAã¨Bã§ã€ãã®å€¤ãŒ'1'ã¨'2'ã¨ãªã‚‹CodeMasterUpdateKeyã¨ãã®å€¤ãŒ'2'ã¨'3'ã¨ãªã‚‹CodeMasterUpdateKeyã®é…åˆ—ã‚’æŒ‡å®šã—ãŸå ´åˆã€<br>
      * <pre>
      *   WHERE (A='1' AND B='2') OR (A='3' AND B='4')
      * </pre>
-     * ‚Æ‚¢‚¤WHEREğŒ‹å‚ªİ’è‚³‚ê‚éB
+     * ã¨ã„ã†WHEREæ¡ä»¶å¥ãŒè¨­å®šã•ã‚Œã‚‹ã€‚
      *
-     * @param keys ƒR[ƒhƒ}ƒXƒ^XVƒL[”z—ñ
+     * @param keys ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼é…åˆ—
      */
     public void setWhere(CodeMasterUpdateKey[] keys){
         if(keys == null || keys.length == 0){
@@ -906,14 +906,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * •”•ªXVƒŒƒR[ƒh‚©‚çWHERE‹å‚ğ¶¬‚µAİ’è‚µ‚Ü‚·B<p>
-     * ƒL[‚ªA‚ÆB‚ÅA‚»‚Ì’l‚ª'1'‚Æ'2'‚Æ‚È‚éCodeMasterUpdateKey‚Æ‚»‚Ì’l‚ª'2'‚Æ'3'‚Æ‚È‚éCodeMasterUpdateKey‚ªŠi”[‚³‚ê‚½PartUpdateRecords‚ğw’è‚µ‚½ê‡A<br>
+     * éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰WHEREå¥ã‚’ç”Ÿæˆã—ã€è¨­å®šã—ã¾ã™ã€‚<p>
+     * ã‚­ãƒ¼ãŒAã¨Bã§ã€ãã®å€¤ãŒ'1'ã¨'2'ã¨ãªã‚‹CodeMasterUpdateKeyã¨ãã®å€¤ãŒ'2'ã¨'3'ã¨ãªã‚‹CodeMasterUpdateKeyãŒæ ¼ç´ã•ã‚ŒãŸPartUpdateRecordsã‚’æŒ‡å®šã—ãŸå ´åˆã€<br>
      * <pre>
      *   WHERE (A='1' AND B='2') OR (A='3' AND B='4')
      * </pre>
-     * ‚Æ‚¢‚¤WHEREğŒ‹å‚ªİ’è‚³‚ê‚éB
+     * ã¨ã„ã†WHEREæ¡ä»¶å¥ãŒè¨­å®šã•ã‚Œã‚‹ã€‚
      *
-     * @param records •”•ªXVƒŒƒR[ƒh
+     * @param records éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public void setWhere(PartUpdateRecords records){
         if(records == null || records.size() == 0
@@ -958,9 +958,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * WHERE‹å‚Ì’Ç‰Áˆ—‚ğs‚¤B<p>
+     * WHEREå¥ã®è¿½åŠ å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param sb SELECT [ƒtƒB[ƒ‹ƒh–¼]... FROM [ƒe[ƒuƒ‹]... ‚Ü‚Å‚ğŠÜ‚Ş StringBuffer 
+     * @param sb SELECT [ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å]... FROM [ãƒ†ãƒ¼ãƒ–ãƒ«]... ã¾ã§ã‚’å«ã‚€ StringBuffer 
      */
     protected void addWhere(StringBuffer sb){
         if(where != null){
@@ -969,10 +969,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * PreparedStatement‚ÉƒoƒCƒ“ƒh‚·‚é’l‚ğİ’è‚·‚éB<p>
+     * PreparedStatementã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index PreparedStatement‚ÌƒoƒCƒ“ƒh•Ï”ƒCƒ“ƒfƒbƒNƒXBƒCƒ“ƒfƒbƒNƒX‚Í0‚©‚çn‚Ü‚é
-     * @param val PreparedStatement‚ÌƒoƒCƒ“ƒh•Ï”’l
+     * @param index PreparedStatementã®ãƒã‚¤ãƒ³ãƒ‰å¤‰æ•°ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯0ã‹ã‚‰å§‹ã¾ã‚‹
+     * @param val PreparedStatementã®ãƒã‚¤ãƒ³ãƒ‰å¤‰æ•°å€¤
      */
     public void setBindData(int index, Object val){
         if(bindDatas == null){
@@ -991,7 +991,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * PreparedStatement‚ÉƒoƒCƒ“ƒh‚·‚é’l‚ğƒNƒŠƒA‚·‚éB<p>
+     * PreparedStatementã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹å€¤ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clearBindData(){
         if(bindDatas != null){
@@ -1001,9 +1001,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     
     
     /**
-     * PreparedStatement ƒoƒCƒ“ƒhˆ—‚ğs‚¤B<p>
+     * PreparedStatement ãƒã‚¤ãƒ³ãƒ‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param ps ƒoƒCƒ“ƒh‚·‚é PreparedStatement
+     * @param ps ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ PreparedStatement
      * @exception SQLException
      */
     protected void addBindData(PreparedStatement ps) throws SQLException {
@@ -1024,9 +1024,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚çŒŸõ‚µ‚ÄAƒŒƒR[ƒh‚ğ’~Ï‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ¤œç´¢ã—ã¦ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh”
+     * @return æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°
      * @throws SQLException
      */
     public int search() throws SQLException{
@@ -1034,10 +1034,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚çŒŸõ‚µ‚ÄAw’è‚³‚ê‚½Å‘åƒŒƒR[ƒh”‚Ü‚ÅƒŒƒR[ƒh‚ğ’~Ï‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ¤œç´¢ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸæœ€å¤§ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°ã¾ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹ã€‚<p>
      *
-     * @param max Å‘åƒŒƒR[ƒh”
-     * @return ŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh”
+     * @param max æœ€å¤§ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°
+     * @return æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°
      * @throws SQLException
      */
     public int search(int max) throws SQLException{
@@ -1138,7 +1138,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
                         default:
                             obj = rs.getObject(rscnt);
                     }
-                    // ˆÃ†‰»
+                    // æš—å·åŒ–
                     if(fs.isCrypt()){
                         obj = doEncrypt(obj);
                     }
@@ -1162,10 +1162,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ’~ÏŒ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ’~ÏŒ^“®“IğŒŒŸõ‚ğs‚¤‚½‚ß‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚ÉA{@link #setDynamicSearchCondition(String, int[], boolean[])}‚Å“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«ã€{@link #setDynamicSearchCondition(String, int[], boolean[])}ã§å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      * @see #setDynamicSearchCondition(String, int[], boolean[])
      */
     public Collection searchDynamicCondition(){
@@ -1173,11 +1173,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½ğŒ–¼‚Ì’~ÏŒ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * ’~ÏŒ^“®“IğŒŒŸõ‚ğs‚¤‚½‚ß‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚ÉA{@link #setDynamicSearchCondition(String, String, int[], boolean[])}‚Å“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸæ¡ä»¶åã®è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«ã€{@link #setDynamicSearchCondition(String, String, int[], boolean[])}ã§å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param name ğŒ–¼
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param name æ¡ä»¶å
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public Collection searchDynamicCondition(String name){
@@ -1193,10 +1193,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ’~ÏŒ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * ’~ÏŒ^“®“IğŒŒŸõ‚ğs‚¤‚½‚ß‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚ÉA{@link #setDynamicSearchCondition(String, int[], boolean[])}‚Å“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«ã€{@link #setDynamicSearchCondition(String, int[], boolean[])}ã§å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #setDynamicSearchCondition(String, int[], boolean[])
      */
     public RecordSet filterDynamicCondition(){
@@ -1204,10 +1204,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½ğŒ–¼‚Ì’~ÏŒ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * ’~ÏŒ^“®“IğŒŒŸõ‚ğs‚¤‚½‚ß‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚ÉA{@link #setDynamicSearchCondition(String, String, int[], boolean[])}‚Å“®“IğŒŒŸõğŒ‚ğİ’è‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸæ¡ä»¶åã®è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«ã€{@link #setDynamicSearchCondition(String, String, int[], boolean[])}ã§å‹•çš„æ¡ä»¶æ¤œç´¢æ¡ä»¶ã‚’è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #setDynamicSearchCondition(String, String, int[], boolean[])
      */
     public RecordSet filterDynamicCondition(String name){
@@ -1223,12 +1223,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, int[], boolean[]) searchDynamicConditionReal(condition, (int[])null, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, int[], boolean[]) searchDynamicConditionReal(condition, (int[])null, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, int[], boolean[])
      */
     public Collection searchDynamicConditionReal(String condition) throws Exception{
@@ -1240,13 +1240,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, int[], boolean[], Map) searchDynamicConditionReal(condition, (int[])null, (boolean[])null, valueMap)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, int[], boolean[], Map) searchDynamicConditionReal(condition, (int[])null, (boolean[])null, valueMap)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, int[], boolean[], Map)
      */
     public Collection searchDynamicConditionReal(String condition, Map valueMap) throws Exception{
@@ -1259,13 +1259,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’è•t‚«j‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, String[], boolean[]) searchDynamicConditionReal(condition, orderBy, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, String[], boolean[]) searchDynamicConditionReal(condition, orderBy, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, String[], boolean[])
      */
     public Collection searchDynamicConditionReal(String condition, String[] orderBy) throws Exception{
@@ -1277,14 +1277,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’è•t‚«j‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, String[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, null, valueMap)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, String[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, null, valueMap)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, String[], boolean[], Map)
      */
     public Collection searchDynamicConditionReal(String condition, String[] orderBy, Map valueMap) throws Exception{
@@ -1297,13 +1297,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’è•t‚«j‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, int[], boolean[]) searchDynamicConditionReal(condition, orderBy, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, int[], boolean[]) searchDynamicConditionReal(condition, orderBy, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, int[], boolean[])
      */
     public Collection searchDynamicConditionReal(String condition, int[] orderBy) throws Exception{
@@ -1315,14 +1315,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’è•t‚«j‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, int[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, (boolean[])null, valueMap)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, int[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, (boolean[])null, valueMap)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, int[], boolean[], Map)
      */
     public Collection searchDynamicConditionReal(String condition, int[] orderBy, Map valueMap) throws Exception{
@@ -1335,14 +1335,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, String[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, isAsc, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, String[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, isAsc, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, String[], boolean[], Map)
      */
     public Collection searchDynamicConditionReal(String condition, String[] orderBy, boolean[] isAsc) throws Exception{
@@ -1355,14 +1355,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğs‚¤B<p>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, int[], boolean[], Map)
      */
     public Collection searchDynamicConditionReal(String condition, String[] orderBy, boolean[] isAsc, Map valueMap) throws Exception{
@@ -1375,14 +1375,14 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğs‚¤B<p>
-     * {@link #searchDynamicConditionReal(String, int[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, isAsc, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * {@link #searchDynamicConditionReal(String, int[], boolean[], Map) searchDynamicConditionReal(condition, orderBy, isAsc, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      * @see #searchDynamicConditionReal(String, int[], boolean[], Map)
      */
     public Collection searchDynamicConditionReal(String condition, int[] orderBy, boolean[] isAsc) throws Exception{
@@ -1395,23 +1395,23 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõiƒ\[ƒg—ñw’èAƒ\[ƒg‡w’è•t‚«j‚ğs‚¤B<p>
-     * “®“IğŒŒŸõ‚Æ‚ÍARecordSet‚É’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çAğŒ®‚É‡’v‚·‚éƒŒƒR[ƒh‚ğŒŸõ‚·‚é‹@”\‚Å‚ ‚éB<br>
-     * ‚Ü‚½A“®“IğŒŒŸõ‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚éÛ‚ÉŒŸõ‚·‚é’~ÏŒ^ŒŸõ‚ÆA’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çƒŠƒAƒ‹‚ÉŒŸõ‚·‚éƒŠƒAƒ‹Œ^ŒŸõ‚ª‚ ‚éB<br>
-     * ƒŠƒAƒ‹Œ^ŒŸõ‚Ì—˜“_‚ÍAğŒ®’†‚ÉA“®“I‚É•Ï‚í‚é•Ï”‚ğw’è‚µA‚»‚Ì•Ï”’l‚ğˆø”valueMap‚Å—^‚¦‚é–‚ª‚Å‚«‚é–‚Å‚ ‚éB<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šã€ã‚½ãƒ¼ãƒˆé †æŒ‡å®šä»˜ãï¼‰ã‚’è¡Œã†ã€‚<p>
+     * å‹•çš„æ¡ä»¶æ¤œç´¢ã¨ã¯ã€RecordSetã«è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ã€æ¡ä»¶å¼ã«åˆè‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹æ©Ÿèƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ã¾ãŸã€å‹•çš„æ¡ä»¶æ¤œç´¢ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹éš›ã«æ¤œç´¢ã™ã‚‹è“„ç©å‹æ¤œç´¢ã¨ã€è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ãƒªã‚¢ãƒ«ã«æ¤œç´¢ã™ã‚‹ãƒªã‚¢ãƒ«å‹æ¤œç´¢ãŒã‚ã‚‹ã€‚<br>
+     * ãƒªã‚¢ãƒ«å‹æ¤œç´¢ã®åˆ©ç‚¹ã¯ã€æ¡ä»¶å¼ä¸­ã«ã€å‹•çš„ã«å¤‰ã‚ã‚‹å¤‰æ•°ã‚’æŒ‡å®šã—ã€ãã®å¤‰æ•°å€¤ã‚’å¼•æ•°valueMapã§ä¸ãˆã‚‹äº‹ãŒã§ãã‚‹äº‹ã§ã‚ã‚‹ã€‚<br>
      * <p>
-     * ğŒ®‚ÍA<a href="http://jakarta.apache.org/commons/jexl/">Jakarta Commons Jexl</a>‚Ì®Œ¾Œê‚ğg—p‚·‚éB<br>
-     * ƒŠƒAƒ‹Œ^ŒŸõ‚Å‚ÍAƒŒƒR[ƒh‚Ì—ñ‚Ì’l‚ğA—ñ–¼‚ğw’è‚·‚é–‚ÅA®’†‚ÅQÆ‚·‚é–‚ª‚Å‚«‚é‚Ì‚É‰Á‚¦‚ÄA”CˆÓ‚Ì•Ï”–¼‚ğ®’†‚É’è‹`‚µA‚»‚Ì’l‚ğˆø”valueMap‚Å—^‚¦‚é–‚ª‚Å‚«‚éB<br>
+     * æ¡ä»¶å¼ã¯ã€<a href="http://jakarta.apache.org/commons/jexl/">Jakarta Commons Jexl</a>ã®å¼è¨€èªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ãƒªã‚¢ãƒ«å‹æ¤œç´¢ã§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®åˆ—ã®å€¤ã‚’ã€åˆ—åã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€å¼ä¸­ã§å‚ç…§ã™ã‚‹äº‹ãŒã§ãã‚‹ã®ã«åŠ ãˆã¦ã€ä»»æ„ã®å¤‰æ•°åã‚’å¼ä¸­ã«å®šç¾©ã—ã€ãã®å€¤ã‚’å¼•æ•°valueMapã§ä¸ãˆã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
      * <pre>
-     *  —áFA == '1' and B &gt;= 3
+     *  ä¾‹ï¼šA == '1' and B &gt;= 3
      * </pre>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
-     * @exception Exception ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
+     * @exception Exception æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      */
     public Collection searchDynamicConditionReal(String condition, int[] orderBy, boolean[] isAsc, Map valueMap) throws Exception{
         if(size() == 0){
@@ -1439,11 +1439,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, int[], boolean[]) filterDynamicConditionReal(condition, (int[])null, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, int[], boolean[]) filterDynamicConditionReal(condition, (int[])null, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, int[], boolean[])
      */
     public RecordSet filterDynamicConditionReal(String condition) throws Exception{
@@ -1451,12 +1451,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, int[], boolean[], Map) filterDynamicConditionReal(condition, (int[])null, (boolean[])null, valueMap)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, int[], boolean[], Map) filterDynamicConditionReal(condition, (int[])null, (boolean[])null, valueMap)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, int[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, Map valueMap) throws Exception{
@@ -1464,12 +1464,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, String[], boolean[]) filterDynamicConditionReal(condition, orderBy, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, String[], boolean[]) filterDynamicConditionReal(condition, orderBy, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, String[], boolean[])
      */
     public RecordSet filterDynamicConditionReal(String condition, String[] orderBy) throws Exception{
@@ -1481,13 +1481,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, String[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, (boolean[])null, valueMap)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, String[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, (boolean[])null, valueMap)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, String[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, String[] orderBy, Map valueMap) throws Exception{
@@ -1500,12 +1500,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, int[], boolean[]) filterDynamicConditionReal(condition, orderBy, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, int[], boolean[]) filterDynamicConditionReal(condition, orderBy, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, int[], boolean[])
      */
     public RecordSet filterDynamicConditionReal(String condition, int[] orderBy) throws Exception{
@@ -1517,13 +1517,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, int[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, (boolean[])null, valueMap)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, int[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, (boolean[])null, valueMap)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, int[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, int[] orderBy, Map valueMap) throws Exception{
@@ -1536,13 +1536,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, String[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, isAsc, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, String[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, isAsc, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, String[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, String[] orderBy, boolean[] isAsc) throws Exception{
@@ -1555,13 +1555,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, int[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, String[] orderBy, boolean[] isAsc, Map valueMap) throws Exception{
@@ -1574,13 +1574,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicConditionReal(String, int[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, isAsc, null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicConditionReal(String, int[], boolean[], Map) filterDynamicConditionReal(condition, orderBy, isAsc, null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicConditionReal(String, int[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, int[] orderBy, boolean[] isAsc) throws Exception{
@@ -1593,13 +1593,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ãƒªã‚¢ãƒ«å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param condition ğŒ®
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param condition æ¡ä»¶å¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #searchDynamicConditionReal(String, int[], boolean[], Map)
      */
     public RecordSet filterDynamicConditionReal(String condition, int[] orderBy, boolean[] isAsc, Map valueMap) throws Exception{
@@ -1615,11 +1615,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * {@link #searchDynamicKey(String, RowData) searchDynamicKey(null, key, (int[])null, (boolean[])null)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #searchDynamicKey(String, RowData) searchDynamicKey(null, key, (int[])null, (boolean[])null)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param key ŒŸõƒL[
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param key æ¤œç´¢ã‚­ãƒ¼
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      * @see #searchDynamicKey(String, RowData)
      */
     public Collection searchDynamicKey(RowData key){
@@ -1627,13 +1627,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
-     * “®“IƒL[ŒŸõ‚Æ‚ÍARecordSet‚É’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çAw’è‚³‚ê‚½—ñi•¡”‰Âj‚Ì’l‚ª‡’v‚·‚éƒŒƒR[ƒh‚ğŒŸõ‚·‚é‹@”\‚Å‚ ‚éB<br>
-     * ‚Ü‚½A“®“IƒL[ŒŸõ‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚éÛ‚ÉŒŸõ‚ğs‚¤‚½‚ßAƒŒƒR[ƒh‚ğ’~Ï‚·‚é‘O‚ÉA{@link #setDynamicSearchKey(String, int[], int[], boolean[])}‚ÅğŒ‚ğİ’è‚µ‚Ä‚¨‚©‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã¨ã¯ã€RecordSetã«è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸåˆ—ï¼ˆè¤‡æ•°å¯ï¼‰ã®å€¤ãŒåˆè‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹æ©Ÿèƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ã¾ãŸã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹éš›ã«æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹å‰ã«ã€{@link #setDynamicSearchKey(String, int[], int[], boolean[])}ã§æ¡ä»¶ã‚’è¨­å®šã—ã¦ãŠã‹ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param name ğŒ–¼
-     * @param key ŒŸõƒL[
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param name æ¡ä»¶å
+     * @param key æ¤œç´¢ã‚­ãƒ¼
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      * @see #setDynamicSearchKey(String, int[], int[], boolean[])
      */
     public Collection searchDynamicKey(String name, RowData key){
@@ -1665,13 +1665,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Êiƒ\[ƒg—ñw’èj‚ğæ“¾‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šï¼‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param key ŒŸõƒL[
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param name æ¡ä»¶å
+     * @param key æ¤œç´¢ã‚­ãƒ¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      * @see #setDynamicSearchKey(String, int[], int[], boolean[])
      * @see #searchDynamicKey(String, RowData)
      */
@@ -1690,13 +1690,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ğŒ–¼‚ğw’è‚µ‚ÄA“®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Êiƒ\[ƒg—ñw’èj‚ğæ“¾‚·‚éB<p>
+     * æ¡ä»¶åã‚’æŒ‡å®šã—ã¦ã€å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœï¼ˆã‚½ãƒ¼ãƒˆåˆ—æŒ‡å®šï¼‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param key ŒŸõƒL[
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param name æ¡ä»¶å
+     * @param key æ¤œç´¢ã‚­ãƒ¼
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      * @see #setDynamicSearchKey(String, int[], int[], boolean[])
      * @see #searchDynamicKey(String, RowData)
      */
@@ -1727,11 +1727,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
-     * {@link #filterDynamicKey(String, RowData) filterDynamicKey(null, key)}‚ğŒÄ‚Ño‚·‚Ì‚Æ“¯‚¶B<br>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
+     * {@link #filterDynamicKey(String, RowData) filterDynamicKey(null, key)}ã‚’å‘¼ã³å‡ºã™ã®ã¨åŒã˜ã€‚<br>
      *
-     * @param key ŒŸõƒL[
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param key æ¤œç´¢ã‚­ãƒ¼
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #filterDynamicKey(String, RowData)
      */
     public RecordSet filterDynamicKey(RowData key){
@@ -1739,11 +1739,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Ê‚ÌƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param name ğŒ–¼
-     * @param key ŒŸõƒL[
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param name æ¡ä»¶å
+     * @param key æ¤œç´¢ã‚­ãƒ¼
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      * @see #searchDynamicKey(String, RowData)
      */
     public RecordSet filterDynamicKey(String name, RowData key){
@@ -1759,10 +1759,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      */
     public Collection searchRecords(RecordSet recset){
         return searchRecords(
@@ -1772,11 +1772,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      */
     public Collection searchRecords(RecordSet recset, String[] orderBy){
         return searchRecords(
@@ -1787,11 +1787,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      */
     public Collection searchRecords(RecordSet recset, int[] orderBy){
         return searchRecords(
@@ -1802,12 +1802,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      */
     public Collection searchRecords(RecordSet recset, String[] orderBy, boolean[] isAsc){
         return searchRecords(
@@ -1818,12 +1818,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½RowData‚ÌW‡
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸRowDataã®é›†åˆ
      */
     public Collection searchRecords(RecordSet recset, int[] orderBy, boolean[] isAsc){
         if(recset == null || recset.size() == 0){
@@ -1856,10 +1856,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      */
     public RecordSet filterRecords(RecordSet recset){
         return filterRecords(
@@ -1869,11 +1869,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      */
     public RecordSet filterRecords(RecordSet recset, String[] orderBy){
         return filterRecords(
@@ -1884,11 +1884,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      */
     public RecordSet filterRecords(RecordSet recset, int[] orderBy){
         return filterRecords(
@@ -1899,12 +1899,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñ–¼”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—åé…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      */
     public RecordSet filterRecords(RecordSet recset, String[] orderBy, boolean[] isAsc){
         return filterRecords(
@@ -1915,12 +1915,12 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ÆAw’è‚³‚ê‚½ƒŒƒR[ƒhƒZƒbƒg‚ÌŠY“–‚·‚éƒL[‚ªˆê’v‚·‚éƒŒƒR[ƒh‚¾‚¯‚ÉƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã¨ã€æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®è©²å½“ã™ã‚‹ã‚­ãƒ¼ãŒä¸€è‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã ã‘ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param recset ƒŒƒR[ƒhƒZƒbƒg
-     * @param orderBy ƒ\[ƒg—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ƒ\[ƒg‡Btrue‚Ìê‡A¸‡
-     * @return ƒtƒBƒ‹ƒ^ƒŠƒ“ƒOŒã‚ÌA‚±‚ÌƒIƒuƒWƒFƒNƒg©g‚ÌQÆ
+     * @param recset ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc ã‚½ãƒ¼ãƒˆé †ã€‚trueã®å ´åˆã€æ˜‡é †
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°å¾Œã®ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®å‚ç…§
      */
     public RecordSet filterRecords(RecordSet recset, int[] orderBy, boolean[] isAsc){
         Collection records = searchRecords(recset, orderBy, isAsc);
@@ -1935,142 +1935,142 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * sƒf[ƒ^‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * è¡Œãƒ‡ãƒ¼ã‚¿ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return {@link RowData}‚ğ—v‘f‚Æ‚·‚éƒŠƒXƒg
+     * @return {@link RowData}ã‚’è¦ç´ ã¨ã™ã‚‹ãƒªã‚¹ãƒˆ
      */
     protected ArrayList getList(){
         return mRows;
     }
     
     /**
-     * sƒf[ƒ^‚ğƒvƒ‰ƒCƒ}ƒŠƒL[•¶š—ñ‚Åƒ}ƒbƒsƒ“ƒO‚µ‚Ä‚¢‚éƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * è¡Œãƒ‡ãƒ¼ã‚¿ã‚’ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ–‡å­—åˆ—ã§ãƒãƒƒãƒ”ãƒ³ã‚°ã—ã¦ã„ã‚‹ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒvƒ‰ƒCƒ}ƒŠƒL[•¶š—ñ‚Æ{@link RowData}‚Åƒ}ƒbƒsƒ“ƒO‚³‚ê‚½HashMap
+     * @return ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ–‡å­—åˆ—ã¨{@link RowData}ã§ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸHashMap
      */
     protected HashMap getHash(){
         return mHash;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
      * @param index
-     * @return ƒŒƒR[ƒh
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public RowData get(int index){
         return (RowData)mRows.get(index);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒ‰ƒCƒ}ƒŠƒL[•¶š—ñ‚ÉŠY“–‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ–‡å­—åˆ—ã«è©²å½“ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒvƒ‰ƒCƒ}ƒŠƒL[•¶š—ñ
-     * @return ƒŒƒR[ƒh
+     * @param key ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ–‡å­—åˆ—
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public RowData get(String key){
         return (RowData)mHash.get(key);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒ‰ƒCƒ}ƒŠƒL[ƒŒƒR[ƒh‚ÉŠY“–‚·‚éƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰ã«è©²å½“ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒvƒ‰ƒCƒ}ƒŠƒL[ƒŒƒR[ƒh
-     * @return ƒŒƒR[ƒh
+     * @param key ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public RowData get(RowData key){
         return get(key.getKey());
     }
     
     /**
-     * ƒŒƒR[ƒh‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚Ì”z—ñ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public RowData[] toArray(){
         return (RowData[])mRows.toArray(new RowData[mRows.size()]);
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚ÌƒŠƒXƒg
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ
      */
     public List toList(){
         return new ArrayList(mRows);
     }
     
     /**
-     * ’~Ï‚³‚ê‚Ä‚¢‚éƒŒƒR[ƒh”‚ğæ“¾‚·‚éB<p>
+     * è“„ç©ã•ã‚Œã¦ã„ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒŒƒR[ƒh”
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°
      */
     public int size(){
         return mRows.size();
     }
     
     /**
-     * ƒvƒ‰ƒCƒ}ƒŠƒL[•¶š—ñ‚Ì¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼æ–‡å­—åˆ—ã®æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      */
     public void sort(){
         sort((int[])null);
     }
     
     /**
-     * w’è‚³‚ê‚½—ñ–¼‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåˆ—åã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñ–¼”z—ñ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—åé…åˆ—
      */
     public void sort(String[] orderBy){
         sort(orderBy, null);
     }
     
     /**
-     * w’è‚³‚ê‚½—ñƒCƒ“ƒfƒbƒNƒX‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      */
     public void sort(int[] orderBy){
         sort(orderBy, null);
     }
     
     /**
-     * w’è‚³‚ê‚½—ñ–¼‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåˆ—åã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñ–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void sort(String[] orderBy, boolean[] isAsc){
         sort(convertFromColNamesToColIndexes(orderBy), isAsc);
     }
     
     /**
-     * w’è‚³‚ê‚½—ñƒCƒ“ƒfƒbƒNƒX‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void sort(int[] orderBy, boolean[] isAsc){
         sort(orderBy, isAsc, true);
     }
     
     /**
-     * w’è‚³‚ê‚½—ñ–¼‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåˆ—åã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñ–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
-     * @param isSetRowNum s”Ô†‚ğİ’è‚µ’¼‚·ê‡‚ÍAtrue
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
+     * @param isSetRowNum è¡Œç•ªå·ã‚’è¨­å®šã—ç›´ã™å ´åˆã¯ã€true
      */
     public void sort(String[] orderBy, boolean[] isAsc, boolean isSetRowNum){
         sort(convertFromColNamesToColIndexes(orderBy), isAsc, isSetRowNum);
     }
     
     /**
-     * w’è‚³‚ê‚½—ñƒCƒ“ƒfƒbƒNƒX‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
-     * @param isSetRowNum s”Ô†‚ğİ’è‚µ’¼‚·ê‡‚ÍAtrue
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
+     * @param isSetRowNum è¡Œç•ªå·ã‚’è¨­å®šã—ç›´ã™å ´åˆã¯ã€true
      */
     public void sort(int[] orderBy, boolean[] isAsc, boolean isSetRowNum){
         if(mRows.size() < 2){
@@ -2096,9 +2096,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ì{@link RowData}‚ğåƒL[‚Åƒ\[ƒg‚·‚éComparator‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®{@link RowData}ã‚’ä¸»ã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã™ã‚‹Comparatorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚ÌRowData‚ğƒ\[ƒg‚·‚éComparator
+     * @return ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®RowDataã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparator
      */
     public Comparator createRowComparator(){
         if(mSchema == null){
@@ -2117,51 +2117,51 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ì{@link RowData}‚ğƒ\[ƒg‚·‚éComparator‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®{@link RowData}ã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparatorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñ–¼”z—ñ
-     * @return ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚ÌRowData‚ğƒ\[ƒg‚·‚éComparator
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—åé…åˆ—
+     * @return ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®RowDataã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparator
      */
     public Comparator createRowComparator(String[] orderBy){
         return createRowComparator(orderBy, null);
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ì{@link RowData}‚ğƒ\[ƒg‚·‚éComparator‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®{@link RowData}ã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparatorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @return ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚ÌRowData‚ğƒ\[ƒg‚·‚éComparator
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @return ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®RowDataã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparator
      */
     public Comparator createRowComparator(int[] orderBy){
         return createRowComparator(orderBy, null);
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ì{@link RowData}‚ğƒ\[ƒg‚·‚éComparator‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®{@link RowData}ã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparatorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñ–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
-     * @return ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚ÌRowData‚ğƒ\[ƒg‚·‚éComparator
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
+     * @return ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®RowDataã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparator
      */
     public Comparator createRowComparator(String[] orderBy, boolean[] isAsc){
         return createRowComparator(convertFromColNamesToColIndexes(orderBy), isAsc);
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚Ì{@link RowData}‚ğƒ\[ƒg‚·‚éComparator‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®{@link RowData}ã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparatorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
-     * @return ‚±‚ÌƒŒƒR[ƒhƒZƒbƒg‚ÌRowData‚ğƒ\[ƒg‚·‚éComparator
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
+     * @return ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã®RowDataã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹Comparator
      */
     public Comparator createRowComparator(int[] orderBy, boolean[] isAsc){
         return new RowDataComparator(mSchema, orderBy, isAsc);
     }
     
     /**
-     * ’Ç‰ÁEC³Eíœ‚³‚ê‚½RowData‚ğŠÜ‚ŞRecordSet‚ğæ“¾‚·‚éB<p>
+     * è¿½åŠ ãƒ»ä¿®æ­£ãƒ»å‰Šé™¤ã•ã‚ŒãŸRowDataã‚’å«ã‚€RecordSetã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ’Ç‰ÁEC³Eíœ‚³‚ê‚½RowData‚ğŠÜ‚ŞRecordSet
+     * @return è¿½åŠ ãƒ»ä¿®æ­£ãƒ»å‰Šé™¤ã•ã‚ŒãŸRowDataã‚’å«ã‚€RecordSet
      */
     public RecordSet makeGoneData(){
         RecordSet ret = cloneEmpty();
@@ -2180,11 +2180,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ‘}“ü‚·‚éB<p>
-     * ‘}“ü‚³‚ê‚½ƒŒƒR[ƒh‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÍA{@link RowData#E_Record_TypeInsert}‚É‚È‚éB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã€‚<p>
+     * æŒ¿å…¥ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã¯ã€{@link RowData#E_Record_TypeInsert}ã«ãªã‚‹ã€‚<br>
      * 
-     * @param rd ‘}“ü‚·‚éRowData
-     * @exception InvalidDataException ƒvƒ‰ƒCƒ}ƒŠƒL[‚ªd•¡‚·‚éê‡
+     * @param rd æŒ¿å…¥ã™ã‚‹RowData
+     * @exception InvalidDataException ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ãŒé‡è¤‡ã™ã‚‹å ´åˆ
      */
     public void insertRecord(RowData rd){
         rd.setTransactionMode(RowData.E_Record_TypeInsert);
@@ -2192,11 +2192,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒŒƒR[ƒh‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÍA•ÏX‚³‚ê‚È‚¢B<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã¯ã€å¤‰æ›´ã•ã‚Œãªã„ã€‚<br>
      * 
-     * @param rd ’Ç‰Á‚·‚éRowData
-     * @exception InvalidDataException ƒvƒ‰ƒCƒ}ƒŠƒL[‚ªd•¡‚·‚éê‡
+     * @param rd è¿½åŠ ã™ã‚‹RowData
+     * @exception InvalidDataException ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ãŒé‡è¤‡ã™ã‚‹å ´åˆ
      */
     public void addRecord(RowData rd){
         String key = rd.getKey() ;
@@ -2212,20 +2212,20 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
                 RowData tmpRd = (RowData)tmp;
                 if(tmpRd.getTransactionMode() == RowData.E_Record_TypeDelete
                      && rd.getTransactionMode() == RowData.E_Record_TypeInsert){
-                    //ˆÈ‘Oİ’è‚ÌƒŒƒR[ƒh‚ªDELETEAV‹K’Ç‰Á‚ªINSERT‚Ìê‡
-                    //sƒf[ƒ^‚Ì“ü‚ê‘Ö‚¦
+                    //ä»¥å‰è¨­å®šã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒDELETEã€æ–°è¦è¿½åŠ ãŒINSERTã®å ´åˆ
+                    //è¡Œãƒ‡ãƒ¼ã‚¿ã®å…¥ã‚Œæ›¿ãˆ
                     mHash.remove(key);
                     mRows.remove(tmpRd);
                     mHash.put(key, rd);
                     mRows.add(rd);
-                    //ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚Ì•ÏX
+                    //ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´
                     rd.setTransactionModeForce(RowData.E_Record_TypeDeleteInsert);
-                    //ˆÈ‘Oİ’è‚ÌƒŒƒR[ƒhƒCƒ“ƒfƒbƒNƒX‚ğİ’è
+                    //ä»¥å‰è¨­å®šã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®š
                     rd.setRowIndex(tmpRd.getRowIndex());
                 }else if(tmpRd.getTransactionMode() == RowData.E_Record_TypeInsert
                      && rd.getTransactionMode() == RowData.E_Record_TypeDelete){
-                    //ˆÈ‘Oİ’è‚ÌƒŒƒR[ƒh‚ªINSERTAV‹K’Ç‰Á‚ªDELETE‚Ìê‡
-                    //ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚Ì•ÏX
+                    //ä»¥å‰è¨­å®šã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒINSERTã€æ–°è¦è¿½åŠ ãŒDELETEã®å ´åˆ
+                    //ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´
                     tmpRd.setTransactionModeForce(RowData.E_Record_TypeDeleteInsert);
                 }else{
                     throw new InvalidDataException("key duplicate") ;
@@ -2285,7 +2285,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
                 try{
                     ret = (Boolean)exp.evaluate(context);
                 }catch(Exception e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     e.printStackTrace();
                 }
                 if(ret != null && ret.booleanValue()){
@@ -2297,10 +2297,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ“ü‚ê‘Ö‚¦‚éB<p>
-     * “ü‚ê‘Ö‚¦‚ç‚ê‚½ƒŒƒR[ƒh‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÍA•ÏX‚³‚ê‚È‚¢B<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å…¥ã‚Œæ›¿ãˆã‚‹ã€‚<p>
+     * å…¥ã‚Œæ›¿ãˆã‚‰ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã¯ã€å¤‰æ›´ã•ã‚Œãªã„ã€‚<br>
      * 
-     * @param rd “ü‚ê‘Ö‚¦‚éRowData
+     * @param rd å…¥ã‚Œæ›¿ãˆã‚‹RowData
      */
     public void setRecord(RowData rd){
         String key = rd.getKey();
@@ -2374,7 +2374,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
                 try{
                     ret = (Boolean)exp.evaluate(context);
                 }catch(Exception e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     e.printStackTrace();
                 }
                 if(ret != null && ret.booleanValue()){
@@ -2386,11 +2386,11 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‘S‚Ä‚ÌƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚éB<p>
-     * ’Ç‰Á‚³‚ê‚½ƒŒƒR[ƒh‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÍA•ÏX‚³‚ê‚È‚¢B<br>
+     * å…¨ã¦ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * è¿½åŠ ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã¯ã€å¤‰æ›´ã•ã‚Œãªã„ã€‚<br>
      * 
-     * @param recset ’Ç‰Á‚·‚éRecordSet
-     * @exception InvalidDataException ƒvƒ‰ƒCƒ}ƒŠƒL[‚ªd•¡‚·‚éê‡
+     * @param recset è¿½åŠ ã™ã‚‹RecordSet
+     * @exception InvalidDataException ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ãŒé‡è¤‡ã™ã‚‹å ´åˆ
      */
     public void addAllRecord(RecordSet recset){
         if(recset == null || recset.size() == 0){
@@ -2408,13 +2408,13 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ’~Ï‚³‚ê‚½ƒf[ƒ^‚ğƒNƒŠƒA‚·‚éB<p>
-     * ˆÈ‰º‚Ìƒf[ƒ^‚ªíœ‚³‚ê‚éB<br>
+     * è“„ç©ã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ãƒ‡ãƒ¼ã‚¿ãŒå‰Šé™¤ã•ã‚Œã‚‹ã€‚<br>
      * <ul>
-     *   <li>ƒŒƒR[ƒh</li>
-     *   <li>PreparedStatement‚É–„‚ß‚Şƒf[ƒ^</li>
-     *   <li>’~ÏŒ^“®“IğŒŒŸõ‚ÌŒŸõŒ‹‰Ê</li>
-     *   <li>“®“IƒL[ŒŸõ‚ÌŒŸõŒ‹‰Ê</li>
+     *   <li>ãƒ¬ã‚³ãƒ¼ãƒ‰</li>
+     *   <li>PreparedStatementã«åŸ‹ã‚è¾¼ã‚€ãƒ‡ãƒ¼ã‚¿</li>
+     *   <li>è“„ç©å‹å‹•çš„æ¡ä»¶æ¤œç´¢ã®æ¤œç´¢çµæœ</li>
+     *   <li>å‹•çš„ã‚­ãƒ¼æ¤œç´¢ã®æ¤œç´¢çµæœ</li>
      * </ul>
      */
     public void clear(){
@@ -2437,21 +2437,21 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ’Ç‰ÁEC³Eíœ‚³‚ê‚½RowData‚ğƒf[ƒ^ƒx[ƒX‚É”½‰f‚·‚éB<p>
+     * è¿½åŠ ãƒ»ä¿®æ­£ãƒ»å‰Šé™¤ã•ã‚ŒãŸRowDataã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«åæ˜ ã™ã‚‹ã€‚<p>
      * 
-     * @exception RowVersionException {@link #isEnabledRowVersionCheck()}‚ªtrue‚ÅAXV‹y‚Ñíœ‚ÉAXV‹y‚Ñíœ‚µ‚æ‚¤‚Æ‚µ‚½Œ”‚ÆAÀÛ‚ÉXV‹y‚Ñíœ‚µ‚½Œ”‚ª“™‚µ‚­‚È‚¢ê‡
+     * @exception RowVersionException {@link #isEnabledRowVersionCheck()}ãŒtrueã§ã€æ›´æ–°åŠã³å‰Šé™¤æ™‚ã«ã€æ›´æ–°åŠã³å‰Šé™¤ã—ã‚ˆã†ã¨ã—ãŸä»¶æ•°ã¨ã€å®Ÿéš›ã«æ›´æ–°åŠã³å‰Šé™¤ã—ãŸä»¶æ•°ãŒç­‰ã—ããªã„å ´åˆ
      * @exception SQLException 
-     * @deprecated {@link #updateRecords()}‚É’u‚«Š·‚¦‚ç‚ê‚Ü‚µ‚½B
+     * @deprecated {@link #updateRecords()}ã«ç½®ãæ›ãˆã‚‰ã‚Œã¾ã—ãŸã€‚
      */
     public void updateRecord() throws SQLException, RowVersionException {
         updateRecords();
     }
     
     /**
-     * ’Ç‰ÁEC³Eíœ‚³‚ê‚½RowData‚ğƒf[ƒ^ƒx[ƒX‚É”½‰f‚·‚éB<p>
+     * è¿½åŠ ãƒ»ä¿®æ­£ãƒ»å‰Šé™¤ã•ã‚ŒãŸRowDataã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«åæ˜ ã™ã‚‹ã€‚<p>
      * 
-     * @return ’Ç‰ÁEC³Eíœ‚³‚ê‚½ƒŒƒR[ƒh”
-     * @exception RowVersionException {@link #isEnabledRowVersionCheck()}‚ªtrue‚ÅAXV‹y‚Ñíœ‚ÉAXV‹y‚Ñíœ‚µ‚æ‚¤‚Æ‚µ‚½Œ”‚ÆAÀÛ‚ÉXV‹y‚Ñíœ‚µ‚½Œ”‚ª“™‚µ‚­‚È‚¢ê‡
+     * @return è¿½åŠ ãƒ»ä¿®æ­£ãƒ»å‰Šé™¤ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰æ•°
+     * @exception RowVersionException {@link #isEnabledRowVersionCheck()}ãŒtrueã§ã€æ›´æ–°åŠã³å‰Šé™¤æ™‚ã«ã€æ›´æ–°åŠã³å‰Šé™¤ã—ã‚ˆã†ã¨ã—ãŸä»¶æ•°ã¨ã€å®Ÿéš›ã«æ›´æ–°åŠã³å‰Šé™¤ã—ãŸä»¶æ•°ãŒç­‰ã—ããªã„å ´åˆ
      * @exception SQLException 
      */
     public int updateRecords() throws SQLException, RowVersionException{
@@ -2527,9 +2527,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * INSERT—p‚ÌPreparedStatement‚ğì¬‚·‚éB<p>
+     * INSERTç”¨ã®PreparedStatementã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
-     * @return INSERT—p‚ÌPreparedStatement
+     * @return INSERTç”¨ã®PreparedStatement
      * @throws SQLException
      */    
     protected PreparedStatement createInsertPreparedStatement()
@@ -2545,7 +2545,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
         );
         sb.append(C_BRACKETS_BEGIN_TOKEN);
         for(int i = 0, imax = mSchema.size(); i < imax; i++){
-            // XV€–Ú‚Ì‚İ‚ğ’Ç‰Á
+            // æ›´æ–°é …ç›®ã®ã¿ã‚’è¿½åŠ 
             if(mSchema.get(i).isUpdateField()){
                 sb.append(mSchema.get(i).getFieldName());
                 if(i != imax - 1){
@@ -2638,7 +2638,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
         }
         if(isBatchExecute){
-            // Insert Batch Às
+            // Insert Batch å®Ÿè¡Œ
             int[] ret = ps.executeBatch();
             if(ret != null){
                 for(int i = 0; i < ret.length; i++){
@@ -2655,39 +2655,39 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “o˜^ƒJƒ‰ƒ€‚ğ’Ç‰Á‚·‚éB<p>
-     * INSERT INTO TABLE_NAME (FIELD1,...[ƒJƒ‰ƒ€’Ç‰Á•”•ª] 
+     * ç™»éŒ²ã‚«ãƒ©ãƒ ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * INSERT INTO TABLE_NAME (FIELD1,...[ã‚«ãƒ©ãƒ è¿½åŠ éƒ¨åˆ†] 
      * 
-     * @param sb SQL ƒXƒe[ƒgƒƒ“ƒg
+     * @param sb SQL ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ
      */
     protected void addInsertColmun(StringBuffer sb){
     }
     
     /**
-     * “o˜^Field‚ğ’Ç‰Á‚·‚éB<p>
-     * INSERT INTO TABLE_NAME (FIELD1,...[ƒJƒ‰ƒ€’Ç‰Á•”•ª]
-     * VALUES (VALUE1, VALUE2...[Field’Ç‰Á•”•ª] 
+     * ç™»éŒ²Fieldã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * INSERT INTO TABLE_NAME (FIELD1,...[ã‚«ãƒ©ãƒ è¿½åŠ éƒ¨åˆ†]
+     * VALUES (VALUE1, VALUE2...[Fieldè¿½åŠ éƒ¨åˆ†] 
      * 
-     * @param sb SQL ƒXƒe[ƒgƒƒ“ƒg
+     * @param sb SQL ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ
      */
     protected void addInsertField(StringBuffer sb){
     }
 
     /**
-     * ’Ç‰Á“o˜^Field‚ÉƒoƒCƒ“ƒh‚·‚éB<p>
-     * INSERT INTO TABLE_NAME (FIELD1,...[ƒJƒ‰ƒ€’Ç‰Á•”•ª])
-     * VLAUES (VALUE1,VALUE2...[ƒoƒCƒ“ƒh’Ç‰Á•”•ª]); 
+     * è¿½åŠ ç™»éŒ²Fieldã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã€‚<p>
+     * INSERT INTO TABLE_NAME (FIELD1,...[ã‚«ãƒ©ãƒ è¿½åŠ éƒ¨åˆ†])
+     * VLAUES (VALUE1,VALUE2...[ãƒã‚¤ãƒ³ãƒ‰è¿½åŠ éƒ¨åˆ†]); 
      * 
-     * @param ps ƒvƒŠƒyƒAƒhƒXƒe[ƒgƒƒ“ƒg
-     * @param index ƒoƒCƒ“ƒhƒCƒ“ƒfƒbƒNƒX
+     * @param ps ãƒ—ãƒªãƒšã‚¢ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ
+     * @param index ãƒã‚¤ãƒ³ãƒ‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     protected void addInsertBind(PreparedStatement ps, int index) throws SQLException{
     }
     
     /**
-     * UPDATE—p‚ÌPreparedStatement‚ğì¬‚·‚éB<p>
+     * UPDATEç”¨ã®PreparedStatementã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
-     * @return UPDATE—p‚ÌPreparedStatement
+     * @return UPDATEç”¨ã®PreparedStatement
      * @throws SQLException
      */    
     protected PreparedStatement createUpdatePreparedStatement()
@@ -2699,7 +2699,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
         sb.append(mUpdateTableNames == null ? mTableNames : mUpdateTableNames);
         sb.append(C_SET_TOKEN);
         for(int i = 0, imax = mSchema.size(); i < imax; i++){
-            // XV€–Ú‚Ì‚İ‚ğ’Ç‰Á
+            // æ›´æ–°é …ç›®ã®ã¿ã‚’è¿½åŠ 
             if(mSchema.get(i).isUpdateField() && !mSchema.get(i).isUniqueKey()){
                 sb.append(mSchema.get(i).getFieldName());
                 sb.append(C_EQUAL_TOKEN);
@@ -2715,7 +2715,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
         addUpdateField(sb);
         boolean whereFlg  = false;
         for(int i = 0, imax = mSchema.size(); i < imax; i++){
-            // ƒ†ƒj[ƒNƒL[‚ğğŒ•¶‚É’Ç‰Á
+            // ãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ã‚’æ¡ä»¶æ–‡ã«è¿½åŠ 
             FieldSchema fSchema = mSchema.get(i);
             if(fSchema.isUniqueKey() || fSchema.isRowVersionField()){
                 if(!whereFlg){
@@ -2729,7 +2729,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
         }
         if(whereFlg){
-            // ÅŒã‚ÌAND‚ğíœ
+            // æœ€å¾Œã®ANDã‚’å‰Šé™¤
             sb.delete(sb.length() - 5, sb.length());
         }
         
@@ -2751,7 +2751,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
             for(int j = 0, jmax = mSchema.size(); j < jmax; j++){
                 final FieldSchema fs = mSchema.get(j);
-                // XV€–Ú‚ğƒoƒCƒ“ƒh
+                // æ›´æ–°é …ç›®ã‚’ãƒã‚¤ãƒ³ãƒ‰
                 if(!fs.isUpdateField() || fs.isUniqueKey()){
                     continue;
                 }
@@ -2794,7 +2794,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             param_idx = addUpdateBind(ps, param_idx);
             for(int j = 0, jmax = mSchema.size(); j < jmax; j++){
                 final FieldSchema fs = mSchema.get(j);
-                // ƒ†ƒj[ƒNƒL[‚ğƒoƒCƒ“ƒh
+                // ãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ã‚’ãƒã‚¤ãƒ³ãƒ‰
                 if(!fs.isUniqueKey() && !mSchema.get(j).isRowVersionField()){
                     continue;
                 }
@@ -2834,7 +2834,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
         }
         if(isBatchExecute){
-            // Insert Batch Às
+            // Insert Batch å®Ÿè¡Œ
             int[] ret = ps.executeBatch();
             if(ret != null){
                 for(int i = 0; i < ret.length; i++){
@@ -2851,30 +2851,30 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * XVField‚ğ’Ç‰Á‚·‚éB<p>
-     * UPDATE TABLE_NAME SET (FIELD1=?,...[’Ç‰Á•”•ª] 
+     * æ›´æ–°Fieldã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * UPDATE TABLE_NAME SET (FIELD1=?,...[è¿½åŠ éƒ¨åˆ†] 
      * 
-     * @param sb SQL ƒXƒe[ƒgƒƒ“ƒg
+     * @param sb SQL ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ
      */
     protected void addUpdateField(StringBuffer sb){
     }
     
     /**
-     * ’Ç‰ÁXVField‚ÉƒoƒCƒ“ƒh‚·‚éB<p>
-     * UPDATE TABLE_NAME SET (FIELD1=?,...[Field’Ç‰Á•”•ª])
+     * è¿½åŠ æ›´æ–°Fieldã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã€‚<p>
+     * UPDATE TABLE_NAME SET (FIELD1=?,...[Fieldè¿½åŠ éƒ¨åˆ†])
      * 
-     * @param ps ƒvƒŠƒyƒAƒhƒXƒe[ƒgƒƒ“ƒg
-     * @param index ƒoƒCƒ“ƒhƒCƒ“ƒfƒbƒNƒX
-     * @return ƒCƒ“ƒNƒŠƒƒ“ƒg‚³‚ê‚½ƒoƒCƒ“ƒhƒCƒ“ƒfƒbƒNƒX
+     * @param ps ãƒ—ãƒªãƒšã‚¢ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆ
+     * @param index ãƒã‚¤ãƒ³ãƒ‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã•ã‚ŒãŸãƒã‚¤ãƒ³ãƒ‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     protected int addUpdateBind(PreparedStatement ps, int index) throws SQLException{
         return index;
     }
     
     /**
-     * DELETE—p‚ÌPreparedStatement‚ğì¬‚·‚éB<p>
+     * DELETEç”¨ã®PreparedStatementã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
-     * @return DELETE—p‚ÌPreparedStatement
+     * @return DELETEç”¨ã®PreparedStatement
      * @throws SQLException
      */    
     protected PreparedStatement createDeletePreparedStatement() throws SQLException{
@@ -2884,7 +2884,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
         sb.append(mUpdateTableNames == null ? mTableNames : mUpdateTableNames);
         boolean whereFlg  = false;
         for(int i = 0, imax = mSchema.size();i < imax; i++){
-            // ƒ†ƒj[ƒNƒL[‚ğğŒ•¶‚É’Ç‰Á
+            // ãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ã‚’æ¡ä»¶æ–‡ã«è¿½åŠ 
             if(mSchema.get(i).isUniqueKey()){
                 if(!whereFlg){
                     sb.append(C_WHERE_TOKEN);
@@ -2897,7 +2897,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
         }
         if(whereFlg){
-            // ÅŒã‚ÌAND‚ğíœ
+            // æœ€å¾Œã®ANDã‚’å‰Šé™¤
             sb.delete(sb.length() - 5, sb.length());
         }
         
@@ -2920,7 +2920,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
             for(int j = 0; j < mSchema.size(); j++){
                 final FieldSchema fs = mSchema.get(j);
-                // ƒ†ƒj[ƒNƒL[‚ğƒoƒCƒ“ƒh
+                // ãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ã‚’ãƒã‚¤ãƒ³ãƒ‰
                 if(!mSchema.get(j).isUniqueKey()){
                     continue;
                 }
@@ -2960,7 +2960,7 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             }
         }
         if(isBatchExecute){
-            // Delete Batch Às
+            // Delete Batch å®Ÿè¡Œ
             int[] ret = ps.executeBatch();
             if(ret != null){
                 for(int i = 0; i < ret.length; i++){
@@ -2977,9 +2977,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “ü—Í‚³‚ê‚½•¶š—ñ(ƒIƒuƒWƒFƒNƒg)•¡†‰»‚·‚é
-     * @param obj •¡†‰»‘ÎÛƒIƒuƒWƒFƒNƒg(•¶š—ñ)
-     * @return •¡†‰»‚³‚ê‚½•¶š—ñ(ƒIƒuƒWƒFƒNƒg)
+     * å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—(ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ)è¤‡å·åŒ–ã™ã‚‹
+     * @param obj è¤‡å·åŒ–å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)
+     * @return è¤‡å·åŒ–ã•ã‚ŒãŸæ–‡å­—åˆ—(ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ)
      */
     protected Object doEncrypt(Object obj){
         if(mCrypt == null || obj == null){
@@ -2992,10 +2992,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * “ü—Í‚³‚ê‚½•¶š—ñ(ƒIƒuƒWƒFƒNƒg)‚ğˆÃ†‰»‚·‚éB<p>
+     * å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—(ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ)ã‚’æš—å·åŒ–ã™ã‚‹ã€‚<p>
      * 
-     * @param obj ˆÃ†‰»‘ÎÛƒIƒuƒWƒFƒNƒg(•¶š—ñ)
-     * @return ˆÃ†‰»‚³‚ê‚½•¶š—ñ(ƒIƒuƒWƒFƒNƒg)
+     * @param obj æš—å·åŒ–å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)
+     * @return æš—å·åŒ–ã•ã‚ŒãŸæ–‡å­—åˆ—(ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ)
      */
     protected Object doCrypt(Object obj){
         if(mCrypt == null || obj == null){
@@ -3008,16 +3008,16 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‹ó‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‹ó‚Ì•¡»
+     * @return ç©ºã®è¤‡è£½
      */
     public RecordSet cloneEmpty(){
         RecordSet newRecSet = null;
         try{
             newRecSet = (RecordSet)clone();
         }catch(CloneNotSupportedException e){
-            //‹N‚±‚ç‚È‚¢
+            //èµ·ã“ã‚‰ãªã„
             throw new RuntimeException(e);
         }
         newRecSet.mRows = new ArrayList();
@@ -3077,10 +3077,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒVƒƒƒ[ƒRƒs[‚ğ¶¬‚·‚éB<p>
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒŒƒR[ƒh‚ÆAƒVƒƒƒ[ƒRƒs[‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ÍA“¯‚¶ƒŒƒR[ƒhQÆ‚ğ‚ÂBƒŒƒR[ƒhˆÈŠO‚ÍAƒfƒB[ƒvƒRƒs[‚·‚éB<br>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã‚·ãƒ£ãƒ­ãƒ¼ã‚³ãƒ”ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã€ã‚·ãƒ£ãƒ­ãƒ¼ã‚³ãƒ”ãƒ¼ã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€åŒã˜ãƒ¬ã‚³ãƒ¼ãƒ‰å‚ç…§ã‚’æŒã¤ã€‚ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯ã€ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚<br>
      *
-     * @return ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒVƒƒƒ[ƒRƒs[
+     * @return ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã‚·ãƒ£ãƒ­ãƒ¼ã‚³ãƒ”ãƒ¼
      */
     public RecordSet shallowCopy(){
         final RecordSet recset = cloneEmpty();
@@ -3126,30 +3126,30 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒfƒB[ƒvƒRƒs[‚ğ¶¬‚·‚éB<p>
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒŒƒR[ƒh‚ÆAƒfƒB[ƒvƒRƒs[‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ÍA“¯‚¶ƒŒƒR[ƒh‚Å‚Í‚ ‚é‚ªAˆÙ‚È‚éQÆ‚ÌƒŒƒR[ƒh‚ğ‚ÂB<br>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã€ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€åŒã˜ãƒ¬ã‚³ãƒ¼ãƒ‰ã§ã¯ã‚ã‚‹ãŒã€ç•°ãªã‚‹å‚ç…§ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒã¤ã€‚<br>
      *
-     * @return ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒfƒB[ƒvƒRƒs[
+     * @return ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼
      */
     public RecordSet deepCopy(){
         return (RecordSet)cloneAndUpdate(null);
     }
     
     /**
-     *  •”•ªXV‚ÉAw’è‚³‚ê‚½—ñ–¼‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     *  éƒ¨åˆ†æ›´æ–°æ™‚ã«ã€æŒ‡å®šã•ã‚ŒãŸåˆ—åã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñ–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void setPartUpdateSort(String[] orderBy, boolean[] isAsc){
         setPartUpdateSort(convertFromColNamesToColIndexes(orderBy), isAsc);
     }
     
     /**
-     *  •”•ªXV‚ÉAw’è‚³‚ê‚½—ñƒCƒ“ƒfƒbƒNƒX‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     *  éƒ¨åˆ†æ›´æ–°æ™‚ã«ã€æŒ‡å®šã•ã‚ŒãŸåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚é—ñƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void setPartUpdateSort(int[] orderBy, boolean[] isAsc){
         partUpdateOrderBy = orderBy;
@@ -3157,9 +3157,9 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * XVî•ñ‚ğŠi”[‚µ‚½ƒR[ƒhƒ}ƒXƒ^•”•ªXVƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * æ›´æ–°æƒ…å ±ã‚’æ ¼ç´ã—ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return  ’Ç‰ÁAíœAXVƒŒƒR[ƒh‚Ìƒvƒ‰ƒCƒ}ƒŠƒL[‚ğ‚Â{@link CodeMasterUpdateKey}‚ğŠi”[‚µ‚½ƒR[ƒhƒ}ƒXƒ^•”•ªXVƒŒƒR[ƒh
+     * @return  è¿½åŠ ã€å‰Šé™¤ã€æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã‚’æŒã¤{@link CodeMasterUpdateKey}ã‚’æ ¼ç´ã—ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public PartUpdateRecords createPartUpdateRecords(){
         PartUpdateRecords records = new PartUpdateRecords();
@@ -3177,10 +3177,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * •”•ªXVî•ñ‚ğæ‚è‚ñ‚¾AƒfƒB[ƒvƒRƒs[ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * éƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’å–ã‚Šè¾¼ã‚“ã ã€ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param records •”•ªXVî•ñ
-     * @return •”•ªXVî•ñ‚ğæ‚è‚ñ‚¾AƒfƒB[ƒvƒRƒs[ƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param records éƒ¨åˆ†æ›´æ–°æƒ…å ±
+     * @return éƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’å–ã‚Šè¾¼ã‚“ã ã€ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     public PartUpdate cloneAndUpdate(PartUpdateRecords records){
         final RecordSet newRecSet = cloneEmpty();
@@ -3232,10 +3232,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒR[ƒhƒ}ƒXƒ^XVƒL[‚ÉŠY“–‚·‚éƒŒƒR[ƒh‚ğŠi”[‚µ‚½•”•ªXVî•ñ‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ ¼ç´ã—ãŸéƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^XVƒL[
-     * @return XVƒŒƒR[ƒh‚ğŠÜ‚ñ‚¾•”•ªXVî•ñ
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼
+     * @return æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å«ã‚“ã éƒ¨åˆ†æ›´æ–°æƒ…å ±
      */
     public PartUpdateRecords fillPartUpdateRecords(CodeMasterUpdateKey key){
         PartUpdateRecords records = new PartUpdateRecords();
@@ -3244,10 +3244,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
     }
     
     /**
-     * w’è‚³‚ê‚½•”•ªXVî•ñ‚ÉŠY“–‚·‚éƒŒƒR[ƒh‚ğŠi”[‚µ‚½•”•ªXVî•ñ‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸéƒ¨åˆ†æ›´æ–°æƒ…å ±ã«è©²å½“ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ ¼ç´ã—ãŸéƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param records •”•ªXVî•ñ
-     * @return XVƒŒƒR[ƒh‚ğŠÜ‚ñ‚¾•”•ªXVî•ñ
+     * @param records éƒ¨åˆ†æ›´æ–°æƒ…å ±
+     * @return æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å«ã‚“ã éƒ¨åˆ†æ›´æ–°æƒ…å ±
      */
     public PartUpdateRecords fillPartUpdateRecords(PartUpdateRecords records){
         if(records == null || records.size() == 0
@@ -3263,20 +3263,20 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             
             records.removeRecord(key);
             
-            // ŒŸõ—p‚ÌRowData‚ÉŒŸõƒL[‚ğİ’è‚·‚é
+            // æ¤œç´¢ç”¨ã®RowDataã«æ¤œç´¢ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹
             row.setCodeMasterUpdateKey(key);
             
-            // ‚±‚ÌRecordSet‚ÌåƒL[‚Ì‚İ‚ğ‚Á‚½CodeMasterUpdateKey‚É•ÏŠ·‚·‚é
+            // ã“ã®RecordSetã®ä¸»ã‚­ãƒ¼ã®ã¿ã‚’æŒã£ãŸCodeMasterUpdateKeyã«å¤‰æ›ã™ã‚‹
             key = row.createCodeMasterUpdateKey(key);
             key.setUpdateType(updateType);
             
-            // íœ‚Ìê‡‚ÍACodeMasterUpdateKey‚¾‚¯“o˜^‚µ’¼‚·
+            // å‰Šé™¤ã®å ´åˆã¯ã€CodeMasterUpdateKeyã ã‘ç™»éŒ²ã—ç›´ã™
             if(key.isRemove()){
                 records.addRecord(key);
                 continue;
             }
             
-            // ’Ç‰Á‚Ü‚½‚ÍXV‚³‚ê‚½RowData‚ğŒŸõ‚·‚é
+            // è¿½åŠ ã¾ãŸã¯æ›´æ–°ã•ã‚ŒãŸRowDataã‚’æ¤œç´¢ã™ã‚‹
             final RowData searchRow = get(row);
             records.addRecord(key, searchRow);
         }

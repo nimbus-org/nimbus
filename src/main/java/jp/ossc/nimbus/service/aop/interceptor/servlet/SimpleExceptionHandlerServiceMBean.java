@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link SimpleExceptionHandlerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SimpleExceptionHandlerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see SimpleExceptionHandlerService
@@ -44,81 +44,81 @@ public interface SimpleExceptionHandlerServiceMBean
  extends ServiceBaseMBean {
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ÌException—v‘f‚ÌƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®Exceptionè¦ç´ ã®ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_EXCEPTION_JOURNAL_KEY = "Exception";
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ÌException—v‘f‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®Exceptionè¦ç´ ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExceptionEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ÌException—v‘f‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®Exceptionè¦ç´ ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getExceptionEditorFinderServiceName();
     
     /**
-     * ƒƒOo—Í‚ğ‚·‚éÛ‚ÌƒƒbƒZ[ƒWƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒƒOo—Í‚Ís‚í‚È‚¢B<br>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãƒ­ã‚°å‡ºåŠ›ã¯è¡Œã‚ãªã„ã€‚<br>
      *
-     * @param code ƒƒbƒZ[ƒWƒR[ƒh
+     * @param code ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰
      */
     public void setLogMessageCode(String code);
     
     /**
-     * ƒƒOo—Í‚ğ‚·‚éÛ‚ÌƒƒbƒZ[ƒWƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒWƒR[ƒh
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰
      */
     public String getLogMessageCode();
     
     /**
-     * ƒƒOo—Í‚ğ‚·‚éÛ‚É—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’ã™ã‚‹éš›ã«ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isOutput —áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğo—Í‚·‚éê‡Atrue
+     * @param isOutput ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputStackTraceLog(boolean isOutput);
     
     /**
-     * ƒƒOo—Í‚ğ‚·‚éÛ‚É—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’ã™ã‚‹éš›ã«ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputStackTraceLog();
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌException—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_EXCEPTION_JOURNAL_KEY}B<br>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®Exceptionè¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_EXCEPTION_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key Exception—v‘f‚ÌƒL[
+     * @param key Exceptionè¦ç´ ã®ã‚­ãƒ¼
      * @see #DEFAULT_EXCEPTION_JOURNAL_KEY
      */
     public void setExceptionJournalKey(String key);
     
     /**
-     * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ÌException—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®Exceptionè¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Exception—v‘f‚ÌƒL[
+     * @return Exceptionè¦ç´ ã®ã‚­ãƒ¼
      */
     public String getExceptionJournalKey();
 }

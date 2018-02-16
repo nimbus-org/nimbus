@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 /**
- * ƒRƒ}ƒ“ƒhƒoƒŠƒ…[ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * ã‚³ãƒãƒ³ãƒ‰ãƒãƒªãƒ¥ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -43,20 +43,20 @@ import java.util.*;
 public interface FacadeValue extends UnitOfWork,
 										java.io.Serializable {
 	/**
-	 * ƒwƒbƒ_[î•ñ‚ÌƒQƒbƒ^[
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 * @param key
-	 * @return ƒwƒbƒ_[î•ñ
+	 * @return ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±
 	 */
 	public Object getHeader(String key);
 	/**
-	 * ƒwƒbƒ_[î•ñ‚ÌƒZƒbƒ^[
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param key
 	 * @param value
 	 */
 	public void putHeader(String key,Object value );
 	/**
-	 * ƒwƒbƒ_[ƒL[‚ÌƒQƒbƒ^[
-	 * @return@ƒL[î•ñ‚ÌSet
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚­ãƒ¼ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @returnã€€ã‚­ãƒ¼æƒ…å ±ã®Set
 	 */
 	public Set getHederKeys();
 }

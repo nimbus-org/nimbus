@@ -29,11 +29,11 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-//ƒpƒbƒP[ƒW
+//ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 /**
- * ƒRƒ}ƒ“ƒh‚ÌŠî–{ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * ã‚³ãƒãƒ³ãƒ‰ã®åŸºæœ¬ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -41,61 +41,61 @@ package jp.ossc.nimbus.ioc;
  * @see	UnitOfWorkImpl 
  */
 public interface CommandBase {
-	/** ƒRƒ}ƒ“ƒh‚ÌÀs‘OƒXƒe[ƒ^ƒX */
+	/** ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè¡Œå‰ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ */
 	static public final int C_STATUS_BEFORE = -1 ;
-	/** ƒRƒ}ƒ“ƒh‚Ì³íI—¹ƒXƒe[ƒ^ƒX */
+	/** ã‚³ãƒãƒ³ãƒ‰ã®æ­£å¸¸çµ‚äº†ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ */
 	static public final int C_STATUS_COMPLETE = 0 ;
-	/** ƒRƒ}ƒ“ƒh‚ÌˆÙíI—¹ƒXƒe[ƒ^ƒX */
+	/** ã‚³ãƒãƒ³ãƒ‰ã®ç•°å¸¸çµ‚äº†ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ */
 	static public final int C_STATUS_ERROR = 1 ;
 	/**
-	 * ƒRƒ}ƒ“ƒhÀ‘•‚©o—Í‚·‚é
-	 * @return@ƒRƒ}ƒ“ƒhÀ‘•‚È‚çture
+	 * ã‚³ãƒãƒ³ãƒ‰å®Ÿè£…ã‹å‡ºåŠ›ã™ã‚‹
+	 * @returnã€€ã‚³ãƒãƒ³ãƒ‰å®Ÿè£…ãªã‚‰ture
 	 */
 	public boolean isCommand() ;
 	/**
-	 * ”­¶‚µ‚½—áŠOŒ”‚ğo—Í‚·‚é
-	 * @return@”­¶‚µ‚½—áŠOŒ”
+	 * ç™ºç”Ÿã—ãŸä¾‹å¤–ä»¶æ•°ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @returnã€€ç™ºç”Ÿã—ãŸä¾‹å¤–ä»¶æ•°
 	 */
 	public int getExceptionCount() ;
 	/**
-	 * ”­¶‚µ‚½—áŠO‚ğ”z—ñ‚Åo—Í‚·‚éB
-	 * @return@—áŠO”z—ñ
+	 * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’é…åˆ—ã§å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€ä¾‹å¤–é…åˆ—
 	 */
 	public Throwable[] getExceptions();
 	/**
-	 * —áŠO‚Ì”­¶‚µ‚½ƒRƒ}ƒ“ƒh‚ğŒŸõ‚·‚é
-	 * @param e@”­¶‚µ‚½—áŠOƒIƒuƒWƒFƒNƒg
-	 * @return	ƒRƒ}ƒ“ƒhƒIƒuƒWƒFƒNƒg
+	 * ä¾‹å¤–ã®ç™ºç”Ÿã—ãŸã‚³ãƒãƒ³ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹
+	 * @param eã€€ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return	ã‚³ãƒãƒ³ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @see	Command
 	 */
 	public Command findErrorCommand(Throwable e) ;
 	/**
-	 * Ši”[‚³‚ê‚Ä‚¢‚éƒRƒ}ƒ“ƒh‚Ì‘”
-	 * @return	ƒRƒ}ƒ“ƒh‘”
+	 * æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒãƒ³ãƒ‰ã®ç·æ•°
+	 * @return	ã‚³ãƒãƒ³ãƒ‰ç·æ•°
 	 */
 	public int commandSize() ;
 	/**
-	 * Às‚µ‚½ƒRƒ}ƒ“ƒh‚Ì‘”
-	 * @return	ÀsƒRƒ}ƒ“ƒh”
+	 * å®Ÿè¡Œã—ãŸã‚³ãƒãƒ³ãƒ‰ã®ç·æ•°
+	 * @return	å®Ÿè¡Œã‚³ãƒãƒ³ãƒ‰æ•°
 	 */
 	public int commandExecuteSize() ;
 	
 	/**
-	 * ÀsŒ‹‰Ê‚ğo—Í‚·‚é
+	 * å®Ÿè¡Œçµæœã‚’å‡ºåŠ›ã™ã‚‹
 	 * 
-	 * @return ƒRƒ}ƒ“ƒh‚ÌÀs‘OƒXƒe[ƒ^ƒX 		C_STATUS_BEFORE <BR> 
-	 *   		ƒRƒ}ƒ“ƒh‚Ì³íI—¹ƒXƒe[ƒ^ƒX 	C_STATUS_COMPLETE <BR>
-	 *   		ƒRƒ}ƒ“ƒh‚ÌˆÙíI—¹ƒXƒe[ƒ^ƒX 	C_STATUS_ERROR<BR> 
+	 * @return ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè¡Œå‰ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ 		C_STATUS_BEFORE <BR> 
+	 *   		ã‚³ãƒãƒ³ãƒ‰ã®æ­£å¸¸çµ‚äº†ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ 	C_STATUS_COMPLETE <BR>
+	 *   		ã‚³ãƒãƒ³ãƒ‰ã®ç•°å¸¸çµ‚äº†ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ 	C_STATUS_ERROR<BR> 
 	 */
 	public int getStatus() ;
 	/**
-	 * Ši”[‚³‚ê‚Ä‚¢‚éƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚Ì‘”‚ğo—Í‚·‚é
-	 * @return	Ši”[‚³‚ê‚Ä‚¢‚éƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚Ì‘”
+	 * æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã®ç·æ•°ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return	æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã®ç·æ•°
 	 */
 	public int unitOfWorkSize() ;
 	/**
-	 * ³íÀs‚³‚ê‚½ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚Ì‘”‚ğo—Í‚·‚é
-	 * @return	³íÀs‚³‚ê‚½ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚Ì‘”
+	 * æ­£å¸¸å®Ÿè¡Œã•ã‚ŒãŸãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã®ç·æ•°ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return	æ­£å¸¸å®Ÿè¡Œã•ã‚ŒãŸãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã®ç·æ•°
 	 */
 	public int unitOfWorkExecuteSize() ;
 }

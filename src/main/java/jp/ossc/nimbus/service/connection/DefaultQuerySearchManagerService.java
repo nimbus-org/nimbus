@@ -48,7 +48,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.cache.CacheMap;
 
 /**
- * ƒfƒtƒHƒ‹ƒgŒŸõŠÇ—B<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆæ¤œç´¢ç®¡ç†ã€‚<p>
  *
  * @author M.Takata
  */

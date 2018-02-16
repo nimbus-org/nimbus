@@ -29,24 +29,24 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.unitofwork;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.*;
 import java.rmi.*;
 import jp.ossc.nimbus.ioc.*;
 
 /**
- * UnitOfWorkÀsƒŠƒ‚[ƒgƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * UnitOfWorkå®Ÿè¡Œãƒªãƒ¢ãƒ¼ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface SLSBUnitOfWorkRemote extends EJBObject {
 	/**
-	 * UnitOfWorkÀsƒƒ\ƒbƒh
-	 * @param unitOfWork “ü—ÍƒIƒuƒWƒFƒNƒg
-	 * @return@UnitOfWork o—ÍƒIƒuƒWƒFƒNƒg
+	 * UnitOfWorkå®Ÿè¡Œãƒ¡ã‚½ãƒƒãƒ‰
+	 * @param unitOfWork å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @returnã€€UnitOfWork å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws RemoteException
 	 */
 	public UnitOfWork invokeUnitOfWork(UnitOfWork unitOfWork) throws RemoteException ; 

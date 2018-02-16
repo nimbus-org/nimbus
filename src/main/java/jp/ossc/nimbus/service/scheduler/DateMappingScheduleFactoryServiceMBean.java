@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DateMappingScheduleFactoryService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DateMappingScheduleFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,17 +42,17 @@ public interface DateMappingScheduleFactoryServiceMBean
  extends KeyMappingScheduleFactoryServiceMBean{
     
     /**
-     * {@link DateEvaluator}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * “ú•tŠg’£ƒL[‚ğg—p‚·‚éê‡‚Éİ’è‚·‚éB<br>
+     * {@link DateEvaluator}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ—¥ä»˜æ‹¡å¼µã‚­ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name DateEvaluatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name DateEvaluatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDateEvaluatorServiceName(ServiceName name);
     
     /**
-     * {@link DateEvaluator}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link DateEvaluator}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return DateEvaluatorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return DateEvaluatorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDateEvaluatorServiceName();
 }

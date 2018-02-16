@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ”¼Šp‘SŠpƒRƒ“ƒo[ƒ^B<p>
+ * åŠè§’å…¨è§’ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface HankakuZenkakuConverter extends ReversibleConverter{
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int HANKAKU_TO_ZENKAKU = POSITIVE_CONVERT;
     
     /**
-     * ‘SŠp¨”¼Šp•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * å…¨è§’â†’åŠè§’å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int ZENKAKU_TO_HANKAKU = REVERSE_CONVERT;
 }

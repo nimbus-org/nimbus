@@ -59,7 +59,7 @@ import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 import jp.ossc.nimbus.service.queue.QueueHandler;
 
 /**
- * {@link BeanFlowInvokerServer}ÇåƒÇ—èoÇ∑ÉNÉâÉCÉAÉìÉgÇ∆Ç»ÇÈ{@link BeanFlowInvokerFactory}é¿ëïÉTÅ[ÉrÉXÅB<p>
+ * {@link BeanFlowInvokerServer}„ÇíÂëº„Å≥Âá∫„Åô„ÇØ„É©„Ç§„Ç¢„É≥„Éà„Å®„Å™„Çã{@link BeanFlowInvokerFactory}ÂÆüË£Ö„Çµ„Éº„Éì„Çπ„ÄÇ<p>
  *
  * @author M.Takata
  */
@@ -78,56 +78,56 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
     private QueueHandlerContainer asynchInvokeQueueHandlerContainer;
     private String asynchInvokeErrorMessageId = MSG_ID_ASYNCH_INVOKE_ERROR;
     
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public void setClusterOptionKey(String key){
         clusterOptionKey = key;
     }
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public String getClusterOptionKey(){
         return clusterOptionKey;
     }
     
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
     
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public void setContextKeys(String[] keys){
         contextKeys = keys;
     }
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public String[] getContextKeys(){
         return contextKeys;
     }
     
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public void setAsynchInvokeQueueHandlerContainerServiceName(ServiceName name){
         asynchInvokeQueueHandlerContainerServiceName = name;
     }
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public ServiceName getAsynchInvokeQueueHandlerContainerServiceName(){
         return asynchInvokeQueueHandlerContainerServiceName;
     }
     
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public void setAsynchInvokeErrorMessageId(String id){
         asynchInvokeErrorMessageId = id;
     }
-    // ClientBeanFlowInvokerFactoryServiceMBeanÇÃJavaDoc
+    // ClientBeanFlowInvokerFactoryServiceMBean„ÅÆJavaDoc
     public String getAsynchInvokeErrorMessageId(){
         return asynchInvokeErrorMessageId;
     }
@@ -211,12 +211,12 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public BeanFlowInvoker createFlow(String flowName){
         return createFlow(flowName, null, true);
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public BeanFlowInvoker createFlow(String flowName, String caller, boolean isOverwride){
         BeanFlowInvokerServer server = selectBeanFlowInvokerServer(flowName);
         try{
@@ -226,13 +226,13 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
         }
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public Set getBeanFlowKeySet(){
         Map currentFlowMap = flowMap;
         return currentFlowMap == null ? new HashSet() : new HashSet(currentFlowMap.keySet());
     }
     
-    // BeanFlowInvokerFactoryÇÃJavaDoc
+    // BeanFlowInvokerFactory„ÅÆJavaDoc
     public boolean containsFlow(String key){
         Map currentFlowMap = flowMap;
         return currentFlowMap == null ? false : currentFlowMap.containsKey(key);
@@ -268,20 +268,20 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
         return result;
     }
     
-    // ClusterListenerÇÃJavaDoc
+    // ClusterListener„ÅÆJavaDoc
     public void memberInit(Object myId, List members){
         flowMap = createFlowMap(members);
     }
     
-    // ClusterListenerÇÃJavaDoc
+    // ClusterListener„ÅÆJavaDoc
     public void memberChange(List oldMembers, List newMembers){
         flowMap = createFlowMap(newMembers);
     }
     
-    // ClusterListenerÇÃJavaDoc
+    // ClusterListener„ÅÆJavaDoc
     public void changeMain() throws Exception{}
     
-    // ClusterListenerÇÃJavaDoc
+    // ClusterListener„ÅÆJavaDoc
     public void changeSub(){}
     
     private static class BeanFlowInvokerImpl implements BeanFlowInvoker{

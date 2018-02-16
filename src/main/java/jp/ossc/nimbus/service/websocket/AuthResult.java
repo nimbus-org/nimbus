@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.websocket;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * ƒƒOƒCƒ“ˆ—Œ‹‰Ê‚ÆWebSocketÚ‘±URL‚É•K—v‚Èî•ñ‚ğŠi”[‚·‚éBeanB
+ * ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç†çµæœã¨WebSocketæ¥ç¶šURLã«å¿…è¦ãªæƒ…å ±ã‚’æ ¼ç´ã™ã‚‹Beanã€‚
  * <p>
  *
  * @author M.Ishida
@@ -42,37 +42,37 @@ import javax.servlet.http.HttpServletRequest;
 public class AuthResult {
 
     /**
-     * ƒ†[ƒU‚ğ“Á’è‚·‚éID
+     * ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ID
      */
     private String id;
 
     /**
-     * handshake”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñ
+     * handshakeèªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±
      */
     private String ticket;
 
     /**
-     * ”FØŒ‹‰Ê
+     * èªè¨¼çµæœ
      */
     private boolean result;
 
     /**
-     * URLƒXƒL[ƒ}iws/wssj
+     * URLã‚¹ã‚­ãƒ¼ãƒï¼ˆws/wssï¼‰
      */
     private String urlSchema;
 
     /**
-     * ƒzƒXƒgiIPƒAƒhƒŒƒXj
+     * ãƒ›ã‚¹ãƒˆï¼ˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ï¼‰
      */
     private String host;
 
     /**
-     * ƒ|[ƒg
+     * ãƒãƒ¼ãƒˆ
      */
     private int port = -1;
 
     /**
-     * ƒRƒ“ƒeƒLƒXƒgƒpƒX
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ‘ã‚¹
      */
     private String contextPath;
 
@@ -82,125 +82,125 @@ public class AuthResult {
     private String url;
 
     /**
-     * WebSocketƒpƒX
+     * WebSocketãƒ‘ã‚¹
      */
     private String webSocketPath;
 
     /**
-     * ƒ†[ƒU‚ğ“Á’è‚·‚éID‚ğæ“¾‚·‚éB
+     * ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹IDã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ†[ƒU‚ğ“Á’è‚·‚éID
+     * @return ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ID
      */
     public String getId() {
         return id;
     }
 
     /**
-     * ƒ†[ƒU‚ğ“Á’è‚·‚éID‚ğİ’è‚·‚éB
+     * ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹IDã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param id ƒ†[ƒU‚ğ“Á’è‚·‚éID
+     * @param id ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ID
      */
     public void setId(String id) {
         this.id = id;
     }
 
     /**
-     * handshake”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñ‚ğæ“¾‚·‚éB
+     * handshakeèªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return handshake”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñ
+     * @return handshakeèªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±
      */
     public String getTicket() {
         return ticket;
     }
 
     /**
-     * handshake”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñ‚ğİ’è‚·‚éB
+     * handshakeèªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param ticket handshake”FØ‚Ég—p‚·‚éƒ`ƒPƒbƒgî•ñ
+     * @param ticket handshakeèªè¨¼ã«ä½¿ç”¨ã™ã‚‹ãƒã‚±ãƒƒãƒˆæƒ…å ±
      */
     public void setTicket(String ticket) {
         this.ticket = ticket;
     }
 
     /**
-     * ”FØŒ‹‰Ê‚ğæ“¾‚·‚éB
+     * èªè¨¼çµæœã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ”FØŒ‹‰Ê
+     * @return èªè¨¼çµæœ
      */
     public boolean isResult() {
         return result;
     }
 
     /**
-     * ”FØŒ‹‰Ê‚ğİ’è‚·‚éB
+     * èªè¨¼çµæœã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param result ”FØŒ‹‰Ê
+     * @param result èªè¨¼çµæœ
      */
     public void setResult(boolean result) {
         this.result = result;
     }
 
     /**
-     * URLƒXƒL[ƒ}‚ğİ’è‚·‚éBiws‚Ü‚½‚Íwss‚ğİ’èj
+     * URLã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚ï¼ˆwsã¾ãŸã¯wssã‚’è¨­å®šï¼‰
      * <p>
      *
-     * @param urlSchema URLƒXƒL[ƒ}
+     * @param urlSchema URLã‚¹ã‚­ãƒ¼ãƒ
      */
     public void setUrlSchema(String urlSchema) {
         this.urlSchema = urlSchema;
     }
 
     /**
-     * ƒzƒXƒgiIPƒAƒhƒŒƒXj‚ğİ’è‚·‚éB
+     * ãƒ›ã‚¹ãƒˆï¼ˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param host ƒzƒXƒgiIPƒAƒhƒŒƒXj
+     * @param host ãƒ›ã‚¹ãƒˆï¼ˆIPã‚¢ãƒ‰ãƒ¬ã‚¹ï¼‰
      */
     public void setHost(String host) {
         this.host = host;
     }
 
     /**
-     * ƒ|[ƒg‚ğİ’è‚·‚éB
+     * ãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param port ƒ|[ƒg
+     * @param port ãƒãƒ¼ãƒˆ
      */
     public void setPort(int port) {
         this.port = port;
     }
 
     /**
-     * ƒRƒ“ƒeƒLƒXƒgƒpƒX‚ğİ’è‚·‚éB
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param contextPath ƒRƒ“ƒeƒLƒXƒgƒpƒX
+     * @param contextPath ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ‘ã‚¹
      */
     public void setContextPath(String contextPath) {
         this.contextPath = contextPath;
     }
 
     /**
-     * WebSocketƒpƒX‚ğİ’è‚·‚éB
+     * WebSocketãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param webSocketPath WebSocketƒpƒX
+     * @param webSocketPath WebSocketãƒ‘ã‚¹
      */
     public void setWebSocketPath(String webSocketPath) {
         this.webSocketPath = webSocketPath;
     }
 
     /**
-     * URL‚ğæ“¾‚·‚éB”FØNG‚Ìê‡‚Ínull‚ğ•Ô‹p‚·‚éB
+     * URLã‚’å–å¾—ã™ã‚‹ã€‚èªè¨¼NGã®å ´åˆã¯nullã‚’è¿”å´ã™ã‚‹ã€‚
      * <p>
      *
-     * @return URLƒpƒX
+     * @return URLãƒ‘ã‚¹
      */
     public String getUrl() {
         if (result) {
@@ -210,11 +210,11 @@ public class AuthResult {
     }
 
     /**
-     * URL‚ğİ’è‚·‚éB
+     * URLã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param paramWebsocketPath WebSocketƒpƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param paramWebsocketPath WebSocketãƒ‘ã‚¹
      */
     public void setUrl(HttpServletRequest req, String paramWebsocketPath) {
         urlSchema = removeSlashAndColon(urlSchema);

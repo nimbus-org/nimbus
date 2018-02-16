@@ -32,14 +32,14 @@
 package jp.ossc.nimbus.service.cui;
 
 /**
- *	DisplayƒCƒ“ƒ^[ƒtƒFƒCƒX
+ *	Displayã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/29| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/29ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface DisplayConstructer {
 	/**
-	 * o—Í‚µ‚½‚¢ƒf[ƒ^‚ğƒŠƒ^[ƒ“‚·‚é
+	 * å‡ºåŠ›ã—ãŸã„ãƒ‡ãƒ¼ã‚¿ã‚’ãƒªã‚¿ãƒ¼ãƒ³ã™ã‚‹
 	 * @return
 	 */
 	public String display();

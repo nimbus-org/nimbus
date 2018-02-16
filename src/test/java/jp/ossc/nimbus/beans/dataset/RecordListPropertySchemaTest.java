@@ -12,19 +12,19 @@ public class RecordListPropertySchemaTest extends TestCase {
          
 
         /**
-         * ƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+         * ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
          * <p>
-         * ğŒF
+         * æ¡ä»¶ï¼š
          * <ul>
-         * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+         * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
          * <li>"A,recListName"</li>
          * </ul>
-         * Šm”FF
+         * ç¢ºèªï¼š
          * <ul>
-         * <li>ƒXƒL[ƒ}‚ª³í‚Éİ’è‚Å‚«‚é</li>
-         * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-         * <li>İ’è‚µ‚½ƒXƒL[ƒ}‚ªgetSchema()‚ÅQÆ‚Å‚«‚é</li>
-         * <li>nameƒtƒB[ƒ‹ƒh‚ÉƒvƒƒpƒeƒB–¼ArecordListName‚ÉƒŒƒR[ƒhƒŠƒXƒg–¼‚ªİ’è‚³‚ê‚é</li>
+         * <li>ã‚¹ã‚­ãƒ¼ãƒãŒæ­£å¸¸ã«è¨­å®šã§ãã‚‹</li>
+         * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+         * <li>è¨­å®šã—ãŸã‚¹ã‚­ãƒ¼ãƒãŒgetSchema()ã§å‚ç…§ã§ãã‚‹</li>
+         * <li>nameãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€recordListNameã«ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåãŒè¨­å®šã•ã‚Œã‚‹</li>
          * </ul>
          */
     public void testSetGetSchema() {
@@ -38,21 +38,21 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
     
     /**
-     * ƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+     * ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>³‚µ‚¢Œ`®(ƒvƒƒpƒeƒB–¼AƒŒƒR[ƒhƒŠƒXƒg–¼)‚Å‚È‚¢‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ­£ã—ã„å½¢å¼(ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå)ã§ãªã„ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚Æ‚ğŠm”F<BR>
-     * ƒƒbƒZ[ƒW"Name and Schema must be specified."‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã¨ã‚’ç¢ºèª<BR>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"Name and Schema must be specified."ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
      * </ul>
      */
     public void testSetGetSchemaInvalid() {
@@ -60,7 +60,7 @@ public class RecordListPropertySchemaTest extends TestCase {
             RecordListPropertySchema rps = new RecordListPropertySchema();
             String schema = "A,recListName,test";
             rps.setSchema(schema);
-            fail("—áŠO‚ª”­¶‚µ‚È‚¢‚Ì‚ÅƒeƒXƒg¸”s");
+            fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ã®ã§ãƒ†ã‚¹ãƒˆå¤±æ•—");
             
             assertEquals(schema, rps.getSchema());
         } catch (PropertySchemaDefineException e) {
@@ -70,7 +70,7 @@ public class RecordListPropertySchemaTest extends TestCase {
             RecordListPropertySchema rps = new RecordListPropertySchema();
             String schema = "A";
             rps.setSchema(schema);
-            fail("—áŠO‚ª”­¶‚µ‚È‚¢‚Ì‚ÅƒeƒXƒg¸”s");
+            fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ã®ã§ãƒ†ã‚¹ãƒˆå¤±æ•—");
             
             assertEquals(schema, rps.getSchema());
         } catch (PropertySchemaDefineException e) {
@@ -80,17 +80,17 @@ public class RecordListPropertySchemaTest extends TestCase {
 
 
     /**
-     * ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éƒeƒXƒgB
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,recListName"</li>
-     * <li> getName()‚ğÀs‚·‚é</li>
+     * <li> getName()ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>ƒXƒL[ƒ}‚Åw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚ªæ“¾‚Å‚«‚é</li>
+     * <li>ã‚¹ã‚­ãƒ¼ãƒã§æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åãŒå–å¾—ã§ãã‚‹</li>
      * </ul>
      */
     public void testGetName() {
@@ -102,23 +102,23 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     /**
-     * Œ^‚ğæ“¾‚·‚éƒeƒXƒgB
+     * å‹ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,recListName"</li>
-     * <li> getType()‚ğÀs‚·‚é</li>
+     * <li> getType()ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>RecordList.class‚ªæ“¾‚Å‚«‚é</li>
+     * <li>RecordList.classãŒå–å¾—ã§ãã‚‹</li>
      * </ul>
      */
     public void testGetType() {
@@ -130,24 +130,24 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     /**
-     * ƒvƒƒpƒeƒB’l(ƒŒƒR[ƒhƒŠƒXƒg)‚ğİ’è‚·‚éƒeƒXƒgB
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤(ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ)ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,TestRecordList"</li>
-     * <li> ¶¬‚µ‚½RecordList‚ğw’è‚µ‚Äset(Object val)‚ğÀs‚·‚é</li>
-     * <li> get(Object val)‚ğÀs‚·‚é</li>
+     * <li> ç”Ÿæˆã—ãŸRecordListã‚’æŒ‡å®šã—ã¦set(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+     * <li> get(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>w’è‚µ‚½ƒvƒƒpƒeƒB’l‚ªæ“¾‚Å‚«‚é</li>
+     * <li>æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ãŒå–å¾—ã§ãã‚‹</li>
      * </ul>
      */
     public void testSetGet() {
@@ -156,32 +156,32 @@ public class RecordListPropertySchemaTest extends TestCase {
             String schema = "A,TestRecordList";
             rps.setSchema(schema);
             
-            //RecordList‚ğ¶¬‚µ‚Ä’l‚Æ‚µ‚Äİ’è‚·‚é
+            //RecordListã‚’ç”Ÿæˆã—ã¦å€¤ã¨ã—ã¦è¨­å®šã™ã‚‹
             RecordList rlist = new RecordList("TestRecordList", ":A,java.lang.String\n:B,java.lang.String");
             rps.set(rlist);
             
-            //get()‚Åæ“¾‚µ‚ÄŒŸØ
+            //get()ã§å–å¾—ã—ã¦æ¤œè¨¼
             assertEquals(rlist, rps.get(rlist));
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     /**
-     * FormatƒeƒXƒgB
+     * Formatãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,recListName"</li>
-     * <li> “K“–‚È’l‚ğw’è‚µ‚Äformat(Object val) ‚ğÀs‚·‚é</li>
+     * <li> é©å½“ãªå€¤ã‚’æŒ‡å®šã—ã¦format(Object val) ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>w’è‚µ‚½’l‚ª•Ô‚³‚ê‚é(•ÏŠ·‚³‚ê‚È‚¢)</li>
+     * <li>æŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹(å¤‰æ›ã•ã‚Œãªã„)</li>
      * </ul>
      */
     public void testFormat() {
@@ -194,23 +194,23 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     /**
-     * ParseƒeƒXƒgB
+     * Parseãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,recListName"</li>
-     * <li> “K“–‚È’l‚ğw’è‚µ‚Äformat(Object val) ‚ğÀs‚·‚é</li>
+     * <li> é©å½“ãªå€¤ã‚’æŒ‡å®šã—ã¦format(Object val) ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>w’è‚µ‚½’l‚ª•Ô‚³‚ê‚é(•ÏŠ·‚³‚ê‚È‚¢)</li>
+     * <li>æŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹(å¤‰æ›ã•ã‚Œãªã„)</li>
      * </ul>
      */
     public void testParse() {
@@ -223,23 +223,23 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼‚ğæ“¾‚·‚éƒeƒXƒgB
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,recListName"</li>
-     * <li> getRecordListName() ‚ğÀs‚·‚é</li>
+     * <li> getRecordListName() ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>w’è‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼"recListName"‚ª•Ô‚³‚ê‚é</li>
+     * <li>æŒ‡å®šã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå"recListName"ãŒè¿”ã•ã‚Œã‚‹</li>
      * </ul>
      */
     public void testGetRecordListName() {
@@ -252,23 +252,23 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 
 
     /**
-     * ƒXƒL[ƒ}‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éƒeƒXƒgB
+     * ã‚¹ã‚­ãƒ¼ãƒã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
      * <p>
-     * ğŒF
+     * æ¡ä»¶ï¼š
      * <ul>
-     * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+     * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * <li>"A,recListName"</li>
-     * <li> toString()‚ğÀs‚·‚é</li>
+     * <li> toString()ã‚’å®Ÿè¡Œã™ã‚‹</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     * <li>•¶š—ñ"jp.ossc.nimbus.beans.dataset.RecordListPropertySchema{name=A,recordListName=recListName}"‚ª•Ô‚³‚ê‚é</li>
+     * <li>æ–‡å­—åˆ—"jp.ossc.nimbus.beans.dataset.RecordListPropertySchema{name=A,recordListName=recListName}"ãŒè¿”ã•ã‚Œã‚‹</li>
      * </ul>
      */
     public void testToString() {
@@ -282,7 +282,7 @@ public class RecordListPropertySchemaTest extends TestCase {
             
         } catch (PropertySchemaDefineException e) {
             e.printStackTrace();
-            fail("—áŠO”­¶");
+            fail("ä¾‹å¤–ç™ºç”Ÿ");
         }
     }
 

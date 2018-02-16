@@ -34,8 +34,8 @@ package jp.ossc.nimbus.core;
 import java.security.*;
 
 /**
- * ƒAƒXƒyƒNƒg•ÏŠ·B<p>
- * ƒAƒXƒyƒNƒgwŒü‚ÌŠT”O‚É‘¥‚Á‚ÄAƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ•ÏŠ·‚·‚é•ÏŠ·Ò‚ÌÀ‘•‚·‚×‚«ƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
+ * ã‚¢ã‚¹ãƒšã‚¯ãƒˆå¤‰æ›ã€‚<p>
+ * ã‚¢ã‚¹ãƒšã‚¯ãƒˆæŒ‡å‘ã®æ¦‚å¿µã«å‰‡ã£ã¦ã€ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¤‰æ›ã™ã‚‹å¤‰æ›è€…ã®å®Ÿè£…ã™ã¹ãã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see NimbusClassLoader#addAspectTranslator(AspectTranslator)
@@ -43,21 +43,21 @@ import java.security.*;
 public interface AspectTranslator{
     
     /**
-     * ‚±‚ÌƒAƒXƒyƒNƒg•ÏŠ·‚ğ¯•Ê‚·‚éƒAƒXƒyƒNƒg‚ÌƒL[‚ğæ“¾‚·‚éB<p>
-     * “¯‚¶ƒL[‚ğ‚ÂƒAƒXƒyƒNƒg‚ÍAd•¡‚µ‚ÄƒAƒXƒyƒNƒg‚³‚ê‚È‚¢B<br>
+     * ã“ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆå¤‰æ›ã‚’è­˜åˆ¥ã™ã‚‹ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒã˜ã‚­ãƒ¼ã‚’æŒã¤ã‚¢ã‚¹ãƒšã‚¯ãƒˆã¯ã€é‡è¤‡ã—ã¦ã‚¢ã‚¹ãƒšã‚¯ãƒˆã•ã‚Œãªã„ã€‚<br>
      *
-     * @return ƒAƒXƒyƒNƒg‚ÌƒL[
+     * @return ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®ã‚­ãƒ¼
      */
     public String getAspectKey();
     
     /**
-     * ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğ•ÏŠ·‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param loader ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚·‚éƒNƒ‰ƒXƒ[ƒ_
-     * @param className ƒNƒ‰ƒX–¼
-     * @param domain ƒNƒ‰ƒX‚ÌƒhƒƒCƒ“
-     * @param bytecode ƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌƒoƒCƒg”z—ñ
-     * @return •ÏŠ·Œã‚ÌƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚ÌƒoƒCƒg”z—ñB•ÏŠ·‘ÎÛ‚Å‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @param loader ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€
+     * @param className ã‚¯ãƒ©ã‚¹å
+     * @param domain ã‚¯ãƒ©ã‚¹ã®ãƒ‰ãƒ¡ã‚¤ãƒ³
+     * @param bytecode ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒˆé…åˆ—
+     * @return å¤‰æ›å¾Œã®ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒã‚¤ãƒˆé…åˆ—ã€‚å¤‰æ›å¯¾è±¡ã§ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     public byte[] transform(
         ClassLoader loader,

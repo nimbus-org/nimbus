@@ -37,11 +37,11 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.*;
 
 /**
- * Nimbus‚ÌPropertyEditor‚ğŠÇ—‚·‚éPropertyEditorManagerB<p>
- * Nimbus‚ÅŠJ”­‚³‚ê‚½PropertyEditor‚ª‘S‚Ä“o˜^‚³‚ê‚Ä‚¢‚éPropertyEditorManagerƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * ‚ ‚ç‚©‚¶‚ß“o˜^‚³‚ê‚ÄPropertyEditor‚ÍAˆÈ‰º‚Ì‚à‚Ì‚Å‚ ‚éB<br>
+ * Nimbusã®PropertyEditorã‚’ç®¡ç†ã™ã‚‹PropertyEditorManagerã€‚<p>
+ * Nimbusã§é–‹ç™ºã•ã‚ŒãŸPropertyEditorãŒå…¨ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹PropertyEditorManagerã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã‚ã‚‰ã‹ã˜ã‚ç™»éŒ²ã•ã‚Œã¦PropertyEditorã¯ã€ä»¥ä¸‹ã®ã‚‚ã®ã§ã‚ã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th>•ÒW‚·‚éƒNƒ‰ƒX</th><th>PropertyEditor</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ç·¨é›†ã™ã‚‹ã‚¯ãƒ©ã‚¹</th><th>PropertyEditor</th></tr>
  *   <tr><td>char</td><td>{@link jp.ossc.nimbus.beans.CharacterEditor}</td></tr>
  *   <tr><td>boolean</td><td>{@link jp.ossc.nimbus.beans.BooleanEditor}</td></tr>
  *   <tr><td>short</td><td>{@link jp.ossc.nimbus.beans.ShortEditor}</td></tr>
@@ -98,7 +98,7 @@ public class NimbusPropertyEditorManager extends PropertyEditorManager{
     
     static{
         
-        // ƒfƒtƒHƒ‹ƒg‚ÌPropertyEditor‚ğ“o˜^‚·‚é
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®PropertyEditorã‚’ç™»éŒ²ã™ã‚‹
         propertyEditors.add(java.util.Properties.class, PropertiesEditor.class);
         propertyEditors.add(ServiceName[].class, ServiceNameArrayEditor.class);
         propertyEditors.add(ServiceName.class, ServiceNameEditor.class);
@@ -159,21 +159,21 @@ public class NimbusPropertyEditorManager extends PropertyEditorManager{
     }
     
     /**
-     * PropertyEditor‚ğ“o˜^‚·‚éB<p>
+     * PropertyEditorã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param targetType PropertyEditor‚ª•ÒW‚·‚éƒNƒ‰ƒX
-     * @param editorClass PropertyEditor‚ÌƒNƒ‰ƒX
+     * @param targetType PropertyEditorãŒç·¨é›†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+     * @param editorClass PropertyEditorã®ã‚¯ãƒ©ã‚¹
      */
     public static void registerEditor(Class targetType, Class editorClass){
         propertyEditors.add(targetType, editorClass);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ğ•ÒW‚·‚éPropertyEditor‚ğŒŸõ‚·‚éB<p>
-     * ‚±‚ÌƒNƒ‰ƒX‚É“o˜^‚³‚ê‚Ä‚¢‚éPropertyEditor‚©‚çŒŸõ‚·‚éBŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAjava.beans.PropertyEditorManager‚©‚ç‚àŒŸõ‚·‚éBX‚ÉAŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ç·¨é›†ã™ã‚‹PropertyEditorã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚¯ãƒ©ã‚¹ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹PropertyEditorã‹ã‚‰æ¤œç´¢ã™ã‚‹ã€‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€java.beans.PropertyEditorManagerã‹ã‚‰ã‚‚æ¤œç´¢ã™ã‚‹ã€‚æ›´ã«ã€è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @param targetType PropertyEditor‚ª•ÒW‚·‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½ƒNƒ‰ƒX‚ğ•ÒW‚·‚éPropertyEditor
+     * @param targetType PropertyEditorãŒç·¨é›†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ç·¨é›†ã™ã‚‹PropertyEditor
      */
     public static PropertyEditor findEditor(Class targetType){
         if(targetType == null){

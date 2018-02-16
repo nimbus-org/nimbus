@@ -34,17 +34,17 @@ package jp.ossc.nimbus.util.converter;
 import java.io.InputStream;
 
 /**
- * •ÏŠ·‘ÎÛ‚ğw’è‚·‚é‚±‚Æ‚Ì‚Å‚«‚é{@link Converter}ƒCƒ“ƒ^ƒtƒF[ƒXB
+ * å¤‰æ›å¯¾è±¡ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã®ã§ãã‚‹{@link Converter}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * @author T.Okada
  */
 public interface BindingStreamConverter extends StreamConverter {
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB
-     * @param inputStream “ü—ÍƒXƒgƒŠ[ƒ€
-     * @param returnType •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-     * @throws ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚
+     * @param inputStream å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param returnType å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @throws ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     Object convertToObject(InputStream inputStream, Object returnType) throws ConvertException;
 

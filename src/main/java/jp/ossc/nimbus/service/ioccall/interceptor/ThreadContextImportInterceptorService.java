@@ -43,7 +43,7 @@ import jp.ossc.nimbus.service.aop.InvocationContext;
 import jp.ossc.nimbus.service.aop.MethodInvocationContext;
 
 /**
- * FacadeValue‚Ìƒwƒbƒ_€–Ú‚ğƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^B<p>
+ * FacadeValueã®ãƒ˜ãƒƒãƒ€é …ç›®ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -57,20 +57,20 @@ public class ThreadContextImportInterceptorService extends ServiceBase
     private ServiceName threadContextServiceName;
     private String[] headerKeys;
     
-    // ThreadContextImportInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextImportInterceptorServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // ThreadContextImportInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextImportInterceptorServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // ThreadContextImportInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextImportInterceptorServiceMBeanã®JavaDoc
     public void setHeaderKeys(String[] keys){
         headerKeys = keys;
     }
-    // ThreadContextImportInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextImportInterceptorServiceMBeanã®JavaDoc
     public String[] getHeaderKeys(){
         return headerKeys;
     }

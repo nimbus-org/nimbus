@@ -56,8 +56,8 @@ import jp.ossc.nimbus.util.EncodedProperties;
 import jp.ossc.nimbus.util.StringOperator;
 //
 /**
-  * ƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ğƒLƒƒƒVƒ…‚·‚éƒtƒ@ƒNƒgƒŠ<p>
-  * [Ú×‚ÈƒNƒ‰ƒX‚Ìà–¾B]
+  * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚­ãƒ£ã‚·ãƒ¥ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒª<p>
+  * [è©³ç´°ãªã‚¯ãƒ©ã‚¹ã®èª¬æ˜ã€‚]
   *
   * @version $Name:  $
   * @author H.Nakano
@@ -72,13 +72,13 @@ public class ResourceBundlePropertiesFactoryService
     
     /** HASH						*/	
 	protected Hashtable	mPropHash = null ;
-	/** ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹ƒGƒ“ƒR[ƒh	*/	
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰	*/	
 	protected String	mEncode = EncodedProperties.ENCODE_PORP ;
-	/** ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹ƒGƒ“ƒR[ƒh	*/	
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰	*/	
 	protected CsvArrayList	mRootDir = null ;
-	/** “ü‚ê‘Ö‚¦—\’è	*/	
+	/** å…¥ã‚Œæ›¿ãˆäºˆå®šæ™‚åˆ»	*/	
 	protected Date	mRefreshPlanTime = null ;
-	/** “ü‚ê‘Ö‚¦ÀÑ	*/	
+	/** å…¥ã‚Œæ›¿ãˆå®Ÿç¸¾æ™‚åˆ»	*/	
 	protected Date	mRefreshedTime = null ;
 	//
 	static private final String C_SEPARATOR = "path.separator" ;  //$NON-NLS-1$
@@ -89,7 +89,7 @@ public class ResourceBundlePropertiesFactoryService
 	static private final String C_PROP_EXT = ".properties" ; //$NON-NLS-1$
 	static private final String C_DOT = "." ; //$NON-NLS-1$
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
 	 */
 	public ResourceBundlePropertiesFactoryService() throws IOException{
 		super() ;
@@ -161,7 +161,7 @@ public class ResourceBundlePropertiesFactoryService
 	}
 	//
 	/**
-	 *	‰Šú‰»ˆ—<BR>
+	 *	åˆæœŸåŒ–å‡¦ç†<BR>
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService(){
@@ -177,7 +177,7 @@ public class ResourceBundlePropertiesFactoryService
 	}
 	//
 	/**
-	 *	I—¹ˆ—<BR>
+	 *	çµ‚äº†å‡¦ç†<BR>
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
 	 */
 	public void stopService() {
@@ -258,7 +258,7 @@ public class ResourceBundlePropertiesFactoryService
 	}
 	//
 	/**
-	 * ‘¦‚ÉƒLƒƒƒbƒVƒ…‚ğ“ü‚ê‘Ö‚¦‚é.
+	 * å³æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å…¥ã‚Œæ›¿ãˆã‚‹.
 	 */
 	protected void refresh(){
 		SimpleDateFormat ft = new SimpleDateFormat(TIME_FORMAT) ;
@@ -267,10 +267,10 @@ public class ResourceBundlePropertiesFactoryService
 			String item = (String)iterator.next();
 			String upper = item.toUpperCase() ;
 			if(upper.endsWith(C_JAR_EXT)){
-				//JARƒtƒ@ƒCƒ‹“àŒŸõ
+				//JARãƒ•ã‚¡ã‚¤ãƒ«å†…æ¤œç´¢
 				setupJarPropList(item) ;
 			}else{
-				//ƒfƒBƒŒƒNƒgƒŠ“àŒŸõ
+				//ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…æ¤œç´¢
 				setupDirPropList(item) ;
 			}
 		}
@@ -281,7 +281,7 @@ public class ResourceBundlePropertiesFactoryService
 		}
 	}
 	/**
-	 * Jarƒtƒ@ƒCƒ‹‚©‚çƒvƒƒpƒeƒB‚Ì’Šo‚ğs‚¤.
+	 * Jarãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æŠ½å‡ºã‚’è¡Œã†.
 	 * @param item
 	 */
 	protected void setupJarPropList(String item){
@@ -323,7 +323,7 @@ public class ResourceBundlePropertiesFactoryService
 	}
 	//
 	/**
-	 * Method ƒfƒBƒŒƒNƒgƒŠw’è‚ÅƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚ğ’Šo‚·‚é.
+	 * Method ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæŒ‡å®šã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŠ½å‡ºã™ã‚‹.
 	 * @param item
 	 */
 	protected void setupDirPropList(String item){

@@ -3,7 +3,7 @@ package jp.ossc.nimbus.service.publish.websocket;
 import jp.ossc.nimbus.service.queue.AbstractDistributedQueueSelectorServiceMBean;
 
 /**
- * {@link SessionIdMessageSendDistributedQueueSelectorService}のMBeanインタフェース
+ * {@link SessionIdMessageSendDistributedQueueSelectorService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ
  * <p>
  *
  * @author M.Ishida

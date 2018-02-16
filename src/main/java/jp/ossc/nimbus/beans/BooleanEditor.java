@@ -34,18 +34,18 @@ package jp.ossc.nimbus.beans;
 import java.beans.*;
 
 /**
- * {@link Boolean}Œ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * •¶š—ñ‚ğjava.lang.BooleanŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * "${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
+ * {@link Boolean}å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * æ–‡å­—åˆ—ã‚’java.lang.Booleanå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * "${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * —áF<br>
- * &nbsp;&nbsp;true ‚Ü‚½‚Í 1AonAyes<br>
+ * ä¾‹ï¼š<br>
+ * &nbsp;&nbsp;true ã¾ãŸã¯ 1ã€onã€yes<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;true<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -62,9 +62,9 @@ public class BooleanEditor extends PropertyEditorSupport
     private int asTextType = AS_TEXT_TYPE_BOOLEAN;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ğƒvƒƒpƒeƒB•¶š—ñ‚É•ÏŠ·‚·‚é‚Ì•ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹æ™‚ã®å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #AS_TEXT_TYPE_BOOLEAN
      * @see #AS_TEXT_TYPE_NUMBER
      * @see #AS_TEXT_TYPE_ON_OFF
@@ -75,18 +75,18 @@ public class BooleanEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ğƒvƒƒpƒeƒB•¶š—ñ‚É•ÏŠ·‚·‚é‚Ì•ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹æ™‚ã®å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      */
     public int getAsTextType(){
         return asTextType;
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -101,9 +101,9 @@ public class BooleanEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Boolean bool = (Boolean)getValue();

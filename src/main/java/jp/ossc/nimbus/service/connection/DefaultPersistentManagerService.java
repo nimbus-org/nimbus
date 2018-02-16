@@ -76,7 +76,7 @@ import jp.ossc.nimbus.beans.dataset.PropertyGetException;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ‰i‘±ŠÇ—B<p>
+ * æ°¸ç¶šç®¡ç†ã€‚<p>
  *
  * @author M.Takata
  */
@@ -1783,7 +1783,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     /**
-     * “Ç‚İ‚İƒJ[ƒ\ƒ‹B<p>
+     * èª­ã¿è¾¼ã¿ã‚«ãƒ¼ã‚½ãƒ«ã€‚<p>
      *
      * @author M.Takata
      */
@@ -2020,7 +2020,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     /**
-     * ƒoƒbƒ`ÀsB<p>
+     * ãƒãƒƒãƒå®Ÿè¡Œã€‚<p>
      *
      * @author M.Takata
      */

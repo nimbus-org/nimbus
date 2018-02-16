@@ -37,7 +37,7 @@ import java.io.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�Ăяo���̌Ăяo����������{@link MethodInvocationContext}�̎����N���X�B<p>
+ * アスペクトによってラップされたメソッド呼び出しの呼び出し情報を持つ{@link MethodInvocationContext}の実装クラス。<p>
  * 
  * @author M.Takata
  */
@@ -48,17 +48,17 @@ public class WrappedMethodInvocationContext
     private static final long serialVersionUID = 1372865160145034983L;
     
     /**
-     * �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�̃��\�b�h�I�u�W�F�N�g�B<p>
+     * アスペクトによってラップされたメソッドのメソッドオブジェクト。<p>
      */
     protected transient Method wrappedTargetMethod;
     
     /**
-     * �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�Ăяo���̌Ăяo�����𐶐�����B<p>
+     * アスペクトによってラップされたメソッド呼び出しの呼び出し情報を生成する。<p>
      *
-     * @param target �Ăяo���Ώۂ̃I�u�W�F�N�g
-     * @param method �Ăяo���Ώۂ̃��\�b�h
-     * @param wrappedMethod �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h
-     * @param params �Ăяo���Ώۂ̃��\�b�h����
+     * @param target 呼び出し対象のオブジェクト
+     * @param method 呼び出し対象のメソッド
+     * @param wrappedMethod アスペクトによってラップされたメソッド
+     * @param params 呼び出し対象のメソッド引数
      */
     public WrappedMethodInvocationContext(
         Object target,
@@ -71,19 +71,19 @@ public class WrappedMethodInvocationContext
     }
     
     /**
-     * �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h���擾����B<p>
+     * アスペクトによってラップされたメソッドを取得する。<p>
      *
-     * @return �A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�̃��\�b�h�I�u�W�F�N�g
+     * @return アスペクトによってラップされたメソッドのメソッドオブジェクト
      */
     public Method getWrappedTargetMethod(){
         return wrappedTargetMethod;
     }
     
     /**
-     * �C���^�[�Z�v�g���ꂽ�Ăяo���Ώۂ̃��\�b�h�I�u�W�F�N�g��ݒ肷��B<p>
-     * �����ɁA�A�X�y�N�g�ɂ���ă��b�v���ꂽ���\�b�h�ɂ��ݒ肷��B
+     * インターセプトされた呼び出し対象のメソッドオブジェクトを設定する。<p>
+     * 同時に、アスペクトによってラップされたメソッドにも設定する。
      *
-     * @param method �C���^�[�Z�v�g���ꂽ�Ăяo���Ώۂ̃��\�b�h�I�u�W�F�N�g
+     * @param method インターセプトされた呼び出し対象のメソッドオブジェクト
      */
     public void setTargetMethod(Method method){
         super.setTargetMethod(method);

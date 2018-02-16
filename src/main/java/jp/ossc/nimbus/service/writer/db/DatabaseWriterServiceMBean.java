@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DatabaseWriterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DatabaseWriterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DatabaseWriterService
@@ -45,156 +45,156 @@ public interface DatabaseWriterServiceMBean
  extends ServiceBaseMBean, jp.ossc.nimbus.service.writer.MessageWriter{
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * INSERT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ˆÈ‰º‚ÌƒtƒH[ƒ}ƒbƒg‚Åw’è‚·‚éB<br>
-     * INSERT‚·‚éPreparedStatement—p‚ÌSQL=–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼,c<br>
-     * ‰E•Ó‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚ÍA{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ƒƒ\ƒbƒh‚Ì“ü—Í‚Å“n‚³‚ê‚é{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚ÉŠi”[‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚ÌƒL[–¼‚Å‚ ‚éB<br>
+     * INSERTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * INSERTã™ã‚‹PreparedStatementç”¨ã®SQL=åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼å,â€¦<br>
+     * å³è¾ºã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã¯ã€{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ãƒ¡ã‚½ãƒƒãƒ‰ã®å…¥åŠ›ã§æ¸¡ã•ã‚Œã‚‹{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã®ã‚­ãƒ¼åã§ã‚ã‚‹ã€‚<br>
      * <pre>
-     * —áF
+     * ä¾‹ï¼š
      *   insert into log_table(id, message) values(?, ?)=ID,MESSAGE
      * </pre>
      *
-     * @param sqls INSERT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param sqls INSERTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setInsertSQL(Map sqls);
     
     /**
-     * INSERT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * INSERTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return INSERT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return INSERTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getInsertSQL();
     
     /**
-     * UPDATE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ˆÈ‰º‚ÌƒtƒH[ƒ}ƒbƒg‚Åw’è‚·‚éB<br>
-     * UPDATE‚·‚éPreparedStatement—p‚ÌSQL=–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼,c<br>
-     * ‰E•Ó‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚ÍA{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ƒƒ\ƒbƒh‚Ì“ü—Í‚Å“n‚³‚ê‚é{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚ÉŠi”[‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚ÌƒL[–¼‚Å‚ ‚éB<br>
+     * UPDATEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * UPDATEã™ã‚‹PreparedStatementç”¨ã®SQL=åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼å,â€¦<br>
+     * å³è¾ºã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã¯ã€{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ãƒ¡ã‚½ãƒƒãƒ‰ã®å…¥åŠ›ã§æ¸¡ã•ã‚Œã‚‹{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã®ã‚­ãƒ¼åã§ã‚ã‚‹ã€‚<br>
      * <pre>
-     * —áF
+     * ä¾‹ï¼š
      *   update log_table set message=? where id=?=MESSAGE,ID
      * </pre>
      *
-     * @param sqls UPDATE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param sqls UPDATEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setUpdateSQL(Map sqls);
     
     /**
-     * UPDATE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * UPDATEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return UPDATE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return UPDATEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getUpdateSQL();
     
     /**
-     * DELETE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ˆÈ‰º‚ÌƒtƒH[ƒ}ƒbƒg‚Åw’è‚·‚éB<br>
-     * DELETE‚·‚éPreparedStatement—p‚ÌSQL=–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼,c<br>
-     * ‰E•Ó‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚ÍA{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ƒƒ\ƒbƒh‚Ì“ü—Í‚Å“n‚³‚ê‚é{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚ÉŠi”[‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚ÌƒL[–¼‚Å‚ ‚éB<br>
+     * DELETEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * DELETEã™ã‚‹PreparedStatementç”¨ã®SQL=åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼å,â€¦<br>
+     * å³è¾ºã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã¯ã€{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ãƒ¡ã‚½ãƒƒãƒ‰ã®å…¥åŠ›ã§æ¸¡ã•ã‚Œã‚‹{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã®ã‚­ãƒ¼åã§ã‚ã‚‹ã€‚<br>
      * <pre>
-     * —áF
+     * ä¾‹ï¼š
      *   delete from log_table where id=?=ID
      * </pre>
      *
-     * @param sqls DELETE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param sqls DELETEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setDeleteSQL(Map sqls);
     
     /**
-     * DELETE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * DELETEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return DELETE‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return DELETEã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getDeleteSQL();
     
     /**
-     * SELECT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ˆÈ‰º‚ÌƒtƒH[ƒ}ƒbƒg‚Åw’è‚·‚éB<br>
-     * SELECT‚·‚éPreparedStatement—p‚ÌSQL=–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼,c<br>
-     * ‰E•Ó‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚ÍA{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ƒƒ\ƒbƒh‚Ì“ü—Í‚Å“n‚³‚ê‚é{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}‚ÉŠi”[‚³‚ê‚Ä‚¢‚é{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚ÌƒL[–¼‚Å‚ ‚éB<br>
+     * SELECTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä»¥ä¸‹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æŒ‡å®šã™ã‚‹ã€‚<br>
+     * SELECTã™ã‚‹PreparedStatementç”¨ã®SQL=åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼å,â€¦<br>
+     * å³è¾ºã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã¯ã€{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ãƒ¡ã‚½ãƒƒãƒ‰ã®å…¥åŠ›ã§æ¸¡ã•ã‚Œã‚‹{@link jp.ossc.nimbus.service.writer.WritableRecord WritableRecord}ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã®ã‚­ãƒ¼åã§ã‚ã‚‹ã€‚<br>
      * <pre>
-     * —áF
+     * ä¾‹ï¼š
      *   select count(*) from log_table where id=?=ID
      * </pre>
-     * ‚±‚±‚Åw’è‚·‚éSELECT•¶‚ÌŒ‹‰Ê‚ÍAƒŒƒR[ƒhŒ”‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ‚Ü‚½ASELECT‚ÍAINSERT‚ÆAUPDATE‚Ü‚½‚ÍDELETE‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚Ì‚İ—LŒø‚Å‚ ‚éB<br>
-     * SELECT‚ÆINSERT‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍASELECT‚ÌŒ‹‰Ê‚ª0Œ‚Ì‚¾‚¯INSERT‚³‚ê‚éB<br>
-     * SELECT‚ÆUPDATE‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍASELECT‚ÌŒ‹‰Ê‚ª0Œ‚Å‚È‚¢‚¾‚¯UPDATE‚³‚ê‚éB<br>
-     * SELECT‚ÆDELETE‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍASELECT‚ÌŒ‹‰Ê‚ª0Œ‚Å‚È‚¢‚¾‚¯DELETE‚³‚ê‚éB<br>
-     * SELECT‚ÆAINSERTAUPDATE‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍASELECT‚ÌŒ‹‰Ê‚ª0Œ‚Ì‚ÍINSERT‚³‚êA0Œ‚Å‚È‚¢‚ÍUPDATE‚³‚ê‚éB<br>
-     * SELECT‚ÆAINSERTADELETE‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍASELECT‚ÌŒ‹‰Ê‚ª0Œ‚Ì‚ÍINSERT‚³‚êA0Œ‚Å‚È‚¢‚ÍDELETE‚µ‚½Œã‚ÉINSERT‚³‚ê‚éB<br>
+     * ã“ã“ã§æŒ‡å®šã™ã‚‹SELECTæ–‡ã®çµæœã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¶æ•°ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ã¾ãŸã€SELECTã¯ã€INSERTã¨ã€UPDATEã¾ãŸã¯DELETEãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã®ã¿æœ‰åŠ¹ã§ã‚ã‚‹ã€‚<br>
+     * SELECTã¨INSERTãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€SELECTã®çµæœãŒ0ä»¶ã®æ™‚ã ã‘INSERTã•ã‚Œã‚‹ã€‚<br>
+     * SELECTã¨UPDATEãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€SELECTã®çµæœãŒ0ä»¶ã§ãªã„æ™‚ã ã‘UPDATEã•ã‚Œã‚‹ã€‚<br>
+     * SELECTã¨DELETEãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€SELECTã®çµæœãŒ0ä»¶ã§ãªã„æ™‚ã ã‘DELETEã•ã‚Œã‚‹ã€‚<br>
+     * SELECTã¨ã€INSERTã€UPDATEãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€SELECTã®çµæœãŒ0ä»¶ã®æ™‚ã¯INSERTã•ã‚Œã€0ä»¶ã§ãªã„æ™‚ã¯UPDATEã•ã‚Œã‚‹ã€‚<br>
+     * SELECTã¨ã€INSERTã€DELETEãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€SELECTã®çµæœãŒ0ä»¶ã®æ™‚ã¯INSERTã•ã‚Œã€0ä»¶ã§ãªã„æ™‚ã¯DELETEã—ãŸå¾Œã«INSERTã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param sqls SELECT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param sqls SELECTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setSelectSQL(Map sqls);
     
     /**
-     * SELECT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * SELECTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SELECT‚·‚éPreparedStatement—p‚ÌSQL‚Æ–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ÌƒL[–¼‚Æ‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return SELECTã™ã‚‹PreparedStatementç”¨ã®SQLã¨åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã‚­ãƒ¼åã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getSelectSQL();
     
     /**
-     * SQL‚ğƒoƒbƒ`Às‚·‚éÛ‚Ìƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Åƒoƒbƒ`Às‚µ‚È‚¢B<br>
-     * 0ˆÈã‚Ì’l‚ğw’è‚·‚é‚ÆA‚»‚ÌƒTƒCƒY•ª‚¾‚¯A{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ“à—e‚ğ—­‚ß‚İASQL‚ğƒoƒbƒ`Às‚·‚éB<br>
+     * SQLã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹éš›ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ãƒãƒƒãƒå®Ÿè¡Œã—ãªã„ã€‚<br>
+     * 0ä»¥ä¸Šã®å€¤ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ãã®ã‚µã‚¤ã‚ºåˆ†ã ã‘ã€{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å†…å®¹ã‚’æºœã‚è¾¼ã¿ã€SQLã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã€‚<br>
      * 
-     * @param size ƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setBufferSize(int size);
     
     /**
-     * SQL‚ğƒoƒbƒ`Às‚·‚éÛ‚Ìƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * SQLã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹éš›ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒoƒbƒtƒ@ƒTƒCƒY
+     * @return ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getBufferSize();
     
     /**
-     * SQL‚ğƒoƒbƒ`Às‚·‚éÛ‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚È‚¢B<br>
-     * 0ˆÈã‚Ì’l‚ğw’è‚·‚é‚ÆA{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ƒƒ\ƒbƒh‚ªÅŒã‚ÉŒÄ‚Ño‚³‚ê‚½‚©‚çw’è‚³‚ê‚½ŠÔ‚ğŒo‰ß‚·‚é‚ÆA—­‚Ü‚Á‚Ä‚¢‚éƒoƒbƒ`SQL‚Ì”‚ÉŠÖ‚í‚ç‚¸SQL‚ğƒoƒbƒ`Às‚·‚éB<br>
-     * ’A‚µA{@link #setBufferSize(int)}‚Å0ˆÈã‚Ì’liƒoƒbƒ`Às‚ª—LŒø‚É‚È‚é’lj‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‚±‚Ìİ’è‚Í–³Œø‚Å‚ ‚éB<br>
+     * SQLã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹éš›ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãªã„ã€‚<br>
+     * 0ä»¥ä¸Šã®å€¤ã‚’æŒ‡å®šã™ã‚‹ã¨ã€{@link DatabaseWriterService#write(jp.ossc.nimbus.service.writer.WritableRecord)}ãƒ¡ã‚½ãƒƒãƒ‰ãŒæœ€å¾Œã«å‘¼ã³å‡ºã•ã‚ŒãŸæ™‚åˆ»ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ã‚’çµŒéã™ã‚‹ã¨ã€æºœã¾ã£ã¦ã„ã‚‹ãƒãƒƒãƒSQLã®æ•°ã«é–¢ã‚ã‚‰ãšSQLã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹ã€‚<br>
+     * ä½†ã—ã€{@link #setBufferSize(int)}ã§0ä»¥ä¸Šã®å€¤ï¼ˆãƒãƒƒãƒå®Ÿè¡ŒãŒæœ‰åŠ¹ã«ãªã‚‹å€¤ï¼‰ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã“ã®è¨­å®šã¯ç„¡åŠ¹ã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setBufferTimeout(long timeout);
     
     /**
-     * SQL‚ğƒoƒbƒ`Às‚·‚éÛ‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğæ“¾‚·‚éB<p>
+     * SQLã‚’ãƒãƒƒãƒå®Ÿè¡Œã™ã‚‹éš›ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getBufferTimeout();
     
     /**
-     * ©“®ƒRƒ~ƒbƒg‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A©“®ƒRƒ~ƒbƒg‚·‚é
+     * @return trueã®å ´åˆã€è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã™ã‚‹
      */
     public boolean isAutoCommit();
     
     /**
-     * ©“®ƒRƒ~ƒbƒg‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ’A‚µA{@link #setBufferSize(int)}‚É—LŒø‚È’l‚ğİ’è‚µ‚Ä‚¢‚éê‡‚ÍA•ÊƒXƒŒƒbƒh‚Åƒoƒbƒ`Às‚³‚ê‚é‚½‚ßA‚±‚Ì‘®«‚ÉŠÖ‚í‚ç‚¸A©“®“I‚ÉƒRƒ~ƒbƒg‚³‚ê‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€{@link #setBufferSize(int)}ã«æœ‰åŠ¹ãªå€¤ã‚’è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§ãƒãƒƒãƒå®Ÿè¡Œã•ã‚Œã‚‹ãŸã‚ã€ã“ã®å±æ€§ã«é–¢ã‚ã‚‰ãšã€è‡ªå‹•çš„ã«ã‚³ãƒŸãƒƒãƒˆã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isAuto ©“®ƒRƒ~ƒbƒg‚·‚éê‡Atrue
+     * @param isAuto è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã™ã‚‹å ´åˆã€true
      */
     public void setAutoCommit(boolean isAuto);
 }

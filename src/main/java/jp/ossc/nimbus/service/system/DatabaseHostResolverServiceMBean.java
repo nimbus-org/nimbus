@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link DefaultHostResolverService}のMBeanインタフェース
+ * {@link DefaultHostResolverService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ
  * <p>
  * 
  * @author M.Ishida

@@ -36,107 +36,107 @@ import java.util.Random;
 import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 
 /**
- * ¢‘ãB<p>
+ * ä¸–ä»£ã€‚<p>
  *
  * @author M.Takata
  */
 public interface Generation{
     
     /**
-     * û‘©ğŒ‚ğw’è‚·‚éB<p>
+     * åæŸæ¡ä»¶ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
      *
-     * @param condition û‘©ğŒ
+     * @param condition åæŸæ¡ä»¶
      */
     public void setConvergenceCondition(ConvergenceCondition condition);
     
     /**
-     * ¢‘ã‹£‘ˆ‚ğ•À—ñ‚És‚¤ê‡‚Ì{@link QueueHandlerContainer}‚ğw’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA{@link #compete(int, long)}‚ÌÀs–ˆ‚É“à•”‚Å¶¬‚·‚éB<br>
+     * ä¸–ä»£ç«¶äº‰ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã®{@link QueueHandlerContainer}ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€{@link #compete(int, long)}ã®å®Ÿè¡Œæ¯ã«å†…éƒ¨ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
-     * @param qhc ¢‘ã‹£‘ˆ‚ğ•À—ñ‚És‚¤Û‚Ég—p‚·‚éQueueHandlerContainer
+     * @param qhc ä¸–ä»£ç«¶äº‰ã‚’ä¸¦åˆ—ã«è¡Œã†éš›ã«ä½¿ç”¨ã™ã‚‹QueueHandlerContainer
      */
     public void setQueueHandlerContainer(QueueHandlerContainer qhc);
     
     /**
-     * ¢‘ã‹£‘ˆ‚ğ•À—ñ‚És‚¤ê‡‚Ì{@link QueueHandlerContainer}‚ğæ“¾‚·‚éB<p>
+     * ä¸–ä»£ç«¶äº‰ã‚’ä¸¦åˆ—ã«è¡Œã†å ´åˆã®{@link QueueHandlerContainer}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ¢‘ã‹£‘ˆ‚ğ•À—ñ‚És‚¤Û‚Ég—p‚·‚éQueueHandlerContainer
+     * @return ä¸–ä»£ç«¶äº‰ã‚’ä¸¦åˆ—ã«è¡Œã†éš›ã«ä½¿ç”¨ã™ã‚‹QueueHandlerContainer
      */
     public QueueHandlerContainer getQueueHandlerContainer();
     
     /**
-     * “K‰’l‚Ì•À‚Ñ‡‚ğİ’è‚·‚éB<p>
+     * é©å¿œå€¤ã®ä¸¦ã³é †ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isAsc ¸‡‚Ìê‡Atrue
+     * @param isAsc æ˜‡é †ã®å ´åˆã€true
      */
     public void setFitnessOrder(boolean isAsc);
     
     /**
-     * “K‰’l‚Ì•À‚Ñ‡‚ğæ“¾‚·‚éB<p>
+     * é©å¿œå€¤ã®ä¸¦ã³é †ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A¸‡
+     * @return trueã®å ´åˆã€æ˜‡é †
      */
     public boolean getFitnessOrder();
     
     /**
-     * ¢‘ã”Ô†‚ğæ“¾‚·‚éB<p>
+     * ä¸–ä»£ç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ¢‘ã”Ô†
+     * @return ä¸–ä»£ç•ªå·
      */
     public int getGenerationNo();
     
     /**
-     * ‰Šú¢‘ã‚ğ¶¬‚·‚éB<p>
+     * åˆæœŸä¸–ä»£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param seed ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éƒV[ƒh
-     * @param num ƒV[ƒh”
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param seed ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹ã‚·ãƒ¼ãƒ‰
+     * @param num ã‚·ãƒ¼ãƒ‰æ•°
      */
     public void init(Random random, Seed seed, int num);
     
     /**
-     * ƒV[ƒh‚ğ“ü‚ê‘Ö‚¦‚éB<p>
+     * ã‚·ãƒ¼ãƒ‰ã‚’å…¥ã‚Œæ›¿ãˆã‚‹ã€‚<p>
      *
-     * @param seeds ƒV[ƒh”z—ñ
+     * @param seeds ã‚·ãƒ¼ãƒ‰é…åˆ—
      */
     public void setSeeds(Seed[] seeds);
     
     /**
-     * ‚±‚Ì¢‘ã‚ª‚Â‘S‚Ä‚ÌƒV[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ä¸–ä»£ãŒæŒã¤å…¨ã¦ã®ã‚·ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒV[ƒh”z—ñ
+     * @return ã‚·ãƒ¼ãƒ‰é…åˆ—
      */
     public Seed[] getSeeds();
     
     /**
-     * ¢‘ã‹£‘ˆ‚·‚éB<p>
+     * ä¸–ä»£ç«¶äº‰ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ¢‘ã‹£‘ˆ‚É¸”s‚µ‚½ê‡
+     * @exception Exception ä¸–ä»£ç«¶äº‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void compete() throws Exception;
     
     /**
-     * •À—ñˆ—‚Å¢‘ã‹£‘ˆ‚·‚éB<p>
+     * ä¸¦åˆ—å‡¦ç†ã§ä¸–ä»£ç«¶äº‰ã™ã‚‹ã€‚<p>
      *
-     * @param threadNum •À—ñ“xB{@link #setQueueHandlerContainer(QueueHandlerContainer)}‚ÅQueueHandlerContainer‚ğw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚Ìİ’è‚É]‚¤‚½‚ß–³Œø
-     * @param timeout •À—ñˆ—‚ğ‚·‚éê‡‚ÉA‘S‚Ä‚Ì•À—ñˆ—ƒXƒŒƒbƒh‚ÌI—¹‘Ò‚¿‚ğ‚·‚éƒ^ƒCƒ€ƒAƒEƒg[ms]
-     * @exception Exception ¢‘ã‹£‘ˆ‚É¸”s‚µ‚½ê‡
+     * @param threadNum ä¸¦åˆ—åº¦ã€‚{@link #setQueueHandlerContainer(QueueHandlerContainer)}ã§QueueHandlerContainerã‚’æŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®è¨­å®šã«å¾“ã†ãŸã‚ç„¡åŠ¹
+     * @param timeout ä¸¦åˆ—å‡¦ç†ã‚’ã™ã‚‹å ´åˆã«ã€å…¨ã¦ã®ä¸¦åˆ—å‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµ‚äº†å¾…ã¡ã‚’ã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
+     * @exception Exception ä¸–ä»£ç«¶äº‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void compete(int threadNum, long timeout) throws Exception;
     
     /**
-     * Ÿ¢‘ã‚ğ¶¬‚·‚éB<p>
+     * æ¬¡ä¸–ä»£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param matchMaker ƒV[ƒh’‡l
-     * @return Ÿ¢‘ãBû‘©ğŒ‚É“’B‚µ‚½ê‡‚ÍAnull
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param matchMaker ã‚·ãƒ¼ãƒ‰ä»²äºº
+     * @return æ¬¡ä¸–ä»£ã€‚åæŸæ¡ä»¶ã«åˆ°é”ã—ãŸå ´åˆã¯ã€null
      */
     public Generation next(Random random, SeedMatchMaker matchMaker);
     
     /**
-     * ¶‘¶Ò‚½‚éÅ“K‰Ò‚ğæ“¾‚·‚éB<p>
+     * ç”Ÿå­˜è€…ãŸã‚‹æœ€é©å¿œè€…ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒV[ƒh
+     * @return ã‚·ãƒ¼ãƒ‰
      */
     public Seed getSurvivor();
 }

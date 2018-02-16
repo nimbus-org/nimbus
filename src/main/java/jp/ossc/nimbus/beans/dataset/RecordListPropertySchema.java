@@ -34,26 +34,26 @@ package jp.ossc.nimbus.beans.dataset;
 import java.util.List;
 
 /**
- * ƒlƒXƒg‚µ‚½{@link RecordList}‚ÌƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`B<p>
- * ‚±‚ÌƒNƒ‰ƒX‚É‚ÍAƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}î•ñ‚Æ‚µ‚ÄAˆÈ‰º‚Ìî•ñ‚ª’è‹`‚Å‚«‚éB<br>
+ * ãƒã‚¹ãƒˆã—ãŸ{@link RecordList}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã€‚<p>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã«ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã¨ã—ã¦ã€ä»¥ä¸‹ã®æƒ…å ±ãŒå®šç¾©ã§ãã‚‹ã€‚<br>
  * <ul>
- *   <li>–¼‘O</li>
- *   <li>ƒlƒXƒgƒŒƒR[ƒhƒŠƒXƒg–¼</li>
- *   <li>Œ^</li>
+ *   <li>åå‰</li>
+ *   <li>ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå</li>
+ *   <li>å‹</li>
  * </ul>
- * ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€<br>
  * <pre>
- *    –¼‘O,ƒlƒXƒgƒŒƒR[ƒhƒŠƒXƒg–¼,Œ^
+ *    åå‰,ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå,å‹
  * </pre>
- * ‚Æ‚È‚Á‚Ä‚¨‚èAŒ^ˆÈŠO‚Í‘S‚Ä•K{‚Å‚ ‚éB<br>
+ * ã¨ãªã£ã¦ãŠã‚Šã€å‹ä»¥å¤–ã¯å…¨ã¦å¿…é ˆã§ã‚ã‚‹ã€‚<br>
  * <p>
- * Ÿ‚ÉAŠe€–Ú‚ÌÚ×‚ğà–¾‚·‚éB<br>
+ * æ¬¡ã«ã€å„é …ç›®ã®è©³ç´°ã‚’èª¬æ˜ã™ã‚‹ã€‚<br>
  * <p>
- * –¼‘O‚ÍAƒvƒƒpƒeƒB‚Ì–¼‘O‚ğˆÓ–¡‚µA{@link Record ƒŒƒR[ƒh}‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éÛ‚ÌƒL[‚Æ‚È‚éB<br>
+ * åå‰ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰ã‚’æ„å‘³ã—ã€{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹éš›ã®ã‚­ãƒ¼ã¨ãªã‚‹ã€‚<br>
  * <p>
- * ƒlƒXƒgƒŒƒR[ƒhƒŠƒXƒg–¼‚ÍAƒlƒXƒg‚³‚ê‚½RecordList‚Ì–¼‘O‚ÅA{@link DataSet#setNestedRecordListSchema(String, String)}‚Åİ’è‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼‚ğw’è‚·‚éB<br>
+ * ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã¯ã€ãƒã‚¹ãƒˆã•ã‚ŒãŸRecordListã®åå‰ã§ã€{@link DataSet#setNestedRecordListSchema(String, String)}ã§è¨­å®šã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã‚’æŒ‡å®šã™ã‚‹ã€‚<br>
  * <p>
- * Œ^‚ÍAƒvƒƒpƒeƒB‚ÌŒ^‚ğˆÓ–¡‚µAJava‚ÌŠ®‘SCüƒNƒ‰ƒX–¼‚Åw’è‚·‚éB<br>
+ * å‹ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚’æ„å‘³ã—ã€Javaã®å®Œå…¨ä¿®é£¾ã‚¯ãƒ©ã‚¹åã§æŒ‡å®šã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -62,46 +62,46 @@ public class RecordListPropertySchema implements PropertySchema, java.io.Seriali
     private static final long serialVersionUID = -4263284765094524721L;
     
     /**
-     * ƒXƒL[ƒ}•¶š—ñB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã€‚<p>
      */
     protected String schema;
     
     /**
-     * ƒvƒƒpƒeƒB‚Ì–¼‘OB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰ã€‚<p>
      */
     protected String name;
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌŒ^B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã€‚<p>
      */
     protected Class type = RecordList.class;
     
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼B<p>
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã€‚<p>
      */
     protected String recordListName;
     
     /**
-     * ‹ó‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RecordListPropertySchema(){
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordListPropertySchema(String schema) throws PropertySchemaDefineException{
         setSchema(schema);
     }
     
     /**
-     * ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setSchema(String schema) throws PropertySchemaDefineException{
         final List schemata = DefaultPropertySchema.parseCSV(schema);
@@ -117,11 +117,11 @@ public class RecordListPropertySchema implements PropertySchema, java.io.Seriali
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŒ^‚Ì€–Ú‚ğƒp[ƒX‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‹ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒBƒXƒL[ƒ}‘S‘Ì
-     * @param val ƒXƒL[ƒ}€–Ú
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå…¨ä½“
+     * @param val ã‚¹ã‚­ãƒ¼ãƒé …ç›®
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void parseType(String schema, String val)
      throws PropertySchemaDefineException{
@@ -138,27 +138,27 @@ public class RecordListPropertySchema implements PropertySchema, java.io.Seriali
         }
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public String getSchema(){
         return schema;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public String getName(){
         return name;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Class getType(){
         return type;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public boolean isPrimaryKey(){
         return false;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object set(Object val) throws PropertySetException{
         if(val == null){
             return null;
@@ -179,22 +179,22 @@ public class RecordListPropertySchema implements PropertySchema, java.io.Seriali
         return val;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object get(Object val) throws PropertyGetException{
         return val;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object format(Object val) throws PropertyGetException{
         return val;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public Object parse(Object val) throws PropertySetException{
         return val;
     }
     
-    // PropertySchema‚ÌJavaDoc
+    // PropertySchemaã®JavaDoc
     public boolean validate(Object val) throws PropertyValidateException{
         if(val != null && val instanceof RecordList){
             return ((RecordList)val).validate();
@@ -203,18 +203,18 @@ public class RecordListPropertySchema implements PropertySchema, java.io.Seriali
     }
     
     /**
-     * ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒlƒXƒg‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg–¼
+     * @return ãƒã‚¹ãƒˆã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå
      */
     public String getRecordListName(){
         return recordListName;
     }
     
     /**
-     * ‚±‚ÌƒXƒL[ƒ}‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚­ãƒ¼ãƒã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder(getClass().getName());

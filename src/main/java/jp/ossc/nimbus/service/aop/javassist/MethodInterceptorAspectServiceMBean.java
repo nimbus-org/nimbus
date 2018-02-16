@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.javassist;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodInterceptorAspectService}��MBean�C���^�t�F�[�X<p>
+ * {@link MethodInterceptorAspectService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see MethodInterceptorAspectService
@@ -42,184 +42,184 @@ import jp.ossc.nimbus.core.*;
 public interface MethodInterceptorAspectServiceMBean extends ServiceBaseMBean{
     
     /**
-     * Interceptor������Ώۂ̃N���X�̃N���X�C���q���w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X�C���q�̃N���X��Interceptor������ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�N���X�C���q�͌��肳��Ȃ��B<br>
-     * �C���q��ے肷��ꍇ�́A�e�C���q�̑O��"!"��t�^���邱�ƁB
+     * Interceptorを入れる対象のクラスのクラス修飾子を指定する。<p>
+     * ここで指定されたクラス修飾子のクラスがInterceptorを入れる対象となる。指定しない場合は、クラス修飾子は限定されない。<br>
+     * 修飾子を否定する場合は、各修飾子の前に"!"を付与すること。
      *
-     * @param modifiers �N���X�C���q������
+     * @param modifiers クラス修飾子文字列
      */
     public void setTargetClassModifiers(String modifiers);
     
     /**
-     * Interceptor������Ώۂ̃N���X�̃N���X�C���q���擾����B<p>
+     * Interceptorを入れる対象のクラスのクラス修飾子を取得する。<p>
      *
-     * @return �N���X�C���q������
+     * @return クラス修飾子文字列
      */
     public String getTargetClassModifiers();
     
     /**
-     * Interceptor������Ώۂ̃N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X���̃N���X��Interceptor������ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�N���X���͌��肳��Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * Interceptorを入れる対象のクラス名を指定する。<p>
+     * ここで指定されたクラス名のクラスがInterceptorを入れる対象となる。指定しない場合は、クラス名は限定されない。また、正規表現を指定する事も可能である。
      *
-     * @param name �p�b�P�[�W�����܂ފ��S�C���N���X���B���K�\�����B
+     * @param name パッケージ名を含む完全修飾クラス名。正規表現も可。
      */
     public void setTargetClassName(String name);
     
     /**
-     * Interceptor������Ώۂ̃N���X�����擾����B<p>
+     * Interceptorを入れる対象のクラス名を取得する。<p>
      *
-     * @return �p�b�P�[�W�����܂ފ��S�C���N���X���B���K�\�����B
+     * @return パッケージ名を含む完全修飾クラス名。正規表現も可。
      */
     public String getTargetClassName();
     
     /**
-     * Interceptor�����Ȃ��Ώۂ̃N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X���̃N���X��Interceptor������ΏۂƂȂ�Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * Interceptorを入れない対象のクラス名を指定する。<p>
+     * ここで指定されたクラス名のクラスがInterceptorを入れる対象とならない。また、正規表現を指定する事も可能である。
      *
-     * @param name �p�b�P�[�W�����܂ފ��S�C���N���X���B���K�\�����B
+     * @param name パッケージ名を含む完全修飾クラス名。正規表現も可。
      */
     public void setNoTargetClassName(String name);
     
     /**
-     * Interceptor�����Ȃ��Ώۂ̃N���X�����擾����B<p>
+     * Interceptorを入れない対象のクラス名を取得する。<p>
      *
-     * @return �p�b�P�[�W�����܂ފ��S�C���N���X���B���K�\�����B
+     * @return パッケージ名を含む完全修飾クラス名。正規表現も可。
      */
     public String getNoTargetClassName();
     
     /**
-     * Interceptor������Ώۂ̃C���X�^���X�̃N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X���̃C���X�^���X��Interceptor������ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�C���X�^���X�͌��肳��Ȃ��B
+     * Interceptorを入れる対象のインスタンスのクラス名を指定する。<p>
+     * ここで指定されたクラス名のインスタンスがInterceptorを入れる対象となる。指定しない場合は、インスタンスは限定されない。
      *
-     * @param name �p�b�P�[�W�����܂ފ��S�C���N���X��
+     * @param name パッケージ名を含む完全修飾クラス名
      */
     public void setTargetInstanceClassName(String name);
     
     /**
-     * Interceptor������Ώۂ̃C���X�^���X�̃N���X�����擾����B<p>
+     * Interceptorを入れる対象のインスタンスのクラス名を取得する。<p>
      *
-     * @return �p�b�P�[�W�����܂ފ��S�C���N���X���B
+     * @return パッケージ名を含む完全修飾クラス名。
      */
     public String getTargetInstanceClassName();
     
     /**
-     * Interceptor������Ώۂ̃��\�b�h�̃��\�b�h�C���q���w�肷��B<p>
-     * �����Ŏw�肳�ꂽ���\�b�h�C���q�̃��\�b�h��Interceptor������ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A���\�b�h�C���q�͌��肳��Ȃ��B<br>
-     * �C���q��ے肷��ꍇ�́A�e�C���q�̑O��"!"��t�^���邱�ƁB
+     * Interceptorを入れる対象のメソッドのメソッド修飾子を指定する。<p>
+     * ここで指定されたメソッド修飾子のメソッドがInterceptorを入れる対象となる。指定しない場合は、メソッド修飾子は限定されない。<br>
+     * 修飾子を否定する場合は、各修飾子の前に"!"を付与すること。
      *
-     * @param modifiers ���\�b�h�C���q������
+     * @param modifiers メソッド修飾子文字列
      */
     public void setTargetMethodModifiers(String modifiers);
     
     /**
-     * Interceptor������Ώۂ̃��\�b�h�̃��\�b�h�C���q���擾����B<p>
+     * Interceptorを入れる対象のメソッドのメソッド修飾子を取得する。<p>
      *
-     * @return ���\�b�h�C���q������
+     * @return メソッド修飾子文字列
      */
     public String getTargetMethodModifiers();
     
     /**
-     * Interceptor������Ώۂ̃��\�b�h�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ���\�b�h���̃��\�b�h��Interceptor������ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A���\�b�h���͌��肳��Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * Interceptorを入れる対象のメソッド名を指定する。<p>
+     * ここで指定されたメソッド名のメソッドがInterceptorを入れる対象となる。指定しない場合は、メソッド名は限定されない。また、正規表現を指定する事も可能である。
      *
-     * @param name ���\�b�h���B���K�\�����B
+     * @param name メソッド名。正規表現も可。
      */
     public void setTargetMethodName(String name);
     
     /**
-     * Interceptor������Ώۂ̃��\�b�h�����擾����B<p>
+     * Interceptorを入れる対象のメソッド名を取得する。<p>
      *
-     * @return ���\�b�h���B���K�\�����B
+     * @return メソッド名。正規表現も可。
      */
     public String getTargetMethodName();
     
     /**
-     * Interceptor������Ώۂ̃��\�b�h�̈����̌^��\���N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�����^�������\�b�h��Interceptor������ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�����^�͌��肳��Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * Interceptorを入れる対象のメソッドの引数の型を表すクラス名を指定する。<p>
+     * ここで指定された引数型を持つメソッドがInterceptorを入れる対象となる。指定しない場合は、引数型は限定されない。また、正規表現を指定する事も可能である。
      *
-     * @param paramTypes ���\�b�h�̈����̌^��\���N���X���̔z��B���K�\�����B
+     * @param paramTypes メソッドの引数の型を表すクラス名の配列。正規表現も可。
      */
     public void setTargetParameterTypes(String[] paramTypes);
     
     /**
-     * Interceptor������Ώۂ̃��\�b�h�̈����̌^��\���N���X�����擾����B<p>
+     * Interceptorを入れる対象のメソッドの引数の型を表すクラス名を取得する。<p>
      *
-     * @return ���\�b�h�̈����̌^��\���N���X���̔z��B���K�\�����B
+     * @return メソッドの引数の型を表すクラス名の配列。正規表現も可。
      */
     public String[] getTargetParameterTypes();
     
     /**
-     * �}������Interceptor�`�F�[���̃��X�g�ł���{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}�T�[�r�X�̃T�[�r�X�����w�肷��B<p>
+     * 挿入するInterceptorチェーンのリストである{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}サービスのサービス名を指定する。<p>
      *
-     * @param name InterceptorChainList�T�[�r�X�̃T�[�r�X��
+     * @param name InterceptorChainListサービスのサービス名
      */
     public void setInterceptorChainListServiceName(ServiceName name);
     
     /**
-     * �}������Interceptor�`�F�[���̃��X�g�ł���{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * 挿入するInterceptorチェーンのリストである{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}サービスのサービス名を取得する。<p>
      *
-     * @return InterceptorChainList�T�[�r�X�̃T�[�r�X��
+     * @return InterceptorChainListサービスのサービス名
      */
     public ServiceName getInterceptorChainListServiceName();
     
     /**
-     * �C���^�[�Z�v�g�����Ώۂ��Ăяo��{@link jp.ossc.nimbus.service.aop.Invoker Invoker}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �f�t�H���g�ł́A{@link WrappedMethodReflectionCallInvokerService}�������I�ɐ�������g�p�����B<br>
+     * インターセプトした対象を呼び出す{@link jp.ossc.nimbus.service.aop.Invoker Invoker}サービスのサービス名を設定する。<p>
+     * デフォルトでは、{@link WrappedMethodReflectionCallInvokerService}が自動的に生成され使用される。<br>
      *
-     * @param name InterceptorChainList�T�[�r�X�̃T�[�r�X��
+     * @param name InterceptorChainListサービスのサービス名
      */
     public void setInvokerServiceName(ServiceName name);
     
     /**
-     * �C���^�[�Z�v�g�����Ώۂ��Ăяo��{@link jp.ossc.nimbus.service.aop.Invoker Invoker}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * インターセプトした対象を呼び出す{@link jp.ossc.nimbus.service.aop.Invoker Invoker}サービスのサービス名を取得する。<p>
      *
-     * @return Invoker�T�[�r�X�̃T�[�r�X��
+     * @return Invokerサービスのサービス名
      */
     public ServiceName getInvokerServiceName();
     
     /**
-     * ���̃T�[�r�X��ÓI�R���p�C���Ɏg�p���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * このサービスを静的コンパイルに使用するかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isStatic �ÓI�R���p�C���Ɏg�p����ꍇ�́Atrue
+     * @param isStatic 静的コンパイルに使用する場合は、true
      */
     public void setStaticCompile(boolean isStatic);
     
     /**
-     * ���̃T�[�r�X��ÓI�R���p�C���Ɏg�p���邩�ǂ����𔻒�ݒ肷��B<p>
+     * このサービスを静的コンパイルに使用するかどうかを判定設定する。<p>
      *
-     * @return true�̏ꍇ�A�ÓI�R���p�C���Ɏg�p����
+     * @return trueの場合、静的コンパイルに使用する
      */
     public boolean isStaticCompile();
     
     /**
-     * ���̃A�X�y�N�g�ϊ������ʂ���A�X�y�N�g�̃L�[��ݒ肷��B<p>
-     * �����L�[�����A�X�y�N�g�́A�d�����ăA�X�y�N�g����Ȃ��B<br>
-     * �f�t�H���g�ł́A�T�[�r�X�����g�p�����B<br>
+     * このアスペクト変換を識別するアスペクトのキーを設定する。<p>
+     * 同じキーを持つアスペクトは、重複してアスペクトされない。<br>
+     * デフォルトでは、サービス名が使用される。<br>
      *
-     * @param key �A�X�y�N�g�̃L�[
+     * @param key アスペクトのキー
      */
     public void setAspectKey(String key);
     
     /**
-     * ���̃A�X�y�N�g�ϊ������ʂ���A�X�y�N�g�̃L�[���擾����B<p>
+     * このアスペクト変換を識別するアスペクトのキーを取得する。<p>
      *
-     * @return �A�X�y�N�g�̃L�[
+     * @return アスペクトのキー
      */
     public String getAspectKey();
     
     /**
-     * NimbusClassLoader��VM���x����AspectTranslator��o�^���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g��true�ŁAVM���x����AspectTranslator��o�^����Bfalse�ɐݒ肷��ƁAThreadContext���x����AspectTranslator��o�^����B
+     * NimbusClassLoaderにVMレベルでAspectTranslatorを登録するかどうかを設定する。<p>
+     * デフォルトはtrueで、VMレベルでAspectTranslatorを登録する。falseに設定すると、ThreadContextレベルでAspectTranslatorを登録する。
      *
-     * @param isRegister VM���x����AspectTranslator��o�^����ꍇ�́Atrue
+     * @param isRegister VMレベルでAspectTranslatorを登録する場合は、true
      */
     public void setRegisterVMClassLoader(boolean isRegister);
     
     /**
-     * NimbusClassLoader��VM���x����AspectTranslator��o�^���邩�ǂ����𔻒肷��B<p>
+     * NimbusClassLoaderにVMレベルでAspectTranslatorを登録するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�́AVM���x����AspectTranslator��o�^����Bfalse�̏ꍇ�́AThreadContext���x����AspectTranslator��o�^����
+     * @return trueの場合は、VMレベルでAspectTranslatorを登録する。falseの場合は、ThreadContextレベルでAspectTranslatorを登録する
      */
     public boolean isRegisterVMClassLoader();
 }

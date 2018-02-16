@@ -35,25 +35,25 @@ import javax.management.MBeanServerConnection;
 import javax.management.remote.JMXConnector;
 
 /**
- * MBeanServerConnection‚ğæ“¾‚·‚éƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * MBeanServerConnectionã‚’å–å¾—ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface MBeanServerConnectionFactory{
     
     /**
-     * MBeanServerConnection‚ğæ“¾‚·‚éB<p>
+     * MBeanServerConnectionã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return MBeanServerConnection
-     * @exception MBeanServerConnectionFactoryException ƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception MBeanServerConnectionFactoryException ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MBeanServerConnection getConnection() throws MBeanServerConnectionFactoryException;
     
     /**
-     * JMXConnector‚ğæ“¾‚·‚éB<p>
+     * JMXConnectorã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return JMXConnector
-     * @exception MBeanServerConnectionFactoryException ƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception MBeanServerConnectionFactoryException ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public JMXConnector getJMXConnector() throws MBeanServerConnectionFactoryException;
 }

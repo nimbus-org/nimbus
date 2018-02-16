@@ -5,7 +5,7 @@ The DOCTYPE is:
       "-//Nimbus//DTD Nimbus RestServer definition 1.0//JA"
       "http://nimbus.sourceforge.jp/dtd/restserver_1_0.dtd">
 
-—á:
+ä¾‹:
     <restserver>
         
         <resource name="/users">
@@ -75,58 +75,58 @@ The DOCTYPE is:
     </restserver>
 -->
 
-<!-- restserver—v‘f‚ÍARESTƒT[ƒo’è‹`‚Ìƒ‹[ƒg—v‘f‚Å‚·B
+<!-- restserverè¦ç´ ã¯ã€RESTã‚µãƒ¼ãƒå®šç¾©ã®ãƒ«ãƒ¼ãƒˆè¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT restserver (resource+)>
 
-<!-- resource—v‘f‚ÍARESTƒT[ƒo‚É‘¶Ý‚·‚éƒŠƒ\[ƒX‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- resourceè¦ç´ ã¯ã€RESTã‚µãƒ¼ãƒã«å­˜åœ¨ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT resource (post? | get? | head? | put? | delete? | options?)*>
 
-<!-- name‘®«‚ÍARESTƒT[ƒo‚ÌƒŠƒ\[ƒX‚ðŽ¦‚·URI‚ð’è‹`‚µ‚Ü‚·B
+<!-- nameå±žæ€§ã¯ã€RESTã‚µãƒ¼ãƒã®ãƒªã‚½ãƒ¼ã‚¹ã‚’ç¤ºã™URIã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST resource name CDATA #REQUIRED>
 
-<!-- post—v‘f‚ÍAƒŠƒ\[ƒX‚ÌPOSTƒƒ\ƒbƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- postè¦ç´ ã¯ã€ãƒªã‚½ãƒ¼ã‚¹ã®POSTãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT post (description? | request? | response?)*>
 
-<!-- get—v‘f‚ÍAƒŠƒ\[ƒX‚ÌGETƒƒ\ƒbƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- getè¦ç´ ã¯ã€ãƒªã‚½ãƒ¼ã‚¹ã®GETãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT get (description? | request? | response)*>
 
-<!-- head—v‘f‚ÍAƒŠƒ\[ƒX‚ÌHEADƒƒ\ƒbƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- headè¦ç´ ã¯ã€ãƒªã‚½ãƒ¼ã‚¹ã®HEADãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT head (description? | request?)>
 
-<!-- put—v‘f‚ÍAƒŠƒ\[ƒX‚ÌPUTƒƒ\ƒbƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- putè¦ç´ ã¯ã€ãƒªã‚½ãƒ¼ã‚¹ã®PUTãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT put (description? | request? | response?)*>
 
-<!-- delete—v‘f‚ÍAƒŠƒ\[ƒX‚ÌDELETEƒƒ\ƒbƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- deleteè¦ç´ ã¯ã€ãƒªã‚½ãƒ¼ã‚¹ã®DELETEãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT delete (description? | request? | response?)*>
 
-<!-- options—v‘f‚ÍAƒŠƒ\[ƒX‚ÌDELETEƒƒ\ƒbƒh‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- optionsè¦ç´ ã¯ã€ãƒªã‚½ãƒ¼ã‚¹ã®DELETEãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT options EMPTY>
 
-<!-- description—v‘f‚ÍAƒƒ\ƒbƒh‚Ìà–¾‚ð’è‹`‚µ‚Ü‚·B
+<!-- descriptionè¦ç´ ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®èª¬æ˜Žã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ELEMENT description (#PCDATA)>
 
-<!-- request—v‘f‚ÍAƒƒ\ƒbƒh‚ÌƒŠƒNƒGƒXƒgî•ñ‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- requestè¦ç´ ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT request EMPTY>
 
-<!-- code‘®«‚ÍAƒŠƒNƒGƒXƒgî•ñ‚ðŠi”[‚·‚éBean‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’æ ¼ç´ã™ã‚‹Beanã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST request code CDATA #REQUIRED>
 
-<!-- response—v‘f‚ÍAƒƒ\ƒbƒh‚ÌƒŒƒXƒ|ƒ“ƒXî•ñ‚ð’è‹`‚·‚é—v‘f‚Å‚·B
+<!-- responseè¦ç´ ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±ã‚’å®šç¾©ã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT response EMPTY>
 
-<!-- code‘®«‚ÍAƒŒƒXƒ|ƒ“ƒXî•ñ‚ðŠi”[‚·‚éBean‚ÌƒNƒ‰ƒX–¼‚ð’è‹`‚µ‚Ü‚·B
+<!-- codeå±žæ€§ã¯ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹Beanã®ã‚¯ãƒ©ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST response code CDATA #REQUIRED>

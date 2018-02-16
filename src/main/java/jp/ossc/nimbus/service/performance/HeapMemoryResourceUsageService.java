@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.util.ComparableNumber;
 
 /**
- * ヒープメモリ利用量。<p>
+ * 繝偵�ｼ繝励Γ繝｢繝ｪ蛻ｩ逕ｨ驥上�<p>
  *
  * @author M.Takata
  */

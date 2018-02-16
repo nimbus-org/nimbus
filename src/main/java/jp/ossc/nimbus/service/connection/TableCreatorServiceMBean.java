@@ -39,7 +39,7 @@ import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
- * {@link TableCreatorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TableCreatorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see TableCreatorService
@@ -47,622 +47,622 @@ import jp.ossc.nimbus.util.converter.ConvertException;
 public interface TableCreatorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactory‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactory‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚ÌStreamConverter‚ğg‚Á‚ÄA{@link #setInsertRecords(String)}‚â{@link #setInsertRecordsFilePath(String)}‚Åw’è‚³‚ê‚½‘}“üƒŒƒR[ƒh•¶š—ñ‚ğ{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚É•ÏŠ·‚µ‚ÄAƒe[ƒuƒ‹‚ÉINSERT‚µ‚Ä‚¢‚­B<br>
-     * ‚Ü‚½A{@link #setBackupFilePath(String)}‚Åw’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ÉƒoƒbƒNƒAƒbƒv‚·‚éÛ‚âA“¯—l‚É‚»‚Ìƒtƒ@ƒCƒ‹‚©‚ç•œŒ³‚·‚éÛ‚É‚àg—p‚·‚éB<br>
+     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®StreamConverterã‚’ä½¿ã£ã¦ã€{@link #setInsertRecords(String)}ã‚„{@link #setInsertRecordsFilePath(String)}ã§æŒ‡å®šã•ã‚ŒãŸæŒ¿å…¥ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã«å¤‰æ›ã—ã¦ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã«INSERTã—ã¦ã„ãã€‚<br>
+     * ã¾ãŸã€{@link #setBackupFilePath(String)}ã§æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹éš›ã‚„ã€åŒæ§˜ã«ãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å¾©å…ƒã™ã‚‹éš›ã«ã‚‚ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param name StreamConverter‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRecordListConverterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverter‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRecordListConverterServiceName();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚Ì‘¶İŠm”F‚ğ‚·‚éSQL‚ğİ’è‚·‚éB<p>
-     * Œ‹‰Ê‚Æ‚µ‚ÄAƒe[ƒuƒ‹‚ÌŒ”‚ğ•Ô‚·SQL‚É‚·‚é•K—v‚ª‚ ‚éB<br>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®å­˜åœ¨ç¢ºèªã‚’ã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * çµæœã¨ã—ã¦ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä»¶æ•°ã‚’è¿”ã™SQLã«ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param query ƒe[ƒuƒ‹‚Ì‘¶İŠm”F‚ğ‚·‚éSQL
+     * @param query ãƒ†ãƒ¼ãƒ–ãƒ«ã®å­˜åœ¨ç¢ºèªã‚’ã™ã‚‹SQL
      */
     public void setExistsTableQuery(String query);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚Ì‘¶İŠm”F‚ğ‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®å­˜åœ¨ç¢ºèªã‚’ã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚Ì‘¶İŠm”F‚ğ‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã®å­˜åœ¨ç¢ºèªã‚’ã™ã‚‹SQL
      */
     public String getExistsTableQuery();
     
     /**
-     * ƒoƒbƒNƒAƒbƒv‘ÎÛ‚ÌƒŒƒR[ƒh‚ğŒŸõ‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒoƒbƒNƒAƒbƒv‘ÎÛ‚ÌƒŒƒR[ƒh‚ğŒŸõ‚·‚éSQL
+     * @param query ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹SQL
      */
     public void setSelectQuery(String query);
     
     /**
-     * ƒoƒbƒNƒAƒbƒv‘ÎÛ‚ÌƒŒƒR[ƒh‚ğŒŸõ‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒNƒAƒbƒv‘ÎÛ‚ÌƒŒƒR[ƒh‚ğŒŸõ‚·‚éSQL
+     * @return ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹SQL
      */
     public String getSelectQuery();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğì¬‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒe[ƒuƒ‹‚ğì¬‚·‚éSQL
+     * @param query ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹SQL
      */
     public void setCreateTableQuery(String query);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğì¬‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ğì¬‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹SQL
      */
     public String getCreateTableQuery();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğì¬‚·‚é’¼‘O‚ÉÀs‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queries ƒe[ƒuƒ‹‚ğì¬‚·‚é’¼‘O‚ÉÀs‚·‚éSQL
+     * @param queries ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public void setPreCreateTableQueries(String[] queries);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğì¬‚·‚é’¼‘O‚ÉÀs‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ğì¬‚·‚é’¼‘O‚ÉÀs‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public String[] getPreCreateTableQueries();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğì¬‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queries ƒe[ƒuƒ‹‚ğì¬‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL
+     * @param queries ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public void setPostCreateTableQueries(String[] queries);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğì¬‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ğì¬‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public String[] getPostCreateTableQueries();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğíœ‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒe[ƒuƒ‹‚ğíœ‚·‚éSQL
+     * @param query ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹SQL
      */
     public void setDropTableQuery(String query);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğíœ‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ğíœ‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹SQL
      */
     public String getDropTableQuery();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğíœ‚·‚é’¼‘O‚ÉÀs‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queries ƒe[ƒuƒ‹‚ğíœ‚·‚é’¼‘O‚ÉÀs‚·‚éSQL
+     * @param queries ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public void setPreDropTableQueries(String[] queries);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğíœ‚·‚é’¼‘O‚ÉÀs‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ğíœ‚·‚é’¼‘O‚ÉÀs‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ç›´å‰ã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public String[] getPreDropTableQueries();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğíœ‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queries ƒe[ƒuƒ‹‚ğíœ‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL
+     * @param queries ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public void setPostDropTableQueries(String[] queries);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ğíœ‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ğíœ‚µ‚½’¼Œã‚ÉÀs‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã—ãŸç›´å¾Œã«å®Ÿè¡Œã™ã‚‹SQL
      */
     public String[] getPostDropTableQueries();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éSQL
+     * @param query ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹SQL
      */
     public void setDeleteQuery(String query);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹SQL
      */
     public String getDeleteQuery();
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é–„‚ß‚İSQL‚ğİ’è‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹åŸ‹ã‚è¾¼ã¿SQLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é–„‚ß‚İSQL
+     * @param query ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹åŸ‹ã‚è¾¼ã¿SQL
      */
     public void setInsertQuery(String query);
     
     /**
-     * ‘ÎÛ‚Æ‚È‚éƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é–„‚ß‚İSQL‚ğæ“¾‚·‚éB<p>
+     * å¯¾è±¡ã¨ãªã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹åŸ‹ã‚è¾¼ã¿SQLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é–„‚ß‚İSQL
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹åŸ‹ã‚è¾¼ã¿SQL
      */
     public String getInsertQuery();
     
     /**
-     * ‘}“ü‚·‚éƒŒƒR[ƒh•¶š—ñ‚ğİ’è‚·‚éB<p>
-     * ƒŒƒR[ƒh•¶š—ñ‚ÍAƒoƒCƒgƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚³‚êA{@link #setRecordListConverterServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚É‚æ‚Á‚ÄA{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚É•ÏŠ·‚³‚ê‚éB<br>
-     * •ÏŠ·‚³‚ê‚½RecordList“à‚Ì{@link jp.ossc.nimbus.beans.dataset.Record Record}‚ªA{@link #setInsertQuery(String)}‚Åw’è‚³‚ê‚½–„‚ß‚İSQL‚É‚æ‚Á‚ÄAƒe[ƒuƒ‹‚É‘}“ü‚³‚ê‚éB<br>
-     * ƒŒƒR[ƒh•¶š—ñ‚Ìw’è‚ğŠO•”ƒtƒ@ƒCƒ‹‚Ås‚¢‚½‚¢ê‡‚ÍA{@link #setInsertRecordsFilePath(String)}‚Åİ’è‚·‚éB<br>
+     * æŒ¿å…¥ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã¯ã€ãƒã‚¤ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã•ã‚Œã€{@link #setRecordListConverterServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã£ã¦ã€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
+     * å¤‰æ›ã•ã‚ŒãŸRecordListå†…ã®{@link jp.ossc.nimbus.beans.dataset.Record Record}ãŒã€{@link #setInsertQuery(String)}ã§æŒ‡å®šã•ã‚ŒãŸåŸ‹ã‚è¾¼ã¿SQLã«ã‚ˆã£ã¦ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã«æŒ¿å…¥ã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã®æŒ‡å®šã‚’å¤–éƒ¨ãƒ•ã‚¡ã‚¤ãƒ«ã§è¡Œã„ãŸã„å ´åˆã¯ã€{@link #setInsertRecordsFilePath(String)}ã§è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param records ƒŒƒR[ƒh•¶š—ñ
+     * @param records ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public void setInsertRecords(String records);
     
     /**
-     * ‘}“ü‚·‚éƒŒƒR[ƒh•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ¿å…¥ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh•¶š—ñ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—
      */
     public String getInsertRecords();
     
     /**
-     * ‘}“ü‚·‚éƒŒƒR[ƒhƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
-     * ƒtƒ@ƒCƒ‹‚ÍAƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚³‚êA{@link #setRecordListConverterServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚É‚æ‚Á‚ÄA{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚É•ÏŠ·‚³‚ê‚éB<br>
-     * •ÏŠ·‚³‚ê‚½RecordList“à‚Ì{@link jp.ossc.nimbus.beans.dataset.Record Record}‚ªA{@link #setInsertQuery(String)}‚Åw’è‚³‚ê‚½–„‚ß‚İSQL‚É‚æ‚Á‚ÄAƒe[ƒuƒ‹‚É‘}“ü‚³‚ê‚éB<br>
-     * ƒŒƒR[ƒh•¶š—ñ‚Ìw’è‚ğ’¼Ús‚¢‚½‚¢ê‡‚ÍA{@link #setInsertRecords(String)}‚Åİ’è‚·‚éB<br>
+     * æŒ¿å…¥ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã•ã‚Œã€{@link #setRecordListConverterServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã£ã¦ã€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
+     * å¤‰æ›ã•ã‚ŒãŸRecordListå†…ã®{@link jp.ossc.nimbus.beans.dataset.Record Record}ãŒã€{@link #setInsertQuery(String)}ã§æŒ‡å®šã•ã‚ŒãŸåŸ‹ã‚è¾¼ã¿SQLã«ã‚ˆã£ã¦ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã«æŒ¿å…¥ã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã®æŒ‡å®šã‚’ç›´æ¥è¡Œã„ãŸã„å ´åˆã¯ã€{@link #setInsertRecords(String)}ã§è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param path ƒŒƒR[ƒhƒtƒ@ƒCƒ‹ƒpƒX
+     * @param path ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
      */
     public void setInsertRecordsFilePath(String path);
     
     /**
-     * ‘}“ü‚·‚éƒŒƒR[ƒhƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * æŒ¿å…¥ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getInsertRecordsFilePath();
     
     /**
-     * ‘}“ü‚·‚éƒŒƒR[ƒhƒtƒ@ƒCƒ‹‹y‚ÑƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * æŒ¿å…¥ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«åŠã³ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enc •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param enc æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFileEncoding(String enc);
     
     /**
-     * ‘}“ü‚·‚éƒŒƒR[ƒhƒtƒ@ƒCƒ‹‹y‚ÑƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ¿å…¥ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«åŠã³ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFileEncoding();
     
     /**
-     * ƒŒƒR[ƒh•¶š—ñ‚ğ“Ç‚İ‚Ş{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public void setRecordListSchema(String schema);
     
     /**
-     * ƒŒƒR[ƒh•¶š—ñ‚ğ“Ç‚İ‚Ş{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ÌƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã®ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒL[ƒ}•¶š—ñ
+     * @return ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public String getRecordListSchema();
     
     /**
-     * ƒŒƒR[ƒh•¶š—ñ‚ğ“Ç‚İ‚Ş{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param list RecordList
      */
     public void setRecordList(RecordList list);
     
     /**
-     * ƒŒƒR[ƒh•¶š—ñ‚ğ“Ç‚İ‚Ş{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return RecordList
      */
     public RecordList getRecordList();
     
     /**
-     * ƒe[ƒuƒ‹‚ÉƒŒƒR[ƒh‚ğƒoƒbƒ`Às‚Å‘}“ü‚·‚éê‡‚Ìƒoƒbƒ`Œ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Åƒoƒbƒ`Às‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒãƒƒãƒå®Ÿè¡Œã§æŒ¿å…¥ã™ã‚‹å ´åˆã®ãƒãƒƒãƒä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ãƒãƒƒãƒå®Ÿè¡Œã—ãªã„ã€‚<br>
      *
-     * @param size ƒoƒbƒ`Œ”
+     * @param size ãƒãƒƒãƒä»¶æ•°
      */
     public void setInsertBatchSize(int size);
     
     /**
-     * ƒe[ƒuƒ‹‚ÉƒŒƒR[ƒh‚ğƒoƒbƒ`Às‚Å‘}“ü‚·‚éê‡‚Ìƒoƒbƒ`Œ”‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒãƒƒãƒå®Ÿè¡Œã§æŒ¿å…¥ã™ã‚‹å ´åˆã®ãƒãƒƒãƒä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒ`Œ”
+     * @return ãƒãƒƒãƒä»¶æ•°
      */
     public int getInsertBatchSize();
     
     /**
-     * ƒe[ƒuƒ‹‚©‚çƒŒƒR[ƒh‚ğŒŸõ‚·‚éÛ‚ÌƒtƒFƒbƒ`ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‹ã‚‰ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹éš›ã®ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size ƒtƒFƒbƒ`ƒTƒCƒY
+     * @param size ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º
      */
     public void setFetchSize(int size);
     
     /**
-     * ƒe[ƒuƒ‹‚©‚çƒŒƒR[ƒh‚ğŒŸõ‚·‚éÛ‚ÌƒtƒFƒbƒ`ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‹ã‚‰ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹éš›ã®ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒFƒbƒ`ƒTƒCƒY
+     * @return ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º
      */
     public int getFetchSize();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAŒ»İ‚Ìƒe[ƒuƒ‹‚Ì“à—e‚ğƒoƒbƒNƒAƒbƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒoƒbƒNƒAƒbƒv‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ç¾åœ¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã®å†…å®¹ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã—ãªã„ã€‚<br>
      *
-     * @param isBackup ƒoƒbƒNƒAƒbƒv‚·‚éê‡‚ÍAtrue
+     * @param isBackup ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setBackupOnStart(boolean isBackup);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAŒ»İ‚Ìƒe[ƒuƒ‹‚Ì“à—e‚ğƒoƒbƒNƒAƒbƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ç¾åœ¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã®å†…å®¹ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒoƒbƒNƒAƒbƒv‚·‚é
+     * @return trueã®å ´åˆã¯ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹
      */
     public boolean isBackupOnStart();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAŒ»İ‚Ìƒe[ƒuƒ‹‚Ì“à—e‚ğ•œŒ³‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å•œŒ³‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ç¾åœ¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã®å†…å®¹ã‚’å¾©å…ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å¾©å…ƒã—ãªã„ã€‚<br>
      *
-     * @param isRestore •œŒ³‚·‚éê‡‚ÍAtrue
+     * @param isRestore å¾©å…ƒã™ã‚‹å ´åˆã¯ã€true
      */
     public void setRestoreOnStart(boolean isRestore);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAŒ»İ‚Ìƒe[ƒuƒ‹‚Ì“à—e‚ğ•œŒ³‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ç¾åœ¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã®å†…å®¹ã‚’å¾©å…ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA•œŒ³‚·‚é
+     * @return trueã®å ´åˆã¯ã€å¾©å…ƒã™ã‚‹
      */
     public boolean isRestoreOnStart();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åíœ‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‰Šé™¤ã—ãªã„ã€‚<br>
      *
-     * @param isDrop íœ‚·‚éê‡‚ÍAtrue
+     * @param isDrop å‰Šé™¤ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDropTableOnStart(boolean isDrop);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAíœ‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‰Šé™¤ã™ã‚‹
      */
     public boolean isDropTableOnStart();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åì¬‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ä½œæˆã—ãªã„ã€‚<br>
      *
-     * @param isCreate ì¬‚·‚éê‡‚ÍAtrue
+     * @param isCreate ä½œæˆã™ã‚‹å ´åˆã¯ã€true
      */
     public void setCreateTableOnStart(boolean isCreate);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ğì¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAì¬‚·‚é
+     * @return trueã®å ´åˆã¯ã€ä½œæˆã™ã‚‹
      */
     public boolean isCreateTableOnStart();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åíœ‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‰Šé™¤ã—ãªã„ã€‚<br>
      *
-     * @param isDelete íœ‚·‚éê‡‚ÍAtrue
+     * @param isDelete å‰Šé™¤ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDeleteOnStart(boolean isDelete);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAíœ‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‰Šé™¤ã™ã‚‹
      */
     public boolean isDeleteOnStart();
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å‘}“ü‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æŒ¿å…¥ã—ãªã„ã€‚<br>
      *
-     * @param isInsert ‘}“ü‚·‚éê‡‚ÍAtrue
+     * @param isInsert æŒ¿å…¥ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setInsertOnStart(boolean isInsert);
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA‘}“ü‚·‚é
+     * @return trueã®å ´åˆã¯ã€æŒ¿å…¥ã™ã‚‹
      */
     public boolean isInsertOnStart();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åíœ‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‰Šé™¤ã—ãªã„ã€‚<br>
      *
-     * @param isDelete íœ‚·‚éê‡‚ÍAtrue
+     * @param isDelete å‰Šé™¤ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDeleteOnStop(boolean isDelete);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAíœ‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‰Šé™¤ã™ã‚‹
      */
     public boolean isDeleteOnStop();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å‘}“ü‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æŒ¿å…¥ã—ãªã„ã€‚<br>
      *
-     * @param isInsert ‘}“ü‚·‚éê‡‚ÍAtrue
+     * @param isInsert æŒ¿å…¥ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setInsertOnStop(boolean isInsert);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA‘}“ü‚·‚é
+     * @return trueã®å ´åˆã¯ã€æŒ¿å…¥ã™ã‚‹
      */
     public boolean isInsertOnStop();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åíœ‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‰Šé™¤ã—ãªã„ã€‚<br>
      *
-     * @param isDrop íœ‚·‚éê‡‚ÍAtrue
+     * @param isDrop å‰Šé™¤ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDropTableOnStop(boolean isDrop);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ğíœ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAíœ‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‰Šé™¤ã™ã‚‹
      */
     public boolean isDropTableOnStop();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ğ•œŒ³‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å•œŒ³‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å¾©å…ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å¾©å…ƒã—ãªã„ã€‚<br>
      *
-     * @param isRestore •œŒ³‚·‚éê‡‚ÍAtrue
+     * @param isRestore å¾©å…ƒã™ã‚‹å ´åˆã¯ã€true
      */
     public void setRestoreOnStop(boolean isRestore);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAƒe[ƒuƒ‹‚ğ•œŒ³‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å¾©å…ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA•œŒ³‚·‚é
+     * @return trueã®å ´åˆã¯ã€å¾©å…ƒã™ã‚‹
      */
     public boolean isRestoreOnStop();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAŒ»İ‚Ìƒe[ƒuƒ‹‚ğƒoƒbƒNƒAƒbƒv‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒoƒbƒNƒAƒbƒv‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ç¾åœ¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã—ãªã„ã€‚<br>
      *
-     * @param isBackup ƒoƒbƒNƒAƒbƒv‚·‚éê‡‚ÍAtrue
+     * @param isBackup ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setBackupOnStop(boolean isBackup);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉAŒ»İ‚Ìƒe[ƒuƒ‹‚ğƒoƒbƒNƒAƒbƒv‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã€ç¾åœ¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒoƒbƒNƒAƒbƒv‚·‚é
+     * @return trueã®å ´åˆã¯ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹
      */
     public boolean isBackupOnStop();
     
     /**
-     * ƒe[ƒuƒ‹‚ğíœ‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA‘S‚Ä‚ÌSQLException‚ğ–³‹‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€å…¨ã¦ã®SQLExceptionã‚’ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param code ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @param code ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public void setIgnoreSQLExceptionErrorCodeOnDropTable(int[] code);
     
     /**
-     * ƒe[ƒuƒ‹‚ğíœ‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @return ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public int[] getIgnoreSQLExceptionErrorCodeOnDropTable();
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA‘S‚Ä‚ÌSQLException‚ğ–³‹‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€å…¨ã¦ã®SQLExceptionã‚’ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param code ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @param code ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public void setIgnoreSQLExceptionErrorCodeOnDelete(int[] code);
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @return ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public int[] getIgnoreSQLExceptionErrorCodeOnDelete();
     
     /**
-     * ƒe[ƒuƒ‹‚ğì¬‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA‘S‚Ä‚ÌSQLException‚ğ–³‹‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€å…¨ã¦ã®SQLExceptionã‚’ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param code ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @param code ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public void setIgnoreSQLExceptionErrorCodeOnCreateTable(int[] code);
     
     /**
-     * ƒe[ƒuƒ‹‚ğì¬‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @return ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public int[] getIgnoreSQLExceptionErrorCodeOnCreateTable();
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA‘S‚Ä‚ÌSQLException‚ğ–³‹‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€å…¨ã¦ã®SQLExceptionã‚’ç„¡è¦–ã—ãªã„ã€‚<br>
      *
-     * @param code ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @param code ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public void setIgnoreSQLExceptionErrorCodeOnInsert(int[] code);
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚éÛ‚É–³‹‚·‚éSQLException‚ÌƒGƒ‰[ƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹éš›ã«ç„¡è¦–ã™ã‚‹SQLExceptionã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒGƒ‰[ƒR[ƒh‚Ì”z—ñ
+     * @return ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public int[] getIgnoreSQLExceptionErrorCodeOnInsert();
     
     /**
-     * ˆê˜A‚Ìƒe[ƒuƒ‹‘€ì‚ğƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““I‚ÉÀs‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ˆê˜A‚Ìƒe[ƒuƒ‹‘€ì‚Æ‚ÍAƒT[ƒrƒX‚ÌŠJn‹y‚Ñ’â~‚Ìƒe[ƒuƒ‹‘€ìA{@link #executeAllQuery()}ŒÄ‚Ño‚µ‚Ì‘€ì‚Å‚ ‚éB<br>
+     * ä¸€é€£ã®ãƒ†ãƒ¼ãƒ–ãƒ«æ“ä½œã‚’ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çš„ã«å®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä¸€é€£ã®ãƒ†ãƒ¼ãƒ–ãƒ«æ“ä½œã¨ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚åŠã³åœæ­¢æ™‚ã®ãƒ†ãƒ¼ãƒ–ãƒ«æ“ä½œã€{@link #executeAllQuery()}å‘¼ã³å‡ºã—æ™‚ã®æ“ä½œã§ã‚ã‚‹ã€‚<br>
      *
-     * @param isTransacted ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““I‚ÉÀs‚·‚éê‡true
+     * @param isTransacted ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çš„ã«å®Ÿè¡Œã™ã‚‹å ´åˆtrue
      */
     public void setTransacted(boolean isTransacted);
     
     /**
-     * ˆê˜A‚Ìƒe[ƒuƒ‹‘€ì‚ğƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““I‚ÉÀs‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¸€é€£ã®ãƒ†ãƒ¼ãƒ–ãƒ«æ“ä½œã‚’ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çš„ã«å®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““I‚ÉÀs‚·‚é
+     * @return trueã®å ´åˆã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çš„ã«å®Ÿè¡Œã™ã‚‹
      */
     public boolean isTransacted();
     
     /**
-     * Java‚ÌŒ^‚É‘Î‚·‚éAJDBC‚ÌŒ^‚ğİ’è‚·‚éB<p>
-     * ƒe[ƒuƒ‹‚ÉƒŒƒR[ƒh‚ğ‘}“ü‚·‚é‚ÉA’l‚ªnull‚Ìê‡‚ÉA‚±‚Ìƒ}ƒbƒsƒ“ƒO‚ğ—p‚¢‚ÄA{@link java.sql.PreparedStatement#setNull(int, int)}‚ğŒÄ‚Ño‚·B<br>
+     * Javaã®å‹ã«å¯¾ã™ã‚‹ã€JDBCã®å‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹æ™‚ã«ã€å€¤ãŒnullã®å ´åˆã«ã€ã“ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’ç”¨ã„ã¦ã€{@link java.sql.PreparedStatement#setNull(int, int)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param type Java‚ÌŒ^
-     * @param sqlType JDBC‚ÌŒ^B{@link java.sql.Types}‚Ì’è”’l
+     * @param type Javaã®å‹
+     * @param sqlType JDBCã®å‹ã€‚{@link java.sql.Types}ã®å®šæ•°å€¤
      */
     public void setSqlType(Class type, int sqlType);
     
     /**
-     * ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚ÌƒpƒX‚ğw’è‚µ‚È‚¢ê‡‚ÍAƒƒ‚ƒŠ’†‚ÉƒoƒbƒNƒAƒbƒv‚³‚ê‚éB<br>
-     * ƒƒ‚ƒŠ‚ğß–ñ‚µ‚½‚¢ê‡‚âAƒoƒbƒNƒAƒbƒv‚ğ‰i‘±‰»‚µ‚½‚¢ê‡‚È‚Ç‚Éw’è‚·‚éB<br>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ãªã„å ´åˆã¯ã€ãƒ¡ãƒ¢ãƒªä¸­ã«ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ¡ãƒ¢ãƒªã‚’ç¯€ç´„ã—ãŸã„å ´åˆã‚„ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’æ°¸ç¶šåŒ–ã—ãŸã„å ´åˆãªã©ã«æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param path ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setBackupFilePath(String path);
     
     /**
-     * ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getBackupFilePath();
     
     /**
-     * ƒe[ƒuƒ‹‚ğíœ‚·‚éB<p>
-     * {@link #setDropTableQuery(String)}‚ğİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * {@link #setDropTableQuery(String)}ã‚’è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void dropTable() throws ConnectionFactoryException, SQLException;
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éB<p>
-     * {@link #setDeleteQuery(String)}‚ğİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * {@link #setDeleteQuery(String)}ã‚’è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void deleteRecords() throws ConnectionFactoryException, SQLException;
     
     /**
-     * ƒe[ƒuƒ‹‚ğì¬‚·‚éB<p>
-     * {@link #setCreateTableQuery(String)}‚ğİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<p>
+     * {@link #setCreateTableQuery(String)}ã‚’è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createTable() throws ConnectionFactoryException, SQLException;
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ‘}“ü‚·‚éB<p>
-     * {@link #setInsertQuery(String)}‚ÆA{@link #setInsertRecords(String)}‚Ü‚½‚Í{@link #setInsertRecordsFilePath(String)}‚ğİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã€‚<p>
+     * {@link #setInsertQuery(String)}ã¨ã€{@link #setInsertRecords(String)}ã¾ãŸã¯{@link #setInsertRecordsFilePath(String)}ã‚’è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
-     * @exception ConvertException ƒŒƒR[ƒh•¶š—ñ‚Ì•ÏŠ·‚É¸”s‚µ‚½ê‡
-     * @exception IOException ƒŒƒR[ƒhƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚âA“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ConvertException ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã®å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void insertRecords()
      throws ConnectionFactoryException, SQLException,
             ConvertException, IOException;
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğƒoƒbƒNƒAƒbƒv‚·‚éB<p>
-     * {@link #setSelectQuery(String)}‚ÆA{@link #setRecordListSchema(String)}‚Ü‚½‚Í{@link #setRecordList(jp.ossc.nimbus.beans.dataset.RecordList)}‚ğİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
-     * ’ÊíAƒoƒbƒNƒAƒbƒv‚ÍAƒƒ‚ƒŠ’†‚És‚í‚ê‚é‚ªA{@link #setBackupFilePath(String)}‚ğİ’è‚µ‚Ä‚¢‚éê‡‚ÍAƒtƒ@ƒCƒ‹‚ÉƒoƒbƒNƒAƒbƒv‚³‚ê‚éB<br>
-     * ƒoƒbƒNƒAƒbƒv‚µ‚½ƒŒƒR[ƒh‚ÍA{@link #restoreRecords()}‚Å•œŒ³‚·‚é–‚ª‚Å‚«‚éB<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹ã€‚<p>
+     * {@link #setSelectQuery(String)}ã¨ã€{@link #setRecordListSchema(String)}ã¾ãŸã¯{@link #setRecordList(jp.ossc.nimbus.beans.dataset.RecordList)}ã‚’è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
+     * é€šå¸¸ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã¯ã€ãƒ¡ãƒ¢ãƒªä¸­ã«è¡Œã‚ã‚Œã‚‹ãŒã€{@link #setBackupFilePath(String)}ã‚’è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã•ã‚Œã‚‹ã€‚<br>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã¯ã€{@link #restoreRecords()}ã§å¾©å…ƒã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
-     * @exception ConvertException ƒŒƒR[ƒh•¶š—ñ‚Ì•ÏŠ·‚É¸”s‚µ‚½ê‡
-     * @exception IOException ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ª‘¶İ‚µ‚È‚¢ê‡‚âA‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ConvertException ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã®å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void backupRecords()
      throws ConnectionFactoryException, SQLException,
             IOException, ConvertException;
     
     /**
-     * ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ•œŒ³‚·‚éB<p>
-     * {@link #setInsertQuery(String)}‚ÆA{@link #setInsertRecords(String)}‚Ü‚½‚Í{@link #setInsertRecordsFilePath(String)}‚ğİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚µ‚È‚¢B<br>
-     * ’ÊíA•œŒ³‚ÍAƒƒ‚ƒŠ’†‚©‚çs‚í‚ê‚é‚ªA{@link #setBackupFilePath(String)}‚ğİ’è‚µ‚Ä‚¢‚éê‡‚ÍAƒtƒ@ƒCƒ‹‚©‚ç•œŒ³‚³‚ê‚éB<br>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å¾©å…ƒã™ã‚‹ã€‚<p>
+     * {@link #setInsertQuery(String)}ã¨ã€{@link #setInsertRecords(String)}ã¾ãŸã¯{@link #setInsertRecordsFilePath(String)}ã‚’è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã—ãªã„ã€‚<br>
+     * é€šå¸¸ã€å¾©å…ƒã¯ã€ãƒ¡ãƒ¢ãƒªä¸­ã‹ã‚‰è¡Œã‚ã‚Œã‚‹ãŒã€{@link #setBackupFilePath(String)}ã‚’è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å¾©å…ƒã•ã‚Œã‚‹ã€‚<br>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
-     * @exception ConvertException ƒŒƒR[ƒh•¶š—ñ‚Ì•ÏŠ·‚É¸”s‚µ‚½ê‡
-     * @exception IOException ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚âA“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ConvertException ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã®å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void restoreRecords()
      throws ConnectionFactoryException, SQLException,
             IOException, ConvertException;
     
     /**
-     * ƒe[ƒuƒ‹‚ÌíœAƒŒƒR[ƒh‚ÌíœAƒe[ƒuƒ‹‚Ìì¬AƒŒƒR[ƒh‚Ì‘}“ü‚ğ‡Ÿs‚¤B<p>
+     * ãƒ†ãƒ¼ãƒ–ãƒ«ã®å‰Šé™¤ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å‰Šé™¤ã€ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä½œæˆã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®æŒ¿å…¥ã‚’é †æ¬¡è¡Œã†ã€‚<p>
      *
-     * @exception ConnectionFactoryException JDBCƒRƒlƒNƒVƒ‡ƒ“‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception SQLException SQL‚ÌÀs‚É¸”s‚µ‚½ê‡
-     * @exception ConvertException ƒŒƒR[ƒh•¶š—ñ‚Ì•ÏŠ·‚É¸”s‚µ‚½ê‡
-     * @exception IOException ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚âA“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception ConnectionFactoryException JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception SQLException SQLã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception ConvertException ãƒ¬ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã®å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚„ã€èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void executeAllQuery()
      throws ConnectionFactoryException, SQLException,

@@ -35,7 +35,7 @@ import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 
 /**
- * “ü—ÍƒvƒƒpƒeƒB•ªUQueueƒZƒŒƒNƒ^[B<p>
+ * å…¥åŠ›ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åˆ†æ•£Queueã‚»ãƒ¬ã‚¯ã‚¿ãƒ¼ã€‚<p>
  * 
  * @author M.Takata
  */

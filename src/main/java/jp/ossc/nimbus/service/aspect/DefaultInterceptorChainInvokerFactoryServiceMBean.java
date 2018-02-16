@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ƒ`ƒF[ƒ“ƒCƒ“ƒ{[ƒJ[ƒtƒ@ƒNƒgƒŠMBeanƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ãƒã‚§ãƒ¼ãƒ³ã‚¤ãƒ³ãƒœãƒ¼ã‚«ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªMBeanã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -42,65 +42,65 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultInterceptorChainInvokerFactoryServiceMBean
 	extends ServiceBaseMBean {
 	/** 
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹‚ğİ’è<br>
-	 * @param fileNames - ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®š<br>
+	 * @param fileNames - ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©
 	 * @see #getInterceptConfigFileName()
 	 */
 	public void setInterceptorConfigFileNames(String[] fileNames);
 	//
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹‚ğ•Ô‹p‚·‚éB<br>
-	 * @return String[] - ƒCƒ“ƒ^[ƒZƒvƒ^’è‹`ƒtƒ@ƒCƒ‹
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿”å´ã™ã‚‹ã€‚<br>
+	 * @return String[] - ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«
 	 * @see #setInterceptorConfigFileNames(String)
 	 */
 	public String[] getInterceptorConfigFileNames();
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚ÌƒNƒ‰ƒX–¼‚ğİ’è‚·‚é<br>
-	 * @param String			ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚ÌƒNƒ‰ƒX–¼
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹<br>
+	 * @param String			ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹å
 	 */
 	public void setCallbackClassName(String callbackClassName);
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚ÌƒNƒ‰ƒX–¼‚ğ•Ô‹p‚·‚é<br>
-	 * @return String			ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚ÌƒNƒ‰ƒX–¼
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹åã‚’è¿”å´ã™ã‚‹<br>
+	 * @return String			ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹å
 	 */
 	public String getCallbackClassName();
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼‚ğİ’è‚·‚é<br>
-	 * @param String			ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰åã‚’è¨­å®šã™ã‚‹<br>
+	 * @param String			ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰å
 	 */
 	public void setCallbackMethodName(String callbackMethodName);
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼‚ğ•Ô‹p‚·‚é<br>
-	 * @return String			ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰åã‚’è¿”å´ã™ã‚‹<br>
+	 * @return String			ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰å
 	 */
 	public String getCallbackMethodName();
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒhƒpƒ‰[ƒƒ^ƒNƒ‰ƒX–¼”z—ñ‚ğİ’è‚·‚é<br>
-	 * @param String[]			ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒhƒpƒ‰[ƒƒ^ƒNƒ‰ƒX–¼”z—ñ
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰ãƒ‘ãƒ©ãƒ¼ãƒ¡ã‚¿ã‚¯ãƒ©ã‚¹åé…åˆ—ã‚’è¨­å®šã™ã‚‹<br>
+	 * @param String[]			ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰ãƒ‘ãƒ©ãƒ¼ãƒ¡ã‚¿ã‚¯ãƒ©ã‚¹åé…åˆ—
 	 */
 	public void setCallbackMethodParamClassNames(String[] callbackMethodParamClassNames);
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼‚ğ•Ô‹p‚·‚é<br>
-	 * @return String			ƒR[ƒ‹ƒoƒbƒNƒƒ\ƒbƒh–¼
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰åã‚’è¿”å´ã™ã‚‹<br>
+	 * @return String			ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰å
 	 */
 	public String[] getCallbackMethodParamClassNames();
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ƒNƒ‰ƒX–¼‚ğİ’è‚·‚é<br>
-	 * @param String			ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ƒNƒ‰ƒX–¼
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹<br>
+	 * @param String			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹å
 	 */
 	public void setInterceptorInvokerClassName(String interceptorInvokerClassName);
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ƒNƒ‰ƒX–¼‚ğ•Ô‹p‚·‚é<br>
-	 * @return String			ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒFƒCƒ“ƒNƒ‰ƒX–¼
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹åã‚’è¿”å´ã™ã‚‹<br>
+	 * @return String			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹å
 	 */
 	public String getInterceptorInvokerClassName();
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹E•ÏŠ·ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş<br>
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»å¤‰æ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€<br>
 	 */
 	public void loadConfig() throws InvalidConfigurationException;
 	/**
-	 * ƒƒOo—Í‚ÌƒT[ƒrƒX–¼‚Ìİ’è‚ğs‚¤<br>
-	 * @param name ƒT[ƒrƒX–¼
+	 * ãƒ­ã‚°å‡ºåŠ›ã®ã‚µãƒ¼ãƒ“ã‚¹åã®è¨­å®šã‚’è¡Œã†<br>
+	 * @param name ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public void setLoggerServiceName(ServiceName name) ;
 }

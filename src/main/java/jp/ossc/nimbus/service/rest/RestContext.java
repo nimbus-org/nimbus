@@ -32,33 +32,33 @@
 package jp.ossc.nimbus.service.rest;
 
 /**
- * RESTƒRƒ“ƒeƒLƒXƒgB<p>
+ * RESTã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class RestContext{
     
     /**
-     * RESTƒŠƒNƒGƒXƒgB<p>
+     * RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
      */
     protected RestRequest request;
     
     /**
-     * RESTƒŒƒXƒ|ƒ“ƒXB<p>
+     * RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
      */
     protected RestResponse response;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RestContext(){
     }
     
     /**
-     * RESTƒŠƒNƒGƒXƒg‚ÆRESTƒŒƒXƒ|ƒ“ƒX‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã¨RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request RESTƒŠƒNƒGƒXƒg
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public RestContext(RestRequest request, RestResponse response){
         this.request = request;
@@ -66,36 +66,36 @@ public class RestContext{
     }
     
     /**
-     * RESTƒŠƒNƒGƒXƒg‚ğæ“¾‚·‚éB<p>
+     * RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return RESTƒŠƒNƒGƒXƒg
+     * @return RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public RestRequest getRequest(){
         return request;
     }
     
     /**
-     * RESTƒŠƒNƒGƒXƒg‚ğİ’è‚·‚éB<p>
+     * RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param request RESTƒŠƒNƒGƒXƒg
+     * @param request RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public void setRequest(RestRequest request){
         this.request = request;
     }
     
     /**
-     * RESTƒŒƒXƒ|ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return RESTƒŒƒXƒ|ƒ“ƒX
+     * @return RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public RestResponse getResponse(){
         return response;
     }
     
     /**
-     * RESTƒŒƒXƒ|ƒ“ƒX‚ğİ’è‚·‚éB<p>
+     * RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param response RESTƒŒƒXƒ|ƒ“ƒX
+     * @param response RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public void setResponse(RestResponse response){
         this.response = response;

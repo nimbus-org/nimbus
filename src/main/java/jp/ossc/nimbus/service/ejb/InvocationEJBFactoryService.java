@@ -41,13 +41,13 @@ import jp.ossc.nimbus.service.cache.CacheMap;
 import jp.ossc.nimbus.service.jndi.JndiFinder;
 
 /**
- * ”Ä—pEJBƒtƒ@ƒNƒgƒŠB<p>
- * ”CˆÓ‚ÌEJB‚ğæ“¾‚·‚é‚½‚ß‚ÌEJBƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB‚»‚Ì‚½‚ßAˆÈ‰º‚Ì“Á’è‚ÌEJB‚ğæ“¾‚·‚éƒƒ\ƒbƒh‚ÍƒTƒ|[ƒg‚µ‚Ä‚¢‚È‚¢B<br>
+ * æ±ç”¨EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ä»»æ„ã®EJBã‚’å–å¾—ã™ã‚‹ãŸã‚ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚ãã®ãŸã‚ã€ä»¥ä¸‹ã®ç‰¹å®šã®EJBã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ãªã„ã€‚<br>
  * <ul>
  *   <li>{@link #get(String)}</li>
  *   <li>{@link #get(String, Object[])}</li>
  * </ul>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -85,7 +85,7 @@ public class InvocationEJBFactoryService extends ServiceBase
     private static final long serialVersionUID = 1678166099743647407L;
     
     /**
-     * EJBObject‚ÌƒLƒƒƒbƒVƒ…B<p>
+     * EJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      *
      * @see #getRemoteCacheMapServiceName()
      * @see #setRemoteCacheMapServiceName(ServiceName)
@@ -93,8 +93,8 @@ public class InvocationEJBFactoryService extends ServiceBase
     protected CacheMap remoteCache;
     
     /**
-     * EJBObject‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
-     * ‚±‚ÌƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ÍA{@link CacheMap}‚ğÀ‘•‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚éB<br>
+     * EJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã¯ã€{@link CacheMap}ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
      * @see #getRemoteCacheMapServiceName()
      * @see #setRemoteCacheMapServiceName(ServiceName)
@@ -102,7 +102,7 @@ public class InvocationEJBFactoryService extends ServiceBase
     protected ServiceName remoteCacheServiceName;
     
     /**
-     * JndiFinderƒT[ƒrƒXB<p>
+     * JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      *
      * @see #getJndiFinderServiceName()
      * @see #setJndiFinderServiceName(ServiceName)
@@ -110,57 +110,57 @@ public class InvocationEJBFactoryService extends ServiceBase
     protected JndiFinder jndiFinder;
     
     /**
-     * JndiFinder‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
-     * ‚±‚ÌƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ÍA{@link JndiFinder}‚ğÀ‘•‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚éB<br>
+     * JndiFinderã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã¯ã€{@link JndiFinder}ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
      * @see #getJndiFinderServiceName()
      * @see #setJndiFinderServiceName(ServiceName)
      */
     protected ServiceName jndiFinderServiceName;
     
-    // InvocationEJBFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryMBeanã®JavaDoc
     public ServiceName getRemoteCacheMapServiceName(){
         return remoteCacheServiceName;
     }
     
-    // InvocationEJBFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryMBeanã®JavaDoc
     public void setRemoteCacheMapServiceName(ServiceName serviceName){
         remoteCacheServiceName = serviceName;
     }
     
-    // InvocationEJBFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
     
-    // InvocationEJBFactoryMBean‚ÌJavaDoc
+    // InvocationEJBFactoryMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName serviceName){
         jndiFinderServiceName = serviceName;
     }
     
     /**
-     * JndiFinder‚ğİ’è‚·‚éB
+     * JndiFinderã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setJndiFinder(JndiFinder jndiFinder) {
         this.jndiFinder = jndiFinder;
     }
 
     /**
-     * CacheMap‚ğİ’è‚·‚éB
+     * CacheMapã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCacheMap(CacheMap remoteCache) {
         this.remoteCache = remoteCache;
     }
 
     /**
-     * EJBƒtƒ@ƒNƒgƒŠ‚Ì‰Šú‰»ˆ—‚ğs‚¤B<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link #setRemoteCacheMapServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½EJBObject‚ÌƒLƒƒƒbƒVƒ…‚ğİ’è‚·‚éB</li>
-     *   <li>{@link #setJndiFinderServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğİ’è‚·‚éBİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA—áŠO‚ğthrow‚·‚éB</li>
+     *   <li>{@link #setRemoteCacheMapServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸEJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’è¨­å®šã™ã‚‹ã€‚</li>
+     *   <li>{@link #setJndiFinderServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception InitialContext‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡A‚Ü‚½‚ÍAsetJndiFinderServiceName(ServiceName)‚Å—LŒø‚ÈJndiFinderƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡
+     * @exception Exception InitialContextã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆã€ã¾ãŸã¯ã€setJndiFinderServiceName(ServiceName)ã§æœ‰åŠ¹ãªJndiFinderã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆ
      */
     public void startService() throws Exception{
         if(remoteCacheServiceName != null){
@@ -179,14 +179,14 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * EJBƒtƒ@ƒNƒgƒŠ‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>EJBObject‚ÌƒLƒƒƒbƒVƒ…‚ÌQÆ‚ğ”jŠü‚·‚éB</li>
-     *   <li>JndiFinderƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB</li>
+     *   <li>EJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception InitialContext‚ÌƒNƒ[ƒY‚É¸”s‚µ‚½ê‡
+     * @exception Exception InitialContextã®ã‚¯ãƒ­ãƒ¼ã‚ºã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         remoteCache = null;
@@ -194,8 +194,8 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * –¢ƒTƒ|[ƒgB<p>
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å‚ÍAEJBHome‚ÌŒ^‚ğ‰ğŒˆ‚Å‚«‚È‚¢‚ÆAcreateƒƒ\ƒbƒh‚ÌMethodƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚¸AƒŠƒtƒŒƒNƒVƒ‡ƒ“ŒÄ‚Ño‚µ‚ğs‚¦‚È‚¢B]‚Á‚ÄAEJBHome‚ÌŒ^‚ª“Á’è‚Å‚«‚È‚¢A‚±‚Ìƒƒ\ƒbƒh‚ÍƒTƒ|[ƒg‚Å‚«‚È‚¢B<br>
+     * æœªã‚µãƒãƒ¼ãƒˆã€‚<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ã¯ã€EJBHomeã®å‹ã‚’è§£æ±ºã§ããªã„ã¨ã€createãƒ¡ã‚½ãƒƒãƒ‰ã®Methodã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ããšã€ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å‘¼ã³å‡ºã—ã‚’è¡Œãˆãªã„ã€‚å¾“ã£ã¦ã€EJBHomeã®å‹ãŒç‰¹å®šã§ããªã„ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚µãƒãƒ¼ãƒˆã§ããªã„ã€‚<br>
      */
     public EJBObject get(
         String name
@@ -205,8 +205,8 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * –¢ƒTƒ|[ƒgB<p>
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å‚ÍAEJBLocalHome‚ÌŒ^‚ğ‰ğŒˆ‚Å‚«‚È‚¢‚ÆAcreateƒƒ\ƒbƒh‚ÌMethodƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚¸AƒŠƒtƒŒƒNƒVƒ‡ƒ“ŒÄ‚Ño‚µ‚ğs‚¦‚È‚¢B]‚Á‚ÄAEJBLocalHome‚ÌŒ^‚ª“Á’è‚Å‚«‚È‚¢A‚±‚Ìƒƒ\ƒbƒh‚ÍƒTƒ|[ƒg‚Å‚«‚È‚¢B<br>
+     * æœªã‚µãƒãƒ¼ãƒˆã€‚<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ã¯ã€EJBLocalHomeã®å‹ã‚’è§£æ±ºã§ããªã„ã¨ã€createãƒ¡ã‚½ãƒƒãƒ‰ã®Methodã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ããšã€ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å‘¼ã³å‡ºã—ã‚’è¡Œãˆãªã„ã€‚å¾“ã£ã¦ã€EJBLocalHomeã®å‹ãŒç‰¹å®šã§ããªã„ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚µãƒãƒ¼ãƒˆã§ããªã„ã€‚<br>
      */
     public EJBLocalObject getLocal(
         String name
@@ -216,8 +216,8 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * –¢ƒTƒ|[ƒgB<p>
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å‚ÍAEJBHome‚ÌŒ^‚ğ‰ğŒˆ‚Å‚«‚È‚¢‚ÆAcreateƒƒ\ƒbƒh‚ÌMethodƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚¸AƒŠƒtƒŒƒNƒVƒ‡ƒ“ŒÄ‚Ño‚µ‚ğs‚¦‚È‚¢B]‚Á‚ÄAEJBHome‚ÌŒ^‚ª“Á’è‚Å‚«‚È‚¢A‚±‚Ìƒƒ\ƒbƒh‚ÍƒTƒ|[ƒg‚Å‚«‚È‚¢B<br>
+     * æœªã‚µãƒãƒ¼ãƒˆã€‚<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ã¯ã€EJBHomeã®å‹ã‚’è§£æ±ºã§ããªã„ã¨ã€createãƒ¡ã‚½ãƒƒãƒ‰ã®Methodã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ããšã€ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å‘¼ã³å‡ºã—ã‚’è¡Œãˆãªã„ã€‚å¾“ã£ã¦ã€EJBHomeã®å‹ãŒç‰¹å®šã§ããªã„ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚µãƒãƒ¼ãƒˆã§ããªã„ã€‚<br>
      */
     public EJBObject get(
         String name,
@@ -228,8 +228,8 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * –¢ƒTƒ|[ƒgB<p>
-     * ‚±‚ÌEJBƒtƒ@ƒNƒgƒŠ‚Å‚ÍAEJBLocaHome‚ÌŒ^‚ğ‰ğŒˆ‚Å‚«‚È‚¢‚ÆAcreateƒƒ\ƒbƒh‚ÌMethodƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚¸AƒŠƒtƒŒƒNƒVƒ‡ƒ“ŒÄ‚Ño‚µ‚ğs‚¦‚È‚¢B]‚Á‚ÄAEJBLocaHome‚ÌŒ^‚ª“Á’è‚Å‚«‚È‚¢A‚±‚Ìƒƒ\ƒbƒh‚ÍƒTƒ|[ƒg‚Å‚«‚È‚¢B<br>
+     * æœªã‚µãƒãƒ¼ãƒˆã€‚<p>
+     * ã“ã®EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªã§ã¯ã€EJBLocaHomeã®å‹ã‚’è§£æ±ºã§ããªã„ã¨ã€createãƒ¡ã‚½ãƒƒãƒ‰ã®Methodã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ããšã€ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å‘¼ã³å‡ºã—ã‚’è¡Œãˆãªã„ã€‚å¾“ã£ã¦ã€EJBLocaHomeã®å‹ãŒç‰¹å®šã§ããªã„ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ã‚µãƒãƒ¼ãƒˆã§ããªã„ã€‚<br>
      */
     public EJBLocalObject getLocal(
         String name,
@@ -240,17 +240,17 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBObject‚ğæ“¾‚·‚éB<p>
-     * İ’è‚³‚ê‚½{@link JndiFinder}‚ğg‚Á‚ÄAw’è‚³‚ê‚½–¼‘O‚ÅEJBHome‚ğlookup‚·‚éB‚Ü‚½Alookup‚µ‚½EJBHome‚É‘Î‚µ‚ÄAˆø”‚È‚µ‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄEJBObject‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBObjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸ{@link JndiFinder}ã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã§EJBHomeã‚’lookupã™ã‚‹ã€‚ã¾ãŸã€lookupã—ãŸEJBHomeã«å¯¾ã—ã¦ã€å¼•æ•°ãªã—ã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦EJBObjectã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param homeType EJBHome‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return w’è‚µ‚½JNDI–¼‚É‘Î‰‚·‚éEJBObject
-     * @exception NamingException EJBHome‚Ìlookup‚É¸”s‚µ‚½ê‡
-     * @exception CreateException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param homeType EJBHomeã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æŒ‡å®šã—ãŸJNDIåã«å¯¾å¿œã™ã‚‹EJBObject
+     * @exception NamingException EJBHomeã®lookupã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception CreateException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public EJBObject get(
         String name,
@@ -261,17 +261,17 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBLocalObject‚ğæ“¾‚·‚éB<p>
-     * İ’è‚³‚ê‚½{@link JndiFinder}‚ğg‚Á‚ÄAw’è‚³‚ê‚½–¼‘O‚ÅEJBLocalHome‚ğlookup‚·‚éB‚Ü‚½Alookup‚µ‚½EJBLocalHome‚É‘Î‚µ‚ÄAˆø”‚È‚µ‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄEJBLocalObject‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBLocalObjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸ{@link JndiFinder}ã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã§EJBLocalHomeã‚’lookupã™ã‚‹ã€‚ã¾ãŸã€lookupã—ãŸEJBLocalHomeã«å¯¾ã—ã¦ã€å¼•æ•°ãªã—ã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦EJBLocalObjectã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param homeType EJBLocalHome‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return w’è‚µ‚½JNDI–¼‚É‘Î‰‚·‚éEJBLocalObject
-     * @exception NamingException EJBLocalHome‚Ìlookup‚É¸”s‚µ‚½ê‡
-     * @exception CreateException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param homeType EJBLocalHomeã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æŒ‡å®šã—ãŸJNDIåã«å¯¾å¿œã™ã‚‹EJBLocalObject
+     * @exception NamingException EJBLocalHomeã®lookupã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception CreateException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public EJBLocalObject getLocal(
         String name,
@@ -282,19 +282,19 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBObject‚ğæ“¾‚·‚éB<p>
-     * İ’è‚³‚ê‚½{@link JndiFinder}‚ğg‚Á‚ÄAw’è‚³‚ê‚½–¼‘O‚ÅEJBHome‚ğlookup‚·‚éB‚Ü‚½Alookup‚µ‚½EJBHome‚É‘Î‚µ‚ÄAw’è‚µ‚½ˆø”‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄEJBObject‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBObjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸ{@link JndiFinder}ã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã§EJBHomeã‚’lookupã™ã‚‹ã€‚ã¾ãŸã€lookupã—ãŸEJBHomeã«å¯¾ã—ã¦ã€æŒ‡å®šã—ãŸå¼•æ•°ã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦EJBObjectã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param homeType EJBHome‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param paramTypes ˆø”‚ÌŒ^”z—ñ
-     * @param params ˆø”‚Ì”z—ñ
-     * @return w’è‚µ‚½JNDI–¼‚É‘Î‰‚·‚éEJBObject
-     * @exception NamingException EJBHome‚Ìlookup‚É¸”s‚µ‚½ê‡
-     * @exception CreateException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param homeType EJBHomeã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param paramTypes å¼•æ•°ã®å‹é…åˆ—
+     * @param params å¼•æ•°ã®é…åˆ—
+     * @return æŒ‡å®šã—ãŸJNDIåã«å¯¾å¿œã™ã‚‹EJBObject
+     * @exception NamingException EJBHomeã®lookupã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception CreateException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public EJBObject get(
         String name,
@@ -307,19 +307,19 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBLocalObject‚ğæ“¾‚·‚éB<p>
-     * İ’è‚³‚ê‚½{@link JndiFinder}‚ğg‚Á‚ÄAw’è‚³‚ê‚½–¼‘O‚ÅEJBLocalHome‚ğlookup‚·‚éB‚Ü‚½Alookup‚µ‚½EJBLocalHome‚É‘Î‚µ‚ÄAw’è‚µ‚½ˆø”‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄEJBLocalObject‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBLocalObjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸ{@link JndiFinder}ã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã§EJBLocalHomeã‚’lookupã™ã‚‹ã€‚ã¾ãŸã€lookupã—ãŸEJBLocalHomeã«å¯¾ã—ã¦ã€æŒ‡å®šã—ãŸå¼•æ•°ã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦EJBLocalObjectã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param homeType EJBLocalHome‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param paramTypes ˆø”‚ÌŒ^”z—ñ
-     * @param params ˆø”‚Ì”z—ñ
-     * @return w’è‚µ‚½JNDI–¼‚É‘Î‰‚·‚éEJBLocalObject
-     * @exception NamingException EJBLocalHome‚Ìlookup‚É¸”s‚µ‚½ê‡
-     * @exception CreateException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param homeType EJBLocalHomeã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param paramTypes å¼•æ•°ã®å‹é…åˆ—
+     * @param params å¼•æ•°ã®é…åˆ—
+     * @return æŒ‡å®šã—ãŸJNDIåã«å¯¾å¿œã™ã‚‹EJBLocalObject
+     * @exception NamingException EJBLocalHomeã®lookupã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception CreateException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public EJBLocalObject getLocal(
         String name,
@@ -332,20 +332,20 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBObject‚ğæ“¾‚·‚éB<p>
-     * İ’è‚³‚ê‚½{@link JndiFinder}‚ğg‚Á‚ÄAw’è‚³‚ê‚½–¼‘O‚ÅEJBHome‚ğlookup‚·‚éB‚Ü‚½Alookup‚µ‚½EJBHome‚É‘Î‚µ‚ÄAw’è‚µ‚½ˆø”‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄEJBObject‚ğæ“¾‚µ‚ÄAEJBObject‚ğ–Ú“I‚Ìƒ^ƒCƒv‚ÉƒLƒƒƒXƒg‚µ‚Ä•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBObjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸ{@link JndiFinder}ã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã§EJBHomeã‚’lookupã™ã‚‹ã€‚ã¾ãŸã€lookupã—ãŸEJBHomeã«å¯¾ã—ã¦ã€æŒ‡å®šã—ãŸå¼•æ•°ã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦EJBObjectã‚’å–å¾—ã—ã¦ã€EJBObjectã‚’ç›®çš„ã®ã‚¿ã‚¤ãƒ—ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param homeType EJBHome‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param remoteType EJBObject‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param paramTypes ˆø”‚ÌŒ^”z—ñ
-     * @param params ˆø”‚Ì”z—ñ
-     * @return w’è‚µ‚½JNDI–¼‚É‘Î‰‚·‚éEJBObject
-     * @exception NamingException EJBHome‚Ìlookup‚É¸”s‚µ‚½ê‡
-     * @exception CreateException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param homeType EJBHomeã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param remoteType EJBObjectã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param paramTypes å¼•æ•°ã®å‹é…åˆ—
+     * @param params å¼•æ•°ã®é…åˆ—
+     * @return æŒ‡å®šã—ãŸJNDIåã«å¯¾å¿œã™ã‚‹EJBObject
+     * @exception NamingException EJBHomeã®lookupã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception CreateException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public EJBObject get(
         String name,
@@ -376,20 +376,20 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBLocalObject‚ğæ“¾‚·‚éB<p>
-     * İ’è‚³‚ê‚½{@link JndiFinder}‚ğg‚Á‚ÄAw’è‚³‚ê‚½–¼‘O‚ÅEJBLocalHome‚ğlookup‚·‚éB‚Ü‚½Alookup‚µ‚½EJBLocalHome‚É‘Î‚µ‚ÄAw’è‚µ‚½ˆø”‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄEJBObject‚ğæ“¾‚µ‚ÄAEJBObject‚ğ–Ú“I‚Ìƒ^ƒCƒv‚ÉƒLƒƒƒXƒg‚µ‚Ä•Ô‚·B<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBLocalObjectã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸ{@link JndiFinder}ã‚’ä½¿ã£ã¦ã€æŒ‡å®šã•ã‚ŒãŸåå‰ã§EJBLocalHomeã‚’lookupã™ã‚‹ã€‚ã¾ãŸã€lookupã—ãŸEJBLocalHomeã«å¯¾ã—ã¦ã€æŒ‡å®šã—ãŸå¼•æ•°ã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦EJBObjectã‚’å–å¾—ã—ã¦ã€EJBObjectã‚’ç›®çš„ã®ã‚¿ã‚¤ãƒ—ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦è¿”ã™ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param homeType EJBLocalHome‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param localType EJBLocalObject‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param paramTypes ˆø”‚ÌŒ^”z—ñ
-     * @param params ˆø”‚Ì”z—ñ
-     * @return w’è‚µ‚½JNDI–¼‚É‘Î‰‚·‚éEJBLocalObject
-     * @exception NamingException EJBLocalHome‚Ìlookup‚É¸”s‚µ‚½ê‡
-     * @exception CreateException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param homeType EJBLocalHomeã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param localType EJBLocalObjectã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param paramTypes å¼•æ•°ã®å‹é…åˆ—
+     * @param params å¼•æ•°ã®é…åˆ—
+     * @return æŒ‡å®šã—ãŸJNDIåã«å¯¾å¿œã™ã‚‹EJBLocalObject
+     * @exception NamingException EJBLocalHomeã®lookupã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception CreateException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public EJBLocalObject getLocal(
         String name,
@@ -411,13 +411,13 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBHome‚ğæ“¾‚µ‚ÄAw’è‚³‚ê‚½Œ^‚ÉƒLƒƒƒXƒg‚·‚éB<p>
-     * {@link JndiFinder#lookup(String)}‚ÅAEJBHome‚ğæ“¾‚µ‚ÄAw’è‚³‚ê‚½Œ^‚ÉƒLƒƒƒXƒg‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBHomeã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸå‹ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹ã€‚<p>
+     * {@link JndiFinder#lookup(String)}ã§ã€EJBHomeã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸå‹ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹ã€‚<br>
      * 
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param type EJBHome‚ğƒLƒƒƒXƒg‚·‚éŒ^
-     * @return EJBHomeƒIƒuƒWƒFƒNƒg
-     * @exception NamingException lookup‚É¸”s‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param type EJBHomeã‚’ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹å‹
+     * @return EJBHomeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception NamingException lookupã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected EJBHome createHome(String name, Class type)
      throws NamingException{
@@ -429,13 +429,13 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌEJBLocalHome‚ğæ“¾‚µ‚ÄAw’è‚³‚ê‚½Œ^‚ÉƒLƒƒƒXƒg‚·‚éB<p>
-     * {@link JndiFinder#lookup(String)}‚ÅAEJBLocalHome‚ğæ“¾‚µ‚ÄAw’è‚³‚ê‚½Œ^‚ÉƒLƒƒƒXƒg‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®EJBLocalHomeã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸå‹ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹ã€‚<p>
+     * {@link JndiFinder#lookup(String)}ã§ã€EJBLocalHomeã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸå‹ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹ã€‚<br>
      * 
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
-     * @param type EJBLocalHome‚ğƒLƒƒƒXƒg‚·‚éŒ^
-     * @return EJBLocalHomeƒIƒuƒWƒFƒNƒg
-     * @exception NamingException lookup‚É¸”s‚µ‚½ê‡
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
+     * @param type EJBLocalHomeã‚’ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹å‹
+     * @return EJBLocalHomeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception NamingException lookupã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected EJBLocalHome createLocalHome(String name, Class type)
      throws NamingException{
@@ -447,18 +447,18 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * EJBObject‚ğ¶¬‚·‚éB<p>
-     * ƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚ğg‚Á‚ÄAEJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·B<br>
+     * EJBObjectã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã‚’ä½¿ã£ã¦ã€EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param home EJBHomeƒIƒuƒWƒFƒNƒg
-     * @param homeType EJBHomeƒNƒ‰ƒX
-     * @param paramTypes createƒƒ\ƒbƒh‚Ìˆø”‚ÌŒ^”z—ñ
-     * @param params createƒƒ\ƒbƒh‚Ìˆø””z—ñ
-     * @return EJBObjectƒIƒuƒWƒFƒNƒg
-     * @exception CreateException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param home EJBHomeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param homeType EJBHomeã‚¯ãƒ©ã‚¹
+     * @param paramTypes createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã®å‹é…åˆ—
+     * @param params createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°é…åˆ—
+     * @return EJBObjectã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception CreateException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected EJBObject createRemote(
         EJBHome home,
@@ -482,18 +482,18 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * EJBLocalObject‚ğ¶¬‚·‚éB<p>
-     * ƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚ğg‚Á‚ÄAEJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·B<br>
+     * EJBLocalObjectã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã‚’ä½¿ã£ã¦ã€EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param home EJBLocalHomeƒIƒuƒWƒFƒNƒg
-     * @param homeType EJBLocalHomeƒNƒ‰ƒX
-     * @param paramTypes createƒƒ\ƒbƒh‚Ìˆø”‚ÌŒ^”z—ñ
-     * @param params createƒƒ\ƒbƒh‚Ìˆø””z—ñ
-     * @return EJBLocalObjectƒIƒuƒWƒFƒNƒg
-     * @exception CreateException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Û‚É—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception NoSuchMethodException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception IllegalAccessException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAƒAƒNƒZƒXCüq‚É‚æ‚éƒAƒNƒZƒXŒ ŒÀ‚ª•s³‚Èê‡
-     * @exception InvocationTargetException EJBLocalHome‚Ìcreateƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚ÉAŒÄ‚Ño‚µæ‚Å‰½‚ç‚©‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param home EJBLocalHomeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param homeType EJBLocalHomeã‚¯ãƒ©ã‚¹
+     * @param paramTypes createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã®å‹é…åˆ—
+     * @param params createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°é…åˆ—
+     * @return EJBLocalObjectã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception CreateException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception NoSuchMethodException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception IllegalAccessException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€ã‚¢ã‚¯ã‚»ã‚¹ä¿®é£¾å­ã«ã‚ˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä¸æ­£ãªå ´åˆ
+     * @exception InvocationTargetException EJBLocalHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸæ™‚ã«ã€å‘¼ã³å‡ºã—å…ˆã§ä½•ã‚‰ã‹ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected EJBLocalObject createLocal(
         EJBLocalHome home,
@@ -517,11 +517,11 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½–¼‘O‚ÌEJB‚ÌƒLƒƒƒbƒVƒ…‚ğ–³Œø‰»‚·‚éB<p>
-     * {@link #setJndiFinderServiceName(ServiceName)}‚ÅAJndiFinder‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAJndiFinder‚ÌƒLƒƒƒbƒVƒ…‚©‚çw’è‚³‚ê‚½JNDI–¼‚ÌEJBHome‚ğíœ‚·‚éB<br>
-     * {@link #setRemoteCacheMapServiceName(ServiceName)}‚ÅAEJBObject‚ÌƒLƒƒƒbƒVƒ…‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ÌƒLƒƒƒbƒVƒ…‚©‚çw’è‚³‚ê‚½JNDI–¼‚ÌEJBObject‚ğíœ‚·‚éB<br>
+     * æŒ‡å®šã—ãŸåå‰ã®EJBã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ã€‚<p>
+     * {@link #setJndiFinderServiceName(ServiceName)}ã§ã€JndiFinderãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€JndiFinderã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸJNDIåã®EJBHomeã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
+     * {@link #setRemoteCacheMapServiceName(ServiceName)}ã§ã€EJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸJNDIåã®EJBObjectã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      * 
-     * @param name JndiFinderƒT[ƒrƒX‚É“n‚·–¼‘OB
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã«æ¸¡ã™åå‰ã€‚
      */
     public void invalidate(String name){
         if(jndiFinder != null){
@@ -533,9 +533,9 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * EJB‚ÌƒLƒƒƒbƒVƒ…‚ğ–³Œø‰»‚·‚éB<p>
-     * {@link #setJndiFinderServiceName(ServiceName)}‚ÅAJndiFinder‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAJndiFinder‚ÌƒLƒƒƒbƒVƒ…‚ğíœ‚·‚éB<br>
-     * {@link #setRemoteCacheMapServiceName(ServiceName)}‚ÅAEJBObject‚ÌƒLƒƒƒbƒVƒ…‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ÌƒLƒƒƒbƒVƒ…‚ğíœ‚·‚éB<br>
+     * EJBã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ã€‚<p>
+     * {@link #setJndiFinderServiceName(ServiceName)}ã§ã€JndiFinderãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€JndiFinderã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
+     * {@link #setRemoteCacheMapServiceName(ServiceName)}ã§ã€EJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      */
     public void invalidate(){
         if(jndiFinder != null){
@@ -547,32 +547,32 @@ public class InvocationEJBFactoryService extends ServiceBase
     }
     
     /**
-     * EJBObject‚ğ¯•Ê‚·‚é‚½‚ß‚ÌƒL[B<p>
-     * EJBHome‚ÌJNDI–¼‚ÆAEJBObject‚ğ¶¬‚·‚éÛ‚Ég—p‚·‚éEJBHome‚Ìcreateƒƒ\ƒbƒh‚Ìˆø””z—ñ‚ğ‡‚í‚¹‚ÄAˆêˆÓ‚ÈƒL[‚Æ‚·‚éB<br>
+     * EJBObjectã‚’è­˜åˆ¥ã™ã‚‹ãŸã‚ã®ã‚­ãƒ¼ã€‚<p>
+     * EJBHomeã®JNDIåã¨ã€EJBObjectã‚’ç”Ÿæˆã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°é…åˆ—ã‚’åˆã‚ã›ã¦ã€ä¸€æ„ãªã‚­ãƒ¼ã¨ã™ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
     protected class RemoteKey{
         
         /**
-         * EJBHome‚ÌJNDI–¼B<p>
+         * EJBHomeã®JNDIåã€‚<p>
          */
         private final String jndiName;
         
         /**
-         * EJBHome‚Ìcreateƒƒ\ƒbƒh‚Ìˆø””z—ñB<p>
+         * EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°é…åˆ—ã€‚<p>
          */
         private final Object[] params;
         
         /**
-         * “¯‚¶EJBHome‚©‚ç¶¬‚³‚ê‚½‘S‚Ä‚ÌEJBObject‚ÌƒL[‚Å‚ ‚é–‚ğ¦‚·ƒtƒ‰ƒOB<p>
+         * åŒã˜EJBHomeã‹ã‚‰ç”Ÿæˆã•ã‚ŒãŸå…¨ã¦ã®EJBObjectã®ã‚­ãƒ¼ã§ã‚ã‚‹äº‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         private boolean isAll;
         
         /**
-         * “¯‚¶EJBHome‚©‚ç¶¬‚³‚ê‚½‘S‚Ä‚ÌEJBObject‚ÌƒL[‚Æ‚µ‚Ä‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * åŒã˜EJBHomeã‹ã‚‰ç”Ÿæˆã•ã‚ŒãŸå…¨ã¦ã®EJBObjectã®ã‚­ãƒ¼ã¨ã—ã¦ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          * 
-         * @param jndiName EJBHome‚ÌJNDI–¼
+         * @param jndiName EJBHomeã®JNDIå
          */
         public RemoteKey(String jndiName){
             this(jndiName, null);
@@ -580,10 +580,10 @@ public class InvocationEJBFactoryService extends ServiceBase
         }
         
         /**
-         * w’è‚³‚ê‚½JNDI–¼‚ÌEJBHome‚©‚çAw’è‚³‚ê‚½ˆø””z—ñ‚Åcreate‚³‚ê‚½EJBObject‚ÌƒL[‚Æ‚µ‚Ä‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸJNDIåã®EJBHomeã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸå¼•æ•°é…åˆ—ã§createã•ã‚ŒãŸEJBObjectã®ã‚­ãƒ¼ã¨ã—ã¦ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param jndiName EJBHome‚ÌJNDI–¼
-         * @param params EJBHome‚Ìcreateƒƒ\ƒbƒh‚Ìˆø””z—ñ
+         * @param jndiName EJBHomeã®JNDIå
+         * @param params EJBHomeã®createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°é…åˆ—
          */
         public RemoteKey(String jndiName, Object[] params){
             this.jndiName = jndiName;
@@ -591,11 +591,11 @@ public class InvocationEJBFactoryService extends ServiceBase
         }
         
         /**
-         * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ¦‚·B<p>
-         * JNDI–¼‚ÆAcreateƒƒ\ƒbƒh‚Ìˆø””z—ñ‚Ì”äŠr‚ğs‚¢A“™‚µ‚¢ê‡‚Étrue‚ğ•Ô‚·B’A‚µA”äŠr‘ÎÛ‚ÌRemoteKeyƒCƒ“ƒXƒ^ƒ“ƒX‚ªRemoteKey(String)‚Å¶¬‚³‚ê‚Ä‚¢‚éê‡‚ÍAJNDI–¼‚Ì”äŠr‚Ì‚İs‚¤B<br>
+         * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚<p>
+         * JNDIåã¨ã€createãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°é…åˆ—ã®æ¯”è¼ƒã‚’è¡Œã„ã€ç­‰ã—ã„å ´åˆã«trueã‚’è¿”ã™ã€‚ä½†ã—ã€æ¯”è¼ƒå¯¾è±¡ã®RemoteKeyã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒRemoteKey(String)ã§ç”Ÿæˆã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€JNDIåã®æ¯”è¼ƒã®ã¿è¡Œã†ã€‚<br>
          *
-         * @param obj ”äŠr‘ÎÛ‚ÌQÆƒIƒuƒWƒFƒNƒg
-         * @return ˆø”‚Éw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢ê‡‚Í trueA‚»‚¤‚Å‚È‚¢ê‡‚Í false
+         * @param obj æ¯”è¼ƒå¯¾è±¡ã®å‚ç…§ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„å ´åˆã¯ trueã€ãã†ã§ãªã„å ´åˆã¯ false
          */
         public boolean equals(Object obj){
             if(obj == null){
@@ -634,9 +634,9 @@ public class InvocationEJBFactoryService extends ServiceBase
         }
         
         /**
-         * ƒIƒuƒWƒFƒNƒg‚ÌƒnƒbƒVƒ…ƒR[ƒh’l‚ğ•Ô‚·B<p>
+         * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰å€¤ã‚’è¿”ã™ã€‚<p>
          *
-         * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÌƒnƒbƒVƒ…ƒR[ƒh’l
+         * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰å€¤
          */
         public int hashCode(){
             if(params != null){

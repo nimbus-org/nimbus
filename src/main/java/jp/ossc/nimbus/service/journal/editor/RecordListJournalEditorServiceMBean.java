@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link RecordListJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link RecordListJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see RecordListJournalEditorService
@@ -41,47 +41,47 @@ public interface RecordListJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ª‚Â–¼‘O‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ãŒæŒã¤åå‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputRecordListName(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ª‚Â–¼‘O‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ãŒæŒã¤åå‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputRecordListName();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputRecordSchema(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.RecordSchema RecordSchema}ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputRecordSchema();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌÅ‘åo—ÍŒ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Åo—ÍŒ”‚ğ§ŒÀ‚µ‚È‚¢B<p>
+     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.Record Record}ã®æœ€å¤§å‡ºåŠ›ä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§å‡ºåŠ›ä»¶æ•°ã‚’åˆ¶é™ã—ãªã„ã€‚<p>
      * 
-     * @param max Å‘åo—ÍŒ”
+     * @param max æœ€å¤§å‡ºåŠ›ä»¶æ•°
      */
     public void setMaxSize(int max);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.Record Record}‚ÌÅ‘åo—ÍŒ”‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.Record Record}ã®æœ€å¤§å‡ºåŠ›ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Å‘åo—ÍŒ”
+     * @return æœ€å¤§å‡ºåŠ›ä»¶æ•°
      */
     public int getMaxSize();
 }

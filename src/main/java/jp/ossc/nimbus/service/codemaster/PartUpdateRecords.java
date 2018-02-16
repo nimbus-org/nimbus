@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.codemaster;
 import java.util.*;
 
 /**
- * 部分更新レコード。<p>
+ * 驛ｨ蛻�譖ｴ譁ｰ繝ｬ繧ｳ繝ｼ繝峨�<p>
  *
  * @author M.Takata
  */

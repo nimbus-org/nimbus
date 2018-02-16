@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.aop;
 
 /**
- * �C���^�[�Z�v�^�̃`�F�[�����X�g�B<p>
- * �����̃C���^�Z�v�^���`�F�[�������邽�߂̃C���^�[�Z�v�^�̃��X�g�ł���B
+ * インターセプタのチェーンリスト。<p>
+ * 複数のインタセプタをチェーンさせるためのインターセプタのリストである。
  *
  * @author M.Takata
  */
 public interface InterceptorChainList{
     
     /**
-     * �w�肳�ꂽ�C���f�b�N�X�̃C���^�[�Z�v�^���擾����B<p>
+     * 指定されたインデックスのインターセプタを取得する。<p>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @param index �C���^�[�Z�v�^�̃`�F�[����̃C���f�b�N�X
-     * @return �w�肳�ꂽ�C���f�b�N�X�̃C���^�[�Z�v�^�B�w�肳�ꂽ�C���f�b�N�X�̃C���^�[�Z�v�^�����݂��Ȃ��ꍇ�́Anull��Ԃ�
+     * @param context 呼び出しのコンテキスト情報
+     * @param index インターセプタのチェーン上のインデックス
+     * @return 指定されたインデックスのインターセプタ。指定されたインデックスのインターセプタが存在しない場合は、nullを返す
      */
     public Interceptor getInterceptor(InvocationContext context, int index);
 }

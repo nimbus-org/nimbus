@@ -39,7 +39,7 @@ public class XYPlotConditionImpl extends PlotConditionImpl
     
     private static final long serialVersionUID = 8417050199185753740L;
     
-    /** c²‚Ì‰Â‹ó‘Ô */
+    /** ç¸¦è»¸ã®å¯è¦–çŠ¶æ…‹ */
     private Map rangeAxisVisibleMap = null;
     private String defaultDomainAxisTickLabelFontName;
     private int defaultDomainAxisTickLabelFontStyle = Integer.MIN_VALUE;
@@ -66,7 +66,7 @@ public class XYPlotConditionImpl extends PlotConditionImpl
     private Map rangeAxisLabelFontStyleMap;
     private Map rangeAxisLabelFontSizeMap;
 
-    // XYPlotCondition‚ÌJavaDoc
+    // XYPlotConditionã®JavaDoc
     public void setRangeAxisVisible(int index, Boolean visible) {
         if(rangeAxisVisibleMap == null){
             rangeAxisVisibleMap = new HashMap();
@@ -74,7 +74,7 @@ public class XYPlotConditionImpl extends PlotConditionImpl
         rangeAxisVisibleMap.put(new Integer(index), visible);
     }
 
-    // XYPlotCondition‚ÌJavaDoc
+    // XYPlotConditionã®JavaDoc
     public Boolean isRangeAxisVisible(int index) {
         if(rangeAxisVisibleMap == null){
             return null;

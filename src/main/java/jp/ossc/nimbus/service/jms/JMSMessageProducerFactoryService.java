@@ -37,9 +37,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.jndi.*;
 
 /**
- * JMSƒƒbƒZ[ƒWƒvƒƒfƒ…[ƒTƒtƒ@ƒNƒgƒŠB<p>
- * javax.jms.Session‚ğƒ‰ƒbƒv‚µAMessageProducer‚Ì¶¬‚ğŠÈ—ª‰»‚·‚éB<br>
- * Queue‚ÆTopi‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“‡‚³‚ê‚½JMS 1.1‚É‘Î‰‚µ‚Ä‚¢‚Ü‚·BJMS 1.1ˆÈ‘O‚Ìƒo[ƒWƒ‡ƒ“‚Åg—p‚·‚éê‡‚É‚ÍAƒTƒuƒNƒ‰ƒX‚Ì{@link JMSQueueSenderFactoryService}‚âA{@link JMSTopicPublisherFactoryService}‚ğg—p‚µ‚Ä‰º‚³‚¢B<br>
+ * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ—ãƒ­ãƒ‡ãƒ¥ãƒ¼ã‚µãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * javax.jms.Sessionã‚’ãƒ©ãƒƒãƒ—ã—ã€MessageProducerã®ç”Ÿæˆã‚’ç°¡ç•¥åŒ–ã™ã‚‹ã€‚<br>
+ * Queueã¨Topiã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±åˆã•ã‚ŒãŸJMS 1.1ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚JMS 1.1ä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ä½¿ç”¨ã™ã‚‹å ´åˆã«ã¯ã€ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®{@link JMSQueueSenderFactoryService}ã‚„ã€{@link JMSTopicPublisherFactoryService}ã‚’ä½¿ç”¨ã—ã¦ä¸‹ã•ã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -64,102 +64,102 @@ public class JMSMessageProducerFactoryService extends ServiceBase
     protected int priority = Message.DEFAULT_PRIORITY;
     protected long timeToLive = Message.DEFAULT_TIME_TO_LIVE;
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setJMSSessionFactoryServiceName(ServiceName name){
         jmsSessionFactoryServiceName = name;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public ServiceName getJMSSessionFactoryServiceName(){
         return jmsSessionFactoryServiceName;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setDestinationFinderServiceName(ServiceName name){
         destinationFinderServiceName = name;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public ServiceName getDestinationFinderServiceName(){
         return destinationFinderServiceName;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setDestinationName(String name){
         destinationName = name;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public String getDestinationName(){
         return destinationName;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setSessionCreate(boolean isCreate){
         isSessionCreate = isCreate;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public boolean isSessionCreate(){
         return isSessionCreate;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setCloseSession(boolean isClose){
         isCloseSession = isClose;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public boolean isCloseSession(){
         return isCloseSession;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setDeliveryMode(int mode){
         deliveryMode = mode;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public int getDeliveryMode(){
         return deliveryMode;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setPriority(int priority){
         this.priority = priority;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public int getPriority(){
         return priority;
     }
     
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public void setTimeToLive(long ttl){
         this.timeToLive = ttl;
     }
-    // JMSMessageProducerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageProducerFactoryServiceMBeanã®JavaDoc
     public long getTimeToLive(){
         return timeToLive;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚©‚çjavax.jms.Destination‚ğlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã‹ã‚‰javax.jms.Destinationã‚’lookupã™ã‚‹ã€‚<br>
      *
-     * @param destinationFinder JndiFinderƒT[ƒrƒX
+     * @param destinationFinder JndiFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiFinder(JndiFinder destinationFinder) {
         this.destinationFinder = destinationFinder;
     }
     
     /**
-     * {@link JMSSessionFactory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * SessionCreate‘®«‚ªtrue‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉA‚±‚±‚Åİ’è‚³‚ê‚½JMSSessionFactoryƒT[ƒrƒX‚ğg‚Á‚ÄASession‚ğ¶¬‚µ•Û‚·‚éB<br>
+     * {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SessionCreateå±æ€§ãŒtrueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€Sessionã‚’ç”Ÿæˆã—ä¿æŒã™ã‚‹ã€‚<br>
      *
-     * @param jmsSessionFactory JMSSessionFactoryƒT[ƒrƒX‚Ì
+     * @param jmsSessionFactory JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®
      */
     public void setJMSSessionFactory(JMSSessionFactory jmsSessionFactory) {
         this.jmsSessionFactory = jmsSessionFactory;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -191,9 +191,9 @@ public class JMSMessageProducerFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(isCloseSession && session != null){
@@ -206,28 +206,28 @@ public class JMSMessageProducerFactoryService extends ServiceBase
         destination = null;
     }
     
-    // JMSMessageProducerFactory‚ÌJavaDoc
+    // JMSMessageProducerFactoryã®JavaDoc
     public Session getSession(){
         return session;
     }
     
-    // JMSMessageProducerFactory‚ÌJavaDoc
+    // JMSMessageProducerFactoryã®JavaDoc
     public Destination getDestination(){
         return destination;
     }
     
-    // JMSMessageProducerFactory‚ÌJavaDoc
+    // JMSMessageProducerFactoryã®JavaDoc
     public JMSSessionFactory getSessionFactory(){
         return jmsSessionFactory;
     }
     
-    // JMSMessageProducerFactory‚ÌJavaDoc
+    // JMSMessageProducerFactoryã®JavaDoc
     public MessageProducer createProducer()
      throws JMSMessageProducerCreateException{
         return createProducer(destination);
     }
     
-    // JMSMessageProducerFactory‚ÌJavaDoc
+    // JMSMessageProducerFactoryã®JavaDoc
     public MessageProducer createProducer(Destination dest)
      throws JMSMessageProducerCreateException{
         Session session = this.session;
@@ -241,7 +241,7 @@ public class JMSMessageProducerFactoryService extends ServiceBase
         return createProducer(session, dest);
     }
     
-    // JMSMessageProducerFactory‚ÌJavaDoc
+    // JMSMessageProducerFactoryã®JavaDoc
     public MessageProducer createProducer(Session session, Destination dest)
      throws JMSMessageProducerCreateException{
         if(session == null){

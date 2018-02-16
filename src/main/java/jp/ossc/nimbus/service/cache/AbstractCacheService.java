@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX’ŠÛƒNƒ‰ƒXB<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -46,74 +46,74 @@ public abstract class AbstractCacheService extends ServiceBase
     private static final long serialVersionUID = 4327482025283418963L;
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ÌW‡B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é›†åˆã€‚<p>
      */
     protected Set references;
     
     /**
-     * OverflowControllerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñB<p>
+     * OverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     protected ServiceName[] overflowControllerServiceNames;
     
     /**
-     * OverflowControllerƒT[ƒrƒX‚ÌƒŠƒXƒgB<p>
+     * OverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List overflowControllers;
     
     /**
-     * ƒT[ƒrƒX’â~‚ÉAƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹åœæ­¢æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isClearOnStop;
     
     /**
-     * ƒT[ƒrƒX”jŠü‚ÉAƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ç ´æ£„æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isClearOnDestroy = true;
     
-    // AbstractCacheServiceMBean‚ÌJavaDoc
+    // AbstractCacheServiceMBeanã®JavaDoc
     public void setOverflowControllerServiceNames(ServiceName[] names){
         overflowControllerServiceNames = names;
     }
     
-    // AbstractCacheServiceMBean‚ÌJavaDoc
+    // AbstractCacheServiceMBeanã®JavaDoc
     public ServiceName[] getOverflowControllerServiceNames(){
         return overflowControllerServiceNames;
     }
     
-    // AbstractCacheServiceMBean‚ÌJavaDoc
+    // AbstractCacheServiceMBeanã®JavaDoc
     public void setClearOnStop(boolean isClear){
         isClearOnStop = isClear;
     }
     
-    // AbstractCacheServiceMBean‚ÌJavaDoc
+    // AbstractCacheServiceMBeanã®JavaDoc
     public boolean isClearOnStop(){
         return isClearOnStop;
     }
     
-    // AbstractCacheServiceMBean‚ÌJavaDoc
+    // AbstractCacheServiceMBeanã®JavaDoc
     public void setClearOnDestroy(boolean isClear){
         isClearOnDestroy = isClear;
     }
     
-    // AbstractCacheServiceMBean‚ÌJavaDoc
+    // AbstractCacheServiceMBeanã®JavaDoc
     public boolean isClearOnDestroy(){
         return isClearOnDestroy;
     }
     
     /**
-     * OverflowController‚ğİ’è‚·‚éB
+     * OverflowControllerã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setOverflowControllers(List overflowControllers) {
 		this.overflowControllers = overflowControllers;
 	}
 
 	/**
-     * ƒT[ƒrƒX‚Ì¶¬‘Oˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception ¶¬‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception ç”Ÿæˆå‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preCreateService() throws Exception{
         super.preCreateService();
@@ -122,10 +122,10 @@ public abstract class AbstractCacheService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‘Oˆ—‚ğs‚¤B<p>
-     * QverflowControllerƒT[ƒrƒX‚Ìæ“¾‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * QverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception ŠJn‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception é–‹å§‹å‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preStartService() throws Exception{
         super.preStartService();
@@ -140,10 +140,10 @@ public abstract class AbstractCacheService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~Œãˆ—‚ğs‚¤B<p>
-     * QverflowControllerƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * QverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception ’â~Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception åœæ­¢å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postStopService() throws Exception{
         if(isClearOnStop()){
@@ -156,10 +156,10 @@ public abstract class AbstractCacheService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüŒãˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception ”jŠüŒãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception ç ´æ£„å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postDestroyService() throws Exception{
         if(isClearOnDestroy()){
@@ -170,7 +170,7 @@ public abstract class AbstractCacheService extends ServiceBase
         super.postDestroyService();
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public CachedReference add(Object obj){
         final CachedReference ref = createCachedReference(obj);
         add(ref);
@@ -178,9 +178,9 @@ public abstract class AbstractCacheService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected void add(CachedReference ref){
         if(ref == null || references == null || getState() > STOPPED){
@@ -200,19 +200,19 @@ public abstract class AbstractCacheService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒLƒƒƒbƒVƒ…‚·‚éƒIƒuƒWƒFƒNƒg
-     * @return ƒLƒƒƒbƒVƒ…QÆ
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected abstract CachedReference createCachedReference(Object obj);
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public Iterator iterator(){
         return new CachedReferenceIterator();
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public boolean contains(CachedReference ref){
         if(references == null){
             return false;
@@ -220,7 +220,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return references.contains(ref);
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public boolean containsAll(Collection c){
         if(references == null){
             return false;
@@ -228,7 +228,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return references.containsAll(c);
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public boolean isEmpty(){
         if(references == null){
             return true;
@@ -236,7 +236,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return references.isEmpty();
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public boolean remove(CachedReference ref){
         boolean result = false;
         if(references != null){
@@ -248,7 +248,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return result;
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public boolean removeAll(Collection c){
         final Iterator refs = c.iterator();
         boolean result = false;
@@ -261,7 +261,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return result;
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public boolean retainAll(Collection c){
         if(references == null){
             return false;
@@ -279,7 +279,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return result;
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public int size(){
         if(references == null){
             return 0;
@@ -288,7 +288,7 @@ public abstract class AbstractCacheService extends ServiceBase
         }
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public void clear(){
         if(references != null){
             final Object[] refs = references.toArray();
@@ -298,7 +298,7 @@ public abstract class AbstractCacheService extends ServiceBase
         }
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public CachedReference[] toArray(){
         if(references == null){
             return new CachedReference[0];
@@ -308,7 +308,7 @@ public abstract class AbstractCacheService extends ServiceBase
         );
     }
     
-    // Cache‚ÌJavaDoc
+    // Cacheã®JavaDoc
     public CachedReference[] toArray(CachedReference[] refs){
         if(references == null){
             return new CachedReference[0];
@@ -316,7 +316,7 @@ public abstract class AbstractCacheService extends ServiceBase
         return (CachedReference[])references.toArray(refs);
     }
     
-    // CacheRemoveListener‚ÌJavaDoc
+    // CacheRemoveListenerã®JavaDoc
     public void removed(CachedReference ref){
         if(references != null && references.contains(ref)){
             references.remove(ref);
@@ -324,7 +324,7 @@ public abstract class AbstractCacheService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚ÌƒLƒƒƒbƒVƒ…QÆŒJ‚è•Ô‚µB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ç¹°ã‚Šè¿”ã—ã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheService#iterator()
@@ -338,7 +338,7 @@ public abstract class AbstractCacheService extends ServiceBase
         private Object current;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public CachedReferenceIterator(){
             if(references != null){
@@ -346,12 +346,12 @@ public abstract class AbstractCacheService extends ServiceBase
             }
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public boolean hasNext(){
             return iterator == null ? false : iterator.hasNext();
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public Object next(){
             if(iterator == null){
                 throw new NoSuchElementException();
@@ -361,7 +361,7 @@ public abstract class AbstractCacheService extends ServiceBase
             return current;
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public void remove(){
             if(current == null){
                 throw new IllegalStateException();

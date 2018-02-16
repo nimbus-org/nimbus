@@ -37,7 +37,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ThreadContextInitializeInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ThreadContextInitializeInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ThreadContextInitializeInterceptorService
@@ -46,166 +46,166 @@ public interface ThreadContextInitializeInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒXƒŒƒbƒh’PˆÊ‚Ì{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã®{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * ƒXƒŒƒbƒh’PˆÊ‚Ì{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã®{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * ƒR[ƒhƒ}ƒXƒ^‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚½‚ß‚Ì{@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ãŸã‚ã®{@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name CodeMasterFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CodeMasterFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see ThreadContextKey#CODEMASTER
      */
     public void setCodeMasterFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CodeMasterFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CodeMasterFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCodeMasterFinderServiceName();
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚½‚ß‚Ì{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ãŸã‚ã®{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see ThreadContextKey#REQUEST_ID
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚éƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ContextƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚ÆƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒRƒ“ƒeƒLƒXƒgƒL[=ƒT[ƒrƒX–¼
+     * @param names Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼=ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextValueServiceNames(ServiceNameRef[] names);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚éƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚ÆƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public ServiceNameRef[] getContextValueServiceNames();
     
     /**
-     * ‚±‚ÌInterceptor‚Ì“ü—Í‚Å“n‚³‚ê‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚©‚çæ“¾‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚éƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ã“ã®Interceptorã®å…¥åŠ›ã§æ¸¡ã•ã‚Œã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã‹ã‚‰å–å¾—ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param map ContextƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚ÆInvocationContext‚ÌƒvƒƒpƒeƒB–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒRƒ“ƒeƒLƒXƒgƒL[=InvocationContext‚ÌƒvƒƒpƒeƒB–¼
+     * @param map Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨InvocationContextã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼=InvocationContextã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public void setContextValueInvocationContext(Properties map);
     
     /**
-     * ‚±‚ÌInterceptor‚Ì“ü—Í‚Å“n‚³‚ê‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚©‚çæ“¾‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚éƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã“ã®Interceptorã®å…¥åŠ›ã§æ¸¡ã•ã‚Œã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã‹ã‚‰å–å¾—ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚ÆInvocationContext‚ÌƒvƒƒpƒeƒB–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨InvocationContextã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getContextValueInvocationContext();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é’l‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ContextƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚Æ’l‚Ìƒ}ƒbƒsƒ“ƒOBƒRƒ“ƒeƒLƒXƒgƒL[=’l
+     * @param mapping Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨å€¤ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼=å€¤
      */
     public void setContextValueMapping(Map mapping);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é’l‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚Æ’l‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨å€¤ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getContextValueMapping();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚éƒL[‚Æ’l‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã¨å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value ’l
+     * @param key ã‚­ãƒ¼
+     * @param value å€¤
      */
     public void setContextValue(String key, Object value);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é’l‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ’l
+     * @param key ã‚­ãƒ¼
+     * @return å€¤
      */
     public Object getContextValue(String key);
     
     /**
-     * ƒXƒŒƒbƒhƒOƒ‹[ƒv–¼‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚°ãƒ«ãƒ¼ãƒ—åã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput ContextƒT[ƒrƒX‚Éİ’è‚·‚éê‡true
+     * @param isOutput Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹å ´åˆtrue
      * @see ThreadContextKey#THREAD_GROUP_NAME
      */
     public void setOutputThreadGroupName(boolean isOutput);
     
     /**
-     * ƒXƒŒƒbƒhƒOƒ‹[ƒv–¼‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚°ãƒ«ãƒ¼ãƒ—åã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AContextƒT[ƒrƒX‚Éİ’è‚·‚é
+     * @return trueã®å ´åˆã€Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹
      */
     public boolean isOutputThreadGroupName();
     
     /**
-     * ƒXƒŒƒbƒh–¼‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰åã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput ContextƒT[ƒrƒX‚Éİ’è‚·‚éê‡true
+     * @param isOutput Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹å ´åˆtrue
      * @see ThreadContextKey#THREAD_NAME
      */
     public void setOutputThreadName(boolean isOutput);
     
     /**
-     * ƒXƒŒƒbƒh–¼‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰åã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AContextƒT[ƒrƒX‚Éİ’è‚·‚é
+     * @return trueã®å ´åˆã€Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹
      */
     public boolean isOutputThreadName();
     
     /**
-     * Ä‹A“I‚ÉŒÄ‚Ño‚³‚ê‚½ê‡‚ÉAƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Ì‰Šú‰»‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ítrue‚Å‰Šú‰»‚·‚éB<br>
+     * å†å¸°çš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸå ´åˆã«ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã§åˆæœŸåŒ–ã™ã‚‹ã€‚<br>
      *
-     * @param isInitialize ‰Šú‰»‚·‚éê‡‚ÍAtrue
+     * @param isInitialize åˆæœŸåŒ–ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setInitializeRecursiveCall(boolean isInitialize);
     
     /**
-     * Ä‹A“I‚ÉŒÄ‚Ño‚³‚ê‚½ê‡‚ÉAƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Ì‰Šú‰»‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å†å¸°çš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸå ´åˆã«ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA‰Šú‰»‚·‚é
+     * @return trueã®å ´åˆã¯ã€åˆæœŸåŒ–ã™ã‚‹
      */
     public boolean isInitializeRecursiveCall();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Ì{@link jp.ossc.nimbus.service.context.Context#clear() clear()}‚ğŒÄ‚Ño‚·‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åclear‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®{@link jp.ossc.nimbus.service.context.Context#clear() clear()}ã‚’å‘¼ã³å‡ºã™ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§clearã™ã‚‹ã€‚<br>
      *
-     * @param isClear clear‚·‚éê‡‚ÍAtrue
+     * @param isClear clearã™ã‚‹å ´åˆã¯ã€true
      */
     public void setClear(boolean isClear);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Ì{@link jp.ossc.nimbus.service.context.Context#clear() clear()}‚ğŒÄ‚Ño‚·‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®{@link jp.ossc.nimbus.service.context.Context#clear() clear()}ã‚’å‘¼ã³å‡ºã™ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<br>
      *
-     * @return true‚Ìê‡‚ÍAclear‚·‚é
+     * @return trueã®å ´åˆã¯ã€clearã™ã‚‹
      */
     public boolean isClear();
 }

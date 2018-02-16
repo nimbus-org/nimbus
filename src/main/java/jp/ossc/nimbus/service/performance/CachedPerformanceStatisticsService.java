@@ -30,7 +30,7 @@
  * policies, either expressed or implied, of the Nimbus Project.
  */
 package jp.ossc.nimbus.service.performance;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -41,10 +41,10 @@ import jp.ossc.nimbus.lang.ServiceException;
 import jp.ossc.nimbus.util.CsvArrayList;
 //
 /**
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒXŠÇ—ƒNƒ‰ƒXB<BR>
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX‚ÌŒŸõA“o˜^‚ğs‚¤B<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ã®æ¤œç´¢ã€ç™»éŒ²ã‚’è¡Œã†ã€‚<BR>
  *	@author 	NRI Hirotaka.Nakano
- *				XVF
+ *				æ›´æ–°ï¼š
  */
 public class CachedPerformanceStatisticsService extends ServiceBase 
 										   implements PerformanceStatistics,
@@ -52,15 +52,15 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 	
     private static final long serialVersionUID = -3405299217501638457L;
     
-    //##	ƒƒ“ƒo[•Ï”éŒ¾	##
+    //##	ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€	##
 	protected Hashtable mHash = null ;
 	protected String mClassName = null ;
 	protected Class mClsRec = null ;
 	//
 	//
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<BR>
-	 * Hash‚ğƒCƒ“ƒXƒ^ƒ“ƒVƒ“ƒO‚µ‚ÄKey‚ğƒZƒbƒg‚·‚éB<BR>
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<BR>
+	 * Hashã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚·ãƒ³ã‚°ã—ã¦Keyã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€‚<BR>
 	 */
 	public CachedPerformanceStatisticsService () {
 		super() ;
@@ -78,10 +78,10 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 	}
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXƒGƒ“ƒgƒŠƒƒ\ƒbƒh<BR>
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒGƒ“ƒgƒŠ‚ğs‚¤B<BR>
-	 * @param key	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX–¼
-	 * @param msec	ƒpƒtƒH[ƒ}ƒ“ƒXŠÔ
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚¨ãƒ³ãƒˆãƒªãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ãƒ³ãƒˆãƒªã‚’è¡Œã†ã€‚<BR>
+	 * @param key	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹å
+	 * @param msec	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ™‚é–“
 	 */
 	public void entry (String key,long msec){
 		synchronized(this) {
@@ -105,7 +105,7 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 	}
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXHASH‚ğƒNƒŠƒA‚·‚éB
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹HASHã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
 	 */
 	public void clear() {
 		synchronized(this) {
@@ -114,56 +114,56 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 	}
 	//
 	/**
-	 *	•¶šo—Íƒƒ\ƒbƒh<BR>
-	 *	w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset		¸‡A~‡‚Ìw’è
-	 * @return String[] ƒ\[ƒgŒ‹‰Ê
+	 *	æ–‡å­—å‡ºåŠ›ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset		æ˜‡é †ã€é™é †ã®æŒ‡å®š
+	 * @return String[] ã‚½ãƒ¼ãƒˆçµæœ
 	 */
 	public String[] toStringAry (int sortKey,boolean isUpset){
-		// ƒƒO‚ğæ“¾‚·‚é
+		// ãƒ­ã‚°ã‚’å–å¾—ã™ã‚‹
 		ArrayList sortList = new ArrayList();
 		CsvArrayList retAry = new CsvArrayList() ;
 		Hashtable tb = null ;
 		synchronized(this) {
 			tb = (Hashtable)mHash.clone();
 		}
-		/** ƒf[ƒ^ƒŠƒXƒg‚©‚çˆê€–Ú‚Ã‚Âæ‚èo‚·B*/
+		/** ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆã‹ã‚‰ä¸€é …ç›®ã¥ã¤å–ã‚Šå‡ºã™ã€‚*/
 		for (Enumeration enumeration = tb.elements() ; enumeration.hasMoreElements() ;) {
 			PerformanceRecord item = (PerformanceRecord)enumeration.nextElement() ;
-			//ƒL[ƒ\[ƒgƒƒ\ƒbƒh‚ğƒR[ƒ‹
+			//ã‚­ãƒ¼ã‚½ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚³ãƒ¼ãƒ«
 			_sortList(sortList,item,sortKey,isUpset);
 		}
-		/** ƒL[ƒ\[ƒgƒŠƒXƒg‚©‚ço—Í•¶š”z—ñ‚Éƒf[ƒ^‚ğ“]‹L */
+		/** ã‚­ãƒ¼ã‚½ãƒ¼ãƒˆãƒªã‚¹ãƒˆã‹ã‚‰å‡ºåŠ›æ–‡å­—é…åˆ—ã«ãƒ‡ãƒ¼ã‚¿ã‚’è»¢è¨˜ */
 		for (ListIterator iterator = sortList.listIterator() ; iterator.hasNext() ;) {
-			//KEY•¶šƒf[ƒ^æ“¾ECSV•ª‰ğ
+			//KEYæ–‡å­—ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ»CSVåˆ†è§£
 			String sortItem = (String)iterator.next() ;
 			CsvArrayList keyAry = new CsvArrayList() ;
 			keyAry.split(sortItem,";");
-			//ƒL[‚ÅHASH‚©‚ç‘ÎÛƒpƒtƒH[ƒ}ƒ“ƒXƒ}ƒl[ƒWƒƒ‚ğæ‚èo‚·B
+			//ã‚­ãƒ¼ã§HASHã‹ã‚‰å¯¾è±¡ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å–ã‚Šå‡ºã™ã€‚
 			PerformanceRecord item = (PerformanceRecord)mHash.get(keyAry.getStr(0));
-			//o—ÍƒŠƒXƒg‚ÉƒpƒtƒH[ƒ}ƒ“ƒX•¶šŠi”[
+			//å‡ºåŠ›ãƒªã‚¹ãƒˆã«ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ–‡å­—æ ¼ç´
 			if (item != null){
 				retAry.add(item.toString());
 			}else{
 			}
 		}
-		/** o—Í */
+		/** å‡ºåŠ› */
 		String[] retStrAry = retAry.toStringAry() ;
 		return retStrAry ;
 
 	}
 	//
 	/**
-	 *	ƒ\[ƒgƒƒ\ƒbƒh<BR>
-	 *	w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortList	ƒ\[ƒgŒ‹‰ÊŠi”[”z—ñ
-	 * @param item		PerformanceMangerƒIƒuƒWƒFƒNƒg
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset	¸‡A~‡‚Ìw’è
+	 *	ã‚½ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortList	ã‚½ãƒ¼ãƒˆçµæœæ ¼ç´é…åˆ—
+	 * @param item		PerformanceMangerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset	æ˜‡é †ã€é™é †ã®æŒ‡å®š
 	 */
 	private void _sortList (ArrayList sortList,PerformanceRecord item,int sortKey,boolean isUpset){
-		// ƒƒO‚ğæ“¾‚·‚é
+		// ãƒ­ã‚°ã‚’å–å¾—ã™ã‚‹
 		String cmpKey = null;
 		if(sortKey==C_NAME){
 			cmpKey = item.getResourceId() ;
@@ -180,18 +180,18 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 			Long tmpLong = new Long(item.getCallTime()) ;
 			cmpKey = tmpLong.toString() ;
 		}
-		/** sortƒf[ƒ^•¶š—ñ‚ğì¬‚·‚é<BR>
-		 *	resourceId + ";" ”äŠrƒf[ƒ^  */
+		/** sortãƒ‡ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹<BR>
+		 *	resourceId + ";" æ¯”è¼ƒãƒ‡ãƒ¼ã‚¿  */
 		String rscId = item.getResourceId() + ";" + cmpKey;
 //		rscId = rscId + ";" + cmpKey ;
 		int entryCnt = 0 ;
-		/** sortList‚Éƒ\[ƒgƒCƒ“ƒT[ƒg‚·‚éB */
+		/** sortListã«ã‚½ãƒ¼ãƒˆã‚¤ãƒ³ã‚µãƒ¼ãƒˆã™ã‚‹ã€‚ */
 		for (ListIterator iterator = sortList.listIterator() ; iterator.hasNext() ;entryCnt++) {
-			//ƒŠƒXƒg‚ÌƒRƒ“ƒyƒA€–Ú‚ğæ‚èo‚·B
+			//ãƒªã‚¹ãƒˆã®ã‚³ãƒ³ãƒšã‚¢é …ç›®ã‚’å–ã‚Šå‡ºã™ã€‚
 			String destCmp = (String)iterator.next() ;
 			CsvArrayList parse = new CsvArrayList();
 			parse.split(destCmp,";");
-			//ƒRƒ“ƒyƒA
+			//ã‚³ãƒ³ãƒšã‚¢
 			int ret = cmpKey.compareTo(parse.getStr(1));
 			if(isUpset){
 				if(ret<=0){
@@ -206,15 +206,15 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 		sortList.add(entryCnt,rscId) ;
 	}
 	/**
-	 *	ƒ\[ƒgƒƒ\ƒbƒh<BR>
-	 *	w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortList	ƒ\[ƒgŒ‹‰ÊŠi”[”z—ñ
-	 * @param item		PerformanceMangerƒIƒuƒWƒFƒNƒg
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset	¸‡A~‡‚Ìw’è
+	 *	ã‚½ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortList	ã‚½ãƒ¼ãƒˆçµæœæ ¼ç´é…åˆ—
+	 * @param item		PerformanceMangerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset	æ˜‡é †ã€é™é †ã®æŒ‡å®š
 	 */
 	private void _sortListByVal (ArrayList sortList,PerformanceRecord item,int sortKey,boolean isUpset){
-		// ƒƒO‚ğæ“¾‚·‚é
+		// ãƒ­ã‚°ã‚’å–å¾—ã™ã‚‹
 		String cmpKey = null;
 		if(sortKey==C_NAME){
 			cmpKey = item.getResourceId() ;
@@ -231,17 +231,17 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 			Long tmpLong = new Long(item.getCallTime()) ;
 			cmpKey = tmpLong.toString() ;
 		}
-		/** sortƒf[ƒ^•¶š—ñ‚ğì¬‚·‚é<BR>
-		 *	resourceId + ";" ”äŠrƒf[ƒ^  */
+		/** sortãƒ‡ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’ä½œæˆã™ã‚‹<BR>
+		 *	resourceId + ";" æ¯”è¼ƒãƒ‡ãƒ¼ã‚¿  */
 		String rscId = item.getResourceId() + ";" + cmpKey;
 		int entryCnt = 0 ;
-		/** sortList‚Éƒ\[ƒgƒCƒ“ƒT[ƒg‚·‚éB */
+		/** sortListã«ã‚½ãƒ¼ãƒˆã‚¤ãƒ³ã‚µãƒ¼ãƒˆã™ã‚‹ã€‚ */
 		for (ListIterator iterator = sortList.listIterator() ; iterator.hasNext() ;entryCnt++) {
-			//ƒŠƒXƒg‚ÌƒRƒ“ƒyƒA€–Ú‚ğæ‚èo‚·B
+			//ãƒªã‚¹ãƒˆã®ã‚³ãƒ³ãƒšã‚¢é …ç›®ã‚’å–ã‚Šå‡ºã™ã€‚
 			String destCmp = (String)iterator.next() ;
 			CsvArrayList parse = new CsvArrayList();
 			parse.split(destCmp,";");
-			//ƒRƒ“ƒyƒA
+			//ã‚³ãƒ³ãƒšã‚¢
 			int ret = 0;
 			if (sortKey==C_NAME){
 				ret = cmpKey.compareTo(parse.getStr(1));
@@ -269,11 +269,11 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 		sortList.add(entryCnt,rscId) ;
 	}
 	/**
-	 *	Listƒf[ƒ^æ“¾<BR>
-	 *	w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset	¸‡A~‡‚Ìw’è
-	 * @return ArrayList	ƒ\[ƒg“Œvî•ñ
+	 *	Listãƒ‡ãƒ¼ã‚¿å–å¾—<BR>
+	 *	æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset	æ˜‡é †ã€é™é †ã®æŒ‡å®š
+	 * @return ArrayList	ã‚½ãƒ¼ãƒˆçµ±è¨ˆæƒ…å ±
 	 */
 	public ArrayList toAry (int sortKey,boolean isUpset){
 		ArrayList sortList = new ArrayList();
@@ -282,23 +282,23 @@ public class CachedPerformanceStatisticsService extends ServiceBase
 		synchronized(this) {
 			tb = (Hashtable)mHash.clone();
 		}
-		/** ƒf[ƒ^ƒŠƒXƒg‚©‚çˆê€–Ú‚Ã‚Âæ‚èo‚·B*/
+		/** ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆã‹ã‚‰ä¸€é …ç›®ã¥ã¤å–ã‚Šå‡ºã™ã€‚*/
 		for (Enumeration enumeration = tb.elements() ; enumeration.hasMoreElements() ;) {
 			PerformanceRecord item = (PerformanceRecord)enumeration.nextElement() ;
-			//ƒL[ƒ\[ƒgƒƒ\ƒbƒh‚ğƒR[ƒ‹
+			//ã‚­ãƒ¼ã‚½ãƒ¼ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚³ãƒ¼ãƒ«
 			if (sortKey==C_NAME){
 				_sortList(sortList,item,sortKey,isUpset);
 			}else{
 				_sortListByVal(sortList,item,sortKey,isUpset);
 			}
 		}
-		/** ƒL[ƒ\[ƒgƒŠƒXƒg‚©‚ço—Í•¶š”z—ñ‚Éƒf[ƒ^‚ğ“]‹L */
+		/** ã‚­ãƒ¼ã‚½ãƒ¼ãƒˆãƒªã‚¹ãƒˆã‹ã‚‰å‡ºåŠ›æ–‡å­—é…åˆ—ã«ãƒ‡ãƒ¼ã‚¿ã‚’è»¢è¨˜ */
 		for (ListIterator iterator = sortList.listIterator() ; iterator.hasNext() ;) {
-			//KEY•¶šƒf[ƒ^æ“¾ECSV•ª‰ğ
+			//KEYæ–‡å­—ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ»CSVåˆ†è§£
 			String sortItem = (String)iterator.next() ;
 			CsvArrayList keyAry = new CsvArrayList() ;
 			keyAry.split(sortItem,";");
-			//ƒL[‚ÅHASH‚©‚ç‘ÎÛƒpƒtƒH[ƒ}ƒ“ƒXƒ}ƒl[ƒWƒƒ‚ğæ‚èo‚·B
+			//ã‚­ãƒ¼ã§HASHã‹ã‚‰å¯¾è±¡ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ã‚’å–ã‚Šå‡ºã™ã€‚
 			PerformanceRecord item = (PerformanceRecord)mHash.get(keyAry.getStr(0));
 			if(item != null){
 				retAry.add(item);

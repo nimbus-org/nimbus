@@ -35,17 +35,17 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * ƒvƒƒLƒV‚ÌƒŠƒNƒGƒXƒgˆ—‚ğs‚¤ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface Process{
     
     /**
-     * ƒvƒƒLƒV‚ÌƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param socket ƒ\ƒPƒbƒg
-     * @exception Exception ƒŠƒNƒGƒXƒgˆ—‚É¸”s‚µ‚½ê‡
+     * @param socket ã‚½ã‚±ãƒƒãƒˆ
+     * @exception Exception ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void doProcess(Socket socket) throws Exception;
 }

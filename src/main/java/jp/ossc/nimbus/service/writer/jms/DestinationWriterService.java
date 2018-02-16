@@ -39,7 +39,7 @@ import jp.ossc.nimbus.service.writer.WritableRecord;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 
 /**
- * JMS‚ÌDestination‚ÉMessage‚ğ‘‚«‚ŞMessageWriterƒT[ƒrƒXB<p>
+ * JMSã®Destinationã«Messageã‚’æ›¸ãè¾¼ã‚€MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -48,7 +48,7 @@ public class DestinationWriterService extends ServiceBase
     
     private static final long serialVersionUID = 6016635831220272596L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String JMSDW = "JMSDW";
     private static final String JMSDW0 = JMSDW + 0;
     private static final String JMSDW00 = JMSDW0 + 0;
@@ -75,47 +75,47 @@ public class DestinationWriterService extends ServiceBase
     protected int delivery = Message.DEFAULT_DELIVERY_MODE;
     protected long lifeTime = Message.DEFAULT_TIME_TO_LIVE;
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public void setJMSMessageProducerFactoryServiceName(ServiceName name){
         jmsMessageProducerFactoryServiceName = name;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public ServiceName getJMSMessageProducerFactoryServiceName(){
         return jmsMessageProducerFactoryServiceName;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public void setJMSMessageCreatorServiceName(ServiceName name){
         jmsMessageCreatorServiceName = name;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public ServiceName getJMSMessageCreatorServiceName(){
         return jmsMessageCreatorServiceName;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public void setJMSMessageCreatorClassName(String name){
         jmsMessageCreatorClassName = name;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public String getJMSMessageCreatorClassName(){
         return jmsMessageCreatorClassName;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public void setPriority(int priority){
         this.priority = priority;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public int getPriority(){
         return priority;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public void setDeliveryMode(String mode) throws IllegalArgumentException{
         deliveryMode = mode;
         if(DELIVERY_MODE_NON_PERSISTENT.equals(deliveryMode)){
@@ -129,17 +129,17 @@ public class DestinationWriterService extends ServiceBase
         }
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public String getDeliveryMode(){
         return deliveryMode;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public void setLifeTime(long lifeTime){
         this.lifeTime = lifeTime;
     }
     
-    // DestinationWriterServiceMBean‚ÌJavaDoc
+    // DestinationWriterServiceMBeanã®JavaDoc
     public long getLifeTime(){
         return lifeTime;
     }

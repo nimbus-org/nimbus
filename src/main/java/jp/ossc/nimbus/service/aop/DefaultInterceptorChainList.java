@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop;
 import java.util.*;
 
 /**
- * {@link InterceptorChainList}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•B<p>
+ * {@link InterceptorChainList}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã€‚<p>
  *
  * @author M.Takata
  */
@@ -45,16 +45,16 @@ public class DefaultInterceptorChainList implements InterceptorChainList, java.i
     private final List interceptorList;
     
     /**
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã„ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultInterceptorChainList(){
         interceptorList = new ArrayList();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^”z—ñ‚ğƒ`ƒF[ƒ“‚Æ‚µ‚Ä‚ÂƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿é…åˆ—ã‚’ãƒã‚§ãƒ¼ãƒ³ã¨ã—ã¦æŒã¤ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param interceptors “o˜^‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Ì”z—ñ
+     * @param interceptors ç™»éŒ²ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®é…åˆ—
      */
     public DefaultInterceptorChainList(Interceptor[] interceptors){
         this();
@@ -66,25 +66,25 @@ public class DefaultInterceptorChainList implements InterceptorChainList, java.i
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^‚ğƒ`ƒF[ƒ“‚É’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’ãƒã‚§ãƒ¼ãƒ³ã«è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param interceptor ƒCƒ“ƒ^[ƒZƒvƒ^
+     * @param interceptor ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿
      */
     public void addInterceptor(Interceptor interceptor){
         interceptorList.add(interceptor);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^‚ğƒ`ƒF[ƒ“‚Ìw’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚É‘}“ü‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’ãƒã‚§ãƒ¼ãƒ³ã®æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«æŒ¿å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒ`ƒF[ƒ““à‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @param interceptor ƒCƒ“ƒ^[ƒZƒvƒ^
+     * @param index ãƒã‚§ãƒ¼ãƒ³å†…ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param interceptor ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿
      */
     public void addInterceptor(int index, Interceptor interceptor){
         interceptorList.add(index, interceptor);
     }
     
-    // InterceptorChainList‚ÌJavaDoc
+    // InterceptorChainListã®JavaDoc
     public Interceptor getInterceptor(InvocationContext context, int index){
         if(interceptorList.size() <= index){
             return null;
@@ -93,43 +93,43 @@ public class DefaultInterceptorChainList implements InterceptorChainList, java.i
     }
     
     /**
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg
+     * @return ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆ
      */
     public List getInterceptors(){
         return interceptorList;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒ^[ƒZƒvƒ^‚ğƒŠƒXƒg‚©‚çíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param interceptor íœ‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^
+     * @param interceptor å‰Šé™¤ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿
      */
     public void removeInterceptor(Interceptor interceptor){
         interceptorList.remove(interceptor);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğƒŠƒXƒg‚©‚çíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒ`ƒF[ƒ““à‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @param index ãƒã‚§ãƒ¼ãƒ³å†…ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void removeInterceptor(int index){
         interceptorList.remove(index);
     }
     
     /**
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearInterceptor(){
         interceptorList.clear();
     }
     
     /**
-     * ‚±‚ÌƒŠƒXƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒªã‚¹ãƒˆã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒŠƒXƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Ì”
+     * @return ã“ã®ãƒªã‚¹ãƒˆã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®æ•°
      */
     public int size(){
         return interceptorList.size();

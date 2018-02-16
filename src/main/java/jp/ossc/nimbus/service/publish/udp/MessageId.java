@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * ƒƒbƒZ[ƒWIDƒNƒ‰ƒXB<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

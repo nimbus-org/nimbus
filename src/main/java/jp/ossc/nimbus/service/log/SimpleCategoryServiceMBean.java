@@ -35,7 +35,7 @@ package jp.ossc.nimbus.service.log;
 import java.util.*;
 
 /**
- * {@link SimpleCategoryService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SimpleCategoryService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,45 +43,45 @@ public interface SimpleCategoryServiceMBean
  extends LogCategory, jp.ossc.nimbus.service.writer.SimpleCategoryServiceMBean{
     
     /**
-     * ƒJƒeƒSƒŠ–¼‚ğİ’è‚·‚éB<p>
+     * ã‚«ãƒ†ã‚´ãƒªåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒJƒeƒSƒŠ–¼
+     * @param name ã‚«ãƒ†ã‚´ãƒªå
      */
     public void setCategoryName(String name);
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Åo—Í‚³‚ê‚éƒƒO‚Ì—Dæ‡ˆÊ”ÍˆÍ‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã§å‡ºåŠ›ã•ã‚Œã‚‹ãƒ­ã‚°ã®å„ªå…ˆé †ä½ç¯„å›²ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param range —Dæ‡ˆÊ”ÍˆÍBÅ¬’l:Å‘å’l‚Ì‘®‚Åw’è‚·‚éB
-     * @exception IllegalArgumentException —Dæ‡ˆÊ”ÍˆÍ‚Ìw’è‚ª•s³‚Èê‡B
+     * @param range å„ªå…ˆé †ä½ç¯„å›²ã€‚æœ€å°å€¤:æœ€å¤§å€¤ã®æ›¸å¼ã§æŒ‡å®šã™ã‚‹ã€‚
+     * @exception IllegalArgumentException å„ªå…ˆé †ä½ç¯„å›²ã®æŒ‡å®šãŒä¸æ­£ãªå ´åˆã€‚
      */
     public void setPriorityRange(String range) throws IllegalArgumentException;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚Åo—Í‚³‚ê‚éƒƒO‚Ì—Dæ‡ˆÊ”ÍˆÍ‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªã§å‡ºåŠ›ã•ã‚Œã‚‹ãƒ­ã‚°ã®å„ªå…ˆé †ä½ç¯„å›²ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —Dæ‡ˆÊ”ÍˆÍ
+     * @return å„ªå…ˆé †ä½ç¯„å›²
      */
     public String getPriorityRange();
     
     /**
-     * ƒƒO‚Ì—Dæ‡ˆÊ‚É‘Î‰‚·‚éƒ‰ƒxƒ‹‚ğİ’è‚·‚éB<p>
-     * ˆø”‚Ìlabels‚É‚ÍAˆÈ‰º‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<br>
+     * ãƒ­ã‚°ã®å„ªå…ˆé †ä½ã«å¯¾å¿œã™ã‚‹ãƒ©ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã®labelsã«ã¯ã€ä»¥ä¸‹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>—Dæ‡ˆÊ”ÍˆÍBÅ¬’l:Å‘å’l‚Ì‘®‚Åw’è‚·‚éB</td><td>String</td><td>ƒ‰ƒxƒ‹</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>å„ªå…ˆé †ä½ç¯„å›²ã€‚æœ€å°å€¤:æœ€å¤§å€¤ã®æ›¸å¼ã§æŒ‡å®šã™ã‚‹ã€‚</td><td>String</td><td>ãƒ©ãƒ™ãƒ«</td></tr>
      * </table>
      *
-     * @param labels ƒƒO‚Ì—Dæ‡ˆÊ‚É‘Î‰‚·‚éƒ‰ƒxƒ‹‚Ìƒ}ƒbƒsƒ“ƒO
-     * @exception IllegalArgumentException —Dæ‡ˆÊ”ÍˆÍ‚Ìw’è‚ª•s³‚Èê‡B
+     * @param labels ãƒ­ã‚°ã®å„ªå…ˆé †ä½ã«å¯¾å¿œã™ã‚‹ãƒ©ãƒ™ãƒ«ã®ãƒãƒƒãƒ”ãƒ³ã‚°
+     * @exception IllegalArgumentException å„ªå…ˆé †ä½ç¯„å›²ã®æŒ‡å®šãŒä¸æ­£ãªå ´åˆã€‚
      */
     public void setLabels(Properties labels) throws IllegalArgumentException;
     
     /**
-     * ƒƒO‚Ì—Dæ‡ˆÊ‚É‘Î‰‚·‚éƒ‰ƒxƒ‹‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã®å„ªå…ˆé †ä½ã«å¯¾å¿œã™ã‚‹ãƒ©ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒO‚Ì—Dæ‡ˆÊ‚É‘Î‰‚·‚éƒ‰ƒxƒ‹‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ãƒ­ã‚°ã®å„ªå…ˆé †ä½ã«å¯¾å¿œã™ã‚‹ãƒ©ãƒ™ãƒ«ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getLabels();
 }

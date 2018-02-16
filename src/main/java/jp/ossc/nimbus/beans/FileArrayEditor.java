@@ -35,23 +35,23 @@ import java.io.File;
 import java.util.List;
 
 /**
- * File�z��^��PropertyEditor�N���X�B
+ * File配列型のPropertyEditorクラス。
  * <p>
- * �J���}��؂�̕������File[]�^�̃I�u�W�F�N�g�ɕϊ�����B<br>
- * �󔒂̓g���������B �󔒂́A{@link java.lang.Character#isWhitespace(char)}�Ŕ��肳���B
- * �܂��A"&lt;!--"��"--&gt;"�Ɉ͂܂ꂽ������̓R�����g�Ɖ��߂��ꖳ�������B
- * �܂��A"${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
+ * カンマ区切りの文字列をFile[]型のオブジェクトに変換する。<br>
+ * 空白はトリムされる。 空白は、{@link java.lang.Character#isWhitespace(char)}で判定される。
+ * また、"&lt;!--"と"--&gt;"に囲まれた文字列はコメントと解釈され無視される。
+ * また、"${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;./a.txt,./b.txt, ./dir<br>
  * &nbsp;&nbsp;/c.txt, ./dir/d.txt<br>
  * <br>
- * &nbsp;�̂悤�ȕ�����<br>
+ * &nbsp;のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;new File[]{new File("./a.txt"), new File("./b.txt"), new
  * File("./dir/c.txt"), new File("./dir/d.txt")}<br>
  * <br>
- * &nbsp;�̂悤�ɕϊ������B<br>
+ * &nbsp;のように変換される。<br>
  *
  * @author M.Ishida
  */

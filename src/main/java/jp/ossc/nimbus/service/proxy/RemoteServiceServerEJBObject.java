@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ƒŠƒ‚[ƒgŒÄ‚Ño‚µƒT[ƒoEJBObjectƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚µãƒ¼ãƒEJBObjectã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -45,21 +45,21 @@ public interface RemoteServiceServerEJBObject
  extends EJBObject, RemoteServerInvoker{
     
     /**
-     * ƒŠƒ‚[ƒgƒT[ƒo‘¤‚ÌƒvƒƒLƒVˆ—‚ğs‚¤B<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚µãƒ¼ãƒå´ã®ãƒ—ãƒ­ã‚­ã‚·å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg
-     * @return ƒT[ƒrƒX‚ÌŒÄ‚Ño‚µŒ‹‰Ê
-     * @exception java.rmi.RemoteException ƒvƒƒLƒVˆ—‚É¸”s‚µ‚½ê‡
-     * @exception Exception ƒvƒƒLƒVˆ—‚É¸”s‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—çµæœ
+     * @exception java.rmi.RemoteException ãƒ—ãƒ­ã‚­ã‚·å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception Exception ãƒ—ãƒ­ã‚­ã‚·å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context)
      throws Exception, java.rmi.RemoteException;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX‚ª¶‘¶‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç”Ÿå­˜ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ¶‘¶‚µ‚Ä‚¢‚éê‡true
-     * @exception java.rmi.RemoteException ƒvƒƒLƒVˆ—‚É¸”s‚µ‚½ê‡
+     * @return ç”Ÿå­˜ã—ã¦ã„ã‚‹å ´åˆtrue
+     * @exception java.rmi.RemoteException ãƒ—ãƒ­ã‚­ã‚·å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean isAlive(ServiceName name) throws Exception, java.rmi.RemoteException;
 }

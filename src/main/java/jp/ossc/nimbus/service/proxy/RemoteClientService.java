@@ -38,11 +38,11 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ƒŠƒ‚[ƒgŒÄ‚Ño‚µƒNƒ‰ƒCƒAƒ“ƒgƒT[ƒrƒXB<p>
- * ”CˆÓ‚ÌƒT[ƒrƒX‚ÌƒvƒƒLƒV‚Æ‚µ‚ÄAU•‘‚¤ƒvƒƒLƒVƒT[ƒrƒX‚Å‚ ‚éB<br>
- * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‹@”\‚âAÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ•û–@‚ğƒJƒXƒ^ƒ}ƒCƒY‚·‚é‹@”\‚ğ‚ÂB<br>
- * ‚±‚ÌƒT[ƒrƒX‚ÆA{@link RemoteServerInvoker}ƒT[ƒrƒX‚ğ‘g‚İ‡‚í‚¹‚é–‚ÅAƒŠƒ‚[ƒg‚ÌƒT[ƒrƒX‚ğAƒ[ƒJƒ‹‚ÌƒT[ƒrƒX‚Æ“¯—l‚ÉŒÄ‚Ño‚·–‚ª‰Â”\‚É‚È‚éB<br>
- * ‚Ü‚½A{@link #setInvokerServiceName(ServiceName)}‚Åİ’è‚·‚é{@link Invoker}ƒT[ƒrƒX‚ÉA{@link jp.ossc.nimbus.service.proxy.invoker.LocalClientMethodCallInvokerService LocalClientMethodCallInvokerService}‚ğg—p‚·‚ê‚ÎAƒ[ƒJƒ‹ƒT[ƒrƒX‚ÌƒvƒƒLƒV‚Æ‚·‚é–‚à‰Â”\‚Å‚ ‚éB<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»»æ„ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ—ãƒ­ã‚­ã‚·ã¨ã—ã¦ã€æŒ¯èˆã†ãƒ—ãƒ­ã‚­ã‚·ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€æ©Ÿèƒ½ã‚„ã€å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—æ–¹æ³•ã‚’ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã¨ã€{@link RemoteServerInvoker}ã‚µãƒ¼ãƒ“ã‚¹ã‚’çµ„ã¿åˆã‚ã›ã‚‹äº‹ã§ã€ãƒªãƒ¢ãƒ¼ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹ã¨åŒæ§˜ã«å‘¼ã³å‡ºã™äº‹ãŒå¯èƒ½ã«ãªã‚‹ã€‚<br>
+ * ã¾ãŸã€{@link #setInvokerServiceName(ServiceName)}ã§è¨­å®šã™ã‚‹{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã«ã€{@link jp.ossc.nimbus.service.proxy.invoker.LocalClientMethodCallInvokerService LocalClientMethodCallInvokerService}ã‚’ä½¿ç”¨ã™ã‚Œã°ã€ãƒ­ãƒ¼ã‚«ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ—ãƒ­ã‚­ã‚·ã¨ã™ã‚‹äº‹ã‚‚å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -126,9 +126,9 @@ public class RemoteClientService extends FactoryServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(interceptorChainFactoryServiceName != null){
@@ -152,11 +152,11 @@ public class RemoteClientService extends FactoryServiceBase
     }
     
     /**
-     * ƒvƒƒLƒV‚ğ¶¬‚·‚éB<p>
-     * {@link #setRemoteInterfaceClassName(String)}‚Åİ’è‚³‚ê‚½ƒCƒ“ƒ^ƒtƒF[ƒX‚ğ‚ÂƒvƒƒLƒV‚ğ¶¬‚·‚éB<br>
-     * ‚»‚ÌƒvƒƒLƒV‚ğŒÄ‚Ño‚·‚ÆA{@link #setInterceptorChainListServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}‚ğŒÄ‚Ño‚µAÅŒã‚É{@link #setInvokerServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.service.aop.Invoker Invoker}‚ğg‚Á‚ÄAÀƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<br>
+     * ãƒ—ãƒ­ã‚­ã‚·ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #setRemoteInterfaceClassName(String)}ã§è¨­å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’æŒã¤ãƒ—ãƒ­ã‚­ã‚·ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * ãã®ãƒ—ãƒ­ã‚­ã‚·ã‚’å‘¼ã³å‡ºã™ã¨ã€{@link #setInterceptorChainListServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚’å‘¼ã³å‡ºã—ã€æœ€å¾Œã«{@link #setInvokerServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚’ä½¿ã£ã¦ã€å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @return ƒvƒƒLƒV
+     * @return ãƒ—ãƒ­ã‚­ã‚·
      */
     protected synchronized Object createInstance() throws Exception{
         if(isCreateNewProxy){

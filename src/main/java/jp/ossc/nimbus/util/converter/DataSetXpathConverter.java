@@ -58,11 +58,11 @@ import jp.ossc.nimbus.beans.dataset.RecordSchema;
 import jp.ossc.nimbus.beans.dataset.XpathPropertySchema;
 
 /**
- * {@link DataSet}‚ÆXPath‚Å•\Œ»‚³‚ê‚½XMLƒf[ƒ^‚Æ‚Ì•ÏŠ·‚ğs‚¤{@link Converter}B
+ * {@link DataSet}ã¨XPathã§è¡¨ç¾ã•ã‚ŒãŸXMLãƒ‡ãƒ¼ã‚¿ã¨ã®å¤‰æ›ã‚’è¡Œã†{@link Converter}ã€‚
  * <p>
  *     <ul>
- *         <li>ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ª{@link XpathPropertySchema}‚Å‚ ‚éƒvƒƒpƒeƒB‚É‘Î‚µ‚Ä•ÏŠ·‚ğs‚¤B</li>
- *         <li>XPath‚ÍAXMLƒm[ƒh‚Ü‚½‚ÍXMLƒm[ƒhƒŠƒXƒg‚ğ•Ô‚·‚æ‚¤‚Éİ’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B</li>
+ *         <li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒãŒ{@link XpathPropertySchema}ã§ã‚ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã—ã¦å¤‰æ›ã‚’è¡Œã†ã€‚</li>
+ *         <li>XPathã¯ã€XMLãƒãƒ¼ãƒ‰ã¾ãŸã¯XMLãƒãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¿”ã™ã‚ˆã†ã«è¨­å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚</li>
  *     </ul>
  * </p>
  * @author T.Okada
@@ -75,20 +75,20 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     protected String characterEncodingToObject;
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA“¯Šú‚µ‚È‚¢B<br>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åŒæœŸã—ãªã„ã€‚<br>
      */
     protected boolean isSynchronizedDomParse;
     
     /**
-     * DocumentBuilderFactory‚ÌÀ‘•ƒNƒ‰ƒXB<p>
+     * DocumentBuilderFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     protected String documentBuilderFactoryClass;
     
     /**
-     * DocumentBuilderFactory‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * DocumentBuilderFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz DocumentBuilderFactory‚ÌÀ‘•ƒNƒ‰ƒX
+     * @param clazz DocumentBuilderFactoryã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public void setDocumentBuilderFactoryClassName(String clazz){
         documentBuilderFactoryClass = clazz;
@@ -141,35 +141,35 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     }
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA“¯Šú‚µ‚È‚¢B<br>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€åŒæœŸã—ãªã„ã€‚<br>
      * 
-     * @param isSync “¯Šú‚·‚éê‡‚ÍAtrue
+     * @param isSync åŒæœŸã™ã‚‹å ´åˆã¯ã€true
      */
     public void setSynchronizedDomParse(boolean isSync){
         isSynchronizedDomParse = isSync;
     }
     
     /**
-     * DOM‚Ìƒp[ƒX‚ğ“¯Šú“I‚És‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * DOMã®ãƒ‘ãƒ¼ã‚¹ã‚’åŒæœŸçš„ã«è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A“¯Šú‚·‚é
+     * @return trueã®å ´åˆã€åŒæœŸã™ã‚‹
      */
     public boolean isSynchronizedDomParse(){
         return isSynchronizedDomParse;
     }
     
     /**
-     * w’è‚³‚ê‚½{@link DataSet}ƒTƒuƒNƒ‰ƒX‚ÌƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB
-     * @param inputStream “ü—ÍƒXƒgƒŠ[ƒ€
-     * @param returnObject •ÏŠ·‘ÎÛ‚Ì{@link DataSet}ƒTƒuƒNƒ‰ƒX
-     * @return w’è‚µ‚½ƒf[ƒ^ƒZƒbƒgƒTƒuƒNƒ‰ƒX‚É•ÏŠ·‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-     * @throws ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * æŒ‡å®šã•ã‚ŒãŸ{@link DataSet}ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚
+     * @param inputStream å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @param returnObject å¤‰æ›å¯¾è±¡ã®{@link DataSet}ã‚µãƒ–ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã—ãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«å¤‰æ›ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @throws ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream inputStream, Object returnObject) throws ConvertException {
         DataSet result = null;
         
-        // o—ÍDataSet¶¬
+        // å‡ºåŠ›DataSetç”Ÿæˆ
         if(returnObject != null) {
             if(DataSet.class.isAssignableFrom(returnObject.getClass())) {
                 result = ((DataSet)returnObject).cloneDataSet();
@@ -184,14 +184,14 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
         
         validateXml(document);
         
-        // Header—v‘f’Šo
+        // Headerè¦ç´ æŠ½å‡º
         Iterator headers = result.getHeaderMap().values().iterator();
         while(headers.hasNext()) {
             Header header = (Header)headers.next();
             createRecord(document, result, header, header.getRecordSchema());
         }
         
-        // RecordList—v‘f’Šo
+        // RecordListè¦ç´ æŠ½å‡º
         Iterator recordLists = result.getRecordListMap().values().iterator();
         while(recordLists.hasNext()) {
             RecordList recordList = (RecordList)recordLists.next();
@@ -206,11 +206,11 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
         
         for(int i=0; i<propertySchemata.length; i++) {
             if(propertySchemata[i] instanceof XpathPropertySchema) {
-                // PropertySchema‚©‚çXPathæ“¾
+                // PropertySchemaã‹ã‚‰XPathå–å¾—
                 XpathPropertySchema xmlBindingPropertySchema = (XpathPropertySchema)propertySchemata[i];
                 XPathExpression expression = xmlBindingPropertySchema.getXpathExpression();
                 
-                // XPath‚É‚æ‚èXML—v‘f‚ğ’Šo
+                // XPathã«ã‚ˆã‚ŠXMLè¦ç´ ã‚’æŠ½å‡º
                 NodeList nodeList = null;
                 try {
                     nodeList = (NodeList)expression.evaluate(document, XPathConstants.NODESET);
@@ -218,7 +218,7 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
                     throw new ConvertException("The converter failed to evaluate a XML. ", e);
                 }
                 
-                // DataSet‚Ö•ÏŠ·
+                // DataSetã¸å¤‰æ›
                 int length = nodeList.getLength();
                 if(target instanceof Record) {
                     if(length > 0) {
@@ -275,10 +275,10 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     }
     
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğƒp[ƒX‚µ‚Ä{@link Document}ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB
-     * @param inputStream “ü—ÍƒXƒgƒŠ[ƒ€
-     * @return ƒp[ƒX‚µ‚½{@link Document}ƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException ƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦{@link Document}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚
+     * @param inputStream å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return ãƒ‘ãƒ¼ã‚¹ã—ãŸ{@link Document}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Document parseXml(InputStream inputStream) throws ConvertException {
         DocumentBuilderFactory factory = null;
@@ -324,9 +324,9 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     }
     
     /**
-     * •ÏŠ·‘ÎÛ‚ÌXML‚ğŒŸØ‚·‚éB
-     * @param document •ÏŠ·‘ÎÛXML‚Ì{@link Document}ƒIƒuƒWƒFƒNƒgB
-     * @exception ConvertException XML‚ª•s³‚Å‚ ‚Á‚½ê‡
+     * å¤‰æ›å¯¾è±¡ã®XMLã‚’æ¤œè¨¼ã™ã‚‹ã€‚
+     * @param document å¤‰æ›å¯¾è±¡XMLã®{@link Document}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚
+     * @exception ConvertException XMLãŒä¸æ­£ã§ã‚ã£ãŸå ´åˆ
      */
     protected void validateXml(Document document) throws ConvertException {
     }

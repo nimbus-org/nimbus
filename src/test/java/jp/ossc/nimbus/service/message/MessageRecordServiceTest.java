@@ -38,8 +38,8 @@ import java.util.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/17| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/17ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MessageRecordServiceTest extends TestCase {
 	private static final String serviceDefFilename = 
@@ -56,7 +56,7 @@ public class MessageRecordServiceTest extends TestCase {
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(MessageRecordServiceTest.class);
 	}
-	//ƒƒbƒZ[ƒWƒtƒ@ƒCƒ‹ƒpƒX‚ğ‚PŒÂw’è‚µ‚½ê‡
+	//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’ï¼‘å€‹æŒ‡å®šã—ãŸå ´åˆ
 	public void testSetMessageFilePath1() throws Exception{
 		MessageRecordFactoryService msgRecordService = new MessageRecordFactoryService() ;
 		msgRecordService.create() ;
@@ -78,14 +78,14 @@ public class MessageRecordServiceTest extends TestCase {
 	}
 //	*/
 //	
-	//getMessageRecordClassName‚ÌƒeƒXƒg
+	//getMessageRecordClassNameã®ãƒ†ã‚¹ãƒˆ
 	public void testGetMessageRecordClassName() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		String path = msgRecordService.getMessageRecordClassName();
 		assertEquals(path,"jp.ossc.nimbus.service.message.MessageRecordImpl") ;	
 	}
 //	
-//	//findMessageRecord‚¨‚æ‚ÑAMessageRecordImpl::toString‚ÌƒeƒXƒg
+//	//findMessageRecordãŠã‚ˆã³ã€MessageRecordImpl::toStringã®ãƒ†ã‚¹ãƒˆ
 	public void testFindMessageRecord() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000001");
@@ -102,8 +102,8 @@ public class MessageRecordServiceTest extends TestCase {
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000001");
 		String msg = rec.makeMessage();
 		assertEquals(msg,"test004@0") ;		
-		msg = rec.makeMessage("–„‚ß‚İ•¶š1");
-		assertEquals(msg,"test004–„‚ß‚İ•¶š1") ;		
+		msg = rec.makeMessage("åŸ‹ã‚è¾¼ã¿æ–‡å­—1");
+		assertEquals(msg,"test004åŸ‹ã‚è¾¼ã¿æ–‡å­—1") ;		
 
 		// byte
 		msg = rec.makeMessage();
@@ -148,65 +148,65 @@ public class MessageRecordServiceTest extends TestCase {
 		assertEquals(msg,"test004123.456") ;		
 
 	}
-	//MessageRecordImpl::makeMessage(String[])‚ÌƒeƒXƒg
+	//MessageRecordImpl::makeMessage(String[])ã®ãƒ†ã‚¹ãƒˆ
 	//
 	public void testMakeMessage3() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000002");
-		String[] msgs = {"•¶š1","•¶š2","•¶š3","•¶š4","•¶š5"};
+		String[] msgs = {"æ–‡å­—1","æ–‡å­—2","æ–‡å­—3","æ–‡å­—4","æ–‡å­—5"};
 		String msg = rec.makeMessage(msgs);
-		assertEquals(msg,"test•¶š1test•¶š2test•¶š3test•¶š4test•¶š5");		
+		assertEquals(msg,"testæ–‡å­—1testæ–‡å­—2testæ–‡å­—3testæ–‡å­—4testæ–‡å­—5");		
 	}
 	
-	//MessageRecordImpl::makeMessage(String[])‚ÌƒeƒXƒg
-	//ƒV[ƒNƒŒƒbƒgƒ‚[ƒhtrue
+	//MessageRecordImpl::makeMessage(String[])ã®ãƒ†ã‚¹ãƒˆ
+	//ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰true
 	public void testMakeMessage4() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000011");
-		String[] msgs = { "”é–§•¶š1","”é–§•¶š2" };
+		String[] msgs = { "ç§˜å¯†æ–‡å­—1","ç§˜å¯†æ–‡å­—2" };
 		String msg = rec.makeMessage(msgs);
-		//#0,#1‚ª’u‚«Š·‚¦‚ç‚ê‚È‚¢–‚ğŠm”F
+		//#0,#1ãŒç½®ãæ›ãˆã‚‰ã‚Œãªã„äº‹ã‚’ç¢ºèª
 		assertEquals(msg,"test#0#1");
 	}
 	
-	//MessageRecordImpl::makeMessage(String[])‚ÌƒeƒXƒg
-	//ƒV[ƒNƒŒƒbƒgƒ‚[ƒh=false
+	//MessageRecordImpl::makeMessage(String[])ã®ãƒ†ã‚¹ãƒˆ
+	//ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰=false
 	public void testMakeMessage5() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService2");
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000011");
-		String[] msgs = { "”é–§•¶š1","”é–§•¶š2" };
+		String[] msgs = { "ç§˜å¯†æ–‡å­—1","ç§˜å¯†æ–‡å­—2" };
 		String msg = rec.makeMessage(msgs);
-		//#0,#1‚ª’u‚«Š·‚¦‚ç‚ê‚È‚¢–‚ğŠm”F
-		assertEquals("test”é–§•¶š1”é–§•¶š2",msg);
+		//#0,#1ãŒç½®ãæ›ãˆã‚‰ã‚Œãªã„äº‹ã‚’ç¢ºèª
+		assertEquals("testç§˜å¯†æ–‡å­—1ç§˜å¯†æ–‡å­—2",msg);
 
 	}
 	
-	//MessageRecordImpl::makeMessage(String[])‚ÌƒeƒXƒg
-	//ƒeƒ“ƒvƒŒ[ƒg‚Ì–„‚ß‚İ•¶š‚æ‚è—v‘f”‚ª­‚È‚¢String[]
+	//MessageRecordImpl::makeMessage(String[])ã®ãƒ†ã‚¹ãƒˆ
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®åŸ‹ã‚è¾¼ã¿æ–‡å­—ã‚ˆã‚Šè¦ç´ æ•°ãŒå°‘ãªã„String[]
 	public void testMakeMessage6() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000002");
-		String[] msgs = {"•¶š1","•¶š2"};
+		String[] msgs = {"æ–‡å­—1","æ–‡å­—2"};
 		String msg = rec.makeMessage(msgs);
-		assertEquals(msg,"test•¶š1test•¶š2test@2test@3test@4");		
+		assertEquals(msg,"testæ–‡å­—1testæ–‡å­—2test@2test@3test@4");		
 
 	}
 	
-	//MessageRecordImpl::makeMessage(String[])‚ÌƒeƒXƒg
-	//ƒeƒ“ƒvƒŒ[ƒg‚Ì–„‚ß‚İ•¶š‚æ‚è—v‘f”‚ª‘½‚¢String[]
+	//MessageRecordImpl::makeMessage(String[])ã®ãƒ†ã‚¹ãƒˆ
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®åŸ‹ã‚è¾¼ã¿æ–‡å­—ã‚ˆã‚Šè¦ç´ æ•°ãŒå¤šã„String[]
 	public void testMakeMessage7() throws Exception{
 		System.out.println("testMakeMessage6 start");
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		MessageRecord rec  = msgRecordService.findMessageRecord("TST000002");
-		String[] msgs = {"•¶š1","•¶š2","•¶š3","•¶š4","•¶š5","•¶š6","•¶š7"};
+		String[] msgs = {"æ–‡å­—1","æ–‡å­—2","æ–‡å­—3","æ–‡å­—4","æ–‡å­—5","æ–‡å­—6","æ–‡å­—7"};
 		String msg = rec.makeMessage(msgs);
-		assertEquals("test•¶š1test•¶š2test•¶š3test•¶š4test•¶š5",msg);		
+		assertEquals("testæ–‡å­—1testæ–‡å­—2testæ–‡å­—3testæ–‡å­—4testæ–‡å­—5",msg);		
 
 	}
 	
 	
-	//getUsedMessageList‚ÌƒeƒXƒg
-	//TST000001,TST000002,TST000011‚ªg—pÏ‚İ
+	//getUsedMessageListã®ãƒ†ã‚¹ãƒˆ
+	//TST000001,TST000002,TST000011ãŒä½¿ç”¨æ¸ˆã¿
 	public void testGetUsedMessageList() throws Exception{
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
 		ArrayList msgList = msgRecordService.getUsedMessgaeList();
@@ -230,7 +230,7 @@ public class MessageRecordServiceTest extends TestCase {
 		}
 	}
 	
-	//getMessageList‚ÌƒeƒXƒg
+	//getMessageListã®ãƒ†ã‚¹ãƒˆ
 	public void testGetMessageList() throws Exception{
 		System.out.println("testGetMessageList start");
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
@@ -244,12 +244,12 @@ public class MessageRecordServiceTest extends TestCase {
 	
 	
 	//setSecretMode(isSecretMode)
-	//ƒV[ƒNƒŒƒbƒgƒ‚[ƒhİ’è‚ÌƒŒƒR[ƒho—Í‚É‚Â‚¢‚Ä‚ÍA•Ê“rmakeMessage4,makeMessage5‚ÅŠm”FÏ‚İB
+	//ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰è¨­å®šæ™‚ã®ãƒ¬ã‚³ãƒ¼ãƒ‰å‡ºåŠ›ã«ã¤ã„ã¦ã¯ã€åˆ¥é€”makeMessage4,makeMessage5ã§ç¢ºèªæ¸ˆã¿ã€‚
 	public void testSetSecretMode() throws Exception{
 		System.out.println("testGetMessageRecordClassName start");
 		MessageRecordFactoryService msgRecordService = (MessageRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","MessageService1");
-		//ƒV[ƒNƒŒƒbƒgƒ‚[ƒh‚Étrueİ’è
-		//ƒV[ƒNƒŒƒbƒgƒ‚[ƒh‚Éfalseİ’è
+		//ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰ã«trueè¨­å®š
+		//ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰ã«falseè¨­å®š
 		msgRecordService.setSecretMode(false);
 		assertFalse(msgRecordService.isSecretMode());
 		msgRecordService.setSecretMode(true);

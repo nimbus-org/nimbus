@@ -35,8 +35,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’PˆÊEJBƒtƒ@ƒNƒgƒŠƒtƒ@ƒNƒgƒŠB<p>
- * {@link UnitEJBFactoryService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * å˜ä½EJBãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link UnitEJBFactoryService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see UnitEJBFactoryService
@@ -48,10 +48,10 @@ public class UnitEJBFactoryFactoryService
     private static final long serialVersionUID = 4257700818893908192L;
     
     /**
-     * {@link UnitEJBFactoryService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link UnitEJBFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return UnitEJBFactoryƒT[ƒrƒX
-     * @exception Exception UnitEJBFactory‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return UnitEJBFactoryã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception UnitEJBFactoryã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see UnitEJBFactoryService
      */
     protected Service createServiceInstance() throws Exception{
@@ -77,7 +77,7 @@ public class UnitEJBFactoryFactoryService
         return template;
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public void setHomeType(String className){
         ((UnitEJBFactoryService)getTemplate()).setHomeType(className);
         final Set instanceSet = getManagedInstanceSet();
@@ -89,12 +89,12 @@ public class UnitEJBFactoryFactoryService
         }
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public String getHomeType(){
         return ((UnitEJBFactoryService)getTemplate()).getHomeType();
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public void setLocalHomeType(String className){
         ((UnitEJBFactoryService)getTemplate()).setLocalHomeType(className);
         final Set instanceSet = getManagedInstanceSet();
@@ -106,12 +106,12 @@ public class UnitEJBFactoryFactoryService
         }
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public String getLocalHomeType(){
         return ((UnitEJBFactoryService)getTemplate()).getLocalHomeType();
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public void setRemoteType(String className){
         ((UnitEJBFactoryService)getTemplate()).setRemoteType(className);
         final Set instanceSet = getManagedInstanceSet();
@@ -123,12 +123,12 @@ public class UnitEJBFactoryFactoryService
         }
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public String getRemoteType(){
         return ((UnitEJBFactoryService)getTemplate()).getRemoteType();
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public void setLocalType(String className){
         ((UnitEJBFactoryService)getTemplate()).setLocalType(className);
         final Set instanceSet = getManagedInstanceSet();
@@ -140,12 +140,12 @@ public class UnitEJBFactoryFactoryService
         }
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public String getLocalType(){
         return ((UnitEJBFactoryService)getTemplate()).getLocalType();
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public void setCreateMethodParamTypes(String[] params){
         ((UnitEJBFactoryService)getTemplate())
             .setCreateMethodParamTypes(params);
@@ -158,7 +158,7 @@ public class UnitEJBFactoryFactoryService
         }
     }
     
-    // UnitEJBFactoryFactoryMBean‚ÌJavaDoc
+    // UnitEJBFactoryFactoryMBeanã®JavaDoc
     public String[] getCreateMethodParamTypes(){
         return ((UnitEJBFactoryService)getTemplate())
             .getCreateMethodParamTypes();

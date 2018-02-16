@@ -29,23 +29,23 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.util;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.service.aspect.interfaces.*;
 /**
- *	ƒCƒ“ƒ^[ƒZƒvƒ^ƒ†[ƒeƒBƒŠƒeƒB
+ *	ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class UtilTool {
 	/**
-	 * ˆø”‚É‘Î‰‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg–¼ƒIƒuƒWƒFƒNƒg‚ğ•Ô‹p<br>
-	 * @param String			ƒT[ƒrƒX/ƒRƒ“ƒ|[ƒlƒ“ƒg–¼
-	 * @return ComponentName	ƒRƒ“ƒ|[ƒlƒ“ƒg–¼ƒIƒuƒWƒFƒNƒg
+	 * å¼•æ•°ã«å¯¾å¿œã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”å´<br>
+	 * @param String			ã‚µãƒ¼ãƒ“ã‚¹/ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
+	 * @return ComponentName	ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public static ServiceName convertServiceName(String instr){
 		final ServiceNameEditor cne = new ServiceNameEditor();
@@ -54,9 +54,9 @@ public class UtilTool {
 		return name;
 	}
 	/**
-	 * ƒRƒ“ƒ|[ƒlƒ“ƒgƒzƒXƒeƒBƒ“ƒO‹@\‚©‚çƒIƒuƒWƒFƒNƒgæ“¾<br>
-	 * @param ComponentName			ƒRƒ“ƒ|[ƒlƒ“ƒg–¼
-	 * @return Object				ƒRƒ“ƒ|[ƒlƒ“ƒg
+	 * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ›ã‚¹ãƒ†ã‚£ãƒ³ã‚°æ©Ÿæ§‹ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå–å¾—<br>
+	 * @param ComponentName			ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå
+	 * @return Object				ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 	 */
 	public static Interceptor getInterceptor(ServiceName name){
 		if(name == null){

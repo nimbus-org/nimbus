@@ -46,19 +46,19 @@ import jp.ossc.nimbus.service.message.MessageRecordFactory;
 import jp.ossc.nimbus.service.repository.Repository;
 
 /**
- * ƒT[ƒrƒXƒ[ƒ_B<p>
- * ƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚İAƒT[ƒrƒX‚ğ“o˜^‚·‚éƒ[ƒ_‚Å‚ ‚éB<br>
- * ƒT[ƒrƒXƒ[ƒ_‚ÍAƒT[ƒrƒX{@link Service}‚Æ‚µ‚ÄÀ‘•‚³‚êAƒT[ƒrƒX‚Ì¶¬A‹N“®‚Æ‹¤‚ÉAƒT[ƒrƒXŠî”Õ‚ğ‹N“®‚µA‚»‚±‚É”z’u‚³‚ê‚éŠeƒT[ƒrƒX‚ğƒzƒXƒeƒBƒ“ƒO‚·‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã¿ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç™»éŒ²ã™ã‚‹ãƒ­ãƒ¼ãƒ€ã§ã‚ã‚‹ã€‚<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹{@link Service}ã¨ã—ã¦å®Ÿè£…ã•ã‚Œã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã€èµ·å‹•ã¨å…±ã«ã€ã‚µãƒ¼ãƒ“ã‚¹åŸºç›¤ã‚’èµ·å‹•ã—ã€ãã“ã«é…ç½®ã•ã‚Œã‚‹å„ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ›ã‚¹ãƒ†ã‚£ãƒ³ã‚°ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class DefaultServiceLoaderService extends ServiceBase
  implements ServiceLoader, DefaultServiceLoaderServiceMBean{
     
     private static final long serialVersionUID = 7335188900913701079L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SVCL_ = "SVCL_";
     private static final String SVCL_0 = SVCL_ + 0;
     private static final String SVCL_00 = SVCL_0 + 0;
@@ -104,8 +104,8 @@ public class DefaultServiceLoaderService extends ServiceBase
     private static final String SVCL_00038 = SVCL_000 + 38;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒT[ƒrƒX–¼B<p>
-     * {@link #setServiceName(String)}‚³‚ê‚È‚¢ê‡‚ÍA‚±‚ÌƒfƒtƒHƒ‹ƒg–¼‚ÌŒã‚ÉA"{ƒT[ƒrƒX’è‹`‚ÌURL}"‚ğ•t‰Á‚µ‚½ƒT[ƒrƒX–¼‚Æ‚È‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
+     * {@link #setServiceName(String)}ã•ã‚Œãªã„å ´åˆã¯ã€ã“ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®å¾Œã«ã€"{ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®URL}"ã‚’ä»˜åŠ ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã¨ãªã‚‹ã€‚<br>
      *
      * @see #setServiceName(String)
      */
@@ -113,7 +113,7 @@ public class DefaultServiceLoaderService extends ServiceBase
      = DefaultServiceLoaderService.class.getName();
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link ServiceManager}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link ServiceManager}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      * 
      * @see #setServiceManagerClassName(String)
      */
@@ -121,19 +121,19 @@ public class DefaultServiceLoaderService extends ServiceBase
      = jp.ossc.nimbus.core.DefaultServiceManagerService.class.getName();
     
     /**
-     * VM‚É“o˜^‚µ‚½ƒVƒƒƒbƒgƒ_ƒEƒ“ƒtƒbƒN‚Ìƒ}ƒbƒsƒ“ƒOB<p>
-     * &lt;manager&gt;—v‘f‚Ìshutdown-hook‘®«‚Étrue‚ªİ’è‚³‚ê‚Ä‚¢‚½ê‡A{@link Runtime#addShutdownHook(Thread)}‚ÅAServiceManager–ˆ‚É’â~A”jŠü‚ğs‚¤ƒXƒŒƒbƒh‚ğ“o˜^‚·‚éB<br>
-     * VM‚ª‹N“®‚µ‚½‚Ü‚Ü‚ÅAServiceManager‚ğ”jŠü‚µ‚½ê‡‚È‚Ç‚ÍA“o˜^‚µ‚½ƒXƒŒƒbƒh‚ª•s—v‚É‚È‚é‚½‚ßA“o˜^‚µ‚½ƒXƒŒƒbƒh‚ğstatic‚ÉŠÇ—‚µ‚Ä‚¢‚éB<br>
+     * VMã«ç™»éŒ²ã—ãŸã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ãƒ•ãƒƒã‚¯ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
+     * &lt;manager&gt;è¦ç´ ã®shutdown-hookå±æ€§ã«trueãŒè¨­å®šã•ã‚Œã¦ã„ãŸå ´åˆã€{@link Runtime#addShutdownHook(Thread)}ã§ã€ServiceManageræ¯ã«åœæ­¢ã€ç ´æ£„ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
+     * VMãŒèµ·å‹•ã—ãŸã¾ã¾ã§ã€ServiceManagerã‚’ç ´æ£„ã—ãŸå ´åˆãªã©ã¯ã€ç™»éŒ²ã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒä¸è¦ã«ãªã‚‹ãŸã‚ã€ç™»éŒ²ã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ã‚’staticã«ç®¡ç†ã—ã¦ã„ã‚‹ã€‚<br>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>ServiceManager‚Ì–¼‘O</td><td>Thread</td><td>ƒVƒƒƒbƒgƒ_ƒEƒ“ƒtƒbƒN‚ÌƒXƒŒƒbƒh</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>ServiceManagerã®åå‰</td><td>Thread</td><td>ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ãƒ•ãƒƒã‚¯ã®ã‚¹ãƒ¬ãƒƒãƒ‰</td></tr>
      * </table>
      */
     private static final Map shutdownHooks = new HashMap();
     
     /**
-     * ‚±‚Ìƒ[ƒ_‚ªƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURLB<p>
+     * ã“ã®ãƒ­ãƒ¼ãƒ€ãŒãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã€‚<p>
      *
      * @see #setServiceURL(URL)
      * @see #getServiceURL()
@@ -141,8 +141,8 @@ public class DefaultServiceLoaderService extends ServiceBase
     private URL serviceURL;
     
     /**
-     * ServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX–¼B<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍADEFAULT_SERVICE_MANAGER_CLASS_NAMEB<br>
+     * ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€DEFAULT_SERVICE_MANAGER_CLASS_NAMEã€‚<br>
      *
      * @see #setServiceManagerClassName(String)
      * @see #getServiceManagerClassName()
@@ -150,18 +150,18 @@ public class DefaultServiceLoaderService extends ServiceBase
     private String serviceManagerClassName = DEFAULT_SERVICE_MANAGER_CLASS_NAME;
     
     /**
-     * ‚±‚Ìƒ[ƒ_‚Åƒ[ƒh‚µ‚½ƒT[ƒrƒX’è‹`‚Ìƒ‹[ƒgƒƒ^ƒf[ƒ^B<p>
+     * ã“ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ«ãƒ¼ãƒˆãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getServerMetaData()
      */
     private ServerMetaData serverData;
     
     /**
-     * &lt;manager&gt;—v‘f‚Å’è‹`‚³‚ê‚½ServiceManager‚Ì–¼‘O‚ÆA‚»‚ÌServiceManager‚ğŠi”[‚·‚éƒ}ƒbƒvB<p>
+     * &lt;manager&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸServiceManagerã®åå‰ã¨ã€ãã®ServiceManagerã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>ServiceManager‚Ì–¼‘O</td><td>{@link ServiceManager}</td><td>ServiceManager</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>ServiceManagerã®åå‰</td><td>{@link ServiceManager}</td><td>ServiceManager</td></tr>
      * </table>
      * 
      * @see #getServiceManagers()
@@ -169,83 +169,83 @@ public class DefaultServiceLoaderService extends ServiceBase
     private Map managerMap;
     
     /**
-     * &lt;manager&gt;—v‘f‚Å’è‹`‚³‚ê‚½ServiceManager‚ÆA‚»‚Ìq—v‘f‚Æ‚µ‚Ä’è‹`‚³‚ê‚½&lt;service&gt;—v‘f‚ÌService‚ğŠi”[‚·‚éƒ}ƒbƒvB<p>
+     * &lt;manager&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸServiceManagerã¨ã€ãã®å­è¦ç´ ã¨ã—ã¦å®šç¾©ã•ã‚ŒãŸ&lt;service&gt;è¦ç´ ã®Serviceã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="5">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th colspan="4">“à—e</th></tr>
-     *   <tr rowspan="3"><td rowspan="3">String</td><td rowspan="3">ServiceManager‚Ì–¼‘O</td><td rowspan="3">java.util.Map</td><td colspan="4">ServiceMetaData‚ğŠi”[‚·‚éƒ}ƒbƒv</td></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>ƒT[ƒrƒX–¼</td><td>{@link ServiceMetaData}</td><td>ƒT[ƒrƒX‚Ì’è‹`î•ñ</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="5">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th colspan="4">å†…å®¹</th></tr>
+     *   <tr rowspan="3"><td rowspan="3">String</td><td rowspan="3">ServiceManagerã®åå‰</td><td rowspan="3">java.util.Map</td><td colspan="4">ServiceMetaDataã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>ã‚µãƒ¼ãƒ“ã‚¹å</td><td>{@link ServiceMetaData}</td><td>ã‚µãƒ¼ãƒ“ã‚¹ã®å®šç¾©æƒ…å ±</td></tr>
      * </table>
      */
     private Map managersServiceMetaMap;
     
     /**
-     * &lt;property-editors&gt;—v‘f‚Åİ’è‚³‚ê‚½java.beans.PropertyEditor‚ğ•Û‚·‚éƒ}ƒbƒvB<p>
+     * &lt;property-editors&gt;è¦ç´ ã§è¨­å®šã•ã‚ŒãŸjava.beans.PropertyEditorã‚’ä¿æŒã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>java.lang.Class</td><td>java.beans.PropertyEditor‚ª•ÒW‚·‚éŒ^‚ÌƒNƒ‰ƒX</td><td>java.lang.Class</td>java.beans.PropertyEditor‚ÌƒNƒ‰ƒX<td></td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>java.lang.Class</td><td>java.beans.PropertyEditorãŒç·¨é›†ã™ã‚‹å‹ã®ã‚¯ãƒ©ã‚¹</td><td>java.lang.Class</td>java.beans.PropertyEditorã®ã‚¯ãƒ©ã‚¹<td></td></tr>
      * </table>
      */
     private ClassMappingTree propertyEditors;
     
     /**
-     * ƒT[ƒrƒX’è‹`XML‚ğDTD‚Å•]‰¿‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
-     * •]‰¿‚·‚éê‡trueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‚’DTDã§è©•ä¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
+     * è©•ä¾¡ã™ã‚‹å ´åˆtrueã€‚<br>
      */
     private boolean isValidate;
     
     /**
-     * ‚±‚±‚Ü‚Å‚Éƒ[ƒh‚µ‚½ƒT[ƒrƒX‚ª‘S‚Ä³í‚ÉŠJn‚Å‚«‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
-     * ƒ`ƒFƒbƒN‚·‚éê‡trueB
+     * ã“ã“ã¾ã§ã«ãƒ­ãƒ¼ãƒ‰ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«é–‹å§‹ã§ãã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒã‚§ãƒƒã‚¯ã™ã‚‹å ´åˆtrueã€‚
      */
     private boolean isCheckLoadManagerCompleted;
     
     /**
-     * ƒT[ƒrƒX‚ª‘S‚Ä³í‚ÉŠJn‚Å‚«‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN‚·‚éƒ}ƒl[ƒWƒƒ–¼‚ÌW‡B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒå…¨ã¦æ­£å¸¸ã«é–‹å§‹ã§ãã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£åã®é›†åˆã€‚<p>
      */
     private Set checkLoadManagerNames;
     
     /**
-     * ƒT[ƒrƒXƒ[ƒh\¬î•ñB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰æ§‹æˆæƒ…å ±ã€‚<p>
      */
     private ServiceLoaderConfig loaderConfig;
     
     /**
-     * ƒ[ƒh‘O‚Ìdefault-log—v‘f‚Ìî•ñB<p>
+     * ãƒ­ãƒ¼ãƒ‰å‰ã®default-logè¦ç´ ã®æƒ…å ±ã€‚<p>
      */
     private DefaultLogMetaData preDefaultLogData;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public DefaultServiceLoaderService(){
         super();
         setServiceName(DEFAULT_NAME);
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void setConfig(ServiceLoaderConfig config){
         loaderConfig = config;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public ServiceLoaderConfig getConfig(){
         return loaderConfig;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public ServerMetaData getServerMetaData(){
         return serverData;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void setServerMetaData(ServerMetaData data){
         serverData = data;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void setServiceManagerClassName(String className)
      throws ClassNotFoundException, IllegalArgumentException{
         final Logger logger = getLogger();
@@ -277,12 +277,12 @@ public class DefaultServiceLoaderService extends ServiceBase
         }
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public String getServiceManagerClassName(){
         return serviceManagerClassName;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void setServiceURL(URL url) throws IllegalArgumentException{
         final Logger logger = getLogger();
         try{
@@ -297,12 +297,12 @@ public class DefaultServiceLoaderService extends ServiceBase
         logger.write(SVCL_00005, serviceURL);
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public URL getServiceURL(){
         return serviceURL;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void setServicePath(String path) throws IllegalArgumentException{
         final Logger logger = getLogger();
         final URL url = Utility.convertServicePathToURL(path);
@@ -318,17 +318,17 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚İAƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^‚ğ\’z‚·‚éB<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã¿ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æ§‹ç¯‰ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link #setServiceURL(URL)}‚Åİ’è‚³‚ê‚½URL‚©‚çƒT[ƒrƒX’è‹`XML‚ğ“Ç‚İ‚İAƒp[ƒX‚·‚éB</li>
-     *   <li>ƒp[ƒX‚µ‚½ƒT[ƒrƒX’è‹`XML‚©‚çA{@link ServerMetaData}‚ğ¶¬‚·‚éBServerMetaData‚Ì¶¬‚Ì‰ß’ö‚ÅAŠe—v‘f‚É‘Î‰‚·‚éƒƒ^ƒf[ƒ^‚à¶¬‚³‚ê‚éB</li>
+     *   <li>{@link #setServiceURL(URL)}ã§è¨­å®šã•ã‚ŒãŸURLã‹ã‚‰ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‚’èª­ã¿è¾¼ã¿ã€ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚</li>
+     *   <li>ãƒ‘ãƒ¼ã‚¹ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‹ã‚‰ã€{@link ServerMetaData}ã‚’ç”Ÿæˆã™ã‚‹ã€‚ServerMetaDataã®ç”Ÿæˆã®éç¨‹ã§ã€å„è¦ç´ ã«å¯¾å¿œã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚‚ç”Ÿæˆã•ã‚Œã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception ParserConfigurationException XMLƒp[ƒT‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception IOException {@link #setServiceURL(URL)}‚Åİ’è‚³‚ê‚½URL‚ÉƒT[ƒrƒX’è‹`XML‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception SAXException ƒT[ƒrƒX’è‹`XML‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @exception ParserConfigurationException XMLãƒ‘ãƒ¼ã‚µã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException {@link #setServiceURL(URL)}ã§è¨­å®šã•ã‚ŒãŸURLã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception SAXException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     public void loadServerMetaData()
      throws IOException, ParserConfigurationException, SAXException,
@@ -349,18 +349,18 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚İAƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^‚ğ\’z‚·‚éB<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã¿ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æ§‹ç¯‰ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>w’è‚³‚ê‚½URL‚©‚çƒT[ƒrƒX’è‹`XML‚ğ“Ç‚İ‚İAƒp[ƒX‚·‚éB</li>
-     *   <li>ƒp[ƒX‚µ‚½ƒT[ƒrƒX’è‹`XML‚©‚çA{@link ServerMetaData}‚ğ¶¬‚·‚éBServerMetaData‚Ì¶¬‚Ì‰ß’ö‚ÅAŠe—v‘f‚É‘Î‰‚·‚éƒƒ^ƒf[ƒ^‚à¶¬‚³‚ê‚éB</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸURLã‹ã‚‰ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‚’èª­ã¿è¾¼ã¿ã€ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚</li>
+     *   <li>ãƒ‘ãƒ¼ã‚¹ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‹ã‚‰ã€{@link ServerMetaData}ã‚’ç”Ÿæˆã™ã‚‹ã€‚ServerMetaDataã®ç”Ÿæˆã®éç¨‹ã§ã€å„è¦ç´ ã«å¯¾å¿œã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚‚ç”Ÿæˆã•ã‚Œã‚‹ã€‚</li>
      * </ol>
      *
-     * @param url ƒT[ƒrƒX’è‹`URL
-     * @exception ParserConfigurationException XMLƒp[ƒT‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception IOException {@link #setServiceURL(URL)}‚Åİ’è‚³‚ê‚½URL‚ÉƒT[ƒrƒX’è‹`XML‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception SAXException ƒT[ƒrƒX’è‹`XML‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @param url ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©URL
+     * @exception ParserConfigurationException XMLãƒ‘ãƒ¼ã‚µã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException {@link #setServiceURL(URL)}ã§è¨­å®šã•ã‚ŒãŸURLã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception SAXException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     protected ServerMetaData loadServerMetaData(URL url)
      throws IOException, ParserConfigurationException, SAXException,
@@ -373,18 +373,18 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`‚ğ“Ç‚İ‚İAƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^‚ğ\’z‚·‚éB<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’èª­ã¿è¾¼ã¿ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æ§‹ç¯‰ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>w’è‚³‚ê‚½ƒXƒgƒŠ[ƒ€‚©‚çƒT[ƒrƒX’è‹`XML‚ğ“Ç‚İ‚İAƒp[ƒX‚·‚éB</li>
-     *   <li>ƒp[ƒX‚µ‚½ƒT[ƒrƒX’è‹`XML‚©‚çA{@link ServerMetaData}‚ğ¶¬‚·‚éBServerMetaData‚Ì¶¬‚Ì‰ß’ö‚ÅAŠe—v‘f‚É‘Î‰‚·‚éƒƒ^ƒf[ƒ^‚à¶¬‚³‚ê‚éB</li>
+     *   <li>æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‚’èª­ã¿è¾¼ã¿ã€ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚</li>
+     *   <li>ãƒ‘ãƒ¼ã‚¹ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã‹ã‚‰ã€{@link ServerMetaData}ã‚’ç”Ÿæˆã™ã‚‹ã€‚ServerMetaDataã®ç”Ÿæˆã®éç¨‹ã§ã€å„è¦ç´ ã«å¯¾å¿œã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚‚ç”Ÿæˆã•ã‚Œã‚‹ã€‚</li>
      * </ol>
      *
-     * @param is ƒT[ƒrƒX’è‹`“ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception ParserConfigurationException XMLƒp[ƒT‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception IOException {@link #setServiceURL(URL)}‚Åİ’è‚³‚ê‚½URL‚ÉƒT[ƒrƒX’è‹`XML‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception SAXException ƒT[ƒrƒX’è‹`XML‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @param is ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception ParserConfigurationException XMLãƒ‘ãƒ¼ã‚µã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException {@link #setServiceURL(URL)}ã§è¨­å®šã•ã‚ŒãŸURLã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception SAXException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     public ServerMetaData loadServerMetaData(InputStream is)
      throws IOException, ParserConfigurationException, SAXException,
@@ -425,14 +425,14 @@ public class DefaultServiceLoaderService extends ServiceBase
         for(int i = 0; i < propKeys.length; i++){
             final String propKey = (String)propKeys[i];
             String prop = props.getProperty(propKey);
-            // ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             prop = Utility.replaceSystemProperty(prop);
-            // ƒT[ƒrƒXƒ[ƒ_\¬ƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             prop = Utility.replaceServiceLoderConfig(
                 prop,
                 getConfig()
             );
-            // ƒT[ƒoƒvƒƒpƒeƒB‚Ì’uŠ·
+            // ã‚µãƒ¼ãƒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ç½®æ›
             prop = Utility.replaceServerProperty(prop);
             ServiceManagerFactory.setProperty(propKey, prop);
         }
@@ -440,13 +440,13 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^‚ğ”z’u‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’é…ç½®ã™ã‚‹ã€‚<p>
      *
-     * @param serverData ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^
-     * @exception ParserConfigurationException XMLƒp[ƒT‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception IOException &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ÌƒT[ƒrƒX’è‹`XML‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception SAXException ƒT[ƒrƒX’è‹`XML‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @param serverData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @exception ParserConfigurationException XMLãƒ‘ãƒ¼ã‚µã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception SAXException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     protected void deployServerMetaData(ServerMetaData serverData)
      throws IOException, ParserConfigurationException, SAXException,
@@ -463,7 +463,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         
         deployPropertyEditors();
         
-        // ƒT[ƒoLogger‚Ìİ’è
+        // ã‚µãƒ¼ãƒLoggerã®è¨­å®š
         final ServiceNameMetaData logData = serverData.getLog();
         if(logData != null){
             final String managerName = logData.getManagerName();
@@ -473,7 +473,7 @@ public class DefaultServiceLoaderService extends ServiceBase
             }
         }
         
-        // ƒT[ƒoMessageRecordFactory‚Ìİ’è
+        // ã‚µãƒ¼ãƒMessageRecordFactoryã®è¨­å®š
         final ServiceNameMetaData messageData = serverData.getMessage();
         if(messageData != null){
             final String managerName = messageData.getManagerName();
@@ -486,7 +486,7 @@ public class DefaultServiceLoaderService extends ServiceBase
             }
         }
         
-        // ƒT[ƒoRepository‚Ìİ’è
+        // ã‚µãƒ¼ãƒRepositoryã®è¨­å®š
         final ServiceNameMetaData repositoryData = serverData.getRepository();
         if(repositoryData != null){
             final String managerName = repositoryData.getManagerName();
@@ -508,13 +508,13 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ÌƒT[ƒrƒX’è‹`‚ÆA‚±‚Ìƒ[ƒ_‚Åƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`‚Ì‘ŠŠÖƒ`ƒFƒbƒN‚ğs‚¤B<p>
-     * ’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒXAˆË‘¶ŠÖŒW‚É’è‹`‚³‚ê‚Ä‚¢‚éƒT[ƒrƒX‚ªA‚±‚ÌƒT[ƒrƒX’è‹`“à‚ÆA&lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ÌƒT[ƒrƒX’è‹`“à‚É‘S‚Ä‘¶İ‚·‚é‚©ƒ`ƒFƒbƒN‚·‚éB‚Ü‚½AˆË‘¶ŠÖŒW‚ªA‘ŠŒİ‚És‚í‚ê‚Ä‚¢‚È‚¢‚©ƒ`ƒFƒbƒN‚·‚éB<br>
+     * &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã¨ã€ã“ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ç›¸é–¢ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚<p>
+     * å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã€ä¾å­˜é–¢ä¿‚ã«å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©å†…ã¨ã€&lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©å†…ã«å…¨ã¦å­˜åœ¨ã™ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚ã¾ãŸã€ä¾å­˜é–¢ä¿‚ãŒã€ç›¸äº’ã«è¡Œã‚ã‚Œã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<br>
      *
-     * @exception ParserConfigurationException XMLƒp[ƒT‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception IOException &lt;ref-url&gt;—v‘f‚Åw’è‚³‚ê‚½URL‚ÌƒT[ƒrƒX’è‹`XML‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception SAXException ƒT[ƒrƒX’è‹`XML‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @exception ParserConfigurationException XMLãƒ‘ãƒ¼ã‚µã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception IOException &lt;ref-url&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸURLã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception SAXException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©XMLã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     protected void checkRefURL(ServerMetaData serverData)
      throws IOException, ParserConfigurationException, SAXException,
@@ -597,13 +597,13 @@ public class DefaultServiceLoaderService extends ServiceBase
             }
         }
         
-        // server—v‘f‚Ìq—v‘fmanager-repository‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+        // serverè¦ç´ ã®å­è¦ç´ manager-repositoryã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
         checkDepends(refServices, serverData.getRepository());
         
-        // server—v‘f‚Ìq—v‘flog‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+        // serverè¦ç´ ã®å­è¦ç´ logã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
         checkDepends(refServices, serverData.getLog());
         
-        // server—v‘f‚Ìq—v‘flog‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+        // serverè¦ç´ ã®å­è¦ç´ logã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
         checkDepends(refServices, serverData.getMessage());
         
         managers = serverData.getManagers().iterator();
@@ -611,16 +611,16 @@ public class DefaultServiceLoaderService extends ServiceBase
             final ManagerMetaData managerData
                  = (ManagerMetaData)managers.next();
             
-            // manager—v‘f‚Ìq—v‘frepository‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+            // managerè¦ç´ ã®å­è¦ç´ repositoryã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
             checkDepends(refServices, managerData.getRepository());
             
-            // manager—v‘f‚Ìq—v‘flog‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+            // managerè¦ç´ ã®å­è¦ç´ logã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
             checkDepends(refServices, managerData.getLog());
             
-            // manager—v‘f‚Ìq—v‘flog‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+            // managerè¦ç´ ã®å­è¦ç´ logã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
             checkDepends(refServices, managerData.getMessage());
             
-            // service—v‘f‚Ìq—v‘fdepends‚ÌˆË‘¶ŠÖŒW‚Ìƒ`ƒFƒbƒN
+            // serviceè¦ç´ ã®å­è¦ç´ dependsã®ä¾å­˜é–¢ä¿‚ã®ãƒã‚§ãƒƒã‚¯
             final Map services = managerData.getServices();
             final Iterator serviceDatas = services.values().iterator();
             while(serviceDatas.hasNext()){
@@ -714,10 +714,10 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^‚ğíœ‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param serverData ƒT[ƒrƒX’è‹`&lt;server&gt;—v‘fƒƒ^ƒf[ƒ^
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @param serverData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;server&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     protected void undeployServerMetaData(ServerMetaData serverData)
      throws DeploymentException{
@@ -728,7 +728,7 @@ public class DefaultServiceLoaderService extends ServiceBase
             shutdownServiceManager(manager);
         }
         
-        // ƒT[ƒoRepository‚Ìİ’è‰ğœ
+        // ã‚µãƒ¼ãƒRepositoryã®è¨­å®šè§£é™¤
         final ServiceNameMetaData repositoryData = serverData.getRepository();
         if(repositoryData != null){
             final String managerName = repositoryData.getManagerName();
@@ -749,9 +749,9 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒoLogger‚Ìİ’è‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒLoggerã®è¨­å®šã‚’è¡Œã†ã€‚<p>
      *
-     * @param defaultLogData ƒT[ƒrƒX’è‹`&lt;default-log&gt;—v‘fƒƒ^ƒf[ƒ^
+     * @param defaultLogData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;default-log&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     protected void deployDefaultLogMetaData(DefaultLogMetaData defaultLogData){
         if(defaultLogData == null){
@@ -858,9 +858,9 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒoLogger‚Ìİ’è‚ğƒfƒtƒHƒ‹ƒg‚Ìİ’è‚É–ß‚·B<p>
+     * ã‚µãƒ¼ãƒLoggerã®è¨­å®šã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¨­å®šã«æˆ»ã™ã€‚<p>
      *
-     * @param defaultLogData ƒT[ƒrƒX’è‹`&lt;default-log&gt;—v‘fƒƒ^ƒf[ƒ^
+     * @param defaultLogData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;default-log&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     protected void undeployDefaultLogMetaData(
         DefaultLogMetaData defaultLogData
@@ -899,7 +899,7 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`&lt;property-editors&gt;—v‘f‚Å’è‹`‚³‚ê‚½java.beans.PropertyEditor‚ğƒ[ƒh‚µ‚ÄAjava.beans.PropertyEditorManager‚É“o˜^‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;property-editors&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸjava.beans.PropertyEditorã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã€java.beans.PropertyEditorManagerã«ç™»éŒ²ã™ã‚‹ã€‚<p>
      */
     protected void deployPropertyEditors(){
         final Logger logger = getLogger();
@@ -934,10 +934,10 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`&lt;manager&gt;—v‘fƒƒ^ƒf[ƒ^‚ğ”z’u‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;manager&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’é…ç½®ã™ã‚‹ã€‚<p>
      *
-     * @param managerData ƒT[ƒrƒX’è‹`&lt;manager&gt;—v‘fƒƒ^ƒf[ƒ^
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @param managerData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;manager&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     protected void deployManagerMetaData(ManagerMetaData managerData)
      throws DeploymentException{
@@ -972,7 +972,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         manager.addServiceLoader(this);
         managerMap.put(name, manager);
         
-        // ServiceManager‚ÌLogger‚Ìİ’è
+        // ServiceManagerã®Loggerã®è¨­å®š
         final ServiceNameMetaData logData = managerData.getLog();
         if(logData != null){
             final String managerName = logData.getManagerName();
@@ -984,7 +984,7 @@ public class DefaultServiceLoaderService extends ServiceBase
             }
         }
         
-        // ServiceManager‚ÌMessageRecordFactory‚Ìİ’è
+        // ServiceManagerã®MessageRecordFactoryã®è¨­å®š
         final ServiceNameMetaData messageData = managerData.getMessage();
         if(messageData != null){
             final String managerName = messageData.getManagerName();
@@ -996,7 +996,7 @@ public class DefaultServiceLoaderService extends ServiceBase
             }
         }
         
-        // ServiceManager‚ÌRepository‚Ìİ’è
+        // ServiceManagerã®Repositoryã®è¨­å®š
         final ServiceNameMetaData repositoryData = managerData.getRepository();
         if(repositoryData != null){
             final String managerName = repositoryData.getManagerName();
@@ -1025,10 +1025,10 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`&lt;service&gt;—v‘fƒƒ^ƒf[ƒ^‚ğ”z’u‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;service&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’é…ç½®ã™ã‚‹ã€‚<p>
      *
-     * @param serviceData ƒT[ƒrƒX’è‹`&lt;service&gt;—v‘fƒƒ^ƒf[ƒ^
-     * @exception DeploymentException ƒT[ƒrƒX’è‹`‚Ìİ’è‚ÉŒë‚è‚ª‚ ‚éê‡
+     * @param serviceData ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©&lt;service&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @exception DeploymentException ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®è¨­å®šã«èª¤ã‚ŠãŒã‚ã‚‹å ´åˆ
      */
     protected void deployServiceMetaData(ServiceMetaData serviceData)
      throws DeploymentException{
@@ -1083,7 +1083,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         }
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void loadService(String managerName, String serviceName)
      throws DeploymentException{
         final ServiceMetaData serviceData
@@ -1100,18 +1100,18 @@ public class DefaultServiceLoaderService extends ServiceBase
         deployServiceMetaData(serviceData);
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void deployService(ServiceMetaData serviceData)
      throws DeploymentException{
         deployServiceMetaData(serviceData);
     }
     
     /**
-     * ƒ[ƒ_‚Ì‰Šú‰»ˆ—‚ğs‚¤B<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ãƒ­ãƒ¼ãƒ€ã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link ServiceManagerFactory}‚Ö©•ª©g‚ğ“o˜^‚·‚éB</li>
-     *   <li>ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ¶¬‚·‚éB</li>
+     *   <li>{@link ServiceManagerFactory}ã¸è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’ç”Ÿæˆã™ã‚‹ã€‚</li>
      * </ol>
      */
     public void createService(){
@@ -1139,15 +1139,15 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒ[ƒ_‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‚±‚±‚Å‚ÍAˆÈ‰º‚Ìˆ—‚ğs‚¤B<br>
+     * ãƒ­ãƒ¼ãƒ€ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã“ã§ã¯ã€ä»¥ä¸‹ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
      * <ol>
-     *   <li>{@link #loadServerMetaData()}‚ğŒÄ‚Ño‚·B</li>
-     *   <li>ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ‰Šú‰»‚·‚éB</li>
-     *   <li>{@link #deployServerMetaData(ServerMetaData)}‚ğŒÄ‚Ño‚·B</li>
-     *   <li>&lt;manager&gt;—v‘f‚Å’è‹`‚³‚ê‚½{@link ServiceManager}‚ğ‹N“®‚·‚éB</li>
+     *   <li>{@link #loadServerMetaData()}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚</li>
+     *   <li>{@link #deployServerMetaData(ServerMetaData)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>&lt;manager&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸ{@link ServiceManager}ã‚’èµ·å‹•ã™ã‚‹ã€‚</li>
      * </ol>
-     * @exception Exception ƒT[ƒrƒX’è‹`‚Ì“Ç‚İ‚İA”z’u‚É¸”s‚µ‚½ê‡B‚Ü‚½‚ÍAServiceManager‚Ì¶¬AŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®èª­ã¿è¾¼ã¿ã€é…ç½®ã«å¤±æ•—ã—ãŸå ´åˆã€‚ã¾ãŸã¯ã€ServiceManagerã®ç”Ÿæˆã€é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         final Logger logger = getLogger();
@@ -1192,15 +1192,15 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒ[ƒ_‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ãƒ­ãƒ¼ãƒ€ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * <ol>
-     *   <li>&lt;manager&gt;—v‘f‚Å’è‹`‚³‚ê‚½{@link ServiceManager}‚ğ’â~‚·‚éB</li>
-     *   <li>&lt;manager&gt;—v‘f‚Ìshutdown-hook‘®«‚Å’è‹`‚³‚ê‚½’l‚É]‚Á‚ÄA{@link Runtime#removeShutdownHook(Thread)}‚ğs‚¤B</li>
-     *   <li>&lt;manager&gt;—v‘f‚Å’è‹`‚³‚ê‚½{@link ServiceManager}‚ğ”jŠü‚·‚éB</li>
-     *   <li>ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ‰Šú‰»‚·‚éB</li>
+     *   <li>&lt;manager&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸ{@link ServiceManager}ã‚’åœæ­¢ã™ã‚‹ã€‚</li>
+     *   <li>&lt;manager&gt;è¦ç´ ã®shutdown-hookå±æ€§ã§å®šç¾©ã•ã‚ŒãŸå€¤ã«å¾“ã£ã¦ã€{@link Runtime#removeShutdownHook(Thread)}ã‚’è¡Œã†ã€‚</li>
+     *   <li>&lt;manager&gt;è¦ç´ ã§å®šç¾©ã•ã‚ŒãŸ{@link ServiceManager}ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception ServiceManager‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ServiceManagerã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
@@ -1212,13 +1212,13 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒ[ƒ_‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ãƒ­ãƒ¼ãƒ€ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      * <ol>
-     *   <li>ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ğ”jŠü‚·‚éB</li>
-     *   <li>{@link ServiceManagerFactory}‚©‚ç©•ª©g‚ğíœ‚·‚éB</li>
+     *   <li>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>{@link ServiceManagerFactory}ã‹ã‚‰è‡ªåˆ†è‡ªèº«ã‚’å‰Šé™¤ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception ServiceManager‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ServiceManagerã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         
@@ -1229,12 +1229,12 @@ public class DefaultServiceLoaderService extends ServiceBase
         ServiceManagerFactory.unregisterLoader(this);
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public Set getServiceManagers(){
         return new HashSet(managerMap.values());
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public List getDepends(
         String managerName,
         String serviceName
@@ -1253,7 +1253,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         return result;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public List getDependedServices(
         String managerName,
         String serviceName
@@ -1289,7 +1289,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         return result;
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public ServiceMetaData getServiceMetaData(
         String managerName,
         String serviceName
@@ -1301,7 +1301,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         return (ServiceMetaData)serviceMetaMap.get(serviceName);
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public void setServiceMetaData(
         String managerName,
         ServiceMetaData serviceData
@@ -1314,7 +1314,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         serviceMetaMap.put(serviceData.getName(), serviceData);
     }
     
-    // ServiceLoader‚ÌJavaDoc
+    // ServiceLoaderã®JavaDoc
     public PropertyEditor findEditor(Class type){
         final Logger logger = getLogger();
         if(type == null){
@@ -1339,15 +1339,15 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ‚±‚Ìƒ[ƒ_‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚Ì“à‚ÅAw’è‚³‚ê‚½ServiceManager‚É“o˜^‚³‚ê‚½ƒT[ƒrƒX‚Ì¶¬AŠJn‚ğs‚¤B<p>
-     * ServiceManager‚ª”jŠü‚³‚ê‚Ä‚¢‚éó‘Ô‚Ìê‡‚ÍA{@link ServiceManager#create()}A{@link ServiceManager#start()}‚ğ‡ŸŒÄ‚Ño‚·B<br>
-     * ServiceManager‚ª’â~‚³‚ê‚Ä‚¢‚éó‘Ô‚Ìê‡‚ÍA{@link ServiceManager#start()}‚ğŒÄ‚Ño‚·B<br>
-     * ServiceManager‚ªŠJn‚³‚ê‚Ä‚¢‚éó‘Ô‚Ìê‡‚ÍA‚±‚Ìƒ[ƒ_‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ğ‡Ÿ{@link ServiceManager#createService(Set)}A{@link ServiceManager#startService(Set)}‚ğŒÄ‚Ño‚µ‚Ä¶¬AŠJn‚·‚éB<br>
-     * ServiceManager‚ª¶¬‚³‚ê‚Ä‚¢‚éó‘Ô‚Ìê‡‚ÍA{@link ServiceManager#start()}‚ğŒÄ‚Ño‚·B<br>
-     * ‚Ü‚½AServiceManager‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ó‘Ô‚Ìê‡‚ÅA&lt;manager&gt;—v‘f‚Ìshutdown-hook‘®«‚ªtrue‚Ìê‡‚ÍAVM‚ÌI—¹‚ğƒtƒbƒN‚µ‚Ä{@link ServiceManager#stop()}A{@link ServiceManager#destroy()}‚ğŒÄ‚Ño‚·ƒXƒŒƒbƒh‚ğA{@link Runtime#addShutdownHook(Thread)}‚Åİ’è‚·‚éB<br>
+     * ã“ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®å†…ã§ã€æŒ‡å®šã•ã‚ŒãŸServiceManagerã«ç™»éŒ²ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã€é–‹å§‹ã‚’è¡Œã†ã€‚<p>
+     * ServiceManagerãŒç ´æ£„ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã®å ´åˆã¯ã€{@link ServiceManager#create()}ã€{@link ServiceManager#start()}ã‚’é †æ¬¡å‘¼ã³å‡ºã™ã€‚<br>
+     * ServiceManagerãŒåœæ­¢ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã®å ´åˆã¯ã€{@link ServiceManager#start()}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * ServiceManagerãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã®å ´åˆã¯ã€ã“ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’é †æ¬¡{@link ServiceManager#createService(Set)}ã€{@link ServiceManager#startService(Set)}ã‚’å‘¼ã³å‡ºã—ã¦ç”Ÿæˆã€é–‹å§‹ã™ã‚‹ã€‚<br>
+     * ServiceManagerãŒç”Ÿæˆã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã®å ´åˆã¯ã€{@link ServiceManager#start()}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * ã¾ãŸã€ServiceManagerãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„çŠ¶æ…‹ã®å ´åˆã§ã€&lt;manager&gt;è¦ç´ ã®shutdown-hookå±æ€§ãŒtrueã®å ´åˆã¯ã€VMã®çµ‚äº†ã‚’ãƒ•ãƒƒã‚¯ã—ã¦{@link ServiceManager#stop()}ã€{@link ServiceManager#destroy()}ã‚’å‘¼ã³å‡ºã™ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ã€{@link Runtime#addShutdownHook(Thread)}ã§è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param manager ¶¬AŠJn‚·‚éServiceManager
-     * @exception Exception ServiceManager‚Ì¶¬AŠJn‚É¸”s‚µ‚½ê‡
+     * @param manager ç”Ÿæˆã€é–‹å§‹ã™ã‚‹ServiceManager
+     * @exception Exception ServiceManagerã®ç”Ÿæˆã€é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     private void startupServiceManager(final ServiceManager manager)
      throws Exception{
@@ -1392,11 +1392,11 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ‚±‚Ìƒ[ƒ_‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚Ì“à‚ÅAw’è‚³‚ê‚½ServiceManager‚É“o˜^‚³‚ê‚½ƒT[ƒrƒX‚Ì’â~A”jŠü‚ğs‚¤B<p>
-     * ‚±‚Ìƒ[ƒ_‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚Ì“à‚ÅAw’è‚³‚ê‚½ServiceManager‚É“o˜^‚³‚ê‚½ƒT[ƒrƒX‚ğ{@link ServiceManager#destroyService(Set)}‚Å’â~A”jŠü‚·‚éB<br>
-     * ‚»‚ÌŒãAw’è‚³‚ê‚½ServiceManager‚ÉA‘¼‚Ìƒ[ƒ_‚Åƒ[ƒh‚³‚ê‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link ServiceManager#stop()}A{@link ServiceManager#destroy()}‚ğŒÄ‚Ño‚µAServiceManager©g‚à’â~A”jŠü‚·‚éB‚Ü‚½AƒVƒƒƒbƒgƒ_ƒEƒ“ƒtƒbƒN‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAœ‹‚·‚éB<br>
+     * ã“ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®å†…ã§ã€æŒ‡å®šã•ã‚ŒãŸServiceManagerã«ç™»éŒ²ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã€ç ´æ£„ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®å†…ã§ã€æŒ‡å®šã•ã‚ŒãŸServiceManagerã«ç™»éŒ²ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’{@link ServiceManager#destroyService(Set)}ã§åœæ­¢ã€ç ´æ£„ã™ã‚‹ã€‚<br>
+     * ãã®å¾Œã€æŒ‡å®šã•ã‚ŒãŸServiceManagerã«ã€ä»–ã®ãƒ­ãƒ¼ãƒ€ã§ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link ServiceManager#stop()}ã€{@link ServiceManager#destroy()}ã‚’å‘¼ã³å‡ºã—ã€ServiceManagerè‡ªèº«ã‚‚åœæ­¢ã€ç ´æ£„ã™ã‚‹ã€‚ã¾ãŸã€ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ãƒ•ãƒƒã‚¯ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€é™¤å»ã™ã‚‹ã€‚<br>
      *
-     * @param manager ServiceManagerƒIƒuƒWƒFƒNƒg
+     * @param manager ServiceManagerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     private void shutdownServiceManager(ServiceManager manager){
         final Map serviceMetaMap = (Map)managersServiceMetaMap.get(
@@ -1420,20 +1420,20 @@ public class DefaultServiceLoaderService extends ServiceBase
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ÌƒnƒbƒVƒ…’l‚ğ•Ô‚·BƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌURL‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link ServiceBase#hashCode() super.hashCode()}‚Ì–ß‚è’l‚ğ•Ô‚·B<br>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLã®ãƒãƒƒã‚·ãƒ¥å€¤ã‚’è¿”ã™ã€‚ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®URLãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link ServiceBase#hashCode() super.hashCode()}ã®æˆ»ã‚Šå€¤ã‚’è¿”ã™ã€‚<br>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return serviceURL == null ? super.hashCode() : serviceURL.hashCode();
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢‚©’²‚×‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return “™‚µ‚¢ê‡Atrue
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ç­‰ã—ã„å ´åˆã€true
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -1454,27 +1454,27 @@ public class DefaultServiceLoaderService extends ServiceBase
         return false;
     }
     
-    // DefaultServiceLoaderServiceMBean‚ÌJavaDoc
+    // DefaultServiceLoaderServiceMBeanã®JavaDoc
     public void setValidate(boolean validate){
         isValidate = validate;
     }
     
-    // DefaultServiceLoaderServiceMBean‚ÌJavaDoc
+    // DefaultServiceLoaderServiceMBeanã®JavaDoc
     public boolean isValidate(){
         return isValidate;
     }
     
-    // DefaultServiceLoaderServiceMBean‚ÌJavaDoc
+    // DefaultServiceLoaderServiceMBeanã®JavaDoc
     public void setCheckLoadManagerCompleted(boolean isCheck){
         isCheckLoadManagerCompleted = isCheck;
     }
     
-    // DefaultServiceLoaderServiceMBean‚ÌJavaDoc
+    // DefaultServiceLoaderServiceMBeanã®JavaDoc
     public boolean isCheckLoadManagerCompleted(){
         return isCheckLoadManagerCompleted;
     }
     
-    // DefaultServiceLoaderServiceMBean‚ÌJavaDoc
+    // DefaultServiceLoaderServiceMBeanã®JavaDoc
     public void setCheckLoadManagerCompletedBy(String[] managerNames){
         if(managerNames != null && managerNames.length != 0){
             checkLoadManagerNames = new HashSet();
@@ -1486,7 +1486,7 @@ public class DefaultServiceLoaderService extends ServiceBase
         }
     }
     
-    // DefaultServiceLoaderServiceMBean‚ÌJavaDoc
+    // DefaultServiceLoaderServiceMBeanã®JavaDoc
     public String[] getCheckLoadManagerCompletedBy(){
         return checkLoadManagerNames == null
              ? new String[0] : (String[])checkLoadManagerNames

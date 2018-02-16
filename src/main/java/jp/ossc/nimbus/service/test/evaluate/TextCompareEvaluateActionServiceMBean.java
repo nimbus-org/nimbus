@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test.evaluate;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link TextCompareEvaluateActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TextCompareEvaluateActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see TextCompareEvaluateActionService
@@ -42,94 +42,94 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface TextCompareEvaluateActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * •ÒWŒã‚Ì”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ç·¨é›†å¾Œã®æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_AFTER_EDIT_FILE_EXTENTION = ".edt";
     
     /**
-     * ”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFileEncoding(String encoding);
     
     /**
-     * ”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFileEncoding();
     
     /**
-     * ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO‚ğİ’è‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param flags ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param flags æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public void setMatchFlags(int[] flags);
     
     /**
-     * ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ³‹K•\Œ»‚Ìƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @return æ­£è¦è¡¨ç¾ã®ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public int[] getMatchFlags();
     
     /**
-     * ’uŠ·“™‚Ì•ÒW‚ğs‚Á‚½Œã‚Ì”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç½®æ›ç­‰ã®ç·¨é›†ã‚’è¡Œã£ãŸå¾Œã®æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputFileAfterEdit();
     
     /**
-     * ’uŠ·“™‚Ì•ÒW‚ğs‚Á‚½Œã‚Ì”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Åo—Í‚µ‚È‚¢B<br>
-     * ’uŠ·“™‚Ì•ÒW‚ğs‚Á‚½Œã‚Ì”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼‚ÍAŒ³‚Ìƒtƒ@ƒCƒ‹–¼‚ÉA{@link #getFileAfterEditExtention()}‚Åæ“¾‚µ‚½Šg’£q‚ğ•t‰Á‚µ‚½–¼‘O‚É‚È‚éB<br>
+     * ç½®æ›ç­‰ã®ç·¨é›†ã‚’è¡Œã£ãŸå¾Œã®æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å‡ºåŠ›ã—ãªã„ã€‚<br>
+     * ç½®æ›ç­‰ã®ç·¨é›†ã‚’è¡Œã£ãŸå¾Œã®æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«åã¯ã€å…ƒã®ãƒ•ã‚¡ã‚¤ãƒ«åã«ã€{@link #getFileAfterEditExtention()}ã§å–å¾—ã—ãŸæ‹¡å¼µå­ã‚’ä»˜åŠ ã—ãŸåå‰ã«ãªã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputFileAfterEdit(boolean isOutput);
     
     /**
-     * ’uŠ·“™‚Ì•ÒW‚ğs‚Á‚½Œã‚Ì”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğİ’è‚·‚éB<p>
+     * ç½®æ›ç­‰ã®ç·¨é›†ã‚’è¡Œã£ãŸå¾Œã®æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param extention Šg’£q
+     * @param extention æ‹¡å¼µå­
      */
     public void setFileAfterEditExtention(String extention);
     
     /**
-     * ’uŠ·“™‚Ì•ÒW‚ğs‚Á‚½Œã‚Ì”äŠr‘ÎÛƒtƒ@ƒCƒ‹‚ÌŠg’£q‚ğæ“¾‚·‚éB<p>
+     * ç½®æ›ç­‰ã®ç·¨é›†ã‚’è¡Œã£ãŸå¾Œã®æ¯”è¼ƒå¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Šg’£q
+     * @return æ‹¡å¼µå­
      */
     public String getFileAfterEditExtention();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
     
     /**
-     * ”äŠræƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡AƒeƒXƒgŒ‹‰Ê‚ğNG‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ¯”è¼ƒå…ˆãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã€ãƒ†ã‚¹ãƒˆçµæœã‚’NGã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒeƒXƒgŒ‹‰Ê‚ğNG‚É‚·‚é
+     * @return trueã®å ´åˆã€ãƒ†ã‚¹ãƒˆçµæœã‚’NGã«ã™ã‚‹
      */
     public boolean isResultNGOnNotFoundDestFile();
     
     /**
-     * ”äŠræƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡AƒeƒXƒgŒ‹‰Ê‚ğNG‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅANG‚É‚µ‚È‚¢B<br>
+     * æ¯”è¼ƒå…ˆãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã€ãƒ†ã‚¹ãƒˆçµæœã‚’NGã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€NGã«ã—ãªã„ã€‚<br>
      *
-     * @param isResultNG ƒeƒXƒgŒ‹‰Ê‚ğNG‚É‚·‚éê‡Atrue
+     * @param isResultNG ãƒ†ã‚¹ãƒˆçµæœã‚’NGã«ã™ã‚‹å ´åˆã€true
      */
     public void setResultNGOnNotFoundDestFile(boolean isResultNG);
 }

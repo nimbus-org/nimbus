@@ -37,87 +37,87 @@ import java.util.Date;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link FileConcentrateBackupManagerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link FileConcentrateBackupManagerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface FileConcentrateBackupManagerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“ú•tƒfƒBƒŒƒNƒgƒŠƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ—¥ä»˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      */
     public static final String DEFAULT_DATE_FORMAT = "yyyyMMdd";
     
     /**
-     * ˆ³kƒ‚[ƒhF”ñˆ³kB<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šéåœ§ç¸®ã€‚<p>
      */
     public static final int COMPRESS_MODE_NONE = 0;
     
     /**
-     * ˆ³kƒ‚[ƒhFZLIBŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šZLIBå½¢å¼ã€‚<p>
      */
     public static final int COMPRESS_MODE_ZLIB = 1;
     
     /**
-     * ˆ³kƒ‚[ƒhFZIPŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šZIPå½¢å¼ã€‚<p>
      */
     public static final int COMPRESS_MODE_ZIP = 2;
     
     /**
-     * ˆ³kƒ‚[ƒhFGZIPŒ`®B<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ï¼šGZIPå½¢å¼ã€‚<p>
      */
     public static final int COMPRESS_MODE_GZIP = 3;
     
     /**
-     * “ú•tƒfƒBƒŒƒNƒgƒŠ‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_DATE_FORMAT}B<br>
+     * æ—¥ä»˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_DATE_FORMAT}ã€‚<br>
      * 
-     * @param format ƒtƒH[ƒ}ƒbƒg
+     * @param format ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setDateFormat(String format);
     
     /**
-     * “ú•tƒfƒBƒŒƒNƒgƒŠ‚ÌƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * æ—¥ä»˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒtƒH[ƒ}ƒbƒg
+     * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public String getDateFormat();
     
     /**
-     * ƒoƒbƒNƒAƒbƒvƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA"backup"B<br>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€"backup"ã€‚<br>
      *
-     * @param dir ƒoƒbƒNƒAƒbƒvƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setBackupDirectory(File dir);
     
     /**
-     * ƒoƒbƒNƒAƒbƒvƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒNƒAƒbƒvƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getBackupDirectory();
     
     /**
-     * ƒoƒbƒNƒAƒbƒv‚Ì“Ç‚İ‚İƒXƒgƒŠ[ƒ€‚Ìƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1024B<br>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ™‚ã®èª­ã¿è¾¼ã¿ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1024ã€‚<br>
      *
-     * @param size ƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setBufferSize(int size);
     
     /**
-     * ƒoƒbƒNƒAƒbƒv‚Ì“Ç‚İ‚İƒXƒgƒŠ[ƒ€‚Ìƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ™‚ã®èª­ã¿è¾¼ã¿ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒtƒ@ƒTƒCƒY
+     * @return ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getBufferSize();
     
     /**
-     * ˆ³kƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #COMPRESS_MODE_NONE ”ñˆ³k}B<br>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #COMPRESS_MODE_NONE éåœ§ç¸®}ã€‚<br>
      * 
-     * @param mode ˆ³kƒ‚[ƒh
+     * @param mode åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰
      * @see #COMPRESS_MODE_NONE
      * @see #COMPRESS_MODE_ZLIB
      * @see #COMPRESS_MODE_ZIP
@@ -126,107 +126,107 @@ public interface FileConcentrateBackupManagerServiceMBean extends ServiceBaseMBe
     public void setCompressMode(int mode);
     
     /**
-     * ˆ³kƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kƒ‚[ƒh
+     * @return åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰
      */
     public int getCompressMode();
     
     /**
-     * ˆ³kƒŒƒxƒ‹‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link java.util.zip.Deflater#DEFAULT_COMPRESSION}B<br>
-     * ˆ³kƒ‚[ƒh‚ªA{@link #COMPRESS_MODE_ZLIB}A{@link #COMPRESS_MODE_ZIP}‚Ìê‡A—LŒøB<br>
+     * åœ§ç¸®ãƒ¬ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link java.util.zip.Deflater#DEFAULT_COMPRESSION}ã€‚<br>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ãŒã€{@link #COMPRESS_MODE_ZLIB}ã€{@link #COMPRESS_MODE_ZIP}ã®å ´åˆã€æœ‰åŠ¹ã€‚<br>
      * 
-     * @param level ˆ³kƒŒƒxƒ‹
+     * @param level åœ§ç¸®ãƒ¬ãƒ™ãƒ«
      */
     public void setCompressLevel(int level);
     
     /**
-     * ˆ³kƒŒƒxƒ‹‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kƒŒƒxƒ‹
+     * @return åœ§ç¸®ãƒ¬ãƒ™ãƒ«
      */
     public int getCompressLevel();
     
     /**
-     * ˆ³kƒƒ\ƒbƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link java.util.zip.ZipOutputStream#DEFLATED}B<br>
-     * ˆ³kƒ‚[ƒh‚ªA{@link #COMPRESS_MODE_ZIP}‚Ìê‡‚Ì‚İA—LŒøB<br>
+     * åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link java.util.zip.ZipOutputStream#DEFLATED}ã€‚<br>
+     * åœ§ç¸®ãƒ¢ãƒ¼ãƒ‰ãŒã€{@link #COMPRESS_MODE_ZIP}ã®å ´åˆã®ã¿ã€æœ‰åŠ¹ã€‚<br>
      * 
-     * @param method ˆ³kƒƒ\ƒbƒh
+     * @param method åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public void setCompressMethod(int method);
     
     /**
-     * ˆ³kƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆ³kƒƒ\ƒbƒh
+     * @return åœ§ç¸®ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public int getCompressMethod();
     
     /**
-     * ƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean clear() throws ConcentrateBackupException;
     
     /**
-     * w’è‚µ‚½ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒv‚ÌƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param group ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒv–¼
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @param group ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—å
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean remove(String group) throws ConcentrateBackupException;
     
     /**
-     * w’è‚µ‚½ƒoƒbƒNƒAƒbƒv“ú•t‚ÌƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param date ƒoƒbƒNƒAƒbƒv“ú•t
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @param date ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean remove(Date date) throws ConcentrateBackupException;
     
     /**
-     * w’è‚µ‚½ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒvŠ‚ÂƒoƒbƒNƒAƒbƒv“ú•t‚ÌƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—ä¸”ã¤ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param group ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒv–¼
-     * @param date ƒoƒbƒNƒAƒbƒv“ú•t
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @param group ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—å
+     * @param date ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean remove(String group, Date date) throws ConcentrateBackupException;
     
     /**
-     * w’è‚µ‚½ƒoƒbƒNƒAƒbƒv“ú•t‚Ü‚Å‚ÌƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜ã¾ã§ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param date ƒoƒbƒNƒAƒbƒv“ú•t
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @param date ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean removeTo(Date date) throws ConcentrateBackupException;
     
     /**
-     * w’è‚µ‚½ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒvŠ‚ÂƒoƒbƒNƒAƒbƒv“ú•t‚Ü‚Å‚ÌƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—ä¸”ã¤ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜ã¾ã§ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param group ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒv–¼
-     * @param date ƒoƒbƒNƒAƒbƒv“ú•t
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @param group ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—å
+     * @param date ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean removeTo(String group, Date date) throws ConcentrateBackupException;
     
     /**
-     * w’è‚µ‚½ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒvAƒoƒbƒNƒAƒbƒv“ú•tAƒoƒbƒNƒAƒbƒvƒL[‚ÌƒoƒbƒNƒAƒbƒv‚ğ‘S‚Äíœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚­ãƒ¼ã®ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param group ƒoƒbƒNƒAƒbƒvƒOƒ‹[ƒv–¼
-     * @param date ƒoƒbƒNƒAƒbƒv“ú•t
-     * @param key ƒoƒbƒNƒAƒbƒvƒL[
-     * @return íœ‚Å‚«‚½ê‡‚ÍAtrue
-     * @exception ConcentrateBackupException ƒoƒbƒNƒAƒbƒvíœ’†‚ÉˆÙí‚ª”­¶‚µ‚½ê‡
+     * @param group ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚°ãƒ«ãƒ¼ãƒ—å
+     * @param date ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—æ—¥ä»˜
+     * @param key ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã‚­ãƒ¼
+     * @return å‰Šé™¤ã§ããŸå ´åˆã¯ã€true
+     * @exception ConcentrateBackupException ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å‰Šé™¤ä¸­ã«ç•°å¸¸ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean remove(String group, Date date, String key) throws ConcentrateBackupException;
 }

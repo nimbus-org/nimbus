@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.aop;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link InterceptorChainList}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * {@link InterceptorChainList}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -87,13 +87,13 @@ public class DefaultInterceptorChainListService extends ServiceBase
     }
     
     /**
-     * Interceptor‚ğİ’è‚·‚éB
+     * Interceptorã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setInterceptors(Interceptor[] interceptors) {
         this.interceptors = interceptors;
     }
     
-    // InterceptorChainList‚ÌJavaDoc
+    // InterceptorChainListã®JavaDoc
     public Interceptor getInterceptor(InvocationContext context, int index){
         if(getState() != STARTED){
             return null;

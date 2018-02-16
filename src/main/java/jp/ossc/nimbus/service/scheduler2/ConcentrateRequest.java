@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import java.io.Serializable;
 
 /**
- * W”zMƒŠƒNƒGƒXƒgB<p>
+ * é›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  * 
  * @author M.Takata
  */
@@ -43,32 +43,32 @@ public class ConcentrateRequest implements Serializable{
     private static final long serialVersionUID = -5534337631451607056L;
     
     /**
-     * W”zMí•Ê•¶š—ñFûWB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—ï¼šåé›†ã€‚<p>
      */
     public static final String PROCESS_TYPE_GET = "GET";
     
     /**
-     * W”zMí•Ê•¶š—ñF”zMB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—ï¼šé…ä¿¡ã€‚<p>
      */
     public static final String PROCESS_TYPE_PUT = "PUT";
     
     /**
-     * W”zMí•Ê•¶š—ñF“]‘—B<p>
+     * é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—ï¼šè»¢é€ã€‚<p>
      */
     public static final String PROCESS_TYPE_FORWARD = "FORWARD";
     
     /**
-     * W”zMí•ÊFûWB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥ï¼šåé›†ã€‚<p>
      */
     public static final int PROCESS_TYPE_VALUE_GET = 1;
     
     /**
-     * W”zMí•ÊF”zMB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥ï¼šé…ä¿¡ã€‚<p>
      */
     public static final int PROCESS_TYPE_VALUE_PUT = 2;
     
     /**
-     * W”zMí•ÊF“]‘—B<p>
+     * é›†é…ä¿¡ç¨®åˆ¥ï¼šè»¢é€ã€‚<p>
      */
     public static final int PROCESS_TYPE_VALUE_FORWARD = 3;
     
@@ -78,18 +78,18 @@ public class ConcentrateRequest implements Serializable{
     private int processType;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ConcentrateRequest(){
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param type W”zMí•Ê
-     * @param src W”zMŒ³î•ñ
-     * @param dest W”zMˆ¶æî•ñ
+     * @param key ã‚­ãƒ¼
+     * @param type é›†é…ä¿¡ç¨®åˆ¥
+     * @param src é›†é…ä¿¡å…ƒæƒ…å ±
+     * @param dest é›†é…ä¿¡å®›å…ˆæƒ…å ±
      * @see #PROCESS_TYPE_VALUE_GET
      * @see #PROCESS_TYPE_VALUE_PUT
      * @see #PROCESS_TYPE_VALUE_FORWARD
@@ -102,63 +102,63 @@ public class ConcentrateRequest implements Serializable{
     }
     
     /**
-     * ƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getKey(){
         return key;
     }
     
     /**
-     * ƒL[‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
+     * @param key ã‚­ãƒ¼
      */
     public void setKey(String key){
         this.key = key;
     }
     
     /**
-     * W”zMŒ³î•ñ‚ğæ“¾‚·‚éB<p>
+     * é›†é…ä¿¡å…ƒæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return W”zMŒ³î•ñ
+     * @return é›†é…ä¿¡å…ƒæƒ…å ±
      */
     public String getSource(){
         return source;
     }
     
     /**
-     * W”zMŒ³î•ñ‚ğİ’è‚·‚éB<p>
+     * é›†é…ä¿¡å…ƒæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param src W”zMŒ³î•ñ
+     * @param src é›†é…ä¿¡å…ƒæƒ…å ±
      */
     public void setSource(String src){
         source = src;
     }
     
     /**
-     * W”zMˆ¶æî•ñ‚ğæ“¾‚·‚éB<p>
+     * é›†é…ä¿¡å®›å…ˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return W”zMˆ¶æî•ñ
+     * @return é›†é…ä¿¡å®›å…ˆæƒ…å ±
      */
     public String getDestination(){
         return destination;
     }
     
     /**
-     * W”zMˆ¶æî•ñ‚ğİ’è‚·‚éB<p>
+     * é›†é…ä¿¡å®›å…ˆæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param dest W”zMˆ¶æî•ñ
+     * @param dest é›†é…ä¿¡å®›å…ˆæƒ…å ±
      */
     public void setDestination(String dest){
         destination = dest;
     }
     
     /**
-     * W”zMí•Ê‚ğæ“¾‚·‚éB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return W”zMí•Ê
+     * @return é›†é…ä¿¡ç¨®åˆ¥
      * @see #PROCESS_TYPE_VALUE_GET
      * @see #PROCESS_TYPE_VALUE_PUT
      * @see #PROCESS_TYPE_VALUE_FORWARD
@@ -168,9 +168,9 @@ public class ConcentrateRequest implements Serializable{
     }
     
     /**
-     * W”zMí•Ê‚ğİ’è‚·‚éB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type W”zMí•Ê
+     * @param type é›†é…ä¿¡ç¨®åˆ¥
      * @see #PROCESS_TYPE_VALUE_GET
      * @see #PROCESS_TYPE_VALUE_PUT
      * @see #PROCESS_TYPE_VALUE_FORWARD
@@ -180,10 +180,10 @@ public class ConcentrateRequest implements Serializable{
     }
     
     /**
-     * W”zMí•Ê‚ğW”zMí•Ê•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥ã‚’é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param type W”zMí•Ê
-     * @return W”zMí•Ê•¶š—ñ
+     * @param type é›†é…ä¿¡ç¨®åˆ¥
+     * @return é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—
      * @see #PROCESS_TYPE_VALUE_GET
      * @see #PROCESS_TYPE_VALUE_PUT
      * @see #PROCESS_TYPE_VALUE_FORWARD
@@ -205,10 +205,10 @@ public class ConcentrateRequest implements Serializable{
     }
     
     /**
-     * W”zMí•Ê•¶š—ñ‚ğW”zMí•Ê‚É•ÏŠ·‚·‚éB<p>
+     * é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—ã‚’é›†é…ä¿¡ç¨®åˆ¥ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param type W”zMí•Ê•¶š—ñ
-     * @return W”zMí•Ê
+     * @param type é›†é…ä¿¡ç¨®åˆ¥æ–‡å­—åˆ—
+     * @return é›†é…ä¿¡ç¨®åˆ¥
      * @see #PROCESS_TYPE_GET
      * @see #PROCESS_TYPE_PUT
      * @see #PROCESS_TYPE_FORWARD

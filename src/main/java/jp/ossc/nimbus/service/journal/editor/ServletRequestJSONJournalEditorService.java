@@ -40,7 +40,7 @@ import javax.servlet.ServletRequest;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * {@link ServletRequest}‚ğJSONŒ`®•¶š—ñ‚É•ÒW‚·‚éƒWƒƒ[ƒiƒ‹ƒGƒfƒBƒ^[B<p>
+ * {@link ServletRequest}ã‚’JSONå½¢å¼æ–‡å­—åˆ—ã«ç·¨é›†ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã€‚<p>
  *
  * @author M.Takata
  */

@@ -40,9 +40,9 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.message.*;
 
 /**
- * —áŠOƒ‰ƒbƒvƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚ÌŒ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½‚ÉAw’è‚³‚ê‚½—áŠO‚Åƒ‰ƒbƒv‚µ‚Äthrow‚µ’¼‚·ƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉANullPointerException‚ğ“Æ©—áŠOƒNƒ‰ƒX‚Åƒ‰ƒbƒv‚µ‚Äthrow‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä¾‹å¤–ãƒ©ãƒƒãƒ—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã®çµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸæ™‚ã«ã€æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã§ãƒ©ãƒƒãƒ—ã—ã¦throwã—ç›´ã™ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€NullPointerExceptionã‚’ç‹¬è‡ªä¾‹å¤–ã‚¯ãƒ©ã‚¹ã§ãƒ©ãƒƒãƒ—ã—ã¦throwã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.message.*;
  *         &lt;service name="NullPointerWrapExceptionTrowInterceptor"
  *                  code="jp.ossc.nimbus.service.aop.interceptor.ExceptionWrapInterceptorService"&gt;
  *             &lt;attribute name="WrapExceptionMapping"&gt;java.lang.NullPointerException=sample.SampleException&lt;/attribute&gt;
- *             &lt;attribute name="Message"&gt;—\Šú‚µ‚È‚¢—áŠO‚Å‚·B&lt;/attribute&gt;
+ *             &lt;attribute name="Message"&gt;äºˆæœŸã—ãªã„ä¾‹å¤–ã§ã™ã€‚&lt;/attribute&gt;
  *         &lt;/service&gt;
  *         
  *     &lt;/manager&gt;
@@ -83,77 +83,77 @@ public class ExceptionWrapInterceptorService extends ServiceBase
     private String[] messageArgs;
     private Locale messageLocale;
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public void setWrapExceptionMapping(Properties mapping){
         wrapExceptionMapping = mapping;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public Properties getWrapExceptionMapping(){
         return wrapExceptionMapping;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public void setMessage(String msg){
         message = msg;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public String getMessage(){
         return message;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public void setMessageRecordFactoryServiceName(ServiceName name){
         messageRecordFactoryServiceName = name;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public ServiceName getMessageRecordFactoryServiceName(){
         return messageRecordFactoryServiceName;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public void setMessageKey(String key){
         messageKey = key;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public String getMessageKey(){
         return messageKey;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public void setMessageArgs(String[] args){
         messageArgs = args;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public String[] getMessageArgs(){
         return messageArgs;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public void setMessageLocale(Locale locale){
         messageLocale = locale;
     }
     
-    // ExceptionWrapInterceptorServiceMBean‚ÌJavaDoc
+    // ExceptionWrapInterceptorServiceMBeanã®JavaDoc
     public Locale getMessageLocale(){
         return messageLocale;
     }
     
     /**
-     * MessageRecordFactory‚ğİ’è‚·‚éB
+     * MessageRecordFactoryã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setMessageRecordFactoryService(MessageRecordFactory messageRecordFactory) {
 		this.messageRecordFactory = messageRecordFactory;
 	}
 
 	/**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(wrapExceptionMapping != null){
@@ -174,9 +174,9 @@ public class ExceptionWrapInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(wrapExceptionMappingTree != null){
@@ -285,13 +285,13 @@ public class ExceptionWrapInterceptorService extends ServiceBase
     }
     
     /**
-     * İ’è‚³‚ê‚½—áŠO‚ğcatch‚µ‚Äİ’è‚³‚ê‚½ƒ‰ƒbƒv—áŠO‚Åƒ‰ƒbƒv‚µ‚Äthrow‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B
+     * è¨­å®šã•ã‚ŒãŸä¾‹å¤–ã‚’catchã—ã¦è¨­å®šã•ã‚ŒãŸãƒ©ãƒƒãƒ—ä¾‹å¤–ã§ãƒ©ãƒƒãƒ—ã—ã¦throwã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable İ’è‚³‚ê‚½—áŠO
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable è¨­å®šã•ã‚ŒãŸä¾‹å¤–
      */
     public Object invoke(
         InvocationContext context,

@@ -37,7 +37,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JournalRecord}À‘•ƒNƒ‰ƒXB<p>
+ * {@link JournalRecord}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
@@ -45,17 +45,17 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
     
     private static final long serialVersionUID = 4377038814532613910L;
     
-    /** ƒL[ */
+    /** ã‚­ãƒ¼ */
     private String mKey ;
-    /** ƒGƒfƒBƒ^[ƒ^ƒCƒv */
+    /** ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚¿ã‚¤ãƒ— */
     private transient EditorFinder mFinder ;
     private ServiceName mFinderName ;
     private Object mEditObj ;
-    /** “o˜^ƒIƒuƒWƒFƒNƒg*/
+    /** ç™»éŒ²ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ*/
     private transient Object mParamObj ;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public JournalRecordImpl(){
         super();
@@ -65,15 +65,15 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
         this.mParamObj = null;
     }
     
-    // JournalRecord ‚ÌJavaDoc
+    // JournalRecord ã®JavaDoc
     public String getKey(){
         return mKey;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒWƒƒ[ƒiƒ‹î•ñ‚ÌƒL[
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã®ã‚­ãƒ¼
      * @see #getKey()
      */
     public void setKey(String key){
@@ -81,9 +81,9 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param finder ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚éJournalEditor
+     * @param finder ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹JournalEditor
      * @see #getFinder()
      */
     public void setEditorFinder(EditorFinder finder){
@@ -100,7 +100,7 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
     }
     
     /**
-     * {@link RequestJournal}‚ğİ’è‚·‚éB<p>
+     * {@link RequestJournal}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param obj RequestJournal
      */
@@ -109,9 +109,9 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒWƒƒ[ƒiƒ‹î•ñ
+     * @param obj ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
      */
     public void setInfoObj(Object obj){
         mParamObj = obj;
@@ -119,7 +119,7 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
         this.mEditObj = editor.toObject(mFinder,mKey,obj) ;
     }
     
-    // JournalRecord ‚ÌJavaDoc
+    // JournalRecord ã®JavaDoc
     public Object toObject(){
         if(this.mEditObj == null){
             JournalEditor editor = getJournalEditor() ;
@@ -128,7 +128,7 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
         return mEditObj ;
     }
     
-    // JournalRecord ‚ÌJavaDoc
+    // JournalRecord ã®JavaDoc
     public Object toObject( EditorFinder finder ){
         Object ret = null;
         if(finder != null && mEditObj == null){
@@ -139,30 +139,30 @@ public class JournalRecordImpl implements JournalRecord, java.io.Serializable{
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
      */
     public Object getObject(){
         return mParamObj ;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚é{@link JournalEditor}‚ğŒŸõ‚·‚é{@link EditorFinder}‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹{@link JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link EditorFinder}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒWƒƒ[ƒiƒ‹î•ñ‚ğ•ÒW‚·‚éJournalEditor‚ğŒŸõ‚·‚éEditorFinder
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç·¨é›†ã™ã‚‹JournalEditorã‚’æ¤œç´¢ã™ã‚‹EditorFinder
      */
     public EditorFinder getFinder(){
         return mFinder ;
     }
     
-    // JournalRecord ‚ÌJavaDoc
+    // JournalRecord ã®JavaDoc
     public JournalEditor getJournalEditor(){
         
         return mFinder == null ? null : mFinder.findEditor(mKey, mParamObj) ;
     }
     
-    // JournalRecord ‚ÌJavaDoc
+    // JournalRecord ã®JavaDoc
     public boolean isStep(){
         return (mParamObj != null && mParamObj instanceof RequestJournal);
     }

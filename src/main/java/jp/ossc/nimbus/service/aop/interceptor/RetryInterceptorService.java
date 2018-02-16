@@ -47,8 +47,8 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * ƒŠƒgƒ‰ƒCƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ˆÈ‰º‚ÉASocketTimeoutException‚ª”­¶‚·‚é‚Æ‚Q‰ñƒŠƒgƒ‰ƒC‚·‚éƒŠƒgƒ‰ƒCƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒªãƒˆãƒ©ã‚¤ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ä»¥ä¸‹ã«ã€SocketTimeoutExceptionãŒç™ºç”Ÿã™ã‚‹ã¨ï¼’å›ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ãƒªãƒˆãƒ©ã‚¤ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -90,55 +90,55 @@ public class RetryInterceptorService extends ServiceBase
     private String retryCountAttributeName = DEFAULT_RETRY_COUNT_ATTRIBUTE_NAME;
     private long retryInterval = 0;
     
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public void setReturnConditions(String[] conditions){
         returnConditions = conditions;
     }
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public String[] getReturnConditions(){
         return returnConditions;
     }
     
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public void setExceptionConditions(String[] conditions){
         exceptionConditions = conditions;
     }
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public String[] getExceptionConditions(){
         return exceptionConditions;
     }
     
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public void setMaxRetryCount(int count){
         maxRetryCount = count;
     }
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public int getMaxRetryCount(){
         return maxRetryCount;
     }
     
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public void setRetryCountAttributeName(String name){
         retryCountAttributeName = name;
     }
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public String getRetryCountAttributeName(){
         return retryCountAttributeName;
     }
     
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public void setRetryInterval(long millis){
         retryInterval = millis;
     }
-    // RetryInterceptorServiceMBea‚ÌJavaDoc
+    // RetryInterceptorServiceMBeaã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(returnConditions != null && returnConditions.length != 0){
@@ -185,13 +185,13 @@ public class RetryInterceptorService extends ServiceBase
     }
     
     /**
-     * –ß‚è’l‚ªw’è‚³‚ê‚½ğŒ‚É‡’v‚·‚éê‡A‚Ü‚½‚Íw’è‚³‚ê‚½—áŠO‚ªthrow‚³‚ê‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * æˆ»ã‚Šå€¤ãŒæŒ‡å®šã•ã‚ŒãŸæ¡ä»¶ã«åˆè‡´ã™ã‚‹å ´åˆã€ã¾ãŸã¯æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,
@@ -256,17 +256,17 @@ public class RetryInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚É‘Î‰‚·‚éğŒ‚ğæ‚èo‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã«å¯¾å¿œã™ã‚‹æ¡ä»¶ã‚’å–ã‚Šå‡ºã™ã€‚<p>
      * 
-     * @param conditions —áŠO‚ÆğŒ‚Ìƒ}ƒbƒv
-     * @param th —áŠO
-     * @return ğŒ
+     * @param conditions ä¾‹å¤–ã¨æ¡ä»¶ã®ãƒãƒƒãƒ—
+     * @param th ä¾‹å¤–
+     * @return æ¡ä»¶
      */
     private Condition getTargetCondition(ClassMappingTree conditions, Throwable th) {
         if(conditions == null){
             return null;
         }
-        // —áŠOƒNƒ‰ƒX‚ÉŠÖ˜A•t‚¢‚Ä‚¢‚éğŒ‚ğæ“¾
+        // ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã«é–¢é€£ä»˜ã„ã¦ã„ã‚‹æ¡ä»¶ã‚’å–å¾—
         Condition condition = (Condition)conditions.getValue(th.getClass());
         if(condition != null){
             return condition;
@@ -277,15 +277,15 @@ public class RetryInterceptorService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çŒ´ˆö‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰åŸå› ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
-     * @return Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @return åŸå› 
      */
     private Throwable getCause(Throwable th){
         Throwable cause = null;
         if(th.getClass().getName().equals(SERVLET_EXCEPTION_NAME)){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try{
                 cause = (Throwable)th.getClass()
                     .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -294,7 +294,7 @@ public class RetryInterceptorService extends ServiceBase
             }catch(InvocationTargetException e){
             }
         }else if(th.getClass().getName().equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -447,7 +447,7 @@ public class RetryInterceptorService extends ServiceBase
             try{
                 initCondition(condition);
             }catch(Exception e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
             }
         }
     }

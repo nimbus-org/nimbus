@@ -37,7 +37,7 @@ import java.util.HashSet;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒTƒuƒWƒFƒNƒg‚ÅƒtƒBƒ‹ƒ^[‚·‚é{@link ThinOutFilter}À‘•ƒT[ƒrƒXB<p>
+ * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã™ã‚‹{@link ThinOutFilter}å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

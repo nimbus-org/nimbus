@@ -35,41 +35,41 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 //
 //
 /**
- * BLƒNƒ‰ƒXƒLƒƒƒbƒVƒ…‚ÌMBeanŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * BLã‚¯ãƒ©ã‚¹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®MBeanç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/25 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/25 -ã€€H.Nakano
  */
 public interface ClassLoaderServiceMBean extends ServiceBaseMBean{
-	/** ŠÔw’èƒtƒH[ƒ}ƒbƒg’è” */
+	/** æ™‚é–“æŒ‡å®šãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå®šæ•° */
 	//static final public String TIMEFORMAT = "yyyy.MM.DD hh:mm:ss" ; //$NON-NLS-1$
-	//Add 20031105-hiro DD¨dd
+	//Add 20031105-hiro DDâ†’dd
 	static final public String TIMEFORMAT = "yyyy.MM.dd hh:mm:ss" ; //$NON-NLS-1$
 	/**
-	 * ClassPathƒZƒbƒ^[.
+	 * ClassPathã‚»ãƒƒã‚¿ãƒ¼.
 	 * @param paths
 	 */
 	public void setClassPath(String paths) ;
 	/**
-	 * ClassPathƒQƒbƒ^[.
+	 * ClassPathã‚²ãƒƒã‚¿ãƒ¼.
 	 * @return String
 	 */
 	public String getClassPath() ;
 	/**
-	 * Refresh—\’è‚ğİ’è‚·‚éB.
+	 * Refreshäºˆå®šæ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚.
 	 * @param time
 	 */
 	public void setRefreshTime(String time) ;
 	/**
-	 * ‘¦ƒŠƒtƒŒƒbƒVƒ…—v¿.
+	 * å³æ™‚ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥è¦è«‹.
 	 */
 	public void refreshNow() ;
 	/**
-	 * ÅIƒŠƒtƒŒƒbƒVƒ…ƒQƒbƒ^[.
+	 * æœ€çµ‚ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ™‚åˆ»ã‚²ãƒƒã‚¿ãƒ¼.
 	 * @return String
 	 */
 	public String getLastRrefreshTime() ;
 	/**
-	 * Ÿ‰ñƒŠƒtƒŒƒbƒVƒ…ƒQƒbƒ^[.
+	 * æ¬¡å›ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ™‚åˆ»ã‚²ãƒƒã‚¿ãƒ¼.
 	 * @return String
 	 */
 	public String getNextRefreshTime() ;

@@ -38,7 +38,7 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 
 /**
- * ”äŠr‰Â”\”’lB<p>
+ * æ¯”è¼ƒå¯èƒ½æ•°å€¤ã€‚<p>
  * 
  * @author M.Takata
  */

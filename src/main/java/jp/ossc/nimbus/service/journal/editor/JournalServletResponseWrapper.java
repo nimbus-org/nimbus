@@ -38,7 +38,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.ServletResponseWrapper;
 
 /**
- * ServletResponse‚ÌÚ×‚ÈƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é‚½‚ß‚ÌServletResponseWrapperB<p>
+ * ServletResponseã®è©³ç´°ãªã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ServletResponseWrapperã€‚<p>
  *
  * @author M.Takata
  */

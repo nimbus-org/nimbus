@@ -37,7 +37,7 @@ import java.lang.reflect.Constructor;
 import jp.ossc.nimbus.core.NimbusClassLoader;
 
 /**
- * {@link IncompatibleExceptionWrapInterceptorService}‚ª—áŠO‚ğƒ‰ƒbƒv‚µ‚½ê‡‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * {@link IncompatibleExceptionWrapInterceptorService}ãŒä¾‹å¤–ã‚’ãƒ©ãƒƒãƒ—ã—ãŸå ´åˆã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  * @see IncompatibleExceptionWrapInterceptorService
@@ -57,7 +57,7 @@ public class IncompatibleExceptionWrapExeption extends RuntimeException{
     private String errorCode;
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚ğƒ‰ƒbƒv‚·‚é—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public IncompatibleExceptionWrapExeption(Throwable source){
         super(source.getMessage(), getCause(source));
@@ -119,17 +119,17 @@ public class IncompatibleExceptionWrapExeption extends RuntimeException{
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚©‚çŒ´ˆö‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã‹ã‚‰åŸå› ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
-     * @return Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @return åŸå› 
      */
     public static Throwable getCause(Throwable th){
         Throwable cause = null;
         if(th.getClass().getName().equals(SERVLET_EXCEPTION_NAME)){
             cause = th.getCause();
             if(cause == null){
-                // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+                // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
                 try{
                     cause = (Throwable)th.getClass()
                         .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -139,7 +139,7 @@ public class IncompatibleExceptionWrapExeption extends RuntimeException{
                 }
             }
         }else if(th.getClass().getName().equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -154,10 +154,10 @@ public class IncompatibleExceptionWrapExeption extends RuntimeException{
     }
     
     /**
-     * w’è‚³‚ê‚½—áŠO‚ÉŒ´ˆö‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¾‹å¤–ã«åŸå› ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
-     * @param cause Œ´ˆö
+     * @param th ä¾‹å¤–
+     * @param cause åŸå› 
      */
     public static void setCause(Throwable th, Throwable cause){
         if(th.getClass().getName().equals(JMS_EXCEPTION_NAME)){

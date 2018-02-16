@@ -32,65 +32,65 @@
 package jp.ossc.nimbus.service.graph;
 
 /**
- * XYƒf[ƒ^ƒZƒbƒgğŒB<p>
+ * XYãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface XYDatasetCondition
     extends DatasetCondition {
     /**
-     * X²‚ÌFrom‚ğæ“¾‚·‚éB<p>
+     * Xè»¸ã®Fromã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return X²‚ÌFrom
+     * @return Xè»¸ã®From
      */
     public int getXFrom();
 
     /**
-     * X²‚ÌFrom‚ğİ’è‚·‚éB
+     * Xè»¸ã®Fromã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param from X²‚ÌFrom
+     * @param from Xè»¸ã®From
      */
     public void setXFrom(int from);
 
     /**
-     * X²‚ÌTo‚ğæ“¾‚·‚éB<p>
+     * Xè»¸ã®Toã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return X²‚ÌTo
+     * @return Xè»¸ã®To
      */
     public int getXTo();
 
     /**
-     * X²‚ÌTo‚ğİ’è‚·‚éB<p>
+     * Xè»¸ã®Toã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param to X²‚ÌTo
+     * @param to Xè»¸ã®To
      */
     public void setXTo(int to);
 
     /**
-     * Y²‚ÌFrom‚ğæ“¾‚·‚éB<p>
+     * Yè»¸ã®Fromã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Y²‚ÌFrom
+     * @return Yè»¸ã®From
      */
     public int getYFrom();
 
     /**
-     * Y²‚ÌFrom‚ğİ’è‚·‚éB<p>
+     * Yè»¸ã®Fromã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param from Y²‚ÌFrom
+     * @param from Yè»¸ã®From
      */
     public void setYFrom(int from);
 
     /**
-     * Y²‚ÌTo‚ğæ“¾‚·‚éB<p>
+     * Yè»¸ã®Toã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Y²‚ÌTo
+     * @return Yè»¸ã®To
      */
     public int getYTo();
 
     /**
-     * Y²‚ÌTo‚ğİ’è‚·‚éB<p>
+     * Yè»¸ã®Toã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param to Y²‚ÌTo
+     * @param to Yè»¸ã®To
      */
     public void setYTo(int to);
 

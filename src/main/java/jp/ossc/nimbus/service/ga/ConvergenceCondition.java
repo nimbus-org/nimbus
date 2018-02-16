@@ -32,32 +32,32 @@
 package jp.ossc.nimbus.service.ga;
 
 /**
- * û‘©ğŒB<p>
+ * åæŸæ¡ä»¶ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ConvergenceCondition{
     
     /**
-     * û‘©‚µ‚½‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN‚·‚éB<p>
+     * åæŸã—ãŸã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @param generation ¢‘ã
-     * @param result û‘©ğŒŒ‹‰Ê
-     * @return û‘©ğŒŒ‹‰Ê
+     * @param generation ä¸–ä»£
+     * @param result åæŸæ¡ä»¶çµæœ
+     * @return åæŸæ¡ä»¶çµæœ
      */
     public ConvergenceConditionResult checkConvergence(Generation generation, ConvergenceConditionResult result);
     
     /**
-     * û‘©ğŒŒ‹‰ÊB<p>
+     * åæŸæ¡ä»¶çµæœã€‚<p>
      *
      * @author M.Takata
      */
     public interface ConvergenceConditionResult{
         
         /**
-         * û‘©ğŒ‚ğ’B¬‚µ‚½‚©”»’è‚·‚éB<p>
+         * åæŸæ¡ä»¶ã‚’é”æˆã—ãŸã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return û‘©‚µ‚½ê‡true
+         * @return åæŸã—ãŸå ´åˆtrue
          */
         public boolean isConverged();
     }

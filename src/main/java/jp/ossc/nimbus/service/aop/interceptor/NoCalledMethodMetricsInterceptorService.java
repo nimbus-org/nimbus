@@ -44,9 +44,9 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.util.*;
 
 /**
- * –¢ŒÄ‚Ño‚µƒƒ\ƒbƒh“ŒvƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * “Œv‘ÎÛ‚Ìƒƒ\ƒbƒh‚Ì‚¤‚¿AŒÄ‚Ño‚³‚ê‚È‚©‚Á‚½ƒƒ\ƒbƒh‚ğæ“¾‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉA–¢ŒÄ‚Ño‚µƒƒ\ƒbƒh“ŒvƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * æœªå‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰çµ±è¨ˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * çµ±è¨ˆå¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®ã†ã¡ã€å‘¼ã³å‡ºã•ã‚Œãªã‹ã£ãŸãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€æœªå‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰çµ±è¨ˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -112,7 +112,7 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
     
     private boolean isOutputSystemOut = true;
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setTargetClassModifiers(String modifiers){
         Boolean isPublicClass = null;
         Boolean isProtectedClass = null;
@@ -163,32 +163,32 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
         this.isAbstractClass = isAbstractClass;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getTargetClassModifiers(){
         return targetClassModifiers;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setTargetClassName(String name){
         targetClassName = name;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getTargetClassName(){
         return targetClassName;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setTargetInstanceClassName(String name){
         targetInstanceClassName = name;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getTargetInstanceClassName(){
         return targetInstanceClassName;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setTargetMethodModifiers(String modifiers){
         Boolean isPublicMethod = null;
         Boolean isProtectedMethod = null;
@@ -239,85 +239,85 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
         this.isSynchronizedMethod = isSynchronizedMethod;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getTargetMethodModifiers(){
         return targetMethodModifiers;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setTargetMethodName(String name){
         targetMethodName = name;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getTargetMethodName(){
         return targetMethodName;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setTargetParameterTypes(String[] paramTypes){
         targetParameterTypes = paramTypes;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String[] getTargetParameterTypes(){
         return targetParameterTypes;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setDeclaringMethod(boolean isDeclaring){
         isDeclaringMethod = isDeclaring;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isDeclaringMethod(){
         return isDeclaringMethod;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public Set getTargetMethodSet(){
         return getMethodSet(targetMethods);
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getTargetMethodString(){
         return getMethodString(getTargetMethodSet());
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public Set getNoCalledMethodSet(){
         return getMethodSet(noCalledMethods);
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getNoCalledMethodString(){
         return getMethodString(getNoCalledMethodSet());
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setClassPaths(String[] paths){
         additionalClassPaths = paths;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String[] getClassPaths(){
         return additionalClassPaths;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputSystemOut(boolean isOutput){
         isOutputSystemOut = isOutput;
     }
     
-    // NoCalledMethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // NoCalledMethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputSystemOut(){
         return isOutputSystemOut;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         targetMethods = new HashSet();
@@ -325,9 +325,9 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ‘®«‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception Exception å±æ€§ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         createTargetMethods();
@@ -337,9 +337,9 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(isOutputSystemOut){
@@ -355,9 +355,9 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         targetMethods = null;
@@ -713,13 +713,13 @@ public class NoCalledMethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ŒÄ‚Ño‚³‚ê‚½ƒƒ\ƒbƒh‚ª“Œv‘ÎÛ‚Ìƒƒ\ƒbƒh‚Ìê‡‚ÍAŒÄ‚Ño‚³‚ê‚È‚©‚Á‚½ƒƒ\ƒbƒhƒŠƒXƒg‚©‚çíœ‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * å‘¼ã³å‡ºã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãŒçµ±è¨ˆå¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å ´åˆã¯ã€å‘¼ã³å‡ºã•ã‚Œãªã‹ã£ãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,

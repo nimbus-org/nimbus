@@ -50,7 +50,7 @@ import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * Apache Velocity‚ğg‚Á‚½{@link TemplateEngine}ƒT[ƒrƒXB<p>
+ * Apache Velocityã‚’ä½¿ã£ãŸ{@link TemplateEngine}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

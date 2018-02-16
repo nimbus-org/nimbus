@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.beancontrol;
 import java.rmi.*;
 
 /**
- * ‹Æ–±ƒtƒ[”ñ“¯ŠúÀsƒR[ƒ‹ƒoƒbƒNB<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼éåŒæœŸå®Ÿè¡Œã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€‚<p>
  *
  * @author M.Takata
  */

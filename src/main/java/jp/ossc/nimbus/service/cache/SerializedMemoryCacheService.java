@@ -38,8 +38,8 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ’¼—ñ‰»ƒƒ‚ƒŠƒLƒƒƒbƒVƒ…ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚µ‚Äƒƒ‚ƒŠ’†‚É•Û‚·‚éƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ç›´åˆ—åŒ–ãƒ¡ãƒ¢ãƒªã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã—ã¦ãƒ¡ãƒ¢ãƒªä¸­ã«ä¿æŒã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -142,10 +142,10 @@ public class SerializedMemoryCacheService extends AbstractCacheService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒLƒƒƒbƒVƒ…‚·‚éƒIƒuƒWƒFƒNƒg
-     * @return ƒLƒƒƒbƒVƒ…QÆ
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected CachedReference createCachedReference(Object obj){
         try{

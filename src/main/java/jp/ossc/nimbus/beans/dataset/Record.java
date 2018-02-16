@@ -37,17 +37,17 @@ import java.io.*;
 import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
 
 /**
- * ƒŒƒR[ƒhB<p>
- * ƒŒƒR[ƒhƒŠƒXƒg‚Ì‚P—v‘f‚Æ‚È‚é•¡”‚ÌƒvƒƒpƒeƒB‚ğ‚ÂBean‚ÅAƒXƒL[ƒ}’è‹`‚É‚æ‚Á‚ÄA‚Ç‚Ì‚æ‚¤‚ÈBean‚É‚·‚é‚Ì‚©iƒvƒƒpƒeƒB–¼AŒ^‚È‚Çj‚ğ“®“I‚ÉŒˆ’è‚Å‚«‚éB<br>
- * ˆÈ‰º‚ÉƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ¦‚·B<br>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ã€‚<p>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ï¼‘è¦ç´ ã¨ãªã‚‹è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã¤Beanã§ã€ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«ã‚ˆã£ã¦ã€ã©ã®ã‚ˆã†ãªBeanã«ã™ã‚‹ã®ã‹ï¼ˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€å‹ãªã©ï¼‰ã‚’å‹•çš„ã«æ±ºå®šã§ãã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  *     import jp.ossc.nimbus.beans.dataset.*;
  *     
- *     // ƒŒƒR[ƒh‚ğ¶¬
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆ
  *     Record record = new Record();
  *     
- *     // ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}‚ğˆÈ‰º‚Ì‚æ‚¤‚É’è‹`‚·‚é
- *     //   ƒvƒƒpƒeƒB–¼  Œ^
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒã‚’ä»¥ä¸‹ã®ã‚ˆã†ã«å®šç¾©ã™ã‚‹
+ *     //   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å  å‹
  *     //        A        java.lang.String
  *     //        B        long
  *     record.setSchema(
@@ -55,7 +55,7 @@ import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
  *             + ":B,long"
  *     );
  *     
- *     // ’l‚ğİ’è‚·‚é
+ *     // å€¤ã‚’è¨­å®šã™ã‚‹
  *     record.setProperty("A", "hoge");
  *     record.setProperty("B", 100l);
  * </pre>
@@ -67,52 +67,52 @@ public class Record implements Externalizable, Cloneable, Map{
     private static final long serialVersionUID = -6640296864936227160L;
     
     /**
-     * ƒXƒL[ƒ}•¶š—ñB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã€‚<p>
      */
     protected String schema;
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}B<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã€‚<p>
      */
     protected RecordSchema recordSchema;
     
     /**
-     * ƒvƒƒpƒeƒB’l‚ğŠi”[‚·‚éƒ}ƒbƒvB<p>
-     * ƒL[‚ÍƒvƒƒpƒeƒB–¼A’l‚ÍƒvƒƒpƒeƒB’lB<br>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚<p>
+     * ã‚­ãƒ¼ã¯ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€å€¤ã¯ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã€‚<br>
      */
     protected Object[] values;
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÉŠi”[‚µ‚½Û‚ÌƒŒƒR[ƒh‚ÌƒCƒ“ƒfƒbƒNƒXB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«æ ¼ç´ã—ãŸéš›ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
      */
     protected int index = -1;
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÉŠi”[‚µ‚½Û‚ÌŠi”[æ‚ÌƒŠƒXƒgB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã«æ ¼ç´ã—ãŸéš›ã®æ ¼ç´å…ˆã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected RecordList recordList;
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public Record(){
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Record(String schema) throws PropertySchemaDefineException{
         this(RecordSchema.getInstance(schema));
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param recordSchema ƒXƒL[ƒ}•¶š—ñ‚©‚ç¶¬‚³‚ê‚½ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param recordSchema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‹ã‚‰ç”Ÿæˆã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Record(RecordSchema recordSchema){
         if(recordSchema != null){
@@ -122,29 +122,29 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setSchema(String schema) throws PropertySchemaDefineException{
         setRecordSchema(RecordSchema.getInstance(schema));
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public String getSchema(){
         return schema;
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRecordSchema(RecordSchema schema) throws PropertySchemaDefineException{
         if(values != null){
@@ -155,29 +155,29 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public RecordSchema getRecordSchema(){
         return recordSchema;
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğ’uŠ·‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void replaceSchema(String schema) throws PropertySchemaDefineException{
         replaceRecordSchema(RecordSchema.getInstance(schema));
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğ’uŠ·‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void replaceRecordSchema(
         RecordSchema schema
@@ -209,10 +209,10 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}•¶š—ñ‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void appendSchema(
         String schema
@@ -227,47 +227,47 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * e‚Æ‚È‚éƒŒƒR[ƒhƒŠƒXƒgã‚Å‚ÌƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * è¦ªã¨ãªã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆä¸Šã§ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     protected void setIndex(int index){
         this.index = index;
     }
     
     /**
-     * e‚Æ‚È‚éƒŒƒR[ƒhƒŠƒXƒgã‚Å‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * è¦ªã¨ãªã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆä¸Šã§ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getIndex(){
         return index;
     }
     
     /**
-     * e‚Æ‚È‚éƒŒƒR[ƒhƒŠƒXƒg‚ğİ’è‚·‚éB<p>
+     * è¦ªã¨ãªã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param list ƒŒƒR[ƒhƒŠƒXƒg
+     * @param list ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     protected void setRecordList(RecordList list){
         recordList = list;
     }
     
     /**
-     * e‚Æ‚È‚éƒŒƒR[ƒhƒŠƒXƒg‚ğæ“¾‚·‚éB<p>
+     * è¦ªã¨ãªã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒŠƒXƒg
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public RecordList getRecordList(){
         return recordList;
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, Object val)
      throws PropertySetException{
@@ -283,11 +283,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, Object val)
      throws PropertySetException{
@@ -339,11 +339,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, boolean val)
      throws PropertySetException{
@@ -354,11 +354,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, boolean val)
      throws PropertySetException{
@@ -366,11 +366,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, byte val)
      throws PropertySetException{
@@ -381,11 +381,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, byte val)
      throws PropertySetException{
@@ -393,11 +393,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, char val)
      throws PropertySetException{
@@ -408,11 +408,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, char val)
      throws PropertySetException{
@@ -420,11 +420,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, short val)
      throws PropertySetException{
@@ -435,11 +435,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, short val)
      throws PropertySetException{
@@ -447,11 +447,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, int val)
      throws PropertySetException{
@@ -462,11 +462,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, int val)
      throws PropertySetException{
@@ -474,11 +474,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, long val)
      throws PropertySetException{
@@ -489,11 +489,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, long val)
      throws PropertySetException{
@@ -501,11 +501,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, float val)
      throws PropertySetException{
@@ -516,11 +516,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, float val)
      throws PropertySetException{
@@ -528,11 +528,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(String name, double val)
      throws PropertySetException{
@@ -543,11 +543,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setProperty(int index, double val)
      throws PropertySetException{
@@ -555,11 +555,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object getProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -574,11 +574,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object getProperty(int index) throws PropertyGetException{
         if(recordSchema == null){
@@ -593,11 +593,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean getBooleanProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -607,11 +607,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean getBooleanProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -635,11 +635,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public byte getByteProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -649,11 +649,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public byte getByteProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -676,11 +676,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public short getShortProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -690,11 +690,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public short getShortProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -717,11 +717,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int getIntProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -731,11 +731,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int getIntProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -758,11 +758,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public long getLongProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -772,11 +772,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public long getLongProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -799,11 +799,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public float getFloatProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -813,11 +813,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public float getFloatProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -840,11 +840,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public double getDoubleProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -854,11 +854,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public double getDoubleProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -881,11 +881,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String getStringProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -895,11 +895,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX 
-     * @return ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String getStringProperty(int index) throws PropertyGetException{
         final Object ret = getProperty(index);
@@ -913,11 +913,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒtƒH[ƒ}ƒbƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object getFormatProperty(String name) throws PropertyGetException{
         if(recordSchema == null){
@@ -932,11 +932,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @return ƒtƒH[ƒ}ƒbƒg‚³‚ê‚½ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object getFormatProperty(int index) throws PropertyGetException{
         if(recordSchema == null){
@@ -951,11 +951,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚Äİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setParseProperty(String name, Object val) throws PropertySetException{
         if(recordSchema == null){
@@ -970,11 +970,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚Äİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @param val ƒvƒƒpƒeƒB‚Ì’l
-     * @exception PropertySetException ƒvƒƒpƒeƒB‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param val ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤
+     * @exception PropertySetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setParseProperty(int index, Object val) throws PropertySetException{
         if(recordSchema == null){
@@ -989,11 +989,11 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ‘S‚Ä‚ÌƒvƒƒpƒeƒB‚Ì’l‚ğŒŸØ‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validate() throws PropertyGetException, PropertyValidateException{
         if(recordSchema == null){
@@ -1009,12 +1009,12 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚Ì’l‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateProperty(String name) throws PropertyGetException, PropertyValidateException{
         if(recordSchema == null){
@@ -1029,12 +1029,12 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚Ì’l‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param index ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validateProperty(int index) throws PropertyGetException, PropertyValidateException{
         if(recordSchema == null){
@@ -1049,7 +1049,7 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ‘S‚Ä‚ÌƒvƒƒpƒeƒB‚ğƒNƒŠƒA‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         if(values != null){
@@ -1060,18 +1060,18 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ•¡»‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½ƒŒƒR[ƒh
+     * @return è¤‡è£½ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Object clone(){
         return cloneRecord();
     }
     
     /**
-     * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚ÌƒŒƒR[ƒh‚ğ•¡»‚·‚éB<p>
+     * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½‹ó‚ÌƒŒƒR[ƒh
+     * @return è¤‡è£½ã—ãŸç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record cloneSchema(){
         Record clone = null;
@@ -1087,9 +1087,9 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ•¡»‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½ƒŒƒR[ƒh
+     * @return è¤‡è£½ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record cloneRecord(){
         final Record record = cloneSchema();
@@ -1101,9 +1101,9 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
-     * ‚±‚ÌƒŒƒR[ƒh‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder();
@@ -1124,24 +1124,24 @@ public class Record implements Externalizable, Cloneable, Map{
         return buf.toString();
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public int size(){
         return recordSchema == null ? 0 : recordSchema.getPropertySize();
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public boolean isEmpty(){
         return size() == 0;
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public boolean containsKey(Object key){
         return recordSchema == null ? false : recordSchema.getPropertySchema(
             key == null ? (String)key : key.toString()
         ) != null;
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public boolean containsValue(Object value){
         if(values == null){
             return false;
@@ -1156,19 +1156,19 @@ public class Record implements Externalizable, Cloneable, Map{
         return false;
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public Object get(Object key){
         return getProperty(key == null ? (String)key : key.toString());
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public Object put(Object key, Object value){
         final Object old = get(key);
         setProperty(key == null ? (String)key : key.toString(), value);
         return old;
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public Object remove(Object key){
         if(!containsKey(key)){
             return null;
@@ -1180,7 +1180,7 @@ public class Record implements Externalizable, Cloneable, Map{
         return old;
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public void putAll(Map t){
         if(t == null){
             return;
@@ -1192,17 +1192,17 @@ public class Record implements Externalizable, Cloneable, Map{
         }
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public Set keySet(){
         return new KeySet();
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public Collection values(){
         return new Values();
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public Set entrySet(){
         return new EntrySet();
     }
@@ -1239,7 +1239,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public boolean equals(Object o){
         if(o == null){
             return false;
@@ -1276,7 +1276,7 @@ public class Record implements Externalizable, Cloneable, Map{
         return true;
     }
     
-    // java.util.Map‚ÌJavaDoc
+    // java.util.Mapã®JavaDoc
     public int hashCode(){
         int hashCode = 0;
         if(schema != null){

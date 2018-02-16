@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.beancontrol;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowInvokerFactoryGroupService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowInvokerFactoryGroupService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,16 +42,16 @@ public interface BeanFlowInvokerFactoryGroupServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éBeanFlowInvokerFactory‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹BeanFlowInvokerFactoryã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒOƒ‹[ƒsƒ“ƒO‚·‚éBeanFlowInvokerFactory‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹BeanFlowInvokerFactoryã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setBeanFlowInvokerFactoryServiceNames(ServiceName[] names);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éBeanFlowInvokerFactory‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹BeanFlowInvokerFactoryã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒsƒ“ƒO‚·‚éBeanFlowInvokerFactory‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹BeanFlowInvokerFactoryã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getBeanFlowInvokerFactoryServiceNames();
 }

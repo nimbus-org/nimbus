@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowConditionScheduleMakerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowConditionScheduleMakerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,30 +42,30 @@ public interface BeanFlowConditionScheduleMakerServiceMBean
  extends DefaultScheduleMakerServiceMBean{
     
     /**
-     * {jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * {jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚ğ”»’f‚·‚éBeanFlow‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍA{@link ScheduleMaster#getScheduleType()}‚Åæ“¾‚³‚ê‚½’l‚ğABeanFlow–¼‚Æ‚·‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã‚’åˆ¤æ–­ã™ã‚‹BeanFlowã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€{@link ScheduleMaster#getScheduleType()}ã§å–å¾—ã•ã‚ŒãŸå€¤ã‚’ã€BeanFlowåã¨ã™ã‚‹ã€‚<br>
      *
-     * @param name BeanFlow–¼
+     * @param name BeanFlowå
      */
     public void setFlowName(String name);
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚ğ”»’f‚·‚éBeanFlow‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã‚’åˆ¤æ–­ã™ã‚‹BeanFlowã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlow–¼
+     * @return BeanFlowå
      */
     public String getFlowName();
 }

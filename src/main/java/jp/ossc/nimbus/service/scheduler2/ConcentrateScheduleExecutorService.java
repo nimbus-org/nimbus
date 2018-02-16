@@ -42,29 +42,29 @@ import jp.ossc.nimbus.io.CSVReader;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 
 /**
- * W”zMƒXƒPƒWƒ…[ƒ‹ÀsB<p>
- * {@link Schedule#getInput() ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í}‚Éw’è‚³‚ê‚½W”zMƒŠƒNƒGƒXƒg•¶š—ñ‚ğ‰ğÍ‚µ‚ÄA{@link ConcentrateRequest W”zMƒŠƒNƒGƒXƒg}‚ÉŠi”[‚µAƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚Éİ’è‚·‚éB
- * ‚±‚±‚ÅA W”zMƒŠƒNƒGƒXƒg•¶š—ñ‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA"GET|PUT,source,destination"‚Å‚ ‚éB<br>
- * ‚Ü‚½AƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚ğJSONŒ`®‚É‚·‚éê‡‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+ * é›†é…ä¿¡ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã€‚<p>
+ * {@link Schedule#getInput() ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›}ã«æŒ‡å®šã•ã‚ŒãŸé›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆæ–‡å­—åˆ—ã‚’è§£æã—ã¦ã€{@link ConcentrateRequest é›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆ}ã«æ ¼ç´ã—ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã«è¨­å®šã™ã‚‹ã€‚
+ * ã“ã“ã§ã€ é›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆæ–‡å­—åˆ—ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€"GET|PUT,source,destination"ã§ã‚ã‚‹ã€‚<br>
+ * ã¾ãŸã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã‚’JSONå½¢å¼ã«ã™ã‚‹å ´åˆã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
  * <pre>
  * {
  *     "processType":"GET|PUT",
- *     "source":"source‚Ì’l",
- *     "destination":"destination‚Ì’l"
+ *     "source":"sourceã®å€¤",
+ *     "destination":"destinationã®å€¤"
  * }
  * </pre>
- * ‚Ü‚½A‹ó‚Ì{@link ConcentrateResponse W”zMƒŒƒXƒ|ƒ“ƒX}‚ğ¶¬‚µA{@link Schedule#getOutput() ƒXƒPƒWƒ…[ƒ‹‚Ìo—Í}‚Éİ’è‚·‚éB
- * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ^ƒXƒN–¼‚Éw’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄA‹Æ–±ƒtƒ[–¼‚Æ{@link ConcentrateRequest#getKey() W”zMƒŠƒNƒGƒXƒg‚ÌƒL[}‚ğæ“¾‚µA‹Æ–±ƒtƒ[‚ğÀs‚·‚éB<br>
- * ‚±‚±‚ÅA ƒ^ƒXƒN–¼•¶š—ñ‚ÌƒtƒH[ƒ}ƒbƒg‚ÍA"‹Æ–±ƒtƒ[–¼[:W”zMƒŠƒNƒGƒXƒg‚ÌƒL[]"‚Å‚ ‚éB<br>
- * ‹Æ–±ƒtƒ[‚Å‚ÍAƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Í‚Æ‚µ‚Ä“n‚³‚ê‚½W”zMƒŠƒNƒGƒXƒg‚Ìî•ñ‚ğg‚Á‚ÄAW”zMˆ—‚ğs‚¤B<br>
- * ûWiGETj‚Ì‹Æ–±ƒtƒ[‚Å‚ÍA{@link ConcentrateRequest#getSource() ûWŒ³}‚©‚çƒtƒ@ƒCƒ‹‚ğæ“¾‚µAƒ[ƒJƒ‹‚É•Û‘¶‚·‚éB
- * W”zMƒŒƒXƒ|ƒ“ƒX‚Ì{@link ConcentrateResponse#addFile(File)}A{@link ConcentrateResponse#addFile(File, boolean)}‚ğg‚Á‚ÄA•Û‘¶‚µ‚½ƒ[ƒJƒ‹ƒtƒ@ƒCƒ‹‚ğW”zMƒŒƒXƒ|ƒ“ƒX‚ÉŠi”[‚·‚éB
- * ƒ[ƒJƒ‹‚É•Û‘¶‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ÍA{@link ConcentrateBackupManager}‚É‚æ‚Á‚ÄƒoƒbƒNƒAƒbƒv‚³‚ê‚½‚Ì‚¿A‚±‚ÌƒT[ƒrƒX‚É‚æ‚Á‚Ä{@link ConcentrateRequest#getDestination() ˆ¶æ}‚Ö‚ÆˆÚ“®‚³‚ê‚éB<br>
- * ”zMiPUTj‚Ì‹Æ–±ƒtƒ[‚Å‚ÍAƒ[ƒJƒ‹‚Ì{@link ConcentrateRequest#getSource() ”zMŒ³}‚©‚çƒtƒ@ƒCƒ‹‚ğæ“¾‚µA{@link ConcentrateRequest#getDestination() ˆ¶æ}‚Ö‚Æ”zM‚·‚éB
- * W”zMƒŒƒXƒ|ƒ“ƒX‚Ì{@link ConcentrateResponse#addFile(File)}A{@link ConcentrateResponse#addFile(File, boolean)}‚ğg‚Á‚ÄA”zMŒ³ƒ[ƒJƒ‹ƒtƒ@ƒCƒ‹‚ğW”zMƒŒƒXƒ|ƒ“ƒX‚ÉŠi”[‚·‚éB
- * ”zMŒ³ƒ[ƒJƒ‹ƒtƒ@ƒCƒ‹‚ÍA{@link ConcentrateBackupManager}‚É‚æ‚Á‚ÄƒoƒbƒNƒAƒbƒv‚³‚ê‚½‚Ì‚¿A‚±‚ÌƒT[ƒrƒX‚É‚æ‚Á‚Äíœ‚³‚ê‚éB<br>
- * ÅŒã‚ÉA{@link ConcentrateBackupManager#backup(String, Date, String, File, boolean, Object)}‚Ì–ß‚è’l‚ğA{@link Schedule#getOutput() ƒXƒPƒWƒ…[ƒ‹‚Ìo—Í}‚Éİ’è‚·‚éB
- * ConcentrateBackupManager‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link ConcentrateResponse#getFiles()}‚ğƒŠƒXƒg‚É‹l‚ß‚ÄA{@link Schedule#getOutput() ƒXƒPƒWƒ…[ƒ‹‚Ìo—Í}‚Éİ’è‚·‚éB<br>
+ * ã¾ãŸã€ç©ºã®{@link ConcentrateResponse é›†é…ä¿¡ãƒ¬ã‚¹ãƒãƒ³ã‚¹}ã‚’ç”Ÿæˆã—ã€{@link Schedule#getOutput() ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡ºåŠ›}ã«è¨­å®šã™ã‚‹ã€‚
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¿ã‚¹ã‚¯åã«æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ã€æ¥­å‹™ãƒ•ãƒ­ãƒ¼åã¨{@link ConcentrateRequest#getKey() é›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚­ãƒ¼}ã‚’å–å¾—ã—ã€æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
+ * ã“ã“ã§ã€ ã‚¿ã‚¹ã‚¯åæ–‡å­—åˆ—ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€"æ¥­å‹™ãƒ•ãƒ­ãƒ¼å[:é›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚­ãƒ¼]"ã§ã‚ã‚‹ã€‚<br>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã§ã¯ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ã¨ã—ã¦æ¸¡ã•ã‚ŒãŸé›†é…ä¿¡ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æƒ…å ±ã‚’ä½¿ã£ã¦ã€é›†é…ä¿¡å‡¦ç†ã‚’è¡Œã†ã€‚<br>
+ * åé›†ï¼ˆGETï¼‰ã®æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã§ã¯ã€{@link ConcentrateRequest#getSource() åé›†å…ƒ}ã‹ã‚‰ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã—ã€ãƒ­ãƒ¼ã‚«ãƒ«ã«ä¿å­˜ã™ã‚‹ã€‚
+ * é›†é…ä¿¡ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®{@link ConcentrateResponse#addFile(File)}ã€{@link ConcentrateResponse#addFile(File, boolean)}ã‚’ä½¿ã£ã¦ã€ä¿å­˜ã—ãŸãƒ­ãƒ¼ã‚«ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é›†é…ä¿¡ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«æ ¼ç´ã™ã‚‹ã€‚
+ * ãƒ­ãƒ¼ã‚«ãƒ«ã«ä¿å­˜ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€{@link ConcentrateBackupManager}ã«ã‚ˆã£ã¦ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã•ã‚ŒãŸã®ã¡ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã£ã¦{@link ConcentrateRequest#getDestination() å®›å…ˆ}ã¸ã¨ç§»å‹•ã•ã‚Œã‚‹ã€‚<br>
+ * é…ä¿¡ï¼ˆPUTï¼‰ã®æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã§ã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®{@link ConcentrateRequest#getSource() é…ä¿¡å…ƒ}ã‹ã‚‰ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã—ã€{@link ConcentrateRequest#getDestination() å®›å…ˆ}ã¸ã¨é…ä¿¡ã™ã‚‹ã€‚
+ * é›†é…ä¿¡ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®{@link ConcentrateResponse#addFile(File)}ã€{@link ConcentrateResponse#addFile(File, boolean)}ã‚’ä½¿ã£ã¦ã€é…ä¿¡å…ƒãƒ­ãƒ¼ã‚«ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é›†é…ä¿¡ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«æ ¼ç´ã™ã‚‹ã€‚
+ * é…ä¿¡å…ƒãƒ­ãƒ¼ã‚«ãƒ«ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€{@link ConcentrateBackupManager}ã«ã‚ˆã£ã¦ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã•ã‚ŒãŸã®ã¡ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã£ã¦å‰Šé™¤ã•ã‚Œã‚‹ã€‚<br>
+ * æœ€å¾Œã«ã€{@link ConcentrateBackupManager#backup(String, Date, String, File, boolean, Object)}ã®æˆ»ã‚Šå€¤ã‚’ã€{@link Schedule#getOutput() ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡ºåŠ›}ã«è¨­å®šã™ã‚‹ã€‚
+ * ConcentrateBackupManagerãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link ConcentrateResponse#getFiles()}ã‚’ãƒªã‚¹ãƒˆã«è©°ã‚ã¦ã€{@link Schedule#getOutput() ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡ºåŠ›}ã«è¨­å®šã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

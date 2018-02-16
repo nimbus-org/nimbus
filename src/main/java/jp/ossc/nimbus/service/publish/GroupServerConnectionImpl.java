@@ -42,7 +42,7 @@ import java.util.HashSet;
 import java.util.regex.Pattern;
 
 /**
- * {@link ServerConnection}‚ğƒOƒ‹[ƒsƒ“ƒO‚·‚éServerConnectionƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link ServerConnection}ã‚’ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ServerConnectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

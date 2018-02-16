@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 
 
 /**
- * �f�t�H���g�X�P�W���[���쐬�T�[�r�X�B<p>
+ * デフォルトスケジュール作成サービス。<p>
  *
  * @author M.Takata
  */
@@ -47,16 +47,16 @@ public class DefaultScheduleMakerService extends ServiceBase
     private static final long serialVersionUID = -8603198587673383956L;
     
     /**
-     * �w�肳�ꂽ�X�P�W���[���}�X�^����X�P�W���[�����쐬����B<p>
-     * �X�P�W���[���}�X�^�̐��������`�F�b�N���A�X�P�W���[���}�X�^�Ɏw�肳�ꂽ���t��K�p���A�X�P�W���[�����쐬����B<br>
-     * �X�P�W���[���̍쐬�ł́A�J��Ԃ��̃X�P�W���[���}�X�^�̏ꍇ�́A�w�肳�ꂽ�J��Ԃ��Ԋu�ŃX�P�W���[�����������炵���X�P�W���[�����A�w�肳�ꂽ�I�������܂ō쐬����B<br>
-     * �J��Ԃ��̃X�P�W���[���}�X�^�łȂ��ꍇ�́A�P�����X�P�W���[�����쐬����B<br>
-     * {@link Schedule}�̎����N���X�Ƃ���{@link DefaultSchedule}���g�p����B<br>
+     * 指定されたスケジュールマスタからスケジュールを作成する。<p>
+     * スケジュールマスタの正当性をチェックし、スケジュールマスタに指定された日付を適用し、スケジュールを作成する。<br>
+     * スケジュールの作成では、繰り返しのスケジュールマスタの場合は、指定された繰り返し間隔でスケジュール時刻をずらしたスケジュールを、指定された終了時刻まで作成する。<br>
+     * 繰り返しのスケジュールマスタでない場合は、１つだけスケジュールを作成する。<br>
+     * {@link Schedule}の実装クラスとして{@link DefaultSchedule}を使用する。<br>
      *
-     * @param date �쐬��
-     * @param master �X�P�W���[���}�X�^
-     * @return �X�P�W���[���̔z��
-     * @exception ScheduleMakeException �X�P�W���[���̍쐬�Ɏ��s�����ꍇ
+     * @param date 作成日
+     * @param master スケジュールマスタ
+     * @return スケジュールの配列
+     * @exception ScheduleMakeException スケジュールの作成に失敗した場合
      */
     public Schedule[] makeSchedule(Date date, ScheduleMaster master)
      throws ScheduleMakeException{
@@ -92,21 +92,21 @@ public class DefaultScheduleMakerService extends ServiceBase
     }
     
     /**
-     * �X�P�W���[���}�X�^�̐��������`�F�b�N����B<p>
+     * スケジュールマスタの正当性をチェックする。<p>
      * <ul>
-     *   <li>�}�X�^ID�̕K�{�`�F�b�N�B</li>
-     *   <li>�^�X�N���̕K�{�`�F�b�N�B</li>
-     *   <li>�J�n�����̕K�{�`�F�b�N�B</li>
-     *   <li>�I���������w�肳��Ă���ꍇ�ɁA�J�n����&lt;=�I�������ƂȂ��Ă��邩�̃`�F�b�N�B</li>
-     *   <li>�I���������w�肳��Ă��āA�J�n����&lt;�I�������ƂȂ��Ă���ꍇ�ɁA�J��Ԃ��Ԋu&gt;0�ƂȂ��Ă��邩�̃`�F�b�N�B</li>
-     *   <li>���g���C�I���������w�肳��Ă���ꍇ�ɁA�J�n����&lt;=���g���C�I�������ƂȂ��Ă��邩�̃`�F�b�N�B</li>
-     *   <li>���g���C�Ԋu&gt;0�̏ꍇ�ɁA���g���C�I���������w�肳��Ă��邩�̃`�F�b�N�B</li>
-     *   <li>���g���C�I���������w�肳��Ă���ꍇ�ɁA���g���C�Ԋu&lt;=0�ł��邩�̃`�F�b�N�B</li>
-     *   <li>���g���C�I���������w�肳��Ă��ă��g���C�Ԋu&gt;0�̏ꍇ�ɁA�ŏ��̃��g���C����&lt;=���g���C�I�������ƂȂ��Ă��邩�̃`�F�b�N�B</li>
+     *   <li>マスタIDの必須チェック。</li>
+     *   <li>タスク名の必須チェック。</li>
+     *   <li>開始時刻の必須チェック。</li>
+     *   <li>終了時刻が指定されている場合に、開始時刻&lt;=終了時刻となっているかのチェック。</li>
+     *   <li>終了時刻が指定されていて、開始時刻&lt;終了時刻となっている場合に、繰り返し間隔&gt;0となっているかのチェック。</li>
+     *   <li>リトライ終了時刻が指定されている場合に、開始時刻&lt;=リトライ終了時刻となっているかのチェック。</li>
+     *   <li>リトライ間隔&gt;0の場合に、リトライ終了時刻が指定されているかのチェック。</li>
+     *   <li>リトライ終了時刻が指定されている場合に、リトライ間隔&lt;=0であるかのチェック。</li>
+     *   <li>リトライ終了時刻が指定されていてリトライ間隔&gt;0の場合に、最初のリトライ時刻&lt;=リトライ終了時刻となっているかのチェック。</li>
      * </ul>
      *
-     * @param master �X�P�W���[���}�X�^
-     * @exception IllegalScheduleMasterException �X�P�W���[���}�X�^���������Ȃ��ꍇ
+     * @param master スケジュールマスタ
+     * @exception IllegalScheduleMasterException スケジュールマスタが正しくない場合
      */
     protected void checkScheduleMaster(ScheduleMaster master)
      throws IllegalScheduleMasterException{
@@ -153,14 +153,14 @@ public class DefaultScheduleMakerService extends ServiceBase
     }
     
     /**
-     * ���̓��t�ŁA�X�P�W���[�����쐬����K�v�����邩�ǂ����𔻒肷��B<p>
-     * ���̎����ł́A�K��true��Ԃ��B<br>
-     * ���t�ɑ΂��āA�X�P�W���[���̍쐬�L���𔻒f����K�v������ꍇ�́A�T�u�N���X�ŃI�[�o�[���C�h���鎖�B<br>
+     * この日付で、スケジュールを作成する必要があるかどうかを判定する。<p>
+     * この実装では、必ずtrueを返す。<br>
+     * 日付に対して、スケジュールの作成有無を判断する必要がある場合は、サブクラスでオーバーライドする事。<br>
      *
-     * @param date �쐬��
-     * @param master �X�P�W���[���}�X�^
-     * @return true�̏ꍇ�A���K�v������
-     * @exception ScheduleMakeException ����Ɏ��s�����ꍇ
+     * @param date 作成日
+     * @param master スケジュールマスタ
+     * @return trueの場合、作る必要がある
+     * @exception ScheduleMakeException 判定に失敗した場合
      */
     protected boolean isNecessaryMake(Date date, ScheduleMaster master)
      throws ScheduleMakeException{
@@ -168,10 +168,10 @@ public class DefaultScheduleMakerService extends ServiceBase
     }
     
     /**
-     * �w�肳�ꂽ�X�P�W���[���}�X�^����A�J��Ԃ��Ȃ��X�P�W���[�����쐬����B<p>
+     * 指定されたスケジュールマスタから、繰り返さないスケジュールを作成する。<p>
      *
-     * @param master �X�P�W���[���}�X�^
-     * @return �X�P�W���[��
+     * @param master スケジュールマスタ
+     * @return スケジュール
      */
     protected Schedule makeSingleSchedule(ScheduleMaster master)
      throws ScheduleMakeException{
@@ -194,10 +194,10 @@ public class DefaultScheduleMakerService extends ServiceBase
     }
     
     /**
-     * �w�肳�ꂽ�X�P�W���[���}�X�^����A�J��Ԃ��X�P�W���[�����쐬����B<p>
+     * 指定されたスケジュールマスタから、繰り返しスケジュールを作成する。<p>
      *
-     * @param master �X�P�W���[���}�X�^
-     * @return �X�P�W���[���z��
+     * @param master スケジュールマスタ
+     * @return スケジュール配列
      */
     protected Schedule[] makeRepeatSchedule(ScheduleMaster master)
      throws ScheduleMakeException{
@@ -231,13 +231,13 @@ public class DefaultScheduleMakerService extends ServiceBase
     }
     
     /**
-     * �J��Ԃ��X�P�W���[���̎��̃X�P�W���[���������v�Z����B<p>
-     * ���̃X�P�W���[���������I���������߂����ꍇ�ɂ́Anull��Ԃ��B<br>
+     * 繰り返しスケジュールの次のスケジュール時刻を計算する。<p>
+     * 次のスケジュール時刻が終了時刻を過ぎた場合には、nullを返す。<br>
      *
-     * @param offset ���݂̃X�P�W���[������
-     * @param interval �J��Ԃ��Ԋu[ms]
-     * @param end �X�P�W���[���̏I������
-     * @return ���̃X�P�W���[������
+     * @param offset 現在のスケジュール時刻
+     * @param interval 繰り返し間隔[ms]
+     * @param end スケジュールの終了時刻
+     * @return 次のスケジュール時刻
      */
     protected Date calculateNextDate(
         Calendar offset,

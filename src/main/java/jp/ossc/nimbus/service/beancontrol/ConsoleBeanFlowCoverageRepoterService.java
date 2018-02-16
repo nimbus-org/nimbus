@@ -41,7 +41,7 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 
 /**
- * {@link BeanFlowCoverageRepoter}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒT[ƒrƒXB<p>
+ * {@link BeanFlowCoverageRepoter}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

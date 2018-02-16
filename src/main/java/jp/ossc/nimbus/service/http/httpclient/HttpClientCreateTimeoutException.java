@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.http.httpclient;
 import jp.ossc.nimbus.service.http.HttpException;
 
 /**
- * ƒNƒ‰ƒCƒAƒ“ƒg¶¬ƒ^ƒCƒ€ƒAƒEƒg—áŠOB<p>
+ * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆç”Ÿæˆã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,35 +43,35 @@ public class HttpClientCreateTimeoutException extends HttpException {
     private static final long serialVersionUID = -6435001836312863400L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public HttpClientCreateTimeoutException() {
         super();
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public HttpClientCreateTimeoutException(String message) {
         super(message);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŽŸå› 
      */
     public HttpClientCreateTimeoutException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param cause Œ´ˆö
+     * @param cause åŽŸå› 
      */
     public HttpClientCreateTimeoutException(Throwable cause) {
         super(cause);

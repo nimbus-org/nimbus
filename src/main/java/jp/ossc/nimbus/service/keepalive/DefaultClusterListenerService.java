@@ -36,7 +36,7 @@ import java.util.List;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒNƒ‰ƒXƒ^“à‚ÅƒƒCƒ“‚Æ‚È‚é‚¾‚¯‘ÎÛ‚Æ‚È‚éƒT[ƒrƒX‚ğ‹N“®‚³‚¹‚é{@link ClusterListener}ƒT[ƒrƒXB<p>
+ * ã‚¯ãƒ©ã‚¹ã‚¿å†…ã§ãƒ¡ã‚¤ãƒ³ã¨ãªã‚‹æ™‚ã ã‘å¯¾è±¡ã¨ãªã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•ã•ã›ã‚‹{@link ClusterListener}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -142,7 +142,7 @@ public class DefaultClusterListenerService extends ServiceBase
                     try{
                         cluster.start();
                     }catch(Exception ex){
-                        // TODO ƒGƒ‰[ƒƒOo—Í
+                        // TODO ã‚¨ãƒ©ãƒ¼ãƒ­ã‚°å‡ºåŠ›
                     }
                 }
                 break;

@@ -46,9 +46,9 @@ import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
- * ƒGƒfƒBƒ^[ƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX‚ÌÀ‘•ƒNƒ‰ƒX 
+ * ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/07 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/07 -ã€€H.Nakano
  */
 public class ObjectMappedEditorFinderService
 	extends ServiceBase
@@ -58,13 +58,13 @@ public class ObjectMappedEditorFinderService
     
     private static final String ARRAY_CLASS_SUFFIX = "[]";
 	
-	/** ãˆÊƒŠƒ|ƒWƒgƒŠ */
+	/** ä¸Šä½ãƒªãƒã‚¸ãƒˆãƒª */
 	private EditorFinder mParentFinder  ;
-	/** ãˆÊƒŠƒ|ƒWƒgƒŠƒT[ƒrƒX–¼  */
+	/** ä¸Šä½ãƒªãƒã‚¸ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹å  */
 	private ServiceName mFinderServiceName ;
-	/** ƒGƒfƒBƒ^ƒƒ“ƒo[w’èƒvƒƒpƒeƒB */
+	/** ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¡ãƒ³ãƒãƒ¼æŒ‡å®šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ */
 	private Properties mEditorMap;
-	/** ƒGƒfƒBƒ^ƒcƒŠ[ŠÇ— */
+	/** ã‚¨ãƒ‡ã‚£ã‚¿ãƒ„ãƒªãƒ¼ç®¡ç† */
 	private ClassMappingTree mEditorRepository ;
     
 	/**
@@ -77,17 +77,17 @@ public class ObjectMappedEditorFinderService
 		mParentFinder = null ;
 		mEditorRepository = new ClassMappingTree() ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService() throws Exception{
-		//ãˆÊƒŠƒ|ƒWƒgƒŠ‚Ìæ“¾
+		//ä¸Šä½ãƒªãƒã‚¸ãƒˆãƒªã®å–å¾—
 		if(mFinderServiceName != null){
 			this.mParentFinder = (EditorFinder)ServiceManagerFactory.getServiceObject(this.mFinderServiceName) ;
 		}
 		ServiceNameEditor editor = new ServiceNameEditor() ;
 		editor.setServiceManagerName(getServiceManagerName());
-		//©•ª‚ªŠÇ—‚·‚éƒGƒfƒBƒ^[ƒT[ƒrƒX‚Ìİ’è
+		//è‡ªåˆ†ãŒç®¡ç†ã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®è¨­å®š
         Iterator iterator = mEditorMap.keySet().iterator();
 		while(iterator.hasNext()) {
 		    String classAndKey = (String)iterator.next();
@@ -124,13 +124,13 @@ public class ObjectMappedEditorFinderService
 		}
 		
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
 	 */
 	public void stopService() throws Exception{
 		mEditorRepository.clear();
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#destroyService()
 	 */
 	public void destroyService() throws Exception{
@@ -179,13 +179,13 @@ public class ObjectMappedEditorFinderService
         return type;
     }
 	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.journal.editorfinder.EditorFinder#findEditor(java.lang.Class)
 	 */
 	public JournalEditor findEditor(Class paramClass) {
 		return this.findEditor(null, paramClass) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.journal.editorfinder.EditorFinder#findEditor(java.lang.Object)
 	 */
 	public JournalEditor findEditor(Object paramObj){
@@ -212,7 +212,7 @@ public class ObjectMappedEditorFinderService
 		return this.findEditor(key, cls) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.journal.editorfinder.ObjectMappedEditorFinderServiceMBean#setEditorProperties(java.util.Properties)
 	 */
 	public void setEditorProperties(Properties prop) {
@@ -221,7 +221,7 @@ public class ObjectMappedEditorFinderService
 	public Properties getEditorProperties(){
 		return this.mEditorMap;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.journal.editorfinder.ObjectMappedEditorFinderServiceMBean#setParentEditorfinderServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setParentEditorfinderServiceName(ServiceName name){
@@ -232,7 +232,7 @@ public class ObjectMappedEditorFinderService
 	}
     
     /**
-     * EditorFinder‚ğİ’è‚·‚éB
+     * EditorFinderã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setEditorFinder(EditorFinder parentFinder) {
         mParentFinder = parentFinder;

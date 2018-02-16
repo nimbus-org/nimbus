@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultQuerySearchManagerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultQuerySearchManagerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultQuerySearchManagerService
@@ -45,146 +45,146 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DefaultQuerySearchManagerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
-     * ŒŸõƒNƒGƒŠ‚ÍA{@link PersistentManager}‚Ìd—l‚É€‚¶‚éB<br>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã¯ã€{@link PersistentManager}ã®ä»•æ§˜ã«æº–ã˜ã‚‹ã€‚<br>
      *
-     * @param query ŒŸõƒNƒGƒŠ
+     * @param query æ¤œç´¢ã‚¯ã‚¨ãƒª
      */
     public void setQuery(String query);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõƒNƒGƒŠ
+     * @return æ¤œç´¢ã‚¯ã‚¨ãƒª
      */
     public String getQuery();
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ìjava.sql.Statement‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã®java.sql.Statementã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setStatementProperty(String name, Object value);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ìjava.sql.Statement‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã®java.sql.Statementã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ŒŸõƒNƒGƒŠÀs‚Ìjava.sql.Statement‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+     * @param props æ¤œç´¢ã‚¯ã‚¨ãƒªå®Ÿè¡Œæ™‚ã®java.sql.Statementã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setStatementProperties(Map props);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ìjava.sql.Statement‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã®java.sql.Statementã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõƒNƒGƒŠÀs‚Ìjava.sql.Statement‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+     * @return æ¤œç´¢ã‚¯ã‚¨ãƒªå®Ÿè¡Œæ™‚ã®java.sql.Statementã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Map getStatementProperties();
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ìjava.sql.ResultSet‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã®java.sql.ResultSetã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setResultSetProperty(String name, Object value);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ìjava.sql.ResultSet‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã®java.sql.ResultSetã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ŒŸõƒNƒGƒŠÀs‚Ìjava.sql.ResultSet‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+     * @param props æ¤œç´¢ã‚¯ã‚¨ãƒªå®Ÿè¡Œæ™‚ã®java.sql.ResultSetã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setResultSetProperties(Map props);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ìjava.sql.ResultSet‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã®java.sql.ResultSetã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõƒNƒGƒŠÀs‚Ìjava.sql.ResultSet‚Éİ’è‚·‚éƒvƒƒpƒeƒB
+     * @return æ¤œç´¢ã‚¯ã‚¨ãƒªå®Ÿè¡Œæ™‚ã®java.sql.ResultSetã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Map getResultSetProperties();
     
     /**
-     * ŒŸõŒ‹‰Ê‚ğƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚·‚éƒNƒ‰ƒX‚ÍAˆø”‚È‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚Â•K—v‚ª‚ ‚éB<br>
+     * æ¤œç´¢çµæœã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã™ã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€å¼•æ•°ãªã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒã¤å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param clazz ŒŸõŒ‹‰Ê‚ğƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
+     * @param clazz æ¤œç´¢çµæœã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
      */
     public void setOutputClass(Class clazz);
     
     /**
-     * ŒŸõŒ‹‰Ê‚ğƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸõŒ‹‰Ê‚ğƒoƒCƒ“ƒh‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
+     * @return æ¤œç´¢çµæœã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
      */
     public Class getOutputClass();
     
     /**
-     * ŒŸõŒ‹‰Ê‚ª•K‚¸ˆêˆÓ‚É‚È‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAŒŸõŒ‹‰Ê‚ÍƒŠƒXƒg‚É‚È‚éB<br>
+     * æ¤œç´¢çµæœãŒå¿…ãšä¸€æ„ã«ãªã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€æ¤œç´¢çµæœã¯ãƒªã‚¹ãƒˆã«ãªã‚‹ã€‚<br>
      *
-     * @param isUnique ˆêˆÓ‚É‚È‚éê‡true
+     * @param isUnique ä¸€æ„ã«ãªã‚‹å ´åˆtrue
      */
     public void setUnique(boolean isUnique);
     
     /**
-     * ŒŸõŒ‹‰Ê‚ª•K‚¸ˆêˆÓ‚É‚È‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ¤œç´¢çµæœãŒå¿…ãšä¸€æ„ã«ãªã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AˆêˆÓ‚É‚È‚é
+     * @return trueã®å ´åˆã€ä¸€æ„ã«ãªã‚‹
      */
     public boolean isUnique();
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ég—p‚·‚éJDBCÚ‘±‚ğæ“¾‚·‚é{@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹JDBCæ¥ç¶šã‚’å–å¾—ã™ã‚‹{@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚éÛ‚Ég—p‚·‚éJDBCÚ‘±‚ğæ“¾‚·‚é{@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹JDBCæ¥ç¶šã‚’å–å¾—ã™ã‚‹{@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚é{@link PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹{@link PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPersistentManagerServiceName(ServiceName name);
     
     /**
-     * ŒŸõƒNƒGƒŠ‚ğÀs‚·‚é{@link PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œã™ã‚‹{@link PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPersistentManagerServiceName();
     
     /**
-     * ŒŸõŒ‹‰Ê‚ğƒLƒƒƒbƒVƒ…‚·‚é{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAŒŸõŒ‹‰Ê‚ÍƒLƒƒƒbƒVƒ…‚³‚ê‚È‚¢B<br>
+     * æ¤œç´¢çµæœã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€æ¤œç´¢çµæœã¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œãªã„ã€‚<br>
      *
-     * @param name CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCacheMapServiceName(ServiceName name);
     
     /**
-     * ŒŸõŒ‹‰Ê‚ğƒLƒƒƒbƒVƒ…‚·‚é{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æ¤œç´¢çµæœã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCacheMapServiceName();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ìƒqƒbƒg—¦‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ãƒ’ãƒƒãƒˆç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒqƒbƒg—¦
+     * @return ãƒ’ãƒƒãƒˆç‡
      */
     public float getCacheHitRatio();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚Ìƒqƒbƒg—¦‚ğƒŠƒZƒbƒg‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ãƒ’ãƒƒãƒˆç‡ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
      */
     public void resetCacheHitRatio();
 }

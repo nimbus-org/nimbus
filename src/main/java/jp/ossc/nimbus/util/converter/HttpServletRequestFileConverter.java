@@ -40,99 +40,99 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * HttpServletRequestËFileItemƒRƒ“ƒo[ƒ^B<p>
- * •ÏŠ·ŒãƒIƒuƒWƒFƒNƒg‚ÍFileItem‚ÌList‚Æ‚È‚éB<br>
+ * HttpServletRequestâ‡’FileItemã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
+ * å¤‰æ›å¾Œã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯FileItemã®Listã¨ãªã‚‹ã€‚<br>
  *
  * @author M.Ishida
  */
 public class HttpServletRequestFileConverter implements Converter {
 
-    // HttpServletRequest‚©‚çFile‚É•ÏŠ·‚·‚éÛ‚Ìˆêƒtƒ@ƒCƒ‹‚ğƒƒ‚ƒŠã‚ÅŠÇ—‚Å‚«‚éƒf[ƒ^ƒTƒCƒY‚ÌãŒÀB
+    // HttpServletRequestã‹ã‚‰Fileã«å¤‰æ›ã™ã‚‹éš›ã®ä¸€æ™‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ¡ãƒ¢ãƒªä¸Šã§ç®¡ç†ã§ãã‚‹ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚ºã®ä¸Šé™ã€‚
     private int sizeThreshold = DiskFileItemFactory.DEFAULT_SIZE_THRESHOLD;
-    // ƒfƒBƒXƒNã‚Éˆê“I‚É•Û‘¶‚·‚éÛ‚ÌƒfƒBƒŒƒNƒgƒŠB
+    // ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã«ä¸€æ™‚çš„ã«ä¿å­˜ã™ã‚‹éš›ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚
     private String repositoryPath;
-    // Request‚Ìƒf[ƒ^ƒTƒCƒY‚ÌãŒÀB
+    // Requestã®ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚ºã®ä¸Šé™ã€‚
     private long requestSizeThreshold = -1L;
     private String headerEncoding;
 
     /**
-     * ƒƒ‚ƒŠã‚ÅŠÇ—‚·‚éƒf[ƒ^ƒTƒCƒYiãŒÀj‚ğİ’è‚·‚éB
+     * ãƒ¡ãƒ¢ãƒªä¸Šã§ç®¡ç†ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚ºï¼ˆä¸Šé™ï¼‰ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
-     * ƒfƒtƒHƒ‹ƒg‚Í{@link DiskFileItemFactory#DEFAULT_SIZE_THRESHOLD}B
-     * ‚±‚Ì’l‚ğ’´‚¦‚é‚ÆAƒfƒBƒXƒNã‚Éˆê“I‚É•Û‘¶‚³‚ê‚éB<br>
-     * ‚±‚±‚Å•Û‘¶‚³‚ê‚½ƒtƒ@ƒCƒ‹‚Í“K“–‚Èƒ^ƒCƒ~ƒ“ƒO‚ÅŸè‚ÉÁ‚³‚ê‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯{@link DiskFileItemFactory#DEFAULT_SIZE_THRESHOLD}ã€‚
+     * ã“ã®å€¤ã‚’è¶…ãˆã‚‹ã¨ã€ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã«ä¸€æ™‚çš„ã«ä¿å­˜ã•ã‚Œã‚‹ã€‚<br>
+     * ã“ã“ã§ä¿å­˜ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã¯é©å½“ãªã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§å‹æ‰‹ã«æ¶ˆã•ã‚Œã‚‹ã€‚<br>
      *
      * @see DiskFileItemFactory#setSizeThreshold(int)
-     * @param size ãŒÀƒTƒCƒY
+     * @param size ä¸Šé™ã‚µã‚¤ã‚º
      */
     public void setSizeThreshold(int size) {
         sizeThreshold = size;
     }
 
     /**
-     * ƒƒ‚ƒŠã‚ÅŠÇ—‚·‚éƒf[ƒ^ƒTƒCƒYiãŒÀj‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒ¢ãƒªä¸Šã§ç®¡ç†ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚ºï¼ˆä¸Šé™ï¼‰ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ãŒÀƒTƒCƒY
+     * @return ä¸Šé™ã‚µã‚¤ã‚º
      */
     public int getSizeThreshold() {
         return sizeThreshold;
     }
 
     /**
-     * ƒfƒBƒXƒNã‚Éˆê“I‚É•Û‘¶‚·‚éÛ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğw’è‚·‚éB
+     * ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã«ä¸€æ™‚çš„ã«ä¿å­˜ã™ã‚‹éš›ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã™ã‚‹ã€‚
      * <p>
      *
      * @see DiskFileItemFactory#setRepository(File)
-     * @param path ƒfƒBƒXƒNã‚Éˆê“I‚É•Û‘¶‚·‚éÛ‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒX
+     * @param path ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã«ä¸€æ™‚çš„ã«ä¿å­˜ã™ã‚‹éš›ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹
      */
     public void setRepositoryPath(String path) {
         repositoryPath = path;
     }
 
     /**
-     * ƒfƒBƒXƒNã‚Éˆê“I‚É•Û‘¶‚·‚éÛ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB
+     * ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã«ä¸€æ™‚çš„ã«ä¿å­˜ã™ã‚‹éš›ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒfƒBƒXƒNã‚Éˆê“I‚É•Û‘¶‚·‚éÛ‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒX
+     * @return ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã«ä¸€æ™‚çš„ã«ä¿å­˜ã™ã‚‹éš›ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹
      */
     public String getRepositoryPath() {
         return repositoryPath;
     }
 
     /**
-     * HttpServletRequest‚ÌContentLength‚ÌÅ‘å’l‚ğİ’è‚·‚éB
+     * HttpServletRequestã®ContentLengthã®æœ€å¤§å€¤ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param size ContentLength‚ÌÅ‘å’l
+     * @param size ContentLengthã®æœ€å¤§å€¤
      */
     public void setRequestSizeThreshold(long size) {
         requestSizeThreshold = size;
     }
 
     /**
-     * HttpServletRequest‚ÌContentLength‚ÌÅ‘å’l‚ğæ“¾‚·‚éB
+     * HttpServletRequestã®ContentLengthã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ContentLength‚ÌÅ‘å’l
+     * @return ContentLengthã®æœ€å¤§å€¤
      */
     public long getRequestSizeThreshold() {
         return requestSizeThreshold;
     }
 
     /**
-     * HTTPƒwƒbƒ_‚Ì•¶šƒR[ƒh‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒR[ƒh
+     * @param encoding æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public void setHeaderEncoding(String encoding){
         headerEncoding = encoding;
     }
     
     /**
-     * HTTPƒwƒbƒ_‚Ì•¶šƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒR[ƒh
+     * @return æ–‡å­—ã‚³ãƒ¼ãƒ‰
      */
     public String getHeaderEncoding(){
         return headerEncoding;

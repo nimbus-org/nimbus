@@ -37,7 +37,7 @@ import java.io.IOException;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link HtmlTestCaseProgressReporterService}のMBeanインタフェース<p>
+ * {@link HtmlTestCaseProgressReporterService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Aono
  * @see HtmlTestCaseProgressReporterService

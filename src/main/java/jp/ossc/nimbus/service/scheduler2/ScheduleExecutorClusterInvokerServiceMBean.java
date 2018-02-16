@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.service.proxy.invoker.*;
 
 /**
- * {@link ScheduleExecutorClusterInvokerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ScheduleExecutorClusterInvokerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ScheduleExecutorClusterInvokerService
@@ -43,30 +43,30 @@ public interface ScheduleExecutorClusterInvokerServiceMBean
  extends ClusterInvokerServiceMBean{
     
     /**
-     * ScheduleExecutor‚ğ“Á’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
+     * ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
+     * @param key ã‚­ãƒ¼
      */
     public void setKey(String key);
     
     /**
-     * ScheduleExecutor‚ğ“Á’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getKey();
     
     /**
-     * ScheduleExecutor‚ªÀs‚µ“¾‚éƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş‚ğİ’è‚·‚éB<p>
+     * ScheduleExecutorãŒå®Ÿè¡Œã—å¾—ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş
+     * @param type ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡
      */
     public void setType(String type);
     
     /**
-     * ScheduleExecutor‚ªÀs‚µ“¾‚éƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş‚ğæ“¾‚·‚éB<p>
+     * ScheduleExecutorãŒå®Ÿè¡Œã—å¾—ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡
      */
     public String getType();
 }

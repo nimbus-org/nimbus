@@ -40,9 +40,9 @@ import jp.ossc.nimbus.util.*;
 import jp.ossc.nimbus.lang.*;
 
 /*
- *	ClassFactoryƒIƒuƒWƒFƒNƒg
+ *	ClassFactoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
  *	@author		NRI Hirotaka Nakano
- *	@version	ì¬F2003.01.01 | H.Nakano<BR>
+ *	@version	ä½œæˆï¼š2003.01.01 ï¼ H.Nakano<BR>
  */
 public class ClassLoaderService extends ServiceBase 
 								implements ClassLauncher,ClassLoaderServiceMBean
@@ -50,15 +50,15 @@ public class ClassLoaderService extends ServiceBase
 	
     private static final long serialVersionUID = -6862375386956303362L;
     
-    /** ƒNƒ‰ƒXƒpƒXURL”z—ñ	*/	
+    /** ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹URLé…åˆ—	*/	
 	protected	URL[]	mUrlAry ;
 	/** CashLoder			*/	
 	protected	CashedClassLoader	mBlLoder ;
-	/** ƒNƒ‰ƒXƒpƒX•¶š—ñ@*/
+	/** ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹æ–‡å­—åˆ—ã€€*/
 	protected String mClassPath ;
-	/** ƒŠƒtƒŒƒbƒVƒ…“ú */
+	/** ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ—¥æ™‚ */
 	protected Date mReshreshedDate = null ;
-	/** ƒŠƒtƒŒƒbƒVƒ…—\’è“ú */
+	/** ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥äºˆå®šæ—¥æ™‚ */
 	protected Date mReshreshPlanDate = null ;
 	//
 	static private final String C_SEMICORON = ";" ; //$NON-NLS-1$
@@ -67,13 +67,13 @@ public class ClassLoaderService extends ServiceBase
 	static private final String C_SLASH = "/" ; //$NON-NLS-1$
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public ClassLoaderService(){
 		
 	}
 		/**
-	 * ClassPathƒZƒbƒ^[.
+	 * ClassPathã‚»ãƒƒã‚¿ãƒ¼.
 	 * @param paths
 	 */
 	public void setClassPath(String paths){
@@ -83,16 +83,16 @@ public class ClassLoaderService extends ServiceBase
 		mUrlAry = new URL[ps.size()] ;
 		for(int i= 0;i<ps.size();i++){
 			String	filePath = ps.getStr(i);
-			//w’è‚ªJARƒtƒ@ƒCƒ‹‚Å‚È‚¢ê‡
+			//æŒ‡å®šãŒJARãƒ•ã‚¡ã‚¤ãƒ«ã§ãªã„å ´åˆ
 			if	(filePath.endsWith(C_JAR_EXT) == false 
 				&& filePath.endsWith(C_UPER_JAR_EXT) == false)	{
 				if(!filePath.endsWith(C_SLASH)){
-					// /‚ğÅŒã‚É•t‰Á‚·‚éB
+					// /ã‚’æœ€å¾Œã«ä»˜åŠ ã™ã‚‹ã€‚
 					filePath = filePath + C_SLASH;
 				}
 			}
 			try{
-				//URL”z—ñ‚ğì‚Á‚Ä‚İ‚é
+				//URLé…åˆ—ã‚’ä½œã£ã¦ã¿ã‚‹
 				mUrlAry[i]	=	new File(filePath).toURL();
 			}catch(MalformedURLException	e)	{
 				throw new ServiceException("CLASSLODER001","URLERROR " + filePath  ,e) ;  //$NON-NLS-1$//$NON-NLS-2$
@@ -100,7 +100,7 @@ public class ClassLoaderService extends ServiceBase
 		}
 	}
 	/**
-	 * ClassPathƒQƒbƒ^[.
+	 * ClassPathã‚²ãƒƒã‚¿ãƒ¼.
 	 * @return String
 	 */
 	public String getClassPath() {
@@ -109,9 +109,9 @@ public class ClassLoaderService extends ServiceBase
 	
 //
 	/*
-	 *	ƒNƒ‰ƒXƒ[ƒhƒƒ\ƒbƒh
-	 *	@param		name	ƒNƒ‰ƒX–¼
-	 *	@return		ClassF³í<BR>
+	 *	ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰
+	 *	@param		name	ã‚¯ãƒ©ã‚¹å
+	 *	@return		Classï¼šæ­£å¸¸<BR>
 	 *	throws		ClassNotFoundException	 
 	 */
 	public	Class	loadClass(String name) throws ClassNotFoundException{
@@ -125,9 +125,9 @@ public class ClassLoaderService extends ServiceBase
 	} 
 	//
 	/*
-	 *	ƒNƒ‰ƒXƒ[ƒhƒƒ\ƒbƒh
-	 *	@param		name	ƒNƒ‰ƒX–¼
-	 *	@return		ClassF³í<BR>
+	 *	ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰
+	 *	@param		name	ã‚¯ãƒ©ã‚¹å
+	 *	@return		Classï¼šæ­£å¸¸<BR>
 	 *	throws		ClassNotFoundException	 
 	 */
 	public	Object	loadNewInstance(String name) throws ClassNotFoundException, InstantiationException, IllegalAccessException  {
@@ -143,26 +143,26 @@ public class ClassLoaderService extends ServiceBase
 	}
 	//
 	/**
-	 *	ƒVƒ“ƒOƒ‹ƒgƒ“ƒtƒ@ƒNƒgƒŠ[‰Šú‰»B<br>
+	 *	ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼åˆæœŸåŒ–ã€‚<br>
 	 */
 	public  void startService() {
 		synchronized(this){
-			/** ƒŠƒtƒŒƒbƒVƒ…—\’è“ú */
+			/** ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥äºˆå®šæ—¥æ™‚ */
 			mReshreshPlanDate = new Date() ;
 			mBlLoder = new CashedClassLoader(mUrlAry,Thread.currentThread().getContextClassLoader()) ;		
-			/** ƒŠƒtƒŒƒbƒVƒ…“ú */
+			/** ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ—¥æ™‚ */
 			mReshreshedDate = new Date() ;
 		}
 	}
 	//
 	/**
-	 *	ƒVƒ“ƒOƒ‹ƒgƒ“ƒtƒ@ƒNƒgƒŠ[Œãˆ—B<br>
+	 *	ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼å¾Œå‡¦ç†ã€‚<br>
 	 */
 	public void stopService() {
 		mBlLoder = null ;	
 	}
 		/**
-	 * Refresh—\’è‚ğİ’è‚·‚éB.
+	 * Refreshäºˆå®šæ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚.
 	 * @param time
 	 */
 	public void setRefreshTime(String time) {
@@ -176,13 +176,13 @@ public class ClassLoaderService extends ServiceBase
 		}
 	}
 	/**
-	 * ‘¦ƒŠƒtƒŒƒbƒVƒ…—v¿.
+	 * å³æ™‚ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥è¦è«‹.
 	 */
 	public void refreshNow() {
 		startService() ;
 	}
 	/**
-	 * ÅIƒŠƒtƒŒƒbƒVƒ…ƒQƒbƒ^[.
+	 * æœ€çµ‚ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ™‚åˆ»ã‚²ãƒƒã‚¿ãƒ¼.
 	 * @return String
 	 */
 	public String getLastRrefreshTime() {
@@ -192,7 +192,7 @@ public class ClassLoaderService extends ServiceBase
 		}
 	}
 	/**
-	 * Ÿ‰ñƒŠƒtƒŒƒbƒVƒ…ƒQƒbƒ^[.
+	 * æ¬¡å›ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥æ™‚åˆ»ã‚²ãƒƒã‚¿ãƒ¼.
 	 * @return String
 	 */
 	public String getNextRefreshTime() {

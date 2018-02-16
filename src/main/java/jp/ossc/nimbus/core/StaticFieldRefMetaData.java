@@ -35,11 +35,11 @@ import java.io.*;
 import org.w3c.dom.*;
 
 /**
- * staticƒtƒB[ƒ‹ƒhQÆ&lt;static-field-ref&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;static-field-ref&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * staticãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å‚ç…§&lt;static-field-ref&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;static-field-ref&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class StaticFieldRefMetaData extends MetaData
  implements Serializable{
@@ -47,7 +47,7 @@ public class StaticFieldRefMetaData extends MetaData
     private static final long serialVersionUID = 4423180829218204177L;
     
     /**
-     * &lt;static-field-ref&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;static-field-ref&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String STATIC_FIELD_REF_TAG_NAME = "static-field-ref";
     
@@ -60,55 +60,55 @@ public class StaticFieldRefMetaData extends MetaData
     protected String name;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public StaticFieldRefMetaData(MetaData parent){
         super(parent);
     }
     
     /**
-     * ‚±‚Ì&lt;static-field-ref&gt;—v‘f‚Ìcode‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;static-field-ref&gt;è¦ç´ ã®codeå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return code‘®«‚Ì’l
+     * @return codeå±æ€§ã®å€¤
      */
     public String getCode(){
         return code;
     }
     
     /**
-     * ‚±‚Ì&lt;static-field-ref&gt;—v‘f‚Ìcode‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;static-field-ref&gt;è¦ç´ ã®codeå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param code code‘®«‚Ì’l
+     * @param code codeå±æ€§ã®å€¤
      */
     public void setCode(String code){
         this.code = code;
     }
     
     /**
-     * ‚±‚Ì&lt;static-field-ref&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;static-field-ref&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return name‘®«‚Ì’l
+     * @return nameå±æ€§ã®å€¤
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ‚±‚Ì&lt;static-field-ref&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;static-field-ref&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name name‘®«‚Ì’l
+     * @param name nameå±æ€§ã®å€¤
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * &lt;static-field-ref&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;static-field-ref&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;static-field-ref&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;static-field-ref&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;static-field-ref&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;static-field-ref&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);

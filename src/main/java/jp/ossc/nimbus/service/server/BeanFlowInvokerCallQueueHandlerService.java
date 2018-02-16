@@ -45,7 +45,7 @@ import jp.ossc.nimbus.util.converter.StreamConverter;
 import jp.ossc.nimbus.util.converter.BindingStreamConverter;
 
 /**
- * BeanFlowé¿çsQueueHandlerÉTÅ[ÉrÉXÅB<p>
+ * BeanFlowÂÆüË°åQueueHandler„Çµ„Éº„Éì„Çπ„ÄÇ<p>
  * 
  * @author M.Takata
  */
@@ -235,7 +235,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         return threadContext;
     }
     
-    // QueueHandlerÇÃJavaDoc
+    // QueueHandler„ÅÆJavaDoc
     public void handleDequeuedObject(Object obj) throws Throwable{
         if(obj == null){
             return;
@@ -345,7 +345,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         }
     }
     
-    // QueueHandlerÇÃJavaDoc
+    // QueueHandler„ÅÆJavaDoc
     public boolean handleError(Object obj, Throwable th) throws Throwable{
         RequestContext context = (RequestContext)obj;
         if(errorLogMessageId != null){
@@ -354,7 +354,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         return true;
     }
     
-    // QueueHandlerÇÃJavaDoc
+    // QueueHandler„ÅÆJavaDoc
     public void handleRetryOver(Object obj, Throwable th) throws Throwable{
         RequestContext context = (RequestContext)obj;
         if(retryOverErrorLogMessageId != null){

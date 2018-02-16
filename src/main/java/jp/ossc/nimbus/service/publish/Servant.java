@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.publish;
 import java.nio.channels.SocketChannel;
 
 /**
- * サーバントインターフェイス<p>
+ * 繧ｵ繝ｼ繝舌Φ繝医う繝ｳ繧ｿ繝ｼ繝輔ぉ繧､繧ｹ<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0

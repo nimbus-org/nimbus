@@ -32,30 +32,30 @@
 package jp.ossc.nimbus.service.aop.interceptor;
 
 /**
- * —áŠOthrowB<p>
+ * ä¾‹å¤–throwã€‚<p>
  *
  * @author M.Takata
  */
 public interface ExceptionThrow{
     
     /**
-     * —áŠO‚ğthrow‚·‚é/‚µ‚È‚¢‚ğİ’è‚·‚éB<p>
+     * ä¾‹å¤–ã‚’throwã™ã‚‹/ã—ãªã„ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enabled throw‚·‚éê‡‚ÍAtrue
+     * @param enabled throwã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabled(boolean enabled);
     
     /**
-     * —áŠO‚ğthrow‚·‚é/‚µ‚È‚¢‚ğ”»’è‚·‚éB<p>
+     * ä¾‹å¤–ã‚’throwã™ã‚‹/ã—ãªã„ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isEnabled();
     
     /**
-     * throw‚·‚é—áŠO‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param th —áŠO
+     * @param th ä¾‹å¤–
      */
     public void setException(Throwable th);
 }

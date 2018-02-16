@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.context;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultContextFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultContextFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DefaultContextFactoryService
@@ -43,20 +43,20 @@ public interface DefaultContextFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚É‘Î‰‚·‚é’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒL[
-     * @param value ’l
+     * @param key ã‚­ãƒ¼
+     * @param value å€¤
      */    
     public void put(Object key, Object value);
 
     /**
-     * w’è‚³‚ê‚½ƒL[‚É‘Î‰‚·‚é’l‚ğæ“¾‚·‚éB<p>
-     * ˆø”‚ªObjectŒ^‚Å‚ÍHTMLAdapter(JBoss‚Ìjmx-console‚È‚Ç)‚ÅŒÄ‚Ño‚¹‚È‚¢‚½‚ßA
-     * Stringˆø”ƒ^ƒCƒv‚ğ’Ç‰ÁB
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ãŒObjectå‹ã§ã¯HTMLAdapter(JBossã®jmx-consoleãªã©)ã§å‘¼ã³å‡ºã›ãªã„ãŸã‚ã€
+     * Stringå¼•æ•°ã‚¿ã‚¤ãƒ—ã‚’è¿½åŠ ã€‚
      *
-     * @param key ƒL[
-     * @param value ’l
+     * @param key ã‚­ãƒ¼
+     * @param value å€¤
      */
     public void put(String key, String value);
 }

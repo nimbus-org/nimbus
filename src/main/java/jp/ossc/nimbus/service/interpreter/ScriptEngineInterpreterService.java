@@ -37,7 +37,7 @@ import javax.script.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ScriptEngine‚ğg‚Á‚ÄJavaƒR[ƒh‚ğÀs‚·‚éƒCƒ“ƒ^[ƒvƒŠƒ^ƒT[ƒrƒXB<p>
+ * ScriptEngineã‚’ä½¿ã£ã¦Javaã‚³ãƒ¼ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

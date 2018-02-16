@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ServletFilterInterceptorService}��MBean�C���^�t�F�[�X�B<p>
+ * {@link ServletFilterInterceptorService}のMBeanインタフェース。<p>
  * 
  * @author M.Takata
  * @see ServletFilterInterceptorService
@@ -43,98 +43,98 @@ public interface ServletFilterInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ���̃C���^�[�Z�v�^��L���ɂ���URL��ݒ肷��B<p>
-     * ���N�G�X�gURL���w�肳�ꂽURL�ɊY������ꍇ�����A�C���^�[�Z�v�^�̏������s����B<br>
-     * �ݒ肵�Ȃ��ꍇ�́A�S�Ă�URL�ɑ΂��ėL���ɂȂ�B<br>
+     * このインターセプタを有効にするURLを設定する。<p>
+     * リクエストURLが指定されたURLに該当する場合だけ、インターセプタの処理が行われる。<br>
+     * 設定しない場合は、全てのURLに対して有効になる。<br>
      *
-     * @param urls ���̃C���^�[�Z�v�^��L���ɂ���URL�i���K�\���j�̔z��
+     * @param urls このインターセプタを有効にするURL（正規表現）の配列
      */
     public void setEnabledURLs(String[] urls);
     
     /**
-     * ���̃C���^�[�Z�v�^��L���ɂ���URL���擾����B<p>
+     * このインターセプタを有効にするURLを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^��L���ɂ���URL�i���K�\���j�̔z��
+     * @return このインターセプタを有効にするURL（正規表現）の配列
      */
     public String[] getEnabledURLs();
     
     /**
-     * ���̃C���^�[�Z�v�^�𖳌��ɂ���URL��ݒ肷��B<p>
-     * ���N�G�X�gURL���w�肳�ꂽURL�ɊY������ꍇ�����A�C���^�[�Z�v�^�̏������s���Ȃ��B<br>
-     * �ݒ肵�Ȃ��ꍇ�́A�S�Ă�URL�ɑ΂��ėL���ɂȂ�B<br>
+     * このインターセプタを無効にするURLを設定する。<p>
+     * リクエストURLが指定されたURLに該当する場合だけ、インターセプタの処理が行われない。<br>
+     * 設定しない場合は、全てのURLに対して有効になる。<br>
      *
-     * @param urls ���̃C���^�[�Z�v�^�𖳌��ɂ���URL�i���K�\���j�̔z��
+     * @param urls このインターセプタを無効にするURL（正規表現）の配列
      */
     public void setDisabledURLs(String[] urls);
     
     /**
-     * ���̃C���^�[�Z�v�^�𖳌��ɂ���URL���擾����B<p>
+     * このインターセプタを無効にするURLを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^�𖳌��ɂ���URL�i���K�\���j�̔z��
+     * @return このインターセプタを無効にするURL（正規表現）の配列
      */
     public String[] getDisabledURLs();
     
     /**
-     * ���̃C���^�[�Z�v�^��L���ɂ���URI��ݒ肷��B<p>
-     * ���N�G�X�gURI���w�肳�ꂽURI�ɊY������ꍇ�����A�C���^�[�Z�v�^�̏������s����B<br>
-     * �ݒ肵�Ȃ��ꍇ�́A�S�Ă�URI�ɑ΂��ėL���ɂȂ�B<br>
+     * このインターセプタを有効にするURIを設定する。<p>
+     * リクエストURIが指定されたURIに該当する場合だけ、インターセプタの処理が行われる。<br>
+     * 設定しない場合は、全てのURIに対して有効になる。<br>
      *
-     * @param uris ���̃C���^�[�Z�v�^��L���ɂ���URI�i���K�\���j�̔z��
+     * @param uris このインターセプタを有効にするURI（正規表現）の配列
      */
     public void setEnabledURIs(String[] uris);
     
     /**
-     * ���̃C���^�[�Z�v�^��L���ɂ���URI���擾����B<p>
+     * このインターセプタを有効にするURIを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^��L���ɂ���URI�i���K�\���j�̔z��
+     * @return このインターセプタを有効にするURI（正規表現）の配列
      */
     public String[] getEnabledURIs();
     
     /**
-     * ���̃C���^�[�Z�v�^�𖳌��ɂ���URI��ݒ肷��B<p>
-     * ���N�G�X�gURI���w�肳�ꂽURI�ɊY������ꍇ�����A�C���^�[�Z�v�^�̏������s���Ȃ��B<br>
-     * �ݒ肵�Ȃ��ꍇ�́A�S�Ă�URI�ɑ΂��ėL���ɂȂ�B<br>
+     * このインターセプタを無効にするURIを設定する。<p>
+     * リクエストURIが指定されたURIに該当する場合だけ、インターセプタの処理が行われない。<br>
+     * 設定しない場合は、全てのURIに対して有効になる。<br>
      *
-     * @param uris ���̃C���^�[�Z�v�^�𖳌��ɂ���URI�i���K�\���j�̔z��
+     * @param uris このインターセプタを無効にするURI（正規表現）の配列
      */
     public void setDisabledURIs(String[] uris);
     
     /**
-     * ���̃C���^�[�Z�v�^�𖳌��ɂ���URI���擾����B<p>
+     * このインターセプタを無効にするURIを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^�𖳌��ɂ���URI�i���K�\���j�̔z��
+     * @return このインターセプタを無効にするURI（正規表現）の配列
      */
     public String[] getDisabledURIs();
     
     /**
-     * ���̃C���^�[�Z�v�^��L���ɂ���T�[�u���b�g�p�X��ݒ肷��B<p>
-     * ���N�G�X�g�T�[�u���b�g�p�X���w�肳�ꂽ�T�[�u���b�g�p�X�ɊY������ꍇ�����A�C���^�[�Z�v�^�̏������s����B<br>
-     * �ݒ肵�Ȃ��ꍇ�́A�S�ẴT�[�u���b�g�p�X�ɑ΂��ėL���ɂȂ�B<br>
+     * このインターセプタを有効にするサーブレットパスを設定する。<p>
+     * リクエストサーブレットパスが指定されたサーブレットパスに該当する場合だけ、インターセプタの処理が行われる。<br>
+     * 設定しない場合は、全てのサーブレットパスに対して有効になる。<br>
      *
-     * @param paths ���̃C���^�[�Z�v�^��L���ɂ���T�[�u���b�g�p�X�i���K�\���j�̔z��
+     * @param paths このインターセプタを有効にするサーブレットパス（正規表現）の配列
      */
     public void setEnabledPaths(String[] paths);
     
     /**
-     * ���̃C���^�[�Z�v�^��L���ɂ���T�[�u���b�g�p�X���擾����B<p>
+     * このインターセプタを有効にするサーブレットパスを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^��L���ɂ���T�[�u���b�g�p�X�i���K�\���j�̔z��
+     * @return このインターセプタを有効にするサーブレットパス（正規表現）の配列
      */
     public String[] getEnabledPaths();
     
     /**
-     * ���̃C���^�[�Z�v�^�𖳌��ɂ���T�[�u���b�g�p�X��ݒ肷��B<p>
-     * ���N�G�X�g�T�[�u���b�g�p�X���w�肳�ꂽ�T�[�u���b�g�p�X�ɊY������ꍇ�����A�C���^�[�Z�v�^�̏������s���Ȃ��B<br>
-     * �ݒ肵�Ȃ��ꍇ�́A�S�ẴT�[�u���b�g�p�X�ɑ΂��ėL���ɂȂ�B<br>
+     * このインターセプタを無効にするサーブレットパスを設定する。<p>
+     * リクエストサーブレットパスが指定されたサーブレットパスに該当する場合だけ、インターセプタの処理が行われない。<br>
+     * 設定しない場合は、全てのサーブレットパスに対して有効になる。<br>
      *
-     * @param paths ���̃C���^�[�Z�v�^�𖳌��ɂ���T�[�u���b�g�p�X�i���K�\���j�̔z��
+     * @param paths このインターセプタを無効にするサーブレットパス（正規表現）の配列
      */
     public void setDisabledPaths(String[] paths);
     
     /**
-     * ���̃C���^�[�Z�v�^�𖳌��ɂ���T�[�u���b�g�p�X���擾����B<p>
+     * このインターセプタを無効にするサーブレットパスを取得する。<p>
      *
-     * @return ���̃C���^�[�Z�v�^�𖳌��ɂ���T�[�u���b�g�p�X�i���K�\���j�̔z��
+     * @return このインターセプタを無効にするサーブレットパス（正規表現）の配列
      */
     public String[] getDisabledPaths();
 }

@@ -48,14 +48,14 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 
 /**
- * BeanFlow‚ğÀs‚·‚éƒT[ƒuƒŒƒbƒgB<p>
- * GET‹y‚ÑPOST‚ÌHTTPƒŠƒNƒGƒXƒg‚ğó‚¯•t‚¯‚ÄAƒŠƒNƒGƒXƒgƒpƒX‚É‰‚¶‚½ƒAƒNƒVƒ‡ƒ“BeanFlow‚ğŒÄ‚Ño‚·B<br>
- * ‚Ü‚½AƒŠƒNƒGƒXƒg‚ÌŒŸØ‚ğs‚¤ŒŸØBeanFlow‚à—pˆÓ‚µ‚Ä‚¨‚¯‚ÎA–‘O‚É‚»‚ÌBeanFlow‚ğŒÄ‚Ño‚µAŒŸØƒGƒ‰[‚Ìê‡‚ÍAƒAƒNƒVƒ‡ƒ“BeanFlow‚ÍŒÄ‚Ño‚³‚È‚¢B<br>
+ * BeanFlowã‚’å®Ÿè¡Œã™ã‚‹ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã€‚<p>
+ * GETåŠã³POSTã®HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘ä»˜ã‘ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã«å¿œã˜ãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã‚’å‘¼ã³å‡ºã™ã€‚<br>
+ * ã¾ãŸã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ¤œè¨¼ã‚’è¡Œã†æ¤œè¨¼BeanFlowã‚‚ç”¨æ„ã—ã¦ãŠã‘ã°ã€äº‹å‰ã«ãã®BeanFlowã‚’å‘¼ã³å‡ºã—ã€æ¤œè¨¼ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯ã€ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã¯å‘¼ã³å‡ºã•ãªã„ã€‚<br>
  * <p>
- * ƒŠƒNƒGƒXƒg‚ÆƒŒƒXƒ|ƒ“ƒX‚Ì•ÏŠ·‚ğs‚¤ƒCƒ“ƒ^[ƒZƒvƒ^‚Æ‘g‚İ‡‚í‚¹‚é–‚ÅAƒCƒ“ƒ^[ƒZƒvƒ^‚ª•ÏŠ·‚µ‚ÄAƒŠƒNƒGƒXƒg‚Ì‘®«‚Éİ’è‚µ‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğ{@link BeanFlowServletContext}‚Éİ’è‚µ‚ÄBeanFlow‚Ö‚Æ“n‚·–‚ª‚Å‚«‚éB<br>
- * ‚Ü‚½ABeanFlow‚Å{@link BeanFlowServletContext#setOutput(Object)}‚ğŒÄ‚Ño‚µAo—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚µ‚Ä•Ô‚·‚ÆAo—ÍƒIƒuƒWƒFƒNƒg‚ğƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚µA•ÏŠ·ƒCƒ“ƒ^[ƒZƒvƒ^‚É“n‚·B<br>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã¨ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®å¤‰æ›ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã¨çµ„ã¿åˆã‚ã›ã‚‹äº‹ã§ã€ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒå¤‰æ›ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å±æ€§ã«è¨­å®šã—ãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link BeanFlowServletContext}ã«è¨­å®šã—ã¦BeanFlowã¸ã¨æ¸¡ã™äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€BeanFlowã§{@link BeanFlowServletContext#setOutput(Object)}ã‚’å‘¼ã³å‡ºã—ã€å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã—ã¦è¿”ã™ã¨ã€å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã—ã€å¤‰æ›ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã«æ¸¡ã™ã€‚<br>
  * <p>
- * ˆÈ‰º‚ÉAƒT[ƒuƒŒƒbƒg‚Ìweb.xml’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®web.xmlå®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;servlet&gt;
  *     &lt;servlet-name&gt;BeanFlowServlet&lt;/servlet-name&gt;
@@ -79,168 +79,168 @@ public class BeanFlowServlet extends HttpServlet{
     private static final long serialVersionUID = -5548272719656324613L;
     
     /**
-     * BeanFlowSelectorƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * BeanFlowSelectorã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_BEAN_FLOW_SELECTOR_SERVICE_NAME = "BeanFlowSelectorServiceName";
     
     /**
-     * BeanFlowInvokerFactoryƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_BEAN_FLOW_INVOKER_FACTORY_SERVICE_NAME = "BeanFlowInvokerFactoryServiceName";
     
     /**
-     * JournalƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * Journalã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_JOURNAL_SERVICE_NAME = "JournalServiceName";
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌEditorFinderƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®EditorFinderã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_EDITOR_FINDER_SERVICE_NAME = "EditorFinderServiceName";
     
     /**
-     * ŒŸØBeanFlow‚ÌƒWƒƒ[ƒiƒ‹ŠJn‚ÌEditorFinderƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * æ¤œè¨¼BeanFlowã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®EditorFinderã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_VALIDATE_EDITOR_FINDER_SERVICE_NAME = "ValidateEditorFinderServiceName";
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlow‚ÌƒWƒƒ[ƒiƒ‹ŠJn‚ÌEditorFinderƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®EditorFinderã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_ACTION_EDITOR_FINDER_SERVICE_NAME = "ActionEditorFinderServiceName";
     
     /**
-     * ContextƒT[ƒrƒX–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * Contextã‚µãƒ¼ãƒ“ã‚¹åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_CONTEXT_SERVICE_NAME = "ContextServiceName";
     
     /**
-     * ŒŸØBeanFlowÀsƒtƒ‰ƒO‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * æ¤œè¨¼BeanFlowå®Ÿè¡Œãƒ•ãƒ©ã‚°ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_VALIDATE = "Validate";
     
     /**
-     * ŒŸØBeanFlow‚Ì‘O’uŒ‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * æ¤œè¨¼BeanFlowã®å‰ç½®è©ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_VALIDATE_FLOW_PREFIX = "ValidateFlowPrefix";
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_INPUT_ATTRIBUTE_NAME = "InputAttributeName";
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     public static final String INIT_PARAM_NAME_OUTPUT_ATTRIBUTE_NAME = "OutputAttributeName";
     
     /**
-     * ŒŸØBeanFlow‚Ì‘O’uŒ‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * æ¤œè¨¼BeanFlowã®å‰ç½®è©ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_VALIDATE_FLOW_PREFIX = "validate";
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_PROCESS = "Process";
     
     /**
-     * ƒtƒ[–¼‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ãƒ•ãƒ­ãƒ¼åã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_FLOW_NAME = "FlowName";
     
     /**
-     * ŒŸØBeanFlow‚ÌƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * æ¤œè¨¼BeanFlowã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_VALIDATE = "Validate";
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlow‚ÌƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_ACTION = "Action";
     
     /**
-     * “ü—Í‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * å…¥åŠ›ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_INPUT = "Input";
     
     /**
-     * o—Í‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * å‡ºåŠ›ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_OUTPUT = "Output";
     
     /**
-     * —áŠO”­¶‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String JOURNAL_KEY_EXCEPTION = "Exception";
     
     /**
-     * {@link BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName beanFlowInvokerFactoryServiceName;
     
     /**
-     * {@link BeanFlowSelector}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link BeanFlowSelector}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName beanFlowSelectorServiceName;
     
     /**
-     * {@link Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName journalServiceName;
     
     /**
-     * {@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName editorFinderServiceName;
     
     /**
-     * ŒŸØBeanFlow‚ÌƒWƒƒ[ƒiƒ‹ŠJn‚Ì{@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * æ¤œè¨¼BeanFlowã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName validateEditorFinderServiceName;
     
     /**
-     * ƒAƒNƒVƒ‡ƒ“BeanFlow‚ÌƒWƒƒ[ƒiƒ‹ŠJn‚Ì{@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName actionEditorFinderServiceName;
     
     /**
-     * {@link Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName contextServiceName;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg{@link BeanFlowSelector}B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ{@link BeanFlowSelector}ã€‚<p>
      */
     protected DefaultBeanFlowSelectorService defaultBeanFlowSelector;
     
     /**
-     * ŒŸØBeanFlowÀsƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅŒŸØBeanFlow‚ÍŒÄ‚Ño‚³‚È‚¢B<br>
+     * æ¤œè¨¼BeanFlowå®Ÿè¡Œãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æ¤œè¨¼BeanFlowã¯å‘¼ã³å‡ºã•ãªã„ã€‚<br>
      */
     protected boolean isValidate;
     
     /**
-     * ŒŸØBeanFlow‚Ì‘O’uŒB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_VALIDATE_FLOW_PREFIX}B<br>
+     * æ¤œè¨¼BeanFlowã®å‰ç½®è©ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_VALIDATE_FLOW_PREFIX}ã€‚<br>
      */
     protected String validateFlowPrefix = DEFAULT_VALIDATE_FLOW_PREFIX;
     
     /**
-     * “ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼B<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}B<br>
+     * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}ã€‚<br>
      */
     protected String inputAttributeName = StreamExchangeInterceptorServiceMBean.DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME;
     
     /**
-     * o—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼B<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}B<br>
+     * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}ã€‚<br>
      */
     protected String outputAttributeName = StreamExchangeInterceptorServiceMBean.DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME;
     
     /**
-     * ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception ServletException ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception ServletException ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void init() throws ServletException{
         beanFlowInvokerFactoryServiceName
@@ -280,63 +280,63 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_BEAN_FLOW_SELECTOR_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_BEAN_FLOW_SELECTOR_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getBeanFlowSelectorServiceName(){
         return getServiceName(INIT_PARAM_NAME_BEAN_FLOW_SELECTOR_SERVICE_NAME);
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_BEAN_FLOW_INVOKER_FACTORY_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_BEAN_FLOW_INVOKER_FACTORY_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getBeanFlowInvokerFactoryServiceName(){
         return getServiceName(INIT_PARAM_NAME_BEAN_FLOW_INVOKER_FACTORY_SERVICE_NAME);
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_JOURNAL_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_JOURNAL_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getJournalServiceName(){
         return getServiceName(INIT_PARAM_NAME_JOURNAL_SERVICE_NAME);
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_EDITOR_FINDER_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_EDITOR_FINDER_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getEditorFinderServiceName(){
         return getServiceName(INIT_PARAM_NAME_EDITOR_FINDER_SERVICE_NAME);
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_VALIDATE_EDITOR_FINDER_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_VALIDATE_EDITOR_FINDER_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getValidateEditorFinderServiceName(){
         return getServiceName(INIT_PARAM_NAME_VALIDATE_EDITOR_FINDER_SERVICE_NAME);
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_ACTION_EDITOR_FINDER_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_ACTION_EDITOR_FINDER_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getActionEditorFinderServiceName(){
         return getServiceName(INIT_PARAM_NAME_ACTION_EDITOR_FINDER_SERVICE_NAME);
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_CONTEXT_SERVICE_NAME}‚Åw’è‚³‚ê‚½{@link Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_CONTEXT_SERVICE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸ{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getContextServiceName(){
         return getServiceName(INIT_PARAM_NAME_CONTEXT_SERVICE_NAME);
@@ -354,9 +354,9 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_VALIDATE}‚Åw’è‚³‚ê‚½ŒŸØƒtƒ[g—pƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_VALIDATE}ã§æŒ‡å®šã•ã‚ŒãŸæ¤œè¨¼ãƒ•ãƒ­ãƒ¼ä½¿ç”¨ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØƒtƒ[g—pƒtƒ‰ƒOBtrue‚Ìê‡AŒŸØƒtƒ[‚ğg—p‚·‚éB
+     * @return æ¤œè¨¼ãƒ•ãƒ­ãƒ¼ä½¿ç”¨ãƒ•ãƒ©ã‚°ã€‚trueã®å ´åˆã€æ¤œè¨¼ãƒ•ãƒ­ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
      */
     protected boolean isValidate(){
         final ServletConfig config = getServletConfig();
@@ -365,10 +365,10 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_VALIDATE_FLOW_PREFIX}‚Åw’è‚³‚ê‚½ŒŸØBeanFlow‘O’uŒ‚ğæ“¾‚·‚éB<p>
-     * ƒŠƒNƒGƒXƒgƒpƒX‚Ì‘O‚ÉA‚±‚Ì‘O’uŒ‚ğ•t‚¯‚½ƒtƒ[–¼‚ğŒŸØBeanFlow‚Ìƒtƒ[–¼‚Æ‚·‚éB<br>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_VALIDATE_FLOW_PREFIX}ã§æŒ‡å®šã•ã‚ŒãŸæ¤œè¨¼BeanFlowå‰ç½®è©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã®å‰ã«ã€ã“ã®å‰ç½®è©ã‚’ä»˜ã‘ãŸãƒ•ãƒ­ãƒ¼åã‚’æ¤œè¨¼BeanFlowã®ãƒ•ãƒ­ãƒ¼åã¨ã™ã‚‹ã€‚<br>
      *
-     * @return ŒŸØBeanFlow‘O’uŒ
+     * @return æ¤œè¨¼BeanFlowå‰ç½®è©
      */
     protected String getValidateFlowPrefix(){
         final ServletConfig config = getServletConfig();
@@ -376,10 +376,10 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_INPUT_ATTRIBUTE_NAME}‚Åw’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼‚ğæ“¾‚·‚éB<p>
-     * ‚±‚Ì‘®«–¼‚ÅAHTTPƒŠƒNƒGƒXƒg‚©‚ç“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚µ‚ÄA{@link BeanFlowServletContext}‚Éİ’è‚·‚éB<br>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_INPUT_ATTRIBUTE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§åã§ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‹ã‚‰å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã—ã¦ã€{@link BeanFlowServletContext}ã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @return “ü—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼
+     * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§å
      */
     protected String getInputAttributeName(){
         final ServletConfig config = getServletConfig();
@@ -387,10 +387,10 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * ‰Šú‰»ƒpƒ‰ƒ[ƒ^{@link #INIT_PARAM_NAME_OUTPUT_ATTRIBUTE_NAME}‚Åw’è‚³‚ê‚½o—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼‚ğæ“¾‚·‚éB<p>
-     * {@link BeanFlowServletContext#getOutput()}‚Åæ“¾‚µ‚½o—ÍƒIƒuƒWƒFƒNƒg‚ğA‚±‚Ì‘®«–¼‚ÅAHTTPƒŠƒNƒGƒXƒgİ’è‚·‚éB<br>
+     * åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿{@link #INIT_PARAM_NAME_OUTPUT_ATTRIBUTE_NAME}ã§æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link BeanFlowServletContext#getOutput()}ã§å–å¾—ã—ãŸå‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€ã“ã®å±æ€§åã§ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆè¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @return o—ÍƒIƒuƒWƒFƒNƒg‚ÌƒŠƒNƒGƒXƒg‘®«–¼
+     * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§å
      */
     protected String getOutputAttributeName(){
         final ServletConfig config = getServletConfig();
@@ -398,11 +398,11 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * GETƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
-     * {@link #doService(HttpServletRequest, HttpServletResponse)}‚ğŒÄ‚Ño‚·B<br>
+     * GETãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
+     * {@link #doService(HttpServletRequest, HttpServletResponse)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -414,11 +414,11 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * POSTƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğˆ—‚·‚éB<p>
-     * {@link #doService(HttpServletRequest, HttpServletResponse)}‚ğŒÄ‚Ño‚·B<br>
+     * POSTãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’å‡¦ç†ã™ã‚‹ã€‚<p>
+     * {@link #doService(HttpServletRequest, HttpServletResponse)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */
@@ -430,10 +430,10 @@ public class BeanFlowServlet extends HttpServlet{
     }
     
     /**
-     * ŒŸØBeanFlow‹y‚ÑƒAƒNƒVƒ‡ƒ“BeanFlow‚ÌŒÄ‚Ño‚µ‚ğ§Œä‚·‚éB<p>
+     * æ¤œè¨¼BeanFlowåŠã³ã‚¢ã‚¯ã‚·ãƒ§ãƒ³BeanFlowã®å‘¼ã³å‡ºã—ã‚’åˆ¶å¾¡ã™ã‚‹ã€‚<p>
      * 
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException
      * @exception IOException
      */

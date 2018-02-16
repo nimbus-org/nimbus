@@ -36,35 +36,35 @@ import jp.ossc.nimbus.core.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/24| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface JmsTopicSessionServiceMBean extends ServiceBaseMBean {
     public static final String DEFAULT_CONNECTION_CACHE_KEY = "TopicConnection";
     
 	/**
-	 * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼‚ÌƒZƒbƒ^[
-	 * @param name JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼
+	 * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚»ãƒƒã‚¿ãƒ¼
+	 * @param name JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public void setJndiFinderServiceName(ServiceName name);
 	/**
-	 * JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼‚ÌƒQƒbƒ^[
-	 * @return JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼
+	 * JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public ServiceName getJndiFinderServiceName();
 	/**
-	 * QueueSession¶¬‚ÌAƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒZƒbƒ^[
+	 * QueueSessionç”Ÿæˆæ™‚ã®ã€ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param mode
 	 */
 	public void setTransanctionMode(boolean mode);
 	/**
-	 * QueueSession¶¬‚ÌAƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÌƒQƒbƒ^[
-	 * @return ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‚[ƒh
+	 * QueueSessionç”Ÿæˆæ™‚ã®ã€ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰
 	 */
 	public boolean getTransanctionMode();
 	/**
-	 * Acknowledgeƒ‚[ƒh‚ÌƒZƒbƒ^[BˆÈ‰º3í—Ş‚Ì‚¢‚¸‚ê‚©‚ğİ’è‚·‚éB
-	 * i‚È‚É‚àw’è‚µ‚È‚¯‚ê‚ÎASession.AUTO_ACKNOWLEDGEj
+	 * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚»ãƒƒã‚¿ãƒ¼ã€‚ä»¥ä¸‹3ç¨®é¡ã®ã„ãšã‚Œã‹ã‚’è¨­å®šã™ã‚‹ã€‚
+	 * ï¼ˆãªã«ã‚‚æŒ‡å®šã—ãªã‘ã‚Œã°ã€Session.AUTO_ACKNOWLEDGEï¼‰
 	 * 1(=Session.AUTO_ACKNOWLEDGE)
 	 * 2(=Session.CLIENT_ACKNOWLEDGE)
 	 * 3(=Session.DUPS_OK_ACKNOWLEDGE)
@@ -72,8 +72,8 @@ public interface JmsTopicSessionServiceMBean extends ServiceBaseMBean {
 	 */
 	public void  setAcknowledgeMode(int mode);
 	/**
-	 * Acknowledgeƒ‚[ƒh‚ÌƒQƒbƒ^[
-	 * @return Acknowledgeƒ‚[ƒh
+	 * Acknowledgeãƒ¢ãƒ¼ãƒ‰ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return Acknowledgeãƒ¢ãƒ¼ãƒ‰
 	 */
 	public int getAcknowledgeMode();
 
@@ -87,23 +87,23 @@ public interface JmsTopicSessionServiceMBean extends ServiceBaseMBean {
     public ServiceName getConnectionCacheMapServiceName();
     
     /**
-     * JMSÚ‘±‚ÌƒpƒXƒ[ƒh‚ğ–ß‚·
-     * @return İ’è‚³‚ê‚½ƒpƒXƒ[ƒh‚ğ–ß‚µ‚Ü‚·B
+     * JMSæ¥ç¶šæ™‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æˆ»ã™
+     * @return è¨­å®šã•ã‚ŒãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’æˆ»ã—ã¾ã™ã€‚
      */
     public String getPassword() ;
     /**
-     * JMSÚ‘±‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚é
-     * @param password İ’è‚·‚éƒpƒXƒ[ƒh
+     * JMSæ¥ç¶šæ™‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹
+     * @param password è¨­å®šã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setPassword(String password) ;
     /**
-     * JMSÚ‘±‚Ìƒ†[ƒU[–¼‚ğ–ß‚·
-     * @return İ’è‚³‚ê‚½ƒ†[ƒU[–¼‚ğ–ß‚µ‚Ü‚·B
+     * JMSæ¥ç¶šæ™‚ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’æˆ»ã™
+     * @return è¨­å®šã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’æˆ»ã—ã¾ã™ã€‚
      */
     public String getUserName() ;
     /**
-     * JMSÚ‘±‚Ìƒ†[ƒU[–¼‚ğİ’è‚·‚é
-     * @param userName İ’è‚·‚éÚ‘±ƒ†[ƒU[–¼
+     * JMSæ¥ç¶šæ™‚ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’è¨­å®šã™ã‚‹
+     * @param userName è¨­å®šã™ã‚‹æ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼å
      */
     public void setUserName(String userName) ;
 }

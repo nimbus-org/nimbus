@@ -35,436 +35,436 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹B<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã€‚<p>
  *
  * @author M.Takata
  */
 public interface Schedule{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔF‰ŠúB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šåˆæœŸã€‚<p>
      */
     public static final int STATE_INITIAL = 1;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔF“Š“üB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šæŠ•å…¥ã€‚<p>
      */
     public static final int STATE_ENTRY   = 2;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔFÀs’†B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šå®Ÿè¡Œä¸­ã€‚<p>
      */
     public static final int STATE_RUN     = 3;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔF³íI—¹B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šæ­£å¸¸çµ‚äº†ã€‚<p>
      */
     public static final int STATE_END     = 4;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔFˆÙíI—¹B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šç•°å¸¸çµ‚äº†ã€‚<p>
      */
     public static final int STATE_FAILED  = 5;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔFˆê’â~B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šä¸€æ™‚åœæ­¢ã€‚<p>
      */
     public static final int STATE_PAUSE   = 6;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔF’†’fB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šä¸­æ–­ã€‚<p>
      */
     public static final int STATE_ABORT   = 7;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔFƒŠƒgƒ‰ƒCB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šãƒªãƒˆãƒ©ã‚¤ã€‚<p>
      */
     public static final int STATE_RETRY   = 8;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔF–³Œø‰»B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šç„¡åŠ¹åŒ–ã€‚<p>
      */
     public static final int STATE_DISABLE = 9;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘ÔF’è‹`ŠOB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ï¼šå®šç¾©å¤–ã€‚<p>
      */
     public static final int STATE_UNKNOWN   = -1;
     
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘ÔF‰Šúó‘ÔB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ï¼šåˆæœŸçŠ¶æ…‹ã€‚<p>
      */
     public static final int CONTROL_STATE_INITIAL  = 1;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘ÔFˆê’â~B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ï¼šä¸€æ™‚åœæ­¢ã€‚<p>
      */
     public static final int CONTROL_STATE_PAUSE    = 2;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘ÔFÄŠJB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ï¼šå†é–‹ã€‚<p>
      */
     public static final int CONTROL_STATE_RESUME   = 3;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘ÔF’†’fB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ï¼šä¸­æ–­ã€‚<p>
      */
     public static final int CONTROL_STATE_ABORT    = 4;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘ÔF§Œä¸”sB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ï¼šåˆ¶å¾¡å¤±æ•—ã€‚<p>
      */
     public static final int CONTROL_STATE_FAILED   = 5;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘ÔF’è‹`ŠOB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ï¼šå®šç¾©å¤–ã€‚<p>
      */
     public static final int CONTROL_STATE_UNKNOWN  = -1;
     
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘ÔF‰Šúó‘ÔB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ï¼šåˆæœŸçŠ¶æ…‹ã€‚<p>
      */
     public static final int CHECK_STATE_INITIAL  = 1;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘ÔFƒ^ƒCƒ€ƒI[ƒo[B<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ï¼šã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ã€‚<p>
      */
     public static final int CHECK_STATE_TIMEOVER  = 2;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘ÔF’è‹`ŠOB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ï¼šå®šç¾©å¤–ã€‚<p>
      */
     public static final int CHECK_STATE_UNKNOWN  = -1;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
      */
     public String getId();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
      */
     public void setId(String id);
     
     /**
-     * Š‘®‚·‚éƒOƒ‹[ƒvID‚ğæ“¾‚·‚éB<p>
+     * æ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param masterGroupId ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @return ƒOƒ‹[ƒvID
+     * @param masterGroupId ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚°ãƒ«ãƒ¼ãƒ—ID
      */
     public String getGroupId(String masterGroupId);
     
     /**
-     * Š‘®‚·‚éƒOƒ‹[ƒvID‚ğİ’è‚·‚éB<p>
+     * æ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param masterGroupId ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @param id ƒOƒ‹[ƒvID
+     * @param masterGroupId ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param id ã‚°ãƒ«ãƒ¼ãƒ—ID
      */
     public void setGroupId(String masterGroupId, String id);
     
     /**
-     * Š‘®‚·‚éƒOƒ‹[ƒvID‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * æ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—IDã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ªƒ}ƒXƒ^ƒOƒ‹[ƒvIDA’l‚ªƒOƒ‹[ƒvID‚Ìƒ}ƒbƒv
+     * @return ã‚­ãƒ¼ãŒãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã€å€¤ãŒã‚°ãƒ«ãƒ¼ãƒ—IDã®ãƒãƒƒãƒ—
      */
     public Map getGroupIdMap();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ID
      */
     public String getMasterId();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
      */
     public String[] getMasterGroupIds();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸæ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ™‚åˆ»
      */
     public Date getTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸæ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒPƒWƒ…[ƒ‹
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ™‚åˆ»
      */
     public void setTime(Date time);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½ƒ^ƒXƒN–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸã‚¿ã‚¹ã‚¯åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒXƒN–¼
+     * @return ã‚¿ã‚¹ã‚¯å
      */
     public String getTaskName();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Íƒf[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—Íƒf[ƒ^
+     * @return å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
      */
     public Object getInput();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“ü—Íƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param input “ü—Íƒf[ƒ^
+     * @param input å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
      */
     public void setInput(Object input);
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDepends();
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param masterGroupId ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param masterGroupId ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDependsInGroupMaster(String masterGroupId);
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒ^ƒOƒ‹[ƒvID‚ÆƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ‚Ìƒ}ƒbƒv
+     * @return ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getDependsInGroupMasterMap();
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param groupId ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDependsInGroup(String groupId);
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒvID‚ÆƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ‚Ìƒ}ƒbƒv
+     * @return ã‚°ãƒ«ãƒ¼ãƒ—IDã¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getDependsInGroupMap();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌƒOƒ‹[ƒvˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶î•ñ‚Ì”z—ñ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getDependsOnGroup();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒ}ƒXƒ^ƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param masterGroupId ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @return ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param masterGroupId ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getGroupDependsOnGroupMaster(String masterGroupId);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒ}ƒXƒ^ƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒ^ƒOƒ‹[ƒvID‚ÆƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ‚Ìƒ}ƒbƒv
+     * @return ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—IDã¨ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getGroupDependsOnGroupMasterMap();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒvID
-     * @return ˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚Ì”z—ñ
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @return ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public ScheduleDepends[] getGroupDependsOnGroup(String groupId);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒvID‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚Ì”z—ñ‚Ìƒ}ƒbƒv
+     * @return ã‚°ãƒ«ãƒ¼ãƒ—IDã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã®é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getGroupDependsOnGroupMap();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìˆ—Œ‹‰Ê‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡¦ç†çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ—Œ‹‰Ê
+     * @return å‡¦ç†çµæœ
      */
     public Object getOutput();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param out ˆ—Œ‹‰Ê
+     * @param out å‡¦ç†çµæœ
      */
     public void setOutput(Object out);
     
     /**
-     * Å‰‚ÉƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½‚ğæ“¾‚·‚éB<p>
+     * æœ€åˆã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸæ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å‰‚ÉƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½
+     * @return æœ€åˆã«ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸæ™‚åˆ»
      */
     public Date getInitialTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCÀsŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCÀsŠÔŠu
+     * @return ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”
      */
     public long getRetryInterval();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
      */
     public Date getRetryEndTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒPƒWƒ…[ƒ‹ƒŠƒgƒ‰ƒCI—¹
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
      */
     public void setRetryEndTime(Date time);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ƒŠƒgƒ‰ƒC‚·‚é
+     * @return trueã®å ´åˆãƒªãƒˆãƒ©ã‚¤ã™ã‚‹
      */
     public boolean isRetry();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param retry ƒŠƒgƒ‰ƒC‚·‚éê‡‚ÍAtrue
+     * @param retry ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setRetry(boolean retry);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÅ‘å’x‰„ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æœ€å¤§é…å»¶æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹Å‘å’x‰„ŠÔ
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æœ€å¤§é…å»¶æ™‚é–“
      */
     public long getMaxDelayTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌÅ‘å’x‰„ŠÔ[ms]‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æœ€å¤§é…å»¶æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒPƒWƒ…[ƒ‹Å‘å’x‰„ŠÔ
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æœ€å¤§é…å»¶æ™‚é–“
      */
     public void setMaxDelayTime(long time);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹
      */
     public int getState();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğİ’è‚·‚éB<p>
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÍDTO‚Å‚ ‚é‚½‚ßAƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚é‚É‚ÍA{@link ScheduleManager#changeState(String, int)}‚ğŒÄ‚Ño‚·•K—v‚ª‚ ‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯DTOã§ã‚ã‚‹ãŸã‚ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã«ã¯ã€{@link ScheduleManager#changeState(String, int)}ã‚’å‘¼ã³å‡ºã™å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param state ƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô
+     * @param state ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹
      */
     public void setState(int state);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹
      */
     public int getControlState();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğİ’è‚·‚éB<p>
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÍDTO‚Å‚ ‚é‚½‚ßAƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô‚ğ•ÏX‚·‚é‚É‚ÍA{@link ScheduleManager#changeControlState(String, int)}‚ğŒÄ‚Ño‚·•K—v‚ª‚ ‚éB<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯DTOã§ã‚ã‚‹ãŸã‚ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ã«ã¯ã€{@link ScheduleManager#changeControlState(String, int)}ã‚’å‘¼ã³å‡ºã™å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param state ƒXƒPƒWƒ…[ƒ‹‚Ì§Œäó‘Ô
+     * @param state ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆ¶å¾¡çŠ¶æ…‹
      */
     public void setControlState(int state);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹
      */
     public int getCheckState();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param state ƒXƒPƒWƒ…[ƒ‹‚Ìƒ`ƒFƒbƒNó‘Ô
+     * @param state ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹
      */
     public void setCheckState(int state);
     
     /**
-     * •ªUŠÂ‹«‚ÅÀs‚·‚é{@link ScheduleExecutor}‚ğw’è‚·‚éƒL[‚ğİ’è‚·‚éB<p>
+     * åˆ†æ•£ç’°å¢ƒã§å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’æŒ‡å®šã™ã‚‹ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
+     * @param key ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
      */
     public void setExecutorKey(String key);
     
     /**
-     * •ªUŠÂ‹«‚ÅÀs‚·‚é{@link ScheduleExecutor}‚ğw’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£ç’°å¢ƒã§å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’æŒ‡å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
+     * @return ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
      */
     public String getExecutorKey();
     
     /**
-     * {@link ScheduleExecutor}‚Ìí—Ş‚ğİ’è‚·‚éB<p>
+     * {@link ScheduleExecutor}ã®ç¨®é¡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ScheduleExecutor‚Ìí—Ş
+     * @param type ScheduleExecutorã®ç¨®é¡
      */
     public void setExecutorType(String type);
     
     /**
-     * {@link ScheduleExecutor}‚Ìí—Ş‚ğæ“¾‚·‚éB<p>
+     * {@link ScheduleExecutor}ã®ç¨®é¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleExecutor‚Ìí—Ş
+     * @return ScheduleExecutorã®ç¨®é¡
      */
     public String getExecutorType();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌŠJn‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é–‹å§‹æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ÌŠJn
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é–‹å§‹æ™‚åˆ»
      */
     public Date getExecuteStartTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌŠJn‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é–‹å§‹æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒPƒWƒ…[ƒ‹‚ÌŠJn
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é–‹å§‹æ™‚åˆ»
      */
     public void setExecuteStartTime(Date time);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹‚ÌI—¹
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†æ™‚åˆ»
      */
     public Date getExecuteEndTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param time ƒXƒPƒWƒ…[ƒ‹‚ÌI—¹
+     * @param time ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†æ™‚åˆ»
      */
     public void setExecuteEndTime(Date time);
 }

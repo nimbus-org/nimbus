@@ -37,7 +37,7 @@ import jp.ossc.nimbus.service.queue.Queue;
 import jp.ossc.nimbus.service.queue.QueueHandler;
 
 /**
- * {@link FacadeCaller}ƒT[ƒrƒX‚Ì”ñ“¯ŠúŒÄ‚Ño‚µ‚ğ{@link Queue}ƒT[ƒrƒX‚ğg‚Á‚Äs‚¤ê‡‚Ì{@link QueueHandler}ƒT[ƒrƒXB<p>
+ * {@link FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®éåŒæœŸå‘¼ã³å‡ºã—ã‚’{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦è¡Œã†å ´åˆã®{@link QueueHandler}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -47,10 +47,10 @@ public class UnsynchFacadeCallerService extends ServiceBase
     private static final long serialVersionUID = 2814309373911051419L;
     
     /**
-     * {@link Queue}‚©‚çæ‚èo‚µ‚½{@link UnsyncRequest}‚Ìˆ—‚ğs‚¤B<p>
+     * {@link Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸ{@link UnsyncRequest}ã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param obj Queue‚©‚çæ‚èo‚µ‚½UnsyncRequest
-     * @exception Throwable IOC Facade EJBŒÄ‚Ño‚µ‚É¸”s‚µ‚½ê‡
+     * @param obj Queueã‹ã‚‰å–ã‚Šå‡ºã—ãŸUnsyncRequest
+     * @exception Throwable IOC Facade EJBå‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void handleDequeuedObject(Object obj) throws Throwable{
         if(obj == null){

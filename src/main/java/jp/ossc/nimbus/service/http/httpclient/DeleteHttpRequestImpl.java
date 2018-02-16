@@ -38,48 +38,48 @@ import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.*;
 
 /**
- * Jakarta HttpClient‚ğg‚Á‚½HTTP DELETEƒŠƒNƒGƒXƒgB<p>
+ * Jakarta HttpClientã‚’ä½¿ã£ãŸHTTP DELETEãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public class DeleteHttpRequestImpl extends HttpRequestImpl{
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param name ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
-     * @param value ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
+     * @param name ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param value ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setParameter(String name, String value){
         throw new UnsupportedOperationException();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param name ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
-     * @param value ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
+     * @param name ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param value ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setParameters(String name, String[] value){
         throw new UnsupportedOperationException();
     }
     
     /**
-     * {@link DeleteMethod}‚ğ¶¬‚·‚éB<p>
+     * {@link DeleteMethod}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
      * @return DeleteMethod
-     * @exception Exception DeleteMethod‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception DeleteMethodã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected HttpMethodBase instanciateHttpMethod() throws Exception{
         return new DeleteMethod();
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param params ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
-     * @exception Exception ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @exception Exception ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initParameter(
         HttpMethodBase method,
@@ -89,11 +89,11 @@ public class DeleteHttpRequestImpl extends HttpRequestImpl{
     }
     
     /**
-     * ƒTƒ|[ƒg‚µ‚È‚¢B<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<p>
      *
-     * @param method HTTPƒƒ\ƒbƒh
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception Exception ƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒBo—Í‚É¸”s‚µ‚½ê‡
+     * @param method HTTPãƒ¡ã‚½ãƒƒãƒ‰
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initInputStream(
         HttpMethodBase method,

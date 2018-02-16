@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS Queue ƒZƒ“ƒ_[ƒtƒ@ƒNƒgƒŠB<p>
- * JMS1.0‚Å‚ÍAQueueSession‚ÆTopicSession‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßAQueueSession‚©‚ç‚ÌQueueSender¶¬‚ğs‚¤B<br>
+ * JMS Queue ã‚»ãƒ³ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JMS1.0ã§ã¯ã€QueueSessionã¨TopicSessionã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€QueueSessionã‹ã‚‰ã®QueueSenderç”Ÿæˆã‚’è¡Œã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -45,13 +45,13 @@ public class JMSQueueSenderFactoryService
     private static final long serialVersionUID = 7722750783351103175L;
     
     /**
-     * QueueSender‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½QueueSession‚©‚çA{@link QueueSession#createSender(Queue)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * QueueSenderã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸQueueSessionã‹ã‚‰ã€{@link QueueSession#createSender(Queue)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session QueueSession
-     * @param dest ˆ¶æ‚Æ‚È‚éQueue
+     * @param dest å®›å…ˆã¨ãªã‚‹Queue
      * @return QueueSender
-     * @exception JMSMessageProducerCreateException QueueSender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageProducerCreateException QueueSenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageProducer createProducer(Session session, Destination dest)
      throws JMSMessageProducerCreateException{

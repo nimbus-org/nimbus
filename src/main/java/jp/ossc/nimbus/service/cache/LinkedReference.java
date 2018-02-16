@@ -32,17 +32,17 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ƒŠƒ“ƒNƒLƒƒƒbƒVƒ…QÆB<p>
+ * ãƒªãƒ³ã‚¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
  *
  * @author M.Takata
  */
 public interface LinkedReference{
     
     /**
-     * ƒŠƒ“ƒNQÆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ³ã‚¯å‚ç…§ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param ref QÆŒ³‚ÌƒLƒƒƒbƒVƒ…QÆ
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param ref å‚ç…§å…ƒã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(CachedReference ref);
 }

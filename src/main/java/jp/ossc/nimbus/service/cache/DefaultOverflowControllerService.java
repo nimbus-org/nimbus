@@ -36,10 +36,10 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.queue.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒg‚ ‚Ó‚ê§ŒäB<p>
- * {@link OverflowValidator}A{@link OverflowAlgorithm}A{@link OverflowAction}‚Ì‚R‚Â‚ğˆê‘g‚É‚µ‚ÄA‚ ‚Ó‚ê§Œä‚ğs‚¤OverflowController‚Å‚ ‚éB<br>
- * ‚Ü‚½A‚ ‚Ó‚ê§Œä‚ÍAƒLƒƒƒbƒVƒ…‚Ì’Ç‰Áˆ—‚Æ“¯Šú‚³‚¹‚é•K—v‚Í‚È‚¢‚½‚ßA•ÊƒXƒŒƒbƒh‚Å‚ ‚Ó‚ê§Œä‚ğs‚¤–‚ª‚Å‚«‚é‚æ‚¤‚É{@link Queue}ƒT[ƒrƒX‚ğİ’è‚Å‚«‚éB<br>
- * ˆÈ‰º‚ÉAƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ª10‚ğ’´‚¦‚é‚ÆAFIFO‚Å‚ ‚Ó‚ê‘ÎÛ‚Æ‚È‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğŒˆ’è‚µAƒLƒƒƒbƒVƒ…‚©‚çíœ‚·‚é‚ ‚Ó‚ê§ŒäƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚ãµã‚Œåˆ¶å¾¡ã€‚<p>
+ * {@link OverflowValidator}ã€{@link OverflowAlgorithm}ã€{@link OverflowAction}ã®ï¼“ã¤ã‚’ä¸€çµ„ã«ã—ã¦ã€ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†OverflowControllerã§ã‚ã‚‹ã€‚<br>
+ * ã¾ãŸã€ã‚ãµã‚Œåˆ¶å¾¡ã¯ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®è¿½åŠ å‡¦ç†ã¨åŒæœŸã•ã›ã‚‹å¿…è¦ã¯ãªã„ãŸã‚ã€åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†äº‹ãŒã§ãã‚‹ã‚ˆã†ã«{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã§ãã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºãŒ10ã‚’è¶…ãˆã‚‹ã¨ã€FIFOã§ã‚ãµã‚Œå¯¾è±¡ã¨ãªã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ±ºå®šã—ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã‚ãµã‚Œåˆ¶å¾¡ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -81,191 +81,191 @@ public class DefaultOverflowControllerService extends ServiceBase
     private static final long serialVersionUID = 304577650295674609L;
     
     /**
-     * ‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName validatorServiceName;
     
     /**
-     * ‚ ‚Ó‚êŒŸØƒT[ƒrƒXB<p>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected OverflowValidator validator;
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName algorithmServiceName;
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒXB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected OverflowAlgorithm algorithm;
     
     /**
-     * ‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName actionServiceName;
     
     /**
-     * ‚ ‚Ó‚ê“®ìƒT[ƒrƒXB<p>
+     * ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected OverflowAction action;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‚ ‚Ó‚ê“®ìƒT[ƒrƒXB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ì‚ ‚Ó‚ê“®ì‚ÍA‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚ãµã‚Œå‹•ä½œã¯ã€ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      */
     protected RemoveOverflowActionService defaultAction;
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚Ì—v‹‚ğ•ÊƒXƒŒƒbƒh‚Åˆ—‚·‚é‚½‚ß‚Éˆê’UƒLƒ…[‚É—­‚ß‚é‚½‚ß‚ÌƒLƒ…[ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã®è¦æ±‚ã‚’åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§å‡¦ç†ã™ã‚‹ãŸã‚ã«ä¸€æ—¦ã‚­ãƒ¥ãƒ¼ã«æºœã‚ã‚‹ãŸã‚ã®ã‚­ãƒ¥ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName queueServiceName;
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚Ì—v‹‚ğ•ÊƒXƒŒƒbƒh‚Åˆ—‚·‚é‚½‚ß‚Éˆê’UƒLƒ…[‚É—­‚ß‚é‚½‚ß‚ÌƒLƒ…[ƒT[ƒrƒXB<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã®è¦æ±‚ã‚’åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§å‡¦ç†ã™ã‚‹ãŸã‚ã«ä¸€æ—¦ã‚­ãƒ¥ãƒ¼ã«æºœã‚ã‚‹ãŸã‚ã®ã‚­ãƒ¥ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected Queue queue;
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚Ì—v‹‚ğ•ÊƒXƒŒƒbƒh‚Åˆ—‚·‚é‚½‚ß‚Ìƒf[ƒ‚ƒ“ƒIƒuƒWƒFƒNƒgB<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã®è¦æ±‚ã‚’åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§å‡¦ç†ã™ã‚‹ãŸã‚ã®ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Daemon daemon;
     
     /**
-     * ‚ ‚Ó‚ê§Œäˆ—’†‚ÌƒLƒƒƒbƒVƒ…QÆ‚É‘Î‚·‚é“¯Šú§Œä—p‚ÌƒƒbƒNƒIƒuƒWƒFƒNƒgB<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡å‡¦ç†ä¸­ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«å¯¾ã™ã‚‹åŒæœŸåˆ¶å¾¡ç”¨ã®ãƒ­ãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object lock = "lock";
     
     /**
-     * ’èŠú“I‚É‚ ‚Ó‚ê§Œä‚ğs‚¤ŠÔŠÔŠu[ms]‚Ì‘®«’lB<p>
+     * å®šæœŸçš„ã«ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†æ™‚é–“é–“éš”[ms]ã®å±æ€§å€¤ã€‚<p>
      */
     protected long periodicOverflowIntervalTime;
     
     /**
-     * ’èŠú“I‚É‚ ‚Ó‚ê§Œä‚ğs‚¤ŠÔŠÔŠu[ms]B<p>
+     * å®šæœŸçš„ã«ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†æ™‚é–“é–“éš”[ms]ã€‚<p>
      */
     protected long periodicOverflowInterval;
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ª’Ç‰Á‚³‚ê‚é‚½‚Ñ‚É‚ ‚Ó‚ê§Œä‚ğs‚¤‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅA’Ç‰Á‚Ì‚½‚Ñ‚É‚ ‚Ó‚ê§Œä‚ğs‚¤B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ãŒè¿½åŠ ã•ã‚Œã‚‹ãŸã³ã«ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€è¿½åŠ ã®ãŸã³ã«ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†ã€‚<br>
      */
     protected boolean isOverflowByAdding = true;
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚ğs‚¤‚½‚Ñ‚É‚ ‚Ó‚êŒŸØ‚ğs‚¤‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅA‚ ‚Ó‚ê§Œä‚ğs‚¤‚½‚Ñ‚É‚ ‚Ó‚êŒŸØ‚ğs‚¤B<br>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†ãŸã³ã«ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã†ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†ãŸã³ã«ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã†ã€‚<br>
      */
     protected boolean isValidateByOverflow = true;
     
     /**
-     * V‹K’Ç‰Á‚³‚ê‚éƒLƒƒƒbƒVƒ…QÆ‚ğ‚ ‚Ó‚ê‘ÎÛ‚É‰Á‚¦‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAV‹K’Ç‰Á‚³‚ê‚éƒLƒƒƒbƒVƒ…QÆ‚Í‚ ‚Ó‚ê‘ÎÛ‚É‰Á‚¦‚È‚¢B<br>
+     * æ–°è¦è¿½åŠ ã•ã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ã‚ãµã‚Œå¯¾è±¡ã«åŠ ãˆã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€æ–°è¦è¿½åŠ ã•ã‚Œã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¯ã‚ãµã‚Œå¯¾è±¡ã«åŠ ãˆãªã„ã€‚<br>
      */
     protected boolean isOverflowNewAdding = false;
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setOverflowValidatorServiceName(ServiceName name){
         validatorServiceName = name;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public ServiceName getOverflowValidatorServiceName(){
         return validatorServiceName;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setOverflowAlgorithmServiceName(ServiceName name){
         algorithmServiceName = name;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public ServiceName getOverflowAlgorithmServiceName(){
         return algorithmServiceName;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setOverflowActionServiceName(ServiceName name){
         actionServiceName = name;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public ServiceName getOverflowActionServiceName(){
         return actionServiceName;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setPeriodicOverflowIntervalTime(long time){
         periodicOverflowIntervalTime = time;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public long getPeriodicOverflowIntervalTime(){
         return periodicOverflowIntervalTime;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setOverflowByAdding(boolean isOverflow){
         isOverflowByAdding = isOverflow;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public boolean isOverflowByAdding(){
         return isOverflowByAdding;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setValidateByOverflow(boolean isValidate){
         isValidateByOverflow = isValidate;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public boolean isValidateByOverflow(){
         return isValidateByOverflow;
     }
     
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public void setOverflowNewAdding(boolean isOverflow){
         isOverflowNewAdding = isOverflow;
     }
-    // DefaultOverflowControllerServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerServiceMBeanã®JavaDoc
     public boolean isOverflowNewAdding(){
         return isOverflowNewAdding;
     }
     
     /**
-     * OverflowAction‚ğİ’è‚·‚éB
+     * OverflowActionã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setOverflowAction(OverflowAction action) {
         this.action = action;
     }
     /**
-     * OverflowAlgorithm‚ğİ’è‚·‚éB
+     * OverflowAlgorithmã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setOverflowAlgorithm(OverflowAlgorithm algorithm) {
         this.algorithm = algorithm;
     }
     /**
-     * Queue‚ğİ’è‚·‚éB
+     * Queueã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setQueue(Queue queue) {
         this.queue = queue;
     }
     /**
-     * OverflowValidator‚ğİ’è‚·‚éB
+     * OverflowValidatorã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setOverflowValidator(OverflowValidator validator) {
         this.validator = validator;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒf[ƒ‚ƒ“‚ğ¶¬‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         daemon = new Daemon(this);
@@ -273,15 +273,15 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ğæ“¾‚·‚éB<br>
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒX‚ğæ“¾‚·‚éB<br>
-     * ‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ğæ“¾‚·‚éB<br>
-     * ‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ÉA{@link OverflowAction#setOverflowController(OverflowController)}‚Å©•ª©g‚ğİ’è‚·‚éB<br>
-     * ƒLƒ…[ƒT[ƒrƒX‚ğæ“¾‚·‚éB<br>
-     * ƒf[ƒ‚ƒ“‚ğŠJn‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã«ã€{@link OverflowAction#setOverflowController(OverflowController)}ã§è‡ªåˆ†è‡ªèº«ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚’é–‹å§‹ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(validatorServiceName != null){
@@ -315,34 +315,34 @@ public class DefaultOverflowControllerService extends ServiceBase
         if(queue != null || periodicOverflowInterval > 0){
             
             if(queue != null){
-                // ƒLƒ…[ó•tŠJn
+                // ã‚­ãƒ¥ãƒ¼å—ä»˜é–‹å§‹
                 queue.accept();
             }
             
-            // ƒf[ƒ‚ƒ“‹N“®
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
             daemon.start();
         }
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * ƒf[ƒ‚ƒ“‚ğ’â~‚·‚éB<br>
-     * ‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
-     * ‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
-     * ƒLƒ…[ƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚’åœæ­¢ã™ã‚‹ã€‚<br>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
+     * ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
+     * ã‚­ãƒ¥ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
         if(queue != null || periodicOverflowInterval > 0){
             
-            // ƒf[ƒ‚ƒ“’â~
+            // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
             daemon.stop();
             
             if(queue != null){
-                // ƒLƒ…[ó•t’â~
+                // ã‚­ãƒ¥ãƒ¼å—ä»˜åœæ­¢
                 queue.release();
             }
         }
@@ -357,12 +357,12 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ì‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ğ”jŠü‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒLƒ…[ƒT[ƒrƒX‚ğ”jŠü‚·‚éB<br>
-     * ƒf[ƒ‚ƒ“‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚­ãƒ¥ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         if(defaultAction != null){
@@ -373,10 +373,10 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return {@link RemoveOverflowActionService}
-     * @exception Exception ƒfƒtƒHƒ‹ƒg‚Ì‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @exception Exception ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected OverflowAction getDefaultOverflowActionService() throws Exception{
         if(defaultAction == null){
@@ -392,11 +392,11 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚ğs‚¤B<p>
-     * ‚ ‚Ó‚ê§Œä‚ÍA•ÊƒXƒŒƒbƒh‚Ås‚¤‚½‚ßA‚±‚±‚Å‚ÍAˆ—‚ğs‚í‚¸‚É‚·‚®‚Éˆ—‚ğ–ß‚·B<br>
-     * •ÊƒXƒŒƒbƒh‚Ås‚¤‚ ‚Ó‚ê§Œä‚ÍA{@link #consume(Object, DaemonControl)}‚ğQÆB<br>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†ã€‚<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã¯ã€åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§è¡Œã†ãŸã‚ã€ã“ã“ã§ã¯ã€å‡¦ç†ã‚’è¡Œã‚ãšã«ã™ãã«å‡¦ç†ã‚’æˆ»ã™ã€‚<br>
+     * åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§è¡Œã†ã‚ãµã‚Œåˆ¶å¾¡ã¯ã€{@link #consume(Object, DaemonControl)}ã‚’å‚ç…§ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚É’Ç‰Á‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«è¿½åŠ ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void control(CachedReference ref){
         if(getState() != STARTED){
@@ -410,8 +410,8 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚ğs‚¤‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
-     * {@link OverflowValidator#reset()}A{@link OverflowAlgorithm#reset()}A{@link OverflowAction#reset()}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * {@link OverflowValidator#reset()}ã€{@link OverflowAlgorithm#reset()}ã€{@link OverflowAction#reset()}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      */
     public void reset(){
         if(validator != null){
@@ -426,46 +426,46 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume() {
         return true;
     }
     
     /**
-     * ƒLƒ…[‚©‚ç‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-     * @return {@link CachedReference}ƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return {@link CachedReference}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object provide(DaemonControl ctrl){
         if(getState() != STARTED){
@@ -489,31 +489,31 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğÁ”ï‚·‚éB<p>
-     * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ{@link CachedReference}‚ÉƒLƒƒƒXƒg‚µ‚Ä{@link OverflowValidator}A{@link OverflowAlgorithm}A{@link OverflowAction}‚ğŒÄ‚Ño‚·B<br>
-     * ‚ ‚Ó‚ê§Œä‚ÍA{@link #isValidateByOverflow()}‚ªfalse‚Ìê‡‚ÍAˆÈ‰º‚Ì‡˜‚Ås‚í‚ê‚éB<br>
+     * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆè²»ã™ã‚‹ã€‚<p>
+     * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link CachedReference}ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦{@link OverflowValidator}ã€{@link OverflowAlgorithm}ã€{@link OverflowAction}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã¯ã€{@link #isValidateByOverflow()}ãŒfalseã®å ´åˆã¯ã€ä»¥ä¸‹ã®é †åºã§è¡Œã‚ã‚Œã‚‹ã€‚<br>
      * <ol>
-     *     <li>‚PD{@link OverflowValidator#add(CachedReference)}‚ğŒÄ‚Ño‚·B</li>
-     *     <li>‚QD{@link #isOverflowNewAdding()}‚ªtrue‚Ìê‡A{@link OverflowAlgorithm#add(CachedReference)}‚ğŒÄ‚Ño‚·B</li>
-     *     <li>‚RD{@link #isOverflowByAdding()}‚ªtrue‚Ìê‡A{@link OverflowValidator#validate()}‚ğŒÄ‚Ño‚µA‚»‚Ì–ß‚è’l‚Ì‚ª1ˆÈã‚Ìê‡A‚P`‚R‚Ìˆ—‚ğs‚¤B</li>
-     *     <li>‚R|‚PD{@link OverflowValidator#validate()}‚ğŒÄ‚Ño‚µA‚ ‚Ó‚ê”‚ğŒˆ’è‚·‚éB</li>
-     *     <li>‚R|‚QD{@link OverflowAlgorithm#overflow(int)}‚ğŒÄ‚Ño‚µA‚ ‚Ó‚ê‘ÎÛ‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚·‚éB</li>
-     *     <li>‚R|‚RD‚ ‚Ó‚ê‘ÎÛ‚ÌƒLƒƒƒbƒVƒ…QÆ‚Ì”‚Ì•ª‚¾‚¯A{@link OverflowAction#action(OverflowValidator, OverflowAlgorithm, CachedReference)}‚ğŒJ‚è•Ô‚µŒÄ‚Ño‚µA‚ ‚Ó‚êˆ—‚ğs‚¤B</li>
-     *     <li>‚SD{@link #isOverflowNewAdding()}‚ªfalse‚Ìê‡A{@link OverflowAlgorithm#add(CachedReference)}‚ğŒÄ‚Ño‚·B</li>
+     *     <li>ï¼‘ï¼{@link OverflowValidator#add(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *     <li>ï¼’ï¼{@link #isOverflowNewAdding()}ãŒtrueã®å ´åˆã€{@link OverflowAlgorithm#add(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *     <li>ï¼“ï¼{@link #isOverflowByAdding()}ãŒtrueã®å ´åˆã€{@link OverflowValidator#validate()}ã‚’å‘¼ã³å‡ºã—ã€ãã®æˆ»ã‚Šå€¤ã®ãŒ1ä»¥ä¸Šã®å ´åˆã€ï¼‘ï½ï¼“ã®å‡¦ç†ã‚’è¡Œã†ã€‚</li>
+     *     <li>ï¼“ï¼ï¼‘ï¼{@link OverflowValidator#validate()}ã‚’å‘¼ã³å‡ºã—ã€ã‚ãµã‚Œæ•°ã‚’æ±ºå®šã™ã‚‹ã€‚</li>
+     *     <li>ï¼“ï¼ï¼’ï¼{@link OverflowAlgorithm#overflow(int)}ã‚’å‘¼ã³å‡ºã—ã€ã‚ãµã‚Œå¯¾è±¡ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã™ã‚‹ã€‚</li>
+     *     <li>ï¼“ï¼ï¼“ï¼ã‚ãµã‚Œå¯¾è±¡ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®æ•°ã®åˆ†ã ã‘ã€{@link OverflowAction#action(OverflowValidator, OverflowAlgorithm, CachedReference)}ã‚’ç¹°ã‚Šè¿”ã—å‘¼ã³å‡ºã—ã€ã‚ãµã‚Œå‡¦ç†ã‚’è¡Œã†ã€‚</li>
+     *     <li>ï¼”ï¼{@link #isOverflowNewAdding()}ãŒfalseã®å ´åˆã€{@link OverflowAlgorithm#add(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
      * </ol>
-     * ‚ ‚Ó‚ê§Œä‚ÍA{@link #isValidateByOverflow()}‚ªtrue‚Ìê‡‚ÍAˆÈ‰º‚Ì‡˜‚Ås‚í‚ê‚éB<br>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã¯ã€{@link #isValidateByOverflow()}ãŒtrueã®å ´åˆã¯ã€ä»¥ä¸‹ã®é †åºã§è¡Œã‚ã‚Œã‚‹ã€‚<br>
      * <ol>
-     *     <li>‚PD{@link OverflowValidator#add(CachedReference)}‚ğŒÄ‚Ño‚·B</li>
-     *     <li>‚QD{@link #isOverflowNewAdding()}‚ªtrue‚Ìê‡A{@link OverflowAlgorithm#add(CachedReference)}‚ğŒÄ‚Ño‚·B</li>
-     *     <li>‚RD{@link #isOverflowByAdding()}‚ªtrue‚Ìê‡A{@link OverflowValidator#validate()}‚ğŒÄ‚Ño‚µA‚»‚Ì–ß‚è’l‚Ì‚ª1ˆÈã‚Ìê‡AˆÈ‰º‚Ì‚P`‚R‚Ìˆ—‚ğŒJ‚è•Ô‚·B</li>
-     *     <li>‚R|‚PD{@link OverflowAlgorithm#overflow()}‚ğŒÄ‚Ño‚µA‚ ‚Ó‚ê‘ÎÛ‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚·‚éB‚ ‚Ó‚ê‘ÎÛ‚ÌƒLƒƒƒbƒVƒ…QÆ‚ªnull‚Ìê‡‚ÍAbreak</li>
-     *     <li>‚R|‚QD‚ ‚Ó‚ê‘ÎÛ‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğ{@link OverflowAction#action(OverflowValidator, OverflowAlgorithm, CachedReference)}‚É“n‚µ‚ÄA‚ ‚Ó‚êˆ—‚ğs‚¤B</li>
-     *     <li>‚R|‚RD{@link OverflowValidator#validate()}‚ğŒÄ‚Ño‚µA‚ ‚Ó‚ê”‚ğÄ•]‰¿‚µA0ˆÈ‰º‚Æ‚È‚éê‡‚ÍAbreakB</li>
-     *     <li>‚SD{@link #isOverflowNewAdding()}‚ªfalse‚Ìê‡A{@link OverflowAlgorithm#add(CachedReference)}‚ğŒÄ‚Ño‚·B</li>
+     *     <li>ï¼‘ï¼{@link OverflowValidator#add(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *     <li>ï¼’ï¼{@link #isOverflowNewAdding()}ãŒtrueã®å ´åˆã€{@link OverflowAlgorithm#add(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *     <li>ï¼“ï¼{@link #isOverflowByAdding()}ãŒtrueã®å ´åˆã€{@link OverflowValidator#validate()}ã‚’å‘¼ã³å‡ºã—ã€ãã®æˆ»ã‚Šå€¤ã®ãŒ1ä»¥ä¸Šã®å ´åˆã€ä»¥ä¸‹ã®ï¼‘ï½ï¼“ã®å‡¦ç†ã‚’ç¹°ã‚Šè¿”ã™ã€‚</li>
+     *     <li>ï¼“ï¼ï¼‘ï¼{@link OverflowAlgorithm#overflow()}ã‚’å‘¼ã³å‡ºã—ã€ã‚ãµã‚Œå¯¾è±¡ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã™ã‚‹ã€‚ã‚ãµã‚Œå¯¾è±¡ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ãŒnullã®å ´åˆã¯ã€break</li>
+     *     <li>ï¼“ï¼ï¼’ï¼ã‚ãµã‚Œå¯¾è±¡ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’{@link OverflowAction#action(OverflowValidator, OverflowAlgorithm, CachedReference)}ã«æ¸¡ã—ã¦ã€ã‚ãµã‚Œå‡¦ç†ã‚’è¡Œã†ã€‚</li>
+     *     <li>ï¼“ï¼ï¼“ï¼{@link OverflowValidator#validate()}ã‚’å‘¼ã³å‡ºã—ã€ã‚ãµã‚Œæ•°ã‚’å†è©•ä¾¡ã—ã€0ä»¥ä¸‹ã¨ãªã‚‹å ´åˆã¯ã€breakã€‚</li>
+     *     <li>ï¼”ï¼{@link #isOverflowNewAdding()}ãŒfalseã®å ´åˆã€{@link OverflowAlgorithm#add(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚</li>
      * </ol>
       *
-     * @param dequeued ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param dequeued ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object dequeued, DaemonControl ctrl){
         if(validator == null || getState() != STARTED){
@@ -561,7 +561,7 @@ public class DefaultOverflowControllerService extends ServiceBase
                         overflowRef = algorithm.overflow();
                     }
                     if(prevOverflowRef != null && prevOverflowRef == overflowRef){
-                        // ‚ ‚Ó‚ê“®ì‚ªs‚¦‚È‚¢ê‡‚Ì–³ŒÀƒ‹[ƒv‚ğ‰ñ”ğ‚·‚é
+                        // ã‚ãµã‚Œå‹•ä½œãŒè¡Œãˆãªã„å ´åˆã®ç„¡é™ãƒ«ãƒ¼ãƒ—ã‚’å›é¿ã™ã‚‹
                         break;
                     }
                     if(overflowRef == null){
@@ -586,7 +586,7 @@ public class DefaultOverflowControllerService extends ServiceBase
     }
     
     /**
-     * ƒLƒ…[‚Ì’†g‚ğ“f‚«o‚·B<p>
+     * ã‚­ãƒ¥ãƒ¼ã®ä¸­èº«ã‚’åãå‡ºã™ã€‚<p>
      */
     public void garbage(){
         if(queue != null){

@@ -37,7 +37,7 @@ import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.lang.*;
 
 /**
- * {@link Logger}ƒ‰ƒbƒpB<p>
+ * {@link Logger}ãƒ©ãƒƒãƒ‘ã€‚<p>
  *
  * @author M.Takata
  */
@@ -581,7 +581,7 @@ class LoggerWrapper implements Logger, ServiceStateListener, Serializable{
         }
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public boolean isWrite(String logCode){
         if(currentLog != null){
             return currentLog.isWrite(logCode);

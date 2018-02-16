@@ -32,34 +32,34 @@
 package jp.ossc.nimbus.service.aop;
 
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * ”CˆÓ‚ÌƒL[‚É‡’v‚·‚é{@link InterceptorChain}‚ğæ“¾‚·‚éƒtƒ@ƒNƒgƒŠB<br>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * ä»»æ„ã®ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹{@link InterceptorChain}ã‚’å–å¾—ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<br>
  *
  * @author M.Takata
  */
 public interface InterceptorChainFactory{
     
     /**
-     * ”CˆÓ‚ÌƒL[‚É‡’v‚·‚é{@link InterceptorChain}‚ğæ“¾‚·‚éB<p>
+     * ä»»æ„ã®ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹{@link InterceptorChain}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒL[‚É‡’v‚·‚éInterceptorChain
+     * @param key ã‚­ãƒ¼
+     * @return ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹InterceptorChain
      */
     public InterceptorChain getInterceptorChain(Object key);
     
     /**
-     * ”CˆÓ‚ÌƒL[‚É‡’v‚·‚é{@link InterceptorChainList}‚ğæ“¾‚·‚éB<p>
+     * ä»»æ„ã®ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹{@link InterceptorChainList}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒL[‚É‡’v‚·‚éInterceptorChainList
+     * @param key ã‚­ãƒ¼
+     * @return ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹InterceptorChainList
      */
     public InterceptorChainList getInterceptorChainList(Object key);
     
     /**
-     * ”CˆÓ‚ÌƒL[‚É‡’v‚·‚é{@link Invoker}‚ğæ“¾‚·‚éB<p>
+     * ä»»æ„ã®ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹{@link Invoker}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒL[‚É‡’v‚·‚éInvoker
+     * @param key ã‚­ãƒ¼
+     * @return ã‚­ãƒ¼ã«åˆè‡´ã™ã‚‹Invoker
      */
     public Invoker getInvoker(Object key);
 }

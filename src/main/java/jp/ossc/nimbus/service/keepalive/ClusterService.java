@@ -43,8 +43,8 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ƒNƒ‰ƒXƒ^ƒT[ƒrƒXB<p>
- * •ªUŠÂ‹«‰º‚ÅƒNƒ‰ƒXƒ^‚ğ\¬‚µAƒNƒ‰ƒXƒ^‚Ì\¬ƒƒ“ƒo[‚Ìó‘Ô‚ğ{@link ClusterListener}‚É’Ê’m‚·‚éƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * åˆ†æ•£ç’°å¢ƒä¸‹ã§ã‚¯ãƒ©ã‚¹ã‚¿ã‚’æ§‹æˆã—ã€ã‚¯ãƒ©ã‚¹ã‚¿ã®æ§‹æˆãƒ¡ãƒ³ãƒãƒ¼ã®çŠ¶æ…‹ã‚’{@link ClusterListener}ã«é€šçŸ¥ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

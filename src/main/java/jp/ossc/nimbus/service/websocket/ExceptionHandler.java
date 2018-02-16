@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.websocket;
 import javax.websocket.Session;
 
 /**
- * —áŠOƒnƒ“ƒhƒ‰B
+ * ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -42,11 +42,11 @@ import javax.websocket.Session;
 public interface ExceptionHandler {
 
     /**
-     * —áŠO‚Ìƒnƒ“ƒhƒŠƒ“ƒOˆ—‚ğs‚¤B
+     * ä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å‡¦ç†ã‚’è¡Œã†ã€‚
      * <p>
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
-     * @param th ”­¶‚µ‚½—áŠO
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @param th ç™ºç”Ÿã—ãŸä¾‹å¤–
      */
     public void handleException(Session session, Throwable th) throws Throwable;
 }

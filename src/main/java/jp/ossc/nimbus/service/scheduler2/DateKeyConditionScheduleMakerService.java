@@ -39,8 +39,8 @@ import jp.ossc.nimbus.service.scheduler.DateEvaluator;
 
 
 /**
- * DateKeyğŒƒXƒPƒWƒ…[ƒ‹ì¬ƒT[ƒrƒXB<p>
- * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚Ì”»’è‚ğƒXƒPƒWƒ…[ƒ‹ƒ^ƒCƒv‚ğDateKey‚Æ‰ğß‚µ‚Äˆ—‚·‚éB<br>
+ * DateKeyæ¡ä»¶ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã®åˆ¤å®šã‚’ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚¿ã‚¤ãƒ—ã‚’DateKeyã¨è§£é‡ˆã—ã¦å‡¦ç†ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -55,29 +55,29 @@ public class DateKeyConditionScheduleMakerService
     private ServiceName dateEvaluatorServiceName;
     private DateEvaluator dateEvaluator;
     
-    // DateMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // DateMappingScheduleFactoryServiceMBeanã®JavaDoc
     public void setDateKey(String key){
         dateKeyStr = key;
     }
-    // DateMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // DateMappingScheduleFactoryServiceMBeanã®JavaDoc
     public String getDateKey(){
         return dateKeyStr;
     }
     
-    // DateMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // DateMappingScheduleFactoryServiceMBeanã®JavaDoc
     public void setDateEvaluatorServiceName(ServiceName name){
         dateEvaluatorServiceName = name;
     }
     
-    // DateMappingScheduleFactoryServiceMBean‚ÌJavaDoc
+    // DateMappingScheduleFactoryServiceMBeanã®JavaDoc
     public ServiceName getDateEvaluatorServiceName(){
         return dateEvaluatorServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(dateEvaluatorServiceName != null){
@@ -89,8 +89,8 @@ public class DateKeyConditionScheduleMakerService
     }
     
     /**
-     * {@link DateEvaluator}‚ğİ’è‚·‚éB<p>
-     * “ú•tŠg’£ƒL[‚ğg—p‚·‚éê‡‚Éİ’è‚·‚éB<br>
+     * {@link DateEvaluator}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ—¥ä»˜æ‹¡å¼µã‚­ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã«è¨­å®šã™ã‚‹ã€‚<br>
      *
      * @param evaluator DateEvaluator
      */
@@ -99,13 +99,13 @@ public class DateKeyConditionScheduleMakerService
     }
     
     /**
-     * ‚±‚Ì“ú•t‚ÅAƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * ˆø”‚Ìì¬“ú‚Æİ’è‚³‚ê‚½{@link DateKey}‚ª‡’v‚·‚éê‡AƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚éB<br>
+     * ã“ã®æ—¥ä»˜ã§ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã®ä½œæˆæ—¥ã¨è¨­å®šã•ã‚ŒãŸ{@link DateKey}ãŒåˆè‡´ã™ã‚‹å ´åˆã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹ã€‚<br>
      *
-     * @param date ì¬“ú
-     * @param master ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^
-     * @return true‚Ìê‡Aì‚é•K—v‚ª‚ ‚é
-     * @exception ScheduleMakeException ”»’è‚É¸”s‚µ‚½ê‡
+     * @param date ä½œæˆæ—¥
+     * @param master ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿
+     * @return trueã®å ´åˆã€ä½œã‚‹å¿…è¦ãŒã‚ã‚‹
+     * @exception ScheduleMakeException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean isNecessaryMake(Date date, ScheduleMaster master)
      throws ScheduleMakeException{

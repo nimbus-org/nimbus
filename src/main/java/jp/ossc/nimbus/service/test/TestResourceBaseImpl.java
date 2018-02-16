@@ -35,7 +35,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Šî’êƒeƒXƒgƒŠƒ\[ƒXƒNƒ‰ƒXB<p>
+ * åŸºåº•ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -51,7 +51,7 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     private Map categoryMap;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public TestResourceBaseImpl() {
         super();
@@ -65,9 +65,9 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     }
     
     /**
-     * ƒ^ƒCƒgƒ‹‚ğİ’è‚·‚éB<p>
+     * ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param title ƒ^ƒCƒgƒ‹
+     * @param title ã‚¿ã‚¤ãƒˆãƒ«
      */
     public void setTitle(String title) {
         this.title = title;
@@ -78,9 +78,9 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     }
     
     /**
-     * à–¾‚ğİ’è‚·‚éB<p>
+     * èª¬æ˜ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param description à–¾
+     * @param description èª¬æ˜
      */
     public void setDescription(String description) {
         this.description = description;
@@ -91,9 +91,9 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     }
     
     /**
-     * ƒGƒ‰[Œp‘±í•Ê‚ğİ’è‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼æ™‚ç¶™ç¶šç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param errorContinue ƒGƒ‰[Œp‘±í•Ê
+     * @param errorContinue ã‚¨ãƒ©ãƒ¼æ™‚ç¶™ç¶šç¨®åˆ¥
      * @see #CONTINUE_TYPE_DEFAULT
      * @see #CONTINUE_TYPE_TRUE
      * @see #CONTINUE_TYPE_FALSE
@@ -111,10 +111,10 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     }
     
     /**
-     * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìà–¾‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®èª¬æ˜ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param desc ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìà–¾
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param desc ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®èª¬æ˜
      */
     public void setActionDescription(String actionId, String desc) {
         actionDescriptionMap.put(actionId, desc);
@@ -125,10 +125,10 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     }
     
     /**
-     * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒgƒ‹‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param title ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ìƒ^ƒCƒgƒ‹
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param title ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒˆãƒ«
      */
     public void setActionTitle(String actionId, String title) {
         actionTitleMap.put(actionId, title);
@@ -139,10 +139,10 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     }
     
     /**
-     * ƒJƒeƒSƒŠ‚ğİ’è‚·‚éB<p>
+     * ã‚«ãƒ†ã‚´ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒJƒeƒSƒŠ–¼
-     * @param value ƒJƒeƒSƒŠ’l
+     * @param name ã‚«ãƒ†ã‚´ãƒªå
+     * @param value ã‚«ãƒ†ã‚´ãƒªå€¤
      */
     public void setCategory(String name, String value){
         categoryMap.put(name, value);

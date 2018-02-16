@@ -37,13 +37,13 @@ import java.util.Comparator;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/02 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/02 -ã€€H.Nakano
  */
 public class HanZenOperator {
-	/** ”¼ŠpƒJƒi‚Ìunicodeƒ}ƒbƒvã‚Å‚ÌÅ‰‚Ì( ˆê”Ô”’l‚Æ‚µ‚Ä¬‚³‚¢ )•¶š‚Å‚·B*/
+	/** åŠè§’ã‚«ãƒŠã®unicodeãƒãƒƒãƒ—ä¸Šã§ã®æœ€åˆã®( ä¸€ç•ªæ•°å€¤ã¨ã—ã¦å°ã•ã„ )æ–‡å­—ã§ã™ã€‚*/
 	public static final int HANKANA_FIRST = 0xff61;
 
-	/** ”¼ŠpƒJƒi‚Ìunicodeƒ}ƒbƒvã‚Å‚ÌÅŒã‚Ì( ˆê”Ô”’l‚Æ‚µ‚Ä‘å‚«‚¢ )•¶š‚Å‚·B*/
+	/** åŠè§’ã‚«ãƒŠã®unicodeãƒãƒƒãƒ—ä¸Šã§ã®æœ€å¾Œã®( ä¸€ç•ªæ•°å€¤ã¨ã—ã¦å¤§ãã„ )æ–‡å­—ã§ã™ã€‚*/
 	public static final int HANKANA_LAST  = 0xff9f;
 	/**
 	 * Constructor for HanZenOperator.
@@ -88,7 +88,7 @@ public class HanZenOperator {
 			char[] res;
 			if ( pos < maxPos ) {
 				char nextChar = nChars[ pos ];
-				if ( nextChar == 'Ş' || nextChar == 'ß' ) {
+				if ( nextChar == 'ï¾' || nextChar == 'ï¾Ÿ' ) {
 					pos++;
 					daku[ HanZenTable.IDX_HAN_BASE ]   = currChar;
 					daku[ HanZenTable.IDX_HAN_DAKUON ] = nextChar;
@@ -106,20 +106,20 @@ public class HanZenOperator {
 
 	// protected methods -----------------------------------------------------
 	/**
-	 * w’è‚³‚ê‚½chr‚ª”¼ŠpƒJƒi‚Å‚ ‚ê‚Îtrue‚ğ‚©‚¦‚µ‚Ü‚·B‚±‚±‚ğƒI[ƒo[ƒ‰ƒCƒh
-	 * ‚µ‚Ä”¼ŠpƒJƒiˆÈŠO‚Ì”¼Šp‚É‚àtrue‚ğ•Ô‚·‚æ‚¤‚É‚µ‚ÄA
-	 * HanZenTable.HANZEN_TABLE‚É‘Î‰•\‚ğ•t‚¯‰Á‚¦‚ê‚ÎA‘S‚Ä‚Ì”¼Šp•¶š‚ğ‘SŠp‚É
-	 * •ÏŠ·‚Å‚«‚Ü‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸchrãŒåŠè§’ã‚«ãƒŠã§ã‚ã‚Œã°trueã‚’ã‹ãˆã—ã¾ã™ã€‚ã“ã“ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	 * ã—ã¦åŠè§’ã‚«ãƒŠä»¥å¤–ã®åŠè§’ã«ã‚‚trueã‚’è¿”ã™ã‚ˆã†ã«ã—ã¦ã€
+	 * HanZenTable.HANZEN_TABLEã«å¯¾å¿œè¡¨ã‚’ä»˜ã‘åŠ ãˆã‚Œã°ã€å…¨ã¦ã®åŠè§’æ–‡å­—ã‚’å…¨è§’ã«
+	 * å¤‰æ›ã§ãã¾ã™ã€‚
 	 */
 	public static boolean isHankaku( char chr ){
 		return (  HANKANA_FIRST <= chr && chr <= HANKANA_LAST );
 	}
 	// protected methods -----------------------------------------------------
 	/**
-	 * w’è‚³‚ê‚½chr‚ª”¼ŠpƒJƒi‚Å‚ ‚ê‚Îtrue‚ğ‚©‚¦‚µ‚Ü‚·B‚±‚±‚ğƒI[ƒo[ƒ‰ƒCƒh
-	 * ‚µ‚Ä”¼ŠpƒJƒiˆÈŠO‚Ì”¼Šp‚É‚àtrue‚ğ•Ô‚·‚æ‚¤‚É‚µ‚ÄA
-	 * HanZenTable.HANZEN_TABLE‚É‘Î‰•\‚ğ•t‚¯‰Á‚¦‚ê‚ÎA‘S‚Ä‚Ì”¼Šp•¶š‚ğ‘SŠp‚É
-	 * •ÏŠ·‚Å‚«‚Ü‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸchrãŒåŠè§’ã‚«ãƒŠã§ã‚ã‚Œã°trueã‚’ã‹ãˆã—ã¾ã™ã€‚ã“ã“ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+	 * ã—ã¦åŠè§’ã‚«ãƒŠä»¥å¤–ã®åŠè§’ã«ã‚‚trueã‚’è¿”ã™ã‚ˆã†ã«ã—ã¦ã€
+	 * HanZenTable.HANZEN_TABLEã«å¯¾å¿œè¡¨ã‚’ä»˜ã‘åŠ ãˆã‚Œã°ã€å…¨ã¦ã®åŠè§’æ–‡å­—ã‚’å…¨è§’ã«
+	 * å¤‰æ›ã§ãã¾ã™ã€‚
 	 */
 	public static boolean containsHankaku( String val ){
 		if(val == null){
@@ -139,7 +139,7 @@ public class HanZenOperator {
 
 	// private methods -------------------------------------------------------
 	/**
-	 * main‚Ì”z—ñ‚ÌmainPos‚ÌˆÊ’u‚©‚çparts‚Ì’l‚ğã‘‚«‚µ‚Ü‚·B
+	 * mainã®é…åˆ—ã®mainPosã®ä½ç½®ã‹ã‚‰partsã®å€¤ã‚’ä¸Šæ›¸ãã—ã¾ã™ã€‚
 	 */
 	protected static int _putChars( char[] main,
 			   int	  mainPos,
@@ -154,16 +154,16 @@ public class HanZenOperator {
 
 
 	/**
-	 * chars‚Åw’è‚³‚ê‚½•¶š”z—ñ‚ğsourceTable‚Ì•\‚ğg—p‚µ‚Ä‘SŠp•¶š‚Ö•ÏŠ·‚µ‚Ü
-	 * ‚·Bchars‚É‚Í1 part‚Ì•¶š•ª( ’Êí‚Ílength == 1, ‘÷‰¹A”¼‘÷‰¹‚È‚ç‚Î
-	 * length == 2‚É‚È‚è‚Ü‚·B )‚ğw’è‚µ‚Ü‚·B‚à‚µAw’è‚³‚ê‚½chars‚ª•ÏŠ·table
-	 * ‚Å•ÏŠ·o—ˆ‚È‚¢‚È‚ç‚Î‚»‚Ì‚Ü‚Ü“¯‚¶”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+	 * charsã§æŒ‡å®šã•ã‚ŒãŸæ–‡å­—é…åˆ—ã‚’sourceTableã®è¡¨ã‚’ä½¿ç”¨ã—ã¦å…¨è§’æ–‡å­—ã¸å¤‰æ›ã—ã¾
+	 * ã™ã€‚charsã«ã¯1 partã®æ–‡å­—åˆ†( é€šå¸¸ã¯length == 1, æ¿éŸ³ã€åŠæ¿éŸ³ãªã‚‰ã°
+	 * length == 2ã«ãªã‚Šã¾ã™ã€‚ )ã‚’æŒ‡å®šã—ã¾ã™ã€‚ã‚‚ã—ã€æŒ‡å®šã•ã‚ŒãŸcharsãŒå¤‰æ›table
+	 * ã§å¤‰æ›å‡ºæ¥ãªã„ãªã‚‰ã°ãã®ã¾ã¾åŒã˜é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 	 * <p>
-	 * ( ex ) ±Ş‚Í•ÏŠ·o—ˆ‚È‚¢‚Ì‚ÅŠe•¶š‚É•ª‚¯‚Ä•ÏŠ·‚µ‚Ü‚·B
+	 * ( ex ) ï½±ï¾ã¯å¤‰æ›å‡ºæ¥ãªã„ã®ã§å„æ–‡å­—ã«åˆ†ã‘ã¦å¤‰æ›ã—ã¾ã™ã€‚
 	 * </p>
-	 * chars‚Ìlength‚Í 0 < length < 3‚Å‚·B
-	 * sourceTable‚ÍHanZenTable.HANZEN_TABLE‚ğAcomparator‚Í
-	 * HanZenTable.HANZEN_COMPARATOR‚ğw’è‚µ‚Ü‚·B
+	 * charsã®lengthã¯ 0 < length < 3ã§ã™ã€‚
+	 * sourceTableã¯HanZenTable.HANZEN_TABLEã‚’ã€comparatorã¯
+	 * HanZenTable.HANZEN_COMPARATORã‚’æŒ‡å®šã—ã¾ã™ã€‚
 	 */
 	protected static  char[] _convertPart( char[] 	chars,
 				 char[][][] sourceTable,

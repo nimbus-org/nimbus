@@ -36,7 +36,7 @@ import java.io.IOException;
 import javax.servlet.http.*;
 
 /**
- * ƒ{ƒfƒB‚ğ‚ÂRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * ãƒœãƒ‡ã‚£ã‚’æŒã¤RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -45,34 +45,34 @@ public class BodyRestResponse extends RestResponse{
     protected Object renponseObject;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BodyRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public BodyRestResponse(HttpServletResponse response){
         super(response);
     }
     
     /**
-     * ˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param responseObj ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
+     * @param responseObj ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setResult(Object responseObj){
         renponseObject = responseObj;
     }
     
     /**
-     * ˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param status HTTPƒXƒe[ƒ^ƒX
-     * @param responseObj ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
+     * @param status HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
+     * @param responseObj ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setResult(int status, Object responseObj){
         super.setResult(status);
@@ -80,11 +80,11 @@ public class BodyRestResponse extends RestResponse{
     }
     
     /**
-     * ˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
+     * å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param status HTTPƒXƒe[ƒ^ƒX
-     * @param message ‰“šƒƒbƒZ[ƒW
-     * @param responseObj ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
+     * @param status HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
+     * @param message å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param responseObj ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setResult(int status, String message, Object responseObj) throws IOException{
         super.setResult(status, message);
@@ -92,9 +92,9 @@ public class BodyRestResponse extends RestResponse{
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXƒIƒuƒWƒFƒNƒg
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getRenponseObject(){
         return renponseObject;

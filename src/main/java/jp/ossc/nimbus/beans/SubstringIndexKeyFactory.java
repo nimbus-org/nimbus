@@ -41,7 +41,7 @@ import java.io.ObjectInput;
 import java.io.IOException;
 
 /**
- * •¶š—ñŒ^ƒvƒƒpƒeƒB‚Ì•”•ª•¶š—ñ‚ğƒCƒ“ƒfƒbƒNƒX‚Æ‚·‚é{@link BeanTableIndexKeyFactory}À‘•ƒNƒ‰ƒXB<p>
+ * æ–‡å­—åˆ—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®éƒ¨åˆ†æ–‡å­—åˆ—ã‚’ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã™ã‚‹{@link BeanTableIndexKeyFactory}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -56,12 +56,12 @@ public class SubstringIndexKeyFactory implements BeanTableIndexKeyFactory, Exter
     public SubstringIndexKeyFactory(){}
     
     /**
-     * •¶š—ñ‚ÌŒã•ûˆê’v‚ğs‚¤ƒCƒ“ƒfƒbƒNƒX‚ğ¶¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æ–‡å­—åˆ—ã®å¾Œæ–¹ä¸€è‡´ã‚’è¡Œã†ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚Ì—v‘f‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param propName ‘ÎÛ‚Æ‚È‚é•¶š—ñŒ^ƒvƒƒpƒeƒB‚Ì–¼‘O
-     * @param aliasName •”•ª•¶š—ñ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB‚Ì•Ê–¼
-     * @param beginIndex •”•ª•¶š—ñ‚ÌŠJnƒCƒ“ƒfƒbƒNƒX
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã®è¦ç´ ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param propName å¯¾è±¡ã¨ãªã‚‹æ–‡å­—åˆ—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰
+     * @param aliasName éƒ¨åˆ†æ–‡å­—åˆ—ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åˆ¥å
+     * @param beginIndex éƒ¨åˆ†æ–‡å­—åˆ—ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public SubstringIndexKeyFactory(
         Class elementClass,
@@ -73,13 +73,13 @@ public class SubstringIndexKeyFactory implements BeanTableIndexKeyFactory, Exter
     }
     
     /**
-     * •¶š—ñ‚Ì‘O•ûˆê’v‹y‚Ñ•”•ªˆê’v‚ğs‚¤ƒCƒ“ƒfƒbƒNƒX‚ğ¶¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æ–‡å­—åˆ—ã®å‰æ–¹ä¸€è‡´åŠã³éƒ¨åˆ†ä¸€è‡´ã‚’è¡Œã†ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚Ì—v‘f‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param propName ‘ÎÛ‚Æ‚È‚é•¶š—ñŒ^ƒvƒƒpƒeƒB‚Ì–¼‘O
-     * @param aliasName •”•ª•¶š—ñ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB‚Ì•Ê–¼
-     * @param beginIndex •”•ª•¶š—ñ‚ÌŠJnƒCƒ“ƒfƒbƒNƒXB‚±‚ÌƒCƒ“ƒfƒbƒNƒX‚Ì•¶š‚ğŠÜ‚Ş
-     * @param endIndex •”•ª•¶š—ñ‚ÌI—¹ƒCƒ“ƒfƒbƒNƒXB‚±‚ÌƒCƒ“ƒfƒbƒNƒX‚Ì•¶š‚ÍŠÜ‚Ü‚È‚¢
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã®è¦ç´ ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param propName å¯¾è±¡ã¨ãªã‚‹æ–‡å­—åˆ—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰
+     * @param aliasName éƒ¨åˆ†æ–‡å­—åˆ—ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åˆ¥å
+     * @param beginIndex éƒ¨åˆ†æ–‡å­—åˆ—ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®æ–‡å­—ã‚’å«ã‚€
+     * @param endIndex éƒ¨åˆ†æ–‡å­—åˆ—ã®çµ‚äº†ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®æ–‡å­—ã¯å«ã¾ãªã„
      */
     public SubstringIndexKeyFactory(
         Class elementClass,
@@ -92,14 +92,14 @@ public class SubstringIndexKeyFactory implements BeanTableIndexKeyFactory, Exter
     }
     
     /**
-     * •¶š—ñ‚Ì‘O•ûˆê’v‹y‚Ñ•”•ªˆê’v‚ğs‚¤ƒCƒ“ƒfƒbƒNƒX‚ğ¶¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æ–‡å­—åˆ—ã®å‰æ–¹ä¸€è‡´åŠã³éƒ¨åˆ†ä¸€è‡´ã‚’è¡Œã†ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param elementClass ƒe[ƒuƒ‹‚Ì—v‘f‚Æ‚È‚éBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param propName ‘ÎÛ‚Æ‚È‚é•¶š—ñŒ^ƒvƒƒpƒeƒB‚Ì–¼‘O
-     * @param aliasName •”•ª•¶š—ñ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB‚Ì•Ê–¼
-     * @param beginIndex •”•ª•¶š—ñ‚ÌŠJnƒCƒ“ƒfƒbƒNƒXB‚±‚ÌƒCƒ“ƒfƒbƒNƒX‚Ì•¶š‚ğŠÜ‚Ş
-     * @param endIndex •”•ª•¶š—ñ‚ÌI—¹ƒCƒ“ƒfƒbƒNƒXB‚±‚ÌƒCƒ“ƒfƒbƒNƒX‚Ì•¶š‚ÍŠÜ‚Ü‚È‚¢
-     * @param reverse true‚Ìê‡A•¶š—ñ‚ÌŒã‚ë‚©‚çƒCƒ“ƒfƒbƒNƒX‚ğ•]‰¿‚·‚é
+     * @param elementClass ãƒ†ãƒ¼ãƒ–ãƒ«ã®è¦ç´ ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param propName å¯¾è±¡ã¨ãªã‚‹æ–‡å­—åˆ—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰
+     * @param aliasName éƒ¨åˆ†æ–‡å­—åˆ—ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åˆ¥å
+     * @param beginIndex éƒ¨åˆ†æ–‡å­—åˆ—ã®é–‹å§‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®æ–‡å­—ã‚’å«ã‚€
+     * @param endIndex éƒ¨åˆ†æ–‡å­—åˆ—ã®çµ‚äº†ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®æ–‡å­—ã¯å«ã¾ãªã„
+     * @param reverse trueã®å ´åˆã€æ–‡å­—åˆ—ã®å¾Œã‚ã‹ã‚‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è©•ä¾¡ã™ã‚‹
      */
     public SubstringIndexKeyFactory(
         Class elementClass,

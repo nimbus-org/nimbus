@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.service.scheduler2;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹§ŒäƒŠƒXƒiB<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡ãƒªã‚¹ãƒŠã€‚<p>
  *
  * @author M.Takata
  */
 public interface ScheduleControlListener{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹§Œäó‘Ô‚ª•ÏX‚³‚ê‚½‚É’Ê’m‚³‚ê‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param state •ÏX‚³‚ê‚½§Œäó‘Ô
-     * @exception ScheduleStateControlException ƒXƒPƒWƒ…[ƒ‹§Œäó‘Ô‚Ì•ÏX‚ÉŠÖ‚í‚éˆ—‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param state å¤‰æ›´ã•ã‚ŒãŸåˆ¶å¾¡çŠ¶æ…‹
+     * @exception ScheduleStateControlException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¶å¾¡çŠ¶æ…‹ã®å¤‰æ›´ã«é–¢ã‚ã‚‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void changedControlState(String id, int state)
      throws ScheduleStateControlException;

@@ -39,7 +39,7 @@ import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.axis.ValueAxis;
 
 /**
- * NumberAxis–Ú·‚è’²ßƒT[ƒrƒXB<p>
+ * NumberAxisç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  */
 public class NumberAxisTickUnitAdjusterService
     extends AbstractTickUnitAdjusterService
@@ -47,10 +47,10 @@ public class NumberAxisTickUnitAdjusterService
     
     private static final long serialVersionUID = 4617823208865903862L;
     
-    /** ”’lƒtƒH[ƒ}ƒbƒg */
+    /** æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ */
     private NumberFormat format;
 
-    // AbstractTickUnitAdjusterService‚ÌJavaDoc
+    // AbstractTickUnitAdjusterServiceã®JavaDoc
     protected void adjust(ValueAxis axis) {
         if (!(axis instanceof NumberAxis)) {
             throw new IllegalArgumentException(
@@ -61,7 +61,7 @@ public class NumberAxisTickUnitAdjusterService
         double length = axis.getRange().getLength();
         double unitCount = length / displayGraduationCount;
         if (unitCount <= 0.0d) {
-            // 1‚¸‚Â•\¦(ƒfƒtƒHƒ‹ƒg)
+            // 1ãšã¤è¡¨ç¤º(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)
             unitCount = 1.0d;
         } else {
             unitCount = adjustUnitCountByCommonDivisor(axis, unitCount);
@@ -74,7 +74,7 @@ public class NumberAxisTickUnitAdjusterService
             newFormat = new DecimalFormat();
         }
 
-        // V‚µ‚¢NumberTickUnit‚ğİ’è
+        // æ–°ã—ã„NumberTickUnitã‚’è¨­å®š
         ((NumberAxis) axis).setTickUnit(
             new NumberTickUnit(
                 unitCount,
@@ -87,12 +87,12 @@ public class NumberAxisTickUnitAdjusterService
         }
     }
 
-    // NumberAxisTickUnitAdjusterServiceMBean‚ÌJavaDoc
+    // NumberAxisTickUnitAdjusterServiceMBeanã®JavaDoc
     public void setFormat(NumberFormat format) {
         this.format = format;
     }
 
-    // NumberAxisTickUnitAdjusterServiceMBean‚ÌJavaDoc
+    // NumberAxisTickUnitAdjusterServiceMBeanã®JavaDoc
     public NumberFormat getFormat() {
         return format;
     }

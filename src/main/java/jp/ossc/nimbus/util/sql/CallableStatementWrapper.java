@@ -41,7 +41,7 @@ import java.util.Calendar;
 import java.util.Map;
 
 /**
- * CallableStatementƒ‰ƒbƒp[ƒNƒ‰ƒX
+ * CallableStatementãƒ©ãƒƒãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹
  * 
  * @author kameda
  */
@@ -52,40 +52,40 @@ public class CallableStatementWrapper
     private static final long serialVersionUID = -3915023916291144673L;
     
     /**
-     * Žw’è‚µ‚½CallableStatement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸCallableStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éCallableStatement
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatement
      */
     public CallableStatementWrapper(CallableStatement st){
         super(st);
     }
     
     /**
-     * Žw’è‚µ‚½CallableStatement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸCallableStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌStatement‚ð¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éStatement
+     * @param con ã“ã®Statementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹Statement
      */
     public CallableStatementWrapper(Connection con, CallableStatement st){
         super(con, st);
     }
     
     /**
-     * Žw’è‚µ‚½CallableStatement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸCallableStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param st ƒ‰ƒbƒv‚·‚éCallableStatement
-     * @param sql SQL•¶Žš—ñ
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public CallableStatementWrapper(CallableStatement st, String sql){
         super(st, sql);
     }
     
     /**
-     * Žw’è‚µ‚½CallableStatement‚ðƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸCallableStatementã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ‚±‚ÌCallableStatement‚ð¶¬‚µ‚½Connection
-     * @param st ƒ‰ƒbƒv‚·‚éCallableStatement
-     * @param sql SQL•¶Žš—ñ
+     * @param con ã“ã®CallableStatementã‚’ç”Ÿæˆã—ãŸConnection
+     * @param st ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatement
+     * @param sql SQLæ–‡å­—åˆ—
      */
     public CallableStatementWrapper(
         Connection con,

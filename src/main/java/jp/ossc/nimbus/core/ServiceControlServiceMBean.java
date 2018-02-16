@@ -34,7 +34,7 @@ package jp.ossc.nimbus.core;
 import java.util.Set;
 
 /**
- * {@link ServiceControlService}のMBeanインタフェース<p>
+ * {@link ServiceControlService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see ServiceControlService

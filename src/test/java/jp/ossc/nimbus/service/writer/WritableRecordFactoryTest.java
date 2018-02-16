@@ -39,8 +39,8 @@ import java.util.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/12| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/12ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class WritableRecordFactoryTest extends TestCase {
 
@@ -74,8 +74,8 @@ public class WritableRecordFactoryTest extends TestCase {
 		}
 	}
 	/**
-	 * ’PƒƒtƒH[ƒ}ƒbƒgw’è‚ ‚è‚ÌWritableRecordFactoryƒT[ƒrƒX
-	 * ƒtƒH[ƒ}ƒbƒg "%SimpleMesssage%"
+	 * å˜ç´”ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæŒ‡å®šã‚ã‚Šã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹
+	 * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ "%SimpleMesssage%"
 	 */
 
 	public void testAddElement2() throws Exception{
@@ -99,7 +99,7 @@ public class WritableRecordFactoryTest extends TestCase {
         final Map elements = new HashMap();
         elements.put("SimpleMessage",tstMsg);
         WritableRecord rec = writableRecordFactory.createRecord(elements);
-		if( rec.toString().equals("Hello World.‚Å‚·") ){
+		if( rec.toString().equals("Hello World.ã§ã™") ){
 			System.out.println("rec is " + rec);
 		}
 		else{
@@ -109,7 +109,7 @@ public class WritableRecordFactoryTest extends TestCase {
 	}
 	
 	public void testAddElement33() throws Exception{
-		//•s³ƒtƒH[ƒ}ƒbƒg‚ğ—^‚¦‚ç‚ê‚½ê‡BServiceNotFoundException‚É‚È‚éB
+		//ä¸æ­£ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’ä¸ãˆã‚‰ã‚ŒãŸå ´åˆã€‚ServiceNotFoundExceptionã«ãªã‚‹ã€‚
 		try{
 			assertNotNull((WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory33"));
 		}
@@ -228,7 +228,7 @@ public class WritableRecordFactoryTest extends TestCase {
         elements.put("SEQ",seq);
         elements.put("MSG2",tstMsg2);
         WritableRecord rec = writableRecordFactory.createRecord(elements);
-		//ƒtƒH[ƒ}ƒbƒg‚ÉASimpleMessage,SEQ,MSG2‚ª‹Lq‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÌƒeƒXƒgB
+		//ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã€SimpleMessage,SEQ,MSG2ãŒè¨˜è¿°ã•ã‚Œã¦ã„ãªã„å ´åˆã®ãƒ†ã‚¹ãƒˆã€‚
 		if( rec.toString().equals("This is test.") ){
 			System.out.println("rec is " + rec);
 		}
@@ -246,7 +246,7 @@ public class WritableRecordFactoryTest extends TestCase {
         final Map elements = new HashMap();
         elements.put("SEQ",seq);
         WritableRecord rec = writableRecordFactory.createRecord(elements);
-		//ƒtƒH[ƒ}ƒbƒg‚ÉASimpleMessage,SEQ,MSG2‚ª‹Lq‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÌƒeƒXƒgB
+		//ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã€SimpleMessage,SEQ,MSG2ãŒè¨˜è¿°ã•ã‚Œã¦ã„ãªã„å ´åˆã®ãƒ†ã‚¹ãƒˆã€‚
 		if( rec.toString().equals("This %%is test.99") ){
 			System.out.println("rec is " + rec);
 		}
@@ -257,7 +257,7 @@ public class WritableRecordFactoryTest extends TestCase {
 		
 	}
 	public void testAddElement12() throws Exception{
-		//•s³ƒtƒH[ƒ}ƒbƒg‚ğ—^‚¦‚ç‚ê‚½ê‡‚È‚Ì‚ÅAServiceNotFoundException‚É‚È‚éB
+		//ä¸æ­£ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’ä¸ãˆã‚‰ã‚ŒãŸå ´åˆãªã®ã§ã€ServiceNotFoundExceptionã«ãªã‚‹ã€‚
 		try{
             assertNotNull((WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory12"));
 		}
@@ -273,7 +273,7 @@ public class WritableRecordFactoryTest extends TestCase {
         final Map elements = new HashMap();
         elements.put("SEQ",seq);
         WritableRecord rec = writableRecordFactory.createRecord(elements);
-		//ƒtƒH[ƒ}ƒbƒg‚Í""
+		//ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯""
 		if( rec.toString().equals("99") ){
 			System.out.println("rec is " + rec);
 		}
@@ -287,7 +287,7 @@ public class WritableRecordFactoryTest extends TestCase {
 	public void testAddElement14() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory14");
 		
-		//‘Î‰‚·‚éÀ‘•ƒNƒ‰ƒX‚ª‘¶İ‚¹‚¸AServiceException‚ğ”­¶‚·‚é
+		//å¯¾å¿œã™ã‚‹å®Ÿè£…ã‚¯ãƒ©ã‚¹ãŒå­˜åœ¨ã›ãšã€ServiceExceptionã‚’ç™ºç”Ÿã™ã‚‹
 		writableRecordFactory.addElement("MSG","Hello World.");
 		
 		WritableRecord rec = writableRecordFactory.createRecord();
@@ -304,7 +304,7 @@ public class WritableRecordFactoryTest extends TestCase {
 
 	public void testAddElement15() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory15");		
-		//Key‚É‘Î‰‚·‚éÀ‘•ƒNƒ‰ƒX’è‹`‚ª‘¶İ‚¹‚¸ASimpleElement‚ª¶¬‚³‚ê‚éB
+		//Keyã«å¯¾å¿œã™ã‚‹å®Ÿè£…ã‚¯ãƒ©ã‚¹å®šç¾©ãŒå­˜åœ¨ã›ãšã€SimpleElementãŒç”Ÿæˆã•ã‚Œã‚‹ã€‚
         final Map elements = new HashMap();
         elements.put("SOMEKEY","Hello World.");
         WritableRecord rec = writableRecordFactory.createRecord(elements);
@@ -320,7 +320,7 @@ public class WritableRecordFactoryTest extends TestCase {
 	
 	public void testAddElement16() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory16");		
-		//Key‚É‘Î‰‚·‚éÀ‘•ƒNƒ‰ƒX’è‹`‚ª‘¶İ‚¹‚¸ASimpleElement‚ª¶¬‚³‚ê‚éB
+		//Keyã«å¯¾å¿œã™ã‚‹å®Ÿè£…ã‚¯ãƒ©ã‚¹å®šç¾©ãŒå­˜åœ¨ã›ãšã€SimpleElementãŒç”Ÿæˆã•ã‚Œã‚‹ã€‚
         final Map elements = new HashMap();
         elements.put("SimpleMessage","Hello World.");
         WritableRecord rec = writableRecordFactory.createRecord(elements);
@@ -337,7 +337,7 @@ public class WritableRecordFactoryTest extends TestCase {
 	/*
 	public void testAddElement17() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory17");		
-		//"SimpleMessage="‚µ‚©A‘‚©‚ê‚Ä‚¢‚È‚¢B
+		//"SimpleMessage="ã—ã‹ã€æ›¸ã‹ã‚Œã¦ã„ãªã„ã€‚
 		writableRecordFactory.addElement("SimpleMessage","Hello World.");		
 		WritableRecord rec = writableRecordFactory.createRecord();
 		if( rec.toString().equals("This is test Hello World.") ){
@@ -355,7 +355,7 @@ public class WritableRecordFactoryTest extends TestCase {
 	
 	public void testAddElement18() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory18");		
-		//"HOGEHOGE"‚µ‚©A‘‚©‚ê‚Ä‚¢‚È‚¢B
+		//"HOGEHOGE"ã—ã‹ã€æ›¸ã‹ã‚Œã¦ã„ãªã„ã€‚
         final Map elements = new HashMap();
         elements.put("SimpleMessage","Hello World.");
         WritableRecord rec = writableRecordFactory.createRecord(elements);
@@ -371,8 +371,8 @@ public class WritableRecordFactoryTest extends TestCase {
 	
 	public void testAddElement19() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory19");		
-		//"HOGEHOGE"‚µ‚©A‘‚©‚ê‚Ä‚¢‚È‚¢B
-		//addElement‚µ‚È‚¢‚ÅA‚¢‚«‚È‚ècreateRecord
+		//"HOGEHOGE"ã—ã‹ã€æ›¸ã‹ã‚Œã¦ã„ãªã„ã€‚
+		//addElementã—ãªã„ã§ã€ã„ããªã‚ŠcreateRecord
         final Map elements = new HashMap();
         WritableRecord rec = writableRecordFactory.createRecord(elements);
 		if( rec.toString().equals("") ){
@@ -387,7 +387,7 @@ public class WritableRecordFactoryTest extends TestCase {
 	
 	public void testAddElement20() throws Exception{
 		WritableRecordFactoryService writableRecordFactory = (WritableRecordFactoryService)ServiceManagerFactory.getServiceObject("TheManager","WritableRecFactory20");		
-		//DateElement‚ÌƒeƒXƒg
+		//DateElementã®ãƒ†ã‚¹ãƒˆ
 		Date d = new Date();
         final Map elements = new HashMap();
         elements.put("D",d);

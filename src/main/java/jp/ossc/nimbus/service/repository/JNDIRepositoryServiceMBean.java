@@ -36,7 +36,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JNDIRepositoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link JNDIRepositoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -44,16 +44,16 @@ public interface JNDIRepositoryServiceMBean
  extends ServiceBaseMBean, Repository{
     
     /**
-     * InitialContext‚Ì‰Šú‰»‚Ég—p‚·‚éJNDIŠÂ‹«•Ï”‚ğİ’è‚·‚éB<p>
+     * InitialContextã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹JNDIç’°å¢ƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param prop JNDIŠÂ‹«•Ï”‚ğŠi”[‚µ‚½ƒvƒƒpƒeƒB
+     * @param prop JNDIç’°å¢ƒå¤‰æ•°ã‚’æ ¼ç´ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setEnvironment(Properties prop);
     
     /**
-     * InitialContext‚Ì‰Šú‰»‚Ég—p‚·‚éJNDIŠÂ‹«•Ï”‚ğæ“¾‚·‚éB<p>
+     * InitialContextã®åˆæœŸåŒ–ã«ä½¿ç”¨ã™ã‚‹JNDIç’°å¢ƒå¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return JNDIŠÂ‹«•Ï”‚ğŠi”[‚µ‚½ƒvƒƒpƒeƒB
+     * @return JNDIç’°å¢ƒå¤‰æ•°ã‚’æ ¼ç´ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getEnvironment();
 }

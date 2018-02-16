@@ -36,20 +36,20 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
-*	CSVŒ`®Excelƒtƒ@ƒCƒ‹ƒIƒuƒWƒFƒNƒg
+*	CSVå½¢å¼Excelãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 *	@author		s3-ito
-*	@version	1.00 ì¬F2004.01.15 | s3-ito<BR>
-*				XVF
+*	@version	1.00 ä½œæˆï¼š2004.01.15 ï¼ s3-ito<BR>
+*				æ›´æ–°ï¼š
 */
 public class CsvExcelArrayList extends CsvArrayList {
     
     private static final long serialVersionUID = -6160765413905533998L;
     
-	/** “¯Šú—pƒIƒuƒWƒFƒNƒg		*/
+	/** åŒæœŸç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ		*/
     private Object mObjSync ;
 	
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
 	 */
 	public CsvExcelArrayList() {
 		super();
@@ -57,8 +57,8 @@ public class CsvExcelArrayList extends CsvArrayList {
 		
 	}
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
-	 *	@param			file	CSVŒ`®Excelƒtƒ@ƒCƒ‹
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
+	 *	@param			file	CSVå½¢å¼Excelãƒ•ã‚¡ã‚¤ãƒ«
 	 */
 	public CsvExcelArrayList(FileReader file) throws IOException {
 		super();
@@ -66,16 +66,16 @@ public class CsvExcelArrayList extends CsvArrayList {
 		readExcelFile(file);
 	}
 	/**
-	 *	Excelƒtƒ@ƒCƒ‹“Ç‚İ‚İƒƒ\ƒbƒh<br>
-	 *	Excelƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İCsvArrayListƒNƒ‰ƒXObject‚ğƒŠƒXƒg‚Éİ’è‚·‚é
-	 *	@param			file	CSVŒ`®Excelƒtƒ@ƒCƒ‹
+	 *	Excelãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	Excelãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿CsvArrayListã‚¯ãƒ©ã‚¹Objectã‚’ãƒªã‚¹ãƒˆã«è¨­å®šã™ã‚‹
+	 *	@param			file	CSVå½¢å¼Excelãƒ•ã‚¡ã‚¤ãƒ«
 	 */
 	public void readExcelFile(FileReader file) throws IOException {
 		synchronized(mObjSync) {
 			BufferedReader buffer = new BufferedReader(file);
 			String line = null;
 			for(;;) {
-				// sObject¶¬
+				// è¡ŒObjectç”Ÿæˆ
 				CsvArrayList cols = new CsvArrayList();
 				line = buffer.readLine();
 				if(line != null) {
@@ -86,18 +86,18 @@ public class CsvExcelArrayList extends CsvArrayList {
 				else {
 					break;
 				}
-				// ƒŠƒXƒg‚ÉsObject‚ğ’Ç‰Á
+				// ãƒªã‚¹ãƒˆã«è¡ŒObjectã‚’è¿½åŠ 
 				this.add(cols);
 			}
 			buffer.close();
 		}
 	}
 	/**
-	 *	•¶š—ñæ“¾<br>
-	 *	w’èˆÊ’u‚Ì•¶š—ñ‚ğæ“¾‚·‚é
-	 *	@return		String	w’èˆÊ’u‚Ì•¶š—ñ
-	 *	@param			line	s
-	 *	@param			col		—ñ
+	 *	æ–‡å­—åˆ—å–å¾—<br>
+	 *	æŒ‡å®šä½ç½®ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹
+	 *	@return		String	æŒ‡å®šä½ç½®ã®æ–‡å­—åˆ—
+	 *	@param			line	è¡Œ
+	 *	@param			col		åˆ—
 	 */
 	public String getStr(int line, int col) {
 		synchronized(mObjSync) {
@@ -106,10 +106,10 @@ public class CsvExcelArrayList extends CsvArrayList {
 		}
 	}
 	/**
-	 *	•¶š—ñ”æ“¾<br>
-	 *	w’ès‚Ì•¶š—ñ”‚ğæ“¾‚·‚é
-	 *	@return		int		•¶š—ñ”
-	 *	@param			line	s
+	 *	æ–‡å­—åˆ—æ•°å–å¾—<br>
+	 *	æŒ‡å®šè¡Œã®æ–‡å­—åˆ—æ•°ã‚’å–å¾—ã™ã‚‹
+	 *	@return		int		æ–‡å­—åˆ—æ•°
+	 *	@param			line	è¡Œ
 	 */
 	public int size(int line) {
 		synchronized(mObjSync) {

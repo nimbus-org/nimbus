@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.io;
 import java.util.Properties;
 
 /**
- * {@link KryoExternalizerService}��MBean�C���^�t�F�[�X<p>
+ * {@link KryoExternalizerService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see KryoExternalizerService
@@ -42,16 +42,16 @@ import java.util.Properties;
 public interface KryoExternalizerServiceMBean extends SerializableExternalizerServiceMBean{
     
     /**
-     * ����̃N���X�̒��񉻂��s��com.esotericsoftware.kryo.Serializer�̃}�b�s���O��ݒ肷��B<p>
+     * 特定のクラスの直列化を行うcom.esotericsoftware.kryo.Serializerのマッピングを設定する。<p>
      *
-     * @param mapping �L�[���Ώۂ̃N���X���A�l��Serializer�̃N���X���ƂȂ�}�b�s���O
+     * @param mapping キーが対象のクラス名、値がSerializerのクラス名となるマッピング
      */
     public void setDefaultSerializerMapping(Properties mapping);
     
     /**
-     * ����̃N���X�̒��񉻂��s��com.esotericsoftware.kryo.Serializer�̃}�b�s���O���擾����B<p>
+     * 特定のクラスの直列化を行うcom.esotericsoftware.kryo.Serializerのマッピングを取得する。<p>
      *
-     * @return �L�[���Ώۂ̃N���X���A�l��Serializer�̃N���X���ƂȂ�}�b�s���O
+     * @return キーが対象のクラス名、値がSerializerのクラス名となるマッピング
      */
     public Properties getDefaultSerializerMapping();
 }

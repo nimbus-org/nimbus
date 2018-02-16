@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.service.aop.InvocationContext;
 
 /**
- * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚èî•ñ‚ğŠi”[‚·‚éƒNƒ‰ƒXB<p>
+ * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šæƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  * @see MethodAsynchronousInterceptorService
@@ -48,21 +48,21 @@ public class AsynchronousResponse implements java.io.Serializable{
     private boolean throwException;
     
     /**
-     * w’è‚³‚ê‚½–ß‚è’l‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæˆ»ã‚Šå€¤ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param context ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param ret –ß‚è’l
+     * @param context å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param ret æˆ»ã‚Šå€¤
      */
     protected AsynchronousResponse(InvocationContext context, Object ret){
         this(context, ret, false);
     }
     
     /**
-     * w’è‚³‚ê‚½–ß‚èî•ñ‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæˆ»ã‚Šæƒ…å ±ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param context ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param ret –ß‚è’l‚Ü‚½‚Íthrow‚³‚ê‚½—áŠO
-     * @param throwException —áŠO‚ªthrow‚³‚ê‚½‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+     * @param context å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param ret æˆ»ã‚Šå€¤ã¾ãŸã¯throwã•ã‚ŒãŸä¾‹å¤–
+     * @param throwException ä¾‹å¤–ãŒthrowã•ã‚ŒãŸã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
      */
     protected AsynchronousResponse(
         InvocationContext context,
@@ -75,36 +75,36 @@ public class AsynchronousResponse implements java.io.Serializable{
     }
     
     /**
-     * ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgî•ñ
+     * @return å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
      */
     public InvocationContext getInvocationContext(){
         return context;
     }
     
     /**
-     * –ß‚è’l‚ğæ“¾‚·‚éB<p>
+     * æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return –ß‚è’lB—áŠO‚ªthrow‚³‚ê‚½ê‡‚Ínull
+     * @return æˆ»ã‚Šå€¤ã€‚ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆã¯null
      */
     public Object getReturnObject(){
         return throwException ? null : returnObject;
     }
     
     /**
-     * —áŠO‚ªthrow‚³‚ê‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¾‹å¤–ãŒthrowã•ã‚ŒãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return —áŠO‚ªthrow‚³‚ê‚½ê‡‚Ítrue
+     * @return ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆã¯true
      */
     public boolean isThrownException(){
         return throwException;
     }
     
     /**
-     * throw‚³‚ê‚½—áŠO‚ğæ“¾‚·‚éB<p>
+     * throwã•ã‚ŒãŸä¾‹å¤–ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return throw‚³‚ê‚½—áŠOB—áŠO‚ªthrow‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull
+     * @return throwã•ã‚ŒãŸä¾‹å¤–ã€‚ä¾‹å¤–ãŒthrowã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€null
      */
     public Throwable getThrownException(){
         return throwException ? (Throwable)returnObject : null;

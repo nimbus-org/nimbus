@@ -42,7 +42,7 @@ import java.util.ArrayList;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * {@link SharedContextTransactionManager}À‘•ƒT[ƒrƒXB<p>
+ * {@link SharedContextTransactionManager}å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

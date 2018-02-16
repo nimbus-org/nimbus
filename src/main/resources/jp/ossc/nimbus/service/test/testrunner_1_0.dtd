@@ -5,7 +5,7 @@ The DOCTYPE is:
       "-//Nimbus//DTD Nimbus Test Runner 1.0//JA"
       "http://nimbus.sourceforge.jp/dtd/testrunner_1_0.dtd">
 
-—á:
+ä¾‹:
     <testRunner>
         
         <phase>local</phase>
@@ -27,50 +27,50 @@ The DOCTYPE is:
     </testRunner>
 -->
 
-<!-- testRunner—v‘f‚ÍAƒeƒXƒg“à—e‚ð’è‹`‚·‚éƒ‹[ƒg—v‘f‚Å‚·B
+<!-- testRunnerè¦ç´ ã¯ã€ãƒ†ã‚¹ãƒˆå†…å®¹ã‚’å®šç¾©ã™ã‚‹ãƒ«ãƒ¼ãƒˆè¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT testRunner (controller? | reporter* | phase? | include? | exclude?)*>
 
-<!-- test‘®«‚ÍAƒeƒXƒg‚ðŽÀs‚·‚é‚©‚Ç‚¤‚©‚ð’è‹`‚·‚éB
-ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅƒeƒXƒg‚ÌŽÀs‚ðs‚¤B
-false‚ðŽw’è‚·‚é‚ÆAƒeƒXƒg‚ÍŽÀs‚¹‚¸AƒŠƒ\[ƒX‚Ìƒ_ƒEƒ“ƒ[ƒh‚Ì‚Ý‚ðs‚¤B
+<!-- testå±žæ€§ã¯ã€ãƒ†ã‚¹ãƒˆã‚’å®Ÿè¡Œã™ã‚‹ã‹ã©ã†ã‹ã‚’å®šç¾©ã™ã‚‹ã€‚
+ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ãƒ†ã‚¹ãƒˆã®å®Ÿè¡Œã‚’è¡Œã†ã€‚
+falseã‚’æŒ‡å®šã™ã‚‹ã¨ã€ãƒ†ã‚¹ãƒˆã¯å®Ÿè¡Œã›ãšã€ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ã¿ã‚’è¡Œã†ã€‚
 -->
 <!ATTLIST testRunner test (true|false) "true">
 
-<!-- controller—v‘f‚ÍATestController‚ÌƒT[ƒrƒX–¼‚ð’è‹`‚µ‚Ü‚·B
-ƒfƒtƒHƒ‹ƒg‚ÍANimbus#TestController
+<!-- controllerè¦ç´ ã¯ã€TestControllerã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
+ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€Nimbus#TestController
 -->
 <!ELEMENT controller (#PCDATA)>
 
-<!-- reporter—v‘f‚ÍATestReporter‚ÌƒT[ƒrƒX–¼‚ð’è‹`‚µ‚Ü‚·B
-ƒfƒtƒHƒ‹ƒg‚ÍANimbus#TestReporter
+<!-- reporterè¦ç´ ã¯ã€TestReporterã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å®šç¾©ã—ã¾ã™ã€‚
+ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€Nimbus#TestReporter
 -->
 <!ELEMENT reporter (#PCDATA)>
 
-<!-- phase—v‘f‚ÍAƒeƒXƒgƒtƒF[ƒY‚ð’è‹`‚µ‚Ü‚·B
+<!-- phaseè¦ç´ ã¯ã€ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚ºã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ELEMENT phase (#PCDATA)>
 
-<!-- include—v‘f‚ÍAŽÀs‚·‚éƒeƒXƒg‚ðŽw’è‚·‚é—v‘f‚Å‚·B
+<!-- includeè¦ç´ ã¯ã€å®Ÿè¡Œã™ã‚‹ãƒ†ã‚¹ãƒˆã‚’æŒ‡å®šã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT include (scenarioGroup+)>
 
-<!-- exclude—v‘f‚ÍAŽÀs‚µ‚È‚¢ƒeƒXƒg‚ðŽw’è‚·‚é—v‘f‚Å‚·B
+<!-- excludeè¦ç´ ã¯ã€å®Ÿè¡Œã—ãªã„ãƒ†ã‚¹ãƒˆã‚’æŒ‡å®šã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT exclude (scenarioGroup+)>
 
-<!-- scenarioGroup—v‘f‚ÍAƒVƒiƒŠƒIƒOƒ‹[ƒv‚ðŽw’è‚·‚é—v‘f‚Å‚·B
+<!-- scenarioGroupè¦ç´ ã¯ã€ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã‚’æŒ‡å®šã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT scenarioGroup (scenario*)>
 
-<!-- id‘®«‚ÍAƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID‚ð’è‹`‚µ‚Ü‚·B
+<!-- idå±žæ€§ã¯ã€ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®IDã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST scenarioGroup id CDATA #REQUIRED>
 
-<!-- scenario—v‘f‚ÍAƒVƒiƒŠƒI‚ðŽw’è‚·‚é—v‘f‚Å‚·B
+<!-- scenarioè¦ç´ ã¯ã€ã‚·ãƒŠãƒªã‚ªã‚’æŒ‡å®šã™ã‚‹è¦ç´ ã§ã™ã€‚
 -->
 <!ELEMENT scenario EMPTY>
 
-<!-- id‘®«‚ÍAƒVƒiƒŠƒI‚ÌID‚ð’è‹`‚µ‚Ü‚·B
+<!-- idå±žæ€§ã¯ã€ã‚·ãƒŠãƒªã‚ªã®IDã‚’å®šç¾©ã—ã¾ã™ã€‚
 -->
 <!ATTLIST scenario id CDATA #REQUIRED>

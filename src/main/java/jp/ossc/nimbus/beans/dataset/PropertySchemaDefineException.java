@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.beans.dataset;
 
 /**
- * ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`—áŠOB<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,24 +41,24 @@ public class PropertySchemaDefineException extends DataSetException{
     private static final long serialVersionUID = 1552119964516882240L;
     
     /**
-     * ƒXƒL[ƒ}•¶š—ñB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã€‚<p>
      */
     protected String schema;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ’è‹`‚µ‚æ‚¤‚Æ‚µ‚½ƒXƒL[ƒ}•¶š—ñ
+     * @param schema å®šç¾©ã—ã‚ˆã†ã¨ã—ãŸã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public PropertySchemaDefineException(String schema){
         this.schema = schema;
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ’è‹`‚µ‚æ‚¤‚Æ‚µ‚½ƒXƒL[ƒ}•¶š—ñ
-     * @param message ƒƒbƒZ[ƒW
+     * @param schema å®šç¾©ã—ã‚ˆã†ã¨ã—ãŸã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public PropertySchemaDefineException(String schema, String message){
         super(message);
@@ -66,11 +66,11 @@ public class PropertySchemaDefineException extends DataSetException{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ’è‹`‚µ‚æ‚¤‚Æ‚µ‚½ƒXƒL[ƒ}•¶š—ñ
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param schema å®šç¾©ã—ã‚ˆã†ã¨ã—ãŸã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertySchemaDefineException(
         String schema,
@@ -82,10 +82,10 @@ public class PropertySchemaDefineException extends DataSetException{
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ’è‹`‚µ‚æ‚¤‚Æ‚µ‚½ƒXƒL[ƒ}•¶š—ñ
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param schema å®šç¾©ã—ã‚ˆã†ã¨ã—ãŸã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertySchemaDefineException(String schema, Throwable cause){
         super(cause);
@@ -93,18 +93,18 @@ public class PropertySchemaDefineException extends DataSetException{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒW
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessage(){
         return schema + ':' + message;
     }
     
     /**
-     * ƒXƒL[ƒ}•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒL[ƒ}•¶š—ñ
+     * @return ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public String getSchema(){
         return schema;

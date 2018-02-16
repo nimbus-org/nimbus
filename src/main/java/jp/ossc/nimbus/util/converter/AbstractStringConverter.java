@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * •¶š—ñƒRƒ“ƒo[ƒ^‚Ì’ŠÛƒNƒ‰ƒXB<p>
+ * æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,31 +42,31 @@ public abstract class AbstractStringConverter
     private static final long serialVersionUID = -4121468203318618862L;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * •ÏŠ·Œ³‚Ì”z—ñƒCƒ“ƒfƒbƒNƒXB<p>
+     * å¤‰æ›å…ƒã®é…åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
      */
     protected int from;
     
     /**
-     * •ÏŠ·Œã‚Ì”z—ñƒCƒ“ƒfƒbƒNƒXB<p>
+     * å¤‰æ›å¾Œã®é…åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
      */
     protected int to;
     
     /**
-     * ‡•ûŒü•ÏŠ·‚ÌƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * é †æ–¹å‘å¤‰æ›ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public AbstractStringConverter(){
         this(POSITIVE_CONVERT);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚Ì•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #POSITIVE_CONVERT
      * @see #REVERSE_CONVERT
      */
@@ -75,9 +75,9 @@ public abstract class AbstractStringConverter
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #POSITIVE_CONVERT
      * @see #REVERSE_CONVERT
@@ -101,16 +101,16 @@ public abstract class AbstractStringConverter
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
         return convertType;
     }
     
-    // Converter‚ÌJavaDoc
+    // Converterã®JavaDoc
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
             return null;
@@ -122,12 +122,12 @@ public abstract class AbstractStringConverter
     }
     
     /**
-     * •¶š—ñ‚ğ•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·•¶š—ñ”z—ñ‚Æ•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<br>
+     * æ–‡å­—åˆ—ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã¨å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param str •ÏŠ·‘ÎÛ‚Ì•¶š—ñ 
-     * @return •ÏŠ·Œã‚Ì•¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®æ–‡å­—åˆ— 
+     * @return å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String convert(String str) throws ConvertException{
         String result = str;
@@ -139,11 +139,11 @@ public abstract class AbstractStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğA•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã€å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •ÏŠ·‘ÎÛ‚Ì•¶š—ñ 
-     * @return •ÏŠ·Œã‚Ì•¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®æ–‡å­—åˆ— 
+     * @return å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #getConvertChars()
      */
     protected String convertChars(String str) throws ConvertException{
@@ -172,11 +172,11 @@ public abstract class AbstractStringConverter
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğA•ÏŠ·•¶š—ñ”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã€å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str •ÏŠ·‘ÎÛ‚Ì•¶š—ñ 
-     * @return •ÏŠ·Œã‚Ì•¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®æ–‡å­—åˆ— 
+     * @return å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #getConvertStrings()
      */
     protected String convertStrings(String str) throws ConvertException{
@@ -212,16 +212,16 @@ public abstract class AbstractStringConverter
     }
     
     /**
-     * •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ
+     * @return å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—
      */
     protected abstract char[][] getConvertChars();
     
     /**
-     * •ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·•¶š—ñ”z—ñ
+     * @return å¤‰æ›æ–‡å­—åˆ—é…åˆ—
      */
     protected abstract String[][] getConvertStrings();
 }

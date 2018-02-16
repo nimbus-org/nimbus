@@ -46,7 +46,7 @@ import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 import jp.ossc.nimbus.service.websocket.ExceptionHandlerMappingService;
 
 /**
- * ƒƒbƒZ[ƒWƒfƒBƒXƒpƒbƒ`ƒƒ[ƒT[ƒrƒX’ŠÛƒNƒ‰ƒXB óM‚µ‚½”zMƒƒbƒZ[ƒW‚ğ”zM‚ª•K—v‚ÈƒƒbƒZ[ƒW‘—M‘ÎÛ‚É‘—M‚·‚éB
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒãƒ£ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚ å—ä¿¡ã—ãŸé…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é…ä¿¡ãŒå¿…è¦ãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã«é€ä¿¡ã™ã‚‹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -239,39 +239,39 @@ public abstract class AbstractPublishMessageDispatcherService extends ServiceBas
     }
 
     /**
-     * ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğ’Ç‰Á‚·‚é
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’è¿½åŠ ã™ã‚‹
      *
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public abstract void addMessageSenderProcess(MessageSender sender);
 
     /**
-     * ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğíœ‚·‚é
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’å‰Šé™¤ã™ã‚‹
      *
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public abstract void removeMessageSenderProcess(MessageSender sender);
 
     /**
-     * ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğ’Ç‰Á‚·‚é
+     * é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’è¿½åŠ ã™ã‚‹
      *
-     * @param key ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param key é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public abstract void addKeyProcess(Object key, MessageSender sender);
 
     /**
-     * ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg‚É‘Î‚µ‚ÄƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğíœ‚·‚é
+     * é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’å‰Šé™¤ã™ã‚‹
      *
-     * @param key ”zMƒƒbƒZ[ƒW‚É‘Î‚·‚éƒL[ƒIƒuƒWƒFƒNƒg
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
+     * @param key é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚­ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
      */
     public abstract void removeKeyProcess(Object key, MessageSender sender);
 
     /**
-     * ”zMƒƒbƒZ[ƒW‚ÌóMˆ—
+     * é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡å‡¦ç†
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     protected void onMessageProcess(Object message) {
         if (message != null) {
@@ -287,18 +287,18 @@ public abstract class AbstractPublishMessageDispatcherService extends ServiceBas
     }
 
     /**
-     * ”zMƒƒbƒZ[ƒW‚©‚çƒƒbƒZ[ƒW‘—M‘ÎÛ‚ğæ“¾‚·‚éB
+     * é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @param message ”zMƒƒbƒZ[ƒW
-     * @return ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ÌList
+     * @param message é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã®List
      */
     protected abstract Set<MessageSender> getMessageSendTarget(Object message);
 
     /**
-     * ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ÉƒƒbƒZ[ƒW‚ğ‘—M‚·‚éB ƒƒbƒZ[ƒW‘—M‚ÌQueueHandlerContainer‚ª‘¶İ‚·‚éê‡‚ÍAƒLƒ…[ƒCƒ“ƒO‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã®QueueHandlerContainerãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ã‚­ãƒ¥ãƒ¼ã‚¤ãƒ³ã‚°ã™ã‚‹ã€‚
      *
-     * @param senders ƒƒbƒZ[ƒW‘—M‘ÎÛ
-     * @param message ”zMƒƒbƒZ[ƒW
+     * @param senders ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
+     * @param message é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     protected void sendMessageSenders(Set<MessageSender> senders, Object message) {
         for (MessageSender sender:senders) {
@@ -311,10 +311,10 @@ public abstract class AbstractPublishMessageDispatcherService extends ServiceBas
     }
 
     /**
-     * ƒƒbƒZ[ƒW‘—M‘ÎÛ‚ÉƒƒbƒZ[ƒW‚ğ‘—M‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚
      *
-     * @param sender ƒƒbƒZ[ƒW‘—M‘ÎÛ
-     * @param message ”zMƒƒbƒZ[ƒW
+     * @param sender ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡å¯¾è±¡
+     * @param message é…ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     protected void sendMessage(MessageSender sender, Object message) {
         try {
@@ -331,7 +331,7 @@ public abstract class AbstractPublishMessageDispatcherService extends ServiceBas
     }
 
     /**
-     * ƒƒbƒZ[ƒW”zM‚ğóM‚·‚é‚½‚ß‚ÌQueueHandlerƒNƒ‰ƒXB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…ä¿¡ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerã‚¯ãƒ©ã‚¹ã€‚
      *
      * @author m-ishida
      */
@@ -358,7 +358,7 @@ public abstract class AbstractPublishMessageDispatcherService extends ServiceBas
     }
 
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é‚½‚ß‚ÌQueueHandlerƒNƒ‰ƒXB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®QueueHandlerã‚¯ãƒ©ã‚¹ã€‚
      *
      * @author m-ishida
      */

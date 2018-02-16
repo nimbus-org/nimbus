@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.recset;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import java.io.*;
 import java.text.*;
@@ -39,8 +39,8 @@ import java.text.*;
 import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
 
 /**
- * sƒf[ƒ^ŠÇ—ƒNƒ‰ƒX<p>
- * sƒf[ƒ^‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ŠÇ—‚ğs‚¤B
+ * è¡Œãƒ‡ãƒ¼ã‚¿ç®¡ç†ã‚¯ãƒ©ã‚¹<p>
+ * è¡Œãƒ‡ãƒ¼ã‚¿ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç®¡ç†ã‚’è¡Œã†ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -49,62 +49,62 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	
     private static final long serialVersionUID = 1440044638276534717L;
     
-    /** “ú•t•ÏŠ·•¶š—ñ */
+    /** æ—¥ä»˜å¤‰æ›æ–‡å­—åˆ— */
 	private static final String FORMAT_DATE = "yyyy/MM/dd";
 	private static final String FORMAT_TIMESTAMP = "yyyy/MM/dd HH:mm:ss";
 	
-	/** ƒ†ƒj[ƒNƒL[‹æØ‚è•¶š—ñ */
+	/** ãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼åŒºåˆ‡ã‚Šæ–‡å­—åˆ— */
 	static public final char C_KEY_SEPARATOR = '\u001C';
 	
-	/** “Ç‚İ‚İó‘Ô */
+	/** èª­ã¿è¾¼ã¿çŠ¶æ…‹ */
 	static public final int E_Record_TypeRead = 0;
 	       
-	/** XVó‘Ô */
+	/** æ›´æ–°çŠ¶æ…‹ */
 	static public final  int E_Record_TypeUpdate = 1;
 	     
-	/** íœó‘Ô */
+	/** å‰Šé™¤çŠ¶æ…‹ */
 	static public final  int E_Record_TypeDelete = 2;
 	     
-	/** ’Ç‰Áó‘Ô */
+	/** è¿½åŠ çŠ¶æ…‹ */
 	static public final  int E_Record_TypeInsert = 3;
 	    
-	/** íœ’Ç‰Áó‘Ô */
+	/** å‰Šé™¤è¿½åŠ çŠ¶æ…‹ */
 	static public final  int E_Record_TypeDeleteInsert = 4;
 	    
-	/** ‰Šú‰»ó‘Ô */
+	/** åˆæœŸåŒ–çŠ¶æ…‹ */
 	static public final  int E_Record_TypeIgnore = -1;
 	     
-	/** ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh */
+	/** ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ */
 	private int mTransactionMode = E_Record_TypeIgnore;
 	
-	/** sƒXƒL[ƒ} */
+	/** è¡Œã‚¹ã‚­ãƒ¼ãƒ */
 	protected RowSchema mRowSchema;
 	
-	/** —ñƒf[ƒ^•Û”z—ñ */
+	/** åˆ—ãƒ‡ãƒ¼ã‚¿ä¿æŒé…åˆ— */
 	private Object[] mFields;
 	
-	/** s”z—ñ“àŠi”[INDEX */
+	/** è¡Œé…åˆ—å†…æ ¼ç´INDEX */
 	private int mRowIndex = -1;
 	
-	/** ƒ†ƒj[ƒNKEY*/
+	/** ãƒ¦ãƒ‹ãƒ¼ã‚¯KEY*/
 	private String mKey = null;
 
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^ 
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ 
 	 * @param rs RowSchema
 	 */
 	public RowData(RowSchema rs) {
 		super();
-		/** ƒ[ƒJƒ‹éŒ¾ */
+		/** ãƒ­ãƒ¼ã‚«ãƒ«å®£è¨€ */
 		mRowSchema = rs;
 		mFields = new Object[rs.size()] ;
 	}
 	
 	/**
-	 * ’Ç‰ÁEC³‚³‚ê‚½—ñ‚Ì‚İ‚ğ‚ÂRowData‚ğ¶¬‚µ‚Ü‚·B 
-	 * @param rs sƒXƒL[ƒ}
-	 * @return ’Ç‰ÁEC³‚³‚ê‚½—ñ‚Ì‚İ‚ğ‚ÂRowData
+	 * è¿½åŠ ãƒ»ä¿®æ­£ã•ã‚ŒãŸåˆ—ã®ã¿ã‚’æŒã¤RowDataã‚’ç”Ÿæˆã—ã¾ã™ã€‚ 
+	 * @param rs è¡Œã‚¹ã‚­ãƒ¼ãƒ
+	 * @return è¿½åŠ ãƒ»ä¿®æ­£ã•ã‚ŒãŸåˆ—ã®ã¿ã‚’æŒã¤RowData
 	 */
 	protected RowData makeGoneData(RowSchema rs) {
 		RowData rd = new RowData(rs);
@@ -122,7 +122,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * sƒXƒL[ƒ}‚ğŒ³‚ÉƒtƒB[ƒ‹ƒh‚ğ¶¬‚µ‚Ü‚·B
+	 * è¡Œã‚¹ã‚­ãƒ¼ãƒã‚’å…ƒã«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 */
 /* comment out by AVSS Yoshihara 20040510		
 	public void createFields() {
@@ -130,7 +130,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 		FieldSchema objSchema ;
 		mFields = new Object[mRowSchema.size()];
 */
-		/** ƒtƒB[ƒ‹ƒhƒf[ƒ^ì¬ */
+		/** ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãƒ‡ãƒ¼ã‚¿ä½œæˆ */
 /*
 		for (int rcnt = 0 ;rcnt < mRowSchema.size() ;rcnt++){
 			objSchema = mRowSchema.get(rcnt) ;
@@ -141,7 +141,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 */
 	
 	/**
-	 * KEY‚ğ‰“š‚µ‚Ü‚·B
+	 * KEYã‚’å¿œç­”ã—ã¾ã™ã€‚
 	 * @return KEY
 	 */
 	public String getKey() {
@@ -186,32 +186,32 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”z—ñ“àINDEX‚ğ‰“š‚µ‚Ü‚·B
-	 * @return —ñ”z—ñINDEX
+	 * åˆ—é…åˆ—å†…INDEXã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @return åˆ—é…åˆ—INDEX
 	 */
 	public int getRowIndex() {
 		return mRowIndex;
 	}
 
 	/**
-	 * sƒXƒL[ƒ}‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@sƒXƒL[ƒ}
+	 * è¡Œã‚¹ã‚­ãƒ¼ãƒã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€è¡Œã‚¹ã‚­ãƒ¼ãƒ
 	 */
 	public RowSchema getRowSchema() {
 		return mRowSchema;
 	}
 
 	/**
-	 * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ğ‰“š‚µ‚Ü‚·B
-	 * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh
+	 * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰
 	 */
 	public int getTransactionMode() {
 		return mTransactionMode;
 	}
 
 	/**
-	 * sINDEX‚ğİ’è‚µ‚Ü‚·B
-	 * @param i sINDEX
+	 * è¡ŒINDEXã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param i è¡ŒINDEX
 	 */
 	protected void setRowIndex(int i) {
 		mRowIndex = i;
@@ -226,13 +226,13 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ğİ’è‚µ‚Ü‚·B
-	 * @param trMode ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh
+	 * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param trMode ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰
 	 */
 	public void setTransactionMode(int trMode) {
 		boolean wrtFlg = false ;
 		switch (this.getTransactionMode()) {
-			/** “Ç‚İ‚İó‘Ô‚Ìê‡ */
+			/** èª­ã¿è¾¼ã¿çŠ¶æ…‹ã®å ´åˆ */
 			case E_Record_TypeRead:
 				if (trMode == E_Record_TypeUpdate ||
 						trMode == E_Record_TypeDelete || 
@@ -240,7 +240,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 					this.mTransactionMode = trMode;
 				}
 				break ;
-			/** XVó‘Ô‚Ìê‡ */
+			/** æ›´æ–°çŠ¶æ…‹ã®å ´åˆ */
 			case E_Record_TypeUpdate:
 				if ( trMode == E_Record_TypeDelete || 
 						trMode == E_Record_TypeRead  ||
@@ -248,7 +248,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 					mTransactionMode = trMode;
 				}
 				break ;
-			/** íœó‘Ô‚Ìê‡ */
+			/** å‰Šé™¤çŠ¶æ…‹ã®å ´åˆ */
 			case E_Record_TypeDelete:
 				if (trMode == E_Record_TypeInsert) {
 					mTransactionMode = E_Record_TypeUpdate;
@@ -258,14 +258,14 @@ public class RowData implements Serializable, Comparable, Cloneable{
 					mTransactionMode = trMode;
 				}
 				break ;
-			/** ’Ç‰Áó‘Ô‚Ìê‡ */
+			/** è¿½åŠ çŠ¶æ…‹ã®å ´åˆ */
 			case E_Record_TypeInsert:
 				if (trMode == E_Record_TypeDelete) {
 					mTransactionMode = E_Record_TypeIgnore;
 				}
 				wrtFlg = true;
 				break ;
-			/** íœ’Ç‰Áó‘Ô‚Ìê‡ */
+			/** å‰Šé™¤è¿½åŠ çŠ¶æ…‹ã®å ´åˆ */
 			case E_Record_TypeDeleteInsert:
 				if (trMode == E_Record_TypeDelete ||
 						trMode == E_Record_TypeUpdate ||
@@ -273,7 +273,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 					mTransactionMode = trMode;
 				}
 				break ;
-			/** ‰Šúó‘Ô‚Ìê‡ */
+			/** åˆæœŸçŠ¶æ…‹ã®å ´åˆ */
 			default :
 				if (trMode == E_Record_TypeInsert) {
 					mTransactionMode = trMode;
@@ -296,7 +296,7 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * ƒ†ƒj[ƒNKEY‚ğ¶¬‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ‹ãƒ¼ã‚¯KEYã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 */
 	public void makeUniqueKey() {
 		StringBuilder ret = new StringBuilder();
@@ -312,26 +312,26 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ño—Í‚ÌListIterator‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@ListIterator
+	 * åˆ—å‡ºåŠ›ã®ListIteratorã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€ListIterator
 	 */
 	public ListIterator listIterator() {
 		return Arrays.asList(this.mFields).listIterator();
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚Å—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Object get(int index) {
 		return this.mFields[index];
 	}
 	
 	/**
-	 * —ñ–¼w’è‚Å—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Object get(String key) {
 		return this.mFields[getFieldSchema(key).getIndex()];
@@ -373,8 +373,8 @@ public class RowData implements Serializable, Comparable, Cloneable{
     }
     
 	/**
-	 * —ñ”Ô†w’è‚Å—ñƒf[ƒ^‚ğStringŒ^•ÏŠ·‚µ‚½ƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’Stringå‹å¤‰æ›ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public String getString(int index) {
 		int type = getFieldSchema(index).getFieldType();
@@ -415,8 +415,8 @@ public class RowData implements Serializable, Comparable, Cloneable{
 		return ret;
 	}
 	/**
-	 * —ñ”Ô†w’è‚Å—ñƒf[ƒ^‚ğSQLƒ^ƒCƒvŒ^•ÏŠ·‚µ‚½ƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’SQLã‚¿ã‚¤ãƒ—å‹å¤‰æ›ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Object getSqlTypeValue(int index) {
 		int type = getFieldSchema(index).getFieldType();
@@ -440,9 +440,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅStringŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Stringå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public String getStringValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -463,9 +463,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅDateŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Dateå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Date getDateValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -483,9 +483,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚Åbyte[]Œ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index ”z—ñ”Ô†
-	 * @return ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§byte[]å‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param index é…åˆ—ç•ªå·
+	 * @return ãƒ‡ãƒ¼ã‚¿
 	 */
 	public byte[] getBytesValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -502,9 +502,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅInputStreamŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index ”z—ñ”Ô†
-	 * @return ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§InputStreamå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param index é…åˆ—ç•ªå·
+	 * @return ãƒ‡ãƒ¼ã‚¿
 	 */
 	public InputStream getInputStreamValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -521,9 +521,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅReaderŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index ”z—ñ”Ô†
-	 * @return ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Readerå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param index é…åˆ—ç•ªå·
+	 * @return ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Reader getReaderValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -540,9 +540,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅIntegerŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Integerå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Integer getIntegerValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -564,9 +564,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅintŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§intå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public int getIntValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -587,9 +587,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅLongŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Longå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Long getLongValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -611,9 +611,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅlongŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§longå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public long getPrimitiveLongValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -634,9 +634,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅFloatŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Floatå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Float getFloatValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -658,9 +658,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅfloatŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§floatå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public float getPrimitiveFloatValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -681,9 +681,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅDoubleŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Doubleå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Double getDoubleValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -705,9 +705,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅdoubleŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param index@”z—ñ”Ô†
-	 * @return@ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§doubleå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€ãƒ‡ãƒ¼ã‚¿
 	 */
 	public double getPrimitiveDoubleValue(int index) {
 	    FieldSchema fs = getFieldSchema(index);
@@ -728,141 +728,141 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ–¼w’è‚Å—ñƒf[ƒ^‚ğSQLƒ^ƒCƒvŒ^•ÏŠ·‚µ‚½ƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’SQLã‚¿ã‚¤ãƒ—å‹å¤‰æ›ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Object getSqlTypeValue(String key) {
 		return this.getSqlTypeValue(getFieldSchema(key).getIndex());
 	}
 	/**
-	 * —ñ–¼w’è‚Å—ñƒf[ƒ^‚ğStringŒ^•ÏŠ·‚µ‚½ƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’Stringå‹å¤‰æ›ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public String getString(String key) {
 		return this.getString(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅStringŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Stringå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public String getStringValue(String key) {
 		return this.getStringValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅDateŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Dateå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Date getDateValue(String key) {
 		return this.getDateValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚Åbyte[]Œ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return —ñƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§byte[]å‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @return åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public byte[] getBytesValue(String key) {
 		return this.getBytesValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅInputStreamŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return —ñƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§InputStreamå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @return åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public InputStream getInputStreamValue(String key) {
 		return this.getInputStreamValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅReaderŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return —ñƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Readerå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @return åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Reader getReaderValue(String key) {
 		return this.getReaderValue(getFieldSchema(key).getIndex());
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅIntegerŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Integerå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Integer getIntegerValue(String key) {
 		return this.getIntegerValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅintŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§intå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public int getIntValue(String key) {
 		return this.getIntValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅLongŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Longå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Long getLongValue(String key) {
 		return this.getLongValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅlongŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§longå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public long getPrimitiveLongValue(String key) {
 		return this.getPrimitiveLongValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅFloatŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Floatå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Float getFloatValue(String key) {
 		return this.getFloatValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅfloatŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§floatå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public float getPrimitiveFloatValue(String key) {
 		return this.getPrimitiveFloatValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅDoubleŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Doubleå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public Double getDoubleValue(String key) {
 		return this.getDoubleValue(getFieldSchema(key).getIndex());
 	}
 	
 	/**
-	 * —ñ–¼w’è‚ÅdoubleŒ^‚Ì—ñƒf[ƒ^‚ğ‰“š‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @return@—ñƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§doubleå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @returnã€€åˆ—ãƒ‡ãƒ¼ã‚¿
 	 */
 	public double getPrimitiveDoubleValue(String key) {
 		return this.getPrimitiveDoubleValue(getFieldSchema(key).getIndex());
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚Åƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValueNative(int index, Object value){
 		FieldSchema fs = getFieldSchema(index); 
@@ -888,9 +888,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅStringŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Stringå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, String value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -922,9 +922,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅDateŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Dateå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, Date value){
 		FieldSchema fs = getFieldSchema(index); 
@@ -942,9 +942,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚Åbyte[]Œ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§byte[]å‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, byte[] value){
 		FieldSchema fs = getFieldSchema(index); 
@@ -971,9 +971,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅƒXƒgƒŠ[ƒ€Œ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§ã‚¹ãƒˆãƒªãƒ¼ãƒ å‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, InputStream value) throws IOException{
 		FieldSchema fs = getFieldSchema(index); 
@@ -1007,9 +1007,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚Åchar[]Œ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§char[]å‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, char[] value){
 		FieldSchema fs = getFieldSchema(index); 
@@ -1036,9 +1036,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚Å•¶šƒXƒgƒŠ[ƒ€Œ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§æ–‡å­—ã‚¹ãƒˆãƒªãƒ¼ãƒ å‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, Reader value) throws IOException{
 		FieldSchema fs = getFieldSchema(index); 
@@ -1072,9 +1072,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅIntegerŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Integerå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, Integer value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1103,9 +1103,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅintŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§intå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, int value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1134,9 +1134,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅLongŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Longå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, Long value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1165,9 +1165,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅlongŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§longå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, long value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1196,9 +1196,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅFloatŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Floatå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, Float value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1215,9 +1215,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 	
 	/**
-	 * —ñ”Ô†w’è‚ÅfloatŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§floatå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, float value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1234,9 +1234,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅDoubleŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§Doubleå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, Double value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1253,9 +1253,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ”Ô†w’è‚ÅdoubleŒ^‚Ìƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @param value ƒf[ƒ^
+	 * åˆ—ç•ªå·æŒ‡å®šã§doubleå‹ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(int index, double value) {
 		FieldSchema fs = getFieldSchema(index); 
@@ -1272,152 +1272,152 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅStringŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Stringå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, String value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅDateŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Dateå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, Date value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚Åbyte[]Œ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§byte[]å‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, byte[] value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅInputStreamŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§InputStreamå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, InputStream value) throws IOException{
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚Åchar[]Œ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§char[]å‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, char[] value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅReaderŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Readerå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, Reader value) throws IOException{
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅIntegerŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Integerå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, Integer value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅintŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§intå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, int value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅLongŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Longå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, Long value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅlongŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§longå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, long value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅFloatŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Floatå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, Float value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅfloatŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§floatå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, float value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅDoubleŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§Doubleå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, Double value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ–¼w’è‚ÅdoubleŒ^‚Ì—ñƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
-	 * @param key —ñ–¼
-	 * @param value ƒf[ƒ^
+	 * åˆ—åæŒ‡å®šã§doubleå‹ã®åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * @param key åˆ—å
+	 * @param value ãƒ‡ãƒ¼ã‚¿
 	 */
 	public void setValue(String key, double value) {
 		this.setValue(getFieldSchema(key).getIndex(), value);
 	}
 
 	/**
-	 * —ñ”‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@—ñ”
+	 * åˆ—æ•°ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€åˆ—æ•°
 	 */
 	public int size() {
 		return this.mFields.length;
 	}
 	
 	/**
-	 * sƒf[ƒ^‚ğƒRƒs[‚µ‚Ä‰“š‚µ‚Ü‚·B
-	 * @return ƒRƒs[‚µ‚½RowData
+	 * è¡Œãƒ‡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦å¿œç­”ã—ã¾ã™ã€‚
+	 * @return ã‚³ãƒ”ãƒ¼ã—ãŸRowData
 	 */
 	public RowData cloneRowData() {
         RowData rd = null;
         try{
             rd = (RowData)clone();
             rd.mFields = new Object[mFields.length];
-            // ŒİŠ·«ˆÛ‚Ì‚½‚ßAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ‚[ƒh‚ÍA•¡»‚µ‚È‚¢
+            // äº’æ›æ€§ç¶­æŒã®ãŸã‚ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã¯ã€è¤‡è£½ã—ãªã„
             rd.mTransactionMode = E_Record_TypeIgnore;
         }catch(CloneNotSupportedException e){
-            //‹N‚±‚ç‚È‚¢
+            //èµ·ã“ã‚‰ãªã„
             throw new RuntimeException(e);
         }
 		for (int rcnt = 0; rcnt < mFields.length; rcnt++) {
@@ -1427,9 +1427,9 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñƒf[ƒ^‚ğƒRƒs[‚µ‚Ä‰“š‚µ‚Ü‚·B
-	 * @param index —ñ”Ô†
-	 * @return@ƒRƒs[‚µ‚½Object
+	 * åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦å¿œç­”ã—ã¾ã™ã€‚
+	 * @param index åˆ—ç•ªå·
+	 * @returnã€€ã‚³ãƒ”ãƒ¼ã—ãŸObject
 	 */
 	private Object cloneFieldData(int index){
 		FieldSchema schema = getFieldSchema(index);
@@ -1465,8 +1465,8 @@ public class RowData implements Serializable, Comparable, Cloneable{
 	}
 
 	/**
-	 * —ñŠi”[”z—ñ‚ğ‰“š‚µ‚Ü‚·B
-	 * @return@List
+	 * åˆ—æ ¼ç´é…åˆ—ã‚’å¿œç­”ã—ã¾ã™ã€‚
+	 * @returnã€€List
 	 */
 	private List getFields() {
 		return Arrays.asList(mFields);
@@ -1484,10 +1484,10 @@ public class RowData implements Serializable, Comparable, Cloneable{
     }
 
 	/**
-	 * ƒf[ƒ^“à—e‚ª“¯’l‚©”»’è‚µ‚Ü‚·B
-	 * @param rd ”äŠr‚µ‚½‚¢RowData
-	 * @return	<code>true</code> “¯’l
-     *				<code>false</code> ”ñ“¯’l
+	 * ãƒ‡ãƒ¼ã‚¿å†…å®¹ãŒåŒå€¤ã‹åˆ¤å®šã—ã¾ã™ã€‚
+	 * @param rd æ¯”è¼ƒã—ãŸã„RowData
+	 * @return	<code>true</code> åŒå€¤
+     *				<code>false</code> éåŒå€¤
 	 */
 	public boolean equals(RowData rd){
 		boolean ret = true ;

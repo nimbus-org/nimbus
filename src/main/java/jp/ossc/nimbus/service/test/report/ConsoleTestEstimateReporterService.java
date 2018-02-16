@@ -10,7 +10,7 @@ import jp.ossc.nimbus.service.test.TestScenario;
 import jp.ossc.nimbus.service.test.TestScenarioGroup;
 
 /**
- * �W���o�͂ɃV�i���I���Ƃ̌��ς���H�����o�͂���B<p>
+ * 標準出力にシナリオごとの見積もり工数を出力する。<p>
  * 
  * @author M.Aono
  */

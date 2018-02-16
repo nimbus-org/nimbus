@@ -37,7 +37,7 @@ import java.util.zip.*;
 import java.util.regex.*;
 
 /**
- * HTTPƒŠƒNƒGƒXƒgB<p>
+ * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  * 
  * @author M.Takata
  */
@@ -60,28 +60,28 @@ public class HttpRequest{
     private static final String HTTP_METHOD_PUT = "PUT";
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Ìƒwƒbƒ_B<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ˜ãƒƒãƒ€ã€‚<p>
      */
     protected RequestHeader header;
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒBB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£ã€‚<p>
      */
     protected RequestBody body;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public HttpRequest(){
     }
     
     /**
-     * ƒCƒ“ƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * ƒwƒbƒ_‚Ì“Ç‚İ‚İ‚Ü‚Ås‚¤B<br>
-     * ƒ{ƒfƒB‚ÍAƒXƒgƒŠ[ƒ€‚Ì“Ç‚İ‚İ‚Ís‚í‚¸Aƒ{ƒfƒB‚ÌŠJnˆÊ’u‚ÌƒXƒgƒŠ[ƒ€‚ğŠi”[‚·‚éB<br>
+     * ã‚¤ãƒ³ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * ãƒ˜ãƒƒãƒ€ã®èª­ã¿è¾¼ã¿ã¾ã§è¡Œã†ã€‚<br>
+     * ãƒœãƒ‡ã‚£ã¯ã€ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®èª­ã¿è¾¼ã¿ã¯è¡Œã‚ãšã€ãƒœãƒ‡ã‚£ã®é–‹å§‹ä½ç½®ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’æ ¼ç´ã™ã‚‹ã€‚<br>
      *
-     * @param is HTTPƒŠƒNƒGƒXƒg‚Ì—v‹ƒXƒgƒŠ[ƒ€
-     * @exception Exception ƒwƒbƒ_‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param is HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®è¦æ±‚ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception Exception ãƒ˜ãƒƒãƒ€ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public HttpRequest(InputStream is) throws Exception{
         header = new RequestHeader();
@@ -93,73 +93,73 @@ public class HttpRequest{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Ìƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒŠƒNƒGƒXƒg‚Ìƒwƒbƒ_
+     * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ˜ãƒƒãƒ€
      */
     public RequestHeader getHeader(){
         return header;
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB
+     * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£
      */
     public RequestBody getBody(){
         return body;
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_B<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã€‚<p>
      * 
      * @author M.Takata
      */
     public static class RequestHeader{
         
         /**
-         * HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_‚Ì‘S•¶B<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã®å…¨æ–‡ã€‚<p>
          */
         protected String header;
         
         /**
-         * HTTPƒƒ\ƒbƒhB<p>
+         * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã€‚<p>
          */
         protected String method;
         
         /**
-         * ƒŠƒNƒGƒXƒgURLB<p>
-         * ’A‚µAƒNƒGƒŠ•¶š—ñ‚ÍŠÜ‚Ü‚È‚¢B<br>
+         * ãƒªã‚¯ã‚¨ã‚¹ãƒˆURLã€‚<p>
+         * ä½†ã—ã€ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã¯å«ã¾ãªã„ã€‚<br>
          */
         protected String url;
         
         /**
-         * ƒNƒGƒŠ•¶š—ñB<p>
+         * ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã€‚<p>
          */
         protected String query;
         
         /**
-         * HTTPƒo[ƒWƒ‡ƒ“B<p>
+         * HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³ã€‚<p>
          */
         protected String version;
         
         /**
-         * HTTPƒwƒbƒ_ƒ}ƒbƒvB<p>
+         * HTTPãƒ˜ãƒƒãƒ€ãƒãƒƒãƒ—ã€‚<p>
          */
         protected Map headerMap = new HashMap();
         
         /**
-         * HTTPƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          * 
-         * @return HTTPƒƒ\ƒbƒh
+         * @return HTTPãƒ¡ã‚½ãƒƒãƒ‰
          */
         public String getMethod(){
             return method;
         }
         
         /**
-         * URL‚ğæ“¾‚·‚éB<p>
-         * ’A‚µAƒNƒGƒŠ•¶š—ñ‚ÍŠÜ‚Ü‚È‚¢B<br>
+         * URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * ä½†ã—ã€ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã¯å«ã¾ãªã„ã€‚<br>
          * 
          * @return URL
          */
@@ -168,48 +168,48 @@ public class HttpRequest{
         }
         
         /**
-         * URL‚Ì³‹K•\Œ»ˆê’v‚ğ‚³‚¹‚é‚½‚ß‚Ìjava.util.Matcher‚ğæ“¾‚·‚éB<p>
+         * URLã®æ­£è¦è¡¨ç¾ä¸€è‡´ã‚’ã•ã›ã‚‹ãŸã‚ã®java.util.Matcherã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param url URL‚Ì³‹K•\Œ»
-         * @return ³‹K•\Œ»ƒ}ƒbƒ`ƒGƒ“ƒWƒ“
+         * @param url URLã®æ­£è¦è¡¨ç¾
+         * @return æ­£è¦è¡¨ç¾ãƒãƒƒãƒã‚¨ãƒ³ã‚¸ãƒ³
          */
         public Matcher getURLMatcher(String url){
              return Pattern.compile(url).matcher(this.url);
         }
         
         /**
-         * ƒNƒGƒŠ•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          * 
-         * @return ƒNƒGƒŠ•¶š—ñ
+         * @return ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—
          */
         public String getQuery(){
             return query;
         }
         
         /**
-         * ƒNƒGƒŠ•¶š—ñ‚Ì³‹K•\Œ»ˆê’v‚ğ‚³‚¹‚é‚½‚ß‚Ìjava.util.Matcher‚ğæ“¾‚·‚éB<p>
+         * ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã®æ­£è¦è¡¨ç¾ä¸€è‡´ã‚’ã•ã›ã‚‹ãŸã‚ã®java.util.Matcherã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param query ƒNƒGƒŠ•¶š—ñ‚Ì³‹K•\Œ»
-         * @return ³‹K•\Œ»ƒ}ƒbƒ`ƒGƒ“ƒWƒ“
+         * @param query ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—ã®æ­£è¦è¡¨ç¾
+         * @return æ­£è¦è¡¨ç¾ãƒãƒƒãƒã‚¨ãƒ³ã‚¸ãƒ³
          */
         public Matcher getQueryMatcher(String query){
              return Pattern.compile(query).matcher(this.query == null ? "" : this.query);
         }
         
         /**
-         * HTTPƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          * 
-         * @return HTTPƒo[ƒWƒ‡ƒ“
+         * @return HTTPãƒãƒ¼ã‚¸ãƒ§ãƒ³
          */
         public String getVersion(){
             return version;
         }
         
         /**
-         * w’è‚³‚ê‚½–¼‘O‚ÌHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸåå‰ã®HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param name ƒwƒbƒ_–¼
-         * @return ƒwƒbƒ_’l
+         * @param name ãƒ˜ãƒƒãƒ€å
+         * @return ãƒ˜ãƒƒãƒ€å€¤
          */
         public String getHeader(String name){
             final String[] vals = (String[])headerMap.get(name);
@@ -217,10 +217,10 @@ public class HttpRequest{
         }
         
         /**
-         * w’è‚³‚ê‚½–¼‘O‚ÌHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸåå‰ã®HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param name ƒwƒbƒ_–¼
-         * @return ƒwƒbƒ_’l”z—ñ
+         * @param name ãƒ˜ãƒƒãƒ€å
+         * @return ãƒ˜ãƒƒãƒ€å€¤é…åˆ—
          */
         public String[] getHeaders(String name){
             return (String[])headerMap.get(name);
@@ -231,9 +231,9 @@ public class HttpRequest{
         }
         
         /**
-         * Content-Lengthƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * Content-Lengthãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Content-Length‚Ì’lBŒ©‚Â‚©‚ç‚È‚¢ê‡‚Í-1
+         * @return Content-Lengthã®å€¤ã€‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯-1
          */
         public int getContentLength(){
             final String contentLengthStr
@@ -250,9 +250,9 @@ public class HttpRequest{
         }
         
         /**
-         * Content-Lengthƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+         * Content-Lengthãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param length Content-Length‚Ì’l
+         * @param length Content-Lengthã®å€¤
          */
         public void setContentLength(int length){
             headerMap.put(
@@ -262,9 +262,9 @@ public class HttpRequest{
         }
         
         /**
-         * Content-Typeƒwƒbƒ_‚Ìcharset‚ğæ“¾‚·‚éB<p>
+         * Content-Typeãƒ˜ãƒƒãƒ€ã®charsetã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return charset‚Ì’lBŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍISO8859_1
+         * @return charsetã®å€¤ã€‚è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ISO8859_1
          */
         public String getCharacterEncoding(){
             String characterEncoding = DEFAULT_CHARACTER_ENCODING;
@@ -294,9 +294,9 @@ public class HttpRequest{
         }
         
         /**
-         * Content-Encodingƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * Content-Encodingãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Content-Encodingƒwƒbƒ_
+         * @return Content-Encodingãƒ˜ãƒƒãƒ€
          */
         public String[] getContentEncoding(){
             final String[] contentEncoding
@@ -305,9 +305,9 @@ public class HttpRequest{
         }
         
         /**
-         * Accept-Encodingƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+         * Accept-Encodingãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Accept-Encodingƒwƒbƒ_
+         * @return Accept-Encodingãƒ˜ãƒƒãƒ€
          */
         public String getAcceptEncoding(){
             final String acceptEncoding
@@ -316,9 +316,9 @@ public class HttpRequest{
         }
         
         /**
-         * Transfer-Encodingƒwƒbƒ_‚Åchunked‚ªw’è‚³‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+         * Transfer-Encodingãƒ˜ãƒƒãƒ€ã§chunkedãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return Transfer-Encodingƒwƒbƒ_‚Ì’l‚ªchunked‚Ìê‡true
+         * @return Transfer-Encodingãƒ˜ãƒƒãƒ€ã®å€¤ãŒchunkedã®å ´åˆtrue
          */
         public boolean isChunked(){
             final String transferEncoding
@@ -330,10 +330,10 @@ public class HttpRequest{
         }
         
         /**
-         * ƒŠƒNƒGƒXƒgƒwƒbƒ_‚ğ“Ç‚İ‚ŞB<p>
+         * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
          *
-         * @param is HTTPƒŠƒNƒGƒXƒg‚Ì“ü—ÍƒXƒgƒŠ[ƒ€
-         * @exception Exception “Ç‚İ‚İ‹y‚Ñ‰ğÍ‚É¸”s‚µ‚½ê‡
+         * @param is HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+         * @exception Exception èª­ã¿è¾¼ã¿åŠã³è§£æã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void read(InputStream is) throws Exception{
             final StringWriter sw = new StringWriter();
@@ -401,11 +401,11 @@ public class HttpRequest{
         }
         
         /**
-         * ‚Ps•ª‚¾‚¯“Ç‚İ‚ŞB<p>
+         * ï¼‘è¡Œåˆ†ã ã‘èª­ã¿è¾¼ã‚€ã€‚<p>
          *
-         * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-         * @param tmp ˆêƒoƒbƒtƒ@—p‚Ìo—ÍƒXƒgƒŠ[ƒ€
-         * @exception IOException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+         * @param tmp ä¸€æ™‚ãƒãƒƒãƒ•ã‚¡ç”¨ã®å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+         * @exception IOException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public static String readLine(InputStream is, ByteArrayOutputStream tmp) throws IOException{
             tmp.reset();
@@ -436,9 +436,9 @@ public class HttpRequest{
         }
         
         /**
-         * ƒwƒbƒ_•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒwƒbƒ_•¶š—ñ
+         * @return ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—
          */
         public String toString(){
             return header;
@@ -446,39 +446,39 @@ public class HttpRequest{
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒgƒ{ƒfƒBB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒœãƒ‡ã‚£ã€‚<p>
      * 
      * @author M.Takata
      */
     public class RequestBody{
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ì“ü—ÍƒXƒgƒŠ[ƒ€B<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã€‚<p>
          */
         protected InputStream inputStream;
         
         /**
-         * ƒŠƒNƒGƒXƒgƒwƒbƒ_B<p>
+         * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã€‚<p>
          */
         protected RequestHeader header;
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒBƒoƒCƒg”z—ñB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£ãƒã‚¤ãƒˆé…åˆ—ã€‚<p>
          */
         protected byte[] body;
         
         /**
-         * Content-Encoding‚É]‚Á‚½“ü—ÍƒXƒgƒŠ[ƒ€‚Ì‰ğ“€‚ğs‚¤‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
-         * ƒfƒtƒHƒ‹ƒgAtrue‚Å‰ğ“€‚·‚éB<br>
+         * Content-Encodingã«å¾“ã£ãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®è§£å‡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã€trueã§è§£å‡ã™ã‚‹ã€‚<br>
          */
         protected boolean isDecompress = true;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param header HTTPƒŠƒNƒGƒXƒgƒwƒbƒ_
-         * @param is HTTPƒŠƒNƒGƒXƒg‚Ì“ü—ÍƒXƒgƒŠ[ƒ€
-         * @exception Exception “ü—ÍƒXƒgƒŠ[ƒ€‚Ì‰ğ“€‚É¸”s‚µ‚½ê‡
+         * @param header HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€
+         * @param is HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+         * @exception Exception å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®è§£å‡ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public RequestBody(RequestHeader header, InputStream is) throws Exception{
             this.header = header;
@@ -491,37 +491,37 @@ public class HttpRequest{
         }
         
         /**
-         * Content-Encoding‚É]‚Á‚½“ü—ÍƒXƒgƒŠ[ƒ€‚Ì‰ğ“€‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+         * Content-Encodingã«å¾“ã£ãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®è§£å‡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
          *
-         * @param isDecompress ‰ğ“€‚·‚éê‡‚Ítrue
+         * @param isDecompress è§£å‡ã™ã‚‹å ´åˆã¯true
          */
         public void setDecompress(boolean isDecompress){
             this.isDecompress = isDecompress;
         }
         
         /**
-         * Content-Encoding‚É]‚Á‚½“ü—ÍƒXƒgƒŠ[ƒ€‚Ì‰ğ“€‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * Content-Encodingã«å¾“ã£ãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®è§£å‡ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡‚ÍA‰ğ“€‚·‚é
+         * @return trueã®å ´åˆã¯ã€è§£å‡ã™ã‚‹
          */
         public boolean isDecompress(){
             return isDecompress;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾‚·‚éB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return HTTPƒŠƒNƒGƒXƒg‚Ì“ü—ÍƒXƒgƒŠ[ƒ€
+         * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
          */
         public InputStream getInputStream(){
             return inputStream;
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB‚ğ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
          *
-         * @exception Exception “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @exception Exception èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void read() throws Exception{
             
@@ -581,13 +581,13 @@ public class HttpRequest{
         }
         
         /**
-         * Content-Encoding‚Ìw’è‚É]‚Á‚ÄA“ü—ÍƒXƒgƒŠ[ƒ€‚ğ‰ğ“€‚·‚éB<p>
-         * ‘Î‰‚µ‚Ä‚¢‚éContent-Encoding‚ÍAdeflateAgzipAx-gzip‚Å‚ ‚éB<br>
+         * Content-Encodingã®æŒ‡å®šã«å¾“ã£ã¦ã€å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è§£å‡ã™ã‚‹ã€‚<p>
+         * å¯¾å¿œã—ã¦ã„ã‚‹Content-Encodingã¯ã€deflateã€gzipã€x-gzipã§ã‚ã‚‹ã€‚<br>
          *
-         * @param is “ü—ÍƒXƒgƒŠ[ƒ€
+         * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
          * @param contentEncoding Content-Encoding
-         * @return ‰ğ“€‚³‚ê‚½“ü—ÍƒXƒgƒŠ[ƒ€B‰ğ“€‚·‚é•K—v‚ª‚È‚¢ê‡‚ÍA‚»‚Ì‚Ü‚Ü•Ô‚·B
-         * @exception IOException ‰ğ“€‚É¸”s‚µ‚½ê‡B‘Î‰‚µ‚Ä‚¢‚È‚¢Content-Encoding‚ªw’è‚³‚ê‚Ä‚¢‚½ê‡B
+         * @return è§£å‡ã•ã‚ŒãŸå…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã€‚è§£å‡ã™ã‚‹å¿…è¦ãŒãªã„å ´åˆã¯ã€ãã®ã¾ã¾è¿”ã™ã€‚
+         * @exception IOException è§£å‡ã«å¤±æ•—ã—ãŸå ´åˆã€‚å¯¾å¿œã—ã¦ã„ãªã„Content-EncodingãŒæŒ‡å®šã•ã‚Œã¦ã„ãŸå ´åˆã€‚
          */
         protected InputStream decompress(InputStream is, String[] contentEncoding, int contentLength) throws IOException {
             if(contentEncoding == null || contentEncoding.length == 0){
@@ -607,11 +607,11 @@ public class HttpRequest{
                 final String encode = contentEncoding[i];
                 if(encode != null){
                     if(encode.indexOf(CONTENT_ENCODING_DEFLATE) != -1){
-                        // deflateˆ³k‰ğœ
+                        // deflateåœ§ç¸®è§£é™¤
                         in = new InflaterInputStream(in);
                     }else if(encode.indexOf(CONTENT_ENCODING_GZIP) != -1
                                 || encode.indexOf(CONTENT_ENCODING_X_GZIP) != -1){
-                        // gzipˆ³k‰ğœ
+                        // gzipåœ§ç¸®è§£é™¤
                         in = new GZIPInputStream(in);
                     }else{
                         throw new IOException("Can not decompress. [" + encode + "]");
@@ -630,11 +630,11 @@ public class HttpRequest{
         }
         
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
-         * –¾¦“I‚É{@link #read()}‚ğŒÄ‚Ño‚·‚Ü‚Å‚ÍAnullB<br>
-         * characterEncoding‚Ìİ’è‚ª•s³‚Èê‡‚ÍAnullB<br>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æ˜ç¤ºçš„ã«{@link #read()}ã‚’å‘¼ã³å‡ºã™ã¾ã§ã¯ã€nullã€‚<br>
+         * characterEncodingã®è¨­å®šãŒä¸æ­£ãªå ´åˆã¯ã€nullã€‚<br>
          *
-         * @return HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB•¶š—ñ
+         * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£æ–‡å­—åˆ—
          */
         public String toString(){
         	if(body == null){
@@ -649,20 +649,20 @@ public class HttpRequest{
         }
 
         /**
-         * HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
-         * –¾¦“I‚É{@link #read()}‚ğŒÄ‚Ño‚·‚Ü‚Å‚ÍAnullB<br>
+         * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * æ˜ç¤ºçš„ã«{@link #read()}ã‚’å‘¼ã³å‡ºã™ã¾ã§ã¯ã€nullã€‚<br>
          *
-         * @return HTTPƒŠƒNƒGƒXƒg‚Ìƒ{ƒfƒB‚ÌƒoƒCƒg”z—ñ
+         * @return HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒœãƒ‡ã‚£ã®ãƒã‚¤ãƒˆé…åˆ—
          */
         public byte[] toByteArray(){
             return body;
         }
         
         /**
-         * ƒ{ƒfƒB•¶š—ñ‚Ì³‹K•\Œ»ˆê’v‚ğ‚³‚¹‚é‚½‚ß‚Ìjava.util.Matcher‚ğæ“¾‚·‚éB<p>
+         * ãƒœãƒ‡ã‚£æ–‡å­—åˆ—ã®æ­£è¦è¡¨ç¾ä¸€è‡´ã‚’ã•ã›ã‚‹ãŸã‚ã®java.util.Matcherã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param body ƒ{ƒfƒB•¶š—ñ‚Ì³‹K•\Œ»
-         * @return ³‹K•\Œ»ƒ}ƒbƒ`ƒGƒ“ƒWƒ“
+         * @param body ãƒœãƒ‡ã‚£æ–‡å­—åˆ—ã®æ­£è¦è¡¨ç¾
+         * @return æ­£è¦è¡¨ç¾ãƒãƒƒãƒã‚¨ãƒ³ã‚¸ãƒ³
          */
         public Matcher getMatcher(String body){
             String bodyString = toString();

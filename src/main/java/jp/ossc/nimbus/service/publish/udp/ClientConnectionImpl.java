@@ -89,7 +89,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * UDPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnection}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * UDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnection}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -1706,7 +1706,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     }
     
     /**
-     * UDPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnection}‚ÌŠÇ—ƒT[ƒrƒXB<p>
+     * UDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnection}ã®ç®¡ç†ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1977,465 +1977,465 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     }
     
     /**
-     * UDPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnection}‚ÌŠÇ—ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+     * UDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnection}ã®ç®¡ç†ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
     public interface ClientConnectionServiceMBean extends ServiceBaseMBean{
         
         /**
-         * Ú‘±Ø’f‚ğŒŸ’m‚µ‚½ê‡‚ÌÄÚ‘±s‰ñ”‚ğİ’è‚·‚éB<br>
+         * æ¥ç¶šåˆ‡æ–­ã‚’æ¤œçŸ¥ã—ãŸå ´åˆã®å†æ¥ç¶šè©¦è¡Œå›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
-         * @param count ÄÚ‘±s‰ñ”
+         * @param count å†æ¥ç¶šè©¦è¡Œå›æ•°
          */
         public void setReconnectCount(int count);
         
         /**
-         * Ú‘±Ø’f‚ğŒŸ’m‚µ‚½ê‡‚ÌÄÚ‘±s‰ñ”‚ğæ“¾‚·‚éB<br>
+         * æ¥ç¶šåˆ‡æ–­ã‚’æ¤œçŸ¥ã—ãŸå ´åˆã®å†æ¥ç¶šè©¦è¡Œå›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<br>
          *
-         * @return ÄÚ‘±s‰ñ”
+         * @return å†æ¥ç¶šè©¦è¡Œå›æ•°
          */
         public int getReconnectCount();
         
         /**
-         * Ú‘±Ø’f‚ğŒŸ’m‚µ‚½ê‡‚ÌÄÚ‘±sŠÔŠu[ms]‚ğİ’è‚·‚éB<br>
+         * æ¥ç¶šåˆ‡æ–­ã‚’æ¤œçŸ¥ã—ãŸå ´åˆã®å†æ¥ç¶šè©¦è¡Œé–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<br>
          *
-         * @param interval ÄÚ‘±sŠÔŠu[ms]
+         * @param interval å†æ¥ç¶šè©¦è¡Œé–“éš”[ms]
          */
         public void setReconnectInterval(long interval);
         
         /**
-         * Ú‘±Ø’f‚ğŒŸ’m‚µ‚½ê‡‚ÌÄÚ‘±sŠÔŠu[ms]‚ğæ“¾‚·‚éB<br>
+         * æ¥ç¶šåˆ‡æ–­ã‚’æ¤œçŸ¥ã—ãŸå ´åˆã®å†æ¥ç¶šè©¦è¡Œé–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<br>
          *
-         * @return ÄÚ‘±sŠÔŠu[ms]
+         * @return å†æ¥ç¶šè©¦è¡Œé–“éš”[ms]
          */
         public long getReconnectInterval();
         
         /**
-         * Ú‘±Ø’f‚ğŒŸ’m‚µ‚½ê‡‚ÉÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚©‚ç‚Ç‚Ì‚­‚ç‚¢‚ÌŠÔ[ms]‚¾‚¯‘k‚Á‚ÄÄ‘——v‹‚ğo‚·‚©‚ğİ’è‚·‚éB<p>
+         * æ¥ç¶šåˆ‡æ–­ã‚’æ¤œçŸ¥ã—ãŸå ´åˆã«æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‹ã‚‰ã©ã®ãã‚‰ã„ã®æ™‚é–“[ms]ã ã‘é¡ã£ã¦å†é€è¦æ±‚ã‚’å‡ºã™ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param time óM‚©‚ç‘k‚éŠÔ[ms]
+         * @param time å—ä¿¡æ™‚åˆ»ã‹ã‚‰é¡ã‚‹æ™‚é–“[ms]
          */
         public void setReconnectBufferTime(long time);
         
         /**
-         * Ú‘±Ø’f‚ğŒŸ’m‚µ‚½ê‡‚ÉÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚©‚ç‚Ç‚Ì‚­‚ç‚¢‚ÌŠÔ[ms]‚¾‚¯‘k‚Á‚ÄÄ‘——v‹‚ğo‚·‚©‚ğæ“¾‚·‚éB<p>
+         * æ¥ç¶šåˆ‡æ–­ã‚’æ¤œçŸ¥ã—ãŸå ´åˆã«æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‹ã‚‰ã©ã®ãã‚‰ã„ã®æ™‚é–“[ms]ã ã‘é¡ã£ã¦å†é€è¦æ±‚ã‚’å‡ºã™ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óM‚©‚ç‘k‚éŠÔ[ms]
+         * @return å—ä¿¡æ™‚åˆ»ã‹ã‚‰é¡ã‚‹æ™‚é–“[ms]
          */
         public long getReconnectBufferTime();
         
         /**
-         * UDPƒpƒPƒbƒg‚ÌƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+         * UDPãƒ‘ã‚±ãƒƒãƒˆã®ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return UDPƒpƒPƒbƒg‚ÌƒTƒCƒY
+         * @return UDPãƒ‘ã‚±ãƒƒãƒˆã®ã‚µã‚¤ã‚º
          */
         public int getWindowSize();
         
         /**
-         * {@link Window}‚ªƒƒXƒg‚µ‚½‚Æ”»’f‚·‚é‚Ü‚Å‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚·‚éB<p>
+         * {@link Window}ãŒãƒ­ã‚¹ãƒˆã—ãŸã¨åˆ¤æ–­ã™ã‚‹ã¾ã§ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+         * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
          */
         public void setMissingWindowTimeout(long timeout);
         
         /**
-         * {@link Window}‚ªƒƒXƒg‚µ‚½‚Æ”»’f‚·‚é‚Ü‚Å‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğæ“¾‚·‚éB<p>
+         * {@link Window}ãŒãƒ­ã‚¹ãƒˆã—ãŸã¨åˆ¤æ–­ã™ã‚‹ã¾ã§ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+         * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
          */
         public long getMissingWindowTimeout();
         
         /**
-         * {@link Window}‚ªƒƒXƒg‚µ‚½‚Æ”»’f‚·‚é‚Ü‚Å‚Ì‘Ø—¯Œ”‚ğİ’è‚·‚éB<p>
+         * {@link Window}ãŒãƒ­ã‚¹ãƒˆã—ãŸã¨åˆ¤æ–­ã™ã‚‹ã¾ã§ã®æ»ç•™ä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param count ‘Ø—¯Œ”
+         * @param count æ»ç•™ä»¶æ•°
          */
         public void setMissingWindowCount(int count);
         
         /**
-         * {@link Window}‚ªƒƒXƒg‚µ‚½‚Æ”»’f‚·‚é‚Ü‚Å‚Ì‘Ø—¯Œ”‚ğæ“¾‚·‚éB<p>
+         * {@link Window}ãŒãƒ­ã‚¹ãƒˆã—ãŸã¨åˆ¤æ–­ã™ã‚‹ã¾ã§ã®æ»ç•™ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ‘Ø—¯Œ”
+         * @return æ»ç•™ä»¶æ•°
          */
         public int getMissingWindowCount();
         
         /**
-         * Œã‘±‚ÌƒƒbƒZ[ƒW‚ª—ˆ‚Ä‚¢‚È‚¢‚©ƒT[ƒo‘¤‚Öƒ|[ƒŠƒ“ƒO‚·‚éŠÔŠu‚ğİ’è‚·‚éB<p>
+         * å¾Œç¶šã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæ¥ã¦ã„ãªã„ã‹ã‚µãƒ¼ãƒå´ã¸ãƒãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹é–“éš”ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param interval ƒ|[ƒŠƒ“ƒO‚·‚éŠÔŠu[ms]
+         * @param interval ãƒãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹é–“éš”[ms]
          */
         public void setNewMessagePollingInterval(long interval);
         
         /**
-         * Œã‘±‚ÌƒƒbƒZ[ƒW‚ª—ˆ‚Ä‚¢‚È‚¢‚©ƒT[ƒo‘¤‚Öƒ|[ƒŠƒ“ƒO‚·‚éŠÔŠu‚ğæ“¾‚·‚éB<p>
+         * å¾Œç¶šã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæ¥ã¦ã„ãªã„ã‹ã‚µãƒ¼ãƒå´ã¸ãƒãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹é–“éš”ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ|[ƒŠƒ“ƒO‚·‚éŠÔŠu[ms]
+         * @return ãƒãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹é–“éš”[ms]
          */
         public long getNewMessagePollingInterval();
         
         /**
-         * ƒT[ƒo‘¤‚©‚ç‚Ì‰“š‚ğ‘Ò‚Â‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ã‚µãƒ¼ãƒå´ã‹ã‚‰ã®å¿œç­”ã‚’å¾…ã¤ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡A‰“š‚ğ‘Ò‚Â
+         * @return trueã®å ´åˆã€å¿œç­”ã‚’å¾…ã¤
          */
         public boolean isAcknowledge();
         
         /**
-         * óMƒpƒPƒbƒg‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒpƒPƒbƒgƒoƒbƒtƒ@”‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA10B<br>
+         * å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆãƒãƒƒãƒ•ã‚¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€10ã€‚<br>
          *
-         * @param size óMƒpƒPƒbƒgƒoƒbƒtƒ@”
+         * @param size å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆãƒãƒƒãƒ•ã‚¡æ•°
          */
         public void setPacketRecycleBufferSize(int size);
         
         /**
-         * óMƒpƒPƒbƒg‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒpƒPƒbƒgƒoƒbƒtƒ@”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆãƒãƒƒãƒ•ã‚¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMƒpƒPƒbƒgƒoƒbƒtƒ@”
+         * @return å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆãƒãƒƒãƒ•ã‚¡æ•°
          */
         public int getPacketRecycleBufferSize();
         
         /**
-         * óMƒEƒBƒ“ƒhƒE‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒEƒBƒ“ƒhƒEƒoƒbƒtƒ@”‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA200B<br>
+         * å—ä¿¡ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒƒãƒ•ã‚¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€200ã€‚<br>
          *
-         * @param size óMƒEƒBƒ“ƒhƒEƒoƒbƒtƒ@”
+         * @param size å—ä¿¡ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒƒãƒ•ã‚¡æ•°
          */
         public void setWindowRecycleBufferSize(int size);
         
         /**
-         * óMƒEƒBƒ“ƒhƒE‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒEƒBƒ“ƒhƒEƒoƒbƒtƒ@”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒƒãƒ•ã‚¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMƒEƒBƒ“ƒhƒEƒoƒbƒtƒ@”
+         * @return å—ä¿¡ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒƒãƒ•ã‚¡æ•°
          */
         public int getWindowRecycleBufferSize();
         
         /**
-         * óMƒƒbƒZ[ƒW‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒƒbƒZ[ƒWƒoƒbƒtƒ@”‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA100B<br>
+         * å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€100ã€‚<br>
          *
-         * @param size óMƒƒbƒZ[ƒWƒoƒbƒtƒ@”
+         * @param size å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡æ•°
          */
         public void setMessageRecycleBufferSize(int size);
         
         /**
-         * óMƒƒbƒZ[ƒWƒoƒbƒtƒ@‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒƒbƒZ[ƒWƒoƒbƒtƒ@ƒoƒbƒtƒ@”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ãƒãƒƒãƒ•ã‚¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMƒƒbƒZ[ƒWƒoƒbƒtƒ@ƒoƒbƒtƒ@”
+         * @return å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ãƒãƒƒãƒ•ã‚¡æ•°
          */
         public int getMessageRecycleBufferSize();
         
         /**
-         * ƒT[ƒo‚©‚ç‚Ì‰“š‚ğ‘Ò‚Âƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã‹ã‚‰ã®å¿œç­”ã‚’å¾…ã¤ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ^ƒCƒ€ƒAƒEƒg
+         * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
          */
         public long getResponseTimeout();
         
         /**
-         * ƒT[ƒo‚É—v‹‚ğ‘—M‚·‚é‘—Mƒ\ƒPƒbƒg‚Ìƒ[ƒJƒ‹ƒ\ƒPƒbƒgƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã«è¦æ±‚ã‚’é€ä¿¡ã™ã‚‹é€ä¿¡ã‚½ã‚±ãƒƒãƒˆã®ãƒ­ãƒ¼ã‚«ãƒ«ã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ[ƒJƒ‹ƒ\ƒPƒbƒgƒAƒhƒŒƒX
+         * @return ãƒ­ãƒ¼ã‚«ãƒ«ã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹
          */
         public SocketAddress getLocalSocketAddress();
         
         /**
-         * ƒT[ƒo‚É—v‹‚ğ‘—M‚·‚é‘—Mƒ\ƒPƒbƒg‚ÌƒŠƒ‚[ƒgƒ\ƒPƒbƒgƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã«è¦æ±‚ã‚’é€ä¿¡ã™ã‚‹é€ä¿¡ã‚½ã‚±ãƒƒãƒˆã®ãƒªãƒ¢ãƒ¼ãƒˆã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒŠƒ‚[ƒgƒ\ƒPƒbƒgƒAƒhƒŒƒX
+         * @return ãƒªãƒ¢ãƒ¼ãƒˆã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹
          */
         public SocketAddress getRemoteSocketAddress();
         
         /**
-         * óM‘¤‚Ìƒ[ƒJƒ‹ƒ\ƒPƒbƒgƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡å´ã®ãƒ­ãƒ¼ã‚«ãƒ«ã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ[ƒJƒ‹ƒ\ƒPƒbƒgƒAƒhƒŒƒX
+         * @return ãƒ­ãƒ¼ã‚«ãƒ«ã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹
          */
         public SocketAddress getReceiveSocketAddress();
         
         /**
-         * “o˜^‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+         * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return “o˜^‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ÌW‡
+         * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆ
          */
         public Set getSubjects();
         
         /**
-         * w’è‚µ‚½ƒTƒuƒWƒFƒNƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã—ãŸã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return “o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌW‡
+         * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®é›†åˆ
          */
         public Set getKeys(String subject);
         
         /**
-         * óMŒ”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMŒ”
+         * @return å—ä¿¡ä»¶æ•°
          */
         public long getReceiveCount();
         
         /**
-         * óMƒpƒPƒbƒgŒ”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMƒpƒPƒbƒgŒ”
+         * @return å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆä»¶æ•°
          */
         public long getReceivePacketCount();
         
         /**
-         * •½‹ÏƒƒbƒZ[ƒWˆ—ŠÔ‚ğæ“¾‚·‚éB<p>
+         * å¹³å‡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡¦ç†æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •½‹ÏƒƒbƒZ[ƒWˆ—ŠÔ[ms]
+         * @return å¹³å‡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡¦ç†æ™‚é–“[ms]
          */
         public long getAverageOnMessageProcessTime();
         
         /**
-         * •âŠÔ—v‹‚Ì‘—MŒ”‚ğæ“¾‚·‚éB<p>
+         * è£œé–“è¦æ±‚ã®é€ä¿¡ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •âŠÔ—v‹‚Ì‘—MŒ”
+         * @return è£œé–“è¦æ±‚ã®é€ä¿¡ä»¶æ•°
          */
         public long getMissingWindowRequestCount();
         
         /**
-         * •âŠÔ—v‹‚Ìƒ^ƒCƒ€ƒAƒEƒgŒ”‚ğæ“¾‚·‚éB<p>
+         * è£œé–“è¦æ±‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •âŠÔ—v‹‚Ìƒ^ƒCƒ€ƒAƒEƒgŒ”
+         * @return è£œé–“è¦æ±‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆä»¶æ•°
          */
         public long getMissingWindowRequestTimeoutCount();
         
         /**
-         * •âŠÔ—v‹‚Ì•½‹Ï‰“šŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+         * è£œé–“è¦æ±‚ã®å¹³å‡å¿œç­”æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •âŠÔ—v‹‚Ì•½‹Ï‰“šŠÔ
+         * @return è£œé–“è¦æ±‚ã®å¹³å‡å¿œç­”æ™‚é–“
          */
         public long getAverageMissingWindowResponseTime();
         
         /**
-         * VƒƒbƒZ[ƒWƒ|[ƒŠƒ“ƒO‚Ì‘—MŒ”‚ğæ“¾‚·‚éB<p>
+         * æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ¼ãƒªãƒ³ã‚°ã®é€ä¿¡ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return VƒƒbƒZ[ƒWƒ|[ƒŠƒ“ƒO‚Ì‘—MŒ”
+         * @return æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ¼ãƒªãƒ³ã‚°ã®é€ä¿¡ä»¶æ•°
          */
         public long getNewMessagePollingCount();
         
         /**
-         * VƒƒbƒZ[ƒWƒ|[ƒŠƒ“ƒO‚Ìƒ^ƒCƒ€ƒAƒEƒgŒ”‚ğæ“¾‚·‚éB<p>
+         * æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ¼ãƒªãƒ³ã‚°ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return VƒƒbƒZ[ƒWƒ|[ƒŠƒ“ƒO‚Ìƒ^ƒCƒ€ƒAƒEƒgŒ”
+         * @return æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ¼ãƒªãƒ³ã‚°ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆä»¶æ•°
          */
         public long getNewMessagePollingTimeoutCount();
         
         /**
-         * VƒƒbƒZ[ƒWƒ|[ƒŠƒ“ƒO‚Ì•½‹Ï‰“šŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+         * æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ¼ãƒªãƒ³ã‚°ã®å¹³å‡å¿œç­”æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return VƒƒbƒZ[ƒWƒ|[ƒŠƒ“ƒO‚Ì•½‹Ï‰“šŠÔ
+         * @return æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ¼ãƒªãƒ³ã‚°ã®å¹³å‡å¿œç­”æ™‚é–“
          */
         public long getAverageNewMessagePollingResponseTime();
         
         /**
-         * ƒpƒPƒbƒg“’B‚ÉƒƒbƒZ[ƒW‚Ì‡˜«‚ª•Û‚½‚ê‚Ä‚¢‚È‚©‚Á‚½‰ñ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆåˆ°é”æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é †åºæ€§ãŒä¿ãŸã‚Œã¦ã„ãªã‹ã£ãŸå›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒƒbƒZ[ƒW‚Ì‡˜«‚ª•Û‚½‚ê‚Ä‚¢‚È‚©‚Á‚½‰ñ”
+         * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é †åºæ€§ãŒä¿ãŸã‚Œã¦ã„ãªã‹ã£ãŸå›æ•°
          */
         public long getNoContinuousMessageCount();
         
         /**
-         * ƒƒXƒg‚Ì•âŠ®ˆ—‚È‚Ç‚ÅA–³‘Ê‚É‚È‚Á‚½ƒEƒBƒ“ƒhƒE‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ­ã‚¹ãƒˆæ™‚ã®è£œå®Œå‡¦ç†ãªã©ã§ã€ç„¡é§„ã«ãªã£ãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return –³‘Ê‚É‚È‚Á‚½ƒEƒBƒ“ƒhƒE‚ÌŒ”
+         * @return ç„¡é§„ã«ãªã£ãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä»¶æ•°
          */
         public long getWasteWindowCount();
         
         /**
-         * ƒƒXƒg‚µ‚½ƒƒbƒZ[ƒW‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ­ã‚¹ãƒˆã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒƒXƒg‚µ‚½ƒƒbƒZ[ƒW‚ÌŒ”
+         * @return ãƒ­ã‚¹ãƒˆã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä»¶æ•°
          */
         public long getLostCount();
         
         /**
-         * ƒJƒEƒ“ƒg‚ğƒŠƒZƒbƒg‚·‚éB<p>
+         * ã‚«ã‚¦ãƒ³ãƒˆã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
          */
         public void resetCount();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚ÌŒ”
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®ä»¶æ•°
          */
         public long getReceivePacketQueueCount();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚ÌŒ”‚Ì‘O‰ñ·‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®ä»¶æ•°ã®å‰å›å·®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚ÌŒ”‚Ì‘O‰ñ·
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®ä»¶æ•°ã®å‰å›å·®
          */
         public long getReceivePacketQueueCountDelta();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚ÌÅIóMŠÔ‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æœ€çµ‚å—ä¿¡æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚ÌÅIóMŠÔ
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æœ€çµ‚å—ä¿¡æ™‚é–“
          */
         public long getReceivePacketQueueLastPushedTimeMillis();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚ÌÅIóMŠÔ‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æœ€çµ‚å—ä¿¡æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚ÌÅIóMŠÔ
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æœ€çµ‚å—ä¿¡æ™‚é–“
          */
         public Date getReceivePacketQueueLastPushedTime();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚Ì‘Ø—¯Œ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æ»ç•™ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚Ì‘Ø—¯Œ”
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æ»ç•™ä»¶æ•°
          */
         public long getReceivePacketQueueDepth();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚Ì‘Ø—¯Œ”‚Ì‘O‰ñ·‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æ»ç•™ä»¶æ•°ã®å‰å›å·®ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚Ì‘Ø—¯Œ”‚Ì‘O‰ñ·
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æ»ç•™ä»¶æ•°ã®å‰å›å·®
          */
         public long getReceivePacketQueueDepthDelta();
         
         /**
-         * ƒpƒPƒbƒgóMƒLƒ…[‚ÌÅ‘å‘Ø—¯Œ”‚ğæ“¾‚·‚éB<p>
+         * ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æœ€å¤§æ»ç•™ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒpƒPƒbƒgóMƒLƒ…[‚ÌÅ‘å‘Ø—¯Œ”
+         * @return ãƒ‘ã‚±ãƒƒãƒˆå—ä¿¡ã‚­ãƒ¥ãƒ¼ã®æœ€å¤§æ»ç•™ä»¶æ•°
          */
         public long getReceivePacketQueueMaxDepth();
         
         /**
-         * ÅIóMƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+         * æœ€çµ‚å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ÅIóMƒƒbƒZ[ƒWID
+         * @return æœ€çµ‚å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
          */
         public MessageId getLatestMessageId();
         
         /**
-         * ÅIóMƒƒbƒZ[ƒW‚ÌóM‚ğæ“¾‚·‚éB<p>
+         * æœ€çµ‚å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ÅIóMƒƒbƒZ[ƒW‚ÌóM
+         * @return æœ€çµ‚å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»
          */
         public Date getLatestMessageReceiveTime();
         
         /**
-         * óM‡˜‚ğ’²®’†‚ÌƒƒbƒZ[ƒWŒ”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡é †åºã‚’èª¿æ•´ä¸­ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óM‡˜‚ğ’²®’†‚ÌƒƒbƒZ[ƒWŒ”
+         * @return å—ä¿¡é †åºã‚’èª¿æ•´ä¸­ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä»¶æ•°
          */
         public int getMissingWindowSize();
         
         /**
-         * óM‡˜‚ğ’²®’†‚ÌƒƒbƒZ[ƒWÅ‘åŒ”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡é †åºã‚’èª¿æ•´ä¸­ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æœ€å¤§ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óM‡˜‚ğ’²®’†‚ÌƒƒbƒZ[ƒWÅ‘åŒ”
+         * @return å—ä¿¡é †åºã‚’èª¿æ•´ä¸­ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æœ€å¤§ä»¶æ•°
          */
         public int getMaxMissingWindowSize();
         
         /**
-         * ƒT[ƒo‚ÆÚ‘±‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨æ¥ç¶šã™ã‚‹ã€‚<p>
          *
-         * @exception ConnectException ƒT[ƒo‚Æ‚ÌÚ‘±‚É¸”s‚µ‚½ê‡
+         * @exception ConnectException ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void connect() throws ConnectException;
         
         /**
-         * ƒT[ƒo‚ÆÚ‘±‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨æ¥ç¶šã™ã‚‹ã€‚<p>
          *
-         * @param id ƒNƒ‰ƒCƒAƒ“ƒg‚ğ¯•Ê‚·‚éID
-         * @exception ConnectException ƒT[ƒo‚Æ‚ÌÚ‘±‚É¸”s‚µ‚½ê‡
+         * @param id ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚’è­˜åˆ¥ã™ã‚‹ID
+         * @exception ConnectException ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void connect(Object id) throws ConnectException;
         
         /**
-         * ”zMŠJn‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡é–‹å§‹ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void startReceive() throws MessageSendException;
         
         /**
-         * w’è‚µ‚½‰ß‹‚ÌŠÔ‚Ìƒf[ƒ^‚©‚ç”zMŠJn‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * æŒ‡å®šã—ãŸéå»ã®æ™‚é–“ã®ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰é…ä¿¡é–‹å§‹ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param from ŠJnŠÔ
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param from é–‹å§‹æ™‚é–“
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void startReceive(long from) throws MessageSendException;
         
         /**
-         * ”zM’â~‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡åœæ­¢ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void stopReceive() throws MessageSendException;
         
         /**
-         * ”zMŠJn‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<br>
+         * é…ä¿¡é–‹å§‹ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<br>
          *
-         * @return ”zMŠJn‚µ‚Ä‚¢‚éê‡true
+         * @return é…ä¿¡é–‹å§‹ã—ã¦ã„ã‚‹å ´åˆtrue
          */
         public boolean isStartReceive();
         
         /**
-         * ”zM‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void addSubject(String subject) throws MessageSendException;
         
         /**
-         * ”zM‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @param keys ƒL[
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param keys ã‚­ãƒ¼
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void addSubject(String subject, String[] keys) throws MessageSendException;
         
         /**
-         * ”zM‚ğ‰ğœ‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã‚’è§£é™¤ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void removeSubject(String subject) throws MessageSendException;
         
         /**
-         * ”zM‚ğ‰ğœ‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã‚’è§£é™¤ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @param keys ƒL[
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param keys ã‚­ãƒ¼
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void removeSubject(String subject, String[] keys) throws MessageSendException;
         
         /**
-         * ƒT[ƒo‚ÆÄÚ‘±‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨å†æ¥ç¶šã™ã‚‹ã€‚<p>
          *
-         * @exception ConnectException ƒT[ƒo‚Æ‚ÌÚ‘±‚É¸”s‚µ‚½ê‡
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @exception ConnectException ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void reconnect() throws ConnectException, MessageSendException;
         
         /**
-         * Ú‘±‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * æ¥ç¶šã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return Ú‘±‚µ‚Ä‚¢‚éê‡true
+         * @return æ¥ç¶šã—ã¦ã„ã‚‹å ´åˆtrue
          */
         public boolean isConnected();
         
         /**
-         * ƒT[ƒo‘¤‚©‚çØ’f—v‹‚ğó‚¯‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ã‚µãƒ¼ãƒå´ã‹ã‚‰åˆ‡æ–­è¦æ±‚ã‚’å—ã‘ãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ƒT[ƒo‘¤‚©‚çØ’f—v‹‚ğó‚¯‚½ê‡true
+         * @return ã‚µãƒ¼ãƒå´ã‹ã‚‰åˆ‡æ–­è¦æ±‚ã‚’å—ã‘ãŸå ´åˆtrue
          */
         public boolean isServerClosed();
         
         /**
-         * ƒT[ƒo‚ÆØ’f‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨åˆ‡æ–­ã™ã‚‹ã€‚<p>
          */
         public void close();
     }

@@ -34,36 +34,36 @@ package jp.ossc.nimbus.service.keepalive;
 import java.util.List;
 
 /**
- * ƒNƒ‰ƒXƒ^ƒŠƒXƒiB<p>
- * {@link ClusterService}‚É‚æ‚Á‚Ä\¬‚³‚ê‚½ƒNƒ‰ƒXƒ^ƒƒ“ƒo[‚Ìó‘Ô•Ï‰»‚Ì’Ê’m‚ğó‚¯æ‚éB<br>
+ * ã‚¯ãƒ©ã‚¹ã‚¿ãƒªã‚¹ãƒŠã€‚<p>
+ * {@link ClusterService}ã«ã‚ˆã£ã¦æ§‹æˆã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãƒ¼ã®çŠ¶æ…‹å¤‰åŒ–ã®é€šçŸ¥ã‚’å—ã‘å–ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface ClusterListener{
     
     /**
-     * ƒNƒ‰ƒXƒ^ƒƒ“ƒo‚Ì‰Šú‰»‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒã®åˆæœŸåŒ–æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param myId ©g‚ÌIDBƒNƒ‰ƒCƒAƒ“ƒg‚Ìê‡‚ÍAnull
-     * @param members ƒNƒ‰ƒXƒ^ƒƒ“ƒo
+     * @param myId è‡ªèº«ã®IDã€‚ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®å ´åˆã¯ã€null
+     * @param members ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒ
      */
     public void memberInit(Object myId, List members);
     
     /**
-     * ƒNƒ‰ƒXƒ^ƒƒ“ƒo‚É•ÏX‚ª‚ ‚Á‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒã«å¤‰æ›´ãŒã‚ã£ãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param oldMembers •ÏX‘O‚ÌƒNƒ‰ƒXƒ^ƒƒ“ƒo
-     * @param newMembers •ÏXŒã‚ÌƒNƒ‰ƒXƒ^ƒƒ“ƒo
+     * @param oldMembers å¤‰æ›´å‰ã®ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒ
+     * @param newMembers å¤‰æ›´å¾Œã®ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒ
      */
     public void memberChange(List oldMembers, List newMembers);
     
     /**
-     * ƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ÌåŒnƒƒ“ƒo‚É‚È‚é‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒã®ä¸»ç³»ãƒ¡ãƒ³ãƒã«ãªã‚‹æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      */
     public void changeMain() throws Exception;
     
     /**
-     * ƒNƒ‰ƒXƒ^ƒƒ“ƒo‚Ì•›Œnƒƒ“ƒo‚É‚È‚é‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒã®å‰¯ç³»ãƒ¡ãƒ³ãƒã«ãªã‚‹æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      */
     public void changeSub();
 }

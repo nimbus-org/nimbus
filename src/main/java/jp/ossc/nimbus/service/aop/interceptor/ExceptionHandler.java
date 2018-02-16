@@ -34,18 +34,18 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.service.aop.InvocationContext;
 
 /**
- * —áŠOƒnƒ“ƒhƒ‰B<p>
+ * ä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ExceptionHandler{
     
     /**
-     * —áŠO‚Ìƒnƒ“ƒhƒŠƒ“ƒOˆ—‚ğs‚¤B<p>
+     * ä¾‹å¤–ã®ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param th ”­¶‚µ‚½—áŠO
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @exception Throwable ƒnƒ“ƒhƒŠƒ“ƒO‚É¸”s‚µ‚½ê‡B‚Ü‚½‚ÍAƒnƒ“ƒhƒŠƒ“ƒO‚ÌŒ‹‰Ê‚Æ‚µ‚Ä—áŠO‚ğthrow‚·‚éê‡
+     * @param th ç™ºç”Ÿã—ãŸä¾‹å¤–
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @exception Throwable ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã«å¤±æ•—ã—ãŸå ´åˆã€‚ã¾ãŸã¯ã€ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã®çµæœã¨ã—ã¦ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆ
      */
     public void handleException(
         Throwable th,

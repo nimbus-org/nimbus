@@ -34,43 +34,43 @@ package jp.ossc.nimbus.service.beancontrol.interfaces;
 import java.util.Set;
 
 /**
- * {@link BeanFlowInvoker}‚Ìƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowInvoker}ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface BeanFlowInvokerFactory{
     
-    /** BLFLOWƒtƒ@ƒCƒ‹Šg’£qB */
+    /** BLFLOWãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã€‚ */
     public static final String FLOW_FILE_EXTENTION = ".xml";
     
     /**
-     * w’è‚µ‚½Beanƒtƒ[‚ğÀs‚·‚é{@link BeanFlowInvoker}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸBeanãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹{@link BeanFlowInvoker}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param key Beanƒtƒ[ƒL[
-     * @return w’è‚µ‚½Beanƒtƒ[‚ğÀs‚·‚éBeanFlowInvoker
+     * @param key Beanãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
+     * @return æŒ‡å®šã—ãŸBeanãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹BeanFlowInvoker
      */
     public BeanFlowInvoker createFlow(String key);
     
     /**
-     * w’è‚µ‚½Beanƒtƒ[‚ğÀs‚·‚é{@link BeanFlowInvoker}‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸBeanãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹{@link BeanFlowInvoker}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param key Beanƒtƒ[ƒL[
-     * @return w’è‚µ‚½Beanƒtƒ[‚ğÀs‚·‚éBeanFlowInvoker
+     * @param key Beanãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
+     * @return æŒ‡å®šã—ãŸBeanãƒ•ãƒ­ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹BeanFlowInvoker
      */
     public BeanFlowInvoker createFlow(String key, String caller, boolean isOverwride);
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éBeanƒtƒ[–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹Beanãƒ•ãƒ­ãƒ¼åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Beanƒtƒ[–¼‚ÌW‡
+     * @return Beanãƒ•ãƒ­ãƒ¼åã®é›†åˆ
      */
     public Set getBeanFlowKeySet();
     
     /**
-     * w’è‚³‚ê‚½Beanƒtƒ[‚ğ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanãƒ•ãƒ­ãƒ¼ã‚’ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param key Beanƒtƒ[ƒL[
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éê‡true
+     * @param key Beanãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean containsFlow(String key);
 }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link SleepInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SleepInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SleepInterceptorService
@@ -42,32 +42,32 @@ import jp.ossc.nimbus.core.*;
 public interface SleepInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * sleep‚·‚éŠÔ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * sleepã™ã‚‹æ™‚é–“ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param time sleep‚·‚éŠÔ[ms]
+     * @param time sleepã™ã‚‹æ™‚é–“[ms]
      */
     public void setSleepTime(long time);
     
     /**
-     * sleep‚·‚éŠÔ‚ğæ“¾‚·‚éB<p>
+     * sleepã™ã‚‹æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return sleep‚·‚éŠÔ[ms]
+     * @return sleepã™ã‚‹æ™‚é–“[ms]
      */
     public long getSleepTime();
     
     /**
-     * ƒ‰ƒ“ƒ_ƒ€‚Ésleep‚·‚éŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * 0‚©‚çw’è‚³‚ê‚½ŠÔ[ms]‚Ì”ÍˆÍ‚Åƒ‰ƒ“ƒ_ƒ€‚Ésleep‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * ãƒ©ãƒ³ãƒ€ãƒ ã«sleepã™ã‚‹æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * 0ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸæ™‚é–“[ms]ã®ç¯„å›²ã§ãƒ©ãƒ³ãƒ€ãƒ ã«sleepã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param time sleep‚·‚éŠÔ[ms]
+     * @param time sleepã™ã‚‹æ™‚é–“[ms]
      */
     public void setRandomSleepTime(int time);
     
     /**
-     * ƒ‰ƒ“ƒ_ƒ€‚Ésleep‚·‚éŠÔ‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒ³ãƒ€ãƒ ã«sleepã™ã‚‹æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return sleep‚·‚éŠÔ[ms]
+     * @return sleepã™ã‚‹æ™‚é–“[ms]
      */
     public int getRandomSleepTime();
 }

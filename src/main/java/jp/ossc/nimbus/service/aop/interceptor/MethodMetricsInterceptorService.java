@@ -45,25 +45,25 @@ import jp.ossc.nimbus.service.writer.*;
 import jp.ossc.nimbus.service.performance.PerformanceRecorder;
 
 /**
- * ƒƒ\ƒbƒhƒƒgƒŠƒNƒXƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄAƒƒgƒŠƒNƒX‚ğæ“¾‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Åæ“¾‚Å‚«‚éƒƒgƒŠƒNƒXî•ñ‚ÍAˆÈ‰º‚Å‚ ‚éB<br>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§å–å¾—ã§ãã‚‹ãƒ¡ãƒˆãƒªã‚¯ã‚¹æƒ…å ±ã¯ã€ä»¥ä¸‹ã§ã‚ã‚‹ã€‚<br>
  * <ul>
- *     <li>ŒÄ‚Ño‚µƒƒ\ƒbƒh</li>
- *     <li>ŒÄ‚Ño‚µ‰ñ”i³í‰“šj</li>
- *     <li>ŒÄ‚Ño‚µ‰ñ”iException‰“šj</li>
- *     <li>ŒÄ‚Ño‚µ‰ñ”iError‰“šj</li>
- *     <li>ÅIŒÄ‚Ño‚µ</li>
- *     <li>ÅIException”­¶</li>
- *     <li>ÅIError”­¶</li>
- *     <li>Å‚ˆ—ŠÔ</li>
- *     <li>Å‚ˆ—ŠÔ</li>
- *     <li>Å’áˆ—ŠÔ</li>
- *     <li>Å’áˆ—ŠÔ</li>
- *     <li>•½‹Ïˆ—ŠÔ</li>
- *     <li>i•½‹Ïˆ—ŠÔ~ŒÄ‚Ño‚µ‰ñ”j‚Å•]‰¿‚³‚ê‚½‡ˆÊi~‡j</li>
+ *     <li>å‘¼ã³å‡ºã—ãƒ¡ã‚½ãƒƒãƒ‰</li>
+ *     <li>å‘¼ã³å‡ºã—å›æ•°ï¼ˆæ­£å¸¸å¿œç­”ï¼‰</li>
+ *     <li>å‘¼ã³å‡ºã—å›æ•°ï¼ˆExceptionå¿œç­”ï¼‰</li>
+ *     <li>å‘¼ã³å‡ºã—å›æ•°ï¼ˆErrorå¿œç­”ï¼‰</li>
+ *     <li>æœ€çµ‚å‘¼ã³å‡ºã—æ™‚åˆ»</li>
+ *     <li>æœ€çµ‚Exceptionç™ºç”Ÿæ™‚åˆ»</li>
+ *     <li>æœ€çµ‚Errorç™ºç”Ÿæ™‚åˆ»</li>
+ *     <li>æœ€é«˜å‡¦ç†æ™‚é–“</li>
+ *     <li>æœ€é«˜å‡¦ç†æ™‚é–“æ™‚åˆ»</li>
+ *     <li>æœ€ä½å‡¦ç†æ™‚é–“</li>
+ *     <li>æœ€ä½å‡¦ç†æ™‚é–“æ™‚åˆ»</li>
+ *     <li>å¹³å‡å‡¦ç†æ™‚é–“</li>
+ *     <li>ï¼ˆå¹³å‡å‡¦ç†æ™‚é–“Ã—å‘¼ã³å‡ºã—å›æ•°ï¼‰ã§è©•ä¾¡ã•ã‚ŒãŸé †ä½ï¼ˆé™é †ï¼‰</li>
  * </ul>
- * ˆÈ‰º‚ÉAƒƒgƒŠƒNƒX‚ğæ“¾‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -116,34 +116,34 @@ public class MethodMetricsInterceptorService extends ServiceBase
     private ServiceName performanceRecorderServiceName;
     private PerformanceRecorder performanceRecorder;
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setCalculateOnlyNormal(boolean isCalc){
         isCalculateOnlyNormal = isCalc;
     }
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isCalculateOnlyNormal(){
         return isCalculateOnlyNormal;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setDateFormat(String format){
         dateFormat = format;
     }
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String getDateFormat(){
         return dateFormat;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public String displayMetricsInfo(){
         final MetricsInfo[] infos = (MetricsInfo[])metricsInfos.values()
             .toArray(new MetricsInfo[metricsInfos.size()]);
@@ -267,12 +267,12 @@ public class MethodMetricsInterceptorService extends ServiceBase
         return buf.toString();
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void reset(){
         metricsInfos.clear();
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public MetricsInfo getMetricsInfo(Method method){
         return (MetricsInfo)metricsInfos.get(method);
     }
@@ -292,12 +292,12 @@ public class MethodMetricsInterceptorService extends ServiceBase
         return result;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputInterval(long interval){
         outputInterval = interval;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public long getOutputInterval(){
         return outputInterval;
     }
@@ -310,158 +310,158 @@ public class MethodMetricsInterceptorService extends ServiceBase
         return isResetByOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setMethodAndCategoryServiceNameMapping(Properties mapping){
         methodAndCategoryServiceNameMapping = mapping;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public Properties getMethodAndCategoryServiceNameMapping(){
         return methodAndCategoryServiceNameMapping;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setCategoryServiceName(ServiceName name){
         categoryServiceName = name;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public ServiceName getCategoryServiceName(){
         return categoryServiceName;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputTimestamp(boolean isOutput){
         isOutputTimestamp = isOutput;
     }
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputTimestamp(){
         return isOutputTimestamp;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputCount(boolean isOutput){
         isOutputCount = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputCount(){
         return isOutputCount;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputExceptionCount(boolean isOutput){
         isOutputExceptionCount = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputExceptionCount(){
         return isOutputExceptionCount;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputErrorCount(boolean isOutput){
         isOutputErrorCount = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputErrorCount(){
         return isOutputErrorCount;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputLastTime(boolean isOutput){
         isOutputLastTime = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputLastTime(){
         return isOutputLastTime;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputLastExceptionTime(boolean isOutput){
         isOutputLastExceptionTime = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputLastExceptionTime(){
         return isOutputLastExceptionTime;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputLastErrorTime(boolean isOutput){
         isOutputLastErrorTime = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputLastErrorTime(){
         return isOutputLastErrorTime;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputBestPerformance(boolean isOutput){
         isOutputBestPerformance = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformance(){
         return isOutputBestPerformance;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputBestPerformanceTime(boolean isOutput){
         isOutputBestPerformanceTime = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformanceTime(){
         return isOutputBestPerformanceTime;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputWorstPerformance(boolean isOutput){
         isOutputWorstPerformance = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformance(){
         return isOutputWorstPerformance;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputWorstPerformanceTime(boolean isOutput){
         isOutputWorstPerformanceTime = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformanceTime(){
         return isOutputWorstPerformanceTime;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setOutputAveragePerformance(boolean isOutput){
         isOutputAveragePerformance = isOutput;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputAveragePerformance(){
         return isOutputAveragePerformance;
     }
     
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public void setPerformanceRecorderServiceName(ServiceName name){
         performanceRecorderServiceName = name;
     }
-    // MethodMetricsInterceptorServiceMBean‚ÌJavaDoc
+    // MethodMetricsInterceptorServiceMBeanã®JavaDoc
     public ServiceName getPerformanceRecorderServiceName(){
         return performanceRecorderServiceName;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         metricsInfos = new ConcurrentHashMap();
@@ -469,9 +469,9 @@ public class MethodMetricsInterceptorService extends ServiceBase
         methodEditor = new MethodEditor();
     }
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         metricsInfos.clear();
@@ -511,10 +511,10 @@ public class MethodMetricsInterceptorService extends ServiceBase
         }
     }
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * æ“¾‚µ‚½ƒƒgƒŠƒNƒX‚ğA•W€o—Í‚Éo—Í‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * å–å¾—ã—ãŸãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’ã€æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã™ã‚‹ã€‚
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         System.out.println(displayMetricsInfo());
@@ -527,9 +527,9 @@ public class MethodMetricsInterceptorService extends ServiceBase
         methodAndCategoryMap.clear();
     }
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         metricsInfos = null;
@@ -538,13 +538,13 @@ public class MethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒgƒŠƒNƒX‚ğæ“¾‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚â{@link #setEnabled(boolean) setEnabled(false)}‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAƒƒgƒŠƒNƒXæ“¾‚ğs‚í‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’å–å¾—ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã‚„{@link #setEnabled(boolean) setEnabled(false)}ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãƒ¡ãƒˆãƒªã‚¯ã‚¹å–å¾—ã‚’è¡Œã‚ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,
@@ -595,45 +595,45 @@ public class MethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume() {
         return true;
     }
     
     /**
-     * o—ÍŠÔŠu‚¾‚¯ƒXƒŠ[ƒv‚·‚éB<p>
+     * å‡ºåŠ›é–“éš”ã ã‘ã‚¹ãƒªãƒ¼ãƒ—ã™ã‚‹ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @return null
      */
     public Object provide(DaemonControl ctrl){
@@ -645,10 +645,10 @@ public class MethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * o—Íæ‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚ÎAB<p>
+     * å‡ºåŠ›å…ˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€ã€‚<p>
      *
      * @param dequeued null
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object dequeued, DaemonControl ctrl){
         Date timestamp = new Date();
@@ -663,7 +663,7 @@ public class MethodMetricsInterceptorService extends ServiceBase
                     try{
                         category.write(createRecord(timestamp, info));
                     }catch(MessageWriteException e){
-                        // TODO ƒƒOo—Í
+                        // TODO ãƒ­ã‚°å‡ºåŠ›
                     }
                 }
             }
@@ -676,7 +676,7 @@ public class MethodMetricsInterceptorService extends ServiceBase
                 try{
                     metricsCategory.write(createRecord(timestamp, i + 1, infos[i]));
                 }catch(MessageWriteException e){
-                    // TODO ƒƒOo—Í
+                    // TODO ãƒ­ã‚°å‡ºåŠ›
                 }
             }
         }
@@ -773,7 +773,7 @@ public class MethodMetricsInterceptorService extends ServiceBase
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void garbage(){
     }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link SoftReferenceOverflowActionService}��MBean�C���^�t�F�[�X<p>
+ * {@link SoftReferenceOverflowActionService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see SoftReferenceOverflowActionService
@@ -43,42 +43,42 @@ public interface SoftReferenceOverflowActionServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ���ӂꂽ�L���b�V���I�u�W�F�N�g���\�t�g�Q�Ƃɂ���Ɠ����ɉi�������邽�߂̉i�����L���b�V���T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
+     * あふれたキャッシュオブジェクトをソフト参照にすると同時に永続化するための永続化キャッシュサービスのサービス名を設定する。<p>
      *
-     * @param name �i�����L���b�V���T�[�r�X�̃T�[�r�X��
+     * @param name 永続化キャッシュサービスのサービス名
      */
     public void setPersistCacheServiceName(ServiceName name);
     
     /**
-     * ���ӂꂽ�L���b�V���I�u�W�F�N�g���\�t�g�Q�Ƃɂ���Ɠ����ɉi�������邽�߂̉i�����L���b�V���T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれたキャッシュオブジェクトをソフト参照にすると同時に永続化するための永続化キャッシュサービスのサービス名を取得する。<p>
      *
-     * @return �i�����L���b�V���T�[�r�X�̃T�[�r�X��
+     * @return 永続化キャッシュサービスのサービス名
      */
     public ServiceName getPersistCacheServiceName();
     
     /**
-     * ���ӂꂽ�L���b�V���I�u�W�F�N�g���\�t�g�Q�Ƃɂ���Ɠ����ɉi�������邽�߂̉i�����L���b�V���}�b�v�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
+     * あふれたキャッシュオブジェクトをソフト参照にすると同時に永続化するための永続化キャッシュマップサービスのサービス名を設定する。<p>
      *
-     * @param name �i�����L���b�V���}�b�v�T�[�r�X�̃T�[�r�X��
+     * @param name 永続化キャッシュマップサービスのサービス名
      */
     public void setPersistCacheMapServiceName(ServiceName name);
     
     /**
-     * ���ӂꂽ�L���b�V���I�u�W�F�N�g���\�t�g�Q�Ƃɂ���Ɠ����ɉi�������邽�߂̉i�����L���b�V���}�b�v�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれたキャッシュオブジェクトをソフト参照にすると同時に永続化するための永続化キャッシュマップサービスのサービス名を取得する。<p>
      *
-     * @return �i�����L���b�V���}�b�v�T�[�r�X�̃T�[�r�X��
+     * @return 永続化キャッシュマップサービスのサービス名
      */
     public ServiceName getPersistCacheMapServiceName();
     
     /**
-     * ���ӂꓮ������s���邽�߂ɕێ����Ă����������������B<p>
+     * あふれ動作を実行するために保持している情報を初期化する。<p>
      */
     public void reset();
     
     /**
-     * ���ӂꂳ���Ă���L���b�V�������擾����B<p>
+     * あふれさせているキャッシュ数を取得する。<p>
      *
-     * @return �L���b�V����
+     * @return キャッシュ数
      */
     public int size();
 }

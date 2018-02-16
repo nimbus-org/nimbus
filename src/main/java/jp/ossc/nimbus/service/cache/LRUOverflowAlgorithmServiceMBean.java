@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link LRUOverflowAlgorithmService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link LRUOverflowAlgorithmService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see LRUOverflowAlgorithmService
@@ -43,35 +43,35 @@ public interface LRUOverflowAlgorithmServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‘ÎÛ‚É‚È‚Á‚Ä‚¢‚éƒLƒƒƒbƒVƒ…”‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ å¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…”
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°
      */
     public int size();
     
     /**
-     * ‚ ‚Ó‚ê‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œå›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚ ‚Ó‚ê‰ñ”
+     * @return ã‚ãµã‚Œå›æ•°
      */
     public long getOverflowCount();
     
     /**
-     * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…‚Ì•½‹ÏƒLƒƒƒbƒVƒ…ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®å¹³å‡ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹ÏƒLƒƒƒbƒVƒ…ŠÔ[ms]
+     * @return å¹³å‡ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ™‚é–“[ms]
      */
     public long getAverageOverflowCachedTime();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚ÌÅIƒAƒNƒZƒXŠÔƒOƒ‰ƒt‚ğ•\¦‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹æ™‚é–“ã‚°ãƒ©ãƒ•ã‚’è¡¨ç¤ºã™ã‚‹ã€‚<p>
      *
-     * @return ÅIƒAƒNƒZƒXŠÔƒOƒ‰ƒt
+     * @return æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹æ™‚é–“ã‚°ãƒ©ãƒ•
      */
     public String displayReferenceTimes();
 }

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.beancontrol.interfaces;
 
 /**
- * ”ñ“¯ŠúŒÄ‚Ño‚µ‚µ‚½‹Æ–±ƒtƒ[‚Ì‰“š‘Ò‚¿‚ªƒ^ƒCƒ€ƒAƒEƒg‚µ‚½‚Éthrow‚³‚ê‚é—áŠOB<p>
+ * éåŒæœŸå‘¼ã³å‡ºã—ã—ãŸæ¥­å‹™ãƒ•ãƒ­ãƒ¼ã®å¿œç­”å¾…ã¡ãŒã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸæ™‚ã«throwã•ã‚Œã‚‹ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,16 +42,16 @@ public class BeanFlowAsynchTimeoutException extends RuntimeException{
     private String flowName;
     
     /**
-     * ‹ó‚Ì—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public BeanFlowAsynchTimeoutException(){
         super();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[–¼‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼åã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flowName ƒtƒ[–¼
+     * @param flowName ãƒ•ãƒ­ãƒ¼å
      */
     public BeanFlowAsynchTimeoutException(String flowName){
         super();
@@ -59,10 +59,10 @@ public class BeanFlowAsynchTimeoutException extends RuntimeException{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒ[–¼‚ÆƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠOƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ãƒ­ãƒ¼åã¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param flowName ƒtƒ[–¼
-     * @param message ƒƒbƒZ[ƒW
+     * @param flowName ãƒ•ãƒ­ãƒ¼å
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public BeanFlowAsynchTimeoutException(String flowName, String message){
         super(message);

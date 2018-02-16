@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.debug;
 
 import  jp.ossc.nimbus.core.ServiceBase;
@@ -42,8 +42,8 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.log.Logger;
 
 /**
- * DebugƒNƒ‰ƒX<p>
- * Debugo—Í‚ğs‚¤
+ * Debugã‚¯ãƒ©ã‚¹<p>
+ * Debugå‡ºåŠ›ã‚’è¡Œã†
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
@@ -54,62 +54,62 @@ implements Debug , DebugServiceMBean
     
     private static final long serialVersionUID = -2298230444173627934L;
     
-    //ƒGƒ‰[ƒƒbƒZ[ƒW
-	/**ƒfƒtƒHƒ‹ƒgƒZƒpƒŒƒ^*/
+    //ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	/**ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚»ãƒ‘ãƒ¬ã‚¿*/
 	private final static String DEFAULT_SEPARATOR= System.getProperty("line.separator");
-	/**isXXX‚Åƒ`ƒFƒbƒN‘O‚ÉWrite‚ğs‚¨‚¤‚Æ‚µ‚½*/
+	/**isXXXã§ãƒã‚§ãƒƒã‚¯å‰ã«Writeã‚’è¡ŒãŠã†ã¨ã—ãŸ*/
 	private final static String ERROR_USE_OF_DEBUG_MSG="write() method shoud be called after using isXXX() debug-level check function.";
-	/**ƒfƒtƒHƒ‹ƒgƒlƒXƒgƒŒƒxƒ‹*/
+	/**ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«*/
 	private final static int    DEFAULT_NESTED_LEVEL=2;
-	/**@•¶š—ñ‚ğ’u‚«Š·‚¦‚é•¶š(ƒfƒtƒHƒ‹ƒg)*/
+	/**@æ–‡å­—åˆ—ã‚’ç½®ãæ›ãˆã‚‹æ–‡å­—(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)*/
 	private final static char ATMARK_REPLACE_CHAR='$';
 	
-	//isXXX‚ªŒÄ‚Î‚ê‚½Œã‚Éİ’è‚³‚ê‚é“à—e
+	//isXXXãŒå‘¼ã°ã‚ŒãŸå¾Œã«è¨­å®šã•ã‚Œã‚‹å†…å®¹
     final static String ENTRY_STATE_START="1";
-    //ƒƒ\ƒbƒhg—pó‹µŠÇ——pƒXƒŒƒbƒhƒ[ƒJƒ‹•Ï”
+    //ãƒ¡ã‚½ãƒƒãƒ‰ä½¿ç”¨çŠ¶æ³ç®¡ç†ç”¨ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«å¤‰æ•°
     static ThreadLocal mThreadLocal = new ThreadLocal();
     
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«*/
     private int mDebugLevel;
-    /**ƒlƒXƒgƒŒƒxƒ‹*/
+    /**ãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«*/
     private int mNestedLevel;
     /**
-     * {@link jp.ossc.nimbus.service.log.Logger Logger}ƒT[ƒrƒX–¼B<p>
+     * {@link jp.ossc.nimbus.service.log.Logger Logger}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
 	private ServiceName logServiceName;
 	/**
-	 * EditorFinder–¼
+	 * EditorFinderå
 	 */
 	private ServiceName editorFinderServiceName;
     /**
-     * {@link jp.ossc.nimbus.service.log.Logger Logger}ƒT[ƒrƒXÀ‘ÌB<p>
+     * {@link jp.ossc.nimbus.service.log.Logger Logger}ã‚µãƒ¼ãƒ“ã‚¹å®Ÿä½“ã€‚<p>
      */
 	private Logger mLogService;
 	/**
-	 * JournalEditorFinderƒT[ƒrƒX
+	 * JournalEditorFinderã‚µãƒ¼ãƒ“ã‚¹
 	 */
 	private EditorFinder mEditorFinder;
 	/**
-     * ƒgƒŒ[ƒXƒpƒ‰ƒƒ^‚ÌƒZƒpƒŒƒ^B<p>
+     * ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ‘ãƒ©ãƒ¡ã‚¿ã®ã‚»ãƒ‘ãƒ¬ã‚¿ã€‚<p>
      */
 	private String separator;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 *
 	 */
 	public DebugService() {
-	    //ƒfƒtƒHƒ‹ƒg‚Å‚Ío—Í‚È‚µ
+	    //ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯å‡ºåŠ›ãªã—
 	    mDebugLevel = DEBUG_LEVEL_NOOUTPUT;
 	    mNestedLevel = DEFAULT_NESTED_LEVEL;
 		separator   = DEFAULT_SEPARATOR;
 	}
-	//#####APŒü‚¯ƒƒ\ƒbƒh#####
-	/* (”ñ Javadoc)
+	//#####APå‘ã‘ãƒ¡ã‚½ãƒƒãƒ‰#####
+	/* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#write(java.lang.String, java.lang.Throwable)
      */
     public void write(String str, Throwable e) {
-	    //XXX‚ªŒÄ‚Î‚ê‚é‘O‚ÉƒR[ƒ‹‚³‚ê‚½‚çException
+	    //XXXãŒå‘¼ã°ã‚Œã‚‹å‰ã«ã‚³ãƒ¼ãƒ«ã•ã‚ŒãŸã‚‰Exception
 	    if( !isFlagSetted() ){
 	        throw new ServiceException("Tracer00001",ERROR_USE_OF_DEBUG_MSG);
 	    }
@@ -118,11 +118,11 @@ implements Debug , DebugServiceMBean
         mLogService.write(DEBUG_DEBUG_WRITE_KEY1,new String[]{stackTrace,str},e);
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#write(java.lang.String)
      */
     public void write(String str) {
-	    //XXX‚ªŒÄ‚Î‚ê‚é‘O‚ÉƒR[ƒ‹‚³‚ê‚½‚çException
+	    //XXXãŒå‘¼ã°ã‚Œã‚‹å‰ã«ã‚³ãƒ¼ãƒ«ã•ã‚ŒãŸã‚‰Exception
 	    if( !isFlagSetted() ){
 	        throw new ServiceException("Debug00002",ERROR_USE_OF_DEBUG_MSG);
 	    }
@@ -131,7 +131,7 @@ implements Debug , DebugServiceMBean
 	    mLogService.write(DEBUG_DEBUG_WRITE_KEY2,new String[]{stackTrace,str});
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#isDebug()
      */
     public boolean isDebug() {
@@ -140,7 +140,7 @@ implements Debug , DebugServiceMBean
         return b;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#isInfo()
      */
     public boolean isInfo() {
@@ -149,7 +149,7 @@ implements Debug , DebugServiceMBean
         return b;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#isWarn()
      */
     public boolean isWarn() {
@@ -158,7 +158,7 @@ implements Debug , DebugServiceMBean
         return b;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#isError()
      */
     public boolean isError() {
@@ -167,7 +167,7 @@ implements Debug , DebugServiceMBean
     	return b;
      }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.Debug#isFatalError()
      */
     public boolean isFatalError() {
@@ -177,75 +177,75 @@ implements Debug , DebugServiceMBean
     }
 
     /**
-     * EditorFinder‚ğİ’è‚·‚éB
+     * EditorFinderã‚’è¨­å®šã™ã‚‹ã€‚
      */
 	public void setEditorFinder(EditorFinder editorFinder) {
         mEditorFinder = editorFinder;
     }
     
     /**
-     * Logger‚ğİ’è‚·‚éB
+     * Loggerã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setLogger(Logger logService) {
         mLogService = logService;
     }
     
-    //#####ŠÇ——pƒƒ\ƒbƒh#####
-    /* (”ñ Javadoc)
+    //#####ç®¡ç†ç”¨ãƒ¡ã‚½ãƒƒãƒ‰#####
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.DebugServiceMBean#getDebugLevel()
      */
     public int getDebugLevel() {
         return mDebugLevel;
     }
-   /* (”ñ Javadoc)
+   /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.DebugServiceMBean#setDebugLevel()
      */
     public void setDebugLevel(int level) {
         mDebugLevel = level;
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.DebugServiceMBean#getLogServiceName()
      */
     public ServiceName getLogServiceName() {
         return logServiceName;
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.debug.DebugServiceMBean#setLogServiceName(jp.ossc.nimbus.core.ServiceName)
      */
     public void setLogServiceName(ServiceName svn) {
         logServiceName = svn;
     }
    
-	//#####“à•”“®ì—pƒƒ\ƒbƒh#####
+	//#####å†…éƒ¨å‹•ä½œç”¨ãƒ¡ã‚½ãƒƒãƒ‰#####
     /**
      * setFlag<p>
-     * ƒXƒŒƒbƒhƒ[ƒJƒ‹•Ï”‚ÉisXXX‚ªŒÄ‚Î‚ê‚½‚±‚Æ‚ğ‹L˜^‚·‚é
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«å¤‰æ•°ã«isXXXãŒå‘¼ã°ã‚ŒãŸã“ã¨ã‚’è¨˜éŒ²ã™ã‚‹
      */
     private void setFlag(){
         mThreadLocal.set(ENTRY_STATE_START);
     }
     /**
      * clearFlag<p>
-     * write‚ªŒÄ‚Î‚ê‚½‚Ì‚ÅƒXƒŒƒbƒhƒ[ƒJƒ‹•Ï”‚æ‚èó‘Ô‚ğíœ
+     * writeãŒå‘¼ã°ã‚ŒãŸã®ã§ã‚¹ãƒ¬ãƒƒãƒ‰ãƒ­ãƒ¼ã‚«ãƒ«å¤‰æ•°ã‚ˆã‚ŠçŠ¶æ…‹ã‚’å‰Šé™¤
      */
     private void clearFlag(){
         mThreadLocal.set(null); 
     }
     /**
      * clearFlag<p>
-     * isXXX‚ªŒÄ‚Î‚ê‚½‚©‚Ç‚¤‚©
+     * isXXXãŒå‘¼ã°ã‚ŒãŸã‹ã©ã†ã‹
      */
     private boolean isFlagSetted(){
         return mThreadLocal.get() != null;
     }
 
-    //#####ƒT[ƒrƒX‰Šú‰»`”jŠü#####
-    /* (”ñ Javadoc)
+    //#####ã‚µãƒ¼ãƒ“ã‚¹åˆæœŸåŒ–ï½ç ´æ£„#####
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#createService()
      */
     public void createService() throws Exception {
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
      */
     public void startService() throws Exception {
@@ -261,12 +261,12 @@ implements Debug , DebugServiceMBean
             throw new IllegalArgumentException("EditorFinderServiceName or EditorFinderService must not null.");
         }
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
      */
     public void stopService() throws Exception {
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#destroyService()
      */
     public void destroyService() throws Exception {
@@ -275,21 +275,21 @@ implements Debug , DebugServiceMBean
         mEditorFinder = null;
         editorFinderServiceName = null;
     }
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setNestedLevel(int)
 	 */
 	public void setNestedLevel(int level) {
 		this.mNestedLevel = level;		
 	}
 	/**
-     * ŒÄ‚Ño‚µŒ³ŠÖ”–¼‚ÆƒXƒeƒbƒv”Ô†æ“¾B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * å‘¼ã³å‡ºã—å…ƒé–¢æ•°åã¨ã‚¹ãƒ†ãƒƒãƒ—ç•ªå·å–å¾—ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>—áŠO‚ğì¬</li>
-     *   <li>—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚Ì2s–Ú‚Ìî•ñ‚æ‚èAŒÄ‚Ño‚µŒ³ƒƒ\ƒbƒh–¼‚ÆƒXƒeƒbƒv”Ô†‚ğæ“¾</li>
+     *   <li>ä¾‹å¤–ã‚’ä½œæˆ</li>
+     *   <li>ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã®2è¡Œç›®ã®æƒ…å ±ã‚ˆã‚Šã€å‘¼ã³å‡ºã—å…ƒãƒ¡ã‚½ãƒƒãƒ‰åã¨ã‚¹ãƒ†ãƒƒãƒ—ç•ªå·ã‚’å–å¾—</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */	
 	private String getCallerInfo(){
 		String callerClass = null;
@@ -303,7 +303,7 @@ implements Debug , DebugServiceMBean
 		}
 		return callerClass;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.debug.Debug#dump(java.lang.Object)
 	 */
 	public void dump(Object object) {
@@ -315,7 +315,7 @@ implements Debug , DebugServiceMBean
 		final String callerInfo = getCallerInfo();
 		mLogService.write(DEBUG_DEBUG_DUMP_KEY1,new String[]{callerInfo,param});
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.debug.Debug#dump(java.lang.Object[])
 	 */
 	public void dump(Object[] objects) {
@@ -327,7 +327,7 @@ implements Debug , DebugServiceMBean
 		final String callerInfo = getCallerInfo();
 		mLogService.write(DEBUG_DEBUG_DUMP_KEY2,new String[]{callerInfo,param});
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.debug.Debug#dump(java.lang.String, java.lang.Object)
 	 */
 	public void dump(String msg, Object object) {
@@ -339,7 +339,7 @@ implements Debug , DebugServiceMBean
 		final String callerInfo = getCallerInfo();
 		mLogService.write(DEBUG_DEBUG_MSG_DUMP_KEY1,new String[]{callerInfo,msg,param});
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.debug.Debug#dump(java.lang.String, java.lang.Object[])
 	 */
 	public void dump(String msg, Object[] objects) {
@@ -351,38 +351,38 @@ implements Debug , DebugServiceMBean
 		final String callerInfo = getCallerInfo();
 		mLogService.write(DEBUG_DEBUG_MSG_DUMP_KEY2,new String[]{callerInfo,msg,param});
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.debug.DebugServiceMBean#setEditorFinderServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setEditorFinderServiceName(ServiceName name) {
 		editorFinderServiceName = name;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.debug.DebugServiceMBean#getEditorFinderServiceName()
 	 */
 	public ServiceName getEditorFinderServiceName() {
 		return editorFinderServiceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setSeparator(java.lang.String)
 	 */
 	public void setSeparator(String sep) {
 		this.separator = sep;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.trace.TraceServiceMBean#setSeparator(java.lang.String)
 	 */
 	public String getSeparator() {
 		return separator;
 	}
 
-	//•\¦—pƒwƒ‹ƒpŠÖ”
+	//è¡¨ç¤ºç”¨ãƒ˜ãƒ«ãƒ‘é–¢æ•°
 	/**
-     * Object¨String•ÏŠ·‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * Objectâ†’Stringå¤‰æ›ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒIƒuƒWƒFƒNƒg‚ğæ‚èo‚·</li>
-     *   <li>getParameterString‚ğŒÄ‚Ño‚µString‚É•ÏŠ·‚·‚é</li>
+     *   <li>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–ã‚Šå‡ºã™</li>
+     *   <li>getParameterStringã‚’å‘¼ã³å‡ºã—Stringã«å¤‰æ›ã™ã‚‹</li>
       * </ol>
      * 
      */
@@ -402,20 +402,20 @@ implements Debug , DebugServiceMBean
 		
 	}
 	/**
-     * Object¨String•ÏŠ·‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * Objectâ†’Stringå¤‰æ›ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>‘Î‰‚·‚éƒGƒfƒBƒ^‚ğæ“¾‚·‚é</li>
-     *   <li>ƒGƒfƒBƒ^‚ğg—p‚µ‚ÄString‚É•ÏŠ·‚·‚é</li>
+     *   <li>å¯¾å¿œã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å–å¾—ã™ã‚‹</li>
+     *   <li>ã‚¨ãƒ‡ã‚£ã‚¿ã‚’ä½¿ç”¨ã—ã¦Stringã«å¤‰æ›ã™ã‚‹</li>
       * </ol>
      * 
      */
 	private String getParameterString(Object param){
 		if( param != null ) {
-			//‘Î‰‚·‚éƒGƒfƒBƒ^‚ğæ“¾‚µ‚Ä•¶š—ñ‚É•ÏŠ·‚·‚é
+			//å¯¾å¿œã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å–å¾—ã—ã¦æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
 			final JournalEditor editor = mEditorFinder.findEditor(param.getClass());
 			final String  str = (String) editor.toObject(mEditorFinder,null,param);
-			//@•ÏŠ·‚Éˆø‚Á‚©‚©‚ç‚È‚¢‚æ‚¤‚É$‚É•ÏŠ·‚·‚é
+			//@å¤‰æ›ã«å¼•ã£ã‹ã‹ã‚‰ãªã„ã‚ˆã†ã«$ã«å¤‰æ›ã™ã‚‹
 			if( str != null ) str.replace('@',ATMARK_REPLACE_CHAR);
 			return str;
 		} else {

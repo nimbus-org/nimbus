@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.validator;
 
 /**
- * NullƒoƒŠƒf[ƒ^B<p>
+ * Nullãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,40 +41,40 @@ public class NullValidator implements Validator, java.io.Serializable{
     private static final long serialVersionUID = 5789372101951625339L;
     
     /**
-     * null‚Å‚ ‚é–‚ğŒŸØ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡AŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ªnull‚Å‚ ‚ê‚ÎAŒŸØŒ‹‰Ê‚ªtrue‚Æ‚È‚éB<br>
-     * false‚Ìê‡AŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ª”ñnull‚Å‚ ‚ê‚ÎAŒŸØŒ‹‰Ê‚ªtrue‚Æ‚È‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * nullã§ã‚ã‚‹äº‹ã‚’æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã€æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã§ã‚ã‚Œã°ã€æ¤œè¨¼çµæœãŒtrueã¨ãªã‚‹ã€‚<br>
+     * falseã®å ´åˆã€æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒénullã§ã‚ã‚Œã°ã€æ¤œè¨¼çµæœãŒtrueã¨ãªã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isNull;
     
     /**
-     * null‚Å‚ ‚é–‚ğŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Ìê‡AŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ªnull‚Å‚ ‚ê‚ÎAŒŸØŒ‹‰Ê‚ªtrue‚Æ‚È‚éB<br>
-     * false‚Ìê‡AŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ª”ñnull‚Å‚ ‚ê‚ÎAŒŸØŒ‹‰Ê‚ªtrue‚Æ‚È‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * nullã§ã‚ã‚‹äº‹ã‚’æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã®å ´åˆã€æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã§ã‚ã‚Œã°ã€æ¤œè¨¼çµæœãŒtrueã¨ãªã‚‹ã€‚<br>
+     * falseã®å ´åˆã€æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒénullã§ã‚ã‚Œã°ã€æ¤œè¨¼çµæœãŒtrueã¨ãªã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      * 
-     * @param isNull null‚Å‚ ‚é–‚ğŒŸØ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+     * @param isNull nullã§ã‚ã‚‹äº‹ã‚’æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
      */
     public void setNull(boolean isNull){
         this.isNull = isNull;
     }
     
     /**
-     * null‚Å‚ ‚é–‚ğŒŸØ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * nullã§ã‚ã‚‹äº‹ã‚’æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return null‚Å‚ ‚é–‚ğŒŸØ‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+     * @return nullã§ã‚ã‚‹äº‹ã‚’æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
      */
     public boolean isNull(){
         return isNull;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ªnull‚©‚Ç‚¤‚©‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒnullã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(Object obj) throws ValidateException{
         return obj == null && isNull

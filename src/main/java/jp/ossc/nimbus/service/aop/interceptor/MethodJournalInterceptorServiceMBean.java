@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodJournalInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MethodJournalInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MethodJournalInterceptorService
@@ -44,247 +44,247 @@ import jp.ossc.nimbus.core.*;
 public interface MethodJournalInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹æ™‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String DEFAULT_REQUEST_JOURNAL_KEY = "Request";
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—æ™‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String DEFAULT_METHOD_CALL_JOURNAL_KEY
          = "MethodCall";
     
     /**
-     * ƒƒ\ƒbƒh–ß‚è‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒWƒƒ[ƒiƒ‹ƒL[B<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šæ™‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã€‚<p>
      */
     public static final String DEFAULT_METHOD_RETURN_JOURNAL_KEY
          = "MethodReturn";
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getThreadContextServiceName()
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setThreadContextServiceName(ServiceName)
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * ContextƒT[ƒrƒX‚Éİ’è‚³‚ê‚½ƒŠƒNƒGƒXƒgID‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã•ã‚ŒãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒŠƒNƒGƒXƒgID‚ÌƒL[–¼
+     * @param key ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼å
      * @see #getRequestIdKey()
      */
     public void setRequestIdKey(String key);
     
     /**
-     * ContextƒT[ƒrƒX‚Éİ’è‚³‚ê‚½ƒŠƒNƒGƒXƒgID‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã•ã‚ŒãŸãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgID‚ÌƒL[–¼
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã®ã‚­ãƒ¼å
      * @see #setRequestIdKey(String)
      */
     public String getRequestIdKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getJournalServiceName()
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * {@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setJournalServiceName(ServiceName)
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getRequestEditorFinderServiceName()
      */
     public void setRequestEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹ŠJn‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«é–‹å§‹ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setRequestEditorFinderServiceName(ServiceName)
      */
     public ServiceName getRequestEditorFinderServiceName();
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getMethodCallEditorFinderServiceName()
      */
     public void setMethodCallEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setMethodCallEditorFinderServiceName(ServiceName)
      */
     public ServiceName getMethodCallEditorFinderServiceName();
     
     /**
-     * ƒƒ\ƒbƒh–ß‚è‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #getMethodReturnEditorFinderServiceName()
      */
     public void setMethodReturnEditorFinderServiceName(ServiceName name);
     
     /**
-     * ƒƒ\ƒbƒh–ß‚è‚ÌƒWƒƒ[ƒiƒ‹•ÒW‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç·¨é›†ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see #setMethodReturnEditorFinderServiceName(ServiceName)
      */
     public ServiceName getMethodReturnEditorFinderServiceName();
     
     /**
-     * o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒg—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒL[‚ÍA{@link jp.ossc.nimbus.service.journal.Journal#startJournal(String)}‚Ìˆø”‚Æ‚µ‚Äg—p‚³‚ê‚éB<br>
-     * ‚Ü‚½Aw’è‚µ‚È‚¢ê‡‚ÍA"Request"‚ªg—p‚³‚ê‚éB<br>
+     * å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆè¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã¯ã€{@link jp.ossc.nimbus.service.journal.Journal#startJournal(String)}ã®å¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
+     * ã¾ãŸã€æŒ‡å®šã—ãªã„å ´åˆã¯ã€"Request"ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param key o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒg—v‘f‚ÌƒL[
+     * @param key å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆè¦ç´ ã®ã‚­ãƒ¼
      * @see #getRequestJournalKey()
      */
     public void setRequestJournalKey(String key);
     
     /**
-     * o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒg—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆè¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒg—v‘f‚ÌƒL[
+     * @return å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆè¦ç´ ã®ã‚­ãƒ¼
      * @see #setRequestJournalKey(String)
      */
     public String getRequestJournalKey();
         
     /**
-     * o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒL[‚ÍA{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String, Object)}‚Ì‘æˆêˆø”‚Æ‚µ‚Äg—p‚³‚ê‚éB<br>
-     * ‚Ü‚½Aw’è‚µ‚È‚¢ê‡‚ÍA"MethodCall"‚ªg—p‚³‚ê‚éB<br>
+     * å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—è¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã¯ã€{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String, Object)}ã®ç¬¬ä¸€å¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
+     * ã¾ãŸã€æŒ‡å®šã—ãªã„å ´åˆã¯ã€"MethodCall"ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param key o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ—v‘f‚ÌƒL[
+     * @param key å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—è¦ç´ ã®ã‚­ãƒ¼
      * @see #getMethodCallJournalKey()
      */
     public void setMethodCallJournalKey(String key);
     
     /**
-     * o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—è¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ—v‘f‚ÌƒL[
+     * @return å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—è¦ç´ ã®ã‚­ãƒ¼
      * @see #setMethodCallJournalKey(String)
      */
     public String getMethodCallJournalKey();
     
     /**
-     * o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒh–ß‚è—v‘f‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒL[‚ÍA{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String, Object)}‚Ì‘æˆêˆø”‚Æ‚µ‚Äg—p‚³‚ê‚éB<br>
-     * ‚Ü‚½Aw’è‚µ‚È‚¢ê‡‚ÍA"MethodReturn"‚ªg—p‚³‚ê‚éB<br>
+     * å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šè¦ç´ ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã¯ã€{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String, Object)}ã®ç¬¬ä¸€å¼•æ•°ã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
+     * ã¾ãŸã€æŒ‡å®šã—ãªã„å ´åˆã¯ã€"MethodReturn"ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param key o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒh–ß‚è—v‘f‚ÌƒL[
+     * @param key å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šè¦ç´ ã®ã‚­ãƒ¼
      * @see #getMethodReturnJournalKey()
      */
     public void setMethodReturnJournalKey(String key);
     
     /**
-     * o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒh–ß‚è—v‘f‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šè¦ç´ ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚³‚ê‚éƒWƒƒ[ƒiƒ‹‚Ìƒƒ\ƒbƒh–ß‚è—v‘f‚ÌƒL[
+     * @return å‡ºåŠ›ã•ã‚Œã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šè¦ç´ ã®ã‚­ãƒ¼
      * @see #setMethodReturnJournalKey(String)
      */
     public String getMethodReturnJournalKey();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹o—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚
      *
-     * @param enable ƒWƒƒ[ƒiƒ‹o—Í‚ğs‚¤ê‡true
+     * @param enable ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã†å ´åˆtrue
      * @see #isEnabled()
      */
     public void setEnabled(boolean enable);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹o—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒWƒƒ[ƒiƒ‹o—Í‚ğs‚¤ê‡true
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã‚’è¡Œã†å ´åˆtrue
      * @see #setEnabled(boolean)
      */
     public boolean isEnabled();
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µ’†‚É•¡”‰ñ’Ê‰ß‚µ‚½ê‡‚ÉA2‰ñ–ÚˆÈ~‚ÌƒWƒƒ[ƒiƒ‹‚ğ‹L˜^‚µ‚È‚¢‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ä¸­ã«è¤‡æ•°å›é€šéã—ãŸå ´åˆã«ã€2å›ç›®ä»¥é™ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’è¨˜éŒ²ã—ãªã„ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isBlock ‹L˜^‚µ‚È‚¢ê‡‚ÍAtrue
+     * @param isBlock è¨˜éŒ²ã—ãªã„å ´åˆã¯ã€true
      */
     public void setBushingCallBlock(boolean isBlock);
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µ’†‚É•¡”‰ñ’Ê‰ß‚µ‚½ê‡‚ÉA2‰ñ–ÚˆÈ~‚ÌƒWƒƒ[ƒiƒ‹‚ğ‹L˜^‚µ‚È‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ä¸­ã«è¤‡æ•°å›é€šéã—ãŸå ´åˆã«ã€2å›ç›®ä»¥é™ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’è¨˜éŒ²ã—ãªã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA‹L˜^‚µ‚È‚¢
+     * @return trueã®å ´åˆã¯ã€è¨˜éŒ²ã—ãªã„
      */
     public boolean isBushingCallBlock();
     
     /**
-     * ContextƒT[ƒrƒX‚©‚çw’è‚³‚ê‚½ƒL[‚Å’l‚ğæ“¾‚µ‚ÄAw’è‚³‚ê‚½ƒL[‚ÅƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã§å€¤ã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param contextKey ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒL[
-     * @param journalKey ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[
+     * @param contextKey Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼
+     * @param journalKey ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼
      */
     public void setContextJournalMapping(String contextKey, String journalKey);
     
     /**
-     * w’è‚³‚ê‚½ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒL[‚ÅAƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸContextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼ã§ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param contextKey ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒL[
-     * @return ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[
+     * @param contextKey Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼
      */
     public String getContextJournalMapping(String contextKey);
     
     /**
-     * ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒL[‚ÆAƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼ã¨ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒL[‚ÆAƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ã‚­ãƒ¼ã¨ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getContextJournalMap();
     
     /**
-     * InvocationContext‚©‚çw’è‚³‚ê‚½‘®«–¼‚Å’l‚ğæ“¾‚µ‚ÄAw’è‚³‚ê‚½ƒL[‚ÅƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * InvocationContextã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸå±æ€§åã§å€¤ã‚’å–å¾—ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param attributeName InvocationContext‚©‚çæ“¾‚·‚é‘®«–¼
-     * @param journalKey ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[
+     * @param attributeName InvocationContextã‹ã‚‰å–å¾—ã™ã‚‹å±æ€§å
+     * @param journalKey ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼
      */
     public void setInvocationContextJournalMapping(String attributeName, String journalKey);
     
     /**
-     * w’è‚³‚ê‚½InvocationContext‚©‚çæ“¾‚·‚é‘®«–¼‚ÅAƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸInvocationContextã‹ã‚‰å–å¾—ã™ã‚‹å±æ€§åã§ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param attributeName InvocationContext‚©‚çæ“¾‚·‚é‘®«–¼
-     * @return ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[
+     * @param attributeName InvocationContextã‹ã‚‰å–å¾—ã™ã‚‹å±æ€§å
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼
      */
     public String getInvocationContextJournalMapping(String attributeName);
     
     /**
-     * InvocationContext‚©‚çæ“¾‚·‚é‘®«–¼‚ÆAƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * InvocationContextã‹ã‚‰å–å¾—ã™ã‚‹å±æ€§åã¨ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InvocationContext‚©‚çæ“¾‚·‚é‘®«–¼‚ÆAƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éƒL[‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return InvocationContextã‹ã‚‰å–å¾—ã™ã‚‹å±æ€§åã¨ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getInvocationContextJournalMap();
 }

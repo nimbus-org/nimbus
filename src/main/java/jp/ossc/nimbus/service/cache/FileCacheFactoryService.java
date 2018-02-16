@@ -37,8 +37,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒtƒ@ƒNƒgƒŠB<p>
- * {@link FileCacheService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link FileCacheService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see FileCacheService
@@ -49,17 +49,17 @@ public class FileCacheFactoryService
     
     private static final long serialVersionUID = -4354172514890478044L;
     
-    // AbstractCacheFactoryService‚ÌJavaDoc
+    // AbstractCacheFactoryServiceã®JavaDoc
     protected AbstractCacheService createAbstractCacheService()
      throws Exception{
         return new FileCacheService();
     }
     
     /**
-     * {@link FileCacheService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link FileCacheService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return FileCacheServiceƒT[ƒrƒX
-     * @exception Exception FileCacheService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return FileCacheServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception FileCacheServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see FileCacheService
      */
     protected Service createServiceInstance() throws Exception{
@@ -78,7 +78,7 @@ public class FileCacheFactoryService
         return cache;
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public void setOutputDirectory(String path)
      throws IllegalArgumentException{
         final FileCacheService templateCache
@@ -96,7 +96,7 @@ public class FileCacheFactoryService
         }
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public String getOutputDirectory(){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -106,7 +106,7 @@ public class FileCacheFactoryService
         return templateCache.getOutputDirectory();
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public void setOutputPrefix(String prefix){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -123,7 +123,7 @@ public class FileCacheFactoryService
         }
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public String getOutputPrefix(){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -133,7 +133,7 @@ public class FileCacheFactoryService
         return templateCache.getOutputPrefix();
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public void setOutputSuffix(String suffix){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -150,7 +150,7 @@ public class FileCacheFactoryService
         }
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public String getOutputSuffix(){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -160,7 +160,7 @@ public class FileCacheFactoryService
         return templateCache.getOutputSuffix();
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public void setLoadOnStart(boolean isLoad){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -177,7 +177,7 @@ public class FileCacheFactoryService
         }
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public boolean isLoadOnStart(){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -187,7 +187,7 @@ public class FileCacheFactoryService
         return templateCache.isLoadOnStart();
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public void setDeleteOnExitWithJVM(boolean isDeleteOnExit){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -204,7 +204,7 @@ public class FileCacheFactoryService
         }
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public boolean isDeleteOnExitWithJVM(){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -214,7 +214,7 @@ public class FileCacheFactoryService
         return templateCache.isDeleteOnExitWithJVM();
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();
@@ -231,7 +231,7 @@ public class FileCacheFactoryService
         }
     }
     
-    // FileCacheFactoryServiceMBean‚ÌJavaDoc
+    // FileCacheFactoryServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         final FileCacheService templateCache
              = (FileCacheService)getTemplate();

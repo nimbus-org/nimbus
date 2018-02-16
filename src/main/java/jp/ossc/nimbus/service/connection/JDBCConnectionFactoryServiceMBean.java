@@ -36,7 +36,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JDBCConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JDBCConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JDBCConnectionFactoryService
@@ -45,88 +45,88 @@ public interface JDBCConnectionFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * JDBCƒhƒ‰ƒCƒo‚ÌƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
+     * JDBCãƒ‰ãƒ©ã‚¤ãƒã®ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JDBCƒhƒ‰ƒCƒo‚ÌƒNƒ‰ƒX–¼
+     * @param name JDBCãƒ‰ãƒ©ã‚¤ãƒã®ã‚¯ãƒ©ã‚¹å
      */
     public void setDriverName(String name);
     
     /**
-     * JDBCƒhƒ‰ƒCƒo‚ÌƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * JDBCãƒ‰ãƒ©ã‚¤ãƒã®ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JDBCƒhƒ‰ƒCƒo‚ÌƒNƒ‰ƒX–¼
+     * @return JDBCãƒ‰ãƒ©ã‚¤ãƒã®ã‚¯ãƒ©ã‚¹å
      */
     public String getDriverName();
     
     /**
-     * JDBCÚ‘±URL‚ğİ’è‚·‚éB<p>
+     * JDBCæ¥ç¶šURLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param url JDBCÚ‘±URL
+     * @param url JDBCæ¥ç¶šURL
      */
     public void setConnectionURL(String url);
     
     /**
-     * JDBCÚ‘±URL‚ğæ“¾‚·‚éB<p>
+     * JDBCæ¥ç¶šURLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JDBCÚ‘±URL
+     * @return JDBCæ¥ç¶šURL
      */
     public String getConnectionURL();
     
     /**
-     * JDBCÚ‘±ƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
+     * JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JDBCÚ‘±ƒ†[ƒU–¼
+     * @param name JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String name);
     
     /**
-     * JDBCÚ‘±ƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JDBCÚ‘±ƒ†[ƒU–¼
+     * @return JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
     
     /**
-     * JDBCÚ‘±ƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * JDBCæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password JDBCÚ‘±ƒpƒXƒ[ƒh
+     * @param password JDBCæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setPassword(String password);
     
     /**
-     * JDBCÚ‘±ƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * JDBCæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JDBCÚ‘±ƒpƒXƒ[ƒh
+     * @return JDBCæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getPassword();
     
     /**
-     * JDBCÚ‘±ƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
-     * {@link #setUserName(String)}A{@link #setPassword(String)}‚Æ•¹—p‚·‚é–‚Í‚Å‚«‚È‚¢B<br>
+     * JDBCæ¥ç¶šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setUserName(String)}ã€{@link #setPassword(String)}ã¨ä½µç”¨ã™ã‚‹äº‹ã¯ã§ããªã„ã€‚<br>
      *
-     * @param prop JDBCÚ‘±ƒvƒƒpƒeƒB
+     * @param prop JDBCæ¥ç¶šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setConnectionProperties(Properties prop);
     
     /**
-     * JDBCÚ‘±ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * JDBCæ¥ç¶šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JDBCÚ‘±ƒvƒƒpƒeƒB
+     * @return JDBCæ¥ç¶šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getConnectionProperties();
     
     /**
-     * ©“®ƒRƒ~ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB
+     * è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚
      *
-     * @param isAuto ©“®ƒRƒ~ƒbƒg‚É‚·‚éê‡‚ÍAtrue
+     * @param isAuto è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setAutoCommit(boolean isAuto);
     
     /**
-     * ©“®ƒRƒ~ƒbƒg‚©”»’è‚·‚éB<p>
+     * è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ©“®ƒRƒ~ƒbƒg‚Ìê‡‚ÍAtrue
+     * @return è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã®å ´åˆã¯ã€true
      */
     public boolean isAutoCommit();
 }

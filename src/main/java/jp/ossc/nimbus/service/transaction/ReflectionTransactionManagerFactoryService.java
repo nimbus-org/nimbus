@@ -37,7 +37,7 @@ import javax.transaction.TransactionManager;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚ğg‚Á‚ÄTransactionManager‚ğæ“¾‚·‚éTransactionManagerƒtƒ@ƒNƒgƒŠB<p>
+ * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½¿ã£ã¦TransactionManagerã‚’å–å¾—ã™ã‚‹TransactionManagerãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
@@ -136,10 +136,10 @@ public class ReflectionTransactionManagerFactoryService
     }
     
     /**
-     * TransactionManager‚ğæ“¾‚·‚éB<p>
+     * TransactionManagerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return TransactionManager
-     * @exception TransactionManagerFactoryException TransactionManager‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception TransactionManagerFactoryException TransactionManagerã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TransactionManager getTransactionManager() throws TransactionManagerFactoryException{
         return transactionManager;

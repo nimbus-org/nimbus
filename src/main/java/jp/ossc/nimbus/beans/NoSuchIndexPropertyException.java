@@ -36,7 +36,7 @@ import java.io.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‘¶İ‚µ‚È‚¢–‚ğ¦‚·—áŠOB<p>
+ * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå­˜åœ¨ã—ãªã„äº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  * @see IndexedProperty
@@ -47,16 +47,16 @@ public class NoSuchIndexPropertyException
     private static final long serialVersionUID = -2482366032910422956L;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒCƒ“ƒfƒbƒNƒXB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
      */
     protected final int index;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼AƒCƒ“ƒfƒbƒNƒX‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
-     * @param index ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒCƒ“ƒfƒbƒNƒX
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param index ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public NoSuchIndexPropertyException(
         Class clazz,
@@ -67,12 +67,12 @@ public class NoSuchIndexPropertyException
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼AƒCƒ“ƒfƒbƒNƒXA”­¶Œ³—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€ç™ºç”Ÿå…ƒä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
-     * @param index ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒCƒ“ƒfƒbƒNƒX
-     * @param th ”­¶Œ³—áŠO
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param index ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param th ç™ºç”Ÿå…ƒä¾‹å¤–
      */
     public NoSuchIndexPropertyException(
         Class clazz,
@@ -85,9 +85,9 @@ public class NoSuchIndexPropertyException
     }
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getIndex(){
         return index;

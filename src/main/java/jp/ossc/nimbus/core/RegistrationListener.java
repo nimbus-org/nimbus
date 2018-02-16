@@ -34,9 +34,9 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * “o˜^ó‘Ô‚ğŠÄ‹‚·‚éƒŠƒXƒiƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * {@link RegistrationBroadcaster}‚ÉA‚±‚ÌƒŠƒXƒi‚ğ“o˜^‚·‚é–‚ÅARegistrationBroadcaster‚ÅŠÇ—‚³‚ê‚é”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚Ì“o˜^ó‘Ô‚ğŠÄ‹‚·‚é–‚ª‚Å‚«‚éB<br>
- * ŠÄ‹‚Å‚«‚éó‘Ô‚ÍA“o˜^Aíœ‚ÅA‚»‚ê‚¼‚êA{@link #registered(RegistrationEvent)}A{@link #unregistered(RegistrationEvent)}‚Å’Ê’m‚³‚ê‚éB<br>
+ * ç™»éŒ²çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹ãƒªã‚¹ãƒŠã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * {@link RegistrationBroadcaster}ã«ã€ã“ã®ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹äº‹ã§ã€RegistrationBroadcasterã§ç®¡ç†ã•ã‚Œã‚‹ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç™»éŒ²çŠ¶æ…‹ã‚’ç›£è¦–ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ç›£è¦–ã§ãã‚‹çŠ¶æ…‹ã¯ã€ç™»éŒ²ã€å‰Šé™¤ã§ã€ãã‚Œãã‚Œã€{@link #registered(RegistrationEvent)}ã€{@link #unregistered(RegistrationEvent)}ã§é€šçŸ¥ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see RegistrationBroadcaster
@@ -45,16 +45,16 @@ import java.util.*;
 public interface RegistrationListener extends EventListener{
     
     /**
-     * RegistrationBroadcaster‚ÅŠÇ—‚³‚ê‚é”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚ª“o˜^‚³‚ê‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * RegistrationBroadcasterã§ç®¡ç†ã•ã‚Œã‚‹ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç™»éŒ²ã•ã‚ŒãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param e RegistrationEventƒIƒuƒWƒFƒNƒg
+     * @param e RegistrationEventã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void registered(RegistrationEvent e);
     
     /**
-     * RegistrationBroadcaster‚ÅŠÇ—‚³‚ê‚é”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚ªíœ‚³‚ê‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * RegistrationBroadcasterã§ç®¡ç†ã•ã‚Œã‚‹ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‰Šé™¤ã•ã‚ŒãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param e RegistrationEventƒIƒuƒWƒFƒNƒg
+     * @param e RegistrationEventã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void unregistered(RegistrationEvent e);
 }

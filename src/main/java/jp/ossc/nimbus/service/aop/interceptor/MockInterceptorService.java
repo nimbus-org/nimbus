@@ -37,9 +37,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ƒ‚ƒbƒNƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄAŒÄ‚Ño‚·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ{@link MockFactory}‚ª¶¬‚·‚éƒ‚ƒbƒNA‚Ü‚½‚Íİ’è‚³‚ê‚½ƒ‚ƒbƒN‚É‚·‚è‚©‚¦‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB
- * ˆÈ‰º‚ÉAƒ‚ƒbƒNƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ¢ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€å‘¼ã³å‡ºã™å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link MockFactory}ãŒç”Ÿæˆã™ã‚‹ãƒ¢ãƒƒã‚¯ã€ã¾ãŸã¯è¨­å®šã•ã‚ŒãŸãƒ¢ãƒƒã‚¯ã«ã™ã‚Šã‹ãˆã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚
+ * ä»¥ä¸‹ã«ã€ãƒ¢ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -71,26 +71,26 @@ public class MockInterceptorService extends ServiceBase
     private ServiceName mockServiceName;
     private Object mock;
     
-    // MockInterceptorServiceMBean‚ÌJavaDoc
+    // MockInterceptorServiceMBeanã®JavaDoc
     public void setMockFactoryServiceName(ServiceName name){
         mockFactoryServiceName = name;
     }
-    // MockInterceptorServiceMBean‚ÌJavaDoc
+    // MockInterceptorServiceMBeanã®JavaDoc
     public ServiceName getMockFactoryServiceName(){
         return mockFactoryServiceName;
     }
     
-    // MockInterceptorServiceMBean‚ÌJavaDoc
+    // MockInterceptorServiceMBeanã®JavaDoc
     public void setMockServiceName(ServiceName name){
         mockServiceName = name;
     }
-    // MockInterceptorServiceMBean‚ÌJavaDoc
+    // MockInterceptorServiceMBeanã®JavaDoc
     public ServiceName getMockServiceName(){
         return mockServiceName;
     }
     
     /**
-     * MockFactory‚ğİ’è‚·‚éB<p>
+     * MockFactoryã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param mockFactory MockFactory
      */
@@ -99,18 +99,18 @@ public class MockInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒ‚ƒbƒN‚ğİ’è‚·‚éB<p>
+     * ãƒ¢ãƒƒã‚¯ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mock ƒ‚ƒbƒN
+     * @param mock ãƒ¢ãƒƒã‚¯
      */
     public void setMock(Object mock) {
         this.mock = mock;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(mockFactoryServiceName != null){
@@ -125,13 +125,13 @@ public class MockInterceptorService extends ServiceBase
     }
     
     /**
-     * İ’è‚³‚ê‚½{@link MockFactory}‚ğŒÄ‚Ño‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚Æ‚·‚è‘Ö‚¦‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‚·‚è‘Ö‚¦‚ğs‚í‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * è¨­å®šã•ã‚ŒãŸ{@link MockFactory}ã‚’å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã™ã‚Šæ›¿ãˆã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã™ã‚Šæ›¿ãˆã‚’è¡Œã‚ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,
@@ -164,7 +164,7 @@ public class MockInterceptorService extends ServiceBase
                         ctx.setTargetObject(mock);
                         ctx.setTargetMethod(mockMethod);
                     }catch(NoSuchMethodException e){
-                        // TODO ƒƒOo—Í
+                        // TODO ãƒ­ã‚°å‡ºåŠ›
                     }
                 }
             }

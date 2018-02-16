@@ -34,37 +34,37 @@ package jp.ossc.nimbus.util.converter;
 import java.io.InputStream;
 
 /**
- * ƒXƒgƒŠ[ƒ€ƒRƒ“ƒo[ƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface StreamConverter extends ReversibleConverter{
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚©‚çƒXƒgƒŠ[ƒ€‚Ö‚Ì•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¸ã®å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int OBJECT_TO_STREAM = POSITIVE_CONVERT;
     
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚Ö‚Ì•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int STREAM_TO_OBJECT = REVERSE_CONVERT;
     
     /**
-     * ƒIƒuƒWƒFƒNƒg‚©‚çƒXƒgƒŠ[ƒ€‚Ö•ÏŠ·‚·‚éB<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œ‹‰Ê‚ğ“Ç‚İæ‚é“ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›çµæœã‚’èª­ã¿å–ã‚‹å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public InputStream convertToStream(Object obj) throws ConvertException;
     
     /**
-     * ƒXƒgƒŠ[ƒ€‚©‚çƒIƒuƒWƒFƒNƒg‚Ö•ÏŠ·‚·‚éB<p>
+     * ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
-     * @return ƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convertToObject(InputStream is) throws ConvertException;
 }

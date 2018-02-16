@@ -47,8 +47,8 @@ import jp.ossc.nimbus.service.ftp.FTPClientFactory;
 import jp.ossc.nimbus.service.ftp.FTPClient;
 
 /**
- * FTP��GET/PUT/DELETE/LS���s���e�X�g�A�N�V�����B<p>
- * ����̏ڍׂ́A{@link #execute(TestContext, String, Reader)}���Q�ƁB<br>
+ * FTPでGET/PUT/DELETE/LSを行うテストアクション。<p>
+ * 動作の詳細は、{@link #execute(TestContext, String, Reader)}を参照。<br>
  * 
  * @author M.Takata
  */
@@ -77,19 +77,19 @@ public class FTPActionService extends ServiceBase implements TestAction, TestAct
     }
     
     /**
-     * ���\�[�X�̓��e��ǂݍ���ŁAFTP��GET/PUT/DELETE/LS���s���B<p>
-     * ���\�[�X�̃t�H�[�}�b�g�́A�ȉ��B<br>
+     * リソースの内容を読み込んで、FTPでGET/PUT/DELETE/LSを行う。<p>
+     * リソースのフォーマットは、以下。<br>
      * <pre>
      * actionType
      * filePath
      * </pre>
-     * actionType�́AGET�AMGET�܂���PUT�ADELETE�AMDELETE�ALS���w�肷��B<br>
-     * filePath�́AGET�܂���PUT����t�@�C���̃p�X���w�肷��BGET�AMGET�ADELETE�AMDELETE�ALS�̏ꍇ�́A�����[�g�̃t�@�C���p�X���w�肷��BPUT�̏ꍇ�A���[�J���̃t�@�C����,�����[�g�̃t�@�C���p�X�B�����w�肷��ꍇ�́A���s���Ďw�肷��B<br>
+     * actionTypeは、GET、MGETまたはPUT、DELETE、MDELETE、LSを指定する。<br>
+     * filePathは、GETまたはPUTするファイルのパスを指定する。GET、MGET、DELETE、MDELETE、LSの場合は、リモートのファイルパスを指定する。PUTの場合、ローカルのファイル名,リモートのファイルパス。複数指定する場合は、改行して指定する。<br>
      *
-     * @param context �R���e�L�X�g
-     * @param actionId �A�N�V����ID
-     * @param resource ���\�[�X
-     * @return GET�AMGET�̏ꍇ�A�擾�����t�@�C���̃��X�g�BPUT�ADELETE�AMDELETE�̏ꍇ�Anull�BLS�̏ꍇ�A�p�X�̃��X�g�B
+     * @param context コンテキスト
+     * @param actionId アクションID
+     * @param resource リソース
+     * @return GET、MGETの場合、取得したファイルのリスト。PUT、DELETE、MDELETEの場合、null。LSの場合、パスのリスト。
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * ThrowableJournalEditorService‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ThrowableJournalEditorServiceã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @version $Name:  $
  * @author K.Nagai
@@ -42,11 +42,11 @@ package jp.ossc.nimbus.service.journal.editor;
  */
 public interface ThrowableJournalEditorServiceMBean 
 extends ImmutableJournalEditorServiceBaseMBean {
-    /**Œ´ˆö(Cause)‚ğ’Ç‚Á‚Äo—Í‚·‚é‚©‚Ç‚¤‚©İ’è*/
+    /**åŸå› (Cause)ã‚’è¿½ã£ã¦å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹è¨­å®š*/
     public void setOutputCause(boolean output);
-    /**Œ´ˆö(Cause)‚ğ’Ç‚Á‚Äo—Í‚·‚é‚©‚Ç‚¤‚©æ“¾*/
+    /**åŸå› (Cause)ã‚’è¿½ã£ã¦å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹å–å¾—*/
     public boolean getOutputCause();
-    /**Œ´ˆö(Cause)‚ğ’Ç‚Á‚Äo—Í‚·‚éÛ‚ÉTab‚ğ“ü‚ê‚é‚©‚Ç‚¤‚©æ“¾*/
+    /**åŸå› (Cause)ã‚’è¿½ã£ã¦å‡ºåŠ›ã™ã‚‹éš›ã«Tabã‚’å…¥ã‚Œã‚‹ã‹ã©ã†ã‹å–å¾—*/
     public boolean getOutputTab();
-    /**Œ´ˆö(Cause)‚ğ’Ç‚Á‚Äo—Í‚·‚éÛ‚ÉTab‚ğ“ü‚ê‚é‚©‚Ç‚¤‚©İ’è*/
+    /**åŸå› (Cause)ã‚’è¿½ã£ã¦å‡ºåŠ›ã™ã‚‹éš›ã«Tabã‚’å…¥ã‚Œã‚‹ã‹ã©ã†ã‹è¨­å®š*/
     public void setOutputTab(boolean outputTab);}

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.util.converter;
 import java.math.*;
 
 /**
- * ¬”Œ…ŠÛ‚ßƒRƒ“ƒo[ƒ^B<p>
+ * å°æ•°æ¡ä¸¸ã‚ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,29 +45,29 @@ public class DecimalScaleConverter implements Converter{
     private Class returnType;
     
     /**
-     * ƒXƒP[ƒ‹‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * ã‚¹ã‚±ãƒ¼ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param scale ƒXƒP[ƒ‹
+     * @param scale ã‚¹ã‚±ãƒ¼ãƒ«
      */
     public void setScale(int scale){
         this.scale = scale;
     }
     
     /**
-     * ƒXƒP[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒP[ƒ‹
+     * @return ã‚¹ã‚±ãƒ¼ãƒ«
      */
     public int getScale(){
         return scale;
     }
     
     /**
-     * ŠÛ‚ßƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link BigDecimal#ROUND_HALF_UP}B<br>
+     * ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link BigDecimal#ROUND_HALF_UP}ã€‚<br>
      *
-     * @param roundingMode ŠÛ‚ßƒ‚[ƒh
+     * @param roundingMode ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
      * @see BigDecimal
      */
     public void setRoundingMode(int roundingMode){
@@ -76,20 +76,20 @@ public class DecimalScaleConverter implements Converter{
     }
     
     /**
-     * ŠÛ‚ßƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŠÛ‚ßƒ‚[ƒh
+     * @return ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰
      */
     public int getRoundingMode(){
         return roundingMode;
     }
     
     /**
-     * •ÏŠ·Œã‚Ì–ß‚è’l‚ÌŒ^‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅA“ü—Í‚ÌŒ^‚É‘Î‰‚µ‚½Œ^‚Å•Ô‚·B<br>
-     * ƒTƒ|[ƒg‚·‚éŒ^‚ÍABigDecimalADoubleAFloatAStringB<br>
+     * å¤‰æ›å¾Œã®æˆ»ã‚Šå€¤ã®å‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€å…¥åŠ›ã®å‹ã«å¯¾å¿œã—ãŸå‹ã§è¿”ã™ã€‚<br>
+     * ã‚µãƒãƒ¼ãƒˆã™ã‚‹å‹ã¯ã€BigDecimalã€Doubleã€Floatã€Stringã€‚<br>
      * 
-     * @param type –ß‚è’l‚ÌŒ^
+     * @param type æˆ»ã‚Šå€¤ã®å‹
      */
     public void setReturnType(Class type){
         if(type != null
@@ -104,21 +104,21 @@ public class DecimalScaleConverter implements Converter{
     }
     
     /**
-     * •ÏŠ·Œã‚Ì–ß‚è’l‚ÌŒ^‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›å¾Œã®æˆ»ã‚Šå€¤ã®å‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return –ß‚è’l‚ÌŒ^
+     * @return æˆ»ã‚Šå€¤ã®å‹
      */
     public Class getReturnType(){
         return returnType;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğŠÛ‚ß‚éB<p>
-     * ƒTƒ|[ƒg‚µ‚È‚¢Œ^‚ÌƒIƒuƒWƒFƒNƒg‚ª“n‚³‚ê‚é‚ÆA‚»‚Ì‚Ü‚Ü•Ô‚·B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¸¸ã‚ã‚‹ã€‚<p>
+     * ã‚µãƒãƒ¼ãƒˆã—ãªã„å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæ¸¡ã•ã‚Œã‚‹ã¨ã€ãã®ã¾ã¾è¿”ã™ã€‚<br>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){

@@ -35,7 +35,7 @@ package jp.ossc.nimbus.service.semaphore;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒZƒ}ƒtƒHƒT[ƒrƒXB<p>
+ * ã‚»ãƒãƒ•ã‚©ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
@@ -44,10 +44,10 @@ public class DefaultSemaphoreService extends ServiceBase
     
     private static final long serialVersionUID = 6475921591298262486L;
     
-    /** ƒLƒƒƒpƒVƒeƒB[ƒTƒCƒY */
+    /** ã‚­ãƒ£ãƒ‘ã‚·ãƒ†ã‚£ãƒ¼ã‚µã‚¤ã‚º */
     private int capacity = -1 ;
     
-    /** ƒZƒ}ƒtƒH */
+    /** ã‚»ãƒãƒ•ã‚© */
     private Semaphore semaphore = null ;
     
     private long sleepTime = -1;
@@ -60,7 +60,7 @@ public class DefaultSemaphoreService extends ServiceBase
     private long forceFreeTimeoutMillis = -1L;
     private boolean isThreadBinding = true;
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean getResource(
         long timeout,
         int count,
@@ -76,7 +76,7 @@ public class DefaultSemaphoreService extends ServiceBase
         );
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean getResource(long timeout, int count) {
         if(semaphore == null){
             return false;
@@ -88,7 +88,7 @@ public class DefaultSemaphoreService extends ServiceBase
         );
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean getResource(long timeout) {
         if(semaphore == null){
             return false;
@@ -100,7 +100,7 @@ public class DefaultSemaphoreService extends ServiceBase
         );
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean getResource(int count){
         if(semaphore == null){
             return false;
@@ -112,7 +112,7 @@ public class DefaultSemaphoreService extends ServiceBase
         );
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean getResource() {
         if(semaphore == null){
             return false;
@@ -124,122 +124,122 @@ public class DefaultSemaphoreService extends ServiceBase
         );
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void freeResource() {
         semaphore.freeResource() ;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public int getResourceCapacity() {
         return capacity;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setResourceCapacity(int capa) {
         this.capacity = capa ;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setSleepTime(long millis){
         sleepTime = millis;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public long getSleepTime(){
         return sleepTime;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setCheckInterval(long millis){
         checkInterval = millis;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public long getCheckInterval(){
         return checkInterval;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public long getTimeoutMillis(){
         return timeoutMillis;
     }
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setTimeoutMillis(long timeout){
         timeoutMillis = timeout;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public int getMaxWaitCount(){
         return maxWaitCount;
     }
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setMaxWaitCount(int count){
         maxWaitCount = count;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public long getForceFreeTimeoutMillis(){
         return forceFreeTimeoutMillis;
     }
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setForceFreeTimeoutMillis(long timeout){
         forceFreeTimeoutMillis = timeout;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public int getResourceRemain() {
         return semaphore == null ? -1 : semaphore.getResourceRemain();
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public int getWaitingCount(){
         return semaphore == null ? 0 : semaphore.getWaitingCount();
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void release(){
         semaphore.release();
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void accept(){
         semaphore.accept();
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public int getMaxUsedResource(){
         return semaphore == null ? 0 : semaphore.getMaxUsedResource();
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public int getMaxWaitedCount(){
         return semaphore == null ? 0 : semaphore.getMaxWaitedCount();
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public void setThreadBinding(boolean isBinding){
         isThreadBinding = isBinding;
     }
     
-    // Semaphore ‚ÌJavaDoc
+    // Semaphore ã®JavaDoc
     public boolean isThreadBinding(){
         return isThreadBinding;
     }
     
-    // DefaultSemaphoreServiceMBean ‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBean ã®JavaDoc
     public void setSemaphoreClassName(String name) {
         semaphoreClassName = name ;
     }
     
-    // DefaultSemaphoreServiceMBean ‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBean ã®JavaDoc
     public String getSemaphoreClassName(){
         return semaphoreClassName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¢‚Ü‚·B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         semaphore = (Semaphore)Class.forName(
@@ -258,9 +258,9 @@ public class DefaultSemaphoreService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¢‚Ü‚·B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService(){
         semaphore.release();

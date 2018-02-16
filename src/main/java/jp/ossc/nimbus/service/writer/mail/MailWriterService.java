@@ -46,33 +46,33 @@ import jp.ossc.nimbus.service.keepalive.smtp.SmtpKeepAliveChecker;
 import jp.ossc.nimbus.service.jndi.JndiFinder;
 
 /**
- * ƒ[ƒ‹‘—MƒT[ƒrƒXB<p>
- * Java Mail‚Å‚ÍASession‚Ìæ“¾‹y‚Ñİ’èAMessage‚Ì¶¬‹y‚Ñİ’èASMTPƒT[ƒo‚Ö‚Ì‘—M‚Ì‹@”\‚ª‚ ‚éB<br>
- * ‚±‚ÌƒT[ƒrƒX‚Å‚ÍA‚»‚ê‚ç‚Ì‹@”\‚ğƒmƒ“ƒvƒƒOƒ‰ƒ~ƒ“ƒO‚Ås‚¤–‚ª‚Å‚«‚éB<br>
+ * ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * Java Mailã§ã¯ã€Sessionã®å–å¾—åŠã³è¨­å®šã€Messageã®ç”ŸæˆåŠã³è¨­å®šã€SMTPã‚µãƒ¼ãƒã¸ã®é€ä¿¡ã®æ©Ÿèƒ½ãŒã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§ã¯ã€ãã‚Œã‚‰ã®æ©Ÿèƒ½ã‚’ãƒãƒ³ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ã§è¡Œã†äº‹ãŒã§ãã‚‹ã€‚<br>
  * <p>
- * Java Mail‚Å‚ÌSession‚Ìæ“¾‚É‚ÍA‚Qí—Ş‚Ì•û–@‚ª‚ ‚éB<br>
- * {@link Session#getInstance(Properties, Authenticator)}‚ÅA”CˆÓ‚ÌƒZƒbƒVƒ‡ƒ“‘®«‚ğw’è‚µ‚½Session‚ğæ“¾‚·‚é•û–@B<br>
- * ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo‚Åİ’è‚µ‚½Session‚ğJNDIŒo—R‚Åæ“¾‚·‚é•û–@B<br>
- * ‚±‚ÌƒT[ƒrƒX‚Å‚ÍA‚»‚Ì‘o•û‚ğƒTƒ|[ƒg‚µ‚Ü‚·B<br>
- * ‚Ü‚½A‘OÒ‚Ì•û–@‚Ìê‡‚ÍA{@link #setSessionProperties(Properties)}‚ÅAİ’è‚µ‚½ƒZƒbƒVƒ‡ƒ“‘®«‚ğˆê—¥‚Éİ’è‚·‚éB<br>
- * ’A‚µAˆÈ‰º‚ÌƒZƒbƒVƒ‡ƒ“‘®«‚ÍAˆê—¥w’è‚ª‚È‚¢ê‡‚ÍA‚»‚ê‚¼‚êˆÈ‰º‚Ì•û–@‚Åİ’è‚³‚ê‚éB<br>
+ * Java Mailã§ã®Sessionã®å–å¾—ã«ã¯ã€ï¼’ç¨®é¡ã®æ–¹æ³•ãŒã‚ã‚‹ã€‚<br>
+ * {@link Session#getInstance(Properties, Authenticator)}ã§ã€ä»»æ„ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‚’æŒ‡å®šã—ãŸSessionã‚’å–å¾—ã™ã‚‹æ–¹æ³•ã€‚<br>
+ * ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒã§è¨­å®šã—ãŸSessionã‚’JNDIçµŒç”±ã§å–å¾—ã™ã‚‹æ–¹æ³•ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§ã¯ã€ãã®åŒæ–¹ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¾ã™ã€‚<br>
+ * ã¾ãŸã€å‰è€…ã®æ–¹æ³•ã®å ´åˆã¯ã€{@link #setSessionProperties(Properties)}ã§ã€è¨­å®šã—ãŸã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‚’ä¸€å¾‹ã«è¨­å®šã™ã‚‹ã€‚<br>
+ * ä½†ã—ã€ä»¥ä¸‹ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã¯ã€ä¸€å¾‹æŒ‡å®šãŒãªã„å ´åˆã¯ã€ãã‚Œãã‚Œä»¥ä¸‹ã®æ–¹æ³•ã§è¨­å®šã•ã‚Œã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th>ƒZƒbƒVƒ‡ƒ“‘®«</th><th>ƒfƒtƒHƒ‹ƒg‚Ìİ’è•û–@</th></tr>
- *   <tr><td>mail.smtp.host</td><td>{@link #setSmtpKeepAliveCheckerSelectorServiceName(ServiceName)}‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAw’è‚³‚ê‚½{@link KeepAliveCheckerSelector}‚É‚æ‚Á‚Ä‘I‘ğ‚³‚ê‚½{@link SmtpKeepAliveChecker}‚Ì{@link SmtpKeepAliveChecker#getHostIp()}‚Åæ“¾‚µ‚½’lB<br>‚»‚¤‚Å‚È‚¢ê‡‚ÍA{@link #setSmtpHostName(String)}‚Åw’è‚³‚ê‚½’lB</td></tr>
- *   <tr><td>mail.smtp.port</td><td>{@link #setSmtpKeepAliveCheckerSelectorServiceName(ServiceName)}‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAw’è‚³‚ê‚½{@link KeepAliveCheckerSelector}‚É‚æ‚Á‚Ä‘I‘ğ‚³‚ê‚½{@link SmtpKeepAliveChecker}‚Ì{@link SmtpKeepAliveChecker#getHostPort()}‚Åæ“¾‚µ‚½’lB<br>‚»‚¤‚Å‚È‚¢ê‡‚ÍA{@link #setSmtpPort(int)}‚Åw’è‚³‚ê‚½’lB</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§</th><th>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¨­å®šæ–¹æ³•</th></tr>
+ *   <tr><td>mail.smtp.host</td><td>{@link #setSmtpKeepAliveCheckerSelectorServiceName(ServiceName)}ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€æŒ‡å®šã•ã‚ŒãŸ{@link KeepAliveCheckerSelector}ã«ã‚ˆã£ã¦é¸æŠã•ã‚ŒãŸ{@link SmtpKeepAliveChecker}ã®{@link SmtpKeepAliveChecker#getHostIp()}ã§å–å¾—ã—ãŸå€¤ã€‚<br>ãã†ã§ãªã„å ´åˆã¯ã€{@link #setSmtpHostName(String)}ã§æŒ‡å®šã•ã‚ŒãŸå€¤ã€‚</td></tr>
+ *   <tr><td>mail.smtp.port</td><td>{@link #setSmtpKeepAliveCheckerSelectorServiceName(ServiceName)}ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€æŒ‡å®šã•ã‚ŒãŸ{@link KeepAliveCheckerSelector}ã«ã‚ˆã£ã¦é¸æŠã•ã‚ŒãŸ{@link SmtpKeepAliveChecker}ã®{@link SmtpKeepAliveChecker#getHostPort()}ã§å–å¾—ã—ãŸå€¤ã€‚<br>ãã†ã§ãªã„å ´åˆã¯ã€{@link #setSmtpPort(int)}ã§æŒ‡å®šã•ã‚ŒãŸå€¤ã€‚</td></tr>
  *   <tr><td>mail.transport.protocol</td><td>smtp</td></tr>
- *   <tr><td>mail.smtp.from</td><td>{@link #setEnvelopeFromAddressKey(String)}‚Åw’è‚³‚ê‚½ƒL[‚ÅA{@link #write(WritableRecord)}‚Ìˆø”‚Ì{@link WritableRecord}‚©‚çæ“¾‚µ‚½’lB<br>w’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link #setEnvelopeFromAddress(String)}‚Åw’è‚³‚ê‚½’lB</td></tr>
+ *   <tr><td>mail.smtp.from</td><td>{@link #setEnvelopeFromAddressKey(String)}ã§æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã§ã€{@link #write(WritableRecord)}ã®å¼•æ•°ã®{@link WritableRecord}ã‹ã‚‰å–å¾—ã—ãŸå€¤ã€‚<br>æŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link #setEnvelopeFromAddress(String)}ã§æŒ‡å®šã•ã‚ŒãŸå€¤ã€‚</td></tr>
  * </table>
  * <p>
- * Message‚Ì¶¬‚ÍAjavax.mail.MimeMessage‚ğ¶¬‚µ‚Ü‚·B<br>
- * MimeMessage‚Ö‚ÌŠeíİ’è‚ÍA‚±‚ÌƒT[ƒrƒX‚ÌŠe‘®«‚Åİ’è‰Â”\‚Å‚ ‚éB<br>
- * Še‘®«–ˆ‚ÉA‚Qí—Ş‚Ìİ’è•û–@‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
- * {@link #write(WritableRecord)}‚Ìˆø”‚Ì{@link WritableRecord}‚©‚çæ“¾‚·‚é‚½‚ß‚ÌƒL[–¼‚ğw’è‚·‚é•û–@‚ÆA‘®«’l‚»‚Ì‚à‚Ì‚ğİ’è‚·‚é•û–@‚Å‚ ‚éB<br>
- * ‘OÒ‚Ìê‡‚ÍA‚±‚ÌMessageWriter‚ğŒÄ‚ÔƒNƒ‰ƒCƒAƒ“ƒg‚ªˆø”‚É‚æ‚Á‚ÄA”CˆÓ‚Éw’è‚·‚é–‚ª‰Â”\‚ÅAŒãÒ‚Ì•û–@‚ÍA‚±‚ÌƒT[ƒrƒX‚Ìİ’è‚Åˆê—¥“¯‚¶’l‚ğİ’è‚·‚é–‚ª‰Â”\‚Å‚ ‚éB<br>
- * ‚ ‚é‘®«‚É‘Î‚µ‚ÄAã‹L‚Ì‚Qí—Ş‚Ìİ’è•û–@‚ª—¼•û‚Æ‚àİ’è‚³‚ê‚Ä‚¢‚éê‡‚É‚ÍA‘OÒ‚Ì•û‚ª—LŒø‚Æ‚È‚éB<br>
- * ‚Ü‚½A{@link Message#setSentDate(Date)}‚¾‚¯‚ÍA©“®“I‚É‘—M‚Ì‚ªİ’è‚³‚ê‚éB<br>
+ * Messageã®ç”Ÿæˆã¯ã€javax.mail.MimeMessageã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br>
+ * MimeMessageã¸ã®å„ç¨®è¨­å®šã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®å„å±æ€§ã§è¨­å®šå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+ * å„å±æ€§æ¯ã«ã€ï¼’ç¨®é¡ã®è¨­å®šæ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
+ * {@link #write(WritableRecord)}ã®å¼•æ•°ã®{@link WritableRecord}ã‹ã‚‰å–å¾—ã™ã‚‹ãŸã‚ã®ã‚­ãƒ¼åã‚’æŒ‡å®šã™ã‚‹æ–¹æ³•ã¨ã€å±æ€§å€¤ãã®ã‚‚ã®ã‚’è¨­å®šã™ã‚‹æ–¹æ³•ã§ã‚ã‚‹ã€‚<br>
+ * å‰è€…ã®å ´åˆã¯ã€ã“ã®MessageWriterã‚’å‘¼ã¶ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒå¼•æ•°ã«ã‚ˆã£ã¦ã€ä»»æ„ã«æŒ‡å®šã™ã‚‹äº‹ãŒå¯èƒ½ã§ã€å¾Œè€…ã®æ–¹æ³•ã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®è¨­å®šã§ä¸€å¾‹åŒã˜å€¤ã‚’è¨­å®šã™ã‚‹äº‹ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
+ * ã‚ã‚‹å±æ€§ã«å¯¾ã—ã¦ã€ä¸Šè¨˜ã®ï¼’ç¨®é¡ã®è¨­å®šæ–¹æ³•ãŒä¸¡æ–¹ã¨ã‚‚è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã«ã¯ã€å‰è€…ã®æ–¹ãŒæœ‰åŠ¹ã¨ãªã‚‹ã€‚<br>
+ * ã¾ãŸã€{@link Message#setSentDate(Date)}ã ã‘ã¯ã€è‡ªå‹•çš„ã«é€ä¿¡æ™‚ã®æ™‚åˆ»ãŒè¨­å®šã•ã‚Œã‚‹ã€‚<br>
  * <p>
- * SMTPƒT[ƒo‚Ö‚Ì‘—M‹@”\‚Æ‚µ‚Ä‚ÍA•¡”‚ÌSMTPƒT[ƒo‚É‘Î‚µ‚Äƒ[ƒhƒoƒ‰ƒ“ƒX‚µ‚È‚ª‚ç‘—M‚·‚é‹@”\‚ÆA‘—M¸”s‚ÉAˆê’è‚ÌŠÔŠu‚ğ‚ ‚¯‚ÄAƒŠƒgƒ‰ƒC‚·‚é‹@”\‚ª‚ ‚éB<br>
+ * SMTPã‚µãƒ¼ãƒã¸ã®é€ä¿¡æ©Ÿèƒ½ã¨ã—ã¦ã¯ã€è¤‡æ•°ã®SMTPã‚µãƒ¼ãƒã«å¯¾ã—ã¦ãƒ­ãƒ¼ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã—ãªãŒã‚‰é€ä¿¡ã™ã‚‹æ©Ÿèƒ½ã¨ã€é€ä¿¡å¤±æ•—æ™‚ã«ã€ä¸€å®šã®é–“éš”ã‚’ã‚ã‘ã¦ã€ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹æ©Ÿèƒ½ãŒã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -197,775 +197,775 @@ public class MailWriterService extends ServiceBase
     private JndiFinder jndiFinder;
     private String mailSessionJndiName = DEFAULT_MAIL_SESSION_JNDI_NAME;
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSessionProperties(Properties prop){
         sessionProperties = prop;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public Properties getSessionProperties(){
         return sessionProperties;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setAuthenticatorServiceName(ServiceName name){
         authenticatorServiceName = name;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public ServiceName getAuthenticatorServiceName(){
         return authenticatorServiceName;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setHeaders(Properties prop){
         headers = prop;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public Properties getHeaders(){
         return headers;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setHeaderKeys(String[] keys){
         headerKeys = keys;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getHeaderKeys(){
         return headerKeys;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setEnvelopeFromAddressKey(String key){
         envelopeFromAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getEnvelopeFromAddressKey(){
         return envelopeFromAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setEnvelopeFromAddress(String address){
         envelopeFromAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getEnvelopeFromAddress(){
         return envelopeFromAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setEnvelopeFromAddressValidate(boolean isValidate){
         isEnvelopeFromAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isEnvelopeFromAddressValidate(){
         return isEnvelopeFromAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromAddressKey(String key){
         fromAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFromAddressKey(){
         return fromAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromAddress(String address){
         fromAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFromAddress(){
         return fromAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromPersonalKey(String key){
         fromPersonalKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFromPersonalKey(){
         return fromPersonalKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromPersonal(String personal){
         fromPersonal = personal;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFromPersonal(){
         return fromPersonal;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromPersonalEncodingKey(String key){
         fromPersonalEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFromPersonalEncodingKey(){
         return fromPersonalEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromPersonalEncoding(String encoding){
         fromPersonalEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFromPersonalEncoding(){
         return fromPersonalEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFromAddressValidate(boolean isValidate){
         isFromAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isFromAddressValidate(){
         return isFromAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderAddressKey(String key){
         senderAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSenderAddressKey(){
         return senderAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderAddress(String address){
         senderAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSenderAddress(){
         return senderAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderPersonalKey(String key){
         senderPersonalKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSenderPersonalKey(){
         return senderPersonalKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderPersonal(String personal){
         senderPersonal = personal;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSenderPersonal(){
         return senderPersonal;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderPersonalEncodingKey(String key){
         senderPersonalEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSenderPersonalEncodingKey(){
         return senderPersonalEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderPersonalEncoding(String encoding){
         senderPersonalEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSenderPersonalEncoding(){
         return senderPersonalEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSenderAddressValidate(boolean isValidate){
         isSenderAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isSenderAddressValidate(){
         return isSenderAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToAddressKey(String key){
         toAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getToAddressKey(){
         return toAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToAddress(String[] address){
         toAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getToAddress(){
         return toAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToPersonalKey(String key){
         toPersonalKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getToPersonalKey(){
         return toPersonalKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToPersonals(String[] personal){
         toPersonals = personal;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getToPersonals(){
         return toPersonals;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToPersonalEncodingKey(String key){
         toPersonalEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getToPersonalEncodingKey(){
         return toPersonalEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToPersonalEncodings(String[] encoding){
         toPersonalEncodings = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getToPersonalEncodings(){
         return toPersonalEncodings;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToPersonalEncoding(String encoding){
         toPersonalEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getToPersonalEncoding(){
         return toPersonalEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setToAddressValidate(boolean isValidate){
         isToAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isToAddressValidate(){
         return isToAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcAddressKey(String key){
         ccAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getCcAddressKey(){
         return ccAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcAddress(String[] address){
         ccAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getCcAddress(){
         return ccAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcPersonalKey(String key){
         ccPersonalKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getCcPersonalKey(){
         return ccPersonalKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcPersonals(String[] personal){
         ccPersonals = personal;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getCcPersonals(){
         return ccPersonals;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcPersonalEncodingKey(String key){
         ccPersonalEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getCcPersonalEncodingKey(){
         return ccPersonalEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcPersonalEncodings(String[] encoding){
         ccPersonalEncodings = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getCcPersonalEncodings(){
         return ccPersonalEncodings;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcPersonalEncoding(String encoding){
         ccPersonalEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getCcPersonalEncoding(){
         return ccPersonalEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setCcAddressValidate(boolean isValidate){
         isCcAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isCcAddressValidate(){
         return isCcAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccAddressKey(String key){
         bccAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBccAddressKey(){
         return bccAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccAddress(String[] address){
         bccAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getBccAddress(){
         return bccAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccPersonalKey(String key){
         bccPersonalKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBccPersonalKey(){
         return bccPersonalKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccPersonals(String[] personal){
         bccPersonals = personal;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getBccPersonals(){
         return bccPersonals;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccPersonalEncodingKey(String key){
         bccPersonalEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBccPersonalEncodingKey(){
         return bccPersonalEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccPersonalEncodings(String[] encoding){
         bccPersonalEncodings = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getBccPersonalEncodings(){
         return bccPersonalEncodings;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccPersonalEncoding(String encoding){
         bccPersonalEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBccPersonalEncoding(){
         return bccPersonalEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBccAddressValidate(boolean isValidate){
         isBccAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isBccAddressValidate(){
         return isBccAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToAddressKey(String key){
         replyToAddressKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getReplyToAddressKey(){
         return replyToAddressKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToAddress(String[] address){
         replyToAddress = address;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getReplyToAddress(){
         return replyToAddress;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToPersonalKey(String key){
         replyToPersonalKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getReplyToPersonalKey(){
         return replyToPersonalKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToPersonals(String[] personal){
         replyToPersonals = personal;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getReplyToPersonals(){
         return replyToPersonals;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToPersonalEncodingKey(String key){
         replyToPersonalEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getReplyToPersonalEncodingKey(){
         return replyToPersonalEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToPersonalEncodings(String[] encoding){
         replyToPersonalEncodings = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getReplyToPersonalEncodings(){
         return replyToPersonalEncodings;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToPersonalEncoding(String encoding){
         replyToPersonalEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getReplyToPersonalEncoding(){
         return replyToPersonalEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setReplyToAddressValidate(boolean isValidate){
         isReplyToAddressValidate = isValidate;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public boolean isReplyToAddressValidate(){
         return isReplyToAddressValidate;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSubjectKey(String key){
         subjectKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSubjectKey(){
         return subjectKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSubject(String subject){
         this.subject = subject;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSubject(){
         return subject;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSubjectEncodingKey(String key){
         subjectEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSubjectEncodingKey(){
         return subjectEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSubjectEncoding(String encoding){
         subjectEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSubjectEncoding(){
         return subjectEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setContentIDKey(String key){
         contentIDKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getContentIDKey(){
         return contentIDKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setContentID(String id){
         this.contentID = id;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getContentID(){
         return contentID;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setContentLanguageKey(String key){
         contentLanguageKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getContentLanguageKey(){
         return contentLanguageKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setContentLanguage(String[] lang){
         contentLanguage = lang;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String[] getContentLanguage(){
         return contentLanguage;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setContentMD5Key(String key){
         contentMD5Key = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getContentMD5Key(){
         return contentMD5Key;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setContentMD5(String val){
         contentMD5 = val;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getContentMD5(){
         return contentMD5;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setDescriptionKey(String key){
         descriptionKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getDescriptionKey(){
         return descriptionKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setDescription(String val){
         description = val;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getDescription(){
         return description;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setDescriptionEncodingKey(String key){
         descriptionEncodingKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getDescriptionEncodingKey(){
         return descriptionEncodingKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setDescriptionEncoding(String encoding){
         descriptionEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getDescriptionEncoding(){
         return descriptionEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setDispositionKey(String key){
         dispositionKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getDispositionKey(){
         return dispositionKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setDisposition(String val){
         disposition = val;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getDisposition(){
         return disposition;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFilePartKey(String key){
         filePartKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFilePartKey(){
         return filePartKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFileCharsetKey(String key){
         fileCharsetKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFileCharsetKey(){
         return fileCharsetKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFileCharset(String charset){
         fileCharset = charset;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFileCharset(){
         return fileCharset;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFileLanguageKey(String key){
         fileLanguageKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFileLanguageKey(){
         return fileLanguageKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setFileLanguage(String lang){
         fileLanguage = lang;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getFileLanguage(){
         return fileLanguage;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBodyIndex(int index){
         bodyIndex = index;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public int getBodyIndex(){
         return bodyIndex;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBodyIndexKey(String key){
         bodyIndexKey = key;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBodyIndexKey(){
         return bodyIndexKey;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBodyText(String text){
         bodyText = text;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBodyText(){
         return bodyText;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setBodyEncoding(String encoding){
         bodyEncoding = encoding;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getBodyEncoding(){
         return bodyEncoding;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSmtpHostName(String name){
         smtpHostName = name;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getSmtpHostName(){
         return smtpHostName;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSmtpPort(int port){
         smtpPort = port;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public int getSmtpPort(){
         return smtpPort;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setRetryCount(int count){
         retryCount = count;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public int getRetryCount(){
         return retryCount;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setRetryInterval(long millis){
         retryInterval = millis;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setSmtpKeepAliveCheckerSelectorServiceName(ServiceName name){
         smtpKeepAliveCheckerSelectorServiceName = name;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public ServiceName getSmtpKeepAliveCheckerSelectorServiceName(){
         return smtpKeepAliveCheckerSelectorServiceName;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
     
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public void setMailSessionJndiName(String name){
         mailSessionJndiName = name;
     }
-    // MailWriterServiceMBean‚ÌJavaDoc
+    // MailWriterServiceMBeanã®JavaDoc
     public String getMailSessionJndiName(){
         return mailSessionJndiName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(authenticatorServiceName != null){
@@ -1017,10 +1017,10 @@ public class MailWriterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğƒ[ƒ‹‘—M‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã™ã‚‹ã€‚<p>
      *
-     * @param rec ƒ[ƒ‹‘—M‚·‚éƒŒƒR[ƒh
-     * @exception MessageWriteException ƒ[ƒ‹‘—M‚É¸”s‚µ‚½ê‡
+     * @param rec ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception MessageWriteException ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void write(WritableRecord rec) throws MessageWriteException{
         
@@ -1048,13 +1048,13 @@ public class MailWriterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğƒ[ƒ‹‘—M‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã™ã‚‹ã€‚<p>
      *
-     * @param rec ƒ[ƒ‹‘—M‚·‚éƒŒƒR[ƒh
-     * @exception MessageWriteException javax.mail.Message‚Éİ’è‚·‚é’l‚ª•s³‚Èê‡A‚Ü‚½‚ÍSMTPƒT[ƒo‚ª€‚ñ‚Å‚¢‚éê‡
-     * @exception IllegalWriteException javax.mail.Message‚Ì“Ç‚İæ‚èê—p‘®«‚É‘‚«‚İ‚ªs‚í‚ê‚½ê‡
-     * @exception MessagingException ƒ[ƒ‹‘—M‚É¸”s‚µ‚½ê‡
-     * @exception NamingException javax.mail.Session‚ğJNDI‚©‚çlookup‚·‚é‚Ì‚É¸”s‚µ‚½ê‡
+     * @param rec ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception MessageWriteException javax.mail.Messageã«è¨­å®šã™ã‚‹å€¤ãŒä¸æ­£ãªå ´åˆã€ã¾ãŸã¯SMTPã‚µãƒ¼ãƒãŒæ­»ã‚“ã§ã„ã‚‹å ´åˆ
+     * @exception IllegalWriteException javax.mail.Messageã®èª­ã¿å–ã‚Šå°‚ç”¨å±æ€§ã«æ›¸ãè¾¼ã¿ãŒè¡Œã‚ã‚ŒãŸå ´åˆ
+     * @exception MessagingException ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception NamingException javax.mail.Sessionã‚’JNDIã‹ã‚‰lookupã™ã‚‹ã®ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void sendMail(WritableRecord rec)
      throws MessageWriteException, IllegalWriteException, MessagingException,
@@ -1062,7 +1062,7 @@ public class MailWriterService extends ServiceBase
         
         final Map elementMap = rec.getElementMap();
         
-        // FromƒAƒhƒŒƒX‚ğì¬‚·‚é
+        // Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
         final InternetAddress fromInternetAddress = createAddress(
             elementMap,
             fromAddress,
@@ -1077,7 +1077,7 @@ public class MailWriterService extends ServiceBase
             throw new MessageWriteException("The From address is null.");
         }
         
-        // SenderƒAƒhƒŒƒX‚ğì¬‚·‚é
+        // Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
         final InternetAddress senderInternetAddress = createAddress(
             elementMap,
             senderAddress,
@@ -1089,7 +1089,7 @@ public class MailWriterService extends ServiceBase
             isSenderAddressValidate
         );
         
-        // ToƒAƒhƒŒƒX‚ğì¬‚·‚é
+        // Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
         final InternetAddress[] toInternetAddress = createAddressArray(
             elementMap,
             toAddress,
@@ -1102,7 +1102,7 @@ public class MailWriterService extends ServiceBase
             isToAddressValidate
         );
         
-        // CcƒAƒhƒŒƒX‚ğì¬‚·‚é
+        // Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
         final InternetAddress[] ccInternetAddress = createAddressArray(
             elementMap,
             ccAddress,
@@ -1115,7 +1115,7 @@ public class MailWriterService extends ServiceBase
             isCcAddressValidate
         );
         
-        // BccƒAƒhƒŒƒX‚ğì¬‚·‚é
+        // Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
         final InternetAddress[] bccInternetAddress = createAddressArray(
             elementMap,
             bccAddress,
@@ -1134,7 +1134,7 @@ public class MailWriterService extends ServiceBase
             throw new MessageWriteException("The destination address is null.");
         }
         
-        // ReplyToƒAƒhƒŒƒX‚ğì¬‚·‚é
+        // ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
         final InternetAddress[] replyToInternetAddress = createAddressArray(
             elementMap,
             replyToAddress,
@@ -1147,7 +1147,7 @@ public class MailWriterService extends ServiceBase
             isReplyToAddressValidate
         );
         
-        // –{•¶‚ğì¬‚·‚é
+        // æœ¬æ–‡ã‚’ä½œæˆã™ã‚‹
         String body = bodyText;
         final int bIndex = getIntValue(elementMap, bodyIndex, bodyIndexKey);
         if(bIndex >= 0){
@@ -1177,33 +1177,33 @@ public class MailWriterService extends ServiceBase
                 if(checker == null){
                     throw new MessageWriteException("All smtp server is dead.");
                 }
-                // SMTPƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚é
+                // SMTPã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹
                 props.setProperty(
                     SESSION_PROPERTY_NAME_HOST,
                     checker.getHostIp()
                 );
-                // SMTPƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚é
+                // SMTPã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹
                 props.setProperty(
                     SESSION_PROPERTY_NAME_PORT,
                     String.valueOf(checker.getHostPort())
                 );
             }else{
-                // SMTPƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚é
+                // SMTPã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹
                 props.setProperty(SESSION_PROPERTY_NAME_HOST, smtpHostName);
-                // SMTPƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚é
+                // SMTPã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹
                 props.setProperty(
                     SESSION_PROPERTY_NAME_PORT,
                     String.valueOf(smtpPort)
                 );
             }
             
-            // ‘—MƒvƒƒgƒRƒ‹‚ğİ’è‚·‚é
+            // é€ä¿¡ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚’è¨­å®šã™ã‚‹
             props.setProperty(
                 SESSION_PROPERTY_NAME_TRANSPORT_PROTOCOL,
                 SESSION_PROPERTY_VALUE_TRANSPORT_PROTOCOL
             );
             
-            // envelope-fromƒAƒhƒŒƒX‚ğì¬‚·‚é
+            // envelope-fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½œæˆã™ã‚‹
             final InternetAddress envelopeFromInternetAddress = createAddress(
                 elementMap,
                 envelopeFromAddress,
@@ -1215,7 +1215,7 @@ public class MailWriterService extends ServiceBase
                 isEnvelopeFromAddressValidate
             );
             if(envelopeFromInternetAddress != null){
-                // envelope-fromƒAƒhƒŒƒX‚ğİ’è‚·‚é
+                // envelope-fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
                 props.setProperty(
                     SESSION_PROPERTY_NAME_FROM,
                     envelopeFromInternetAddress.getAddress()
@@ -1230,13 +1230,13 @@ public class MailWriterService extends ServiceBase
         }
         final MimeMessage message = new MimeMessage(session);
         
-        // Content-ID‚ğİ’è‚·‚é
+        // Content-IDã‚’è¨­å®šã™ã‚‹
         String val = getStringValue(elementMap, contentID, contentIDKey);
         if(val != null){
             message.setContentID(val);
         }
         
-        // Content-Language‚ğİ’è‚·‚é
+        // Content-Languageã‚’è¨­å®šã™ã‚‹
         String[] vals = getStringArrayValue(
             elementMap,
             contentLanguage,
@@ -1246,13 +1246,13 @@ public class MailWriterService extends ServiceBase
             message.setContentLanguage(vals);
         }
         
-        // Content-MD5‚ğİ’è‚·‚é
+        // Content-MD5ã‚’è¨­å®šã™ã‚‹
         val = getStringValue(elementMap, contentMD5, contentMD5Key);
         if(val != null){
             message.setContentMD5(val);
         }
         
-        // Content-Description‚ğİ’è‚·‚é
+        // Content-Descriptionã‚’è¨­å®šã™ã‚‹
         val = getStringValue(elementMap, description, descriptionKey);
         if(val != null){
             final String enc = getStringValue(
@@ -1267,21 +1267,21 @@ public class MailWriterService extends ServiceBase
             }
         }
         
-        // Content-Disposition‚ğİ’è‚·‚é
+        // Content-Dispositionã‚’è¨­å®šã™ã‚‹
         val = getStringValue(elementMap, disposition, dispositionKey);
         if(val != null){
             message.setDisposition(val);
         }
 
-        // FromƒAƒhƒŒƒX‚ğİ’è‚·‚é
+        // Fromã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
         message.setFrom(fromInternetAddress);
         
-        // SenderƒAƒhƒŒƒX‚ğİ’è‚·‚é
+        // Senderã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
         if(senderInternetAddress != null){
             message.setSender(senderInternetAddress);
         }
         
-        // ToƒAƒhƒŒƒX‚ğİ’è‚·‚é
+        // Toã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
         if(toInternetAddress != null){
             for(int i = 0; i < toInternetAddress.length; i++){
                 message.addRecipient(
@@ -1291,7 +1291,7 @@ public class MailWriterService extends ServiceBase
             }
         }
         
-        // CcƒAƒhƒŒƒX‚ğİ’è‚·‚é
+        // Ccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
         if(ccInternetAddress != null){
             for(int i = 0; i < ccInternetAddress.length; i++){
                 message.addRecipient(
@@ -1301,7 +1301,7 @@ public class MailWriterService extends ServiceBase
             }
         }
         
-        // BccƒAƒhƒŒƒX‚ğİ’è‚·‚é
+        // Bccã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
         if(bccInternetAddress != null){
             for(int i = 0; i < bccInternetAddress.length; i++){
                 message.addRecipient(
@@ -1311,12 +1311,12 @@ public class MailWriterService extends ServiceBase
             }
         }
         
-        // ReplyToƒAƒhƒŒƒX‚ğİ’è‚·‚é
+        // ReplyToã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹
         if(replyToInternetAddress != null){
             message.setReplyTo(replyToInternetAddress);
         }
         
-        // ‘è–¼‚ğİ’è‚·‚é
+        // é¡Œåã‚’è¨­å®šã™ã‚‹
         String enc =
             getStringValue(elementMap, subjectEncoding, subjectEncodingKey);
         if(enc != null){
@@ -1338,7 +1338,7 @@ public class MailWriterService extends ServiceBase
             
             final MimeMultipart mp = new MimeMultipart();
             
-            // –{•¶‚ğİ’è‚·‚é
+            // æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹
             final MimeBodyPart textPart = new MimeBodyPart();
             if(bodyEncoding == null){
                 textPart.setText(body);
@@ -1347,7 +1347,7 @@ public class MailWriterService extends ServiceBase
             }
             mp.addBodyPart(textPart);
             
-            // “Y•tƒtƒ@ƒCƒ‹‚ğ“Y•t‚·‚é
+            // æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ·»ä»˜ã™ã‚‹
             for(int i = 0; i < files.length; i++){
                 final MimeBodyPart filePart = new MimeBodyPart();
                 filePart.setDataHandler(
@@ -1364,7 +1364,7 @@ public class MailWriterService extends ServiceBase
             
             message.setContent(mp);
         }else{
-            // –{•¶‚ğİ’è‚·‚é
+            // æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹
             if(bodyEncoding == null){
                 message.setText(body);
             }else{
@@ -1372,7 +1372,7 @@ public class MailWriterService extends ServiceBase
             }
         }
         
-        // ƒwƒbƒ_‚ğİ’è‚·‚é
+        // ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹
         if(headers != null){
             final Iterator names = headers.keySet().iterator();
             while(names.hasNext()){
@@ -1393,13 +1393,13 @@ public class MailWriterService extends ServiceBase
             }
         }
 
-        // ‘—M‚ğİ’è‚·‚é
+        // é€ä¿¡æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹
         message.setSentDate(new Date());
         
-        // İ’è‚ğ—LŒø‚É‚·‚é
+        // è¨­å®šã‚’æœ‰åŠ¹ã«ã™ã‚‹
         message.saveChanges();
         
-        // ƒ[ƒ‹‚ğ‘—M‚·‚é
+        // ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡ã™ã‚‹
         Transport.send(message);
     }
     

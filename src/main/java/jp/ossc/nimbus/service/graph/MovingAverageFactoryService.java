@@ -57,12 +57,12 @@ public class MovingAverageFactoryService extends ServiceBase
 
     private List dsConditionList;
 
-    // ServiceBaseÇÃJavaDoc
+    // ServiceBase„ÅÆJavaDoc
     public void createService() throws Exception {
         dsConditionList = new ArrayList();
     }
 
-    // ServiceBaseÇÃJavaDoc
+    // ServiceBase„ÅÆJavaDoc
     public void startService() throws Exception {
         if (datasetFactory == null) {
             throw new IllegalArgumentException(
@@ -91,12 +91,12 @@ public class MovingAverageFactoryService extends ServiceBase
         }
     }
 
-    // ServiceBaseÇÃJavaDoc
+    // ServiceBase„ÅÆJavaDoc
     public void stopService() throws Exception {
         dsConditionList.clear();
     }
 
-    // ServiceBaseÇÃJavaDoc
+    // ServiceBase„ÅÆJavaDoc
     public void destroyService() throws Exception {
         dsConditionList = null;
     }
@@ -133,22 +133,22 @@ public class MovingAverageFactoryService extends ServiceBase
         return suffixs;
     }
 
-    // DatasetFactoryÇÃJavaDoc
+    // DatasetFactory„ÅÆJavaDoc
     public void setName(String name) {
         this.name = name;
     }
 
-    // DatasetFactoryÇÃJavaDoc
+    // DatasetFactory„ÅÆJavaDoc
     public String getName() {
         return name;
     }
 
-    // DatasetFactoryÇÃJavaDoc
+    // DatasetFactory„ÅÆJavaDoc
     public void addDatasetCondition(DatasetCondition dsCondition) {
         dsConditionList.add(dsCondition);
     }
 
-    // DatasetFactoryÇÃJavaDoc
+    // DatasetFactory„ÅÆJavaDoc
     public DatasetCondition[] getDatasetConditions() {
         return (DatasetCondition[]) dsConditionList.toArray(
             new DatasetCondition[dsConditionList.size()]

@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * OPTIONSƒƒ\ƒbƒhRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * OPTIONSãƒ¡ã‚½ãƒƒãƒ‰RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class OptionsRestResponse extends BodyRestResponse{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public OptionsRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * HTTPƒXƒe[ƒ^ƒX‚Ì‰Šú’l‚ÍAHttpServletResponse.SC_OKB<br>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®åˆæœŸå€¤ã¯ã€HttpServletResponse.SC_OKã€‚<br>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public OptionsRestResponse(HttpServletResponse response){
         super(response);
@@ -58,42 +58,42 @@ public class OptionsRestResponse extends BodyRestResponse{
     }
     
     /**
-     * POSTƒƒ\ƒbƒh‚ğ‹–—e‚·‚é|‚ÌHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * POSTãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨±å®¹ã™ã‚‹æ—¨ã®HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void allowPost(){
         response.addHeader("Allow", "POST");
     }
     
     /**
-     * GETƒƒ\ƒbƒh‚ğ‹–—e‚·‚é|‚ÌHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * GETãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨±å®¹ã™ã‚‹æ—¨ã®HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void allowGet(){
         response.addHeader("Allow", "GET");
     }
     
     /**
-     * HEADƒƒ\ƒbƒh‚ğ‹–—e‚·‚é|‚ÌHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * HEADãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨±å®¹ã™ã‚‹æ—¨ã®HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void allowHead(){
         response.addHeader("Allow", "HEAD");
     }
     
     /**
-     * PUTƒƒ\ƒbƒh‚ğ‹–—e‚·‚é|‚ÌHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * PUTãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨±å®¹ã™ã‚‹æ—¨ã®HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void allowPut(){
         response.addHeader("Allow", "PUT");
     }
     
     /**
-     * DELETEƒƒ\ƒbƒh‚ğ‹–—e‚·‚é|‚ÌHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * DELETEãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨±å®¹ã™ã‚‹æ—¨ã®HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void allowDelete(){
         response.addHeader("Allow", "DELETE");
     }
     
     /**
-     * OPTIONSƒƒ\ƒbƒh‚ğ‹–—e‚·‚é|‚ÌHTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * OPTIONSãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨±å®¹ã™ã‚‹æ—¨ã®HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      */
     public void allowOptions(){
         response.addHeader("Allow", "OPTIONS");

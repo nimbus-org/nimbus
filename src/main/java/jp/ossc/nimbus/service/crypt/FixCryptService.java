@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.crypt;
 
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ŒÅ’è‚Ì•¶š—ñ‚ğ•t‰Á‚·‚é‚¾‚¯‚ÌˆÃ†ƒT[ƒrƒXB<p>
+ * å›ºå®šã®æ–‡å­—åˆ—ã‚’ä»˜åŠ ã™ã‚‹ã ã‘ã®æš—å·ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author A.Kokubu
  */
@@ -62,10 +62,10 @@ public class FixCryptService extends ServiceBase
     }
     
     /**
-     * ˆÃ†‰»‘ÎÛ‚Ì•¶š—ñ‚ÉÚ“ªŒê‹y‚ÑÚ”öŒê‚ğ•t‰Á‚µ‚Ä•Ô‚·B<p>
+     * æš—å·åŒ–å¯¾è±¡ã®æ–‡å­—åˆ—ã«æ¥é ­èªåŠã³æ¥å°¾èªã‚’ä»˜åŠ ã—ã¦è¿”ã™ã€‚<p>
      * 
-     * @param str ˆÃ†‰»‘ÎÛ•¶š—ñ
-     * @return ˆÃ†‰»•¶š—ñ
+     * @param str æš—å·åŒ–å¯¾è±¡æ–‡å­—åˆ—
+     * @return æš—å·åŒ–æ–‡å­—åˆ—
      */
     public String doEncode(String str) {
         if((fixPrefix == null || fixPrefix.length() == 0)
@@ -84,10 +84,10 @@ public class FixCryptService extends ServiceBase
     }
     
     /**
-     * •œ†‰»‘ÎÛ‚Ì•¶š—ñ‚©‚çÚ“ªŒê‹y‚ÑÚ”öŒê‚ğí‚Á‚Ä•Ô‚·B<p>
+     * å¾©å·åŒ–å¯¾è±¡ã®æ–‡å­—åˆ—ã‹ã‚‰æ¥é ­èªåŠã³æ¥å°¾èªã‚’å‰Šã£ã¦è¿”ã™ã€‚<p>
      * 
-     * @param str •œ†‰»‘ÎÛ•¶š—ñ
-     * @return •œ†‰»•¶š—ñ
+     * @param str å¾©å·åŒ–å¯¾è±¡æ–‡å­—åˆ—
+     * @return å¾©å·åŒ–æ–‡å­—åˆ—
      */
     public String doDecode(String str) {
         if((fixPrefix == null || fixPrefix.length() == 0)
@@ -107,10 +107,10 @@ public class FixCryptService extends ServiceBase
     }
     
     /**
-     * ƒnƒbƒVƒ…‘ÎÛ‚Ì•¶š—ñ‚ğ‚»‚Ì‚Ü‚Ü•Ô‚·B<p>
+     * ãƒãƒƒã‚·ãƒ¥å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’ãã®ã¾ã¾è¿”ã™ã€‚<p>
      * 
-     * @param str ƒnƒbƒVƒ…‘ÎÛ•¶š—ñ
-     * @return ƒnƒbƒVƒ…•¶š—ñ
+     * @param str ãƒãƒƒã‚·ãƒ¥å¯¾è±¡æ–‡å­—åˆ—
+     * @return ãƒãƒƒã‚·ãƒ¥æ–‡å­—åˆ—
      */
     public String doHash(String str) {
         return str;

@@ -52,18 +52,18 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒNƒ‰ƒXƒpƒXã‚ÌƒfƒtƒHƒ‹ƒgƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ÆƒAƒ“ƒ[ƒh‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã¨ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ÌŒÄ‚Ño‚µŒã‚ÍAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testLoadOnClassPath1() throws Exception {
@@ -94,17 +94,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ‘¶İ‚µ‚È‚¢ƒNƒ‰ƒXƒpƒXã‚ÌƒfƒtƒHƒ‹ƒgƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ÆƒAƒ“ƒ[ƒh‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * å­˜åœ¨ã—ãªã„ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã¨ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚©‚È‚¢B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ã‹ãªã„ã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ªfalse‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚Ì–ß‚è’l‚ªnullB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ÌŒÄ‚Ño‚µ‚ªs‚¦‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ãŒfalseã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã®æˆ»ã‚Šå€¤ãŒnullã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã®å‘¼ã³å‡ºã—ãŒè¡Œãˆã‚‹ã€‚</li>
      * </ul>
      */
     public void testLoadOnClassPath2() throws Exception {
@@ -119,18 +119,18 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒNƒ‰ƒXƒpƒXã‚Ì”CˆÓ‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ÆƒAƒ“ƒ[ƒh‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã®ä»»æ„ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã¨ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚ÉƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager(String)‚ÌŒÄ‚Ño‚µŒã‚ÍAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager(String)ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testLoadOnClassPath3() throws Exception {
@@ -163,17 +163,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒNƒ‰ƒXƒpƒXã‚Ì”CˆÓ‚Ì‘¶İ‚µ‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ÆƒAƒ“ƒ[ƒh‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã®ä»»æ„ã®å­˜åœ¨ã—ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã¨ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚©‚È‚¢B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ã‹ãªã„ã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚É‘¶İ‚µ‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager(String)‚ÌŒÄ‚Ño‚µ‚ª‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«å­˜åœ¨ã—ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager(String)ã®å‘¼ã³å‡ºã—ãŒã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testLoadOnClassPath4() throws Exception {
@@ -190,18 +190,18 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * DTD‚ğg‚Á‚½³‚µ‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌŒŸØ‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * DTDã‚’ä½¿ã£ãŸæ­£ã—ã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®æ¤œè¨¼ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String, boolean, boolean)‚Ìˆø”‚ÉƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"AfalseAtrue‚ğw’è‚µ‚ÄAŒÄ‚Ño‚µ‚½–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager(String)‚ÅA"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager(String)‚ÌŒÄ‚Ño‚µŒã‚ÍAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager(String, boolean, boolean)ã®å¼•æ•°ã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã€falseã€trueã‚’æŒ‡å®šã—ã¦ã€å‘¼ã³å‡ºã—ãŸæˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager(String)ã§ã€"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager(String)ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testLoadWithValidate1() throws Exception{
@@ -239,17 +239,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * DTD‚ğg‚Á‚½Œë‚Á‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌŒŸØ‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * DTDã‚’ä½¿ã£ãŸèª¤ã£ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®æ¤œè¨¼ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service11.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service11.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String, boolean, boolean)‚Ìˆø”‚ÉƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"AfalseAtrue‚ğw’è‚µ‚ÄAŒÄ‚Ño‚µ‚½–ß‚è’l‚ªfalse‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚Ì–ß‚è’l‚ªnullB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ÌŒÄ‚Ño‚µ‚ªs‚¦‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String, boolean, boolean)ã®å¼•æ•°ã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã€falseã€trueã‚’æŒ‡å®šã—ã¦ã€å‘¼ã³å‡ºã—ãŸæˆ»ã‚Šå€¤ãŒfalseã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã®æˆ»ã‚Šå€¤ãŒnullã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã®å‘¼ã³å‡ºã—ãŒè¡Œãˆã‚‹ã€‚</li>
      * </ul>
      */
     public void testLoadWithValidate2() throws Exception{
@@ -278,18 +278,18 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * DTD‚ğg‚í‚È‚¢Œë‚Á‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌŒŸØ‚ÌƒeƒXƒgBŒë‚Á‚½—v‘f‚Í–³‹‚³‚ê‚éB<p>
-     * ğŒF
+     * DTDã‚’ä½¿ã‚ãªã„èª¤ã£ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®æ¤œè¨¼ã®ãƒ†ã‚¹ãƒˆã€‚èª¤ã£ãŸè¦ç´ ã¯ç„¡è¦–ã•ã‚Œã‚‹ã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service11.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service11.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String, boolean, boolean)‚Ìˆø”‚ÉƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"AfalseAfalse‚ğw’è‚µ‚ÄAŒÄ‚Ño‚µ‚½–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µAServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ÌŒÄ‚Ño‚µ‚ªs‚¦‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String, boolean, boolean)ã®å¼•æ•°ã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã€falseã€falseã‚’æŒ‡å®šã—ã¦ã€å‘¼ã³å‡ºã—ãŸæˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã€ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã®å‘¼ã³å‡ºã—ãŒè¡Œãˆã‚‹ã€‚</li>
      * </ul>
      */
     public void testLoadWithValidate3() throws Exception{
@@ -324,18 +324,18 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒ[ƒJƒ‹ƒpƒXã‚Ì”CˆÓ‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‚ÆƒAƒ“ƒ[ƒh‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‘ã‚¹ä¸Šã®ä»»æ„ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ­ãƒ¼ãƒ‰ã¨ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager(String)‚ÌŒÄ‚Ño‚µŒã‚ÍAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager(String)ã®å‘¼ã³å‡ºã—å¾Œã¯ã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testLoadOnDir1() throws Exception {
@@ -367,20 +367,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì‘®«İ’è‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§è¨­å®šã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service2.xml">"nimbus-service2.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service2.xml">"nimbus-service2.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚©‚çAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½‘®«‚Ì’l‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå±æ€§ã®å€¤ãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testServiceAttributeSetting1() throws Exception {
@@ -431,21 +431,21 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì‘®«İ’è‚ÌƒeƒXƒgBŒë‚Á‚½attribute—v‘f‚ğŠÜ‚ŞB<p>
-     * ğŒF
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§è¨­å®šã®ãƒ†ã‚¹ãƒˆã€‚èª¤ã£ãŸattributeè¦ç´ ã‚’å«ã‚€ã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service3.xml">"nimbus-service3.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service3.xml">"nimbus-service3.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚©‚çAƒT[ƒrƒX’è‹`‚Å³‚µ‚­İ’è‚µ‚½‘®«‚Ì’l‚ªİ’è‚µ‚½’Ê‚è‚Éæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚©‚çAƒT[ƒrƒX’è‹`‚ÅŒë‚Á‚Äİ’è‚µ‚½‘®«‚Ì’l‚ªƒfƒtƒHƒ‹ƒg’l‚Æ‚µ‚Äæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§æ­£ã—ãè¨­å®šã—ãŸå±æ€§ã®å€¤ãŒè¨­å®šã—ãŸé€šã‚Šã«å–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§èª¤ã£ã¦è¨­å®šã—ãŸå±æ€§ã®å€¤ãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¨ã—ã¦å–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testServiceAttributeSetting2() throws Exception {
@@ -486,31 +486,31 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌˆË‘¶ŠÖŒW‚ÌƒeƒXƒgBService3‚ÍService1‚ÉˆË‘¶‚µ‚Ä‚¢‚éB<p>
-     * ğŒF
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ä¾å­˜é–¢ä¿‚ã®ãƒ†ã‚¹ãƒˆã€‚Service3ã¯Service1ã«ä¾å­˜ã—ã¦ã„ã‚‹ã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service4.xml">"nimbus-service4.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service4.xml">"nimbus-service4.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service4.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªfalse‚ğ•Ô‚·B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service3"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#DESTROYED‚Å‚ ‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service3"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ÌTestServiceBase#getString()‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½’l‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚ğƒ[ƒh‚µ‚½ŒãAæ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>"Service3"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>"Service3"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ÌTestServiceBase#getString()‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½’l‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½"Service1"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service4.xml"‚ğServiceManagerFactory#unloadManager(String)‚ÅƒAƒ“ƒ[ƒh‚µ‚½ŒãAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service3"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service4.xml"‚ğServiceManagerFactory#unloadManager(String)‚ÅƒAƒ“ƒ[ƒh‚µ‚½ŒãAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚ğServiceManagerFactory#unloadManager(String)‚ÅƒAƒ“ƒ[ƒh‚µ‚½ŒãAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service4.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒfalseã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#DESTROYEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®TestServiceBase#getString()ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå€¤ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®TestServiceBase#getString()ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå€¤ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service4.xml"ã‚’ServiceManagerFactory#unloadManager(String)ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service4.xml"ã‚’ServiceManagerFactory#unloadManager(String)ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã‚’ServiceManagerFactory#unloadManager(String)ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testServiceDependency1() throws Exception {
@@ -594,33 +594,33 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ˆË‘¶ŠÖŒW‚Ì‚ ‚éƒT[ƒrƒX‚ÌÄƒfƒvƒƒC‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ä¾å­˜é–¢ä¿‚ã®ã‚ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®å†ãƒ‡ãƒ—ãƒ­ã‚¤ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service4.xml">"nimbus-service4.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service4.xml">"nimbus-service4.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service4.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªfalse‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service3"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service3"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ÌTestServiceBase#getString()‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½’l‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>æ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#DESTROYED‚Å‚ ‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>æ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ÌTestServiceBase#getString()‚ğŒÄ‚Ño‚µ‚ÄAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½’l‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½"Service3"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½"Service1"‚ÌƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service4.xml"‚ğServiceManagerFactory#unloadManager(String)‚ÅƒAƒ“ƒ[ƒh‚µ‚½ŒãAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"A"Service3"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚Æ"Service3"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Æ"nimbus-service4.xml"‚ğServiceManagerFactory#unloadManager(String)‚ÅƒAƒ“ƒ[ƒh‚µ‚½ŒãAServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚Æ"Service3"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service4.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒfalseã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®TestServiceBase#getString()ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå€¤ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#DESTROYEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®TestServiceBase#getString()ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå€¤ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸ"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service4.xml"ã‚’ServiceManagerFactory#unloadManager(String)ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã€"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã¨"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã¨"nimbus-service4.xml"ã‚’ServiceManagerFactory#unloadManager(String)ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸå¾Œã€ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã¨"Service3"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testServiceDependency2() throws Exception {
@@ -725,19 +725,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * MapƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * Mapã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service7.xml">"nimbus-service7.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service7.xml">"nimbus-service7.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒX"Service1"‚ğMap‚ÉƒLƒƒƒXƒg‚Å‚«‚éB</li>
-     *   <li>ƒT[ƒrƒX’è‹`‚É’è‹`‚µ‚½‘®«‚Ì’l‚ªAMap‚©‚çæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹"Service1"ã‚’Mapã«ã‚­ãƒ£ã‚¹ãƒˆã§ãã‚‹ã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã«å®šç¾©ã—ãŸå±æ€§ã®å€¤ãŒã€Mapã‹ã‚‰å–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testMapService() throws Exception {
@@ -768,19 +768,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceBase‚ğŒp³‚¹‚¸‚ÉServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğ’¼ÚÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceBaseã‚’ç¶™æ‰¿ã›ãšã«Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ç›´æ¥å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service8.xml">"nimbus-service8.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service8.xml">"nimbus-service8.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service8.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚©‚çAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½‘®«‚Ì’l‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service8.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå±æ€§ã®å€¤ãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testService() throws Exception {
@@ -817,19 +817,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢POJOƒT[ƒrƒX‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„POJOã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service9.xml">"nimbus-service9.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service9.xml">"nimbus-service9.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service9.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚©‚çAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½‘®«‚Ì’l‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service9.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå±æ€§ã®å€¤ãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testPOJOService() throws Exception {
@@ -866,19 +866,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceBaseSupportƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceBaseSupportã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚Å‚Í‚È‚¢ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service10.xml">"nimbus-service10.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã§ã¯ãªã„ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service10.xml">"nimbus-service10.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service10.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service2"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒX‚ÌService#getState()‚Ì’l‚ªService#STARTED‚Å‚ ‚éB</li>
-     *   <li>æ“¾‚µ‚½ƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚©‚çAƒT[ƒrƒX’è‹`‚Åİ’è‚µ‚½‘®«‚Ì’l‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service10.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service2"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®Service#getState()ã®å€¤ãŒService#STARTEDã§ã‚ã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã—ãŸå±æ€§ã®å€¤ãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testServiceBaseSupport() throws Exception {
@@ -915,24 +915,24 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒŠƒ[ƒh‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªãƒ­ãƒ¼ãƒ‰ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
-     *   <li>ƒŠƒ[ƒh‘O‚ÉAƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚Éã‘‚«‚·‚éB</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
+     *   <li>ãƒªãƒ­ãƒ¼ãƒ‰å‰ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ä¸Šæ›¸ãã™ã‚‹ã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚ÉƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager(String, boolean)‚Ìˆø”‚ÉƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"‚ÆAtrue‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManager#getService(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service1"‚ÌƒT[ƒrƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager(String)‚ÌŒÄ‚Ño‚µ‚ªs‚¦‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String, boolean)ã®å¼•æ•°ã«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã¨ã€trueã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManager#getService(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service1"ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager(String)ã®å‘¼ã³å‡ºã—ãŒè¡Œãˆã‚‹ã€‚</li>
      * </ul>
      */
     public void testReload() throws Exception {
@@ -989,16 +989,16 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ‹N“®‚Å‚«‚È‚©‚Á‚½ƒT[ƒrƒX‚Ì‘¶İŠm”F‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * èµ·å‹•ã§ããªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹ã®å­˜åœ¨ç¢ºèªã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service4.xml">"nimbus-service4.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service4.xml">"nimbus-service4.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service4.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)‚ªfalse‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)‚Ìˆø”‚É“n‚µ‚½S     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)‚Ìˆø”‚É“n‚µ‚½Set‚ÌƒTƒCƒY‚ª‚P‚Å‚ ‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service4.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)ãŒfalseã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)ã®å¼•æ•°ã«æ¸¡ã—ãŸS     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)ã®å¼•æ•°ã«æ¸¡ã—ãŸSetã®ã‚µã‚¤ã‚ºãŒï¼‘ã§ã‚ã‚‹ã€‚</li>
      * </ul>
      */
     public void testCheckLoadManagerCompleted1() throws Exception {
@@ -1022,16 +1022,16 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ‹N“®‚Å‚«‚È‚©‚Á‚½ƒT[ƒrƒX‚Ì‘¶İŠm”F‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * èµ·å‹•ã§ããªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹ã®å­˜åœ¨ç¢ºèªã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)‚Ìˆø”‚É“n‚µ‚½Set‚ÌƒTƒCƒY‚ª‚O‚Å‚ ‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted(Set)ã®å¼•æ•°ã«æ¸¡ã—ãŸSetã®ã‚µã‚¤ã‚ºãŒï¼ã§ã‚ã‚‹ã€‚</li>
      * </ul>
      */
     public void testCheckLoadManagerCompleted2() throws Exception {
@@ -1054,17 +1054,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManagerŒQ‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerç¾¤ã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service12.xml">"nimbus-service12.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service12.xml">"nimbus-service12.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service12.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManagers()‚ÅA"Nimbus"‚Æ"Nimbus2"‚ÌServiceManager‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service12.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManagers()ã§ã€"Nimbus"ã¨"Nimbus2"ã®ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManagers1() throws Exception {
@@ -1099,17 +1099,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManagerŒQ‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerç¾¤ã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service12.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service12.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManagers()‚ÅA"Nimbus"‚ÌServiceManager‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManagers()ã§ã€"Nimbus"ã®ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManagers2() throws Exception {
@@ -1140,14 +1140,14 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManagerŒQ‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerç¾¤ã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ—pˆÓ‚µ‚È‚¢B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”¨æ„ã—ãªã„ã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#findManagers()‚ÅA’·‚³‚O‚ÌServiceManager”z—ñ‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#findManagers()ã§ã€é•·ã•ï¼ã®ServiceManageré…åˆ—ãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManagers3() throws Exception {
@@ -1157,17 +1157,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒgServiceManager‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆServiceManagerã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service12.xml">"nimbus-service12.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service12.xml">"nimbus-service12.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service12.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅA"Nimbus"‚ÌServiceManager‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service12.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€"Nimbus"ã®ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManager1() throws Exception {
@@ -1196,17 +1196,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒgServiceManager‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆServiceManagerã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service12.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service12.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅA"Nimbus"‚ÌServiceManager‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€"Nimbus"ã®ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManager2() throws Exception {
@@ -1235,14 +1235,14 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒgServiceManager‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆServiceManagerã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ—pˆÓ‚µ‚È‚¢B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”¨æ„ã—ãªã„ã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAnull‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€nullãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManager3() throws Exception {
@@ -1251,16 +1251,16 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManager‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service12.xml">"nimbus-service12.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service12.xml">"nimbus-service12.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service12.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager(String)‚ÅAˆø”‚Énull‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAnull‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#findManager(String)‚ÅAˆø”‚É"Nimbus2"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceManager"Nimbus2"‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service12.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager(String)ã§ã€å¼•æ•°ã«nullã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€nullãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager(String)ã§ã€å¼•æ•°ã«"Nimbus2"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceManager"Nimbus2"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testFindManager4() throws Exception {
@@ -1283,20 +1283,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManager‚Ì“o˜^E“o˜^‰ğœƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceManager‚ğServiceManagerFactory#unregisterManager(String)‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>æ“¾‚µ‚½ServiceManager‚ğServiceManagerFactory#registerManager(String, ServiceManager)‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>“o˜^‚µ‚½ServiceManager‚ÆAæ“¾‚µ‚½ServiceManager‚ª“™‚µ‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceManagerã‚’ServiceManagerFactory#unregisterManager(String)ã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManagerãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceManagerã‚’ServiceManagerFactory#registerManager(String, ServiceManager)ã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ç™»éŒ²ã—ãŸServiceManagerã¨ã€å–å¾—ã—ãŸServiceManagerãŒç­‰ã—ã„ã€‚</li>
      * </ul>
      */
     public void testManagerRegisterAndUnregister1() throws Exception {
@@ -1325,19 +1325,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManager‚Ì“o˜^E“o˜^‰ğœƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceManager‚ğServiceManagerFactory#registerManager(String, ServiceManager)‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’lfalse‚ğ•Ô‚·B</li>
-     *   <li>æ“¾‚µ‚½ServiceManager‚ğServiceManagerFactory#unregisterManager(String)‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>æ“¾‚µ‚½ServiceManager‚ğServiceManagerFactory#unregisterManager(String)‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’lfalse‚ğ•Ô‚·B</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceManagerã‚’ServiceManagerFactory#registerManager(String, ServiceManager)ã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤falseã‚’è¿”ã™ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceManagerã‚’ServiceManagerFactory#unregisterManager(String)ã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManagerãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceManagerã‚’ServiceManagerFactory#unregisterManager(String)ã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤falseã‚’è¿”ã™ã€‚</li>
      * </ul>
      */
     public void testManagerRegisterAndUnregister2() throws Exception {
@@ -1365,19 +1365,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManager‚Ì“o˜^Šm”FƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerã®ç™»éŒ²ç¢ºèªãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒeƒ“ƒ|ƒ‰ƒŠ—Ìˆæ‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ãƒ†ãƒ³ãƒãƒ©ãƒªé ˜åŸŸã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager(String)‚Ìˆø”‚Éƒeƒ“ƒ|ƒ‰ƒŠ‚ÉƒRƒs[‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹"nimbus-service1.xml"‚Ìƒtƒ@ƒCƒ‹–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager"Nimbus"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus2"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#findManager()‚ÅAServiceManager"Nimbus2"‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager(String)ã®å¼•æ•°ã«ãƒ†ãƒ³ãƒãƒ©ãƒªã«ã‚³ãƒ”ãƒ¼ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«"nimbus-service1.xml"ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManager"Nimbus"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus2"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã§ã€ServiceManager"Nimbus2"ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testIsRegisteredManager() throws Exception {
@@ -1405,19 +1405,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetService1() throws Exception {
@@ -1475,19 +1475,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getService(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus2#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getService(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus#Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus2#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus#Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetService2() throws Exception {
@@ -1542,17 +1542,17 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetService3() throws Exception {
@@ -1592,19 +1592,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceMetaData‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceMetaDataã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ÌServiceMetaData‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ã®ServiceMetaDataãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceMetaData1() throws Exception {
@@ -1658,21 +1658,21 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceMetaData‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceMetaDataã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ÌServiceMetaData‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus2#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus#Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)‚Ìˆø”‚Énull‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ã®ServiceMetaDataãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus2#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus#Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(ServiceName)ã®å¼•æ•°ã«nullã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testGetServiceMetaData2() throws Exception {
@@ -1734,20 +1734,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceMetaData‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceMetaDataã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ÌServiceMetaData‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(String)‚Ìˆø”‚É"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceMetaData(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ã®ServiceMetaDataãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(String)ã®å¼•æ•°ã«"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceMetaData(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceMetaData3() throws Exception {
@@ -1790,19 +1790,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceƒIƒuƒWƒFƒNƒg‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceƒIƒuƒWƒFƒNƒg"Nimbus#Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Nimbus#Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceObject1() throws Exception {
@@ -1856,21 +1856,21 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceƒIƒuƒWƒFƒNƒg‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceƒIƒuƒWƒFƒNƒg"Nimbus#Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus2#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)‚Ìˆø”‚ÉServiceName"Nimbus#Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)‚Ìˆø”‚Énull‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Nimbus#Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus2#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)ã®å¼•æ•°ã«ServiceName"Nimbus#Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(ServiceName)ã®å¼•æ•°ã«nullã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testGetServiceObject2() throws Exception {
@@ -1932,20 +1932,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Nimbus#Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Nimbus#Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceObject3() throws Exception {
@@ -1994,22 +1994,22 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceStateBroadcaster‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceStateBroadcasterã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA"Service0"‚ÌServiceStateBroadcaster‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceStateBroadcaster‚ÌServiceStateBroadcaster#addServiceStateListener(ServiceStateListener)‚ğŒÄ‚Ño‚µ‚ÄA“Æ©ServiceStateListener‚ğ“o˜^‚·‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>“Æ©ServiceStateListener‚ÌServiceStateListener#stateChanged(ServiceStateChangeEvent)‚ªŒÄ‚Ño‚³‚êAƒT[ƒrƒX"Service0"‚ª’â~‚³‚ê‚½‚Ì‚ğŒŸ’m‚·‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€"Service0"ã®ServiceStateBroadcasterãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceStateBroadcasterã®ServiceStateBroadcaster#addServiceStateListener(ServiceStateListener)ã‚’å‘¼ã³å‡ºã—ã¦ã€ç‹¬è‡ªServiceStateListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªServiceStateListenerã®ServiceStateListener#stateChanged(ServiceStateChangeEvent)ãŒå‘¼ã³å‡ºã•ã‚Œã€ã‚µãƒ¼ãƒ“ã‚¹"Service0"ãŒåœæ­¢ã•ã‚ŒãŸã®ã‚’æ¤œçŸ¥ã™ã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceStateBroadcaster1() throws Exception {
@@ -2083,24 +2083,24 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceStateBroadcaster‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceStateBroadcasterã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)‚Ìˆø”‚É"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA"Service0"‚ÌServiceStateBroadcaster‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceStateBroadcaster‚ÌServiceStateBroadcaster#addServiceStateListener(ServiceStateListener)‚ğŒÄ‚Ño‚µ‚ÄA“Æ©ServiceStateListener‚ğ“o˜^‚·‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)‚Ìˆø”‚É"Nimbus2#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)‚Ìˆø”‚É"Nimbus#Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)‚Ìˆø”‚Énull‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>“Æ©ServiceStateListener‚ÌServiceStateListener#stateChanged(ServiceStateChangeEvent)‚ªŒÄ‚Ño‚³‚êAƒT[ƒrƒX"Service0"‚ª’â~‚³‚ê‚½‚Ì‚ğŒŸ’m‚·‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)ã®å¼•æ•°ã«"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€"Service0"ã®ServiceStateBroadcasterãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceStateBroadcasterã®ServiceStateBroadcaster#addServiceStateListener(ServiceStateListener)ã‚’å‘¼ã³å‡ºã—ã¦ã€ç‹¬è‡ªServiceStateListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)ã®å¼•æ•°ã«"Nimbus2#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)ã®å¼•æ•°ã«"Nimbus#Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(ServiceName)ã®å¼•æ•°ã«nullã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªServiceStateListenerã®ServiceStateListener#stateChanged(ServiceStateChangeEvent)ãŒå‘¼ã³å‡ºã•ã‚Œã€ã‚µãƒ¼ãƒ“ã‚¹"Service0"ãŒåœæ­¢ã•ã‚ŒãŸã®ã‚’æ¤œçŸ¥ã™ã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceStateBroadcaster2() throws Exception {
@@ -2188,22 +2188,22 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceStateBroadcaster‚Ìæ“¾ƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceStateBroadcasterã®å–å¾—ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA"Service0"‚ÌServiceStateBroadcaster‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceStateBroadcaster‚ÌServiceStateBroadcaster#addServiceStateListener(ServiceStateListener)‚ğŒÄ‚Ño‚µ‚ÄA“Æ©ServiceStateListener‚ğ“o˜^‚·‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String)‚Ìˆø”‚É"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>“Æ©ServiceStateListener‚ÌServiceStateListener#stateChanged(ServiceStateChangeEvent)‚ªŒÄ‚Ño‚³‚êAƒT[ƒrƒX"Service0"‚ª’â~‚³‚ê‚½‚Ì‚ğŒŸ’m‚·‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAServiceNotFoundException‚ª”­¶‚·‚éB</li>
-     *   <li>”­¶‚µ‚½ServiceNotFoundException‚©‚çAæ“¾‚µ‚æ‚¤‚Æ‚µ‚½ƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€"Service0"ã®ServiceStateBroadcasterãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceStateBroadcasterã®ServiceStateBroadcaster#addServiceStateListener(ServiceStateListener)ã‚’å‘¼ã³å‡ºã—ã¦ã€ç‹¬è‡ªServiceStateListenerã‚’ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String)ã®å¼•æ•°ã«"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªServiceStateListenerã®ServiceStateListener#stateChanged(ServiceStateChangeEvent)ãŒå‘¼ã³å‡ºã•ã‚Œã€ã‚µãƒ¼ãƒ“ã‚¹"Service0"ãŒåœæ­¢ã•ã‚ŒãŸã®ã‚’æ¤œçŸ¥ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceStateBroadcaster(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€ServiceNotFoundExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ç™ºç”Ÿã—ãŸServiceNotFoundExceptionã‹ã‚‰ã€å–å¾—ã—ã‚ˆã†ã¨ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ãã‚‹ã€‚</li>
      * </ul>
      */
     public void testGetServiceStateBroadcaster3() throws Exception {
@@ -2277,20 +2277,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ì“o˜^E“o˜^‰ğœƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚ÅAService"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Service‚ğServiceManagerFactory#unregisterService(String, String)‚ğAˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚ÅAService"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#registerService(String, String, Service)‚Ìˆø”‚É"Nimbus"A"Service0"Aæ“¾‚µ‚½Service‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚ÅAService"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>“o˜^‚µ‚½Service‚ÆAæ“¾‚µ‚½Service‚ª“™‚µ‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã§ã€Service"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceã‚’ServiceManagerFactory#unregisterService(String, String)ã‚’ã€å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã§ã€Service"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#registerService(String, String, Service)ã®å¼•æ•°ã«"Nimbus"ã€"Service0"ã€å–å¾—ã—ãŸServiceã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã§ã€Service"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ç™»éŒ²ã—ãŸServiceã¨ã€å–å¾—ã—ãŸServiceãŒç­‰ã—ã„ã€‚</li>
      * </ul>
      */
     public void testServiceRegisterAndUnregister1() throws Exception {
@@ -2339,19 +2339,19 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ì“o˜^E“o˜^‰ğœƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service1.xml">"nimbus-service1.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Éˆø”"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Service‚ğServiceManagerFactory#registerService(String, String, Service)‚ğŒÄ‚Ño‚µ‚ÄA–ß‚è’lfalse‚ğ•Ô‚·B</li>
-     *   <li>æ“¾‚µ‚½Service‚ğServiceManagerFactory#unregisterService(String, String)‚ğAˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Éˆø”"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>æ“¾‚µ‚½Service‚ğServiceManagerFactory#unregisterService(String, String)‚ğAˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã«å¼•æ•°"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceã‚’ServiceManagerFactory#registerService(String, String, Service)ã‚’å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤falseã‚’è¿”ã™ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceã‚’ServiceManagerFactory#unregisterService(String, String)ã‚’ã€å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã«å¼•æ•°"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceã‚’ServiceManagerFactory#unregisterService(String, String)ã‚’ã€å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
      * </ul>
      */
     public void testServiceRegisterAndUnregister2() throws Exception {
@@ -2399,20 +2399,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceƒIƒuƒWƒFƒNƒg‚Ì“o˜^E“o˜^‰ğœƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String)‚ÅAServiceƒIƒuƒWƒFƒNƒg"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ğServiceManagerFactory#unregisterService(String, String)‚ğAˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String)‚ÅAServiceƒIƒuƒWƒFƒNƒg"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#registerService(String, String, Service)‚Ìˆø”‚É"Nimbus"A"Service0"Aæ“¾‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String)‚ÅAServiceƒIƒuƒWƒFƒNƒg"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>“o˜^‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ÆAæ“¾‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String)ã§ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ServiceManagerFactory#unregisterService(String, String)ã‚’ã€å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String)ã§ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#registerService(String, String, Service)ã®å¼•æ•°ã«"Nimbus"ã€"Service0"ã€å–å¾—ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String)ã§ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ç™»éŒ²ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã€å–å¾—ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã€‚</li>
      * </ul>
      */
     public void testServiceRegisterAndUnregister3() throws Exception {
@@ -2461,20 +2461,20 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ServiceƒIƒuƒWƒFƒNƒg‚Ì“o˜^E“o˜^‰ğœƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service9.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service9.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String)‚ÅAServiceƒIƒuƒWƒFƒNƒg"Service1"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ğServiceManagerFactory#unregisterService(String, String)‚ğAˆø”‚É"Nimbus"‚Æ"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String)‚ÅAServiceƒIƒuƒWƒFƒNƒg"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#registerService(String, String, Service)‚Ìˆø”‚É"Nimbus"A"Service1"Aæ“¾‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ğw’è‚µ‚ÄŒÄ‚Ño‚µ‚ÄA–ß‚è’ltrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getServiceObject(String)‚ÅAServiceƒIƒuƒWƒFƒNƒg"Service1"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>“o˜^‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ÆAæ“¾‚µ‚½ServiceƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢B</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String)ã§ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Service1"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ServiceManagerFactory#unregisterService(String, String)ã‚’ã€å¼•æ•°ã«"Nimbus"ã¨"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String)ã§ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#registerService(String, String, Service)ã®å¼•æ•°ã«"Nimbus"ã€"Service1"ã€å–å¾—ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã¦ã€æˆ»ã‚Šå€¤trueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceObject(String)ã§ã€Serviceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ"Service1"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ç™»éŒ²ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã€å–å¾—ã—ãŸServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã€‚</li>
      * </ul>
      */
     public void testServiceRegisterAndUnregister4() throws Exception {
@@ -2526,24 +2526,24 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ì“o˜^Šm”FƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®ç™»éŒ²ç¢ºèªãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#isRegisteredService(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service1"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(String, String)‚Ìˆø”‚É"Nimbus"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service1"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(String, String)ã®å¼•æ•°ã«"Nimbus"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testIsRegisteredService1() throws Exception {
@@ -2628,25 +2628,25 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * Service‚Ì“o˜^Šm”FƒeƒXƒgB<p>
-     * ğŒF
+     * Serviceã®ç™»éŒ²ç¢ºèªãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)‚Ìˆø”‚É"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)‚Ìˆø”‚É"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)‚Ìˆø”‚É"Nimbus2#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String, String)‚Ìˆø”‚É"Nimbus2"‚Æ"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)‚Ìˆø”‚É"Nimbus#Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service1"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service1"‚ªæ“¾‚Å‚«‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)‚Ìˆø”‚Énull‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚µA³í‚ÉƒAƒ“ƒ[ƒh‚·‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)‚Ìˆø”‚É"Nimbus#Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#getService(String)‚Ìˆø”‚É"Service0"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAService"Service0"‚ªæ“¾‚Å‚«‚È‚¢B</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)ã®å¼•æ•°ã«"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)ã®å¼•æ•°ã«"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)ã®å¼•æ•°ã«"Nimbus2#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String, String)ã®å¼•æ•°ã«"Nimbus2"ã¨"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)ã®å¼•æ•°ã«"Nimbus#Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service1"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service1"ãŒå–å¾—ã§ããªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)ã®å¼•æ•°ã«nullã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredService(ServiceName)ã®å¼•æ•°ã«"Nimbus#Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getService(String)ã®å¼•æ•°ã«"Service0"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€Service"Service0"ãŒå–å¾—ã§ããªã„ã€‚</li>
      * </ul>
      */
     public void testIsRegisteredService2() throws Exception {
@@ -2775,22 +2775,22 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒ}ƒl[ƒWƒƒRepository‚Ì•ÏXƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã®å¤‰æ›´ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
      * </ul>
      */
     public void testSetManagerRepository1() throws Exception {
@@ -2831,27 +2831,27 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * “o˜^‚Å‚«‚È‚¢ƒ}ƒl[ƒWƒƒRepository‚Ö‚Ì•ÏXƒeƒXƒgB<p>
-     * ğŒF
+     * ç™»éŒ²ã§ããªã„ãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã¸ã®å¤‰æ›´ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğARepository#register(String, Object)‚Å“o˜^‚Å‚«‚È‚¢ó‘Ô‚É‚·‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’ã€Repository#register(String, Object)ã§ç™»éŒ²ã§ããªã„çŠ¶æ…‹ã«ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
      * </ul>
      */
     public void testSetManagerRepository2() throws Exception {
@@ -2904,28 +2904,28 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * æ“¾‚Å‚«‚È‚¢ƒ}ƒl[ƒWƒƒRepository‚©‚ç‚Ì³í‚Èƒ}ƒl[ƒWƒƒRepository‚Ö‚Ì•ÏXƒeƒXƒgB<p>
-     * ğŒF
+     * å–å¾—ã§ããªã„ãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã‹ã‚‰ã®æ­£å¸¸ãªãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã¸ã®å¤‰æ›´ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğARepository#get(String)‚Åæ“¾‚Å‚«‚È‚¢ó‘Ô‚É‚·‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğARepository#get(String)‚Åæ“¾‚Å‚«‚éó‘Ô‚É‚·‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’ã€Repository#get(String)ã§å–å¾—ã§ããªã„çŠ¶æ…‹ã«ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’ã€Repository#get(String)ã§å–å¾—ã§ãã‚‹çŠ¶æ…‹ã«ã™ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
      * </ul>
      */
     public void testSetManagerRepository3() throws Exception {
@@ -2979,27 +2979,27 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * “o˜^‰ğœ‚Å‚«‚È‚¢ƒ}ƒl[ƒWƒƒRepository‚Ö‚Ì•ÏXƒeƒXƒgB<p>
-     * ğŒF
+     * ç™»éŒ²è§£é™¤ã§ããªã„ãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã¸ã®å¤‰æ›´ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğARepository#unregister(String)‚Å“o˜^‰ğœ‚Å‚«‚È‚¢ó‘Ô‚É‚·‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’ã€Repository#unregister(String)ã§ç™»éŒ²è§£é™¤ã§ããªã„çŠ¶æ…‹ã«ã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
      * </ul>
      */
     public void testSetManagerRepository4() throws Exception {
@@ -3050,25 +3050,25 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * “¯‚¶ƒ}ƒl[ƒWƒƒRepository‚Ö‚Ì•ÏXƒeƒXƒgB<p>
-     * ğŒF
+     * åŒã˜ãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã¸ã®å¤‰æ›´ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
      * </ul>
      */
     public void testSetManagerRepository5() throws Exception {
@@ -3119,25 +3119,25 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ìƒ}ƒl[ƒWƒƒRepository‚Ö‚Ì•ÏXƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒãƒãƒ¼ã‚¸ãƒ£Repositoryã¸ã®å¤‰æ›´ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚É“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚P‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#setManagerRepository(Repository)‚Ìˆø”‚Énull‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>ServiceManagerFactory#isRegisteredManager(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åtrue‚ª•Ô‚éB</li>
-     *   <li>“Æ©RepositoryƒIƒuƒWƒFƒNƒg‚Q‚ÌRepository#isRegistered(String)‚Ìˆø”‚É"Nimbus"‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚Åfalse‚ª•Ô‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼‘ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setManagerRepository(Repository)ã®å¼•æ•°ã«nullã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#isRegisteredManager(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§trueãŒè¿”ã‚‹ã€‚</li>
+     *   <li>ç‹¬è‡ªRepositoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼’ã®Repository#isRegistered(String)ã®å¼•æ•°ã«"Nimbus"ã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§falseãŒè¿”ã‚‹ã€‚</li>
      * </ul>
      */
     public void testSetManagerRepository6() throws Exception {
@@ -3188,22 +3188,22 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceLoader‚Ì“o˜^E“o˜^‰ğœ‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceLoaderã®ç™»éŒ²ãƒ»ç™»éŒ²è§£é™¤ã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getLoaders()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÌW‡‚ÌƒTƒCƒY‚ª1‚Å‚ ‚éB</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªnull‚Å‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unregisterLoader(ServiceLoader)‚Ìˆø”‚Éæ“¾‚µ‚½ServiceLoader‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªnull‚Å‚ ‚éB</li>
-     *   <li>ServiceManagerFactory#registerLoader(ServiceLoader)‚Ìˆø”‚Éæ“¾‚µ‚½ServiceLoader‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªnull‚Å‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªnull‚Å‚ ‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoaders()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã®é›†åˆã®ã‚µã‚¤ã‚ºãŒ1ã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒnullã§ãªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unregisterLoader(ServiceLoader)ã®å¼•æ•°ã«å–å¾—ã—ãŸServiceLoaderã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒnullã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#registerLoader(ServiceLoader)ã®å¼•æ•°ã«å–å¾—ã—ãŸServiceLoaderã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒnullã§ãªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒnullã§ã‚ã‚‹ã€‚</li>
      * </ul>
      */
     public void testRegisterAndUnregisterLoader() throws Exception {
@@ -3236,21 +3236,21 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceLoaderÀ‘•ƒNƒ‰ƒXİ’è‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceLoaderå®Ÿè£…ã‚¯ãƒ©ã‚¹è¨­å®šã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#setServiceLoaderClass(Class)‚Ìˆø”‚ÉServiceLoaderƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ƒNƒ‰ƒXMyDummyServiceLoader‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAIllegalArgumentException‚ª”­¶‚·‚éB</li>
-     *   <li>ServiceManagerFactory#setServiceLoaderClass(Class)‚Ìˆø”‚ÉServiceLoaderƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒXMyServiceLoader‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA³í‚Éİ’è‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceLoaderClass()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÅMyServiceLoaderƒNƒ‰ƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªMyServiceLoader‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚éB</li>
-     *   <li>ServiceManagerFactory#setServiceLoaderClass(Class)‚Ìˆø”‚ÉServiceLoaderƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚é‚ªAŠO•”‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚Å‚«‚È‚¢ƒ[ƒJƒ‹ƒNƒ‰ƒXLocalMyServiceLoader‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA³í‚Éİ’è‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceLoaderClass()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÅLocalMyServiceLoaderƒNƒ‰ƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªfalse‚ğ•Ô‚·B</li>
+     *   <li>ServiceManagerFactory#setServiceLoaderClass(Class)ã®å¼•æ•°ã«ServiceLoaderã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã‚¯ãƒ©ã‚¹MyDummyServiceLoaderã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€IllegalArgumentExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setServiceLoaderClass(Class)ã®å¼•æ•°ã«ServiceLoaderã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹MyServiceLoaderã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«è¨­å®šã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceLoaderClass()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§MyServiceLoaderã‚¯ãƒ©ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒMyServiceLoaderã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setServiceLoaderClass(Class)ã®å¼•æ•°ã«ServiceLoaderã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ãŒã€å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã§ããªã„ãƒ­ãƒ¼ã‚«ãƒ«ã‚¯ãƒ©ã‚¹LocalMyServiceLoaderã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«è¨­å®šã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceLoaderClass()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§LocalMyServiceLoaderã‚¯ãƒ©ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒfalseã‚’è¿”ã™ã€‚</li>
      * </ul>
      */
     public void testServiceLoaderClass1() throws Exception {
@@ -3297,24 +3297,24 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚É‚æ‚éServiceLoaderÀ‘•ƒNƒ‰ƒXİ’è‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚ˆã‚‹ServiceLoaderå®Ÿè£…ã‚¯ãƒ©ã‚¹è¨­å®šã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>System.setProperty(String, String)‚Ìˆø”‚É"jp.ossc.nimbus.core.loader"‚ÆServiceLoaderƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ƒNƒ‰ƒXMyDummyServiceLoader‚ÌƒNƒ‰ƒX–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªMyDummyServiceLoader‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚·B</li>
-     *   <li>System.setProperty(String, String)‚Ìˆø”‚É"jp.ossc.nimbus.core.loader"‚Æ‘¶İ‚µ‚È‚¢ƒNƒ‰ƒXUsoUsoServiceLoader‚ÌƒNƒ‰ƒX–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªUsoUsoServiceLoader‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚·B</li>
-     *   <li>System.setProperty(String, String)‚Ìˆø”‚É"jp.ossc.nimbus.core.loader"‚ÆServiceLoaderƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒXMyServiceLoader‚ÌƒNƒ‰ƒX–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getLoader(URL)‚Ìˆø”‚É"nimbus-service.xml"‚ÌURL‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA–ß‚è’l‚ªMyServiceLoader‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚éB</li>
+     *   <li>System.setProperty(String, String)ã®å¼•æ•°ã«"jp.ossc.nimbus.core.loader"ã¨ServiceLoaderã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã‚¯ãƒ©ã‚¹MyDummyServiceLoaderã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒMyDummyServiceLoaderã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ãªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>System.setProperty(String, String)ã®å¼•æ•°ã«"jp.ossc.nimbus.core.loader"ã¨å­˜åœ¨ã—ãªã„ã‚¯ãƒ©ã‚¹UsoUsoServiceLoaderã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒUsoUsoServiceLoaderã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ãªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>System.setProperty(String, String)ã®å¼•æ•°ã«"jp.ossc.nimbus.core.loader"ã¨ServiceLoaderã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹MyServiceLoaderã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLoader(URL)ã®å¼•æ•°ã«"nimbus-service.xml"ã®URLã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒMyServiceLoaderã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚‹ã€‚</li>
      * </ul>
      */
     public void testServiceLoaderClass2() throws Exception {
@@ -3372,21 +3372,21 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ServiceManagerÀ‘•ƒNƒ‰ƒXİ’è‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ServiceManagerå®Ÿè£…ã‚¯ãƒ©ã‚¹è¨­å®šã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#setServiceManagerClass(Class)‚Ìˆø”‚ÉServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ƒNƒ‰ƒXMyDummyServiceManager‚ğw’è‚µ‚ÄŒÄ‚Ño‚µAIllegalArgumentException‚ª”­¶‚·‚éB</li>
-     *   <li>ServiceManagerFactory#setServiceManagerClass(Class)‚Ìˆø”‚ÉServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒXMyServiceManager‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA³í‚Éİ’è‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceManagerClass()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÅMyServiceManagerƒNƒ‰ƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªMyServiceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚éB</li>
-     *   <li>ServiceManagerFactory#setServiceManagerClass(Class)‚Ìˆø”‚ÉServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚é‚ªAŠO•”‚©‚çƒCƒ“ƒXƒ^ƒ“ƒX‰»‚Å‚«‚È‚¢ƒ[ƒJƒ‹ƒNƒ‰ƒXLocalMyServiceManager‚ğw’è‚µ‚ÄŒÄ‚Ño‚µA³í‚Éİ’è‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getServiceManagerClass()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÅLocalMyServiceManagerƒNƒ‰ƒX‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªfalse‚ğ•Ô‚·B</li>
+     *   <li>ServiceManagerFactory#setServiceManagerClass(Class)ã®å¼•æ•°ã«ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã‚¯ãƒ©ã‚¹MyDummyServiceManagerã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€IllegalArgumentExceptionãŒç™ºç”Ÿã™ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setServiceManagerClass(Class)ã®å¼•æ•°ã«ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹MyServiceManagerã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«è¨­å®šã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceManagerClass()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§MyServiceManagerã‚¯ãƒ©ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒMyServiceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#setServiceManagerClass(Class)ã®å¼•æ•°ã«ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ãŒã€å¤–éƒ¨ã‹ã‚‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã§ããªã„ãƒ­ãƒ¼ã‚«ãƒ«ã‚¯ãƒ©ã‚¹LocalMyServiceManagerã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã—ã€æ­£å¸¸ã«è¨­å®šã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getServiceManagerClass()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã§LocalMyServiceManagerã‚¯ãƒ©ã‚¹ãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒfalseã‚’è¿”ã™ã€‚</li>
      * </ul>
      */
     public void testServiceManagerClass1() throws Exception {
@@ -3433,24 +3433,24 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚É‚æ‚éServiceManagerÀ‘•ƒNƒ‰ƒXİ’è‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚ˆã‚‹ServiceManagerå®Ÿè£…ã‚¯ãƒ©ã‚¹è¨­å®šã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>System.setProperty(String, String)‚Ìˆø”‚É"jp.ossc.nimbus.core.manager"‚ÆServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ƒNƒ‰ƒXMyDummyServiceManager‚ÌƒNƒ‰ƒX–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªMyDummyServiceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚·B</li>
-     *   <li>System.setProperty(String, String)‚Ìˆø”‚É"jp.ossc.nimbus.core.manager"‚Æ‘¶İ‚µ‚È‚¢ƒNƒ‰ƒXUsoUsoServiceManager‚ÌƒNƒ‰ƒX–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªUsoUsoServiceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚È‚¢B</li>
-     *   <li>ServiceManagerFactory#unloadManager()‚ğŒÄ‚Ño‚·B</li>
-     *   <li>System.setProperty(String, String)‚Ìˆø”‚É"jp.ossc.nimbus.core.manager"‚ÆServiceManagerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒXMyServiceManager‚ÌƒNƒ‰ƒX–¼‚ğw’è‚µ‚ÄŒÄ‚Ño‚·B</li>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªMyServiceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚éB</li>
+     *   <li>System.setProperty(String, String)ã®å¼•æ•°ã«"jp.ossc.nimbus.core.manager"ã¨ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ã‚¯ãƒ©ã‚¹MyDummyServiceManagerã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒMyDummyServiceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ãªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>System.setProperty(String, String)ã®å¼•æ•°ã«"jp.ossc.nimbus.core.manager"ã¨å­˜åœ¨ã—ãªã„ã‚¯ãƒ©ã‚¹UsoUsoServiceManagerã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒUsoUsoServiceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ãªã„ã€‚</li>
+     *   <li>ServiceManagerFactory#unloadManager()ã‚’å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>System.setProperty(String, String)ã®å¼•æ•°ã«"jp.ossc.nimbus.core.manager"ã¨ServiceManagerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹MyServiceManagerã®ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™ã€‚</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒMyServiceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚‹ã€‚</li>
      * </ul>
      */
     public void testServiceManagerClass2() throws Exception {
@@ -3498,23 +3498,23 @@ public class ServiceManagerFactoryTest extends TestCase{
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒgLogger‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆLoggerã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service5.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service5.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManager‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceManagerFactory#getLogger()‚ğŒÄ‚Ño‚µ‚ÄLoggerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Logger‚ÅALogger#debug(String)‚ğŒÄ‚Ño‚µA•W€o—Í‚ÉƒfƒoƒbƒOƒƒbƒZ[ƒW‚ªo—Í‚³‚ê‚éB</li>
-     *   <li>ServiceManager#getLogger()‚ğŒÄ‚Ño‚µ‚ÄLoggerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Logger‚ÅALogger#debug(String)‚ğŒÄ‚Ño‚µA•W€o—Í‚ÉƒfƒoƒbƒOƒƒbƒZ[ƒW‚ªo—Í‚³‚ê‚éB</li>
-     *   <li>TestServiceBase#getLogger()‚ğŒÄ‚Ño‚µ‚ÄLoggerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Logger‚ÅALogger#write(String)‚ğŒÄ‚Ño‚µA•W€o—Í‚Éw’è‚µ‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ªo—Í‚³‚ê‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#getLogger()ã‚’å‘¼ã³å‡ºã—ã¦Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸLoggerã§ã€Logger#debug(String)ã‚’å‘¼ã³å‡ºã—ã€æ¨™æº–å‡ºåŠ›ã«ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚</li>
+     *   <li>ServiceManager#getLogger()ã‚’å‘¼ã³å‡ºã—ã¦Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸLoggerã§ã€Logger#debug(String)ã‚’å‘¼ã³å‡ºã—ã€æ¨™æº–å‡ºåŠ›ã«ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚</li>
+     *   <li>TestServiceBase#getLogger()ã‚’å‘¼ã³å‡ºã—ã¦Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸLoggerã§ã€Logger#write(String)ã‚’å‘¼ã³å‡ºã—ã€æ¨™æº–å‡ºåŠ›ã«æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚</li>
      * </ul>
      */
 /*    public void testDefaultLogger() throws Exception {
@@ -3549,10 +3549,10 @@ public class ServiceManagerFactoryTest extends TestCase{
             }
             Logger logger = ServiceManagerFactory.getLogger();
             assertNotNull(logger);
-            logger.debug("ƒeƒXƒgŠJn");
+            logger.debug("ãƒ†ã‚¹ãƒˆé–‹å§‹");
             logger = manager.getLogger();
             assertNotNull(logger);
-            logger.debug("ƒeƒXƒg");
+            logger.debug("ãƒ†ã‚¹ãƒˆ");
             logger = serviceObj0.getLogger();
             assertNotNull(logger);
             logger.write("SVCM_00035");
@@ -3567,13 +3567,13 @@ public class ServiceManagerFactoryTest extends TestCase{
                         try{
                             String line = null;
                             while((line = br.readLine()) != null){
-                                if(line.indexOf("ƒeƒXƒgŠJn") != -1){
+                                if(line.indexOf("ãƒ†ã‚¹ãƒˆé–‹å§‹") != -1){
                                     break;
                                 }
                             }
                             line = br.readLine();
                             assertNotNull(line);
-                            assertTrue(line.endsWith(",,DEBUG,ƒeƒXƒg"));
+                            assertTrue(line.endsWith(",,DEBUG,ãƒ†ã‚¹ãƒˆ"));
                             line = br.readLine();
                             assertNotNull(line);
                             assertTrue(
@@ -3630,23 +3630,23 @@ public class ServiceManagerFactoryTest extends TestCase{
     }*/
     
     /**
-     * ƒ}ƒl[ƒWƒƒLogger‚ÌƒeƒXƒgB<p>
-     * ğŒF
+     * ãƒãƒãƒ¼ã‚¸ãƒ£Loggerã®ãƒ†ã‚¹ãƒˆã€‚<p>
+     * æ¡ä»¶ï¼š
      * <ul>
-     *   <li>ƒfƒtƒHƒ‹ƒg–¼‚ÌƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹<a href="resources/nimbus-service13.xml">"nimbus-service.xml"</a>‚ğƒNƒ‰ƒXƒpƒXã‚É’u‚­B</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆåã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«<a href="resources/nimbus-service13.xml">"nimbus-service.xml"</a>ã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã«ç½®ãã€‚</li>
      * </ul>
-     * Šm”FF
+     * ç¢ºèªï¼š
      * <ul>
-     *   <li>ServiceManagerFactory#loadManager()‚ğŒÄ‚Ño‚µA–ß‚è’l‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()‚ªtrue‚ğ•Ô‚·B</li>
-     *   <li>ServiceManagerFactory#getLogger()‚ğŒÄ‚Ño‚µ‚ÄLoggerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Logger‚ÅALogger#debug(String)‚ğŒÄ‚Ño‚µA•W€o—Í‚ÉƒfƒoƒbƒOƒƒbƒZ[ƒW‚ªo—Í‚³‚ê‚éB</li>
-     *   <li>ServiceManagerFactory#findManager()‚ğŒÄ‚Ño‚µ‚ÄServiceManagerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½ServiceManager‚ÅAServiceManager#getLogger()‚ğŒÄ‚Ño‚µ‚ÄLoggerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Logger‚ÅALogger#write(String)‚ğŒÄ‚Ño‚µAƒtƒ@ƒCƒ‹‚Éw’è‚µ‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ªo—Í‚³‚ê‚éB</li>
-     *   <li>ServiceManager#getServiceObject(String)‚ğŒÄ‚Ño‚µ‚ÄƒT[ƒrƒX–¼"Service0"‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>ServiceBase#getLogger()‚ğŒÄ‚Ño‚µ‚ÄLoggerƒIƒuƒWƒFƒNƒg‚ªæ“¾‚Å‚«‚éB</li>
-     *   <li>æ“¾‚µ‚½Logger‚ÅALogger#write(String)‚ğŒÄ‚Ño‚µAƒtƒ@ƒCƒ‹‚Éw’è‚µ‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ªo—Í‚³‚ê‚éB</li>
+     *   <li>ServiceManagerFactory#loadManager()ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#checkLoadManagerCompleted()ãŒtrueã‚’è¿”ã™ã€‚</li>
+     *   <li>ServiceManagerFactory#getLogger()ã‚’å‘¼ã³å‡ºã—ã¦Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸLoggerã§ã€Logger#debug(String)ã‚’å‘¼ã³å‡ºã—ã€æ¨™æº–å‡ºåŠ›ã«ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚</li>
+     *   <li>ServiceManagerFactory#findManager()ã‚’å‘¼ã³å‡ºã—ã¦ServiceManagerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸServiceManagerã§ã€ServiceManager#getLogger()ã‚’å‘¼ã³å‡ºã—ã¦Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸLoggerã§ã€Logger#write(String)ã‚’å‘¼ã³å‡ºã—ã€ãƒ•ã‚¡ã‚¤ãƒ«ã«æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚</li>
+     *   <li>ServiceManager#getServiceObject(String)ã‚’å‘¼ã³å‡ºã—ã¦ã‚µãƒ¼ãƒ“ã‚¹å"Service0"ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>ServiceBase#getLogger()ã‚’å‘¼ã³å‡ºã—ã¦Loggerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå–å¾—ã§ãã‚‹ã€‚</li>
+     *   <li>å–å¾—ã—ãŸLoggerã§ã€Logger#write(String)ã‚’å‘¼ã³å‡ºã—ã€ãƒ•ã‚¡ã‚¤ãƒ«ã«æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚</li>
      * </ul>
      */
 /*    public void testManagerLogger() throws Exception {
@@ -3673,7 +3673,7 @@ public class ServiceManagerFactoryTest extends TestCase{
             );
             Logger logger = ServiceManagerFactory.getLogger();
             assertNotNull(logger);
-            logger.debug("ƒeƒXƒgŠJn");
+            logger.debug("ãƒ†ã‚¹ãƒˆé–‹å§‹");
             final ServiceManager manager = ServiceManagerFactory.findManager();
             assertNotNull(manager);
             logger = manager.getLogger();
@@ -3696,7 +3696,7 @@ public class ServiceManagerFactoryTest extends TestCase{
                         try{
                             String line = null;
                             while((line = br.readLine()) != null){
-                                if(line.indexOf("ƒeƒXƒgŠJn") != -1){
+                                if(line.indexOf("ãƒ†ã‚¹ãƒˆé–‹å§‹") != -1){
                                     break;
                                 }
                             }

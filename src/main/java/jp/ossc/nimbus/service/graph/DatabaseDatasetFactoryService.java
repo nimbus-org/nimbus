@@ -50,7 +50,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.ConnectionFactoryException;
 
 /**
- * ƒf[ƒ^ƒx[ƒXƒf[ƒ^ƒZƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -60,35 +60,35 @@ public abstract class DatabaseDatasetFactoryService
     
     private static final long serialVersionUID = -1040225706936424053L;
     
-    // ’è”
-    /** ƒfƒtƒHƒ‹ƒgƒtƒFƒbƒ`ƒTƒCƒY */
+    // å®šæ•°
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º */
     public static final int DEFAULT_FETCH_SIZE = 10000;
-    /** ƒZƒpƒŒ[ƒ^ [=] */
+    /** ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ [=] */
     private static final String SEPARATOR = "=";
 
-    /** ƒf[ƒ^ƒZƒbƒg–¼ */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå */
     private String name;
-    /** ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ */
+    /** ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒª */
     private ConnectionFactory connFactory;
-    /** [ƒVƒŠ[ƒY–¼=SQL]‚Ì•¶š—ñ”z—ñ */
+    /** [ã‚·ãƒªãƒ¼ã‚ºå=SQL]ã®æ–‡å­—åˆ—é…åˆ— */
     private String[] sqls;
-    /** ƒf[ƒ^ƒZƒbƒgğŒ‚ÌƒŠƒXƒg */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®ãƒªã‚¹ãƒˆ */
     private List dsConditionList;
-    /** ƒL[‚ÉƒVƒŠ[ƒY–¼A’l‚ÉSQL‚Ìƒ}ƒbƒv */
+    /** ã‚­ãƒ¼ã«ã‚·ãƒªãƒ¼ã‚ºåã€å€¤ã«SQLã®ãƒãƒƒãƒ— */
     private Map seriesSqlMap;
-    /** ƒtƒFƒbƒ`ƒTƒCƒY */
+    /** ãƒ•ã‚§ãƒƒãƒã‚µã‚¤ã‚º */
     private int fetchSize = DEFAULT_FETCH_SIZE;
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception {
         dsConditionList = new ArrayList();
         seriesSqlMap = new LinkedHashMap();
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception {
         if (name == null || name.length() == 0) {
-            // ƒT[ƒrƒX’è‹`‚Åİ’è‚³‚ê‚È‚©‚Á‚½ê‡
+            // ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã•ã‚Œãªã‹ã£ãŸå ´åˆ
             name = getServiceName();
         }
 
@@ -114,110 +114,110 @@ public abstract class DatabaseDatasetFactoryService
 
             String seriesName = seriesSql.substring(0, index);
             String sql = seriesSql.substring(index + 1);
-            // ƒL[‚ÉƒVƒŠ[ƒY–¼, ’l‚ÉSQL
+            // ã‚­ãƒ¼ã«ã‚·ãƒªãƒ¼ã‚ºå, å€¤ã«SQL
             seriesSqlMap.put(seriesName, sql);
         }
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void stopService() throws Exception {
         dsConditionList.clear();
         seriesSqlMap.clear();
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception {
         dsConditionList = null;
         seriesSqlMap = null;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public void setName(String name) {
         this.name = name;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public String getName() {
         return this.name;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public void setConnectionFactory(ConnectionFactory connFactory) {
         this.connFactory = connFactory;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public ConnectionFactory getConnectionFactory() {
         return connFactory;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public void setSqls(String[] sqls) {
         this.sqls = sqls;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public String[] getSqls() {
         return sqls;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public void setFetchSize(int size) {
         fetchSize = size;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public int getFetchSize() {
         return fetchSize;
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public void addDatasetCondition(DatasetCondition dsCondition) {
         dsConditionList.add(dsCondition);
     }
 
-    // DatabaseDatasetFactoryServiceMBean‚ÌJavaDoc
+    // DatabaseDatasetFactoryServiceMBeanã®JavaDoc
     public DatasetCondition[] getDatasetConditions() {
         return (DatasetCondition[]) dsConditionList.toArray(
                     new DatasetCondition[dsConditionList.size()]
                 );
     }
 
-    // DatasetFactory‚ÌJavaDoc
+    // DatasetFactoryã®JavaDoc
     public Dataset createDataset(DatasetCondition[] dsConditions)
         throws DatasetCreateException {
 
-        // ƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—
         Connection conn = null;
         try {
             conn = connFactory.getConnection();
         } catch (ConnectionFactoryException e) {
-            // ƒRƒlƒNƒVƒ‡ƒ“æ“¾¸”s
+            // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³å–å¾—å¤±æ•—
             throw new DatasetCreateException("Dataset [" + name + "]", e);
         }
 
         DatasetCondition[] conditions = null;
         if (dsConditions != null && dsConditions.length > 0) {
-            // ˆø”‚Ìƒf[ƒ^ƒZƒbƒgğŒ‚ğİ’è
+            // å¼•æ•°ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’è¨­å®š
             conditions = dsConditions;
         }
         if (conditions == null && dsConditionList.size() > 0) {
-            // ƒT[ƒrƒX’è‹`‚Åİ’è‚³‚ê‚½ƒf[ƒ^ƒZƒbƒgğŒ‚ğİ’è
+            // ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã§è¨­å®šã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’è¨­å®š
             conditions =
                 (DatasetCondition[]) dsConditionList.toArray(new DatasetCondition[dsConditionList.size()]);
         }
 
         Dataset dataset = null;
-        // ƒL[‚ÉƒVƒŠ[ƒY–¼A’l‚ÉResultSet
+        // ã‚­ãƒ¼ã«ã‚·ãƒªãƒ¼ã‚ºåã€å€¤ã«ResultSet
         Map seriesRsMap = new LinkedHashMap();
 
-        // ‚·‚×‚Ä‚ÌPreparedStatement‚É“K—p‚·‚éƒf[ƒ^ƒZƒbƒgğŒ
+        // ã™ã¹ã¦ã®PreparedStatementã«é©ç”¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
         List allConditions = new ArrayList();
-        // ƒVƒŠ[ƒY–¼‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½ƒf[ƒ^ƒZƒbƒgğŒ
+        // ã‚·ãƒªãƒ¼ã‚ºåã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
         Map conditionMap = new HashMap();
 
         if (conditions != null && conditions.length > 0) {
-            // ©•ª‚Æ“¯‚¶ƒf[ƒ^ƒZƒbƒg–¼‚Ìƒf[ƒ^ƒZƒbƒgğŒ‚ğŒŸõ
+            // è‡ªåˆ†ã¨åŒã˜ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’æ¤œç´¢
             for (int i = 0; i < conditions.length; i++) {
                 DatasetCondition dsCondition = conditions[i];
 
@@ -227,8 +227,8 @@ public abstract class DatabaseDatasetFactoryService
                     String seriesName = conditions[i].getSeriesName();
                     if (seriesName == null) {
                         /*
-                         * ƒVƒŠ[ƒY–¼‚ª‚È‚¢ƒf[ƒ^ƒZƒbƒgğŒ‚Í
-                         * ‚·‚×‚Ä‚É“K—p‚·‚éƒf[ƒ^ƒZƒbƒgğŒ
+                         * ã‚·ãƒªãƒ¼ã‚ºåãŒãªã„ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã¯
+                         * ã™ã¹ã¦ã«é©ç”¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
                          */
                         allConditions.add((DatabaseDatasetCondition) dsCondition);
                     } else {
@@ -238,7 +238,7 @@ public abstract class DatabaseDatasetFactoryService
                         } else {
                             List list = new ArrayList();
                             list.add(dsCondition);
-                            // ƒL[‚ÉƒVƒŠ[ƒY–¼A’l‚Éƒf[ƒ^ƒZƒbƒgğŒ‚ÌƒŠƒXƒg
+                            // ã‚­ãƒ¼ã«ã‚·ãƒªãƒ¼ã‚ºåã€å€¤ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã®ãƒªã‚¹ãƒˆ
                             conditionMap.put(seriesName, list);
                         }
                     }
@@ -249,7 +249,7 @@ public abstract class DatabaseDatasetFactoryService
         try {
             Iterator itr = seriesSqlMap.keySet().iterator();
             while (itr.hasNext()) {
-                // ƒVƒŠ[ƒY
+                // ã‚·ãƒªãƒ¼ã‚º
                 String series = (String) itr.next();
                 PreparedStatement pstmt =
                     conn.prepareStatement(
@@ -263,29 +263,29 @@ public abstract class DatabaseDatasetFactoryService
 
                 if (allConditions.size() > 0) {
                     /*
-                     * ƒVƒŠ[ƒY–¼‚È‚µ‚Ìƒf[ƒ^ƒZƒbƒgğŒ‚ğ
-                     * ‚·‚×‚Ä‚ÌPreparedStatement‚É“K—p
+                     * ã‚·ãƒªãƒ¼ã‚ºåãªã—ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’
+                     * ã™ã¹ã¦ã®PreparedStatementã«é©ç”¨
                      */
                     for (int i = 0; i < allConditions.size(); i++) {
                         DatabaseDatasetCondition condition = (DatabaseDatasetCondition) allConditions.get(i);
                         setObject(pstmt, condition);
                     }
                 } else if (conditionMap.containsKey(series)) {
-                    // ŠeƒVƒŠ[ƒY—p‚Ìƒf[ƒ^ƒZƒbƒgğŒ‚ğPreparedStatement‚É“K—p
+                    // å„ã‚·ãƒªãƒ¼ã‚ºç”¨ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’PreparedStatementã«é©ç”¨
                     List list = (List) conditionMap.get(series);
                     for (int i = 0; i < list.size(); i++) {
                         DatabaseDatasetCondition condition =(DatabaseDatasetCondition) list.get(i);
                         setObject(pstmt, condition);
                     }
                 }
-                // SQLÀs
+                // SQLå®Ÿè¡Œ
                 ResultSet rs = pstmt.executeQuery();
                 seriesRsMap.put(series, rs);
             }
 
-            // ƒVƒŠ[ƒY–¼‚Ì”z—ñ
+            // ã‚·ãƒªãƒ¼ã‚ºåã®é…åˆ—
             String[] series = null;
-            // ŒŸõŒ‹‰Ê‚Ì”z—ñ
+            // æ¤œç´¢çµæœã®é…åˆ—
             ResultSet[] rSets = null;
 
             if (seriesRsMap.size() > 0) {
@@ -295,10 +295,10 @@ public abstract class DatabaseDatasetFactoryService
                     (ResultSet[]) seriesRsMap.values().toArray(new ResultSet[seriesRsMap.size()]);
             }
 
-            // ƒf[ƒ^ƒZƒbƒg‚ğì‚é
+            // ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ä½œã‚‹
             dataset = createDataset(dsConditions, series, rSets);
         } catch (SQLException e) {
-            // ƒf[ƒ^ƒx[ƒXŠÖ˜A
+            // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹é–¢é€£
             throw new DatasetCreateException("Dataset [" + name + "]", e);
         } finally {
             if (conn != null) {
@@ -313,10 +313,10 @@ public abstract class DatabaseDatasetFactoryService
     }
 
     /**
-     * PreparedStatement‚Éw’è‚³‚ê‚½ƒf[ƒ^ƒx[ƒXğŒ‚©‚ç’l‚ğİ’è‚·‚éB<p>
+     * PreparedStatementã«æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¡ä»¶ã‹ã‚‰å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param pstmt PreparedStatement
-     * @param dbDsCondition ƒf[ƒ^ƒx[ƒXƒf[ƒ^ƒZƒbƒgğŒ
+     * @param dbDsCondition ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
      * @exception DatasetCreateException
      * @exception SQLException
      */
@@ -324,7 +324,7 @@ public abstract class DatabaseDatasetFactoryService
         PreparedStatement pstmt,
         DatabaseDatasetCondition dbDsCondition
     ) throws DatasetCreateException, SQLException {
-        // ƒpƒ‰ƒ[ƒ^ƒƒ^ƒf[ƒ^
+        // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
         ParameterMetaData paramMetaData = pstmt.getParameterMetaData();
         if (paramMetaData == null) {
             throw new DatasetCreateException(
@@ -332,10 +332,10 @@ public abstract class DatabaseDatasetFactoryService
             );
         }
 
-        // ƒpƒ‰ƒ[ƒ^ƒJƒEƒ“ƒg
+        // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚«ã‚¦ãƒ³ãƒˆ
         int paramCnt = paramMetaData.getParameterCount();
 
-        // ’l‚ğPreparedStatement‚Éİ’è
+        // å€¤ã‚’PreparedStatementã«è¨­å®š
         if (paramCnt > 0) {
             for (int k = 0; k < paramCnt; k++) {
                 Object paramObj = dbDsCondition.getParamObject(k);
@@ -347,12 +347,12 @@ public abstract class DatabaseDatasetFactoryService
     }
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg‚ğì¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param dsConditions ƒf[ƒ^ƒZƒbƒgğŒ
-     * @param seriesArray ƒVƒŠ[ƒY–¼‚Ì”z—ñ
-     * @param rSets ResultSet‚Ì”z—ñ
-     * @return ƒf[ƒ^ƒZƒbƒg
+     * @param dsConditions ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
+     * @param seriesArray ã‚·ãƒªãƒ¼ã‚ºåã®é…åˆ—
+     * @param rSets ResultSetã®é…åˆ—
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
      * @exception DatasetCreateException
      */
     abstract protected Dataset createDataset(

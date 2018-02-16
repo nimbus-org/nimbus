@@ -35,327 +35,327 @@ import java.io.File;
 import java.util.Date;
 
 /**
- * SFTP�N���C�A���g�B<p>
+ * SFTPクライアント。<p>
  *
  * @author M.Takata
  */
 public interface SFTPClient{
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param password �p�X���[�h
-     * @exception SFTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param password パスワード
+     * @exception SFTPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, String password) throws SFTPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param port �ڑ���T�[�o�̃|�[�g�ԍ�
-     * @param password �p�X���[�h
-     * @exception SFTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param port 接続先サーバのポート番号
+     * @param password パスワード
+     * @exception SFTPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, int port, String password) throws SFTPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param pemFile �閧���t�@�C��
-     * @param passphrase �p�X�t���[�Y
-     * @exception SFTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param pemFile 秘密鍵ファイル
+     * @param passphrase パスフレーズ
+     * @exception SFTPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, File pemFile, String passphrase) throws SFTPException;
     
     /**
-     * �T�[�o�ɐڑ�����B<p>
+     * サーバに接続する。<p>
      *
-     * @param user ���[�U��
-     * @param host �ڑ���T�[�o�̃z�X�g��
-     * @param port �ڑ���T�[�o�̃|�[�g�ԍ�
-     * @param pemFile �閧���t�@�C��
-     * @param passphrase �p�X�t���[�Y
-     * @exception SFTPException �T�[�o�Ƃ̐ڑ��Ɏ��s�����ꍇ
+     * @param user ユーザ名
+     * @param host 接続先サーバのホスト名
+     * @param port 接続先サーバのポート番号
+     * @param pemFile 秘密鍵ファイル
+     * @param passphrase パスフレーズ
+     * @exception SFTPException サーバとの接続に失敗した場合
      */
     public void connect(String user, String host, int port, File pemFile, String passphrase) throws SFTPException;
     
     /**
-     * �T�[�o�̃t�@�C�����ꗗ���擾����B<p>
+     * サーバのファイル名一覧を取得する。<p>
      * 
-     * @return �t�@�C�����̔z��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @return ファイル名の配列
+     * @exception SFTPException 取得に失敗した場合
      */
     public String[] ls() throws SFTPException;
     
     /**
-     * �T�[�o�̎w�肳�ꂽ�f�B���N�g�����̃t�@�C�����ꗗ���擾����B<p>
+     * サーバの指定されたディレクトリ内のファイル名一覧を取得する。<p>
      * 
-     * @return �t�@�C�����̔z��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @return ファイル名の配列
+     * @exception SFTPException 取得に失敗した場合
      */
     public String[] ls(String path) throws SFTPException;
     
     /**
-     * �T�[�o�̃t�@�C�����ꗗ���擾����B<p>
+     * サーバのファイル名一覧を取得する。<p>
      * 
-     * @return SFTP�t�@�C���̔z��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @return SFTPファイルの配列
+     * @exception SFTPException 取得に失敗した場合
      */
     public SFTPFile[] lsFile() throws SFTPException;
     
     /**
-     * �T�[�o�̎w�肳�ꂽ�f�B���N�g�����̃t�@�C�����ꗗ���擾����B<p>
+     * サーバの指定されたディレクトリ内のファイル名一覧を取得する。<p>
      * 
-     * @return SFTP�t�@�C���̔z��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @return SFTPファイルの配列
+     * @exception SFTPException 取得に失敗した場合
      */
     public SFTPFile[] lsFile(String path) throws SFTPException;
     
     /**
-     * �T�[�o���ł̃J�����g�f�B���N�g�����擾����B<p>
+     * サーバ側でのカレントディレクトリを取得する。<p>
      * 
-     * @return �J�����g�f�B���N�g���̃p�X
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @return カレントディレクトリのパス
+     * @exception SFTPException 取得に失敗した場合
      */
     public String pwd() throws SFTPException;
     
     /**
-     * �N���C�A���g���ł̃J�����g�f�B���N�g�����擾����B<p>
+     * クライアント側でのカレントディレクトリを取得する。<p>
      * 
-     * @return �J�����g�f�B���N�g��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @return カレントディレクトリ
+     * @exception SFTPException 取得に失敗した場合
      */
     public File lpwd() throws SFTPException;
     
     /**
-     * �T�[�o���ł̃J�����g�f�B���N�g�����w�肳�ꂽ�p�X�Ɉړ�����B<p>
+     * サーバ側でのカレントディレクトリを指定されたパスに移動する。<p>
      * 
-     * @param path �ړ���̃p�X
-     * @exception SFTPException �ړ��Ɏ��s�����ꍇ
+     * @param path 移動先のパス
+     * @exception SFTPException 移動に失敗した場合
      */
     public void cd(String path) throws SFTPException;
     
     /**
-     * �N���C�A���g���ł̃J�����g�f�B���N�g�����w�肳�ꂽ�p�X�Ɉړ�����B<p>
+     * クライアント側でのカレントディレクトリを指定されたパスに移動する。<p>
      * 
-     * @param path �ړ���̃p�X
-     * @exception SFTPException �ړ��Ɏ��s�����ꍇ
+     * @param path 移動先のパス
+     * @exception SFTPException 移動に失敗した場合
      */
     public void lcd(String path) throws SFTPException;
     
     /**
-     * �T�[�o���Ŏw�肳�ꂽ�f�B���N�g�����쐬����B<p>
+     * サーバ側で指定されたディレクトリを作成する。<p>
      * 
-     * @param dir �쐬����f�B���N�g���̃p�X
-     * @exception SFTPException �쐬�Ɏ��s�����ꍇ
+     * @param dir 作成するディレクトリのパス
+     * @exception SFTPException 作成に失敗した場合
      */
     public void mkdir(String dir) throws SFTPException;
     
     /**
-     * �T�[�o���Ŏw�肳�ꂽ�t�@�C���̃t�@�C������ύX����B<p>
+     * サーバ側で指定されたファイルのファイル名を変更する。<p>
      * 
-     * @param from �ύX�Ώۂ̃t�@�C���̃p�X
-     * @param to �ύX��̃t�@�C����
-     * @exception SFTPException �ύX�Ɏ��s�����ꍇ
+     * @param from 変更対象のファイルのパス
+     * @param to 変更後のファイル名
+     * @exception SFTPException 変更に失敗した場合
      */
     public void rename(String from, String to) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����擾����B<p>
+     * サーバ側の指定されたファイルを取得する。<p>
      * 
-     * @param path �擾����t�@�C���̃p�X
-     * @return �擾�����t�@�C��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @param path 取得するファイルのパス
+     * @return 取得したファイル
+     * @exception SFTPException 取得に失敗した場合
      */
     public File get(String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����A�w�肳�ꂽ���O�̃t�@�C���Ƃ��Ď擾����B<p>
+     * サーバ側の指定されたファイルを、指定された名前のファイルとして取得する。<p>
      * 
-     * @param remote �擾����t�@�C���̃p�X
-     * @param local �擾��̃t�@�C����
-     * @return �擾�����t�@�C��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @param remote 取得するファイルのパス
+     * @param local 取得後のファイル名
+     * @return 取得したファイル
+     * @exception SFTPException 取得に失敗した場合
      */
     public File get(String remote, String local) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�S�Ẵt�@�C�����擾����B<p>
+     * サーバ側の指定された全てのファイルを取得する。<p>
      * 
-     * @param path �擾����t�@�C���̃p�X
-     * @return �擾�����t�@�C���z��
-     * @exception SFTPException �擾�Ɏ��s�����ꍇ
+     * @param path 取得するファイルのパス
+     * @return 取得したファイル配列
+     * @exception SFTPException 取得に失敗した場合
      */
     public File[] mget(String path) throws SFTPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C����]������B<p>
+     * サーバ側に指定されたファイルを転送する。<p>
      * 
-     * @param path �]������t�@�C���̃p�X
-     * @exception SFTPException �]���Ɏ��s�����ꍇ
+     * @param path 転送するファイルのパス
+     * @exception SFTPException 転送に失敗した場合
      */
     public void put(String path) throws SFTPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�t�@�C�����A�w�肳�ꂽ�t�@�C�����œ]������B<p>
+     * サーバ側に指定されたファイルを、指定されたファイル名で転送する。<p>
      * 
-     * @param local �]������t�@�C���̃p�X
-     * @param remote �]����ł̃t�@�C����
-     * @exception SFTPException �]���Ɏ��s�����ꍇ
+     * @param local 転送するファイルのパス
+     * @param remote 転送先でのファイル名
+     * @exception SFTPException 転送に失敗した場合
      */
     public void put(String local, String remote) throws SFTPException;
     
     /**
-     * �T�[�o���Ɏw�肳�ꂽ�S�Ẵt�@�C����]������B<p>
+     * サーバ側に指定された全てのファイルを転送する。<p>
      * 
-     * @param path �]������t�@�C���̃p�X
-     * @exception SFTPException �]���Ɏ��s�����ꍇ
+     * @param path 転送するファイルのパス
+     * @exception SFTPException 転送に失敗した場合
      */
     public void mput(String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C�����폜����B<p>
+     * サーバ側の指定されたファイルを削除する。<p>
      * 
-     * @param path �폜����t�@�C���̃p�X
-     * @return �폜�����ꍇtrue
-     * @exception SFTPException �폜�Ɏ��s�����ꍇ
+     * @param path 削除するファイルのパス
+     * @return 削除した場合true
+     * @exception SFTPException 削除に失敗した場合
      */
     public boolean rm(String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�f�B���N�g�����폜����B<p>
+     * サーバ側の指定されたディレクトリを削除する。<p>
      * 
-     * @param path �폜����f�B���N�g���̃p�X
-     * @return �폜�����ꍇtrue
-     * @exception SFTPException �폜�Ɏ��s�����ꍇ
+     * @param path 削除するディレクトリのパス
+     * @return 削除した場合true
+     * @exception SFTPException 削除に失敗した場合
      */
     public boolean rmdir(String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C���̃p�[�~�b�V������ύX����B<p>
+     * サーバ側の指定されたファイルのパーミッションを変更する。<p>
      *
-     * @param mode �p�[�~�b�V����
-     * @param path �ύX����t�@�C���̃p�X
-     * @exception SFTPException �ύX�Ɏ��s�����ꍇ
+     * @param mode パーミッション
+     * @param path 変更するファイルのパス
+     * @exception SFTPException 変更に失敗した場合
      */
     public void chmod(String mode, String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C���̏��L�҂�ύX����B<p>
+     * サーバ側の指定されたファイルの所有者を変更する。<p>
      *
-     * @param uid ���[�UID
-     * @param path �ύX����t�@�C���̃p�X
-     * @exception SFTPException �ύX�Ɏ��s�����ꍇ
+     * @param uid ユーザID
+     * @param path 変更するファイルのパス
+     * @exception SFTPException 変更に失敗した場合
      */
     public void chown(String uid, String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C���̃O���[�v��ύX����B<p>
+     * サーバ側の指定されたファイルのグループを変更する。<p>
      *
-     * @param gid �O���[�vID
-     * @param path �ύX����t�@�C���̃p�X
-     * @exception SFTPException �ύX�Ɏ��s�����ꍇ
+     * @param gid グループID
+     * @param path 変更するファイルのパス
+     * @exception SFTPException 変更に失敗した場合
      */
     public void chgrp(String gid, String path) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C���̃V���{���b�N�����N���쐬����B<p>
+     * サーバ側の指定されたファイルのシンボリックリンクを作成する。<p>
      *
-     * @param path �Ώۂ̃t�@�C���̃p�X
-     * @param link �쐬����V���{���b�N�����N�̃p�X
-     * @exception SFTPException �쐬�Ɏ��s�����ꍇ
+     * @param path 対象のファイルのパス
+     * @param link 作成するシンボリックリンクのパス
+     * @exception SFTPException 作成に失敗した場合
      */
     public void symlink(String path, String link) throws SFTPException;
     
     /**
-     * �T�[�o���̎w�肳�ꂽ�t�@�C���̃n�[�h�����N���쐬����B<p>
+     * サーバ側の指定されたファイルのハードリンクを作成する。<p>
      *
-     * @param path �Ώۂ̃t�@�C���̃p�X
-     * @param link �쐬����n�[�h�����N�̃p�X
-     * @exception SFTPException �쐬�Ɏ��s�����ꍇ
+     * @param path 対象のファイルのパス
+     * @param link 作成するハードリンクのパス
+     * @exception SFTPException 作成に失敗した場合
      */
     public void ln(String path, String link) throws SFTPException;
     
     /**
-     * �T�[�o�Ƃ̐ڑ���ؒf����B<p>
+     * サーバとの接続を切断する。<p>
      * 
-     * @exception SFTPException �ؒf�Ɏ��s�����ꍇ
+     * @exception SFTPException 切断に失敗した場合
      */
     public void close() throws SFTPException;
     
     /**
-     * SFTP�t�@�C���B<p>
+     * SFTPファイル。<p>
      *
      * @author M.Takata
      */
     public interface SFTPFile{
         
         /**
-         * �t�@�C�������擾����B<p>
+         * ファイル名を取得する。<p>
          *
-         * @return �t�@�C����
+         * @return ファイル名
          */
         public String getName();
         
         /**
-         * ���[�UID���擾����B<p>
+         * ユーザIDを取得する。<p>
          *
-         * @return ���[�UID
+         * @return ユーザID
          */
         public int getUserId();
         
         /**
-         * �O���[�vID���擾����B<p>
+         * グループIDを取得する。<p>
          *
-         * @return �O���[�vID
+         * @return グループID
          */
         public int getGroupId();
         
         /**
-         * �������擾����B<p>
+         * 権限を取得する。<p>
          *
-         * @return ����
+         * @return 権限
          */
         public int getPermissions();
         
         /**
-         * �ŏI�A�N�Z�X�������擾����B<p>
+         * 最終アクセス時刻を取得する。<p>
          *
-         * @return �ŏI�A�N�Z�X����
+         * @return 最終アクセス時刻
          */
         public Date getLastAccessTime();
         
         /**
-         * �ŏI�X�V�������擾����B<p>
+         * 最終更新時刻を取得する。<p>
          *
-         * @return �ŏI�X�V����
+         * @return 最終更新時刻
          */
         public Date getLastModificationTime();
         
         /**
-         * �f�B���N�g�����ǂ����𔻒肷��B<p>
+         * ディレクトリかどうかを判定する。<p>
          *
-         * @return �f�B���N�g���̏ꍇtrue
+         * @return ディレクトリの場合true
          */
         public boolean isDirectory();
         
         /**
-         * �����N���ǂ����𔻒肷��B<p>
+         * リンクかどうかを判定する。<p>
          *
-         * @return �����N�̏ꍇtrue
+         * @return リンクの場合true
          */
         public boolean isLink();
         
         /**
-         * �t�@�C���T�C�Y���擾����B<p>
+         * ファイルサイズを取得する。<p>
          *
-         * @return �t�@�C���T�C�Y
+         * @return ファイルサイズ
          */
         public long size();
     }

@@ -49,8 +49,8 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.PersistentManager;
 
 /**
- * ƒf[ƒ^ƒx[ƒX‚ğXV‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * “®ì‚ÌÚ×‚ÍA{@link #execute(TestContext, String, Reader)}‚ğQÆB<br>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ›´æ–°ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * å‹•ä½œã®è©³ç´°ã¯ã€{@link #execute(TestContext, String, Reader)}ã‚’å‚ç…§ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -118,39 +118,39 @@ public class DatabaseUpdateActionService extends ServiceBase implements TestActi
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒf[ƒ^ƒx[ƒX‚ÉXVƒNƒGƒŠ‚ğ”­s‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ›´æ–°ã‚¯ã‚¨ãƒªã‚’ç™ºè¡Œã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * inputId
      * updateQueries
      * </pre>
-     * inputId‚ÍA{@link PersistentManager}‚É“n‚·XVƒNƒGƒŠ‚É‘Î‚·‚éˆø”ƒIƒuƒWƒFƒNƒg‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍAˆø”ƒIƒuƒWƒFƒNƒg‚ÍnullB<br>
-     * updateQueries‚ÍA{@link PersistentManager}‚É“n‚·XVƒNƒGƒŠ‚ğw’è‚·‚éB•¡”‚ÌƒNƒGƒŠ‚ğw’è‚·‚éê‡‚ÍA"/"‚Ì‚İ‚Ìs‚ğ‹æØ‚ès‚Æ‚µ‚Äw’è‚·‚éB<br>
+     * inputIdã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ›´æ–°ã‚¯ã‚¨ãƒªã«å¯¾ã™ã‚‹å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯nullã€‚<br>
+     * updateQueriesã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ›´æ–°ã‚¯ã‚¨ãƒªã‚’æŒ‡å®šã™ã‚‹ã€‚è¤‡æ•°ã®ã‚¯ã‚¨ãƒªã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€"/"ã®ã¿ã®è¡Œã‚’åŒºåˆ‡ã‚Šè¡Œã¨ã—ã¦æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param resource ƒŠƒ\[ƒX
-     * @return XVŒ”
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return æ›´æ–°ä»¶æ•°
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         return execute(context, actionId, null, resource);
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ì“à—e‚ğ“Ç‚İ‚ñ‚ÅAƒf[ƒ^ƒx[ƒX‚ÉXVƒNƒGƒŠ‚ğ”­s‚·‚éB<p>
-     * ƒŠƒ\[ƒX‚ÌƒtƒH[ƒ}ƒbƒg‚ÍAˆÈ‰ºB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚“ã§ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ›´æ–°ã‚¯ã‚¨ãƒªã‚’ç™ºè¡Œã™ã‚‹ã€‚<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¯ã€ä»¥ä¸‹ã€‚<br>
      * <pre>
      * inputId
      * updateQueries
      * </pre>
-     * inputId‚ÍA{@link PersistentManager}‚É“n‚·XVƒNƒGƒŠ‚É‘Î‚·‚éˆø”ƒIƒuƒWƒFƒNƒg‚ğw’è‚·‚é‚à‚Ì‚ÅA“¯ˆêƒeƒXƒgƒP[ƒX’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍA‚»‚ÌƒAƒNƒVƒ‡ƒ“ID‚ğw’è‚·‚éB‚Ü‚½A“¯ˆêƒVƒiƒŠƒI’†‚ÉA‚±‚ÌTestAction‚æ‚è‘O‚ÉAˆø”ƒIƒuƒWƒFƒNƒg‚ğ–ß‚·ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ª‘¶İ‚·‚éê‡‚ÍAƒeƒXƒgƒP[ƒXID‚ÆƒAƒNƒVƒ‡ƒ“ID‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB‹ós‚ğw’è‚µ‚½ê‡‚ÍApreResult‚ğg—p‚·‚éB<br>
-     * updateQueries‚ÍA{@link PersistentManager}‚É“n‚·XVƒNƒGƒŠ‚ğw’è‚·‚éB•¡”‚ÌƒNƒGƒŠ‚ğw’è‚·‚éê‡‚ÍA"/"‚Ì‚İ‚Ìs‚ğ‹æØ‚ès‚Æ‚µ‚Äw’è‚·‚éB<br>
+     * inputIdã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ›´æ–°ã‚¯ã‚¨ãƒªã«å¯¾ã™ã‚‹å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã§ã€åŒä¸€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’æŒ‡å®šã™ã‚‹ã€‚ã¾ãŸã€åŒä¸€ã‚·ãƒŠãƒªã‚ªä¸­ã«ã€ã“ã®TestActionã‚ˆã‚Šå‰ã«ã€å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æˆ»ã™ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹IDã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³IDã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚ç©ºè¡Œã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€preResultã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * updateQueriesã¯ã€{@link PersistentManager}ã«æ¸¡ã™æ›´æ–°ã‚¯ã‚¨ãƒªã‚’æŒ‡å®šã™ã‚‹ã€‚è¤‡æ•°ã®ã‚¯ã‚¨ãƒªã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€"/"ã®ã¿ã®è¡Œã‚’åŒºåˆ‡ã‚Šè¡Œã¨ã—ã¦æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param context ƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ƒAƒNƒVƒ‡ƒ“ID
-     * @param preResult XVƒNƒGƒŠ‚É‘Î‚·‚éˆø”ƒIƒuƒWƒFƒNƒg
-     * @param resource ƒŠƒ\[ƒX
-     * @return XVŒ”
+     * @param context ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ID
+     * @param preResult æ›´æ–°ã‚¯ã‚¨ãƒªã«å¯¾ã™ã‚‹å¼•æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param resource ãƒªã‚½ãƒ¼ã‚¹
+     * @return æ›´æ–°ä»¶æ•°
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);

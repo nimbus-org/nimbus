@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.journal.editorfinder.*;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * ƒT[ƒuƒŒƒbƒgƒŠƒNƒGƒXƒgŒğŠ·ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * {@link javax.servlet.ServletRequest}‚ğ{@link jp.ossc.nimbus.util.converter.Converter#convert(Object) Converter#convert(Object)}‚Å”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚µ‚ÄAƒŠƒNƒGƒXƒg‘®«‚Éİ’è‚·‚éB<br>
+ * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒªã‚¯ã‚¨ã‚¹ãƒˆäº¤æ›ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * {@link javax.servlet.ServletRequest}ã‚’{@link jp.ossc.nimbus.util.converter.Converter#convert(Object) Converter#convert(Object)}ã§ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã«è¨­å®šã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -80,109 +80,109 @@ public class ServletRequestExchangeInterceptorService
     protected String requestObjectContextKey
          = DEFAULT_REQUEST_OBJECT_CONTEXT_KEY;
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setConverterServiceName(ServiceName name){
         converterServiceName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public ServiceName getConverterServiceName(){
         return converterServiceName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setExchangeEditorFinderServiceName(ServiceName name){
         exchangeEditorFinderServiceName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public ServiceName getExchangeEditorFinderServiceName(){
         return exchangeEditorFinderServiceName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setRequestObjectEditorFinderServiceName(ServiceName name){
         requestObjectEditorFinderServiceName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public ServiceName getRequestObjectEditorFinderServiceName(){
         return requestObjectEditorFinderServiceName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setExceptionEditorFinderServiceName(ServiceName name){
         exceptionEditorFinderServiceName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public ServiceName getExceptionEditorFinderServiceName(){
         return exceptionEditorFinderServiceName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setExchangeJournalKey(String key){
         exchangeJournalKey = key;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public String getExchangeJournalKey(){
         return exchangeJournalKey;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setRequestObjectJournalKey(String key){
         requestObjectJournalKey = key;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public String getRequestObjectJournalKey(){
         return requestObjectJournalKey;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setExceptionJournalKey(String key){
         exceptionJournalKey = key;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public String getExceptionJournalKey(){
         return exceptionJournalKey;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setRequestObjectAttributeName(String name){
         requestObjectAttributeName = name;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public String getRequestObjectAttributeName(){
         return requestObjectAttributeName;
     }
     
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public void setRequestObjectContextKey(String key){
         requestObjectContextKey = key;
     }
-    // ServletRequestExchangeInterceptorServiceMBean ‚ÌJavaDoc
+    // ServletRequestExchangeInterceptorServiceMBean ã®JavaDoc
     public String getRequestObjectContextKey(){
         return requestObjectContextKey;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(converterServiceName == null
@@ -227,122 +227,122 @@ public class ServletRequestExchangeInterceptorService
     }
     
     /**
-     * ƒT[ƒuƒŒƒbƒgƒŠƒNƒGƒXƒg‚ğ—v‹ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.Converter Converter}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.Converter Converter}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param conv ConverterƒT[ƒrƒX
+     * @param conv Converterã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setConverter(Converter conv){
         converter = conv;
     }
     
     /**
-     * ƒT[ƒuƒŒƒbƒgƒŠƒNƒGƒXƒg‚ğ—v‹ƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.Converter Converter}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.Converter Converter}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConverterƒT[ƒrƒX
+     * @return Converterã‚µãƒ¼ãƒ“ã‚¹
      */
     public Converter getConverter(){
         return converter;
     }
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğæ‚¹‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¹—ã›ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param context ContextƒT[ƒrƒX
+     * @param context Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setThreadContext(Context context){
         threadContext = context;
     }
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğæ‚¹‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¹—ã›ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public Context getThreadContext(){
         return threadContext;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param journal JournalƒT[ƒrƒX
+     * @param journal Journalã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJournal(Journal journal){
         this.journal = journal;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹
      */
     public Journal getJournal(){
         return journal;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}‚ğŒŸõ‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setExchangeEditorFinder(EditorFinder finder){
         exchangeEditorFinder = finder;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ìƒ‹[ƒgƒXƒeƒbƒv‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}‚ğŒŸõ‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ãƒ«ãƒ¼ãƒˆã‚¹ãƒ†ãƒƒãƒ—ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public EditorFinder getExchangeEditorFinder(){
         return exchangeEditorFinder;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ì—v‹ƒIƒuƒWƒFƒNƒg‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}‚ğŒŸõ‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setRequestObjectEditorFinder(EditorFinder finder){
         requestObjectEditorFinder = finder;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ì—v‹ƒIƒuƒWƒFƒNƒg‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}‚ğŒŸõ‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public EditorFinder getRequestObjectEditorFinder(){
         return requestObjectEditorFinder;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ì—áŠO‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}‚ğŒŸõ‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ä¾‹å¤–ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param finder EditorFinderƒT[ƒrƒX
+     * @param finder EditorFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setExceptionEditorFinder(EditorFinder finder){
         exceptionEditorFinder = finder;
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Ì—áŠO‚ğ•ÒW‚·‚é{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}‚ğŒŸõ‚·‚é{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ä¾‹å¤–ã‚’ç·¨é›†ã™ã‚‹{@link jp.ossc.nimbus.service.journal.JournalEditor JournalEditor}ã‚’æ¤œç´¢ã™ã‚‹{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public EditorFinder getExceptionEditorFinder(){
         return exceptionEditorFinder;
     }
     
     /**
-     * Converter‚ğg‚Á‚ÄƒT[ƒuƒŒƒbƒgƒŠƒNƒGƒXƒg‚Æ“Á’èƒIƒuƒWƒFƒNƒg‚ÌŒğŠ·‚ğs‚¤B<p>
-     * ServletRequest‚ğConverter‚Å“Á’è‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚µ‚ÄAƒŠƒNƒGƒXƒg‚Ì‘®«‚Éİ’è‚µAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * Converterã‚’ä½¿ã£ã¦ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒªã‚¯ã‚¨ã‚¹ãƒˆã¨ç‰¹å®šã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®äº¤æ›ã‚’è¡Œã†ã€‚<p>
+     * ServletRequestã‚’Converterã§ç‰¹å®šã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å±æ€§ã«è¨­å®šã—ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,

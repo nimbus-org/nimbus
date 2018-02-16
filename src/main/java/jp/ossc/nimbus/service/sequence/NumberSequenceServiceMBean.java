@@ -36,131 +36,131 @@ import java.text.NumberFormat;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link NumberSequenceService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link NumberSequenceService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface NumberSequenceServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ‰Šú’l‚ğİ’è‚·‚éB<p>
-     * ‘‰Á—Ê >= 0‚Ìê‡‚ÍAÅ‘å’lˆÈ‰º‚Ì’l‚É‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ‘‰Á—Ê < 0‚Ìê‡‚ÍAÅ¬’lˆÈã‚Ì’l‚É‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<p>
+     * åˆæœŸå€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¢—åŠ é‡ >= 0ã®å ´åˆã¯ã€æœ€å¤§å€¤ä»¥ä¸‹ã®å€¤ã«ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * å¢—åŠ é‡ < 0ã®å ´åˆã¯ã€æœ€å°å€¤ä»¥ä¸Šã®å€¤ã«ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<p>
      *
-     * @param value ‰Šú’l
+     * @param value åˆæœŸå€¤
      */
     public void setInitialValue(long value);
     
     /**
-     * ‰Šú’l‚ğæ“¾‚·‚éB<p>
+     * åˆæœŸå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰Šú’l
+     * @return åˆæœŸå€¤
      */
     public long getInitialValue();
     
     /**
-     * Å¬’l‚ğİ’è‚·‚éB<p>
-     * Å‘å’l‚æ‚è¬‚³‚È’l‚É‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<p>
+     * æœ€å°å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æœ€å¤§å€¤ã‚ˆã‚Šå°ã•ãªå€¤ã«ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<p>
      *
-     * @param value Å¬’l
+     * @param value æœ€å°å€¤
      */
     public void setMinValue(long value);
     
     /**
-     * Å¬’l‚ğæ“¾‚·‚éB<p>
+     * æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å¬’l
+     * @return æœ€å°å€¤
      */
     public long getMinValue();
     
     /**
-     * Å‘å’l‚ğİ’è‚·‚éB<p>
-     * Å¬’l‚æ‚è‘å‚«‚È’l‚É‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<p>
+     * æœ€å¤§å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æœ€å°å€¤ã‚ˆã‚Šå¤§ããªå€¤ã«ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<p>
      *
-     * @param value Å‘å’l
+     * @param value æœ€å¤§å€¤
      */
     public void setMaxValue(long value);
     
     /**
-     * Å‘å’l‚ğæ“¾‚·‚éB<p>
+     * æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å‘å’l
+     * @return æœ€å¤§å€¤
      */
     public long getMaxValue();
     
     /**
-     * ‘‰Á—Ê‚ğİ’è‚·‚éB<p>
-     * Œ¸­‚³‚¹‚½‚¢ê‡‚ÍA•‰‚Ì’l‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<p>
+     * å¢—åŠ é‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¸›å°‘ã•ã›ãŸã„å ´åˆã¯ã€è² ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<p>
      *
-     * @param value ‘‰Á—Ê
+     * @param value å¢—åŠ é‡
      */
     public void setIncrementValue(long value);
     
     /**
-     * ‘‰Á—Ê‚ğæ“¾‚·‚éB<p>
+     * å¢—åŠ é‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘‰Á—Ê
+     * @return å¢—åŠ é‡
      */
     public long getIncrementValue();
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ğw’è‚·‚éB<p>
-     * w’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ÅAjava.text.DecimalFormat‚ğg‚Á‚ÄƒtƒH[ƒ}ƒbƒg‚·‚éB<br>
-     * w’è‚µ‚È‚¢ê‡‚ÍAString.valueOf(long)‚Å•¶š—ñ‚É•ÏŠ·‚³‚ê‚éB<br>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã§ã€java.text.DecimalFormatã‚’ä½¿ã£ã¦ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã€‚<br>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€String.valueOf(long)ã§æ–‡å­—åˆ—ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param format ƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @param format ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public void setFormat(String format);
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public String getFormat();
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg‚ğw’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍAString.valueOf(long)‚Å•¶š—ñ‚É•ÏŠ·‚³‚ê‚éB<br>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€String.valueOf(long)ã§æ–‡å­—åˆ—ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param format ƒtƒH[ƒ}ƒbƒg
+     * @param format ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setNumberFormat(NumberFormat format);
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒH[ƒ}ƒbƒg
+     * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public NumberFormat getNumberFormat();
     
     /** 
-     * Œ»İ”­”ÔÏ‚İ‚ÌÅV‚Ì”Ô†’l‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ç™ºç•ªæ¸ˆã¿ã®æœ€æ–°ã®ç•ªå·å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Œ»İ”­”ÔÏ‚İ‚ÌÅV‚Ì”Ô†’l
+     * @return ç¾åœ¨ç™ºç•ªæ¸ˆã¿ã®æœ€æ–°ã®ç•ªå·å€¤
      */ 
     public long getCurrentValue();
     
     /**
-     * ŠJn”Ô†‚ğæ“¾‚·‚éB<p>
+     * é–‹å§‹ç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ŠJn”Ô†
+     * @return é–‹å§‹ç•ªå·
      */
     public String getInitial();
     
     /** 
-     * Œ»İ”­”ÔÏ‚İ‚ÌÅV‚Ì”Ô†‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ç™ºç•ªæ¸ˆã¿ã®æœ€æ–°ã®ç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Œ»İ”­”ÔÏ‚İ‚ÌÅV‚Ì”Ô†
+     * @return ç¾åœ¨ç™ºç•ªæ¸ˆã¿ã®æœ€æ–°ã®ç•ªå·
      */ 
     public String getCurrent();
     
     /**
-     * ”­”Ô‚ğ‰Šú‰»‚·‚éB<p>
+     * ç™ºç•ªã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
 }

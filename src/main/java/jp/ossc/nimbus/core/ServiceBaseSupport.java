@@ -32,9 +32,9 @@
 package jp.ossc.nimbus.core;
 
 /**
- * �T�[�r�X���T�|�[�g�C���^�t�F�[�X�B<p>
- * {@link ServiceBase}�N���X���p�����Ȃ��Ă��AServiceBase�̎����𗘗p�ł���悤�ɂ��邽�߂̃C���^�t�F�[�X�ł���B<br>
- * ���̃C���^�t�F�[�X�����������N���X�́A{@link ServiceManager}�ɓo�^����ۂɁAServiceBase�N���X�Ń��b�v����ēo�^�����B�o�^���ꂽ���̃N���X�̃C���X�^���X���A{@link ServiceManager#getService(String)}�ŁA�擾���Ďg�p����ꍇ�ɂ́A���b�v���ꂽ�I�u�W�F�N�g���擾����AServiceBase���p�������N���X�Ɠ����̋@�\���g�p�ł���B<br>
+ * サービス基底サポートインタフェース。<p>
+ * {@link ServiceBase}クラスを継承しなくても、ServiceBaseの実装を利用できるようにするためのインタフェースである。<br>
+ * このインタフェースを実装したクラスは、{@link ServiceManager}に登録する際に、ServiceBaseクラスでラップされて登録される。登録されたこのクラスのインスタンスを、{@link ServiceManager#getService(String)}で、取得して使用する場合には、ラップされたオブジェクトが取得され、ServiceBaseを継承したクラスと同等の機能を使用できる。<br>
  * 
  * @author M.Takata
  * @see ServiceBase
@@ -42,48 +42,48 @@ package jp.ossc.nimbus.core;
 public interface ServiceBaseSupport{
     
     /**
-     * ���̃T�[�r�X�����b�v����{@link ServiceBase}��ݒ肷��B<p>
+     * このサービスをラップする{@link ServiceBase}を設定する。<p>
      * 
-     * @param service ���̃T�[�r�X�����b�v����ServiceBase
+     * @param service このサービスをラップするServiceBase
      */
     public void setServiceBase(ServiceBase service);
     
     /**
-     * �T�[�r�X�𐶐�����B<p>
-     * ���̃T�[�r�X�ɕK�v�ȃI�u�W�F�N�g�̐����Ȃǂ̏������������s���B<br>
-     * ���̃C���^�t�F�[�X��implements���ăT�[�r�X����������T�[�r�X�J���҂́A�T�[�r�X�̐����������A���̃��\�b�h�Ɏ������邱�ƁB<br>
+     * サービスを生成する。<p>
+     * このサービスに必要なオブジェクトの生成などの初期化処理を行う。<br>
+     * このインタフェースをimplementsしてサービスを実装するサービス開発者は、サービスの生成処理を、このメソッドに実装すること。<br>
      *
-     * @exception Exception �T�[�r�X�̐��������Ɏ��s�����ꍇ
+     * @exception Exception サービスの生成処理に失敗した場合
      * @see ServiceBase#create()
      */
     public void createService() throws Exception;
     
     /**
-     * �T�[�r�X���J�n����B<p>
-     * ���̃T�[�r�X�𗘗p�\�ȏ�Ԃɂ���B���̃��\�b�h�̌Ăяo����́A���̃T�[�r�X�̋@�\�𗘗p�ł��鎖���ۏ؂����B<br>
-     * ���̃C���^�t�F�[�X��implements���ăT�[�r�X����������T�[�r�X�J���҂́A�T�[�r�X�̊J�n�������A���̃��\�b�h�Ɏ������邱�ƁB<br>
+     * サービスを開始する。<p>
+     * このサービスを利用可能な状態にする。このメソッドの呼び出し後は、このサービスの機能を利用できる事が保証される。<br>
+     * このインタフェースをimplementsしてサービスを実装するサービス開発者は、サービスの開始処理を、このメソッドに実装すること。<br>
      *
-     * @exception Exception �T�[�r�X�̊J�n�����Ɏ��s�����ꍇ
+     * @exception Exception サービスの開始処理に失敗した場合
      * @see ServiceBase#start()
      */
     public void startService() throws Exception;
     
     /**
-     * �T�[�r�X���~����B<p>
-     * ���̃T�[�r�X�𗘗p�s�\�ȏ�Ԃɂ���B���̃��\�b�h�̌Ăяo����́A���̃T�[�r�X�̋@�\�𗘗p�ł��鎖�͕ۏ؂���Ȃ��B<br>
-     * ���̃C���^�t�F�[�X��implements���ăT�[�r�X����������T�[�r�X�J���҂́A�T�[�r�X�̒�~�������A���̃��\�b�h�Ɏ������邱�ƁB<br>
+     * サービスを停止する。<p>
+     * このサービスを利用不可能な状態にする。このメソッドの呼び出し後は、このサービスの機能を利用できる事は保証されない。<br>
+     * このインタフェースをimplementsしてサービスを実装するサービス開発者は、サービスの停止処理を、このメソッドに実装すること。<br>
      *
-     * @exception Exception �T�[�r�X�̒�~�����Ɏ��s�����ꍇ�B�A���Astop()�ň���ׂ���āA�����͑��s�����B
+     * @exception Exception サービスの停止処理に失敗した場合。但し、stop()で握り潰されて、処理は続行される。
      * @see ServiceBase#stop()
      */
     public void stopService() throws Exception;
     
     /**
-     * �T�[�r�X��j������B<p>
-     * ���̃T�[�r�X�Ŏg�p���郊�\�[�X���J������B���̃��\�b�h�̌Ăяo����́A���̃T�[�r�X�̋@�\�𗘗p�ł��鎖�͕ۏ؂���Ȃ��B<br>
-     * ���̃C���^�t�F�[�X��implements���ăT�[�r�X����������T�[�r�X�J���҂́A�T�[�r�X�̔j���������A���̃��\�b�h�Ɏ������邱�ƁB<br>
+     * サービスを破棄する。<p>
+     * このサービスで使用するリソースを開放する。このメソッドの呼び出し後は、このサービスの機能を利用できる事は保証されない。<br>
+     * このインタフェースをimplementsしてサービスを実装するサービス開発者は、サービスの破棄処理を、このメソッドに実装すること。<br>
      *
-     * @exception Exception �T�[�r�X�̔j�������Ɏ��s�����ꍇ�B�A���Adestroy()�ň���ׂ���āA�����͑��s�����B
+     * @exception Exception サービスの破棄処理に失敗した場合。但し、destroy()で握り潰されて、処理は続行される。
      * @see ServiceBase#destroy()
      */
     public void destroyService() throws Exception;

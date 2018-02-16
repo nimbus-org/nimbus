@@ -40,7 +40,7 @@ import jp.ossc.nimbus.service.writer.*;
 import jp.ossc.nimbus.service.log.*;
 
 /**
- * ƒf[ƒ^ƒx[ƒXWriterƒT[ƒrƒXB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹Writerã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -49,7 +49,7 @@ public class DatabaseWriterService extends ServiceBase
     
     private static final long serialVersionUID = 3540234844213981431L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String DBW__ = "DBW__";
     private static final String DBW__0 = DBW__ + 0;
     private static final String DBW__00 = DBW__0 + 0;
@@ -76,91 +76,91 @@ public class DatabaseWriterService extends ServiceBase
     private ConnectionFactory connectionFactory;
     private boolean isAutoCommit = true;
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setInsertSQL(Map sqls){
         insertSQLMap = sqls;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public Map getInsertSQL(){
         return insertSQLMap;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setUpdateSQL(Map sqls){
         updateSQLMap = sqls;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public Map getUpdateSQL(){
         return updateSQLMap;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setDeleteSQL(Map sqls){
         deleteSQLMap = sqls;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public Map getDeleteSQL(){
         return deleteSQLMap;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setSelectSQL(Map sqls){
         selectSQLMap = sqls;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public Map getSelectSQL(){
         return selectSQLMap;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setBufferSize(int size){
         bufferSize = size;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public int getBufferSize(){
         return bufferSize;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setBufferTimeout(long timeout){
         bufferTimeout = timeout;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public long getBufferTimeout(){
         return bufferTimeout;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public ServiceName getConnectionFactoryServiceName(){
         return connectionFactoryServiceName;
     }
     
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public boolean isAutoCommit(){
         return isAutoCommit;
     }
-    // DatabaseWriterServiceMBean‚ÌJavaDoc
+    // DatabaseWriterServiceMBeanã®JavaDoc
     public void setAutoCommit(boolean isAuto){
         isAutoCommit = isAuto;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param connectionFactory ConnectionFactoryƒT[ƒrƒX
+     * @param connectionFactory ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setConnectionFactory(ConnectionFactory connectionFactory) {
         this.connectionFactory = connectionFactory;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         insertSQLList = new ArrayList();
@@ -170,9 +170,9 @@ public class DatabaseWriterService extends ServiceBase
         recordBuffer = new ArrayList();
     }
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(connectionFactory == null) {
@@ -279,9 +279,9 @@ public class DatabaseWriterService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(bufferTimeoutTimer != null){
@@ -305,9 +305,9 @@ public class DatabaseWriterService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         insertSQLList = null;
@@ -318,10 +318,10 @@ public class DatabaseWriterService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğƒf[ƒ^ƒx[ƒX‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param rec o—Í‚·‚éƒŒƒR[ƒh
-     * @exception MessageWriteException o—Í‚É¸”s‚µ‚½ê‡
+     * @param rec å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception MessageWriteException å‡ºåŠ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void write(WritableRecord rec) throws MessageWriteException{
         if(getState() != STARTED){

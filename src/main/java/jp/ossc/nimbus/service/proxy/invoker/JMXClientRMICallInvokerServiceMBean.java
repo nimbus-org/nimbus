@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMXClientRMICallInvokerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JMXClientRMICallInvokerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JMXClientRMICallInvokerService
@@ -45,136 +45,136 @@ public interface JMXClientRMICallInvokerServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * javax.management.MBeanServerConnectionã®JNDIåã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_JMX_RMI_ADAPTOR_NAME = "jmx/invoker/RMIAdaptor";
     
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * javax.management.MBeanServerConnection‚ğJNDI‚©‚çlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã‚’JNDIã‹ã‚‰lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_JMX_RMI_ADAPTOR_NAME}B<br>
+     * javax.management.MBeanServerConnectionã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_JMX_RMI_ADAPTOR_NAME}ã€‚<br>
      *
-     * @param name javax.management.MBeanServerConnection‚ÌJNDI–¼
+     * @param name javax.management.MBeanServerConnectionã®JNDIå
      */
     public void setRMIAdaptorName(String name);
     
     /**
-     * javax.management.MBeanServerConnection‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * javax.management.MBeanServerConnectionã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.management.MBeanServerConnection‚ÌJNDI–¼
+     * @return javax.management.MBeanServerConnectionã®JNDIå
      */
     public String getRMIAdaptorName();
     
     /**
-     * JMX API ƒRƒlƒNƒ^ƒT[ƒo[‚ÌƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * JMX API ã‚³ãƒã‚¯ã‚¿ã‚µãƒ¼ãƒãƒ¼ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param url JMX API ƒRƒlƒNƒ^ƒT[ƒo[‚ÌƒAƒhƒŒƒX
+     * @param url JMX API ã‚³ãƒã‚¯ã‚¿ã‚µãƒ¼ãƒãƒ¼ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public void setServiceURL(String url);
     
     /**
-     * JMX API ƒRƒlƒNƒ^ƒT[ƒo[‚ÌƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * JMX API ã‚³ãƒã‚¯ã‚¿ã‚µãƒ¼ãƒãƒ¼ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMX API ƒRƒlƒNƒ^ƒT[ƒo[‚ÌƒAƒhƒŒƒX
+     * @return JMX API ã‚³ãƒã‚¯ã‚¿ã‚µãƒ¼ãƒãƒ¼ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getServiceURL();
     
     /**
-     * JMX API ƒRƒlƒNƒ^Ú‘±‚ÌŠm—§•û–@‚ğŒˆ’è•t‚¯‚é‘®«‚ÌƒZƒbƒg‚ğİ’è‚·‚éB<p>
+     * JMX API ã‚³ãƒã‚¯ã‚¿æ¥ç¶šã®ç¢ºç«‹æ–¹æ³•ã‚’æ±ºå®šä»˜ã‘ã‚‹å±æ€§ã®ã‚»ãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param env ‘®«‚ÌƒZƒbƒg
+     * @param env å±æ€§ã®ã‚»ãƒƒãƒˆ
      */
     public void setJMXConnectorEnvironment(Map env);
     
     /**
-     * JMX API ƒRƒlƒNƒ^Ú‘±‚ÌŠm—§•û–@‚ğŒˆ’è•t‚¯‚é‘®«‚ÌƒZƒbƒg‚ğæ“¾‚·‚éB<p>
+     * JMX API ã‚³ãƒã‚¯ã‚¿æ¥ç¶šã®ç¢ºç«‹æ–¹æ³•ã‚’æ±ºå®šä»˜ã‘ã‚‹å±æ€§ã®ã‚»ãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘®«‚ÌƒZƒbƒg
+     * @return å±æ€§ã®ã‚»ãƒƒãƒˆ
      */
     public Map getJMXConnectorEnvironment();
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMXƒIƒuƒWƒFƒNƒg–¼
+     * @param name JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
      */
     public void setObjectName(String name);
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMXƒIƒuƒWƒFƒNƒg–¼
+     * @return JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå
      */
     public String getObjectName();
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒhƒƒCƒ“–¼‚ğİ’è‚·‚éB<p>
-     * {@link #setObjectName(String)}‚ğİ’è‚µ‚Ä‚¢‚éê‡‚ÍA•s—vB<br>
+     * å‘¼ã³å‡ºã™MBeanã®JMXãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setObjectName(String)}ã‚’è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ä¸è¦ã€‚<br>
      *
-     * @param domain JMXƒhƒƒCƒ“–¼
+     * @param domain JMXãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public void setObjectNameDomain(String domain);
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒhƒƒCƒ“–¼‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXãƒ‰ãƒ¡ã‚¤ãƒ³åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMXƒhƒƒCƒ“–¼
+     * @return JMXãƒ‰ãƒ¡ã‚¤ãƒ³å
      */
     public String getObjectNameDomain();
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
-     * {@link #setObjectName(String)}‚ğİ’è‚µ‚Ä‚¢‚éê‡‚ÍA•s—vB<br>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setObjectName(String)}ã‚’è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ä¸è¦ã€‚<br>
      *
-     * @param prop JMXƒIƒuƒWƒFƒNƒg–¼‚ÌƒvƒƒpƒeƒB
+     * @param prop JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setObjectNameProperties(Properties prop);
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMXƒIƒuƒWƒFƒNƒg–¼‚ÌƒvƒƒpƒeƒB
+     * @return JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Properties getObjectNameProperties();
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ğ“Á’è‚·‚é‚½‚ß‚ÌƒNƒGƒŠ[‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’ç‰¹å®šã™ã‚‹ãŸã‚ã®ã‚¯ã‚¨ãƒªãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param query ƒNƒGƒŠ[
+     * @param query ã‚¯ã‚¨ãƒªãƒ¼
      */
     public void setMBeanQuery(String query);
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ğ“Á’è‚·‚é‚½‚ß‚ÌƒNƒGƒŠ[‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’ç‰¹å®šã™ã‚‹ãŸã‚ã®ã‚¯ã‚¨ãƒªãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒNƒGƒŠ[
+     * @return ã‚¯ã‚¨ãƒªãƒ¼
      */
     public String getMBeanQuery();
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ğ“Á’è‚·‚é‚½‚ß‚Ì³‹K•\Œ»‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’ç‰¹å®šã™ã‚‹ãŸã‚ã®æ­£è¦è¡¨ç¾ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param regex ³‹K•\Œ»
+     * @param regex æ­£è¦è¡¨ç¾
      */
     public void setObjectNameRegex(String regex);
     
     /**
-     * ŒÄ‚Ño‚·MBean‚ÌJMXƒIƒuƒWƒFƒNƒg–¼‚ğ“Á’è‚·‚é‚½‚ß‚Ì³‹K•\Œ»‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã™MBeanã®JMXã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’ç‰¹å®šã™ã‚‹ãŸã‚ã®æ­£è¦è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ³‹K•\Œ»
+     * @return æ­£è¦è¡¨ç¾
      */
     public String getObjectNameRegex();
 

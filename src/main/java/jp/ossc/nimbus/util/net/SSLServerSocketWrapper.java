@@ -46,8 +46,8 @@ import javax.net.ssl.SSLServerSocket;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * SSLƒT[ƒoƒ\ƒPƒbƒgƒ‰ƒbƒp[B<p>
- * ‚±‚ÌƒT[ƒoƒ\ƒPƒbƒg‚Åaccept()‚³‚ê‚½ƒ\ƒPƒbƒg‚ÍA{@link #setSocketProperty(String, Object)}‚ÅA—\‚ßİ’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚éB<br>
+ * SSLã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ©ãƒƒãƒ‘ãƒ¼ã€‚<p>
+ * ã“ã®ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã§accept()ã•ã‚ŒãŸã‚½ã‚±ãƒƒãƒˆã¯ã€{@link #setSocketProperty(String, Object)}ã§ã€äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see ServerSocketFactory
@@ -222,9 +222,9 @@ public class SSLServerSocketWrapper extends SSLServerSocket{
     }
     
     /**
-     * {@link java.net.Socket}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link java.net.Socket}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setSocketProperties(Map props){
         if(props == null || props.size() == 0){
@@ -241,10 +241,10 @@ public class SSLServerSocketWrapper extends SSLServerSocket{
     }
     
     /**
-     * {@link Socket}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link Socket}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setSocketProperty(String name, Object value){
         if(socketProperties == null){
@@ -255,10 +255,10 @@ public class SSLServerSocketWrapper extends SSLServerSocket{
     }
     
     /**
-     * {@link Socket}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link Socket}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getSocketProperty(String name){
         if(socketProperties == null){

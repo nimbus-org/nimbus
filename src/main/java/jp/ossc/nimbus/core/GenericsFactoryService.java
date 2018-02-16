@@ -38,7 +38,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * ”Ä—pƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * æ±ç”¨ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -90,10 +90,10 @@ public class GenericsFactoryService extends FactoryServiceBase
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected Object createInstance() throws Exception{
         final Object instance = instantiateClass.newInstance();
@@ -102,10 +102,10 @@ public class GenericsFactoryService extends FactoryServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ÉA‘®«‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã€å±æ€§ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param instance ƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ‘®«‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param instance ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception å±æ€§ã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void setAttributes(Object instance) throws Exception{
         final Iterator attrNames = keySet().iterator();
@@ -186,12 +186,12 @@ public class GenericsFactoryService extends FactoryServiceBase
         }
     }
     
-    // GenericsFactoryServiceMBean‚ÌJavaDoc
+    // GenericsFactoryServiceMBeanã®JavaDoc
     public Object getAttribute(String attributeName){
         return attributes.get(attributeName);
     }
     
-    // GenericsFactoryServiceMBean‚ÌJavaDoc
+    // GenericsFactoryServiceMBeanã®JavaDoc
     public Service getService(String attributeName)
      throws ServiceNotFoundException{
          return ServiceManagerFactory.getService(
@@ -199,7 +199,7 @@ public class GenericsFactoryService extends FactoryServiceBase
          );
     }
     
-    // GenericsFactoryServiceMBean‚ÌJavaDoc
+    // GenericsFactoryServiceMBeanã®JavaDoc
     public Object getServiceObject(String attributeName)
      throws ServiceNotFoundException{
          return ServiceManagerFactory.getServiceObject(
@@ -207,62 +207,62 @@ public class GenericsFactoryService extends FactoryServiceBase
          );
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public Object get(Object key){
         return attributes.get(key);
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public Object put(Object key, Object value){
         return attributes.put(key,value);
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public Set keySet(){
         return attributes.keySet();
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public Collection values(){
         return attributes.values();
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public Object remove(Object key){
         return attributes.remove(key);
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public void clear(){
         attributes.clear() ;
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public boolean isEmpty(){
         return attributes.isEmpty();
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public boolean containsKey(Object key){
         return attributes.containsKey(key);
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public boolean containsValue(Object value) {
         return attributes.containsValue(value);
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public Set entrySet(){
         return attributes.entrySet();
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public int size(){
         return attributes.size();
     }
     
-    // Map‚ÌJavaDoc
+    // Mapã®JavaDoc
     public void putAll(Map t){
         attributes.putAll(t) ;
     }

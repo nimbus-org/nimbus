@@ -37,7 +37,7 @@ import java.util.HashMap;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * 非同期実行コンテキスト。<p>
+ * 髱槫酔譛溷ｮ溯｡後さ繝ｳ繝�繧ｭ繧ｹ繝医�<p>
  *
  * @author M.Takata
  */

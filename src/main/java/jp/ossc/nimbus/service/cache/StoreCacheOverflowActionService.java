@@ -36,9 +36,9 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒXƒgƒAƒLƒƒƒbƒVƒ…‚ ‚Ó‚ê“®ìƒT[ƒrƒXB<p>
- * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğA•Ê‚ÌƒLƒƒƒbƒVƒ…‚É‘Ş”ğ‚·‚é‚ ‚Ó‚ê“®ì‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉA‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…‚É‘Ş”ğ‚·‚éƒXƒgƒAƒLƒƒƒbƒVƒ…‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚¹ãƒˆã‚¢ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€åˆ¥ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«é€€é¿ã™ã‚‹ã‚ãµã‚Œå‹•ä½œã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«é€€é¿ã™ã‚‹ã‚¹ãƒˆã‚¢ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -69,7 +69,7 @@ public class StoreCacheOverflowActionService extends ServiceBase
     
     private static final long serialVersionUID = 7281680512746664647L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SCOA_ = "SCOA_";
     private static final String SCOA_0 = SCOA_ + 0;
     private static final String SCOA_00 = SCOA_0 + 0;
@@ -90,52 +90,52 @@ public class StoreCacheOverflowActionService extends ServiceBase
     
     private Map references;
     
-    // StoreCacheOverflowActionServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionServiceMBeanã®JavaDoc
     public void setCacheServiceName(ServiceName name){
         cacheServiceName = name;
     }
-    // StoreCacheOverflowActionServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionServiceMBeanã®JavaDoc
     public ServiceName getCacheServiceName(){
         return cacheServiceName;
     }
     
-    // StoreCacheOverflowActionServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionServiceMBeanã®JavaDoc
     public void setCacheMapServiceName(ServiceName name){
         cacheMapServiceName = name;
     }
-    // StoreCacheOverflowActionServiceMBean‚ÌJavaDoc
+    // StoreCacheOverflowActionServiceMBeanã®JavaDoc
     public ServiceName getCacheMapServiceName(){
         return cacheMapServiceName;
     }
     
     /**
-     * Cache‚ğİ’è‚·‚éB
+     * Cacheã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCache(Cache cache) {
 		this.cache = cache;
 	}
     /**
-     * CacheMap‚ğİ’è‚·‚éB
+     * CacheMapã‚’è¨­å®šã™ã‚‹ã€‚
      */
 	public void setCacheMap(CacheMap cacheMap) {
 		this.cacheMap = cacheMap;
 	}
 	
 	/**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         references = Collections.synchronizedMap(new HashMap());
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚Ìæ“¾‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(cacheServiceName != null){
@@ -151,10 +151,10 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒXQÆ‚ÌŠJ•ú‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹å‚ç…§ã®é–‹æ”¾ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(defaultCache != null && cache == defaultCache){
@@ -165,10 +165,10 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌŠJ•ú‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®é–‹æ”¾ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         if(defaultCache != null){
@@ -179,10 +179,10 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒtƒHƒ‹ƒg‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒXi{@link MemoryCacheService}j
-     * @exception Exception ƒfƒtƒHƒ‹ƒg‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚Ì¶¬EŠJn‚É¸”s‚µ‚½ê‡
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ï¼ˆ{@link MemoryCacheService}ï¼‰
+     * @exception Exception ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆãƒ»é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Cache getDefaultCacheService() throws Exception{
         if(defaultCache == null){
@@ -196,17 +196,17 @@ public class StoreCacheOverflowActionService extends ServiceBase
         return defaultCache;
     }
     
-    // OverflowAction‚ÌJavaDoc
+    // OverflowActionã®JavaDoc
     public void setOverflowController(OverflowController controller){
         this.controller = controller;
     }
     
     /**
-     * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ‘Ş”ğæƒLƒƒƒbƒVƒ…‚É‘Ş”ğ‚·‚éB<p>
+     * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é€€é¿å…ˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«é€€é¿ã™ã‚‹ã€‚<p>
      *
-     * @param validator ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½OverflowValidator
-     * @param algorithm ‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚µ‚½OverflowAlgorithm
-     * @param ref ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param validator ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸOverflowValidator
+     * @param algorithm ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã—ãŸOverflowAlgorithm
+     * @param ref ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void action(
         OverflowValidator validator,
@@ -261,7 +261,7 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚ê“®ì‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œå‹•ä½œã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset(){
         if(references != null){
@@ -270,10 +270,10 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ‘Ş”ğæƒLƒƒƒbƒVƒ…‚©‚çƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * é€€é¿å…ˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param ref QÆŒ³‚ÌƒLƒƒƒbƒVƒ…QÆ
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param ref å‚ç…§å…ƒã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(CachedReference ref){
         if(ref == null || references == null){
@@ -304,10 +304,10 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * íœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ÉƒŠƒ“ƒN‚·‚é‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…‚ğíœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«ãƒªãƒ³ã‚¯ã™ã‚‹é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         if(references == null){
@@ -323,11 +323,11 @@ public class StoreCacheOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚½’Ê’m‚ğó‚¯‚éB<p>
-     * •ÏX‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ÉƒŠƒ“ƒN‚·‚é‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…‚ğíœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚ŒãŸé€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * å¤‰æ›´ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«ãƒªãƒ³ã‚¯ã™ã‚‹é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref •ÏX‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-     * @param obj •ÏXŒã‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param ref å¤‰æ›´ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+     * @param obj å¤‰æ›´å¾Œã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void changed(CachedReference ref, Object obj){
         if(references == null){

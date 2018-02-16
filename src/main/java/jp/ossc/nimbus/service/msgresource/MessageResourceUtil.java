@@ -35,15 +35,15 @@ import org.w3c.dom.*;
 import jp.ossc.nimbus.lang.*;
 
 /**
- *	XMLƒp[ƒX‚Ég—p‚·‚é‹¤’ÊŠÖ”
+ *	XMLãƒ‘ãƒ¼ã‚¹æ™‚ã«ä½¿ç”¨ã™ã‚‹å…±é€šé–¢æ•°
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/05| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/05ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MessageResourceUtil {
 	/**
-	 * •K‚¸‘¶İ‚µ‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢’l‚ğæ“¾‚·‚éƒƒ\ƒbƒh
-	 * ‘¶İ‚µ‚È‚¯‚ê‚ÎServiceException‚ğ”­¶‚³‚¹‚éB
+	 * å¿…ãšå­˜åœ¨ã—ãªã‘ã‚Œã°ã„ã‘ãªã„å€¤ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+	 * å­˜åœ¨ã—ãªã‘ã‚Œã°ServiceExceptionã‚’ç™ºç”Ÿã•ã›ã‚‹ã€‚
 	 */
 	public static String getValueMustbeSpecified(Element elem){
 		Node node = elem.getFirstChild();
@@ -59,8 +59,8 @@ public class MessageResourceUtil {
 									elem.getTagName());
 	}
 	/**
-	 * ‘¶İ‚µ‚È‚­‚Ä‚à‚¢‚¢’l‚ğæ“¾‚·‚éƒƒ\ƒbƒhB
-	 * ‘¶İ‚µ‚È‚¯‚ê‚Înull‚ğ•Ô‚·B
+	 * å­˜åœ¨ã—ãªãã¦ã‚‚ã„ã„å€¤ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã€‚
+	 * å­˜åœ¨ã—ãªã‘ã‚Œã°nullã‚’è¿”ã™ã€‚
 	 */
 	public static String getValue(Element elem){
 		Node node = elem.getFirstChild();
@@ -74,8 +74,8 @@ public class MessageResourceUtil {
 	}
 	
 	/**
-	 * •K‚¸w’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‚È‚ç‚È‚¢‘®«‚ğæ“¾‚·‚éƒƒ\ƒbƒh
-	 * æ“¾‚Å‚«‚È‚¯‚ê‚ÎAServiceException‚ğthrow‚·‚éB
+	 * å¿…ãšæŒ‡å®šã•ã‚Œã¦ã„ãªã‘ã‚Œã°ãªã‚‰ãªã„å±æ€§ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+	 * å–å¾—ã§ããªã‘ã‚Œã°ã€ServiceExceptionã‚’throwã™ã‚‹ã€‚
 	 * 
 	 */
 	public static String getAttMustBeSpecified(Element elem,String attName){

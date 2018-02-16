@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.writer.log4j;
 
 import java.io.*;
@@ -40,9 +40,9 @@ import org.apache.log4j.*;
 import org.apache.log4j.helpers.LogLog;
 
 /**
- * CustomizedRollingFileAppenderƒNƒ‰ƒX
+ * CustomizedRollingFileAppenderã‚¯ãƒ©ã‚¹
  * <p>
- * ƒtƒ@ƒCƒ‹–¼‚ğw’è‚Å‚«‚éFileAppender
+ * ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã§ãã‚‹FileAppender
  * 
  * @version $Name:  $
  * @author K.Nagai
@@ -52,7 +52,7 @@ public class CustomizedRollingFileAppender extends RollingFileAppender {
     /** Buffer */
     private static final int BUFFER_SIZE = 16 * 1024;
     
-    /** õˆø */
+    /** ç´¢å¼• */
     public static final String INDEX = "%INDEX%";
     
     private String indexedFileName;
@@ -169,23 +169,23 @@ public class CustomizedRollingFileAppender extends RollingFileAppender {
      * @throws IOException
      */
     private void copyFile(File file, File target) throws IOException {
-        InputStream from_stream; // “ü—Íƒtƒ@ƒCƒ‹ƒXƒgƒŠ[ƒ€EƒIƒuƒWƒFƒNƒg
-        OutputStream to_stream; // o—Íƒtƒ@ƒCƒ‹ƒXƒgƒŠ[ƒ€EƒIƒuƒWƒFƒNƒg
-        int rcount; // ÀÛ‚É“Ç‚İ‚ß‚½ƒf[ƒ^‚Ì‘å‚«‚³‚ğ•Û
-        byte buffer[]; // ƒoƒbƒtƒ@
+        InputStream from_stream; // å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ãƒˆãƒªãƒ¼ãƒ ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+        OutputStream to_stream; // å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ãƒˆãƒªãƒ¼ãƒ ãƒ»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+        int rcount; // å®Ÿéš›ã«èª­ã¿è¾¼ã‚ãŸãƒ‡ãƒ¼ã‚¿ã®å¤§ãã•ã‚’ä¿æŒ
+        byte buffer[]; // ãƒãƒƒãƒ•ã‚¡
 
-        // ƒoƒbƒtƒ@‚ğì‚é
+        // ãƒãƒƒãƒ•ã‚¡ã‚’ä½œã‚‹
         buffer = new byte[BUFFER_SIZE];
 
         from_stream = null;
         to_stream = null;
 
         try {
-            // •¡ÊŒ³‚Ìƒtƒ@ƒCƒ‹‚ğŠJ‚­
+            // è¤‡å†™å…ƒã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
             from_stream = new FileInputStream(file);
-            // •¡Êæ‚Ìƒtƒ@ƒCƒ‹‚ğŠJ‚­
+            // è¤‡å†™å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã
             to_stream = new FileOutputStream(target);
-            // •¡Ê‚ğs‚È‚¤
+            // è¤‡å†™ã‚’è¡Œãªã†
             while ((rcount = from_stream.read(buffer)) >= 0) {
                 to_stream.write(buffer, 0, rcount);
             }
@@ -196,7 +196,7 @@ public class CustomizedRollingFileAppender extends RollingFileAppender {
                 to_stream.close();
         }
 
-        // ŒÄ‚Ño‚µŒ³‚É–ß‚é
+        // å‘¼ã³å‡ºã—å…ƒã«æˆ»ã‚‹
     }
 
     /**

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.transaction;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JndiTransactionManagerFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JndiTransactionManagerFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JndiTransactionManagerFactoryService
@@ -43,37 +43,37 @@ public interface JndiTransactionManagerFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌTransactionManager‚ÌJNDI–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®TransactionManagerã®JNDIåã€‚<p>
      */
     public static final String DEFAULT_TRANSACTION_MANAGER_NAME = "java:/TransactionManager";
     
     /**
-     * TransactionManager‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’l‚ÍA{@link #DEFAULT_TRANSACTION_MANAGER_NAME}B<br>
+     * TransactionManagerã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯ã€{@link #DEFAULT_TRANSACTION_MANAGER_NAME}ã€‚<br>
      *
-     * @param name TransactionManager‚ÌJNDI–¼
+     * @param name TransactionManagerã®JNDIå
      */
     public void setTransactionManagerName(String name);
     
     /**
-     * TransactionManager‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * TransactionManagerã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TransactionManager‚ÌJNDI–¼
+     * @return TransactionManagerã®JNDIå
      */
     public String getTransactionManagerName();
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒ[ƒJƒ‹‚ÌJNDIƒT[ƒo‚©‚çlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®JNDIã‚µãƒ¼ãƒã‹ã‚‰lookupã™ã‚‹ã€‚<br>
      * 
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
 }

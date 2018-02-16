@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.queue;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’Pƒ•ªUQueueƒZƒŒƒNƒ^[B<p>
+ * å˜ç´”åˆ†æ•£Queueã‚»ãƒ¬ã‚¯ã‚¿ãƒ¼ã€‚<p>
  * 
  * @author M.Takata
  */

@@ -43,7 +43,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * WebSocket‚ğg‚Á‚½ƒƒbƒZ[ƒWƒnƒ“ƒhƒ‰ƒtƒ@ƒNƒgƒŠƒT[ƒrƒXƒNƒ‰ƒXB
+ * WebSocketã‚’ä½¿ã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒ³ãƒ‰ãƒ©ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida

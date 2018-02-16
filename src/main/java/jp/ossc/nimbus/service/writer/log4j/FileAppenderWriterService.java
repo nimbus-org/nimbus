@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer.log4j;
 import org.apache.log4j.*;
 
 /**
- * Log4J‚ÌFileAppender‚ğg‚Á‚½MessageWriterƒT[ƒrƒXB<p>
+ * Log4Jã®FileAppenderã‚’ä½¿ã£ãŸMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -49,54 +49,54 @@ public class FileAppenderWriterService extends WriterAppenderWriterService
     private String file;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FileAppenderWriterService(){
         super();
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public void setAppend(boolean append){
         isAppend = append;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public boolean isAppend(){
         return isAppend;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public void setBufferedIO(boolean bufferedIO){
         isBufferedIO = bufferedIO;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public boolean isBufferedIO(){
         return isBufferedIO;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public void setBufferSize(int bufferSize){
         this.bufferSize = bufferSize;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public int getBufferSize(){
         return bufferSize;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public void setFile(String file){
         this.file = file;
     }
     
-    // FileAppenderWriterServiceMBean‚ÌJavaDoc
+    // FileAppenderWriterServiceMBeanã®JavaDoc
     public String getFile(){
         return file;
     }
     
     /**
-     * LoggerƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * Loggerã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     protected Logger createLogger(){
         return Logger.getLogger(
@@ -105,18 +105,18 @@ public class FileAppenderWriterService extends WriterAppenderWriterService
     }
     
     /**
-     * FileAppenderƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * FileAppenderã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @exception Exception FileAppender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception FileAppenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected WriterAppender createWriterAppender() throws Exception{
         return new FileAppender();
     }
     
     /**
-     * FileAppender‚ğ‰Šú‰»‚·‚éB<p>
+     * FileAppenderã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception FileAppender‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception Exception FileAppenderã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initWriterAppender(WriterAppender appender) throws Exception{
         super.initWriterAppender(appender);

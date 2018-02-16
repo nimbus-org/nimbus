@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.codemaster;
 
 import java.util.ArrayList;
@@ -54,8 +54,8 @@ import jp.ossc.nimbus.service.codemaster.map.CacheMap;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ãQÆ‚ğ—p‚¢‚½ƒR[ƒhƒ}ƒXƒ^ƒNƒ‰ƒX<p>
- * ƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ğg—p‚µ‚ÄãQÆ‚ğ—p‚¢‚½ƒR[ƒhƒ}ƒXƒ^‚ÌŠÇ—‚ğs‚¤
+ * å¼±å‚ç…§ã‚’ç”¨ã„ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚¯ãƒ©ã‚¹<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã—ã¦å¼±å‚ç…§ã‚’ç”¨ã„ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ç®¡ç†ã‚’è¡Œã†
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
@@ -65,111 +65,111 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
 
     private static final long serialVersionUID = 3626251129819845012L;
 
-    /** ŒŸõXV“ú•tƒL[ */
+    /** æ¤œç´¢æ›´æ–°æ—¥ä»˜ã‚­ãƒ¼ */
     private static final String FIND_DATE_KEY = "date";
-    /** ƒ}ƒXƒ^[ƒf[ƒ^ƒIƒuƒWƒFƒNƒgƒL[ */
+    /** ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚­ãƒ¼ */
     private static final String MASTER_DATA_KEY = "data";
 
-    /**ƒR[ƒhƒ}ƒXƒ^–¼B‚±‚Ì–¼‘O‚ªBeanFlow‚ÌƒL[‚Æ‚µ‚Äg—p‚³‚ê‚éB*/
+    /**ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿åã€‚ã“ã®åå‰ãŒBeanFlowã®ã‚­ãƒ¼ã¨ã—ã¦ä½¿ç”¨ã•ã‚Œã‚‹ã€‚*/
     private String[] mMasterNames= null ;
 
     private String[] notUpdateAllMasterNames;
 
-    /**ƒ}ƒXƒ^[Ši”[—pHash*/
+    /**ãƒã‚¹ã‚¿ãƒ¼æ ¼ç´ç”¨Hash*/
     protected HashMap mMaster= null;
-    /**ƒƒK[–¼*/
+    /**ãƒ­ã‚¬ãƒ¼å*/
     private ServiceName mLoggerServiceName = null ;
-    /**BeanFlowInvokerƒtƒ@ƒNƒgƒŠ–¼*/
+    /**BeanFlowInvokerãƒ•ã‚¡ã‚¯ãƒˆãƒªå*/
     private ServiceName mBFInvokerFactoryName = null;
-    /**BeanFlowInvokerƒtƒ@ƒNƒgƒŠ*/
+    /**BeanFlowInvokerãƒ•ã‚¡ã‚¯ãƒˆãƒª*/
     private BeanFlowInvokerFactory mBFInvokerFactory = null;
-    /**CacheƒT[ƒrƒX–¼*/
+    /**Cacheã‚µãƒ¼ãƒ“ã‚¹å*/
     private ServiceName mCacheServiceName;
-    /**CacheƒT[ƒrƒXÀ‘Ì*/
+    /**Cacheã‚µãƒ¼ãƒ“ã‚¹å®Ÿä½“*/
     private Cache mCache;
 
-    //ƒZƒbƒ^[/ƒQƒbƒ^[
-    /* (”ñ Javadoc)
+    //ã‚»ãƒƒã‚¿ãƒ¼/ã‚²ãƒƒã‚¿ãƒ¼
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#setMasterNames(java.lang.String[])
      */
     public void setMasterNames(String[] names) {
         mMasterNames = names;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#setLoggerServiceName(jp.ossc.nimbus.core.ServiceName)
      */
     public void setLoggerServiceName(ServiceName name) {
         mLoggerServiceName = name;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#getMasterNames()
      */
     public String[] getMasterNames() {
         return mMasterNames;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#setLoggerServiceName()
      */
     public ServiceName getLoggerServiceName() {
         return mLoggerServiceName;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#setBeanFlowInvokerFactoryName(jp.ossc.nimbus.core.ServiceName)
      */
     public void setBeanFlowInvokerFactoryName(ServiceName name) {
         mBFInvokerFactoryName = name;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#getBeanFlowInvokerFactoryName()
      */
     public ServiceName getBeanFlowInvokerFactoryName() {
         return mBFInvokerFactoryName;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#setCacheServiceName(jp.ossc.nimbus.core.ServiceName)
      */
     public void setCacheServiceName(ServiceName name) {
         mCacheServiceName = name ;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.WeakReferenceCodeMasterServiceMBean#getCacheServiceName()
      */
     public ServiceName getCacheServiceName() {
         return mCacheServiceName;
     }
 
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public String[] getNotUpdateAllMasterNames() {
         return notUpdateAllMasterNames;
     }
 
-    // CodeMasterServiceMBean ‚ÌJavaDoc
+    // CodeMasterServiceMBean ã®JavaDoc
     public void setNotUpdateAllMasterNames(String[] names) {
         this.notUpdateAllMasterNames = names;
     }
 
     /**
-     * BeanFlowInvokerFactory‚ğİ’è‚·‚éB
+     * BeanFlowInvokerFactoryã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setBeanFlowInvokerFactory(BeanFlowInvokerFactory invokerFactory) {
         mBFInvokerFactory = invokerFactory;
     }
 
     /**
-     * Cache‚ğİ’è‚·‚éB
+     * Cacheã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCache(Cache cache) {
         mCache = cache;
     }
 
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
      */
     public void startService() throws Exception {
@@ -196,7 +196,7 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
             throw e;
         }
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
      */
     public void stopService()  {
@@ -215,7 +215,7 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
     }
 
     /**
-     * ƒ}ƒXƒ^ŠÇ—ƒe[ƒuƒ‹‚ğ‰Šú‰»‚·‚é
+     * ãƒã‚¹ã‚¿ç®¡ç†ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’åˆæœŸåŒ–ã™ã‚‹
      * @throws ServiceException
      */
     private void initMasterHash () throws ServiceException {
@@ -223,28 +223,28 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
             final String bfname = mMasterNames[cnt];
             final BeanFlowInvoker invoker = mBFInvokerFactory.createFlow(bfname);
             if( invoker == null ){
-                //BeanFlowInvokerFactory‚Í–³ŒøƒL[‚ÅNULL‚ğ•Ô‚µ‚Ü‚·
+                //BeanFlowInvokerFactoryã¯ç„¡åŠ¹ã‚­ãƒ¼ã§NULLã‚’è¿”ã—ã¾ã™
                 throw new ServiceException("WeakReferenceCodeMasterService001","Cannot specify Invoker with key ->"+bfname);
             }
-            //Œn—ñŠÇ—ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ğì¬
+            //æ™‚ç³»åˆ—ç®¡ç†ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆ
             TimeManageMaster tmgr = new TimeManageMaster() ;
             tmgr.setMasterName(bfname) ;
-            //ƒ}ƒXƒ^‚É“o˜^
+            //ãƒã‚¹ã‚¿ã«ç™»éŒ²
             this.mMaster.put(bfname,tmgr) ;
             Object outMaster = null;
             try {
-                //BeanFlow‚ğÀs‚·‚é
+                //BeanFlowã‚’å®Ÿè¡Œã™ã‚‹
                 outMaster = invoker.invokeFlow(null);
             } catch ( Exception e ){
                 throw new ServiceException("WeakReferenceCodeMasterService002","Exception occured in Invoker with key ->"+bfname,e);
             }
             if( outMaster != null ){
-                //ƒR[ƒhƒ}ƒXƒ^‚ğ“o˜^‚·‚é(“à•”‚ÅãQÆ‚É•ÏŠ·‚³‚ê‚é)
+                //ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’ç™»éŒ²ã™ã‚‹(å†…éƒ¨ã§å¼±å‚ç…§ã«å¤‰æ›ã•ã‚Œã‚‹)
                 tmgr.addMaster(new Date(),outMaster) ;
             }
         }
     }
-       /* (”ñ Javadoc)
+       /* (é Javadoc)
      * @see jp.ossc.nimbus.service.codemaster.CodeMasterFinder#getCodeMasters()
      */
     public Map getCodeMasters()  {
@@ -252,46 +252,46 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
         Date nowDate = new Date();
         Set keys = this.mMaster.keySet();
         Iterator ite = keys.iterator() ;
-        //‘SƒR[ƒhƒ}ƒXƒ^[‚ğƒL[Map‚ÉŠi”[
+        //å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã‚’ã‚­ãƒ¼Mapã«æ ¼ç´
         while (ite.hasNext()){
             String key = (String)ite.next() ;
             TimeManageMaster tmp = null ;
             synchronized(this.mMaster){
                 tmp = (TimeManageMaster)this.mMaster.get(key) ;
             }
-            //Œ»İ‚Åƒ}ƒXƒ^[‚ğŒŸõ
+            //ç¾åœ¨æ™‚åˆ»ã§ãƒã‚¹ã‚¿ãƒ¼ã‚’æ¤œç´¢
             Object mst = tmp.getMaster(nowDate) ;
-            //ãQÆ‚Ì‚Ü‚Ü“o˜^‚·‚é
+            //å¼±å‚ç…§ã®ã¾ã¾ç™»éŒ²ã™ã‚‹
             map.put(key,mst) ;
         }
         return map;
     }
 
     /**
-     * ‘Sƒ}ƒXƒ^[XVEŒ»İ
+     * å…¨ãƒã‚¹ã‚¿ãƒ¼æ›´æ–°ãƒ»ç¾åœ¨æ™‚åˆ»
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
     public void codeMasterRefresh(){
-        //Œ»İæ“¾
+        //ç¾åœ¨æ™‚åˆ»å–å¾—
         codeMasterRefresh(new Date());
     }
     /**
-     * ‘Sƒ}ƒXƒ^[XVEw’è
+     * å…¨ãƒã‚¹ã‚¿ãƒ¼æ›´æ–°ãƒ»æŒ‡å®šæ™‚åˆ»
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
     public void codeMasterRefresh(Date date){
         codeMasterRefresh(mMasterNames,date);
     }
     /**
-     * w’èƒ}ƒXƒ^[XVEŒ»İ
+     * æŒ‡å®šãƒã‚¹ã‚¿ãƒ¼æ›´æ–°ãƒ»ç¾åœ¨æ™‚åˆ»
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
     public void codeMasterRefresh(String flowName){
-        //Œ»İæ“¾
+        //ç¾åœ¨æ™‚åˆ»å–å¾—
         codeMasterRefresh(flowName,new Date());
     }
     /**
-     * w’èƒ}ƒXƒ^[XVEw’è
+     * æŒ‡å®šãƒã‚¹ã‚¿ãƒ¼æ›´æ–°ãƒ»æŒ‡å®šæ™‚åˆ»
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
     public void codeMasterRefresh(String flowName,Date date){
@@ -300,13 +300,13 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
     }
 
     /**
-     * ƒ}ƒXƒ^[XV
-     * Message ‚Í MapMessage‚Æ‚µA<br>
-     * name‚Ævalue‚Ì‘g‚İ‡‚í‚¹‚ÍA<br>
-     * "key" (String)  | [ƒ}ƒXƒ^[–¼] (String)<br>
-     * "date" (String) | [ƒf[ƒ^—LŒø“ú](long)<br>
-     * ‚Åİ’è‚·‚é‚±‚Æ<br>
-     * w’è‚µ‚½“ú•tˆÈ~‚Ì“ú•t‚ªŠù‚Éİ’è‚³‚ê‚Ä‚¢‚ê‚ÎAŠY“–‚·‚éƒ}ƒXƒ^ƒf[ƒ^‚ğ–³Œø‚É‚·‚é
+     * ãƒã‚¹ã‚¿ãƒ¼æ›´æ–°
+     * Message ã¯ MapMessageã¨ã—ã€<br>
+     * nameã¨valueã®çµ„ã¿åˆã‚ã›ã¯ã€<br>
+     * "key" (String)  | [ãƒã‚¹ã‚¿ãƒ¼å] (String)<br>
+     * "date" (String) | [ãƒ‡ãƒ¼ã‚¿æœ‰åŠ¹æ—¥æ™‚](long)<br>
+     * ã§è¨­å®šã™ã‚‹ã“ã¨<br>
+     * æŒ‡å®šã—ãŸæ—¥ä»˜ä»¥é™ã®æ—¥ä»˜ãŒæ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€è©²å½“ã™ã‚‹ãƒã‚¹ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ç„¡åŠ¹ã«ã™ã‚‹
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
     private void codeMasterRefresh(String[] flowNames ,Date date) {
@@ -314,23 +314,23 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
             String bfname = flowNames[i] ;
             final BeanFlowInvoker invoker = mBFInvokerFactory.createFlow(bfname);
             if( invoker == null ){
-                //BeanFlowInvokerFactory‚Í–³ŒøƒL[‚ÅNULL‚ğ•Ô‚·
+                //BeanFlowInvokerFactoryã¯ç„¡åŠ¹ã‚­ãƒ¼ã§NULLã‚’è¿”ã™
                 throw new ServiceException("WeakReferenceCodeMasterService004","Cannot specify Invoker with key ->"+bfname);
             }
             TimeManageMaster tmgr = (TimeManageMaster) this.mMaster.get(bfname);
-            //–³‚©‚Á‚½ê‡V‚µ‚­“o˜^‚ğs‚¤
+            //ç„¡ã‹ã£ãŸå ´åˆæ–°ã—ãç™»éŒ²ã‚’è¡Œã†
             if( tmgr == null ){
-                //Œn—ñŠÇ—ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ğì¬
+                //æ™‚ç³»åˆ—ç®¡ç†ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆ
                 tmgr = new TimeManageMaster() ;
                 tmgr.setMasterName(bfname) ;
-                //ƒ}ƒXƒ^‚É“o˜^
+                //ãƒã‚¹ã‚¿ã«ç™»éŒ²
                 synchronized( mMaster ) {
                     this.mMaster.put(bfname,tmgr) ;
                 }
             }
             Object outMaster = null;
             try {
-                //BeanFlow‚ğÀs‚·‚é
+                //BeanFlowã‚’å®Ÿè¡Œã™ã‚‹
                 outMaster = invoker.invokeFlow(null);
             } catch ( Exception e ){
                 throw new ServiceException("WeakReferenceCodeMasterService005","Exception occured in Invoker with key ->"+bfname,e);
@@ -339,9 +339,9 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
                 throw new ServiceException("WeakReferenceCodeMasterService006","Return codemaster is null : key ->"+bfname);
             }
             final TimeManageMaster newTm = tmgr.cloneOwn() ;
-            //ƒ}ƒXƒ^‚ğ“o˜^(“à•”‚ÅƒLƒƒƒbƒVƒ…QÆ‚É•ÏŠ·‚³‚ê‚é)
+            //ãƒã‚¹ã‚¿ã‚’ç™»éŒ²(å†…éƒ¨ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«å¤‰æ›ã•ã‚Œã‚‹)
             newTm.addMaster(date,outMaster) ;
-            //Œ»İ‚Å•s—v‚Èƒ}ƒXƒ^‚ğíœ
+            //ç¾åœ¨æ™‚åˆ»ã§ä¸è¦ãªãƒã‚¹ã‚¿ã‚’å‰Šé™¤
             newTm.clear() ;
             synchronized(this.mMaster){
                 this.mMaster.put(bfname,newTm) ;
@@ -376,23 +376,23 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
         Date date = updateTime;
         final BeanFlowInvoker invoker = mBFInvokerFactory.createFlow(bfname);
         if( invoker == null ){
-            //BeanFlowInvokerFactory‚Í–³ŒøƒL[‚ÅNULL‚ğ•Ô‚·
+            //BeanFlowInvokerFactoryã¯ç„¡åŠ¹ã‚­ãƒ¼ã§NULLã‚’è¿”ã™
             throw new ServiceException("WeakReferenceCodeMasterService004","Cannot specify Invoker with key ->"+bfname);
         }
         TimeManageMaster tmgr = (TimeManageMaster) this.mMaster.get(bfname);
-        //–³‚©‚Á‚½ê‡V‚µ‚­“o˜^‚ğs‚¤
+        //ç„¡ã‹ã£ãŸå ´åˆæ–°ã—ãç™»éŒ²ã‚’è¡Œã†
         if( tmgr == null ){
-            //Œn—ñŠÇ—ƒ}ƒXƒ^ƒe[ƒuƒ‹‚ğì¬
+            //æ™‚ç³»åˆ—ç®¡ç†ãƒã‚¹ã‚¿ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆ
             tmgr = new TimeManageMaster() ;
             tmgr.setMasterName(bfname) ;
-            //ƒ}ƒXƒ^‚É“o˜^
+            //ãƒã‚¹ã‚¿ã«ç™»éŒ²
             synchronized( mMaster ) {
                 this.mMaster.put(bfname,tmgr) ;
             }
         }
         Object outMaster = null;
         try {
-            //BeanFlow‚ğÀs‚·‚é
+            //BeanFlowã‚’å®Ÿè¡Œã™ã‚‹
             outMaster = invoker.invokeFlow(input);
         } catch ( Exception e ){
             throw new ServiceException("WeakReferenceCodeMasterService005","Exception occured in Invoker with key ->"+bfname,e);
@@ -404,23 +404,23 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
         if(date == null){
             date = new Date();
         }
-        //ƒ}ƒXƒ^‚ğ“o˜^(“à•”‚ÅƒLƒƒƒbƒVƒ…QÆ‚É•ÏŠ·‚³‚ê‚é)
+        //ãƒã‚¹ã‚¿ã‚’ç™»éŒ²(å†…éƒ¨ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«å¤‰æ›ã•ã‚Œã‚‹)
         newTm.addMaster(date,outMaster) ;
-        //Œ»İ‚Å•s—v‚Èƒ}ƒXƒ^‚ğíœ
+        //ç¾åœ¨æ™‚åˆ»ã§ä¸è¦ãªãƒã‚¹ã‚¿ã‚’å‰Šé™¤
         newTm.clear() ;
         synchronized(this.mMaster){
             this.mMaster.put(bfname,newTm) ;
         }
     }
 
-    // CodeMasterFinder‚ÌJavaDoc
+    // CodeMasterFinderã®JavaDoc
     public Set getCodeMasterNameSet(){
         return mMaster == null
              ? new HashSet() : new HashSet(mMaster.keySet());
     }
 
     /**
-     * ƒ}ƒXƒ^[Bean‚Ì‚Å‚ÌŠÇ—‚ğs‚¤ƒNƒ‰ƒX<p>
+     * ãƒã‚¹ã‚¿ãƒ¼Beanã®æ™‚åˆ»ã§ã®ç®¡ç†ã‚’è¡Œã†ã‚¯ãƒ©ã‚¹<p>
      * @version $Name:  $
      * @author H.Nakano
      * @since 1.0
@@ -429,35 +429,35 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
         private String mFlowKey = null ;
         private ArrayList mTimeList = null ;
         /**
-         * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+         * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
          */
         public TimeManageMaster(){
             mTimeList = new ArrayList() ;
         }
         /**
-         * ƒ}ƒXƒ^[–¼İ’è
+         * ãƒã‚¹ã‚¿ãƒ¼åè¨­å®š
          * @param name
          */
         public void setMasterName(String name){
             mFlowKey = name ;
         }
         /**
-         * ƒ}ƒXƒ^[–¼æ“¾
+         * ãƒã‚¹ã‚¿ãƒ¼åå–å¾—
          * @return
          */
         public String getMasterName(){
             return mFlowKey ;
         }
         /**
-         * ƒ}ƒXƒ^[ƒf[ƒ^’Ç‰Á
+         * ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿è¿½åŠ 
          * @param time
          * @param master
          */
-        public void addMaster(Date time ,Object master){            //“o˜^‚ğÁ‹
+        public void addMaster(Date time ,Object master){            //ç™»éŒ²ã‚’æ¶ˆå»
             HashMap rec = new HashMap() ;
-            //ƒLƒƒƒbƒVƒ…QÆ‚É•ÏŠ·
+            //ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«å¤‰æ›
             CachedReference wref = mCache.add(master);
-            //ƒLƒƒƒbƒVƒ…QÆ‚ğ“o˜^
+            //ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç™»éŒ²
             rec.put(MASTER_DATA_KEY,wref) ;
             rec.put(FIND_DATE_KEY,time) ;
             boolean instFlg = false ;
@@ -465,7 +465,7 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
                 Map map = (Map)mTimeList.get(cnt) ;
                 Date tmpTime = (Date)map.get(FIND_DATE_KEY) ;
                 if(tmpTime.before(time)){
-                    //‚ª‘O‚Ì‚à‚Ì‚ğ”­Œ©
+                    //æ™‚åˆ»ãŒå‰ã®ã‚‚ã®ã‚’ç™ºè¦‹
                     if(cnt== mTimeList.size()-1){
                         mTimeList.add(rec) ;
                     }else{
@@ -474,14 +474,14 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
                     instFlg = true ;
                     break ;
                 } else if( tmpTime.equals(time) ){
-                    //“¯‚Ìê‡A’u‚«Š·‚¦‚é
+                    //åŒæ™‚åˆ»ã®å ´åˆã€ç½®ãæ›ãˆã‚‹
                     mTimeList.set(cnt,rec);
                     instFlg = true ;
                     break ;
                 }
             }
             if(!instFlg){
-                //À‚ÍÅ‚à‘‚¢‚¾‚Á‚½
+                //å®Ÿã¯æœ€ã‚‚æ—©ã„æ™‚åˆ»ã ã£ãŸ
                 if(mTimeList.size()==0){
                     mTimeList.add(rec) ;
                 }else{
@@ -490,7 +490,7 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
             }
         }
         /**
-         * w’è‚Å‚Ìƒ}ƒXƒ^[(CachedReference‚Æ‚È‚é)æ“¾
+         * æŒ‡å®šæ™‚åˆ»ã§ã®ãƒã‚¹ã‚¿ãƒ¼(CachedReferenceã¨ãªã‚‹)å–å¾—
          * @param time
          * @return
          */
@@ -507,7 +507,7 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
             return ret ;
         }
         /**
-         * Œ»İ‚Å•s•K—v‚Èƒ}ƒXƒ^[‚ğ”jŠü
+         * ç¾åœ¨æ™‚åˆ»ã§ä¸å¿…è¦ãªãƒã‚¹ã‚¿ãƒ¼ã‚’ç ´æ£„
          */
         public void clear(){
             Date now = new Date() ;
@@ -518,10 +518,10 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
                     if(cnt>0){
                         for(int rcnt = cnt-1;rcnt>=0;rcnt--){
                             HashMap masterMap = (HashMap) mTimeList.get(rcnt);
-                            //ƒLƒƒƒbƒVƒ…QÆ‚ğÁ‹
+                            //ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ¶ˆå»
                             CachedReference ref = (CachedReference) masterMap.get(MASTER_DATA_KEY);
                             mCache.remove(ref);
-                            //“o˜^‚ğÁ‹
+                            //ç™»éŒ²ã‚’æ¶ˆå»
                             mTimeList.remove(rcnt) ;
                         }
                         break;
@@ -530,7 +530,7 @@ public class WeakReferenceCodeMasterService extends ServiceBase implements
             }
         }
         /**
-         * ƒNƒ[ƒ“
+         * ã‚¯ãƒ­ãƒ¼ãƒ³
          * @return
          */
         public TimeManageMaster cloneOwn(){

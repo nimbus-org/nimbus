@@ -32,42 +32,42 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ‹L†ƒRƒ“ƒo[ƒ^B<p>
+ * è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * <table border=5>
- *     <tr><th>”¼Šp‹L†</th><th>‘SŠp‹L†</th></tr>
- *     <tr><td>&nbsp;</td><td>@</td></tr>
- *     <tr><td>!</td><td>I</td></tr>
- *     <tr><td>"</td><td>h</td></tr>
- *     <tr><td>#</td><td>”</td></tr>
- *     <tr><td>$</td><td></td></tr>
- *     <tr><td>%</td><td>“</td></tr>
- *     <tr><td>&amp</td><td>•</td></tr>
- *     <tr><td>'</td><td>f</td></tr>
- *     <tr><td>(</td><td>i</td></tr>
- *     <tr><td>)</td><td>j</td></tr>
- *     <tr><td>*</td><td>–</td></tr>
- *     <tr><td>+</td><td>{</td></tr>
- *     <tr><td>,</td><td>C</td></tr>
- *     <tr><td>-</td><td>|(MS932)</td></tr>
- *     <tr><td>.</td><td>D</td></tr>
- *     <tr><td>/</td><td>^</td></tr>
- *     <tr><td>:</td><td>F</td></tr>
- *     <tr><td>;</td><td>G</td></tr>
- *     <tr><td>&lt</td><td>ƒ</td></tr>
- *     <tr><td>=</td><td></td></tr>
- *     <tr><td>&gt</td><td>„</td></tr>
- *     <tr><td>?</td><td>H</td></tr>
- *     <tr><td>@</td><td>—</td></tr>
- *     <tr><td>[</td><td>m</td></tr>
- *     <tr><td>\</td><td>(MS932)</td></tr>
- *     <tr><td>]</td><td>n</td></tr>
- *     <tr><td>^</td><td>O</td></tr>
- *     <tr><td>_</td><td>Q</td></tr>
- *     <tr><td>`</td><td>e</td></tr>
- *     <tr><td>{</td><td>o</td></tr>
- *     <tr><td>|</td><td>b</td></tr>
- *     <tr><td>}</td><td>p</td></tr>
- *     <tr><td>~</td><td>`</td></tr>
+ *     <tr><th>åŠè§’è¨˜å·</th><th>å…¨è§’è¨˜å·</th></tr>
+ *     <tr><td>&nbsp;</td><td>ã€€</td></tr>
+ *     <tr><td>!</td><td>ï¼</td></tr>
+ *     <tr><td>"</td><td>â€</td></tr>
+ *     <tr><td>#</td><td>ï¼ƒ</td></tr>
+ *     <tr><td>$</td><td>ï¼„</td></tr>
+ *     <tr><td>%</td><td>ï¼…</td></tr>
+ *     <tr><td>&amp</td><td>ï¼†</td></tr>
+ *     <tr><td>'</td><td>â€™</td></tr>
+ *     <tr><td>(</td><td>ï¼ˆ</td></tr>
+ *     <tr><td>)</td><td>ï¼‰</td></tr>
+ *     <tr><td>*</td><td>ï¼Š</td></tr>
+ *     <tr><td>+</td><td>ï¼‹</td></tr>
+ *     <tr><td>,</td><td>ï¼Œ</td></tr>
+ *     <tr><td>-</td><td>ï¼(MS932)</td></tr>
+ *     <tr><td>.</td><td>ï¼</td></tr>
+ *     <tr><td>/</td><td>ï¼</td></tr>
+ *     <tr><td>:</td><td>ï¼š</td></tr>
+ *     <tr><td>;</td><td>ï¼›</td></tr>
+ *     <tr><td>&lt</td><td>ï¼œ</td></tr>
+ *     <tr><td>=</td><td>ï¼</td></tr>
+ *     <tr><td>&gt</td><td>ï¼</td></tr>
+ *     <tr><td>?</td><td>ï¼Ÿ</td></tr>
+ *     <tr><td>@</td><td>ï¼ </td></tr>
+ *     <tr><td>[</td><td>ï¼»</td></tr>
+ *     <tr><td>\</td><td>ï¿¥(MS932)</td></tr>
+ *     <tr><td>]</td><td>ï¼½</td></tr>
+ *     <tr><td>^</td><td>ï¼¾</td></tr>
+ *     <tr><td>_</td><td>ï¼¿</td></tr>
+ *     <tr><td>`</td><td>â€˜</td></tr>
+ *     <tr><td>{</td><td>ï½›</td></tr>
+ *     <tr><td>|</td><td>ï½œ</td></tr>
+ *     <tr><td>}</td><td>ï½</td></tr>
+ *     <tr><td>~</td><td>ï½</td></tr>
  * </table>
  *
  * @author M.Takata
@@ -78,59 +78,59 @@ public class SymbolCharacterConverter extends HankakuZenkakuCharacterConverter
     private static final long serialVersionUID = 7864849670204503111L;
     
     /**
-     * [”¼Šp‹L†][‘SŠp‹L†] ‚Ì”z—ñ
+     * [åŠè§’è¨˜å·][å…¨è§’è¨˜å·] ã®é…åˆ—
      */
     protected final static char CONV_CHARS[][] = {
         /* 0x0020 - 0x002F */
-        {'\u0020','\u3000'}, // @
-        {'\u0021','\uff01'}, // I
-        {'\u0022','\u201d'}, // h
-        {'\u0023','\uff03'}, // ”
-        {'\u0024','\uff04'}, // 
-        {'\u0025','\uff05'}, // “
-        {'\u0026','\uff06'}, // •
-        {'\u005C\u0027','\u2019'}, // f
-        {'\u0028','\uff08'}, // i
-        {'\u0029','\uff09'}, // j
-        {'\u002A','\uff0a'}, // –
-        {'\u002B','\uff0b'}, // {
-        {'\u002C','\uff0c'}, // C
-        {'\u002D','\uff0d'}, // |  // MS932 ‚Å‚ÌƒnƒCƒtƒ“‘Î‰
-        {'\u002E','\uff0e'}, // D
-        {'\u002F','\uff0f'}, // ^
+        {'\u0020','\u3000'}, // ã€€
+        {'\u0021','\uff01'}, // ï¼
+        {'\u0022','\u201d'}, // â€
+        {'\u0023','\uff03'}, // ï¼ƒ
+        {'\u0024','\uff04'}, // ï¼„
+        {'\u0025','\uff05'}, // ï¼…
+        {'\u0026','\uff06'}, // ï¼†
+        {'\u005C\u0027','\u2019'}, // â€™
+        {'\u0028','\uff08'}, // ï¼ˆ
+        {'\u0029','\uff09'}, // ï¼‰
+        {'\u002A','\uff0a'}, // ï¼Š
+        {'\u002B','\uff0b'}, // ï¼‹
+        {'\u002C','\uff0c'}, // ï¼Œ
+        {'\u002D','\uff0d'}, // ï¼  // MS932 ã§ã®ãƒã‚¤ãƒ•ãƒ³å¯¾å¿œ
+        {'\u002E','\uff0e'}, // ï¼
+        {'\u002F','\uff0f'}, // ï¼
         /* 0x003A - 0x0040 */
-        {'\u003A','\uff1a'}, // F
-        {'\u003B','\uff1b'}, // G
-        {'\u003C','\uff1c'}, // ƒ
-        {'\u003D','\uff1d'}, // 
-        {'\u003E','\uff1e'}, // „
-        {'\u003F','\uff1f'}, // H
-        {'\u0040','\uff20'}, // —
+        {'\u003A','\uff1a'}, // ï¼š
+        {'\u003B','\uff1b'}, // ï¼›
+        {'\u003C','\uff1c'}, // ï¼œ
+        {'\u003D','\uff1d'}, // ï¼
+        {'\u003E','\uff1e'}, // ï¼
+        {'\u003F','\uff1f'}, // ï¼Ÿ
+        {'\u0040','\uff20'}, // ï¼ 
         /* 0x005B - 0x0060 */
-        {'\u005B','\uff3b'}, // m
-        {'\u005C\u005C','\uffe5'}, //  MS932 
-        {'\u005D','\uff3d'}, // n
-        {'\u005E','\uff3e'}, // O
-        {'\u005F','\uff3f'}, // Q
-        {'\u0060','\u2018'}, // e
+        {'\u005B','\uff3b'}, // ï¼»
+        {'\u005C\u005C','\uffe5'}, // ï¿¥ MS932 
+        {'\u005D','\uff3d'}, // ï¼½
+        {'\u005E','\uff3e'}, // ï¼¾
+        {'\u005F','\uff3f'}, // ï¼¿
+        {'\u0060','\u2018'}, // â€˜
         /* 0x007B - 0x007E */
-        {'\u007B','\uff5b'}, // o
-        {'\u007C','\uff5c'}, // b
-        {'\u007D','\uff5d'}, // p
-        {'\u007E','\uff5e'} // `
+        {'\u007B','\uff5b'}, // ï½›
+        {'\u007C','\uff5c'}, // ï½œ
+        {'\u007D','\uff5d'}, // ï½
+        {'\u007E','\uff5e'} // ï½
     };
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·í•Ê‚Ì‹L†ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ç¨®åˆ¥ã®è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public SymbolCharacterConverter(){
         super(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * ‹L†ƒRƒ“ƒo[ƒ^[‚ğ¶¬‚·‚éB<p>
+     * è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see HankakuZenkakuCharacterConverter#HANKAKU_TO_ZENKAKU
      * @see HankakuZenkakuCharacterConverter#ZENKAKU_TO_HANKAKU
      */
@@ -139,7 +139,7 @@ public class SymbolCharacterConverter extends HankakuZenkakuCharacterConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return {@link #CONV_CHARS}
      */

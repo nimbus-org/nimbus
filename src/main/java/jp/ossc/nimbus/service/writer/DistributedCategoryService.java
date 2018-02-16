@@ -37,8 +37,8 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.queue.*;
 
 /**
- * •ªUƒJƒeƒSƒŠƒT[ƒrƒXB<p>
- * o—Íæ‚ÌI/O«”\‚ğƒJƒo[‚·‚é‚½‚ß‚ÉAo—Íæ‚ğ•ªU‚·‚éƒJƒeƒSƒŠÀ‘•ƒNƒ‰ƒXB<br>
+ * åˆ†æ•£ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * å‡ºåŠ›å…ˆã®I/Oæ€§èƒ½ã‚’ã‚«ãƒãƒ¼ã™ã‚‹ãŸã‚ã«ã€å‡ºåŠ›å…ˆã‚’åˆ†æ•£ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -48,150 +48,150 @@ public class DistributedCategoryService extends ServiceBase
     private static final long serialVersionUID = 1605519537623731512L;
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * —LŒø‚Èê‡Atrue
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * æœ‰åŠ¹ãªå ´åˆã€true
      */
     protected boolean isEnabled = true;
     
     /**
-     * •ªU‚·‚éƒJƒeƒSƒŠ‚ÌƒT[ƒrƒX–¼”z—ñB<p>
+     * åˆ†æ•£ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     protected ServiceName[] categoryServiceNames;
     
     /**
-     * •ªU‚·‚éƒJƒeƒSƒŠ‚ÌƒT[ƒrƒX”z—ñB<p>
+     * åˆ†æ•£ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®ã‚µãƒ¼ãƒ“ã‚¹é…åˆ—ã€‚<p>
      */
     protected Category[] categories;
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName queueServiceName;
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueueƒT[ƒrƒXB<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected Queue queue;
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éƒfƒtƒHƒ‹ƒg‚ÌQueueƒT[ƒrƒXB<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Queueã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     protected DefaultQueueService defaultQueue;
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueue‚ğ‘I‘ğ‚·‚é•ªUQueueƒZƒŒƒNƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚’é¸æŠã™ã‚‹åˆ†æ•£Queueã‚»ãƒ¬ã‚¯ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName distributedQueueSelectorServiceName;
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueue‚ğ‘I‘ğ‚·‚é•ªUQueueƒZƒŒƒNƒ^B<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚’é¸æŠã™ã‚‹åˆ†æ•£Queueã‚»ãƒ¬ã‚¯ã‚¿ã€‚<p>
      */
     protected DistributedQueueSelector queueSelector;
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueueƒT[ƒrƒXƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName queueFactoryServiceName;
     
     /**
-     * •ªUˆ—‚ğs‚¤ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh”z—ñB<p>
+     * åˆ†æ•£å‡¦ç†ã‚’è¡Œã†ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰é…åˆ—ã€‚<p>
      */
     protected Daemon[] daemons;
     
     /**
-     * •ªUˆ—ƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“‰»‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+     * åˆ†æ•£å‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³åŒ–ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
      */
     protected boolean isDaemon = true;
     
     /**
-     * •ªUˆ—ƒXƒŒƒbƒh‚ÌƒXƒŒƒbƒh—Dæ‡ˆÊB<p>
+     * åˆ†æ•£å‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã‚¹ãƒ¬ãƒƒãƒ‰å„ªå…ˆé †ä½ã€‚<p>
      */
     protected int threadPriority = -1;
     
     /**
-     * •ªUˆ—ƒXƒŒƒbƒh‚ÅA•ªU‚µ‚½ƒJƒeƒSƒŠ‚Éo—Í‚µ‚æ‚¤‚Æ‚µ‚½‚ÉA—áŠO‚ª”­¶‚µ‚½ê‡‚ÌƒƒOƒƒbƒZ[ƒWIDB<p>
+     * åˆ†æ•£å‡¦ç†ã‚¹ãƒ¬ãƒƒãƒ‰ã§ã€åˆ†æ•£ã—ãŸã‚«ãƒ†ã‚´ãƒªã«å‡ºåŠ›ã—ã‚ˆã†ã¨ã—ãŸæ™‚ã«ã€ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã®ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã€‚<p>
      */
     protected String writeErrorLogMessageId;
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setCategoryServiceNames(ServiceName[] names){
         categoryServiceNames = names;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public ServiceName[] getCategoryServiceNames(){
         return categoryServiceNames;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setQueueFactoryServiceName(ServiceName name){
         queueFactoryServiceName = name;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public ServiceName getQueueFactoryServiceName(){
         return queueFactoryServiceName;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setDistributedQueueSelectorServiceName(ServiceName name){
         distributedQueueSelectorServiceName = name;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public ServiceName getDistributedQueueSelectorServiceName(){
         return distributedQueueSelectorServiceName;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setThreadPriority(int newPriority){
         threadPriority = newPriority;
     }
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public int getThreadPriority(){
         return threadPriority;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setDaemon(boolean isDaemon){
         this.isDaemon = isDaemon;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public boolean isDaemon(){
         return isDaemon;
     }
     
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public void setWriteErrorLogMessageId(String id){
         writeErrorLogMessageId = id;
     }
-    // DistributedCategoryServiceMBean‚ÌJavaDoc
+    // DistributedCategoryServiceMBeanã®JavaDoc
     public String getWriteErrorLogMessageId(){
         return writeErrorLogMessageId;
     }
     
     /**
-     * •ªU‚·‚éƒJƒeƒSƒŠ‚ğİ’è‚·‚éB<p>
+     * åˆ†æ•£ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param categories •ªU‚·‚éƒJƒeƒSƒŠ‚Ì”z—ñ
+     * @param categories åˆ†æ•£ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®é…åˆ—
      */
     public void setCategories(Category[] categories) {
         this.categories = categories;
     }
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueue‚ğİ’è‚·‚éB<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param container Queue
      */
@@ -200,7 +200,7 @@ public class DistributedCategoryService extends ServiceBase
     }
     
     /**
-     * •ªU‘O‚É®—ñ‚³‚¹‚éQueue‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£å‰ã«æ•´åˆ—ã•ã›ã‚‹Queueã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return Queue
      */
@@ -209,9 +209,9 @@ public class DistributedCategoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(categoryServiceNames != null){
@@ -251,7 +251,7 @@ public class DistributedCategoryService extends ServiceBase
             }
         }
         
-        // ƒf[ƒ‚ƒ“‹N“®
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
         final CategoryWriter[] writers = new CategoryWriter[categories.length];
         daemons = new Daemon[categories.length];
         for(int i = 0; i < categories.length; i++){
@@ -269,19 +269,19 @@ public class DistributedCategoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
-        // ƒf[ƒ‚ƒ“’â~
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
         for(int i = 0; i < daemons.length; i++){
             daemons[i].stop();
             daemons[i] = null;
         }
         
-        // ƒLƒ…[ó•t’â~
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜åœæ­¢
         if(queue != null){
             queue.release();
         }
@@ -297,17 +297,17 @@ public class DistributedCategoryService extends ServiceBase
         daemons = null;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
     
-    // Category‚ÌJavaDoc
+    // Categoryã®JavaDoc
     public void write(Object elements) throws MessageWriteException{
         if(!isEnabled()){
             return;
@@ -330,56 +330,56 @@ public class DistributedCategoryService extends ServiceBase
         protected Category category;
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ƒLƒ…[‚©‚ç‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
          * 
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return “ü—ÍƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object provide(DaemonControl ctrl){
             return queue.get(1000);
         }
         
         /**
-         * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğˆø”‚ÉQueueHandler‚ğŒÄ‚Ño‚·B<p>
+         * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã«QueueHandlerã‚’å‘¼ã³å‡ºã™ã€‚<p>
          *
-         * @param dequeued ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param dequeued ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object dequeued, DaemonControl ctrl){
             if(dequeued == null){
@@ -395,7 +395,7 @@ public class DistributedCategoryService extends ServiceBase
         }
         
         /**
-         * ƒLƒ…[‚Ì’†g‚ğ“f‚«o‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã®ä¸­èº«ã‚’åãå‡ºã™ã€‚<p>
          */
         public void garbage(){
             if(queue != null){

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.io;
 import java.io.*;
 
 /**
- * ’¼—ñ‰»B<p>
+ * ç›´åˆ—åŒ–ã€‚<p>
  * 
  * @author M.Takata
  */

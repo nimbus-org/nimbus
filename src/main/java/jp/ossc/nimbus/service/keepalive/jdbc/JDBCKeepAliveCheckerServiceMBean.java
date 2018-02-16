@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.keepalive.AbstractKeepAliveCheckerServiceMBean;
 
 /**
- * {@link JDBCKeepAliveCheckerService}のMBeanインタフェース<p>
+ * {@link JDBCKeepAliveCheckerService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see JDBCKeepAliveCheckerService

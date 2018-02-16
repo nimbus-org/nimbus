@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultFacadeCallService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultFacadeCallService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @version $Name:  $
  * @author H.Nakano
@@ -49,314 +49,314 @@ public interface DefaultFacadeCallServiceMBean extends ServiceBaseMBean{
     public static final String DELIVERY_MODE_NON_PERSISTENT = "NON_PERSISTENT";
     
     /**
-     * Nimbus IOC ‚ÌFacade EJB‚ÌQÆ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * Nimbus IOC ã®Facade EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEjbFactoryServieName(ServiceName name);
     
     /**
-     * Nimbus IOC ‚ÌFacade EJB‚ÌQÆ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * Nimbus IOC ã®Facade EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getEjbFactoryServieName();
     
     /**
-     * Nimbus IOC ‚ÌFacade EJB‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #setEjbFactoryServieName(ServiceName)}‚Åİ’è‚³‚ê‚½EJBFactoryƒT[ƒrƒX‚ÅANimbus IOC ‚ÌFacade EJB‚ÌQÆ‚ğæ“¾‚·‚éÛ‚ÉAˆø”‚Å“n‚·EJB‚Ì–¼‘O‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹ó•¶šB<br>
+     * Nimbus IOC ã®Facade EJBã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setEjbFactoryServieName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸEJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã§ã€Nimbus IOC ã®Facade EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹éš›ã«ã€å¼•æ•°ã§æ¸¡ã™EJBã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºæ–‡å­—ã€‚<br>
      * 
-     * @param name Nimbus IOC ‚ÌFacade EJB‚Ì–¼‘O
+     * @param name Nimbus IOC ã®Facade EJBã®åå‰
      */
     public void setFacadeEjbName(String name);
     
     /**
-     * Nimbus IOC ‚ÌFacade EJB‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * Nimbus IOC ã®Facade EJBã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Nimbus IOC ‚ÌFacade EJB‚Ì–¼‘O
+     * @return Nimbus IOC ã®Facade EJBã®åå‰
      */
     public String getFacadeEjbName();
     
     /**
-     * Nimbus IOC ‚ÌUnitOfWork EJB‚ÌQÆ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * Nimbus IOC ã®UnitOfWork EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setUnitOfWorkEjbFactoryServieName(ServiceName name);
     
     /**
-     * Nimbus IOC ‚ÌUnitOfWork EJB‚ÌQÆ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * Nimbus IOC ã®UnitOfWork EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getUnitOfWorkEjbFactoryServieName();
     
     /**
-     * Nimbus IOC ‚ÌUnitOfWork EJB‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #setUnitOfWorkEjbFactoryServieName(ServiceName)}‚Åİ’è‚³‚ê‚½EJBFactoryƒT[ƒrƒX‚ÅANimbus IOC ‚ÌUnitOfWork EJB‚ÌQÆ‚ğæ“¾‚·‚éÛ‚ÉAˆø”‚Å“n‚·EJB‚Ì–¼‘O‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹ó•¶šB<br>
+     * Nimbus IOC ã®UnitOfWork EJBã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setUnitOfWorkEjbFactoryServieName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸEJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã§ã€Nimbus IOC ã®UnitOfWork EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹éš›ã«ã€å¼•æ•°ã§æ¸¡ã™EJBã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºæ–‡å­—ã€‚<br>
      * 
-     * @param name Nimbus IOC ‚ÌUnitOfWork EJB‚Ì–¼‘O
+     * @param name Nimbus IOC ã®UnitOfWork EJBã®åå‰
      */
     public void setUnitOfWorkEjbName(String name);
     
     /**
-     * Nimbus IOC ‚ÌUnitOfWork EJB‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * Nimbus IOC ã®UnitOfWork EJBã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Nimbus IOC ‚ÌUnitOfWork EJB‚Ì–¼‘O
+     * @return Nimbus IOC ã®UnitOfWork EJBã®åå‰
      */
     public String getUnitOfWorkEjbName();
     
     /**
-     * Nimbus IOC ‚ÌCommand EJB‚ÌQÆ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * Nimbus IOC ã®Command EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCommandEjbFactoryServieName(ServiceName name) ;
     
     /**
-     * Nimbus IOC ‚ÌCommand EJB‚ÌQÆ‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * Nimbus IOC ã®Command EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.ejb.EJBFactory EJBFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return EJBFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCommandEjbFactoryServieName();
     
     /**
-     * Nimbus IOC ‚ÌCommand EJB‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #setCommandEjbFactoryServieName(ServiceName)}‚Åİ’è‚³‚ê‚½EJBFactoryƒT[ƒrƒX‚ÅANimbus IOC ‚ÌCommand EJB‚ÌQÆ‚ğæ“¾‚·‚éÛ‚ÉAˆø”‚Å“n‚·EJB‚Ì–¼‘O‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA‹ó•¶šB<br>
+     * Nimbus IOC ã®Command EJBã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setCommandEjbFactoryServieName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸEJBFactoryã‚µãƒ¼ãƒ“ã‚¹ã§ã€Nimbus IOC ã®Command EJBã®å‚ç…§ã‚’å–å¾—ã™ã‚‹éš›ã«ã€å¼•æ•°ã§æ¸¡ã™EJBã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ç©ºæ–‡å­—ã€‚<br>
      * 
-     * @param name Nimbus IOC ‚ÌCommand EJB‚Ì–¼‘O
+     * @param name Nimbus IOC ã®Command EJBã®åå‰
      */
     public void setCommandEjbName(String name);
     
     /**
-     * Nimbus IOC ‚ÌCommand EJB‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * Nimbus IOC ã®Command EJBã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Nimbus IOC ‚ÌCommand EJB‚Ì–¼‘O
+     * @return Nimbus IOC ã®Command EJBã®åå‰
      */
     public String getCommandEjbName();
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚½QueueƒT[ƒrƒX‚ÅA•½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğs‚¤B<br>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸQueueã‚µãƒ¼ãƒ“ã‚¹ã§ã€å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’è¡Œã†ã€‚<br>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ÅA•½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚Ég—p‚·‚éJMS Queue‚ğæ“¾‚·‚éB<br>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã§ã€å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã«ä½¿ç”¨ã™ã‚‹JMS Queueã‚’å–å¾—ã™ã‚‹ã€‚<br>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName  getQueueFinderServiceName();
     
     /**
-     * JMS Queue‚ÌƒLƒ…[–¼‚ğİ’è‚·‚éB<p>
-     * {@link #setQueueFinderServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğg‚Á‚ÄAJMS Queue‚ğlookup‚·‚éÛ‚Ég—p‚·‚é–¼‘O‚ğİ’è‚·‚éB<br>
-     * lookup‚³‚ê‚½Queue‚ÍA•½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚Ég—p‚·‚éB<br>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã®ã‚­ãƒ¥ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setQueueFinderServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸ{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JMS Queueã‚’lookupã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * lookupã•ã‚ŒãŸQueueã¯ã€å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param name JMS Queue‚ÌƒLƒ…[–¼
+     * @param name JMS Queueã®ã‚­ãƒ¥ãƒ¼å
      */
     public void setQueueName(String name);
     
     /**
-     * JMS Queue‚ÌƒLƒ…[–¼‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã®ã‚­ãƒ¥ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return JMS Queue‚ÌƒLƒ…[–¼
+     * @return JMS Queueã®ã‚­ãƒ¥ãƒ¼å
      */
     public String getQueueName();
     
     /**
-     * JMS QueueSession‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚½ResourceFactoryƒT[ƒrƒX‚ÅA•½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚Ég—p‚·‚éJMS QueueSession‚ğ¶¬‚·‚éB<br>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚ŒãŸResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã§ã€å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã«ä½¿ç”¨ã™ã‚‹JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      * 
-     * @param name JMS QueueSession‚ğ¶¬‚·‚éResourceFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹ResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueSessionFactoryServiceName(ServiceName name);
     
     /**
-     * JMS QueueSession‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.resource.ResourceFactory ResourceFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return JMS QueueSession‚ğ¶¬‚·‚éResourceFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMS QueueSessionã‚’ç”Ÿæˆã™ã‚‹ResourceFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueSessionFactoryServiceName();
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚Ì”zMƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param mode ”zMƒ‚[ƒh
+     * @param mode é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      * @see #DELIVERY_MODE_PERSISTENT
      * @see #DELIVERY_MODE_NON_PERSISTENT
      */
     public void setDeliveryMode(String mode);
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚Ì”zMƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”zMƒ‚[ƒh
+     * @return é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      */
     public String getDeliveryMode();
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒW—Dæ‡ˆÊ‚ğİ’è‚·‚éB<p>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param priority ƒƒbƒZ[ƒW—Dæ‡ˆÊ
+     * @param priority ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½
      */
     public void setPriority(int priority);
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒW—Dæ‡ˆÊ‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒW—Dæ‡ˆÊ
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å„ªå…ˆé †ä½
      */
     public int getPriority();
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒWõ–½‚ğİ’è‚·‚éB<p>
-     * •½sˆ—‹y‚Ñ”ñ“¯Šúˆ—‚ğ‚µ‚È‚¢ê‡‚ÍAİ’è‚·‚é•K—v‚Í‚È‚¢B<br>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¹³è¡Œå‡¦ç†åŠã³éåŒæœŸå‡¦ç†ã‚’ã—ãªã„å ´åˆã¯ã€è¨­å®šã™ã‚‹å¿…è¦ã¯ãªã„ã€‚<br>
      *
-     * @param millis ƒƒbƒZ[ƒWõ–½[ms]
+     * @param millis ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½[ms]
      */
     public void setTimeToLive(long millis);
     
     /**
-     * JMS Queue‚É‘—M‚·‚éÛ‚ÌƒƒbƒZ[ƒWõ–½‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã«é€ä¿¡ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒbƒZ[ƒWõ–½[ms]
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å¯¿å‘½[ms]
      */
     public long getTimeToLive();
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚³‚ê‚Ä‚¢‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ğ{@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_€–Ú‚Æ‚µ‚Äİ’è‚·‚éB<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’{@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€é …ç›®ã¨ã—ã¦è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_€–Ú‚Éİ’è‚·‚éƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒL[–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğFacadeValue‚Ìƒwƒbƒ_€–Ú‚Éİ’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€é …ç›®ã«è¨­å®šã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’FacadeValueã®ãƒ˜ãƒƒãƒ€é …ç›®ã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param keys ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒL[–¼”z—ñ
+     * @param keys ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼åé…åˆ—
      */
     public void setThreadContextKeys(String[] keys);
     
     /**
-     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}‚Ìƒwƒbƒ_€–Ú‚Éİ’è‚·‚éƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.ioc.FacadeValue FacadeValue}ã®ãƒ˜ãƒƒãƒ€é …ç›®ã«è¨­å®šã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgƒL[–¼”z—ñ
+     * @return ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼åé…åˆ—
      */
     public String[] getThreadContextKeys();
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉAJMS‚ÌMessage‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«ã€JMSã®Messageã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setJMSMessageProperty(String name, Object value);
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉAJMS‚ÌMessage‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«ã€JMSã®Messageã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getJMSMessageProperty(String name);
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉAJMS‚ÌMessage‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«ã€JMSã®Messageã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼‚Æ’l‚Ìƒ}ƒbƒv
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨å€¤ã®ãƒãƒƒãƒ—
      */
     public Map getJMSMessageProperties();
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉA“ü—Í‚Å‚ ‚é{@link jp.ossc.nimbus.ioc.FacadeValue}‚Ìƒwƒbƒ_‚ğJMS‚ÌMessageƒvƒƒpƒeƒB‚Æ‚µ‚Äİ’è‚·‚éƒwƒbƒ_–¼”z—ñ‚ğİ’è‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«ã€å…¥åŠ›ã§ã‚ã‚‹{@link jp.ossc.nimbus.ioc.FacadeValue}ã®ãƒ˜ãƒƒãƒ€ã‚’JMSã®Messageãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒ˜ãƒƒãƒ€åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒwƒbƒ_–¼”z—ñ
+     * @param names ãƒ˜ãƒƒãƒ€åé…åˆ—
      */
     public void setHeaderNamesForJMSMessageProperty(String[] names);
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉA“ü—Í‚Å‚ ‚é{@link jp.ossc.nimbus.ioc.FacadeValue}‚Ìƒwƒbƒ_‚ğJMS‚ÌMessageƒvƒƒpƒeƒB‚Æ‚µ‚Äİ’è‚·‚éƒwƒbƒ_–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«ã€å…¥åŠ›ã§ã‚ã‚‹{@link jp.ossc.nimbus.ioc.FacadeValue}ã®ãƒ˜ãƒƒãƒ€ã‚’JMSã®Messageãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒ˜ãƒƒãƒ€åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_–¼”z—ñ
+     * @return ãƒ˜ãƒƒãƒ€åé…åˆ—
      */
     public String[] getHeaderNamesForJMSMessageProperty();
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉJMS‚ÌMessage‚Éİ’è‚·‚éJMSƒ^ƒCƒv‚ğİ’è‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«JMSã®Messageã«è¨­å®šã™ã‚‹JMSã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type JMSƒ^ƒCƒv
+     * @param type JMSã‚¿ã‚¤ãƒ—
      */
     public void setJMSType(String type);
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉJMS‚ÌMessage‚Éİ’è‚·‚éJMSƒ^ƒCƒv‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«JMSã®Messageã«è¨­å®šã™ã‚‹JMSã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSƒ^ƒCƒv
+     * @return JMSã‚¿ã‚¤ãƒ—
      */
     public String getJMSType();
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉJMS‚ÌMessage‚Éİ’è‚·‚é—LŒøŠúŠÔ[ms]‚ğİ’è‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«JMSã®Messageã«è¨­å®šã™ã‚‹æœ‰åŠ¹æœŸé–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param expiration —LŒøŠúŠÔ[ms]
+     * @param expiration æœ‰åŠ¹æœŸé–“[ms]
      */
     public void setJMSExpiration(long expiration);
     
     /**
-     * JMS Queue‚ğg—p‚µ‚Ä”ñ“¯ŠúIOCŒÄ‚Ño‚µ‚ğ‚·‚éê‡‚ÉJMS‚ÌMessage‚Éİ’è‚·‚é—LŒøŠúŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * JMS Queueã‚’ä½¿ç”¨ã—ã¦éåŒæœŸIOCå‘¼ã³å‡ºã—ã‚’ã™ã‚‹å ´åˆã«JMSã®Messageã«è¨­å®šã™ã‚‹æœ‰åŠ¹æœŸé–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —LŒøŠúŠÔ[ms]
+     * @return æœ‰åŠ¹æœŸé–“[ms]
      */
     public long getJMSExpiration();
     
     /**
-     * EJBƒ[ƒJƒ‹ŒÄ‚Ño‚µ‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚·‚éB<br>
+     * EJBãƒ­ãƒ¼ã‚«ãƒ«å‘¼ã³å‡ºã—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã™ã‚‹ã€‚<br>
      *
-     * @param isLocal EJBƒ[ƒJƒ‹ŒÄ‚Ño‚µ‚ğs‚¤ê‡true
+     * @param isLocal EJBãƒ­ãƒ¼ã‚«ãƒ«å‘¼ã³å‡ºã—ã‚’è¡Œã†å ´åˆtrue
      */
     public void setLocal(boolean isLocal);
     
     /**
-     * EJBƒ[ƒJƒ‹ŒÄ‚Ño‚µ‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * EJBãƒ­ãƒ¼ã‚«ãƒ«å‘¼ã³å‡ºã—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AEJBƒ[ƒJƒ‹ŒÄ‚Ño‚µ‚ğs‚¤
+     * @return trueã®å ´åˆã€EJBãƒ­ãƒ¼ã‚«ãƒ«å‘¼ã³å‡ºã—ã‚’è¡Œã†
      */
     public boolean isLocal();
 }

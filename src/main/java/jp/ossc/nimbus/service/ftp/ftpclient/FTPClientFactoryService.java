@@ -52,8 +52,8 @@ import jp.ossc.nimbus.service.ftp.*;
 import org.apache.commons.net.ftp.FTPFileListParser;
 
 /**
- * FTPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
- * <a href="http://commons.apache.org/net/">Jakarta Commons Net</a>‚ÌFTPƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚µ‚½{@link FTPClientFactory}ƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * FTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * <a href="http://commons.apache.org/net/">Jakarta Commons Net</a>ã®FTPãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸ{@link FTPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
