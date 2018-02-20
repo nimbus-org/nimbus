@@ -438,8 +438,9 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>3.2</version>
                     <configuration>
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <compilerArguments>
                             <bootclasspath>${java.home}/lib/rt.jar${path.separator}${java.home}/lib/jce.jar${path.separator}${java.home}/lib/jsse.jar</bootclasspath>
