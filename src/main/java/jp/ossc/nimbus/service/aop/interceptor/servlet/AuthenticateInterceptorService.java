@@ -319,14 +319,14 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             newAuthenticatedInfo(request);
             return ret;
         }else if(logoutPath != null && logoutPath.equals(reqPath)){
-            checkAuthenticated(request);
-            setupAuthenticatedInfo(request);
+            Object authenticatedInfo = checkAuthenticated(request);
+            setupAuthenticatedInfo(request, authenticatedInfo);
             Object ret = chain.invokeNext(context);
             removeAuthenticatedInfo(request);
             return ret;
         }else{
-            checkAuthenticated(request);
-            setupAuthenticatedInfo(request);
+            Object authenticatedInfo = checkAuthenticated(request);
+            setupAuthenticatedInfo(request, authenticatedInfo);
             return chain.invokeNext(context);
         }
     }
@@ -355,17 +355,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }
     }
 
-    protected void setupAuthenticatedInfo(HttpServletRequest request){
-        HttpSession session = request.getSession(false);
-        if(session != null){
-            AuthenticatedInfo authenticatedInfo = (AuthenticatedInfo)session.getAttribute(authenticatedInfoAttributeName);
-            if(authenticatedInfo != null){
-                if(request.getAttribute(authenticatedInfoAttributeName) == null){
-                    request.setAttribute(authenticatedInfoContextKey, authenticatedInfo.authenticatedInfo);
-                }
-                if(threadContext != null && !threadContext.containsKey(authenticatedInfoContextKey)){
-                    threadContext.put(authenticatedInfoContextKey, authenticatedInfo.authenticatedInfo);
-                }
+    protected void setupAuthenticatedInfo(HttpServletRequest request, Object authenticatedInfo){
+        if(authenticatedInfo != null){
+            if(request.getAttribute(authenticatedInfoAttributeName) == null){
+                request.setAttribute(authenticatedInfoContextKey, authenticatedInfo);
+            }
+            if(threadContext != null && !threadContext.containsKey(authenticatedInfoContextKey)){
+                threadContext.put(authenticatedInfoContextKey, authenticatedInfo);
             }
         }
     }
@@ -392,7 +388,7 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }
     }
 
-    protected void checkAuthenticated(HttpServletRequest request) throws AuthenticateException{
+    protected Object checkAuthenticated(HttpServletRequest request) throws AuthenticateException{
         Object requestObject = request.getAttribute(requestObjectAttributeName);
         if(requestObject == null){
             if(threadContext != null){
@@ -453,6 +449,8 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
                 throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' and '" + entry.getValue() + "' are not in agreement. requestValue=" + requestValue + ", authenticatedValue=" + authenticatedValue);
             }
         }
+        
+        return authenticatedInfo;
     }
 
     public static class AuthenticatedInfo implements HttpSessionBindingListener, Serializable{
