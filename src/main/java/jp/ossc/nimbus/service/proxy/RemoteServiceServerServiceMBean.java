@@ -247,4 +247,48 @@ public interface RemoteServiceServerServiceMBean extends ServiceBaseMBean{
      * @return Externalizerサービスのサービス名
      */
     public ServiceName getExternalizerServiceName();
+    
+    /**
+     * 戻り値を直列化する時に非同期で直列化するスレッド数を設定する。<p>
+     * デフォルトは、0で同期的に直列化する。<br>
+     *
+     * @param size 非同期で直列化するスレッド数
+     */
+    public void setAsynchWriteExternalThreadSize(int size);
+    
+    /**
+     * 戻り値を直列化する時に非同期で直列化するスレッド数を取得する。<p>
+     *
+     * @return 非同期で直列化するスレッド数
+     */
+    public int getAsynchWriteExternalThreadSize();
+    
+    /**
+     * 戻り値を直列化する時に非同期で直列化する場合に使用する{@link jp.ossc.nimbus.service.queue.Queue Queue}サービスのサービス名を設定する。<p>
+     *
+     * @param name Queueサービスのサービス名
+     */
+    public void setAsynchWriteExternalQueueServiceName(ServiceName name);
+    
+    /**
+     * 戻り値を直列化する時に非同期で直列化する場合に使用する{@link jp.ossc.nimbus.service.queue.Queue Queue}サービスのサービス名を取得する。<p>
+     *
+     * @return Queueサービスのサービス名
+     */
+    public ServiceName getAsynchWriteExternalQueueServiceName();
+    
+    /**
+     * 戻り値を直列化する時に非同期で直列化する際のバッファサイズを設定する。<p>
+     * デフォルトは、1024。<br>
+     *
+     * @param size バッファサイズ
+     */
+    public void setAsynchWriteExternalBufferSize(int size);
+    
+    /**
+     * 戻り値を直列化する時に非同期で直列化する際のバッファサイズを取得する。<p>
+     *
+     * @return バッファサイズ
+     */
+    public int getAsynchWriteExternalBufferSize();
 }

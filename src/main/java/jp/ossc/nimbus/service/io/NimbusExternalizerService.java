@@ -40,25 +40,103 @@ import java.util.concurrent.*;
 import java.lang.reflect.*;
 import java.security.AccessController;
 
+import jp.ossc.nimbus.util.ClassMappingTree;
+
 /**
  * Nimbus直列化サービス。<p>
  * 
  * @author M.Takata
  */
 public class NimbusExternalizerService extends SerializableExternalizerService
- implements Externalizer, Serializable{
+ implements NimbusExternalizerServiceMBean, Externalizer, Serializable{
     
     private static final long serialVersionUID = 8609142347326523361L;
     
     private static final int CHAR_BUF_SIZE = 256;
     
+    private Class[] disabledNumberCompressionClasses;
+    private Class[] immutableClasses;
+    private boolean isUseNumberCompression = false;
+    private int referenceTableInitialSize = 10;
+    private float referenceTableExpandRatio = 3.0f;
+    private float referenceTableLoadFactor = 3.0f;
+    private boolean isUseIntReferenceTable = false;
+    private boolean isUseLongReferenceTable = false;
+    
     private transient ConcurrentMap metaClassMap;
+    private transient ClassMappingTree disabledNumberCompressionClassMap;
+    private transient Set immutableClassSet;
+    
+    public void setDisabledNumberCompressionClasses(Class[] classes){
+        disabledNumberCompressionClasses = classes;
+    }
+    public Class[] getDisabledNumberCompressionClasses(){
+        return disabledNumberCompressionClasses;
+    }
+    
+    public void setImmutableClasses(Class[] classes){
+        immutableClasses = classes;
+    }
+    public Class[] getImmutableClasses(){
+        return immutableClasses;
+    }
+    
+    public void setUseNumberCompression(boolean isUse){
+        isUseNumberCompression = isUse;
+    }
+    public boolean isUseNumberCompression(){
+        return isUseNumberCompression;
+    }
+    
+    public void setUseIntReferenceTable(boolean isUse){
+        isUseIntReferenceTable = isUse;
+    }
+    public boolean isUseIntReferenceTable(){
+        return isUseIntReferenceTable;
+    }
+    
+    public void setUseLongReferenceTable(boolean isUse){
+        isUseLongReferenceTable = isUse;
+    }
+    public boolean isUseLongReferenceTable(){
+        return isUseLongReferenceTable;
+    }
+    
+    public void setReferenceTableInitialSize(int size){
+        referenceTableInitialSize = size;
+    }
+    public int getReferenceTableInitialSize(){
+        return referenceTableInitialSize;
+    }
+    
+    public void setReferenceTableExpandRatio(float ratio){
+        referenceTableExpandRatio = ratio;
+    }
+    public float getReferenceTableExpandRatio(){
+        return referenceTableExpandRatio;
+    }
+    
+    public void setReferenceTableLoadFactor(float factor){
+        referenceTableLoadFactor = factor;
+    }
+    public float getReferenceTableLoadFactor(){
+        return referenceTableLoadFactor;
+    }
     
     public void createService() throws Exception{
         metaClassMap = new ConcurrentHashMap();
     }
     
+    public void startService() throws Exception{
+        initTransientFields();
+    }
+    
+    public void stopService() throws Exception{
+        metaClassMap.clear();
+    }
+    
     public void destroyService() throws Exception{
+        disabledNumberCompressionClassMap = null;
         metaClassMap = null;
     }
     
@@ -69,11 +147,40 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         return new NimbusObjectInputStream(in);
     }
     
+    private void initTransientFields(){
+        if(disabledNumberCompressionClasses != null && disabledNumberCompressionClasses.length != 0){
+            disabledNumberCompressionClassMap = new ClassMappingTree();
+            for(int i = 0; i < disabledNumberCompressionClasses.length; i++){
+                disabledNumberCompressionClassMap.add(disabledNumberCompressionClasses[i], disabledNumberCompressionClasses[i]);
+            }
+        }
+        immutableClassSet = new HashSet();
+        immutableClassSet.add(String.class);
+        immutableClassSet.add(Byte.class);
+        immutableClassSet.add(Short.class);
+        immutableClassSet.add(Integer.class);
+        immutableClassSet.add(Long.class);
+        immutableClassSet.add(Float.class);
+        immutableClassSet.add(Double.class);
+        immutableClassSet.add(Boolean.class);
+        immutableClassSet.add(Character.class);
+        immutableClassSet.add(java.math.BigInteger.class);
+        immutableClassSet.add(java.math.BigDecimal.class);
+        immutableClassSet.add(java.util.Locale.class);
+        immutableClassSet.add(java.util.UUID.class);
+        if(immutableClasses != null && immutableClasses.length != 0){
+            for(int i = 0; i < immutableClasses.length; i++){
+                immutableClassSet.add(immutableClasses[i]);
+            }
+        }
+    }
+    
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
         if(getState() >= CREATED && getState() != DESTROYED){
             metaClassMap = new ConcurrentHashMap();
         }
+        initTransientFields();
     }
     
     protected MetaClass findMetaClass(Class clazz) throws IOException{
@@ -82,7 +189,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             synchronized(clazz){
                 metaClass = (MetaClass)metaClassMap.get(clazz);
                 if(metaClass == null){
-                    metaClass = new MetaClass(this, clazz);
+                    boolean isDisabledNumberCompression = !isUseNumberCompression;
+                    if(!isDisabledNumberCompression && disabledNumberCompressionClassMap != null){
+                        isDisabledNumberCompression = disabledNumberCompressionClassMap.getValueList(clazz).size() != 0;
+                    }
+                    metaClass = new MetaClass(this, clazz, immutableClassSet.contains(clazz), isDisabledNumberCompression);
                     metaClassMap.putIfAbsent(clazz, metaClass);
                 }
             }
@@ -95,8 +206,14 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         private final char[] cbuf = new char[CHAR_BUF_SIZE];
         private final OutputStream os;
         private ReferenceTable classNameTable = new ReferenceTable();
-        private ReferenceTable referenceTable = new ReferenceTable();
+        private ReferenceTable referenceTable = new ReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
+        private ReferenceTable immutableReferenceTable = new EqualsReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
+        
+        private IntReferenceTable intReferenceTable = new IntReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
+        private LongReferenceTable longReferenceTable = new LongReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
+        
         private Stack currentObjectStack = new Stack();
+        private MetaClass currentMetaClass;
         
         public NimbusObjectOutputStream(OutputStream os) throws IOException{
             super();
@@ -107,24 +224,29 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             return classNameTable.assign(className);
         }
         
-        protected int registerReference(Object obj){
-            return referenceTable.assign(obj);
+        protected int registerReference(MetaClass metaClass, Object obj){
+            if(metaClass.isImmutable()){
+                return immutableReferenceTable.assign(obj);
+            }else{
+                return referenceTable.assign(obj);
+            }
         }
         
         public void defaultWriteObject() throws IOException{
             Object currentObject = currentObjectStack.peek();
-            MetaClass metaClass = findMetaClass(currentObject.getClass());
-            metaClass.defaultWriteObject(currentObject, this);
+            currentMetaClass.defaultWriteObject(currentObject, this);
         }
         protected void writeObjectOverride(Object obj) throws IOException{
+            MetaClass preMetaClass = currentMetaClass;
             currentObjectStack.push(obj);
             try{
                 MetaClass.writeClass(obj, this);
                 if(obj != null){
-                    MetaClass metaClass = findMetaClass(obj.getClass());
-                    metaClass.writeObject(obj, this);
+                    currentMetaClass = findMetaClass(obj.getClass());
+                    currentMetaClass.writeObject(obj, this);
                 }
             }finally{
+                currentMetaClass = preMetaClass;
                 currentObjectStack.pop();
             }
         }
@@ -152,56 +274,100 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             os.write((byte)v);
         }
         public void writeInt(int v) throws IOException{
-            if(v == Integer.MIN_VALUE){
-                os.write((byte)0);
-            }else if(v >= Byte.MIN_VALUE && v <= Byte.MAX_VALUE){
-                os.write((byte)1);
-                os.write((byte)v);
-            }else if(v >= Short.MIN_VALUE && v <= Short.MAX_VALUE){
-                os.write((byte)2);
-                os.write((byte)(v >>> 8));
-                os.write((byte)v);
+            writeInt(v, currentMetaClass != null && currentMetaClass.isDisabledNumberCompression(), isUseIntReferenceTable);
+        }
+        protected void writeInt(int v, boolean isDisabledNumberCompression, boolean isUseReferenceTable) throws IOException{
+            final int referenceId = isUseReferenceTable ? intReferenceTable.assign(v) : 1;
+            if(referenceId > 0){
+                if(isUseReferenceTable){
+                    os.write(MetaClass.TAG_VALUE);
+                    writeInt(referenceId, isDisabledNumberCompression, false);
+                }
+                if(isDisabledNumberCompression){
+                    os.write((byte)(v >>> 24));
+                    os.write((byte)(v >>> 16));
+                    os.write((byte)(v >>> 8));
+                    os.write((byte)(v));
+                }else{
+                    if(v == Integer.MIN_VALUE){
+                        os.write((byte)0);
+                    }else if(v >= Byte.MIN_VALUE && v <= Byte.MAX_VALUE){
+                        os.write((byte)1);
+                        os.write((byte)v);
+                    }else if(v >= Short.MIN_VALUE && v <= Short.MAX_VALUE){
+                        os.write((byte)2);
+                        os.write((byte)(v >>> 8));
+                        os.write((byte)v);
+                    }else{
+                        os.write((byte)3);
+                        os.write((byte)(v >>> 24));
+                        os.write((byte)(v >>> 16));
+                        os.write((byte)(v >>> 8));
+                        os.write((byte)(v));
+                    }
+                }
             }else{
-                os.write((byte)3);
-                os.write((byte)(v >>> 24));
-                os.write((byte)(v >>> 16));
-                os.write((byte)(v >>> 8));
-                os.write((byte)(v));
+                os.write(MetaClass.TAG_REFERENCE);
+                writeInt(-referenceId, isDisabledNumberCompression, false);
             }
         }
         public void writeLong(long v) throws IOException{
-            if(v == Long.MIN_VALUE){
-                os.write((byte)0);
-            }else if(v >= Byte.MIN_VALUE && v <= Byte.MAX_VALUE){
-                os.write((byte)1);
-                os.write((byte)v);
-            }else if(v >= Short.MIN_VALUE && v <= Short.MAX_VALUE){
-                os.write((byte)2);
-                os.write((byte)(v >>> 8));
-                os.write((byte)v);
-            }else if(v >= Integer.MIN_VALUE && v <= Integer.MAX_VALUE){
-                os.write((byte)3);
-                os.write((byte)(v >>> 24));
-                os.write((byte)(v >>> 16));
-                os.write((byte)(v >>> 8));
-                os.write((byte)(v));
+            writeLong(v, currentMetaClass != null && currentMetaClass.isDisabledNumberCompression(), isUseLongReferenceTable);
+        }
+        protected void writeLong(long v, boolean isDisabledNumberCompression, boolean isUseReferenceTable) throws IOException{
+            final int referenceId = isUseReferenceTable ? longReferenceTable.assign(v) : 1;
+            if(referenceId > 0){
+                if(isUseReferenceTable){
+                    os.write(MetaClass.TAG_VALUE);
+                    writeInt(referenceId, isDisabledNumberCompression, false);
+                }
+                if(isDisabledNumberCompression){
+                    os.write((byte)(v >>> 56));
+                    os.write((byte)(v >>> 48));
+                    os.write((byte)(v >>> 40));
+                    os.write((byte)(v >>> 32));
+                    os.write((byte)(v >>> 24));
+                    os.write((byte)(v >>> 16));
+                    os.write((byte)(v >>> 8));
+                    os.write((byte)v);
+                }else{
+                    if(v == Long.MIN_VALUE){
+                        os.write((byte)0);
+                    }else if(v >= Byte.MIN_VALUE && v <= Byte.MAX_VALUE){
+                        os.write((byte)1);
+                        os.write((byte)v);
+                    }else if(v >= Short.MIN_VALUE && v <= Short.MAX_VALUE){
+                        os.write((byte)2);
+                        os.write((byte)(v >>> 8));
+                        os.write((byte)v);
+                    }else if(v >= Integer.MIN_VALUE && v <= Integer.MAX_VALUE){
+                        os.write((byte)3);
+                        os.write((byte)(v >>> 24));
+                        os.write((byte)(v >>> 16));
+                        os.write((byte)(v >>> 8));
+                        os.write((byte)(v));
+                    }else{
+                        os.write((byte)4);
+                        os.write((byte)(v >>> 56));
+                        os.write((byte)(v >>> 48));
+                        os.write((byte)(v >>> 40));
+                        os.write((byte)(v >>> 32));
+                        os.write((byte)(v >>> 24));
+                        os.write((byte)(v >>> 16));
+                        os.write((byte)(v >>> 8));
+                        os.write((byte)v);
+                    }
+                }
             }else{
-                os.write((byte)4);
-                os.write((byte)(v >>> 56));
-                os.write((byte)(v >>> 48));
-                os.write((byte)(v >>> 40));
-                os.write((byte)(v >>> 32));
-                os.write((byte)(v >>> 24));
-                os.write((byte)(v >>> 16));
-                os.write((byte)(v >>> 8));
-                os.write((byte)v);
+                os.write(MetaClass.TAG_REFERENCE);
+                writeInt(-referenceId, isDisabledNumberCompression, false);
             }
         }
         public void writeFloat(float v) throws IOException{
-            writeInt(Float.floatToIntBits(v));
+            writeInt(Float.floatToIntBits(v), true, isUseIntReferenceTable);
         }
         public void writeDouble(double v) throws IOException{
-            writeLong(Double.doubleToLongBits(v));
+            writeLong(Double.doubleToLongBits(v), true, isUseLongReferenceTable);
         }
         public void writeBytes(String s) throws IOException{
             for(int i = 0; i < s.length(); i++){
@@ -231,7 +397,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             writeLongUTF(s, getUTFLength(s));
         }
         public void writeLongUTF(String s, long utflen) throws IOException{
-            writeLong(utflen);
+            writeLong(utflen, true, false);
             if(utflen == (long)s.length()){
                 writeBytes(s);
             }else{
@@ -303,20 +469,20 @@ public class NimbusExternalizerService extends SerializableExternalizerService
     
     public class NimbusObjectInputStream extends ObjectInputStream{
         
-        private BufferedInputStream bis;
+        private InputStream is;
         private DataInputStream din;
         private ReferenceTable classNameTable = new ReferenceTable();
-        private ReferenceTable referenceTable = new ReferenceTable();
+        private ReferenceTable referenceTable = new ReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
+        private ReferenceTable immutableReferenceTable = new EqualsReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
+        private IntReferenceTable intReferenceTable = isUseIntReferenceTable ? new IntReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor) : null;
+        private LongReferenceTable longReferenceTable = isUseLongReferenceTable ? new LongReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor) : null;
         private Stack currentObjectStack = new Stack();
+        private MetaClass currentMetaClass;
         
         public NimbusObjectInputStream(InputStream is) throws IOException{
             super();
             
-            if(is instanceof BufferedInputStream){
-                bis = (BufferedInputStream)is;
-            }else{
-                bis = new BufferedInputStream(is, 1024);
-            }
+            this.is = is;
             din = new DataInputStream(this);
         }
         protected Class registerClassName(int id, String className) throws ClassNotFoundException{
@@ -325,24 +491,32 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             return clazz;
         }
         protected Class lookupClass(int id){
-            return(Class)classNameTable.getObject(id);
+            return(Class)classNameTable.getReference(id);
         }
-        protected void registerReference(int id, Object reference){
-            referenceTable.insert(reference, id);
+        protected void registerReference(MetaClass metaClass, int id, Object reference){
+            if(metaClass.isImmutable()){
+                immutableReferenceTable.insert(reference, id);
+            }else{
+                referenceTable.insert(reference, id);
+            }
         }
-        protected Object lookupReference(int id){
-            return referenceTable.getObject(id);
+        protected Object lookupReference(MetaClass metaClass, int id){
+            if(metaClass.isImmutable()){
+                return immutableReferenceTable.getReference(id);
+            }else{
+                return referenceTable.getReference(id);
+            }
         }
         protected Object readObjectOverride() throws IOException, ClassNotFoundException{
-            final Class clazz = MetaClass.readClass(this);
+            final Class clazz = MetaClass.readClass(this, !isUseNumberCompression);
             if(clazz == null){
                 return null;
             }
             final byte instanceType = MetaClass.readInstanceType(this);
+            MetaClass metaClass = findMetaClass(clazz);
             if(MetaClass.isReference(instanceType)){
-                return MetaClass.getReference(this);
+                return metaClass.getReference(this);
             }else{
-                MetaClass metaClass = findMetaClass(clazz);
                 Object obj = null;
                 try{
                     obj = metaClass.newInstance(this);
@@ -356,41 +530,43 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         protected Object readObjectOverrideInternal(MetaClass metaClass, Object obj) throws IOException, ClassNotFoundException{
+            MetaClass preMetaClass = currentMetaClass;
             try{
                 currentObjectStack.push(obj);
+                currentMetaClass = metaClass;
                 obj = metaClass.readObject(obj, this);
                 return obj;
             }finally{
+                currentMetaClass = preMetaClass;
                 currentObjectStack.pop();
             }
         }
         public void defaultReadObject() throws IOException, ClassNotFoundException{
             Object currentObject = currentObjectStack.peek();
-            MetaClass metaClass = findMetaClass(currentObject.getClass());
-            metaClass.defaultReadObject(currentObject, this);
+            currentMetaClass.defaultReadObject(currentObject, this);
         }
         public int read() throws IOException{
-            return bis.read();
+            return is.read();
         }
         public byte readByte() throws IOException{
-            final int v = bis.read();
+            final int v = is.read();
             if(v < 0){
                 throw new EOFException();
             }
             return (byte)v;
         }
         public int readUnsignedByte() throws IOException{
-            final int v = bis.read();
+            final int v = is.read();
             if(v < 0){
                 throw new EOFException();
             }
             return v;
         }
         public int read(byte[] b) throws IOException{
-            return bis.read(b);
+            return is.read(b);
         }
         public int read(byte[] b, int off, int len) throws IOException{
-            return bis.read(b, off, len);
+            return is.read(b, off, len);
         }
         public void readFully(byte[] b) throws IOException{
             readFully(b, 0, b.length);
@@ -422,35 +598,83 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             return (char)((v2 & 0xFF) + (v1 << 8));
         }
         public int readInt() throws IOException{
-            final int type = readUnsignedByte();
+            return readInt(currentMetaClass != null && currentMetaClass.isDisabledNumberCompression(), isUseIntReferenceTable);
+        }
+        protected int readInt(boolean isDisabledNumberCompression, boolean isUseReferenceTable) throws IOException{
+            int referenceId = 0;
+            if(isUseReferenceTable){
+                final byte tag = readByte();
+                referenceId = readInt(isDisabledNumberCompression, false);
+                switch(tag){
+                case MetaClass.TAG_REFERENCE:
+                    return intReferenceTable.getReference(referenceId);
+                case MetaClass.TAG_VALUE:
+                    break;
+                }
+            }
+            int result = 0;
             int v1 = 0;
             int v2 = 0;
             int v3 = 0;
             int v4 = 0;
-            switch(type){
-            case 0:
-                return Integer.MIN_VALUE;
-            case 1:
-                return readUnsignedByte();
-            case 2:
-                v1 = readUnsignedByte();
-                v2 = readUnsignedByte();
-                return (v2 & 0xFF) + (v1 << 8);
-            case 3:
+            if(isDisabledNumberCompression){
                 v1 = readUnsignedByte();
                 v2 = readUnsignedByte();
                 v3 = readUnsignedByte();
                 v4 = readUnsignedByte();
-                return ((v4 & 0xFF)      )
-                     + ((v3 & 0xFF) <<  8)
-                     + ((v2 & 0xFF) << 16)
-                     + ((v1       ) << 24);
-            default:
-                throw new StreamCorruptedException("Invalid number type." + type);
+                result = ((v4 & 0xFF)      )
+                       + ((v3 & 0xFF) <<  8)
+                       + ((v2 & 0xFF) << 16)
+                       + ((v1       ) << 24);
+            }else{
+                final int type = readUnsignedByte();
+                switch(type){
+                case 0:
+                    result = Integer.MIN_VALUE;
+                    break;
+                case 1:
+                    result = readUnsignedByte();
+                    break;
+                case 2:
+                    v1 = readUnsignedByte();
+                    v2 = readUnsignedByte();
+                    result = (v2 & 0xFF) + (v1 << 8);
+                    break;
+                case 3:
+                    v1 = readUnsignedByte();
+                    v2 = readUnsignedByte();
+                    v3 = readUnsignedByte();
+                    v4 = readUnsignedByte();
+                    result = ((v4 & 0xFF)      )
+                           + ((v3 & 0xFF) <<  8)
+                           + ((v2 & 0xFF) << 16)
+                           + ((v1       ) << 24);
+                    break;
+                default:
+                    throw new StreamCorruptedException("Invalid number type." + type);
+                }
             }
+            if(isUseReferenceTable){
+                intReferenceTable.insert(result, referenceId);
+            }
+            return result;
         }
         public long readLong() throws IOException{
-            final int type = readUnsignedByte();
+            return readLong(currentMetaClass != null && currentMetaClass.isDisabledNumberCompression(), isUseLongReferenceTable);
+        }
+        protected long readLong(boolean isDisabledNumberCompression, boolean isUseReferenceTable) throws IOException{
+            int referenceId = 0;
+            if(isUseReferenceTable){
+                final byte tag = readByte();
+                referenceId = readInt(isDisabledNumberCompression, false);
+                switch(tag){
+                case MetaClass.TAG_REFERENCE:
+                    return longReferenceTable.getReference(referenceId);
+                case MetaClass.TAG_VALUE:
+                    break;
+                }
+            }
+            long result = 0l;
             int v1 = 0;
             int v2 = 0;
             int v3 = 0;
@@ -459,50 +683,79 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             int v6 = 0;
             int v7 = 0;
             int v8 = 0;
-            switch(type){
-            case 0:
-                return Long.MIN_VALUE;
-            case 1:
-                return readUnsignedByte();
-            case 2:
-                v1 = readUnsignedByte();
-                v2 = readUnsignedByte();
-                return (v2 & 0xFF) + (v1 << 8);
-            case 3:
-                v1 = readUnsignedByte();
-                v2 = readUnsignedByte();
-                v3 = readUnsignedByte();
-                v4 = readUnsignedByte();
-                return ((v4 & 0xFF)      )
-                     + ((v3 & 0xFF) <<  8)
-                     + ((v2 & 0xFF) << 16)
-                     + ((v1       ) << 24);
-            case 4:
-                v1 = readUnsignedByte();
-                v2 = readUnsignedByte();
-                v3 = readUnsignedByte();
-                v4 = readUnsignedByte();
-                v5 = readUnsignedByte();
-                v6 = readUnsignedByte();
-                v7 = readUnsignedByte();
-                v8 = readUnsignedByte();
-                return ((v8 & 0xFFL)      )
-                     + ((v7 & 0xFFL) <<  8)
-                     + ((v6 & 0xFFL) << 16)
-                     + ((v5 & 0xFFL) << 24)
-                     + ((v4 & 0xFFL) << 32)
-                     + ((v3 & 0xFFL) << 40)
-                     + ((v2 & 0xFFL) << 48)
-                     + (((long) v1 ) << 56);
-            default:
-                throw new StreamCorruptedException("Invalid number type." + type);
+            if(isDisabledNumberCompression){
+                    v1 = readUnsignedByte();
+                    v2 = readUnsignedByte();
+                    v3 = readUnsignedByte();
+                    v4 = readUnsignedByte();
+                    v5 = readUnsignedByte();
+                    v6 = readUnsignedByte();
+                    v7 = readUnsignedByte();
+                    v8 = readUnsignedByte();
+                    result = ((v8 & 0xFFL)      )
+                           + ((v7 & 0xFFL) <<  8)
+                           + ((v6 & 0xFFL) << 16)
+                           + ((v5 & 0xFFL) << 24)
+                           + ((v4 & 0xFFL) << 32)
+                           + ((v3 & 0xFFL) << 40)
+                           + ((v2 & 0xFFL) << 48)
+                           + (((long) v1 ) << 56);
+            }else{
+                final int type = readUnsignedByte();
+                switch(type){
+                case 0:
+                    result = Long.MIN_VALUE;
+                    break;
+                case 1:
+                    result = readUnsignedByte();
+                    break;
+                case 2:
+                    v1 = readUnsignedByte();
+                    v2 = readUnsignedByte();
+                    result = (v2 & 0xFF) + (v1 << 8);
+                    break;
+                case 3:
+                    v1 = readUnsignedByte();
+                    v2 = readUnsignedByte();
+                    v3 = readUnsignedByte();
+                    v4 = readUnsignedByte();
+                    result = ((v4 & 0xFF)      )
+                           + ((v3 & 0xFF) <<  8)
+                           + ((v2 & 0xFF) << 16)
+                           + ((v1       ) << 24);
+                    break;
+                case 4:
+                    v1 = readUnsignedByte();
+                    v2 = readUnsignedByte();
+                    v3 = readUnsignedByte();
+                    v4 = readUnsignedByte();
+                    v5 = readUnsignedByte();
+                    v6 = readUnsignedByte();
+                    v7 = readUnsignedByte();
+                    v8 = readUnsignedByte();
+                    result = ((v8 & 0xFFL)      )
+                           + ((v7 & 0xFFL) <<  8)
+                           + ((v6 & 0xFFL) << 16)
+                           + ((v5 & 0xFFL) << 24)
+                           + ((v4 & 0xFFL) << 32)
+                           + ((v3 & 0xFFL) << 40)
+                           + ((v2 & 0xFFL) << 48)
+                           + (((long) v1 ) << 56);
+                    break;
+                default:
+                    throw new StreamCorruptedException("Invalid number type." + type);
+                }
             }
+            if(isUseReferenceTable){
+                longReferenceTable.insert(result, referenceId);
+            }
+            return result;
         }
         public float readFloat() throws IOException{
-            return Float.intBitsToFloat(readInt());
+            return Float.intBitsToFloat(readInt(true, isUseIntReferenceTable));
         }
         public double readDouble() throws IOException{
-            return Double.longBitsToDouble(readLong());
+            return Double.longBitsToDouble(readLong(true, isUseLongReferenceTable));
         }
         public String readLine() throws IOException{
             return din.readLine();
@@ -511,7 +764,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             return readUTFBody(readUnsignedShort());
         }
         public String readLongUTF() throws IOException{
-            return readUTFBody(readLong());
+            return readUTFBody(readLong(true, false));
         }
         private String readUTFBody(long utflen) throws IOException{
             StringBuilder sbuf = new StringBuilder();
@@ -576,16 +829,16 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         }
         
         public int skipBytes(int n) throws IOException{
-            return (int)bis.skip((long)n);
+            return (int)is.skip((long)n);
         }
         public long skip(long n) throws IOException{
-            return bis.skip(n);
+            return is.skip(n);
         }
         public int available() throws IOException{
-            return bis.available();
+            return is.available();
         }
         public void close() throws IOException{
-            bis.close();
+            is.close();
         }
     }
     
@@ -594,10 +847,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         private static final ReflectionFactory reflFactory = (ReflectionFactory)AccessController.doPrivileged(new ReflectionFactory.GetReflectionFactoryAction());
         private static final ObjectStreamField[] NO_FIELDS = new ObjectStreamField[0];
         
-        private static final byte TAG_NULL = (byte)0;
-        private static final byte TAG_REFERENCE = (byte)1;
-        private static final byte TAG_OBJECT = (byte)2;
-        private static final byte TAG_ARRAY = (byte)3;
+        protected static final byte TAG_NULL = (byte)0;
+        protected static final byte TAG_REFERENCE = (byte)1;
+        protected static final byte TAG_VALUE = (byte)2;
+        protected static final byte TAG_ARRAY = (byte)3;
         
         private NimbusExternalizerService externalizer;
         private MetaClass superMetaClass;
@@ -611,8 +864,16 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         private Method readObjectNoDataMethod;
         private Method writeReplaceMethod;
         private Method readResolveMethod;
+        private boolean isImmutable;
+        private boolean isDisabledNumberCompression;
+        private List classTree;
         
-        public MetaClass(NimbusExternalizerService externalizer, Class clazz) throws IOException{
+        public MetaClass(
+            NimbusExternalizerService externalizer,
+            Class clazz,
+            boolean isImmutable,
+            boolean isDisabledNumberCompression
+        ) throws IOException{
             this.externalizer = externalizer;
             this.clazz = clazz;
             if(clazz.isArray()){
@@ -648,10 +909,30 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     null,
                     Void.TYPE
                 );
-                fieldReflector = new FieldReflector(clazz, getSerialFields(clazz));
+                fieldReflector = new FieldReflector(externalizer, clazz, getSerialFields(clazz));
             }
             writeReplaceMethod = getInheritableMethod(clazz, "writeReplace", null, Object.class);
             readResolveMethod = getInheritableMethod(clazz, "readResolve", null, Object.class);
+            this.isImmutable = isImmutable;
+            this.isDisabledNumberCompression = isDisabledNumberCompression;
+            if(!String.class.equals(clazz) && !isExternalizable){
+                MetaClass metaClass = this;
+                while(metaClass.superMetaClass != null){
+                    if(classTree == null){
+                        classTree = new ArrayList();
+                    }
+                    classTree.add(metaClass.superMetaClass);
+                    metaClass = metaClass.superMetaClass;
+                }
+            }
+        }
+        
+        public boolean isImmutable(){
+            return isImmutable;
+        }
+        
+        public boolean isDisabledNumberCompression(){
+            return isDisabledNumberCompression;
         }
         
         public static void writeClass(Object obj, NimbusObjectOutputStream oos) throws IOException{
@@ -662,23 +943,23 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             final String className = obj.getClass().getName();
             final int classNameId = oos.registerClassName(className);
             if(classNameId > 0){
-                oos.write(TAG_OBJECT);
-                oos.writeInt(classNameId);
+                oos.write(TAG_VALUE);
+                oos.writeInt(classNameId, false, false);
                 oos.writeString(className);
             }else{
                 oos.write(TAG_REFERENCE);
-                oos.writeInt(-classNameId);
+                oos.writeInt(-classNameId, false, false);
             }
         }
         public void writeObject(Object obj, NimbusObjectOutputStream oos) throws IOException{
-            final int referenceId = oos.registerReference(obj);
+            final int referenceId = oos.registerReference(this, obj);
             if(referenceId > 0){
                 Class objClass = obj.getClass();
                 if(objClass.isArray()){
                     oos.write(TAG_ARRAY);
                     final int length = Array.getLength(obj);
-                    oos.writeInt(length);
-                    oos.writeInt(referenceId);
+                    oos.writeInt(length, isDisabledNumberCompression, false);
+                    oos.writeInt(referenceId, isDisabledNumberCompression, false);
                     objClass = objClass.getComponentType();
                     if(objClass.isPrimitive()){
                         if(Byte.TYPE.equals(objClass)){
@@ -691,11 +972,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                             }
                         }else if(Integer.TYPE.equals(objClass)){
                             for(int i = 0; i < length; i++){
-                                oos.writeInt(Array.getInt(obj, i));
+                                oos.writeInt(Array.getInt(obj, i), isDisabledNumberCompression, externalizer.isUseIntReferenceTable);
                             }
                         }else if(Long.TYPE.equals(objClass)){
                             for(int i = 0; i < length; i++){
-                                oos.writeLong(Array.getLong(obj, i));
+                                oos.writeLong(Array.getLong(obj, i), isDisabledNumberCompression, externalizer.isUseLongReferenceTable);
                             }
                         }else if(Float.TYPE.equals(objClass)){
                             for(int i = 0; i < length; i++){
@@ -727,26 +1008,17 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                             return;
                         }
                     }
-                    oos.write(TAG_OBJECT);
-                    oos.writeInt(referenceId);
+                    oos.write(TAG_VALUE);
+                    oos.writeInt(referenceId, isDisabledNumberCompression, false);
                     
                     if(obj instanceof String){
                         oos.writeString((String)obj);
                     }else if(isExternalizable){
                         ((Externalizable)obj).writeExternal(oos);
                     }else{
-                        List classList = null;
-                        MetaClass metaClass = this;
-                        while(metaClass.superMetaClass != null){
-                            if(classList == null){
-                                classList = new ArrayList();
-                            }
-                            classList.add(metaClass.superMetaClass);
-                            metaClass = metaClass.superMetaClass;
-                        }
-                        if(classList != null){
-                            for(int i = classList.size(); --i >= 0;){
-                                metaClass = (MetaClass)classList.get(i);
+                        if(classTree != null){
+                            for(int i = classTree.size(); --i >= 0;){
+                                MetaClass metaClass = (MetaClass)classTree.get(i);
                                 if(metaClass.writeObjectMethod != null){
                                     metaClass.invokeWriteObject(obj, oos);
                                 }else{
@@ -764,7 +1036,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 }
             }else{
                 oos.write(TAG_REFERENCE);
-                oos.writeInt(-referenceId);
+                oos.writeInt(-referenceId, isDisabledNumberCompression, false);
             }
         }
         
@@ -775,16 +1047,16 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             fieldReflector.writeFields(obj, oos);
         }
         
-        public static Class readClass(NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
+        public static Class readClass(NimbusObjectInputStream ois, boolean isDisabledNumberCompression) throws IOException, ClassNotFoundException{
             final byte tag = ois.readByte();
             int classNameId = 0;
             switch(tag){
             case TAG_NULL:
                 return null;
-            case TAG_OBJECT:
-                return ois.registerClassName(ois.readInt(), ois.readString());
+            case TAG_VALUE:
+                return ois.registerClassName(ois.readInt(false, false), ois.readString());
             case TAG_REFERENCE:
-                return ois.lookupClass(ois.readInt());
+                return ois.lookupClass(ois.readInt(false, false));
             default:
                 throw new StreamCorruptedException("Invalid tag." + tag);
             }
@@ -795,15 +1067,15 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public static boolean isReference(byte instanceType){
             return instanceType == TAG_REFERENCE;
         }
-        public static Object getReference(NimbusObjectInputStream ois) throws IOException{
-            final int referenceId = ois.readInt();
-            return ois.lookupReference(referenceId);
+        public Object getReference(NimbusObjectInputStream ois) throws IOException{
+            final int referenceId = ois.readInt(isDisabledNumberCompression, false);
+            return ois.lookupReference(this, referenceId);
         }
         public Object newInstance(NimbusObjectInputStream ois) throws IOException, InstantiationException, InvocationTargetException, UnsupportedOperationException{
             if(clazz.isArray()){
-                return Array.newInstance(clazz.getComponentType(), ois.readInt());
+                return Array.newInstance(clazz.getComponentType(), ois.readInt(isDisabledNumberCompression, false));
             }else if(clazz.equals(String.class)){
-                return "";
+                return null;
             }else if(constructor != null){
                 try{
                     return constructor.newInstance();
@@ -821,8 +1093,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             fieldReflector.readFields(obj, ois);
         }
         public Object readObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
-            final int referenceId = ois.readInt();
-            ois.registerReference(referenceId, obj);
+            final int referenceId = ois.readInt(isDisabledNumberCompression, false);
+            if(obj != null){
+                ois.registerReference(this, referenceId, obj);
+            }
             if(clazz.isArray()){
                 final Class componentType = clazz.getComponentType();
                 if(componentType.isPrimitive()){
@@ -840,11 +1114,19 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                         }
                     }else if(Integer.TYPE.equals(componentType)){
                         for(int i = 0, imax = Array.getLength(obj); i < imax; i++){
-                            Array.setInt(obj, i, ois.readInt());
+                            Array.setInt(
+                                obj,
+                                i,
+                                ois.readInt(isDisabledNumberCompression, externalizer.isUseIntReferenceTable)
+                            );
                         }
                     }else if(Long.TYPE.equals(componentType)){
                         for(int i = 0, imax = Array.getLength(obj); i < imax; i++){
-                            Array.setLong(obj, i, ois.readLong());
+                            Array.setLong(
+                                obj,
+                                i,
+                                ois.readLong(isDisabledNumberCompression, externalizer.isUseLongReferenceTable)
+                            );
                         }
                     }else if(Float.TYPE.equals(componentType)){
                         for(int i = 0, imax = Array.getLength(obj); i < imax; i++){
@@ -867,30 +1149,22 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }else{
                 if(readResolveMethod != null){
                     obj = invokeReadResolve(obj);
-                    ois.registerReference(referenceId, obj);
+                    ois.registerReference(this, referenceId, obj);
                     if(obj == null){
                         return null;
                     }else if(!clazz.equals(obj.getClass())){
                         return ois.readObjectOverrideInternal(externalizer.findMetaClass(obj.getClass()), obj);
                     }
                 }
-                if(obj instanceof String){
+                if(String.class.equals(clazz)){
                     obj = ois.readString();
+                    ois.registerReference(this, referenceId, obj);
                 }else if(isExternalizable){
                     ((Externalizable)obj).readExternal(ois);
                 }else{
-                    List classList = null;
-                    MetaClass metaClass = this;
-                    while(metaClass.superMetaClass != null){
-                        if(classList == null){
-                            classList = new ArrayList();
-                        }
-                        classList.add(metaClass.superMetaClass);
-                        metaClass = metaClass.superMetaClass;
-                    }
-                    if(classList != null){
-                        for(int i = classList.size(); --i >= 0;){
-                            metaClass = (MetaClass)classList.get(i);
+                    if(classTree != null){
+                        for(int i = classTree.size(); --i >= 0;){
+                            MetaClass metaClass = (MetaClass)classTree.get(i);
                             if(metaClass.readObjectMethod != null){
                                 metaClass.invokeReadObject(obj, ois);
                             }else{
@@ -1203,13 +1477,15 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         
+        private NimbusExternalizerService externalizer;
         private final ObjectStreamField[] fields;
         private final long[] readKeys;
         private final long[] writeKeys;
         private final char[] typeCodes;
         private final Class[] types;
         
-        public FieldReflector(Class clazz, ObjectStreamField[] fields){
+        public FieldReflector(NimbusExternalizerService externalizer, Class clazz, ObjectStreamField[] fields){
+            this.externalizer = externalizer;
             this.fields = fields;
             final int nfields = fields.length;
             readKeys = new long[nfields];
@@ -1259,13 +1535,13 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     oos.writeShort(unsafe.getShort(obj, key));
                     break;
                 case 'I':
-                    oos.writeInt(unsafe.getInt(obj, key));
+                    oos.writeInt(unsafe.getInt(obj, key), !externalizer.isUseNumberCompression, externalizer.isUseIntReferenceTable);
                     break;
                 case 'F':
                     oos.writeFloat(unsafe.getFloat(obj, key));
                     break;
                 case 'J':
-                    oos.writeLong(unsafe.getLong(obj, key));
+                    oos.writeLong(unsafe.getLong(obj, key), !externalizer.isUseNumberCompression, externalizer.isUseLongReferenceTable);
                     break;
                 case 'D':
                     oos.writeDouble(unsafe.getDouble(obj, key));
@@ -1304,13 +1580,13 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     unsafe.putShort(obj, key, ois.readShort());
                     break;
                 case 'I':
-                    unsafe.putInt(obj, key, ois.readInt());
+                    unsafe.putInt(obj, key, ois.readInt(!externalizer.isUseNumberCompression, externalizer.isUseIntReferenceTable));
                     break;
                 case 'F':
                     unsafe.putFloat(obj, key, ois.readFloat());
                     break;
                 case 'J':
-                    unsafe.putLong(obj, key, ois.readLong());
+                    unsafe.putLong(obj, key, ois.readLong(!externalizer.isUseNumberCompression, externalizer.isUseLongReferenceTable));
                     break;
                 case 'D':
                     unsafe.putDouble(obj, key, ois.readDouble());
@@ -1340,102 +1616,93 @@ public class NimbusExternalizerService extends SerializableExternalizerService
     private static class ReferenceTable{
         protected int size;
         protected int[] ids;
-        protected int[] counts;
         protected int[] next;
-        protected Object[] objs;
+        protected Object[] references;
+        protected int threshold;
+        protected final float loadFactor;
+        protected final float expandRatio;
         
         public ReferenceTable(){
-            this(10);
+            this(10, 3.0f, 3.0f);
         }
         
-        public ReferenceTable(int initialCapacity){
+        public ReferenceTable(int initialCapacity, float expandRatio, float loadFactor){
             ids = new int[initialCapacity];
-            counts = new int[initialCapacity];
             next = new int[initialCapacity];
-            objs = new Object[initialCapacity];
+            references = new Object[initialCapacity];
+            this.loadFactor = loadFactor;
+            this.expandRatio = expandRatio;
+            threshold = (int)(initialCapacity * loadFactor);
         }
         
-        public int assign(Object obj){
-            int id = lookup(obj);
+        public int assign(Object reference){
+            int id = lookup(reference);
             if(id != 0){
-                counts[id - 1]++;
                 return -id;
             }
             id = size + 1;
-            insert(obj, id);
-            size++;
+            insert(reference, id);
             return id;
         }
         
-        public int lookup(Object obj){
+        public int lookup(Object reference){
             if(size == 0){
                 return 0;
             }
-            int index = hash(obj) % ids.length;
+            int index = hash(reference) % ids.length;
             for(int id = ids[index]; id > 0; id = next[id - 1]){
-                if(compareObject(objs[id - 1], obj)){
+                if(compareObject(reference, references[id - 1])){
                     return id;
                 }
             }
             return 0;
         }
         
-        public int getCount(int id){
-            return counts[id - 1];
-        }
-        
         public int size(){
             return size;
         }
         
-        public Object getObject(int id){
-            return objs[id - 1];
+        public Object getReference(int id){
+            return references[id - 1];
         }
         
         protected boolean compareObject(Object o1, Object o2){
-            if(o1 == null && o2 == null){
-                return true;
-            }else if((o1 == null && o2 != null) || (o1 != null && o2 == null)){
-                return false;
-            }
-            if(o1.getClass().equals(o2.getClass())){
-                if(String.class.isAssignableFrom(o1.getClass())
-                    || Number.class.isAssignableFrom(o1.getClass())
-                    || Class.class.isAssignableFrom(o1.getClass())
-                ){
-                    return o1.equals(o2);
-                }else{
-                    return o1 == o2;
-                }
-            }else{
-                return false;
-            }
+            return o1 == o2;
         }
         
-        public void insert(Object obj, int id){
-            final int index = hash(obj) % ids.length;
-            if(id - 1 >= next.length){
+        public void insert(Object reference, int id){
+            insertInner(reference, id, false);
+        }
+        protected void insertInner(Object reference, int id, boolean resize){
+            if(id > next.length){
                 growEntries();
             }
-            if(id - 1 >= ids.length){
+            if(!resize && size > threshold){
                 growIds();
             }
-            objs[id - 1] = obj;
+            final int index = hash(reference) % ids.length;
+            if(!resize){
+                references[id - 1] = reference;
+            }
             next[id - 1] = ids[index];
             ids[index] = id;
+            if(!resize){
+                size++;
+            }
         }
         
         protected void growIds(){
             if(ids.length == Integer.MAX_VALUE){
                 throw new OutOfMemoryError("Ids can not grow.");
             }
-            int newLength = ids.length << 1;
+            int newLength = (int)(ids.length * expandRatio);
             if(newLength < ids.length){
                 newLength = Integer.MAX_VALUE;
             }
             ids = new int[newLength];
+            threshold = (int)(ids.length * loadFactor);
             for(int i = 1; i <= size; i++){
-                insert(objs[i - 1], i);
+                insertInner(references[i - 1], i, true);
             }
         }
         
@@ -1443,25 +1710,273 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             if(next.length == Integer.MAX_VALUE){
                 throw new OutOfMemoryError("Entries can not grow.");
             }
-            int newLength = ids.length << 1;
-            if(newLength < ids.length){
+            int newLength = next.length << 1;
+            if(newLength < next.length){
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
             System.arraycopy(next, 0, newNext, 0, size);
             next = newNext;
             
-            int[] newCounts = new int[newLength];
-            System.arraycopy(counts, 0, newCounts, 0, size);
-            counts = newCounts;
-            
-            Object[] newObjs = new Object[newLength];
-            System.arraycopy(objs, 0, newObjs, 0, size);
-            objs = newObjs;
+            Object[] newRefs = new Object[newLength];
+            System.arraycopy(references, 0, newRefs, 0, size);
+            references = newRefs;
         }
         
-        protected int hash(Object obj){
-            return System.identityHashCode(obj) & 0x7FFFFFFF;
+        protected int hash(Object reference){
+            return System.identityHashCode(reference) & 0x7FFFFFFF;
+        }
+    }
+    
+    private static class EqualsReferenceTable extends ReferenceTable{
+        
+        public EqualsReferenceTable(){
+            this(10, 3.0f, 3.0f);
+        }
+        
+        public EqualsReferenceTable(int initialCapacity, float expandRatio, float loadFactor){
+            super(initialCapacity, expandRatio, loadFactor);
+        }
+        
+        protected boolean compareObject(Object o1, Object o2){
+            if(o1 == null && o2 == null){
+                return true;
+            }else if((o1 == null && o2 != null) || (o1 != null && o2 == null)){
+                return false;
+            }else if(o1 == o2){
+                return true;
+            }
+            if(o1.getClass().equals(o2.getClass())){
+                return o1.equals(o2);
+            }else{
+                return false;
+            }
+        }
+        
+        protected int hash(Object reference){
+            return reference.hashCode() & 0x7FFFFFFF;
+        }
+    }
+    
+    private static class IntReferenceTable{
+        protected int size;
+        protected int[] ids;
+        protected int[] next;
+        protected int[] references;
+        protected int threshold;
+        protected final float loadFactor;
+        protected final float expandRatio;
+        
+        public IntReferenceTable(){
+            this(10, 3.0f, 3.0f);
+        }
+        
+        public IntReferenceTable(int initialCapacity, float expandRatio, float loadFactor){
+            ids = new int[initialCapacity];
+            next = new int[initialCapacity];
+            references = new int[initialCapacity];
+            this.loadFactor = loadFactor;
+            this.expandRatio = expandRatio;
+            threshold = (int)(initialCapacity * loadFactor);
+        }
+        
+        public int assign(int reference){
+            int id = lookup(reference);
+            if(id != 0){
+                return -id;
+            }
+            id = size + 1;
+            insert(reference, id);
+            return id;
+        }
+        
+        public int lookup(int reference){
+            if(size == 0){
+                return 0;
+            }
+            final int index = hash(reference) % ids.length;
+            for(int id = ids[index]; id > 0; id = next[id - 1]){
+                if(reference == references[id - 1]){
+                    return id;
+                }
+            }
+            return 0;
+        }
+        
+        public int size(){
+            return size;
+        }
+        
+        public int getReference(int id){
+            return references[id - 1];
+        }
+        
+        public void insert(int reference, int id){
+            insertInner(reference, id, false);
+        }
+        protected void insertInner(int reference, int id, boolean resize){
+            if(id > next.length){
+                growEntries();
+            }
+            if(!resize && size > threshold){
+                growIds();
+            }
+            final int index = hash(reference) % ids.length;
+            if(!resize){
+                references[id - 1] = reference;
+            }
+            next[id - 1] = ids[index];
+            ids[index] = id;
+            if(!resize){
+                size++;
+            }
+        }
+        
+        protected void growIds(){
+            if(ids.length == Integer.MAX_VALUE){
+                throw new OutOfMemoryError("Ids can not grow.");
+            }
+            int newLength = (int)(ids.length * expandRatio);
+            if(newLength < ids.length){
+                newLength = Integer.MAX_VALUE;
+            }
+            ids = new int[newLength];
+            threshold = (int)(ids.length * loadFactor);
+            for(int i = 1; i <= size; i++){
+                insertInner(references[i - 1], i, true);
+            }
+        }
+        
+        protected void growEntries(){
+            if(next.length == Integer.MAX_VALUE){
+                throw new OutOfMemoryError("Entries can not grow.");
+            }
+            int newLength = next.length << 1;
+            if(newLength < next.length){
+                newLength = Integer.MAX_VALUE;
+            }
+            int[] newNext = new int[newLength];
+            System.arraycopy(next, 0, newNext, 0, size);
+            next = newNext;
+            
+            int[] newRefs = new int[newLength];
+            System.arraycopy(references, 0, newRefs, 0, size);
+            references = newRefs;
+        }
+        
+        protected int hash(int reference){
+            return reference & 0x7FFFFFFF;
+        }
+    }
+    
+    private static class LongReferenceTable{
+        protected int size;
+        protected int[] ids;
+        protected int[] next;
+        protected long[] references;
+        protected int threshold;
+        protected final float loadFactor;
+        protected final float expandRatio;
+        
+        public LongReferenceTable(){
+            this(10, 3.0f, 3.0f);
+        }
+        
+        public LongReferenceTable(int initialCapacity, float expandRatio, float loadFactor){
+            ids = new int[initialCapacity];
+            next = new int[initialCapacity];
+            references = new long[initialCapacity];
+            this.loadFactor = loadFactor;
+            this.expandRatio = expandRatio;
+            threshold = (int)(initialCapacity * loadFactor);
+        }
+        
+        public int assign(long reference){
+            int id = lookup(reference);
+            if(id != 0){
+                return -id;
+            }
+            id = size + 1;
+            insert(reference, id);
+            return id;
+        }
+        
+        public int lookup(long reference){
+            if(size == 0){
+                return 0;
+            }
+            final int index = hash(reference) % ids.length;
+            for(int id = ids[index]; id > 0; id = next[id - 1]){
+                if(reference == references[id - 1]){
+                    return id;
+                }
+            }
+            return 0;
+        }
+        
+        public int size(){
+            return size;
+        }
+        
+        public long getReference(int id){
+            return references[id - 1];
+        }
+        
+        public void insert(long reference, int id){
+            insertInner(reference, id, false);
+        }
+        protected void insertInner(long reference, int id, boolean resize){
+            if(id > next.length){
+                growEntries();
+            }
+            if(!resize && size > threshold){
+                growIds();
+            }
+            final int index = hash(reference) % ids.length;
+            if(!resize){
+                references[id - 1] = reference;
+            }
+            next[id - 1] = ids[index];
+            ids[index] = id;
+            if(!resize){
+                size++;
+            }
+        }
+        
+        protected void growIds(){
+            if(ids.length == Integer.MAX_VALUE){
+                throw new OutOfMemoryError("Ids can not grow.");
+            }
+            int newLength = (int)(ids.length * expandRatio);
+            if(newLength < ids.length){
+                newLength = Integer.MAX_VALUE;
+            }
+            ids = new int[newLength];
+            threshold = (int)(ids.length * loadFactor);
+            for(int i = 1; i <= size; i++){
+                insertInner(references[i - 1], i, true);
+            }
+        }
+        
+        protected void growEntries(){
+            if(next.length == Integer.MAX_VALUE){
+                throw new OutOfMemoryError("Entries can not grow.");
+            }
+            int newLength = next.length << 1;
+            if(newLength < next.length){
+                newLength = Integer.MAX_VALUE;
+            }
+            int[] newNext = new int[newLength];
+            System.arraycopy(next, 0, newNext, 0, size);
+            next = newNext;
+            
+            long[] newRefs = new long[newLength];
+            System.arraycopy(references, 0, newRefs, 0, size);
+            references = newRefs;
+        }
+        
+        protected int hash(long reference){
+            return ((int)(reference ^ (reference >>> 32))) & 0x7FFFFFFF;
         }
     }
 }

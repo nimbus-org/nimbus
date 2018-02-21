@@ -32,9 +32,15 @@
 package jp.ossc.nimbus.service.proxy;
 
 import java.io.Serializable;
+import java.io.Externalizable;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectInput;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.NoSuchObjectException;
@@ -52,6 +58,7 @@ import jp.ossc.nimbus.service.keepalive.KeepAliveChecker;
 import jp.ossc.nimbus.service.keepalive.KeepAliveListener;
 import jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker;
 import jp.ossc.nimbus.service.performance.ResourceUsage;
+import jp.ossc.nimbus.service.queue.*;
 import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.io.Externalizer;
 
@@ -92,6 +99,9 @@ public class RemoteServiceServerService extends ServiceBase
     private RemoteServerInvokerImpl remoteServerInvoker;
     private ServiceName externalizerServiceName;
     private Externalizer externalizer;
+    private int asynchWriteExternalThreadSize;
+    private ServiceName asynchWriteExternalQueueServiceName;
+    private int asynchWriteExternalBufferSize = 1024;
     
     // RemoteServiceServerServiceMBeanのJavaDoc
     public void setRemoteServiceName(ServiceName name){
@@ -221,6 +231,33 @@ public class RemoteServiceServerService extends ServiceBase
         return externalizerServiceName;
     }
     
+    // RemoteServiceServerServiceMBeanのJavaDoc
+    public void setAsynchWriteExternalThreadSize(int size){
+        asynchWriteExternalThreadSize = size;
+    }
+    // RemoteServiceServerServiceMBeanのJavaDoc
+    public int getAsynchWriteExternalThreadSize(){
+        return asynchWriteExternalThreadSize;
+    }
+    
+    // RemoteServiceServerServiceMBeanのJavaDoc
+    public void setAsynchWriteExternalQueueServiceName(ServiceName name){
+        asynchWriteExternalQueueServiceName = name;
+    }
+    // RemoteServiceServerServiceMBeanのJavaDoc
+    public ServiceName getAsynchWriteExternalQueueServiceName(){
+        return asynchWriteExternalQueueServiceName;
+    }
+    
+    // RemoteServiceServerServiceMBeanのJavaDoc
+    public void setAsynchWriteExternalBufferSize(int size){
+        asynchWriteExternalBufferSize = size;
+    }
+    // RemoteServiceServerServiceMBeanのJavaDoc
+    public int getAsynchWriteExternalBufferSize(){
+        return asynchWriteExternalBufferSize;
+    }
+    
     public void setRMIClientSocketFactory(RMIClientSocketFactory csf){
         clientSocketFactory = csf;
     }
@@ -273,6 +310,7 @@ public class RemoteServiceServerService extends ServiceBase
             externalizer = (Externalizer)ServiceManagerFactory
                 .getServiceObject(externalizerServiceName);
         }
+        
         if(interceptorChainFactory == null){
             remoteServerInvoker = new RemoteServerInvokerImpl(
                 interceptorChainListServiceName,
@@ -288,7 +326,10 @@ public class RemoteServiceServerService extends ServiceBase
                     : (serverSocketFactoryServiceName != null ? (RMIServerSocketFactory)ServiceManagerFactory.getServiceObject(serverSocketFactoryServiceName)
                         : null),
                 getLogger(),
-                externalizer
+                externalizer,
+                asynchWriteExternalThreadSize,
+                asynchWriteExternalQueueServiceName,
+                asynchWriteExternalBufferSize
             );
         }else{
             remoteServerInvoker = new RemoteServerInvokerImpl(
@@ -303,7 +344,10 @@ public class RemoteServiceServerService extends ServiceBase
                     : (serverSocketFactoryServiceName != null ? (RMIServerSocketFactory)ServiceManagerFactory.getServiceObject(serverSocketFactoryServiceName)
                         : null),
                 getLogger(),
-                externalizer
+                externalizer,
+                asynchWriteExternalThreadSize,
+                asynchWriteExternalQueueServiceName,
+                asynchWriteExternalBufferSize
             );
         }
         if(jndiRepositoryServiceName != null){
@@ -403,6 +447,10 @@ public class RemoteServiceServerService extends ServiceBase
         private ResourceUsage resourceUsage;
         private Logger logger;
         private Externalizer externalizer;
+        private final int asynchWriteExternalThreadSize;
+        private final ServiceName asynchWriteExternalQueueServiceName;
+        private transient QueueHandlerContainerService asynchWriteExternalQueueHandlerContainer;
+        private final int asynchWriteExternalBufferSize;
         
         /**
          * インスタンスを生成する。<p>
@@ -413,6 +461,10 @@ public class RemoteServiceServerService extends ServiceBase
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
          * @param log Logger
+         * @param ext Externalizer
+         * @param asynchWriteExternalThreadSize 非同期書き込みスレッド数
+         * @param asynchWriteExternalQueueServiceName 非同期書き込みキューのサービス名
+         * @param bufferSize 非同期書き込みバッファサイズ
          * @exception java.rmi.RemoteException オブジェクトのエクスポートが失敗した場合
          */
         public RemoteServerInvokerImpl(
@@ -423,7 +475,10 @@ public class RemoteServiceServerService extends ServiceBase
             RMIClientSocketFactory csf,
             RMIServerSocketFactory ssf,
             Logger log,
-            Externalizer ext
+            Externalizer ext,
+            int asynchWriteExternalThreadSize,
+            ServiceName asynchWriteExternalQueueServiceName,
+            int bufferSize
         ) throws java.rmi.RemoteException{
             stub = UnicastRemoteObject.exportObject(this, port, csf, ssf);
             this.interceptorChainListServiceName = null;
@@ -434,6 +489,10 @@ public class RemoteServiceServerService extends ServiceBase
             resourceUsage = usage;
             logger = log;
             externalizer = ext;
+            this.asynchWriteExternalThreadSize = asynchWriteExternalThreadSize;
+            this.asynchWriteExternalQueueServiceName = asynchWriteExternalQueueServiceName;
+            this.asynchWriteExternalBufferSize = bufferSize;
+            initAsynchWriteExternal();
         }
         
         /**
@@ -447,6 +506,10 @@ public class RemoteServiceServerService extends ServiceBase
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
          * @param log Logger
+         * @param ext Externalizer
+         * @param asynchWriteExternalThreadSize 非同期書き込みスレッド数
+         * @param asynchWriteExternalQueueServiceName 非同期書き込みキューのサービス名
+         * @param bufferSize 非同期書き込みバッファサイズ
          * @exception java.rmi.RemoteException オブジェクトのエクスポートが失敗した場合
          */
         public RemoteServerInvokerImpl(
@@ -459,7 +522,10 @@ public class RemoteServiceServerService extends ServiceBase
             RMIClientSocketFactory csf,
             RMIServerSocketFactory ssf,
             Logger log,
-            Externalizer ext
+            Externalizer ext,
+            int asynchWriteExternalThreadSize,
+            ServiceName asynchWriteExternalQueueServiceName,
+            int bufferSize
         ) throws java.rmi.RemoteException{
             stub = UnicastRemoteObject.exportObject(this, port, csf, ssf);
             this.interceptorChainListServiceName = interceptorChainListServiceName;
@@ -470,6 +536,29 @@ public class RemoteServiceServerService extends ServiceBase
             resourceUsage = usage;
             logger = log;
             externalizer = ext;
+            this.asynchWriteExternalThreadSize = asynchWriteExternalThreadSize;
+            this.asynchWriteExternalQueueServiceName = asynchWriteExternalQueueServiceName;
+            this.asynchWriteExternalBufferSize = bufferSize;
+            initAsynchWriteExternal();
+        }
+        
+        private void initAsynchWriteExternal() throws java.rmi.RemoteException{
+            if(asynchWriteExternalThreadSize > 0){
+                try{
+                    QueueHandlerContainerService queueHandlerContainer = new QueueHandlerContainerService();
+                    queueHandlerContainer.create();
+                    queueHandlerContainer.setQueueHandlerSize(asynchWriteExternalThreadSize);
+                    queueHandlerContainer.setQueueServiceName(asynchWriteExternalQueueServiceName);
+                    queueHandlerContainer.setQueueHandler(new AsynchWriteExternalQueueHandler());
+                    queueHandlerContainer.setIgnoreNullElement(true);
+                    queueHandlerContainer.setWaitTimeout(1000l);
+                    queueHandlerContainer.setQueueHandlerNowaitOnStop(true);
+                    queueHandlerContainer.start();
+                    asynchWriteExternalQueueHandlerContainer = queueHandlerContainer;
+                }catch(Exception e){
+                    throw new java.rmi.RemoteException("Unexpected exception.", e);
+                }
+            }
         }
         
         /**
@@ -540,16 +629,26 @@ public class RemoteServiceServerService extends ServiceBase
                     chain.setCurrentInterceptorIndex(-1);
                     Object ret = chain.invokeNext(context);
                     if(externalizer != null && ret != null){
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        externalizer.writeExternal(ret, baos);
-                        ret = baos.toByteArray();
+                        if(asynchWriteExternalQueueHandlerContainer == null){
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                            externalizer.writeExternal(ret, baos);
+                            ret = baos.toByteArray();
+                        }else{
+                            AsynchWriteExternalContainer container = new AsynchWriteExternalContainer(
+                                ret,
+                                externalizer,
+                                asynchWriteExternalBufferSize
+                            );
+                            asynchWriteExternalQueueHandlerContainer.push(container);
+                            ret = container;
+                        }
                     }
                     return ret;
                 }catch(Exception e){
                     throw e;
                 }catch(Throwable e){
                     if(logger != null){
-                        logger.write("RSS__00001", e);
+                        logger.write("RSS__00001", context + "->" + serviceName, e);
                     }
                     return null;
                 }finally{
@@ -582,7 +681,7 @@ public class RemoteServiceServerService extends ServiceBase
                     }
                 }catch(Throwable e){
                     if(logger != null){
-                        logger.write("RSS__00001", e);
+                        logger.write("RSS__00001", "isAlive()->" + serviceName, e);
                     }
                     return false;
                 }
@@ -595,6 +694,38 @@ public class RemoteServiceServerService extends ServiceBase
         
         public Remote getStub(){
             return stub;
+        }
+        
+        protected void finalize() throws Throwable{
+            if(asynchWriteExternalQueueHandlerContainer != null){
+                asynchWriteExternalQueueHandlerContainer.stop();
+                asynchWriteExternalQueueHandlerContainer.destroy();
+                asynchWriteExternalQueueHandlerContainer = null;
+            }
+        }
+        
+        private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
+            in.defaultReadObject();
+            initAsynchWriteExternal();
+        }
+        
+        private class AsynchWriteExternalQueueHandler implements QueueHandler{
+            
+            public void handleDequeuedObject(Object obj) throws Throwable{
+                if(obj == null){
+                    return;
+                }
+                AsynchWriteExternalContainer container = (AsynchWriteExternalContainer)obj;
+                container.write();
+            }
+            
+            public boolean handleError(Object obj, Throwable th) throws Throwable{
+                return false;
+            }
+            
+            public void handleRetryOver(Object obj, Throwable th) throws Throwable{
+                ServiceManagerFactory.getLogger().write("RSS__00001", "AsynchWriteExternalContainer#write()", th);
+            }
         }
     }
     
@@ -637,7 +768,11 @@ public class RemoteServiceServerService extends ServiceBase
                 }
                 Object ret = serverInvoker.invoke(context);
                 if(externalizer != null && ret != null){
-                    ret = externalizer.readExternal(new ByteArrayInputStream((byte[])ret));
+                    if(ret instanceof AsynchWriteExternalContainer){
+                        ret = externalizer.readExternal(((AsynchWriteExternalContainer)ret).getInputStream());
+                    }else{
+                        ret = externalizer.readExternal(new ByteArrayInputStream((byte[])ret));
+                    }
                 }
                 return ret;
             }catch(java.rmi.RemoteException e){
@@ -656,10 +791,10 @@ public class RemoteServiceServerService extends ServiceBase
             try{
                 return serverInvoker.isAlive(null);
             }catch(RemoteException e){
-                ServiceManagerFactory.getLogger().write("RSS__00002", e);
+                ServiceManagerFactory.getLogger().write("RSS__00002", "isAlive()->" + serverAddress, e);
                 return false;
             }catch(Throwable e){
-                ServiceManagerFactory.getLogger().write("RSS__00001", e);
+                ServiceManagerFactory.getLogger().write("RSS__00001", "isAlive()->" + serverAddress, e);
                 return false;
             }
         }
@@ -689,10 +824,10 @@ public class RemoteServiceServerService extends ServiceBase
             try{
                 return serverInvoker.getResourceUsage();
             }catch(RemoteException e){
-                ServiceManagerFactory.getLogger().write("RSS__00002", e);
+                ServiceManagerFactory.getLogger().write("RSS__00002", "getResourceUsage()->" + serverAddress, e);
                 return null;
             }catch(Throwable e){
-                ServiceManagerFactory.getLogger().write("RSS__00001", e);
+                ServiceManagerFactory.getLogger().write("RSS__00001", "getResourceUsage()->" + serverAddress, e);
                 return null;
             }
         }
@@ -700,6 +835,77 @@ public class RemoteServiceServerService extends ServiceBase
         private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
             in.defaultReadObject();
             clientAddress = InetAddress.getLocalHost();
+        }
+    }
+    
+    public static class AsynchWriteExternalContainer implements Externalizable{
+        
+        private static final long serialVersionUID = -8227222269734459993L;
+        
+        private transient Object obj;
+        private transient PipedInputStream pis;
+        private transient PipedOutputStream pos;
+        private transient Externalizer externalizer;
+        private transient ByteArrayInputStream bais;
+        private transient int bufferSize;
+        
+        public AsynchWriteExternalContainer(){}
+        
+        public AsynchWriteExternalContainer(
+            Object obj,
+            Externalizer externalizer,
+            int bufferSize
+        ) throws IOException{
+            this.obj = obj;
+            this.externalizer = externalizer;
+            this.bufferSize = bufferSize;
+            pis = new PipedInputStream(bufferSize);
+            pos = new PipedOutputStream(pis);
+        }
+        
+        public void write() throws Exception{
+            try{
+                externalizer.writeExternal(obj, pos);
+            }finally{
+                pos.flush();
+                pos.close();
+            }
+        }
+        public InputStream getInputStream(){
+            return bais;
+        }
+        
+        public void writeExternal(ObjectOutput out) throws IOException{
+            out.writeInt(bufferSize);
+            final byte[] buf = new byte[bufferSize];
+            int len = 0;
+            while((len = pis.read(buf, 0, buf.length)) > 0){
+                out.writeInt(len);
+                out.write(buf, 0, len);
+            }
+            out.writeInt(0);
+            out.flush();
+        }
+        public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
+            bufferSize = in.readInt();
+            byte[] buf = new byte[bufferSize];
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(bufferSize);
+            int len = 0;
+            int readLen = 0;
+            while((len = in.readInt()) > 0){
+                readLen = in.read(buf, 0, Math.min(len, buf.length));
+                baos.write(buf, 0, readLen);
+                if(len > buf.length){
+                    buf = new byte[len];
+                }
+                len -= readLen;
+                while(len > 0){
+                    readLen = in.read(buf, 0, Math.min(len, buf.length));
+                    baos.write(buf, 0, readLen);
+                    len -= readLen;
+                }
+            }
+            bais = new ByteArrayInputStream(baos.toByteArray());
         }
     }
 }
