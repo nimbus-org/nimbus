@@ -413,8 +413,8 @@ WSSV_00004,Charset of Accept-Charset header is not supported. header=@0,100,jp.o
 HPS__00001,Received bad request,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 HPS__00002,Unexpected error occured.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 HPS__00003,Client abort.url=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
-RSS__00001,Unexpected error occured.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-RSS__00002,It failed to call remote object.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+RSS__00001,Unexpected error occured on "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RSS__00002,It failed to call remote object on "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 TR___00001,Test runner definition XML warning : @0 : line=@1\\, column=@2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 TR___00002,Test runner definition XML error : @0 : line=@1\\, column=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 TR___00003,Test runner definition XML fatal : @0 : line=@1\\, column=@2,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
