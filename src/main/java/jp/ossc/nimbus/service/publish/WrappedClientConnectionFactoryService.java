@@ -51,7 +51,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
  */
 public class WrappedClientConnectionFactoryService extends ServiceBase implements ClientConnectionFactory, WrappedClientConnectionFactoryServiceMBean{
     
-//    private static final long serialVersionUID = -1L;
+    private static final long serialVersionUID = 6040359162241831324L;
     
     private ServiceName clientConnectionFactoryServiceName;
     private ClientConnectionFactory clientConnectionFactory;
