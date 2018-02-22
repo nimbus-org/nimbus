@@ -45,9 +45,8 @@ import jp.ossc.nimbus.daemon.DaemonRunnable;
  *
  * @author M.Takata
  */
-public class ThinOutClientConnectionImpl implements ClientConnection{
+public class ThinOutClientConnectionImpl extends ClientConnectionWrapper{
     
-    private ClientConnection clientConnection;
     private ThinOutFilter[] filters;
     private Map lastThinOutMap;
     private Set lastThinOutSet;
@@ -62,94 +61,13 @@ public class ThinOutClientConnectionImpl implements ClientConnection{
         long checkInterval,
         long timeout
     ){
-        clientConnection = connection;
+        super(connection);
         this.filters = filters;
         messageListener = new ThinOutMessageListener();
         lastThinOutMap = new HashMap();
         lastThinOutSet = new HashSet();
         thinOutTimeoutCheckInterval = checkInterval;
         thinOutTimeout = timeout;
-    }
-    
-    public void setServiceManagerName(String name){
-        if(clientConnection != null){
-            clientConnection.setServiceManagerName(name);
-        }
-    }
-    
-    public void connect() throws ConnectException{
-        if(clientConnection == null){
-            throw new ConnectException("ClientConnection is null.");
-        }
-        clientConnection.connect();
-    }
-    
-    public void connect(Object id) throws ConnectException{
-        if(clientConnection == null){
-            throw new ConnectException("ClientConnection is null.");
-        }
-        clientConnection.connect(id);
-    }
-    
-    public void addSubject(String subject) throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.addSubject(subject);
-    }
-    
-    public void addSubject(String subject, String[] keys) throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.addSubject(subject, keys);
-    }
-    
-    public void removeSubject(String subject) throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.removeSubject(subject);
-    }
-    
-    public void removeSubject(String subject, String[] keys) throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.removeSubject(subject, keys);
-    }
-    
-    public void startReceive() throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.startReceive();
-    }
-    
-    public void startReceive(long from) throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.startReceive(from);
-    }
-    
-    public void stopReceive() throws MessageSendException{
-        if(clientConnection == null){
-            throw new MessageSendException("ClientConnection is null.");
-        }
-        clientConnection.stopReceive();
-    }
-    
-    public boolean isStartReceive(){
-        return clientConnection == null ? false : clientConnection.isStartReceive();
-    }
-    
-    public Set getSubjects(){
-        return clientConnection == null ? new HashSet() : clientConnection.getSubjects();
-    }
-    
-    public Set getKeys(String subject){
-        return clientConnection == null ? new HashSet() : clientConnection.getKeys(subject);
     }
     
     public void setMessageListener(MessageListener listener){
@@ -167,26 +85,12 @@ public class ThinOutClientConnectionImpl implements ClientConnection{
         }
     }
     
-    public boolean isConnected(){
-        return clientConnection == null ? false : clientConnection.isConnected();
-    }
-    
-    public boolean isServerClosed(){
-        return clientConnection == null ? false : clientConnection.isServerClosed();
-    }
-    
-    public Object getId(){
-        return clientConnection == null ? null : clientConnection.getId();
-    }
-    
     public void close(){
         if(thinOutTimeoutChecker != null){
             thinOutTimeoutChecker.stopNoWait();
             thinOutTimeoutChecker = null;
         }
-        if(clientConnection != null){
-            clientConnection.close();
-        }
+        super.close();
     }
     
     private class ThinOutMessageListener implements MessageListener{

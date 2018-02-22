@@ -31,29 +31,34 @@
  */
 package jp.ossc.nimbus.service.publish;
 
-import java.rmi.RemoteException;
+import java.util.*;
 
+import java.rmi.RemoteException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import jp.ossc.nimbus.beans.PropertyFactory;
+import jp.ossc.nimbus.beans.Property;
+import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 
 /**
- * 間引きを行うメッセージ受信用のクライアントコネクション生成サービス。<p>
+ * ラップされたクライアントコネクションを生成する{@link ClientConnectionFactory}サービス。<p>
  * 
  * @author M.Takata
  */
-public class ThinOutClientConnectionFactoryService extends ServiceBase implements ClientConnectionFactory, ThinOutClientConnectionFactoryServiceMBean{
+public class WrappedClientConnectionFactoryService extends ServiceBase implements ClientConnectionFactory, WrappedClientConnectionFactoryServiceMBean{
     
-    private static final long serialVersionUID = -6262634357594773198L;
+//    private static final long serialVersionUID = -1L;
     
     private ServiceName clientConnectionFactoryServiceName;
     private ClientConnectionFactory clientConnectionFactory;
-    
-    private ServiceName[] thinOutFilterServiceNames;
-    private ThinOutFilter[] thinOutFilters;
-    
-    private long thinOutTimeout = 3000;
-    private long thinOutTimeoutCheckInterval = 1000;
+    private Class clientConnectionWrapperClass;
+    private Constructor clientConnectionWrapperConstructor;
+    private Map wrapperProperties;
+    private Map properties;
     
     public void setClientConnectionFactoryServiceName(ServiceName name){
         clientConnectionFactoryServiceName = name;
@@ -62,11 +67,18 @@ public class ThinOutClientConnectionFactoryService extends ServiceBase implement
         return clientConnectionFactoryServiceName;
     }
     
-    public void setThinOutFilterServiceNames(ServiceName[] names){
-        thinOutFilterServiceNames = names;
+    public void setClientConnectionWrapperClass(Class clazz){
+        clientConnectionWrapperClass = clazz;
     }
-    public ServiceName[] getThinOutFilterServiceNames(){
-        return thinOutFilterServiceNames;
+    public Class getClientConnectionWrapperClass(){
+        return clientConnectionWrapperClass;
+    }
+    
+    public void setWrapperProperties(Map prop){
+        wrapperProperties = prop;
+    }
+    public Map getWrapperProperties(){
+        return wrapperProperties;
     }
     
     public void setClientConnectionFactory(ClientConnectionFactory factory){
@@ -76,27 +88,6 @@ public class ThinOutClientConnectionFactoryService extends ServiceBase implement
         return clientConnectionFactory;
     }
     
-    public void setThinOutFilters(ThinOutFilter[] filters){
-        thinOutFilters = filters;
-    }
-    public ThinOutFilter[] getThinOutFilters(){
-        return thinOutFilters;
-    }
-    
-    public void setThinOutTimeoutCheckInterval(long interval){
-        thinOutTimeoutCheckInterval = interval;
-    }
-    public long getThinOutTimeoutCheckInterval(){
-        return thinOutTimeoutCheckInterval;
-    }
-    
-    public void setThinOutTimeout(long timeout){
-        thinOutTimeout = timeout;
-    }
-    public long getThinOutTimeout(){
-        return thinOutTimeout;
-    }
-    
     public void startService() throws Exception{
         if(clientConnectionFactory == null){
             if(clientConnectionFactoryServiceName == null){
@@ -104,13 +95,26 @@ public class ThinOutClientConnectionFactoryService extends ServiceBase implement
             }
             clientConnectionFactory = (ClientConnectionFactory)ServiceManagerFactory.getServiceObject(clientConnectionFactoryServiceName);
         }
-        if(thinOutFilters == null || thinOutFilters.length == 0){
-            if(thinOutFilterServiceNames == null){
-                throw new IllegalArgumentException("ThinOutFilters is null.");
-            }
-            thinOutFilters = new ThinOutFilter[thinOutFilterServiceNames.length];
-            for(int i = 0; i < thinOutFilterServiceNames.length; i++){
-                thinOutFilters[i] = (ThinOutFilter)ServiceManagerFactory.getServiceObject(thinOutFilterServiceNames[i]);
+        if(clientConnectionWrapperClass == null){
+            throw new IllegalArgumentException("ClientConnectionWrapperClass is null.");
+        }
+        try{
+            clientConnectionWrapperConstructor = clientConnectionWrapperClass.getConstructor(new Class[]{ClientConnection.class});
+        }catch(NoSuchMethodException e){
+            throw new IllegalArgumentException("Illegal ClientConnectionWrapperClass.", e);
+        }
+        
+        if(wrapperProperties != null
+            && wrapperProperties.size() != 0){
+            properties = new LinkedHashMap();
+            final Iterator props
+                 = wrapperProperties.keySet().iterator();
+            while(props.hasNext()){
+                final String propName = (String)props.next();
+                final Object val = wrapperProperties.get(propName);
+                final Property property
+                     = PropertyFactory.createProperty(propName);
+                properties.put(property, val);
             }
         }
     }
@@ -119,13 +123,28 @@ public class ThinOutClientConnectionFactoryService extends ServiceBase implement
         if(getState() != STARTED){
             throw new ConnectionCreateException("Service not started. name=" + getServiceNameObject());
         }
-        ClientConnection clientConnection = new ThinOutClientConnectionImpl(
-            clientConnectionFactory.getClientConnection(),
-            thinOutFilters,
-            thinOutTimeoutCheckInterval,
-            thinOutTimeout
-        );
-        return clientConnection;
+        try{
+            ClientConnection clientConnection = (ClientConnection)clientConnectionWrapperConstructor.newInstance(
+                new Object[]{clientConnectionFactory.getClientConnection()}
+            );
+            if(properties != null){
+                final Iterator props = properties.keySet().iterator();
+                while(props.hasNext()){
+                    final Property prop = (Property)props.next();
+                    final Object val = properties.get(prop);
+                    prop.setProperty(clientConnection, val);
+                }
+            }
+            return clientConnection;
+        }catch(IllegalAccessException e){
+            throw new ConnectionCreateException(e);
+        }catch(InstantiationException e){
+            throw new ConnectionCreateException(e);
+        }catch(InvocationTargetException e){
+            throw new ConnectionCreateException(e);
+        }catch(NoSuchPropertyException e){
+            throw new ConnectionCreateException(e);
+        }
     }
     
     public int getClientCount() throws RemoteException{
