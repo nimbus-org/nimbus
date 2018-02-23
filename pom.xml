@@ -471,7 +471,7 @@
                                         <equals arg1="${websocket.enable}" arg2="true"/>
                                     </not>
                                 </condition>
-                                <copy todir="${basedir}/target/gen-src">
+                                <copy todir="${basedir}/target/gen-src" preservelastmodified="true">
                                     <fileset dir="${basedir}/src/main/java">
                                         <include name="jp/ossc/nimbus/service/websocket/${websocket.target}"/>
                                         <include name="jp/ossc/nimbus/servlet/${websocket.target}"/>
@@ -489,7 +489,7 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <tasks>
-                                <copy todir="${basedir}/target/classes">
+                                <copy todir="${basedir}/target/classes" preservelastmodified="true">
                                     <fileset dir="${basedir}/src/main/java">
                                         <include name="**/*.java"/>
                                     </fileset>
@@ -508,7 +508,7 @@
                         <phase>process-classes</phase>
                         <configuration>
                             <tasks>
-                                <copy todir="${basedir}/target/classes">
+                                <copy todir="${basedir}/target/classes" preservelastmodified="true">
                                     <fileset dir="${basedir}/target/rmi-classes">
                                         <include name="**/*.class"/>
                                     </fileset>
