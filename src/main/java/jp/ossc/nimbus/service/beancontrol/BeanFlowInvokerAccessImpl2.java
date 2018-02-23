@@ -4083,6 +4083,12 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     }
                 }else{
                     stepContext.result = invoker.invokeFlow(input, context.monitor);
+                    if(journal != null){
+                        journal.addInfo(
+                            JOURNAL_KEY_STEP_RESULT,
+                            stepContext.result
+                        );
+                    }
                 }
                 context.put(stepName, stepContext);
             }catch(Exception e){
