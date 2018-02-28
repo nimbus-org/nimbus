@@ -2326,6 +2326,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 return;
             }
             value = getElementContent(element);
+            if(value == null || ((String)value).length() == 0){
+                value = getElementContent(element, true, (String)value);
+            }
             if(value == null){
                 value = "";
             }
@@ -2655,6 +2658,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private boolean isJournal = true;
         private Property property;
         private BeanFlowCoverageImpl coverage;
+        private boolean isNarrowCast;
 
         public AttributeMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
             super(parent);
@@ -2681,6 +2685,11 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             isNullValue = getOptionalBooleanAttribute(
                 element,
                 TYPE_ATTRIBUTE_NULL_VALUE,
+                false
+            );
+            isNarrowCast = getOptionalBooleanAttribute(
+                element,
+                NARROWCAST_ATTRIBUTE,
                 false
             );
             final String journalStr = MetaData.getOptionalAttribute(
@@ -2810,6 +2819,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 return;
             }
             value = getElementContent(element);
+            if(value == null || ((String)value).length() == 0){
+                value = getElementContent(element, true, (String)value);
+            }
             if(value == null){
                 value = "";
             }
@@ -2829,13 +2841,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     val
                 );
             }
-            Class type = null;
-            if(getType() != null){
-                type = Utility.convertStringToClass(getType());
-            }else if(val != null){
-                type = val.getClass();
-            }
             try{
+                Class type = null;
+                if(val != null && isNarrowCast){
+                    if(getType() != null){
+                        type = Utility.convertStringToClass(getType());
+                    }else{
+                        type = property.getPropertyType(target);
+                    }
+                    if(type != null && isNarrowCast(val.getClass(), type)){
+                        val = castPrimitiveWrapper(type, (Number)val);
+                    }
+                }else{
+                    if(getType() != null){
+                        type = Utility.convertStringToClass(getType());
+                    }else if(val != null){
+                        type = val.getClass();
+                    }
+                }
                 property.setProperty(target, type, val);
             }catch(InvocationTargetException e){
                 final Throwable th = e.getCause();
