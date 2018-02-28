@@ -263,6 +263,10 @@ The DOCTYPE is:
 -->
 <!ATTLIST attribute journal (true | false) "true">
 
+<!-- narrowCast属性は、数値型のダウンキャストを許可するかどうかを定義します。
+-->
+<!ATTLIST attribute narrowCast (true|false) "false">
+
 <!-- invoke要素は、メソッドインジェクション及びメソッド呼び出し結果参照を定義する要素です。
  object要素、step要素の子要素として定義する場合は、メソッドインジェクションを行います。
  result要素の子要素として定義する場合は、メソッド呼び出し結果参照を行います。
