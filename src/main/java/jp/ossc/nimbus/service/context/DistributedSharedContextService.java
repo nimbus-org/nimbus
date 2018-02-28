@@ -1148,7 +1148,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         putAll(t, defaultTimeout);
     }
     
-    public synchronized void putAll(Map t, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public void putAll(Map t, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         final long start = System.currentTimeMillis();
         Map distMap = new HashMap();
         Iterator entries = t.entrySet().iterator();
@@ -1218,7 +1218,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
-    public synchronized void putAllLocal(Map t){
+    public void putAllLocal(Map t){
         Iterator entries = t.entrySet().iterator();
         while(entries.hasNext()){
             Map.Entry entry = (Map.Entry)entries.next();
@@ -1226,7 +1226,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
-    public synchronized void putAllAsynch(Map t) throws SharedContextSendException{
+    public void putAllAsynch(Map t) throws SharedContextSendException{
         Iterator entries = t.entrySet().iterator();
         Map distMap = new HashMap();
         while(entries.hasNext()){
@@ -1286,7 +1286,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         clear(defaultTimeout <= 0 ? 0 : defaultTimeout * sharedContextArray.length);
     }
     
-    public synchronized void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         if(parallelRequestQueueHandlerContainer == null){
             for(int i = 0; i < sharedContextArray.length; i++){
                 long start = System.currentTimeMillis();
@@ -1334,13 +1334,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
-    public synchronized void clearLocal(){
+    public void clearLocal(){
         for(int i = 0; i < sharedContextArray.length; i++){
             sharedContextArray[i].clearLocal();
         }
     }
     
-    public synchronized void clearAsynch() throws SharedContextSendException{
+    public void clearAsynch() throws SharedContextSendException{
         if(parallelRequestQueueHandlerContainer == null){
             for(int i = 0; i < sharedContextArray.length; i++){
                 sharedContextArray[i].clearAsynch();
@@ -1528,7 +1528,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return keySet(defaultTimeout <= 0 ? 0 : defaultTimeout * sharedContextArray.length);
     }
     
-    public synchronized Set keySet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public Set keySet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         Set result = new HashSet();
         if(parallelRequestQueueHandlerContainer == null){
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1579,7 +1579,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return result;
     }
     
-    public synchronized Set keySetLocal(){
+    public Set keySetLocal(){
         Set result = new HashSet();
         for(int i = 0; i < sharedContextArray.length; i++){
             result.addAll(sharedContextArray[i].keySetLocal());
@@ -1591,7 +1591,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return size(defaultTimeout <= 0 ? 0 : defaultTimeout * sharedContextArray.length);
     }
     
-    public synchronized int size(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public int size(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         int result = 0;
         if(parallelRequestQueueHandlerContainer == null){
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1642,7 +1642,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return result;
     }
     
-    public synchronized int sizeLocal(){
+    public int sizeLocal(){
         int result = 0;
         for(int i = 0; i < sharedContextArray.length; i++){
             result += sharedContextArray[i].sizeLocal();
