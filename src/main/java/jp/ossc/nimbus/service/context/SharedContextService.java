@@ -2046,7 +2046,7 @@ public class SharedContextService extends DefaultContextService
         putAll(t, defaultTimeout);
     }
     
-    public synchronized void putAll(Map t, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public void putAll(Map t, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         if(t.size() == 0){
             return;
         }
@@ -2151,7 +2151,7 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-    public synchronized void putAllLocal(Map t){
+    public void putAllLocal(Map t){
         if(t.size() == 0){
             return;
         }
@@ -2211,7 +2211,7 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-    public synchronized void putAllAsynch(Map t) throws SharedContextSendException{
+    public void putAllAsynch(Map t) throws SharedContextSendException{
         if(t.size() == 0){
             return;
         }
@@ -2308,7 +2308,7 @@ public class SharedContextService extends DefaultContextService
         clear(defaultTimeout);
     }
     
-    public synchronized void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         if(isMain() && size() == 0){
             return;
         }
@@ -2392,7 +2392,7 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-    public synchronized void clearLocal(){
+    public void clearLocal(){
         if(size() == 0){
             return;
         }
@@ -2431,7 +2431,7 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-    public synchronized void clearAsynch() throws SharedContextSendException{
+    public void clearAsynch() throws SharedContextSendException{
         if(isMain() && size() == 0){
             return;
         }
@@ -2636,7 +2636,7 @@ public class SharedContextService extends DefaultContextService
         return keySet(defaultTimeout);
     }
     
-    public synchronized Set keySet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public Set keySet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         try{
             long startTime = System.currentTimeMillis();
             if(!referLock.acquireForUse(timeout)){
@@ -2682,7 +2682,7 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-    public synchronized Set keySetLocal(){
+    public Set keySetLocal(){
         try{
             referLock.acquireForUse(-1);
             return super.keySet();
@@ -2695,7 +2695,7 @@ public class SharedContextService extends DefaultContextService
         return size(defaultTimeout);
     }
     
-    public synchronized int size(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+    public int size(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         try{
             long startTime = System.currentTimeMillis();
             if(!referLock.acquireForUse(timeout)){
@@ -2741,7 +2741,7 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-    public synchronized int sizeLocal(){
+    public int sizeLocal(){
         try{
             referLock.acquireForUse(-1);
             return super.size();
